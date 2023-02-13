@@ -1,0 +1,52 @@
+name: "PR" # TODO: Publish this as a reusable action
+on:
+  pull_request:
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          ref: ${{ github.head_ref }}
+      - name: Check branch is up to date
+        run: |
+          if git merge-base --is-ancestor ${{ github.event.pull_request.base.sha}} ${{ github.event.pull_request.head.sha}} 
+          then
+            echo "Your branch is up to date."
+            exit 0
+          else
+            echo "You need to merge / rebase."
+            exit 1
+          fi
+      - name: Get branch name
+        id: branch-name
+        uses: tj-actions/branch-names@v5.1
+      - uses: actions/setup-java@v3
+        with:
+          java-version: "12.x"
+          distribution: "adopt-openj9"
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.7.x"
+          channel: "stable"
+      - name: Setup flutter
+        run: flutter pub get
+      - name: Lint and format
+        run: |
+          dart format . -l 120
+          dart fix --apply
+          flutter analyze
+      - name: Check for modified files
+        id: git-check
+        run: echo "modified=$(if [ -n "$(git status --porcelain)" ]; then echo "true"; else echo "false"; fi)" >>  $GITHUB_ENV
+      - name: Update changes in GitHub repository
+        if: env.modified == 'true'
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+          git add -A
+          git commit -m '[automated commit] lint format and import sort'
+          git push

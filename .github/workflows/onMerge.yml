@@ -1,0 +1,69 @@
+name: "Merge"
+
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  update-version:
+    if: github.event.pull_request.merged
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          ref: main
+          persist-credentials: false
+      - name: Change flutter version tag
+        uses: BentEngbers/flutter-change-version@v1.0.3
+      - name: push change
+        id: update
+        run: |
+          git remote set-url origin https://${{ secrets.PAT}}@github.com/zebratechnologies/zeta-flutter.git
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+          git add -A
+          git commit --amend --no-edit
+          git push -f
+
+  build-website:
+    if: github.event.pull_request.merged
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          ref: main\
+          persist-credentials: false
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: "stable"
+      - name: Setup dart / flutter
+        run: |
+          flutter pub get
+          dart pub global activate dartdoc
+      - name: Make zeta-flutter build repo
+        run: |
+          mkdir -p build/{example,dartdoc,widgetbook}
+      - name: Build outputs
+        run: |
+          dartdoc --output build/dartdoc
+          cd example
+          flutter build web --base-href='/flutter/widgetbook/' -t widgetbook/main.dart -o ../build/widgetbook
+          flutter build web --base-href='/flutter/example/' -t lib/main.dart -o ../build/example
+          cd ..
+      - id: read-version
+        uses: NiklasLehnfeld/flutter-version-number-action@main
+      - name: Create pull request
+        uses: paygoc6/action-pull-request-another-repo@v1.0.1
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.PAT }}
+        with:
+          source_folder: "build"
+          destination_folder: "hosting/public/flutter"
+          destination_repo: "zebratechnologies/zeta"
+          destination_head_branch: "flutter/${{ steps.read-version.outputs.version-number }}"
+          user_email: "github-actions@github.com"
+          user_name: "github-actions"
