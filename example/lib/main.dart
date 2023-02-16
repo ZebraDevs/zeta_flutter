@@ -13,7 +13,7 @@ class MyApp extends StatefulWidget {
 }
 
 final List components = [
-  const GridExample(),
+  GridExample(),
 ];
 
 class _MyAppState extends State<MyApp> {

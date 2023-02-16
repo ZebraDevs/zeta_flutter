@@ -123,7 +123,7 @@ class ZetaGrid extends StatelessWidget {
             ],
           );
         } else {
-          final List<Widget> children2 = children;
+          final List<Widget> children2 = [...children];
           if (children.length < col) {
             children2.addAll(List.generate(col - children.length, (index) => const SizedBox()));
           }
