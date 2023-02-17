@@ -8,13 +8,11 @@ jobs:
   update-version:
     if: github.event.pull_request.merged
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@v3
         with:
-          fetch-depth: 0
           ref: main
-          persist-credentials: false
       - name: Change flutter version tag
         uses: BentEngbers/flutter-change-version@v1.0.3
       - name: push change
@@ -27,43 +25,56 @@ jobs:
           git commit --amend --no-edit
           git push -f
 
-  build-website:
+  publish_changelog:
+    needs: update-version
     if: github.event.pull_request.merged
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v3
         with:
-          fetch-depth: 0
           ref: main
-          persist-credentials: false
-      - uses: subosito/flutter-action@v2
-        with:
-          channel: "stable"
-      - name: Setup dart / flutter
-        run: |
-          flutter pub get
-          dart pub global activate dartdoc
-      - name: Make zeta-flutter build repo
-        run: |
-          mkdir -p build/{example,dartdoc,widgetbook}
-      - name: Build outputs
-        run: |
-          dartdoc --output build/dartdoc
-          cd example
-          flutter build web --base-href='/flutter/widgetbook/' -t widgetbook/main.dart -o ../build/widgetbook
-          flutter build web --base-href='/flutter/example/' -t lib/main.dart -o ../build/example
-          cd ..
       - id: read-version
         uses: NiklasLehnfeld/flutter-version-number-action@main
-      - name: Create pull request
-        uses: paygoc6/action-pull-request-another-repo@v1.0.1
+      - name: Create tag
+        uses: actions/github-script@v5
+        with:
+          script: |
+            github.rest.git.createRef({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: 'refs/tags/${{steps.read-version.outputs.version-number}}',
+              sha: "${{github.sha}}"
+            })
+      - name: Update CHANGELOG
+        id: changelog
+        uses: requarks/changelog-action@v1
+        with:
+          token: ${{ secrets.PAT }}
+          tag: ${{ steps.read-version.outputs.version-number }}
+          excludeTypes: ""
+          includeInvalidCommits: true
+      - name: Make changelog flutter
+        run: cp CHANGELOG.md CHANGELOG_FLUTTER.md
+      - name: Push changelog to Zeta
+        uses: dmnemec/copy_file_to_another_repo_action@main
         env:
           API_TOKEN_GITHUB: ${{ secrets.PAT }}
         with:
-          source_folder: "build"
-          destination_folder: "hosting/public/flutter"
+          source_file: "CHANGELOG_FLUTTER.md"
           destination_repo: "zebratechnologies/zeta"
-          destination_head_branch: "flutter/${{ steps.read-version.outputs.version-number }}"
+          destination_folder: "./"
+          destination_branch_create: "flutter/${{ steps.read-version.outputs.version-number }}"
           user_email: "github-actions@github.com"
           user_name: "github-actions"
+      - name: Open Zeta PR
+        uses: thecanadianroot/open-pull-request-action@v1.0.3
+        with:
+          token: ${{secrets.PAT}}
+          base: main
+          head: "flutter/${{ steps.read-version.outputs.version-number }}"
+          title: "flutter/${{ steps.read-version.outputs.version-number }}"
+          labels: flutter
+          reviewers: benken
+          owner: zebratechnologies
+          repository: zebratechnologies/zeta

@@ -49,7 +49,7 @@ extension _Spacing on DeviceType {
   }
 }
 
-/// Zeta Grid component
+/// Zeta Grid
 class ZetaGrid extends StatelessWidget {
   /// Number of columns in grid. Should be an even number between 2 and 16, although values above 12 should be used sparingly.
   ///
