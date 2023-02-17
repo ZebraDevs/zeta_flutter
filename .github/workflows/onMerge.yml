@@ -25,7 +25,7 @@ jobs:
           git commit --amend --no-edit
           git push -f
 
-  publish_changelog:
+  publish-changelog:
     needs: update-version
     if: github.event.pull_request.merged
     runs-on: ubuntu-latest
