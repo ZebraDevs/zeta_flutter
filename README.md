@@ -7,9 +7,7 @@
         <li> Zebra Jira Project ID: N/A </li>
         <li> Product: Zebra Design System (Zeta) - Flutter Component Library </li>
         <li> Topics: none </li>
-
     </ul>
-
 </details>
 
 # zeta-flutter
