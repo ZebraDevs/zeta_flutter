@@ -78,7 +78,7 @@ jobs:
           source_file: "docs/"
           destination_repo: "zebratechnologies/zeta"
           destination_folder: "./docs/flutter"
-          destination_branch: "flutter/${{ steps.read-version.outputs.version-number +1}}"
+          destination_branch: "flutter/${{ steps.read-version.outputs.version-number }}"
           user_email: "github-actions@github.com"
           user_name: "github-actions"
           commit_message: "flutter docs"
