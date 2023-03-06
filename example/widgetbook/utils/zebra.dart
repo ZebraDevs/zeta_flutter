@@ -6,7 +6,7 @@ import 'package:widgetbook_models/src/devices/resolution.dart';
 class Zebra {
   /// Zebra EC50/EC55
   static const Device ec50 = Device.mobile(
-    name: 'EC55',
+    name: 'EC50',
     resolution: Resolution(
       nativeSize: DeviceSize(width: 480, height: 854),
       scaleFactor: 2,

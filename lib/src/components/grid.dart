@@ -1,23 +1,24 @@
 import 'package:flutter/material.dart';
-import '../theme/breakpoints.dart';
+import '../../zeta_flutter.dart';
+
 import '../utils/extensions.dart';
 
 /// Default margin for grid component.
-const double gridMargin = 24;
+const double gridMargin = x6;
 
 /// Default padding for grid component on desktop.
 ///
 /// See also:
 ///  * [gridGutterMobile].
 ///  * [DeviceType].
-const double gridGutterDesktop = 24;
+const double gridGutterDesktop = x6;
 
 /// Default padding for grid component on mobile.
 ///
 /// See also:
 ///  * [gridGutterDesktop].
 ///  * [DeviceType].
-const double gridGutterMobile = 24;
+const double gridGutterMobile = x4;
 
 extension _Spacing on DeviceType {
   num crossAxisCount(num col) {
@@ -35,7 +36,7 @@ extension _Spacing on DeviceType {
     }
   }
 
-  double axisSpacing(int col) {
+  double axisSpacing(double col) {
     switch (this) {
       case DeviceType.mobilePortrait:
       case DeviceType.mobileLandscape:
@@ -54,7 +55,7 @@ class ZetaGrid extends StatelessWidget {
   /// Number of columns in grid. Should be an even number between 2 and 16, although values above 12 should be used sparingly.
   ///
   /// Defaults to 12.
-  final int col;
+  final double col;
 
   /// Removes gutters (gaps) from between children.
   ///
@@ -95,7 +96,6 @@ class ZetaGrid extends StatelessWidget {
           'If defined, asymmetricWeight should be in the range 1-11',
         ),
         assert(
-          // ignore: use_is_even_rather_than_modulo
           col % 2 == 0,
           'Number of columns should be even',
         );
@@ -125,7 +125,7 @@ class ZetaGrid extends StatelessWidget {
         } else {
           final List<Widget> children2 = [...children];
           if (children.length < col) {
-            children2.addAll(List.generate(col - children.length, (index) => const SizedBox()));
+            children2.addAll(List.generate((col - children.length).toInt(), (index) => const SizedBox()));
           }
           for (int i = 0; i < divider; i++) {
             rows.add(
@@ -140,10 +140,7 @@ class ZetaGrid extends StatelessWidget {
           }
           widget = Column(children: rows.divide(gutter).toList());
         }
-        return Padding(
-          padding: const EdgeInsets.all(gridMargin), //TODO: Luke check against webflow
-          child: widget,
-        );
+        return Padding(padding: const EdgeInsets.all(gridMargin), child: widget);
       },
     );
   }

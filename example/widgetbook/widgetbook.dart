@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 
 import 'components/grid_widgetbook.dart';
+import 'components/spacing_widgetbook.dart';
 import 'utils/zebra.dart';
 
 class HotReload extends StatelessWidget {
@@ -11,7 +12,10 @@ class HotReload extends StatelessWidget {
   Widget build(BuildContext context) {
     return Widgetbook.material(
       categories: [
-        WidgetbookCategory(name: 'widgets', widgets: [gridWidgetBook()])
+        WidgetbookCategory(name: 'widgets', widgets: [
+          gridWidgetBook(),
+          spacingWidgetbook(),
+        ]),
       ],
       appInfo: AppInfo(name: 'Zeta Flutter Widgetbook'),
       themes: [WidgetbookTheme(name: 'Flutter Material Theme', data: ThemeData())],

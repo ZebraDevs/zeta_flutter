@@ -12,7 +12,7 @@ WidgetbookComponent gridWidgetBook() {
         name: 'Basic Grid',
         builder: (context) => SingleChildScrollView(
           child: ZetaGrid(
-            col: context.knobs.slider(label: 'col', min: 2, max: 16, divisions: 7, initialValue: 12).toInt(),
+            col: context.knobs.slider(label: 'col', min: 2, max: 16, divisions: 7, initialValue: 12),
             noGaps: context.knobs.boolean(label: 'No Gaps'),
             children: List.generate(16, (index) => const GridItem()),
           ),
