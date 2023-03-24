@@ -1,18 +1,17 @@
-// ignore_for_file: avoid_relative_lib_imports
-
+// ignore_for_file: avoid_relative_lib_imports,  avoid-top-level-members-in-tests, no-magic-number, prefer-moving-to-variable
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
-import '../example/lib/pages/grid_example.dart';
-import '../example/widgetbook/utils/zebra.dart';
+import '../lib/pages/grid_example.dart';
+import '../widgetbook/utils/zebra.dart';
 
 void main() {
   group('Grid', () {
     testWidgets('Grid component default desktop', (tester) async {
       await tester.pumpWidget(
-        TestWidget(widget: ZetaGrid(children: List.generate(20, (index) => GridItem(key: Key(index.toString()))))),
+        TestWidget(widget: ZetaGrid(children: List.generate(12, (index) => GridItem(key: Key(index.toString()))))),
       );
 
       final gridColumnFinder = find.byType(GridItem);
@@ -55,11 +54,17 @@ void main() {
         TestWidget(
           widget: Column(
             children: [
-              const SizedBox(key: Key('1'), child: ZetaSpacing(size: x1, child: testChild)),
-              const SizedBox(key: Key('2'), child: ZetaSpacing.square(size: x1, child: testChild)),
-              SizedBox(key: const Key('3'), child: testChild.square(x1)),
-              SizedBox(key: const Key('4'), child: Padding(padding: x1.square, child: testChild)),
-              const SizedBox(key: control, child: Padding(padding: EdgeInsets.all(4), child: testChild))
+              const SizedBox(key: Key('1'), child: ZetaSpacing(testChild, size: ZetaSpacing.x1)),
+              const SizedBox(
+                key: Key('2'),
+                child: ZetaSpacing.square(testChild, size: ZetaSpacing.x1),
+              ),
+              SizedBox(key: const Key('3'), child: testChild.square(ZetaSpacing.x1)),
+              SizedBox(key: const Key('4'), child: Padding(padding: ZetaSpacing.x1.square, child: testChild)),
+              const SizedBox(
+                key: control,
+                child: Padding(padding: EdgeInsets.all(4), child: testChild),
+              ),
             ],
           ),
         ),
@@ -84,10 +89,13 @@ void main() {
         TestWidget(
           widget: Column(
             children: [
-              const SizedBox(key: Key('1'), child: ZetaSpacing.squish(size: x1, child: testChild)),
-              SizedBox(key: const Key('2'), child: testChild.squish(x1)),
-              SizedBox(key: const Key('3'), child: Padding(padding: x1.squish, child: testChild)),
-              const SizedBox(key: control, child: Padding(padding: EdgeInsets.symmetric(vertical: 4), child: testChild))
+              const SizedBox(key: Key('1'), child: ZetaSpacing.squish(testChild, size: ZetaSpacing.x1)),
+              SizedBox(key: const Key('2'), child: testChild.squish(ZetaSpacing.x1)),
+              SizedBox(key: const Key('3'), child: Padding(padding: ZetaSpacing.x1.squish, child: testChild)),
+              const SizedBox(
+                key: control,
+                child: Padding(padding: EdgeInsets.symmetric(vertical: 4), child: testChild),
+              ),
             ],
           ),
         ),
@@ -111,10 +119,10 @@ void main() {
         TestWidget(
           widget: Column(
             children: [
-              const SizedBox(key: Key('1'), child: ZetaSpacing.stack(size: x1, child: testChild)),
-              SizedBox(key: const Key('2'), child: testChild.stack(x1)),
-              SizedBox(key: const Key('3'), child: Padding(padding: x1.stack, child: testChild)),
-              const SizedBox(key: control, child: Padding(padding: EdgeInsets.only(bottom: 4), child: testChild))
+              const SizedBox(key: Key('1'), child: ZetaSpacing.stack(testChild, size: ZetaSpacing.x1)),
+              SizedBox(key: const Key('2'), child: testChild.stack(ZetaSpacing.x1)),
+              SizedBox(key: const Key('3'), child: Padding(padding: ZetaSpacing.x1.stack, child: testChild)),
+              const SizedBox(key: control, child: Padding(padding: EdgeInsets.only(bottom: 4), child: testChild)),
             ],
           ),
         ),
@@ -137,13 +145,13 @@ void main() {
         TestWidget(
           widget: Column(
             children: [
-              const SizedBox(key: Key('1'), child: ZetaSpacing.inline(size: x1, child: testChild)),
-              SizedBox(key: const Key('2'), child: testChild.inline(x1)),
-              SizedBox(key: const Key('3'), child: Padding(padding: x1.inline, child: testChild)),
+              const SizedBox(key: Key('1'), child: ZetaSpacing.inline(testChild, size: ZetaSpacing.x1)),
+              SizedBox(key: const Key('2'), child: testChild.inline(ZetaSpacing.x1)),
+              SizedBox(key: const Key('3'), child: Padding(padding: ZetaSpacing.x1.inline, child: testChild)),
               const SizedBox(
                 key: control,
-                child: Padding(padding: EdgeInsetsDirectional.only(start: 4, end: 4), child: testChild),
-              )
+                child: Padding(padding: EdgeInsets.symmetric(horizontal: 4), child: testChild),
+              ),
             ],
           ),
         ),
@@ -166,13 +174,13 @@ void main() {
         TestWidget(
           widget: Column(
             children: [
-              const SizedBox(key: Key('1'), child: ZetaSpacing.inlineStart(size: x1, child: testChild)),
-              SizedBox(key: const Key('2'), child: testChild.inlineStart(x1)),
-              SizedBox(key: const Key('3'), child: Padding(padding: x1.inlineStart, child: testChild)),
+              const SizedBox(key: Key('1'), child: ZetaSpacing.inlineStart(testChild, size: ZetaSpacing.x1)),
+              SizedBox(key: const Key('2'), child: testChild.inlineStart(ZetaSpacing.x1)),
+              SizedBox(key: const Key('3'), child: Padding(padding: ZetaSpacing.x1.inlineStart, child: testChild)),
               const SizedBox(
                 key: control,
                 child: Padding(padding: EdgeInsetsDirectional.only(start: 4), child: testChild),
-              )
+              ),
             ],
           ),
         ),
@@ -195,13 +203,13 @@ void main() {
         TestWidget(
           widget: Column(
             children: [
-              const SizedBox(key: Key('1'), child: ZetaSpacing.inlineEnd(size: x1, child: testChild)),
-              SizedBox(key: const Key('2'), child: testChild.inlineEnd(x1)),
-              SizedBox(key: const Key('3'), child: Padding(padding: x1.inlineEnd, child: testChild)),
+              const SizedBox(key: Key('1'), child: ZetaSpacing.inlineEnd(testChild, size: ZetaSpacing.x1)),
+              SizedBox(key: const Key('2'), child: testChild.inlineEnd(ZetaSpacing.x1)),
+              SizedBox(key: const Key('3'), child: Padding(padding: ZetaSpacing.x1.inlineEnd, child: testChild)),
               const SizedBox(
                 key: control,
                 child: Padding(padding: EdgeInsetsDirectional.only(end: 4), child: testChild),
-              )
+              ),
             ],
           ),
         ),

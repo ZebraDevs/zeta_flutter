@@ -1,5 +1,9 @@
+// ignore_for_file: public_member_api_docs, avoid_positional_boolean_parameters
+
 import 'package:flutter/material.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
+
+import '../main.dart';
 
 class GridExampleModel {
   final double col;
@@ -68,7 +72,7 @@ class GridExample extends StatelessWidget {
         Flexible(flex: 3, child: GridItem()),
         GridItem(width: 40),
       ],
-      "[GridItem(width: 120), Flexible(child: GridItem()),GridItem(width: 80), Flexible(flex: 2, child: GridItem()), GridItem(width: 76), Flexible(child: GridItem()), Flexible(flex: 3, child: GridItem()), GridItem(width: 40), ]",
+      '[GridItem(width: 120), Flexible(child: GridItem()),GridItem(width: 80), Flexible(flex: 2, child: GridItem()), GridItem(width: 76), Flexible(child: GridItem()), Flexible(flex: 3, child: GridItem()), GridItem(width: 40), ]',
     ),
     GridExampleModel(
       8,
@@ -85,14 +89,14 @@ class GridExample extends StatelessWidget {
         Flexible(flex: 3, child: GridItem()),
         GridItem(width: 40),
       ],
-      "[GridItem(width: 120), Flexible(child: GridItem()),GridItem(width: 80), Flexible(flex: 2, child: GridItem()), GridItem(width: 76), Flexible(child: GridItem()), Flexible(flex: 3, child: GridItem()), GridItem(width: 40), ]",
+      '[GridItem(width: 120), Flexible(child: GridItem()),GridItem(width: 80), Flexible(flex: 2, child: GridItem()), GridItem(width: 76), Flexible(child: GridItem()), Flexible(flex: 3, child: GridItem()), GridItem(width: 40), ]',
     ),
   ];
   const GridExample({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final List<Widget> gridItems = List.generate(16, (index) => GridItem(label: index + 1));
+    final List<Widget> gridItems = List.generate(12, (index) => GridItem(label: index + 1));
 
     return Column(
       children: gridExamples.map((e) {
@@ -107,15 +111,10 @@ class GridExample extends StatelessWidget {
               hybrid: e.children != null,
               children: e.children != null ? e.children! : gridItems,
             ),
-            Container(
-              color: const Color(0xFFE9E9E9),
-              padding: const EdgeInsets.all(16),
-              margin: const EdgeInsets.only(left: 16),
-              child: Text(
+            CodeExample(
+              code:
                   'ZetaGrid(${e.col != 12 ? 'col:${e.col},' : ''}${e.noGaps ? 'noGaps:true, ' : ''}${e.asymmetric != null ? 'asymmetricWeight:${e.asymmetric}, ' : ''}${e.children != null ? 'hybrid: true, ' : ''}${e.children != null ? 'children:${e.childrenText}, ' : ''})',
-                  style: Theme.of(context).textTheme.bodyMedium),
             ),
-            const SizedBox(height: 40),
           ],
         );
       }).toList(),
@@ -133,7 +132,7 @@ class GridItem extends StatelessWidget {
     return Container(
       height: 80,
       width: width,
-      decoration: BoxDecoration(border: Border.all(color: const Color(0xFF7bb7f5)), color: const Color(0xCCc0dcf9)),
+      decoration: BoxDecoration(border: Border.all(color: exampleBlueDark), color: exampleBlue),
       child: label != null ? Text(label.toString()) : null,
     );
   }

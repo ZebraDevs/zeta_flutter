@@ -1,94 +1,120 @@
 import 'package:flutter/material.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
-class _SpacingExampleModel {
-  final double? size;
-  final SpacingType? type;
-  final String description;
-  final String? code;
+import '../main.dart';
 
-  const _SpacingExampleModel(this.size, this.type, this.description, [this.code]);
+class _SpacingExampleModel {
+  final Widget wExample;
+  final String description;
+  final String code;
+  final String token;
+
+  const _SpacingExampleModel({
+    required this.wExample,
+    this.description = '',
+    this.code = '',
+    this.token = '',
+  });
+}
+
+class _SizeEx {
+  final String name;
+  final double? value;
+
+  const _SizeEx({required this.name, required this.value});
+}
+
+class _TypeEx {
+  final String name;
+  final ZetaSpacingType? value;
+  final String description;
+  const _TypeEx({required this.name, required this.value, required this.description});
 }
 
 class SpacingExample extends StatelessWidget {
   const SpacingExample({super.key});
 
-  static const List<Map<String, double?>> sizes = [
-    {'': null},
-    {'x0': x0},
-    {'x1': x1},
-    {'xxs': xxs},
-    {'x2': x2},
-    {'xs': xs},
-    {'x3': x3},
-    {'s': s},
-    {'x4': x4},
-    {'b': b},
-    {'x5': x5},
-    {'x6': x6},
-    {'m': m},
-    {'x7': x7},
-    {'x8': x8},
-    {'l': l},
-    {'x9': x9},
-    {'x10': x10},
+  static const List<_SizeEx> _sizes = [
+    _SizeEx(name: '', value: null),
+    _SizeEx(name: 'x1', value: ZetaSpacing.x1),
+    _SizeEx(name: 'xxs', value: ZetaSpacing.xxs),
+    _SizeEx(name: 'x2', value: ZetaSpacing.x2),
+    _SizeEx(name: 'xs', value: ZetaSpacing.xs),
+    _SizeEx(name: 'x3', value: ZetaSpacing.x3),
+    _SizeEx(name: 's', value: ZetaSpacing.s),
+    _SizeEx(name: 'x4', value: ZetaSpacing.x4),
+    _SizeEx(name: 'b', value: ZetaSpacing.b),
+    _SizeEx(name: 'x5', value: ZetaSpacing.x5),
+    _SizeEx(name: 'x6', value: ZetaSpacing.x6),
+    _SizeEx(name: 'm', value: ZetaSpacing.m),
+    _SizeEx(name: 'x7', value: ZetaSpacing.x7),
+    _SizeEx(name: 'x8', value: ZetaSpacing.x8),
+    _SizeEx(name: 'l', value: ZetaSpacing.l),
+    _SizeEx(name: 'x9', value: ZetaSpacing.x9),
+    _SizeEx(name: 'x10', value: ZetaSpacing.x10),
+    _SizeEx(name: 'x11', value: ZetaSpacing.x11),
+    _SizeEx(name: 'x12', value: ZetaSpacing.x12),
+    _SizeEx(name: 'x16', value: ZetaSpacing.x16),
+    _SizeEx(name: 'xl', value: ZetaSpacing.xl),
+    _SizeEx(name: 'x20', value: ZetaSpacing.x20),
+    _SizeEx(name: 'xxl', value: ZetaSpacing.xxl),
+    _SizeEx(name: 'x24', value: ZetaSpacing.x24),
+    _SizeEx(name: 'xxxl', value: ZetaSpacing.xxxl),
   ];
 
-  static const Map<SpacingType?, String> typeStrings = {
-    null: 'All (square)',
-    SpacingType.square: 'Square',
-    SpacingType.squish: 'Squish (top and bottom)',
-    SpacingType.inline: 'Inline (start and end)',
-    SpacingType.inlineStart: 'Inline start ',
-    SpacingType.inlineEnd: 'Inline end ',
-    SpacingType.stack: 'Stack',
-  };
+  static const List<_TypeEx> _types = [
+    _TypeEx(name: '', value: null, description: 'Adds {0}rem either or both margin and padding.'),
+    _TypeEx(name: 'square', value: ZetaSpacingType.square, description: 'Adds {0}rem padding.'),
+    _TypeEx(name: 'squish', value: ZetaSpacingType.squish, description: 'Adds {0}rem top and bottom padding.'),
+    _TypeEx(name: 'inline', value: ZetaSpacingType.inline, description: 'Adds {0}rem left and right padding.'),
+    _TypeEx(name: 'inline.start', value: ZetaSpacingType.inlineStart, description: 'Adds {0}rem start padding.'),
+    _TypeEx(name: 'inline.end', value: ZetaSpacingType.inlineEnd, description: 'Adds {0}rem end padding.'),
+    _TypeEx(name: 'stack', value: ZetaSpacingType.stack, description: 'Adds {0}rem bottom padding.'),
+  ];
 
-  static final List<_SpacingExampleModel> _spacingExamples = sizes
+  static final List<_SpacingExampleModel?> _x = _sizes
       .map((size) {
-        return typeStrings.keys
-            .map((type) => _SpacingExampleModel(
-                  size.values.first,
-                  type,
-                  '${size.keys.first} ${typeStrings[type]} padding',
-                  'ZetaSpacing(${size.values.first != null ? 'size: ${size.keys.first}, ' : ''}${type != null ? 'type: $type,' : ''})',
-                ))
-            .toList();
+        final x = _types.map((type) {
+          return _SpacingExampleModel(
+            token: r'$spacing.zeta' +
+                (type.value != null ? '.${type.name}' : '') +
+                (size.value != null ? '.${size.name}' : ''),
+            wExample: _SpaceExample(size: size.value ?? 0, type: type.value ?? ZetaSpacingType.square),
+            description: type.description.replaceAll('{0}', size.value == null ? '0' : (size.value! ~/ 4).toString()),
+            code:
+                'ZetaSpacing${type.value != null ? '.${type.name}' : ''}(child${size.value != null ? ', size: ZetaSpacing.${size.name}' : ''})',
+          );
+        });
+        return [...x, null];
       })
-      .expand((e) => e)
+      .expand((element) => element)
       .toList();
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: _spacingExamples.map((e) {
-        return Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(e.description, style: Theme.of(context).textTheme.headlineSmall),
-            const SizedBox(height: 40),
-            Row(
-              children: [
-                Expanded(
-                  child: Container(
-                    color: const Color(0xFFcce2fa),
-                    child: ZetaSpacing(size: e.size ?? x0, type: e.type, child: const SpacingItem()),
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 40),
-            Container(
-              color: const Color(0xFFE9E9E9),
-              padding: const EdgeInsets.all(16),
-              margin: const EdgeInsets.only(left: 16),
-              child: Text(e.code ?? '', style: Theme.of(context).textTheme.bodyMedium),
-            ),
-            const SizedBox(height: 40),
-          ],
-        );
-      }).toList(),
+      children: [..._x.map((e) => e == null ? const Divider() : _TextStyleExample(e)).toList()]..removeLast(),
+    );
+  }
+}
+
+class _SpaceExample extends StatelessWidget {
+  final double size;
+  final ZetaSpacingType type;
+  const _SpaceExample({required this.size, required this.type});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Expanded(
+          child: Container(
+            color: exampleBlue,
+            child: ZetaSpacing(const SpacingItem(), size: size, type: type),
+          ),
+        ),
+      ],
     );
   }
 }
@@ -104,6 +130,41 @@ class SpacingItem extends StatelessWidget {
         border: Border.all(color: const Color(0xFFdddddd), width: 1),
       ),
       child: const Text('Text with some spacing'),
+    );
+  }
+}
+
+class _TextStyleExample extends StatelessWidget {
+  //TODO: Make this reusable for all components
+  final _SpacingExampleModel style;
+  const _TextStyleExample(this.style);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+          height: 7,
+          width: 7,
+          decoration: const BoxDecoration(color: Colors.black, shape: BoxShape.circle),
+        ).squish(ZetaSpacing.x9).inline(ZetaSpacing.x4),
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              CodeExample(code: style.token),
+              Text(style.description).stack(ZetaSpacing.x4),
+              style.wExample,
+              Container(
+                color: Colors.grey,
+              ),
+              CodeExample(code: style.code, fill: true),
+            ],
+          ),
+        ),
+        const SizedBox(height: 7, width: 7).squish(ZetaSpacing.x9).inline(ZetaSpacing.x4),
+      ],
     );
   }
 }

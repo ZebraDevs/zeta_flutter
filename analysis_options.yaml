@@ -154,3 +154,26 @@ linter:
     - always_put_required_named_parameters_first
     - directives_ordering
     - sort_pub_dependencies
+
+analyzer:
+  exclude:
+    - "build/**"
+
+  language:
+    strict-inference: true
+    strict-raw-types: true
+
+  plugins:
+    - dart_code_metrics
+  strong-mode:
+
+dart_code_metrics:
+  extends:
+    - package:dart_code_metrics_presets/all.yaml
+  rules:
+    - prefer-match-file-name: false
+    - prefer-correct-identifier-length: false
+    - avoid-top-level-members-in-tests: false
+    - format-comment:
+        only-doc-comments: true
+    - no-equal-arguments: false

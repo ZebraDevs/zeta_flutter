@@ -35,7 +35,10 @@ jobs:
           dart format . -l 120
           dart fix --apply
           flutter analyze
-          flutter test
+          flutter pub run dart_code_metrics:metrics analyze lib
+          flutter pub run dart_code_metrics:metrics check-unused-code lib
+          flutter pub run dart_code_metrics:metrics check-unused-files lib
+          cd example && flutter test
       - name: Check for modified files
         id: git-check
         run: echo "modified=$(if [ -n "$(git status --porcelain)" ]; then echo "true"; else echo "false"; fi)" >>  $GITHUB_ENV
