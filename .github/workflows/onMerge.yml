@@ -26,7 +26,7 @@ jobs:
           files: |
             **/*.dart
             docs/*
-            pubspec.yaml
+            **/*.yaml
           files_ignore: example/*
   update-version:
     runs-on: ubuntu-latest
@@ -55,7 +55,6 @@ jobs:
           git add -A
           git commit --amend --no-edit
           git push -f
-
   publish-changelog:
     needs: [changes, update-version]
     if: needs.changes.outputs.files == 'true'
@@ -91,6 +90,7 @@ jobs:
       - name: Update changes in zeta-flutter repository
         if: env.modified == 'true'
         run: |
+          git remote set-url origin https://${{ secrets.PAT}}@github.com/zebratechnologies/zeta-flutter.git
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
           git add -A
