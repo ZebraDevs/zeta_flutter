@@ -9,6 +9,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  go_router: ^3.0.5
   google_fonts: ^4.0.3
   widgetbook: ^2.4.1
   widgetbook_models: ^0.0.7
@@ -16,9 +17,9 @@ dependencies:
     path: ../
 
 dev_dependencies:
+  flutter_lints: ^2.0.0
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.0
 
 flutter:
   uses-material-design: true

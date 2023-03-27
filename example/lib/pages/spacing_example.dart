@@ -1,21 +1,9 @@
+// ignore_for_file: public_member_api_docs
+
 import 'package:flutter/material.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
-import '../main.dart';
-
-class _SpacingExampleModel {
-  final Widget wExample;
-  final String description;
-  final String code;
-  final String token;
-
-  const _SpacingExampleModel({
-    required this.wExample,
-    this.description = '',
-    this.code = '',
-    this.token = '',
-  });
-}
+import '../widgets.dart';
 
 class _SizeEx {
   final String name;
@@ -32,6 +20,7 @@ class _TypeEx {
 }
 
 class SpacingExample extends StatelessWidget {
+  static const String name = 'Spacing';
   const SpacingExample({super.key});
 
   static const List<_SizeEx> _sizes = [
@@ -72,14 +61,14 @@ class SpacingExample extends StatelessWidget {
     _TypeEx(name: 'stack', value: ZetaSpacingType.stack, description: 'Adds {0}rem bottom padding.'),
   ];
 
-  static final List<_SpacingExampleModel?> _x = _sizes
+  static final List<ExampleModel?> _x = _sizes
       .map((size) {
         final x = _types.map((type) {
-          return _SpacingExampleModel(
+          return ExampleModel(
             token: r'$spacing.zeta' +
                 (type.value != null ? '.${type.name}' : '') +
                 (size.value != null ? '.${size.name}' : ''),
-            wExample: _SpaceExample(size: size.value ?? 0, type: type.value ?? ZetaSpacingType.square),
+            example: _SpaceExample(size: size.value ?? 0, type: type.value ?? ZetaSpacingType.square),
             description: type.description.replaceAll('{0}', size.value == null ? '0' : (size.value! ~/ 4).toString()),
             code:
                 'ZetaSpacing${type.value != null ? '.${type.name}' : ''}(child${size.value != null ? ', size: ZetaSpacing.${size.name}' : ''})',
@@ -92,9 +81,12 @@ class SpacingExample extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [..._x.map((e) => e == null ? const Divider() : _TextStyleExample(e)).toList()]..removeLast(),
+    return ExampleScaffold(
+      name: name,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [..._x.map((e) => e == null ? const Divider() : ExampleBuilder(e)).toList()]..removeLast(),
+      ),
     );
   }
 }
@@ -127,44 +119,9 @@ class SpacingItem extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.surface,
-        border: Border.all(color: const Color(0xFFdddddd), width: 1),
+        border: Border.all(color: const Color(0xFFdddddd)),
       ),
       child: const Text('Text with some spacing'),
-    );
-  }
-}
-
-class _TextStyleExample extends StatelessWidget {
-  //TODO: Make this reusable for all components
-  final _SpacingExampleModel style;
-  const _TextStyleExample(this.style);
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Container(
-          height: 7,
-          width: 7,
-          decoration: const BoxDecoration(color: Colors.black, shape: BoxShape.circle),
-        ).squish(ZetaSpacing.x9).inline(ZetaSpacing.x4),
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              CodeExample(code: style.token),
-              Text(style.description).stack(ZetaSpacing.x4),
-              style.wExample,
-              Container(
-                color: Colors.grey,
-              ),
-              CodeExample(code: style.code, fill: true),
-            ],
-          ),
-        ),
-        const SizedBox(height: 7, width: 7).squish(ZetaSpacing.x9).inline(ZetaSpacing.x4),
-      ],
     );
   }
 }

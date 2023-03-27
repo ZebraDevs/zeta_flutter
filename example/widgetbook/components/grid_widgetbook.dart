@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart' hide DeviceType;
-import 'package:zeta_flutter/zeta_flutter.dart';
-
 import 'package:zeta_example/pages/grid_example.dart';
+import 'package:zeta_flutter/zeta_flutter.dart';
 
 WidgetbookComponent gridWidgetBook() {
   return WidgetbookComponent(

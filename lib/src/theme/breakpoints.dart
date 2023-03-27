@@ -1,20 +1,6 @@
-// ignore_for_file: unused_element
-// ignore_for_file: prefer-static-class
+// ignore_for_file: unused_field
 
 import 'package:flutter/widgets.dart';
-
-const _mobilePortraitMin = 240;
-const _mobilePortraitMax = 479;
-const _mobileLandscapeMin = 480;
-const _mobileLandscapeMax = 767;
-const _tabletMin = 768;
-const _tabletMax = 991;
-const _desktopMin = 992;
-const _desktopMax = 1279;
-const _desktopLMin = 1280;
-const _desktopLMax = 1439;
-const _desktopXLMin = 1440;
-const _desktopXLMax = 1920;
 
 /// Enum to define device types.
 enum DeviceType {
@@ -46,15 +32,15 @@ extension BreakpointLocal on BoxConstraints {
   /// Returns based on the constrains locally to the widget, rather than the whole screen.
   DeviceType get deviceType {
     final width = maxWidth;
-    if (width <= _mobilePortraitMax) {
+    if (width <= _ZetaBreakpoints._mobilePortraitMax) {
       return DeviceType.mobilePortrait;
-    } else if (width <= _mobileLandscapeMax) {
+    } else if (width <= _ZetaBreakpoints._mobileLandscapeMax) {
       return DeviceType.mobileLandscape;
-    } else if (width <= _tabletMax) {
+    } else if (width <= _ZetaBreakpoints._tabletMax) {
       return DeviceType.tablet;
-    } else if (width <= _desktopMax) {
+    } else if (width <= _ZetaBreakpoints._desktopMax) {
       return DeviceType.desktop;
-    } else if (width <= _desktopLMax) {
+    } else if (width <= _ZetaBreakpoints._desktopLMax) {
       return DeviceType.desktopL;
     } else {
       return DeviceType.desktopXL;
@@ -70,18 +56,34 @@ extension BreakpointFull on BuildContext {
   DeviceType get deviceType {
     final width = MediaQuery.of(this).size.width;
 
-    if (width <= _mobilePortraitMax) {
+    if (width <= _ZetaBreakpoints._mobilePortraitMax) {
       return DeviceType.mobilePortrait;
-    } else if (width <= _mobileLandscapeMax) {
+    } else if (width <= _ZetaBreakpoints._mobileLandscapeMax) {
       return DeviceType.mobileLandscape;
-    } else if (width <= _tabletMax) {
+    } else if (width <= _ZetaBreakpoints._tabletMax) {
       return DeviceType.tablet;
-    } else if (width <= _desktopMax) {
+    } else if (width <= _ZetaBreakpoints._desktopMax) {
       return DeviceType.desktop;
-    } else if (width <= _desktopLMax) {
+    } else if (width <= _ZetaBreakpoints._desktopLMax) {
       return DeviceType.desktopL;
     } else {
       return DeviceType.desktopXL;
     }
   }
+}
+
+//TODO: Determine how best to make this not private.
+class _ZetaBreakpoints {
+  static const _mobilePortraitMin = 240;
+  static const _mobilePortraitMax = 479;
+  static const _mobileLandscapeMin = 480;
+  static const _mobileLandscapeMax = 767;
+  static const _tabletMin = 768;
+  static const _tabletMax = 991;
+  static const _desktopMin = 992;
+  static const _desktopMax = 1279;
+  static const _desktopLMin = 1280;
+  static const _desktopLMax = 1439;
+  static const _desktopXLMin = 1440;
+  static const _desktopXLMax = 1920;
 }

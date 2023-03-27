@@ -2,9 +2,9 @@ import 'package:widgetbook_models/src/devices/device.dart';
 import 'package:widgetbook_models/src/devices/device_size.dart';
 import 'package:widgetbook_models/src/devices/resolution.dart';
 
-/// Collection of Zebra devices
+/// Collection of Zebra devices.
 class Zebra {
-  /// Zebra EC50/EC55
+  /// Zebra EC50/EC55.
   static const Device ec50 = Device.mobile(
     name: 'EC50',
     resolution: Resolution(
@@ -13,7 +13,7 @@ class Zebra {
     ),
   );
 
-  /// Zebra EC30
+  /// Zebra EC30.
   static const Device ec30 = Device.mobile(
     name: 'EC30',
     resolution: Resolution(

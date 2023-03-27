@@ -1,8 +1,11 @@
+// ignore_for_file: public_member_api_docs
+
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:zeta_example/pages/grid_example.dart';
-import 'package:zeta_example/pages/spacing_example.dart';
+import 'package:go_router/go_router.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
+import 'pages/grid_example.dart';
+import 'pages/spacing_example.dart';
+import 'pages/typography_example.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,11 +18,6 @@ class MyApp extends StatefulWidget {
   State<MyApp> createState() => _MyAppState();
 }
 
-final List<Component> components = [
-  Component('Grid', const GridExample()),
-  Component('Spacing', const SpacingExample()),
-];
-
 class Component {
   final String name;
   final Widget page;
@@ -27,79 +25,49 @@ class Component {
   Component(this.name, this.page);
 }
 
+final List<Component> components = [
+  Component(GridExample.name, const GridExample()),
+  Component(SpacingExample.name, const SpacingExample()),
+  Component(TypographyExample.name, const TypographyExample()),
+];
+
 class _MyAppState extends State<MyApp> {
+  final GoRouter router = GoRouter(
+    routes: [
+      GoRoute(
+        path: '/',
+        builder: (_, __) => const Home(),
+        routes: [...components.map((e) => GoRoute(path: e.name, builder: (_, __) => e.page)).toList()],
+      ),
+    ],
+  );
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(title: const Text('Zeta')),
-        body: ListView.builder(
-          itemCount: components.length,
-          itemBuilder: ((context, index) {
-            return ListTile(
-              title: Text(components[index].name),
-              onTap: () => Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (_) => Scaffold(
-                    appBar: AppBar(title: Text(components[index].name)),
-                    body: SelectionArea(
-                      child: Container(
-                        color: Colors.white,
-                        child: SingleChildScrollView(
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: ZetaSpacing.x2, vertical: ZetaSpacing.x6),
-                            child: components[index].page,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            );
-          }),
-        ),
+    return MaterialApp.router(
+      theme: ZetaTheme.zeta,
+      routeInformationParser: router.routeInformationParser,
+      routerDelegate: router.routerDelegate,
+    );
+  }
+}
+
+class Home extends StatelessWidget {
+  const Home({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Zeta')),
+      body: ListView.builder(
+        itemCount: components.length,
+        itemBuilder: (context, index) {
+          return ListTile(
+            title: Text(components[index].name),
+            onTap: () => context.go('/${components[index].name}'),
+          );
+        },
       ),
     );
   }
 }
-
-class CodeExample extends StatelessWidget {
-  final String code;
-  final bool fill;
-  const CodeExample({required this.code, this.fill = false, super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    final widget = Container(
-      color: const Color(0xFFF5F5F5),
-      padding: ZetaSpacing.x4.square,
-      child: Text(code, style: GoogleFonts.ibmPlexMono()),
-    );
-    return (fill
-            ? Row(
-                children: [
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          color: const Color(0xFFE9E9E9),
-                          padding: const EdgeInsets.symmetric(horizontal: ZetaSpacing.x5, vertical: ZetaSpacing.x2),
-                          child: const Text('Flutter'),
-                        ),
-                        Row(
-                          children: [Expanded(child: widget)],
-                        ),
-                      ],
-                    ),
-                  )
-                ],
-              )
-            : widget)
-        .squish(ZetaSpacing.x4);
-  }
-}
-
-const Color exampleBlue = Color(0xCCc0dcf9);
-const Color exampleBlueDark = Color(0xFF7bb7f5);

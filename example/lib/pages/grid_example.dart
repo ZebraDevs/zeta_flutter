@@ -1,131 +1,101 @@
-// ignore_for_file: public_member_api_docs, avoid_positional_boolean_parameters
+// ignore_for_file: public_member_api_docs
 
 import 'package:flutter/material.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
-import '../main.dart';
-
-class GridExampleModel {
-  final double col;
-  final bool noGaps;
-  final int? asymmetric;
-  final String name;
-  final List<Widget>? children;
-  final String? childrenText;
-
-  const GridExampleModel(
-    this.col,
-    this.asymmetric,
-    this.noGaps,
-    this.name, [
-    this.children,
-    this.childrenText,
-  ]);
-}
+import '../widgets.dart';
 
 class GridExample extends StatelessWidget {
-  static const List<GridExampleModel> gridExamples = [
-    GridExampleModel(12, null, false, 'Basic 12 col grid'),
-    GridExampleModel(12, null, true, 'Basic 12 col grid gapless'),
-    GridExampleModel(2, null, false, '2 col grid'),
-    GridExampleModel(4, null, false, '4 col grid'),
-    GridExampleModel(8, null, false, '8 col grid'),
-    GridExampleModel(12, null, false, '12 col grid'),
-    GridExampleModel(16, null, false, '16 col grid'),
-    GridExampleModel(2, null, true, '2 col grid gapless'),
-    GridExampleModel(4, null, true, '4 col grid gapless'),
-    GridExampleModel(8, null, true, '8 col grid gapless'),
-    GridExampleModel(12, null, true, '12 col grid gapless'),
-    GridExampleModel(16, null, true, '16 col grid gapless'),
-    GridExampleModel(12, 11, false, '11 to 1 grid'),
-    GridExampleModel(12, 10, false, '10 to 2 grid'),
-    GridExampleModel(12, 9, false, '9 to 3 grid'),
-    GridExampleModel(12, 8, false, '8 to 4 grid'),
-    GridExampleModel(12, 7, false, '7 to 5 grid'),
-    GridExampleModel(12, 5, false, '5 to 7 grid'),
-    GridExampleModel(12, 4, false, '4 to 8 grid'),
-    GridExampleModel(12, 3, false, '3 to 9 grid'),
-    GridExampleModel(12, 2, false, '2 to 10 grid'),
-    GridExampleModel(12, 1, false, '1 to 11 grid'),
-    GridExampleModel(12, 11, true, '11 to 1 grid gapless'),
-    GridExampleModel(12, 10, true, '10 to 2 grid gapless'),
-    GridExampleModel(12, 9, true, '9 to 3 grid gapless'),
-    GridExampleModel(12, 8, true, '8 to 4 grid gapless'),
-    GridExampleModel(12, 7, true, '7 to 5 grid gapless'),
-    GridExampleModel(12, 5, true, '5 to 7 grid gapless'),
-    GridExampleModel(12, 4, true, '4 to 8 grid gapless'),
-    GridExampleModel(12, 3, true, '3 to 9 grid gapless'),
-    GridExampleModel(12, 2, true, '2 to 10 grid gapless'),
-    GridExampleModel(12, 1, true, '1 to 11 grid gapless'),
-    GridExampleModel(
-      8,
-      null,
-      false,
-      'Hybrid',
-      [
-        GridItem(width: 120),
-        Flexible(child: GridItem()),
-        GridItem(width: 80),
-        Flexible(flex: 2, child: GridItem()),
-        GridItem(width: 76),
-        Flexible(child: GridItem()),
-        Flexible(flex: 3, child: GridItem()),
-        GridItem(width: 40),
-      ],
-      '[GridItem(width: 120), Flexible(child: GridItem()),GridItem(width: 80), Flexible(flex: 2, child: GridItem()), GridItem(width: 76), Flexible(child: GridItem()), Flexible(flex: 3, child: GridItem()), GridItem(width: 40), ]',
-    ),
-    GridExampleModel(
-      8,
-      null,
-      true,
-      'Hybrid gapless',
-      [
-        GridItem(width: 120),
-        Flexible(child: GridItem()),
-        GridItem(width: 80),
-        Flexible(flex: 2, child: GridItem()),
-        GridItem(width: 76),
-        Flexible(child: GridItem()),
-        Flexible(flex: 3, child: GridItem()),
-        GridItem(width: 40),
-      ],
-      '[GridItem(width: 120), Flexible(child: GridItem()),GridItem(width: 80), Flexible(flex: 2, child: GridItem()), GridItem(width: 76), Flexible(child: GridItem()), Flexible(flex: 3, child: GridItem()), GridItem(width: 40), ]',
-    ),
-  ];
-  const GridExample({super.key});
+  static const String name = 'Grid';
 
+  static const List<double?> symmetrical = [null, 2, 4, 8, 16];
+  static const List<bool> noGaps = [false, true];
+  static const List<double> asymmetrical = [11, 10, 9, 8, 7, 5, 4, 3, 2, 1];
+
+  const GridExample({super.key});
   @override
   Widget build(BuildContext context) {
-    final List<Widget> gridItems = List.generate(12, (index) => GridItem(label: index + 1));
+    final List<Widget> gridItems = List.generate(20, (index) => GridItem(label: (index + 1).toString()));
 
-    return Column(
-      children: gridExamples.map((e) {
-        return Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(e.name, style: Theme.of(context).textTheme.headlineSmall),
-            ZetaGrid(
-              col: e.col,
-              noGaps: e.noGaps,
-              asymmetricWeight: e.asymmetric,
-              hybrid: e.children != null,
-              children: e.children != null ? e.children! : gridItems,
+    final List<ExampleModel> examples = [
+      ...symmetrical
+          .map(
+            (col) => noGaps.map(
+              (noGaps) => ExampleModel(
+                example: ZetaGrid(
+                  col: col ?? 12,
+                  noGaps: noGaps,
+                  children: gridItems.getRange(0, (col ?? 12).toInt()).toList(),
+                ),
+                token:
+                    r'$grid.zeta' + (col != null && col != 0 ? '.${col.toInt()}col' : '') + (noGaps ? '.nogaps' : ''),
+                code:
+                    'ZetaGrid(${col != null ? 'col:${col.toInt()}' : ''}${col != null && noGaps ? ', ' : ''}${noGaps ? 'noGaps: true' : ''}${col != null || noGaps ? ', ' : ''}children:[])',
+              ),
             ),
-            CodeExample(
+          )
+          .expand((element) => element)
+          .toList(),
+      ...asymmetrical
+          .map(
+            (col) => noGaps.map(
+              (noGaps) => ExampleModel(
+                example: ZetaGrid(
+                  asymmetricWeight: col.toInt(),
+                  noGaps: noGaps,
+                  children: gridItems.getRange(0, 12).toList(),
+                ),
+                token: r'$grid.zeta' + ('.${col.toInt()}to${(12 - col).toInt()}') + (noGaps ? '.nogaps' : ''),
+                code: 'ZetaGrid(${'asymmetricWeight:${col.toInt()}'}${noGaps ? ', noGaps: true' : ''}, children:[])',
+              ),
+            ),
+          )
+          .expand((element) => element)
+          .toList(),
+      ...noGaps
+          .map(
+            (noGaps) => ExampleModel(
+              example: Column(
+                children: [
+                  ZetaGrid(
+                    noGaps: noGaps,
+                    col: 8,
+                    hybrid: true,
+                    children: const [
+                      GridItem(width: 120),
+                      Flexible(fit: FlexFit.tight, child: GridItem()),
+                      GridItem(width: 80),
+                      Flexible(fit: FlexFit.tight, flex: 2, child: GridItem()),
+                      GridItem(width: 76),
+                      Flexible(fit: FlexFit.tight, child: GridItem()),
+                      Flexible(fit: FlexFit.tight, flex: 3, child: GridItem()),
+                      GridItem(width: 40),
+                    ],
+                  ),
+                ],
+              ),
+              token: r'$grid.zeta.120px.1fr.80px.2fr.76px.1fr.3fr.40px' + (noGaps ? '.nogaps' : ''),
               code:
-                  'ZetaGrid(${e.col != 12 ? 'col:${e.col},' : ''}${e.noGaps ? 'noGaps:true, ' : ''}${e.asymmetric != null ? 'asymmetricWeight:${e.asymmetric}, ' : ''}${e.children != null ? 'hybrid: true, ' : ''}${e.children != null ? 'children:${e.childrenText}, ' : ''})',
+                  'ZetaGrid(\n  col: 8,\n  hybrid: true,\n  ${noGaps ? 'noGaps: true,\n  ' : ''}children:[\n    GridItem(width: 120),\n    Flexible(fit: FlexFit.tight, child: GridItem()),\n    GridItem(width: 80),\n    Flexible(fit: FlexFit.tight, flex: 2, child: GridItem()),\n    GridItem(width: 76),\n    Flexible(fit: FlexFit.tight, child: GridItem()),\n    Flexible(fit: FlexFit.tight, flex: 3, child: GridItem()),\n    GridItem(width: 40),\n  ],\n)',
             ),
-          ],
-        );
-      }).toList(),
+          )
+          .toList()
+    ];
+
+    return ExampleScaffold(
+      name: name,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [...examples.map(ExampleBuilder.new).toList()],
+      ),
     );
   }
 }
 
 class GridItem extends StatelessWidget {
-  final dynamic label;
+  final String label;
   final double? width;
-  const GridItem({this.label, this.width, super.key});
+  const GridItem({this.label = '', this.width, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -133,7 +103,7 @@ class GridItem extends StatelessWidget {
       height: 80,
       width: width,
       decoration: BoxDecoration(border: Border.all(color: exampleBlueDark), color: exampleBlue),
-      child: label != null ? Text(label.toString()) : null,
+      child: ZetaText(label),
     );
   }
 }

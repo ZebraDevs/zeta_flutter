@@ -10,8 +10,10 @@ import 'package:zeta_flutter/zeta_flutter.dart';
 
 ```dart
 import 'package:zeta_flutter/zeta_flutter.dart';
+
 class ZetaSpacingExample extends StatelessWidget{
   const ZetaSpacingExample({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return ZetaSpacing(...);
@@ -26,8 +28,10 @@ To ensure all components work as intended, applications should have ZetaTheme.ze
 ```dart
 import 'package:flutter/material.dart';
 import 'package:zeta_flutter/src/theme/theme.dart';
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -41,11 +45,14 @@ class MyApp extends StatelessWidget {
 or
 
 ```dart
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:zeta_flutter/src/theme/theme.dart';
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Theme(
