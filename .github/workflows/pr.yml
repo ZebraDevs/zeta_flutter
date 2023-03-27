@@ -22,7 +22,7 @@ jobs:
           sha: ${{ github.event.pull_request.head.sha }}
           files: |
             **/*.dart
-            docs/*
+            docs
             pubspec.yaml
   analyze:
     runs-on: ubuntu-latest

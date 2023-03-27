@@ -25,7 +25,7 @@ jobs:
           sha: ${{ github.event.pull_request.head.sha }}
           files: |
             **/*.dart
-            docs/*
+            docs
             **/*.yaml
             **/*.yml
           files_ignore: example/*
@@ -65,6 +65,8 @@ jobs:
       - uses: actions/checkout@v3
         with:
           ref: main
+          fetch-depth: 0
+          persist-credentials: false
       - id: read-version
         uses: NiklasLehnfeld/flutter-version-number-action@main
       - name: Create tag
@@ -118,7 +120,7 @@ jobs:
         with:
           source_file: "docs/"
           destination_repo: "zebratechnologies/zeta"
-          destination_folder: "./docs/components"
+          destination_folder: "./"
           destination_branch: "flutter/${{ steps.read-version.outputs.version-number }}"
           user_email: "github-actions@github.com"
           user_name: "github-actions"
