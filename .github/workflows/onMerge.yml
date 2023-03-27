@@ -27,6 +27,7 @@ jobs:
             **/*.dart
             docs/*
             **/*.yaml
+            **/*.yml
           files_ignore: example/*
   update-version:
     runs-on: ubuntu-latest

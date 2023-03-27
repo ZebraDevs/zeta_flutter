@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 
 import '../../zeta_flutter.dart';
 
-extension _ResponsiveBreak on DeviceType {
+/// Determine whether to show mobile text for heading / display.
+extension ResponsiveBreak on DeviceType {
+  /// Determine whether to show mobile text for heading / display.
   bool get responsiveText {
     return name == 'mobileLandscape' || name == 'mobilePortrait';
   }
