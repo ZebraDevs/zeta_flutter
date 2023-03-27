@@ -19,6 +19,7 @@ WidgetbookComponent textWidgetBook() {
             label: 'Sizes',
             options: const [
               Option(label: 'x3/x4', value: ZetaSpacing.x3),
+              Option(label: 'x3.5/x4', value: ZetaSpacing.x3_5),
               Option(label: 'x4/x5', value: ZetaSpacing.x4),
               Option(label: 'x5/x6', value: ZetaSpacing.x5),
               Option(label: 'x6/x7', value: ZetaSpacing.x6),

@@ -640,7 +640,7 @@ class ZetaText extends StatelessWidget {
 
   /// {@macro zeta-component-text}
   ///
-  /// {@macro zeta-type-label-sm}
+  /// {@macro zeta-type-label-m}
   const ZetaText.labelMedium(
     this.data, {
     this.resetHeight = false,

@@ -16,7 +16,7 @@ class ZetaXExample extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-    return ZetaX(...);
+    return ZetaY(...);
   }
 }
 ```
