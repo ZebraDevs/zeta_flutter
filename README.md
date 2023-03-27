@@ -6,7 +6,7 @@
         <li> Zebra Repo Admin: lwalton </li>
         <li> Zebra Jira Project ID: N/A </li>
         <li> Product: Zebra Design System (Zeta) - Flutter Component Library </li>
-        <li> Topics: no-codeql </li>
+        <li> Topics: no_codeql </li>
     </ul>
 </details>
 
