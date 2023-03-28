@@ -1,3 +1,33 @@
+## [0.0.1+9] - 2023-03-28
+### :memo: Documentation Changes
+- [`fb835a4`](https://github.com/zebratechnologies/zeta-flutter/commit/fb835a43a94945989d5b0793d61894ea807bc745) - Updated spacing and grid documentation and edge cases *(PR [#11](https://github.com/zebratechnologies/zeta-flutter/pull/11) by [@thelukewalton](https://github.com/thelukewalton))*
+- [`2a1cea3`](https://github.com/zebratechnologies/zeta-flutter/commit/2a1cea32d40c324cf36517cf05b5bb705d6eadb3) - Update typography documentation *(PR [#16](https://github.com/zebratechnologies/zeta-flutter/pull/16) by [@thelukewalton](https://github.com/thelukewalton))*
+- [`79683b6`](https://github.com/zebratechnologies/zeta-flutter/commit/79683b6748e650e3bb61789e31e7ab7a7c153f88) - update docs *(PR [#17](https://github.com/zebratechnologies/zeta-flutter/pull/17) by [@thelukewalton](https://github.com/thelukewalton))*
+
+### :flying_saucer: Other Changes
+- [`5a50e46`](https://github.com/zebratechnologies/zeta-flutter/commit/5a50e46f3500a9b186515305514839651576a444) - Update README.md ([#12](https://github.com/zebratechnologies/zeta-flutter/pull/12))
+
+* Update README.md
+
+adding in tag to pass the CodeQL enablement exeption
+
+* [automated commit] lint format and import sort
+
+---------
+
+Co-authored-by: github-actions <github-actions@github.com> *(commit by [@knxp34](https://github.com/knxp34))*
+- [`ffb9596`](https://github.com/zebratechnologies/zeta-flutter/commit/ffb9596ee04456147b87c2c35b3a08e8763bf7c2) - feat(typography) ([#14](https://github.com/zebratechnologies/zeta-flutter/pull/14))
+
+* feat(typogrpahy): Initialising typography components
+
+* feat(typography): Added typography styles, text widget, widgetbook, docs, example app and tests *(commit by [@thelukewalton](https://github.com/thelukewalton))*
+- [`591b757`](https://github.com/zebratechnologies/zeta-flutter/commit/591b7572ebf85da7510a8b6a3f9f8451dc93535a) - inject token to action; *(PR [#15](https://github.com/zebratechnologies/zeta-flutter/pull/15) by [@thelukewalton](https://github.com/thelukewalton))*
+- [`69e6d5d`](https://github.com/zebratechnologies/zeta-flutter/commit/69e6d5da4b681293d0019d8bc143ada6478c1032) - Update README.md
+
+fixed the label *(commit by [@knxp34](https://github.com/knxp34))*
+- [`1dcbcae`](https://github.com/zebratechnologies/zeta-flutter/commit/1dcbcaec2600210efcefc80861c29aaa7e44c27e) - removing hardcoded shas *(PR [#19](https://github.com/zebratechnologies/zeta-flutter/pull/19) by [@thelukewalton](https://github.com/thelukewalton))*
+
+
 ## [0.0.1+8] - 2023-03-27
 ### :memo: Documentation Changes
 - [`fb835a4`](https://github.com/zebratechnologies/zeta-flutter/commit/fb835a43a94945989d5b0793d61894ea807bc745) - Updated spacing and grid documentation and edge cases *(PR [#11](https://github.com/zebratechnologies/zeta-flutter/pull/11) by [@thelukewalton](https://github.com/thelukewalton))*
@@ -85,3 +115,4 @@ adding code example _(commit by [@thelukewalton](https://github.com/thelukewalto
 [0.0.1+5]: https://github.com/zebratechnologies/zeta-flutter/compare/0.0.1+1...0.0.1+5
 
 [0.0.1+8]: https://github.com/zebratechnologies/zeta-flutter/compare/0.0.1+6...0.0.1+8
+[0.0.1+9]: https://github.com/zebratechnologies/zeta-flutter/compare/0.0.1+6...0.0.1+9
