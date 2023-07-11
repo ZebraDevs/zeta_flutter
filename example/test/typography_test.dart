@@ -95,7 +95,7 @@ void main() {
     expect(text2.style?.fontStyle, FontStyle.italic);
     expect(text2.style?.fontWeight, FontWeight.w500);
     expect(text2.style?.color, ZetaColors.textColorSubtle);
-    expect(padding1.padding, ZetaSpacing.x2.squish);
+    expect(padding1.padding, Dimensions.x2.squish);
     expect(padding2.padding, EdgeInsets.zero);
     expect(text3, text4);
   });

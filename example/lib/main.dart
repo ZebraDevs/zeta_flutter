@@ -21,8 +21,8 @@ class MyApp extends StatefulWidget {
 class Component {
   final String name;
   final Widget page;
-
-  Component(this.name, this.page);
+  final List<Component> children;
+  Component(this.name, this.page, [this.children = const []]);
 }
 
 final List<Component> components = [
@@ -37,7 +37,17 @@ class _MyAppState extends State<MyApp> {
       GoRoute(
         path: '/',
         builder: (_, __) => const Home(),
-        routes: [...components.map((e) => GoRoute(path: e.name, builder: (_, __) => e.page)).toList()],
+        routes: [
+          ...components
+              .map(
+                (e) => GoRoute(
+                  path: e.name,
+                  builder: (_, __) => e.page,
+                  routes: e.children.map((f) => GoRoute(path: f.name, builder: (_, __) => f.page)).toList(),
+                ),
+              )
+              .toList()
+        ],
       ),
     ],
   );
@@ -46,8 +56,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       theme: ZetaTheme.zeta,
-      routeInformationParser: router.routeInformationParser,
-      routerDelegate: router.routerDelegate,
+      routerConfig: router,
     );
   }
 }
@@ -57,14 +66,16 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final items = components..sort(((a, b) => a.name.compareTo(b.name)));
+
     return Scaffold(
       appBar: AppBar(title: const Text('Zeta')),
       body: ListView.builder(
-        itemCount: components.length,
+        itemCount: items.length,
         itemBuilder: (context, index) {
           return ListTile(
-            title: Text(components[index].name),
-            onTap: () => context.go('/${components[index].name}'),
+            title: Text(items[index].name),
+            onTap: () => context.go('/${items[index].name}'),
           );
         },
       ),

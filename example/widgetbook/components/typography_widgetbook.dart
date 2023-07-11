@@ -4,6 +4,18 @@ import 'package:zeta_example/pages/typography_example.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 WidgetbookComponent textWidgetBook() {
+  final dedicatedSizes = {
+    'Body small': ZetaText.zetaBodySmall,
+    'Body medium': ZetaText.zetaBodyMedium,
+    'Body large': ZetaText.zetaBodyLarge,
+    'Description': ZetaText.zetaDescription,
+    'Headline small': ZetaText.zetaHeadingSmall,
+    'Headline medium': ZetaText.zetaHeadingMedium,
+    'Headline large': ZetaText.zetaHeadingLarge,
+    'Display small': ZetaText.zetaDisplaySmall,
+    'Display medium': ZetaText.zetaDisplayMedium,
+    'Display large': ZetaText.zetaDisplayLarge,
+  };
   return WidgetbookComponent(
     name: 'Typography',
     useCases: [
@@ -17,19 +29,20 @@ WidgetbookComponent textWidgetBook() {
           exampleText,
           fontSize: context.knobs.options(
             label: 'Sizes',
+            labelBuilder: (p0) => p0 == 14 ? 'x3_5' : 'x${p0! ~/ 4}',
             options: const [
-              Option(label: 'x3/x4', value: ZetaSpacing.x3),
-              Option(label: 'x3.5/x4', value: ZetaSpacing.x3_5),
-              Option(label: 'x4/x5', value: ZetaSpacing.x4),
-              Option(label: 'x5/x6', value: ZetaSpacing.x5),
-              Option(label: 'x6/x7', value: ZetaSpacing.x6),
-              Option(label: 'x7/x8', value: ZetaSpacing.x7),
-              Option(label: 'x8/x9', value: ZetaSpacing.x8),
-              Option(label: 'x9/x10', value: ZetaSpacing.x9),
-              Option(label: 'x10/x11', value: ZetaSpacing.x10),
-              Option(label: 'x11/x12', value: ZetaSpacing.x11),
-              Option(label: 'x12/x13', value: ZetaSpacing.x12),
-              Option(label: 'x13/x14', value: ZetaSpacing.x13),
+              Dimensions.x3,
+              Dimensions.x3_5,
+              Dimensions.x4,
+              Dimensions.x5,
+              Dimensions.x6,
+              Dimensions.x7,
+              Dimensions.x8,
+              Dimensions.x9,
+              Dimensions.x10,
+              Dimensions.x11,
+              Dimensions.x12,
+              Dimensions.x13,
             ],
           ),
         ),
@@ -40,18 +53,8 @@ WidgetbookComponent textWidgetBook() {
           exampleText,
           style: context.knobs.options(
             label: 'Sizes',
-            options: const [
-              Option(label: 'Body small', value: ZetaText.zetaBodySmall),
-              Option(label: 'Body medium', value: ZetaText.zetaBodyMedium),
-              Option(label: 'Body large', value: ZetaText.zetaBodyLarge),
-              Option(label: 'Description', value: ZetaText.zetaDescription),
-              Option(label: 'Headline small', value: ZetaText.zetaHeadingSmall),
-              Option(label: 'Headline medium', value: ZetaText.zetaHeadingMedium),
-              Option(label: 'Headline large', value: ZetaText.zetaHeadingLarge),
-              Option(label: 'Display small', value: ZetaText.zetaDisplaySmall),
-              Option(label: 'Display medium', value: ZetaText.zetaDisplayMedium),
-              Option(label: 'Display large', value: ZetaText.zetaDisplayLarge),
-            ],
+            labelBuilder: (p0) => dedicatedSizes.entries.firstWhere((element) => element.value == p0).key,
+            options: dedicatedSizes.values.toList(),
           ),
         ),
       ),
@@ -72,25 +75,31 @@ class _TextWrapper extends StatelessWidget {
       fontStyle: context.knobs.boolean(label: 'Italic') ? FontStyle.italic : null,
       fontWeight: context.knobs.options(
         label: 'Font Weight',
+        labelBuilder: (p0) => p0 == FontWeight.w400
+            ? 'Default'
+            : p0 == FontWeight.w300
+                ? 'Light'
+                : 'Medium',
         options: const [
-          Option(label: 'Default', value: FontWeight.w400),
-          Option(label: 'Light', value: FontWeight.w300),
-          Option(label: 'Medium', value: FontWeight.w500),
+          FontWeight.w400,
+          FontWeight.w300,
+          FontWeight.w500,
         ],
       ),
       resetHeight: context.knobs.boolean(label: 'Reset height'),
       textColor: context.knobs.options(
         label: 'Text color',
+        labelBuilder: (p0) => p0 == ZetaColors.textColor ? 'Default' : 'Subtle',
         options: const [
-          Option(label: 'Default', value: ZetaColors.textColor),
-          Option(label: 'Subtle', value: ZetaColors.textColorSubtle),
+          ZetaColors.textColor,
+          ZetaColors.textColorSubtle,
         ],
       ),
       textDirection: context.knobs.options(
         label: 'Text direction',
         options: const [
-          Option(label: 'LTR', value: TextDirection.ltr),
-          Option(label: 'RTL', value: TextDirection.rtl),
+          TextDirection.ltr,
+          TextDirection.rtl,
         ],
       ),
       upperCase: context.knobs.boolean(label: 'Upper case'),

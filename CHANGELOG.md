@@ -1,3 +1,8 @@
+## [0.0.1+10] - 2023-07-11
+### :flying_saucer: Other Changes
+- [`6638e94`](https://github.com/zebratechnologies/zeta-flutter/commit/6638e941b4027136c293c403c5c00e051fee5c97) - removing hardcoded shas *(PR [#19](https://github.com/zebratechnologies/zeta-flutter/pull/19) by [@thelukewalton](https://github.com/thelukewalton))*
+
+
 ## [0.0.1+9] - 2023-03-28
 ### :memo: Documentation Changes
 - [`fb835a4`](https://github.com/zebratechnologies/zeta-flutter/commit/fb835a43a94945989d5b0793d61894ea807bc745) - Updated spacing and grid documentation and edge cases *(PR [#11](https://github.com/zebratechnologies/zeta-flutter/pull/11) by [@thelukewalton](https://github.com/thelukewalton))*
@@ -116,3 +121,4 @@ adding code example _(commit by [@thelukewalton](https://github.com/thelukewalto
 
 [0.0.1+8]: https://github.com/zebratechnologies/zeta-flutter/compare/0.0.1+6...0.0.1+8
 [0.0.1+9]: https://github.com/zebratechnologies/zeta-flutter/compare/0.0.1+6...0.0.1+9
+[0.0.1+10]: https://github.com/zebratechnologies/zeta-flutter/compare/0.0.1+9...0.0.1+10

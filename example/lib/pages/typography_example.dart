@@ -72,24 +72,24 @@ class TypographyExample extends StatelessWidget {
   ];
 
   static const Map<String, double> sizes = {
-    'x3': ZetaSpacing.x3,
-    'x3_5': ZetaSpacing.x3_5,
-    'x4': ZetaSpacing.x4,
-    'x5': ZetaSpacing.x5,
-    'x6': ZetaSpacing.x6,
-    'x7': ZetaSpacing.x7,
-    'x8': ZetaSpacing.x8,
-    'x9': ZetaSpacing.x9,
-    'x10': ZetaSpacing.x10,
-    'x11': ZetaSpacing.x11,
-    'x12': ZetaSpacing.x12,
-    'x13': ZetaSpacing.x13,
+    'x3': Dimensions.x3,
+    'x3_5': Dimensions.x3_5,
+    'x4': Dimensions.x4,
+    'x5': Dimensions.x5,
+    'x6': Dimensions.x6,
+    'x7': Dimensions.x7,
+    'x8': Dimensions.x8,
+    'x9': Dimensions.x9,
+    'x10': Dimensions.x10,
+    'x11': Dimensions.x11,
+    'x12': Dimensions.x12,
+    'x13': Dimensions.x13,
   };
   static final List<ExampleModel> universalSizes = sizes.entries.map(
     (size) {
       return ExampleModel(
         example: ZetaText(exampleText, fontSize: size.value),
-        token: size.value == ZetaSpacing.x3_5
+        token: size.value == Dimensions.x3_5
             ? r'$text.zeta.x3_5.x4'
             // ignore: prefer_adjacent_string_concatenation
             : r'$text.zeta.x' + '${size.value ~/ 4}.x${(size.value + 4) ~/ 4}',
@@ -171,14 +171,14 @@ class TypographyExample extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const ZetaText.headingLarge('Text').inline(ZetaSpacing.x10),
+          const ZetaText.headingLarge('Text').inline(Dimensions.x10),
           ...tokens.map(ExampleBuilder.new).toList(),
-          const Divider().squish(ZetaSpacing.x4),
-          const ZetaText.headingLarge('Universal sizes').inline(ZetaSpacing.x10),
+          const Divider().squish(Dimensions.x4),
+          const ZetaText.headingLarge('Universal sizes').inline(Dimensions.x10),
           ...universalSizes.map(ExampleBuilder.new).toList(),
-          const Divider().squish(ZetaSpacing.x4),
-          const ZetaText.headingLarge('Dedicated sizes').inline(ZetaSpacing.x10),
-          ...dedicatedSizes.map(ExampleBuilder.new).toList()
+          const Divider().squish(Dimensions.x4),
+          const ZetaText.headingLarge('Dedicated sizes').inline(Dimensions.x10),
+          ...dedicatedSizes.map(ExampleBuilder.new).toList(),
         ],
       ),
     );

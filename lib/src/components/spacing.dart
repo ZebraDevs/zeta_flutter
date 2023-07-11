@@ -1,5 +1,7 @@
 import 'package:flutter/widgets.dart';
 
+import '../tokens.dart';
+
 /// Spacing types for [ZetaSpacing].
 enum ZetaSpacingType {
   /// {@template zeta-spacing-square}
@@ -47,92 +49,6 @@ enum ZetaSpacingType {
 
 /// Zeta Spacing widget.
 class ZetaSpacing extends StatelessWidget {
-  static const double _space = 4;
-
-  /// 0dp space.
-  static const double x0 = _space * 0;
-
-  /// 4dp space.
-  static const double x1 = _space;
-
-  /// 4dp space.
-  static const double xxs = _space;
-
-  /// 8dp space.
-  static const double x2 = _space * 2;
-
-  /// 8dp space.
-  static const double xs = _space * 2;
-
-  /// 12dp space.
-  static const double x3 = _space * 3;
-
-  /// 12dp space.
-  static const double s = _space * 3;
-
-  /// 14dp space.
-  static const double x3_5 = _space * 3.5;
-
-  /// 16dp space.
-  static const double x4 = _space * 4;
-
-  /// 16dp space.
-  static const double b = _space * 4;
-
-  /// 20dp space.
-  static const double x5 = _space * 5;
-
-  /// 24dp space.
-  static const double x6 = _space * 6;
-
-  /// 24dp space.
-  static const double m = _space * 6;
-
-  /// 28dp space.
-  static const double x7 = _space * 7;
-
-  /// 32dp space.
-  static const double x8 = _space * 8;
-
-  /// 32dp space.
-  static const double l = _space * 8;
-
-  /// 36dp space.
-  static const double x9 = _space * 9;
-
-  /// 40dp space.
-  static const double x10 = _space * 10;
-
-  /// 44dp space.
-  static const double x11 = _space * 11;
-
-  /// 48dp space.
-  static const double x12 = _space * 12;
-
-  /// 52dp Space.
-  static const double x13 = _space * 13;
-
-  /// 56dp Space.
-  static const double x14 = _space * 14;
-
-  /// 64dp space.
-  static const double x16 = _space * 16;
-
-  /// 64dp space.
-  static const double xl = _space * 16;
-
-  /// 80dp space.
-  static const double x20 = _space * 20;
-
-  /// 80dp space.
-  static const double xxl = _space * 20;
-
-  /// 96dp space.
-  static const double x24 = _space * 24;
-
-  /// 96dp space.
-  static const double xxxl = _space * 24;
-
   static const double _mod = 2;
 
   /// Child to be wrapped with spacing insets.
@@ -154,48 +70,49 @@ class ZetaSpacing extends StatelessWidget {
   const ZetaSpacing(
     this.child, {
     this.type = ZetaSpacingType.square,
-    this.size = x0,
+    this.size = Dimensions.x0,
     super.key,
   }) : assert(
-          size % _mod == 0 && size >= 0 && size <= x24,
+          size % _mod == 0 && size >= 0 && size <= Dimensions.x24,
           'Size should be a whole, even number, and be no larger than [x24]',
         );
 
   /// Constructs a [ZetaSpacing] widget with [ZetaSpacingType.square] insets.
   ///
   /// {@macro zeta-spacing-square}
-  const ZetaSpacing.square(this.child, {this.size = x0, super.key}) : type = ZetaSpacingType.square;
+  const ZetaSpacing.square(this.child, {this.size = Dimensions.x0, super.key}) : type = ZetaSpacingType.square;
 
   /// Constructs a [ZetaSpacing] widget with [ZetaSpacingType.squish] insets.
   ///
   /// {@macro zeta-spacing-squish}
-  const ZetaSpacing.squish(this.child, {this.size = x0, super.key}) : type = ZetaSpacingType.squish;
+  const ZetaSpacing.squish(this.child, {this.size = Dimensions.x0, super.key}) : type = ZetaSpacingType.squish;
 
   /// Constructs a [ZetaSpacing] widget with [ZetaSpacingType.stack] insets.
   ///
   /// {@macro zeta-spacing-stack}
-  const ZetaSpacing.stack(this.child, {this.size = x0, super.key}) : type = ZetaSpacingType.stack;
+  const ZetaSpacing.stack(this.child, {this.size = Dimensions.x0, super.key}) : type = ZetaSpacingType.stack;
 
   /// Constructs a [ZetaSpacing] widget with [ZetaSpacingType.inline] insets.
   ///
   /// {@macro zeta-spacing-inline-only}
   ///
   /// {@macro zeta-spacing-inline}
-  const ZetaSpacing.inline(this.child, {this.size = x0, super.key}) : type = ZetaSpacingType.inline;
+  const ZetaSpacing.inline(this.child, {this.size = Dimensions.x0, super.key}) : type = ZetaSpacingType.inline;
 
   /// Constructs a [ZetaSpacing] widget with [ZetaSpacingType.inlineStart] insets.
   ///
   /// {@macro zeta-spacing-inline-start}
   ///
   /// {@macro zeta-spacing-inline}
-  const ZetaSpacing.inlineStart(this.child, {this.size = x0, super.key}) : type = ZetaSpacingType.inlineStart;
+  const ZetaSpacing.inlineStart(this.child, {this.size = Dimensions.x0, super.key})
+      : type = ZetaSpacingType.inlineStart;
 
   /// Constructs a [ZetaSpacing] widget with [ZetaSpacingType.inlineEnd] insets.
   ///
   /// {@macro zeta-spacing-inline-end}
   ///
   /// {@macro zeta-spacing-inline}
-  const ZetaSpacing.inlineEnd(this.child, {this.size = x0, super.key}) : type = ZetaSpacingType.inlineEnd;
+  const ZetaSpacing.inlineEnd(this.child, {this.size = Dimensions.x0, super.key}) : type = ZetaSpacingType.inlineEnd;
 
   @override
   Widget build(BuildContext context) {

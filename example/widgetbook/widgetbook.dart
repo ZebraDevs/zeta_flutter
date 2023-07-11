@@ -15,27 +15,40 @@ class HotReload extends StatelessWidget {
     return Theme(
       data: ZetaTheme.zeta,
       child: Widgetbook.material(
-        categories: [
+        directories: [
           WidgetbookCategory(
             name: 'widgets',
-            widgets: [
+            children: [
               gridWidgetBook(),
               spacingWidgetbook(),
               textWidgetBook(),
             ],
           ),
         ],
-        appInfo: AppInfo(name: 'Zeta Flutter Widgetbook'),
-        themes: [WidgetbookTheme(name: 'Flutter Material Theme', data: ZetaTheme.zeta)],
-        // frames: [], TODO: Add device frames
-        devices: [
-          Desktop.desktop720p,
-          Desktop.desktop1080p,
-          Desktop.desktop1440p,
-          Zebra.ec50,
-          Zebra.ec30,
-          Apple.iPhone13,
-          Apple.iPad9Inch,
+        addons: [
+          DeviceAddon(
+            setting: DeviceSetting(
+              devices: [
+                Desktop.desktop720p,
+                Desktop.desktop1080p,
+                Desktop.desktop1440p,
+                Zebra.ec50,
+                Zebra.ec30,
+                Apple.iPhone13,
+                Apple.iPad9Inch,
+              ],
+              activeDevice: Zebra.ec50,
+            ),
+          ),
+          MaterialThemeAddon(
+            setting: ThemeSetting(
+              themes: [WidgetbookTheme(name: 'Zeta', data: ZetaTheme.zeta)],
+              activeTheme: WidgetbookTheme(
+                name: 'Zeta',
+                data: ZetaTheme.zeta,
+              ),
+            ),
+          ),
         ],
       ),
     );
