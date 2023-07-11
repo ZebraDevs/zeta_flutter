@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../zeta_flutter.dart';
+import '../theme/theme.dart';
+import '../tokens.dart' as tokens;
+import 'spacing.dart';
 
 /// Determine whether to show mobile text for heading / display.
 extension ResponsiveBreak on DeviceType {
@@ -93,11 +95,11 @@ class ZetaText extends StatelessWidget {
   /// * [TextTheme.bodySmall].
   /// {@endtemplate}
   static const TextStyle zetaBodySmall = TextStyle(
-    color: ZetaColors.textColor,
-    fontSize: ZetaSpacing.x3,
+    color: tokens.Typography.text,
+    fontSize: tokens.Dimensions.x3,
     fontWeight: FontWeight.w400,
-    height: ZetaSpacing.x4 / ZetaSpacing.x3,
-    fontFamily: 'packages/zeta_flutter/IBMPlexSans',
+    height: tokens.Dimensions.x4 / tokens.Dimensions.x3,
+    fontFamily: tokens.Typography.fontFamily,
   );
 
   /// {@template zeta-type-body-m}
@@ -109,11 +111,11 @@ class ZetaText extends StatelessWidget {
   /// * [TextTheme.bodyMedium].
   /// {@endtemplate}
   static const TextStyle zetaBodyMedium = TextStyle(
-    color: ZetaColors.textColor,
-    fontSize: ZetaSpacing.x4,
+    color: tokens.Typography.text,
+    fontSize: tokens.Dimensions.x4,
     fontWeight: FontWeight.w400,
-    height: ZetaSpacing.x6 / ZetaSpacing.x4,
-    fontFamily: 'packages/zeta_flutter/IBMPlexSans',
+    height: tokens.Dimensions.x6 / tokens.Dimensions.x4,
+    fontFamily: tokens.Typography.fontFamily,
   );
 
   /// {@template zeta-type-body-l}
@@ -125,11 +127,11 @@ class ZetaText extends StatelessWidget {
   /// * [TextTheme.bodyLarge].
   /// {@endtemplate}
   static const TextStyle zetaBodyLarge = TextStyle(
-    color: ZetaColors.textColor,
-    fontSize: ZetaSpacing.x5,
+    color: tokens.Typography.text,
+    fontSize: tokens.Dimensions.x5,
     fontWeight: FontWeight.w400,
-    height: ZetaSpacing.x7 / ZetaSpacing.x5,
-    fontFamily: 'packages/zeta_flutter/IBMPlexSans',
+    height: tokens.Dimensions.x7 / tokens.Dimensions.x5,
+    fontFamily: tokens.Typography.fontFamily,
   );
 
   /// {@template zeta-type-label-s}
@@ -141,11 +143,11 @@ class ZetaText extends StatelessWidget {
   /// * [TextTheme.labelSmall].
   /// {@endtemplate}
   static const TextStyle zetaLabelSmall = TextStyle(
-    color: ZetaColors.textColor,
-    fontSize: ZetaSpacing.x3,
+    color: tokens.Typography.text,
+    fontSize: tokens.Dimensions.x3,
     fontWeight: FontWeight.w500,
     height: 1,
-    fontFamily: 'packages/zeta_flutter/IBMPlexSans',
+    fontFamily: tokens.Typography.fontFamily,
   );
 
   /// {@template zeta-type-label-m}
@@ -157,11 +159,11 @@ class ZetaText extends StatelessWidget {
   /// * [TextTheme.labelMedium].
   /// {@endtemplate}
   static const TextStyle zetaLabelMedium = TextStyle(
-    color: ZetaColors.textColor,
-    fontSize: ZetaSpacing.x4,
+    color: tokens.Typography.text,
+    fontSize: tokens.Dimensions.x4,
     fontWeight: FontWeight.w500,
     height: 1,
-    fontFamily: 'packages/zeta_flutter/IBMPlexSans',
+    fontFamily: tokens.Typography.fontFamily,
   );
 
   /// {@template zeta-type-label-l}
@@ -173,11 +175,11 @@ class ZetaText extends StatelessWidget {
   /// * [TextTheme.labelLarge].
   /// {@endtemplate}
   static const TextStyle zetaLabelLarge = TextStyle(
-    color: ZetaColors.textColor,
-    fontSize: ZetaSpacing.x5,
+    color: tokens.Typography.text,
+    fontSize: tokens.Dimensions.x5,
     fontWeight: FontWeight.w500,
     height: 1,
-    fontFamily: 'packages/zeta_flutter/IBMPlexSans',
+    fontFamily: tokens.Typography.fontFamily,
   );
 
   /// {@template zeta-type-title-s}
@@ -189,11 +191,11 @@ class ZetaText extends StatelessWidget {
   /// * [TextTheme.titleSmall].
   /// {@endtemplate}
   static const TextStyle zetaTitleSmall = TextStyle(
-    color: ZetaColors.textColor,
-    fontSize: ZetaSpacing.x3,
+    color: tokens.Typography.text,
+    fontSize: tokens.Dimensions.x3,
     fontWeight: FontWeight.w500,
-    height: ZetaSpacing.x4 / ZetaSpacing.x3,
-    fontFamily: 'packages/zeta_flutter/IBMPlexSans',
+    height: tokens.Dimensions.x4 / tokens.Dimensions.x3,
+    fontFamily: tokens.Typography.fontFamily,
   );
 
   /// {@template zeta-type-title-m}
@@ -205,11 +207,11 @@ class ZetaText extends StatelessWidget {
   /// * [TextTheme.titleMedium].
   /// {@endtemplate}
   static const TextStyle zetaTitleMedium = TextStyle(
-    color: ZetaColors.textColor,
-    fontSize: ZetaSpacing.x4,
+    color: tokens.Typography.text,
+    fontSize: tokens.Dimensions.x4,
     fontWeight: FontWeight.w500,
-    height: ZetaSpacing.x5 / ZetaSpacing.x4,
-    fontFamily: 'packages/zeta_flutter/IBMPlexSans',
+    height: tokens.Dimensions.x5 / tokens.Dimensions.x4,
+    fontFamily: tokens.Typography.fontFamily,
   );
 
   /// {@template zeta-type-title-l}
@@ -221,11 +223,11 @@ class ZetaText extends StatelessWidget {
   /// * [TextTheme.titleLarge].
   /// {@endtemplate}
   static const TextStyle zetaTitleLarge = TextStyle(
-    color: ZetaColors.textColor,
-    fontSize: ZetaSpacing.x5,
+    color: tokens.Typography.text,
+    fontSize: tokens.Dimensions.x5,
     fontWeight: FontWeight.w500,
-    height: ZetaSpacing.x5 / ZetaSpacing.x6,
-    fontFamily: 'packages/zeta_flutter/IBMPlexSans',
+    height: tokens.Dimensions.x5 / tokens.Dimensions.x6,
+    fontFamily: tokens.Typography.fontFamily,
   );
 
   /// {@template zeta-type-heading-s}
@@ -237,11 +239,11 @@ class ZetaText extends StatelessWidget {
   /// * [TextTheme.headlineSmall].
   /// {@endtemplate}
   static const TextStyle zetaHeadingSmall = TextStyle(
-    color: ZetaColors.textColor,
-    fontSize: ZetaSpacing.x6,
+    color: tokens.Typography.text,
+    fontSize: tokens.Dimensions.x6,
     fontWeight: FontWeight.w500,
-    height: ZetaSpacing.x7 / ZetaSpacing.x6,
-    fontFamily: 'packages/zeta_flutter/IBMPlexSans',
+    height: tokens.Dimensions.x7 / tokens.Dimensions.x6,
+    fontFamily: tokens.Typography.fontFamily,
   );
 
   /// {@template zeta-type-heading-m}
@@ -253,11 +255,11 @@ class ZetaText extends StatelessWidget {
   /// * [TextTheme.headlineMedium].
   /// {@endtemplate}
   static const TextStyle zetaHeadingMedium = TextStyle(
-    color: ZetaColors.textColor,
-    fontSize: ZetaSpacing.x7,
+    color: tokens.Typography.text,
+    fontSize: tokens.Dimensions.x7,
     fontWeight: FontWeight.w500,
-    height: ZetaSpacing.x8 / ZetaSpacing.x7,
-    fontFamily: 'packages/zeta_flutter/IBMPlexSans',
+    height: tokens.Dimensions.x8 / tokens.Dimensions.x7,
+    fontFamily: tokens.Typography.fontFamily,
   );
 
   /// {@template zeta-type-heading-l}
@@ -268,11 +270,11 @@ class ZetaText extends StatelessWidget {
   /// * [TextTheme.headlineLarge].
   /// {@endtemplate}
   static const TextStyle zetaHeadingLarge = TextStyle(
-    color: ZetaColors.textColor,
-    fontSize: ZetaSpacing.x8,
+    color: tokens.Typography.text,
+    fontSize: tokens.Dimensions.x8,
     fontWeight: FontWeight.w500,
-    height: ZetaSpacing.x9 / ZetaSpacing.x8,
-    fontFamily: 'packages/zeta_flutter/IBMPlexSans',
+    height: tokens.Dimensions.x9 / tokens.Dimensions.x8,
+    fontFamily: tokens.Typography.fontFamily,
   );
 
   /// {@template zeta-type-display-s}
@@ -284,11 +286,11 @@ class ZetaText extends StatelessWidget {
   /// * [TextTheme.displaySmall].
   /// {@endtemplate}
   static const TextStyle zetaDisplaySmall = TextStyle(
-    color: ZetaColors.textColor,
-    fontSize: ZetaSpacing.x9,
+    color: tokens.Typography.text,
+    fontSize: tokens.Dimensions.x9,
     fontWeight: FontWeight.w300,
-    height: ZetaSpacing.x9 / ZetaSpacing.x10,
-    fontFamily: 'packages/zeta_flutter/IBMPlexSans',
+    height: tokens.Dimensions.x9 / tokens.Dimensions.x10,
+    fontFamily: tokens.Typography.fontFamily,
   );
 
   /// {@template  zeta-type-display-m}
@@ -300,11 +302,11 @@ class ZetaText extends StatelessWidget {
   /// * [TextTheme.displayMedium].
   /// {@endtemplate}
   static const TextStyle zetaDisplayMedium = TextStyle(
-    color: ZetaColors.textColor,
-    fontSize: ZetaSpacing.x11,
+    color: tokens.Typography.text,
+    fontSize: tokens.Dimensions.x11,
     fontWeight: FontWeight.w300,
-    height: ZetaSpacing.x12 / ZetaSpacing.x11,
-    fontFamily: 'packages/zeta_flutter/IBMPlexSans',
+    height: tokens.Dimensions.x12 / tokens.Dimensions.x11,
+    fontFamily: tokens.Typography.fontFamily,
   );
 
   /// {@template  zeta-type-display-l}
@@ -315,11 +317,11 @@ class ZetaText extends StatelessWidget {
   /// * [TextTheme.displayLarge].
   /// {@endtemplate}
   static const TextStyle zetaDisplayLarge = TextStyle(
-    color: ZetaColors.textColor,
-    fontSize: ZetaSpacing.x13,
+    color: tokens.Typography.text,
+    fontSize: tokens.Dimensions.x13,
     fontWeight: FontWeight.w300,
-    height: ZetaSpacing.x14 / ZetaSpacing.x13,
-    fontFamily: 'packages/zeta_flutter/IBMPlexSans',
+    height: tokens.Dimensions.x14 / tokens.Dimensions.x13,
+    fontFamily: tokens.Typography.fontFamily,
   );
 
   /// {@template zeta-type-description}
@@ -330,66 +332,66 @@ class ZetaText extends StatelessWidget {
   /// Used for UI components and UI content design.
   /// {@endtemplate}
   static const TextStyle zetaDescription = TextStyle(
-    color: ZetaColors.textColor,
-    fontSize: ZetaSpacing.x3_5,
+    color: tokens.Typography.text,
+    fontSize: tokens.Dimensions.x3_5,
     fontWeight: FontWeight.w500,
-    height: ZetaSpacing.x4 / ZetaSpacing.x3_5,
-    fontFamily: 'packages/zeta_flutter/IBMPlexSans',
+    height: tokens.Dimensions.x4 / tokens.Dimensions.x3_5,
+    fontFamily: tokens.Typography.fontFamily,
   );
 
   /// {@macro zeta-type-responsive}
   ///
   /// {@macro zeta-type-heading-s}
   static const TextStyle zetaHeadingSmallResponsive = TextStyle(
-    color: ZetaColors.textColor,
-    fontSize: ZetaSpacing.x5,
+    color: tokens.Typography.text,
+    fontSize: tokens.Dimensions.x5,
     fontWeight: FontWeight.w500,
-    height: ZetaSpacing.x6 / ZetaSpacing.x5,
-    fontFamily: 'packages/zeta_flutter/IBMPlexSans',
+    height: tokens.Dimensions.x6 / tokens.Dimensions.x5,
+    fontFamily: tokens.Typography.fontFamily,
   );
 
   /// {@macro zeta-type-responsive}
   ///
   /// {@macro zeta-type-heading-m}
   static const TextStyle zetaHeadingMediumResponsive = TextStyle(
-    color: ZetaColors.textColor,
-    fontSize: ZetaSpacing.x6,
+    color: tokens.Typography.text,
+    fontSize: tokens.Dimensions.x6,
     fontWeight: FontWeight.w500,
-    height: ZetaSpacing.x7 / ZetaSpacing.x6,
-    fontFamily: 'packages/zeta_flutter/IBMPlexSans',
+    height: tokens.Dimensions.x7 / tokens.Dimensions.x6,
+    fontFamily: tokens.Typography.fontFamily,
   );
 
   /// {@macro zeta-type-responsive}
   ///
   /// {@macro zeta-type-heading-l}
   static const TextStyle zetaHeadingLargeResponsive = TextStyle(
-    color: ZetaColors.textColor,
-    fontSize: ZetaSpacing.x7,
+    color: tokens.Typography.text,
+    fontSize: tokens.Dimensions.x7,
     fontWeight: FontWeight.w500,
-    height: ZetaSpacing.x8 / ZetaSpacing.x7,
-    fontFamily: 'packages/zeta_flutter/IBMPlexSans',
+    height: tokens.Dimensions.x8 / tokens.Dimensions.x7,
+    fontFamily: tokens.Typography.fontFamily,
   );
 
   /// {@macro zeta-type-responsive}
   ///
   /// {@macro zeta-type-display-s}
   static const TextStyle zetaDisplaySmallResponsive = TextStyle(
-    color: ZetaColors.textColor,
-    fontSize: ZetaSpacing.x8,
+    color: tokens.Typography.text,
+    fontSize: tokens.Dimensions.x8,
     fontWeight: FontWeight.w300,
-    height: ZetaSpacing.x9 / ZetaSpacing.x8,
-    fontFamily: 'packages/zeta_flutter/IBMPlexSans',
+    height: tokens.Dimensions.x9 / tokens.Dimensions.x8,
+    fontFamily: tokens.Typography.fontFamily,
   );
 
   /// {@macro zeta-type-responsive}
   ///
   /// {@macro zeta-type-display-m}
   static const TextStyle zetaDisplayMediumResponsive = TextStyle(
-    color: ZetaColors.textColor,
-    fontSize: ZetaSpacing.x9,
+    color: tokens.Typography.text,
+    fontSize: tokens.Dimensions.x9,
     fontWeight: FontWeight.w300,
-    height: ZetaSpacing.x10 / ZetaSpacing.x9,
-    fontFamily: 'packages/zeta_flutter/IBMPlexSans',
+    height: tokens.Dimensions.x10 / tokens.Dimensions.x9,
+    fontFamily: tokens.Typography.fontFamily,
   );
 
   /// {@template zeta-type-responsive}
@@ -398,11 +400,11 @@ class ZetaText extends StatelessWidget {
   ///
   /// {@macro zeta-type-display-l}
   static const TextStyle zetaDisplayLargeResponsive = TextStyle(
-    color: ZetaColors.textColor,
-    fontSize: ZetaSpacing.x11,
+    color: tokens.Typography.text,
+    fontSize: tokens.Dimensions.x11,
     fontWeight: FontWeight.w300,
-    height: ZetaSpacing.x12 / ZetaSpacing.x11,
-    fontFamily: 'packages/zeta_flutter/IBMPlexSans',
+    height: tokens.Dimensions.x12 / tokens.Dimensions.x11,
+    fontFamily: tokens.Typography.fontFamily,
   );
 
   /// Gets approximate char width based on width of O in IBM Plex Sans
@@ -411,7 +413,7 @@ class ZetaText extends StatelessWidget {
   static double ch({double multiplier = _defaultChMultiplier, TextStyle style = zetaBodyMedium}) {
     const plexCh = 0.6;
 
-    return multiplier * plexCh * (style.fontSize ?? ZetaSpacing.x3);
+    return multiplier * plexCh * (style.fontSize ?? tokens.Dimensions.x3);
   }
 
   /// The text to be displayed.
@@ -506,7 +508,7 @@ class ZetaText extends StatelessWidget {
     this.data, {
     this.style = ZetaText.zetaBodyMedium,
     this.resetHeight = false,
-    this.textColor = ZetaColors.textColor,
+    this.textColor = tokens.Typography.text,
     this.fontSize,
     this.maxWidth,
     this.fontWeight,
@@ -520,21 +522,21 @@ class ZetaText extends StatelessWidget {
   });
 
   EdgeInsets get _padding {
-    if (resetHeight || first && last) return ZetaSpacing.x0.squish;
+    if (resetHeight || first && last) return tokens.Dimensions.x0.squish;
 
     return EdgeInsets.only(
-      top: first ? ZetaSpacing.x0 : ZetaSpacing.x2,
-      bottom: last ? ZetaSpacing.x0 : ZetaSpacing.x2,
+      top: first ? tokens.Dimensions.x0 : tokens.Dimensions.x2,
+      bottom: last ? tokens.Dimensions.x0 : tokens.Dimensions.x2,
     );
   }
 
   double? get _fontSize {
     if (fontSize == null) return null;
-    if (fontSize == ZetaSpacing.x3_5) {
-      return ZetaSpacing.x4 / ZetaSpacing.x3_5;
+    if (fontSize == tokens.Dimensions.x3_5) {
+      return tokens.Dimensions.x4 / tokens.Dimensions.x3_5;
     }
 
-    return ((fontSize ?? 1) + ZetaSpacing.x1) / (fontSize ?? 1);
+    return ((fontSize ?? 1) + tokens.Dimensions.x1) / (fontSize ?? 1);
   }
 
   @override
@@ -575,7 +577,7 @@ class ZetaText extends StatelessWidget {
     this.fontWeight,
     this.first = false,
     this.last = false,
-    this.textColor = ZetaColors.textColor,
+    this.textColor = tokens.Typography.text,
     this.textDirection = TextDirection.ltr,
     this.upperCase = false,
     super.key,
@@ -593,7 +595,7 @@ class ZetaText extends StatelessWidget {
     this.fontWeight,
     this.first = false,
     this.last = false,
-    this.textColor = ZetaColors.textColor,
+    this.textColor = tokens.Typography.text,
     this.textDirection = TextDirection.ltr,
     this.upperCase = false,
     this.maxWidth,
@@ -612,7 +614,7 @@ class ZetaText extends StatelessWidget {
     this.fontWeight,
     this.first = false,
     this.last = false,
-    this.textColor = ZetaColors.textColor,
+    this.textColor = tokens.Typography.text,
     this.textDirection = TextDirection.ltr,
     this.upperCase = false,
     this.maxWidth,
@@ -631,7 +633,7 @@ class ZetaText extends StatelessWidget {
     this.fontWeight,
     this.first = false,
     this.last = false,
-    this.textColor = ZetaColors.textColor,
+    this.textColor = tokens.Typography.text,
     this.textDirection = TextDirection.ltr,
     this.upperCase = false,
     super.key,
@@ -650,7 +652,7 @@ class ZetaText extends StatelessWidget {
     this.fontWeight,
     this.first = false,
     this.last = false,
-    this.textColor = ZetaColors.textColor,
+    this.textColor = tokens.Typography.text,
     this.textDirection = TextDirection.ltr,
     this.upperCase = false,
     this.maxWidth,
@@ -669,7 +671,7 @@ class ZetaText extends StatelessWidget {
     this.fontWeight,
     this.first = false,
     this.last = false,
-    this.textColor = ZetaColors.textColor,
+    this.textColor = tokens.Typography.text,
     this.textDirection = TextDirection.ltr,
     this.upperCase = false,
     this.maxWidth,
@@ -688,7 +690,7 @@ class ZetaText extends StatelessWidget {
     this.fontWeight,
     this.first = false,
     this.last = false,
-    this.textColor = ZetaColors.textColor,
+    this.textColor = tokens.Typography.text,
     this.textDirection = TextDirection.ltr,
     this.upperCase = false,
     this.maxWidth,
@@ -707,7 +709,7 @@ class ZetaText extends StatelessWidget {
     this.fontWeight,
     this.first = false,
     this.last = false,
-    this.textColor = ZetaColors.textColor,
+    this.textColor = tokens.Typography.text,
     this.textDirection = TextDirection.ltr,
     this.upperCase = false,
     this.maxWidth,
@@ -726,7 +728,7 @@ class ZetaText extends StatelessWidget {
     this.fontWeight,
     this.first = false,
     this.last = false,
-    this.textColor = ZetaColors.textColor,
+    this.textColor = tokens.Typography.text,
     this.textDirection = TextDirection.ltr,
     this.upperCase = false,
     this.maxWidth,
@@ -745,7 +747,7 @@ class ZetaText extends StatelessWidget {
     this.fontWeight,
     this.first = false,
     this.last = false,
-    this.textColor = ZetaColors.textColor,
+    this.textColor = tokens.Typography.text,
     this.textDirection = TextDirection.ltr,
     this.upperCase = false,
     this.maxWidth,
@@ -763,7 +765,7 @@ class ZetaText extends StatelessWidget {
     this.fontWeight,
     this.first = false,
     this.last = false,
-    this.textColor = ZetaColors.textColor,
+    this.textColor = tokens.Typography.text,
     this.textDirection = TextDirection.ltr,
     this.upperCase = false,
     this.resetHeight = false,
@@ -783,7 +785,7 @@ class ZetaText extends StatelessWidget {
     this.fontWeight,
     this.first = false,
     this.last = false,
-    this.textColor = ZetaColors.textColor,
+    this.textColor = tokens.Typography.text,
     this.textDirection = TextDirection.ltr,
     this.upperCase = false,
     this.maxWidth,
@@ -802,7 +804,7 @@ class ZetaText extends StatelessWidget {
     this.fontWeight,
     this.first = false,
     this.last = false,
-    this.textColor = ZetaColors.textColor,
+    this.textColor = tokens.Typography.text,
     this.textDirection = TextDirection.ltr,
     this.upperCase = false,
     this.maxWidth,
@@ -821,7 +823,7 @@ class ZetaText extends StatelessWidget {
     this.fontWeight,
     this.first = false,
     this.last = false,
-    this.textColor = ZetaColors.textColor,
+    this.textColor = tokens.Typography.text,
     this.textDirection = TextDirection.ltr,
     this.upperCase = false,
     this.maxWidth,
@@ -839,7 +841,7 @@ class ZetaText extends StatelessWidget {
     this.fontWeight,
     this.first = false,
     this.last = false,
-    this.textColor = ZetaColors.textColor,
+    this.textColor = tokens.Typography.text,
     this.textDirection = TextDirection.ltr,
     this.upperCase = false,
     this.resetHeight = false,
@@ -858,7 +860,7 @@ class ZetaText extends StatelessWidget {
     this.fontWeight,
     this.first = false,
     this.last = false,
-    this.textColor = ZetaColors.textColor,
+    this.textColor = tokens.Typography.text,
     this.textDirection = TextDirection.ltr,
     this.upperCase = false,
     this.resetHeight = false,

@@ -37,7 +37,7 @@ class ExampleBuilder extends StatelessWidget {
           height: 7,
           width: 7,
           decoration: const BoxDecoration(color: Colors.black, shape: BoxShape.circle),
-        ).squish(ZetaSpacing.x9).inline(ZetaSpacing.x4),
+        ).squish(Dimensions.x9).inline(Dimensions.x4),
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -51,7 +51,7 @@ class ExampleBuilder extends StatelessWidget {
             ],
           ),
         ),
-        const SizedBox(height: 7, width: 7).squish(ZetaSpacing.x9).inline(ZetaSpacing.x4),
+        const SizedBox(height: 7, width: 7).squish(Dimensions.x9).inline(Dimensions.x4),
       ],
     );
   }
@@ -60,19 +60,27 @@ class ExampleBuilder extends StatelessWidget {
 class ExampleScaffold extends StatelessWidget {
   final String name;
   final Widget child;
+  final List<Widget> actions;
+  final Color backgroundColor;
 
-  const ExampleScaffold({required this.name, required this.child, super.key});
+  const ExampleScaffold({
+    required this.name,
+    required this.child,
+    this.actions = const [],
+    this.backgroundColor = Colors.white,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(name)),
+      appBar: AppBar(title: Text(name), actions: actions),
       body: SelectionArea(
         child: Container(
-          color: Colors.white,
+          color: backgroundColor,
           child: SingleChildScrollView(
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: ZetaSpacing.x2, vertical: ZetaSpacing.x6),
+              padding: const EdgeInsets.symmetric(horizontal: Dimensions.x1, vertical: Dimensions.x6),
               child: child,
             ),
           ),
@@ -91,7 +99,7 @@ class CodeExample extends StatelessWidget {
   Widget build(BuildContext context) {
     final widget = Container(
       color: const Color(0xFFF5F5F5),
-      padding: ZetaSpacing.x4.square,
+      padding: Dimensions.x4.square,
       child: Text(code, style: GoogleFonts.ibmPlexMono()),
     );
 
@@ -102,20 +110,33 @@ class CodeExample extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Container(
-                          color: const Color(0xFFE9E9E9),
-                          padding: const EdgeInsets.symmetric(horizontal: ZetaSpacing.x5, vertical: ZetaSpacing.x2),
-                          child: const ZetaText('Flutter'),
-                        ),
-                        Row(
-                          children: [Expanded(child: widget)],
-                        ),
+                        const FlutterWordMark(),
+                        Row(children: [Expanded(child: widget)]),
                       ],
                     ),
                   )
                 ],
               )
             : widget)
-        .squish(ZetaSpacing.x4);
+        .squish(Dimensions.x4);
+  }
+}
+
+class FlutterWordMark extends StatelessWidget {
+  final String text;
+  final EdgeInsets padding;
+  const FlutterWordMark({
+    this.text = 'Flutter',
+    this.padding = const EdgeInsets.symmetric(horizontal: Dimensions.x5, vertical: Dimensions.x2),
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: const Color(0xFFE9E9E9),
+      padding: padding,
+      child: ZetaText(text),
+    );
   }
 }

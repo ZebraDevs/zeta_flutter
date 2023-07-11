@@ -3,15 +3,25 @@ import 'package:widgetbook/widgetbook.dart' hide DeviceType;
 import 'package:zeta_example/pages/spacing_example.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
-const List<Option<ZetaSpacingType>> typeSelector = [
-  Option(label: 'Square', value: ZetaSpacingType.square),
-  Option(label: 'Squish', value: ZetaSpacingType.squish),
-  Option(label: 'Inline', value: ZetaSpacingType.inline),
-  Option(label: 'Inline Start', value: ZetaSpacingType.inlineStart),
-  Option(label: 'Inline End', value: ZetaSpacingType.inlineEnd),
-  Option(label: 'Stack', value: ZetaSpacingType.stack),
+const List<ZetaSpacingType> typeSelector = [
+  ZetaSpacingType.square,
+  ZetaSpacingType.squish,
+  ZetaSpacingType.inline,
+  ZetaSpacingType.inlineStart,
+  ZetaSpacingType.inlineEnd,
+  ZetaSpacingType.stack,
 ];
 WidgetbookComponent spacingWidgetbook() {
+  final tShirtSizes = {
+    'xxs': Dimensions.xxs,
+    'xs': Dimensions.xs,
+    's': Dimensions.s,
+    'm': Dimensions.m,
+    'l': Dimensions.l,
+    'xl': Dimensions.xl,
+    'xxl': Dimensions.xxl,
+    'xxxl': Dimensions.xxxl,
+  };
   return WidgetbookComponent(
     name: 'Spacing',
     useCases: [
@@ -27,23 +37,24 @@ WidgetbookComponent spacingWidgetbook() {
                     const SpacingItem(),
                     size: context.knobs.options(
                       label: 'Size',
+                      labelBuilder: (p0) => 'x${p0 ~/ 4}',
                       options: const [
-                        Option(label: 'x0', value: ZetaSpacing.x0),
-                        Option(label: 'x1', value: ZetaSpacing.x1),
-                        Option(label: 'x2', value: ZetaSpacing.x2),
-                        Option(label: 'x3', value: ZetaSpacing.x3),
-                        Option(label: 'x4', value: ZetaSpacing.x3),
-                        Option(label: 'x5', value: ZetaSpacing.x4),
-                        Option(label: 'x6', value: ZetaSpacing.x5),
-                        Option(label: 'x7', value: ZetaSpacing.x6),
-                        Option(label: 'x8', value: ZetaSpacing.x7),
-                        Option(label: 'x9', value: ZetaSpacing.x8),
-                        Option(label: 'x10', value: ZetaSpacing.x9),
-                        Option(label: 'x11', value: ZetaSpacing.x10),
-                        Option(label: 'x12', value: ZetaSpacing.x12),
-                        Option(label: 'x16', value: ZetaSpacing.x16),
-                        Option(label: 'x20', value: ZetaSpacing.x20),
-                        Option(label: 'x24', value: ZetaSpacing.x24),
+                        Dimensions.x0,
+                        Dimensions.x1,
+                        Dimensions.x2,
+                        Dimensions.x3,
+                        Dimensions.x3,
+                        Dimensions.x4,
+                        Dimensions.x5,
+                        Dimensions.x6,
+                        Dimensions.x7,
+                        Dimensions.x8,
+                        Dimensions.x9,
+                        Dimensions.x10,
+                        Dimensions.x12,
+                        Dimensions.x16,
+                        Dimensions.x20,
+                        Dimensions.x24,
                       ],
                     ),
                     type: context.knobs.options(label: 'Spacing Type', options: typeSelector),
@@ -66,16 +77,8 @@ WidgetbookComponent spacingWidgetbook() {
                     const SpacingItem(),
                     size: context.knobs.options(
                       label: 'Size',
-                      options: const [
-                        Option(label: 'xxs', value: ZetaSpacing.xxs),
-                        Option(label: 'xs', value: ZetaSpacing.xs),
-                        Option(label: 's', value: ZetaSpacing.s),
-                        Option(label: 'm', value: ZetaSpacing.m),
-                        Option(label: 'l', value: ZetaSpacing.l),
-                        Option(label: 'xl', value: ZetaSpacing.xl),
-                        Option(label: 'xxl', value: ZetaSpacing.xxl),
-                        Option(label: 'xxxl', value: ZetaSpacing.xxxl),
-                      ],
+                      labelBuilder: (p0) => tShirtSizes.entries.firstWhere((element) => element.value == p0).key,
+                      options: tShirtSizes.values.toList(),
                     ),
                     type: context.knobs.options(label: 'Spacing Type', options: typeSelector),
                   ),

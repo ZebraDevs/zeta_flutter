@@ -104,19 +104,19 @@ Spacing components can be used in multiple ways:
 ```dart
 const ZetaSpacing.square(
    Text('Example'),
-   size: ZetaSpacing.x1,
+   size: Dimensions.x1,
 ),
 const ZetaSpacing.squish(
   Text('Example'),
-  size: ZetaSpacing.x1,
+  size: Dimensions.x1,
 ),
 const ZetaSpacing.stack(
   Text('Example'),
-  size: ZetaSpacing.x1,
+  size: Dimensions.x1,
 )
 const ZetaSpacing.inline(
   Text('Example'),
-  size: ZetaSpacing.x1,
+  size: Dimensions.x1,
 )
 ```
 
@@ -133,22 +133,22 @@ This is the preferred way to use ZetaSpacing. Having a const, named constructor 
 ```dart
 const ZetaSpacing(
   Text('Example'),
-  size: ZetaSpacing.x1,
+  size: Dimensions.x1,
   type: ZetaSpacingType.square,
 ),
 const ZetaSpacing(
   Text('Example'),
-  size: ZetaSpacing.x1,
+  size: Dimensions.x1,
   type: ZetaSpacingType.squish,
 ),
 const ZetaSpacing(
   Text('Example'),
-  size: ZetaSpacing.x1,
+  size: Dimensions.x1,
   type: ZetaSpacingType.stack,
 ),
 const ZetaSpacing(
   Text('Example'),
-  size: ZetaSpacing.x1,
+  size: Dimensions.x1,
   type: ZetaSpacingType.inline,
 ),
 ```
@@ -165,13 +165,13 @@ This method is less intuitive than using the named constructor, although it does
 
 ```dart
 Container(
-  padding: ZetaSpacing.x1.square,
-  margin: ZetaSpacing.x10.squish,
+  padding: Dimensions.x1.square,
+  margin: Dimensions.x10.squish,
   child: Text('Example'),
 ),
 Container(
-  padding: ZetaSpacing.x1.stack,
-  margin: ZetaSpacing.x10.inline,
+  padding: Dimensions.x1.stack,
+  margin: Dimensions.x10.inline,
   child: Text('Example'),
 ),
 ```
@@ -185,12 +185,12 @@ Container(
 ### SpacingWidget extension on Widget.
 
 ```dart
-Text('Example').square(ZetaSpacing.x1),
-Text('Example').squish(ZetaSpacing.x1),
-Text('Example').stack(ZetaSpacing.x1),
-Text('Example').inline(ZetaSpacing.x1),
-Text('Example').inlineStart(ZetaSpacing.x1),
-Text('Example').inlineEnd(ZetaSpacing.x1),
+Text('Example').square(Dimensions.x1),
+Text('Example').squish(Dimensions.x1),
+Text('Example').stack(Dimensions.x1),
+Text('Example').inline(Dimensions.x1),
+Text('Example').inlineStart(Dimensions.x1),
+Text('Example').inlineEnd(Dimensions.x1),
 ```
 
 - Should be used with defined sizes: x0, x1,... or xxs, xs,... (although can be used on any double).

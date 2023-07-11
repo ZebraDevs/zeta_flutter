@@ -1,21 +1,19 @@
 import 'package:flutter/material.dart';
-import '../../zeta_flutter.dart';
+
+import '../theme/breakpoints.dart';
+import '../tokens.dart' as tokens;
 
 import '../utils/extensions.dart';
 
 extension _Spacing on DeviceType {
-  static const _mobilePortraitCount = 2;
-  static const _mobileLandscapeCount = 4;
-  static const _tabletCount = 8;
-
-  num crossAxisCount(num col) {
+  num maxCrossAxisCount(num col) {
     switch (this) {
       case DeviceType.mobilePortrait:
-        return _mobilePortraitCount;
+        return tokens.Grid.mobilePortraitCount;
       case DeviceType.mobileLandscape:
-        return _mobileLandscapeCount;
+        return tokens.Grid.mobileLandscapeCount;
       case DeviceType.tablet:
-        return col == ZetaGrid.maxCols ? _tabletCount : col;
+        return col == tokens.Grid.maxCols ? tokens.Grid.tabletCount : col;
       case DeviceType.desktop:
       case DeviceType.desktopL:
       case DeviceType.desktopXL:
@@ -27,27 +25,18 @@ extension _Spacing on DeviceType {
     switch (this) {
       case DeviceType.mobilePortrait:
       case DeviceType.mobileLandscape:
-        return ZetaSpacing.x2;
+        return tokens.Dimensions.x2;
       case DeviceType.tablet:
       case DeviceType.desktop:
       case DeviceType.desktopL:
       case DeviceType.desktopXL:
-        return col == ZetaGrid.maxCols ? ZetaSpacing.x3 : ZetaSpacing.x4;
+        return col == tokens.Grid.maxCols ? tokens.Dimensions.x3 : tokens.Dimensions.x4;
     }
   }
 }
 
 /// Zeta Grid.
 class ZetaGrid extends StatelessWidget {
-  /// Maximum number of cols that can be displayed.
-  static const double maxCols = 16;
-
-  /// Default number of cols.
-  static const double defaultCols = 12;
-
-  /// Default margin for grid component.
-  static const double gridMargin = ZetaSpacing.x6;
-
   /// Number of columns in grid. Should be an even number between 2 and 16, although values above 12 should be used sparingly.
   ///
   /// Defaults to 12.
@@ -78,25 +67,30 @@ class ZetaGrid extends StatelessWidget {
   /// Constructs a [ZetaGrid].
   const ZetaGrid({
     required this.children,
-    this.col = ZetaGrid.defaultCols,
+    this.col = tokens.Grid.defaultCols,
     this.noGaps = false,
     this.asymmetricWeight,
     this.hybrid = false,
     super.key,
   }) : assert(
-          asymmetricWeight == null || (asymmetricWeight > 0 && asymmetricWeight < defaultCols),
+          asymmetricWeight == null || (asymmetricWeight > 0 && asymmetricWeight < tokens.Grid.defaultCols),
           'If defined, asymmetricWeight should be in the range 1-11',
         );
+
+  /// Util to return the smaller of 2 values.
+  num returnSmaller(num in1, num in2) {
+    return in1 > in2 ? in2 : in1;
+  }
 
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
         final DeviceType deviceType = constraints.deviceType;
-        final crossAxisCount = deviceType.crossAxisCount(col);
+        final crossAxisCount = returnSmaller(deviceType.maxCrossAxisCount(col), col);
         final divider = (children.length / crossAxisCount).ceil();
         final List<Widget> rows = [];
-        final double gutterSize = noGaps ? ZetaSpacing.x0 : deviceType.axisSpacing(col);
+        final double gutterSize = noGaps ? tokens.Dimensions.x0 : deviceType.axisSpacing(col);
         final Widget gutter = SizedBox(width: gutterSize, height: gutterSize);
         final Widget widget;
 
@@ -119,7 +113,11 @@ class ZetaGrid extends StatelessWidget {
             children: [
               Flexible(flex: asymmetricWeight as int, fit: FlexFit.tight, child: children.first),
               gutter,
-              Flexible(flex: (defaultCols - (asymmetricWeight as int)).toInt(), fit: FlexFit.tight, child: children[1]),
+              Flexible(
+                flex: (tokens.Grid.defaultCols - (asymmetricWeight as int)).toInt(),
+                fit: FlexFit.tight,
+                child: children[1],
+              ),
             ],
           );
         } else {
@@ -141,7 +139,7 @@ class ZetaGrid extends StatelessWidget {
           widget = Column(children: rows.divide(gutter).toList());
         }
 
-        return Padding(padding: const EdgeInsets.all(gridMargin), child: widget);
+        return Padding(padding: const EdgeInsets.all(tokens.Grid.gridMargin), child: widget);
       },
     );
   }

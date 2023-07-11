@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../zeta_flutter.dart';
+import '../tokens.dart' as tokens;
 
 export 'breakpoints.dart';
 export 'colors.dart';
@@ -33,7 +34,7 @@ class ZetaTheme {
   /// {@endtemplate}
   static ThemeData get zeta {
     return ThemeData(
-      fontFamily: 'packages/zeta_flutter/IBMPlexSans',
+      fontFamily: tokens.Typography.fontFamily,
       textTheme: ZetaText.textTheme,
     );
   }
