@@ -1,5 +1,3 @@
-// ignore_for_file: public_member_api_docs
-
 import 'package:flutter/material.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 import '../widgets.dart';
@@ -12,64 +10,6 @@ class TypographyExample extends StatelessWidget {
   static const String name = 'Typography';
 
   const TypographyExample({super.key});
-
-  static const tokens = [
-    ExampleModel(
-      example: ZetaText(exampleText),
-      code: "ZetaText('')",
-      token: r'$text.zeta',
-    ),
-    ExampleModel(
-      example: ZetaText(exampleText, textColor: ZetaColors.textColorSubtle),
-      code: "ZetaText('', textColor: ZetaColors.textColorSubtle)",
-      token: r'$text.zeta.subtle',
-    ),
-    ExampleModel(
-      example: ZetaText(exampleText, fontWeight: FontWeight.w300),
-      code: "ZetaText('', fontWeight: FontWeight.w300)",
-      token: r'$text.zeta.300',
-    ),
-    ExampleModel(
-      example: ZetaText(exampleText, fontWeight: FontWeight.w500),
-      code: "ZetaText('', fontWeight: FontWeight.w500)",
-      token: r'$text.zeta.500',
-    ),
-    ExampleModel(
-      example: ZetaText(exampleText, fontStyle: FontStyle.italic),
-      code: "ZetaText('', fontStyle: FontStyle.italic)",
-      token: r'$text.zeta.italics',
-    ),
-    ExampleModel(
-      code: "ZetaText('', uppercase: true)",
-      token: r'$text.zeta.caps',
-      example: ZetaText(exampleText, upperCase: true),
-    ),
-    ExampleModel(
-      example: ZetaText(exampleText, decoration: TextDecoration.underline),
-      code: "ZetaText('', decoration: TextDecoration.underline)",
-      token: r'$text.zeta.underline',
-    ),
-    ExampleModel(
-      code: "ZetaText('', textDirection: TextDirection.rtl)",
-      token: r'$text.zeta.direction',
-      example: ZetaText(exampleText, textDirection: TextDirection.rtl),
-    ),
-    ExampleModel(
-      code: "ZetaText('', first: true)",
-      token: r'$text.zeta.first',
-      example: ZetaText(exampleText, first: true),
-    ),
-    ExampleModel(
-      code: "ZetaText('', last: true)",
-      token: r'$text.zeta.last',
-      example: ZetaText(exampleText, last: true),
-    ),
-    ExampleModel(
-      code: "ZetaText('', resetHeight: true)",
-      token: r'$text.zeta.reset',
-      example: ZetaText(exampleText, resetHeight: true),
-    ),
-  ];
 
   static const Map<String, double> sizes = {
     'x3': Dimensions.x3,
@@ -91,7 +31,6 @@ class TypographyExample extends StatelessWidget {
         example: ZetaText(exampleText, fontSize: size.value),
         token: size.value == Dimensions.x3_5
             ? r'$text.zeta.x3_5.x4'
-            // ignore: prefer_adjacent_string_concatenation
             : r'$text.zeta.x' + '${size.value ~/ 4}.x${(size.value + 4) ~/ 4}',
         code: "ZetaText('', size: ZetaSpacing.${size.key})",
       );
@@ -166,19 +105,79 @@ class TypographyExample extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ZetaColors colors = ZetaColors.of(context);
+
+    final tokens = [
+      const ExampleModel(
+        example: ZetaText(exampleText),
+        code: "ZetaText('')",
+        token: r'$text.zeta',
+      ),
+      ExampleModel(
+        example: ZetaText(exampleText, textColor: colors.textSubtle),
+        code: "ZetaText('', textColor: ZetaColors.textColorSubtle)",
+        token: r'$text.zeta.subtle',
+      ),
+      const ExampleModel(
+        example: ZetaText(exampleText, fontWeight: FontWeight.w300),
+        code: "ZetaText('', fontWeight: FontWeight.w300)",
+        token: r'$text.zeta.300',
+      ),
+      const ExampleModel(
+        example: ZetaText(exampleText, fontWeight: FontWeight.w500),
+        code: "ZetaText('', fontWeight: FontWeight.w500)",
+        token: r'$text.zeta.500',
+      ),
+      const ExampleModel(
+        example: ZetaText(exampleText, fontStyle: FontStyle.italic),
+        code: "ZetaText('', fontStyle: FontStyle.italic)",
+        token: r'$text.zeta.italics',
+      ),
+      const ExampleModel(
+        code: "ZetaText('', uppercase: true)",
+        token: r'$text.zeta.caps',
+        example: ZetaText(exampleText, upperCase: true),
+      ),
+      const ExampleModel(
+        example: ZetaText(exampleText, decoration: TextDecoration.underline),
+        code: "ZetaText('', decoration: TextDecoration.underline)",
+        token: r'$text.zeta.underline',
+      ),
+      const ExampleModel(
+        code: "ZetaText('', textDirection: TextDirection.rtl)",
+        token: r'$text.zeta.direction',
+        example: ZetaText(exampleText, textDirection: TextDirection.rtl),
+      ),
+      const ExampleModel(
+        code: "ZetaText('', first: true)",
+        token: r'$text.zeta.first',
+        example: ZetaText(exampleText, first: true),
+      ),
+      const ExampleModel(
+        code: "ZetaText('', last: true)",
+        token: r'$text.zeta.last',
+        example: ZetaText(exampleText, last: true),
+      ),
+      const ExampleModel(
+        code: "ZetaText('', resetHeight: true)",
+        token: r'$text.zeta.reset',
+        example: ZetaText(exampleText, resetHeight: true),
+      ),
+    ];
+
     return ExampleScaffold(
       name: name,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const ZetaText.headingLarge('Text').inline(Dimensions.x10),
-          ...tokens.map(ExampleBuilder.new).toList(),
+          ...tokens.map(ExampleBuilder.new),
           const Divider().squish(Dimensions.x4),
           const ZetaText.headingLarge('Universal sizes').inline(Dimensions.x10),
-          ...universalSizes.map(ExampleBuilder.new).toList(),
+          ...universalSizes.map(ExampleBuilder.new),
           const Divider().squish(Dimensions.x4),
           const ZetaText.headingLarge('Dedicated sizes').inline(Dimensions.x10),
-          ...dedicatedSizes.map(ExampleBuilder.new).toList(),
+          ...dedicatedSizes.map(ExampleBuilder.new),
         ],
       ),
     );

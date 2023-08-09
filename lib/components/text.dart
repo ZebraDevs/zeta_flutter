@@ -63,6 +63,27 @@ class ZetaText extends StatelessWidget {
     labelSmall: zetaLabelSmall,
   );
 
+  /// Buids text theme for app based on an instance of [ZetaColors].
+  static TextTheme textThemeBuilder(ZetaColors colors) {
+    return TextTheme(
+      displayLarge: zetaDisplayLarge.copyWith(color: colors.textDefault),
+      displayMedium: zetaDisplayMedium.copyWith(color: colors.textDefault),
+      displaySmall: zetaDisplaySmall.copyWith(color: colors.textDefault),
+      headlineLarge: zetaHeadingLarge.copyWith(color: colors.textDefault),
+      headlineMedium: zetaHeadingMedium.copyWith(color: colors.textDefault),
+      headlineSmall: zetaHeadingSmall.copyWith(color: colors.textDefault),
+      titleLarge: zetaTitleLarge.copyWith(color: colors.textDefault),
+      titleMedium: zetaTitleMedium.copyWith(color: colors.textDefault),
+      titleSmall: zetaTitleSmall.copyWith(color: colors.textDefault),
+      bodyLarge: zetaBodyLarge.copyWith(color: colors.textDefault),
+      bodyMedium: zetaBodyMedium.copyWith(color: colors.textDefault),
+      bodySmall: zetaBodySmall.copyWith(color: colors.textDefault),
+      labelLarge: zetaLabelLarge.copyWith(color: colors.textDefault),
+      labelMedium: zetaLabelMedium.copyWith(color: colors.textDefault),
+      labelSmall: zetaLabelSmall.copyWith(color: colors.textDefault),
+    );
+  }
+
   /// Returns responsive text style.
   ///
   /// Should only be used on [DeviceType.mobileLandscape] and [DeviceType.mobilePortrait].
@@ -95,11 +116,9 @@ class ZetaText extends StatelessWidget {
   /// * [TextTheme.bodySmall].
   /// {@endtemplate}
   static const TextStyle zetaBodySmall = TextStyle(
-    color: tokens.Typography.text,
     fontSize: tokens.Dimensions.x3,
     fontWeight: FontWeight.w400,
     height: tokens.Dimensions.x4 / tokens.Dimensions.x3,
-    fontFamily: tokens.Typography.fontFamily,
   );
 
   /// {@template zeta-type-body-m}
@@ -111,11 +130,9 @@ class ZetaText extends StatelessWidget {
   /// * [TextTheme.bodyMedium].
   /// {@endtemplate}
   static const TextStyle zetaBodyMedium = TextStyle(
-    color: tokens.Typography.text,
     fontSize: tokens.Dimensions.x4,
     fontWeight: FontWeight.w400,
     height: tokens.Dimensions.x6 / tokens.Dimensions.x4,
-    fontFamily: tokens.Typography.fontFamily,
   );
 
   /// {@template zeta-type-body-l}
@@ -127,11 +144,9 @@ class ZetaText extends StatelessWidget {
   /// * [TextTheme.bodyLarge].
   /// {@endtemplate}
   static const TextStyle zetaBodyLarge = TextStyle(
-    color: tokens.Typography.text,
     fontSize: tokens.Dimensions.x5,
     fontWeight: FontWeight.w400,
     height: tokens.Dimensions.x7 / tokens.Dimensions.x5,
-    fontFamily: tokens.Typography.fontFamily,
   );
 
   /// {@template zeta-type-label-s}
@@ -143,11 +158,9 @@ class ZetaText extends StatelessWidget {
   /// * [TextTheme.labelSmall].
   /// {@endtemplate}
   static const TextStyle zetaLabelSmall = TextStyle(
-    color: tokens.Typography.text,
     fontSize: tokens.Dimensions.x3,
     fontWeight: FontWeight.w500,
     height: 1,
-    fontFamily: tokens.Typography.fontFamily,
   );
 
   /// {@template zeta-type-label-m}
@@ -159,11 +172,9 @@ class ZetaText extends StatelessWidget {
   /// * [TextTheme.labelMedium].
   /// {@endtemplate}
   static const TextStyle zetaLabelMedium = TextStyle(
-    color: tokens.Typography.text,
     fontSize: tokens.Dimensions.x4,
     fontWeight: FontWeight.w500,
     height: 1,
-    fontFamily: tokens.Typography.fontFamily,
   );
 
   /// {@template zeta-type-label-l}
@@ -175,11 +186,9 @@ class ZetaText extends StatelessWidget {
   /// * [TextTheme.labelLarge].
   /// {@endtemplate}
   static const TextStyle zetaLabelLarge = TextStyle(
-    color: tokens.Typography.text,
     fontSize: tokens.Dimensions.x5,
     fontWeight: FontWeight.w500,
     height: 1,
-    fontFamily: tokens.Typography.fontFamily,
   );
 
   /// {@template zeta-type-title-s}
@@ -191,11 +200,9 @@ class ZetaText extends StatelessWidget {
   /// * [TextTheme.titleSmall].
   /// {@endtemplate}
   static const TextStyle zetaTitleSmall = TextStyle(
-    color: tokens.Typography.text,
     fontSize: tokens.Dimensions.x3,
     fontWeight: FontWeight.w500,
     height: tokens.Dimensions.x4 / tokens.Dimensions.x3,
-    fontFamily: tokens.Typography.fontFamily,
   );
 
   /// {@template zeta-type-title-m}
@@ -207,11 +214,9 @@ class ZetaText extends StatelessWidget {
   /// * [TextTheme.titleMedium].
   /// {@endtemplate}
   static const TextStyle zetaTitleMedium = TextStyle(
-    color: tokens.Typography.text,
     fontSize: tokens.Dimensions.x4,
     fontWeight: FontWeight.w500,
     height: tokens.Dimensions.x5 / tokens.Dimensions.x4,
-    fontFamily: tokens.Typography.fontFamily,
   );
 
   /// {@template zeta-type-title-l}
@@ -223,11 +228,9 @@ class ZetaText extends StatelessWidget {
   /// * [TextTheme.titleLarge].
   /// {@endtemplate}
   static const TextStyle zetaTitleLarge = TextStyle(
-    color: tokens.Typography.text,
     fontSize: tokens.Dimensions.x5,
     fontWeight: FontWeight.w500,
     height: tokens.Dimensions.x5 / tokens.Dimensions.x6,
-    fontFamily: tokens.Typography.fontFamily,
   );
 
   /// {@template zeta-type-heading-s}
@@ -239,11 +242,9 @@ class ZetaText extends StatelessWidget {
   /// * [TextTheme.headlineSmall].
   /// {@endtemplate}
   static const TextStyle zetaHeadingSmall = TextStyle(
-    color: tokens.Typography.text,
     fontSize: tokens.Dimensions.x6,
     fontWeight: FontWeight.w500,
     height: tokens.Dimensions.x7 / tokens.Dimensions.x6,
-    fontFamily: tokens.Typography.fontFamily,
   );
 
   /// {@template zeta-type-heading-m}
@@ -255,11 +256,9 @@ class ZetaText extends StatelessWidget {
   /// * [TextTheme.headlineMedium].
   /// {@endtemplate}
   static const TextStyle zetaHeadingMedium = TextStyle(
-    color: tokens.Typography.text,
     fontSize: tokens.Dimensions.x7,
     fontWeight: FontWeight.w500,
     height: tokens.Dimensions.x8 / tokens.Dimensions.x7,
-    fontFamily: tokens.Typography.fontFamily,
   );
 
   /// {@template zeta-type-heading-l}
@@ -270,11 +269,9 @@ class ZetaText extends StatelessWidget {
   /// * [TextTheme.headlineLarge].
   /// {@endtemplate}
   static const TextStyle zetaHeadingLarge = TextStyle(
-    color: tokens.Typography.text,
     fontSize: tokens.Dimensions.x8,
     fontWeight: FontWeight.w500,
     height: tokens.Dimensions.x9 / tokens.Dimensions.x8,
-    fontFamily: tokens.Typography.fontFamily,
   );
 
   /// {@template zeta-type-display-s}
@@ -286,11 +283,9 @@ class ZetaText extends StatelessWidget {
   /// * [TextTheme.displaySmall].
   /// {@endtemplate}
   static const TextStyle zetaDisplaySmall = TextStyle(
-    color: tokens.Typography.text,
     fontSize: tokens.Dimensions.x9,
     fontWeight: FontWeight.w300,
     height: tokens.Dimensions.x9 / tokens.Dimensions.x10,
-    fontFamily: tokens.Typography.fontFamily,
   );
 
   /// {@template  zeta-type-display-m}
@@ -302,11 +297,9 @@ class ZetaText extends StatelessWidget {
   /// * [TextTheme.displayMedium].
   /// {@endtemplate}
   static const TextStyle zetaDisplayMedium = TextStyle(
-    color: tokens.Typography.text,
     fontSize: tokens.Dimensions.x11,
     fontWeight: FontWeight.w300,
     height: tokens.Dimensions.x12 / tokens.Dimensions.x11,
-    fontFamily: tokens.Typography.fontFamily,
   );
 
   /// {@template  zeta-type-display-l}
@@ -317,11 +310,9 @@ class ZetaText extends StatelessWidget {
   /// * [TextTheme.displayLarge].
   /// {@endtemplate}
   static const TextStyle zetaDisplayLarge = TextStyle(
-    color: tokens.Typography.text,
     fontSize: tokens.Dimensions.x13,
     fontWeight: FontWeight.w300,
     height: tokens.Dimensions.x14 / tokens.Dimensions.x13,
-    fontFamily: tokens.Typography.fontFamily,
   );
 
   /// {@template zeta-type-description}
@@ -332,66 +323,54 @@ class ZetaText extends StatelessWidget {
   /// Used for UI components and UI content design.
   /// {@endtemplate}
   static const TextStyle zetaDescription = TextStyle(
-    color: tokens.Typography.text,
     fontSize: tokens.Dimensions.x3_5,
     fontWeight: FontWeight.w500,
     height: tokens.Dimensions.x4 / tokens.Dimensions.x3_5,
-    fontFamily: tokens.Typography.fontFamily,
   );
 
   /// {@macro zeta-type-responsive}
   ///
   /// {@macro zeta-type-heading-s}
   static const TextStyle zetaHeadingSmallResponsive = TextStyle(
-    color: tokens.Typography.text,
     fontSize: tokens.Dimensions.x5,
     fontWeight: FontWeight.w500,
     height: tokens.Dimensions.x6 / tokens.Dimensions.x5,
-    fontFamily: tokens.Typography.fontFamily,
   );
 
   /// {@macro zeta-type-responsive}
   ///
   /// {@macro zeta-type-heading-m}
   static const TextStyle zetaHeadingMediumResponsive = TextStyle(
-    color: tokens.Typography.text,
     fontSize: tokens.Dimensions.x6,
     fontWeight: FontWeight.w500,
     height: tokens.Dimensions.x7 / tokens.Dimensions.x6,
-    fontFamily: tokens.Typography.fontFamily,
   );
 
   /// {@macro zeta-type-responsive}
   ///
   /// {@macro zeta-type-heading-l}
   static const TextStyle zetaHeadingLargeResponsive = TextStyle(
-    color: tokens.Typography.text,
     fontSize: tokens.Dimensions.x7,
     fontWeight: FontWeight.w500,
     height: tokens.Dimensions.x8 / tokens.Dimensions.x7,
-    fontFamily: tokens.Typography.fontFamily,
   );
 
   /// {@macro zeta-type-responsive}
   ///
   /// {@macro zeta-type-display-s}
   static const TextStyle zetaDisplaySmallResponsive = TextStyle(
-    color: tokens.Typography.text,
     fontSize: tokens.Dimensions.x8,
     fontWeight: FontWeight.w300,
     height: tokens.Dimensions.x9 / tokens.Dimensions.x8,
-    fontFamily: tokens.Typography.fontFamily,
   );
 
   /// {@macro zeta-type-responsive}
   ///
   /// {@macro zeta-type-display-m}
   static const TextStyle zetaDisplayMediumResponsive = TextStyle(
-    color: tokens.Typography.text,
     fontSize: tokens.Dimensions.x9,
     fontWeight: FontWeight.w300,
     height: tokens.Dimensions.x10 / tokens.Dimensions.x9,
-    fontFamily: tokens.Typography.fontFamily,
   );
 
   /// {@template zeta-type-responsive}
@@ -400,11 +379,9 @@ class ZetaText extends StatelessWidget {
   ///
   /// {@macro zeta-type-display-l}
   static const TextStyle zetaDisplayLargeResponsive = TextStyle(
-    color: tokens.Typography.text,
     fontSize: tokens.Dimensions.x11,
     fontWeight: FontWeight.w300,
     height: tokens.Dimensions.x12 / tokens.Dimensions.x11,
-    fontFamily: tokens.Typography.fontFamily,
   );
 
   /// Gets approximate char width based on width of O in IBM Plex Sans
@@ -434,7 +411,7 @@ class ZetaText extends StatelessWidget {
   ///
   /// See also:
   /// * [TextStyle.color].
-  final Color textColor;
+  final Color? textColor;
 
   /// Max width of Text box using [ch]. Not measured in dp / px.
   ///
@@ -508,7 +485,7 @@ class ZetaText extends StatelessWidget {
     this.data, {
     this.style = ZetaText.zetaBodyMedium,
     this.resetHeight = false,
-    this.textColor = tokens.Typography.text,
+    this.textColor,
     this.fontSize,
     this.maxWidth,
     this.fontWeight,
@@ -522,7 +499,7 @@ class ZetaText extends StatelessWidget {
   });
 
   EdgeInsets get _padding {
-    if (resetHeight || first && last) return tokens.Dimensions.x0.squish;
+    if (resetHeight || (first && last)) return tokens.Dimensions.x0.squish;
 
     return EdgeInsets.only(
       top: first ? tokens.Dimensions.x0 : tokens.Dimensions.x2,
@@ -541,26 +518,41 @@ class ZetaText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String data = this.data ?? '';
-
-    TextStyle style = (context.deviceType.responsiveText ? this.style.mobileStyle : this.style).copyWith(
-      fontSize: fontSize,
-      height: _fontSize,
-      fontWeight: fontWeight,
-      decoration: decoration,
-      fontStyle: fontStyle,
-      color: textColor,
+    const TextStyle tempTextStyle = ZetaText.zetaBodyMedium;
+    final TextStyle thisStyle = tempTextStyle.copyWith(
+      fontSize: style.fontSize,
+      fontWeight: style.fontWeight,
+      height: style.height,
     );
 
-    if (resetHeight) style = style.copyWith(height: style == ZetaText.zetaDescription ? null : 1);
+    String data = this.data ?? '';
+    final Color color = textColor ?? ZetaColors.of(context).textDefault;
+    TextStyle textStyle = context.deviceType.responsiveText ? thisStyle.mobileStyle : thisStyle;
+
+    textStyle = textStyle.copyWith(
+      fontSize: (fontSize ?? textStyle.fontSize ?? tokens.Typography.defaultTextSize) *
+          MediaQuery.of(context).textScaleFactor,
+      height: _fontSize,
+      fontWeight: fontWeight,
+      decoration: decoration ?? TextDecoration.none,
+      fontStyle: fontStyle,
+      color: color,
+    );
+
+    if (resetHeight) textStyle = textStyle.copyWith(height: style == ZetaText.zetaDescription ? null : 1);
     if (upperCase) data = data.toUpperCase();
 
     return Padding(
       padding: _padding,
-      child: SizedBox(
-        width: maxWidth == null ? null : ch(multiplier: maxWidth ?? 0, style: style),
-        child: Text(data, style: style, textDirection: textDirection),
-      ),
+      child: maxWidth == null
+          ? Text(data, style: textStyle, textDirection: textDirection)
+          : Align(
+              alignment: textDirection == TextDirection.rtl ? Alignment.centerRight : Alignment.centerLeft,
+              child: SizedBox(
+                width: maxWidth == null ? null : ch(multiplier: maxWidth ?? 0, style: textStyle),
+                child: Text(data, style: textStyle, textDirection: textDirection),
+              ),
+            ),
     );
   }
 
@@ -577,7 +569,7 @@ class ZetaText extends StatelessWidget {
     this.fontWeight,
     this.first = false,
     this.last = false,
-    this.textColor = tokens.Typography.text,
+    this.textColor,
     this.textDirection = TextDirection.ltr,
     this.upperCase = false,
     super.key,
@@ -595,7 +587,7 @@ class ZetaText extends StatelessWidget {
     this.fontWeight,
     this.first = false,
     this.last = false,
-    this.textColor = tokens.Typography.text,
+    this.textColor,
     this.textDirection = TextDirection.ltr,
     this.upperCase = false,
     this.maxWidth,
@@ -614,7 +606,7 @@ class ZetaText extends StatelessWidget {
     this.fontWeight,
     this.first = false,
     this.last = false,
-    this.textColor = tokens.Typography.text,
+    this.textColor,
     this.textDirection = TextDirection.ltr,
     this.upperCase = false,
     this.maxWidth,
@@ -633,7 +625,7 @@ class ZetaText extends StatelessWidget {
     this.fontWeight,
     this.first = false,
     this.last = false,
-    this.textColor = tokens.Typography.text,
+    this.textColor,
     this.textDirection = TextDirection.ltr,
     this.upperCase = false,
     super.key,
@@ -652,7 +644,7 @@ class ZetaText extends StatelessWidget {
     this.fontWeight,
     this.first = false,
     this.last = false,
-    this.textColor = tokens.Typography.text,
+    this.textColor,
     this.textDirection = TextDirection.ltr,
     this.upperCase = false,
     this.maxWidth,
@@ -671,7 +663,7 @@ class ZetaText extends StatelessWidget {
     this.fontWeight,
     this.first = false,
     this.last = false,
-    this.textColor = tokens.Typography.text,
+    this.textColor,
     this.textDirection = TextDirection.ltr,
     this.upperCase = false,
     this.maxWidth,
@@ -690,7 +682,7 @@ class ZetaText extends StatelessWidget {
     this.fontWeight,
     this.first = false,
     this.last = false,
-    this.textColor = tokens.Typography.text,
+    this.textColor,
     this.textDirection = TextDirection.ltr,
     this.upperCase = false,
     this.maxWidth,
@@ -709,7 +701,7 @@ class ZetaText extends StatelessWidget {
     this.fontWeight,
     this.first = false,
     this.last = false,
-    this.textColor = tokens.Typography.text,
+    this.textColor,
     this.textDirection = TextDirection.ltr,
     this.upperCase = false,
     this.maxWidth,
@@ -728,7 +720,7 @@ class ZetaText extends StatelessWidget {
     this.fontWeight,
     this.first = false,
     this.last = false,
-    this.textColor = tokens.Typography.text,
+    this.textColor,
     this.textDirection = TextDirection.ltr,
     this.upperCase = false,
     this.maxWidth,
@@ -747,7 +739,7 @@ class ZetaText extends StatelessWidget {
     this.fontWeight,
     this.first = false,
     this.last = false,
-    this.textColor = tokens.Typography.text,
+    this.textColor,
     this.textDirection = TextDirection.ltr,
     this.upperCase = false,
     this.maxWidth,
@@ -765,7 +757,7 @@ class ZetaText extends StatelessWidget {
     this.fontWeight,
     this.first = false,
     this.last = false,
-    this.textColor = tokens.Typography.text,
+    this.textColor,
     this.textDirection = TextDirection.ltr,
     this.upperCase = false,
     this.resetHeight = false,
@@ -785,7 +777,7 @@ class ZetaText extends StatelessWidget {
     this.fontWeight,
     this.first = false,
     this.last = false,
-    this.textColor = tokens.Typography.text,
+    this.textColor,
     this.textDirection = TextDirection.ltr,
     this.upperCase = false,
     this.maxWidth,
@@ -804,7 +796,7 @@ class ZetaText extends StatelessWidget {
     this.fontWeight,
     this.first = false,
     this.last = false,
-    this.textColor = tokens.Typography.text,
+    this.textColor,
     this.textDirection = TextDirection.ltr,
     this.upperCase = false,
     this.maxWidth,
@@ -823,7 +815,7 @@ class ZetaText extends StatelessWidget {
     this.fontWeight,
     this.first = false,
     this.last = false,
-    this.textColor = tokens.Typography.text,
+    this.textColor,
     this.textDirection = TextDirection.ltr,
     this.upperCase = false,
     this.maxWidth,
@@ -841,7 +833,7 @@ class ZetaText extends StatelessWidget {
     this.fontWeight,
     this.first = false,
     this.last = false,
-    this.textColor = tokens.Typography.text,
+    this.textColor,
     this.textDirection = TextDirection.ltr,
     this.upperCase = false,
     this.resetHeight = false,
@@ -860,7 +852,7 @@ class ZetaText extends StatelessWidget {
     this.fontWeight,
     this.first = false,
     this.last = false,
-    this.textColor = tokens.Typography.text,
+    this.textColor,
     this.textDirection = TextDirection.ltr,
     this.upperCase = false,
     this.resetHeight = false,

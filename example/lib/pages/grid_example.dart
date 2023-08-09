@@ -1,5 +1,3 @@
-// ignore_for_file: public_member_api_docs
-
 import 'package:flutter/material.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
@@ -34,8 +32,7 @@ class GridExample extends StatelessWidget {
               ),
             ),
           )
-          .expand((element) => element)
-          .toList(),
+          .expand((element) => element),
       ...asymmetrical
           .map(
             (col) => noGaps.map(
@@ -50,43 +47,40 @@ class GridExample extends StatelessWidget {
               ),
             ),
           )
-          .expand((element) => element)
-          .toList(),
-      ...noGaps
-          .map(
-            (noGaps) => ExampleModel(
-              example: Column(
-                children: [
-                  ZetaGrid(
-                    noGaps: noGaps,
-                    col: 8,
-                    hybrid: true,
-                    children: const [
-                      GridItem(width: 120),
-                      Flexible(fit: FlexFit.tight, child: GridItem()),
-                      GridItem(width: 80),
-                      Flexible(fit: FlexFit.tight, flex: 2, child: GridItem()),
-                      GridItem(width: 76),
-                      Flexible(fit: FlexFit.tight, child: GridItem()),
-                      Flexible(fit: FlexFit.tight, flex: 3, child: GridItem()),
-                      GridItem(width: 40),
-                    ],
-                  ),
+          .expand((element) => element),
+      ...noGaps.map(
+        (noGaps) => ExampleModel(
+          example: Column(
+            children: [
+              ZetaGrid(
+                noGaps: noGaps,
+                col: 8,
+                hybrid: true,
+                children: const [
+                  GridItem(width: 120),
+                  Flexible(fit: FlexFit.tight, child: GridItem()),
+                  GridItem(width: 80),
+                  Flexible(fit: FlexFit.tight, flex: 2, child: GridItem()),
+                  GridItem(width: 76),
+                  Flexible(fit: FlexFit.tight, child: GridItem()),
+                  Flexible(fit: FlexFit.tight, flex: 3, child: GridItem()),
+                  GridItem(width: 40),
                 ],
               ),
-              token: r'$grid.zeta.120px.1fr.80px.2fr.76px.1fr.3fr.40px' + (noGaps ? '.nogaps' : ''),
-              code:
-                  'ZetaGrid(\n  col: 8,\n  hybrid: true,\n  ${noGaps ? 'noGaps: true,\n  ' : ''}children:[\n    GridItem(width: 120),\n    Flexible(fit: FlexFit.tight, child: GridItem()),\n    GridItem(width: 80),\n    Flexible(fit: FlexFit.tight, flex: 2, child: GridItem()),\n    GridItem(width: 76),\n    Flexible(fit: FlexFit.tight, child: GridItem()),\n    Flexible(fit: FlexFit.tight, flex: 3, child: GridItem()),\n    GridItem(width: 40),\n  ],\n)',
-            ),
-          )
-          .toList()
+            ],
+          ),
+          token: r'$grid.zeta.120px.1fr.80px.2fr.76px.1fr.3fr.40px' + (noGaps ? '.nogaps' : ''),
+          code:
+              'ZetaGrid(\n  col: 8,\n  hybrid: true,\n  ${noGaps ? 'noGaps: true,\n  ' : ''}children:[\n    GridItem(width: 120),\n    Flexible(fit: FlexFit.tight, child: GridItem()),\n    GridItem(width: 80),\n    Flexible(fit: FlexFit.tight, flex: 2, child: GridItem()),\n    GridItem(width: 76),\n    Flexible(fit: FlexFit.tight, child: GridItem()),\n    Flexible(fit: FlexFit.tight, flex: 3, child: GridItem()),\n    GridItem(width: 40),\n  ],\n)',
+        ),
+      )
     ];
 
     return ExampleScaffold(
       name: name,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: [...examples.map(ExampleBuilder.new).toList()],
+        children: [...examples.map(ExampleBuilder.new)],
       ),
     );
   }
@@ -99,10 +93,11 @@ class GridItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ZetaColors colors = ZetaColors.of(context);
     return Container(
       height: 80,
       width: width,
-      decoration: BoxDecoration(border: Border.all(color: exampleBlueDark), color: exampleBlue),
+      decoration: BoxDecoration(border: Border.all(color: colors.blue.border), color: colors.blue.shade20),
       child: ZetaText(label),
     );
   }

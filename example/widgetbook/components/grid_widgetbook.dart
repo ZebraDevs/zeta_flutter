@@ -11,7 +11,7 @@ WidgetbookComponent gridWidgetBook() {
         name: 'Basic Grid',
         builder: (context) => SingleChildScrollView(
           child: ZetaGrid(
-            col: context.knobs.slider(label: 'col', min: 2, max: 16, divisions: 7, initialValue: 12),
+            col: context.knobs.double.slider(label: 'col', min: 2, max: 16, divisions: 7, initialValue: 12),
             noGaps: context.knobs.boolean(label: 'No Gaps'),
             children: List.generate(16, (index) => const GridItem()),
           ),
@@ -21,7 +21,7 @@ WidgetbookComponent gridWidgetBook() {
         name: 'Asymmetrical Grid',
         builder: (context) => SingleChildScrollView(
           child: ZetaGrid(
-            asymmetricWeight: (context.knobs.slider(label: 'Asymmetric', min: 1, max: 11, divisions: 10)).toInt(),
+            asymmetricWeight: context.knobs.double.slider(label: 'Asymmetric', min: 1, max: 11, divisions: 10).toInt(),
             noGaps: context.knobs.boolean(label: 'No Gaps'),
             children: List.generate(16, (index) => const GridItem()),
           ),
@@ -40,34 +40,38 @@ WidgetbookComponent gridWidgetBook() {
               hybrid: true,
               children: [
                 GridItem(
-                  width: context.knobs.slider(label: 'Fixed width 1', min: 1, max: maxSize, initialValue: initialSize),
+                  width: context.knobs.double
+                      .slider(label: 'Fixed width 1', min: 1, max: maxSize, initialValue: initialSize),
                   label: 'Fixed 1',
                 ),
                 Flexible(
                   fit: FlexFit.tight,
-                  flex: context.knobs.slider(label: 'Flex width 1', min: 0, max: 5, initialValue: 1).toInt(),
+                  flex: context.knobs.double.slider(label: 'Flex width 1', min: 0, max: 5, initialValue: 1).toInt(),
                   child: const GridItem(label: 'Flex 1'),
                 ),
                 GridItem(
-                  width: context.knobs.slider(label: 'Fixed width 2', min: 1, max: maxSize, initialValue: initialSize),
+                  width: context.knobs.double
+                      .slider(label: 'Fixed width 2', min: 1, max: maxSize, initialValue: initialSize),
                   label: 'Fixed 2',
                 ),
                 Flexible(
                   fit: FlexFit.tight,
-                  flex: context.knobs.slider(label: 'Flex width 2', min: 0, max: 5, initialValue: 1).toInt(),
+                  flex: context.knobs.double.slider(label: 'Flex width 2', min: 0, max: 5, initialValue: 1).toInt(),
                   child: const GridItem(label: 'Flex 2'),
                 ),
                 GridItem(
-                  width: context.knobs.slider(label: 'Fixed width 3', min: 1, max: maxSize, initialValue: initialSize),
+                  width: context.knobs.double
+                      .slider(label: 'Fixed width 3', min: 1, max: maxSize, initialValue: initialSize),
                   label: 'Fixed 3',
                 ),
                 Flexible(
                   fit: FlexFit.tight,
-                  flex: context.knobs.slider(label: 'Flex width 3', min: 0, max: 5, initialValue: 1).toInt(),
+                  flex: context.knobs.double.slider(label: 'Flex width 3', min: 0, max: 5, initialValue: 1).toInt(),
                   child: const GridItem(label: 'Flex 3'),
                 ),
                 GridItem(
-                  width: context.knobs.slider(label: 'Fixed width 4', min: 1, max: maxSize, initialValue: initialSize),
+                  width: context.knobs.double
+                      .slider(label: 'Fixed width 4', min: 1, max: maxSize, initialValue: initialSize),
                   label: 'Fixed 4',
                 ),
               ],

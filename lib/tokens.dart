@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import '../zeta_flutter.dart';
 
 /// Tokens that are used for [ZetaSpacing].
@@ -102,13 +100,18 @@ class Typography {
   /// In the case of non-latin languages, this can be overridden:
   ///
   /// ``` theme: ZetaTheme.zeta.copyWith(fontFamily: ''),```
-  static const String fontFamily = 'packages/zeta_flutter/IBMPlexSans';
+  // static const String fontFamily = 'packages/zeta_flutter/IBMPlexSans';
+
+  /// Default text size.
+  ///
+  /// Defaults to [Dimensions.s].
+  static const double defaultTextSize = Dimensions.s;
 
   /// Base text color.
-  static const Color text = Color(0xFF1D1E23); //TODO: Find a way to integrate dark mode/ themes into this
-
+  // static const Color text = Color(0xFF1D1E23);
   /// Subtle text color.
-  static const Color subtleText = Color(0xFF545963);
+  // static const Color subtleText = Color(0xFF545963);
+  // TODO(tokens): Work out how to do tokens properly
 }
 
 /// Tokens that are used for [ZetaGrid].

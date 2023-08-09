@@ -49,7 +49,7 @@ jobs:
         uses: tj-actions/branch-names@v5.1
       - uses: subosito/flutter-action@v2
         with:
-          flutter-version: "3.7.x"
+          flutter-version: "3.10.x"
           channel: "stable"
       - name: Setup flutter
         run: flutter pub get
@@ -58,9 +58,6 @@ jobs:
           dart format . -l 120
           dart fix --apply
           flutter analyze
-          flutter pub run dart_code_metrics:metrics analyze lib
-          flutter pub run dart_code_metrics:metrics check-unused-code lib
-          flutter pub run dart_code_metrics:metrics check-unused-files lib
           cd example && flutter test
       - name: Check for modified files
         id: git-check

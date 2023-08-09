@@ -1,4 +1,3 @@
-// ignore_for_file:  avoid_relative_lib_imports, no-magic-number
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';

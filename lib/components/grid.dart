@@ -93,9 +93,9 @@ class ZetaGrid extends StatelessWidget {
         final double gutterSize = noGaps ? tokens.Dimensions.x0 : deviceType.axisSpacing(col);
         final Widget gutter = SizedBox(width: gutterSize, height: gutterSize);
         final Widget widget;
+        List<Widget> children2 = [...children];
 
         if (hybrid) {
-          final List<Widget> children2;
           if (children.length < col) {
             children2 = [...children, ...List.generate((col - children.length).toInt(), (index) => const SizedBox())];
           } else if (children.length > col) {
@@ -111,25 +111,24 @@ class ZetaGrid extends StatelessWidget {
         } else if (asymmetricWeight != null) {
           widget = Row(
             children: [
-              Flexible(flex: asymmetricWeight as int, fit: FlexFit.tight, child: children.first),
+              Flexible(flex: asymmetricWeight ?? 1, fit: FlexFit.tight, child: children.first),
               gutter,
               Flexible(
-                flex: (tokens.Grid.defaultCols - (asymmetricWeight as int)).toInt(),
+                flex: (tokens.Grid.defaultCols - (asymmetricWeight ?? 1)).toInt(),
                 fit: FlexFit.tight,
                 child: children[1],
               ),
             ],
           );
         } else {
-          if (children.length % col != 0) {
-            children.addAll(List.generate((col - (children.length % col)).toInt(), (index) => const SizedBox()));
+          if (children2.length % col != 0) {
+            children2.addAll(List.generate((col - (children.length % col)).toInt(), (index) => const SizedBox()));
           }
-//TODO: fix assymetic.
           for (int i = 0; i < divider; i++) {
             rows.add(
               Row(
-                children: children
-                    .sublist((i * crossAxisCount).toInt(), ((children.length / divider) * (i + 1)).round())
+                children: children2
+                    .sublist((i * crossAxisCount).toInt(), ((children2.length / divider) * (i + 1)).round())
                     .map((e) => Expanded(child: e))
                     .divide(gutter)
                     .toList(),

@@ -1,25 +1,22 @@
-import 'package:widgetbook_models/src/devices/device.dart';
-import 'package:widgetbook_models/src/devices/device_size.dart';
-import 'package:widgetbook_models/src/devices/resolution.dart';
+import 'package:flutter/material.dart';
+import 'package:widgetbook/widgetbook.dart';
 
 /// Collection of Zebra devices.
 class Zebra {
   /// Zebra EC50/EC55.
-  static const Device ec50 = Device.mobile(
-    name: 'EC50',
-    resolution: Resolution(
-      nativeSize: DeviceSize(width: 480, height: 854),
-      scaleFactor: 2,
-    ),
+  static final ec50 = DeviceInfo.genericPhone(
+    id: 'zebra-ec50',
+    name: 'Zebra EC50/EC55',
+    platform: TargetPlatform.android,
+    screenSize: const Size(480, 854),
   );
 
   /// Zebra EC30.
-  static const Device ec30 = Device.mobile(
-    name: 'EC30',
-    resolution: Resolution(
-      nativeSize: DeviceSize(width: 720, height: 1280),
-      scaleFactor: 2,
-    ),
+  static final ec30 = DeviceInfo.genericPhone(
+    id: 'zebra-ec30',
+    name: 'Zebra EC30',
+    platform: TargetPlatform.android,
+    screenSize: const Size(720, 1280),
   );
-  //TODO: Make more device models
+  // TODO(thelukewalton): Make more device models
 }

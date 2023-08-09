@@ -1,12 +1,7 @@
-// ignore_for_file: public_member_api_docs
-
 import 'package:flutter/material.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
-
-const Color exampleBlue = Color(0xCCc0dcf9);
-const Color exampleBlueDark = Color(0xFF7bb7f5);
 
 class ExampleModel {
   final Widget example;
@@ -61,23 +56,23 @@ class ExampleScaffold extends StatelessWidget {
   final String name;
   final Widget child;
   final List<Widget> actions;
-  final Color backgroundColor;
 
   const ExampleScaffold({
     required this.name,
     required this.child,
     this.actions = const [],
-    this.backgroundColor = Colors.white,
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
+    final ZetaColors colors = ZetaColors.of(context);
+
     return Scaffold(
-      appBar: AppBar(title: Text(name), actions: actions),
+      appBar: AppBar(title: Text(name), actions: actions, backgroundColor: colors.primary),
       body: SelectionArea(
-        child: Container(
-          color: backgroundColor,
+        child: ColoredBox(
+          color: colors.background,
           child: SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: Dimensions.x1, vertical: Dimensions.x6),
@@ -97,10 +92,11 @@ class CodeExample extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ZetaColors colors = ZetaColors.of(context);
     final widget = Container(
-      color: const Color(0xFFF5F5F5),
+      color: colors.surfaceDisabled,
       padding: Dimensions.x4.square,
-      child: Text(code, style: GoogleFonts.ibmPlexMono()),
+      child: Text(code, style: GoogleFonts.ibmPlexMono(color: colors.textDefault)),
     );
 
     return (fill
@@ -134,7 +130,7 @@ class FlutterWordMark extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: const Color(0xFFE9E9E9),
+      color: ZetaColors.of(context).borderSubtle,
       padding: padding,
       child: ZetaText(text),
     );

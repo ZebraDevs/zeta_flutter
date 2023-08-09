@@ -1,11 +1,8 @@
-// ignore_for_file: avoid_relative_lib_imports, no-magic-number
-
 import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:zeta_example/pages/typography_example.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
-import '../widgetbook/utils/zebra.dart';
 import 'test_components.dart';
 
 void main() {
@@ -17,27 +14,30 @@ void main() {
   testWidgets('Text tokens', (tester) async {
     await tester.pumpWidget(
       TestWidget(
-        widget: Column(
-          children: const [
-            ZetaText(exampleText, key: key1),
-            ZetaText(
-              exampleText,
-              maxWidth: 66,
-              decoration: TextDecoration.underline,
-              key: key2,
-              upperCase: true,
-              fontSize: 100,
-              fontStyle: FontStyle.italic,
-              fontWeight: FontWeight.w500,
-              textColor: ZetaColors.textColorSubtle,
-              textDirection: TextDirection.rtl, //TODO: Not sure how to test this
-              first: true,
-              last: true,
-              resetHeight: true,
-            ),
-            ZetaText(exampleText, style: ZetaText.zetaHeadingLarge, key: key3),
-            ZetaText.headingLarge(exampleText, key: key4),
-          ],
+        widget: Builder(
+          builder: (context) {
+            return Column(
+              children: [
+                const ZetaText(exampleText, key: key1),
+                ZetaText(
+                  exampleText,
+                  maxWidth: 66,
+                  decoration: TextDecoration.underline,
+                  key: key2,
+                  upperCase: true,
+                  fontSize: 100,
+                  fontStyle: FontStyle.italic,
+                  fontWeight: FontWeight.w500,
+                  textColor: ZetaColors.of(context).textSubtle,
+                  textDirection: TextDirection.rtl,
+                  first: true,
+                  last: true,
+                ),
+                const ZetaText(exampleText, style: ZetaText.zetaHeadingLarge, key: key3),
+                const ZetaText.headingLarge(exampleText, key: key4),
+              ],
+            );
+          },
         ),
       ),
     );
@@ -68,8 +68,6 @@ void main() {
     expect(item2Size.width.floor(), 800);
     expect(
       TextStyle(
-        fontFamily: text1.style?.fontFamily,
-        color: text1.style?.color,
         fontSize: text1.style?.fontSize,
         height: text1.style?.height,
         fontWeight: text1.style?.fontWeight,
@@ -78,8 +76,6 @@ void main() {
     );
     expect(
       TextStyle(
-            fontFamily: text2.style?.fontFamily,
-            color: text2.style?.color,
             fontSize: text2.style?.fontSize,
             height: text2.style?.height,
             fontWeight: text2.style?.fontWeight,
@@ -87,14 +83,17 @@ void main() {
           ZetaText.zetaBodyMedium,
       false,
     );
+    expect(text1.style?.fontFamily, 'packages/zeta_flutter/IBMPlexSans');
+    expect(text1.style?.color, const Color(0xFF1D1E23));
+
     expect(text1.style?.decoration, TextDecoration.none);
-    expect(text2.style?.decoration, TextDecoration.underline);
     expect(text1.toPlainText(), exampleText);
     expect(text2.toPlainText(), exampleText.toUpperCase());
+    expect(text2.style?.decoration, TextDecoration.underline);
     expect(text2.style?.fontSize, 100);
     expect(text2.style?.fontStyle, FontStyle.italic);
     expect(text2.style?.fontWeight, FontWeight.w500);
-    expect(text2.style?.color, ZetaColors.textColorSubtle);
+    expect(text2.style?.color, const Color(0xFF545963));
     expect(padding1.padding, Dimensions.x2.squish);
     expect(padding2.padding, EdgeInsets.zero);
     expect(text3, text4);
@@ -102,9 +101,9 @@ void main() {
 
   testWidgets('Responsive', (tester) async {
     await tester.pumpWidget(
-      TestWidget(
-        screenSize: Zebra.ec30,
-        widget: Column(children: const [ZetaText.displayLarge(exampleText, key: key1)]),
+      const TestWidget(
+        screenSize: Size(200, 400),
+        widget: Column(children: [ZetaText.displayLarge(exampleText, key: key1)]),
       ),
     );
 
@@ -114,13 +113,14 @@ void main() {
 
     expect(
       TextStyle(
-        fontFamily: text1.style?.fontFamily,
-        color: text1.style?.color,
         fontSize: text1.style?.fontSize,
         height: text1.style?.height,
         fontWeight: text1.style?.fontWeight,
       ),
       ZetaText.zetaDisplayLargeResponsive,
     );
+
+    expect(text1.style?.fontFamily, 'packages/zeta_flutter/IBMPlexSans');
+    expect(text1.style?.color, const Color(0xFF1D1E23));
   });
 }
