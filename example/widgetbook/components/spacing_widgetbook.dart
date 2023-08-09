@@ -31,11 +31,11 @@ WidgetbookComponent spacingWidgetbook() {
           child: Row(
             children: [
               Expanded(
-                child: Container(
+                child: ColoredBox(
                   color: const Color(0xFFcce2fa),
                   child: ZetaSpacing(
                     const SpacingItem(),
-                    size: context.knobs.options(
+                    size: context.knobs.list(
                       label: 'Size',
                       labelBuilder: (p0) => 'x${p0 ~/ 4}',
                       options: const [
@@ -57,7 +57,7 @@ WidgetbookComponent spacingWidgetbook() {
                         Dimensions.x24,
                       ],
                     ),
-                    type: context.knobs.options(label: 'Spacing Type', options: typeSelector),
+                    type: context.knobs.list(label: 'Spacing Type', options: typeSelector),
                   ),
                 ),
               ),
@@ -71,16 +71,16 @@ WidgetbookComponent spacingWidgetbook() {
           child: Row(
             children: [
               Expanded(
-                child: Container(
+                child: ColoredBox(
                   color: const Color(0xFFcce2fa),
                   child: ZetaSpacing(
                     const SpacingItem(),
-                    size: context.knobs.options(
+                    size: context.knobs.list(
                       label: 'Size',
                       labelBuilder: (p0) => tShirtSizes.entries.firstWhere((element) => element.value == p0).key,
                       options: tShirtSizes.values.toList(),
                     ),
-                    type: context.knobs.options(label: 'Spacing Type', options: typeSelector),
+                    type: context.knobs.list(label: 'Spacing Type', options: typeSelector),
                   ),
                 ),
               ),
@@ -94,11 +94,11 @@ WidgetbookComponent spacingWidgetbook() {
           child: Row(
             children: [
               Expanded(
-                child: Container(
+                child: ColoredBox(
                   color: const Color(0xFFcce2fa),
                   child: ZetaSpacing(
                     const SpacingItem(),
-                    size: (context.knobs.slider(
+                    size: (context.knobs.double.slider(
                               label: 'Size (rounding to nearest even int)',
                               min: 0,
                               max: 96,
@@ -106,7 +106,7 @@ WidgetbookComponent spacingWidgetbook() {
                             ) ~/
                             2) *
                         2,
-                    type: context.knobs.options(label: 'Spacing Type', options: typeSelector),
+                    type: context.knobs.list(label: 'Spacing Type', options: typeSelector),
                   ),
                 ),
               ),

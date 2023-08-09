@@ -32,15 +32,15 @@ extension BreakpointLocal on BoxConstraints {
   /// Returns based on the constrains locally to the widget, rather than the whole screen.
   DeviceType get deviceType {
     final width = maxWidth;
-    if (width <= _ZetaBreakpoints._mobilePortraitMax) {
+    if (width <= _Breakpoints._mobilePortraitMax) {
       return DeviceType.mobilePortrait;
-    } else if (width <= _ZetaBreakpoints._mobileLandscapeMax) {
+    } else if (width <= _Breakpoints._mobileLandscapeMax) {
       return DeviceType.mobileLandscape;
-    } else if (width <= _ZetaBreakpoints._tabletMax) {
+    } else if (width <= _Breakpoints._tabletMax) {
       return DeviceType.tablet;
-    } else if (width <= _ZetaBreakpoints._desktopMax) {
+    } else if (width <= _Breakpoints._desktopMax) {
       return DeviceType.desktop;
-    } else if (width <= _ZetaBreakpoints._desktopLMax) {
+    } else if (width <= _Breakpoints._desktopLMax) {
       return DeviceType.desktopL;
     } else {
       return DeviceType.desktopXL;
@@ -56,15 +56,15 @@ extension BreakpointFull on BuildContext {
   DeviceType get deviceType {
     final width = MediaQuery.of(this).size.width;
 
-    if (width <= _ZetaBreakpoints._mobilePortraitMax) {
+    if (width <= _Breakpoints._mobilePortraitMax) {
       return DeviceType.mobilePortrait;
-    } else if (width <= _ZetaBreakpoints._mobileLandscapeMax) {
+    } else if (width <= _Breakpoints._mobileLandscapeMax) {
       return DeviceType.mobileLandscape;
-    } else if (width <= _ZetaBreakpoints._tabletMax) {
+    } else if (width <= _Breakpoints._tabletMax) {
       return DeviceType.tablet;
-    } else if (width <= _ZetaBreakpoints._desktopMax) {
+    } else if (width <= _Breakpoints._desktopMax) {
       return DeviceType.desktop;
-    } else if (width <= _ZetaBreakpoints._desktopLMax) {
+    } else if (width <= _Breakpoints._desktopLMax) {
       return DeviceType.desktopL;
     } else {
       return DeviceType.desktopXL;
@@ -72,8 +72,7 @@ extension BreakpointFull on BuildContext {
   }
 }
 
-//TODO: Determine how best to make this not private.
-class _ZetaBreakpoints {
+class _Breakpoints {
   static const _mobilePortraitMin = 240;
   static const _mobilePortraitMax = 479;
   static const _mobileLandscapeMin = 480;

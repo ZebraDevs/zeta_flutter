@@ -1,3 +1,20 @@
+## [0.0.1+11] - 2023-08-09
+### :flying_saucer: Other Changes
+- [`193dc42`](https://github.com/zebratechnologies/zeta-flutter/commit/193dc42c8e7419d9087afdffce0eae915af12819) - Feature/color ([#21](https://github.com/zebratechnologies/zeta-flutter/pull/21))
+
+* feat(color): Adding color defs
+
+*  feat(color): starting colorswatch util
+
+* bug(quality): updating lint rules
+
+* feat(color): adding widgetbook and tests
+
+* bug(platforms): adding windows into example
+
+* bug(type): Fixing reset height and tests failing *(commit by [@thelukewalton](https://github.com/thelukewalton))*
+
+
 ## [0.0.1+10] - 2023-07-11
 ### :flying_saucer: Other Changes
 - [`6638e94`](https://github.com/zebratechnologies/zeta-flutter/commit/6638e941b4027136c293c403c5c00e051fee5c97) - removing hardcoded shas *(PR [#19](https://github.com/zebratechnologies/zeta-flutter/pull/19) by [@thelukewalton](https://github.com/thelukewalton))*
@@ -122,3 +139,4 @@ adding code example _(commit by [@thelukewalton](https://github.com/thelukewalto
 [0.0.1+8]: https://github.com/zebratechnologies/zeta-flutter/compare/0.0.1+6...0.0.1+8
 [0.0.1+9]: https://github.com/zebratechnologies/zeta-flutter/compare/0.0.1+6...0.0.1+9
 [0.0.1+10]: https://github.com/zebratechnologies/zeta-flutter/compare/0.0.1+9...0.0.1+10
+[0.0.1+11]: https://github.com/zebratechnologies/zeta-flutter/compare/0.0.1+10...0.0.1+11

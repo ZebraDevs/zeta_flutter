@@ -1,5 +1,3 @@
-// ignore_for_file: public_member_api_docs
-
 import 'package:flutter/material.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
@@ -85,7 +83,7 @@ class SpacingExample extends StatelessWidget {
       name: name,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [..._x.map((e) => e == null ? const Divider() : ExampleBuilder(e)).toList()]..removeLast(),
+        children: [..._x.map((e) => e == null ? const Divider() : ExampleBuilder(e))]..removeLast(),
       ),
     );
   }
@@ -101,8 +99,8 @@ class _SpaceExample extends StatelessWidget {
     return Row(
       children: [
         Expanded(
-          child: Container(
-            color: exampleBlue,
+          child: ColoredBox(
+            color: ZetaColors.of(context).blue.shade20,
             child: ZetaSpacing(const SpacingItem(), size: size, type: type),
           ),
         ),
@@ -116,7 +114,7 @@ class SpacingItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return DecoratedBox(
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.surface,
         border: Border.all(color: const Color(0xFFdddddd)),

@@ -1,9 +1,11 @@
+/// Zebra Design System (Zeta) - Flutter Component Library
 library zeta_flutter;
 
-export 'src/components/grid.dart';
-export 'src/components/spacing.dart';
-export 'src/components/text.dart';
-export 'src/theme/constants.dart';
-export 'src/theme/theme.dart';
-export 'src/tokens.dart';
-export 'src/utils/extensions.dart';
+export 'components/grid.dart';
+export 'components/spacing.dart';
+export 'components/text.dart';
+export 'theme/constants.dart';
+export 'theme/theme.dart';
+export 'tokens.dart';
+export 'utils/extensions.dart';
+export 'zeta.dart';

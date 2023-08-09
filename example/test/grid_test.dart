@@ -1,10 +1,7 @@
-// ignore_for_file: avoid_relative_lib_imports, no-magic-number
-
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:zeta_example/pages/grid_example.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
-import '../widgetbook/utils/zebra.dart';
 import 'test_components.dart';
 
 void main() {
@@ -28,7 +25,7 @@ void main() {
     await tester.pumpWidget(
       TestWidget(
         widget: ZetaGrid(children: List.generate(20, (index) => GridItem(key: Key(index.toString())))),
-        screenSize: Zebra.ec50,
+        screenSize: const Size(400, 600),
       ),
     );
 

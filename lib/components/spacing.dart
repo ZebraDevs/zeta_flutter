@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 import '../tokens.dart';
 
 /// Spacing types for [ZetaSpacing].
+
 enum ZetaSpacingType {
   /// {@template zeta-spacing-square}
   /// Identical spacing on all four sides.
@@ -61,9 +62,9 @@ class ZetaSpacing extends StatelessWidget {
 
   /// Size of insets to be applied around [child].
   ///
-  /// Should be an even number, and be no larger than [x24].
+  /// Should be an even number, and be no larger than [Dimensions.x24].
   ///
-  /// Defaults to [x0].
+  /// Defaults to [Dimensions.x0].
   final double size;
 
   /// Constructs [ZetaSpacing].
