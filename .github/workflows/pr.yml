@@ -1,4 +1,4 @@
-name: "PR" # TODO: Publish this as a reusable action
+name: "PR"
 on:
   pull_request:
 
@@ -49,7 +49,7 @@ jobs:
         uses: tj-actions/branch-names@v5.1
       - uses: subosito/flutter-action@v2
         with:
-          flutter-version: "3.10.x"
+          flutter-version: "3.13.x"
           channel: "stable"
       - name: Setup flutter
         run: flutter pub get

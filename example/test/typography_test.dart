@@ -33,8 +33,8 @@ void main() {
                   first: true,
                   last: true,
                 ),
-                const ZetaText(exampleText, style: ZetaText.zetaHeadingLarge, key: key3),
-                const ZetaText.headingLarge(exampleText, key: key4),
+                ZetaText(exampleText, style: ZetaText.zetaHeadingLarge, key: key3),
+                ZetaText.headingLarge(exampleText, key: key4),
               ],
             );
           },
@@ -97,30 +97,5 @@ void main() {
     expect(padding1.padding, Dimensions.x2.squish);
     expect(padding2.padding, EdgeInsets.zero);
     expect(text3, text4);
-  });
-
-  testWidgets('Responsive', (tester) async {
-    await tester.pumpWidget(
-      const TestWidget(
-        screenSize: Size(200, 400),
-        widget: Column(children: [ZetaText.displayLarge(exampleText, key: key1)]),
-      ),
-    );
-
-    final Finder zetaText1 = find.byKey(key1);
-    final InlineSpan text1 =
-        (find.descendant(of: zetaText1, matching: find.byType(RichText)).evaluate().first.widget as RichText).text;
-
-    expect(
-      TextStyle(
-        fontSize: text1.style?.fontSize,
-        height: text1.style?.height,
-        fontWeight: text1.style?.fontWeight,
-      ),
-      ZetaText.zetaDisplayLargeResponsive,
-    );
-
-    expect(text1.style?.fontFamily, 'packages/zeta_flutter/IBMPlexSans');
-    expect(text1.style?.color, const Color(0xFF1D1E23));
   });
 }

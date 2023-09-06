@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../theme/breakpoints.dart';
@@ -141,5 +142,14 @@ class ZetaGrid extends StatelessWidget {
         return Padding(padding: const EdgeInsets.all(tokens.Grid.gridMargin), child: widget);
       },
     );
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty<bool>('hybrid', hybrid));
+    properties.add(DoubleProperty('col', col));
+    properties.add(DiagnosticsProperty<bool>('noGaps', noGaps));
+    properties.add(IntProperty('asymmetricWeight', asymmetricWeight));
   }
 }
