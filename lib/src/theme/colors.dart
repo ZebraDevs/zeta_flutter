@@ -2,7 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-import '../../zeta_flutter.dart';
+import '../../../zeta_flutter.dart';
 
 /// Zeta Colors.
 ///
@@ -43,45 +43,59 @@ class ZetaColors {
   final ZetaColorSwatch _teal;
   final ZetaColorSwatch _pink;
 
-  final Color? _onPrimary;
-  final Color? _onSecondary;
-  final Color? _onNegative;
   final Color? _background;
-  final Color? _onBackground;
   final Color? _surface;
-  final Color? _onSurface;
   final Color? _white;
   final Color? _black;
 
-  static const _minShade = 10;
-  static const Color _defaultShadow = Color(0x1A49505E);
+  final Color? _onPrimary;
+  final Color? _onSecondary;
+  final Color? _onNegative;
+  final Color? _onBackground;
+  final Color? _onSurface;
 
-  /// Generated color for use on [secondary].
+  final Map<String, Color> _generatedColors;
+
+  static const _minShade = 10;
+
+  /// Generated color for use on [primary].
   ///
   /// {@template zeta-color-on-X}
   /// If [secondary] is dark, [onSecondary] will be [textDarkMode].
   ///
   /// If [secondary] is light, [onSecondary] will be [textLightMode].
   /// {@endtemplate}
-  Color get onSecondary =>
-      _onSecondary ??
-      computeForeground(
-        input: secondary,
-        light: textDarkMode,
-        dark: textLightMode,
-      );
+  Color get onPrimary {
+    if (_onPrimary != null) return _onPrimary!;
+    // if (_generatedColors['onPrimary'] != null) return _generatedColors['onPrimary']!;
+    _generatedColors['onPrimary'] = computeForegroundFromTheme(input: primary);
+
+    return _generatedColors['onPrimary']!;
+  }
 
   /// Generated color for use on [secondary].
   ///
   /// {@macro zeta-color-on-X}
-  Color get onPrimary => _onPrimary ?? computeForeground(input: primary, light: textDarkMode, dark: textLightMode);
+  Color get onSecondary {
+    if (_onSecondary != null) return _onSecondary!;
+    if (_generatedColors['onSecondary'] != null) return _generatedColors['onSecondary']!;
+    _generatedColors['onSecondary'] = computeForegroundFromTheme(input: secondary);
+
+    return _generatedColors['onSecondary']!;
+  }
 
   /// Generated color for use on [negative].
   ///
   /// {@macro zeta-color-on-X}
-  Color get onNegative => _onNegative ?? computeForeground(input: negative, light: textDarkMode, dark: textLightMode);
+  Color get onNegative {
+    if (_onNegative != null) return _onNegative!;
+    if (_generatedColors['onNegative'] != null) return _generatedColors['onNegative']!;
+    _generatedColors['onNegative'] = computeForegroundFromTheme(input: negative);
 
-  /// Generated color for use on [surface].
+    return _generatedColors['onNegative']!;
+  }
+
+  /// On surface color.
   ///
   /// {@macro zeta-color-on-X}
   Color get onSurface => _onSurface ?? textDefault;
@@ -165,7 +179,7 @@ class ZetaColors {
   /// Background color.
   ///
   /// See [ColorScheme.background].
-  Color get background => _background ?? surfacePrimary;
+  Color get background => _background ?? warm.shade10;
 
   /// On background color.
   ///
@@ -195,7 +209,7 @@ class ZetaColors {
   ///
   /// * Light mode: `ZetaColors.cool.10`.
   /// * Dark mode: `ZetaColors.warm.30`.
-  Color get surfaceSecondary => isDarkMode ? warm.shade10 : cool.shade10;
+  Color get surfaceSecondary => isDarkMode ? cool.shade10 : white;
 
   /// Tertiary surface color.
   ///
@@ -222,7 +236,7 @@ class ZetaColors {
   /// {@macro zeta-color-dark}
   ///
   /// {@macro zeta-color-aaa}
-  Color get positive => green.primary;
+  Color get positive => green.shade60;
 
   /// Red negative color.
   ///
@@ -233,7 +247,7 @@ class ZetaColors {
   /// {@macro zeta-color-dark}
   ///
   /// {@macro zeta-color-aaa}
-  Color get negative => red.primary;
+  Color get negative => red.shade60;
 
   /// Orange warning color.
   ///
@@ -425,7 +439,7 @@ class ZetaColors {
   List<ZetaColorSwatch> get rainbow => [red, orange, yellow, green, blue, teal, pink];
 
   /// Default constructor for instance of [ZetaColors].
-  const ZetaColors({
+  ZetaColors({
     ZetaColorSwatch primary = ZetaColorBase.blue,
     ZetaColorSwatch secondary = ZetaColorBase.blue,
     ZetaColorSwatch cool = ZetaColorBase.greyCool,
@@ -442,7 +456,7 @@ class ZetaColors {
     Color linkVisitedLight = ZetaColorBase.linkVisitedLight,
     Color linkDark = ZetaColorBase.linkDark,
     Color linkVisitedDark = ZetaColorBase.linkVisitedDark,
-    this.shadow = _defaultShadow,
+    this.shadow = ZetaColorBase.shadow,
     this.isDarkMode = false,
     this.isAAA = false,
     Color? onPrimary,
@@ -478,7 +492,8 @@ class ZetaColors {
         _surface = surface,
         _onSurface = onSurface,
         _black = black,
-        _white = white;
+        _white = white,
+        _generatedColors = {};
 
   /// Creates a [ZetaColors] from individual colors and generates their full swatches with [ZetaColorSwatch.fromColor]
   ZetaColors.fromColors({
@@ -507,7 +522,7 @@ class ZetaColors {
     Color? onSurface,
     Color? black,
     Color? white,
-    this.shadow = _defaultShadow,
+    this.shadow = ZetaColorBase.shadow,
     this.isDarkMode = false,
     this.isAAA = false,
   })  : _primary = primary?.zetaColorSwatch ?? ZetaColorBase.blue,
@@ -534,7 +549,8 @@ class ZetaColors {
         _surface = surface,
         _onSurface = onSurface,
         _black = black,
-        _white = white;
+        _white = white,
+        _generatedColors = {};
 
   /// Returns a new ZetaColors instance, with the copied fields applied.
   ZetaColors copyWith({
@@ -585,13 +601,24 @@ class ZetaColors {
     Color light = ZetaColorBase.white,
     Color dark = ZetaColorBase.black,
   }) =>
-      input.computeLuminance() > 0.5 ? dark : light;
+      input.isLight ? dark : light;
+
+  /// Calculates foreground color based on luminance of input.
+  Color computeForegroundFromTheme({required Color input}) => input.isLight ? textDefault : textInverse;
 
   /// Setter for updating ZetaColors instance based on current context.
   static void setColors(BuildContext context, ZetaColors colors) {
     final ZetaState? state = context.findAncestorStateOfType<ZetaState>();
     if (state != null) {
       state.colors = colors;
+    }
+  }
+
+  /// Setter for updating if dark mode is activated for ZetaColors instance based on current context.
+  static void setDarkMode(BuildContext context, bool val) {
+    final ZetaState? state = context.findAncestorStateOfType<ZetaState>();
+    if (state != null) {
+      state.colors = state.colors.copyWith(isDarkMode: val);
     }
   }
 
@@ -602,7 +629,8 @@ class ZetaColors {
   static ZetaColors of(BuildContext context) {
     final ZetaState? state = context.findAncestorStateOfType<ZetaState>();
 
-    return state?.colors ?? const ZetaColors();
+    // ignore: prefer_const_constructors
+    return state?.colors ?? ZetaColors();
   }
 }
 
@@ -740,6 +768,9 @@ extension ColorExtension on Color {
 
     return hslColor.withLightness(percentage).toColor();
   }
+
+  /// Uses [computeLuminance] to determine if a color if light.
+  bool get isLight => computeLuminance() > 0.5;
 
   /// Gets lightness of color.
   double get lightness => HSLColor.fromColor(this).lightness;

@@ -1,4 +1,4 @@
-import '../zeta_flutter.dart';
+import '../../zeta_flutter.dart';
 
 /// Tokens that are used for [ZetaSpacing].
 ///

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../zeta_flutter.dart';
+import '../../../zeta_flutter.dart';
 
 export 'breakpoints.dart';
 export 'colors.dart';
@@ -34,8 +34,7 @@ class ZetaTheme {
   /// {@endtemplate}
   static ThemeData zetaLight({ZetaThemeData? initialTheme}) {
     return ThemeData(
-      colorScheme:
-          initialTheme?.colorScheme ?? initialTheme?.zetaColors?.toColorScheme ?? const ZetaColors().toColorScheme,
+      colorScheme: initialTheme?.colorScheme ?? initialTheme?.zetaColors?.toColorScheme ?? ZetaColors().toColorScheme,
       fontFamily: initialTheme?.fontFamily ?? 'packages/zeta_flutter/IBMPlexSans',
       // TODO(tokens): reinstate tokens.Typography.fontFamily when we have a plan for tokens
       textTheme: initialTheme?.textTheme ?? ZetaText.textTheme,
@@ -49,7 +48,7 @@ class ZetaTheme {
     return ThemeData(
       colorScheme: initialTheme?.colorScheme ??
           initialTheme?.zetaColors?.copyWith(isDarkMode: true).toColorScheme ??
-          const ZetaColors().toColorScheme,
+          ZetaColors().toColorScheme,
       fontFamily: initialTheme?.fontFamily ?? 'packages/zeta_flutter/IBMPlexSans',
       textTheme: initialTheme?.textTheme ?? ZetaText.textTheme,
     );
@@ -61,7 +60,7 @@ class ZetaTheme {
   ///
   /// {@macro zeta-theme}
   static ThemeData builder({ZetaThemeData? initialTheme}) {
-    final ZetaColors colors = initialTheme?.zetaColors ?? const ZetaColors();
+    final ZetaColors colors = initialTheme?.zetaColors ?? ZetaColors();
 
     return ThemeData(
       colorScheme: initialTheme?.colorScheme ?? colors.toColorScheme,
@@ -113,4 +112,17 @@ class ZetaThemeData {
       textTheme: textTheme ?? this.textTheme,
     );
   }
+}
+
+/// Font family for whole theme.
+extension FontFamily on ThemeData {
+  /// Default font family used by theme.
+  ///
+  /// We assume that the same font should be used for all text styles in a theme, therefore we can extract from any child theme.
+  String? get fontFamily => textTheme.bodyMedium?.fontFamily;
+
+  /// Default text color used by theme.
+  ///
+  /// We assume that the same font should be used for all text styles in a theme, therefore we can extract from any child theme.
+  Color? get defaultColor => textTheme.bodyMedium?.color;
 }

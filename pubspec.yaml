@@ -1,7 +1,10 @@
 name: zeta_flutter
+version: 0.0.1+12
 description: Zebra Design System (Zeta) - Flutter Component Library
-version: 0.0.1+11
-repository: "https:/github.com/zebradevs/zeta-flutter"
+homepage: https://github.com/zebradevs/zeta_flutter
+repository: https://github.com/zebradevs/zeta_flutter
+issue_tracker: https://github.com/zebradevs/zeta_flutter/issues
+documentation: https://zeta-ds.web.app/flutter/dartdoc/index.html
 
 platforms:
   android:
@@ -10,7 +13,6 @@ platforms:
   web:
   windows:
   linux:
-
 
 environment:
   sdk: ">=3.0.1 <4.0.0"
@@ -28,10 +30,10 @@ flutter:
   fonts:
     - family: IBMPlexSans
       fonts:
-        - asset: lib/assets/fonts/IBMPlexSans-Light.otf
+        - asset: lib/src/assets/fonts/IBMPlexSans-Light.otf
           weight: 300
-        - asset: lib/assets/fonts/IBMPlexSans-Regular.otf
+        - asset: lib/src/assets/fonts/IBMPlexSans-Regular.otf
           weight: 400
-        - asset: lib/assets/fonts/IBMPlexSans-Medium.otf
+        - asset: lib/src/assets/fonts/IBMPlexSans-Medium.otf
           weight: 500
   uses-material-design: true

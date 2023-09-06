@@ -99,7 +99,7 @@ WidgetbookComponent colorWidgetBook() {
                           MyRow(children: backdrop, title: 'Backdrop colors'),
                           MyRow(children: primaries, title: 'Primary colors'),
                           MyRow(children: alerts, title: 'Alert colors'),
-                          const Row(children: [ZetaText.displayMedium('Full color swatches')]).squish(Dimensions.x8),
+                          Row(children: [ZetaText.displayMedium('Full color swatches')]).squish(Dimensions.x8),
                           ...swatches.entries.map(
                             (value) {
                               return Row(

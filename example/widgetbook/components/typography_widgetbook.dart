@@ -8,7 +8,6 @@ WidgetbookComponent textWidgetBook() {
     'Body small': ZetaText.zetaBodySmall,
     'Body medium': ZetaText.zetaBodyMedium,
     'Body large': ZetaText.zetaBodyLarge,
-    'Description': ZetaText.zetaDescription,
     'Headline small': ZetaText.zetaHeadingSmall,
     'Headline medium': ZetaText.zetaHeadingMedium,
     'Headline large': ZetaText.zetaHeadingLarge,
