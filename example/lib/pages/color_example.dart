@@ -102,7 +102,7 @@ class _ColorExampleState extends State<ColorExample> {
         return ExampleScaffold(
           name: ColorExample.name,
           actions: [
-            const Center(child: ZetaText('DarkMode', textColor: Colors.white)),
+            Center(child: ZetaText('DarkMode', textColor: Colors.white)),
             Switch.adaptive(
               value: colors.isDarkMode,
               onChanged: (isDarkMode) => ZetaColors.setColors(context, colors.copyWith(isDarkMode: isDarkMode)),
@@ -123,7 +123,7 @@ class _ColorExampleState extends State<ColorExample> {
               MyRow(children: backdrop, title: 'Backdrop colors'),
               MyRow(children: primaries, title: 'Primary colors'),
               MyRow(children: alerts, title: 'Alert colors'),
-              const Row(children: [ZetaText.displayMedium('Full color swatches')]).squish(Dimensions.x8),
+              Row(children: [ZetaText.displayMedium('Full color swatches')]).squish(Dimensions.x8),
               ...swatches.entries.map(
                 (value) => Row(
                   children: List.generate(10, (index) => 100 - (10 * index))
@@ -161,36 +161,41 @@ class _ColorExampleState extends State<ColorExample> {
                 child: const Text('Toggle generated colors').square(Dimensions.s),
               ).square(Dimensions.s),
               if (showGeneratedColors)
-                const Row(children: [ZetaText.displayMedium('Generated color swatches')]).squish(Dimensions.x8),
+                Row(children: [ZetaText.displayMedium('Generated color swatches')]).squish(Dimensions.x8),
               if (showGeneratedColors)
                 ...generatedSwatches.entries.map(
                   (value) => Row(
-                    children: List.generate(10, (index) => 100 - (10 * index))
+                    children: List.generate(11, (index) => 110 - (10 * index))
                         .map(
                           (e) => Expanded(
                             child: Container(
                               height: constraints.maxWidth / 10,
-                              color: value.value[e],
-                              child: FittedBox(
-                                fit: BoxFit.scaleDown,
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                    DefaultTextStyle(
-                                      style: ZetaText.zetaBodyMedium
-                                          .copyWith(color: calculateTextColor(value.value[e] ?? Colors.white)),
+                              color: e == 110 ? colors.surface : value.value[e],
+                              child: e == 110
+                                  ? SizedBox()
+                                  : FittedBox(
+                                      fit: BoxFit.scaleDown,
                                       child: Column(
+                                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                         children: [
-                                          Text('${value.key.toLowerCase().replaceAll(' ', '')}-$e'),
-                                          Text(
-                                            value.value[e].toString().replaceAll('Color(0xff', '#').substring(0, 7),
+                                          DefaultTextStyle(
+                                            style: ZetaText.zetaBodyMedium
+                                                .copyWith(color: calculateTextColor(value.value[e] ?? Colors.white)),
+                                            child: Column(
+                                              children: [
+                                                Text('${value.key.toLowerCase().replaceAll(' ', '')}-$e'),
+                                                Text(
+                                                  value.value[e]
+                                                      .toString()
+                                                      .replaceAll('Color(0xff', '#')
+                                                      .substring(0, 7),
+                                                ),
+                                              ],
+                                            ),
                                           ),
                                         ],
                                       ),
                                     ),
-                                  ],
-                                ),
-                              ),
                             ),
                           ),
                         )

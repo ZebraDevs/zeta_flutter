@@ -1,35 +1,8 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import '../theme/theme.dart';
+import '../../zeta_flutter.dart';
 import '../tokens.dart' as tokens;
-import 'spacing.dart';
-
-/// Determine whether to show mobile text for heading / display.
-extension ResponsiveBreak on DeviceType {
-  /// Determine whether to show mobile text for heading / display.
-  bool get responsiveText {
-    return name == 'mobileLandscape' || name == 'mobilePortrait';
-  }
-}
-
-/// Extension to add [mobileStyle] to [TextStyle].
-extension Responsive on TextStyle {
-  /// Gets a responsive variant of a Zeta TextStyle.
-  ///
-  /// Variants exist for Zeta Heading and Display TextStyles, otherwise the TextStyle is returned unchanged.
-  TextStyle get mobileStyle {
-    final Map<TextStyle, TextStyle> responsiveMap = {
-      ZetaText.zetaHeadingSmall: ZetaText.zetaHeadingSmallResponsive,
-      ZetaText.zetaHeadingMedium: ZetaText.zetaHeadingMediumResponsive,
-      ZetaText.zetaHeadingLarge: ZetaText.zetaHeadingLargeResponsive,
-      ZetaText.zetaDisplaySmall: ZetaText.zetaDisplaySmallResponsive,
-      ZetaText.zetaDisplayMedium: ZetaText.zetaDisplayMediumResponsive,
-      ZetaText.zetaDisplayLarge: ZetaText.zetaDisplayLargeResponsive,
-    };
-
-    return responsiveMap[this] ?? this;
-  }
-}
 
 /// {@template zeta-component-text}
 /// ZetaText component.
@@ -45,7 +18,7 @@ class ZetaText extends StatelessWidget {
   /// Text styles for Zeta.
   ///
   /// {@macro zeta-theme}
-  static const TextTheme textTheme = TextTheme(
+  static TextTheme textTheme = TextTheme(
     displayLarge: zetaDisplayLarge,
     displayMedium: zetaDisplayMedium,
     displaySmall: zetaDisplaySmall,
@@ -63,7 +36,7 @@ class ZetaText extends StatelessWidget {
     labelSmall: zetaLabelSmall,
   );
 
-  /// Buids text theme for app based on an instance of [ZetaColors].
+  /// Builds text theme for app based on an instance of [ZetaColors].
   static TextTheme textThemeBuilder(ZetaColors colors) {
     return TextTheme(
       displayLarge: zetaDisplayLarge.copyWith(color: colors.textDefault),
@@ -84,41 +57,30 @@ class ZetaText extends StatelessWidget {
     );
   }
 
-  /// Returns responsive text style.
+  /// {@template zeta-type-body-xs}
+  /// Smallest body text.
   ///
-  /// Should only be used on [DeviceType.mobileLandscape] and [DeviceType.mobilePortrait].
+  /// Used for UI components and UI content design.
   ///
-  /// Automatically applied in [ZetaText] but must be applied manually otherwise.
-  static const TextTheme textThemeMobile = TextTheme(
-    displayLarge: zetaDisplayLargeResponsive,
-    displayMedium: zetaDisplayMediumResponsive,
-    displaySmall: zetaDisplaySmallResponsive,
-    headlineLarge: zetaHeadingLargeResponsive,
-    headlineMedium: zetaHeadingMediumResponsive,
-    headlineSmall: zetaHeadingSmallResponsive,
-    titleLarge: zetaTitleLarge,
-    titleMedium: zetaTitleMedium,
-    titleSmall: zetaTitleSmall,
-    bodyLarge: zetaBodyLarge,
-    bodyMedium: zetaBodyMedium,
-    bodySmall: zetaBodySmall,
-    labelLarge: zetaLabelLarge,
-    labelMedium: zetaLabelMedium,
-    labelSmall: zetaLabelSmall,
+  /// {@endtemplate}
+  static TextStyle zetaBodyXSmall = const TextStyle(
+    fontSize: tokens.Dimensions.x3,
+    fontWeight: FontWeight.w400,
+    height: tokens.Dimensions.x3 / tokens.Dimensions.x4,
   );
 
   /// {@template zeta-type-body-s}
-  /// Smallest body text.
+  /// Small body text.
   ///
   /// Used for UI components and UI content design.
   ///
   /// See also:
   /// * [TextTheme.bodySmall].
   /// {@endtemplate}
-  static const TextStyle zetaBodySmall = TextStyle(
-    fontSize: tokens.Dimensions.x3,
+  static TextStyle zetaBodySmall = const TextStyle(
+    fontSize: tokens.Dimensions.x3_5,
     fontWeight: FontWeight.w400,
-    height: tokens.Dimensions.x4 / tokens.Dimensions.x3,
+    height: 18 / 14,
   );
 
   /// {@template zeta-type-body-m}
@@ -129,7 +91,7 @@ class ZetaText extends StatelessWidget {
   /// See also:
   /// * [TextTheme.bodyMedium].
   /// {@endtemplate}
-  static const TextStyle zetaBodyMedium = TextStyle(
+  static TextStyle zetaBodyMedium = const TextStyle(
     fontSize: tokens.Dimensions.x4,
     fontWeight: FontWeight.w400,
     height: tokens.Dimensions.x6 / tokens.Dimensions.x4,
@@ -143,10 +105,10 @@ class ZetaText extends StatelessWidget {
   /// See also:
   /// * [TextTheme.bodyLarge].
   /// {@endtemplate}
-  static const TextStyle zetaBodyLarge = TextStyle(
+  static TextStyle zetaBodyLarge = const TextStyle(
     fontSize: tokens.Dimensions.x5,
     fontWeight: FontWeight.w400,
-    height: tokens.Dimensions.x7 / tokens.Dimensions.x5,
+    height: tokens.Dimensions.x6 / tokens.Dimensions.x5,
   );
 
   /// {@template zeta-type-label-s}
@@ -157,10 +119,10 @@ class ZetaText extends StatelessWidget {
   /// See also:
   /// * [TextTheme.labelSmall].
   /// {@endtemplate}
-  static const TextStyle zetaLabelSmall = TextStyle(
+  static TextStyle zetaLabelSmall = const TextStyle(
     fontSize: tokens.Dimensions.x3,
     fontWeight: FontWeight.w500,
-    height: 1,
+    height: tokens.Dimensions.x4 / tokens.Dimensions.x3,
   );
 
   /// {@template zeta-type-label-m}
@@ -171,10 +133,10 @@ class ZetaText extends StatelessWidget {
   /// See also:
   /// * [TextTheme.labelMedium].
   /// {@endtemplate}
-  static const TextStyle zetaLabelMedium = TextStyle(
-    fontSize: tokens.Dimensions.x4,
+  static TextStyle zetaLabelMedium = const TextStyle(
+    fontSize: tokens.Dimensions.x3_5,
     fontWeight: FontWeight.w500,
-    height: 1,
+    height: tokens.Dimensions.x3_5 / tokens.Dimensions.x5,
   );
 
   /// {@template zeta-type-label-l}
@@ -185,52 +147,56 @@ class ZetaText extends StatelessWidget {
   /// See also:
   /// * [TextTheme.labelLarge].
   /// {@endtemplate}
-  static const TextStyle zetaLabelLarge = TextStyle(
-    fontSize: tokens.Dimensions.x5,
+  static TextStyle zetaLabelLarge = const TextStyle(
+    fontSize: tokens.Dimensions.x4,
     fontWeight: FontWeight.w500,
-    height: 1,
+    height: tokens.Dimensions.x4 / tokens.Dimensions.x6,
   );
 
   /// {@template zeta-type-title-s}
-  /// Small title text.
+  /// Heading 6 / Small title text.
   ///
   /// Used for UI components and UI content design.
   ///
   /// See also:
   /// * [TextTheme.titleSmall].
   /// {@endtemplate}
-  static const TextStyle zetaTitleSmall = TextStyle(
+  static TextStyle zetaTitleSmall = const TextStyle(
     fontSize: tokens.Dimensions.x3,
     fontWeight: FontWeight.w500,
     height: tokens.Dimensions.x4 / tokens.Dimensions.x3,
   );
 
   /// {@template zeta-type-title-m}
-  /// Medium title text.
+  /// Heading 5 / Medium title text.
   ///
   /// Used for UI components and UI content design.
   ///
   /// See also:
   /// * [TextTheme.titleMedium].
   /// {@endtemplate}
-  static const TextStyle zetaTitleMedium = TextStyle(
+  static TextStyle zetaTitleMedium = const TextStyle(
     fontSize: tokens.Dimensions.x4,
     fontWeight: FontWeight.w500,
     height: tokens.Dimensions.x5 / tokens.Dimensions.x4,
   );
 
+// TODO(tokens): How to add color and font family here?
+// Both can be changed at runtime so can;t be const.
+// But also how do we access them without state?
+
   /// {@template zeta-type-title-l}
-  /// Large title text.
+  /// Heading 4 / Large title text.
   ///
   /// Used for UI sections and landing pages.
   ///
   /// See also:
   /// * [TextTheme.titleLarge].
   /// {@endtemplate}
-  static const TextStyle zetaTitleLarge = TextStyle(
+  static TextStyle zetaTitleLarge = const TextStyle(
     fontSize: tokens.Dimensions.x5,
     fontWeight: FontWeight.w500,
-    height: tokens.Dimensions.x5 / tokens.Dimensions.x6,
+    height: tokens.Dimensions.x4 / tokens.Dimensions.x5,
   );
 
   /// {@template zeta-type-heading-s}
@@ -241,7 +207,7 @@ class ZetaText extends StatelessWidget {
   /// See also:
   /// * [TextTheme.headlineSmall].
   /// {@endtemplate}
-  static const TextStyle zetaHeadingSmall = TextStyle(
+  static TextStyle zetaHeadingSmall = const TextStyle(
     fontSize: tokens.Dimensions.x6,
     fontWeight: FontWeight.w500,
     height: tokens.Dimensions.x7 / tokens.Dimensions.x6,
@@ -255,7 +221,7 @@ class ZetaText extends StatelessWidget {
   /// See also:
   /// * [TextTheme.headlineMedium].
   /// {@endtemplate}
-  static const TextStyle zetaHeadingMedium = TextStyle(
+  static TextStyle zetaHeadingMedium = const TextStyle(
     fontSize: tokens.Dimensions.x7,
     fontWeight: FontWeight.w500,
     height: tokens.Dimensions.x8 / tokens.Dimensions.x7,
@@ -268,7 +234,7 @@ class ZetaText extends StatelessWidget {
   /// See also:
   /// * [TextTheme.headlineLarge].
   /// {@endtemplate}
-  static const TextStyle zetaHeadingLarge = TextStyle(
+  static TextStyle zetaHeadingLarge = const TextStyle(
     fontSize: tokens.Dimensions.x8,
     fontWeight: FontWeight.w500,
     height: tokens.Dimensions.x9 / tokens.Dimensions.x8,
@@ -282,11 +248,7 @@ class ZetaText extends StatelessWidget {
   /// See also:
   /// * [TextTheme.displaySmall].
   /// {@endtemplate}
-  static const TextStyle zetaDisplaySmall = TextStyle(
-    fontSize: tokens.Dimensions.x9,
-    fontWeight: FontWeight.w300,
-    height: tokens.Dimensions.x9 / tokens.Dimensions.x10,
-  );
+  static TextStyle zetaDisplaySmall = zetaHeadingSmall;
 
   /// {@template  zeta-type-display-m}
   /// Medium display text.
@@ -296,11 +258,7 @@ class ZetaText extends StatelessWidget {
   /// See also:
   /// * [TextTheme.displayMedium].
   /// {@endtemplate}
-  static const TextStyle zetaDisplayMedium = TextStyle(
-    fontSize: tokens.Dimensions.x11,
-    fontWeight: FontWeight.w300,
-    height: tokens.Dimensions.x12 / tokens.Dimensions.x11,
-  );
+  static TextStyle zetaDisplayMedium = zetaHeadingMedium;
 
   /// {@template  zeta-type-display-l}
   /// Large display text.
@@ -309,88 +267,16 @@ class ZetaText extends StatelessWidget {
   /// See also:
   /// * [TextTheme.displayLarge].
   /// {@endtemplate}
-  static const TextStyle zetaDisplayLarge = TextStyle(
-    fontSize: tokens.Dimensions.x13,
-    fontWeight: FontWeight.w300,
-    height: tokens.Dimensions.x14 / tokens.Dimensions.x13,
-  );
-
-  /// {@template zeta-type-description}
-  /// Description text.
-  ///
-  /// This size falls off the mini unit scale, to meet very specific criteria, and forced to be used for single line text only. It never changes line height even in component design.
-  ///
-  /// Used for UI components and UI content design.
-  /// {@endtemplate}
-  static const TextStyle zetaDescription = TextStyle(
-    fontSize: tokens.Dimensions.x3_5,
-    fontWeight: FontWeight.w500,
-    height: tokens.Dimensions.x4 / tokens.Dimensions.x3_5,
-  );
-
-  /// {@macro zeta-type-responsive}
-  ///
-  /// {@macro zeta-type-heading-s}
-  static const TextStyle zetaHeadingSmallResponsive = TextStyle(
-    fontSize: tokens.Dimensions.x5,
-    fontWeight: FontWeight.w500,
-    height: tokens.Dimensions.x6 / tokens.Dimensions.x5,
-  );
-
-  /// {@macro zeta-type-responsive}
-  ///
-  /// {@macro zeta-type-heading-m}
-  static const TextStyle zetaHeadingMediumResponsive = TextStyle(
-    fontSize: tokens.Dimensions.x6,
-    fontWeight: FontWeight.w500,
-    height: tokens.Dimensions.x7 / tokens.Dimensions.x6,
-  );
-
-  /// {@macro zeta-type-responsive}
-  ///
-  /// {@macro zeta-type-heading-l}
-  static const TextStyle zetaHeadingLargeResponsive = TextStyle(
-    fontSize: tokens.Dimensions.x7,
-    fontWeight: FontWeight.w500,
-    height: tokens.Dimensions.x8 / tokens.Dimensions.x7,
-  );
-
-  /// {@macro zeta-type-responsive}
-  ///
-  /// {@macro zeta-type-display-s}
-  static const TextStyle zetaDisplaySmallResponsive = TextStyle(
-    fontSize: tokens.Dimensions.x8,
-    fontWeight: FontWeight.w300,
-    height: tokens.Dimensions.x9 / tokens.Dimensions.x8,
-  );
-
-  /// {@macro zeta-type-responsive}
-  ///
-  /// {@macro zeta-type-display-m}
-  static const TextStyle zetaDisplayMediumResponsive = TextStyle(
-    fontSize: tokens.Dimensions.x9,
-    fontWeight: FontWeight.w300,
-    height: tokens.Dimensions.x10 / tokens.Dimensions.x9,
-  );
-
-  /// {@template zeta-type-responsive}
-  /// Responsive text style, used for [DeviceType.mobileLandscape] and [DeviceType.mobilePortrait].
-  /// {@endtemplate}
-  ///
-  /// {@macro zeta-type-display-l}
-  static const TextStyle zetaDisplayLargeResponsive = TextStyle(
-    fontSize: tokens.Dimensions.x11,
-    fontWeight: FontWeight.w300,
-    height: tokens.Dimensions.x12 / tokens.Dimensions.x11,
-  );
+  static TextStyle zetaDisplayLarge = zetaHeadingLarge;
 
   /// Gets approximate char width based on width of O in IBM Plex Sans
   ///
   /// Only works for IBM Plex.
-  static double ch({double multiplier = _defaultChMultiplier, TextStyle style = zetaBodyMedium}) {
+  static double _ch({double multiplier = _defaultChMultiplier, TextStyle? style}) {
+    final setStyle = style ?? zetaBodyMedium;
     const plexCh = 0.6;
 
-    return multiplier * plexCh * (style.fontSize ?? tokens.Dimensions.x3);
+    return multiplier * plexCh * (setStyle.fontSize ?? tokens.Dimensions.x3);
   }
 
   /// The text to be displayed.
@@ -405,7 +291,7 @@ class ZetaText extends StatelessWidget {
   ///
   /// See also:
   /// * [Text.style].
-  final TextStyle style;
+  final TextStyle? style;
 
   /// Sets text color.
   ///
@@ -413,9 +299,9 @@ class ZetaText extends StatelessWidget {
   /// * [TextStyle.color].
   final Color? textColor;
 
-  /// Max width of Text box using [ch]. Not measured in dp / px.
+  /// Max width of Text box using [_ch]. Not measured in dp / px.
   ///
-  /// [ch] approximates width of a character using O as basis, so a maxWidth of 60 theoretically returns a max width containing 60 characters.
+  /// [_ch] approximates width of a character using O as basis, so a maxWidth of 60 theoretically returns a max width containing 60 characters.
   ///
   /// Only works with 'IBM Plex Sans'.
   final double? maxWidth;
@@ -483,7 +369,7 @@ class ZetaText extends StatelessWidget {
   /// Constructor for [ZetaText].
   const ZetaText(
     this.data, {
-    this.style = ZetaText.zetaBodyMedium,
+    this.style,
     this.resetHeight = false,
     this.textColor,
     this.fontSize,
@@ -518,39 +404,38 @@ class ZetaText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const TextStyle tempTextStyle = ZetaText.zetaBodyMedium;
-    final TextStyle thisStyle = tempTextStyle.copyWith(
-      fontSize: style.fontSize,
-      fontWeight: style.fontWeight,
-      height: style.height,
+    TextStyle thisStyle = (style ?? ZetaText.zetaBodyMedium).copyWith(
+      fontSize: style?.fontSize,
+      fontWeight: style?.fontWeight,
+      height: style?.height,
     );
 
     String data = this.data ?? '';
     final Color color = textColor ?? ZetaColors.of(context).textDefault;
-    TextStyle textStyle = context.deviceType.responsiveText ? thisStyle.mobileStyle : thisStyle;
 
-    textStyle = textStyle.copyWith(
-      fontSize: (fontSize ?? textStyle.fontSize ?? tokens.Typography.defaultTextSize) *
+    thisStyle = thisStyle.copyWith(
+      fontSize: (fontSize ?? thisStyle.fontSize ?? tokens.Typography.defaultTextSize) *
           MediaQuery.of(context).textScaleFactor,
       height: _fontSize,
       fontWeight: fontWeight,
       decoration: decoration ?? TextDecoration.none,
       fontStyle: fontStyle,
       color: color,
+      fontFamily: Theme.of(context).fontFamily,
     );
 
-    if (resetHeight) textStyle = textStyle.copyWith(height: style == ZetaText.zetaDescription ? null : 1);
+    if (resetHeight) thisStyle = thisStyle.copyWith(height: 1);
     if (upperCase) data = data.toUpperCase();
 
     return Padding(
       padding: _padding,
       child: maxWidth == null
-          ? Text(data, style: textStyle, textDirection: textDirection)
+          ? Text(data, style: thisStyle, textDirection: textDirection)
           : Align(
               alignment: textDirection == TextDirection.rtl ? Alignment.centerRight : Alignment.centerLeft,
               child: SizedBox(
-                width: maxWidth == null ? null : ch(multiplier: maxWidth ?? 0, style: textStyle),
-                child: Text(data, style: textStyle, textDirection: textDirection),
+                width: maxWidth == null ? null : _ch(multiplier: maxWidth ?? 0, style: thisStyle),
+                child: Text(data, style: thisStyle, textDirection: textDirection),
               ),
             ),
     );
@@ -558,8 +443,27 @@ class ZetaText extends StatelessWidget {
 
   /// {@macro zeta-component-text}
   ///
+  /// {@macro zeta-type-body-xs}
+  ZetaText.bodyXSmall(
+    this.data, {
+    this.resetHeight = false,
+    this.maxWidth,
+    this.decoration,
+    this.fontSize,
+    this.fontStyle,
+    this.fontWeight,
+    this.first = false,
+    this.last = false,
+    this.textColor,
+    this.textDirection = TextDirection.ltr,
+    this.upperCase = false,
+    super.key,
+  }) : style = zetaBodyXSmall;
+
+  /// {@macro zeta-component-text}
+  ///
   /// {@macro zeta-type-body-s}
-  const ZetaText.bodySmall(
+  ZetaText.bodySmall(
     this.data, {
     this.resetHeight = false,
     this.maxWidth,
@@ -578,7 +482,7 @@ class ZetaText extends StatelessWidget {
   /// {@macro zeta-component-text}
   ///
   /// {@macro zeta-type-body-m}
-  const ZetaText.bodyMedium(
+  ZetaText.bodyMedium(
     this.data, {
     this.resetHeight = false,
     this.decoration,
@@ -597,7 +501,7 @@ class ZetaText extends StatelessWidget {
   /// {@macro zeta-component-text}
   ///
   /// {@macro zeta-type-body-l}
-  const ZetaText.bodyLarge(
+  ZetaText.bodyLarge(
     this.data, {
     this.resetHeight = false,
     this.decoration,
@@ -616,7 +520,7 @@ class ZetaText extends StatelessWidget {
   /// {@macro zeta-component-text}
   ///
   /// {@macro zeta-type-label-s}
-  const ZetaText.labelSmall(
+  ZetaText.labelSmall(
     this.data, {
     this.resetHeight = false,
     this.decoration,
@@ -635,7 +539,7 @@ class ZetaText extends StatelessWidget {
   /// {@macro zeta-component-text}
   ///
   /// {@macro zeta-type-label-m}
-  const ZetaText.labelMedium(
+  ZetaText.labelMedium(
     this.data, {
     this.resetHeight = false,
     this.decoration,
@@ -654,7 +558,7 @@ class ZetaText extends StatelessWidget {
   /// {@macro zeta-component-text}
   ///
   /// {@macro zeta-type-label-l}
-  const ZetaText.labelLarge(
+  ZetaText.labelLarge(
     this.data, {
     this.resetHeight = false,
     this.decoration,
@@ -673,7 +577,7 @@ class ZetaText extends StatelessWidget {
   /// {@macro zeta-component-text}
   ///
   /// {@macro zeta-type-title-s}
-  const ZetaText.titleSmall(
+  ZetaText.titleSmall(
     this.data, {
     this.resetHeight = false,
     this.decoration,
@@ -692,7 +596,7 @@ class ZetaText extends StatelessWidget {
   /// {@macro zeta-component-text}
   ///
   /// {@macro zeta-type-title-m}
-  const ZetaText.titleMedium(
+  ZetaText.titleMedium(
     this.data, {
     this.resetHeight = false,
     this.decoration,
@@ -711,7 +615,7 @@ class ZetaText extends StatelessWidget {
   /// {@macro zeta-component-text}
   ///
   /// {@macro zeta-type-title-l}
-  const ZetaText.titleLarge(
+  ZetaText.titleLarge(
     this.data, {
     this.resetHeight = false,
     this.decoration,
@@ -730,7 +634,7 @@ class ZetaText extends StatelessWidget {
   /// {@macro zeta-component-text}
   ///
   /// {@macro zeta-type-heading-s}
-  const ZetaText.headingSmall(
+  ZetaText.headingSmall(
     this.data, {
     this.resetHeight = false,
     this.decoration,
@@ -749,7 +653,7 @@ class ZetaText extends StatelessWidget {
   /// {@macro zeta-component-text}
   ///
   /// {@macro zeta-type-heading-m}
-  const ZetaText.headingMedium(
+  ZetaText.headingMedium(
     this.data, {
     this.decoration,
     this.fontSize,
@@ -768,7 +672,7 @@ class ZetaText extends StatelessWidget {
   /// {@macro zeta-component-text}
   ///
   /// {@macro zeta-type-heading-l}
-  const ZetaText.headingLarge(
+  ZetaText.headingLarge(
     this.data, {
     this.resetHeight = false,
     this.decoration,
@@ -787,7 +691,7 @@ class ZetaText extends StatelessWidget {
   /// {@macro zeta-component-text}
   ///
   /// {@macro zeta-type-display-s}
-  const ZetaText.displaySmall(
+  ZetaText.displaySmall(
     this.data, {
     this.resetHeight = false,
     this.decoration,
@@ -806,7 +710,7 @@ class ZetaText extends StatelessWidget {
   /// {@macro zeta-component-text}
   ///
   /// {@macro zeta-type-display-m}
-  const ZetaText.displayMedium(
+  ZetaText.displayMedium(
     this.data, {
     this.resetHeight = false,
     this.decoration,
@@ -825,7 +729,7 @@ class ZetaText extends StatelessWidget {
   /// {@macro zeta-component-text}
   ///
   /// {@macro zeta-type-display-l}
-  const ZetaText.displayLarge(
+  ZetaText.displayLarge(
     this.data, {
     this.decoration,
     this.fontSize,
@@ -840,23 +744,29 @@ class ZetaText extends StatelessWidget {
     this.maxWidth,
     super.key,
   }) : style = zetaDisplayLarge;
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(StringProperty('data', data));
+    properties.add(DiagnosticsProperty<TextStyle?>('style', style));
+    properties.add(ColorProperty('textColor', textColor));
+    properties.add(DoubleProperty('maxWidth', maxWidth));
+    properties.add(DoubleProperty('fontSize', fontSize));
+    properties.add(DiagnosticsProperty<FontWeight?>('fontWeight', fontWeight));
+    properties.add(EnumProperty<FontStyle?>('fontStyle', fontStyle));
+    properties.add(DiagnosticsProperty<bool>('upperCase', upperCase));
+    properties.add(DiagnosticsProperty<TextDecoration?>('decoration', decoration));
+    properties.add(EnumProperty<TextDirection>('textDirection', textDirection));
+    properties.add(DiagnosticsProperty<bool>('first', first));
+    properties.add(DiagnosticsProperty<bool>('last', last));
+    properties.add(DiagnosticsProperty<bool>('resetHeight', resetHeight));
+  }
+}
 
-  /// {@macro zeta-component-text}
-  ///
-  /// {@macro zeta-type-description}
-  const ZetaText.description(
-    this.data, {
-    this.decoration,
-    this.fontSize,
-    this.fontStyle,
-    this.fontWeight,
-    this.first = false,
-    this.last = false,
-    this.textColor,
-    this.textDirection = TextDirection.ltr,
-    this.upperCase = false,
-    this.resetHeight = false,
-    this.maxWidth,
-    super.key,
-  }) : style = zetaDescription;
+/// Extension to add Zeta's extra small text size.
+extension XSmall on TextTheme {
+  /// Smallest body text size.
+  TextStyle? get bodyXSmall {
+    return ZetaText.zetaBodyXSmall;
+  }
 }

@@ -1,15 +1,43 @@
-<details>
-    <summary>Zebra Repository Information</summary>
-    <ul>
-        <li> Zebra Business Unit : DMO - Innovation & Design</li> 
-        <li> Zebra Manager : ncvt73 </li>
-        <li> Zebra Repo Admin: lwalton </li>
-        <li> Zebra Jira Project ID: N/A </li>
-        <li> Product: Zebra Design System (Zeta) - Flutter Component Library </li>
-        <li> Topics: no_codeql </li>
-    </ul>
-</details>
+# Zeta Flutter
 
-# zeta-flutter
+Zeta is the new, formal, standardized Zebra Design System based off the successes of ZDS (Zebra Design System).
 
-Zebra Design System (Zeta) - Flutter Component Library
+Note: This package is in pre-release, and so many aspects are incomplete.
+
+# Usage
+
+[Install zeta_flutter](https://pub.dev/packages/zeta_flutter/install)
+
+Zeta extends the use of Flutter's built in theming tools, and so to work correctly your app needs to be wrapped with the zeta theme as such:
+
+```dart
+
+ @override
+  Widget build(BuildContext context) {
+    return Zeta(
+      builder: (context, theme, colors) {
+        return MaterialApp.router(theme: theme, routerConfig: router);
+      },
+    );
+  }
+```
+
+This returns the Zeta theme and colors, which will be used across the app. Custom `ThemeData` and `ZetaColor` objects can be passed in to apply custom themes and colors.
+
+## Viewing the components
+
+To view examples of all the components in the library, you can run the example app in this repo or go to [Zeta](https://zeta-ds.web.app/)
+
+## Licensing
+
+This software is licensed with the MIT license (see [LICENSE](./LICENSE)).
+
+---
+
+### Pre release TODOs
+
+[ ] TODO: update actions
+
+[ ] TODO: Make public repo
+
+[ ] TODO: Add to pub.dev

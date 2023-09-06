@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../zeta_flutter.dart';
+import '../../../zeta_flutter.dart';
 
 /// Default set of Zeta Colors that can be used to make a [ZetaColors] instance.
 ///
@@ -206,4 +206,7 @@ class ZetaColorBase {
 
   /// Visited link color for dark mode.
   static const Color linkVisitedDark = Color(0xFF47A3FF);
+
+  /// Default shadow color.
+  static const Color shadow = Color(0x1A49505E);
 }

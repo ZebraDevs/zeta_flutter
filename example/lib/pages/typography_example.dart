@@ -37,7 +37,7 @@ class TypographyExample extends StatelessWidget {
     },
   ).toList();
 
-  static const dedicatedSizes = [
+  static final dedicatedSizes = [
     ExampleModel(
       example: ZetaText.bodySmall(exampleText),
       wDescription: ZetaText.bodySmall(exampleParagraph, maxWidth: 66),
@@ -170,13 +170,13 @@ class TypographyExample extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const ZetaText.headingLarge('Text').inline(Dimensions.x10),
+          ZetaText.headingLarge('Text').inline(Dimensions.x10),
           ...tokens.map(ExampleBuilder.new),
           const Divider().squish(Dimensions.x4),
-          const ZetaText.headingLarge('Universal sizes').inline(Dimensions.x10),
+          ZetaText.headingLarge('Universal sizes').inline(Dimensions.x10),
           ...universalSizes.map(ExampleBuilder.new),
           const Divider().squish(Dimensions.x4),
-          const ZetaText.headingLarge('Dedicated sizes').inline(Dimensions.x10),
+          ZetaText.headingLarge('Dedicated sizes').inline(Dimensions.x10),
           ...dedicatedSizes.map(ExampleBuilder.new),
         ],
       ),

@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 
 import '../tokens.dart';
@@ -131,6 +132,13 @@ class ZetaSpacing extends StatelessWidget {
       case ZetaSpacingType.inlineEnd:
         return child.inlineEnd(size);
     }
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(EnumProperty<ZetaSpacingType?>('type', type));
+    properties.add(DoubleProperty('size', size));
   }
 }
 
