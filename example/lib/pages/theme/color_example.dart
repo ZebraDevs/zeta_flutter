@@ -158,21 +158,19 @@ class _ColorExampleState extends State<ColorExample> {
                               color: value.value[e],
                               child: FittedBox(
                                 fit: BoxFit.scaleDown,
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                    DefaultTextStyle(
-                                      style: ZetaTextStyles.bodyMedium
-                                          .copyWith(color: calculateTextColor(value.value[e] ?? Colors.white)),
-                                      child: Column(
-                                        children: [
-                                          Text('${value.key.toLowerCase().replaceAll(' ', '')}-$e'),
-                                          Text(value.value[e].toString().replaceAll('Color(0xff', '#').substring(0, 7)),
-                                        ],
-                                      ),
+                                child: Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
+                                  DefaultTextStyle(
+                                    style: ZetaTextStyles.bodyMedium
+                                        .copyWith(color: calculateTextColor(value.value[e] ?? Colors.white)),
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                      children: [
+                                        Text('${value.key.toLowerCase().replaceAll(' ', '')}-$e'),
+                                        Text(value.value[e].toString().replaceAll('Color(0xff', '#').substring(0, 7)),
+                                      ],
                                     ),
-                                  ],
-                                ),
+                                  ),
+                                ]),
                               ),
                             ),
                           ),
