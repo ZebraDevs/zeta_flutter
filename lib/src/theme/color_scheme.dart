@@ -152,8 +152,9 @@ class ZetaColorScheme extends ColorScheme with Diagnosticable {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty<ZetaColors>('zetaColors', zetaColors));
-    properties.add(StringProperty('fontFamily', fontFamily));
+    properties
+      ..add(DiagnosticsProperty<ZetaColors>('zetaColors', zetaColors))
+      ..add(StringProperty('fontFamily', fontFamily));
   }
 
   @override

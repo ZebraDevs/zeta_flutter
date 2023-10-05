@@ -51,23 +51,6 @@ enum ZetaSpacingType {
 
 /// Zeta Spacing widget.
 class ZetaSpacing extends StatelessWidget {
-  static const double _mod = 2;
-
-  /// Child to be wrapped with spacing insets.
-  final Widget child;
-
-  /// [ZetaSpacingType] insets applied to [child].
-  ///
-  /// Defaults to [ZetaSpacingType.square].
-  final ZetaSpacingType? type;
-
-  /// Size of insets to be applied around [child].
-  ///
-  /// Should be an even number, and be no larger than [Dimensions.x24].
-  ///
-  /// Defaults to [Dimensions.x0].
-  final double size;
-
   /// Constructs [ZetaSpacing].
   const ZetaSpacing(
     this.child, {
@@ -115,6 +98,22 @@ class ZetaSpacing extends StatelessWidget {
   ///
   /// {@macro zeta-spacing-inline}
   const ZetaSpacing.inlineEnd(this.child, {this.size = Dimensions.x0, super.key}) : type = ZetaSpacingType.inlineEnd;
+  static const double _mod = 2;
+
+  /// Child to be wrapped with spacing insets.
+  final Widget child;
+
+  /// [ZetaSpacingType] insets applied to [child].
+  ///
+  /// Defaults to [ZetaSpacingType.square].
+  final ZetaSpacingType? type;
+
+  /// Size of insets to be applied around [child].
+  ///
+  /// Should be an even number, and be no larger than [Dimensions.x24].
+  ///
+  /// Defaults to [Dimensions.x0].
+  final double size;
 
   @override
   Widget build(BuildContext context) {
@@ -137,8 +136,9 @@ class ZetaSpacing extends StatelessWidget {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(EnumProperty<ZetaSpacingType?>('type', type));
-    properties.add(DoubleProperty('size', size));
+    properties
+      ..add(EnumProperty<ZetaSpacingType?>('type', type))
+      ..add(DoubleProperty('size', size));
   }
 }
 

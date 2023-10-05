@@ -7,12 +7,6 @@ import 'contrast.dart';
 /// A swatch of colors with values from 10 (light) to 100 (dark).
 @immutable
 class ZetaColorSwatch extends ColorSwatch<int> {
-  /// Selected contrast level of the system
-  final Brightness brightness;
-
-  /// Selected contrast level of the system
-  final ZetaContrast contrast;
-
   /// Constructs a [ZetaColorSwatch].
   ///
   /// See also:
@@ -23,6 +17,42 @@ class ZetaColorSwatch extends ColorSwatch<int> {
     required int primary,
     required Map<int, Color> swatch,
   }) : super(primary, swatch);
+
+  /// {@template zeta.color.color_to_swatch}
+  /// `ZetaColorSwatch` is a color swatch utility to produce different shades
+  /// of a primary color, following a specific progression of lightness and darkness.
+  ///
+  /// This factory constructor creates a color swatch based on a provided primary color.
+  /// The darker and lighter shades are determined by predefined percentage values.
+  ///
+  /// It ensures that the 60th and 80th shades from swatch are abide by the AA and AAA accessibility standards on [background], respectively.
+  /// [background] color defaults to [ZetaColorBase.greyWarm] shade10.
+  factory ZetaColorSwatch.fromColor(
+    Color primary, {
+    Brightness brightness = Brightness.light,
+    ZetaContrast contrast = ZetaContrast.aa,
+    Color background = Colors.white,
+  }) {
+    /// Returns a map of colors shades with their respective indexes.
+    /// Darker shades are obtained by darkening the primary color and
+    /// lighter shades by lightening it.
+    ///
+    /// - 100, 90, 80, and 70 are darker shades of the primary color.
+    /// - 60 is the primary color itself.
+    /// - 50, 40, 30, 20, and 10 are progressively lighter shades of the primary color.
+    return ZetaColorSwatch(
+      contrast: contrast,
+      brightness: brightness,
+      primary: primary.value,
+      swatch: primary.generateSwatch(background: background),
+    ).apply(brightness: brightness);
+  }
+
+  /// Selected contrast level of the system
+  final Brightness brightness;
+
+  /// Selected contrast level of the system
+  final ZetaContrast contrast;
 
   /// This method is an override of the index operator.
   ///
@@ -72,36 +102,6 @@ class ZetaColorSwatch extends ColorSwatch<int> {
   /// Returns a color object that represents a specified shade or the color itself.
   ///
   Color shade(int number) => this[number]!;
-
-  /// {@template zeta.color.color_to_swatch}
-  /// `ZetaColorSwatch` is a color swatch utility to produce different shades
-  /// of a primary color, following a specific progression of lightness and darkness.
-  ///
-  /// This factory constructor creates a color swatch based on a provided primary color.
-  /// The darker and lighter shades are determined by predefined percentage values.
-  ///
-  /// It ensures that the 60th and 80th shades from swatch are abide by the AA and AAA accessibility standards on [background], respectively.
-  /// [background] color defaults to [ZetaColorBase.greyWarm] shade10.
-  factory ZetaColorSwatch.fromColor(
-    Color primary, {
-    Brightness brightness = Brightness.light,
-    ZetaContrast contrast = ZetaContrast.aa,
-    Color background = Colors.white,
-  }) {
-    /// Returns a map of colors shades with their respective indexes.
-    /// Darker shades are obtained by darkening the primary color and
-    /// lighter shades by lightening it.
-    ///
-    /// - 100, 90, 80, and 70 are darker shades of the primary color.
-    /// - 60 is the primary color itself.
-    /// - 50, 40, 30, 20, and 10 are progressively lighter shades of the primary color.
-    return ZetaColorSwatch(
-      contrast: contrast,
-      brightness: brightness,
-      primary: primary.value,
-      swatch: primary.generateSwatch(background: background),
-    ).apply(brightness: brightness);
-  }
 
   /// Returns the color shade for a surface depending on the ZetaContrast value.
   ///
