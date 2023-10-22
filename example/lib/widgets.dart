@@ -87,16 +87,32 @@ class ExampleScaffold extends StatelessWidget {
           padding: const EdgeInsets.only(top: 8, left: 8, right: 8),
           child: Row(
             children: [
+              ZetaText('System'),
+              Checkbox(
+                visualDensity: VisualDensity.compact,
+                value: Zeta.of(context).themeMode == ThemeMode.system,
+                onChanged: (isDarkMode) {
+                  if ((isDarkMode ?? false)) {
+                    ZetaProvider.of(context).updateThemeMode(ThemeMode.system);
+                  }
+                },
+              ),
+              const SizedBox(
+                height: 44,
+                child: VerticalDivider(thickness: 2),
+              ),
               const Spacer(),
-              ZetaText('DarkMode'),
+              ZetaText('Dark'),
+              const SizedBox(width: Dimensions.xs),
               Switch.adaptive(
-                value: Zeta.of(context).themeMode == ThemeMode.dark,
+                value: Zeta.of(context).brightness == Brightness.dark,
                 onChanged: (isDarkMode) {
                   ZetaProvider.of(context).updateThemeMode(isDarkMode ? ThemeMode.dark : ThemeMode.light);
                 },
               ),
               const SizedBox(width: Dimensions.s),
               ZetaText('AAA '),
+              const SizedBox(width: Dimensions.xs),
               Switch.adaptive(
                 value: Zeta.of(context).contrast == ZetaContrast.aaa,
                 onChanged: (isAAA) {

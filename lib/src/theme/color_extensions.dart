@@ -24,12 +24,6 @@ import 'contrast.dart';
 /// The [getShadeColor] extension is less frequently used and when used,
 /// typically used to color makes colors shades for gradient AppBars, with
 /// default setting to not change black and white.
-///
-/// The color extension also include getting a color's RGB hex code as a string
-/// in two different formats. Extension [hexCode] returns a Flutter style
-/// HEX code string of a Color value, meaning it starts with 0x and alpha value
-/// before the RGB Hex values. The plain [hex] extension returns a typical
-/// API formatted hex color string starting with # and no alpha value.
 extension ZetaColorExtensions on Color {
   /// {@macro zeta.color.color_to_swatch}
   ZetaColorSwatch get zetaColorSwatch => ZetaColorSwatch.fromColor(this);

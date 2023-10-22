@@ -376,6 +376,21 @@ class ZetaColors {
     return adjust ? baseColor.apply(brightness: brightness, contrast: contrast) : baseColor;
   }
 
+  /// Factory constructor for a light theme for [ZetaColors].
+  ///
+  /// All color options are nullable and default to a pre-defined contrast color if null.
+  ///
+  /// [contrast] The primary contrast color. If not supplied, defaults to [ZetaContrast.aa].
+  /// [primary] A color swatch for primary color accent. Defaults to null.
+  /// [secondary] A color swatch for secondary color accent. Defaults to null.
+  /// [error] A color swatch for error states. Defaults to null.
+  /// [cool] A color swatch for cooler color tones. Defaults to null.
+  /// [warm] A color swatch for warmer color tones. Defaults to null.
+  /// [white] A color option for white color. Defaults to null.
+  /// [black] A color option for black color. Defaults to null.
+  /// [link] A color option for links. Defaults to null.
+  /// [linkVisited] A color option for visited links. Defaults to null.
+  /// [shadow] A color option for shadows. Defaults to null.
   factory ZetaColors.light({
     ZetaContrast contrast = ZetaContrast.aa,
     ZetaColorSwatch? primary,
@@ -407,6 +422,21 @@ class ZetaColors {
     );
   }
 
+  /// Factory constructor for a dark theme for [ZetaColors].
+  ///
+  /// All color options are nullable and default to a pre-defined contrast color if null.
+  ///
+  /// [contrast] The primary contrast color. If not supplied, defaults to [ZetaContrast.aa].
+  /// [primary] A color swatch for primary color accent. Defaults to null.
+  /// [secondary] A color swatch for secondary color accent. Defaults to null.
+  /// [error] A color swatch for error states. Defaults to null.
+  /// [cool] A color swatch for cooler color tones. Defaults to null.
+  /// [warm] A color swatch for warmer color tones. Defaults to null.
+  /// [white] A color option for white color. Defaults to null.
+  /// [black] A color option for black color. Defaults to null.
+  /// [link] A color option for links. Defaults to null.
+  /// [linkVisited] A color option for visited links. Defaults to null.
+  /// [shadow] A color option for shadows. Defaults to null.
   factory ZetaColors.dark({
     ZetaContrast contrast = ZetaContrast.aa,
     ZetaColorSwatch? primary,
@@ -439,6 +469,9 @@ class ZetaColors {
     );
   }
 
+  /// Applies new property values to [ZetaColors] and returns a new copy.
+  ///
+  /// Each property defaults to the previous value if not specified.
   ZetaColors copyWith({
     Brightness? brightness,
     ZetaContrast? contrast,
@@ -476,6 +509,9 @@ class ZetaColors {
     );
   }
 
+  /// Apply the given contrast to the color scheme and return a new color scheme.
+  ///
+  /// If the contrast is the same as the current one, this method will return the current color scheme.
   ZetaColors apply({
     required ZetaContrast contrast,
   }) {
@@ -500,6 +536,7 @@ class ZetaColors {
     );
   }
 
+  /// Returns a [ZetaColorScheme] based on the properties of the current [ZetaColors].
   ZetaColorScheme toScheme() {
     final effectivePrimary = primary.shade(contrast.primary);
     final effectiveSecondary = secondary.shade(contrast.primary);

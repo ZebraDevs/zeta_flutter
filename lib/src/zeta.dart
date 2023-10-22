@@ -25,17 +25,34 @@ class Zeta extends InheritedWidget {
 
   /// Internal property to get the system brightness.
   /// Used to determine the theme mode when it's set to [ThemeMode.system].
-  final Brightness mediaBrightness;
+  final Brightness _mediaBrightness;
 
   /// Provides the color set based on the current theme mode.
   ///
   /// It determines the appropriate color set (light or dark) based on the theme mode
   /// and system brightness.
   ZetaColors get colors {
-    if (themeMode == ThemeMode.light) {
+    if (themeMode == ThemeMode.system) {
+      return _mediaBrightness == Brightness.light ? themeData.colorsLight : themeData.colorsDark;
+    } else if (themeMode == ThemeMode.light) {
       return themeData.colorsLight;
     } else {
       return themeData.colorsDark;
+    }
+  }
+
+  /// Gets the brightness setting for the current theme.
+  ///
+  /// If the theme mode is set to 'system', it will return the brightness that ties with the device's system theme setting.
+  /// If the theme mode is set to 'light', it always returns `Brightness.light`.
+  /// If neither, it returns `Brightness.dark` by default (i.e., when the theme mode is 'dark').
+  Brightness get brightness {
+    if (themeMode == ThemeMode.system) {
+      return _mediaBrightness; // Return the current system brightness setting
+    } else if (themeMode == ThemeMode.light) {
+      return Brightness.light; // Return the light mode brightness
+    } else {
+      return Brightness.dark; // Default: Return the dark mode brightness
     }
   }
 
@@ -44,12 +61,12 @@ class Zeta extends InheritedWidget {
   /// The [contrast], [themeMode], [themeData], and [child] arguments are required.
   const Zeta({
     super.key,
-    required this.mediaBrightness,
+    required Brightness mediaBrightness,
     required this.contrast,
     required this.themeMode,
     required this.themeData,
     required super.child,
-  });
+  }) : _mediaBrightness = mediaBrightness;
 
   @override
   bool updateShouldNotify(covariant Zeta oldWidget) {
@@ -90,7 +107,8 @@ class Zeta extends InheritedWidget {
     properties.add(EnumProperty<ThemeMode>('themeMode', themeMode));
     properties.add(DiagnosticsProperty<ZetaThemeData>('themeData', themeData));
     properties.add(DiagnosticsProperty<ZetaColors>('colors', colors));
-    properties.add(EnumProperty<Brightness>('mediaBrightness', mediaBrightness));
+    properties.add(EnumProperty<Brightness>('mediaBrightness', _mediaBrightness));
+    properties.add(EnumProperty<Brightness>('brightness', brightness));
   }
 }
 
@@ -188,13 +206,6 @@ class ZetaProviderState extends State<ZetaProvider> with Diagnosticable {
 
   @override
   Widget build(BuildContext context) {
-    if (_themeMode == ThemeMode.system) {
-      if (MediaQuery.of(context).platformBrightness == Brightness.light) {
-        _themeMode = ThemeMode.light;
-      } else {
-        _themeMode = ThemeMode.dark;
-      }
-    }
     return Zeta(
       themeMode: _themeMode,
       themeData: _themeData,

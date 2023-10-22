@@ -10,10 +10,7 @@ class ZetaExample extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ZetaProvider(
-      themeData: ZetaThemeData(
-        colorsDark: ZetaColors.dark(),
-        colorsLight: ZetaColors.light(),
-      ),
+      initialThemeMode: ThemeMode.system,
       builder: (context, data, themeMode) {
         final dark = data.colorsDark.toScheme();
         final light = data.colorsLight.toScheme();
