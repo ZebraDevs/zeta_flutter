@@ -16,7 +16,16 @@ class TestWidget extends StatelessWidget {
         return Builder(
           builder: (context) {
             return MaterialApp(
-              theme: theme,
+              theme: ThemeData(
+                fontFamily: theme.fontFamily,
+                colorScheme: theme.colorsLight.toScheme(),
+                textTheme: ZetaText.textTheme,
+              ),
+              darkTheme: ThemeData(
+                fontFamily: theme.fontFamily,
+                colorScheme: theme.colorsDark.toScheme(),
+                textTheme: ZetaText.textTheme,
+              ),
               home: Scaffold(
                 body: SizedBox(
                   width: size.width,

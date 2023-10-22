@@ -5,6 +5,7 @@ import '../widgets.dart';
 
 class ColorExample extends StatefulWidget {
   static const String name = 'Color';
+
   const ColorExample({super.key});
 
   @override
@@ -16,7 +17,8 @@ class _ColorExampleState extends State<ColorExample> {
 
   @override
   Widget build(BuildContext context) {
-    final ZetaColors colors = ZetaColors.of(context);
+    final theme = Theme.of(context);
+    final colors = theme.colorScheme;
     return LayoutBuilder(
       builder: (context, constraints) {
         final Map<String, ZetaColorSwatch> swatches = {
@@ -33,29 +35,68 @@ class _ColorExampleState extends State<ColorExample> {
         };
 
         final Map<String, ZetaColorSwatch> generatedSwatches = {
-          'Gen-Blue': colors.blue.zetaColorSwatch,
+          'Gen-Blue': ZetaColorSwatch.fromColor(
+            colors.blue,
+            brightness: theme.brightness,
+            contrast: colors.contrast,
+          ),
           'Blue': colors.blue,
-          'Gen-Green': colors.green.zetaColorSwatch,
+          'Gen-Green': ZetaColorSwatch.fromColor(
+            colors.green,
+            brightness: theme.brightness,
+            contrast: colors.contrast,
+          ),
           'Green': colors.green,
-          'Gen-Red': colors.red.zetaColorSwatch,
+          'Gen-Red': ZetaColorSwatch.fromColor(
+            colors.red,
+            brightness: theme.brightness,
+            contrast: colors.contrast,
+          ),
           'Red': colors.red,
-          'Gen-Orange': colors.orange.zetaColorSwatch,
+          'Gen-Orange': ZetaColorSwatch.fromColor(
+            colors.orange,
+            brightness: theme.brightness,
+            contrast: colors.contrast,
+          ),
           'Orange': colors.orange,
-          'Gen-Purple': colors.purple.zetaColorSwatch,
+          'Gen-Purple': ZetaColorSwatch.fromColor(
+            colors.purple,
+            brightness: theme.brightness,
+            contrast: colors.contrast,
+          ),
           'Purple': colors.purple,
-          'Gen-Yellow': colors.yellow.zetaColorSwatch,
+          'Gen-Yellow': ZetaColorSwatch.fromColor(
+            colors.yellow,
+            brightness: theme.brightness,
+            contrast: colors.contrast,
+          ),
           'Yellow': colors.yellow,
-          'Gen-Teal': colors.teal.zetaColorSwatch,
+          'Gen-Teal': ZetaColorSwatch.fromColor(
+            colors.teal,
+            brightness: theme.brightness,
+            contrast: colors.contrast,
+          ),
           'Teal': colors.teal,
-          'Gen-Pink': colors.pink.zetaColorSwatch,
+          'Gen-Pink': ZetaColorSwatch.fromColor(
+            colors.pink,
+            brightness: theme.brightness,
+            contrast: colors.contrast,
+          ),
           'Pink': colors.pink,
-          'Gen-Grey Warm': colors.warm.zetaColorSwatch,
+          'Gen-Grey Warm': ZetaColorSwatch.fromColor(
+            colors.warm,
+            brightness: theme.brightness,
+            contrast: colors.contrast,
+          ),
           'Grey Warm': colors.warm,
-          'Gen-Grey Cool': colors.cool.zetaColorSwatch,
+          'Gen-Grey Cool': ZetaColorSwatch.fromColor(
+            colors.cool,
+            brightness: theme.brightness,
+            contrast: colors.contrast,
+          ),
           'Grey Cool': colors.cool,
         };
 
-        final Map<String, Color> bw = {'white': colors.white, 'black': colors.black};
         final Map<String, Color> textIcon = {
           'textDefault': colors.textDefault,
           'textSubtle': colors.textSubtle,
@@ -84,12 +125,7 @@ class _ColorExampleState extends State<ColorExample> {
 
         final Map<String, Color> primaries = {
           'primaryColor': colors.primary,
-          'primarySelected': colors.primary.selected,
-          'primaryHover': colors.primary.hover,
-          'primaryText': colors.primary.text,
-          'primaryBorder': colors.primary.border,
-          'primarySubtle': colors.primary.subtle,
-          'primarySurface': colors.primary.surface,
+          'secondaryColor': colors.secondary,
         };
 
         final Map<String, Color> alerts = {
@@ -101,108 +137,97 @@ class _ColorExampleState extends State<ColorExample> {
 
         return ExampleScaffold(
           name: ColorExample.name,
-          actions: [
-            Center(child: ZetaText('DarkMode', textColor: Colors.white)),
-            Switch.adaptive(
-              value: colors.isDarkMode,
-              onChanged: (isDarkMode) => ZetaColors.setColors(context, colors.copyWith(isDarkMode: isDarkMode)),
-            ),
-            const SizedBox(width: Dimensions.l),
-            const Center(child: ZetaText('AAA ', textColor: Colors.white)),
-            Switch.adaptive(
-              value: colors.isAAA,
-              onChanged: (isAAA) => ZetaColors.setColors(context, colors.copyWith(isAAA: isAAA)),
-            ),
-          ],
-          child: Column(
-            children: [
-              MyRow(children: bw, title: 'Black and white'),
-              MyRow(children: textIcon, title: 'Text and icon styles'),
-              MyRow(children: border, title: 'Border styles'),
-              MyRow(children: links, title: 'Links'),
-              MyRow(children: backdrop, title: 'Backdrop colors'),
-              MyRow(children: primaries, title: 'Primary colors'),
-              MyRow(children: alerts, title: 'Alert colors'),
-              Row(children: [ZetaText.displayMedium('Full color swatches')]).squish(Dimensions.x8),
-              ...swatches.entries.map(
-                (value) => Row(
-                  children: List.generate(10, (index) => 100 - (10 * index))
-                      .map(
-                        (e) => Expanded(
-                          child: Container(
-                            height: constraints.maxWidth / 10,
-                            color: value.value[e],
-                            child: FittedBox(
-                              fit: BoxFit.scaleDown,
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  DefaultTextStyle(
-                                    style: ZetaText.zetaBodyMedium
-                                        .copyWith(color: calculateTextColor(value.value[e] ?? Colors.white)),
-                                    child: Column(
-                                      children: [
-                                        Text('${value.key.toLowerCase().replaceAll(' ', '')}-$e'),
-                                        Text(value.value[e].toString().replaceAll('Color(0xff', '#').substring(0, 7)),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-                      )
-                      .toList(),
-                ),
-              ),
-              ElevatedButton(
-                onPressed: () => setState(() => showGeneratedColors = !showGeneratedColors),
-                child: const Text('Toggle generated colors').square(Dimensions.s),
-              ).square(Dimensions.s),
-              if (showGeneratedColors)
-                Row(children: [ZetaText.displayMedium('Generated color swatches')]).squish(Dimensions.x8),
-              if (showGeneratedColors)
-                ...generatedSwatches.entries.map(
+          child: SingleChildScrollView(
+            padding: EdgeInsets.all(Dimensions.s),
+            child: Column(
+              children: [
+                MyRow(children: textIcon, title: 'Text and icon styles'),
+                MyRow(children: border, title: 'Border styles'),
+                MyRow(children: links, title: 'Links'),
+                MyRow(children: backdrop, title: 'Backdrop colors'),
+                MyRow(children: primaries, title: 'Primary colors'),
+                MyRow(children: alerts, title: 'Alert colors'),
+                Row(children: [ZetaText.displayMedium('Full color swatches')]).squish(Dimensions.x8),
+                ...swatches.entries.map(
                   (value) => Row(
-                    children: List.generate(11, (index) => 110 - (10 * index))
+                    children: List.generate(10, (index) => 100 - (10 * index))
                         .map(
                           (e) => Expanded(
                             child: Container(
                               height: constraints.maxWidth / 10,
-                              color: e == 110 ? colors.surface : value.value[e],
-                              child: e == 110
-                                  ? SizedBox()
-                                  : FittedBox(
-                                      fit: BoxFit.scaleDown,
+                              color: value.value[e],
+                              child: FittedBox(
+                                fit: BoxFit.scaleDown,
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    DefaultTextStyle(
+                                      style: ZetaText.zetaBodyMedium
+                                          .copyWith(color: calculateTextColor(value.value[e] ?? Colors.white)),
                                       child: Column(
-                                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                         children: [
-                                          DefaultTextStyle(
-                                            style: ZetaText.zetaBodyMedium
-                                                .copyWith(color: calculateTextColor(value.value[e] ?? Colors.white)),
-                                            child: Column(
-                                              children: [
-                                                Text('${value.key.toLowerCase().replaceAll(' ', '')}-$e'),
-                                                Text(
-                                                  value.value[e]
-                                                      .toString()
-                                                      .replaceAll('Color(0xff', '#')
-                                                      .substring(0, 7),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
+                                          Text('${value.key.toLowerCase().replaceAll(' ', '')}-$e'),
+                                          Text(value.value[e].toString().replaceAll('Color(0xff', '#').substring(0, 7)),
                                         ],
                                       ),
                                     ),
+                                  ],
+                                ),
+                              ),
                             ),
                           ),
                         )
                         .toList(),
                   ),
                 ),
-            ],
+                ElevatedButton(
+                  onPressed: () => setState(() => showGeneratedColors = !showGeneratedColors),
+                  child: const Text('Toggle generated colors').square(Dimensions.s),
+                ).square(Dimensions.s),
+                if (showGeneratedColors)
+                  Row(children: [ZetaText.displayMedium('Generated color swatches')]).squish(Dimensions.x8),
+                if (showGeneratedColors)
+                  ...generatedSwatches.entries.map(
+                    (value) => Row(
+                      children: List.generate(11, (index) => 110 - (10 * index))
+                          .map(
+                            (e) => Expanded(
+                              child: Container(
+                                height: constraints.maxWidth / 10,
+                                color: e == 110 ? colors.surface : value.value[e],
+                                child: e == 110
+                                    ? SizedBox()
+                                    : FittedBox(
+                                        fit: BoxFit.scaleDown,
+                                        child: Column(
+                                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                          children: [
+                                            DefaultTextStyle(
+                                              style: ZetaText.zetaBodyMedium
+                                                  .copyWith(color: calculateTextColor(value.value[e] ?? Colors.white)),
+                                              child: Column(
+                                                children: [
+                                                  Text('${value.key.toLowerCase().replaceAll(' ', '')}-$e'),
+                                                  Text(
+                                                    value.value[e]
+                                                        .toString()
+                                                        .replaceAll('Color(0xff', '#')
+                                                        .substring(0, 7),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                              ),
+                            ),
+                          )
+                          .toList(),
+                    ),
+                  ),
+              ],
+            ),
           ),
         );
       },
@@ -213,6 +238,7 @@ class _ColorExampleState extends State<ColorExample> {
 class MyRow extends StatelessWidget {
   final Map<String, Color> children;
   final String title;
+
   const MyRow({super.key, required this.children, required this.title});
 
   @override
@@ -225,16 +251,17 @@ class MyRow extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                ZetaText.labelLarge(title, textColor: ZetaColors.of(context).textDefault),
+                ZetaText.labelLarge(title, textColor: Theme.of(context).colorScheme.textDefault),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,
                   children: children.entries
                       .map(
-                        (e) => Container(
+                        (e) => AnimatedContainer(
                           height: 160,
                           width: 160,
                           color: e.value,
+                          duration: const Duration(milliseconds: 250),
                           child: FittedBox(
                             fit: BoxFit.scaleDown,
                             child: Column(

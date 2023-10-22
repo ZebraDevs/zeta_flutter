@@ -21,6 +21,7 @@ class ExampleModel {
 
 class ExampleBuilder extends StatelessWidget {
   final ExampleModel model;
+
   const ExampleBuilder(this.model, {super.key});
 
   @override
@@ -31,7 +32,7 @@ class ExampleBuilder extends StatelessWidget {
         Container(
           height: 7,
           width: 7,
-          decoration: const BoxDecoration(color: Colors.black, shape: BoxShape.circle),
+          decoration: BoxDecoration(color: Theme.of(context).colorScheme.onSurface, shape: BoxShape.circle),
         ).squish(Dimensions.x9).inline(Dimensions.x4),
         Expanded(
           child: Column(
@@ -66,18 +67,43 @@ class ExampleScaffold extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ZetaColors colors = ZetaColors.of(context);
+    var theme = Theme.of(context);
+    final colors = theme.colorScheme;
 
     return Scaffold(
-      appBar: AppBar(title: Text(name), actions: actions, backgroundColor: colors.primary),
+      appBar: AppBar(
+        title: Text(name),
+        backgroundColor: colors.primary,
+        foregroundColor: colors.onPrimary,
+        actions: [
+          ...actions,
+        ],
+      ),
       body: SelectionArea(
-        child: ColoredBox(
-          color: colors.background,
-          child: SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: Dimensions.x1, vertical: Dimensions.x6),
-              child: child,
-            ),
+        child: child,
+      ),
+      bottomNavigationBar: BottomAppBar(
+        child: Padding(
+          padding: const EdgeInsets.only(top: 8, left: 8, right: 8),
+          child: Row(
+            children: [
+              const Spacer(),
+              ZetaText('DarkMode'),
+              Switch.adaptive(
+                value: ZetaDefaults.of(context).themeMode == ThemeMode.dark,
+                onChanged: (isDarkMode) {
+                  Zeta.of(context).updateThemeMode(isDarkMode ? ThemeMode.dark : ThemeMode.light);
+                },
+              ),
+              const SizedBox(width: Dimensions.s),
+              ZetaText('AAA '),
+              Switch.adaptive(
+                value: ZetaDefaults.of(context).contrast == ZetaContrast.aaa,
+                onChanged: (isAAA) {
+                  Zeta.of(context).updateContrast(isAAA ? ZetaContrast.aaa : ZetaContrast.aa);
+                },
+              ),
+            ],
           ),
         ),
       ),
@@ -88,15 +114,16 @@ class ExampleScaffold extends StatelessWidget {
 class CodeExample extends StatelessWidget {
   final String code;
   final bool fill;
+
   const CodeExample({required this.code, this.fill = false, super.key});
 
   @override
   Widget build(BuildContext context) {
-    final ZetaColors colors = ZetaColors.of(context);
+    var themeData = Theme.of(context);
     final widget = Container(
-      color: colors.surfaceDisabled,
+      color: themeData.colorScheme.surfaceDisabled,
       padding: Dimensions.x4.square,
-      child: Text(code, style: GoogleFonts.ibmPlexMono(color: colors.textDefault)),
+      child: Text(code, style: GoogleFonts.ibmPlexMono(color: themeData.colorScheme.textDefault)),
     );
 
     return (fill
@@ -121,6 +148,7 @@ class CodeExample extends StatelessWidget {
 class FlutterWordMark extends StatelessWidget {
   final String text;
   final EdgeInsets padding;
+
   const FlutterWordMark({
     this.text = 'Flutter',
     this.padding = const EdgeInsets.symmetric(horizontal: Dimensions.x5, vertical: Dimensions.x2),
@@ -130,7 +158,7 @@ class FlutterWordMark extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: ZetaColors.of(context).borderSubtle,
+      color: Theme.of(context).colorScheme.borderSubtle,
       padding: padding,
       child: ZetaText(text),
     );

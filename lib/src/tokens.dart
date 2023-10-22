@@ -99,9 +99,6 @@ class Typography {
   /// Zeta library contains IBM Plex Sans with latin script.
   /// In the case of non-latin languages, this can be overridden:
   ///
-  /// ``` theme: ZetaTheme.zeta.copyWith(fontFamily: ''),```
-  // static const String fontFamily = 'packages/zeta_flutter/IBMPlexSans';
-
   /// Default text size.
   ///
   /// Defaults to [Dimensions.s].

@@ -10,8 +10,27 @@ class ZetaExample extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Zeta(
-      builder: (context, theme, colors) {
-        return MaterialApp.router(theme: theme, routerConfig: router);
+      themeData: ZetaThemeData(
+        colorsDark: ZetaColors.dark(),
+        colorsLight: ZetaColors.light(),
+      ),
+      builder: (context, data, themeMode) {
+        final dark = data.colorsDark.toScheme();
+        final light = data.colorsLight.toScheme();
+        return MaterialApp.router(
+          routerConfig: router,
+          themeMode: themeMode,
+          theme: ThemeData(
+            fontFamily: data.fontFamily,
+            scaffoldBackgroundColor: light.background,
+            colorScheme: light,
+          ),
+          darkTheme: ThemeData(
+            fontFamily: data.fontFamily,
+            scaffoldBackgroundColor: dark.background,
+            colorScheme: dark,
+          ),
+        );
       },
     );
   }

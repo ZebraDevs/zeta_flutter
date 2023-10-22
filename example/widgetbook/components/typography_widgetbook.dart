@@ -25,7 +25,7 @@ WidgetbookComponent textWidgetBook() {
       WidgetbookUseCase(
         name: 'Universal sizes',
         builder: (context) => Container(
-          color: ZetaColors.of(context).background,
+          color: Theme.of(context).colorScheme.background,
           padding: const EdgeInsets.all(Dimensions.l),
           child: ZetaText(
             exampleText,
@@ -53,7 +53,7 @@ WidgetbookComponent textWidgetBook() {
       WidgetbookUseCase(
         name: 'Dedicated sizes',
         builder: (context) => Container(
-          color: ZetaColors.of(context).background,
+          color: Theme.of(context).colorScheme.background,
           padding: const EdgeInsets.all(Dimensions.l),
           child: ZetaText(
             exampleText,
@@ -74,7 +74,7 @@ class _TextWrapper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ZetaColors colors = ZetaColors.of(context);
+    final colors = Theme.of(context).colorScheme;
     return Container(
       color: colors.background,
       padding: const EdgeInsets.all(Dimensions.l),

@@ -37,23 +37,23 @@ class ZetaText extends StatelessWidget {
   );
 
   /// Builds text theme for app based on an instance of [ZetaColors].
-  static TextTheme textThemeBuilder(ZetaColors colors) {
+  static TextTheme withColor(Color color) {
     return TextTheme(
-      displayLarge: zetaDisplayLarge.copyWith(color: colors.textDefault),
-      displayMedium: zetaDisplayMedium.copyWith(color: colors.textDefault),
-      displaySmall: zetaDisplaySmall.copyWith(color: colors.textDefault),
-      headlineLarge: zetaHeadingLarge.copyWith(color: colors.textDefault),
-      headlineMedium: zetaHeadingMedium.copyWith(color: colors.textDefault),
-      headlineSmall: zetaHeadingSmall.copyWith(color: colors.textDefault),
-      titleLarge: zetaTitleLarge.copyWith(color: colors.textDefault),
-      titleMedium: zetaTitleMedium.copyWith(color: colors.textDefault),
-      titleSmall: zetaTitleSmall.copyWith(color: colors.textDefault),
-      bodyLarge: zetaBodyLarge.copyWith(color: colors.textDefault),
-      bodyMedium: zetaBodyMedium.copyWith(color: colors.textDefault),
-      bodySmall: zetaBodySmall.copyWith(color: colors.textDefault),
-      labelLarge: zetaLabelLarge.copyWith(color: colors.textDefault),
-      labelMedium: zetaLabelMedium.copyWith(color: colors.textDefault),
-      labelSmall: zetaLabelSmall.copyWith(color: colors.textDefault),
+      displayLarge: zetaDisplayLarge.copyWith(color: color),
+      displayMedium: zetaDisplayMedium.copyWith(color: color),
+      displaySmall: zetaDisplaySmall.copyWith(color: color),
+      headlineLarge: zetaHeadingLarge.copyWith(color: color),
+      headlineMedium: zetaHeadingMedium.copyWith(color: color),
+      headlineSmall: zetaHeadingSmall.copyWith(color: color),
+      titleLarge: zetaTitleLarge.copyWith(color: color),
+      titleMedium: zetaTitleMedium.copyWith(color: color),
+      titleSmall: zetaTitleSmall.copyWith(color: color),
+      bodyLarge: zetaBodyLarge.copyWith(color: color),
+      bodyMedium: zetaBodyMedium.copyWith(color: color),
+      bodySmall: zetaBodySmall.copyWith(color: color),
+      labelLarge: zetaLabelLarge.copyWith(color: color),
+      labelMedium: zetaLabelMedium.copyWith(color: color),
+      labelSmall: zetaLabelSmall.copyWith(color: color),
     );
   }
 
@@ -411,7 +411,7 @@ class ZetaText extends StatelessWidget {
     );
 
     String data = this.data ?? '';
-    final Color color = textColor ?? ZetaColors.of(context).textDefault;
+    final Color color = textColor ?? Theme.of(context).colorScheme.textDefault;
 
     thisStyle = thisStyle.copyWith(
       fontSize: (fontSize ?? thisStyle.fontSize ?? tokens.Typography.defaultTextSize) *
@@ -421,7 +421,6 @@ class ZetaText extends StatelessWidget {
       decoration: decoration ?? TextDecoration.none,
       fontStyle: fontStyle,
       color: color,
-      fontFamily: Theme.of(context).fontFamily,
     );
 
     if (resetHeight) thisStyle = thisStyle.copyWith(height: 1);
@@ -744,6 +743,7 @@ class ZetaText extends StatelessWidget {
     this.maxWidth,
     super.key,
   }) : style = zetaDisplayLarge;
+
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);

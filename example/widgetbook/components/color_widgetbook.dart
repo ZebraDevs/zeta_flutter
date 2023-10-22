@@ -10,25 +10,11 @@ WidgetbookComponent colorWidgetBook() {
       WidgetbookUseCase(
         name: 'Colors',
         builder: (BuildContext context) {
-          final primary = context.knobs.color(label: 'Primary color', initialValue: ZetaColorBase.blue);
-          final ZetaColors colors;
-          if (primary != ZetaColorBase.blue) {
-            colors = ZetaColors(
-              isDarkMode: context.knobs.boolean(label: 'Dark mode'),
-              isAAA: context.knobs.boolean(label: 'AAA compliance'),
-              primary: ZetaColorSwatch.fromColor(primary),
-            );
-          } else {
-            colors = ZetaColors(
-              isDarkMode: context.knobs.boolean(label: 'Dark mode'),
-              isAAA: context.knobs.boolean(label: 'AAA compliance'),
-            );
-          }
+          final colors = Theme.of(context).colorScheme;
 
           return LayoutBuilder(
             builder: (context, constraints) {
               final Map<String, ZetaColorSwatch> swatches = {
-                'Primary': colors.primary,
                 'Blue': colors.blue,
                 'Green': colors.green,
                 'Red': colors.red,
@@ -40,7 +26,6 @@ WidgetbookComponent colorWidgetBook() {
                 'Grey Warm': colors.warm,
                 'Grey Cool': colors.cool,
               };
-              final Map<String, Color> bw = {'white': colors.white, 'black': colors.black};
               final Map<String, Color> textIcon = {
                 'textDefault': colors.textDefault,
                 'textSubtle': colors.textSubtle,
@@ -66,15 +51,7 @@ WidgetbookComponent colorWidgetBook() {
                 'surfaceSelectedHovered': colors.surfaceSelectedHovered,
                 'surfaceSelected': colors.surfaceSelected,
               };
-              final Map<String, Color> primaries = {
-                'primaryColor': colors.primary.primary,
-                'primarySelected': colors.primary.selected,
-                'primaryHover': colors.primary.hover,
-                'primaryText': colors.primary.text,
-                'primaryBorder': colors.primary.border,
-                'primarySubtle': colors.primary.subtle,
-                'primarySurface': colors.primary.surface,
-              };
+
               final Map<String, Color> alerts = {
                 'positive': colors.positive,
                 'negative': colors.negative,
@@ -83,7 +60,6 @@ WidgetbookComponent colorWidgetBook() {
               };
 
               return Zeta(
-                colors: colors,
                 builder: (context3, _, __) {
                   return Container(
                     padding: const EdgeInsets.symmetric(horizontal: Dimensions.l),
@@ -92,12 +68,10 @@ WidgetbookComponent colorWidgetBook() {
                       child: Column(
                         children: [
                           const SizedBox(height: Dimensions.l),
-                          MyRow(children: bw, title: 'Black and white'),
                           MyRow(children: textIcon, title: 'Text and icon styles'),
                           MyRow(children: border, title: 'Border styles'),
                           MyRow(children: links, title: 'Links'),
                           MyRow(children: backdrop, title: 'Backdrop colors'),
-                          MyRow(children: primaries, title: 'Primary colors'),
                           MyRow(children: alerts, title: 'Alert colors'),
                           Row(children: [ZetaText.displayMedium('Full color swatches')]).squish(Dimensions.x8),
                           ...swatches.entries.map(

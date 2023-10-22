@@ -11,6 +11,7 @@ class GridExample extends StatelessWidget {
   static const List<double> asymmetrical = [11, 10, 9, 8, 7, 5, 4, 3, 2, 1];
 
   const GridExample({super.key});
+
   @override
   Widget build(BuildContext context) {
     final List<Widget> gridItems = List.generate(20, (index) => GridItem(label: (index + 1).toString()));
@@ -78,9 +79,12 @@ class GridExample extends StatelessWidget {
 
     return ExampleScaffold(
       name: name,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [...examples.map(ExampleBuilder.new)],
+      child: SingleChildScrollView(
+        padding: EdgeInsets.all(Dimensions.s),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [...examples.map(ExampleBuilder.new)],
+        ),
       ),
     );
   }
@@ -89,16 +93,20 @@ class GridExample extends StatelessWidget {
 class GridItem extends StatelessWidget {
   final String label;
   final double? width;
+
   const GridItem({this.label = '', this.width, super.key});
 
   @override
   Widget build(BuildContext context) {
-    final ZetaColors colors = ZetaColors.of(context);
+    final colors = Theme.of(context).colorScheme;
     return Container(
       height: 80,
       width: width,
-      decoration: BoxDecoration(border: Border.all(color: colors.blue.border), color: colors.blue.shade20),
-      child: ZetaText(label),
+      decoration: BoxDecoration(border: Border.all(color: colors.blue.border), color: colors.blue.surface),
+      child: Padding(
+        padding: const EdgeInsets.only(left: 8),
+        child: ZetaText.bodyLarge(label, textColor: colors.blue.text),
+      ),
     );
   }
 }

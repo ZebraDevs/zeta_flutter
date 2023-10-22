@@ -14,11 +14,13 @@ class _TypeEx {
   final String name;
   final ZetaSpacingType? value;
   final String description;
+
   const _TypeEx({required this.name, required this.value, required this.description});
 }
 
 class SpacingExample extends StatelessWidget {
   static const String name = 'Spacing';
+
   const SpacingExample({super.key});
 
   static const List<_SizeEx> _sizes = [
@@ -81,9 +83,13 @@ class SpacingExample extends StatelessWidget {
   Widget build(BuildContext context) {
     return ExampleScaffold(
       name: name,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [..._x.map((e) => e == null ? const Divider() : ExampleBuilder(e))]..removeLast(),
+      child: ListView.builder(
+        padding: EdgeInsets.all(Dimensions.s),
+        itemCount: _x.length,
+        itemBuilder: (context, index) {
+          final e = _x[index];
+          return e == null ? const Divider() : ExampleBuilder(e);
+        },
       ),
     );
   }
@@ -92,6 +98,7 @@ class SpacingExample extends StatelessWidget {
 class _SpaceExample extends StatelessWidget {
   final double size;
   final ZetaSpacingType type;
+
   const _SpaceExample({required this.size, required this.type});
 
   @override
@@ -100,7 +107,7 @@ class _SpaceExample extends StatelessWidget {
       children: [
         Expanded(
           child: ColoredBox(
-            color: ZetaColors.of(context).blue.shade20,
+            color: Theme.of(context).colorScheme.blue.shade20,
             child: ZetaSpacing(const SpacingItem(), size: size, type: type),
           ),
         ),

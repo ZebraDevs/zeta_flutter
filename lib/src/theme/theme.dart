@@ -1,128 +1,73 @@
 import 'package:flutter/material.dart';
 
-import '../../../zeta_flutter.dart';
+import 'color_extensions.dart';
+import 'colors.dart';
+import 'constants.dart';
+import 'contrast.dart';
 
 export 'breakpoints.dart';
 export 'colors.dart';
 export 'colors_base.dart';
 export 'constants.dart';
 
-/// Theme for Zeta.
-class ZetaTheme {
-  /// Default theme in light mode.
-  ///
-  /// {@template zeta-theme}
-  /// For apps using Zeta components to be properly themed, [Zeta] ThemeData should be placed in the widget tree using one of the following methods:
-  ///
-  ///
-  /// dart```
-  ///   MaterialApp(
-  ///     theme: zeta,
-  ///     ...
-  ///   )
-  /// ```
-  ///
-  /// ```
-  ///   Theme(
-  ///     data: zeta,
-  ///     child: ...
-  ///   )
-  /// ```
-  ///
-  /// This adds all the appropriate tokens into the app to render correctly.
-  ///
-  /// {@endtemplate}
-  static ThemeData zetaLight({ZetaThemeData? initialTheme}) {
-    return ThemeData(
-      colorScheme: initialTheme?.colorScheme ?? initialTheme?.zetaColors?.toColorScheme ?? ZetaColors().toColorScheme,
-      fontFamily: initialTheme?.fontFamily ?? 'packages/zeta_flutter/IBMPlexSans',
-      // TODO(tokens): reinstate tokens.Typography.fontFamily when we have a plan for tokens
-      textTheme: initialTheme?.textTheme ?? ZetaText.textTheme,
-    );
-  }
-
-  /// Default theme with dark mode.
-  ///
-  /// {@macro zeta-theme}
-  static ThemeData zetaDark({ZetaThemeData? initialTheme}) {
-    return ThemeData(
-      colorScheme: initialTheme?.colorScheme ??
-          initialTheme?.zetaColors?.copyWith(isDarkMode: true).toColorScheme ??
-          ZetaColors().toColorScheme,
-      fontFamily: initialTheme?.fontFamily ?? 'packages/zeta_flutter/IBMPlexSans',
-      textTheme: initialTheme?.textTheme ?? ZetaText.textTheme,
-    );
-  }
-
-  /// Builds a [ThemeData] based off of some initial data.
-  ///
-  /// If `initialTheme.zetaColors` is not defined, colors will default to light mode.
-  ///
-  /// {@macro zeta-theme}
-  static ThemeData builder({ZetaThemeData? initialTheme}) {
-    final ZetaColors colors = initialTheme?.zetaColors ?? ZetaColors();
-
-    return ThemeData(
-      colorScheme: initialTheme?.colorScheme ?? colors.toColorScheme,
-      fontFamily: initialTheme?.fontFamily ?? 'packages/zeta_flutter/IBMPlexSans',
-      textTheme: initialTheme?.textTheme ?? ZetaText.textThemeBuilder(colors),
-    );
-  }
-}
-
-/// Basic theme information used to create a ZetaTheme.
+/// A representation of the Zeta theme data.
+///
+/// This class encapsulates the colors and fonts used for the Zeta theme in both light and dark modes.
 class ZetaThemeData {
-  /// Font family.
+  /// The font family used in the Zeta theme.
   ///
-  /// If null, defaults to  `packages/zeta_flutter/IBMPlexSans`;
-  final String? fontFamily;
+  /// Defaults to [kZetaFontFamily] if not provided.
+  final String fontFamily;
 
-  /// Color scheme.
+  final ZetaColors _colorsLight;
+  final ZetaColors _colorsDark;
+
+  /// The colors used for the light mode of the Zeta theme.
   ///
-  /// If null, defaults to `ZetaColors().toColorScheme`.
-  final ColorScheme? colorScheme;
+  /// Defaults to a light mode color palette with default Zeta colors if not explicitly provided.
+  ZetaColors get colorsLight => _colorsLight;
 
-  /// ZetaColors
+  /// The colors used for the dark mode of the Zeta theme.
   ///
-  /// If null, defaults to `ZetaColors()` - which builds a light mode color palette with default Zeta Colors.
-  final ZetaColors? zetaColors;
-
-  /// TextTheme. If null, defaults to [ZetaText.textTheme].
-  final TextTheme? textTheme;
+  /// Defaults to a dark mode color palette with default Zeta colors if not explicitly provided.
+  ZetaColors get colorsDark => _colorsDark;
 
   /// Constructs a [ZetaThemeData].
-  const ZetaThemeData({
-    this.fontFamily,
-    this.colorScheme,
-    this.zetaColors,
-    this.textTheme,
-  });
+  ///
+  /// If [primary] and/or [secondary] colors are provided, they will be used to create the light and dark Zeta color palettes.
+  ZetaThemeData({
+    this.fontFamily = kZetaFontFamily,
+    ZetaContrast contrast = ZetaContrast.aa,
+    ZetaColors? colorsLight,
+    ZetaColors? colorsDark,
+    Color? primary,
+    Color? secondary,
+  })  : _colorsDark = (primary != null
+                ? ZetaColors.dark(
+                    contrast: contrast,
+                    primary: primary.zetaColorSwatch,
+                    secondary: secondary?.zetaColorSwatch,
+                  )
+                : (colorsDark ?? ZetaColors.dark()))
+            .apply(contrast: contrast),
+        _colorsLight = (primary != null
+                ? ZetaColors.light(
+                    contrast: contrast,
+                    primary: primary.zetaColorSwatch,
+                    secondary: secondary?.zetaColorSwatch,
+                  )
+                : (colorsLight ?? ZetaColors.light()))
+            .apply(contrast: contrast);
 
-  /// Returns a new [ZetaThemeData] with fields replaced with the passed parameters.
-  ZetaThemeData copyWith({
-    String? fontFamily,
-    ColorScheme? colorScheme,
-    ZetaColors? zetaColors,
-    TextTheme? textTheme,
+  /// Applies the given [contrast] to the current [ZetaThemeData] and returns a new [ZetaThemeData] with the updated contrast.
+  ZetaThemeData apply({
+    required ZetaContrast contrast,
   }) {
     return ZetaThemeData(
-      fontFamily: fontFamily ?? this.fontFamily,
-      colorScheme: colorScheme ?? this.colorScheme,
-      zetaColors: zetaColors ?? this.zetaColors,
-      textTheme: textTheme ?? this.textTheme,
+      contrast: contrast,
+      fontFamily: fontFamily,
+      colorsDark: colorsDark,
+      colorsLight: colorsLight,
     );
   }
-}
-
-/// Font family for whole theme.
-extension FontFamily on ThemeData {
-  /// Default font family used by theme.
-  ///
-  /// We assume that the same font should be used for all text styles in a theme, therefore we can extract from any child theme.
-  String? get fontFamily => textTheme.bodyMedium?.fontFamily;
-
-  /// Default text color used by theme.
-  ///
-  /// We assume that the same font should be used for all text styles in a theme, therefore we can extract from any child theme.
-  Color? get defaultColor => textTheme.bodyMedium?.color;
 }
