@@ -11,7 +11,7 @@ class TestWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = screenSize ?? const Size(1280, 720);
 
-    return Zeta(
+    return ZetaProvider(
       builder: (context, theme, __) {
         return Builder(
           builder: (context) {

@@ -98,7 +98,7 @@ class GridItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colors = Theme.of(context).colorScheme;
+    final colors = Zeta.of(context).colors;
     return Container(
       height: 80,
       width: width,

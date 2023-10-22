@@ -18,7 +18,7 @@ class _ColorExampleState extends State<ColorExample> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final colors = theme.colorScheme;
+    final colors = Zeta.of(context).colors;
     return LayoutBuilder(
       builder: (context, constraints) {
         final Map<String, ZetaColorSwatch> swatches = {
@@ -194,7 +194,7 @@ class _ColorExampleState extends State<ColorExample> {
                             (e) => Expanded(
                               child: Container(
                                 height: constraints.maxWidth / 10,
-                                color: e == 110 ? colors.surface : value.value[e],
+                                color: e == 110 ? theme.colorScheme.surface : value.value[e],
                                 child: e == 110
                                     ? SizedBox()
                                     : FittedBox(
@@ -251,7 +251,7 @@ class MyRow extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                ZetaText.labelLarge(title, textColor: Theme.of(context).colorScheme.textDefault),
+                ZetaText.labelLarge(title, textColor: Zeta.of(context).colors.textDefault),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,

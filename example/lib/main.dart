@@ -9,7 +9,7 @@ class ZetaExample extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Zeta(
+    return ZetaProvider(
       themeData: ZetaThemeData(
         colorsDark: ZetaColors.dark(),
         colorsLight: ZetaColors.light(),

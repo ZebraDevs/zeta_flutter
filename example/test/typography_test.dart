@@ -28,7 +28,7 @@ void main() {
                   fontSize: 100,
                   fontStyle: FontStyle.italic,
                   fontWeight: FontWeight.w500,
-                  textColor: Theme.of(context).colorScheme.textSubtle,
+                  textColor: Zeta.of(context).colors.textSubtle,
                   textDirection: TextDirection.rtl,
                   first: true,
                   last: true,

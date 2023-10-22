@@ -107,7 +107,7 @@ class _SpaceExample extends StatelessWidget {
       children: [
         Expanded(
           child: ColoredBox(
-            color: Theme.of(context).colorScheme.blue.shade20,
+            color: Zeta.of(context).colors.blue.shade20,
             child: ZetaSpacing(const SpacingItem(), size: size, type: type),
           ),
         ),

@@ -74,9 +74,8 @@ class _TextWrapper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colors = Theme.of(context).colorScheme;
+    final colors = Zeta.of(context).colors;
     return Container(
-      color: colors.background,
       padding: const EdgeInsets.all(Dimensions.l),
       child: ZetaText(
         context.knobs.string(label: 'Input text', initialValue: exampleText.split(',').first),

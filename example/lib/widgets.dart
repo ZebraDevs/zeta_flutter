@@ -90,17 +90,17 @@ class ExampleScaffold extends StatelessWidget {
               const Spacer(),
               ZetaText('DarkMode'),
               Switch.adaptive(
-                value: ZetaDefaults.of(context).themeMode == ThemeMode.dark,
+                value: Zeta.of(context).themeMode == ThemeMode.dark,
                 onChanged: (isDarkMode) {
-                  Zeta.of(context).updateThemeMode(isDarkMode ? ThemeMode.dark : ThemeMode.light);
+                  ZetaProvider.of(context).updateThemeMode(isDarkMode ? ThemeMode.dark : ThemeMode.light);
                 },
               ),
               const SizedBox(width: Dimensions.s),
               ZetaText('AAA '),
               Switch.adaptive(
-                value: ZetaDefaults.of(context).contrast == ZetaContrast.aaa,
+                value: Zeta.of(context).contrast == ZetaContrast.aaa,
                 onChanged: (isAAA) {
-                  Zeta.of(context).updateContrast(isAAA ? ZetaContrast.aaa : ZetaContrast.aa);
+                  ZetaProvider.of(context).updateContrast(isAAA ? ZetaContrast.aaa : ZetaContrast.aa);
                 },
               ),
             ],
@@ -119,11 +119,11 @@ class CodeExample extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var themeData = Theme.of(context);
+    var colors = Zeta.of(context).colors;
     final widget = Container(
-      color: themeData.colorScheme.surfaceDisabled,
+      color: colors.surfaceDisabled,
       padding: Dimensions.x4.square,
-      child: Text(code, style: GoogleFonts.ibmPlexMono(color: themeData.colorScheme.textDefault)),
+      child: Text(code, style: GoogleFonts.ibmPlexMono(color: colors.textDefault)),
     );
 
     return (fill
@@ -158,7 +158,7 @@ class FlutterWordMark extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Theme.of(context).colorScheme.borderSubtle,
+      color: Zeta.of(context).colors.borderSubtle,
       padding: padding,
       child: ZetaText(text),
     );

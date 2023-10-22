@@ -105,7 +105,7 @@ class TypographyExample extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colors = Theme.of(context).colorScheme;
+    final colors = Zeta.of(context).colors;
 
     final tokens = [
       const ExampleModel(

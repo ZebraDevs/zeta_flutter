@@ -10,7 +10,7 @@ WidgetbookComponent colorWidgetBook() {
       WidgetbookUseCase(
         name: 'Colors',
         builder: (BuildContext context) {
-          final colors = Theme.of(context).colorScheme;
+          final colors = Zeta.of(context).colors;
 
           return LayoutBuilder(
             builder: (context, constraints) {
@@ -59,11 +59,10 @@ WidgetbookComponent colorWidgetBook() {
                 'info': colors.info,
               };
 
-              return Zeta(
+              return ZetaProvider(
                 builder: (context3, _, __) {
                   return Container(
                     padding: const EdgeInsets.symmetric(horizontal: Dimensions.l),
-                    color: colors.background,
                     child: SingleChildScrollView(
                       child: Column(
                         children: [
