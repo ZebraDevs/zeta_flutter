@@ -33,15 +33,7 @@ class ZetaColorSwatch extends ColorSwatch<int> {
   ///
   /// @return The color at the specified swatch index, or the default color if the index is not in the table.
   @override
-  @override
-  Color? operator [](int index) {
-    var i = index;
-    if (brightness == Brightness.dark) {
-      // Reverse the index for dark mode
-      i = 110 - index;
-    }
-    return super[i];
-  }
+  Color? operator [](int index) => super[brightness == Brightness.dark ? 110 - index : index] ?? this;
 
   /// The lightest shade.
   Color get shade10 => this[10]!;
@@ -179,15 +171,27 @@ class ZetaColorSwatch extends ColorSwatch<int> {
     // Create a new map (swatch) based on the indices and current swatch values
     final swatch = Map<int, Color>.fromEntries(indices.map((i) => MapEntry(i, super[i] ?? this)));
 
-    // Determine the primary color of the new swatch based on the accessibility level
-    final primary = brightness == Brightness.light ? contrast.primary : 110 - contrast.primary;
+    // Determine the primaryIndex color of the new swatch based on the accessibility level
+    final primaryIndex = brightness == Brightness.light ? contrast.primary : 110 - contrast.primary;
 
-    // Return a new ZetaColorSwatch object with the new primary color and swatch
+    // Return a new ZetaColorSwatch object with the new primaryIndex color and swatch
     return ZetaColorSwatch(
       contrast: contrast,
       brightness: brightness,
-      primary: swatch[primary]!.value,
+      primary: swatch[primaryIndex]!.value,
       swatch: swatch,
     );
   }
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      super == other &&
+          other is ZetaColorSwatch &&
+          runtimeType == other.runtimeType &&
+          brightness == other.brightness &&
+          contrast == other.contrast;
+
+  @override
+  int get hashCode => super.hashCode ^ brightness.hashCode ^ contrast.hashCode;
 }

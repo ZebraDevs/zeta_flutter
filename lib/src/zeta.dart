@@ -1,5 +1,3 @@
-// ignore_for_file: avoid_setters_without_getters
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -114,7 +112,7 @@ class Zeta extends InheritedWidget {
 
 /// A typedef for the ZetaAppBuilder function which takes [BuildContext], [ZetaThemeData],
 /// and [ThemeMode] and returns a [Widget].
-typedef ZetaAppBuilder = Widget Function(BuildContext, ZetaThemeData, ThemeMode);
+typedef ZetaAppBuilder = Widget Function(BuildContext context, ZetaThemeData themeData, ThemeMode themeMode);
 
 /// A widget that provides Zeta theming and contrast data down the widget tree.
 class ZetaProvider extends StatefulWidget with Diagnosticable {

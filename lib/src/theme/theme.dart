@@ -13,6 +13,7 @@ export 'constants.dart';
 /// A representation of the Zeta theme data.
 ///
 /// This class encapsulates the colors and fonts used for the Zeta theme in both light and dark modes.
+@immutable
 class ZetaThemeData {
   /// The font family used in the Zeta theme.
   ///
@@ -70,4 +71,16 @@ class ZetaThemeData {
       colorsLight: colorsLight,
     );
   }
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ZetaThemeData &&
+          runtimeType == other.runtimeType &&
+          fontFamily == other.fontFamily &&
+          _colorsLight == other._colorsLight &&
+          _colorsDark == other._colorsDark;
+
+  @override
+  int get hashCode => fontFamily.hashCode ^ _colorsLight.hashCode ^ _colorsDark.hashCode;
 }

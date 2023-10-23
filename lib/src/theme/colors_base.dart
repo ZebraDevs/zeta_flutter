@@ -244,6 +244,5 @@ class ZetaColorBase {
   static const Color shadowLight = Color(0x1A49505E);
 
   /// Default shadow color.
-  // TODO(colors): Decide effective shadow color for dark mode
   static const Color shadowDark = Color(0x1A49505E);
 }
