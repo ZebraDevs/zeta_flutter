@@ -236,6 +236,13 @@ class ZetaProviderState extends State<ZetaProvider> with Diagnosticable {
     });
   }
 
+  /// Updates the current theme data.
+  void updateThemeData(ZetaThemeData data) {
+    setState(() {
+      _themeData = data.apply(contrast: _contrast);
+    });
+  }
+
   /// Updates the current contrast.
   void updateContrast(ZetaContrast contrast) {
     setState(() {
