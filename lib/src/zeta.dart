@@ -2,7 +2,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'theme/contrast.dart';
-import 'theme/theme.dart';
+import 'theme/theme_data.dart';
+import 'theme/theme_service.dart';
 
 /// An [InheritedWidget] that provides access to Zeta theme settings.
 ///
@@ -139,6 +140,11 @@ class ZetaProvider extends StatefulWidget with Diagnosticable {
   /// and is expected to return a [Widget].
   final ZetaAppBuilder builder;
 
+  /// A `ZetaThemeService`
+  ///
+  /// It provides the structure for loading and saving themes in Zeta application.
+  final ZetaThemeService? themeService;
+
   /// Constructs a [ZetaProvider] widget.
   ///
   /// The [builder] argument is required. The [initialThemeMode], [initialContrast],
@@ -147,6 +153,7 @@ class ZetaProvider extends StatefulWidget with Diagnosticable {
     required this.builder,
     this.initialThemeMode = ThemeMode.system,
     this.initialContrast = ZetaContrast.aa,
+    this.themeService,
     ZetaThemeData? themeData,
     super.key,
   }) : initialThemeData = themeData ?? ZetaThemeData();
@@ -161,6 +168,7 @@ class ZetaProvider extends StatefulWidget with Diagnosticable {
     properties.add(ObjectFlagProperty<ZetaAppBuilder>.has('builder', builder));
     properties.add(EnumProperty<ThemeMode>('initialThemeMode', initialThemeMode));
     properties.add(EnumProperty<ZetaContrast>('initialContrast', initialContrast));
+    properties.add(DiagnosticsProperty<ZetaThemeService?>('themeService', themeService));
   }
 
   /// Retrieves the [ZetaProviderState] from the provided context.

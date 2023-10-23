@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:google_fonts/google_fonts.dart';
+import 'package:zeta_example/pages/theme_switch.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 class ExampleModel {
@@ -77,6 +78,7 @@ class ExampleScaffold extends StatelessWidget {
         foregroundColor: colors.onPrimary,
         actions: [
           ...actions,
+          ZetaThemeSwitch(),
         ],
       ),
       body: SelectionArea(

@@ -513,23 +513,8 @@ class ZetaColors {
     required ZetaContrast contrast,
   }) {
     if (contrast == this.contrast) return this;
-    return ZetaColors(
-      adjust: contrast != this.contrast,
+    return copyWith(
       contrast: contrast,
-      brightness: brightness,
-      primary: primary,
-      secondary: secondary,
-      error: error,
-      cool: cool,
-      warm: warm,
-      shadow: shadow,
-      link: link,
-      linkVisited: linkVisited,
-      surfacePrimary: surfacePrimary,
-      surfaceSecondary: surfaceSecondary,
-      surfaceTertiary: surfaceTertiary,
-      white: white,
-      black: black,
     );
   }
 
