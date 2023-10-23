@@ -17,8 +17,8 @@ class _ColorExampleState extends State<ColorExample> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final colors = Zeta.of(context).colors;
+    final zeta = Zeta.of(context);
+    final colors = zeta.colors;
     return LayoutBuilder(
       builder: (context, constraints) {
         final Map<String, ZetaColorSwatch> swatches = {
@@ -37,61 +37,61 @@ class _ColorExampleState extends State<ColorExample> {
         final Map<String, ZetaColorSwatch> generatedSwatches = {
           'Gen-Blue': ZetaColorSwatch.fromColor(
             colors.blue,
-            brightness: theme.brightness,
+            brightness: zeta.brightness,
             contrast: colors.contrast,
           ),
           'Blue': colors.blue,
           'Gen-Green': ZetaColorSwatch.fromColor(
             colors.green,
-            brightness: theme.brightness,
+            brightness: zeta.brightness,
             contrast: colors.contrast,
           ),
           'Green': colors.green,
           'Gen-Red': ZetaColorSwatch.fromColor(
             colors.red,
-            brightness: theme.brightness,
+            brightness: zeta.brightness,
             contrast: colors.contrast,
           ),
           'Red': colors.red,
           'Gen-Orange': ZetaColorSwatch.fromColor(
             colors.orange,
-            brightness: theme.brightness,
+            brightness: zeta.brightness,
             contrast: colors.contrast,
           ),
           'Orange': colors.orange,
           'Gen-Purple': ZetaColorSwatch.fromColor(
             colors.purple,
-            brightness: theme.brightness,
+            brightness: zeta.brightness,
             contrast: colors.contrast,
           ),
           'Purple': colors.purple,
           'Gen-Yellow': ZetaColorSwatch.fromColor(
             colors.yellow,
-            brightness: theme.brightness,
+            brightness: zeta.brightness,
             contrast: colors.contrast,
           ),
           'Yellow': colors.yellow,
           'Gen-Teal': ZetaColorSwatch.fromColor(
             colors.teal,
-            brightness: theme.brightness,
+            brightness: zeta.brightness,
             contrast: colors.contrast,
           ),
           'Teal': colors.teal,
           'Gen-Pink': ZetaColorSwatch.fromColor(
             colors.pink,
-            brightness: theme.brightness,
+            brightness: zeta.brightness,
             contrast: colors.contrast,
           ),
           'Pink': colors.pink,
           'Gen-Grey Warm': ZetaColorSwatch.fromColor(
             colors.warm,
-            brightness: theme.brightness,
+            brightness: zeta.brightness,
             contrast: colors.contrast,
           ),
           'Grey Warm': colors.warm,
           'Gen-Grey Cool': ZetaColorSwatch.fromColor(
             colors.cool,
-            brightness: theme.brightness,
+            brightness: zeta.brightness,
             contrast: colors.contrast,
           ),
           'Grey Cool': colors.cool,
@@ -194,7 +194,7 @@ class _ColorExampleState extends State<ColorExample> {
                             (e) => Expanded(
                               child: Container(
                                 height: constraints.maxWidth / 10,
-                                color: e == 110 ? theme.colorScheme.surface : value.value[e],
+                                color: e == 110 ? colors.surfacePrimary : value.value[e],
                                 child: e == 110
                                     ? SizedBox()
                                     : FittedBox(
