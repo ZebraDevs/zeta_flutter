@@ -110,6 +110,40 @@ class ZetaColors {
   /// {@macro zeta-color-dark}
   Color get textInverse => cool.shade20;
 
+  /// Default icon color.
+  ///
+  /// Defaults to `ZetaColors.cool.90`.
+  ///
+  /// {@template zeta-color-dark}
+  /// Color swatches are inverted if [ZetaColors.brightness] is Dark.
+  /// {@endTemplate}
+  Color get iconDefault => textDefault;
+
+  /// Subtle icon color.
+  ///
+  /// Defaults to `ZetaColors.cool.70`.
+  ///
+  /// Maps to [ColorScheme.onBackground].
+  ///
+  /// {@macro zeta-color-dark}
+  Color get iconSubtle => textSubtle;
+
+  /// Disabled icon color.
+  ///
+  /// Defaults to `ZetaColors.cool.50`.
+  ///
+  /// {@macro zeta-color-dark}
+  Color get iconDisabled => textDisabled;
+
+  /// Inverse icon color.
+  ///
+  /// Used for text that is not on [ColorScheme.background] or [ThemeData.scaffoldBackgroundColor].
+  ///
+  /// Defaults to `ZetaColors.cool.20`.
+  ///
+  /// {@macro zeta-color-dark}
+  Color get iconInverse => textInverse;
+
   // Border variants.
 
   /// Default border color.
