@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
-class ZetaThemeSwitch extends StatelessWidget {
-  ZetaThemeSwitch({super.key});
+class ZetaThemeColorSwitch extends StatelessWidget {
+  ZetaThemeColorSwitch({super.key});
 
   late final _themes = {
     "default": ZetaThemeData(),
@@ -38,16 +38,18 @@ class ZetaThemeSwitch extends StatelessWidget {
 
     return DropdownButtonHideUnderline(
       child: DropdownButton<String>(
-        elevation: 0,
         value: zeta.themeData.identifier,
+        elevation: 0,
+        isDense: true,
+        alignment: Alignment.center,
         icon: SizedBox(width: 8),
-        dropdownColor: zeta.colors.surfaceTertiary,
+        dropdownColor: zeta.colors.borderDisabled,
         items: _themes.entries.map((e) {
           var zetaColors = primary(_themes[e.key]!);
           var color = zetaColors.primary;
-
           return DropdownMenuItem<String>(
             value: e.value.identifier,
+            alignment: Alignment.center,
             child: CircleAvatar(
               backgroundColor: color.surface,
               foregroundColor: color,

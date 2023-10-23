@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 import 'package:google_fonts/google_fonts.dart';
-import 'package:zeta_example/pages/theme_switch.dart';
+import 'package:zeta_example/pages/theme_color_switch.dart';
+import 'package:zeta_example/pages/theme_constrast_switch.dart';
+import 'package:zeta_example/pages/theme_mode_switch.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 class ExampleModel {
@@ -73,57 +75,19 @@ class ExampleScaffold extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
+        centerTitle: false,
         title: Text(name),
         backgroundColor: colors.primary,
         foregroundColor: colors.onPrimary,
         actions: [
           ...actions,
-          ZetaThemeSwitch(),
+          ZetaThemeModeSwitch(),
+          ZetaThemeContrastSwitch(),
+          ZetaThemeColorSwitch(),
         ],
       ),
       body: SelectionArea(
         child: child,
-      ),
-      bottomNavigationBar: BottomAppBar(
-        child: Padding(
-          padding: const EdgeInsets.only(top: 8, left: 8, right: 8),
-          child: Row(
-            children: [
-              ZetaText('System'),
-              Checkbox(
-                visualDensity: VisualDensity.compact,
-                value: Zeta.of(context).themeMode == ThemeMode.system,
-                onChanged: (isDarkMode) {
-                  if ((isDarkMode ?? false)) {
-                    ZetaProvider.of(context).updateThemeMode(ThemeMode.system);
-                  }
-                },
-              ),
-              const SizedBox(
-                height: 44,
-                child: VerticalDivider(thickness: 2),
-              ),
-              const Spacer(),
-              ZetaText('Dark'),
-              const SizedBox(width: Dimensions.xs),
-              Switch.adaptive(
-                value: Zeta.of(context).brightness == Brightness.dark,
-                onChanged: (isDarkMode) {
-                  ZetaProvider.of(context).updateThemeMode(isDarkMode ? ThemeMode.dark : ThemeMode.light);
-                },
-              ),
-              const SizedBox(width: Dimensions.s),
-              ZetaText('AAA '),
-              const SizedBox(width: Dimensions.xs),
-              Switch.adaptive(
-                value: Zeta.of(context).contrast == ZetaContrast.aaa,
-                onChanged: (isAAA) {
-                  ZetaProvider.of(context).updateContrast(isAAA ? ZetaContrast.aaa : ZetaContrast.aa);
-                },
-              ),
-            ],
-          ),
-        ),
       ),
     );
   }
