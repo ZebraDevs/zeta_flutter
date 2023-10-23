@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -208,6 +210,15 @@ class ZetaProviderState extends State<ZetaProvider> with Diagnosticable {
     _themeMode = widget.initialThemeMode;
     _contrast = widget.initialContrast;
     _themeData = widget.initialThemeData.apply(contrast: _contrast);
+    unawaited(
+      widget.themeService?.loadTheme().then((value) {
+        if (value != null) {
+          setState(() {
+            _themeData = value;
+          });
+        }
+      }),
+    );
   }
 
   @override
@@ -246,6 +257,7 @@ class ZetaProviderState extends State<ZetaProvider> with Diagnosticable {
   void updateThemeData(ZetaThemeData data) {
     setState(() {
       _themeData = data.apply(contrast: _contrast);
+      unawaited(widget.themeService?.saveTheme(data));
     });
   }
 

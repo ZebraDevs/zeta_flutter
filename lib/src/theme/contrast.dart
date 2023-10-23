@@ -10,7 +10,6 @@ enum ZetaContrast {
 
 /// Extension on [ZetaContrast] to provide color indices
 /// for certain accessibility scenarios
-// TODO(contrast): we might shift the other shades than primary in AAA level, check with XD
 extension AccessibilityIndices on ZetaContrast {
   /// Returns the color index value for a primary depending on the ZetaContrast value.
   ///
