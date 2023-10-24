@@ -37,7 +37,7 @@ class ZetaText extends StatelessWidget {
   );
 
   /// Builds text theme for app based on an instance of [ZetaColors].
-  static TextTheme withColor(Color color) {
+  static TextTheme themeWithColor(Color color) {
     return TextTheme(
       displayLarge: zetaDisplayLarge.copyWith(color: color),
       displayMedium: zetaDisplayMedium.copyWith(color: color),
