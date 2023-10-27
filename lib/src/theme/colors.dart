@@ -556,7 +556,6 @@ class ZetaColors {
   ZetaColorScheme toScheme() {
     final effectivePrimary = primary.shade(contrast.primary);
     final effectiveSecondary = secondary.shade(contrast.primary);
-    final effectiveSurfaceTertiary = surfaceTertiary;
     final effectiveSurface = surfacePrimary;
     final effectiveError = error;
 
@@ -565,11 +564,11 @@ class ZetaColors {
       brightness: brightness,
       background: surfaceTertiary,
       error: effectiveError,
-      onBackground: effectiveSurfaceTertiary.onColor,
+      onBackground: textDefault,
       onError: effectiveError.onColor,
       onPrimary: effectivePrimary.onColor,
       onSecondary: effectiveSecondary.onColor,
-      onSurface: effectiveSurface.onColor,
+      onSurface: textDefault,
       primary: effectivePrimary,
       secondary: effectiveSecondary,
       surface: effectiveSurface,
