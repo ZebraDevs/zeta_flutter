@@ -243,7 +243,7 @@ class ZetaColors {
   /// {@macro zeta-color-dark}
   ///
   /// {@macro zeta-color-aaa}
-  Color get positive => green;
+  ZetaColorSwatch get positive => green;
 
   /// Red negative color.
   ///
@@ -255,7 +255,7 @@ class ZetaColors {
   /// {@macro zeta-color-dark}
   ///
   /// {@macro zeta-color-aaa}
-  Color get negative => error;
+  ZetaColorSwatch get negative => error;
 
   /// Orange warning color.
   ///
@@ -265,7 +265,7 @@ class ZetaColors {
   /// {@macro zeta-color-dark}
   ///
   /// {@macro zeta-color-aaa}
-  Color get warning => orange;
+  ZetaColorSwatch get warning => orange;
 
   /// Purple info color.
   ///
@@ -275,7 +275,7 @@ class ZetaColors {
   /// {@macro zeta-color-dark}
   ///
   /// {@macro zeta-color-aaa}
-  Color get info => purple;
+  ZetaColorSwatch get info => purple;
 
   /// Blue color swatch.
   ///

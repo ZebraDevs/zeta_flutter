@@ -29,9 +29,9 @@ class ZetaColorSwatch extends ColorSwatch<int> {
   /// If the requested index is not in the table (i.e., it results in `null`), the method returns `this`,
   /// presumably the default color.
   ///
-  /// @param index The index of the color swatch to return. Must be a non-negative integer.
+  /// [index] The index of the color swatch to return. Must be a non-negative integer.
   ///
-  /// @return The color at the specified swatch index, or the default color if the index is not in the table.
+  /// Returns the color at the specified swatch index, or the default color if the index is not in the table.
   @override
   Color? operator [](int index) => super[brightness == Brightness.dark ? 110 - index : index] ?? this;
 
@@ -68,8 +68,8 @@ class ZetaColorSwatch extends ColorSwatch<int> {
   /// Takes an integer as argument and returns a color shade based on that number.
   /// If no shade with the given number exists, it returns the color itself.
   ///
-  /// @param number - The number representing the shade of the color.
-  /// @return Color object that represents a specified shade or the color itself.
+  /// [number] - The number representing the shade of the color.
+  /// Returns a color object that represents a specified shade or the color itself.
   ///
   Color shade(int number) => this[number]!;
 

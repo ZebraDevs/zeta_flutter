@@ -21,13 +21,13 @@ class MyApp extends StatelessWidget{
 
     /// Build colors object with custom colors.
     final ZetaColors colors = ZetaColors(
-        /// Add custom colors here.
+      /// Add custom colors here.
     );
 
     /// Wrap whole app with [Zeta] to provide theming.
     return Zeta(
-        colors: colors,
-        builder: (BuildContext context, ThemeData theme, ZetaColors colors) => ZetaColorExample(),
+      colors: colors,
+      builder: (BuildContext context, ThemeData theme, ZetaColors colors) => ZetaColorExample(),
     );
   }
 }
@@ -42,7 +42,7 @@ class ZetaColorExample extends StatelessWidget{
     final ZetaColors colors = ZetaColors.of(context);
 
     return Container(
-        color: colors.red,
+      color: colors.red,
     );
   }
 }

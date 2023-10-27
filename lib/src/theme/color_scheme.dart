@@ -24,7 +24,7 @@ import 'constants.dart';
 class ZetaColorScheme extends ColorScheme with Diagnosticable {
   /// Default constructor with no required properties.
   ///
-  /// Creates a a light theme by default using the M2 colors as its default
+  /// Creates a light theme by default using the M2 colors as its default
   /// theme.
   const ZetaColorScheme({
     required this.zetaColors,
