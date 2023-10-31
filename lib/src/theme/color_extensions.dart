@@ -2,6 +2,7 @@ import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 import 'color_swatch.dart';
+import 'colors_base.dart';
 import 'constants.dart';
 import 'contrast.dart';
 
@@ -63,15 +64,13 @@ extension ZetaColorExtensions on Color {
     return hsl.withLightness(math.min(1, math.max(0, hsl.lightness - amount / 100))).toColor();
   }
 
-  /// Get the right black or white contrasting onColor for a color.
+  /// This getter returns appropriate contrast color based on a given color.
+  /// It will return a color chosen according to the brightness of this color.
   ///
-  /// The onColor is white if the color has brightness dark and black if
-  /// the color has brightness light.
-  ///
-  /// Use the function to get black/white color typically used for text and
-  /// icons when they are placed on a surface/background using `color` as its
-  /// background color.
-  Color get onColor => ThemeData.estimateBrightnessForColor(this) == Brightness.light ? Colors.black : Colors.white;
+  /// * The [Color] instance on which this getter is called is used to determine the brightness based on [ThemeData.estimateBrightnessForColor] method.
+  /// * If the estimated brightness is light, it will return a color [ZetaColorBase.greyCool].shade90.
+  /// * If the estimated brightness is not light (meaning it's dark), it will return [ZetaColorBase.white].
+  Color get onColor => isLight ? ZetaColorBase.greyCool.shade90 : ZetaColorBase.white;
 
   /// Returns true if the color's brightness is [Brightness.light], else false.
   bool get isLight => ThemeData.estimateBrightnessForColor(this) == Brightness.light;
@@ -199,16 +198,16 @@ extension ZetaColorExtensions on Color {
   /// Adjusts the color to a specific contrast target.
   ///
   /// Parameters:
-  /// - [targetContrast] The target contrast for the color adjustment.
+  /// - [target] The target contrast for the color adjustment.
   /// - [on] The color to compare contrast against. Defaults to [Colors.white].
   /// - [maxIterations] The maximum number of iterations for color adjustment. Defaults to 1000 iterations.
   /// - [epsilon] The difference tolerance for the contrast ratio. Defaults to 0.1.
   ///
   /// Returns:
   /// - A new color with adjusted contrast close to the target contrast.
-  Color adjustContrast(
-    double targetContrast, {
+  Color adjustContrast({
     required Color on,
+    required double target,
     int maxIterations = 1000,
     double epsilon = 0.1,
   }) {
@@ -219,16 +218,15 @@ extension ZetaColorExtensions on Color {
     while (iteration < maxIterations) {
       final currentContrast = adjustedColor.contrastRatio(on);
 
-      if (currentContrast == targetContrast || (currentContrast - targetContrast).abs() < epsilon) {
+      if (currentContrast == target || (currentContrast - target).abs() < epsilon) {
         break;
       }
 
       final hslColor = HSLColor.fromColor(adjustedColor);
-      adjustmentValue = (currentContrast - targetContrast).abs() * 0.02;
+      adjustmentValue = (currentContrast - target).abs() * 0.02;
 
-      var newLightness = (currentContrast < targetContrast)
-          ? hslColor.lightness - adjustmentValue
-          : hslColor.lightness + adjustmentValue;
+      var newLightness =
+          (currentContrast < target) ? hslColor.lightness - adjustmentValue : hslColor.lightness + adjustmentValue;
 
       newLightness = newLightness.clamp(0.0, 1.0);
 
@@ -239,27 +237,51 @@ extension ZetaColorExtensions on Color {
     return adjustedColor;
   }
 
-  ///Generates a swatch with adjusted color contrasts.
+  /// Generates a color swatch for this color.
+  /// A color swatch is a map with integer keys indexing to [Color] objects,
+  /// typically used for design themes.
   ///
-  ///Parameters:
-  ///- [primary] The primary color index. Defaults to [kZetaSwatchPrimaryIndex].
-  ///- [targetContrasts] A map of target contrast values for each shade. Defaults to [kZetaSwatchTargetContrasts].
+  /// The function has optional parameters:
   ///
-  ///Returns:
-  ///- A map of color shades with adjusted color to the target contrasts.
+  /// * [primary] (Default = [kZetaSwatchPrimaryIndex]) - The primary color index for the swatch. This number should be a key in the swatch map.
+  /// * [targetContrasts] (Default = [kZetaSwatchTargetContrasts]) - Map of target contrast values for each color index.
+  /// * [background] (Default = [ZetaColorBase.white]) - The color used to determine the contrast of the colors in the swatch. Generally, this should be the background color that the color swatch will be displayed on.
+  /// * [adjustPrimary] (Default = true) - Determines whether to adjust the contrast of the primary color on the background color. Useful in cases the brand color is being used.
+  ///
+  /// Returns a Map<int, Color> object.
   Map<int, Color> generateSwatch({
     int primary = kZetaSwatchPrimaryIndex,
     Map<int, double> targetContrasts = kZetaSwatchTargetContrasts,
-    Color background = Colors.white,
+    Color background = ZetaColorBase.white,
+    bool adjustPrimary = true,
   }) {
+    assert(
+      targetContrasts.containsKey(primary),
+      'Primary key not found in targetContrasts.',
+    );
+
+    assert(
+      targetContrasts.values.every((v) => v > 0),
+      'All values in targetContrasts should be positive and non-null.',
+    );
+
     final swatch = <int, Color>{};
-    final adjustedPrimary = adjustContrast(targetContrasts[primary]!, on: background);
+
+    final adjustedPrimary = adjustPrimary
+        ? adjustContrast(
+            on: background,
+            target: targetContrasts[primary]!,
+          )
+        : this;
 
     swatch[primary] = adjustedPrimary;
 
     for (final shade in targetContrasts.keys) {
       if (shade != primary) {
-        swatch[shade] = adjustedPrimary.adjustContrast(targetContrasts[shade]!, on: background);
+        swatch[shade] = adjustedPrimary.adjustContrast(
+          on: background,
+          target: targetContrasts[shade]!,
+        );
       }
     }
 
@@ -278,6 +300,6 @@ extension ZetaColorExtensions on Color {
     required Color on,
     ZetaContrast standard = ZetaContrast.aa,
   }) {
-    return adjustContrast(standard == ZetaContrast.aa ? 4.57 : 8.33, on: on);
+    return adjustContrast(on: on, target: standard.targetContrast);
   }
 }

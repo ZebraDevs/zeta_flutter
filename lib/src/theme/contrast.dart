@@ -110,7 +110,7 @@ extension AccessibilityIndices on ZetaContrast {
       case ZetaContrast.aa:
         return 40;
       case ZetaContrast.aaa:
-        return 40;
+        return 60;
     }
   }
 
@@ -123,6 +123,27 @@ extension AccessibilityIndices on ZetaContrast {
         return 10;
       case ZetaContrast.aaa:
         return 10;
+    }
+  }
+
+  /// Returns the target contrast value.
+  ///
+  /// The getter, `targetContrast`, returns a double value that represents the
+  /// contrast ratio of a ZetaContrast object. The ratio can be either `4.53` or `8.33`,
+  /// depending on whether the contrast level of this instance is `ZetaContrast.aa` or `ZetaContrast.aaa`.
+  ///
+  /// * When the object's contrast level is `aa`, the method returns `4.53`.
+  /// * When the object's contrast level is `aaa`, the method returns `8.33`.
+  ///
+  /// These values serve as benchmarks for the contrast between the colours on a app's text
+  /// and background. Being able to measure and adjust this contrast plays a critical role in
+  /// improving a app's accessibility.
+  double get targetContrast {
+    switch (this) {
+      case ZetaContrast.aa:
+        return 4.53;
+      case ZetaContrast.aaa:
+        return 8.33;
     }
   }
 }

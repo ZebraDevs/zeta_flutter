@@ -71,7 +71,10 @@ class Zeta extends InheritedWidget {
 
   @override
   bool updateShouldNotify(covariant Zeta oldWidget) {
-    return oldWidget.contrast != contrast || oldWidget.themeMode != themeMode || oldWidget.themeData != themeData;
+    return oldWidget.contrast != contrast ||
+        oldWidget.themeMode != themeMode ||
+        oldWidget.themeData != themeData ||
+        oldWidget._mediaBrightness != _mediaBrightness;
   }
 
   /// Fetches the [Zeta] instance from the provided [context].
@@ -150,15 +153,15 @@ class ZetaProvider extends StatefulWidget with Diagnosticable {
   /// Constructs a [ZetaProvider] widget.
   ///
   /// The [builder] argument is required. The [initialThemeMode], [initialContrast],
-  /// and [themeData] arguments provide initial values.
+  /// and [initialThemeData] arguments provide initial values.
   ZetaProvider({
     required this.builder,
     this.initialThemeMode = ThemeMode.system,
     this.initialContrast = ZetaContrast.aa,
     this.themeService,
-    ZetaThemeData? themeData,
+    ZetaThemeData? initialThemeData,
     super.key,
-  }) : initialThemeData = themeData ?? ZetaThemeData();
+  }) : initialThemeData = initialThemeData ?? ZetaThemeData();
 
   @override
   State<ZetaProvider> createState() => ZetaProviderState();
@@ -199,17 +202,52 @@ class ZetaProvider extends StatefulWidget with Diagnosticable {
 }
 
 /// The state associated with [ZetaProvider].
-class ZetaProviderState extends State<ZetaProvider> with Diagnosticable {
+class ZetaProviderState extends State<ZetaProvider> with Diagnosticable, WidgetsBindingObserver {
+  // Fields for ZetaThemeManager.
+
+  /// Represents the late initialization of the ZetaContrast value.
   late ZetaContrast _contrast;
+
+  /// Represents the late initialization of the ThemeMode value.
   late ThemeMode _themeMode;
+
+  /// Represents the late initialization of the ZetaThemeData object.
   late ZetaThemeData _themeData;
 
+  /// Represents the late initialization of the system's current brightness (dark or light mode).
+  late Brightness _platformBrightness;
+
+  /// Represents a nullable brightness value to be used for brightness change debouncing.
+  Brightness? _debounceBrightness;
+
+  /// Timer used for debouncing brightness changes.
+  Timer? _debounceTimer;
+
+  /// Represents the duration for the debounce timer.
+  static const _debounceDuration = Duration(milliseconds: 500);
+
+  /// This method is called when this object is inserted into the tree.
+  ///
+  /// Here, it also adds this object as an observer in [WidgetsBinding] instance
+  /// and initializes various fields related to the theme, contrast, and brightness of the app.
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addObserver(this);
+
+    // Set the initial brightness with the system's current brightness from the first view of the platform dispatcher.
+    _platformBrightness = MediaQueryData.fromView(PlatformDispatcher.instance.views.first).platformBrightness;
+
+    // Set the initial theme mode.
     _themeMode = widget.initialThemeMode;
+
+    // Set the initial contrast.
     _contrast = widget.initialContrast;
+
+    // Apply the initial contrast to the theme data.
     _themeData = widget.initialThemeData.apply(contrast: _contrast);
+
+    // Load theme data from themeService if available.
     unawaited(
       widget.themeService?.loadTheme().then((value) {
         if (value != null) {
@@ -221,13 +259,55 @@ class ZetaProviderState extends State<ZetaProvider> with Diagnosticable {
     );
   }
 
+  /// Clean up function to be called when this object is removed from the tree.
+  ///
+  /// This also removes this object as an observer from the [WidgetsBinding] instance.
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+
+  /// Overrides the [didChangePlatformBrightness] method from the parent class.
+  ///
+  /// This method gets information about the platform's brightness and updates the app if it ever changes.
+  /// The changes are debounced with a timer to avoid them being too frequent.
+  @override
+  void didChangePlatformBrightness() {
+    super.didChangePlatformBrightness();
+
+    // Get the platform brightness from the first view of the platform dispatcher
+    // `_debounceBrightness` will then hold the new brightness
+    _debounceBrightness = MediaQueryData.fromView(PlatformDispatcher.instance.views.first).platformBrightness;
+
+    // If the current stored brightness value is different from the newly fetched value
+    if (_platformBrightness != _debounceBrightness) {
+      // If brightness has changed, cancel the existing timer and start a new one
+
+      // Cancel existing timer if any
+      _debounceTimer?.cancel();
+
+      // Start a new timer with `_debounceDuration` delay
+      _debounceTimer = Timer(_debounceDuration, () {
+        // Once timer fires, check if brightness is still different and not null
+        if (_debounceBrightness != null && _platformBrightness != _debounceBrightness) {
+          // If brightness value has indeed changed, update the state
+          setState(() {
+            // Set the new brightness value
+            _platformBrightness = _debounceBrightness!;
+          });
+        }
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Zeta(
       themeMode: _themeMode,
       themeData: _themeData,
       contrast: _contrast,
-      mediaBrightness: MediaQuery.of(context).platformBrightness,
+      mediaBrightness: _platformBrightness,
       child: widget.builder(context, _themeData, _themeMode),
     );
   }
