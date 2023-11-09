@@ -4,20 +4,21 @@ import 'package:zeta_example/pages/color_example.dart';
 import 'package:zeta_example/pages/grid_example.dart';
 import 'package:zeta_example/pages/spacing_example.dart';
 import 'package:zeta_example/pages/typography_example.dart';
+import 'package:zeta_example/widgets.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 class Component {
   final String name;
-  final Widget page;
+  final WidgetBuilder pageBuilder;
   final List<Component> children;
-  Component(this.name, this.page, [this.children = const []]);
+  Component(this.name, this.pageBuilder, [this.children = const []]);
 }
 
 final List<Component> components = [
-  Component(GridExample.name, const GridExample()),
-  Component(SpacingExample.name, const SpacingExample()),
-  Component(TypographyExample.name, const TypographyExample()),
-  Component(ColorExample.name, const ColorExample()),
+  Component(GridExample.name, (context) => const GridExample()),
+  Component(SpacingExample.name, (context) => const SpacingExample()),
+  Component(TypographyExample.name, (context) => const TypographyExample()),
+  Component(ColorExample.name, (context) => const ColorExample()),
 ];
 
 class Home extends StatefulWidget {
@@ -36,8 +37,8 @@ final GoRouter router = GoRouter(
         ...components.map(
           (e) => GoRoute(
             path: e.name,
-            builder: (_, __) => e.page,
-            routes: e.children.map((f) => GoRoute(path: f.name, builder: (_, __) => f.page)).toList(),
+            builder: (_, __) => e.pageBuilder.call(_),
+            routes: e.children.map((f) => GoRoute(path: f.name, builder: (_, __) => f.pageBuilder(_))).toList(),
           ),
         )
       ],
@@ -49,24 +50,17 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     final items = components..sort((a, b) => a.name.compareTo(b.name));
-
-    final colors = ZetaColors.of(context);
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Zeta'),
-        backgroundColor: colors.primary,
-      ),
-      body: ColoredBox(
-        color: colors.background,
-        child: ListView.builder(
-          itemCount: items.length,
-          itemBuilder: (context, index) {
-            return ListTile(
-              title: ZetaText(items[index].name),
-              onTap: () => context.go('/${items[index].name}'),
-            );
-          },
-        ),
+    return ExampleScaffold(
+      name: 'Zeta',
+      child: ListView.builder(
+        padding: EdgeInsets.all(Dimensions.s),
+        itemCount: items.length,
+        itemBuilder: (context, index) {
+          return ListTile(
+            title: ZetaText(items[index].name),
+            onTap: () => context.go('/${items[index].name}'),
+          );
+        },
       ),
     );
   }

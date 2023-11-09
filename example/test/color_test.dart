@@ -1,10 +1,12 @@
+import 'dart:ui';
+
 import 'package:flutter_test/flutter_test.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 void main() {
   testWidgets('Dark mode value', (tester) async {
     final ZetaColors light = ZetaColors();
-    final ZetaColors dark = ZetaColors(isDarkMode: true);
+    final ZetaColors dark = ZetaColors(brightness: Brightness.dark);
 
     expect(light.primary.shade10, dark.primary.shade100);
     expect(light.primary.shade20, dark.primary.shade90);
@@ -15,10 +17,10 @@ void main() {
 
   testWidgets('AAA mode value', (tester) async {
     final ZetaColors aa = ZetaColors();
-    final ZetaColors aaa = ZetaColors(isAAA: true);
+    final ZetaColors aaa = ZetaColors(brightness: Brightness.dark, contrast: ZetaContrast.aaa);
 
-    expect(aa.primary.primary, aa.primary.shade60);
-    expect(aaa.primary.primary, aaa.primary.shade80);
+    expect(aa.primary.value, aa.primary.shade60.value);
+    expect(aaa.primary.value, aaa.primary.shade80.value);
   });
 
   testWidgets('Scheme generator', (tester) async {

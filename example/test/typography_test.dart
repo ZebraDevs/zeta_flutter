@@ -1,4 +1,4 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:zeta_example/pages/typography_example.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
@@ -28,7 +28,7 @@ void main() {
                   fontSize: 100,
                   fontStyle: FontStyle.italic,
                   fontWeight: FontWeight.w500,
-                  textColor: ZetaColors.of(context).textSubtle,
+                  textColor: Zeta.of(context).colors.textSubtle,
                   textDirection: TextDirection.rtl,
                   first: true,
                   last: true,
