@@ -18,7 +18,6 @@ class Component {
   final String name;
   final WidgetBuilder pageBuilder;
   final List<Component> children;
-
   Component(this.name, this.pageBuilder, [this.children = const []]);
 }
 
