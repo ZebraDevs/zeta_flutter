@@ -9,8 +9,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  go_router: ^6.5.5
-  google_fonts: ^4.0.3
+  go_router: ^11.1.2
+  google_fonts: ^6.1.0
   zeta_flutter:
     path: ../
 

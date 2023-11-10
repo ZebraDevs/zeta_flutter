@@ -11,6 +11,148 @@ import 'contrast.dart';
 /// A customizable, token-based color palette, adapting Zeta colors to Flutter's colorScheme.
 @immutable
 class ZetaColors {
+  /// Default constructor for instance of [ZetaColors].
+  ZetaColors({
+    this.brightness = Brightness.light,
+    this.contrast = ZetaContrast.aa,
+    this.link = ZetaColorBase.linkLight,
+    this.linkVisited = ZetaColorBase.linkVisitedLight,
+    this.shadow = ZetaColorBase.shadowLight,
+    this.white = ZetaColorBase.white,
+    this.black = ZetaColorBase.black,
+    ZetaColorSwatch? primary,
+    ZetaColorSwatch? secondary,
+    ZetaColorSwatch? error,
+    ZetaColorSwatch? cool,
+    ZetaColorSwatch? warm,
+    Color? surfacePrimary,
+    Color? surfaceSecondary,
+    Color? surfaceTertiary,
+    bool adjust = true,
+  })  : primary = _adjustedValue(primary, ZetaColorBase.blue, adjust, brightness, contrast),
+        secondary = _adjustedValue(secondary, primary ?? ZetaColorBase.blue, adjust, brightness, contrast),
+        error = _adjustedValue(error, ZetaColorBase.red, adjust, brightness, contrast),
+        cool = _adjustedValue(cool, ZetaColorBase.greyCool, adjust, brightness, ZetaContrast.aa),
+        warm = _adjustedValue(warm, ZetaColorBase.greyWarm, adjust, brightness, ZetaContrast.aa),
+        blue = _adjustedBase(ZetaColorBase.blue, adjust, brightness, contrast),
+        green = _adjustedBase(ZetaColorBase.green, adjust, brightness, contrast),
+        red = _adjustedBase(ZetaColorBase.red, adjust, brightness, contrast),
+        orange = _adjustedBase(ZetaColorBase.orange, adjust, brightness, contrast),
+        purple = _adjustedBase(ZetaColorBase.purple, adjust, brightness, contrast),
+        yellow = _adjustedBase(ZetaColorBase.yellow, adjust, brightness, contrast),
+        teal = _adjustedBase(ZetaColorBase.teal, adjust, brightness, contrast),
+        pink = _adjustedBase(ZetaColorBase.pink, adjust, brightness, contrast),
+        surfacePrimary = surfacePrimary ?? white,
+        surfaceSecondary = surfaceSecondary ??
+            _adjustedValue(
+              cool,
+              ZetaColorBase.greyCool,
+              adjust,
+              brightness,
+              ZetaContrast.aa,
+            ).shade10,
+        surfaceTertiary = surfaceTertiary ??
+            _adjustedValue(
+              warm,
+              ZetaColorBase.greyWarm,
+              adjust,
+              brightness,
+              ZetaContrast.aa,
+            ).shade10;
+
+  /// Factory constructor for a light theme for [ZetaColors].
+  ///
+  /// All color options are nullable and default to a pre-defined contrast color if null.
+  ///
+  /// [contrast] The primary contrast color. If not supplied, defaults to [ZetaContrast.aa].
+  /// [primary] A color swatch for primary color accent. Defaults to null.
+  /// [secondary] A color swatch for secondary color accent. Defaults to null.
+  /// [error] A color swatch for error states. Defaults to null.
+  /// [cool] A color swatch for cooler color tones. Defaults to null.
+  /// [warm] A color swatch for warmer color tones. Defaults to null.
+  /// [white] A color option for white color. Defaults to null.
+  /// [black] A color option for black color. Defaults to null.
+  /// [link] A color option for links. Defaults to null.
+  /// [linkVisited] A color option for visited links. Defaults to null.
+  /// [shadow] A color option for shadows. Defaults to null.
+  factory ZetaColors.light({
+    ZetaContrast contrast = ZetaContrast.aa,
+    ZetaColorSwatch? primary,
+    ZetaColorSwatch? secondary,
+    ZetaColorSwatch? error,
+    ZetaColorSwatch? cool,
+    ZetaColorSwatch? warm,
+    Color? white,
+    Color? black,
+    Color? link,
+    Color? linkVisited,
+    Color? shadow,
+  }) {
+    return ZetaColors(
+      white: white ?? ZetaColorBase.white,
+      black: black ?? ZetaColorBase.black,
+      cool: cool,
+      warm: warm,
+      error: error,
+      primary: primary,
+      contrast: contrast,
+      secondary: secondary,
+      surfaceTertiary: warm?.shade10,
+      surfaceSecondary: cool?.shade10,
+      surfacePrimary: white ?? ZetaColorBase.white,
+      link: link ?? ZetaColorBase.linkLight,
+      shadow: shadow ?? ZetaColorBase.shadowLight,
+      linkVisited: linkVisited ?? ZetaColorBase.linkVisitedLight,
+    );
+  }
+
+  /// Factory constructor for a dark theme for [ZetaColors].
+  ///
+  /// All color options are nullable and default to a pre-defined contrast color if null.
+  ///
+  /// [contrast] The primary contrast color. If not supplied, defaults to [ZetaContrast.aa].
+  /// [primary] A color swatch for primary color accent. Defaults to null.
+  /// [secondary] A color swatch for secondary color accent. Defaults to null.
+  /// [error] A color swatch for error states. Defaults to null.
+  /// [cool] A color swatch for cooler color tones. Defaults to null.
+  /// [warm] A color swatch for warmer color tones. Defaults to null.
+  /// [white] A color option for white color. Defaults to null.
+  /// [black] A color option for black color. Defaults to null.
+  /// [link] A color option for links. Defaults to null.
+  /// [linkVisited] A color option for visited links. Defaults to null.
+  /// [shadow] A color option for shadows. Defaults to null.
+  factory ZetaColors.dark({
+    ZetaContrast contrast = ZetaContrast.aa,
+    ZetaColorSwatch? primary,
+    ZetaColorSwatch? secondary,
+    ZetaColorSwatch? error,
+    ZetaColorSwatch? cool,
+    ZetaColorSwatch? warm,
+    Color? white,
+    Color? black,
+    Color? link,
+    Color? linkVisited,
+    Color? shadow,
+  }) {
+    return ZetaColors(
+      cool: cool,
+      warm: warm,
+      white: white ?? ZetaColorBase.white,
+      black: black ?? ZetaColorBase.black,
+      primary: primary,
+      contrast: contrast,
+      secondary: secondary,
+      error: error,
+      brightness: Brightness.dark,
+      surfaceTertiary: warm?.shade10,
+      surfaceSecondary: cool?.shade10,
+      surfacePrimary: black ?? ZetaColorBase.black,
+      link: link ?? ZetaColorBase.linkDark,
+      shadow: shadow ?? ZetaColorBase.shadowLight,
+      linkVisited: linkVisited ?? ZetaColorBase.linkVisitedDark,
+    );
+  }
+
   /// Represents the brightness value.
   final Brightness brightness;
 
@@ -336,55 +478,6 @@ class ZetaColors {
   /// Colorful colors.
   List<ZetaColorSwatch> get rainbow => [red, orange, yellow, green, blue, teal, pink];
 
-  /// Default constructor for instance of [ZetaColors].
-  ZetaColors({
-    this.brightness = Brightness.light,
-    this.contrast = ZetaContrast.aa,
-    this.link = ZetaColorBase.linkLight,
-    this.linkVisited = ZetaColorBase.linkVisitedLight,
-    this.shadow = ZetaColorBase.shadowLight,
-    this.white = ZetaColorBase.white,
-    this.black = ZetaColorBase.black,
-    ZetaColorSwatch? primary,
-    ZetaColorSwatch? secondary,
-    ZetaColorSwatch? error,
-    ZetaColorSwatch? cool,
-    ZetaColorSwatch? warm,
-    Color? surfacePrimary,
-    Color? surfaceSecondary,
-    Color? surfaceTertiary,
-    bool adjust = true,
-  })  : primary = _adjustedValue(primary, ZetaColorBase.blue, adjust, brightness, contrast),
-        secondary = _adjustedValue(secondary, primary ?? ZetaColorBase.blue, adjust, brightness, contrast),
-        error = _adjustedValue(error, ZetaColorBase.red, adjust, brightness, contrast),
-        cool = _adjustedValue(cool, ZetaColorBase.greyCool, adjust, brightness, ZetaContrast.aa),
-        warm = _adjustedValue(warm, ZetaColorBase.greyWarm, adjust, brightness, ZetaContrast.aa),
-        blue = _adjustedBase(ZetaColorBase.blue, adjust, brightness, contrast),
-        green = _adjustedBase(ZetaColorBase.green, adjust, brightness, contrast),
-        red = _adjustedBase(ZetaColorBase.red, adjust, brightness, contrast),
-        orange = _adjustedBase(ZetaColorBase.orange, adjust, brightness, contrast),
-        purple = _adjustedBase(ZetaColorBase.purple, adjust, brightness, contrast),
-        yellow = _adjustedBase(ZetaColorBase.yellow, adjust, brightness, contrast),
-        teal = _adjustedBase(ZetaColorBase.teal, adjust, brightness, contrast),
-        pink = _adjustedBase(ZetaColorBase.pink, adjust, brightness, contrast),
-        surfacePrimary = surfacePrimary ?? white,
-        surfaceSecondary = surfaceSecondary ??
-            _adjustedValue(
-              cool,
-              ZetaColorBase.greyCool,
-              adjust,
-              brightness,
-              ZetaContrast.aa,
-            ).shade10,
-        surfaceTertiary = surfaceTertiary ??
-            _adjustedValue(
-              warm,
-              ZetaColorBase.greyWarm,
-              adjust,
-              brightness,
-              ZetaContrast.aa,
-            ).shade10;
-
   /// Helper function to adjust color swatch values based on brightness and contrast
   static ZetaColorSwatch _adjustedValue(
     ZetaColorSwatch? value,
@@ -405,99 +498,6 @@ class ZetaColors {
     ZetaContrast contrast,
   ) {
     return adjust ? baseColor.apply(brightness: brightness, contrast: contrast) : baseColor;
-  }
-
-  /// Factory constructor for a light theme for [ZetaColors].
-  ///
-  /// All color options are nullable and default to a pre-defined contrast color if null.
-  ///
-  /// [contrast] The primary contrast color. If not supplied, defaults to [ZetaContrast.aa].
-  /// [primary] A color swatch for primary color accent. Defaults to null.
-  /// [secondary] A color swatch for secondary color accent. Defaults to null.
-  /// [error] A color swatch for error states. Defaults to null.
-  /// [cool] A color swatch for cooler color tones. Defaults to null.
-  /// [warm] A color swatch for warmer color tones. Defaults to null.
-  /// [white] A color option for white color. Defaults to null.
-  /// [black] A color option for black color. Defaults to null.
-  /// [link] A color option for links. Defaults to null.
-  /// [linkVisited] A color option for visited links. Defaults to null.
-  /// [shadow] A color option for shadows. Defaults to null.
-  factory ZetaColors.light({
-    ZetaContrast contrast = ZetaContrast.aa,
-    ZetaColorSwatch? primary,
-    ZetaColorSwatch? secondary,
-    ZetaColorSwatch? error,
-    ZetaColorSwatch? cool,
-    ZetaColorSwatch? warm,
-    Color? white,
-    Color? black,
-    Color? link,
-    Color? linkVisited,
-    Color? shadow,
-  }) {
-    return ZetaColors(
-      white: white ?? ZetaColorBase.white,
-      black: black ?? ZetaColorBase.black,
-      cool: cool,
-      warm: warm,
-      error: error,
-      primary: primary,
-      contrast: contrast,
-      secondary: secondary,
-      surfaceTertiary: warm?.shade10,
-      surfaceSecondary: cool?.shade10,
-      surfacePrimary: white ?? ZetaColorBase.white,
-      link: link ?? ZetaColorBase.linkLight,
-      shadow: shadow ?? ZetaColorBase.shadowLight,
-      linkVisited: linkVisited ?? ZetaColorBase.linkVisitedLight,
-    );
-  }
-
-  /// Factory constructor for a dark theme for [ZetaColors].
-  ///
-  /// All color options are nullable and default to a pre-defined contrast color if null.
-  ///
-  /// [contrast] The primary contrast color. If not supplied, defaults to [ZetaContrast.aa].
-  /// [primary] A color swatch for primary color accent. Defaults to null.
-  /// [secondary] A color swatch for secondary color accent. Defaults to null.
-  /// [error] A color swatch for error states. Defaults to null.
-  /// [cool] A color swatch for cooler color tones. Defaults to null.
-  /// [warm] A color swatch for warmer color tones. Defaults to null.
-  /// [white] A color option for white color. Defaults to null.
-  /// [black] A color option for black color. Defaults to null.
-  /// [link] A color option for links. Defaults to null.
-  /// [linkVisited] A color option for visited links. Defaults to null.
-  /// [shadow] A color option for shadows. Defaults to null.
-  factory ZetaColors.dark({
-    ZetaContrast contrast = ZetaContrast.aa,
-    ZetaColorSwatch? primary,
-    ZetaColorSwatch? secondary,
-    ZetaColorSwatch? error,
-    ZetaColorSwatch? cool,
-    ZetaColorSwatch? warm,
-    Color? white,
-    Color? black,
-    Color? link,
-    Color? linkVisited,
-    Color? shadow,
-  }) {
-    return ZetaColors(
-      cool: cool,
-      warm: warm,
-      white: white ?? ZetaColorBase.white,
-      black: black ?? ZetaColorBase.black,
-      primary: primary,
-      contrast: contrast,
-      secondary: secondary,
-      error: error,
-      brightness: Brightness.dark,
-      surfaceTertiary: warm?.shade10,
-      surfaceSecondary: cool?.shade10,
-      surfacePrimary: black ?? ZetaColorBase.black,
-      link: link ?? ZetaColorBase.linkDark,
-      shadow: shadow ?? ZetaColorBase.shadowLight,
-      linkVisited: linkVisited ?? ZetaColorBase.linkVisitedDark,
-    );
   }
 
   /// Applies new property values to [ZetaColors] and returns a new copy.

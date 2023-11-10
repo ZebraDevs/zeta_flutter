@@ -15,32 +15,6 @@ export 'constants.dart';
 /// This class encapsulates the colors and fonts used for the Zeta theme in both light and dark modes.
 @immutable
 class ZetaThemeData {
-  /// The font family used in the Zeta theme.
-  ///
-  /// Defaults to [kZetaFontFamily] if not provided.
-  final String fontFamily;
-
-  /// An Identifier cab be assigned to identify the theme uniquely.
-  ///
-  /// It can be useful in case selected theme need to be displayed.
-  ///
-  /// Defaults to 'default'.
-  final String identifier;
-
-  final ZetaColors _colorsLight;
-
-  /// The colors used for the light mode of the Zeta theme.
-  ///
-  /// Defaults to a light mode color palette with default Zeta colors if not explicitly provided.
-  ZetaColors get colorsLight => _colorsLight;
-
-  final ZetaColors _colorsDark;
-
-  /// The colors used for the dark mode of the Zeta theme.
-  ///
-  /// Defaults to a dark mode color palette with default Zeta colors if not explicitly provided.
-  ZetaColors get colorsDark => _colorsDark;
-
   /// Constructs a [ZetaThemeData].
   ///
   /// If [primary] and/or [secondary] colors are provided, they will be used to create the light and dark Zeta color palettes.
@@ -68,6 +42,32 @@ class ZetaThemeData {
                   )
                 : (colorsLight ?? ZetaColors.light()))
             .apply(contrast: contrast);
+
+  /// The font family used in the Zeta theme.
+  ///
+  /// Defaults to [kZetaFontFamily] if not provided.
+  final String fontFamily;
+
+  /// An Identifier cab be assigned to identify the theme uniquely.
+  ///
+  /// It can be useful in case selected theme need to be displayed.
+  ///
+  /// Defaults to 'default'.
+  final String identifier;
+
+  final ZetaColors _colorsLight;
+
+  /// The colors used for the light mode of the Zeta theme.
+  ///
+  /// Defaults to a light mode color palette with default Zeta colors if not explicitly provided.
+  ZetaColors get colorsLight => _colorsLight;
+
+  final ZetaColors _colorsDark;
+
+  /// The colors used for the dark mode of the Zeta theme.
+  ///
+  /// Defaults to a dark mode color palette with default Zeta colors if not explicitly provided.
+  ZetaColors get colorsDark => _colorsDark;
 
   /// Applies the given [contrast] to the current [ZetaThemeData] and returns a new [ZetaThemeData] with the updated contrast.
   ZetaThemeData apply({

@@ -12,6 +12,18 @@ import 'theme/theme_service.dart';
 /// It holds information about the current contrast, theme mode, and theme data.
 /// The [colors] getter provides the correct color set based on the current theme mode.
 class Zeta extends InheritedWidget {
+  /// Constructs a [Zeta] widget.
+  ///
+  /// The [contrast], [themeMode], [themeData], and [child] arguments are required.
+  const Zeta({
+    super.key,
+    required Brightness mediaBrightness,
+    required this.contrast,
+    required this.themeMode,
+    required this.themeData,
+    required super.child,
+  }) : _mediaBrightness = mediaBrightness;
+
   /// The current contrast setting for the app, which can be one of the predefined
   /// values in [ZetaContrast].
   final ZetaContrast contrast;
@@ -57,18 +69,6 @@ class Zeta extends InheritedWidget {
     }
   }
 
-  /// Constructs a [Zeta] widget.
-  ///
-  /// The [contrast], [themeMode], [themeData], and [child] arguments are required.
-  const Zeta({
-    super.key,
-    required Brightness mediaBrightness,
-    required this.contrast,
-    required this.themeMode,
-    required this.themeData,
-    required super.child,
-  }) : _mediaBrightness = mediaBrightness;
-
   @override
   bool updateShouldNotify(covariant Zeta oldWidget) {
     return oldWidget.contrast != contrast ||
@@ -107,12 +107,13 @@ class Zeta extends InheritedWidget {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(EnumProperty<ZetaContrast>('contrast', contrast));
-    properties.add(EnumProperty<ThemeMode>('themeMode', themeMode));
-    properties.add(DiagnosticsProperty<ZetaThemeData>('themeData', themeData));
-    properties.add(DiagnosticsProperty<ZetaColors>('colors', colors));
-    properties.add(EnumProperty<Brightness>('mediaBrightness', _mediaBrightness));
-    properties.add(EnumProperty<Brightness>('brightness', brightness));
+    properties
+      ..add(EnumProperty<ZetaContrast>('contrast', contrast))
+      ..add(EnumProperty<ThemeMode>('themeMode', themeMode))
+      ..add(DiagnosticsProperty<ZetaThemeData>('themeData', themeData))
+      ..add(DiagnosticsProperty<ZetaColors>('colors', colors))
+      ..add(EnumProperty<Brightness>('mediaBrightness', _mediaBrightness))
+      ..add(EnumProperty<Brightness>('brightness', brightness));
   }
 }
 
@@ -122,6 +123,19 @@ typedef ZetaAppBuilder = Widget Function(BuildContext context, ZetaThemeData the
 
 /// A widget that provides Zeta theming and contrast data down the widget tree.
 class ZetaProvider extends StatefulWidget with Diagnosticable {
+  /// Constructs a [ZetaProvider] widget.
+  ///
+  /// The [builder] argument is required. The [initialThemeMode], [initialContrast],
+  /// and [initialThemeData] arguments provide initial values.
+  ZetaProvider({
+    required this.builder,
+    this.initialThemeMode = ThemeMode.system,
+    this.initialContrast = ZetaContrast.aa,
+    this.themeService,
+    ZetaThemeData? initialThemeData,
+    super.key,
+  }) : initialThemeData = initialThemeData ?? ZetaThemeData();
+
   /// Specifies the initial theme mode for the app.
   ///
   /// It can be one of the values: [ThemeMode.system], [ThemeMode.light], or [ThemeMode.dark].
@@ -150,30 +164,18 @@ class ZetaProvider extends StatefulWidget with Diagnosticable {
   /// It provides the structure for loading and saving themes in Zeta application.
   final ZetaThemeService? themeService;
 
-  /// Constructs a [ZetaProvider] widget.
-  ///
-  /// The [builder] argument is required. The [initialThemeMode], [initialContrast],
-  /// and [initialThemeData] arguments provide initial values.
-  ZetaProvider({
-    required this.builder,
-    this.initialThemeMode = ThemeMode.system,
-    this.initialContrast = ZetaContrast.aa,
-    this.themeService,
-    ZetaThemeData? initialThemeData,
-    super.key,
-  }) : initialThemeData = initialThemeData ?? ZetaThemeData();
-
   @override
   State<ZetaProvider> createState() => ZetaProviderState();
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty<ZetaThemeData>('themeData', initialThemeData));
-    properties.add(ObjectFlagProperty<ZetaAppBuilder>.has('builder', builder));
-    properties.add(EnumProperty<ThemeMode>('initialThemeMode', initialThemeMode));
-    properties.add(EnumProperty<ZetaContrast>('initialContrast', initialContrast));
-    properties.add(DiagnosticsProperty<ZetaThemeService?>('themeService', themeService));
+    properties
+      ..add(DiagnosticsProperty<ZetaThemeData>('themeData', initialThemeData))
+      ..add(ObjectFlagProperty<ZetaAppBuilder>.has('builder', builder))
+      ..add(EnumProperty<ThemeMode>('initialThemeMode', initialThemeMode))
+      ..add(EnumProperty<ZetaContrast>('initialContrast', initialContrast))
+      ..add(DiagnosticsProperty<ZetaThemeService?>('themeService', themeService));
   }
 
   /// Retrieves the [ZetaProviderState] from the provided context.
@@ -352,8 +354,9 @@ class ZetaProviderState extends State<ZetaProvider> with Diagnosticable, Widgets
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty<ZetaThemeData>('themeData', _themeData));
-    properties.add(EnumProperty<ZetaContrast>('contrast', _contrast));
-    properties.add(EnumProperty<ThemeMode>('themeMode', _themeMode));
+    properties
+      ..add(DiagnosticsProperty<ZetaThemeData>('themeData', _themeData))
+      ..add(EnumProperty<ZetaContrast>('contrast', _contrast))
+      ..add(EnumProperty<ThemeMode>('themeMode', _themeMode));
   }
 }
