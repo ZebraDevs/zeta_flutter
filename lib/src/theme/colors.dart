@@ -224,7 +224,7 @@ class ZetaColors {
   ///
   /// {@template zeta-color-dark}
   /// Color swatches are inverted if [ZetaColors.brightness] is Dark.
-  /// {@endTemplate}
+  /// {@endtemplate}
   Color get textDefault => cool.shade90;
 
   /// Subtle text /icon color.
@@ -258,7 +258,7 @@ class ZetaColors {
   ///
   /// {@template zeta-color-dark}
   /// Color swatches are inverted if [ZetaColors.brightness] is Dark.
-  /// {@endTemplate}
+  /// {@endtemplate}
   Color get iconDefault => textDefault;
 
   /// Subtle icon color.
