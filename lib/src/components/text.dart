@@ -717,8 +717,7 @@ class ZetaText extends StatelessWidget {
     final Color color = textColor ?? Zeta.of(context).colors.textDefault;
 
     thisStyle = thisStyle.copyWith(
-      fontSize: (fontSize ?? thisStyle.fontSize ?? tokens.Typography.defaultTextSize) *
-          MediaQuery.of(context).textScaleFactor,
+      fontSize: fontSize ?? thisStyle.fontSize ?? tokens.Typography.defaultTextSize,
       height: _fontSize,
       fontWeight: fontWeight,
       decoration: decoration ?? TextDecoration.none,
