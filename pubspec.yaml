@@ -1,9 +1,9 @@
 name: zeta_flutter
-version: 0.0.1+12
-description: Zebra Design System (Zeta) - Flutter Component Library
-homepage: https://github.com/zebradevs/zeta-flutter
-repository: https://github.com/zebradevs/zeta-flutter
-issue_tracker: https://github.com/zebradevs/zeta-flutter/issues
+version: 0.1.0+1
+description: Zeta is the new, formal, standardized Zebra Design System based off the successes of ZDS (Zebra Design System). This package is in pre-release, and so many aspects are incomplete.
+homepage: https://github.com/zebradevs/zeta_flutter
+repository: https://github.com/zebradevs/zeta_flutter
+issue_tracker: https://github.com/zebradevs/zeta_flutter/issues
 documentation: https://zeta-ds.web.app/flutter/dartdoc/index.html
 
 platforms:
@@ -13,7 +13,6 @@ platforms:
   web:
   windows:
   linux:
-
 
 environment:
   sdk: ">=3.0.1 <4.0.0"
@@ -26,6 +25,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  zds_analysis: ^1.0.0
 
 flutter:
   fonts:

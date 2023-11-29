@@ -13,7 +13,7 @@ class HotReload extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Zeta(
+    return ZetaProvider(
       builder: (context, theme, colors) {
         return Widgetbook.material(
           directories: [

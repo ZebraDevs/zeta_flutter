@@ -13,6 +13,327 @@ import '../tokens.dart' as tokens;
 /// See also:
 /// * [Text].
 class ZetaText extends StatelessWidget {
+  /// Constructor for [ZetaText].
+  const ZetaText(
+    this.data, {
+    this.style,
+    this.resetHeight = false,
+    this.textColor,
+    this.fontSize,
+    this.maxWidth,
+    this.fontWeight,
+    this.fontStyle,
+    this.upperCase = false,
+    this.decoration,
+    this.textDirection = TextDirection.ltr,
+    this.first = false,
+    this.last = false,
+    super.key,
+  });
+
+  /// {@macro zeta-component-text}
+  ///
+  /// {@macro zeta-type-body-xs}
+  ZetaText.bodyXSmall(
+    this.data, {
+    this.resetHeight = false,
+    this.maxWidth,
+    this.decoration,
+    this.fontSize,
+    this.fontStyle,
+    this.fontWeight,
+    this.first = false,
+    this.last = false,
+    this.textColor,
+    this.textDirection = TextDirection.ltr,
+    this.upperCase = false,
+    super.key,
+  }) : style = zetaBodyXSmall;
+
+  /// {@macro zeta-component-text}
+  ///
+  /// {@macro zeta-type-body-s}
+  ZetaText.bodySmall(
+    this.data, {
+    this.resetHeight = false,
+    this.maxWidth,
+    this.decoration,
+    this.fontSize,
+    this.fontStyle,
+    this.fontWeight,
+    this.first = false,
+    this.last = false,
+    this.textColor,
+    this.textDirection = TextDirection.ltr,
+    this.upperCase = false,
+    super.key,
+  }) : style = zetaBodySmall;
+
+  /// {@macro zeta-component-text}
+  ///
+  /// {@macro zeta-type-body-m}
+  ZetaText.bodyMedium(
+    this.data, {
+    this.resetHeight = false,
+    this.decoration,
+    this.fontSize,
+    this.fontStyle,
+    this.fontWeight,
+    this.first = false,
+    this.last = false,
+    this.textColor,
+    this.textDirection = TextDirection.ltr,
+    this.upperCase = false,
+    this.maxWidth,
+    super.key,
+  }) : style = zetaBodyMedium;
+
+  /// {@macro zeta-component-text}
+  ///
+  /// {@macro zeta-type-body-l}
+  ZetaText.bodyLarge(
+    this.data, {
+    this.resetHeight = false,
+    this.decoration,
+    this.fontSize,
+    this.fontStyle,
+    this.fontWeight,
+    this.first = false,
+    this.last = false,
+    this.textColor,
+    this.textDirection = TextDirection.ltr,
+    this.upperCase = false,
+    this.maxWidth,
+    super.key,
+  }) : style = zetaBodyLarge;
+
+  /// {@macro zeta-component-text}
+  ///
+  /// {@macro zeta-type-label-s}
+  ZetaText.labelSmall(
+    this.data, {
+    this.resetHeight = false,
+    this.decoration,
+    this.fontSize,
+    this.fontStyle,
+    this.fontWeight,
+    this.first = false,
+    this.last = false,
+    this.textColor,
+    this.textDirection = TextDirection.ltr,
+    this.upperCase = false,
+    super.key,
+    this.maxWidth,
+  }) : style = zetaLabelSmall;
+
+  /// {@macro zeta-component-text}
+  ///
+  /// {@macro zeta-type-label-m}
+  ZetaText.labelMedium(
+    this.data, {
+    this.resetHeight = false,
+    this.decoration,
+    this.fontSize,
+    this.fontStyle,
+    this.fontWeight,
+    this.first = false,
+    this.last = false,
+    this.textColor,
+    this.textDirection = TextDirection.ltr,
+    this.upperCase = false,
+    this.maxWidth,
+    super.key,
+  }) : style = zetaLabelMedium;
+
+  /// {@macro zeta-component-text}
+  ///
+  /// {@macro zeta-type-label-l}
+  ZetaText.labelLarge(
+    this.data, {
+    this.resetHeight = false,
+    this.decoration,
+    this.fontSize,
+    this.fontStyle,
+    this.fontWeight,
+    this.first = false,
+    this.last = false,
+    this.textColor,
+    this.textDirection = TextDirection.ltr,
+    this.upperCase = false,
+    this.maxWidth,
+    super.key,
+  }) : style = zetaLabelLarge;
+
+  /// {@macro zeta-component-text}
+  ///
+  /// {@macro zeta-type-title-s}
+  ZetaText.titleSmall(
+    this.data, {
+    this.resetHeight = false,
+    this.decoration,
+    this.fontSize,
+    this.fontStyle,
+    this.fontWeight,
+    this.first = false,
+    this.last = false,
+    this.textColor,
+    this.textDirection = TextDirection.ltr,
+    this.upperCase = false,
+    this.maxWidth,
+    super.key,
+  }) : style = zetaTitleSmall;
+
+  /// {@macro zeta-component-text}
+  ///
+  /// {@macro zeta-type-title-m}
+  ZetaText.titleMedium(
+    this.data, {
+    this.resetHeight = false,
+    this.decoration,
+    this.fontSize,
+    this.fontStyle,
+    this.fontWeight,
+    this.first = false,
+    this.last = false,
+    this.textColor,
+    this.textDirection = TextDirection.ltr,
+    this.upperCase = false,
+    this.maxWidth,
+    super.key,
+  }) : style = zetaTitleMedium;
+
+  /// {@macro zeta-component-text}
+  ///
+  /// {@macro zeta-type-title-l}
+  ZetaText.titleLarge(
+    this.data, {
+    this.resetHeight = false,
+    this.decoration,
+    this.fontSize,
+    this.fontStyle,
+    this.fontWeight,
+    this.first = false,
+    this.last = false,
+    this.textColor,
+    this.textDirection = TextDirection.ltr,
+    this.upperCase = false,
+    this.maxWidth,
+    super.key,
+  }) : style = zetaTitleLarge;
+
+  /// {@macro zeta-component-text}
+  ///
+  /// {@macro zeta-type-heading-s}
+  ZetaText.headingSmall(
+    this.data, {
+    this.resetHeight = false,
+    this.decoration,
+    this.fontSize,
+    this.fontStyle,
+    this.fontWeight,
+    this.first = false,
+    this.last = false,
+    this.textColor,
+    this.textDirection = TextDirection.ltr,
+    this.upperCase = false,
+    this.maxWidth,
+    super.key,
+  }) : style = zetaHeadingSmall;
+
+  /// {@macro zeta-component-text}
+  ///
+  /// {@macro zeta-type-heading-m}
+  ZetaText.headingMedium(
+    this.data, {
+    this.decoration,
+    this.fontSize,
+    this.fontStyle,
+    this.fontWeight,
+    this.first = false,
+    this.last = false,
+    this.textColor,
+    this.textDirection = TextDirection.ltr,
+    this.upperCase = false,
+    this.resetHeight = false,
+    this.maxWidth,
+    super.key,
+  }) : style = zetaHeadingMedium;
+
+  /// {@macro zeta-component-text}
+  ///
+  /// {@macro zeta-type-heading-l}
+  ZetaText.headingLarge(
+    this.data, {
+    this.resetHeight = false,
+    this.decoration,
+    this.fontSize,
+    this.fontStyle,
+    this.fontWeight,
+    this.first = false,
+    this.last = false,
+    this.textColor,
+    this.textDirection = TextDirection.ltr,
+    this.upperCase = false,
+    this.maxWidth,
+    super.key,
+  }) : style = zetaHeadingLarge;
+
+  /// {@macro zeta-component-text}
+  ///
+  /// {@macro zeta-type-display-s}
+  ZetaText.displaySmall(
+    this.data, {
+    this.resetHeight = false,
+    this.decoration,
+    this.fontSize,
+    this.fontStyle,
+    this.fontWeight,
+    this.first = false,
+    this.last = false,
+    this.textColor,
+    this.textDirection = TextDirection.ltr,
+    this.upperCase = false,
+    this.maxWidth,
+    super.key,
+  }) : style = zetaDisplaySmall;
+
+  /// {@macro zeta-component-text}
+  ///
+  /// {@macro zeta-type-display-m}
+  ZetaText.displayMedium(
+    this.data, {
+    this.resetHeight = false,
+    this.decoration,
+    this.fontSize,
+    this.fontStyle,
+    this.fontWeight,
+    this.first = false,
+    this.last = false,
+    this.textColor,
+    this.textDirection = TextDirection.ltr,
+    this.upperCase = false,
+    this.maxWidth,
+    super.key,
+  }) : style = zetaDisplayMedium;
+
+  /// {@macro zeta-component-text}
+  ///
+  /// {@macro zeta-type-display-l}
+  ZetaText.displayLarge(
+    this.data, {
+    this.decoration,
+    this.fontSize,
+    this.fontStyle,
+    this.fontWeight,
+    this.first = false,
+    this.last = false,
+    this.textColor,
+    this.textDirection = TextDirection.ltr,
+    this.upperCase = false,
+    this.resetHeight = false,
+    this.maxWidth,
+    super.key,
+  }) : style = zetaDisplayLarge;
   static const double _defaultChMultiplier = 66;
 
   /// Text styles for Zeta.
@@ -37,23 +358,23 @@ class ZetaText extends StatelessWidget {
   );
 
   /// Builds text theme for app based on an instance of [ZetaColors].
-  static TextTheme textThemeBuilder(ZetaColors colors) {
+  static TextTheme themeWithColor(Color color) {
     return TextTheme(
-      displayLarge: zetaDisplayLarge.copyWith(color: colors.textDefault),
-      displayMedium: zetaDisplayMedium.copyWith(color: colors.textDefault),
-      displaySmall: zetaDisplaySmall.copyWith(color: colors.textDefault),
-      headlineLarge: zetaHeadingLarge.copyWith(color: colors.textDefault),
-      headlineMedium: zetaHeadingMedium.copyWith(color: colors.textDefault),
-      headlineSmall: zetaHeadingSmall.copyWith(color: colors.textDefault),
-      titleLarge: zetaTitleLarge.copyWith(color: colors.textDefault),
-      titleMedium: zetaTitleMedium.copyWith(color: colors.textDefault),
-      titleSmall: zetaTitleSmall.copyWith(color: colors.textDefault),
-      bodyLarge: zetaBodyLarge.copyWith(color: colors.textDefault),
-      bodyMedium: zetaBodyMedium.copyWith(color: colors.textDefault),
-      bodySmall: zetaBodySmall.copyWith(color: colors.textDefault),
-      labelLarge: zetaLabelLarge.copyWith(color: colors.textDefault),
-      labelMedium: zetaLabelMedium.copyWith(color: colors.textDefault),
-      labelSmall: zetaLabelSmall.copyWith(color: colors.textDefault),
+      displayLarge: zetaDisplayLarge.copyWith(color: color),
+      displayMedium: zetaDisplayMedium.copyWith(color: color),
+      displaySmall: zetaDisplaySmall.copyWith(color: color),
+      headlineLarge: zetaHeadingLarge.copyWith(color: color),
+      headlineMedium: zetaHeadingMedium.copyWith(color: color),
+      headlineSmall: zetaHeadingSmall.copyWith(color: color),
+      titleLarge: zetaTitleLarge.copyWith(color: color),
+      titleMedium: zetaTitleMedium.copyWith(color: color),
+      titleSmall: zetaTitleSmall.copyWith(color: color),
+      bodyLarge: zetaBodyLarge.copyWith(color: color),
+      bodyMedium: zetaBodyMedium.copyWith(color: color),
+      bodySmall: zetaBodySmall.copyWith(color: color),
+      labelLarge: zetaLabelLarge.copyWith(color: color),
+      labelMedium: zetaLabelMedium.copyWith(color: color),
+      labelSmall: zetaLabelSmall.copyWith(color: color),
     );
   }
 
@@ -366,24 +687,6 @@ class ZetaText extends StatelessWidget {
   /// Defaults to false.
   final bool resetHeight;
 
-  /// Constructor for [ZetaText].
-  const ZetaText(
-    this.data, {
-    this.style,
-    this.resetHeight = false,
-    this.textColor,
-    this.fontSize,
-    this.maxWidth,
-    this.fontWeight,
-    this.fontStyle,
-    this.upperCase = false,
-    this.decoration,
-    this.textDirection = TextDirection.ltr,
-    this.first = false,
-    this.last = false,
-    super.key,
-  });
-
   EdgeInsets get _padding {
     if (resetHeight || (first && last)) return tokens.Dimensions.x0.squish;
 
@@ -411,7 +714,7 @@ class ZetaText extends StatelessWidget {
     );
 
     String data = this.data ?? '';
-    final Color color = textColor ?? ZetaColors.of(context).textDefault;
+    final Color color = textColor ?? Zeta.of(context).colors.textDefault;
 
     thisStyle = thisStyle.copyWith(
       fontSize: (fontSize ?? thisStyle.fontSize ?? tokens.Typography.defaultTextSize) *
@@ -421,7 +724,6 @@ class ZetaText extends StatelessWidget {
       decoration: decoration ?? TextDecoration.none,
       fontStyle: fontStyle,
       color: color,
-      fontFamily: Theme.of(context).fontFamily,
     );
 
     if (resetHeight) thisStyle = thisStyle.copyWith(height: 1);
@@ -441,325 +743,23 @@ class ZetaText extends StatelessWidget {
     );
   }
 
-  /// {@macro zeta-component-text}
-  ///
-  /// {@macro zeta-type-body-xs}
-  ZetaText.bodyXSmall(
-    this.data, {
-    this.resetHeight = false,
-    this.maxWidth,
-    this.decoration,
-    this.fontSize,
-    this.fontStyle,
-    this.fontWeight,
-    this.first = false,
-    this.last = false,
-    this.textColor,
-    this.textDirection = TextDirection.ltr,
-    this.upperCase = false,
-    super.key,
-  }) : style = zetaBodyXSmall;
-
-  /// {@macro zeta-component-text}
-  ///
-  /// {@macro zeta-type-body-s}
-  ZetaText.bodySmall(
-    this.data, {
-    this.resetHeight = false,
-    this.maxWidth,
-    this.decoration,
-    this.fontSize,
-    this.fontStyle,
-    this.fontWeight,
-    this.first = false,
-    this.last = false,
-    this.textColor,
-    this.textDirection = TextDirection.ltr,
-    this.upperCase = false,
-    super.key,
-  }) : style = zetaBodySmall;
-
-  /// {@macro zeta-component-text}
-  ///
-  /// {@macro zeta-type-body-m}
-  ZetaText.bodyMedium(
-    this.data, {
-    this.resetHeight = false,
-    this.decoration,
-    this.fontSize,
-    this.fontStyle,
-    this.fontWeight,
-    this.first = false,
-    this.last = false,
-    this.textColor,
-    this.textDirection = TextDirection.ltr,
-    this.upperCase = false,
-    this.maxWidth,
-    super.key,
-  }) : style = zetaBodyMedium;
-
-  /// {@macro zeta-component-text}
-  ///
-  /// {@macro zeta-type-body-l}
-  ZetaText.bodyLarge(
-    this.data, {
-    this.resetHeight = false,
-    this.decoration,
-    this.fontSize,
-    this.fontStyle,
-    this.fontWeight,
-    this.first = false,
-    this.last = false,
-    this.textColor,
-    this.textDirection = TextDirection.ltr,
-    this.upperCase = false,
-    this.maxWidth,
-    super.key,
-  }) : style = zetaBodyLarge;
-
-  /// {@macro zeta-component-text}
-  ///
-  /// {@macro zeta-type-label-s}
-  ZetaText.labelSmall(
-    this.data, {
-    this.resetHeight = false,
-    this.decoration,
-    this.fontSize,
-    this.fontStyle,
-    this.fontWeight,
-    this.first = false,
-    this.last = false,
-    this.textColor,
-    this.textDirection = TextDirection.ltr,
-    this.upperCase = false,
-    super.key,
-    this.maxWidth,
-  }) : style = zetaLabelSmall;
-
-  /// {@macro zeta-component-text}
-  ///
-  /// {@macro zeta-type-label-m}
-  ZetaText.labelMedium(
-    this.data, {
-    this.resetHeight = false,
-    this.decoration,
-    this.fontSize,
-    this.fontStyle,
-    this.fontWeight,
-    this.first = false,
-    this.last = false,
-    this.textColor,
-    this.textDirection = TextDirection.ltr,
-    this.upperCase = false,
-    this.maxWidth,
-    super.key,
-  }) : style = zetaLabelMedium;
-
-  /// {@macro zeta-component-text}
-  ///
-  /// {@macro zeta-type-label-l}
-  ZetaText.labelLarge(
-    this.data, {
-    this.resetHeight = false,
-    this.decoration,
-    this.fontSize,
-    this.fontStyle,
-    this.fontWeight,
-    this.first = false,
-    this.last = false,
-    this.textColor,
-    this.textDirection = TextDirection.ltr,
-    this.upperCase = false,
-    this.maxWidth,
-    super.key,
-  }) : style = zetaLabelLarge;
-
-  /// {@macro zeta-component-text}
-  ///
-  /// {@macro zeta-type-title-s}
-  ZetaText.titleSmall(
-    this.data, {
-    this.resetHeight = false,
-    this.decoration,
-    this.fontSize,
-    this.fontStyle,
-    this.fontWeight,
-    this.first = false,
-    this.last = false,
-    this.textColor,
-    this.textDirection = TextDirection.ltr,
-    this.upperCase = false,
-    this.maxWidth,
-    super.key,
-  }) : style = zetaTitleSmall;
-
-  /// {@macro zeta-component-text}
-  ///
-  /// {@macro zeta-type-title-m}
-  ZetaText.titleMedium(
-    this.data, {
-    this.resetHeight = false,
-    this.decoration,
-    this.fontSize,
-    this.fontStyle,
-    this.fontWeight,
-    this.first = false,
-    this.last = false,
-    this.textColor,
-    this.textDirection = TextDirection.ltr,
-    this.upperCase = false,
-    this.maxWidth,
-    super.key,
-  }) : style = zetaTitleMedium;
-
-  /// {@macro zeta-component-text}
-  ///
-  /// {@macro zeta-type-title-l}
-  ZetaText.titleLarge(
-    this.data, {
-    this.resetHeight = false,
-    this.decoration,
-    this.fontSize,
-    this.fontStyle,
-    this.fontWeight,
-    this.first = false,
-    this.last = false,
-    this.textColor,
-    this.textDirection = TextDirection.ltr,
-    this.upperCase = false,
-    this.maxWidth,
-    super.key,
-  }) : style = zetaTitleLarge;
-
-  /// {@macro zeta-component-text}
-  ///
-  /// {@macro zeta-type-heading-s}
-  ZetaText.headingSmall(
-    this.data, {
-    this.resetHeight = false,
-    this.decoration,
-    this.fontSize,
-    this.fontStyle,
-    this.fontWeight,
-    this.first = false,
-    this.last = false,
-    this.textColor,
-    this.textDirection = TextDirection.ltr,
-    this.upperCase = false,
-    this.maxWidth,
-    super.key,
-  }) : style = zetaHeadingSmall;
-
-  /// {@macro zeta-component-text}
-  ///
-  /// {@macro zeta-type-heading-m}
-  ZetaText.headingMedium(
-    this.data, {
-    this.decoration,
-    this.fontSize,
-    this.fontStyle,
-    this.fontWeight,
-    this.first = false,
-    this.last = false,
-    this.textColor,
-    this.textDirection = TextDirection.ltr,
-    this.upperCase = false,
-    this.resetHeight = false,
-    this.maxWidth,
-    super.key,
-  }) : style = zetaHeadingMedium;
-
-  /// {@macro zeta-component-text}
-  ///
-  /// {@macro zeta-type-heading-l}
-  ZetaText.headingLarge(
-    this.data, {
-    this.resetHeight = false,
-    this.decoration,
-    this.fontSize,
-    this.fontStyle,
-    this.fontWeight,
-    this.first = false,
-    this.last = false,
-    this.textColor,
-    this.textDirection = TextDirection.ltr,
-    this.upperCase = false,
-    this.maxWidth,
-    super.key,
-  }) : style = zetaHeadingLarge;
-
-  /// {@macro zeta-component-text}
-  ///
-  /// {@macro zeta-type-display-s}
-  ZetaText.displaySmall(
-    this.data, {
-    this.resetHeight = false,
-    this.decoration,
-    this.fontSize,
-    this.fontStyle,
-    this.fontWeight,
-    this.first = false,
-    this.last = false,
-    this.textColor,
-    this.textDirection = TextDirection.ltr,
-    this.upperCase = false,
-    this.maxWidth,
-    super.key,
-  }) : style = zetaDisplaySmall;
-
-  /// {@macro zeta-component-text}
-  ///
-  /// {@macro zeta-type-display-m}
-  ZetaText.displayMedium(
-    this.data, {
-    this.resetHeight = false,
-    this.decoration,
-    this.fontSize,
-    this.fontStyle,
-    this.fontWeight,
-    this.first = false,
-    this.last = false,
-    this.textColor,
-    this.textDirection = TextDirection.ltr,
-    this.upperCase = false,
-    this.maxWidth,
-    super.key,
-  }) : style = zetaDisplayMedium;
-
-  /// {@macro zeta-component-text}
-  ///
-  /// {@macro zeta-type-display-l}
-  ZetaText.displayLarge(
-    this.data, {
-    this.decoration,
-    this.fontSize,
-    this.fontStyle,
-    this.fontWeight,
-    this.first = false,
-    this.last = false,
-    this.textColor,
-    this.textDirection = TextDirection.ltr,
-    this.upperCase = false,
-    this.resetHeight = false,
-    this.maxWidth,
-    super.key,
-  }) : style = zetaDisplayLarge;
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(StringProperty('data', data));
-    properties.add(DiagnosticsProperty<TextStyle?>('style', style));
-    properties.add(ColorProperty('textColor', textColor));
-    properties.add(DoubleProperty('maxWidth', maxWidth));
-    properties.add(DoubleProperty('fontSize', fontSize));
-    properties.add(DiagnosticsProperty<FontWeight?>('fontWeight', fontWeight));
-    properties.add(EnumProperty<FontStyle?>('fontStyle', fontStyle));
-    properties.add(DiagnosticsProperty<bool>('upperCase', upperCase));
-    properties.add(DiagnosticsProperty<TextDecoration?>('decoration', decoration));
-    properties.add(EnumProperty<TextDirection>('textDirection', textDirection));
-    properties.add(DiagnosticsProperty<bool>('first', first));
-    properties.add(DiagnosticsProperty<bool>('last', last));
-    properties.add(DiagnosticsProperty<bool>('resetHeight', resetHeight));
+    properties
+      ..add(StringProperty('data', data))
+      ..add(DiagnosticsProperty<TextStyle?>('style', style))
+      ..add(ColorProperty('textColor', textColor))
+      ..add(DoubleProperty('maxWidth', maxWidth))
+      ..add(DoubleProperty('fontSize', fontSize))
+      ..add(DiagnosticsProperty<FontWeight?>('fontWeight', fontWeight))
+      ..add(EnumProperty<FontStyle?>('fontStyle', fontStyle))
+      ..add(DiagnosticsProperty<bool>('upperCase', upperCase))
+      ..add(DiagnosticsProperty<TextDecoration?>('decoration', decoration))
+      ..add(EnumProperty<TextDirection>('textDirection', textDirection))
+      ..add(DiagnosticsProperty<bool>('first', first))
+      ..add(DiagnosticsProperty<bool>('last', last))
+      ..add(DiagnosticsProperty<bool>('resetHeight', resetHeight));
   }
 }
 

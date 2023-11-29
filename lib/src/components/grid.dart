@@ -38,6 +38,19 @@ extension _Spacing on DeviceType {
 
 /// Zeta Grid.
 class ZetaGrid extends StatelessWidget {
+  /// Constructs a [ZetaGrid].
+  const ZetaGrid({
+    required this.children,
+    this.col = tokens.Grid.defaultCols,
+    this.noGaps = false,
+    this.asymmetricWeight,
+    this.hybrid = false,
+    super.key,
+  }) : assert(
+          asymmetricWeight == null || (asymmetricWeight > 0 && asymmetricWeight < tokens.Grid.defaultCols),
+          'If defined, asymmetricWeight should be in the range 1-11',
+        );
+
   /// Number of columns in grid. Should be an even number between 2 and 16, although values above 12 should be used sparingly.
   ///
   /// Defaults to 12.
@@ -64,19 +77,6 @@ class ZetaGrid extends StatelessWidget {
   ///
   /// Defaults to false.
   final bool hybrid;
-
-  /// Constructs a [ZetaGrid].
-  const ZetaGrid({
-    required this.children,
-    this.col = tokens.Grid.defaultCols,
-    this.noGaps = false,
-    this.asymmetricWeight,
-    this.hybrid = false,
-    super.key,
-  }) : assert(
-          asymmetricWeight == null || (asymmetricWeight > 0 && asymmetricWeight < tokens.Grid.defaultCols),
-          'If defined, asymmetricWeight should be in the range 1-11',
-        );
 
   /// Util to return the smaller of 2 values.
   num returnSmaller(num in1, num in2) {
@@ -147,9 +147,10 @@ class ZetaGrid extends StatelessWidget {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty<bool>('hybrid', hybrid));
-    properties.add(DoubleProperty('col', col));
-    properties.add(DiagnosticsProperty<bool>('noGaps', noGaps));
-    properties.add(IntProperty('asymmetricWeight', asymmetricWeight));
+    properties
+      ..add(DiagnosticsProperty<bool>('hybrid', hybrid))
+      ..add(DoubleProperty('col', col))
+      ..add(DiagnosticsProperty<bool>('noGaps', noGaps))
+      ..add(IntProperty('asymmetricWeight', asymmetricWeight));
   }
 }

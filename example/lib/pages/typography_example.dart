@@ -105,7 +105,7 @@ class TypographyExample extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ZetaColors colors = ZetaColors.of(context);
+    final colors = Zeta.of(context).colors;
 
     final tokens = [
       const ExampleModel(
@@ -167,18 +167,21 @@ class TypographyExample extends StatelessWidget {
 
     return ExampleScaffold(
       name: name,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          ZetaText.headingLarge('Text').inline(Dimensions.x10),
-          ...tokens.map(ExampleBuilder.new),
-          const Divider().squish(Dimensions.x4),
-          ZetaText.headingLarge('Universal sizes').inline(Dimensions.x10),
-          ...universalSizes.map(ExampleBuilder.new),
-          const Divider().squish(Dimensions.x4),
-          ZetaText.headingLarge('Dedicated sizes').inline(Dimensions.x10),
-          ...dedicatedSizes.map(ExampleBuilder.new),
-        ],
+      child: SingleChildScrollView(
+        padding: EdgeInsets.all(Dimensions.s),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            ZetaText.headingLarge('Text').inline(Dimensions.x10),
+            ...tokens.map(ExampleBuilder.new),
+            const Divider().squish(Dimensions.x4),
+            ZetaText.headingLarge('Universal sizes').inline(Dimensions.x10),
+            ...universalSizes.map(ExampleBuilder.new),
+            const Divider().squish(Dimensions.x4),
+            ZetaText.headingLarge('Dedicated sizes').inline(Dimensions.x10),
+            ...dedicatedSizes.map(ExampleBuilder.new),
+          ],
+        ),
       ),
     );
   }

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 import 'package:google_fonts/google_fonts.dart';
+import 'package:zeta_example/pages/theme_color_switch.dart';
+import 'package:zeta_example/pages/theme_constrast_switch.dart';
+import 'package:zeta_example/pages/theme_mode_switch.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 class ExampleModel {
@@ -21,6 +24,7 @@ class ExampleModel {
 
 class ExampleBuilder extends StatelessWidget {
   final ExampleModel model;
+
   const ExampleBuilder(this.model, {super.key});
 
   @override
@@ -31,7 +35,7 @@ class ExampleBuilder extends StatelessWidget {
         Container(
           height: 7,
           width: 7,
-          decoration: const BoxDecoration(color: Colors.black, shape: BoxShape.circle),
+          decoration: BoxDecoration(color: Theme.of(context).colorScheme.onSurface, shape: BoxShape.circle),
         ).squish(Dimensions.x9).inline(Dimensions.x4),
         Expanded(
           child: Column(
@@ -66,20 +70,24 @@ class ExampleScaffold extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ZetaColors colors = ZetaColors.of(context);
+    var theme = Theme.of(context);
+    final colors = theme.colorScheme;
 
     return Scaffold(
-      appBar: AppBar(title: Text(name), actions: actions, backgroundColor: colors.primary),
+      appBar: AppBar(
+        centerTitle: false,
+        title: Text(name),
+        backgroundColor: colors.primary,
+        foregroundColor: colors.onPrimary,
+        actions: [
+          ...actions,
+          ZetaThemeModeSwitch(),
+          ZetaThemeContrastSwitch(),
+          ZetaThemeColorSwitch(),
+        ],
+      ),
       body: SelectionArea(
-        child: ColoredBox(
-          color: colors.background,
-          child: SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: Dimensions.x1, vertical: Dimensions.x6),
-              child: child,
-            ),
-          ),
-        ),
+        child: child,
       ),
     );
   }
@@ -88,11 +96,12 @@ class ExampleScaffold extends StatelessWidget {
 class CodeExample extends StatelessWidget {
   final String code;
   final bool fill;
+
   const CodeExample({required this.code, this.fill = false, super.key});
 
   @override
   Widget build(BuildContext context) {
-    final ZetaColors colors = ZetaColors.of(context);
+    var colors = Zeta.of(context).colors;
     final widget = Container(
       color: colors.surfaceDisabled,
       padding: Dimensions.x4.square,
@@ -121,6 +130,7 @@ class CodeExample extends StatelessWidget {
 class FlutterWordMark extends StatelessWidget {
   final String text;
   final EdgeInsets padding;
+
   const FlutterWordMark({
     this.text = 'Flutter',
     this.padding = const EdgeInsets.symmetric(horizontal: Dimensions.x5, vertical: Dimensions.x2),
@@ -130,7 +140,7 @@ class FlutterWordMark extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: ZetaColors.of(context).borderSubtle,
+      color: Zeta.of(context).colors.borderSubtle,
       padding: padding,
       child: ZetaText(text),
     );

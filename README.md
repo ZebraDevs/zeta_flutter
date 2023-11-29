@@ -2,28 +2,87 @@
 
 Zeta is the new, formal, standardized Zebra Design System based off the successes of ZDS (Zebra Design System).
 
-Note: This package is in pre-release, and so many aspects are incomplete.
+> 🚧 **Note**: This package is in pre-release, and so many aspects are incomplete.
 
-# Usage
+## Installation
 
-[Install zeta_flutter](https://pub.dev/packages/zeta_flutter/install)
+To install `zeta_flutter`, follow the instructions [here](https://pub.dev/packages/zeta_flutter/install).
 
-Zeta extends the use of Flutter's built in theming tools, and so to work correctly your app needs to be wrapped with the zeta theme as such:
+## Usage
+Zeta offers flexibility in theming through its `ZetaProvider` widget. Here's a breakdown of its features:
+
+### Setting the Initial Theme Mode
+
+Zeta allows you to specify an initial theme mode for your app, which can be one of the following:
+
+- `ThemeMode.system`: Adheres to the system's theme.
+- `ThemeMode.light`: Uses the light theme mode.
+- `ThemeMode.dark`: Uses the dark theme mode.
+
+By default, the theme mode is set to `ThemeMode.system`.
+
+```dart
+initialThemeMode: ThemeMode.light
+```
+
+### Providing Initial Theme Data
+
+You can provide the initial theme data for the app which contains all the theming information. If you don't specify one, it will default to a basic instance of `ZetaThemeData`.
+
+```dart
+initialThemeData: ZetaThemeData()
+```
+
+### Setting the Initial Contrast
+
+Zeta also lets you define the initial contrast setting for your app. By default, it's set to `ZetaContrast.aa`.
+
+```dart
+initialContrast: ZetaContrast.aa
+```
+
+### Building Your App with Zeta Theming
+
+The `builder` function is used to construct the widget tree with the provided theming information. This function is expected to receive a `BuildContext`, `ZetaThemeData`, and `ThemeMode` as arguments, and it should return a `Widget`.
+
+```dart
+builder: (context, themeData, themeMode) {
+  // Your app's widget tree here
+}
+```
+
+### Constructing the ZetaProvider
+
+To tie everything together, use the `ZetaProvider` constructor. The `builder` argument is mandatory, while the others are optional but allow you to set initial values:
 
 ```dart
 
  @override
   Widget build(BuildContext context) {
-    return Zeta(
-      builder: (context, theme, colors) {
-        return MaterialApp.router(theme: theme, routerConfig: router);
+    return ZetaProvider(
+      builder: (context, themeData, themeMode) {
+        final dark = themeData.colorsDark.toScheme();
+        final light = themeData.colorsLight.toScheme();
+        return MaterialApp.router(
+          routerConfig: router,
+          themeMode: themeMode,
+          theme: ThemeData(
+            fontFamily: themeData.fontFamily,
+            scaffoldBackgroundColor: light.background,
+            colorScheme: light,
+          ),
+          darkTheme: ThemeData(
+            fontFamily: themeData.fontFamily,
+            scaffoldBackgroundColor: dark.background,
+            colorScheme: dark,
+          ),
+        );
       },
     );
   }
 ```
 
-This returns the Zeta theme and colors, which will be used across the app. Custom `ThemeData` and `ZetaColor` objects can be passed in to apply custom themes and colors.
-
+With these configurations, Zeta makes it easy to achieve consistent theming throughout your Flutter application.
 ## Viewing the components
 
 To view examples of all the components in the library, you can run the example app in this repo or go to [Zeta](https://zeta-ds.web.app/)
@@ -33,11 +92,3 @@ To view examples of all the components in the library, you can run the example a
 This software is licensed with the MIT license (see [LICENSE](./LICENSE)).
 
 ---
-
-### Pre release TODOs
-
-[ ] TODO: update actions
-
-[ ] TODO: Make public repo
-
-[ ] TODO: Add to pub.dev

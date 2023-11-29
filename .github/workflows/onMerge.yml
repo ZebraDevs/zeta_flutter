@@ -23,7 +23,7 @@ jobs:
         with:
           files: |
             **/*.dart
-            docs/*
+            custom-docs/*
             **/*.yaml
             **/*.yml
           files_ignore: example/*
@@ -41,7 +41,7 @@ jobs:
       - name: Run step if any *.js file(s) or any file in the static folder change
         if: steps.changed-files-excluded.outputs.any_changed == 'true'
         run: |
-          echo "One or more *.js file(s) or any file in the static folder but not in the doc folder has changed."
+          echo "One or more *.js file(s) or any file in the static folder but not in the custom-docs folder has changed."
           echo "List all the files that have changed: ${{ steps.changed-files-excluded.outputs.all_changed_files }}"
       - name: Change flutter version tag
         uses: BentEngbers/flutter-change-version@v1.0.3
@@ -116,13 +116,13 @@ jobs:
         env:
           API_TOKEN_GITHUB: ${{ secrets.PAT }}
         with:
-          source_file: "docs/"
+          source_file: "custom-docs/"
           destination_repo: "zebratechnologies/zeta"
           destination_folder: "./"
           destination_branch: "flutter/${{ steps.read-version.outputs.version-number }}"
           user_email: "github-actions@github.com"
           user_name: "github-actions"
-          commit_message: "flutter docs"
+          commit_message: "flutter doc"
       - name: Open Zeta PR
         uses: thecanadianroot/open-pull-request-action@v1.0.3
         with:
