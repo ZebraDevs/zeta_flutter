@@ -248,17 +248,6 @@ class ZetaProviderState extends State<ZetaProvider> with Diagnosticable, Widgets
 
     // Apply the initial contrast to the theme data.
     _themeData = widget.initialThemeData.apply(contrast: _contrast);
-
-    // Load theme data from themeService if available.
-    unawaited(
-      widget.themeService?.loadTheme().then((value) {
-        if (value != null) {
-          setState(() {
-            _themeData = value;
-          });
-        }
-      }),
-    );
   }
 
   /// Clean up function to be called when this object is removed from the tree.
@@ -332,6 +321,7 @@ class ZetaProviderState extends State<ZetaProvider> with Diagnosticable, Widgets
   void updateThemeMode(ThemeMode themeMode) {
     setState(() {
       _themeMode = themeMode;
+      _saveThemeChange();
     });
   }
 
@@ -339,7 +329,7 @@ class ZetaProviderState extends State<ZetaProvider> with Diagnosticable, Widgets
   void updateThemeData(ZetaThemeData data) {
     setState(() {
       _themeData = data.apply(contrast: _contrast);
-      unawaited(widget.themeService?.saveTheme(data));
+      _saveThemeChange();
     });
   }
 
@@ -348,7 +338,18 @@ class ZetaProviderState extends State<ZetaProvider> with Diagnosticable, Widgets
     setState(() {
       _contrast = contrast;
       _themeData = _themeData.apply(contrast: contrast);
+      _saveThemeChange();
     });
+  }
+
+  void _saveThemeChange() {
+    unawaited(
+      widget.themeService?.saveTheme(
+        themeData: _themeData,
+        themeMode: _themeMode,
+        contrast: _contrast,
+      ),
+    );
   }
 
   @override
