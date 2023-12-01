@@ -52,8 +52,6 @@ class ZetaCheckbox extends StatelessWidget {
   final Size checkboxSize;
 
   /// The color to use when this checkbox is checked.
-  ///
-  /// Defaults to [ColorScheme.secondary].
   final Color? selectedColor;
 
   ///Color of the checkbox when it's not selected
