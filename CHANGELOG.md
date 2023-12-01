@@ -1,3 +1,23 @@
+## [0.1.0+2] - 2023-12-01
+### :wrench: Chores
+- [`d22dd29`](https://github.com/zebratechnologies/zeta-flutter/commit/d22dd29b506affccc8cdc7ecfb15a57fcf330646) - Tidy, reorganise and prepare repo *(commit by [@thelukewalton](https://github.com/thelukewalton))*
+
+### :flying_saucer: Other Changes
+- [`199328c`](https://github.com/zebratechnologies/zeta-flutter/commit/199328c28ccfa8a05a1494c08ad93aaf13dd3b28) - Update to mirror 0.1.0+1 from ZebraDevs *(commit by [@thelukewalton](https://github.com/thelukewalton))*
+- [`0ee6171`](https://github.com/zebratechnologies/zeta-flutter/commit/0ee6171e779c6db9995308aa35f2f598b9db372c) - Cleanup dart warnings; fix text scale ([#23](https://github.com/zebratechnologies/zeta-flutter/pull/23))
+
+* fix endtemplate in comments; upgrade flutter packages
+
+* remove unnecessary text scaling
+
+* [automated commit] lint format and import sort
+
+---------
+
+Co-authored-by: Atanas Yordanov <atanas.yordanov@athlonsofia.com>
+Co-authored-by: github-actions <github-actions@github.com> *(commit by [@atanasyordanov21](https://github.com/atanasyordanov21))*
+
+
 ## [0.1.0+1] - 2023-11-28
 
 - chore: Tidy, reorganise and prepare repo
@@ -177,3 +197,5 @@ Introduced license details for third-party libraries used in the project. MIT li
 - Initial setup
 
 [0.0.1+12]: https://github.com/zebratechnologies/zeta-flutter/compare/0.0.1+11...0.0.1+12
+
+[0.1.0+2]: https://github.com/zebratechnologies/zeta-flutter/compare/0.0.1+12...0.1.0+2
