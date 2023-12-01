@@ -1,17 +1,25 @@
+import 'package:flutter/material.dart';
+
+import 'contrast.dart';
 import 'theme_data.dart';
 
 /// `ZetaThemeService` is an abstract class.
 /// It provides the structure for loading and saving themes in Zeta application.
 
 abstract class ZetaThemeService {
-  /// Loads the application's theme.
+  /// Asynchronously load the theme data.
   ///
-  /// `loadTheme` is a method to retrieve the current theme data.
+  /// This method returns a `Future` that when complete will produce a
+  /// tuple of `ZetaThemeData`, `ThemeMode`, and `ZetaContrast`.
   ///
-  /// Returns a `Future` that completes with the `ZetaThemeData` object
-  /// that represents the current theme.
-
-  Future<ZetaThemeData?> loadTheme();
+  /// `ZetaThemeData` describes the colors that are used by a theme.
+  ///
+  /// `ThemeMode` determines the brightness of the system.
+  ///
+  /// `ZetaContrast` defines different contrast styles to use across the application.
+  ///
+  /// Returns a Future `(ZetaThemeData?, ThemeMode?, ZetaContrast?)`.
+  Future<(ZetaThemeData?, ThemeMode?, ZetaContrast?)> loadTheme();
 
   /// Saves the provided theme data as the application's theme.
   ///
@@ -21,5 +29,9 @@ abstract class ZetaThemeService {
   ///
   /// Returns a `Future` that completes when the theme data has been successfully saved.
 
-  Future<void> saveTheme(ZetaThemeData themeData);
+  Future<void> saveTheme({
+    required ZetaThemeData themeData,
+    required ThemeMode themeMode,
+    required ZetaContrast contrast,
+  });
 }

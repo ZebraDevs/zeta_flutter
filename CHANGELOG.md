@@ -1,3 +1,7 @@
+## [0.1.1+1] - 2023-12-01
+
+- feature: Refactor theme declaration and introduce theme service
+
 ## [0.1.0+1] - 2023-11-28
 
 - chore: Tidy, reorganise and prepare repo
