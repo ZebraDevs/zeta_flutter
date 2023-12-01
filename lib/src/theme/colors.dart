@@ -252,11 +252,11 @@ class ZetaColors {
   /// {@macro zeta-color-dark}
   Color get textInverse => cool.shade20;
 
+  /// {@template zeta-color-dark}
   /// Default icon color.
   ///
   /// Defaults to `ZetaColors.cool.90`.
   ///
-  /// {@template zeta-color-dark}
   /// Color swatches are inverted if [ZetaColors.brightness] is Dark.
   /// {@endtemplate}
   Color get iconDefault => textDefault;
