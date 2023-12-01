@@ -39,13 +39,13 @@ class _CheckBoxExampleState extends State<CheckBoxExample> {
               ],
             ),
             Row(children: [const Text('Sharp Checkbox Enabled')]),
-            _getCheckBoxRow(isEnabled: true),
+            getCheckBoxRow(isEnabled: true),
             Row(children: [const Text('Sharp Checkbox Disabled')]),
-            _getCheckBoxRow(isEnabled: false),
+            getCheckBoxRow(isEnabled: false),
             Row(children: [const Text('Rounded Checkbox Enabled')]),
-            _getCheckBoxRow(isEnabled: true, isSharp: false),
+            getCheckBoxRow(isEnabled: true, isSharp: false),
             Row(children: [const Text('Rounded Checkbox Disabled')]),
-            _getCheckBoxRow(isEnabled: false, isSharp: false),
+            getCheckBoxRow(isEnabled: false, isSharp: false),
           ],
         ),
       ),
@@ -53,7 +53,7 @@ class _CheckBoxExampleState extends State<CheckBoxExample> {
   }
 }
 
-Row _getCheckBoxRow({required bool isEnabled, bool isSharp = true}) {
+Row getCheckBoxRow({required bool isEnabled, bool isSharp = true}) {
   return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.spaceAround,
