@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:zeta_example/pages/color_example.dart';
+import 'package:zeta_example/pages/checkbox_example.dart';
 import 'package:zeta_example/pages/grid_example.dart';
 import 'package:zeta_example/pages/spacing_example.dart';
 import 'package:zeta_example/pages/typography_example.dart';
@@ -19,6 +20,8 @@ final List<Component> components = [
   Component(SpacingExample.name, (context) => const SpacingExample()),
   Component(TypographyExample.name, (context) => const TypographyExample()),
   Component(ColorExample.name, (context) => const ColorExample()),
+  Component(CheckBoxExample.name, (context) => const CheckBoxExample()),
+
 ];
 
 class Home extends StatefulWidget {

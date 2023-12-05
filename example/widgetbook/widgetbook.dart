@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
+import 'components/checkbox_widgetbook.dart';
 import 'components/color_widgetbook.dart';
 import 'components/grid_widgetbook.dart';
 import 'components/spacing_widgetbook.dart';
@@ -24,6 +25,7 @@ class HotReload extends StatelessWidget {
                 spacingWidgetbook(),
                 textWidgetBook(),
                 colorWidgetBook(),
+                checkboxWidgetBook()
               ],
             ),
           ],
