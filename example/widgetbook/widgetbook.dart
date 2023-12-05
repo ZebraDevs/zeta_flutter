@@ -42,10 +42,7 @@ class HotReload extends StatelessWidget {
             WidgetbookCategory(
               name: 'Theme',
               isInitiallyExpanded: false,
-              children: [
-                textWidgetBook(),
-                colorWidgetBook(),
-              ],
+              children: [textWidgetBook(), colorWidgetBook(), checkboxWidgetBook()],
             ),
           ],
           addons: [

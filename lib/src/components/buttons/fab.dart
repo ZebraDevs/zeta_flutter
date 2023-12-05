@@ -125,7 +125,7 @@ class _ZetaFABState extends State<ZetaFAB> {
         padding: EdgeInsets.zero,
         shape: widget.shape.buttonShape(isExpanded: _isExpanded, size: widget.size),
         backgroundColor: backgroundColor,
-        foregroundColor: colors.shade60.onColor,
+        foregroundColor: backgroundColor.onColor,
       ).copyWith(
         overlayColor: MaterialStateProperty.resolveWith((Set<MaterialState> states) {
           if (states.contains(MaterialState.hovered)) return colors.hover;

@@ -66,7 +66,10 @@ class ZetaBottomSheet extends StatelessWidget {
                 style: ZetaTextStyles.titleMedium,
               ),
             ),
-          Material(child: body ?? const SizedBox()),
+          Material(
+            color: colors.surfaceSecondary,
+            child: body ?? const SizedBox(),
+          ),
         ],
       ),
     );

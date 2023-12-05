@@ -123,15 +123,15 @@ class _ColorExampleState extends State<ColorExample> {
         };
 
         final Map<String, Color> primaries = {
-          'primaryColor': colors.primary,
-          'secondaryColor': colors.secondary,
+          'primaryColor': colors.primary.text,
+          'secondaryColor': colors.secondary.text,
         };
 
         final Map<String, Color> alerts = {
-          'positive': colors.positive,
-          'negative': colors.negative,
-          'warning': colors.warning,
-          'info': colors.info,
+          'positive': colors.positive.text,
+          'negative': colors.negative.text,
+          'warning': colors.warning.text,
+          'info': colors.info.text,
         };
 
         return ExampleScaffold(
@@ -288,12 +288,6 @@ class MyRow extends StatelessWidget {
         ),
       ],
     );
-  }
-}
-
-extension StringExtension on Color {
-  String get toHexString {
-    return toString().substring(10, 16).toUpperCase();
   }
 }
 
