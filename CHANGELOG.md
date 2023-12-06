@@ -1,3 +1,43 @@
+## [0.1.0+4] - 2023-12-06
+### :wrench: Chores
+- [`0794b08`](https://github.com/zebratechnologies/zeta-flutter/commit/0794b08d029e9954457dbfac56bd576aaf8f0e82) - **deps**: bump tj-actions/branch-names in /.github/workflows *(PR [#26](https://github.com/zebratechnologies/zeta-flutter/pull/26) by [@dependabot[bot]](https://github.com/apps/dependabot))*
+
+### :flying_saucer: Other Changes
+- [`65bf57f`](https://github.com/zebratechnologies/zeta-flutter/commit/65bf57fc1d7f13d4017b0e21f5f52d62552b502c) - status_label ([#25](https://github.com/zebratechnologies/zeta-flutter/pull/25))
+
+* status_label
+
+* [automated commit] lint format and import sort
+
+* spacing changes
+
+* extract BorderType in utils
+
+* chore(deps): bump tj-actions/branch-names in /.github/workflows ([#26](https://github.com/zebratechnologies/zeta-flutter/pull/26))
+
+Bumps [tj-actions/branch-names](https://github.com/tj-actions/branch-names) from 5.1 to 7.0.7.
+- [Release notes](https://github.com/tj-actions/branch-names/releases)
+- [Changelog](https://github.com/tj-actions/branch-names/blob/main/HISTORY.md)
+- [Commits](https://github.com/tj-actions/branch-names/compare/v5.1...v7.0.7)
+
+---
+updated-dependencies:
+- dependency-name: tj-actions/branch-names
+  dependency-type: direct:production
+...
+
+Signed-off-by: dependabot[bot] <support@github.com>
+Co-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
+
+* [automated commit] lint format and import sort
+
+---------
+
+Signed-off-by: dependabot[bot] <support@github.com>
+Co-authored-by: github-actions <github-actions@github.com>
+Co-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com> *(commit by [@genovevageorgieva](https://github.com/genovevageorgieva))*
+
+
 ## [0.1.0+3] - 2023-12-06
 ### :wrench: Chores
 - [`63b94a6`](https://github.com/zebratechnologies/zeta-flutter/commit/63b94a60da570ce3848aa9c1af7a129a2c952399) - **deps**: bump tj-actions/branch-names in /.github/workflows *(PR [#26](https://github.com/zebratechnologies/zeta-flutter/pull/26) by [@dependabot[bot]](https://github.com/apps/dependabot))*
@@ -219,3 +259,4 @@ Introduced license details for third-party libraries used in the project. MIT li
 
 [0.1.0+2]: https://github.com/zebratechnologies/zeta-flutter/compare/0.0.1+12...0.1.0+2
 [0.1.0+3]: https://github.com/zebratechnologies/zeta-flutter/compare/0.1.0+2...0.1.0+3
+[0.1.0+4]: https://github.com/zebratechnologies/zeta-flutter/compare/0.1.0+3...0.1.0+4

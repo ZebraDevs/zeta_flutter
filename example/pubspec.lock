@@ -353,18 +353,18 @@ packages:
     dependency: "direct dev"
     description:
       name: widgetbook
-      sha256: e3e4d710f0348da28209b8ec35617b0a425542a3c61889199dddf2b531b159bb
+      sha256: "37bb71322ed2b024b4b321f9ac0791f6b4510a9abcd42a108c11bec97ac4688a"
       url: "https://pub.dev"
     source: hosted
-    version: "3.4.1"
+    version: "3.5.0"
   win32:
     dependency: transitive
     description:
       name: win32
-      sha256: "7c99c0e1e2fa190b48d25c81ca5e42036d5cac81430ef249027d97b0935c553f"
+      sha256: b0f37db61ba2f2e9b7a78a1caece0052564d1bc70668156cf3a29d676fe4e574
       url: "https://pub.dev"
     source: hosted
-    version: "5.1.0"
+    version: "5.1.1"
   xdg_directories:
     dependency: transitive
     description:
@@ -379,7 +379,7 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "0.1.0+1"
+    version: "0.1.0+3"
 sdks:
   dart: ">=3.1.0 <4.0.0"
   flutter: ">=3.10.0"

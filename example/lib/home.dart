@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:zeta_example/pages/color_example.dart';
 import 'package:zeta_example/pages/grid_example.dart';
 import 'package:zeta_example/pages/spacing_example.dart';
+import 'package:zeta_example/pages/status_label_example.dart';
 import 'package:zeta_example/pages/typography_example.dart';
 import 'package:zeta_example/widgets.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
@@ -19,6 +20,7 @@ final List<Component> components = [
   Component(SpacingExample.name, (context) => const SpacingExample()),
   Component(TypographyExample.name, (context) => const TypographyExample()),
   Component(ColorExample.name, (context) => const ColorExample()),
+  Component(LabelExample.name, (context) => const LabelExample()),
 ];
 
 class Home extends StatefulWidget {
