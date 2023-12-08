@@ -2,6 +2,7 @@
 library zeta_flutter;
 
 export 'src/components/grid.dart';
+export 'src/components/priority_pill.dart';
 export 'src/components/spacing.dart';
 export 'src/components/status_label.dart';
 export 'src/components/text.dart';

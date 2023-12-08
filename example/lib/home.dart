@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:zeta_example/pages/color_example.dart';
 import 'package:zeta_example/pages/grid_example.dart';
+import 'package:zeta_example/pages/priority_pill_example.dart';
 import 'package:zeta_example/pages/icons_example.dart';
 import 'package:zeta_example/pages/spacing_example.dart';
 import 'package:zeta_example/pages/status_label_example.dart';
@@ -23,6 +24,7 @@ final List<Component> components = [
   Component(ColorExample.name, (context) => const ColorExample()),
   Component(IconsExample.name, (context) => const IconsExample()),
   Component(LabelExample.name, (context) => const LabelExample()),
+  Component(PriorityPillExample.name, (context) => const PriorityPillExample()),
 ];
 
 class Home extends StatefulWidget {

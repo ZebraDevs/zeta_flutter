@@ -1,3 +1,32 @@
+## [0.1.0+6] - 2023-12-08
+### :flying_saucer: Other Changes
+- [`2f21a18`](https://github.com/zebratechnologies/zeta-flutter/commit/2f21a18e30425fe91fe7bb0ee3c4df7ab8baca35) - add icons ([#24](https://github.com/zebratechnologies/zeta-flutter/pull/24))
+
+* add icons
+
+* [automated commit] lint format and import sort
+
+* [automated commit] lint format and import sort
+
+---------
+
+Co-authored-by: Atanas Yordanov <atanas.yordanov@athlonsofia.com>
+Co-authored-by: github-actions <github-actions@github.com> *(commit by [@atanasyordanov21](https://github.com/atanasyordanov21))*
+- [`2442420`](https://github.com/zebratechnologies/zeta-flutter/commit/2442420da15739e538d50e14c2a18c63de8d6f96) - Priority Pill ([#28](https://github.com/zebratechnologies/zeta-flutter/pull/28))
+
+* Priority Pill
+
+* [automated commit] lint format and import sort
+
+* remove unnecessary param
+
+* [automated commit] lint format and import sort
+
+---------
+
+Co-authored-by: github-actions <github-actions@github.com> *(commit by [@genovevageorgieva](https://github.com/genovevageorgieva))*
+
+
 ## [0.1.0+5] - 2023-12-08
 ### :flying_saucer: Other Changes
 - [`ef44d24`](https://github.com/zebratechnologies/zeta-flutter/commit/ef44d244589a7cc652a934f25a5122bbd1657c05) - status_label ([#25](https://github.com/zebratechnologies/zeta-flutter/pull/25))
@@ -310,3 +339,4 @@ Introduced license details for third-party libraries used in the project. MIT li
 [0.1.0+3]: https://github.com/zebratechnologies/zeta-flutter/compare/0.1.0+2...0.1.0+3
 [0.1.0+4]: https://github.com/zebratechnologies/zeta-flutter/compare/0.1.0+3...0.1.0+4
 [0.1.0+5]: https://github.com/zebratechnologies/zeta-flutter/compare/0.1.0+4...0.1.0+5
+[0.1.0+6]: https://github.com/zebratechnologies/zeta-flutter/compare/0.1.0+5...0.1.0+6
