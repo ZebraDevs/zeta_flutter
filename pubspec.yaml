@@ -1,5 +1,5 @@
 name: zeta_flutter
-version: 0.1.0+4
+version: 0.1.0+5
 description: Zeta is the new, formal, standardized Zebra Design System based off
   the successes of ZDS (Zebra Design System). This package is in pre-release,
   and so many aspects are incomplete.
@@ -40,4 +40,10 @@ flutter:
           weight: 400
         - asset: lib/src/assets/fonts/IBMPlexSans-Medium.otf
           weight: 500
+    - family: zeta-icons-round
+      fonts:
+        - asset: lib/src/assets/fonts/zeta-icons-round.ttf
+    - family: zeta-icons-sharp
+      fonts:
+        - asset: lib/src/assets/fonts/zeta-icons-sharp.ttf
   uses-material-design: true
