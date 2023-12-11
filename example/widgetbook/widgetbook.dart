@@ -4,6 +4,7 @@ import 'package:zeta_flutter/zeta_flutter.dart';
 
 import 'components/color_widgetbook.dart';
 import 'components/grid_widgetbook.dart';
+import 'components/indicator_widgetbook.dart';
 import 'components/priority_pill_widgetbook.dart';
 import 'components/spacing_widgetbook.dart';
 import 'components/status_label_widgetbook.dart';
@@ -27,6 +28,7 @@ class HotReload extends StatelessWidget {
                 textWidgetBook(),
                 colorWidgetBook(),
                 statusLabelWidgetBook(),
+                indicatorWidgetBook(),
                 priorityPillWidgetBook()
               ],
             ),
