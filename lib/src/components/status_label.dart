@@ -18,33 +18,12 @@ class ZetaStatusLabelColors {
   final Color accentColor;
 }
 
-/// Status Label Type
-enum ZetaStatusLabelType {
-  ///Grey Label
-  neutral,
-
-  ///Purple Label
-  info,
-
-  ///Green Label
-  positive,
-
-  ///Yellow Label
-  warning,
-
-  ///Red Label
-  negative,
-
-  ///Custom Label
-  custom
-}
-
 ///Zeta Status Label
 class ZetaStatusLabel extends StatelessWidget {
   ///Constructs [ZetaStatusLabel].
   const ZetaStatusLabel({
     required this.label,
-    this.labelType = ZetaStatusLabelType.neutral,
+    this.severity = WidgetSeverity.neutral,
     this.isDefaultIcon = true,
     this.customIcon,
     this.borderType = BorderType.sharp,
@@ -68,10 +47,10 @@ class ZetaStatusLabel extends StatelessWidget {
   ///Size of the label
   final Size labelSize;
 
-  ///The type of the label
+  ///Widget Severity
   ///
   /// Defaults to "neutral"
-  final ZetaStatusLabelType labelType;
+  final WidgetSeverity severity;
 
   ///Label
   final String label;
@@ -146,30 +125,30 @@ class ZetaStatusLabel extends StatelessWidget {
       backgroundColor: theme.colors.surfaceDisabled,
       accentColor: theme.colors.borderDefault,
     );
-    switch (labelType) {
-      case ZetaStatusLabelType.neutral:
+    switch (severity) {
+      case WidgetSeverity.neutral:
         return defaultColorScheme;
-      case ZetaStatusLabelType.info:
+      case WidgetSeverity.info:
         return ZetaStatusLabelColors(
           backgroundColor: theme.colors.purple.shade10,
           accentColor: theme.colors.purple.shade50,
         );
-      case ZetaStatusLabelType.positive:
+      case WidgetSeverity.positive:
         return ZetaStatusLabelColors(
           backgroundColor: theme.colors.green.shade10,
           accentColor: theme.colors.green.shade50,
         );
-      case ZetaStatusLabelType.warning:
+      case WidgetSeverity.warning:
         return ZetaStatusLabelColors(
           backgroundColor: theme.colors.orange.shade10,
           accentColor: theme.colors.orange.shade50,
         );
-      case ZetaStatusLabelType.negative:
+      case WidgetSeverity.negative:
         return ZetaStatusLabelColors(
           backgroundColor: theme.colors.red.shade10,
           accentColor: theme.colors.red.shade50,
         );
-      case ZetaStatusLabelType.custom:
+      case WidgetSeverity.custom:
         return customColors ?? defaultColorScheme;
     }
   }
@@ -181,7 +160,7 @@ class ZetaStatusLabel extends StatelessWidget {
       ..add(EnumProperty<BorderType>('borderType', borderType))
       ..add(DoubleProperty('borderWidth', borderWidth))
       ..add(DiagnosticsProperty<Size>('labelSize', labelSize))
-      ..add(EnumProperty<ZetaStatusLabelType>('labelType', labelType))
+      ..add(EnumProperty<WidgetSeverity>('severity', severity))
       ..add(StringProperty('label', label))
       ..add(
         DiagnosticsProperty<ZetaStatusLabelColors?>(

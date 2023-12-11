@@ -1,6 +1,7 @@
 /// Zebra Design System (Zeta) - Flutter Component Library
 library zeta_flutter;
 
+export 'src/components/badge.dart';
 export 'src/components/grid.dart';
 export 'src/components/indicator.dart';
 export 'src/components/priority_pill.dart';

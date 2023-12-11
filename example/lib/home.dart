@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:zeta_example/pages/badge_example.dart';
 import 'package:zeta_example/pages/color_example.dart';
 import 'package:zeta_example/pages/grid_example.dart';
 import 'package:zeta_example/pages/priority_pill_example.dart';
@@ -26,6 +27,7 @@ final List<Component> components = [
   Component(IconsExample.name, (context) => const IconsExample()),
   Component(IndicatorExample.name, (context) => const IndicatorExample()),
   Component(LabelExample.name, (context) => const LabelExample()),
+  Component(BadgeExample.name, (context) => const BadgeExample()),
   Component(PriorityPillExample.name, (context) => const PriorityPillExample()),
 ];
 

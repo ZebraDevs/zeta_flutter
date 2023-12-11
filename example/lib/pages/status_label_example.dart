@@ -17,13 +17,13 @@ class LabelExample extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            statusLabelExampleRow(ZetaStatusLabelType.neutral),
-            statusLabelExampleRow(ZetaStatusLabelType.info),
-            statusLabelExampleRow(ZetaStatusLabelType.positive),
-            statusLabelExampleRow(ZetaStatusLabelType.warning),
-            statusLabelExampleRow(ZetaStatusLabelType.negative),
+            statusLabelExampleRow(WidgetSeverity.neutral),
+            statusLabelExampleRow(WidgetSeverity.info),
+            statusLabelExampleRow(WidgetSeverity.positive),
+            statusLabelExampleRow(WidgetSeverity.warning),
+            statusLabelExampleRow(WidgetSeverity.negative),
             statusLabelExampleRow(
-              ZetaStatusLabelType.custom,
+              WidgetSeverity.custom,
               colors: ZetaStatusLabelColors(accentColor: Colors.blue, backgroundColor: Colors.blue.shade50),
             ),
           ],
@@ -33,20 +33,20 @@ class LabelExample extends StatelessWidget {
   }
 }
 
-Widget statusLabelExampleRow(ZetaStatusLabelType type, {ZetaStatusLabelColors? colors}) {
+Widget statusLabelExampleRow(WidgetSeverity type, {ZetaStatusLabelColors? colors}) {
   return Padding(
     padding: EdgeInsets.all(10),
     child:
         Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, crossAxisAlignment: CrossAxisAlignment.center, children: [
       ZetaStatusLabel(
         label: 'Label',
-        labelType: type,
+        severity: type,
         isDefaultIcon: false,
         customColors: colors,
       ),
       ZetaStatusLabel(
         label: 'Label',
-        labelType: type,
+        severity: type,
         borderType: BorderType.rounded,
         customColors: colors,
       ),

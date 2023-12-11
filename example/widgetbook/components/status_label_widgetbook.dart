@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:zeta_example/pages/status_label_example.dart';
+import 'package:zeta_flutter/src/utils/enums.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 WidgetbookComponent statusLabelWidgetBook() {
@@ -12,13 +13,13 @@ WidgetbookComponent statusLabelWidgetBook() {
         builder: (context) => SingleChildScrollView(
           child: Column(
             children: [
-              statusLabelExampleRow(ZetaStatusLabelType.neutral),
-              statusLabelExampleRow(ZetaStatusLabelType.info),
-              statusLabelExampleRow(ZetaStatusLabelType.positive),
-              statusLabelExampleRow(ZetaStatusLabelType.warning),
-              statusLabelExampleRow(ZetaStatusLabelType.negative),
+              statusLabelExampleRow(WidgetSeverity.neutral),
+              statusLabelExampleRow(WidgetSeverity.info),
+              statusLabelExampleRow(WidgetSeverity.positive),
+              statusLabelExampleRow(WidgetSeverity.warning),
+              statusLabelExampleRow(WidgetSeverity.negative),
               statusLabelExampleRow(
-                ZetaStatusLabelType.custom,
+                WidgetSeverity.custom,
                 colors: ZetaStatusLabelColors(accentColor: Colors.blue, backgroundColor: Colors.blue.shade50),
               ),
             ],
