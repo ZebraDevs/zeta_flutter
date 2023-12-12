@@ -27,7 +27,7 @@ class ZetaStatusLabel extends StatelessWidget {
     this.isDefaultIcon = true,
     this.customIcon,
     this.borderType = BorderType.sharp,
-    this.labelSize = const Size(80, 25),
+    this.labelSize = const Size(67, 24),
     this.borderWidth = 1,
     this.customColors,
     this.customIconSize = 20.0,
@@ -87,13 +87,13 @@ class ZetaStatusLabel extends StatelessWidget {
     return BoxDecoration(
       color: colors.backgroundColor,
       border: Border.all(color: colors.accentColor, width: borderWidth),
-      borderRadius: BorderRadius.circular(borderType == BorderType.rounded ? 15.0 : 0.0),
+      borderRadius: BorderRadius.circular(borderType == BorderType.rounded ? 10.0 : 0.0),
     );
   }
 
   Widget _buildContent(ZetaStatusLabelColors colors, Zeta theme) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: Dimensions.xxs),
+      padding: const EdgeInsets.fromLTRB(8, 2, 8, 2),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -102,7 +102,7 @@ class ZetaStatusLabel extends StatelessWidget {
           Flexible(
             child: Text(
               label,
-              style: ZetaText.zetaTitleMedium,
+              style: ZetaText.zetaTitleSmall,
               overflow: TextOverflow.ellipsis,
             ),
           ),
@@ -112,7 +112,7 @@ class ZetaStatusLabel extends StatelessWidget {
   }
 
   Icon _buildIcon(ZetaStatusLabelColors colors) {
-    final size = isDefaultIcon ? 12.0 : customIconSize;
+    final size = isDefaultIcon ? Dimensions.x2 : customIconSize;
     return Icon(
       size: size,
       isDefaultIcon ? Icons.circle : (customIcon ?? Icons.star),

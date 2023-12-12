@@ -1,3 +1,47 @@
+## [0.1.0+9] - 2023-12-12
+### :flying_saucer: Other Changes
+- [`b97fd3b`](https://github.com/zebratechnologies/zeta-flutter/commit/b97fd3bd881a85c8d4ee4f5ea5856e7a8ebf2d09) - Badge ([#29](https://github.com/zebratechnologies/zeta-flutter/pull/29))
+
+* initial
+
+* Badge
+
+* fix test
+
+* [automated commit] lint format and import sort
+
+* change default border type
+
+* fix test
+
+* [automated commit] lint format and import sort
+
+* [automated commit] lint format and import sort
+
+* [automated commit] lint format and import sort
+
+* fix example
+
+* fix sizing
+
+* add foreground colors
+
+* [automated commit] lint format and import sort
+
+---------
+
+Co-authored-by: github-actions <github-actions@github.com> *(commit by [@genovevageorgieva](https://github.com/genovevageorgieva))*
+- [`30fd121`](https://github.com/zebratechnologies/zeta-flutter/commit/30fd12131af2549c0b5b31bf89e12553557a009b) - some sizings were not exactly as shown in Figma ([#33](https://github.com/zebratechnologies/zeta-flutter/pull/33))
+
+* .
+
+* [automated commit] lint format and import sort
+
+---------
+
+Co-authored-by: github-actions <github-actions@github.com> *(commit by [@genovevageorgieva](https://github.com/genovevageorgieva))*
+
+
 ## [0.1.0+8] - 2023-12-11
 ### :flying_saucer: Other Changes
 - [`36f72c1`](https://github.com/zebratechnologies/zeta-flutter/commit/36f72c1df09fecc9d3eeb6dbf1bbf889493529c0) - Component indicator ([#30](https://github.com/zebratechnologies/zeta-flutter/pull/30))
@@ -434,3 +478,4 @@ Introduced license details for third-party libraries used in the project. MIT li
 [0.1.0+6]: https://github.com/zebratechnologies/zeta-flutter/compare/0.1.0+5...0.1.0+6
 [0.1.0+7]: https://github.com/zebratechnologies/zeta-flutter/compare/0.1.0+6...0.1.0+7
 [0.1.0+8]: https://github.com/zebratechnologies/zeta-flutter/compare/0.1.0+7...0.1.0+8
+[0.1.0+9]: https://github.com/zebratechnologies/zeta-flutter/compare/0.1.0+8...0.1.0+9

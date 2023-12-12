@@ -52,15 +52,15 @@ class ZetaPriorityPill extends StatelessWidget {
   Widget _buildIndexContainer(Zeta theme) {
     return Container(
       alignment: Alignment.center,
-      height: Dimensions.l,
-      width: Dimensions.l,
+      height: Dimensions.x7,
+      width: _isBorderRounded ? Dimensions.x7 : Dimensions.x6,
       decoration: BoxDecoration(
         shape: _isBorderRounded ? BoxShape.circle : BoxShape.rectangle,
         color: theme.colors.blue.shade60,
       ),
       child: Text(
         '$index',
-        style: ZetaText.zetaBodyMedium.apply(color: theme.colors.white),
+        style: ZetaText.zetaTitleSmall.apply(color: theme.colors.white),
       ),
     );
   }
@@ -68,10 +68,10 @@ class ZetaPriorityPill extends StatelessWidget {
   Widget _buildPriorityText() {
     return Flexible(
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: Dimensions.s),
+        padding: const EdgeInsets.fromLTRB(8, 4, 8, 4),
         child: Text(
           priority,
-          style: ZetaText.zetaBodyMedium,
+          style: ZetaText.zetaTitleSmall,
           overflow: TextOverflow.ellipsis,
         ),
       ),
