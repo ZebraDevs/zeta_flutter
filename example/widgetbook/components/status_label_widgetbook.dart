@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:zeta_example/pages/status_label_example.dart';
-import 'package:zeta_flutter/src/utils/enums.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 WidgetbookComponent statusLabelWidgetBook() {

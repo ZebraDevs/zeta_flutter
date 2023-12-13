@@ -12,7 +12,7 @@ class ZetaThemeModeSwitch extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var zeta = Zeta.of(context);
+    final zeta = Zeta.of(context);
 
     ZetaColors zetaColors(ThemeMode mode) {
       if ((mode == ThemeMode.system && MediaQuery.of(context).platformBrightness == Brightness.light) ||

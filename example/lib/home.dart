@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:zeta_example/pages/badge_example.dart';
 import 'package:zeta_example/pages/color_example.dart';
+import 'package:zeta_example/pages/checkbox_example.dart';
 import 'package:zeta_example/pages/grid_example.dart';
 import 'package:zeta_example/pages/priority_pill_example.dart';
 import 'package:zeta_example/pages/icons_example.dart';
@@ -29,6 +30,7 @@ final List<Component> components = [
   Component(LabelExample.name, (context) => const LabelExample()),
   Component(BadgeExample.name, (context) => const BadgeExample()),
   Component(PriorityPillExample.name, (context) => const PriorityPillExample()),
+  Component(CheckBoxExample.name, (context) => const CheckBoxExample()),
 ];
 
 class Home extends StatefulWidget {

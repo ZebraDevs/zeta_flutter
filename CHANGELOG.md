@@ -1,5 +1,37 @@
-## [0.1.0+9] - 2023-12-12
+## [0.1.1+2] - 2023-12-13
 ### :flying_saucer: Other Changes
+- [`063386f`](https://github.com/zebratechnologies/zeta-flutter/commit/063386f83490bf3bfb6d26fc6a95dd445006d656) - some sizings were not exactly as shown in Figma ([#33](https://github.com/zebratechnologies/zeta-flutter/pull/33))
+
+* .
+
+* [automated commit] lint format and import sort
+
+---------
+
+Co-authored-by: github-actions <github-actions@github.com> *(commit by [@genovevageorgieva](https://github.com/genovevageorgieva))*
+- [`1c8ca4c`](https://github.com/zebratechnologies/zeta-flutter/commit/1c8ca4c4b5dbd8378710a18765303a6d37472cf0) - Merge from zebradevs ([#27](https://github.com/zebratechnologies/zeta-flutter/pull/27))
+
+* Merge from zebradevs
+
+* spelling and finals
+
+* [automated commit] lint format and import sort
+
+---------
+
+Co-authored-by: github-actions <github-actions@github.com> *(commit by [@thelukewalton](https://github.com/thelukewalton))*
+
+
+## [0.1.1+1] - 2023-12-01
+
+- feature: Refactor theme declaration and introduce theme service
+
+Theme extensions were deleted and its contents were moved to colors.dart to consolidate all color-related codes in one file for easier navigation and editing. Additional enhancements include optimizing color assignments and making ZetaColors immutable for more robust color management.
+
+## [0.1.0+9] - 2023-12-12
+
+### :flying_saucer: Other Changes
+
 - [`b97fd3b`](https://github.com/zebratechnologies/zeta-flutter/commit/b97fd3bd881a85c8d4ee4f5ea5856e7a8ebf2d09) - Badge ([#29](https://github.com/zebratechnologies/zeta-flutter/pull/29))
 
 * initial
@@ -28,22 +60,24 @@
 
 * [automated commit] lint format and import sort
 
----------
+---
 
-Co-authored-by: github-actions <github-actions@github.com> *(commit by [@genovevageorgieva](https://github.com/genovevageorgieva))*
+Co-authored-by: github-actions <github-actions@github.com> _(commit by [@genovevageorgieva](https://github.com/genovevageorgieva))_
+
 - [`30fd121`](https://github.com/zebratechnologies/zeta-flutter/commit/30fd12131af2549c0b5b31bf89e12553557a009b) - some sizings were not exactly as shown in Figma ([#33](https://github.com/zebratechnologies/zeta-flutter/pull/33))
 
 * .
 
 * [automated commit] lint format and import sort
 
----------
+---
 
-Co-authored-by: github-actions <github-actions@github.com> *(commit by [@genovevageorgieva](https://github.com/genovevageorgieva))*
-
+Co-authored-by: github-actions <github-actions@github.com> _(commit by [@genovevageorgieva](https://github.com/genovevageorgieva))_
 
 ## [0.1.0+8] - 2023-12-11
+
 ### :flying_saucer: Other Changes
+
 - [`36f72c1`](https://github.com/zebratechnologies/zeta-flutter/commit/36f72c1df09fecc9d3eeb6dbf1bbf889493529c0) - Component indicator ([#30](https://github.com/zebratechnologies/zeta-flutter/pull/30))
 
 * add icons
@@ -60,10 +94,11 @@ Co-authored-by: github-actions <github-actions@github.com> *(commit by [@genovev
 
 * [automated commit] lint format and import sort
 
----------
+---
 
 Co-authored-by: Atanas Yordanov <atanas.yordanov@athlonsofia.com>
-Co-authored-by: github-actions <github-actions@github.com> *(commit by [@atanasyordanov21](https://github.com/atanasyordanov21))*
+Co-authored-by: github-actions <github-actions@github.com> _(commit by [@atanasyordanov21](https://github.com/atanasyordanov21))_
+
 - [`895bbfa`](https://github.com/zebratechnologies/zeta-flutter/commit/895bbfa876c7fea331d6bdb14c77e25632aab28d) - Badge ([#29](https://github.com/zebratechnologies/zeta-flutter/pull/29))
 
 * initial
@@ -92,13 +127,14 @@ Co-authored-by: github-actions <github-actions@github.com> *(commit by [@atanasy
 
 * [automated commit] lint format and import sort
 
----------
+---
 
-Co-authored-by: github-actions <github-actions@github.com> *(commit by [@genovevageorgieva](https://github.com/genovevageorgieva))*
-
+Co-authored-by: github-actions <github-actions@github.com> _(commit by [@genovevageorgieva](https://github.com/genovevageorgieva))_
 
 ## [0.1.0+7] - 2023-12-11
+
 ### :flying_saucer: Other Changes
+
 - [`19e7d93`](https://github.com/zebratechnologies/zeta-flutter/commit/19e7d933456938d473f1f5c6ef2696e02349e196) - Priority Pill ([#28](https://github.com/zebratechnologies/zeta-flutter/pull/28))
 
 * Priority Pill
@@ -109,9 +145,10 @@ Co-authored-by: github-actions <github-actions@github.com> *(commit by [@genovev
 
 * [automated commit] lint format and import sort
 
----------
+---
 
-Co-authored-by: github-actions <github-actions@github.com> *(commit by [@genovevageorgieva](https://github.com/genovevageorgieva))*
+Co-authored-by: github-actions <github-actions@github.com> _(commit by [@genovevageorgieva](https://github.com/genovevageorgieva))_
+
 - [`fe4fe8d`](https://github.com/zebratechnologies/zeta-flutter/commit/fe4fe8d088fddf9443ce5810a1d2c068b13c75d9) - Component indicator ([#30](https://github.com/zebratechnologies/zeta-flutter/pull/30))
 
 * add icons
@@ -128,14 +165,15 @@ Co-authored-by: github-actions <github-actions@github.com> *(commit by [@genovev
 
 * [automated commit] lint format and import sort
 
----------
+---
 
 Co-authored-by: Atanas Yordanov <atanas.yordanov@athlonsofia.com>
-Co-authored-by: github-actions <github-actions@github.com> *(commit by [@atanasyordanov21](https://github.com/atanasyordanov21))*
-
+Co-authored-by: github-actions <github-actions@github.com> _(commit by [@atanasyordanov21](https://github.com/atanasyordanov21))_
 
 ## [0.1.0+6] - 2023-12-08
+
 ### :flying_saucer: Other Changes
+
 - [`2f21a18`](https://github.com/zebratechnologies/zeta-flutter/commit/2f21a18e30425fe91fe7bb0ee3c4df7ab8baca35) - add icons ([#24](https://github.com/zebratechnologies/zeta-flutter/pull/24))
 
 * add icons
@@ -144,10 +182,11 @@ Co-authored-by: github-actions <github-actions@github.com> *(commit by [@atanasy
 
 * [automated commit] lint format and import sort
 
----------
+---
 
 Co-authored-by: Atanas Yordanov <atanas.yordanov@athlonsofia.com>
-Co-authored-by: github-actions <github-actions@github.com> *(commit by [@atanasyordanov21](https://github.com/atanasyordanov21))*
+Co-authored-by: github-actions <github-actions@github.com> _(commit by [@atanasyordanov21](https://github.com/atanasyordanov21))_
+
 - [`2442420`](https://github.com/zebratechnologies/zeta-flutter/commit/2442420da15739e538d50e14c2a18c63de8d6f96) - Priority Pill ([#28](https://github.com/zebratechnologies/zeta-flutter/pull/28))
 
 * Priority Pill
@@ -158,13 +197,14 @@ Co-authored-by: github-actions <github-actions@github.com> *(commit by [@atanasy
 
 * [automated commit] lint format and import sort
 
----------
+---
 
-Co-authored-by: github-actions <github-actions@github.com> *(commit by [@genovevageorgieva](https://github.com/genovevageorgieva))*
-
+Co-authored-by: github-actions <github-actions@github.com> _(commit by [@genovevageorgieva](https://github.com/genovevageorgieva))_
 
 ## [0.1.0+5] - 2023-12-08
+
 ### :flying_saucer: Other Changes
+
 - [`ef44d24`](https://github.com/zebratechnologies/zeta-flutter/commit/ef44d244589a7cc652a934f25a5122bbd1657c05) - status_label ([#25](https://github.com/zebratechnologies/zeta-flutter/pull/25))
 
 * status_label
@@ -178,26 +218,30 @@ Co-authored-by: github-actions <github-actions@github.com> *(commit by [@genovev
 * chore(deps): bump tj-actions/branch-names in /.github/workflows ([#26](https://github.com/zebratechnologies/zeta-flutter/pull/26))
 
 Bumps [tj-actions/branch-names](https://github.com/tj-actions/branch-names) from 5.1 to 7.0.7.
+
 - [Release notes](https://github.com/tj-actions/branch-names/releases)
 - [Changelog](https://github.com/tj-actions/branch-names/blob/main/HISTORY.md)
 - [Commits](https://github.com/tj-actions/branch-names/compare/v5.1...v7.0.7)
 
 ---
+
 updated-dependencies:
+
 - dependency-name: tj-actions/branch-names
   dependency-type: direct:production
-...
+  ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 Co-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
 
-* [automated commit] lint format and import sort
+- [automated commit] lint format and import sort
 
----------
+---
 
 Signed-off-by: dependabot[bot] <support@github.com>
 Co-authored-by: github-actions <github-actions@github.com>
-Co-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com> *(commit by [@genovevageorgieva](https://github.com/genovevageorgieva))*
+Co-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com> _(commit by [@genovevageorgieva](https://github.com/genovevageorgieva))_
+
 - [`c90349b`](https://github.com/zebratechnologies/zeta-flutter/commit/c90349b104f3000956f821934b01dfd74f37a5e2) - add icons ([#24](https://github.com/zebratechnologies/zeta-flutter/pull/24))
 
 * add icons
@@ -206,17 +250,19 @@ Co-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.c
 
 * [automated commit] lint format and import sort
 
----------
+---
 
 Co-authored-by: Atanas Yordanov <atanas.yordanov@athlonsofia.com>
-Co-authored-by: github-actions <github-actions@github.com> *(commit by [@atanasyordanov21](https://github.com/atanasyordanov21))*
-
+Co-authored-by: github-actions <github-actions@github.com> _(commit by [@atanasyordanov21](https://github.com/atanasyordanov21))_
 
 ## [0.1.0+4] - 2023-12-06
+
 ### :wrench: Chores
-- [`0794b08`](https://github.com/zebratechnologies/zeta-flutter/commit/0794b08d029e9954457dbfac56bd576aaf8f0e82) - **deps**: bump tj-actions/branch-names in /.github/workflows *(PR [#26](https://github.com/zebratechnologies/zeta-flutter/pull/26) by [@dependabot[bot]](https://github.com/apps/dependabot))*
+
+- [`0794b08`](https://github.com/zebratechnologies/zeta-flutter/commit/0794b08d029e9954457dbfac56bd576aaf8f0e82) - **deps**: bump tj-actions/branch-names in /.github/workflows _(PR [#26](https://github.com/zebratechnologies/zeta-flutter/pull/26) by [@dependabot[bot]](https://github.com/apps/dependabot))_
 
 ### :flying_saucer: Other Changes
+
 - [`65bf57f`](https://github.com/zebratechnologies/zeta-flutter/commit/65bf57fc1d7f13d4017b0e21f5f52d62552b502c) - status_label ([#25](https://github.com/zebratechnologies/zeta-flutter/pull/25))
 
 * status_label
@@ -230,33 +276,38 @@ Co-authored-by: github-actions <github-actions@github.com> *(commit by [@atanasy
 * chore(deps): bump tj-actions/branch-names in /.github/workflows ([#26](https://github.com/zebratechnologies/zeta-flutter/pull/26))
 
 Bumps [tj-actions/branch-names](https://github.com/tj-actions/branch-names) from 5.1 to 7.0.7.
+
 - [Release notes](https://github.com/tj-actions/branch-names/releases)
 - [Changelog](https://github.com/tj-actions/branch-names/blob/main/HISTORY.md)
 - [Commits](https://github.com/tj-actions/branch-names/compare/v5.1...v7.0.7)
 
 ---
+
 updated-dependencies:
+
 - dependency-name: tj-actions/branch-names
   dependency-type: direct:production
-...
+  ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 Co-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
 
-* [automated commit] lint format and import sort
+- [automated commit] lint format and import sort
 
----------
+---
 
 Signed-off-by: dependabot[bot] <support@github.com>
 Co-authored-by: github-actions <github-actions@github.com>
-Co-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com> *(commit by [@genovevageorgieva](https://github.com/genovevageorgieva))*
-
+Co-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com> _(commit by [@genovevageorgieva](https://github.com/genovevageorgieva))_
 
 ## [0.1.0+3] - 2023-12-06
+
 ### :wrench: Chores
-- [`63b94a6`](https://github.com/zebratechnologies/zeta-flutter/commit/63b94a60da570ce3848aa9c1af7a129a2c952399) - **deps**: bump tj-actions/branch-names in /.github/workflows *(PR [#26](https://github.com/zebratechnologies/zeta-flutter/pull/26) by [@dependabot[bot]](https://github.com/apps/dependabot))*
+
+- [`63b94a6`](https://github.com/zebratechnologies/zeta-flutter/commit/63b94a60da570ce3848aa9c1af7a129a2c952399) - **deps**: bump tj-actions/branch-names in /.github/workflows _(PR [#26](https://github.com/zebratechnologies/zeta-flutter/pull/26) by [@dependabot[bot]](https://github.com/apps/dependabot))_
 
 ### :flying_saucer: Other Changes
+
 - [`f333429`](https://github.com/zebratechnologies/zeta-flutter/commit/f333429083f0cf790627211788e69285bcff3a37) - Cleanup dart warnings; fix text scale ([#23](https://github.com/zebratechnologies/zeta-flutter/pull/23))
 
 * fix endtemplate in comments; upgrade flutter packages
@@ -265,31 +316,45 @@ Co-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.c
 
 * [automated commit] lint format and import sort
 
----------
+---
 
 Co-authored-by: Atanas Yordanov <atanas.yordanov@athlonsofia.com>
-Co-authored-by: github-actions <github-actions@github.com> *(commit by [@atanasyordanov21](https://github.com/atanasyordanov21))*
-
+Co-authored-by: github-actions <github-actions@github.com> _(commit by [@atanasyordanov21](https://github.com/atanasyordanov21))_
 
 ## [0.1.0+2] - 2023-12-01
+
 ### :wrench: Chores
-- [`d22dd29`](https://github.com/zebratechnologies/zeta-flutter/commit/d22dd29b506affccc8cdc7ecfb15a57fcf330646) - Tidy, reorganise and prepare repo *(commit by [@thelukewalton](https://github.com/thelukewalton))*
+
+- [`d22dd29`](https://github.com/zebratechnologies/zeta-flutter/commit/d22dd29b506affccc8cdc7ecfb15a57fcf330646) - Tidy, reorganise and prepare repo _(commit by [@thelukewalton](https://github.com/thelukewalton))_
 
 ### :flying_saucer: Other Changes
-- [`199328c`](https://github.com/zebratechnologies/zeta-flutter/commit/199328c28ccfa8a05a1494c08ad93aaf13dd3b28) - Update to mirror 0.1.0+1 from ZebraDevs *(commit by [@thelukewalton](https://github.com/thelukewalton))*
+
+- [`199328c`](https://github.com/zebratechnologies/zeta-flutter/commit/199328c28ccfa8a05a1494c08ad93aaf13dd3b28) - Update to mirror 0.1.0+1 from ZebraDevs _(commit by [@thelukewalton](https://github.com/thelukewalton))_
 - [`0ee6171`](https://github.com/zebratechnologies/zeta-flutter/commit/0ee6171e779c6db9995308aa35f2f598b9db372c) - Cleanup dart warnings; fix text scale ([#23](https://github.com/zebratechnologies/zeta-flutter/pull/23))
 
 * fix endtemplate in comments; upgrade flutter packages
+  <<<<<<< HEAD
 
 * remove unnecessary text scaling
 
 * [automated commit] lint format and import sort
 
----------
+---
 
 Co-authored-by: Atanas Yordanov <atanas.yordanov@athlonsofia.com>
-Co-authored-by: github-actions <github-actions@github.com> *(commit by [@atanasyordanov21](https://github.com/atanasyordanov21))*
+Co-authored-by: github-actions <github-actions@github.com> _(commit by [@atanasyordanov21](https://github.com/atanasyordanov21))_
+=======
 
+> > > > > > > 38a5a89 (Merge from zebradevs)
+
+- remove unnecessary text scaling
+
+- [automated commit] lint format and import sort
+
+---
+
+Co-authored-by: Atanas Yordanov <atanas.yordanov@athlonsofia.com>
+Co-authored-by: github-actions <github-actions@github.com> _(commit by [@atanasyordanov21](https://github.com/atanasyordanov21))_
 
 ## [0.1.0+1] - 2023-11-28
 
@@ -384,15 +449,15 @@ Introduced license details for third-party libraries used in the project. MIT li
 
 * bug(type): Fixing reset height and tests failing _(commit by [@thelukewalton](https://github.com/thelukewalton))_
 
-## 0.0.1+11 - 2023-08-09
+## [0.0.1+11] - 2023-08-09
 
 ### :sparkles: New Features
 
 - [`193dc42`](https://github.com/zebratechnologies/zeta-flutter/commit/193dc42c8e7419d9087afdffce0eae915af12819) - Color ([#21](https://github.com/zebratechnologies/zeta-flutter/pull/21)) _(commit by [@thelukewalton](https://github.com/thelukewalton))_
 
-  - [`a605819`](https://github.com/zebratechnologies/zeta-flutter/commit/a60581973764b5d06711fe6470f9963af934b7ad) - Adding color defs by [@thelukewalton](https://github.com/thelukewalton)
-  - [`f519cd8`](https://github.com/zebratechnologies/zeta-flutter/commit/f519cd856c7b4793ea7e24dc16f3abba0cffcf66) - starting colorswatch util by [@thelukewalton](https://github.com/thelukewalton)
-  - [`7445db0`](https://github.com/zebratechnologies/zeta-flutter/commit/7445db0b7da2434f5a55d3067369b3bd35df363b) - adding widgetbook and tests by [@thelukewalton](https://github.com/thelukewalton)
+- [`a605819`](https://github.com/zebratechnologies/zeta-flutter/commit/a60581973764b5d06711fe6470f9963af934b7ad) - Adding color defs by [@thelukewalton](https://github.com/thelukewalton)
+- [`f519cd8`](https://github.com/zebratechnologies/zeta-flutter/commit/f519cd856c7b4793ea7e24dc16f3abba0cffcf66) - starting colorswatch util by [@thelukewalton](https://github.com/thelukewalton)
+- [`7445db0`](https://github.com/zebratechnologies/zeta-flutter/commit/7445db0b7da2434f5a55d3067369b3bd35df363b) - adding widgetbook and tests by [@thelukewalton](https://github.com/thelukewalton)
 
 ### :bug: Bug Fixes
 
@@ -400,7 +465,7 @@ Introduced license details for third-party libraries used in the project. MIT li
 - [`3479adb`](https://github.com/zebratechnologies/zeta-flutter/commit/3479adb574c9ec1073552f888631f7cee12fe4cb) -bug(platforms): adding windows into example by [@thelukewalton](https://github.com/thelukewalton)
 - [`70a6144`](https://github.com/zebratechnologies/zeta-flutter/commit/70a614446c4d526315eb3229478d89dbd1c031de) - bug(type): Fixing reset height and tests failing by [@thelukewalton](https://github.com/thelukewalton)
 
-## 0.0.1+10 - 2023-07-11
+## [0.0.1+10] - 2023-07-11
 
 ### :sparkles: New Features
 
@@ -413,7 +478,7 @@ Introduced license details for third-party libraries used in the project. MIT li
 
 - [`988964e`](https://github.com/zebratechnologies/zeta-flutter/commit/988964e122128c4f9e4423fd849b70b6283ccea7) - removing unused dependency; by [@thelukewalton](https://github.com/thelukewalton)
 
-## 0.0.1+9 - 2023-03-28
+## [0.0.1+9]- 2023-03-28
 
 ### :sparkles: New Features
 
@@ -433,7 +498,7 @@ Introduced license details for third-party libraries used in the project. MIT li
 - [`d591856`](https://github.com/zebratechnologies/zeta-flutter/commit/d59185680879bf2f938c4f2a6bd2328f29a3ddd2) - test _(commit by [@thelukewalton](https://github.com/thelukewalton))_
 - [`1dcbcae`](https://github.com/zebratechnologies/zeta-flutter/commit/1dcbcaec2600210efcefc80861c29aaa7e44c27e) - removing hardcoded shas _(PR [#19](https://github.com/zebratechnologies/zeta-flutter/pull/19) by [@thelukewalton](https://github.com/thelukewalton))_
 
-## 0.0.1+6 - Spacing - 2023-03-06
+## [0.0.1+6]- Spacing - 2023-03-06
 
 ### :sparkles: New Features
 
@@ -448,7 +513,7 @@ Introduced license details for third-party libraries used in the project. MIT li
 
 - [`1dc0e1b`](https://github.com/zebratechnologies/zeta-flutter/commit/1dc0e1b64cb870685110516c5159b20fb903f2c3) - Update README.md _(commit by [@benken](https://github.com/benken))_
 
-## 0.0.1+5 - Grid - 2023-02-17
+## [0.0.1+5] - Grid - 2023-02-17
 
 ### :sparkles: New Features
 
@@ -465,17 +530,8 @@ Introduced license details for third-party libraries used in the project. MIT li
 - [`4acf3c1`](https://github.com/zebratechnologies/zeta-flutter/commit/4acf3c1134b6c8d17827d8e2c665250d6f6ead1d) - fix(actions) Fix action refs _(PR [#7](https://github.com/zebratechnologies/zeta-flutter/pull/7) by [@thelukewalton](https://github.com/thelukewalton))_
 - [`83e073b`](https://github.com/zebratechnologies/zeta-flutter/commit/83e073b16808d89373a74dba35172bb7a978e765) - fix(actions) another attempt at fixing actions checkout _(PR [#8](https://github.com/zebratechnologies/zeta-flutter/pull/8) by [@thelukewalton](https://github.com/thelukewalton))_
 
-## 0.0.1+1 - Initial setup
+## [0.0.1+1] - Initial setup
 
 - Initial setup
 
-[0.0.1+12]: https://github.com/zebratechnologies/zeta-flutter/compare/0.0.1+11...0.0.1+12
-
-[0.1.0+2]: https://github.com/zebratechnologies/zeta-flutter/compare/0.0.1+12...0.1.0+2
-[0.1.0+3]: https://github.com/zebratechnologies/zeta-flutter/compare/0.1.0+2...0.1.0+3
-[0.1.0+4]: https://github.com/zebratechnologies/zeta-flutter/compare/0.1.0+3...0.1.0+4
-[0.1.0+5]: https://github.com/zebratechnologies/zeta-flutter/compare/0.1.0+4...0.1.0+5
-[0.1.0+6]: https://github.com/zebratechnologies/zeta-flutter/compare/0.1.0+5...0.1.0+6
-[0.1.0+7]: https://github.com/zebratechnologies/zeta-flutter/compare/0.1.0+6...0.1.0+7
-[0.1.0+8]: https://github.com/zebratechnologies/zeta-flutter/compare/0.1.0+7...0.1.0+8
-[0.1.0+9]: https://github.com/zebratechnologies/zeta-flutter/compare/0.1.0+8...0.1.0+9
+[0.1.1+2]: https://github.com/zebratechnologies/zeta-flutter/compare/0.1.0+9...0.1.1+2

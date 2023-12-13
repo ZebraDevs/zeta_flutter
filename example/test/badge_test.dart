@@ -1,6 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
-import 'package:zeta_flutter/src/utils/enums.dart';
 
 import 'test_components.dart';
 

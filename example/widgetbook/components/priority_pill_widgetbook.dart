@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
-import 'package:zeta_flutter/src/utils/enums.dart';
 
 WidgetbookComponent priorityPillWidgetBook() {
   return WidgetbookComponent(

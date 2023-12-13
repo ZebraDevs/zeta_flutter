@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 import '../widgets.dart';
-import 'package:zeta_flutter/src/utils/enums.dart';
 
 class PriorityPillExample extends StatelessWidget {
   static const String name = 'PriorityPill';

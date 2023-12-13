@@ -11,7 +11,7 @@ class ZetaThemeContrastSwitch extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var zeta = Zeta.of(context);
+    final zeta = Zeta.of(context);
 
     ZetaColors zetaColors(ZetaContrast contrast) {
       if (zeta.brightness == Brightness.light) {

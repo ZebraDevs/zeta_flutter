@@ -70,7 +70,7 @@ class ExampleScaffold extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var theme = Theme.of(context);
+    final theme = Theme.of(context);
     final colors = theme.colorScheme;
 
     return Scaffold(
@@ -101,7 +101,7 @@ class CodeExample extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var colors = Zeta.of(context).colors;
+    final colors = Zeta.of(context).colors;
     final widget = Container(
       color: colors.surfaceDisabled,
       padding: Dimensions.x4.square,

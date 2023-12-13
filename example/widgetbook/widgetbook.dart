@@ -3,6 +3,7 @@ import 'package:widgetbook/widgetbook.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 import 'components/badge_widgetbook.dart';
+import 'components/checkbox_widgetbook.dart';
 import 'components/color_widgetbook.dart';
 import 'components/grid_widgetbook.dart';
 import 'components/indicator_widgetbook.dart';
@@ -31,7 +32,8 @@ class HotReload extends StatelessWidget {
                 statusLabelWidgetBook(),
                 badgeWidgetBook(),
                 indicatorWidgetBook(),
-                priorityPillWidgetBook()
+                priorityPillWidgetBook(),
+                checkboxWidgetBook()
               ],
             ),
           ],
