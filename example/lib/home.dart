@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:zeta_example/pages/avatar_example.dart';
 import 'package:zeta_example/pages/badge_example.dart';
 import 'package:zeta_example/pages/color_example.dart';
 import 'package:zeta_example/pages/checkbox_example.dart';
@@ -25,6 +26,7 @@ final List<Component> components = [
   Component(SpacingExample.name, (context) => const SpacingExample()),
   Component(TypographyExample.name, (context) => const TypographyExample()),
   Component(ColorExample.name, (context) => const ColorExample()),
+  Component(AvatarExample.name, (context) => const AvatarExample()),
   Component(IconsExample.name, (context) => const IconsExample()),
   Component(IndicatorExample.name, (context) => const IndicatorExample()),
   Component(LabelExample.name, (context) => const LabelExample()),

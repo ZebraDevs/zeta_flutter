@@ -1,3 +1,87 @@
+## [0.1.1+3] - 2023-12-15
+### :flying_saucer: Other Changes
+- [`5f0a33e`](https://github.com/zebratechnologies/zeta-flutter/commit/5f0a33e8e3b92de83d83170f267e6cd3f5fca068) - Merge from zebradevs ([#27](https://github.com/zebratechnologies/zeta-flutter/pull/27))
+
+* Merge from zebradevs
+
+* spelling and finals
+
+* [automated commit] lint format and import sort
+
+---------
+
+Co-authored-by: github-actions <github-actions@github.com> *(commit by [@thelukewalton](https://github.com/thelukewalton))*
+- [`b20aef1`](https://github.com/zebratechnologies/zeta-flutter/commit/b20aef109944e6cfc02db9b0041e7a6009c9e52e) - Component ZetaAvatar ([#32](https://github.com/zebratechnologies/zeta-flutter/pull/32))
+
+* add empty avatar example page; upgrade packages
+
+* add icons
+
+* [automated commit] lint format and import sort
+
+* create avatar component with examples
+
+* create ZetaIndicator component with examples
+
+* fix value
+
+* fix & improve; add badges (indicators)
+
+* add more comments
+
+* add factory constructors for the different types
+
+* add widgetbook
+
+* add avatar to widgetbook
+
+* [automated commit] lint format and import sort
+
+* Badge ([#29](https://github.com/zebratechnologies/zeta-flutter/pull/29))
+
+* initial
+
+* Badge
+
+* fix test
+
+* [automated commit] lint format and import sort
+
+* change default border type
+
+* fix test
+
+* [automated commit] lint format and import sort
+
+* [automated commit] lint format and import sort
+
+* [automated commit] lint format and import sort
+
+* fix example
+
+* fix sizing
+
+* add foreground colors
+
+* [automated commit] lint format and import sort
+
+---------
+
+Co-authored-by: github-actions <github-actions@github.com>
+
+* [automated commit] lint format and import sort
+
+* replace photo with image
+
+* [automated commit] lint format and import sort
+
+---------
+
+Co-authored-by: Atanas Yordanov <atanas.yordanov@athlonsofia.com>
+Co-authored-by: github-actions <github-actions@github.com>
+Co-authored-by: Genoveva Georgieva <151932404+genovevageorgieva@users.noreply.github.com> *(commit by [@atanasyordanov21](https://github.com/atanasyordanov21))*
+
+
 ## [0.1.1+2] - 2023-12-13
 ### :flying_saucer: Other Changes
 - [`063386f`](https://github.com/zebratechnologies/zeta-flutter/commit/063386f83490bf3bfb6d26fc6a95dd445006d656) - some sizings were not exactly as shown in Figma ([#33](https://github.com/zebratechnologies/zeta-flutter/pull/33))
@@ -535,3 +619,4 @@ Introduced license details for third-party libraries used in the project. MIT li
 - Initial setup
 
 [0.1.1+2]: https://github.com/zebratechnologies/zeta-flutter/compare/0.1.0+9...0.1.1+2
+[0.1.1+3]: https://github.com/zebratechnologies/zeta-flutter/compare/0.1.1+2...0.1.1+3
