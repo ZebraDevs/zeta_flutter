@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:zeta_example/pages/app_bar_example/app_bar_example.dart';
+import 'package:zeta_example/pages/app_bar_example/default_app_bar.dart';
+import 'package:zeta_example/pages/app_bar_example/negative_app_bar.dart';
+import 'package:zeta_example/pages/app_bar_example/positive_app_bar.dart';
+import 'package:zeta_example/pages/app_bar_example/warning_app_bar.dart';
 import 'package:zeta_example/pages/avatar_example.dart';
 import 'package:zeta_example/pages/badge_example.dart';
 import 'package:zeta_example/pages/color_example.dart';
@@ -32,6 +37,12 @@ final List<Component> components = [
   Component(LabelExample.name, (context) => const LabelExample()),
   Component(BadgeExample.name, (context) => const BadgeExample()),
   Component(PriorityPillExample.name, (context) => const PriorityPillExample()),
+  Component(AppBarExample.name, (context) => const AppBarExample(), [
+    Component(DefaultAppBarExample.name, (context) => const DefaultAppBarExample()),
+    Component(PositiveAppBarExample.name, (context) => const PositiveAppBarExample()),
+    Component(WarningAppBarExample.name, (context) => const WarningAppBarExample()),
+    Component(NegativeAppBarExample.name, (context) => const NegativeAppBarExample()),
+  ]),
   Component(CheckBoxExample.name, (context) => const CheckBoxExample()),
 ];
 
@@ -46,13 +57,21 @@ final GoRouter router = GoRouter(
   routes: [
     GoRoute(
       path: '/',
+      name: 'Home',
       builder: (_, __) => const Home(),
       routes: [
         ...components.map(
           (e) => GoRoute(
             path: e.name,
+            name: e.name,
             builder: (_, __) => e.pageBuilder.call(_),
-            routes: e.children.map((f) => GoRoute(path: f.name, builder: (_, __) => f.pageBuilder(_))).toList(),
+            routes: e.children
+                .map((f) => GoRoute(
+                      path: f.name,
+                      name: f.name,
+                      builder: (_, __) => f.pageBuilder(_),
+                    ))
+                .toList(),
           ),
         )
       ],

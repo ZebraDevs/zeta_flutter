@@ -1,3 +1,92 @@
+## [0.1.1+4] - 2023-12-15
+### :flying_saucer: Other Changes
+- [`8f621dc`](https://github.com/zebratechnologies/zeta-flutter/commit/8f621dc82bd58ace9c994057420cdb1f41a74200) - Component ZetaAvatar ([#32](https://github.com/zebratechnologies/zeta-flutter/pull/32))
+
+* add empty avatar example page; upgrade packages
+
+* add icons
+
+* [automated commit] lint format and import sort
+
+* create avatar component with examples
+
+* create ZetaIndicator component with examples
+
+* fix value
+
+* fix & improve; add badges (indicators)
+
+* add more comments
+
+* add factory constructors for the different types
+
+* add widgetbook
+
+* add avatar to widgetbook
+
+* [automated commit] lint format and import sort
+
+* Badge ([#29](https://github.com/zebratechnologies/zeta-flutter/pull/29))
+
+* initial
+
+* Badge
+
+* fix test
+
+* [automated commit] lint format and import sort
+
+* change default border type
+
+* fix test
+
+* [automated commit] lint format and import sort
+
+* [automated commit] lint format and import sort
+
+* [automated commit] lint format and import sort
+
+* fix example
+
+* fix sizing
+
+* add foreground colors
+
+* [automated commit] lint format and import sort
+
+---------
+
+Co-authored-by: github-actions <github-actions@github.com>
+
+* [automated commit] lint format and import sort
+
+* replace photo with image
+
+* [automated commit] lint format and import sort
+
+---------
+
+Co-authored-by: Atanas Yordanov <atanas.yordanov@athlonsofia.com>
+Co-authored-by: github-actions <github-actions@github.com>
+Co-authored-by: Genoveva Georgieva <151932404+genovevageorgieva@users.noreply.github.com> *(commit by [@atanasyordanov21](https://github.com/atanasyordanov21))*
+- [`350adec`](https://github.com/zebratechnologies/zeta-flutter/commit/350adecf4b0498afc6a476a653d2223a7cb74e0f) - App bar ([#35](https://github.com/zebratechnologies/zeta-flutter/pull/35))
+
+* create ZetaAppBar in four variants with example screens
+
+* [automated commit] lint format and import sort
+
+* remove Flexible
+
+* rename
+
+* titleIcon should be of type Icon instead of Widget
+
+---------
+
+Co-authored-by: Atanas Yordanov <atanas.yordanov@athlonsofia.com>
+Co-authored-by: github-actions <github-actions@github.com> *(commit by [@atanasyordanov21](https://github.com/atanasyordanov21))*
+
+
 ## [0.1.1+3] - 2023-12-15
 ### :flying_saucer: Other Changes
 - [`5f0a33e`](https://github.com/zebratechnologies/zeta-flutter/commit/5f0a33e8e3b92de83d83170f267e6cd3f5fca068) - Merge from zebradevs ([#27](https://github.com/zebratechnologies/zeta-flutter/pull/27))
@@ -620,3 +709,4 @@ Introduced license details for third-party libraries used in the project. MIT li
 
 [0.1.1+2]: https://github.com/zebratechnologies/zeta-flutter/compare/0.1.0+9...0.1.1+2
 [0.1.1+3]: https://github.com/zebratechnologies/zeta-flutter/compare/0.1.1+2...0.1.1+3
+[0.1.1+4]: https://github.com/zebratechnologies/zeta-flutter/compare/0.1.1+3...0.1.1+4
