@@ -1,3 +1,35 @@
+## [0.1.1+9] - 2023-12-18
+### :flying_saucer: Other Changes
+- [`541ec63`](https://github.com/zebratechnologies/zeta-flutter/commit/541ec633f31f117b685671a33342e57c89823434) - force Material 3 ([#38](https://github.com/zebratechnologies/zeta-flutter/pull/38))
+
+* force Material 3
+
+* [automated commit] lint format and import sort
+
+---------
+
+Co-authored-by: Atanas Yordanov <atanas.yordanov@athlonsofia.com>
+Co-authored-by: github-actions <github-actions@github.com> *(commit by [@atanasyordanov21](https://github.com/atanasyordanov21))*
+- [`0be43ac`](https://github.com/zebratechnologies/zeta-flutter/commit/0be43acce7c8f3b69a778f95420f542f92e725cf) - Tag component ([#37](https://github.com/zebratechnologies/zeta-flutter/pull/37))
+
+* initial
+
+* inital
+
+* initial
+
+* tag component
+
+* tag component
+
+* [automated commit] lint format and import sort
+
+---------
+
+Co-authored-by: github-actions <github-actions@github.com>
+Co-authored-by: Atanas Yordanov <atanas.yordanov@athlonsofia.com> *(commit by [@genovevageorgieva](https://github.com/genovevageorgieva))*
+
+
 ## [0.1.1+8] - 2023-12-18
 ### :flying_saucer: Other Changes
 - [`4ca71f3`](https://github.com/zebratechnologies/zeta-flutter/commit/4ca71f3f83535e55c3af36961a5332fced0ecdbf) - Button component ([#36](https://github.com/zebratechnologies/zeta-flutter/pull/36))
@@ -912,3 +944,4 @@ Introduced license details for third-party libraries used in the project. MIT li
 [0.1.1+6]: https://github.com/zebratechnologies/zeta-flutter/compare/0.1.1+5...0.1.1+6
 [0.1.1+7]: https://github.com/zebratechnologies/zeta-flutter/compare/0.1.1+6...0.1.1+7
 [0.1.1+8]: https://github.com/zebratechnologies/zeta-flutter/compare/0.1.1+7...0.1.1+8
+[0.1.1+9]: https://github.com/zebratechnologies/zeta-flutter/compare/0.1.1+8...0.1.1+9
