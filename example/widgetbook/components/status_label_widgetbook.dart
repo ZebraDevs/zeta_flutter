@@ -19,7 +19,7 @@ WidgetbookComponent statusLabelWidgetBook() {
               statusLabelExampleRow(WidgetSeverity.negative),
               statusLabelExampleRow(
                 WidgetSeverity.custom,
-                colors: ZetaStatusLabelColors(accentColor: Colors.blue, backgroundColor: Colors.blue.shade50),
+                colors: ZetaWidgetColor(foregroundColor: Colors.blue, backgroundColor: Colors.blue.shade50),
               ),
             ],
           ),
