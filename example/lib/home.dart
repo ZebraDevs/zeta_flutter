@@ -16,6 +16,7 @@ import 'package:zeta_example/pages/icons_example.dart';
 import 'package:zeta_example/pages/indicator_example.dart';
 import 'package:zeta_example/pages/spacing_example.dart';
 import 'package:zeta_example/pages/status_label_example.dart';
+import 'package:zeta_example/pages/tag_example.dart';
 import 'package:zeta_example/pages/typography_example.dart';
 import 'package:zeta_example/pages/workcloud_indicator_example.dart';
 import 'package:zeta_example/widgets.dart';
@@ -38,6 +39,7 @@ final List<Component> components = [
   Component(IconsExample.name, (context) => const IconsExample()),
   Component(IndicatorExample.name, (context) => const IndicatorExample()),
   Component(LabelExample.name, (context) => const LabelExample()),
+  Component(TagExample.name, (context) => const TagExample()),
   Component(BadgeExample.name, (context) => const BadgeExample()),
   Component(PriorityPillExample.name, (context) => const PriorityPillExample()),
   Component(WorkcloudIndicatorExample.name, (context) => const WorkcloudIndicatorExample()),
