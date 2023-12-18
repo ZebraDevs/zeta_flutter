@@ -49,12 +49,13 @@ class ZetaExample extends StatelessWidget {
           routerConfig: router,
           themeMode: themeMode,
           theme: ThemeData(
-            useMaterial3: false,
+            useMaterial3: true,
             fontFamily: themeData.fontFamily,
             scaffoldBackgroundColor: light.background,
             colorScheme: light,
           ),
           darkTheme: ThemeData(
+            useMaterial3: true,
             fontFamily: themeData.fontFamily,
             scaffoldBackgroundColor: dark.background,
             colorScheme: dark,

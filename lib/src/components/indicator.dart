@@ -227,7 +227,7 @@ class _InnerContent extends StatelessWidget {
             textAlign: strVal.length == 1 ? TextAlign.center : TextAlign.right,
             style: TextStyle(
               fontSize: fontSize,
-              // height: .9,
+              height: .9,
               letterSpacing: -0.5,
               color: foregroundColor ?? defaultColor,
             ),
