@@ -7,6 +7,7 @@ import 'package:zeta_example/pages/app_bar_example/positive_app_bar.dart';
 import 'package:zeta_example/pages/app_bar_example/warning_app_bar.dart';
 import 'package:zeta_example/pages/avatar_example.dart';
 import 'package:zeta_example/pages/badge_example.dart';
+import 'package:zeta_example/pages/button_example.dart';
 import 'package:zeta_example/pages/color_example.dart';
 import 'package:zeta_example/pages/checkbox_example.dart';
 import 'package:zeta_example/pages/grid_example.dart';
@@ -47,6 +48,7 @@ final List<Component> components = [
     Component(NegativeAppBarExample.name, (context) => const NegativeAppBarExample()),
   ]),
   Component(CheckBoxExample.name, (context) => const CheckBoxExample()),
+  Component(ButtonExample.name, (context) => const ButtonExample()),
 ];
 
 class Home extends StatefulWidget {

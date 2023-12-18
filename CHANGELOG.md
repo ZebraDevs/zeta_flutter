@@ -1,3 +1,56 @@
+## [0.1.1+7] - 2023-12-18
+### :flying_saucer: Other Changes
+- [`ac2b269`](https://github.com/zebratechnologies/zeta-flutter/commit/ac2b269c5806d2af310a063231abc1e412aea1a1) - fix the border of the indicator component ([#31](https://github.com/zebratechnologies/zeta-flutter/pull/31))
+
+* fix the border of the component
+
+* [automated commit] lint format and import sort
+
+* inverseBorder
+
+* [automated commit] lint format and import sort
+
+* rounded = true by default
+
+* running on iPhone
+
+* try to adjust font height
+
+* horizontal alignment
+
+* try to remove the line height
+
+* stick to Material 2 for now
+
+---------
+
+Co-authored-by: Atanas Yordanov <atanas.yordanov@athlonsofia.com>
+Co-authored-by: github-actions <github-actions@github.com> *(commit by [@atanasyordanov21](https://github.com/atanasyordanov21))*
+- [`cb330c7`](https://github.com/zebratechnologies/zeta-flutter/commit/cb330c7c1952ca2493b5d6c9272e2ade1050f53b) - Button component ([#36](https://github.com/zebratechnologies/zeta-flutter/pull/36))
+
+* initial
+
+* format_error
+
+* [automated commit] lint format and import sort
+
+* button component optimizations
+
+* [automated commit] lint format and import sort
+
+* [automated commit] lint format and import sort
+
+* colors change
+
+* colors change
+
+* [automated commit] lint format and import sort
+
+---------
+
+Co-authored-by: github-actions <github-actions@github.com> *(commit by [@genovevageorgieva](https://github.com/genovevageorgieva))*
+
+
 ## [0.1.1+6] - 2023-12-18
 ### :flying_saucer: Other Changes
 - [`354040c`](https://github.com/zebratechnologies/zeta-flutter/commit/354040c91731f53f9186ce0cbce341706dc30b3a) - Workcloud indicators ([#34](https://github.com/zebratechnologies/zeta-flutter/pull/34))
@@ -820,3 +873,4 @@ Introduced license details for third-party libraries used in the project. MIT li
 [0.1.1+4]: https://github.com/zebratechnologies/zeta-flutter/compare/0.1.1+3...0.1.1+4
 [0.1.1+5]: https://github.com/zebratechnologies/zeta-flutter/compare/0.1.1+4...0.1.1+5
 [0.1.1+6]: https://github.com/zebratechnologies/zeta-flutter/compare/0.1.1+5...0.1.1+6
+[0.1.1+7]: https://github.com/zebratechnologies/zeta-flutter/compare/0.1.1+6...0.1.1+7

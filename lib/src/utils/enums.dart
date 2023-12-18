@@ -30,6 +30,18 @@ enum WidgetSeverity {
   custom
 }
 
+/// [ZetaWidgetSize] size
+enum ZetaWidgetSize {
+  /// large
+  large,
+
+  /// medium
+  medium,
+
+  /// small
+  small,
+}
+
 ///Widget Colors
 class ZetaWidgetColor {
   ///Constructs [ZetaWidgetColor].
@@ -43,16 +55,4 @@ class ZetaWidgetColor {
 
   ///foregroundColor Color
   final Color foregroundColor;
-}
-
-///Zeta Widget Size
-enum ZetaWidgetSize {
-  /// [large]
-  large,
-
-  /// [medium]
-  medium,
-
-  /// [small]
-  small,
 }

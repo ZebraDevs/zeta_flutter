@@ -3,6 +3,7 @@ library zeta_flutter;
 
 export 'src/components/avatar.dart';
 export 'src/components/badge.dart';
+export 'src/components/button.dart';
 export 'src/components/checkbox.dart';
 export 'src/components/grid.dart';
 export 'src/components/indicator.dart';
