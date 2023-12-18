@@ -16,6 +16,7 @@ import 'package:zeta_example/pages/indicator_example.dart';
 import 'package:zeta_example/pages/spacing_example.dart';
 import 'package:zeta_example/pages/status_label_example.dart';
 import 'package:zeta_example/pages/typography_example.dart';
+import 'package:zeta_example/pages/workcloud_indicator_example.dart';
 import 'package:zeta_example/widgets.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
@@ -23,6 +24,7 @@ class Component {
   final String name;
   final WidgetBuilder pageBuilder;
   final List<Component> children;
+
   Component(this.name, this.pageBuilder, [this.children = const []]);
 }
 
@@ -37,6 +39,7 @@ final List<Component> components = [
   Component(LabelExample.name, (context) => const LabelExample()),
   Component(BadgeExample.name, (context) => const BadgeExample()),
   Component(PriorityPillExample.name, (context) => const PriorityPillExample()),
+  Component(WorkcloudIndicatorExample.name, (context) => const WorkcloudIndicatorExample()),
   Component(AppBarExample.name, (context) => const AppBarExample(), [
     Component(DefaultAppBarExample.name, (context) => const DefaultAppBarExample()),
     Component(PositiveAppBarExample.name, (context) => const PositiveAppBarExample()),

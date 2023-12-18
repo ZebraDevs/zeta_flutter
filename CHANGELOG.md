@@ -1,3 +1,52 @@
+## [0.1.1+5] - 2023-12-18
+### :flying_saucer: Other Changes
+- [`1268c92`](https://github.com/zebratechnologies/zeta-flutter/commit/1268c92c7e0057cd166c40bc9ccd53ccf80c2fef) - App bar ([#35](https://github.com/zebratechnologies/zeta-flutter/pull/35))
+
+* create ZetaAppBar in four variants with example screens
+
+* [automated commit] lint format and import sort
+
+* remove Flexible
+
+* rename
+
+* titleIcon should be of type Icon instead of Widget
+
+---------
+
+Co-authored-by: Atanas Yordanov <atanas.yordanov@athlonsofia.com>
+Co-authored-by: github-actions <github-actions@github.com> *(commit by [@atanasyordanov21](https://github.com/atanasyordanov21))*
+- [`077d161`](https://github.com/zebratechnologies/zeta-flutter/commit/077d16138d5d3f579fbc2bfcba3048b1c5d28afc) - Workcloud indicators ([#34](https://github.com/zebratechnologies/zeta-flutter/pull/34))
+
+* initial
+
+* workcloud indicator
+
+* typo
+
+* .
+
+* [automated commit] lint format and import sort
+
+* .
+
+* .
+
+* .
+
+* [automated commit] lint format and import sort
+
+* [automated commit] lint format and import sort
+
+* add default values
+
+* [automated commit] lint format and import sort
+
+---------
+
+Co-authored-by: github-actions <github-actions@github.com> *(commit by [@genovevageorgieva](https://github.com/genovevageorgieva))*
+
+
 ## [0.1.1+4] - 2023-12-15
 ### :flying_saucer: Other Changes
 - [`8f621dc`](https://github.com/zebratechnologies/zeta-flutter/commit/8f621dc82bd58ace9c994057420cdb1f41a74200) - Component ZetaAvatar ([#32](https://github.com/zebratechnologies/zeta-flutter/pull/32))
@@ -710,3 +759,4 @@ Introduced license details for third-party libraries used in the project. MIT li
 [0.1.1+2]: https://github.com/zebratechnologies/zeta-flutter/compare/0.1.0+9...0.1.1+2
 [0.1.1+3]: https://github.com/zebratechnologies/zeta-flutter/compare/0.1.1+2...0.1.1+3
 [0.1.1+4]: https://github.com/zebratechnologies/zeta-flutter/compare/0.1.1+3...0.1.1+4
+[0.1.1+5]: https://github.com/zebratechnologies/zeta-flutter/compare/0.1.1+4...0.1.1+5

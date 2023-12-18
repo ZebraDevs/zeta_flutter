@@ -23,7 +23,7 @@ class LabelExample extends StatelessWidget {
             statusLabelExampleRow(WidgetSeverity.negative),
             statusLabelExampleRow(
               WidgetSeverity.custom,
-              colors: ZetaStatusLabelColors(accentColor: Colors.blue, backgroundColor: Colors.blue.shade50),
+              colors: ZetaWidgetColor(foregroundColor: Colors.blue, backgroundColor: Colors.blue.shade50),
             ),
           ],
         ),
@@ -32,7 +32,7 @@ class LabelExample extends StatelessWidget {
   }
 }
 
-Widget statusLabelExampleRow(WidgetSeverity type, {ZetaStatusLabelColors? colors}) {
+Widget statusLabelExampleRow(WidgetSeverity type, {ZetaWidgetColor? colors}) {
   return Padding(
     padding: EdgeInsets.all(10),
     child:

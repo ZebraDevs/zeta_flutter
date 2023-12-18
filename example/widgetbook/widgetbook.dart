@@ -12,6 +12,7 @@ import 'components/priority_pill_widgetbook.dart';
 import 'components/spacing_widgetbook.dart';
 import 'components/status_label_widgetbook.dart';
 import 'components/typography_widgetbook.dart';
+import 'components/workcloud_indicator_widgetbook.dart';
 import 'utils/zebra.dart';
 
 class HotReload extends StatelessWidget {
@@ -34,6 +35,7 @@ class HotReload extends StatelessWidget {
                 badgeWidgetBook(),
                 indicatorWidgetBook(),
                 priorityPillWidgetBook(),
+                workcloudIndicatorWidgetBook(),
                 avatarWidgetBook(),
                 checkboxWidgetBook()
               ],
