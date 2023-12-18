@@ -59,6 +59,22 @@ class IndicatorExample extends StatelessWidget {
                       ),
                     ],
                   ),
+                  const SizedBox(height: 8),
+                  Row(
+                    children: [
+                      ZetaIndicator.icon(inverseBorder: true),
+                      const SizedBox(width: 20),
+                      ZetaIndicator.icon(
+                        size: ZetaIndicatorSize.medium,
+                        inverseBorder: true,
+                      ),
+                      const SizedBox(width: 20),
+                      ZetaIndicator.icon(
+                        size: ZetaIndicatorSize.small,
+                        inverseBorder: true,
+                      ),
+                    ],
+                  ),
                 ],
               ),
               const SizedBox(width: 50),
@@ -72,15 +88,35 @@ class IndicatorExample extends StatelessWidget {
                   const SizedBox(height: 8),
                   Row(
                     children: [
-                      ZetaIndicator.icon(sharp: true),
+                      ZetaIndicator.icon(rounded: false),
                       const SizedBox(width: 20),
                       ZetaIndicator.icon(
                         size: ZetaIndicatorSize.medium,
-                        sharp: true,
+                        rounded: false,
                       ),
                       const SizedBox(width: 20),
                       ZetaIndicator.icon(
                         size: ZetaIndicatorSize.small,
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 8),
+                  Row(
+                    children: [
+                      ZetaIndicator.icon(
+                        rounded: false,
+                        inverseBorder: true,
+                      ),
+                      const SizedBox(width: 20),
+                      ZetaIndicator.icon(
+                        size: ZetaIndicatorSize.medium,
+                        rounded: false,
+                        inverseBorder: true,
+                      ),
+                      const SizedBox(width: 20),
+                      ZetaIndicator.icon(
+                        size: ZetaIndicatorSize.small,
+                        inverseBorder: true,
                       ),
                     ],
                   ),
@@ -97,7 +133,7 @@ class IndicatorExample extends StatelessWidget {
             'ZetaIndicator.notification',
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
-          const SizedBox(height: 15),
+          const SizedBox(height: 8),
           Row(
             children: [
               ZetaIndicator.notification(
@@ -112,6 +148,26 @@ class IndicatorExample extends StatelessWidget {
               ZetaIndicator.notification(
                 size: ZetaIndicatorSize.small,
                 value: 3,
+              ),
+            ],
+          ),
+          const SizedBox(height: 8),
+          Row(
+            children: [
+              ZetaIndicator.notification(
+                value: 3,
+                inverseBorder: true,
+              ),
+              const SizedBox(width: 20),
+              ZetaIndicator.notification(
+                size: ZetaIndicatorSize.medium,
+                value: 3,
+                inverseBorder: true,
+              ),
+              const SizedBox(width: 20),
+              ZetaIndicator.notification(
+                size: ZetaIndicatorSize.small,
+                inverseBorder: true,
               ),
             ],
           ),
