@@ -11,14 +11,14 @@ class ZetaCheckbox extends StatelessWidget {
     this.borderType = BorderType.sharp,
     this.label,
     this.labelStyle,
-    this.checkboxSize = const Size(25, 25),
+    this.checkboxSize = const Size(20, 20),
     this.selectedColor,
     this.unselectedColor,
     this.unselectedBorderColor,
-    this.unselectedBorderWidth = 2.5,
+    this.unselectedBorderWidth = 2,
     this.disabledColor,
     this.isEnabled = true,
-    this.iconSize = 18.0,
+    this.iconSize = 15.0,
     super.key,
   }) : assert(iconSize > 0, 'Icon size must be greater than 0');
 
@@ -108,7 +108,7 @@ class ZetaCheckbox extends StatelessWidget {
               padding: const EdgeInsets.only(left: Dimensions.s),
               child: Text(
                 label!,
-                style: labelStyle ?? ZetaText.zetaTitleMedium,
+                style: labelStyle ?? ZetaText.zetaBodyLarge,
               ),
             ),
           ),
@@ -130,7 +130,7 @@ class ZetaCheckbox extends StatelessWidget {
               width: unselectedBorderWidth,
             ),
             borderRadius: BorderRadius.circular(
-              borderType == BorderType.rounded ? 4.0 : 0.0,
+              borderType == BorderType.rounded ? 2.0 : 0.0,
             ),
           ),
           width: checkboxSize.width,
@@ -154,10 +154,21 @@ class ZetaCheckbox extends StatelessWidget {
   Widget _getCheckboxIcon(Zeta theme) {
     if (value == null) return const SizedBox.shrink();
     return Icon(
-      value! ? Icons.check : Icons.remove,
+      _getIcon(),
       color: isEnabled ? theme.colors.white : theme.colors.textDisabled,
       size: iconSize,
     );
+  }
+
+  IconData _getIcon() {
+    final isRounded = borderType == BorderType.rounded;
+    return value!
+        ? isRounded
+            ? ZetaIcons.check_round
+            : ZetaIcons.check_sharp
+        : isRounded
+            ? ZetaIcons.remove_round
+            : ZetaIcons.remove_sharp;
   }
 
   Color _getCheckboxBackgroundColor(Zeta theme) {

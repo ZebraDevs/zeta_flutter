@@ -1,3 +1,56 @@
+## [0.1.1+11] - 2023-12-19
+### :flying_saucer: Other Changes
+- [`c506b81`](https://github.com/zebratechnologies/zeta-flutter/commit/c506b81c0f00b23192ddef4e484dabf8a0f36890) - Component accordion ([#39](https://github.com/zebratechnologies/zeta-flutter/pull/39))
+
+* first draft of the ZetaAccordion
+
+* create ZetaAccordion component
+
+* add icon padding
+
+* add list separator & margin
+
+* Tag component ([#37](https://github.com/zebratechnologies/zeta-flutter/pull/37))
+
+* initial
+
+* inital
+
+* initial
+
+* tag component
+
+* tag component
+
+* [automated commit] lint format and import sort
+
+---------
+
+Co-authored-by: github-actions <github-actions@github.com>
+Co-authored-by: Atanas Yordanov <atanas.yordanov@athlonsofia.com>
+
+* add comments and more examples
+
+* pubspec
+
+* [automated commit] lint format and import sort
+
+---------
+
+Co-authored-by: Atanas Yordanov <atanas.yordanov@athlonsofia.com>
+Co-authored-by: Genoveva Georgieva <151932404+genovevageorgieva@users.noreply.github.com>
+Co-authored-by: github-actions <github-actions@github.com> *(commit by [@atanasyordanov21](https://github.com/atanasyordanov21))*
+- [`10a075e`](https://github.com/zebratechnologies/zeta-flutter/commit/10a075ed9dc7aac6021ccc08fde574f520b2fc9e) - fix sizings and replace icons with zeta icons ([#43](https://github.com/zebratechnologies/zeta-flutter/pull/43))
+
+* fix sizings and replace icons with zeta icons
+
+* [automated commit] lint format and import sort
+
+---------
+
+Co-authored-by: github-actions <github-actions@github.com> *(commit by [@genovevageorgieva](https://github.com/genovevageorgieva))*
+
+
 ## [0.1.1+10] - 2023-12-19
 ### :flying_saucer: Other Changes
 - [`c79686a`](https://github.com/zebratechnologies/zeta-flutter/commit/c79686a8221a029280332e144da3fdb6eca0ead8) - Tag component ([#37](https://github.com/zebratechnologies/zeta-flutter/pull/37))
@@ -1008,3 +1061,4 @@ Introduced license details for third-party libraries used in the project. MIT li
 [0.1.1+8]: https://github.com/zebratechnologies/zeta-flutter/compare/0.1.1+7...0.1.1+8
 [0.1.1+9]: https://github.com/zebratechnologies/zeta-flutter/compare/0.1.1+8...0.1.1+9
 [0.1.1+10]: https://github.com/zebratechnologies/zeta-flutter/compare/0.1.1+9...0.1.1+10
+[0.1.1+11]: https://github.com/zebratechnologies/zeta-flutter/compare/0.1.1+10...0.1.1+11

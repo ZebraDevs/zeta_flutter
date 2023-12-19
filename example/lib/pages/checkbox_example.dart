@@ -31,18 +31,18 @@ class _CheckBoxExampleState extends State<CheckBoxExample> {
                 ZetaCheckbox(
                     value: isChecked, isEnabled: isEnabled, onChanged: (value) => setState(() => isChecked = value)),
                 ElevatedButton(
-                  child: const Text('Disable'),
+                  child: Text(isEnabled ? 'Disable' : 'Enable'),
                   onPressed: () => setState(() => isEnabled = !isEnabled),
                 )
               ],
             ),
-            Row(children: [const Text('Sharp Checkbox Enabled')]),
+            Row(children: [Text('Sharp Checkbox Enabled', style: ZetaText.zetaTitleLarge)]),
             getCheckBoxRow(isEnabled: true),
-            Row(children: [const Text('Sharp Checkbox Disabled')]),
+            Row(children: [Text('Sharp Checkbox Disabled', style: ZetaText.zetaTitleLarge)]),
             getCheckBoxRow(isEnabled: false),
-            Row(children: [const Text('Rounded Checkbox Enabled')]),
+            Row(children: [Text('Rounded Checkbox Enabled', style: ZetaText.zetaTitleLarge)]),
             getCheckBoxRow(isEnabled: true, isSharp: false),
-            Row(children: [const Text('Rounded Checkbox Disabled')]),
+            Row(children: [Text('Rounded Checkbox Disabled', style: ZetaText.zetaTitleLarge)]),
             getCheckBoxRow(isEnabled: false, isSharp: false),
           ],
         ),
@@ -59,13 +59,13 @@ Row getCheckBoxRow({required bool isEnabled, bool isSharp = true}) {
         ZetaCheckbox(
             value: true,
             isEnabled: isEnabled,
-            label: 'Selected',
+            label: 'Label',
             borderType: isSharp ? BorderType.sharp : BorderType.rounded,
             onChanged: (value) => {}),
         ZetaCheckbox(
             value: false,
             isEnabled: isEnabled,
-            label: 'Indeterminate',
+            label: 'Label',
             borderType: isSharp ? BorderType.sharp : BorderType.rounded,
             onChanged: (value) => {}),
         ZetaCheckbox(
