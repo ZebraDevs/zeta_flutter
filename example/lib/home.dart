@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:zeta_example/pages/accordion_example.dart';
 import 'package:zeta_example/pages/app_bar_example/app_bar_example.dart';
 import 'package:zeta_example/pages/app_bar_example/default_app_bar.dart';
 import 'package:zeta_example/pages/app_bar_example/negative_app_bar.dart';
@@ -50,6 +51,7 @@ final List<Component> components = [
     Component(NegativeAppBarExample.name, (context) => const NegativeAppBarExample()),
   ]),
   Component(CheckBoxExample.name, (context) => const CheckBoxExample()),
+  Component(AccordionExample.name, (context) => const AccordionExample()),
   Component(ButtonExample.name, (context) => const ButtonExample()),
 ];
 

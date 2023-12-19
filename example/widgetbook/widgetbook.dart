@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
+import 'components/accordion_widgetbook.dart';
 import 'components/avatar_widgetbook.dart';
 import 'components/badge_widgetbook.dart';
 import 'components/button_widgetbook.dart';
@@ -41,6 +42,7 @@ class HotReload extends StatelessWidget {
                 workcloudIndicatorWidgetBook(),
                 avatarWidgetBook(),
                 checkboxWidgetBook(),
+                accordionWidgetBook(),
                 buttonWidgetBook()
               ],
             ),
