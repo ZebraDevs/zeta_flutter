@@ -12,6 +12,7 @@ import 'package:zeta_example/pages/button_example.dart';
 import 'package:zeta_example/pages/color_example.dart';
 import 'package:zeta_example/pages/checkbox_example.dart';
 import 'package:zeta_example/pages/grid_example.dart';
+import 'package:zeta_example/pages/menu_items.dart';
 import 'package:zeta_example/pages/priority_pill_example.dart';
 import 'package:zeta_example/pages/icons_example.dart';
 import 'package:zeta_example/pages/indicator_example.dart';
@@ -53,6 +54,7 @@ final List<Component> components = [
   Component(CheckBoxExample.name, (context) => const CheckBoxExample()),
   Component(AccordionExample.name, (context) => const AccordionExample()),
   Component(ButtonExample.name, (context) => const ButtonExample()),
+  Component(MenuItemsExample.name, (context) => const MenuItemsExample()),
 ];
 
 class Home extends StatefulWidget {

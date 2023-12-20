@@ -1,3 +1,26 @@
+## [0.1.1+12] - 2023-12-20
+### :flying_saucer: Other Changes
+- [`dcafe1f`](https://github.com/zebratechnologies/zeta-flutter/commit/dcafe1f2f0436adf75e9cb36e0c4dd1bb8015def) - fix sizings and replace icons with zeta icons ([#43](https://github.com/zebratechnologies/zeta-flutter/pull/43))
+
+* fix sizings and replace icons with zeta icons
+
+* [automated commit] lint format and import sort
+
+---------
+
+Co-authored-by: github-actions <github-actions@github.com> *(commit by [@genovevageorgieva](https://github.com/genovevageorgieva))*
+- [`231fa4b`](https://github.com/zebratechnologies/zeta-flutter/commit/231fa4b860d4ecbb551ba7ec65b783d26fed43a0) - Menu Items - horizontal & vertical ([#44](https://github.com/zebratechnologies/zeta-flutter/pull/44))
+
+* Menu Items - horizontal & vertical
+
+* [automated commit] lint format and import sort
+
+---------
+
+Co-authored-by: Atanas Yordanov <atanas.yordanov@athlonsofia.com>
+Co-authored-by: github-actions <github-actions@github.com> *(commit by [@atanasyordanov21](https://github.com/atanasyordanov21))*
+
+
 ## [0.1.1+11] - 2023-12-19
 ### :flying_saucer: Other Changes
 - [`c506b81`](https://github.com/zebratechnologies/zeta-flutter/commit/c506b81c0f00b23192ddef4e484dabf8a0f36890) - Component accordion ([#39](https://github.com/zebratechnologies/zeta-flutter/pull/39))
@@ -1062,3 +1085,4 @@ Introduced license details for third-party libraries used in the project. MIT li
 [0.1.1+9]: https://github.com/zebratechnologies/zeta-flutter/compare/0.1.1+8...0.1.1+9
 [0.1.1+10]: https://github.com/zebratechnologies/zeta-flutter/compare/0.1.1+9...0.1.1+10
 [0.1.1+11]: https://github.com/zebratechnologies/zeta-flutter/compare/0.1.1+10...0.1.1+11
+[0.1.1+12]: https://github.com/zebratechnologies/zeta-flutter/compare/0.1.1+11...0.1.1+12
