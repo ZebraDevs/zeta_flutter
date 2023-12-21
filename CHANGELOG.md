@@ -1,3 +1,13 @@
+## [0.1.1+14] - 2023-12-21
+### :flying_saucer: Other Changes
+- [`be7cf58`](https://github.com/zebratechnologies/zeta-flutter/commit/be7cf587995ef4a51c57fc497d91abfccf82c65b) - component floating action button ([#41](https://github.com/zebratechnologies/zeta-flutter/pull/41))
+
+Co-authored-by: github-actions <github-actions@github.com> *(commit by [@genovevageorgieva](https://github.com/genovevageorgieva))*
+- [`a5d7181`](https://github.com/zebratechnologies/zeta-flutter/commit/a5d71816ff9d6aa9426cda38ee9d6f1116a36496) - Page banner ([#40](https://github.com/zebratechnologies/zeta-flutter/pull/40))
+
+Co-authored-by: github-actions <github-actions@github.com> *(commit by [@genovevageorgieva](https://github.com/genovevageorgieva))*
+
+
 ## [0.1.1+13] - 2023-12-21
 ### :flying_saucer: Other Changes
 - [`51caca7`](https://github.com/zebratechnologies/zeta-flutter/commit/51caca71fce57681cabeb82e979499da9a16f4c1) - Menu Items - horizontal & vertical ([#44](https://github.com/zebratechnologies/zeta-flutter/pull/44))
@@ -1104,3 +1114,4 @@ Introduced license details for third-party libraries used in the project. MIT li
 [0.1.1+11]: https://github.com/zebratechnologies/zeta-flutter/compare/0.1.1+10...0.1.1+11
 [0.1.1+12]: https://github.com/zebratechnologies/zeta-flutter/compare/0.1.1+11...0.1.1+12
 [0.1.1+13]: https://github.com/zebratechnologies/zeta-flutter/compare/0.1.1+12...0.1.1+13
+[0.1.1+14]: https://github.com/zebratechnologies/zeta-flutter/compare/0.1.1+13...0.1.1+14

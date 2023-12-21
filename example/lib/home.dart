@@ -14,6 +14,7 @@ import 'package:zeta_example/pages/checkbox_example.dart';
 import 'package:zeta_example/pages/fab_example/fab_example.dart';
 import 'package:zeta_example/pages/fab_example/primary_fab.dart';
 import 'package:zeta_example/pages/grid_example.dart';
+import 'package:zeta_example/pages/in_page_banner_example.dart';
 import 'package:zeta_example/pages/menu_items.dart';
 import 'package:zeta_example/pages/priority_pill_example.dart';
 import 'package:zeta_example/pages/icons_example.dart';
@@ -54,6 +55,7 @@ final List<Component> components = [
     Component(NegativeAppBarExample.name, (context) => const NegativeAppBarExample()),
   ]),
   Component(CheckBoxExample.name, (context) => const CheckBoxExample()),
+  Component(InPageBannerExample.name, (context) => const InPageBannerExample()),
   Component(AccordionExample.name, (context) => const AccordionExample()),
   Component(ButtonExample.name, (context) => const ButtonExample()),
   Component(FABExample.name, (context) => const FABExample(), [

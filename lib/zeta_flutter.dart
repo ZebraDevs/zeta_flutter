@@ -8,6 +8,7 @@ export 'src/components/button.dart';
 export 'src/components/checkbox.dart';
 export 'src/components/fab.dart';
 export 'src/components/grid.dart';
+export 'src/components/in_page_banner.dart';
 export 'src/components/indicator.dart';
 export 'src/components/menu_items.dart';
 export 'src/components/priority_pill.dart';
