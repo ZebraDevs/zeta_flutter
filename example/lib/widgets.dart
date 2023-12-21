@@ -60,11 +60,13 @@ class ExampleScaffold extends StatelessWidget {
   final String name;
   final Widget child;
   final List<Widget> actions;
+  final Widget? floatingActionButton;
 
   const ExampleScaffold({
     required this.name,
     required this.child,
     this.actions = const [],
+    this.floatingActionButton,
     super.key,
   });
 
@@ -74,6 +76,7 @@ class ExampleScaffold extends StatelessWidget {
     final colors = theme.colorScheme;
 
     return Scaffold(
+      floatingActionButton: floatingActionButton,
       appBar: AppBar(
         centerTitle: false,
         title: Text(name),

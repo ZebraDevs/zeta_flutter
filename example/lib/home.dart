@@ -11,6 +11,8 @@ import 'package:zeta_example/pages/badge_example.dart';
 import 'package:zeta_example/pages/button_example.dart';
 import 'package:zeta_example/pages/color_example.dart';
 import 'package:zeta_example/pages/checkbox_example.dart';
+import 'package:zeta_example/pages/fab_example/fab_example.dart';
+import 'package:zeta_example/pages/fab_example/primary_fab.dart';
 import 'package:zeta_example/pages/grid_example.dart';
 import 'package:zeta_example/pages/menu_items.dart';
 import 'package:zeta_example/pages/priority_pill_example.dart';
@@ -54,6 +56,14 @@ final List<Component> components = [
   Component(CheckBoxExample.name, (context) => const CheckBoxExample()),
   Component(AccordionExample.name, (context) => const AccordionExample()),
   Component(ButtonExample.name, (context) => const ButtonExample()),
+  Component(FABExample.name, (context) => const FABExample(), [
+    Component(FabPrimarySmallCircle.name, (context) => const FabPrimarySmallCircle()),
+    Component(FabPrimarySmallRounded.name, (context) => const FabPrimarySmallRounded()),
+    Component(FabPrimarySecondSmallSharp.name, (context) => const FabPrimarySecondSmallSharp()),
+    Component(FabPrimarySecondLargeCircle.name, (context) => const FabPrimarySecondLargeCircle()),
+    Component(FabInverseLargeRounded.name, (context) => const FabInverseLargeRounded()),
+    Component(FabInverseLargeSharp.name, (context) => const FabInverseLargeSharp()),
+  ]),
   Component(MenuItemsExample.name, (context) => const MenuItemsExample()),
 ];
 
