@@ -4,6 +4,7 @@ library zeta_flutter;
 export 'src/components/accordion.dart';
 export 'src/components/avatar.dart';
 export 'src/components/badge.dart';
+export 'src/components/bottom_sheet.dart';
 export 'src/components/button.dart';
 export 'src/components/checkbox.dart';
 export 'src/components/fab.dart';

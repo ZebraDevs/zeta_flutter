@@ -5,6 +5,7 @@ import 'package:zeta_flutter/zeta_flutter.dart';
 import 'components/accordion_widgetbook.dart';
 import 'components/avatar_widgetbook.dart';
 import 'components/badge_widgetbook.dart';
+import 'components/bottom_sheet_widgetbook.dart';
 import 'components/button_widgetbook.dart';
 import 'components/checkbox_widgetbook.dart';
 import 'components/color_widgetbook.dart';
@@ -48,7 +49,8 @@ class HotReload extends StatelessWidget {
                 inPageBannerWidgetBook(),
                 menuItemsWidgetBook(),
                 accordionWidgetBook(),
-                buttonWidgetBook()
+                buttonWidgetBook(),
+                bottomSheetWidgetBook(),
               ],
             ),
           ],
