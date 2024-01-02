@@ -1,3 +1,15 @@
+## [0.1.1+16] - 2024-01-02
+### :flying_saucer: Other Changes
+- [`225a059`](https://github.com/zebratechnologies/zeta-flutter/commit/225a059aa191f595db4982960c854c2e94c5bdc4) - create bottom sheet ([#45](https://github.com/zebratechnologies/zeta-flutter/pull/45))
+
+Co-authored-by: Atanas Yordanov <atanas.yordanov@athlonsofia.com>
+Co-authored-by: github-actions <github-actions@github.com> *(commit by [@atanasyordanov21](https://github.com/atanasyordanov21))*
+- [`656ca24`](https://github.com/zebratechnologies/zeta-flutter/commit/656ca2470112a171064f0d2d7477bf087a4f98bd) - Password input ([#47](https://github.com/zebratechnologies/zeta-flutter/pull/47))
+
+Co-authored-by: github-actions <github-actions@github.com>
+Co-authored-by: Atanas Yordanov <atanas.yordanov@athlonsofia.com> *(commit by [@genovevageorgieva](https://github.com/genovevageorgieva))*
+
+
 ## [0.1.1+15] - 2024-01-02
 ### :flying_saucer: Other Changes
 - [`36b9808`](https://github.com/zebratechnologies/zeta-flutter/commit/36b980896602320114c845b68a99a1c4c2e03ecb) - Page banner ([#40](https://github.com/zebratechnologies/zeta-flutter/pull/40))
@@ -1127,3 +1139,4 @@ Introduced license details for third-party libraries used in the project. MIT li
 [0.1.1+13]: https://github.com/zebratechnologies/zeta-flutter/compare/0.1.1+12...0.1.1+13
 [0.1.1+14]: https://github.com/zebratechnologies/zeta-flutter/compare/0.1.1+13...0.1.1+14
 [0.1.1+15]: https://github.com/zebratechnologies/zeta-flutter/compare/0.1.1+14...0.1.1+15
+[0.1.1+16]: https://github.com/zebratechnologies/zeta-flutter/compare/0.1.1+15...0.1.1+16

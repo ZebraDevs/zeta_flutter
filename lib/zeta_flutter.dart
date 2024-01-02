@@ -12,6 +12,7 @@ export 'src/components/grid.dart';
 export 'src/components/in_page_banner.dart';
 export 'src/components/indicator.dart';
 export 'src/components/menu_items.dart';
+export 'src/components/password_input.dart';
 export 'src/components/priority_pill.dart';
 export 'src/components/spacing.dart';
 export 'src/components/status_label.dart';
