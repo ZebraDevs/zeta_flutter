@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
-import 'package:zeta_example/pages/menu_items.dart';
+import 'package:zeta_example/pages/menu_items_example.dart';
 
 WidgetbookComponent menuItemsWidgetBook() {
   return WidgetbookComponent(

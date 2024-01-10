@@ -15,8 +15,9 @@ import 'package:zeta_example/pages/checkbox_example.dart';
 import 'package:zeta_example/pages/fab_example/fab_example.dart';
 import 'package:zeta_example/pages/fab_example/primary_fab.dart';
 import 'package:zeta_example/pages/grid_example.dart';
+import 'package:zeta_example/pages/chip_example.dart';
+import 'package:zeta_example/pages/menu_items_example.dart';
 import 'package:zeta_example/pages/in_page_banner_example.dart';
-import 'package:zeta_example/pages/menu_items.dart';
 import 'package:zeta_example/pages/password_input_example.dart';
 import 'package:zeta_example/pages/priority_pill_example.dart';
 import 'package:zeta_example/pages/icons_example.dart';
@@ -69,6 +70,7 @@ final List<Component> components = [
     Component(FabInverseLargeSharp.name, (context) => const FabInverseLargeSharp()),
   ]),
   Component(MenuItemsExample.name, (context) => const MenuItemsExample()),
+  Component(ChipExample.name, (context) => const ChipExample()),
   Component(PasswordInputExample.name, (context) => const PasswordInputExample()),
   Component(BottomSheetExample.name, (context) => const BottomSheetExample()),
 ];

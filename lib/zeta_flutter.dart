@@ -7,6 +7,7 @@ export 'src/components/badge.dart';
 export 'src/components/bottom_sheet.dart';
 export 'src/components/button.dart';
 export 'src/components/checkbox.dart';
+export 'src/components/chip.dart';
 export 'src/components/fab.dart';
 export 'src/components/grid.dart';
 export 'src/components/in_page_banner.dart';

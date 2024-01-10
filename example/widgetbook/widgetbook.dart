@@ -12,6 +12,7 @@ import 'components/color_widgetbook.dart';
 import 'components/grid_widgetbook.dart';
 import 'components/in_page_banner_widgetbook.dart';
 import 'components/indicator_widgetbook.dart';
+import 'components/chip_widgetbook.dart';
 import 'components/menu_items_widgetbook.dart';
 import 'components/password_input_widgetbook.dart';
 import 'components/priority_pill_widgetbook.dart';
@@ -50,6 +51,7 @@ class HotReload extends StatelessWidget {
                 inPageBannerWidgetBook(),
                 menuItemsWidgetBook(),
                 accordionWidgetBook(),
+                chipWidgetBook(),
                 buttonWidgetBook(),
                 passwordInputWidgetBook(),
                 bottomSheetWidgetBook(),
