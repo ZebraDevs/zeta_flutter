@@ -66,11 +66,7 @@ class ZetaBottomSheet extends StatelessWidget {
               alignment: titleAlignment ?? Alignment.center,
               child: Text(
                 title!,
-                style: ZetaText.zetaTitleLarge.copyWith(
-                  color: colors.textDefault,
-                  fontSize: 18,
-                  height: 1.33,
-                ),
+                style: ZetaTextStyles.titleMedium,
               ),
             ),
           body ?? const SizedBox(),

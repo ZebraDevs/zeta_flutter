@@ -25,7 +25,7 @@ class _IconsExampleState extends State<IconsExample> {
             padding: EdgeInsets.all(Dimensions.s),
             child: Column(
               children: [
-                ZetaText.bodyLarge('Round'),
+                Text('Round', style: ZetaTextStyles.bodyLarge),
                 Wrap(
                   spacing: 8,
                   runSpacing: 8,
@@ -518,7 +518,7 @@ class _IconsExampleState extends State<IconsExample> {
                   ],
                 ),
                 const SizedBox(height: 20),
-                ZetaText.bodyLarge('Sharp'),
+                Text('Sharp', style: ZetaTextStyles.bodyLarge),
                 Wrap(
                   spacing: 8,
                   runSpacing: 8,

@@ -155,9 +155,8 @@ class ZetaMenuItem extends StatelessWidget {
     }
   }
 
-  static TextStyle _defaultTextStyle(ZetaColors colors, bool disabled) => ZetaText.zetaLabelLarge.copyWith(
+  static TextStyle _defaultTextStyle(ZetaColors colors, bool disabled) => ZetaTextStyles.labelLarge.apply(
         color: disabled ? colors.textDisabled : colors.textDefault,
-        height: 1,
       );
 
   static IconThemeData _iconThemeData(ZetaColors colors, bool disabled, double size) => IconThemeData(

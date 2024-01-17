@@ -59,7 +59,7 @@ class ZetaPriorityPill extends StatelessWidget {
       ),
       child: Text(
         '$index',
-        style: ZetaText.zetaTitleSmall.apply(color: theme.colors.white),
+        style: ZetaTextStyles.bodyMedium.apply(color: theme.colors.white),
       ),
     );
   }
@@ -70,7 +70,7 @@ class ZetaPriorityPill extends StatelessWidget {
         padding: const EdgeInsets.fromLTRB(8, 4, 8, 4),
         child: Text(
           priority,
-          style: ZetaText.zetaTitleSmall,
+          style: ZetaTextStyles.bodyMedium,
           overflow: TextOverflow.ellipsis,
         ),
       ),

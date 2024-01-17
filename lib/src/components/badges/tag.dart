@@ -107,7 +107,7 @@ class ZetaTag extends StatelessWidget {
             ),
             child: Text(
               label,
-              style: ZetaText.zetaBodyMedium,
+              style: ZetaTextStyles.bodyMedium,
               overflow: TextOverflow.ellipsis,
             ),
           ),

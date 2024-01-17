@@ -105,7 +105,10 @@ class GridItem extends StatelessWidget {
       decoration: BoxDecoration(border: Border.all(color: colors.blue.border), color: colors.blue.surface),
       child: Padding(
         padding: const EdgeInsets.only(left: 8),
-        child: ZetaText.bodyLarge(label, textColor: colors.blue.text),
+        child: Text(
+          label,
+          style: ZetaTextStyles.bodyLarge.apply(color: colors.blue.text),
+        ),
       ),
     );
   }

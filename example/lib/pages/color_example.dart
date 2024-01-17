@@ -147,7 +147,7 @@ class _ColorExampleState extends State<ColorExample> {
                 MyRow(children: backdrop, title: 'Backdrop colors'),
                 MyRow(children: primaries, title: 'Primary colors'),
                 MyRow(children: alerts, title: 'Alert colors'),
-                Row(children: [ZetaText.displayMedium('Full color swatches')]).squish(Dimensions.x8),
+                Row(children: [Text('Full color swatches', style: ZetaTextStyles.displayMedium)]).squish(Dimensions.x8),
                 ...swatches.entries.map(
                   (value) => Row(
                     children: List.generate(10, (index) => 100 - (10 * index))
@@ -162,7 +162,7 @@ class _ColorExampleState extends State<ColorExample> {
                                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                   children: [
                                     DefaultTextStyle(
-                                      style: ZetaText.zetaBodyMedium
+                                      style: ZetaTextStyles.bodyMedium
                                           .copyWith(color: calculateTextColor(value.value[e] ?? Colors.white)),
                                       child: Column(
                                         children: [
@@ -185,7 +185,8 @@ class _ColorExampleState extends State<ColorExample> {
                   child: const Text('Toggle generated colors').square(Dimensions.s),
                 ).square(Dimensions.s),
                 if (showGeneratedColors)
-                  Row(children: [ZetaText.displayMedium('Generated color swatches')]).squish(Dimensions.x8),
+                  Row(children: [Text('Generated color swatches', style: ZetaTextStyles.displayMedium)])
+                      .squish(Dimensions.x8),
                 if (showGeneratedColors)
                   ...generatedSwatches.entries.map(
                     (value) => Row(
@@ -203,7 +204,7 @@ class _ColorExampleState extends State<ColorExample> {
                                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                           children: [
                                             DefaultTextStyle(
-                                              style: ZetaText.zetaBodyMedium
+                                              style: ZetaTextStyles.bodyMedium
                                                   .copyWith(color: calculateTextColor(value.value[e] ?? Colors.white)),
                                               child: Column(
                                                 children: [
@@ -251,7 +252,7 @@ class MyRow extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                ZetaText.labelLarge(title, textColor: Zeta.of(context).colors.textDefault),
+                Text(title, style: ZetaTextStyles.labelLarge),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,
@@ -268,7 +269,7 @@ class MyRow extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
                                 DefaultTextStyle(
-                                  style: ZetaText.zetaBodyMedium.copyWith(color: calculateTextColor(e.value)),
+                                  style: ZetaTextStyles.bodyMedium.copyWith(color: calculateTextColor(e.value)),
                                   child: Column(
                                     children: [
                                       Text(e.key),

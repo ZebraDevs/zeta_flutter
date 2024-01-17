@@ -25,7 +25,7 @@ import 'package:zeta_example/pages/indicator_example.dart';
 import 'package:zeta_example/pages/spacing_example.dart';
 import 'package:zeta_example/pages/status_label_example.dart';
 import 'package:zeta_example/pages/tag_example.dart';
-import 'package:zeta_example/pages/typography_example.dart';
+import 'package:zeta_example/pages/theme/typography_example.dart';
 import 'package:zeta_example/pages/workcloud_indicator_example.dart';
 import 'package:zeta_example/widgets.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
@@ -41,7 +41,6 @@ class Component {
 final List<Component> components = [
   Component(GridExample.name, (context) => const GridExample()),
   Component(SpacingExample.name, (context) => const SpacingExample()),
-  Component(TypographyExample.name, (context) => const TypographyExample()),
   Component(ColorExample.name, (context) => const ColorExample()),
   Component(AvatarExample.name, (context) => const AvatarExample()),
   Component(IconsExample.name, (context) => const IconsExample()),
@@ -75,6 +74,10 @@ final List<Component> components = [
   Component(BottomSheetExample.name, (context) => const BottomSheetExample()),
 ];
 
+final List<Component> theme = [
+  Component(TypographyExample.name, (context) => TypographyExample()),
+];
+
 class Home extends StatefulWidget {
   const Home({super.key});
 
@@ -89,17 +92,13 @@ final GoRouter router = GoRouter(
       name: 'Home',
       builder: (_, __) => const Home(),
       routes: [
-        ...components.map(
+        ...[...components, ...theme].map(
           (e) => GoRoute(
             path: e.name,
             name: e.name,
             builder: (_, __) => e.pageBuilder.call(_),
             routes: e.children
-                .map((f) => GoRoute(
-                      path: f.name,
-                      name: f.name,
-                      builder: (_, __) => f.pageBuilder(_),
-                    ))
+                .map((f) => GoRoute(path: f.name, name: f.name, builder: (_, __) => f.pageBuilder(_)))
                 .toList(),
           ),
         )
@@ -111,18 +110,30 @@ final GoRouter router = GoRouter(
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
-    final items = components..sort((a, b) => a.name.compareTo(b.name));
+    final _components = components..sort((a, b) => a.name.compareTo(b.name));
+    final _theme = theme..sort((a, b) => a.name.compareTo(b.name));
+
     return ExampleScaffold(
       name: 'Zeta',
-      child: ListView.builder(
-        padding: EdgeInsets.all(Dimensions.s),
-        itemCount: items.length,
-        itemBuilder: (context, index) {
-          return ListTile(
-            title: ZetaText(items[index].name),
-            onTap: () => context.go('/${items[index].name}'),
-          );
-        },
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            ExpansionTile(
+              title: Text('Widgets'),
+              backgroundColor: Zeta.of(context).colors.warm.shade30,
+              children: _components
+                  .map((item) => ListTile(title: Text(item.name), onTap: () => context.go('/${item.name}')))
+                  .toList(),
+            ),
+            ExpansionTile(
+              title: Text('Theme'),
+              backgroundColor: Zeta.of(context).colors.warm.shade30,
+              children: _theme
+                  .map((item) => ListTile(title: Text(item.name), onTap: () => context.go('/${item.name}')))
+                  .toList(),
+            ),
+          ],
+        ),
       ),
     );
   }

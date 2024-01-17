@@ -76,13 +76,7 @@ class ZetaSystemBanner extends StatelessWidget implements PreferredSizeWidget {
       leading: leading,
       automaticallyImplyLeading: automaticallyImplyLeading,
       title: DefaultTextStyle(
-        style: TextStyle(
-          fontSize: 16,
-          height: 1.5,
-          fontWeight: FontWeight.w500,
-          color: foregroundColor,
-          overflow: TextOverflow.ellipsis,
-        ),
+        style: ZetaTextStyles.titleSmall.apply(color: foregroundColor, overflow: TextOverflow.ellipsis),
         child: titleIcon == null
             ? title ?? const SizedBox()
             : Row(

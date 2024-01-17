@@ -92,25 +92,6 @@ class Dimensions {
   static const double xxxl = spacingBaseMultiplier * 24;
 }
 
-/// Tokens that are used for [ZetaText].
-class Typography {
-  /// Font family used across Zeta.
-  ///
-  /// Zeta library contains IBM Plex Sans with latin script.
-  /// In the case of non-latin languages, this can be overridden:
-  ///
-  /// Default text size.
-  ///
-  /// Defaults to [Dimensions.s].
-  static const double defaultTextSize = Dimensions.s;
-
-  /// Base text color.
-  // static const Color text = Color(0xFF1D1E23);
-  /// Subtle text color.
-  // static const Color subtleText = Color(0xFF545963);
-  // TODO(tokens): Work out how to do tokens properly
-}
-
 /// Tokens that are used for [ZetaGrid].
 class Grid {
   /// Maximum number of cols that can be displayed.

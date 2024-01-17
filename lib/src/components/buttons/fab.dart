@@ -215,8 +215,7 @@ class _ZetaFABState extends State<ZetaFAB> {
           ? BorderRadius.circular(Dimensions.x2)
           : BorderRadius.zero;
 
-  TextStyle _getTextStyle() =>
-      widget.buttonSize == ZetaFabSize.large ? ZetaText.zetaTitleLarge : ZetaText.zetaTitleMedium;
+  TextStyle _getTextStyle() => ZetaTextStyles.labelLarge;
 
   double _getButtonSize() => widget.buttonSize == ZetaFabSize.small ? Dimensions.x14 : Dimensions.x24;
 

@@ -37,10 +37,9 @@ class ZetaThemeContrastSwitch extends StatelessWidget {
             child: CircleAvatar(
               backgroundColor: colors.primary.surface,
               foregroundColor: colors.primary,
-              child: ZetaText.bodyMedium(
+              child: Text(
                 e == ZetaContrast.aa ? 'AA' : 'AAA',
-                textColor: colors.primary,
-                fontWeight: FontWeight.w700,
+                style: ZetaTextStyles.bodyMedium.copyWith(color: colors.primary, fontWeight: FontWeight.w700),
               ),
             ),
           );

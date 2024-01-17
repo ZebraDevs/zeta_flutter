@@ -199,10 +199,7 @@ class _ZetaAccordionSectionState extends State<ZetaAccordionSection> with Ticker
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   DefaultTextStyle(
-                    style: TextStyle(
-                      fontSize: 18,
-                      height: 1.33,
-                      fontWeight: FontWeight.w500,
+                    style: ZetaTextStyles.titleMedium.apply(
                       color: _disabled ? zetaColors.textDisabled : zetaColors.textDefault,
                     ),
                     child: Flexible(child: widget.title),
@@ -226,11 +223,7 @@ class _ZetaAccordionSectionState extends State<ZetaAccordionSection> with Ticker
             child: Padding(
               padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
               child: DefaultTextStyle(
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w500,
-                  color: zetaColors.textDefault,
-                ),
+                style: ZetaTextStyles.titleSmall,
                 child: widget.body,
               ),
             ),

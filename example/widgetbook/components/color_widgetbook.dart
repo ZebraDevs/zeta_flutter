@@ -72,7 +72,8 @@ WidgetbookComponent colorWidgetBook() {
                           MyRow(children: links, title: 'Links'),
                           MyRow(children: backdrop, title: 'Backdrop colors'),
                           MyRow(children: alerts, title: 'Alert colors'),
-                          Row(children: [ZetaText.displayMedium('Full color swatches')]).squish(Dimensions.x8),
+                          Row(children: [Text('Full color swatches', style: ZetaTextStyles.displayMedium)])
+                              .squish(Dimensions.x8),
                           ...swatches.entries.map(
                             (value) {
                               return Row(
@@ -88,7 +89,7 @@ WidgetbookComponent colorWidgetBook() {
                                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                             children: [
                                               DefaultTextStyle(
-                                                style: ZetaText.zetaBodyMedium.copyWith(
+                                                style: ZetaTextStyles.bodyMedium.copyWith(
                                                   color: calculateTextColor(value.value[e] ?? Colors.white),
                                                 ),
                                                 child: Column(

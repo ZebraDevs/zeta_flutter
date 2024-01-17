@@ -6,7 +6,7 @@ import 'package:zeta_flutter/zeta_flutter.dart';
 WidgetbookComponent inPageBannerWidgetBook() {
   Widget _getTitle(String title) => Container(
         height: 50,
-        child: Center(child: Text(title, style: ZetaText.zetaTitleLarge)),
+        child: Center(child: Text(title, style: ZetaTextStyles.titleLarge)),
       );
 
   ZetaWidgetColor _getCustomColors() =>
