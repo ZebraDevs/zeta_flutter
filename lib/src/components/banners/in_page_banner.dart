@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import '../../zeta_flutter.dart';
+import '../../../zeta_flutter.dart';
 
 ///[ZetaInPageBanner] button attributes
 class ZetaPageBannerButton {
@@ -43,7 +43,7 @@ class ZetaInPageBanner extends StatelessWidget {
   ///Defaults to 'neutral'
   final WidgetSeverity severity;
 
-  ///Determines if the banner hase icon for closing
+  ///Determines if the banner has icon for closing
   ///Defaults to true
   final bool showIconClose;
 

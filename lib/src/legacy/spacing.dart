@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 
-import '../tokens.dart';
+import '../theme/tokens.dart';
 
 /// Spacing types for [ZetaSpacing].
 

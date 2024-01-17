@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../../zeta_flutter.dart';
-import '../tokens.dart' as tokens;
+import '../theme/tokens.dart' as tokens;
 
 /// {@template zeta-component-text}
 /// ZetaText component.

@@ -48,7 +48,7 @@ jobs:
       - name: push change
         id: update
         run: |
-          git remote set-url origin https://${{ secrets.PAT}}@github.com/zebratechnologies/zeta-flutter.git
+          git remote set-url origin https://${{ secrets.PERSONAL_ACCESS_TOKEN}}@github.com/zebratechnologies/zeta-flutter.git
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
           git add -A
@@ -81,7 +81,7 @@ jobs:
         id: changelog
         uses: requarks/changelog-action@v1
         with:
-          token: ${{ secrets.PAT }}
+          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           tag: ${{ steps.read-version.outputs.version-number }}
           excludeTypes: ""
           includeInvalidCommits: true
@@ -91,7 +91,7 @@ jobs:
       - name: Update changes in zeta-flutter repository
         if: env.modified == 'true'
         run: |
-          git remote set-url origin https://${{ secrets.PAT}}@github.com/zebratechnologies/zeta-flutter.git
+          git remote set-url origin https://${{ secrets.PERSONAL_ACCESS_TOKEN}}@github.com/zebratechnologies/zeta-flutter.git
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
           git add -A
@@ -102,7 +102,7 @@ jobs:
       - name: Push changelog to Zeta
         uses: dmnemec/copy_file_to_another_repo_action@main
         env:
-          API_TOKEN_GITHUB: ${{ secrets.PAT }}
+          API_TOKEN_GITHUB: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
         with:
           source_file: "CHANGELOG_FLUTTER.md"
           destination_repo: "zebratechnologies/zeta"
@@ -111,26 +111,3 @@ jobs:
           user_email: "github-actions@github.com"
           user_name: "github-actions"
           commit_message: "flutter changelog"
-      - name: Push docs to Zeta
-        uses: dmnemec/copy_file_to_another_repo_action@main
-        env:
-          API_TOKEN_GITHUB: ${{ secrets.PAT }}
-        with:
-          source_file: "custom-docs/"
-          destination_repo: "zebratechnologies/zeta"
-          destination_folder: "./"
-          destination_branch: "flutter/${{ steps.read-version.outputs.version-number }}"
-          user_email: "github-actions@github.com"
-          user_name: "github-actions"
-          commit_message: "flutter doc"
-      - name: Open Zeta PR
-        uses: thecanadianroot/open-pull-request-action@v1.0.3
-        with:
-          token: ${{secrets.PAT}}
-          base: main
-          head: "flutter/${{ steps.read-version.outputs.version-number }}"
-          title: "flutter/${{ steps.read-version.outputs.version-number }}"
-          labels: flutter
-          reviewers: benken
-          owner: zebratechnologies
-          repository: zebratechnologies/zeta

@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import '../../zeta_flutter.dart';
+import '../../../zeta_flutter.dart';
 
 ///Extension for password visibility state handling
 extension on ValueNotifier<bool> {

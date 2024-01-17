@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../theme/breakpoints.dart';
-import '../tokens.dart' as tokens;
+import '../theme/tokens.dart' as tokens;
 
 import '../utils/extensions.dart';
 
