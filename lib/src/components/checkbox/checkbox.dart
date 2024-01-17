@@ -10,7 +10,6 @@ class ZetaCheckbox extends StatelessWidget {
     required this.onChanged,
     this.borderType = BorderType.sharp,
     this.label,
-    this.labelStyle,
     this.checkboxSize = const Size(20, 20),
     this.selectedColor,
     this.unselectedColor,
@@ -35,9 +34,6 @@ class ZetaCheckbox extends StatelessWidget {
 
   /// The label displayed next to the checkbox
   final String? label;
-
-  /// Style to use on the label
-  final TextStyle? labelStyle;
 
   ///Size of the checkbox
   final Size checkboxSize;
@@ -106,10 +102,7 @@ class ZetaCheckbox extends StatelessWidget {
           Flexible(
             child: Padding(
               padding: const EdgeInsets.only(left: Dimensions.s),
-              child: Text(
-                label!,
-                style: labelStyle ?? ZetaText.zetaBodyLarge,
-              ),
+              child: Text(label!, style: ZetaTextStyles.bodyLarge),
             ),
           ),
         ],
@@ -190,7 +183,6 @@ class ZetaCheckbox extends StatelessWidget {
       ..add(ObjectFlagProperty<ValueChanged<bool?>>.has('onChanged', onChanged))
       ..add(EnumProperty<BorderType>('borderType', borderType))
       ..add(StringProperty('label', label))
-      ..add(DiagnosticsProperty<TextStyle?>('labelStyle', labelStyle))
       ..add(DiagnosticsProperty<Size>('checkboxSize', checkboxSize))
       ..add(ColorProperty('selectedColor', selectedColor))
       ..add(ColorProperty('unselectedColor', unselectedColor))

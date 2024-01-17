@@ -203,7 +203,7 @@ class ZetaButton extends StatelessWidget {
   BorderRadius _getBorderRadius() =>
       borderType == BorderType.rounded ? BorderRadius.circular(Dimensions.x1) : BorderRadius.zero;
 
-  TextStyle _getTextStyle() => size == ZetaWidgetSize.small ? ZetaText.zetaLabelMedium : ZetaText.zetaLabelLarge;
+  TextStyle _getTextStyle() => size == ZetaWidgetSize.small ? ZetaTextStyles.labelMedium : ZetaTextStyles.labelLarge;
 
   double _iconSize() => size == ZetaWidgetSize.small ? Dimensions.x4 : Dimensions.x5;
 

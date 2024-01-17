@@ -19,12 +19,12 @@ class TestWidget extends StatelessWidget {
               theme: ThemeData(
                 fontFamily: theme.fontFamily,
                 colorScheme: theme.colorsLight.toScheme(),
-                textTheme: ZetaText.textTheme,
+                textTheme: zetaTextTheme,
               ),
               darkTheme: ThemeData(
                 fontFamily: theme.fontFamily,
                 colorScheme: theme.colorsDark.toScheme(),
-                textTheme: ZetaText.textTheme,
+                textTheme: zetaTextTheme,
               ),
               home: Scaffold(
                 body: SizedBox(

@@ -58,7 +58,7 @@ class InPageBannerExample extends StatelessWidget {
 
   Widget _getTitle(String title) => Container(
         height: 50,
-        child: Center(child: Text(title, style: ZetaText.zetaTitleLarge)),
+        child: Center(child: Text(title, style: ZetaTextStyles.titleLarge)),
       );
 }
 

@@ -138,7 +138,7 @@ class _ZetaPasswordInputState extends State<ZetaPasswordInput> {
   Widget _buildLabel() {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: Dimensions.x1),
-      child: Text(widget.label!, style: ZetaText.zetaBodyMedium),
+      child: Text(widget.label!, style: ZetaTextStyles.bodyMedium),
     );
   }
 
@@ -208,7 +208,7 @@ class _ZetaPasswordInputState extends State<ZetaPasswordInput> {
           if (_errorMessage == null && widget.footerText != null) ...[
             Text(
               widget.footerText!,
-              style: ZetaText.zetaBodySmall.copyWith(
+              style: ZetaTextStyles.bodySmall.apply(
                 color: widget.enabled ? colors.hintColor : colors.hintDisableColor,
               ),
             ),
@@ -228,7 +228,7 @@ class _ZetaPasswordInputState extends State<ZetaPasswordInput> {
       const SizedBox(width: Dimensions.x1),
       Text(
         _errorMessage!,
-        style: ZetaText.zetaBodySmall.copyWith(color: color),
+        style: ZetaTextStyles.bodySmall.apply(color: color),
       ),
     ];
   }
@@ -268,8 +268,8 @@ class _ZetaPasswordInputState extends State<ZetaPasswordInput> {
   }
 
   TextStyle _getTextStyle() {
-    if (widget.size == ZetaWidgetSize.small) return ZetaText.zetaBodySmall;
-    return ZetaText.zetaBodyMedium;
+    if (widget.size == ZetaWidgetSize.small) return ZetaTextStyles.bodyMedium;
+    return ZetaTextStyles.bodyLarge;
   }
 
   double _getSuffixIconSize() {

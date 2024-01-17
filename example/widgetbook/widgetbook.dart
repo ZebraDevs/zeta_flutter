@@ -19,8 +19,8 @@ import 'components/priority_pill_widgetbook.dart';
 import 'components/spacing_widgetbook.dart';
 import 'components/status_label_widgetbook.dart';
 import 'components/tag_widgetbook.dart';
-import 'components/typography_widgetbook.dart';
 import 'components/workcloud_indicator_widgetbook.dart';
+import 'theme/typography_widgetbook.dart';
 import 'utils/zebra.dart';
 
 class HotReload extends StatelessWidget {
@@ -33,11 +33,10 @@ class HotReload extends StatelessWidget {
         return Widgetbook.material(
           directories: [
             WidgetbookCategory(
-              name: 'widgets',
+              name: 'Components',
               children: [
                 gridWidgetBook(),
                 spacingWidgetbook(),
-                textWidgetBook(),
                 colorWidgetBook(),
                 statusLabelWidgetBook(),
                 tagWidgetBook(),
@@ -55,6 +54,12 @@ class HotReload extends StatelessWidget {
                 buttonWidgetBook(),
                 passwordInputWidgetBook(),
                 bottomSheetWidgetBook(),
+              ],
+            ),
+            WidgetbookCategory(
+              name: 'Theme',
+              children: [
+                textWidgetBook(),
               ],
             ),
           ],

@@ -73,20 +73,22 @@ Widget sharpButtonsExample(BuildExampleButtonColors colors) => Column(
 List<Widget> _getZetaButtonExampleRows(String label, ZetaButtonColors colors,
     {IconData? icon, ZetaButtonType buttonType = ZetaButtonType.filled, BorderType border = BorderType.rounded}) {
   return [
-    Row(mainAxisAlignment: MainAxisAlignment.center, children: [Text('Large $label', style: ZetaText.zetaTitleLarge)]),
+    Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [Text('Large $label', style: ZetaTextStyles.titleLarge)]),
     Divider(color: Colors.transparent),
     _getRow(buttonType, ZetaWidgetSize.large, colors, border: border, icon: icon),
     Divider(color: Colors.transparent),
     _getRow(buttonType, ZetaWidgetSize.large, colors, isDisabled: true, border: border, icon: icon),
     Row(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: [Padding(padding: EdgeInsets.all(10), child: Text('Medium $label', style: ZetaText.zetaTitleLarge))],
+      children: [Padding(padding: EdgeInsets.all(10), child: Text('Medium $label', style: ZetaTextStyles.titleLarge))],
     ),
     _getRow(buttonType, ZetaWidgetSize.medium, colors, border: border, icon: icon),
     _getRow(buttonType, ZetaWidgetSize.medium, colors, isDisabled: true, border: border, icon: icon),
     Row(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: [Padding(padding: EdgeInsets.all(10), child: Text('Small $label', style: ZetaText.zetaTitleLarge))],
+      children: [Padding(padding: EdgeInsets.all(10), child: Text('Small $label', style: ZetaTextStyles.titleLarge))],
     ),
     _getRow(buttonType, ZetaWidgetSize.small, colors, border: border, icon: icon),
     _getRow(buttonType, ZetaWidgetSize.small, colors, isDisabled: true, border: border, icon: icon),

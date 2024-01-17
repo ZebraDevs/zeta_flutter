@@ -220,17 +220,12 @@ class _InnerContent extends StatelessWidget {
         );
       case ZetaIndicatorType.notification:
         final strVal = value == null ? '' : value!.abs().toString();
-        final fontSize = _getFontSize(size);
+
         return Center(
           child: Text(
             strVal.length > 1 ? '9+' : strVal,
             textAlign: strVal.length == 1 ? TextAlign.center : TextAlign.right,
-            style: TextStyle(
-              fontSize: fontSize,
-              height: .9,
-              letterSpacing: -0.5,
-              color: foregroundColor ?? defaultColor,
-            ),
+            style: size == ZetaIndicatorSize.large ? ZetaTextStyles.labelIndicator : ZetaTextStyles.labelTiny,
           ),
         );
     }
@@ -242,17 +237,6 @@ class _InnerContent extends StatelessWidget {
         return 11;
       case ZetaIndicatorSize.medium:
         return 8;
-      case ZetaIndicatorSize.small:
-        return 1;
-    }
-  }
-
-  double _getFontSize(ZetaIndicatorSize size) {
-    switch (size) {
-      case ZetaIndicatorSize.large:
-        return 12;
-      case ZetaIndicatorSize.medium:
-        return 11;
       case ZetaIndicatorSize.small:
         return 1;
     }

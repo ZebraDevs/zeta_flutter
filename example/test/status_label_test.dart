@@ -42,7 +42,7 @@ class TestWidgetStatusLabel extends StatelessWidget {
           return MaterialApp(
             theme: ThemeData(
               fontFamily: theme.fontFamily,
-              textTheme: ZetaText.textTheme,
+              textTheme: zetaTextTheme,
             ),
             home: Scaffold(
               body: widget,

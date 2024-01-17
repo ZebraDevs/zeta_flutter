@@ -104,8 +104,8 @@ class ZetaChip extends StatelessWidget {
       backgroundColor: bgColor,
       label: Text(label, textAlign: TextAlign.center),
       labelStyle: type == ZetaChipType.status
-          ? ZetaText.zetaBodyXSmall
-          : ZetaText.zetaBodySmall.apply(color: selected ? colors.textInverse : colors.textDefault),
+          ? ZetaTextStyles.bodySmall // TODO(thelukewalton): this doesnt match styles on figma. Awaiting design refresh.
+          : ZetaTextStyles.bodyMedium.apply(color: selected ? colors.textInverse : colors.textDefault),
       labelPadding: type == ZetaChipType.status
           ? const EdgeInsets.symmetric(horizontal: 10)
           : EdgeInsets.fromLTRB(

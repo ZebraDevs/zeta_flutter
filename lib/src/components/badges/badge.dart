@@ -65,7 +65,7 @@ class ZetaBadge extends StatelessWidget {
             padding: const EdgeInsets.fromLTRB(4, 2, 4, 2),
             child: Text(
               label,
-              style: ZetaText.zetaLabelSmall.apply(color: _badgeForegroundColor(theme)),
+              style: ZetaTextStyles.labelSmall.apply(color: _badgeForegroundColor(theme)),
               overflow: TextOverflow.ellipsis,
             ),
           ),

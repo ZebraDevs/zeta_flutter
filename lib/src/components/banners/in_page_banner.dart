@@ -164,7 +164,7 @@ class ZetaInPageBanner extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.only(left: hasTitle ? Dimensions.x7 : Dimensions.x0),
           child: DefaultTextStyle(
-            style: ZetaText.zetaBodySmall.apply(color: theme.colors.textDefault),
+            style: ZetaTextStyles.bodyMedium,
             child: content,
           ),
         ),
@@ -187,7 +187,7 @@ class ZetaInPageBanner extends StatelessWidget {
   Widget _buildTitle() => Flexible(
         child: Text(
           title!,
-          style: ZetaText.zetaTitleMedium,
+          style: ZetaTextStyles.titleSmall,
           softWrap: true,
           overflow: TextOverflow.ellipsis,
         ),

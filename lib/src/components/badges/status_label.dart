@@ -86,7 +86,7 @@ class ZetaStatusLabel extends StatelessWidget {
           Flexible(
             child: Text(
               label,
-              style: ZetaText.zetaTitleSmall,
+              style: ZetaTextStyles.bodyMedium,
               overflow: TextOverflow.ellipsis,
             ),
           ),

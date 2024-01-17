@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:zeta_example/pages/typography_example.dart';
+import 'package:zeta_example/pages/theme/typography_example.dart';
+
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 import 'test_components.dart';
@@ -18,23 +19,14 @@ void main() {
           builder: (context) {
             return Column(
               children: [
-                const ZetaText(exampleText, key: key1),
-                ZetaText(
+                const Text(exampleText, key: key1),
+                Text(exampleText, style: ZetaTextStyles.bodyMedium, key: key2),
+                Text(exampleText, style: ZetaTextStyles.displayLarge, key: key3),
+                Text(
                   exampleText,
-                  maxWidth: 66,
-                  decoration: TextDecoration.underline,
-                  key: key2,
-                  upperCase: true,
-                  fontSize: 100,
-                  fontStyle: FontStyle.italic,
-                  fontWeight: FontWeight.w500,
-                  textColor: Zeta.of(context).colors.textSubtle,
-                  textDirection: TextDirection.rtl,
-                  first: true,
-                  last: true,
+                  style: TextStyle(fontSize: 52, fontWeight: FontWeight.w300, height: 64 / 52),
+                  key: key4,
                 ),
-                ZetaText(exampleText, style: ZetaText.zetaHeadingLarge, key: key3),
-                ZetaText.headingLarge(exampleText, key: key4),
               ],
             );
           },
@@ -56,46 +48,19 @@ void main() {
     final InlineSpan text4 =
         (find.descendant(of: zetaText4, matching: find.byType(RichText)).evaluate().first.widget as RichText).text;
 
-    final Padding padding1 =
-        find.descendant(of: zetaText1, matching: find.byType(Padding)).evaluate().first.widget as Padding;
-    final Padding padding2 =
-        find.descendant(of: zetaText2, matching: find.byType(Padding)).evaluate().first.widget as Padding;
+    /// Test default in [Text] widget is [ZetaTextStyles.bodyMedium].
+    expect(text1.style, text2.style);
 
-    final item1Size = tester.getSize(zetaText1);
-    final item2Size = tester.getSize(zetaText2);
+    /// Test that [ZetaTextStyles.displayLarge] has not changed.
+    expect(text3.style, text4.style);
 
-    expect(item1Size == item2Size, false);
-    expect(item2Size.width.floor(), 800);
-    expect(
-      TextStyle(
-        fontSize: text1.style?.fontSize,
-        height: text1.style?.height,
-        fontWeight: text1.style?.fontWeight,
-      ),
-      ZetaText.zetaBodyMedium,
-    );
-    expect(
-      TextStyle(
-            fontSize: text2.style?.fontSize,
-            height: text2.style?.height,
-            fontWeight: text2.style?.fontWeight,
-          ) ==
-          ZetaText.zetaBodyMedium,
-      false,
-    );
-    expect(text1.style?.fontFamily, 'packages/zeta_flutter/IBMPlexSans');
-    expect(text1.style?.color, const Color(0xFF1D1E23));
+    /// Test font size of [ZetaTextStyles.bodyMedium] is correct
+    expect(text1.style!.fontSize, 14);
 
-    expect(text1.style?.decoration, TextDecoration.none);
-    expect(text1.toPlainText(), exampleText);
-    expect(text2.toPlainText(), exampleText.toUpperCase());
-    expect(text2.style?.decoration, TextDecoration.underline);
-    expect(text2.style?.fontSize, 100);
-    expect(text2.style?.fontStyle, FontStyle.italic);
-    expect(text2.style?.fontWeight, FontWeight.w500);
-    expect(text2.style?.color, const Color(0xFF545963));
-    expect(padding1.padding, Dimensions.x2.squish);
-    expect(padding2.padding, EdgeInsets.zero);
-    expect(text3, text4);
+    /// Test line height of [ZetaTextStyles.bodyMedium] is correct
+    expect(text1.style!.height, 20 / 14);
+
+    /// Test font weight of [ZetaTextStyles.bodyMedium] is correct
+    expect(text1.style!.fontWeight, FontWeight.w400);
   });
 }

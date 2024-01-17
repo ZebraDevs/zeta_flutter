@@ -105,7 +105,7 @@ class ZetaWorkcloudIndicator extends StatelessWidget {
             Dimensions.x2,
             Dimensions.x1,
           ),
-          child: Text(labelContent, style: ZetaText.zetaBodyXSmall),
+          child: Text(labelContent, style: ZetaTextStyles.bodySmall),
         ),
       ),
     );
@@ -262,8 +262,8 @@ class _ZetaWorkcloudIndicatorStyle {
   }
 
   static TextStyle getTextStyle(ZetaWidgetSize size, Zeta theme) {
-    if (size == ZetaWidgetSize.large) return ZetaText.zetaBodyMedium;
-    return ZetaText.zetaBodySmall;
+    if (size == ZetaWidgetSize.large) return ZetaTextStyles.bodyMedium;
+    return ZetaTextStyles.bodySmall;
   }
 
   static EdgeInsets getEdgeInsets(ZetaWidgetSize size) {
