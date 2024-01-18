@@ -147,7 +147,8 @@ class _ColorExampleState extends State<ColorExample> {
                 MyRow(children: backdrop, title: 'Backdrop colors'),
                 MyRow(children: primaries, title: 'Primary colors'),
                 MyRow(children: alerts, title: 'Alert colors'),
-                Row(children: [Text('Full color swatches', style: ZetaTextStyles.displayMedium)]).squish(Dimensions.x8),
+                Row(children: [Text('Full color swatches', style: ZetaTextStyles.displayMedium)])
+                    .paddingVertical(Dimensions.x8),
                 ...swatches.entries.map(
                   (value) => Row(
                     children: List.generate(10, (index) => 100 - (10 * index))
@@ -182,11 +183,11 @@ class _ColorExampleState extends State<ColorExample> {
                 ),
                 ElevatedButton(
                   onPressed: () => setState(() => showGeneratedColors = !showGeneratedColors),
-                  child: const Text('Toggle generated colors').square(Dimensions.s),
-                ).square(Dimensions.s),
+                  child: const Text('Toggle generated colors').paddingAll(Dimensions.s),
+                ).paddingAll(Dimensions.s),
                 if (showGeneratedColors)
                   Row(children: [Text('Generated color swatches', style: ZetaTextStyles.displayMedium)])
-                      .squish(Dimensions.x8),
+                      .paddingVertical(Dimensions.x8),
                 if (showGeneratedColors)
                   ...generatedSwatches.entries.map(
                     (value) => Row(

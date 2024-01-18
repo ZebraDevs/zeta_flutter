@@ -39,7 +39,7 @@ class ExampleBuilder extends StatelessWidget {
             height: 7,
             width: 7,
             decoration: BoxDecoration(color: Theme.of(context).colorScheme.onSurface, shape: BoxShape.circle),
-          ).squish(Dimensions.x9).inline(Dimensions.x4),
+          ).paddingVertical(Dimensions.x9).paddingHorizontal(Dimensions.x4),
         if (model.title != null && MediaQuery.of(context).size.width > 767) Expanded(child: Text(model.title!)),
         Expanded(
           flex: 5,
@@ -56,7 +56,7 @@ class ExampleBuilder extends StatelessWidget {
             ],
           ),
         ),
-        const SizedBox(height: 7, width: 7).squish(Dimensions.x9).inline(Dimensions.x4),
+        const SizedBox(height: 7, width: 7).paddingVertical(Dimensions.x9).paddingHorizontal(Dimensions.x4),
       ],
     );
   }
@@ -116,7 +116,7 @@ class CodeExample extends StatelessWidget {
     final colors = Zeta.of(context).colors;
     final widget = Container(
       color: colors.surfaceDisabled,
-      padding: Dimensions.x4.square,
+      padding: EdgeInsets.all(Dimensions.x4),
       child: Text(code, style: GoogleFonts.ibmPlexMono(color: colors.textDefault)),
     );
 
@@ -134,6 +134,6 @@ class CodeExample extends StatelessWidget {
                 ],
               )
             : widget)
-        .squish(Dimensions.x4);
+        .paddingVertical(Dimensions.x4);
   }
 }

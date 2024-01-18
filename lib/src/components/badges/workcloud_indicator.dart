@@ -140,7 +140,7 @@ class ZetaWorkcloudIndicator extends StatelessWidget {
         children: [
           _buildPriorityPillIndex(size, colors, textStyle, theme),
           if (prioritySize != ZetaWidgetSize.small) ...[
-            _buildPriorityPillLabel(size, textStyle, padding),
+            _buildPriorityPillLabel(textStyle, padding),
           ],
         ],
       ),
@@ -172,12 +172,10 @@ class ZetaWorkcloudIndicator extends StatelessWidget {
   }
 
   Widget _buildPriorityPillLabel(
-    double size,
     TextStyle textStyle,
     EdgeInsets padding,
   ) {
     return Container(
-      height: size,
       constraints: const BoxConstraints(minWidth: 34),
       child: Padding(
         padding: padding,

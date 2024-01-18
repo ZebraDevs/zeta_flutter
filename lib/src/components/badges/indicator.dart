@@ -225,7 +225,9 @@ class _InnerContent extends StatelessWidget {
           child: Text(
             strVal.length > 1 ? '9+' : strVal,
             textAlign: strVal.length == 1 ? TextAlign.center : TextAlign.right,
-            style: size == ZetaIndicatorSize.large ? ZetaTextStyles.labelIndicator : ZetaTextStyles.labelTiny,
+            style: (size == ZetaIndicatorSize.large ? ZetaTextStyles.labelIndicator : ZetaTextStyles.labelTiny).apply(
+              color: Zeta.of(context).colors.white,
+            ),
           ),
         );
     }

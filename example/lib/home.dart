@@ -14,7 +14,6 @@ import 'package:zeta_example/pages/color_example.dart';
 import 'package:zeta_example/pages/checkbox_example.dart';
 import 'package:zeta_example/pages/fab_example/fab_example.dart';
 import 'package:zeta_example/pages/fab_example/primary_fab.dart';
-import 'package:zeta_example/pages/grid_example.dart';
 import 'package:zeta_example/pages/chip_example.dart';
 import 'package:zeta_example/pages/menu_items_example.dart';
 import 'package:zeta_example/pages/in_page_banner_example.dart';
@@ -22,7 +21,6 @@ import 'package:zeta_example/pages/password_input_example.dart';
 import 'package:zeta_example/pages/priority_pill_example.dart';
 import 'package:zeta_example/pages/icons_example.dart';
 import 'package:zeta_example/pages/indicator_example.dart';
-import 'package:zeta_example/pages/spacing_example.dart';
 import 'package:zeta_example/pages/status_label_example.dart';
 import 'package:zeta_example/pages/tag_example.dart';
 import 'package:zeta_example/pages/theme/typography_example.dart';
@@ -39,8 +37,6 @@ class Component {
 }
 
 final List<Component> components = [
-  Component(GridExample.name, (context) => const GridExample()),
-  Component(SpacingExample.name, (context) => const SpacingExample()),
   Component(ColorExample.name, (context) => const ColorExample()),
   Component(AvatarExample.name, (context) => const AvatarExample()),
   Component(IconsExample.name, (context) => const IconsExample()),

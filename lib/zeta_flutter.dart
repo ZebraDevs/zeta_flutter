@@ -19,8 +19,6 @@ export 'src/components/buttons/fab.dart';
 export 'src/components/checkbox/checkbox.dart';
 export 'src/components/chip/chip.dart';
 export 'src/components/password/password_input.dart';
-export 'src/legacy/grid.dart';
-export 'src/legacy/spacing.dart';
 export 'src/theme/color_extensions.dart';
 export 'src/theme/color_scheme.dart';
 export 'src/theme/color_swatch.dart';

@@ -73,7 +73,7 @@ WidgetbookComponent colorWidgetBook() {
                           MyRow(children: backdrop, title: 'Backdrop colors'),
                           MyRow(children: alerts, title: 'Alert colors'),
                           Row(children: [Text('Full color swatches', style: ZetaTextStyles.displayMedium)])
-                              .squish(Dimensions.x8),
+                              .paddingVertical(Dimensions.x8),
                           ...swatches.entries.map(
                             (value) {
                               return Row(

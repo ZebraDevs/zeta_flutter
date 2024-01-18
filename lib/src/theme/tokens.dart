@@ -1,8 +1,8 @@
-import '../../../zeta_flutter.dart';
-
-/// Tokens that are used for [ZetaSpacing].
+/// Tokens that are used for Spacing.
 ///
 /// Values are doubles, and can be used for padding, margins and other spacings.
+///
+// TODO(thelukewalton): Refactor to match latest designs.
 class Dimensions {
   /// Base multiplier used to calculate spacing values.
   static const double spacingBaseMultiplier = 4;
@@ -90,25 +90,4 @@ class Dimensions {
 
   /// 96dp space.
   static const double xxxl = spacingBaseMultiplier * 24;
-}
-
-/// Tokens that are used for [ZetaGrid].
-class Grid {
-  /// Maximum number of cols that can be displayed.
-  static const double maxCols = 16;
-
-  /// Default number of cols.
-  static const double defaultCols = 12;
-
-  /// Default margin for grid component.
-  static const double gridMargin = Dimensions.x6;
-
-  /// Number of columns to show on a portrait mobile, as defined in [DeviceType.mobilePortrait].
-  static const mobilePortraitCount = 2;
-
-  /// Number of columns to show on a landscape mobile, as defined in [DeviceType.mobileLandscape].
-  static const mobileLandscapeCount = 4;
-
-  /// Number of columns to show on a tablet, as defined in [DeviceType.tablet].
-  static const tabletCount = 8;
 }

@@ -9,14 +9,12 @@ import 'components/bottom_sheet_widgetbook.dart';
 import 'components/button_widgetbook.dart';
 import 'components/checkbox_widgetbook.dart';
 import 'components/color_widgetbook.dart';
-import 'components/grid_widgetbook.dart';
 import 'components/in_page_banner_widgetbook.dart';
 import 'components/indicator_widgetbook.dart';
 import 'components/chip_widgetbook.dart';
 import 'components/menu_items_widgetbook.dart';
 import 'components/password_input_widgetbook.dart';
 import 'components/priority_pill_widgetbook.dart';
-import 'components/spacing_widgetbook.dart';
 import 'components/status_label_widgetbook.dart';
 import 'components/tag_widgetbook.dart';
 import 'components/workcloud_indicator_widgetbook.dart';
@@ -35,8 +33,6 @@ class HotReload extends StatelessWidget {
             WidgetbookCategory(
               name: 'Components',
               children: [
-                gridWidgetBook(),
-                spacingWidgetbook(),
                 colorWidgetBook(),
                 statusLabelWidgetBook(),
                 tagWidgetBook(),

@@ -1,3 +1,9 @@
+## [0.1.1+21] - 2024-01-18
+### :sparkles: New Features
+- [`6ae1269`](https://github.com/zebratechnologies/zeta-flutter/commit/6ae1269422180bbf2ecbfd05814969bfcbb725f1) - Update text styles to match latest designs *(PR [#50](https://github.com/zebratechnologies/zeta-flutter/pull/50) by [@thelukewalton](https://github.com/thelukewalton))*
+- [`977d7e6`](https://github.com/zebratechnologies/zeta-flutter/commit/977d7e6f7cb0c2b67085ab40f5cf1d410e5680c8) - Remove legacy code *(PR [#51](https://github.com/zebratechnologies/zeta-flutter/pull/51) by [@thelukewalton](https://github.com/thelukewalton))*
+
+
 ## [0.1.1+20] - 2024-01-17
 ### :sparkles: New Features
 - [`35d1d7e`](https://github.com/zebratechnologies/zeta-flutter/commit/35d1d7eed509d4b89593c17e2a48a4a2c79a6ce4) - Update text styles to match latest designs *(PR [#50](https://github.com/zebratechnologies/zeta-flutter/pull/50) by [@thelukewalton](https://github.com/thelukewalton))*
@@ -1725,3 +1731,4 @@ Introduced license details for third-party libraries used in the project. MIT li
 [0.1.1+18]: https://github.com/zebratechnologies/zeta-flutter/compare/0.1.1+17...0.1.1+18
 [0.1.1+19]: https://github.com/zebratechnologies/zeta-flutter/compare/0.1.1+18...0.1.1+19
 [0.1.1+20]: https://github.com/zebratechnologies/zeta-flutter/compare/0.1.1+19...0.1.1+20
+[0.1.1+21]: https://github.com/zebratechnologies/zeta-flutter/compare/0.1.1+20...0.1.1+21

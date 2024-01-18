@@ -164,7 +164,7 @@ class ZetaInPageBanner extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.only(left: hasTitle ? Dimensions.x7 : Dimensions.x0),
           child: DefaultTextStyle(
-            style: ZetaTextStyles.bodyMedium,
+            style: ZetaTextStyles.bodyMedium.apply(color: theme.colors.textDefault),
             child: content,
           ),
         ),
