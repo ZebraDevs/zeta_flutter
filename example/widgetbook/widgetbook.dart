@@ -4,20 +4,14 @@ import 'package:zeta_flutter/zeta_flutter.dart';
 
 import 'components/accordion_widgetbook.dart';
 import 'components/avatar_widgetbook.dart';
-import 'components/badge_widgetbook.dart';
+import 'components/badges_widgetbook.dart';
 import 'components/bottom_sheet_widgetbook.dart';
 import 'components/button_widgetbook.dart';
 import 'components/checkbox_widgetbook.dart';
-import 'components/color_widgetbook.dart';
-import 'components/in_page_banner_widgetbook.dart';
-import 'components/indicator_widgetbook.dart';
+import 'theme/color_widgetbook.dart';
+import 'components/banner_widgetbook.dart';
 import 'components/chip_widgetbook.dart';
-import 'components/menu_items_widgetbook.dart';
 import 'components/password_input_widgetbook.dart';
-import 'components/priority_pill_widgetbook.dart';
-import 'components/status_label_widgetbook.dart';
-import 'components/tag_widgetbook.dart';
-import 'components/workcloud_indicator_widgetbook.dart';
 import 'theme/typography_widgetbook.dart';
 import 'utils/zebra.dart';
 
@@ -32,30 +26,25 @@ class HotReload extends StatelessWidget {
           directories: [
             WidgetbookCategory(
               name: 'Components',
+              isInitiallyExpanded: false,
               children: [
-                colorWidgetBook(),
-                statusLabelWidgetBook(),
-                tagWidgetBook(),
                 badgeWidgetBook(),
-                indicatorWidgetBook(),
-                priorityPillWidgetBook(),
-                workcloudIndicatorWidgetBook(),
                 avatarWidgetBook(),
                 checkboxWidgetBook(),
                 buttonWidgetBook(),
-                inPageBannerWidgetBook(),
-                menuItemsWidgetBook(),
+                BannerWidgetBook(),
                 accordionWidgetBook(),
                 chipWidgetBook(),
-                buttonWidgetBook(),
                 passwordInputWidgetBook(),
                 bottomSheetWidgetBook(),
-              ],
+              ]..sort((a, b) => a.name.compareTo(b.name)),
             ),
             WidgetbookCategory(
               name: 'Theme',
+              isInitiallyExpanded: false,
               children: [
                 textWidgetBook(),
+                colorWidgetBook(),
               ],
             ),
           ],

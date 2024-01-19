@@ -4,18 +4,21 @@ import 'package:zeta_flutter/zeta_flutter.dart';
 class TestWidget extends StatelessWidget {
   final Size? screenSize;
   final Widget widget;
+  final ThemeMode? themeMode;
 
-  const TestWidget({required this.widget, this.screenSize, super.key});
+  const TestWidget({required this.widget, this.screenSize, super.key, this.themeMode});
 
   @override
   Widget build(BuildContext context) {
     final size = screenSize ?? const Size(1280, 720);
 
     return ZetaProvider(
+      initialThemeMode: themeMode ?? ThemeMode.system,
       builder: (context, theme, __) {
         return Builder(
           builder: (context) {
             return MaterialApp(
+              debugShowCheckedModeBanner: false,
               theme: ThemeData(
                 fontFamily: theme.fontFamily,
                 colorScheme: theme.colorsLight.toScheme(),

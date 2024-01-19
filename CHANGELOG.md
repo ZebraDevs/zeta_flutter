@@ -1,3 +1,22 @@
+## [0.1.1+22] - 2024-01-19
+### :boom: BREAKING CHANGES
+- due to [`7b543ac`](https://github.com/zebratechnologies/zeta-flutter/commit/7b543ac7b92dc53a866af4de313c36b5728e912e) - Remove legacy code *(PR [#51](https://github.com/zebratechnologies/zeta-flutter/pull/51) by [@thelukewalton](https://github.com/thelukewalton))*:
+
+  Removed ZetaGrid and ZetaSpacing components, renamed widget padding extensions  
+  https://jira.zebra.com/browse/UX-910  
+  Remove ZetaGrid, ZetaSpacing and ZetaText widgets as these are no longer  
+  part of the library. Functionality is retained in some cases (text  
+  styles, padding extensions) but widgets themselves are removed.  
+  ---------
+
+
+### :sparkles: New Features
+- [`7b543ac`](https://github.com/zebratechnologies/zeta-flutter/commit/7b543ac7b92dc53a866af4de313c36b5728e912e) - Remove legacy code *(PR [#51](https://github.com/zebratechnologies/zeta-flutter/pull/51) by [@thelukewalton](https://github.com/thelukewalton))*
+
+### :wrench: Chores
+- [`ccbdeb9`](https://github.com/zebratechnologies/zeta-flutter/commit/ccbdeb93b6995eb3a3ff66562d957bc7e2470432) - Update Widgetbook to correct functionality *(PR [#52](https://github.com/zebratechnologies/zeta-flutter/pull/52) by [@thelukewalton](https://github.com/thelukewalton))*
+
+
 ## [0.1.1+21] - 2024-01-18
 ### :sparkles: New Features
 - [`6ae1269`](https://github.com/zebratechnologies/zeta-flutter/commit/6ae1269422180bbf2ecbfd05814969bfcbb725f1) - Update text styles to match latest designs *(PR [#50](https://github.com/zebratechnologies/zeta-flutter/pull/50) by [@thelukewalton](https://github.com/thelukewalton))*
@@ -1732,3 +1751,4 @@ Introduced license details for third-party libraries used in the project. MIT li
 [0.1.1+19]: https://github.com/zebratechnologies/zeta-flutter/compare/0.1.1+18...0.1.1+19
 [0.1.1+20]: https://github.com/zebratechnologies/zeta-flutter/compare/0.1.1+19...0.1.1+20
 [0.1.1+21]: https://github.com/zebratechnologies/zeta-flutter/compare/0.1.1+20...0.1.1+21
+[0.1.1+22]: https://github.com/zebratechnologies/zeta-flutter/compare/0.1.1+21...0.1.1+22

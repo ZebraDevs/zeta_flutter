@@ -1,4 +1,4 @@
-/// Tokens that are used for Spacing.
+/// Tokens that are used for spacing.
 ///
 /// Values are doubles, and can be used for padding, margins and other spacings.
 ///
