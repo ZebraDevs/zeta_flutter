@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-
 import 'package:google_fonts/google_fonts.dart';
-import 'package:zeta_example/pages/theme_color_switch.dart';
-import 'package:zeta_example/pages/theme_constrast_switch.dart';
-import 'package:zeta_example/pages/theme_mode_switch.dart';
+import 'package:zeta_example/utils/theme_color_switch.dart';
+import 'package:zeta_example/utils/theme_constrast_switch.dart';
+import 'package:zeta_example/utils/theme_mode_switch.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 class ExampleModel {

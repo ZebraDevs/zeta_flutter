@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
-import 'package:zeta_example/pages/color_example.dart';
+import 'package:zeta_example/pages/theme/color_example.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 WidgetbookComponent colorWidgetBook() {

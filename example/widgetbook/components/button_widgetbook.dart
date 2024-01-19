@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
-import 'package:zeta_example/pages/button_example.dart';
+import 'package:zeta_example/pages/components/button_example.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 import '../../test/test_components.dart';

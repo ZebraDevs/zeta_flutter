@@ -1,6 +1,6 @@
 import 'package:flutter/src/material/app.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:zeta_example/pages/theme_color_switch.dart';
+import 'package:zeta_example/utils/theme_color_switch.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 class SharedPrefsThemeService extends ZetaThemeService {

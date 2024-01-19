@@ -1,3 +1,9 @@
+## [0.1.1+23] - 2024-01-19
+### :wrench: Chores
+- [`ed1210d`](https://github.com/zebratechnologies/zeta-flutter/commit/ed1210d6cbc173aef8b1adf0d20ee91d3e87f2c3) - Update Widgetbook to correct functionality *(PR [#52](https://github.com/zebratechnologies/zeta-flutter/pull/52) by [@thelukewalton](https://github.com/thelukewalton))*
+- [`c627d7a`](https://github.com/zebratechnologies/zeta-flutter/commit/c627d7ab19d3f33e30c406441702ff6134557f14) - Tidy up example app *(PR [#53](https://github.com/zebratechnologies/zeta-flutter/pull/53) by [@thelukewalton](https://github.com/thelukewalton))*
+
+
 ## [0.1.1+22] - 2024-01-19
 ### :boom: BREAKING CHANGES
 - due to [`7b543ac`](https://github.com/zebratechnologies/zeta-flutter/commit/7b543ac7b92dc53a866af4de313c36b5728e912e) - Remove legacy code *(PR [#51](https://github.com/zebratechnologies/zeta-flutter/pull/51) by [@thelukewalton](https://github.com/thelukewalton))*:
@@ -1752,3 +1758,4 @@ Introduced license details for third-party libraries used in the project. MIT li
 [0.1.1+20]: https://github.com/zebratechnologies/zeta-flutter/compare/0.1.1+19...0.1.1+20
 [0.1.1+21]: https://github.com/zebratechnologies/zeta-flutter/compare/0.1.1+20...0.1.1+21
 [0.1.1+22]: https://github.com/zebratechnologies/zeta-flutter/compare/0.1.1+21...0.1.1+22
+[0.1.1+23]: https://github.com/zebratechnologies/zeta-flutter/compare/0.1.1+22...0.1.1+23

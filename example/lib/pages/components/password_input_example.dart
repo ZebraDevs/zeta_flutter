@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
-import '../widgets.dart';
+import '../../widgets.dart';
 
 class PasswordInputExample extends StatefulWidget {
   static const String name = 'PasswordInput';

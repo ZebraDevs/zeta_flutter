@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:zeta_example/widgets.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
-
-import '../widgets.dart';
 
 class ChipExample extends StatelessWidget {
   static const String name = 'Chip';

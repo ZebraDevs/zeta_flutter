@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:zeta_example/widgets.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
-
-import '../widgets.dart';
 
 class CheckBoxExample extends StatefulWidget {
   static const String name = 'Checkbox';
@@ -36,13 +35,13 @@ class _CheckBoxExampleState extends State<CheckBoxExample> {
                 )
               ],
             ),
-            Row(children: [Text('Sharp Checkbox Enabled', style: ZetaTextStyles.titleLarge)]),
+            Row(children: [Text('Sharp Checkbox Enabled')]),
             getCheckBoxRow(isEnabled: true),
-            Row(children: [Text('Sharp Checkbox Disabled', style: ZetaTextStyles.titleLarge)]),
+            Row(children: [Text('Sharp Checkbox Disabled')]),
             getCheckBoxRow(isEnabled: false),
-            Row(children: [Text('Rounded Checkbox Enabled', style: ZetaTextStyles.titleLarge)]),
+            Row(children: [Text('Rounded Checkbox Enabled')]),
             getCheckBoxRow(isEnabled: true, isSharp: false),
-            Row(children: [Text('Rounded Checkbox Disabled', style: ZetaTextStyles.titleLarge)]),
+            Row(children: [Text('Rounded Checkbox Disabled')]),
             getCheckBoxRow(isEnabled: false, isSharp: false),
           ],
         ),

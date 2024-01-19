@@ -1,26 +1,167 @@
 import 'package:flutter/material.dart';
+import 'package:zeta_example/widgets.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
-import '../widgets.dart';
-
-class ButtonExample extends StatelessWidget {
+class ButtonExample extends StatefulWidget {
   static const String name = 'Button';
 
   const ButtonExample({super.key});
 
   @override
+  State<ButtonExample> createState() => _ButtonExampleState();
+}
+
+class _ButtonExampleState extends State<ButtonExample> {
+  Widget? fab;
+  late ScrollController _scrollController;
+
+  @override
+  void initState() {
+    super.initState();
+    _scrollController = ScrollController();
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
+
+  void setFab(int index) => setState(() => fab = fabs[index]);
+
+  List<Widget> fabs = [];
+  @override
   Widget build(BuildContext context) {
+    if (fabs.isEmpty) {
+      fabs = [
+        ZetaFAB(
+          scrollController: _scrollController,
+          buttonLabel: 'Small Circle Primary',
+          buttonSize: ZetaFabSize.small,
+          buttonShape: ZetaFabShape.circle,
+          buttonType: ZetaFabType.primary,
+          onPressed: () => setFab(0),
+        ),
+        ZetaFAB(
+          scrollController: _scrollController,
+          buttonLabel: 'Small Rounded Primary',
+          buttonSize: ZetaFabSize.small,
+          buttonShape: ZetaFabShape.rounded,
+          buttonType: ZetaFabType.primary,
+          onPressed: () => setFab(1),
+        ),
+        ZetaFAB(
+          scrollController: _scrollController,
+          buttonLabel: 'Small Sharp Primary',
+          buttonSize: ZetaFabSize.small,
+          buttonShape: ZetaFabShape.sharp,
+          buttonType: ZetaFabType.primary,
+          onPressed: () => setFab(2),
+        ),
+        ZetaFAB(
+          scrollController: _scrollController,
+          buttonLabel: 'Small Circle Secondary',
+          buttonSize: ZetaFabSize.small,
+          buttonShape: ZetaFabShape.circle,
+          buttonType: ZetaFabType.primarySecond,
+          onPressed: () => setFab(3),
+        ),
+        ZetaFAB(
+          scrollController: _scrollController,
+          buttonLabel: 'Small Circle Secondary',
+          buttonSize: ZetaFabSize.small,
+          buttonShape: ZetaFabShape.rounded,
+          buttonType: ZetaFabType.primarySecond,
+          onPressed: () => setFab(4),
+        ),
+        ZetaFAB(
+          scrollController: _scrollController,
+          buttonLabel: 'Small Sharp Secondary',
+          buttonSize: ZetaFabSize.small,
+          buttonShape: ZetaFabShape.sharp,
+          buttonType: ZetaFabType.primarySecond,
+          onPressed: () => setFab(5),
+        ),
+        ZetaFAB(
+          scrollController: _scrollController,
+          buttonLabel: 'Large Circle Primary',
+          buttonSize: ZetaFabSize.large,
+          buttonShape: ZetaFabShape.circle,
+          buttonType: ZetaFabType.primary,
+          onPressed: () => setFab(6),
+        ),
+        ZetaFAB(
+          scrollController: _scrollController,
+          buttonLabel: 'Large Rounded Primary',
+          buttonSize: ZetaFabSize.large,
+          buttonShape: ZetaFabShape.rounded,
+          buttonType: ZetaFabType.primary,
+          onPressed: () => setFab(7),
+        ),
+        ZetaFAB(
+          scrollController: _scrollController,
+          buttonLabel: 'Large Sharp Primary',
+          buttonSize: ZetaFabSize.large,
+          buttonShape: ZetaFabShape.sharp,
+          buttonType: ZetaFabType.primary,
+          onPressed: () => setFab(8),
+        ),
+        ZetaFAB(
+          scrollController: _scrollController,
+          buttonLabel: 'Large Circle Primary',
+          buttonSize: ZetaFabSize.large,
+          buttonShape: ZetaFabShape.circle,
+          buttonType: ZetaFabType.primarySecond,
+          onPressed: () => setFab(9),
+        ),
+        ZetaFAB(
+          scrollController: _scrollController,
+          buttonLabel: 'Large Rounded Secondary',
+          buttonSize: ZetaFabSize.large,
+          buttonShape: ZetaFabShape.rounded,
+          buttonType: ZetaFabType.primarySecond,
+          onPressed: () => setFab(10),
+        ),
+        ZetaFAB(
+          scrollController: _scrollController,
+          buttonLabel: 'Large Sharp Secondary',
+          buttonSize: ZetaFabSize.large,
+          buttonShape: ZetaFabShape.sharp,
+          buttonType: ZetaFabType.primarySecond,
+          onPressed: () => setFab(11),
+        ),
+      ];
+    }
     final theme = Zeta.of(context);
     final colors = BuildExampleButtonColors(theme: theme);
 
     return ExampleScaffold(
       name: 'Button',
-      child: Padding(
-        padding: EdgeInsets.all(10),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [roundedButtonsExample(colors), Divider(), Divider(), sharpButtonsExample(colors)],
-          ),
+      floatingActionButton: fab ?? fabs.first,
+      child: SingleChildScrollView(
+        controller: _scrollController,
+        child: Row(
+          children: [
+            Expanded(
+              flex: 8,
+              child: Column(
+                children: [
+                  Text('Rounded Buttons', style: ZetaTextStyles.displayMedium),
+                  roundedButtonsExample(colors),
+                  Divider(),
+                  Divider(),
+                  Text('Sharp Buttons', style: ZetaTextStyles.displayMedium),
+                  sharpButtonsExample(colors),
+                  Divider(),
+                  Divider(),
+                  Text('Floating Action Buttons', style: ZetaTextStyles.displayMedium),
+                  Text('Tap buttons to change current FAB: ', style: ZetaTextStyles.bodyMedium),
+                  Wrap(children: fabs.divide(SizedBox.square(dimension: 10)).toList()),
+                ],
+              ),
+            ),
+            Expanded(child: const SizedBox()),
+          ],
         ),
       ),
     );
@@ -73,22 +214,20 @@ Widget sharpButtonsExample(BuildExampleButtonColors colors) => Column(
 List<Widget> _getZetaButtonExampleRows(String label, ZetaButtonColors colors,
     {IconData? icon, ZetaButtonType buttonType = ZetaButtonType.filled, BorderType border = BorderType.rounded}) {
   return [
-    Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [Text('Large $label', style: ZetaTextStyles.titleLarge)]),
+    Row(mainAxisAlignment: MainAxisAlignment.center, children: [Text('Large $label')]),
     Divider(color: Colors.transparent),
     _getRow(buttonType, ZetaWidgetSize.large, colors, border: border, icon: icon),
     Divider(color: Colors.transparent),
     _getRow(buttonType, ZetaWidgetSize.large, colors, isDisabled: true, border: border, icon: icon),
     Row(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: [Padding(padding: EdgeInsets.all(10), child: Text('Medium $label', style: ZetaTextStyles.titleLarge))],
+      children: [Padding(padding: EdgeInsets.all(10), child: Text('Medium $label'))],
     ),
     _getRow(buttonType, ZetaWidgetSize.medium, colors, border: border, icon: icon),
     _getRow(buttonType, ZetaWidgetSize.medium, colors, isDisabled: true, border: border, icon: icon),
     Row(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: [Padding(padding: EdgeInsets.all(10), child: Text('Small $label', style: ZetaTextStyles.titleLarge))],
+      children: [Padding(padding: EdgeInsets.all(10), child: Text('Small $label'))],
     ),
     _getRow(buttonType, ZetaWidgetSize.small, colors, border: border, icon: icon),
     _getRow(buttonType, ZetaWidgetSize.small, colors, isDisabled: true, border: border, icon: icon),
@@ -111,7 +250,6 @@ Widget _getRow(ZetaButtonType type, ZetaWidgetSize size, ZetaButtonColors colors
 
 Widget _getZetaButtonExample(ZetaButtonType buttonType, ZetaWidgetSize size, ZetaButtonColors colors,
     {BorderType border = BorderType.rounded, IconData? icon, bool iconRight = false, bool isDisabled = false}) {
-  print(buttonType);
   if (buttonType == ZetaButtonType.filled)
     return ZetaButton.filled(
       label: 'Button',
