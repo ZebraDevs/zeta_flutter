@@ -1,0 +1,20 @@
+name: "CI - Release"
+on:
+  workflow_dispatch:
+  release:
+    types: [released]
+
+jobs:
+  deploy-website:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          script: |
+            await github.rest.actions.createworkflowDispatch({
+              owner: 'zebratechnologies',
+              repo: 'zeta',
+              workflow_id: 'deploy-prod.yml',
+              ref: 'main'
+            })
