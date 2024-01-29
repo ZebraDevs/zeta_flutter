@@ -170,7 +170,7 @@ class _ZetaFABState extends State<ZetaFAB> {
           mainAxisSize: MainAxisSize.min,
           children: [
             Icon(widget.buttonIcon, size: iconSize),
-            const SizedBox(width: Dimensions.x2),
+            const SizedBox(width: ZetaSpacing.x2),
             Text(widget.buttonLabel, style: textStyle),
           ],
         ),
@@ -203,23 +203,23 @@ class _ZetaFABState extends State<ZetaFAB> {
 
   BorderRadius _getBorderRadius() => widget.buttonShape == ZetaFabShape.rounded
       ? BorderRadius.circular(
-          widget.buttonSize == ZetaFabSize.small ? Dimensions.x2 : Dimensions.x4,
+          widget.buttonSize == ZetaFabSize.small ? ZetaSpacing.x2 : ZetaSpacing.x4,
         )
       : BorderRadius.zero;
 
   BorderRadius _getBorderRadiusExtended() => widget.buttonShape == ZetaFabShape.circle
       ? BorderRadius.circular(
-          widget.buttonSize == ZetaFabSize.small ? Dimensions.x7 : Dimensions.x12,
+          widget.buttonSize == ZetaFabSize.small ? ZetaSpacing.x7 : ZetaSpacing.x12,
         )
       : widget.buttonShape == ZetaFabShape.rounded
-          ? BorderRadius.circular(Dimensions.x2)
+          ? BorderRadius.circular(ZetaSpacing.x2)
           : BorderRadius.zero;
 
   TextStyle _getTextStyle() => ZetaTextStyles.labelLarge;
 
-  double _getButtonSize() => widget.buttonSize == ZetaFabSize.small ? Dimensions.x14 : Dimensions.x24;
+  double _getButtonSize() => widget.buttonSize == ZetaFabSize.small ? ZetaSpacing.x14 : ZetaSpacing.x24;
 
-  double _getIconSize() => widget.buttonSize == ZetaFabSize.small ? Dimensions.x6 : Dimensions.x9;
+  double _getIconSize() => widget.buttonSize == ZetaFabSize.small ? ZetaSpacing.x6 : ZetaSpacing.x9;
 
   EdgeInsets _getPadding() => !_isExpanded
       ? EdgeInsets.zero

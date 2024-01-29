@@ -1,9 +1,11 @@
+import 'package:flutter/material.dart';
+
 /// Tokens that are used for spacing.
 ///
 /// Values are doubles, and can be used for padding, margins and other spacings.
 ///
 // TODO(thelukewalton): Refactor to match latest designs.
-class Dimensions {
+class ZetaSpacing {
   /// Base multiplier used to calculate spacing values.
   static const double spacingBaseMultiplier = 4;
 
@@ -90,4 +92,22 @@ class Dimensions {
 
   /// 96dp space.
   static const double xxxl = spacingBaseMultiplier * 24;
+}
+
+/// Tokens used for Border Radius.
+class ZetaRadius {
+  /// No border radius; 0px radius.
+  static const BorderRadius none = BorderRadius.zero;
+
+  /// Smallest amount of border radius; 4px radius.
+  static const BorderRadius minimal = BorderRadius.all(Radius.circular(ZetaSpacing.xxs));
+
+  /// Border radius used when rounded parameter is true; 8px radius.
+  static const BorderRadius rounded = BorderRadius.all(Radius.circular(ZetaSpacing.xs));
+
+  /// Wide border radius; 24px radius.
+  static const BorderRadius wide = BorderRadius.all(Radius.circular(ZetaSpacing.m));
+
+  /// Largest amount of border radius; 360px radius.
+  static const BorderRadius full = BorderRadius.all(Radius.circular(360));
 }

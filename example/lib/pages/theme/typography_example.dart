@@ -102,7 +102,7 @@ class TypographyExample extends StatelessWidget {
     return ExampleScaffold(
       name: name,
       child: SingleChildScrollView(
-        padding: EdgeInsets.all(Dimensions.s),
+        padding: EdgeInsets.all(ZetaSpacing.s),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

@@ -10,7 +10,7 @@ class ZetaCheckbox extends StatelessWidget {
     required this.onChanged,
     this.borderType = BorderType.sharp,
     this.label,
-    this.checkboxSize = const Size(20, 20),
+    this.checkboxSize = const Size(ZetaSpacing.x5, ZetaSpacing.x5),
     this.selectedColor,
     this.unselectedColor,
     this.unselectedBorderColor,
@@ -101,7 +101,7 @@ class ZetaCheckbox extends StatelessWidget {
         if (label != null) ...[
           Flexible(
             child: Padding(
-              padding: const EdgeInsets.only(left: Dimensions.s),
+              padding: const EdgeInsets.only(left: ZetaSpacing.s),
               child: Text(label!, style: ZetaTextStyles.bodyLarge),
             ),
           ),

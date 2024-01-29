@@ -3,43 +3,71 @@ import 'package:flutter/material.dart';
 
 import '../../../zeta_flutter.dart';
 
-///Colors for the [ZetaButton] widget
-class ZetaButtonColors extends ZetaWidgetColor {
-  ///Construct [ZetaButtonColors]
-  const ZetaButtonColors({
-    this.actionColor,
-    this.backgroundDisabled = ZetaColorBase.greyCool,
-    this.foregroundDisabled = ZetaColorBase.greyWarm,
-    this.borderColor = Colors.transparent,
-    this.iconColor,
-    super.backgroundColor = Colors.transparent,
-    super.foregroundColor = Colors.black12,
-  });
-
-  ///Defines the color used when the Button is pressed
-  final Color? actionColor;
-
-  ///The color for the border when the [ZetaButton] is of type 'outlined'
-  final Color borderColor;
-
-  ///The color for the icon
-  ///If color is not set, default color will be [foregroundColor]
-  final Color? iconColor;
-
-  ///Color for the [ZetaButton] when it is disabled
-  final Color backgroundDisabled;
-
-  ///Color for the [ZetaButton] icon and text when it is disabled
-  final Color foregroundDisabled;
-}
-
 ///Button types
 enum ZetaButtonType {
-  ///Standard button with background color
-  filled,
+  /// Background: Primary color; defaults to blue.
+  /// Border: None.
+  primary,
 
-  ///Button with border
-  outlined,
+  /// Background: Secondary color; defaults to yellow.
+  /// Border: None.
+  secondary,
+
+  /// Background: Positive color; defaults to green.
+  /// Border: None.
+  positive,
+
+  /// Background: Negative color; defaults to red.
+  /// Border: None.
+  negative,
+
+  /// Background: None.
+  /// Border: Primary color; defaults to blue.
+  outline,
+
+  /// Background: None.
+  /// Border: Subtle color; defaults to cool grey.
+  outlineSubtle,
+
+  /// Background: None.
+  /// Border: None.
+  /// Foreground color: Primary; defaults to blue.
+  text,
+}
+
+extension on ZetaButtonType {
+  ZetaColorSwatch color(ZetaColors colors) {
+    switch (this) {
+      case ZetaButtonType.secondary:
+        return colors.secondary;
+      case ZetaButtonType.positive:
+        return colors.positive;
+      case ZetaButtonType.negative:
+        return colors.negative;
+      case ZetaButtonType.outline:
+      case ZetaButtonType.primary:
+        return colors.primary;
+      case ZetaButtonType.outlineSubtle:
+      case ZetaButtonType.text:
+        return colors.cool;
+    }
+  }
+
+  bool get border => this == ZetaButtonType.outline || this == ZetaButtonType.outlineSubtle;
+  bool get solid => index < 4;
+}
+
+extension on BorderType {
+  BorderRadius get radius {
+    switch (this) {
+      case BorderType.sharp:
+        return ZetaRadius.none;
+      case BorderType.rounded:
+        return ZetaRadius.minimal;
+      case BorderType.full:
+        return ZetaRadius.full;
+    }
+  }
 }
 
 ///Zeta Button
@@ -47,182 +75,218 @@ class ZetaButton extends StatelessWidget {
   ///Constructs [ZetaButton]
   const ZetaButton({
     required this.label,
-    required this.colors,
-    this.icon,
     this.onPressed,
-    this.iconOnRight = false,
-    this.type = ZetaButtonType.filled,
-    this.size = ZetaWidgetSize.large,
+    this.type = ZetaButtonType.primary,
+    this.size = ZetaWidgetSize.medium,
     this.borderType = BorderType.rounded,
     super.key,
   });
 
-  ///Constructor for [ZetaButton] for type 'filled'
-  factory ZetaButton.filled({
-    required String label,
-    required ZetaButtonColors colors,
-    IconData? icon,
-    VoidCallback? onPressed,
-    bool iconOnRight = false,
-    ZetaWidgetSize size = ZetaWidgetSize.small,
-    BorderType borderType = BorderType.rounded,
-  }) =>
-      ZetaButton(
-        label: label,
-        icon: icon,
-        onPressed: onPressed,
-        iconOnRight: iconOnRight,
-        size: size,
-        colors: colors,
-        borderType: borderType,
-      );
+  /// Constructs [ZetaButton] with Primary theme.
+  const ZetaButton.primary({
+    required this.label,
+    this.onPressed,
+    this.size = ZetaWidgetSize.medium,
+    this.borderType = BorderType.rounded,
+    super.key,
+  }) : type = ZetaButtonType.primary;
 
-  ///Constructor for [ZetaButton] for type 'outlined'
-  factory ZetaButton.outlined({
-    required String label,
-    required ZetaButtonColors colors,
-    IconData? icon,
-    VoidCallback? onPressed,
-    bool iconOnRight = false,
-    ZetaWidgetSize size = ZetaWidgetSize.small,
-    BorderType borderType = BorderType.rounded,
-  }) =>
-      ZetaButton(
-        label: label,
-        icon: icon,
-        onPressed: onPressed,
-        iconOnRight: iconOnRight,
-        size: size,
-        colors: colors,
-        borderType: borderType,
-        type: ZetaButtonType.outlined,
-      );
+  /// Constructs [ZetaButton] with Secondary theme.
+  const ZetaButton.secondary({
+    required this.label,
+    this.onPressed,
+    this.size = ZetaWidgetSize.medium,
+    this.borderType = BorderType.rounded,
+    super.key,
+  }) : type = ZetaButtonType.secondary;
+
+  /// Constructs [ZetaButton] with Positive theme.
+  const ZetaButton.positive({
+    required this.label,
+    this.onPressed,
+    this.size = ZetaWidgetSize.medium,
+    this.borderType = BorderType.rounded,
+    super.key,
+  }) : type = ZetaButtonType.positive;
+
+  /// Constructs [ZetaButton] with Negative theme.
+  const ZetaButton.negative({
+    required this.label,
+    this.onPressed,
+    this.size = ZetaWidgetSize.medium,
+    this.borderType = BorderType.rounded,
+    super.key,
+  }) : type = ZetaButtonType.negative;
+
+  /// Constructs [ZetaButton] with Outline theme.
+  const ZetaButton.outline({
+    required this.label,
+    this.onPressed,
+    this.size = ZetaWidgetSize.medium,
+    this.borderType = BorderType.rounded,
+    super.key,
+  }) : type = ZetaButtonType.outline;
+
+  /// Constructs [ZetaButton] with Outline Subtle  theme.
+  const ZetaButton.outlineSubtle({
+    required this.label,
+    this.onPressed,
+    this.size = ZetaWidgetSize.medium,
+    this.borderType = BorderType.rounded,
+    super.key,
+  }) : type = ZetaButtonType.outlineSubtle;
+
+  /// Constructs [ZetaButton] with text theme.
+  const ZetaButton.text({
+    required this.label,
+    this.onPressed,
+    this.size = ZetaWidgetSize.medium,
+    this.borderType = BorderType.rounded,
+    super.key,
+  }) : type = ZetaButtonType.text;
 
   ///Button label
   final String label;
 
-  ///The icon for the button
-  final IconData? icon;
-
   ///Called when the button is tapped or otherwise activated.
   final VoidCallback? onPressed;
 
-  ///Determines if the icon should be on the left or right side
-  ///Defaults to 'false' (Left icon)
-  final bool iconOnRight;
-
   ///The coloring type of the button
   final ZetaButtonType type;
-
-  ///Colors for the button
-  final ZetaButtonColors colors;
 
   ///Whether or not the button is sharp or rounded
   ///Defaults to rounded
   final BorderType borderType;
 
-  ///Size of the button
-  ///Defaults to large
+  /// Size of the button. Defaults to large.
   final ZetaWidgetSize size;
 
-  @override
-  Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: onPressed,
-      style: _buttonStyle(),
-      child: _buildButtonContent(),
+  /// Creates a clone
+  ZetaButton copyWith({
+    String? label,
+    VoidCallback? onPressed,
+    ZetaButtonType? type,
+    ZetaWidgetSize? size,
+    BorderType? borderType,
+    Key? key,
+  }) {
+    return ZetaButton(
+      label: label ?? this.label,
+      onPressed: onPressed ?? this.onPressed,
+      type: type ?? this.type,
+      size: size ?? this.size,
+      borderType: borderType ?? this.borderType,
+      key: key ?? this.key,
     );
   }
 
-  Widget _buildButtonContent() {
-    List<Widget> children = [];
-    if (icon != null) {
-      children
-        ..add(_buildIcon())
-        ..add(const SizedBox(width: Dimensions.x2));
-    }
-    children.add(_buildLabel());
-    if (iconOnRight) children = children.reversed.toList();
-    return IntrinsicWidth(
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: children,
+  @override
+  Widget build(BuildContext context) {
+    final colors = Zeta.of(context).colors;
+    return ConstrainedBox(
+      constraints: BoxConstraints(minHeight: _minConstraints, minWidth: _minConstraints),
+      child: FilledButton(
+        onPressed: onPressed,
+        style: _buttonStyle(colors),
+        child: SelectionContainer.disabled(
+          child: label.isEmpty
+              ? const SizedBox()
+              : Text(
+                  label,
+                  style: _textStyle,
+                ).paddingHorizontal(_textPadding),
+        ),
       ),
     );
   }
 
-  Widget _buildLabel() => Text(label, style: _getTextStyle());
-
-  Widget _buildIcon() => Transform.translate(
-        offset: const Offset(0, -1),
-        child: Icon(
-          icon,
-          color: onPressed != null ? (colors.iconColor ?? colors.foregroundColor) : colors.foregroundDisabled,
-          size: _iconSize(),
-        ),
-      );
-
-  ButtonStyle _buttonStyle() {
-    return ElevatedButton.styleFrom(
-      minimumSize: _getButtonSize(),
-      elevation: 0,
-      padding: _buttonPadding(),
-      shape: RoundedRectangleBorder(borderRadius: _getBorderRadius()),
-    ).copyWith(
+  ButtonStyle _buttonStyle(ZetaColors colors) {
+    return ButtonStyle(
+      minimumSize: MaterialStateProperty.all(const Size.square(32)),
+      shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: borderType.radius)),
       backgroundColor: MaterialStateProperty.resolveWith<Color?>(
         (states) {
           if (states.contains(MaterialState.disabled)) {
-            return colors.backgroundDisabled;
+            return colors.surfaceDisabled;
           }
-          return colors.backgroundColor;
+          if (states.contains(MaterialState.pressed)) {
+            return type.solid ? type.color(colors).shade70 : colors.primary.shade10;
+          }
+          if (states.contains(MaterialState.hovered)) {
+            return type.solid ? type.color(colors).shade50 : colors.cool.shade20;
+          }
+          return type.solid ? type.color(colors) : Colors.transparent;
         },
       ),
       foregroundColor: MaterialStateProperty.resolveWith<Color?>(
         (states) {
           if (states.contains(MaterialState.disabled)) {
-            return colors.foregroundDisabled;
+            return colors.textDisabled;
           }
-          return colors.foregroundColor;
+          switch (type) {
+            case ZetaButtonType.outline:
+            case ZetaButtonType.text:
+              return colors.primary;
+            case ZetaButtonType.outlineSubtle:
+              return colors.textDefault;
+            case ZetaButtonType.primary:
+            case ZetaButtonType.secondary:
+            case ZetaButtonType.positive:
+            case ZetaButtonType.negative:
+              return type.color(colors).onColor;
+          }
         },
       ),
       overlayColor: MaterialStateProperty.resolveWith((Set<MaterialState> states) {
-        if (states.contains(MaterialState.pressed)) return colors.actionColor;
         return null;
       }),
       side: MaterialStateProperty.resolveWith((Set<MaterialState> states) {
-        if (type == ZetaButtonType.filled) return null;
-        if (states.contains(MaterialState.disabled)) {
-          return BorderSide(color: colors.foregroundDisabled);
+        if (type.border) {
+          if (states.contains(MaterialState.disabled)) {
+            return BorderSide(color: colors.cool.shade40);
+          }
+
+          return BorderSide(color: type == ZetaButtonType.outline ? colors.primary.border : colors.borderDefault);
         }
-        return BorderSide(color: colors.borderColor);
+
+        // TODO(thelukewalton): This removes a defualt border when focused, rather than adding a second border when focused.
+        if (states.contains(MaterialState.focused)) {
+          return BorderSide(color: colors.blue, width: 2);
+        }
+        return null;
       }),
+      elevation: const MaterialStatePropertyAll(0),
+      padding: MaterialStateProperty.all(EdgeInsets.zero),
     );
   }
 
-  BorderRadius _getBorderRadius() =>
-      borderType == BorderType.rounded ? BorderRadius.circular(Dimensions.x1) : BorderRadius.zero;
+  // TODO(thelukewalton): Check styles for pressed etc.
+  TextStyle get _textStyle => size == ZetaWidgetSize.small ? ZetaTextStyles.labelMedium : ZetaTextStyles.labelLarge;
 
-  TextStyle _getTextStyle() => size == ZetaWidgetSize.small ? ZetaTextStyles.labelMedium : ZetaTextStyles.labelLarge;
+  double get _minConstraints {
+    switch (size) {
+      case ZetaWidgetSize.large:
+        return ZetaSpacing.x12;
 
-  double _iconSize() => size == ZetaWidgetSize.small ? Dimensions.x4 : Dimensions.x5;
+      case ZetaWidgetSize.medium:
+        return ZetaSpacing.x10;
 
-  EdgeInsets _buttonPadding() {
-    if (size == ZetaWidgetSize.small) {
-      return const EdgeInsets.fromLTRB(10, 6, 10, 6);
-    } else if (size == ZetaWidgetSize.medium) {
-      return const EdgeInsets.fromLTRB(14, 8, 14, 8);
+      case ZetaWidgetSize.small:
+        return ZetaSpacing.x8;
     }
-    return const EdgeInsets.fromLTRB(20, 12, 20, 12);
   }
 
-  Size _getButtonSize() {
-    if (size == ZetaWidgetSize.small) {
-      return const Size(68, 32);
-    } else if (size == ZetaWidgetSize.medium) {
-      return const Size(82, 40);
+  double get _textPadding {
+    switch (size) {
+      case ZetaWidgetSize.large:
+        return ZetaSpacing.m;
+
+      case ZetaWidgetSize.medium:
+        return ZetaSpacing.x3_5;
+
+      case ZetaWidgetSize.small:
+        return 10;
     }
-    return const Size(98, 48);
   }
 
   @override
@@ -230,10 +294,7 @@ class ZetaButton extends StatelessWidget {
     super.debugFillProperties(properties);
     properties
       ..add(StringProperty('label', label))
-      ..add(DiagnosticsProperty<IconData?>('icon', icon))
       ..add(ObjectFlagProperty<VoidCallback?>.has('onPressed', onPressed))
-      ..add(DiagnosticsProperty<bool>('iconOnRight', iconOnRight))
-      ..add(DiagnosticsProperty<ZetaButtonColors>('colors', colors))
       ..add(EnumProperty<ZetaButtonType>('type', type))
       ..add(EnumProperty<BorderType>('borderType', borderType))
       ..add(EnumProperty<ZetaWidgetSize>('size', size));

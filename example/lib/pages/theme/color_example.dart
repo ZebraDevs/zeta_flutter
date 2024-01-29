@@ -137,7 +137,7 @@ class _ColorExampleState extends State<ColorExample> {
         return ExampleScaffold(
           name: ColorExample.name,
           child: SingleChildScrollView(
-            padding: EdgeInsets.all(Dimensions.s),
+            padding: EdgeInsets.all(ZetaSpacing.s),
             child: Column(
               children: [
                 MyRow(children: textIcon, title: 'Text and icon styles'),
@@ -147,7 +147,7 @@ class _ColorExampleState extends State<ColorExample> {
                 MyRow(children: primaries, title: 'Primary colors'),
                 MyRow(children: alerts, title: 'Alert colors'),
                 Row(children: [Text('Full color swatches', style: ZetaTextStyles.displayMedium)])
-                    .paddingVertical(Dimensions.x8),
+                    .paddingVertical(ZetaSpacing.x8),
                 ...swatches.entries.map(
                   (value) => Row(
                     children: List.generate(10, (index) => 100 - (10 * index))
@@ -182,11 +182,11 @@ class _ColorExampleState extends State<ColorExample> {
                 ),
                 ElevatedButton(
                   onPressed: () => setState(() => showGeneratedColors = !showGeneratedColors),
-                  child: const Text('Toggle generated colors').paddingAll(Dimensions.s),
-                ).paddingAll(Dimensions.s),
+                  child: const Text('Toggle generated colors').paddingAll(ZetaSpacing.s),
+                ).paddingAll(ZetaSpacing.s),
                 if (showGeneratedColors)
                   Row(children: [Text('Generated color swatches', style: ZetaTextStyles.displayMedium)])
-                      .paddingVertical(Dimensions.x8),
+                      .paddingVertical(ZetaSpacing.x8),
                 if (showGeneratedColors)
                   ...generatedSwatches.entries.map(
                     (value) => Row(

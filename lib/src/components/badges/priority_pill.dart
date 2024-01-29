@@ -3,76 +3,60 @@ import 'package:flutter/material.dart';
 
 import '../../../zeta_flutter.dart';
 
-///Zeta Priority Pill
+///Zeta Priority Pill.
+///
+/// This badge is used to indicate the order of importance.
 class ZetaPriorityPill extends StatelessWidget {
   ///Constructs [ZetaPriorityPill]
   const ZetaPriorityPill({
     required this.index,
     required this.priority,
-    this.borderType = BorderType.sharp,
+    this.rounded = true,
     super.key,
   });
 
-  ///Border type of the badge
-  final BorderType borderType;
+  /// {@macro zeta-component-rounded}
+  final bool rounded;
 
-  ///Priority number
+  /// Leading number in component.
   final int index;
 
-  ///Priority label
+  /// Text in main part of component.
   final String priority;
-
-  bool get _isBorderRounded => borderType == BorderType.rounded;
 
   @override
   Widget build(BuildContext context) {
     final theme = Zeta.of(context);
+    final backgroundColor = theme.colors.primary;
+    final Color foregroundColor = backgroundColor.onColor;
+
     return DecoratedBox(
-      decoration: _buildBoxDecoration(theme),
+      decoration: BoxDecoration(
+        borderRadius: rounded ? ZetaRadius.full : ZetaRadius.none,
+        color: backgroundColor.shade10,
+      ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          _buildIndexContainer(theme),
-          _buildPriorityText(),
+          Container(
+            alignment: Alignment.center,
+            height: ZetaSpacing.x7,
+            width: ZetaSpacing.x7,
+            decoration: BoxDecoration(
+              shape: rounded ? BoxShape.circle : BoxShape.rectangle,
+              color: backgroundColor,
+            ),
+            child: Text(index.formatMaxChars(), style: ZetaTextStyles.bodyMedium.apply(color: foregroundColor)),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: ZetaSpacing.x2, vertical: ZetaSpacing.x1),
+            child: Text(
+              priority,
+              style: ZetaTextStyles.bodyMedium,
+              overflow: TextOverflow.ellipsis,
+            ),
+          ),
         ],
-      ),
-    );
-  }
-
-  BoxDecoration _buildBoxDecoration(Zeta theme) {
-    return BoxDecoration(
-      borderRadius: BorderRadius.circular(
-        _isBorderRounded ? Dimensions.l : Dimensions.x0,
-      ),
-      color: theme.colors.blue.shade10,
-    );
-  }
-
-  Widget _buildIndexContainer(Zeta theme) {
-    return Container(
-      alignment: Alignment.center,
-      height: Dimensions.x7,
-      width: _isBorderRounded ? Dimensions.x7 : Dimensions.x6,
-      decoration: BoxDecoration(
-        shape: _isBorderRounded ? BoxShape.circle : BoxShape.rectangle,
-        color: theme.colors.blue.shade60,
-      ),
-      child: Text(
-        '$index',
-        style: ZetaTextStyles.bodyMedium.apply(color: theme.colors.white),
-      ),
-    );
-  }
-
-  Widget _buildPriorityText() {
-    return Flexible(
-      child: Padding(
-        padding: const EdgeInsets.fromLTRB(8, 4, 8, 4),
-        child: Text(
-          priority,
-          style: ZetaTextStyles.bodyMedium,
-          overflow: TextOverflow.ellipsis,
-        ),
       ),
     );
   }
@@ -81,8 +65,8 @@ class ZetaPriorityPill extends StatelessWidget {
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(EnumProperty<BorderType>('borderType', borderType))
       ..add(IntProperty('index', index))
-      ..add(StringProperty('priority', priority));
+      ..add(StringProperty('priority', priority))
+      ..add(DiagnosticsProperty<bool>('rounded', rounded));
   }
 }

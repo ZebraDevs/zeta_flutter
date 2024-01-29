@@ -30,7 +30,7 @@ WidgetbookComponent textWidgetBook() {
         name: 'Text styles',
         builder: (context) => Container(
           color: Theme.of(context).colorScheme.background,
-          padding: const EdgeInsets.all(Dimensions.l),
+          padding: const EdgeInsets.all(ZetaSpacing.l),
           child: Text(
             context.knobs.string(label: 'Text', initialValue: 'The quick brown fox jumps over the lazy dog.'),
             style: context.knobs.list(

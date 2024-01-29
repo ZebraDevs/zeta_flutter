@@ -3,78 +3,92 @@ import 'package:flutter/material.dart';
 
 import '../../../zeta_flutter.dart';
 
-///Tag Direction options
+///Tag Direction options for [ZetaTag].
 enum ZetaTagDirection {
-  ///facing left
+  ///Tag facing left.
   left,
 
-  ///facing right
+  ///Tag facing right.
   right
 }
 
 ///Zeta Tag
 class ZetaTag extends StatelessWidget {
-  ///Constructs [ZetaTag]
+  ///Constructs [ZetaTag].
   const ZetaTag({
-    this.direction = ZetaTagDirection.left,
-    this.borderType = BorderType.sharp,
-    required this.label,
     super.key,
+    this.direction = ZetaTagDirection.left,
+    required this.label,
+    this.rounded = true,
   });
 
-  ///Constructor [ZetaTag] left sided
+  /// Constructs left facing [ZetaTag].
   factory ZetaTag.left({
-    BorderType borderType = BorderType.sharp,
     required String label,
+    bool rounded = true,
   }) =>
       ZetaTag(
-        borderType: borderType,
         label: label,
+        rounded: rounded,
       );
 
-  ///Constructor [ZetaTag] right sided
+  ///Constructs right facing [ZetaTag].
   factory ZetaTag.right({
-    BorderType borderType = BorderType.sharp,
     required String label,
+    bool rounded = true,
   }) =>
       ZetaTag(
         direction: ZetaTagDirection.right,
-        borderType: borderType,
+        rounded: rounded,
         label: label,
       );
-
-  /// Fixed container size
-  static const Size _containerSize = Size(36, 28);
 
   ///Determines the direction of the tag
   ///
   /// Defaults to left
   final ZetaTagDirection direction;
 
-  ///Border type of the widget
-  ///Defaults to sharp
-  final BorderType borderType;
+  /// {@zeta-component-rounded}
+  final bool rounded;
 
   ///tag label
   final String label;
+
+  /// Fixed container size
+  static const Size _containerSize = Size(ZetaSpacing.x9, ZetaSpacing.x7);
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: <Widget>[
-        if (direction == ZetaTagDirection.right) ...[
-          _buildCustomPaint(context),
-        ],
-        _buildContainer(context),
-        if (direction == ZetaTagDirection.left) ...[
-          _buildCustomPaint(context),
-        ],
+        if (direction == ZetaTagDirection.right) _buildCustomPaint(context),
+        Container(
+          decoration: BoxDecoration(
+            color: Zeta.of(context).colors.surfaceHovered,
+            borderRadius: _getBorderRadius(),
+          ),
+          height: _containerSize.height,
+          constraints: BoxConstraints(minWidth: _containerSize.width),
+          child: Center(
+            child: FittedBox(
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(ZetaSpacing.x2, 1, ZetaSpacing.x2, 1),
+                child: Text(
+                  label,
+                  style: ZetaTextStyles.bodyMedium,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
+            ),
+          ),
+        ),
+        if (direction == ZetaTagDirection.left) _buildCustomPaint(context),
       ],
     );
   }
 
-  BorderRadius _getBorderRadius() {
-    if (borderType == BorderType.sharp) return BorderRadius.zero;
+  BorderRadius? _getBorderRadius() {
+    if (!rounded) return null;
     if (direction == ZetaTagDirection.right) {
       return const BorderRadius.only(
         topRight: Radius.circular(2),
@@ -88,60 +102,24 @@ class ZetaTag extends StatelessWidget {
     }
   }
 
-  Widget _buildContainer(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: _getWidgetColor(context),
-        borderRadius: _getBorderRadius(),
-      ),
-      height: _containerSize.height,
-      constraints: BoxConstraints(minWidth: _containerSize.width),
-      child: Center(
-        child: FittedBox(
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(
-              Dimensions.x2,
-              1,
-              Dimensions.x2,
-              1,
-            ),
-            child: Text(
-              label,
-              style: ZetaTextStyles.bodyMedium,
-              overflow: TextOverflow.ellipsis,
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-
   Widget _buildCustomPaint(BuildContext context) {
-    return Stack(
-      children: [
-        CustomPaint(
-          size: const Size(Dimensions.x3, Dimensions.x7),
-          painter: _TagPainter(
-            color: _getWidgetColor(context),
-            direction: direction,
-            borderType: borderType,
-          ),
-        ),
-        // Additional widgets if needed
-      ],
+    return CustomPaint(
+      size: const Size(ZetaSpacing.x3, ZetaSpacing.x7),
+      painter: _TagPainter(
+        color: Zeta.of(context).colors.surfaceHovered,
+        direction: direction,
+        rounded: rounded,
+      ),
     );
   }
-
-  Color _getWidgetColor(BuildContext context) =>
-      Zeta.of(context).themeMode == ThemeMode.dark ? ZetaColorBase.greyWarm.shade90 : ZetaColorBase.greyCool.shade30;
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
       ..add(EnumProperty<ZetaTagDirection>('direction', direction))
-      ..add(EnumProperty<BorderType>('borderType', borderType))
-      ..add(StringProperty('label', label));
+      ..add(StringProperty('label', label))
+      ..add(DiagnosticsProperty<bool>('rounded', rounded));
   }
 }
 
@@ -149,55 +127,58 @@ class _TagPainter extends CustomPainter {
   const _TagPainter({
     required this.color,
     required this.direction,
-    required this.borderType,
+    required this.rounded,
   });
 
   final Color color;
   final ZetaTagDirection direction;
-  final BorderType borderType;
+  final bool rounded;
 
   @override
   void paint(Canvas canvas, Size size) {
     final Paint paint = Paint()
       ..color = color
       ..style = PaintingStyle.fill;
-    final path = _buildPath(size);
-    if (borderType != BorderType.sharp) _drawDot(canvas, size);
+    final path = _drawPath(size, rounded, direction == ZetaTagDirection.right);
+
     canvas.drawPath(path, paint);
   }
 
-  Path _buildPath(Size size) {
-    return direction == ZetaTagDirection.left ? _leftPath(size) : _rightPath(size);
-  }
+  Path _drawPath(Size size, bool rounded, bool isRight) {
+    /// Const points of path
+    const double a = 0.1;
+    const double b = 0.04;
+    const double c = 0.48;
+    const double d = 0.55;
 
-  void _drawDot(Canvas canvas, Size size) {
-    final paint = Paint()..color = color;
-    const double dotSize = 1.7;
+    // Dynamic points on path
+    final double e = isRight ? size.width : 0;
+    final double f = isRight ? 1 : -1;
 
-    Offset dotPosition;
-    if (direction == ZetaTagDirection.right) {
-      dotPosition = Offset(2, size.height / 2);
+    final path = Path()
+      ..moveTo(e + f, 0)
+      ..lineTo(e, 0);
+    if (rounded) {
+      path
+        ..lineTo(size.width * (isRight ? a : 1 - a), size.height * (1 - d))
+        ..cubicTo(
+          size.width * (isRight ? b : 1 - b),
+          size.height * c,
+          size.width * (isRight ? b : 1 - b),
+          size.height * (1 - c),
+          size.width * (isRight ? a : 1 - a),
+          size.height * d,
+        );
     } else {
-      dotPosition = Offset(size.width - 2, size.height / 2);
+      path.lineTo(isRight ? 0 : size.width, size.height / 2);
     }
 
-    canvas.drawCircle(dotPosition, dotSize, paint);
-  }
-
-  Path _leftPath(Size size) {
-    return Path()
-      ..moveTo(0, size.height)
-      ..lineTo(size.width, size.height / 2)
-      ..lineTo(0, 0)
+    path
+      ..lineTo(e, size.height)
+      ..lineTo(e + f, size.height)
       ..close();
-  }
 
-  Path _rightPath(Size size) {
-    return Path()
-      ..moveTo(0, size.height / 2)
-      ..lineTo(size.width, 0)
-      ..lineTo(size.width, size.height)
-      ..close();
+    return path;
   }
 
   @override

@@ -38,7 +38,7 @@ class _PasswordState extends State<_Password> {
       key: _formKey,
       child: TestWidget(
         widget: Padding(
-          padding: EdgeInsets.all(Dimensions.x5),
+          padding: EdgeInsets.all(ZetaSpacing.x5),
           child: Column(
             children: [
               ConstrainedBox(

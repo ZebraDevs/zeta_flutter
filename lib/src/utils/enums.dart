@@ -1,12 +1,16 @@
 import 'dart:ui';
+import '../../zeta_flutter.dart';
 
 ///Border Types
 enum BorderType {
-  ///sharp border
+  /// Sharp border
   sharp,
 
-  ///rounded border
+  /// Slightly rounded border.
   rounded,
+
+  /// Fully rounded border.
+  full,
 }
 
 /// Widget Severity
@@ -55,4 +59,22 @@ class ZetaWidgetColor {
 
   ///foregroundColor Color
   final Color foregroundColor;
+}
+
+/// Status options for [ZetaBadge], [ZetaStatusLabel], [ZetaInPageBanner].
+enum ZetaWidgetStatus {
+  /// Information widget; defaults to purple color scheme.
+  info,
+
+  /// Positive widget; defaults to green color scheme.
+  positive,
+
+  /// Warning widget; defaults to yellow color scheme.
+  warning,
+
+  /// Negative widget; defaults to red color scheme.
+  negative,
+
+  /// Neutral widget; defaults to grey color scheme.
+  neutral,
 }

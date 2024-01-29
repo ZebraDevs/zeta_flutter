@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
-import 'package:zeta_example/pages/components/button_example.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 import '../../test/test_components.dart';
@@ -13,56 +12,13 @@ WidgetbookComponent buttonWidgetBook() {
       WidgetbookUseCase(
         name: 'Button',
         builder: (context) {
-          final buttonColors = BuildExampleButtonColors(theme: Zeta.of(context));
-          List<ZetaButtonColors> all = [
-            buttonColors.primaryColors,
-            buttonColors.primaryVariantColors,
-            buttonColors.negativeColors,
-            buttonColors.outlined,
-            buttonColors.outlinedSubtle,
-            buttonColors.textColors,
-            buttonColors.textInverseColor,
-          ];
-
           return TestWidget(
             widget: Padding(
               padding: EdgeInsets.all(20),
               child: ZetaButton(
                 label: context.knobs.string(label: 'Text', initialValue: 'Button'),
-                colors: context.knobs.list(
-                  label: 'Colors',
-                  options: all,
-                  labelBuilder: (value) {
-                    if (value.backgroundColor == buttonColors.primaryColors.backgroundColor) return 'Primary';
-                    if (value.backgroundColor == buttonColors.primaryVariantColors.backgroundColor)
-                      return 'Primary Variant';
-                    if (value.backgroundColor == buttonColors.negativeColors.backgroundColor) return 'Negative';
-                    if (value.foregroundColor == buttonColors.textColors.foregroundColor) return 'Text';
-                    if (value.actionColor == buttonColors.outlined.actionColor) return 'Outlined';
-                    if (value.actionColor == buttonColors.outlinedSubtle.actionColor) return 'Outline Subtle';
-                    if (value.actionColor == buttonColors.textInverseColor.actionColor) return 'Text Inverse';
-                    return '';
-                  },
-                ),
                 onPressed: context.knobs.boolean(label: 'Disabled') ? null : () {},
                 borderType: context.knobs.boolean(label: 'Rounded') ? BorderType.rounded : BorderType.sharp,
-                icon: context.knobs.list(
-                  label: 'Icon',
-                  options: [
-                    ZetaIcons.star_half_round,
-                    ZetaIcons.add_alert_round,
-                    ZetaIcons.add_box_round,
-                    ZetaIcons.barcode_round,
-                  ],
-                  labelBuilder: (value) {
-                    if (value == ZetaIcons.star_half_round) return 'ZetaIcons.star_half_round';
-                    if (value == ZetaIcons.add_alert_round) return 'ZetaIcons.add_alert_round';
-                    if (value == ZetaIcons.add_box_round) return 'ZetaIcons.add_box_round';
-                    if (value == ZetaIcons.barcode_round) return 'ZetaIcons.barcode_round';
-                    return '';
-                  },
-                ),
-                iconOnRight: context.knobs.boolean(label: 'Icon on right'),
                 size: context.knobs.list(label: 'Size', options: ZetaWidgetSize.values),
                 type: context.knobs.list(label: 'Type', options: ZetaButtonType.values),
               ),

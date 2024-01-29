@@ -17,12 +17,28 @@ WidgetbookComponent BannerWidgetBook() {
             child: Column(
               children: [
                 ZetaSystemBanner(
-                  title: Text(context.knobs.string(label: 'Title', initialValue: 'Banner Title')),
-                  type: context.knobs.list(label: 'Type', options: ZetaSystemBannerType.values),
-                  titleIcon: context.knobs.boolean(label: 'Leading Icon') ? Icon(ZetaIcons.info_round) : null,
-                  centerTitle: context.knobs.boolean(label: 'Center title'),
-                  actions: context.knobs.boolean(label: 'Trailing Icon')
-                      ? [IconButton(icon: Icon(ZetaIcons.chevron_right_round), onPressed: () {})]
+                  context: context,
+                  title: context.knobs.string(label: 'Title', initialValue: 'Banner Title'),
+                  type: context.knobs.list(label: 'Type', options: ZetaSystemBannerStatus.values),
+                  leadingIcon: context.knobs.list(
+                    label: 'Icon',
+                    options: [
+                      ZetaIcons.star_half_round,
+                      ZetaIcons.add_alert_round,
+                      ZetaIcons.add_box_round,
+                      ZetaIcons.barcode_round,
+                    ],
+                    labelBuilder: (value) {
+                      if (value == ZetaIcons.star_half_round) return 'ZetaIcons.star_half_round';
+                      if (value == ZetaIcons.add_alert_round) return 'ZetaIcons.add_alert_round';
+                      if (value == ZetaIcons.add_box_round) return 'ZetaIcons.add_box_round';
+                      if (value == ZetaIcons.barcode_round) return 'ZetaIcons.barcode_round';
+                      return '';
+                    },
+                  ),
+                  titleStart: context.knobs.boolean(label: 'Center title'),
+                  trailing: context.knobs.boolean(label: 'Trailing Icon')
+                      ? IconButton(icon: Icon(ZetaIcons.chevron_right_round), onPressed: () {})
                       : null,
                 ),
               ],
@@ -46,16 +62,26 @@ WidgetbookComponent BannerWidgetBook() {
                           'Lorem ipsum dolor sit amet, conse ctetur  cididunt ut labore et do lore magna aliqua.',
                     ),
                   ),
-                  severity: context.knobs.list(label: 'Severity', options: WidgetSeverity.values),
+                  severity: context.knobs.list(label: 'Severity', options: ZetaWidgetStatus.values),
                   showIconClose: context.knobs.boolean(label: 'Show Close icon'),
                   title: context.knobs.string(label: 'Title', initialValue: 'Title'),
-                  borderType: context.knobs.boolean(label: 'Rounded') ? BorderType.rounded : BorderType.sharp,
-                  firstButton: context.knobs.boolean(label: 'First Button')
-                      ? ZetaPageBannerButton(onPressed: () {}, label: 'Button')
-                      : null,
-                  secondButton: context.knobs.boolean(label: 'Second Button')
-                      ? ZetaPageBannerButton(onPressed: () {}, label: 'Button')
-                      : null,
+                  rounded: context.knobs.boolean(label: 'Rounded'),
+                  actions: () {
+                    final x = context.knobs.list(label: 'Show Buttons', options: [0, 1, 2]);
+
+                    if (x == 1) {
+                      return [
+                        ZetaButton(label: 'Button 1', onPressed: () {}),
+                      ];
+                    }
+                    if (x == 2) {
+                      return [
+                        ZetaButton(label: 'Button 1', onPressed: () {}),
+                        ZetaButton(label: 'Button 2', onPressed: () {})
+                      ];
+                    }
+                    return <ZetaButton>[];
+                  }(),
                   customIcon: context.knobs.list(
                     label: 'Icon',
                     options: [

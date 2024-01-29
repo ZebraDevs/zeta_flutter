@@ -9,7 +9,7 @@ void main() {
       TestWidget(
         widget: ZetaBadge(
           label: 'Test Label',
-          severity: WidgetSeverity.warning,
+          status: ZetaWidgetStatus.warning,
         ),
       ),
     );
@@ -17,8 +17,8 @@ void main() {
     final zetaBadgeFinder = find.byType(ZetaBadge);
     final ZetaBadge badge = tester.firstWidget(zetaBadgeFinder);
 
-    expect(badge.borderType, BorderType.rounded);
+    expect(badge.rounded, true);
     expect(badge.label, 'Test Label');
-    expect(badge.severity, WidgetSeverity.warning);
+    expect(badge.status, ZetaWidgetStatus.warning);
   });
 }

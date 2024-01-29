@@ -1,24 +1,21 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
-import 'package:flutter/material.dart';
 
 import 'test_components.dart';
 
 void main() {
   group('ZetaButton Tests', () {
-    testWidgets('Initializes with correct Label and Icon', (WidgetTester tester) async {
+    testWidgets('Initializes with correct Label', (WidgetTester tester) async {
       await tester.pumpWidget(
         TestWidget(
-            widget: ZetaButton(
-          colors: ZetaButtonColors(),
-          onPressed: () {},
-          label: 'Test Button',
-          icon: Icons.star,
-        )),
+          widget: ZetaButton(
+            onPressed: () {},
+            label: 'Test Button',
+          ),
+        ),
       );
 
       expect(find.text('Test Button'), findsOneWidget);
-      expect(find.byIcon(Icons.star), findsOneWidget);
     });
   });
 
@@ -27,7 +24,6 @@ void main() {
     await tester.pumpWidget(
       TestWidget(
           widget: ZetaButton(
-        colors: ZetaButtonColors(),
         onPressed: () => callbackTriggered = true,
         label: 'Test Button',
       )),

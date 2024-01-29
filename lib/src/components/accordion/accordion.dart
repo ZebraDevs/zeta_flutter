@@ -2,52 +2,49 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import '../../../zeta_flutter.dart';
 
-/// Component [ZetaAccordion]
+/// Zeta Accordion component.
+///
+/// The accordion is a control element comprising a vertically stacked list of items,
+/// such as labels or thumbnails. Each item can be "expanded" or "collapsed" to reveal
+/// the content associated with that item. There can be zero expanded items, exactly one,
+/// or more than one item expanded at a time, depending on the configuration.
 class ZetaAccordion extends StatelessWidget {
-  /// The constructor of the component [ZetaAccordion]
+  /// The constructor of the component [ZetaAccordion].
   const ZetaAccordion({
     super.key,
     required this.children,
-    this.separator,
-    this.spaceBetween = 20.0,
-    this.margin,
     this.rounded = true,
     this.contained = false,
   });
 
-  /// List of [ZetaAccordionSection] to show in [ZetaAccordion]
+  /// List of [ZetaAccordionSection] to show in [ZetaAccordion].
   final List<ZetaAccordionSection> children;
 
-  /// Custom separator between the [ZetaAccordionSection]s in the list `children`.
-  /// Default is empty space with height of `spaceBetween`.
-  final Widget? separator;
-
-  /// The height of the space between [ZetaAccordionSection]s `children`.
-  /// Default is 20.
-  final double spaceBetween;
-
-  /// The space around the [ZetaAccordion]. Default is `zero`.
-  final EdgeInsets? margin;
-
+  /// {@template zeta-component-rounded}
   /// Sets rounded or sharp border of the containing box and the icon style.
-  /// Default is `true`.
+  ///
+  /// Defaults to `true`.
+  /// {@endtemplate}
   final bool rounded;
 
   /// Determines if the [ZetaAccordionSection]s should be in a box.
-  /// Default is `false`
+  ///
+  /// Defaults to `false`.
   final bool contained;
 
   @override
   Widget build(BuildContext context) {
-    return ListView.separated(
-      padding: margin ?? EdgeInsets.zero,
-      shrinkWrap: true,
-      itemCount: children.length,
-      itemBuilder: (context, index) => children[index].copyWith(
-        rounded: rounded,
-        contained: contained,
+    return DecoratedBox(
+      decoration: BoxDecoration(
+        borderRadius: rounded ? ZetaRadius.minimal : ZetaRadius.none,
+        border: Border(top: BorderSide(color: Zeta.of(context).colors.cool.shade40)),
       ),
-      separatorBuilder: (context, index) => separator ?? SizedBox(height: spaceBetween),
+      child: ListView.builder(
+        padding: EdgeInsets.zero,
+        shrinkWrap: true,
+        itemCount: children.length,
+        itemBuilder: (context, index) => children[index].copyWith(rounded: rounded, contained: contained),
+      ),
     );
   }
 
@@ -55,12 +52,12 @@ class ZetaAccordion extends StatelessWidget {
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty<double>('spaceBetween', spaceBetween))
-      ..add(DiagnosticsProperty<EdgeInsets?>('margin', margin))
       ..add(DiagnosticsProperty<bool>('rounded', rounded))
       ..add(DiagnosticsProperty<bool>('contained', contained));
   }
 }
+
+// TODO(thelukewalton): Consider changing this to improve developer experience.
 
 /// The element for the `children` of [ZetaAccordion]
 class ZetaAccordionSection extends StatefulWidget {
@@ -176,7 +173,7 @@ class _ZetaAccordionSectionState extends State<ZetaAccordionSection> with Ticker
                 color: _disabled ? zetaColors.borderDisabled : zetaColors.borderDefault,
               )
             : null,
-        borderRadius: widget.rounded ? BorderRadius.circular(Dimensions.xxs) : null,
+        borderRadius: widget.rounded ? ZetaRadius.minimal : ZetaRadius.none,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -193,6 +190,7 @@ class _ZetaAccordionSectionState extends State<ZetaAccordionSection> with Ticker
                         _controller.forward();
                       }
                     }),
+            hoverColor: Zeta.of(context).colors.cool.shade20,
             child: Padding(
               padding: const EdgeInsets.all(16),
               child: Row(
@@ -205,7 +203,7 @@ class _ZetaAccordionSectionState extends State<ZetaAccordionSection> with Ticker
                     child: Flexible(child: widget.title),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 16),
+                    padding: const EdgeInsets.only(left: ZetaSpacing.x4),
                     child: Icon(
                       _isOpen
                           ? (widget.rounded ? ZetaIcons.remove_round : ZetaIcons.remove_sharp)
@@ -221,11 +219,8 @@ class _ZetaAccordionSectionState extends State<ZetaAccordionSection> with Ticker
             sizeFactor: _animation,
             axisAlignment: -1,
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
-              child: DefaultTextStyle(
-                style: ZetaTextStyles.titleSmall,
-                child: widget.body,
-              ),
+              padding: const EdgeInsets.fromLTRB(ZetaSpacing.x4, ZetaSpacing.x0, ZetaSpacing.x4, ZetaSpacing.x4),
+              child: DefaultTextStyle(style: ZetaTextStyles.titleSmall, child: widget.body),
             ),
           ),
         ],

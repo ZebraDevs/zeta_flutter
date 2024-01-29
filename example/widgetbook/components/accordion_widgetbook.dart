@@ -10,7 +10,7 @@ WidgetbookComponent accordionWidgetBook() {
     name: 'Accordion',
     useCases: [
       WidgetbookUseCase(
-        name: 'Accordian',
+        name: 'Accordion',
         builder: (context) => TestWidget(
           themeMode: ThemeMode.dark,
           widget: Padding(

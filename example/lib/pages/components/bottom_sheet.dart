@@ -14,7 +14,7 @@ class BottomSheetExample extends StatelessWidget {
         return ExampleScaffold(
           name: BottomSheetExample.name,
           child: SingleChildScrollView(
-            padding: EdgeInsets.all(Dimensions.s),
+            padding: EdgeInsets.all(ZetaSpacing.s),
             child: Column(
               children: [
                 ZetaMenuItem.horizontal(

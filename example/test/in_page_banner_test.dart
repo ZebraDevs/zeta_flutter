@@ -51,15 +51,23 @@ void main() {
 
   testWidgets('ZetaInPageBanner button callbacks work', (WidgetTester tester) async {
     bool onPressed = false;
+    final key = GlobalKey();
     await tester.pumpWidget(
       TestWidget(
-          widget: ZetaInPageBanner(
-        content: Text('Test'),
-        firstButton: ZetaPageBannerButton(label: 'Test Button', onPressed: () => onPressed = true),
-      )),
+        widget: ZetaInPageBanner(
+          content: Text('Test'),
+          actions: [
+            ZetaButton(
+              label: 'Test button',
+              onPressed: () => onPressed = true,
+              key: key,
+            ),
+          ],
+        ),
+      ),
     );
 
-    await tester.tap(find.text('Test Button'));
+    await tester.tap(find.byKey(key));
     await tester.pumpAndSettle();
     expect(onPressed, isTrue);
   });

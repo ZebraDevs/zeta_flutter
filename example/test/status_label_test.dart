@@ -19,7 +19,6 @@ void main() {
       TestWidgetStatusLabel(
         widget: ZetaStatusLabel(
           label: 'Custom Icon',
-          isDefaultIcon: false,
           customIcon: Icons.person,
         ),
       ),

@@ -85,18 +85,18 @@ class ColorBody extends StatelessWidget {
       };
 
       return Container(
-        padding: const EdgeInsets.symmetric(horizontal: Dimensions.l),
+        padding: const EdgeInsets.symmetric(horizontal: ZetaSpacing.l),
         child: SingleChildScrollView(
           child: Column(
             children: [
-              const SizedBox(height: Dimensions.l),
+              const SizedBox(height: ZetaSpacing.l),
               MyRow(children: textIcon, title: 'Text and icon styles'),
               MyRow(children: border, title: 'Border styles'),
               MyRow(children: links, title: 'Links'),
               MyRow(children: backdrop, title: 'Backdrop colors'),
               MyRow(children: alerts, title: 'Alert colors'),
               Row(children: [Text('Full color swatches', style: ZetaTextStyles.displayMedium)])
-                  .paddingVertical(Dimensions.x8),
+                  .paddingVertical(ZetaSpacing.x8),
               ...swatches.entries.map(
                 (value) {
                   return Row(
@@ -134,7 +134,7 @@ class ColorBody extends StatelessWidget {
                   );
                 },
               ),
-              const SizedBox(height: Dimensions.l),
+              const SizedBox(height: ZetaSpacing.l),
             ],
           ),
         ),

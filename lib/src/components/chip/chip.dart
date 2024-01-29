@@ -93,7 +93,7 @@ class ZetaChip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = Zeta.of(context).colors;
-    final avatarSize = type == ZetaChipType.input ? 24.0 : 20.0;
+    final avatarSize = type == ZetaChipType.input ? ZetaSpacing.x6 : ZetaSpacing.x5;
     final bgColor = type == ZetaChipType.status
         ? colors.warm.shade30
         : selected

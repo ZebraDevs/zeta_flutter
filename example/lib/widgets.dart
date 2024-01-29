@@ -38,7 +38,7 @@ class ExampleBuilder extends StatelessWidget {
             height: 7,
             width: 7,
             decoration: BoxDecoration(color: Theme.of(context).colorScheme.onSurface, shape: BoxShape.circle),
-          ).paddingVertical(Dimensions.x9).paddingHorizontal(Dimensions.x4),
+          ).paddingVertical(ZetaSpacing.x9).paddingHorizontal(ZetaSpacing.x4),
         if (model.title != null && MediaQuery.of(context).size.width > 767) Expanded(child: Text(model.title!)),
         Expanded(
           flex: 5,
@@ -55,7 +55,7 @@ class ExampleBuilder extends StatelessWidget {
             ],
           ),
         ),
-        const SizedBox(height: 7, width: 7).paddingVertical(Dimensions.x9).paddingHorizontal(Dimensions.x4),
+        const SizedBox(height: 7, width: 7).paddingVertical(ZetaSpacing.x9).paddingHorizontal(ZetaSpacing.x4),
       ],
     );
   }
@@ -97,6 +97,7 @@ class ExampleScaffold extends StatelessWidget {
           ZetaThemeColorSwitch(),
         ],
       ),
+      backgroundColor: colors.surface,
       body: SelectionArea(
         child: child,
       ),
@@ -115,7 +116,7 @@ class CodeExample extends StatelessWidget {
     final colors = Zeta.of(context).colors;
     final widget = Container(
       color: colors.surfaceDisabled,
-      padding: EdgeInsets.all(Dimensions.x4),
+      padding: EdgeInsets.all(ZetaSpacing.x4),
       child: Text(code, style: GoogleFonts.ibmPlexMono(color: colors.textDefault)),
     );
 
@@ -133,6 +134,6 @@ class CodeExample extends StatelessWidget {
                 ],
               )
             : widget)
-        .paddingVertical(Dimensions.x4);
+        .paddingVertical(ZetaSpacing.x4);
   }
 }

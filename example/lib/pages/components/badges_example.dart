@@ -44,20 +44,20 @@ class _DividingText extends StatelessWidget {
     return Text(
       text,
       style: ZetaTextStyles.displayMedium,
-    ).paddingVertical(Dimensions.l);
+    ).paddingVertical(ZetaSpacing.l);
   }
 }
 
 class _StatusLabel extends StatelessWidget {
   const _StatusLabel();
 
-  Widget statusLabelExampleRow(WidgetSeverity type, {ZetaWidgetColor? colors}) {
+  Widget statusLabelExampleRow(ZetaWidgetStatus type, {ZetaWidgetColor? colors}) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        ZetaStatusLabel(label: 'Label', severity: type, isDefaultIcon: false, customColors: colors),
-        ZetaStatusLabel(label: 'Label', severity: type, borderType: BorderType.rounded, customColors: colors),
+        ZetaStatusLabel(label: 'Label', status: type, rounded: false),
+        ZetaStatusLabel(label: 'Label', status: type, rounded: true),
       ],
     );
   }
@@ -66,16 +66,12 @@ class _StatusLabel extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        statusLabelExampleRow(WidgetSeverity.neutral),
-        statusLabelExampleRow(WidgetSeverity.info),
-        statusLabelExampleRow(WidgetSeverity.positive),
-        statusLabelExampleRow(WidgetSeverity.warning),
-        statusLabelExampleRow(WidgetSeverity.negative),
-        statusLabelExampleRow(
-          WidgetSeverity.custom,
-          colors: ZetaWidgetColor(foregroundColor: Colors.blue, backgroundColor: Colors.blue.shade50),
-        )
-      ].divide(const SizedBox.square(dimension: Dimensions.m)).toList(),
+        statusLabelExampleRow(ZetaWidgetStatus.neutral),
+        statusLabelExampleRow(ZetaWidgetStatus.info),
+        statusLabelExampleRow(ZetaWidgetStatus.positive),
+        statusLabelExampleRow(ZetaWidgetStatus.warning),
+        statusLabelExampleRow(ZetaWidgetStatus.negative),
+      ].divide(const SizedBox.square(dimension: ZetaSpacing.m)).toList(),
     );
   }
 }
@@ -88,9 +84,9 @@ class _PriorityPill extends StatelessWidget {
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-        ZetaPriorityPill(index: 1, priority: 'Rounded', borderType: BorderType.rounded),
-        ZetaPriorityPill(index: 2, priority: 'Sharp'),
-      ].divide(const SizedBox.square(dimension: Dimensions.m)).toList(),
+        ZetaPriorityPill(index: 1000, priority: 'Rounded', rounded: true),
+        ZetaPriorityPill(index: 2, priority: 'Sharp', rounded: false),
+      ].divide(const SizedBox.square(dimension: ZetaSpacing.m)).toList(),
     );
   }
 }
@@ -98,13 +94,13 @@ class _PriorityPill extends StatelessWidget {
 class _Badge extends StatelessWidget {
   const _Badge();
 
-  Widget badgeExampleRow(WidgetSeverity type) {
+  Widget badgeExampleRow(ZetaWidgetStatus type) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        ZetaBadge(label: 'Label', severity: type, borderType: BorderType.sharp),
-        ZetaBadge(label: 'Label', severity: type),
+        ZetaBadge(label: 'Label', status: type, rounded: false),
+        ZetaBadge(label: 'Label', status: type),
       ],
     );
   }
@@ -113,12 +109,12 @@ class _Badge extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        badgeExampleRow(WidgetSeverity.info),
-        badgeExampleRow(WidgetSeverity.positive),
-        badgeExampleRow(WidgetSeverity.warning),
-        badgeExampleRow(WidgetSeverity.negative),
-        badgeExampleRow(WidgetSeverity.neutral),
-      ].divide(const SizedBox(height: Dimensions.m)).toList(),
+        badgeExampleRow(ZetaWidgetStatus.info),
+        badgeExampleRow(ZetaWidgetStatus.positive),
+        badgeExampleRow(ZetaWidgetStatus.warning),
+        badgeExampleRow(ZetaWidgetStatus.negative),
+        badgeExampleRow(ZetaWidgetStatus.neutral),
+      ].divide(const SizedBox(height: ZetaSpacing.m)).toList(),
     );
   }
 }
@@ -149,44 +145,23 @@ class _Indicators extends StatelessWidget {
                         ZetaIndicator.icon(),
                         ZetaIndicator.icon(size: ZetaIndicatorSize.medium),
                         ZetaIndicator.icon(size: ZetaIndicatorSize.small),
-                      ].divide(const SizedBox.square(dimension: Dimensions.m)).toList(),
+                      ].divide(const SizedBox.square(dimension: ZetaSpacing.m)).toList(),
                     ),
                     Row(
                       children: [
                         ZetaIndicator.icon(inverseBorder: true),
                         ZetaIndicator.icon(size: ZetaIndicatorSize.medium, inverseBorder: true),
                         ZetaIndicator.icon(size: ZetaIndicatorSize.small, inverseBorder: true),
-                      ].divide(const SizedBox.square(dimension: Dimensions.m)).toList(),
+                      ].divide(const SizedBox.square(dimension: ZetaSpacing.m)).toList(),
                     ),
-                    Text('Rounded', style: TextStyle(fontWeight: FontWeight.bold)),
-                  ].divide(const SizedBox.square(dimension: Dimensions.xs)).toList(),
+                  ].divide(const SizedBox.square(dimension: ZetaSpacing.xs)).toList(),
                 ),
                 const SizedBox(width: 50),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        ZetaIndicator.icon(rounded: false),
-                        ZetaIndicator.icon(size: ZetaIndicatorSize.medium, rounded: false),
-                        ZetaIndicator.icon(size: ZetaIndicatorSize.small),
-                      ].divide(const SizedBox.square(dimension: Dimensions.m)).toList(),
-                    ),
-                    Row(
-                      children: [
-                        ZetaIndicator.icon(rounded: false, inverseBorder: true),
-                        ZetaIndicator.icon(size: ZetaIndicatorSize.medium, rounded: false, inverseBorder: true),
-                        ZetaIndicator.icon(size: ZetaIndicatorSize.small, inverseBorder: true),
-                      ].divide(const SizedBox.square(dimension: Dimensions.m)).toList(),
-                    ),
-                    Text('Sharp', style: TextStyle(fontWeight: FontWeight.bold)),
-                  ].divide(const SizedBox.square(dimension: Dimensions.s)).toList(),
-                ),
               ],
             ),
           ],
         ),
-        const SizedBox.square(dimension: Dimensions.xl),
+        const SizedBox.square(dimension: ZetaSpacing.xl),
         Column(
           children: [
             Text('ZetaIndicator.notification', style: TextStyle(fontWeight: FontWeight.bold)),
@@ -202,17 +177,16 @@ class _Indicators extends StatelessWidget {
                         ZetaIndicator.notification(value: 3),
                         ZetaIndicator.notification(size: ZetaIndicatorSize.medium, value: 3),
                         ZetaIndicator.notification(size: ZetaIndicatorSize.small),
-                      ].divide(const SizedBox.square(dimension: Dimensions.m)).toList(),
+                      ].divide(const SizedBox.square(dimension: ZetaSpacing.m)).toList(),
                     ),
                     Row(
                       children: [
                         ZetaIndicator.notification(value: 3, inverseBorder: true),
                         ZetaIndicator.notification(size: ZetaIndicatorSize.medium, value: 3, inverseBorder: true),
                         ZetaIndicator.notification(size: ZetaIndicatorSize.small, inverseBorder: true),
-                      ].divide(const SizedBox.square(dimension: Dimensions.m)).toList(),
+                      ].divide(const SizedBox.square(dimension: ZetaSpacing.m)).toList(),
                     ),
-                    Text('', style: TextStyle(fontWeight: FontWeight.bold)),
-                  ].divide(const SizedBox.square(dimension: Dimensions.s)).toList(),
+                  ].divide(const SizedBox.square(dimension: ZetaSpacing.s)).toList(),
                 ),
               ],
             ),
@@ -228,14 +202,17 @@ class _Tags extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        ZetaTag.left(label: 'Sharp', borderType: BorderType.sharp),
-        ZetaTag.right(label: 'Sharp', borderType: BorderType.sharp),
-        ZetaTag.left(label: 'Rounded', borderType: BorderType.sharp),
-        ZetaTag.right(label: 'Rounded', borderType: BorderType.rounded),
-      ].divide(SizedBox.square(dimension: Dimensions.m)).toList(),
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          ZetaTag.left(label: 'Sharp', rounded: false),
+          ZetaTag.right(label: 'Sharp', rounded: false),
+          ZetaTag.left(label: 'Rounded'),
+          ZetaTag.right(label: 'Rounded'),
+        ].divide(SizedBox.square(dimension: ZetaSpacing.m)).toList(),
+      ),
     );
   }
 }
@@ -243,28 +220,25 @@ class _Tags extends StatelessWidget {
 class _WorkcloudIndicators extends StatelessWidget {
   const _WorkcloudIndicators();
 
-  List<Widget> workcloudIndicatorStatusRow(String label) {
-    return [
-      Row(children: [ZetaWorkcloudIndicator.status(label: label)]),
-      SizedBox(height: 10)
-    ];
-  }
-
-  Widget workcloudIndicatorExampleRow(String label, String index, ZetaWorkcloudIndicatorType type,
-      {ZetaWidgetColor? colors}) {
+  Widget workcloudIndicatorExampleRow(ZetaWorkcloudIndicatorType type) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        ZetaWorkcloudIndicator.priorityPill(
-            index: index, label: label, priorityType: type, prioritySize: ZetaWidgetSize.large, customColors: colors),
-        ZetaWorkcloudIndicator.priorityPill(
-          index: index,
-          label: label,
-          prioritySize: ZetaWidgetSize.medium,
+        ZetaWorkcloudIndicator(
           priorityType: type,
-          customColors: colors,
+          prioritySize: ZetaWidgetSize.large,
+          icon: ZetaIcons.star_half_round,
+          label: 'Label',
         ),
-        ZetaWorkcloudIndicator.priorityPill(index: index, label: label, priorityType: type, customColors: colors),
+        ZetaWorkcloudIndicator(
+          prioritySize: ZetaWidgetSize.medium,
+          index: '14',
+          priorityType: type,
+          label: 'Label!',
+        ),
+        ZetaWorkcloudIndicator(
+          priorityType: type,
+        ),
       ],
     );
   }
@@ -273,16 +247,6 @@ class _WorkcloudIndicators extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            ZetaWorkcloudIndicator(label: 'Test Status Badge'),
-            ZetaWorkcloudIndicator.status(label: 'Status'),
-            ZetaWorkcloudIndicator.status(label: 'In Progress'),
-            ZetaWorkcloudIndicator.status(label: 'Reviewed'),
-            ZetaWorkcloudIndicator.status(label: 'Resolved')
-          ].divide(const SizedBox.square(dimension: Dimensions.s)).toList(),
-        ),
         SizedBox(height: 30),
         Column(
           children: [
@@ -290,18 +254,11 @@ class _WorkcloudIndicators extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [Text('Medium'), Text('Small'), Text('X-Small')],
             ),
-            workcloudIndicatorExampleRow('Urgent', 'U', ZetaWorkcloudIndicatorType.urgent),
-            workcloudIndicatorExampleRow('High', '1', ZetaWorkcloudIndicatorType.high),
-            workcloudIndicatorExampleRow('Medium', '2', ZetaWorkcloudIndicatorType.medium),
-            workcloudIndicatorExampleRow('Low', '3', ZetaWorkcloudIndicatorType.low),
-            workcloudIndicatorExampleRow(
-              'Custom',
-              '4',
-              ZetaWorkcloudIndicatorType.custom,
-              colors: ZetaWidgetColor(backgroundColor: Colors.purple, foregroundColor: Colors.purple.shade50),
-            ),
-          ].divide(const SizedBox.square(dimension: Dimensions.s)).toList(),
-        ).paddingAll(Dimensions.m)
+            ...List.generate(10, (index) {
+              return workcloudIndicatorExampleRow(ZetaWorkcloudIndicatorType.values[index]);
+            }),
+          ].divide(const SizedBox.square(dimension: ZetaSpacing.s)).toList(),
+        ).paddingAll(ZetaSpacing.m)
       ],
     );
   }

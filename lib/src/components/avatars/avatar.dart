@@ -3,6 +3,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import '../../../zeta_flutter.dart';
 
+// TODO(thelukewalton): Think more about this.
+
 /// [ZetaAvatar] type
 enum ZetaAvatarType {
   /// [image] shows a picture or a placeholder
@@ -239,17 +241,8 @@ class ZetaAvatar extends StatelessWidget {
               child: innerContent,
             ),
           ),
-        if (badge != null)
-          Positioned(
-            right: 1,
-            child: badge!,
-          ),
-        if (specialStatus != null)
-          Positioned(
-            right: 1,
-            bottom: 1,
-            child: specialStatus!,
-          ),
+        if (badge != null) Positioned(right: 1, child: badge!),
+        if (specialStatus != null) Positioned(right: 1, bottom: 1, child: specialStatus!),
       ],
     );
   }

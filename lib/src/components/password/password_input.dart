@@ -137,7 +137,7 @@ class _ZetaPasswordInputState extends State<ZetaPasswordInput> {
 
   Widget _buildLabel() {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: Dimensions.x1),
+      padding: const EdgeInsets.symmetric(vertical: ZetaSpacing.x1),
       child: Text(widget.label!, style: ZetaTextStyles.bodyMedium),
     );
   }
@@ -164,7 +164,7 @@ class _ZetaPasswordInputState extends State<ZetaPasswordInput> {
     return OutlineInputBorder(
       borderSide: BorderSide(color: color, width: width),
       borderRadius: BorderRadius.circular(
-        widget.borderType == BorderType.rounded ? Dimensions.x1 : Dimensions.x0,
+        widget.borderType == BorderType.rounded ? ZetaSpacing.x1 : ZetaSpacing.x0,
       ),
     );
   }
@@ -193,17 +193,17 @@ class _ZetaPasswordInputState extends State<ZetaPasswordInput> {
 
   Widget _buildFooter(_ZetaPasswordInputColors colors) {
     return Padding(
-      padding: const EdgeInsets.only(top: Dimensions.x1),
+      padding: const EdgeInsets.only(top: ZetaSpacing.x1),
       child: Row(
         children: [
           if (_errorMessage != null) ..._buildError(colors.borderErrorColor),
           if (_errorMessage == null && widget.footerIcon != null) ...[
             Icon(
               widget.footerIcon,
-              size: Dimensions.x4,
+              size: ZetaSpacing.x4,
               color: widget.enabled ? colors.hintIconColor : colors.hintIconDisableColor,
             ),
-            const SizedBox(width: Dimensions.x1),
+            const SizedBox(width: ZetaSpacing.x1),
           ],
           if (_errorMessage == null && widget.footerText != null) ...[
             Text(
@@ -222,10 +222,10 @@ class _ZetaPasswordInputState extends State<ZetaPasswordInput> {
     return [
       Icon(
         ZetaIcons.error_round,
-        size: Dimensions.x4,
+        size: ZetaSpacing.x4,
         color: color,
       ),
-      const SizedBox(width: Dimensions.x1),
+      const SizedBox(width: ZetaSpacing.x1),
       Text(
         _errorMessage!,
         style: ZetaTextStyles.bodySmall.apply(color: color),
@@ -238,7 +238,7 @@ class _ZetaPasswordInputState extends State<ZetaPasswordInput> {
       valueListenable: _obscureTextNotifier,
       builder: (context, value, child) {
         return IconButton(
-          padding: const EdgeInsets.symmetric(vertical: Dimensions.x1),
+          padding: const EdgeInsets.symmetric(vertical: ZetaSpacing.x1),
           icon: Icon(
             value ? ZetaIcons.visibility_off_sharp : ZetaIcons.visibility_sharp,
             size: _getSuffixIconSize(),
@@ -259,11 +259,11 @@ class _ZetaPasswordInputState extends State<ZetaPasswordInput> {
   double _getInputHeight() {
     switch (widget.size) {
       case ZetaWidgetSize.small:
-        return Dimensions.x8;
+        return ZetaSpacing.x8;
       case ZetaWidgetSize.medium:
-        return Dimensions.x10;
+        return ZetaSpacing.x10;
       case ZetaWidgetSize.large:
-        return Dimensions.x12;
+        return ZetaSpacing.x12;
     }
   }
 
@@ -273,8 +273,8 @@ class _ZetaPasswordInputState extends State<ZetaPasswordInput> {
   }
 
   double _getSuffixIconSize() {
-    if (widget.size == ZetaWidgetSize.small) return Dimensions.x4;
-    return Dimensions.x5;
+    if (widget.size == ZetaWidgetSize.small) return ZetaSpacing.x4;
+    return ZetaSpacing.x5;
   }
 }
 

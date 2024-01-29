@@ -2,158 +2,67 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import '../../../zeta_flutter.dart';
 
-///Zeta Status Label
+/// Zeta Status Label.
+///
+/// To help some information, labels, or errors stand out, we present them with badges.
+/// They can look like buttons, but users can’t select them. They just guide users to things they should pay attention to.
 class ZetaStatusLabel extends StatelessWidget {
   ///Constructs [ZetaStatusLabel].
   const ZetaStatusLabel({
-    required this.label,
-    this.severity = WidgetSeverity.neutral,
-    this.isDefaultIcon = true,
-    this.customIcon,
-    this.borderType = BorderType.sharp,
-    this.labelSize = const Size(67, 24),
-    this.borderWidth = 1,
-    this.customColors,
-    this.customIconSize = 20.0,
     super.key,
+    required this.label,
+    this.rounded = true,
+    this.status = ZetaWidgetStatus.info,
+    this.customIcon,
   });
 
-  ///The type of border to display
-  ///
-  /// Defaults to sharp
-  final BorderType borderType;
+  /// {@zeta-component-rounded}
+  final bool rounded;
 
-  ///Width of the label border
-  ///
-  /// Defaults to 1
-  final double borderWidth;
+  /// {@macro zeta-component-badge-status}
+  final ZetaWidgetStatus status;
 
-  ///Size of the label
-  final Size labelSize;
-
-  ///Widget Severity
-  ///
-  /// Defaults to "neutral"
-  final WidgetSeverity severity;
-
-  ///Label
+  /// Text displayed on label.
   final String label;
 
-  ///Colors for the label
-  final ZetaWidgetColor? customColors;
-
-  ///Whether the icon is the default icon
-  ///
-  ///Defaults to true
-  final bool isDefaultIcon;
-
-  ///Custom icon
+  /// Optional custom icon. If null, default circle icon is used.
   final IconData? customIcon;
-
-  ///The size of the custom icon
-  ///
-  ///Defaults to 20
-  final double customIconSize;
 
   @override
   Widget build(BuildContext context) {
-    final theme = Zeta.of(context);
-    final colors = _getColors(theme);
-    return Container(
-      height: labelSize.height,
-      decoration: _buildDecoration(colors),
-      constraints: BoxConstraints(minWidth: labelSize.width),
-      child: _buildContent(colors, theme),
-    );
-  }
+    final ZetaColorSwatch colors = status.colorSwatch(context);
 
-  BoxDecoration _buildDecoration(ZetaWidgetColor colors) {
-    return BoxDecoration(
-      color: colors.backgroundColor,
-      border: Border.all(color: colors.foregroundColor, width: borderWidth),
-      borderRadius: BorderRadius.circular(borderType == BorderType.rounded ? 10.0 : 0.0),
-    );
-  }
-
-  Widget _buildContent(ZetaWidgetColor colors, Zeta theme) {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(8, 2, 8, 2),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          _buildIcon(colors),
-          const SizedBox(width: Dimensions.xs),
-          Flexible(
-            child: Text(
+    return DecoratedBox(
+      decoration: BoxDecoration(
+        color: colors.shade10,
+        border: Border.all(color: colors.border),
+        borderRadius: rounded ? ZetaRadius.full : ZetaRadius.minimal,
+      ),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: ZetaSpacing.x2, vertical: ZetaSpacing.x1 / 2),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(customIcon ?? Icons.circle, size: ZetaSpacing.x2, color: colors.icon),
+            const SizedBox(width: ZetaSpacing.xs),
+            Text(
               label,
-              style: ZetaTextStyles.bodyMedium,
+              style: ZetaTextStyles.bodyMedium.apply(color: colors.shade10.onColor),
               overflow: TextOverflow.ellipsis,
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
-  }
-
-  Icon _buildIcon(ZetaWidgetColor colors) {
-    final size = isDefaultIcon ? Dimensions.x2 : customIconSize;
-    return Icon(
-      size: size,
-      isDefaultIcon ? Icons.circle : (customIcon ?? Icons.star),
-      color: colors.foregroundColor,
-    );
-  }
-
-  ZetaWidgetColor _getColors(Zeta theme) {
-    final defaultColorScheme = ZetaWidgetColor(
-      backgroundColor: theme.colors.surfaceDisabled,
-      foregroundColor: theme.colors.borderDefault,
-    );
-    switch (severity) {
-      case WidgetSeverity.neutral:
-        return defaultColorScheme;
-      case WidgetSeverity.info:
-        return ZetaWidgetColor(
-          backgroundColor: theme.colors.purple.shade10,
-          foregroundColor: theme.colors.purple.shade50,
-        );
-      case WidgetSeverity.positive:
-        return ZetaWidgetColor(
-          backgroundColor: theme.colors.green.shade10,
-          foregroundColor: theme.colors.green.shade50,
-        );
-      case WidgetSeverity.warning:
-        return ZetaWidgetColor(
-          backgroundColor: theme.colors.orange.shade10,
-          foregroundColor: theme.colors.orange.shade50,
-        );
-      case WidgetSeverity.negative:
-        return ZetaWidgetColor(
-          backgroundColor: theme.colors.red.shade10,
-          foregroundColor: theme.colors.red.shade50,
-        );
-      case WidgetSeverity.custom:
-        return customColors ?? defaultColorScheme;
-    }
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(EnumProperty<BorderType>('borderType', borderType))
-      ..add(DoubleProperty('borderWidth', borderWidth))
-      ..add(DiagnosticsProperty<Size>('labelSize', labelSize))
-      ..add(EnumProperty<WidgetSeverity>('severity', severity))
       ..add(StringProperty('label', label))
-      ..add(
-        DiagnosticsProperty<ZetaWidgetColor?>(
-          'customColors',
-          customColors,
-        ),
-      )
-      ..add(DiagnosticsProperty<bool>('isDefaultIcon', isDefaultIcon))
+      ..add(DiagnosticsProperty<bool>('rounded', rounded))
       ..add(DiagnosticsProperty<IconData?>('customIcon', customIcon))
-      ..add(DoubleProperty('customIconSize', customIconSize));
+      ..add(EnumProperty<ZetaWidgetStatus>('severity', status));
   }
 }

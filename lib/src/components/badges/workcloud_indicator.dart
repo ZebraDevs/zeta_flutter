@@ -5,185 +5,144 @@ import '../../../zeta_flutter.dart';
 
 ///Indicator Type
 enum ZetaWorkcloudIndicatorType {
-  ///sets the color to red
-  urgent,
+  /// Red.
+  one,
 
-  ///sets the color to orange
-  high,
+  /// Orange
+  two,
 
-  ///sets the color to blue
-  medium,
+  /// Blue.
+  three,
 
-  ///sets the color to green
-  low,
+  /// Green.
+  four,
 
-  ///sets the color to custom color
-  custom
+  /// Purple.
+  five,
+
+  /// Pink.
+  six,
+
+  /// Yellow.
+  seven,
+
+  /// Teal
+  eight,
+
+  /// Cool grey.
+  nine,
+
+  /// Warn grey.
+  ten,
 }
 
-///Zeta Workcloud Indicator
+extension on ZetaWorkcloudIndicatorType {
+  ZetaColorSwatch color(BuildContext context) {
+    final colors = Zeta.of(context).colors;
+    switch (this) {
+      case ZetaWorkcloudIndicatorType.one:
+        return colors.red;
+      case ZetaWorkcloudIndicatorType.two:
+        return colors.orange;
+      case ZetaWorkcloudIndicatorType.three:
+        return colors.blue;
+      case ZetaWorkcloudIndicatorType.four:
+        return colors.green;
+      case ZetaWorkcloudIndicatorType.five:
+        return colors.purple;
+      case ZetaWorkcloudIndicatorType.six:
+        return colors.pink;
+      case ZetaWorkcloudIndicatorType.seven:
+        return colors.yellow;
+      case ZetaWorkcloudIndicatorType.eight:
+        return colors.teal;
+      case ZetaWorkcloudIndicatorType.nine:
+        return colors.cool;
+      case ZetaWorkcloudIndicatorType.ten:
+        return colors.warm;
+    }
+  }
+}
+
+/// Zeta Workcloud Indicator.
+///
+/// There are 10 available levels in which ether the values 1 through 10 can be used,
+/// or icons can be passed.
 class ZetaWorkcloudIndicator extends StatelessWidget {
   ///Constructs [ZetaWorkcloudIndicator]
   const ZetaWorkcloudIndicator({
-    this.isStatusBadge = true,
-    this.priorityType,
+    super.key,
+    this.priorityType = ZetaWorkcloudIndicatorType.one,
     this.prioritySize = ZetaWidgetSize.small,
     this.label,
     this.index,
-    this.customColors,
-    super.key,
+    this.icon,
   });
 
-  ///Constructor for [ZetaWorkcloudIndicator] for type 'status'
-  factory ZetaWorkcloudIndicator.status({
-    required String label,
-  }) =>
-      ZetaWorkcloudIndicator(label: label);
+  /// The type of priority.
+  final ZetaWorkcloudIndicatorType priorityType;
 
-  ///Constructor for [ZetaWorkcloudIndicator] for type 'priority pill'
-  factory ZetaWorkcloudIndicator.priorityPill({
-    required String index,
-    ZetaWorkcloudIndicatorType priorityType = ZetaWorkcloudIndicatorType.urgent,
-    ZetaWidgetSize prioritySize = ZetaWidgetSize.small,
-    ZetaWidgetColor? customColors,
-    String? label,
-  }) =>
-      ZetaWorkcloudIndicator(
-        isStatusBadge: false,
-        priorityType: priorityType,
-        prioritySize: prioritySize,
-        label: label,
-        index: index,
-        customColors: customColors,
-      );
-
-  ///Indicates if it is status badge or priority pill
+  /// The size of Priority Pill.
   ///
-  /// Defaults to status
-  final bool isStatusBadge;
-
-  ///The type of priority for Priority Pill
-  ///
-  ///[ZetaWorkcloudIndicator.priorityPill] defaults to 'urgent'
-  final ZetaWorkcloudIndicatorType? priorityType;
-
-  ///The size of Priority Pill
-  ///
-  ///defaults to 'small'
+  /// Defaults to 'small'.
   final ZetaWidgetSize prioritySize;
 
-  ///Label
+  /// Text label. Not shown when [prioritySize] is [ZetaWidgetSize.small]
   final String? label;
 
-  ///Index for priority pill
+  /// Index value. Typically a number.
   ///
-  ///required for [ZetaWorkcloudIndicator.priorityPill]
+  /// If null, and no icon is provided, the index will match the [priorityType].
+  ///
+  /// It is recommended to not exceed 2 characters here.
   final String? index;
 
-  ///Custom colors for priority pill
-  final ZetaWidgetColor? customColors;
+  /// Custom icon. If not null, this will replace the index text.
+  final IconData? icon;
 
   @override
   Widget build(BuildContext context) {
-    final theme = Zeta.of(context);
-    final themeMode = Zeta.of(context).themeMode;
-    return isStatusBadge ? _buildStatusBadge(theme) : _buildPriorityPill(theme, themeMode);
-  }
-
-  ///Status Badge
-  Widget _buildStatusBadge(Zeta theme) {
-    final labelContent = label ?? '';
-    return Container(
-      height: Dimensions.x6,
-      constraints: const BoxConstraints(minWidth: 51),
-      decoration: _statusBadgeDecoration(theme),
-      child: Center(
-        child: Padding(
-          padding: const EdgeInsets.fromLTRB(
-            Dimensions.x2,
-            Dimensions.x1,
-            Dimensions.x2,
-            Dimensions.x1,
-          ),
-          child: Text(labelContent, style: ZetaTextStyles.bodySmall),
-        ),
-      ),
-    );
-  }
-
-  BoxDecoration _statusBadgeDecoration(Zeta theme) {
-    return BoxDecoration(
-      color: theme.colors.surfaceDisabled,
-      borderRadius: BorderRadius.circular(6),
-    );
-  }
-
-  ///Priority Pill
-  Widget _buildPriorityPill(Zeta theme, ThemeMode themeMode) {
-    final colors = _ZetaWorkcloudIndicatorStyle.getColor(
-      priorityType ?? ZetaWorkcloudIndicatorType.urgent,
-      theme.colors,
-      themeMode,
-      customColors: customColors,
-    );
-    final size = _ZetaWorkcloudIndicatorStyle.getSize(prioritySize);
-    final padding = _ZetaWorkcloudIndicatorStyle.getEdgeInsets(prioritySize);
-    final textStyle = _ZetaWorkcloudIndicatorStyle.getTextStyle(prioritySize, theme);
+    final ZetaColorSwatch color = priorityType.color(context);
+    final textStyle = prioritySize == ZetaWidgetSize.large ? ZetaTextStyles.labelMedium : ZetaTextStyles.labelTiny;
 
     return DecoratedBox(
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(Dimensions.l),
-        color: colors.foregroundColor,
+        borderRadius: BorderRadius.circular(ZetaSpacing.l),
+        color: color.shade20,
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          _buildPriorityPillIndex(size, colors, textStyle, theme),
-          if (prioritySize != ZetaWidgetSize.small) ...[
-            _buildPriorityPillLabel(textStyle, padding),
-          ],
+          SizedBox.square(
+            dimension: prioritySize == ZetaWidgetSize.large ? ZetaSpacing.x6 : ZetaSpacing.x5,
+            child: Container(
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: priorityType == ZetaWorkcloudIndicatorType.nine ? color.shade80 : color,
+              ),
+              child: Center(
+                child: icon != null
+                    ? Icon(
+                        icon,
+                        size: prioritySize == ZetaWidgetSize.large ? ZetaSpacing.x4 : ZetaSpacing.x3_5,
+                        color: color.onColor,
+                      )
+                    : Text(
+                        index ?? (priorityType.index + 1).toString(),
+                        style: textStyle.apply(color: color.onColor),
+                        textAlign: TextAlign.center,
+                      ),
+              ),
+            ),
+          ),
+          if (prioritySize != ZetaWidgetSize.small)
+            Container(
+              constraints: const BoxConstraints(minWidth: ZetaSpacing.x9),
+              padding: const EdgeInsets.symmetric(horizontal: ZetaSpacing.xs),
+              child: Text(label ?? '', style: textStyle, overflow: TextOverflow.ellipsis),
+            ),
         ],
-      ),
-    );
-  }
-
-  Widget _buildPriorityPillIndex(
-    double size,
-    ZetaWidgetColor colors,
-    TextStyle textStyle,
-    Zeta theme,
-  ) {
-    return Container(
-      alignment: Alignment.center,
-      height: size,
-      width: size,
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        color: colors.backgroundColor,
-      ),
-      child: Center(
-        child: Text(
-          index ?? '',
-          style: textStyle.apply(color: theme.colors.white),
-          textAlign: TextAlign.center,
-        ),
-      ),
-    );
-  }
-
-  Widget _buildPriorityPillLabel(
-    TextStyle textStyle,
-    EdgeInsets padding,
-  ) {
-    return Container(
-      constraints: const BoxConstraints(minWidth: 34),
-      child: Padding(
-        padding: padding,
-        child: Text(
-          label ?? '',
-          style: textStyle,
-          overflow: TextOverflow.ellipsis,
-        ),
       ),
     );
   }
@@ -192,7 +151,6 @@ class ZetaWorkcloudIndicator extends StatelessWidget {
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty<bool>('isStatusBadge', isStatusBadge))
       ..add(
         EnumProperty<ZetaWorkcloudIndicatorType?>('priorityType', priorityType),
       )
@@ -201,73 +159,6 @@ class ZetaWorkcloudIndicator extends StatelessWidget {
       )
       ..add(StringProperty('label', label))
       ..add(StringProperty('index', index))
-      ..add(
-        DiagnosticsProperty<ZetaWidgetColor?>('customColors', customColors),
-      );
-  }
-}
-
-class _ZetaIndicatorConstants {
-  static const double mediumSize = 22;
-  static const double largeSize = 24;
-  static const EdgeInsets largePadding = EdgeInsets.fromLTRB(8, 0, 8, 1);
-  static const EdgeInsets mediumPadding = EdgeInsets.fromLTRB(8, 2, 8, 2);
-}
-
-class _ZetaWorkcloudIndicatorStyle {
-  static ZetaWidgetColor getColor(
-    ZetaWorkcloudIndicatorType type,
-    ZetaColors zetaColors,
-    ThemeMode themeMode, {
-    ZetaWidgetColor? customColors,
-  }) {
-    final isDarkTheme = themeMode == ThemeMode.dark;
-    switch (type) {
-      case ZetaWorkcloudIndicatorType.urgent:
-        return ZetaWidgetColor(
-          backgroundColor: isDarkTheme ? ZetaColorBase.red.shade70 : ZetaColorBase.red.shade60,
-          foregroundColor: isDarkTheme ? ZetaColorBase.red.shade90 : ZetaColorBase.red.shade20,
-        );
-      case ZetaWorkcloudIndicatorType.high:
-        return ZetaWidgetColor(
-          backgroundColor: isDarkTheme ? ZetaColorBase.orange.shade70 : ZetaColorBase.orange.shade40,
-          foregroundColor: isDarkTheme ? ZetaColorBase.orange.shade90 : ZetaColorBase.orange.shade10,
-        );
-      case ZetaWorkcloudIndicatorType.medium:
-        return ZetaWidgetColor(
-          backgroundColor: isDarkTheme ? ZetaColorBase.blue.shade70 : ZetaColorBase.blue,
-          foregroundColor: isDarkTheme ? ZetaColorBase.blue.shade90 : ZetaColorBase.blue.shade20,
-        );
-      case ZetaWorkcloudIndicatorType.low:
-        return ZetaWidgetColor(
-          backgroundColor: isDarkTheme ? ZetaColorBase.green.shade70 : ZetaColorBase.green.shade60,
-          foregroundColor: isDarkTheme ? ZetaColorBase.green.shade90 : ZetaColorBase.green.shade20,
-        );
-      case ZetaWorkcloudIndicatorType.custom:
-        return customColors ??
-            ZetaWidgetColor(
-              backgroundColor: zetaColors.surfaceDisabled,
-              foregroundColor: zetaColors.surfacePrimary,
-            );
-    }
-  }
-
-  static double getSize(ZetaWidgetSize size) {
-    if (size == ZetaWidgetSize.large) {
-      return _ZetaIndicatorConstants.largeSize;
-    }
-    return _ZetaIndicatorConstants.mediumSize;
-  }
-
-  static TextStyle getTextStyle(ZetaWidgetSize size, Zeta theme) {
-    if (size == ZetaWidgetSize.large) return ZetaTextStyles.bodyMedium;
-    return ZetaTextStyles.bodySmall;
-  }
-
-  static EdgeInsets getEdgeInsets(ZetaWidgetSize size) {
-    if (size == ZetaWidgetSize.large) {
-      return _ZetaIndicatorConstants.largePadding;
-    }
-    return _ZetaIndicatorConstants.mediumPadding;
+      ..add(DiagnosticsProperty<IconData?>('icon', icon));
   }
 }

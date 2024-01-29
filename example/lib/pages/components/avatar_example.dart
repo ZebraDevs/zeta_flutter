@@ -14,7 +14,7 @@ class AvatarExample extends StatelessWidget {
         return ExampleScaffold(
           name: AvatarExample.name,
           child: SingleChildScrollView(
-            padding: EdgeInsets.all(Dimensions.s),
+            padding: EdgeInsets.all(ZetaSpacing.s),
             child: Column(
               children: [
                 Column(
@@ -498,7 +498,7 @@ class AvatarExample extends StatelessWidget {
                     ),
                   ],
                 ),
-              ].divide(const SizedBox(height: Dimensions.x6)).toList(),
+              ].divide(const SizedBox(height: ZetaSpacing.x6)).toList(),
             ),
           ),
         );
