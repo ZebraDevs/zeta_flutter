@@ -671,7 +671,7 @@ Co-authored-by: github-actions <github-actions@github.com> _(commit by [@genovev
 
 * Menu Items - horizontal & vertical
 
-* [automated commit] lint format and import sort
+The ZetaDefaults class was updated to Zeta inheriting from InheritedWidget. This change allows easy access to the Zeta theme settings (contrast, theme mode, theme data, color set) from anywhere in the widget tree. The ZetaAppBuilder function was updated to take in ThemeData and ThemeMode. The ZetaProvider was added to provide Zeta theming and contrast data down the widget tree. The code for the color and typography examples was adjusted to use the new Zeta context extension, instead of using Theme.of(context) to get colorScheme. This change was crucial to simplify the process of adapting the application visuals to different themes."
 
 ---
 
@@ -690,7 +690,7 @@ Co-authored-by: github-actions <github-actions@github.com> _(commit by [@genovev
 
 * fix sizings and replace icons with zeta icons
 
-* [automated commit] lint format and import sort
+- Refactor color swatch generation to utilize zeta
 
 ---
 
