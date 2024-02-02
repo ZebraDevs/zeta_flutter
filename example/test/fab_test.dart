@@ -11,7 +11,7 @@ void main() {
       await tester.pumpWidget(TestWidget(
           widget: ZetaFAB(
         scrollController: scrollController,
-        buttonLabel: 'Label',
+        label: 'Label',
       )));
 
       expect(find.byType(ZetaFAB), findsOneWidget);
@@ -24,7 +24,7 @@ void main() {
       await tester.pumpWidget(TestWidget(
           widget: ZetaFAB(
         scrollController: scrollController,
-        buttonLabel: 'Label',
+        label: 'Label',
         onPressed: () => isPressed = true,
       )));
 
@@ -39,7 +39,7 @@ void main() {
     await tester.pumpWidget(TestWidget(
         widget: ZetaFAB(
       scrollController: scrollController,
-      buttonLabel: 'Label',
+      label: 'Label',
     )));
     expect(find.byIcon(ZetaIcons.add_round), findsOneWidget);
   });

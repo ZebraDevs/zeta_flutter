@@ -16,7 +16,7 @@ class ZetaStatusLabel extends StatelessWidget {
     this.customIcon,
   });
 
-  /// {@zeta-component-rounded}
+  /// {@macro zeta-component-rounded}
   final bool rounded;
 
   /// {@macro zeta-component-badge-status}
@@ -39,7 +39,7 @@ class ZetaStatusLabel extends StatelessWidget {
         borderRadius: rounded ? ZetaRadius.full : ZetaRadius.minimal,
       ),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: ZetaSpacing.x2, vertical: ZetaSpacing.x1 / 2),
+        padding: const EdgeInsets.symmetric(horizontal: ZetaSpacing.x2, vertical: ZetaSpacing.x0_5),
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [

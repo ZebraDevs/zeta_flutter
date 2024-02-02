@@ -10,70 +10,68 @@ class ZetaInPageBanner extends StatelessWidget {
     super.key,
     required this.content,
     this.rounded = true,
-    this.severity = ZetaWidgetStatus.info,
-    this.showIconClose = true,
+    this.status = ZetaWidgetStatus.info,
     this.onClose,
     this.title,
     this.customIcon,
     this.actions = const [],
   });
 
-  ///The content of the banner
+  ///The content of the banner. Typically [Text].
   final Widget content;
 
   /// {@macro zeta-component-rounded}
   final bool rounded;
 
-  ///Determines the color of the banner
-  ///Defaults to 'neutral'
-  final ZetaWidgetStatus severity;
+  ///Determines the color of the banner.
+  ///
+  ///Defaults to [ZetaWidgetStatus.info].
+  final ZetaWidgetStatus status;
 
-  ///Determines if the banner has icon for closing
-  ///Defaults to true
-  final bool showIconClose;
-
-  ///Title of the banner
+  ///Title of the banner.
   final String? title;
 
-  ///Custom icon
+  /// Leading icon on top left of banner.
   final IconData? customIcon;
 
   /// Action buttons to show at the bottom of the banner.
   final List<ZetaButton> actions;
 
-  ///Called when the button 'Close' is tapped.
+  /// Called when the button 'Close' is tapped.
+  ///
+  /// If null, close icon will not appear.
   final VoidCallback? onClose;
 
   @override
   Widget build(BuildContext context) {
     final theme = Zeta.of(context);
-    final colors = _getColors(theme);
+    final colors = status.colorSwatch(context);
     final hasTitle = title != null;
 
     return DecoratedBox(
       decoration: BoxDecoration(
-        color: colors.backgroundColor,
-        border: Border.all(color: colors.foregroundColor),
+        color: colors.surface,
+        border: Border.all(color: colors.border),
         borderRadius: rounded ? ZetaRadius.minimal : ZetaRadius.none,
       ),
       child: Padding(
-        padding: const EdgeInsets.all(2),
+        padding: const EdgeInsets.all(ZetaSpacing.x0_5),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: const EdgeInsetsDirectional.only(top: 12, start: 10),
+              padding: const EdgeInsetsDirectional.only(top: ZetaSpacing.x3, start: ZetaSpacing.x2_5),
               child: Icon(
-                severity.icon(rounded: rounded),
+                status.icon(rounded: rounded),
                 size: ZetaSpacing.x5,
-                color: severity == ZetaWidgetStatus.neutral ? theme.colors.textDefault : colors.foregroundColor,
+                color: status == ZetaWidgetStatus.neutral ? theme.colors.textDefault : colors.icon,
               ),
             ),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const SizedBox(height: 10),
+                  const SizedBox(height: ZetaSpacing.x2_5),
                   if (hasTitle)
                     Text(
                       title!,
@@ -90,11 +88,11 @@ class ZetaInPageBanner extends StatelessWidget {
                           .divide(const SizedBox.square(dimension: ZetaSpacing.x2))
                           .toList(),
                     ).paddingTop(ZetaSpacing.x4),
-                  const SizedBox(height: 10),
+                  const SizedBox(height: ZetaSpacing.x2_5),
                 ],
               ),
             ),
-            if (showIconClose)
+            if (onClose != null)
               IconButton(
                 onPressed: onClose,
                 icon: Icon(
@@ -108,37 +106,6 @@ class ZetaInPageBanner extends StatelessWidget {
     );
   }
 
-  ZetaWidgetColor _getColors(Zeta theme) {
-    final defaultColorScheme = ZetaWidgetColor(
-      backgroundColor: theme.colors.surfacePrimary,
-      foregroundColor: theme.colors.borderDefault,
-    );
-    switch (severity) {
-      case ZetaWidgetStatus.neutral:
-        return defaultColorScheme;
-      case ZetaWidgetStatus.info:
-        return ZetaWidgetColor(
-          backgroundColor: theme.colors.info.surface,
-          foregroundColor: theme.colors.info.border,
-        );
-      case ZetaWidgetStatus.positive:
-        return ZetaWidgetColor(
-          backgroundColor: theme.colors.positive.surface,
-          foregroundColor: theme.colors.positive.border,
-        );
-      case ZetaWidgetStatus.warning:
-        return ZetaWidgetColor(
-          backgroundColor: theme.colors.warning.surface.lighten(6),
-          foregroundColor: theme.colors.warning.border,
-        );
-      case ZetaWidgetStatus.negative:
-        return ZetaWidgetColor(
-          backgroundColor: theme.colors.negative.surface,
-          foregroundColor: theme.colors.negative.border,
-        );
-    }
-  }
-
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
@@ -150,8 +117,7 @@ class ZetaInPageBanner extends StatelessWidget {
         ),
       )
       ..add(DiagnosticsProperty<bool>('rounded', rounded))
-      ..add(EnumProperty<ZetaWidgetStatus>('severity', severity))
-      ..add(DiagnosticsProperty<bool>('showIconClose', showIconClose))
+      ..add(EnumProperty<ZetaWidgetStatus>('severity', status))
       ..add(StringProperty('title', title))
       ..add(DiagnosticsProperty<IconData?>('customIcon', customIcon));
   }

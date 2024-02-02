@@ -44,7 +44,7 @@ class _PasswordState extends State<_Password> {
               ConstrainedBox(
                 constraints: BoxConstraints(maxWidth: 328),
                 child: ZetaPasswordInput(
-                  borderType: context.knobs.boolean(label: 'Rounded') ? BorderType.rounded : BorderType.sharp,
+                  rounded: context.knobs.boolean(label: 'Rounded'),
                   enabled: context.knobs.boolean(label: 'Enabled', initialValue: true),
                   obscureText: context.knobs.boolean(label: 'Obscure text', initialValue: true),
                   size: context.knobs.list(label: 'Size', options: ZetaWidgetSize.values),

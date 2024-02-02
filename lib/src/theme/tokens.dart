@@ -9,8 +9,8 @@ class ZetaSpacing {
   /// Base multiplier used to calculate spacing values.
   static const double spacingBaseMultiplier = 4;
 
-  /// 0dp space.
-  static const double x0 = spacingBaseMultiplier * 0;
+  /// 2dp space.
+  static const double x0_5 = spacingBaseMultiplier * 0.5;
 
   /// 4dp space.
   static const double x1 = spacingBaseMultiplier;
@@ -23,6 +23,9 @@ class ZetaSpacing {
 
   /// 8dp space.
   static const double xs = spacingBaseMultiplier * 2;
+
+  /// 10dp space.
+  static const double x2_5 = spacingBaseMultiplier * 2.5;
 
   /// 12dp space.
   static const double x3 = spacingBaseMultiplier * 3;
@@ -50,6 +53,9 @@ class ZetaSpacing {
 
   /// 28dp space.
   static const double x7 = spacingBaseMultiplier * 7;
+
+  /// 30dp space.
+  static const double x7_5 = spacingBaseMultiplier * 7.5;
 
   /// 32dp space.
   static const double x8 = spacingBaseMultiplier * 8;

@@ -134,39 +134,33 @@ class BannerExample extends StatelessWidget {
               Text('In-Page Banner', style: ZetaTextStyles.displayMedium),
               ZetaInPageBanner(
                 content: Text(_content),
-                onClose: () {},
-                severity: ZetaWidgetStatus.info,
-                showIconClose: false,
+                status: ZetaWidgetStatus.info,
               ),
               ZetaInPageBanner(
                 content: Text(_content),
                 onClose: () {},
-                severity: ZetaWidgetStatus.positive,
-                showIconClose: true,
+                status: ZetaWidgetStatus.positive,
                 title: 'Banner Title',
                 rounded: false,
               ),
               ZetaInPageBanner(
                 content: Text(_content),
                 onClose: () {},
-                severity: ZetaWidgetStatus.warning,
-                showIconClose: true,
+                status: ZetaWidgetStatus.warning,
                 title: 'Banner Title',
                 actions: [ZetaButton(label: 'Button', onPressed: () {})],
               ),
               ZetaInPageBanner(
                 content: Text(_content),
                 onClose: () {},
-                severity: ZetaWidgetStatus.negative,
-                showIconClose: true,
+                status: ZetaWidgetStatus.negative,
                 title: 'Banner Title Banner Title Banner Title Banner Title',
                 rounded: false,
               ),
               ZetaInPageBanner(
                 content: Text(_content),
                 onClose: () {},
-                severity: ZetaWidgetStatus.neutral,
-                showIconClose: true,
+                status: ZetaWidgetStatus.neutral,
                 title: 'Banner Title',
               )
             ].divide(const SizedBox(height: 10)).toList(),
@@ -183,7 +177,6 @@ class BannerExample extends StatelessWidget {
 
   Column buildExampleBannerColumn(
     ZetaWidgetStatus status, {
-    ZetaWidgetColor? customColors,
     bool rounded = true,
     IconData? customIcon,
   }) {
@@ -195,8 +188,7 @@ class BannerExample extends StatelessWidget {
           content: Text(_content),
           onClose: () {},
           rounded: rounded,
-          severity: status,
-          showIconClose: true,
+          status: status,
           title: 'Banner Title',
           customIcon: customIcon,
         ),

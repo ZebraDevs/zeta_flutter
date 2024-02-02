@@ -6,7 +6,6 @@ class ZetaIcons {
   ZetaIcons._();
   static const String _familyRound = 'zeta-icons-round';
   static const String _familySharp = 'zeta-icons-sharp';
-  static const String _familyOther = 'zeta-icons-other';
   static const String _package = 'zeta_flutter';
 
   // round
@@ -1006,7 +1005,4 @@ class ZetaIcons {
   static const IconData star_sharp = IconData(0xe1e2, fontFamily: _familySharp, fontPackage: _package);
   static const IconData toggle_off_sharp = IconData(0xe1e3, fontFamily: _familySharp, fontPackage: _package);
   static const IconData toggle_on_sharp = IconData(0xe1e4, fontFamily: _familySharp, fontPackage: _package);
-
-  // other icons
-  static const IconData avatar = IconData(0xe900, fontFamily: _familyOther, fontPackage: _package);
 }

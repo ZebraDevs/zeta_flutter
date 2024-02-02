@@ -16,13 +16,11 @@ platforms:
   windows:
   linux:
 
-
 environment:
   sdk: ">=3.0.1 <4.0.0"
   flutter: ">=3.7.0"
 
 dependencies:
-  cached_network_image: ^3.3.0
   flutter:
     sdk: flutter
 
@@ -47,7 +45,4 @@ flutter:
     - family: zeta-icons-sharp
       fonts:
         - asset: lib/src/assets/fonts/zeta-icons-sharp.ttf
-    - family: zeta-icons-other
-      fonts:
-        - asset: lib/src/assets/fonts/zeta-icons-other.ttf
   uses-material-design: true

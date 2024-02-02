@@ -11,23 +11,38 @@ WidgetbookComponent chipWidgetBook() {
     useCases: [
       WidgetbookUseCase(
         name: 'Input Chip',
-        builder: (context) => TestWidget(
-          widget: Padding(
-            padding: const EdgeInsets.all(20),
-            child: Column(
-              children: [
-                ZetaChip.input(
-                  label: context.knobs.string(label: 'Label', initialValue: 'Label'),
-                  leading: context.knobs.boolean(label: 'Avatar')
-                      ? ZetaAvatar.initials(initials: 'AZ', size: ZetaAvatarSize.xs)
-                      : null,
-                  rounded: context.knobs.boolean(label: 'Rounded'),
-                  onDelete: context.knobs.boolean(label: 'Delete') ? () {} : null,
-                ),
-              ],
+        builder: (context) {
+          final trailing = context.knobs.listOrNull(
+            label: 'Icon',
+            options: [
+              ZetaIcons.star_half_round,
+              ZetaIcons.add_alert_round,
+              ZetaIcons.add_box_round,
+              ZetaIcons.barcode_round,
+            ],
+            initialOption: null,
+            labelBuilder: (value) {
+              if (value == ZetaIcons.star_half_round) return 'ZetaIcons.star_half_round';
+              if (value == ZetaIcons.add_alert_round) return 'ZetaIcons.add_alert_round';
+              if (value == ZetaIcons.add_box_round) return 'ZetaIcons.add_box_round';
+              if (value == ZetaIcons.barcode_round) return 'ZetaIcons.barcode_round';
+              return '';
+            },
+          );
+          return TestWidget(
+            widget: ZetaInputChip(
+              label: context.knobs.string(label: 'Label', initialValue: 'Label'),
+              leading: context.knobs.boolean(label: 'Avatar')
+                  ? ZetaAvatar(
+                      initials: 'AZ',
+                      size: ZetaAvatarSize.xs,
+                    )
+                  : null,
+              rounded: context.knobs.boolean(label: 'Rounded'),
+              trailing: trailing != null ? Icon(trailing) : null,
             ),
-          ),
-        ),
+          );
+        },
       ),
       WidgetbookUseCase(
         name: 'Filter Chip',
@@ -40,7 +55,6 @@ WidgetbookComponent chipWidgetBook() {
                   label: context.knobs.string(label: 'Label', initialValue: 'Label'),
                   rounded: context.knobs.boolean(label: 'Rounded'),
                   selected: context.knobs.boolean(label: 'Selected'),
-                  onChange: context.knobs.boolean(label: 'Enabled') ? ({bool value = false}) {} : null,
                 )
               ],
             ),
@@ -54,38 +68,13 @@ WidgetbookComponent chipWidgetBook() {
             padding: const EdgeInsets.all(20),
             child: Column(
               children: [
-                ZetaChip.assist(
+                ZetaAssistChip(
                   label: context.knobs.string(label: 'Label', initialValue: 'Label'),
                   rounded: context.knobs.boolean(label: 'Rounded'),
-                  showIcon: context.knobs.boolean(label: 'Show Icon'),
-                  icon: context.knobs.list(
-                    label: 'Icon',
-                    options: [
-                      Icon(ZetaIcons.star_half_round),
-                      Icon(ZetaIcons.add_alert_round),
-                      Icon(ZetaIcons.add_box_round),
-                      Icon(ZetaIcons.barcode_round),
-                    ],
-                    labelBuilder: (value) {
-                      if ((value as Icon).icon == ZetaIcons.star_half_round) return 'ZetaIcons.star_half_round';
-                      if ((value).icon == ZetaIcons.add_alert_round) return 'ZetaIcons.add_alert_round';
-                      if ((value).icon == ZetaIcons.add_box_round) return 'ZetaIcons.add_box_round';
-                      if ((value).icon == ZetaIcons.barcode_round) return 'ZetaIcons.barcode_round';
-                      return '';
-                    },
-                  ),
+                  leading: context.knobs.boolean(label: 'Icon') ? Icon(ZetaIcons.star_round) : null,
                 )
               ],
             ),
-          ),
-        ),
-      ),
-      WidgetbookUseCase(
-        name: 'Status Chip',
-        builder: (context) => TestWidget(
-          widget: Padding(
-            padding: const EdgeInsets.all(20),
-            child: Column(children: [ZetaChip.status(context.knobs.string(label: 'Label', initialValue: 'Label'))]),
           ),
         ),
       ),

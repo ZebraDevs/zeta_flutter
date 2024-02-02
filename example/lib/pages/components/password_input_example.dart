@@ -37,7 +37,7 @@ class _PasswordInputExampleState extends State<PasswordInputExample> {
                   Padding(padding: EdgeInsets.only(top: 20)),
                   ZetaPasswordInput(
                     size: ZetaWidgetSize.medium,
-                    borderType: BorderType.sharp,
+                    rounded: false,
                     footerText: 'Error state is triggered if the password contains digits',
                     footerIcon: ZetaIcons.info_round,
                     hintText: 'Password',
@@ -65,21 +65,19 @@ class _PasswordInputExampleState extends State<PasswordInputExample> {
   }
 }
 
-List<Widget> passwordInputExampleRow(
-  ZetaWidgetSize size, {
-  BorderType borderType = BorderType.rounded,
-}) {
+List<Widget> passwordInputExampleRow(ZetaWidgetSize size, {bool rounded = true}) {
   return [
-    ZetaPasswordInput(size: size, hintText: 'Password', borderType: borderType),
+    ZetaPasswordInput(size: size, hintText: 'Password', rounded: rounded),
     SizedBox(height: 20),
-    ZetaPasswordInput(borderType: borderType, size: size, hintText: 'Password', enabled: false),
+    ZetaPasswordInput(rounded: rounded, size: size, hintText: 'Password', enabled: false),
     SizedBox(height: 20),
     ZetaPasswordInput(
-        size: size,
-        label: 'Label',
-        hintText: 'Password',
-        footerText: 'Default hint text',
-        borderType: borderType,
-        footerIcon: ZetaIcons.info_round),
+      size: size,
+      label: 'Label',
+      hintText: 'Password',
+      footerText: 'Default hint text',
+      rounded: rounded,
+      footerIcon: ZetaIcons.info_round,
+    ),
   ];
 }

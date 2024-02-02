@@ -18,7 +18,7 @@ WidgetbookComponent buttonWidgetBook() {
               child: ZetaButton(
                 label: context.knobs.string(label: 'Text', initialValue: 'Button'),
                 onPressed: context.knobs.boolean(label: 'Disabled') ? null : () {},
-                borderType: context.knobs.boolean(label: 'Rounded') ? BorderType.rounded : BorderType.sharp,
+                borderType: context.knobs.boolean(label: 'Rounded') ? ZetaWidgetBorder.rounded : ZetaWidgetBorder.sharp,
                 size: context.knobs.list(label: 'Size', options: ZetaWidgetSize.values),
                 type: context.knobs.list(label: 'Type', options: ZetaButtonType.values),
               ),
@@ -73,9 +73,9 @@ class _FabWidgetState extends State<FabWidget> {
         ),
         floatingActionButton: ZetaFAB(
           scrollController: _scrollController,
-          buttonLabel: widget.c.knobs.string(label: 'Label', initialValue: 'Floating Action Button'),
+          label: widget.c.knobs.string(label: 'Label', initialValue: 'Floating Action Button'),
           onPressed: widget.c.knobs.boolean(label: 'Disabled') ? null : () {},
-          buttonIcon: widget.c.knobs.list(
+          icon: widget.c.knobs.list(
             label: 'Icon',
             options: [
               ZetaIcons.star_half_round,
@@ -91,11 +91,9 @@ class _FabWidgetState extends State<FabWidget> {
               return '';
             },
           ),
-          buttonShape: widget.c.knobs.list(label: 'Shape', options: ZetaFabShape.values),
-          buttonSize: widget.c.knobs.list(label: 'Shape', options: ZetaFabSize.values),
-          buttonType: widget.c.knobs.list(label: 'Shape', options: ZetaFabType.values),
-          customAnimationDuration:
-              widget.c.knobs.duration(label: 'Animation Duration', initialValue: Duration(milliseconds: 100)),
+          shape: widget.c.knobs.list(label: 'Shape', options: ZetaWidgetBorder.values),
+          size: widget.c.knobs.list(label: 'Shape', options: ZetaFabSize.values),
+          type: widget.c.knobs.list(label: 'Shape', options: ZetaFabType.values),
         ),
       ),
     );

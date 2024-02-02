@@ -34,7 +34,7 @@ void main() {
       TestWidget(
           widget: ZetaInPageBanner(
         content: Text('Test'),
-        showIconClose: true,
+        onClose: () {},
       )),
     );
     expect(find.byIcon(ZetaIcons.close_round), findsOneWidget);
@@ -43,7 +43,6 @@ void main() {
       TestWidget(
           widget: ZetaInPageBanner(
         content: Text('Test'),
-        showIconClose: false,
       )),
     );
     expect(find.byIcon(ZetaIcons.close_sharp), findsNothing);

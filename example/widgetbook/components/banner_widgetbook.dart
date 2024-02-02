@@ -62,8 +62,8 @@ WidgetbookComponent BannerWidgetBook() {
                           'Lorem ipsum dolor sit amet, conse ctetur  cididunt ut labore et do lore magna aliqua.',
                     ),
                   ),
-                  severity: context.knobs.list(label: 'Severity', options: ZetaWidgetStatus.values),
-                  showIconClose: context.knobs.boolean(label: 'Show Close icon'),
+                  status: context.knobs.list(label: 'Severity', options: ZetaWidgetStatus.values),
+                  onClose: context.knobs.boolean(label: 'Show Close icon') ? () {} : null,
                   title: context.knobs.string(label: 'Title', initialValue: 'Title'),
                   rounded: context.knobs.boolean(label: 'Rounded'),
                   actions: () {

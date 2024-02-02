@@ -11,118 +11,101 @@ enum ZetaMenuItemType {
   vertical,
 }
 
-/// Component [ZetaMenuItem].
-/// It can be horizontal or vertical
+/// Zeta Menu Item component.
+///
+/// Typically used as body of [ZetaBottomSheet].
 class ZetaMenuItem extends StatelessWidget {
-  /// Constructor for the component [ZetaMenuItem]
+  /// Constructor for the component [ZetaMenuItem].
+  ///
+  /// Typically, [ZetaMenuItem.horizontal] or [ZetaMenuItem.vertical] constructors should be used.
   const ZetaMenuItem({
     super.key,
     required this.type,
     required this.label,
     this.onTap,
-    this.leadingIcon,
-    this.trailingIcon,
-    this.showTrailing = false,
-    this.disabled = false,
+    this.leading,
+    this.trailing,
   });
 
   /// Creates horizontal menu item
-  factory ZetaMenuItem.horizontal({
-    required Widget label,
-    VoidCallback? onTap,
-    Widget? leadingIcon,
-    Widget? trailingIcon,
-    bool showTrailing = false,
-    bool disabled = false,
-  }) {
-    return ZetaMenuItem(
-      type: ZetaMenuItemType.horizontal,
-      label: label,
-      onTap: onTap,
-      leadingIcon: leadingIcon,
-      trailingIcon: trailingIcon,
-      showTrailing: showTrailing,
-      disabled: disabled,
-    );
-  }
+  const ZetaMenuItem.horizontal({
+    super.key,
+    required this.label,
+    this.onTap,
+    this.leading,
+    this.trailing,
+  }) : type = ZetaMenuItemType.horizontal;
 
   /// Creates horizontal menu item
-  factory ZetaMenuItem.vertical({
-    required Widget label,
-    required Widget icon,
-    VoidCallback? onTap,
-    bool disabled = false,
-  }) {
-    return ZetaMenuItem(
-      type: ZetaMenuItemType.vertical,
-      label: label,
-      onTap: onTap,
-      leadingIcon: icon,
-      disabled: disabled,
-    );
-  }
+  const ZetaMenuItem.vertical({
+    super.key,
+    required this.label,
+    Widget? icon,
+    this.onTap,
+  })  : type = ZetaMenuItemType.vertical,
+        leading = icon,
+        trailing = null;
 
-  /// The type of the [ZetaMenuItem] - horizontal or vertical
+  /// The type of the [ZetaMenuItem] - horizontal or vertical.
   final ZetaMenuItemType type;
 
   /// What to do when [ZetaMenuItem] is pressed.
   final VoidCallback? onTap;
 
-  /// The label of the [ZetaMenuItem]
+  /// The label of the [ZetaMenuItem].
   final Widget label;
 
-  /// The leading icon of the [ZetaMenuItem]
-  final Widget? leadingIcon;
+  /// The leading widget of the [ZetaMenuItem].
+  ///
+  /// Icon is at leading edge for [ZetaMenuItem.horizontal], and center aligned for [ZetaMenuItem.vertical].
+  ///
+  /// Typically an [Icon].
+  final Widget? leading;
 
-  /// The trailing icon of the [ZetaMenuItem]
-  final Widget? trailingIcon;
+  /// The trailing widget of the [ZetaMenuItem].
+  ///
+  /// Only used for [ZetaMenuItem.horizontal].
+  ///
+  /// Typically an icon.
+  final Widget? trailing;
 
-  /// Determines whether to show the trailing icon.
-  /// Default is false.
-  final bool showTrailing;
+  bool get _enabled => onTap != null;
 
-  /// Sets disabled state of [ZetaMenuItem]
-  /// Default is false
-  final bool disabled;
+  VoidCallback? get _onTap => _enabled ? onTap : null;
 
   @override
   Widget build(BuildContext context) {
     final colors = Zeta.of(context).colors;
+
+    final Widget text = DefaultTextStyle(
+      style: ZetaTextStyles.labelLarge.apply(color: _enabled ? colors.textDefault : colors.textDisabled),
+      child: label,
+    );
+
     switch (type) {
       case ZetaMenuItemType.horizontal:
         return ConstrainedBox(
-          constraints: const BoxConstraints(minHeight: 48),
+          constraints: const BoxConstraints(minHeight: ZetaSpacing.x12),
           child: InkWell(
-            onTap: disabled ? null : onTap,
+            onTap: _onTap,
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+              padding: const EdgeInsets.symmetric(horizontal: ZetaSpacing.x4, vertical: ZetaSpacing.x3),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Expanded(
                     child: Row(
                       children: [
-                        if (leadingIcon != null)
-                          Padding(
-                            padding: const EdgeInsets.only(right: 10),
-                            child: IconTheme(
-                              data: _iconThemeData(colors, disabled, 24),
-                              child: leadingIcon!,
-                            ),
-                          ),
-                        Expanded(
-                          child: DefaultTextStyle(
-                            style: _defaultTextStyle(colors, disabled),
-                            child: label,
-                          ),
-                        ),
+                        if (leading != null)
+                          Padding(padding: const EdgeInsets.only(right: ZetaSpacing.x2), child: leading),
+                        Expanded(child: text),
                       ],
                     ),
                   ),
-                  if (showTrailing || trailingIcon != null)
+                  if (trailing != null)
                     IconTheme(
-                      data: _iconThemeData(colors, disabled, 24),
-                      child: trailingIcon ?? const Icon(Icons.keyboard_arrow_right),
+                      data: _iconThemeData(colors, _enabled, ZetaSpacing.x6),
+                      child: trailing ?? const Icon(Icons.keyboard_arrow_right),
                     ),
                 ],
               ),
@@ -131,23 +114,20 @@ class ZetaMenuItem extends StatelessWidget {
         );
       case ZetaMenuItemType.vertical:
         return InkWell(
-          onTap: disabled ? null : onTap,
+          onTap: _onTap,
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+            padding: const EdgeInsets.symmetric(horizontal: ZetaSpacing.x4, vertical: ZetaSpacing.x3),
             child: Column(
               children: [
-                if (leadingIcon != null)
+                if (leading != null)
                   Padding(
-                    padding: const EdgeInsets.only(bottom: 10),
+                    padding: const EdgeInsets.only(bottom: ZetaSpacing.x3),
                     child: IconTheme(
-                      data: _iconThemeData(colors, disabled, 32),
-                      child: leadingIcon!,
+                      data: _iconThemeData(colors, _enabled, ZetaSpacing.x8),
+                      child: leading!,
                     ),
                   ),
-                DefaultTextStyle(
-                  style: _defaultTextStyle(colors, disabled),
-                  child: label,
-                ),
+                text,
               ],
             ),
           ),
@@ -155,12 +135,8 @@ class ZetaMenuItem extends StatelessWidget {
     }
   }
 
-  static TextStyle _defaultTextStyle(ZetaColors colors, bool disabled) => ZetaTextStyles.labelLarge.apply(
-        color: disabled ? colors.textDisabled : colors.textDefault,
-      );
-
-  static IconThemeData _iconThemeData(ZetaColors colors, bool disabled, double size) => IconThemeData(
-        color: disabled ? colors.iconDisabled : colors.iconSubtle,
+  static IconThemeData _iconThemeData(ZetaColors colors, bool enabled, double size) => IconThemeData(
+        color: enabled ? colors.iconSubtle : colors.iconDisabled,
         size: size,
       );
 
@@ -169,8 +145,6 @@ class ZetaMenuItem extends StatelessWidget {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty<ZetaMenuItemType>('type', type))
-      ..add(DiagnosticsProperty<bool>('disabled', disabled))
-      ..add(DiagnosticsProperty<bool>('showTrailing', showTrailing))
       ..add(DiagnosticsProperty<VoidCallback?>('onTap', onTap));
   }
 }

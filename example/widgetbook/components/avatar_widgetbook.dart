@@ -10,7 +10,34 @@ WidgetbookComponent avatarWidgetBook() {
     name: 'Avatar',
     useCases: [
       WidgetbookUseCase(
-        name: 'Avatar',
+        name: 'Image Avatar',
+        builder: (context) {
+          final Widget image = Image.network('https://i.ytimg.com/vi/KItsWUzFUOs/maxresdefault.jpg', fit: BoxFit.cover);
+
+          return TestWidget(
+            themeMode: ThemeMode.dark,
+            widget: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: ZetaAvatar.image(
+                    image: context.knobs.boolean(label: 'Image') ? image : null,
+                    size: context.knobs.list(label: 'Size', options: ZetaAvatarSize.values),
+                    lowerBadge:
+                        context.knobs.boolean(label: 'Status Badge', initialValue: false) ? ZetaIndicator.icon() : null,
+                    borderColor: context.knobs.colorOrNull(label: 'Outline', initialValue: null),
+                    upperBadge: context.knobs.boolean(label: 'Notification Badge', initialValue: false)
+                        ? ZetaIndicator.notification()
+                        : null,
+                  ),
+                ),
+              ],
+            ),
+          );
+        },
+      ),
+      WidgetbookUseCase(
+        name: 'Initials Avatar',
         builder: (context) {
           return TestWidget(
             themeMode: ThemeMode.dark,
@@ -18,25 +45,17 @@ WidgetbookComponent avatarWidgetBook() {
               children: [
                 Padding(
                   padding: const EdgeInsets.all(20),
-                  child: ZetaAvatar(
-                    type: context.knobs.list(label: 'Avatar type', options: ZetaAvatarType.values),
-                    imageUrl: context.knobs.string(
-                      label: 'Image URL',
-                      initialValue: 'https://i.ytimg.com/vi/KItsWUzFUOs/maxresdefault.jpg',
-                    ),
-                    initials: context.knobs.string(label: 'Initials', initialValue: 'AZ'),
-                    showStatus: context.knobs.boolean(label: 'Show Status'),
+                  child: ZetaAvatar.initials(
+                    backgroundColor: context.knobs.colorOrNull(label: 'Background color', initialValue: null),
+                    initials: context.knobs.stringOrNull(label: 'Initials', initialValue: 'AB'),
                     size: context.knobs.list(label: 'Size', options: ZetaAvatarSize.values),
-                    badge: () {
-                      final x = context.knobs.intOrNull.slider(label: 'Notifications', initialValue: null, max: 10);
-                      if (x == null) return null;
-                      return ZetaIndicator.notification(value: x);
-                    }(),
-                    specialStatus:
-                        context.knobs.boolean(label: 'Status Icon', initialValue: false) ? ZetaIndicator.icon() : null,
-                    backgroundColor: context.knobs.colorOrNull(label: 'Background color'),
-                    statusPrimaryColor: context.knobs.colorOrNull(label: 'Status primary color'),
-                    statusSecondaryColor: context.knobs.colorOrNull(label: 'Status secondary color'),
+                    lowerBadge: context.knobs.boolean(label: 'Status badge', initialValue: false)
+                        ? ZetaIndicator.notification()
+                        : null,
+                    borderColor: context.knobs.colorOrNull(label: 'Outline', initialValue: null),
+                    upperBadge: context.knobs.boolean(label: 'Notification badge', initialValue: false)
+                        ? ZetaIndicator.icon()
+                        : null,
                   ),
                 ),
               ],

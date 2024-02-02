@@ -79,3 +79,19 @@ extension ColorSwatches on ZetaWidgetStatus {
     }
   }
 }
+
+/// Extensions on [String].
+extension StringExtensions on String? {
+  /// Returns initials from a name.
+  String get initials {
+    if (this == null) return '';
+    final List<String> nameParts = this!.split(RegExp(r'\W+'))..removeWhere((item) => item.isEmpty);
+    if (nameParts.isEmpty) return '';
+    return (nameParts.length > 1
+            ? nameParts[0].substring(0, 1) + nameParts[1].substring(0, 1)
+            : nameParts[0].length > 1
+                ? nameParts[0].substring(0, 2)
+                : nameParts[0])
+        .toUpperCase();
+  }
+}

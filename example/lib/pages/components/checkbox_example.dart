@@ -14,6 +14,7 @@ class CheckBoxExample extends StatefulWidget {
 class _CheckBoxExampleState extends State<CheckBoxExample> {
   bool? isChecked = true;
   bool isEnabled = true;
+  bool useIndeterminate = false;
 
   @override
   Widget build(BuildContext context) {
@@ -28,11 +29,18 @@ class _CheckBoxExampleState extends State<CheckBoxExample> {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 ZetaCheckbox(
-                    value: isChecked, isEnabled: isEnabled, onChanged: (value) => setState(() => isChecked = value)),
-                ElevatedButton(
-                  child: Text(isEnabled ? 'Disable' : 'Enable'),
+                  value: isChecked,
+                  onChanged: isEnabled ? (value) => setState(() => isChecked = value) : null,
+                  useIndeterminate: useIndeterminate,
+                ),
+                ZetaButton(
+                  label: isEnabled ? 'Disable' : 'Enable',
                   onPressed: () => setState(() => isEnabled = !isEnabled),
-                )
+                ),
+                ZetaButton(
+                  label: !useIndeterminate ? 'Use Indeterminate' : 'Don\'t use indeterminate',
+                  onPressed: () => setState(() => useIndeterminate = !useIndeterminate),
+                ),
               ],
             ),
             Row(children: [Text('Sharp Checkbox Enabled')]),
@@ -56,21 +64,21 @@ Row getCheckBoxRow({required bool isEnabled, bool isSharp = true}) {
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
         ZetaCheckbox(
-            value: true,
-            isEnabled: isEnabled,
-            label: 'Label',
-            borderType: isSharp ? BorderType.sharp : BorderType.rounded,
-            onChanged: (value) => {}),
+          value: true,
+          label: 'Label',
+          rounded: !isSharp,
+          onChanged: isEnabled ? (value) => {} : null,
+        ),
         ZetaCheckbox(
-            value: false,
-            isEnabled: isEnabled,
-            label: 'Label',
-            borderType: isSharp ? BorderType.sharp : BorderType.rounded,
-            onChanged: (value) => {}),
+          value: false,
+          label: 'Label',
+          rounded: !isSharp,
+          onChanged: isEnabled ? (value) => {} : null,
+        ),
         ZetaCheckbox(
-            value: null,
-            borderType: isSharp ? BorderType.sharp : BorderType.rounded,
-            isEnabled: isEnabled,
-            onChanged: (value) => {}),
+          value: null,
+          rounded: !isSharp,
+          onChanged: isEnabled ? (value) => {} : null,
+        )
       ]);
 }

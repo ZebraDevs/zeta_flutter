@@ -23,25 +23,10 @@ class ZetaTag extends StatelessWidget {
   });
 
   /// Constructs left facing [ZetaTag].
-  factory ZetaTag.left({
-    required String label,
-    bool rounded = true,
-  }) =>
-      ZetaTag(
-        label: label,
-        rounded: rounded,
-      );
+  const ZetaTag.left({super.key, required this.label, this.rounded = true}) : direction = ZetaTagDirection.left;
 
   ///Constructs right facing [ZetaTag].
-  factory ZetaTag.right({
-    required String label,
-    bool rounded = true,
-  }) =>
-      ZetaTag(
-        direction: ZetaTagDirection.right,
-        rounded: rounded,
-        label: label,
-      );
+  const ZetaTag.right({super.key, required this.label, this.rounded = true}) : direction = ZetaTagDirection.right;
 
   ///Determines the direction of the tag
   ///
@@ -91,13 +76,13 @@ class ZetaTag extends StatelessWidget {
     if (!rounded) return null;
     if (direction == ZetaTagDirection.right) {
       return const BorderRadius.only(
-        topRight: Radius.circular(2),
-        bottomRight: Radius.circular(2),
+        topRight: Radius.circular(ZetaSpacing.x0_5),
+        bottomRight: Radius.circular(ZetaSpacing.x0_5),
       );
     } else {
       return const BorderRadius.only(
-        topLeft: Radius.circular(2),
-        bottomLeft: Radius.circular(2),
+        topLeft: Radius.circular(ZetaSpacing.x0_5),
+        bottomLeft: Radius.circular(ZetaSpacing.x0_5),
       );
     }
   }

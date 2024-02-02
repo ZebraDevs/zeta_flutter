@@ -18,9 +18,8 @@ WidgetbookComponent checkboxWidgetBook() {
                 padding: EdgeInsets.only(top: 10),
                 child: ZetaCheckbox(
                   value: context.knobs.booleanOrNull(label: 'Checked'),
-                  onChanged: (_) {},
-                  borderType: context.knobs.boolean(label: 'Rounded') ? BorderType.rounded : BorderType.sharp,
-                  isEnabled: context.knobs.boolean(label: 'Enabled', initialValue: true),
+                  onChanged: context.knobs.boolean(label: 'Enabled', initialValue: true) ? (_) {} : null,
+                  rounded: context.knobs.boolean(label: 'Rounded'),
                   label: context.knobs.string(label: 'Label', initialValue: 'Checkbox'),
                 ),
               ),

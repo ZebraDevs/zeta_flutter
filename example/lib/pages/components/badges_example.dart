@@ -51,7 +51,7 @@ class _DividingText extends StatelessWidget {
 class _StatusLabel extends StatelessWidget {
   const _StatusLabel();
 
-  Widget statusLabelExampleRow(ZetaWidgetStatus type, {ZetaWidgetColor? colors}) {
+  Widget statusLabelExampleRow(ZetaWidgetStatus type) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -143,15 +143,15 @@ class _Indicators extends StatelessWidget {
                     Row(
                       children: [
                         ZetaIndicator.icon(),
-                        ZetaIndicator.icon(size: ZetaIndicatorSize.medium),
-                        ZetaIndicator.icon(size: ZetaIndicatorSize.small),
+                        ZetaIndicator.icon(size: ZetaWidgetSize.medium),
+                        ZetaIndicator.icon(size: ZetaWidgetSize.small),
                       ].divide(const SizedBox.square(dimension: ZetaSpacing.m)).toList(),
                     ),
                     Row(
                       children: [
-                        ZetaIndicator.icon(inverseBorder: true),
-                        ZetaIndicator.icon(size: ZetaIndicatorSize.medium, inverseBorder: true),
-                        ZetaIndicator.icon(size: ZetaIndicatorSize.small, inverseBorder: true),
+                        ZetaIndicator.icon(inverse: true),
+                        ZetaIndicator.icon(size: ZetaWidgetSize.medium, inverse: true),
+                        ZetaIndicator.icon(size: ZetaWidgetSize.small, inverse: true),
                       ].divide(const SizedBox.square(dimension: ZetaSpacing.m)).toList(),
                     ),
                   ].divide(const SizedBox.square(dimension: ZetaSpacing.xs)).toList(),
@@ -175,15 +175,15 @@ class _Indicators extends StatelessWidget {
                     Row(
                       children: [
                         ZetaIndicator.notification(value: 3),
-                        ZetaIndicator.notification(size: ZetaIndicatorSize.medium, value: 3),
-                        ZetaIndicator.notification(size: ZetaIndicatorSize.small),
+                        ZetaIndicator.notification(size: ZetaWidgetSize.medium, value: 3),
+                        ZetaIndicator.notification(size: ZetaWidgetSize.small),
                       ].divide(const SizedBox.square(dimension: ZetaSpacing.m)).toList(),
                     ),
                     Row(
                       children: [
-                        ZetaIndicator.notification(value: 3, inverseBorder: true),
-                        ZetaIndicator.notification(size: ZetaIndicatorSize.medium, value: 3, inverseBorder: true),
-                        ZetaIndicator.notification(size: ZetaIndicatorSize.small, inverseBorder: true),
+                        ZetaIndicator.notification(value: 3, inverse: true),
+                        ZetaIndicator.notification(size: ZetaWidgetSize.medium, value: 3, inverse: true),
+                        ZetaIndicator.notification(size: ZetaWidgetSize.small, inverse: true),
                       ].divide(const SizedBox.square(dimension: ZetaSpacing.m)).toList(),
                     ),
                   ].divide(const SizedBox.square(dimension: ZetaSpacing.s)).toList(),

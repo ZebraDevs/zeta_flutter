@@ -110,7 +110,7 @@ WidgetbookComponent badgeWidgetBook() {
                     },
                   ),
                   inverse: context.knobs.boolean(label: 'Inverse Border'),
-                  size: context.knobs.list(label: 'Size', options: ZetaIndicatorSize.values),
+                  size: context.knobs.list(label: 'Size', options: ZetaWidgetSize.values),
                   value: context.knobs.int.slider(label: 'Value'),
                 ),
               ),

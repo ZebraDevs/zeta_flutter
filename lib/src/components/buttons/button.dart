@@ -57,14 +57,14 @@ extension on ZetaButtonType {
   bool get solid => index < 4;
 }
 
-extension on BorderType {
+extension on ZetaWidgetBorder {
   BorderRadius get radius {
     switch (this) {
-      case BorderType.sharp:
+      case ZetaWidgetBorder.sharp:
         return ZetaRadius.none;
-      case BorderType.rounded:
+      case ZetaWidgetBorder.rounded:
         return ZetaRadius.minimal;
-      case BorderType.full:
+      case ZetaWidgetBorder.full:
         return ZetaRadius.full;
     }
   }
@@ -78,7 +78,7 @@ class ZetaButton extends StatelessWidget {
     this.onPressed,
     this.type = ZetaButtonType.primary,
     this.size = ZetaWidgetSize.medium,
-    this.borderType = BorderType.rounded,
+    this.borderType = ZetaWidgetBorder.rounded,
     super.key,
   });
 
@@ -87,7 +87,7 @@ class ZetaButton extends StatelessWidget {
     required this.label,
     this.onPressed,
     this.size = ZetaWidgetSize.medium,
-    this.borderType = BorderType.rounded,
+    this.borderType = ZetaWidgetBorder.rounded,
     super.key,
   }) : type = ZetaButtonType.primary;
 
@@ -96,7 +96,7 @@ class ZetaButton extends StatelessWidget {
     required this.label,
     this.onPressed,
     this.size = ZetaWidgetSize.medium,
-    this.borderType = BorderType.rounded,
+    this.borderType = ZetaWidgetBorder.rounded,
     super.key,
   }) : type = ZetaButtonType.secondary;
 
@@ -105,7 +105,7 @@ class ZetaButton extends StatelessWidget {
     required this.label,
     this.onPressed,
     this.size = ZetaWidgetSize.medium,
-    this.borderType = BorderType.rounded,
+    this.borderType = ZetaWidgetBorder.rounded,
     super.key,
   }) : type = ZetaButtonType.positive;
 
@@ -114,7 +114,7 @@ class ZetaButton extends StatelessWidget {
     required this.label,
     this.onPressed,
     this.size = ZetaWidgetSize.medium,
-    this.borderType = BorderType.rounded,
+    this.borderType = ZetaWidgetBorder.rounded,
     super.key,
   }) : type = ZetaButtonType.negative;
 
@@ -123,7 +123,7 @@ class ZetaButton extends StatelessWidget {
     required this.label,
     this.onPressed,
     this.size = ZetaWidgetSize.medium,
-    this.borderType = BorderType.rounded,
+    this.borderType = ZetaWidgetBorder.rounded,
     super.key,
   }) : type = ZetaButtonType.outline;
 
@@ -132,7 +132,7 @@ class ZetaButton extends StatelessWidget {
     required this.label,
     this.onPressed,
     this.size = ZetaWidgetSize.medium,
-    this.borderType = BorderType.rounded,
+    this.borderType = ZetaWidgetBorder.rounded,
     super.key,
   }) : type = ZetaButtonType.outlineSubtle;
 
@@ -141,7 +141,7 @@ class ZetaButton extends StatelessWidget {
     required this.label,
     this.onPressed,
     this.size = ZetaWidgetSize.medium,
-    this.borderType = BorderType.rounded,
+    this.borderType = ZetaWidgetBorder.rounded,
     super.key,
   }) : type = ZetaButtonType.text;
 
@@ -156,18 +156,18 @@ class ZetaButton extends StatelessWidget {
 
   ///Whether or not the button is sharp or rounded
   ///Defaults to rounded
-  final BorderType borderType;
+  final ZetaWidgetBorder borderType;
 
   /// Size of the button. Defaults to large.
   final ZetaWidgetSize size;
 
-  /// Creates a clone
+  /// Creates a clone.
   ZetaButton copyWith({
     String? label,
     VoidCallback? onPressed,
     ZetaButtonType? type,
     ZetaWidgetSize? size,
-    BorderType? borderType,
+    ZetaWidgetBorder? borderType,
     Key? key,
   }) {
     return ZetaButton(
@@ -241,18 +241,17 @@ class ZetaButton extends StatelessWidget {
         return null;
       }),
       side: MaterialStateProperty.resolveWith((Set<MaterialState> states) {
+        if (type.border && states.contains(MaterialState.disabled)) {
+          return BorderSide(color: colors.cool.shade40);
+        }
+        // TODO(thelukewalton): This removes a defualt border when focused, rather than adding a second border when focused.
+        if (states.contains(MaterialState.focused)) {
+          return BorderSide(color: colors.blue, width: ZetaSpacing.x0_5);
+        }
         if (type.border) {
-          if (states.contains(MaterialState.disabled)) {
-            return BorderSide(color: colors.cool.shade40);
-          }
-
           return BorderSide(color: type == ZetaButtonType.outline ? colors.primary.border : colors.borderDefault);
         }
 
-        // TODO(thelukewalton): This removes a defualt border when focused, rather than adding a second border when focused.
-        if (states.contains(MaterialState.focused)) {
-          return BorderSide(color: colors.blue, width: 2);
-        }
         return null;
       }),
       elevation: const MaterialStatePropertyAll(0),
@@ -260,7 +259,6 @@ class ZetaButton extends StatelessWidget {
     );
   }
 
-  // TODO(thelukewalton): Check styles for pressed etc.
   TextStyle get _textStyle => size == ZetaWidgetSize.small ? ZetaTextStyles.labelMedium : ZetaTextStyles.labelLarge;
 
   double get _minConstraints {
@@ -285,7 +283,7 @@ class ZetaButton extends StatelessWidget {
         return ZetaSpacing.x3_5;
 
       case ZetaWidgetSize.small:
-        return 10;
+        return ZetaSpacing.x2_5;
     }
   }
 
@@ -296,7 +294,7 @@ class ZetaButton extends StatelessWidget {
       ..add(StringProperty('label', label))
       ..add(ObjectFlagProperty<VoidCallback?>.has('onPressed', onPressed))
       ..add(EnumProperty<ZetaButtonType>('type', type))
-      ..add(EnumProperty<BorderType>('borderType', borderType))
+      ..add(EnumProperty<ZetaWidgetBorder>('borderType', borderType))
       ..add(EnumProperty<ZetaWidgetSize>('size', size));
   }
 }

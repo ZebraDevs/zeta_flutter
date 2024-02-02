@@ -2,107 +2,210 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import '../../../zeta_flutter.dart';
 
-///Zeta Checkbox
-class ZetaCheckbox extends StatelessWidget {
+/// Zeta Checkbox.
+///
+/// Checkboxes allow users to select one or more items from a set. Checkboxes can turn an option on or off.
+class ZetaCheckbox extends FormField<bool> {
   /// Constructs a [ZetaCheckbox].
-  const ZetaCheckbox({
-    required this.value,
-    required this.onChanged,
-    this.borderType = BorderType.sharp,
-    this.label,
-    this.checkboxSize = const Size(ZetaSpacing.x5, ZetaSpacing.x5),
-    this.selectedColor,
-    this.unselectedColor,
-    this.unselectedBorderColor,
-    this.unselectedBorderWidth = 2,
-    this.disabledColor,
-    this.isEnabled = true,
-    this.iconSize = 15.0,
+  ZetaCheckbox({
     super.key,
-  }) : assert(iconSize > 0, 'Icon size must be greater than 0');
+    this.value = false,
+    this.label,
+    this.onChanged,
+    this.rounded = true,
+    this.useIndeterminate = false,
+    super.validator,
+    super.autovalidateMode,
+    super.restorationId,
+  }) : super(
+          initialValue: value,
+          enabled: onChanged != null,
+          builder: (field) {
+            return _Checkbox(
+              label: label,
+              onChanged: (changedValue) {
+                field.didChange(changedValue);
+                onChanged?.call(changedValue);
+              },
+              rounded: rounded,
+              useIndeterminate: useIndeterminate,
+              value: value,
+              error: !field.isValid,
+            );
+          },
+        );
+
+  /// {@macro zeta-component-rounded}
+  final bool rounded;
+
+  /// Whether the indeterminate state should be supported.
+  ///
+  /// Defaults to false.
+  final bool useIndeterminate;
 
   /// Whether the checkbox is selected, unselected or null (indeterminate)
   final bool? value;
 
   /// Called when the value of the checkbox should change.
-  final ValueChanged<bool?> onChanged;
-
-  /// The type of border to display
-  ///
-  /// defaults to sharp
-  final BorderType borderType;
+  final ValueChanged<bool?>? onChanged;
 
   /// The label displayed next to the checkbox
   final String? label;
 
-  ///Size of the checkbox
-  final Size checkboxSize;
+  @override
+  ZetaCheckboxFormFieldState createState() => ZetaCheckboxFormFieldState();
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty<bool>('isChecked', value))
+      ..add(StringProperty('label', label))
+      ..add(DiagnosticsProperty<bool>('useIndeterminate', useIndeterminate))
+      ..add(DiagnosticsProperty<bool>('rounded', rounded))
+      ..add(ObjectFlagProperty<ValueChanged<bool?>?>.has('onChanged', onChanged));
+  }
+}
 
-  /// The color to use when this checkbox is checked.
-  final Color? selectedColor;
+/// [FormFieldState] for [ZetaCheckbox].
+class ZetaCheckboxFormFieldState extends FormFieldState<bool> {
+  @override
+  ZetaCheckbox get widget => super.widget as ZetaCheckbox;
+}
 
-  ///Color of the checkbox when it's not selected
-  final Color? unselectedColor;
+class _Checkbox extends StatefulWidget {
+  const _Checkbox({
+    this.value = false,
+    this.onChanged,
+    this.label,
+    this.rounded = true,
+    this.useIndeterminate = false,
+    this.error = false,
+  });
 
-  ///Color of the border when the checkbox not selected
-  final Color? unselectedBorderColor;
+  /// Whether the checkbox is selected, unselected or null (indeterminate)
+  final bool? value;
 
-  ///Width of the border when the checkbox is not selected
+  /// Called when the value of the checkbox should change.
+  final ValueChanged<bool?>? onChanged;
+
+  /// The label displayed next to the checkbox
+  final String? label;
+
+  /// {@macro zeta-component-rounded}
+  final bool rounded;
+
+  /// Whether the indeterminate state should be supported.
   ///
-  /// Defaults to 2.5
-  final double unselectedBorderWidth;
+  /// Defaults to false.
+  final bool useIndeterminate;
 
-  ///Size of the icon displayed inside the checkbox
-  final double iconSize;
+  final bool error;
 
-  ///If checkbox is enabled
-  ///
-  ///defaults to true
-  final bool isEnabled;
+  @override
+  State<_Checkbox> createState() => _CheckboxState();
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty<bool?>('value', value))
+      ..add(ObjectFlagProperty<ValueChanged<bool?>?>.has('onChanged', onChanged))
+      ..add(StringProperty('label', label))
+      ..add(DiagnosticsProperty<bool>('rounded', rounded))
+      ..add(DiagnosticsProperty<bool>('useIndeterminate', useIndeterminate))
+      ..add(DiagnosticsProperty<bool>('error', error));
+  }
+}
 
-  ///Color of the checkbox when it's disabled
-  final Color? disabledColor;
+class _CheckboxState extends State<_Checkbox> {
+  bool get _enabled => widget.onChanged != null;
+
+  bool? get _value => widget.useIndeterminate ? widget.value : (widget.value ?? false);
+
+  bool? get _updatedValue {
+    if (widget.useIndeterminate) {
+      if (widget.value == null) {
+        return false;
+      } else if (widget.value!) {
+        return null;
+      } else {
+        return true;
+      }
+    } else {
+      return !_value!;
+    }
+  }
+
+  bool _isFocused = false;
+  bool _isHovered = false;
 
   @override
   Widget build(BuildContext context) {
-    final theme = Zeta.of(context);
-    final ValueNotifier<bool> isFocused = ValueNotifier(false);
-
-    return FocusableActionDetector(
-      onFocusChange: (bool focus) => isFocused.value = focus,
-      child: GestureDetector(
-        onTap: _handleOnTap,
-        child: _buildCheckboxRow(theme, isFocused),
+    return Semantics(
+      checked: _value ?? false,
+      mixed: widget.useIndeterminate,
+      enabled: _enabled,
+      child: MouseRegion(
+        cursor: _enabled ? SystemMouseCursors.click : SystemMouseCursors.forbidden,
+        onEnter: (event) => setState(() => _isHovered = true),
+        onExit: (event) => setState(() => _isHovered = false),
+        child: _enabled
+            ? FocusableActionDetector(
+                onFocusChange: (bool focus) => setState(() => _isFocused = focus),
+                child: GestureDetector(
+                  onTap: _enabled ? () => widget.onChanged?.call(_updatedValue) : null,
+                  child: _buildContent(context),
+                ),
+              )
+            : _buildContent(context),
       ),
     );
   }
 
-  void _handleOnTap() {
-    if (isEnabled) {
-      onChanged(
-        value == null
-            ? true
-            : value!
-                ? false
-                : null,
-      );
-    }
-  }
+  Flex _buildContent(BuildContext context) {
+    final theme = Zeta.of(context);
 
-  Widget _buildCheckboxRow(
-    Zeta theme,
-    ValueNotifier<bool> isFocused,
-  ) {
+    final icon = _value != null && !_value!
+        ? const SizedBox.shrink()
+        : Icon(
+            _value != null
+                ? widget.rounded
+                    ? ZetaIcons.check_round
+                    : ZetaIcons.check_sharp
+                : widget.rounded
+                    ? ZetaIcons.remove_round
+                    : ZetaIcons.remove_sharp,
+            color: _enabled ? theme.colors.white : theme.colors.textDisabled,
+            size: ZetaSpacing.x3_5,
+          );
+
     return Flex(
       direction: Axis.horizontal,
       mainAxisSize: MainAxisSize.min,
       children: [
-        _buildCheckboxContainer(theme, isFocused),
-        if (label != null) ...[
+        AnimatedContainer(
+          duration: const Duration(milliseconds: 200),
+          decoration: BoxDecoration(
+            boxShadow: [
+              if (_isFocused && _enabled)
+                BoxShadow(
+                  spreadRadius: 2,
+                  blurStyle: BlurStyle.solid,
+                  color: theme.colors.blue.shade50,
+                ),
+            ],
+            color: _getBackground(theme),
+            border: _enabled ? Border.all(color: _getBorderColor(theme), width: ZetaSpacing.x0_5) : null,
+            borderRadius: widget.rounded ? ZetaRadius.minimal : ZetaRadius.none,
+          ),
+          width: ZetaSpacing.x5,
+          height: ZetaSpacing.x5,
+          child: icon,
+        ),
+        if (widget.label != null) ...[
           Flexible(
             child: Padding(
               padding: const EdgeInsets.only(left: ZetaSpacing.s),
-              child: Text(label!, style: ZetaTextStyles.bodyLarge),
+              child: Text(widget.label!, style: ZetaTextStyles.bodyLarge),
             ),
           ),
         ],
@@ -110,86 +213,31 @@ class ZetaCheckbox extends StatelessWidget {
     );
   }
 
-  Widget _buildCheckboxContainer(Zeta theme, ValueNotifier<bool> isFocused) {
-    return ValueListenableBuilder(
-      valueListenable: isFocused,
-      builder: (context, focused, child) {
-        return Container(
-          decoration: BoxDecoration(
-            boxShadow: _getBoxShadow(theme, focused),
-            color: _getCheckboxBackgroundColor(theme),
-            border: Border.all(
-              color: _getCheckboxBorderColor(theme),
-              width: unselectedBorderWidth,
-            ),
-            borderRadius: BorderRadius.circular(
-              borderType == BorderType.rounded ? 2.0 : 0.0,
-            ),
-          ),
-          width: checkboxSize.width,
-          height: checkboxSize.height,
-          child: _getCheckboxIcon(theme),
-        );
-      },
-    );
+  Color _getBackground(Zeta theme) {
+    final ZetaColorSwatch color = widget.error ? theme.colors.error : theme.colors.primary;
+
+    if (!_enabled || (_value != null && !_value!)) return theme.colors.surfacePrimary;
+    if (_isHovered) return color.hover;
+
+    return color;
   }
 
-  List<BoxShadow> _getBoxShadow(Zeta theme, bool focused) {
-    if (!focused) return [];
-    return [
-      BoxShadow(
-        spreadRadius: 3,
-        color: theme.colors.surfaceSelectedHovered,
-      ),
-    ];
-  }
+  Color _getBorderColor(Zeta theme) {
+    final ZetaColorSwatch color = widget.error ? theme.colors.error : theme.colors.cool;
 
-  Widget _getCheckboxIcon(Zeta theme) {
-    if (value == null) return const SizedBox.shrink();
-    return Icon(
-      _getIcon(),
-      color: isEnabled ? theme.colors.white : theme.colors.textDisabled,
-      size: iconSize,
-    );
-  }
+    if (_isHovered) return color.shade90;
 
-  IconData _getIcon() {
-    final isRounded = borderType == BorderType.rounded;
-    return value!
-        ? isRounded
-            ? ZetaIcons.check_round
-            : ZetaIcons.check_sharp
-        : isRounded
-            ? ZetaIcons.remove_round
-            : ZetaIcons.remove_sharp;
-  }
-
-  Color _getCheckboxBackgroundColor(Zeta theme) {
-    if (!isEnabled) return disabledColor ?? theme.colors.surfaceDisabled;
-    if (value == null) return unselectedColor ?? theme.colors.surfaceSecondary;
-    return selectedColor ?? theme.colors.primary;
-  }
-
-  Color _getCheckboxBorderColor(Zeta theme) {
-    if (!isEnabled || value != null) return Colors.transparent;
-    return unselectedBorderColor ?? theme.colors.borderDefault;
+    return color;
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty<bool?>('value', value))
-      ..add(ObjectFlagProperty<ValueChanged<bool?>>.has('onChanged', onChanged))
-      ..add(EnumProperty<BorderType>('borderType', borderType))
-      ..add(StringProperty('label', label))
-      ..add(DiagnosticsProperty<Size>('checkboxSize', checkboxSize))
-      ..add(ColorProperty('selectedColor', selectedColor))
-      ..add(ColorProperty('unselectedColor', unselectedColor))
-      ..add(ColorProperty('unselectedBorderColor', unselectedBorderColor))
-      ..add(DoubleProperty('unselectedBorderWidth', unselectedBorderWidth))
-      ..add(ColorProperty('disabledColor', disabledColor))
-      ..add(DiagnosticsProperty<bool>('isEnabled', isEnabled))
-      ..add(DoubleProperty('iconSize', iconSize));
+      ..add(DiagnosticsProperty<bool?>('value', widget.value))
+      ..add(ObjectFlagProperty<ValueChanged<bool?>>.has('onChanged', widget.onChanged))
+      ..add(DiagnosticsProperty<bool>('rounded', widget.rounded))
+      ..add(StringProperty('label', widget.label))
+      ..add(DiagnosticsProperty<bool>('useIndeterminate', widget.useIndeterminate));
   }
 }

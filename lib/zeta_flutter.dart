@@ -17,7 +17,7 @@ export 'src/components/bottom sheets/menu_items.dart';
 export 'src/components/buttons/button.dart';
 export 'src/components/buttons/fab.dart';
 export 'src/components/checkbox/checkbox.dart';
-export 'src/components/chip/chip.dart';
+export 'src/components/chips/chip.dart';
 export 'src/components/password/password_input.dart';
 export 'src/theme/color_extensions.dart';
 export 'src/theme/color_scheme.dart';

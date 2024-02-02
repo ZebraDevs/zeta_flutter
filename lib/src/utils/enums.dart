@@ -1,8 +1,7 @@
-import 'dart:ui';
 import '../../zeta_flutter.dart';
 
-///Border Types
-enum BorderType {
+/// Border options for [ZetaButton].
+enum ZetaWidgetBorder {
   /// Sharp border
   sharp,
 
@@ -13,28 +12,7 @@ enum BorderType {
   full,
 }
 
-/// Widget Severity
-enum WidgetSeverity {
-  ///Grey Label
-  neutral,
-
-  ///Purple Label
-  info,
-
-  ///Green Label
-  positive,
-
-  ///Yellow Label
-  warning,
-
-  ///Red Label
-  negative,
-
-  ///Custom Label
-  custom
-}
-
-/// [ZetaWidgetSize] size
+///  Size options for [ZetaIndicator], [ZetaWorkcloudIndicator], [ZetaButton], [ZetaPasswordInput].
 enum ZetaWidgetSize {
   /// large
   large,
@@ -44,21 +22,6 @@ enum ZetaWidgetSize {
 
   /// small
   small,
-}
-
-///Widget Colors
-class ZetaWidgetColor {
-  ///Constructs [ZetaWidgetColor].
-  const ZetaWidgetColor({
-    required this.backgroundColor,
-    required this.foregroundColor,
-  });
-
-  ///Background Color
-  final Color backgroundColor;
-
-  ///foregroundColor Color
-  final Color foregroundColor;
 }
 
 /// Status options for [ZetaBadge], [ZetaStatusLabel], [ZetaInPageBanner].

@@ -5,8 +5,15 @@ class TestWidget extends StatelessWidget {
   final Size? screenSize;
   final Widget widget;
   final ThemeMode? themeMode;
+  final bool removeBody;
 
-  const TestWidget({required this.widget, this.screenSize, super.key, this.themeMode});
+  const TestWidget({
+    required this.widget,
+    this.screenSize,
+    super.key,
+    this.themeMode,
+    this.removeBody = false,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -30,14 +37,16 @@ class TestWidget extends StatelessWidget {
                 textTheme: zetaTextTheme,
               ),
               home: Scaffold(
-                body: SizedBox(
-                  width: size.width,
-                  height: size.height,
-                  child: MediaQuery(
-                    data: MediaQueryData(size: Size(size.width, size.height)),
-                    child: SingleChildScrollView(child: widget),
-                  ),
-                ),
+                body: removeBody
+                    ? widget
+                    : SizedBox(
+                        width: size.width,
+                        height: size.height,
+                        child: MediaQuery(
+                          data: MediaQueryData(size: Size(size.width, size.height)),
+                          child: SingleChildScrollView(child: widget),
+                        ),
+                      ),
               ),
             );
           },
