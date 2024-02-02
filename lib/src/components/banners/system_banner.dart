@@ -40,7 +40,8 @@ class ZetaSystemBanner extends MaterialBanner {
               final foregroundColor = backgroundColor.onColor;
               if (context.mounted) {
                 // ignore: invalid_use_of_visible_for_testing_member
-                if (Platform.isAndroid && SystemChrome.latestStyle?.statusBarColor != backgroundColor) {
+                final statusBarColor = SystemChrome.latestStyle?.statusBarColor;
+                if (Platform.isAndroid && statusBarColor != backgroundColor) {
                   SystemChrome.setSystemUIOverlayStyle(
                     SystemUiOverlayStyle(
                       statusBarColor: backgroundColor,
