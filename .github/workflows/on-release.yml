@@ -1,0 +1,41 @@
+name: "CI - Release"
+on:
+  workflow_dispatch:
+  release:
+    types: [released]
+
+jobs:
+  check-package:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+    environment: pub.dev
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dart-lang/setup-dart@v1
+      - name: Install Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.16.x"
+          channel: "stable"
+      - name: Install dependencies
+        run: flutter pub get
+      - name: Format code
+        run: dart format --fix .
+      - name: Check Publish Warnings
+        run: dart pub publish --dry-run
+      - name: Publish
+        run: dart pub publish --force
+  deploy-website:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          script: |
+            await github.rest.actions.createworkflowDispatch({
+              owner: 'zebratechnologies',
+              repo: 'zeta',
+              workflow_id: 'deploy-prod.yml',
+              ref: 'main'
+            })

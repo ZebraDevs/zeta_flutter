@@ -1,10 +1,24 @@
 /// Zebra Design System (Zeta) - Flutter Component Library
 library zeta_flutter;
 
-export 'src/components/checkbox.dart';
-export 'src/components/grid.dart';
-export 'src/components/spacing.dart';
-export 'src/components/text.dart';
+export 'src/assets/icons.dart';
+export 'src/components/accordion/accordion.dart';
+export 'src/components/avatars/avatar.dart';
+export 'src/components/badges/badge.dart';
+export 'src/components/badges/indicator.dart';
+export 'src/components/badges/priority_pill.dart';
+export 'src/components/badges/status_label.dart';
+export 'src/components/badges/tag.dart';
+export 'src/components/badges/workcloud_indicator.dart';
+export 'src/components/banners/in_page_banner.dart';
+export 'src/components/banners/system_banner.dart';
+export 'src/components/bottom sheets/bottom_sheet.dart';
+export 'src/components/bottom sheets/menu_items.dart';
+export 'src/components/buttons/button.dart';
+export 'src/components/buttons/fab.dart';
+export 'src/components/checkbox/checkbox.dart';
+export 'src/components/chips/chip.dart';
+export 'src/components/password/password_input.dart';
 export 'src/theme/color_extensions.dart';
 export 'src/theme/color_scheme.dart';
 export 'src/theme/color_swatch.dart';
@@ -12,6 +26,8 @@ export 'src/theme/constants.dart';
 export 'src/theme/contrast.dart';
 export 'src/theme/theme_data.dart';
 export 'src/theme/theme_service.dart';
-export 'src/tokens.dart';
+export 'src/theme/tokens.dart';
+export 'src/theme/typography.dart';
+export 'src/utils/enums.dart';
 export 'src/utils/extensions.dart';
 export 'src/zeta.dart';

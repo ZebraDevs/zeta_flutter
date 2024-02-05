@@ -9,6 +9,7 @@ Zeta is the new, formal, standardized Zebra Design System based off the successe
 To install `zeta_flutter`, follow the instructions [here](https://pub.dev/packages/zeta_flutter/install).
 
 ## Usage
+
 Zeta offers flexibility in theming through its `ZetaProvider` widget. Here's a breakdown of its features:
 
 ### Setting the Initial Theme Mode
@@ -83,6 +84,7 @@ To tie everything together, use the `ZetaProvider` constructor. The `builder` ar
 ```
 
 With these configurations, Zeta makes it easy to achieve consistent theming throughout your Flutter application.
+
 ## Viewing the components
 
 To view examples of all the components in the library, you can run the example app in this repo or go to [Zeta](https://zeta-ds.web.app/)

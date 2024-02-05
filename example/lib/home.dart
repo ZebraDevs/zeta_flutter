@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:zeta_example/pages/color_example.dart';
-import 'package:zeta_example/pages/checkbox_example.dart';
-import 'package:zeta_example/pages/grid_example.dart';
-import 'package:zeta_example/pages/spacing_example.dart';
-import 'package:zeta_example/pages/typography_example.dart';
+import 'package:zeta_example/pages/components/accordion_example.dart';
+import 'package:zeta_example/pages/components/avatar_example.dart';
+import 'package:zeta_example/pages/components/badges_example.dart';
+import 'package:zeta_example/pages/components/banner_example.dart';
+import 'package:zeta_example/pages/components/bottom_sheet_example.dart';
+import 'package:zeta_example/pages/components/button_example.dart';
+import 'package:zeta_example/pages/components/checkbox_example.dart';
+import 'package:zeta_example/pages/components/chip_example.dart';
+import 'package:zeta_example/pages/theme/color_example.dart';
+import 'package:zeta_example/pages/components/password_input_example.dart';
+import 'package:zeta_example/pages/assets/icons_example.dart';
 import 'package:zeta_example/widgets.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
@@ -16,12 +22,22 @@ class Component {
 }
 
 final List<Component> components = [
-  Component(GridExample.name, (context) => const GridExample()),
-  Component(SpacingExample.name, (context) => const SpacingExample()),
-  Component(TypographyExample.name, (context) => const TypographyExample()),
-  Component(ColorExample.name, (context) => const ColorExample()),
+  Component(AccordionExample.name, (context) => const AccordionExample()),
+  Component(AvatarExample.name, (context) => const AvatarExample()),
+  Component(BannerExample.name, (context) => const BannerExample()),
+  Component(BadgesExample.name, (context) => const BadgesExample()),
+  Component(BottomSheetExample.name, (context) => const BottomSheetExample()),
+  Component(ButtonExample.name, (context) => const ButtonExample()),
   Component(CheckBoxExample.name, (context) => const CheckBoxExample()),
+  Component(ChipExample.name, (context) => const ChipExample()),
+  Component(PasswordInputExample.name, (context) => const PasswordInputExample()),
+];
 
+final List<Component> theme = [
+  Component(ColorExample.name, (context) => const ColorExample()),
+];
+final List<Component> assets = [
+  Component(IconsExample.name, (context) => const IconsExample()),
 ];
 
 class Home extends StatefulWidget {
@@ -35,13 +51,25 @@ final GoRouter router = GoRouter(
   routes: [
     GoRoute(
       path: '/',
+      name: 'Home',
       builder: (_, __) => const Home(),
       routes: [
-        ...components.map(
+        ...[
+          ...components,
+          ...assets,
+          ...theme,
+        ].map(
           (e) => GoRoute(
             path: e.name,
+            name: e.name,
             builder: (_, __) => e.pageBuilder.call(_),
-            routes: e.children.map((f) => GoRoute(path: f.name, builder: (_, __) => f.pageBuilder(_))).toList(),
+            routes: e.children
+                .map((f) => GoRoute(
+                      path: f.name,
+                      name: f.name,
+                      builder: (_, __) => f.pageBuilder(_),
+                    ))
+                .toList(),
           ),
         )
       ],
@@ -52,18 +80,37 @@ final GoRouter router = GoRouter(
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
-    final items = components..sort((a, b) => a.name.compareTo(b.name));
+    final _components = components..sort((a, b) => a.name.compareTo(b.name));
+    final _assets = assets..sort((a, b) => a.name.compareTo(b.name));
+    final _theme = theme..sort((a, b) => a.name.compareTo(b.name));
     return ExampleScaffold(
       name: 'Zeta',
-      child: ListView.builder(
-        padding: EdgeInsets.all(Dimensions.s),
-        itemCount: items.length,
-        itemBuilder: (context, index) {
-          return ListTile(
-            title: ZetaText(items[index].name),
-            onTap: () => context.go('/${items[index].name}'),
-          );
-        },
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            ExpansionTile(
+              title: Text('Widgets'),
+              backgroundColor: Zeta.of(context).colors.warm.shade30,
+              children: _components
+                  .map((item) => ListTile(title: Text(item.name), onTap: () => context.go('/${item.name}')))
+                  .toList(),
+            ),
+            ExpansionTile(
+              title: Text('Theme'),
+              backgroundColor: Zeta.of(context).colors.warm.shade30,
+              children: _theme
+                  .map((item) => ListTile(title: Text(item.name), onTap: () => context.go('/${item.name}')))
+                  .toList(),
+            ),
+            ExpansionTile(
+              title: Text('Assets'),
+              backgroundColor: Zeta.of(context).colors.warm.shade30,
+              children: _assets
+                  .map((item) => ListTile(title: Text(item.name), onTap: () => context.go('/${item.name}')))
+                  .toList(),
+            ),
+          ],
+        ),
       ),
     );
   }

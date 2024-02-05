@@ -9,14 +9,14 @@ void main() async {
 
   final preferences = await SharedPreferences.getInstance();
   final themeService = SharedPrefsThemeService(preferences);
-  final themPreferences = await themeService.loadTheme();
+  final themePreferences = await themeService.loadTheme();
 
   runApp(
     ZetaExample(
       themeService: themeService,
-      initialThemeData: themPreferences.$1 ?? ZetaThemeData(),
-      initialThemeMode: themPreferences.$2 ?? ThemeMode.system,
-      initialContrast: themPreferences.$3 ?? ZetaContrast.aa,
+      initialThemeData: themePreferences.$1 ?? ZetaThemeData(),
+      initialThemeMode: themePreferences.$2 ?? ThemeMode.system,
+      initialContrast: themePreferences.$3 ?? ZetaContrast.aa,
     ),
   );
 }
@@ -49,14 +49,18 @@ class ZetaExample extends StatelessWidget {
           routerConfig: router,
           themeMode: themeMode,
           theme: ThemeData(
+            useMaterial3: true,
             fontFamily: themeData.fontFamily,
             scaffoldBackgroundColor: light.background,
             colorScheme: light,
+            textTheme: zetaTextTheme,
           ),
           darkTheme: ThemeData(
+            useMaterial3: true,
             fontFamily: themeData.fontFamily,
             scaffoldBackgroundColor: dark.background,
             colorScheme: dark,
+            textTheme: zetaTextTheme,
           ),
         );
       },

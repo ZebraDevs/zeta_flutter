@@ -1,42 +1,43 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
-import 'package:flutter/material.dart';
+
+import 'test_components.dart';
 
 void main() {
   group('ZetaCheckbox Tests', () {
-    testWidgets('Initializes with correct parameters',
-        (WidgetTester tester) async {
+    testWidgets('Initializes with correct parameters', (WidgetTester tester) async {
       await tester.pumpWidget(
-        TestWidgetCB(
-            widget: ZetaCheckbox(
-          value: true,
-          onChanged: (value) {},
-          borderType: BorderType.rounded,
-          label: 'Test Checkbox',
-          checkboxSize: Size(30, 30),
-        )),
+        TestWidget(
+          widget: ZetaCheckbox(
+            value: true,
+            onChanged: (value) {},
+            label: 'Test Checkbox',
+          ),
+        ),
       );
 
       final checkboxFinder = find.byType(ZetaCheckbox);
       final ZetaCheckbox checkbox = tester.firstWidget(checkboxFinder);
 
       expect(checkbox.value, true);
-      expect(checkbox.borderType, BorderType.rounded);
+      expect(checkbox.rounded, true);
       expect(checkbox.label, 'Test Checkbox');
-      expect(checkbox.checkboxSize, Size(30, 30));
     });
 
     testWidgets('ZetaCheckbox changes state on tap', (WidgetTester tester) async {
       bool? checkboxValue = true;
 
       await tester.pumpWidget(
-        TestWidgetCB(
-            widget: ZetaCheckbox(
-          value: checkboxValue,
-          onChanged: (value) {
-            checkboxValue = value;
-          },
-        )),
+        TestWidget(
+          removeBody: true,
+          widget: ZetaCheckbox(
+            value: checkboxValue,
+            onChanged: (value) {
+              checkboxValue = value;
+            },
+          ),
+        ),
       );
 
       await tester.tap(find.byType(ZetaCheckbox));
@@ -60,7 +61,7 @@ class TestWidgetCB extends StatelessWidget {
           return MaterialApp(
             theme: ThemeData(
               fontFamily: theme.fontFamily,
-              textTheme: ZetaText.textTheme,
+              textTheme: zetaTextTheme,
             ),
             home: Scaffold(
               body: widget,
