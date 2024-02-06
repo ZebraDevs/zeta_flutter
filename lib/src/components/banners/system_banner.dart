@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../../zeta_flutter.dart';
@@ -38,10 +39,10 @@ class ZetaSystemBanner extends MaterialBanner {
             builder: (context) {
               final backgroundColor = _backgroundColorFromType(context, type);
               final foregroundColor = backgroundColor.onColor;
-              if (context.mounted) {
+              if (!kIsWeb && Platform.isAndroid && context.mounted) {
                 // ignore: invalid_use_of_visible_for_testing_member
                 final statusBarColor = SystemChrome.latestStyle?.statusBarColor;
-                if (Platform.isAndroid && statusBarColor != backgroundColor) {
+                if (statusBarColor != backgroundColor) {
                   SystemChrome.setSystemUIOverlayStyle(
                     SystemUiOverlayStyle(
                       statusBarColor: backgroundColor,
