@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
-import '../../test/test_components.dart';
+import '../test/test_components.dart';
 
 WidgetbookComponent accordionWidgetBook() {
   return WidgetbookComponent(
@@ -11,7 +11,7 @@ WidgetbookComponent accordionWidgetBook() {
     useCases: [
       WidgetbookUseCase(
         name: 'Accordion',
-        builder: (context) => TestWidget(
+        builder: (context) => WidgetbookTestWidget(
           themeMode: ThemeMode.dark,
           widget: Padding(
             padding: const EdgeInsets.all(20),

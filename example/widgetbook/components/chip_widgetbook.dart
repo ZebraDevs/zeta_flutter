@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
-import '../../test/test_components.dart';
+import '../test/test_components.dart';
 
 WidgetbookComponent chipWidgetBook() {
   return WidgetbookComponent(
@@ -29,7 +29,7 @@ WidgetbookComponent chipWidgetBook() {
               return '';
             },
           );
-          return TestWidget(
+          return WidgetbookTestWidget(
             widget: ZetaInputChip(
               label: context.knobs.string(label: 'Label', initialValue: 'Label'),
               leading: context.knobs.boolean(label: 'Avatar')
@@ -46,7 +46,7 @@ WidgetbookComponent chipWidgetBook() {
       ),
       WidgetbookUseCase(
         name: 'Filter Chip',
-        builder: (context) => TestWidget(
+        builder: (context) => WidgetbookTestWidget(
           widget: Padding(
             padding: const EdgeInsets.all(20),
             child: Column(
@@ -63,7 +63,7 @@ WidgetbookComponent chipWidgetBook() {
       ),
       WidgetbookUseCase(
         name: 'Assist Chip',
-        builder: (context) => TestWidget(
+        builder: (context) => WidgetbookTestWidget(
           widget: Padding(
             padding: const EdgeInsets.all(20),
             child: Column(

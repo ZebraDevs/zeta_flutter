@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
-import '../../test/test_components.dart';
+import '../test/test_components.dart';
 
 WidgetbookComponent BannerWidgetBook() {
   return WidgetbookComponent(
@@ -11,7 +11,7 @@ WidgetbookComponent BannerWidgetBook() {
     useCases: [
       WidgetbookUseCase(
         name: 'System Banner',
-        builder: (context) => TestWidget(
+        builder: (context) => WidgetbookTestWidget(
           widget: Padding(
             padding: EdgeInsets.all(20),
             child: Column(
@@ -48,7 +48,7 @@ WidgetbookComponent BannerWidgetBook() {
       ),
       WidgetbookUseCase(
         name: 'In Page Banner',
-        builder: (context) => TestWidget(
+        builder: (context) => WidgetbookTestWidget(
           themeMode: ThemeMode.dark,
           widget: Padding(
             padding: EdgeInsets.all(20),

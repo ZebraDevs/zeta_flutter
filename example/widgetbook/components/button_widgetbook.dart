@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
-import '../../test/test_components.dart';
+import '../test/test_components.dart';
 
 WidgetbookComponent buttonWidgetBook() {
   return WidgetbookComponent(
@@ -12,7 +12,7 @@ WidgetbookComponent buttonWidgetBook() {
       WidgetbookUseCase(
         name: 'Button',
         builder: (context) {
-          return TestWidget(
+          return WidgetbookTestWidget(
             widget: Padding(
               padding: EdgeInsets.all(20),
               child: ZetaButton(
@@ -28,7 +28,7 @@ WidgetbookComponent buttonWidgetBook() {
       ),
       WidgetbookUseCase(
         name: 'Floating Action Button',
-        builder: (context) => TestWidget(
+        builder: (context) => WidgetbookTestWidget(
           widget: Padding(padding: EdgeInsets.all(20), child: FabWidget(context)),
         ),
       )

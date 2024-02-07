@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
-import '../../test/test_components.dart';
+import '../test/test_components.dart';
 
 WidgetbookComponent badgeWidgetBook() {
   return WidgetbookComponent(
@@ -12,7 +12,7 @@ WidgetbookComponent badgeWidgetBook() {
       WidgetbookUseCase(
         name: 'Status Label',
         builder: (context) {
-          return TestWidget(
+          return WidgetbookTestWidget(
             themeMode: ThemeMode.dark,
             widget: Column(
               children: [
@@ -47,7 +47,7 @@ WidgetbookComponent badgeWidgetBook() {
       ),
       WidgetbookUseCase(
         name: 'Priority Pill',
-        builder: (context) => TestWidget(
+        builder: (context) => WidgetbookTestWidget(
           themeMode: ThemeMode.dark,
           widget: Column(
             children: [
@@ -65,7 +65,7 @@ WidgetbookComponent badgeWidgetBook() {
       ),
       WidgetbookUseCase(
         name: 'Badge',
-        builder: (context) => TestWidget(
+        builder: (context) => WidgetbookTestWidget(
           themeMode: ThemeMode.dark,
           widget: Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -84,7 +84,7 @@ WidgetbookComponent badgeWidgetBook() {
       ),
       WidgetbookUseCase(
         name: 'Indicators',
-        builder: (context) => TestWidget(
+        builder: (context) => WidgetbookTestWidget(
           themeMode: ThemeMode.dark,
           widget: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -120,7 +120,7 @@ WidgetbookComponent badgeWidgetBook() {
       ),
       WidgetbookUseCase(
         name: 'Tags',
-        builder: (context) => TestWidget(
+        builder: (context) => WidgetbookTestWidget(
           themeMode: ThemeMode.dark,
           widget: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -139,7 +139,7 @@ WidgetbookComponent badgeWidgetBook() {
       ),
       WidgetbookUseCase(
         name: 'Workcloud Indicators',
-        builder: (context) => TestWidget(
+        builder: (context) => WidgetbookTestWidget(
           themeMode: ThemeMode.dark,
           widget: Row(
             mainAxisAlignment: MainAxisAlignment.center,
