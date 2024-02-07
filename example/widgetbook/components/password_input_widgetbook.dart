@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
-import '../../test/test_components.dart';
+import '../test/test_components.dart';
 
 WidgetbookComponent passwordInputWidgetBook() {
   return WidgetbookComponent(
@@ -36,7 +36,7 @@ class _PasswordState extends State<_Password> {
     final validationString = context.knobs.string(label: 'Error label', initialValue: 'Incorrect');
     return Form(
       key: _formKey,
-      child: TestWidget(
+      child: WidgetbookTestWidget(
         widget: Padding(
           padding: EdgeInsets.all(ZetaSpacing.x5),
           child: Column(

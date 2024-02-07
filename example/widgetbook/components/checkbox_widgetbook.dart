@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
-import '../../test/test_components.dart';
+import '../test/test_components.dart';
 
 WidgetbookComponent checkboxWidgetBook() {
   return WidgetbookComponent(
@@ -11,7 +11,7 @@ WidgetbookComponent checkboxWidgetBook() {
     useCases: [
       WidgetbookUseCase(
         name: 'Checkbox',
-        builder: (context) => TestWidget(
+        builder: (context) => WidgetbookTestWidget(
           widget: Column(
             children: [
               Padding(
