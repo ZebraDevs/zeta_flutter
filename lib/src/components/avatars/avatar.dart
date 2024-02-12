@@ -146,7 +146,13 @@ class ZetaAvatar extends StatelessWidget {
                   ),
                   child: ClipRRect(borderRadius: ZetaRadius.full, clipBehavior: Clip.hardEdge, child: innerContent),
                 )
-              : innerContent,
+              : DecoratedBox(
+                  decoration: BoxDecoration(
+                    borderRadius: ZetaRadius.full,
+                    color: backgroundColor ?? zetaColors.surfaceHovered,
+                  ),
+                  child: innerContent,
+                ),
         ),
         if (upperBadge != null)
           Positioned(

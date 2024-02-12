@@ -16,15 +16,6 @@ WidgetbookComponent colorWidgetBook() {
           );
         },
       ),
-      WidgetbookUseCase(
-        name: 'Dark Mode',
-        builder: (BuildContext context) {
-          return ZetaProvider(
-            initialThemeMode: ThemeMode.dark,
-            builder: (_, __, ___) => ColorBody(),
-          );
-        },
-      )
     ],
   );
 }
@@ -84,58 +75,63 @@ class ColorBody extends StatelessWidget {
         'info': colors.info,
       };
 
-      return Container(
-        padding: const EdgeInsets.symmetric(horizontal: ZetaSpacing.l),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              const SizedBox(height: ZetaSpacing.l),
-              MyRow(children: textIcon, title: 'Text and icon styles'),
-              MyRow(children: border, title: 'Border styles'),
-              MyRow(children: links, title: 'Links'),
-              MyRow(children: backdrop, title: 'Backdrop colors'),
-              MyRow(children: alerts, title: 'Alert colors'),
-              Row(children: [Text('Full color swatches', style: ZetaTextStyles.displayMedium)])
-                  .paddingVertical(ZetaSpacing.x8),
-              ...swatches.entries.map(
-                (value) {
-                  return Row(
-                    children: List.generate(10, (index) => 100 - (10 * index)).map(
-                      (e) {
-                        return Expanded(
-                          child: Container(
-                            height: constraints.maxWidth / 10,
-                            color: value.value[e],
-                            child: FittedBox(
-                              fit: BoxFit.scaleDown,
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  DefaultTextStyle(
-                                    style: ZetaTextStyles.bodyMedium.copyWith(
-                                      color: calculateTextColor(value.value[e] ?? Colors.white),
+      return DefaultTextStyle(
+        style: ZetaTextStyles.displayMedium.apply(
+          color: Zeta.of(context).colors.cool,
+          decoration: TextDecoration.none,
+        ),
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: ZetaSpacing.l),
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                const SizedBox(height: ZetaSpacing.l),
+                MyRow(children: textIcon, title: 'Text and icon styles'),
+                MyRow(children: border, title: 'Border styles'),
+                MyRow(children: links, title: 'Links'),
+                MyRow(children: backdrop, title: 'Backdrop colors'),
+                MyRow(children: alerts, title: 'Alert colors'),
+                Row(children: [Text('Full color swatches')]).paddingVertical(ZetaSpacing.x8),
+                ...swatches.entries.map(
+                  (value) {
+                    return Row(
+                      children: List.generate(10, (index) => 100 - (10 * index)).map(
+                        (e) {
+                          return Expanded(
+                            child: Container(
+                              height: constraints.maxWidth / 10,
+                              color: value.value[e],
+                              child: FittedBox(
+                                fit: BoxFit.scaleDown,
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    DefaultTextStyle(
+                                      style: ZetaTextStyles.bodyMedium.copyWith(
+                                        color: calculateTextColor(value.value[e] ?? Colors.white),
+                                      ),
+                                      child: Column(
+                                        children: [
+                                          Text('${value.key.toLowerCase().replaceAll(' ', '')}-$e'),
+                                          Text(
+                                            value.value[e].toString().replaceAll('Color(0xff', '#').substring(0, 7),
+                                          ),
+                                        ],
+                                      ),
                                     ),
-                                    child: Column(
-                                      children: [
-                                        Text('${value.key.toLowerCase().replaceAll(' ', '')}-$e'),
-                                        Text(
-                                          value.value[e].toString().replaceAll('Color(0xff', '#').substring(0, 7),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
                             ),
-                          ),
-                        );
-                      },
-                    ).toList(),
-                  );
-                },
-              ),
-              const SizedBox(height: ZetaSpacing.l),
-            ],
+                          );
+                        },
+                      ).toList(),
+                    );
+                  },
+                ),
+                const SizedBox(height: ZetaSpacing.l),
+              ],
+            ),
           ),
         ),
       );

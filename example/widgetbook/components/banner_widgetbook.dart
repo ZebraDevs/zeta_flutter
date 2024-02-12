@@ -49,7 +49,6 @@ WidgetbookComponent BannerWidgetBook() {
       WidgetbookUseCase(
         name: 'In Page Banner',
         builder: (context) => WidgetbookTestWidget(
-          themeMode: ThemeMode.dark,
           widget: Padding(
             padding: EdgeInsets.all(20),
             child: Column(

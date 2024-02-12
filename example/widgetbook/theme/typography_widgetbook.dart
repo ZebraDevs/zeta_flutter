@@ -28,17 +28,19 @@ WidgetbookComponent textWidgetBook() {
     useCases: [
       WidgetbookUseCase(
         name: 'Text styles',
-        builder: (context) => Container(
-          color: Theme.of(context).colorScheme.background,
-          padding: const EdgeInsets.all(ZetaSpacing.l),
-          child: Text(
-            context.knobs.string(label: 'Text', initialValue: 'The quick brown fox jumps over the lazy dog.'),
-            style: context.knobs.list(
-              label: 'Sizes',
-              labelBuilder: (p0) => dedicatedSizes.entries.firstWhere((element) => element.value == p0).key,
-              options: dedicatedSizes.values.toList(),
-            ),
-          ),
+        builder: (context) => Text(
+          context.knobs.string(label: 'Text', initialValue: 'The quick brown fox jumps over the lazy dog.'),
+          style: context.knobs
+              .list(
+                label: 'Sizes',
+                labelBuilder: (p0) => dedicatedSizes.entries.firstWhere((element) => element.value == p0).key,
+                options: dedicatedSizes.values.toList(),
+              )
+              .apply(
+                color: Zeta.of(context).colors.textDefault,
+                fontStyle: FontStyle.normal,
+                decoration: TextDecoration.none,
+              ),
         ),
       ),
     ],

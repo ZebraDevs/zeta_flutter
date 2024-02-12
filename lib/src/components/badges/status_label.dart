@@ -43,7 +43,11 @@ class ZetaStatusLabel extends StatelessWidget {
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(customIcon ?? Icons.circle, size: ZetaSpacing.x2, color: colors.icon),
+            Icon(
+              customIcon ?? Icons.circle,
+              size: customIcon != null ? ZetaSpacing.x5 : ZetaSpacing.x2,
+              color: colors.icon,
+            ),
             const SizedBox(width: ZetaSpacing.xs),
             Text(
               label,
