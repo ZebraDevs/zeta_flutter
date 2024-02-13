@@ -74,7 +74,8 @@ class _ZetaChipState extends State<ZetaChip> {
   bool selected = false;
 
   Widget? get leading =>
-      widget.leading ?? (selected ? Icon(widget.rounded ? ZetaIcons.check_round : ZetaIcons.check_sharp) : null);
+      widget.leading ??
+      (selected ? Icon(widget.rounded ? ZetaIcons.check_mark_round : ZetaIcons.check_mark_sharp) : null);
 
   @override
   void initState() {
