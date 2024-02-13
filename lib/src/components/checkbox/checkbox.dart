@@ -169,8 +169,8 @@ class _CheckboxState extends State<_Checkbox> {
         : Icon(
             _value != null
                 ? widget.rounded
-                    ? ZetaIcons.check_round
-                    : ZetaIcons.check_sharp
+                    ? ZetaIcons.check_mark_round
+                    : ZetaIcons.check_mark_sharp
                 : widget.rounded
                     ? ZetaIcons.remove_round
                     : ZetaIcons.remove_sharp,
