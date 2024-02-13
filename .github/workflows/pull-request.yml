@@ -95,7 +95,7 @@ jobs:
       - name: Build example app
         run: |
           cd example
-          flutter build web -o ../build --no-tree-shake-icons
+          flutter build web -t widgetbook/main.dart -o ../build --no-tree-shake-icons
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: "${{ secrets.GITHUB_TOKEN }}"

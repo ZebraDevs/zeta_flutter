@@ -2,17 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
-import 'components/accordion_widgetbook.dart';
-import 'components/avatar_widgetbook.dart';
-import 'components/badges_widgetbook.dart';
-import 'components/bottom_sheet_widgetbook.dart';
-import 'components/button_widgetbook.dart';
-import 'components/checkbox_widgetbook.dart';
-import 'theme/color_widgetbook.dart';
-import 'components/banner_widgetbook.dart';
-import 'components/chip_widgetbook.dart';
-import 'components/password_input_widgetbook.dart';
-import 'theme/typography_widgetbook.dart';
+import 'pages/assets/icon_widgetbook.dart';
+import 'pages/components/accordion_widgetbook.dart';
+import 'pages/components/avatar_widgetbook.dart';
+import 'pages/components/badges_widgetbook.dart';
+import 'pages/components/bottom_sheet_widgetbook.dart';
+import 'pages/components/button_widgetbook.dart';
+import 'pages/components/checkbox_widgetbook.dart';
+import 'pages/theme/color_widgetbook.dart';
+import 'pages/components/banner_widgetbook.dart';
+import 'pages/components/chip_widgetbook.dart';
+import 'pages/components/password_input_widgetbook.dart';
+import 'pages/theme/typography_widgetbook.dart';
 import 'utils/zebra.dart';
 
 class HotReload extends StatelessWidget {
@@ -31,7 +32,7 @@ class HotReload extends StatelessWidget {
             avatarWidgetBook(),
             checkboxWidgetBook(),
             buttonWidgetBook(),
-            BannerWidgetBook(),
+            bannerWidgetBook(),
             accordionWidgetBook(),
             chipWidgetBook(),
             passwordInputWidgetBook(),
@@ -42,6 +43,11 @@ class HotReload extends StatelessWidget {
           name: 'Theme',
           isInitiallyExpanded: false,
           children: [textWidgetBook(), colorWidgetBook()]..sort((a, b) => a.name.compareTo(b.name)),
+        ),
+        WidgetbookCategory(
+          name: 'Assets',
+          isInitiallyExpanded: true,
+          children: [iconWidgetbook()]..sort((a, b) => a.name.compareTo(b.name)),
         ),
       ],
       addons: [

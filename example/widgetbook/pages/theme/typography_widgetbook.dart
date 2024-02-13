@@ -27,7 +27,7 @@ WidgetbookComponent textWidgetBook() {
     name: 'Typography',
     useCases: [
       WidgetbookUseCase(
-        name: 'Text styles',
+        name: 'Individual text styles',
         builder: (context) => Text(
           context.knobs.string(label: 'Text', initialValue: 'The quick brown fox jumps over the lazy dog.'),
           style: context.knobs
@@ -43,6 +43,29 @@ WidgetbookComponent textWidgetBook() {
               ),
         ),
       ),
+      WidgetbookUseCase(
+          name: 'All text styles',
+          builder: (context) => SingleChildScrollView(
+                scrollDirection: Axis.vertical,
+                child: Row(
+                  children: [
+                    Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: dedicatedSizes.keys.map(
+                          (e) {
+                            return Text(
+                              e,
+                              style: dedicatedSizes[e]?.apply(
+                                color: Zeta.of(context).colors.textDefault,
+                                fontStyle: FontStyle.normal,
+                                decoration: TextDecoration.none,
+                              ),
+                            ).paddingAll(ZetaSpacing.b);
+                          },
+                        ).toList()),
+                  ],
+                ),
+              )),
     ],
   );
 }

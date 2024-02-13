@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
-import '../test/test_components.dart';
+import '../../test/test_components.dart';
 
-WidgetbookComponent BannerWidgetBook() {
+WidgetbookComponent bannerWidgetBook() {
   return WidgetbookComponent(
     isInitiallyExpanded: false,
     name: 'Banners',
