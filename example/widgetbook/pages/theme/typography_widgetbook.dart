@@ -4,7 +4,7 @@ import 'package:widgetbook/widgetbook.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 WidgetbookComponent textWidgetBook() {
-  final dedicatedSizes = {
+  final Map<String, TextStyle> allTypes = {
     'Display large': ZetaTextStyles.displayLarge,
     'Display medium': ZetaTextStyles.displayMedium,
     'Display small': ZetaTextStyles.displaySmall,
@@ -33,8 +33,8 @@ WidgetbookComponent textWidgetBook() {
           style: context.knobs
               .list(
                 label: 'Sizes',
-                labelBuilder: (p0) => dedicatedSizes.entries.firstWhere((element) => element.value == p0).key,
-                options: dedicatedSizes.values.toList(),
+                labelBuilder: (p0) => allTypes.entries.firstWhere((element) => element.value == p0).key,
+                options: allTypes.values.toList(),
               )
               .apply(
                 color: Zeta.of(context).colors.textDefault,
@@ -51,11 +51,11 @@ WidgetbookComponent textWidgetBook() {
                   children: [
                     Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: dedicatedSizes.keys.map(
+                        children: allTypes.keys.map(
                           (e) {
                             return Text(
                               e,
-                              style: dedicatedSizes[e]?.apply(
+                              style: allTypes[e]?.apply(
                                 color: Zeta.of(context).colors.textDefault,
                                 fontStyle: FontStyle.normal,
                                 decoration: TextDecoration.none,

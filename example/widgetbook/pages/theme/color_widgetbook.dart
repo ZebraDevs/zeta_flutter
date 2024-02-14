@@ -8,7 +8,7 @@ WidgetbookComponent colorWidgetBook() {
     name: 'Colors',
     useCases: [
       WidgetbookUseCase(
-        name: 'Light Mode',
+        name: 'Colors',
         builder: (BuildContext context) {
           return ZetaProvider(
             initialThemeMode: ThemeMode.light,

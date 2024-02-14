@@ -13,6 +13,7 @@ import 'pages/theme/color_widgetbook.dart';
 import 'pages/components/banner_widgetbook.dart';
 import 'pages/components/chip_widgetbook.dart';
 import 'pages/components/password_input_widgetbook.dart';
+import 'pages/theme/spacing_widgetbook.dart';
 import 'pages/theme/typography_widgetbook.dart';
 import 'utils/zebra.dart';
 
@@ -42,11 +43,12 @@ class HotReload extends StatelessWidget {
         WidgetbookCategory(
           name: 'Theme',
           isInitiallyExpanded: false,
-          children: [textWidgetBook(), colorWidgetBook()]..sort((a, b) => a.name.compareTo(b.name)),
+          children: [textWidgetBook(), colorWidgetBook(), spacingWidgetBook()]
+            ..sort((a, b) => a.name.compareTo(b.name)),
         ),
         WidgetbookCategory(
           name: 'Assets',
-          isInitiallyExpanded: true,
+          isInitiallyExpanded: false,
           children: [iconWidgetbook()]..sort((a, b) => a.name.compareTo(b.name)),
         ),
       ],
