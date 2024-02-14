@@ -15,7 +15,7 @@ WidgetbookComponent spacingWidgetBook() {
             children: [
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: namedSpacings.entries.map((obj) => _SizeObject(obj)).toList(),
+                children: namedSpacings.entries.map((obj) => _SpacingDemo(obj)).toList(),
               )
             ],
           ),
@@ -28,7 +28,7 @@ WidgetbookComponent spacingWidgetBook() {
             children: [
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: valueSpacings.entries.map((obj) => _SizeObject(obj)).toList(),
+                children: valueSpacings.entries.map((obj) => _SpacingDemo(obj)).toList(),
               )
             ],
           ),
@@ -70,10 +70,10 @@ Map<String, double> valueSpacings = {
   'x24': ZetaSpacing.x24,
 };
 
-class _SizeObject extends StatelessWidget {
+class _SpacingDemo extends StatelessWidget {
   final MapEntry<String, double> size;
 
-  const _SizeObject(this.size);
+  const _SpacingDemo(this.size);
 
   @override
   Widget build(BuildContext context) {

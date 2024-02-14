@@ -13,6 +13,7 @@ import 'pages/theme/color_widgetbook.dart';
 import 'pages/components/banner_widgetbook.dart';
 import 'pages/components/chip_widgetbook.dart';
 import 'pages/components/password_input_widgetbook.dart';
+import 'pages/theme/radius_widgetbook.dart';
 import 'pages/theme/spacing_widgetbook.dart';
 import 'pages/theme/typography_widgetbook.dart';
 import 'utils/zebra.dart';
@@ -43,7 +44,7 @@ class HotReload extends StatelessWidget {
         WidgetbookCategory(
           name: 'Theme',
           isInitiallyExpanded: false,
-          children: [textWidgetBook(), colorWidgetBook(), spacingWidgetBook()]
+          children: [textWidgetBook(), colorWidgetBook(), spacingWidgetBook(), radiusWidgetbook()]
             ..sort((a, b) => a.name.compareTo(b.name)),
         ),
         WidgetbookCategory(
@@ -72,7 +73,6 @@ class HotReload extends StatelessWidget {
           ],
           themeBuilder: (context, theme, child) {
             _Theme _theme = theme;
-            // Wrap use cases with the custom theme's InheritedWidget
             return ZetaProvider(
               initialContrast: _theme.isAAA ? ZetaContrast.aaa : ZetaContrast.aa,
               initialThemeMode: _theme.isDark ? ThemeMode.dark : ThemeMode.light,
