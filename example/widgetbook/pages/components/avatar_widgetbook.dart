@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
-import '../test/test_components.dart';
+import '../../test/test_components.dart';
 
 WidgetbookComponent avatarWidgetBook() {
   return WidgetbookComponent(
@@ -15,7 +15,6 @@ WidgetbookComponent avatarWidgetBook() {
           final Widget image = Image.network('https://i.ytimg.com/vi/KItsWUzFUOs/maxresdefault.jpg', fit: BoxFit.cover);
 
           return WidgetbookTestWidget(
-            themeMode: ThemeMode.dark,
             widget: Column(
               children: [
                 Padding(
@@ -40,7 +39,6 @@ WidgetbookComponent avatarWidgetBook() {
         name: 'Initials Avatar',
         builder: (context) {
           return WidgetbookTestWidget(
-            themeMode: ThemeMode.dark,
             widget: Column(
               children: [
                 Padding(

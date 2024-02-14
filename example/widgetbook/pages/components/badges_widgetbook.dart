@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
-import '../test/test_components.dart';
+import '../../test/test_components.dart';
 
 WidgetbookComponent badgeWidgetBook() {
   return WidgetbookComponent(
@@ -13,7 +13,6 @@ WidgetbookComponent badgeWidgetBook() {
         name: 'Status Label',
         builder: (context) {
           return WidgetbookTestWidget(
-            themeMode: ThemeMode.dark,
             widget: Column(
               children: [
                 Padding(
@@ -48,7 +47,6 @@ WidgetbookComponent badgeWidgetBook() {
       WidgetbookUseCase(
         name: 'Priority Pill',
         builder: (context) => WidgetbookTestWidget(
-          themeMode: ThemeMode.dark,
           widget: Column(
             children: [
               Padding(
@@ -66,7 +64,6 @@ WidgetbookComponent badgeWidgetBook() {
       WidgetbookUseCase(
         name: 'Badge',
         builder: (context) => WidgetbookTestWidget(
-          themeMode: ThemeMode.dark,
           widget: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -85,7 +82,6 @@ WidgetbookComponent badgeWidgetBook() {
       WidgetbookUseCase(
         name: 'Indicators',
         builder: (context) => WidgetbookTestWidget(
-          themeMode: ThemeMode.dark,
           widget: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -121,7 +117,6 @@ WidgetbookComponent badgeWidgetBook() {
       WidgetbookUseCase(
         name: 'Tags',
         builder: (context) => WidgetbookTestWidget(
-          themeMode: ThemeMode.dark,
           widget: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -140,7 +135,6 @@ WidgetbookComponent badgeWidgetBook() {
       WidgetbookUseCase(
         name: 'Workcloud Indicators',
         builder: (context) => WidgetbookTestWidget(
-          themeMode: ThemeMode.dark,
           widget: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [

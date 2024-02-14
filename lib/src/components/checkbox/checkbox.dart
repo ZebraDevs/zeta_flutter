@@ -31,6 +31,7 @@ class ZetaCheckbox extends FormField<bool> {
               useIndeterminate: useIndeterminate,
               value: value,
               error: !field.isValid,
+              enabled: onChanged != null,
             );
           },
         );
@@ -75,18 +76,19 @@ class ZetaCheckboxFormFieldState extends FormFieldState<bool> {
 class _Checkbox extends StatefulWidget {
   const _Checkbox({
     this.value = false,
-    this.onChanged,
+    required this.onChanged,
     this.label,
     this.rounded = true,
     this.useIndeterminate = false,
     this.error = false,
+    required this.enabled,
   });
 
   /// Whether the checkbox is selected, unselected or null (indeterminate)
   final bool? value;
 
   /// Called when the value of the checkbox should change.
-  final ValueChanged<bool?>? onChanged;
+  final ValueChanged<bool?> onChanged;
 
   /// The label displayed next to the checkbox
   final String? label;
@@ -101,6 +103,8 @@ class _Checkbox extends StatefulWidget {
 
   final bool error;
 
+  final bool enabled;
+
   @override
   State<_Checkbox> createState() => _CheckboxState();
   @override
@@ -108,17 +112,16 @@ class _Checkbox extends StatefulWidget {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty<bool?>('value', value))
-      ..add(ObjectFlagProperty<ValueChanged<bool?>?>.has('onChanged', onChanged))
       ..add(StringProperty('label', label))
       ..add(DiagnosticsProperty<bool>('rounded', rounded))
       ..add(DiagnosticsProperty<bool>('useIndeterminate', useIndeterminate))
-      ..add(DiagnosticsProperty<bool>('error', error));
+      ..add(DiagnosticsProperty<bool>('error', error))
+      ..add(DiagnosticsProperty<bool>('enabled', enabled))
+      ..add(ObjectFlagProperty<ValueChanged<bool?>>.has('onChanged', onChanged));
   }
 }
 
 class _CheckboxState extends State<_Checkbox> {
-  bool get _enabled => widget.onChanged != null;
-
   bool? get _value => widget.useIndeterminate ? widget.value : (widget.value ?? false);
 
   bool? get _updatedValue {
@@ -141,18 +144,17 @@ class _CheckboxState extends State<_Checkbox> {
   @override
   Widget build(BuildContext context) {
     return Semantics(
-      checked: _value ?? false,
       mixed: widget.useIndeterminate,
-      enabled: _enabled,
+      enabled: widget.enabled,
       child: MouseRegion(
-        cursor: _enabled ? SystemMouseCursors.click : SystemMouseCursors.forbidden,
+        cursor: widget.enabled ? SystemMouseCursors.click : SystemMouseCursors.forbidden,
         onEnter: (event) => setState(() => _isHovered = true),
         onExit: (event) => setState(() => _isHovered = false),
-        child: _enabled
+        child: widget.enabled
             ? FocusableActionDetector(
                 onFocusChange: (bool focus) => setState(() => _isFocused = focus),
                 child: GestureDetector(
-                  onTap: _enabled ? () => widget.onChanged?.call(_updatedValue) : null,
+                  onTap: widget.enabled ? () => widget.onChanged.call(_updatedValue) : null,
                   child: _buildContent(context),
                 ),
               )
@@ -174,7 +176,7 @@ class _CheckboxState extends State<_Checkbox> {
                 : widget.rounded
                     ? ZetaIcons.remove_round
                     : ZetaIcons.remove_sharp,
-            color: _enabled ? theme.colors.white : theme.colors.textDisabled,
+            color: widget.enabled ? theme.colors.white : theme.colors.textDisabled,
             size: ZetaSpacing.x3_5,
           );
 
@@ -186,7 +188,7 @@ class _CheckboxState extends State<_Checkbox> {
           duration: const Duration(milliseconds: 200),
           decoration: BoxDecoration(
             boxShadow: [
-              if (_isFocused && _enabled)
+              if (_isFocused && widget.enabled)
                 BoxShadow(
                   spreadRadius: 2,
                   blurStyle: BlurStyle.solid,
@@ -194,7 +196,7 @@ class _CheckboxState extends State<_Checkbox> {
                 ),
             ],
             color: _getBackground(theme),
-            border: _enabled ? Border.all(color: _getBorderColor(theme), width: ZetaSpacing.x0_5) : null,
+            border: widget.enabled ? Border.all(color: _getBorderColor(theme), width: ZetaSpacing.x0_5) : null,
             borderRadius: widget.rounded ? ZetaRadius.minimal : ZetaRadius.none,
           ),
           width: ZetaSpacing.x5,
@@ -215,8 +217,8 @@ class _CheckboxState extends State<_Checkbox> {
 
   Color _getBackground(Zeta theme) {
     final ZetaColorSwatch color = widget.error ? theme.colors.error : theme.colors.primary;
-
-    if (!_enabled || (_value != null && !_value!)) return theme.colors.surfacePrimary;
+    if (!widget.enabled) return theme.colors.surfaceDisabled;
+    if (_value != null && !_value!) return theme.colors.surfacePrimary;
     if (_isHovered) return color.hover;
 
     return color;

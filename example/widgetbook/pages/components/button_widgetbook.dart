@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
-import '../test/test_components.dart';
+import '../../test/test_components.dart';
 
 WidgetbookComponent buttonWidgetBook() {
   return WidgetbookComponent(
@@ -13,15 +13,21 @@ WidgetbookComponent buttonWidgetBook() {
         name: 'Button',
         builder: (context) {
           return WidgetbookTestWidget(
-            widget: Padding(
-              padding: EdgeInsets.all(20),
-              child: ZetaButton(
-                label: context.knobs.string(label: 'Text', initialValue: 'Button'),
-                onPressed: context.knobs.boolean(label: 'Disabled') ? null : () {},
-                borderType: context.knobs.boolean(label: 'Rounded') ? ZetaWidgetBorder.rounded : ZetaWidgetBorder.sharp,
-                size: context.knobs.list(label: 'Size', options: ZetaWidgetSize.values),
-                type: context.knobs.list(label: 'Type', options: ZetaButtonType.values),
-              ),
+            widget: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Padding(
+                  padding: EdgeInsets.all(20),
+                  child: ZetaButton(
+                    label: context.knobs.string(label: 'Text', initialValue: 'Button'),
+                    onPressed: context.knobs.boolean(label: 'Disabled') ? null : () {},
+                    borderType:
+                        context.knobs.boolean(label: 'Rounded') ? ZetaWidgetBorder.rounded : ZetaWidgetBorder.sharp,
+                    size: context.knobs.list(label: 'Size', options: ZetaWidgetSize.values),
+                    type: context.knobs.list(label: 'Type', options: ZetaButtonType.values),
+                  ),
+                ),
+              ],
             ),
           );
         },

@@ -35,6 +35,7 @@ class ZetaSystemBanner extends MaterialBanner {
     bool titleStart = false,
     Widget? trailing,
   }) : super(
+          dividerColor: Colors.transparent,
           content: Builder(
             builder: (context) {
               final backgroundColor = _backgroundColorFromType(context, type);

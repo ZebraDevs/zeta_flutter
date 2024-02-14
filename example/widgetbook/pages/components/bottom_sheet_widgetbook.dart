@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
-import '../test/test_components.dart';
+import '../../test/test_components.dart';
 
 WidgetbookComponent bottomSheetWidgetBook() {
   return WidgetbookComponent(
@@ -12,7 +12,6 @@ WidgetbookComponent bottomSheetWidgetBook() {
       WidgetbookUseCase(
         name: 'Content',
         builder: (context) => WidgetbookTestWidget(
-          themeMode: ThemeMode.dark,
           widget: Padding(
             padding: const EdgeInsets.all(20),
             child: _bottomSheet(context),
@@ -24,7 +23,6 @@ WidgetbookComponent bottomSheetWidgetBook() {
         builder: (context) {
           final sheet = _bottomSheet(context);
           return WidgetbookTestWidget(
-            themeMode: ThemeMode.dark,
             widget: Padding(
               padding: const EdgeInsets.all(20),
               child: ElevatedButton(

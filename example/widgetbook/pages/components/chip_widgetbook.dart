@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
-import '../test/test_components.dart';
+import '../../test/test_components.dart';
 
 WidgetbookComponent chipWidgetBook() {
   return WidgetbookComponent(
@@ -30,16 +30,25 @@ WidgetbookComponent chipWidgetBook() {
             },
           );
           return WidgetbookTestWidget(
-            widget: ZetaInputChip(
-              label: context.knobs.string(label: 'Label', initialValue: 'Label'),
-              leading: context.knobs.boolean(label: 'Avatar')
-                  ? ZetaAvatar(
-                      initials: 'AZ',
-                      size: ZetaAvatarSize.xs,
-                    )
-                  : null,
-              rounded: context.knobs.boolean(label: 'Rounded'),
-              trailing: trailing != null ? Icon(trailing) : null,
+            widget: Padding(
+              padding: const EdgeInsets.all(20),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ZetaInputChip(
+                    label: context.knobs.string(label: 'Label', initialValue: 'Label'),
+                    leading: context.knobs.boolean(label: 'Avatar')
+                        ? ZetaAvatar(
+                            initials: 'AZ',
+                            size: ZetaAvatarSize.xs,
+                          )
+                        : null,
+                    rounded: context.knobs.boolean(label: 'Rounded'),
+                    trailing: trailing != null ? Icon(trailing) : null,
+                  ),
+                ],
+              ),
             ),
           );
         },
