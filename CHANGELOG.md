@@ -5,6 +5,20 @@
 - [`ed1210d`](https://github.com/zebratechnologies/zeta-flutter/commit/ed1210d6cbc173aef8b1adf0d20ee91d3e87f2c3) - Update Widgetbook to correct functionality _(PR [#52](https://github.com/zebratechnologies/zeta-flutter/pull/52) by [@thelukewalton](https://github.com/thelukewalton))_
 - [`c627d7a`](https://github.com/zebratechnologies/zeta-flutter/commit/c627d7ab19d3f33e30c406441702ff6134557f14) - Tidy up example app _(PR [#53](https://github.com/zebratechnologies/zeta-flutter/pull/53) by [@thelukewalton](https://github.com/thelukewalton))_
 
+## [0.4.0](https://github.com/ZebraDevs/zeta_flutter/compare/v0.3.0...v0.4.0) (2024-02-14)
+
+
+### Features
+
+* **type:** Add xSmall and conform to latest figma designs. ([17b2299](https://github.com/ZebraDevs/zeta_flutter/commit/17b22994ae27d0abd1da7f756f49b46248b8b4b7))
+
+
+### Bug Fixes
+
+* **actions:** Updated actions to push changelog to zeta. ([#6](https://github.com/ZebraDevs/zeta_flutter/issues/6)) ([f7a8d9a](https://github.com/ZebraDevs/zeta_flutter/commit/f7a8d9a2ba078bf08fe80de07f6e9c871af9e451))
+* Widgetbook run / build ([#15](https://github.com/ZebraDevs/zeta_flutter/issues/15)) ([a2347ad](https://github.com/ZebraDevs/zeta_flutter/commit/a2347ad7a43a77e398571f3be26948585e22c068))
+* WIdgetbook theme ([#16](https://github.com/ZebraDevs/zeta_flutter/issues/16)) ([5e1c48a](https://github.com/ZebraDevs/zeta_flutter/commit/5e1c48aca84bbe49233deca10f64dcd6e8b8eb59))
+
 ## [0.3.0](https://github.com/ZebraDevs/zeta_flutter/compare/zeta_flutter-v0.2.0...zeta_flutter-v0.3.0) (2024-02-05)
 
 
