@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import '../../../zeta_flutter.dart';
+import 'internal/badge_internal.dart';
 
 /// Zeta Status Label.
 ///
@@ -32,30 +33,24 @@ class ZetaStatusLabel extends StatelessWidget {
   Widget build(BuildContext context) {
     final ZetaColorSwatch colors = status.colorSwatch(context);
 
-    return DecoratedBox(
-      decoration: BoxDecoration(
-        color: colors.shade10,
-        border: Border.all(color: colors.border),
-        borderRadius: rounded ? ZetaRadius.full : ZetaRadius.minimal,
-      ),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: ZetaSpacing.x2, vertical: ZetaSpacing.x0_5),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Icon(
-              customIcon ?? Icons.circle,
-              size: customIcon != null ? ZetaSpacing.x5 : ZetaSpacing.x2,
-              color: colors.icon,
-            ),
-            const SizedBox(width: ZetaSpacing.xs),
-            Text(
-              label,
-              style: ZetaTextStyles.bodyMedium.apply(color: colors.shade10.onColor),
-              overflow: TextOverflow.ellipsis,
-            ),
-          ],
-        ),
+    return ZetaInternalBadge(
+      status: status,
+      rounded: rounded,
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(
+            customIcon ?? Icons.circle,
+            size: customIcon != null ? ZetaSpacing.x5 : ZetaSpacing.x2,
+            color: colors.icon,
+          ),
+          const SizedBox(width: ZetaSpacing.xs),
+          Text(
+            label,
+            style: ZetaTextStyles.bodyMedium.apply(color: colors.shade10.onColor),
+            overflow: TextOverflow.ellipsis,
+          ),
+        ],
       ),
     );
   }
