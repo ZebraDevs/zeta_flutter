@@ -33,7 +33,7 @@ class ZetaStatusLabel extends StatelessWidget {
   Widget build(BuildContext context) {
     final ZetaColorSwatch colors = status.colorSwatch(context);
 
-    return ZetaInternalBadge(
+    return InternalZetaBadge(
       status: status,
       rounded: rounded,
       child: Row(

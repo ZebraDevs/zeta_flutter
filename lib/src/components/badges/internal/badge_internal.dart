@@ -1,12 +1,14 @@
-// ignore_for_file: public_member_api_docs
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../zeta_flutter.dart';
 
-class ZetaInternalBadge extends StatelessWidget {
-  const ZetaInternalBadge({
+/// Not intended for individual use
+///
+/// A badge with Zeta styling
+class InternalZetaBadge extends StatelessWidget {
+  /// Creates a new [InternalZetaBadge]
+  const InternalZetaBadge({
     required this.rounded,
     required this.status,
     required this.child,
@@ -19,6 +21,7 @@ class ZetaInternalBadge extends StatelessWidget {
   /// {@macro zeta-component-badge-status}
   final ZetaWidgetStatus status;
 
+  /// The child of the badge
   final Widget child;
 
   @override
