@@ -119,8 +119,7 @@ class ZetaButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = Zeta.of(context).colors;
     return ConstrainedBox(
-      constraints:
-          BoxConstraints(minHeight: _minConstraints, minWidth: _minConstraints),
+      constraints: BoxConstraints(minHeight: _minConstraints, minWidth: _minConstraints),
       child: FilledButton(
         onPressed: onPressed,
         style: buttonStyle(colors, borderType, type, null),
@@ -136,9 +135,7 @@ class ZetaButton extends StatelessWidget {
     );
   }
 
-  TextStyle get _textStyle => size == ZetaWidgetSize.small
-      ? ZetaTextStyles.labelMedium
-      : ZetaTextStyles.labelLarge;
+  TextStyle get _textStyle => size == ZetaWidgetSize.small ? ZetaTextStyles.labelMedium : ZetaTextStyles.labelLarge;
 
   double get _minConstraints {
     switch (size) {
