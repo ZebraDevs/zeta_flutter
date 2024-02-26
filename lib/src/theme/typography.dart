@@ -32,7 +32,7 @@ class ZetaTextStyles {
   /// Headline styles are smaller than display styles. They're best-suited for
   /// short, high-emphasis text on smaller screens.
   /// {@endtemplate}
-  static const TextStyle heading1 = TextStyle(fontSize: 32, fontWeight: FontWeight.w500, height: 40 / 32);
+  static const TextStyle heading1 = TextStyle(fontSize: 32, fontWeight: FontWeight.w500, height: 36 / 32);
 
   /// Middle size of the headline styles.
   ///
