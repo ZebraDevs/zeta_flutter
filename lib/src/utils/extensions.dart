@@ -94,4 +94,10 @@ extension StringExtensions on String? {
                 : nameParts[0])
         .toUpperCase();
   }
+
+  /// Capitalizes fist letter of string.
+  String capitalize() {
+    if (this == null) return '';
+    return '${this![0].toUpperCase()}${this!.substring(1).toLowerCase()}';
+  }
 }

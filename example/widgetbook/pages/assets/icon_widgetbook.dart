@@ -14,11 +14,19 @@ WidgetbookComponent iconWidgetbook() {
         name: 'All Icons',
         builder: (context) {
           Map<String, IconData> icons =
-              (context.knobs.boolean(label: 'Rounded', initialValue: true)) ? iconsRounded : iconsSharp;
+              ((context.knobs.boolean(label: 'Rounded', initialValue: true)) ? iconsRounded : iconsSharp);
+
+          final Map<String, IconData> sortedIcons = Map.fromEntries(icons.entries.toList()
+            ..sort((a, b) {
+              final _a = (a.key.split('_')..removeLast()).join();
+              final _b = (b.key.split('_')..removeLast()).join();
+              return _a.compareTo(_b);
+            }));
 
           return WidgetbookTestWidget(
             removeBody: true,
             widget: SingleChildScrollView(
+              key: PageStorageKey(0),
               child: Center(
                 child: Column(
                   children: [
@@ -27,9 +35,9 @@ WidgetbookComponent iconWidgetbook() {
                     Wrap(
                       spacing: ZetaSpacing.l,
                       runSpacing: ZetaSpacing.l,
-                      children: icons.entries.map(
+                      children: sortedIcons.entries.map(
                         (e) {
-                          final nameArr = e.key.split('_')..removeLast();
+                          final nameArr = (e.key.split('_')..removeLast()).join(' ').capitalize();
                           return Container(
                             width: 100,
                             height: 100,
@@ -41,10 +49,7 @@ WidgetbookComponent iconWidgetbook() {
                               },
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Icon(e.value, size: 40),
-                                  Text(nameArr.join(' '), textAlign: TextAlign.center)
-                                ],
+                                children: [Icon(e.value, size: 40), Text(nameArr, textAlign: TextAlign.center)],
                               ),
                             ),
                           );

@@ -33,7 +33,7 @@ class ZetaTag extends StatelessWidget {
   /// Defaults to left
   final ZetaTagDirection direction;
 
-  /// {@zeta-component-rounded}
+  /// {@macro zeta-component-rounded}
   final bool rounded;
 
   ///tag label

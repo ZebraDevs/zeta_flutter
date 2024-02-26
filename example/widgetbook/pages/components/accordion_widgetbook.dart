@@ -28,7 +28,6 @@ WidgetbookComponent accordionWidgetBook() {
                       ),
                 title: context.knobs.string(label: 'Accordion Title', initialValue: 'Title'),
                 contained: context.knobs.boolean(label: 'Contained', initialValue: false),
-                isOpen: context.knobs.boolean(label: 'Open', initialValue: false),
                 rounded: context.knobs.boolean(label: 'Rounded', initialValue: false),
               ),
             ),

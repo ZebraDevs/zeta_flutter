@@ -1,8 +1,6 @@
 name: CI - Pull Request
 on:
-  pull_request_target:
-    types:
-      - opened
+  pull_request:
 
 jobs:
   up-to-date:
@@ -62,7 +60,7 @@ jobs:
         uses: tj-actions/branch-names@v7.0.7
       - uses: subosito/flutter-action@v2
         with:
-          flutter-version: "3.16.x"
+          flutter-version: "3.19.x"
           channel: "stable"
       - name: Setup flutter
         run: flutter pub get
@@ -89,9 +87,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
       - uses: subosito/flutter-action@v2
         with:
-          flutter-version: "3.16.x"
+          flutter-version: "3.19.x"
           channel: "stable"
       - name: Setup flutter
         run: flutter pub get

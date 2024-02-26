@@ -82,7 +82,6 @@ class HotReload extends StatelessWidget {
                     final dark = theme.colorsDark.toScheme();
                     final light = theme.colorsLight.toScheme();
 
-                    print(child);
                     return MaterialApp(
                       debugShowCheckedModeBanner: false,
                       themeMode: themeMode,

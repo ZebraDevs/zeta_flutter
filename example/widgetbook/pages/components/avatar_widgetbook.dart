@@ -12,7 +12,7 @@ WidgetbookComponent avatarWidgetBook() {
       WidgetbookUseCase(
         name: 'Image Avatar',
         builder: (context) {
-          final Widget image = Image.network('https://i.ytimg.com/vi/KItsWUzFUOs/maxresdefault.jpg', fit: BoxFit.cover);
+          final Widget image = Image.asset('assets/Omer.jpg', fit: BoxFit.cover);
 
           return WidgetbookTestWidget(
             widget: Column(
@@ -21,7 +21,11 @@ WidgetbookComponent avatarWidgetBook() {
                   padding: const EdgeInsets.all(20),
                   child: ZetaAvatar.image(
                     image: context.knobs.boolean(label: 'Image') ? image : null,
-                    size: context.knobs.list(label: 'Size', options: ZetaAvatarSize.values),
+                    size: context.knobs.list(
+                      label: 'Size',
+                      options: ZetaAvatarSize.values,
+                      labelBuilder: (value) => value.name.split('.').last.toUpperCase(),
+                    ),
                     lowerBadge:
                         context.knobs.boolean(label: 'Status Badge', initialValue: false) ? ZetaIndicator.icon() : null,
                     borderColor: context.knobs.colorOrNull(label: 'Outline', initialValue: null),
@@ -46,7 +50,11 @@ WidgetbookComponent avatarWidgetBook() {
                   child: ZetaAvatar.initials(
                     backgroundColor: context.knobs.colorOrNull(label: 'Background color', initialValue: null),
                     initials: context.knobs.stringOrNull(label: 'Initials', initialValue: 'AB'),
-                    size: context.knobs.list(label: 'Size', options: ZetaAvatarSize.values),
+                    size: context.knobs.list(
+                      label: 'Size',
+                      options: ZetaAvatarSize.values,
+                      labelBuilder: (value) => value.name.split('.').last.toUpperCase(),
+                    ),
                     lowerBadge: context.knobs.boolean(label: 'Status badge', initialValue: false)
                         ? ZetaIndicator.notification()
                         : null,

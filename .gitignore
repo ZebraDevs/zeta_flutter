@@ -145,3 +145,4 @@ $RECYCLE.BIN/
 *.msp
 *.lnk
 **/Generated.xcconfig
+.fvmrc
