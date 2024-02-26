@@ -20,7 +20,11 @@ WidgetbookComponent badgeWidgetBook() {
                   child: ZetaStatusLabel(
                     label: context.knobs.string(label: 'Label', initialValue: 'Label'),
                     rounded: context.knobs.boolean(label: 'Rounded'),
-                    status: context.knobs.list(label: 'Status', options: ZetaWidgetStatus.values),
+                    status: context.knobs.list(
+                      label: 'Status',
+                      labelBuilder: (value) => value.name.split('.').last.capitalize(),
+                      options: ZetaWidgetStatus.values,
+                    ),
                     customIcon: context.knobs.list(
                       label: 'Icon',
                       options: [
@@ -72,7 +76,11 @@ WidgetbookComponent badgeWidgetBook() {
                 child: ZetaBadge(
                   label: context.knobs.string(label: 'Label', initialValue: 'Label'),
                   rounded: context.knobs.boolean(label: 'Rounded'),
-                  status: context.knobs.list(label: 'Status', options: ZetaWidgetStatus.values),
+                  status: context.knobs.list(
+                    label: 'Status',
+                    options: ZetaWidgetStatus.values,
+                    labelBuilder: (value) => value.name.split('.').last.capitalize(),
+                  ),
                 ),
               ),
             ],
@@ -88,7 +96,11 @@ WidgetbookComponent badgeWidgetBook() {
               Padding(
                 padding: EdgeInsets.all(20),
                 child: ZetaIndicator(
-                  type: context.knobs.list(label: 'Type', options: ZetaIndicatorType.values),
+                  type: context.knobs.list(
+                    label: 'Type',
+                    options: ZetaIndicatorType.values,
+                    labelBuilder: (value) => value.name.split('.').last.capitalize(),
+                  ),
                   icon: context.knobs.list(
                     label: 'Icon',
                     options: [
@@ -106,7 +118,11 @@ WidgetbookComponent badgeWidgetBook() {
                     },
                   ),
                   inverse: context.knobs.boolean(label: 'Inverse Border'),
-                  size: context.knobs.list(label: 'Size', options: ZetaWidgetSize.values),
+                  size: context.knobs.list(
+                    label: 'Size',
+                    labelBuilder: (value) => value.name.split('.').last.capitalize(),
+                    options: ZetaWidgetSize.values,
+                  ),
                   value: context.knobs.int.slider(label: 'Value'),
                 ),
               ),
@@ -125,7 +141,11 @@ WidgetbookComponent badgeWidgetBook() {
                 child: ZetaTag(
                   label: context.knobs.string(label: 'Label', initialValue: 'Tag'),
                   rounded: context.knobs.boolean(label: 'Rounded'),
-                  direction: context.knobs.list(label: 'Direction', options: ZetaTagDirection.values),
+                  direction: context.knobs.list(
+                    label: 'Direction',
+                    options: ZetaTagDirection.values,
+                    labelBuilder: (value) => value.name.split('.').last.capitalize(),
+                  ),
                 ),
               )
             ],
@@ -146,8 +166,16 @@ WidgetbookComponent badgeWidgetBook() {
                     child: ZetaWorkcloudIndicator(
                         index: context.knobs.string(label: 'Index', initialValue: '1'),
                         label: context.knobs.string(label: 'Label', initialValue: 'Label'),
-                        prioritySize: context.knobs.list(label: 'Size', options: ZetaWidgetSize.values),
-                        priorityType: context.knobs.list(label: 'Type', options: ZetaWorkcloudIndicatorType.values),
+                        prioritySize: context.knobs.list(
+                          label: 'Size',
+                          labelBuilder: (value) => value.name.split('.').last.capitalize(),
+                          options: ZetaWidgetSize.values,
+                        ),
+                        priorityType: context.knobs.list(
+                          label: 'Type',
+                          labelBuilder: (value) => value.name.split('.').last.capitalize(),
+                          options: ZetaWorkcloudIndicatorType.values,
+                        ),
                         icon: context.knobs.listOrNull(
                           label: 'Icon',
                           options: [

@@ -9,67 +9,62 @@ WidgetbookComponent radiusWidgetbook() {
     useCases: [
       WidgetbookUseCase(
         name: 'Radius',
-        builder: (context) => SingleChildScrollView(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Column(
-                children: radii.entries
-                    .map((obj) => _RadiiDemo(obj))
-                    .divide(const SizedBox.square(dimension: ZetaSpacing.l))
-                    .toList(),
-              ).paddingTop(ZetaSpacing.l),
-            ],
-          ),
-        ),
+        builder: (context) {
+          final rad = context.knobs.list(
+            label: 'Radius',
+            options: radii,
+            labelBuilder: (value) => value.radiusString,
+          );
+          final colors = Zeta.of(context).colors;
+          return SingleChildScrollView(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Container(
+                  width: 250,
+                  height: 250,
+                  decoration: BoxDecoration(
+                    borderRadius: rad,
+                    color: Zeta.of(context).colors.blue.shade30,
+                    border: Border.all(color: colors.blue.shade80, width: 3),
+                  ),
+                  child: Center(
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: rad,
+                        color: Zeta.of(context).colors.surfacePrimary,
+                        border: Border.all(color: colors.blue.shade50, width: 3),
+                      ),
+                      padding: EdgeInsets.all(ZetaSpacing.b),
+                      child: Text(
+                        rad.radiusString.split('.').last.capitalize(),
+                        style: ZetaTextStyles.titleMedium.apply(
+                          color: Zeta.of(context).colors.textDefault,
+                          fontStyle: FontStyle.normal,
+                          decoration: TextDecoration.none,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          );
+        },
       ),
     ],
   );
 }
 
-Map<String, BorderRadius> radii = {
-  'none': ZetaRadius.none,
-  'minimal': ZetaRadius.minimal,
-  'rounded': ZetaRadius.rounded,
-  'wide': ZetaRadius.wide,
-  'full': ZetaRadius.full,
-};
-
-class _RadiiDemo extends StatelessWidget {
-  final MapEntry<String, BorderRadius> obj;
-  const _RadiiDemo(this.obj);
-
-  @override
-  Widget build(BuildContext context) {
-    final colors = Zeta.of(context).colors;
-
-    return Container(
-      width: 250,
-      height: 250,
-      decoration: BoxDecoration(
-        borderRadius: obj.value,
-        color: Zeta.of(context).colors.blue.shade30,
-        border: Border.all(color: colors.blue.shade80, width: 3),
-      ),
-      child: Center(
-        child: Container(
-          decoration: BoxDecoration(
-            borderRadius: obj.value,
-            color: Zeta.of(context).colors.surfacePrimary,
-            border: Border.all(color: colors.blue.shade50, width: 3),
-          ),
-          padding: EdgeInsets.all(ZetaSpacing.b),
-          child: Text(
-            'ZetaRadius.' + obj.key,
-            style: ZetaTextStyles.titleMedium.apply(
-              color: Zeta.of(context).colors.textDefault,
-              fontStyle: FontStyle.normal,
-              decoration: TextDecoration.none,
-            ),
-          ),
-        ),
-      ),
-    );
+extension on BorderRadius {
+  String get radiusString {
+    if (topLeft.x == 0) return 'ZetaRadius.none';
+    if (topLeft.x == 4) return 'ZetaRadius.minimal';
+    if (topLeft.x == 8) return 'ZetaRadius.rounded';
+    if (topLeft.x == 24) return 'ZetaRadius.wide';
+    return 'ZetaRadius.full';
   }
 }
+
+List<BorderRadius> radii = [ZetaRadius.none, ZetaRadius.minimal, ZetaRadius.rounded, ZetaRadius.wide, ZetaRadius.full];

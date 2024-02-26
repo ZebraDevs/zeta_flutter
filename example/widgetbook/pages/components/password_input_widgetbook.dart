@@ -47,7 +47,11 @@ class _PasswordState extends State<_Password> {
                   rounded: context.knobs.boolean(label: 'Rounded'),
                   enabled: context.knobs.boolean(label: 'Enabled', initialValue: true),
                   obscureText: context.knobs.boolean(label: 'Obscure text', initialValue: true),
-                  size: context.knobs.list(label: 'Size', options: ZetaWidgetSize.values),
+                  size: context.knobs.list(
+                    label: 'Size',
+                    options: ZetaWidgetSize.values,
+                    labelBuilder: (value) => value.name.split('.').last.capitalize(),
+                  ),
                   footerIcon: context.knobs.listOrNull(
                     label: 'Icon',
                     options: [

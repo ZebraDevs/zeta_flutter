@@ -19,7 +19,11 @@ WidgetbookComponent bannerWidgetBook() {
                 ZetaSystemBanner(
                   context: context,
                   title: context.knobs.string(label: 'Title', initialValue: 'Banner Title'),
-                  type: context.knobs.list(label: 'Type', options: ZetaSystemBannerStatus.values),
+                  type: context.knobs.list(
+                    label: 'Type',
+                    options: ZetaSystemBannerStatus.values,
+                    labelBuilder: (value) => value.name.split('.').last.capitalize(),
+                  ),
                   leadingIcon: context.knobs.list(
                     label: 'Icon',
                     options: [
@@ -61,7 +65,11 @@ WidgetbookComponent bannerWidgetBook() {
                           'Lorem ipsum dolor sit amet, conse ctetur  cididunt ut labore et do lore magna aliqua.',
                     ),
                   ),
-                  status: context.knobs.list(label: 'Severity', options: ZetaWidgetStatus.values),
+                  status: context.knobs.list(
+                    label: 'Severity',
+                    options: ZetaWidgetStatus.values,
+                    labelBuilder: (value) => value.name.split('.').last.capitalize(),
+                  ),
                   onClose: context.knobs.boolean(label: 'Show Close icon') ? () {} : null,
                   title: context.knobs.string(label: 'Title', initialValue: 'Title'),
                   rounded: context.knobs.boolean(label: 'Rounded'),
