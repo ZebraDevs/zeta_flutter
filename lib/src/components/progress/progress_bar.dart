@@ -93,37 +93,34 @@ class ProgressBar extends Progress {
 class _ProgressBarState extends ProgressState<ProgressBar> {
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 400,
-      child: Column(
-        children: [
-          if (widget.label != null)
-            SizedBox(
-              child: Text(
-                widget.label!,
-                textAlign: TextAlign.start,
+    return Column(
+      children: [
+        if (widget.label != null)
+          SizedBox(
+            child: Text(
+              widget.label!,
+              textAlign: TextAlign.start,
+            ),
+          ),
+        Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          Expanded(
+            child: AnimatedContainer(
+              duration: const Duration(milliseconds: 500),
+              height: _weight(),
+              child: LinearProgressIndicator(
+                borderRadius: _border(),
+                value: widget.type == BarType.indeterminate
+                    ? null
+                    : animation.value,
+                backgroundColor: widget.type == BarType.buffering
+                    ? const Color.fromRGBO(224, 227, 233, 1)
+                    : Colors.transparent,
               ),
             ),
-          Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            Expanded(
-              child: AnimatedContainer(
-                duration: const Duration(milliseconds: 500),
-                height: _weight(),
-                child: LinearProgressIndicator(
-                  borderRadius: _border(),
-                  value: widget.type == BarType.indeterminate
-                      ? null
-                      : animation.value,
-                  backgroundColor: widget.type == BarType.buffering
-                      ? const Color.fromRGBO(224, 227, 233, 1)
-                      : Colors.transparent,
-                ),
-              ),
-            ),
-            _extraWidgets(),
-          ])
-        ],
-      ),
+          ),
+          _extraWidgets(),
+        ])
+      ],
     );
   }
 

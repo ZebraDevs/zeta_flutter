@@ -103,12 +103,15 @@ class _WrapperState extends State<Wrapper> {
     return Column(
       // Replace with a Column for vertical
       children: [
-        ProgressBar(
-            progress: progress,
-            border: widget.border,
-            type: type,
-            weight: widget.weight,
-            label: widget.label),
+        SizedBox(
+          width: 400,
+          child: ProgressBar(
+              progress: progress,
+              border: widget.border,
+              type: type,
+              weight: widget.weight,
+              label: widget.label),
+        ),
         const SizedBox(width: 40),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
