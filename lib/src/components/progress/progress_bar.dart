@@ -4,7 +4,7 @@ import '../../../zeta_flutter.dart';
 import 'progress.dart';
 
 /// Enum for types of progress bar
-enum BarType {
+enum ZetaBarType {
   /// Standard bar type.
   standard,
 
@@ -15,105 +15,94 @@ enum BarType {
   buffering
 }
 
-/// BarWeight of progress bar
-enum BarWeight {
-  /// Thin weight.
-  thin,
-
-  ///Medium weight
-  medium
-}
-
 /// Linear progress bar.
 /// Uses progress percentage value to fill bar
-class ProgressBar extends Progress {
-  ///Constructor for [ProgressBar]
+class ZetaProgressBar extends ZetaProgress {
+  ///Constructor for [ZetaProgressBar]
 
-  const ProgressBar(
+  const ZetaProgressBar(
       {super.key,
       required super.progress,
-      required this.border,
+      required this.rounded,
       required this.type,
-      required this.weight,
+      required this.isThin,
       this.label});
 
   /// Constructs a standard progress bar
-  const ProgressBar.standard(
+  const ZetaProgressBar.standard(
       {super.key,
       required super.progress,
-      this.border = ZetaWidgetBorder.rounded,
-      this.type = BarType.standard,
-      this.weight = BarWeight.medium,
-      this.label});
+      this.rounded = true,
+      this.isThin = false,
+      this.label})
+      : type = ZetaBarType.standard;
 
   /// Constructs buffering example
-  const ProgressBar.buffering(
+  const ZetaProgressBar.buffering(
       {super.key,
       required super.progress,
-      this.border = ZetaWidgetBorder.rounded,
-      this.type = BarType.buffering,
-      this.weight = BarWeight.medium,
-      this.label});
+      this.rounded = true,
+      this.isThin = false,
+      this.label})
+      : type = ZetaBarType.buffering;
 
   /// Constructs indeterminate example
-  const ProgressBar.indeterminate(
+  const ZetaProgressBar.indeterminate(
       {super.key,
       required super.progress,
-      this.border = ZetaWidgetBorder.rounded,
-      this.type = BarType.indeterminate,
-      this.weight = BarWeight.medium,
-      this.label});
+      this.rounded = true,
+      this.isThin = false,
+      this.label})
+      : type = ZetaBarType.indeterminate;
 
-  /// Border type of the progress bar.
-  final ZetaWidgetBorder border;
+  /// Is progress bar rounded or sharp.
+  final bool rounded;
 
   /// Type of the progress bar.
-  final BarType type;
+  final ZetaBarType type;
 
-  /// Weight of progress bar to determine its thickness.
-  final BarWeight weight;
+  /// Is Progress bar thin or thick.
+  final bool isThin;
 
   ///Optional label
   final String? label;
 
   @override
-  _ProgressBarState createState() => _ProgressBarState();
+  State<ZetaProgressBar> createState() => _ZetaProgressBarState();
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(EnumProperty<ZetaWidgetBorder>('border', border))
-      ..add(EnumProperty<BarType>('type', type))
-      ..add(EnumProperty<BarWeight>('weight', weight))
-      ..add(StringProperty('label', label));
+      ..add(DiagnosticsProperty<bool>('rounded', rounded))
+      ..add(EnumProperty<ZetaBarType>('type', type))
+      ..add(StringProperty('label', label))
+      ..add(DiagnosticsProperty<bool>('isThin', isThin));
   }
 }
 
-class _ProgressBarState extends ProgressState<ProgressBar> {
+class _ZetaProgressBarState extends ZetaProgressState<ZetaProgressBar> {
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         if (widget.label != null)
-          SizedBox(
-            child: Text(
-              widget.label!,
-              textAlign: TextAlign.start,
-            ),
+          Text(
+            widget.label!,
+            textAlign: TextAlign.start,
           ),
         Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Expanded(
             child: AnimatedContainer(
               duration: const Duration(milliseconds: 500),
-              height: _weight(),
+              height: _weight,
               child: LinearProgressIndicator(
-                borderRadius: _border(),
-                value: widget.type == BarType.indeterminate
+                borderRadius: _border,
+                value: widget.type == ZetaBarType.indeterminate
                     ? null
                     : animation.value,
-                backgroundColor: widget.type == BarType.buffering
-                    ? const Color.fromRGBO(224, 227, 233, 1)
+                backgroundColor: widget.type == ZetaBarType.buffering
+                    ? Zeta.of(context).colors.surfaceDisabled
                     : Colors.transparent,
               ),
             ),
@@ -125,21 +114,11 @@ class _ProgressBarState extends ProgressState<ProgressBar> {
   }
 
   /// Returns border based on widgets border type.
-  BorderRadius _border() {
-    return BorderRadius.all(widget.border == ZetaWidgetBorder.rounded
-        ? const Radius.circular(12)
-        : Radius.zero);
-  }
+  BorderRadius get _border =>
+      widget.rounded ? ZetaRadius.rounded : ZetaRadius.none;
 
   /// Returns thickness of progress bar based on its weight.
-  double _weight() {
-    switch (widget.weight) {
-      case BarWeight.medium:
-        return 16;
-      case BarWeight.thin:
-        return 8;
-    }
-  }
+  double get _weight => widget.isThin ? 8 : 16;
 
   Widget _extraWidgets() {
     final Iterable<List<Widget>> extraList = List.filled(3, false).map((e) => [
@@ -147,8 +126,8 @@ class _ProgressBarState extends ProgressState<ProgressBar> {
             width: 16,
           ),
           Container(
-            width: _weight(),
-            height: _weight(),
+            width: _weight,
+            height: _weight,
             decoration: const BoxDecoration(
                 color: Color.fromRGBO(224, 227, 233, 1),
                 borderRadius: ZetaRadius.rounded),
@@ -156,7 +135,7 @@ class _ProgressBarState extends ProgressState<ProgressBar> {
         ]);
 
     final Widget extraWidgets = Row(
-      children: widget.type == BarType.buffering
+      children: widget.type == ZetaBarType.buffering
           ? extraList.expand((list) => list).toList()
           : [],
     );

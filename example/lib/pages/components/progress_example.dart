@@ -23,23 +23,23 @@ class ProgressExampleState extends State<ProgressExample> {
             child: Column(children: [
               Wrapper(
                 stepsCompleted: 10,
-                weight: BarWeight.thin,
+                isThin: true,
               ),
               SizedBox(
                 height: 20,
               ),
               Wrapper(
                   stepsCompleted: 0,
-                  type: BarType.standard,
-                  weight: BarWeight.thin,
+                  type: ZetaBarType.standard,
+                  isThin: false,
                   stateChangeable: true),
               SizedBox(
                 height: 20,
               ),
               Wrapper(
                 stepsCompleted: 0,
-                type: BarType.indeterminate,
-                weight: BarWeight.medium,
+                type: ZetaBarType.indeterminate,
+                isThin: false,
                 label: "UPLOADING ...",
               ),
             ]),
@@ -54,16 +54,16 @@ class Wrapper extends StatefulWidget {
   const Wrapper(
       {super.key,
       required this.stepsCompleted,
-      this.type = BarType.standard,
-      this.weight = BarWeight.medium,
-      this.border = ZetaWidgetBorder.rounded,
+      this.type = ZetaBarType.standard,
+      this.isThin = false,
+      this.rounded = true,
       this.stateChangeable = false,
       this.label});
 
   final int stepsCompleted;
-  final ZetaWidgetBorder border;
-  final BarType type;
-  final BarWeight weight;
+  final bool rounded;
+  final ZetaBarType type;
+  final bool isThin;
   final String? label;
   final bool stateChangeable;
 
@@ -74,7 +74,7 @@ class Wrapper extends StatefulWidget {
 class _WrapperState extends State<Wrapper> {
   late int stepsCompleted;
   late double progress;
-  late BarType type;
+  late ZetaBarType type;
 
   @override
   void initState() {
@@ -94,7 +94,9 @@ class _WrapperState extends State<Wrapper> {
 
   void setLoading() {
     setState(() {
-      type = type == BarType.buffering ? BarType.standard : BarType.buffering;
+      type = type == ZetaBarType.buffering
+          ? ZetaBarType.standard
+          : ZetaBarType.buffering;
     });
   }
 
@@ -105,18 +107,18 @@ class _WrapperState extends State<Wrapper> {
       children: [
         SizedBox(
           width: 400,
-          child: ProgressBar(
+          child: ZetaProgressBar(
               progress: progress,
-              border: widget.border,
+              rounded: widget.rounded,
               type: type,
-              weight: widget.weight,
+              isThin: widget.isThin,
               label: widget.label),
         ),
         const SizedBox(width: 40),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            widget.type != BarType.indeterminate
+            widget.type != ZetaBarType.indeterminate
                 ? FilledButton(
                     onPressed: increasePercentage, child: Text("Increase"))
                 : Container(),

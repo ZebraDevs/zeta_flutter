@@ -1,13 +1,13 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-/// Super class for [Progress] widgets.
-/// Handles state for progress of [Progress] widgets.
-abstract class Progress extends StatefulWidget {
-  /// Constructor for abstract [Progress] class.
-  const Progress({super.key, this.progress = 0});
+/// Super class for [ZetaProgress] widgets.
+/// Handles state for progress of [ZetaProgress] widgets.
+abstract class ZetaProgress extends StatefulWidget {
+  /// Constructor for abstract [ZetaProgress] class.
+  const ZetaProgress({super.key, this.progress = 0});
 
-  /// Progress value, decimal value ranging from 0.0 - 1.0, 0.5 = 50%
+  /// ZetaProgress value, decimal value ranging from 0.0 - 1.0, 0.5 = 50%
   final double progress;
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
@@ -16,18 +16,18 @@ abstract class Progress extends StatefulWidget {
   }
 }
 
-/// Super class for [ProgressState]
+/// Super class for [ZetaProgressState]
 /// Defines functions that deal with state change of progress value and
 /// animation changing.
-abstract class ProgressState<T extends Progress> extends State<T>
+abstract class ZetaProgressState<T extends ZetaProgress> extends State<T>
     with TickerProviderStateMixin {
   /// Decimal progress value
   late double progress;
 
-  ///Animation controller for [ProgressState]
+  ///Animation controller for [ZetaProgressState]
   late AnimationController controller;
 
-  ///Animation for [ProgressState]
+  ///Animation for [ZetaProgressState]
   late Animation<double> animation;
 
   @override
