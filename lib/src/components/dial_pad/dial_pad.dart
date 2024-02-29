@@ -56,8 +56,8 @@ class ZetaDialPad extends StatelessWidget {
           crossAxisCount: _buttonsPerRow,
           shrinkWrap: true,
           semanticChildCount: _buttonValues.length,
-          mainAxisSpacing: ZetaSpacing.x9,
-          crossAxisSpacing: ZetaSpacing.x8,
+          mainAxisSpacing: ZetaSpacing.x6,
+          crossAxisSpacing: ZetaSpacing.x9,
           children: _buttonValues.entries
               .map(
                 (e) => _DialPadButton(
