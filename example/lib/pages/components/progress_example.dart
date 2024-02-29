@@ -28,11 +28,7 @@ class ProgressExampleState extends State<ProgressExample> {
               SizedBox(
                 height: 20,
               ),
-              Wrapper(
-                  stepsCompleted: 0,
-                  type: ZetaBarType.standard,
-                  isThin: false,
-                  stateChangeable: true),
+              Wrapper(stepsCompleted: 0, type: ZetaBarType.standard, isThin: false, stateChangeable: true),
               SizedBox(
                 height: 20,
               ),
@@ -94,9 +90,7 @@ class _WrapperState extends State<Wrapper> {
 
   void setLoading() {
     setState(() {
-      type = type == ZetaBarType.buffering
-          ? ZetaBarType.standard
-          : ZetaBarType.buffering;
+      type = type == ZetaBarType.buffering ? ZetaBarType.standard : ZetaBarType.buffering;
     });
   }
 
@@ -108,25 +102,17 @@ class _WrapperState extends State<Wrapper> {
         SizedBox(
           width: 400,
           child: ZetaProgressBar(
-              progress: progress,
-              rounded: widget.rounded,
-              type: type,
-              isThin: widget.isThin,
-              label: widget.label),
+              progress: progress, rounded: widget.rounded, type: type, isThin: widget.isThin, label: widget.label),
         ),
         const SizedBox(width: 40),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             widget.type != ZetaBarType.indeterminate
-                ? FilledButton(
-                    onPressed: increasePercentage, child: Text("Increase"))
+                ? FilledButton(onPressed: increasePercentage, child: Text("Increase"))
                 : Container(),
             const SizedBox(width: 40),
-            widget.stateChangeable
-                ? FilledButton(
-                    onPressed: setLoading, child: Text("Start Buffering"))
-                : Container()
+            widget.stateChangeable ? FilledButton(onPressed: setLoading, child: Text("Start Buffering")) : Container()
           ],
         )
       ],
