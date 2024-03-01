@@ -53,7 +53,7 @@ class ZetaNavigationBar extends StatelessWidget {
           items: items,
           currentIndex: currentIndex,
           onTap: onTap,
-          splitItems: true,
+          splitItems: false,
           dividerIndex: dividerIndex,
           key: key,
         );
@@ -136,11 +136,17 @@ class ZetaNavigationBar extends StatelessWidget {
           rightItems.add(items[i]);
         }
       }
+
       child = Row(
         mainAxisAlignment: splitItems ? MainAxisAlignment.spaceBetween : MainAxisAlignment.spaceAround,
         children: [
           _generateNavigationItemRow(leftItems),
-          if (dividerIndex != null) Container(color: colors.borderSubtle, width: 1, height: 44),
+          if (dividerIndex != null)
+            Container(
+              color: colors.borderSubtle,
+              width: 1,
+              height: 44,
+            ),
           _generateNavigationItemRow(rightItems),
         ],
       );
