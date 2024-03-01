@@ -21,13 +21,55 @@ class ZetaNavigationBar extends StatelessWidget {
     required this.items,
     this.currentIndex,
     this.onTap,
-    super.key,
     this.splitItems = false,
     this.dividerIndex,
     this.action,
+    super.key,
   }) : assert(
           items.length >= 2 && items.length <= 6,
           'The number of items should be between 2 and 6',
+        );
+
+  const ZetaNavigationBar.divided({
+    required List<ZetaNavigationBarItem> items,
+    required int? dividerIndex,
+    int? currentIndex,
+    void Function(int value)? onTap,
+    Key? key,
+  }) : this(
+          items: items,
+          currentIndex: currentIndex,
+          onTap: onTap,
+          splitItems: true,
+          dividerIndex: dividerIndex,
+          key: key,
+        );
+
+  const ZetaNavigationBar.split({
+    required List<ZetaNavigationBarItem> items,
+    int? currentIndex,
+    void Function(int value)? onTap,
+    Key? key,
+  }) : this(
+          items: items,
+          currentIndex: currentIndex,
+          onTap: onTap,
+          splitItems: true,
+          key: key,
+        );
+
+  const ZetaNavigationBar.action({
+    required List<ZetaNavigationBarItem> items,
+    required Widget action,
+    int? currentIndex,
+    void Function(int value)? onTap,
+    Key? key,
+  }) : this(
+          items: items,
+          currentIndex: currentIndex,
+          onTap: onTap,
+          action: action,
+          key: key,
         );
 
   final List<ZetaNavigationBarItem> items;

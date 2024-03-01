@@ -34,11 +34,11 @@ class _NavigationBarExampleState extends State<NavigationBarExample> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            ZetaNavigationBar(items: items, dividerIndex: 3),
+            ZetaNavigationBar.divided(items: items, dividerIndex: 3),
             const SizedBox(height: 16),
-            ZetaNavigationBar(items: items, splitItems: true),
+            ZetaNavigationBar.split(items: items),
             const SizedBox(height: 16),
-            ZetaNavigationBar(
+            ZetaNavigationBar.action(
               items: items,
               action: ZetaButton.primary(
                 label: 'Button',
