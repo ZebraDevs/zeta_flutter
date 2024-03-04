@@ -20,12 +20,14 @@ class WidgetbookTestWidget extends StatelessWidget {
       backgroundColor: Colors.transparent,
       body: removeBody
           ? widget
-          : SizedBox(
-              width: size.width,
-              height: size.height,
-              child: MediaQuery(
-                data: MediaQueryData(size: Size(size.width, size.height)),
-                child: SingleChildScrollView(child: widget),
+          : Center(
+              child: SizedBox(
+                width: size.width,
+                height: size.height,
+                child: MediaQuery(
+                  data: MediaQueryData(size: Size(size.width, size.height)),
+                  child: SingleChildScrollView(child: widget),
+                ),
               ),
             ),
     );

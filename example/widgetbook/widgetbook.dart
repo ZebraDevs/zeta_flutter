@@ -42,7 +42,7 @@ class HotReload extends StatelessWidget {
             passwordInputWidgetBook(),
             bottomSheetWidgetBook(),
             dialPadWidgetbook(),
-            navigationBarWidgetbook(),
+            WidgetbookUseCase(name: 'Navigation Bar', builder: (context) => navigationBarUseCase(context))
           ]..sort((a, b) => a.name.compareTo(b.name)),
         ),
         WidgetbookCategory(

@@ -17,12 +17,7 @@ class _NavigationBarExampleState extends State<NavigationBarExample> {
   @override
   Widget build(BuildContext context) {
     final items = [
-      ZetaNavigationBarItem(
-        icon: ZetaIcons.star_round,
-        label: 'Label',
-        showBadge: true,
-        badgeValue: 2,
-      ),
+      ZetaNavigationBarItem(icon: ZetaIcons.star_round, label: 'Label', badge: ZetaIndicator(value: 2)),
       ZetaNavigationBarItem(icon: ZetaIcons.star_round, label: 'Label'),
       ZetaNavigationBarItem(icon: ZetaIcons.star_round, label: 'Label'),
       ZetaNavigationBarItem(icon: ZetaIcons.star_round, label: 'Label'),
@@ -55,16 +50,6 @@ class _NavigationBarExampleState extends State<NavigationBarExample> {
           selectedIndex = val;
         }),
       ),
-      // bottomNavigationBar: BottomNavigationBar(items: [
-      //   BottomNavigationBarItem(
-      //     icon: Icon(ZetaIcons.star_round),
-      //     label: 'Label',
-      //   ),
-      //   BottomNavigationBarItem(
-      //     icon: Icon(ZetaIcons.star_round),
-      //     label: 'Label',
-      //   )
-      // ]),
     );
   }
 }

@@ -1,99 +1,38 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 import '../../test/test_components.dart';
 
-WidgetbookComponent navigationBarWidgetbook() {
-  return WidgetbookComponent(
-    name: 'Navigation Bar',
-    isInitiallyExpanded: false,
-    useCases: [
-      WidgetbookUseCase(
-        name: 'Navigation bar',
-        builder: (context) {
-          final items = [
-            ZetaNavigationBarItem(
-              icon: ZetaIcons.star_round,
-              label: 'Label',
-              showBadge: true,
-              badgeValue: 2,
-            ),
-            ZetaNavigationBarItem(icon: ZetaIcons.star_round, label: 'Label'),
-            ZetaNavigationBarItem(icon: ZetaIcons.star_round, label: 'Label'),
-            ZetaNavigationBarItem(icon: ZetaIcons.star_round, label: 'Label'),
-            ZetaNavigationBarItem(icon: ZetaIcons.star_round, label: 'Label'),
-            ZetaNavigationBarItem(icon: ZetaIcons.star_round, label: 'Label'),
-          ];
-          return WidgetbookTestWidget(
-            widget: Center(
-              child: ZetaNavigationBar(
-                items: items,
-                currentIndex: context.knobs.intOrNull.input(
-                  label: 'Selected index',
-                  initialValue: 0,
-                ),
-              ),
-            ),
-          );
-        },
-      ),
-      WidgetbookUseCase(
-        name: 'Divided navigation bar',
-        builder: (context) {
-          final items = [
-            ZetaNavigationBarItem(icon: ZetaIcons.star_round, label: 'Label'),
-            ZetaNavigationBarItem(icon: ZetaIcons.star_round, label: 'Label'),
-            ZetaNavigationBarItem(icon: ZetaIcons.star_round, label: 'Label'),
-            ZetaNavigationBarItem(icon: ZetaIcons.star_round, label: 'Label'),
-            ZetaNavigationBarItem(icon: ZetaIcons.star_round, label: 'Label'),
-          ];
-          return WidgetbookTestWidget(
-            widget: Center(
-              child: ZetaNavigationBar.divided(
-                items: items,
-                dividerIndex: context.knobs.intOrNull.input(
-                  label: 'Divider index',
-                  initialValue: 3,
-                ),
-              ),
-            ),
-          );
-        },
-      ),
-      WidgetbookUseCase(
-        name: 'Split navigation bar',
-        builder: (context) {
-          final items = [
-            ZetaNavigationBarItem(icon: ZetaIcons.star_round, label: 'Label'),
-            ZetaNavigationBarItem(icon: ZetaIcons.star_round, label: 'Label'),
-            ZetaNavigationBarItem(icon: ZetaIcons.star_round, label: 'Label'),
-            ZetaNavigationBarItem(icon: ZetaIcons.star_round, label: 'Label'),
-          ];
-          return WidgetbookTestWidget(
-            widget: Center(
-              child: ZetaNavigationBar.split(items: items),
-            ),
-          );
-        },
-      ),
-      WidgetbookUseCase(
-        name: 'Navigation bar with action',
-        builder: (context) {
-          final items = [
-            ZetaNavigationBarItem(icon: ZetaIcons.star_round, label: 'Label'),
-            ZetaNavigationBarItem(icon: ZetaIcons.star_round, label: 'Label'),
-          ];
-          return WidgetbookTestWidget(
-            widget: Center(
-              child: ZetaNavigationBar.action(
-                items: items,
-                action: ZetaButton.primary(label: 'Button'),
-              ),
-            ),
-          );
-        },
-      ),
-    ],
+Widget navigationBarUseCase(BuildContext context) {
+  List<ZetaNavigationBarItem> items = List.generate(
+    context.knobs.int.slider(label: 'Items', min: 2, max: 6, initialValue: 2),
+    (index) => ZetaNavigationBarItem(icon: ZetaIcons.star_round, label: 'Label $index'),
   );
+  int currIndex = 0;
+  bool showButton = context.knobs.boolean(label: 'Button');
+  int? dividerIndex = context.knobs.intOrNull.slider(label: 'Divider', min: 0, max: 6, initialValue: null);
+  bool showSplit = context.knobs.boolean(label: 'Split Items');
+  return StatefulBuilder(builder: (context, setState) {
+    double width = (items.length * 90) + (showSplit ? 90 : 0) + (dividerIndex != null ? 90 : 0) + (showButton ? 90 : 0);
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Expanded(
+          child: WidgetbookTestWidget(
+            screenSize: Size(width, 260),
+            widget: ZetaNavigationBar(
+              items: items,
+              action: showButton ? ZetaButton.primary(label: 'Button', onPressed: () {}) : null,
+              onTap: (i) => setState(() => currIndex = i),
+              currentIndex: currIndex,
+              splitItems: showSplit,
+              dividerIndex: dividerIndex,
+            ),
+          ),
+        ),
+      ],
+    );
+  });
 }
