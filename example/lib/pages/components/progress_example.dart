@@ -118,9 +118,7 @@ class _WrapperState extends State<Wrapper> {
 
   void setLoading() {
     setState(() {
-      type = type == ZetaBarType.buffering
-          ? ZetaBarType.standard
-          : ZetaBarType.buffering;
+      type = type == ZetaBarType.buffering ? ZetaBarType.standard : ZetaBarType.buffering;
     });
   }
 
@@ -150,8 +148,7 @@ class _WrapperState extends State<Wrapper> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             widget.type != ZetaBarType.indeterminate
-                ? FilledButton(
-                    onPressed: increasePercentage, child: Text("Increase"))
+                ? FilledButton(onPressed: increasePercentage, child: Text("Increase"))
                 : Container(),
             const SizedBox(width: 40),
             widget.stateChangeable!
