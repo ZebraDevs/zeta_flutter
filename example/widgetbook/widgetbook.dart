@@ -10,6 +10,7 @@ import 'pages/components/bottom_sheet_widgetbook.dart';
 import 'pages/components/button_widgetbook.dart';
 import 'pages/components/checkbox_widgetbook.dart';
 import 'pages/components/dial_pad_widgetbook.dart';
+import 'pages/components/navigation_bar_widgetbook.dart';
 import 'pages/theme/color_widgetbook.dart';
 import 'pages/components/banner_widgetbook.dart';
 import 'pages/components/chip_widgetbook.dart';
@@ -41,6 +42,7 @@ class HotReload extends StatelessWidget {
             passwordInputWidgetBook(),
             bottomSheetWidgetBook(),
             dialPadWidgetbook(),
+            WidgetbookUseCase(name: 'Navigation Bar', builder: (context) => navigationBarUseCase(context))
           ]..sort((a, b) => a.name.compareTo(b.name)),
         ),
         WidgetbookCategory(

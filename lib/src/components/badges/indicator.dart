@@ -18,7 +18,7 @@ class ZetaIndicator extends StatelessWidget {
   /// Constructor for [ZetaIndicator].
   const ZetaIndicator({
     super.key,
-    required this.type,
+    this.type = ZetaIndicatorType.notification,
     this.size = ZetaWidgetSize.large,
     this.icon,
     this.value,
@@ -44,12 +44,16 @@ class ZetaIndicator extends StatelessWidget {
   }) : type = ZetaIndicatorType.notification;
 
   /// The type of the [ZetaIndicator] - icon or notification.
+  ///
+  /// Defaults to [ZetaIndicatorType.notification].
   final ZetaIndicatorType type;
 
   /// The size of the [ZetaIndicator]. Default is [ZetaWidgetSize.large]
   final ZetaWidgetSize size;
 
   /// Inverse the border color.
+  ///
+  /// Defaults to false.
   final bool inverse;
 
   /// Indicator icon, default: `ZetaIcons.star_round`.
