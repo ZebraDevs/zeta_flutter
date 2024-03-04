@@ -1,8 +1,12 @@
+<<<<<<< HEAD
 import 'package:flutter/foundation.dart';
+=======
+>>>>>>> d72661e (Initial version, no border customization)
 import 'package:flutter/material.dart';
 
 import '../../../zeta_flutter.dart';
 
+<<<<<<< HEAD
 /// Zeta Button Group
 class ZetaButtonGroup extends StatelessWidget {
   /// Constructs [ZetaButtonGroup] from a list of [GroupButton]s
@@ -19,12 +23,21 @@ class ZetaButtonGroup extends StatelessWidget {
   final bool rounded;
 
   /// [GroupButton]s to be rendered in list
+=======
+class ZetaButtonGroup extends StatelessWidget {
+  const ZetaButtonGroup({
+    super.key,
+    required this.buttons,
+  });
+
+>>>>>>> d72661e (Initial version, no border customization)
   final List<GroupButton> buttons;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
+<<<<<<< HEAD
       children: getButtons(),
     );
   }
@@ -124,16 +137,51 @@ class GroupButton extends StatefulWidget {
       ..add(DiagnosticsProperty<IconData?>('icon', icon))
       ..add(ObjectFlagProperty<VoidCallback?>.has('onPress', onPress));
   }
+=======
+      children: buttons,
+    );
+  }
+}
+
+class GroupButton extends StatefulWidget {
+  const GroupButton(
+      {super.key,
+      required this.isLarge,
+      required this.rounded,
+      this.label,
+      this.icon,
+      this.onExpand,
+      this.controller});
+
+  final bool isLarge;
+
+  final bool rounded;
+
+  final String? label;
+
+  final IconData? icon;
+
+  final VoidCallback? onExpand;
+
+  final MaterialStatesController? controller;
+
+  @override
+  State<GroupButton> createState() => _GroupButtonState();
+>>>>>>> d72661e (Initial version, no border customization)
 }
 
 class _GroupButtonState extends State<GroupButton> {
   late bool selected;
+<<<<<<< HEAD
   late MaterialStatesController controller;
+=======
+>>>>>>> d72661e (Initial version, no border customization)
 
   @override
   void initState() {
     super.initState();
     selected = false;
+<<<<<<< HEAD
     controller = MaterialStatesController();
   }
 
@@ -142,6 +190,17 @@ class _GroupButtonState extends State<GroupButton> {
     setState(() {
       selected = !selected;
     });
+=======
+  }
+
+  void onPress() {
+    if (widget.onExpand != null) {
+      widget.onExpand!();
+      setState(() {
+        selected = !selected;
+      });
+    }
+>>>>>>> d72661e (Initial version, no border customization)
   }
 
   @override
@@ -149,6 +208,7 @@ class _GroupButtonState extends State<GroupButton> {
     final colors = Zeta.of(context).colors;
 
     final borderType =
+<<<<<<< HEAD
         widget._rounded ? ZetaWidgetBorder.rounded : ZetaWidgetBorder.sharp;
 
     final BorderSide borderSide =
@@ -180,10 +240,28 @@ class _GroupButtonState extends State<GroupButton> {
             ],
           ).paddingAll(_padding),
         ),
+=======
+        widget.rounded ? ZetaWidgetBorder.rounded : ZetaWidgetBorder.sharp;
+
+    return FilledButton(
+      onPressed: onPress,
+      statesController: widget.controller,
+      style: getStyle(borderType, colors, false),
+      child: SelectionContainer.disabled(
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            if (widget.icon != null) Icon(widget.icon),
+            Text(widget.label!),
+            if (widget.onExpand != null) const Icon(ZetaIcons.expand_more_round)
+          ],
+        ).paddingAll(_padding),
+>>>>>>> d72661e (Initial version, no border customization)
       ),
     );
   }
 
+<<<<<<< HEAD
   double get _padding => widget._isLarge ? ZetaSpacing.x4 : ZetaSpacing.x3;
 
   BorderSide _getBorderSide(
@@ -223,14 +301,28 @@ class _GroupButtonState extends State<GroupButton> {
         selected ? colors.cool : ZetaColorSwatch.fromColor(colors.black);
 
     return ButtonStyle(
+=======
+  double get _padding => widget.isLarge ? 16 : 12;
+
+  ButtonStyle getStyle(
+      ZetaWidgetBorder borderType, ZetaColors colors, bool finalButton) {
+    ZetaColorSwatch color =
+        selected ? colors.cool : ZetaColorSwatch.fromColor(colors.black);
+
+    return ButtonStyle(
+      minimumSize: MaterialStateProperty.all(const Size.square(32)),
+>>>>>>> d72661e (Initial version, no border customization)
       shape: MaterialStateProperty.all(
         RoundedRectangleBorder(
           borderRadius: borderType.radius,
         ),
       ),
       backgroundColor: MaterialStateProperty.resolveWith<Color?>((states) {
+<<<<<<< HEAD
         if (selected) return colors.black;
 
+=======
+>>>>>>> d72661e (Initial version, no border customization)
         if (states.contains(MaterialState.disabled)) {
           return colors.surfaceDisabled;
         }
@@ -240,7 +332,12 @@ class _GroupButtonState extends State<GroupButton> {
         if (states.contains(MaterialState.hovered)) {
           return colors.cool.shade20;
         }
+<<<<<<< HEAD
         return colors.white;
+=======
+        if (selected) return colors.black;
+        return Colors.transparent;
+>>>>>>> d72661e (Initial version, no border customization)
       }),
       foregroundColor: MaterialStateProperty.resolveWith<Color?>((states) {
         if (states.contains(MaterialState.disabled)) {
@@ -249,10 +346,25 @@ class _GroupButtonState extends State<GroupButton> {
         if (selected) return color.onColor;
         return colors.textDefault;
       }),
+<<<<<<< HEAD
+=======
+      side: MaterialStateProperty.resolveWith((states) {
+        if (states.contains(MaterialState.disabled)) {
+          return BorderSide(color: colors.cool.shade40);
+        }
+        if (states.contains(MaterialState.focused)) {
+          return BorderSide(color: colors.blue, width: ZetaSpacing.x0_5);
+        }
+        return BorderSide(
+          color: finalButton ? colors.borderDefault : colors.borderSubtle,
+        );
+      }),
+>>>>>>> d72661e (Initial version, no border customization)
       elevation: const MaterialStatePropertyAll(0),
       padding: MaterialStateProperty.all(EdgeInsets.zero),
     );
   }
+<<<<<<< HEAD
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
@@ -263,4 +375,6 @@ class _GroupButtonState extends State<GroupButton> {
         DiagnosticsProperty<MaterialStatesController>('controller', controller),
       );
   }
+=======
+>>>>>>> d72661e (Initial version, no border customization)
 }

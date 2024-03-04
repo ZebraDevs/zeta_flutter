@@ -55,7 +55,8 @@ extension ButtonFunctions on ZetaButtonType {
   }
 
   /// Returns if button has border
-  bool get border => this == ZetaButtonType.outline || this == ZetaButtonType.outlineSubtle;
+  bool get border =>
+      this == ZetaButtonType.outline || this == ZetaButtonType.outlineSubtle;
 
   ///Returns if button is solid
   bool get solid => index < 4;
@@ -85,8 +86,9 @@ ButtonStyle buttonStyle(
   ZetaButtonType type,
   Color? backgroundColor,
 ) {
-  final ZetaColorSwatch color =
-      backgroundColor != null ? ZetaColorSwatch.fromColor(backgroundColor) : type.color(colors);
+  final ZetaColorSwatch color = backgroundColor != null
+      ? ZetaColorSwatch.fromColor(backgroundColor)
+      : type.color(colors);
 
   final bool isSolid = type.solid || backgroundColor != null;
 
@@ -129,7 +131,8 @@ ButtonStyle buttonStyle(
         }
       },
     ),
-    overlayColor: MaterialStateProperty.resolveWith((Set<MaterialState> states) {
+    overlayColor:
+        MaterialStateProperty.resolveWith((Set<MaterialState> states) {
       return null;
     }),
     side: MaterialStateProperty.resolveWith((Set<MaterialState> states) {
@@ -142,7 +145,9 @@ ButtonStyle buttonStyle(
       }
       if (type.border) {
         return BorderSide(
-          color: type == ZetaButtonType.outline ? colors.primary.border : colors.borderDefault,
+          color: type == ZetaButtonType.outline
+              ? colors.primary.border
+              : colors.borderDefault,
         );
       }
 

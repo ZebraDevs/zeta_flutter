@@ -12,6 +12,19 @@ class ProgressExample extends StatefulWidget {
 }
 
 class ProgressExampleState extends State<ProgressExample> {
+  MaterialStatesController controller = MaterialStatesController();
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return ExampleScaffold(

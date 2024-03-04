@@ -107,10 +107,16 @@ class _ButtonExampleState extends State<ButtonExample> {
                   Column(children: inputButtons(ZetaWidgetBorder.rounded)),
                   Text('Sharp Buttons', style: ZetaTextStyles.displayMedium),
                   Column(children: inputButtons(ZetaWidgetBorder.sharp)),
-                  Text('Floating Action Buttons', style: ZetaTextStyles.displayMedium),
-                  Text('Tap buttons to change current FAB: ', style: ZetaTextStyles.bodyMedium),
-                  Wrap(children: fabs.divide(SizedBox.square(dimension: 10)).toList()),
-                ].divide(const SizedBox.square(dimension: ZetaSpacing.m)).toList(),
+                  Text('Floating Action Buttons',
+                      style: ZetaTextStyles.displayMedium),
+                  Text('Tap buttons to change current FAB: ',
+                      style: ZetaTextStyles.bodyMedium),
+                  Wrap(
+                      children:
+                          fabs.divide(SizedBox.square(dimension: 10)).toList()),
+                ]
+                    .divide(const SizedBox.square(dimension: ZetaSpacing.m))
+                    .toList(),
               ),
             ),
             Expanded(child: const SizedBox()),
