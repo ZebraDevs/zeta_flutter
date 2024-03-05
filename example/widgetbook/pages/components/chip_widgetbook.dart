@@ -23,54 +23,32 @@ Widget inputChipUseCase(BuildContext context) {
     },
   );
   return WidgetbookTestWidget(
-    widget: Padding(
-      padding: const EdgeInsets.all(20),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          ZetaInputChip(
-            label: context.knobs.string(label: 'Label', initialValue: 'Label'),
-            leading: context.knobs.boolean(label: 'Avatar')
-                ? ZetaAvatar(
-                    initials: 'AZ',
-                    size: ZetaAvatarSize.xs,
-                  )
-                : null,
-            rounded: context.knobs.boolean(label: 'Rounded'),
-            trailing: trailing != null ? Icon(trailing) : null,
-          ),
-        ],
-      ),
+    widget: ZetaInputChip(
+      label: context.knobs.string(label: 'Label', initialValue: 'Label'),
+      leading: context.knobs.boolean(label: 'Avatar')
+          ? ZetaAvatar(
+              initials: 'AZ',
+              size: ZetaAvatarSize.xs,
+            )
+          : null,
+      rounded: context.knobs.boolean(label: 'Rounded'),
+      trailing: trailing != null ? Icon(trailing) : null,
     ),
   );
 }
 
 Widget filterChipUseCase(BuildContext context) => WidgetbookTestWidget(
-      widget: Padding(
-        padding: const EdgeInsets.all(20),
-        child: Column(
-          children: [
-            ZetaFilterChip(
-              label: context.knobs.string(label: 'Label', initialValue: 'Label'),
-              rounded: context.knobs.boolean(label: 'Rounded'),
-              selected: context.knobs.boolean(label: 'Selected'),
-            )
-          ],
-        ),
+      widget: ZetaFilterChip(
+        label: context.knobs.string(label: 'Label', initialValue: 'Label'),
+        rounded: context.knobs.boolean(label: 'Rounded'),
+        selected: context.knobs.boolean(label: 'Selected'),
       ),
     );
+
 Widget assistChipUseCase(BuildContext context) => WidgetbookTestWidget(
-      widget: Padding(
-        padding: const EdgeInsets.all(20),
-        child: Column(
-          children: [
-            ZetaAssistChip(
-              label: context.knobs.string(label: 'Label', initialValue: 'Label'),
-              rounded: context.knobs.boolean(label: 'Rounded'),
-              leading: context.knobs.boolean(label: 'Icon') ? Icon(ZetaIcons.star_round) : null,
-            )
-          ],
-        ),
+      widget: ZetaAssistChip(
+        label: context.knobs.string(label: 'Label', initialValue: 'Label'),
+        rounded: context.knobs.boolean(label: 'Rounded'),
+        leading: context.knobs.boolean(label: 'Icon') ? Icon(ZetaIcons.star_round) : null,
       ),
     );

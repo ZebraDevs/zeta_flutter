@@ -10,17 +10,15 @@ Widget bottomSheetContentUseCase(BuildContext context) => WidgetbookTestWidget(
         child: _bottomSheet(context),
       ),
     );
+
 Widget bottomSheetLiveUseCase(BuildContext context) {
   final sheet = _bottomSheet(context);
   return WidgetbookTestWidget(
-    widget: Padding(
-      padding: const EdgeInsets.all(20),
-      child: ElevatedButton(
-        child: Text('Open'),
-        onPressed: () {
-          showModalBottomSheet(context: context, builder: (_) => sheet);
-        },
-      ),
+    widget: ElevatedButton(
+      child: Text('Open'),
+      onPressed: () {
+        showModalBottomSheet(context: context, builder: (_) => sheet);
+      },
     ),
   );
 }

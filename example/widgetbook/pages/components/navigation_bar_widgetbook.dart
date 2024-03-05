@@ -16,23 +16,16 @@ Widget navigationBarUseCase(BuildContext context) {
   bool showSplit = context.knobs.boolean(label: 'Split Items');
   return StatefulBuilder(builder: (context, setState) {
     double width = (items.length * 90) + (showSplit ? 90 : 0) + (dividerIndex != null ? 90 : 0) + (showButton ? 90 : 0);
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Expanded(
-          child: WidgetbookTestWidget(
-            screenSize: Size(width, 260),
-            widget: ZetaNavigationBar(
-              items: items,
-              action: showButton ? ZetaButton.primary(label: 'Button', onPressed: () {}) : null,
-              onTap: (i) => setState(() => currIndex = i),
-              currentIndex: currIndex,
-              splitItems: showSplit,
-              dividerIndex: dividerIndex,
-            ),
-          ),
-        ),
-      ],
+    return WidgetbookTestWidget(
+      screenSize: Size(width, 260),
+      widget: ZetaNavigationBar(
+        items: items,
+        action: showButton ? ZetaButton.primary(label: 'Button', onPressed: () {}) : null,
+        onTap: (i) => setState(() => currIndex = i),
+        currentIndex: currIndex,
+        splitItems: showSplit,
+        dividerIndex: dividerIndex,
+      ),
     );
   });
 }

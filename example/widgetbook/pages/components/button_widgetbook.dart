@@ -5,71 +5,53 @@ import 'package:zeta_flutter/zeta_flutter.dart';
 import '../../test/test_components.dart';
 
 Widget buttonUseCase(BuildContext context) => WidgetbookTestWidget(
-      widget: Row(
-        mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Padding(
-            padding: EdgeInsets.all(20),
-            child: ZetaButton(
-              label: context.knobs.string(label: 'Text', initialValue: 'Button'),
-              onPressed: context.knobs.boolean(label: 'Disabled') ? null : () {},
-              borderType: context.knobs.boolean(label: 'Rounded') ? ZetaWidgetBorder.rounded : ZetaWidgetBorder.sharp,
-              size: context.knobs.list(
-                label: 'Size',
-                options: ZetaWidgetSize.values,
-                labelBuilder: (value) => value.name.split('.').last.capitalize(),
-              ),
-              type: context.knobs.list(
-                label: 'Type',
-                options: ZetaButtonType.values,
-                labelBuilder: (value) => value.name.split('.').last.capitalize(),
-              ),
-            ),
-          ),
-        ],
+      widget: ZetaButton(
+        label: context.knobs.string(label: 'Text', initialValue: 'Button'),
+        onPressed: context.knobs.boolean(label: 'Disabled') ? null : () {},
+        borderType: context.knobs.boolean(label: 'Rounded') ? ZetaWidgetBorder.rounded : ZetaWidgetBorder.sharp,
+        size: context.knobs.list(
+          label: 'Size',
+          options: ZetaWidgetSize.values,
+          labelBuilder: (value) => value.name.split('.').last.capitalize(),
+        ),
+        type: context.knobs.list(
+          label: 'Type',
+          options: ZetaButtonType.values,
+          labelBuilder: (value) => value.name.split('.').last.capitalize(),
+        ),
       ),
     );
 
 Widget iconButtonUseCase(BuildContext context) => WidgetbookTestWidget(
-      widget: Row(
-        mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Padding(
-            padding: EdgeInsets.all(20),
-            child: ZetaIconButton(
-              icon: context.knobs.list(
-                label: 'Icon',
-                options: [
-                  ZetaIcons.star_half_round,
-                  ZetaIcons.add_alert_round,
-                  ZetaIcons.add_box_round,
-                  ZetaIcons.barcode_round,
-                ],
-                labelBuilder: (value) {
-                  if (value == ZetaIcons.star_half_round) return 'ZetaIcons.star_half_round';
-                  if (value == ZetaIcons.add_alert_round) return 'ZetaIcons.add_alert_round';
-                  if (value == ZetaIcons.add_box_round) return 'ZetaIcons.add_box_round';
-                  if (value == ZetaIcons.barcode_round) return 'ZetaIcons.barcode_round';
-                  return '';
-                },
-              ),
-              onPressed: context.knobs.boolean(label: 'Disabled') ? null : () {},
-              borderType: context.knobs.boolean(label: 'Rounded') ? ZetaWidgetBorder.rounded : ZetaWidgetBorder.sharp,
-              size: context.knobs.list(
-                label: 'Size',
-                labelBuilder: (value) => value.name.split('.').last.capitalize(),
-                options: ZetaWidgetSize.values,
-              ),
-              type: context.knobs.list(
-                label: 'Type',
-                options: ZetaButtonType.values,
-                labelBuilder: (value) => value.name.split('.').last.capitalize(),
-              ),
-            ),
-          ),
-        ],
+      widget: ZetaIconButton(
+        icon: context.knobs.list(
+          label: 'Icon',
+          options: [
+            ZetaIcons.star_half_round,
+            ZetaIcons.add_alert_round,
+            ZetaIcons.add_box_round,
+            ZetaIcons.barcode_round,
+          ],
+          labelBuilder: (value) {
+            if (value == ZetaIcons.star_half_round) return 'ZetaIcons.star_half_round';
+            if (value == ZetaIcons.add_alert_round) return 'ZetaIcons.add_alert_round';
+            if (value == ZetaIcons.add_box_round) return 'ZetaIcons.add_box_round';
+            if (value == ZetaIcons.barcode_round) return 'ZetaIcons.barcode_round';
+            return '';
+          },
+        ),
+        onPressed: context.knobs.boolean(label: 'Disabled') ? null : () {},
+        borderType: context.knobs.boolean(label: 'Rounded') ? ZetaWidgetBorder.rounded : ZetaWidgetBorder.sharp,
+        size: context.knobs.list(
+          label: 'Size',
+          labelBuilder: (value) => value.name.split('.').last.capitalize(),
+          options: ZetaWidgetSize.values,
+        ),
+        type: context.knobs.list(
+          label: 'Type',
+          options: ZetaButtonType.values,
+          labelBuilder: (value) => value.name.split('.').last.capitalize(),
+        ),
       ),
     );
 

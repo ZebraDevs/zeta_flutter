@@ -26,7 +26,7 @@ class WidgetbookTestWidget extends StatelessWidget {
                 height: size.height,
                 child: MediaQuery(
                   data: MediaQueryData(size: Size(size.width, size.height)),
-                  child: SingleChildScrollView(child: widget),
+                  child: SingleChildScrollView(child: Center(child: widget)),
                 ),
               ),
             ),
