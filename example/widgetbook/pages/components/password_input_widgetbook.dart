@@ -4,20 +4,7 @@ import 'package:zeta_flutter/zeta_flutter.dart';
 
 import '../../test/test_components.dart';
 
-WidgetbookComponent passwordInputWidgetBook() {
-  return WidgetbookComponent(
-    name: 'Password Input',
-    isInitiallyExpanded: false,
-    useCases: [
-      WidgetbookUseCase(
-        name: 'Password Input',
-        builder: (context) {
-          return _Password();
-        },
-      ),
-    ],
-  );
-}
+Widget passwordInputUseCase(BuildContext context) => _Password();
 
 class _Password extends StatefulWidget {
   const _Password();

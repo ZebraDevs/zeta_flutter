@@ -4,59 +4,16 @@ import 'package:zeta_flutter/zeta_flutter.dart';
 
 import '../../test/test_components.dart';
 
-WidgetbookComponent checkboxWidgetBook() {
-  return WidgetbookComponent(
-    isInitiallyExpanded: false,
-    name: 'Checkbox',
-    useCases: [
-      WidgetbookUseCase(
-        name: 'Checked',
-        builder: (context) {
-          return WidgetbookTestWidget(
-            widget: Column(
-              children: [
-                Padding(
-                  padding: EdgeInsets.only(top: 10),
-                  child: _CheckState(context: context, initialState: true),
-                ),
-              ],
-            ),
-          );
-        },
+Widget checkboxUseCase(BuildContext context) => WidgetbookTestWidget(
+      widget: Column(
+        children: [
+          Padding(
+            padding: EdgeInsets.only(top: 10),
+            child: _CheckState(context: context, initialState: true),
+          ),
+        ],
       ),
-      WidgetbookUseCase(
-        name: 'Indeterminate',
-        builder: (context) {
-          return WidgetbookTestWidget(
-            widget: Column(
-              children: [
-                Padding(
-                  padding: EdgeInsets.only(top: 10),
-                  child: _CheckState(context: context, initialState: null),
-                ),
-              ],
-            ),
-          );
-        },
-      ),
-      WidgetbookUseCase(
-        name: 'Unchecked',
-        builder: (context) {
-          return WidgetbookTestWidget(
-            widget: Column(
-              children: [
-                Padding(
-                  padding: EdgeInsets.only(top: 10),
-                  child: _CheckState(context: context, initialState: false),
-                ),
-              ],
-            ),
-          );
-        },
-      ),
-    ],
-  );
-}
+    );
 
 class _CheckState extends StatefulWidget {
   final BuildContext context;

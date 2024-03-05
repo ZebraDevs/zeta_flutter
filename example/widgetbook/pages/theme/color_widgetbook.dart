@@ -1,29 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:widgetbook/widgetbook.dart';
 import 'package:zeta_example/pages/theme/color_example.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
-WidgetbookComponent colorWidgetBook() {
-  return WidgetbookComponent(
-    name: 'Colors',
-    useCases: [
-      WidgetbookUseCase(
-        name: 'Colors',
-        builder: (BuildContext context) {
-          return ZetaProvider(
-            initialThemeMode: ThemeMode.light,
-            builder: (_, __, ___) => ColorBody(),
-          );
-        },
-      ),
-    ],
-  );
-}
+Widget colorUseCase(BuildContext context) => ColorBody();
 
 class ColorBody extends StatelessWidget {
-  const ColorBody({
-    super.key,
-  });
+  const ColorBody({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +49,6 @@ class ColorBody extends StatelessWidget {
         'surfaceSelectedHovered': colors.surfaceSelectedHovered,
         'surfaceSelected': colors.surfaceSelected,
       };
-
       final Map<String, Color> alerts = {
         'positive': colors.positive,
         'negative': colors.negative,
@@ -83,6 +64,7 @@ class ColorBody extends StatelessWidget {
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: ZetaSpacing.l),
           child: SingleChildScrollView(
+            key: PageStorageKey(0),
             child: Column(
               children: [
                 const SizedBox(height: ZetaSpacing.l),
