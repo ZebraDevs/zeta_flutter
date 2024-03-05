@@ -1,7 +1,6 @@
 import 'dart:math' as math;
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 import '../../../zeta_flutter.dart';
 import 'progress.dart';
@@ -74,15 +73,15 @@ class ZetaProgressCircleState extends ZetaProgressState<ZetaProgressCircle> {
   Size _getSize() {
     switch (widget.size) {
       case ZetaCircleSizes.xs:
-        return const Size(24, 24);
+        return const Size(ZetaSpacing.x6, ZetaSpacing.x6);
       case ZetaCircleSizes.s:
-        return const Size(36, 36);
+        return const Size(ZetaSpacing.x9, ZetaSpacing.x9);
       case ZetaCircleSizes.m:
-        return const Size(40, 40);
+        return const Size(ZetaSpacing.x10, ZetaSpacing.x10);
       case ZetaCircleSizes.l:
-        return const Size(48, 48);
+        return const Size(ZetaSpacing.x12, ZetaSpacing.x12);
       case ZetaCircleSizes.xl:
-        return const Size(64, 64);
+        return const Size(ZetaSpacing.x16, ZetaSpacing.x16);
     }
   }
 
@@ -118,8 +117,13 @@ class CirclePainter extends CustomPainter {
 
     const double fullCircle = 2 * math.pi;
 
-    canvas.drawArc(Rect.fromLTRB(0, 0, size.width, size.height),
-        3 * math.pi / 2, progress * fullCircle, false, _paint);
+    canvas.drawArc(
+      Rect.fromLTRB(0, 0, size.width, size.height),
+      3 * math.pi / 2,
+      progress * fullCircle,
+      false,
+      _paint,
+    );
   }
 
   @override

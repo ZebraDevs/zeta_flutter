@@ -35,7 +35,7 @@ abstract class ZetaProgressState<T extends ZetaProgress> extends State<T>
     super.initState();
     progress = widget.progress;
     controller = AnimationController(
-        vsync: this, duration: const Duration(milliseconds: 200));
+        vsync: this, duration: const Duration(milliseconds: 200),);
     animation = Tween<double>(
       begin: widget.progress, // Start value
       end: widget.progress, // End value (initially same as start value)

@@ -26,7 +26,7 @@ class ZetaProgressBar extends ZetaProgress {
       required this.rounded,
       required this.type,
       required this.isThin,
-      this.label});
+      this.label,});
 
   /// Constructs a standard progress bar
   const ZetaProgressBar.standard(
@@ -34,7 +34,7 @@ class ZetaProgressBar extends ZetaProgress {
       required super.progress,
       this.rounded = true,
       this.isThin = false,
-      this.label})
+      this.label,})
       : type = ZetaBarType.standard;
 
   /// Constructs buffering example
@@ -43,7 +43,7 @@ class ZetaProgressBar extends ZetaProgress {
       required super.progress,
       this.rounded = true,
       this.isThin = false,
-      this.label})
+      this.label,})
       : type = ZetaBarType.buffering;
 
   /// Constructs indeterminate example
@@ -52,7 +52,7 @@ class ZetaProgressBar extends ZetaProgress {
       required super.progress,
       this.rounded = true,
       this.isThin = false,
-      this.label})
+      this.label,})
       : type = ZetaBarType.indeterminate;
 
   /// Is progress bar rounded or sharp.
@@ -108,7 +108,7 @@ class _ZetaProgressBarState extends ZetaProgressState<ZetaProgressBar> {
             ),
           ),
           _extraWidgets(),
-        ])
+        ],),
       ],
     );
   }
@@ -130,9 +130,9 @@ class _ZetaProgressBarState extends ZetaProgressState<ZetaProgressBar> {
             height: _weight,
             decoration: const BoxDecoration(
                 color: Color.fromRGBO(224, 227, 233, 1),
-                borderRadius: ZetaRadius.rounded),
+                borderRadius: ZetaRadius.rounded,),
           ),
-        ]);
+        ],);
 
     final Widget extraWidgets = Row(
       children: widget.type == ZetaBarType.buffering
