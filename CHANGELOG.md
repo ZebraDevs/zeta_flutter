@@ -5,6 +5,18 @@
 - [`ed1210d`](https://github.com/zebratechnologies/zeta-flutter/commit/ed1210d6cbc173aef8b1adf0d20ee91d3e87f2c3) - Update Widgetbook to correct functionality _(PR [#52](https://github.com/zebratechnologies/zeta-flutter/pull/52) by [@thelukewalton](https://github.com/thelukewalton))_
 - [`c627d7a`](https://github.com/zebratechnologies/zeta-flutter/commit/c627d7ab19d3f33e30c406441702ff6134557f14) - Tidy up example app _(PR [#53](https://github.com/zebratechnologies/zeta-flutter/pull/53) by [@thelukewalton](https://github.com/thelukewalton))_
 
+## [0.5.0](https://github.com/ZebraDevs/zeta_flutter/compare/v0.4.0...v0.5.0) (2024-03-05)
+
+
+### Features
+
+* Dial Pad ([#30](https://github.com/ZebraDevs/zeta_flutter/issues/30)) ([f16df26](https://github.com/ZebraDevs/zeta_flutter/commit/f16df261feb703b20147c4ba406ed1fa3450348b))
+* Icon button ([#26](https://github.com/ZebraDevs/zeta_flutter/issues/26)) ([88cd90a](https://github.com/ZebraDevs/zeta_flutter/commit/88cd90a8180df39e3e44c168ca028055333643a6))
+* Navigation bar ([#32](https://github.com/ZebraDevs/zeta_flutter/issues/32)) ([36a60e7](https://github.com/ZebraDevs/zeta_flutter/commit/36a60e7087af7d38bfd64578009056d85b0f1e56))
+* Progress Bar ([#29](https://github.com/ZebraDevs/zeta_flutter/issues/29)) ([d18dbd2](https://github.com/ZebraDevs/zeta_flutter/commit/d18dbd276177c368e5d5cf80e482ea11564270a9))
+* update icons/0.1.65 ([#24](https://github.com/ZebraDevs/zeta_flutter/issues/24)) ([9f0e7f2](https://github.com/ZebraDevs/zeta_flutter/commit/9f0e7f286470c99722e928e726b5a9eb1b0b7b8b))
+* Widgetbook hot reload ([#33](https://github.com/ZebraDevs/zeta_flutter/issues/33)) ([44b8f98](https://github.com/ZebraDevs/zeta_flutter/commit/44b8f989850aaa1a6d862526bad26a01ffad361a))
+
 ## [0.4.0](https://github.com/ZebraDevs/zeta_flutter/compare/v0.3.0...v0.4.0) (2024-02-14)
 
 
