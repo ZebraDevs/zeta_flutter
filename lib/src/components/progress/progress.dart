@@ -19,8 +19,7 @@ abstract class ZetaProgress extends StatefulWidget {
 /// Super class for [ZetaProgressState]
 /// Defines functions that deal with state change of progress value and
 /// animation changing.
-abstract class ZetaProgressState<T extends ZetaProgress> extends State<T>
-    with TickerProviderStateMixin {
+abstract class ZetaProgressState<T extends ZetaProgress> extends State<T> with TickerProviderStateMixin {
   /// Decimal progress value
   late double progress;
 

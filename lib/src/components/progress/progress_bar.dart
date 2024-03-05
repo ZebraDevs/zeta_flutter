@@ -91,31 +91,31 @@ class _ZetaProgressBarState extends ZetaProgressState<ZetaProgressBar> {
             widget.label!,
             textAlign: TextAlign.start,
           ),
-        Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Expanded(
-            child: AnimatedContainer(
-              duration: const Duration(milliseconds: 500),
-              height: _weight,
-              child: LinearProgressIndicator(
-                borderRadius: _border,
-                value: widget.type == ZetaBarType.indeterminate
-                    ? null
-                    : animation.value,
-                backgroundColor: widget.type == ZetaBarType.buffering
-                    ? Zeta.of(context).colors.surfaceDisabled
-                    : Colors.transparent,
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Expanded(
+              child: AnimatedContainer(
+                duration: const Duration(milliseconds: 500),
+                height: _weight,
+                child: LinearProgressIndicator(
+                  borderRadius: _border,
+                  value: widget.type == ZetaBarType.indeterminate ? null : animation.value,
+                  backgroundColor: widget.type == ZetaBarType.buffering
+                      ? Zeta.of(context).colors.surfaceDisabled
+                      : Colors.transparent,
+                ),
               ),
             ),
-          ),
-          _extraWidgets(),
-        ],),
+            _extraWidgets(),
+          ],
+        ),
       ],
     );
   }
 
   /// Returns border based on widgets border type.
-  BorderRadius get _border =>
-      widget.rounded ? ZetaRadius.rounded : ZetaRadius.none;
+  BorderRadius get _border => widget.rounded ? ZetaRadius.rounded : ZetaRadius.none;
 
   /// Returns thickness of progress bar based on its weight.
   double get _weight => widget.isThin ? 8 : 16;
@@ -135,9 +135,7 @@ class _ZetaProgressBarState extends ZetaProgressState<ZetaProgressBar> {
         ],);
 
     final Widget extraWidgets = Row(
-      children: widget.type == ZetaBarType.buffering
-          ? extraList.expand((list) => list).toList()
-          : [],
+      children: widget.type == ZetaBarType.buffering ? extraList.expand((list) => list).toList() : [],
     );
     return extraWidgets;
   }
