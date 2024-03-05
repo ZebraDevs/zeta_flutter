@@ -4,6 +4,13 @@ Zeta is the new, formal, standardized Zebra Design System based off the successe
 
 > 🚧 **Note**: This package is in pre-release, and so many aspects are incomplete.
 
+### Prerequisites
+
+```
+  dart sdk: ">=3.2.0 <4.0.0"
+  flutter: ">=3.16.0"
+```
+
 ## Installation
 
 To install `zeta_flutter`, follow the instructions [here](https://pub.dev/packages/zeta_flutter/install).

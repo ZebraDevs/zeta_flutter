@@ -5,64 +5,57 @@ import 'package:zeta_flutter/zeta_flutter.dart';
 
 import '../../test/test_components.dart';
 
-WidgetbookComponent iconWidgetbook() {
-  return WidgetbookComponent(
-    isInitiallyExpanded: false,
-    name: 'Icons',
-    useCases: [
-      WidgetbookUseCase(
-        name: 'All Icons',
-        builder: (context) {
-          Map<String, IconData> icons =
-              ((context.knobs.boolean(label: 'Rounded', initialValue: true)) ? iconsRounded : iconsSharp);
+Widget iconsUseCase(BuildContext context) {
+  Map<String, IconData> icons =
+      ((context.knobs.boolean(label: 'Rounded', initialValue: true)) ? iconsRounded : iconsSharp);
 
-          final Map<String, IconData> sortedIcons = Map.fromEntries(icons.entries.toList()
-            ..sort((a, b) {
-              final _a = (a.key.split('_')..removeLast()).join();
-              final _b = (b.key.split('_')..removeLast()).join();
-              return _a.compareTo(_b);
-            }));
+  final Map<String, IconData> sortedIcons = Map.fromEntries(icons.entries.toList()
+    ..sort((a, b) {
+      final _a = (a.key.split('_')..removeLast()).join();
+      final _b = (b.key.split('_')..removeLast()).join();
+      return _a.compareTo(_b);
+    }));
 
-          return WidgetbookTestWidget(
-            removeBody: true,
-            widget: SingleChildScrollView(
-              key: PageStorageKey(0),
-              child: Center(
-                child: Column(
-                  children: [
-                    Text('Tap icon to copy name to clipboard', style: ZetaTextStyles.titleMedium)
-                        .paddingAll(ZetaSpacing.l),
-                    Wrap(
-                      spacing: ZetaSpacing.l,
-                      runSpacing: ZetaSpacing.l,
-                      children: sortedIcons.entries.map(
-                        (e) {
-                          final nameArr = (e.key.split('_')..removeLast()).join(' ').capitalize();
-                          return Container(
-                            width: 100,
-                            height: 100,
-                            child: InkWell(
-                              borderRadius: ZetaRadius.rounded,
-                              hoverColor: Zeta.of(context).colors.surfaceHovered,
-                              onTap: () async {
-                                await Clipboard.setData(ClipboardData(text: 'ZetaIcons.' + e.key));
-                              },
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [Icon(e.value, size: 40), Text(nameArr, textAlign: TextAlign.center)],
-                              ),
-                            ),
-                          );
-                        },
-                      ).toList(),
+  return WidgetbookTestWidget(
+    removeBody: true,
+    widget: SingleChildScrollView(
+      key: PageStorageKey(0),
+      child: Center(
+        child: Column(
+          children: [
+            Text('Tap icon to copy name to clipboard', style: ZetaTextStyles.titleMedium).paddingAll(ZetaSpacing.l),
+            Wrap(
+              spacing: ZetaSpacing.l,
+              runSpacing: ZetaSpacing.l,
+              children: sortedIcons.entries.map(
+                (e) {
+                  final nameArr = (e.key.split('_')..removeLast()).join(' ').capitalize();
+                  return Container(
+                    width: 100,
+                    height: 100,
+                    child: InkWell(
+                      borderRadius: ZetaRadius.rounded,
+                      hoverColor: Zeta.of(context).colors.surfaceHovered,
+                      onTap: () async {
+                        await Clipboard.setData(ClipboardData(text: 'ZetaIcons.' + e.key));
+                        ScaffoldMessenger.of(context).showMaterialBanner(
+                          ZetaSystemBanner(context: context, title: 'Icon name copied'),
+                        );
+                        await Future.delayed(Duration(seconds: 4));
+                        ScaffoldMessenger.of(context).clearMaterialBanners();
+                      },
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [Icon(e.value, size: 40), Text(nameArr, textAlign: TextAlign.center)],
+                      ),
                     ),
-                  ],
-                ),
-              ),
+                  );
+                },
+              ).toList(),
             ),
-          );
-        },
+          ],
+        ),
       ),
-    ],
+    ),
   );
 }

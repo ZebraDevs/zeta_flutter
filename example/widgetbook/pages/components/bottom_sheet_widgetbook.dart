@@ -4,38 +4,22 @@ import 'package:zeta_flutter/zeta_flutter.dart';
 
 import '../../test/test_components.dart';
 
-WidgetbookComponent bottomSheetWidgetBook() {
-  return WidgetbookComponent(
-    isInitiallyExpanded: false,
-    name: 'Bottom Sheet',
-    useCases: [
-      WidgetbookUseCase(
-        name: 'Content',
-        builder: (context) => WidgetbookTestWidget(
-          widget: Padding(
-            padding: const EdgeInsets.all(20),
-            child: _bottomSheet(context),
-          ),
-        ),
+Widget bottomSheetContentUseCase(BuildContext context) => WidgetbookTestWidget(
+      widget: Padding(
+        padding: const EdgeInsets.all(20),
+        child: _bottomSheet(context),
       ),
-      WidgetbookUseCase(
-        name: 'Live',
-        builder: (context) {
-          final sheet = _bottomSheet(context);
-          return WidgetbookTestWidget(
-            widget: Padding(
-              padding: const EdgeInsets.all(20),
-              child: ElevatedButton(
-                child: Text('Open'),
-                onPressed: () {
-                  showModalBottomSheet(context: context, builder: (_) => sheet);
-                },
-              ),
-            ),
-          );
-        },
-      ),
-    ],
+    );
+
+Widget bottomSheetLiveUseCase(BuildContext context) {
+  final sheet = _bottomSheet(context);
+  return WidgetbookTestWidget(
+    widget: ElevatedButton(
+      child: Text('Open'),
+      onPressed: () {
+        showModalBottomSheet(context: context, builder: (_) => sheet);
+      },
+    ),
   );
 }
 
