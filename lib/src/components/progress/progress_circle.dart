@@ -66,7 +66,7 @@ class ZetaProgressCircleState extends ZetaProgressState<ZetaProgressCircle> {
             painter: CirclePainter(
               progress: animation.value,
               rounded: widget.rounded,
-              colors: Zeta.of(context).colors
+              colors: Zeta.of(context).colors,
             ),
           );
         },
