@@ -84,6 +84,7 @@ class HotReload extends StatelessWidget {
               name: 'Progress',
               useCases: [
                 WidgetbookUseCase(name: 'Bar', builder: (context) => progressBarUseCase(context)),
+                WidgetbookUseCase(name : 'Circle', builder : (context) => progressCircleUseCase(context))
               ],
             ),
           ]..sort((a, b) => a.name.compareTo(b.name)),

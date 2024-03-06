@@ -98,7 +98,8 @@ class _ZetaProgressBarState extends ZetaProgressState<ZetaProgressBar> {
       children: [
         Text(
           widget.label ??
-              (widget.label == null && widget.type != ZetaProgressBarType.indeterminate
+              (widget.label == null &&
+                      widget.type != ZetaProgressBarType.indeterminate
                   ? '${(animation.value * 100).toInt()}%'
                   : ''),
           style: ZetaTextStyles.titleMedium,
@@ -114,13 +115,17 @@ class _ZetaProgressBarState extends ZetaProgressState<ZetaProgressBar> {
                 height: _weight,
                 child: LinearProgressIndicator(
                   borderRadius: _border,
-                  value: widget.type == ZetaProgressBarType.indeterminate ? null : animation.value,
-                  backgroundColor:
-                      widget.type == ZetaProgressBarType.buffering ? colors.surfaceDisabled : Colors.transparent,
+                  value: widget.type == ZetaProgressBarType.indeterminate
+                      ? null
+                      : animation.value,
+                  backgroundColor: widget.type == ZetaProgressBarType.buffering
+                      ? colors.surfaceDisabled
+                      : Colors.transparent,
                 ),
               ),
             ),
-            if (widget.type == ZetaProgressBarType.buffering) bufferingWidget(colors),
+            if (widget.type == ZetaProgressBarType.buffering)
+              bufferingWidget(colors),
           ],
         ),
       ],
@@ -128,7 +133,8 @@ class _ZetaProgressBarState extends ZetaProgressState<ZetaProgressBar> {
   }
 
   /// Returns border based on widgets border type.
-  BorderRadius get _border => widget.rounded ? ZetaRadius.rounded : ZetaRadius.none;
+  BorderRadius get _border =>
+      widget.rounded ? ZetaRadius.rounded : ZetaRadius.none;
 
   /// Returns thickness of progress bar based on its weight.
   double get _weight => widget.isThin ? ZetaSpacing.x2 : ZetaSpacing.x4;
@@ -141,7 +147,10 @@ class _ZetaProgressBarState extends ZetaProgressState<ZetaProgressBar> {
         Container(
           width: _weight,
           height: _weight,
-          decoration: BoxDecoration(color: colors.surfaceDisabled, borderRadius: ZetaRadius.rounded),
+          decoration: BoxDecoration(
+            color: colors.surfaceDisabled,
+            borderRadius: ZetaRadius.rounded,
+          ),
         ),
       ],
     );

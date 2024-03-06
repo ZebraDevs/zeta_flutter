@@ -9,13 +9,32 @@ Widget progressBarUseCase(BuildContext context) => WidgetbookTestWidget(
         return SizedBox(
           width: constraints.maxWidth - ZetaSpacing.xl,
           child: ZetaProgressBar(
-            progress: context.knobs.double.slider(label: 'Progress', min: 0, max: 1, initialValue: 0.5).toDouble(),
-            type: context.knobs
-                .list(label: 'Type', options: ZetaProgressBarType.values, labelBuilder: (value) => value.name),
+            progress: context.knobs.double
+                .slider(label: 'Progress', min: 0, max: 1, initialValue: 0.5)
+                .toDouble(),
+            type: context.knobs.list(
+                label: 'Type',
+                options: ZetaProgressBarType.values,
+                labelBuilder: (value) => value.name),
             isThin: context.knobs.boolean(label: 'Thin'),
             rounded: context.knobs.boolean(label: 'Rounded'),
             label: context.knobs.stringOrNull(label: 'Label'),
           ),
         );
       }),
+    );
+
+Widget progressCircleUseCase(BuildContext context) =>
+    WidgetbookTestWidget(widget: 
+           ZetaProgressCircle(
+            progress: context.knobs.double
+                .slider(label: 'Progress', min: 0, max: 1, initialValue: 0.5)
+                .toDouble(),
+            rounded: context.knobs.boolean(label: 'Rounded'),
+            size: context.knobs.list(
+                initialOption: ZetaCircleSizes.xl,
+                label: 'Size',
+                options: ZetaCircleSizes.values,
+                labelBuilder: (value) => value.name),
+          ),
     );

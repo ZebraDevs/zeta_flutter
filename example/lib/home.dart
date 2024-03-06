@@ -13,7 +13,6 @@ import 'package:zeta_example/pages/components/navigation_bar_example.dart';
 import 'package:zeta_example/pages/theme/color_example.dart';
 import 'package:zeta_example/pages/components/password_input_example.dart';
 import 'package:zeta_example/pages/components/progress_example.dart';
-
 import 'package:zeta_example/pages/assets/icons_example.dart';
 import 'package:zeta_example/widgets.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
