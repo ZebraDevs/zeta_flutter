@@ -178,75 +178,66 @@ class _ButtonExampleState extends State<ButtonExample> {
 
   List<Widget> groupButtons(ZetaWidgetBorder) {
     return [
-      ZetaButtonGroup(buttons: [
-        GroupButton(
-          isLarge: true,
+      ZetaButtonGroup(
+         isLarge: true,
           rounded: true,
+        buttons: [
+        GroupButton(
           label: "Label",
         ),
         GroupButton(
-          isLarge: true,
-          rounded: true,
-          label: "Label",
-        ),
-      ]),
-      ZetaButtonGroup(buttons: [
-        GroupButton(
-          isLarge: true,
-          rounded: true,
-          label: "Label",
-        ),
-        GroupButton.dropdown(
-          isLarge: true,
-          rounded: true,
-          onPress: () {},
           label: "Label",
         ),
       ]),
       ZetaButtonGroup(
+         isLarge: true,
+          rounded: true,
+        buttons: [
+        GroupButton(
+          label: "Label",
+        ),
+        GroupButton.dropdown(
+          onPressed: () {},
+          label: "Label",
+        ),
+      ]),
+      ZetaButtonGroup(
+         isLarge: true,
+            rounded: true,
         buttons: [
           GroupButton.icon(
-            isLarge: true,
-            rounded: true,
             icon: ZetaIcons.star_round,
             label: "Label",
           ),
           GroupButton.dropdown(
-            isLarge: true,
-            rounded: true,
-            onPress: () {},
+            onPressed: () {},
             label: "Label",
           ),
           GroupButton.icon(
-            isLarge: true,
-            rounded: true,
+           
             icon: ZetaIcons.star_round,
             label: "Label",
           ),
         ],
       ),
       ZetaButtonGroup(
+        isLarge: true,
+            rounded: true,
         buttons: [
-          GroupButton.icon(
-            isLarge: true,
-            rounded: true,
+          GroupButton.icon( 
             icon: ZetaIcons.star_round,
             label: "Label",
-            onPress: () {},
+            onPressed: () {},
+          ),
+          GroupButton.icon(    
+            icon: ZetaIcons.star_round,
+            label: "Label",
+            onPressed: () {},
           ),
           GroupButton.icon(
-            isLarge: true,
-            rounded: true,
             icon: ZetaIcons.star_round,
             label: "Label",
-            onPress: () {},
-          ),
-          GroupButton.icon(
-            isLarge: true,
-            rounded: true,
-            icon: ZetaIcons.star_round,
-            label: "Label",
-            onPress: () {},
+            onPressed: () {},
           ),
         ],
       ),
