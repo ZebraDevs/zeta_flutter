@@ -21,6 +21,7 @@ export 'src/components/buttons/icon_button.dart';
 export 'src/components/checkbox/checkbox.dart';
 export 'src/components/chips/chip.dart';
 export 'src/components/dial_pad/dial_pad.dart';
+export 'src/components/navigation bar/navigation_bar.dart';
 export 'src/components/password/password_input.dart';
 export 'src/components/progress/progress_bar.dart';
 export 'src/components/progress/progress_circle.dart';

@@ -3,57 +3,47 @@ import 'package:widgetbook/widgetbook.dart';
 
 import 'package:zeta_flutter/zeta_flutter.dart';
 
-WidgetbookComponent radiusWidgetbook() {
-  return WidgetbookComponent(
-    name: 'Radius',
-    useCases: [
-      WidgetbookUseCase(
-        name: 'Radius',
-        builder: (context) {
-          final rad = context.knobs.list(
-            label: 'Radius',
-            options: radii,
-            labelBuilder: (value) => value.radiusString,
-          );
-          final colors = Zeta.of(context).colors;
-          return SingleChildScrollView(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Container(
-                  width: 250,
-                  height: 250,
-                  decoration: BoxDecoration(
-                    borderRadius: rad,
-                    color: Zeta.of(context).colors.blue.shade30,
-                    border: Border.all(color: colors.blue.shade80, width: 3),
-                  ),
-                  child: Center(
-                    child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: rad,
-                        color: Zeta.of(context).colors.surfacePrimary,
-                        border: Border.all(color: colors.blue.shade50, width: 3),
-                      ),
-                      padding: EdgeInsets.all(ZetaSpacing.b),
-                      child: Text(
-                        rad.radiusString.split('.').last.capitalize(),
-                        style: ZetaTextStyles.titleMedium.apply(
-                          color: Zeta.of(context).colors.textDefault,
-                          fontStyle: FontStyle.normal,
-                          decoration: TextDecoration.none,
-                        ),
-                      ),
-                    ),
-                  ),
+Widget radiusUseCase(BuildContext context) {
+  final rad = context.knobs.list(
+    label: 'Radius',
+    options: radii,
+    labelBuilder: (value) => value.radiusString,
+  );
+  final colors = Zeta.of(context).colors;
+  return SingleChildScrollView(
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Container(
+          width: 250,
+          height: 250,
+          decoration: BoxDecoration(
+            borderRadius: rad,
+            color: Zeta.of(context).colors.blue.shade30,
+            border: Border.all(color: colors.blue.shade80, width: 3),
+          ),
+          child: Center(
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: rad,
+                color: Zeta.of(context).colors.surfacePrimary,
+                border: Border.all(color: colors.blue.shade50, width: 3),
+              ),
+              padding: EdgeInsets.all(ZetaSpacing.b),
+              child: Text(
+                rad.radiusString.split('.').last.capitalize(),
+                style: ZetaTextStyles.titleMedium.apply(
+                  color: Zeta.of(context).colors.textDefault,
+                  fontStyle: FontStyle.normal,
+                  decoration: TextDecoration.none,
                 ),
-              ],
+              ),
             ),
-          );
-        },
-      ),
-    ],
+          ),
+        ),
+      ],
+    ),
   );
 }
 

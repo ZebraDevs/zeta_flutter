@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import '../../../zeta_flutter.dart';
 import 'progress.dart';
 
-/// Enum for types of progress bar
-enum ZetaBarType {
+/// Enum for types of progress bar.
+enum ZetaProgressBarType {
   /// Standard bar type.
   standard,
 
-  /// Indeterminate bar type. positions randomly
+  /// Indeterminate bar type. positions randomly.
   indeterminate,
 
   /// Buffering bar type. Has buffering at end.
@@ -16,55 +16,63 @@ enum ZetaBarType {
 }
 
 /// Linear progress bar.
-/// Uses progress percentage value to fill bar
+///
+/// Uses progress percentage value to fill bar.
 class ZetaProgressBar extends ZetaProgress {
-  ///Constructor for [ZetaProgressBar]
+  ///Constructor for [ZetaProgressBar].
+  const ZetaProgressBar({
+    super.key,
+    required super.progress,
+    required this.type,
+    this.rounded = true,
+    this.isThin = false,
+    this.label,
+  });
 
-  const ZetaProgressBar(
-      {super.key,
-      required super.progress,
-      required this.rounded,
-      required this.type,
-      required this.isThin,
-      this.label,});
-
-  /// Constructs a standard progress bar
-  const ZetaProgressBar.standard(
-      {super.key,
-      required super.progress,
-      this.rounded = true,
-      this.isThin = false,
-      this.label,})
-      : type = ZetaBarType.standard;
+  /// Constructs a standard progress bar.
+  const ZetaProgressBar.standard({
+    super.key,
+    required super.progress,
+    this.rounded = true,
+    this.isThin = false,
+    this.label,
+  }) : type = ZetaProgressBarType.standard;
 
   /// Constructs buffering example
-  const ZetaProgressBar.buffering(
-      {super.key,
-      required super.progress,
-      this.rounded = true,
-      this.isThin = false,
-      this.label,})
-      : type = ZetaBarType.buffering;
+  const ZetaProgressBar.buffering({
+    super.key,
+    required super.progress,
+    this.rounded = true,
+    this.isThin = false,
+    this.label,
+  }) : type = ZetaProgressBarType.buffering;
 
-  /// Constructs indeterminate example
-  const ZetaProgressBar.indeterminate(
-      {super.key,
-      required super.progress,
-      this.rounded = true,
-      this.isThin = false,
-      this.label,})
-      : type = ZetaBarType.indeterminate;
+  /// Constructs indeterminate progress bar.
+  const ZetaProgressBar.indeterminate({
+    super.key,
+    required super.progress,
+    this.rounded = true,
+    this.isThin = false,
+    this.label,
+  }) : type = ZetaProgressBarType.indeterminate;
 
-  /// Is progress bar rounded or sharp.
+  /// {@macro zeta-component-rounded}
   final bool rounded;
 
   /// Type of the progress bar.
-  final ZetaBarType type;
+  final ZetaProgressBarType type;
 
   /// Is Progress bar thin or thick.
+  ///
+  /// Defaults to `false`.
   final bool isThin;
 
-  ///Optional label
+  /// Optional label.
+  ///
+  /// If null, default label will show percentage.
+  ///
+  /// Currently Zeta does not have translation support, so there are no built in strings
+  // TODO(UX-1003): Investigate i18n.
   final String? label;
 
   @override
@@ -75,7 +83,7 @@ class ZetaProgressBar extends ZetaProgress {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty<bool>('rounded', rounded))
-      ..add(EnumProperty<ZetaBarType>('type', type))
+      ..add(EnumProperty<ZetaProgressBarType>('type', type))
       ..add(StringProperty('label', label))
       ..add(DiagnosticsProperty<bool>('isThin', isThin));
   }
@@ -84,15 +92,22 @@ class ZetaProgressBar extends ZetaProgress {
 class _ZetaProgressBarState extends ZetaProgressState<ZetaProgressBar> {
   @override
   Widget build(BuildContext context) {
+    final colors = Zeta.of(context).colors;
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        if (widget.label != null)
-          Text(
-            widget.label!,
-            textAlign: TextAlign.start,
-          ),
+        Text(
+          widget.label ??
+              (widget.label == null &&
+                      widget.type != ZetaProgressBarType.indeterminate
+                  ? '${(animation.value * 100).toInt()}%'
+                  : ''),
+          style: ZetaTextStyles.titleMedium,
+          textAlign: TextAlign.start,
+        ).paddingBottom(ZetaSpacing.x4),
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
           children: [
             Expanded(
               child: AnimatedContainer(
@@ -100,14 +115,17 @@ class _ZetaProgressBarState extends ZetaProgressState<ZetaProgressBar> {
                 height: _weight,
                 child: LinearProgressIndicator(
                   borderRadius: _border,
-                  value: widget.type == ZetaBarType.indeterminate ? null : animation.value,
-                  backgroundColor: widget.type == ZetaBarType.buffering
-                      ? Zeta.of(context).colors.surfaceDisabled
+                  value: widget.type == ZetaProgressBarType.indeterminate
+                      ? null
+                      : animation.value,
+                  backgroundColor: widget.type == ZetaProgressBarType.buffering
+                      ? colors.surfaceDisabled
                       : Colors.transparent,
                 ),
               ),
             ),
-            _extraWidgets(),
+            if (widget.type == ZetaProgressBarType.buffering)
+              bufferingWidget(colors),
           ],
         ),
       ],
@@ -115,28 +133,28 @@ class _ZetaProgressBarState extends ZetaProgressState<ZetaProgressBar> {
   }
 
   /// Returns border based on widgets border type.
-  BorderRadius get _border => widget.rounded ? ZetaRadius.rounded : ZetaRadius.none;
+  BorderRadius get _border =>
+      widget.rounded ? ZetaRadius.rounded : ZetaRadius.none;
 
   /// Returns thickness of progress bar based on its weight.
-  double get _weight => widget.isThin ? 8 : 16;
+  double get _weight => widget.isThin ? ZetaSpacing.x2 : ZetaSpacing.x4;
 
-  Widget _extraWidgets() {
-    final Iterable<List<Widget>> extraList = List.filled(3, false).map((e) => [
-          const SizedBox(
-            width: 16,
+  Widget bufferingWidget(ZetaColors colors) {
+    final Iterable<List<Widget>> extraList = List.generate(
+      3,
+      (e) => [
+        const SizedBox(width: ZetaSpacing.x4),
+        Container(
+          width: _weight,
+          height: _weight,
+          decoration: BoxDecoration(
+            color: colors.surfaceDisabled,
+            borderRadius: ZetaRadius.rounded,
           ),
-          Container(
-            width: _weight,
-            height: _weight,
-            decoration: const BoxDecoration(
-                color: Color.fromRGBO(224, 227, 233, 1),
-                borderRadius: ZetaRadius.rounded,),
-          ),
-        ],);
-
-    final Widget extraWidgets = Row(
-      children: widget.type == ZetaBarType.buffering ? extraList.expand((list) => list).toList() : [],
+        ),
+      ],
     );
-    return extraWidgets;
+
+    return Row(children: extraList.expand((list) => list).toList());
   }
 }

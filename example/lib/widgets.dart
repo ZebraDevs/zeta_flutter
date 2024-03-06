@@ -66,12 +66,14 @@ class ExampleScaffold extends StatelessWidget {
   final Widget child;
   final List<Widget> actions;
   final Widget? floatingActionButton;
+  final Widget? bottomNavigationBar;
 
   const ExampleScaffold({
     required this.name,
     required this.child,
     this.actions = const [],
     this.floatingActionButton,
+    this.bottomNavigationBar,
     super.key,
   });
 
@@ -98,6 +100,7 @@ class ExampleScaffold extends StatelessWidget {
         ],
       ),
       backgroundColor: colors.surface,
+      bottomNavigationBar: bottomNavigationBar,
       body: SelectionArea(
         child: child,
       ),

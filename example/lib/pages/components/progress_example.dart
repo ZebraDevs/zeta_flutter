@@ -20,48 +20,35 @@ class ProgressExampleState extends State<ProgressExample> {
         child: SingleChildScrollView(
           child: SizedBox(
             width: double.infinity,
-            child: Column(
-              children: [
-                Text('Progress Bars', style: ZetaTextStyles.displayMedium),
-                SizedBox(
-                  height: 20,
-                ),
-                Wrapper(
-                  stepsCompleted: 10,
-                  isThin: true,
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                Wrapper(
-                    stepsCompleted: 0,
-                    type: ZetaBarType.standard,
-                    isThin: false,
-                    stateChangeable: true),
-                SizedBox(
-                  height: 20,
-                ),
-                Wrapper(
+            child: Column(children: [
+              Wrapper(
+                stepsCompleted: 10,
+                isThin: true,
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Wrapper(
                   stepsCompleted: 0,
-                  type: ZetaBarType.indeterminate,
+                  type: ZetaProgressBarType.standard,
                   isThin: false,
-                  label: "UPLOADING ...",
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                Text('Progress CIrcles', style: ZetaTextStyles.displayMedium),
-                SizedBox(
-                  height: 80,
-                ),
-                Wrapper(
-                  stepsCompleted: 0,
-                  circleSize: ZetaCircleSizes.xl,
-                  rounded: false,
-                  isCircle: true,
-                ),
-              ],
-            ),
+                  stateChangeable: true),
+              SizedBox(
+                height: 20,
+              ),
+              Wrapper(
+                stepsCompleted: 0,
+                type: ZetaProgressBarType.indeterminate,
+                isThin: false,
+                label: "UPLOADING ...",
+              ),
+              Wrapper(
+                stepsCompleted: 0,
+                circleSize: ZetaCircleSizes.xl,
+                rounded: false,
+                isCircle: true,
+              ),
+            ]),
           ),
         ),
       ),
@@ -73,7 +60,7 @@ class Wrapper extends StatefulWidget {
   const Wrapper({
     super.key,
     required this.stepsCompleted,
-    this.type = ZetaBarType.standard,
+    this.type = ZetaProgressBarType.standard,
     this.isThin = false,
     this.rounded = true,
     this.stateChangeable = false,
@@ -84,7 +71,7 @@ class Wrapper extends StatefulWidget {
 
   final int stepsCompleted;
   final bool? rounded;
-  final ZetaBarType? type;
+  final ZetaProgressBarType? type;
   final bool? isThin;
   final String? label;
   final bool? stateChangeable;
@@ -98,7 +85,7 @@ class Wrapper extends StatefulWidget {
 class _WrapperState extends State<Wrapper> {
   late int stepsCompleted;
   late double progress;
-  late ZetaBarType type;
+  late ZetaProgressBarType type;
 
   @override
   void initState() {
@@ -118,7 +105,9 @@ class _WrapperState extends State<Wrapper> {
 
   void setLoading() {
     setState(() {
-      type = type == ZetaBarType.buffering ? ZetaBarType.standard : ZetaBarType.buffering;
+      type = type == ZetaProgressBarType.buffering
+          ? ZetaProgressBarType.standard
+          : ZetaProgressBarType.buffering;
     });
   }
 
@@ -147,8 +136,9 @@ class _WrapperState extends State<Wrapper> {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            widget.type != ZetaBarType.indeterminate
-                ? FilledButton(onPressed: increasePercentage, child: Text("Increase"))
+            widget.type != ZetaProgressBarType.indeterminate
+                ? FilledButton(
+                    onPressed: increasePercentage, child: Text("Increase"))
                 : Container(),
             const SizedBox(width: 40),
             widget.stateChangeable!

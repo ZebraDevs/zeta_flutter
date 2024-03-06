@@ -1,42 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:path_drawing/path_drawing.dart';
-import 'package:widgetbook/widgetbook.dart';
 
 import 'package:zeta_flutter/zeta_flutter.dart';
 
-WidgetbookComponent spacingWidgetBook() {
-  return WidgetbookComponent(
-    name: 'Spacing',
-    useCases: [
-      WidgetbookUseCase(
-        name: 'Named spaces',
-        builder: (context) => SingleChildScrollView(
-          child: Row(
-            children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: namedSpacings.entries.map((obj) => _SpacingDemo(obj)).toList(),
-              )
-            ],
+Widget spacingUseCase(BuildContext context) => SingleChildScrollView(
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: valueSpacings.entries.map((obj) => _SpacingDemo(obj)).toList(),
           ),
-        ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: namedSpacings.entries.map((obj) => _SpacingDemo(obj)).toList(),
+          )
+        ],
       ),
-      WidgetbookUseCase(
-        name: 'Value spaces',
-        builder: (context) => SingleChildScrollView(
-          child: Row(
-            children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: valueSpacings.entries.map((obj) => _SpacingDemo(obj)).toList(),
-              )
-            ],
-          ),
-        ),
-      ),
-    ],
-  );
-}
+    );
 
 Map<String, double> namedSpacings = {
   'xxs': ZetaSpacing.xxs,
