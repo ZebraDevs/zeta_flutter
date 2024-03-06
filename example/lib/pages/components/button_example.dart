@@ -107,7 +107,7 @@ class _ButtonExampleState extends State<ButtonExample> {
                   Column(children: inputButtons(ZetaWidgetBorder.rounded)),
                   Text('Sharp Buttons', style: ZetaTextStyles.displayMedium),
                   Column(children: inputButtons(ZetaWidgetBorder.sharp)),
-                  Text('Icon Buttons', style: ZetaTextStyles.displayLarge),
+                  Text('Group Buttons', style: ZetaTextStyles.displayLarge),
                   Column(
                     children: groupButtons(ZetaWidgetBorder.rounded),
                   ),
