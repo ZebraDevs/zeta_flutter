@@ -25,12 +25,8 @@ Widget progressBarUseCase(BuildContext context) => WidgetbookTestWidget(
     );
 
 Widget progressCircleUseCase(BuildContext context) =>
-    WidgetbookTestWidget(widget: LayoutBuilder(builder: (context, constraints) {
-      return SizedBox(
-        width: constraints.maxWidth - ZetaSpacing.xl,
-        height: constraints.maxHeight,
-        child: Center(
-          child: ZetaProgressCircle(
+    WidgetbookTestWidget(widget: 
+           ZetaProgressCircle(
             progress: context.knobs.double
                 .slider(label: 'Progress', min: 0, max: 1, initialValue: 0.5)
                 .toDouble(),
@@ -41,6 +37,4 @@ Widget progressCircleUseCase(BuildContext context) =>
                 options: ZetaCircleSizes.values,
                 labelBuilder: (value) => value.name),
           ),
-        ),
-      );
-    }));
+    );

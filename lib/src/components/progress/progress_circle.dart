@@ -36,7 +36,7 @@ class ZetaProgressCircle extends ZetaProgress {
   ///Size of [ZetaProgressCircle]
   final ZetaCircleSizes size;
 
-  /// Border Type for [ZetaWidgetBorder]
+ ///{@macro zeta-component-rounded}
   final bool rounded;
 
   @override
@@ -56,17 +56,21 @@ class ZetaProgressCircle extends ZetaProgress {
 class ZetaProgressCircleState extends ZetaProgressState<ZetaProgressCircle> {
   @override
   Widget build(BuildContext context) {
-    return AnimatedBuilder(
-      animation: controller,
-      builder: (context, child) {
-        return CustomPaint(
-          size: _getSize(),
-          painter: CirclePainter(
-            progress: animation.value,
-            rounded: widget.rounded,
-          ),
-        );
-      },
+    return ConstrainedBox(
+      constraints: BoxConstraints.tight(_getSize()),
+      child: AnimatedBuilder(
+        animation: controller,
+        builder: (context, child) {
+          return CustomPaint(
+            size: _getSize(),
+            painter: CirclePainter(
+              progress: animation.value,
+              rounded: widget.rounded,
+              colors: Zeta.of(context).colors
+            ),
+          );
+        },
+      ),
     );
   }
 
@@ -98,7 +102,7 @@ class ZetaProgressCircleState extends ZetaProgressState<ZetaProgressCircle> {
 ///Class definition for [CirclePainter]
 class CirclePainter extends CustomPainter {
   ///Constructor for [CirclePainter]
-  CirclePainter({this.progress = 0, this.rounded = true});
+  CirclePainter({this.progress = 0, this.rounded = true,required this.colors});
 
   ///Percentage of progress in decimal value, defaults to 0
   final double progress;
@@ -106,14 +110,18 @@ class CirclePainter extends CustomPainter {
   ///Is circle rounded, defaults to true
   final bool rounded;
 
+  /// ZetaColors
+  final ZetaColors colors;
+
   final _paint = Paint()
-    ..color = Colors.blue
     ..strokeWidth = 4
     ..style = PaintingStyle.stroke;
 
   @override
   void paint(Canvas canvas, Size size) {
     if (rounded) _paint.strokeCap = StrokeCap.round;
+    _paint.color = colors.primary;
+
 
     const double fullCircle = 2 * math.pi;
 
