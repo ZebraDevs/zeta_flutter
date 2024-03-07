@@ -6,11 +6,12 @@ import '../../../zeta_flutter.dart';
 /// Zeta Button Group
 class ZetaButtonGroup extends StatelessWidget {
   /// Constructs [ZetaButtonGroup] from a list of [GroupButton]s
-  const ZetaButtonGroup(
-      {super.key,
-      required this.buttons,
-      required this.rounded,
-      required this.isLarge,});
+  const ZetaButtonGroup({
+    super.key,
+    required this.buttons,
+    required this.rounded,
+    required this.isLarge,
+  });
 
   /// Determines size of [GroupButton]
   final bool isLarge;
@@ -43,12 +44,13 @@ class ZetaButtonGroup extends StatelessWidget {
 
     return buttons;
   }
+
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-    ..add(DiagnosticsProperty<bool>('isLarge', isLarge))
-    ..add(DiagnosticsProperty<bool>('rounded', rounded));
+      ..add(DiagnosticsProperty<bool>('isLarge', isLarge))
+      ..add(DiagnosticsProperty<bool>('rounded', rounded));
   }
 }
 
@@ -135,23 +137,19 @@ class _GroupButtonState extends State<GroupButton> {
   }
 
   void onPressed() {
-    if(widget.onPressed != null){
-      widget.onPressed?.call();
+    widget.onPressed?.call();
     setState(() {
       selected = !selected;
     });
-    }
   }
 
   @override
   Widget build(BuildContext context) {
     final colors = Zeta.of(context).colors;
 
-    final borderType =
-        widget._rounded ? ZetaWidgetBorder.rounded : ZetaWidgetBorder.sharp;
+    final borderType = widget._rounded ? ZetaWidgetBorder.rounded : ZetaWidgetBorder.sharp;
 
-    final BorderSide borderSide =
-        _getBorderSide(controller.value, colors, false);
+    final BorderSide borderSide = _getBorderSide(controller.value, colors, false);
 
     return Container(
       decoration: BoxDecoration(
@@ -174,8 +172,7 @@ class _GroupButtonState extends State<GroupButton> {
             children: [
               if (widget.icon != null) Icon(widget.icon),
               Text(widget.label!),
-              if (widget.onPressed != null)
-                const Icon(ZetaIcons.expand_more_round),
+              if (widget.onPressed != null) const Icon(ZetaIcons.expand_more_round),
             ],
           ).paddingAll(_padding),
         ),
@@ -190,7 +187,7 @@ class _GroupButtonState extends State<GroupButton> {
     ZetaColors colors,
     bool finalButton,
   ) {
-    if(selected) return BorderSide(color: colors.black);
+    if (selected) return BorderSide(color: colors.black);
     if (states.contains(MaterialState.disabled)) {
       return BorderSide(color: colors.cool.shade40);
     }
@@ -223,11 +220,10 @@ class _GroupButtonState extends State<GroupButton> {
       shape: MaterialStateProperty.all(
         RoundedRectangleBorder(
           borderRadius: _getRadius(borderType),
-
         ),
       ),
       backgroundColor: MaterialStateProperty.resolveWith<Color?>((states) {
-        if (selected) return colors.black;
+        if (selected) return colors.cool.shade100;
 
         if (states.contains(MaterialState.disabled)) {
           return colors.surfaceDisabled;
@@ -238,13 +234,13 @@ class _GroupButtonState extends State<GroupButton> {
         if (states.contains(MaterialState.hovered)) {
           return colors.cool.shade20;
         }
-        return colors.white;
+        return colors.surfacePrimary;
       }),
       foregroundColor: MaterialStateProperty.resolveWith<Color?>((states) {
         if (states.contains(MaterialState.disabled)) {
           return colors.textDisabled;
         }
-        if (selected) return colors.black.onColor;
+        if (selected) return colors.cool.shade100.onColor;
         return colors.textDefault;
       }),
       elevation: const MaterialStatePropertyAll(0),

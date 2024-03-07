@@ -62,7 +62,7 @@ class ZetaInPageBanner extends StatelessWidget {
             Padding(
               padding: const EdgeInsetsDirectional.only(top: ZetaSpacing.x3, start: ZetaSpacing.x2_5),
               child: Icon(
-                status.icon(rounded: rounded),
+                customIcon ?? status.icon(rounded: rounded),
                 size: ZetaSpacing.x5,
                 color: status == ZetaWidgetStatus.neutral ? theme.colors.textDefault : colors.icon,
               ),

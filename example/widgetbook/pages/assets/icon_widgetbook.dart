@@ -46,7 +46,7 @@ Widget iconsUseCase(BuildContext context) {
                       },
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: [Icon(e.value, size: 40), Text(nameArr, textAlign: TextAlign.center)],
+                        children: [Icon(e.value, size: ZetaSpacing.x10), Text(nameArr, textAlign: TextAlign.center)],
                       ),
                     ),
                   );

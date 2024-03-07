@@ -57,13 +57,14 @@ class HotReload extends StatelessWidget {
                 WidgetbookUseCase(name: 'Icon Button', builder: (context) => iconButtonUseCase(context)),
                 WidgetbookUseCase(
                     name: 'Floating Action Button', builder: (context) => floatingActionButtonUseCase(context)),
+                WidgetbookUseCase(name: 'Group Button', builder: (context) => buttonGroupUseCase(context)),
               ],
             ),
             WidgetbookUseCase(name: 'Banners', builder: (context) => bannerUseCase(context)),
             WidgetbookUseCase(name: 'In Page Banners', builder: (context) => inPageBannerUseCase(context)),
             WidgetbookUseCase(name: 'Accordion', builder: (context) => accordionUseCase(context)),
             WidgetbookComponent(
-              name: 'Badge',
+              name: 'Chips',
               useCases: [
                 WidgetbookUseCase(name: 'Filter Chip', builder: (context) => filterChipUseCase(context)),
                 WidgetbookUseCase(name: 'Input Chip', builder: (context) => inputChipUseCase(context)),
@@ -71,20 +72,14 @@ class HotReload extends StatelessWidget {
               ],
             ),
             WidgetbookUseCase(name: 'Password Input', builder: (context) => passwordInputUseCase(context)),
-            WidgetbookComponent(
-              name: 'Bottom Sheet',
-              useCases: [
-                WidgetbookUseCase(name: 'Content', builder: (context) => bottomSheetContentUseCase(context)),
-                WidgetbookUseCase(name: 'Live', builder: (context) => bottomSheetLiveUseCase(context)),
-              ],
-            ),
+            WidgetbookUseCase(name: 'Bottom Sheet', builder: (context) => bottomSheetContentUseCase(context)),
             WidgetbookUseCase(name: 'Dial Pad', builder: (context) => dialPadUseCase(context)),
             WidgetbookUseCase(name: 'Navigation Bar', builder: (context) => navigationBarUseCase(context)),
             WidgetbookComponent(
               name: 'Progress',
               useCases: [
                 WidgetbookUseCase(name: 'Bar', builder: (context) => progressBarUseCase(context)),
-                WidgetbookUseCase(name : 'Circle', builder : (context) => progressCircleUseCase(context))
+                WidgetbookUseCase(name: 'Circle', builder: (context) => progressCircleUseCase(context))
               ],
             ),
           ]..sort((a, b) => a.name.compareTo(b.name)),

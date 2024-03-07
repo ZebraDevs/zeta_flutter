@@ -3,10 +3,11 @@ import 'package:widgetbook/widgetbook.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 import '../../test/test_components.dart';
+import '../../utils/utils.dart';
 
 Widget inPageBannerUseCase(BuildContext context) => WidgetbookTestWidget(
       widget: Padding(
-        padding: EdgeInsets.all(20),
+        padding: EdgeInsets.all(ZetaSpacing.x5),
         child: ZetaInPageBanner(
           content: Text(
             context.knobs.string(
@@ -17,11 +18,11 @@ Widget inPageBannerUseCase(BuildContext context) => WidgetbookTestWidget(
           status: context.knobs.list(
             label: 'Severity',
             options: ZetaWidgetStatus.values,
-            labelBuilder: (value) => value.name.split('.').last.capitalize(),
+            labelBuilder: enumLabelBuilder,
           ),
           onClose: context.knobs.boolean(label: 'Show Close icon') ? () {} : null,
           title: context.knobs.string(label: 'Title', initialValue: 'Title'),
-          rounded: context.knobs.boolean(label: 'Rounded'),
+          rounded: roundedKnob(context),
           actions: () {
             final x = context.knobs.list(label: 'Show Buttons', options: [0, 1, 2]);
 
@@ -35,22 +36,7 @@ Widget inPageBannerUseCase(BuildContext context) => WidgetbookTestWidget(
             }
             return <ZetaButton>[];
           }(),
-          customIcon: context.knobs.list(
-            label: 'Icon',
-            options: [
-              ZetaIcons.star_half_round,
-              ZetaIcons.add_alert_round,
-              ZetaIcons.add_box_round,
-              ZetaIcons.barcode_round,
-            ],
-            labelBuilder: (value) {
-              if (value == ZetaIcons.star_half_round) return 'ZetaIcons.star_half_round';
-              if (value == ZetaIcons.add_alert_round) return 'ZetaIcons.add_alert_round';
-              if (value == ZetaIcons.add_box_round) return 'ZetaIcons.add_box_round';
-              if (value == ZetaIcons.barcode_round) return 'ZetaIcons.barcode_round';
-              return '';
-            },
-          ),
+          customIcon: iconKnob(context, nullable: true),
         ),
       ),
     );

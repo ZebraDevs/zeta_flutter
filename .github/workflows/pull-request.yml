@@ -59,9 +59,6 @@ jobs:
         id: branch-name
         uses: tj-actions/branch-names@v7.0.7
       - uses: subosito/flutter-action@v2
-        with:
-          flutter-version: "3.19.x"
-          channel: "stable"
       - name: Setup flutter
         run: flutter pub get
       - name: Lint and format

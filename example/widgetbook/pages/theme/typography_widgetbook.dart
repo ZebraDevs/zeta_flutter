@@ -23,17 +23,20 @@ const Map<String, TextStyle> allTypes = {
   'Label tiny': ZetaTextStyles.labelTiny,
 };
 
-Widget typographyUseCase(BuildContext context) => Text(
-      context.knobs.string(label: 'Text', initialValue: 'The quick brown fox jumps over the lazy dog.'),
-      style: context.knobs
-          .list(
-            label: 'Sizes',
-            labelBuilder: (p0) => allTypes.entries.firstWhere((element) => element.value == p0).key,
-            options: allTypes.values.toList(),
-          )
-          .apply(
-            color: Zeta.of(context).colors.textDefault,
-            fontStyle: FontStyle.normal,
-            decoration: TextDecoration.none,
-          ),
+Widget typographyUseCase(BuildContext context) => Padding(
+      padding: const EdgeInsets.all(ZetaSpacing.m),
+      child: Text(
+        context.knobs.string(label: 'Text', initialValue: 'The quick brown fox jumps over the lazy dog.'),
+        style: context.knobs
+            .list(
+              label: 'Sizes',
+              labelBuilder: (p0) => allTypes.entries.firstWhere((element) => element.value == p0).key,
+              options: allTypes.values.toList(),
+            )
+            .apply(
+              color: Zeta.of(context).colors.textDefault,
+              fontStyle: FontStyle.normal,
+              decoration: TextDecoration.none,
+            ),
+      ),
     );

@@ -57,7 +57,7 @@ class ZetaIndicator extends StatelessWidget {
   final bool inverse;
 
   /// Indicator icon, default: `ZetaIcons.star_round`.
-  final Icon? icon;
+  final IconData? icon;
 
   /// Value for the type `notification`.
   final int? value;
@@ -66,7 +66,7 @@ class ZetaIndicator extends StatelessWidget {
   ZetaIndicator copyWith({
     ZetaIndicatorType? type,
     ZetaWidgetSize? size,
-    Icon? icon,
+    IconData? icon,
     int? value,
     bool? inverse,
   }) {
@@ -113,9 +113,10 @@ class ZetaIndicator extends StatelessWidget {
       case ZetaIndicatorType.icon:
         final iconSize = _getIconSize(size);
         return Center(
-          child: IconTheme(
-            data: IconThemeData(color: foregroundColor, size: iconSize),
-            child: icon ?? const Icon(ZetaIcons.star_round),
+          child: Icon(
+            icon ?? ZetaIcons.star_round,
+            color: foregroundColor,
+            size: iconSize,
           ),
         );
       case ZetaIndicatorType.notification:
@@ -159,7 +160,7 @@ class ZetaIndicator extends StatelessWidget {
       ..add(DiagnosticsProperty<ZetaIndicatorType>('type', type))
       ..add(DiagnosticsProperty<ZetaWidgetSize>('size', size))
       ..add(DiagnosticsProperty<int?>('value', value))
-      ..add(DiagnosticsProperty<Icon?>('icon', icon))
+      ..add(DiagnosticsProperty<IconData?>('icon', icon))
       ..add(DiagnosticsProperty<bool>('inverseBorder', inverse));
   }
 }

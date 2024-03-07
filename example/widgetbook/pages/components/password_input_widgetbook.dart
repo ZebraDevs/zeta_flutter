@@ -3,6 +3,7 @@ import 'package:widgetbook/widgetbook.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 import '../../test/test_components.dart';
+import '../../utils/utils.dart';
 
 Widget passwordInputUseCase(BuildContext context) => _Password();
 
@@ -21,6 +22,9 @@ class _PasswordState extends State<_Password> {
   Widget build(BuildContext _) {
     final enableValidation = context.knobs.boolean(label: 'Enable validation', initialValue: false);
     final validationString = context.knobs.string(label: 'Error label', initialValue: 'Incorrect');
+
+    final bool rounded = roundedKnob(context);
+
     return Form(
       key: _formKey,
       child: WidgetbookTestWidget(
@@ -29,31 +33,16 @@ class _PasswordState extends State<_Password> {
             ConstrainedBox(
               constraints: BoxConstraints(maxWidth: 328),
               child: ZetaPasswordInput(
-                rounded: context.knobs.boolean(label: 'Rounded'),
                 enabled: context.knobs.boolean(label: 'Enabled', initialValue: true),
                 obscureText: context.knobs.boolean(label: 'Obscure text', initialValue: true),
                 size: context.knobs.list(
                   label: 'Size',
                   options: ZetaWidgetSize.values,
-                  labelBuilder: (value) => value.name.split('.').last.capitalize(),
+                  labelBuilder: enumLabelBuilder,
                 ),
-                footerIcon: context.knobs.listOrNull(
-                  label: 'Icon',
-                  options: [
-                    ZetaIcons.star_half_round,
-                    ZetaIcons.add_alert_round,
-                    ZetaIcons.add_box_round,
-                    ZetaIcons.barcode_round,
-                  ],
-                  labelBuilder: (value) {
-                    if (value == ZetaIcons.star_half_round) return 'ZetaIcons.star_half_round';
-                    if (value == ZetaIcons.add_alert_round) return 'ZetaIcons.add_alert_round';
-                    if (value == ZetaIcons.add_box_round) return 'ZetaIcons.add_box_round';
-                    if (value == ZetaIcons.barcode_round) return 'ZetaIcons.barcode_round';
-                    return '';
-                  },
-                  initialOption: null,
-                ),
+                rounded: rounded,
+                footerIcon:
+                    iconKnob(context, initial: ZetaIcons.star_half_round, name: 'Footer icon', rounded: rounded),
                 footerText: context.knobs.string(label: 'Footer Text'),
                 hintText: context.knobs.string(label: 'Hint text'),
                 label: context.knobs.string(label: 'Label'),
