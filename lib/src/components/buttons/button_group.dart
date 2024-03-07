@@ -48,8 +48,7 @@ class ZetaButtonGroup extends StatelessWidget {
     super.debugFillProperties(properties);
     properties
     ..add(DiagnosticsProperty<bool>('isLarge', isLarge))
-    ..add(DiagnosticsProperty<bool>('rounded', rounded))
-    ;
+    ..add(DiagnosticsProperty<bool>('rounded', rounded));
   }
 }
 
@@ -61,13 +60,13 @@ class GroupButton extends StatefulWidget {
     super.key,
     this.label,
     this.icon,
-    this.onPress,
+    this.onPressed,
   });
 
   /// Constructs dropdown group button
   GroupButton.dropdown({
     super.key,
-    required this.onPress,
+    required this.onPressed,
     this.icon,
     this.label,
   });
@@ -76,7 +75,7 @@ class GroupButton extends StatefulWidget {
   GroupButton.icon({
     super.key,
     required this.icon,
-    this.onPress,
+    this.onPressed,
     this.label,
   });
 
@@ -87,7 +86,7 @@ class GroupButton extends StatefulWidget {
   final IconData? icon;
 
   /// Function for when [GroupButton] is clicked.
-  final VoidCallback? onPress;
+  final VoidCallback? onPressed;
 
   ///If [GroupButton] is large
   bool _isLarge = false;
@@ -110,9 +109,7 @@ class GroupButton extends StatefulWidget {
       key: key,
       label: label,
       icon: icon,
-      onPress: onPress,
-      // isFinal: isFinal ?? this.isFinal,
-      // isInitial: isInitial ?? this.isInitial,
+      onPressed: onPressed,
     );
   }
 
@@ -122,7 +119,7 @@ class GroupButton extends StatefulWidget {
     properties
       ..add(StringProperty('Label', label))
       ..add(DiagnosticsProperty<IconData?>('icon', icon))
-      ..add(ObjectFlagProperty<VoidCallback?>.has('onPress', onPress));
+      ..add(ObjectFlagProperty<VoidCallback?>.has('onPressed', onPressed));
   }
 }
 
@@ -137,11 +134,13 @@ class _GroupButtonState extends State<GroupButton> {
     controller = MaterialStatesController();
   }
 
-  void onPress() {
-    widget.onPress!();
+  void onPressed() {
+    if(widget.onPressed != null){
+      widget.onPressed?.call();
     setState(() {
       selected = !selected;
     });
+    }
   }
 
   @override
@@ -167,7 +166,7 @@ class _GroupButtonState extends State<GroupButton> {
       padding: EdgeInsets.zero,
       child: FilledButton(
         statesController: controller,
-        onPressed: onPress,
+        onPressed: onPressed,
         style: getStyle(borderType, colors),
         child: SelectionContainer.disabled(
           child: Row(
@@ -175,7 +174,7 @@ class _GroupButtonState extends State<GroupButton> {
             children: [
               if (widget.icon != null) Icon(widget.icon),
               Text(widget.label!),
-              if (widget.onPress != null)
+              if (widget.onPressed != null)
                 const Icon(ZetaIcons.expand_more_round),
             ],
           ).paddingAll(_padding),
@@ -191,6 +190,7 @@ class _GroupButtonState extends State<GroupButton> {
     ZetaColors colors,
     bool finalButton,
   ) {
+    if(selected) return BorderSide(color: colors.black);
     if (states.contains(MaterialState.disabled)) {
       return BorderSide(color: colors.cool.shade40);
     }
@@ -219,13 +219,11 @@ class _GroupButtonState extends State<GroupButton> {
   }
 
   ButtonStyle getStyle(ZetaWidgetBorder borderType, ZetaColors colors) {
-    final ZetaColorSwatch color =
-        selected ? colors.cool : ZetaColorSwatch.fromColor(colors.black);
-
     return ButtonStyle(
       shape: MaterialStateProperty.all(
         RoundedRectangleBorder(
-          borderRadius: borderType.radius,
+          borderRadius: _getRadius(borderType),
+
         ),
       ),
       backgroundColor: MaterialStateProperty.resolveWith<Color?>((states) {
@@ -246,7 +244,7 @@ class _GroupButtonState extends State<GroupButton> {
         if (states.contains(MaterialState.disabled)) {
           return colors.textDisabled;
         }
-        if (selected) return color.onColor;
+        if (selected) return colors.black.onColor;
         return colors.textDefault;
       }),
       elevation: const MaterialStatePropertyAll(0),

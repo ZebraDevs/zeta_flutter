@@ -55,7 +55,64 @@ Widget iconButtonUseCase(BuildContext context) => WidgetbookTestWidget(
       ),
     );
 
-Widget floatingActionButtonUseCase(BuildContext context) => WidgetbookTestWidget(
+Widget buttonGroupUseCase(BuildContext context) => WidgetbookTestWidget(
+        widget: ZetaButtonGroup(
+      isLarge: context.knobs.boolean(label: 'isLarge'),
+      rounded: context.knobs.boolean(label: 'rounded'),
+      buttons: [
+        GroupButton(
+          label: context.knobs.string(label: 'button1Title'),
+          onPressed:
+              context.knobs.boolean(label: 'button1Dropdown') ? () {} : null,
+          icon: context.knobs.listOrNull(
+            label: 'button1Icon',
+            options: [
+              ZetaIcons.star_round,
+            ],
+            labelBuilder: (value) {
+              if (value == ZetaIcons.star_half_round)
+                return 'ZetaIcons.star_half_round';
+              return '';
+            },
+          ),
+        ),
+        GroupButton(
+          label: context.knobs.string(label: 'button2Title'),
+          onPressed:
+              context.knobs.boolean(label: 'button2Dropdown') ? () {} : null,
+          icon: context.knobs.listOrNull(
+            label: 'button2Icon',
+            options: [
+              ZetaIcons.star_round,
+            ],
+            labelBuilder: (value) {
+              if (value == ZetaIcons.star_half_round)
+                return 'ZetaIcons.star_half_round';
+              return '';
+            },
+          ),
+        ),
+        GroupButton(
+          label: context.knobs.string(label: 'button3Title'),
+          onPressed:
+              context.knobs.boolean(label: 'button3Dropdown') ? () {} : null,
+          icon: context.knobs.listOrNull(
+            label: 'button3Icon',
+            options: [
+              ZetaIcons.star_round,
+            ],
+            labelBuilder: (value) {
+              if (value == ZetaIcons.star_half_round)
+                return 'ZetaIcons.star_half_round';
+              return '';
+            },
+          ),
+        )
+      ],
+    ));
+
+Widget floatingActionButtonUseCase(BuildContext context) =>
+    WidgetbookTestWidget(
       widget: Padding(padding: EdgeInsets.all(20), child: FabWidget(context)),
     );
 

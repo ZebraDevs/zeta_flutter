@@ -148,9 +148,7 @@ class _ZetaProgressBarState extends ZetaProgressState<ZetaProgressBar> {
           width: _weight,
           height: _weight,
           decoration: BoxDecoration(
-            color: colors.surfaceDisabled,
-            borderRadius: ZetaRadius.rounded,
-          ),
+              color: colors.surfaceDisabled, borderRadius: ZetaRadius.rounded,),
         ),
       ],
     );

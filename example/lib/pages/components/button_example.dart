@@ -107,10 +107,20 @@ class _ButtonExampleState extends State<ButtonExample> {
                   Column(children: inputButtons(ZetaWidgetBorder.rounded)),
                   Text('Sharp Buttons', style: ZetaTextStyles.displayMedium),
                   Column(children: inputButtons(ZetaWidgetBorder.sharp)),
-                  Text('Floating Action Buttons', style: ZetaTextStyles.displayMedium),
-                  Text('Tap buttons to change current FAB: ', style: ZetaTextStyles.bodyMedium),
-                  Wrap(children: fabs.divide(SizedBox.square(dimension: 10)).toList()),
-                ].divide(const SizedBox.square(dimension: ZetaSpacing.m)).toList(),
+                  Text('Group Buttons', style: ZetaTextStyles.displayLarge),
+                  Column(
+                    children: groupButtons(ZetaWidgetBorder.rounded),
+                  ),
+                  Text('Floating Action Buttons',
+                      style: ZetaTextStyles.displayMedium),
+                  Text('Tap buttons to change current FAB: ',
+                      style: ZetaTextStyles.bodyMedium),
+                  Wrap(
+                      children:
+                          fabs.divide(SizedBox.square(dimension: 10)).toList()),
+                ]
+                    .divide(const SizedBox.square(dimension: ZetaSpacing.m))
+                    .toList(),
               ),
             ),
             Expanded(child: const SizedBox()),
@@ -164,5 +174,73 @@ class _ButtonExampleState extends State<ButtonExample> {
         ),
       ),
     ).reversed.divide(const SizedBox.square(dimension: ZetaSpacing.m)).toList();
+  }
+
+  List<Widget> groupButtons(ZetaWidgetBorder) {
+    return [
+      ZetaButtonGroup(
+         isLarge: true,
+          rounded: true,
+        buttons: [
+        GroupButton(
+          label: "Label",
+        ),
+        GroupButton(
+          label: "Label",
+        ),
+      ]),
+      ZetaButtonGroup(
+         isLarge: true,
+          rounded: true,
+        buttons: [
+        GroupButton(
+          label: "Label",
+        ),
+        GroupButton.dropdown(
+          onPressed: () {},
+          label: "Label",
+        ),
+      ]),
+      ZetaButtonGroup(
+         isLarge: true,
+            rounded: true,
+        buttons: [
+          GroupButton.icon(
+            icon: ZetaIcons.star_round,
+            label: "Label",
+          ),
+          GroupButton.dropdown(
+            onPressed: () {},
+            label: "Label",
+          ),
+          GroupButton.icon(
+           
+            icon: ZetaIcons.star_round,
+            label: "Label",
+          ),
+        ],
+      ),
+      ZetaButtonGroup(
+        isLarge: true,
+            rounded: true,
+        buttons: [
+          GroupButton.icon( 
+            icon: ZetaIcons.star_round,
+            label: "Label",
+            onPressed: () {},
+          ),
+          GroupButton.icon(    
+            icon: ZetaIcons.star_round,
+            label: "Label",
+            onPressed: () {},
+          ),
+          GroupButton.icon(
+            icon: ZetaIcons.star_round,
+            label: "Label",
+            onPressed: () {},
+          ),
+        ],
+      ),
+    ].divide(const SizedBox.square(dimension: ZetaSpacing.m)).toList();
   }
 }
