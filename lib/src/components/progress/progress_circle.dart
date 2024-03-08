@@ -36,7 +36,7 @@ class ZetaProgressCircle extends ZetaProgress {
   ///Size of [ZetaProgressCircle]
   final ZetaCircleSizes size;
 
- ///{@macro zeta-component-rounded}
+  ///{@macro zeta-component-rounded}
   final bool rounded;
 
   @override
@@ -102,7 +102,7 @@ class ZetaProgressCircleState extends ZetaProgressState<ZetaProgressCircle> {
 ///Class definition for [CirclePainter]
 class CirclePainter extends CustomPainter {
   ///Constructor for [CirclePainter]
-  CirclePainter({this.progress = 0, this.rounded = true,required this.colors});
+  CirclePainter({this.progress = 0, this.rounded = true, required this.colors});
 
   ///Percentage of progress in decimal value, defaults to 0
   final double progress;
@@ -121,7 +121,6 @@ class CirclePainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     if (rounded) _paint.strokeCap = StrokeCap.round;
     _paint.color = colors.primary;
-
 
     const double fullCircle = 2 * math.pi;
 

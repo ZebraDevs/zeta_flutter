@@ -41,11 +41,7 @@ class ProgressExampleState extends State<ProgressExample> {
               SizedBox(
                 height: 20,
               ),
-              Wrapper(
-                  stepsCompleted: 0,
-                  type: ZetaProgressBarType.standard,
-                  isThin: false,
-                  stateChangeable: true),
+              Wrapper(stepsCompleted: 0, type: ZetaProgressBarType.standard, isThin: false, stateChangeable: true),
               SizedBox(
                 height: 20,
               ),
@@ -118,9 +114,7 @@ class _WrapperState extends State<Wrapper> {
 
   void setLoading() {
     setState(() {
-      type = type == ZetaProgressBarType.buffering
-          ? ZetaProgressBarType.standard
-          : ZetaProgressBarType.buffering;
+      type = type == ZetaProgressBarType.buffering ? ZetaProgressBarType.standard : ZetaProgressBarType.buffering;
     });
   }
 
@@ -150,13 +144,11 @@ class _WrapperState extends State<Wrapper> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             widget.type != ZetaProgressBarType.indeterminate
-                ? FilledButton(
-                    onPressed: increasePercentage, child: Text("Increase"))
+                ? FilledButton(onPressed: increasePercentage, child: Text("Increase"))
                 : Container(),
             const SizedBox(width: 40),
             widget.stateChangeable!
-                ? FilledButton(
-                    onPressed: setLoading, child: Text("Start Buffering"))
+                ? FilledButton(onPressed: setLoading, child: Text("Start Buffering"))
                 : SizedBox.shrink()
           ],
         )
