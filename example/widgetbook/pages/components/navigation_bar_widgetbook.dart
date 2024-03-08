@@ -4,11 +4,12 @@ import 'package:widgetbook/widgetbook.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 import '../../test/test_components.dart';
+import '../../utils/utils.dart';
 
 Widget navigationBarUseCase(BuildContext context) {
   List<ZetaNavigationBarItem> items = List.generate(
     context.knobs.int.slider(label: 'Items', min: 2, max: 6, initialValue: 2),
-    (index) => ZetaNavigationBarItem(icon: ZetaIcons.star_round, label: 'Label $index'),
+    (index) => ZetaNavigationBarItem(icon: iconKnob(context)!, label: 'Label $index'),
   );
   int currIndex = 0;
   bool showButton = context.knobs.boolean(label: 'Button');

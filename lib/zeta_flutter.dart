@@ -37,4 +37,5 @@ export 'src/theme/tokens.dart';
 export 'src/theme/typography.dart';
 export 'src/utils/enums.dart';
 export 'src/utils/extensions.dart';
+export 'src/utils/utils.dart';
 export 'src/zeta.dart';

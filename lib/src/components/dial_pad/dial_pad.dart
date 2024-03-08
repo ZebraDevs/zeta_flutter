@@ -3,32 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
 import '../../../zeta_flutter.dart';
-import '../../utils/utils.dart';
-
-const Map<String, String> _defaultButtonValues = {
-  '1': '',
-  '2': 'ABC',
-  '3': 'DEF',
-  '4': 'GHI',
-  '5': 'JKL',
-  '6': 'MNO',
-  '7': 'PQRS',
-  '8': 'TUV',
-  '9': 'WXYZ',
-  '*': '',
-  '0': '+',
-  '#': '',
-};
-
-const int _defaultButtonsPerRow = 3;
 
 /// Dial pad gives the user the ability to dial a number and start a call. It also has a quick dial security action and a delete entry action.
 class ZetaDialPad extends StatefulWidget {
   /// Constructs a [ZetaDialPad].
   const ZetaDialPad({
     super.key,
-    this.buttonsPerRow = _defaultButtonsPerRow,
-    this.buttonValues = _defaultButtonValues,
+    this.buttonsPerRow = ZetaDialPad.defaultButtonsPerRow,
+    this.buttonValues = ZetaDialPad.defaultButtonValues,
     this.onNumber,
     this.onText,
   });
@@ -39,15 +21,38 @@ class ZetaDialPad extends StatefulWidget {
   /// Callback when number is tapped. Returns the small value from the button after a small delay, i,e, a,b,c etc.
   final ValueChanged<String>? onText;
 
-  /// Number of buttons to show on each row. Defaults to 3.
+  /// Number of buttons to show on each row. Defaults to 3 [defaultButtonsPerRow].
   final int? buttonsPerRow;
 
   /// Map of values to show on the buttons.
   ///
-  /// Key is the large character, i.e. 1, 2, 3.
+  /// * Key is large value, typically a single digit or special character.
+  /// * Value is the smaller value, typically 3/4 alphabetical characters.
   ///
-  /// Value is the smaller character(s): i.e. 'ABC'
+  /// Defaults ot [defaultButtonValues].
   final Map<String, String>? buttonValues;
+
+  /// Default button values (english) for [ZetaDialPad].
+  ///
+  /// * Key is large value, typically a single digit or special character.
+  /// * Value is the smaller value, typically 3/4 alphabetical characters.
+  static const Map<String, String> defaultButtonValues = {
+    '1': '',
+    '2': 'ABC',
+    '3': 'DEF',
+    '4': 'GHI',
+    '5': 'JKL',
+    '6': 'MNO',
+    '7': 'PQRS',
+    '8': 'TUV',
+    '9': 'WXYZ',
+    '*': '',
+    '0': '+',
+    '#': '',
+  };
+
+  /// Default number of buttons per row for [ZetaDialPad].
+  static const int defaultButtonsPerRow = 3;
 
   @override
   State<ZetaDialPad> createState() => _ZetaDialPadState();
@@ -64,9 +69,9 @@ class ZetaDialPad extends StatefulWidget {
 }
 
 class _ZetaDialPadState extends State<ZetaDialPad> {
-  int get _buttonsPerRow => widget.buttonsPerRow ?? _defaultButtonsPerRow;
+  int get _buttonsPerRow => widget.buttonsPerRow ?? ZetaDialPad.defaultButtonsPerRow;
 
-  Map<String, String> get _buttonValues => widget.buttonValues ?? _defaultButtonValues;
+  Map<String, String> get _buttonValues => widget.buttonValues ?? ZetaDialPad.defaultButtonValues;
 
   String? _lastTapped;
   int _tapCounter = 0;
@@ -114,6 +119,7 @@ class _ZetaDialPadState extends State<ZetaDialPad> {
           shrinkWrap: true,
           semanticChildCount: _buttonValues.length,
           mainAxisSpacing: ZetaSpacing.x6,
+          physics: const NeverScrollableScrollPhysics(),
           crossAxisSpacing: ZetaSpacing.x9,
           children: _buttonValues.entries
               .map(

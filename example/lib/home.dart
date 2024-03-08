@@ -14,6 +14,9 @@ import 'package:zeta_example/pages/theme/color_example.dart';
 import 'package:zeta_example/pages/components/password_input_example.dart';
 import 'package:zeta_example/pages/components/progress_example.dart';
 import 'package:zeta_example/pages/assets/icons_example.dart';
+import 'package:zeta_example/pages/theme/radius_example.dart';
+import 'package:zeta_example/pages/theme/spacing_example.dart';
+import 'package:zeta_example/pages/theme/typography_example.dart';
 import 'package:zeta_example/widgets.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
@@ -41,6 +44,9 @@ final List<Component> components = [
 
 final List<Component> theme = [
   Component(ColorExample.name, (context) => const ColorExample()),
+  Component(TypographyExample.name, (context) => const TypographyExample()),
+  Component(RadiusExample.name, (context) => const RadiusExample()),
+  Component(SpacingExample.name, (context) => const SpacingExample()),
 ];
 final List<Component> assets = [
   Component(IconsExample.name, (context) => const IconsExample()),
@@ -77,7 +83,7 @@ final GoRouter router = GoRouter(
                     ))
                 .toList(),
           ),
-        )
+        ),
       ],
     ),
   ],

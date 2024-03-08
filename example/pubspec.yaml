@@ -12,7 +12,6 @@ dependencies:
   flutter:
     sdk: flutter
   go_router: ^11.1.2
-  google_fonts: 6.1.0
   path_drawing: ^1.0.1
   shared_preferences: ^2.2.2
   zeta_flutter:

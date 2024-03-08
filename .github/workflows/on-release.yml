@@ -15,9 +15,6 @@ jobs:
       - uses: dart-lang/setup-dart@v1
       - name: Install Flutter
         uses: subosito/flutter-action@v2
-        with:
-          flutter-version: "3.16.x"
-          channel: "stable"
       - name: Install dependencies
         run: flutter pub get
       - name: Format code
