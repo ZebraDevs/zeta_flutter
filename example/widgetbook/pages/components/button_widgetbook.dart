@@ -55,25 +55,31 @@ Widget iconButtonUseCase(BuildContext context) {
 Widget buttonGroupUseCase(BuildContext context) {
   final bool rounded = roundedKnob(context);
 
+  final onPressed = context.knobs.boolean(label: 'Disabled', initialValue: false) ? null : () {};
+
   return WidgetbookTestWidget(
       widget: ZetaButtonGroup(
     isLarge: context.knobs.boolean(label: 'Large'),
     rounded: rounded,
+    isInverse: context.knobs.boolean(label: 'Inverse'),
     buttons: [
-      GroupButton(
+      ZetaGroupButton(
         label: context.knobs.string(label: 'Button 1 Title', initialValue: 'Button'),
-        onPressed: context.knobs.boolean(label: 'Button 1 Dropdown') ? () {} : null,
+        onPressed: onPressed,
         icon: iconKnob(context, name: 'Button 1 Icon', nullable: true, initial: null, rounded: rounded),
+        dropdown: context.knobs.boolean(label: 'Button 1 Dropdown') ? Container() : null,
       ),
-      GroupButton(
+      ZetaGroupButton(
         label: context.knobs.string(label: 'Button 2 Title'),
-        onPressed: context.knobs.boolean(label: 'Button 2 Dropdown', initialValue: true) ? () {} : null,
+        onPressed: onPressed,
         icon: iconKnob(context, name: 'Button 2 Icon', nullable: true, initial: null, rounded: rounded),
+        dropdown: context.knobs.boolean(label: 'Button 2 Dropdown') ? Container() : null,
       ),
-      GroupButton(
+      ZetaGroupButton(
         label: context.knobs.string(label: 'Button 3 Title'),
-        onPressed: context.knobs.boolean(label: 'Button 3 Dropdown') ? () {} : null,
+        onPressed: onPressed,
         icon: iconKnob(context, name: 'Button 3 Icon', nullable: true, initial: null, rounded: rounded),
+        dropdown: context.knobs.boolean(label: 'Button 3 Dropdown') ? Container() : null,
       )
     ],
   ));
