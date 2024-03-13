@@ -14,7 +14,7 @@ class ZetaBreadCrumbs extends StatefulWidget {
   });
 
   /// Breadcrumb children
-  final List<String> children;
+  final List<BreadCrumb> children;
 
   /// {@macro zeta-component-rounded}
   final bool rounded;
@@ -29,7 +29,7 @@ class ZetaBreadCrumbs extends StatefulWidget {
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(IterableProperty<String>('children', children))
+      ..add(IterableProperty<BreadCrumb>('children', children))
       ..add(DiagnosticsProperty<bool?>('rounded', rounded))
       ..add(DiagnosticsProperty<IconData?>('activeIcon', activeIcon));
   }
@@ -37,7 +37,7 @@ class ZetaBreadCrumbs extends StatefulWidget {
 
 class _ZetaBreadCrumbsState extends State<ZetaBreadCrumbs> {
   late int _selectedIndex;
-  late List<String> _children;
+  late List<BreadCrumb> _children;
 
   @override
   void initState() {
@@ -86,20 +86,21 @@ class _ZetaBreadCrumbsState extends State<ZetaBreadCrumbs> {
   }
 
   ///Creates breadcumb widget
-  BreadCrumb createBreadCrumb(String label, int index) {
+  BreadCrumb createBreadCrumb(BreadCrumb input, int index) {
     return BreadCrumb(
-      label: label,
+      label: input.label,
       isSelected: _selectedIndex == index,
       onPressed: () {
         setState(() {
           _selectedIndex = index;
         });
+        input.onPressed.call();
       },
       activeIcon: widget.activeIcon,
     );
   }
 
-  List<Widget> renderedChildren(List<String> children) {
+  List<Widget> renderedChildren(List<BreadCrumb> children) {
     final List<Widget> returnList = [];
     if (children.length > 3) {
       returnList.add(createBreadCrumb(children.first, 0));
@@ -134,7 +135,7 @@ class BreadCrumb extends StatelessWidget {
     super.key,
     required this.label,
     this.icon,
-    required this.isSelected,
+    this.isSelected = false,
     required this.onPressed,
     this.activeIcon,
   });

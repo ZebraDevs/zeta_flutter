@@ -18,9 +18,15 @@ class BreadCrumbExample extends StatefulWidget {
 }
 
 class _BreadCrumbExampleState extends State<BreadCrumbExample> {
-  List<String> _children = [
-    'Icon before with seperator',
+  List<BreadCrumb> _children = [
+    BreadCrumb(
+      label: 'Icon before with seperator',
+      onPressed: () {
+        print("Breadcrumb " + 0.toString() + "Clicked");
+      },
+    ),
   ];
+  int index = 1;
 
   @override
   Widget build(BuildContext _) {
@@ -58,7 +64,15 @@ class _BreadCrumbExampleState extends State<BreadCrumbExample> {
             FilledButton(
                 onPressed: () {
                   setState(() {
-                    _children.add('Icon before with seperator');
+                    _children.add(
+                      BreadCrumb(
+                        label: 'Icon before with seperator',
+                        onPressed: () {
+                          print("Breadcrumb clicked");
+                        },
+                      ),
+                    );
+                    index++;
                   });
                 },
                 child: Text("Add Breadcrumb"))
