@@ -91,7 +91,8 @@ class ZetaAvatar extends StatelessWidget {
   /// Notification Badge shown at top right corner of avatar.
   final ZetaIndicator? upperBadge;
 
-  bool get _showPlaceholder => image == null && (initials == null || initials!.isEmpty);
+  bool get _showPlaceholder =>
+      image == null && (initials == null || initials!.isEmpty);
 
   @override
   Widget build(BuildContext context) {
@@ -99,7 +100,8 @@ class ZetaAvatar extends StatelessWidget {
 
     final borderSize = size.borderSize;
     final sizePixels = size.pixelSize;
-    final contentSizePixels = size.pixelSize - (borderColor != null ? size.borderSize * 2 : 0);
+    final contentSizePixels =
+        size.pixelSize - (borderColor != null ? size.borderSize * 2 : 0);
 
     final innerContent = ClipRRect(
       borderRadius: BorderRadius.circular(64),
@@ -107,7 +109,8 @@ class ZetaAvatar extends StatelessWidget {
       child: image ??
           (_showPlaceholder
               ? Container(
-                  transform: Matrix4.translationValues(-contentSizePixels * 0.2, -contentSizePixels * 0.1, 0),
+                  transform: Matrix4.translationValues(
+                      -contentSizePixels * 0.2, -contentSizePixels * 0.1, 0),
                   child: IconTheme(
                     data: IconThemeData(
                       color: Zeta.of(context).colors.cool,
@@ -118,8 +121,11 @@ class ZetaAvatar extends StatelessWidget {
                 )
               : Center(
                   child: Text(
-                    size == ZetaAvatarSize.xs ? initials!.substring(0, 1) : initials!,
-                    style: TextStyle(fontSize: size.fontSize, letterSpacing: -0.5),
+                    size == ZetaAvatarSize.xs
+                        ? initials!.substring(0, 1)
+                        : initials!,
+                    style:
+                        TextStyle(fontSize: size.fontSize, letterSpacing: -0.5),
                   ),
                 )),
     );
@@ -127,24 +133,37 @@ class ZetaAvatar extends StatelessWidget {
     return Stack(
       children: [
         Container(
-          margin: EdgeInsets.all(upperBadge == null && lowerBadge == null ? 0 : 3),
+          margin: const EdgeInsets.all(3),
           width: sizePixels,
           height: sizePixels,
           decoration: BoxDecoration(
-            border: borderColor != null ? Border.all(color: borderColor!, width: borderSize / ZetaSpacing.x0_5) : null,
+            border: borderColor != null
+                ? Border.all(
+                    color: borderColor!, width: borderSize / ZetaSpacing.x0_5)
+                : null,
             borderRadius: ZetaRadius.full,
-            color: backgroundColor ?? (_showPlaceholder ? zetaColors.surfacePrimary : zetaColors.cool.shade20),
+            color: backgroundColor ??
+                (_showPlaceholder
+                    ? zetaColors.surfacePrimary
+                    : zetaColors.cool.shade20),
           ),
           child: borderColor != null
               ? Container(
                   width: contentSizePixels,
                   height: contentSizePixels,
                   decoration: BoxDecoration(
-                    color: _showPlaceholder ? backgroundColor ?? zetaColors.surfaceHovered : null,
-                    border: Border.all(color: zetaColors.surfacePrimary, width: borderSize / ZetaSpacing.x0_5),
+                    color: _showPlaceholder
+                        ? backgroundColor ?? zetaColors.surfaceHovered
+                        : null,
+                    border: Border.all(
+                        color: zetaColors.surfacePrimary,
+                        width: borderSize / ZetaSpacing.x0_5),
                     borderRadius: ZetaRadius.full,
                   ),
-                  child: ClipRRect(borderRadius: ZetaRadius.full, clipBehavior: Clip.hardEdge, child: innerContent),
+                  child: ClipRRect(
+                      borderRadius: ZetaRadius.full,
+                      clipBehavior: Clip.hardEdge,
+                      child: innerContent),
                 )
               : DecoratedBox(
                   decoration: BoxDecoration(
