@@ -3,6 +3,7 @@ import 'package:widgetbook/widgetbook.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 import '../../test/test_components.dart';
+import '../../utils/utils.dart';
 
 Widget breadCrumbsUseCase(BuildContext context) => WidgetbookTestWidget(
         widget: Center(
@@ -18,8 +19,8 @@ class BreadCrumbExample extends StatefulWidget {
 }
 
 class _BreadCrumbExampleState extends State<BreadCrumbExample> {
-  List<BreadCrumb> _children = [
-    BreadCrumb(
+  List<ZetaBreadCrumb> _children = [
+    ZetaBreadCrumb(
       label: 'Icon before with seperator',
       onPressed: () {
         print("Breadcrumb " + 0.toString() + "Clicked");
@@ -37,26 +38,7 @@ class _BreadCrumbExampleState extends State<BreadCrumbExample> {
             ZetaBreadCrumbs(
               children: _children,
               rounded: widget.c.knobs.boolean(label: 'Rounded'),
-              activeIcon: widget.c.knobs.list(
-                label: 'ActiveIcon',
-                options: [
-                  ZetaIcons.star_round,
-                  ZetaIcons.add_alert_round,
-                  ZetaIcons.add_box_round,
-                  ZetaIcons.barcode_round,
-                ],
-                labelBuilder: (value) {
-                  if (value == ZetaIcons.star_round)
-                    return 'ZetaIcons.star_round';
-                  if (value == ZetaIcons.add_alert_round)
-                    return 'ZetaIcons.add_alert_round';
-                  if (value == ZetaIcons.add_box_round)
-                    return 'ZetaIcons.add_box_round';
-                  if (value == ZetaIcons.barcode_round)
-                    return 'ZetaIcons.barcode_round';
-                  return '';
-                },
-              ),
+              activeIcon: iconKnob(context),
             ),
             SizedBox(
               height: 50,
@@ -65,7 +47,7 @@ class _BreadCrumbExampleState extends State<BreadCrumbExample> {
                 onPressed: () {
                   setState(() {
                     _children.add(
-                      BreadCrumb(
+                      ZetaBreadCrumb(
                         label: 'Icon before with seperator',
                         onPressed: () {
                           print("Breadcrumb clicked");

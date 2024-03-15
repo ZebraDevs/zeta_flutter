@@ -14,7 +14,7 @@ class ZetaBreadCrumbs extends StatefulWidget {
   });
 
   /// Breadcrumb children
-  final List<BreadCrumb> children;
+  final List<ZetaBreadCrumb> children;
 
   /// {@macro zeta-component-rounded}
   final bool rounded;
@@ -29,7 +29,7 @@ class ZetaBreadCrumbs extends StatefulWidget {
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(IterableProperty<BreadCrumb>('children', children))
+      ..add(IterableProperty<ZetaBreadCrumb>('children', children))
       ..add(DiagnosticsProperty<bool?>('rounded', rounded))
       ..add(DiagnosticsProperty<IconData?>('activeIcon', activeIcon));
   }
@@ -37,7 +37,7 @@ class ZetaBreadCrumbs extends StatefulWidget {
 
 class _ZetaBreadCrumbsState extends State<ZetaBreadCrumbs> {
   late int _selectedIndex;
-  late List<BreadCrumb> _children;
+  late List<ZetaBreadCrumb> _children;
 
   @override
   void initState() {
@@ -46,7 +46,6 @@ class _ZetaBreadCrumbsState extends State<ZetaBreadCrumbs> {
     _children = [...widget.children];
   }
 
-  // TODO: Optimize so we don't call set state each time. OldWidget stays the same as current widget
   @override
   void didUpdateWidget(ZetaBreadCrumbs oldWidget) {
     if (widget.children.length != _children.length) {
@@ -86,8 +85,8 @@ class _ZetaBreadCrumbsState extends State<ZetaBreadCrumbs> {
   }
 
   ///Creates breadcumb widget
-  BreadCrumb createBreadCrumb(BreadCrumb input, int index) {
-    return BreadCrumb(
+  ZetaBreadCrumb createBreadCrumb(ZetaBreadCrumb input, int index) {
+    return ZetaBreadCrumb(
       label: input.label,
       isSelected: _selectedIndex == index,
       onPressed: () {
@@ -100,7 +99,7 @@ class _ZetaBreadCrumbsState extends State<ZetaBreadCrumbs> {
     );
   }
 
-  List<Widget> renderedChildren(List<BreadCrumb> children) {
+  List<Widget> renderedChildren(List<ZetaBreadCrumb> children) {
     final List<Widget> returnList = [];
     if (children.length > 3) {
       returnList.add(createBreadCrumb(children.first, 0));
@@ -128,10 +127,10 @@ class _ZetaBreadCrumbsState extends State<ZetaBreadCrumbs> {
   }
 }
 
-/// Class for untruncated [BreadCrumb].
-class BreadCrumb extends StatelessWidget {
-  ///Constructor for [BreadCrumb]
-  const BreadCrumb({
+/// Class for untruncated [ZetaBreadCrumb].
+class ZetaBreadCrumb extends StatefulWidget {
+  ///Constructor for [ZetaBreadCrumb]
+  const ZetaBreadCrumb({
     super.key,
     required this.label,
     this.icon,
@@ -140,30 +139,57 @@ class BreadCrumb extends StatelessWidget {
     this.activeIcon,
   });
 
-  /// [BreadCrumb] label.
+  /// [ZetaBreadCrumb] label.
   final String label;
 
   /// Selected icon.
   final IconData? icon;
 
-  /// Is [BreadCrumb] selected.
+  /// Is [ZetaBreadCrumb] selected.
   final bool isSelected;
 
-  /// Handles press for [BreadCrumb]
+  /// Handles press for [ZetaBreadCrumb]
   final VoidCallback onPressed;
 
-  /// Active icon for [BreadCrumb]
+  /// Active icon for [ZetaBreadCrumb]
   final IconData? activeIcon;
 
   @override
+  State<ZetaBreadCrumb> createState() => _ZetaBreadCrumbState();
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(ObjectFlagProperty<VoidCallback>.has('onPressed', onPressed))
+      ..add(StringProperty('label', label))
+      ..add(DiagnosticsProperty<IconData?>('icon', icon))
+      ..add(DiagnosticsProperty<bool>('isSelected', isSelected))
+      ..add(DiagnosticsProperty<IconData?>('activeIcon', activeIcon));
+  }
+}
+
+class _ZetaBreadCrumbState extends State<ZetaBreadCrumb> {
+  final controller = MaterialStatesController();
+
+  @override
+  void initState() {
+    super.initState();
+    controller.addListener(() {
+      if (context.mounted && mounted) {
+        setState(() {});
+      }
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final controller = MaterialStatesController();
     final colors = Zeta.of(context).colors;
     return Material(
       color: Colors.transparent,
       child: InkWell(
         statesController: controller,
-        onTap: onPressed,
+        onTap: widget.onPressed,
         enableFeedback: false,
         splashColor: Colors.transparent,
         overlayColor: MaterialStateProperty.resolveWith((states) {
@@ -171,16 +197,16 @@ class BreadCrumb extends StatelessWidget {
         }),
         child: Row(
           children: [
-            if (isSelected)
+            if (widget.isSelected)
               Icon(
-                activeIcon ?? ZetaIcons.star_round,
+                widget.activeIcon ?? ZetaIcons.star_round,
                 color: getColor(controller.value, colors),
               ),
             const SizedBox(
               width: ZetaSpacing.xs,
             ),
             Text(
-              label,
+              widget.label,
               style: TextStyle(color: getColor(controller.value, colors)),
             ),
           ],
@@ -192,21 +218,21 @@ class BreadCrumb extends StatelessWidget {
   /// Get color of breadcrumb based on state.
   Color getColor(Set<MaterialState> states, ZetaColors colors) {
     if (states.contains(MaterialState.hovered)) {
-      return colors.blue.shade100;
+      return colors.blue;
     }
-    if (isSelected) return colors.black;
+    if (widget.isSelected) return colors.black;
     return colors.textSubtle;
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties
-      ..add(ObjectFlagProperty<VoidCallback>.has('onPressed', onPressed))
-      ..add(StringProperty('label', label))
-      ..add(DiagnosticsProperty<IconData?>('icon', icon))
-      ..add(DiagnosticsProperty<bool>('isSelected', isSelected))
-      ..add(DiagnosticsProperty<IconData?>('activeIcon', activeIcon));
+    properties.add(
+      DiagnosticsProperty<MaterialStatesController>(
+        'controller',
+        controller,
+      ),
+    );
   }
 }
 
@@ -290,8 +316,10 @@ class _BreadCrumbsTruncatedState extends State<BreadCrumbsTruncated> {
               minimumSize: MaterialStateProperty.all(Size.zero),
               elevation: const MaterialStatePropertyAll(0),
             ),
-            child: const Icon(
-              ZetaIcons.more_horizontal_round,
+            child: Icon(
+              widget.rounded
+                  ? ZetaIcons.more_horizontal_round
+                  : ZetaIcons.more_horizontal_sharp,
               size: ZetaSpacing.x4,
             )
                 .paddingHorizontal(ZetaSpacing.xs)
