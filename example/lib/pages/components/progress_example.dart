@@ -51,12 +51,19 @@ class ProgressExampleState extends State<ProgressExample> {
                 isThin: false,
                 label: "UPLOADING ...",
               ),
+              SizedBox(
+                height: 40,
+              ),
               Wrapper(
                 stepsCompleted: 0,
                 circleSize: ZetaCircleSizes.xl,
                 rounded: false,
                 isCircle: true,
               ),
+              SizedBox(
+                height: 40,
+              ),
+              Row(mainAxisAlignment: MainAxisAlignment.center, children: [])
             ]),
           ),
         ),

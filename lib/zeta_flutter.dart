@@ -14,6 +14,7 @@ export 'src/components/banners/in_page_banner.dart';
 export 'src/components/banners/system_banner.dart';
 export 'src/components/bottom sheets/bottom_sheet.dart';
 export 'src/components/bottom sheets/menu_items.dart';
+export 'src/components/breadcrumbs/breadcrumbs.dart';
 export 'src/components/buttons/button.dart';
 export 'src/components/buttons/button_group.dart';
 export 'src/components/buttons/button_style.dart';
