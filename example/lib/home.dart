@@ -38,10 +38,8 @@ final List<Component> components = [
   Component(ButtonExample.name, (context) => const ButtonExample()),
   Component(CheckBoxExample.name, (context) => const CheckBoxExample()),
   Component(ChipExample.name, (context) => const ChipExample()),
-  Component(
-      NavigationBarExample.name, (context) => const NavigationBarExample()),
-  Component(
-      PasswordInputExample.name, (context) => const PasswordInputExample()),
+  Component(NavigationBarExample.name, (context) => const NavigationBarExample()),
+  Component(PasswordInputExample.name, (context) => const PasswordInputExample()),
   Component(ProgressExample.name, (context) => const ProgressExample()),
   Component(DialPadExample.name, (context) => const DialPadExample()),
 ];
@@ -108,27 +106,21 @@ class _HomeState extends State<Home> {
               title: Text('Widgets'),
               backgroundColor: Zeta.of(context).colors.warm.shade30,
               children: _components
-                  .map((item) => ListTile(
-                      title: Text(item.name),
-                      onTap: () => context.go('/${item.name}')))
+                  .map((item) => ListTile(title: Text(item.name), onTap: () => context.go('/${item.name}')))
                   .toList(),
             ),
             ExpansionTile(
               title: Text('Theme'),
               backgroundColor: Zeta.of(context).colors.warm.shade30,
               children: _theme
-                  .map((item) => ListTile(
-                      title: Text(item.name),
-                      onTap: () => context.go('/${item.name}')))
+                  .map((item) => ListTile(title: Text(item.name), onTap: () => context.go('/${item.name}')))
                   .toList(),
             ),
             ExpansionTile(
               title: Text('Assets'),
               backgroundColor: Zeta.of(context).colors.warm.shade30,
               children: _assets
-                  .map((item) => ListTile(
-                      title: Text(item.name),
-                      onTap: () => context.go('/${item.name}')))
+                  .map((item) => ListTile(title: Text(item.name), onTap: () => context.go('/${item.name}')))
                   .toList(),
             ),
           ],
