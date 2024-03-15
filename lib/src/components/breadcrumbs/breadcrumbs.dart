@@ -106,8 +106,7 @@ class _ZetaBreadCrumbsState extends State<ZetaBreadCrumbs> {
 
       final List<Widget> truncatedChildren = [];
 
-      for (final (index, element)
-          in children.sublist(1, children.length - 1).indexed) {
+      for (final (index, element) in children.sublist(1, children.length - 1).indexed) {
         truncatedChildren.add(createBreadCrumb(element, index + 1));
       }
       returnList
@@ -296,8 +295,7 @@ class _BreadCrumbsTruncatedState extends State<BreadCrumbsTruncated> {
               }),
               shape: MaterialStatePropertyAll(
                 RoundedRectangleBorder(
-                  borderRadius:
-                      (widget.rounded ? ZetaRadius.minimal : ZetaRadius.none),
+                  borderRadius: (widget.rounded ? ZetaRadius.minimal : ZetaRadius.none),
                 ),
               ),
               side: MaterialStateProperty.resolveWith((states) {
@@ -317,13 +315,9 @@ class _BreadCrumbsTruncatedState extends State<BreadCrumbsTruncated> {
               elevation: const MaterialStatePropertyAll(0),
             ),
             child: Icon(
-              widget.rounded
-                  ? ZetaIcons.more_horizontal_round
-                  : ZetaIcons.more_horizontal_sharp,
+              widget.rounded ? ZetaIcons.more_horizontal_round : ZetaIcons.more_horizontal_sharp,
               size: ZetaSpacing.x4,
-            )
-                .paddingHorizontal(ZetaSpacing.xs)
-                .paddingVertical(ZetaSpacing.xxs),
+            ).paddingHorizontal(ZetaSpacing.xs).paddingVertical(ZetaSpacing.xxs),
           );
   }
 
