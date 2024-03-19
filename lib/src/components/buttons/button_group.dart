@@ -67,7 +67,6 @@ class ZetaButtonGroup extends StatelessWidget {
 
 /// Group Button item
 class ZetaGroupButton extends StatefulWidget {
-
   /// Public Constructor for [ZetaGroupButton]
   const ZetaGroupButton({
     super.key,
@@ -80,6 +79,7 @@ class ZetaGroupButton extends StatefulWidget {
         isInverse = false,
         isLarge = true,
         rounded = true;
+
   /// Private constructor
   const ZetaGroupButton._({
     super.key,
