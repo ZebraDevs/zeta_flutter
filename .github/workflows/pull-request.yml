@@ -97,6 +97,4 @@ jobs:
         with:
           repoToken: "${{ secrets.GITHUB_TOKEN }}"
           firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_ZETA_DS }}"
-          expires: 7d
-          projectId: zeta-ds
           channelId: "pr-${{ github.event.number }}-${{ github.event.pull_request.head.ref }}"
