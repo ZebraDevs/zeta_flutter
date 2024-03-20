@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "zeta-ds"
+  },
+  "targets": {
+    "zeta-ds": {
+      "hosting": {
+        "flutter": [
+          "zeta-flutter-main"
+        ]
+      }
+    }
   }
 }
