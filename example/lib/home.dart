@@ -10,6 +10,7 @@ import 'package:zeta_example/pages/components/button_example.dart';
 import 'package:zeta_example/pages/components/checkbox_example.dart';
 import 'package:zeta_example/pages/components/chip_example.dart';
 import 'package:zeta_example/pages/components/dialpad_example.dart';
+import 'package:zeta_example/pages/components/list_item_example.dart';
 import 'package:zeta_example/pages/components/navigation_bar_example.dart';
 import 'package:zeta_example/pages/theme/color_example.dart';
 import 'package:zeta_example/pages/components/password_input_example.dart';
@@ -38,6 +39,7 @@ final List<Component> components = [
   Component(ButtonExample.name, (context) => const ButtonExample()),
   Component(CheckBoxExample.name, (context) => const CheckBoxExample()),
   Component(ChipExample.name, (context) => const ChipExample()),
+  Component(ListItemExample.name, (context) => const ListItemExample()),
   Component(NavigationBarExample.name, (context) => const NavigationBarExample()),
   Component(PasswordInputExample.name, (context) => const PasswordInputExample()),
   Component(ProgressExample.name, (context) => const ProgressExample()),

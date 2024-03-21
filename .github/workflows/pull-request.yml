@@ -87,9 +87,6 @@ jobs:
         with:
           ref: ${{ github.head_ref }}
       - uses: subosito/flutter-action@v2
-        with:
-          flutter-version: "3.19.x"
-          channel: "stable"
       - name: Setup flutter
         run: flutter pub get
       - name: Build example app
@@ -100,6 +97,4 @@ jobs:
         with:
           repoToken: "${{ secrets.GITHUB_TOKEN }}"
           firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_ZETA_DS }}"
-          expires: 7d
-          projectId: zeta-ds
           channelId: "pr-${{ github.event.number }}-${{ github.event.pull_request.head.ref }}"
