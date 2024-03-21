@@ -76,12 +76,8 @@ class HotReload extends StatelessWidget {
             ),
             WidgetbookUseCase(name: 'Password Input', builder: (context) => passwordInputUseCase(context)),
             WidgetbookUseCase(name: 'Content', builder: (context) => bottomSheetContentUseCase(context)),
-            WidgetbookUseCase(
-                name: 'Dial Pad',
-                builder: (context) => dialPadUseCase(context)),
-            WidgetbookUseCase(
-                name: 'List Item',
-                builder: (context) => listItemUseCase(context)),
+            WidgetbookUseCase(name: 'Dial Pad', builder: (context) => dialPadUseCase(context)),
+            WidgetbookUseCase(name: 'List Item', builder: (context) => listItemUseCase(context)),
             WidgetbookUseCase(name: 'Navigation Bar', builder: (context) => navigationBarUseCase(context)),
             WidgetbookComponent(
               name: 'Progress',
