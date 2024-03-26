@@ -13,6 +13,7 @@ import 'pages/components/button_widgetbook.dart';
 import 'pages/components/checkbox_widgetbook.dart';
 import 'pages/components/chip_widgetbook.dart';
 import 'pages/components/dial_pad_widgetbook.dart';
+import 'pages/components/dropdown_widgetbook.dart';
 import 'pages/components/in_page_banner_widgetbook.dart';
 import 'pages/components/list_item_widgetbook.dart';
 import 'pages/components/navigation_bar_widgetbook.dart';
@@ -64,6 +65,7 @@ class HotReload extends StatelessWidget {
             ),
             WidgetbookUseCase(name: 'BreadCrumbs', builder: (context) => breadCrumbsUseCase(context)),
             WidgetbookUseCase(name: 'Banners', builder: (context) => bannerUseCase(context)),
+            WidgetbookUseCase(name: "Dropdown", builder: (context) => dropdownUseCase(context)),
             WidgetbookUseCase(name: 'In Page Banners', builder: (context) => inPageBannerUseCase(context)),
             WidgetbookUseCase(name: 'Accordion', builder: (context) => accordionUseCase(context)),
             WidgetbookComponent(

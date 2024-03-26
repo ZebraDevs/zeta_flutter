@@ -184,32 +184,29 @@ class _ZetaBreadCrumbState extends State<ZetaBreadCrumb> {
   @override
   Widget build(BuildContext context) {
     final colors = Zeta.of(context).colors;
-    return Material(
-      color: Colors.transparent,
-      child: InkWell(
-        statesController: controller,
-        onTap: widget.onPressed,
-        enableFeedback: false,
-        splashColor: Colors.transparent,
-        overlayColor: MaterialStateProperty.resolveWith((states) {
-          return Colors.transparent;
-        }),
-        child: Row(
-          children: [
-            if (widget.isSelected)
-              Icon(
-                widget.activeIcon ?? ZetaIcons.star_round,
-                color: getColor(controller.value, colors),
-              ),
-            const SizedBox(
-              width: ZetaSpacing.xs,
+    return InkWell(
+      statesController: controller,
+      onTap: widget.onPressed,
+      enableFeedback: false,
+      splashColor: Colors.transparent,
+      overlayColor: MaterialStateProperty.resolveWith((states) {
+        return Colors.transparent;
+      }),
+      child: Row(
+        children: [
+          if (widget.isSelected)
+            Icon(
+              widget.activeIcon ?? ZetaIcons.star_round,
+              color: getColor(controller.value, colors),
             ),
-            Text(
-              widget.label,
-              style: TextStyle(color: getColor(controller.value, colors)),
-            ),
-          ],
-        ),
+          const SizedBox(
+            width: ZetaSpacing.xs,
+          ),
+          Text(
+            widget.label,
+            style: TextStyle(color: getColor(controller.value, colors)),
+          ),
+        ],
       ),
     );
   }
