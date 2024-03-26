@@ -98,7 +98,7 @@ class ZetaListItem extends StatelessWidget {
                         if (subtitle != null)
                           DefaultTextStyle(
                             style: ZetaTextStyles.titleSmall.copyWith(
-                              color: zetaColors.textSubtle,
+                              color: enabled ? zetaColors.textSubtle : zetaColors.textDisabled,
                             ),
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
@@ -106,7 +106,7 @@ class ZetaListItem extends StatelessWidget {
                           ),
                         DefaultTextStyle(
                           style: _titleTextStyle.copyWith(
-                            color: enabled ? zetaColors.textDefault : zetaColors.textSubtle,
+                            color: enabled ? zetaColors.textDefault : zetaColors.textDisabled,
                           ),
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
