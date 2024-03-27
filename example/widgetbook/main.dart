@@ -19,6 +19,7 @@ import 'pages/components/list_item_widgetbook.dart';
 import 'pages/components/navigation_bar_widgetbook.dart';
 import 'pages/components/password_input_widgetbook.dart';
 import 'pages/components/progress_widgetbook.dart';
+import 'pages/components/switch_widgetbook.dart';
 import 'pages/theme/color_widgetbook.dart';
 import 'pages/theme/radius_widgetbook.dart';
 import 'pages/theme/spacing_widgetbook.dart';
@@ -88,6 +89,7 @@ class HotReload extends StatelessWidget {
                 WidgetbookUseCase(name: 'Circle', builder: (context) => progressCircleUseCase(context))
               ],
             ),
+            WidgetbookUseCase(name: 'Switch', builder: (context) => switchUseCase(context)),
           ]..sort((a, b) => a.name.compareTo(b.name)),
         ),
         WidgetbookCategory(
