@@ -29,6 +29,7 @@ export 'src/components/navigation bar/navigation_bar.dart';
 export 'src/components/password/password_input.dart';
 export 'src/components/progress/progress_bar.dart';
 export 'src/components/progress/progress_circle.dart';
+export 'src/components/switch/zeta_switch.dart';
 export 'src/theme/color_extensions.dart';
 export 'src/theme/color_scheme.dart';
 export 'src/theme/color_swatch.dart';
