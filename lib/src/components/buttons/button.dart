@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 
 import '../../../zeta_flutter.dart';
 
-///Button types
-
 ///Zeta Button
 class ZetaButton extends StatelessWidget {
   ///Constructs [ZetaButton]
@@ -135,7 +133,7 @@ class ZetaButton extends StatelessWidget {
     );
   }
 
-  TextStyle get _textStyle => size == ZetaWidgetSize.small ? ZetaTextStyles.labelMedium : ZetaTextStyles.labelLarge;
+  TextStyle get _textStyle => size == ZetaWidgetSize.small ? ZetaTextStyles.labelSmall : ZetaTextStyles.labelLarge;
 
   double get _minConstraints {
     switch (size) {

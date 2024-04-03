@@ -24,7 +24,7 @@ void main() {
                 Text(exampleText, style: ZetaTextStyles.displayLarge, key: key3),
                 Text(
                   exampleText,
-                  style: TextStyle(fontSize: 52, fontWeight: FontWeight.w300, height: 64 / 52),
+                  style: TextStyle(fontSize: 52, fontWeight: FontWeight.w300, height: 60 / 52),
                   key: key4,
                 ),
               ],
@@ -55,10 +55,10 @@ void main() {
     expect(text3.style, text4.style);
 
     /// Test font size of [ZetaTextStyles.bodyMedium] is correct
-    expect(text1.style!.fontSize, 14);
+    expect(text1.style!.fontSize, 16);
 
     /// Test line height of [ZetaTextStyles.bodyMedium] is correct
-    expect(text1.style!.height, 20 / 14);
+    expect(text1.style!.height, 24 / 16);
 
     /// Test font weight of [ZetaTextStyles.bodyMedium] is correct
     expect(text1.style!.fontWeight, FontWeight.w400);

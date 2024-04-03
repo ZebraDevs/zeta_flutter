@@ -204,7 +204,7 @@ class _ZetaBreadCrumbState extends State<ZetaBreadCrumb> {
           ),
           Text(
             widget.label,
-            style: TextStyle(color: getColor(controller.value, colors)),
+            style: ZetaTextStyles.bodySmall.apply(color: getColor(controller.value, colors)),
           ),
         ],
       ),

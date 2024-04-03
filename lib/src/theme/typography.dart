@@ -14,17 +14,32 @@ class ZetaTextStyles {
   /// As the largest text on the screen, display styles are reserved for short,
   /// important text or numerals. They work best on large screens.
   /// {@endtemplate}
-  static const TextStyle displayLarge = TextStyle(fontSize: 52, fontWeight: FontWeight.w300, height: 64 / 52);
+  static const TextStyle displayLarge = TextStyle(
+    fontSize: 52,
+    fontWeight: FontWeight.w300,
+    height: 60 / 52,
+    fontFamily: kZetaFontFamily,
+  );
 
   /// Middle size of the display styles.
   ///
   /// {@macro zeta-text-display}
-  static const TextStyle displayMedium = TextStyle(fontSize: 42, fontWeight: FontWeight.w300, height: 56 / 42);
+  static const TextStyle displayMedium = TextStyle(
+    fontSize: 44,
+    fontWeight: FontWeight.w300,
+    height: 52 / 44,
+    fontFamily: kZetaFontFamily,
+  );
 
   /// Smallest of the display styles.
   ///
   /// {@macro zeta-text-display}
-  static const TextStyle displaySmall = TextStyle(fontSize: 36, fontWeight: FontWeight.w300, height: 48 / 36);
+  static const TextStyle displaySmall = TextStyle(
+    fontSize: 36,
+    fontWeight: FontWeight.w300,
+    height: 40 / 36,
+    fontFamily: kZetaFontFamily,
+  );
 
   /// Largest of the headline styles.
   ///
@@ -32,17 +47,32 @@ class ZetaTextStyles {
   /// Headline styles are smaller than display styles. They're best-suited for
   /// short, high-emphasis text on smaller screens.
   /// {@endtemplate}
-  static const TextStyle heading1 = TextStyle(fontSize: 32, fontWeight: FontWeight.w500, height: 36 / 32);
+  static const TextStyle heading1 = TextStyle(
+    fontSize: 32,
+    fontWeight: FontWeight.w500,
+    height: 36 / 32,
+    fontFamily: kZetaFontFamily,
+  );
 
   /// Middle size of the headline styles.
   ///
   /// {@macro zeta-text-headline}
-  static const TextStyle heading2 = TextStyle(fontSize: 28, fontWeight: FontWeight.w500, height: 32 / 28);
+  static const TextStyle heading2 = TextStyle(
+    fontSize: 28,
+    fontWeight: FontWeight.w500,
+    height: 32 / 28,
+    fontFamily: kZetaFontFamily,
+  );
 
   /// Smallest of the headline styles.
   ///
   /// {@macro zeta-text-headline}
-  static const TextStyle heading3 = TextStyle(fontSize: 24, fontWeight: FontWeight.w500, height: 32 / 24);
+  static const TextStyle heading3 = TextStyle(
+    fontSize: 24,
+    fontWeight: FontWeight.w500,
+    height: 28 / 24,
+    fontFamily: kZetaFontFamily,
+  );
 
   /// Largest of the title styles.
   ///
@@ -50,36 +80,76 @@ class ZetaTextStyles {
   /// Titles are smaller than headline styles and should be used for shorter,
   /// medium-emphasis text.
   /// {@endtemplate}
-  static const TextStyle titleLarge = TextStyle(fontSize: 32, fontWeight: FontWeight.w500, height: 20 / 28);
+  static const TextStyle titleLarge = TextStyle(
+    fontSize: 20,
+    fontWeight: FontWeight.w500,
+    height: 24 / 20,
+    fontFamily: kZetaFontFamily,
+  );
 
   /// Middle size of the title styles.
   ///
   /// {@macro zeta-text-title}
-  static const TextStyle titleMedium = TextStyle(fontSize: 18, fontWeight: FontWeight.w500, height: 24 / 18);
+  static const TextStyle titleMedium = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w500,
+    height: 20 / 16,
+    fontFamily: kZetaFontFamily,
+  );
 
   /// Smallest of the title styles.
   ///
   /// {@macro zeta-text-title}
-  static const TextStyle titleSmall = TextStyle(fontSize: 16, fontWeight: FontWeight.w500, height: 24 / 16);
+  static const TextStyle titleSmall = TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.w500,
+    height: 16 / 12,
+    fontFamily: kZetaFontFamily,
+  );
 
   /// Largest of the body styles.
   ///
   /// {@template zeta-text-body}
   /// Body styles are used for longer passages of text.
   /// {@endtemplate}
-  static const TextStyle bodyLarge = TextStyle(fontSize: 16, fontWeight: FontWeight.w400, height: 16 / 24);
+  static const TextStyle bodyLarge = TextStyle(
+    fontSize: 20,
+    fontWeight: FontWeight.w400,
+    height: 24 / 20,
+    fontFamily: kZetaFontFamily,
+  );
 
   /// Middle size of the body styles.
   ///
   /// {@macro zeta-text-body}
   ///
   /// The default Text style for [Zeta].
-  static const TextStyle bodyMedium = TextStyle(fontSize: 14, fontWeight: FontWeight.w400, height: 20 / 14);
+  static const TextStyle bodyMedium = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w400,
+    height: 24 / 16,
+    fontFamily: kZetaFontFamily,
+  );
+
+  /// Small size of the body styles.
+  ///
+  /// {@macro zeta-text-body}
+  static const TextStyle bodySmall = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w400,
+    height: 18 / 14,
+    fontFamily: kZetaFontFamily,
+  );
 
   /// Smallest of the body styles.
   ///
   /// {@macro zeta-text-body}
-  static const TextStyle bodySmall = TextStyle(fontSize: 12, fontWeight: FontWeight.w400, height: 16 / 12);
+  static const TextStyle bodyXSmall = TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.w400,
+    height: 16 / 12,
+    fontFamily: kZetaFontFamily,
+  );
 
   /// Largest of the label styles.
   ///
@@ -90,26 +160,72 @@ class ZetaTextStyles {
   /// {@endtemplate}
   ///
   /// Used for text on [ZetaButton].
-  static const TextStyle labelLarge = TextStyle(fontSize: 16, fontWeight: FontWeight.w500, height: 24 / 16);
+  static const TextStyle labelLarge = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w500,
+    height: 24 / 16,
+    fontFamily: kZetaFontFamily,
+  );
 
   /// Middle size of the label styles.
   ///
   /// {@macro zeta-text-label}
-  static const TextStyle labelMedium = TextStyle(fontSize: 14, fontWeight: FontWeight.w500, height: 20 / 14);
+  static const TextStyle labelMedium = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w500,
+    height: 20 / 14,
+    fontFamily: kZetaFontFamily,
+  );
 
   /// Small size of the label styles.
   ///
   /// {@macro zeta-text-label}
-  static const TextStyle labelSmall = TextStyle(fontSize: 12, fontWeight: FontWeight.w500, height: 16 / 12);
+  static const TextStyle labelSmall = TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.w500,
+    height: 16 / 12,
+    fontFamily: kZetaFontFamily,
+  );
 
   /// Label text style used specifically for Indicator.
-  /// {@macro zeta-text-label}
-  static const TextStyle labelIndicator = TextStyle(fontSize: 12, fontWeight: FontWeight.w500, height: 14 / 12);
-
-  /// Smallest of the label styles.
   ///
   /// {@macro zeta-text-label}
-  static const TextStyle labelTiny = TextStyle(fontSize: 11, fontWeight: FontWeight.w500, height: 14 / 11);
+  static const TextStyle labelIndicator = TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.w500,
+    height: 14 / 12,
+    fontFamily: kZetaFontFamily,
+  );
+
+  /// Largest heading style.
+  ///
+  /// {@macro zeta-text-headline}
+  static const TextStyle h1 = heading1;
+
+  /// Second largest heading style.
+  ///
+  /// {@macro zeta-text-headline}
+  static const TextStyle h2 = heading2;
+
+  /// Third largest heading style.
+  ///
+  /// {@macro zeta-text-headline}
+  static const TextStyle h3 = heading3;
+
+  /// Fourth largest heading style.
+  ///
+  /// {@macro zeta-text-headline}
+  static const TextStyle h4 = titleLarge;
+
+  /// Fifth largest heading style.
+  ///
+  /// {@macro zeta-text-headline}
+  static const TextStyle h5 = titleMedium;
+
+  /// Sixth largest heading style.
+  ///
+  /// {@macro zeta-text-headline}
+  static const TextStyle h6 = titleSmall;
 }
 
 /// [ZetaTextStyles] combined into a [TextTheme].
