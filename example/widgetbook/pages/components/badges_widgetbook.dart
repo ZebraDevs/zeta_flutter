@@ -74,7 +74,7 @@ Widget tagsUseCase(BuildContext context) => WidgetbookTestWidget(
             direction: context.knobs.list(
               label: 'Direction',
               options: ZetaTagDirection.values,
-              labelBuilder: (value) => value.name.split('.').last.capitalize(),
+              labelBuilder: enumLabelBuilder,
             ),
           ),
         ],
@@ -90,12 +90,12 @@ Widget workcloudIndicatorsUseCase(BuildContext context) {
       label: context.knobs.string(label: 'Label', initialValue: 'Label'),
       prioritySize: context.knobs.list(
         label: 'Size',
-        labelBuilder: (value) => value.name.split('.').last.capitalize(),
+        labelBuilder: enumLabelBuilder,
         options: ZetaWidgetSize.values,
       ),
       priorityType: context.knobs.list(
         label: 'Type',
-        labelBuilder: (value) => value.name.split('.').last.capitalize(),
+        labelBuilder: enumLabelBuilder,
         options: ZetaWorkcloudIndicatorType.values,
       ),
       icon: iconKnob(context, rounded: rounded, nullable: true),

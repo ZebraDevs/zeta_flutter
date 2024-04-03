@@ -14,7 +14,7 @@ Widget bannerUseCase(BuildContext context) {
     type: context.knobs.list(
       label: 'Type',
       options: ZetaSystemBannerStatus.values,
-      labelBuilder: (value) => value.name.split('.').last.capitalize(),
+      labelBuilder: enumLabelBuilder,
     ),
     leadingIcon: iconKnob(context, rounded: rounded, nullable: true),
     titleStart: context.knobs.boolean(label: 'Center title'),
