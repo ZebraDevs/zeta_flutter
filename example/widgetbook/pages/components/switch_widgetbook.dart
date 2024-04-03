@@ -3,6 +3,7 @@ import 'package:widgetbook/widgetbook.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 import '../../test/test_components.dart';
+import '../../utils/utils.dart';
 
 Widget switchUseCase(BuildContext context) {
   bool? isOn = false;
@@ -21,6 +22,11 @@ Widget switchUseCase(BuildContext context) {
               ZetaSwitch(
                 value: isOn,
                 onChanged: onChanged,
+                variant: context.knobs.listOrNull(
+                  label: 'Variant',
+                  options: ZetaSwitchType.values,
+                  labelBuilder: enumLabelBuilder,
+                ),
               ),
               Text(isOn == true ? 'On' : 'Off'),
             ],

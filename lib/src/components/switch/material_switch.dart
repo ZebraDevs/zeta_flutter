@@ -45,8 +45,9 @@ class MaterialSwitch extends StatefulWidget {
     this.focusNode,
     this.onFocusChange,
     this.autofocus = false,
-    // Zeta change: added optional parameter `showHover`.
+    // Zeta change: added optional parameter `showHover` and `thumbSize`.
     this.showHover = false,
+    this.thumbSize,
   })  : assert(activeThumbImage != null || onActiveThumbImageError == null),
         assert(inactiveThumbImage != null || onInactiveThumbImageError == null);
 
@@ -75,8 +76,9 @@ class MaterialSwitch extends StatefulWidget {
   final FocusNode? focusNode;
   final ValueChanged<bool>? onFocusChange;
   final bool autofocus;
-  // Zeta change: added optional parameter `showHover`.
+  // Zeta change: added optional parameters `showHover` and `thumbSize`.
   final bool showHover;
+  final Size? thumbSize;
   final Size size;
 
   @override
@@ -369,7 +371,9 @@ class _MaterialSwitchState extends State<MaterialSwitch> with TickerProviderStat
             ..inactiveIcon = effectiveInactiveIcon
             ..iconTheme = IconTheme.of(context)
             ..thumbShadow = _switchConfig.thumbShadow
-            ..positionController = positionController,
+            ..positionController = positionController
+            // Zeta change: pass thumbsize
+            .._thumbSize = widget.thumbSize,
         ),
       ),
     );
@@ -685,6 +689,8 @@ class _SwitchPainter extends ToggleablePainter {
   ImageProvider? _cachedThumbImage;
   ImageErrorListener? _cachedThumbErrorListener;
   BoxPainter? _cachedThumbPainter;
+  // Zeta change: add `_thumbSize`.
+  Size? _thumbSize;
 
   ShapeDecoration _createDefaultThumbDecoration(Color color, ImageProvider? image, ImageErrorListener? errorListener) {
     return ShapeDecoration(
@@ -730,7 +736,8 @@ class _SwitchPainter extends ToggleablePainter {
       _pressedThumbExtension = 0;
     }
 
-    Size? thumbSize = Size.fromRadius(pressedThumbRadius);
+    // Zeta change: `_thumbSize` override.
+    Size? thumbSize = _thumbSize ?? Size.fromRadius(pressedThumbRadius);
 
     // The thumb contracts slightly during the animation in Material 2.
     final double inset = thumbOffset == null ? 0 : 1.0 - (currentValue - thumbOffset!).abs() * 2.0;

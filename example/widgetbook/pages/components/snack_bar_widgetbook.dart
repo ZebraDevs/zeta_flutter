@@ -22,7 +22,7 @@ Widget snackBarUseCase(BuildContext context) {
         final type = context.knobs.listOrNull<ZetaSnackBarType>(
           label: 'Type',
           options: [null, ...ZetaSnackBarType.values],
-          labelBuilder: (type) => type?.name ?? '',
+          labelBuilder: enumLabelBuilder,
         );
 
         final leadingIcon = iconKnob(
