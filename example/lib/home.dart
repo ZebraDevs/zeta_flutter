@@ -16,6 +16,7 @@ import 'package:zeta_example/pages/components/navigation_bar_example.dart';
 import 'package:zeta_example/pages/components/radio_example.dart';
 import 'package:zeta_example/pages/components/switch_example.dart';
 import 'package:zeta_example/pages/components/snackbar_example.dart';
+import 'package:zeta_example/pages/components/tabs_example.dart';
 import 'package:zeta_example/pages/theme/color_example.dart';
 import 'package:zeta_example/pages/components/password_input_example.dart';
 import 'package:zeta_example/pages/components/progress_example.dart';
@@ -49,6 +50,7 @@ final List<Component> components = [
   Component(DropdownExample.name, (context) => const DropdownExample()),
   Component(ProgressExample.name, (context) => const ProgressExample()),
   Component(SnackBarExample.name, (context) => const SnackBarExample()),
+  Component(TabsExample.name, (context) => const TabsExample()),
   Component(DialPadExample.name, (context) => const DialPadExample()),
   Component(RadioButtonExample.name, (context) => const RadioButtonExample()),
   Component(SwitchExample.name, (context) => const SwitchExample()),
