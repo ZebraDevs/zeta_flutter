@@ -32,6 +32,8 @@ export 'src/components/progress/progress_circle.dart';
 export 'src/components/radio/radio.dart';
 export 'src/components/snack_bar/snack_bar.dart';
 export 'src/components/switch/zeta_switch.dart';
+export 'src/components/tabs/tab.dart';
+export 'src/components/tabs/tab_bar.dart';
 export 'src/theme/color_extensions.dart';
 export 'src/theme/color_scheme.dart';
 export 'src/theme/color_swatch.dart';

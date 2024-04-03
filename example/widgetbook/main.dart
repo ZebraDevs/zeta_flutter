@@ -22,6 +22,7 @@ import 'pages/components/progress_widgetbook.dart';
 import 'pages/components/radio_widgetbook.dart';
 import 'pages/components/switch_widgetbook.dart';
 import 'pages/components/snack_bar_widgetbook.dart';
+import 'pages/components/tabs_widgetbook.dart';
 import 'pages/theme/color_widgetbook.dart';
 import 'pages/theme/radius_widgetbook.dart';
 import 'pages/theme/spacing_widgetbook.dart';
@@ -97,6 +98,7 @@ class HotReload extends StatelessWidget {
               name: 'Snack Bar',
               builder: (context) => snackBarUseCase(context),
             ),
+            WidgetbookUseCase(name: 'Tabs', builder: (context) => tabsUseCase(context)),
           ]..sort((a, b) => a.name.compareTo(b.name)),
         ),
         WidgetbookCategory(
