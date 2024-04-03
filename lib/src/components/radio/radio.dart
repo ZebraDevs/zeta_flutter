@@ -86,7 +86,7 @@ class _ZetaRadioState<T> extends State<ZetaRadio<T>> with TickerProviderStateMix
           GestureDetector(
             onTap: () => onChanged?.call(true),
             child: DefaultTextStyle(
-              style: ZetaTextStyles.bodyLarge.copyWith(
+              style: ZetaTextStyles.bodyMedium.copyWith(
                 color: states.contains(MaterialState.disabled) ? zetaColors.textDisabled : zetaColors.textDefault,
                 height: 1.33,
               ),

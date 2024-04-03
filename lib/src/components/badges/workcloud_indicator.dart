@@ -103,7 +103,7 @@ class ZetaWorkcloudIndicator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ZetaColorSwatch color = priorityType.color(context);
-    final textStyle = prioritySize == ZetaWidgetSize.large ? ZetaTextStyles.labelMedium : ZetaTextStyles.labelTiny;
+    final textStyle = prioritySize == ZetaWidgetSize.large ? ZetaTextStyles.bodySmall : ZetaTextStyles.bodyXSmall;
 
     return DecoratedBox(
       decoration: BoxDecoration(

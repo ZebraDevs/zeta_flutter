@@ -54,10 +54,9 @@ class ZetaSystemBanner extends MaterialBanner {
               }
 
               return DefaultTextStyle(
-                style: ZetaTextStyles.titleSmall.copyWith(
+                style: ZetaTextStyles.labelLarge.copyWith(
                   color: foregroundColor,
                   overflow: TextOverflow.ellipsis,
-                  height: 1,
                 ),
                 child: Row(
                   mainAxisAlignment: titleStart ? MainAxisAlignment.center : MainAxisAlignment.start,

@@ -24,11 +24,11 @@ class TypographyExample extends StatelessWidget {
       'Body Large': ZetaTextStyles.bodyLarge,
       'Body Medium': ZetaTextStyles.bodyMedium,
       'Body Small': ZetaTextStyles.bodySmall,
+      'Body X-Small': ZetaTextStyles.bodyXSmall,
       'Label Large': ZetaTextStyles.labelLarge,
       'Label Medium': ZetaTextStyles.labelMedium,
       'Label Small': ZetaTextStyles.labelSmall,
       'Label Indicator': ZetaTextStyles.labelIndicator,
-      'Label Tiny': ZetaTextStyles.labelTiny,
     };
 
     return ExampleScaffold(

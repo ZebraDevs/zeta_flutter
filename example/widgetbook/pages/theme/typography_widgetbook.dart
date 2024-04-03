@@ -16,11 +16,11 @@ const Map<String, TextStyle> allTypes = {
   'Body large': ZetaTextStyles.bodyLarge,
   'Body medium': ZetaTextStyles.bodyMedium,
   'Body small': ZetaTextStyles.bodySmall,
+  'Body X-small': ZetaTextStyles.bodyXSmall,
   'Label large': ZetaTextStyles.labelLarge,
   'Label medium': ZetaTextStyles.labelMedium,
   'Label small': ZetaTextStyles.labelSmall,
   'Label indicator': ZetaTextStyles.labelIndicator,
-  'Label tiny': ZetaTextStyles.labelTiny,
 };
 
 Widget typographyUseCase(BuildContext context) => Padding(

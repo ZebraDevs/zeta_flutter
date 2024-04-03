@@ -71,14 +71,14 @@ class ZetaInPageBanner extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const SizedBox(height: ZetaSpacing.x2_5),
+                  const SizedBox(height: ZetaSpacing.x2),
                   if (hasTitle)
                     Text(
                       title!,
-                      style: ZetaTextStyles.titleSmall,
+                      style: ZetaTextStyles.labelLarge,
                     ).paddingBottom(ZetaSpacing.xxs),
                   DefaultTextStyle(
-                    style: ZetaTextStyles.bodyMedium.apply(color: theme.colors.textDefault),
+                    style: ZetaTextStyles.bodySmall.apply(color: theme.colors.textDefault),
                     child: content,
                   ),
                   if (actions.isNotEmpty)
