@@ -9,6 +9,7 @@ import 'package:zeta_example/pages/components/breadcrumbs_example.dart';
 import 'package:zeta_example/pages/components/button_example.dart';
 import 'package:zeta_example/pages/components/checkbox_example.dart';
 import 'package:zeta_example/pages/components/chip_example.dart';
+import 'package:zeta_example/pages/components/date_input_example.dart';
 import 'package:zeta_example/pages/components/dialpad_example.dart';
 import 'package:zeta_example/pages/components/dropdown_example.dart';
 import 'package:zeta_example/pages/components/list_item_example.dart';
@@ -54,6 +55,7 @@ final List<Component> components = [
   Component(DialPadExample.name, (context) => const DialPadExample()),
   Component(RadioButtonExample.name, (context) => const RadioButtonExample()),
   Component(SwitchExample.name, (context) => const SwitchExample()),
+  Component(DateInputExample.name, (context) => const DateInputExample()),
 ];
 
 final List<Component> theme = [

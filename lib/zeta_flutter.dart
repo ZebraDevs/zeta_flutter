@@ -22,6 +22,7 @@ export 'src/components/buttons/fab.dart';
 export 'src/components/buttons/icon_button.dart';
 export 'src/components/checkbox/checkbox.dart';
 export 'src/components/chips/chip.dart';
+export 'src/components/date_input/date_input.dart';
 export 'src/components/dial_pad/dial_pad.dart';
 export 'src/components/dropdown/dropdown.dart';
 export 'src/components/list_item/list_item.dart';
