@@ -23,7 +23,7 @@ class _DateInputExampleState extends State<DateInputExample> {
           children: [
             Padding(
               padding: const EdgeInsets.only(top: 20),
-              child: Text('Rounded', style: ZetaTextStyles.titleSmall),
+              child: Text('Rounded', style: ZetaTextStyles.titleMedium),
             ),
             Padding(
               padding: const EdgeInsets.all(20),
@@ -46,7 +46,7 @@ class _DateInputExampleState extends State<DateInputExample> {
             Divider(color: Colors.grey[200]),
             Padding(
               padding: const EdgeInsets.only(top: 20),
-              child: Text('Sharp', style: ZetaTextStyles.titleSmall),
+              child: Text('Sharp', style: ZetaTextStyles.titleMedium),
             ),
             Padding(
               padding: const EdgeInsets.all(20),
@@ -61,7 +61,7 @@ class _DateInputExampleState extends State<DateInputExample> {
             Divider(color: Colors.grey[200]),
             Padding(
               padding: const EdgeInsets.only(top: 20),
-              child: Text('Disabled', style: ZetaTextStyles.titleSmall),
+              child: Text('Disabled', style: ZetaTextStyles.titleMedium),
             ),
             Padding(
               padding: const EdgeInsets.all(20),
@@ -74,7 +74,7 @@ class _DateInputExampleState extends State<DateInputExample> {
             Divider(color: Colors.grey[200]),
             Padding(
               padding: const EdgeInsets.only(top: 20),
-              child: Text('Medium', style: ZetaTextStyles.titleSmall),
+              child: Text('Medium', style: ZetaTextStyles.titleMedium),
             ),
             Padding(
               padding: const EdgeInsets.all(20),
@@ -88,7 +88,7 @@ class _DateInputExampleState extends State<DateInputExample> {
             Divider(color: Colors.grey[200]),
             Padding(
               padding: const EdgeInsets.only(top: 20),
-              child: Text('Small', style: ZetaTextStyles.titleSmall),
+              child: Text('Small', style: ZetaTextStyles.titleMedium),
             ),
             Padding(
               padding: const EdgeInsets.all(20),
