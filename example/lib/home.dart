@@ -19,6 +19,7 @@ import 'package:zeta_example/pages/components/stepper_example.dart';
 import 'package:zeta_example/pages/components/switch_example.dart';
 import 'package:zeta_example/pages/components/snackbar_example.dart';
 import 'package:zeta_example/pages/components/tabs_example.dart';
+import 'package:zeta_example/pages/components/pagination_example.dart';
 import 'package:zeta_example/pages/theme/color_example.dart';
 import 'package:zeta_example/pages/components/password_input_example.dart';
 import 'package:zeta_example/pages/components/progress_example.dart';
@@ -48,6 +49,7 @@ final List<Component> components = [
   Component(ChipExample.name, (context) => const ChipExample()),
   Component(ListItemExample.name, (context) => const ListItemExample()),
   Component(NavigationBarExample.name, (context) => const NavigationBarExample()),
+  Component(PaginationExample.name, (context) => const PaginationExample()),
   Component(PasswordInputExample.name, (context) => const PasswordInputExample()),
   Component(DropdownExample.name, (context) => const DropdownExample()),
   Component(ProgressExample.name, (context) => const ProgressExample()),

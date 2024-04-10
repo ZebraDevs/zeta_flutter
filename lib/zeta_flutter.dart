@@ -27,6 +27,7 @@ export 'src/components/dial_pad/dial_pad.dart';
 export 'src/components/dropdown/dropdown.dart';
 export 'src/components/list_item/list_item.dart';
 export 'src/components/navigation bar/navigation_bar.dart';
+export 'src/components/pagination/pagination.dart';
 export 'src/components/password/password_input.dart';
 export 'src/components/progress/progress_bar.dart';
 export 'src/components/progress/progress_circle.dart';
