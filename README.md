@@ -94,7 +94,9 @@ With these configurations, Zeta makes it easy to achieve consistent theming thro
 
 ## Viewing the components
 
-To view examples of all the components in the library, you can run the example app in this repo or go to [Zeta](https://zeta-ds.web.app/)
+To view examples of all the components in the library, you can pull this repo and run either the example app or widgetbook instance.
+
+You can also view the latest release at [Zeta](https://zeta-ds.web.app/) or the latest commits to main [here](https://zeta-flutter-main.web.app/).
 
 ## Licensing
 
