@@ -16,7 +16,15 @@ class _PaginationExampleState extends State<PaginationExample> {
   Widget build(BuildContext context) {
     return ExampleScaffold(
       name: PaginationExample.name,
-      child: ZetaPagination(pages: 10000),
+      child: Column(
+        children: [
+          ZetaPagination(pages: 1000),
+          ZetaPagination(
+            pages: 9,
+            type: ZetaPaginationType.dropdown,
+          ),
+        ],
+      ),
     );
   }
 }

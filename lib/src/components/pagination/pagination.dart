@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../../../zeta_flutter.dart';
@@ -7,17 +8,23 @@ import '../../../zeta_flutter.dart';
 const _itemHeight = ZetaSpacing.x9;
 const _itemWidth = ZetaSpacing.x8;
 
-class ZetaPagination extends StatefulWidget {
-  final int pages;
-  final int currentPage;
-  final bool rounded;
-  final bool disabled;
-  final void Function(int value)? onChange;
+/// The type of a [ZetaPagination]
+enum ZetaPaginationType {
+  /// A standard pagination with buttons for each page.
+  standard,
 
+  /// A dropdown pagination.
+  dropdown,
+}
+
+/// Pagination is used to switch between pages.
+class ZetaPagination extends StatefulWidget {
+  /// Creates a new [ZetaPagination]
   const ZetaPagination({
     required this.pages,
+    this.type = ZetaPaginationType.standard,
     this.onChange,
-    this.currentPage = 0,
+    this.currentPage = 1,
     this.rounded = true,
     this.disabled = false,
     super.key,
@@ -26,12 +33,47 @@ class ZetaPagination extends StatefulWidget {
           'Pages must be greater than zero',
         );
 
+  /// The number of pages to switch between.
+  final int pages;
+
+  /// The current page.
+  ///
+  /// Defaults to 1
+  final int currentPage;
+
+  /// {@macro zeta-component-rounded}
+  final bool rounded;
+
+  /// Disables the pagination.
+  final bool disabled;
+
+  /// A callback executed every time the page changes.
+  final void Function(int value)? onChange;
+
+  /// The type of the pagination.
+  /// A pagination dropdown will be enforced if there is not enough space for a standard dropdown.
+  ///
+  /// Default to [ZetaPaginationType.standard]
+  final ZetaPaginationType type;
+
   @override
   State<ZetaPagination> createState() => _ZetaPaginationState();
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(IntProperty('pages', pages))
+      ..add(IntProperty('currentPage', currentPage))
+      ..add(DiagnosticsProperty<bool>('rounded', rounded))
+      ..add(DiagnosticsProperty<bool>('disabled', disabled))
+      ..add(ObjectFlagProperty<void Function(int value)?>.has('onChange', onChange))
+      ..add(EnumProperty<ZetaPaginationType>('type', type));
+  }
 }
 
 class _ZetaPaginationState extends State<ZetaPagination> {
   late int _currentPage;
+  final _paginationKey = GlobalKey();
 
   @override
   void initState() {
@@ -66,7 +108,7 @@ class _ZetaPaginationState extends State<ZetaPagination> {
     );
   }
 
-  List<Widget> _buildPaginationItems() {
+  List<Widget> get numberedPaginationItems {
     if (widget.pages <= 6) {
       final List<Widget> items = [];
       for (int i = 1; i <= widget.pages; i++) {
@@ -88,7 +130,7 @@ class _ZetaPaginationState extends State<ZetaPagination> {
       _getNumberedPaginationItem(initialIndex),
       if (showLeftElipsis) const _Elipsis(),
     ];
-    // TODO refactor this, most of it sucks
+
     if (!showLeftElipsis) {
       int itemCount = totalCenterItems;
 
@@ -127,47 +169,93 @@ class _ZetaPaginationState extends State<ZetaPagination> {
     return items;
   }
 
+  Widget get paginationDropdown {
+    final colors = Zeta.of(context).colors;
+    final List<DropdownMenuItem<int>> items = List.generate(
+      widget.pages,
+      (i) => DropdownMenuItem(
+        value: i + 1,
+        child: Text((i + 1).toString()),
+      ),
+    );
+    return Container(
+      height: ZetaSpacing.x10,
+      decoration: BoxDecoration(
+        border: Border.all(color: colors.borderSubtle),
+        borderRadius: widget.rounded ? ZetaRadius.minimal : ZetaRadius.none,
+      ),
+      // TODO: Replace with Zeta Dropdown
+      child: DropdownButton(
+        items: items,
+        onChanged: (val) => _onItemPressed(val!),
+        value: _currentPage,
+        icon: Icon(
+          widget.rounded ? ZetaIcons.expand_more_round : ZetaIcons.expand_more_sharp,
+        ).paddingStart(ZetaSpacing.x2),
+        underline: const SizedBox(),
+        style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+              color: colors.textSubtle,
+            ),
+        padding: const EdgeInsets.symmetric(
+          horizontal: ZetaSpacing.x3,
+          // vertical: ZetaSpacing.x2,
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    final List<Widget> buttons = [
-      _PaginationItem(
-        icon: widget.rounded ? ZetaIcons.first_page_round : ZetaIcons.first_page_sharp,
-        onPressed: () => _onItemPressed(1),
-        disabled: widget.disabled || _currentPage == 1,
-        rounded: widget.rounded,
-      ),
-      _PaginationItem(
-        icon: widget.rounded ? ZetaIcons.chevron_left_round : ZetaIcons.chevron_left_sharp,
-        onPressed: () => _onItemPressed(max(1, _currentPage - 1)),
-        disabled: widget.disabled || _currentPage == 1,
-        rounded: widget.rounded,
-      ),
-      ..._buildPaginationItems(),
-      _PaginationItem(
-        icon: widget.rounded ? ZetaIcons.chevron_right_round : ZetaIcons.cellular_signal_sharp,
-        onPressed: () => _onItemPressed(
-          min(widget.pages, _currentPage + 1),
-        ),
-        disabled: widget.disabled || _currentPage == widget.pages,
-        rounded: widget.rounded,
-      ),
-      _PaginationItem(
-        icon: widget.rounded ? ZetaIcons.last_page_round : ZetaIcons.last_page_sharp,
-        onPressed: () => _onItemPressed(
-          widget.pages,
-        ),
-        disabled: widget.disabled || _currentPage == widget.pages,
-        rounded: widget.rounded,
-      ),
-    ];
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final showDropdown =
+            widget.type == ZetaPaginationType.dropdown || constraints.deviceType == DeviceType.mobilePortrait;
 
-    return Row(
-      children: buttons.divide(const SizedBox(width: ZetaSpacing.x2)).toList(),
+        final List<Widget> buttons = [
+          if (!showDropdown)
+            _PaginationItem(
+              icon: widget.rounded ? ZetaIcons.first_page_round : ZetaIcons.first_page_sharp,
+              onPressed: () => _onItemPressed(1),
+              disabled: widget.disabled || _currentPage == 1,
+              rounded: widget.rounded,
+            ),
+          _PaginationItem(
+            icon: widget.rounded ? ZetaIcons.chevron_left_round : ZetaIcons.chevron_left_sharp,
+            onPressed: () => _onItemPressed(max(1, _currentPage - 1)),
+            disabled: widget.disabled || _currentPage == 1,
+            rounded: widget.rounded,
+          ),
+          if (!showDropdown) ...numberedPaginationItems else paginationDropdown,
+          _PaginationItem(
+            icon: widget.rounded ? ZetaIcons.chevron_right_round : ZetaIcons.cellular_signal_sharp,
+            onPressed: () => _onItemPressed(
+              min(widget.pages, _currentPage + 1),
+            ),
+            disabled: widget.disabled || _currentPage == widget.pages,
+            rounded: widget.rounded,
+          ),
+          if (!showDropdown)
+            _PaginationItem(
+              icon: widget.rounded ? ZetaIcons.last_page_round : ZetaIcons.last_page_sharp,
+              onPressed: () => _onItemPressed(
+                widget.pages,
+              ),
+              disabled: widget.disabled || _currentPage == widget.pages,
+              rounded: widget.rounded,
+            ),
+        ];
+
+        return Row(
+          key: _paginationKey,
+          mainAxisSize: MainAxisSize.min,
+          children: buttons.divide(const SizedBox(width: ZetaSpacing.x2)).toList(),
+        );
+      },
     );
   }
 }
 
-class _PaginationItem extends StatelessWidget {
+class _PaginationItem extends StatefulWidget {
   const _PaginationItem({
     required this.onPressed,
     required this.rounded,
@@ -175,7 +263,6 @@ class _PaginationItem extends StatelessWidget {
     this.selected = false,
     this.value,
     this.icon,
-    super.key,
   });
 
   final VoidCallback onPressed;
@@ -186,79 +273,109 @@ class _PaginationItem extends StatelessWidget {
   final bool rounded;
 
   @override
+  State<_PaginationItem> createState() => _PaginationItemState();
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(ObjectFlagProperty<VoidCallback>.has('onPressed', onPressed))
+      ..add(IntProperty('value', value))
+      ..add(DiagnosticsProperty<IconData?>('icon', icon))
+      ..add(DiagnosticsProperty<bool>('disabled', disabled))
+      ..add(DiagnosticsProperty<bool>('selected', selected))
+      ..add(DiagnosticsProperty<bool>('rounded', rounded));
+  }
+}
+
+class _PaginationItemState extends State<_PaginationItem> {
+  final _controller = MaterialStatesController();
+
+  @override
+  void initState() {
+    super.initState();
+    _controller.addListener(() {
+      if (context.mounted && mounted) {
+        setState(() {});
+      }
+    });
+  }
+
+  Color _getColor(Set<MaterialState> states) {
+    final colors = Zeta.of(context).colors;
+
+    if (widget.selected) {
+      return colors.cool[100]!;
+    }
+    if (states.contains(MaterialState.disabled)) {
+      return colors.surfaceDisabled;
+    }
+    if (states.contains(MaterialState.pressed)) {
+      return colors.surfaceSelected;
+    }
+    if (states.contains(MaterialState.hovered)) {
+      return colors.surfaceHovered;
+    }
+    return colors.surfacePrimary;
+  }
+
+  @override
   Widget build(BuildContext context) {
     final colors = Zeta.of(context).colors;
 
     late final Widget child;
 
-    if (value != null) {
+    if (widget.value != null) {
       child = Text(
-        value!.toString(),
+        widget.value!.toString(),
         maxLines: 1,
         style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-              color: disabled
+              color: widget.disabled
                   ? colors.textDisabled
-                  : selected
+                  : widget.selected
                       ? colors.textInverse
                       : colors.textDefault,
             ),
       );
-    } else if (icon != null) {
-      child = Icon(icon);
+    } else if (widget.icon != null) {
+      child = Icon(widget.icon);
     }
 
     return ConstrainedBox(
       constraints: const BoxConstraints(
         minHeight: _itemHeight,
+        maxHeight: _itemHeight,
         minWidth: _itemWidth,
-        maxWidth: _itemWidth * 1.5,
       ),
-      child: FilledButton(
-        onPressed: !disabled ? onPressed : null,
-        style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.resolveWith<Color?>(
-            (states) {
-              if (selected) {
-                return colors.cool[100];
-              }
-              if (states.contains(MaterialState.disabled)) {
-                return colors.surfaceDisabled;
-              }
-              if (states.contains(MaterialState.pressed)) {
-                return colors.surfaceSelected;
-              }
-              if (states.contains(MaterialState.hovered)) {
-                return colors.surfaceHovered;
-              }
-              return colors.surfacePrimary;
-            },
-          ),
-          elevation: const MaterialStatePropertyAll(0),
-          padding: MaterialStateProperty.all(EdgeInsets.zero),
-          foregroundColor: MaterialStateColor.resolveWith((_) {
-            if (disabled) {
-              return colors.iconDisabled;
-            }
-            return colors.iconDefault;
-          }),
-          shape: MaterialStateProperty.all(
-            RoundedRectangleBorder(
-              borderRadius: rounded ? ZetaRadius.minimal : ZetaRadius.none,
+      child: Material(
+        color: widget.selected ? colors.cool[100] : colors.surfacePrimary,
+        borderRadius: widget.rounded ? ZetaRadius.minimal : ZetaRadius.none,
+        child: InkWell(
+          onTap: widget.onPressed,
+          statesController: _controller,
+          borderRadius: widget.rounded ? ZetaRadius.minimal : ZetaRadius.none,
+          highlightColor: Colors.transparent,
+          enableFeedback: false,
+          child: Container(
+            alignment: Alignment.center,
+            padding: const EdgeInsets.symmetric(horizontal: ZetaSpacing.x1),
+            decoration: BoxDecoration(
+              color: _getColor(_controller.value),
+              borderRadius: widget.rounded ? ZetaRadius.minimal : ZetaRadius.none,
             ),
+            child: child,
           ),
         ),
-        child: child,
       ),
     );
   }
 }
 
 class _Elipsis extends StatelessWidget {
-  const _Elipsis({super.key});
+  const _Elipsis();
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return const SizedBox(
       width: _itemWidth,
       height: _itemHeight,
       child: Center(child: Text('...')),
