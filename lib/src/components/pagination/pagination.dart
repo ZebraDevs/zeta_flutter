@@ -188,7 +188,7 @@ class _ZetaPaginationState extends State<ZetaPagination> {
         border: Border.all(color: colors.borderSubtle),
         borderRadius: widget.rounded ? ZetaRadius.minimal : ZetaRadius.none,
       ),
-      // TODO: Replace with Zeta Dropdown
+      // TODO(mikecoomber): Replace with Zeta Dropdown
       child: DropdownButton(
         items: items,
         onChanged: (val) => _onItemPressed(val!),
