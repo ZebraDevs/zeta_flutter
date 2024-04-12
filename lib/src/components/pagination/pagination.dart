@@ -258,7 +258,7 @@ class _ZetaPaginationState extends State<ZetaPagination> {
   }
 }
 
-class _PaginationItem extends StatefulWidget {
+class _PaginationItem extends StatelessWidget {
   const _PaginationItem({
     required this.onPressed,
     required this.rounded,
@@ -276,76 +276,27 @@ class _PaginationItem extends StatefulWidget {
   final bool rounded;
 
   @override
-  State<_PaginationItem> createState() => _PaginationItemState();
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(ObjectFlagProperty<VoidCallback>.has('onPressed', onPressed))
-      ..add(IntProperty('value', value))
-      ..add(DiagnosticsProperty<IconData?>('icon', icon))
-      ..add(DiagnosticsProperty<bool>('disabled', disabled))
-      ..add(DiagnosticsProperty<bool>('selected', selected))
-      ..add(DiagnosticsProperty<bool>('rounded', rounded));
-  }
-}
-
-class _PaginationItemState extends State<_PaginationItem> {
-  final _controller = MaterialStatesController();
-
-  @override
-  void initState() {
-    super.initState();
-    _controller.addListener(() {
-      if (context.mounted && mounted) {
-        setState(() {});
-      }
-    });
-  }
-
-  Color _getColor(Set<MaterialState> states) {
-    final colors = Zeta.of(context).colors;
-
-    if (widget.disabled) {
-      return colors.surfaceDisabled;
-    }
-    if (widget.selected) {
-      return colors.cool[100]!;
-    }
-    if (states.contains(MaterialState.disabled)) {
-      return colors.surfaceDisabled;
-    }
-    if (states.contains(MaterialState.pressed)) {
-      return colors.surfaceSelected;
-    }
-    if (states.contains(MaterialState.hovered)) {
-      return colors.surfaceHovered;
-    }
-    return colors.surfacePrimary;
-  }
-
-  @override
   Widget build(BuildContext context) {
     final colors = Zeta.of(context).colors;
 
     late final Widget child;
 
-    if (widget.value != null) {
+    if (value != null) {
       child = Text(
-        widget.value!.toString(),
+        value!.toString(),
         maxLines: 1,
         style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-              color: widget.disabled
+              color: disabled
                   ? colors.textDisabled
-                  : widget.selected
+                  : selected
                       ? colors.textInverse
                       : colors.textDefault,
             ),
       );
-    } else if (widget.icon != null) {
+    } else if (icon != null) {
       child = Icon(
-        widget.icon,
-        color: widget.disabled ? colors.iconDisabled : colors.iconDefault,
+        icon,
+        color: disabled ? colors.iconDisabled : colors.iconDefault,
       );
     }
 
@@ -356,26 +307,41 @@ class _PaginationItemState extends State<_PaginationItem> {
         minWidth: _itemWidth,
       ),
       child: Material(
-        // color: widget.selected ? colors.cool[100] : colors.surfacePrimary,
-        borderRadius: widget.rounded ? ZetaRadius.minimal : ZetaRadius.none,
+        borderRadius: rounded ? ZetaRadius.minimal : ZetaRadius.none,
+        color: disabled
+            ? colors.surfaceDisabled
+            : selected
+                ? colors.cool[100]
+                : colors.surfacePrimary,
         child: InkWell(
-          onTap: widget.disabled ? null : widget.onPressed,
-          statesController: _controller,
-          borderRadius: widget.rounded ? ZetaRadius.minimal : ZetaRadius.none,
-          highlightColor: Colors.transparent,
+          onTap: disabled ? null : onPressed,
+          borderRadius: rounded ? ZetaRadius.minimal : ZetaRadius.none,
+          highlightColor: selected ? colors.cool[100] : colors.surfaceSelected,
+          hoverColor: selected ? colors.cool[100] : colors.surfaceHovered,
           enableFeedback: false,
           child: Container(
             alignment: Alignment.center,
             padding: const EdgeInsets.symmetric(horizontal: ZetaSpacing.x1),
             decoration: BoxDecoration(
-              color: _getColor(_controller.value),
-              borderRadius: widget.rounded ? ZetaRadius.minimal : ZetaRadius.none,
+              borderRadius: rounded ? ZetaRadius.minimal : ZetaRadius.none,
             ),
             child: child,
           ),
         ),
       ),
     );
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(ObjectFlagProperty<VoidCallback>.has('onPressed', onPressed))
+      ..add(IntProperty('value', value))
+      ..add(DiagnosticsProperty<IconData?>('icon', icon))
+      ..add(DiagnosticsProperty<bool>('disabled', disabled))
+      ..add(DiagnosticsProperty<bool>('selected', selected))
+      ..add(DiagnosticsProperty<bool>('rounded', rounded));
   }
 }
 
