@@ -19,21 +19,21 @@ class DropdownExample extends StatefulWidget {
 }
 
 class _DropdownExampleState extends State<DropdownExample> {
-  List<ZetaDropdownItem> _children = [
-    ZetaDropdownItem(
+  List<_DropdownItem> _children = [
+    _DropdownItem(
       value: "Item 1",
       leadingIcon: Icon(ZetaIcons.star_round),
     ),
-    ZetaDropdownItem(
+    _DropdownItem(
       value: "Item 2",
       leadingIcon: Icon(ZetaIcons.star_half_round),
     ),
-    ZetaDropdownItem(
+    _DropdownItem(
       value: "Item 3",
     )
   ];
 
-  late ZetaDropdownItem selectedItem = ZetaDropdownItem(
+  late _DropdownItem selectedItem = _DropdownItem(
     value: "Item 1",
     leadingIcon: Icon(ZetaIcons.star_round),
   );

@@ -11,10 +11,7 @@ class DropdownExample extends StatefulWidget {
 }
 
 class _DropdownExampleState extends State<DropdownExample> {
-  ZetaDropdownItem selectedItem = ZetaDropdownItem(
-    value: "Item 1",
-    leadingIcon: Icon(ZetaIcons.star_round),
-  );
+  String selectedItem = "Item 1";
 
   @override
   Widget build(BuildContext context) {
@@ -36,18 +33,18 @@ class _DropdownExampleState extends State<DropdownExample> {
                   items: [
                     ZetaDropdownItem(
                       value: "Item 1",
-                      leadingIcon: Icon(ZetaIcons.star_round),
+                      icon: Icon(ZetaIcons.star_round),
                     ),
                     ZetaDropdownItem(
                       value: "Item 2",
-                      leadingIcon: Icon(ZetaIcons.star_half_round),
+                      icon: Icon(ZetaIcons.star_half_round),
                     ),
                     ZetaDropdownItem(
                       value: "Item 3",
                     )
                   ],
                 ),
-                Text('Selected item : ${selectedItem.value}')
+                Text('Selected item : ${selectedItem}')
               ])),
         ),
       ),

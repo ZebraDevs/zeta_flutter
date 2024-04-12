@@ -3,8 +3,22 @@ import 'package:flutter/material.dart';
 
 import '../../../zeta_flutter.dart';
 
+class ZetaDropdownItem<T> {
+  ZetaDropdownItem({
+    String? label,
+    required this.value,
+    this.icon,
+  }) {
+    this.label = label ?? this.value.toString();
+  }
+
+  late final String label;
+  final T value;
+  final Widget? icon;
+}
+
 /// Class for [ZetaDropdown]
-class ZetaDropdown extends StatefulWidget {
+class ZetaDropdown<T> extends StatefulWidget {
   ///Constructor of [ZetaDropdown]
   const ZetaDropdown({
     super.key,
@@ -16,14 +30,14 @@ class ZetaDropdown extends StatefulWidget {
     this.isMinimized = false,
   });
 
-  /// Input items as list of [ZetaDropdownItem]
-  final List<ZetaDropdownItem> items;
+  /// Input items as list of [_DropdownItem]
+  final List<ZetaDropdownItem<T>> items;
 
   /// Currently selected item
-  final ZetaDropdownItem selectedItem;
+  final T? selectedItem;
 
   /// Handles changes of dropdown menu
-  final ValueSetter<ZetaDropdownItem> onChange;
+  final ValueSetter<T> onChange;
 
   /// {@macro zeta-component-rounded}
   final bool rounded;
@@ -35,27 +49,33 @@ class ZetaDropdown extends StatefulWidget {
   final bool isMinimized;
 
   @override
-  State<ZetaDropdown> createState() => _ZetaDropDownState();
+  State<ZetaDropdown<T>> createState() => _ZetaDropDownState<T>();
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
       ..add(EnumProperty<LeadingStyle>('leadingType', leadingType))
       ..add(DiagnosticsProperty<bool>('rounded', rounded))
-      ..add(
-        ObjectFlagProperty<ValueSetter<ZetaDropdownItem>>.has(
-          'onChange',
-          onChange,
-        ),
-      )
       ..add(DiagnosticsProperty<bool>('isMinimized', isMinimized));
   }
 }
 
-class _ZetaDropDownState extends State<ZetaDropdown> {
+class _ZetaDropDownState<T> extends State<ZetaDropdown<T>> {
   final OverlayPortalController _tooltipController = OverlayPortalController();
   final _link = LayerLink();
   final _menuKey = GlobalKey(); // declare a global key
+
+  ZetaDropdownItem<T>? _selectedItem;
+
+  @override
+  void initState() {
+    super.initState();
+    try {
+      _selectedItem = widget.items.firstWhere((item) => item.value == widget.selectedItem);
+    } catch (e) {
+      _selectedItem = null;
+    }
+  }
 
   /// Returns if click event position is within the header.
   bool _isInHeader(
@@ -95,15 +115,17 @@ class _ZetaDropDownState extends State<ZetaDropdown> {
                       event.position,
                     )) _tooltipController.hide();
                   },
-                  child: ZetaDropDownMenu(
+                  child: _ZetaDropDownMenu<T>(
                     items: widget.items,
-                    selected: widget.selectedItem.value,
+                    selected: widget.selectedItem,
+                    rounded: widget.rounded,
                     width: _size,
                     boxType: widget.leadingType,
-                    onPress: (item) {
-                      if (item != null) {
-                        widget.onChange(item);
-                      }
+                    onSelected: (item) {
+                      setState(() {
+                        _selectedItem = item;
+                      });
+                      widget.onChange(item.value);
                       _tooltipController.hide();
                     },
                   ),
@@ -111,12 +133,7 @@ class _ZetaDropDownState extends State<ZetaDropdown> {
               ),
             );
           },
-          child: widget.selectedItem.copyWith(
-            round: widget.rounded,
-            focus: _tooltipController.isShowing,
-            press: onTap,
-            inputKey: _menuKey,
-          ),
+          child: GestureDetector(onTap: onTap, child: Text(_selectedItem?.label ?? 'Select...')),
         ),
       ),
     );
@@ -152,43 +169,33 @@ enum LeadingStyle {
   radio
 }
 
-/// Class for [ZetaDropdownItem]
-class ZetaDropdownItem extends StatefulWidget {
-  ///Public constructor for [ZetaDropdownItem]
-  const ZetaDropdownItem({
+/// Class for [_DropdownItem]
+class _DropdownItem<T> extends StatefulWidget {
+  ///Public constructor for [_DropdownItem]
+  const _DropdownItem({
     super.key,
     required this.value,
     this.leadingIcon,
-  })  : rounded = true,
-        selected = false,
-        leadingType = LeadingStyle.none,
-        itemKey = null,
-        onPress = null;
-
-  const ZetaDropdownItem._({
-    super.key,
-    required this.rounded,
-    required this.selected,
-    required this.value,
-    this.leadingIcon,
-    this.onPress,
-    this.leadingType,
-    this.itemKey,
+    this.rounded = true,
+    this.selected = false,
+    this.leadingType = LeadingStyle.none,
+    this.itemKey = null,
+    this.onPress = null,
   });
 
   /// {@macro zeta-component-rounded}
   final bool rounded;
 
-  /// If [ZetaDropdownItem] is selected
+  /// If [_DropdownItem] is selected
   final bool selected;
 
-  /// Value of [ZetaDropdownItem]
-  final String value;
+  /// Value of [_DropdownItem]
+  final ZetaDropdownItem<T> value;
 
-  /// Leading icon for [ZetaDropdownItem]
+  /// Leading icon for [_DropdownItem]
   final Icon? leadingIcon;
 
-  /// Handles clicking for [ZetaDropdownItem]
+  /// Handles clicking for [_DropdownItem]
   final VoidCallback? onPress;
 
   /// If checkbox is to be shown, the type of it.
@@ -197,35 +204,14 @@ class ZetaDropdownItem extends StatefulWidget {
   /// Key for item
   final GlobalKey? itemKey;
 
-  /// Returns copy of [ZetaDropdownItem] with those private variables included
-  ZetaDropdownItem copyWith({
-    bool? round,
-    bool? focus,
-    LeadingStyle? boxType,
-    VoidCallback? press,
-    GlobalKey? inputKey,
-  }) {
-    return ZetaDropdownItem._(
-      rounded: round ?? rounded,
-      selected: focus ?? selected,
-      onPress: press ?? onPress,
-      leadingType: boxType ?? leadingType,
-      itemKey: inputKey ?? itemKey,
-      value: value,
-      leadingIcon: leadingIcon,
-      key: key,
-    );
-  }
-
   @override
-  State<ZetaDropdownItem> createState() => _ZetaDropdownMenuItemState();
+  State<_DropdownItem> createState() => _ZetaDropdownMenuItemState();
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty<bool>('rounded', rounded))
       ..add(DiagnosticsProperty<bool>('selected', selected))
-      ..add(StringProperty('value', value))
       ..add(ObjectFlagProperty<VoidCallback?>.has('onPress', onPress))
       ..add(EnumProperty<LeadingStyle?>('leadingType', leadingType))
       ..add(
@@ -237,7 +223,7 @@ class ZetaDropdownItem extends StatefulWidget {
   }
 }
 
-class _ZetaDropdownMenuItemState extends State<ZetaDropdownItem> {
+class _ZetaDropdownMenuItemState extends State<_DropdownItem> {
   final controller = MaterialStatesController();
 
   @override
@@ -266,7 +252,7 @@ class _ZetaDropdownMenuItemState extends State<ZetaDropdownItem> {
             _getLeadingWidget(),
             const SizedBox(width: ZetaSpacing.x3),
             Text(
-              widget.value,
+              widget.value.label,
             ),
           ],
         ).paddingVertical(ZetaSpacing.x2_5),
@@ -347,13 +333,11 @@ class _ZetaDropdownMenuItemState extends State<ZetaDropdownItem> {
   }
 }
 
-///Class for [ZetaDropDownMenu]
-class ZetaDropDownMenu extends StatefulWidget {
-  ///Constructor for [ZetaDropDownMenu]
-  const ZetaDropDownMenu({
-    super.key,
+class _ZetaDropDownMenu<T> extends StatefulWidget {
+  ///Constructor for [_ZetaDropDownMenu]
+  const _ZetaDropDownMenu({
     required this.items,
-    required this.onPress,
+    required this.onSelected,
     required this.selected,
     this.rounded = false,
     this.width,
@@ -361,13 +345,12 @@ class ZetaDropDownMenu extends StatefulWidget {
   });
 
   /// Input items for the menu
-  final List<ZetaDropdownItem> items;
+  final List<ZetaDropdownItem<T>> items;
 
   ///Handles clicking of item in menu
-  final ValueSetter<ZetaDropdownItem?> onPress;
+  final ValueSetter<ZetaDropdownItem<T>> onSelected;
 
-  /// If item in menu is the currently selected item
-  final String selected;
+  final T? selected;
 
   /// {@macro zeta-component-rounded}
   final bool rounded;
@@ -379,25 +362,18 @@ class ZetaDropDownMenu extends StatefulWidget {
   final LeadingStyle? boxType;
 
   @override
-  State<ZetaDropDownMenu> createState() => _ZetaDropDownMenuState();
+  State<_ZetaDropDownMenu<T>> createState() => _ZetaDropDownMenuState<T>();
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(
-        ObjectFlagProperty<ValueSetter<ZetaDropdownItem?>>.has(
-          'onPress',
-          onPress,
-        ),
-      )
       ..add(DiagnosticsProperty<bool>('rounded', rounded))
       ..add(DoubleProperty('width', width))
-      ..add(EnumProperty<LeadingStyle?>('boxType', boxType))
-      ..add(StringProperty('selected', selected));
+      ..add(EnumProperty<LeadingStyle?>('boxType', boxType));
   }
 }
 
-class _ZetaDropDownMenuState extends State<ZetaDropDownMenu> {
+class _ZetaDropDownMenuState<T> extends State<_ZetaDropDownMenu<T>> {
   @override
   Widget build(BuildContext context) {
     final colors = Zeta.of(context).colors;
@@ -424,13 +400,9 @@ class _ZetaDropDownMenuState extends State<ZetaDropDownMenu> {
               return Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  item.copyWith(
-                    round: widget.rounded,
-                    focus: widget.selected == item.value,
-                    boxType: widget.boxType,
-                    press: () {
-                      widget.onPress(item);
-                    },
+                  _DropdownItem(
+                    value: item,
+                    onPress: () => widget.onSelected(item),
                   ),
                   const SizedBox(height: ZetaSpacing.x1),
                 ],
