@@ -28,12 +28,16 @@ class ZetaPagination extends StatefulWidget {
     this.rounded = true,
     this.disabled = false,
     super.key,
-  }) : assert(
+  })  : assert(
           pages > 0,
           'Pages must be greater than zero',
+        ),
+        assert(
+          currentPage >= 1 && currentPage <= pages,
+          'currentPage must be greater than 1 and less than the number of pages',
         );
 
-  /// The number of pages to switch between.
+  /// The number of pages.
   final int pages;
 
   /// The current page.
@@ -198,7 +202,6 @@ class _ZetaPaginationState extends State<ZetaPagination> {
             ),
         padding: const EdgeInsets.symmetric(
           horizontal: ZetaSpacing.x3,
-          // vertical: ZetaSpacing.x2,
         ),
       ),
     );
@@ -216,22 +219,22 @@ class _ZetaPaginationState extends State<ZetaPagination> {
             _PaginationItem(
               icon: widget.rounded ? ZetaIcons.first_page_round : ZetaIcons.first_page_sharp,
               onPressed: () => _onItemPressed(1),
-              disabled: widget.disabled || _currentPage == 1,
+              disabled: widget.disabled,
               rounded: widget.rounded,
             ),
           _PaginationItem(
             icon: widget.rounded ? ZetaIcons.chevron_left_round : ZetaIcons.chevron_left_sharp,
             onPressed: () => _onItemPressed(max(1, _currentPage - 1)),
-            disabled: widget.disabled || _currentPage == 1,
+            disabled: widget.disabled,
             rounded: widget.rounded,
           ),
           if (!showDropdown) ...numberedPaginationItems else paginationDropdown,
           _PaginationItem(
-            icon: widget.rounded ? ZetaIcons.chevron_right_round : ZetaIcons.cellular_signal_sharp,
+            icon: widget.rounded ? ZetaIcons.chevron_right_round : ZetaIcons.chevron_right_sharp,
             onPressed: () => _onItemPressed(
               min(widget.pages, _currentPage + 1),
             ),
-            disabled: widget.disabled || _currentPage == widget.pages,
+            disabled: widget.disabled,
             rounded: widget.rounded,
           ),
           if (!showDropdown)
@@ -240,7 +243,7 @@ class _ZetaPaginationState extends State<ZetaPagination> {
               onPressed: () => _onItemPressed(
                 widget.pages,
               ),
-              disabled: widget.disabled || _currentPage == widget.pages,
+              disabled: widget.disabled,
               rounded: widget.rounded,
             ),
         ];
@@ -303,6 +306,9 @@ class _PaginationItemState extends State<_PaginationItem> {
   Color _getColor(Set<MaterialState> states) {
     final colors = Zeta.of(context).colors;
 
+    if (widget.disabled) {
+      return colors.surfaceDisabled;
+    }
     if (widget.selected) {
       return colors.cool[100]!;
     }
@@ -337,7 +343,10 @@ class _PaginationItemState extends State<_PaginationItem> {
             ),
       );
     } else if (widget.icon != null) {
-      child = Icon(widget.icon);
+      child = Icon(
+        widget.icon,
+        color: widget.disabled ? colors.iconDisabled : colors.iconDefault,
+      );
     }
 
     return ConstrainedBox(
@@ -347,10 +356,10 @@ class _PaginationItemState extends State<_PaginationItem> {
         minWidth: _itemWidth,
       ),
       child: Material(
-        color: widget.selected ? colors.cool[100] : colors.surfacePrimary,
+        // color: widget.selected ? colors.cool[100] : colors.surfacePrimary,
         borderRadius: widget.rounded ? ZetaRadius.minimal : ZetaRadius.none,
         child: InkWell(
-          onTap: widget.onPressed,
+          onTap: widget.disabled ? null : widget.onPressed,
           statesController: _controller,
           borderRadius: widget.rounded ? ZetaRadius.minimal : ZetaRadius.none,
           highlightColor: Colors.transparent,

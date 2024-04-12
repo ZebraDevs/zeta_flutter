@@ -12,18 +12,44 @@ class PaginationExample extends StatefulWidget {
 }
 
 class _PaginationExampleState extends State<PaginationExample> {
+  int currentPage = 1;
+
   @override
   Widget build(BuildContext context) {
     return ExampleScaffold(
       name: PaginationExample.name,
-      child: Column(
-        children: [
-          ZetaPagination(pages: 1000),
-          ZetaPagination(
-            pages: 9,
-            type: ZetaPaginationType.dropdown,
+      child: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(64),
+          child: Column(
+            children: [
+              Expanded(
+                child: Center(
+                  child: Text(
+                    'Current Page: ${currentPage}',
+                    style: Theme.of(context).textTheme.bodyLarge,
+                  ),
+                ),
+              ),
+              ZetaPagination(
+                pages: 10,
+                currentPage: currentPage,
+                onChange: (val) => setState(() {
+                  currentPage = val;
+                }),
+              ),
+              const SizedBox(height: 8),
+              ZetaPagination(
+                pages: 10,
+                currentPage: currentPage,
+                onChange: (val) => setState(() {
+                  currentPage = val;
+                }),
+                type: ZetaPaginationType.dropdown,
+              ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }
