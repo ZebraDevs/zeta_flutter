@@ -20,6 +20,7 @@ import 'pages/components/dropdown_widgetbook.dart';
 import 'pages/components/in_page_banner_widgetbook.dart';
 import 'pages/components/list_item_widgetbook.dart';
 import 'pages/components/navigation_bar_widgetbook.dart';
+import 'pages/components/pagination_widgetbook.dart';
 import 'pages/components/password_input_widgetbook.dart';
 import 'pages/components/progress_widgetbook.dart';
 import 'pages/components/radio_widgetbook.dart';
@@ -102,6 +103,7 @@ class HotReload extends StatelessWidget {
             WidgetbookUseCase(name: 'Dial Pad', builder: (context) => dialPadUseCase(context)),
             WidgetbookUseCase(name: 'List Item', builder: (context) => listItemUseCase(context)),
             WidgetbookUseCase(name: 'Navigation Bar', builder: (context) => navigationBarUseCase(context)),
+            WidgetbookUseCase(name: 'Pagination', builder: (context) => paginationUseCase(context)),
             WidgetbookComponent(
               name: 'Progress',
               useCases: [

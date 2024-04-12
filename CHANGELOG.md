@@ -5,6 +5,24 @@
 - [`ed1210d`](https://github.com/zebratechnologies/zeta-flutter/commit/ed1210d6cbc173aef8b1adf0d20ee91d3e87f2c3) - Update Widgetbook to correct functionality _(PR [#52](https://github.com/zebratechnologies/zeta-flutter/pull/52) by [@thelukewalton](https://github.com/thelukewalton))_
 - [`c627d7a`](https://github.com/zebratechnologies/zeta-flutter/commit/c627d7ab19d3f33e30c406441702ff6134557f14) - Tidy up example app _(PR [#53](https://github.com/zebratechnologies/zeta-flutter/pull/53) by [@thelukewalton](https://github.com/thelukewalton))_
 
+## [0.6.0](https://github.com/ZebraDevs/zeta_flutter/compare/v0.5.0...v0.6.0) (2024-04-12)
+
+
+### Features
+
+* Add List Item ([#5](https://github.com/ZebraDevs/zeta_flutter/issues/5)) ([64879e1](https://github.com/ZebraDevs/zeta_flutter/commit/64879e1756b1031c416861216dc0199b33a78827))
+* **main:** SnackBar ([#10](https://github.com/ZebraDevs/zeta_flutter/issues/10)) ([cbf46d9](https://github.com/ZebraDevs/zeta_flutter/commit/cbf46d97acf2a5533d73456f142b01b9ed6352d1))
+* **main:** Stepper ([#17](https://github.com/ZebraDevs/zeta_flutter/issues/17)) ([cab9f85](https://github.com/ZebraDevs/zeta_flutter/commit/cab9f859f288aa21769d6783e70aa2525fdaf0cd))
+* **main:** Tabs ([#11](https://github.com/ZebraDevs/zeta_flutter/issues/11)) ([31bc20a](https://github.com/ZebraDevs/zeta_flutter/commit/31bc20a7ee22844bf272b633f44994e1d6e50bc4))
+
+
+### Bug Fixes
+
+* Fix button group immutability ([#1](https://github.com/ZebraDevs/zeta_flutter/issues/1)) ([0fdf9da](https://github.com/ZebraDevs/zeta_flutter/commit/0fdf9da2520d65decd80cfb3a976daff74af38b0))
+* **main:** ListItem disabled color ([#8](https://github.com/ZebraDevs/zeta_flutter/issues/8)) ([ac996d9](https://github.com/ZebraDevs/zeta_flutter/commit/ac996d942450e8004d920c2a93b8009d0b5960ee))
+* switch on web ([#14](https://github.com/ZebraDevs/zeta_flutter/issues/14)) ([554fe7f](https://github.com/ZebraDevs/zeta_flutter/commit/554fe7f54fc3099f140bf7648fe78ce5e15d5b0f))
+* Widgetbook icons and reusable snippets ([#35](https://github.com/ZebraDevs/zeta_flutter/issues/35)) ([0d23f7c](https://github.com/ZebraDevs/zeta_flutter/commit/0d23f7cbb9fdbb6114b47837b99b83829e74c79a))
+
 ## [0.5.0](https://github.com/ZebraDevs/zeta_flutter/compare/v0.4.0...v0.5.0) (2024-03-05)
 
 
