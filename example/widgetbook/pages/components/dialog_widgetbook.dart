@@ -3,6 +3,7 @@ import 'package:widgetbook/widgetbook.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 import '../../test/test_components.dart';
+import '../../utils/utils.dart';
 
 Widget dialogUseCase(BuildContext context) {
   final zeta = Zeta.of(context);
@@ -16,6 +17,12 @@ Widget dialogUseCase(BuildContext context) {
         'Lorem ipsum dolor sit amet, conse ctetur adipiscing elit, sed do eiusm od tempor incididunt ut labore et do lore magna aliqua.',
   );
   final rounded = context.knobs.boolean(label: 'Rounded', initialValue: true);
+  final iconData = iconKnob(
+    context,
+    name: "Icon",
+    rounded: rounded,
+    initial: rounded ? Icons.warning_rounded : Icons.warning_sharp,
+  );
   final barrierDismissible = context.knobs.boolean(label: 'Barrier dismissible', initialValue: true);
   final headerAlignment = context.knobs.list<ZetaDialogHeaderAlignment>(
     label: 'Header alignment',
@@ -38,7 +45,7 @@ Widget dialogUseCase(BuildContext context) {
                 headerAlignment: headerAlignment,
                 title: title,
                 icon: Icon(
-                  ZetaIcons.warning_round,
+                  iconData,
                   color: zeta.colors.warning,
                 ),
                 message: message,
@@ -56,7 +63,7 @@ Widget dialogUseCase(BuildContext context) {
                 headerAlignment: headerAlignment,
                 title: title,
                 icon: Icon(
-                  ZetaIcons.warning_round,
+                  iconData,
                   color: zeta.colors.warning,
                 ),
                 message: message,
@@ -75,7 +82,7 @@ Widget dialogUseCase(BuildContext context) {
                 headerAlignment: headerAlignment,
                 title: title,
                 icon: Icon(
-                  ZetaIcons.warning_round,
+                  iconData,
                   color: zeta.colors.warning,
                 ),
                 message: message,
