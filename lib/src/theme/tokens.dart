@@ -111,6 +111,9 @@ class ZetaRadius {
   /// Border radius used when rounded parameter is true; 8px radius.
   static const BorderRadius rounded = BorderRadius.all(Radius.circular(ZetaSpacing.xs));
 
+  /// Large border radius; 16px radius.
+  static const BorderRadius large = BorderRadius.all(Radius.circular(ZetaSpacing.b));
+
   /// Wide border radius; 24px radius.
   static const BorderRadius wide = BorderRadius.all(Radius.circular(ZetaSpacing.m));
 
