@@ -174,7 +174,17 @@ class _ZetaAccordionState extends State<ZetaAccordion> with TickerProviderStateM
               axisAlignment: -1,
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(ZetaSpacing.x4, 0, ZetaSpacing.x4, ZetaSpacing.x4),
-                child: DefaultTextStyle(style: ZetaTextStyles.titleSmall, child: widget.child ?? const SizedBox()),
+                child: Theme(
+                  data: Theme.of(context).copyWith(
+                    listTileTheme: ListTileThemeData(
+                      titleTextStyle: ZetaTextStyles.titleSmall.apply(color: zetaColors.textDefault),
+                    ),
+                  ),
+                  child: DefaultTextStyle(
+                    style: ZetaTextStyles.titleSmall,
+                    child: widget.child ?? const SizedBox(),
+                  ),
+                ),
               ),
             ),
           ],

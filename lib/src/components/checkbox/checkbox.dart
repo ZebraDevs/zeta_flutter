@@ -207,7 +207,7 @@ class _CheckboxState extends State<_Checkbox> {
           Flexible(
             child: Padding(
               padding: const EdgeInsets.only(left: ZetaSpacing.s),
-              child: Text(widget.label!, style: ZetaTextStyles.bodyLarge),
+              child: Text(widget.label!, style: ZetaTextStyles.bodyMedium),
             ),
           ),
         ],

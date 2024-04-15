@@ -16,7 +16,7 @@ String iconLabelBuilder(IconData? value, [bool rounded = true]) {
 
 List<IconData> iconOptions(rounded) => rounded ? iconsRounded.values.toList() : iconsSharp.values.toList();
 
-String enumLabelBuilder(Enum value) => value.name.split('.').last.capitalize();
+String enumLabelBuilder(Enum? value) => value?.name.split('.').last.capitalize() ?? '';
 
 IconData? iconKnob(BuildContext context,
     {bool rounded = true, bool nullable = false, String name = 'Icon', final IconData? initial}) {

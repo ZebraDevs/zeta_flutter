@@ -196,7 +196,9 @@ class _ZetaGroupButtonState extends State<ZetaGroupButton> {
     super.initState();
     controller = MaterialStatesController();
     controller.addListener(() {
-      if (!controller.value.contains(MaterialState.disabled) && context.mounted && mounted) {
+      if (!controller.value.contains(MaterialState.disabled) &&
+          context.mounted &&
+          mounted) {
         // TODO(UX-1005): setState causing exception when going from disabled to enabled.
         setState(() {});
       }
@@ -215,9 +217,11 @@ class _ZetaGroupButtonState extends State<ZetaGroupButton> {
   Widget build(BuildContext context) {
     final colors = Zeta.of(context).colors;
 
-    final borderType = widget.rounded ? ZetaWidgetBorder.rounded : ZetaWidgetBorder.sharp;
+    final borderType =
+        widget.rounded ? ZetaWidgetBorder.rounded : ZetaWidgetBorder.sharp;
 
-    final BorderSide borderSide = _getBorderSide(controller.value, colors, false);
+    final BorderSide borderSide =
+        _getBorderSide(controller.value, colors, false);
 
     return Container(
       decoration: BoxDecoration(
@@ -242,14 +246,15 @@ class _ZetaGroupButtonState extends State<ZetaGroupButton> {
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              if (widget.icon != null) Icon(widget.icon),
-              Text(widget.label!),
+              if (widget.icon != null) Icon(widget.icon, size: ZetaSpacing.x5),
+              Text(widget.label ?? '', style: ZetaTextStyles.labelMedium),
               if (widget.dropdown != null) // TODO(UX-1006): Dropdown
                 Icon(
-                  widget.rounded ? ZetaIcons.expand_more_round : ZetaIcons.expand_more_sharp,
-                  size: 20,
-                ),
-            ],
+                    widget.rounded
+                        ? ZetaIcons.expand_more_round
+                        : ZetaIcons.expand_more_sharp,
+                    size: ZetaSpacing.x5),
+            ].divide(const SizedBox(width: ZetaSpacing.x1)).toList(),
           ).paddingAll(_padding),
         ),
       ),

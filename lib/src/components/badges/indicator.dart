@@ -123,8 +123,10 @@ class ZetaIndicator extends StatelessWidget {
         return Center(
           child: Text(
             value.formatMaxChars(),
-            style: (size == ZetaWidgetSize.large ? ZetaTextStyles.labelIndicator : ZetaTextStyles.labelTiny)
-                .apply(color: foregroundColor),
+            style: ZetaTextStyles.labelIndicator.copyWith(
+              color: foregroundColor,
+              fontSize: size == ZetaWidgetSize.large ? null : 11,
+            ), // TODO(thelukwalton): Awaiting updated design.
           ),
         );
     }

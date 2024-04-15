@@ -97,7 +97,7 @@ class _ZetaChipState extends State<ZetaChip> {
         shape: MaterialStateProperty.all(
           RoundedRectangleBorder(borderRadius: widget.rounded ? ZetaRadius.full : ZetaRadius.none),
         ),
-        textStyle: MaterialStateProperty.all(ZetaTextStyles.bodyMedium),
+        textStyle: MaterialStateProperty.all(ZetaTextStyles.bodySmall),
         backgroundColor: MaterialStateProperty.resolveWith((states) {
           if (states.contains(MaterialState.disabled)) {
             return colors.surfaceDisabled;

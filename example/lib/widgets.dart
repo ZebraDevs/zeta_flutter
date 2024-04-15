@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:zeta_example/utils/theme_color_switch.dart';
 import 'package:zeta_example/utils/theme_constrast_switch.dart';
 import 'package:zeta_example/utils/theme_mode_switch.dart';
-import 'package:zeta_flutter/zeta_flutter.dart';
 
 class ExampleScaffold extends StatelessWidget {
   final String name;
@@ -29,10 +28,7 @@ class ExampleScaffold extends StatelessWidget {
       floatingActionButton: floatingActionButton,
       appBar: AppBar(
         centerTitle: false,
-        title: Text(
-          name,
-          style: ZetaTextStyles.titleMedium,
-        ),
+        title: Text(name),
         backgroundColor: colors.primary,
         foregroundColor: colors.onPrimary,
         actions: [

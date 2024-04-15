@@ -46,13 +46,13 @@ class ZetaPriorityPill extends StatelessWidget {
               shape: rounded ? BoxShape.circle : BoxShape.rectangle,
               color: backgroundColor,
             ),
-            child: Text(index.formatMaxChars(), style: ZetaTextStyles.bodyMedium.apply(color: foregroundColor)),
+            child: Text(index.formatMaxChars(), style: ZetaTextStyles.bodySmall.apply(color: foregroundColor)),
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: ZetaSpacing.x2, vertical: ZetaSpacing.x1),
             child: Text(
               priority,
-              style: ZetaTextStyles.bodyMedium,
+              style: ZetaTextStyles.bodySmall,
               overflow: TextOverflow.ellipsis,
             ),
           ),
