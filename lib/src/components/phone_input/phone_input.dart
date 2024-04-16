@@ -175,6 +175,7 @@ class _ZetaPhoneInputState extends State<ZetaPhoneInput> {
                   ),
                   child: CountriesDialog<Country>(
                     zeta: zeta,
+                    useRootNavigator: widget.useRootNavigator,
                     enabled: widget.enabled,
                     button: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
