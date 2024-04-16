@@ -20,6 +20,7 @@ class ZetaPhoneInput extends StatefulWidget {
     this.countryDialCode,
     this.phoneNumber,
     this.countries,
+    this.useRootNavigator = true,
   });
 
   /// If provided, displays a label above the input field.
@@ -55,6 +56,9 @@ class ZetaPhoneInput extends StatefulWidget {
   /// List of countries ISO 3166-1 alpha-2 codes
   final List<String>? countries;
 
+  /// Determines if the root navigator should be used in the [CountriesDialog].
+  final bool useRootNavigator;
+
   @override
   State<ZetaPhoneInput> createState() => _ZetaPhoneInputState();
   @override
@@ -70,7 +74,8 @@ class ZetaPhoneInput extends StatefulWidget {
       ..add(ObjectFlagProperty<void Function(Map<String, String>? p1)?>.has('onChanged', onChanged))
       ..add(StringProperty('countryDialCode', countryDialCode))
       ..add(StringProperty('phoneNumber', phoneNumber))
-      ..add(IterableProperty<String>('countries', countries));
+      ..add(IterableProperty<String>('countries', countries))
+      ..add(DiagnosticsProperty<bool>('useRootNavigator', useRootNavigator));
   }
 }
 
