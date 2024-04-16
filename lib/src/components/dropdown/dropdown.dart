@@ -99,7 +99,8 @@ class ZetaDropdown<T> extends StatefulWidget {
       ..add(IterableProperty<ZetaDropdownItem<T>>('items', items))
       ..add(DiagnosticsProperty<T?>('selectedItem', selectedItem))
       ..add(ObjectFlagProperty<ValueSetter<T>?>.has('onChange', onChange))
-      ..add(EnumProperty<ZetaDropdownSize>('size', size));
+      ..add(EnumProperty<ZetaDropdownSize>('size', size))
+      ..add(DiagnosticsProperty<bool>('disabled', disabled));
   }
 }
 
@@ -184,7 +185,7 @@ class _ZetaDropDownState<T> extends State<ZetaDropdown<T>> {
                   },
                   child: _ZetaDropDownMenu<T>(
                     items: widget.items,
-                    selected: widget.selectedItem,
+                    selected: _selectedItem?.value,
                     rounded: widget.rounded,
                     allocateLeadingSpace: _allocateLeadingSpace,
                     width: _size,
@@ -313,21 +314,35 @@ class _DropdownItemState<T> extends State<_DropdownItem<T>> {
       );
     }
 
-    return DefaultTextStyle(
-      style: ZetaTextStyles.bodyMedium,
-      child: OutlinedButton(
-        key: widget.itemKey,
-        onPressed: widget.onPress,
-        style: _getStyle(colors),
-        child: Row(
-          children: [
-            const SizedBox(width: ZetaSpacing.x3),
-            if (leading != null) leading,
-            Text(
-              widget.value.label,
-            ),
-          ],
-        ).paddingVertical(ZetaSpacing.x2_5),
+    return ConstrainedBox(
+      constraints: const BoxConstraints(maxHeight: ZetaSpacing.x10),
+      child: DefaultTextStyle(
+        style: ZetaTextStyles.bodyMedium,
+        child: OutlinedButton(
+          key: widget.itemKey,
+          onPressed: widget.onPress,
+          style: _getStyle(colors),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const SizedBox(width: ZetaSpacing.x3),
+              if (leading != null) leading,
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.only(right: ZetaSpacing.x2),
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: FittedBox(
+                      child: Text(
+                        widget.value.label,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ).paddingVertical(ZetaSpacing.x2_5),
+        ),
       ),
     );
   }

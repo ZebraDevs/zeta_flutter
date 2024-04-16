@@ -15,38 +15,58 @@ class _DropdownExampleState extends State<DropdownExample> {
 
   @override
   Widget build(BuildContext context) {
+    final items = [
+      ZetaDropdownItem(
+        value: "Item 1",
+        icon: Icon(ZetaIcons.star_round),
+      ),
+      ZetaDropdownItem(
+        value: "Item 2",
+        icon: Icon(ZetaIcons.star_half_round),
+      ),
+      ZetaDropdownItem(
+        value: "Item 3",
+      )
+    ];
+
     return ExampleScaffold(
       name: "Dropdown",
-      child: Center(
-        child: SingleChildScrollView(
-          child: SizedBox(
-              width: 320,
-              child: Column(children: [
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Center(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
                 ZetaDropdown(
-                  leadingType: LeadingStyle.checkbox,
+                  disabled: true,
+                  type: ZetaDropdownMenuType.standard,
                   onChange: (value) {
                     setState(() {
                       selectedItem = value;
                     });
                   },
                   selectedItem: selectedItem,
-                  items: [
-                    ZetaDropdownItem(
-                      value: "Item 1",
-                      icon: Icon(ZetaIcons.star_round),
-                    ),
-                    ZetaDropdownItem(
-                      value: "Item 2",
-                      icon: Icon(ZetaIcons.star_half_round),
-                    ),
-                    ZetaDropdownItem(
-                      value: "Item 3",
-                    )
-                  ],
+                  items: items,
                 ),
                 Text('Selected item : ${selectedItem}')
-              ])),
-        ),
+              ],
+            ),
+          ),
+          ZetaDropdown(
+            items: items,
+            selectedItem: selectedItem,
+            type: ZetaDropdownMenuType.checkbox,
+          ),
+          ZetaDropdown(
+            items: items,
+            selectedItem: selectedItem,
+            size: ZetaDropdownSize.mini,
+            type: ZetaDropdownMenuType.radio,
+          ),
+        ],
       ),
     );
   }
