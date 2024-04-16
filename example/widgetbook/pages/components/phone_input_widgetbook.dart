@@ -22,6 +22,7 @@ Widget phoneInputUseCase(BuildContext context) {
             label: 'Phone number',
             hint: 'Enter your phone number',
             countries: countries.isEmpty ? null : countries.toUpperCase().split(','),
+            useRootNavigator: false,
           ),
         );
       },
