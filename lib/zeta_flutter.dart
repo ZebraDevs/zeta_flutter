@@ -31,6 +31,7 @@ export 'src/components/list_item/list_item.dart';
 export 'src/components/navigation bar/navigation_bar.dart';
 export 'src/components/pagination/pagination.dart';
 export 'src/components/password/password_input.dart';
+export 'src/components/phone_input/phone_input.dart';
 export 'src/components/progress/progress_bar.dart';
 export 'src/components/progress/progress_circle.dart';
 export 'src/components/radio/radio.dart';
