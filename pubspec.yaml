@@ -45,4 +45,6 @@ flutter:
     - family: zeta-icons-sharp
       fonts:
         - asset: lib/src/assets/fonts/zeta-icons-sharp.ttf
+  assets:
+    - lib/src/assets/flags/
   uses-material-design: true
