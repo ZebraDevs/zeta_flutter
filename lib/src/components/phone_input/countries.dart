@@ -178,6 +178,11 @@ class Countries {
       dialCode: '+267',
     ),
     const Country(
+      isoCode: 'BV',
+      name: 'Bouvet Island',
+      dialCode: '+47',
+    ),
+    const Country(
       isoCode: 'BR',
       name: 'Brazil',
       dialCode: '+55',
@@ -473,6 +478,11 @@ class Countries {
       dialCode: '+502',
     ),
     const Country(
+      isoCode: 'GG',
+      name: 'Guernsey',
+      dialCode: '+44',
+    ),
+    const Country(
       isoCode: 'GN',
       name: 'Guinea',
       dialCode: '+224',
@@ -548,6 +558,11 @@ class Countries {
       dialCode: '+353',
     ),
     const Country(
+      isoCode: 'IM',
+      name: 'Isle of Man',
+      dialCode: '+44',
+    ),
+    const Country(
       isoCode: 'IL',
       name: 'Israel',
       dialCode: '+972',
@@ -566,6 +581,11 @@ class Countries {
       isoCode: 'JP',
       name: 'Japan',
       dialCode: '+81',
+    ),
+    const Country(
+      isoCode: 'JE',
+      name: 'Jersey',
+      dialCode: '+44',
     ),
     const Country(
       isoCode: 'JO',
@@ -1063,6 +1083,11 @@ class Countries {
       dialCode: '+597',
     ),
     const Country(
+      isoCode: 'SJ',
+      name: 'Svalbard and Jan Mayen',
+      dialCode: '+47',
+    ),
+    const Country(
       isoCode: 'SZ',
       name: 'Swaziland',
       dialCode: '+268',
@@ -1169,7 +1194,7 @@ class Countries {
     ),
     const Country(
       isoCode: 'GB',
-      name: 'Great Britain and Northern Ireland',
+      name: 'United Kingdom of Great Britain and Northern Ireland',
       dialCode: '+44',
     ),
     const Country(
