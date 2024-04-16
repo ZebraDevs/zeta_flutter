@@ -134,7 +134,7 @@ ButtonStyle buttonStyle(
     }),
     side: MaterialStateProperty.resolveWith((Set<MaterialState> states) {
       if (type.border && states.contains(MaterialState.disabled)) {
-        return BorderSide(color: colors.cool.shade40);
+        return BorderSide(color: colors.borderDisabled);
       }
       // TODO(thelukewalton): This removes a defualt border when focused, rather than adding a second border when focused.
       if (states.contains(MaterialState.focused)) {
@@ -142,7 +142,7 @@ ButtonStyle buttonStyle(
       }
       if (type.border) {
         return BorderSide(
-          color: type == ZetaButtonType.outline ? colors.primary.border : colors.borderDefault,
+          color: type == ZetaButtonType.outline ? colors.primary.border : colors.borderSubtle,
         );
       }
 
