@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -53,8 +55,9 @@ class ZetaDropdown<T> extends StatefulWidget {
   const ZetaDropdown({
     required this.items,
     this.onChange,
-    required this.selectedItem,
+    this.selectedItem,
     this.rounded = true,
+    this.disabled = false,
     this.type = ZetaDropdownMenuType.standard,
     this.size = ZetaDropdownSize.standard,
     super.key,
@@ -71,6 +74,9 @@ class ZetaDropdown<T> extends StatefulWidget {
 
   /// {@macro zeta-component-rounded}
   final bool rounded;
+
+  /// Disables the dropdown.
+  final bool disabled;
 
   /// The type of the dropdown menu.
   ///
@@ -112,6 +118,25 @@ class _ZetaDropDownState<T> extends State<ZetaDropdown<T>> {
   @override
   void initState() {
     super.initState();
+    _setSelectedItem();
+  }
+
+  @override
+  void didUpdateWidget(ZetaDropdown<T> oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.selectedItem != widget.selectedItem) {
+      setState(_setSelectedItem);
+    }
+    if (widget.disabled) {
+      unawaited(
+        Future<void>.delayed(Duration.zero).then(
+          (value) => _tooltipController.hide(),
+        ),
+      );
+    }
+  }
+
+  void _setSelectedItem() {
     try {
       _selectedItem = widget.items.firstWhere((item) => item.value == widget.selectedItem);
     } catch (e) {
@@ -178,9 +203,10 @@ class _ZetaDropDownState<T> extends State<ZetaDropdown<T>> {
             );
           },
           child: _DropdownItem(
-            onPress: onTap,
+            onPress: !widget.disabled ? onTap : null,
             value: _selectedItem ?? widget.items.first,
-            allocateLeadingSpace: widget.type != ZetaDropdownMenuType.standard || _selectedItem?.icon != null,
+            allocateLeadingSpace: widget.type == ZetaDropdownMenuType.standard && _selectedItem?.icon != null,
+            rounded: widget.rounded,
             key: _headerKey,
           ),
         ),
@@ -213,7 +239,7 @@ class _DropdownItem<T> extends StatefulWidget {
     super.key,
     required this.value,
     required this.allocateLeadingSpace,
-    this.rounded = true,
+    required this.rounded,
     this.selected = false,
     this.menuType = ZetaDropdownMenuType.standard,
     this.itemKey,
@@ -460,6 +486,7 @@ class _ZetaDropDownMenuState<T> extends State<_ZetaDropDownMenu<T>> {
                     selected: item.value == widget.selected,
                     allocateLeadingSpace: widget.allocateLeadingSpace,
                     menuType: widget.menuType,
+                    rounded: widget.rounded,
                   );
                 })
                 .divide(const SizedBox(height: ZetaSpacing.x1))
