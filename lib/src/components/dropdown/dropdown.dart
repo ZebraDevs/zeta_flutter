@@ -55,19 +55,21 @@ class ZetaDropdown<T> extends StatefulWidget {
   const ZetaDropdown({
     required this.items,
     this.onChange,
-    this.selectedItem,
+    this.value,
     this.rounded = true,
     this.disabled = false,
     this.type = ZetaDropdownMenuType.standard,
     this.size = ZetaDropdownSize.standard,
     super.key,
-  });
+  }) : assert(items.length > 0, 'Items must be greater than 0.');
 
   /// The items displayed in the dropdown.
   final List<ZetaDropdownItem<T>> items;
 
-  /// The currently selected item.
-  final T? selectedItem;
+  /// The value of the selected item.
+  ///
+  /// If no [ZetaDropdownItem] in [items] has a matching value, the first item in [items] will be set as the selected item.
+  final T? value;
 
   /// Called with the selected value whenever the dropdown is changed.
   final ValueSetter<T>? onChange;
@@ -97,7 +99,7 @@ class ZetaDropdown<T> extends StatefulWidget {
       ..add(EnumProperty<ZetaDropdownMenuType>('leadingType', type))
       ..add(DiagnosticsProperty<bool>('rounded', rounded))
       ..add(IterableProperty<ZetaDropdownItem<T>>('items', items))
-      ..add(DiagnosticsProperty<T?>('selectedItem', selectedItem))
+      ..add(DiagnosticsProperty<T?>('selectedItem', value))
       ..add(ObjectFlagProperty<ValueSetter<T>?>.has('onChange', onChange))
       ..add(EnumProperty<ZetaDropdownSize>('size', size))
       ..add(DiagnosticsProperty<bool>('disabled', disabled));
@@ -125,7 +127,7 @@ class _ZetaDropDownState<T> extends State<ZetaDropdown<T>> {
   @override
   void didUpdateWidget(ZetaDropdown<T> oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (oldWidget.selectedItem != widget.selectedItem) {
+    if (oldWidget.value != widget.value) {
       setState(_setSelectedItem);
     }
     if (widget.disabled) {
@@ -139,9 +141,9 @@ class _ZetaDropDownState<T> extends State<ZetaDropdown<T>> {
 
   void _setSelectedItem() {
     try {
-      _selectedItem = widget.items.firstWhere((item) => item.value == widget.selectedItem);
+      _selectedItem = widget.items.firstWhere((item) => item.value == widget.value);
     } catch (e) {
-      _selectedItem = null;
+      _selectedItem = widget.items.first;
     }
   }
 

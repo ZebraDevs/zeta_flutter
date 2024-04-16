@@ -48,7 +48,7 @@ class _DropdownExampleState extends State<DropdownExample> {
                       selectedItem = value;
                     });
                   },
-                  selectedItem: selectedItem,
+                  value: selectedItem,
                   items: items,
                 ),
                 Text('Selected item : ${selectedItem}')
@@ -57,12 +57,12 @@ class _DropdownExampleState extends State<DropdownExample> {
           ),
           ZetaDropdown(
             items: items,
-            selectedItem: selectedItem,
+            value: selectedItem,
             type: ZetaDropdownMenuType.checkbox,
           ),
           ZetaDropdown(
             items: items,
-            selectedItem: selectedItem,
+            value: selectedItem,
             size: ZetaDropdownSize.mini,
             type: ZetaDropdownMenuType.radio,
           ),
