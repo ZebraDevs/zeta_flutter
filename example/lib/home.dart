@@ -15,6 +15,7 @@ import 'package:zeta_example/pages/components/dialpad_example.dart';
 import 'package:zeta_example/pages/components/dropdown_example.dart';
 import 'package:zeta_example/pages/components/list_item_example.dart';
 import 'package:zeta_example/pages/components/navigation_bar_example.dart';
+import 'package:zeta_example/pages/components/phone_input_example.dart';
 import 'package:zeta_example/pages/components/radio_example.dart';
 import 'package:zeta_example/pages/components/stepper_example.dart';
 import 'package:zeta_example/pages/components/switch_example.dart';
@@ -63,6 +64,7 @@ final List<Component> components = [
   Component(RadioButtonExample.name, (context) => const RadioButtonExample()),
   Component(SwitchExample.name, (context) => const SwitchExample()),
   Component(DateInputExample.name, (context) => const DateInputExample()),
+  Component(PhoneInputExample.name, (context) => const PhoneInputExample()),
   Component(DialogExample.name, (context) => const DialogExample()),
 ];
 
