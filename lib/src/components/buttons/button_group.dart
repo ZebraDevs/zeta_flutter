@@ -253,7 +253,7 @@ class _ZetaGroupButtonState extends State<ZetaGroupButton> {
                     widget.rounded
                         ? ZetaIcons.expand_more_round
                         : ZetaIcons.expand_more_sharp,
-                    size: ZetaSpacing.x5),
+                    size: ZetaSpacing.x5,),
             ].divide(const SizedBox(width: ZetaSpacing.x1)).toList(),
           ).paddingAll(_padding),
         ),
