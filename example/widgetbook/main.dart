@@ -26,6 +26,7 @@ import 'pages/components/password_input_widgetbook.dart';
 import 'pages/components/phone_input_widgetbook.dart';
 import 'pages/components/progress_widgetbook.dart';
 import 'pages/components/radio_widgetbook.dart';
+import 'pages/components/segmented_control_widgetbook.dart';
 import 'pages/components/stepper_widgetbook.dart';
 import 'pages/components/switch_widgetbook.dart';
 import 'pages/components/snack_bar_widgetbook.dart';
@@ -115,6 +116,10 @@ class HotReload extends StatelessWidget {
               ],
             ),
             WidgetbookUseCase(name: 'Radio Button', builder: (context) => radioButtonUseCase(context)),
+            WidgetbookUseCase(
+              name: 'Segmented Control',
+              builder: (context) => segmentedControlUseCase(context),
+            ),
             WidgetbookUseCase(name: 'Switch', builder: (context) => switchUseCase(context)),
             WidgetbookUseCase(
               name: 'Snack Bar',
