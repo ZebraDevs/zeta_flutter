@@ -4,7 +4,7 @@ import 'package:zeta_flutter/zeta_flutter.dart';
 
 String iconLabelBuilder(IconData? value, [bool rounded = true]) {
   return ((rounded
-              ? iconsRounded.entries.firstWhere((element) => element.value == value)
+              ? iconsRound.entries.firstWhere((element) => element.value == value)
               : iconsSharp.entries.firstWhere((element) => element.value == value))
           .key
           .split('.')
@@ -14,7 +14,7 @@ String iconLabelBuilder(IconData? value, [bool rounded = true]) {
       .join(' ');
 }
 
-List<IconData> iconOptions(rounded) => rounded ? iconsRounded.values.toList() : iconsSharp.values.toList();
+List<IconData> iconOptions(rounded) => rounded ? iconsRound.values.toList() : iconsSharp.values.toList();
 
 String enumLabelBuilder(Enum? value) => value?.name.split('.').last.capitalize() ?? '';
 
