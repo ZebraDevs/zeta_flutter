@@ -41,6 +41,7 @@ export 'src/components/stepper/stepper.dart';
 export 'src/components/switch/zeta_switch.dart';
 export 'src/components/tabs/tab.dart';
 export 'src/components/tabs/tab_bar.dart';
+export 'src/components/tooltip/tooltip.dart';
 export 'src/theme/color_extensions.dart';
 export 'src/theme/color_scheme.dart';
 export 'src/theme/color_swatch.dart';
