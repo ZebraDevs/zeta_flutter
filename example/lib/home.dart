@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:zeta_example/pages/components/accordion_example.dart';
+import 'package:zeta_example/pages/components/app_bar_example.dart';
 import 'package:zeta_example/pages/components/avatar_example.dart';
 import 'package:zeta_example/pages/components/badges_example.dart';
 import 'package:zeta_example/pages/components/banner_example.dart';
@@ -18,6 +19,7 @@ import 'package:zeta_example/pages/components/navigation_bar_example.dart';
 import 'package:zeta_example/pages/components/navigation_rail_example.dart';
 import 'package:zeta_example/pages/components/phone_input_example.dart';
 import 'package:zeta_example/pages/components/radio_example.dart';
+import 'package:zeta_example/pages/components/segmented_control_example.dart';
 import 'package:zeta_example/pages/components/stepper_example.dart';
 import 'package:zeta_example/pages/components/switch_example.dart';
 import 'package:zeta_example/pages/components/snackbar_example.dart';
@@ -43,6 +45,7 @@ class Component {
 
 final List<Component> components = [
   Component(AccordionExample.name, (context) => const AccordionExample()),
+  Component(AppBarExample.name, (context) => const AppBarExample()),
   Component(AvatarExample.name, (context) => const AvatarExample()),
   Component(BannerExample.name, (context) => const BannerExample()),
   Component(BadgesExample.name, (context) => const BadgesExample()),
@@ -57,6 +60,7 @@ final List<Component> components = [
   Component(PasswordInputExample.name, (context) => const PasswordInputExample()),
   Component(DropdownExample.name, (context) => const DropdownExample()),
   Component(ProgressExample.name, (context) => const ProgressExample()),
+  Component(SegmentedControlExample.name, (context) => const SegmentedControlExample()),
   Component(SnackBarExample.name, (context) => const SnackBarExample()),
   Component(StepperExample.name, (context) => const StepperExample()),
   Component(TabsExample.name, (context) => const TabsExample()),
