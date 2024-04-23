@@ -117,7 +117,6 @@ class _CountriesList extends StatefulWidget {
 
 class _CountriesListState extends State<_CountriesList> {
   late final bool _enableSearch = widget.items.length > 20;
-  final _controller = TextEditingController();
   List<CountriesMenuItem> _items = [];
 
   @override
@@ -126,26 +125,14 @@ class _CountriesListState extends State<_CountriesList> {
     _items = List.from(widget.items);
   }
 
-  void _search(String value) {
+  void _search(String? text) {
+    final value = text ?? '';
     setState(() {
       _items = widget.items.where((item) {
         return item.value.name.toLowerCase().contains(value.toLowerCase()) ||
             (RegExp(r'^\d+$').hasMatch(value) && item.value.dialCode.indexOf('+$value') == 0);
       }).toList();
     });
-  }
-
-  void _clearSearch() {
-    _controller.clear();
-    setState(() {
-      _items = List.from(widget.items);
-    });
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
   }
 
   @override
@@ -163,22 +150,11 @@ class _CountriesListState extends State<_CountriesList> {
             if (_enableSearch)
               Padding(
                 padding: const EdgeInsets.only(bottom: ZetaSpacing.b),
-                child: TextField(
-                  controller: _controller,
+                child: ZetaSearchBar(
                   onChanged: _search,
-                  decoration: InputDecoration(
-                    hintText: widget.searchHint ?? 'Search by name or dial code',
-                    prefixIcon: const Icon(ZetaIcons.search_round),
-                    suffixIcon: _controller.text.isEmpty
-                        ? null
-                        : IconButton(
-                            onPressed: _clearSearch,
-                            icon: Icon(
-                              ZetaIcons.cancel_round,
-                              color: zeta.colors.cool.shade70,
-                            ),
-                          ),
-                  ),
+                  hint: widget.searchHint ?? 'Country or dial code',
+                  shape: ZetaWidgetBorder.full,
+                  showSpeechToText: false,
                 ),
               ),
             if (_enableSearch)
