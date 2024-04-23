@@ -4,18 +4,6 @@ import 'package:intl/intl.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import '../../../zeta_flutter.dart';
 
-/// [ZetaDateInput] size
-enum ZetaDateInputSize {
-  /// [large] 48 pixels height of the input field.
-  large,
-
-  /// [medium] 40 pixels height of the input field.
-  medium,
-
-  /// [small] 32 pixels height of the input field.
-  small,
-}
-
 /// ZetaDateInput allows entering date in a pre-defined format.
 /// Validation is performed to make sure the date is valid
 /// and is in the proper format.
@@ -57,7 +45,7 @@ class ZetaDateInput extends StatefulWidget {
 
   /// Determines the size of the input field.
   /// Default is `ZetaDateInputSize.large`
-  final ZetaDateInputSize? size;
+  final ZetaWidgetSize? size;
 
   /// If provided, displays a label above the input field.
   final String? label;
@@ -102,7 +90,7 @@ class ZetaDateInput extends StatefulWidget {
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(EnumProperty<ZetaDateInputSize>('size', size))
+      ..add(EnumProperty<ZetaWidgetSize>('size', size))
       ..add(StringProperty('label', label))
       ..add(StringProperty('hint', hint))
       ..add(DiagnosticsProperty<bool>('enabled', enabled))
@@ -116,7 +104,7 @@ class ZetaDateInput extends StatefulWidget {
 
 class _ZetaDateInputState extends State<ZetaDateInput> {
   final _controller = TextEditingController();
-  late ZetaDateInputSize _size;
+  late ZetaWidgetSize _size;
   late final String _hintText;
   late final MaskTextInputFormatter _dateFormatter;
   bool _invalidDate = false;
@@ -141,7 +129,7 @@ class _ZetaDateInputState extends State<ZetaDateInput> {
   }
 
   void _setParams() {
-    _size = widget.size ?? ZetaDateInputSize.large;
+    _size = widget.size ?? ZetaWidgetSize.large;
     _hasError = widget.hasError;
   }
 
@@ -197,7 +185,7 @@ class _ZetaDateInputState extends State<ZetaDateInput> {
           inputFormatters: [_dateFormatter],
           keyboardType: TextInputType.number,
           onChanged: (_) => _onChanged(),
-          style: _size == ZetaDateInputSize.small ? ZetaTextStyles.bodyXSmall : ZetaTextStyles.bodyMedium,
+          style: _size == ZetaWidgetSize.small ? ZetaTextStyles.bodyXSmall : ZetaTextStyles.bodyMedium,
           decoration: InputDecoration(
             isDense: true,
             contentPadding: EdgeInsets.symmetric(
@@ -235,7 +223,7 @@ class _ZetaDateInputState extends State<ZetaDateInput> {
               minHeight: ZetaSpacing.m,
               minWidth: ZetaSpacing.m,
             ),
-            hintStyle: _size == ZetaDateInputSize.small
+            hintStyle: _size == ZetaWidgetSize.small
                 ? ZetaTextStyles.bodyXSmall.copyWith(
                     color: widget.enabled ? zeta.colors.textDefault : zeta.colors.cool.shade50,
                   )
@@ -289,16 +277,16 @@ class _ZetaDateInputState extends State<ZetaDateInput> {
     );
   }
 
-  double _inputVerticalPadding(ZetaDateInputSize size) => switch (size) {
-        ZetaDateInputSize.large => ZetaSpacing.x3,
-        ZetaDateInputSize.medium => ZetaSpacing.x2,
-        ZetaDateInputSize.small => ZetaSpacing.x2,
+  double _inputVerticalPadding(ZetaWidgetSize size) => switch (size) {
+        ZetaWidgetSize.large => ZetaSpacing.x3,
+        ZetaWidgetSize.medium => ZetaSpacing.x2,
+        ZetaWidgetSize.small => ZetaSpacing.x2,
       };
 
-  double _iconSize(ZetaDateInputSize size) => switch (size) {
-        ZetaDateInputSize.large => ZetaSpacing.x6,
-        ZetaDateInputSize.medium => ZetaSpacing.x5,
-        ZetaDateInputSize.small => ZetaSpacing.x4,
+  double _iconSize(ZetaWidgetSize size) => switch (size) {
+        ZetaWidgetSize.large => ZetaSpacing.x6,
+        ZetaWidgetSize.medium => ZetaSpacing.x5,
+        ZetaWidgetSize.small => ZetaSpacing.x4,
       };
 
   OutlineInputBorder _defaultInputBorder(
