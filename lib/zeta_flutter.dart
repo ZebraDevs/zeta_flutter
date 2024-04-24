@@ -27,6 +27,8 @@ export 'src/components/date_input/date_input.dart';
 export 'src/components/dial_pad/dial_pad.dart';
 export 'src/components/dialog/dialog.dart';
 export 'src/components/dropdown/dropdown.dart';
+export 'src/components/global_header/global_header.dart';
+export 'src/components/global_header/tab_item.dart';
 export 'src/components/list_item/list_item.dart';
 export 'src/components/navigation bar/navigation_bar.dart';
 export 'src/components/pagination/pagination.dart';

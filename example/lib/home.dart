@@ -13,6 +13,7 @@ import 'package:zeta_example/pages/components/date_input_example.dart';
 import 'package:zeta_example/pages/components/dialog_example.dart';
 import 'package:zeta_example/pages/components/dialpad_example.dart';
 import 'package:zeta_example/pages/components/dropdown_example.dart';
+import 'package:zeta_example/pages/components/group_header_example.dart';
 import 'package:zeta_example/pages/components/list_item_example.dart';
 import 'package:zeta_example/pages/components/navigation_bar_example.dart';
 import 'package:zeta_example/pages/components/phone_input_example.dart';
@@ -55,6 +56,7 @@ final List<Component> components = [
   Component(PaginationExample.name, (context) => const PaginationExample()),
   Component(
       PasswordInputExample.name, (context) => const PasswordInputExample()),
+  Component(GroupHeaderExample.name, (context) => const GroupHeaderExample()),
   Component(DropdownExample.name, (context) => const DropdownExample()),
   Component(ProgressExample.name, (context) => const ProgressExample()),
   Component(SnackBarExample.name, (context) => const SnackBarExample()),
