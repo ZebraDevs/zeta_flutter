@@ -16,9 +16,9 @@ Widget dateInputUseCase(BuildContext context) {
         );
         final rounded = context.knobs.boolean(label: 'Rounded', initialValue: true);
         final enabled = context.knobs.boolean(label: 'Enabled', initialValue: true);
-        final size = context.knobs.list<ZetaDateInputSize>(
+        final size = context.knobs.list<ZetaWidgetSize>(
           label: 'Size',
-          options: ZetaDateInputSize.values,
+          options: ZetaWidgetSize.values,
           labelBuilder: (size) => size.name,
         );
         final datePattern = context.knobs.list<String>(
