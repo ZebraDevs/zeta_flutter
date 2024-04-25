@@ -27,7 +27,7 @@ class _IconsExampleState extends State<IconsExample> {
             Wrap(
               spacing: 8,
               runSpacing: 8,
-              children: iconsRounded.values.map((e) => Icon(e)).toList(),
+              children: iconsRound.values.map((e) => Icon(e)).toList(),
             ),
             const SizedBox(height: 20),
             Text('Sharp', style: ZetaTextStyles.bodyLarge),
