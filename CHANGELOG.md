@@ -5,6 +5,24 @@
 - [`ed1210d`](https://github.com/zebratechnologies/zeta-flutter/commit/ed1210d6cbc173aef8b1adf0d20ee91d3e87f2c3) - Update Widgetbook to correct functionality _(PR [#52](https://github.com/zebratechnologies/zeta-flutter/pull/52) by [@thelukewalton](https://github.com/thelukewalton))_
 - [`c627d7a`](https://github.com/zebratechnologies/zeta-flutter/commit/c627d7ab19d3f33e30c406441702ff6134557f14) - Tidy up example app _(PR [#53](https://github.com/zebratechnologies/zeta-flutter/pull/53) by [@thelukewalton](https://github.com/thelukewalton))_
 
+## [0.7.0](https://github.com/ZebraDevs/zeta_flutter/compare/v0.6.0...v0.7.0) (2024-04-25)
+
+
+### Features
+
+* AppBar ([#19](https://github.com/ZebraDevs/zeta_flutter/issues/19)) ([96f4aad](https://github.com/ZebraDevs/zeta_flutter/commit/96f4aad15d5ba90956860a32b63e63b7dffd9ba7))
+* Component dialog ([#18](https://github.com/ZebraDevs/zeta_flutter/issues/18)) ([7b762e6](https://github.com/ZebraDevs/zeta_flutter/commit/7b762e6c258057d5e3f07db0381cb48a631a7299))
+* Component dialog ([#22](https://github.com/ZebraDevs/zeta_flutter/issues/22)) ([8dc5be2](https://github.com/ZebraDevs/zeta_flutter/commit/8dc5be2898883a6eee751f8f1ad3372a25aaa222))
+* Component phone input ([#25](https://github.com/ZebraDevs/zeta_flutter/issues/25)) ([a4f7b89](https://github.com/ZebraDevs/zeta_flutter/commit/a4f7b899ef8919c12962a716281be985d929dd24))
+* Component phone input ([#34](https://github.com/ZebraDevs/zeta_flutter/issues/34)) ([d19547b](https://github.com/ZebraDevs/zeta_flutter/commit/d19547b15ce4687927d22ac1667250806178dcbc))
+* Component search bar ([#29](https://github.com/ZebraDevs/zeta_flutter/issues/29)) ([837f482](https://github.com/ZebraDevs/zeta_flutter/commit/837f4822f26430ce126787f90f814a2925a6a045))
+* Component tooltip ([#33](https://github.com/ZebraDevs/zeta_flutter/issues/33)) ([85cab8e](https://github.com/ZebraDevs/zeta_flutter/commit/85cab8ed440dde3a1d088ba9f2dcf9c901b60b97))
+* **main:** AppBar ([#19](https://github.com/ZebraDevs/zeta_flutter/issues/19)) ([eefcb61](https://github.com/ZebraDevs/zeta_flutter/commit/eefcb616044975605ea36e19c9fb9d314c05ee4c))
+* **main:** Segmented control ([#26](https://github.com/ZebraDevs/zeta_flutter/issues/26)) ([adb93ff](https://github.com/ZebraDevs/zeta_flutter/commit/adb93ffbf291d8ac915c6cf651f485d9f72488cb))
+* Navigation rail ([#27](https://github.com/ZebraDevs/zeta_flutter/issues/27)) ([8d57df3](https://github.com/ZebraDevs/zeta_flutter/commit/8d57df3236179c6bbdde72bb814e00a4cd6c954c))
+* Pagination ([#46](https://github.com/ZebraDevs/zeta_flutter/issues/46)) ([d782481](https://github.com/ZebraDevs/zeta_flutter/commit/d7824815e7d94ca9b9eeaaba2858fcfa14085e0e))
+* Segmented control ([#26](https://github.com/ZebraDevs/zeta_flutter/issues/26)) ([090ffc7](https://github.com/ZebraDevs/zeta_flutter/commit/090ffc7cb32471a7522e134b37747fb5336fe230))
+
 ## [0.6.0](https://github.com/ZebraDevs/zeta_flutter/compare/v0.5.0...v0.6.0) (2024-04-12)
 
 
