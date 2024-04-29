@@ -17,6 +17,7 @@ import 'pages/components/date_input_widgetbook.dart';
 import 'pages/components/dial_pad_widgetbook.dart';
 import 'pages/components/dialog_widgetbook.dart';
 import 'pages/components/dropdown_widgetbook.dart';
+import 'pages/components/filter_selection_widgetbook.dart';
 import 'pages/components/in_page_banner_widgetbook.dart';
 import 'pages/components/list_item_widgetbook.dart';
 import 'pages/components/navigation_bar_widgetbook.dart';
@@ -139,6 +140,7 @@ class HotReload extends StatelessWidget {
             WidgetbookUseCase(name: 'Navigation Rail', builder: (context) => navigationRailUseCase(context)),
             WidgetbookUseCase(name: 'Tooltip', builder: (context) => tooltipUseCase(context)),
             WidgetbookUseCase(name: 'Select Input', builder: (context) => selectInputUseCase(context)),
+            WidgetbookUseCase(name: 'Filter Selection', builder: (context) => filterSelectionUseCase(context)),
           ]..sort((a, b) => a.name.compareTo(b.name)),
         ),
         WidgetbookCategory(

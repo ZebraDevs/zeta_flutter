@@ -54,7 +54,7 @@ class ZetaChip extends StatefulWidget {
   final bool? selected;
 
   /// Callback when chip is tapped.
-  final VoidCallback? onTap;
+  final ValueSetter<bool>? onTap;
 
   @override
   State<ZetaChip> createState() => _ZetaChipState();
@@ -66,7 +66,7 @@ class ZetaChip extends StatefulWidget {
       ..add(StringProperty('label', label))
       ..add(DiagnosticsProperty<bool>('rounded', rounded))
       ..add(DiagnosticsProperty<bool?>('selected', selected))
-      ..add(ObjectFlagProperty<VoidCallback?>.has('onTap', onTap));
+      ..add(ObjectFlagProperty<ValueSetter<bool>?>.has('onTap', onTap));
   }
 }
 
@@ -91,6 +91,7 @@ class _ZetaChipState extends State<ZetaChip> {
       onPressed: () {
         if (widget.type == ZetaChipType.filter) {
           setState(() => selected = !selected);
+          widget.onTap?.call(selected);
         }
       },
       style: ButtonStyle(

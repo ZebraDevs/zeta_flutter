@@ -10,5 +10,18 @@ class ZetaFilterChip extends ZetaChip {
     required super.label,
     super.rounded,
     super.selected,
+    super.onTap,
   }) : super(type: ZetaChipType.filter);
+
+  /// Creates another instance of [ZetaFilterChip].
+  ZetaFilterChip copyWith({
+    bool? rounded,
+  }) {
+    return ZetaFilterChip(
+      label: label,
+      selected: selected,
+      rounded: rounded ?? this.rounded,
+      onTap: onTap,
+    );
+  }
 }

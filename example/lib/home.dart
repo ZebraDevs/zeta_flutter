@@ -14,6 +14,7 @@ import 'package:zeta_example/pages/components/date_input_example.dart';
 import 'package:zeta_example/pages/components/dialog_example.dart';
 import 'package:zeta_example/pages/components/dialpad_example.dart';
 import 'package:zeta_example/pages/components/dropdown_example.dart';
+import 'package:zeta_example/pages/components/filter_selection_example.dart';
 import 'package:zeta_example/pages/components/list_item_example.dart';
 import 'package:zeta_example/pages/components/navigation_bar_example.dart';
 import 'package:zeta_example/pages/components/navigation_rail_example.dart';
@@ -76,6 +77,7 @@ final List<Component> components = [
   Component(TooltipExample.name, (context) => const TooltipExample()),
   Component(NavigationRailExample.name, (context) => const NavigationRailExample()),
   Component(SelectInputExample.name, (context) => const SelectInputExample()),
+  Component(FilterSelectionExample.name, (context) => const FilterSelectionExample()),
 ];
 
 final List<Component> theme = [
