@@ -11,6 +11,8 @@ class ZetaAppBar extends StatefulWidget implements PreferredSizeWidget {
     this.searchController,
     this.leading,
     this.title,
+    this.titleSpacing,
+    this.titleTextStyle,
     this.type = ZetaAppBarType.defaultAppBar,
     this.onSearch,
     this.searchHintText = 'Search',
@@ -41,6 +43,12 @@ class ZetaAppBar extends StatefulWidget implements PreferredSizeWidget {
 
   /// Title of the app bar. Normally a [Text] widget.
   final Widget? title;
+
+  /// AppBar titleSpacing
+  final double? titleSpacing;
+
+  /// AppBar titleTextStyle
+  final TextStyle? titleTextStyle;
 
   /// Defines the styles of the app bar.
   final ZetaAppBarType type;
@@ -76,7 +84,9 @@ class ZetaAppBar extends StatefulWidget implements PreferredSizeWidget {
         ),
       )
       ..add(StringProperty('searchHintText', searchHintText))
-      ..add(EnumProperty<ZetaAppBarType>('type', type));
+      ..add(EnumProperty<ZetaAppBarType>('type', type))
+      ..add(DoubleProperty('titleSpacing', titleSpacing))
+      ..add(DiagnosticsProperty<TextStyle?>('titleTextStyle', titleTextStyle));
   }
 }
 
@@ -105,7 +115,7 @@ class _ZetaAppBarState extends State<ZetaAppBar> {
   Widget? _getTitle() {
     return widget.type != ZetaAppBarType.extendedTitle
         ? Padding(
-            padding: const EdgeInsets.symmetric(horizontal: ZetaSpacing.b),
+            padding: EdgeInsets.symmetric(horizontal: widget.titleSpacing ?? ZetaSpacing.b),
             child: widget.title,
           )
         : null;
@@ -131,9 +141,13 @@ class _ZetaAppBarState extends State<ZetaAppBar> {
           automaticallyImplyLeading: widget.automaticallyImplyLeading,
           centerTitle: widget.type == ZetaAppBarType.centeredTitle,
           titleSpacing: 0,
-          titleTextStyle: ZetaTextStyles.bodyLarge.copyWith(
-            color: colors.textDefault,
-          ),
+          titleTextStyle: widget.titleTextStyle == null
+              ? ZetaTextStyles.bodyLarge.copyWith(
+                  color: colors.textDefault,
+                )
+              : widget.titleTextStyle!.copyWith(
+                  color: colors.textDefault,
+                ),
           title: widget.searchController != null
               ? _SearchField(
                   searchController: widget.searchController,
