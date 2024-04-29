@@ -14,7 +14,7 @@ import 'package:zeta_example/pages/components/date_input_example.dart';
 import 'package:zeta_example/pages/components/dialog_example.dart';
 import 'package:zeta_example/pages/components/dialpad_example.dart';
 import 'package:zeta_example/pages/components/dropdown_example.dart';
-import 'package:zeta_example/pages/components/group_header_example.dart';
+import 'package:zeta_example/pages/components/global_header_example.dart';
 import 'package:zeta_example/pages/components/list_item_example.dart';
 import 'package:zeta_example/pages/components/navigation_bar_example.dart';
 import 'package:zeta_example/pages/components/navigation_rail_example.dart';
@@ -65,7 +65,8 @@ final List<Component> components = [
   Component(GroupHeaderExample.name, (context) => const GroupHeaderExample()),
   Component(DropdownExample.name, (context) => const DropdownExample()),
   Component(ProgressExample.name, (context) => const ProgressExample()),
-  Component(SegmentedControlExample.name, (context) => const SegmentedControlExample()),
+  Component(SegmentedControlExample.name,
+      (context) => const SegmentedControlExample()),
   Component(SnackBarExample.name, (context) => const SnackBarExample()),
   Component(StepperExample.name, (context) => const StepperExample()),
   Component(TabsExample.name, (context) => const TabsExample()),
@@ -77,7 +78,8 @@ final List<Component> components = [
   Component(DialogExample.name, (context) => const DialogExample()),
   Component(SearchBarExample.name, (context) => const SearchBarExample()),
   Component(TooltipExample.name, (context) => const TooltipExample()),
-  Component(NavigationRailExample.name, (context) => const NavigationRailExample()),
+  Component(
+      NavigationRailExample.name, (context) => const NavigationRailExample()),
 ];
 
 final List<Component> theme = [

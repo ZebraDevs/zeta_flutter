@@ -2,114 +2,134 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
 import '../../../zeta_flutter.dart';
+import '../../theme/theme_data.dart';
 
+/// Global header component
 class ZetaGlobalHeader extends StatefulWidget {
+  /// Constructor for [ZetaGlobalHeader]
   const ZetaGlobalHeader({
     super.key,
     required this.title,
-    this.buttons = const [],
+    this.tabItems = const [],
+    this.utilityButtons = const [],
   });
 
+  /// Header title in top left of header
   final String title;
 
-  final List<ZetaTabItem> buttons;
+  /// Tab item buttons
+  final List<ZetaTabItem> tabItems;
+
+  /// Utility buttons
+  final List<IconButton> utilityButtons;
 
   @override
   State<ZetaGlobalHeader> createState() => _GlobalHeaderState();
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(StringProperty('title', title));
+  }
 }
 
-extension on ZetaWidgetSize {
-  double get _width => this == ZetaWidgetSize.small
-      ? 320
-      : this == ZetaWidgetSize.medium
-          ? 901
-          : 1281;
+extension on DeviceType {
+  /// Render buttons along the top menu half
+  bool get isLarge {
+    return this == DeviceType.desktopL || this == DeviceType.desktopXL;
+  }
+
+  /// Render
+  bool get isSmall {
+    return this == DeviceType.mobileLandscape ||
+        this == DeviceType.mobilePortrait;
+  }
 }
 
 class _GlobalHeaderState extends State<ZetaGlobalHeader> {
-  final _leftKey = GlobalKey();
-  final _rightKey = GlobalKey();
-  late double size;
-  double searchSize = 0.0;
-  bool searchInTop = false;
+  int _selectedIndex = -1;
 
   @override
   void initState() {
     super.initState();
-    size = widget.buttons.length == 0
-        ? 320
-        : widget.buttons.length < 6
-            ? 901
-            : 1281;
-  }
-
-  double getWidth(GlobalKey key) {
-    return key.currentContext!.size!.width;
   }
 
   @override
   Widget build(BuildContext context) {
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      setState(() {
-        searchSize = size -
-            getWidth(_leftKey) -
-            getWidth(_rightKey) -
-            (4 * ZetaSpacing.s);
-      });
-    });
     final colors = Zeta.of(context).colors;
-    return Container(
-      width: size,
-      padding: const EdgeInsets.symmetric(
-          vertical: ZetaSpacing.s, horizontal: ZetaSpacing.b),
-      decoration: BoxDecoration(color: colors.surfacePrimary),
-      child: Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            // Top Section
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final deviceType = constraints.deviceType;
+
+        return Container(
+          padding: const EdgeInsets.symmetric(
+            vertical: ZetaSpacing.s,
+            horizontal: ZetaSpacing.b,
+          ),
+          decoration: BoxDecoration(color: colors.surfacePrimary),
+          child: Column(
             children: [
               Row(
-                key: _leftKey,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                // Top Section
                 children: [
-                  Text(
-                    widget.title,
+                  Row(
+                    children: [
+                      Text(
+                        widget.title,
+                        style: TextStyle(
+                          color: colors.textDefault,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                      const SizedBox.square(
+                        dimension: ZetaSpacing.s,
+                      ),
+                      if (deviceType.isLarge && widget.tabItems.length > 5)
+
+                        /// If using large screen, render some tabItems in to section
+                        ...renderedChildren(widget.tabItems).sublist(0, 4),
+                    ],
                   ),
-                  if (widget.buttons.length > 5)
-                    ...widget.buttons.sublist(0, 4),
-                ],
-              ),
-              if (widget.buttons.isNotEmpty)
-                Container(
-                  width: searchSize,
-                  decoration: BoxDecoration(
-                    border: Border.all(),
-                    borderRadius: ZetaRadius.rounded,
-                  ),
-                  child: Text("Search"),
-                ), //TODO: Replace with search bar
-              Row(
-                key: _rightKey,
-                children: [
-                  const Icon(
-                    ZetaIcons.alert_round,
-                  ),
-                  const Icon(
-                    ZetaIcons.help_round,
-                  ),
-                  DecoratedBox(
-                    decoration: BoxDecoration(
-                      border: Border(
-                          right: BorderSide(color: colors.borderDefault)),
+
+                  /// If screen is not small, render search bar on the top
+                  if (!deviceType.isSmall)
+                    const Expanded(
+                      child: ZetaSearchBar(),
                     ),
+                  Row(
+                    children: [
+                      ...widget.utilityButtons,
+                      const ZetaAvatar(
+                        initials: 'PS',
+                        size: ZetaAvatarSize.s,
+                      ),
+                    ].gap(ZetaSpacing.s),
                   ),
-                  const Icon(
-                    ZetaIcons.apps_round,
-                  ),
-                  const ZetaAvatar(
-                    initials: 'PS',
-                    size: ZetaAvatarSize.s,
-                  ),
+                ].gap(ZetaSpacing.s),
+              ),
+              const SizedBox(
+                height: ZetaSpacing.x2,
+              ),
+              Row(
+                children: [
+                  if (deviceType.isSmall)
+                    const Expanded(child: ZetaSearchBar()),
+                  if (widget.tabItems.isNotEmpty)
+                    Expanded(
+                      child: SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          /// Large screem filters some tab items to render on top
+
+                          children:
+                              deviceType.isLarge && widget.tabItems.length > 5
+                                  ? renderedChildren(widget.tabItems)
+                                      .sublist(5, widget.tabItems.length - 1)
+                                  : renderedChildren(widget.tabItems),
+                        ),
+                      ),
+                    ),
                 ]
                     .divide(
                       const SizedBox.square(
@@ -120,31 +140,28 @@ class _GlobalHeaderState extends State<ZetaGlobalHeader> {
               ),
             ],
           ),
-          Row(
-            children: [
-              if (widget.buttons.isEmpty)
-                Container(
-                  width: size - 2 * ZetaSpacing.b,
-                  decoration: BoxDecoration(
-                    border: Border.all(),
-                    borderRadius: ZetaRadius.rounded,
-                  ),
-                  child: Text("Search"),
-                ),
-              if (widget.buttons.length > 5)
-                ...widget.buttons.sublist(5, widget.buttons.length - 1)
-              else
-                ...widget.buttons,
-            ]
-                .divide(
-                  const SizedBox.square(
-                    dimension: ZetaSpacing.s,
-                  ),
-                )
-                .toList(),
-          ),
-        ],
-      ),
+        );
+      },
     );
+  }
+
+  /// Extend tab items to register their active states
+  List<ZetaTabItem> renderedChildren(List<ZetaTabItem> children) {
+    final List<ZetaTabItem> modifiedChildren = [];
+    for (final (index, child) in children.indexed) {
+      modifiedChildren.add(
+        child.copyWith(
+          active: _selectedIndex == index,
+          dropdown: child.dropdown,
+          handlePress: () {
+            setState(() {
+              _selectedIndex = index;
+            });
+            child.handlePress!.call();
+          },
+        ),
+      );
+    }
+    return modifiedChildren;
   }
 }
