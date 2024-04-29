@@ -7,7 +7,7 @@ import '../../test/test_components.dart';
 
 Widget iconsUseCase(BuildContext context) {
   Map<String, IconData> icons =
-      ((context.knobs.boolean(label: 'Rounded', initialValue: true)) ? iconsRounded : iconsSharp);
+      ((context.knobs.boolean(label: 'Rounded', initialValue: true)) ? iconsRound : iconsSharp);
 
   final Map<String, IconData> sortedIcons = Map.fromEntries(icons.entries.toList()
     ..sort((a, b) {
