@@ -36,7 +36,7 @@ class ZetaBadge extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: ZetaSpacing.x1, vertical: ZetaSpacing.x0_5),
       decoration: BoxDecoration(
         color: backgroundColor,
-        borderRadius: rounded ? ZetaRadius.minimal : ZetaRadius.minimal,
+        borderRadius: rounded ? ZetaRadius.minimal : ZetaRadius.none,
       ),
       child: Text(
         label,

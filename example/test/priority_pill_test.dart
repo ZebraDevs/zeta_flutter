@@ -9,7 +9,7 @@ void main() {
       TestWidget(
         widget: ZetaPriorityPill(
           priority: 'High',
-          index: 2,
+          index: '2',
         ),
       ),
     );
