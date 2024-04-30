@@ -21,6 +21,7 @@ export 'src/components/buttons/button_group.dart';
 export 'src/components/buttons/button_style.dart';
 export 'src/components/buttons/fab.dart';
 export 'src/components/buttons/icon_button.dart';
+export 'src/components/chat_item/chat_item.dart';
 export 'src/components/checkbox/checkbox.dart';
 export 'src/components/chips/chip.dart';
 export 'src/components/contact_item/contact_item.dart';
