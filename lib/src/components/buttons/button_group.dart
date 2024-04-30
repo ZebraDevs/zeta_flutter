@@ -245,7 +245,10 @@ class _ZetaGroupButtonState extends State<ZetaGroupButton> {
               if (widget.icon != null) Icon(widget.icon, size: ZetaSpacing.x5),
               Text(widget.label ?? '', style: ZetaTextStyles.labelMedium),
               if (widget.dropdown != null) // TODO(UX-1006): Dropdown
-                Icon(widget.rounded ? ZetaIcons.expand_more_round : ZetaIcons.expand_more_sharp, size: ZetaSpacing.x5),
+                Icon(
+                  widget.rounded ? ZetaIcons.expand_more_round : ZetaIcons.expand_more_sharp,
+                  size: ZetaSpacing.x5,
+                ),
             ].divide(const SizedBox(width: ZetaSpacing.x1)).toList(),
           ).paddingAll(_padding),
         ),
