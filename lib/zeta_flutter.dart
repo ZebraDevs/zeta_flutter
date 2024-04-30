@@ -10,7 +10,6 @@ export 'src/components/badges/indicator.dart';
 export 'src/components/badges/priority_pill.dart';
 export 'src/components/badges/status_label.dart';
 export 'src/components/badges/tag.dart';
-export 'src/components/badges/workcloud_indicator.dart';
 export 'src/components/banners/in_page_banner.dart';
 export 'src/components/banners/system_banner.dart';
 export 'src/components/bottom sheets/bottom_sheet.dart';
