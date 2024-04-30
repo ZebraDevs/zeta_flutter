@@ -12,7 +12,7 @@ enum ZetaWidgetBorder {
   full,
 }
 
-///  Size options for [ZetaIndicator], [ZetaWorkcloudIndicator], [ZetaButton], [ZetaPasswordInput].
+///  Size options for [ZetaIndicator], [ZetaButton], [ZetaPasswordInput].
 enum ZetaWidgetSize {
   /// large
   large,

@@ -79,8 +79,6 @@ class HotReload extends StatelessWidget {
                 WidgetbookUseCase(name: 'Badge', builder: (context) => badgeUseCase(context)),
                 WidgetbookUseCase(name: 'Indicators', builder: (context) => indicatorsUseCase(context)),
                 WidgetbookUseCase(name: 'Tags', builder: (context) => tagsUseCase(context)),
-                WidgetbookUseCase(
-                    name: 'Workcloud Indicators', builder: (context) => workcloudIndicatorsUseCase(context)),
               ],
             ),
             WidgetbookUseCase(name: 'Avatar', builder: (context) => avatarUseCase(context)),
