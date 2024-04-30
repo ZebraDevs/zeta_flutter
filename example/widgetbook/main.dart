@@ -11,8 +11,10 @@ import 'pages/components/banner_widgetbook.dart';
 import 'pages/components/bottom_sheet_widgetbook.dart';
 import 'pages/components/breadcrumbs_widgetbook.dart';
 import 'pages/components/button_widgetbook.dart';
+import 'pages/components/chat_item_widgetbook.dart';
 import 'pages/components/checkbox_widgetbook.dart';
 import 'pages/components/chip_widgetbook.dart';
+import 'pages/components/contact_item_widgetbook.dart';
 import 'pages/components/date_input_widgetbook.dart';
 import 'pages/components/dial_pad_widgetbook.dart';
 import 'pages/components/dialog_widgetbook.dart';
@@ -82,7 +84,12 @@ class HotReload extends StatelessWidget {
               ],
             ),
             WidgetbookUseCase(name: 'Avatar', builder: (context) => avatarUseCase(context)),
+            WidgetbookUseCase(
+              name: 'Chat Item',
+              builder: (context) => chatItemWidgetBook(context),
+            ),
             WidgetbookUseCase(name: 'Checkbox', builder: (context) => checkboxUseCase(context)),
+            WidgetbookUseCase(name: 'Contact Item', builder: (context) => contactItemUseCase(context)),
             WidgetbookComponent(
               name: 'Buttons',
               useCases: [

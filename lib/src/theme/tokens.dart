@@ -98,6 +98,12 @@ class ZetaSpacing {
 
   /// 96dp space.
   static const double xxxl = spacingBaseMultiplier * 24;
+
+  /// 120dp space
+  static const double x30 = spacingBaseMultiplier * 30;
+
+  /// 200dp space
+  static const double x50 = spacingBaseMultiplier * 50;
 }
 
 /// Tokens used for Border Radius.
