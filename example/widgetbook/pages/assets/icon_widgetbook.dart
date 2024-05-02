@@ -23,6 +23,7 @@ Widget iconsUseCase(BuildContext context) {
       child: Center(
         child: Column(
           children: [
+            Text('Zeta Icons v' + zetaIconsVersion, style: ZetaTextStyles.displayMedium).paddingAll(ZetaSpacing.l),
             Text('Tap icon to copy name to clipboard', style: ZetaTextStyles.titleMedium).paddingAll(ZetaSpacing.l),
             Wrap(
               spacing: ZetaSpacing.l,
@@ -31,8 +32,8 @@ Widget iconsUseCase(BuildContext context) {
                 (e) {
                   final nameArr = (e.key.split('_')..removeLast()).join(' ').capitalize();
                   return Container(
-                    width: 100,
-                    height: 100,
+                    width: 120,
+                    height: 120,
                     child: InkWell(
                       borderRadius: ZetaRadius.rounded,
                       hoverColor: Zeta.of(context).colors.surfaceHovered,
