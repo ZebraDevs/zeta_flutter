@@ -5,6 +5,22 @@
 - [`ed1210d`](https://github.com/zebratechnologies/zeta-flutter/commit/ed1210d6cbc173aef8b1adf0d20ee91d3e87f2c3) - Update Widgetbook to correct functionality _(PR [#52](https://github.com/zebratechnologies/zeta-flutter/pull/52) by [@thelukewalton](https://github.com/thelukewalton))_
 - [`c627d7a`](https://github.com/zebratechnologies/zeta-flutter/commit/c627d7ab19d3f33e30c406441702ff6134557f14) - Tidy up example app _(PR [#53](https://github.com/zebratechnologies/zeta-flutter/pull/53) by [@thelukewalton](https://github.com/thelukewalton))_
 
+## [0.8.0](https://github.com/ZebraDevs/zeta_flutter/compare/v0.7.0...v0.8.0) (2024-05-02)
+
+
+### Features
+
+* Chat Item ([#37](https://github.com/ZebraDevs/zeta_flutter/issues/37)) ([c2dd630](https://github.com/ZebraDevs/zeta_flutter/commit/c2dd6308d57ebda6f715bef1225ad326ab4ea64b))
+* Filter Selection ([#36](https://github.com/ZebraDevs/zeta_flutter/issues/36)) ([53af9e7](https://github.com/ZebraDevs/zeta_flutter/commit/53af9e77f6909236a968aa5d3c6a32ba04712fda))
+* Select input ([#35](https://github.com/ZebraDevs/zeta_flutter/issues/35)) ([07ddba1](https://github.com/ZebraDevs/zeta_flutter/commit/07ddba1550d0a201477ef738064a2a251ecdfdeb))
+* ZetaScreenHeaderBar ([#39](https://github.com/ZebraDevs/zeta_flutter/issues/39)) ([e07fc48](https://github.com/ZebraDevs/zeta_flutter/commit/e07fc482e8a4ed06a33b8aa22388456f7e1cf5fc))
+
+
+### Bug Fixes
+
+* Avatar update ([#30](https://github.com/ZebraDevs/zeta_flutter/issues/30)) ([3f51508](https://github.com/ZebraDevs/zeta_flutter/commit/3f5150814a2372381a91816fb4e0300c91965421))
+* Update banners ([#41](https://github.com/ZebraDevs/zeta_flutter/issues/41)) ([0a881b5](https://github.com/ZebraDevs/zeta_flutter/commit/0a881b580f1f52402ae15b55cc72b8c26027254b))
+
 ## [0.7.0](https://github.com/ZebraDevs/zeta_flutter/compare/v0.6.0...v0.7.0) (2024-04-25)
 
 
