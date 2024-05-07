@@ -1,7 +1,7 @@
 // ignore_for_file: public_member_api_docs, constant_identifier_names
 import 'package:flutter/material.dart';
 
-const zetaIconsVersion = '0.5.0';
+const zetaIconsVersion = '0.5.1';
 
 class ZetaIcons {
   ZetaIcons._();
