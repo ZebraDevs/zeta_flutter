@@ -101,14 +101,3 @@ extension StringExtensions on String? {
     return '${this![0].toUpperCase()}${this!.substring(1).toLowerCase()}';
   }
 }
-
-/// Extension [FirstWhereOrNull] on [Iterable].
-extension FirstWhereOrNull<T> on Iterable<T> {
-  /// Returns the first element satisfying test, or null if there are none.
-  T? firstWhereOrNull(bool Function(T element) test) {
-    for (final element in this) {
-      if (test(element)) return element;
-    }
-    return null;
-  }
-}
