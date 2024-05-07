@@ -27,9 +27,11 @@ class ZetaIcons {
   static const IconData alert_outline_round = IconData(0xe00e, fontFamily: _familyRound, fontPackage: _package);
   static const IconData alert_round = IconData(0xe00f, fontFamily: _familyRound, fontPackage: _package);
   static const IconData align_center_round = IconData(0xe010, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData align_horizontal_center_round = IconData(0xe011, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData align_horizontal_center_round =
+      IconData(0xe011, fontFamily: _familyRound, fontPackage: _package);
   static const IconData align_horizontal_left_round = IconData(0xe012, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData align_horizontal_right_round = IconData(0xe013, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData align_horizontal_right_round =
+      IconData(0xe013, fontFamily: _familyRound, fontPackage: _package);
   static const IconData align_left_round = IconData(0xe014, fontFamily: _familyRound, fontPackage: _package);
   static const IconData align_right_round = IconData(0xe015, fontFamily: _familyRound, fontPackage: _package);
   static const IconData align_vertical_bottom_round = IconData(0xe016, fontFamily: _familyRound, fontPackage: _package);
@@ -122,7 +124,8 @@ class ZetaIcons {
   static const IconData chart_bubble_charts_round = IconData(0xe06d, fontFamily: _familyRound, fontPackage: _package);
   static const IconData chart_bubble_round = IconData(0xe06e, fontFamily: _familyRound, fontPackage: _package);
   static const IconData chart_doughnut_round = IconData(0xe06f, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData chart_filled_enterprise_round = IconData(0xe070, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData chart_filled_enterprise_round =
+      IconData(0xe070, fontFamily: _familyRound, fontPackage: _package);
   static const IconData chart_filled_round = IconData(0xe071, fontFamily: _familyRound, fontPackage: _package);
   static const IconData chart_gantt_round = IconData(0xe072, fontFamily: _familyRound, fontPackage: _package);
   static const IconData chart_line_predict_round = IconData(0xe073, fontFamily: _familyRound, fontPackage: _package);
@@ -144,7 +147,8 @@ class ZetaIcons {
   static const IconData chat_search_round = IconData(0xe083, fontFamily: _familyRound, fontPackage: _package);
   static const IconData check_box_empty_round = IconData(0xe084, fontFamily: _familyRound, fontPackage: _package);
   static const IconData check_box_round = IconData(0xe085, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData check_circle_outline_alt_round = IconData(0xe086, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData check_circle_outline_alt_round =
+      IconData(0xe086, fontFamily: _familyRound, fontPackage: _package);
   static const IconData check_circle_outline_round = IconData(0xe087, fontFamily: _familyRound, fontPackage: _package);
   static const IconData check_circle_round = IconData(0xe088, fontFamily: _familyRound, fontPackage: _package);
   static const IconData check_mark_round = IconData(0xe089, fontFamily: _familyRound, fontPackage: _package);
@@ -218,7 +222,8 @@ class ZetaIcons {
   static const IconData email_reply_all_round = IconData(0xe0cd, fontFamily: _familyRound, fontPackage: _package);
   static const IconData email_round = IconData(0xe0ce, fontFamily: _familyRound, fontPackage: _package);
   static const IconData end_call_round = IconData(0xe0cf, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData enterprise_diagnostics_round = IconData(0xe0d0, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData enterprise_diagnostics_round =
+      IconData(0xe0d0, fontFamily: _familyRound, fontPackage: _package);
   static const IconData environmental_round = IconData(0xe0d1, fontFamily: _familyRound, fontPackage: _package);
   static const IconData error_outline_round = IconData(0xe0d2, fontFamily: _familyRound, fontPackage: _package);
   static const IconData error_round = IconData(0xe0d3, fontFamily: _familyRound, fontPackage: _package);
@@ -259,7 +264,8 @@ class ZetaIcons {
   static const IconData grid_view_round = IconData(0xe0f6, fontFamily: _familyRound, fontPackage: _package);
   static const IconData group_round = IconData(0xe0f7, fontFamily: _familyRound, fontPackage: _package);
   static const IconData groups_round = IconData(0xe0f8, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData hamburger_menu_navigation_rail_round = IconData(0xe0f9, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData hamburger_menu_navigation_rail_round =
+      IconData(0xe0f9, fontFamily: _familyRound, fontPackage: _package);
   static const IconData hamburger_menu_round = IconData(0xe0fa, fontFamily: _familyRound, fontPackage: _package);
   static const IconData hamburger_menu_thick_round = IconData(0xe0fb, fontFamily: _familyRound, fontPackage: _package);
   static const IconData hand_round = IconData(0xe0fc, fontFamily: _familyRound, fontPackage: _package);
@@ -276,11 +282,13 @@ class ZetaIcons {
   static const IconData how_do_i_round = IconData(0xe107, fontFamily: _familyRound, fontPackage: _package);
   static const IconData image_library_round = IconData(0xe108, fontFamily: _familyRound, fontPackage: _package);
   static const IconData image_round = IconData(0xe109, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData important_notification_round = IconData(0xe10a, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData important_notification_round =
+      IconData(0xe10a, fontFamily: _familyRound, fontPackage: _package);
   static const IconData inbox_round = IconData(0xe10b, fontFamily: _familyRound, fontPackage: _package);
   static const IconData indent_decrease_round = IconData(0xe10c, fontFamily: _familyRound, fontPackage: _package);
   static const IconData indent_increase_round = IconData(0xe10d, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData indeterminate_check_box_round = IconData(0xe10e, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData indeterminate_check_box_round =
+      IconData(0xe10e, fontFamily: _familyRound, fontPackage: _package);
   static const IconData info_round = IconData(0xe10f, fontFamily: _familyRound, fontPackage: _package);
   static const IconData instagram_round = IconData(0xe110, fontFamily: _familyRound, fontPackage: _package);
   static const IconData ios_share_round = IconData(0xe111, fontFamily: _familyRound, fontPackage: _package);
@@ -370,7 +378,8 @@ class ZetaIcons {
   static const IconData person_swap_round = IconData(0xe165, fontFamily: _familyRound, fontPackage: _package);
   static const IconData person_walk_round = IconData(0xe166, fontFamily: _familyRound, fontPackage: _package);
   static const IconData phone_android_round = IconData(0xe167, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData phone_bluetooth_speaker_round = IconData(0xe168, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData phone_bluetooth_speaker_round =
+      IconData(0xe168, fontFamily: _familyRound, fontPackage: _package);
   static const IconData phone_in_talk_round = IconData(0xe169, fontFamily: _familyRound, fontPackage: _package);
   static const IconData phone_iphone_round = IconData(0xe16a, fontFamily: _familyRound, fontPackage: _package);
   static const IconData phone_round = IconData(0xe16b, fontFamily: _familyRound, fontPackage: _package);
@@ -401,7 +410,8 @@ class ZetaIcons {
   static const IconData qr_code_round = IconData(0xe184, fontFamily: _familyRound, fontPackage: _package);
   static const IconData queue_round = IconData(0xe185, fontFamily: _familyRound, fontPackage: _package);
   static const IconData radio_button_checked_round = IconData(0xe186, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData radio_button_unchecked_round = IconData(0xe187, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData radio_button_unchecked_round =
+      IconData(0xe187, fontFamily: _familyRound, fontPackage: _package);
   static const IconData react_add_round = IconData(0xe188, fontFamily: _familyRound, fontPackage: _package);
   static const IconData react_thumbsup_round = IconData(0xe189, fontFamily: _familyRound, fontPackage: _package);
   static const IconData recall_round = IconData(0xe18a, fontFamily: _familyRound, fontPackage: _package);
@@ -566,9 +576,11 @@ class ZetaIcons {
   static const IconData alert_outline_sharp = IconData(0xe00e, fontFamily: _familySharp, fontPackage: _package);
   static const IconData alert_sharp = IconData(0xe00f, fontFamily: _familySharp, fontPackage: _package);
   static const IconData align_center_sharp = IconData(0xe010, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData align_horizontal_center_sharp = IconData(0xe011, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData align_horizontal_center_sharp =
+      IconData(0xe011, fontFamily: _familySharp, fontPackage: _package);
   static const IconData align_horizontal_left_sharp = IconData(0xe012, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData align_horizontal_right_sharp = IconData(0xe013, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData align_horizontal_right_sharp =
+      IconData(0xe013, fontFamily: _familySharp, fontPackage: _package);
   static const IconData align_left_sharp = IconData(0xe014, fontFamily: _familySharp, fontPackage: _package);
   static const IconData align_right_sharp = IconData(0xe015, fontFamily: _familySharp, fontPackage: _package);
   static const IconData align_vertical_bottom_sharp = IconData(0xe016, fontFamily: _familySharp, fontPackage: _package);
@@ -661,7 +673,8 @@ class ZetaIcons {
   static const IconData chart_bubble_charts_sharp = IconData(0xe06d, fontFamily: _familySharp, fontPackage: _package);
   static const IconData chart_bubble_sharp = IconData(0xe06e, fontFamily: _familySharp, fontPackage: _package);
   static const IconData chart_doughnut_sharp = IconData(0xe06f, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData chart_filled_enterprise_sharp = IconData(0xe070, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData chart_filled_enterprise_sharp =
+      IconData(0xe070, fontFamily: _familySharp, fontPackage: _package);
   static const IconData chart_filled_sharp = IconData(0xe071, fontFamily: _familySharp, fontPackage: _package);
   static const IconData chart_gantt_sharp = IconData(0xe072, fontFamily: _familySharp, fontPackage: _package);
   static const IconData chart_line_predict_sharp = IconData(0xe073, fontFamily: _familySharp, fontPackage: _package);
@@ -683,7 +696,8 @@ class ZetaIcons {
   static const IconData chat_sharp = IconData(0xe083, fontFamily: _familySharp, fontPackage: _package);
   static const IconData check_box_empty_sharp = IconData(0xe084, fontFamily: _familySharp, fontPackage: _package);
   static const IconData check_box_sharp = IconData(0xe085, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData check_circle_outline_alt_sharp = IconData(0xe086, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData check_circle_outline_alt_sharp =
+      IconData(0xe086, fontFamily: _familySharp, fontPackage: _package);
   static const IconData check_circle_outline_sharp = IconData(0xe087, fontFamily: _familySharp, fontPackage: _package);
   static const IconData check_circle_sharp = IconData(0xe088, fontFamily: _familySharp, fontPackage: _package);
   static const IconData check_mark_sharp = IconData(0xe089, fontFamily: _familySharp, fontPackage: _package);
@@ -757,7 +771,8 @@ class ZetaIcons {
   static const IconData email_reply_all_sharp = IconData(0xe0cd, fontFamily: _familySharp, fontPackage: _package);
   static const IconData email_sharp = IconData(0xe0ce, fontFamily: _familySharp, fontPackage: _package);
   static const IconData end_call_sharp = IconData(0xe0cf, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData enterprise_diagnostics_sharp = IconData(0xe0d0, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData enterprise_diagnostics_sharp =
+      IconData(0xe0d0, fontFamily: _familySharp, fontPackage: _package);
   static const IconData environmental_sharp = IconData(0xe0d1, fontFamily: _familySharp, fontPackage: _package);
   static const IconData error_outline_sharp = IconData(0xe0d2, fontFamily: _familySharp, fontPackage: _package);
   static const IconData error_sharp = IconData(0xe0d3, fontFamily: _familySharp, fontPackage: _package);
@@ -798,7 +813,8 @@ class ZetaIcons {
   static const IconData grid_view_sharp = IconData(0xe0f6, fontFamily: _familySharp, fontPackage: _package);
   static const IconData group_sharp = IconData(0xe0f7, fontFamily: _familySharp, fontPackage: _package);
   static const IconData groups_sharp = IconData(0xe0f8, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData hamburger_menu_navigation_rail_sharp = IconData(0xe0f9, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData hamburger_menu_navigation_rail_sharp =
+      IconData(0xe0f9, fontFamily: _familySharp, fontPackage: _package);
   static const IconData hamburger_menu_sharp = IconData(0xe0fa, fontFamily: _familySharp, fontPackage: _package);
   static const IconData hamburger_menu_thick_sharp = IconData(0xe0fb, fontFamily: _familySharp, fontPackage: _package);
   static const IconData hand_sharp = IconData(0xe0fc, fontFamily: _familySharp, fontPackage: _package);
@@ -815,11 +831,13 @@ class ZetaIcons {
   static const IconData how_do_i_sharp = IconData(0xe107, fontFamily: _familySharp, fontPackage: _package);
   static const IconData image_library_sharp = IconData(0xe108, fontFamily: _familySharp, fontPackage: _package);
   static const IconData image_sharp = IconData(0xe109, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData important_notification_sharp = IconData(0xe10a, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData important_notification_sharp =
+      IconData(0xe10a, fontFamily: _familySharp, fontPackage: _package);
   static const IconData inbox_sharp = IconData(0xe10b, fontFamily: _familySharp, fontPackage: _package);
   static const IconData indent_decrease_sharp = IconData(0xe10c, fontFamily: _familySharp, fontPackage: _package);
   static const IconData indent_increase_sharp = IconData(0xe10d, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData indeterminate_check_box_sharp = IconData(0xe10e, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData indeterminate_check_box_sharp =
+      IconData(0xe10e, fontFamily: _familySharp, fontPackage: _package);
   static const IconData info_sharp = IconData(0xe10f, fontFamily: _familySharp, fontPackage: _package);
   static const IconData instagram_sharp = IconData(0xe110, fontFamily: _familySharp, fontPackage: _package);
   static const IconData ios_share_sharp = IconData(0xe111, fontFamily: _familySharp, fontPackage: _package);
@@ -909,7 +927,8 @@ class ZetaIcons {
   static const IconData person_swap_sharp = IconData(0xe165, fontFamily: _familySharp, fontPackage: _package);
   static const IconData person_walk_sharp = IconData(0xe166, fontFamily: _familySharp, fontPackage: _package);
   static const IconData phone_android_sharp = IconData(0xe167, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData phone_bluetooth_speaker_sharp = IconData(0xe168, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData phone_bluetooth_speaker_sharp =
+      IconData(0xe168, fontFamily: _familySharp, fontPackage: _package);
   static const IconData phone_in_talk_sharp = IconData(0xe169, fontFamily: _familySharp, fontPackage: _package);
   static const IconData phone_iphone_sharp = IconData(0xe16a, fontFamily: _familySharp, fontPackage: _package);
   static const IconData phone_sharp = IconData(0xe16b, fontFamily: _familySharp, fontPackage: _package);
@@ -940,7 +959,8 @@ class ZetaIcons {
   static const IconData qr_code_sharp = IconData(0xe184, fontFamily: _familySharp, fontPackage: _package);
   static const IconData queue_sharp = IconData(0xe185, fontFamily: _familySharp, fontPackage: _package);
   static const IconData radio_button_checked_sharp = IconData(0xe186, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData radio_button_unchecked_sharp = IconData(0xe187, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData radio_button_unchecked_sharp =
+      IconData(0xe187, fontFamily: _familySharp, fontPackage: _package);
   static const IconData react_add_sharp = IconData(0xe188, fontFamily: _familySharp, fontPackage: _package);
   static const IconData react_thumbsup_sharp = IconData(0xe189, fontFamily: _familySharp, fontPackage: _package);
   static const IconData recall_sharp = IconData(0xe18a, fontFamily: _familySharp, fontPackage: _package);
