@@ -28,7 +28,7 @@ class _StepperInputExampleState extends State<StepperInputExample> {
             ),
             ZetaStepperInput(rounded: false),
             ZetaStepperInput(
-              size: ZetaWidgetSize.large,
+              size: ZetaStepperInputSize.large,
               onChange: (_) {},
             ),
           ].divide(const SizedBox(height: 16)).toList(),

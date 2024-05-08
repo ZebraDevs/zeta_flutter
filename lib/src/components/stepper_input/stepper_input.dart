@@ -4,12 +4,21 @@ import 'package:flutter/services.dart';
 
 import '../../../zeta_flutter.dart';
 
+/// Sizes for [ZetaStepperInput]
+enum ZetaStepperInputSize {
+  /// Medium
+  medium,
+
+  /// Large
+  large,
+}
+
 /// A stepper input, also called numeric stepper, is a common UI element that allows uers to input a number or value simply by clicking the plus and minus buttons.
 class ZetaStepperInput extends StatefulWidget {
   /// Creates a new [ZetaStepperInput]
   const ZetaStepperInput({
     this.rounded = true,
-    this.size = ZetaWidgetSize.medium,
+    this.size = ZetaStepperInputSize.medium,
     this.initialValue,
     this.min,
     this.max,
@@ -24,7 +33,7 @@ class ZetaStepperInput extends StatefulWidget {
   final bool rounded;
 
   /// The size of the stepper input.
-  final ZetaWidgetSize size;
+  final ZetaStepperInputSize size;
 
   /// The initial value of the stepper input.
   ///
@@ -47,7 +56,7 @@ class ZetaStepperInput extends StatefulWidget {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty<bool>('rounded', rounded))
-      ..add(EnumProperty<ZetaWidgetSize>('size', size))
+      ..add(EnumProperty<ZetaStepperInputSize>('size', size))
       ..add(IntProperty('initialValue', initialValue))
       ..add(IntProperty('min', min))
       ..add(IntProperty('max', max))
@@ -88,7 +97,7 @@ class _ZetaStepperInputState extends State<ZetaStepperInput> {
   }
 
   double get _height {
-    if (widget.size != ZetaWidgetSize.large) {
+    if (widget.size != ZetaStepperInputSize.large) {
       return ZetaSpacing.x10;
     } else {
       return ZetaSpacing.x12;
@@ -128,7 +137,7 @@ class _ZetaStepperInputState extends State<ZetaStepperInput> {
               ? ZetaIcons.remove_round
               : ZetaIcons.remove_sharp,
       type: ZetaButtonType.outlineSubtle,
-      size: widget.size == ZetaWidgetSize.small ? ZetaWidgetSize.medium : widget.size,
+      size: widget.size == ZetaStepperInputSize.medium ? ZetaWidgetSize.medium : ZetaWidgetSize.large,
       borderType: widget.rounded ? ZetaWidgetBorder.rounded : ZetaWidgetBorder.sharp,
       onPressed: !_disabled
           ? () => _onChange(
