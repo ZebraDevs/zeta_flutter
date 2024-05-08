@@ -5,6 +5,13 @@
 - [`ed1210d`](https://github.com/zebratechnologies/zeta-flutter/commit/ed1210d6cbc173aef8b1adf0d20ee91d3e87f2c3) - Update Widgetbook to correct functionality _(PR [#52](https://github.com/zebratechnologies/zeta-flutter/pull/52) by [@thelukewalton](https://github.com/thelukewalton))_
 - [`c627d7a`](https://github.com/zebratechnologies/zeta-flutter/commit/c627d7ab19d3f33e30c406441702ff6134557f14) - Tidy up example app _(PR [#53](https://github.com/zebratechnologies/zeta-flutter/pull/53) by [@thelukewalton](https://github.com/thelukewalton))_
 
+## [0.8.2](https://github.com/ZebraDevs/zeta_flutter/compare/v0.8.1...v0.8.2) (2024-05-08)
+
+
+### Bug Fixes
+
+* revert intl to 0.18.1 for wider compatibility ([#66](https://github.com/ZebraDevs/zeta_flutter/issues/66)) ([6831c2f](https://github.com/ZebraDevs/zeta_flutter/commit/6831c2fa017457414339f12ec81b302e231d4496))
+
 ## [0.8.1](https://github.com/ZebraDevs/zeta_flutter/compare/v0.8.0...v0.8.1) (2024-05-07)
 
 
