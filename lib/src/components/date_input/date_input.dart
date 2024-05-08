@@ -10,12 +10,12 @@ import '../../../zeta_flutter.dart';
 class ZetaDateInput extends StatefulWidget {
   /// Constructor for [ZetaDateInput].
   ///
-  /// Example usage how to provide custom validanions
+  /// Example usage how to provide custom validations
   /// via `onChanged`, `hasError` and `errorText`:
   /// ```dart
   /// ZetaDateInput(
-  ///   label: 'Birthdate',
-  ///   hint: 'Enter birthdate',
+  ///   label: 'Birthday',
+  ///   hint: 'Enter birthday',
   ///   hasError: _errorText != null,
   ///   errorText: _errorText ?? 'Invalid date',
   ///   onChanged: (value) {
@@ -24,7 +24,7 @@ class ZetaDateInput extends StatefulWidget {
   ///     setState(
   ///       () => _errorText = value.difference(
   ///         DateTime(now.year, now.month, now.day)).inDays > 0
-  ///           ? 'Birthdate cannot be in the future'
+  ///           ? 'Birthday cannot be in the future'
   ///           : null,
   ///     );
   ///   },
@@ -44,6 +44,7 @@ class ZetaDateInput extends StatefulWidget {
   });
 
   /// Determines the size of the input field.
+  ///
   /// Default is `ZetaDateInputSize.large`
   final ZetaWidgetSize? size;
 
@@ -60,23 +61,22 @@ class ZetaDateInput extends StatefulWidget {
   final bool rounded;
 
   /// Determines if the input field should be displayed in error style.
+  ///
   /// Default is `false`.
+  ///
   /// If `enabled` is `false`, this has no effect.
   final bool hasError;
 
-  /// In combination with `hasError: true`, provides the error message
-  /// to be displayed below the input field.
+  /// In combination with `hasError: true`, provides the error message to be displayed below the input field.
   ///
-  /// If `hasError` is false, then `errorText` should provide
-  /// date validation error message.
+  /// If `hasError` is false, then `errorText` should provide date validation error message.
   ///
   /// See the example in the [ZetaDateInput] documentation.
   final String? errorText;
 
   /// A callback, which provides the entered date, or `null`, if invalid.
   ///
-  /// See the example in the [ZetaDateInput] documentation
-  /// how to provide custom validations
+  /// See the example in the [ZetaDateInput] documentation how to provide custom validations
   /// in combination with `hasError` and `errorText`.
   final void Function(DateTime?)? onChanged;
 
@@ -253,7 +253,7 @@ class _ZetaDateInputState extends State<ZetaDateInput> {
             child: Row(
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(right: 8),
+                  padding: const EdgeInsets.only(right: ZetaSpacing.x2),
                   child: Icon(
                     showError && widget.enabled
                         ? (widget.rounded ? ZetaIcons.error_round : ZetaIcons.error_sharp)
@@ -315,4 +315,15 @@ class _ZetaDateInputState extends State<ZetaDateInput> {
         borderRadius: rounded ? ZetaRadius.minimal : ZetaRadius.none,
         borderSide: BorderSide(color: zeta.colors.red.shade50),
       );
+}
+
+extension on DateFormat {
+  //NOTE: this function is a part of intl 0.19.0.
+  DateTime? tryParseStrict(String inputString) {
+    try {
+      return parseStrict(inputString);
+    } on FormatException {
+      return null;
+    }
+  }
 }
