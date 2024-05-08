@@ -16,7 +16,7 @@ class ZetaStepperInput extends StatefulWidget {
     this.onChange,
     super.key,
   }) : assert(
-          (initialValue ?? 0) >= (min ?? 0) && (initialValue ?? 0) <= (max ?? 0),
+          (min == null || (initialValue ?? 0) >= min) && (max == null || (initialValue ?? 0) <= max),
           'Initial value must be inside given min and max values',
         );
 
@@ -128,7 +128,7 @@ class _ZetaStepperInputState extends State<ZetaStepperInput> {
               ? ZetaIcons.remove_round
               : ZetaIcons.remove_sharp,
       type: ZetaButtonType.outlineSubtle,
-      size: widget.size,
+      size: widget.size == ZetaWidgetSize.small ? ZetaWidgetSize.medium : widget.size,
       borderType: widget.rounded ? ZetaWidgetBorder.rounded : ZetaWidgetBorder.sharp,
       onPressed: !_disabled
           ? () => _onChange(
