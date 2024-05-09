@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'color_swatch.dart';
-import 'colors.dart';
+import '../../zeta_flutter.dart';
 
 /// Default set of Zeta Colors that can be used to make a [ZetaColors] instance.
 ///
