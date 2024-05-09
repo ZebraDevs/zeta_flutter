@@ -17,6 +17,15 @@ extension ListDivider on Iterable<Widget> {
       yield iterator.current;
     }
   }
+
+  /// Space out a list of wigets with gap of fixed width
+  List<Widget> gap(double gap) {
+    return divide(
+      SizedBox.square(
+        dimension: gap,
+      ),
+    ).toList();
+  }
 }
 
 /// Extension to add spacing to any [Widget].

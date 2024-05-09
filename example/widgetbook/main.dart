@@ -19,6 +19,7 @@ import 'pages/components/date_input_widgetbook.dart';
 import 'pages/components/dial_pad_widgetbook.dart';
 import 'pages/components/dialog_widgetbook.dart';
 import 'pages/components/dropdown_widgetbook.dart';
+import 'pages/components/global_header_widgetbook.dart';
 import 'pages/components/filter_selection_widgetbook.dart';
 import 'pages/components/in_page_banner_widgetbook.dart';
 import 'pages/components/list_item_widgetbook.dart';
@@ -62,14 +63,8 @@ class HotReload extends StatelessWidget {
             WidgetbookComponent(
               name: 'App Bar',
               useCases: [
-                WidgetbookUseCase(
-                  name: 'Default',
-                  builder: (context) => defaultAppBarUseCase(context),
-                ),
-                WidgetbookUseCase(
-                  name: 'Search',
-                  builder: (context) => searchAppBarUseCase(context),
-                ),
+                WidgetbookUseCase(name: 'Default', builder: (context) => defaultAppBarUseCase(context)),
+                WidgetbookUseCase(name: 'Search', builder: (context) => searchAppBarUseCase(context)),
               ],
             ),
             WidgetbookComponent(
@@ -99,11 +94,6 @@ class HotReload extends StatelessWidget {
                 WidgetbookUseCase(name: 'Group Button', builder: (context) => buttonGroupUseCase(context)),
               ],
             ),
-            WidgetbookUseCase(name: 'BreadCrumbs', builder: (context) => breadCrumbsUseCase(context)),
-            WidgetbookUseCase(name: 'Banners', builder: (context) => bannerUseCase(context)),
-            WidgetbookUseCase(name: "Dropdown", builder: (context) => dropdownUseCase(context)),
-            WidgetbookUseCase(name: 'In Page Banners', builder: (context) => inPageBannerUseCase(context)),
-            WidgetbookUseCase(name: 'Accordion', builder: (context) => accordionUseCase(context)),
             WidgetbookComponent(
               name: 'Chips',
               useCases: [
@@ -112,12 +102,6 @@ class HotReload extends StatelessWidget {
                 WidgetbookUseCase(name: 'Assist Chip', builder: (context) => assistChipUseCase(context)),
               ],
             ),
-            WidgetbookUseCase(name: 'Password Input', builder: (context) => passwordInputUseCase(context)),
-            WidgetbookUseCase(name: 'Content', builder: (context) => bottomSheetContentUseCase(context)),
-            WidgetbookUseCase(name: 'Dial Pad', builder: (context) => dialPadUseCase(context)),
-            WidgetbookUseCase(name: 'List Item', builder: (context) => listItemUseCase(context)),
-            WidgetbookUseCase(name: 'Navigation Bar', builder: (context) => navigationBarUseCase(context)),
-            WidgetbookUseCase(name: 'Pagination', builder: (context) => paginationUseCase(context)),
             WidgetbookComponent(
               name: 'Progress',
               useCases: [
@@ -125,27 +109,29 @@ class HotReload extends StatelessWidget {
                 WidgetbookUseCase(name: 'Circle', builder: (context) => progressCircleUseCase(context))
               ],
             ),
+            WidgetbookUseCase(name: 'Accordion', builder: (context) => accordionUseCase(context)),
+            WidgetbookUseCase(name: 'Avatar', builder: (context) => avatarUseCase(context)),
+            WidgetbookUseCase(name: 'BreadCrumbs', builder: (context) => breadCrumbsUseCase(context)),
+            WidgetbookUseCase(name: 'Banners', builder: (context) => bannerUseCase(context)),
+            WidgetbookUseCase(name: 'Checkbox', builder: (context) => checkboxUseCase(context)),
+            WidgetbookUseCase(name: "Dropdown", builder: (context) => dropdownUseCase(context)),
+            WidgetbookUseCase(name: 'In Page Banners', builder: (context) => inPageBannerUseCase(context)),
+            WidgetbookUseCase(name: 'Password Input', builder: (context) => passwordInputUseCase(context)),
+            WidgetbookUseCase(name: 'Content', builder: (context) => bottomSheetContentUseCase(context)),
+            WidgetbookUseCase(name: 'Dial Pad', builder: (context) => dialPadUseCase(context)),
+            WidgetbookUseCase(name: 'Global Header', builder: (context) => globalHeaderUseCase(context)),
+            WidgetbookUseCase(name: 'List Item', builder: (context) => listItemUseCase(context)),
+            WidgetbookUseCase(name: 'Navigation Bar', builder: (context) => navigationBarUseCase(context)),
+            WidgetbookUseCase(name: 'Pagination', builder: (context) => paginationUseCase(context)),
             WidgetbookUseCase(name: 'Radio Button', builder: (context) => radioButtonUseCase(context)),
-            WidgetbookUseCase(
-              name: 'Segmented Control',
-              builder: (context) => segmentedControlUseCase(context),
-            ),
+            WidgetbookUseCase(name: 'Segmented Control', builder: (context) => segmentedControlUseCase(context)),
             WidgetbookUseCase(name: 'Switch', builder: (context) => switchUseCase(context)),
-            WidgetbookUseCase(
-              name: 'Snack Bar',
-              builder: (context) => snackBarUseCase(context),
-            ),
+            WidgetbookUseCase(name: 'Snack Bar', builder: (context) => snackBarUseCase(context)),
             WidgetbookUseCase(name: 'Date Input', builder: (context) => dateInputUseCase(context)),
             WidgetbookUseCase(name: 'Tabs', builder: (context) => tabsUseCase(context)),
             WidgetbookUseCase(name: 'Phone Input', builder: (context) => phoneInputUseCase(context)),
-            WidgetbookUseCase(
-              name: 'Stepper',
-              builder: (context) => stepperUseCase(context),
-            ),
-            WidgetbookUseCase(
-              name: 'Stepper Input',
-              builder: (context) => stepperInputUseCase(context),
-            ),
+            WidgetbookUseCase(name: 'Stepper', builder: (context) => stepperUseCase(context)),
+            WidgetbookUseCase(name: 'Stepper Input', builder: (context) => stepperInputUseCase(context)),
             WidgetbookUseCase(name: 'Dialog', builder: (context) => dialogUseCase(context)),
             WidgetbookUseCase(name: 'Search Bar', builder: (context) => searchBarUseCase(context)),
             WidgetbookUseCase(name: 'Navigation Rail', builder: (context) => navigationRailUseCase(context)),
@@ -177,7 +163,6 @@ class HotReload extends StatelessWidget {
         DeviceFrameAddon(
           devices: [
             Devices.windows.wideMonitor,
-            Devices.macOS.wideMonitor,
             Devices.ios.iPad,
             Devices.ios.iPhone13,
             Zebra.ec30,
