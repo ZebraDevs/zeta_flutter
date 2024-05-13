@@ -41,11 +41,11 @@ class ZetaButtonGroup extends StatelessWidget {
     for (final (index, button) in buttons.indexed) {
       mappedButtons.add(
         button.copyWith(
-          large: isLarge,
-          inverse: isInverse,
-          round: rounded,
-          fin: index == buttons.length - 1,
-          initial: index == 0,
+          isLarge: isLarge,
+          isInverse: isInverse,
+          rounded: rounded,
+          isFinal: index == buttons.length - 1,
+          isInitial: index == 0,
         ),
       );
     }
@@ -153,11 +153,11 @@ class ZetaGroupButton extends StatefulWidget {
 
   /// Returns copy of [ZetaGroupButton] with fields.
   ZetaGroupButton copyWith({
-    bool? fin,
-    bool? initial,
-    bool? large,
-    bool? round,
-    bool? inverse,
+    bool? isFinal,
+    bool? isInitial,
+    bool? isLarge,
+    bool? rounded,
+    bool? isInverse,
   }) {
     return ZetaGroupButton._(
       key: key,
@@ -165,11 +165,11 @@ class ZetaGroupButton extends StatefulWidget {
       icon: icon,
       onPressed: onPressed,
       dropdown: dropdown,
-      isFinal: fin ?? isFinal,
-      isInitial: initial ?? isInitial,
-      isLarge: large ?? isLarge,
-      rounded: round ?? rounded,
-      isInverse: inverse ?? isInverse,
+      isFinal: isFinal ?? this.isFinal,
+      isInitial: isInitial ?? this.isInitial,
+      isLarge: isLarge ?? this.isLarge,
+      rounded: rounded ?? this.rounded,
+      isInverse: isInverse ?? this.isInverse,
     );
   }
 
