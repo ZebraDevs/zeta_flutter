@@ -3,7 +3,6 @@ library zeta_flutter;
 
 export 'src/assets/icons.dart';
 export 'src/components/accordion/accordion.dart';
-export 'src/components/app_bar/app_bar.dart';
 export 'src/components/avatars/avatar.dart';
 export 'src/components/badges/badge.dart';
 export 'src/components/badges/indicator.dart';
@@ -51,6 +50,7 @@ export 'src/components/switch/zeta_switch.dart';
 export 'src/components/tabs/tab.dart';
 export 'src/components/tabs/tab_bar.dart';
 export 'src/components/tooltip/tooltip.dart';
+export 'src/components/top_app_bar/top_app_bar.dart';
 export 'src/theme/color_extensions.dart';
 export 'src/theme/color_scheme.dart';
 export 'src/theme/color_swatch.dart';

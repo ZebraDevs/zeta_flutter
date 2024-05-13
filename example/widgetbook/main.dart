@@ -4,7 +4,7 @@ import 'package:zeta_flutter/zeta_flutter.dart';
 
 import 'pages/assets/icon_widgetbook.dart';
 import 'pages/components/accordion_widgetbook.dart';
-import 'pages/components/app_bar_widgetbook.dart';
+import 'pages/components/top_app_bar_widgetbook.dart';
 import 'pages/components/avatar_widgetbook.dart';
 import 'pages/components/badges_widgetbook.dart';
 import 'pages/components/banner_widgetbook.dart';
@@ -61,10 +61,10 @@ class HotReload extends StatelessWidget {
           isInitiallyExpanded: false,
           children: [
             WidgetbookComponent(
-              name: 'App Bar',
+              name: 'Top App Bar',
               useCases: [
-                WidgetbookUseCase(name: 'Default', builder: (context) => defaultAppBarUseCase(context)),
-                WidgetbookUseCase(name: 'Search', builder: (context) => searchAppBarUseCase(context)),
+                WidgetbookUseCase(name: 'Default', builder: (context) => defaultTopAppBarUseCase(context)),
+                WidgetbookUseCase(name: 'Search', builder: (context) => searchTopAppBarUseCase(context)),
               ],
             ),
             WidgetbookComponent(

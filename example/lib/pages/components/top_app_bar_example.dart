@@ -4,16 +4,16 @@ import 'package:flutter/material.dart';
 import 'package:zeta_example/widgets.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
-class AppBarExample extends StatefulWidget {
-  const AppBarExample({super.key});
+class TopAppBarExample extends StatefulWidget {
+  const TopAppBarExample({super.key});
 
-  static const String name = 'AppBar';
+  static const String name = 'TopAppBar';
 
   @override
-  State<AppBarExample> createState() => _AppBarExampleState();
+  State<TopAppBarExample> createState() => _TopAppBarExampleState();
 }
 
-class _AppBarExampleState extends State<AppBarExample> {
+class _TopAppBarExampleState extends State<TopAppBarExample> {
   late final _searchController = AppBarSearchController();
 
   void _showHideSearch() {
@@ -23,14 +23,14 @@ class _AppBarExampleState extends State<AppBarExample> {
   @override
   Widget build(BuildContext context) {
     return ExampleScaffold(
-      name: AppBarExample.name,
+      name: TopAppBarExample.name,
       child: SingleChildScrollView(
         child: Column(
           children: [
             // Default
             Padding(
               padding: const EdgeInsets.only(top: ZetaSpacing.x4),
-              child: ZetaAppBar(
+              child: ZetaTopAppBar(
                 leading: IconButton(
                   onPressed: () {},
                   icon: Icon(Icons.menu_rounded),
@@ -64,8 +64,8 @@ class _AppBarExampleState extends State<AppBarExample> {
             // Centered
             Padding(
               padding: const EdgeInsets.only(top: ZetaSpacing.x4),
-              child: ZetaAppBar(
-                type: ZetaAppBarType.centeredTitle,
+              child: ZetaTopAppBar(
+                type: ZetaTopAppBarType.centeredTitle,
                 leading: IconButton(
                   onPressed: () {},
                   icon: Icon(Icons.menu_rounded),
@@ -83,7 +83,7 @@ class _AppBarExampleState extends State<AppBarExample> {
             // Contextual
             Padding(
               padding: const EdgeInsets.only(top: ZetaSpacing.x4),
-              child: ZetaAppBar(
+              child: ZetaTopAppBar(
                 leading: IconButton(
                   onPressed: () {},
                   icon: Icon(ZetaIcons.close_round),
@@ -115,8 +115,8 @@ class _AppBarExampleState extends State<AppBarExample> {
               padding: const EdgeInsets.only(top: ZetaSpacing.x4),
               child: Column(
                 children: [
-                  ZetaAppBar(
-                    type: ZetaAppBarType.centeredTitle,
+                  ZetaTopAppBar(
+                    type: ZetaTopAppBarType.centeredTitle,
                     leading: BackButton(),
                     title: Text("Title"),
                     actions: [
@@ -151,8 +151,8 @@ class _AppBarExampleState extends State<AppBarExample> {
             // Extended
             Padding(
               padding: const EdgeInsets.only(top: ZetaSpacing.x4),
-              child: ZetaAppBar(
-                type: ZetaAppBarType.extendedTitle,
+              child: ZetaTopAppBar(
+                type: ZetaTopAppBarType.extendedTitle,
                 leading: IconButton(
                   onPressed: () {},
                   icon: Icon(Icons.menu),
