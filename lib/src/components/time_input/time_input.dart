@@ -8,18 +8,6 @@ import '../../../zeta_flutter.dart';
 import '../../assets/icons.dart';
 
 class ZetaTimeInput extends StatefulWidget {
-  final bool rounded;
-  final bool use12Hr;
-  final ValueChanged<TimeOfDay?>? onChange;
-  final TimeOfDay? initialValue;
-  final bool disabled;
-  final String? label;
-  final String? hintText;
-  final String? errorText;
-  final ZetaWidgetSize size;
-  final AutovalidateMode autovalidateMode;
-  final bool Function(TimeOfDay value)? validator;
-
   const ZetaTimeInput({
     super.key,
     this.rounded = true,
@@ -35,8 +23,36 @@ class ZetaTimeInput extends StatefulWidget {
     this.size = ZetaWidgetSize.medium,
   });
 
+  final bool rounded;
+  final bool use12Hr;
+  final ValueChanged<TimeOfDay?>? onChange;
+  final TimeOfDay? initialValue;
+  final bool disabled;
+  final String? label;
+  final String? hintText;
+  final String? errorText;
+  final ZetaWidgetSize size;
+  final AutovalidateMode autovalidateMode;
+  final bool Function(TimeOfDay value)? validator;
+
   @override
   State<ZetaTimeInput> createState() => _ZetaTimeInputState();
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty<bool>('rounded', rounded))
+      ..add(DiagnosticsProperty<bool>('use12Hr', use12Hr))
+      ..add(ObjectFlagProperty<ValueChanged<TimeOfDay?>?>.has('onChange', onChange))
+      ..add(DiagnosticsProperty<TimeOfDay?>('initialValue', initialValue))
+      ..add(DiagnosticsProperty<bool>('disabled', disabled))
+      ..add(StringProperty('label', label))
+      ..add(StringProperty('hintText', hintText))
+      ..add(StringProperty('errorText', errorText))
+      ..add(EnumProperty<ZetaWidgetSize>('size', size))
+      ..add(EnumProperty<AutovalidateMode>('autovalidateMode', autovalidateMode))
+      ..add(ObjectFlagProperty<bool Function(TimeOfDay value)?>.has('validator', validator));
+  }
 }
 
 class _ZetaTimeInputState extends State<ZetaTimeInput> {
@@ -161,6 +177,16 @@ class _ZetaTimeInputState extends State<ZetaTimeInput> {
     super.dispose();
   }
 
+  void _onFocus({
+    required TextEditingController controller,
+    required bool hasFocus,
+  }) {
+    if (!hasFocus) _padValue(controller);
+    setState(() {
+      _typing = hasFocus;
+    });
+  }
+
   void _padValues() {
     _padValue(_hrsController);
     _padValue(_minsController);
@@ -209,22 +235,14 @@ class _ZetaTimeInputState extends State<ZetaTimeInput> {
     }
   }
 
-  void _onFocus({
-    required TextEditingController controller,
-    required bool hasFocus,
-  }) {
-    if (!hasFocus) _padValue(controller);
-    setState(() {
-      _typing = hasFocus;
-    });
-  }
-
   void _clear() {
     setState(() {
       _hrsController.text = '';
       _minsController.text = '';
+      _value = null;
     });
 
+    _formKey.currentState?.reset();
     widget.onChange?.call(null);
   }
 
@@ -234,7 +252,7 @@ class _ZetaTimeInputState extends State<ZetaTimeInput> {
       autovalidateMode: widget.autovalidateMode,
       key: _formKey,
       validator: (val) {
-        if (val == null || _hrsValue! > _hrsLimit || _minsValue! > _minsLimit) {
+        if (val == null || (_value != null && (_hrsValue! > _hrsLimit || _minsValue! > _minsLimit))) {
           _error = true;
           return '';
         }
@@ -302,7 +320,7 @@ class _ZetaTimeInputState extends State<ZetaTimeInput> {
                             }
                           },
                           controller: _hrsController,
-                          onSubmit: (val) {
+                          onSubmit: (_) {
                             _minsFocusNode.requestFocus();
                           },
                           focusNode: _hrsFocusNode,
@@ -361,14 +379,6 @@ class _ZetaTimeInputState extends State<ZetaTimeInput> {
 }
 
 class _TextInput extends StatelessWidget {
-  final TextEditingController controller;
-  final ValueChanged<String>? onSubmit;
-  final ValueChanged<String> onChange;
-  final FocusNode focusNode;
-  final String hint;
-  final bool disabled;
-  final TextStyle style;
-
   const _TextInput({
     required this.controller,
     required this.onChange,
@@ -378,6 +388,14 @@ class _TextInput extends StatelessWidget {
     required this.style,
     this.onSubmit,
   });
+
+  final TextEditingController controller;
+  final ValueChanged<String>? onSubmit;
+  final ValueChanged<String> onChange;
+  final FocusNode focusNode;
+  final String hint;
+  final bool disabled;
+  final TextStyle style;
 
   @override
   Widget build(BuildContext context) {
@@ -404,20 +422,33 @@ class _TextInput extends StatelessWidget {
       ),
     );
   }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty<TextEditingController>('controller', controller))
+      ..add(ObjectFlagProperty<ValueChanged<String>?>.has('onSubmit', onSubmit))
+      ..add(ObjectFlagProperty<ValueChanged<String>>.has('onChange', onChange))
+      ..add(DiagnosticsProperty<FocusNode>('focusNode', focusNode))
+      ..add(StringProperty('hint', hint))
+      ..add(DiagnosticsProperty<bool>('disabled', disabled))
+      ..add(DiagnosticsProperty<TextStyle>('style', style));
+  }
 }
 
 class _IconButton extends StatelessWidget {
-  final IconData icon;
-  final VoidCallback onTap;
-  final bool disabled;
-  final double size;
-
   const _IconButton({
     required this.icon,
     required this.onTap,
     required this.disabled,
     required this.size,
   });
+
+  final IconData icon;
+  final VoidCallback onTap;
+  final bool disabled;
+  final double size;
 
   @override
   Widget build(BuildContext context) {
@@ -432,15 +463,19 @@ class _IconButton extends StatelessWidget {
       icon: Icon(icon),
     );
   }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty<IconData>('icon', icon))
+      ..add(ObjectFlagProperty<VoidCallback>.has('onTap', onTap))
+      ..add(DiagnosticsProperty<bool>('disabled', disabled))
+      ..add(DoubleProperty('size', size));
+  }
 }
 
 class _HintText extends StatelessWidget {
-  final bool error;
-  final bool disabled;
-  final bool rounded;
-  final String? hintText;
-  final String? errorText;
-
   const _HintText({
     required this.error,
     required this.disabled,
@@ -448,6 +483,11 @@ class _HintText extends StatelessWidget {
     required this.errorText,
     required this.rounded,
   });
+  final bool error;
+  final bool disabled;
+  final bool rounded;
+  final String? hintText;
+  final String? errorText;
 
   @override
   Widget build(BuildContext context) {
@@ -489,5 +529,16 @@ class _HintText extends StatelessWidget {
         ),
       ],
     ).paddingTop(ZetaSpacing.x2);
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty<bool>('error', error))
+      ..add(DiagnosticsProperty<bool>('disabled', disabled))
+      ..add(DiagnosticsProperty<bool>('rounded', rounded))
+      ..add(StringProperty('hintText', hintText))
+      ..add(StringProperty('errorText', errorText));
   }
 }
