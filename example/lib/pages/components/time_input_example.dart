@@ -17,8 +17,24 @@ class TimeInputExample extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              ZetaTimeInput(),
-              ZetaTimeInput(use12Hr: true),
+              ZetaTimeInput(
+                label: 'Large',
+                hintText: 'Default hint text',
+                errorText: 'Oops! Error hint text',
+                size: ZetaWidgetSize.large,
+              ),
+              ZetaTimeInput(
+                label: 'Medium',
+                hintText: 'Default hint text',
+                errorText: 'Oops! Error hint text',
+              ),
+              ZetaTimeInput(
+                label: 'Small',
+                hintText: 'Default hint text',
+                errorText: 'Oops! Error hint text',
+                size: ZetaWidgetSize.small,
+              ),
+              ZetaTimeInput(label: '12 Hr Time Picker', use12Hr: true),
               ZetaTimeInput(disabled: true),
             ].divide(const SizedBox(height: 12)).toList(),
           ),
