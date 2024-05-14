@@ -9,6 +9,7 @@ class TimeInputExample extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final formKey = GlobalKey<FormState>();
     return ExampleScaffold(
       name: 'Time Input',
       child: Center(
@@ -17,11 +18,20 @@ class TimeInputExample extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              ZetaTimeInput(
-                label: 'Large',
-                hintText: 'Default hint text',
-                errorText: 'Oops! Error hint text',
-                size: ZetaWidgetSize.large,
+              Form(
+                key: formKey,
+                child: ZetaTimeInput(
+                  label: 'Large',
+                  hintText: 'Default hint text',
+                  // errorText: 'Oops! Error hint text',
+                  size: ZetaWidgetSize.large,
+                ),
+              ),
+              ZetaButton(
+                label: 'Validate input',
+                onPressed: () {
+                  print(formKey.currentState?.validate());
+                },
               ),
               ZetaTimeInput(
                 label: 'Medium',
@@ -35,7 +45,7 @@ class TimeInputExample extends StatelessWidget {
                 size: ZetaWidgetSize.small,
               ),
               ZetaTimeInput(label: '12 Hr Time Picker', use12Hr: true),
-              ZetaTimeInput(disabled: true),
+              ZetaTimeInput(label: 'Disabled Time Picker', disabled: true, hintText: 'Disabled time picker'),
             ].divide(const SizedBox(height: 12)).toList(),
           ),
         ),

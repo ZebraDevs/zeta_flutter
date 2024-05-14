@@ -17,18 +17,23 @@ class ZetaTimeInput extends StatefulWidget {
   final String? hintText;
   final String? errorText;
   final ZetaWidgetSize size;
+  final AutovalidateMode autovalidateMode;
+  final bool Function(TimeOfDay value)? validator;
 
-  const ZetaTimeInput(
-      {super.key,
-      this.rounded = true,
-      this.use12Hr = false,
-      this.disabled = false,
-      this.initialValue,
-      this.onChange,
-      this.label,
-      this.hintText,
-      this.errorText,
-      this.size = ZetaWidgetSize.medium});
+  const ZetaTimeInput({
+    super.key,
+    this.rounded = true,
+    this.use12Hr = false,
+    this.disabled = false,
+    this.initialValue,
+    this.onChange,
+    this.label,
+    this.hintText,
+    this.errorText,
+    this.autovalidateMode = AutovalidateMode.onUserInteraction,
+    this.validator,
+    this.size = ZetaWidgetSize.medium,
+  });
 
   @override
   State<ZetaTimeInput> createState() => _ZetaTimeInputState();
@@ -37,7 +42,7 @@ class ZetaTimeInput extends StatefulWidget {
 class _ZetaTimeInputState extends State<ZetaTimeInput> {
   ZetaColors get _colors => Zeta.of(context).colors;
 
-  final GlobalKey<FormState> _formKey = GlobalKey();
+  final GlobalKey<FormFieldState<TimeOfDay?>> _formKey = GlobalKey();
 
   final TextEditingController _hrsController = TextEditingController();
   final TextEditingController _minsController = TextEditingController();
@@ -47,6 +52,9 @@ class _ZetaTimeInputState extends State<ZetaTimeInput> {
 
   int get _hrsLimit => widget.use12Hr ? 11 : 23;
   final int _minsLimit = 59;
+
+  int? get _hrsValue => int.tryParse(_hrsController.text);
+  int? get _minsValue => int.tryParse(_minsController.text);
 
   TimeOfDay? _value;
 
@@ -89,18 +97,21 @@ class _ZetaTimeInputState extends State<ZetaTimeInput> {
     return 1;
   }
 
-  double get _verticalPadding {
-    if (widget.size == ZetaWidgetSize.large) {
-      return ZetaSpacing.x1;
+  Color get _textColor {
+    if (widget.disabled) {
+      return _colors.textDisabled;
     }
-    return 0;
+    return _colors.textSubtle;
   }
 
   TextStyle get _textStyle {
+    TextStyle style = ZetaTextStyles.bodyMedium;
     if (widget.size == ZetaWidgetSize.small) {
-      return ZetaTextStyles.bodySmall;
+      style = ZetaTextStyles.bodySmall;
     }
-    return ZetaTextStyles.bodyMedium;
+    return style.copyWith(
+      color: _textColor,
+    );
   }
 
   double get _iconSize {
@@ -117,6 +128,13 @@ class _ZetaTimeInputState extends State<ZetaTimeInput> {
   @override
   void initState() {
     _value = widget.initialValue;
+    if (widget.initialValue != null) {
+      _hrsController.text = widget.initialValue!.hour.toString();
+      _minsController.text = widget.initialValue!.minute.toString();
+
+      _padValues();
+    }
+
     _hrsFocusNode.addListener(
       () => _onFocus(
         controller: _hrsController,
@@ -143,26 +161,27 @@ class _ZetaTimeInputState extends State<ZetaTimeInput> {
     super.dispose();
   }
 
+  void _padValues() {
+    _padValue(_hrsController);
+    _padValue(_minsController);
+  }
+
   void _padValue(TextEditingController controller) {
     if (controller.text.isNotEmpty) {
       controller.text = controller.text.padLeft(2, '0');
     }
   }
 
-  void _validate() {
-    setState(() {
-      _error = !(_formKey.currentState?.validate() ?? true);
-    });
+  void _onValueChanged(TimeOfDay? value) {
+    _formKey.currentState?.didChange(value);
+    widget.onChange?.call(_value);
   }
 
   void _onInputChanged() {
-    _validate();
-    final hrsValue = int.tryParse(_hrsController.text);
-    final minsValue = int.tryParse(_minsController.text);
-    if (!_error && hrsValue != null && minsValue != null) {
-      _value = TimeOfDay(hour: hrsValue, minute: minsValue);
+    if (_hrsValue != null && _minsValue != null) {
+      _value = TimeOfDay(hour: _hrsValue!, minute: _minsValue!);
 
-      widget.onChange?.call(_value);
+      _onValueChanged(_value);
     }
   }
 
@@ -178,16 +197,15 @@ class _ZetaTimeInputState extends State<ZetaTimeInput> {
       },
     );
     if (result != null) {
-      final hrVal = widget.use12Hr && result.hour > 11 ? result.hour - 12 : result.hour;
+      final hrVal = widget.use12Hr && result.hour > _hrsLimit ? result.hour - _hrsLimit + 1 : result.hour;
       _hrsController.text = hrVal.toString();
       _minsController.text = result.minute.toString();
-      _padValue(_hrsController);
-      _padValue(_minsController);
+
       setState(() {
         _value = result;
       });
-      _validate();
-      widget.onChange?.call(result);
+      _padValues();
+      _onValueChanged(result);
     }
   }
 
@@ -212,133 +230,132 @@ class _ZetaTimeInputState extends State<ZetaTimeInput> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        if (widget.label != null) ...[
-          Text(
-            widget.label!,
-            style: Theme.of(context)
-                .textTheme
-                .bodyMedium
-                ?.copyWith(color: widget.disabled ? _colors.textDisabled : _colors.textDefault),
-          ),
-          const SizedBox(height: ZetaSpacing.x2),
-        ],
-        MouseRegion(
-          onEnter: !widget.disabled
-              ? (_) => setState(() {
-                    _hovered = true;
-                  })
-              : null,
-          onExit: !widget.disabled
-              ? (_) => setState(() {
-                    _hovered = false;
-                  })
-              : null,
-          child: Container(
-            constraints: const BoxConstraints(minWidth: ZetaSpacing.x50),
-            padding: const EdgeInsets.only(
-              left: ZetaSpacing.x3,
-              right: ZetaSpacing.x0_5,
-            ),
-            decoration: BoxDecoration(
-              boxShadow: [
-                BoxShadow(
-                  spreadRadius: _borderWidth,
-                  blurStyle: BlurStyle.solid,
-                  color: _borderColor,
+    return FormField<TimeOfDay>(
+      autovalidateMode: widget.autovalidateMode,
+      key: _formKey,
+      validator: (val) {
+        if (val == null || _hrsValue! > _hrsLimit || _minsValue! > _minsLimit) {
+          _error = true;
+          return '';
+        }
+
+        final customValidation = widget.validator?.call(val) ?? false;
+        if (customValidation) {
+          _error = true;
+          return '';
+        }
+
+        _error = false;
+        return null;
+      },
+      builder: (formState) {
+        return Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            if (widget.label != null) ...[
+              Text(
+                widget.label!,
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: _textColor),
+              ),
+              const SizedBox(height: ZetaSpacing.x2),
+            ],
+            MouseRegion(
+              onEnter: !widget.disabled
+                  ? (_) => setState(() {
+                        _hovered = true;
+                      })
+                  : null,
+              onExit: !widget.disabled
+                  ? (_) => setState(() {
+                        _hovered = false;
+                      })
+                  : null,
+              child: Container(
+                constraints: const BoxConstraints(minWidth: ZetaSpacing.x50),
+                padding: const EdgeInsets.only(
+                  left: ZetaSpacing.x3,
+                  right: ZetaSpacing.x0_5,
                 ),
-              ],
-              color: _backgroundColor,
-              borderRadius: widget.rounded ? ZetaRadius.minimal : null,
-            ),
-            child: Row(
-              children: [
-                Form(
-                  key: _formKey,
-                  child: Row(
-                    children: [
-                      _TextInput(
-                        hint: 'hh',
-                        style: _textStyle,
-                        onChange: (val) {
-                          _onInputChanged();
-                          if (val.length == 2) {
+                decoration: BoxDecoration(
+                  boxShadow: [
+                    BoxShadow(
+                      spreadRadius: _borderWidth,
+                      blurStyle: BlurStyle.solid,
+                      color: _borderColor,
+                    ),
+                  ],
+                  color: _backgroundColor,
+                  borderRadius: widget.rounded ? ZetaRadius.minimal : null,
+                ),
+                child: Row(
+                  children: [
+                    Row(
+                      children: [
+                        _TextInput(
+                          hint: 'hh', //TODO Localize
+                          style: _textStyle,
+                          onChange: (val) {
+                            _onInputChanged();
+                            if (val.length == 2) {
+                              _minsFocusNode.requestFocus();
+                            }
+                          },
+                          controller: _hrsController,
+                          onSubmit: (val) {
                             _minsFocusNode.requestFocus();
-                          }
-                        },
-                        controller: _hrsController,
-                        onSubmit: (val) {
-                          _minsFocusNode.requestFocus();
-                        },
-                        limit: _hrsLimit,
-                        focusNode: _hrsFocusNode,
-                        disabled: widget.disabled,
-                      ),
-                      Text(
-                        ':',
-                        style: _textStyle.copyWith(
-                          color: !widget.disabled ? _colors.textSubtle : _colors.textDisabled,
+                          },
+                          focusNode: _hrsFocusNode,
+                          disabled: widget.disabled,
                         ),
-                      ).paddingHorizontal(ZetaSpacing.x0_5),
-                      _TextInput(
-                        hint: 'mm',
-                        onChange: (_) => _onInputChanged(),
-                        controller: _minsController,
-                        style: _textStyle,
-                        focusNode: _minsFocusNode,
-                        limit: _minsLimit,
-                        disabled: widget.disabled,
-                      ),
-                    ],
-                  ),
-                ),
-                Expanded(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      if (_showClearButton)
-                        IconButton(
-                          padding: EdgeInsets.all(_iconSize / 2),
-                          constraints: BoxConstraints(
-                            maxHeight: _iconSize * 2,
-                            maxWidth: _iconSize * 2,
+                        Text(
+                          ':',
+                          style: _textStyle,
+                        ).paddingHorizontal(ZetaSpacing.x0_5),
+                        _TextInput(
+                          hint: 'mm', //TODO Localize
+                          onChange: (_) => _onInputChanged(),
+                          controller: _minsController,
+                          style: _textStyle,
+                          focusNode: _minsFocusNode,
+                          disabled: widget.disabled,
+                        ),
+                      ],
+                    ),
+                    Expanded(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          if (_showClearButton)
+                            _IconButton(
+                              icon: widget.rounded ? ZetaIcons.cancel_round : ZetaIcons.cancel_sharp,
+                              onTap: _clear,
+                              disabled: widget.disabled,
+                              size: _iconSize,
+                            ),
+                          _IconButton(
+                            icon: widget.rounded ? ZetaIcons.clock_outline_round : ZetaIcons.clock_outline_sharp,
+                            onTap: _pickTime,
+                            disabled: widget.disabled,
+                            size: _iconSize,
                           ),
-                          onPressed: widget.disabled ? null : _clear,
-                          iconSize: _iconSize,
-                          icon: Icon(
-                            widget.rounded ? ZetaIcons.cancel_round : ZetaIcons.cancel_sharp,
-                          ),
-                        ),
-                      IconButton(
-                        padding: EdgeInsets.all(_iconSize / 2),
-                        constraints: BoxConstraints(
-                          maxHeight: _iconSize * 2,
-                          maxWidth: _iconSize * 2,
-                        ),
-                        onPressed: widget.disabled ? null : _pickTime,
-                        iconSize: _iconSize,
-                        icon: Icon(
-                          widget.rounded ? ZetaIcons.clock_outline_round : ZetaIcons.clock_outline_sharp,
-                        ),
+                        ],
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-              ],
+              ),
             ),
-          ),
-        ),
-        _HintText(
-          error: _error,
-          disabled: widget.disabled,
-          rounded: widget.rounded,
-          hintText: widget.hintText,
-          errorText: widget.errorText,
-        ),
-      ],
+            _HintText(
+              error: _error,
+              disabled: widget.disabled,
+              rounded: widget.rounded,
+              hintText: widget.hintText,
+              errorText: widget.errorText,
+            ),
+          ],
+        );
+      },
     );
   }
 }
@@ -349,7 +366,6 @@ class _TextInput extends StatelessWidget {
   final ValueChanged<String> onChange;
   final FocusNode focusNode;
   final String hint;
-  final int limit;
   final bool disabled;
   final TextStyle style;
 
@@ -358,7 +374,6 @@ class _TextInput extends StatelessWidget {
     required this.onChange,
     required this.hint,
     required this.focusNode,
-    required this.limit,
     required this.disabled,
     required this.style,
     this.onSubmit,
@@ -366,28 +381,14 @@ class _TextInput extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colors = Zeta.of(context).colors;
-
     return SizedBox(
       width: 32,
-      child: TextFormField(
+      child: TextField(
         focusNode: focusNode,
         enabled: !disabled,
         onChanged: onChange,
         controller: controller,
-        validator: (val) {
-          if (val == null || val.isEmpty) return '';
-          final value = int.tryParse(val);
-          if (value != null && value > limit) {
-            return '';
-          }
-          return null;
-        },
-        onSaved: (value) {
-          if (value != null) {
-            onSubmit?.call(value);
-          }
-        },
+        onSubmitted: (value) => onSubmit?.call(value),
         inputFormatters: [
           FilteringTextInputFormatter.digitsOnly,
           LengthLimitingTextInputFormatter(2),
@@ -397,12 +398,38 @@ class _TextInput extends StatelessWidget {
           border: InputBorder.none,
           hintText: hint,
           isDense: true,
-          hintStyle: style.copyWith(
-            color: !disabled ? colors.textSubtle : colors.textDisabled,
-          ),
+          hintStyle: style,
           errorStyle: const TextStyle(height: 0),
         ),
       ),
+    );
+  }
+}
+
+class _IconButton extends StatelessWidget {
+  final IconData icon;
+  final VoidCallback onTap;
+  final bool disabled;
+  final double size;
+
+  const _IconButton({
+    required this.icon,
+    required this.onTap,
+    required this.disabled,
+    required this.size,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return IconButton(
+      padding: EdgeInsets.all(size / 2),
+      constraints: BoxConstraints(
+        maxHeight: size * 2,
+        maxWidth: size * 2,
+      ),
+      onPressed: disabled ? null : onTap,
+      iconSize: size,
+      icon: Icon(icon),
     );
   }
 }
@@ -426,7 +453,7 @@ class _HintText extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = Zeta.of(context).colors;
 
-    final text = error ? errorText : hintText;
+    final text = error && errorText != null ? errorText : hintText;
 
     Color elementColor = colors.textSubtle;
 
@@ -443,7 +470,13 @@ class _HintText extends StatelessWidget {
     return Row(
       children: [
         Icon(
-          rounded ? ZetaIcons.info_round : ZetaIcons.info_sharp,
+          error
+              ? rounded
+                  ? ZetaIcons.error_round
+                  : ZetaIcons.error_sharp
+              : rounded
+                  ? ZetaIcons.info_round
+                  : ZetaIcons.info_sharp,
           size: ZetaSpacing.x4,
           color: elementColor,
         ),
