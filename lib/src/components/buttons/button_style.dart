@@ -91,28 +91,28 @@ ButtonStyle buttonStyle(
   final bool isSolid = type.solid || backgroundColor != null;
 
   return ButtonStyle(
-    minimumSize: MaterialStateProperty.all(const Size.square(32)),
-    shape: MaterialStateProperty.all(
+    minimumSize: WidgetStateProperty.all(const Size.square(32)),
+    shape: WidgetStateProperty.all(
       RoundedRectangleBorder(borderRadius: borderType.radius),
     ),
-    backgroundColor: MaterialStateProperty.resolveWith<Color?>(
+    backgroundColor: WidgetStateProperty.resolveWith<Color?>(
       (states) {
-        if (states.contains(MaterialState.disabled)) {
+        if (states.contains(WidgetState.disabled)) {
           return colors.surfaceDisabled;
         }
-        if (states.contains(MaterialState.pressed)) {
+        if (states.contains(WidgetState.pressed)) {
           return isSolid ? color.shade70 : colors.primary.shade10;
         }
-        if (states.contains(MaterialState.hovered)) {
+        if (states.contains(WidgetState.hovered)) {
           return isSolid ? color.shade50 : colors.cool.shade20;
         }
         if (backgroundColor != null) return backgroundColor;
         return isSolid ? color : Colors.transparent;
       },
     ),
-    foregroundColor: MaterialStateProperty.resolveWith<Color?>(
+    foregroundColor: WidgetStateProperty.resolveWith<Color?>(
       (states) {
-        if (states.contains(MaterialState.disabled)) {
+        if (states.contains(WidgetState.disabled)) {
           return colors.textDisabled;
         }
         switch (type) {
@@ -129,15 +129,15 @@ ButtonStyle buttonStyle(
         }
       },
     ),
-    overlayColor: MaterialStateProperty.resolveWith((Set<MaterialState> states) {
+    overlayColor: WidgetStateProperty.resolveWith((Set<WidgetState> states) {
       return null;
     }),
-    side: MaterialStateProperty.resolveWith((Set<MaterialState> states) {
-      if (type.border && states.contains(MaterialState.disabled)) {
+    side: WidgetStateProperty.resolveWith((Set<WidgetState> states) {
+      if (type.border && states.contains(WidgetState.disabled)) {
         return BorderSide(color: colors.borderDisabled);
       }
       // TODO(thelukewalton): This removes a defualt border when focused, rather than adding a second border when focused.
-      if (states.contains(MaterialState.focused)) {
+      if (states.contains(WidgetState.focused)) {
         return BorderSide(color: colors.blue, width: ZetaSpacing.x0_5);
       }
       if (type.border) {
@@ -148,7 +148,7 @@ ButtonStyle buttonStyle(
 
       return null;
     }),
-    elevation: const MaterialStatePropertyAll(0),
-    padding: MaterialStateProperty.all(EdgeInsets.zero),
+    elevation: const WidgetStatePropertyAll(0),
+    padding: WidgetStateProperty.all(EdgeInsets.zero),
   );
 }

@@ -95,45 +95,45 @@ class _ZetaChipState extends State<ZetaChip> {
         }
       },
       style: ButtonStyle(
-        shape: MaterialStateProperty.all(
+        shape: WidgetStateProperty.all(
           RoundedRectangleBorder(borderRadius: widget.rounded ? ZetaRadius.full : ZetaRadius.none),
         ),
-        textStyle: MaterialStateProperty.all(ZetaTextStyles.bodySmall),
-        backgroundColor: MaterialStateProperty.resolveWith((states) {
-          if (states.contains(MaterialState.disabled)) {
+        textStyle: WidgetStateProperty.all(ZetaTextStyles.bodySmall),
+        backgroundColor: WidgetStateProperty.resolveWith((states) {
+          if (states.contains(WidgetState.disabled)) {
             return colors.surfaceDisabled;
           }
           if (selected) {
             return colors.cool.shade90;
           }
-          if (states.contains(MaterialState.pressed) || states.contains(MaterialState.dragged)) {
+          if (states.contains(WidgetState.pressed) || states.contains(WidgetState.dragged)) {
             return colors.surfaceSelected;
           }
 
-          if (states.contains(MaterialState.hovered)) {
+          if (states.contains(WidgetState.hovered)) {
             return colors.surfaceHovered;
           }
 
           return colors.surfacePrimary;
         }),
-        foregroundColor: MaterialStateProperty.all(foregroundColor),
-        mouseCursor: MaterialStateProperty.resolveWith((states) {
-          if (states.contains(MaterialState.disabled)) {
+        foregroundColor: WidgetStateProperty.all(foregroundColor),
+        mouseCursor: WidgetStateProperty.resolveWith((states) {
+          if (states.contains(WidgetState.disabled)) {
             return SystemMouseCursors.forbidden;
           }
-          if (states.contains(MaterialState.dragged)) {
+          if (states.contains(WidgetState.dragged)) {
             return SystemMouseCursors.grabbing;
           }
           return SystemMouseCursors.click;
         }),
-        elevation: MaterialStateProperty.all(0),
-        side: MaterialStateProperty.resolveWith((states) {
-          if (states.contains(MaterialState.focused)) {
+        elevation: WidgetStateProperty.all(0),
+        side: WidgetStateProperty.resolveWith((states) {
+          if (states.contains(WidgetState.focused)) {
             return BorderSide(width: ZetaSpacing.x0_5, color: colors.blue.shade50);
           }
           return BorderSide(color: colors.borderDefault);
         }),
-        padding: MaterialStateProperty.all(
+        padding: WidgetStateProperty.all(
           EdgeInsets.fromLTRB(
             widget.leading != null ? ZetaSpacing.x2_5 : ZetaSpacing.x3,
             0,

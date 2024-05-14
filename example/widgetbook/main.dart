@@ -190,14 +190,14 @@ class HotReload extends StatelessWidget {
                       themeMode: themeMode,
                       theme: ThemeData(
                         useMaterial3: true,
-                        scaffoldBackgroundColor: light.background,
+                        scaffoldBackgroundColor: light.surface,
                         colorScheme: light,
                         textTheme: zetaTextTheme,
                         brightness: Brightness.light,
                       ),
                       darkTheme: ThemeData(
                         useMaterial3: true,
-                        scaffoldBackgroundColor: dark.background,
+                        scaffoldBackgroundColor: dark.surface,
                         colorScheme: dark,
                         textTheme: zetaTextTheme,
                         brightness: Brightness.dark,

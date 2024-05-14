@@ -189,14 +189,14 @@ class ZetaGroupButton extends StatefulWidget {
 }
 
 class _ZetaGroupButtonState extends State<ZetaGroupButton> {
-  late MaterialStatesController controller;
+  late WidgetStatesController controller;
 
   @override
   void initState() {
     super.initState();
-    controller = MaterialStatesController();
+    controller = WidgetStatesController();
     controller.addListener(() {
-      if (!controller.value.contains(MaterialState.disabled) && context.mounted && mounted) {
+      if (!controller.value.contains(WidgetState.disabled) && context.mounted && mounted) {
         // TODO(UX-1005): setState causing exception when going from disabled to enabled.
         setState(() {});
       }
@@ -225,7 +225,7 @@ class _ZetaGroupButtonState extends State<ZetaGroupButton> {
           top: borderSide,
           left: borderSide,
           bottom: borderSide,
-          right: controller.value.contains(MaterialState.focused)
+          right: controller.value.contains(WidgetState.focused)
               ? BorderSide(color: colors.blue.shade50, width: 2)
               : (widget.isFinal)
                   ? borderSide
@@ -259,15 +259,15 @@ class _ZetaGroupButtonState extends State<ZetaGroupButton> {
   double get _padding => widget.isLarge ? ZetaSpacing.x4 : ZetaSpacing.x3;
 
   BorderSide _getBorderSide(
-    Set<MaterialState> states,
+    Set<WidgetState> states,
     ZetaColors colors,
     bool finalButton,
   ) {
-    if (states.contains(MaterialState.focused)) {
+    if (states.contains(WidgetState.focused)) {
       return BorderSide(color: colors.blue.shade50, width: ZetaSpacing.x0_5);
     }
     if (widget.isInverse) return BorderSide(color: colors.black);
-    if (states.contains(MaterialState.disabled)) {
+    if (states.contains(WidgetState.disabled)) {
       return BorderSide(color: colors.cool.shade40);
     }
     return BorderSide(
@@ -293,45 +293,40 @@ class _ZetaGroupButtonState extends State<ZetaGroupButton> {
 
   ButtonStyle getStyle(ZetaWidgetBorder borderType, ZetaColors colors) {
     return ButtonStyle(
-      shape: MaterialStateProperty.all(
+      shape: WidgetStateProperty.all(
         RoundedRectangleBorder(
           borderRadius: _getRadius(borderType),
         ),
       ),
-      backgroundColor: MaterialStateProperty.resolveWith<Color?>((states) {
+      backgroundColor: WidgetStateProperty.resolveWith<Color?>((states) {
         if (widget.isInverse) return colors.cool.shade100;
 
-        if (states.contains(MaterialState.disabled)) {
+        if (states.contains(WidgetState.disabled)) {
           return colors.surfaceDisabled;
         }
-        if (states.contains(MaterialState.pressed)) {
+        if (states.contains(WidgetState.pressed)) {
           return colors.primary.shade10;
         }
-        if (states.contains(MaterialState.hovered)) {
+        if (states.contains(WidgetState.hovered)) {
           return colors.cool.shade20;
         }
         return colors.surfacePrimary;
       }),
-      foregroundColor: MaterialStateProperty.resolveWith<Color?>((states) {
-        if (states.contains(MaterialState.disabled)) {
+      foregroundColor: WidgetStateProperty.resolveWith<Color?>((states) {
+        if (states.contains(WidgetState.disabled)) {
           return colors.textDisabled;
         }
         if (widget.isInverse) return colors.cool.shade100.onColor;
         return colors.textDefault;
       }),
-      elevation: const MaterialStatePropertyAll(0),
-      padding: MaterialStateProperty.all(EdgeInsets.zero),
+      elevation: const WidgetStatePropertyAll(0),
+      padding: WidgetStateProperty.all(EdgeInsets.zero),
     );
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(
-      DiagnosticsProperty<MaterialStatesController>(
-        'controller',
-        controller,
-      ),
-    );
+    properties.add(DiagnosticsProperty<WidgetStatesController>('controller', controller));
   }
 }

@@ -61,17 +61,17 @@ class MaterialSwitch extends StatefulWidget {
   final ImageErrorListener? onActiveThumbImageError;
   final ImageProvider? inactiveThumbImage;
   final ImageErrorListener? onInactiveThumbImageError;
-  final MaterialStateProperty<Color?>? thumbColor;
-  final MaterialStateProperty<Color?>? trackColor;
-  final MaterialStateProperty<Color?>? trackOutlineColor;
-  final MaterialStateProperty<double?>? trackOutlineWidth;
-  final MaterialStateProperty<Icon?>? thumbIcon;
+  final WidgetStateProperty<Color?>? thumbColor;
+  final WidgetStateProperty<Color?>? trackColor;
+  final WidgetStateProperty<Color?>? trackOutlineColor;
+  final WidgetStateProperty<double?>? trackOutlineWidth;
+  final WidgetStateProperty<Icon?>? thumbIcon;
   final MaterialTapTargetSize? materialTapTargetSize;
   final DragStartBehavior dragStartBehavior;
   final MouseCursor? mouseCursor;
   final Color? focusColor;
   final Color? hoverColor;
-  final MaterialStateProperty<Color?>? overlayColor;
+  final WidgetStateProperty<Color?>? overlayColor;
   final double? splashRadius;
   final FocusNode? focusNode;
   final ValueChanged<bool>? onFocusChange;
@@ -139,21 +139,21 @@ class _MaterialSwitchState extends State<MaterialSwitch> with TickerProviderStat
     }
   }
 
-  MaterialStateProperty<Color?> get _widgetThumbColor {
-    return MaterialStateProperty.resolveWith((Set<MaterialState> states) {
-      if (states.contains(MaterialState.disabled)) {
+  WidgetStateProperty<Color?> get _widgetThumbColor {
+    return WidgetStateProperty.resolveWith((Set<WidgetState> states) {
+      if (states.contains(WidgetState.disabled)) {
         return widget.inactiveThumbColor;
       }
-      if (states.contains(MaterialState.selected)) {
+      if (states.contains(WidgetState.selected)) {
         return widget.activeColor;
       }
       return widget.inactiveThumbColor;
     });
   }
 
-  MaterialStateProperty<Color?> get _widgetTrackColor {
-    return MaterialStateProperty.resolveWith((Set<MaterialState> states) {
-      if (states.contains(MaterialState.selected)) {
+  WidgetStateProperty<Color?> get _widgetTrackColor {
+    return WidgetStateProperty.resolveWith((Set<WidgetState> states) {
+      if (states.contains(WidgetState.selected)) {
         return widget.activeTrackColor;
       }
       return widget.inactiveTrackColor;
@@ -224,8 +224,8 @@ class _MaterialSwitchState extends State<MaterialSwitch> with TickerProviderStat
 
     // Colors need to be resolved in selected and non selected states separately
     // so that they can be lerped between.
-    final Set<MaterialState> activeStates = states..add(MaterialState.selected);
-    final Set<MaterialState> inactiveStates = states..remove(MaterialState.selected);
+    final Set<WidgetState> activeStates = states..add(WidgetState.selected);
+    final Set<WidgetState> inactiveStates = states..remove(WidgetState.selected);
 
     final Color? activeThumbColor = widget.thumbColor?.resolve(activeStates) ??
         _widgetThumbColor.resolve(activeStates) ??
@@ -266,19 +266,19 @@ class _MaterialSwitchState extends State<MaterialSwitch> with TickerProviderStat
     final Color effectiveActiveIconColor = effectiveActiveIcon?.color ?? effectiveActiveThumbColor;
     final Color effectiveInactiveIconColor = effectiveInactiveIcon?.color ?? effectiveInactiveThumbColor;
 
-    final Set<MaterialState> focusedStates = states..add(MaterialState.focused);
+    final Set<WidgetState> focusedStates = states..add(WidgetState.focused);
     final Color effectiveFocusOverlayColor = widget.overlayColor?.resolve(focusedStates) ??
         widget.focusColor ??
         switchTheme.overlayColor?.resolve(focusedStates) ??
         defaults.overlayColor!.resolve(focusedStates)!;
 
-    final Set<MaterialState> hoveredStates = states..add(MaterialState.hovered);
+    final Set<WidgetState> hoveredStates = states..add(WidgetState.hovered);
     final Color effectiveHoverOverlayColor = widget.overlayColor?.resolve(hoveredStates) ??
         widget.hoverColor ??
         switchTheme.overlayColor?.resolve(hoveredStates) ??
         defaults.overlayColor!.resolve(hoveredStates)!;
 
-    final Set<MaterialState> activePressedStates = activeStates..add(MaterialState.pressed);
+    final Set<WidgetState> activePressedStates = activeStates..add(WidgetState.pressed);
     final Color effectiveActivePressedThumbColor = widget.thumbColor?.resolve(activePressedStates) ??
         _widgetThumbColor.resolve(activePressedStates) ??
         switchTheme.thumbColor?.resolve(activePressedStates) ??
@@ -288,7 +288,7 @@ class _MaterialSwitchState extends State<MaterialSwitch> with TickerProviderStat
         activeThumbColor?.withAlpha(kRadialReactionAlpha) ??
         defaults.overlayColor!.resolve(activePressedStates)!;
 
-    final Set<MaterialState> inactivePressedStates = inactiveStates..add(MaterialState.pressed);
+    final Set<WidgetState> inactivePressedStates = inactiveStates..add(WidgetState.pressed);
     final Color effectiveInactivePressedThumbColor = widget.thumbColor?.resolve(inactivePressedStates) ??
         _widgetThumbColor.resolve(inactivePressedStates) ??
         switchTheme.thumbColor?.resolve(inactivePressedStates) ??
@@ -298,9 +298,9 @@ class _MaterialSwitchState extends State<MaterialSwitch> with TickerProviderStat
         inactiveThumbColor?.withAlpha(kRadialReactionAlpha) ??
         defaults.overlayColor!.resolve(inactivePressedStates)!;
 
-    final MaterialStateProperty<MouseCursor> effectiveMouseCursor =
-        MaterialStateProperty.resolveWith<MouseCursor>((Set<MaterialState> states) {
-      return MaterialStateProperty.resolveAs<MouseCursor?>(widget.mouseCursor, states) ??
+    final WidgetStateProperty<MouseCursor> effectiveMouseCursor =
+        WidgetStateProperty.resolveWith<MouseCursor>((Set<WidgetState> states) {
+      return WidgetStateProperty.resolveAs<MouseCursor?>(widget.mouseCursor, states) ??
           switchTheme.mouseCursor?.resolve(states) ??
           defaults.mouseCursor!.resolve(states)!;
     });
@@ -337,9 +337,9 @@ class _MaterialSwitchState extends State<MaterialSwitch> with TickerProviderStat
             ..focusColor = effectiveFocusOverlayColor
             ..splashRadius = effectiveSplashRadius
             ..downPosition = downPosition
-            ..isFocused = states.contains(MaterialState.focused)
+            ..isFocused = states.contains(WidgetState.focused)
             // Zeta change: added `widget.showHover` to the below condition.
-            ..isHovered = widget.showHover && states.contains(MaterialState.hovered)
+            ..isHovered = widget.showHover && states.contains(WidgetState.hovered)
             ..activeColor = effectiveActiveThumbColor
             ..inactiveColor = effectiveInactiveThumbColor
             ..activePressedColor = effectiveActivePressedThumbColor
@@ -969,33 +969,33 @@ class _SwitchDefaultsM3 extends SwitchThemeData {
   late final ColorScheme _colors = Theme.of(context).colorScheme;
 
   @override
-  MaterialStateProperty<Color> get thumbColor {
-    return MaterialStateProperty.resolveWith((Set<MaterialState> states) {
-      if (states.contains(MaterialState.disabled)) {
-        if (states.contains(MaterialState.selected)) {
+  WidgetStateProperty<Color> get thumbColor {
+    return WidgetStateProperty.resolveWith((Set<WidgetState> states) {
+      if (states.contains(WidgetState.disabled)) {
+        if (states.contains(WidgetState.selected)) {
           return _colors.surface.withOpacity(1);
         }
         return _colors.onSurface.withOpacity(0.38);
       }
-      if (states.contains(MaterialState.selected)) {
-        if (states.contains(MaterialState.pressed)) {
+      if (states.contains(WidgetState.selected)) {
+        if (states.contains(WidgetState.pressed)) {
           return _colors.primaryContainer;
         }
-        if (states.contains(MaterialState.hovered)) {
+        if (states.contains(WidgetState.hovered)) {
           return _colors.primaryContainer;
         }
-        if (states.contains(MaterialState.focused)) {
+        if (states.contains(WidgetState.focused)) {
           return _colors.primaryContainer;
         }
         return _colors.onPrimary;
       }
-      if (states.contains(MaterialState.pressed)) {
+      if (states.contains(WidgetState.pressed)) {
         return _colors.onSurfaceVariant;
       }
-      if (states.contains(MaterialState.hovered)) {
+      if (states.contains(WidgetState.hovered)) {
         return _colors.onSurfaceVariant;
       }
-      if (states.contains(MaterialState.focused)) {
+      if (states.contains(WidgetState.focused)) {
         return _colors.onSurfaceVariant;
       }
       return _colors.outline;
@@ -1003,46 +1003,46 @@ class _SwitchDefaultsM3 extends SwitchThemeData {
   }
 
   @override
-  MaterialStateProperty<Color> get trackColor {
-    return MaterialStateProperty.resolveWith((Set<MaterialState> states) {
-      if (states.contains(MaterialState.disabled)) {
-        if (states.contains(MaterialState.selected)) {
+  WidgetStateProperty<Color> get trackColor {
+    return WidgetStateProperty.resolveWith((Set<WidgetState> states) {
+      if (states.contains(WidgetState.disabled)) {
+        if (states.contains(WidgetState.selected)) {
           return _colors.onSurface.withOpacity(0.12);
         }
-        return _colors.surfaceVariant.withOpacity(0.12);
+        return _colors.surfaceContainerHighest.withOpacity(0.12);
       }
-      if (states.contains(MaterialState.selected)) {
-        if (states.contains(MaterialState.pressed)) {
+      if (states.contains(WidgetState.selected)) {
+        if (states.contains(WidgetState.pressed)) {
           return _colors.primary;
         }
-        if (states.contains(MaterialState.hovered)) {
+        if (states.contains(WidgetState.hovered)) {
           return _colors.primary;
         }
-        if (states.contains(MaterialState.focused)) {
+        if (states.contains(WidgetState.focused)) {
           return _colors.primary;
         }
         return _colors.primary;
       }
-      if (states.contains(MaterialState.pressed)) {
-        return _colors.surfaceVariant;
+      if (states.contains(WidgetState.pressed)) {
+        return _colors.surfaceContainerHighest;
       }
-      if (states.contains(MaterialState.hovered)) {
-        return _colors.surfaceVariant;
+      if (states.contains(WidgetState.hovered)) {
+        return _colors.surfaceContainerHighest;
       }
-      if (states.contains(MaterialState.focused)) {
-        return _colors.surfaceVariant;
+      if (states.contains(WidgetState.focused)) {
+        return _colors.surfaceContainerHighest;
       }
-      return _colors.surfaceVariant;
+      return _colors.surfaceContainerHighest;
     });
   }
 
   @override
-  MaterialStateProperty<Color?> get trackOutlineColor {
-    return MaterialStateProperty.resolveWith((Set<MaterialState> states) {
-      if (states.contains(MaterialState.selected)) {
+  WidgetStateProperty<Color?> get trackOutlineColor {
+    return WidgetStateProperty.resolveWith((Set<WidgetState> states) {
+      if (states.contains(WidgetState.selected)) {
         return Colors.transparent;
       }
-      if (states.contains(MaterialState.disabled)) {
+      if (states.contains(WidgetState.disabled)) {
         return _colors.onSurface.withOpacity(0.12);
       }
       return _colors.outline;
@@ -1050,27 +1050,27 @@ class _SwitchDefaultsM3 extends SwitchThemeData {
   }
 
   @override
-  MaterialStateProperty<Color?> get overlayColor {
-    return MaterialStateProperty.resolveWith((Set<MaterialState> states) {
-      if (states.contains(MaterialState.selected)) {
-        if (states.contains(MaterialState.pressed)) {
+  WidgetStateProperty<Color?> get overlayColor {
+    return WidgetStateProperty.resolveWith((Set<WidgetState> states) {
+      if (states.contains(WidgetState.selected)) {
+        if (states.contains(WidgetState.pressed)) {
           return _colors.primary.withOpacity(0.12);
         }
-        if (states.contains(MaterialState.hovered)) {
+        if (states.contains(WidgetState.hovered)) {
           return _colors.primary.withOpacity(0.08);
         }
-        if (states.contains(MaterialState.focused)) {
+        if (states.contains(WidgetState.focused)) {
           return _colors.primary.withOpacity(0.12);
         }
         return null;
       }
-      if (states.contains(MaterialState.pressed)) {
+      if (states.contains(WidgetState.pressed)) {
         return _colors.onSurface.withOpacity(0.12);
       }
-      if (states.contains(MaterialState.hovered)) {
+      if (states.contains(WidgetState.hovered)) {
         return _colors.onSurface.withOpacity(0.08);
       }
-      if (states.contains(MaterialState.focused)) {
+      if (states.contains(WidgetState.focused)) {
         return _colors.onSurface.withOpacity(0.12);
       }
       return null;
@@ -1078,14 +1078,14 @@ class _SwitchDefaultsM3 extends SwitchThemeData {
   }
 
   @override
-  MaterialStateProperty<MouseCursor> get mouseCursor {
-    return MaterialStateProperty.resolveWith(
-      (Set<MaterialState> states) => MaterialStateMouseCursor.clickable.resolve(states),
+  WidgetStateProperty<MouseCursor> get mouseCursor {
+    return WidgetStateProperty.resolveWith(
+      (Set<WidgetState> states) => WidgetStateMouseCursor.clickable.resolve(states),
     );
   }
 
   @override
-  MaterialStatePropertyAll<double> get trackOutlineWidth => const MaterialStatePropertyAll<double>(2);
+  WidgetStatePropertyAll<double> get trackOutlineWidth => const WidgetStatePropertyAll<double>(2);
 
   // Zeta change: `splashRadius` was fixed value in Flutter's [Switch],
   // but not we use `size.height` for this.

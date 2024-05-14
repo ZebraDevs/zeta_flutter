@@ -68,15 +68,14 @@ class _ZetaRadioState<T> extends State<ZetaRadio<T>> with TickerProviderStateMix
               ..focusColor = zetaColors.blue.shade50
               ..splashRadius = 12
               ..downPosition = downPosition
-              ..isFocused = states.contains(MaterialState.focused)
-              ..isHovered = states.contains(MaterialState.hovered)
-              ..activeColor =
-                  states.contains(MaterialState.disabled) ? zetaColors.cool.shade30 : zetaColors.blue.shade60
+              ..isFocused = states.contains(WidgetState.focused)
+              ..isHovered = states.contains(WidgetState.hovered)
+              ..activeColor = states.contains(WidgetState.disabled) ? zetaColors.cool.shade30 : zetaColors.blue.shade60
               ..inactiveColor =
-                  states.contains(MaterialState.disabled) ? zetaColors.cool.shade30 : zetaColors.cool.shade70,
-            mouseCursor: MaterialStateProperty.all(
-              MaterialStateProperty.resolveAs<MouseCursor>(
-                MaterialStateMouseCursor.clickable,
+                  states.contains(WidgetState.disabled) ? zetaColors.cool.shade30 : zetaColors.cool.shade70,
+            mouseCursor: WidgetStateProperty.all(
+              WidgetStateProperty.resolveAs<MouseCursor>(
+                WidgetStateMouseCursor.clickable,
                 states,
               ),
             ),
@@ -87,7 +86,7 @@ class _ZetaRadioState<T> extends State<ZetaRadio<T>> with TickerProviderStateMix
             onTap: () => onChanged?.call(true),
             child: DefaultTextStyle(
               style: ZetaTextStyles.bodyMedium.copyWith(
-                color: states.contains(MaterialState.disabled) ? zetaColors.textDisabled : zetaColors.textDefault,
+                color: states.contains(WidgetState.disabled) ? zetaColors.textDisabled : zetaColors.textDefault,
                 height: 1.33,
               ),
               child: widget.label!,
