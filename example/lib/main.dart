@@ -51,14 +51,14 @@ class ZetaExample extends StatelessWidget {
           theme: ThemeData(
             useMaterial3: true,
             fontFamily: themeData.fontFamily,
-            scaffoldBackgroundColor: light.surface,
+            scaffoldBackgroundColor: light.surfaceTertiary,
             colorScheme: light,
             textTheme: zetaTextTheme,
           ),
           darkTheme: ThemeData(
             useMaterial3: true,
             fontFamily: themeData.fontFamily,
-            scaffoldBackgroundColor: dark.surface,
+            scaffoldBackgroundColor: dark.surfaceTertiary,
             colorScheme: dark,
             textTheme: zetaTextTheme,
           ),

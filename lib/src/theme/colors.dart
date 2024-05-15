@@ -806,7 +806,7 @@ extension ZetaColorGetters on ColorScheme {
 
   /// Tertiary surface color.
   ///
-  /// Maps to [ColorScheme.surface] and [ThemeData.scaffoldBackgroundColor]
+  /// Maps to [ThemeData.scaffoldBackgroundColor].
   ///
   /// * `ZetaColors.warm.10`.
   Color get surfaceTertiary =>
