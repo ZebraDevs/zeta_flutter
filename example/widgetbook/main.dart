@@ -77,13 +77,10 @@ class HotReload extends StatelessWidget {
                 WidgetbookUseCase(name: 'Tags', builder: (context) => tagsUseCase(context)),
               ],
             ),
-            WidgetbookUseCase(name: 'Avatar', builder: (context) => avatarUseCase(context)),
             WidgetbookUseCase(
               name: 'Chat Item',
               builder: (context) => chatItemWidgetBook(context),
             ),
-            WidgetbookUseCase(name: 'Checkbox', builder: (context) => checkboxUseCase(context)),
-            WidgetbookUseCase(name: 'Contact Item', builder: (context) => contactItemUseCase(context)),
             WidgetbookComponent(
               name: 'Buttons',
               useCases: [
@@ -114,6 +111,7 @@ class HotReload extends StatelessWidget {
             WidgetbookUseCase(name: 'BreadCrumbs', builder: (context) => breadCrumbsUseCase(context)),
             WidgetbookUseCase(name: 'Banners', builder: (context) => bannerUseCase(context)),
             WidgetbookUseCase(name: 'Checkbox', builder: (context) => checkboxUseCase(context)),
+            WidgetbookUseCase(name: 'Contact Item', builder: (context) => contactItemUseCase(context)),
             WidgetbookUseCase(name: "Dropdown", builder: (context) => dropdownUseCase(context)),
             WidgetbookUseCase(name: 'In Page Banners', builder: (context) => inPageBannerUseCase(context)),
             WidgetbookUseCase(name: 'Password Input', builder: (context) => passwordInputUseCase(context)),
