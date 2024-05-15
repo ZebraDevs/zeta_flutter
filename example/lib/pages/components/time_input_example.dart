@@ -23,6 +23,7 @@ class TimeInputExample extends StatelessWidget {
                 child: ZetaTimeInput(
                   label: 'Large',
                   hintText: 'Default hint text',
+                  onChange: (value) => print(value),
                   // errorText: 'Oops! Error hint text',
                   size: ZetaWidgetSize.large,
                 ),

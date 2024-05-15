@@ -1,11 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
 import '../../../zeta_flutter.dart';
-import '../../assets/icons.dart';
 
 class ZetaTimeInput extends StatefulWidget {
   const ZetaTimeInput({
@@ -58,43 +56,16 @@ class ZetaTimeInput extends StatefulWidget {
 class _ZetaTimeInputState extends State<ZetaTimeInput> {
   ZetaColors get _colors => Zeta.of(context).colors;
 
-  final GlobalKey<FormFieldState<TimeOfDay?>> _formKey = GlobalKey();
+  final _timeFormat = 'hh:mm';
+  late final MaskTextInputFormatter _timeFormatter;
 
-  final TextEditingController _hrsController = TextEditingController();
-  final TextEditingController _minsController = TextEditingController();
+  final _controller = TextEditingController();
+  final GlobalKey<FormFieldState<String>> _key = GlobalKey();
 
-  final _hrsFocusNode = FocusNode();
-  final _minsFocusNode = FocusNode();
-
-  int get _hrsLimit => widget.use12Hr ? 11 : 23;
-  final int _minsLimit = 59;
-
-  int? get _hrsValue => int.tryParse(_hrsController.text);
-  int? get _minsValue => int.tryParse(_minsController.text);
-
-  TimeOfDay? _value;
-
-  bool _typing = false;
   bool _hovered = false;
   bool _error = false;
 
-  bool get _showClearButton => _hrsController.text.isNotEmpty || _minsController.text.isNotEmpty;
-
-  Color get _borderColor {
-    if (widget.disabled) {
-      return _colors.borderDisabled;
-    }
-    if (_error) {
-      return _colors.error;
-    }
-    if (_typing) {
-      return _colors.primary.shade50; // TODO: change to colors.borderPrimary when added
-    }
-    if (_hovered) {
-      return _colors.borderSelected;
-    }
-    return _colors.borderSubtle;
-  }
+  bool get _showClearButton => _controller.text.isNotEmpty;
 
   Color get _backgroundColor {
     if (widget.disabled) {
@@ -104,13 +75,6 @@ class _ZetaTimeInputState extends State<ZetaTimeInput> {
       return _colors.error.shade10;
     }
     return _colors.surfacePrimary;
-  }
-
-  double get _borderWidth {
-    if (_error || _typing) {
-      return 2;
-    }
-    return 1;
   }
 
   Color get _textColor {
@@ -141,27 +105,44 @@ class _ZetaTimeInputState extends State<ZetaTimeInput> {
     }
   }
 
+  int get _hrsLimit => widget.use12Hr ? 11 : 23;
+  final int _minsLimit = 59;
+
+  TimeOfDay? get _value {
+    final splitValue = _timeFormatter.getMaskedText().trim().split(':');
+    if (splitValue.length > 1) {
+      final hrsValue = int.tryParse(splitValue[0]);
+      final minsValue = int.tryParse(splitValue[1]);
+      if (hrsValue != null && minsValue != null) {
+        return TimeOfDay(hour: hrsValue, minute: minsValue);
+      }
+    }
+    return null;
+  }
+
+  OutlineInputBorder get _baseBorder => OutlineInputBorder(
+        borderRadius: widget.rounded ? ZetaRadius.minimal : ZetaRadius.none,
+        borderSide: BorderSide(color: _hovered ? _colors.borderSelected : _colors.borderSubtle),
+      );
+
+  OutlineInputBorder get _focusedBorder => _baseBorder.copyWith(
+        borderSide: BorderSide(color: _colors.primary.shade50, width: 2),
+      ); // TODO: change to colors.borderPrimary when added
+
+  OutlineInputBorder get _errorBorder => _baseBorder.copyWith(
+        borderSide: BorderSide(color: _colors.error, width: 2),
+      );
+
+  OutlineInputBorder get _disabledBorder => _baseBorder.copyWith(
+        borderSide: BorderSide(color: _colors.borderDisabled, width: 2),
+      );
+
   @override
   void initState() {
-    _value = widget.initialValue;
-    if (widget.initialValue != null) {
-      _hrsController.text = widget.initialValue!.hour.toString();
-      _minsController.text = widget.initialValue!.minute.toString();
-
-      _padValues();
-    }
-
-    _hrsFocusNode.addListener(
-      () => _onFocus(
-        controller: _hrsController,
-        hasFocus: _hrsFocusNode.hasFocus,
-      ),
-    );
-    _minsFocusNode.addListener(
-      () => _onFocus(
-        controller: _minsController,
-        hasFocus: _minsFocusNode.hasFocus,
-      ),
+    _timeFormatter = MaskTextInputFormatter(
+      mask: _timeFormat.replaceAll(RegExp('[a-z]'), '#'),
+      filter: {'#': RegExp('[0-9]')},
+      type: MaskAutoCompletionType.eager,
     );
 
     super.initState();
@@ -169,45 +150,14 @@ class _ZetaTimeInputState extends State<ZetaTimeInput> {
 
   @override
   void dispose() {
-    _hrsController.dispose();
-    _minsController.dispose();
-    _hrsFocusNode.dispose();
-    _minsFocusNode.dispose();
+    _controller.dispose();
 
     super.dispose();
   }
 
-  void _onFocus({
-    required TextEditingController controller,
-    required bool hasFocus,
-  }) {
-    if (!hasFocus) _padValue(controller);
-    setState(() {
-      _typing = hasFocus;
-    });
-  }
-
-  void _padValues() {
-    _padValue(_hrsController);
-    _padValue(_minsController);
-  }
-
-  void _padValue(TextEditingController controller) {
-    if (controller.text.isNotEmpty) {
-      controller.text = controller.text.padLeft(2, '0');
-    }
-  }
-
-  void _onValueChanged(TimeOfDay? value) {
-    _formKey.currentState?.didChange(value);
-    widget.onChange?.call(_value);
-  }
-
-  void _onInputChanged() {
-    if (_hrsValue != null && _minsValue != null) {
-      _value = TimeOfDay(hour: _hrsValue!, minute: _minsValue!);
-
-      _onValueChanged(_value);
+  void _onChange() {
+    if (_timeFormatter.getUnmaskedText().length > 3 && (_key.currentState?.validate() ?? false)) {
+      widget.onChange?.call(_value);
     }
   }
 
@@ -223,217 +173,111 @@ class _ZetaTimeInputState extends State<ZetaTimeInput> {
       },
     );
     if (result != null) {
-      final hrVal = widget.use12Hr && result.hour > _hrsLimit ? result.hour - _hrsLimit + 1 : result.hour;
-      _hrsController.text = hrVal.toString();
-      _minsController.text = result.minute.toString();
-
-      setState(() {
-        _value = result;
-      });
-      _padValues();
-      _onValueChanged(result);
+      final hrText = result.hour.toString().padLeft(2, '0');
+      final minText = result.minute.toString().padLeft(2, '0');
+      _controller.text = _timeFormatter.maskText(hrText + minText);
     }
   }
 
   void _clear() {
-    setState(() {
-      _hrsController.text = '';
-      _minsController.text = '';
-      _value = null;
-    });
-
-    _formKey.currentState?.reset();
+    _timeFormatter.clear();
+    _key.currentState?.reset();
+    _error = false;
+    _controller.clear();
     widget.onChange?.call(null);
   }
 
   @override
   Widget build(BuildContext context) {
-    return FormField<TimeOfDay>(
-      autovalidateMode: widget.autovalidateMode,
-      key: _formKey,
-      validator: (val) {
-        if (val == null || (_value != null && (_hrsValue! > _hrsLimit || _minsValue! > _minsLimit))) {
-          _error = true;
-          return '';
-        }
-
-        final customValidation = widget.validator?.call(val) ?? false;
-        if (customValidation) {
-          _error = true;
-          return '';
-        }
-
-        _error = false;
-        return null;
-      },
-      builder: (formState) {
-        return Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            if (widget.label != null) ...[
-              Text(
-                widget.label!,
-                style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: _textColor),
-              ),
-              const SizedBox(height: ZetaSpacing.x2),
-            ],
-            MouseRegion(
-              onEnter: !widget.disabled
-                  ? (_) => setState(() {
-                        _hovered = true;
-                      })
-                  : null,
-              onExit: !widget.disabled
-                  ? (_) => setState(() {
-                        _hovered = false;
-                      })
-                  : null,
-              child: Container(
-                constraints: const BoxConstraints(minWidth: ZetaSpacing.x50),
-                padding: const EdgeInsets.only(
-                  left: ZetaSpacing.x3,
-                  right: ZetaSpacing.x0_5,
-                ),
-                decoration: BoxDecoration(
-                  boxShadow: [
-                    BoxShadow(
-                      spreadRadius: _borderWidth,
-                      blurStyle: BlurStyle.solid,
-                      color: _borderColor,
-                    ),
-                  ],
-                  color: _backgroundColor,
-                  borderRadius: widget.rounded ? ZetaRadius.minimal : null,
-                ),
-                child: Row(
-                  children: [
-                    Row(
-                      children: [
-                        _TextInput(
-                          hint: 'hh', //TODO Localize
-                          style: _textStyle,
-                          onChange: (val) {
-                            _onInputChanged();
-                            if (val.length == 2) {
-                              _minsFocusNode.requestFocus();
-                            }
-                          },
-                          controller: _hrsController,
-                          onSubmit: (_) {
-                            _minsFocusNode.requestFocus();
-                          },
-                          focusNode: _hrsFocusNode,
-                          disabled: widget.disabled,
-                        ),
-                        Text(
-                          ':',
-                          style: _textStyle,
-                        ).paddingHorizontal(ZetaSpacing.x0_5),
-                        _TextInput(
-                          hint: 'mm', //TODO Localize
-                          onChange: (_) => _onInputChanged(),
-                          controller: _minsController,
-                          style: _textStyle,
-                          focusNode: _minsFocusNode,
-                          disabled: widget.disabled,
-                        ),
-                      ],
-                    ),
-                    Expanded(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          if (_showClearButton)
-                            _IconButton(
-                              icon: widget.rounded ? ZetaIcons.cancel_round : ZetaIcons.cancel_sharp,
-                              onTap: _clear,
-                              disabled: widget.disabled,
-                              size: _iconSize,
-                            ),
-                          _IconButton(
-                            icon: widget.rounded ? ZetaIcons.clock_outline_round : ZetaIcons.clock_outline_sharp,
-                            onTap: _pickTime,
-                            disabled: widget.disabled,
-                            size: _iconSize,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            _HintText(
-              error: _error,
-              disabled: widget.disabled,
-              rounded: widget.rounded,
-              hintText: widget.hintText,
-              errorText: widget.errorText,
-            ),
-          ],
-        );
-      },
-    );
-  }
-}
-
-class _TextInput extends StatelessWidget {
-  const _TextInput({
-    required this.controller,
-    required this.onChange,
-    required this.hint,
-    required this.focusNode,
-    required this.disabled,
-    required this.style,
-    this.onSubmit,
-  });
-
-  final TextEditingController controller;
-  final ValueChanged<String>? onSubmit;
-  final ValueChanged<String> onChange;
-  final FocusNode focusNode;
-  final String hint;
-  final bool disabled;
-  final TextStyle style;
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      width: 32,
-      child: TextField(
-        focusNode: focusNode,
-        enabled: !disabled,
-        onChanged: onChange,
-        controller: controller,
-        onSubmitted: (value) => onSubmit?.call(value),
-        inputFormatters: [
-          FilteringTextInputFormatter.digitsOnly,
-          LengthLimitingTextInputFormatter(2),
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        if (widget.label != null) ...[
+          Text(
+            widget.label!,
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: _textColor),
+          ),
+          const SizedBox(height: ZetaSpacing.x2),
         ],
-        style: style,
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          hintText: hint,
-          isDense: true,
-          hintStyle: style,
-          errorStyle: const TextStyle(height: 0),
+        MouseRegion(
+          onEnter: !widget.disabled
+              ? (_) => setState(() {
+                    _hovered = true;
+                  })
+              : null,
+          onExit: !widget.disabled
+              ? (_) => setState(() {
+                    _hovered = false;
+                  })
+              : null,
+          child: TextFormField(
+            enabled: !widget.disabled,
+            key: _key,
+            controller: _controller,
+            inputFormatters: [
+              _timeFormatter,
+            ],
+            validator: (_) {
+              if (_value == null || _value!.hour > _hrsLimit || _value!.minute > _minsLimit) {
+                setState(() {
+                  _error = true;
+                });
+                return '';
+              }
+              setState(() {
+                _error = false;
+              });
+              return null;
+            },
+            textAlignVertical: TextAlignVertical.center,
+            onChanged: (_) => _onChange(),
+            style: _textStyle,
+            decoration: InputDecoration(
+              isDense: true,
+              filled: true,
+              suffixIcon: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  if (_showClearButton)
+                    _IconButton(
+                      icon: widget.rounded ? ZetaIcons.cancel_round : ZetaIcons.cancel_sharp,
+                      onTap: _clear,
+                      disabled: widget.disabled,
+                      size: _iconSize,
+                    ),
+                  _IconButton(
+                    icon: widget.rounded ? ZetaIcons.clock_outline_round : ZetaIcons.clock_outline_sharp,
+                    onTap: _pickTime,
+                    disabled: widget.disabled,
+                    size: _iconSize,
+                  ),
+                ],
+              ),
+              focusColor: _backgroundColor,
+              hoverColor: _backgroundColor,
+              fillColor: _backgroundColor,
+              enabledBorder: _baseBorder,
+              disabledBorder: _disabledBorder,
+              focusedBorder: _focusedBorder,
+              focusedErrorBorder: _errorBorder,
+              errorBorder: _errorBorder,
+              hintText: _timeFormat,
+              hintStyle: _textStyle,
+              errorStyle: const TextStyle(height: 0),
+            ),
+          ),
         ),
-      ),
+        _HintText(
+          error: _error,
+          disabled: widget.disabled,
+          rounded: widget.rounded,
+          hintText: widget.hintText,
+          errorText: widget.errorText,
+        ),
+      ],
     );
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty<TextEditingController>('controller', controller))
-      ..add(ObjectFlagProperty<ValueChanged<String>?>.has('onSubmit', onSubmit))
-      ..add(ObjectFlagProperty<ValueChanged<String>>.has('onChange', onChange))
-      ..add(DiagnosticsProperty<FocusNode>('focusNode', focusNode))
-      ..add(StringProperty('hint', hint))
-      ..add(DiagnosticsProperty<bool>('disabled', disabled))
-      ..add(DiagnosticsProperty<TextStyle>('style', style));
   }
 }
 
