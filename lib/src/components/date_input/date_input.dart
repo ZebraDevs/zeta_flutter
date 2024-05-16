@@ -57,7 +57,7 @@ class ZetaDateInput extends StatefulWidget {
   /// Determines if the input field should be enabled (default) or disabled.
   final bool enabled;
 
-  /// Determines if the input field corners are rounded (default) or sharp.
+  /// {@macro zeta-component-rounded}
   final bool rounded;
 
   /// Determines if the input field should be displayed in error style.

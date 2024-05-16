@@ -28,7 +28,7 @@ class ZetaStepper extends StatefulWidget {
   /// an argument.
   final ValueChanged<int>? onStepTapped;
 
-  /// Whether the icons of the horizontal stepper to be rounded or square.
+  /// {@macro zeta-component-rounded}
   final bool rounded;
 
   /// The steps of the stepper whose titles, subtitles, icons always get shown.
