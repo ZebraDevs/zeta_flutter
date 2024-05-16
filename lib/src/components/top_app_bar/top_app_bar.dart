@@ -7,7 +7,7 @@ import 'search_top_app_bar.dart';
 
 export 'search_top_app_bar.dart' show AppBarSearchController;
 
-/// Top app bars provide content and actions related to the current screen
+/// Top app bars provide content and actions related to the current screen.
 class ZetaTopAppBar extends StatefulWidget implements PreferredSizeWidget {
   /// Creates a ZetaTopAppBar.
   const ZetaTopAppBar({
