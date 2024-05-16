@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import '../../../zeta_flutter.dart';
 
 /// Zeta app bar.
-class ZetaAppBar extends StatefulWidget implements PreferredSizeWidget {
+class ZetaTopAppBar extends StatefulWidget implements PreferredSizeWidget {
   /// Creates a Zeta app bar.
-  const ZetaAppBar({
+  const ZetaTopAppBar({
     this.actions,
     this.automaticallyImplyLeading = true,
     this.searchController,
@@ -13,7 +13,7 @@ class ZetaAppBar extends StatefulWidget implements PreferredSizeWidget {
     this.title,
     this.titleSpacing,
     this.titleTextStyle,
-    this.type = ZetaAppBarType.defaultAppBar,
+    this.type = ZetaTopAppBarType.defaultAppBar,
     this.onSearch,
     this.searchHintText = 'Search',
     this.onSearchMicrophoneIconPressed,
@@ -51,10 +51,10 @@ class ZetaAppBar extends StatefulWidget implements PreferredSizeWidget {
   final TextStyle? titleTextStyle;
 
   /// Defines the styles of the app bar.
-  final ZetaAppBarType type;
+  final ZetaTopAppBarType type;
 
   @override
-  State<ZetaAppBar> createState() => _ZetaAppBarState();
+  State<ZetaTopAppBar> createState() => _ZetaTopAppBarState();
 
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
@@ -84,14 +84,14 @@ class ZetaAppBar extends StatefulWidget implements PreferredSizeWidget {
         ),
       )
       ..add(StringProperty('searchHintText', searchHintText))
-      ..add(EnumProperty<ZetaAppBarType>('type', type))
-      ..add(EnumProperty<ZetaAppBarType>('type', type))
+      ..add(EnumProperty<ZetaTopAppBarType>('type', type))
+      ..add(EnumProperty<ZetaTopAppBarType>('type', type))
       ..add(DoubleProperty('titleSpacing', titleSpacing))
       ..add(DiagnosticsProperty<TextStyle?>('titleTextStyle', titleTextStyle));
   }
 }
 
-class _ZetaAppBarState extends State<ZetaAppBar> {
+class _ZetaTopAppBarState extends State<ZetaTopAppBar> {
   bool _isSearchEnabled = false;
 
   @override
@@ -114,7 +114,7 @@ class _ZetaAppBarState extends State<ZetaAppBar> {
   }
 
   Widget? _getTitle() {
-    return widget.type != ZetaAppBarType.extendedTitle
+    return widget.type != ZetaTopAppBarType.extendedTitle
         ? Padding(
             padding: EdgeInsets.symmetric(horizontal: widget.titleSpacing ?? ZetaSpacing.b),
             child: widget.title,
@@ -140,7 +140,7 @@ class _ZetaAppBarState extends State<ZetaAppBar> {
           leadingWidth: ZetaSpacing.x10,
           leading: widget.leading,
           automaticallyImplyLeading: widget.automaticallyImplyLeading,
-          centerTitle: widget.type == ZetaAppBarType.centeredTitle,
+          centerTitle: widget.type == ZetaTopAppBarType.centeredTitle,
           titleSpacing: 0,
           titleTextStyle: widget.titleTextStyle == null
               ? ZetaTextStyles.bodyLarge.copyWith(
@@ -192,7 +192,7 @@ class _ZetaAppBarState extends State<ZetaAppBar> {
                   ),
                 ]
               : widget.actions,
-          flexibleSpace: widget.type == ZetaAppBarType.extendedTitle
+          flexibleSpace: widget.type == ZetaTopAppBarType.extendedTitle
               ? Padding(
                   padding: EdgeInsets.only(
                     top: widget.preferredSize.height,
@@ -214,7 +214,7 @@ class _ZetaAppBarState extends State<ZetaAppBar> {
 }
 
 /// Defines the style of the app bar.
-enum ZetaAppBarType {
+enum ZetaTopAppBarType {
   /// Title positioned on the left side.
   defaultAppBar,
 
@@ -238,7 +238,7 @@ class _SearchField extends StatefulWidget {
   final Widget? child;
   final String hintText;
   final AppBarSearchController? searchController;
-  final ZetaAppBarType type;
+  final ZetaTopAppBarType type;
 
   @override
   State<_SearchField> createState() => _SearchFieldState();
@@ -260,7 +260,7 @@ class _SearchField extends StatefulWidget {
           searchController,
         ),
       )
-      ..add(EnumProperty<ZetaAppBarType>('type', type));
+      ..add(EnumProperty<ZetaTopAppBarType>('type', type));
   }
 }
 
@@ -358,7 +358,7 @@ class _SearchFieldState extends State<_SearchField> with SingleTickerProviderSta
       children: [
         Row(
           mainAxisAlignment:
-              widget.type == ZetaAppBarType.centeredTitle ? MainAxisAlignment.center : MainAxisAlignment.start,
+              widget.type == ZetaTopAppBarType.centeredTitle ? MainAxisAlignment.center : MainAxisAlignment.start,
           children: [
             widget.child ?? const SizedBox(),
           ],
