@@ -39,6 +39,7 @@ import 'pages/components/stepper_widgetbook.dart';
 import 'pages/components/switch_widgetbook.dart';
 import 'pages/components/snack_bar_widgetbook.dart';
 import 'pages/components/tabs_widgetbook.dart';
+import 'pages/components/time_input.dart';
 import 'pages/components/tooltip_widgetbook.dart';
 import 'pages/theme/color_widgetbook.dart';
 import 'pages/theme/radius_widgetbook.dart';
@@ -137,6 +138,7 @@ class HotReload extends StatelessWidget {
             WidgetbookUseCase(name: 'Select Input', builder: (context) => selectInputUseCase(context)),
             WidgetbookUseCase(name: 'Screen Header Bar', builder: (context) => screenHeaderBarUseCase(context)),
             WidgetbookUseCase(name: 'Filter Selection', builder: (context) => filterSelectionUseCase(context)),
+            WidgetbookUseCase(name: 'Time Input', builder: (context) => timeInputUseCase(context)),
           ]..sort((a, b) => a.name.compareTo(b.name)),
         ),
         WidgetbookCategory(

@@ -5,6 +5,10 @@ import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
 import '../../../zeta_flutter.dart';
 
+const _maxHrValue = 23;
+const _max12HrValue = 12;
+const _maxMinsValue = 59;
+
 /// A form field used to input time.
 ///
 /// Can be used and validated the same way as a [TextFormField]
@@ -82,11 +86,11 @@ class ZetaTimeInput extends StatefulWidget {
 
 /// State for [ZetaTimeInput]
 class ZetaTimeInputState extends State<ZetaTimeInput> {
-  //TODO add AM/PM selector inline
+  // TODO(mikecoomber): add AM/PM selector inline.
 
   ZetaColors get _colors => Zeta.of(context).colors;
 
-  final _timeFormat = 'hh:mm';
+  final _timeFormat = 'hh:mm'; // TODO(UX-1003): needs localizing.
   late final MaskTextInputFormatter _timeFormatter;
 
   bool _firstBuildComplete = false;
@@ -141,8 +145,8 @@ class ZetaTimeInputState extends State<ZetaTimeInput> {
     }
   }
 
-  int get _hrsLimit => _use12Hr ? 12 : 23;
-  final int _minsLimit = 59;
+  int get _hrsLimit => _use12Hr ? _max12HrValue : _maxHrValue;
+  final int _minsLimit = _maxMinsValue;
 
   TimeOfDay? get _value {
     final splitValue = _timeFormatter.getMaskedText().trim().split(':');
@@ -162,11 +166,11 @@ class ZetaTimeInputState extends State<ZetaTimeInput> {
       );
 
   OutlineInputBorder get _focusedBorder => _baseBorder.copyWith(
-        borderSide: BorderSide(color: _colors.primary.shade50, width: 2),
-      ); // TODO: change to colors.borderPrimary when added
+        borderSide: BorderSide(color: _colors.primary.shade50, width: ZetaSpacing.x0_5),
+      ); // TODO(mikecoomber): change to colors.borderPrimary when added
 
   OutlineInputBorder get _errorBorder => _baseBorder.copyWith(
-        borderSide: BorderSide(color: _colors.error, width: 2),
+        borderSide: BorderSide(color: _colors.error, width: ZetaSpacing.x0_5),
       );
 
   @override
