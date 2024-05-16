@@ -57,7 +57,7 @@ class ZetaDateInput extends StatefulWidget {
   /// Determines if the input field should be enabled (default) or disabled.
   final bool enabled;
 
-  /// Determines if the input field corners are rounded (default) or sharp.
+  /// {@macro zeta-component-rounded}
   final bool rounded;
 
   /// Determines if the input field should be displayed in error style.
@@ -181,6 +181,7 @@ class _ZetaDateInputState extends State<ZetaDateInput> {
           ),
         TextFormField(
           enabled: widget.enabled,
+          autovalidateMode: AutovalidateMode.onUserInteraction,
           controller: _controller,
           inputFormatters: [_dateFormatter],
           keyboardType: TextInputType.number,
@@ -315,15 +316,4 @@ class _ZetaDateInputState extends State<ZetaDateInput> {
         borderRadius: rounded ? ZetaRadius.minimal : ZetaRadius.none,
         borderSide: BorderSide(color: zeta.colors.red.shade50),
       );
-}
-
-extension on DateFormat {
-  //NOTE: this function is a part of intl 0.19.0.
-  DateTime? tryParseStrict(String inputString) {
-    try {
-      return parseStrict(inputString);
-    } on FormatException {
-      return null;
-    }
-  }
 }
