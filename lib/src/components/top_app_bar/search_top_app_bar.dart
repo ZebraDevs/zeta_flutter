@@ -13,6 +13,7 @@ class ZetaTopAppBarSearchField extends StatefulWidget {
     required this.searchController,
     required this.hintText,
     required this.type,
+    required this.isExtended,
   });
 
   /// Called when text in the search field is submitted.
@@ -30,6 +31,9 @@ class ZetaTopAppBarSearchField extends StatefulWidget {
   /// Defines the styles of the app bar.
   final ZetaTopAppBarType type;
 
+  /// Whether top app bar is extended.
+  final bool isExtended;
+
   @override
   State<ZetaTopAppBarSearchField> createState() => _ZetaTopAppBarSearchFieldState();
 
@@ -40,7 +44,8 @@ class ZetaTopAppBarSearchField extends StatefulWidget {
       ..add(ObjectFlagProperty<void Function(String value)?>.has('onSearch', onSearch))
       ..add(StringProperty('hintText', hintText))
       ..add(DiagnosticsProperty<AppBarSearchController?>('searchController', searchController))
-      ..add(EnumProperty<ZetaTopAppBarType>('type', type));
+      ..add(EnumProperty<ZetaTopAppBarType>('type', type))
+      ..add(DiagnosticsProperty<bool>('isExtended', isExtended));
   }
 }
 
@@ -143,7 +148,7 @@ class _ZetaTopAppBarSearchFieldState extends State<ZetaTopAppBarSearchField> wit
           ],
         ),
         ConstrainedBox(
-          constraints: const BoxConstraints(maxHeight: 26),
+          constraints: BoxConstraints(maxHeight: widget.isExtended ? 26 : double.infinity),
           child: AnimatedBuilder(
             animation: _animationController,
             builder: (context, child) => Transform.scale(

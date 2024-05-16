@@ -205,6 +205,7 @@ class _ZetaTopAppBarState extends State<ZetaTopAppBar> {
             hintText: widget.searchHintText ?? 'Search',
             onSearch: widget.onSearch,
             type: widget.type,
+            isExtended: widget.type == ZetaTopAppBarType.extendedTitle,
             child: titleText,
           )
         : titleText;

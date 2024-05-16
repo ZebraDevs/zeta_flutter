@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../../../zeta_flutter.dart';
 
+const _searchBarOffset = 6;
+
 /// Delegate for creating an extended app bar, that grows and shrinks when scrolling.
 class ZetaExtendedAppBarDelegate extends SliverPersistentHeaderDelegate {
   /// Constructs a [ZetaExtendedAppBarDelegate].
@@ -44,7 +46,12 @@ class ZetaExtendedAppBarDelegate extends SliverPersistentHeaderDelegate {
         child: Stack(
           children: [
             Positioned(
-              top: shrinks ? (_topMax + (-1 * shrinkOffset)).clamp(_topMin, _topMax) : _topMax,
+              top: shrinks
+                  ? (_topMax + (-1 * shrinkOffset)).clamp(
+                      _topMin - (searchController != null && searchController!.isEnabled ? _searchBarOffset : 0),
+                      _topMax,
+                    )
+                  : _topMax,
               left: shrinks ? ((shrinkOffset / _maxExtent) * ZetaSpacing.x50).clamp(_leftMin, _leftMax) : _leftMin,
               right: searchController != null && searchController!.isEnabled ? 88 : 0,
               child: title,
@@ -64,7 +71,5 @@ class ZetaExtendedAppBarDelegate extends SliverPersistentHeaderDelegate {
   double get minExtent => shrinks ? _minExtent : _maxExtent;
 
   @override
-  bool shouldRebuild(covariant ZetaExtendedAppBarDelegate oldDelegate) {
-    return oldDelegate != this;
-  }
+  bool shouldRebuild(covariant ZetaExtendedAppBarDelegate oldDelegate) => oldDelegate != this;
 }
