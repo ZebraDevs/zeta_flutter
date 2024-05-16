@@ -33,7 +33,6 @@ class ZetaScreenHeaderBar extends StatelessWidget {
         icon: Icon(rounded ? ZetaIcons.chevron_left_round : ZetaIcons.chevron_left_sharp),
       ),
       title: title,
-      titleSpacing: 0,
       titleTextStyle: ZetaTextStyles.titleLarge,
       actions: actionButtonLabel == null
           ? null

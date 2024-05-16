@@ -4,12 +4,14 @@ class WidgetbookTestWidget extends StatelessWidget {
   final Size? screenSize;
   final Widget widget;
   final bool removeBody;
+  final Color? backgroundColor;
 
   const WidgetbookTestWidget({
     required this.widget,
     this.screenSize,
     super.key,
     this.removeBody = false,
+    this.backgroundColor,
   });
 
   @override
@@ -17,7 +19,7 @@ class WidgetbookTestWidget extends StatelessWidget {
     final size = screenSize ?? const Size(1280, 720);
 
     return Scaffold(
-      backgroundColor: Colors.transparent,
+      backgroundColor: backgroundColor ?? Colors.transparent,
       body: removeBody
           ? widget
           : Center(

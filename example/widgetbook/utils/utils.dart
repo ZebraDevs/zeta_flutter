@@ -18,8 +18,13 @@ List<IconData> iconOptions(rounded) => rounded ? iconsRound.values.toList() : ic
 
 String enumLabelBuilder(Enum? value) => value?.name.split('.').last.capitalize() ?? '';
 
-IconData? iconKnob(BuildContext context,
-    {bool rounded = true, bool nullable = false, String name = 'Icon', final IconData? initial}) {
+IconData? iconKnob(
+  BuildContext context, {
+  bool rounded = true,
+  bool nullable = false,
+  String name = 'Icon',
+  final IconData? initial,
+}) {
   return nullable
       ? context.knobs.listOrNull(
           label: name,
