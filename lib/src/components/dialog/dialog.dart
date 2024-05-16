@@ -14,7 +14,6 @@ enum ZetaDialogHeaderAlignment {
 /// [showZetaDialog]
 Future<bool?> showZetaDialog(
   BuildContext context, {
-  Zeta? zeta,
   ZetaDialogHeaderAlignment headerAlignment = ZetaDialogHeaderAlignment.center,
   Widget? icon,
   String? title,
@@ -34,7 +33,6 @@ Future<bool?> showZetaDialog(
       barrierDismissible: barrierDismissible,
       useRootNavigator: useRootNavigator,
       builder: (_) => _ZetaDialog(
-        zeta: zeta,
         headerAlignment: headerAlignment,
         icon: icon,
         title: title,
@@ -62,7 +60,6 @@ class _ZetaDialog extends StatelessWidget {
     this.tertiaryButtonLabel,
     this.onTertiaryButtonPressed,
     this.rounded = true,
-    this.zeta,
   });
 
   final ZetaDialogHeaderAlignment headerAlignment;
@@ -76,15 +73,13 @@ class _ZetaDialog extends StatelessWidget {
   final String? tertiaryButtonLabel;
   final VoidCallback? onTertiaryButtonPressed;
   final bool rounded;
-  final Zeta? zeta;
 
   @override
   Widget build(BuildContext context) {
-    final zeta = this.zeta ?? Zeta.of(context);
+    final zeta = Zeta.of(context);
     final primaryButton = primaryButtonLabel == null
         ? null
         : ZetaButton(
-            zeta: zeta,
             label: primaryButtonLabel!,
             onPressed: onPrimaryButtonPressed ?? () => Navigator.of(context).pop(true),
             borderType: rounded ? ZetaWidgetBorder.rounded : ZetaWidgetBorder.sharp,
@@ -92,7 +87,6 @@ class _ZetaDialog extends StatelessWidget {
     final secondaryButton = secondaryButtonLabel == null
         ? null
         : ZetaButton.outlineSubtle(
-            zeta: zeta,
             label: secondaryButtonLabel!,
             onPressed: onSecondaryButtonPressed ?? () => Navigator.of(context).pop(false),
             borderType: rounded ? ZetaWidgetBorder.rounded : ZetaWidgetBorder.sharp,

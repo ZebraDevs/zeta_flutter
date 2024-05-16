@@ -6,20 +6,19 @@ import 'package:zeta_flutter/zeta_flutter.dart';
 
 import '../../test/test_components.dart';
 
-Widget defaultAppBarUseCase(BuildContext context) {
+Widget defaultTopAppBarUseCase(BuildContext context) {
   return WidgetbookTestWidget(
     widget: StatefulBuilder(
       builder: (context, setState) {
         final title = context.knobs.string(label: "Title", initialValue: "Title");
-
         final type = context.knobs.list(
           label: "Type",
           options: [
-            ZetaAppBarType.defaultAppBar,
-            ZetaAppBarType.centeredTitle,
-            ZetaAppBarType.extendedTitle,
+            ZetaTopAppBarType.defaultAppBar,
+            ZetaTopAppBarType.centeredTitle,
+            ZetaTopAppBarType.extendedTitle,
           ],
-          initialOption: ZetaAppBarType.defaultAppBar,
+          initialOption: ZetaTopAppBarType.defaultAppBar,
           labelBuilder: (type) => type.name,
         );
 
@@ -48,7 +47,7 @@ Widget defaultAppBarUseCase(BuildContext context) {
           labelBuilder: (icon) => icon.key.toString(),
         );
 
-        return ZetaAppBar(
+        return ZetaTopAppBar(
           leading: IconButton(
             onPressed: () {},
             icon: leadingIcon,
@@ -77,7 +76,7 @@ Widget defaultAppBarUseCase(BuildContext context) {
   );
 }
 
-Widget searchAppBarUseCase(BuildContext context) {
+Widget searchTopAppBarUseCase(BuildContext context) {
   return WidgetbookTestWidget(
     widget: _SearchUseCase(),
   );
@@ -100,11 +99,11 @@ class _SearchUseCaseState extends State<_SearchUseCase> {
     final type = context.knobs.list(
       label: "Type",
       options: [
-        ZetaAppBarType.defaultAppBar,
-        ZetaAppBarType.centeredTitle,
-        ZetaAppBarType.extendedTitle,
+        ZetaTopAppBarType.defaultAppBar,
+        ZetaTopAppBarType.centeredTitle,
+        ZetaTopAppBarType.extendedTitle,
       ],
-      initialOption: ZetaAppBarType.defaultAppBar,
+      initialOption: ZetaTopAppBarType.defaultAppBar,
       labelBuilder: (type) => type.name,
     );
 
@@ -135,7 +134,7 @@ class _SearchUseCaseState extends State<_SearchUseCase> {
       initialValue: false,
     );
 
-    return ZetaAppBar(
+    return ZetaTopAppBar(
       leading: IconButton(
         onPressed: () {},
         icon: leadingIcon,

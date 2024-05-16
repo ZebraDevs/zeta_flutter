@@ -123,7 +123,7 @@ class _ZetaSegmentedControlState<T> extends State<ZetaSegmentedControl<T>>
     final colors = Zeta.of(context).colors;
 
     return MouseRegion(
-      cursor: kIsWeb ? SystemMouseCursors.click : MouseCursor.defer,
+      cursor: SystemMouseCursors.click,
       child: SelectionContainer.disabled(
         child: Container(
           padding: const EdgeInsets.all(ZetaSpacing.xxs),
