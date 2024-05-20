@@ -5,27 +5,34 @@ import 'package:zeta_flutter/zeta_flutter.dart';
 import '../../test/test_components.dart';
 import '../../utils/utils.dart';
 
-Widget buttonUseCase(BuildContext context) => WidgetbookTestWidget(
-      widget: ZetaButton(
-        label: context.knobs.string(label: 'Text', initialValue: 'Button'),
-        onPressed: context.knobs.boolean(label: 'Disabled') ? null : () {},
-        borderType: context.knobs.list(
-          label: 'Border type',
-          labelBuilder: enumLabelBuilder,
-          options: ZetaWidgetBorder.values,
-        ),
-        size: context.knobs.list(
-          label: 'Size',
-          options: ZetaWidgetSize.values,
-          labelBuilder: enumLabelBuilder,
-        ),
-        type: context.knobs.list(
-          label: 'Type',
-          options: ZetaButtonType.values,
-          labelBuilder: enumLabelBuilder,
-        ),
+Widget buttonUseCase(BuildContext context) {
+  final borderType = context.knobs.list(
+    label: 'Border type',
+    labelBuilder: enumLabelBuilder,
+    options: ZetaWidgetBorder.values,
+  );
+  return WidgetbookTestWidget(
+    widget: ZetaButton(
+      label: context.knobs.string(label: 'Text', initialValue: 'Button'),
+      onPressed: context.knobs.boolean(label: 'Disabled') ? null : () {},
+      borderType: borderType,
+      size: context.knobs.list(
+        label: 'Size',
+        options: ZetaWidgetSize.values,
+        labelBuilder: enumLabelBuilder,
       ),
-    );
+      type: context.knobs.list(
+        label: 'Type',
+        options: ZetaButtonType.values,
+        labelBuilder: enumLabelBuilder,
+      ),
+      leadingIcon:
+          iconKnob(context, rounded: borderType != ZetaWidgetBorder.sharp, nullable: true, name: "Leading Icon"),
+      trailingIcon:
+          iconKnob(context, rounded: borderType != ZetaWidgetBorder.sharp, nullable: true, name: "Trailing Icon"),
+    ),
+  );
+}
 
 Widget iconButtonUseCase(BuildContext context) {
   final borderType = context.knobs.list(

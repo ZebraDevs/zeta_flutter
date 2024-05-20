@@ -85,7 +85,7 @@ class ZetaAppBar extends StatefulWidget implements PreferredSizeWidget {
       )
       ..add(StringProperty('searchHintText', searchHintText))
       ..add(EnumProperty<ZetaAppBarType>('type', type))
-      ..add(DoubleProperty('titleSpacing', titleSpacing))
+      ..add(EnumProperty<ZetaAppBarType>('type', type))
       ..add(DiagnosticsProperty<TextStyle?>('titleTextStyle', titleTextStyle));
   }
 }

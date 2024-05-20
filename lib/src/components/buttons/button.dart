@@ -13,6 +13,8 @@ class ZetaButton extends StatelessWidget {
     this.size = ZetaWidgetSize.medium,
     this.borderType = ZetaWidgetBorder.rounded,
     this.zeta,
+    this.leadingIcon,
+    this.trailingIcon,
     super.key,
   });
 
@@ -23,6 +25,8 @@ class ZetaButton extends StatelessWidget {
     this.size = ZetaWidgetSize.medium,
     this.borderType = ZetaWidgetBorder.rounded,
     this.zeta,
+    this.leadingIcon,
+    this.trailingIcon,
     super.key,
   }) : type = ZetaButtonType.primary;
 
@@ -33,6 +37,8 @@ class ZetaButton extends StatelessWidget {
     this.size = ZetaWidgetSize.medium,
     this.borderType = ZetaWidgetBorder.rounded,
     this.zeta,
+    this.leadingIcon,
+    this.trailingIcon,
     super.key,
   }) : type = ZetaButtonType.secondary;
 
@@ -43,6 +49,8 @@ class ZetaButton extends StatelessWidget {
     this.size = ZetaWidgetSize.medium,
     this.borderType = ZetaWidgetBorder.rounded,
     this.zeta,
+    this.leadingIcon,
+    this.trailingIcon,
     super.key,
   }) : type = ZetaButtonType.positive;
 
@@ -53,6 +61,8 @@ class ZetaButton extends StatelessWidget {
     this.size = ZetaWidgetSize.medium,
     this.borderType = ZetaWidgetBorder.rounded,
     this.zeta,
+    this.leadingIcon,
+    this.trailingIcon,
     super.key,
   }) : type = ZetaButtonType.negative;
 
@@ -63,6 +73,8 @@ class ZetaButton extends StatelessWidget {
     this.size = ZetaWidgetSize.medium,
     this.borderType = ZetaWidgetBorder.rounded,
     this.zeta,
+    this.leadingIcon,
+    this.trailingIcon,
     super.key,
   }) : type = ZetaButtonType.outline;
 
@@ -73,6 +85,8 @@ class ZetaButton extends StatelessWidget {
     this.size = ZetaWidgetSize.medium,
     this.borderType = ZetaWidgetBorder.rounded,
     this.zeta,
+    this.leadingIcon,
+    this.trailingIcon,
     super.key,
   }) : type = ZetaButtonType.outlineSubtle;
 
@@ -83,6 +97,8 @@ class ZetaButton extends StatelessWidget {
     this.size = ZetaWidgetSize.medium,
     this.borderType = ZetaWidgetBorder.rounded,
     this.zeta,
+    this.leadingIcon,
+    this.trailingIcon,
     super.key,
   }) : type = ZetaButtonType.text;
 
@@ -106,6 +122,12 @@ class ZetaButton extends StatelessWidget {
   /// like for example from [showZetaDialog]
   final Zeta? zeta;
 
+  /// Leading icon of button. Goes infront of button.
+  final IconData? leadingIcon;
+
+  /// Trailing icon of button. Goes behind button.
+  final IconData? trailingIcon;
+
   /// Creates a clone.
   ZetaButton copyWith({
     String? label,
@@ -113,6 +135,8 @@ class ZetaButton extends StatelessWidget {
     ZetaButtonType? type,
     ZetaWidgetSize? size,
     ZetaWidgetBorder? borderType,
+    IconData? leadingIcon,
+    IconData? trailingIcon,
     Key? key,
   }) {
     return ZetaButton(
@@ -122,6 +146,8 @@ class ZetaButton extends StatelessWidget {
       size: size ?? this.size,
       borderType: borderType ?? this.borderType,
       zeta: zeta,
+      leadingIcon: leadingIcon ?? this.leadingIcon,
+      trailingIcon: trailingIcon ?? this.trailingIcon,
       key: key ?? this.key,
     );
   }
@@ -136,12 +162,32 @@ class ZetaButton extends StatelessWidget {
         onPressed: onPressed,
         style: buttonStyle(colors, borderType, type, null),
         child: SelectionContainer.disabled(
-          child: label.isEmpty
-              ? const SizedBox()
-              : Text(
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              if (leadingIcon != null)
+                Icon(
+                  leadingIcon,
+                  size: _iconSize,
+                ),
+              if (label.isNotEmpty)
+                Text(
                   label,
                   style: _textStyle,
-                ).paddingHorizontal(_textPadding),
+                ),
+              if (trailingIcon != null)
+                Icon(
+                  trailingIcon,
+                  size: _iconSize,
+                ),
+            ]
+                .divide(
+                  const SizedBox(
+                    width: ZetaSpacing.x2,
+                  ),
+                )
+                .toList(),
+          ).paddingHorizontal(_textPadding),
         ),
       ),
     );
@@ -165,13 +211,23 @@ class ZetaButton extends StatelessWidget {
   double get _textPadding {
     switch (size) {
       case ZetaWidgetSize.large:
-        return ZetaSpacing.m;
+        return ZetaSpacing.x4;
 
       case ZetaWidgetSize.medium:
-        return ZetaSpacing.x3_5;
+        return ZetaSpacing.x3;
 
       case ZetaWidgetSize.small:
-        return ZetaSpacing.x2_5;
+        return ZetaSpacing.x1;
+    }
+  }
+
+  double get _iconSize {
+    switch (size) {
+      case ZetaWidgetSize.large:
+      case ZetaWidgetSize.medium:
+        return ZetaSpacing.x5;
+      case ZetaWidgetSize.small:
+        return ZetaSpacing.x4;
     }
   }
 
@@ -183,6 +239,8 @@ class ZetaButton extends StatelessWidget {
       ..add(ObjectFlagProperty<VoidCallback?>.has('onPressed', onPressed))
       ..add(EnumProperty<ZetaButtonType>('type', type))
       ..add(EnumProperty<ZetaWidgetBorder>('borderType', borderType))
-      ..add(EnumProperty<ZetaWidgetSize>('size', size));
+      ..add(EnumProperty<ZetaWidgetSize>('size', size))
+      ..add(DiagnosticsProperty<IconData?>('leadingIcon', leadingIcon))
+      ..add(DiagnosticsProperty<IconData?>('trailingIcon', trailingIcon));
   }
 }

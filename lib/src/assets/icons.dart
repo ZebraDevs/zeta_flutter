@@ -1,13 +1,16 @@
 // ignore_for_file: public_member_api_docs, constant_identifier_names
 import 'package:flutter/material.dart';
 
+const zetaIconsVersion = '0.5.1';
+
+/// Zeta Icons. Full list of icons can be found at [Zeta Icons](https://zeta-icons.web.app/).
 class ZetaIcons {
   ZetaIcons._();
   static const String _familyRound = 'zeta-icons-round';
   static const String _familySharp = 'zeta-icons-sharp';
   static const String _package = 'zeta_flutter';
 
-  /// Round Icons
+  // Round Icons
   static const IconData activity_round = IconData(0xe001, fontFamily: _familyRound, fontPackage: _package);
   static const IconData add_alert_round = IconData(0xe002, fontFamily: _familyRound, fontPackage: _package);
   static const IconData add_box_round = IconData(0xe003, fontFamily: _familyRound, fontPackage: _package);
@@ -38,592 +41,525 @@ class ZetaIcons {
   static const IconData android_round = IconData(0xe01a, fontFamily: _familyRound, fontPackage: _package);
   static const IconData antenna_round = IconData(0xe01b, fontFamily: _familyRound, fontPackage: _package);
   static const IconData app_edit_round = IconData(0xe01c, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData appgallery_round = IconData(0xe01d, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData application_analytics_round = IconData(0xe01e, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData apps_round = IconData(0xe01f, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData ar_round = IconData(0xe020, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData arrow_back_round = IconData(0xe021, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData arrow_down_round = IconData(0xe022, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData arrow_forward_round = IconData(0xe023, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData arrow_up_round = IconData(0xe024, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData asset_tracker_lite_round = IconData(0xe025, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData attachment_round = IconData(0xe026, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData audio_round = IconData(0xe027, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData audit_activity_round = IconData(0xe028, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData auto_delete_round = IconData(0xe029, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData auto_round = IconData(0xe02a, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData awb_round = IconData(0xe02b, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData backspace_round = IconData(0xe02c, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData bad_mood_round = IconData(0xe02d, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData barcode_bluetooth_round = IconData(0xe02e, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData barcode_done_round = IconData(0xe02f, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData barcode_image_scan_round = IconData(0xe030, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData barcode_qr_code_round = IconData(0xe031, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData barcode_round = IconData(0xe032, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData barcode_scanner_down_round = IconData(0xe033, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData barcode_settings_round = IconData(0xe034, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData basket_round = IconData(0xe035, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData battery_alert_round = IconData(0xe036, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData battery_charging_round = IconData(0xe037, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData battery_round = IconData(0xe038, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData block_content_round = IconData(0xe039, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData block_round = IconData(0xe03a, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData blog_round = IconData(0xe03b, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData blood_bag_plus_round = IconData(0xe03c, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData bluetooth_disabled_round = IconData(0xe03d, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData bluetooth_management_round = IconData(0xe03e, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData bluetooth_round = IconData(0xe03f, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData bluetooth_searching_round = IconData(0xe040, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData bold_round = IconData(0xe041, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData bookmark_outline_round = IconData(0xe042, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData bookmark_round = IconData(0xe043, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData brightness_round = IconData(0xe044, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData broadcast_round = IconData(0xe045, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData browser_print_round = IconData(0xe046, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData build_round = IconData(0xe047, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData building_round = IconData(0xe048, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData bullet_list_round = IconData(0xe049, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData bus_round = IconData(0xe04a, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData cached_round = IconData(0xe04b, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData cafe_round = IconData(0xe04c, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData calculator_round = IconData(0xe04d, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData calendar_3_day_round = IconData(0xe04e, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData calendar_alt_1_round = IconData(0xe04f, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData calendar_alt_2_round = IconData(0xe050, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData calendar_available_round = IconData(0xe051, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData calendar_day_round = IconData(0xe052, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData calendar_edit_round = IconData(0xe053, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData calendar_gantt_round = IconData(0xe054, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData calendar_monthly_round = IconData(0xe055, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData calendar_next_round = IconData(0xe056, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData calendar_range_round = IconData(0xe057, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData calendar_rollover_round = IconData(0xe058, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData calendar_round = IconData(0xe059, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData calendar_unavailable_round = IconData(0xe05a, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData calendar_weekly_round = IconData(0xe05b, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData calendar_yearly_round = IconData(0xe05c, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData call_back_round = IconData(0xe05d, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData camera_round = IconData(0xe05e, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData camera_shutter_round = IconData(0xe05f, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData camera_switch_image_round = IconData(0xe060, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData camera_switch_round = IconData(0xe061, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData cancel_outline_round = IconData(0xe062, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData cancel_round = IconData(0xe063, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData car_round = IconData(0xe064, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData card_orientation_round = IconData(0xe065, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData card_with_chip_round = IconData(0xe066, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData caret_down_round = IconData(0xe067, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData caret_left_round = IconData(0xe068, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData caret_right_round = IconData(0xe069, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData caret_sort_round = IconData(0xe06a, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData caret_up_round = IconData(0xe06b, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData cast_connected_round = IconData(0xe06c, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData cast_round = IconData(0xe06d, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData cellular_signal_round = IconData(0xe06e, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData certificate_round = IconData(0xe06f, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData certified_round = IconData(0xe070, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData chain_round = IconData(0xe071, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData chart_bar_round = IconData(0xe072, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData chart_bubble_charts_round = IconData(0xe073, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData chart_bubble_round = IconData(0xe074, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData chart_doughnut_round = IconData(0xe075, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData apps_round = IconData(0xe01d, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData ar_round = IconData(0xe01e, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData arrow_back_round = IconData(0xe01f, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData arrow_down_round = IconData(0xe020, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData arrow_forward_round = IconData(0xe021, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData arrow_up_round = IconData(0xe022, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData attachment_round = IconData(0xe023, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData audio_round = IconData(0xe024, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData audit_activity_round = IconData(0xe025, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData auto_delete_round = IconData(0xe026, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData auto_round = IconData(0xe027, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData awb_round = IconData(0xe028, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData backspace_round = IconData(0xe029, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData bad_mood_round = IconData(0xe02a, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData barcode_bluetooth_round = IconData(0xe02b, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData barcode_done_round = IconData(0xe02c, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData barcode_image_scan_round = IconData(0xe02d, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData barcode_qr_code_round = IconData(0xe02e, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData barcode_round = IconData(0xe02f, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData barcode_scanner_down_round = IconData(0xe030, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData barcode_settings_round = IconData(0xe031, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData basket_round = IconData(0xe032, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData battery_alert_round = IconData(0xe033, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData battery_charging_round = IconData(0xe034, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData battery_round = IconData(0xe035, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData block_content_round = IconData(0xe036, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData block_round = IconData(0xe037, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData blog_round = IconData(0xe038, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData bluetooth_disabled_round = IconData(0xe039, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData bluetooth_round = IconData(0xe03a, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData bluetooth_searching_round = IconData(0xe03b, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData bold_round = IconData(0xe03c, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData bookmark_outline_round = IconData(0xe03d, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData bookmark_round = IconData(0xe03e, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData brightness_round = IconData(0xe03f, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData broadcast_round = IconData(0xe040, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData build_round = IconData(0xe041, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData building_round = IconData(0xe042, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData bullet_list_round = IconData(0xe043, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData bus_round = IconData(0xe044, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData cached_round = IconData(0xe045, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData cafe_round = IconData(0xe046, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData calculator_round = IconData(0xe047, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData calendar_3_day_round = IconData(0xe048, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData calendar_alt_1_round = IconData(0xe049, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData calendar_alt_2_round = IconData(0xe04a, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData calendar_available_round = IconData(0xe04b, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData calendar_day_round = IconData(0xe04c, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData calendar_edit_round = IconData(0xe04d, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData calendar_gantt_round = IconData(0xe04e, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData calendar_monthly_round = IconData(0xe04f, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData calendar_next_round = IconData(0xe050, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData calendar_range_round = IconData(0xe051, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData calendar_rollover_round = IconData(0xe052, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData calendar_round = IconData(0xe053, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData calendar_unavailable_round = IconData(0xe054, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData calendar_weekly_round = IconData(0xe055, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData calendar_yearly_round = IconData(0xe056, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData call_back_round = IconData(0xe057, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData camera_round = IconData(0xe058, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData camera_shutter_round = IconData(0xe059, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData camera_switch_image_round = IconData(0xe05a, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData camera_switch_round = IconData(0xe05b, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData cancel_outline_round = IconData(0xe05c, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData cancel_round = IconData(0xe05d, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData car_round = IconData(0xe05e, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData card_orientation_round = IconData(0xe05f, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData card_with_chip_round = IconData(0xe060, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData caret_down_round = IconData(0xe061, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData caret_left_round = IconData(0xe062, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData caret_right_round = IconData(0xe063, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData caret_sort_round = IconData(0xe064, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData caret_up_round = IconData(0xe065, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData cast_connected_round = IconData(0xe066, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData cast_round = IconData(0xe067, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData cellular_signal_round = IconData(0xe068, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData certificate_round = IconData(0xe069, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData certified_round = IconData(0xe06a, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData chain_round = IconData(0xe06b, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData chart_bar_round = IconData(0xe06c, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData chart_bubble_charts_round = IconData(0xe06d, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData chart_bubble_round = IconData(0xe06e, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData chart_doughnut_round = IconData(0xe06f, fontFamily: _familyRound, fontPackage: _package);
   static const IconData chart_filled_enterprise_round =
-      IconData(0xe076, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData chart_filled_round = IconData(0xe077, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData chart_gantt_round = IconData(0xe078, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData chart_line_predict_round = IconData(0xe079, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData chart_line_round = IconData(0xe07a, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData chart_line_stacked_round = IconData(0xe07b, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData chart_outline_round = IconData(0xe07c, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData chart_pie_charts_round = IconData(0xe07d, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData chart_pie_content_round = IconData(0xe07e, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData chart_pie_round = IconData(0xe07f, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData chart_scatter_plot_round = IconData(0xe080, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData chart_stacked_round = IconData(0xe081, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData chart_waterfall_round = IconData(0xe082, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData chat_bot_round = IconData(0xe083, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData chat_bubble_outline_round = IconData(0xe084, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData chat_bubble_round = IconData(0xe085, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData chat_message_read_round = IconData(0xe086, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData chat_message_unread_round = IconData(0xe087, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData chat_round = IconData(0xe088, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData chat_search_round = IconData(0xe089, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData check_box_empty_round = IconData(0xe08a, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData check_box_round = IconData(0xe08b, fontFamily: _familyRound, fontPackage: _package);
+      IconData(0xe070, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData chart_filled_round = IconData(0xe071, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData chart_gantt_round = IconData(0xe072, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData chart_line_predict_round = IconData(0xe073, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData chart_line_round = IconData(0xe074, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData chart_line_stacked_round = IconData(0xe075, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData chart_outline_round = IconData(0xe076, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData chart_pie_charts_round = IconData(0xe077, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData chart_pie_content_round = IconData(0xe078, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData chart_pie_round = IconData(0xe079, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData chart_scatter_plot_round = IconData(0xe07a, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData chart_stacked_round = IconData(0xe07b, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData chart_waterfall_round = IconData(0xe07c, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData chat_bot_round = IconData(0xe07d, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData chat_bubble_outline_round = IconData(0xe07e, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData chat_bubble_round = IconData(0xe07f, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData chat_message_read_round = IconData(0xe080, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData chat_message_unread_round = IconData(0xe081, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData chat_round = IconData(0xe082, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData chat_search_round = IconData(0xe083, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData check_box_empty_round = IconData(0xe084, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData check_box_round = IconData(0xe085, fontFamily: _familyRound, fontPackage: _package);
   static const IconData check_circle_outline_alt_round =
-      IconData(0xe08c, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData check_circle_outline_round = IconData(0xe08d, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData check_circle_round = IconData(0xe08e, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData check_mark_round = IconData(0xe08f, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData checklist_round = IconData(0xe090, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData chevron_left_round = IconData(0xe091, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData chevron_right_round = IconData(0xe092, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData choices_round = IconData(0xe093, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData clipboard_action_round = IconData(0xe094, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData clipboard_round = IconData(0xe095, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData clock_available_round = IconData(0xe096, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData clock_bid_round = IconData(0xe097, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData clock_edit_round = IconData(0xe098, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData clock_flexible_round = IconData(0xe099, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData clock_in_progress_round = IconData(0xe09a, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData clock_info_round = IconData(0xe09b, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData clock_missed_round = IconData(0xe09c, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData clock_on_round = IconData(0xe09d, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData clock_outline_round = IconData(0xe09e, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData clock_rollover_round = IconData(0xe09f, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData clock_round = IconData(0xe0a0, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData clock_segment_round = IconData(0xe0a1, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData clock_start_round = IconData(0xe0a2, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData clock_stop_round = IconData(0xe0a3, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData clock_switch_round = IconData(0xe0a4, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData clock_timer_round = IconData(0xe0a5, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData clock_upcoming_round = IconData(0xe0a6, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData close_round = IconData(0xe0a7, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData closed_caption_round = IconData(0xe0a8, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData cloud_connect_round = IconData(0xe0a9, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData cloud_done_round = IconData(0xe0aa, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData cloud_download_round = IconData(0xe0ab, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData cloud_off_round = IconData(0xe0ac, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData cloud_outline_round = IconData(0xe0ad, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData cloud_round = IconData(0xe0ae, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData cloud_upload_round = IconData(0xe0af, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData color_fill_round = IconData(0xe0b0, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData columns_round = IconData(0xe0b1, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData contactless_pay_round = IconData(0xe0b2, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData content_round = IconData(0xe0b3, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData contrast_image_round = IconData(0xe0b4, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData contrast_round = IconData(0xe0b5, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData conversation_round = IconData(0xe0b6, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData copy_file_round = IconData(0xe0b7, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData create_new_folder_round = IconData(0xe0b8, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData credit_card_round = IconData(0xe0b9, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData credit_card_swipe_round = IconData(0xe0ba, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData crop_round = IconData(0xe0bb, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData dark_mode_round = IconData(0xe0bc, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData dashboard_round = IconData(0xe0bd, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData data_wedge_round = IconData(0xe0be, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData delete_forever_round = IconData(0xe0bf, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData delete_outline_round = IconData(0xe0c0, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData delete_round = IconData(0xe0c1, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData design_tools_round = IconData(0xe0c2, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData desktop_round = IconData(0xe0c3, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData device_settings_round = IconData(0xe0c4, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData device_tracker_round = IconData(0xe0c5, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData devices_ecosystem_round = IconData(0xe0c6, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData devices_round = IconData(0xe0c7, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData dialpad_round = IconData(0xe0c8, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData direct_connect_round = IconData(0xe0c9, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData dislike_round = IconData(0xe0ca, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData distribute_horizontal_round = IconData(0xe0cb, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData distribute_vertical_round = IconData(0xe0cc, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData doc_attach_round = IconData(0xe0cd, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData document_round = IconData(0xe0ce, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData dollar_round = IconData(0xe0cf, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData download_round = IconData(0xe0d0, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData downloading_round = IconData(0xe0d1, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData drop_down_circle_round = IconData(0xe0d2, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData eas_round = IconData(0xe0d3, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData edit_border_round = IconData(0xe0d4, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData edit_round = IconData(0xe0d5, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData email_alt_round = IconData(0xe0d6, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData email_outline_round = IconData(0xe0d7, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData email_reply_all_round = IconData(0xe0d8, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData email_round = IconData(0xe0d9, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData emdk_round = IconData(0xe0da, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData end_call_round = IconData(0xe0db, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData enterprise_browser_round = IconData(0xe0dc, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData enterprise_connectors_round = IconData(0xe0dd, fontFamily: _familyRound, fontPackage: _package);
+      IconData(0xe086, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData check_circle_outline_round = IconData(0xe087, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData check_circle_round = IconData(0xe088, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData check_mark_round = IconData(0xe089, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData checklist_round = IconData(0xe08a, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData chevron_left_round = IconData(0xe08b, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData chevron_right_round = IconData(0xe08c, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData choices_round = IconData(0xe08d, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData clipboard_action_round = IconData(0xe08e, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData clipboard_round = IconData(0xe08f, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData clock_available_round = IconData(0xe090, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData clock_bid_round = IconData(0xe091, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData clock_edit_round = IconData(0xe092, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData clock_flexible_round = IconData(0xe093, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData clock_in_progress_round = IconData(0xe094, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData clock_info_round = IconData(0xe095, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData clock_missed_round = IconData(0xe096, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData clock_on_round = IconData(0xe097, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData clock_outline_round = IconData(0xe098, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData clock_rollover_round = IconData(0xe099, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData clock_round = IconData(0xe09a, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData clock_segment_round = IconData(0xe09b, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData clock_start_round = IconData(0xe09c, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData clock_stop_round = IconData(0xe09d, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData clock_switch_round = IconData(0xe09e, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData clock_timer_round = IconData(0xe09f, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData clock_upcoming_round = IconData(0xe0a0, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData close_round = IconData(0xe0a1, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData closed_caption_round = IconData(0xe0a2, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData cloud_done_round = IconData(0xe0a3, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData cloud_download_round = IconData(0xe0a4, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData cloud_off_round = IconData(0xe0a5, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData cloud_outline_round = IconData(0xe0a6, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData cloud_round = IconData(0xe0a7, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData cloud_upload_round = IconData(0xe0a8, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData color_fill_round = IconData(0xe0a9, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData columns_round = IconData(0xe0aa, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData contactless_pay_round = IconData(0xe0ab, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData content_round = IconData(0xe0ac, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData contrast_image_round = IconData(0xe0ad, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData contrast_round = IconData(0xe0ae, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData conversation_round = IconData(0xe0af, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData copy_file_round = IconData(0xe0b0, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData create_new_folder_round = IconData(0xe0b1, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData credit_card_round = IconData(0xe0b2, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData credit_card_swipe_round = IconData(0xe0b3, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData crop_round = IconData(0xe0b4, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData dark_mode_round = IconData(0xe0b5, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData dashboard_round = IconData(0xe0b6, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData delete_forever_round = IconData(0xe0b7, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData delete_outline_round = IconData(0xe0b8, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData delete_round = IconData(0xe0b9, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData desktop_round = IconData(0xe0ba, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData device_settings_round = IconData(0xe0bb, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData devices_ecosystem_round = IconData(0xe0bc, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData devices_round = IconData(0xe0bd, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData dialpad_round = IconData(0xe0be, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData dislike_round = IconData(0xe0bf, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData distribute_horizontal_round = IconData(0xe0c0, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData distribute_vertical_round = IconData(0xe0c1, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData doc_attach_round = IconData(0xe0c2, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData document_round = IconData(0xe0c3, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData dollar_round = IconData(0xe0c4, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData download_round = IconData(0xe0c5, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData downloading_round = IconData(0xe0c6, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData drop_down_circle_round = IconData(0xe0c7, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData eas_round = IconData(0xe0c8, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData edit_border_round = IconData(0xe0c9, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData edit_round = IconData(0xe0ca, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData email_alt_round = IconData(0xe0cb, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData email_outline_round = IconData(0xe0cc, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData email_reply_all_round = IconData(0xe0cd, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData email_round = IconData(0xe0ce, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData end_call_round = IconData(0xe0cf, fontFamily: _familyRound, fontPackage: _package);
   static const IconData enterprise_diagnostics_round =
-      IconData(0xe0de, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData enterprise_keyboard_round = IconData(0xe0df, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData environmental_round = IconData(0xe0e0, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData error_outline_round = IconData(0xe0e1, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData error_round = IconData(0xe0e2, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData ethernet_round = IconData(0xe0e3, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData exit_round = IconData(0xe0e4, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData expand_less_round = IconData(0xe0e5, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData expand_more_round = IconData(0xe0e6, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData eye_dropper_round = IconData(0xe0e7, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData eye_preview_round = IconData(0xe0e8, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData face_id_round = IconData(0xe0e9, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData facebook_round = IconData(0xe0ea, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData factory_round = IconData(0xe0eb, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData fast_forward_round = IconData(0xe0ec, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData fast_rewind_round = IconData(0xe0ed, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData file_round = IconData(0xe0ee, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData filter_alt_round = IconData(0xe0ef, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData filter_round = IconData(0xe0f0, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData finished_download_round = IconData(0xe0f1, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData first_page_round = IconData(0xe0f2, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData flag_round = IconData(0xe0f3, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData flight_mode_round = IconData(0xe0f4, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData flight_round = IconData(0xe0f5, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData flip_round = IconData(0xe0f6, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData folder_file_round = IconData(0xe0f7, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData folder_outline_round = IconData(0xe0f8, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData folder_round = IconData(0xe0f9, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData font_size_decrease_round = IconData(0xe0fa, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData font_size_increase_round = IconData(0xe0fb, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData format_shapes_round = IconData(0xe0fc, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData forward_round = IconData(0xe0fd, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData freezer_round = IconData(0xe0fe, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData full_screen_exit_round = IconData(0xe0ff, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData full_screen_round = IconData(0xe100, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData gif_round = IconData(0xe101, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData glossary_round = IconData(0xe102, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData gms_restricted_mode_round = IconData(0xe103, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData grid_off_round = IconData(0xe104, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData grid_on_round = IconData(0xe105, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData grid_view_round = IconData(0xe106, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData group_round = IconData(0xe107, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData groups_round = IconData(0xe108, fontFamily: _familyRound, fontPackage: _package);
+      IconData(0xe0d0, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData environmental_round = IconData(0xe0d1, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData error_outline_round = IconData(0xe0d2, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData error_round = IconData(0xe0d3, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData ethernet_round = IconData(0xe0d4, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData exit_round = IconData(0xe0d5, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData expand_less_round = IconData(0xe0d6, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData expand_more_round = IconData(0xe0d7, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData eye_dropper_round = IconData(0xe0d8, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData eye_preview_round = IconData(0xe0d9, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData face_id_round = IconData(0xe0da, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData facebook_round = IconData(0xe0db, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData factory_round = IconData(0xe0dc, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData fast_forward_round = IconData(0xe0dd, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData fast_rewind_round = IconData(0xe0de, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData file_round = IconData(0xe0df, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData filter_alt_round = IconData(0xe0e0, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData filter_round = IconData(0xe0e1, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData finished_download_round = IconData(0xe0e2, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData first_page_round = IconData(0xe0e3, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData flag_round = IconData(0xe0e4, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData flight_mode_round = IconData(0xe0e5, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData flight_round = IconData(0xe0e6, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData flip_round = IconData(0xe0e7, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData folder_file_round = IconData(0xe0e8, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData folder_outline_round = IconData(0xe0e9, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData folder_round = IconData(0xe0ea, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData font_size_decrease_round = IconData(0xe0eb, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData font_size_increase_round = IconData(0xe0ec, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData format_shapes_round = IconData(0xe0ed, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData forward_round = IconData(0xe0ee, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData freezer_round = IconData(0xe0ef, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData full_screen_exit_round = IconData(0xe0f0, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData full_screen_round = IconData(0xe0f1, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData gif_round = IconData(0xe0f2, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData glossary_round = IconData(0xe0f3, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData grid_off_round = IconData(0xe0f4, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData grid_on_round = IconData(0xe0f5, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData grid_view_round = IconData(0xe0f6, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData group_round = IconData(0xe0f7, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData groups_round = IconData(0xe0f8, fontFamily: _familyRound, fontPackage: _package);
   static const IconData hamburger_menu_navigation_rail_round =
-      IconData(0xe109, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData hamburger_menu_round = IconData(0xe10a, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData hamburger_menu_thick_round = IconData(0xe10b, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData hand_round = IconData(0xe10c, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData happy_round = IconData(0xe10d, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData hdmi_round = IconData(0xe10e, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData hdr_round = IconData(0xe10f, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData headphones_round = IconData(0xe110, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData headset_round = IconData(0xe111, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData help_outline_round = IconData(0xe112, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData help_round = IconData(0xe113, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData history_round = IconData(0xe114, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData home_round = IconData(0xe115, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData hourglass_round = IconData(0xe116, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData how_do_i_round = IconData(0xe117, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData image_library_round = IconData(0xe118, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData image_round = IconData(0xe119, fontFamily: _familyRound, fontPackage: _package);
+      IconData(0xe0f9, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData hamburger_menu_round = IconData(0xe0fa, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData hamburger_menu_thick_round = IconData(0xe0fb, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData hand_round = IconData(0xe0fc, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData happy_round = IconData(0xe0fd, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData hdmi_round = IconData(0xe0fe, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData hdr_round = IconData(0xe0ff, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData headphones_round = IconData(0xe100, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData headset_round = IconData(0xe101, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData help_outline_round = IconData(0xe102, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData help_round = IconData(0xe103, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData history_round = IconData(0xe104, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData home_round = IconData(0xe105, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData hourglass_round = IconData(0xe106, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData how_do_i_round = IconData(0xe107, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData image_library_round = IconData(0xe108, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData image_round = IconData(0xe109, fontFamily: _familyRound, fontPackage: _package);
   static const IconData important_notification_round =
-      IconData(0xe11a, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData inbox_round = IconData(0xe11b, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData indent_decrease_round = IconData(0xe11c, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData indent_increase_round = IconData(0xe11d, fontFamily: _familyRound, fontPackage: _package);
+      IconData(0xe10a, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData inbox_round = IconData(0xe10b, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData indent_decrease_round = IconData(0xe10c, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData indent_increase_round = IconData(0xe10d, fontFamily: _familyRound, fontPackage: _package);
   static const IconData indeterminate_check_box_round =
-      IconData(0xe11e, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData info_round = IconData(0xe11f, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData instagram_round = IconData(0xe120, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData intelligent_document_capture_round =
-      IconData(0xe121, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData ios_share_round = IconData(0xe122, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData iso_round = IconData(0xe123, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData issue_audit_round = IconData(0xe124, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData italic_round = IconData(0xe125, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData jpg_attach_round = IconData(0xe126, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData justify_round = IconData(0xe127, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData keyboard_round = IconData(0xe128, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData label_plus_round = IconData(0xe129, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData label_round = IconData(0xe12a, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData laptop_round = IconData(0xe12b, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData last_page_round = IconData(0xe12c, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData layers_round = IconData(0xe12d, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData life_guard_round = IconData(0xe12e, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData light_mode_round = IconData(0xe12f, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData light_rail_train_round = IconData(0xe130, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData lightbulb_round = IconData(0xe131, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData like_round = IconData(0xe132, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData line_spacing_round = IconData(0xe133, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData link_add_round = IconData(0xe134, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData link_os_round = IconData(0xe135, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData link_round = IconData(0xe136, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData linkedin_round = IconData(0xe137, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData list_alt_round = IconData(0xe138, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData list_bullet_contained_round = IconData(0xe139, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData list_feedback_round = IconData(0xe13a, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData list_form_round = IconData(0xe13b, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData list_round = IconData(0xe13c, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData local_shipping_round = IconData(0xe13d, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData location_off_round = IconData(0xe13e, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData location_point_round = IconData(0xe13f, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData location_round = IconData(0xe140, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData lock_alt_round = IconData(0xe141, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData lock_round = IconData(0xe142, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData lock_undo_round = IconData(0xe143, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData log_in_round = IconData(0xe144, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData log_out_round = IconData(0xe145, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData love_outline_round = IconData(0xe146, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData love_round = IconData(0xe147, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData maintenance_round = IconData(0xe148, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData map_round = IconData(0xe149, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData mdm_connectors_round = IconData(0xe14a, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData mdm_toolkit_round = IconData(0xe14b, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData meal_round = IconData(0xe14c, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData medium_round = IconData(0xe14d, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData memory_round = IconData(0xe14e, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData message_round = IconData(0xe14f, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData microphone_off_round = IconData(0xe150, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData microphone_outline_round = IconData(0xe151, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData microphone_round = IconData(0xe152, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData mobile_friendly_round = IconData(0xe153, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData mobility_dna_round = IconData(0xe154, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData mobility_security_round = IconData(0xe155, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData money_euro_round = IconData(0xe156, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData money_pound_round = IconData(0xe157, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData money_usd_round = IconData(0xe158, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData monitor_round = IconData(0xe159, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData more_horizontal_round = IconData(0xe15a, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData more_vertical_round = IconData(0xe15b, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData multi_code_data_formatting_round =
-      IconData(0xe15c, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData mx_round = IconData(0xe15d, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData my_location_round = IconData(0xe15e, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData navigate_round = IconData(0xe15f, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData navigation_round = IconData(0xe160, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData near_me_round = IconData(0xe161, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData network_signal_round = IconData(0xe162, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData new_chat_round = IconData(0xe163, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData nfc_round = IconData(0xe164, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData night_round = IconData(0xe165, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData no_color_round = IconData(0xe166, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData note_round = IconData(0xe167, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData notifications_off_round = IconData(0xe168, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData numbered_list_round = IconData(0xe169, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData ocr_round = IconData(0xe16a, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData oem_config_round = IconData(0xe16b, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData open_in_full_round = IconData(0xe16c, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData open_in_new_window_round = IconData(0xe16d, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData open_new_off_round = IconData(0xe16e, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData page_height_round = IconData(0xe16f, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData page_rotate_round = IconData(0xe170, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData page_width_round = IconData(0xe171, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData pairing_solutions_round = IconData(0xe172, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData palette_round = IconData(0xe173, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData partner_round = IconData(0xe174, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData pause_circle_round = IconData(0xe175, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData pause_round = IconData(0xe176, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData pdf_attach_round = IconData(0xe177, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData pdf_direct_round = IconData(0xe178, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData pending_round = IconData(0xe179, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData person_admin_round = IconData(0xe17a, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData person_assign_round = IconData(0xe17b, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData person_clock_round = IconData(0xe17c, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData person_info_round = IconData(0xe17d, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData person_manager_round = IconData(0xe17e, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData person_move_round = IconData(0xe17f, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData person_outline_round = IconData(0xe180, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData person_round = IconData(0xe181, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData person_search_round = IconData(0xe182, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData person_swap_round = IconData(0xe183, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData person_walk_round = IconData(0xe184, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData phone_android_round = IconData(0xe185, fontFamily: _familyRound, fontPackage: _package);
+      IconData(0xe10e, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData info_round = IconData(0xe10f, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData instagram_round = IconData(0xe110, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData ios_share_round = IconData(0xe111, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData iso_round = IconData(0xe112, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData issue_audit_round = IconData(0xe113, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData italic_round = IconData(0xe114, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData jpg_attach_round = IconData(0xe115, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData justify_round = IconData(0xe116, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData keyboard_round = IconData(0xe117, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData label_round = IconData(0xe118, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData laptop_round = IconData(0xe119, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData last_page_round = IconData(0xe11a, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData layers_round = IconData(0xe11b, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData light_mode_round = IconData(0xe11c, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData light_rail_train_round = IconData(0xe11d, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData lightbulb_round = IconData(0xe11e, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData like_round = IconData(0xe11f, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData line_spacing_round = IconData(0xe120, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData link_add_round = IconData(0xe121, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData link_round = IconData(0xe122, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData linkedin_round = IconData(0xe123, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData list_alt_round = IconData(0xe124, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData list_bullet_contained_round = IconData(0xe125, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData list_feedback_round = IconData(0xe126, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData list_form_round = IconData(0xe127, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData list_round = IconData(0xe128, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData local_shipping_round = IconData(0xe129, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData location_off_round = IconData(0xe12a, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData location_point_round = IconData(0xe12b, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData location_round = IconData(0xe12c, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData lock_alt_round = IconData(0xe12d, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData lock_round = IconData(0xe12e, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData lock_undo_round = IconData(0xe12f, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData log_in_round = IconData(0xe130, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData log_out_round = IconData(0xe131, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData love_outline_round = IconData(0xe132, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData love_round = IconData(0xe133, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData maintenance_round = IconData(0xe134, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData map_round = IconData(0xe135, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData meal_round = IconData(0xe136, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData medium_round = IconData(0xe137, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData memory_round = IconData(0xe138, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData message_round = IconData(0xe139, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData microphone_off_round = IconData(0xe13a, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData microphone_outline_round = IconData(0xe13b, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData microphone_round = IconData(0xe13c, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData mobile_friendly_round = IconData(0xe13d, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData money_euro_round = IconData(0xe13e, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData money_pound_round = IconData(0xe13f, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData money_usd_round = IconData(0xe140, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData monitor_round = IconData(0xe141, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData more_horizontal_round = IconData(0xe142, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData more_vertical_round = IconData(0xe143, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData my_location_round = IconData(0xe144, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData navigate_round = IconData(0xe145, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData navigation_round = IconData(0xe146, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData near_me_round = IconData(0xe147, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData network_signal_round = IconData(0xe148, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData new_chat_round = IconData(0xe149, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData nfc_round = IconData(0xe14a, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData night_round = IconData(0xe14b, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData no_color_round = IconData(0xe14c, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData note_round = IconData(0xe14d, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData notifications_off_round = IconData(0xe14e, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData numbered_list_round = IconData(0xe14f, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData open_in_full_round = IconData(0xe150, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData open_in_new_window_round = IconData(0xe151, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData open_new_off_round = IconData(0xe152, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData page_height_round = IconData(0xe153, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData page_rotate_round = IconData(0xe154, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData page_width_round = IconData(0xe155, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData palette_round = IconData(0xe156, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData partner_round = IconData(0xe157, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData pause_circle_round = IconData(0xe158, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData pause_round = IconData(0xe159, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData pdf_attach_round = IconData(0xe15a, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData pending_round = IconData(0xe15b, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData person_admin_round = IconData(0xe15c, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData person_assign_round = IconData(0xe15d, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData person_clock_round = IconData(0xe15e, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData person_info_round = IconData(0xe15f, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData person_manager_round = IconData(0xe160, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData person_move_round = IconData(0xe161, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData person_outline_round = IconData(0xe162, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData person_round = IconData(0xe163, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData person_search_round = IconData(0xe164, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData person_swap_round = IconData(0xe165, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData person_walk_round = IconData(0xe166, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData phone_android_round = IconData(0xe167, fontFamily: _familyRound, fontPackage: _package);
   static const IconData phone_bluetooth_speaker_round =
-      IconData(0xe186, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData phone_in_talk_round = IconData(0xe187, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData phone_iphone_round = IconData(0xe188, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData phone_round = IconData(0xe189, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData phonelink_round = IconData(0xe18a, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData phrase_round = IconData(0xe18b, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData pin_round = IconData(0xe18c, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData place_round = IconData(0xe18d, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData planogram_round = IconData(0xe18e, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData play_circle_round = IconData(0xe18f, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData play_outline_round = IconData(0xe190, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData play_round = IconData(0xe191, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData png_attach_round = IconData(0xe192, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData point_gift_round = IconData(0xe193, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData point_heart_round = IconData(0xe194, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData point_money_round = IconData(0xe195, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData point_star_round = IconData(0xe196, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData point_token_round = IconData(0xe197, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData portrait_round = IconData(0xe198, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData power_precision_round = IconData(0xe199, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData ppt_attach_round = IconData(0xe19a, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData preferred_symbol_round = IconData(0xe19b, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData price_round = IconData(0xe19c, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData print_secure_round = IconData(0xe19d, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData print_station_round = IconData(0xe19e, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData printer_profile_manager_round =
-      IconData(0xe19f, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData printer_round = IconData(0xe1a0, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData priority_round = IconData(0xe1a1, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData pro_round = IconData(0xe1a2, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData productivity_apps_round = IconData(0xe1a3, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData przm_round = IconData(0xe1a4, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData ptt_round = IconData(0xe1a5, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData publish_round = IconData(0xe1a6, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData push_pin_round = IconData(0xe1a7, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData qr_code_round = IconData(0xe1a8, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData queue_round = IconData(0xe1a9, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData radio_button_checked_round = IconData(0xe1aa, fontFamily: _familyRound, fontPackage: _package);
+      IconData(0xe168, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData phone_in_talk_round = IconData(0xe169, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData phone_iphone_round = IconData(0xe16a, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData phone_round = IconData(0xe16b, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData phonelink_round = IconData(0xe16c, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData phrase_round = IconData(0xe16d, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData pin_round = IconData(0xe16e, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData place_round = IconData(0xe16f, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData planogram_round = IconData(0xe170, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData play_circle_round = IconData(0xe171, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData play_outline_round = IconData(0xe172, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData play_round = IconData(0xe173, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData png_attach_round = IconData(0xe174, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData point_gift_round = IconData(0xe175, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData point_heart_round = IconData(0xe176, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData point_money_round = IconData(0xe177, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData point_star_round = IconData(0xe178, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData point_token_round = IconData(0xe179, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData portrait_round = IconData(0xe17a, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData ppt_attach_round = IconData(0xe17b, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData price_round = IconData(0xe17c, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData printer_round = IconData(0xe17d, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData priority_round = IconData(0xe17e, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData pro_round = IconData(0xe17f, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData productivity_apps_round = IconData(0xe180, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData ptt_round = IconData(0xe181, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData publish_round = IconData(0xe182, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData push_pin_round = IconData(0xe183, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData qr_code_round = IconData(0xe184, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData queue_round = IconData(0xe185, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData radio_button_checked_round = IconData(0xe186, fontFamily: _familyRound, fontPackage: _package);
   static const IconData radio_button_unchecked_round =
-      IconData(0xe1ab, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData react_add_round = IconData(0xe1ac, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData react_thumbsup_round = IconData(0xe1ad, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData recall_round = IconData(0xe1ae, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData receipt_round = IconData(0xe1af, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData recording_round = IconData(0xe1b0, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData redo_round = IconData(0xe1b1, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData refresh_round = IconData(0xe1b2, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData remote_control_round = IconData(0xe1b3, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData remote_diagnostics_round = IconData(0xe1b4, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData remote_management_round = IconData(0xe1b5, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData remove_box_round = IconData(0xe1b6, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData remove_circle_outline_round = IconData(0xe1b7, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData remove_circle_round = IconData(0xe1b8, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData remove_group_round = IconData(0xe1b9, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData remove_person_round = IconData(0xe1ba, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData remove_round = IconData(0xe1bb, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData renew_round = IconData(0xe1bc, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData reorder_round = IconData(0xe1bd, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData repeat_round = IconData(0xe1be, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData replay_round = IconData(0xe1bf, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData reply_round = IconData(0xe1c0, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData report_round = IconData(0xe1c1, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData restart_alt_round = IconData(0xe1c2, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData review_round = IconData(0xe1c3, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData road_map_round = IconData(0xe1c4, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData rotate_left_round = IconData(0xe1c5, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData rotate_right_round = IconData(0xe1c6, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData rss_feed_round = IconData(0xe1c7, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData rules_round = IconData(0xe1c8, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData rx_round = IconData(0xe1c9, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData sad_round = IconData(0xe1ca, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData satisfied_round = IconData(0xe1cb, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData save_alt_round = IconData(0xe1cc, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData save_content_round = IconData(0xe1cd, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData save_round = IconData(0xe1ce, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData scan_and_pair_round = IconData(0xe1cf, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData scan_rate_round = IconData(0xe1d0, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData scan_speed_analytics_round = IconData(0xe1d1, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData scan_to_connect_round = IconData(0xe1d2, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData scanner_control_application_round =
-      IconData(0xe1d3, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData scanner_round = IconData(0xe1d4, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData schedule_round = IconData(0xe1d5, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData school_round = IconData(0xe1d6, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData screen_rotation_round = IconData(0xe1d7, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData sd_card_round = IconData(0xe1d8, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData search_round = IconData(0xe1d9, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData security_check_round = IconData(0xe1da, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData security_round = IconData(0xe1db, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData send_round = IconData(0xe1dc, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData setting_tool_round = IconData(0xe1dd, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData settings_round = IconData(0xe1de, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData shape_recognition_round = IconData(0xe1df, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData share_round = IconData(0xe1e0, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData shared_folder_round = IconData(0xe1e1, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData ship_round = IconData(0xe1e2, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData sim_card_round = IconData(0xe1e3, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData simulscan_round = IconData(0xe1e4, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData skip_next_round = IconData(0xe1e5, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData skip_previous_round = IconData(0xe1e6, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData slide_show_round = IconData(0xe1e7, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData smart_phone_round = IconData(0xe1e8, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData smart_te_lite_round = IconData(0xe1e9, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData smart_te_round = IconData(0xe1ea, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData smart_tek_round = IconData(0xe1eb, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData smartdex_round = IconData(0xe1ec, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData sms_round = IconData(0xe1ed, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData snooze_round = IconData(0xe1ee, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData solutions_round = IconData(0xe1ef, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData sort_content_round = IconData(0xe1f0, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData sort_round = IconData(0xe1f1, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData speaker_round = IconData(0xe1f2, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData stagenow_round = IconData(0xe1f3, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData star_half_round = IconData(0xe1f4, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData star_outline_round = IconData(0xe1f5, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData star_round = IconData(0xe1f6, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData steps_round = IconData(0xe1f7, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData sticker_round = IconData(0xe1f8, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData stop_circle_round = IconData(0xe1f9, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData stop_round = IconData(0xe1fa, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData store_release_round = IconData(0xe1fb, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData store_round = IconData(0xe1fc, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData store_swap_round = IconData(0xe1fd, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData store_transfer_round = IconData(0xe1fe, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData straighten_round = IconData(0xe1ff, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData strategy_round = IconData(0xe200, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData strikethrough_round = IconData(0xe201, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData subscribe_round = IconData(0xe202, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData swap_round = IconData(0xe203, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData swipe_assist_round = IconData(0xe204, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData switch_round = IconData(0xe205, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData switch_user_round = IconData(0xe206, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData sync_action_round = IconData(0xe207, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData sync_disabled_round = IconData(0xe208, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData sync_round = IconData(0xe209, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData table_round = IconData(0xe20a, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData tablet_mac_round = IconData(0xe20b, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData tablet_round = IconData(0xe20c, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData tag_enterprise_round = IconData(0xe20d, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData tag_round = IconData(0xe20e, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData tap_to_pay_round = IconData(0xe20f, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData taxi_round = IconData(0xe210, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData tekspeech_pro_round = IconData(0xe211, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData text_color_round = IconData(0xe212, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData tiers_round = IconData(0xe213, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData timecard_approve_round = IconData(0xe214, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData timecard_round = IconData(0xe215, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData timecard_warning_round = IconData(0xe216, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData timer_round = IconData(0xe217, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData toggle_off_round = IconData(0xe218, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData toggle_on_round = IconData(0xe219, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData touch_round = IconData(0xe21a, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData train_round = IconData(0xe21b, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData trending_down_round = IconData(0xe21c, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData trending_up_round = IconData(0xe21d, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData tv_round = IconData(0xe21e, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData twitter_round = IconData(0xe21f, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData type_round = IconData(0xe220, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData uhf_rfid_round = IconData(0xe221, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData underline_round = IconData(0xe222, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData undo_round = IconData(0xe223, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData unfold_less_round = IconData(0xe224, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData unfold_more_round = IconData(0xe225, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData unlock_alt_round = IconData(0xe226, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData unlock_round = IconData(0xe227, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData unsubscribe_round = IconData(0xe228, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData update_round = IconData(0xe229, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData upload_file_round = IconData(0xe22a, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData upload_round = IconData(0xe22b, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData usb_alt_device_round = IconData(0xe22c, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData usb_alt_round = IconData(0xe22d, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData usb_round = IconData(0xe22e, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData user_circle_round = IconData(0xe22f, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData user_minor_round = IconData(0xe230, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData user_round = IconData(0xe231, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData user_settings_round = IconData(0xe232, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData vacation_round = IconData(0xe233, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData verified_round = IconData(0xe234, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData very_satisfied_round = IconData(0xe235, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData video_camera_round = IconData(0xe236, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData video_off_round = IconData(0xe237, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData video_play_round = IconData(0xe238, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData video_round = IconData(0xe239, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData virtual_devices_round = IconData(0xe23a, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData virtual_tether_round = IconData(0xe23b, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData visibility_off_round = IconData(0xe23c, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData visibility_round = IconData(0xe23d, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData visibility_services_round = IconData(0xe23e, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData voice_wedge_round = IconData(0xe23f, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData volte_round = IconData(0xe240, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData volume_down_round = IconData(0xe241, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData volume_mute_round = IconData(0xe242, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData volume_off_round = IconData(0xe243, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData volume_up_round = IconData(0xe244, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData warning_outline_round = IconData(0xe245, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData warning_round = IconData(0xe246, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData watch_round = IconData(0xe247, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData wb_image_round = IconData(0xe248, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData wb_round = IconData(0xe249, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData workforce_connect_round = IconData(0xe24a, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData workstation_connect_round = IconData(0xe24b, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData world_action_round = IconData(0xe24c, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData world_round = IconData(0xe24d, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData write_round = IconData(0xe24e, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData youtube_round = IconData(0xe24f, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData zebra_designer_round = IconData(0xe250, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData zebra_onecare_round = IconData(0xe251, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData zebra_setup_utility_round = IconData(0xe252, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData zero_scale_round = IconData(0xe253, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData zero_touch_round = IconData(0xe254, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData zoom_in_map_round = IconData(0xe255, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData zoom_in_round = IconData(0xe256, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData zoom_out_map_round = IconData(0xe257, fontFamily: _familyRound, fontPackage: _package);
-  static const IconData zoom_out_round = IconData(0xe258, fontFamily: _familyRound, fontPackage: _package);
+      IconData(0xe187, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData react_add_round = IconData(0xe188, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData react_thumbsup_round = IconData(0xe189, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData recall_round = IconData(0xe18a, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData receipt_round = IconData(0xe18b, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData recording_round = IconData(0xe18c, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData redo_round = IconData(0xe18d, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData refresh_round = IconData(0xe18e, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData remove_box_round = IconData(0xe18f, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData remove_circle_outline_round = IconData(0xe190, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData remove_circle_round = IconData(0xe191, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData remove_group_round = IconData(0xe192, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData remove_person_round = IconData(0xe193, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData remove_round = IconData(0xe194, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData renew_round = IconData(0xe195, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData reorder_round = IconData(0xe196, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData repeat_round = IconData(0xe197, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData replay_round = IconData(0xe198, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData reply_round = IconData(0xe199, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData report_round = IconData(0xe19a, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData restart_alt_round = IconData(0xe19b, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData review_round = IconData(0xe19c, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData road_map_round = IconData(0xe19d, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData rotate_left_round = IconData(0xe19e, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData rotate_right_round = IconData(0xe19f, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData rss_feed_round = IconData(0xe1a0, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData rules_round = IconData(0xe1a1, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData sad_round = IconData(0xe1a2, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData satisfied_round = IconData(0xe1a3, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData save_alt_round = IconData(0xe1a4, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData save_content_round = IconData(0xe1a5, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData save_round = IconData(0xe1a6, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData scan_rate_round = IconData(0xe1a7, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData scanner_round = IconData(0xe1a8, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData schedule_round = IconData(0xe1a9, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData school_round = IconData(0xe1aa, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData screen_rotation_round = IconData(0xe1ab, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData sd_card_round = IconData(0xe1ac, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData search_round = IconData(0xe1ad, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData security_check_round = IconData(0xe1ae, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData security_round = IconData(0xe1af, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData send_round = IconData(0xe1b0, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData settings_round = IconData(0xe1b1, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData shape_recognition_round = IconData(0xe1b2, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData share_round = IconData(0xe1b3, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData shared_folder_round = IconData(0xe1b4, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData ship_round = IconData(0xe1b5, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData sim_card_round = IconData(0xe1b6, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData skip_next_round = IconData(0xe1b7, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData skip_previous_round = IconData(0xe1b8, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData slide_show_round = IconData(0xe1b9, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData smart_phone_round = IconData(0xe1ba, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData sms_round = IconData(0xe1bb, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData snooze_round = IconData(0xe1bc, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData solutions_round = IconData(0xe1bd, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData sort_content_round = IconData(0xe1be, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData sort_round = IconData(0xe1bf, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData speaker_round = IconData(0xe1c0, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData star_half_round = IconData(0xe1c1, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData star_outline_round = IconData(0xe1c2, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData star_round = IconData(0xe1c3, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData steps_round = IconData(0xe1c4, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData sticker_round = IconData(0xe1c5, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData stop_circle_round = IconData(0xe1c6, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData stop_round = IconData(0xe1c7, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData store_release_round = IconData(0xe1c8, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData store_round = IconData(0xe1c9, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData store_swap_round = IconData(0xe1ca, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData store_transfer_round = IconData(0xe1cb, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData straighten_round = IconData(0xe1cc, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData strategy_round = IconData(0xe1cd, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData strikethrough_round = IconData(0xe1ce, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData subscribe_round = IconData(0xe1cf, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData swap_round = IconData(0xe1d0, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData switch_round = IconData(0xe1d1, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData switch_user_round = IconData(0xe1d2, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData sync_action_round = IconData(0xe1d3, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData sync_disabled_round = IconData(0xe1d4, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData sync_round = IconData(0xe1d5, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData table_round = IconData(0xe1d6, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData tablet_mac_round = IconData(0xe1d7, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData tablet_round = IconData(0xe1d8, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData tag_enterprise_round = IconData(0xe1d9, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData tag_round = IconData(0xe1da, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData tap_to_pay_round = IconData(0xe1db, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData taxi_round = IconData(0xe1dc, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData text_color_round = IconData(0xe1dd, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData tiers_round = IconData(0xe1de, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData timecard_approve_round = IconData(0xe1df, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData timecard_round = IconData(0xe1e0, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData timecard_warning_round = IconData(0xe1e1, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData timer_round = IconData(0xe1e2, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData toggle_off_round = IconData(0xe1e3, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData toggle_on_round = IconData(0xe1e4, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData touch_round = IconData(0xe1e5, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData train_round = IconData(0xe1e6, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData trending_down_round = IconData(0xe1e7, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData trending_up_round = IconData(0xe1e8, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData tv_round = IconData(0xe1e9, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData twitter_round = IconData(0xe1ea, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData type_round = IconData(0xe1eb, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData uhf_rfid_round = IconData(0xe1ec, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData underline_round = IconData(0xe1ed, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData undo_round = IconData(0xe1ee, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData unfold_less_round = IconData(0xe1ef, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData unfold_more_round = IconData(0xe1f0, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData unlock_alt_round = IconData(0xe1f1, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData unlock_round = IconData(0xe1f2, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData unsubscribe_round = IconData(0xe1f3, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData update_round = IconData(0xe1f4, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData upload_file_round = IconData(0xe1f5, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData upload_round = IconData(0xe1f6, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData usb_alt_device_round = IconData(0xe1f7, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData usb_alt_round = IconData(0xe1f8, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData usb_round = IconData(0xe1f9, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData user_circle_round = IconData(0xe1fa, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData user_minor_round = IconData(0xe1fb, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData user_round = IconData(0xe1fc, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData user_settings_round = IconData(0xe1fd, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData vacation_round = IconData(0xe1fe, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData verified_round = IconData(0xe1ff, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData very_satisfied_round = IconData(0xe200, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData video_camera_round = IconData(0xe201, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData video_off_round = IconData(0xe202, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData video_play_round = IconData(0xe203, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData video_round = IconData(0xe204, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData visibility_off_round = IconData(0xe205, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData visibility_round = IconData(0xe206, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData volte_round = IconData(0xe207, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData volume_down_round = IconData(0xe208, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData volume_mute_round = IconData(0xe209, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData volume_off_round = IconData(0xe20a, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData volume_up_round = IconData(0xe20b, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData warning_outline_round = IconData(0xe20c, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData warning_round = IconData(0xe20d, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData watch_round = IconData(0xe20e, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData wb_image_round = IconData(0xe20f, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData wb_round = IconData(0xe210, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData world_action_round = IconData(0xe211, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData world_round = IconData(0xe212, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData write_round = IconData(0xe213, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData youtube_round = IconData(0xe214, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData zero_scale_round = IconData(0xe215, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData zoom_in_map_round = IconData(0xe216, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData zoom_in_round = IconData(0xe217, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData zoom_out_map_round = IconData(0xe218, fontFamily: _familyRound, fontPackage: _package);
+  static const IconData zoom_out_round = IconData(0xe219, fontFamily: _familyRound, fontPackage: _package);
 
-  /// Sharp Icons
+  // Sharp Icons
   static const IconData activity_sharp = IconData(0xe001, fontFamily: _familySharp, fontPackage: _package);
   static const IconData add_alert_sharp = IconData(0xe002, fontFamily: _familySharp, fontPackage: _package);
   static const IconData add_box_sharp = IconData(0xe003, fontFamily: _familySharp, fontPackage: _package);
@@ -654,593 +590,526 @@ class ZetaIcons {
   static const IconData android_sharp = IconData(0xe01a, fontFamily: _familySharp, fontPackage: _package);
   static const IconData antenna_sharp = IconData(0xe01b, fontFamily: _familySharp, fontPackage: _package);
   static const IconData app_edit_sharp = IconData(0xe01c, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData appgallery_sharp = IconData(0xe01d, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData application_analytics_sharp = IconData(0xe01e, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData apps_sharp = IconData(0xe01f, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData ar_sharp = IconData(0xe020, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData arrow_back_sharp = IconData(0xe021, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData arrow_down_sharp = IconData(0xe022, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData arrow_forward_sharp = IconData(0xe023, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData arrow_up_sharp = IconData(0xe024, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData asset_tracker_lite_sharp = IconData(0xe025, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData attachment_sharp = IconData(0xe026, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData audio_sharp = IconData(0xe027, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData audit_activity_sharp = IconData(0xe028, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData auto_delete_sharp = IconData(0xe029, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData auto_sharp = IconData(0xe02a, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData awb_sharp = IconData(0xe02b, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData backspace_sharp = IconData(0xe02c, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData bad_mood_sharp = IconData(0xe02d, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData barcode_bluetooth_sharp = IconData(0xe02e, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData barcode_done_sharp = IconData(0xe02f, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData barcode_image_scan_sharp = IconData(0xe030, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData barcode_qr_code_sharp = IconData(0xe031, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData barcode_scanner_down_sharp = IconData(0xe032, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData barcode_settings_sharp = IconData(0xe033, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData barcode_sharp = IconData(0xe034, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData basket_sharp = IconData(0xe035, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData battery_alert_sharp = IconData(0xe036, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData battery_charging_sharp = IconData(0xe037, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData battery_sharp = IconData(0xe038, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData block_content_sharp = IconData(0xe039, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData block_sharp = IconData(0xe03a, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData blog_sharp = IconData(0xe03b, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData blood_bag_plus_sharp = IconData(0xe03c, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData bluetooth_disabled_sharp = IconData(0xe03d, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData bluetooth_management_sharp = IconData(0xe03e, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData bluetooth_searching_sharp = IconData(0xe03f, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData bluetooth_sharp = IconData(0xe040, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData bold_sharp = IconData(0xe041, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData bookmark_outline_sharp = IconData(0xe042, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData bookmark_sharp = IconData(0xe043, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData brightness_sharp = IconData(0xe044, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData broadcast_sharp = IconData(0xe045, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData browser_print_sharp = IconData(0xe046, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData build_sharp = IconData(0xe047, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData building_sharp = IconData(0xe048, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData bullet_list_sharp = IconData(0xe049, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData bus_sharp = IconData(0xe04a, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData cached_sharp = IconData(0xe04b, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData cafe_sharp = IconData(0xe04c, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData calculator_sharp = IconData(0xe04d, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData calendar_3_day_sharp = IconData(0xe04e, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData calendar_alt_1_sharp = IconData(0xe04f, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData calendar_alt_2_sharp = IconData(0xe050, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData calendar_available_sharp = IconData(0xe051, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData calendar_day_sharp = IconData(0xe052, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData calendar_edit_sharp = IconData(0xe053, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData calendar_gantt_sharp = IconData(0xe054, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData calendar_monthly_sharp = IconData(0xe055, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData calendar_next_sharp = IconData(0xe056, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData calendar_range_sharp = IconData(0xe057, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData calendar_rollover_sharp = IconData(0xe058, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData calendar_sharp = IconData(0xe059, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData calendar_unavailable_sharp = IconData(0xe05a, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData calendar_weekly_sharp = IconData(0xe05b, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData calendar_yearly_sharp = IconData(0xe05c, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData call_back_sharp = IconData(0xe05d, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData camera_sharp = IconData(0xe05e, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData camera_shutter_sharp = IconData(0xe05f, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData camera_switch_image_sharp = IconData(0xe060, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData camera_switch_sharp = IconData(0xe061, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData cancel_outline_sharp = IconData(0xe062, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData cancel_sharp = IconData(0xe063, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData car_sharp = IconData(0xe064, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData card_orientation_sharp = IconData(0xe065, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData card_with_chip_sharp = IconData(0xe066, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData caret_down_sharp = IconData(0xe067, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData caret_left_sharp = IconData(0xe068, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData caret_right_sharp = IconData(0xe069, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData caret_sort_sharp = IconData(0xe06a, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData caret_up_sharp = IconData(0xe06b, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData cast_connected_sharp = IconData(0xe06c, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData cast_sharp = IconData(0xe06d, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData cellular_signal_sharp = IconData(0xe06e, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData certificate_sharp = IconData(0xe06f, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData certified_sharp = IconData(0xe070, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData chain_sharp = IconData(0xe071, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData chart_bar_sharp = IconData(0xe072, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData chart_bubble_charts_sharp = IconData(0xe073, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData chart_bubble_sharp = IconData(0xe074, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData chart_doughnut_sharp = IconData(0xe075, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData apps_sharp = IconData(0xe01d, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData ar_sharp = IconData(0xe01e, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData arrow_back_sharp = IconData(0xe01f, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData arrow_down_sharp = IconData(0xe020, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData arrow_forward_sharp = IconData(0xe021, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData arrow_up_sharp = IconData(0xe022, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData attachment_sharp = IconData(0xe023, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData audio_sharp = IconData(0xe024, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData audit_activity_sharp = IconData(0xe025, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData auto_delete_sharp = IconData(0xe026, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData auto_sharp = IconData(0xe027, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData awb_sharp = IconData(0xe028, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData backspace_sharp = IconData(0xe029, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData bad_mood_sharp = IconData(0xe02a, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData barcode_bluetooth_sharp = IconData(0xe02b, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData barcode_done_sharp = IconData(0xe02c, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData barcode_image_scan_sharp = IconData(0xe02d, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData barcode_qr_code_sharp = IconData(0xe02e, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData barcode_scanner_down_sharp = IconData(0xe02f, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData barcode_settings_sharp = IconData(0xe030, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData barcode_sharp = IconData(0xe031, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData basket_sharp = IconData(0xe032, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData battery_alert_sharp = IconData(0xe033, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData battery_charging_sharp = IconData(0xe034, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData battery_sharp = IconData(0xe035, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData block_content_sharp = IconData(0xe036, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData block_sharp = IconData(0xe037, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData blog_sharp = IconData(0xe038, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData bluetooth_disabled_sharp = IconData(0xe039, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData bluetooth_searching_sharp = IconData(0xe03a, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData bluetooth_sharp = IconData(0xe03b, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData bold_sharp = IconData(0xe03c, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData bookmark_outline_sharp = IconData(0xe03d, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData bookmark_sharp = IconData(0xe03e, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData brightness_sharp = IconData(0xe03f, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData broadcast_sharp = IconData(0xe040, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData build_sharp = IconData(0xe041, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData building_sharp = IconData(0xe042, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData bullet_list_sharp = IconData(0xe043, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData bus_sharp = IconData(0xe044, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData cached_sharp = IconData(0xe045, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData cafe_sharp = IconData(0xe046, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData calculator_sharp = IconData(0xe047, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData calendar_3_day_sharp = IconData(0xe048, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData calendar_alt_1_sharp = IconData(0xe049, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData calendar_alt_2_sharp = IconData(0xe04a, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData calendar_available_sharp = IconData(0xe04b, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData calendar_day_sharp = IconData(0xe04c, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData calendar_edit_sharp = IconData(0xe04d, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData calendar_gantt_sharp = IconData(0xe04e, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData calendar_monthly_sharp = IconData(0xe04f, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData calendar_next_sharp = IconData(0xe050, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData calendar_range_sharp = IconData(0xe051, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData calendar_rollover_sharp = IconData(0xe052, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData calendar_sharp = IconData(0xe053, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData calendar_unavailable_sharp = IconData(0xe054, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData calendar_weekly_sharp = IconData(0xe055, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData calendar_yearly_sharp = IconData(0xe056, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData call_back_sharp = IconData(0xe057, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData camera_sharp = IconData(0xe058, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData camera_shutter_sharp = IconData(0xe059, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData camera_switch_image_sharp = IconData(0xe05a, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData camera_switch_sharp = IconData(0xe05b, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData cancel_outline_sharp = IconData(0xe05c, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData cancel_sharp = IconData(0xe05d, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData car_sharp = IconData(0xe05e, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData card_orientation_sharp = IconData(0xe05f, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData card_with_chip_sharp = IconData(0xe060, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData caret_down_sharp = IconData(0xe061, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData caret_left_sharp = IconData(0xe062, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData caret_right_sharp = IconData(0xe063, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData caret_sort_sharp = IconData(0xe064, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData caret_up_sharp = IconData(0xe065, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData cast_connected_sharp = IconData(0xe066, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData cast_sharp = IconData(0xe067, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData cellular_signal_sharp = IconData(0xe068, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData certificate_sharp = IconData(0xe069, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData certified_sharp = IconData(0xe06a, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData chain_sharp = IconData(0xe06b, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData chart_bar_sharp = IconData(0xe06c, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData chart_bubble_charts_sharp = IconData(0xe06d, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData chart_bubble_sharp = IconData(0xe06e, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData chart_doughnut_sharp = IconData(0xe06f, fontFamily: _familySharp, fontPackage: _package);
   static const IconData chart_filled_enterprise_sharp =
-      IconData(0xe076, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData chart_filled_sharp = IconData(0xe077, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData chart_gantt_sharp = IconData(0xe078, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData chart_line_predict_sharp = IconData(0xe079, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData chart_line_sharp = IconData(0xe07a, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData chart_line_stacked_sharp = IconData(0xe07b, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData chart_outline_sharp = IconData(0xe07c, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData chart_pie_charts_sharp = IconData(0xe07d, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData chart_pie_content_sharp = IconData(0xe07e, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData chart_pie_sharp = IconData(0xe07f, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData chart_scatter_plot_sharp = IconData(0xe080, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData chart_stacked_sharp = IconData(0xe081, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData chart_waterfall_sharp = IconData(0xe082, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData chat_bot_sharp = IconData(0xe083, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData chat_bubble_outline_sharp = IconData(0xe084, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData chat_bubble_sharp = IconData(0xe085, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData chat_message_read_sharp = IconData(0xe086, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData chat_message_unread_sharp = IconData(0xe087, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData chat_search_sharp = IconData(0xe088, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData chat_sharp = IconData(0xe089, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData check_box_empty_sharp = IconData(0xe08a, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData check_box_sharp = IconData(0xe08b, fontFamily: _familySharp, fontPackage: _package);
+      IconData(0xe070, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData chart_filled_sharp = IconData(0xe071, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData chart_gantt_sharp = IconData(0xe072, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData chart_line_predict_sharp = IconData(0xe073, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData chart_line_sharp = IconData(0xe074, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData chart_line_stacked_sharp = IconData(0xe075, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData chart_outline_sharp = IconData(0xe076, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData chart_pie_charts_sharp = IconData(0xe077, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData chart_pie_content_sharp = IconData(0xe078, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData chart_pie_sharp = IconData(0xe079, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData chart_scatter_plot_sharp = IconData(0xe07a, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData chart_stacked_sharp = IconData(0xe07b, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData chart_waterfall_sharp = IconData(0xe07c, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData chat_bot_sharp = IconData(0xe07d, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData chat_bubble_outline_sharp = IconData(0xe07e, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData chat_bubble_sharp = IconData(0xe07f, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData chat_message_read_sharp = IconData(0xe080, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData chat_message_unread_sharp = IconData(0xe081, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData chat_search_sharp = IconData(0xe082, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData chat_sharp = IconData(0xe083, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData check_box_empty_sharp = IconData(0xe084, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData check_box_sharp = IconData(0xe085, fontFamily: _familySharp, fontPackage: _package);
   static const IconData check_circle_outline_alt_sharp =
-      IconData(0xe08c, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData check_circle_outline_sharp = IconData(0xe08d, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData check_circle_sharp = IconData(0xe08e, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData check_mark_sharp = IconData(0xe08f, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData checklist_sharp = IconData(0xe090, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData chevron_left_sharp = IconData(0xe091, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData chevron_right_sharp = IconData(0xe092, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData choices_sharp = IconData(0xe093, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData clipboard_action_sharp = IconData(0xe094, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData clipboard_sharp = IconData(0xe095, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData clock_available_sharp = IconData(0xe096, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData clock_bid_sharp = IconData(0xe097, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData clock_edit_sharp = IconData(0xe098, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData clock_flexible_sharp = IconData(0xe099, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData clock_in_progress_sharp = IconData(0xe09a, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData clock_info_sharp = IconData(0xe09b, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData clock_missed_sharp = IconData(0xe09c, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData clock_on_sharp = IconData(0xe09d, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData clock_outline_sharp = IconData(0xe09e, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData clock_rollover_sharp = IconData(0xe09f, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData clock_segment_sharp = IconData(0xe0a0, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData clock_sharp = IconData(0xe0a1, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData clock_start_sharp = IconData(0xe0a2, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData clock_stop_sharp = IconData(0xe0a3, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData clock_switch_sharp = IconData(0xe0a4, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData clock_timer_sharp = IconData(0xe0a5, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData clock_upcoming_sharp = IconData(0xe0a6, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData close_sharp = IconData(0xe0a7, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData closed_caption_sharp = IconData(0xe0a8, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData cloud_connect_sharp = IconData(0xe0a9, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData cloud_done_sharp = IconData(0xe0aa, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData cloud_download_sharp = IconData(0xe0ab, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData cloud_off_sharp = IconData(0xe0ac, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData cloud_outline_sharp = IconData(0xe0ad, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData cloud_sharp = IconData(0xe0ae, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData cloud_upload_sharp = IconData(0xe0af, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData color_fill_sharp = IconData(0xe0b0, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData columns_sharp = IconData(0xe0b1, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData contactless_pay_sharp = IconData(0xe0b2, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData content_sharp = IconData(0xe0b3, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData contrast_image_sharp = IconData(0xe0b4, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData contrast_sharp = IconData(0xe0b5, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData conversation_sharp = IconData(0xe0b6, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData copy_file_sharp = IconData(0xe0b7, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData create_new_folder_sharp = IconData(0xe0b8, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData credit_card_sharp = IconData(0xe0b9, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData credit_card_swipe_sharp = IconData(0xe0ba, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData crop_sharp = IconData(0xe0bb, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData dark_mode_sharp = IconData(0xe0bc, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData dashboard_sharp = IconData(0xe0bd, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData data_wedge_sharp = IconData(0xe0be, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData delete_forever_sharp = IconData(0xe0bf, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData delete_outline_sharp = IconData(0xe0c0, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData delete_sharp = IconData(0xe0c1, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData design_tools_sharp = IconData(0xe0c2, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData desktop_sharp = IconData(0xe0c3, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData device_settings_sharp = IconData(0xe0c4, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData device_tracker_sharp = IconData(0xe0c5, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData devices_ecosystem_sharp = IconData(0xe0c6, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData devices_sharp = IconData(0xe0c7, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData dialpad_sharp = IconData(0xe0c8, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData direct_connect_sharp = IconData(0xe0c9, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData dislike_sharp = IconData(0xe0ca, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData distribute_horizontal_sharp = IconData(0xe0cb, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData distribute_vertical_sharp = IconData(0xe0cc, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData doc_attach_sharp = IconData(0xe0cd, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData document_sharp = IconData(0xe0ce, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData dollar_sharp = IconData(0xe0cf, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData download_sharp = IconData(0xe0d0, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData downloading_sharp = IconData(0xe0d1, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData drop_down_circle_sharp = IconData(0xe0d2, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData eas_sharp = IconData(0xe0d3, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData edit_border_sharp = IconData(0xe0d4, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData edit_sharp = IconData(0xe0d5, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData email_alt_sharp = IconData(0xe0d6, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData email_outline_sharp = IconData(0xe0d7, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData email_reply_all_sharp = IconData(0xe0d8, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData email_sharp = IconData(0xe0d9, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData emdk_sharp = IconData(0xe0da, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData end_call_sharp = IconData(0xe0db, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData enterprise_browser_sharp = IconData(0xe0dc, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData enterprise_connectors_sharp = IconData(0xe0dd, fontFamily: _familySharp, fontPackage: _package);
+      IconData(0xe086, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData check_circle_outline_sharp = IconData(0xe087, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData check_circle_sharp = IconData(0xe088, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData check_mark_sharp = IconData(0xe089, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData checklist_sharp = IconData(0xe08a, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData chevron_left_sharp = IconData(0xe08b, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData chevron_right_sharp = IconData(0xe08c, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData choices_sharp = IconData(0xe08d, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData clipboard_action_sharp = IconData(0xe08e, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData clipboard_sharp = IconData(0xe08f, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData clock_available_sharp = IconData(0xe090, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData clock_bid_sharp = IconData(0xe091, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData clock_edit_sharp = IconData(0xe092, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData clock_flexible_sharp = IconData(0xe093, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData clock_in_progress_sharp = IconData(0xe094, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData clock_info_sharp = IconData(0xe095, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData clock_missed_sharp = IconData(0xe096, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData clock_on_sharp = IconData(0xe097, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData clock_outline_sharp = IconData(0xe098, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData clock_rollover_sharp = IconData(0xe099, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData clock_segment_sharp = IconData(0xe09a, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData clock_sharp = IconData(0xe09b, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData clock_start_sharp = IconData(0xe09c, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData clock_stop_sharp = IconData(0xe09d, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData clock_switch_sharp = IconData(0xe09e, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData clock_timer_sharp = IconData(0xe09f, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData clock_upcoming_sharp = IconData(0xe0a0, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData close_sharp = IconData(0xe0a1, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData closed_caption_sharp = IconData(0xe0a2, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData cloud_done_sharp = IconData(0xe0a3, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData cloud_download_sharp = IconData(0xe0a4, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData cloud_off_sharp = IconData(0xe0a5, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData cloud_outline_sharp = IconData(0xe0a6, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData cloud_sharp = IconData(0xe0a7, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData cloud_upload_sharp = IconData(0xe0a8, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData color_fill_sharp = IconData(0xe0a9, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData columns_sharp = IconData(0xe0aa, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData contactless_pay_sharp = IconData(0xe0ab, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData content_sharp = IconData(0xe0ac, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData contrast_image_sharp = IconData(0xe0ad, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData contrast_sharp = IconData(0xe0ae, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData conversation_sharp = IconData(0xe0af, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData copy_file_sharp = IconData(0xe0b0, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData create_new_folder_sharp = IconData(0xe0b1, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData credit_card_sharp = IconData(0xe0b2, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData credit_card_swipe_sharp = IconData(0xe0b3, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData crop_sharp = IconData(0xe0b4, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData dark_mode_sharp = IconData(0xe0b5, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData dashboard_sharp = IconData(0xe0b6, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData delete_forever_sharp = IconData(0xe0b7, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData delete_outline_sharp = IconData(0xe0b8, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData delete_sharp = IconData(0xe0b9, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData desktop_sharp = IconData(0xe0ba, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData device_settings_sharp = IconData(0xe0bb, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData devices_ecosystem_sharp = IconData(0xe0bc, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData devices_sharp = IconData(0xe0bd, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData dialpad_sharp = IconData(0xe0be, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData dislike_sharp = IconData(0xe0bf, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData distribute_horizontal_sharp = IconData(0xe0c0, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData distribute_vertical_sharp = IconData(0xe0c1, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData doc_attach_sharp = IconData(0xe0c2, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData document_sharp = IconData(0xe0c3, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData dollar_sharp = IconData(0xe0c4, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData download_sharp = IconData(0xe0c5, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData downloading_sharp = IconData(0xe0c6, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData drop_down_circle_sharp = IconData(0xe0c7, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData eas_sharp = IconData(0xe0c8, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData edit_border_sharp = IconData(0xe0c9, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData edit_sharp = IconData(0xe0ca, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData email_alt_sharp = IconData(0xe0cb, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData email_outline_sharp = IconData(0xe0cc, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData email_reply_all_sharp = IconData(0xe0cd, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData email_sharp = IconData(0xe0ce, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData end_call_sharp = IconData(0xe0cf, fontFamily: _familySharp, fontPackage: _package);
   static const IconData enterprise_diagnostics_sharp =
-      IconData(0xe0de, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData enterprise_keyboard_sharp = IconData(0xe0df, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData environmental_sharp = IconData(0xe0e0, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData error_outline_sharp = IconData(0xe0e1, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData error_sharp = IconData(0xe0e2, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData ethernet_sharp = IconData(0xe0e3, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData exit_sharp = IconData(0xe0e4, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData expand_less_sharp = IconData(0xe0e5, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData expand_more_sharp = IconData(0xe0e6, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData eye_dropper_sharp = IconData(0xe0e7, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData eye_preview_sharp = IconData(0xe0e8, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData face_id_sharp = IconData(0xe0e9, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData facebook_sharp = IconData(0xe0ea, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData factory_sharp = IconData(0xe0eb, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData fast_forward_sharp = IconData(0xe0ec, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData fast_rewind_sharp = IconData(0xe0ed, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData file_sharp = IconData(0xe0ee, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData filter_alt_sharp = IconData(0xe0ef, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData filter_sharp = IconData(0xe0f0, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData finished_download_sharp = IconData(0xe0f1, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData first_page_sharp = IconData(0xe0f2, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData flag_sharp = IconData(0xe0f3, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData flight_mode_sharp = IconData(0xe0f4, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData flight_sharp = IconData(0xe0f5, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData flip_sharp = IconData(0xe0f6, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData folder_file_sharp = IconData(0xe0f7, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData folder_outline_sharp = IconData(0xe0f8, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData folder_sharp = IconData(0xe0f9, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData font_size_decrease_sharp = IconData(0xe0fa, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData font_size_increase_sharp = IconData(0xe0fb, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData format_shapes_sharp = IconData(0xe0fc, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData forward_sharp = IconData(0xe0fd, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData freezer_sharp = IconData(0xe0fe, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData full_screen_exit_sharp = IconData(0xe0ff, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData full_screen_sharp = IconData(0xe100, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData gif_sharp = IconData(0xe101, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData glossary_sharp = IconData(0xe102, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData gms_restricted_mode_sharp = IconData(0xe103, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData grid_off_sharp = IconData(0xe104, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData grid_on_sharp = IconData(0xe105, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData grid_view_sharp = IconData(0xe106, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData group_sharp = IconData(0xe107, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData groups_sharp = IconData(0xe108, fontFamily: _familySharp, fontPackage: _package);
+      IconData(0xe0d0, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData environmental_sharp = IconData(0xe0d1, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData error_outline_sharp = IconData(0xe0d2, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData error_sharp = IconData(0xe0d3, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData ethernet_sharp = IconData(0xe0d4, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData exit_sharp = IconData(0xe0d5, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData expand_less_sharp = IconData(0xe0d6, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData expand_more_sharp = IconData(0xe0d7, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData eye_dropper_sharp = IconData(0xe0d8, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData eye_preview_sharp = IconData(0xe0d9, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData face_id_sharp = IconData(0xe0da, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData facebook_sharp = IconData(0xe0db, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData factory_sharp = IconData(0xe0dc, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData fast_forward_sharp = IconData(0xe0dd, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData fast_rewind_sharp = IconData(0xe0de, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData file_sharp = IconData(0xe0df, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData filter_alt_sharp = IconData(0xe0e0, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData filter_sharp = IconData(0xe0e1, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData finished_download_sharp = IconData(0xe0e2, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData first_page_sharp = IconData(0xe0e3, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData flag_sharp = IconData(0xe0e4, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData flight_mode_sharp = IconData(0xe0e5, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData flight_sharp = IconData(0xe0e6, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData flip_sharp = IconData(0xe0e7, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData folder_file_sharp = IconData(0xe0e8, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData folder_outline_sharp = IconData(0xe0e9, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData folder_sharp = IconData(0xe0ea, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData font_size_decrease_sharp = IconData(0xe0eb, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData font_size_increase_sharp = IconData(0xe0ec, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData format_shapes_sharp = IconData(0xe0ed, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData forward_sharp = IconData(0xe0ee, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData freezer_sharp = IconData(0xe0ef, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData full_screen_exit_sharp = IconData(0xe0f0, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData full_screen_sharp = IconData(0xe0f1, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData gif_sharp = IconData(0xe0f2, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData glossary_sharp = IconData(0xe0f3, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData grid_off_sharp = IconData(0xe0f4, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData grid_on_sharp = IconData(0xe0f5, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData grid_view_sharp = IconData(0xe0f6, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData group_sharp = IconData(0xe0f7, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData groups_sharp = IconData(0xe0f8, fontFamily: _familySharp, fontPackage: _package);
   static const IconData hamburger_menu_navigation_rail_sharp =
-      IconData(0xe109, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData hamburger_menu_sharp = IconData(0xe10a, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData hamburger_menu_thick_sharp = IconData(0xe10b, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData hand_sharp = IconData(0xe10c, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData happy_sharp = IconData(0xe10d, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData hdmi_sharp = IconData(0xe10e, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData hdr_sharp = IconData(0xe10f, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData headphones_sharp = IconData(0xe110, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData headset_sharp = IconData(0xe111, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData help_outline_sharp = IconData(0xe112, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData help_sharp = IconData(0xe113, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData history_sharp = IconData(0xe114, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData home_sharp = IconData(0xe115, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData hourglass_sharp = IconData(0xe116, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData how_do_i_sharp = IconData(0xe117, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData image_library_sharp = IconData(0xe118, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData image_sharp = IconData(0xe119, fontFamily: _familySharp, fontPackage: _package);
+      IconData(0xe0f9, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData hamburger_menu_sharp = IconData(0xe0fa, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData hamburger_menu_thick_sharp = IconData(0xe0fb, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData hand_sharp = IconData(0xe0fc, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData happy_sharp = IconData(0xe0fd, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData hdmi_sharp = IconData(0xe0fe, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData hdr_sharp = IconData(0xe0ff, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData headphones_sharp = IconData(0xe100, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData headset_sharp = IconData(0xe101, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData help_outline_sharp = IconData(0xe102, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData help_sharp = IconData(0xe103, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData history_sharp = IconData(0xe104, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData home_sharp = IconData(0xe105, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData hourglass_sharp = IconData(0xe106, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData how_do_i_sharp = IconData(0xe107, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData image_library_sharp = IconData(0xe108, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData image_sharp = IconData(0xe109, fontFamily: _familySharp, fontPackage: _package);
   static const IconData important_notification_sharp =
-      IconData(0xe11a, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData inbox_sharp = IconData(0xe11b, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData indent_decrease_sharp = IconData(0xe11c, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData indent_increase_sharp = IconData(0xe11d, fontFamily: _familySharp, fontPackage: _package);
+      IconData(0xe10a, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData inbox_sharp = IconData(0xe10b, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData indent_decrease_sharp = IconData(0xe10c, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData indent_increase_sharp = IconData(0xe10d, fontFamily: _familySharp, fontPackage: _package);
   static const IconData indeterminate_check_box_sharp =
-      IconData(0xe11e, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData info_sharp = IconData(0xe11f, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData instagram_sharp = IconData(0xe120, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData intelligent_document_capture_sharp =
-      IconData(0xe121, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData ios_share_sharp = IconData(0xe122, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData iso_sharp = IconData(0xe123, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData issue_audit_sharp = IconData(0xe124, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData italic_sharp = IconData(0xe125, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData jpg_attach_sharp = IconData(0xe126, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData justify_sharp = IconData(0xe127, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData keyboard_sharp = IconData(0xe128, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData label_plus_sharp = IconData(0xe129, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData label_sharp = IconData(0xe12a, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData laptop_sharp = IconData(0xe12b, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData last_page_sharp = IconData(0xe12c, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData layers_sharp = IconData(0xe12d, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData life_guard_sharp = IconData(0xe12e, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData light_mode_sharp = IconData(0xe12f, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData light_rail_train_sharp = IconData(0xe130, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData lightbulb_sharp = IconData(0xe131, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData like_sharp = IconData(0xe132, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData line_spacing_sharp = IconData(0xe133, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData link_add_sharp = IconData(0xe134, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData link_os_sharp = IconData(0xe135, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData link_sharp = IconData(0xe136, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData linkedin_sharp = IconData(0xe137, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData list_alt_sharp = IconData(0xe138, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData list_bullet_contained_sharp = IconData(0xe139, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData list_feedback_sharp = IconData(0xe13a, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData list_form_sharp = IconData(0xe13b, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData list_sharp = IconData(0xe13c, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData local_shipping_sharp = IconData(0xe13d, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData location_off_sharp = IconData(0xe13e, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData location_point_sharp = IconData(0xe13f, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData location_sharp = IconData(0xe140, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData lock_alt_sharp = IconData(0xe141, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData lock_sharp = IconData(0xe142, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData lock_undo_sharp = IconData(0xe143, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData log_in_sharp = IconData(0xe144, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData log_out_sharp = IconData(0xe145, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData love_outline_sharp = IconData(0xe146, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData love_sharp = IconData(0xe147, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData maintenance_sharp = IconData(0xe148, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData map_sharp = IconData(0xe149, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData mdm_connectors_sharp = IconData(0xe14a, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData mdm_toolkit_sharp = IconData(0xe14b, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData meal_sharp = IconData(0xe14c, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData medium_sharp = IconData(0xe14d, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData memory_sharp = IconData(0xe14e, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData message_sharp = IconData(0xe14f, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData microphone_off_sharp = IconData(0xe150, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData microphone_outline_sharp = IconData(0xe151, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData microphone_sharp = IconData(0xe152, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData mobile_friendly_sharp = IconData(0xe153, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData mobility_dna_sharp = IconData(0xe154, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData mobility_security_sharp = IconData(0xe155, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData money_euro_sharp = IconData(0xe156, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData money_pound_sharp = IconData(0xe157, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData money_usd_sharp = IconData(0xe158, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData monitor_sharp = IconData(0xe159, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData more_horizontal_sharp = IconData(0xe15a, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData more_vertical_sharp = IconData(0xe15b, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData multi_code_data_formatting_sharp =
-      IconData(0xe15c, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData mx_sharp = IconData(0xe15d, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData my_location_sharp = IconData(0xe15e, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData navigate_sharp = IconData(0xe15f, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData navigation_sharp = IconData(0xe160, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData near_me_sharp = IconData(0xe161, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData network_signal_sharp = IconData(0xe162, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData new_chat_sharp = IconData(0xe163, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData nfc_sharp = IconData(0xe164, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData night_sharp = IconData(0xe165, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData no_color_sharp = IconData(0xe166, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData note_sharp = IconData(0xe167, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData notifications_off_sharp = IconData(0xe168, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData numbered_list_sharp = IconData(0xe169, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData ocr_sharp = IconData(0xe16a, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData oem_config_sharp = IconData(0xe16b, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData open_in_full_sharp = IconData(0xe16c, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData open_in_new_window_sharp = IconData(0xe16d, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData open_new_off_sharp = IconData(0xe16e, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData page_height_sharp = IconData(0xe16f, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData page_rotate_sharp = IconData(0xe170, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData page_width_sharp = IconData(0xe171, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData pairing_solutions_sharp = IconData(0xe172, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData palette_sharp = IconData(0xe173, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData partner_sharp = IconData(0xe174, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData pause_circle_sharp = IconData(0xe175, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData pause_sharp = IconData(0xe176, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData pdf_attach_sharp = IconData(0xe177, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData pdf_direct_sharp = IconData(0xe178, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData pending_sharp = IconData(0xe179, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData person_admin_sharp = IconData(0xe17a, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData person_assign_sharp = IconData(0xe17b, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData person_clock_sharp = IconData(0xe17c, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData person_info_sharp = IconData(0xe17d, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData person_manager_sharp = IconData(0xe17e, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData person_move_sharp = IconData(0xe17f, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData person_outline_sharp = IconData(0xe180, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData person_search_sharp = IconData(0xe181, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData person_sharp = IconData(0xe182, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData person_swap_sharp = IconData(0xe183, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData person_walk_sharp = IconData(0xe184, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData phone_android_sharp = IconData(0xe185, fontFamily: _familySharp, fontPackage: _package);
+      IconData(0xe10e, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData info_sharp = IconData(0xe10f, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData instagram_sharp = IconData(0xe110, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData ios_share_sharp = IconData(0xe111, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData iso_sharp = IconData(0xe112, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData issue_audit_sharp = IconData(0xe113, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData italic_sharp = IconData(0xe114, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData jpg_attach_sharp = IconData(0xe115, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData justify_sharp = IconData(0xe116, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData keyboard_sharp = IconData(0xe117, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData label_sharp = IconData(0xe118, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData laptop_sharp = IconData(0xe119, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData last_page_sharp = IconData(0xe11a, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData layers_sharp = IconData(0xe11b, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData light_mode_sharp = IconData(0xe11c, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData light_rail_train_sharp = IconData(0xe11d, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData lightbulb_sharp = IconData(0xe11e, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData like_sharp = IconData(0xe11f, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData line_spacing_sharp = IconData(0xe120, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData link_add_sharp = IconData(0xe121, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData link_sharp = IconData(0xe122, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData linkedin_sharp = IconData(0xe123, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData list_alt_sharp = IconData(0xe124, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData list_bullet_contained_sharp = IconData(0xe125, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData list_feedback_sharp = IconData(0xe126, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData list_form_sharp = IconData(0xe127, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData list_sharp = IconData(0xe128, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData local_shipping_sharp = IconData(0xe129, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData location_off_sharp = IconData(0xe12a, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData location_point_sharp = IconData(0xe12b, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData location_sharp = IconData(0xe12c, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData lock_alt_sharp = IconData(0xe12d, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData lock_sharp = IconData(0xe12e, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData lock_undo_sharp = IconData(0xe12f, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData log_in_sharp = IconData(0xe130, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData log_out_sharp = IconData(0xe131, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData love_outline_sharp = IconData(0xe132, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData love_sharp = IconData(0xe133, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData maintenance_sharp = IconData(0xe134, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData map_sharp = IconData(0xe135, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData meal_sharp = IconData(0xe136, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData medium_sharp = IconData(0xe137, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData memory_sharp = IconData(0xe138, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData message_sharp = IconData(0xe139, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData microphone_off_sharp = IconData(0xe13a, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData microphone_outline_sharp = IconData(0xe13b, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData microphone_sharp = IconData(0xe13c, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData mobile_friendly_sharp = IconData(0xe13d, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData money_euro_sharp = IconData(0xe13e, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData money_pound_sharp = IconData(0xe13f, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData money_usd_sharp = IconData(0xe140, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData monitor_sharp = IconData(0xe141, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData more_horizontal_sharp = IconData(0xe142, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData more_vertical_sharp = IconData(0xe143, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData my_location_sharp = IconData(0xe144, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData navigate_sharp = IconData(0xe145, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData navigation_sharp = IconData(0xe146, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData near_me_sharp = IconData(0xe147, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData network_signal_sharp = IconData(0xe148, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData new_chat_sharp = IconData(0xe149, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData nfc_sharp = IconData(0xe14a, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData night_sharp = IconData(0xe14b, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData no_color_sharp = IconData(0xe14c, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData note_sharp = IconData(0xe14d, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData notifications_off_sharp = IconData(0xe14e, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData numbered_list_sharp = IconData(0xe14f, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData open_in_full_sharp = IconData(0xe150, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData open_in_new_window_sharp = IconData(0xe151, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData open_new_off_sharp = IconData(0xe152, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData page_height_sharp = IconData(0xe153, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData page_rotate_sharp = IconData(0xe154, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData page_width_sharp = IconData(0xe155, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData palette_sharp = IconData(0xe156, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData partner_sharp = IconData(0xe157, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData pause_circle_sharp = IconData(0xe158, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData pause_sharp = IconData(0xe159, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData pdf_attach_sharp = IconData(0xe15a, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData pending_sharp = IconData(0xe15b, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData person_admin_sharp = IconData(0xe15c, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData person_assign_sharp = IconData(0xe15d, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData person_clock_sharp = IconData(0xe15e, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData person_info_sharp = IconData(0xe15f, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData person_manager_sharp = IconData(0xe160, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData person_move_sharp = IconData(0xe161, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData person_outline_sharp = IconData(0xe162, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData person_search_sharp = IconData(0xe163, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData person_sharp = IconData(0xe164, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData person_swap_sharp = IconData(0xe165, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData person_walk_sharp = IconData(0xe166, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData phone_android_sharp = IconData(0xe167, fontFamily: _familySharp, fontPackage: _package);
   static const IconData phone_bluetooth_speaker_sharp =
-      IconData(0xe186, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData phone_in_talk_sharp = IconData(0xe187, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData phone_iphone_sharp = IconData(0xe188, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData phone_sharp = IconData(0xe189, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData phonelink_sharp = IconData(0xe18a, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData phrase_sharp = IconData(0xe18b, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData pin_sharp = IconData(0xe18c, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData place_sharp = IconData(0xe18d, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData planogram_sharp = IconData(0xe18e, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData play_circle_sharp = IconData(0xe18f, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData play_outline_sharp = IconData(0xe190, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData play_sharp = IconData(0xe191, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData png_attach_sharp = IconData(0xe192, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData point_gift_sharp = IconData(0xe193, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData point_heart_sharp = IconData(0xe194, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData point_money_sharp = IconData(0xe195, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData point_star_sharp = IconData(0xe196, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData point_token_sharp = IconData(0xe197, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData portrait_sharp = IconData(0xe198, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData power_precision_sharp = IconData(0xe199, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData ppt_attach_sharp = IconData(0xe19a, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData preferred_symbol_sharp = IconData(0xe19b, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData price_sharp = IconData(0xe19c, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData print_secure_sharp = IconData(0xe19d, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData print_station_sharp = IconData(0xe19e, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData printer_profile_manager_sharp =
-      IconData(0xe19f, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData printer_sharp = IconData(0xe1a0, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData priority_sharp = IconData(0xe1a1, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData pro_sharp = IconData(0xe1a2, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData productivity_apps_sharp = IconData(0xe1a3, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData przm_sharp = IconData(0xe1a4, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData ptt_sharp = IconData(0xe1a5, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData publish_sharp = IconData(0xe1a6, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData push_pin_sharp = IconData(0xe1a7, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData qr_code_sharp = IconData(0xe1a8, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData queue_sharp = IconData(0xe1a9, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData radio_button_checked_sharp = IconData(0xe1aa, fontFamily: _familySharp, fontPackage: _package);
+      IconData(0xe168, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData phone_in_talk_sharp = IconData(0xe169, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData phone_iphone_sharp = IconData(0xe16a, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData phone_sharp = IconData(0xe16b, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData phonelink_sharp = IconData(0xe16c, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData phrase_sharp = IconData(0xe16d, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData pin_sharp = IconData(0xe16e, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData place_sharp = IconData(0xe16f, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData planogram_sharp = IconData(0xe170, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData play_circle_sharp = IconData(0xe171, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData play_outline_sharp = IconData(0xe172, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData play_sharp = IconData(0xe173, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData png_attach_sharp = IconData(0xe174, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData point_gift_sharp = IconData(0xe175, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData point_heart_sharp = IconData(0xe176, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData point_money_sharp = IconData(0xe177, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData point_star_sharp = IconData(0xe178, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData point_token_sharp = IconData(0xe179, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData portrait_sharp = IconData(0xe17a, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData ppt_attach_sharp = IconData(0xe17b, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData price_sharp = IconData(0xe17c, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData printer_sharp = IconData(0xe17d, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData priority_sharp = IconData(0xe17e, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData pro_sharp = IconData(0xe17f, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData productivity_apps_sharp = IconData(0xe180, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData ptt_sharp = IconData(0xe181, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData publish_sharp = IconData(0xe182, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData push_pin_sharp = IconData(0xe183, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData qr_code_sharp = IconData(0xe184, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData queue_sharp = IconData(0xe185, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData radio_button_checked_sharp = IconData(0xe186, fontFamily: _familySharp, fontPackage: _package);
   static const IconData radio_button_unchecked_sharp =
-      IconData(0xe1ab, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData react_add_sharp = IconData(0xe1ac, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData react_thumbsup_sharp = IconData(0xe1ad, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData recall_sharp = IconData(0xe1ae, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData receipt_sharp = IconData(0xe1af, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData recording_sharp = IconData(0xe1b0, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData redo_sharp = IconData(0xe1b1, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData refresh_sharp = IconData(0xe1b2, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData remote_control_sharp = IconData(0xe1b3, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData remote_diagnostics_sharp = IconData(0xe1b4, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData remote_management_sharp = IconData(0xe1b5, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData remove_box_sharp = IconData(0xe1b6, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData remove_circle_outline_sharp = IconData(0xe1b7, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData remove_circle_sharp = IconData(0xe1b8, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData remove_group_sharp = IconData(0xe1b9, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData remove_person_sharp = IconData(0xe1ba, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData remove_sharp = IconData(0xe1bb, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData renew_sharp = IconData(0xe1bc, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData reorder_sharp = IconData(0xe1bd, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData repeat_sharp = IconData(0xe1be, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData replay_sharp = IconData(0xe1bf, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData reply_sharp = IconData(0xe1c0, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData report_sharp = IconData(0xe1c1, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData restart_alt_sharp = IconData(0xe1c2, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData review_sharp = IconData(0xe1c3, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData road_map_sharp = IconData(0xe1c4, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData rotate_left_sharp = IconData(0xe1c5, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData rotate_right_sharp = IconData(0xe1c6, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData rss_feed_sharp = IconData(0xe1c7, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData rules_sharp = IconData(0xe1c8, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData rx_sharp = IconData(0xe1c9, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData sad_sharp = IconData(0xe1ca, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData satisfied_sharp = IconData(0xe1cb, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData save_alt_sharp = IconData(0xe1cc, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData save_content_sharp = IconData(0xe1cd, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData save_sharp = IconData(0xe1ce, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData scan_and_pair_sharp = IconData(0xe1cf, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData scan_rate_sharp = IconData(0xe1d0, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData scan_speed_analytics_sharp = IconData(0xe1d1, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData scan_to_connect_sharp = IconData(0xe1d2, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData scanner_control_application_sharp =
-      IconData(0xe1d3, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData scanner_sharp = IconData(0xe1d4, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData schedule_sharp = IconData(0xe1d5, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData school_sharp = IconData(0xe1d6, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData screen_rotation_sharp = IconData(0xe1d7, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData sd_card_sharp = IconData(0xe1d8, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData search_sharp = IconData(0xe1d9, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData security_check_sharp = IconData(0xe1da, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData security_sharp = IconData(0xe1db, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData send_sharp = IconData(0xe1dc, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData setting_tool_sharp = IconData(0xe1dd, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData settings_sharp = IconData(0xe1de, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData shape_recognition_sharp = IconData(0xe1df, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData share_sharp = IconData(0xe1e0, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData shared_folder_sharp = IconData(0xe1e1, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData ship_sharp = IconData(0xe1e2, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData sim_card_sharp = IconData(0xe1e3, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData simulscan_sharp = IconData(0xe1e4, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData skip_next_sharp = IconData(0xe1e5, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData skip_previous_sharp = IconData(0xe1e6, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData slide_show_sharp = IconData(0xe1e7, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData smart_phone_sharp = IconData(0xe1e8, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData smart_te_lite_sharp = IconData(0xe1e9, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData smart_te_sharp = IconData(0xe1ea, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData smart_tek_sharp = IconData(0xe1eb, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData smartdex_sharp = IconData(0xe1ec, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData sms_sharp = IconData(0xe1ed, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData snooze_sharp = IconData(0xe1ee, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData solutions_sharp = IconData(0xe1ef, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData sort_content_sharp = IconData(0xe1f0, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData sort_sharp = IconData(0xe1f1, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData speaker_sharp = IconData(0xe1f2, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData stagenow_sharp = IconData(0xe1f3, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData star_half_sharp = IconData(0xe1f4, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData star_outline_sharp = IconData(0xe1f5, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData star_sharp = IconData(0xe1f6, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData steps_sharp = IconData(0xe1f7, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData sticker_sharp = IconData(0xe1f8, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData stop_circle_sharp = IconData(0xe1f9, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData stop_sharp = IconData(0xe1fa, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData store_release_sharp = IconData(0xe1fb, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData store_sharp = IconData(0xe1fc, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData store_swap_sharp = IconData(0xe1fd, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData store_transfer_sharp = IconData(0xe1fe, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData straighten_sharp = IconData(0xe1ff, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData strategy_sharp = IconData(0xe200, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData strikethrough_sharp = IconData(0xe201, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData subscribe_sharp = IconData(0xe202, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData swap_sharp = IconData(0xe203, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData swipe_assist_sharp = IconData(0xe204, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData switch_sharp = IconData(0xe205, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData switch_user_sharp = IconData(0xe206, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData sync_action_sharp = IconData(0xe207, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData sync_disabled_sharp = IconData(0xe208, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData sync_sharp = IconData(0xe209, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData table_sharp = IconData(0xe20a, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData tablet_mac_sharp = IconData(0xe20b, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData tablet_sharp = IconData(0xe20c, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData tag_enterprise_sharp = IconData(0xe20d, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData tag_sharp = IconData(0xe20e, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData tap_to_pay_sharp = IconData(0xe20f, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData taxi_sharp = IconData(0xe210, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData tekspeech_pro_sharp = IconData(0xe211, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData text_color_sharp = IconData(0xe212, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData tiers_sharp = IconData(0xe213, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData timecard_approve_sharp = IconData(0xe214, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData timecard_sharp = IconData(0xe215, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData timecard_warning_sharp = IconData(0xe216, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData timer_sharp = IconData(0xe217, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData toggle_off_sharp = IconData(0xe218, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData toggle_on_sharp = IconData(0xe219, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData touch_sharp = IconData(0xe21a, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData train_sharp = IconData(0xe21b, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData trending_down_sharp = IconData(0xe21c, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData trending_up_sharp = IconData(0xe21d, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData tv_sharp = IconData(0xe21e, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData twitter_sharp = IconData(0xe21f, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData type_sharp = IconData(0xe220, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData uhf_rfid_sharp = IconData(0xe221, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData underline_sharp = IconData(0xe222, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData undo_sharp = IconData(0xe223, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData unfold_less_sharp = IconData(0xe224, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData unfold_more_sharp = IconData(0xe225, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData unlock_alt_sharp = IconData(0xe226, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData unlock_sharp = IconData(0xe227, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData unsubscribe_sharp = IconData(0xe228, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData update_sharp = IconData(0xe229, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData upload_file_sharp = IconData(0xe22a, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData upload_sharp = IconData(0xe22b, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData usb_alt_device_sharp = IconData(0xe22c, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData usb_alt_sharp = IconData(0xe22d, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData usb_sharp = IconData(0xe22e, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData user_circle_sharp = IconData(0xe22f, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData user_minor_sharp = IconData(0xe230, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData user_settings_sharp = IconData(0xe231, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData user_sharp = IconData(0xe232, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData vacation_sharp = IconData(0xe233, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData verified_sharp = IconData(0xe234, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData very_satisfied_sharp = IconData(0xe235, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData video_camera_sharp = IconData(0xe236, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData video_off_sharp = IconData(0xe237, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData video_play_sharp = IconData(0xe238, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData video_sharp = IconData(0xe239, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData virtual_devices_sharp = IconData(0xe23a, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData virtual_tether_sharp = IconData(0xe23b, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData visibility_off_sharp = IconData(0xe23c, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData visibility_services_sharp = IconData(0xe23d, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData visibility_sharp = IconData(0xe23e, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData voice_wedge_sharp = IconData(0xe23f, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData volte_sharp = IconData(0xe240, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData volume_down_sharp = IconData(0xe241, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData volume_mute_sharp = IconData(0xe242, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData volume_off_sharp = IconData(0xe243, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData volume_up_sharp = IconData(0xe244, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData warning_outline_sharp = IconData(0xe245, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData warning_sharp = IconData(0xe246, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData watch_sharp = IconData(0xe247, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData wb_image_sharp = IconData(0xe248, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData wb_sharp = IconData(0xe249, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData workforce_connect_sharp = IconData(0xe24a, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData workstation_connect_sharp = IconData(0xe24b, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData world_action_sharp = IconData(0xe24c, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData world_sharp = IconData(0xe24d, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData write_sharp = IconData(0xe24e, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData youtube_sharp = IconData(0xe24f, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData zebra_designer_sharp = IconData(0xe250, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData zebra_onecare_sharp = IconData(0xe251, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData zebra_setup_utility_sharp = IconData(0xe252, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData zero_scale_sharp = IconData(0xe253, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData zero_touch_sharp = IconData(0xe254, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData zoom_in_map_sharp = IconData(0xe255, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData zoom_in_sharp = IconData(0xe256, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData zoom_out_map_sharp = IconData(0xe257, fontFamily: _familySharp, fontPackage: _package);
-  static const IconData zoom_out_sharp = IconData(0xe258, fontFamily: _familySharp, fontPackage: _package);
+      IconData(0xe187, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData react_add_sharp = IconData(0xe188, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData react_thumbsup_sharp = IconData(0xe189, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData recall_sharp = IconData(0xe18a, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData receipt_sharp = IconData(0xe18b, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData recording_sharp = IconData(0xe18c, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData redo_sharp = IconData(0xe18d, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData refresh_sharp = IconData(0xe18e, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData remove_box_sharp = IconData(0xe18f, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData remove_circle_outline_sharp = IconData(0xe190, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData remove_circle_sharp = IconData(0xe191, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData remove_group_sharp = IconData(0xe192, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData remove_person_sharp = IconData(0xe193, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData remove_sharp = IconData(0xe194, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData renew_sharp = IconData(0xe195, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData reorder_sharp = IconData(0xe196, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData repeat_sharp = IconData(0xe197, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData replay_sharp = IconData(0xe198, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData reply_sharp = IconData(0xe199, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData report_sharp = IconData(0xe19a, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData restart_alt_sharp = IconData(0xe19b, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData review_sharp = IconData(0xe19c, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData road_map_sharp = IconData(0xe19d, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData rotate_left_sharp = IconData(0xe19e, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData rotate_right_sharp = IconData(0xe19f, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData rss_feed_sharp = IconData(0xe1a0, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData rules_sharp = IconData(0xe1a1, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData sad_sharp = IconData(0xe1a2, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData satisfied_sharp = IconData(0xe1a3, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData save_alt_sharp = IconData(0xe1a4, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData save_content_sharp = IconData(0xe1a5, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData save_sharp = IconData(0xe1a6, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData scan_rate_sharp = IconData(0xe1a7, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData scanner_sharp = IconData(0xe1a8, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData schedule_sharp = IconData(0xe1a9, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData school_sharp = IconData(0xe1aa, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData screen_rotation_sharp = IconData(0xe1ab, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData sd_card_sharp = IconData(0xe1ac, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData search_sharp = IconData(0xe1ad, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData security_check_sharp = IconData(0xe1ae, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData security_sharp = IconData(0xe1af, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData send_sharp = IconData(0xe1b0, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData settings_sharp = IconData(0xe1b1, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData shape_recognition_sharp = IconData(0xe1b2, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData share_sharp = IconData(0xe1b3, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData shared_folder_sharp = IconData(0xe1b4, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData ship_sharp = IconData(0xe1b5, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData sim_card_sharp = IconData(0xe1b6, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData skip_next_sharp = IconData(0xe1b7, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData skip_previous_sharp = IconData(0xe1b8, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData slide_show_sharp = IconData(0xe1b9, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData smart_phone_sharp = IconData(0xe1ba, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData sms_sharp = IconData(0xe1bb, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData snooze_sharp = IconData(0xe1bc, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData solutions_sharp = IconData(0xe1bd, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData sort_content_sharp = IconData(0xe1be, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData sort_sharp = IconData(0xe1bf, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData speaker_sharp = IconData(0xe1c0, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData star_half_sharp = IconData(0xe1c1, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData star_outline_sharp = IconData(0xe1c2, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData star_sharp = IconData(0xe1c3, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData steps_sharp = IconData(0xe1c4, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData sticker_sharp = IconData(0xe1c5, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData stop_circle_sharp = IconData(0xe1c6, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData stop_sharp = IconData(0xe1c7, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData store_release_sharp = IconData(0xe1c8, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData store_sharp = IconData(0xe1c9, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData store_swap_sharp = IconData(0xe1ca, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData store_transfer_sharp = IconData(0xe1cb, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData straighten_sharp = IconData(0xe1cc, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData strategy_sharp = IconData(0xe1cd, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData strikethrough_sharp = IconData(0xe1ce, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData subscribe_sharp = IconData(0xe1cf, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData swap_sharp = IconData(0xe1d0, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData switch_sharp = IconData(0xe1d1, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData switch_user_sharp = IconData(0xe1d2, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData sync_action_sharp = IconData(0xe1d3, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData sync_disabled_sharp = IconData(0xe1d4, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData sync_sharp = IconData(0xe1d5, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData table_sharp = IconData(0xe1d6, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData tablet_mac_sharp = IconData(0xe1d7, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData tablet_sharp = IconData(0xe1d8, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData tag_enterprise_sharp = IconData(0xe1d9, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData tag_sharp = IconData(0xe1da, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData tap_to_pay_sharp = IconData(0xe1db, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData taxi_sharp = IconData(0xe1dc, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData text_color_sharp = IconData(0xe1dd, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData tiers_sharp = IconData(0xe1de, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData timecard_approve_sharp = IconData(0xe1df, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData timecard_sharp = IconData(0xe1e0, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData timecard_warning_sharp = IconData(0xe1e1, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData timer_sharp = IconData(0xe1e2, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData toggle_off_sharp = IconData(0xe1e3, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData toggle_on_sharp = IconData(0xe1e4, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData touch_sharp = IconData(0xe1e5, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData train_sharp = IconData(0xe1e6, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData trending_down_sharp = IconData(0xe1e7, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData trending_up_sharp = IconData(0xe1e8, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData tv_sharp = IconData(0xe1e9, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData twitter_sharp = IconData(0xe1ea, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData type_sharp = IconData(0xe1eb, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData uhf_rfid_sharp = IconData(0xe1ec, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData underline_sharp = IconData(0xe1ed, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData undo_sharp = IconData(0xe1ee, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData unfold_less_sharp = IconData(0xe1ef, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData unfold_more_sharp = IconData(0xe1f0, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData unlock_alt_sharp = IconData(0xe1f1, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData unlock_sharp = IconData(0xe1f2, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData unsubscribe_sharp = IconData(0xe1f3, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData update_sharp = IconData(0xe1f4, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData upload_file_sharp = IconData(0xe1f5, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData upload_sharp = IconData(0xe1f6, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData usb_alt_device_sharp = IconData(0xe1f7, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData usb_alt_sharp = IconData(0xe1f8, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData usb_sharp = IconData(0xe1f9, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData user_circle_sharp = IconData(0xe1fa, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData user_minor_sharp = IconData(0xe1fb, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData user_settings_sharp = IconData(0xe1fc, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData user_sharp = IconData(0xe1fd, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData vacation_sharp = IconData(0xe1fe, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData verified_sharp = IconData(0xe1ff, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData very_satisfied_sharp = IconData(0xe200, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData video_camera_sharp = IconData(0xe201, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData video_off_sharp = IconData(0xe202, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData video_play_sharp = IconData(0xe203, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData video_sharp = IconData(0xe204, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData visibility_off_sharp = IconData(0xe205, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData visibility_sharp = IconData(0xe206, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData volte_sharp = IconData(0xe207, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData volume_down_sharp = IconData(0xe208, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData volume_mute_sharp = IconData(0xe209, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData volume_off_sharp = IconData(0xe20a, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData volume_up_sharp = IconData(0xe20b, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData warning_outline_sharp = IconData(0xe20c, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData warning_sharp = IconData(0xe20d, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData watch_sharp = IconData(0xe20e, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData wb_image_sharp = IconData(0xe20f, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData wb_sharp = IconData(0xe210, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData world_action_sharp = IconData(0xe211, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData world_sharp = IconData(0xe212, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData write_sharp = IconData(0xe213, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData youtube_sharp = IconData(0xe214, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData zero_scale_sharp = IconData(0xe215, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData zoom_in_map_sharp = IconData(0xe216, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData zoom_in_sharp = IconData(0xe217, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData zoom_out_map_sharp = IconData(0xe218, fontFamily: _familySharp, fontPackage: _package);
+  static const IconData zoom_out_sharp = IconData(0xe219, fontFamily: _familySharp, fontPackage: _package);
 }
 
-/// List of all rounded icons.
+// List of all rounded icons.
 const Map<String, IconData> iconsRound = {
   'activity_round': ZetaIcons.activity_round,
   'add_alert_round': ZetaIcons.add_alert_round,
@@ -1270,15 +1139,12 @@ const Map<String, IconData> iconsRound = {
   'android_round': ZetaIcons.android_round,
   'antenna_round': ZetaIcons.antenna_round,
   'app_edit_round': ZetaIcons.app_edit_round,
-  'appgallery_round': ZetaIcons.appgallery_round,
-  'application_analytics_round': ZetaIcons.application_analytics_round,
   'apps_round': ZetaIcons.apps_round,
   'ar_round': ZetaIcons.ar_round,
   'arrow_back_round': ZetaIcons.arrow_back_round,
   'arrow_down_round': ZetaIcons.arrow_down_round,
   'arrow_forward_round': ZetaIcons.arrow_forward_round,
   'arrow_up_round': ZetaIcons.arrow_up_round,
-  'asset_tracker_lite_round': ZetaIcons.asset_tracker_lite_round,
   'attachment_round': ZetaIcons.attachment_round,
   'audio_round': ZetaIcons.audio_round,
   'audit_activity_round': ZetaIcons.audit_activity_round,
@@ -1301,9 +1167,7 @@ const Map<String, IconData> iconsRound = {
   'block_content_round': ZetaIcons.block_content_round,
   'block_round': ZetaIcons.block_round,
   'blog_round': ZetaIcons.blog_round,
-  'blood_bag_plus_round': ZetaIcons.blood_bag_plus_round,
   'bluetooth_disabled_round': ZetaIcons.bluetooth_disabled_round,
-  'bluetooth_management_round': ZetaIcons.bluetooth_management_round,
   'bluetooth_round': ZetaIcons.bluetooth_round,
   'bluetooth_searching_round': ZetaIcons.bluetooth_searching_round,
   'bold_round': ZetaIcons.bold_round,
@@ -1311,7 +1175,6 @@ const Map<String, IconData> iconsRound = {
   'bookmark_round': ZetaIcons.bookmark_round,
   'brightness_round': ZetaIcons.brightness_round,
   'broadcast_round': ZetaIcons.broadcast_round,
-  'browser_print_round': ZetaIcons.browser_print_round,
   'build_round': ZetaIcons.build_round,
   'building_round': ZetaIcons.building_round,
   'bullet_list_round': ZetaIcons.bullet_list_round,
@@ -1410,7 +1273,6 @@ const Map<String, IconData> iconsRound = {
   'clock_upcoming_round': ZetaIcons.clock_upcoming_round,
   'close_round': ZetaIcons.close_round,
   'closed_caption_round': ZetaIcons.closed_caption_round,
-  'cloud_connect_round': ZetaIcons.cloud_connect_round,
   'cloud_done_round': ZetaIcons.cloud_done_round,
   'cloud_download_round': ZetaIcons.cloud_download_round,
   'cloud_off_round': ZetaIcons.cloud_off_round,
@@ -1431,18 +1293,14 @@ const Map<String, IconData> iconsRound = {
   'crop_round': ZetaIcons.crop_round,
   'dark_mode_round': ZetaIcons.dark_mode_round,
   'dashboard_round': ZetaIcons.dashboard_round,
-  'data_wedge_round': ZetaIcons.data_wedge_round,
   'delete_forever_round': ZetaIcons.delete_forever_round,
   'delete_outline_round': ZetaIcons.delete_outline_round,
   'delete_round': ZetaIcons.delete_round,
-  'design_tools_round': ZetaIcons.design_tools_round,
   'desktop_round': ZetaIcons.desktop_round,
   'device_settings_round': ZetaIcons.device_settings_round,
-  'device_tracker_round': ZetaIcons.device_tracker_round,
   'devices_ecosystem_round': ZetaIcons.devices_ecosystem_round,
   'devices_round': ZetaIcons.devices_round,
   'dialpad_round': ZetaIcons.dialpad_round,
-  'direct_connect_round': ZetaIcons.direct_connect_round,
   'dislike_round': ZetaIcons.dislike_round,
   'distribute_horizontal_round': ZetaIcons.distribute_horizontal_round,
   'distribute_vertical_round': ZetaIcons.distribute_vertical_round,
@@ -1459,12 +1317,8 @@ const Map<String, IconData> iconsRound = {
   'email_outline_round': ZetaIcons.email_outline_round,
   'email_reply_all_round': ZetaIcons.email_reply_all_round,
   'email_round': ZetaIcons.email_round,
-  'emdk_round': ZetaIcons.emdk_round,
   'end_call_round': ZetaIcons.end_call_round,
-  'enterprise_browser_round': ZetaIcons.enterprise_browser_round,
-  'enterprise_connectors_round': ZetaIcons.enterprise_connectors_round,
   'enterprise_diagnostics_round': ZetaIcons.enterprise_diagnostics_round,
-  'enterprise_keyboard_round': ZetaIcons.enterprise_keyboard_round,
   'environmental_round': ZetaIcons.environmental_round,
   'error_outline_round': ZetaIcons.error_outline_round,
   'error_round': ZetaIcons.error_round,
@@ -1500,7 +1354,6 @@ const Map<String, IconData> iconsRound = {
   'full_screen_round': ZetaIcons.full_screen_round,
   'gif_round': ZetaIcons.gif_round,
   'glossary_round': ZetaIcons.glossary_round,
-  'gms_restricted_mode_round': ZetaIcons.gms_restricted_mode_round,
   'grid_off_round': ZetaIcons.grid_off_round,
   'grid_on_round': ZetaIcons.grid_on_round,
   'grid_view_round': ZetaIcons.grid_view_round,
@@ -1530,7 +1383,6 @@ const Map<String, IconData> iconsRound = {
   'indeterminate_check_box_round': ZetaIcons.indeterminate_check_box_round,
   'info_round': ZetaIcons.info_round,
   'instagram_round': ZetaIcons.instagram_round,
-  'intelligent_document_capture_round': ZetaIcons.intelligent_document_capture_round,
   'ios_share_round': ZetaIcons.ios_share_round,
   'iso_round': ZetaIcons.iso_round,
   'issue_audit_round': ZetaIcons.issue_audit_round,
@@ -1538,19 +1390,16 @@ const Map<String, IconData> iconsRound = {
   'jpg_attach_round': ZetaIcons.jpg_attach_round,
   'justify_round': ZetaIcons.justify_round,
   'keyboard_round': ZetaIcons.keyboard_round,
-  'label_plus_round': ZetaIcons.label_plus_round,
   'label_round': ZetaIcons.label_round,
   'laptop_round': ZetaIcons.laptop_round,
   'last_page_round': ZetaIcons.last_page_round,
   'layers_round': ZetaIcons.layers_round,
-  'life_guard_round': ZetaIcons.life_guard_round,
   'light_mode_round': ZetaIcons.light_mode_round,
   'light_rail_train_round': ZetaIcons.light_rail_train_round,
   'lightbulb_round': ZetaIcons.lightbulb_round,
   'like_round': ZetaIcons.like_round,
   'line_spacing_round': ZetaIcons.line_spacing_round,
   'link_add_round': ZetaIcons.link_add_round,
-  'link_os_round': ZetaIcons.link_os_round,
   'link_round': ZetaIcons.link_round,
   'linkedin_round': ZetaIcons.linkedin_round,
   'list_alt_round': ZetaIcons.list_alt_round,
@@ -1571,8 +1420,6 @@ const Map<String, IconData> iconsRound = {
   'love_round': ZetaIcons.love_round,
   'maintenance_round': ZetaIcons.maintenance_round,
   'map_round': ZetaIcons.map_round,
-  'mdm_connectors_round': ZetaIcons.mdm_connectors_round,
-  'mdm_toolkit_round': ZetaIcons.mdm_toolkit_round,
   'meal_round': ZetaIcons.meal_round,
   'medium_round': ZetaIcons.medium_round,
   'memory_round': ZetaIcons.memory_round,
@@ -1581,16 +1428,12 @@ const Map<String, IconData> iconsRound = {
   'microphone_outline_round': ZetaIcons.microphone_outline_round,
   'microphone_round': ZetaIcons.microphone_round,
   'mobile_friendly_round': ZetaIcons.mobile_friendly_round,
-  'mobility_dna_round': ZetaIcons.mobility_dna_round,
-  'mobility_security_round': ZetaIcons.mobility_security_round,
   'money_euro_round': ZetaIcons.money_euro_round,
   'money_pound_round': ZetaIcons.money_pound_round,
   'money_usd_round': ZetaIcons.money_usd_round,
   'monitor_round': ZetaIcons.monitor_round,
   'more_horizontal_round': ZetaIcons.more_horizontal_round,
   'more_vertical_round': ZetaIcons.more_vertical_round,
-  'multi_code_data_formatting_round': ZetaIcons.multi_code_data_formatting_round,
-  'mx_round': ZetaIcons.mx_round,
   'my_location_round': ZetaIcons.my_location_round,
   'navigate_round': ZetaIcons.navigate_round,
   'navigation_round': ZetaIcons.navigation_round,
@@ -1603,21 +1446,17 @@ const Map<String, IconData> iconsRound = {
   'note_round': ZetaIcons.note_round,
   'notifications_off_round': ZetaIcons.notifications_off_round,
   'numbered_list_round': ZetaIcons.numbered_list_round,
-  'ocr_round': ZetaIcons.ocr_round,
-  'oem_config_round': ZetaIcons.oem_config_round,
   'open_in_full_round': ZetaIcons.open_in_full_round,
   'open_in_new_window_round': ZetaIcons.open_in_new_window_round,
   'open_new_off_round': ZetaIcons.open_new_off_round,
   'page_height_round': ZetaIcons.page_height_round,
   'page_rotate_round': ZetaIcons.page_rotate_round,
   'page_width_round': ZetaIcons.page_width_round,
-  'pairing_solutions_round': ZetaIcons.pairing_solutions_round,
   'palette_round': ZetaIcons.palette_round,
   'partner_round': ZetaIcons.partner_round,
   'pause_circle_round': ZetaIcons.pause_circle_round,
   'pause_round': ZetaIcons.pause_round,
   'pdf_attach_round': ZetaIcons.pdf_attach_round,
-  'pdf_direct_round': ZetaIcons.pdf_direct_round,
   'pending_round': ZetaIcons.pending_round,
   'person_admin_round': ZetaIcons.person_admin_round,
   'person_assign_round': ZetaIcons.person_assign_round,
@@ -1650,18 +1489,12 @@ const Map<String, IconData> iconsRound = {
   'point_star_round': ZetaIcons.point_star_round,
   'point_token_round': ZetaIcons.point_token_round,
   'portrait_round': ZetaIcons.portrait_round,
-  'power_precision_round': ZetaIcons.power_precision_round,
   'ppt_attach_round': ZetaIcons.ppt_attach_round,
-  'preferred_symbol_round': ZetaIcons.preferred_symbol_round,
   'price_round': ZetaIcons.price_round,
-  'print_secure_round': ZetaIcons.print_secure_round,
-  'print_station_round': ZetaIcons.print_station_round,
-  'printer_profile_manager_round': ZetaIcons.printer_profile_manager_round,
   'printer_round': ZetaIcons.printer_round,
   'priority_round': ZetaIcons.priority_round,
   'pro_round': ZetaIcons.pro_round,
   'productivity_apps_round': ZetaIcons.productivity_apps_round,
-  'przm_round': ZetaIcons.przm_round,
   'ptt_round': ZetaIcons.ptt_round,
   'publish_round': ZetaIcons.publish_round,
   'push_pin_round': ZetaIcons.push_pin_round,
@@ -1676,9 +1509,6 @@ const Map<String, IconData> iconsRound = {
   'recording_round': ZetaIcons.recording_round,
   'redo_round': ZetaIcons.redo_round,
   'refresh_round': ZetaIcons.refresh_round,
-  'remote_control_round': ZetaIcons.remote_control_round,
-  'remote_diagnostics_round': ZetaIcons.remote_diagnostics_round,
-  'remote_management_round': ZetaIcons.remote_management_round,
   'remove_box_round': ZetaIcons.remove_box_round,
   'remove_circle_outline_round': ZetaIcons.remove_circle_outline_round,
   'remove_circle_round': ZetaIcons.remove_circle_round,
@@ -1698,17 +1528,12 @@ const Map<String, IconData> iconsRound = {
   'rotate_right_round': ZetaIcons.rotate_right_round,
   'rss_feed_round': ZetaIcons.rss_feed_round,
   'rules_round': ZetaIcons.rules_round,
-  'rx_round': ZetaIcons.rx_round,
   'sad_round': ZetaIcons.sad_round,
   'satisfied_round': ZetaIcons.satisfied_round,
   'save_alt_round': ZetaIcons.save_alt_round,
   'save_content_round': ZetaIcons.save_content_round,
   'save_round': ZetaIcons.save_round,
-  'scan_and_pair_round': ZetaIcons.scan_and_pair_round,
   'scan_rate_round': ZetaIcons.scan_rate_round,
-  'scan_speed_analytics_round': ZetaIcons.scan_speed_analytics_round,
-  'scan_to_connect_round': ZetaIcons.scan_to_connect_round,
-  'scanner_control_application_round': ZetaIcons.scanner_control_application_round,
   'scanner_round': ZetaIcons.scanner_round,
   'schedule_round': ZetaIcons.schedule_round,
   'school_round': ZetaIcons.school_round,
@@ -1718,29 +1543,22 @@ const Map<String, IconData> iconsRound = {
   'security_check_round': ZetaIcons.security_check_round,
   'security_round': ZetaIcons.security_round,
   'send_round': ZetaIcons.send_round,
-  'setting_tool_round': ZetaIcons.setting_tool_round,
   'settings_round': ZetaIcons.settings_round,
   'shape_recognition_round': ZetaIcons.shape_recognition_round,
   'share_round': ZetaIcons.share_round,
   'shared_folder_round': ZetaIcons.shared_folder_round,
   'ship_round': ZetaIcons.ship_round,
   'sim_card_round': ZetaIcons.sim_card_round,
-  'simulscan_round': ZetaIcons.simulscan_round,
   'skip_next_round': ZetaIcons.skip_next_round,
   'skip_previous_round': ZetaIcons.skip_previous_round,
   'slide_show_round': ZetaIcons.slide_show_round,
   'smart_phone_round': ZetaIcons.smart_phone_round,
-  'smart_te_lite_round': ZetaIcons.smart_te_lite_round,
-  'smart_te_round': ZetaIcons.smart_te_round,
-  'smart_tek_round': ZetaIcons.smart_tek_round,
-  'smartdex_round': ZetaIcons.smartdex_round,
   'sms_round': ZetaIcons.sms_round,
   'snooze_round': ZetaIcons.snooze_round,
   'solutions_round': ZetaIcons.solutions_round,
   'sort_content_round': ZetaIcons.sort_content_round,
   'sort_round': ZetaIcons.sort_round,
   'speaker_round': ZetaIcons.speaker_round,
-  'stagenow_round': ZetaIcons.stagenow_round,
   'star_half_round': ZetaIcons.star_half_round,
   'star_outline_round': ZetaIcons.star_outline_round,
   'star_round': ZetaIcons.star_round,
@@ -1757,7 +1575,6 @@ const Map<String, IconData> iconsRound = {
   'strikethrough_round': ZetaIcons.strikethrough_round,
   'subscribe_round': ZetaIcons.subscribe_round,
   'swap_round': ZetaIcons.swap_round,
-  'swipe_assist_round': ZetaIcons.swipe_assist_round,
   'switch_round': ZetaIcons.switch_round,
   'switch_user_round': ZetaIcons.switch_user_round,
   'sync_action_round': ZetaIcons.sync_action_round,
@@ -1770,7 +1587,6 @@ const Map<String, IconData> iconsRound = {
   'tag_round': ZetaIcons.tag_round,
   'tap_to_pay_round': ZetaIcons.tap_to_pay_round,
   'taxi_round': ZetaIcons.taxi_round,
-  'tekspeech_pro_round': ZetaIcons.tekspeech_pro_round,
   'text_color_round': ZetaIcons.text_color_round,
   'tiers_round': ZetaIcons.tiers_round,
   'timecard_approve_round': ZetaIcons.timecard_approve_round,
@@ -1811,12 +1627,8 @@ const Map<String, IconData> iconsRound = {
   'video_off_round': ZetaIcons.video_off_round,
   'video_play_round': ZetaIcons.video_play_round,
   'video_round': ZetaIcons.video_round,
-  'virtual_devices_round': ZetaIcons.virtual_devices_round,
-  'virtual_tether_round': ZetaIcons.virtual_tether_round,
   'visibility_off_round': ZetaIcons.visibility_off_round,
   'visibility_round': ZetaIcons.visibility_round,
-  'visibility_services_round': ZetaIcons.visibility_services_round,
-  'voice_wedge_round': ZetaIcons.voice_wedge_round,
   'volte_round': ZetaIcons.volte_round,
   'volume_down_round': ZetaIcons.volume_down_round,
   'volume_mute_round': ZetaIcons.volume_mute_round,
@@ -1827,24 +1639,18 @@ const Map<String, IconData> iconsRound = {
   'watch_round': ZetaIcons.watch_round,
   'wb_image_round': ZetaIcons.wb_image_round,
   'wb_round': ZetaIcons.wb_round,
-  'workforce_connect_round': ZetaIcons.workforce_connect_round,
-  'workstation_connect_round': ZetaIcons.workstation_connect_round,
   'world_action_round': ZetaIcons.world_action_round,
   'world_round': ZetaIcons.world_round,
   'write_round': ZetaIcons.write_round,
   'youtube_round': ZetaIcons.youtube_round,
-  'zebra_designer_round': ZetaIcons.zebra_designer_round,
-  'zebra_onecare_round': ZetaIcons.zebra_onecare_round,
-  'zebra_setup_utility_round': ZetaIcons.zebra_setup_utility_round,
   'zero_scale_round': ZetaIcons.zero_scale_round,
-  'zero_touch_round': ZetaIcons.zero_touch_round,
   'zoom_in_map_round': ZetaIcons.zoom_in_map_round,
   'zoom_in_round': ZetaIcons.zoom_in_round,
   'zoom_out_map_round': ZetaIcons.zoom_out_map_round,
   'zoom_out_round': ZetaIcons.zoom_out_round,
 };
 
-/// List of all sharp icons.
+// List of all sharp icons.
 const Map<String, IconData> iconsSharp = {
   'activity_sharp': ZetaIcons.activity_sharp,
   'add_alert_sharp': ZetaIcons.add_alert_sharp,
@@ -1874,15 +1680,12 @@ const Map<String, IconData> iconsSharp = {
   'android_sharp': ZetaIcons.android_sharp,
   'antenna_sharp': ZetaIcons.antenna_sharp,
   'app_edit_sharp': ZetaIcons.app_edit_sharp,
-  'appgallery_sharp': ZetaIcons.appgallery_sharp,
-  'application_analytics_sharp': ZetaIcons.application_analytics_sharp,
   'apps_sharp': ZetaIcons.apps_sharp,
   'ar_sharp': ZetaIcons.ar_sharp,
   'arrow_back_sharp': ZetaIcons.arrow_back_sharp,
   'arrow_down_sharp': ZetaIcons.arrow_down_sharp,
   'arrow_forward_sharp': ZetaIcons.arrow_forward_sharp,
   'arrow_up_sharp': ZetaIcons.arrow_up_sharp,
-  'asset_tracker_lite_sharp': ZetaIcons.asset_tracker_lite_sharp,
   'attachment_sharp': ZetaIcons.attachment_sharp,
   'audio_sharp': ZetaIcons.audio_sharp,
   'audit_activity_sharp': ZetaIcons.audit_activity_sharp,
@@ -1905,9 +1708,7 @@ const Map<String, IconData> iconsSharp = {
   'block_content_sharp': ZetaIcons.block_content_sharp,
   'block_sharp': ZetaIcons.block_sharp,
   'blog_sharp': ZetaIcons.blog_sharp,
-  'blood_bag_plus_sharp': ZetaIcons.blood_bag_plus_sharp,
   'bluetooth_disabled_sharp': ZetaIcons.bluetooth_disabled_sharp,
-  'bluetooth_management_sharp': ZetaIcons.bluetooth_management_sharp,
   'bluetooth_searching_sharp': ZetaIcons.bluetooth_searching_sharp,
   'bluetooth_sharp': ZetaIcons.bluetooth_sharp,
   'bold_sharp': ZetaIcons.bold_sharp,
@@ -1915,7 +1716,6 @@ const Map<String, IconData> iconsSharp = {
   'bookmark_sharp': ZetaIcons.bookmark_sharp,
   'brightness_sharp': ZetaIcons.brightness_sharp,
   'broadcast_sharp': ZetaIcons.broadcast_sharp,
-  'browser_print_sharp': ZetaIcons.browser_print_sharp,
   'build_sharp': ZetaIcons.build_sharp,
   'building_sharp': ZetaIcons.building_sharp,
   'bullet_list_sharp': ZetaIcons.bullet_list_sharp,
@@ -2014,7 +1814,6 @@ const Map<String, IconData> iconsSharp = {
   'clock_upcoming_sharp': ZetaIcons.clock_upcoming_sharp,
   'close_sharp': ZetaIcons.close_sharp,
   'closed_caption_sharp': ZetaIcons.closed_caption_sharp,
-  'cloud_connect_sharp': ZetaIcons.cloud_connect_sharp,
   'cloud_done_sharp': ZetaIcons.cloud_done_sharp,
   'cloud_download_sharp': ZetaIcons.cloud_download_sharp,
   'cloud_off_sharp': ZetaIcons.cloud_off_sharp,
@@ -2035,18 +1834,14 @@ const Map<String, IconData> iconsSharp = {
   'crop_sharp': ZetaIcons.crop_sharp,
   'dark_mode_sharp': ZetaIcons.dark_mode_sharp,
   'dashboard_sharp': ZetaIcons.dashboard_sharp,
-  'data_wedge_sharp': ZetaIcons.data_wedge_sharp,
   'delete_forever_sharp': ZetaIcons.delete_forever_sharp,
   'delete_outline_sharp': ZetaIcons.delete_outline_sharp,
   'delete_sharp': ZetaIcons.delete_sharp,
-  'design_tools_sharp': ZetaIcons.design_tools_sharp,
   'desktop_sharp': ZetaIcons.desktop_sharp,
   'device_settings_sharp': ZetaIcons.device_settings_sharp,
-  'device_tracker_sharp': ZetaIcons.device_tracker_sharp,
   'devices_ecosystem_sharp': ZetaIcons.devices_ecosystem_sharp,
   'devices_sharp': ZetaIcons.devices_sharp,
   'dialpad_sharp': ZetaIcons.dialpad_sharp,
-  'direct_connect_sharp': ZetaIcons.direct_connect_sharp,
   'dislike_sharp': ZetaIcons.dislike_sharp,
   'distribute_horizontal_sharp': ZetaIcons.distribute_horizontal_sharp,
   'distribute_vertical_sharp': ZetaIcons.distribute_vertical_sharp,
@@ -2063,12 +1858,8 @@ const Map<String, IconData> iconsSharp = {
   'email_outline_sharp': ZetaIcons.email_outline_sharp,
   'email_reply_all_sharp': ZetaIcons.email_reply_all_sharp,
   'email_sharp': ZetaIcons.email_sharp,
-  'emdk_sharp': ZetaIcons.emdk_sharp,
   'end_call_sharp': ZetaIcons.end_call_sharp,
-  'enterprise_browser_sharp': ZetaIcons.enterprise_browser_sharp,
-  'enterprise_connectors_sharp': ZetaIcons.enterprise_connectors_sharp,
   'enterprise_diagnostics_sharp': ZetaIcons.enterprise_diagnostics_sharp,
-  'enterprise_keyboard_sharp': ZetaIcons.enterprise_keyboard_sharp,
   'environmental_sharp': ZetaIcons.environmental_sharp,
   'error_outline_sharp': ZetaIcons.error_outline_sharp,
   'error_sharp': ZetaIcons.error_sharp,
@@ -2104,7 +1895,6 @@ const Map<String, IconData> iconsSharp = {
   'full_screen_sharp': ZetaIcons.full_screen_sharp,
   'gif_sharp': ZetaIcons.gif_sharp,
   'glossary_sharp': ZetaIcons.glossary_sharp,
-  'gms_restricted_mode_sharp': ZetaIcons.gms_restricted_mode_sharp,
   'grid_off_sharp': ZetaIcons.grid_off_sharp,
   'grid_on_sharp': ZetaIcons.grid_on_sharp,
   'grid_view_sharp': ZetaIcons.grid_view_sharp,
@@ -2134,7 +1924,6 @@ const Map<String, IconData> iconsSharp = {
   'indeterminate_check_box_sharp': ZetaIcons.indeterminate_check_box_sharp,
   'info_sharp': ZetaIcons.info_sharp,
   'instagram_sharp': ZetaIcons.instagram_sharp,
-  'intelligent_document_capture_sharp': ZetaIcons.intelligent_document_capture_sharp,
   'ios_share_sharp': ZetaIcons.ios_share_sharp,
   'iso_sharp': ZetaIcons.iso_sharp,
   'issue_audit_sharp': ZetaIcons.issue_audit_sharp,
@@ -2142,19 +1931,16 @@ const Map<String, IconData> iconsSharp = {
   'jpg_attach_sharp': ZetaIcons.jpg_attach_sharp,
   'justify_sharp': ZetaIcons.justify_sharp,
   'keyboard_sharp': ZetaIcons.keyboard_sharp,
-  'label_plus_sharp': ZetaIcons.label_plus_sharp,
   'label_sharp': ZetaIcons.label_sharp,
   'laptop_sharp': ZetaIcons.laptop_sharp,
   'last_page_sharp': ZetaIcons.last_page_sharp,
   'layers_sharp': ZetaIcons.layers_sharp,
-  'life_guard_sharp': ZetaIcons.life_guard_sharp,
   'light_mode_sharp': ZetaIcons.light_mode_sharp,
   'light_rail_train_sharp': ZetaIcons.light_rail_train_sharp,
   'lightbulb_sharp': ZetaIcons.lightbulb_sharp,
   'like_sharp': ZetaIcons.like_sharp,
   'line_spacing_sharp': ZetaIcons.line_spacing_sharp,
   'link_add_sharp': ZetaIcons.link_add_sharp,
-  'link_os_sharp': ZetaIcons.link_os_sharp,
   'link_sharp': ZetaIcons.link_sharp,
   'linkedin_sharp': ZetaIcons.linkedin_sharp,
   'list_alt_sharp': ZetaIcons.list_alt_sharp,
@@ -2175,8 +1961,6 @@ const Map<String, IconData> iconsSharp = {
   'love_sharp': ZetaIcons.love_sharp,
   'maintenance_sharp': ZetaIcons.maintenance_sharp,
   'map_sharp': ZetaIcons.map_sharp,
-  'mdm_connectors_sharp': ZetaIcons.mdm_connectors_sharp,
-  'mdm_toolkit_sharp': ZetaIcons.mdm_toolkit_sharp,
   'meal_sharp': ZetaIcons.meal_sharp,
   'medium_sharp': ZetaIcons.medium_sharp,
   'memory_sharp': ZetaIcons.memory_sharp,
@@ -2185,16 +1969,12 @@ const Map<String, IconData> iconsSharp = {
   'microphone_outline_sharp': ZetaIcons.microphone_outline_sharp,
   'microphone_sharp': ZetaIcons.microphone_sharp,
   'mobile_friendly_sharp': ZetaIcons.mobile_friendly_sharp,
-  'mobility_dna_sharp': ZetaIcons.mobility_dna_sharp,
-  'mobility_security_sharp': ZetaIcons.mobility_security_sharp,
   'money_euro_sharp': ZetaIcons.money_euro_sharp,
   'money_pound_sharp': ZetaIcons.money_pound_sharp,
   'money_usd_sharp': ZetaIcons.money_usd_sharp,
   'monitor_sharp': ZetaIcons.monitor_sharp,
   'more_horizontal_sharp': ZetaIcons.more_horizontal_sharp,
   'more_vertical_sharp': ZetaIcons.more_vertical_sharp,
-  'multi_code_data_formatting_sharp': ZetaIcons.multi_code_data_formatting_sharp,
-  'mx_sharp': ZetaIcons.mx_sharp,
   'my_location_sharp': ZetaIcons.my_location_sharp,
   'navigate_sharp': ZetaIcons.navigate_sharp,
   'navigation_sharp': ZetaIcons.navigation_sharp,
@@ -2207,21 +1987,17 @@ const Map<String, IconData> iconsSharp = {
   'note_sharp': ZetaIcons.note_sharp,
   'notifications_off_sharp': ZetaIcons.notifications_off_sharp,
   'numbered_list_sharp': ZetaIcons.numbered_list_sharp,
-  'ocr_sharp': ZetaIcons.ocr_sharp,
-  'oem_config_sharp': ZetaIcons.oem_config_sharp,
   'open_in_full_sharp': ZetaIcons.open_in_full_sharp,
   'open_in_new_window_sharp': ZetaIcons.open_in_new_window_sharp,
   'open_new_off_sharp': ZetaIcons.open_new_off_sharp,
   'page_height_sharp': ZetaIcons.page_height_sharp,
   'page_rotate_sharp': ZetaIcons.page_rotate_sharp,
   'page_width_sharp': ZetaIcons.page_width_sharp,
-  'pairing_solutions_sharp': ZetaIcons.pairing_solutions_sharp,
   'palette_sharp': ZetaIcons.palette_sharp,
   'partner_sharp': ZetaIcons.partner_sharp,
   'pause_circle_sharp': ZetaIcons.pause_circle_sharp,
   'pause_sharp': ZetaIcons.pause_sharp,
   'pdf_attach_sharp': ZetaIcons.pdf_attach_sharp,
-  'pdf_direct_sharp': ZetaIcons.pdf_direct_sharp,
   'pending_sharp': ZetaIcons.pending_sharp,
   'person_admin_sharp': ZetaIcons.person_admin_sharp,
   'person_assign_sharp': ZetaIcons.person_assign_sharp,
@@ -2254,18 +2030,12 @@ const Map<String, IconData> iconsSharp = {
   'point_star_sharp': ZetaIcons.point_star_sharp,
   'point_token_sharp': ZetaIcons.point_token_sharp,
   'portrait_sharp': ZetaIcons.portrait_sharp,
-  'power_precision_sharp': ZetaIcons.power_precision_sharp,
   'ppt_attach_sharp': ZetaIcons.ppt_attach_sharp,
-  'preferred_symbol_sharp': ZetaIcons.preferred_symbol_sharp,
   'price_sharp': ZetaIcons.price_sharp,
-  'print_secure_sharp': ZetaIcons.print_secure_sharp,
-  'print_station_sharp': ZetaIcons.print_station_sharp,
-  'printer_profile_manager_sharp': ZetaIcons.printer_profile_manager_sharp,
   'printer_sharp': ZetaIcons.printer_sharp,
   'priority_sharp': ZetaIcons.priority_sharp,
   'pro_sharp': ZetaIcons.pro_sharp,
   'productivity_apps_sharp': ZetaIcons.productivity_apps_sharp,
-  'przm_sharp': ZetaIcons.przm_sharp,
   'ptt_sharp': ZetaIcons.ptt_sharp,
   'publish_sharp': ZetaIcons.publish_sharp,
   'push_pin_sharp': ZetaIcons.push_pin_sharp,
@@ -2280,9 +2050,6 @@ const Map<String, IconData> iconsSharp = {
   'recording_sharp': ZetaIcons.recording_sharp,
   'redo_sharp': ZetaIcons.redo_sharp,
   'refresh_sharp': ZetaIcons.refresh_sharp,
-  'remote_control_sharp': ZetaIcons.remote_control_sharp,
-  'remote_diagnostics_sharp': ZetaIcons.remote_diagnostics_sharp,
-  'remote_management_sharp': ZetaIcons.remote_management_sharp,
   'remove_box_sharp': ZetaIcons.remove_box_sharp,
   'remove_circle_outline_sharp': ZetaIcons.remove_circle_outline_sharp,
   'remove_circle_sharp': ZetaIcons.remove_circle_sharp,
@@ -2302,17 +2069,12 @@ const Map<String, IconData> iconsSharp = {
   'rotate_right_sharp': ZetaIcons.rotate_right_sharp,
   'rss_feed_sharp': ZetaIcons.rss_feed_sharp,
   'rules_sharp': ZetaIcons.rules_sharp,
-  'rx_sharp': ZetaIcons.rx_sharp,
   'sad_sharp': ZetaIcons.sad_sharp,
   'satisfied_sharp': ZetaIcons.satisfied_sharp,
   'save_alt_sharp': ZetaIcons.save_alt_sharp,
   'save_content_sharp': ZetaIcons.save_content_sharp,
   'save_sharp': ZetaIcons.save_sharp,
-  'scan_and_pair_sharp': ZetaIcons.scan_and_pair_sharp,
   'scan_rate_sharp': ZetaIcons.scan_rate_sharp,
-  'scan_speed_analytics_sharp': ZetaIcons.scan_speed_analytics_sharp,
-  'scan_to_connect_sharp': ZetaIcons.scan_to_connect_sharp,
-  'scanner_control_application_sharp': ZetaIcons.scanner_control_application_sharp,
   'scanner_sharp': ZetaIcons.scanner_sharp,
   'schedule_sharp': ZetaIcons.schedule_sharp,
   'school_sharp': ZetaIcons.school_sharp,
@@ -2322,29 +2084,22 @@ const Map<String, IconData> iconsSharp = {
   'security_check_sharp': ZetaIcons.security_check_sharp,
   'security_sharp': ZetaIcons.security_sharp,
   'send_sharp': ZetaIcons.send_sharp,
-  'setting_tool_sharp': ZetaIcons.setting_tool_sharp,
   'settings_sharp': ZetaIcons.settings_sharp,
   'shape_recognition_sharp': ZetaIcons.shape_recognition_sharp,
   'share_sharp': ZetaIcons.share_sharp,
   'shared_folder_sharp': ZetaIcons.shared_folder_sharp,
   'ship_sharp': ZetaIcons.ship_sharp,
   'sim_card_sharp': ZetaIcons.sim_card_sharp,
-  'simulscan_sharp': ZetaIcons.simulscan_sharp,
   'skip_next_sharp': ZetaIcons.skip_next_sharp,
   'skip_previous_sharp': ZetaIcons.skip_previous_sharp,
   'slide_show_sharp': ZetaIcons.slide_show_sharp,
   'smart_phone_sharp': ZetaIcons.smart_phone_sharp,
-  'smart_te_lite_sharp': ZetaIcons.smart_te_lite_sharp,
-  'smart_te_sharp': ZetaIcons.smart_te_sharp,
-  'smart_tek_sharp': ZetaIcons.smart_tek_sharp,
-  'smartdex_sharp': ZetaIcons.smartdex_sharp,
   'sms_sharp': ZetaIcons.sms_sharp,
   'snooze_sharp': ZetaIcons.snooze_sharp,
   'solutions_sharp': ZetaIcons.solutions_sharp,
   'sort_content_sharp': ZetaIcons.sort_content_sharp,
   'sort_sharp': ZetaIcons.sort_sharp,
   'speaker_sharp': ZetaIcons.speaker_sharp,
-  'stagenow_sharp': ZetaIcons.stagenow_sharp,
   'star_half_sharp': ZetaIcons.star_half_sharp,
   'star_outline_sharp': ZetaIcons.star_outline_sharp,
   'star_sharp': ZetaIcons.star_sharp,
@@ -2361,7 +2116,6 @@ const Map<String, IconData> iconsSharp = {
   'strikethrough_sharp': ZetaIcons.strikethrough_sharp,
   'subscribe_sharp': ZetaIcons.subscribe_sharp,
   'swap_sharp': ZetaIcons.swap_sharp,
-  'swipe_assist_sharp': ZetaIcons.swipe_assist_sharp,
   'switch_sharp': ZetaIcons.switch_sharp,
   'switch_user_sharp': ZetaIcons.switch_user_sharp,
   'sync_action_sharp': ZetaIcons.sync_action_sharp,
@@ -2374,7 +2128,6 @@ const Map<String, IconData> iconsSharp = {
   'tag_sharp': ZetaIcons.tag_sharp,
   'tap_to_pay_sharp': ZetaIcons.tap_to_pay_sharp,
   'taxi_sharp': ZetaIcons.taxi_sharp,
-  'tekspeech_pro_sharp': ZetaIcons.tekspeech_pro_sharp,
   'text_color_sharp': ZetaIcons.text_color_sharp,
   'tiers_sharp': ZetaIcons.tiers_sharp,
   'timecard_approve_sharp': ZetaIcons.timecard_approve_sharp,
@@ -2415,12 +2168,8 @@ const Map<String, IconData> iconsSharp = {
   'video_off_sharp': ZetaIcons.video_off_sharp,
   'video_play_sharp': ZetaIcons.video_play_sharp,
   'video_sharp': ZetaIcons.video_sharp,
-  'virtual_devices_sharp': ZetaIcons.virtual_devices_sharp,
-  'virtual_tether_sharp': ZetaIcons.virtual_tether_sharp,
   'visibility_off_sharp': ZetaIcons.visibility_off_sharp,
-  'visibility_services_sharp': ZetaIcons.visibility_services_sharp,
   'visibility_sharp': ZetaIcons.visibility_sharp,
-  'voice_wedge_sharp': ZetaIcons.voice_wedge_sharp,
   'volte_sharp': ZetaIcons.volte_sharp,
   'volume_down_sharp': ZetaIcons.volume_down_sharp,
   'volume_mute_sharp': ZetaIcons.volume_mute_sharp,
@@ -2431,17 +2180,11 @@ const Map<String, IconData> iconsSharp = {
   'watch_sharp': ZetaIcons.watch_sharp,
   'wb_image_sharp': ZetaIcons.wb_image_sharp,
   'wb_sharp': ZetaIcons.wb_sharp,
-  'workforce_connect_sharp': ZetaIcons.workforce_connect_sharp,
-  'workstation_connect_sharp': ZetaIcons.workstation_connect_sharp,
   'world_action_sharp': ZetaIcons.world_action_sharp,
   'world_sharp': ZetaIcons.world_sharp,
   'write_sharp': ZetaIcons.write_sharp,
   'youtube_sharp': ZetaIcons.youtube_sharp,
-  'zebra_designer_sharp': ZetaIcons.zebra_designer_sharp,
-  'zebra_onecare_sharp': ZetaIcons.zebra_onecare_sharp,
-  'zebra_setup_utility_sharp': ZetaIcons.zebra_setup_utility_sharp,
   'zero_scale_sharp': ZetaIcons.zero_scale_sharp,
-  'zero_touch_sharp': ZetaIcons.zero_touch_sharp,
   'zoom_in_map_sharp': ZetaIcons.zoom_in_map_sharp,
   'zoom_in_sharp': ZetaIcons.zoom_in_sharp,
   'zoom_out_map_sharp': ZetaIcons.zoom_out_map_sharp,

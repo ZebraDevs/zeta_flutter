@@ -17,6 +17,15 @@ extension ListDivider on Iterable<Widget> {
       yield iterator.current;
     }
   }
+
+  /// Space out a list of wigets with gap of fixed width
+  List<Widget> gap(double gap) {
+    return divide(
+      SizedBox.square(
+        dimension: gap,
+      ),
+    ).toList();
+  }
 }
 
 /// Extension to add spacing to any [Widget].
@@ -99,16 +108,5 @@ extension StringExtensions on String? {
   String capitalize() {
     if (this == null) return '';
     return '${this![0].toUpperCase()}${this!.substring(1).toLowerCase()}';
-  }
-}
-
-/// Extension [FirstWhereOrNull] on [Iterable].
-extension FirstWhereOrNull<T> on Iterable<T> {
-  /// Returns the first element satisfying test, or null if there are none.
-  T? firstWhereOrNull(bool Function(T element) test) {
-    for (final element in this) {
-      if (test(element)) return element;
-    }
-    return null;
   }
 }

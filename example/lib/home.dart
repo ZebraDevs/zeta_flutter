@@ -16,6 +16,7 @@ import 'package:zeta_example/pages/components/date_input_example.dart';
 import 'package:zeta_example/pages/components/dialog_example.dart';
 import 'package:zeta_example/pages/components/dialpad_example.dart';
 import 'package:zeta_example/pages/components/dropdown_example.dart';
+import 'package:zeta_example/pages/components/global_header_example.dart';
 import 'package:zeta_example/pages/components/filter_selection_example.dart';
 import 'package:zeta_example/pages/components/list_item_example.dart';
 import 'package:zeta_example/pages/components/navigation_bar_example.dart';
@@ -27,6 +28,7 @@ import 'package:zeta_example/pages/components/select_input_example.dart';
 import 'package:zeta_example/pages/components/search_bar_example.dart';
 import 'package:zeta_example/pages/components/segmented_control_example.dart';
 import 'package:zeta_example/pages/components/stepper_example.dart';
+import 'package:zeta_example/pages/components/stepper_input_example.dart';
 import 'package:zeta_example/pages/components/switch_example.dart';
 import 'package:zeta_example/pages/components/snackbar_example.dart';
 import 'package:zeta_example/pages/components/tabs_example.dart';
@@ -66,6 +68,7 @@ final List<Component> components = [
   Component(NavigationBarExample.name, (context) => const NavigationBarExample()),
   Component(PaginationExample.name, (context) => const PaginationExample()),
   Component(PasswordInputExample.name, (context) => const PasswordInputExample()),
+  Component(GroupHeaderExample.name, (context) => const GroupHeaderExample()),
   Component(DropdownExample.name, (context) => const DropdownExample()),
   Component(ProgressExample.name, (context) => const ProgressExample()),
   Component(SegmentedControlExample.name, (context) => const SegmentedControlExample()),
@@ -84,6 +87,7 @@ final List<Component> components = [
   Component(SelectInputExample.name, (context) => const SelectInputExample()),
   Component(ScreenHeaderBarExample.name, (context) => const ScreenHeaderBarExample()),
   Component(FilterSelectionExample.name, (context) => const FilterSelectionExample()),
+  Component(StepperInputExample.name, (context) => const StepperInputExample()),
 ];
 
 final List<Component> theme = [
