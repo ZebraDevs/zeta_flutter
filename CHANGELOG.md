@@ -18,6 +18,13 @@
 * Remove calls to zeta in button that are not needed ([c46788d](https://github.com/ZebraDevs/zeta_flutter/commit/c46788d46b77d785fa023954219c53d51fa7952b))
 * UX-1090 - Add expansion option for TopAppBar ([#73](https://github.com/ZebraDevs/zeta_flutter/issues/73)) ([ab36e8e](https://github.com/ZebraDevs/zeta_flutter/commit/ab36e8e35566835711cc88e7b05b6460ef9453ea))
 
+## [0.9.1](https://github.com/ZebraDevs/zeta_flutter/compare/v0.9.0...v0.9.1) (2024-05-20)
+
+
+### Bug Fixes
+
+* dependencies ([#76](https://github.com/ZebraDevs/zeta_flutter/issues/76)) ([db8345a](https://github.com/ZebraDevs/zeta_flutter/commit/db8345a2c0452c014dd8869a9df52c89c828b757))
+
 ## [0.8.2](https://github.com/ZebraDevs/zeta_flutter/compare/v0.8.1...v0.8.2) (2024-05-08)
 
 
