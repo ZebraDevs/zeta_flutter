@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 import '../../zeta_flutter.dart';
 
@@ -109,18 +108,5 @@ extension StringExtensions on String? {
   String capitalize() {
     if (this == null) return '';
     return '${this![0].toUpperCase()}${this!.substring(1).toLowerCase()}';
-  }
-}
-
-/// Extensions on [DateFormat]
-extension DateFormatExtensions on DateFormat {
-  //NOTE: this function is a part of intl 0.19.0.
-  /// Parses a string to a DateTime
-  DateTime? tryParseStrict(String inputString) {
-    try {
-      return parseStrict(inputString);
-    } on FormatException {
-      return null;
-    }
   }
 }
