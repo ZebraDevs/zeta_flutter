@@ -1,10 +1,15 @@
-// ignore_for_file: prefer_asserts_with_message, diagnostic_describe_all_properties, public_member_api_docs
+// ignore_for_file: prefer_asserts_with_message, public_member_api_docs
 
 // The content of this file is taken from
 // package:flutter/src/material/switch.dart
 // Changes are commented with "Zeta change:"
 
+// Copyright 2014 The Flutter Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE-3RD-PARTY file.
+
 import 'dart:ui';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
@@ -83,6 +88,39 @@ class MaterialSwitch extends StatefulWidget {
 
   @override
   State<StatefulWidget> createState() => _MaterialSwitchState();
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty<bool>('value', value))
+      ..add(ObjectFlagProperty<ValueChanged<bool>?>.has('onChanged', onChanged))
+      ..add(ColorProperty('activeColor', activeColor))
+      ..add(ColorProperty('activeTrackColor', activeTrackColor))
+      ..add(ColorProperty('inactiveThumbColor', inactiveThumbColor))
+      ..add(ColorProperty('inactiveTrackColor', inactiveTrackColor))
+      ..add(DiagnosticsProperty<ImageProvider<Object>?>('activeThumbImage', activeThumbImage))
+      ..add(ObjectFlagProperty<ImageErrorListener?>.has('onActiveThumbImageError', onActiveThumbImageError))
+      ..add(DiagnosticsProperty<ImageProvider<Object>?>('inactiveThumbImage', inactiveThumbImage))
+      ..add(ObjectFlagProperty<ImageErrorListener?>.has('onInactiveThumbImageError', onInactiveThumbImageError))
+      ..add(DiagnosticsProperty<WidgetStateProperty<Color?>?>('thumbColor', thumbColor))
+      ..add(DiagnosticsProperty<WidgetStateProperty<Color?>?>('trackColor', trackColor))
+      ..add(DiagnosticsProperty<WidgetStateProperty<Color?>?>('trackOutlineColor', trackOutlineColor))
+      ..add(DiagnosticsProperty<WidgetStateProperty<double?>?>('trackOutlineWidth', trackOutlineWidth))
+      ..add(DiagnosticsProperty<WidgetStateProperty<Icon?>?>('thumbIcon', thumbIcon))
+      ..add(EnumProperty<MaterialTapTargetSize?>('materialTapTargetSize', materialTapTargetSize))
+      ..add(EnumProperty<DragStartBehavior>('dragStartBehavior', dragStartBehavior))
+      ..add(DiagnosticsProperty<MouseCursor?>('mouseCursor', mouseCursor))
+      ..add(ColorProperty('focusColor', focusColor))
+      ..add(ColorProperty('hoverColor', hoverColor))
+      ..add(DiagnosticsProperty<WidgetStateProperty<Color?>?>('overlayColor', overlayColor))
+      ..add(DoubleProperty('splashRadius', splashRadius))
+      ..add(DiagnosticsProperty<FocusNode?>('focusNode', focusNode))
+      ..add(ObjectFlagProperty<ValueChanged<bool>?>.has('onFocusChange', onFocusChange))
+      ..add(DiagnosticsProperty<bool>('autofocus', autofocus))
+      ..add(DiagnosticsProperty<bool>('showHover', showHover))
+      ..add(DiagnosticsProperty<Size?>('thumbSize', thumbSize))
+      ..add(DiagnosticsProperty<Size>('size', size));
+  }
 }
 
 class _MaterialSwitchState extends State<MaterialSwitch> with TickerProviderStateMixin, ToggleableStateMixin {
@@ -1091,6 +1129,13 @@ class _SwitchDefaultsM3 extends SwitchThemeData {
   // but not we use `size.height` for this.
   @override
   double get splashRadius => size.height / 2 + 8;
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty<BuildContext>('context', context))
+      ..add(DiagnosticsProperty<Size>('size', size));
+  }
 }
 
 class _SwitchConfigM3 with _SwitchConfig {
