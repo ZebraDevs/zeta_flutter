@@ -518,43 +518,43 @@ class ZetaSelectInputItem extends StatelessWidget {
       ZetaWidgetSize.small => -4.0,
     };
     return ButtonStyle(
-      backgroundColor: MaterialStateProperty.resolveWith((states) {
-        if (states.contains(MaterialState.hovered)) {
+      backgroundColor: WidgetStateProperty.resolveWith((states) {
+        if (states.contains(WidgetState.hovered)) {
           return colors.surfaceHovered;
         }
 
-        if (states.contains(MaterialState.pressed)) {
+        if (states.contains(WidgetState.pressed)) {
           return colors.surfaceSelected;
         }
 
-        if (states.contains(MaterialState.disabled) || onPressed == null) {
+        if (states.contains(WidgetState.disabled) || onPressed == null) {
           return colors.surfaceDisabled;
         }
         return colors.surfacePrimary;
       }),
-      foregroundColor: MaterialStateProperty.resolveWith((states) {
-        if (states.contains(MaterialState.disabled)) {
+      foregroundColor: WidgetStateProperty.resolveWith((states) {
+        if (states.contains(WidgetState.disabled)) {
           return colors.textDisabled;
         }
         return colors.textDefault;
       }),
-      shape: MaterialStateProperty.all(
+      shape: WidgetStateProperty.all(
         RoundedRectangleBorder(
           borderRadius: rounded ? ZetaRadius.minimal : ZetaRadius.none,
         ),
       ),
-      side: MaterialStatePropertyAll(
+      side: WidgetStatePropertyAll(
         selected ? BorderSide(color: colors.primary.shade60) : BorderSide.none,
       ),
-      padding: const MaterialStatePropertyAll(
+      padding: const WidgetStatePropertyAll(
         EdgeInsets.symmetric(horizontal: ZetaSpacing.b),
       ),
-      elevation: const MaterialStatePropertyAll(0),
-      overlayColor: const MaterialStatePropertyAll(Colors.transparent),
-      textStyle: MaterialStatePropertyAll<TextStyle>(
+      elevation: const WidgetStatePropertyAll(0),
+      overlayColor: const WidgetStatePropertyAll(Colors.transparent),
+      textStyle: WidgetStatePropertyAll<TextStyle>(
         size == ZetaWidgetSize.small ? ZetaTextStyles.bodyXSmall : ZetaTextStyles.bodyMedium,
       ),
-      minimumSize: const MaterialStatePropertyAll<Size>(Size.fromHeight(48)),
+      minimumSize: const WidgetStatePropertyAll<Size>(Size.fromHeight(ZetaSpacing.x12)),
       alignment: Alignment.centerLeft,
       visualDensity: VisualDensity(
         horizontal: visualDensity,

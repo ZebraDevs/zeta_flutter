@@ -10,7 +10,9 @@ import 'contrast.dart';
 /// can get a shade for gradients.
 ///
 /// Some of the extensions are rewrites of TinyColor's functions
-/// https://pub.dev/packages/tinycolor. The TinyColor algorithms have also
+/// https://pub.dev/packages/tinycolor. See LICENSE-3RD-PARTY.
+///
+/// The TinyColor algorithms have also
 /// been modified to use Flutter's HSLColor class instead of the custom one in
 /// the TinyColor lib. The functions from TinyColor re-implemented as Color
 /// extensions here are [brighten], [lighten] and [darken]. They are used

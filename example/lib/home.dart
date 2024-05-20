@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:zeta_example/pages/components/accordion_example.dart';
-import 'package:zeta_example/pages/components/app_bar_example.dart';
 import 'package:zeta_example/pages/components/avatar_example.dart';
 import 'package:zeta_example/pages/components/badges_example.dart';
 import 'package:zeta_example/pages/components/banner_example.dart';
@@ -33,7 +32,9 @@ import 'package:zeta_example/pages/components/switch_example.dart';
 import 'package:zeta_example/pages/components/snackbar_example.dart';
 import 'package:zeta_example/pages/components/tabs_example.dart';
 import 'package:zeta_example/pages/components/pagination_example.dart';
+import 'package:zeta_example/pages/components/time_input_example.dart';
 import 'package:zeta_example/pages/components/tooltip_example.dart';
+import 'package:zeta_example/pages/components/top_app_bar_example.dart';
 import 'package:zeta_example/pages/theme/color_example.dart';
 import 'package:zeta_example/pages/components/password_input_example.dart';
 import 'package:zeta_example/pages/components/progress_example.dart';
@@ -53,7 +54,7 @@ class Component {
 
 final List<Component> components = [
   Component(AccordionExample.name, (context) => const AccordionExample()),
-  Component(AppBarExample.name, (context) => const AppBarExample()),
+  Component(TopAppBarExample.name, (context) => const TopAppBarExample()),
   Component(AvatarExample.name, (context) => const AvatarExample()),
   Component(BannerExample.name, (context) => const BannerExample()),
   Component(BadgesExample.name, (context) => const BadgesExample()),
@@ -88,6 +89,7 @@ final List<Component> components = [
   Component(ScreenHeaderBarExample.name, (context) => const ScreenHeaderBarExample()),
   Component(FilterSelectionExample.name, (context) => const FilterSelectionExample()),
   Component(StepperInputExample.name, (context) => const StepperInputExample()),
+  Component(TimeInputExample.name, (context) => const TimeInputExample()),
 ];
 
 final List<Component> theme = [

@@ -39,7 +39,6 @@ Widget dialogUseCase(BuildContext context) {
               onPressed: () => showZetaDialog(
                 context,
                 useRootNavigator: false,
-                zeta: zeta,
                 rounded: rounded,
                 barrierDismissible: barrierDismissible,
                 headerAlignment: headerAlignment,
@@ -57,7 +56,6 @@ Widget dialogUseCase(BuildContext context) {
               onPressed: () => showZetaDialog(
                 context,
                 useRootNavigator: false,
-                zeta: zeta,
                 rounded: rounded,
                 barrierDismissible: barrierDismissible,
                 headerAlignment: headerAlignment,
@@ -76,7 +74,6 @@ Widget dialogUseCase(BuildContext context) {
               onPressed: () => showZetaDialog(
                 context,
                 useRootNavigator: false,
-                zeta: zeta,
                 rounded: rounded,
                 barrierDismissible: barrierDismissible,
                 headerAlignment: headerAlignment,

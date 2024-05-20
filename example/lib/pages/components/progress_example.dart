@@ -12,7 +12,7 @@ class ProgressExample extends StatefulWidget {
 }
 
 class ProgressExampleState extends State<ProgressExample> {
-  MaterialStatesController controller = MaterialStatesController();
+  WidgetStatesController controller = WidgetStatesController();
 
   @override
   void initState() {

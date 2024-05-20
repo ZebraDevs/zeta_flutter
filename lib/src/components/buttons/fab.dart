@@ -127,14 +127,14 @@ class _ZetaFABState extends State<ZetaFAB> {
         backgroundColor: backgroundColor,
         foregroundColor: backgroundColor.onColor,
       ).copyWith(
-        overlayColor: MaterialStateProperty.resolveWith((Set<MaterialState> states) {
-          if (states.contains(MaterialState.hovered)) return colors.hover;
-          if (states.contains(MaterialState.pressed)) return colors.selected;
+        overlayColor: WidgetStateProperty.resolveWith((Set<WidgetState> states) {
+          if (states.contains(WidgetState.hovered)) return colors.hover;
+          if (states.contains(WidgetState.pressed)) return colors.selected;
           return null;
         }),
-        side: MaterialStateProperty.resolveWith(
-          (Set<MaterialState> states) {
-            if (states.contains(MaterialState.focused)) {
+        side: WidgetStateProperty.resolveWith(
+          (Set<WidgetState> states) {
+            if (states.contains(WidgetState.focused)) {
               // TODO(thelukewalton): This removes a defualt border when focused, rather than adding a second border when focused.
               return BorderSide(color: Zeta.of(context).colors.blue.shade50, width: ZetaSpacing.x0_5);
             }
