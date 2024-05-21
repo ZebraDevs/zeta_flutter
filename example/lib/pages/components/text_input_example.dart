@@ -9,37 +9,64 @@ class TextInputExample extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    GlobalKey<ZetaTextInputState> key = GlobalKey<ZetaTextInputState>();
     return ExampleScaffold(
         name: 'Text Input',
         child: Center(
-          child: Padding(
-            padding: EdgeInsets.all(16),
-            child: Column(
-              children: [
-                ZetaTextInput(
-                  size: ZetaWidgetSize.large,
-                  placeholder: 'Placeholder',
-                  disabled: true,
-                ),
-                ZetaTextInput(placeholder: 'Placeholder'),
-                ZetaTextInput(
-                  size: ZetaWidgetSize.small,
-                  placeholder: 'Placeholder',
-                ),
-                const SizedBox(height: 8),
-                ZetaTextInput(
-                  placeholder: 'Placeholder',
-                  prefix: Icon(
-                    ZetaIcons.star_round,
-                    size: 20,
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: EdgeInsets.all(16),
+              child: Column(
+                children: [
+                  ZetaTextInput(
+                    size: ZetaWidgetSize.large,
+                    key: key,
+                    placeholder: 'Placeholder',
+                    prefixText: '£',
+                    label: 'Label',
+                    requirementLevel: ZetaFormFieldRequirement.mandatory,
+                    errorText: 'Error text',
+                    hintText: 'hint text',
+                    suffix: IconButton(
+                      icon: Icon(ZetaIcons.add_alert_round),
+                      onPressed: () {},
+                    ),
                   ),
-                ),
-                ZetaTextInput(
-                  placeholder: 'Placeholder',
-                  suffixText: 'kg',
-                  prefixText: '£',
-                ),
-              ].divide(const SizedBox(height: 12)).toList(),
+                  ZetaButton(
+                    label: 'Clear',
+                    onPressed: () => key.currentState?.reset(),
+                  ),
+                  ZetaTextInput(
+                    placeholder: 'Placeholder',
+                    prefixText: '£',
+                  ),
+                  ZetaTextInput(
+                    size: ZetaWidgetSize.small,
+                    placeholder: 'Placeholder',
+                    prefix: IconButton(
+                      iconSize: 12,
+                      icon: Icon(
+                        ZetaIcons.add_alert_round,
+                      ),
+                      onPressed: () {},
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  ZetaTextInput(
+                    placeholder: 'Placeholder',
+                    prefix: Icon(
+                      ZetaIcons.star_round,
+                      size: 20,
+                    ),
+                  ),
+                  ZetaTextInput(
+                    size: ZetaWidgetSize.small,
+                    placeholder: 'Placeholder',
+                    suffixText: 'kg',
+                    prefixText: '£',
+                  ),
+                ].divide(const SizedBox(height: 12)).toList(),
+              ),
             ),
           ),
         ));

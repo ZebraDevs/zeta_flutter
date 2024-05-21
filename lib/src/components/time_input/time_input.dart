@@ -5,7 +5,6 @@ import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
 import '../../../zeta_flutter.dart';
 import '../../interfaces/form_field.dart';
-import '../text_input/text_input.dart';
 
 const _maxHrValue = 23;
 const _max12HrValue = 12;
@@ -14,15 +13,16 @@ const _maxMinsValue = 59;
 /// A form field used to input time.
 ///
 /// Can be used and validated the same way as a [TextFormField]
-class ZetaTimeInput extends StatefulWidget {
+class ZetaTimeInput extends ZetaFormField<TimeOfDay> {
   /// Creates a new [ZetaTimeInput]
   const ZetaTimeInput({
     super.key,
+    super.disabled = false,
+    super.initialValue,
+    super.onChange,
+    super.requirementLevel = ZetaFormFieldRequirement.none,
     this.rounded = true,
     this.use12Hr,
-    this.disabled = false,
-    this.initialValue,
-    this.onChange,
     this.label,
     this.hintText,
     this.errorText,
@@ -36,16 +36,6 @@ class ZetaTimeInput extends StatefulWidget {
   /// Changes the time input to 12 hour time.
   /// Uses the device default if not set.
   final bool? use12Hr;
-
-  /// Called when the input changes.
-  /// Null is passed to this function if the current value is an invalid time.
-  final ValueChanged<TimeOfDay?>? onChange;
-
-  /// The inital value of the input.
-  final TimeOfDay? initialValue;
-
-  /// Disables the input.
-  final bool disabled;
 
   /// The label for the input.
   final String? label;
@@ -87,7 +77,7 @@ class ZetaTimeInput extends StatefulWidget {
 }
 
 /// State for [ZetaTimeInput]
-class ZetaTimeInputState extends State<ZetaTimeInput> implements ZetaFormField {
+class ZetaTimeInputState extends State<ZetaTimeInput> implements ZetaFormFieldState {
   // TODO(mikecoomber): add AM/PM selector inline.
 
   ZetaColors get _colors => Zeta.of(context).colors;
@@ -233,7 +223,8 @@ class ZetaTimeInputState extends State<ZetaTimeInput> implements ZetaFormField {
         });
         return null;
       },
-      onChanged: (_) => _onChange(),
+      onChange: (_) => _onChange(),
+      requirementLevel: widget.requirementLevel,
       suffix: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         mainAxisSize: MainAxisSize.min,
@@ -283,6 +274,8 @@ class _IconButton extends StatelessWidget {
       constraints: BoxConstraints(
         maxHeight: size * 2,
         maxWidth: size * 2,
+        minHeight: size * 2,
+        minWidth: size * 2,
       ),
       color: !disabled ? color : colors.iconDisabled,
       onPressed: disabled ? null : onTap,
