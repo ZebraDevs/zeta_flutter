@@ -4,5 +4,63 @@
       "release-type": "dart"
     }
   },
-  "include-component-in-tag": false
+  "include-component-in-tag": false,
+  "extra-files": [
+    "example/lib/home.dart"
+  ],
+  "changelog-sections": [
+    {
+      "type": "feat",
+      "section": "✨ New Features"
+    },
+    {
+      "type": "fix",
+      "section": "🪲 Bug Fixes"
+    },
+    {
+      "type": "revert",
+      "section": "👀 Reverts"
+    },
+    {
+      "type": "docs",
+      "section": "📈 Documentation"
+    },
+    {
+      "type": "deps",
+      "section": "⛓️ Dependencies"
+    },
+    {
+      "type": "test",
+      "section": "🧪 Tests"
+    },
+    {
+      "type": "chore",
+      "section": "🧹 Miscellaneous Chores"
+    },
+    {
+      "type": "perf",
+      "section": "Performance Improvements",
+      "hidden": true
+    },
+    {
+      "type": "refactor",
+      "section": "Code Refactoring",
+      "hidden": true
+    },
+    {
+      "type": "style",
+      "section": "Styles",
+      "hidden": true
+    },
+    {
+      "type": "build",
+      "section": "Build System",
+      "hidden": true
+    },
+    {
+      "type": "ci",
+      "section": "Continuous Integration",
+      "hidden": true
+    }
+  ]
 }
