@@ -73,7 +73,9 @@ class _HotReloadState extends State<HotReload> {
       initialRoute: '?path=introduction',
       directories: [
         WidgetbookUseCase(
-            name: 'Introduction', builder: (BuildContext context) => IntroductionWidgetbook(readme: widget.readme)),
+          name: 'Introduction',
+          builder: (BuildContext context) => IntroductionWidgetbook(readme: widget.readme),
+        ),
         WidgetbookCategory(
           name: 'Components',
           isInitiallyExpanded: false,
@@ -237,6 +239,10 @@ class _HotReloadState extends State<HotReload> {
             );
           },
         ),
+        AccessibilityAddon(),
+        InspectorAddon(enabled: false),
+        ZoomAddon(initialZoom: 1.0),
+        TextScaleAddon(scales: [1.0, 1.2, 1.4, 1.6, 1.8, 2.0], initialScale: 1),
       ],
     );
   }
