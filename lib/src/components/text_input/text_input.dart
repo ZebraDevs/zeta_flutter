@@ -302,7 +302,7 @@ class ZetaTextInputState extends State<ZetaTextInput> implements ZetaFormFieldSt
               disabledBorder: _baseBorder,
               focusedBorder: _focusedBorder,
               focusedErrorBorder: _errorBorder,
-              errorBorder: _errorBorder,
+              errorBorder: widget.disabled ? _baseBorder : _errorBorder,
               hintText: widget.placeholder,
               errorText: _errorText,
               hintStyle: _baseTextStyle,
@@ -393,7 +393,7 @@ class _HintText extends StatelessWidget {
     final colors = Zeta.of(context).colors;
     final error = errorText != null && errorText!.isNotEmpty;
 
-    final text = error ? errorText : hintText;
+    final text = error && !disabled ? errorText : hintText;
 
     Color elementColor = colors.textSubtle;
 
@@ -403,7 +403,7 @@ class _HintText extends StatelessWidget {
       elementColor = colors.error;
     }
 
-    if (text == null) {
+    if (text == null || text.isEmpty) {
       return const SizedBox();
     }
 

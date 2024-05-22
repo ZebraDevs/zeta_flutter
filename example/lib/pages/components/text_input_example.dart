@@ -26,6 +26,7 @@ class TextInputExample extends StatelessWidget {
                     label: 'Label',
                     requirementLevel: ZetaFormFieldRequirement.mandatory,
                     errorText: 'Error text',
+                    disabled: true,
                     hintText: 'hint text',
                     suffix: IconButton(
                       icon: Icon(ZetaIcons.add_alert_round),
