@@ -1,11 +1,11 @@
 {
-    "name": "zeta_flutter_example",
-    "short_name": "zeta_flutter_example",
+    "name": "zeta_flutter example",
+    "short_name": "zeta_flutter example",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "Demonstrates how to use the zeta_flutter plugin.",
+    "description": "Demonstrates how to use the zeta_flutter library",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
