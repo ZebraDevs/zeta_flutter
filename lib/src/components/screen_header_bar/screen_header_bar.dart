@@ -27,13 +27,12 @@ class ZetaScreenHeaderBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ZetaAppBar(
+    return ZetaTopAppBar(
       leading: IconButton(
         onPressed: () async => Navigator.maybePop(context),
         icon: Icon(rounded ? ZetaIcons.chevron_left_round : ZetaIcons.chevron_left_sharp),
       ),
       title: title,
-      titleSpacing: 0,
       titleTextStyle: ZetaTextStyles.titleLarge,
       actions: actionButtonLabel == null
           ? null

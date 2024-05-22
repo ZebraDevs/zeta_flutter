@@ -291,13 +291,13 @@ class _DropdownItem<T> extends StatefulWidget {
 }
 
 class _DropdownItemState<T> extends State<_DropdownItem<T>> {
-  final controller = MaterialStatesController();
+  final controller = WidgetStatesController();
 
   @override
   void initState() {
     super.initState();
     controller.addListener(() {
-      if (context.mounted && mounted && !controller.value.contains(MaterialState.disabled)) {
+      if (context.mounted && mounted && !controller.value.contains(WidgetState.disabled)) {
         setState(() {});
       }
     });
@@ -377,37 +377,37 @@ class _DropdownItemState<T> extends State<_DropdownItem<T>> {
 
   ButtonStyle _getStyle(ZetaColors colors) {
     return ButtonStyle(
-      backgroundColor: MaterialStateProperty.resolveWith((states) {
-        if (states.contains(MaterialState.disabled)) {
+      backgroundColor: WidgetStateProperty.resolveWith((states) {
+        if (states.contains(WidgetState.disabled)) {
           return colors.surfaceDisabled;
         }
         if (widget.selected) {
           return colors.surfaceSelected;
         }
-        if (states.contains(MaterialState.pressed)) {
+        if (states.contains(WidgetState.pressed)) {
           return colors.surfaceSelected;
         }
-        if (states.contains(MaterialState.hovered)) {
+        if (states.contains(WidgetState.hovered)) {
           return colors.surfaceHovered;
         }
 
         return colors.surfacePrimary;
       }),
-      foregroundColor: MaterialStateProperty.resolveWith((states) {
-        if (states.contains(MaterialState.disabled)) {
+      foregroundColor: WidgetStateProperty.resolveWith((states) {
+        if (states.contains(WidgetState.disabled)) {
           return colors.textDisabled;
         }
         return colors.textDefault;
       }),
-      shape: MaterialStateProperty.all(
+      shape: WidgetStateProperty.all(
         RoundedRectangleBorder(
           borderRadius: widget.rounded ? ZetaRadius.minimal : ZetaRadius.none,
         ),
       ),
-      side: const MaterialStatePropertyAll(BorderSide.none),
-      padding: const MaterialStatePropertyAll(EdgeInsets.zero),
-      elevation: const MaterialStatePropertyAll(0),
-      overlayColor: const MaterialStatePropertyAll(Colors.transparent),
+      side: const WidgetStatePropertyAll(BorderSide.none),
+      padding: const WidgetStatePropertyAll(EdgeInsets.zero),
+      elevation: const WidgetStatePropertyAll(0),
+      overlayColor: const WidgetStatePropertyAll(Colors.transparent),
     );
   }
 
@@ -415,7 +415,7 @@ class _DropdownItemState<T> extends State<_DropdownItem<T>> {
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties.add(
-      DiagnosticsProperty<MaterialStatesController>(
+      DiagnosticsProperty<WidgetStatesController>(
         'controller',
         controller,
       ),

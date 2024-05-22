@@ -12,7 +12,6 @@ class ZetaButton extends StatelessWidget {
     this.type = ZetaButtonType.primary,
     this.size = ZetaWidgetSize.medium,
     this.borderType = ZetaWidgetBorder.rounded,
-    this.zeta,
     this.leadingIcon,
     this.trailingIcon,
     super.key,
@@ -24,7 +23,6 @@ class ZetaButton extends StatelessWidget {
     this.onPressed,
     this.size = ZetaWidgetSize.medium,
     this.borderType = ZetaWidgetBorder.rounded,
-    this.zeta,
     this.leadingIcon,
     this.trailingIcon,
     super.key,
@@ -36,7 +34,6 @@ class ZetaButton extends StatelessWidget {
     this.onPressed,
     this.size = ZetaWidgetSize.medium,
     this.borderType = ZetaWidgetBorder.rounded,
-    this.zeta,
     this.leadingIcon,
     this.trailingIcon,
     super.key,
@@ -48,7 +45,6 @@ class ZetaButton extends StatelessWidget {
     this.onPressed,
     this.size = ZetaWidgetSize.medium,
     this.borderType = ZetaWidgetBorder.rounded,
-    this.zeta,
     this.leadingIcon,
     this.trailingIcon,
     super.key,
@@ -60,7 +56,6 @@ class ZetaButton extends StatelessWidget {
     this.onPressed,
     this.size = ZetaWidgetSize.medium,
     this.borderType = ZetaWidgetBorder.rounded,
-    this.zeta,
     this.leadingIcon,
     this.trailingIcon,
     super.key,
@@ -72,7 +67,6 @@ class ZetaButton extends StatelessWidget {
     this.onPressed,
     this.size = ZetaWidgetSize.medium,
     this.borderType = ZetaWidgetBorder.rounded,
-    this.zeta,
     this.leadingIcon,
     this.trailingIcon,
     super.key,
@@ -84,7 +78,6 @@ class ZetaButton extends StatelessWidget {
     this.onPressed,
     this.size = ZetaWidgetSize.medium,
     this.borderType = ZetaWidgetBorder.rounded,
-    this.zeta,
     this.leadingIcon,
     this.trailingIcon,
     super.key,
@@ -96,7 +89,6 @@ class ZetaButton extends StatelessWidget {
     this.onPressed,
     this.size = ZetaWidgetSize.medium,
     this.borderType = ZetaWidgetBorder.rounded,
-    this.zeta,
     this.leadingIcon,
     this.trailingIcon,
     super.key,
@@ -118,11 +110,7 @@ class ZetaButton extends StatelessWidget {
   /// Size of the button. Defaults to large.
   final ZetaWidgetSize size;
 
-  /// Sometimes we need to pass Zeta from outside,
-  /// like for example from [showZetaDialog]
-  final Zeta? zeta;
-
-  /// Leading icon of button. Goes infront of button.
+  /// Leading icon of button. Goes in front of button.
   final IconData? leadingIcon;
 
   /// Trailing icon of button. Goes behind button.
@@ -145,7 +133,6 @@ class ZetaButton extends StatelessWidget {
       type: type ?? this.type,
       size: size ?? this.size,
       borderType: borderType ?? this.borderType,
-      zeta: zeta,
       leadingIcon: leadingIcon ?? this.leadingIcon,
       trailingIcon: trailingIcon ?? this.trailingIcon,
       key: key ?? this.key,
@@ -154,7 +141,7 @@ class ZetaButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final zeta = this.zeta ?? Zeta.of(context);
+    final zeta = Zeta.of(context);
     final colors = zeta.colors;
     return ConstrainedBox(
       constraints: BoxConstraints(minHeight: _minConstraints, minWidth: _minConstraints),

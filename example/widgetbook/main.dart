@@ -4,7 +4,7 @@ import 'package:zeta_flutter/zeta_flutter.dart';
 
 import 'pages/assets/icon_widgetbook.dart';
 import 'pages/components/accordion_widgetbook.dart';
-import 'pages/components/app_bar_widgetbook.dart';
+import 'pages/components/top_app_bar_widgetbook.dart';
 import 'pages/components/avatar_widgetbook.dart';
 import 'pages/components/badges_widgetbook.dart';
 import 'pages/components/banner_widgetbook.dart';
@@ -39,6 +39,7 @@ import 'pages/components/stepper_widgetbook.dart';
 import 'pages/components/switch_widgetbook.dart';
 import 'pages/components/snack_bar_widgetbook.dart';
 import 'pages/components/tabs_widgetbook.dart';
+import 'pages/components/time_input.dart';
 import 'pages/components/tooltip_widgetbook.dart';
 import 'pages/theme/color_widgetbook.dart';
 import 'pages/theme/radius_widgetbook.dart';
@@ -61,10 +62,11 @@ class HotReload extends StatelessWidget {
           isInitiallyExpanded: false,
           children: [
             WidgetbookComponent(
-              name: 'App Bar',
+              name: 'Top App Bar',
               useCases: [
-                WidgetbookUseCase(name: 'Default', builder: (context) => defaultAppBarUseCase(context)),
-                WidgetbookUseCase(name: 'Search', builder: (context) => searchAppBarUseCase(context)),
+                WidgetbookUseCase(name: 'Default', builder: (context) => defaultTopAppBarUseCase(context)),
+                WidgetbookUseCase(name: 'Search', builder: (context) => searchTopAppBarUseCase(context)),
+                WidgetbookUseCase(name: 'Extended', builder: (context) => extendedTopAppBarUseCase(context)),
               ],
             ),
             WidgetbookComponent(
@@ -137,6 +139,7 @@ class HotReload extends StatelessWidget {
             WidgetbookUseCase(name: 'Select Input', builder: (context) => selectInputUseCase(context)),
             WidgetbookUseCase(name: 'Screen Header Bar', builder: (context) => screenHeaderBarUseCase(context)),
             WidgetbookUseCase(name: 'Filter Selection', builder: (context) => filterSelectionUseCase(context)),
+            WidgetbookUseCase(name: 'Time Input', builder: (context) => timeInputUseCase(context)),
           ]..sort((a, b) => a.name.compareTo(b.name)),
         ),
         WidgetbookCategory(
@@ -190,14 +193,14 @@ class HotReload extends StatelessWidget {
                       themeMode: themeMode,
                       theme: ThemeData(
                         useMaterial3: true,
-                        scaffoldBackgroundColor: light.background,
+                        scaffoldBackgroundColor: light.surfaceTertiary,
                         colorScheme: light,
                         textTheme: zetaTextTheme,
                         brightness: Brightness.light,
                       ),
                       darkTheme: ThemeData(
                         useMaterial3: true,
-                        scaffoldBackgroundColor: dark.background,
+                        scaffoldBackgroundColor: dark.surfaceTertiary,
                         colorScheme: dark,
                         textTheme: zetaTextTheme,
                         brightness: Brightness.dark,

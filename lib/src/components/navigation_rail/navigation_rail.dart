@@ -135,6 +135,7 @@ class _ZetaNavigationRailItemContent extends StatelessWidget {
   Widget build(BuildContext context) {
     final zeta = Zeta.of(context);
     return MouseRegion(
+      cursor: disabled ? SystemMouseCursors.forbidden : SystemMouseCursors.click,
       child: GestureDetector(
         behavior: HitTestBehavior.translucent,
         onTap: disabled ? null : onTap,

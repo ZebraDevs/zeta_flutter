@@ -76,12 +76,12 @@ To tie everything together, use the `ZetaProvider` constructor. The `builder` ar
           themeMode: themeMode,
           theme: ThemeData(
             fontFamily: themeData.fontFamily,
-            scaffoldBackgroundColor: light.background,
+            scaffoldBackgroundColor: light.surfaceTertiary,
             colorScheme: light,
           ),
           darkTheme: ThemeData(
             fontFamily: themeData.fontFamily,
-            scaffoldBackgroundColor: dark.background,
+            scaffoldBackgroundColor: dark.surfaceTertiary,
             colorScheme: dark,
           ),
         );

@@ -169,7 +169,7 @@ class ZetaBreadCrumb extends StatefulWidget {
 }
 
 class _ZetaBreadCrumbState extends State<ZetaBreadCrumb> {
-  final controller = MaterialStatesController();
+  final controller = WidgetStatesController();
 
   @override
   void initState() {
@@ -189,7 +189,7 @@ class _ZetaBreadCrumbState extends State<ZetaBreadCrumb> {
       onTap: widget.onPressed,
       enableFeedback: false,
       splashColor: Colors.transparent,
-      overlayColor: MaterialStateProperty.resolveWith((states) {
+      overlayColor: WidgetStateProperty.resolveWith((states) {
         return Colors.transparent;
       }),
       child: Row(
@@ -212,8 +212,8 @@ class _ZetaBreadCrumbState extends State<ZetaBreadCrumb> {
   }
 
   /// Get color of breadcrumb based on state.
-  Color getColor(Set<MaterialState> states, ZetaColors colors) {
-    if (states.contains(MaterialState.hovered)) {
+  Color getColor(Set<WidgetState> states, ZetaColors colors) {
+    if (states.contains(WidgetState.hovered)) {
       return colors.blue;
     }
     if (widget.isSelected) return colors.black;
@@ -224,7 +224,7 @@ class _ZetaBreadCrumbState extends State<ZetaBreadCrumb> {
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties.add(
-      DiagnosticsProperty<MaterialStatesController>(
+      DiagnosticsProperty<WidgetStatesController>(
         'controller',
         controller,
       ),
@@ -272,31 +272,31 @@ class _BreadCrumbsTruncatedState extends State<BreadCrumbsTruncated> {
               });
             },
             style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.resolveWith((states) {
-                if (states.contains(MaterialState.hovered)) {
+              backgroundColor: WidgetStateProperty.resolveWith((states) {
+                if (states.contains(WidgetState.hovered)) {
                   return colors.surfaceHovered;
                 }
-                if (states.contains(MaterialState.pressed)) {
+                if (states.contains(WidgetState.pressed)) {
                   return colors.primary.shade10;
                 }
-                if (states.contains(MaterialState.disabled)) {
+                if (states.contains(WidgetState.disabled)) {
                   return colors.surfaceDisabled;
                 }
                 return colors.warm.shade10;
               }),
-              foregroundColor: MaterialStateProperty.resolveWith((states) {
-                if (states.contains(MaterialState.disabled)) {
+              foregroundColor: WidgetStateProperty.resolveWith((states) {
+                if (states.contains(WidgetState.disabled)) {
                   return colors.textDisabled;
                 }
                 return colors.textDefault;
               }),
-              shape: MaterialStatePropertyAll(
+              shape: WidgetStatePropertyAll(
                 RoundedRectangleBorder(
                   borderRadius: (widget.rounded ? ZetaRadius.minimal : ZetaRadius.none),
                 ),
               ),
-              side: MaterialStateProperty.resolveWith((states) {
-                if (states.contains(MaterialState.focused)) {
+              side: WidgetStateProperty.resolveWith((states) {
+                if (states.contains(WidgetState.focused)) {
                   return BorderSide(
                     width: ZetaSpacing.x0_5,
                     color: colors.primary.shade100,
@@ -307,9 +307,9 @@ class _BreadCrumbsTruncatedState extends State<BreadCrumbsTruncated> {
                 }
                 return null;
               }),
-              padding: MaterialStateProperty.all(EdgeInsets.zero),
-              minimumSize: MaterialStateProperty.all(Size.zero),
-              elevation: const MaterialStatePropertyAll(0),
+              padding: WidgetStateProperty.all(EdgeInsets.zero),
+              minimumSize: WidgetStateProperty.all(Size.zero),
+              elevation: const WidgetStatePropertyAll(0),
             ),
             child: Icon(
               widget.rounded ? ZetaIcons.more_horizontal_round : ZetaIcons.more_horizontal_sharp,

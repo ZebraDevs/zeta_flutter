@@ -110,25 +110,25 @@ class _ZetaAccordionState extends State<ZetaAccordion> with TickerProviderStateM
           children: [
             TextButton(
               style: ButtonStyle(
-                shape: MaterialStatePropertyAll(
+                shape: WidgetStatePropertyAll(
                   RoundedRectangleBorder(borderRadius: widget.rounded ? ZetaRadius.minimal : ZetaRadius.none),
                 ),
-                overlayColor: MaterialStateProperty.resolveWith((states) {
-                  if (states.contains(MaterialState.hovered)) {
+                overlayColor: WidgetStateProperty.resolveWith((states) {
+                  if (states.contains(WidgetState.hovered)) {
                     return zetaColors.cool.shade20;
                   }
-                  if (states.contains(MaterialState.pressed)) {
+                  if (states.contains(WidgetState.pressed)) {
                     return zetaColors.cool.shade30;
                   }
 
-                  if (states.contains(MaterialState.focused)) {
+                  if (states.contains(WidgetState.focused)) {
                     return Colors.transparent;
                   }
 
                   return null;
                 }),
-                side: MaterialStateProperty.resolveWith((states) {
-                  if (states.contains(MaterialState.focused)) {
+                side: WidgetStateProperty.resolveWith((states) {
+                  if (states.contains(WidgetState.focused)) {
                     return BorderSide(color: zetaColors.blue.shade50, width: 2);
                   }
                   return null;

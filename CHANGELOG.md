@@ -1,3 +1,29 @@
+## [0.9.0](https://github.com/ZebraDevs/zeta_flutter/compare/v0.8.2...v0.9.0) (2024-05-16)
+
+
+### Features
+
+* Created stepper input ([#67](https://github.com/ZebraDevs/zeta_flutter/issues/67)) ([ca51b1f](https://github.com/ZebraDevs/zeta_flutter/commit/ca51b1f71b4b0df621d1ce6038e3725d6e85432f))
+* Created Time Input ([#75](https://github.com/ZebraDevs/zeta_flutter/issues/75)) ([fb7b629](https://github.com/ZebraDevs/zeta_flutter/commit/fb7b6295dfc507a0a94de28cc7b0d11f338db13e))
+* Global Header (zebrafed[#38](https://github.com/ZebraDevs/zeta_flutter/issues/38)) ([0822d4f](https://github.com/ZebraDevs/zeta_flutter/commit/0822d4f070c6997a6599442e5ce3391a8f26e002))
+
+
+### Bug Fixes
+
+* breadcrumb rounded icon ([c46788d](https://github.com/ZebraDevs/zeta_flutter/commit/c46788d46b77d785fa023954219c53d51fa7952b))
+* Button update (zebrafed[#42](https://github.com/ZebraDevs/zeta_flutter/issues/42)) ([0822d4f](https://github.com/ZebraDevs/zeta_flutter/commit/0822d4f070c6997a6599442e5ce3391a8f26e002))
+* Correct colors on Radio button hover / focus states ([c46788d](https://github.com/ZebraDevs/zeta_flutter/commit/c46788d46b77d785fa023954219c53d51fa7952b))
+* enable mouse region on desktop for selectable areas ([c46788d](https://github.com/ZebraDevs/zeta_flutter/commit/c46788d46b77d785fa023954219c53d51fa7952b))
+* navigation bar text color ([c46788d](https://github.com/ZebraDevs/zeta_flutter/commit/c46788d46b77d785fa023954219c53d51fa7952b))
+* Remove calls to zeta in button that are not needed ([c46788d](https://github.com/ZebraDevs/zeta_flutter/commit/c46788d46b77d785fa023954219c53d51fa7952b))
+* UX-1090 - Add expansion option for TopAppBar ([#73](https://github.com/ZebraDevs/zeta_flutter/issues/73)) ([ab36e8e](https://github.com/ZebraDevs/zeta_flutter/commit/ab36e8e35566835711cc88e7b05b6460ef9453ea))
+
+## [0.9.1](https://github.com/ZebraDevs/zeta_flutter/compare/v0.9.0...v0.9.1) (2024-05-20)
+
+
+### Bug Fixes
+
+* dependencies ([#76](https://github.com/ZebraDevs/zeta_flutter/issues/76)) ([db8345a](https://github.com/ZebraDevs/zeta_flutter/commit/db8345a2c0452c014dd8869a9df52c89c828b757))
 
 ## [0.8.2](https://github.com/ZebraDevs/zeta_flutter/compare/v0.8.1...v0.8.2) (2024-05-08)
 
