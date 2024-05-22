@@ -7,8 +7,8 @@ Zeta is the new, formal, standardized Zebra Design System based off the successe
 ### Prerequisites
 
 ```
-  dart sdk: ">=3.2.0 <4.0.0"
-  flutter: ">=3.16.0"
+dart sdk: ">=3.2.0 <4.0.0"
+flutter: ">=3.16.0"
 ```
 
 ## Installation
