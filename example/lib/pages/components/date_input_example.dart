@@ -29,18 +29,9 @@ class _DateInputExampleState extends State<DateInputExample> {
               padding: const EdgeInsets.all(20),
               child: ZetaDateInput(
                 label: 'Birthdate',
-                hint: 'Enter birthdate',
-                hasError: _errorText != null,
+                hintText: 'Enter birthdate',
                 errorText: _errorText ?? 'Invalid date',
-                onChanged: (value) {
-                  if (value == null) return setState(() => _errorText = null);
-                  final now = DateTime.now();
-                  setState(
-                    () => _errorText = value.difference(DateTime(now.year, now.month, now.day)).inDays > 0
-                        ? 'Birthdate cannot be in the future'
-                        : null,
-                  );
-                },
+                initialValue: DateTime.now(),
               ),
             ),
             Divider(color: Colors.grey[200]),
@@ -52,10 +43,10 @@ class _DateInputExampleState extends State<DateInputExample> {
               padding: const EdgeInsets.all(20),
               child: ZetaDateInput(
                 label: 'Label',
-                hint: 'Default hint text',
-                errorText: 'Oops! Error hint text',
+                hintText: 'Default hintText text',
+                errorText: 'Oops! Error hintText text',
                 rounded: false,
-                datePattern: 'yyyy-MM-dd',
+                dateFormat: 'yyyy-MM-dd',
               ),
             ),
             Divider(color: Colors.grey[200]),
@@ -67,8 +58,8 @@ class _DateInputExampleState extends State<DateInputExample> {
               padding: const EdgeInsets.all(20),
               child: ZetaDateInput(
                 label: 'Label',
-                hint: 'Default hint text',
-                enabled: false,
+                hintText: 'Default hintText text',
+                disabled: true,
               ),
             ),
             Divider(color: Colors.grey[200]),
@@ -80,8 +71,8 @@ class _DateInputExampleState extends State<DateInputExample> {
               padding: const EdgeInsets.all(20),
               child: ZetaDateInput(
                 label: 'Label',
-                hint: 'Default hint text',
-                errorText: 'Oops! Error hint text',
+                hintText: 'Default hintText text',
+                errorText: 'Oops! Error hintText text',
                 size: ZetaWidgetSize.medium,
               ),
             ),
@@ -94,8 +85,8 @@ class _DateInputExampleState extends State<DateInputExample> {
               padding: const EdgeInsets.all(20),
               child: ZetaDateInput(
                 label: 'Label',
-                hint: 'Default hint text',
-                errorText: 'Oops! Error hint text',
+                hintText: 'Default hintText text',
+                errorText: 'Oops! Error hintText text',
                 size: ZetaWidgetSize.small,
               ),
             ),

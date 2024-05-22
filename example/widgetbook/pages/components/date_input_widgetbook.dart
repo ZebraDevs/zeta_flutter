@@ -32,13 +32,12 @@ Widget dateInputUseCase(BuildContext context) {
           child: ZetaDateInput(
             size: size,
             rounded: rounded,
-            enabled: enabled,
+            disabled: enabled,
             label: 'Birthdate',
-            hint: 'Enter birthdate',
-            datePattern: datePattern,
-            hasError: _errorText != null,
+            hintText: 'Enter birthdate',
+            dateFormat: datePattern,
             errorText: _errorText ?? errorText,
-            onChanged: (value) {
+            onChange: (value) {
               if (value == null) return setState(() => _errorText = null);
               final now = DateTime.now();
               setState(

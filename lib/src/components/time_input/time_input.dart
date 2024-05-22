@@ -145,7 +145,8 @@ class ZetaTimeInputState extends State<ZetaTimeInput> implements ZetaFormFieldSt
   }
 
   void _onChange() {
-    if (_timeFormatter.getUnmaskedText().length > 3 && (_key.currentState?.validate() ?? false)) {
+    if (_timeFormatter.getUnmaskedText().length > (_timeFormat.length - 2) &&
+        (_key.currentState?.validate() ?? false)) {
       widget.onChange?.call(_value);
     }
     setState(() {});
@@ -166,9 +167,21 @@ class ZetaTimeInputState extends State<ZetaTimeInput> implements ZetaFormFieldSt
       context: context,
       initialTime: _value ?? TimeOfDay.now(),
       builder: (BuildContext context, Widget? child) {
-        return MediaQuery(
-          data: MediaQuery.of(context).copyWith(alwaysUse24HourFormat: !_use12Hr),
-          child: child!,
+        return Theme(
+          data: Theme.of(context).copyWith(
+            timePickerTheme: TimePickerThemeData(
+              dialBackgroundColor: _colors.warm.shade30,
+              dayPeriodColor: _colors.primary,
+              inputDecorationTheme: InputDecorationTheme(
+                fillColor: _colors.warm.shade30,
+                filled: true,
+              ),
+            ),
+          ),
+          child: MediaQuery(
+            data: MediaQuery.of(context).copyWith(alwaysUse24HourFormat: !_use12Hr),
+            child: child!,
+          ),
         );
       },
     );
@@ -202,6 +215,7 @@ class ZetaTimeInputState extends State<ZetaTimeInput> implements ZetaFormFieldSt
       key: _key,
       size: widget.size,
       errorText: _errorText,
+      rounded: widget.rounded,
       label: widget.label,
       hintText: widget.hintText,
       placeholder: _timeFormat,
