@@ -348,7 +348,7 @@ class _Label extends StatelessWidget {
       requirementWidget = Text(
         '*',
         style: ZetaTextStyles.labelIndicator.copyWith(
-          color: disabled ? colors.textDisabled : colors.error, //TODO(mikecoomber) change to textNegative when added
+          color: disabled ? colors.textDisabled : colors.error, // TODO(mikecoomber): change to textNegative when added
         ),
       );
     }

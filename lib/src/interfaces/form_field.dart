@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../utils/enums.dart';
@@ -11,7 +12,9 @@ abstract class ZetaFormFieldState {
   void reset();
 }
 
+/// A common interface shared with all Zeta form elements.
 abstract class ZetaFormField<T> extends StatefulWidget {
+  /// Creats a new [ZetaFormField]
   const ZetaFormField({
     required this.disabled,
     required this.initialValue,
@@ -31,4 +34,13 @@ abstract class ZetaFormField<T> extends StatefulWidget {
 
   /// The requirement level of the form field, e.g. mandatory or optional.
   final ZetaFormFieldRequirement requirementLevel;
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty<bool>('disabled', disabled))
+      ..add(DiagnosticsProperty<T?>('initialValue', initialValue))
+      ..add(ObjectFlagProperty<ValueChanged<T?>?>.has('onChange', onChange))
+      ..add(EnumProperty<ZetaFormFieldRequirement>('requirementLevel', requirementLevel));
+  }
 }
