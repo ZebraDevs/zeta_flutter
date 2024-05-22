@@ -52,7 +52,9 @@ class ZetaTimeInput extends ZetaFormField<TimeOfDay> {
   /// The validator passed to the text input.
   /// Returns a string containing an error message.
   ///
-  /// By default, the form field checks for null and invalid hour or minute values.
+  /// By default, the input checks for invalid hour or minute values.
+  /// It also checks for null values unless [requirementLevel] is set to [ZetaFormFieldRequirement.optional]
+  ///
   /// If the default validation fails, [errorText] will be shown.
   /// However, if [validator] catches any of these conditions, the return value of [validator] will be shown.
   final String? Function(TimeOfDay? value)? validator;
@@ -224,18 +226,18 @@ class ZetaTimeInputState extends State<ZetaTimeInput> implements ZetaFormFieldSt
         _timeFormatter,
       ],
       validator: (_) {
+        String? errorText;
         final customValidation = widget.validator?.call(_value);
-        if (_value == null || _value!.hour > _hrsLimit || _value!.minute > _minsLimit || customValidation != null) {
-          setState(() {
-            _errorText = customValidation ?? widget.errorText ?? '';
-          });
-          return '';
+        if ((_value == null && widget.requirementLevel != ZetaFormFieldRequirement.optional) ||
+            (_value != null && (_value!.hour > _hrsLimit || _value!.minute > _minsLimit)) ||
+            customValidation != null) {
+          errorText = customValidation ?? widget.errorText ?? '';
         }
 
         setState(() {
-          _errorText = null;
+          _errorText = errorText;
         });
-        return null;
+        return errorText;
       },
       onChange: (_) => _onChange(),
       requirementLevel: widget.requirementLevel,

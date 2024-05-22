@@ -59,7 +59,9 @@ class ZetaDateInput extends ZetaFormField<DateTime> {
   /// The validator passed to the text input.
   /// Returns a string containing an error message.
   ///
-  /// By default, the form field checks for null and if the date is within [minDate] and [maxDate] (if given).
+  /// By default, the form field checks for if the date is within [minDate] and [maxDate] (if given).
+  /// It also checks for null values unless [requirementLevel] is set to [ZetaFormFieldRequirement.optional]
+  ///
   /// If the default validation fails, [errorText] will be shown.
   /// However, if [validator] catches any of these conditions, the return value of [validator] will be shown.
   final String? Function(DateTime? value)? validator;
