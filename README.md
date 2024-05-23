@@ -30,7 +30,7 @@ Zeta allows you to specify an initial theme mode for your app, which can be one 
 By default, the theme mode is set to `ThemeMode.system`.
 
 ```dart
-initialThemeMode: ThemeMode.light
+initialThemeMode: ThemeMode.system
 ```
 
 ### Providing Initial Theme Data
