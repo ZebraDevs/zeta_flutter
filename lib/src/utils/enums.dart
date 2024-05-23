@@ -41,3 +41,15 @@ enum ZetaWidgetStatus {
   /// Neutral widget; defaults to grey color scheme.
   neutral,
 }
+
+/// The requirement options for a Form Field.
+enum ZetaFormFieldRequirement {
+  /// The default form field requirement.
+  none,
+
+  /// A mandatory form field.
+  mandatory,
+
+  /// An optional form field.
+  optional,
+}

@@ -32,6 +32,7 @@ import 'package:zeta_example/pages/components/switch_example.dart';
 import 'package:zeta_example/pages/components/snackbar_example.dart';
 import 'package:zeta_example/pages/components/tabs_example.dart';
 import 'package:zeta_example/pages/components/pagination_example.dart';
+import 'package:zeta_example/pages/components/text_input_example.dart';
 import 'package:zeta_example/pages/components/time_input_example.dart';
 import 'package:zeta_example/pages/components/tooltip_example.dart';
 import 'package:zeta_example/pages/components/top_app_bar_example.dart';
@@ -90,6 +91,7 @@ final List<Component> components = [
   Component(FilterSelectionExample.name, (context) => const FilterSelectionExample()),
   Component(StepperInputExample.name, (context) => const StepperInputExample()),
   Component(TimeInputExample.name, (context) => const TimeInputExample()),
+  Component(TextInputExample.name, (context) => const TextInputExample()),
 ];
 
 final List<Component> theme = [
