@@ -27,6 +27,7 @@ class ZetaDateInput extends ZetaFormField<DateTime> {
     this.dateFormat = 'MM/dd/yyyy',
     this.minDate,
     this.maxDate,
+    this.pickerInitialEntryMode,
   }) : assert((minDate == null || maxDate == null) || minDate.isBefore(maxDate), 'minDate cannot be after maxDate');
 
   /// {@macro zeta-component-rounded}
@@ -56,6 +57,9 @@ class ZetaDateInput extends ZetaFormField<DateTime> {
   /// The maximum date allowed by the date input.
   final DateTime? maxDate;
 
+  /// The initial entry mode of the date picker.
+  final DatePickerEntryMode? pickerInitialEntryMode;
+
   /// The validator passed to the text input.
   /// Returns a string containing an error message.
   ///
@@ -83,7 +87,8 @@ class ZetaDateInput extends ZetaFormField<DateTime> {
       ..add(ObjectFlagProperty<String? Function(DateTime value)?>.has('validator', validator))
       ..add(StringProperty('dateFormat', dateFormat))
       ..add(DiagnosticsProperty<DateTime?>('minDate', minDate))
-      ..add(DiagnosticsProperty<DateTime?>('maxDate', maxDate));
+      ..add(DiagnosticsProperty<DateTime?>('maxDate', maxDate))
+      ..add(EnumProperty<DatePickerEntryMode?>('pickerInitialEntryMode', pickerInitialEntryMode));
   }
 }
 
@@ -176,12 +181,19 @@ class ZetaDateInputState extends State<ZetaDateInput> implements ZetaFormFieldSt
       context: context,
       firstDate: firstDate,
       lastDate: lastDate,
+      initialEntryMode: widget.pickerInitialEntryMode ?? DatePickerEntryMode.calendar,
       initialDate: initialDate,
       builder: (BuildContext context, Widget? child) {
         return Theme(
           data: Theme.of(context).copyWith(
-            datePickerTheme: const DatePickerThemeData(
+            dividerTheme: DividerThemeData(color: _colors.borderSubtle),
+            datePickerTheme: DatePickerThemeData(
+              shape: RoundedRectangleBorder(
+                borderRadius: widget.rounded ? ZetaRadius.rounded : ZetaRadius.none,
+              ),
               headerHeadlineStyle: ZetaTextStyles.titleLarge,
+              headerHelpStyle: ZetaTextStyles.labelLarge,
+              dividerColor: _colors.borderSubtle,
               dayStyle: ZetaTextStyles.bodyMedium,
             ),
           ),

@@ -15,7 +15,7 @@ Widget dateInputUseCase(BuildContext context) {
           initialValue: 'Invalid date',
         );
         final rounded = context.knobs.boolean(label: 'Rounded', initialValue: true);
-        final enabled = context.knobs.boolean(label: 'Enabled', initialValue: true);
+        final disabled = context.knobs.boolean(label: 'Disabled', initialValue: false);
         final size = context.knobs.list<ZetaWidgetSize>(
           label: 'Size',
           options: ZetaWidgetSize.values,
@@ -32,7 +32,7 @@ Widget dateInputUseCase(BuildContext context) {
           child: ZetaDateInput(
             size: size,
             rounded: rounded,
-            disabled: enabled,
+            disabled: disabled,
             label: 'Birthdate',
             hintText: 'Enter birthdate',
             dateFormat: datePattern,

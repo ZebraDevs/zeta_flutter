@@ -43,8 +43,8 @@ class _DateInputExampleState extends State<DateInputExample> {
               padding: const EdgeInsets.all(20),
               child: ZetaDateInput(
                 label: 'Label',
-                hintText: 'Default hintText text',
-                errorText: 'Oops! Error hintText text',
+                hintText: 'Default hint text',
+                errorText: 'Oops! Error hint text',
                 rounded: false,
                 dateFormat: 'yyyy-MM-dd',
               ),
@@ -58,7 +58,7 @@ class _DateInputExampleState extends State<DateInputExample> {
               padding: const EdgeInsets.all(20),
               child: ZetaDateInput(
                 label: 'Label',
-                hintText: 'Default hintText text',
+                hintText: 'Default hint text',
                 disabled: true,
               ),
             ),
@@ -71,8 +71,8 @@ class _DateInputExampleState extends State<DateInputExample> {
               padding: const EdgeInsets.all(20),
               child: ZetaDateInput(
                 label: 'Label',
-                hintText: 'Default hintText text',
-                errorText: 'Oops! Error hintText text',
+                hintText: 'Default hint text',
+                errorText: 'Oops! Error hint text',
                 size: ZetaWidgetSize.medium,
               ),
             ),
@@ -85,8 +85,8 @@ class _DateInputExampleState extends State<DateInputExample> {
               padding: const EdgeInsets.all(20),
               child: ZetaDateInput(
                 label: 'Label',
-                hintText: 'Default hintText text',
-                errorText: 'Oops! Error hintText text',
+                hintText: 'Default hint text',
+                errorText: 'Oops! Error hint text',
                 size: ZetaWidgetSize.small,
               ),
             ),

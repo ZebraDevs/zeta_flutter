@@ -28,6 +28,7 @@ class ZetaTimeInput extends ZetaFormField<TimeOfDay> {
     this.errorText,
     this.validator,
     this.size = ZetaWidgetSize.medium,
+    this.pickerInitialEntryMode,
   });
 
   /// {@macro zeta-component-rounded}
@@ -48,6 +49,9 @@ class ZetaTimeInput extends ZetaFormField<TimeOfDay> {
 
   /// The size of the input.
   final ZetaWidgetSize size;
+
+  /// The initial entry mode of the time picker.
+  final TimePickerEntryMode? pickerInitialEntryMode;
 
   /// The validator passed to the text input.
   /// Returns a string containing an error message.
@@ -74,7 +78,8 @@ class ZetaTimeInput extends ZetaFormField<TimeOfDay> {
       ..add(StringProperty('hintText', hintText))
       ..add(StringProperty('errorText', errorText))
       ..add(EnumProperty<ZetaWidgetSize>('size', size))
-      ..add(ObjectFlagProperty<String? Function(TimeOfDay value)?>.has('validator', validator));
+      ..add(ObjectFlagProperty<String? Function(TimeOfDay value)?>.has('validator', validator))
+      ..add(EnumProperty<TimePickerEntryMode?>('pickerInitialEntryMode', pickerInitialEntryMode));
   }
 }
 
@@ -96,6 +101,8 @@ class ZetaTimeInputState extends State<ZetaTimeInput> implements ZetaFormFieldSt
   String? _errorText;
 
   bool get _showClearButton => _controller.text.isNotEmpty;
+
+  BorderRadius get _borderRadius => widget.rounded ? ZetaRadius.minimal : ZetaRadius.none;
 
   double get _iconSize {
     switch (widget.size) {
@@ -167,6 +174,7 @@ class ZetaTimeInputState extends State<ZetaTimeInput> implements ZetaFormFieldSt
   Future<void> _pickTime() async {
     final result = await showTimePicker(
       context: context,
+      initialEntryMode: widget.pickerInitialEntryMode ?? TimePickerEntryMode.dial,
       initialTime: _value ?? TimeOfDay.now(),
       builder: (BuildContext context, Widget? child) {
         return Theme(
@@ -174,9 +182,16 @@ class ZetaTimeInputState extends State<ZetaTimeInput> implements ZetaFormFieldSt
             timePickerTheme: TimePickerThemeData(
               dialBackgroundColor: _colors.warm.shade30,
               dayPeriodColor: _colors.primary,
+              shape: RoundedRectangleBorder(
+                borderRadius: widget.rounded ? ZetaRadius.rounded : ZetaRadius.none,
+              ),
               inputDecorationTheme: InputDecorationTheme(
-                fillColor: _colors.warm.shade30,
                 filled: true,
+                isDense: true,
+                border: OutlineInputBorder(
+                  borderRadius: _borderRadius,
+                  borderSide: BorderSide.none,
+                ),
               ),
             ),
           ),
