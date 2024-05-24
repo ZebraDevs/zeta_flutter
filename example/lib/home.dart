@@ -148,7 +148,9 @@ class _HomeState extends State<Home> {
     final _assets = assets..sort((a, b) => a.name.compareTo(b.name));
     final _theme = theme..sort((a, b) => a.name.compareTo(b.name));
     return ExampleScaffold(
-      name: 'Zeta',
+      // x-release-please-start-version
+      name: 'zeta_flutter v0.9.1',
+      // x-release-please-end
       child: SingleChildScrollView(
         child: Column(
           children: [
