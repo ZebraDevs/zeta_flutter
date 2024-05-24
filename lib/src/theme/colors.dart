@@ -27,6 +27,9 @@ class ZetaColors {
     Color? surfaceSecondary,
     Color? surfaceTertiary,
     bool adjust = true,
+    @Deprecated('This color has been deprecated as of v0.10.0') link,
+    @Deprecated('This color has been deprecated as of v0.10.0') linkVisited,
+    @Deprecated('This color has been deprecated as of v0.10.0') shadow,
   })  : primary = _adjustedValue(primary, ZetaColorBase.blue, adjust, brightness, contrast),
         secondary = _adjustedValue(secondary, primary ?? ZetaColorBase.yellow, adjust, brightness, contrast),
         error = _adjustedValue(error, ZetaColorBase.red, adjust, brightness, contrast),
@@ -80,6 +83,9 @@ class ZetaColors {
     ZetaColorSwatch? warm,
     Color? white,
     Color? black,
+    @Deprecated('This color has been deprecated as of v0.10.0') link,
+    @Deprecated('This color has been deprecated as of v0.10.0') linkVisited,
+    @Deprecated('This color has been deprecated as of v0.10.0') shadow,
   }) {
     return ZetaColors(
       white: white ?? ZetaColorBase.white,
@@ -117,6 +123,9 @@ class ZetaColors {
     ZetaColorSwatch? warm,
     Color? white,
     Color? black,
+    @Deprecated('This color has been deprecated as of v0.10.0') link,
+    @Deprecated('This color has been deprecated as of v0.10.0') linkVisited,
+    @Deprecated('This color has been deprecated as of v0.10.0') shadow,
   }) {
     return ZetaColors(
       cool: cool,
@@ -133,6 +142,42 @@ class ZetaColors {
       surfacePrimary: black ?? ZetaColorBase.black,
     );
   }
+
+  /// Hover surface color.
+  @Deprecated('Use surfaceHover instead. ' 'This color has been deprecated as of v0.10.0.')
+  Color get surfaceHovered => surfaceHover;
+
+  /// Selected hover surface color.
+  @Deprecated('Use surfaceSelectedHover instead. ' 'This color has been deprecated as of v0.10.0.')
+  Color get surfaceSelectedHovered => surfaceSelectedHover;
+
+  /// Positive color.
+  @Deprecated('Use surfacePositive instead. ' 'This color has been deprecated as of v0.10.0.')
+  ZetaColorSwatch get positive => surfacePositive;
+
+  /// Negative color.
+  @Deprecated('Use surfaceNegative instead. ' 'This color has been deprecated as of v0.10.0.')
+  ZetaColorSwatch get negative => surfaceNegative;
+
+  /// Warning color.
+  @Deprecated('Use surfaceWarning instead. ' 'This color has been deprecated as of v0.10.0.')
+  ZetaColorSwatch get warning => surfaceWarning;
+
+  /// Info color.
+  @Deprecated('Use surfaceInfo instead. ' 'This color has been deprecated as of v0.10.0.')
+  ZetaColorSwatch get info => surfaceInfo;
+
+  /// Shadow color.
+  @Deprecated('This color has been deprecated as of v0.10.0.')
+  Color get shadow => const Color(0x1A49505E);
+
+  /// Link color
+  @Deprecated('This color has been deprecated as of v0.10.0.')
+  Color get link => ZetaColorBase.linkLight;
+
+  /// Visited link color
+  @Deprecated('This color has been deprecated as of v0.10.0.')
+  Color get linkVisited => ZetaColorBase.linkVisitedLight;
 
   /// Constructor Fields
 
@@ -579,6 +624,9 @@ class ZetaColors {
     Color? surfacePrimary,
     Color? surfaceSecondary,
     Color? surfaceTertiary,
+    @Deprecated('This color has been deprecated as of v0.10.0') Color? link,
+    @Deprecated('This color has been deprecated as of v0.10.0') Color? linkVisited,
+    @Deprecated('This color has been deprecated as of v0.10.0') Color? shadow,
   }) {
     return ZetaColors(
       white: white ?? this.white,
@@ -735,14 +783,14 @@ extension ZetaColorGetters on ColorScheme {
   ZetaColorSwatch get secondarySwatch =>
       _resolve?.zetaColors.secondary ?? _resolveDefault(_ZetaColorProperties.secondarySwatch);
 
-  /// Cool  color swatch.
+  /// Cool color swatch.
   ///
   /// Defaults to [ZetaColorBase.cool].
   ///
   /// {@macro zeta-color-dark}
   ZetaColorSwatch get cool => _resolve?.zetaColors.cool ?? _resolveDefault(_ZetaColorProperties.cool);
 
-  /// Warm  color swatch.
+  /// Warm color swatch.
   ///
   /// Defaults to [ZetaColorBase.warm].
   ///

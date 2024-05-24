@@ -19,6 +19,38 @@ import '../../zeta_flutter.dart';
 class ZetaColorBase {
   ZetaColorBase._();
 
+  /// Link color for light mode.
+  @Deprecated('This color has been deprecated as of v0.10.0')
+  static const Color linkLight = Color(0xFF0257AC);
+
+  /// Visited link color for light mode.
+  @Deprecated('This color has been deprecated as of v0.10.0')
+  static const Color linkVisitedLight = Color(0xFF205386);
+
+  /// Link color for dark mode.
+  @Deprecated('This color has been deprecated as of v0.10.0')
+  static const Color linkDark = Color(0xFF7ABDFF);
+
+  /// Visited link color for dark mode.
+  @Deprecated('This color has been deprecated as of v0.10.0')
+  static const Color linkVisitedDark = Color(0xFF47A3FF);
+
+  /// Default shadow color.
+  @Deprecated('This color has been deprecated as of v0.10.0')
+  static const Color shadowLight = Color(0x1A49505E);
+
+  /// Default shadow color.
+  @Deprecated('This color has been deprecated as of v0.10.0')
+  static const Color shadowDark = Color(0x1A49505E);
+
+  /// Grey warm swatch
+  @Deprecated('Use warm instead. ' 'This color has been deprecated as of v0.10.0.')
+  static const ZetaColorSwatch greyWarm = ZetaColorBase.warm;
+
+  /// Grey cool swatch
+  @Deprecated('Use cool instead. ' 'This color has been deprecated as of v0.10.0.')
+  static const ZetaColorSwatch greyCool = ZetaColorBase.cool;
+
   /// Pure
   ///
   /// {@macro zeta-colors-swatch}
