@@ -36,7 +36,7 @@ Widget iconsUseCase(BuildContext context) {
                     height: 120,
                     child: InkWell(
                       borderRadius: ZetaRadius.rounded,
-                      hoverColor: Zeta.of(context).colors.surfaceHovered,
+                      hoverColor: Zeta.of(context).colors.surfaceHover,
                       onTap: () async {
                         await Clipboard.setData(ClipboardData(text: 'ZetaIcons.' + e.key));
                         ScaffoldMessenger.of(context).showMaterialBanner(

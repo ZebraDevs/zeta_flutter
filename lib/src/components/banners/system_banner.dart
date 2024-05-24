@@ -92,11 +92,11 @@ class ZetaSystemBanner extends MaterialBanner {
       case ZetaSystemBannerStatus.primary:
         return zeta.colors.primary;
       case ZetaSystemBannerStatus.positive:
-        return zeta.colors.positive;
+        return zeta.colors.surfacePositive;
       case ZetaSystemBannerStatus.warning:
         return zeta.colors.orange;
       case ZetaSystemBannerStatus.negative:
-        return zeta.colors.negative;
+        return zeta.colors.surfaceNegative;
     }
   }
 }

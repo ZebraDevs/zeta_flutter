@@ -106,7 +106,7 @@ class ZetaChatItem extends StatelessWidget {
         _ZetaSlidableAction(
           onPressed: onCallTap,
           backgroundColor: colors.green.shade10,
-          foregroundColor: colors.positive,
+          foregroundColor: colors.surfacePositive,
           icon: Icons.call,
         ),
       if (onPttTap != null)
@@ -120,7 +120,7 @@ class ZetaChatItem extends StatelessWidget {
         _ZetaSlidableAction(
           onPressed: onDeleteTap,
           backgroundColor: colors.red.shade10,
-          foregroundColor: colors.negative,
+          foregroundColor: colors.surfaceNegative,
           icon: ZetaIcons.delete_round,
         ),
     ];
@@ -218,7 +218,7 @@ class ZetaChatItem extends StatelessWidget {
                                                       ),
                                                       child: Icon(
                                                         Icons.circle_notifications,
-                                                        color: colors.negative,
+                                                        color: colors.surfaceNegative,
                                                       ),
                                                     ),
                                                   if (_count != null)

@@ -1,6 +1,5 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-
 import '../../../zeta_flutter.dart';
 
 ///Class for [ZetaBreadCrumbs]
@@ -274,7 +273,7 @@ class _BreadCrumbsTruncatedState extends State<BreadCrumbsTruncated> {
             style: ButtonStyle(
               backgroundColor: WidgetStateProperty.resolveWith((states) {
                 if (states.contains(WidgetState.hovered)) {
-                  return colors.surfaceHovered;
+                  return colors.surfaceHover;
                 }
                 if (states.contains(WidgetState.pressed)) {
                   return colors.primary.shade10;

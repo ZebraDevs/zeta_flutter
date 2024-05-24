@@ -26,7 +26,7 @@ class ZetaColorSwatch extends ColorSwatch<int> {
   /// The darker and lighter shades are determined by predefined percentage values.
   ///
   /// It ensures that the 60th and 80th shades from swatch are abide by the AA and AAA accessibility standards on [background], respectively.
-  /// [background] color defaults to [ZetaColorBase.greyWarm] shade10.
+  /// [background] color defaults to [ZetaColorBase.warm] shade10.
   /// {@endtemplate}
   factory ZetaColorSwatch.fromColor(
     Color primary, {

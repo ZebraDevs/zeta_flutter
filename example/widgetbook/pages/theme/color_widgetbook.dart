@@ -36,24 +36,20 @@ class ColorBody extends StatelessWidget {
         'borderDisabled': colors.borderDisabled,
         'borderSelected': colors.borderSelected,
       };
-      final Map<String, Color> links = {
-        'linkDefault': colors.link,
-        'linkVisited': colors.linkVisited,
-      };
       final Map<String, Color> backdrop = {
         'surfacePrimary': colors.surfacePrimary,
         'surfaceDisabled': colors.surfaceDisabled,
-        'surfaceHovered': colors.surfaceHovered,
+        'surfaceHover': colors.surfaceHover,
         'surfaceSecondary': colors.surfaceSecondary,
         'surfaceTertiary': colors.surfaceTertiary,
-        'surfaceSelectedHovered': colors.surfaceSelectedHovered,
+        'surfaceSelectedHover': colors.surfaceSelectedHover,
         'surfaceSelected': colors.surfaceSelected,
       };
       final Map<String, Color> alerts = {
-        'positive': colors.positive,
-        'negative': colors.negative,
-        'warning': colors.warning,
-        'info': colors.info,
+        'positive': colors.surfacePositive,
+        'negative': colors.surfaceNegative,
+        'warning': colors.surfaceWarning,
+        'info': colors.surfaceInfo,
       };
 
       return DefaultTextStyle(
@@ -70,7 +66,6 @@ class ColorBody extends StatelessWidget {
                 const SizedBox(height: ZetaSpacing.l),
                 MyRow(children: textIcon, title: 'Text and icon styles'),
                 MyRow(children: border, title: 'Border styles'),
-                MyRow(children: links, title: 'Links'),
                 MyRow(children: backdrop, title: 'Backdrop colors'),
                 MyRow(children: alerts, title: 'Alert colors'),
                 Row(children: [Text('Full color swatches')]).paddingVertical(ZetaSpacing.x8),

@@ -42,9 +42,9 @@ extension ButtonFunctions on ZetaButtonType {
       case ZetaButtonType.secondary:
         return colors.secondary;
       case ZetaButtonType.positive:
-        return colors.positive;
+        return colors.surfacePositive;
       case ZetaButtonType.negative:
-        return colors.negative;
+        return colors.surfaceNegative;
       case ZetaButtonType.outline:
       case ZetaButtonType.primary:
         return colors.primary;
