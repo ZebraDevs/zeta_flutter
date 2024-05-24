@@ -253,7 +253,7 @@ class _ZetaStepperState extends State<ZetaStepper> with TickerProviderStateMixin
 
   Color _getColorForType(ZetaStepType type) {
     return switch (type) {
-      ZetaStepType.complete => _colors.positive,
+      ZetaStepType.complete => _colors.surfacePositive,
       ZetaStepType.disabled => _colors.cool.shade50,
       ZetaStepType.enabled => _colors.primary,
     };

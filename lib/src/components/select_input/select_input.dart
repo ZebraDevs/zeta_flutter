@@ -520,7 +520,7 @@ class ZetaSelectInputItem extends StatelessWidget {
     return ButtonStyle(
       backgroundColor: WidgetStateProperty.resolveWith((states) {
         if (states.contains(WidgetState.hovered)) {
-          return colors.surfaceHovered;
+          return colors.surfaceHover;
         }
 
         if (states.contains(WidgetState.pressed)) {

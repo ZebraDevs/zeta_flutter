@@ -25,7 +25,7 @@ void main() {
 
   testWidgets('Scheme generator', (tester) async {
     final blueSwatch = ZetaColorSwatch.fromColor(ZetaColorBase.blue);
-    final greySwatch = ZetaColorSwatch.fromColor(ZetaColorBase.greyCool);
+    final greySwatch = ZetaColorSwatch.fromColor(ZetaColorBase.cool);
     final blackSwatch = ZetaColorSwatch.fromColor(ZetaColorBase.black);
 
     expect(blueSwatch.shade10 != blueSwatch.shade20, true);

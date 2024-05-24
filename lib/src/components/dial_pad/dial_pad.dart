@@ -204,10 +204,10 @@ class ZetaDialPadButton extends StatelessWidget {
             borderRadius: ZetaRadius.full,
             overlayColor: WidgetStateProperty.resolveWith((states) {
               if (states.contains(WidgetState.pressed)) {
-                return colors.surfaceSelectedHovered;
+                return colors.surfaceSelectedHover;
               }
               if (states.contains(WidgetState.hovered)) {
-                return colors.surfaceHovered;
+                return colors.surfaceHover;
               }
               return null;
             }),

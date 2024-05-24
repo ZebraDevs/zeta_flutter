@@ -111,7 +111,7 @@ class _ZetaChipState extends State<ZetaChip> {
           }
 
           if (states.contains(WidgetState.hovered)) {
-            return colors.surfaceHovered;
+            return colors.surfaceHover;
           }
 
           return colors.surfacePrimary;

@@ -13,203 +13,211 @@ import '../../zeta_flutter.dart';
 /// * [yellow]
 /// * [teal]
 /// * [pink]
-/// * [greyWarm]
-/// * [greyCool].
+/// * [warm]
+/// * [pure]
+/// * [cool].
 class ZetaColorBase {
   ZetaColorBase._();
 
-  /// Blue swatch.
+  /// Pure
   ///
-  /// {@template zeta-colors-swatch}
-  /// Contains shades from 10 (light) to 100 (dark).
+  /// {@macro zeta-colors-swatch}
+  static const ZetaColorSwatch pure = ZetaColorSwatch(
+    primary: 0xFF151519,
+    swatch: {
+      0: Color(0xFFffffff),
+      500: Color(0xFF151519),
+      1000: Color(0xFF151519),
+    },
+  );
+
+  /// Cool
   ///
-  /// See also:
-  /// * [ZetaColorSwatch].
-  /// {@endtemplate}
+  /// {@macro zeta-colors-swatch}
+  static const ZetaColorSwatch cool = ZetaColorSwatch(
+    primary: 0xFF7a8190,
+    swatch: {
+      10: Color(0xFFf8fbff),
+      20: Color(0xFFf3f6fa),
+      30: Color(0xFFe0e3e9),
+      40: Color(0xFFced2db),
+      50: Color(0xFF8d95a3),
+      60: Color(0xFF7a8190),
+      70: Color(0xFF545963),
+      80: Color(0xFF2c2f36),
+      90: Color(0xFF1d1e23),
+      100: Color(0xFF0c0d0e),
+    },
+  );
+
+  /// Warm
+  ///
+  /// {@macro zeta-colors-swatch}
+  static const ZetaColorSwatch warm = ZetaColorSwatch(
+    primary: 0xFF858585,
+    swatch: {
+      10: Color(0xFFfafafa),
+      20: Color(0xFFf6f6f6),
+      30: Color(0xFFececec),
+      40: Color(0xFFdedede),
+      50: Color(0xFFb9b9b9),
+      60: Color(0xFF858585),
+      70: Color(0xFF585858),
+      80: Color(0xFF313131),
+      90: Color(0xFF1d1e23),
+      100: Color(0xFF151519),
+    },
+  );
+
+  /// Blue
+  ///
+  /// {@macro zeta-colors-swatch}
   static const ZetaColorSwatch blue = ZetaColorSwatch(
     primary: 0xFF0073e6,
     swatch: {
-      100: Color(0xFF101B25),
-      90: Color(0xFF002C58),
-      80: Color(0xFF004D99),
-      70: Color(0xFF0061C2),
-      60: Color(0xFF0073E6),
-      50: Color(0xFF599FE5),
-      40: Color(0xFF7EBEFF),
-      30: Color(0xFFB7DBFF),
-      20: Color(0xFFE2F1FF),
-      10: Color(0xFFF1F8FF),
+      10: Color(0xFFf1f8ff),
+      20: Color(0xFFe2f1ff),
+      30: Color(0xFFb7dbff),
+      40: Color(0xFF7ebeff),
+      50: Color(0xFF599fe5),
+      60: Color(0xFF0073e6),
+      70: Color(0xFF0061c2),
+      80: Color(0xFF004d99),
+      90: Color(0xFF002c58),
+      100: Color(0xFF101b25),
     },
   );
 
-  /// Green swatch.
+  /// Green
   ///
   /// {@macro zeta-colors-swatch}
   static const ZetaColorSwatch green = ZetaColorSwatch(
-    primary: 0xFF00864F,
+    primary: 0xFF00864f,
     swatch: {
+      10: Color(0xFFecfff7),
+      20: Color(0xFFd8ffef),
+      30: Color(0xFFbeefdb),
+      40: Color(0xFF84dab6),
+      50: Color(0xFF67b796),
+      60: Color(0xFF00864f),
+      70: Color(0xFF006d3f),
+      80: Color(0xFF005f38),
+      90: Color(0xFF00331e),
       100: Color(0xFF081711),
-      90: Color(0xFF00331E),
-      80: Color(0xFF005F38),
-      70: Color(0xFF006D3F),
-      60: Color(0xFF00864F),
-      50: Color(0xFF67B796),
-      40: Color(0xFF84DAB6),
-      30: Color(0xFFBEEFDB),
-      20: Color(0xFFD8FFEF),
-      10: Color(0xFFECFFF7),
     },
   );
 
-  /// Red swatch.
+  /// Red
   ///
   /// {@macro zeta-colors-swatch}
   static const ZetaColorSwatch red = ZetaColorSwatch(
-    primary: 0xFFD70015,
+    primary: 0xFFd70015,
     swatch: {
-      100: Color(0xFF220F11),
+      10: Color(0xFFfff0f1),
+      20: Color(0xFFffe1e4),
+      30: Color(0xFFffb3bb),
+      40: Color(0xFFf98c97),
+      50: Color(0xFFf36170),
+      60: Color(0xFFd70015),
+      70: Color(0xFFb50012),
+      80: Color(0xFF8f000e),
       90: Color(0xFF520008),
-      80: Color(0xFF8F000E),
-      70: Color(0xFFB50012),
-      60: Color(0xFFD70015),
-      50: Color(0xFFF36170),
-      40: Color(0xFFF98C97),
-      30: Color(0xFFFFB3BB),
-      20: Color(0xFFFFE1E4),
-      10: Color(0xFFFFF0F1),
+      100: Color(0xFF220f11),
     },
   );
 
-  /// Orange swatch.
+  /// Orange
   ///
   /// {@macro zeta-colors-swatch}
   static const ZetaColorSwatch orange = ZetaColorSwatch(
-    primary: 0xFFC87500,
+    primary: 0xFFae6500,
     swatch: {
-      100: Color(0xFF1E1100),
-      90: Color(0xFF402600),
-      80: Color(0xFF764502),
+      10: Color(0xFFfef2e2),
+      20: Color(0xFFffe7c6),
+      30: Color(0xFFffd292),
+      40: Color(0xFFffb348),
+      50: Color(0xFFf5a230),
+      60: Color(0xFFae6500),
       70: Color(0xFF965802),
-      60: Color(0xFFAE6500),
-      50: Color(0xFFD78E26),
-      40: Color(0xFFF5A230),
-      30: Color(0xFFFFB348),
-      20: Color(0xFFFFD292),
-      10: Color(0xFFFFE7C6),
+      80: Color(0xFF764502),
+      90: Color(0xFF402600),
+      100: Color(0xFF1e1100),
     },
   );
 
-  /// Purple swatch.
+  /// Purple
   ///
   /// {@macro zeta-colors-swatch}
   static const ZetaColorSwatch purple = ZetaColorSwatch(
-    primary: 0xFF6400D6,
+    primary: 0xFF7e0cff,
     swatch: {
-      100: Color(0xFF180F22),
+      10: Color(0xFFf7f0ff),
+      20: Color(0xFFefe1ff),
+      30: Color(0xFFdcc1fb),
+      40: Color(0xFFcea4ff),
+      50: Color(0xFF9b71df),
+      60: Color(0xFF7e0cff),
+      70: Color(0xFF6400d6),
+      80: Color(0xFF43008f),
       90: Color(0xFF260052),
-      80: Color(0xFF43008F),
-      70: Color(0xFF6400D6),
-      60: Color(0xFF7E0CFF),
-      50: Color(0xFF9B71DF),
-      40: Color(0xFFCEA4FF),
-      30: Color(0xFFDCC1FB),
-      20: Color(0xFFEFE1FF),
-      10: Color(0xFFF7F0FF),
+      100: Color(0xFF180f22),
     },
   );
 
-  /// Yellow swatch.
+  /// Yellow
   ///
   /// {@macro zeta-colors-swatch}
   static const ZetaColorSwatch yellow = ZetaColorSwatch(
-    primary: 0xFFA38600,
+    primary: 0xFF8d7400,
     swatch: {
-      100: Color(0xFF181400),
-      90: Color(0xFF352B00),
-      80: Color(0xFF564908),
+      10: Color(0xFFfff7d4),
+      20: Color(0xFFffea89),
+      30: Color(0xFFf3d961),
+      40: Color(0xFFdbb91c),
+      50: Color(0xFFc2a728),
+      60: Color(0xFF8d7400),
       70: Color(0xFF766200),
-      60: Color(0xFF8D7400),
-      50: Color(0xFFC2A728),
-      40: Color(0xFFDBB91C),
-      30: Color(0xFFF3D961),
-      20: Color(0xFFFFEA89),
-      10: Color(0xFFFFF7D4),
+      80: Color(0xFF564908),
+      90: Color(0xFF352b00),
+      100: Color(0xFF181400),
     },
   );
 
-  /// Teal swatch.
+  /// Teal
   ///
   /// {@macro zeta-colors-swatch}
   static const ZetaColorSwatch teal = ZetaColorSwatch(
-    primary: 0xFF018786,
+    primary: 0xFF1a8080,
     swatch: {
-      100: Color(0xFF0A1616),
-      90: Color(0xFF003535),
-      80: Color(0xFF005B5B),
+      10: Color(0xFFecffff),
+      20: Color(0xFFd9ffff),
+      30: Color(0xFFbcfbfb),
+      40: Color(0xFF91e1e1),
+      50: Color(0xFF65c4c4),
+      60: Color(0xFF1a8080),
       70: Color(0xFF017474),
-      60: Color(0xFF1A8080),
-      50: Color(0xFF65C5C5),
-      40: Color(0xFF91E1E1),
-      30: Color(0xFFBCFBFB),
-      20: Color(0xFFD9FFFF),
-      10: Color(0xFFECFFFF),
+      80: Color(0xFF005b5b),
+      90: Color(0xFF003535),
+      100: Color(0xFF0a1616),
     },
   );
 
-  /// Pink swatch.
+  /// Pink
   ///
   /// {@macro zeta-colors-swatch}
   static const ZetaColorSwatch pink = ZetaColorSwatch(
-    primary: 0xFFAB006D,
+    primary: 0xFFd30589,
     swatch: {
-      100: Color(0xFF2E001E),
-      90: Color(0xFF640040),
+      10: Color(0xFFfff7fc),
+      20: Color(0xFFffe3f5),
+      30: Color(0xFFffbee7),
+      40: Color(0xFFff94d8),
+      50: Color(0xFFee78c3),
+      60: Color(0xFFd30589),
+      70: Color(0xFFab006d),
       80: Color(0xFF840054),
-      70: Color(0xFFAB006D),
-      60: Color(0xFFD30589),
-      50: Color(0xFFEE78C3),
-      40: Color(0xFFFF94D8),
-      30: Color(0xFFFFBEE7),
-      20: Color(0xFFFFE3F5),
-      10: Color(0xFFFFF7FC),
-    },
-  );
-
-  /// Grey warm swatch.
-  ///
-  /// {@macro zeta-colors-swatch}
-  static const ZetaColorSwatch greyWarm = ZetaColorSwatch(
-    primary: 0xFF858585,
-    swatch: {
-      100: Color(0xFF151519),
-      90: Color(0xFF202020),
-      80: Color(0xFF313131),
-      70: Color(0xFF585858),
-      60: Color(0xFF858585),
-      50: Color(0xFFB9B9B9),
-      40: Color(0xFFDEDEDE),
-      30: Color(0xFFEDEDED),
-      20: Color(0xFFF7F7F7),
-      10: Color(0xFFFAFAFA),
-    },
-  );
-
-  /// Grey cool swatch.
-  ///
-  /// {@macro zeta-colors-swatch}
-  static const ZetaColorSwatch greyCool = ZetaColorSwatch(
-    primary: 0xFF7A8190,
-    swatch: {
-      100: Color(0xFF0C0D0E),
-      90: Color(0xFF1D1E23),
-      80: Color(0xFF2C2F36),
-      70: Color(0xFF545963),
-      60: Color(0xFF7A8190),
-      50: Color(0xFF8D95A3),
-      40: Color(0xFFCED2DB),
-      30: Color(0xFFE0E3E9),
-      20: Color(0xFFF3F6FA),
-      10: Color(0xFFF8FBFF),
+      90: Color(0xFF640040),
+      100: Color(0xFF2e001e),
     },
   );
 
@@ -225,22 +233,4 @@ class ZetaColorBase {
 
   /// Default text color.
   static const Color text = Color(0xFF1D1E23);
-
-  /// Link color for light mode.
-  static const Color linkLight = Color(0xFF0257AC);
-
-  /// Visited link color for light mode.
-  static const Color linkVisitedLight = Color(0xFF205386);
-
-  /// Link color for dark mode.
-  static const Color linkDark = Color(0xFF7ABDFF);
-
-  /// Visited link color for dark mode.
-  static const Color linkVisitedDark = Color(0xFF47A3FF);
-
-  /// Default shadow color.
-  static const Color shadowLight = Color(0x1A49505E);
-
-  /// Default shadow color.
-  static const Color shadowDark = Color(0x1A49505E);
 }

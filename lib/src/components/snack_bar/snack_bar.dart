@@ -312,10 +312,10 @@ class _LeadingIcon extends StatelessWidget {
 
   Color _getIconColor(ZetaColors colors, ZetaSnackBarType? type) {
     return switch (type) {
-      ZetaSnackBarType.positive => colors.positive,
-      ZetaSnackBarType.info => colors.info,
-      ZetaSnackBarType.warning => colors.warning,
-      ZetaSnackBarType.error || ZetaSnackBarType.deletion => colors.negative,
+      ZetaSnackBarType.positive => colors.surfacePositive,
+      ZetaSnackBarType.info => colors.surfaceInfo,
+      ZetaSnackBarType.warning => colors.surfaceWarning,
+      ZetaSnackBarType.error || ZetaSnackBarType.deletion => colors.surfaceNegative,
       ZetaSnackBarType.view => colors.primary,
       _ => colors.iconInverse,
     };
