@@ -12,7 +12,7 @@ class CheckBoxExample extends StatefulWidget {
 }
 
 class _CheckBoxExampleState extends State<CheckBoxExample> {
-  bool? isChecked = true;
+  bool isChecked = true;
   bool isEnabled = true;
   bool useIndeterminate = false;
 
@@ -76,7 +76,6 @@ Row getCheckBoxRow({required bool isEnabled, bool isSharp = true}) {
           onChanged: isEnabled ? (value) => {} : null,
         ),
         ZetaCheckbox(
-          value: null,
           rounded: !isSharp,
           onChanged: isEnabled ? (value) => {} : null,
         )
