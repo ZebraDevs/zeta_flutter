@@ -5,11 +5,16 @@ import '../../../zeta_flutter.dart';
 /// Zeta Checkbox.
 ///
 /// Checkboxes allow users to select one or more items from a set. Checkboxes can turn an option on or off.
+///
+/// The checkbox itself does not maintain any state. Instead, when the state of
+/// the checkbox changes, the widget calls the [onChanged] callback.
+/// Widgets that use a checkbox should listen for the [onChanged] callback and
+/// rebuild the checkbox with a new [value] to update the visual appearance of
+/// the checkbox.
 class ZetaCheckbox extends FormField<bool> {
   /// Constructs a [ZetaCheckbox].
   ZetaCheckbox({
-    super.key,
-    this.value = false,
+    required this.value,
     this.label,
     this.onChanged,
     this.rounded = true,
@@ -17,6 +22,7 @@ class ZetaCheckbox extends FormField<bool> {
     super.validator,
     super.autovalidateMode,
     super.restorationId,
+    super.key,
   }) : super(
           initialValue: value,
           enabled: onChanged != null,
@@ -122,19 +128,7 @@ class _Checkbox extends StatefulWidget {
 }
 
 class _CheckboxState extends State<_Checkbox> {
-  bool get _checked => widget.useIndeterminate ? widget.value : (widget.value ?? false);
-
-  bool? get _updatedValue {
-    if (widget.useIndeterminate) {
-      if (widget.value) {
-        return null;
-      } else {
-        return true;
-      }
-    } else {
-      return !_checked;
-    }
-  }
+  bool get _checked => widget.value;
 
   bool _isFocused = false;
   bool _isHovered = false;
@@ -152,7 +146,7 @@ class _CheckboxState extends State<_Checkbox> {
             ? FocusableActionDetector(
                 onFocusChange: (bool focus) => setState(() => _isFocused = focus),
                 child: GestureDetector(
-                  onTap: !widget.disabled ? () => widget.onChanged.call(_updatedValue) : null,
+                  onTap: !widget.disabled ? () => widget.onChanged.call(!_checked) : null,
                   child: _buildContent(context),
                 ),
               )
@@ -164,17 +158,17 @@ class _CheckboxState extends State<_Checkbox> {
   Flex _buildContent(BuildContext context) {
     final theme = Zeta.of(context);
 
-    final icon = _checked && !_checked
+    final icon = !_checked
         ? const SizedBox.shrink()
         : Icon(
-            _checked
+            !widget.useIndeterminate
                 ? widget.rounded
                     ? ZetaIcons.check_mark_round
                     : ZetaIcons.check_mark_sharp
                 : widget.rounded
                     ? ZetaIcons.remove_round
                     : ZetaIcons.remove_sharp,
-            color: !widget.disabled ? theme.colors.white : theme.colors.textDisabled,
+            color: !widget.disabled ? theme.colors.white : theme.colors.iconDisabled,
             size: ZetaSpacing.x3_5,
           );
 

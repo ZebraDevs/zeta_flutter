@@ -78,6 +78,7 @@ Row getCheckBoxRow({required bool isEnabled, bool isSharp = true}) {
         ZetaCheckbox(
           rounded: !isSharp,
           onChanged: isEnabled ? (value) => {} : null,
+          value: false,
         )
       ]);
 }
