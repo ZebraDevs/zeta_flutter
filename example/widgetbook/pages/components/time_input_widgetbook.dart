@@ -37,7 +37,7 @@ Widget timeInputUseCase(BuildContext context) {
             rounded: rounded,
             disabled: disabled,
             label: label,
-            hint: hintText,
+            hintText: hintText,
             errorText: _errorText ?? errorText,
             onChange: (value) {},
           ),

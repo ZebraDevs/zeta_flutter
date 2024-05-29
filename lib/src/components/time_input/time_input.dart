@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
 import '../../../zeta_flutter.dart';
+import '../../interfaces/form_field.dart';
 
 const _maxHrValue = 23;
 const _max12HrValue = 12;
@@ -12,20 +13,22 @@ const _maxMinsValue = 59;
 /// A form field used to input time.
 ///
 /// Can be used and validated the same way as a [TextFormField]
-class ZetaTimeInput extends StatefulWidget {
+class ZetaTimeInput extends ZetaFormField<TimeOfDay> {
   /// Creates a new [ZetaTimeInput]
   const ZetaTimeInput({
     super.key,
+    super.disabled = false,
+    super.initialValue,
+    super.onChange,
+    super.requirementLevel = ZetaFormFieldRequirement.none,
     this.rounded = true,
     this.use12Hr,
-    this.disabled = false,
-    this.initialValue,
-    this.onChange,
     this.label,
-    this.hint,
+    this.hintText,
     this.errorText,
     this.validator,
     this.size = ZetaWidgetSize.medium,
+    this.pickerInitialEntryMode,
   });
 
   /// {@macro zeta-component-rounded}
@@ -35,21 +38,11 @@ class ZetaTimeInput extends StatefulWidget {
   /// Uses the device default if not set.
   final bool? use12Hr;
 
-  /// Called when the input changes.
-  /// Null is passed to this function if the current value is an invalid time.
-  final ValueChanged<TimeOfDay?>? onChange;
-
-  /// The inital value of the input.
-  final TimeOfDay? initialValue;
-
-  /// Disables the input.
-  final bool disabled;
-
   /// The label for the input.
   final String? label;
 
   /// The hint displayed below the input.
-  final String? hint;
+  final String? hintText;
 
   /// The error displayed below the input.
   final String? errorText;
@@ -57,10 +50,15 @@ class ZetaTimeInput extends StatefulWidget {
   /// The size of the input.
   final ZetaWidgetSize size;
 
+  /// The initial entry mode of the time picker.
+  final TimePickerEntryMode? pickerInitialEntryMode;
+
   /// The validator passed to the text input.
   /// Returns a string containing an error message.
   ///
-  /// By default, the form field checks for null and invalid hour or minute values.
+  /// By default, the input checks for invalid hour or minute values.
+  /// It also checks for null values unless [requirementLevel] is set to [ZetaFormFieldRequirement.optional]
+  ///
   /// If the default validation fails, [errorText] will be shown.
   /// However, if [validator] catches any of these conditions, the return value of [validator] will be shown.
   final String? Function(TimeOfDay? value)? validator;
@@ -77,15 +75,16 @@ class ZetaTimeInput extends StatefulWidget {
       ..add(DiagnosticsProperty<TimeOfDay?>('initialValue', initialValue))
       ..add(DiagnosticsProperty<bool>('disabled', disabled))
       ..add(StringProperty('label', label))
-      ..add(StringProperty('hintText', hint))
+      ..add(StringProperty('hintText', hintText))
       ..add(StringProperty('errorText', errorText))
       ..add(EnumProperty<ZetaWidgetSize>('size', size))
-      ..add(ObjectFlagProperty<String? Function(TimeOfDay value)?>.has('validator', validator));
+      ..add(ObjectFlagProperty<String? Function(TimeOfDay value)?>.has('validator', validator))
+      ..add(EnumProperty<TimePickerEntryMode?>('pickerInitialEntryMode', pickerInitialEntryMode));
   }
 }
 
 /// State for [ZetaTimeInput]
-class ZetaTimeInputState extends State<ZetaTimeInput> {
+class ZetaTimeInputState extends State<ZetaTimeInput> implements ZetaFormFieldState {
   // TODO(mikecoomber): add AM/PM selector inline.
 
   ZetaColors get _colors => Zeta.of(context).colors;
@@ -97,42 +96,13 @@ class ZetaTimeInputState extends State<ZetaTimeInput> {
   bool get _use12Hr => widget.use12Hr ?? !MediaQuery.of(context).alwaysUse24HourFormat;
 
   final _controller = TextEditingController();
-  final GlobalKey<FormFieldState<String>> _key = GlobalKey();
+  final GlobalKey<ZetaTextInputState> _key = GlobalKey();
 
-  bool _hovered = false;
   String? _errorText;
-
-  /// Returns true if the input contains a valid [TimeOfDay]
-  bool get isValid => _errorText != null;
 
   bool get _showClearButton => _controller.text.isNotEmpty;
 
-  Color get _backgroundColor {
-    if (widget.disabled) {
-      return _colors.surfaceDisabled;
-    }
-    if (_errorText != null) {
-      return _colors.error.shade10;
-    }
-    return _colors.surfacePrimary;
-  }
-
-  Color get _textColor {
-    if (widget.disabled) {
-      return _colors.textDisabled;
-    }
-    return _colors.textSubtle;
-  }
-
-  TextStyle get _textStyle {
-    TextStyle style = ZetaTextStyles.bodyMedium;
-    if (widget.size == ZetaWidgetSize.small) {
-      style = ZetaTextStyles.bodyXSmall;
-    }
-    return style.copyWith(
-      color: _textColor,
-    );
-  }
+  BorderRadius get _borderRadius => widget.rounded ? ZetaRadius.minimal : ZetaRadius.none;
 
   double get _iconSize {
     switch (widget.size) {
@@ -160,19 +130,6 @@ class ZetaTimeInputState extends State<ZetaTimeInput> {
     return null;
   }
 
-  OutlineInputBorder get _baseBorder => OutlineInputBorder(
-        borderRadius: widget.rounded ? ZetaRadius.minimal : ZetaRadius.none,
-        borderSide: BorderSide(color: _hovered ? _colors.borderSelected : _colors.borderSubtle),
-      );
-
-  OutlineInputBorder get _focusedBorder => _baseBorder.copyWith(
-        borderSide: BorderSide(color: _colors.primary.shade50, width: ZetaSpacing.x0_5),
-      ); // TODO(mikecoomber): change to colors.borderPrimary when added
-
-  OutlineInputBorder get _errorBorder => _baseBorder.copyWith(
-        borderSide: BorderSide(color: _colors.error, width: ZetaSpacing.x0_5),
-      );
-
   @override
   void initState() {
     _timeFormatter = MaskTextInputFormatter(
@@ -197,10 +154,9 @@ class ZetaTimeInputState extends State<ZetaTimeInput> {
   }
 
   void _onChange() {
-    if (_timeFormatter.getUnmaskedText().length > 3 && (_key.currentState?.validate() ?? false)) {
+    if (_timeFormatter.getUnmaskedText().length > (_timeFormat.length - 2) &&
+        (_key.currentState?.validate() ?? false)) {
       widget.onChange?.call(_value);
-    } else {
-      widget.onChange?.call(null);
     }
     setState(() {});
   }
@@ -218,11 +174,31 @@ class ZetaTimeInputState extends State<ZetaTimeInput> {
   Future<void> _pickTime() async {
     final result = await showTimePicker(
       context: context,
+      initialEntryMode: widget.pickerInitialEntryMode ?? TimePickerEntryMode.dial,
       initialTime: _value ?? TimeOfDay.now(),
       builder: (BuildContext context, Widget? child) {
-        return MediaQuery(
-          data: MediaQuery.of(context).copyWith(alwaysUse24HourFormat: !_use12Hr),
-          child: child!,
+        return Theme(
+          data: Theme.of(context).copyWith(
+            timePickerTheme: TimePickerThemeData(
+              dialBackgroundColor: _colors.warm.shade30,
+              dayPeriodColor: _colors.primary,
+              shape: RoundedRectangleBorder(
+                borderRadius: widget.rounded ? ZetaRadius.rounded : ZetaRadius.none,
+              ),
+              inputDecorationTheme: InputDecorationTheme(
+                filled: true,
+                isDense: true,
+                border: OutlineInputBorder(
+                  borderRadius: _borderRadius,
+                  borderSide: BorderSide.none,
+                ),
+              ),
+            ),
+          ),
+          child: MediaQuery(
+            data: MediaQuery.of(context).copyWith(alwaysUse24HourFormat: !_use12Hr),
+            child: child!,
+          ),
         );
       },
     );
@@ -231,7 +207,8 @@ class ZetaTimeInputState extends State<ZetaTimeInput> {
     }
   }
 
-  void _clear() {
+  @override
+  void reset() {
     _timeFormatter.clear();
     _key.currentState?.reset();
     setState(() {
@@ -242,118 +219,65 @@ class ZetaTimeInputState extends State<ZetaTimeInput> {
   }
 
   @override
+  bool validate() => _key.currentState?.validate() ?? false;
+
+  @override
   Widget build(BuildContext context) {
     if (!_firstBuildComplete && widget.initialValue != null) {
       _setText(widget.initialValue!);
       _firstBuildComplete = true;
     }
-
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        if (widget.label != null) ...[
-          Text(
-            widget.label!,
-            style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: _textColor),
-          ),
-          const SizedBox(height: ZetaSpacing.x2),
-        ],
-        MouseRegion(
-          onEnter: !widget.disabled
-              ? (_) => setState(() {
-                    _hovered = true;
-                  })
-              : null,
-          onExit: !widget.disabled
-              ? (_) => setState(() {
-                    _hovered = false;
-                  })
-              : null,
-          child: TextFormField(
-            enabled: !widget.disabled,
-            key: _key,
-            controller: _controller,
-            inputFormatters: [
-              _timeFormatter,
-            ],
-            validator: (_) {
-              final customValidation = widget.validator?.call(_value);
-              if (_value == null ||
-                  _value!.hour > _hrsLimit ||
-                  _value!.minute > _minsLimit ||
-                  customValidation != null) {
-                setState(() {
-                  _errorText = customValidation ?? widget.errorText ?? '';
-                });
-                return '';
-              }
-
-              setState(() {
-                _errorText = null;
-              });
-              return null;
-            },
-            textAlignVertical: TextAlignVertical.center,
-            onChanged: (_) => _onChange(),
-            style: _textStyle,
-            decoration: InputDecoration(
-              isDense: true,
-              contentPadding: const EdgeInsets.only(left: ZetaSpacing.x3),
-              filled: true,
-              suffixIconConstraints: BoxConstraints(
-                maxHeight: _iconSize * 2,
-                minWidth: _iconSize * 2,
-              ),
-              suffixIcon: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  if (_showClearButton)
-                    _IconButton(
-                      icon: widget.rounded ? ZetaIcons.cancel_round : ZetaIcons.cancel_sharp,
-                      onTap: _clear,
-                      disabled: widget.disabled,
-                      size: _iconSize,
-                      color: _colors.iconSubtle,
-                    ),
-                  _IconButton(
-                    icon: widget.rounded ? ZetaIcons.clock_outline_round : ZetaIcons.clock_outline_sharp,
-                    onTap: _pickTime,
-                    disabled: widget.disabled,
-                    size: _iconSize,
-                    color: _colors.iconDefault,
-                  ),
-                ],
-              ),
-              focusColor: _backgroundColor,
-              hoverColor: _backgroundColor,
-              fillColor: _backgroundColor,
-              enabledBorder: _baseBorder,
-              disabledBorder: _baseBorder,
-              focusedBorder: _focusedBorder,
-              focusedErrorBorder: _errorBorder,
-              errorBorder: _errorBorder,
-              hintText: _timeFormat,
-              hintStyle: _textStyle,
-              errorStyle: const TextStyle(height: 0),
-            ),
-          ),
-        ),
-        _HintText(
-          disabled: widget.disabled,
-          rounded: widget.rounded,
-          hintText: widget.hint,
-          errorText: _errorText,
-        ),
+    return ZetaTextInput(
+      disabled: widget.disabled,
+      key: _key,
+      size: widget.size,
+      errorText: _errorText,
+      rounded: widget.rounded,
+      label: widget.label,
+      hintText: widget.hintText,
+      placeholder: _timeFormat,
+      controller: _controller,
+      inputFormatters: [
+        _timeFormatter,
       ],
-    );
-  }
+      validator: (_) {
+        String? errorText;
+        final customValidation = widget.validator?.call(_value);
+        if ((_value == null && widget.requirementLevel != ZetaFormFieldRequirement.optional) ||
+            (_value != null && (_value!.hour > _hrsLimit || _value!.minute > _minsLimit)) ||
+            customValidation != null) {
+          errorText = customValidation ?? widget.errorText ?? '';
+        }
 
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty<bool>('isValid', isValid));
+        setState(() {
+          _errorText = errorText;
+        });
+        return errorText;
+      },
+      onChange: (_) => _onChange(),
+      requirementLevel: widget.requirementLevel,
+      suffix: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          if (_showClearButton)
+            _IconButton(
+              icon: widget.rounded ? ZetaIcons.cancel_round : ZetaIcons.cancel_sharp,
+              onTap: reset,
+              disabled: widget.disabled,
+              size: _iconSize,
+              color: _colors.iconSubtle,
+            ),
+          _IconButton(
+            icon: widget.rounded ? ZetaIcons.clock_outline_round : ZetaIcons.clock_outline_sharp,
+            onTap: _pickTime,
+            disabled: widget.disabled,
+            size: _iconSize,
+            color: _colors.iconDefault,
+          ),
+        ],
+      ),
+    );
   }
 }
 
@@ -381,6 +305,8 @@ class _IconButton extends StatelessWidget {
       constraints: BoxConstraints(
         maxHeight: size * 2,
         maxWidth: size * 2,
+        minHeight: size * 2,
+        minWidth: size * 2,
       ),
       color: !disabled ? color : colors.iconDisabled,
       onPressed: disabled ? null : onTap,
@@ -398,74 +324,5 @@ class _IconButton extends StatelessWidget {
       ..add(DiagnosticsProperty<bool>('disabled', disabled))
       ..add(DoubleProperty('size', size))
       ..add(ColorProperty('color', color));
-  }
-}
-
-class _HintText extends StatelessWidget {
-  const _HintText({
-    required this.disabled,
-    required this.hintText,
-    required this.errorText,
-    required this.rounded,
-  });
-  final bool disabled;
-  final bool rounded;
-  final String? hintText;
-  final String? errorText;
-
-  @override
-  Widget build(BuildContext context) {
-    final colors = Zeta.of(context).colors;
-    final error = errorText != null && errorText!.isNotEmpty;
-
-    final text = error ? errorText : hintText;
-
-    Color elementColor = colors.textSubtle;
-
-    if (disabled) {
-      elementColor = colors.textDisabled;
-    } else if (error) {
-      elementColor = colors.error;
-    }
-
-    if (text == null) {
-      return const SizedBox();
-    }
-
-    return Row(
-      children: [
-        Icon(
-          errorText != null
-              ? rounded
-                  ? ZetaIcons.error_round
-                  : ZetaIcons.error_sharp
-              : rounded
-                  ? ZetaIcons.info_round
-                  : ZetaIcons.info_sharp,
-          size: ZetaSpacing.x4,
-          color: elementColor,
-        ),
-        const SizedBox(
-          width: ZetaSpacing.x1,
-        ),
-        Expanded(
-          child: Text(
-            text,
-            style: ZetaTextStyles.bodyXSmall.copyWith(color: elementColor),
-            overflow: TextOverflow.ellipsis,
-          ),
-        ),
-      ],
-    ).paddingTop(ZetaSpacing.x2);
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty<bool>('disabled', disabled))
-      ..add(DiagnosticsProperty<bool>('rounded', rounded))
-      ..add(StringProperty('hintText', hintText))
-      ..add(StringProperty('errorText', errorText));
   }
 }

@@ -108,17 +108,13 @@ class _ColorExampleState extends State<ColorExample> {
           'borderDisabled': colors.borderDisabled,
           'borderSelected': colors.borderSelected,
         };
-        final Map<String, Color> links = {
-          'linkDefault': colors.link,
-          'linkVisited': colors.linkVisited,
-        };
         final Map<String, Color> backdrop = {
           'surfacePrimary': colors.surfacePrimary,
           'surfaceDisabled': colors.surfaceDisabled,
-          'surfaceHovered': colors.surfaceHovered,
+          'surfaceHover': colors.surfaceHover,
           'surfaceSecondary': colors.surfaceSecondary,
           'surfaceTertiary': colors.surfaceTertiary,
-          'surfaceSelectedHovered': colors.surfaceSelectedHovered,
+          'surfaceSelectedHover': colors.surfaceSelectedHover,
           'surfaceSelected': colors.surfaceSelected,
         };
 
@@ -128,10 +124,9 @@ class _ColorExampleState extends State<ColorExample> {
         };
 
         final Map<String, Color> alerts = {
-          'positive': colors.positive.text,
-          'negative': colors.negative.text,
-          'warning': colors.warning.text,
-          'info': colors.info.text,
+          'negative': colors.surfaceNegative,
+          'warning': colors.surfaceWarning,
+          'info': colors.surfaceInfo,
         };
 
         return ExampleScaffold(
@@ -142,7 +137,6 @@ class _ColorExampleState extends State<ColorExample> {
               children: [
                 MyRow(children: textIcon, title: 'Text and icon styles'),
                 MyRow(children: border, title: 'Border styles'),
-                MyRow(children: links, title: 'Links'),
                 MyRow(children: backdrop, title: 'Backdrop colors'),
                 MyRow(children: primaries, title: 'Primary colors'),
                 MyRow(children: alerts, title: 'Alert colors'),

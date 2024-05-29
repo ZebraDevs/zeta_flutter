@@ -1,152 +1,145 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
+
 import '../../../zeta_flutter.dart';
+import '../../interfaces/form_field.dart';
 
-/// ZetaDateInput allows entering date in a pre-defined format.
-/// Validation is performed to make sure the date is valid
-/// and is in the proper format.
-class ZetaDateInput extends StatefulWidget {
-  /// Constructor for [ZetaDateInput].
-  ///
-  /// Example usage how to provide custom validations
-  /// via `onChanged`, `hasError` and `errorText`:
-  /// ```dart
-  /// ZetaDateInput(
-  ///   label: 'Birthday',
-  ///   hint: 'Enter birthday',
-  ///   hasError: _errorText != null,
-  ///   errorText: _errorText ?? 'Invalid date',
-  ///   onChanged: (value) {
-  ///     if (value == null) return setState(() => _errorText = null);
-  ///     final now = DateTime.now();
-  ///     setState(
-  ///       () => _errorText = value.difference(
-  ///         DateTime(now.year, now.month, now.day)).inDays > 0
-  ///           ? 'Birthday cannot be in the future'
-  ///           : null,
-  ///     );
-  ///   },
-  /// )
-  /// ```
-  const ZetaDateInput({
+/// A form field used to input dates.
+///
+/// Can be used and validated the same way as a [TextFormField]
+class ZetaDateInput extends ZetaFormField<DateTime> {
+  /// Creates a new [ZetaDateInput]
+  ZetaDateInput({
     super.key,
-    this.size,
-    this.label,
-    this.hint,
-    this.enabled = true,
+    super.disabled = false,
+    super.initialValue,
+    super.onChange,
+    super.requirementLevel = ZetaFormFieldRequirement.none,
     this.rounded = true,
-    this.hasError = false,
+    this.label,
+    this.hintText,
     this.errorText,
-    this.onChanged,
-    this.datePattern = 'MM/dd/yyyy',
-  });
-
-  /// Determines the size of the input field.
-  ///
-  /// Default is `ZetaDateInputSize.large`
-  final ZetaWidgetSize? size;
-
-  /// If provided, displays a label above the input field.
-  final String? label;
-
-  /// If provided, displays a hint below the input field.
-  final String? hint;
-
-  /// Determines if the input field should be enabled (default) or disabled.
-  final bool enabled;
+    this.validator,
+    this.size = ZetaWidgetSize.medium,
+    this.dateFormat = 'MM/dd/yyyy',
+    this.minDate,
+    this.maxDate,
+    this.pickerInitialEntryMode,
+  }) : assert((minDate == null || maxDate == null) || minDate.isBefore(maxDate), 'minDate cannot be after maxDate');
 
   /// {@macro zeta-component-rounded}
   final bool rounded;
 
-  /// Determines if the input field should be displayed in error style.
-  ///
-  /// Default is `false`.
-  ///
-  /// If `enabled` is `false`, this has no effect.
-  final bool hasError;
+  /// The label for the input.
+  final String? label;
 
-  /// In combination with `hasError: true`, provides the error message to be displayed below the input field.
+  /// The hint displayed below the input.
+  final String? hintText;
+
+  /// The error displayed below the input.
   ///
-  /// If `hasError` is false, then `errorText` should provide date validation error message.
-  ///
-  /// See the example in the [ZetaDateInput] documentation.
+  /// If you want to have custom error messages for different types of error, use [validator].
   final String? errorText;
 
-  /// A callback, which provides the entered date, or `null`, if invalid.
-  ///
-  /// See the example in the [ZetaDateInput] documentation how to provide custom validations
-  /// in combination with `hasError` and `errorText`.
-  final void Function(DateTime?)? onChanged;
+  /// The format the given date should be in
+  /// https://pub.dev/documentation/intl/latest/intl/DateFormat-class.html
+  final String dateFormat;
 
-  /// `datePattern` is needed for the date format validation as described here:
-  ///  https://pub.dev/documentation/intl/latest/intl/DateFormat-class.html
-  final String datePattern;
+  /// The size of the input.
+  final ZetaWidgetSize size;
+
+  /// The minimum date allowed by the date input.
+  final DateTime? minDate;
+
+  /// The maximum date allowed by the date input.
+  final DateTime? maxDate;
+
+  /// The initial entry mode of the date picker.
+  final DatePickerEntryMode? pickerInitialEntryMode;
+
+  /// The validator passed to the text input.
+  /// Returns a string containing an error message.
+  ///
+  /// By default, the form field checks for if the date is within [minDate] and [maxDate] (if given).
+  /// It also checks for null values unless [requirementLevel] is set to [ZetaFormFieldRequirement.optional]
+  ///
+  /// If the default validation fails, [errorText] will be shown.
+  /// However, if [validator] catches any of these conditions, the return value of [validator] will be shown.
+  final String? Function(DateTime? value)? validator;
 
   @override
-  State<ZetaDateInput> createState() => _ZetaDateInputState();
+  State<ZetaDateInput> createState() => ZetaDateInputState();
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(EnumProperty<ZetaWidgetSize>('size', size))
-      ..add(StringProperty('label', label))
-      ..add(StringProperty('hint', hint))
-      ..add(DiagnosticsProperty<bool>('enabled', enabled))
       ..add(DiagnosticsProperty<bool>('rounded', rounded))
-      ..add(DiagnosticsProperty<bool>('hasError', hasError))
+      ..add(ObjectFlagProperty<ValueChanged<DateTime?>?>.has('onChange', onChange))
+      ..add(DiagnosticsProperty<DateTime?>('initialValue', initialValue))
+      ..add(DiagnosticsProperty<bool>('disabled', disabled))
+      ..add(StringProperty('label', label))
+      ..add(StringProperty('hintText', hintText))
       ..add(StringProperty('errorText', errorText))
-      ..add(ObjectFlagProperty<void Function(DateTime? p1)?>.has('onChanged', onChanged))
-      ..add(StringProperty('datePattern', datePattern));
+      ..add(EnumProperty<ZetaWidgetSize>('size', size))
+      ..add(ObjectFlagProperty<String? Function(DateTime value)?>.has('validator', validator))
+      ..add(StringProperty('dateFormat', dateFormat))
+      ..add(DiagnosticsProperty<DateTime?>('minDate', minDate))
+      ..add(DiagnosticsProperty<DateTime?>('maxDate', maxDate))
+      ..add(EnumProperty<DatePickerEntryMode?>('pickerInitialEntryMode', pickerInitialEntryMode));
   }
 }
 
-class _ZetaDateInputState extends State<ZetaDateInput> {
-  final _controller = TextEditingController();
-  late ZetaWidgetSize _size;
-  late final String _hintText;
+/// State for [ZetaDateInput]
+class ZetaDateInputState extends State<ZetaDateInput> implements ZetaFormFieldState {
+  // TODO(mikecoomber): add AM/PM selector inline.
+
+  ZetaColors get _colors => Zeta.of(context).colors;
+
   late final MaskTextInputFormatter _dateFormatter;
-  bool _invalidDate = false;
-  bool _hasError = false;
+
+  final _controller = TextEditingController();
+  final GlobalKey<ZetaTextInputState> _key = GlobalKey();
+
+  String? _errorText;
+
+  bool get _showClearButton => _controller.text.isNotEmpty;
+
+  double get _iconSize {
+    switch (widget.size) {
+      case ZetaWidgetSize.large:
+        return ZetaSpacing.x6;
+      case ZetaWidgetSize.medium:
+        return ZetaSpacing.x5;
+      case ZetaWidgetSize.small:
+        return ZetaSpacing.x4;
+    }
+  }
+
+  DateTime? get _value {
+    final value = _dateFormatter.getMaskedText().trim();
+    final date = DateFormat(widget.dateFormat).tryParseStrict(value);
+
+    return date;
+  }
 
   @override
   void initState() {
-    super.initState();
-    _hintText = widget.datePattern.toLowerCase();
     _dateFormatter = MaskTextInputFormatter(
-      mask: _hintText.replaceAll(RegExp('[a-z]'), '#'),
+      mask: widget.dateFormat.replaceAll(RegExp('[A-Za-z]'), '#'),
       filter: {'#': RegExp('[0-9]')},
       type: MaskAutoCompletionType.eager,
     );
-    _setParams();
-  }
 
-  @override
-  void didUpdateWidget(ZetaDateInput oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    _setParams();
-  }
-
-  void _setParams() {
-    _size = widget.size ?? ZetaWidgetSize.large;
-    _hasError = widget.hasError;
-  }
-
-  void _onChanged() {
-    final value = _dateFormatter.getMaskedText().trim();
-    final date = DateFormat(widget.datePattern).tryParseStrict(value);
-    _invalidDate = value.isNotEmpty && date == null;
-    widget.onChanged?.call(date);
-    setState(() {});
-  }
-
-  void _clear() {
-    _controller.clear();
-    setState(() {
-      _invalidDate = false;
-      _hasError = false;
-    });
+    if (widget.initialValue != null) {
+      _setText(widget.initialValue!);
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        _key.currentState?.validate();
+      });
+    }
+    super.initState();
   }
 
   @override
@@ -155,165 +148,179 @@ class _ZetaDateInputState extends State<ZetaDateInput> {
     super.dispose();
   }
 
+  void _onChange() {
+    if (_dateFormatter.getMaskedText().length == widget.dateFormat.length && (_key.currentState?.validate() ?? false)) {
+      widget.onChange?.call(_value);
+    }
+    setState(() {});
+  }
+
+  void _setText(DateTime value) {
+    _controller.text = DateFormat(widget.dateFormat).format(value);
+    _dateFormatter.formatEditUpdate(TextEditingValue.empty, _controller.value);
+  }
+
+  Future<void> _pickDate() async {
+    final firstDate = widget.minDate ?? DateTime(0000);
+    final lastDate = widget.maxDate ?? DateTime(3000);
+    DateTime fallbackDate = DateTime.now();
+
+    if (fallbackDate.isBefore(firstDate) || fallbackDate.isAfter(lastDate)) {
+      fallbackDate = firstDate;
+    }
+
+    late final DateTime initialDate;
+
+    if (_value == null || (_value != null && _value!.isBefore(firstDate) || _value!.isAfter(lastDate))) {
+      initialDate = fallbackDate;
+    } else {
+      initialDate = _value!;
+    }
+
+    final result = await showDatePicker(
+      context: context,
+      firstDate: firstDate,
+      lastDate: lastDate,
+      initialEntryMode: widget.pickerInitialEntryMode ?? DatePickerEntryMode.calendar,
+      initialDate: initialDate,
+      builder: (BuildContext context, Widget? child) {
+        return Theme(
+          data: Theme.of(context).copyWith(
+            dividerTheme: DividerThemeData(color: _colors.borderSubtle),
+            datePickerTheme: DatePickerThemeData(
+              shape: RoundedRectangleBorder(
+                borderRadius: widget.rounded ? ZetaRadius.rounded : ZetaRadius.none,
+              ),
+              headerHeadlineStyle: ZetaTextStyles.titleLarge,
+              headerHelpStyle: ZetaTextStyles.labelLarge,
+              dividerColor: _colors.borderSubtle,
+              dayStyle: ZetaTextStyles.bodyMedium,
+            ),
+          ),
+          child: child!,
+        );
+      },
+    );
+    if (result != null) {
+      _setText(result);
+    }
+  }
+
+  @override
+  void reset() {
+    _dateFormatter.clear();
+    _key.currentState?.reset();
+    setState(() {
+      _errorText = null;
+    });
+    _controller.clear();
+    widget.onChange?.call(null);
+  }
+
+  @override
+  bool validate() => _key.currentState?.validate() ?? false;
+
   @override
   Widget build(BuildContext context) {
-    final zeta = Zeta.of(context);
-    final hasError = _invalidDate || _hasError;
-    final showError = hasError && widget.errorText != null;
-    final hintErrorColor = widget.enabled
-        ? showError
-            ? zeta.colors.red
-            : zeta.colors.cool.shade70
-        : zeta.colors.cool.shade50;
-
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        if (widget.label != null)
-          Padding(
-            padding: const EdgeInsets.only(bottom: 5),
-            child: Text(
-              widget.label!,
-              style: ZetaTextStyles.bodyMedium.copyWith(
-                color: widget.enabled ? zeta.colors.textDefault : zeta.colors.cool.shade50,
-              ),
-            ),
-          ),
-        TextFormField(
-          enabled: widget.enabled,
-          autovalidateMode: AutovalidateMode.onUserInteraction,
-          controller: _controller,
-          inputFormatters: [_dateFormatter],
-          keyboardType: TextInputType.number,
-          onChanged: (_) => _onChanged(),
-          style: _size == ZetaWidgetSize.small ? ZetaTextStyles.bodyXSmall : ZetaTextStyles.bodyMedium,
-          decoration: InputDecoration(
-            isDense: true,
-            contentPadding: EdgeInsets.symmetric(
-              horizontal: 10,
-              vertical: _inputVerticalPadding(_size),
-            ),
-            hintText: _hintText,
-            suffixIcon: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                if (_controller.text.isNotEmpty)
-                  IconButton(
-                    visualDensity: const VisualDensity(
-                      horizontal: -4,
-                      vertical: -4,
-                    ),
-                    onPressed: _clear,
-                    icon: Icon(
-                      widget.rounded ? ZetaIcons.cancel_round : ZetaIcons.cancel_sharp,
-                      color: zeta.colors.cool.shade70,
-                      size: _iconSize(_size),
-                    ),
-                  ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 6, right: 10),
-                  child: Icon(
-                    widget.rounded ? ZetaIcons.calendar_3_day_round : ZetaIcons.calendar_3_day_sharp,
-                    color: widget.enabled ? zeta.colors.textDefault : zeta.colors.cool.shade50,
-                    size: _iconSize(_size),
-                  ),
-                ),
-              ],
-            ),
-            suffixIconConstraints: const BoxConstraints(
-              minHeight: ZetaSpacing.m,
-              minWidth: ZetaSpacing.m,
-            ),
-            hintStyle: _size == ZetaWidgetSize.small
-                ? ZetaTextStyles.bodyXSmall.copyWith(
-                    color: widget.enabled ? zeta.colors.textDefault : zeta.colors.cool.shade50,
-                  )
-                : ZetaTextStyles.bodyMedium.copyWith(
-                    color: widget.enabled ? zeta.colors.textDefault : zeta.colors.cool.shade50,
-                  ),
-            filled: !widget.enabled || hasError ? true : null,
-            fillColor: widget.enabled
-                ? hasError
-                    ? zeta.colors.red.shade10
-                    : null
-                : zeta.colors.cool.shade30,
-            enabledBorder: hasError
-                ? _errorInputBorder(zeta, rounded: widget.rounded)
-                : _defaultInputBorder(zeta, rounded: widget.rounded),
-            focusedBorder: hasError
-                ? _errorInputBorder(zeta, rounded: widget.rounded)
-                : _focusedInputBorder(zeta, rounded: widget.rounded),
-            disabledBorder: _defaultInputBorder(zeta, rounded: widget.rounded),
-            errorBorder: _errorInputBorder(zeta, rounded: widget.rounded),
-            focusedErrorBorder: _errorInputBorder(zeta, rounded: widget.rounded),
-          ),
-        ),
-        if (widget.hint != null || showError)
-          Padding(
-            padding: const EdgeInsets.only(top: 5),
-            child: Row(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(right: ZetaSpacing.x2),
-                  child: Icon(
-                    showError && widget.enabled
-                        ? (widget.rounded ? ZetaIcons.error_round : ZetaIcons.error_sharp)
-                        : (widget.rounded ? ZetaIcons.info_round : ZetaIcons.info_sharp),
-                    size: ZetaSpacing.b,
-                    color: hintErrorColor,
-                  ),
-                ),
-                Expanded(
-                  child: Text(
-                    showError && widget.enabled ? widget.errorText! : widget.hint!,
-                    style: ZetaTextStyles.bodyXSmall.copyWith(
-                      color: hintErrorColor,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
+    return ZetaTextInput(
+      disabled: widget.disabled,
+      key: _key,
+      rounded: widget.rounded,
+      size: widget.size,
+      errorText: _errorText,
+      label: widget.label,
+      hintText: widget.hintText,
+      placeholder: widget.dateFormat,
+      controller: _controller,
+      inputFormatters: [
+        _dateFormatter,
       ],
+      validator: (_) {
+        final customValidation = widget.validator?.call(_value);
+        if (_value == null ||
+            (widget.minDate != null && _value!.isBefore(widget.minDate!)) ||
+            (widget.maxDate != null && _value!.isAfter(widget.maxDate!)) ||
+            customValidation != null) {
+          setState(() {
+            _errorText = customValidation ?? widget.errorText ?? '';
+          });
+          return '';
+        }
+
+        setState(() {
+          _errorText = null;
+        });
+        return null;
+      },
+      onChange: (_) => _onChange(),
+      requirementLevel: widget.requirementLevel,
+      suffix: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          if (_showClearButton)
+            _IconButton(
+              icon: widget.rounded ? ZetaIcons.cancel_round : ZetaIcons.cancel_sharp,
+              onTap: reset,
+              disabled: widget.disabled,
+              size: _iconSize,
+              color: _colors.iconSubtle,
+            ),
+          _IconButton(
+            icon: widget.rounded ? ZetaIcons.calendar_round : ZetaIcons.calendar_sharp,
+            onTap: _pickDate,
+            disabled: widget.disabled,
+            size: _iconSize,
+            color: _colors.iconDefault,
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _IconButton extends StatelessWidget {
+  const _IconButton({
+    required this.icon,
+    required this.onTap,
+    required this.disabled,
+    required this.size,
+    required this.color,
+  });
+
+  final IconData icon;
+  final VoidCallback onTap;
+  final bool disabled;
+  final double size;
+  final Color color;
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = Zeta.of(context).colors;
+
+    return IconButton(
+      padding: EdgeInsets.all(size / 2),
+      constraints: BoxConstraints(
+        maxHeight: size * 2,
+        maxWidth: size * 2,
+        minHeight: size * 2,
+        minWidth: size * 2,
+      ),
+      color: !disabled ? color : colors.iconDisabled,
+      onPressed: disabled ? null : onTap,
+      iconSize: size,
+      icon: Icon(icon),
     );
   }
 
-  double _inputVerticalPadding(ZetaWidgetSize size) => switch (size) {
-        ZetaWidgetSize.large => ZetaSpacing.x3,
-        ZetaWidgetSize.medium => ZetaSpacing.x2,
-        ZetaWidgetSize.small => ZetaSpacing.x2,
-      };
-
-  double _iconSize(ZetaWidgetSize size) => switch (size) {
-        ZetaWidgetSize.large => ZetaSpacing.x6,
-        ZetaWidgetSize.medium => ZetaSpacing.x5,
-        ZetaWidgetSize.small => ZetaSpacing.x4,
-      };
-
-  OutlineInputBorder _defaultInputBorder(
-    Zeta zeta, {
-    required bool rounded,
-  }) =>
-      OutlineInputBorder(
-        borderRadius: rounded ? ZetaRadius.minimal : ZetaRadius.none,
-        borderSide: BorderSide(color: zeta.colors.cool.shade40),
-      );
-
-  OutlineInputBorder _focusedInputBorder(
-    Zeta zeta, {
-    required bool rounded,
-  }) =>
-      OutlineInputBorder(
-        borderRadius: rounded ? ZetaRadius.minimal : ZetaRadius.none,
-        borderSide: BorderSide(color: zeta.colors.blue.shade50),
-      );
-
-  OutlineInputBorder _errorInputBorder(
-    Zeta zeta, {
-    required bool rounded,
-  }) =>
-      OutlineInputBorder(
-        borderRadius: rounded ? ZetaRadius.minimal : ZetaRadius.none,
-        borderSide: BorderSide(color: zeta.colors.red.shade50),
-      );
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty<IconData>('icon', icon))
+      ..add(ObjectFlagProperty<VoidCallback>.has('onTap', onTap))
+      ..add(DiagnosticsProperty<bool>('disabled', disabled))
+      ..add(DoubleProperty('size', size))
+      ..add(ColorProperty('color', color));
+  }
 }

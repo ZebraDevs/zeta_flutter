@@ -70,9 +70,9 @@ extension ZetaColorExtensions on Color {
   /// It will return a color chosen according to the brightness of this color.
   ///
   /// * The [Color] instance on which this getter is called is used to determine the brightness based on [ThemeData.estimateBrightnessForColor] method.
-  /// * If the estimated brightness is light, it will return a color [ZetaColorBase.greyCool].shade90.
+  /// * If the estimated brightness is light, it will return a color [ZetaColorBase.cool].shade90.
   /// * If the estimated brightness is not light (meaning it's dark), it will return [ZetaColorBase.white].
-  Color get onColor => isLight ? ZetaColorBase.greyCool.shade90 : ZetaColorBase.white;
+  Color get onColor => isLight ? ZetaColorBase.cool.shade90 : ZetaColorBase.white;
 
   /// Returns true if the color's brightness is [Brightness.light], else false.
   bool get isLight => ThemeData.estimateBrightnessForColor(this) == Brightness.light;

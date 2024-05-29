@@ -15,9 +15,6 @@ class ZetaColors {
   ZetaColors({
     this.brightness = Brightness.light,
     this.contrast = ZetaContrast.aa,
-    this.link = ZetaColorBase.linkLight,
-    this.linkVisited = ZetaColorBase.linkVisitedLight,
-    this.shadow = ZetaColorBase.shadowLight,
     this.white = ZetaColorBase.white,
     this.black = ZetaColorBase.black,
     ZetaColorSwatch? primary,
@@ -25,28 +22,25 @@ class ZetaColors {
     ZetaColorSwatch? error,
     ZetaColorSwatch? cool,
     ZetaColorSwatch? warm,
+    ZetaColorSwatch? pure,
     Color? surfacePrimary,
     Color? surfaceSecondary,
     Color? surfaceTertiary,
     bool adjust = true,
+    @Deprecated('This color has been deprecated as of v0.10.0') link,
+    @Deprecated('This color has been deprecated as of v0.10.0') linkVisited,
+    @Deprecated('This color has been deprecated as of v0.10.0') shadow,
   })  : primary = _adjustedValue(primary, ZetaColorBase.blue, adjust, brightness, contrast),
         secondary = _adjustedValue(secondary, primary ?? ZetaColorBase.yellow, adjust, brightness, contrast),
         error = _adjustedValue(error, ZetaColorBase.red, adjust, brightness, contrast),
-        cool = _adjustedValue(cool, ZetaColorBase.greyCool, adjust, brightness, ZetaContrast.aa),
-        warm = _adjustedValue(warm, ZetaColorBase.greyWarm, adjust, brightness, ZetaContrast.aa),
-        blue = _adjustedBase(ZetaColorBase.blue, adjust, brightness, contrast),
-        green = _adjustedBase(ZetaColorBase.green, adjust, brightness, contrast),
-        red = _adjustedBase(ZetaColorBase.red, adjust, brightness, contrast),
-        orange = _adjustedBase(ZetaColorBase.orange, adjust, brightness, contrast),
-        purple = _adjustedBase(ZetaColorBase.purple, adjust, brightness, contrast),
-        yellow = _adjustedBase(ZetaColorBase.yellow, adjust, brightness, contrast),
-        teal = _adjustedBase(ZetaColorBase.teal, adjust, brightness, contrast),
-        pink = _adjustedBase(ZetaColorBase.pink, adjust, brightness, contrast),
+        cool = _adjustedValue(cool, ZetaColorBase.cool, adjust, brightness, ZetaContrast.aa),
+        warm = _adjustedValue(warm, ZetaColorBase.warm, adjust, brightness, ZetaContrast.aa),
+        pure = _adjustedValue(pure, ZetaColorBase.pure, adjust, brightness, ZetaContrast.aa),
         surfacePrimary = surfacePrimary ?? white,
         surfaceSecondary = surfaceSecondary ??
             _adjustedValue(
               cool,
-              ZetaColorBase.greyCool,
+              ZetaColorBase.cool,
               adjust,
               brightness,
               ZetaContrast.aa,
@@ -54,11 +48,19 @@ class ZetaColors {
         surfaceTertiary = surfaceTertiary ??
             _adjustedValue(
               warm,
-              ZetaColorBase.greyWarm,
+              ZetaColorBase.warm,
               adjust,
               brightness,
               ZetaContrast.aa,
-            ).shade10;
+            ).shade10,
+        blue = _adjustedBase(ZetaColorBase.blue, adjust, brightness, contrast),
+        green = _adjustedBase(ZetaColorBase.green, adjust, brightness, contrast),
+        red = _adjustedBase(ZetaColorBase.red, adjust, brightness, contrast),
+        orange = _adjustedBase(ZetaColorBase.orange, adjust, brightness, contrast),
+        purple = _adjustedBase(ZetaColorBase.purple, adjust, brightness, contrast),
+        yellow = _adjustedBase(ZetaColorBase.yellow, adjust, brightness, contrast),
+        teal = _adjustedBase(ZetaColorBase.teal, adjust, brightness, contrast),
+        pink = _adjustedBase(ZetaColorBase.pink, adjust, brightness, contrast);
 
   /// Factory constructor for a light theme for [ZetaColors].
   ///
@@ -72,9 +74,6 @@ class ZetaColors {
   /// [warm] A color swatch for warmer color tones. Defaults to null.
   /// [white] A color option for white color. Defaults to null.
   /// [black] A color option for black color. Defaults to null.
-  /// [link] A color option for links. Defaults to null.
-  /// [linkVisited] A color option for visited links. Defaults to null.
-  /// [shadow] A color option for shadows. Defaults to null.
   factory ZetaColors.light({
     ZetaContrast contrast = ZetaContrast.aa,
     ZetaColorSwatch? primary,
@@ -84,9 +83,9 @@ class ZetaColors {
     ZetaColorSwatch? warm,
     Color? white,
     Color? black,
-    Color? link,
-    Color? linkVisited,
-    Color? shadow,
+    @Deprecated('This color has been deprecated as of v0.10.0') link,
+    @Deprecated('This color has been deprecated as of v0.10.0') linkVisited,
+    @Deprecated('This color has been deprecated as of v0.10.0') shadow,
   }) {
     return ZetaColors(
       white: white ?? ZetaColorBase.white,
@@ -100,9 +99,6 @@ class ZetaColors {
       surfaceTertiary: warm?.shade10,
       surfaceSecondary: cool?.shade10,
       surfacePrimary: white ?? ZetaColorBase.white,
-      link: link ?? ZetaColorBase.linkLight,
-      shadow: shadow ?? ZetaColorBase.shadowLight,
-      linkVisited: linkVisited ?? ZetaColorBase.linkVisitedLight,
     );
   }
 
@@ -118,9 +114,6 @@ class ZetaColors {
   /// [warm] A color swatch for warmer color tones. Defaults to null.
   /// [white] A color option for white color. Defaults to null.
   /// [black] A color option for black color. Defaults to null.
-  /// [link] A color option for links. Defaults to null.
-  /// [linkVisited] A color option for visited links. Defaults to null.
-  /// [shadow] A color option for shadows. Defaults to null.
   factory ZetaColors.dark({
     ZetaContrast contrast = ZetaContrast.aa,
     ZetaColorSwatch? primary,
@@ -130,9 +123,9 @@ class ZetaColors {
     ZetaColorSwatch? warm,
     Color? white,
     Color? black,
-    Color? link,
-    Color? linkVisited,
-    Color? shadow,
+    @Deprecated('This color has been deprecated as of v0.10.0') link,
+    @Deprecated('This color has been deprecated as of v0.10.0') linkVisited,
+    @Deprecated('This color has been deprecated as of v0.10.0') shadow,
   }) {
     return ZetaColors(
       cool: cool,
@@ -147,11 +140,46 @@ class ZetaColors {
       surfaceTertiary: warm?.shade10,
       surfaceSecondary: cool?.shade10,
       surfacePrimary: black ?? ZetaColorBase.black,
-      link: link ?? ZetaColorBase.linkDark,
-      shadow: shadow ?? ZetaColorBase.shadowLight,
-      linkVisited: linkVisited ?? ZetaColorBase.linkVisitedDark,
     );
   }
+
+  /// Hover surface color.
+  @Deprecated('Use surfaceHover instead. ' 'This color has been deprecated as of v0.10.0.')
+  Color get surfaceHovered => surfaceHover;
+
+  /// Selected hover surface color.
+  @Deprecated('Use surfaceSelectedHover instead. ' 'This color has been deprecated as of v0.10.0.')
+  Color get surfaceSelectedHovered => surfaceSelectedHover;
+
+  /// Positive color.
+  @Deprecated('Use surfacePositive instead. ' 'This color has been deprecated as of v0.10.0.')
+  ZetaColorSwatch get positive => surfacePositive;
+
+  /// Negative color.
+  @Deprecated('Use surfaceNegative instead. ' 'This color has been deprecated as of v0.10.0.')
+  ZetaColorSwatch get negative => surfaceNegative;
+
+  /// Warning color.
+  @Deprecated('Use surfaceWarning instead. ' 'This color has been deprecated as of v0.10.0.')
+  ZetaColorSwatch get warning => surfaceWarning;
+
+  /// Info color.
+  @Deprecated('Use surfaceInfo instead. ' 'This color has been deprecated as of v0.10.0.')
+  ZetaColorSwatch get info => surfaceInfo;
+
+  /// Shadow color.
+  @Deprecated('This color has been deprecated as of v0.10.0.')
+  Color get shadow => const Color(0x1A49505E);
+
+  /// Link color
+  @Deprecated('This color has been deprecated as of v0.10.0.')
+  Color get link => ZetaColorBase.linkLight;
+
+  /// Visited link color
+  @Deprecated('This color has been deprecated as of v0.10.0.')
+  Color get linkVisited => ZetaColorBase.linkVisitedLight;
+
+  /// Constructor Fields
 
   /// Represents the brightness value.
   final Brightness brightness;
@@ -181,26 +209,26 @@ class ZetaColors {
   /// Maps to [ColorScheme.error].
   final ZetaColorSwatch error;
 
-  /// Cool grey color swatch.
+  /// Cool  color swatch.
   ///
-  /// Defaults to [ZetaColorBase.greyCool].
+  /// Defaults to [ZetaColorBase.cool].
   ///
   /// {@macro zeta-color-dark}
   final ZetaColorSwatch cool;
 
-  /// Warm grey color swatch.
+  /// Warm  color swatch.
   ///
-  /// Defaults to [ZetaColorBase.greyWarm].
+  /// Defaults to [ZetaColorBase.warm].
   ///
   /// {@macro zeta-color-dark}
   final ZetaColorSwatch warm;
 
-  /// Shadow color.
+  /// Pure color swatch.
   ///
-  /// Maps to [ColorScheme.shadow].
+  /// Defaults to [ZetaColorBase.pure].
   ///
-  /// Defaults to #49505E at 10% opacity.
-  final Color shadow;
+  /// {@macro zeta-color-dark}
+  final ZetaColorSwatch pure;
 
   /// White color.
   ///
@@ -215,6 +243,26 @@ class ZetaColors {
   ///
   /// Defaults to [ZetaColorBase.black].
   final Color black;
+
+  /// Surface color.
+  ///
+  /// Maps to [ColorScheme.surface].
+  ///
+  /// * Light mode: `ZetaColors.black`
+  /// * Dark mode: `ZetaColors.white`.
+  final Color surfacePrimary;
+
+  /// Secondary surface color.
+  ///
+  /// * `ZetaColors.cool.10`.
+  final Color surfaceSecondary;
+
+  /// Tertiary surface color.
+  ///
+  /// Maps to [ColorScheme.surface] and [ThemeData.scaffoldBackgroundColor]
+  ///
+  /// * `ZetaColors.warm.10`.
+  final Color surfaceTertiary;
 
   // Text / icons.
 
@@ -286,196 +334,254 @@ class ZetaColors {
   /// {@macro zeta-color-dark}
   Color get iconInverse => textInverse;
 
-  // Border variants.
-
-  /// Default border color.
-  ///
-  /// Defaults to `ZetaColors.cool.50`.
+  ///  Default Surface Color
   ///
   /// {@macro zeta-color-dark}
-  Color get borderDefault => cool.shade50;
+  Color get surfaceDefault => pure.shade(0);
 
-  /// Subtle border color.
-  ///
-  /// `ZetaColors.cool.40`.
+  ///  Default-inverse Surface Color
   ///
   /// {@macro zeta-color-dark}
-  Color get borderSubtle => cool.shade40;
+  Color get surfaceDefaultInverse => warm.shade(100);
 
-  /// Disabled border color.
-  ///
-  /// Defaults to `ZetaColors.cool.30`.
+  ///  Hover Surface Color
   ///
   /// {@macro zeta-color-dark}
-  Color get borderDisabled => cool.shade30;
+  Color get surfaceHover => cool.shade(20);
 
-  /// Selected border color.
-  ///
-  /// Defaults to `ZetaColors.cool.90`.
+  ///  Selected Surface Color
   ///
   /// {@macro zeta-color-dark}
-  Color get borderSelected => cool.shade90;
+  Color get surfaceSelected => blue.shade(10);
 
-  /// True if current [ZetaColors] object uses dark mode colors.
-  bool get isDarkMode => brightness == Brightness.dark;
-
-  // Links
-
-  /// Link color.
-  ///
-  /// Defaults to [ZetaColorBase.linkLight] or [ZetaColorBase.linkDark].
-  final Color link;
-
-  /// Link color.
-  ///
-  /// Defaults to [ZetaColorBase.linkVisitedLight] or [ZetaColorBase.linkVisitedDark].
-  final Color linkVisited;
-
-  // Backdrop colors.
-
-  /// Surface color.
-  ///
-  /// Maps to [ColorScheme.surface].
-  ///
-  /// * Light mode: `ZetaColors.black`
-  /// * Dark mode: `ZetaColors.white`.
-  final Color surfacePrimary;
-
-  /// Secondary surface color.
-  ///
-  /// * `ZetaColors.cool.10`.
-  final Color surfaceSecondary;
-
-  /// Tertiary surface color.
-  ///
-  /// Maps to [ThemeData.scaffoldBackgroundColor]
-  ///
-  /// * `ZetaColors.warm.10`.
-  final Color surfaceTertiary;
-
-  /// Disabled surface color.
-  ///
-  /// Defaults to `ZetaColors.cool.30`.
+  ///  Selected-hover Surface Color
   ///
   /// {@macro zeta-color-dark}
-  Color get surfaceDisabled => cool.shade30;
+  Color get surfaceSelectedHover => blue.shade(20);
 
-  /// Hover surface color.
-  ///
-  /// Defaults to `ZetaColors.cool.20`.
+  ///  Disabled Surface Color
   ///
   /// {@macro zeta-color-dark}
-  Color get surfaceHovered => cool.shade20;
+  Color get surfaceDisabled => cool.shade(30);
 
-  /// Selected hover surface color.
-  ///
-  /// Defaults to: `ZetaColors.blue.20`.
-  Color get surfaceSelectedHovered => primary.shade20;
-
-  /// Selected surface color.
-  ///
-  /// Defaults to: `ZetaColors.blue.10`.
-  Color get surfaceSelected => primary.shade10;
-
-  // Alert Colors
-
-  /// Green positive color.
-  ///
-  /// Defaults to `ZetaColors.green.60` in AA system.
-  /// Defaults to `ZetaColors.green.80` in AAA system.
+  ///  Cool Surface Color
   ///
   /// {@macro zeta-color-dark}
-  ///
-  /// {@macro zeta-color-aaa}
-  ZetaColorSwatch get positive => green;
+  Color get surfaceCool => cool.shade(10);
 
-  /// Red negative color.
-  ///
-  /// Defaults to `ZetaColors.red.60` in AA system.
-  /// Defaults to `ZetaColors.red.80` in AAA system.
-  ///
-  /// Maps to [ColorScheme.error].
+  ///  Warm Surface Color
   ///
   /// {@macro zeta-color-dark}
-  ///
-  /// {@macro zeta-color-aaa}
-  ZetaColorSwatch get negative => error;
+  Color get surfaceWarm => warm.shade(10);
 
-  /// Orange warning color.
-  ///
-  /// Defaults to `ZetaColors.orange.60` in AA system.
-  /// Defaults to `ZetaColors.orange.80` in AAA system.
+  ///  Primary-subtle Surface Color
   ///
   /// {@macro zeta-color-dark}
-  ///
-  /// {@macro zeta-color-aaa}
-  ZetaColorSwatch get warning => orange;
+  Color get surfacePrimarySubtle => blue.shade(10);
 
-  /// Purple info color.
-  ///
-  /// Defaults to `ZetaColors.purple.60` in AA system.
-  /// Defaults to `ZetaColors.purple.80` in AAA system.
+  /// Avatar Avatar Surface Color
   ///
   /// {@macro zeta-color-dark}
-  ///
-  /// {@macro zeta-color-aaa}
-  ZetaColorSwatch get info => purple;
+  Color get surfaceAvatarBlue => blue.shade(80);
 
-  /// Blue color swatch.
+  /// Avatar Avatar Surface Color
   ///
-  /// Defaults to [ZetaColorBase.blue].
+  /// {@macro zeta-color-dark}
+  ZetaColorSwatch get surfaceAvatarGreen => green;
+
+  /// Avatar Avatar Surface Color
+  ///
+  /// {@macro zeta-color-dark}
+  Color get surfaceAvatarOrange => orange.shade(50);
+
+  /// Avatar Avatar Surface Color
+  ///
+  /// {@macro zeta-color-dark}
+  Color get surfaceAvatarPink => pink.shade(80);
+
+  /// Avatar Avatar Surface Color
+  ///
+  /// {@macro zeta-color-dark}
+  Color get surfaceAvatarPurple => purple.shade(80);
+
+  /// Avatar Avatar Surface Color
+  ///
+  /// {@macro zeta-color-dark}
+  Color get surfaceAvatarTeal => teal.shade(80);
+
+  /// Avatar Avatar Surface Color
+  ///
+  /// {@macro zeta-color-dark}
+  Color get surfaceAvatarYellow => yellow.shade(50);
+
+  ///  Secondary-subtle Surface Color
+  ///
+  /// {@macro zeta-color-dark}
+  Color get surfaceSecondarySubtle => yellow.shade(10);
+
+  ///  Positive Surface Color
+  ///
+  /// {@macro zeta-color-dark}
+  ZetaColorSwatch get surfacePositive => green;
+
+  ///  Positive-subtle Surface Color
+  ///
+  /// {@macro zeta-color-dark}
+  Color get surfacePositiveSubtle => green.shade(10);
+
+  ///  Warning Surface Color
+  ///
+  /// {@macro zeta-color-dark}
+  ZetaColorSwatch get surfaceWarning => orange;
+
+  ///  Warning-subtle Surface Color
+  ///
+  /// {@macro zeta-color-dark}
+  Color get surfaceWarningSubtle => orange.shade(10);
+
+  ///  Negative Surface Color
+  ///
+  /// {@macro zeta-color-dark}
+  ZetaColorSwatch get surfaceNegative => red;
+
+  ///  Negative-subtle Surface Color
+  ///
+  /// {@macro zeta-color-dark}
+  Color get surfaceNegativeSubtle => red.shade(10);
+
+  ///  Info Surface Color
+  ///
+  /// {@macro zeta-color-dark}
+  ZetaColorSwatch get surfaceInfo => purple;
+
+  ///  Info-subtle Surface Color
+  ///
+  /// {@macro zeta-color-dark}
+  Color get surfaceInfoSubtle => purple.shade(10);
+
+  ///  Default Border Color
+  ///
+  /// {@macro zeta-color-dark}
+  Color get borderDefault => cool.shade(40);
+
+  ///  Subtle Border Color
+  ///
+  /// {@macro zeta-color-dark}
+  Color get borderSubtle => cool.shade(30);
+
+  ///  Hover Border Color
+  ///
+  /// {@macro zeta-color-dark}
+  Color get borderHover => cool.shade(90);
+
+  ///  Selected Border Color
+  ///
+  /// {@macro zeta-color-dark}
+  Color get borderSelected => cool.shade(90);
+
+  ///  Disabled Border Color
+  ///
+  /// {@macro zeta-color-dark}
+  Color get borderDisabled => cool.shade(20);
+
+  ///  Pure Border Color
+  ///
+  /// {@macro zeta-color-dark}
+  Color get borderPure => pure.shade(0);
+
+  ///  Primary-main Border Color
+  ///
+  /// {@macro zeta-color-dark}
+  ZetaColorSwatch get borderPrimaryMain => blue;
+
+  ///  Primary Border Color
+  ///
+  /// {@macro zeta-color-dark}
+  Color get borderPrimary => blue.shade(50);
+
+  ///  Secondary Border Color
+  ///
+  /// {@macro zeta-color-dark}
+  Color get borderSecondary => yellow.shade(50);
+
+  ///  Positive Border Color
+  ///
+  /// {@macro zeta-color-dark}
+  Color get borderPositive => green.shade(50);
+
+  ///  Warning Border Color
+  ///
+  /// {@macro zeta-color-dark}
+  Color get borderWarning => orange.shade(50);
+
+  ///  Negative Border Color
+  ///
+  /// {@macro zeta-color-dark}
+  Color get borderNegative => red.shade(50);
+
+  ///  Info Border Color
+  ///
+  /// {@macro zeta-color-dark}
+  Color get borderInfo => purple.shade(50);
+
+  /// Blue color swatch
+  ///
+  /// Defaults to [ZetaColorBase.blue]
   ///
   /// {@macro zeta-color-dark}
   final ZetaColorSwatch blue;
 
-  /// Green color swatch.
+  /// Green color swatch
   ///
-  /// Defaults to [ZetaColorBase.green].
+  /// Defaults to [ZetaColorBase.green]
   ///
   /// {@macro zeta-color-dark}
   final ZetaColorSwatch green;
 
-  /// Red color swatch.
+  /// Red color swatch
   ///
-  /// Defaults to [ZetaColorBase.red].
+  /// Defaults to [ZetaColorBase.red]
   ///
   /// {@macro zeta-color-dark}
   final ZetaColorSwatch red;
 
-  /// Orange color swatch.
+  /// Orange color swatch
   ///
-  /// Defaults to [ZetaColorBase.orange].
+  /// Defaults to [ZetaColorBase.orange]
   ///
   /// {@macro zeta-color-dark}
   final ZetaColorSwatch orange;
 
-  /// Purple color swatch.
+  /// Purple color swatch
   ///
-  /// Defaults to [ZetaColorBase.purple].
+  /// Defaults to [ZetaColorBase.purple]
   ///
   /// {@macro zeta-color-dark}
   final ZetaColorSwatch purple;
 
-  /// Yellow color swatch.
+  /// Yellow color swatch
   ///
-  /// Defaults to [ZetaColorBase.yellow].
+  /// Defaults to [ZetaColorBase.yellow]
   ///
   /// {@macro zeta-color-dark}
   final ZetaColorSwatch yellow;
 
-  /// Teal color swatch.
+  /// Teal color swatch
   ///
-  /// Defaults to [ZetaColorBase.teal].
+  /// Defaults to [ZetaColorBase.teal]
   ///
   /// {@macro zeta-color-dark}
   final ZetaColorSwatch teal;
 
-  /// Pink color swatch.
+  /// Pink color swatch
   ///
-  /// Defaults to [ZetaColorBase.pink].
+  /// Defaults to [ZetaColorBase.pink]
   ///
   /// {@macro zeta-color-dark}
   final ZetaColorSwatch pink;
+
+  /// True if current [ZetaColors] object uses dark mode colors.
+  bool get isDarkMode => brightness == Brightness.dark;
 
   /// Colorful colors.
   List<ZetaColorSwatch> get rainbow => [red, orange, yellow, green, blue, teal, pink];
@@ -515,12 +621,12 @@ class ZetaColors {
     ZetaColorSwatch? warm,
     Color? white,
     Color? black,
-    Color? shadow,
-    Color? link,
-    Color? linkVisited,
     Color? surfacePrimary,
     Color? surfaceSecondary,
     Color? surfaceTertiary,
+    @Deprecated('This color has been deprecated as of v0.10.0') Color? link,
+    @Deprecated('This color has been deprecated as of v0.10.0') Color? linkVisited,
+    @Deprecated('This color has been deprecated as of v0.10.0') Color? shadow,
   }) {
     return ZetaColors(
       white: white ?? this.white,
@@ -532,9 +638,6 @@ class ZetaColors {
       error: error ?? this.error,
       cool: cool ?? this.cool,
       warm: warm ?? this.warm,
-      shadow: shadow ?? this.shadow,
-      link: link ?? this.link,
-      linkVisited: linkVisited ?? this.linkVisited,
       surfacePrimary: surfacePrimary ?? this.surfacePrimary,
       surfaceSecondary: surfaceSecondary ?? this.surfaceSecondary,
       surfaceTertiary: surfaceTertiary ?? this.surfaceTertiary,
@@ -587,11 +690,8 @@ class ZetaColors {
           error == other.error &&
           cool == other.cool &&
           warm == other.warm &&
-          shadow == other.shadow &&
           white == other.white &&
           black == other.black &&
-          link == other.link &&
-          linkVisited == other.linkVisited &&
           surfacePrimary == other.surfacePrimary &&
           surfaceSecondary == other.surfaceSecondary &&
           surfaceTertiary == other.surfaceTertiary &&
@@ -613,11 +713,8 @@ class ZetaColors {
       error.hashCode ^
       cool.hashCode ^
       warm.hashCode ^
-      shadow.hashCode ^
       white.hashCode ^
       black.hashCode ^
-      link.hashCode ^
-      linkVisited.hashCode ^
       surfacePrimary.hashCode ^
       surfaceSecondary.hashCode ^
       surfaceTertiary.hashCode ^
@@ -636,7 +733,6 @@ enum _ZetaColorProperties {
   secondarySwatch,
   cool,
   warm,
-  shadow,
   textDefault,
   textSubtle,
   pink,
@@ -648,14 +744,12 @@ enum _ZetaColorProperties {
   green,
   blue,
   surfaceSelected,
-  surfaceSelectedHovered,
-  surfaceHovered,
+  surfaceSelectedHover,
+  surfaceHover,
   surfaceDisabled,
   surfaceTertiary,
   surfaceSecondary,
   surfacePrimary,
-  linkVisited,
-  link,
   borderSelected,
   borderDisabled,
   borderSubtle,
@@ -689,30 +783,23 @@ extension ZetaColorGetters on ColorScheme {
   ZetaColorSwatch get secondarySwatch =>
       _resolve?.zetaColors.secondary ?? _resolveDefault(_ZetaColorProperties.secondarySwatch);
 
-  /// Cool grey color swatch.
+  /// Cool color swatch.
   ///
-  /// Defaults to [ZetaColorBase.greyCool].
+  /// Defaults to [ZetaColorBase.cool].
   ///
   /// {@macro zeta-color-dark}
   ZetaColorSwatch get cool => _resolve?.zetaColors.cool ?? _resolveDefault(_ZetaColorProperties.cool);
 
-  /// Warm grey color swatch.
+  /// Warm color swatch.
   ///
-  /// Defaults to [ZetaColorBase.greyWarm].
+  /// Defaults to [ZetaColorBase.warm].
   ///
   /// {@macro zeta-color-dark}
   ZetaColorSwatch get warm => _resolve?.zetaColors.warm ?? _resolveDefault(_ZetaColorProperties.warm);
 
-  /// Shadow color.
+  /// Cool  color swatch.
   ///
-  /// Maps to [ColorScheme.shadow].
-  ///
-  /// Defaults to #49505E at 10% opacity.
-  Color get shadow => _resolve?.zetaColors.shadow ?? _resolveDefault(_ZetaColorProperties.shadow);
-
-  /// Cool grey color swatch.
-  ///
-  /// Defaults to [ZetaColorBase.greyCool].
+  /// Defaults to [ZetaColorBase.cool].
   ///
   /// {@macro zeta-color-dark}
   Color get textDefault => _resolve?.zetaColors.textDefault ?? _resolveDefault(_ZetaColorProperties.textDefault);
@@ -774,18 +861,6 @@ extension ZetaColorGetters on ColorScheme {
   Color get borderSelected =>
       _resolve?.zetaColors.borderSelected ?? _resolveDefault(_ZetaColorProperties.borderSelected);
 
-  // Links
-
-  /// Link color.
-  ///
-  /// Defaults to [ZetaColorBase.linkLight] or [ZetaColorBase.linkDark].
-  Color get link => _resolve?.zetaColors.link ?? _resolveDefault(_ZetaColorProperties.link);
-
-  /// Link color.
-  ///
-  /// Defaults to [ZetaColorBase.linkVisitedLight] or [ZetaColorBase.linkVisitedDark].
-  Color get linkVisited => _resolve?.zetaColors.linkVisited ?? _resolveDefault(_ZetaColorProperties.linkVisited);
-
   // Backdrop colors.
 
   /// Surface color.
@@ -825,14 +900,13 @@ extension ZetaColorGetters on ColorScheme {
   /// Defaults to `ZetaColors.cool.20`.
   ///
   /// {@macro zeta-color-dark}
-  Color get surfaceHovered =>
-      _resolve?.zetaColors.surfaceHovered ?? _resolveDefault(_ZetaColorProperties.surfaceHovered);
+  Color get surfaceHover => _resolve?.zetaColors.surfaceHover ?? _resolveDefault(_ZetaColorProperties.surfaceHover);
 
   /// Selected hover surface color.
   ///
   /// Defaults to: `ZetaColors.blue.20`.
-  Color get surfaceSelectedHovered =>
-      _resolve?.zetaColors.surfaceSelectedHovered ?? _resolveDefault(_ZetaColorProperties.surfaceSelectedHovered);
+  Color get surfaceSelectedHover =>
+      _resolve?.zetaColors.surfaceSelectedHover ?? _resolveDefault(_ZetaColorProperties.surfaceSelectedHover);
 
   /// Selected surface color.
   ///
@@ -946,17 +1020,16 @@ extension ZetaColorGetters on ColorScheme {
       case _ZetaColorProperties.secondarySwatch:
         return ZetaColorBase.blue.apply(brightness: brightness, contrast: contrast) as T;
       case _ZetaColorProperties.cool:
-        return ZetaColorBase.greyCool.apply(brightness: brightness, contrast: contrast) as T;
+        return ZetaColorBase.cool.apply(brightness: brightness, contrast: contrast) as T;
       case _ZetaColorProperties.warm:
-        return ZetaColorBase.greyWarm.apply(brightness: brightness, contrast: contrast) as T;
       case _ZetaColorProperties.textDefault:
-        return ZetaColorBase.greyCool.apply(brightness: brightness, contrast: contrast).shade90 as T;
+        return ZetaColorBase.cool.apply(brightness: brightness, contrast: contrast).shade90 as T;
       case _ZetaColorProperties.textSubtle:
-        return ZetaColorBase.greyCool.apply(brightness: brightness, contrast: contrast).shade70 as T;
+        return ZetaColorBase.cool.apply(brightness: brightness, contrast: contrast).shade70 as T;
       case _ZetaColorProperties.textInverse:
-        return ZetaColorBase.greyCool.apply(brightness: brightness, contrast: contrast).shade20 as T;
+        return ZetaColorBase.cool.apply(brightness: brightness, contrast: contrast).shade20 as T;
       case _ZetaColorProperties.textDisabled:
-        return ZetaColorBase.greyCool.apply(brightness: brightness, contrast: contrast).shade50 as T;
+        return ZetaColorBase.cool.apply(brightness: brightness, contrast: contrast).shade50 as T;
       case _ZetaColorProperties.pink:
         return ZetaColorBase.pink.apply(brightness: brightness, contrast: contrast) as T;
       case _ZetaColorProperties.teal:
@@ -975,32 +1048,26 @@ extension ZetaColorGetters on ColorScheme {
         return ZetaColorBase.blue.apply(brightness: brightness, contrast: contrast) as T;
       case _ZetaColorProperties.surfaceSelected:
         return ZetaColorBase.blue.apply(brightness: brightness, contrast: contrast).shade10 as T;
-      case _ZetaColorProperties.surfaceSelectedHovered:
+      case _ZetaColorProperties.surfaceSelectedHover:
         return ZetaColorBase.blue.apply(brightness: brightness, contrast: contrast).shade20 as T;
-      case _ZetaColorProperties.surfaceHovered:
-        return ZetaColorBase.greyCool.apply(brightness: brightness, contrast: contrast).shade20 as T;
+      case _ZetaColorProperties.surfaceHover:
+        return ZetaColorBase.cool.apply(brightness: brightness, contrast: contrast).shade20 as T;
       case _ZetaColorProperties.surfaceDisabled:
-        return ZetaColorBase.greyCool.apply(brightness: brightness, contrast: contrast).shade30 as T;
+        return ZetaColorBase.cool.apply(brightness: brightness, contrast: contrast).shade30 as T;
       case _ZetaColorProperties.surfaceTertiary:
-        return ZetaColorBase.greyWarm.apply(brightness: brightness, contrast: contrast).shade10 as T;
+        return ZetaColorBase.warm.apply(brightness: brightness, contrast: contrast).shade10 as T;
       case _ZetaColorProperties.surfaceSecondary:
-        return ZetaColorBase.greyCool.apply(brightness: brightness, contrast: contrast).shade10 as T;
+        return ZetaColorBase.cool.apply(brightness: brightness, contrast: contrast).shade10 as T;
       case _ZetaColorProperties.borderSelected:
-        return ZetaColorBase.greyCool.apply(brightness: brightness, contrast: contrast).shade90 as T;
+        return ZetaColorBase.cool.apply(brightness: brightness, contrast: contrast).shade90 as T;
       case _ZetaColorProperties.borderDisabled:
-        return ZetaColorBase.greyCool.apply(brightness: brightness, contrast: contrast).shade30 as T;
+        return ZetaColorBase.cool.apply(brightness: brightness, contrast: contrast).shade30 as T;
       case _ZetaColorProperties.borderSubtle:
-        return ZetaColorBase.greyCool.apply(brightness: brightness, contrast: contrast).shade40 as T;
+        return ZetaColorBase.cool.apply(brightness: brightness, contrast: contrast).shade40 as T;
       case _ZetaColorProperties.borderDefault:
-        return ZetaColorBase.greyCool.apply(brightness: brightness, contrast: contrast).shade50 as T;
-      case _ZetaColorProperties.shadow:
-        return (brightness == Brightness.light ? ZetaColorBase.shadowLight : ZetaColorBase.shadowDark) as T;
+        return ZetaColorBase.cool.apply(brightness: brightness, contrast: contrast).shade50 as T;
       case _ZetaColorProperties.surfacePrimary:
         return (brightness == Brightness.light ? ZetaColorBase.white : ZetaColorBase.black) as T;
-      case _ZetaColorProperties.linkVisited:
-        return (brightness == Brightness.light ? ZetaColorBase.linkVisitedLight : ZetaColorBase.linkVisitedDark) as T;
-      case _ZetaColorProperties.link:
-        return (brightness == Brightness.light ? ZetaColorBase.linkLight : ZetaColorBase.linkVisitedDark) as T;
     }
   }
 }

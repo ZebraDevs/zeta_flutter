@@ -76,13 +76,13 @@ extension ColorSwatches on ZetaWidgetStatus {
     final colors = Zeta.of(context).colors;
     switch (this) {
       case ZetaWidgetStatus.info:
-        return colors.info;
+        return colors.surfaceInfo;
       case ZetaWidgetStatus.positive:
-        return colors.positive;
+        return colors.surfacePositive;
       case ZetaWidgetStatus.warning:
-        return colors.warning;
+        return colors.surfaceWarning;
       case ZetaWidgetStatus.negative:
-        return colors.negative;
+        return colors.surfaceNegative;
       case ZetaWidgetStatus.neutral:
         return colors.cool;
     }

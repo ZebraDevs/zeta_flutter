@@ -317,7 +317,7 @@ class _PaginationItem extends StatelessWidget {
           onTap: disabled ? null : onPressed,
           borderRadius: rounded ? ZetaRadius.minimal : ZetaRadius.none,
           highlightColor: selected ? colors.cool[100] : colors.surfaceSelected,
-          hoverColor: selected ? colors.cool[100] : colors.surfaceHovered,
+          hoverColor: selected ? colors.cool[100] : colors.surfaceHover,
           enableFeedback: false,
           child: Container(
             alignment: Alignment.center,
