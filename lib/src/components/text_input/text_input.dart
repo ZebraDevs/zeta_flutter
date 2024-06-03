@@ -142,10 +142,10 @@ class ZetaTextInputState extends State<ZetaTextInput> implements ZetaFormFieldSt
   EdgeInsets get _contentPadding {
     switch (widget.size) {
       case ZetaWidgetSize.large:
-        return const EdgeInsets.symmetric(horizontal: ZetaSpacing.x3, vertical: ZetaSpacing.x4);
+        return const EdgeInsets.symmetric(horizontal: ZetaSpacing.medium, vertical: ZetaSpacing.large);
       case ZetaWidgetSize.small:
       case ZetaWidgetSize.medium:
-        return const EdgeInsets.symmetric(horizontal: ZetaSpacing.x3, vertical: ZetaSpacing.x3);
+        return const EdgeInsets.symmetric(horizontal: ZetaSpacing.medium, vertical: ZetaSpacing.medium);
     }
   }
 
@@ -161,11 +161,11 @@ class ZetaTextInputState extends State<ZetaTextInput> implements ZetaFormFieldSt
     late final double size;
     switch (widget.size) {
       case ZetaWidgetSize.large:
-        size = ZetaSpacing.x10;
+        size = ZetaSpacing.xL6;
       case ZetaWidgetSize.medium:
-        size = ZetaSpacing.x8;
+        size = ZetaSpacing.xL4;
       case ZetaWidgetSize.small:
-        size = ZetaSpacing.x6;
+        size = ZetaSpacing.xL2;
     }
     return BoxConstraints(
       minWidth: size,
@@ -182,7 +182,7 @@ class ZetaTextInputState extends State<ZetaTextInput> implements ZetaFormFieldSt
           widget.prefixText!,
           style: style,
         ),
-      ).paddingStart(ZetaSpacing.x2);
+      ).paddingStart(ZetaSpacing.small);
     }
 
     return null;
@@ -198,7 +198,7 @@ class ZetaTextInputState extends State<ZetaTextInput> implements ZetaFormFieldSt
           widget.suffixText!,
           style: style,
         ),
-      ).paddingEnd(ZetaSpacing.x2);
+      ).paddingEnd(ZetaSpacing.small);
     }
 
     return null;
@@ -210,11 +210,11 @@ class ZetaTextInputState extends State<ZetaTextInput> implements ZetaFormFieldSt
       );
 
   OutlineInputBorder get _focusedBorder => _baseBorder.copyWith(
-        borderSide: BorderSide(color: _colors.primary.shade50, width: ZetaSpacing.x0_5),
+        borderSide: BorderSide(color: _colors.primary.shade50, width: ZetaSpacingBase.x0_5),
       ); // TODO(mikecoomber): change to colors.borderPrimary when added
 
   OutlineInputBorder get _errorBorder => _baseBorder.copyWith(
-        borderSide: BorderSide(color: _colors.error, width: ZetaSpacing.x0_5),
+        borderSide: BorderSide(color: _colors.error, width: ZetaSpacingBase.x0_5),
       );
 
   @override
@@ -259,7 +259,7 @@ class ZetaTextInputState extends State<ZetaTextInput> implements ZetaFormFieldSt
             requirementLevel: widget.requirementLevel,
             disabled: widget.disabled,
           ),
-          const SizedBox(height: ZetaSpacing.x1),
+          const SizedBox(height: ZetaSpacing.minimum),
         ],
         MouseRegion(
           onEnter: !widget.disabled
@@ -361,7 +361,7 @@ class _Label extends StatelessWidget {
             color: disabled ? colors.textDisabled : colors.textDefault,
           ),
         ),
-        if (requirementWidget != null) requirementWidget.paddingStart(ZetaSpacing.x1),
+        if (requirementWidget != null) requirementWidget.paddingStart(ZetaSpacing.minimum),
       ],
     );
   }
@@ -417,11 +417,11 @@ class _HintText extends StatelessWidget {
               : rounded
                   ? ZetaIcons.info_round
                   : ZetaIcons.info_sharp,
-          size: ZetaSpacing.x4,
+          size: ZetaSpacing.large,
           color: elementColor,
         ),
         const SizedBox(
-          width: ZetaSpacing.x1,
+          width: ZetaSpacing.minimum,
         ),
         Expanded(
           child: Text(
@@ -431,7 +431,7 @@ class _HintText extends StatelessWidget {
           ),
         ),
       ],
-    ).paddingTop(ZetaSpacing.x2);
+    ).paddingTop(ZetaSpacing.small);
   }
 
   @override

@@ -11,7 +11,7 @@ Widget tabsUseCase(BuildContext context) {
       child: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.only(top: ZetaSpacing.l),
+            padding: const EdgeInsets.only(top: ZetaSpacing.xL4),
             child: DefaultTabController(
               length: 2,
               child: ZetaTabBar(
@@ -30,7 +30,7 @@ Widget tabsUseCase(BuildContext context) {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(top: ZetaSpacing.l),
+            padding: const EdgeInsets.only(top: ZetaSpacing.xL4),
             child: DefaultTabController(
               length: 5,
               child: ZetaTabBar(

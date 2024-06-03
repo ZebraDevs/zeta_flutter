@@ -22,7 +22,7 @@ class _FilterSelectionExampleState extends State<FilterSelectionExample> {
       name: FilterSelectionExample.name,
       child: Column(
         children: [
-          const SizedBox(height: ZetaSpacing.b),
+          const SizedBox(height: ZetaSpacing.large),
           ZetaFilterSelection(
             items: [
               for (int i = 0; i < items.length; i++)
@@ -34,7 +34,7 @@ class _FilterSelectionExampleState extends State<FilterSelectionExample> {
             ],
             onPressed: () {},
           ),
-          const SizedBox(height: ZetaSpacing.b),
+          const SizedBox(height: ZetaSpacing.large),
           ZetaFilterSelection(
             rounded: false,
             items: [

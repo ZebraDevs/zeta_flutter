@@ -37,7 +37,7 @@ class _ChatItemExampleState extends State<ChatItemExample> {
                   "Dummy text to represent the first lines of most recent message dsadas dsa dsa ds dssd sd sdsd s ds"),
             ),
             Padding(
-              padding: const EdgeInsets.only(top: ZetaSpacing.b),
+              padding: const EdgeInsets.only(top: ZetaSpacing.large),
               child: ZetaChatItem(
                 highlighted: true,
                 count: 99,

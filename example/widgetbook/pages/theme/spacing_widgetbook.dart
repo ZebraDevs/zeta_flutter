@@ -9,46 +9,53 @@ Widget spacingUseCase(BuildContext context) => SingleChildScrollView(
         children: [
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: valueSpacings.entries.map((obj) => _SpacingDemo(obj)).toList(),
+            children: semanticSpacings.entries.map((obj) => _SpacingDemo(obj)).toList(),
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: namedSpacings.entries.map((obj) => _SpacingDemo(obj)).toList(),
+            children: baseSpacings.entries.map((obj) => _SpacingDemo(obj)).toList(),
           )
         ],
       ),
     );
 
-Map<String, double> namedSpacings = {
-  'xxs': ZetaSpacing.xxs,
-  'xs': ZetaSpacing.xs,
-  's': ZetaSpacing.s,
-  'b': ZetaSpacing.b,
-  'm': ZetaSpacing.m,
-  'l': ZetaSpacing.l,
-  'xl': ZetaSpacing.xl,
-  'xxl': ZetaSpacing.xxl,
-  'xxxl': ZetaSpacing.xxxl,
+Map<String, double> semanticSpacings = {
+  'none': ZetaSpacing.none,
+  'minimum': ZetaSpacing.minimum,
+  'small': ZetaSpacing.small,
+  'medium': ZetaSpacing.medium,
+  'large': ZetaSpacing.large,
+  'xl': ZetaSpacing.xL,
+  '2xl': ZetaSpacing.xL2,
+  '3xl': ZetaSpacing.xL3,
+  '4xl': ZetaSpacing.xL4,
+  '5xl': ZetaSpacing.xL5,
+  '6xl': ZetaSpacing.xL6,
+  '7xl': ZetaSpacing.xL7,
+  '8xl': ZetaSpacing.xL8,
+  '9xl': ZetaSpacing.xL9,
+  '10xl': ZetaSpacing.xL10,
+  '11xl': ZetaSpacing.xL11,
 };
-Map<String, double> valueSpacings = {
-  'x1': ZetaSpacing.x1,
-  'x2': ZetaSpacing.x2,
-  'x3': ZetaSpacing.x3,
-  'x3.5': ZetaSpacing.x3_5,
-  'x4': ZetaSpacing.x4,
-  'x5': ZetaSpacing.x5,
-  'x6': ZetaSpacing.x6,
-  'x7': ZetaSpacing.x7,
-  'x8': ZetaSpacing.x8,
-  'x9': ZetaSpacing.x9,
-  'x10': ZetaSpacing.x10,
-  'x11': ZetaSpacing.x11,
-  'x12': ZetaSpacing.x12,
-  'x13': ZetaSpacing.x13,
-  'x14': ZetaSpacing.x14,
-  'x16': ZetaSpacing.x16,
-  'x20': ZetaSpacing.x20,
-  'x24': ZetaSpacing.x24,
+Map<String, double> baseSpacings = {
+  'x1': ZetaSpacingBase.x1,
+  'x2': ZetaSpacingBase.x2,
+  'x3': ZetaSpacingBase.x3,
+  'x3.5': ZetaSpacingBase.x3_5,
+  'x4': ZetaSpacingBase.x4,
+  'x5': ZetaSpacingBase.x5,
+  'x6': ZetaSpacingBase.x6,
+  'x7': ZetaSpacingBase.x7,
+  'x8': ZetaSpacingBase.x8,
+  'x9': ZetaSpacingBase.x9,
+  'x10': ZetaSpacingBase.x10,
+  'x11': ZetaSpacingBase.x11,
+  'x12': ZetaSpacingBase.x12,
+  'x13': ZetaSpacingBase.x13,
+  'x14': ZetaSpacingBase.x14,
+  'x15': ZetaSpacingBase.x15,
+  'x30': ZetaSpacingBase.x30,
+  'x50': ZetaSpacingBase.x50,
 };
 
 class _SpacingDemo extends StatelessWidget {
@@ -61,13 +68,13 @@ class _SpacingDemo extends StatelessWidget {
     final colors = Zeta.of(context).colors;
     return Container(
       color: colors.blue.shade30,
-      margin: EdgeInsets.all(ZetaSpacing.m),
+      margin: EdgeInsets.all(ZetaSpacing.xL2),
       child: CustomPaint(
         painter: _TagPainter(color: colors.pink),
         child: LayoutBuilder(builder: (context, c2) {
           return Container(
             margin: EdgeInsets.all(size.value),
-            padding: EdgeInsets.all(ZetaSpacing.s),
+            padding: EdgeInsets.all(ZetaSpacing.medium),
             color: colors.surfacePrimary,
             child: Text(
               'ZetaSpacing.' + size.key,

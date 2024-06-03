@@ -112,7 +112,7 @@ class _ZetaDialog extends StatelessWidget {
               children: [
                 if (icon != null)
                   Padding(
-                    padding: const EdgeInsets.only(bottom: ZetaSpacing.s),
+                    padding: const EdgeInsets.only(bottom: ZetaSpacing.medium),
                     child: icon,
                   ),
                 if (title != null)
@@ -129,9 +129,9 @@ class _ZetaDialog extends StatelessWidget {
       titlePadding: context.deviceType == DeviceType.mobilePortrait
           ? null
           : const EdgeInsets.only(
-              left: ZetaSpacing.x10,
-              right: ZetaSpacing.x10,
-              top: ZetaSpacing.m,
+              left: ZetaSpacing.xL6,
+              right: ZetaSpacing.xL6,
+              top: ZetaSpacing.xL2,
             ),
       titleTextStyle: zetaTextTheme.headlineSmall?.copyWith(
         color: zeta.colors.textDefault,
@@ -140,10 +140,10 @@ class _ZetaDialog extends StatelessWidget {
       contentPadding: context.deviceType == DeviceType.mobilePortrait
           ? null
           : const EdgeInsets.only(
-              left: ZetaSpacing.x10,
-              right: ZetaSpacing.x10,
-              top: ZetaSpacing.s,
-              bottom: ZetaSpacing.m,
+              left: ZetaSpacing.xL6,
+              right: ZetaSpacing.xL6,
+              top: ZetaSpacing.medium,
+              bottom: ZetaSpacing.xL2,
             ),
       contentTextStyle: context.deviceType == DeviceType.mobilePortrait
           ? zetaTextTheme.bodySmall?.copyWith(color: zeta.colors.textDefault)
@@ -153,20 +153,20 @@ class _ZetaDialog extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              if (hasButton) const SizedBox(height: ZetaSpacing.m),
+              if (hasButton) const SizedBox(height: ZetaSpacing.xL2),
               if (tertiaryButton == null)
                 Row(
                   children: [
                     if (secondaryButton != null) Expanded(child: secondaryButton),
-                    if (primaryButton != null && secondaryButton != null) const SizedBox(width: ZetaSpacing.b),
+                    if (primaryButton != null && secondaryButton != null) const SizedBox(width: ZetaSpacing.large),
                     if (primaryButton != null) Expanded(child: primaryButton),
                   ],
                 )
               else ...[
                 if (primaryButton != null) primaryButton,
-                if (primaryButton != null && secondaryButton != null) const SizedBox(height: ZetaSpacing.s),
+                if (primaryButton != null && secondaryButton != null) const SizedBox(height: ZetaSpacing.medium),
                 if (secondaryButton != null) secondaryButton,
-                if (primaryButton != null || secondaryButton != null) const SizedBox(height: ZetaSpacing.xs),
+                if (primaryButton != null || secondaryButton != null) const SizedBox(height: ZetaSpacing.small),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [tertiaryButton],
@@ -179,13 +179,13 @@ class _ZetaDialog extends StatelessWidget {
             children: [
               if (tertiaryButton != null) tertiaryButton,
               if (primaryButton != null || secondaryButton != null) ...[
-                const SizedBox(width: ZetaSpacing.m),
+                const SizedBox(width: ZetaSpacing.xL2),
                 Expanded(
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       if (secondaryButton != null) secondaryButton,
-                      if (primaryButton != null && secondaryButton != null) const SizedBox(width: ZetaSpacing.b),
+                      if (primaryButton != null && secondaryButton != null) const SizedBox(width: ZetaSpacing.large),
                       if (primaryButton != null) primaryButton,
                     ],
                   ),
@@ -197,8 +197,8 @@ class _ZetaDialog extends StatelessWidget {
       actionsPadding: context.deviceType == DeviceType.mobilePortrait
           ? null
           : const EdgeInsets.symmetric(
-              horizontal: ZetaSpacing.x10,
-              vertical: ZetaSpacing.m,
+              horizontal: ZetaSpacing.xL6,
+              vertical: ZetaSpacing.xL2,
             ),
     );
   }

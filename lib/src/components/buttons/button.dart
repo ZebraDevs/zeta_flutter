@@ -172,7 +172,7 @@ class ZetaButton extends StatelessWidget {
             ]
                 .divide(
                   const SizedBox(
-                    width: ZetaSpacing.x2,
+                    width: ZetaSpacing.small,
                   ),
                 )
                 .toList(),
@@ -187,26 +187,26 @@ class ZetaButton extends StatelessWidget {
   double get _minConstraints {
     switch (size) {
       case ZetaWidgetSize.large:
-        return ZetaSpacing.x12;
+        return ZetaSpacing.xL8;
 
       case ZetaWidgetSize.medium:
-        return ZetaSpacing.x10;
+        return ZetaSpacing.xL6;
 
       case ZetaWidgetSize.small:
-        return ZetaSpacing.x8;
+        return ZetaSpacing.xL4;
     }
   }
 
   double get _textPadding {
     switch (size) {
       case ZetaWidgetSize.large:
-        return ZetaSpacing.x4;
+        return ZetaSpacing.large;
 
       case ZetaWidgetSize.medium:
-        return ZetaSpacing.x3;
+        return ZetaSpacing.medium;
 
       case ZetaWidgetSize.small:
-        return ZetaSpacing.x1;
+        return ZetaSpacing.minimum;
     }
   }
 
@@ -214,9 +214,9 @@ class ZetaButton extends StatelessWidget {
     switch (size) {
       case ZetaWidgetSize.large:
       case ZetaWidgetSize.medium:
-        return ZetaSpacing.x5;
+        return ZetaSpacing.xL;
       case ZetaWidgetSize.small:
-        return ZetaSpacing.x4;
+        return ZetaSpacing.large;
     }
   }
 

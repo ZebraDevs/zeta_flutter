@@ -149,7 +149,7 @@ class _CountriesListState extends State<_CountriesList> {
           children: [
             if (_enableSearch)
               Padding(
-                padding: const EdgeInsets.only(bottom: ZetaSpacing.b),
+                padding: const EdgeInsets.only(bottom: ZetaSpacing.large),
                 child: ZetaSearchBar(
                   onChanged: _search,
                   hint: widget.searchHint ?? 'Country or dial code',
@@ -164,7 +164,7 @@ class _CountriesListState extends State<_CountriesList> {
             else
               _listView(context),
             Padding(
-              padding: const EdgeInsets.only(top: ZetaSpacing.b),
+              padding: const EdgeInsets.only(top: ZetaSpacing.large),
               child: TextButton(
                 onPressed: () => Navigator.of(context).pop(),
                 child: const Text('Close'),
@@ -185,7 +185,7 @@ class _CountriesListState extends State<_CountriesList> {
           },
           child: Padding(
             padding: const EdgeInsets.symmetric(
-              vertical: ZetaSpacing.xs,
+              vertical: ZetaSpacing.small,
             ),
             child: _items[index].child,
           ),

@@ -170,8 +170,8 @@ class _ZetaPhoneInputState extends State<ZetaPhoneInput> {
                     color: widget.enabled ? zeta.colors.surfacePrimary : zeta.colors.cool.shade30,
                     borderRadius: widget.rounded
                         ? const BorderRadius.only(
-                            topLeft: Radius.circular(ZetaSpacing.xxs),
-                            bottomLeft: Radius.circular(ZetaSpacing.xxs),
+                            topLeft: Radius.circular(ZetaSpacing.minimum),
+                            bottomLeft: Radius.circular(ZetaSpacing.minimum),
                           )
                         : ZetaRadius.none,
                     border: Border(
@@ -190,7 +190,7 @@ class _ZetaPhoneInputState extends State<ZetaPhoneInput> {
                       children: [
                         Padding(
                           padding: const EdgeInsets.only(
-                            left: ZetaSpacing.x2_5,
+                            left: ZetaSpacingBase.x2_5,
                           ),
                           child: Image.asset(
                             _selectedCountry.flagUri,
@@ -203,7 +203,7 @@ class _ZetaPhoneInputState extends State<ZetaPhoneInput> {
                         Icon(
                           widget.rounded ? ZetaIcons.expand_more_round : ZetaIcons.expand_more_sharp,
                           color: widget.enabled ? zeta.colors.textDefault : zeta.colors.cool.shade50,
-                          size: ZetaSpacing.x5,
+                          size: ZetaSpacing.xL,
                         ),
                       ],
                     ),
@@ -254,7 +254,7 @@ class _ZetaPhoneInputState extends State<ZetaPhoneInput> {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: ZetaSpacing.xs),
+                          padding: const EdgeInsets.symmetric(horizontal: ZetaSpacing.small),
                           child: Text(
                             _selectedCountry.dialCode,
                             style: ZetaTextStyles.bodyMedium.copyWith(
@@ -265,8 +265,8 @@ class _ZetaPhoneInputState extends State<ZetaPhoneInput> {
                       ],
                     ),
                     prefixIconConstraints: const BoxConstraints(
-                      minHeight: ZetaSpacing.x12,
-                      minWidth: ZetaSpacing.x10,
+                      minHeight: ZetaSpacing.xL8,
+                      minWidth: ZetaSpacing.xL6,
                     ),
                     filled: true,
                     fillColor: widget.enabled
@@ -300,7 +300,7 @@ class _ZetaPhoneInputState extends State<ZetaPhoneInput> {
                     showError && widget.enabled
                         ? (widget.rounded ? ZetaIcons.error_round : ZetaIcons.error_sharp)
                         : (widget.rounded ? ZetaIcons.info_round : ZetaIcons.info_sharp),
-                    size: ZetaSpacing.b,
+                    size: ZetaSpacing.large,
                     color: hintErrorColor,
                   ),
                 ),
@@ -326,8 +326,8 @@ class _ZetaPhoneInputState extends State<ZetaPhoneInput> {
       OutlineInputBorder(
         borderRadius: rounded
             ? const BorderRadius.only(
-                topRight: Radius.circular(ZetaSpacing.xxs),
-                bottomRight: Radius.circular(ZetaSpacing.xxs),
+                topRight: Radius.circular(ZetaSpacing.minimum),
+                bottomRight: Radius.circular(ZetaSpacing.minimum),
               )
             : ZetaRadius.none,
         borderSide: BorderSide(color: zeta.colors.cool.shade40),
@@ -340,8 +340,8 @@ class _ZetaPhoneInputState extends State<ZetaPhoneInput> {
       OutlineInputBorder(
         borderRadius: rounded
             ? const BorderRadius.only(
-                topRight: Radius.circular(ZetaSpacing.xxs),
-                bottomRight: Radius.circular(ZetaSpacing.xxs),
+                topRight: Radius.circular(ZetaSpacing.minimum),
+                bottomRight: Radius.circular(ZetaSpacing.minimum),
               )
             : ZetaRadius.none,
         borderSide: BorderSide(color: zeta.colors.blue.shade50),
@@ -354,8 +354,8 @@ class _ZetaPhoneInputState extends State<ZetaPhoneInput> {
       OutlineInputBorder(
         borderRadius: rounded
             ? const BorderRadius.only(
-                topRight: Radius.circular(ZetaSpacing.xxs),
-                bottomRight: Radius.circular(ZetaSpacing.xxs),
+                topRight: Radius.circular(ZetaSpacing.minimum),
+                bottomRight: Radius.circular(ZetaSpacing.minimum),
               )
             : ZetaRadius.none,
         borderSide: BorderSide(color: zeta.colors.red.shade50),

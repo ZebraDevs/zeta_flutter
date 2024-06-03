@@ -84,7 +84,7 @@ class _DialPadExampleState extends State<DialPadExample> {
                     borderType: ZetaWidgetBorder.full,
                     onPressed: () => setState(() => number = text = ''),
                   )
-                ].divide(const SizedBox(height: ZetaSpacing.m)).toList(),
+                ].divide(const SizedBox(height: ZetaSpacing.xL2)).toList(),
               ),
             ),
           ],

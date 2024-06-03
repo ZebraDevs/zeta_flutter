@@ -10,11 +10,11 @@ Widget bottomSheetContentUseCase(BuildContext context) {
 
   return WidgetbookTestWidget(
     widget: Padding(
-      padding: const EdgeInsets.all(ZetaSpacing.x5),
+      padding: const EdgeInsets.all(ZetaSpacing.xL),
       child: Column(
         children: [
           sheet,
-          const SizedBox(height: ZetaSpacing.xl),
+          const SizedBox(height: ZetaSpacing.xL9),
           ZetaButton.text(
             label: 'Open',
             onPressed: () => showModalBottomSheet(context: context, builder: (_) => sheet),
@@ -34,8 +34,8 @@ ZetaBottomSheet _bottomSheet(BuildContext context) {
     centerTitle: context.knobs.boolean(label: 'Center title', initialValue: true),
     title: context.knobs.string(label: 'Title', initialValue: 'Title'),
     body: Wrap(
-      spacing: ZetaSpacing.x3,
-      runSpacing: ZetaSpacing.x3,
+      spacing: ZetaSpacing.medium,
+      runSpacing: ZetaSpacing.medium,
       children: List.generate(
         6,
         (index) => ZetaMenuItem(

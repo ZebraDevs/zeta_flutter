@@ -243,21 +243,21 @@ class _ZetaGroupButtonState extends State<ZetaGroupButton> {
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              if (widget.icon != null) Icon(widget.icon, size: ZetaSpacing.x5),
+              if (widget.icon != null) Icon(widget.icon, size: ZetaSpacing.xL),
               Text(widget.label ?? '', style: ZetaTextStyles.labelMedium),
               if (widget.dropdown != null) // TODO(UX-1006): Dropdown
                 Icon(
                   widget.rounded ? ZetaIcons.expand_more_round : ZetaIcons.expand_more_sharp,
-                  size: ZetaSpacing.x5,
+                  size: ZetaSpacing.xL,
                 ),
-            ].divide(const SizedBox(width: ZetaSpacing.x1)).toList(),
+            ].divide(const SizedBox(width: ZetaSpacing.minimum)).toList(),
           ).paddingAll(_padding),
         ),
       ),
     );
   }
 
-  double get _padding => widget.isLarge ? ZetaSpacing.x4 : ZetaSpacing.x3;
+  double get _padding => widget.isLarge ? ZetaSpacing.large : ZetaSpacing.medium;
 
   BorderSide _getBorderSide(
     Set<WidgetState> states,
@@ -265,7 +265,7 @@ class _ZetaGroupButtonState extends State<ZetaGroupButton> {
     bool finalButton,
   ) {
     if (states.contains(WidgetState.focused)) {
-      return BorderSide(color: colors.blue.shade50, width: ZetaSpacing.x0_5);
+      return BorderSide(color: colors.blue.shade50, width: ZetaSpacingBase.x0_5);
     }
     if (widget.isInverse) return BorderSide(color: colors.black);
     if (states.contains(WidgetState.disabled)) {

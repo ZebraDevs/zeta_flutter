@@ -30,7 +30,7 @@ Widget radiusUseCase(BuildContext context) {
                 color: Zeta.of(context).colors.surfacePrimary,
                 border: Border.all(color: colors.blue.shade50, width: 3),
               ),
-              padding: EdgeInsets.all(ZetaSpacing.b),
+              padding: EdgeInsets.all(ZetaSpacing.large),
               child: Text(
                 rad.radiusString.split('.').last.capitalize(),
                 style: ZetaTextStyles.titleMedium.apply(
@@ -57,4 +57,4 @@ extension on BorderRadius {
   }
 }
 
-List<BorderRadius> radii = [ZetaRadius.none, ZetaRadius.minimal, ZetaRadius.rounded, ZetaRadius.wide, ZetaRadius.full];
+List<BorderRadius> radii = [ZetaRadius.none, ZetaRadius.minimal, ZetaRadius.rounded, ZetaRadius.full];

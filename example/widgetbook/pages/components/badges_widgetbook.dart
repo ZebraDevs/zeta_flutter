@@ -10,7 +10,7 @@ Widget statusLabelUseCase(BuildContext context) {
 
   return WidgetbookTestWidget(
     widget: Padding(
-      padding: const EdgeInsets.all(ZetaSpacing.m),
+      padding: const EdgeInsets.all(ZetaSpacing.xL2),
       child: ZetaStatusLabel(
         label: context.knobs.string(label: 'Label', initialValue: 'Label'),
         rounded: rounded,
@@ -27,7 +27,7 @@ Widget statusLabelUseCase(BuildContext context) {
 
 Widget priorityPillUseCase(BuildContext context) => WidgetbookTestWidget(
       widget: Padding(
-        padding: const EdgeInsets.all(ZetaSpacing.m),
+        padding: const EdgeInsets.all(ZetaSpacing.xL2),
         child: ZetaPriorityPill(
           index: context.knobs.string(label: 'Index'),
           priority: context.knobs.string(label: 'Label'),
@@ -49,7 +49,7 @@ Widget priorityPillUseCase(BuildContext context) => WidgetbookTestWidget(
 
 Widget badgeUseCase(BuildContext context) => WidgetbookTestWidget(
       widget: Padding(
-        padding: const EdgeInsets.all(ZetaSpacing.m),
+        padding: const EdgeInsets.all(ZetaSpacing.xL2),
         child: ZetaBadge(
           label: context.knobs.string(label: 'Label', initialValue: 'Label'),
           rounded: roundedKnob(context),
@@ -67,7 +67,7 @@ Widget indicatorsUseCase(BuildContext context) {
 
   return WidgetbookTestWidget(
     widget: Padding(
-      padding: const EdgeInsets.all(ZetaSpacing.m),
+      padding: const EdgeInsets.all(ZetaSpacing.xL2),
       child: ZetaIndicator(
         type: context.knobs.list(
           label: 'Type',
@@ -89,7 +89,7 @@ Widget indicatorsUseCase(BuildContext context) {
 
 Widget tagsUseCase(BuildContext context) => WidgetbookTestWidget(
       widget: Padding(
-        padding: const EdgeInsets.all(ZetaSpacing.m),
+        padding: const EdgeInsets.all(ZetaSpacing.xL2),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

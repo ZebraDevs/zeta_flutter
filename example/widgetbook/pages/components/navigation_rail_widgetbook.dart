@@ -43,7 +43,7 @@ Widget navigationRailUseCase(BuildContext context) {
               ),
               Expanded(
                 child: Padding(
-                  padding: const EdgeInsets.all(ZetaSpacing.x5),
+                  padding: const EdgeInsets.all(ZetaSpacing.xL),
                   child: selectedIndex == null
                       ? const SizedBox()
                       : Text(

@@ -128,7 +128,7 @@ class _ZetaPasswordInputState extends State<ZetaPasswordInput> {
       children: [
         if (widget.label != null)
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: ZetaSpacing.x1),
+            padding: const EdgeInsets.symmetric(vertical: ZetaSpacing.minimum),
             child: Text(widget.label!, style: ZetaTextStyles.bodyMedium),
           ),
         SizedBox(
@@ -142,13 +142,13 @@ class _ZetaPasswordInputState extends State<ZetaPasswordInput> {
                 onChanged: widget.onChanged,
                 style: _textStyle,
                 decoration: InputDecoration(
-                  contentPadding: const EdgeInsets.symmetric(horizontal: ZetaSpacing.x2),
+                  contentPadding: const EdgeInsets.symmetric(horizontal: ZetaSpacing.small),
                   filled: true,
                   fillColor: _getBackgroundColor(theme.colors),
                   enabledBorder: _getBorder(defaultBorderColor),
                   focusedBorder: _getBorder(
                     _errorMessage != null ? theme.colors.error.border : theme.colors.primary.border,
-                    width: ZetaSpacing.x0_5,
+                    width: ZetaSpacingBase.x0_5,
                   ),
                   disabledBorder: _getBorder(theme.colors.borderDefault),
                   border: _getBorder(defaultBorderColor),
@@ -159,10 +159,10 @@ class _ZetaPasswordInputState extends State<ZetaPasswordInput> {
                     valueListenable: _obscureTextNotifier,
                     builder: (context, value, child) {
                       return IconButton(
-                        padding: const EdgeInsets.symmetric(vertical: ZetaSpacing.x1),
+                        padding: const EdgeInsets.symmetric(vertical: ZetaSpacing.minimum),
                         icon: Icon(
                           value ? ZetaIcons.visibility_off_sharp : ZetaIcons.visibility_sharp,
-                          size: widget.size == ZetaWidgetSize.small ? ZetaSpacing.x4 : ZetaSpacing.x5,
+                          size: widget.size == ZetaWidgetSize.small ? ZetaSpacing.large : ZetaSpacing.xL,
                         ),
                         color: widget.enabled ? theme.colors.iconDefault : theme.colors.iconDisabled,
                         onPressed: () => _obscureTextNotifier.toggle(),
@@ -176,16 +176,16 @@ class _ZetaPasswordInputState extends State<ZetaPasswordInput> {
         ),
         if (widget.footerText != null || widget.footerIcon != null || _errorMessage != null)
           Padding(
-            padding: const EdgeInsets.only(top: ZetaSpacing.x1),
+            padding: const EdgeInsets.only(top: ZetaSpacing.minimum),
             child: Row(
               children: [
                 if (_errorMessage != null) ...[
                   Icon(
                     ZetaIcons.error_round,
-                    size: ZetaSpacing.x4,
+                    size: ZetaSpacing.large,
                     color: theme.colors.error.border,
                   ),
-                  const SizedBox(width: ZetaSpacing.x1),
+                  const SizedBox(width: ZetaSpacing.minimum),
                   Text(
                     _errorMessage!,
                     style: ZetaTextStyles.bodySmall.apply(color: theme.colors.error.border),
@@ -194,10 +194,10 @@ class _ZetaPasswordInputState extends State<ZetaPasswordInput> {
                 if (_errorMessage == null && widget.footerIcon != null) ...[
                   Icon(
                     widget.footerIcon,
-                    size: ZetaSpacing.x4,
+                    size: ZetaSpacing.large,
                     color: widget.enabled ? theme.colors.iconDefault : theme.colors.iconDisabled,
                   ),
-                  const SizedBox(width: ZetaSpacing.x1),
+                  const SizedBox(width: ZetaSpacing.minimum),
                 ],
                 if (_errorMessage == null && widget.footerText != null) ...[
                   Text(
@@ -230,11 +230,11 @@ class _ZetaPasswordInputState extends State<ZetaPasswordInput> {
   double get _inputHeight {
     switch (widget.size) {
       case ZetaWidgetSize.small:
-        return ZetaSpacing.x8;
+        return ZetaSpacing.xL4;
       case ZetaWidgetSize.medium:
-        return ZetaSpacing.x10;
+        return ZetaSpacing.xL6;
       case ZetaWidgetSize.large:
-        return ZetaSpacing.x12;
+        return ZetaSpacing.xL8;
     }
   }
 

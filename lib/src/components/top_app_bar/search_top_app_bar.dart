@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../../../zeta_flutter.dart';
 
-const _extendedOffset = ZetaSpacing.x1 * 6.5;
+const _extendedOffset = ZetaSpacing.minimum * 6.5;
 
 /// Creates a search field used on a [ZetaTopAppBar].
 class ZetaTopAppBarSearchField extends StatefulWidget {

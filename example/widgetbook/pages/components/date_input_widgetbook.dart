@@ -29,7 +29,7 @@ Widget dateInputUseCase(BuildContext context) {
         );
 
         return Padding(
-          padding: const EdgeInsets.all(ZetaSpacing.x5),
+          padding: const EdgeInsets.all(ZetaSpacing.xL),
           child: ZetaDateInput(
             size: size,
             rounded: rounded,

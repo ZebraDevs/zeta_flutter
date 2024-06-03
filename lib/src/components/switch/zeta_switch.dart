@@ -97,7 +97,7 @@ class ZetaSwitch extends StatelessWidget {
       ),
       value: value ?? false,
       onChanged: onChanged,
-      thumbSize: _variant == ZetaSwitchType.web ? const Size.square(ZetaSpacing.m) : null,
+      thumbSize: _variant == ZetaSwitchType.web ? const Size.square(ZetaSpacing.xL2) : null,
     );
   }
 }

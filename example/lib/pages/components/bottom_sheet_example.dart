@@ -19,7 +19,7 @@ class _BottomSheetExampleState extends State<BottomSheetExample> {
     return ExampleScaffold(
       name: BottomSheetExample.name,
       child: SingleChildScrollView(
-        padding: EdgeInsets.all(ZetaSpacing.s),
+        padding: EdgeInsets.all(ZetaSpacing.medium),
         child: Column(
           children: [
             ZetaMenuItem.horizontal(
