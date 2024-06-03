@@ -136,7 +136,7 @@ class _ZetaFABState extends State<ZetaFAB> {
           (Set<WidgetState> states) {
             if (states.contains(WidgetState.focused)) {
               // TODO(thelukewalton): This removes a defualt border when focused, rather than adding a second border when focused.
-              return BorderSide(color: Zeta.of(context).colors.blue.shade50, width: ZetaSpacing.x0_5);
+              return BorderSide(color: Zeta.of(context).colors.blue.shade50, width: ZetaSpacingBase.x0_5);
             }
             return null;
           },
@@ -146,7 +146,7 @@ class _ZetaFABState extends State<ZetaFAB> {
         duration: const Duration(milliseconds: 300),
         child: Padding(
           padding: _isExpanded
-              ? const EdgeInsets.symmetric(horizontal: ZetaSpacing.x3_5, vertical: ZetaSpacing.x3)
+              ? const EdgeInsets.symmetric(horizontal: ZetaSpacingBase.x3_5, vertical: ZetaSpacing.medium)
               : EdgeInsets.all(widget.size.padding),
           child: Row(
             mainAxisSize: MainAxisSize.min,
@@ -159,7 +159,7 @@ class _ZetaFABState extends State<ZetaFAB> {
                     Text(widget.label, style: ZetaTextStyles.labelLarge),
                   ],
                 ),
-            ].divide(const SizedBox(width: ZetaSpacing.x2)).toList(),
+            ].divide(const SizedBox(width: ZetaSpacing.small)).toList(),
           ),
         ),
       ),
@@ -194,18 +194,18 @@ extension on ZetaWidgetBorder {
         isExpanded
             ? this == ZetaWidgetBorder.full
                 ? size == ZetaFabSize.small
-                    ? ZetaSpacing.x7
-                    : ZetaSpacing.x12
-                : ZetaSpacing.x2
+                    ? ZetaSpacing.xL3
+                    : ZetaSpacing.xL8
+                : ZetaSpacing.small
             : size == ZetaFabSize.small
-                ? ZetaSpacing.x2
-                : ZetaSpacing.x4,
+                ? ZetaSpacing.small
+                : ZetaSpacing.large,
       ),
     );
   }
 }
 
 extension on ZetaFabSize {
-  double get iconSize => this == ZetaFabSize.small ? ZetaSpacing.x6 : ZetaSpacing.x9;
-  double get padding => this == ZetaFabSize.small ? ZetaSpacing.x4 : ZetaSpacing.x7_5;
+  double get iconSize => this == ZetaFabSize.small ? ZetaSpacing.xL2 : ZetaSpacing.xL5;
+  double get padding => this == ZetaFabSize.small ? ZetaSpacing.large : ZetaSpacingBase.x7_5;
 }

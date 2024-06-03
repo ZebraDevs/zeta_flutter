@@ -90,8 +90,8 @@ class _ZetaStepperState extends State<ZetaStepper> with TickerProviderStateMixin
 
   Widget _buildHorizotalIcon(int index) {
     return SizedBox(
-      width: ZetaSpacing.l,
-      height: ZetaSpacing.l,
+      width: ZetaSpacing.xL4,
+      height: ZetaSpacing.xL4,
       child: AnimatedContainer(
         curve: Curves.fastOutSlowIn,
         duration: kThemeAnimationDuration,
@@ -119,8 +119,8 @@ class _ZetaStepperState extends State<ZetaStepper> with TickerProviderStateMixin
 
   Widget _getVerticalIcon(int index) {
     return SizedBox(
-      width: ZetaSpacing.x12,
-      height: ZetaSpacing.x12,
+      width: ZetaSpacing.xL8,
+      height: ZetaSpacing.xL8,
       child: AnimatedContainer(
         curve: Curves.fastOutSlowIn,
         duration: kThemeAnimationDuration,
@@ -173,7 +173,7 @@ class _ZetaStepperState extends State<ZetaStepper> with TickerProviderStateMixin
     final subtitle = widget.steps[index].subtitle;
 
     return Container(
-      margin: EdgeInsets.only(top: _isFirst(index) ? 0.0 : ZetaSpacing.m),
+      margin: EdgeInsets.only(top: _isFirst(index) ? 0.0 : ZetaSpacing.xL2),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -181,9 +181,9 @@ class _ZetaStepperState extends State<ZetaStepper> with TickerProviderStateMixin
             children: [
               _getVerticalIcon(index),
               Container(
-                margin: const EdgeInsets.only(top: ZetaSpacing.x1),
-                width: ZetaSpacing.x1,
-                height: ZetaSpacing.x12,
+                margin: const EdgeInsets.only(top: ZetaSpacing.minimum),
+                width: ZetaSpacing.minimum,
+                height: ZetaSpacing.xL8,
                 decoration: BoxDecoration(
                   borderRadius: ZetaRadius.full,
                   color: switch (widget.steps[index].type) {
@@ -197,7 +197,7 @@ class _ZetaStepperState extends State<ZetaStepper> with TickerProviderStateMixin
           ),
           Expanded(
             child: Container(
-              margin: const EdgeInsets.symmetric(horizontal: ZetaSpacing.m),
+              margin: const EdgeInsets.symmetric(horizontal: ZetaSpacing.xL2),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
@@ -293,7 +293,7 @@ class _ZetaStepperState extends State<ZetaStepper> with TickerProviderStateMixin
                       Center(
                         child: Padding(
                           padding: const EdgeInsets.symmetric(
-                            vertical: ZetaSpacing.s,
+                            vertical: ZetaSpacing.medium,
                           ),
                           child: _buildHorizotalIcon(index),
                         ),
@@ -307,11 +307,11 @@ class _ZetaStepperState extends State<ZetaStepper> with TickerProviderStateMixin
                     child: Container(
                       key: Key('line$index'),
                       margin: const EdgeInsets.only(
-                        top: ZetaSpacing.x7,
-                        right: ZetaSpacing.b,
-                        left: ZetaSpacing.b,
+                        top: ZetaSpacing.xL3,
+                        right: ZetaSpacing.large,
+                        left: ZetaSpacing.large,
                       ),
-                      height: ZetaSpacing.x0_5,
+                      height: ZetaSpacingBase.x0_5,
                       decoration: BoxDecoration(
                         borderRadius: ZetaRadius.full,
                         color: switch (widget.steps[index].type) {
@@ -341,7 +341,7 @@ class _ZetaStepperState extends State<ZetaStepper> with TickerProviderStateMixin
                 Material(
                   color: Colors.transparent,
                   child: Container(
-                    margin: const EdgeInsets.symmetric(horizontal: ZetaSpacing.m),
+                    margin: const EdgeInsets.symmetric(horizontal: ZetaSpacing.xL2),
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: children,

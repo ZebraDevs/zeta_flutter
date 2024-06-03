@@ -143,7 +143,7 @@ class ZetaNavigationBar extends StatelessWidget {
             Container(
               color: colors.borderSubtle,
               width: _navigationItemBorderWidth,
-              height: ZetaSpacing.x11,
+              height: ZetaSpacing.xL7,
             ),
           _generateNavigationItemRow(rightItems),
         ],
@@ -162,8 +162,8 @@ class ZetaNavigationBar extends StatelessWidget {
 
     return Container(
       padding: const EdgeInsets.only(
-        left: ZetaSpacing.s,
-        right: ZetaSpacing.s,
+        left: ZetaSpacing.medium,
+        right: ZetaSpacing.medium,
       ),
       decoration: BoxDecoration(
         color: colors.surfacePrimary,
@@ -198,7 +198,7 @@ class _NavigationItem extends StatelessWidget {
 
   Widget _getBadge(ZetaColors colors) {
     return Positioned(
-      right: ZetaSpacing.xxs,
+      right: ZetaSpacing.minimum,
       child: DecoratedBox(
         decoration: BoxDecoration(
           color: colors.surfacePrimary,
@@ -227,26 +227,26 @@ class _NavigationItem extends StatelessWidget {
         borderRadius: ZetaRadius.rounded,
         onTap: onTap,
         child: Container(
-          padding: const EdgeInsets.only(left: ZetaSpacing.xs, right: ZetaSpacing.xs, bottom: ZetaSpacing.xs),
+          padding: const EdgeInsets.only(left: ZetaSpacing.small, right: ZetaSpacing.small, bottom: ZetaSpacing.small),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               SizedBox(
-                width: ZetaSpacing.x11,
-                height: ZetaSpacing.x8 - _navigationItemBorderWidth,
+                width: ZetaSpacing.xL7,
+                height: ZetaSpacing.xL4 - _navigationItemBorderWidth,
                 child: Stack(
                   children: [
                     Positioned(
-                      left: ZetaSpacing.x2_5,
-                      top: ZetaSpacing.xs - _navigationItemBorderWidth,
-                      right: ZetaSpacing.x2_5,
-                      child: Icon(item.icon, color: elementColor, size: ZetaSpacing.x6),
+                      left: ZetaSpacingBase.x2_5,
+                      top: ZetaSpacing.small - _navigationItemBorderWidth,
+                      right: ZetaSpacingBase.x2_5,
+                      child: Icon(item.icon, color: elementColor, size: ZetaSpacing.xL2),
                     ),
                     if (item.badge != null) _getBadge(colors),
                   ],
                 ),
               ),
-              const SizedBox(height: ZetaSpacing.xs),
+              const SizedBox(height: ZetaSpacing.small),
               if (item.label != null)
                 Text(
                   item.label!,

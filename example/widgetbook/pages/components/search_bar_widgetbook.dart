@@ -46,7 +46,7 @@ Widget searchBarUseCase(BuildContext context) {
         );
 
         return Padding(
-          padding: const EdgeInsets.all(ZetaSpacing.x5),
+          padding: const EdgeInsets.all(ZetaSpacing.xL),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -69,7 +69,7 @@ Widget searchBarUseCase(BuildContext context) {
                 },
                 onSpeechToText: () async => 'I wanted to say...',
               ),
-              const SizedBox(height: ZetaSpacing.x5),
+              const SizedBox(height: ZetaSpacing.xL),
               ...items.map((item) => Text(item)).toList(),
             ],
           ),

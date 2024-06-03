@@ -40,7 +40,7 @@ class ZetaTag extends StatelessWidget {
   final String label;
 
   /// Fixed container size
-  static const Size _containerSize = Size(ZetaSpacing.x9, ZetaSpacing.x7);
+  static const Size _containerSize = Size(ZetaSpacing.xL5, ZetaSpacing.xL3);
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +57,7 @@ class ZetaTag extends StatelessWidget {
           child: Center(
             child: FittedBox(
               child: Padding(
-                padding: const EdgeInsets.fromLTRB(ZetaSpacing.x2, 1, ZetaSpacing.x2, 1),
+                padding: const EdgeInsets.fromLTRB(ZetaSpacing.small, 1, ZetaSpacing.small, 1),
                 child: Text(
                   label,
                   style: ZetaTextStyles.bodyMedium,
@@ -76,20 +76,20 @@ class ZetaTag extends StatelessWidget {
     if (!rounded) return null;
     if (direction == ZetaTagDirection.right) {
       return const BorderRadius.only(
-        topRight: Radius.circular(ZetaSpacing.x0_5),
-        bottomRight: Radius.circular(ZetaSpacing.x0_5),
+        topRight: Radius.circular(ZetaSpacingBase.x0_5),
+        bottomRight: Radius.circular(ZetaSpacingBase.x0_5),
       );
     } else {
       return const BorderRadius.only(
-        topLeft: Radius.circular(ZetaSpacing.x0_5),
-        bottomLeft: Radius.circular(ZetaSpacing.x0_5),
+        topLeft: Radius.circular(ZetaSpacingBase.x0_5),
+        bottomLeft: Radius.circular(ZetaSpacingBase.x0_5),
       );
     }
   }
 
   Widget _buildCustomPaint(BuildContext context) {
     return CustomPaint(
-      size: const Size(ZetaSpacing.x3, ZetaSpacing.x7),
+      size: const Size(ZetaSpacing.medium, ZetaSpacing.xL3),
       painter: _TagPainter(
         color: Zeta.of(context).colors.surfaceHover,
         direction: direction,

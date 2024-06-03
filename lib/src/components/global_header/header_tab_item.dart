@@ -62,10 +62,10 @@ class _ZetaGlobalHeaderItemState extends State<ZetaGlobalHeaderItem> {
         child: Row(
           children: [
             Text(widget.label, style: TextStyle(color: foregroundColor)),
-            const SizedBox(width: ZetaSpacing.x2),
+            const SizedBox(width: ZetaSpacing.small),
             if (widget.dropdown != null) Icon(ZetaIcons.expand_more_round, color: foregroundColor),
           ],
-        ).paddingHorizontal(ZetaSpacing.m).paddingVertical(ZetaSpacing.s),
+        ).paddingHorizontal(ZetaSpacing.xL2).paddingVertical(ZetaSpacing.medium),
       ),
     );
   }

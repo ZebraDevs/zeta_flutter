@@ -15,7 +15,7 @@ Widget switchUseCase(BuildContext context) {
             ? (value) => setState(() => isOn = value)
             : null;
         return Padding(
-          padding: const EdgeInsets.all(ZetaSpacing.x5),
+          padding: const EdgeInsets.all(ZetaSpacing.xL),
           child: Column(
             children: [
               Text('Switch'),

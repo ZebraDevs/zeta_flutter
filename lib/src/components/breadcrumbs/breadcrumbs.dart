@@ -66,14 +66,14 @@ class _ZetaBreadCrumbsState extends State<ZetaBreadCrumbs> {
               const Row(
                 children: [
                   SizedBox(
-                    width: ZetaSpacing.xs,
+                    width: ZetaSpacing.small,
                   ),
                   Icon(
                     ZetaIcons.chevron_right_round,
-                    size: ZetaSpacing.x5,
+                    size: ZetaSpacing.xL,
                   ),
                   SizedBox(
-                    width: ZetaSpacing.xs,
+                    width: ZetaSpacing.small,
                   ),
                 ],
               ),
@@ -199,7 +199,7 @@ class _ZetaBreadCrumbState extends State<ZetaBreadCrumb> {
               color: getColor(controller.value, colors),
             ),
           const SizedBox(
-            width: ZetaSpacing.xs,
+            width: ZetaSpacing.small,
           ),
           Text(
             widget.label,
@@ -297,7 +297,7 @@ class _BreadCrumbsTruncatedState extends State<BreadCrumbsTruncated> {
               side: WidgetStateProperty.resolveWith((states) {
                 if (states.contains(WidgetState.focused)) {
                   return BorderSide(
-                    width: ZetaSpacing.x0_5,
+                    width: ZetaSpacingBase.x0_5,
                     color: colors.primary.shade100,
                   );
                 }
@@ -312,8 +312,8 @@ class _BreadCrumbsTruncatedState extends State<BreadCrumbsTruncated> {
             ),
             child: Icon(
               widget.rounded ? ZetaIcons.more_horizontal_round : ZetaIcons.more_horizontal_sharp,
-              size: ZetaSpacing.x4,
-            ).paddingHorizontal(ZetaSpacing.xs).paddingVertical(ZetaSpacing.xxs),
+              size: ZetaSpacing.large,
+            ).paddingHorizontal(ZetaSpacing.small).paddingVertical(ZetaSpacing.minimum),
           );
   }
 
@@ -324,14 +324,14 @@ class _BreadCrumbsTruncatedState extends State<BreadCrumbsTruncated> {
             const Row(
               children: [
                 SizedBox(
-                  width: ZetaSpacing.xs,
+                  width: ZetaSpacing.small,
                 ),
                 Icon(
                   ZetaIcons.chevron_right_round,
-                  size: ZetaSpacing.x5,
+                  size: ZetaSpacing.xL,
                 ),
                 SizedBox(
-                  width: ZetaSpacing.xs,
+                  width: ZetaSpacing.small,
                 ),
               ],
             ),

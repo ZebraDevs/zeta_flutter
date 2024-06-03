@@ -94,8 +94,8 @@ class ZetaIndicator extends StatelessWidget {
     final sizePixels = _getSizePixels(size, type);
 
     return Container(
-      width: sizePixels + ZetaSpacing.x1,
-      height: sizePixels + ZetaSpacing.x1,
+      width: sizePixels + ZetaSpacing.minimum,
+      height: sizePixels + ZetaSpacing.minimum,
       decoration: BoxDecoration(
         color: (inverse ? foregroundColor : Colors.transparent),
         borderRadius: ZetaRadius.full,
@@ -104,9 +104,9 @@ class ZetaIndicator extends StatelessWidget {
         child: Container(
           width: sizePixels,
           height: sizePixels,
-          decoration: BoxDecoration(color: backgroundColor, borderRadius: BorderRadius.circular(ZetaSpacing.x4)),
+          decoration: BoxDecoration(color: backgroundColor, borderRadius: BorderRadius.circular(ZetaSpacing.large)),
           child: ClipRRect(
-            borderRadius: BorderRadius.circular(ZetaSpacing.x4),
+            borderRadius: BorderRadius.circular(ZetaSpacing.large),
             clipBehavior: Clip.hardEdge,
             child: size == ZetaWidgetSize.small ? null : _buildContent(foregroundColor),
           ),
@@ -143,20 +143,20 @@ class ZetaIndicator extends StatelessWidget {
   double _getSizePixels(ZetaWidgetSize size, ZetaIndicatorType type) {
     switch (size) {
       case ZetaWidgetSize.large:
-        return ZetaSpacing.x4;
+        return ZetaSpacing.large;
       case ZetaWidgetSize.medium:
-        return type == ZetaIndicatorType.icon ? ZetaSpacing.x3 : ZetaSpacing.x3_5;
+        return type == ZetaIndicatorType.icon ? ZetaSpacing.medium : ZetaSpacingBase.x3_5;
       case ZetaWidgetSize.small:
-        return ZetaSpacing.x2;
+        return ZetaSpacing.small;
     }
   }
 
   double _getIconSize(ZetaWidgetSize size) {
     switch (size) {
       case ZetaWidgetSize.large:
-        return ZetaSpacing.x3;
+        return ZetaSpacing.medium;
       case ZetaWidgetSize.medium:
-        return ZetaSpacing.x2;
+        return ZetaSpacing.small;
       case ZetaWidgetSize.small:
         return 0;
     }

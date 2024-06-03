@@ -33,7 +33,7 @@ class ZetaBadge extends StatelessWidget {
     final Color backgroundColor = status.colorSwatch(context);
 
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: ZetaSpacing.x1, vertical: ZetaSpacing.x0_5),
+      padding: const EdgeInsets.symmetric(horizontal: ZetaSpacing.minimum, vertical: ZetaSpacingBase.x0_5),
       decoration: BoxDecoration(
         color: backgroundColor,
         borderRadius: rounded ? ZetaRadius.minimal : ZetaRadius.none,

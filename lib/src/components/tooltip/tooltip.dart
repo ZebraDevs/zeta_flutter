@@ -46,8 +46,8 @@ class ZetaTooltip extends StatelessWidget {
   /// Default is:
   /// ```
   /// const EdgeInsets.symmetric(
-  ///   horizontal: ZetaSpacing.xs,
-  ///   vertical: ZetaSpacing.xxs,
+  ///   horizontal: ZetaSpacing.small,
+  ///   vertical: ZetaSpacing.minimum,
   /// )
   /// ```
   final EdgeInsets? padding;
@@ -122,8 +122,8 @@ class ZetaTooltip extends StatelessWidget {
                     child: Padding(
                       padding: padding ??
                           const EdgeInsets.symmetric(
-                            horizontal: ZetaSpacing.xs,
-                            vertical: ZetaSpacing.xxs,
+                            horizontal: ZetaSpacing.small,
+                            vertical: ZetaSpacing.minimum,
                           ),
                       child: DefaultTextStyle(
                         style: textStyle ??

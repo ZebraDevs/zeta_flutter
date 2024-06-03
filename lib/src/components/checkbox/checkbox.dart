@@ -196,17 +196,21 @@ class _CheckboxState extends State<_Checkbox> {
                 ),
             ],
             color: _getBackground(theme),
+<<<<<<< HEAD
             border: Border.all(color: _getBorderColor(theme), width: ZetaSpacing.x0_5),
+=======
+            border: widget.enabled ? Border.all(color: _getBorderColor(theme), width: ZetaSpacingBase.x0_5) : null,
+>>>>>>> 57778e5 (update : Spacings + radii (#47))
             borderRadius: widget.rounded ? ZetaRadius.minimal : ZetaRadius.none,
           ),
-          width: ZetaSpacing.x5,
-          height: ZetaSpacing.x5,
+          width: ZetaSpacing.xL,
+          height: ZetaSpacing.xL,
           child: icon,
         ),
         if (widget.label != null) ...[
           Flexible(
             child: Padding(
-              padding: const EdgeInsets.only(left: ZetaSpacing.s),
+              padding: const EdgeInsets.only(left: ZetaSpacing.medium),
               child: Text(widget.label!, style: ZetaTextStyles.bodyMedium),
             ),
           ),

@@ -14,15 +14,15 @@ class ZetaTab extends Tab {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               if (icon != null) ...[
-                const SizedBox(width: ZetaSpacing.s),
+                const SizedBox(width: ZetaSpacing.medium),
                 icon,
               ],
               if (text != null)
                 Padding(
-                  padding: icon != null ? const EdgeInsets.only(left: ZetaSpacing.x2) : EdgeInsets.zero,
+                  padding: icon != null ? const EdgeInsets.only(left: ZetaSpacing.small) : EdgeInsets.zero,
                   child: Text(text),
                 ),
-              if (icon != null) const SizedBox(width: ZetaSpacing.s),
+              if (icon != null) const SizedBox(width: ZetaSpacing.medium),
             ],
           ),
         );

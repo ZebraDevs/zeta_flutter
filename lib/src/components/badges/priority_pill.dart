@@ -85,7 +85,7 @@ class ZetaPriorityPill extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final color = type.color(context);
-    final size = this.size == ZetaPriorityPillSize.small ? ZetaSpacing.x5 : ZetaSpacing.x7;
+    final size = this.size == ZetaPriorityPillSize.small ? ZetaSpacing.xL : ZetaSpacing.xL3;
 
     return DecoratedBox(
       decoration: BoxDecoration(
@@ -121,8 +121,8 @@ class ZetaPriorityPill extends StatelessWidget {
           if (!isBadge)
             Padding(
               padding: const EdgeInsets.symmetric(
-                horizontal: ZetaSpacing.x2,
-                vertical: ZetaSpacing.x1,
+                horizontal: ZetaSpacing.small,
+                vertical: ZetaSpacing.minimum,
               ),
               child: Text(
                 (priority?.isEmpty ?? true) ? type.name.capitalize() : priority!,

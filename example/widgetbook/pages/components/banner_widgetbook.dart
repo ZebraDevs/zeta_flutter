@@ -29,11 +29,11 @@ Widget bannerUseCase(BuildContext context) {
 
   return WidgetbookTestWidget(
     widget: Padding(
-      padding: EdgeInsets.all(ZetaSpacing.x5),
+      padding: EdgeInsets.all(ZetaSpacing.xL),
       child: Column(
         children: [
           banner,
-          const SizedBox(height: ZetaSpacing.xl),
+          const SizedBox(height: ZetaSpacing.xL9),
           ZetaButton.text(
             label: 'Popup',
             onPressed: () {

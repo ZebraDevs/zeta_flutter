@@ -55,15 +55,15 @@ class ZetaInPageBanner extends StatelessWidget {
         borderRadius: rounded ? ZetaRadius.minimal : ZetaRadius.none,
       ),
       child: Padding(
-        padding: const EdgeInsets.all(ZetaSpacing.x0_5),
+        padding: const EdgeInsets.all(ZetaSpacingBase.x0_5),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: const EdgeInsetsDirectional.only(top: ZetaSpacing.x3, start: ZetaSpacing.x2_5),
+              padding: const EdgeInsetsDirectional.only(top: ZetaSpacing.medium, start: ZetaSpacingBase.x2_5),
               child: Icon(
                 customIcon ?? status.icon(rounded: rounded),
-                size: ZetaSpacing.x5,
+                size: ZetaSpacing.xL,
                 color: status == ZetaWidgetStatus.neutral ? theme.colors.textDefault : colors.icon,
               ),
             ),
@@ -71,12 +71,12 @@ class ZetaInPageBanner extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const SizedBox(height: ZetaSpacing.x2),
+                  const SizedBox(height: ZetaSpacing.small),
                   if (hasTitle)
                     Text(
                       title!,
                       style: ZetaTextStyles.labelLarge,
-                    ).paddingBottom(ZetaSpacing.xxs),
+                    ).paddingBottom(ZetaSpacing.minimum),
                   DefaultTextStyle(
                     style: ZetaTextStyles.bodySmall.apply(color: theme.colors.textDefault),
                     child: content,
@@ -85,10 +85,10 @@ class ZetaInPageBanner extends StatelessWidget {
                     Row(
                       children: actions
                           .map((e) => e.copyWith(size: ZetaWidgetSize.medium, type: ZetaButtonType.outlineSubtle))
-                          .divide(const SizedBox.square(dimension: ZetaSpacing.x2))
+                          .divide(const SizedBox.square(dimension: ZetaSpacing.small))
                           .toList(),
-                    ).paddingTop(ZetaSpacing.x4),
-                  const SizedBox(height: ZetaSpacing.x2_5),
+                    ).paddingTop(ZetaSpacing.large),
+                  const SizedBox(height: ZetaSpacingBase.x2_5),
                 ],
               ),
             ),
@@ -97,10 +97,10 @@ class ZetaInPageBanner extends StatelessWidget {
                 onPressed: onClose,
                 icon: Icon(
                   !rounded ? ZetaIcons.close_sharp : ZetaIcons.close_round,
-                  size: ZetaSpacing.x5,
+                  size: ZetaSpacing.xL,
                 ),
               ),
-          ].divide(const SizedBox.square(dimension: ZetaSpacing.x2)).toList(),
+          ].divide(const SizedBox.square(dimension: ZetaSpacing.small)).toList(),
         ),
       ),
     );

@@ -107,11 +107,11 @@ class ZetaTimeInputState extends State<ZetaTimeInput> implements ZetaFormFieldSt
   double get _iconSize {
     switch (widget.size) {
       case ZetaWidgetSize.large:
-        return ZetaSpacing.x6;
+        return ZetaSpacing.xL2;
       case ZetaWidgetSize.medium:
-        return ZetaSpacing.x5;
+        return ZetaSpacing.xL;
       case ZetaWidgetSize.small:
-        return ZetaSpacing.x4;
+        return ZetaSpacing.large;
     }
   }
 

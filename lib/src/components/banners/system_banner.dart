@@ -63,11 +63,11 @@ class ZetaSystemBanner extends MaterialBanner {
                   children: [
                     if (leadingIcon != null)
                       Padding(
-                        padding: const EdgeInsets.only(right: ZetaSpacing.x2),
+                        padding: const EdgeInsets.only(right: ZetaSpacing.small),
                         child: Icon(
                           leadingIcon,
                           color: foregroundColor,
-                          size: ZetaSpacing.x6,
+                          size: ZetaSpacing.xL2,
                         ),
                       ),
                     Flexible(child: Text(title)),

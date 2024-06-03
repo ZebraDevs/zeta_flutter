@@ -83,14 +83,14 @@ class ZetaListItem extends StatelessWidget {
                 if (leading != null)
                   Padding(
                     padding: EdgeInsets.only(
-                      right: dense ? ZetaSpacing.x2 : ZetaSpacing.x4,
+                      right: dense ? ZetaSpacing.small : ZetaSpacing.large,
                     ),
                     child: leading,
                   ),
                 Flexible(
                   child: Padding(
                     padding: EdgeInsets.symmetric(
-                      vertical: dense ? 0.0 : ZetaSpacing.x4,
+                      vertical: dense ? 0.0 : ZetaSpacing.large,
                     ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -122,14 +122,14 @@ class ZetaListItem extends StatelessWidget {
           if (trailing != null)
             Padding(
               padding: EdgeInsets.only(
-                left: dense ? ZetaSpacing.x2 : ZetaSpacing.x4,
+                left: dense ? ZetaSpacing.small : ZetaSpacing.large,
               ),
               child: trailing,
             ),
           if (trailing == null && selected && enabled)
             Padding(
               padding: EdgeInsets.only(
-                left: dense ? ZetaSpacing.x2 : ZetaSpacing.x4,
+                left: dense ? ZetaSpacing.small : ZetaSpacing.large,
               ),
               child: Icon(
                 ZetaIcons.check_mark_round,
@@ -187,8 +187,8 @@ class _ListItemContainer extends StatelessWidget {
           onTap: enabled ? onTap : null,
           child: Container(
             padding: EdgeInsets.symmetric(
-              horizontal: dense ? ZetaSpacing.x4 : ZetaSpacing.x8,
-              vertical: dense ? ZetaSpacing.x2 : ZetaSpacing.x4,
+              horizontal: dense ? ZetaSpacing.large : ZetaSpacing.xL4,
+              vertical: dense ? ZetaSpacing.small : ZetaSpacing.large,
             ),
             decoration: BoxDecoration(
               border: enabled && enabledDivider

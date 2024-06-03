@@ -211,7 +211,7 @@ class ChipExample extends StatelessWidget {
     return ExampleScaffold(
       name: ChipExample.name,
       child: SingleChildScrollView(
-        padding: EdgeInsets.all(ZetaSpacing.s),
+        padding: EdgeInsets.all(ZetaSpacing.medium),
         child: Column(
           children: [
             ...inputChipExample,

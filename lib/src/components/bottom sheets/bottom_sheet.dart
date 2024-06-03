@@ -30,16 +30,16 @@ class ZetaBottomSheet extends StatelessWidget {
 
     return Container(
       padding: const EdgeInsets.fromLTRB(
-        ZetaSpacing.x5,
+        ZetaSpacing.xL,
         0,
-        ZetaSpacing.x5,
-        ZetaSpacing.x5,
+        ZetaSpacing.xL,
+        ZetaSpacing.xL,
       ),
       decoration: BoxDecoration(
         color: colors.surfaceSecondary,
         borderRadius: const BorderRadius.only(
-          topLeft: Radius.circular(ZetaSpacing.x6),
-          topRight: Radius.circular(ZetaSpacing.x6),
+          topLeft: Radius.circular(ZetaSpacing.xL2),
+          topRight: Radius.circular(ZetaSpacing.xL2),
         ),
       ),
       child: Column(
@@ -47,12 +47,12 @@ class ZetaBottomSheet extends StatelessWidget {
         children: [
           Align(
             child: SizedBox(
-              height: ZetaSpacing.x9,
+              height: ZetaSpacing.xL5,
               child: Padding(
-                padding: const EdgeInsets.only(top: ZetaSpacing.x2),
+                padding: const EdgeInsets.only(top: ZetaSpacing.small),
                 child: Icon(
                   Icons.maximize_rounded,
-                  size: ZetaSpacing.x16,
+                  size: ZetaSpacing.xL9,
                   color: colors.surfaceDisabled,
                 ),
               ),

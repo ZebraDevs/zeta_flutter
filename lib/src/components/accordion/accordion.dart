@@ -157,7 +157,7 @@ class _ZetaAccordionState extends State<ZetaAccordion> with TickerProviderStateM
                       child: Flexible(child: Text(widget.title)),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(left: ZetaSpacing.x4),
+                      padding: const EdgeInsets.only(left: ZetaSpacing.large),
                       child: Icon(
                         _isOpen
                             ? (widget.rounded ? ZetaIcons.remove_round : ZetaIcons.remove_sharp)
@@ -173,7 +173,7 @@ class _ZetaAccordionState extends State<ZetaAccordion> with TickerProviderStateM
               sizeFactor: _animation,
               axisAlignment: -1,
               child: Padding(
-                padding: const EdgeInsets.fromLTRB(ZetaSpacing.x4, 0, ZetaSpacing.x4, ZetaSpacing.x4),
+                padding: const EdgeInsets.fromLTRB(ZetaSpacing.large, 0, ZetaSpacing.large, ZetaSpacing.large),
                 child: Theme(
                   data: Theme.of(context).copyWith(
                     listTileTheme: ListTileThemeData(

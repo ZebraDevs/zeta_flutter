@@ -311,13 +311,13 @@ class _DropdownItemState<T> extends State<_DropdownItem<T>> {
 
     if (leading != null) {
       leading = Padding(
-        padding: const EdgeInsets.only(right: ZetaSpacing.x3),
+        padding: const EdgeInsets.only(right: ZetaSpacing.medium),
         child: leading,
       );
     }
 
     return ConstrainedBox(
-      constraints: const BoxConstraints(maxHeight: ZetaSpacing.x10),
+      constraints: const BoxConstraints(maxHeight: ZetaSpacing.xL6),
       child: DefaultTextStyle(
         style: ZetaTextStyles.bodyMedium,
         child: OutlinedButton(
@@ -327,11 +327,11 @@ class _DropdownItemState<T> extends State<_DropdownItem<T>> {
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              const SizedBox(width: ZetaSpacing.x3),
+              const SizedBox(width: ZetaSpacing.medium),
               if (leading != null) leading,
               Expanded(
                 child: Padding(
-                  padding: const EdgeInsets.only(right: ZetaSpacing.x2),
+                  padding: const EdgeInsets.only(right: ZetaSpacing.small),
                   child: Align(
                     alignment: Alignment.centerLeft,
                     child: FittedBox(
@@ -343,7 +343,7 @@ class _DropdownItemState<T> extends State<_DropdownItem<T>> {
                 ),
               ),
             ],
-          ).paddingVertical(ZetaSpacing.x2_5),
+          ).paddingVertical(ZetaSpacingBase.x2_5),
         ),
       ),
     );
@@ -481,7 +481,7 @@ class _ZetaDropDownMenuState<T> extends State<_ZetaDropDownMenu<T>> {
   Widget build(BuildContext context) {
     final colors = Zeta.of(context).colors;
     return Container(
-      padding: const EdgeInsets.all(ZetaSpacing.x3),
+      padding: const EdgeInsets.all(ZetaSpacing.medium),
       decoration: BoxDecoration(
         color: colors.surfacePrimary,
         borderRadius: widget.rounded ? ZetaRadius.minimal : ZetaRadius.none,
@@ -511,7 +511,7 @@ class _ZetaDropDownMenuState<T> extends State<_ZetaDropDownMenu<T>> {
                     rounded: widget.rounded,
                   );
                 })
-                .divide(const SizedBox(height: ZetaSpacing.x1))
+                .divide(const SizedBox(height: ZetaSpacing.minimum))
                 .toList(),
           );
         },
