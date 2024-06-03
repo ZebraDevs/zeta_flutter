@@ -31,6 +31,7 @@ export 'src/components/filter_selection/filter_selection.dart';
 export 'src/components/global_header/global_header.dart';
 export 'src/components/global_header/header_tab_item.dart';
 export 'src/components/list_item/list_item.dart';
+export 'src/components/list_item/notification_list_item.dart';
 export 'src/components/navigation bar/navigation_bar.dart';
 export 'src/components/navigation_rail/navigation_rail.dart';
 export 'src/components/pagination/pagination.dart';

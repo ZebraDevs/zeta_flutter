@@ -20,6 +20,7 @@ import 'package:zeta_example/pages/components/filter_selection_example.dart';
 import 'package:zeta_example/pages/components/list_item_example.dart';
 import 'package:zeta_example/pages/components/navigation_bar_example.dart';
 import 'package:zeta_example/pages/components/navigation_rail_example.dart';
+import 'package:zeta_example/pages/components/notification_list_example.dart';
 import 'package:zeta_example/pages/components/phone_input_example.dart';
 import 'package:zeta_example/pages/components/radio_example.dart';
 import 'package:zeta_example/pages/components/screen_header_bar_example.dart';
@@ -68,6 +69,7 @@ final List<Component> components = [
   Component(ContactItemExample.name, (context) => const ContactItemExample()),
   Component(ListItemExample.name, (context) => const ListItemExample()),
   Component(NavigationBarExample.name, (context) => const NavigationBarExample()),
+  Component(NotificationListItemExample.name, (context) => const NotificationListItemExample()),
   Component(PaginationExample.name, (context) => const PaginationExample()),
   Component(PasswordInputExample.name, (context) => const PasswordInputExample()),
   Component(GroupHeaderExample.name, (context) => const GroupHeaderExample()),

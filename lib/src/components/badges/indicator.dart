@@ -23,6 +23,7 @@ class ZetaIndicator extends StatelessWidget {
     this.icon,
     this.value,
     this.inverse = false,
+    this.color,
   });
 
   /// Constructor for [ZetaIndicator] of type [ZetaIndicatorType.icon].
@@ -31,6 +32,7 @@ class ZetaIndicator extends StatelessWidget {
     this.size = ZetaWidgetSize.large,
     this.inverse = false,
     this.icon,
+    this.color,
   })  : type = ZetaIndicatorType.icon,
         value = null;
 
@@ -41,6 +43,7 @@ class ZetaIndicator extends StatelessWidget {
     this.inverse = false,
     this.icon,
     this.value,
+    this.color,
   }) : type = ZetaIndicatorType.notification;
 
   /// The type of the [ZetaIndicator] - icon or notification.
@@ -62,6 +65,9 @@ class ZetaIndicator extends StatelessWidget {
   /// Value for the type `notification`.
   final int? value;
 
+  /// Color for zeta indicator
+  final Color? color;
+
   /// Creates a clone.
   ZetaIndicator copyWith({
     ZetaIndicatorType? type,
@@ -82,7 +88,8 @@ class ZetaIndicator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final zetaColors = Zeta.of(context).colors;
-    final Color backgroundColor = (type == ZetaIndicatorType.icon ? zetaColors.blue : zetaColors.surfaceNegative);
+    final Color backgroundColor =
+        color ?? (type == ZetaIndicatorType.icon ? zetaColors.blue : zetaColors.surfaceNegative);
     final Color foregroundColor = backgroundColor.onColor;
     final sizePixels = _getSizePixels(size, type);
 
@@ -163,6 +170,7 @@ class ZetaIndicator extends StatelessWidget {
       ..add(DiagnosticsProperty<ZetaWidgetSize>('size', size))
       ..add(DiagnosticsProperty<int?>('value', value))
       ..add(DiagnosticsProperty<IconData?>('icon', icon))
-      ..add(DiagnosticsProperty<bool>('inverseBorder', inverse));
+      ..add(DiagnosticsProperty<bool>('inverseBorder', inverse))
+      ..add(ColorProperty('color', color));
   }
 }

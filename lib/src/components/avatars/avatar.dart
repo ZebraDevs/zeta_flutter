@@ -308,8 +308,8 @@ class ZetaAvatarBadge extends StatelessWidget {
     this.color,
     this.icon = ZetaIcons.star_round,
     this.iconColor,
+    this.size = ZetaAvatarSize.xxxl,
   })  : value = null,
-        size = ZetaAvatarSize.xxxl,
         type = ZetaAvatarBadgeType.icon;
 
   /// Constructs [ZetaAvatarBadge] with notifications
@@ -407,7 +407,7 @@ class ZetaAvatarBadge extends StatelessWidget {
               )
             : null,
       ),
-      child: Center(child: innerContent),
+      child: innerContent,
     );
   }
 
