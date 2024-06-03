@@ -402,7 +402,12 @@ class _DropdownItemState<T> extends State<_DropdownItem<T>> {
           borderRadius: widget.rounded ? ZetaRadius.minimal : ZetaRadius.none,
         ),
       ),
-      side: const WidgetStatePropertyAll(BorderSide.none),
+      side: WidgetStateBorderSide.resolveWith((states) {
+        if (states.contains(WidgetState.focused)) {
+          return BorderSide(color: colors.borderPrimary);
+        }
+        return BorderSide.none;
+      }),
       padding: const WidgetStatePropertyAll(EdgeInsets.zero),
       elevation: const WidgetStatePropertyAll(0),
       overlayColor: const WidgetStatePropertyAll(Colors.transparent),
