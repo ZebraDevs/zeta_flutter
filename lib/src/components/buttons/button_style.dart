@@ -107,7 +107,7 @@ ButtonStyle buttonStyle(
           return isSolid ? color.shade50 : colors.cool.shade20;
         }
         if (backgroundColor != null) return backgroundColor;
-        return isSolid ? color : Colors.transparent;
+        return isSolid ? color : colors.surfacePrimary;
       },
     ),
     foregroundColor: WidgetStateProperty.resolveWith<Color?>(

@@ -12,10 +12,10 @@ Widget avatarUseCase(BuildContext context) {
     widget: ZetaAvatar(
       image: context.knobs.boolean(label: 'Image') ? image : null,
       size: context.knobs.list(
-        label: 'Size',
-        options: ZetaAvatarSize.values,
-        labelBuilder: (value) => value.name.split('.').last.toUpperCase(),
-      ),
+          label: 'Size',
+          options: ZetaAvatarSize.values,
+          labelBuilder: (value) => value.name.split('.').last.toUpperCase(),
+          initialOption: ZetaAvatarSize.m),
       upperBadge: context.knobs.boolean(label: 'Status Badge', initialValue: false)
           ? ZetaAvatarBadge.icon(
               icon: ZetaIcons.close_round,
@@ -33,9 +33,7 @@ Widget avatarUseCase(BuildContext context) {
             )
           : null,
       initials: context.knobs.stringOrNull(label: 'Initials', initialValue: null),
-      backgroundColor: context.knobs.colorOrNull(
-        label: 'Background color',
-      ),
+      backgroundColor: context.knobs.colorOrNull(label: 'Background color', initialValue: colors.purple.shade80),
     ),
   );
 }

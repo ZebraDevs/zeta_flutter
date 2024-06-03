@@ -5,6 +5,7 @@ import 'package:zeta_flutter/zeta_flutter.dart';
 
 import 'pages/assets/icon_widgetbook.dart';
 import 'pages/components/accordion_widgetbook.dart';
+import 'pages/components/notification_list_item_widgetbook.dart';
 import 'pages/components/text_input_widgetbook.dart';
 import 'pages/components/top_app_bar_widgetbook.dart';
 import 'pages/components/avatar_widgetbook.dart';
@@ -140,6 +141,8 @@ class _HotReloadState extends State<HotReload> {
             WidgetbookUseCase(name: 'Dial Pad', builder: (context) => dialPadUseCase(context)),
             WidgetbookUseCase(name: 'Global Header', builder: (context) => globalHeaderUseCase(context)),
             WidgetbookUseCase(name: 'List Item', builder: (context) => listItemUseCase(context)),
+            WidgetbookUseCase(
+                name: 'Notification List Item', builder: (context) => notificationListItemUseCase(context)),
             WidgetbookUseCase(name: 'Navigation Bar', builder: (context) => navigationBarUseCase(context)),
             WidgetbookUseCase(name: 'Pagination', builder: (context) => paginationUseCase(context)),
             WidgetbookUseCase(name: 'Radio Button', builder: (context) => radioButtonUseCase(context)),
