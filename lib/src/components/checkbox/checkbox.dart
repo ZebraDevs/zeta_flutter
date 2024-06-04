@@ -133,6 +133,14 @@ class _CheckboxState extends State<_Checkbox> {
   bool _isFocused = false;
   bool _isHovered = false;
 
+  void _setHovered(bool isHovered) {
+    if (!widget.disabled) {
+      setState(() {
+        _isHovered = isHovered;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Semantics(
@@ -140,8 +148,8 @@ class _CheckboxState extends State<_Checkbox> {
       enabled: !widget.disabled,
       child: MouseRegion(
         cursor: !widget.disabled ? SystemMouseCursors.click : SystemMouseCursors.forbidden,
-        onEnter: (event) => setState(() => _isHovered = true),
-        onExit: (event) => setState(() => _isHovered = false),
+        onEnter: (event) => _setHovered(true),
+        onExit: (event) => _setHovered(false),
         child: !widget.disabled
             ? FocusableActionDetector(
                 onFocusChange: (bool focus) => setState(() => _isFocused = focus),
@@ -211,7 +219,7 @@ class _CheckboxState extends State<_Checkbox> {
     final ZetaColorSwatch color = widget.error ? theme.colors.error : theme.colors.primary;
     if (widget.disabled) return theme.colors.surfaceDisabled;
     if (!_checked) return theme.colors.surfacePrimary;
-    if (_isHovered) return color.hover;
+    if (_isHovered) return theme.colors.borderHover;
 
     return color;
   }

@@ -11,8 +11,12 @@ Widget checkboxUseCase(BuildContext context) {
   return WidgetbookTestWidget(
     widget: StatefulBuilder(
       builder: (context, setState) {
-        dynamic onChanged =
-            context.knobs.boolean(label: 'Enabled', initialValue: true) ? (b2) => setState(() => b = b2) : false;
+        ValueChanged<bool>? onChanged = context.knobs.boolean(
+          label: 'Enabled',
+          initialValue: true,
+        )
+            ? (b2) => setState(() => b = b2)
+            : null;
         return ZetaCheckbox(
           value: b,
           onChanged: onChanged,
