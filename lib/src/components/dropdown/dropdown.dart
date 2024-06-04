@@ -55,6 +55,7 @@ class ZetaDropdown<T> extends StatefulWidget {
   const ZetaDropdown({
     required this.items,
     this.onChange,
+    @Deprecated('disabled is deprecated. To disable the dropdown, set onChange to null') bool disabled = false,
     this.value,
     this.rounded = true,
     this.type = ZetaDropdownMenuType.standard,
