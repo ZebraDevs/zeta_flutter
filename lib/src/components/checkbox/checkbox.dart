@@ -177,7 +177,7 @@ class _CheckboxState extends State<_Checkbox> {
                     ? ZetaIcons.remove_round
                     : ZetaIcons.remove_sharp,
             color: !widget.disabled ? theme.colors.white : theme.colors.iconDisabled,
-            size: ZetaSpacing.x3_5,
+            size: ZetaSpacingBase.x3_5,
           );
 
     return Flex(
@@ -196,11 +196,7 @@ class _CheckboxState extends State<_Checkbox> {
                 ),
             ],
             color: _getBackground(theme),
-<<<<<<< HEAD
-            border: Border.all(color: _getBorderColor(theme), width: ZetaSpacing.x0_5),
-=======
-            border: widget.enabled ? Border.all(color: _getBorderColor(theme), width: ZetaSpacingBase.x0_5) : null,
->>>>>>> 57778e5 (update : Spacings + radii (#47))
+            border: Border.all(color: _getBorderColor(theme), width: ZetaSpacingBase.x0_5),
             borderRadius: widget.rounded ? ZetaRadius.minimal : ZetaRadius.none,
           ),
           width: ZetaSpacing.xL,

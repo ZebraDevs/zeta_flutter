@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 ///
 /// Values are doubles, and can be used for padding, margins and other spacings.
 ///
-// TODO(thelukewalton): Refactor to match latest designs.
 /// Semantic zeta spacings.
 class ZetaSpacing {
   /// No spacing => 0px.
@@ -54,6 +53,138 @@ class ZetaSpacing {
 
   /// 11xL spacing => 96px
   static const double xL11 = ZetaSpacingBase.x15;
+
+  /// Base multiplier used to calculate spacing values.
+  @Deprecated('Use minimum instead ' 'This size has been deprecated as of 0.11.0')
+  static const double spacingBaseMultiplier = 4;
+
+  /// 2dp space.
+  @Deprecated('Use ZetaSpacingBase.x0_5 instead ' 'This size has been deprecated as of 0.11.0')
+  static const double x0_5 = spacingBaseMultiplier * 0.5;
+
+  /// 4dp space.
+  @Deprecated('Use minimum instead ' 'This size has been deprecated as of 0.11.0')
+  static const double x1 = spacingBaseMultiplier;
+
+  /// 4dp space.
+  @Deprecated('Use minimum instead ' 'This size has been deprecated as of 0.11.0')
+  static const double xxs = spacingBaseMultiplier;
+
+  /// 8dp space.
+  @Deprecated('Use small instead ' 'This size has been deprecated as of 0.11.0')
+  static const double x2 = spacingBaseMultiplier * 2;
+
+  /// 8dp space.
+  @Deprecated('Use small instead ' 'This size has been deprecated as of 0.11.0')
+  static const double xs = spacingBaseMultiplier * 2;
+
+  /// 10dp space.
+  @Deprecated('Use ZetaSpacingBase.x2_5 instead ' 'This size has been deprecated as of 0.11.0')
+  static const double x2_5 = spacingBaseMultiplier * 2.5;
+
+  /// 12dp space.
+  @Deprecated('Use medium instead ' 'This size has been deprecated as of 0.11.0')
+  static const double x3 = spacingBaseMultiplier * 3;
+
+  /// 12dp space.
+  @Deprecated('Use medium instead ' 'This size has been deprecated as of 0.11.0')
+  static const double s = spacingBaseMultiplier * 3;
+
+  /// 14dp space.
+  @Deprecated('Use ZetaSpacingBase.x3_5 instead ' 'This size has been deprecated as of 0.11.0')
+  static const double x3_5 = spacingBaseMultiplier * 3.5;
+
+  /// 16dp space.
+  @Deprecated('Use large instead ' 'This size has been deprecated as of 0.11.0')
+  static const double x4 = spacingBaseMultiplier * 4;
+
+  /// 16dp space.
+  @Deprecated('Use large instead ' 'This size has been deprecated as of 0.11.0')
+  static const double b = spacingBaseMultiplier * 4;
+
+  /// 20dp space.
+  @Deprecated('Use xL instead ' 'This size has been deprecated as of 0.11.0')
+  static const double x5 = spacingBaseMultiplier * 5;
+
+  /// 24dp space.
+  @Deprecated('Use xL2 instead ' 'This size has been deprecated as of 0.11.0')
+  static const double x6 = spacingBaseMultiplier * 6;
+
+  /// 24dp space.
+  @Deprecated('Use xL2 instead ' 'This size has been deprecated as of 0.11.0')
+  static const double m = spacingBaseMultiplier * 6;
+
+  /// 28dp space.
+  @Deprecated('Use xL3 instead ' 'This size has been deprecated as of 0.11.0')
+  static const double x7 = spacingBaseMultiplier * 7;
+
+  /// 30dp space.
+  @Deprecated('Use ZetaSpacingBase.x7_5 instead ' 'This size has been deprecated as of 0.11.0')
+  static const double x7_5 = spacingBaseMultiplier * 7.5;
+
+  /// 32dp space.
+  @Deprecated('Use xL4 instead ' 'This size has been deprecated as of 0.11.0')
+  static const double x8 = spacingBaseMultiplier * 8;
+
+  /// 32dp space.
+  @Deprecated('Use xL4 instead ' 'This size has been deprecated as of 0.11.0')
+  static const double l = spacingBaseMultiplier * 8;
+
+  /// 36dp space.
+  @Deprecated('Use xL5 instead ' 'This size has been deprecated as of 0.11.0')
+  static const double x9 = spacingBaseMultiplier * 9;
+
+  /// 40dp space.
+  @Deprecated('Use xL6 instead ' 'This size has been deprecated as of 0.11.0')
+  static const double x10 = spacingBaseMultiplier * 10;
+
+  /// 44dp space.
+  @Deprecated('Use xL7 instead ' 'This size has been deprecated as of 0.11.0')
+  static const double x11 = spacingBaseMultiplier * 11;
+
+  /// 48dp space.
+  @Deprecated('Use xL8 instead ' 'This size has been deprecated as of 0.11.0')
+  static const double x12 = spacingBaseMultiplier * 12;
+
+  /// 52dp Space.
+  @Deprecated('This size has been deprecated as of 0.11.0')
+  static const double x13 = spacingBaseMultiplier * 13;
+
+  /// 56dp Space.
+  @Deprecated('Use ZetaSpacingBase.x12_5 instead ' 'This size has been deprecated as of 0.11.0')
+  static const double x14 = spacingBaseMultiplier * 14;
+
+  /// 64dp space.
+  @Deprecated('Use xL9 instead ' 'This size has been deprecated as of 0.11.0')
+  static const double x16 = spacingBaseMultiplier * 16;
+
+  /// 64dp space.
+  @Deprecated('Use xL9 instead ' 'This size has been deprecated as of 0.11.0')
+  static const double xl = spacingBaseMultiplier * 16;
+
+  /// 80dp space.
+  @Deprecated('Use xL10 instead ' 'This size has been deprecated as of 0.11.0')
+  static const double x20 = spacingBaseMultiplier * 20;
+
+  /// 80dp space.
+  @Deprecated('Use xL10 instead ' 'This size has been deprecated as of 0.11.0')
+  static const double xxl = spacingBaseMultiplier * 20;
+
+  /// 96dp space.
+  @Deprecated('Use xL11 instead ' 'This size has been deprecated as of 0.11.0')
+  static const double x24 = spacingBaseMultiplier * 24;
+
+  /// 96dp space.
+  @Deprecated('Use xL11 instead ' 'This size has been deprecated as of 0.11.0')
+  static const double xxxl = spacingBaseMultiplier * 24;
+
+  /// 120dp space
+  @Deprecated('Use ZetaSpacingBase.x30 instead ' 'This size has been deprecated as of 0.11.0')
+  static const double x30 = spacingBaseMultiplier * 30;
+
+  /// 200dp space
+  @Deprecated('Use ZetaSpacingBase.x50 instead ' 'This size has been deprecated as of 0.11.0')
+  static const double x50 = spacingBaseMultiplier * 50;
 }
 
 /// Semantic zeta radii.
@@ -75,6 +206,10 @@ class ZetaRadius {
 
   /// Full radius => 360px radius.
   static const BorderRadius full = ZetaRadiusBase.x4;
+
+  /// Wide border radius; 24px radius.
+  @Deprecated('Use xL instead ' 'This size has been deprecated as of 0.11.0')
+  static const BorderRadius wide = BorderRadius.all(Radius.circular(ZetaSpacing.m));
 }
 
 ///Tokens that are used for Spacing
