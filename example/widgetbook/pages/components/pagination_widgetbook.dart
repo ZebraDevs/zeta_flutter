@@ -13,6 +13,6 @@ Widget paginationUseCase(BuildContext context) => WidgetbookTestWidget(
           labelBuilder: (value) => value.name.split('.').last.toUpperCase(),
         ),
         rounded: context.knobs.boolean(label: 'Rounded'),
-        disabled: context.knobs.boolean(label: 'Disabled'),
+        onChange: context.knobs.boolean(label: 'Disabled') ? null : (_) {},
       ),
     );

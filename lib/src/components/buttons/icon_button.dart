@@ -82,6 +82,8 @@ class ZetaIconButton extends StatelessWidget {
   final IconData icon;
 
   /// Called when the button is tapped or otherwise activated.
+  ///
+  /// {@macro on-change-disable}
   final VoidCallback? onPressed;
 
   /// The coloring type of the button

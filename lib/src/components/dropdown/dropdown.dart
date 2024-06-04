@@ -57,7 +57,6 @@ class ZetaDropdown<T> extends StatefulWidget {
     this.onChange,
     this.value,
     this.rounded = true,
-    this.disabled = false,
     this.type = ZetaDropdownMenuType.standard,
     this.size = ZetaDropdownSize.standard,
     super.key,
@@ -72,13 +71,12 @@ class ZetaDropdown<T> extends StatefulWidget {
   final T? value;
 
   /// Called with the selected value whenever the dropdown is changed.
+  ///
+  /// {@macro on-change-disable}
   final ValueSetter<T>? onChange;
 
   /// {@macro zeta-component-rounded}
   final bool rounded;
-
-  /// Disables the dropdown.
-  final bool disabled;
 
   /// The type of the dropdown menu.
   ///
@@ -101,8 +99,7 @@ class ZetaDropdown<T> extends StatefulWidget {
       ..add(IterableProperty<ZetaDropdownItem<T>>('items', items))
       ..add(DiagnosticsProperty<T?>('selectedItem', value))
       ..add(ObjectFlagProperty<ValueSetter<T>?>.has('onChange', onChange))
-      ..add(EnumProperty<ZetaDropdownSize>('size', size))
-      ..add(DiagnosticsProperty<bool>('disabled', disabled));
+      ..add(EnumProperty<ZetaDropdownSize>('size', size));
   }
 }
 
@@ -130,7 +127,7 @@ class _ZetaDropDownState<T> extends State<ZetaDropdown<T>> {
     if (oldWidget.value != widget.value) {
       setState(_setSelectedItem);
     }
-    if (widget.disabled) {
+    if (widget.onChange != null) {
       unawaited(
         Future<void>.delayed(Duration.zero).then(
           (value) => _tooltipController.hide(),
@@ -206,7 +203,7 @@ class _ZetaDropDownState<T> extends State<ZetaDropdown<T>> {
             );
           },
           child: _DropdownItem(
-            onPress: !widget.disabled ? onTap : null,
+            onPress: widget.onChange != null ? onTap : null,
             value: _selectedItem ?? widget.items.first,
             allocateLeadingSpace: widget.type == ZetaDropdownMenuType.standard && _selectedItem?.icon != null,
             rounded: widget.rounded,

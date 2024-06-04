@@ -26,7 +26,6 @@ class ZetaPagination extends StatefulWidget {
     this.onChange,
     this.currentPage = 1,
     this.rounded = true,
-    this.disabled = false,
     super.key,
   })  : assert(
           pages > 0,
@@ -48,10 +47,9 @@ class ZetaPagination extends StatefulWidget {
   /// {@macro zeta-component-rounded}
   final bool rounded;
 
-  /// Disables the pagination.
-  final bool disabled;
-
   /// A callback executed every time the page changes.
+  ///
+  /// {@macro on-change-disable}
   final void Function(int value)? onChange;
 
   /// The type of the pagination.
@@ -69,7 +67,6 @@ class ZetaPagination extends StatefulWidget {
       ..add(IntProperty('pages', pages))
       ..add(IntProperty('currentPage', currentPage))
       ..add(DiagnosticsProperty<bool>('rounded', rounded))
-      ..add(DiagnosticsProperty<bool>('disabled', disabled))
       ..add(ObjectFlagProperty<void Function(int value)?>.has('onChange', onChange))
       ..add(EnumProperty<ZetaPaginationType>('type', type));
   }
@@ -78,6 +75,8 @@ class ZetaPagination extends StatefulWidget {
 class _ZetaPaginationState extends State<ZetaPagination> {
   late int _currentPage;
   final _paginationKey = GlobalKey();
+
+  bool get _disabled => widget.onChange == null;
 
   @override
   void initState() {
@@ -108,7 +107,7 @@ class _ZetaPaginationState extends State<ZetaPagination> {
       onPressed: () => _onItemPressed(value),
       selected: _currentPage == value,
       rounded: widget.rounded,
-      disabled: widget.disabled,
+      disabled: _disabled,
     );
   }
 
@@ -219,13 +218,13 @@ class _ZetaPaginationState extends State<ZetaPagination> {
             _PaginationItem(
               icon: widget.rounded ? ZetaIcons.first_page_round : ZetaIcons.first_page_sharp,
               onPressed: () => _onItemPressed(1),
-              disabled: widget.disabled,
+              disabled: _disabled,
               rounded: widget.rounded,
             ),
           _PaginationItem(
             icon: widget.rounded ? ZetaIcons.chevron_left_round : ZetaIcons.chevron_left_sharp,
             onPressed: () => _onItemPressed(max(1, _currentPage - 1)),
-            disabled: widget.disabled,
+            disabled: _disabled,
             rounded: widget.rounded,
           ),
           if (!showDropdown) ...numberedPaginationItems else paginationDropdown,
@@ -234,7 +233,7 @@ class _ZetaPaginationState extends State<ZetaPagination> {
             onPressed: () => _onItemPressed(
               min(widget.pages, _currentPage + 1),
             ),
-            disabled: widget.disabled,
+            disabled: _disabled,
             rounded: widget.rounded,
           ),
           if (!showDropdown)
@@ -243,7 +242,7 @@ class _ZetaPaginationState extends State<ZetaPagination> {
               onPressed: () => _onItemPressed(
                 widget.pages,
               ),
-              disabled: widget.disabled,
+              disabled: _disabled,
               rounded: widget.rounded,
             ),
         ];

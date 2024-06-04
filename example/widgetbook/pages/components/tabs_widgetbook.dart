@@ -15,10 +15,12 @@ Widget tabsUseCase(BuildContext context) {
               length: 2,
               child: ZetaTabBar(
                 context: context,
-                enabled: context.knobs.boolean(
-                  label: "Enabled",
-                  initialValue: true,
-                ),
+                onTap: context.knobs.boolean(
+                  label: "Disabled",
+                  initialValue: false,
+                )
+                    ? null
+                    : (_) {},
                 tabs: [
                   ZetaTab(icon: Icon(ZetaIcons.star_round), text: "Tab Item"),
                   ZetaTab(icon: Icon(ZetaIcons.star_round), text: "Tab Item"),
@@ -32,7 +34,12 @@ Widget tabsUseCase(BuildContext context) {
               length: 5,
               child: ZetaTabBar(
                 context: context,
-                enabled: context.knobs.boolean(label: "Enabled"),
+                onTap: context.knobs.boolean(
+                  label: "Disabled",
+                  initialValue: false,
+                )
+                    ? null
+                    : (_) {},
                 isScrollable: true,
                 tabs: [
                   ZetaTab(text: "Tab Item"),

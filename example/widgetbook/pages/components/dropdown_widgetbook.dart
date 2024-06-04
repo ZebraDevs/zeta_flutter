@@ -42,10 +42,9 @@ class _DropdownExampleState extends State<DropdownExample> {
         options: ZetaDropdownMenuType.values,
         labelBuilder: enumLabelBuilder,
       ),
-      onChange: (value) {},
+      onChange: widget.c.knobs.boolean(label: "Disabled") ? null : (value) {},
       items: items,
       rounded: widget.c.knobs.boolean(label: "Rounded"),
-      disabled: widget.c.knobs.boolean(label: "Disabled"),
       size: widget.c.knobs.list(
         label: 'Size',
         options: ZetaDropdownSize.values,

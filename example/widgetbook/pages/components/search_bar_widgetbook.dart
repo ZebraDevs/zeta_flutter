@@ -22,9 +22,9 @@ Widget searchBarUseCase(BuildContext context) {
           label: 'Hint',
           initialValue: 'Search',
         );
-        final enabled = context.knobs.boolean(
-          label: 'Enabled',
-          initialValue: true,
+        final disabled = context.knobs.boolean(
+          label: 'Disabled',
+          initialValue: false,
         );
         final size = context.knobs.list<ZetaWidgetSize>(
           label: 'Size',
@@ -53,7 +53,7 @@ Widget searchBarUseCase(BuildContext context) {
               ZetaSearchBar(
                 size: size,
                 shape: shape,
-                enabled: enabled,
+                disabled: disabled,
                 hint: hint,
                 showLeadingIcon: showLeadingIcon,
                 showSpeechToText: showSpeechToText,

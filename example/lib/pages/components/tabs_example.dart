@@ -22,6 +22,7 @@ class _TabsExampleState extends State<TabsExample> {
             length: 2,
             child: ZetaTabBar(
               context: context,
+              onTap: (int) => print(int),
               tabs: [
                 ZetaTab(icon: Icon(ZetaIcons.star_round), text: "Tab Item"),
                 ZetaTab(icon: Icon(ZetaIcons.star_round), text: "Tab Item"),
@@ -35,6 +36,7 @@ class _TabsExampleState extends State<TabsExample> {
               child: ZetaTabBar(
                 context: context,
                 isScrollable: true,
+                onTap: (int) => print(int),
                 tabs: [
                   ZetaTab(text: "Tab Item"),
                   ZetaTab(text: "Tab Item"),
@@ -52,7 +54,6 @@ class _TabsExampleState extends State<TabsExample> {
               child: ZetaTabBar(
                 context: context,
                 isScrollable: true,
-                enabled: false,
                 tabs: [
                   ZetaTab(icon: Icon(ZetaIcons.star_sharp), text: "Tab Item"),
                   ZetaTab(icon: Icon(ZetaIcons.star_sharp), text: "Tab Item"),
