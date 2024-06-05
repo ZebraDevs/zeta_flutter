@@ -23,6 +23,8 @@ class ZetaRadio<T> extends StatefulWidget {
   final T? groupValue;
 
   /// Callback function to call when the Radio Button is tapped.
+  ///
+  /// {@macro on-change-disable}
   final ValueChanged<T?>? onChanged;
 
   /// The label which appears next to the Radio Button, on the right side.

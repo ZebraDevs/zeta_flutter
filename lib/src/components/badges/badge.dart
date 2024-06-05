@@ -18,11 +18,7 @@ class ZetaBadge extends StatelessWidget {
   /// {@macro zeta-component-rounded}
   final bool rounded;
 
-  /// {@template zeta-component-badge-status}
-  /// Indicates the status of the badge.
-  ///
-  /// Defaults to "info"
-  /// {@endtemplate}
+  /// {@macro zeta-component-badge-status}
   final ZetaWidgetStatus status;
 
   /// Label of the badge.

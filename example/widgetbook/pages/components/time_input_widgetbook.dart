@@ -3,6 +3,7 @@ import 'package:widgetbook/widgetbook.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 import '../../test/test_components.dart';
+import '../../utils/utils.dart';
 
 Widget timeInputUseCase(BuildContext context) {
   String? _errorText;
@@ -22,8 +23,8 @@ Widget timeInputUseCase(BuildContext context) {
           label: 'Hint',
           initialValue: 'Default hint text',
         );
-        final rounded = context.knobs.boolean(label: 'Rounded', initialValue: true);
-        final disabled = context.knobs.boolean(label: 'Disabled', initialValue: false);
+        final rounded = roundedKnob(context);
+        final disabled = disabledKnob(context);
         final size = context.knobs.list<ZetaWidgetSize>(
           label: 'Size',
           options: ZetaWidgetSize.values,

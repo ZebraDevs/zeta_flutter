@@ -47,6 +47,8 @@ class ZetaStepperInput extends StatefulWidget {
   final int? max;
 
   /// Called with the value of the stepper whenever it is changed.
+  ///
+  /// {@macro on-change-disable}
   final ValueChanged<int>? onChange;
 
   @override
@@ -67,12 +69,11 @@ class ZetaStepperInput extends StatefulWidget {
 class _ZetaStepperInputState extends State<ZetaStepperInput> {
   final TextEditingController _controller = TextEditingController();
   int _value = 0;
-  late final bool _disabled;
+  bool get _disabled => widget.onChange == null;
 
   @override
   void initState() {
     super.initState();
-    _disabled = widget.onChange == null;
     if (widget.initialValue != null) {
       _value = widget.initialValue!;
     }

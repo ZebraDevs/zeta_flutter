@@ -41,13 +41,8 @@ class _DropdownExampleState extends State<DropdownExample> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 ZetaDropdown(
-                  disabled: true,
                   type: ZetaDropdownMenuType.standard,
-                  onChange: (value) {
-                    setState(() {
-                      selectedItem = value;
-                    });
-                  },
+                  onChange: (_) {},
                   value: selectedItem,
                   items: items,
                 ),
@@ -58,11 +53,13 @@ class _DropdownExampleState extends State<DropdownExample> {
           ZetaDropdown(
             items: items,
             value: selectedItem,
+            onChange: (_) {},
             type: ZetaDropdownMenuType.checkbox,
           ),
           ZetaDropdown(
             items: items,
             value: selectedItem,
+            onChange: (_) {},
             size: ZetaDropdownSize.mini,
             type: ZetaDropdownMenuType.radio,
           ),
