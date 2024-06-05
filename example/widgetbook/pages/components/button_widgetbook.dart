@@ -43,7 +43,7 @@ Widget iconButtonUseCase(BuildContext context) {
   return WidgetbookTestWidget(
     widget: ZetaIconButton(
       icon: iconKnob(context, rounded: borderType != ZetaWidgetBorder.sharp)!,
-      onPressed: context.knobs.boolean(label: 'Disabled') ? null : () {},
+      onPressed: disabledKnob(context) ? null : () {},
       borderType: borderType,
       size: context.knobs.list(
         label: 'Size',
@@ -62,7 +62,7 @@ Widget iconButtonUseCase(BuildContext context) {
 Widget buttonGroupUseCase(BuildContext context) {
   final bool rounded = roundedKnob(context);
 
-  final onPressed = context.knobs.boolean(label: 'Disabled', initialValue: false) ? null : () {};
+  final onPressed = disabledKnob(context) ? null : () {};
 
   return WidgetbookTestWidget(
       widget: ZetaButtonGroup(

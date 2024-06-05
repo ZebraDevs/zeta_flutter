@@ -3,6 +3,7 @@ import 'package:widgetbook/widgetbook.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 import '../../test/test_components.dart';
+import '../../utils/utils.dart';
 
 Widget paginationUseCase(BuildContext context) => WidgetbookTestWidget(
       widget: ZetaPagination(
@@ -12,7 +13,7 @@ Widget paginationUseCase(BuildContext context) => WidgetbookTestWidget(
           options: ZetaPaginationType.values,
           labelBuilder: (value) => value.name.split('.').last.toUpperCase(),
         ),
-        rounded: context.knobs.boolean(label: 'Rounded'),
-        onChange: context.knobs.boolean(label: 'Disabled') ? null : (_) {},
+        rounded: roundedKnob(context),
+        onChange: disabledKnob(context) ? null : (_) {},
       ),
     );

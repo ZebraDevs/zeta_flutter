@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:widgetbook/widgetbook.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 import '../../test/test_components.dart';
+import '../../utils/utils.dart';
 
 Widget radioButtonUseCase(BuildContext context) {
   String option1 = 'Label 1';
@@ -12,9 +12,8 @@ Widget radioButtonUseCase(BuildContext context) {
   return WidgetbookTestWidget(
     widget: StatefulBuilder(
       builder: (context, setState) {
-        ValueChanged<String?>? onChanged = context.knobs.boolean(label: 'Enabled', initialValue: true)
-            ? (value) => setState(() => groupValue = value)
-            : null;
+        ValueChanged<String?>? onChanged =
+            !disabledKnob(context) ? (value) => setState(() => groupValue = value) : null;
         return Padding(
           padding: const EdgeInsets.all(ZetaSpacing.x5),
           child: Column(
