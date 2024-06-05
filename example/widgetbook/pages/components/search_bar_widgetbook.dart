@@ -3,6 +3,7 @@ import 'package:widgetbook/widgetbook.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 import '../../test/test_components.dart';
+import '../../utils/utils.dart';
 
 const List<String> _items = [
   'The quick...',
@@ -22,10 +23,8 @@ Widget searchBarUseCase(BuildContext context) {
           label: 'Hint',
           initialValue: 'Search',
         );
-        final enabled = context.knobs.boolean(
-          label: 'Enabled',
-          initialValue: true,
-        );
+        final disabled = disabledKnob(context);
+
         final size = context.knobs.list<ZetaWidgetSize>(
           label: 'Size',
           options: ZetaWidgetSize.values,
@@ -53,7 +52,7 @@ Widget searchBarUseCase(BuildContext context) {
               ZetaSearchBar(
                 size: size,
                 shape: shape,
-                enabled: enabled,
+                disabled: disabled,
                 hint: hint,
                 showLeadingIcon: showLeadingIcon,
                 showSpeechToText: showSpeechToText,

@@ -24,11 +24,7 @@ class ZetaAccordion extends StatefulWidget {
   /// If null, component will render as disabled.
   final Widget? child;
 
-  /// {@template zeta-component-rounded}
-  /// Sets rounded or sharp border of the containing box and the icon style.
-  ///
-  /// Defaults to `true`.
-  /// {@endtemplate}
+  /// {@macro zeta-component-rounded}
   final bool rounded;
 
   /// Determines if the [ZetaAccordion]s should be in a box.

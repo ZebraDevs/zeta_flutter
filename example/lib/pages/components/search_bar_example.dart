@@ -58,7 +58,7 @@ class _SearchBarExampleState extends State<SearchBarExample> {
             Padding(
               padding: const EdgeInsets.all(20),
               child: ZetaSearchBar(
-                enabled: false,
+                disabled: true,
               ),
             ),
             Padding(

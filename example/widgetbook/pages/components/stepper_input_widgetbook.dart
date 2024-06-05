@@ -16,8 +16,8 @@ Widget stepperInputUseCase(BuildContext context) {
         options: ZetaStepperInputSize.values,
         labelBuilder: enumLabelBuilder,
       ),
-      rounded: context.knobs.boolean(label: 'Rounded', initialValue: true),
-      onChange: context.knobs.boolean(label: 'Disabled', initialValue: false) ? null : (_) {},
+      rounded: roundedKnob(context),
+      onChange: disabledKnob(context) ? null : (_) {},
     ),
   );
 }

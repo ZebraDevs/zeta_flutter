@@ -11,9 +11,7 @@ Widget switchUseCase(BuildContext context) {
   return WidgetbookTestWidget(
     widget: StatefulBuilder(
       builder: (context, setState) {
-        ValueChanged<bool?>? onChanged = context.knobs.boolean(label: 'Enabled', initialValue: true)
-            ? (value) => setState(() => isOn = value)
-            : null;
+        ValueChanged<bool?>? onChanged = !disabledKnob(context) ? (value) => setState(() => isOn = value) : null;
         return Padding(
           padding: const EdgeInsets.all(ZetaSpacing.x5),
           child: Column(
