@@ -26,7 +26,36 @@ enum ZetaDropdownSize {
   mini,
 }
 
-/// An item used in a [ZetaDropdown].
+abstract class ZetaDropdownController {
+  bool get isOpen;
+
+  void open();
+
+  void close();
+
+  void toggle();
+}
+
+class _DropdownControllerImpl implements ZetaDropdownController {
+  _DropdownControllerImpl({required this.overlayPortalController});
+
+  final OverlayPortalController overlayPortalController;
+
+  @override
+  // TODO: implement isOpen
+  bool get isOpen => overlayPortalController.isShowing;
+
+  @override
+  void close() => overlayPortalController.hide();
+
+  @override
+  void open() => overlayPortalController.show();
+
+  @override
+  void toggle() => overlayPortalController.toggle();
+}
+
+/// An item used in a [ZetaDropdown] or a [ZetaSelectInput].
 class ZetaDropdownItem<T> {
   /// Creates a new [ZetaDropdownItem]
   ZetaDropdownItem({
@@ -60,6 +89,7 @@ class ZetaDropdown<T> extends StatefulWidget {
     this.rounded = true,
     this.type = ZetaDropdownMenuType.standard,
     this.size = ZetaDropdownSize.standard,
+    this.builder,
     super.key,
   }) : assert(items.length > 0, 'Items must be greater than 0.');
 
@@ -89,6 +119,12 @@ class ZetaDropdown<T> extends StatefulWidget {
   /// Defaults to [ZetaDropdownSize.mini]
   final ZetaDropdownSize size;
 
+  final Widget Function(
+    BuildContext context,
+    ZetaDropdownItem<T>? selectedItem,
+    ZetaDropdownController controller,
+  )? builder;
+
   @override
   State<ZetaDropdown<T>> createState() => _ZetaDropDownState<T>();
   @override
@@ -114,7 +150,9 @@ enum MenuPosition {
 }
 
 class _ZetaDropDownState<T> extends State<ZetaDropdown<T>> {
-  final OverlayPortalController _tooltipController = OverlayPortalController();
+  final _DropdownControllerImpl _dropdownController = _DropdownControllerImpl(
+    overlayPortalController: OverlayPortalController(),
+  );
   final _link = LayerLink();
   final _menuKey = GlobalKey();
   final _headerKey = GlobalKey();
@@ -141,7 +179,7 @@ class _ZetaDropDownState<T> extends State<ZetaDropdown<T>> {
     if (widget.onChange != null) {
       unawaited(
         Future<void>.delayed(Duration.zero).then(
-          (value) => _tooltipController.hide(),
+          (value) => _dropdownController.close(),
         ),
       );
     }
@@ -175,12 +213,26 @@ class _ZetaDropDownState<T> extends State<ZetaDropdown<T>> {
 
   @override
   Widget build(BuildContext context) {
+    late Widget child;
+
+    if (widget.builder != null) {
+      child = widget.builder!(context, _selectedItem, _dropdownController);
+    } else {
+      child = _DropdownItem(
+        onPress: widget.onChange != null ? onTap : null,
+        value: _selectedItem ?? widget.items.first,
+        allocateLeadingSpace: widget.type == ZetaDropdownMenuType.standard && _selectedItem?.icon != null,
+        rounded: widget.rounded,
+        key: _headerKey,
+      );
+    }
+
     return SizedBox(
       width: _size,
       child: CompositedTransformTarget(
         link: _link,
         child: OverlayPortal(
-          controller: _tooltipController,
+          controller: _dropdownController.overlayPortalController,
           overlayChildBuilder: (BuildContext context) {
             return CompositedTransformFollower(
               link: _link,
@@ -200,7 +252,7 @@ class _ZetaDropDownState<T> extends State<ZetaDropdown<T>> {
                       headerBox.size,
                       event.position,
                     );
-                    if (!inHeader) _tooltipController.hide();
+                    if (!inHeader) _dropdownController.close();
                   },
                   child: _ZetaDropDownMenu<T>(
                     items: widget.items,
@@ -215,20 +267,14 @@ class _ZetaDropDownState<T> extends State<ZetaDropdown<T>> {
                         _selectedItem = item;
                       });
                       widget.onChange?.call(item.value);
-                      _tooltipController.hide();
+                      _dropdownController.close();
                     },
                   ),
                 ),
               ),
             );
           },
-          child: _DropdownItem(
-            onPress: widget.onChange != null ? onTap : null,
-            value: _selectedItem ?? widget.items.first,
-            allocateLeadingSpace: widget.type == ZetaDropdownMenuType.standard && _selectedItem?.icon != null,
-            rounded: widget.rounded,
-            key: _headerKey,
-          ),
+          child: child,
         ),
       ),
     );
@@ -255,7 +301,7 @@ class _ZetaDropDownState<T> extends State<ZetaDropdown<T>> {
       });
     }
 
-    _tooltipController.toggle();
+    _dropdownController.toggle();
   }
 
   @override
