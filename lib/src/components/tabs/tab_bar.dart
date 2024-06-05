@@ -8,7 +8,7 @@ class ZetaTabBar extends TabBar {
     required BuildContext context,
     required List<ZetaTab> super.tabs,
     TabAlignment super.tabAlignment = TabAlignment.center,
-    @Deprecated('Enabled is deprecated. To disable the tab bar, set onTap to null') bool enabled = true,
+    @Deprecated('Use disabled instead. ' 'enabled is deprecated as of 0.11.0') bool enabled = true,
     super.isScrollable,
     super.enableFeedback,
     super.dragStartBehavior,

@@ -16,7 +16,7 @@ class ZetaSearchBar extends StatefulWidget {
     this.disabled = false,
     this.showLeadingIcon = true,
     this.showSpeechToText = true,
-    @Deprecated("Use 'disabled' instead") bool enabled = true,
+    @Deprecated('Use disabled instead. ' 'enabled is deprecated as of 0.11.0') bool enabled = true,
   });
 
   /// Determines the size of the input field.

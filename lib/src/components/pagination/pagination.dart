@@ -26,7 +26,7 @@ class ZetaPagination extends StatefulWidget {
     this.onChange,
     this.currentPage = 1,
     this.rounded = true,
-    @Deprecated("To disable the pagination, set 'onChange' to null") bool disabled = false,
+    @Deprecated('Set onChange to null. ' 'Disabled is deprecated as of 0.11.0') bool disabled = false,
     super.key,
   })  : assert(
           pages > 0,
