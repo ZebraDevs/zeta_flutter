@@ -1,5 +1,124 @@
 # Changelog
 
+## [0.11.0](https://github.com/ZebraDevs/zeta_flutter/compare/v0.10.0...v0.11.0) (2024-06-05)
+
+
+### ✨ New Features
+
+* Add List Item ([#5](https://github.com/ZebraDevs/zeta_flutter/issues/5)) ([64879e1](https://github.com/ZebraDevs/zeta_flutter/commit/64879e1756b1031c416861216dc0199b33a78827))
+* AppBar ([#19](https://github.com/ZebraDevs/zeta_flutter/issues/19)) ([96f4aad](https://github.com/ZebraDevs/zeta_flutter/commit/96f4aad15d5ba90956860a32b63e63b7dffd9ba7))
+* Chat Item ([#37](https://github.com/ZebraDevs/zeta_flutter/issues/37)) ([c2dd630](https://github.com/ZebraDevs/zeta_flutter/commit/c2dd6308d57ebda6f715bef1225ad326ab4ea64b))
+* Component dialog ([#18](https://github.com/ZebraDevs/zeta_flutter/issues/18)) ([7b762e6](https://github.com/ZebraDevs/zeta_flutter/commit/7b762e6c258057d5e3f07db0381cb48a631a7299))
+* Component dialog ([#22](https://github.com/ZebraDevs/zeta_flutter/issues/22)) ([8dc5be2](https://github.com/ZebraDevs/zeta_flutter/commit/8dc5be2898883a6eee751f8f1ad3372a25aaa222))
+* Component phone input ([#25](https://github.com/ZebraDevs/zeta_flutter/issues/25)) ([a4f7b89](https://github.com/ZebraDevs/zeta_flutter/commit/a4f7b899ef8919c12962a716281be985d929dd24))
+* Component phone input ([#34](https://github.com/ZebraDevs/zeta_flutter/issues/34)) ([d19547b](https://github.com/ZebraDevs/zeta_flutter/commit/d19547b15ce4687927d22ac1667250806178dcbc))
+* Component search bar ([#29](https://github.com/ZebraDevs/zeta_flutter/issues/29)) ([837f482](https://github.com/ZebraDevs/zeta_flutter/commit/837f4822f26430ce126787f90f814a2925a6a045))
+* Component tooltip ([#33](https://github.com/ZebraDevs/zeta_flutter/issues/33)) ([85cab8e](https://github.com/ZebraDevs/zeta_flutter/commit/85cab8ed440dde3a1d088ba9f2dcf9c901b60b97))
+* Created stepper input ([#67](https://github.com/ZebraDevs/zeta_flutter/issues/67)) ([ca51b1f](https://github.com/ZebraDevs/zeta_flutter/commit/ca51b1f71b4b0df621d1ce6038e3725d6e85432f))
+* Created text input ([#78](https://github.com/ZebraDevs/zeta_flutter/issues/78)) ([57c72f4](https://github.com/ZebraDevs/zeta_flutter/commit/57c72f4f4037e46327a21183ccd87a2daf03b704))
+* Created Time Input ([#75](https://github.com/ZebraDevs/zeta_flutter/issues/75)) ([fb7b629](https://github.com/ZebraDevs/zeta_flutter/commit/fb7b6295dfc507a0a94de28cc7b0d11f338db13e))
+* Dial Pad ([#30](https://github.com/ZebraDevs/zeta_flutter/issues/30)) ([f16df26](https://github.com/ZebraDevs/zeta_flutter/commit/f16df261feb703b20147c4ba406ed1fa3450348b))
+* Filter Selection ([#36](https://github.com/ZebraDevs/zeta_flutter/issues/36)) ([53af9e7](https://github.com/ZebraDevs/zeta_flutter/commit/53af9e77f6909236a968aa5d3c6a32ba04712fda))
+* Global Header (zebrafed[#38](https://github.com/ZebraDevs/zeta_flutter/issues/38)) ([0822d4f](https://github.com/ZebraDevs/zeta_flutter/commit/0822d4f070c6997a6599442e5ce3391a8f26e002))
+* Icon button ([#26](https://github.com/ZebraDevs/zeta_flutter/issues/26)) ([88cd90a](https://github.com/ZebraDevs/zeta_flutter/commit/88cd90a8180df39e3e44c168ca028055333643a6))
+* **main:** AppBar ([#19](https://github.com/ZebraDevs/zeta_flutter/issues/19)) ([eefcb61](https://github.com/ZebraDevs/zeta_flutter/commit/eefcb616044975605ea36e19c9fb9d314c05ee4c))
+* **main:** Segmented control ([#26](https://github.com/ZebraDevs/zeta_flutter/issues/26)) ([adb93ff](https://github.com/ZebraDevs/zeta_flutter/commit/adb93ffbf291d8ac915c6cf651f485d9f72488cb))
+* **main:** SnackBar ([#10](https://github.com/ZebraDevs/zeta_flutter/issues/10)) ([cbf46d9](https://github.com/ZebraDevs/zeta_flutter/commit/cbf46d97acf2a5533d73456f142b01b9ed6352d1))
+* **main:** Stepper ([#17](https://github.com/ZebraDevs/zeta_flutter/issues/17)) ([cab9f85](https://github.com/ZebraDevs/zeta_flutter/commit/cab9f859f288aa21769d6783e70aa2525fdaf0cd))
+* **main:** Tabs ([#11](https://github.com/ZebraDevs/zeta_flutter/issues/11)) ([31bc20a](https://github.com/ZebraDevs/zeta_flutter/commit/31bc20a7ee22844bf272b633f44994e1d6e50bc4))
+* Navigation bar ([#32](https://github.com/ZebraDevs/zeta_flutter/issues/32)) ([36a60e7](https://github.com/ZebraDevs/zeta_flutter/commit/36a60e7087af7d38bfd64578009056d85b0f1e56))
+* Navigation rail ([#27](https://github.com/ZebraDevs/zeta_flutter/issues/27)) ([8d57df3](https://github.com/ZebraDevs/zeta_flutter/commit/8d57df3236179c6bbdde72bb814e00a4cd6c954c))
+* Pagination ([#46](https://github.com/ZebraDevs/zeta_flutter/issues/46)) ([d782481](https://github.com/ZebraDevs/zeta_flutter/commit/d7824815e7d94ca9b9eeaaba2858fcfa14085e0e))
+* Progress Bar ([#29](https://github.com/ZebraDevs/zeta_flutter/issues/29)) ([d18dbd2](https://github.com/ZebraDevs/zeta_flutter/commit/d18dbd276177c368e5d5cf80e482ea11564270a9))
+* Segmented control ([#26](https://github.com/ZebraDevs/zeta_flutter/issues/26)) ([090ffc7](https://github.com/ZebraDevs/zeta_flutter/commit/090ffc7cb32471a7522e134b37747fb5336fe230))
+* Select input ([#35](https://github.com/ZebraDevs/zeta_flutter/issues/35)) ([07ddba1](https://github.com/ZebraDevs/zeta_flutter/commit/07ddba1550d0a201477ef738064a2a251ecdfdeb))
+* **type:** Add xSmall and conform to latest figma designs. ([17b2299](https://github.com/ZebraDevs/zeta_flutter/commit/17b22994ae27d0abd1da7f756f49b46248b8b4b7))
+* Update colors tokens ([#81](https://github.com/ZebraDevs/zeta_flutter/issues/81)) ([418cc1d](https://github.com/ZebraDevs/zeta_flutter/commit/418cc1d16e2be4a2f4e28cbf44f507f000be469a))
+* update icons/0.1.65 ([#24](https://github.com/ZebraDevs/zeta_flutter/issues/24)) ([9f0e7f2](https://github.com/ZebraDevs/zeta_flutter/commit/9f0e7f286470c99722e928e726b5a9eb1b0b7b8b))
+* Widgetbook hot reload ([#33](https://github.com/ZebraDevs/zeta_flutter/issues/33)) ([44b8f98](https://github.com/ZebraDevs/zeta_flutter/commit/44b8f989850aaa1a6d862526bad26a01ffad361a))
+* ZetaScreenHeaderBar ([#39](https://github.com/ZebraDevs/zeta_flutter/issues/39)) ([e07fc48](https://github.com/ZebraDevs/zeta_flutter/commit/e07fc482e8a4ed06a33b8aa22388456f7e1cf5fc))
+
+
+### 🪲 Bug Fixes
+
+* **actions:** Updated actions to push changelog to zeta. ([#6](https://github.com/ZebraDevs/zeta_flutter/issues/6)) ([f7a8d9a](https://github.com/ZebraDevs/zeta_flutter/commit/f7a8d9a2ba078bf08fe80de07f6e9c871af9e451))
+* Avatar update ([#30](https://github.com/ZebraDevs/zeta_flutter/issues/30)) ([3f51508](https://github.com/ZebraDevs/zeta_flutter/commit/3f5150814a2372381a91816fb4e0300c91965421))
+* breadcrumb rounded icon ([c46788d](https://github.com/ZebraDevs/zeta_flutter/commit/c46788d46b77d785fa023954219c53d51fa7952b))
+* Button update (zebrafed[#42](https://github.com/ZebraDevs/zeta_flutter/issues/42)) ([0822d4f](https://github.com/ZebraDevs/zeta_flutter/commit/0822d4f070c6997a6599442e5ce3391a8f26e002))
+* Correct colors on Radio button hover / focus states ([c46788d](https://github.com/ZebraDevs/zeta_flutter/commit/c46788d46b77d785fa023954219c53d51fa7952b))
+* dependencies ([#76](https://github.com/ZebraDevs/zeta_flutter/issues/76)) ([db8345a](https://github.com/ZebraDevs/zeta_flutter/commit/db8345a2c0452c014dd8869a9df52c89c828b757))
+* enable mouse region on desktop for selectable areas ([c46788d](https://github.com/ZebraDevs/zeta_flutter/commit/c46788d46b77d785fa023954219c53d51fa7952b))
+* Fix button group immutability ([#1](https://github.com/ZebraDevs/zeta_flutter/issues/1)) ([0fdf9da](https://github.com/ZebraDevs/zeta_flutter/commit/0fdf9da2520d65decd80cfb3a976daff74af38b0))
+* **main:** ListItem disabled color ([#8](https://github.com/ZebraDevs/zeta_flutter/issues/8)) ([ac996d9](https://github.com/ZebraDevs/zeta_flutter/commit/ac996d942450e8004d920c2a93b8009d0b5960ee))
+* navigation bar text color ([c46788d](https://github.com/ZebraDevs/zeta_flutter/commit/c46788d46b77d785fa023954219c53d51fa7952b))
+* Remove calls to zeta in button that are not needed ([c46788d](https://github.com/ZebraDevs/zeta_flutter/commit/c46788d46b77d785fa023954219c53d51fa7952b))
+* Remove FirstWhereOrNull as it causes conflicts with dart:collection ([#62](https://github.com/ZebraDevs/zeta_flutter/issues/62)) ([7b9a737](https://github.com/ZebraDevs/zeta_flutter/commit/7b9a737956b43b4566e3909060d588baae79b50b))
+* revert intl to 0.18.1 for wider compatibility ([#66](https://github.com/ZebraDevs/zeta_flutter/issues/66)) ([6831c2f](https://github.com/ZebraDevs/zeta_flutter/commit/6831c2fa017457414339f12ec81b302e231d4496))
+* switch on web ([#14](https://github.com/ZebraDevs/zeta_flutter/issues/14)) ([554fe7f](https://github.com/ZebraDevs/zeta_flutter/commit/554fe7f54fc3099f140bf7648fe78ce5e15d5b0f))
+* Update banners ([#41](https://github.com/ZebraDevs/zeta_flutter/issues/41)) ([0a881b5](https://github.com/ZebraDevs/zeta_flutter/commit/0a881b580f1f52402ae15b55cc72b8c26027254b))
+* Updating checkbox to match designs ([#83](https://github.com/ZebraDevs/zeta_flutter/issues/83)) ([05a32ac](https://github.com/ZebraDevs/zeta_flutter/commit/05a32ac386424c881c63d4f97e6a9ab3b4bb0df0))
+* UX-1090 - Add expansion option for TopAppBar ([#73](https://github.com/ZebraDevs/zeta_flutter/issues/73)) ([ab36e8e](https://github.com/ZebraDevs/zeta_flutter/commit/ab36e8e35566835711cc88e7b05b6460ef9453ea))
+* Widgetbook icons and reusable snippets ([#35](https://github.com/ZebraDevs/zeta_flutter/issues/35)) ([0d23f7c](https://github.com/ZebraDevs/zeta_flutter/commit/0d23f7cbb9fdbb6114b47837b99b83829e74c79a))
+* Widgetbook run / build ([#15](https://github.com/ZebraDevs/zeta_flutter/issues/15)) ([a2347ad](https://github.com/ZebraDevs/zeta_flutter/commit/a2347ad7a43a77e398571f3be26948585e22c068))
+* WIdgetbook theme ([#16](https://github.com/ZebraDevs/zeta_flutter/issues/16)) ([5e1c48a](https://github.com/ZebraDevs/zeta_flutter/commit/5e1c48aca84bbe49233deca10f64dcd6e8b8eb59))
+
+
+### 📈 Documentation
+
+* Add introduction page to widgetbook ([f1eb918](https://github.com/ZebraDevs/zeta_flutter/commit/f1eb9181971368059393e94fe298b7580c27009b))
+* Add new addons to widgetbook ([f1eb918](https://github.com/ZebraDevs/zeta_flutter/commit/f1eb9181971368059393e94fe298b7580c27009b))
+* update changelog and documentation ([17b2299](https://github.com/ZebraDevs/zeta_flutter/commit/17b22994ae27d0abd1da7f756f49b46248b8b4b7))
+* update docs ([#17](https://github.com/ZebraDevs/zeta_flutter/issues/17)) ([79683b6](https://github.com/ZebraDevs/zeta_flutter/commit/79683b6748e650e3bb61789e31e7ab7a7c153f88))
+* Update typography documentation ([#16](https://github.com/ZebraDevs/zeta_flutter/issues/16)) ([2a1cea3](https://github.com/ZebraDevs/zeta_flutter/commit/2a1cea32d40c324cf36517cf05b5bb705d6eadb3))
+* Updated spacing and grid documentation and edge cases ([#11](https://github.com/ZebraDevs/zeta_flutter/issues/11)) ([fb835a4](https://github.com/ZebraDevs/zeta_flutter/commit/fb835a43a94945989d5b0793d61894ea807bc745))
+* Widgetbook duplicate avatar, docs: Fixed bug in changelog ([#71](https://github.com/ZebraDevs/zeta_flutter/issues/71)) ([3e95547](https://github.com/ZebraDevs/zeta_flutter/commit/3e95547d6b02adf7b9d4da66c68dbfbe951918bd))
+
+
+### ⛓️ Dependencies
+
+* Update example app / widgetbook deps ([f1eb918](https://github.com/ZebraDevs/zeta_flutter/commit/f1eb9181971368059393e94fe298b7580c27009b))
+* Update intl ([db8345a](https://github.com/ZebraDevs/zeta_flutter/commit/db8345a2c0452c014dd8869a9df52c89c828b757))
+* Update zeta-icon library ([#51](https://github.com/ZebraDevs/zeta_flutter/issues/51)) ([ae9a53f](https://github.com/ZebraDevs/zeta_flutter/commit/ae9a53fccd724967b8f51e3ff8e8662352b884fb))
+* Update zeta-icon library ([#57](https://github.com/ZebraDevs/zeta_flutter/issues/57)) ([7f36216](https://github.com/ZebraDevs/zeta_flutter/commit/7f36216aedb9904f047fc759cec9ecf81a733138))
+* Update zeta-icon library ([#65](https://github.com/ZebraDevs/zeta_flutter/issues/65)) ([030ae91](https://github.com/ZebraDevs/zeta_flutter/commit/030ae918da1e2166a23b274a800a2787419dcd2d))
+
+
+### 🧹 Miscellaneous Chores
+
+* Add deprecation warning on breaking colors ([418cc1d](https://github.com/ZebraDevs/zeta_flutter/commit/418cc1d16e2be4a2f4e28cbf44f507f000be469a))
+* Add version to example app and widgetbook ([#79](https://github.com/ZebraDevs/zeta_flutter/issues/79)) ([f1eb918](https://github.com/ZebraDevs/zeta_flutter/commit/f1eb9181971368059393e94fe298b7580c27009b))
+* Added basic support for new material color variants (not used yet, just added to constructor for future use) ([bbfadac](https://github.com/ZebraDevs/zeta_flutter/commit/bbfadacbe300addf7cd624ceefa92425977905ec))
+* Correct syntax on buttongroup.copywith ([c46788d](https://github.com/ZebraDevs/zeta_flutter/commit/c46788d46b77d785fa023954219c53d51fa7952b))
+* **demo:** bug in google_fonts causing compile error ([12cd2e5](https://github.com/ZebraDevs/zeta_flutter/commit/12cd2e585e9005fc6dc5190b403f173d38253e92))
+* Deprecated colors: background, onBackground, surfaceVariant ([bbfadac](https://github.com/ZebraDevs/zeta_flutter/commit/bbfadacbe300addf7cd624ceefa92425977905ec))
+* icons/0.1.58 ([#18](https://github.com/ZebraDevs/zeta_flutter/issues/18)) ([2560be2](https://github.com/ZebraDevs/zeta_flutter/commit/2560be265fe3bc3cffdf1143626d07d4a0f113fa))
+* **main:** release 0.10.0 ([#80](https://github.com/ZebraDevs/zeta_flutter/issues/80)) ([890d267](https://github.com/ZebraDevs/zeta_flutter/commit/890d267b994467d43bc51fe8a1f0ae529cddf0e7))
+* **main:** release 0.4.0 ([#14](https://github.com/ZebraDevs/zeta_flutter/issues/14)) ([52de6b1](https://github.com/ZebraDevs/zeta_flutter/commit/52de6b1b6fe11a079abd1a8a5f80bc22b7095aa2))
+* **main:** release 0.5.0 ([#25](https://github.com/ZebraDevs/zeta_flutter/issues/25)) ([6fa853e](https://github.com/ZebraDevs/zeta_flutter/commit/6fa853e70a6de8179cea6dd2a5ff2f6125288e05))
+* **main:** release 0.6.0 ([#36](https://github.com/ZebraDevs/zeta_flutter/issues/36)) ([5840382](https://github.com/ZebraDevs/zeta_flutter/commit/5840382ee37b930feb7730454b98d2a48338a95e))
+* **main:** release 0.7.0 ([#47](https://github.com/ZebraDevs/zeta_flutter/issues/47)) ([6619de3](https://github.com/ZebraDevs/zeta_flutter/commit/6619de3069a11ac2ac3ef95859ef8d57f96312c7))
+* **main:** release 0.8.0 ([#60](https://github.com/ZebraDevs/zeta_flutter/issues/60)) ([2acf36f](https://github.com/ZebraDevs/zeta_flutter/commit/2acf36fbc4da956d6f9943e09e6951d4c5844fdd))
+* **main:** release 0.8.1 ([#63](https://github.com/ZebraDevs/zeta_flutter/issues/63)) ([978ca79](https://github.com/ZebraDevs/zeta_flutter/commit/978ca79731695b3b52964a1324ab89f929a8ad0c))
+* **main:** release 0.8.2 ([#68](https://github.com/ZebraDevs/zeta_flutter/issues/68)) ([8507830](https://github.com/ZebraDevs/zeta_flutter/commit/850783013b6f25239c73b174517d56be70b1ef21))
+* **main:** release 0.9.0 ([#69](https://github.com/ZebraDevs/zeta_flutter/issues/69)) ([ce0b5d1](https://github.com/ZebraDevs/zeta_flutter/commit/ce0b5d1315e4a8348eafd793fa4f11bd41ba8969))
+* **main:** release 0.9.1 ([#77](https://github.com/ZebraDevs/zeta_flutter/issues/77)) ([60a4afb](https://github.com/ZebraDevs/zeta_flutter/commit/60a4afb032f1cdf63c3ec95d27ba0493ffa3867e))
+* **main:** release zeta_flutter 0.3.0 ([#11](https://github.com/ZebraDevs/zeta_flutter/issues/11)) ([de1da26](https://github.com/ZebraDevs/zeta_flutter/commit/de1da266693bebeb27d30990b70ae6a6b8e178fb))
+* minorbugs ([#72](https://github.com/ZebraDevs/zeta_flutter/issues/72)) ([c46788d](https://github.com/ZebraDevs/zeta_flutter/commit/c46788d46b77d785fa023954219c53d51fa7952b))
+* Organize widgetbook ([#28](https://github.com/ZebraDevs/zeta_flutter/issues/28)) ([e017809](https://github.com/ZebraDevs/zeta_flutter/commit/e01780912a1338b87cf5cd3a68a5b2140d213249))
+* rename ZetaAppbar to ZetaTopAppBar to be match designs ([c46788d](https://github.com/ZebraDevs/zeta_flutter/commit/c46788d46b77d785fa023954219c53d51fa7952b))
+* rename ZetaBadge to ZetaLabel to match designs ([c46788d](https://github.com/ZebraDevs/zeta_flutter/commit/c46788d46b77d785fa023954219c53d51fa7952b))
+* rename ZetaSystemBanner to ZetaBanner to match designs ([c46788d](https://github.com/ZebraDevs/zeta_flutter/commit/c46788d46b77d785fa023954219c53d51fa7952b))
+* Renamed 'MaterialState' to 'WidgetState' ([bbfadac](https://github.com/ZebraDevs/zeta_flutter/commit/bbfadacbe300addf7cd624ceefa92425977905ec))
+* reorganize directories to match designs ([c46788d](https://github.com/ZebraDevs/zeta_flutter/commit/c46788d46b77d785fa023954219c53d51fa7952b))
+* Tidy, reorganise and prepare repo ([17b2299](https://github.com/ZebraDevs/zeta_flutter/commit/17b22994ae27d0abd1da7f756f49b46248b8b4b7))
+* update contributing ([16cfd14](https://github.com/ZebraDevs/zeta_flutter/commit/16cfd149ef9963470cc869ac3d831821f7a5fe75))
+* update example app web implementation ([f1eb918](https://github.com/ZebraDevs/zeta_flutter/commit/f1eb9181971368059393e94fe298b7580c27009b))
+* update from internal ([#70](https://github.com/ZebraDevs/zeta_flutter/issues/70)) ([0822d4f](https://github.com/ZebraDevs/zeta_flutter/commit/0822d4f070c6997a6599442e5ce3391a8f26e002))
+* Update licenses ([db8345a](https://github.com/ZebraDevs/zeta_flutter/commit/db8345a2c0452c014dd8869a9df52c89c828b757))
+* Update release action to run on tag push so that pub publish works; fixed github api typo ([#13](https://github.com/ZebraDevs/zeta_flutter/issues/13)) ([94844c1](https://github.com/ZebraDevs/zeta_flutter/commit/94844c134a5e2cd4e3417043c1d2131fca08a107))
+* Update text styles ([#13](https://github.com/ZebraDevs/zeta_flutter/issues/13)) ([0c1ce6f](https://github.com/ZebraDevs/zeta_flutter/commit/0c1ce6f35774e6e49773d16aef1ddb20d0ba7a5c))
+* update to flutter 3.22.0 ([#74](https://github.com/ZebraDevs/zeta_flutter/issues/74)) ([bbfadac](https://github.com/ZebraDevs/zeta_flutter/commit/bbfadacbe300addf7cd624ceefa92425977905ec))
+
 ## [0.10.0](https://github.com/ZebraDevs/zeta_flutter/compare/v0.9.1...v0.10.0) (2024-05-24)
 
 
