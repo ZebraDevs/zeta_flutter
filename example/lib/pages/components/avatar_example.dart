@@ -20,7 +20,7 @@ class AvatarExample extends StatelessWidget {
     return ExampleScaffold(
       name: AvatarExample.name,
       child: SingleChildScrollView(
-        padding: EdgeInsets.all(ZetaSpacing.s),
+        padding: EdgeInsets.all(ZetaSpacing.medium),
         child: Column(
           children: [
             Column(
@@ -570,7 +570,7 @@ class AvatarExample extends StatelessWidget {
                 ),
               ],
             ),
-          ].divide(const SizedBox(height: ZetaSpacing.x6)).toList(),
+          ].divide(const SizedBox(height: ZetaSpacing.xL2)).toList(),
         ),
       ),
     );
@@ -581,23 +581,23 @@ extension on ZetaAvatarSize {
   double get pixelSize {
     switch (this) {
       case ZetaAvatarSize.xxxl:
-        return ZetaSpacing.x50;
+        return ZetaSpacingBase.x50;
       case ZetaAvatarSize.xxl:
-        return ZetaSpacing.x30;
+        return ZetaSpacingBase.x30;
       case ZetaAvatarSize.xl:
-        return ZetaSpacing.x20;
+        return ZetaSpacing.xL10;
       case ZetaAvatarSize.l:
-        return ZetaSpacing.x16;
+        return ZetaSpacing.xL9;
       case ZetaAvatarSize.m:
-        return ZetaSpacing.x12;
+        return ZetaSpacing.xL8;
       case ZetaAvatarSize.s:
-        return ZetaSpacing.x10;
+        return ZetaSpacing.xL6;
       case ZetaAvatarSize.xs:
-        return ZetaSpacing.x9;
+        return ZetaSpacing.xL5;
       case ZetaAvatarSize.xxs:
-        return ZetaSpacing.x8;
+        return ZetaSpacing.xL4;
       case ZetaAvatarSize.xxxs:
-        return ZetaSpacing.x6;
+        return ZetaSpacing.xL2;
     }
   }
 }

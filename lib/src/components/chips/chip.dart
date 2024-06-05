@@ -129,15 +129,15 @@ class _ZetaChipState extends State<ZetaChip> {
         elevation: WidgetStateProperty.all(0),
         side: WidgetStateProperty.resolveWith((states) {
           if (states.contains(WidgetState.focused)) {
-            return BorderSide(width: ZetaSpacing.x0_5, color: colors.blue.shade50);
+            return BorderSide(width: ZetaSpacingBase.x0_5, color: colors.blue.shade50);
           }
           return BorderSide(color: colors.borderDefault);
         }),
         padding: WidgetStateProperty.all(
           EdgeInsets.fromLTRB(
-            widget.leading != null ? ZetaSpacing.x2_5 : ZetaSpacing.x3,
+            widget.leading != null ? ZetaSpacingBase.x2_5 : ZetaSpacing.medium,
             0,
-            widget.trailing != null ? ZetaSpacing.x2_5 : ZetaSpacing.x3,
+            widget.trailing != null ? ZetaSpacingBase.x2_5 : ZetaSpacing.medium,
             0,
           ),
         ),
@@ -149,7 +149,7 @@ class _ZetaChipState extends State<ZetaChip> {
             IconTheme(
               data: IconThemeData(
                 color: foregroundColor,
-                size: ZetaSpacing.x5,
+                size: ZetaSpacing.xL,
               ),
               child: leading!,
             ),
@@ -158,11 +158,11 @@ class _ZetaChipState extends State<ZetaChip> {
             IconTheme(
               data: IconThemeData(
                 color: foregroundColor,
-                size: ZetaSpacing.x5,
+                size: ZetaSpacing.xL,
               ),
               child: widget.trailing!,
             ),
-        ].divide(const SizedBox.square(dimension: ZetaSpacing.x2)).toList(),
+        ].divide(const SizedBox.square(dimension: ZetaSpacing.small)).toList(),
       ),
     );
   }

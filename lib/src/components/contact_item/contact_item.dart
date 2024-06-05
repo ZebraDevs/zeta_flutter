@@ -48,16 +48,16 @@ class ZetaContactItem extends StatelessWidget {
           onTap: onTap,
           child: Padding(
             padding: const EdgeInsets.only(
-              top: ZetaSpacing.xs,
-              bottom: ZetaSpacing.xs,
-              left: ZetaSpacing.m,
+              top: ZetaSpacing.small,
+              bottom: ZetaSpacing.small,
+              left: ZetaSpacing.xL2,
             ),
             child: Row(
               children: [
                 leading,
                 Flexible(
                   child: Padding(
-                    padding: const EdgeInsets.only(left: ZetaSpacing.s),
+                    padding: const EdgeInsets.only(left: ZetaSpacing.medium),
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       crossAxisAlignment: CrossAxisAlignment.start,

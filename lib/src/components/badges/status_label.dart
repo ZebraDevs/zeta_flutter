@@ -39,16 +39,16 @@ class ZetaStatusLabel extends StatelessWidget {
         borderRadius: rounded ? ZetaRadius.full : ZetaRadius.none,
       ),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: ZetaSpacing.x2, vertical: ZetaSpacing.x0_5),
+        padding: const EdgeInsets.symmetric(horizontal: ZetaSpacing.small, vertical: ZetaSpacingBase.x0_5),
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
             Icon(
               customIcon ?? Icons.circle,
-              size: customIcon != null ? ZetaSpacing.x5 : ZetaSpacing.x2,
+              size: customIcon != null ? ZetaSpacing.xL : ZetaSpacing.small,
               color: colors.icon,
             ),
-            const SizedBox(width: ZetaSpacing.xs),
+            const SizedBox(width: ZetaSpacing.small),
             Text(
               label,
               style: ZetaTextStyles.bodyMedium.apply(color: colors.shade10.onColor),

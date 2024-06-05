@@ -64,7 +64,7 @@ class _ZetaRadioState<T> extends State<ZetaRadio<T>> with TickerProviderStateMix
             mainAxisSize: MainAxisSize.min,
             children: [
               buildToggleable(
-                size: const Size(ZetaSpacing.x9, ZetaSpacing.x9),
+                size: const Size(ZetaSpacing.xL5, ZetaSpacing.xL5),
                 painter: _painter!
                   ..position = position
                   ..reaction = reaction
@@ -74,7 +74,7 @@ class _ZetaRadioState<T> extends State<ZetaRadio<T>> with TickerProviderStateMix
                   ..reactionColor = Colors.transparent
                   ..hoverColor = Colors.transparent
                   ..focusColor = zetaColors.blue.shade50
-                  ..splashRadius = ZetaSpacing.x3
+                  ..splashRadius = ZetaSpacing.medium
                   ..downPosition = downPosition
                   ..isFocused = states.contains(WidgetState.focused)
                   ..isHovered = states.contains(WidgetState.hovered)
@@ -163,7 +163,7 @@ class _RadioPainter extends ToggleablePainter {
     final Paint paint = Paint()
       ..color = colors.surfacePrimary
       ..style = PaintingStyle.stroke
-      ..strokeWidth = ZetaSpacing.x2_5;
+      ..strokeWidth = ZetaSpacingBase.x2_5;
     if (isFocused) canvas.drawCircle(center, _kInnerRadius, paint);
 
     // Outer circle
@@ -174,7 +174,7 @@ class _RadioPainter extends ToggleablePainter {
               ? inactiveColor
               : activeColor
       ..style = PaintingStyle.stroke
-      ..strokeWidth = ZetaSpacing.x0_5;
+      ..strokeWidth = ZetaSpacingBase.x0_5;
     canvas.drawCircle(center, _kOuterRadius, paint);
 
     // Inner circle

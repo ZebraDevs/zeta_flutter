@@ -118,7 +118,7 @@ class _ZetaSearchBarState extends State<ZetaSearchBar> {
         ),
         prefixIcon: widget.showLeadingIcon
             ? Padding(
-                padding: const EdgeInsets.only(left: ZetaSpacing.x2_5, right: ZetaSpacing.xs),
+                padding: const EdgeInsets.only(left: ZetaSpacingBase.x2_5, right: ZetaSpacing.small),
                 child: Icon(
                   sharp ? ZetaIcons.search_sharp : ZetaIcons.search_round,
                   color: widget.enabled ? zeta.colors.cool.shade70 : zeta.colors.cool.shade50,
@@ -127,8 +127,8 @@ class _ZetaSearchBarState extends State<ZetaSearchBar> {
               )
             : null,
         prefixIconConstraints: const BoxConstraints(
-          minHeight: ZetaSpacing.m,
-          minWidth: ZetaSpacing.m,
+          minHeight: ZetaSpacing.xL2,
+          minWidth: ZetaSpacing.xL2,
         ),
         suffixIcon: IntrinsicHeight(
           child: Row(
@@ -161,7 +161,7 @@ class _ZetaSearchBarState extends State<ZetaSearchBar> {
                   ),
               ],
               Padding(
-                padding: const EdgeInsets.only(right: ZetaSpacing.xxs),
+                padding: const EdgeInsets.only(right: ZetaSpacing.minimum),
                 child: widget.showSpeechToText
                     ? IconButton(
                         visualDensity: const VisualDensity(
@@ -188,8 +188,8 @@ class _ZetaSearchBarState extends State<ZetaSearchBar> {
           ),
         ),
         suffixIconConstraints: const BoxConstraints(
-          minHeight: ZetaSpacing.m,
-          minWidth: ZetaSpacing.m,
+          minHeight: ZetaSpacing.xL2,
+          minWidth: ZetaSpacing.xL2,
         ),
         filled: widget.enabled ? null : true,
         fillColor: widget.enabled ? null : zeta.colors.cool.shade30,
@@ -201,15 +201,15 @@ class _ZetaSearchBarState extends State<ZetaSearchBar> {
   }
 
   double _inputVerticalPadding(ZetaWidgetSize size) => switch (size) {
-        ZetaWidgetSize.large => ZetaSpacing.x3,
-        ZetaWidgetSize.medium => ZetaSpacing.x2,
-        ZetaWidgetSize.small => ZetaSpacing.x1,
+        ZetaWidgetSize.large => ZetaSpacing.medium,
+        ZetaWidgetSize.medium => ZetaSpacing.small,
+        ZetaWidgetSize.small => ZetaSpacing.minimum,
       };
 
   double _iconSize(ZetaWidgetSize size) => switch (size) {
-        ZetaWidgetSize.large => ZetaSpacing.x6,
-        ZetaWidgetSize.medium => ZetaSpacing.x5,
-        ZetaWidgetSize.small => ZetaSpacing.x4,
+        ZetaWidgetSize.large => ZetaSpacing.xL2,
+        ZetaWidgetSize.medium => ZetaSpacing.xL,
+        ZetaWidgetSize.small => ZetaSpacing.large,
       };
 
   OutlineInputBorder _defaultInputBorder(

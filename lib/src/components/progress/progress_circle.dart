@@ -77,15 +77,15 @@ class ZetaProgressCircleState extends ZetaProgressState<ZetaProgressCircle> {
   Size _getSize() {
     switch (widget.size) {
       case ZetaCircleSizes.xs:
-        return const Size(ZetaSpacing.x6, ZetaSpacing.x6);
+        return const Size(ZetaSpacing.xL2, ZetaSpacing.xL2);
       case ZetaCircleSizes.s:
-        return const Size(ZetaSpacing.x9, ZetaSpacing.x9);
+        return const Size(ZetaSpacing.xL5, ZetaSpacing.xL5);
       case ZetaCircleSizes.m:
-        return const Size(ZetaSpacing.x10, ZetaSpacing.x10);
+        return const Size(ZetaSpacing.xL6, ZetaSpacing.xL6);
       case ZetaCircleSizes.l:
-        return const Size(ZetaSpacing.x12, ZetaSpacing.x12);
+        return const Size(ZetaSpacing.xL8, ZetaSpacing.xL8);
       case ZetaCircleSizes.xl:
-        return const Size(ZetaSpacing.x16, ZetaSpacing.x16);
+        return const Size(ZetaSpacing.xL9, ZetaSpacing.xL9);
     }
   }
 

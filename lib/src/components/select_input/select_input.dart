@@ -159,8 +159,8 @@ class _ZetaSelectInputState extends State<ZetaSelectInput> {
                   setState(() {
                     _menuPosition = upperHeight > lowerHeight ? _MenuPosition.top : _MenuPosition.bottom;
                     _menuSize = Size(
-                      box?.size.width ?? (MediaQuery.of(context).size.width - ZetaSpacing.x10),
-                      (upperHeight > lowerHeight ? upperHeight : lowerHeight) - ZetaSpacing.m,
+                      box?.size.width ?? (MediaQuery.of(context).size.width - ZetaSpacing.xL6),
+                      (upperHeight > lowerHeight ? upperHeight : lowerHeight) - ZetaSpacing.xL2,
                     );
                     _menuItems = List.from(widget.items);
                   });
@@ -304,7 +304,7 @@ class _InputComponentState extends State<_InputComponent> {
             prefixIcon: widget.leadingIcon == null
                 ? null
                 : Padding(
-                    padding: const EdgeInsets.only(left: ZetaSpacing.x2_5, right: ZetaSpacing.xs),
+                    padding: const EdgeInsets.only(left: ZetaSpacingBase.x2_5, right: ZetaSpacing.small),
                     child: IconTheme(
                       data: IconThemeData(
                         color: widget.enabled ? zeta.colors.cool.shade70 : zeta.colors.cool.shade50,
@@ -314,13 +314,13 @@ class _InputComponentState extends State<_InputComponent> {
                     ),
                   ),
             prefixIconConstraints: const BoxConstraints(
-              minHeight: ZetaSpacing.m,
-              minWidth: ZetaSpacing.m,
+              minHeight: ZetaSpacing.xL2,
+              minWidth: ZetaSpacing.xL2,
             ),
             suffixIcon: widget.onToggleMenu == null
                 ? null
                 : Padding(
-                    padding: const EdgeInsets.only(right: ZetaSpacing.xxs),
+                    padding: const EdgeInsets.only(right: ZetaSpacing.minimum),
                     child: IconButton(
                       visualDensity: const VisualDensity(
                         horizontal: -4,
@@ -337,8 +337,8 @@ class _InputComponentState extends State<_InputComponent> {
                     ),
                   ),
             suffixIconConstraints: const BoxConstraints(
-              minHeight: ZetaSpacing.m,
-              minWidth: ZetaSpacing.m,
+              minHeight: ZetaSpacing.xL2,
+              minWidth: ZetaSpacing.xL2,
             ),
             hintStyle: _size == ZetaWidgetSize.small
                 ? ZetaTextStyles.bodyXSmall.copyWith(
@@ -375,7 +375,7 @@ class _InputComponentState extends State<_InputComponent> {
                     showError && widget.enabled
                         ? (widget.rounded ? ZetaIcons.error_round : ZetaIcons.error_sharp)
                         : (widget.rounded ? ZetaIcons.info_round : ZetaIcons.info_sharp),
-                    size: ZetaSpacing.b,
+                    size: ZetaSpacing.large,
                     color: hintErrorColor,
                   ),
                 ),
@@ -395,15 +395,15 @@ class _InputComponentState extends State<_InputComponent> {
   }
 
   double _inputVerticalPadding(ZetaWidgetSize size) => switch (size) {
-        ZetaWidgetSize.large => ZetaSpacing.x3,
-        ZetaWidgetSize.medium => ZetaSpacing.x2,
-        ZetaWidgetSize.small => ZetaSpacing.x2,
+        ZetaWidgetSize.large => ZetaSpacing.medium,
+        ZetaWidgetSize.medium => ZetaSpacing.small,
+        ZetaWidgetSize.small => ZetaSpacing.small,
       };
 
   double _iconSize(ZetaWidgetSize size) => switch (size) {
-        ZetaWidgetSize.large => ZetaSpacing.x5,
-        ZetaWidgetSize.medium => ZetaSpacing.x5,
-        ZetaWidgetSize.small => ZetaSpacing.x4,
+        ZetaWidgetSize.large => ZetaSpacing.xL,
+        ZetaWidgetSize.medium => ZetaSpacing.xL,
+        ZetaWidgetSize.small => ZetaSpacing.large,
       };
 
   OutlineInputBorder _defaultInputBorder(
@@ -547,14 +547,14 @@ class ZetaSelectInputItem extends StatelessWidget {
         selected ? BorderSide(color: colors.primary.shade60) : BorderSide.none,
       ),
       padding: const WidgetStatePropertyAll(
-        EdgeInsets.symmetric(horizontal: ZetaSpacing.b),
+        EdgeInsets.symmetric(horizontal: ZetaSpacing.large),
       ),
       elevation: const WidgetStatePropertyAll(0),
       overlayColor: const WidgetStatePropertyAll(Colors.transparent),
       textStyle: WidgetStatePropertyAll<TextStyle>(
         size == ZetaWidgetSize.small ? ZetaTextStyles.bodyXSmall : ZetaTextStyles.bodyMedium,
       ),
-      minimumSize: const WidgetStatePropertyAll<Size>(Size.fromHeight(ZetaSpacing.x12)),
+      minimumSize: const WidgetStatePropertyAll<Size>(Size.fromHeight(ZetaSpacing.xL8)),
       alignment: Alignment.centerLeft,
       visualDensity: VisualDensity(
         horizontal: visualDensity,

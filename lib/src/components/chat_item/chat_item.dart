@@ -84,7 +84,7 @@ class ZetaChatItem extends StatelessWidget {
   }) {
     if (slidableActionsCount == 0) return 0.5;
 
-    final actionsExtend = slidableActionsCount * ZetaSpacing.x20;
+    final actionsExtend = slidableActionsCount * ZetaSpacing.xL10;
     final extend = actionsExtend / maxWidth;
 
     return extend > 1 ? 1 : extend;
@@ -145,15 +145,15 @@ class ZetaChatItem extends StatelessWidget {
                 onTap: onTap,
                 child: Padding(
                   padding: const EdgeInsets.symmetric(
-                    horizontal: ZetaSpacing.s,
-                    vertical: ZetaSpacing.xs,
+                    horizontal: ZetaSpacing.medium,
+                    vertical: ZetaSpacing.small,
                   ),
                   child: Row(
                     children: [
                       leading,
                       Flexible(
                         child: Padding(
-                          padding: const EdgeInsets.only(left: ZetaSpacing.s),
+                          padding: const EdgeInsets.only(left: ZetaSpacing.medium),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -163,10 +163,10 @@ class ZetaChatItem extends StatelessWidget {
                                   if (highlighted)
                                     Container(
                                       margin: const EdgeInsets.only(
-                                        right: ZetaSpacing.xxs,
+                                        right: ZetaSpacing.minimum,
                                       ),
-                                      height: ZetaSpacing.x2,
-                                      width: ZetaSpacing.x2,
+                                      height: ZetaSpacing.small,
+                                      width: ZetaSpacing.small,
                                       decoration: BoxDecoration(
                                         color: colors.primary,
                                         shape: BoxShape.circle,
@@ -196,7 +196,7 @@ class ZetaChatItem extends StatelessWidget {
                                               ),
                                             IconTheme(
                                               data: const IconThemeData(
-                                                size: ZetaSpacing.x4,
+                                                size: ZetaSpacing.large,
                                               ),
                                               child: Row(
                                                 children: [
@@ -204,7 +204,7 @@ class ZetaChatItem extends StatelessWidget {
                                                   if (enabledWarningIcon)
                                                     Padding(
                                                       padding: const EdgeInsets.only(
-                                                        left: ZetaSpacing.xxs,
+                                                        left: ZetaSpacing.minimum,
                                                       ),
                                                       child: Icon(
                                                         ZetaIcons.info_round,
@@ -214,7 +214,7 @@ class ZetaChatItem extends StatelessWidget {
                                                   if (enabledWarningIcon)
                                                     Padding(
                                                       padding: const EdgeInsets.only(
-                                                        left: ZetaSpacing.xxs,
+                                                        left: ZetaSpacing.minimum,
                                                       ),
                                                       child: Icon(
                                                         Icons.circle_notifications,
@@ -224,10 +224,10 @@ class ZetaChatItem extends StatelessWidget {
                                                   if (_count != null)
                                                     Container(
                                                       margin: const EdgeInsets.only(
-                                                        left: ZetaSpacing.xxs,
+                                                        left: ZetaSpacing.minimum,
                                                       ),
                                                       padding: const EdgeInsets.symmetric(
-                                                        horizontal: ZetaSpacing.x2,
+                                                        horizontal: ZetaSpacing.small,
                                                       ),
                                                       decoration: BoxDecoration(
                                                         color: colors.primary,
@@ -265,7 +265,7 @@ class ZetaChatItem extends StatelessWidget {
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.only(
-                                      left: ZetaSpacing.xxs,
+                                      left: ZetaSpacing.minimum,
                                     ),
                                     child: Icon(
                                       starred ? ZetaIcons.star_sharp : ZetaIcons.star_outline_sharp,
@@ -333,7 +333,7 @@ class _ZetaSlidableAction extends StatelessWidget {
     return Expanded(
       child: SizedBox.expand(
         child: Padding(
-          padding: const EdgeInsets.only(left: ZetaSpacing.xxs),
+          padding: const EdgeInsets.only(left: ZetaSpacing.minimum),
           child: IconButton(
             onPressed: () => onPressed,
             style: IconButton.styleFrom(
@@ -347,7 +347,7 @@ class _ZetaSlidableAction extends StatelessWidget {
             icon: Icon(
               icon,
               color: foregroundColor,
-              size: ZetaSpacing.x8,
+              size: ZetaSpacing.xL4,
             ),
           ),
         ),

@@ -22,7 +22,7 @@ Widget segmentedControlUseCase(BuildContext context) {
       return Column(
         children: [
           Padding(
-            padding: const EdgeInsets.all(ZetaSpacing.l),
+            padding: const EdgeInsets.all(ZetaSpacing.xL4),
             child: ZetaSegmentedControl(
               rounded: rounded,
               segments: [
@@ -39,7 +39,7 @@ Widget segmentedControlUseCase(BuildContext context) {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(ZetaSpacing.l),
+            padding: const EdgeInsets.all(ZetaSpacing.xL4),
             child: ZetaSegmentedControl(
               rounded: rounded,
               segments: [

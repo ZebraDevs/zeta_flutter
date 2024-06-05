@@ -7,13 +7,27 @@ Zeta is the new, formal, standardized Zebra Design System based off the successe
 ### Prerequisites
 
 ```
-  dart sdk: ">=3.2.0 <4.0.0"
-  flutter: ">=3.16.0"
+dart sdk: ">=3.2.0 <4.0.0"
+flutter: ">=3.16.0"
 ```
 
 ## Installation
 
 To install `zeta_flutter`, follow the instructions [here](https://pub.dev/packages/zeta_flutter/install).
+
+## Example
+
+An example app can be found in this repo under `/example`. This shows all components in an example app, as well as a widgetbook instance.
+
+## Previewing the components
+
+To view examples of all the components in the library, you can pull this repo and run either the example app or widgetbook instance.
+
+You can also view the latest release at [Zeta](https://zeta-ds.web.app/) or the latest commits to main [here](https://zeta-flutter-main.web.app/).
+
+## Template
+
+If you are starting a new project using Zeta, we recommend starting with [Zeta Flutter Template](https://github.com/zebradevs/zeta_flutter_template). This template project handles the basic app setup, but these steps can also be followed [below](#Usage).
 
 ## Usage
 
@@ -30,7 +44,7 @@ Zeta allows you to specify an initial theme mode for your app, which can be one 
 By default, the theme mode is set to `ThemeMode.system`.
 
 ```dart
-initialThemeMode: ThemeMode.light
+initialThemeMode: ThemeMode.system
 ```
 
 ### Providing Initial Theme Data
@@ -92,14 +106,8 @@ To tie everything together, use the `ZetaProvider` constructor. The `builder` ar
 
 With these configurations, Zeta makes it easy to achieve consistent theming throughout your Flutter application.
 
-## Viewing the components
-
-To view examples of all the components in the library, you can pull this repo and run either the example app or widgetbook instance.
-
-You can also view the latest release at [Zeta](https://zeta-ds.web.app/) or the latest commits to main [here](https://zeta-flutter-main.web.app/).
-
 ## Licensing
 
-This software is licensed with the MIT license (see [LICENSE](./LICENSE)).
+This software is licensed with the MIT license (see [LICENSE](./LICENSE) and [THIRD PARTY LICENSES](./LICENSE-3RD-PARTY)).
 
 ---

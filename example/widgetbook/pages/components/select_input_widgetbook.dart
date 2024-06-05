@@ -50,7 +50,7 @@ Widget selectInputUseCase(BuildContext context) {
     widget: StatefulBuilder(
       builder: (context, setState) {
         return Padding(
-          padding: const EdgeInsets.all(ZetaSpacing.m),
+          padding: const EdgeInsets.all(ZetaSpacing.xL2),
           child: ZetaSelectInput(
             rounded: rounded,
             enabled: enabled,

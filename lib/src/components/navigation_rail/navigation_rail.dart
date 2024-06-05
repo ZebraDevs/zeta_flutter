@@ -12,8 +12,8 @@ class ZetaNavigationRail extends StatefulWidget {
     this.selectedIndex,
     this.onSelect,
     this.rounded = true,
-    this.margin = const EdgeInsets.all(ZetaSpacing.x5),
-    this.itemSpacing = const EdgeInsets.only(bottom: ZetaSpacing.xxs),
+    this.margin = const EdgeInsets.all(ZetaSpacing.xL),
+    this.itemSpacing = const EdgeInsets.only(bottom: ZetaSpacing.minimum),
     this.itemPadding,
     this.wordWrap,
   });
@@ -33,14 +33,14 @@ class ZetaNavigationRail extends StatefulWidget {
   /// The margin around the [ZetaNavigationRail].
   /// Default is:
   /// ```
-  /// const EdgeInsets.all(ZetaSpacing.x5)
+  /// const EdgeInsets.all(ZetaSpacing.xL)
   /// ```
   final EdgeInsets margin;
 
   /// The spacing between items in [ZetaNavigationRail].
   /// Default is:
   /// ```
-  /// const EdgeInsets.only(bottom: ZetaSpacing.xxs)
+  /// const EdgeInsets.only(bottom: ZetaSpacing.minimum)
   /// ```
   final EdgeInsets itemSpacing;
 
@@ -48,8 +48,8 @@ class ZetaNavigationRail extends StatefulWidget {
   /// Default is:
   /// ```
   /// const EdgeInsets.symmetric(
-  ///   horizontal: ZetaSpacing.xs,
-  ///   vertical: ZetaSpacing.s,
+  ///   horizontal: ZetaSpacing.small,
+  ///   vertical: ZetaSpacing.medium,
   /// ),
   /// ```
   final EdgeInsets? itemPadding;
@@ -150,15 +150,15 @@ class _ZetaNavigationRailItemContent extends StatelessWidget {
           ),
           child: ConstrainedBox(
             constraints: const BoxConstraints(
-              minWidth: ZetaSpacing.x16,
-              minHeight: ZetaSpacing.x16,
+              minWidth: ZetaSpacing.xL9,
+              minHeight: ZetaSpacing.xL9,
             ),
             child: SelectionContainer.disabled(
               child: Padding(
                 padding: padding ??
                     const EdgeInsets.symmetric(
-                      horizontal: ZetaSpacing.xs,
-                      vertical: ZetaSpacing.s,
+                      horizontal: ZetaSpacing.small,
+                      vertical: ZetaSpacing.medium,
                     ),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,

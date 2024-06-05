@@ -9,18 +9,12 @@ class RadiusExample extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<BorderRadius> radii = [
-      ZetaRadius.none,
-      ZetaRadius.minimal,
-      ZetaRadius.rounded,
-      ZetaRadius.wide,
-      ZetaRadius.full
-    ];
+    List<BorderRadius> radii = [ZetaRadius.none, ZetaRadius.minimal, ZetaRadius.rounded, ZetaRadius.full];
     final colors = Zeta.of(context).colors;
     return ExampleScaffold(
       name: name,
       child: SingleChildScrollView(
-        padding: EdgeInsets.all(ZetaSpacing.m),
+        padding: EdgeInsets.all(ZetaSpacing.xL2),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -42,7 +36,7 @@ class RadiusExample extends StatelessWidget {
                             color: Zeta.of(context).colors.surfacePrimary,
                             border: Border.all(color: colors.blue.shade50, width: 3),
                           ),
-                          padding: EdgeInsets.all(ZetaSpacing.b),
+                          padding: EdgeInsets.all(ZetaSpacing.large),
                           child: Text(
                             rad.radiusString.split('.').last.capitalize(),
                             style: ZetaTextStyles.titleMedium.apply(
@@ -55,7 +49,7 @@ class RadiusExample extends StatelessWidget {
                       ),
                     );
                   })
-                  .divide(const SizedBox(height: ZetaSpacing.l))
+                  .divide(const SizedBox(height: ZetaSpacing.xL4))
                   .toList(),
             ),
           ],

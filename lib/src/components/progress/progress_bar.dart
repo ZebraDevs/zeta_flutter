@@ -103,7 +103,7 @@ class _ZetaProgressBarState extends ZetaProgressState<ZetaProgressBar> {
                   : ''),
           style: ZetaTextStyles.titleMedium,
           textAlign: TextAlign.start,
-        ).paddingBottom(ZetaSpacing.x4),
+        ).paddingBottom(ZetaSpacing.large),
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
@@ -131,13 +131,13 @@ class _ZetaProgressBarState extends ZetaProgressState<ZetaProgressBar> {
   BorderRadius get _border => widget.rounded ? ZetaRadius.rounded : ZetaRadius.none;
 
   /// Returns thickness of progress bar based on its weight.
-  double get _weight => widget.isThin ? ZetaSpacing.x2 : ZetaSpacing.x4;
+  double get _weight => widget.isThin ? ZetaSpacing.small : ZetaSpacing.large;
 
   Widget bufferingWidget(ZetaColors colors) {
     final Iterable<List<Widget>> extraList = List.generate(
       3,
       (e) => [
-        const SizedBox(width: ZetaSpacing.x4),
+        const SizedBox(width: ZetaSpacing.large),
         Container(
           width: _weight,
           height: _weight,

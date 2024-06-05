@@ -25,7 +25,7 @@ class ZetaFilterSelection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: ZetaSpacing.x11,
+      height: ZetaSpacing.xL7,
       child: Row(
         children: [
           IconButton(
@@ -33,16 +33,18 @@ class ZetaFilterSelection extends StatelessWidget {
             onPressed: onPressed,
             icon: Icon(
               rounded ? ZetaIcons.filter_round : ZetaIcons.filter_sharp,
-              size: ZetaSpacing.m,
+              size: ZetaSpacing.xL2,
             ),
           ),
           Expanded(
             child: ListView(
               shrinkWrap: true,
               scrollDirection: Axis.horizontal,
-              padding: const EdgeInsets.all(ZetaSpacing.xxs),
-              children:
-                  items.map((e) => e.copyWith(rounded: rounded)).divide(const SizedBox(width: ZetaSpacing.x2)).toList(),
+              padding: const EdgeInsets.all(ZetaSpacing.minimum),
+              children: items
+                  .map((e) => e.copyWith(rounded: rounded))
+                  .divide(const SizedBox(width: ZetaSpacing.small))
+                  .toList(),
             ),
           ),
         ],

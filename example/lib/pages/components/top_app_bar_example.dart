@@ -57,7 +57,7 @@ class _TopAppBarExampleState extends State<TopAppBarExample> {
                   children: [
                     ZetaAvatar(size: ZetaAvatarSize.xs, image: image),
                     Padding(
-                      padding: const EdgeInsets.only(left: ZetaSpacing.s),
+                      padding: const EdgeInsets.only(left: ZetaSpacing.medium),
                       child: Text("Title"),
                     ),
                   ],
@@ -154,7 +154,7 @@ class _TopAppBarExampleState extends State<TopAppBarExample> {
                         children: [
                           ZetaAvatar(size: ZetaAvatarSize.xs, image: image),
                           Padding(
-                            padding: const EdgeInsets.only(left: ZetaSpacing.s),
+                            padding: const EdgeInsets.only(left: ZetaSpacing.medium),
                             child: Text("Title"),
                           ),
                         ],
@@ -250,7 +250,7 @@ class Painter extends CustomPainter {
       var p2 = Offset(800 + i, 810);
       var paint = Paint()
         ..color = colors.primary
-        ..strokeWidth = ZetaSpacing.x1;
+        ..strokeWidth = ZetaSpacing.minimum;
       canvas.drawLine(p1, p2, paint);
     }
   }

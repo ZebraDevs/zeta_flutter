@@ -7,7 +7,7 @@ import '../../utils/utils.dart';
 
 Widget accordionUseCase(BuildContext context) => WidgetbookTestWidget(
       widget: Padding(
-        padding: const EdgeInsets.all(ZetaSpacing.x5),
+        padding: const EdgeInsets.all(ZetaSpacing.xL),
         child: ZetaAccordion(
           child: context.knobs.boolean(label: 'Disabled')
               ? null

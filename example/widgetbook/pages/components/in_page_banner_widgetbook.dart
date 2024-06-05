@@ -7,7 +7,7 @@ import '../../utils/utils.dart';
 
 Widget inPageBannerUseCase(BuildContext context) => WidgetbookTestWidget(
       widget: Padding(
-        padding: EdgeInsets.all(ZetaSpacing.x5),
+        padding: EdgeInsets.all(ZetaSpacing.xL),
         child: ZetaInPageBanner(
           content: Text(
             context.knobs.string(

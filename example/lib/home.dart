@@ -20,6 +20,7 @@ import 'package:zeta_example/pages/components/filter_selection_example.dart';
 import 'package:zeta_example/pages/components/list_item_example.dart';
 import 'package:zeta_example/pages/components/navigation_bar_example.dart';
 import 'package:zeta_example/pages/components/navigation_rail_example.dart';
+import 'package:zeta_example/pages/components/notification_list_example.dart';
 import 'package:zeta_example/pages/components/phone_input_example.dart';
 import 'package:zeta_example/pages/components/radio_example.dart';
 import 'package:zeta_example/pages/components/screen_header_bar_example.dart';
@@ -68,6 +69,7 @@ final List<Component> components = [
   Component(ContactItemExample.name, (context) => const ContactItemExample()),
   Component(ListItemExample.name, (context) => const ListItemExample()),
   Component(NavigationBarExample.name, (context) => const NavigationBarExample()),
+  Component(NotificationListItemExample.name, (context) => const NotificationListItemExample()),
   Component(PaginationExample.name, (context) => const PaginationExample()),
   Component(PasswordInputExample.name, (context) => const PasswordInputExample()),
   Component(GroupHeaderExample.name, (context) => const GroupHeaderExample()),
@@ -148,7 +150,9 @@ class _HomeState extends State<Home> {
     final _assets = assets..sort((a, b) => a.name.compareTo(b.name));
     final _theme = theme..sort((a, b) => a.name.compareTo(b.name));
     return ExampleScaffold(
-      name: 'Zeta',
+      // x-release-please-start-version
+      name: 'zeta_flutter v0.10.0',
+      // x-release-please-end
       child: SingleChildScrollView(
         child: Column(
           children: [

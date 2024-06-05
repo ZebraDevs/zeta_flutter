@@ -20,7 +20,7 @@ class _IconsExampleState extends State<IconsExample> {
     return ExampleScaffold(
       name: IconsExample.name,
       child: SingleChildScrollView(
-        padding: EdgeInsets.all(ZetaSpacing.s),
+        padding: EdgeInsets.all(ZetaSpacing.medium),
         child: Column(
           children: [
             Text('Round', style: ZetaTextStyles.bodyLarge),

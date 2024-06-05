@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 
 import '../../../zeta_flutter.dart';
 
-const _searchBarOffsetTop = ZetaSpacing.x1 * 1.5;
-const _searchBarOffsetRight = ZetaSpacing.x1 * 22;
-const _maxExtent = ZetaSpacing.x1 * 26;
-const _minExtent = ZetaSpacing.x16;
-const _leftMin = ZetaSpacing.x4;
-const _leftMax = ZetaSpacing.x14;
-const _topMin = ZetaSpacing.x5;
-const _topMax = ZetaSpacing.x1 * 15;
+const _searchBarOffsetTop = ZetaSpacing.minimum * 1.5;
+const _searchBarOffsetRight = ZetaSpacing.minimum * 22;
+const _maxExtent = ZetaSpacing.minimum * 26;
+const _minExtent = ZetaSpacing.xL9;
+const _leftMin = ZetaSpacing.large;
+const _leftMax = ZetaSpacingBase.x12_5;
+const _topMin = ZetaSpacing.xL;
+const _topMax = ZetaSpacing.minimum * 15;
 
 /// Delegate for creating an extended app bar, that grows and shrinks when scrolling.
 class ZetaExtendedAppBarDelegate extends SliverPersistentHeaderDelegate {
@@ -40,7 +40,7 @@ class ZetaExtendedAppBarDelegate extends SliverPersistentHeaderDelegate {
   @override
   Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
     return ConstrainedBox(
-      constraints: const BoxConstraints(minHeight: ZetaSpacing.x16, maxHeight: _maxExtent),
+      constraints: const BoxConstraints(minHeight: ZetaSpacing.xL9, maxHeight: _maxExtent),
       child: ColoredBox(
         color: Zeta.of(context).colors.surfacePrimary,
         child: Stack(
@@ -52,12 +52,13 @@ class ZetaExtendedAppBarDelegate extends SliverPersistentHeaderDelegate {
                       _topMax,
                     )
                   : _topMax,
-              left: shrinks ? ((shrinkOffset / _maxExtent) * ZetaSpacing.x50).clamp(_leftMin, _leftMax) : _leftMin,
+              left: shrinks ? ((shrinkOffset / _maxExtent) * ZetaSpacingBase.x50).clamp(_leftMin, _leftMax) : _leftMin,
               right: searchController != null && searchController!.isEnabled ? _searchBarOffsetRight : 0,
               child: title,
             ),
-            if (leading != null) Positioned(top: ZetaSpacing.x3, left: ZetaSpacing.x2, child: leading!),
-            if (actions != null) Positioned(top: ZetaSpacing.x3, right: ZetaSpacing.x2, child: Row(children: actions!)),
+            if (leading != null) Positioned(top: ZetaSpacing.medium, left: ZetaSpacing.small, child: leading!),
+            if (actions != null)
+              Positioned(top: ZetaSpacing.medium, right: ZetaSpacing.small, child: Row(children: actions!)),
           ],
         ),
       ),

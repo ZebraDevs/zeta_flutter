@@ -72,7 +72,7 @@ class _GlobalHeaderState extends State<ZetaGlobalHeader> {
         final deviceType = constraints.deviceType;
 
         return Container(
-          padding: const EdgeInsets.symmetric(vertical: ZetaSpacing.s, horizontal: ZetaSpacing.b),
+          padding: const EdgeInsets.symmetric(vertical: ZetaSpacing.medium, horizontal: ZetaSpacing.large),
           decoration: BoxDecoration(color: colors.surfacePrimary),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -86,7 +86,7 @@ class _GlobalHeaderState extends State<ZetaGlobalHeader> {
                     Row(
                       children: [
                         Text(widget.title, style: ZetaTextStyles.h4),
-                        const SizedBox.square(dimension: ZetaSpacing.s),
+                        const SizedBox.square(dimension: ZetaSpacing.medium),
                         if (deviceType.isLarge)
                           // If using large screen, render some tabItems in to section
                           ...renderedChildren(widget.tabItems)
@@ -104,19 +104,19 @@ class _GlobalHeaderState extends State<ZetaGlobalHeader> {
                           Container(
                             color: colors.borderDefault,
                             width: 1,
-                            height: ZetaSpacing.x6,
-                            margin: const EdgeInsets.symmetric(horizontal: ZetaSpacing.xxs),
+                            height: ZetaSpacing.xL2,
+                            margin: const EdgeInsets.symmetric(horizontal: ZetaSpacing.minimum),
                           ),
                           IconButton(icon: const Icon(ZetaIcons.apps_round), onPressed: widget.onAppsButton),
                         ],
-                        const SizedBox(width: ZetaSpacing.xs),
+                        const SizedBox(width: ZetaSpacing.small),
                         if (widget.avatar != null) widget.avatar!.copyWith(size: ZetaAvatarSize.m),
                       ],
                     ),
-                  ].gap(ZetaSpacing.s),
+                  ].gap(ZetaSpacing.medium),
                 ),
               ),
-              const SizedBox(height: ZetaSpacing.x2),
+              const SizedBox(height: ZetaSpacing.small),
               Row(
                 children: [
                   if (deviceType.isSmall && widget.searchBar != null) Expanded(child: widget.searchBar!),
@@ -132,7 +132,7 @@ class _GlobalHeaderState extends State<ZetaGlobalHeader> {
                         ),
                       ),
                     ),
-                ].gap(ZetaSpacing.s),
+                ].gap(ZetaSpacing.medium),
               ),
               if (widget.tabItems.isNotEmpty && deviceType.isSmall)
                 SingleChildScrollView(

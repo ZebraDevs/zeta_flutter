@@ -227,23 +227,23 @@ extension on ZetaAvatarSize {
   double get pixelSize {
     switch (this) {
       case ZetaAvatarSize.xxxl:
-        return ZetaSpacing.x50;
+        return ZetaSpacingBase.x50;
       case ZetaAvatarSize.xxl:
-        return ZetaSpacing.x30;
+        return ZetaSpacingBase.x30;
       case ZetaAvatarSize.xl:
-        return ZetaSpacing.x20;
+        return ZetaSpacing.xL10;
       case ZetaAvatarSize.l:
-        return ZetaSpacing.x16;
+        return ZetaSpacing.xL9;
       case ZetaAvatarSize.m:
-        return ZetaSpacing.x12;
+        return ZetaSpacing.xL8;
       case ZetaAvatarSize.s:
-        return ZetaSpacing.x10;
+        return ZetaSpacing.xL6;
       case ZetaAvatarSize.xs:
-        return ZetaSpacing.x9;
+        return ZetaSpacing.xL5;
       case ZetaAvatarSize.xxs:
-        return ZetaSpacing.x8;
+        return ZetaSpacing.xL4;
       case ZetaAvatarSize.xxxs:
-        return ZetaSpacing.x6;
+        return ZetaSpacing.xL2;
     }
   }
 
@@ -255,13 +255,13 @@ extension on ZetaAvatarSize {
       case ZetaAvatarSize.xl:
       case ZetaAvatarSize.l:
       case ZetaAvatarSize.m:
-        return ZetaSpacing.x1;
+        return ZetaSpacing.minimum;
 
       case ZetaAvatarSize.s:
       case ZetaAvatarSize.xs:
       case ZetaAvatarSize.xxs:
       case ZetaAvatarSize.xxxs:
-        return ZetaSpacing.x0_5;
+        return ZetaSpacingBase.x0_5;
     }
   }
 
@@ -308,8 +308,8 @@ class ZetaAvatarBadge extends StatelessWidget {
     this.color,
     this.icon = ZetaIcons.star_round,
     this.iconColor,
+    this.size = ZetaAvatarSize.xxxl,
   })  : value = null,
-        size = ZetaAvatarSize.xxxl,
         type = ZetaAvatarBadgeType.icon;
 
   /// Constructs [ZetaAvatarBadge] with notifications
@@ -367,7 +367,7 @@ class ZetaAvatarBadge extends StatelessWidget {
     final backgroundColor = type == ZetaAvatarBadgeType.notification ? colors.surfaceNegative : color;
     final badgeSize = _getContainerSize();
     final borderSize = _getBorderSize();
-    final paddedSize = badgeSize + ZetaSpacing.x1;
+    final paddedSize = badgeSize + ZetaSpacing.minimum;
 
     final innerContent = Container(
       margin: const EdgeInsets.all(0.01),
@@ -407,7 +407,7 @@ class ZetaAvatarBadge extends StatelessWidget {
               )
             : null,
       ),
-      child: Center(child: innerContent),
+      child: innerContent,
     );
   }
 

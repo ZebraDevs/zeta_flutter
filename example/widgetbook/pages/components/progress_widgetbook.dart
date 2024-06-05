@@ -8,7 +8,7 @@ import '../../utils/utils.dart';
 Widget progressBarUseCase(BuildContext context) => WidgetbookTestWidget(
       widget: LayoutBuilder(builder: (context, constraints) {
         return SizedBox(
-          width: constraints.maxWidth - ZetaSpacing.xl,
+          width: constraints.maxWidth - ZetaSpacing.xL9,
           child: ZetaProgressBar(
             progress: context.knobs.double.slider(label: 'Progress', min: 0, max: 1, initialValue: 0.5).toDouble(),
             type: context.knobs.list(

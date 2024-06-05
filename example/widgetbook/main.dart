@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 import 'pages/assets/icon_widgetbook.dart';
 import 'pages/components/accordion_widgetbook.dart';
+import 'pages/components/notification_list_item_widgetbook.dart';
 import 'pages/components/text_input_widgetbook.dart';
 import 'pages/components/top_app_bar_widgetbook.dart';
 import 'pages/components/avatar_widgetbook.dart';
@@ -42,22 +44,39 @@ import 'pages/components/snack_bar_widgetbook.dart';
 import 'pages/components/tabs_widgetbook.dart';
 import 'pages/components/time_input_widgetbook.dart';
 import 'pages/components/tooltip_widgetbook.dart';
+import 'pages/introduction.dart';
 import 'pages/theme/color_widgetbook.dart';
 import 'pages/theme/radius_widgetbook.dart';
 import 'pages/theme/spacing_widgetbook.dart';
 import 'pages/theme/typography_widgetbook.dart';
 import 'utils/zebra.dart';
 
-void main() => runApp(const HotReload());
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  String readme = await rootBundle.loadString('../README.md');
 
-class HotReload extends StatelessWidget {
-  const HotReload({super.key});
+  runApp(HotReload(readme: readme));
+}
 
+class HotReload extends StatefulWidget {
+  final String readme;
+  const HotReload({super.key, required this.readme});
+
+  @override
+  State<HotReload> createState() => _HotReloadState();
+}
+
+class _HotReloadState extends State<HotReload> {
   @override
   Widget build(BuildContext context) {
     return Widgetbook(
       appBuilder: (context, child) => child,
+      initialRoute: '?path=introduction',
       directories: [
+        WidgetbookUseCase(
+          name: 'Introduction',
+          builder: (BuildContext context) => IntroductionWidgetbook(readme: widget.readme),
+        ),
         WidgetbookCategory(
           name: 'Components',
           isInitiallyExpanded: false,
@@ -122,6 +141,8 @@ class HotReload extends StatelessWidget {
             WidgetbookUseCase(name: 'Dial Pad', builder: (context) => dialPadUseCase(context)),
             WidgetbookUseCase(name: 'Global Header', builder: (context) => globalHeaderUseCase(context)),
             WidgetbookUseCase(name: 'List Item', builder: (context) => listItemUseCase(context)),
+            WidgetbookUseCase(
+                name: 'Notification List Item', builder: (context) => notificationListItemUseCase(context)),
             WidgetbookUseCase(name: 'Navigation Bar', builder: (context) => navigationBarUseCase(context)),
             WidgetbookUseCase(name: 'Pagination', builder: (context) => paginationUseCase(context)),
             WidgetbookUseCase(name: 'Radio Button', builder: (context) => radioButtonUseCase(context)),
@@ -221,6 +242,10 @@ class HotReload extends StatelessWidget {
             );
           },
         ),
+        AccessibilityAddon(),
+        InspectorAddon(enabled: false),
+        ZoomAddon(initialZoom: 1.0),
+        TextScaleAddon(scales: [1.0, 1.2, 1.4, 1.6, 1.8, 2.0], initialScale: 1),
       ],
     );
   }

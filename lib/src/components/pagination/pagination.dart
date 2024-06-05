@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 
 import '../../../zeta_flutter.dart';
 
-const _itemHeight = ZetaSpacing.x9;
-const _itemWidth = ZetaSpacing.x8;
+const _itemHeight = ZetaSpacing.xL5;
+const _itemWidth = ZetaSpacing.xL4;
 
 /// The type of a [ZetaPagination]
 enum ZetaPaginationType {
@@ -183,7 +183,7 @@ class _ZetaPaginationState extends State<ZetaPagination> {
       ),
     );
     return Container(
-      height: ZetaSpacing.x10,
+      height: ZetaSpacing.xL6,
       decoration: BoxDecoration(
         border: Border.all(color: colors.borderSubtle),
         borderRadius: widget.rounded ? ZetaRadius.minimal : ZetaRadius.none,
@@ -195,13 +195,13 @@ class _ZetaPaginationState extends State<ZetaPagination> {
         value: _currentPage,
         icon: Icon(
           widget.rounded ? ZetaIcons.expand_more_round : ZetaIcons.expand_more_sharp,
-        ).paddingStart(ZetaSpacing.x2),
+        ).paddingStart(ZetaSpacing.small),
         underline: const SizedBox(),
         style: Theme.of(context).textTheme.bodyLarge?.copyWith(
               color: colors.textSubtle,
             ),
         padding: const EdgeInsets.symmetric(
-          horizontal: ZetaSpacing.x3,
+          horizontal: ZetaSpacing.medium,
         ),
       ),
     );
@@ -251,7 +251,7 @@ class _ZetaPaginationState extends State<ZetaPagination> {
         return Row(
           key: _paginationKey,
           mainAxisSize: MainAxisSize.min,
-          children: buttons.divide(const SizedBox(width: ZetaSpacing.x2)).toList(),
+          children: buttons.divide(const SizedBox(width: ZetaSpacing.small)).toList(),
         );
       },
     );
@@ -321,7 +321,7 @@ class _PaginationItem extends StatelessWidget {
           enableFeedback: false,
           child: Container(
             alignment: Alignment.center,
-            padding: const EdgeInsets.symmetric(horizontal: ZetaSpacing.x1),
+            padding: const EdgeInsets.symmetric(horizontal: ZetaSpacing.minimum),
             decoration: BoxDecoration(
               borderRadius: rounded ? ZetaRadius.minimal : ZetaRadius.none,
             ),

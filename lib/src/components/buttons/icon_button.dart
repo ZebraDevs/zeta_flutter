@@ -113,22 +113,22 @@ class ZetaIconButton extends StatelessWidget {
   double get _iconPadding {
     switch (size) {
       case ZetaWidgetSize.large:
-        return ZetaSpacing.x3;
+        return ZetaSpacing.medium;
       case ZetaWidgetSize.medium:
-        return ZetaSpacing.x2;
+        return ZetaSpacing.small;
       case ZetaWidgetSize.small:
-        return ZetaSpacing.x1;
+        return ZetaSpacing.minimum;
     }
   }
 
   double get _iconSize {
     switch (size) {
       case ZetaWidgetSize.large:
-        return ZetaSpacing.x6;
+        return ZetaSpacing.xL2;
       case ZetaWidgetSize.medium:
-        return ZetaSpacing.x6;
+        return ZetaSpacing.xL2;
       case ZetaWidgetSize.small:
-        return ZetaSpacing.x5;
+        return ZetaSpacing.xL;
     }
   }
 

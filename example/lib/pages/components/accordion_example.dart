@@ -12,7 +12,7 @@ class AccordionExample extends StatelessWidget {
     return ExampleScaffold(
       name: AccordionExample.name,
       child: SingleChildScrollView(
-        padding: EdgeInsets.all(ZetaSpacing.s),
+        padding: EdgeInsets.all(ZetaSpacing.medium),
         child: Column(
           children: [
             Text('Rounded Divider'),
