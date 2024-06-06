@@ -163,8 +163,8 @@ class _ZetaPhoneInputState extends State<ZetaPhoneInput> {
           child: Row(
             children: [
               SizedBox(
-                width: 64,
-                height: 48,
+                width: ZetaSpacing.xL9,
+                height: ZetaSpacing.xL8,
                 child: DecoratedBox(
                   decoration: BoxDecoration(
                     color: widget.enabled ? zeta.colors.surfacePrimary : zeta.colors.cool.shade30,
@@ -295,7 +295,7 @@ class _ZetaPhoneInputState extends State<ZetaPhoneInput> {
             child: Row(
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(right: 8),
+                  padding: const EdgeInsets.only(right: ZetaSpacing.small),
                   child: Icon(
                     showError && widget.enabled
                         ? (widget.rounded ? ZetaIcons.error_round : ZetaIcons.error_sharp)

@@ -370,7 +370,7 @@ class _InputComponentState extends State<_InputComponent> {
             child: Row(
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(right: 8),
+                  padding: const EdgeInsets.only(right: ZetaSpacing.small),
                   child: Icon(
                     showError && widget.enabled
                         ? (widget.rounded ? ZetaIcons.error_round : ZetaIcons.error_sharp)

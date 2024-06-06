@@ -140,7 +140,7 @@ class _ZetaStepperInputState extends State<ZetaStepperInput> {
       type: ZetaButtonType.outlineSubtle,
       size: widget.size == ZetaStepperInputSize.medium ? ZetaWidgetSize.medium : ZetaWidgetSize.large,
       borderType: widget.rounded ? ZetaWidgetBorder.rounded : ZetaWidgetBorder.sharp,
-      onPressed: !_disabled
+      onPressed: !_disabled && (increase ? _value != widget.max : _value != widget.min)
           ? () => _onChange(
                 _value + (increase ? 1 : -1),
               )

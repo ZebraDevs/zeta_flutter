@@ -32,7 +32,7 @@ enum ZetaAvatarSize {
   xxxs,
 }
 
-/// ZetaAvatar component
+/// An avatar is a visual representation of a user or entity.
 class ZetaAvatar extends StatelessWidget {
   /// Constructor for [ZetaAvatar]
   const ZetaAvatar({
@@ -141,7 +141,7 @@ class ZetaAvatar extends StatelessWidget {
                   size == ZetaAvatarSize.xs ? initials!.substring(0, 1) : initials!,
                   style: TextStyle(
                     fontSize: size.fontSize,
-                    letterSpacing: 0,
+                    letterSpacing: ZetaSpacing.none,
                     color: backgroundColor?.onColor,
                     fontWeight: FontWeight.w500,
                   ),
@@ -192,15 +192,15 @@ class ZetaAvatar extends StatelessWidget {
           ),
           if (upperBadge != null)
             Positioned(
-              right: 0,
+              right: ZetaSpacing.none,
               child: upperBadge!.copyWith(
                 size: size,
               ),
             ),
           if (lowerBadge != null)
             Positioned(
-              right: 0,
-              bottom: 0,
+              right: ZetaSpacing.none,
+              bottom: ZetaSpacing.none,
               child: lowerBadge!.copyWith(
                 size: size,
               ),
@@ -279,8 +279,9 @@ enum ZetaAvatarBadgeType {
   notification,
 }
 
-/// ZetaAvatarBadge component
-
+/// Badge component used with [ZetaAvatar] as either [ZetaAvatar.upperBadge] or[ ZetaAvatar.lowerBadge].
+///
+/// Sizes and styles are managed by the parent [ZetaAvatar].
 class ZetaAvatarBadge extends StatelessWidget {
   /// Constructor for [ZetaAvatarBadge]
   const ZetaAvatarBadge({
@@ -316,7 +317,7 @@ class ZetaAvatarBadge extends StatelessWidget {
 
   const ZetaAvatarBadge.notification({
     super.key,
-    required this.value,
+    this.value,
   })  : size = ZetaAvatarSize.xxxl,
         icon = null,
         iconColor = null,
@@ -364,7 +365,8 @@ class ZetaAvatarBadge extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = Zeta.of(context).colors;
-    final backgroundColor = type == ZetaAvatarBadgeType.notification ? colors.surfaceNegative : color;
+    final Color backgroundColor =
+        type == ZetaAvatarBadgeType.notification ? colors.surfaceNegative : (color ?? colors.primary);
     final badgeSize = _getContainerSize();
     final borderSize = _getBorderSize();
     final paddedSize = badgeSize + ZetaSpacing.minimum;
@@ -380,7 +382,7 @@ class ZetaAvatarBadge extends StatelessWidget {
               child: Text(
                 value! > 99 ? '99+' : '$value',
                 style: TextStyle(
-                  color: backgroundColor?.onColor,
+                  color: backgroundColor.onColor,
                   fontSize: ((10 / 12) * badgeSize) - 2,
                   height: 1,
                 ),
@@ -390,7 +392,7 @@ class ZetaAvatarBadge extends StatelessWidget {
               ? Icon(
                   icon,
                   size: badgeSize - borderSize,
-                  color: iconColor ?? backgroundColor?.onColor,
+                  color: iconColor ?? backgroundColor.onColor,
                 )
               : null,
     );

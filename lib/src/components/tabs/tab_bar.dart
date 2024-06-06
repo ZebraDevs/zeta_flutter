@@ -21,7 +21,7 @@ class ZetaTabBar extends TabBar {
           indicator: UnderlineTabIndicator(
             borderSide: BorderSide(
               color: Zeta.of(context).colors.primary,
-              width: onTap != null ? 4 : 0,
+              width: onTap != null ? ZetaSpacing.minimum : ZetaSpacing.none,
             ),
             borderRadius: ZetaRadius.none,
           ),

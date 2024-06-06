@@ -1,5 +1,8 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_test/flutter_test.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
@@ -67,6 +70,34 @@ class HotReload extends StatefulWidget {
 }
 
 class _HotReloadState extends State<HotReload> {
+  closeAddonsPanel(_) async {
+    final renderObj = context.findRenderObject();
+    final size = MediaQuery.of(context).size;
+    if (size.width > 799) {
+      if (renderObj is RenderBox) {
+        await Future.delayed(Duration(milliseconds: 10));
+        final pos = Offset(size.width - 50, 10);
+        final hitTestResult = BoxHitTestResult();
+        renderObj.hitTest(hitTestResult, position: pos);
+        final entry = hitTestResult.path.firstWhere((e) => e is BoxHitTestEntry) as BoxHitTestEntry;
+        final event1 = PointerDownEvent(position: pos);
+        final event2 = PointerUpEvent(position: pos);
+
+        GestureBinding.instance
+          ..dispatchEvent(event1, hitTestResult)
+          ..dispatchEvent(event2, hitTestResult)
+          ..handleEvent(event1, entry)
+          ..handleEvent(event2, entry);
+      }
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback(closeAddonsPanel);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Widgetbook(
@@ -94,14 +125,10 @@ class _HotReloadState extends State<HotReload> {
               useCases: [
                 WidgetbookUseCase(name: 'Status Label', builder: (context) => statusLabelUseCase(context)),
                 WidgetbookUseCase(name: 'Priority Pill', builder: (context) => priorityPillUseCase(context)),
-                WidgetbookUseCase(name: 'Badge', builder: (context) => badgeUseCase(context)),
+                WidgetbookUseCase(name: 'Label', builder: (context) => labelUseCase(context)),
                 WidgetbookUseCase(name: 'Indicators', builder: (context) => indicatorsUseCase(context)),
                 WidgetbookUseCase(name: 'Tags', builder: (context) => tagsUseCase(context)),
               ],
-            ),
-            WidgetbookUseCase(
-              name: 'Chat Item',
-              builder: (context) => chatItemWidgetBook(context),
             ),
             WidgetbookComponent(
               name: 'Buttons',
@@ -128,41 +155,48 @@ class _HotReloadState extends State<HotReload> {
                 WidgetbookUseCase(name: 'Circle', builder: (context) => progressCircleUseCase(context))
               ],
             ),
+            WidgetbookComponent(
+              name: 'List Items',
+              useCases: [
+                WidgetbookUseCase(name: 'List Item', builder: (context) => listItemUseCase(context)),
+                WidgetbookUseCase(
+                    name: 'Notification List Item', builder: (context) => notificationListItemUseCase(context)),
+                WidgetbookUseCase(name: 'Contact Item', builder: (context) => contactItemUseCase(context)),
+                WidgetbookUseCase(name: 'Chat List Item', builder: (context) => chatItemWidgetBook(context)),
+              ],
+            ),
             WidgetbookUseCase(name: 'Accordion', builder: (context) => accordionUseCase(context)),
             WidgetbookUseCase(name: 'Avatar', builder: (context) => avatarUseCase(context)),
-            WidgetbookUseCase(name: 'BreadCrumbs', builder: (context) => breadCrumbsUseCase(context)),
             WidgetbookUseCase(name: 'Banners', builder: (context) => bannerUseCase(context)),
+            WidgetbookUseCase(name: 'Bottom Sheet', builder: (context) => bottomSheetContentUseCase(context)),
+            WidgetbookUseCase(name: 'BreadCrumbs', builder: (context) => breadCrumbsUseCase(context)),
             WidgetbookUseCase(name: 'Checkbox', builder: (context) => checkboxUseCase(context)),
-            WidgetbookUseCase(name: 'Contact Item', builder: (context) => contactItemUseCase(context)),
-            WidgetbookUseCase(name: "Dropdown", builder: (context) => dropdownUseCase(context)),
-            WidgetbookUseCase(name: 'In Page Banners', builder: (context) => inPageBannerUseCase(context)),
-            WidgetbookUseCase(name: 'Password Input', builder: (context) => passwordInputUseCase(context)),
-            WidgetbookUseCase(name: 'Content', builder: (context) => bottomSheetContentUseCase(context)),
-            WidgetbookUseCase(name: 'Dial Pad', builder: (context) => dialPadUseCase(context)),
-            WidgetbookUseCase(name: 'Global Header', builder: (context) => globalHeaderUseCase(context)),
-            WidgetbookUseCase(name: 'List Item', builder: (context) => listItemUseCase(context)),
-            WidgetbookUseCase(
-                name: 'Notification List Item', builder: (context) => notificationListItemUseCase(context)),
-            WidgetbookUseCase(name: 'Navigation Bar', builder: (context) => navigationBarUseCase(context)),
-            WidgetbookUseCase(name: 'Pagination', builder: (context) => paginationUseCase(context)),
-            WidgetbookUseCase(name: 'Radio Button', builder: (context) => radioButtonUseCase(context)),
-            WidgetbookUseCase(name: 'Segmented Control', builder: (context) => segmentedControlUseCase(context)),
-            WidgetbookUseCase(name: 'Switch', builder: (context) => switchUseCase(context)),
-            WidgetbookUseCase(name: 'Snack Bar', builder: (context) => snackBarUseCase(context)),
+            WidgetbookUseCase(name: 'Bottom Sheet', builder: (context) => bottomSheetContentUseCase(context)),
             WidgetbookUseCase(name: 'Date Input', builder: (context) => dateInputUseCase(context)),
-            WidgetbookUseCase(name: 'Tabs', builder: (context) => tabsUseCase(context)),
-            WidgetbookUseCase(name: 'Phone Input', builder: (context) => phoneInputUseCase(context)),
-            WidgetbookUseCase(name: 'Stepper', builder: (context) => stepperUseCase(context)),
-            WidgetbookUseCase(name: 'Stepper Input', builder: (context) => stepperInputUseCase(context)),
+            WidgetbookUseCase(name: 'Dial Pad', builder: (context) => dialPadUseCase(context)),
             WidgetbookUseCase(name: 'Dialog', builder: (context) => dialogUseCase(context)),
-            WidgetbookUseCase(name: 'Search Bar', builder: (context) => searchBarUseCase(context)),
-            WidgetbookUseCase(name: 'Navigation Rail', builder: (context) => navigationRailUseCase(context)),
-            WidgetbookUseCase(name: 'Tooltip', builder: (context) => tooltipUseCase(context)),
-            WidgetbookUseCase(name: 'Select Input', builder: (context) => selectInputUseCase(context)),
-            WidgetbookUseCase(name: 'Screen Header Bar', builder: (context) => screenHeaderBarUseCase(context)),
             WidgetbookUseCase(name: 'Filter Selection', builder: (context) => filterSelectionUseCase(context)),
-            WidgetbookUseCase(name: 'Time Input', builder: (context) => timeInputUseCase(context)),
+            WidgetbookUseCase(name: 'Global Header', builder: (context) => globalHeaderUseCase(context)),
+            WidgetbookUseCase(name: 'In Page Banners', builder: (context) => inPageBannerUseCase(context)),
+            WidgetbookUseCase(name: 'Navigation Bar', builder: (context) => navigationBarUseCase(context)),
+            WidgetbookUseCase(name: 'Navigation Rail', builder: (context) => navigationRailUseCase(context)),
+            WidgetbookUseCase(name: 'Pagination', builder: (context) => paginationUseCase(context)),
+            WidgetbookUseCase(name: 'Password Input', builder: (context) => passwordInputUseCase(context)),
+            WidgetbookUseCase(name: 'Phone Input', builder: (context) => phoneInputUseCase(context)),
+            WidgetbookUseCase(name: 'Radio Button', builder: (context) => radioButtonUseCase(context)),
+            WidgetbookUseCase(name: 'Screen Header Bar', builder: (context) => screenHeaderBarUseCase(context)),
+            WidgetbookUseCase(name: 'Search Bar', builder: (context) => searchBarUseCase(context)),
+            WidgetbookUseCase(name: 'Segmented Control', builder: (context) => segmentedControlUseCase(context)),
+            WidgetbookUseCase(name: 'Select Input', builder: (context) => selectInputUseCase(context)),
+            WidgetbookUseCase(name: 'Snack Bar', builder: (context) => snackBarUseCase(context)),
+            WidgetbookUseCase(name: 'Stepper Input', builder: (context) => stepperInputUseCase(context)),
+            WidgetbookUseCase(name: 'Stepper', builder: (context) => stepperUseCase(context)),
+            WidgetbookUseCase(name: 'Switch', builder: (context) => switchUseCase(context)),
+            WidgetbookUseCase(name: 'Tabs', builder: (context) => tabsUseCase(context)),
             WidgetbookUseCase(name: 'Text Input', builder: (context) => textInputUseCase(context)),
+            WidgetbookUseCase(name: 'Time Input', builder: (context) => timeInputUseCase(context)),
+            WidgetbookUseCase(name: 'Tooltip', builder: (context) => tooltipUseCase(context)),
+            WidgetbookUseCase(name: "Dropdown", builder: (context) => dropdownUseCase(context)),
           ]..sort((a, b) => a.name.compareTo(b.name)),
         ),
         WidgetbookCategory(

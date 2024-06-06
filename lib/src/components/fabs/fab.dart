@@ -29,13 +29,14 @@ enum ZetaFabSize {
 class ZetaFAB extends StatefulWidget {
   ///Constructs [ZetaFAB].
   const ZetaFAB({
-    required this.scrollController,
-    required this.label,
+    this.label,
+    this.scrollController,
+    this.onPressed,
     this.type = ZetaFabType.primary,
     this.size = ZetaFabSize.small,
     this.shape = ZetaWidgetBorder.full,
     this.icon = ZetaIcons.add_round,
-    this.onPressed,
+    this.initiallyExpanded = false,
     super.key,
   });
 
@@ -59,17 +60,25 @@ class ZetaFAB extends StatefulWidget {
   /// {@macro on-change-disable}
   final VoidCallback? onPressed;
 
-  /// The [ZetaFAB] uses this controller to react to scroll change
-  /// and shrink/expand itself
-  final ScrollController scrollController;
+  /// The [ZetaFAB] uses this controller to react to scroll change and shrink/expand itself.
+  ///
+  /// If null, the FAB will never change from its initial size.
+  final ScrollController? scrollController;
 
-  ///The label of the button
-  final String label;
+  ///The label of the button.
+  ///
+  /// If null, the FAB will never grow.
+  final String? label;
 
   /// Icon for the button
   ///
   /// Defaults to [ZetaIcons.add_round].
   final IconData icon;
+
+  /// Whether the FAB starts as expanded.
+  ///
+  /// If [scrollController] or [label] are null, this is the permanent state of the FAB.
+  final bool initiallyExpanded;
 
   @override
   State<ZetaFAB> createState() => _ZetaFABState();
@@ -82,29 +91,29 @@ class ZetaFAB extends StatefulWidget {
       ..add(EnumProperty<ZetaFabSize>('buttonSize', size))
       ..add(EnumProperty<ZetaWidgetBorder>('buttonShape', shape))
       ..add(ObjectFlagProperty<VoidCallback?>.has('onPressed', onPressed))
-      ..add(
-        DiagnosticsProperty<ScrollController>(
-          'scrollController',
-          scrollController,
-        ),
-      )
+      ..add(DiagnosticsProperty<ScrollController>('scrollController', scrollController))
       ..add(StringProperty('buttonLabel', label))
-      ..add(DiagnosticsProperty<IconData>('buttonIcon', icon));
+      ..add(DiagnosticsProperty<IconData>('buttonIcon', icon))
+      ..add(DiagnosticsProperty<bool>('initiallyExpanded', initiallyExpanded));
   }
 }
 
 class _ZetaFABState extends State<ZetaFAB> {
-  bool _isExpanded = false;
+  bool __isExpanded = false;
+  bool get _isExpanded => __isExpanded;
+  set _isExpanded(bool value) {
+    if (value && widget.label != null || !value) __isExpanded = value;
+  }
 
   @override
   void initState() {
     super.initState();
-    _isExpanded = false;
-    widget.scrollController.addListener(_scrollListener);
+    _isExpanded = (widget.initiallyExpanded && widget.label != null) || false;
+    widget.scrollController?.addListener(_scrollListener);
   }
 
   void _scrollListener() {
-    final expanded = widget.scrollController.position.userScrollDirection == ScrollDirection.reverse;
+    final expanded = widget.scrollController?.position.userScrollDirection == ScrollDirection.reverse;
     if (_isExpanded != expanded) {
       setState(() => _isExpanded = expanded);
     }
@@ -112,7 +121,7 @@ class _ZetaFABState extends State<ZetaFAB> {
 
   @override
   void dispose() {
-    widget.scrollController.removeListener(_scrollListener);
+    widget.scrollController?.removeListener(_scrollListener);
     super.dispose();
   }
 
@@ -154,12 +163,10 @@ class _ZetaFABState extends State<ZetaFAB> {
             mainAxisSize: MainAxisSize.min,
             children: [
               Icon(widget.icon, size: widget.size.iconSize),
-              if (_isExpanded)
+              if (_isExpanded && widget.label != null)
                 Row(
                   mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text(widget.label, style: ZetaTextStyles.labelLarge),
-                  ],
+                  children: [Text(widget.label!, style: ZetaTextStyles.labelLarge)],
                 ),
             ].divide(const SizedBox(width: ZetaSpacing.small)).toList(),
           ),

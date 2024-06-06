@@ -9,8 +9,8 @@ Widget stepperInputUseCase(BuildContext context) {
   return WidgetbookTestWidget(
     widget: ZetaStepperInput(
       initialValue: context.knobs.int.input(label: 'Initial value'),
-      min: context.knobs.int.input(label: 'Minimum value'),
-      max: context.knobs.int.input(label: 'Maximum value'),
+      min: context.knobs.int.input(label: 'Minimum value', initialValue: 0),
+      max: context.knobs.int.input(label: 'Maximum value', initialValue: 10),
       size: context.knobs.list(
         label: 'Size',
         options: ZetaStepperInputSize.values,

@@ -114,7 +114,7 @@ class CirclePainter extends CustomPainter {
   final ZetaColors colors;
 
   final _paint = Paint()
-    ..strokeWidth = 4
+    ..strokeWidth = ZetaSpacing.minimum
     ..style = PaintingStyle.stroke;
 
   @override

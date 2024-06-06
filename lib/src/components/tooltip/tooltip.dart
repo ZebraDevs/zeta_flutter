@@ -80,7 +80,7 @@ class ZetaTooltip extends StatelessWidget {
     final horizontalArrowWidth =
         [ZetaTooltipArrowDirection.left, ZetaTooltipArrowDirection.right].contains(arrowDirection)
             ? _horizontalArrowSize.width
-            : 0;
+            : ZetaSpacing.none;
 
     return LayoutBuilder(
       builder: (context, constraints) {

@@ -16,8 +16,8 @@ Widget listItemUseCase(BuildContext context) {
 
         final leading = context.knobs.boolean(label: 'Leading', initialValue: false)
             ? Container(
-                width: 48,
-                height: 48,
+                width: ZetaSpacing.xL8,
+                height: ZetaSpacing.xL8,
                 decoration: BoxDecoration(borderRadius: ZetaRadius.rounded),
                 child: Placeholder(),
               )

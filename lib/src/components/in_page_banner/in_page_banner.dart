@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 
 import '../../../zeta_flutter.dart';
 
-///Zeta In Page Banner
+/// Zeta In Page Banner.
+///
+/// In page banners display an important, succinct message, and may provide actions for users to address. Banners should be displayed at the top of the screen,below a top app bar. Only one banner should be shown at a time.
 class ZetaInPageBanner extends StatelessWidget {
-  ///Constructs [ZetaInPageBanner]
+  /// Constructs [ZetaInPageBanner].
   const ZetaInPageBanner({
     super.key,
     required this.content,
@@ -17,18 +19,18 @@ class ZetaInPageBanner extends StatelessWidget {
     this.actions = const [],
   });
 
-  ///The content of the banner. Typically [Text].
+  /// The content of the banner. Typically [Text].
   final Widget content;
 
   /// {@macro zeta-component-rounded}
   final bool rounded;
 
-  ///Determines the color of the banner.
+  /// Determines the color of the banner.
   ///
-  ///Defaults to [ZetaWidgetStatus.info].
+  /// Defaults to [ZetaWidgetStatus.info].
   final ZetaWidgetStatus status;
 
-  ///Title of the banner.
+  /// Title of the banner.
   final String? title;
 
   /// Leading icon on top left of banner.

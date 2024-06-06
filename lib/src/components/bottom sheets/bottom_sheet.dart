@@ -31,7 +31,7 @@ class ZetaBottomSheet extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.fromLTRB(
         ZetaSpacing.xL,
-        0,
+        ZetaSpacing.none,
         ZetaSpacing.xL,
         ZetaSpacing.xL,
       ),
@@ -59,11 +59,14 @@ class ZetaBottomSheet extends StatelessWidget {
             ),
           ),
           if (title != null)
-            Align(
-              alignment: centerTitle ? Alignment.center : Alignment.centerLeft,
-              child: Text(
-                title!,
-                style: ZetaTextStyles.titleMedium,
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: ZetaSpacing.medium, vertical: ZetaSpacing.xL2),
+              child: Align(
+                alignment: centerTitle ? Alignment.center : Alignment.centerLeft,
+                child: Text(
+                  title!,
+                  style: ZetaTextStyles.titleMedium,
+                ),
               ),
             ),
           Material(
