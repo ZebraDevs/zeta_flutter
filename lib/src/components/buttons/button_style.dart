@@ -61,8 +61,6 @@ extension ButtonFunctions on ZetaButtonType {
   bool get solid => index < 4;
 }
 
-extension on ZetaColors {}
-
 ///Border utility functions
 extension BorderFunctions on ZetaWidgetBorder {
   ///Returns radius based on [ZetaWidgetBorder]
@@ -91,7 +89,7 @@ ButtonStyle buttonStyle(
   final bool isSolid = type.solid || backgroundColor != null;
 
   return ButtonStyle(
-    minimumSize: WidgetStateProperty.all(const Size.square(32)),
+    minimumSize: WidgetStateProperty.all(const Size.square(ZetaSpacing.xL4)),
     shape: WidgetStateProperty.all(
       RoundedRectangleBorder(borderRadius: borderType.radius),
     ),

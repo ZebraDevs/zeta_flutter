@@ -8,7 +8,7 @@ void main() {
     await tester.pumpWidget(
       TestWidget(
         widget: ZetaPriorityPill(
-          priority: 'High',
+          label: 'High',
           index: '2',
         ),
       ),

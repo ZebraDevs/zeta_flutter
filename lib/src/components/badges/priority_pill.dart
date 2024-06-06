@@ -1,29 +1,31 @@
+// ignore_for_file: deprecated_member_use_from_same_package
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../../../zeta_flutter.dart';
 
-/// The type of [ZetaPriorityPill].
+/// The type of [ZetaPriorityPill]; determines the default [ZetaPriorityPill.customColor], [ZetaPriorityPill.index] and [ZetaPriorityPill.label].
 enum ZetaPriorityPillType {
-  /// sets the color to a shade of red
+  /// Sets the default color to `ZetaColors.red` and index to 'U'.
   urgent,
 
-  /// sets the color to a shade of orange
+  /// Sets the default color to `ZetaColors.orange` and index to '1'.
   high,
 
-  /// sets the color to a shade of blue
+  /// Sets the default color to `ZetaColors.blue` and index to '2'.
   medium,
 
-  /// sets the color to a shade of green
+  /// Sets the default color to `ZetaColors.green` and index to '3'.
   low,
 }
 
 /// The size of [ZetaPriorityPill].
 enum ZetaPriorityPillSize {
-  /// large
+  /// Large size contains both badge and lozenge.
   large,
 
-  /// small
+  /// Small size contains badge only.
   small,
 }
 
@@ -43,29 +45,39 @@ extension on ZetaPriorityPillType {
   }
 }
 
-/// Zeta Priority Pill.
-///
 /// This badge is used to indicate the order of importance.
 class ZetaPriorityPill extends StatelessWidget {
   ///Constructs [ZetaPriorityPill]
   const ZetaPriorityPill({
     this.index,
-    this.priority,
+    @Deprecated('Use label instead. ' 'This variable has been renamed as of 0.11.0') this.priority,
+    this.label,
     this.rounded = true,
     this.isBadge = false,
     this.type = ZetaPriorityPillType.urgent,
     this.size = ZetaPriorityPillSize.large,
+    this.customColor,
     super.key,
   });
 
   /// {@macro zeta-component-rounded}
   final bool rounded;
 
-  /// Leading number in component.
+  /// Leading number / character in component. Will be truncated to single character.
+  ///
+  /// Defaults to value based on [type].
+  ///  * Urgent = U
+  ///  * High = 1
+  ///  * Medium = 2
+  ///  * Low = 3
   final String? index;
 
   /// Text in main part of component.
+  @Deprecated('Use label instead. ' 'This variable has been renamed as of 0.11.0')
   final String? priority;
+
+  /// Text in main part of component.
+  final String? label;
 
   /// Indicates if it is badge or lozenge.
   ///
@@ -74,18 +86,22 @@ class ZetaPriorityPill extends StatelessWidget {
 
   /// The type of [ZetaPriorityPill].
   ///
-  /// Default is 'ZetaPriorityPillType.urgent'
+  /// Default is [ZetaPriorityPillType.urgent]
   final ZetaPriorityPillType type;
 
   /// The size of [ZetaPriorityPill].
   ///
-  /// Default is `ZetaWidgetSize.large`.
+  /// Default is [ZetaWidgetSize.large].
   final ZetaPriorityPillSize size;
+
+  /// Color override
+  final ZetaColorSwatch? customColor;
 
   @override
   Widget build(BuildContext context) {
-    final color = type.color(context);
+    final ZetaColorSwatch color = customColor ?? type.color(context);
     final size = this.size == ZetaPriorityPillSize.small ? ZetaSpacing.xL : ZetaSpacing.xL3;
+    final label = this.label ?? priority;
 
     return DecoratedBox(
       decoration: BoxDecoration(
@@ -111,8 +127,8 @@ class ZetaPriorityPill extends StatelessWidget {
                   : index!.substring(0, 1).capitalize(),
               style: this.size == ZetaPriorityPillSize.small
                   ? ZetaTextStyles.labelSmall.copyWith(
-                      fontSize: 11,
-                      height: 1.1,
+                      fontSize: 10,
+                      height: 13 / 10,
                       color: color.onColor,
                     )
                   : ZetaTextStyles.labelMedium.apply(color: color.onColor),
@@ -125,11 +141,11 @@ class ZetaPriorityPill extends StatelessWidget {
                 vertical: ZetaSpacing.minimum,
               ),
               child: Text(
-                (priority?.isEmpty ?? true) ? type.name.capitalize() : priority!,
+                (label?.isEmpty ?? true) ? type.name.capitalize() : label!,
                 style: this.size == ZetaPriorityPillSize.small
                     ? ZetaTextStyles.bodyXSmall.copyWith(
-                        fontSize: 11,
-                        height: 1.1,
+                        fontSize: 10,
+                        height: 13 / 10,
                       )
                     : ZetaTextStyles.bodySmall,
                 overflow: TextOverflow.ellipsis,
@@ -145,10 +161,12 @@ class ZetaPriorityPill extends StatelessWidget {
     super.debugFillProperties(properties);
     properties
       ..add(StringProperty('index', index))
-      ..add(StringProperty('priority', priority))
       ..add(DiagnosticsProperty<bool>('rounded', rounded))
       ..add(DiagnosticsProperty<bool>('isBadge', isBadge))
       ..add(EnumProperty<ZetaPriorityPillType?>('type', type))
-      ..add(EnumProperty<ZetaPriorityPillSize>('size', size));
+      ..add(EnumProperty<ZetaPriorityPillSize>('size', size))
+      ..add(StringProperty('label', label))
+      ..add(ColorProperty('customColor', customColor))
+      ..add(StringProperty('priority', priority));
   }
 }

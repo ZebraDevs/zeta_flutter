@@ -581,8 +581,19 @@ class ZetaColors {
   /// True if current [ZetaColors] object uses dark mode colors.
   bool get isDarkMode => brightness == Brightness.dark;
 
-  /// Colorful colors.
+  /// List of colorful colors.
   List<ZetaColorSwatch> get rainbow => [red, orange, yellow, green, blue, teal, pink];
+
+  /// Map of colorful colors.
+  Map<String, ZetaColorSwatch> get rainbowMap => {
+        'red': red,
+        'orange': orange,
+        'yellow': yellow,
+        'green': green,
+        'blue': blue,
+        'teal': teal,
+        'pink': pink,
+      };
 
   /// Helper function to adjust color swatch values based on brightness and contrast
   static ZetaColorSwatch _adjustedValue(

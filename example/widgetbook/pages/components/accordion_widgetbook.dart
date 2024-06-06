@@ -6,6 +6,7 @@ import '../../test/test_components.dart';
 import '../../utils/utils.dart';
 
 Widget accordionUseCase(BuildContext context) => WidgetbookTestWidget(
+      screenSize: Size(1280, 720),
       widget: Padding(
         padding: const EdgeInsets.all(ZetaSpacing.xL),
         child: ZetaAccordion(

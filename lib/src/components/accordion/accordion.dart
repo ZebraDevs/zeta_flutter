@@ -2,8 +2,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import '../../../zeta_flutter.dart';
 
-/// Zeta Accordion component.
-///
 /// The accordion is a control element comprising a vertically stacked list of items,
 /// such as labels or thumbnails. Each item can be "expanded" or "collapsed" to reveal
 /// the content associated with that item. There can be zero expanded items, exactly one,
@@ -94,6 +92,7 @@ class _ZetaAccordionState extends State<ZetaAccordion> with TickerProviderStateM
   Widget build(BuildContext context) {
     final zetaColors = Zeta.of(context).colors;
     final borderColor = _disabled ? zetaColors.borderDisabled : zetaColors.borderSubtle;
+    final childTextStyle = ZetaTextStyles.h5.apply(color: zetaColors.textDefault);
     return DecoratedBox(
       decoration: BoxDecoration(
         border: widget.contained ? Border.all(color: borderColor) : Border(top: BorderSide(color: borderColor)),
@@ -142,7 +141,7 @@ class _ZetaAccordionState extends State<ZetaAccordion> with TickerProviderStateM
                         }
                       }),
               child: Padding(
-                padding: const EdgeInsets.all(16),
+                padding: const EdgeInsets.all(ZetaSpacing.large),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -169,15 +168,16 @@ class _ZetaAccordionState extends State<ZetaAccordion> with TickerProviderStateM
               sizeFactor: _animation,
               axisAlignment: -1,
               child: Padding(
-                padding: const EdgeInsets.fromLTRB(ZetaSpacing.large, 0, ZetaSpacing.large, ZetaSpacing.large),
+                padding: const EdgeInsets.fromLTRB(
+                  ZetaSpacing.large,
+                  ZetaSpacing.none,
+                  ZetaSpacing.large,
+                  ZetaSpacing.large,
+                ),
                 child: Theme(
-                  data: Theme.of(context).copyWith(
-                    listTileTheme: ListTileThemeData(
-                      titleTextStyle: ZetaTextStyles.titleSmall.apply(color: zetaColors.textDefault),
-                    ),
-                  ),
+                  data: Theme.of(context).copyWith(listTileTheme: ListTileThemeData(titleTextStyle: childTextStyle)),
                   child: DefaultTextStyle(
-                    style: ZetaTextStyles.titleSmall,
+                    style: childTextStyle,
                     child: widget.child ?? const SizedBox(),
                   ),
                 ),

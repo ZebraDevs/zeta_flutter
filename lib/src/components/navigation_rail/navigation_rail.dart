@@ -171,7 +171,7 @@ class _ZetaNavigationRailItemContent extends StatelessWidget {
                               : selected
                                   ? zeta.colors.textDefault
                                   : zeta.colors.cool.shade70,
-                          size: 24,
+                          size: ZetaSpacing.xL2,
                         ),
                         child: icon!,
                       ),

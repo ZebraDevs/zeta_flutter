@@ -20,7 +20,7 @@ class _PaginationExampleState extends State<PaginationExample> {
       name: PaginationExample.name,
       child: Center(
         child: Padding(
-          padding: const EdgeInsets.all(64),
+          padding: const EdgeInsets.all(ZetaSpacing.xL9),
           child: Column(
             children: [
               Expanded(

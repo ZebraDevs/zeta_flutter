@@ -8,12 +8,12 @@ import '../../utils/utils.dart';
 Widget bannerUseCase(BuildContext context) {
   final rounded = roundedKnob(context);
 
-  final banner = ZetaSystemBanner(
+  final banner = ZetaBanner(
     context: context,
     title: context.knobs.string(label: 'Title', initialValue: 'Banner Title'),
     type: context.knobs.list(
       label: 'Type',
-      options: ZetaSystemBannerStatus.values,
+      options: ZetaBannerStatus.values,
       labelBuilder: enumLabelBuilder,
     ),
     leadingIcon: iconKnob(context, rounded: rounded, nullable: true),
@@ -28,23 +28,21 @@ Widget bannerUseCase(BuildContext context) {
   );
 
   return WidgetbookTestWidget(
-    widget: Padding(
-      padding: EdgeInsets.all(ZetaSpacing.xL),
-      child: Column(
-        children: [
-          banner,
-          const SizedBox(height: ZetaSpacing.xL9),
-          ZetaButton.text(
-            label: 'Popup',
-            onPressed: () {
-              ScaffoldMessenger.of(context).showMaterialBanner(banner);
-              Future.delayed(Duration(seconds: 2)).then(
-                (value) => ScaffoldMessenger.of(context).clearMaterialBanners(),
-              );
-            },
-          )
-        ],
-      ),
+    removeBody: true,
+    widget: Column(
+      children: [
+        banner,
+        const SizedBox(height: ZetaSpacing.xL9),
+        ZetaButton.text(
+          label: 'Popup',
+          onPressed: () {
+            ScaffoldMessenger.of(context).showMaterialBanner(banner);
+            Future.delayed(Duration(seconds: 2)).then(
+              (value) => ScaffoldMessenger.of(context).clearMaterialBanners(),
+            );
+          },
+        )
+      ],
     ),
   );
 }

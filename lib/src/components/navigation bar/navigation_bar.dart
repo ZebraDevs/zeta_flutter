@@ -219,7 +219,7 @@ class _NavigationItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = Zeta.of(context).colors;
-    final elementColor = selected ? colors.primary : colors.textDisabled;
+    final elementColor = selected ? colors.primary : colors.textSubtle;
 
     return Material(
       color: colors.surfacePrimary,

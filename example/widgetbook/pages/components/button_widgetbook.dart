@@ -93,7 +93,8 @@ Widget buttonGroupUseCase(BuildContext context) {
 }
 
 Widget floatingActionButtonUseCase(BuildContext context) => WidgetbookTestWidget(
-      widget: Padding(padding: EdgeInsets.all(20), child: FabWidget(context)),
+      screenSize: Size(1280, 720),
+      widget: Padding(padding: EdgeInsets.all(ZetaSpacing.xL), child: FabWidget(context)),
     );
 
 class FabWidget extends StatefulWidget {
@@ -136,6 +137,7 @@ class _FabWidgetState extends State<FabWidget> {
           itemBuilder: (context, index) => Text("$index"),
         ),
         floatingActionButton: ZetaFAB(
+          initiallyExpanded: true,
           scrollController: _scrollController,
           label: widget.c.knobs.string(label: 'Label', initialValue: 'Floating Action Button'),
           onPressed: widget.c.knobs.boolean(label: 'Disabled') ? null : () {},

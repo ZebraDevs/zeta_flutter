@@ -63,16 +63,16 @@ class _ZetaBreadCrumbsState extends State<ZetaBreadCrumbs> {
       child: Row(
         children: renderedChildren(widget.children)
             .divide(
-              const Row(
+              Row(
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     width: ZetaSpacing.small,
                   ),
                   Icon(
-                    ZetaIcons.chevron_right_round,
+                    widget.rounded ? ZetaIcons.chevron_right_round : ZetaIcons.chevron_right_sharp,
                     size: ZetaSpacing.xL,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: ZetaSpacing.small,
                   ),
                 ],
@@ -308,7 +308,7 @@ class _BreadCrumbsTruncatedState extends State<BreadCrumbsTruncated> {
               }),
               padding: WidgetStateProperty.all(EdgeInsets.zero),
               minimumSize: WidgetStateProperty.all(Size.zero),
-              elevation: const WidgetStatePropertyAll(0),
+              elevation: const WidgetStatePropertyAll(ZetaSpacing.none),
             ),
             child: Icon(
               widget.rounded ? ZetaIcons.more_horizontal_round : ZetaIcons.more_horizontal_sharp,

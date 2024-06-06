@@ -12,7 +12,14 @@ Widget inputChipUseCase(BuildContext context) {
   return WidgetbookTestWidget(
     widget: ZetaInputChip(
       label: context.knobs.string(label: 'Label', initialValue: 'Label'),
-      leading: context.knobs.boolean(label: 'Avatar') ? ZetaAvatar(initials: 'AZ', size: ZetaAvatarSize.xs) : null,
+      leading: context.knobs.boolean(label: 'Avatar', initialValue: true)
+          ? ZetaAvatar(
+              initials: 'AZ',
+              image: context.knobs.boolean(label: 'Avatar Image')
+                  ? Image.asset('assets/Omer.jpg', fit: BoxFit.cover)
+                  : null,
+            )
+          : null,
       rounded: rounded,
       trailing: trailing != null ? Icon(trailing) : null,
     ),
@@ -23,14 +30,17 @@ Widget filterChipUseCase(BuildContext context) => WidgetbookTestWidget(
       widget: ZetaFilterChip(
         label: context.knobs.string(label: 'Label', initialValue: 'Label'),
         rounded: roundedKnob(context),
-        selected: context.knobs.boolean(label: 'Selected'),
+        selected: context.knobs.boolean(label: 'Selected', initialValue: true),
       ),
     );
 
-Widget assistChipUseCase(BuildContext context) => WidgetbookTestWidget(
-      widget: ZetaAssistChip(
-        label: context.knobs.string(label: 'Label', initialValue: 'Label'),
-        rounded: roundedKnob(context),
-        leading: context.knobs.boolean(label: 'Icon') ? Icon(ZetaIcons.star_round) : null,
-      ),
-    );
+Widget assistChipUseCase(BuildContext context) {
+  final rounded = roundedKnob(context);
+  return WidgetbookTestWidget(
+    widget: ZetaAssistChip(
+      label: context.knobs.string(label: 'Label', initialValue: 'Label'),
+      rounded: rounded,
+      leading: Icon(iconKnob(context, rounded: rounded)),
+    ),
+  );
+}
