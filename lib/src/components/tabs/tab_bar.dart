@@ -8,7 +8,7 @@ class ZetaTabBar extends TabBar {
     required BuildContext context,
     required List<ZetaTab> super.tabs,
     TabAlignment super.tabAlignment = TabAlignment.center,
-    bool enabled = true,
+    @Deprecated('Use disabled instead. ' 'enabled is deprecated as of 0.11.0') bool enabled = true,
     super.isScrollable,
     super.enableFeedback,
     super.dragStartBehavior,
@@ -21,15 +21,16 @@ class ZetaTabBar extends TabBar {
           indicator: UnderlineTabIndicator(
             borderSide: BorderSide(
               color: Zeta.of(context).colors.primary,
-              width: enabled ? 4 : 0,
+              width: onTap != null ? 4 : 0,
             ),
             borderRadius: ZetaRadius.none,
           ),
+          splashFactory: null,
           labelStyle: ZetaTextStyles.labelLarge.copyWith(
-            color: enabled ? Zeta.of(context).colors.textDefault : Zeta.of(context).colors.textDisabled,
+            color: onTap != null ? Zeta.of(context).colors.textDefault : Zeta.of(context).colors.textDisabled,
           ),
           unselectedLabelStyle: ZetaTextStyles.labelLarge.copyWith(
-            color: enabled ? Zeta.of(context).colors.textSubtle : Zeta.of(context).colors.textDisabled,
+            color: onTap != null ? Zeta.of(context).colors.textSubtle : Zeta.of(context).colors.textDisabled,
           ),
         );
 }

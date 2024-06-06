@@ -41,3 +41,8 @@ IconData? iconKnob(
 }
 
 bool roundedKnob(BuildContext context) => context.knobs.boolean(label: 'Rounded');
+
+bool disabledKnob(BuildContext context) => context.knobs.boolean(
+      label: 'Disabled',
+      initialValue: false,
+    );

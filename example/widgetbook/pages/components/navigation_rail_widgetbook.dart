@@ -20,7 +20,7 @@ Widget navigationRailUseCase(BuildContext context) {
     initial: rounded ? ZetaIcons.star_round : ZetaIcons.star_sharp,
   );
   final wordWrap = context.knobs.boolean(label: 'Word wrap', initialValue: true);
-  final disabled = context.knobs.boolean(label: 'Disabled', initialValue: false);
+  final disabled = disabledKnob(context);
   final itemsList = items.split(',').where((element) => element.trim().isNotEmpty).toList();
   return SafeArea(
     child: WidgetbookTestWidget(

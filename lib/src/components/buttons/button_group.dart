@@ -127,6 +127,8 @@ class ZetaGroupButton extends StatefulWidget {
   final IconData? icon;
 
   /// Function for when [ZetaGroupButton] is clicked.
+  ///
+  /// {@macro on-change-disable}
   final VoidCallback? onPressed;
 
   /// Content of dropdown.
@@ -145,7 +147,6 @@ class ZetaGroupButton extends StatefulWidget {
   final bool isFinal;
 
   /// If [ZetaGroupButton] is inverse.
-
   final bool isInverse;
 
   @override

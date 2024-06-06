@@ -54,6 +54,8 @@ class ZetaCheckbox extends FormField<bool> {
   final bool value;
 
   /// Called when the value of the checkbox should change.
+  ///
+  /// {@macro on-change-disable}
   final ValueChanged<bool>? onChanged;
 
   /// The label displayed next to the checkbox

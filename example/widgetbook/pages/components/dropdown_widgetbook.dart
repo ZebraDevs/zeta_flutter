@@ -7,14 +7,11 @@ import '../../utils/utils.dart';
 
 Widget dropdownUseCase(BuildContext context) => WidgetbookTestWidget(
       widget: Center(
-        child: DropdownExample(context),
+        child: DropdownExample(),
       ),
     );
 
 class DropdownExample extends StatefulWidget {
-  const DropdownExample(this.c);
-  final BuildContext c;
-
   @override
   State<DropdownExample> createState() => _DropdownExampleState();
 }
@@ -35,18 +32,17 @@ class _DropdownExampleState extends State<DropdownExample> {
   ];
 
   @override
-  Widget build(BuildContext _) {
+  Widget build(BuildContext context) {
     return ZetaDropdown(
-      type: widget.c.knobs.list(
+      type: context.knobs.list(
         label: "Dropdown type",
         options: ZetaDropdownMenuType.values,
         labelBuilder: enumLabelBuilder,
       ),
-      onChange: (value) {},
+      onChange: disabledKnob(context) ? null : (value) {},
       items: items,
-      rounded: widget.c.knobs.boolean(label: "Rounded"),
-      disabled: widget.c.knobs.boolean(label: "Disabled"),
-      size: widget.c.knobs.list(
+      rounded: context.knobs.boolean(label: "Rounded"),
+      size: context.knobs.list(
         label: 'Size',
         options: ZetaDropdownSize.values,
         labelBuilder: enumLabelBuilder,

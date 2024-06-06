@@ -3,6 +3,7 @@ import 'package:widgetbook/widgetbook.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 import '../../test/test_components.dart';
+import '../../utils/utils.dart';
 
 Widget stepperUseCase(BuildContext context) {
   int currentStep = 0;
@@ -24,7 +25,7 @@ Widget stepperUseCase(BuildContext context) {
     labelBuilder: (type) => type.name,
   );
 
-  final rounded = context.knobs.boolean(label: 'Rounded', initialValue: true);
+  final rounded = roundedKnob(context);
 
   final enabledContent = context.knobs.boolean(label: 'Enabled Content', initialValue: true);
 

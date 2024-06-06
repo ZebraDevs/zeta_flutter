@@ -94,17 +94,19 @@ class ZetaButton extends StatelessWidget {
     super.key,
   }) : type = ZetaButtonType.text;
 
-  ///Button label
+  /// Button label
   final String label;
 
-  ///Called when the button is tapped or otherwise activated.
+  /// Called when the button is tapped or otherwise activated.
+  ///
+  /// {@macro on-change-disable}
   final VoidCallback? onPressed;
 
-  ///The coloring type of the button
+  /// The coloring type of the button
   final ZetaButtonType type;
 
-  ///Whether or not the button is sharp or rounded
-  ///Defaults to rounded
+  /// Whether or not the button is sharp or rounded
+  /// Defaults to [ZetaWidgetBorder.rounded]
   final ZetaWidgetBorder borderType;
 
   /// Size of the button. Defaults to large.
