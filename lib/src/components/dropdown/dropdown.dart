@@ -26,13 +26,20 @@ enum ZetaDropdownSize {
   mini,
 }
 
+/// A class for controlling a [ZetaDropdown]
+///
+/// Can be accquired from the builder method of a [ZetaDropdown]
 abstract class ZetaDropdownController {
+  /// Returns true if the dropdown is open.
   bool get isOpen;
 
+  /// Opens the dropdown.
   void open();
 
+  /// Closes the dropdown.
   void close();
 
+  /// Toggles the dropdown open or closed depending on its current state.
   void toggle();
 }
 
@@ -42,7 +49,6 @@ class _DropdownControllerImpl implements ZetaDropdownController {
   final OverlayPortalController overlayPortalController;
 
   @override
-  // TODO: implement isOpen
   bool get isOpen => overlayPortalController.isShowing;
 
   @override
@@ -90,8 +96,9 @@ class ZetaDropdown<T> extends StatefulWidget {
     this.type = ZetaDropdownMenuType.standard,
     this.size = ZetaDropdownSize.standard,
     this.builder,
+    this.onDismissed,
     super.key,
-  }) : assert(items.length > 0, 'Items must be greater than 0.');
+  });
 
   /// The items displayed in the dropdown.
   final List<ZetaDropdownItem<T>> items;
@@ -104,7 +111,10 @@ class ZetaDropdown<T> extends StatefulWidget {
   /// Called with the selected value whenever the dropdown is changed.
   ///
   /// {@macro on-change-disable}
-  final ValueSetter<T>? onChange;
+  final ValueSetter<ZetaDropdownItem<T>>? onChange;
+
+  /// Called when the dropdown is dimissed.
+  final VoidCallback? onDismissed;
 
   /// {@macro zeta-component-rounded}
   final bool rounded;
@@ -119,6 +129,9 @@ class ZetaDropdown<T> extends StatefulWidget {
   /// Defaults to [ZetaDropdownSize.mini]
   final ZetaDropdownSize size;
 
+  /// A custom builder for the child of the dropdown.
+  ///
+  /// Provides a build context, the currently selected item in the dropdown and a controller which can be used to open/close the dropdown.
   final Widget Function(
     BuildContext context,
     ZetaDropdownItem<T>? selectedItem,
@@ -126,7 +139,7 @@ class ZetaDropdown<T> extends StatefulWidget {
   )? builder;
 
   @override
-  State<ZetaDropdown<T>> createState() => _ZetaDropDownState<T>();
+  State<ZetaDropdown<T>> createState() => ZetaDropDownState<T>();
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
@@ -135,8 +148,17 @@ class ZetaDropdown<T> extends StatefulWidget {
       ..add(DiagnosticsProperty<bool>('rounded', rounded))
       ..add(IterableProperty<ZetaDropdownItem<T>>('items', items))
       ..add(DiagnosticsProperty<T?>('selectedItem', value))
-      ..add(ObjectFlagProperty<ValueSetter<T>?>.has('onChange', onChange))
-      ..add(EnumProperty<ZetaDropdownSize>('size', size));
+      ..add(EnumProperty<ZetaDropdownSize>('size', size))
+      ..add(ObjectFlagProperty<ValueSetter<ZetaDropdownItem<T>>?>.has('onChange', onChange))
+      ..add(ObjectFlagProperty<VoidCallback?>.has('onDismissed', onDismissed))
+      ..add(
+        ObjectFlagProperty<
+            Widget Function(
+              BuildContext context,
+              ZetaDropdownItem<T>? selectedItem,
+              ZetaDropdownController controller,
+            )?>.has('builder', builder),
+      );
   }
 }
 
@@ -149,13 +171,13 @@ enum MenuPosition {
   down,
 }
 
-class _ZetaDropDownState<T> extends State<ZetaDropdown<T>> {
+class ZetaDropDownState<T> extends State<ZetaDropdown<T>> {
   final _DropdownControllerImpl _dropdownController = _DropdownControllerImpl(
     overlayPortalController: OverlayPortalController(),
   );
   final _link = LayerLink();
   final _menuKey = GlobalKey();
-  final _headerKey = GlobalKey();
+  final _childKey = GlobalKey();
   MenuPosition _menuPosition = MenuPosition.down;
 
   ZetaDropdownItem<T>? _selectedItem;
@@ -170,13 +192,16 @@ class _ZetaDropDownState<T> extends State<ZetaDropdown<T>> {
     _setSelectedItem();
   }
 
+  /// Returns true if the dropdown is open.
+  bool get isOpen => _dropdownController.isOpen;
+
   @override
   void didUpdateWidget(ZetaDropdown<T> oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.value != widget.value) {
       setState(_setSelectedItem);
     }
-    if (widget.onChange != null) {
+    if (widget.onChange == null) {
       unawaited(
         Future<void>.delayed(Duration.zero).then(
           (value) => _dropdownController.close(),
@@ -187,15 +212,17 @@ class _ZetaDropDownState<T> extends State<ZetaDropdown<T>> {
 
   /// Return position of header
   Offset get _headerPos {
-    final headerBox = _headerKey.currentContext!.findRenderObject()! as RenderBox;
+    final headerBox = _childKey.currentContext!.findRenderObject()! as RenderBox;
     return headerBox.localToGlobal(Offset.zero);
   }
 
   void _setSelectedItem() {
-    try {
-      _selectedItem = widget.items.firstWhere((item) => item.value == widget.value);
-    } catch (e) {
-      _selectedItem = widget.items.first;
+    if (widget.items.isNotEmpty) {
+      try {
+        _selectedItem = widget.items.firstWhere((item) => item.value == widget.value);
+      } catch (e) {
+        _selectedItem = null;
+      }
     }
   }
 
@@ -216,14 +243,17 @@ class _ZetaDropDownState<T> extends State<ZetaDropdown<T>> {
     late Widget child;
 
     if (widget.builder != null) {
-      child = widget.builder!(context, _selectedItem, _dropdownController);
+      child = Container(
+        key: _childKey,
+        child: widget.builder!(context, _selectedItem, _dropdownController),
+      );
     } else {
       child = _DropdownItem(
-        onPress: widget.onChange != null ? onTap : null,
+        onPress: widget.onChange != null ? _onTap : null,
         value: _selectedItem ?? widget.items.first,
         allocateLeadingSpace: widget.type == ZetaDropdownMenuType.standard && _selectedItem?.icon != null,
         rounded: widget.rounded,
-        key: _headerKey,
+        key: _childKey,
       );
     }
 
@@ -240,19 +270,24 @@ class _ZetaDropDownState<T> extends State<ZetaDropdown<T>> {
                   ? Alignment.topLeft
                   : Alignment.bottomLeft, // Align overlay dropdown in its correct position
               followerAnchor: _menuPosition == MenuPosition.up ? Alignment.bottomLeft : Alignment.topLeft,
+              offset: const Offset(0, ZetaSpacing.xL * -1),
               child: Align(
                 alignment:
                     _menuPosition == MenuPosition.up ? AlignmentDirectional.bottomStart : AlignmentDirectional.topStart,
                 child: TapRegion(
                   onTapOutside: (event) {
-                    final headerBox = _headerKey.currentContext!.findRenderObject()! as RenderBox;
+                    final headerBox = _childKey.currentContext!.findRenderObject()! as RenderBox;
+
                     final headerPosition = headerBox.localToGlobal(Offset.zero);
                     final inHeader = _isInHeader(
                       headerPosition,
                       headerBox.size,
                       event.position,
                     );
-                    if (!inHeader) _dropdownController.close();
+                    if (!inHeader) {
+                      _dropdownController.close();
+                      widget.onDismissed?.call();
+                    }
                   },
                   child: _ZetaDropDownMenu<T>(
                     items: widget.items,
@@ -266,7 +301,7 @@ class _ZetaDropDownState<T> extends State<ZetaDropdown<T>> {
                       setState(() {
                         _selectedItem = item;
                       });
-                      widget.onChange?.call(item.value);
+                      widget.onChange?.call(item);
                       _dropdownController.close();
                     },
                   ),
@@ -282,10 +317,10 @@ class _ZetaDropDownState<T> extends State<ZetaDropdown<T>> {
 
   double get _size => widget.size == ZetaDropdownSize.mini ? 120 : 320;
 
-  void onTap() {
+  void _onTap() {
     /// Version 1 : Calculate if overflow happens based on using calculations from sizes.
     final height = MediaQuery.of(context).size.height;
-    final headerRenderBox = _headerKey.currentContext!.findRenderObject()! as RenderBox;
+    final headerRenderBox = _childKey.currentContext!.findRenderObject()! as RenderBox;
     final dropdownItemHeight = headerRenderBox.size.height;
 
     /// Calculate if overflow can happen
@@ -307,12 +342,14 @@ class _ZetaDropDownState<T> extends State<ZetaDropdown<T>> {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(
-      DiagnosticsProperty<GlobalKey<State<StatefulWidget>>>(
-        'menuKey',
-        _menuKey,
-      ),
-    );
+    properties
+      ..add(
+        DiagnosticsProperty<GlobalKey<State<StatefulWidget>>>(
+          'menuKey',
+          _menuKey,
+        ),
+      )
+      ..add(DiagnosticsProperty<bool>('isOpen', isOpen));
   }
 }
 
@@ -385,6 +422,12 @@ class _DropdownItemState<T> extends State<_DropdownItem<T>> {
   }
 
   @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final colors = Zeta.of(context).colors;
 
@@ -404,6 +447,7 @@ class _DropdownItemState<T> extends State<_DropdownItem<T>> {
         child: OutlinedButton(
           key: widget.itemKey,
           onPressed: widget.onPress,
+          statesController: controller,
           style: _getStyle(colors),
           child: Row(
             mainAxisSize: MainAxisSize.min,
@@ -484,7 +528,7 @@ class _DropdownItemState<T> extends State<_DropdownItem<T>> {
       ),
       side: WidgetStateBorderSide.resolveWith((states) {
         if (states.contains(WidgetState.focused)) {
-          return BorderSide(color: colors.borderPrimary);
+          return BorderSide(color: colors.borderPrimary, width: ZetaSpacing.xL);
         }
         return BorderSide.none;
       }),
