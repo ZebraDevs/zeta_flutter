@@ -33,8 +33,13 @@ class _DropdownExampleState extends State<DropdownExample> {
       name: "Dropdown",
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisAlignment: MainAxisAlignment.end,
         children: [
+          ZetaDropdown(
+            items: items,
+            value: selectedItem,
+            type: ZetaDropdownMenuType.checkbox,
+          ),
           Center(
             child: Column(
               mainAxisSize: MainAxisSize.min,
