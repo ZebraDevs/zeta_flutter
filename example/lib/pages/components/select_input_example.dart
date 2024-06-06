@@ -15,6 +15,20 @@ class _SelectInputExampleState extends State<SelectInputExample> {
 
   @override
   Widget build(BuildContext context) {
+    final items = [
+      ZetaDropdownItem(
+        value: "Item 1",
+        icon: Icon(ZetaIcons.star_round),
+      ),
+      ZetaDropdownItem(
+        value: "Item 2",
+        icon: Icon(ZetaIcons.star_half_round),
+      ),
+      ZetaDropdownItem(
+        value: "Item 3",
+      ),
+    ];
+
     return ExampleScaffold(
       name: 'Select Input',
       child: Center(
@@ -26,22 +40,33 @@ class _SelectInputExampleState extends State<SelectInputExample> {
               child: Column(
                 children: [
                   ZetaSelectInput(
-                    label: 'Label',
+                    label: 'Large',
+                    size: ZetaWidgetSize.large,
                     hintText: 'Default hint text',
+                    rounded: false,
+                    placeholder: 'Placeholder',
                     initialValue: "Item 1",
-                    items: [
-                      ZetaDropdownItem(
-                        value: "Item 1",
-                        icon: Icon(ZetaIcons.star_round),
-                      ),
-                      ZetaDropdownItem(
-                        value: "Item 2",
-                        icon: Icon(ZetaIcons.star_half_round),
-                      ),
-                      ZetaDropdownItem(
-                        value: "Item 3",
-                      ),
-                    ],
+                    items: items,
+                  ),
+                  ZetaSelectInput(
+                    label: 'Medium',
+                    hintText: 'Default hint text',
+                    placeholder: 'Placeholder',
+                    items: items,
+                  ),
+                  ZetaSelectInput(
+                    label: 'Small',
+                    size: ZetaWidgetSize.small,
+                    hintText: 'Default hint text',
+                    placeholder: 'Placeholder',
+                    items: items,
+                  ),
+                  ZetaSelectInput(
+                    label: 'Disabled',
+                    hintText: 'Default hint text',
+                    placeholder: 'Placeholder',
+                    disabled: true,
+                    items: items,
                   ),
                   ZetaButton(
                     label: 'Validate',
@@ -49,7 +74,7 @@ class _SelectInputExampleState extends State<SelectInputExample> {
                       formKey.currentState?.validate();
                     },
                   )
-                ],
+                ].divide(const SizedBox(height: 8)).toList(),
               ),
             ),
           ),

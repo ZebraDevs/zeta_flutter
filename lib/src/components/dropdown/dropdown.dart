@@ -171,6 +171,7 @@ enum MenuPosition {
   down,
 }
 
+/// The state for a [ZetaDropdown]
 class ZetaDropDownState<T> extends State<ZetaDropdown<T>> {
   final _DropdownControllerImpl _dropdownController = _DropdownControllerImpl(
     overlayPortalController: OverlayPortalController(),

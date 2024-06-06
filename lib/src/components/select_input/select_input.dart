@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import '../../../zeta_flutter.dart';
 import '../../interfaces/form_field.dart';
+import '../buttons/input_icon_button.dart';
 
 /// Class for [ZetaSelectInput]
 class ZetaSelectInput<T> extends ZetaFormField<T> {
@@ -179,9 +180,12 @@ class _ZetaSelectInputState<T> extends State<ZetaSelectInput<T>> {
           placeholder: widget.placeholder,
           hintText: widget.hintText,
           onChange: (val) => _onInputChanged(controller),
-          suffix: IconButton(
-            icon: Icon(_icon, color: colors.iconSubtle),
-            onPressed: widget.disabled ? null : () => _onIconTapped(controller),
+          suffix: InputIconButton(
+            icon: _icon,
+            disabled: widget.disabled,
+            size: widget.size,
+            color: colors.iconSubtle,
+            onTap: () => _onIconTapped(controller),
           ),
         );
       },
