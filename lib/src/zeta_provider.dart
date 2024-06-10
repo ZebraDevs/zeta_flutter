@@ -117,7 +117,7 @@ class ZetaProviderState extends State<ZetaProvider> with Diagnosticable, Widgets
   Timer? _debounceTimer;
 
   /// Represents the duration for the debounce timer.
-  static const _debounceDuration = Duration(milliseconds: 500);
+  static const _debounceDuration = Duration(milliseconds: 250);
 
   /// This method is called when this object is inserted into the tree.
   ///

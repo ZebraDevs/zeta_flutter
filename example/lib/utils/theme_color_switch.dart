@@ -50,10 +50,10 @@ class ZetaThemeColorSwitch extends StatelessWidget {
           return DropdownMenuItem<String>(
             value: e.value.identifier,
             alignment: Alignment.center,
-            child: CircleAvatar(
+            child: ZetaAvatar(
+              size: ZetaAvatarSize.xxs,
               backgroundColor: color.surface,
-              foregroundColor: color,
-              child: Icon(Icons.color_lens, color: color),
+              image: Icon(Icons.color_lens, color: color),
             ),
           );
         }).toList(),

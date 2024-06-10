@@ -34,12 +34,14 @@ class ZetaThemeContrastSwitch extends StatelessWidget {
           return DropdownMenuItem<ZetaContrast>(
             value: e,
             alignment: Alignment.center,
-            child: CircleAvatar(
+            child: ZetaAvatar(
+              size: ZetaAvatarSize.xxs,
               backgroundColor: colors.primary.surface,
-              foregroundColor: colors.primary,
-              child: Text(
-                e == ZetaContrast.aa ? 'AA' : 'AAA',
-                style: ZetaTextStyles.bodyMedium.copyWith(color: colors.primary, fontWeight: FontWeight.w700),
+              image: Center(
+                child: Text(
+                  e == ZetaContrast.aa ? 'AA' : 'AAA',
+                  style: ZetaTextStyles.bodyMedium.copyWith(color: colors.primary, fontWeight: FontWeight.w700),
+                ),
               ),
             ),
           );
