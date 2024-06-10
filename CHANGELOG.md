@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.11.1](https://github.com/ZebraDevs/zeta_flutter/compare/v0.11.0...v0.11.1) (2024-06-10)
+
+
+### 🪲 Bug Fixes
+
+* amend token-names ([9430ca1](https://github.com/ZebraDevs/zeta_flutter/commit/9430ca13f4694034c94a619ccaa3b6d48dfa9243))
+
 ## [0.11.0](https://github.com/ZebraDevs/zeta_flutter/compare/v0.10.0...v0.11.0) (2024-06-10)
 
 
