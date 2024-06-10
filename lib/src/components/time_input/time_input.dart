@@ -5,6 +5,7 @@ import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
 import '../../../zeta_flutter.dart';
 import '../../interfaces/form_field.dart';
+import '../buttons/input_icon_button.dart';
 
 const _maxHrValue = 23;
 const _max12HrValue = 12;
@@ -103,17 +104,6 @@ class ZetaTimeInputState extends State<ZetaTimeInput> implements ZetaFormFieldSt
   bool get _showClearButton => _controller.text.isNotEmpty;
 
   BorderRadius get _borderRadius => widget.rounded ? ZetaRadius.minimal : ZetaRadius.none;
-
-  double get _iconSize {
-    switch (widget.size) {
-      case ZetaWidgetSize.large:
-        return ZetaSpacing.xL2;
-      case ZetaWidgetSize.medium:
-        return ZetaSpacing.xL;
-      case ZetaWidgetSize.small:
-        return ZetaSpacing.large;
-    }
-  }
 
   int get _hrsLimit => _use12Hr ? _max12HrValue : _maxHrValue;
   final int _minsLimit = _maxMinsValue;
@@ -261,68 +251,22 @@ class ZetaTimeInputState extends State<ZetaTimeInput> implements ZetaFormFieldSt
         mainAxisSize: MainAxisSize.min,
         children: [
           if (_showClearButton)
-            _IconButton(
+            InputIconButton(
               icon: widget.rounded ? ZetaIcons.cancel_round : ZetaIcons.cancel_sharp,
               onTap: reset,
               disabled: widget.disabled,
-              size: _iconSize,
+              size: widget.size,
               color: _colors.iconSubtle,
             ),
-          _IconButton(
+          InputIconButton(
             icon: widget.rounded ? ZetaIcons.clock_outline_round : ZetaIcons.clock_outline_sharp,
             onTap: _pickTime,
             disabled: widget.disabled,
-            size: _iconSize,
+            size: widget.size,
             color: _colors.iconDefault,
           ),
         ],
       ),
     );
-  }
-}
-
-class _IconButton extends StatelessWidget {
-  const _IconButton({
-    required this.icon,
-    required this.onTap,
-    required this.disabled,
-    required this.size,
-    required this.color,
-  });
-
-  final IconData icon;
-  final VoidCallback onTap;
-  final bool disabled;
-  final double size;
-  final Color color;
-
-  @override
-  Widget build(BuildContext context) {
-    final colors = Zeta.of(context).colors;
-
-    return IconButton(
-      padding: EdgeInsets.all(size / 2),
-      constraints: BoxConstraints(
-        maxHeight: size * 2,
-        maxWidth: size * 2,
-        minHeight: size * 2,
-        minWidth: size * 2,
-      ),
-      color: !disabled ? color : colors.iconDisabled,
-      onPressed: disabled ? null : onTap,
-      iconSize: size,
-      icon: Icon(icon),
-    );
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty<IconData>('icon', icon))
-      ..add(ObjectFlagProperty<VoidCallback>.has('onTap', onTap))
-      ..add(DiagnosticsProperty<bool>('disabled', disabled))
-      ..add(DoubleProperty('size', size))
-      ..add(ColorProperty('color', color));
   }
 }

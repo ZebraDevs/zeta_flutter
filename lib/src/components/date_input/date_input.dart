@@ -6,6 +6,7 @@ import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
 import '../../../zeta_flutter.dart';
 import '../../interfaces/form_field.dart';
+import '../buttons/input_icon_button.dart';
 
 /// A form field used to input dates.
 ///
@@ -106,17 +107,6 @@ class ZetaDateInputState extends State<ZetaDateInput> implements ZetaFormFieldSt
   String? _errorText;
 
   bool get _showClearButton => _controller.text.isNotEmpty;
-
-  double get _iconSize {
-    switch (widget.size) {
-      case ZetaWidgetSize.large:
-        return ZetaSpacing.xL2;
-      case ZetaWidgetSize.medium:
-        return ZetaSpacing.xL;
-      case ZetaWidgetSize.small:
-        return ZetaSpacing.large;
-    }
-  }
 
   DateTime? get _value {
     final value = _dateFormatter.getMaskedText().trim();
@@ -259,68 +249,22 @@ class ZetaDateInputState extends State<ZetaDateInput> implements ZetaFormFieldSt
         mainAxisSize: MainAxisSize.min,
         children: [
           if (_showClearButton)
-            _IconButton(
+            InputIconButton(
               icon: widget.rounded ? ZetaIcons.cancel_round : ZetaIcons.cancel_sharp,
               onTap: reset,
               disabled: widget.disabled,
-              size: _iconSize,
+              size: widget.size,
               color: _colors.iconSubtle,
             ),
-          _IconButton(
+          InputIconButton(
             icon: widget.rounded ? ZetaIcons.calendar_round : ZetaIcons.calendar_sharp,
             onTap: _pickDate,
             disabled: widget.disabled,
-            size: _iconSize,
+            size: widget.size,
             color: _colors.iconDefault,
           ),
         ],
       ),
     );
-  }
-}
-
-class _IconButton extends StatelessWidget {
-  const _IconButton({
-    required this.icon,
-    required this.onTap,
-    required this.disabled,
-    required this.size,
-    required this.color,
-  });
-
-  final IconData icon;
-  final VoidCallback onTap;
-  final bool disabled;
-  final double size;
-  final Color color;
-
-  @override
-  Widget build(BuildContext context) {
-    final colors = Zeta.of(context).colors;
-
-    return IconButton(
-      padding: EdgeInsets.all(size / 2),
-      constraints: BoxConstraints(
-        maxHeight: size * 2,
-        maxWidth: size * 2,
-        minHeight: size * 2,
-        minWidth: size * 2,
-      ),
-      color: !disabled ? color : colors.iconDisabled,
-      onPressed: disabled ? null : onTap,
-      iconSize: size,
-      icon: Icon(icon),
-    );
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty<IconData>('icon', icon))
-      ..add(ObjectFlagProperty<VoidCallback>.has('onTap', onTap))
-      ..add(DiagnosticsProperty<bool>('disabled', disabled))
-      ..add(DoubleProperty('size', size))
-      ..add(ColorProperty('color', color));
   }
 }
