@@ -84,7 +84,7 @@ class ZetaChatItem extends StatelessWidget {
   }) {
     if (slidableActionsCount == 0) return 0.5;
 
-    final actionsExtend = slidableActionsCount * ZetaSpacing.xL10;
+    final actionsExtend = slidableActionsCount * ZetaSpacing.xl_10;
     final extend = actionsExtend / maxWidth;
 
     return extend > 1 ? 1 : extend;
@@ -347,7 +347,7 @@ class _ZetaSlidableAction extends StatelessWidget {
             icon: Icon(
               icon,
               color: foregroundColor,
-              size: ZetaSpacing.xL4,
+              size: ZetaSpacing.xl_4,
             ),
           ),
         ),

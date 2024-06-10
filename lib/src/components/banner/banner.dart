@@ -75,7 +75,7 @@ class ZetaBanner extends MaterialBanner {
                         child: Icon(
                           leadingIcon,
                           color: foregroundColor,
-                          size: ZetaSpacing.xL2,
+                          size: ZetaSpacing.xl_2,
                         ),
                       ),
                     Flexible(child: Text(title)),

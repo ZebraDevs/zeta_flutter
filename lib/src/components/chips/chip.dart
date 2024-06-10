@@ -88,7 +88,7 @@ class _ZetaChipState extends State<ZetaChip> {
       return IconTheme(
         data: IconThemeData(
           color: foregroundColor,
-          size: ZetaSpacing.xL,
+          size: ZetaSpacing.xl_1,
         ),
         child: leading!,
       );
@@ -166,7 +166,7 @@ class _ZetaChipState extends State<ZetaChip> {
             IconTheme(
               data: IconThemeData(
                 color: foregroundColor,
-                size: ZetaSpacing.xL,
+                size: ZetaSpacing.xl_1,
               ),
               child: widget.trailing!,
             ),

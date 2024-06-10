@@ -25,17 +25,17 @@ Map<String, double> semanticSpacings = {
   'small': ZetaSpacing.small,
   'medium': ZetaSpacing.medium,
   'large': ZetaSpacing.large,
-  'xl': ZetaSpacing.xL,
-  '2xl': ZetaSpacing.xL2,
-  '3xl': ZetaSpacing.xL3,
-  '4xl': ZetaSpacing.xL4,
-  '5xl': ZetaSpacing.xL5,
-  '6xl': ZetaSpacing.xL6,
-  '7xl': ZetaSpacing.xL7,
-  '8xl': ZetaSpacing.xL8,
-  '9xl': ZetaSpacing.xL9,
-  '10xl': ZetaSpacing.xL10,
-  '11xl': ZetaSpacing.xL11,
+  'xl': ZetaSpacing.xl_1,
+  '2xl': ZetaSpacing.xl_2,
+  '3xl': ZetaSpacing.xl_3,
+  '4xl': ZetaSpacing.xl_4,
+  '5xl': ZetaSpacing.xl_5,
+  '6xl': ZetaSpacing.xl_6,
+  '7xl': ZetaSpacing.xl_7,
+  '8xl': ZetaSpacing.xl_8,
+  '9xl': ZetaSpacing.xl_9,
+  '10xl': ZetaSpacing.xl_10,
+  '11xl': ZetaSpacing.xl_11,
 };
 Map<String, double> baseSpacings = {
   'x1': ZetaSpacingBase.x1,
@@ -68,7 +68,7 @@ class _SpacingDemo extends StatelessWidget {
     final colors = Zeta.of(context).colors;
     return Container(
       color: colors.blue.shade30,
-      margin: EdgeInsets.all(ZetaSpacing.xL2),
+      margin: EdgeInsets.all(ZetaSpacing.xl_2),
       child: CustomPaint(
         painter: _TagPainter(color: colors.pink),
         child: LayoutBuilder(builder: (context, c2) {

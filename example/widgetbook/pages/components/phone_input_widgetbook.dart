@@ -15,7 +15,7 @@ Widget phoneInputUseCase(BuildContext context) {
     widget: StatefulBuilder(
       builder: (context, setState) {
         return Padding(
-          padding: const EdgeInsets.all(ZetaSpacing.xL),
+          padding: const EdgeInsets.all(ZetaSpacing.xl_1),
           child: ZetaPhoneInput(
             rounded: rounded,
             enabled: enabled,

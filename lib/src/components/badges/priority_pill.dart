@@ -100,7 +100,7 @@ class ZetaPriorityPill extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ZetaColorSwatch color = customColor ?? type.color(context);
-    final size = this.size == ZetaPriorityPillSize.small ? ZetaSpacing.xL : ZetaSpacing.xL3;
+    final size = this.size == ZetaPriorityPillSize.small ? ZetaSpacing.xl_1 : ZetaSpacing.xl_3;
     final label = this.label ?? priority;
 
     return DecoratedBox(

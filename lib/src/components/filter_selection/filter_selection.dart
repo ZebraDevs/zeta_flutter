@@ -25,7 +25,7 @@ class ZetaFilterSelection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: ZetaSpacing.xL7,
+      height: ZetaSpacing.xl_7,
       child: Row(
         children: [
           IconButton(
@@ -33,7 +33,7 @@ class ZetaFilterSelection extends StatelessWidget {
             onPressed: onPressed,
             icon: Icon(
               rounded ? ZetaIcons.filter_round : ZetaIcons.filter_sharp,
-              size: ZetaSpacing.xL2,
+              size: ZetaSpacing.xl_2,
             ),
           ),
           Expanded(

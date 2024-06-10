@@ -30,7 +30,7 @@ Widget textInputUseCase(BuildContext context) {
         );
 
         return Padding(
-          padding: const EdgeInsets.all(ZetaSpacing.xL),
+          padding: const EdgeInsets.all(ZetaSpacing.xl_1),
           child: ZetaTextInput(
             size: size,
             rounded: rounded,

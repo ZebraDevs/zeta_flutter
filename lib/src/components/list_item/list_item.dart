@@ -187,7 +187,7 @@ class _ListItemContainer extends StatelessWidget {
           onTap: enabled ? onTap : null,
           child: Container(
             padding: EdgeInsets.symmetric(
-              horizontal: dense ? ZetaSpacing.large : ZetaSpacing.xL4,
+              horizontal: dense ? ZetaSpacing.large : ZetaSpacing.xl_4,
               vertical: dense ? ZetaSpacing.small : ZetaSpacing.large,
             ),
             decoration: BoxDecoration(

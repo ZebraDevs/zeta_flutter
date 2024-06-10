@@ -243,10 +243,13 @@ class _ZetaGroupButtonState extends State<ZetaGroupButton> {
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              if (widget.icon != null) Icon(widget.icon, size: ZetaSpacing.xL),
+              if (widget.icon != null) Icon(widget.icon, size: ZetaSpacing.xl_1),
               Text(widget.label ?? '', style: ZetaTextStyles.labelMedium),
               if (widget.dropdown != null) // TODO(UX-1006): Dropdown
-                Icon(widget.rounded ? ZetaIcons.expand_more_round : ZetaIcons.expand_more_sharp, size: ZetaSpacing.xL),
+                Icon(
+                  widget.rounded ? ZetaIcons.expand_more_round : ZetaIcons.expand_more_sharp,
+                  size: ZetaSpacing.xl_1,
+                ),
             ].divide(const SizedBox(width: ZetaSpacing.minimum)).toList(),
           ).paddingAll(_padding),
         ),

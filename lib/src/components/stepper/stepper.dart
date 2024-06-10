@@ -90,8 +90,8 @@ class _ZetaStepperState extends State<ZetaStepper> with TickerProviderStateMixin
 
   Widget _buildHorizotalIcon(int index) {
     return SizedBox(
-      width: ZetaSpacing.xL4,
-      height: ZetaSpacing.xL4,
+      width: ZetaSpacing.xl_4,
+      height: ZetaSpacing.xl_4,
       child: AnimatedContainer(
         curve: Curves.fastOutSlowIn,
         duration: kThemeAnimationDuration,
@@ -119,8 +119,8 @@ class _ZetaStepperState extends State<ZetaStepper> with TickerProviderStateMixin
 
   Widget _getVerticalIcon(int index) {
     return SizedBox(
-      width: ZetaSpacing.xL8,
-      height: ZetaSpacing.xL8,
+      width: ZetaSpacing.xl_8,
+      height: ZetaSpacing.xl_8,
       child: AnimatedContainer(
         curve: Curves.fastOutSlowIn,
         duration: kThemeAnimationDuration,
@@ -173,7 +173,7 @@ class _ZetaStepperState extends State<ZetaStepper> with TickerProviderStateMixin
     final subtitle = widget.steps[index].subtitle;
 
     return Container(
-      margin: EdgeInsets.only(top: _isFirst(index) ? 0.0 : ZetaSpacing.xL2),
+      margin: EdgeInsets.only(top: _isFirst(index) ? 0.0 : ZetaSpacing.xl_2),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -183,7 +183,7 @@ class _ZetaStepperState extends State<ZetaStepper> with TickerProviderStateMixin
               Container(
                 margin: const EdgeInsets.only(top: ZetaSpacing.minimum),
                 width: ZetaSpacing.minimum,
-                height: ZetaSpacing.xL8,
+                height: ZetaSpacing.xl_8,
                 decoration: BoxDecoration(
                   borderRadius: ZetaRadius.full,
                   color: switch (widget.steps[index].type) {
@@ -197,7 +197,7 @@ class _ZetaStepperState extends State<ZetaStepper> with TickerProviderStateMixin
           ),
           Expanded(
             child: Container(
-              margin: const EdgeInsets.symmetric(horizontal: ZetaSpacing.xL2),
+              margin: const EdgeInsets.symmetric(horizontal: ZetaSpacing.xl_2),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
@@ -307,7 +307,7 @@ class _ZetaStepperState extends State<ZetaStepper> with TickerProviderStateMixin
                     child: Container(
                       key: Key('line$index'),
                       margin: const EdgeInsets.only(
-                        top: ZetaSpacing.xL3,
+                        top: ZetaSpacing.xl_3,
                         right: ZetaSpacing.large,
                         left: ZetaSpacing.large,
                       ),
@@ -341,7 +341,7 @@ class _ZetaStepperState extends State<ZetaStepper> with TickerProviderStateMixin
                 Material(
                   color: Colors.transparent,
                   child: Container(
-                    margin: const EdgeInsets.symmetric(horizontal: ZetaSpacing.xL2),
+                    margin: const EdgeInsets.symmetric(horizontal: ZetaSpacing.xl_2),
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: children,

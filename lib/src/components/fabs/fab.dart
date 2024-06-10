@@ -203,8 +203,8 @@ extension on ZetaWidgetBorder {
         isExpanded
             ? this == ZetaWidgetBorder.full
                 ? size == ZetaFabSize.small
-                    ? ZetaSpacing.xL3
-                    : ZetaSpacing.xL8
+                    ? ZetaSpacing.xl_3
+                    : ZetaSpacing.xl_8
                 : ZetaSpacing.small
             : size == ZetaFabSize.small
                 ? ZetaSpacing.small
@@ -215,6 +215,6 @@ extension on ZetaWidgetBorder {
 }
 
 extension on ZetaFabSize {
-  double get iconSize => this == ZetaFabSize.small ? ZetaSpacing.xL2 : ZetaSpacing.xL5;
+  double get iconSize => this == ZetaFabSize.small ? ZetaSpacing.xl_2 : ZetaSpacing.xl_5;
   double get padding => this == ZetaFabSize.small ? ZetaSpacing.large : ZetaSpacingBase.x7_5;
 }

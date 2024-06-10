@@ -58,17 +58,17 @@ class ColorBody extends StatelessWidget {
           decoration: TextDecoration.none,
         ),
         child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: ZetaSpacing.xL4),
+          padding: const EdgeInsets.symmetric(horizontal: ZetaSpacing.xl_4),
           child: SingleChildScrollView(
             key: PageStorageKey(0),
             child: Column(
               children: [
-                const SizedBox(height: ZetaSpacing.xL4),
+                const SizedBox(height: ZetaSpacing.xl_4),
                 MyRow(children: textIcon, title: 'Text and icon styles'),
                 MyRow(children: border, title: 'Border styles'),
                 MyRow(children: backdrop, title: 'Backdrop colors'),
                 MyRow(children: alerts, title: 'Alert colors'),
-                Row(children: [Text('Full color swatches')]).paddingVertical(ZetaSpacing.xL4),
+                Row(children: [Text('Full color swatches')]).paddingVertical(ZetaSpacing.xl_4),
                 ...swatches.entries.map(
                   (value) {
                     return Row(
@@ -106,7 +106,7 @@ class ColorBody extends StatelessWidget {
                     );
                   },
                 ),
-                const SizedBox(height: ZetaSpacing.xL4),
+                const SizedBox(height: ZetaSpacing.xl_4),
               ],
             ),
           ),

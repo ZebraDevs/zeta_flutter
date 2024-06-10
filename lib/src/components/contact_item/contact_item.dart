@@ -50,7 +50,7 @@ class ZetaContactItem extends StatelessWidget {
             padding: const EdgeInsets.only(
               top: ZetaSpacing.small,
               bottom: ZetaSpacing.small,
-              left: ZetaSpacing.xL2,
+              left: ZetaSpacing.xl_2,
             ),
             child: Row(
               children: [

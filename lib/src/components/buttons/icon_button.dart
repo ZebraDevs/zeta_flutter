@@ -126,11 +126,11 @@ class ZetaIconButton extends StatelessWidget {
   double get _iconSize {
     switch (size) {
       case ZetaWidgetSize.large:
-        return ZetaSpacing.xL2;
+        return ZetaSpacing.xl_2;
       case ZetaWidgetSize.medium:
-        return ZetaSpacing.xL2;
+        return ZetaSpacing.xl_2;
       case ZetaWidgetSize.small:
-        return ZetaSpacing.xL;
+        return ZetaSpacing.xl_1;
     }
   }
 

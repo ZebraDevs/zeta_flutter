@@ -85,7 +85,7 @@ class ZetaMenuItem extends StatelessWidget {
     switch (type) {
       case ZetaMenuItemType.horizontal:
         return ConstrainedBox(
-          constraints: const BoxConstraints(minHeight: ZetaSpacing.xL8),
+          constraints: const BoxConstraints(minHeight: ZetaSpacing.xl_8),
           child: InkWell(
             onTap: _onTap,
             child: Padding(
@@ -104,7 +104,7 @@ class ZetaMenuItem extends StatelessWidget {
                   ),
                   if (trailing != null)
                     IconTheme(
-                      data: _iconThemeData(colors, _enabled, ZetaSpacing.xL2),
+                      data: _iconThemeData(colors, _enabled, ZetaSpacing.xl_2),
                       child: trailing ?? const Icon(Icons.keyboard_arrow_right),
                     ),
                 ],
@@ -123,7 +123,7 @@ class ZetaMenuItem extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(bottom: ZetaSpacing.medium),
                     child: IconTheme(
-                      data: _iconThemeData(colors, _enabled, ZetaSpacing.xL4),
+                      data: _iconThemeData(colors, _enabled, ZetaSpacing.xl_4),
                       child: leading!,
                     ),
                   ),

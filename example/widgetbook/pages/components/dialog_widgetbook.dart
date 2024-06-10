@@ -31,7 +31,7 @@ Widget dialogUseCase(BuildContext context) {
   );
   return WidgetbookTestWidget(
     widget: Padding(
-      padding: const EdgeInsets.all(ZetaSpacing.xL),
+      padding: const EdgeInsets.all(ZetaSpacing.xl_1),
       child: Center(
         child: Column(
           children: [

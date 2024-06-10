@@ -59,7 +59,7 @@ class _NotificationListItemExampleState extends State<NotificationListItemExampl
             ),
           ),
         ),
-      ].gap(ZetaSpacing.xL4))),
+      ].gap(ZetaSpacing.xl_4))),
     );
   }
 }

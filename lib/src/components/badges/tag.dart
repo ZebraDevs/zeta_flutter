@@ -40,7 +40,7 @@ class ZetaTag extends StatelessWidget {
   final String label;
 
   /// Fixed container size
-  static const Size _containerSize = Size(ZetaSpacing.xL5, ZetaSpacing.xL3);
+  static const Size _containerSize = Size(ZetaSpacing.xl_5, ZetaSpacing.xl_3);
 
   @override
   Widget build(BuildContext context) {
@@ -89,7 +89,7 @@ class ZetaTag extends StatelessWidget {
 
   Widget _buildCustomPaint(BuildContext context) {
     return CustomPaint(
-      size: const Size(ZetaSpacing.medium, ZetaSpacing.xL3),
+      size: const Size(ZetaSpacing.medium, ZetaSpacing.xl_3),
       painter: _TagPainter(
         color: Zeta.of(context).colors.surfaceHover,
         direction: direction,

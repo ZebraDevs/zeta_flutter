@@ -94,7 +94,7 @@ Widget buttonGroupUseCase(BuildContext context) {
 
 Widget floatingActionButtonUseCase(BuildContext context) => WidgetbookTestWidget(
       screenSize: Size(1280, 720),
-      widget: Padding(padding: EdgeInsets.all(ZetaSpacing.xL), child: FabWidget(context)),
+      widget: Padding(padding: EdgeInsets.all(ZetaSpacing.xl_1), child: FabWidget(context)),
     );
 
 class FabWidget extends StatefulWidget {
