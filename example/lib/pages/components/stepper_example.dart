@@ -100,7 +100,7 @@ class _StepperExampleState extends State<StepperExample> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: ZetaSpacing.xL4),
+              padding: const EdgeInsets.symmetric(horizontal: ZetaSpacing.xl_4),
               child: ZetaStepper(
                 type: ZetaStepperType.vertical,
                 currentStep: _verticalStep,

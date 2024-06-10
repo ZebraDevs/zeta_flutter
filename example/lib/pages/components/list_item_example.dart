@@ -53,20 +53,20 @@ class _ListItemExampleState extends State<ListItemExample> {
 
               // Enabled
               Padding(
-                padding: const EdgeInsets.only(top: ZetaSpacing.xL4),
+                padding: const EdgeInsets.only(top: ZetaSpacing.xl_4),
                 child: Text(
                   "Enabled",
                   style: ZetaTextStyles.titleLarge,
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: ZetaSpacing.xL2),
+                padding: const EdgeInsets.only(top: ZetaSpacing.xl_2),
                 child: ZetaListItem(title: Text("List Item")),
               ),
 
               // Selected
               Padding(
-                padding: const EdgeInsets.only(top: ZetaSpacing.xL4),
+                padding: const EdgeInsets.only(top: ZetaSpacing.xl_4),
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
@@ -76,7 +76,7 @@ class _ListItemExampleState extends State<ListItemExample> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: ZetaSpacing.xL2),
+                padding: const EdgeInsets.only(top: ZetaSpacing.xl_2),
                 child: ZetaListItem(
                   title: Text("List Item"),
                   selected: _isSelected,
@@ -92,14 +92,14 @@ class _ListItemExampleState extends State<ListItemExample> {
 
               // Disabled
               Padding(
-                padding: const EdgeInsets.only(top: ZetaSpacing.xL4),
+                padding: const EdgeInsets.only(top: ZetaSpacing.xl_4),
                 child: Text(
                   "Disabled",
                   style: ZetaTextStyles.titleLarge,
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: ZetaSpacing.xL2),
+                padding: const EdgeInsets.only(top: ZetaSpacing.xl_2),
                 child: ZetaListItem(
                   title: Text("List Item"),
                   enabled: false,

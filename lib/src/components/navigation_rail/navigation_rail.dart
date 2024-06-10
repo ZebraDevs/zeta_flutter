@@ -12,7 +12,7 @@ class ZetaNavigationRail extends StatefulWidget {
     this.selectedIndex,
     this.onSelect,
     this.rounded = true,
-    this.margin = const EdgeInsets.all(ZetaSpacing.xL),
+    this.margin = const EdgeInsets.all(ZetaSpacing.xl_1),
     this.itemSpacing = const EdgeInsets.only(bottom: ZetaSpacing.minimum),
     this.itemPadding,
     this.wordWrap,
@@ -33,7 +33,7 @@ class ZetaNavigationRail extends StatefulWidget {
   /// The margin around the [ZetaNavigationRail].
   /// Default is:
   /// ```
-  /// const EdgeInsets.all(ZetaSpacing.xL)
+  /// const EdgeInsets.all(ZetaSpacing.xl_1)
   /// ```
   final EdgeInsets margin;
 
@@ -150,8 +150,8 @@ class _ZetaNavigationRailItemContent extends StatelessWidget {
           ),
           child: ConstrainedBox(
             constraints: const BoxConstraints(
-              minWidth: ZetaSpacing.xL9,
-              minHeight: ZetaSpacing.xL9,
+              minWidth: ZetaSpacing.xl_9,
+              minHeight: ZetaSpacing.xl_9,
             ),
             child: SelectionContainer.disabled(
               child: Padding(
@@ -171,7 +171,7 @@ class _ZetaNavigationRailItemContent extends StatelessWidget {
                               : selected
                                   ? zeta.colors.textDefault
                                   : zeta.colors.cool.shade70,
-                          size: ZetaSpacing.xL2,
+                          size: ZetaSpacing.xl_2,
                         ),
                         child: icon!,
                       ),

@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 
 import '../../../zeta_flutter.dart';
 
-const _itemHeight = ZetaSpacing.xL5;
-const _itemWidth = ZetaSpacing.xL4;
+const _itemHeight = ZetaSpacing.xl_5;
+const _itemWidth = ZetaSpacing.xl_4;
 
 /// The type of a [ZetaPagination]
 enum ZetaPaginationType {
@@ -183,7 +183,7 @@ class _ZetaPaginationState extends State<ZetaPagination> {
       ),
     );
     return Container(
-      height: ZetaSpacing.xL6,
+      height: ZetaSpacing.xl_6,
       decoration: BoxDecoration(
         border: Border.all(color: colors.borderSubtle),
         borderRadius: widget.rounded ? ZetaRadius.minimal : ZetaRadius.none,

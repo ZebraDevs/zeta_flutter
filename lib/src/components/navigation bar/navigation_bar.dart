@@ -143,7 +143,7 @@ class ZetaNavigationBar extends StatelessWidget {
             Container(
               color: colors.borderSubtle,
               width: _navigationItemBorderWidth,
-              height: ZetaSpacing.xL7,
+              height: ZetaSpacing.xl_7,
             ),
           _generateNavigationItemRow(rightItems),
         ],
@@ -232,15 +232,15 @@ class _NavigationItem extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               SizedBox(
-                width: ZetaSpacing.xL7,
-                height: ZetaSpacing.xL4 - _navigationItemBorderWidth,
+                width: ZetaSpacing.xl_7,
+                height: ZetaSpacing.xl_4 - _navigationItemBorderWidth,
                 child: Stack(
                   children: [
                     Positioned(
                       left: ZetaSpacingBase.x2_5,
                       top: ZetaSpacing.small - _navigationItemBorderWidth,
                       right: ZetaSpacingBase.x2_5,
-                      child: Icon(item.icon, color: elementColor, size: ZetaSpacing.xL2),
+                      child: Icon(item.icon, color: elementColor, size: ZetaSpacing.xl_2),
                     ),
                     if (item.badge != null) _getBadge(colors),
                   ],

@@ -162,7 +162,7 @@ class _ZetaPasswordInputState extends State<ZetaPasswordInput> {
                         padding: const EdgeInsets.symmetric(vertical: ZetaSpacing.minimum),
                         icon: Icon(
                           value ? ZetaIcons.visibility_off_sharp : ZetaIcons.visibility_sharp,
-                          size: widget.size == ZetaWidgetSize.small ? ZetaSpacing.large : ZetaSpacing.xL,
+                          size: widget.size == ZetaWidgetSize.small ? ZetaSpacing.large : ZetaSpacing.xl_1,
                         ),
                         color: widget.enabled ? theme.colors.iconDefault : theme.colors.iconDisabled,
                         onPressed: () => _obscureTextNotifier.toggle(),
@@ -230,11 +230,11 @@ class _ZetaPasswordInputState extends State<ZetaPasswordInput> {
   double get _inputHeight {
     switch (widget.size) {
       case ZetaWidgetSize.small:
-        return ZetaSpacing.xL4;
+        return ZetaSpacing.xl_4;
       case ZetaWidgetSize.medium:
-        return ZetaSpacing.xL6;
+        return ZetaSpacing.xl_6;
       case ZetaWidgetSize.large:
-        return ZetaSpacing.xL8;
+        return ZetaSpacing.xl_8;
     }
   }
 

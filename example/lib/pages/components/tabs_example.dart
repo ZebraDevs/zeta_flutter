@@ -30,7 +30,7 @@ class _TabsExampleState extends State<TabsExample> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(top: ZetaSpacing.xL4),
+            padding: const EdgeInsets.only(top: ZetaSpacing.xl_4),
             child: DefaultTabController(
               length: 5,
               child: ZetaTabBar(
@@ -48,7 +48,7 @@ class _TabsExampleState extends State<TabsExample> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(top: ZetaSpacing.xL4),
+            padding: const EdgeInsets.only(top: ZetaSpacing.xl_4),
             child: DefaultTabController(
               length: 5,
               child: ZetaTabBar(

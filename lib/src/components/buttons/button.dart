@@ -187,13 +187,13 @@ class ZetaButton extends StatelessWidget {
   double get _minConstraints {
     switch (size) {
       case ZetaWidgetSize.large:
-        return ZetaSpacing.xL8;
+        return ZetaSpacing.xl_8;
 
       case ZetaWidgetSize.medium:
-        return ZetaSpacing.xL6;
+        return ZetaSpacing.xl_6;
 
       case ZetaWidgetSize.small:
-        return ZetaSpacing.xL4;
+        return ZetaSpacing.xl_4;
     }
   }
 
@@ -214,7 +214,7 @@ class ZetaButton extends StatelessWidget {
     switch (size) {
       case ZetaWidgetSize.large:
       case ZetaWidgetSize.medium:
-        return ZetaSpacing.xL;
+        return ZetaSpacing.xl_1;
       case ZetaWidgetSize.small:
         return ZetaSpacing.large;
     }

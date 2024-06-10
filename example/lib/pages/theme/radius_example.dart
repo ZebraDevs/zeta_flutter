@@ -14,7 +14,7 @@ class RadiusExample extends StatelessWidget {
     return ExampleScaffold(
       name: name,
       child: SingleChildScrollView(
-        padding: EdgeInsets.all(ZetaSpacing.xL2),
+        padding: EdgeInsets.all(ZetaSpacing.xl_2),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -49,7 +49,7 @@ class RadiusExample extends StatelessWidget {
                       ),
                     );
                   })
-                  .divide(const SizedBox(height: ZetaSpacing.xL4))
+                  .divide(const SizedBox(height: ZetaSpacing.xl_4))
                   .toList(),
             ),
           ],

@@ -13,7 +13,7 @@ Widget switchUseCase(BuildContext context) {
       builder: (context, setState) {
         ValueChanged<bool?>? onChanged = !disabledKnob(context) ? (value) => setState(() => isOn = value) : null;
         return Padding(
-          padding: const EdgeInsets.all(ZetaSpacing.xL),
+          padding: const EdgeInsets.all(ZetaSpacing.xl_1),
           child: Column(
             children: [
               Text('Switch'),

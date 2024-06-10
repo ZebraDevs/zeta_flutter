@@ -128,8 +128,8 @@ class _ZetaSearchBarState extends State<ZetaSearchBar> {
               )
             : null,
         prefixIconConstraints: const BoxConstraints(
-          minHeight: ZetaSpacing.xL2,
-          minWidth: ZetaSpacing.xL2,
+          minHeight: ZetaSpacing.xl_2,
+          minWidth: ZetaSpacing.xl_2,
         ),
         suffixIcon: IntrinsicHeight(
           child: Row(
@@ -189,8 +189,8 @@ class _ZetaSearchBarState extends State<ZetaSearchBar> {
           ),
         ),
         suffixIconConstraints: const BoxConstraints(
-          minHeight: ZetaSpacing.xL2,
-          minWidth: ZetaSpacing.xL2,
+          minHeight: ZetaSpacing.xl_2,
+          minWidth: ZetaSpacing.xl_2,
         ),
         filled: !widget.disabled ? null : true,
         fillColor: !widget.disabled ? null : zeta.colors.cool.shade30,
@@ -208,8 +208,8 @@ class _ZetaSearchBarState extends State<ZetaSearchBar> {
       };
 
   double _iconSize(ZetaWidgetSize size) => switch (size) {
-        ZetaWidgetSize.large => ZetaSpacing.xL2,
-        ZetaWidgetSize.medium => ZetaSpacing.xL,
+        ZetaWidgetSize.large => ZetaSpacing.xl_2,
+        ZetaWidgetSize.medium => ZetaSpacing.xl_1,
         ZetaWidgetSize.small => ZetaSpacing.large,
       };
 

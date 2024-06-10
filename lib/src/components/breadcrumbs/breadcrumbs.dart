@@ -70,7 +70,7 @@ class _ZetaBreadCrumbsState extends State<ZetaBreadCrumbs> {
                   ),
                   Icon(
                     widget.rounded ? ZetaIcons.chevron_right_round : ZetaIcons.chevron_right_sharp,
-                    size: ZetaSpacing.xL,
+                    size: ZetaSpacing.xl_1,
                   ),
                   const SizedBox(
                     width: ZetaSpacing.small,
@@ -328,7 +328,7 @@ class _BreadCrumbsTruncatedState extends State<BreadCrumbsTruncated> {
                 ),
                 Icon(
                   ZetaIcons.chevron_right_round,
-                  size: ZetaSpacing.xL,
+                  size: ZetaSpacing.xl_1,
                 ),
                 SizedBox(
                   width: ZetaSpacing.small,

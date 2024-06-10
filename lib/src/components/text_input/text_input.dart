@@ -167,11 +167,11 @@ class ZetaTextInputState extends State<ZetaTextInput> implements ZetaFormFieldSt
     late final double size;
     switch (widget.size) {
       case ZetaWidgetSize.large:
-        size = ZetaSpacing.xL6;
+        size = ZetaSpacing.xl_6;
       case ZetaWidgetSize.medium:
-        size = ZetaSpacing.xL4;
+        size = ZetaSpacing.xl_4;
       case ZetaWidgetSize.small:
-        size = ZetaSpacing.xL2;
+        size = ZetaSpacing.xl_2;
     }
     return BoxConstraints(
       minWidth: size,

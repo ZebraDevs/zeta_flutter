@@ -21,38 +21,38 @@ class ZetaSpacing {
   /// Large spacing => 16px.
   static const double large = ZetaSpacingBase.x4;
 
-  /// xL spacing => 20px.
-  static const double xL = ZetaSpacingBase.x5;
+  /// 1xl spacing => 20px.
+  static const double xl_1 = ZetaSpacingBase.x5;
 
-  /// 2xL spacing => 24px.
-  static const double xL2 = ZetaSpacingBase.x6;
+  /// 2xl spacing => 24px.
+  static const double xl_2 = ZetaSpacingBase.x6;
 
-  /// 3xL spacing => 28px.
-  static const double xL3 = ZetaSpacingBase.x7;
+  /// 3xl spacing => 28px.
+  static const double xl_3 = ZetaSpacingBase.x7;
 
-  /// 4xL spacing => 32px.
-  static const double xL4 = ZetaSpacingBase.x8;
+  /// 4xl spacing => 32px.
+  static const double xl_4 = ZetaSpacingBase.x8;
 
-  /// 5xL spacing => 36px.
-  static const double xL5 = ZetaSpacingBase.x9;
+  /// 5xl spacing => 36px.
+  static const double xl_5 = ZetaSpacingBase.x9;
 
-  /// 6xL spacing => 40px.
-  static const double xL6 = ZetaSpacingBase.x10;
+  /// 6xl spacing => 40px.
+  static const double xl_6 = ZetaSpacingBase.x10;
 
-  /// 7xL spacing => 44px.
-  static const double xL7 = ZetaSpacingBase.x11;
+  /// 7xl spacing => 44px.
+  static const double xl_7 = ZetaSpacingBase.x11;
 
-  /// 8xL spacing => 48px.
-  static const double xL8 = ZetaSpacingBase.x12;
+  /// 8xl spacing => 48px.
+  static const double xl_8 = ZetaSpacingBase.x12;
 
-  /// 9xL spacing => 64px.
-  static const double xL9 = ZetaSpacingBase.x13;
+  /// 9xl spacing => 64px.
+  static const double xl_9 = ZetaSpacingBase.x13;
 
-  /// 10xL spacing => 80px.
-  static const double xL10 = ZetaSpacingBase.x14;
+  /// 10xl spacing => 80px.
+  static const double xl_10 = ZetaSpacingBase.x14;
 
-  /// 11xL spacing => 96px
-  static const double xL11 = ZetaSpacingBase.x15;
+  /// 11xl spacing => 96px
+  static const double xl_11 = ZetaSpacingBase.x15;
 
   /// Base multiplier used to calculate spacing values.
   @Deprecated('Use minimum instead ' 'This size has been deprecated as of 0.11.0')
@@ -103,7 +103,7 @@ class ZetaSpacing {
   static const double b = spacingBaseMultiplier * 4;
 
   /// 20dp space.
-  @Deprecated('Use xL instead ' 'This size has been deprecated as of 0.11.0')
+  @Deprecated('Use xl_1 instead ' 'This size has been deprecated as of 0.11.0')
   static const double x5 = spacingBaseMultiplier * 5;
 
   /// 24dp space.
@@ -201,14 +201,14 @@ class ZetaRadius {
   /// Large radius => 16px radius.
   static const BorderRadius large = ZetaRadiusBase.l;
 
-  /// xL radius => 24px radius.
-  static const BorderRadius xL = ZetaRadiusBase.xL;
+  /// xl radius => 24px radius.
+  static const BorderRadius xl = ZetaRadiusBase.xl;
 
   /// Full radius => 360px radius.
   static const BorderRadius full = ZetaRadiusBase.x4;
 
   /// Wide border radius; 24px radius.
-  @Deprecated('Use xL instead ' 'This size has been deprecated as of 0.11.0')
+  @Deprecated('Use xl instead ' 'This size has been deprecated as of 0.11.0')
   static const BorderRadius wide = BorderRadius.all(Radius.circular(ZetaSpacing.m));
 }
 
@@ -296,7 +296,7 @@ class ZetaRadiusBase {
   static const BorderRadius l = BorderRadius.all(Radius.circular(16));
 
   /// 24px radius
-  static const BorderRadius xL = BorderRadius.all(Radius.circular(24));
+  static const BorderRadius xl = BorderRadius.all(Radius.circular(24));
 
   /// 32px radius
   static const BorderRadius x2 = BorderRadius.all(Radius.circular(32));

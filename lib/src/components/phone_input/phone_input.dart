@@ -163,8 +163,8 @@ class _ZetaPhoneInputState extends State<ZetaPhoneInput> {
           child: Row(
             children: [
               SizedBox(
-                width: ZetaSpacing.xL9,
-                height: ZetaSpacing.xL8,
+                width: ZetaSpacing.xl_9,
+                height: ZetaSpacing.xl_8,
                 child: DecoratedBox(
                   decoration: BoxDecoration(
                     color: widget.enabled ? zeta.colors.surfacePrimary : zeta.colors.cool.shade30,
@@ -203,7 +203,7 @@ class _ZetaPhoneInputState extends State<ZetaPhoneInput> {
                         Icon(
                           widget.rounded ? ZetaIcons.expand_more_round : ZetaIcons.expand_more_sharp,
                           color: widget.enabled ? zeta.colors.textDefault : zeta.colors.cool.shade50,
-                          size: ZetaSpacing.xL,
+                          size: ZetaSpacing.xl_1,
                         ),
                       ],
                     ),
@@ -265,8 +265,8 @@ class _ZetaPhoneInputState extends State<ZetaPhoneInput> {
                       ],
                     ),
                     prefixIconConstraints: const BoxConstraints(
-                      minHeight: ZetaSpacing.xL8,
-                      minWidth: ZetaSpacing.xL6,
+                      minHeight: ZetaSpacing.xl_8,
+                      minWidth: ZetaSpacing.xl_6,
                     ),
                     filled: true,
                     fillColor: widget.enabled

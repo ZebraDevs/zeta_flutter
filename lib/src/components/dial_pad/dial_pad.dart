@@ -113,14 +113,14 @@ class _ZetaDialPadState extends State<ZetaDialPad> {
   Widget build(BuildContext context) {
     return SelectionContainer.disabled(
       child: SizedBox(
-        width: (_buttonsPerRow * ZetaSpacing.xL9) + ((_buttonsPerRow - 1) * ZetaSpacing.xL5),
+        width: (_buttonsPerRow * ZetaSpacing.xl_9) + ((_buttonsPerRow - 1) * ZetaSpacing.xl_5),
         child: GridView.count(
           crossAxisCount: _buttonsPerRow,
           shrinkWrap: true,
           semanticChildCount: _buttonValues.length,
-          mainAxisSpacing: ZetaSpacing.xL2,
+          mainAxisSpacing: ZetaSpacing.xl_2,
           physics: const NeverScrollableScrollPhysics(),
-          crossAxisSpacing: ZetaSpacing.xL5,
+          crossAxisSpacing: ZetaSpacing.xl_5,
           children: _buttonValues.entries
               .map(
                 (e) => ZetaDialPadButton(
@@ -190,8 +190,8 @@ class ZetaDialPadButton extends StatelessWidget {
       excludeSemantics: true,
       child: AnimatedContainer(
         duration: Durations.short2,
-        width: ZetaSpacing.xL9,
-        height: ZetaSpacing.xL9,
+        width: ZetaSpacing.xl_9,
+        height: ZetaSpacing.xl_9,
         decoration: ShapeDecoration(
           shape: const CircleBorder(),
           color: colors.warm.shade10,

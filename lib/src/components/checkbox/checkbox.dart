@@ -201,8 +201,8 @@ class _CheckboxState extends State<_Checkbox> {
             border: Border.all(color: _getBorderColor(theme), width: ZetaSpacingBase.x0_5),
             borderRadius: widget.rounded ? ZetaRadius.minimal : ZetaRadius.none,
           ),
-          width: ZetaSpacing.xL,
-          height: ZetaSpacing.xL,
+          width: ZetaSpacing.xl_1,
+          height: ZetaSpacing.xl_1,
           child: icon,
         ),
         if (widget.label != null) ...[

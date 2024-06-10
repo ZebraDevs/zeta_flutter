@@ -271,7 +271,7 @@ class ZetaDropDownState<T> extends State<ZetaDropdown<T>> {
                   ? Alignment.topLeft
                   : Alignment.bottomLeft, // Align overlay dropdown in its correct position
               followerAnchor: _menuPosition == MenuPosition.up ? Alignment.bottomLeft : Alignment.topLeft,
-              offset: const Offset(0, ZetaSpacing.xL * -1),
+              offset: const Offset(0, ZetaSpacing.xl_1 * -1),
               child: Align(
                 alignment:
                     _menuPosition == MenuPosition.up ? AlignmentDirectional.bottomStart : AlignmentDirectional.topStart,
@@ -442,7 +442,7 @@ class _DropdownItemState<T> extends State<_DropdownItem<T>> {
     }
 
     return ConstrainedBox(
-      constraints: const BoxConstraints(maxHeight: ZetaSpacing.xL6),
+      constraints: const BoxConstraints(maxHeight: ZetaSpacing.xl_6),
       child: DefaultTextStyle(
         style: ZetaTextStyles.bodyMedium,
         child: OutlinedButton(
@@ -494,7 +494,7 @@ class _DropdownItemState<T> extends State<_DropdownItem<T>> {
           },
         );
       case ZetaDropdownMenuType.standard:
-        return widget.value.icon ?? const SizedBox(width: ZetaSpacing.xL2);
+        return widget.value.icon ?? const SizedBox(width: ZetaSpacing.xl_2);
     }
   }
 
@@ -529,7 +529,7 @@ class _DropdownItemState<T> extends State<_DropdownItem<T>> {
       ),
       side: WidgetStateBorderSide.resolveWith((states) {
         if (states.contains(WidgetState.focused)) {
-          return BorderSide(color: colors.borderPrimary, width: ZetaSpacing.xL);
+          return BorderSide(color: colors.borderPrimary, width: ZetaSpacing.xl_1);
         }
         return BorderSide.none;
       }),
