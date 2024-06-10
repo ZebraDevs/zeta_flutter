@@ -5,8 +5,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../../zeta_flutter.dart';
 
-/// [ZetaSystemBanner] type
-enum ZetaSystemBannerStatus {
+/// [ZetaBanner] type.
+@Deprecated('Use ZetaBannerStatus instead. ' 'This widget has been renamed as of 0.11.0')
+typedef ZetaSystemBannerStatus = ZetaBannerStatus;
+
+/// Zeta Banner. Extends [MaterialBanner].
+@Deprecated('Use ZetaBanner instead. ' 'This widget has been renamed as of 0.11.0')
+typedef ZetaSystemBanner = ZetaBanner;
+
+/// [ZetaBanner] type
+enum ZetaBannerStatus {
   /// Primary background.
   primary,
 
@@ -20,18 +28,18 @@ enum ZetaSystemBannerStatus {
   negative,
 }
 
-/// ZetaSystemBanner. Extends [MaterialBanner].
+/// Zeta Banner. Extends [MaterialBanner].
 ///
 /// A banner displays an important, succinct message, and provides action for users to address.
 /// It draws the attention to the message by displaying it at the top in various colors.
-class ZetaSystemBanner extends MaterialBanner {
-  /// Constructor for [ZetaSystemBanner]. See [MaterialBanner] for more information.
-  ZetaSystemBanner({
+class ZetaBanner extends MaterialBanner {
+  /// Constructor for [ZetaBanner]. See [MaterialBanner] for more information.
+  ZetaBanner({
     required BuildContext context,
     required String title,
     super.key,
     IconData? leadingIcon,
-    ZetaSystemBannerStatus type = ZetaSystemBannerStatus.primary,
+    ZetaBannerStatus type = ZetaBannerStatus.primary,
     bool titleStart = false,
     Widget? trailing,
   }) : super(
@@ -85,17 +93,17 @@ class ZetaSystemBanner extends MaterialBanner {
           ],
         );
 
-  static ZetaColorSwatch _backgroundColorFromType(BuildContext context, ZetaSystemBannerStatus type) {
+  static ZetaColorSwatch _backgroundColorFromType(BuildContext context, ZetaBannerStatus type) {
     final zeta = Zeta.of(context);
 
     switch (type) {
-      case ZetaSystemBannerStatus.primary:
+      case ZetaBannerStatus.primary:
         return zeta.colors.primary;
-      case ZetaSystemBannerStatus.positive:
+      case ZetaBannerStatus.positive:
         return zeta.colors.surfacePositive;
-      case ZetaSystemBannerStatus.warning:
+      case ZetaBannerStatus.warning:
         return zeta.colors.orange;
-      case ZetaSystemBannerStatus.negative:
+      case ZetaBannerStatus.negative:
         return zeta.colors.surfaceNegative;
     }
   }

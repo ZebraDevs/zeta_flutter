@@ -157,7 +157,7 @@ class ZetaIndicator extends StatelessWidget {
       case ZetaWidgetSize.medium:
         return ZetaSpacing.small;
       case ZetaWidgetSize.small:
-        return 0;
+        return ZetaSpacing.none;
     }
   }
 

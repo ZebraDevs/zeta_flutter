@@ -7,15 +7,15 @@ void main() {
   testWidgets('Initializes with correct parameters', (WidgetTester tester) async {
     await tester.pumpWidget(
       TestWidget(
-        widget: ZetaBadge(
+        widget: ZetaLabel(
           label: 'Test Label',
           status: ZetaWidgetStatus.warning,
         ),
       ),
     );
 
-    final zetaBadgeFinder = find.byType(ZetaBadge);
-    final ZetaBadge badge = tester.firstWidget(zetaBadgeFinder);
+    final zetaBadgeFinder = find.byType(ZetaLabel);
+    final ZetaLabel badge = tester.firstWidget(zetaBadgeFinder);
 
     expect(badge.rounded, true);
     expect(badge.label, 'Test Label');

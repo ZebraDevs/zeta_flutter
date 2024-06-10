@@ -48,12 +48,15 @@ class ZetaExtendedAppBarDelegate extends SliverPersistentHeaderDelegate {
             Positioned(
               top: shrinks
                   ? (_topMax + (-1 * shrinkOffset)).clamp(
-                      _topMin - (searchController != null && searchController!.isEnabled ? _searchBarOffsetTop : 0),
+                      _topMin -
+                          (searchController != null && searchController!.isEnabled
+                              ? _searchBarOffsetTop
+                              : ZetaSpacing.none),
                       _topMax,
                     )
                   : _topMax,
               left: shrinks ? ((shrinkOffset / _maxExtent) * ZetaSpacingBase.x50).clamp(_leftMin, _leftMax) : _leftMin,
-              right: searchController != null && searchController!.isEnabled ? _searchBarOffsetRight : 0,
+              right: searchController != null && searchController!.isEnabled ? _searchBarOffsetRight : ZetaSpacing.none,
               child: title,
             ),
             if (leading != null) Positioned(top: ZetaSpacing.medium, left: ZetaSpacing.small, child: leading!),

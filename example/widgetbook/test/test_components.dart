@@ -16,21 +16,23 @@ class WidgetbookTestWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final size = screenSize ?? const Size(1280, 720);
-
     return Scaffold(
       backgroundColor: backgroundColor ?? Colors.transparent,
       body: removeBody
           ? widget
-          : Center(
-              child: SizedBox(
-                width: size.width,
-                height: size.height,
-                child: MediaQuery(
-                  data: MediaQueryData(size: Size(size.width, size.height)),
-                  child: SingleChildScrollView(child: Center(child: widget)),
+          : Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                  width: screenSize?.width,
+                  height: screenSize?.height,
+                  child: MediaQuery(
+                    data: MediaQueryData(
+                        size: Size(screenSize?.width ?? double.infinity, screenSize?.height ?? double.infinity)),
+                    child: SingleChildScrollView(child: Center(child: widget)),
+                  ),
                 ),
-              ),
+              ],
             ),
     );
   }

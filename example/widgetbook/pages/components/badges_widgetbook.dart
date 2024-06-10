@@ -25,32 +25,42 @@ Widget statusLabelUseCase(BuildContext context) {
   );
 }
 
-Widget priorityPillUseCase(BuildContext context) => WidgetbookTestWidget(
-      widget: Padding(
-        padding: const EdgeInsets.all(ZetaSpacing.xL2),
-        child: ZetaPriorityPill(
-          index: context.knobs.string(label: 'Index'),
-          priority: context.knobs.string(label: 'Label'),
-          size: context.knobs.list<ZetaPriorityPillSize>(
-            label: 'Size',
-            options: ZetaPriorityPillSize.values,
-            labelBuilder: (value) => value.name.capitalize(),
-          ),
-          type: context.knobs.list<ZetaPriorityPillType>(
-            label: 'Priority',
-            options: ZetaPriorityPillType.values,
-            labelBuilder: (value) => value.name.capitalize(),
-          ),
-          rounded: context.knobs.boolean(label: 'Rounded', initialValue: true),
-          isBadge: context.knobs.boolean(label: 'Badge'),
+Widget priorityPillUseCase(BuildContext context) {
+  final colors = Zeta.of(context).colors;
+  return WidgetbookTestWidget(
+    widget: Padding(
+      padding: const EdgeInsets.all(ZetaSpacing.xL2),
+      child: ZetaPriorityPill(
+        index: context.knobs.string(label: 'Index', initialValue: 'U'),
+        label: context.knobs.string(label: 'Label', initialValue: 'Urgent'),
+        size: context.knobs.list<ZetaPriorityPillSize>(
+          label: 'Size',
+          options: ZetaPriorityPillSize.values,
+          labelBuilder: (value) => value.name.capitalize(),
+        ),
+        type: context.knobs.list<ZetaPriorityPillType>(
+          label: 'Priority',
+          options: ZetaPriorityPillType.values,
+          labelBuilder: (value) => value.name.capitalize(),
+        ),
+        rounded: context.knobs.boolean(label: 'Rounded', initialValue: true),
+        isBadge: context.knobs.boolean(label: 'Badge'),
+        customColor: context.knobs.listOrNull(
+          label: 'Custom color',
+          options: colors.rainbow,
+          labelBuilder: (value) {
+            return colors.rainbowMap.entries.firstWhere((v) => v.value == value).key.capitalize();
+          },
         ),
       ),
-    );
+    ),
+  );
+}
 
-Widget badgeUseCase(BuildContext context) => WidgetbookTestWidget(
+Widget labelUseCase(BuildContext context) => WidgetbookTestWidget(
       widget: Padding(
         padding: const EdgeInsets.all(ZetaSpacing.xL2),
-        child: ZetaBadge(
+        child: ZetaLabel(
           label: context.knobs.string(label: 'Label', initialValue: 'Label'),
           rounded: roundedKnob(context),
           status: context.knobs.list(
@@ -82,6 +92,7 @@ Widget indicatorsUseCase(BuildContext context) {
           options: ZetaWidgetSize.values,
         ),
         value: context.knobs.int.slider(label: 'Value'),
+        color: context.knobs.colorOrNull(label: 'Custom color'),
       ),
     ),
   );

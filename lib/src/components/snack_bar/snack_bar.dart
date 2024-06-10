@@ -241,13 +241,13 @@ class _IconButton extends StatelessWidget {
         style: IconButton.styleFrom(
           padding: const EdgeInsets.symmetric(horizontal: ZetaSpacing.medium),
           tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-          minimumSize: const Size(20, 20),
+          minimumSize: const Size(ZetaSpacing.xL, ZetaSpacing.xL),
         ),
         onPressed: onPressed,
         icon: Icon(
           ZetaIcons.close_round,
           color: color,
-          size: 20,
+          size: ZetaSpacing.xL,
         ),
       ),
     );

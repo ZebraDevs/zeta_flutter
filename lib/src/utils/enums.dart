@@ -24,7 +24,7 @@ enum ZetaWidgetSize {
   small,
 }
 
-/// Status options for [ZetaBadge], [ZetaStatusLabel], [ZetaInPageBanner].
+/// Status options for [ZetaLabel], [ZetaStatusLabel], [ZetaInPageBanner].
 enum ZetaWidgetStatus {
   /// Information widget; defaults to purple color scheme.
   info,

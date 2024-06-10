@@ -104,11 +104,21 @@ class ZetaDropdown<T> extends StatefulWidget {
   }
 }
 
+/// Enum possible menu positions
+enum MenuPosition {
+  /// IF Menu is rendered above
+  up,
+
+  /// If menu is rendered below
+  down,
+}
+
 class _ZetaDropDownState<T> extends State<ZetaDropdown<T>> {
   final OverlayPortalController _tooltipController = OverlayPortalController();
   final _link = LayerLink();
   final _menuKey = GlobalKey();
   final _headerKey = GlobalKey();
+  MenuPosition _menuPosition = MenuPosition.down;
 
   ZetaDropdownItem<T>? _selectedItem;
 
@@ -135,6 +145,12 @@ class _ZetaDropDownState<T> extends State<ZetaDropdown<T>> {
         ),
       );
     }
+  }
+
+  /// Return position of header
+  Offset get _headerPos {
+    final headerBox = _headerKey.currentContext!.findRenderObject()! as RenderBox;
+    return headerBox.localToGlobal(Offset.zero);
   }
 
   void _setSelectedItem() {
@@ -168,13 +184,16 @@ class _ZetaDropDownState<T> extends State<ZetaDropdown<T>> {
           overlayChildBuilder: (BuildContext context) {
             return CompositedTransformFollower(
               link: _link,
-              targetAnchor: Alignment.bottomLeft, // Align overlay dropdown in its correct position
+              targetAnchor: _menuPosition == MenuPosition.up
+                  ? Alignment.topLeft
+                  : Alignment.bottomLeft, // Align overlay dropdown in its correct position
+              followerAnchor: _menuPosition == MenuPosition.up ? Alignment.bottomLeft : Alignment.topLeft,
               child: Align(
-                alignment: AlignmentDirectional.topStart,
+                alignment:
+                    _menuPosition == MenuPosition.up ? AlignmentDirectional.bottomStart : AlignmentDirectional.topStart,
                 child: TapRegion(
                   onTapOutside: (event) {
                     final headerBox = _headerKey.currentContext!.findRenderObject()! as RenderBox;
-
                     final headerPosition = headerBox.localToGlobal(Offset.zero);
                     final inHeader = _isInHeader(
                       headerPosition,
@@ -218,6 +237,24 @@ class _ZetaDropDownState<T> extends State<ZetaDropdown<T>> {
   double get _size => widget.size == ZetaDropdownSize.mini ? 120 : 320;
 
   void onTap() {
+    /// Version 1 : Calculate if overflow happens based on using calculations from sizes.
+    final height = MediaQuery.of(context).size.height;
+    final headerRenderBox = _headerKey.currentContext!.findRenderObject()! as RenderBox;
+    final dropdownItemHeight = headerRenderBox.size.height;
+
+    /// Calculate if overflow can happen
+    final headerPosY = _headerPos.dy;
+
+    if (headerPosY + (dropdownItemHeight * (widget.items.length + 1)) > height) {
+      setState(() {
+        _menuPosition = MenuPosition.up;
+      });
+    } else {
+      setState(() {
+        _menuPosition = MenuPosition.down;
+      });
+    }
+
     _tooltipController.toggle();
   }
 
@@ -366,10 +403,7 @@ class _DropdownItemState<T> extends State<_DropdownItem<T>> {
           },
         );
       case ZetaDropdownMenuType.standard:
-        return widget.value.icon ??
-            const SizedBox(
-              width: 24,
-            );
+        return widget.value.icon ?? const SizedBox(width: ZetaSpacing.xL2);
     }
   }
 

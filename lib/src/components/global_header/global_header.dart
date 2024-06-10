@@ -78,7 +78,7 @@ class _GlobalHeaderState extends State<ZetaGlobalHeader> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(
-                height: 48,
+                height: ZetaSpacing.xL8,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   // Top Section
@@ -98,7 +98,7 @@ class _GlobalHeaderState extends State<ZetaGlobalHeader> {
                     Row(
                       children: [
                         ...widget.actionButtons.map(
-                          (e) => IconButton(onPressed: e.onPressed, icon: e.icon, iconSize: 24),
+                          (e) => IconButton(onPressed: e.onPressed, icon: e.icon, iconSize: ZetaSpacing.xL2),
                         ),
                         if (widget.onAppsButton != null) ...[
                           Container(

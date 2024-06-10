@@ -83,6 +83,21 @@ class _ZetaChipState extends State<ZetaChip> {
     selected = widget.selected ?? false;
   }
 
+  Widget _renderLeading(Color foregroundColor) {
+    if (leading.runtimeType == Icon) {
+      return IconTheme(
+        data: IconThemeData(
+          color: foregroundColor,
+          size: ZetaSpacing.xL,
+        ),
+        child: leading!,
+      );
+    } else if (leading.runtimeType == ZetaAvatar) {
+      return (leading! as ZetaAvatar).copyWith(size: ZetaAvatarSize.xxxs);
+    }
+    return leading!;
+  }
+
   @override
   Widget build(BuildContext context) {
     final colors = Zeta.of(context).colors;
@@ -136,23 +151,16 @@ class _ZetaChipState extends State<ZetaChip> {
         padding: WidgetStateProperty.all(
           EdgeInsets.fromLTRB(
             widget.leading != null ? ZetaSpacingBase.x2_5 : ZetaSpacing.medium,
-            0,
+            ZetaSpacing.none,
             widget.trailing != null ? ZetaSpacingBase.x2_5 : ZetaSpacing.medium,
-            0,
+            ZetaSpacing.none,
           ),
         ),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          if (leading != null)
-            IconTheme(
-              data: IconThemeData(
-                color: foregroundColor,
-                size: ZetaSpacing.xL,
-              ),
-              child: leading!,
-            ),
+          if (leading != null) _renderLeading(foregroundColor),
           Text(widget.label),
           if (widget.trailing != null)
             IconTheme(
