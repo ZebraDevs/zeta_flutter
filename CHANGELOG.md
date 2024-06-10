@@ -1,5 +1,44 @@
 # Changelog
 
+## [0.11.0](https://github.com/ZebraDevs/zeta_flutter/compare/v0.10.0...v0.11.0) (2024-06-10)
+
+
+### ✨ New Features
+
+* Created Select input ([#89](https://github.com/ZebraDevs/zeta_flutter/issues/89)) ([6ac8c4d](https://github.com/ZebraDevs/zeta_flutter/commit/6ac8c4deb449e247cc2dddee4fa98b921c9a16d9))
+* Dropdown now has a builder function to allow building custom children ([6ac8c4d](https://github.com/ZebraDevs/zeta_flutter/commit/6ac8c4deb449e247cc2dddee4fa98b921c9a16d9))
+* Notification list item ([#45](https://github.com/ZebraDevs/zeta_flutter/issues/45)) ([a89c615](https://github.com/ZebraDevs/zeta_flutter/commit/a89c6155866f7418f72f7099b3c7309df7bf5184))
+
+
+### 🪲 Bug Fixes
+
+* avatar icon badge background color null fallback ([2dc8fe4](https://github.com/ZebraDevs/zeta_flutter/commit/2dc8fe4ea5f7c4b919845c55b6355af2ecaaa594))
+* breadcrumb rounded icon ([2dc8fe4](https://github.com/ZebraDevs/zeta_flutter/commit/2dc8fe4ea5f7c4b919845c55b6355af2ecaaa594))
+* default avatar size in chip ([2dc8fe4](https://github.com/ZebraDevs/zeta_flutter/commit/2dc8fe4ea5f7c4b919845c55b6355af2ecaaa594))
+* Dropdown focused behavior ([#46](https://github.com/ZebraDevs/zeta_flutter/issues/46)) ([1930723](https://github.com/ZebraDevs/zeta_flutter/commit/1930723269049092703cfbe7ffd0dd55236647f3))
+* Dropdown rendering direction ([#50](https://github.com/ZebraDevs/zeta_flutter/issues/50)) ([4b5c568](https://github.com/ZebraDevs/zeta_flutter/commit/4b5c568d84f42b89926b012e218eba16202907a4))
+* navigation bar text color ([2dc8fe4](https://github.com/ZebraDevs/zeta_flutter/commit/2dc8fe4ea5f7c4b919845c55b6355af2ecaaa594))
+* Select input menu appears in the correct position below the input ([6ac8c4d](https://github.com/ZebraDevs/zeta_flutter/commit/6ac8c4deb449e247cc2dddee4fa98b921c9a16d9))
+* Spacings + Radii tokens ([#48](https://github.com/ZebraDevs/zeta_flutter/issues/48)) ([7db99a9](https://github.com/ZebraDevs/zeta_flutter/commit/7db99a939fcde9a22886f3ae5e88b457423b2480))
+* Updating checkbox to match designs ([#83](https://github.com/ZebraDevs/zeta_flutter/issues/83)) ([05a32ac](https://github.com/ZebraDevs/zeta_flutter/commit/05a32ac386424c881c63d4f97e6a9ab3b4bb0df0))
+
+
+### 📈 Documentation
+
+* adding link to template repo ([c0a9668](https://github.com/ZebraDevs/zeta_flutter/commit/c0a9668a1c6b99aa5d45075aebddf0ea4d8f640f))
+* remove default size in widgetbook ([2dc8fe4](https://github.com/ZebraDevs/zeta_flutter/commit/2dc8fe4ea5f7c4b919845c55b6355af2ecaaa594))
+* update widgetbook organization and styling ([2dc8fe4](https://github.com/ZebraDevs/zeta_flutter/commit/2dc8fe4ea5f7c4b919845c55b6355af2ecaaa594))
+* widgetbook hide addons panel ([2dc8fe4](https://github.com/ZebraDevs/zeta_flutter/commit/2dc8fe4ea5f7c4b919845c55b6355af2ecaaa594))
+
+
+### 🧹 Miscellaneous Chores
+
+* Add deprecation warnings to old tokens ([c0a9668](https://github.com/ZebraDevs/zeta_flutter/commit/c0a9668a1c6b99aa5d45075aebddf0ea4d8f640f))
+* organise ([#49](https://github.com/ZebraDevs/zeta_flutter/issues/49)) ([2dc8fe4](https://github.com/ZebraDevs/zeta_flutter/commit/2dc8fe4ea5f7c4b919845c55b6355af2ecaaa594))
+* rename ZetaBadge to ZetaLabel to match designs ([2dc8fe4](https://github.com/ZebraDevs/zeta_flutter/commit/2dc8fe4ea5f7c4b919845c55b6355af2ecaaa594))
+* rename ZetaSystemBanner to ZetaBanner to match designs ([2dc8fe4](https://github.com/ZebraDevs/zeta_flutter/commit/2dc8fe4ea5f7c4b919845c55b6355af2ecaaa594))
+* reorganise directories to match designs ([2dc8fe4](https://github.com/ZebraDevs/zeta_flutter/commit/2dc8fe4ea5f7c4b919845c55b6355af2ecaaa594))
+
 ## [0.10.0](https://github.com/ZebraDevs/zeta_flutter/compare/v0.9.1...v0.10.0) (2024-05-24)
 
 
