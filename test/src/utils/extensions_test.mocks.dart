@@ -1327,6 +1327,20 @@ class MockZetaColors extends _i1.Mock implements _i6.ZetaColors {
       ) as List<_i4.ZetaColorSwatch>);
 
   @override
+  Map<String, _i4.ZetaColorSwatch> get rainbowMap => (super.noSuchMethod(
+        Invocation.getter(#rainbowMap),
+        returnValue: <String, _i4.ZetaColorSwatch>{},
+        returnValueForMissingStub: <String, _i4.ZetaColorSwatch>{},
+      ) as Map<String, _i4.ZetaColorSwatch>);
+
+  @override
+  List<Object?> get props => (super.noSuchMethod(
+        Invocation.getter(#props),
+        returnValue: <Object?>[],
+        returnValueForMissingStub: <Object?>[],
+      ) as List<Object?>);
+
+  @override
   _i6.ZetaColors copyWith({
     _i5.Brightness? brightness,
     _i9.ZetaContrast? contrast,

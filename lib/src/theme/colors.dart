@@ -306,7 +306,7 @@ class ZetaColors extends Equatable {
   /// Defaults to `ZetaColors.cool.90`.
   ///
   /// {@macro zeta-color-dark}
-  Color get iconDefault => textDefault;
+  Color get iconDefault => cool.shade90;
 
   /// Subtle icon color.
   ///
@@ -315,14 +315,14 @@ class ZetaColors extends Equatable {
   /// Maps to [ColorScheme.onSurface].
   ///
   /// {@macro zeta-color-dark}
-  Color get iconSubtle => textSubtle;
+  Color get iconSubtle => cool.shade70;
 
   /// Disabled icon color.
   ///
   /// Defaults to `ZetaColors.cool.50`.
   ///
   /// {@macro zeta-color-dark}
-  Color get iconDisabled => textDisabled;
+  Color get iconDisabled => cool.shade50;
 
   /// Inverse icon color.
   ///
@@ -331,7 +331,7 @@ class ZetaColors extends Equatable {
   /// Defaults to `ZetaColors.cool.20`.
   ///
   /// {@macro zeta-color-dark}
-  Color get iconInverse => textInverse;
+  Color get iconInverse => cool.shade20;
 
   ///  Default Surface Color
   ///
@@ -351,12 +351,12 @@ class ZetaColors extends Equatable {
   ///  Selected Surface Color
   ///
   /// {@macro zeta-color-dark}
-  Color get surfaceSelected => blue.shade(10);
+  Color get surfaceSelected => primary.shade(10);
 
   ///  Selected-hover Surface Color
   ///
   /// {@macro zeta-color-dark}
-  Color get surfaceSelectedHover => blue.shade(20);
+  Color get surfaceSelectedHover => primary.shade(20);
 
   ///  Disabled Surface Color
   ///
@@ -376,7 +376,7 @@ class ZetaColors extends Equatable {
   ///  Primary-subtle Surface Color
   ///
   /// {@macro zeta-color-dark}
-  Color get surfacePrimarySubtle => blue.shade(10);
+  Color get surfacePrimarySubtle => primary.shade(10);
 
   /// Avatar Avatar Surface Color
   ///
@@ -416,7 +416,7 @@ class ZetaColors extends Equatable {
   ///  Secondary-subtle Surface Color
   ///
   /// {@macro zeta-color-dark}
-  Color get surfaceSecondarySubtle => yellow.shade(10);
+  Color get surfaceSecondarySubtle => secondary.shade(10);
 
   ///  Positive Surface Color
   ///
@@ -491,17 +491,17 @@ class ZetaColors extends Equatable {
   ///  Primary-main Border Color
   ///
   /// {@macro zeta-color-dark}
-  ZetaColorSwatch get borderPrimaryMain => blue;
+  ZetaColorSwatch get borderPrimaryMain => primary;
 
   ///  Primary Border Color
   ///
   /// {@macro zeta-color-dark}
-  Color get borderPrimary => blue.shade(50);
+  Color get borderPrimary => primary.shade(50);
 
   ///  Secondary Border Color
   ///
   /// {@macro zeta-color-dark}
-  Color get borderSecondary => yellow.shade(50);
+  Color get borderSecondary => secondary.shade(50);
 
   ///  Positive Border Color
   ///
@@ -994,11 +994,13 @@ extension ZetaColorGetters on ColorScheme {
   T _resolveDefault<T>(_ZetaColorProperties property) {
     switch (property) {
       case _ZetaColorProperties.primarySwatch:
-      case _ZetaColorProperties.secondarySwatch:
         return ZetaColorBase.blue.apply(brightness: brightness, contrast: contrast) as T;
+      case _ZetaColorProperties.secondarySwatch:
+        return ZetaColorBase.yellow.apply(brightness: brightness, contrast: contrast) as T;
       case _ZetaColorProperties.cool:
         return ZetaColorBase.cool.apply(brightness: brightness, contrast: contrast) as T;
       case _ZetaColorProperties.warm:
+        return ZetaColorBase.warm.apply(brightness: brightness, contrast: contrast) as T;
       case _ZetaColorProperties.textDefault:
         return ZetaColorBase.cool.apply(brightness: brightness, contrast: contrast).shade90 as T;
       case _ZetaColorProperties.textSubtle:

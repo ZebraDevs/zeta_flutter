@@ -82,6 +82,7 @@ void main() {
       );
 
       expect(zetaColorScheme, identicalColorScheme);
+      expect(zetaColorScheme.hashCode, identicalColorScheme.hashCode);
       expect(zetaColorScheme == identicalColorScheme, isTrue);
     });
 

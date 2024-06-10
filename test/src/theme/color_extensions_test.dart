@@ -67,13 +67,13 @@ void main() {
 
     test('getShadeColor returns correct shade color', () {
       const color = Colors.blue;
-      final shadeColor = color.getShadeColor(shadeValue: 15);
+      final shadeColor = color.getShadeColor();
       expect(shadeColor, isNot(color));
     });
 
     test('getShadeColor returns correct shade color for dark', () {
       const color = Colors.blue;
-      final shadeColor = color.getShadeColor(shadeValue: 15, lighten: false);
+      final shadeColor = color.getShadeColor(lighten: false);
       expect(shadeColor, isNot(color));
     });
 
