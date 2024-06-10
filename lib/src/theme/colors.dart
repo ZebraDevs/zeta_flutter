@@ -1,3 +1,4 @@
+import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
 import 'color_extensions.dart';
@@ -10,7 +11,7 @@ import 'contrast.dart';
 ///
 /// A customizable, token-based color palette, adapting Zeta colors to Flutter's colorScheme.
 @immutable
-class ZetaColors {
+class ZetaColors extends Equatable {
   /// Default constructor for instance of [ZetaColors].
   ZetaColors({
     this.brightness = Brightness.light,
@@ -688,53 +689,20 @@ class ZetaColors {
   }
 
   @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is ZetaColors &&
-          runtimeType == other.runtimeType &&
-          brightness == other.brightness &&
-          contrast == other.contrast &&
-          primary == other.primary &&
-          secondary == other.secondary &&
-          error == other.error &&
-          cool == other.cool &&
-          warm == other.warm &&
-          white == other.white &&
-          black == other.black &&
-          surfacePrimary == other.surfacePrimary &&
-          surfaceSecondary == other.surfaceSecondary &&
-          surfaceTertiary == other.surfaceTertiary &&
-          blue == other.blue &&
-          green == other.green &&
-          red == other.red &&
-          orange == other.orange &&
-          purple == other.purple &&
-          yellow == other.yellow &&
-          teal == other.teal &&
-          pink == other.pink;
-
-  @override
-  int get hashCode =>
-      brightness.hashCode ^
-      contrast.hashCode ^
-      primary.hashCode ^
-      secondary.hashCode ^
-      error.hashCode ^
-      cool.hashCode ^
-      warm.hashCode ^
-      white.hashCode ^
-      black.hashCode ^
-      surfacePrimary.hashCode ^
-      surfaceSecondary.hashCode ^
-      surfaceTertiary.hashCode ^
-      blue.hashCode ^
-      green.hashCode ^
-      red.hashCode ^
-      orange.hashCode ^
-      purple.hashCode ^
-      yellow.hashCode ^
-      teal.hashCode ^
-      pink.hashCode;
+  List<Object?> get props => [
+        brightness,
+        contrast,
+        primary,
+        secondary,
+        error,
+        cool,
+        warm,
+        white,
+        black,
+        surfacePrimary,
+        surfaceSecondary,
+        surfaceTertiary,
+      ];
 }
 
 enum _ZetaColorProperties {

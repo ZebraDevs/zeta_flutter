@@ -93,7 +93,7 @@ extension ColorSwatches on ZetaWidgetStatus {
 extension StringExtensions on String? {
   /// Returns initials from a name.
   String get initials {
-    if (this == null) return '';
+    if (this == null || (this?.isEmpty ?? true)) return '';
     final List<String> nameParts = this!.split(RegExp(r'\W+'))..removeWhere((item) => item.isEmpty);
     if (nameParts.isEmpty) return '';
     return (nameParts.length > 1
@@ -104,9 +104,10 @@ extension StringExtensions on String? {
         .toUpperCase();
   }
 
-  /// Capitalizes fist letter of string.
+  /// Capitalizes first letter of string.
   String capitalize() {
-    if (this == null) return '';
+    if (this == null || this!.isEmpty) return '';
+    if (this!.length == 1) return this!.toUpperCase();
     return '${this![0].toUpperCase()}${this!.substring(1).toLowerCase()}';
   }
 }
