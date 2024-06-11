@@ -145,22 +145,29 @@ class _CheckboxState extends State<_Checkbox> {
 
   @override
   Widget build(BuildContext context) {
-    return Semantics(
-      mixed: widget.useIndeterminate,
-      enabled: !widget.disabled,
-      child: MouseRegion(
-        cursor: !widget.disabled ? SystemMouseCursors.click : SystemMouseCursors.forbidden,
-        onEnter: (event) => _setHovered(true),
-        onExit: (event) => _setHovered(false),
-        child: !widget.disabled
-            ? FocusableActionDetector(
-                onFocusChange: (bool focus) => setState(() => _isFocused = focus),
-                child: GestureDetector(
-                  onTap: !widget.disabled ? () => widget.onChanged.call(!_checked) : null,
-                  child: _buildContent(context),
-                ),
-              )
-            : _buildContent(context),
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: !widget.disabled ? () => widget.onChanged.call(!_checked) : null,
+        borderRadius: ZetaRadius.full,
+        child: Padding(
+          padding: const EdgeInsets.all(ZetaSpacing.small),
+          child: Semantics(
+            mixed: widget.useIndeterminate,
+            enabled: !widget.disabled,
+            child: MouseRegion(
+              cursor: !widget.disabled ? SystemMouseCursors.click : SystemMouseCursors.forbidden,
+              onEnter: (event) => _setHovered(true),
+              onExit: (event) => _setHovered(false),
+              child: !widget.disabled
+                  ? FocusableActionDetector(
+                      onFocusChange: (bool focus) => setState(() => _isFocused = focus),
+                      child: _buildContent(context),
+                    )
+                  : _buildContent(context),
+            ),
+          ),
+        ),
       ),
     );
   }
@@ -205,14 +212,13 @@ class _CheckboxState extends State<_Checkbox> {
           height: ZetaSpacing.xl_1,
           child: icon,
         ),
-        if (widget.label != null) ...[
+        if (widget.label != null)
           Flexible(
             child: Padding(
               padding: const EdgeInsets.only(left: ZetaSpacing.medium),
               child: Text(widget.label!, style: ZetaTextStyles.bodyMedium),
             ),
           ),
-        ],
       ],
     );
   }
@@ -220,7 +226,7 @@ class _CheckboxState extends State<_Checkbox> {
   Color _getBackground(Zeta theme) {
     final ZetaColorSwatch color = widget.error ? theme.colors.error : theme.colors.primary;
     if (widget.disabled) return theme.colors.surfaceDisabled;
-    if (!_checked) return theme.colors.surfacePrimary;
+    if (!_checked) return Colors.transparent;
     if (_isHovered) return theme.colors.borderHover;
 
     return color;

@@ -8,12 +8,6 @@ Widget listItemUseCase(BuildContext context) {
   return WidgetbookTestWidget(
     widget: StatefulBuilder(
       builder: (context, setState) {
-        final subtitle = context.knobs.stringOrNull(label: 'Descriptor', initialValue: null);
-
-        final trailing = context.knobs.boolean(label: 'Trailing', initialValue: false)
-            ? Checkbox(value: false, onChanged: (_) {})
-            : null;
-
         final leading = context.knobs.boolean(label: 'Leading', initialValue: false)
             ? Container(
                 width: ZetaSpacing.xl_8,
@@ -23,21 +17,10 @@ Widget listItemUseCase(BuildContext context) {
               )
             : null;
 
-        return ZetaListItem(
-          dense: context.knobs.boolean(label: 'Dense', initialValue: false),
-          enabled: context.knobs.boolean(label: 'Enabled', initialValue: true),
-          enabledDivider: context.knobs.boolean(
-            label: 'Enabled Divider',
-            initialValue: true,
-          ),
-          selected: context.knobs.boolean(label: 'Selected', initialValue: true),
+        return ZetaListItem.checkbox(
           leading: leading,
-          title: Text(
-            context.knobs.string(label: 'Title', initialValue: 'List Item'),
-          ),
-          subtitle: subtitle != null ? Text(subtitle) : null,
-          trailing: trailing,
-          onTap: () {},
+          primaryText: 'List Item',
+          onChanged: (_) {},
         );
       },
     ),
