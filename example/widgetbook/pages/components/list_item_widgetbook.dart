@@ -19,6 +19,7 @@ Widget listItemUseCase(BuildContext context) {
 
         return ZetaListItem.checkbox(
           leading: leading,
+          value: true,
           primaryText: 'List Item',
           onChanged: (_) {},
         );

@@ -1,7 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
@@ -56,9 +55,9 @@ import 'utils/zebra.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  String readme = await rootBundle.loadString('../README.md');
+  // String readme = await rootBundle.loadString('../README.md');
 
-  runApp(HotReload(readme: readme));
+  runApp(HotReload(readme: 'TODO: cannot import readme on windows'));
 }
 
 class HotReload extends StatefulWidget {
