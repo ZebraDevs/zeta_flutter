@@ -1,17 +1,26 @@
-import 'chip.dart';
+import 'package:flutter/material.dart';
 
-/// Zeta Filter Chip.
+import '../../../zeta_flutter.dart';
+
+/// Filter chips have 2 togglable states, representing selected and not selected.
+///
+/// The chips are commonly used within a [ZetaFilterSelection].
+///
+/// These chips use [Draggable] and can be dragged around the screen and placed in new locations using [DragTarget].
 ///
 /// Extends [ZetaChip].
 class ZetaFilterChip extends ZetaChip {
-  /// Creates a [ZetaInputChip].
+  /// Creates a [ZetaFilterChip].
   const ZetaFilterChip({
     super.key,
     required super.label,
     super.rounded,
     super.selected,
-    super.onTap,
-  }) : super(type: ZetaChipType.filter);
+    super.draggable = false,
+    super.data,
+    super.onDragCompleted,
+    ValueSetter<bool>? onTap,
+  }) : super(onToggle: onTap);
 
   /// Creates another instance of [ZetaFilterChip].
   ZetaFilterChip copyWith({
@@ -21,7 +30,10 @@ class ZetaFilterChip extends ZetaChip {
       label: label,
       selected: selected,
       rounded: rounded ?? this.rounded,
-      onTap: onTap,
+      draggable: draggable,
+      data: data,
+      onDragCompleted: onDragCompleted,
+      onTap: onToggle,
     );
   }
 }

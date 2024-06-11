@@ -7,41 +7,31 @@ export './assist_chip.dart';
 export './filter_chip.dart';
 export './input_chip.dart';
 
-/// The type of [ZetaChip]
-enum ZetaChipType {
-  /// Input Chip
-  input,
-
-  /// Filter Chip
-  filter,
-
-  /// Assist Chip
-  assist,
-}
-
 /// Zeta Chip component.
 ///
-/// This covers the board functionality of [ZetaAssistChip], [ZetaFilterChip] and [ZetaInputChip].
+/// This covers the broad functionality of [ZetaAssistChip], [ZetaFilterChip] and [ZetaInputChip].
+///
+/// If [selected] is not null, the chip will have the toggle behavior of [ZetaFilterChip].
 class ZetaChip extends StatefulWidget {
   /// Constructs a [ZetaChip].
   const ZetaChip({
     super.key,
     required this.label,
-    required this.type,
     this.leading,
     this.rounded = true,
     this.trailing,
     this.selected,
     this.onTap,
+    this.draggable = false,
+    this.data,
+    this.onDragCompleted,
+    this.onToggle,
   });
-
-  /// Type of [Chip].
-  final ZetaChipType type;
 
   /// The label on the [ZetaChip]
   final String label;
 
-  /// Leading component. Typically an [Icon].
+  /// Leading component. Typically an [Icon] or [ZetaAvatar].
   final Widget? leading;
 
   /// {@macro zeta-component-rounded}
@@ -51,10 +41,28 @@ class ZetaChip extends StatefulWidget {
   final Widget? trailing;
 
   /// Whether the [ZetaFilterChip] is selected.
+  ///
+  /// If null, chip can not be selected.
   final bool? selected;
 
   /// Callback when chip is tapped.
-  final ValueSetter<bool>? onTap;
+  final VoidCallback? onTap;
+
+  /// Callback for when Filter Chip is toggled.
+  final ValueSetter<bool>? onToggle;
+
+  /// Whether the chip can be dragged.
+  final bool draggable;
+
+  /// Draggable data.
+  final dynamic data;
+
+  /// Called when the draggable is dropped and accepted by a [DragTarget].
+  ///
+  /// See also:
+  /// * [DragTarget]
+  /// * [Draggable]
+  final VoidCallback? onDragCompleted;
 
   @override
   State<ZetaChip> createState() => _ZetaChipState();
@@ -62,20 +70,19 @@ class ZetaChip extends StatefulWidget {
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(EnumProperty<ZetaChipType>('type', type))
       ..add(StringProperty('label', label))
       ..add(DiagnosticsProperty<bool>('rounded', rounded))
       ..add(DiagnosticsProperty<bool?>('selected', selected))
-      ..add(ObjectFlagProperty<ValueSetter<bool>?>.has('onTap', onTap));
+      ..add(DiagnosticsProperty<bool>('draggable', draggable))
+      ..add(DiagnosticsProperty('data', data))
+      ..add(ObjectFlagProperty<VoidCallback?>.has('onDragCompleted', onDragCompleted))
+      ..add(ObjectFlagProperty<VoidCallback?>.has('onTap', onTap))
+      ..add(ObjectFlagProperty<ValueSetter<bool>>.has('onToggle', onToggle));
   }
 }
 
 class _ZetaChipState extends State<ZetaChip> {
   bool selected = false;
-
-  Widget? get leading =>
-      widget.leading ??
-      (selected ? Icon(widget.rounded ? ZetaIcons.check_mark_round : ZetaIcons.check_mark_sharp) : null);
 
   @override
   void initState() {
@@ -84,94 +91,121 @@ class _ZetaChipState extends State<ZetaChip> {
   }
 
   Widget _renderLeading(Color foregroundColor) {
-    if (leading.runtimeType == Icon) {
-      return IconTheme(
-        data: IconThemeData(
-          color: foregroundColor,
-          size: ZetaSpacing.xl_1,
-        ),
-        child: leading!,
-      );
-    } else if (leading.runtimeType == ZetaAvatar) {
-      return (leading! as ZetaAvatar).copyWith(size: ZetaAvatarSize.xxxs);
+    if (widget.leading.runtimeType == Icon) {
+      return IconTheme(data: IconThemeData(color: foregroundColor, size: ZetaSpacing.xl_1), child: widget.leading!);
+    } else if (widget.leading.runtimeType == ZetaAvatar) {
+      return (widget.leading! as ZetaAvatar).copyWith(size: ZetaAvatarSize.xxxs);
     }
-    return leading!;
+    return widget.leading ?? const SizedBox();
   }
+
+  final _controller = WidgetStatesController();
 
   @override
   Widget build(BuildContext context) {
     final colors = Zeta.of(context).colors;
     final foregroundColor = selected ? colors.textInverse : colors.textDefault;
-    return FilledButton(
-      onPressed: () {
-        if (widget.type == ZetaChipType.filter) {
-          setState(() => selected = !selected);
-          widget.onTap?.call(selected);
-        }
-      },
-      style: ButtonStyle(
-        shape: WidgetStateProperty.all(
-          RoundedRectangleBorder(borderRadius: widget.rounded ? ZetaRadius.full : ZetaRadius.none),
-        ),
-        textStyle: WidgetStateProperty.all(ZetaTextStyles.bodySmall),
-        backgroundColor: WidgetStateProperty.resolveWith((states) {
-          if (states.contains(WidgetState.disabled)) {
-            return colors.surfaceDisabled;
-          }
-          if (selected) {
-            return colors.cool.shade90;
-          }
-          if (states.contains(WidgetState.pressed) || states.contains(WidgetState.dragged)) {
-            return colors.surfaceSelected;
-          }
 
-          if (states.contains(WidgetState.hovered)) {
-            return colors.surfaceHover;
-          }
-
-          return colors.surfacePrimary;
-        }),
-        foregroundColor: WidgetStateProperty.all(foregroundColor),
-        mouseCursor: WidgetStateProperty.resolveWith((states) {
-          if (states.contains(WidgetState.disabled)) {
-            return SystemMouseCursors.forbidden;
-          }
-          if (states.contains(WidgetState.dragged)) {
-            return SystemMouseCursors.grabbing;
-          }
-          return SystemMouseCursors.click;
-        }),
-        elevation: WidgetStateProperty.all(0),
-        side: WidgetStateProperty.resolveWith((states) {
-          if (states.contains(WidgetState.focused)) {
-            return BorderSide(width: ZetaSpacingBase.x0_5, color: colors.blue.shade50);
-          }
-          return BorderSide(color: colors.borderDefault);
-        }),
-        padding: WidgetStateProperty.all(
-          EdgeInsets.fromLTRB(
-            widget.leading != null ? ZetaSpacingBase.x2_5 : ZetaSpacing.medium,
-            ZetaSpacing.none,
-            widget.trailing != null ? ZetaSpacingBase.x2_5 : ZetaSpacing.medium,
-            ZetaSpacing.none,
-          ),
-        ),
-      ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          if (leading != null) _renderLeading(foregroundColor),
-          Text(widget.label),
-          if (widget.trailing != null)
-            IconTheme(
-              data: IconThemeData(
-                color: foregroundColor,
-                size: ZetaSpacing.xl_1,
+    return SelectionContainer.disabled(
+      child: widget.draggable
+          ? Draggable(
+              feedback: Material(
+                color: Colors.transparent,
+                child: child(colors, foregroundColor, isDragging: true),
               ),
-              child: widget.trailing!,
+              childWhenDragging: const SizedBox(),
+              data: widget.data,
+              onDragCompleted: widget.onDragCompleted,
+              child: child(colors, foregroundColor),
+            )
+          : child(colors, foregroundColor),
+    );
+  }
+
+  ValueListenableBuilder<Set<WidgetState>> child(ZetaColors colors, Color foregroundColor, {bool isDragging = false}) {
+    return ValueListenableBuilder(
+      valueListenable: _controller,
+      builder: (context, states, child) {
+        final double iconSize = selected ? ZetaSpacing.xl_2 : ZetaSpacing.none;
+
+        return InkWell(
+          statesController: _controller,
+          borderRadius: widget.rounded ? ZetaRadius.full : ZetaRadius.none,
+          onTap: () {
+            if (widget.selected != null) {
+              setState(() => selected = !selected);
+              widget.onToggle?.call(selected);
+            } else {
+              widget.onTap?.call();
+            }
+          },
+          child: AnimatedContainer(
+            duration: Durations.short3,
+            height: ZetaSpacing.xl_5,
+            padding: EdgeInsets.fromLTRB(
+              widget.leading != null ? ZetaSpacingBase.x2_5 : ZetaSpacing.medium,
+              0,
+              widget.trailing != null ? ZetaSpacingBase.x2_5 : ZetaSpacing.medium,
+              0,
             ),
-        ].divide(const SizedBox.square(dimension: ZetaSpacing.small)).toList(),
-      ),
+            decoration: BoxDecoration(
+              color: () {
+                if (states.contains(WidgetState.disabled)) {
+                  return colors.surfaceDisabled;
+                }
+                if (selected) {
+                  return colors.cool.shade90;
+                }
+                if (states.contains(WidgetState.pressed) || isDragging) {
+                  return colors.surfaceSelected;
+                }
+                if (states.contains(WidgetState.hovered)) {
+                  return colors.surfaceHover;
+                }
+                return colors.surfacePrimary;
+              }(),
+              borderRadius: widget.rounded ? ZetaRadius.full : ZetaRadius.none,
+              border: Border.fromBorderSide(
+                BorderSide(
+                  color: _controller.value.contains(WidgetState.focused) ? colors.blue.shade50 : colors.borderDefault,
+                  width: _controller.value.contains(WidgetState.focused) ? ZetaSpacingBase.x0_5 : 1,
+                ),
+              ),
+            ),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                if (widget.selected != null)
+                  AnimatedContainer(
+                    duration: Durations.short1,
+                    width: iconSize,
+                    child: (widget.selected!
+                        ? Icon(
+                            widget.rounded ? ZetaIcons.check_mark_round : ZetaIcons.check_mark_sharp,
+                            color: widget.selected! ? colors.iconInverse : Colors.transparent,
+                          )
+                        : const SizedBox()),
+                  )
+                else if (widget.leading != null)
+                  _renderLeading(foregroundColor),
+                if ((widget.selected != null && widget.selected!) || widget.leading != null)
+                  const SizedBox.square(dimension: ZetaSpacing.small),
+                Text(
+                  widget.label,
+                  style: ZetaTextStyles.bodySmall.apply(color: foregroundColor),
+                ),
+                if (widget.trailing != null) ...[
+                  const SizedBox.square(dimension: ZetaSpacing.small),
+                  IconTheme(
+                    data: IconThemeData(color: foregroundColor, size: ZetaSpacing.xl_1),
+                    child: widget.trailing!,
+                  ),
+                ],
+              ],
+            ),
+          ),
+        );
+      },
     );
   }
 
@@ -181,7 +215,6 @@ class _ZetaChipState extends State<ZetaChip> {
     properties
       ..add(DiagnosticsProperty<bool>('rounded', widget.rounded))
       ..add(StringProperty('label', widget.label))
-      ..add(EnumProperty<ZetaChipType>('type', widget.type))
       ..add(DiagnosticsProperty<bool?>('selected', widget.selected));
   }
 }

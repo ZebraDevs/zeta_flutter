@@ -1,6 +1,8 @@
-import 'chip.dart';
+import '../../../zeta_flutter.dart';
 
-/// Zeta Input Chip.
+/// Zeta Input Chip typically is used to associate some content or action with a user.
+///
+/// Leading widget should typically be a [ZetaAvatar].
 ///
 /// Extends [ZetaChip].
 class ZetaInputChip extends ZetaChip {
@@ -11,5 +13,6 @@ class ZetaInputChip extends ZetaChip {
     super.leading,
     super.rounded,
     super.trailing,
-  }) : super(type: ZetaChipType.input);
+    super.onTap,
+  });
 }
