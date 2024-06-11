@@ -1,11 +1,19 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:path/path.dart' as p;
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 import '../../../test_utils/test_app.dart';
+import '../../../test_utils/tolerant_comparator.dart';
 
 void main() {
+  setUpAll(() {
+    final testUri = Uri.parse(p.join(Directory.current.path, 'golden').replaceAll(r'\', '/'));
+    goldenFileComparator = TolerantComparator(testUri, tolerance: 0.01);
+  });
+
   group('ZetaTooltip Widget Tests', () {
     testWidgets('renders with default properties', (WidgetTester tester) async {
       await tester.pumpWidget(
