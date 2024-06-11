@@ -34,5 +34,6 @@ Widget progressCircleUseCase(BuildContext context) => WidgetbookTestWidget(
           options: ZetaCircleSizes.values,
           labelBuilder: enumLabelBuilder,
         ),
+        onCancel: context.knobs.boolean(label: "Can Cancel") ? () {} : null,
       ),
     );
