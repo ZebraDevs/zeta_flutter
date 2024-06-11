@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:path/path.dart' as p;
@@ -211,6 +212,36 @@ void main() {
 
       expect((roundedTooltipBox.decoration as BoxDecoration).borderRadius, ZetaRadius.minimal);
       expect((sharpTooltipBox.decoration as BoxDecoration).borderRadius, null);
+    });
+
+    testWidgets('debugFillProperties works correctly', (WidgetTester tester) async {
+      final diagnostics = DiagnosticPropertiesBuilder();
+      const ZetaTooltip(
+        padding: EdgeInsets.all(8),
+        color: Colors.amber,
+        textStyle: TextStyle(fontSize: 9),
+        maxWidth: 170,
+        child: Text('Rounded tooltip'),
+      ).debugFillProperties(diagnostics);
+
+      final rounded = diagnostics.properties.where((p) => p.name == 'rounded').map((p) => p.toDescription()).first;
+      expect(rounded, 'true');
+
+      final padding = diagnostics.properties.where((p) => p.name == 'padding').map((p) => p.toDescription()).first;
+      expect(padding, 'EdgeInsets.all(8.0)');
+
+      final color = diagnostics.properties.where((p) => p.name == 'color').map((p) => p.toDescription()).first;
+      expect(color.toLowerCase(), contains(Colors.amber.hexCode.toLowerCase()));
+
+      final textStyle = diagnostics.properties.where((p) => p.name == 'textStyle').map((p) => p.toDescription()).first;
+      expect(textStyle, contains('size: 9.0'));
+
+      final direction =
+          diagnostics.properties.where((p) => p.name == 'arrowDirection').map((p) => p.toDescription()).first;
+      expect(direction, 'down');
+
+      final maxWidth = diagnostics.properties.where((p) => p.name == 'maxWidth').map((p) => p.toDescription()).first;
+      expect(maxWidth, '170.0');
     });
   });
 }

@@ -156,13 +156,11 @@ void main() {
       final themeMode = diagnostics.properties.where((p) => p.name == 'themeMode').map((p) => p.toDescription()).first;
       expect(themeMode, 'system');
 
-      final themeDataDescription =
-          diagnostics.properties.where((p) => p.name == 'themeData').map((p) => p.toDescription()).first;
-      expect(themeDataDescription, contains('ZetaThemeData'));
+      final thData = diagnostics.properties.where((p) => p.name == 'themeData').map((p) => p.toDescription()).first;
+      expect(thData, contains('ZetaThemeData'));
 
-      final colorsDescription =
-          diagnostics.properties.where((p) => p.name == 'colors').map((p) => p.toDescription()).first;
-      expect(colorsDescription, contains('ZetaColors'));
+      final colors = diagnostics.properties.where((p) => p.name == 'colors').map((p) => p.toDescription()).first;
+      expect(colors, contains('ZetaColors'));
 
       final mediaBrightness =
           diagnostics.properties.where((p) => p.name == 'mediaBrightness').map((p) => p.toDescription()).first;
