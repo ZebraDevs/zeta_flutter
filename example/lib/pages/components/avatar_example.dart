@@ -584,7 +584,7 @@ extension on ZetaAvatarSize {
         return ZetaSpacingBase.x50;
       case ZetaAvatarSize.xxl:
         return ZetaSpacingBase.x30;
-      case ZetaAvatarSize.xl_1:
+      case ZetaAvatarSize.xl:
         return ZetaSpacing.xl_10;
       case ZetaAvatarSize.l:
         return ZetaSpacing.xl_9;
