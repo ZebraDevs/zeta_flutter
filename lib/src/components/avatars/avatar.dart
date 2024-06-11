@@ -10,8 +10,8 @@ enum ZetaAvatarSize {
   /// [xxl] 120 pixels
   xxl,
 
-  /// [xl_1] 80 pixels
-  xl_1,
+  /// [xl] 80 pixels
+  xl,
 
   /// [l] 64 pixels
   l,
@@ -37,7 +37,7 @@ class ZetaAvatar extends StatelessWidget {
   /// Constructor for [ZetaAvatar]
   const ZetaAvatar({
     super.key,
-    this.size = ZetaAvatarSize.xl_1,
+    this.size = ZetaAvatarSize.xl,
     this.image,
     this.initials,
     this.backgroundColor,
@@ -49,7 +49,7 @@ class ZetaAvatar extends StatelessWidget {
   /// Constructor for [ZetaAvatar] with image.
   const ZetaAvatar.image({
     super.key,
-    this.size = ZetaAvatarSize.xl_1,
+    this.size = ZetaAvatarSize.xl,
     this.image,
     this.lowerBadge,
     this.upperBadge,
@@ -61,7 +61,7 @@ class ZetaAvatar extends StatelessWidget {
   const ZetaAvatar.initials({
     super.key,
     required this.initials,
-    this.size = ZetaAvatarSize.xl_1,
+    this.size = ZetaAvatarSize.xl,
     this.lowerBadge,
     this.upperBadge,
     this.borderColor,
@@ -72,7 +72,7 @@ class ZetaAvatar extends StatelessWidget {
   ZetaAvatar.fromName({
     super.key,
     required String name,
-    this.size = ZetaAvatarSize.xl_1,
+    this.size = ZetaAvatarSize.xl,
     this.lowerBadge,
     this.upperBadge,
     this.borderColor,
@@ -230,7 +230,7 @@ extension on ZetaAvatarSize {
         return ZetaSpacingBase.x50;
       case ZetaAvatarSize.xxl:
         return ZetaSpacingBase.x30;
-      case ZetaAvatarSize.xl_1:
+      case ZetaAvatarSize.xl:
         return ZetaSpacing.xl_10;
       case ZetaAvatarSize.l:
         return ZetaSpacing.xl_9;
@@ -252,7 +252,7 @@ extension on ZetaAvatarSize {
       case ZetaAvatarSize.xxxl:
         return 11;
       case ZetaAvatarSize.xxl:
-      case ZetaAvatarSize.xl_1:
+      case ZetaAvatarSize.xl:
       case ZetaAvatarSize.l:
       case ZetaAvatarSize.m:
         return ZetaSpacing.minimum;
