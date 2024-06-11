@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.11.2](https://github.com/ZebraDevs/zeta_flutter/compare/v0.11.1...v0.11.2) (2024-06-11)
+
+
+### 🪲 Bug Fixes
+
+* revert avatar size enum change ([b387a1b](https://github.com/ZebraDevs/zeta_flutter/commit/b387a1b22642dd5f23bed00e756badb272d5d420))
+
 ## [0.11.1](https://github.com/ZebraDevs/zeta_flutter/compare/v0.11.0...v0.11.1) (2024-06-10)
 
 
