@@ -89,7 +89,7 @@ ButtonStyle buttonStyle(
   final bool isSolid = type.solid || backgroundColor != null;
 
   return ButtonStyle(
-    minimumSize: WidgetStateProperty.all(const Size.square(ZetaSpacing.xL4)),
+    minimumSize: WidgetStateProperty.all(const Size.square(ZetaSpacing.xl_4)),
     shape: WidgetStateProperty.all(
       RoundedRectangleBorder(borderRadius: borderType.radius),
     ),

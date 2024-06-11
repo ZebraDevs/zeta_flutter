@@ -23,11 +23,11 @@ Widget iconsUseCase(BuildContext context) {
       child: Center(
         child: Column(
           children: [
-            Text('Zeta Icons v' + zetaIconsVersion, style: ZetaTextStyles.displayMedium).paddingAll(ZetaSpacing.xL4),
-            Text('Tap icon to copy name to clipboard', style: ZetaTextStyles.titleMedium).paddingAll(ZetaSpacing.xL4),
+            Text('Zeta Icons v' + zetaIconsVersion, style: ZetaTextStyles.displayMedium).paddingAll(ZetaSpacing.xl_4),
+            Text('Tap icon to copy name to clipboard', style: ZetaTextStyles.titleMedium).paddingAll(ZetaSpacing.xl_4),
             Wrap(
-              spacing: ZetaSpacing.xL4,
-              runSpacing: ZetaSpacing.xL4,
+              spacing: ZetaSpacing.xl_4,
+              runSpacing: ZetaSpacing.xl_4,
               children: sortedIcons.entries.map(
                 (e) {
                   final nameArr = (e.key.split('_')..removeLast()).join(' ').capitalize();
@@ -47,7 +47,7 @@ Widget iconsUseCase(BuildContext context) {
                       },
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: [Icon(e.value, size: ZetaSpacing.xL6), Text(nameArr, textAlign: TextAlign.center)],
+                        children: [Icon(e.value, size: ZetaSpacing.xl_6), Text(nameArr, textAlign: TextAlign.center)],
                       ),
                     ),
                   );

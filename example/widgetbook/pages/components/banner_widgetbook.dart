@@ -32,7 +32,7 @@ Widget bannerUseCase(BuildContext context) {
     widget: Column(
       children: [
         banner,
-        const SizedBox(height: ZetaSpacing.xL9),
+        const SizedBox(height: ZetaSpacing.xl_9),
         ZetaButton.text(
           label: 'Popup',
           onPressed: () {

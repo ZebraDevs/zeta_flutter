@@ -5,10 +5,10 @@ import '../../../zeta_flutter.dart';
 const _searchBarOffsetTop = ZetaSpacing.minimum * 1.5;
 const _searchBarOffsetRight = ZetaSpacing.minimum * 22;
 const _maxExtent = ZetaSpacing.minimum * 26;
-const _minExtent = ZetaSpacing.xL9;
+const _minExtent = ZetaSpacing.xl_9;
 const _leftMin = ZetaSpacing.large;
 const _leftMax = ZetaSpacingBase.x12_5;
-const _topMin = ZetaSpacing.xL;
+const _topMin = ZetaSpacing.xl_1;
 const _topMax = ZetaSpacing.minimum * 15;
 
 /// Delegate for creating an extended app bar, that grows and shrinks when scrolling.
@@ -40,7 +40,7 @@ class ZetaExtendedAppBarDelegate extends SliverPersistentHeaderDelegate {
   @override
   Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
     return ConstrainedBox(
-      constraints: const BoxConstraints(minHeight: ZetaSpacing.xL9, maxHeight: _maxExtent),
+      constraints: const BoxConstraints(minHeight: ZetaSpacing.xl_9, maxHeight: _maxExtent),
       child: ColoredBox(
         color: Zeta.of(context).colors.surfacePrimary,
         child: Stack(

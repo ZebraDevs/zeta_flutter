@@ -78,7 +78,7 @@ class _GlobalHeaderState extends State<ZetaGlobalHeader> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(
-                height: ZetaSpacing.xL8,
+                height: ZetaSpacing.xl_8,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   // Top Section
@@ -98,13 +98,13 @@ class _GlobalHeaderState extends State<ZetaGlobalHeader> {
                     Row(
                       children: [
                         ...widget.actionButtons.map(
-                          (e) => IconButton(onPressed: e.onPressed, icon: e.icon, iconSize: ZetaSpacing.xL2),
+                          (e) => IconButton(onPressed: e.onPressed, icon: e.icon, iconSize: ZetaSpacing.xl_2),
                         ),
                         if (widget.onAppsButton != null) ...[
                           Container(
                             color: colors.borderDefault,
                             width: 1,
-                            height: ZetaSpacing.xL2,
+                            height: ZetaSpacing.xl_2,
                             margin: const EdgeInsets.symmetric(horizontal: ZetaSpacing.minimum),
                           ),
                           IconButton(icon: const Icon(ZetaIcons.apps_round), onPressed: widget.onAppsButton),

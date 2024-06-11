@@ -65,7 +65,7 @@ class _ZetaGlobalHeaderItemState extends State<ZetaGlobalHeaderItem> {
             const SizedBox(width: ZetaSpacing.small),
             if (widget.dropdown != null) Icon(ZetaIcons.expand_more_round, color: foregroundColor),
           ],
-        ).paddingHorizontal(ZetaSpacing.xL2).paddingVertical(ZetaSpacing.medium),
+        ).paddingHorizontal(ZetaSpacing.xl_2).paddingVertical(ZetaSpacing.medium),
       ),
     );
   }

@@ -19,7 +19,7 @@ Widget tooltipUseCase(BuildContext context) {
     widget: StatefulBuilder(
       builder: (context, setState) {
         return Padding(
-          padding: const EdgeInsets.all(ZetaSpacing.xL4),
+          padding: const EdgeInsets.all(ZetaSpacing.xl_4),
           child: ZetaTooltip(
             child: Text(text),
             rounded: rounded,

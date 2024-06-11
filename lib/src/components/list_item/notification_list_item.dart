@@ -213,13 +213,13 @@ class ZetaNotificationBadge extends StatelessWidget {
         : icon != null
             ? Icon(
                 icon,
-                size: ZetaSpacing.xL8,
+                size: ZetaSpacing.xl_8,
                 color: iconColor,
               )
             : ClipRRect(
                 borderRadius: ZetaRadius.rounded,
                 child: SizedBox.fromSize(
-                  size: const Size.square(ZetaSpacing.xL8), // Image radius
+                  size: const Size.square(ZetaSpacing.xl_8), // Image radius
                   child: image!.copyWith(fit: BoxFit.cover),
                 ),
               );

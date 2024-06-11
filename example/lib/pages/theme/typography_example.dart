@@ -34,7 +34,7 @@ class TypographyExample extends StatelessWidget {
     return ExampleScaffold(
       name: name,
       child: SingleChildScrollView(
-        padding: EdgeInsets.all(ZetaSpacing.xL4),
+        padding: EdgeInsets.all(ZetaSpacing.xl_4),
         child: Row(
           children: [
             Column(
@@ -53,7 +53,7 @@ class TypographyExample extends StatelessWidget {
                               e.value.fontWeight!.value.toString(),
                           style: ZetaTextStyles.bodyMedium,
                         ),
-                        const SizedBox(height: ZetaSpacing.xL9),
+                        const SizedBox(height: ZetaSpacing.xl_9),
                       ],
                     )
                     .expand((element) => element)

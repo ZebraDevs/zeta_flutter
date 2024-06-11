@@ -141,7 +141,7 @@ class _ColorExampleState extends State<ColorExample> {
                 MyRow(children: primaries, title: 'Primary colors'),
                 MyRow(children: alerts, title: 'Alert colors'),
                 Row(children: [Text('Full color swatches', style: ZetaTextStyles.displayMedium)])
-                    .paddingVertical(ZetaSpacing.xL4),
+                    .paddingVertical(ZetaSpacing.xl_4),
                 ...swatches.entries.map(
                   (value) => Row(
                     children: List.generate(10, (index) => 100 - (10 * index))
@@ -178,7 +178,7 @@ class _ColorExampleState extends State<ColorExample> {
                 ).paddingAll(ZetaSpacing.medium),
                 if (showGeneratedColors)
                   Row(children: [Text('Generated color swatches', style: ZetaTextStyles.displayMedium)])
-                      .paddingVertical(ZetaSpacing.xL4),
+                      .paddingVertical(ZetaSpacing.xl_4),
                 if (showGeneratedColors)
                   ...generatedSwatches.entries.map(
                     (value) => Row(

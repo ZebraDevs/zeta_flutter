@@ -570,7 +570,7 @@ class AvatarExample extends StatelessWidget {
                 ),
               ],
             ),
-          ].divide(const SizedBox(height: ZetaSpacing.xL2)).toList(),
+          ].divide(const SizedBox(height: ZetaSpacing.xl_2)).toList(),
         ),
       ),
     );
@@ -585,19 +585,19 @@ extension on ZetaAvatarSize {
       case ZetaAvatarSize.xxl:
         return ZetaSpacingBase.x30;
       case ZetaAvatarSize.xl:
-        return ZetaSpacing.xL10;
+        return ZetaSpacing.xl_10;
       case ZetaAvatarSize.l:
-        return ZetaSpacing.xL9;
+        return ZetaSpacing.xl_9;
       case ZetaAvatarSize.m:
-        return ZetaSpacing.xL8;
+        return ZetaSpacing.xl_8;
       case ZetaAvatarSize.s:
-        return ZetaSpacing.xL6;
+        return ZetaSpacing.xl_6;
       case ZetaAvatarSize.xs:
-        return ZetaSpacing.xL5;
+        return ZetaSpacing.xl_5;
       case ZetaAvatarSize.xxs:
-        return ZetaSpacing.xL4;
+        return ZetaSpacing.xl_4;
       case ZetaAvatarSize.xxxs:
-        return ZetaSpacing.xL2;
+        return ZetaSpacing.xl_2;
     }
   }
 }

@@ -165,7 +165,7 @@ class _ZetaTopAppBarState extends State<ZetaTopAppBar> {
         ? [
             IconButtonTheme(
               data: IconButtonThemeData(
-                style: IconButton.styleFrom(iconSize: ZetaSpacing.xL),
+                style: IconButton.styleFrom(iconSize: ZetaSpacing.xl_1),
               ),
               child: Row(
                 mainAxisSize: MainAxisSize.min,
@@ -177,7 +177,7 @@ class _ZetaTopAppBarState extends State<ZetaTopAppBar> {
                   ),
                   if (widget.onSearchMicrophoneIconPressed != null) ...[
                     SizedBox(
-                      height: ZetaSpacing.xL2,
+                      height: ZetaSpacing.xl_2,
                       child: VerticalDivider(width: ZetaSpacingBase.x0_5, color: colors.cool.shade70),
                     ),
                     IconButton(
@@ -233,7 +233,7 @@ class _ZetaTopAppBarState extends State<ZetaTopAppBar> {
             elevation: 0,
             scrolledUnderElevation: 0,
             iconTheme: IconThemeData(color: colors.cool.shade90),
-            leadingWidth: ZetaSpacing.xL6,
+            leadingWidth: ZetaSpacing.xl_6,
             leading: widget.leading,
             automaticallyImplyLeading: widget.automaticallyImplyLeading,
             surfaceTintColor: Colors.transparent,

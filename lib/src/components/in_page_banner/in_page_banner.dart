@@ -65,7 +65,7 @@ class ZetaInPageBanner extends StatelessWidget {
               padding: const EdgeInsetsDirectional.only(top: ZetaSpacing.medium, start: ZetaSpacingBase.x2_5),
               child: Icon(
                 customIcon ?? status.icon(rounded: rounded),
-                size: ZetaSpacing.xL,
+                size: ZetaSpacing.xl_1,
                 color: status == ZetaWidgetStatus.neutral ? theme.colors.textDefault : colors.icon,
               ),
             ),
@@ -99,7 +99,7 @@ class ZetaInPageBanner extends StatelessWidget {
                 onPressed: onClose,
                 icon: Icon(
                   !rounded ? ZetaIcons.close_sharp : ZetaIcons.close_round,
-                  size: ZetaSpacing.xL,
+                  size: ZetaSpacing.xl_1,
                 ),
               ),
           ].divide(const SizedBox.square(dimension: ZetaSpacing.small)).toList(),

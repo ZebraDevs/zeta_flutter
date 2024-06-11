@@ -44,12 +44,16 @@ class TextInputExample extends StatelessWidget {
                   ZetaTextInput(
                     size: ZetaWidgetSize.small,
                     placeholder: 'Placeholder',
-                    prefix: IconButton(
-                      iconSize: 12,
-                      icon: Icon(
-                        ZetaIcons.add_alert_round,
+                    prefix: SizedBox(
+                      height: 8,
+                      child: IconButton(
+                        iconSize: 12,
+                        splashRadius: 1,
+                        icon: Icon(
+                          ZetaIcons.add_alert_round,
+                        ),
+                        onPressed: () {},
                       ),
-                      onPressed: () {},
                     ),
                   ),
                   const SizedBox(height: 8),

@@ -11,14 +11,23 @@ class SelectInputExample extends StatefulWidget {
 }
 
 class _SelectInputExampleState extends State<SelectInputExample> {
-  String? _errorText;
-  ZetaSelectInputItem? selectedItem = ZetaSelectInputItem(
-    value: 'Item 1',
-  );
+  final formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
-    final zeta = Zeta.of(context);
+    final items = [
+      ZetaDropdownItem(
+        value: "Item 1",
+        icon: Icon(ZetaIcons.star_round),
+      ),
+      ZetaDropdownItem(
+        value: "Item 2",
+        icon: Icon(ZetaIcons.star_half_round),
+      ),
+      ZetaDropdownItem(
+        value: "Item 3",
+      ),
+    ];
 
     return ExampleScaffold(
       name: 'Select Input',
@@ -26,84 +35,47 @@ class _SelectInputExampleState extends State<SelectInputExample> {
         child: SingleChildScrollView(
           child: SizedBox(
             width: 320,
-            child: Column(
-              children: [
-                ZetaSelectInput(
-                  label: Row(
-                    children: [
-                      Text('Label'),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 6),
-                        child: Text(
-                          '*',
-                          style: TextStyle(color: zeta.colors.red.shade60),
-                        ),
-                      ),
-                    ],
+            child: Form(
+              key: formKey,
+              child: Column(
+                children: [
+                  ZetaSelectInput(
+                    label: 'Large',
+                    size: ZetaWidgetSize.large,
+                    hintText: 'Default hint text',
+                    rounded: false,
+                    placeholder: 'Placeholder',
+                    initialValue: "Item 1",
+                    items: items,
                   ),
-                  hint: 'Default hint text',
-                  leadingIcon: Icon(ZetaIcons.star_round),
-                  hasError: _errorText != null,
-                  errorText: _errorText,
-                  onChanged: (item) {
-                    setState(() {
-                      selectedItem = item;
-                      if (item != null) {
-                        _errorText = null;
-                      }
-                    });
-                  },
-                  onTextChanged: (value) {
-                    setState(() {
-                      if (value.isEmpty) {
-                        _errorText = 'Required';
-                      } else {
-                        _errorText = null;
-                      }
-                    });
-                  },
-                  selectedItem: selectedItem,
-                  items: [
-                    ZetaSelectInputItem(
-                      value: 'Item 1',
-                    ),
-                    ZetaSelectInputItem(
-                      value: 'Item 2',
-                    ),
-                    ZetaSelectInputItem(
-                      value: 'Item 3',
-                    ),
-                    ZetaSelectInputItem(
-                      value: 'Item 4',
-                    ),
-                    ZetaSelectInputItem(
-                      value: 'Item 5',
-                    ),
-                    ZetaSelectInputItem(
-                      value: 'Item 6',
-                    ),
-                    ZetaSelectInputItem(
-                      value: 'Item 7',
-                    ),
-                    ZetaSelectInputItem(
-                      value: 'Item 8',
-                    ),
-                    ZetaSelectInputItem(
-                      value: 'Item 9',
-                    ),
-                    ZetaSelectInputItem(
-                      value: 'Item 10',
-                    ),
-                    ZetaSelectInputItem(
-                      value: 'Item 11',
-                    ),
-                    ZetaSelectInputItem(
-                      value: 'Item 12',
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 120),
-              ],
+                  ZetaSelectInput(
+                    label: 'Medium',
+                    hintText: 'Default hint text',
+                    placeholder: 'Placeholder',
+                    items: items,
+                  ),
+                  ZetaSelectInput(
+                    label: 'Small',
+                    size: ZetaWidgetSize.small,
+                    hintText: 'Default hint text',
+                    placeholder: 'Placeholder',
+                    items: items,
+                  ),
+                  ZetaSelectInput(
+                    label: 'Disabled',
+                    hintText: 'Default hint text',
+                    placeholder: 'Placeholder',
+                    disabled: true,
+                    items: items,
+                  ),
+                  ZetaButton(
+                    label: 'Validate',
+                    onPressed: () {
+                      formKey.currentState?.validate();
+                    },
+                  )
+                ].divide(const SizedBox(height: 8)).toList(),
+              ),
             ),
           ),
         ),

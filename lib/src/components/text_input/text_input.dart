@@ -35,12 +35,16 @@ class ZetaTextInput extends ZetaFormField<String> {
     this.prefixTextStyle,
     this.suffixText,
     this.suffixTextStyle,
+    this.onSubmit,
   })  : assert(initialValue == null || controller == null, 'Only one of initial value and controller can be accepted.'),
         assert(prefix == null || prefixText == null, 'Only one of prefix or prefixText can be accepted.'),
         assert(suffix == null || suffixText == null, 'Only one of suffix or suffixText can be accepted.');
 
   /// The label displayed above the input.
   final String? label;
+
+  /// Called when the input is submitted.
+  final void Function(String? val)? onSubmit;
 
   /// The hint text displayed below the input.
   final String? hintText;
@@ -107,7 +111,8 @@ class ZetaTextInput extends ZetaFormField<String> {
       ..add(DiagnosticsProperty<bool>('rounded', rounded))
       ..add(DiagnosticsProperty<bool>('disabled', disabled))
       ..add(IterableProperty<TextInputFormatter>('inputFormatters', inputFormatters))
-      ..add(EnumProperty<ZetaFormFieldRequirement>('requirementLevel', requirementLevel));
+      ..add(EnumProperty<ZetaFormFieldRequirement>('requirementLevel', requirementLevel))
+      ..add(ObjectFlagProperty<void Function(String? val)?>.has('onSubmit', onSubmit));
   }
 }
 
@@ -117,6 +122,7 @@ class ZetaTextInputState extends State<ZetaTextInput> implements ZetaFormFieldSt
   final GlobalKey<FormFieldState<String>> _key = GlobalKey();
   ZetaColors get _colors => Zeta.of(context).colors;
 
+  // TODO(mikecoomber): refactor to use WidgetStateController
   bool _hovered = false;
 
   String? _errorText;
@@ -161,11 +167,11 @@ class ZetaTextInputState extends State<ZetaTextInput> implements ZetaFormFieldSt
     late final double size;
     switch (widget.size) {
       case ZetaWidgetSize.large:
-        size = ZetaSpacing.xL6;
+        size = ZetaSpacing.xl_6;
       case ZetaWidgetSize.medium:
-        size = ZetaSpacing.xL4;
+        size = ZetaSpacing.xl_4;
       case ZetaWidgetSize.small:
-        size = ZetaSpacing.xL2;
+        size = ZetaSpacing.xl_2;
     }
     return BoxConstraints(
       minWidth: size,
@@ -235,6 +241,9 @@ class ZetaTextInputState extends State<ZetaTextInput> implements ZetaFormFieldSt
         _errorText = widget.errorText;
       });
     }
+    if (oldWidget.initialValue != widget.initialValue && widget.initialValue != null) {
+      _controller.text = widget.initialValue!;
+    }
     super.didUpdateWidget(oldWidget);
   }
 
@@ -283,6 +292,7 @@ class ZetaTextInputState extends State<ZetaTextInput> implements ZetaFormFieldSt
               });
               return _errorText;
             },
+            onFieldSubmitted: widget.onSubmit,
             textAlignVertical: TextAlignVertical.center,
             onChanged: widget.onChange,
             style: _baseTextStyle,
