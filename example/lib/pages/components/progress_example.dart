@@ -56,7 +56,7 @@ class ProgressExampleState extends State<ProgressExample> {
               ),
               Wrapper(
                 stepsCompleted: 0,
-                circleSize: ZetaCircleSizes.xl_1,
+                circleSize: ZetaCircleSizes.xl,
                 rounded: false,
                 isCircle: true,
               ),

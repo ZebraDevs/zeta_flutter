@@ -20,7 +20,7 @@ enum ZetaCircleSizes {
   l,
 
   /// 64 X 64
-  xl_1
+  xl
 }
 
 ///Class definition for [ZetaProgressCircle]
@@ -29,8 +29,9 @@ class ZetaProgressCircle extends ZetaProgress {
   const ZetaProgressCircle({
     super.key,
     super.progress = 0,
-    this.size = ZetaCircleSizes.xl_1,
+    this.size = ZetaCircleSizes.xl,
     this.rounded = true,
+    this.onCancel,
   });
 
   ///Size of [ZetaProgressCircle]
@@ -38,6 +39,9 @@ class ZetaProgressCircle extends ZetaProgress {
 
   ///{@macro zeta-component-rounded}
   final bool rounded;
+
+  /// Cancel function => cancel upload.
+  final VoidCallback? onCancel;
 
   @override
   State<ZetaProgressCircle> createState() => ZetaProgressCircleState();
@@ -48,14 +52,42 @@ class ZetaProgressCircle extends ZetaProgress {
     properties
       ..add(EnumProperty<ZetaCircleSizes>('size', size))
       ..add(DoubleProperty('progress', progress))
-      ..add(DiagnosticsProperty<bool>('rounded', rounded));
+      ..add(DiagnosticsProperty<bool>('rounded', rounded))
+      ..add(ObjectFlagProperty<VoidCallback?>.has('onCancel', onCancel));
   }
 }
 
 ///Class definition for [ZetaProgressCircleState]
 class ZetaProgressCircleState extends ZetaProgressState<ZetaProgressCircle> {
+  final _controller = WidgetStatesController();
+
+  @override
+  void initState() {
+    super.initState();
+    _controller.addListener(() {
+      if (context.mounted && mounted && !_controller.value.contains(WidgetState.hovered)) {
+        setState(() {});
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
+    final textVal = '${(widget.progress * 100).round()}%';
+    final colors = Zeta.of(context).colors;
+    final textWidget = Text(
+      textVal,
+      style: widget.size != ZetaCircleSizes.s
+          ? ZetaTextStyles.labelSmall
+          : ZetaTextStyles.labelSmall.copyWith(fontSize: ZetaSpacing.small),
+    );
+
     return ConstrainedBox(
       constraints: BoxConstraints.tight(_getSize()),
       child: AnimatedBuilder(
@@ -67,6 +99,46 @@ class ZetaProgressCircleState extends ZetaProgressState<ZetaProgressCircle> {
               progress: animation.value,
               rounded: widget.rounded,
               colors: Zeta.of(context).colors,
+            ),
+            child: Center(
+              child: widget.size == ZetaCircleSizes.xs
+                  ? null
+                  : widget.onCancel != null
+                      ? ListenableBuilder(
+                          listenable: _controller,
+                          builder: (context, _) {
+                            return MouseRegion(
+                              onEnter: (hover) {
+                                if (mounted) {
+                                  _controller.update(WidgetState.hovered, true);
+                                }
+                              },
+                              onExit: (hover) {
+                                _controller.update(WidgetState.hovered, false);
+                              },
+                              child: _controller.value.contains(WidgetState.hovered)
+                                  ? InkWell(
+                                      enableFeedback: false,
+                                      onTap: widget.onCancel,
+                                      borderRadius: ZetaRadius.full,
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                          color: colors.surfaceHover,
+                                          borderRadius: ZetaRadius.full,
+                                        ),
+                                        padding: const EdgeInsets.all(ZetaSpacing.small),
+                                        child: Icon(
+                                          widget.rounded ? ZetaIcons.close_round : ZetaIcons.close_sharp,
+                                          size:
+                                              widget.size == ZetaCircleSizes.s ? ZetaSpacing.medium : ZetaSpacing.large,
+                                        ),
+                                      ),
+                                    )
+                                  : textWidget,
+                            );
+                          },
+                        )
+                      : textWidget,
             ),
           );
         },
@@ -84,7 +156,7 @@ class ZetaProgressCircleState extends ZetaProgressState<ZetaProgressCircle> {
         return const Size(ZetaSpacing.xl_6, ZetaSpacing.xl_6);
       case ZetaCircleSizes.l:
         return const Size(ZetaSpacing.xl_8, ZetaSpacing.xl_8);
-      case ZetaCircleSizes.xl_1:
+      case ZetaCircleSizes.xl:
         return const Size(ZetaSpacing.xl_9, ZetaSpacing.xl_9);
     }
   }
