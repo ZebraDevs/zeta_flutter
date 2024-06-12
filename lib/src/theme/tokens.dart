@@ -308,7 +308,7 @@ class ZetaRadiusBase {
   static const BorderRadius x4 = BorderRadius.all(Radius.circular(360));
 }
 
-///
+/// Tokenised durations used for animations
 class ZetaAnimationLength {
   /// 100ms
   static const veryFast = Duration(milliseconds: 100);
