@@ -2,14 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:zeta_example/widgets.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
-class ChipExample extends StatelessWidget {
+class ChipExample extends StatefulWidget {
   static const String name = 'Chip';
-
   const ChipExample({super.key});
 
   @override
+  State<ChipExample> createState() => _ChipExampleState();
+}
+
+class _ChipExampleState extends State<ChipExample> {
+  String chipType = 'none';
+  @override
   Widget build(BuildContext context) {
-    final List<Widget> inputChipExample = [
+    final Widget inputChipExample = Column(children: [
       Text(
         'Input Chip',
         textAlign: TextAlign.center,
@@ -17,139 +22,36 @@ class ChipExample extends StatelessWidget {
       ),
       const SizedBox(height: 10),
       Row(
-        mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Column(
-            children: [
-              Text(
-                'Rounded',
-                textAlign: TextAlign.center,
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(height: 30),
-              Text('Label Only', textAlign: TextAlign.center),
-              const SizedBox(height: 10),
-              ZetaInputChip(label: 'Label'),
-              const SizedBox(height: 30),
-              Text('Label + Icon', textAlign: TextAlign.center),
-              const SizedBox(height: 10),
-              ZetaInputChip(
-                label: 'Label',
-              ),
-              const SizedBox(height: 30),
-              Text('Label + Avatar', textAlign: TextAlign.center),
-              const SizedBox(height: 10),
-              ZetaInputChip(
-                label: 'Label',
-                leading: const Icon(ZetaIcons.user_round),
-              ),
-              const SizedBox(height: 30),
-              Text('Label, Avatar + Icon', textAlign: TextAlign.center),
-              const SizedBox(height: 10),
-              ZetaInputChip(
-                label: 'Label',
-                leading: const Icon(ZetaIcons.user_round),
-                trailing: Icon(ZetaIcons.close_round),
-              ),
-            ],
+          Expanded(
+            child: Column(
+              children: [
+                ZetaInputChip(
+                  label: 'Label',
+                  leading: ZetaAvatar.initials(initials: "ZA"),
+                  trailing: IconButton(icon: Icon(ZetaIcons.close_round), onPressed: () {}),
+                ),
+              ],
+            ),
           ),
-          Column(
-            children: [
-              Text(
-                'Sharp',
-                textAlign: TextAlign.center,
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(height: 30),
-              Text('Label Only', textAlign: TextAlign.center),
-              const SizedBox(height: 10),
-              ZetaInputChip(
-                label: 'Label',
-                rounded: false,
-              ),
-              const SizedBox(height: 30),
-              Text('Label + Icon', textAlign: TextAlign.center),
-              const SizedBox(height: 10),
-              ZetaInputChip(
-                label: 'Label',
-                rounded: false,
-              ),
-              const SizedBox(height: 30),
-              Text('Label + Avatar', textAlign: TextAlign.center),
-              const SizedBox(height: 10),
-              ZetaInputChip(
-                label: 'Label',
-                rounded: false,
-                leading: const Icon(ZetaIcons.user_round),
-              ),
-              const SizedBox(height: 30),
-              Text('Label, Avatar + Icon', textAlign: TextAlign.center),
-              const SizedBox(height: 10),
-              ZetaInputChip(
-                label: 'Label',
-                rounded: false,
-                leading: const Icon(ZetaIcons.user_round),
-                trailing: Icon(ZetaIcons.close_sharp),
-              ),
-            ],
+          Expanded(
+            child: Column(
+              children: [
+                ZetaInputChip(
+                  label: 'Label',
+                  rounded: false,
+                  leading: const Icon(ZetaIcons.user_round),
+                  trailing: Icon(ZetaIcons.close_sharp),
+                ),
+              ],
+            ),
           ),
         ],
       ),
-    ];
+    ]);
 
-    final List<Widget> filterChipExample = [
-      Text(
-        'Filter Chip',
-        textAlign: TextAlign.center,
-        style: TextStyle(fontWeight: FontWeight.bold),
-      ),
-      const SizedBox(height: 10),
-      Row(
-        mainAxisSize: MainAxisSize.max,
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          Column(
-            children: [
-              Text(
-                'Rounded',
-                textAlign: TextAlign.center,
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(height: 10),
-              ZetaFilterChip(label: 'Label'),
-              const SizedBox(height: 10),
-              ZetaFilterChip(
-                label: 'Label',
-                selected: true,
-              ),
-            ],
-          ),
-          Column(
-            children: [
-              Text(
-                'Sharp',
-                textAlign: TextAlign.center,
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(height: 10),
-              ZetaFilterChip(
-                label: 'Label',
-                rounded: false,
-              ),
-              const SizedBox(height: 10),
-              ZetaFilterChip(
-                label: 'Label',
-                rounded: false,
-                selected: true,
-              ),
-            ],
-          ),
-        ],
-      ),
-    ];
-
-    final List<Widget> assistChipExample = [
+    final Widget assistChipExample = Column(children: [
       Text(
         'Assist Chip',
         textAlign: TextAlign.center,
@@ -157,70 +59,106 @@ class ChipExample extends StatelessWidget {
       ),
       const SizedBox(height: 10),
       Row(
-        mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Column(
-            children: [
-              Text(
-                'Rounded',
-                textAlign: TextAlign.center,
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(height: 30),
-              Text('Label Only', textAlign: TextAlign.center),
-              const SizedBox(height: 10),
-              ZetaAssistChip(label: 'Label'),
-              const SizedBox(height: 30),
-              Text('Label + Icon', textAlign: TextAlign.center),
-              const SizedBox(height: 10),
-              ZetaAssistChip(
-                label: 'Label',
-                leading: Icon(ZetaIcons.star_round),
-              ),
-            ],
+          Expanded(
+            child: Column(
+              children: [
+                ZetaAssistChip(
+                  label: 'Label',
+                  leading: Icon(ZetaIcons.star_round),
+                  draggable: true,
+                  data: 'Round Assist chip',
+                ),
+              ],
+            ),
           ),
-          Column(
-            children: [
-              Text(
-                'Sharp',
-                textAlign: TextAlign.center,
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(height: 30),
-              Text('Label Only', textAlign: TextAlign.center),
-              const SizedBox(height: 10),
-              ZetaAssistChip(
-                label: 'Label',
-                rounded: false,
-              ),
-              const SizedBox(height: 30),
-              Text('Label + Icon', textAlign: TextAlign.center),
-              const SizedBox(height: 10),
-              ZetaAssistChip(
-                label: 'Label',
-                rounded: false,
-                leading: Icon(ZetaIcons.star_round),
-              ),
-            ],
+          Expanded(
+            child: Column(
+              children: [
+                ZetaAssistChip(
+                  label: 'Label',
+                  rounded: false,
+                  leading: Icon(ZetaIcons.star_round),
+                  data: 'Sharp Assist chip',
+                  draggable: true,
+                ),
+              ],
+            ),
           ),
         ],
       ),
-    ];
+    ]);
 
+    final Widget filterChipExample = Column(children: [
+      Text(
+        'Filter Chip',
+        textAlign: TextAlign.center,
+        style: TextStyle(fontWeight: FontWeight.bold),
+      ),
+      const SizedBox(height: 10),
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Expanded(
+            child: Column(
+              children: [
+                ZetaFilterChip(
+                  label: 'Label',
+                  selected: true,
+                  data: 'Round filter chip',
+                  draggable: true,
+                ),
+              ],
+            ),
+          ),
+          Expanded(
+            child: Column(
+              children: [
+                ZetaFilterChip(
+                  label: 'Label',
+                  rounded: false,
+                  selected: true,
+                  data: 'Sharp filter chip',
+                  draggable: true,
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    ]);
+    final colors = Zeta.of(context).colors;
     return ExampleScaffold(
       name: ChipExample.name,
       child: SingleChildScrollView(
         padding: EdgeInsets.all(ZetaSpacing.medium),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            ...inputChipExample,
-            const SizedBox(height: 30),
-            ...assistChipExample,
-            const SizedBox(height: 30),
-            ...filterChipExample,
-            const SizedBox(height: 30),
-          ],
+            Row(
+              children: [
+                Expanded(child: Center(child: Text('Rounded'))),
+                Expanded(child: Center(child: Text('Sharp'))),
+              ],
+            ),
+            inputChipExample,
+            assistChipExample,
+            filterChipExample,
+            const SizedBox(height: 100),
+            DragTarget<String>(
+              onAcceptWithDetails: (details) => setState(() => chipType = details.data),
+              builder: (context, _, __) {
+                return Container(
+                  padding: EdgeInsets.all(ZetaSpacing.medium),
+                  color: colors.surfaceSelectedHover,
+                  height: 100,
+                  width: 200,
+                  child: Center(child: Text('Last chip dragged here: $chipType')),
+                );
+              },
+            )
+          ].gap(30),
         ),
       ),
     );

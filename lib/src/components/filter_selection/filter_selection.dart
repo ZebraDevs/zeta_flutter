@@ -28,12 +28,16 @@ class ZetaFilterSelection extends StatelessWidget {
       height: ZetaSpacing.xl_7,
       child: Row(
         children: [
-          IconButton(
-            visualDensity: VisualDensity.compact,
-            onPressed: onPressed,
-            icon: Icon(
-              rounded ? ZetaIcons.filter_round : ZetaIcons.filter_sharp,
-              size: ZetaSpacing.xl_2,
+          Container(
+            height: ZetaSpacing.xl_7,
+            color: Zeta.of(context).colors.surfaceDefault,
+            child: IconButton(
+              visualDensity: VisualDensity.compact,
+              onPressed: onPressed,
+              icon: Icon(
+                rounded ? ZetaIcons.filter_round : ZetaIcons.filter_sharp,
+                size: ZetaSpacing.xl_2,
+              ),
             ),
           ),
           Expanded(
