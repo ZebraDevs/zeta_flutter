@@ -1,24 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import '../../../zeta_flutter.dart';
-
-class _DivderScope extends InheritedWidget {
-  const _DivderScope({required super.child, required this.showDivider});
-
-  final bool showDivider;
-
-  static _DivderScope? of(BuildContext context) {
-    return context.dependOnInheritedWidgetOfExactType<_DivderScope>();
-  }
-
-  @override
-  bool updateShouldNotify(_DivderScope oldWidget) => oldWidget.showDivider != showDivider;
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty<bool>('showDivider', showDivider));
-  }
-}
+import 'list_scope.dart';
 
 /// Used to apply dividers to a group of [ZetaListItem]s.
 ///
@@ -33,8 +16,8 @@ class ZetaList extends StatelessWidget {
     super.key,
   });
 
-  /// The list of [ZetaListItem]s to be shown in the list.
-  final List<ZetaListItem> items;
+  /// The list of widgets to be shown in the list.
+  final List<Widget> items;
 
   /// Shows/hides the divider between lists.
   /// Defaults to true.
@@ -42,7 +25,7 @@ class ZetaList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return _DivderScope(
+    return ListScope(
       showDivider: showDivider,
       child: ListView.builder(
         itemBuilder: (context, i) => items[i],
@@ -159,35 +142,42 @@ class ZetaListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = Zeta.of(context).colors;
-    final divide = showDivider ?? _DivderScope.of(context)?.showDivider ?? false;
+    final listScope = ListScope.of(context);
 
-    return Container(
-      constraints: const BoxConstraints(minHeight: ZetaSpacing.xl_9),
-      decoration: BoxDecoration(
-        border: Border(
-          bottom: BorderSide(
-            color: divide ? colors.borderDefault : Colors.transparent,
+    final divide = showDivider ?? listScope?.showDivider ?? false;
+    final Widget? leadingWidget =
+        leading ?? ((listScope?.indentItems ?? false) ? const SizedBox(width: ZetaSpacing.xl_2) : null);
+
+    return Material(
+      color: Zeta.of(context).colors.surfaceDefault,
+      child: InkWell(
+        onTap: onTap,
+        child: Container(
+          constraints: const BoxConstraints(minHeight: ZetaSpacing.xl_9),
+          decoration: BoxDecoration(
+            border: Border(
+              bottom: BorderSide(
+                color: divide ? colors.borderDefault : Colors.transparent,
+              ),
+            ),
           ),
-        ),
-      ),
-      child: Material(
-        color: Zeta.of(context).colors.surfaceDefault,
-        child: InkWell(
-          onTap: onTap,
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: ZetaSpacing.large),
+            padding: const EdgeInsets.only(
+              left: ZetaSpacing.large,
+              right: ZetaSpacing.small,
+            ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Flexible(
                   child: Row(
                     children: [
-                      if (leading != null)
+                      if (leadingWidget != null)
                         Padding(
                           padding: const EdgeInsets.only(
                             right: ZetaSpacing.small,
                           ),
-                          child: leading,
+                          child: leadingWidget,
                         ),
                       Flexible(
                         child: Column(

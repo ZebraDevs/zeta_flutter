@@ -307,3 +307,21 @@ class ZetaRadiusBase {
   /// 360px radius
   static const BorderRadius x4 = BorderRadius.all(Radius.circular(360));
 }
+
+///
+class ZetaAnimationLength {
+  /// 100ms
+  static const veryFast = Duration(milliseconds: 100);
+
+  /// 200ms
+  static const fast = Duration(milliseconds: 200);
+
+  /// 300ms
+  static const normal = Duration(milliseconds: 300);
+
+  /// 400ms
+  static const slow = Duration(milliseconds: 400);
+
+  /// 500ms
+  static const verySlow = Duration(milliseconds: 500);
+}
