@@ -1,0 +1,133 @@
+name: Code Quality
+on:
+  workflow_call:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Fix files
+        id: fix
+        run: |
+
+          # Testing. To be deleted
+          flutter_analyze () {
+            var=$RANDOM
+            if [[ $((var % 2)) -eq 0 ]];
+              then 
+                echo '10 files fixed'
+                exit 0
+              else 
+                echo 'Unable to fix many issues'
+                exit 1
+            fi
+          }
+          # End testing
+
+
+          # Allows code to run after an error.
+          set -e
+
+          # Runs flutter analyze; saves output and if it fails.
+          out=$(flutter_analyze) || failed='true'
+
+          # Saves output to either success or failure variables.
+          # if [ "$failed" == "true" ]; then
+          #   echo "FAILURE="$out"" >> $GITHUB_OUTPUT
+          # else
+          #   echo "SUCCESS=$out" >> $GITHUB_OUTPUT
+          # fi
+
+          if [ "$failed" == "true" ]; then
+            echo "FAILURE=true" >> $GITHUB_OUTPUT
+          fi
+      - name: Run tests
+        id: test
+        run: |
+
+          # Testing. To be deleted
+          flutter_test () {
+            var=$RANDOM
+            if [[ $((var % 2)) -eq 0 ]];
+              then 
+                echo 'All tests passed'
+                exit 0
+              else 
+                echo 'Some tests failed'
+                exit 1
+            fi
+          }
+          # End testing
+
+          # Allows code to run after an error.
+          set -e
+
+          # Runs flutter test; saves output and if it fails.
+          out=$(flutter_test) || failed='true'
+
+          # Saves output to either success or failure variables.
+          # if [ "$failed" == "true" ]; then
+          #   echo "FAILURE="$out"" >> $GITHUB_OUTPUT
+          # else
+          #   echo "SUCCESS=$out" >> $GITHUB_OUTPUT
+          # fi
+          if [ "$failed" == "true" ]; then
+            echo "FAILURE=true" >> $GITHUB_OUTPUT
+          fi
+          echo $failed
+      - name: Print all
+        run: |
+          template='PR Checks complete\n✅ - Linting\n'
+
+
+          if [ -n "${{steps.fix.outputs.FAILURE}}" ]; then
+            template="$template ⛔️ - Problems found in code. To replicate, run dart fix\n"
+          else 
+            template="$template ✅ - No errors found in code"
+          fi
+
+
+          if [ -n "${{steps.test.outputs.FAILURE}}" ]; then
+            template="$template ⛔️ - Tests failed. To replicate, run flutter test\n"
+          else 
+            template="$template ✅ - All tests passed"
+          fi
+
+          echo '-----------------------------------------'
+          echo ${template}
+          echo '-----------------------------------------'
+
+          # gh pr comment  ${{github.event.pull_request.number}} --body=${template}
+
+          # Concatenates failure outputs.
+          fail="${{steps.fix.outputs.FAILURE}}${{steps.test.outputs.FAILURE}}"
+          # Checks if there is any content in the failure variable.
+          if [[ -z "$fail" ]];
+            then
+              exit 0
+            else
+              exit 1
+          fi
+
+
+
+
+
+
+          # # Concatenates failure outputs.
+          # fail="${{steps.fix.outputs.FAILURE}}${{steps.test.outputs.FAILURE}}"
+
+          # # Checks if there is any content in the failure variable.
+          # if [[ -z "$fail" ]];
+          #   then
+          #     # TODO: Create happy comment about everything being great. Inc test report?
+          #     exit 0
+          #   else
+          #     # Create miserable comment about how awful this PR is. Show errors to be fixed.
+          #     exit 1
+          # fi
+
+#  The command:
+
+#  act -j test --container-architecture linux/amd64
