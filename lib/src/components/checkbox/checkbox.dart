@@ -151,7 +151,7 @@ class _CheckboxState extends State<_Checkbox> {
         onTap: !widget.disabled ? () => widget.onChanged.call(!_checked) : null,
         borderRadius: ZetaRadius.full,
         child: Padding(
-          padding: const EdgeInsets.all(ZetaSpacing.small),
+          padding: const EdgeInsets.all(ZetaSpacing.medium),
           child: Semantics(
             mixed: widget.useIndeterminate,
             enabled: !widget.disabled,
@@ -194,7 +194,7 @@ class _CheckboxState extends State<_Checkbox> {
       mainAxisSize: MainAxisSize.min,
       children: [
         AnimatedContainer(
-          duration: const Duration(milliseconds: 200),
+          duration: ZetaAnimationLength.fast,
           decoration: BoxDecoration(
             boxShadow: [
               if (_isFocused && !widget.disabled)

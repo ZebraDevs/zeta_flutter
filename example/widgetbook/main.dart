@@ -7,6 +7,7 @@ import 'package:zeta_flutter/zeta_flutter.dart';
 
 import 'pages/assets/icon_widgetbook.dart';
 import 'pages/components/accordion_widgetbook.dart';
+import 'pages/components/dropdown_list_item_widgetbook.dart';
 import 'pages/components/notification_list_item_widgetbook.dart';
 import 'pages/components/text_input_widgetbook.dart';
 import 'pages/components/top_app_bar_widgetbook.dart';
@@ -159,7 +160,13 @@ class _HotReloadState extends State<HotReload> {
               useCases: [
                 WidgetbookUseCase(name: 'List Item', builder: (context) => listItemUseCase(context)),
                 WidgetbookUseCase(
-                    name: 'Notification List Item', builder: (context) => notificationListItemUseCase(context)),
+                  name: 'Dropdown List Item',
+                  builder: (context) => dropdownListItemUseCase(context),
+                ),
+                WidgetbookUseCase(
+                  name: 'Notification List Item',
+                  builder: (context) => notificationListItemUseCase(context),
+                ),
                 WidgetbookUseCase(name: 'Contact Item', builder: (context) => contactItemUseCase(context)),
                 WidgetbookUseCase(name: 'Chat List Item', builder: (context) => chatItemWidgetBook(context)),
               ],

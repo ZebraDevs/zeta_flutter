@@ -1,24 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import '../../../zeta_flutter.dart';
-
-class _DivderScope extends InheritedWidget {
-  const _DivderScope({required super.child, required this.showDivider});
-
-  final bool showDivider;
-
-  static _DivderScope? of(BuildContext context) {
-    return context.dependOnInheritedWidgetOfExactType<_DivderScope>();
-  }
-
-  @override
-  bool updateShouldNotify(_DivderScope oldWidget) => oldWidget.showDivider != showDivider;
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty<bool>('showDivider', showDivider));
-  }
-}
+import 'list_scope.dart';
 
 /// Used to apply dividers to a group of [ZetaListItem]s.
 ///
@@ -33,8 +16,8 @@ class ZetaList extends StatelessWidget {
     super.key,
   });
 
-  /// The list of [ZetaListItem]s to be shown in the list.
-  final List<ZetaListItem> items;
+  /// The list of widgets to be shown in the list.
+  final List<Widget> items;
 
   /// Shows/hides the divider between lists.
   /// Defaults to true.
@@ -42,7 +25,7 @@ class ZetaList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return _DivderScope(
+    return ListScope(
       showDivider: showDivider,
       child: ListView.builder(
         itemBuilder: (context, i) => items[i],
@@ -125,23 +108,32 @@ class ZetaListItem extends StatelessWidget {
         ),
         onTap = (() => onChanged?.call(value));
 
-  /// A Widget to display before the title;
+  /// {@template list-item-leading}
+  /// A widget to display before the title;
+  /// {@endtemplate}
   final Widget? leading;
 
   /// Called when user taps on the [ZetaListItem].
   final VoidCallback? onTap;
 
+  /// {@template list-item-primary-text}
   /// The primary text of the [ZetaListItem].
+  /// {@endtemplate}
   final String primaryText;
 
-  /// The primary text of the [ZetaListItem].
+  /// {@template list-item-secondary-text}
+  /// The secondary text of the [ZetaListItem].
+  /// {@endtemplate}
   final String? secondaryText;
 
-  /// A widget to display after the title.
+  /// A widget to display after the primary text.
+  /// If this is a checkbox, radio button, or switch, use the relevant named constructor.
   final Widget? trailing;
 
+  /// {@template list-item-show-divider}
   /// Adds a border to the bottom of the list item.
   /// If this isn't provided and the item is used in a [ZetaList], the value is fetched from the [showDivider] prop on the [ZetaList].
+  /// {@endtemplate}
   final bool? showDivider;
 
   @override
@@ -159,35 +151,42 @@ class ZetaListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = Zeta.of(context).colors;
-    final divide = showDivider ?? _DivderScope.of(context)?.showDivider ?? false;
+    final listScope = ListScope.of(context);
 
-    return Container(
-      constraints: const BoxConstraints(minHeight: ZetaSpacing.xl_9),
-      decoration: BoxDecoration(
-        border: Border(
-          bottom: BorderSide(
-            color: divide ? colors.borderDefault : Colors.transparent,
+    final divide = showDivider ?? listScope?.showDivider ?? false;
+    final Widget? leadingWidget =
+        leading ?? ((listScope?.indentItems ?? false) ? const SizedBox(width: ZetaSpacing.xl_2) : null);
+
+    return Material(
+      color: Zeta.of(context).colors.surfaceDefault,
+      child: InkWell(
+        onTap: onTap,
+        child: Container(
+          constraints: const BoxConstraints(minHeight: ZetaSpacing.xl_9),
+          decoration: BoxDecoration(
+            border: Border(
+              bottom: BorderSide(
+                color: divide ? colors.borderDefault : Colors.transparent,
+              ),
+            ),
           ),
-        ),
-      ),
-      child: Material(
-        color: Zeta.of(context).colors.surfaceDefault,
-        child: InkWell(
-          onTap: onTap,
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: ZetaSpacing.large),
+            padding: const EdgeInsets.only(
+              left: ZetaSpacing.large,
+              right: ZetaSpacing.small,
+            ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Flexible(
                   child: Row(
                     children: [
-                      if (leading != null)
+                      if (leadingWidget != null)
                         Padding(
                           padding: const EdgeInsets.only(
                             right: ZetaSpacing.small,
                           ),
-                          child: leading,
+                          child: leadingWidget,
                         ),
                       Flexible(
                         child: Column(

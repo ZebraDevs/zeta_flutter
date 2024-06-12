@@ -12,11 +12,29 @@ class ListExample extends StatelessWidget {
     return ExampleScaffold(
       name: 'List',
       child: ZetaList(
-        showDivider: false,
+        showDivider: true,
         items: [
           ZetaListItem(primaryText: 'Item 1'),
           ZetaListItem(primaryText: 'Item 2'),
-          ZetaListItem(primaryText: 'Item 3', showDivider: true),
+          ZetaDropdownListItem(
+            primaryText: 'Item 3',
+            leading: Icon(ZetaIcons.star_round),
+            expanded: true,
+            items: [
+              ZetaListItem.checkbox(
+                primaryText: 'Dropdown Item 1',
+                onChanged: (_) {},
+              ),
+              ZetaListItem.checkbox(
+                primaryText: 'Dropdown Item 2',
+                onChanged: (_) {},
+              ),
+              ZetaListItem.checkbox(
+                primaryText: 'Dropdown Item 3',
+                onChanged: (_) {},
+              ),
+            ],
+          ),
           ZetaListItem(primaryText: 'Item 4', showDivider: true),
           ZetaListItem(primaryText: 'Item 5'),
           ZetaListItem(primaryText: 'Item 6'),

@@ -30,6 +30,7 @@ export 'src/components/filter_selection/filter_selection.dart';
 export 'src/components/global_header/global_header.dart';
 export 'src/components/global_header/header_tab_item.dart';
 export 'src/components/in_page_banner/in_page_banner.dart';
+export 'src/components/list_item/dropdown_list_item.dart';
 export 'src/components/list_item/list_item.dart';
 export 'src/components/list_item/notification_list_item.dart';
 export 'src/components/navigation bar/navigation_bar.dart';

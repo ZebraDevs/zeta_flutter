@@ -254,7 +254,7 @@ class MyRow extends StatelessWidget {
                           height: 160,
                           width: 160,
                           color: e.value,
-                          duration: const Duration(milliseconds: 250),
+                          duration: ZetaAnimationLength.fast,
                           child: FittedBox(
                             fit: BoxFit.scaleDown,
                             child: Column(

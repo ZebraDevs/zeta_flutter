@@ -70,7 +70,7 @@ class _ZetaRadioState<T> extends State<ZetaRadio<T>> with TickerProviderStateMix
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   buildToggleable(
-                    size: const Size(ZetaSpacing.xl_5, ZetaSpacing.xl_5),
+                    size: const Size(ZetaSpacing.xl_6, ZetaSpacing.xl_6),
                     painter: _painter!
                       ..position = position
                       ..reaction = reaction
