@@ -108,23 +108,32 @@ class ZetaListItem extends StatelessWidget {
         ),
         onTap = (() => onChanged?.call(value));
 
-  /// A Widget to display before the title;
+  /// {@template list-item-leading}
+  /// A widget to display before the title;
+  /// {@endtemplate}
   final Widget? leading;
 
   /// Called when user taps on the [ZetaListItem].
   final VoidCallback? onTap;
 
+  /// {@template list-item-primary-text}
   /// The primary text of the [ZetaListItem].
+  /// {@endtemplate}
   final String primaryText;
 
-  /// The primary text of the [ZetaListItem].
+  /// {@template list-item-secondary-text}
+  /// The secondary text of the [ZetaListItem].
+  /// {@endtemplate}
   final String? secondaryText;
 
-  /// A widget to display after the title.
+  /// A widget to display after the primary text.
+  /// If this is a checkbox, radio button, or switch, use the relevant named constructor.
   final Widget? trailing;
 
+  /// {@template list-item-show-divider}
   /// Adds a border to the bottom of the list item.
   /// If this isn't provided and the item is used in a [ZetaList], the value is fetched from the [showDivider] prop on the [ZetaList].
+  /// {@endtemplate}
   final bool? showDivider;
 
   @override

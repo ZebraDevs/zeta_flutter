@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../../assets/icons.dart';
@@ -6,15 +7,9 @@ import '../../zeta.dart';
 import 'list_item.dart';
 import 'list_scope.dart';
 
+/// An expandable list item containing other [ZetaListItem]s within it.
 class ZetaDropdownListItem extends StatefulWidget {
-  final List<ZetaListItem> items;
-  final String primaryText;
-  final String? secondaryText;
-  final Widget? leading;
-  final bool expanded;
-  final bool rounded;
-  final bool? showDivider;
-
+  /// Creates a new [ZetaDropdownListItem]
   const ZetaDropdownListItem({
     required this.items,
     required this.primaryText,
@@ -26,8 +21,41 @@ class ZetaDropdownListItem extends StatefulWidget {
     super.key,
   });
 
+  /// The list of [ZetaListItem]s contained within the dropdown.
+  final List<ZetaListItem> items;
+
+  /// {@macro list-item-primary-text}
+  final String primaryText;
+
+  /// {@macro list-item-secondary-text}
+  final String? secondaryText;
+
+  /// {@macro list-item-leading}
+  final Widget? leading;
+
+  /// Expands the list item if set to true.
+  /// Defaults to false.
+  final bool expanded;
+
+  /// {@macro zeta-component-rounded}
+  final bool rounded;
+
+  /// {@macro list-item-show-divider}
+  final bool? showDivider;
+
   @override
   State<ZetaDropdownListItem> createState() => _ZetaDropdownListItemState();
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(IterableProperty<ZetaListItem>('items', items))
+      ..add(StringProperty('primaryText', primaryText))
+      ..add(StringProperty('secondaryText', secondaryText))
+      ..add(DiagnosticsProperty<bool>('expanded', expanded))
+      ..add(DiagnosticsProperty<bool>('rounded', rounded))
+      ..add(DiagnosticsProperty<bool?>('showDivider', showDivider));
+  }
 }
 
 class _ZetaDropdownListItemState extends State<ZetaDropdownListItem> with SingleTickerProviderStateMixin {
@@ -89,7 +117,7 @@ class _ZetaDropdownListItemState extends State<ZetaDropdownListItem> with Single
     final divide = widget.showDivider ?? ListScope.of(context)?.showDivider ?? false;
     final colors = Zeta.of(context).colors;
 
-    // DecoratedBox does not correctly animated the border when the widget expands
+    // DecoratedBox does not correctly animated the border when the widget expands.
     // ignore: use_decorated_box
     return Container(
       decoration: BoxDecoration(

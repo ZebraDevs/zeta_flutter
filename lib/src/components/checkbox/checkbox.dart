@@ -194,7 +194,7 @@ class _CheckboxState extends State<_Checkbox> {
       mainAxisSize: MainAxisSize.min,
       children: [
         AnimatedContainer(
-          duration: const Duration(milliseconds: 200),
+          duration: ZetaAnimationLength.fast,
           decoration: BoxDecoration(
             boxShadow: [
               if (_isFocused && !widget.disabled)

@@ -60,8 +60,8 @@ class _ZetaAccordionState extends State<ZetaAccordion> with TickerProviderStateM
   void initState() {
     super.initState();
     _controller = AnimationController(
-      duration: const Duration(milliseconds: 300),
-      reverseDuration: const Duration(milliseconds: 200),
+      duration: ZetaAnimationLength.normal,
+      reverseDuration: ZetaAnimationLength.fast,
       vsync: this,
     );
     _animation = CurvedAnimation(

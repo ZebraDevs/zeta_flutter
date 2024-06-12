@@ -1,6 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+import '../../theme/tokens.dart';
+
 /// Super class for [ZetaProgress] widgets.
 /// Handles state for progress of [ZetaProgress] widgets.
 abstract class ZetaProgress extends StatefulWidget {
@@ -35,7 +37,7 @@ abstract class ZetaProgressState<T extends ZetaProgress> extends State<T> with T
     progress = widget.progress;
     controller = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 200),
+      duration: ZetaAnimationLength.fast,
     );
     animation = Tween<double>(
       begin: widget.progress, // Start value

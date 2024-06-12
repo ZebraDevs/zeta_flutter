@@ -154,7 +154,7 @@ class _ZetaFABState extends State<ZetaFAB> {
         ),
       ),
       child: AnimatedContainer(
-        duration: const Duration(milliseconds: 300),
+        duration: ZetaAnimationLength.normal,
         child: Padding(
           padding: _isExpanded
               ? const EdgeInsets.symmetric(horizontal: ZetaSpacingBase.x3_5, vertical: ZetaSpacing.medium)

@@ -110,7 +110,7 @@ class _ZetaProgressBarState extends ZetaProgressState<ZetaProgressBar> {
           children: [
             Expanded(
               child: AnimatedContainer(
-                duration: const Duration(milliseconds: 500),
+                duration: ZetaAnimationLength.verySlow,
                 height: _weight,
                 child: LinearProgressIndicator(
                   borderRadius: _border,
