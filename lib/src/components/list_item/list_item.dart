@@ -141,6 +141,7 @@ class ZetaListItem extends StatelessWidget {
   final Widget? trailing;
 
   /// Adds a border to the bottom of the list item.
+  /// If this isn't provided and the item is used in a [ZetaList], the value is fetched from the [showDivider] prop on the [ZetaList].
   final bool? showDivider;
 
   @override
