@@ -17,6 +17,7 @@ import 'package:zeta_example/pages/components/dialpad_example.dart';
 import 'package:zeta_example/pages/components/dropdown_example.dart';
 import 'package:zeta_example/pages/components/global_header_example.dart';
 import 'package:zeta_example/pages/components/filter_selection_example.dart';
+import 'package:zeta_example/pages/components/list_example.dart';
 import 'package:zeta_example/pages/components/list_item_example.dart';
 import 'package:zeta_example/pages/components/navigation_bar_example.dart';
 import 'package:zeta_example/pages/components/navigation_rail_example.dart';
@@ -67,6 +68,7 @@ final List<Component> components = [
   Component(CheckBoxExample.name, (context) => const CheckBoxExample()),
   Component(ChipExample.name, (context) => const ChipExample()),
   Component(ContactItemExample.name, (context) => const ContactItemExample()),
+  Component(ListExample.name, (context) => const ListExample()),
   Component(ListItemExample.name, (context) => const ListItemExample()),
   Component(NavigationBarExample.name, (context) => const NavigationBarExample()),
   Component(NotificationListItemExample.name, (context) => const NotificationListItemExample()),

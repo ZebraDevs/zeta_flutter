@@ -30,4 +30,3 @@ flutter:
   uses-material-design: true
   assets:
     - assets/
-    - ../README.md

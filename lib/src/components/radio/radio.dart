@@ -47,67 +47,70 @@ class ZetaRadio<T> extends StatefulWidget {
 
 class _ZetaRadioState<T> extends State<ZetaRadio<T>> with TickerProviderStateMixin, ToggleableStateMixin {
   ToggleablePainter? _painter;
-  bool _isHovered = false;
+
   @override
   Widget build(BuildContext context) {
     final zetaColors = Zeta.of(context).colors;
     _painter ??= _RadioPainter(colors: zetaColors);
-    return Semantics(
-      inMutuallyExclusiveGroup: true,
-      checked: widget._selected,
-      selected: value,
-      excludeSemantics: true,
-      child: MouseRegion(
-        onEnter: (_) => setState(() => _isHovered = true),
-        onExit: (_) => setState(() => _isHovered = false),
-        cursor: states.contains(WidgetState.disabled) ? SystemMouseCursors.forbidden : SystemMouseCursors.click,
-        child: SelectionContainer.disabled(
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              buildToggleable(
-                size: const Size(ZetaSpacing.xl_5, ZetaSpacing.xl_5),
-                painter: _painter!
-                  ..position = position
-                  ..reaction = reaction
-                  ..reactionFocusFade = reactionFocusFade
-                  ..reactionHoverFade = reactionHoverFade
-                  ..inactiveReactionColor = Colors.transparent
-                  ..reactionColor = Colors.transparent
-                  ..hoverColor = Colors.transparent
-                  ..focusColor = zetaColors.blue.shade50
-                  ..splashRadius = ZetaSpacing.medium
-                  ..downPosition = downPosition
-                  ..isFocused = states.contains(WidgetState.focused)
-                  ..isHovered = states.contains(WidgetState.hovered)
-                  ..activeColor = _isHovered
-                      ? zetaColors.cool.shade90
-                      : states.contains(WidgetState.disabled)
-                          ? zetaColors.cool.shade30
-                          : zetaColors.blue.shade60
-                  ..inactiveColor = _isHovered
-                      ? zetaColors.cool.shade90
-                      : states.contains(WidgetState.disabled)
-                          ? zetaColors.cool.shade30
-                          : states.contains(WidgetState.focused)
-                              ? zetaColors.blue.shade50
-                              : zetaColors.cool.shade70,
-                mouseCursor: WidgetStateProperty.all(
-                  states.contains(WidgetState.disabled) ? SystemMouseCursors.forbidden : SystemMouseCursors.click,
-                ),
-              ),
-              if (widget.label != null)
-                GestureDetector(
-                  onTap: () => onChanged?.call(true),
-                  child: DefaultTextStyle(
-                    style: ZetaTextStyles.bodyMedium.copyWith(
-                      color: states.contains(WidgetState.disabled) ? zetaColors.textDisabled : zetaColors.textDefault,
-                      height: 1.33,
+
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: !states.contains(WidgetState.disabled) ? () => onChanged?.call(true) : null,
+        borderRadius: ZetaRadius.full,
+        child: Semantics(
+          inMutuallyExclusiveGroup: true,
+          checked: widget._selected,
+          selected: value,
+          excludeSemantics: true,
+          child: MouseRegion(
+            cursor: states.contains(WidgetState.disabled) ? SystemMouseCursors.forbidden : SystemMouseCursors.click,
+            child: SelectionContainer.disabled(
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  buildToggleable(
+                    size: const Size(ZetaSpacing.xl_5, ZetaSpacing.xl_5),
+                    painter: _painter!
+                      ..position = position
+                      ..reaction = reaction
+                      ..reactionFocusFade = reactionFocusFade
+                      ..reactionHoverFade = reactionHoverFade
+                      ..inactiveReactionColor = Colors.transparent
+                      ..reactionColor = Colors.transparent
+                      ..hoverColor = Colors.transparent
+                      ..focusColor = zetaColors.blue.shade50
+                      ..splashRadius = ZetaSpacing.medium
+                      ..downPosition = downPosition
+                      ..isFocused = states.contains(WidgetState.focused)
+                      ..isHovered = states.contains(WidgetState.hovered)
+                      ..activeColor = states.contains(WidgetState.hovered)
+                          ? zetaColors.cool.shade90
+                          : states.contains(WidgetState.disabled)
+                              ? zetaColors.cool.shade30
+                              : zetaColors.blue.shade60
+                      ..inactiveColor = states.contains(WidgetState.hovered)
+                          ? zetaColors.cool.shade90
+                          : states.contains(WidgetState.disabled)
+                              ? zetaColors.cool.shade30
+                              : states.contains(WidgetState.focused)
+                                  ? zetaColors.blue.shade50
+                                  : zetaColors.cool.shade70,
+                    mouseCursor: WidgetStateProperty.all(
+                      states.contains(WidgetState.disabled) ? SystemMouseCursors.forbidden : SystemMouseCursors.click,
                     ),
-                    child: widget.label!,
                   ),
-                ),
-            ],
+                  if (widget.label != null)
+                    DefaultTextStyle(
+                      style: ZetaTextStyles.bodyMedium.copyWith(
+                        color: states.contains(WidgetState.disabled) ? zetaColors.textDisabled : zetaColors.textDefault,
+                        height: 1.33,
+                      ),
+                      child: widget.label!,
+                    ).paddingEnd(ZetaSpacing.minimum),
+                ],
+              ),
+            ),
           ),
         ),
       ),

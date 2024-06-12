@@ -12,12 +12,12 @@ class ListItemExample extends StatefulWidget {
 }
 
 class _ListItemExampleState extends State<ListItemExample> {
-  bool _isCheckBoxEnabled = false;
-  bool _isSelected = true;
+  bool _switchChecked = false;
+  bool _checkboxChecked = false;
 
-  _onDefaultListItemTap() {
-    setState(() => _isCheckBoxEnabled = !_isCheckBoxEnabled);
-  }
+  String radioOption1 = 'Label 1';
+  String radioOption2 = 'Label 2';
+  String? radioGroupValue;
 
   @override
   Widget build(BuildContext context) {
@@ -28,88 +28,88 @@ class _ListItemExampleState extends State<ListItemExample> {
       child: Container(
         color: zetaColors.surfaceSecondary,
         child: SingleChildScrollView(
-          child: Column(
-            children: [
-              // List Item with descriptor
-              Padding(
-                padding: const EdgeInsets.only(top: ZetaSpacing.large),
-                child: ZetaListItem(
-                  dense: true,
-                  leading: Container(
-                    width: 48,
-                    height: 48,
-                    decoration: BoxDecoration(borderRadius: ZetaRadius.rounded),
-                    child: Placeholder(),
-                  ),
-                  subtitle: Text("Descriptor"),
-                  title: Text("List Item"),
-                  trailing: ZetaCheckbox(
-                    value: _isCheckBoxEnabled,
-                    onChanged: (_) => _onDefaultListItemTap(),
-                  ),
-                  onTap: _onDefaultListItemTap,
+          child: Padding(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              children: [
+                _buildListItem(
+                    'No Icon',
+                    ZetaListItem(
+                      primaryText: 'List Item',
+                      secondaryText: 'Descriptor',
+                    )),
+                _buildListItem(
+                  'Icon Left',
+                  ZetaListItem(primaryText: 'List Item', leading: Icon(ZetaIcons.star_round)),
                 ),
-              ),
-
-              // Enabled
-              Padding(
-                padding: const EdgeInsets.only(top: ZetaSpacing.xl_4),
-                child: Text(
-                  "Enabled",
-                  style: ZetaTextStyles.titleLarge,
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: ZetaSpacing.xl_2),
-                child: ZetaListItem(title: Text("List Item")),
-              ),
-
-              // Selected
-              Padding(
-                padding: const EdgeInsets.only(top: ZetaSpacing.xl_4),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    "Selected",
-                    style: ZetaTextStyles.titleLarge,
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: ZetaSpacing.xl_2),
-                child: ZetaListItem(
-                  title: Text("List Item"),
-                  selected: _isSelected,
-                  trailing: _isSelected
-                      ? Icon(
-                          ZetaIcons.check_mark_sharp,
-                          color: zetaColors.primary,
-                        )
-                      : null,
-                  onTap: () => setState(() => _isSelected = !_isSelected),
-                ),
-              ),
-
-              // Disabled
-              Padding(
-                padding: const EdgeInsets.only(top: ZetaSpacing.xl_4),
-                child: Text(
-                  "Disabled",
-                  style: ZetaTextStyles.titleLarge,
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: ZetaSpacing.xl_2),
-                child: ZetaListItem(
-                  title: Text("List Item"),
-                  enabled: false,
-                  onTap: () {},
-                ),
-              ),
-            ],
+                _buildListItem(
+                    'Toggle Right',
+                    ZetaListItem.toggle(
+                      primaryText: 'List Item',
+                      value: _switchChecked,
+                      onChanged: (value) {
+                        setState(() {
+                          _switchChecked = value!;
+                        });
+                      },
+                    )),
+                _buildListItem(
+                    'Checkbox Right',
+                    ZetaListItem.checkbox(
+                      primaryText: 'List Item',
+                      value: _checkboxChecked,
+                      onChanged: (value) {
+                        print(value);
+                        setState(() {
+                          _checkboxChecked = value;
+                        });
+                      },
+                    )),
+                _buildListItem(
+                    'Radio Right',
+                    Column(
+                      children: [
+                        ZetaListItem.radio(
+                          primaryText: 'Radio option 1',
+                          value: radioOption1,
+                          groupValue: radioGroupValue,
+                          onChanged: (value) {
+                            setState(() {
+                              radioGroupValue = value;
+                            });
+                          },
+                        ),
+                        ZetaListItem.radio(
+                          primaryText: 'Radio option 2',
+                          value: radioOption2,
+                          groupValue: radioGroupValue,
+                          onChanged: (value) {
+                            setState(() {
+                              radioGroupValue = value;
+                            });
+                          },
+                        ),
+                      ],
+                    )),
+              ].divide(const SizedBox(height: 16)).toList(),
+            ),
           ),
         ),
       ),
     );
   }
+}
+
+Widget _buildListItem(String name, Widget listItem) {
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Text(
+        name,
+        style: ZetaTextStyles.bodyLarge,
+      ),
+      const SizedBox(height: 8),
+      listItem,
+    ],
+  );
 }
