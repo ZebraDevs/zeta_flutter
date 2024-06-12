@@ -267,10 +267,10 @@ class _ZetaGroupButtonState extends State<ZetaGroupButton> {
     if (states.contains(WidgetState.focused)) {
       return BorderSide(color: colors.blue.shade50, width: ZetaSpacingBase.x0_5);
     }
-    if (widget.isInverse) return BorderSide(color: colors.black);
     if (states.contains(WidgetState.disabled)) {
       return BorderSide(color: colors.cool.shade40);
     }
+    if (widget.isInverse) return BorderSide(color: colors.black);
     return BorderSide(
       color: finalButton ? colors.borderDefault : colors.borderSubtle,
     );
@@ -300,8 +300,6 @@ class _ZetaGroupButtonState extends State<ZetaGroupButton> {
         ),
       ),
       backgroundColor: WidgetStateProperty.resolveWith<Color?>((states) {
-        if (widget.isInverse) return colors.cool.shade100;
-
         if (states.contains(WidgetState.disabled)) {
           return colors.surfaceDisabled;
         }
@@ -311,6 +309,8 @@ class _ZetaGroupButtonState extends State<ZetaGroupButton> {
         if (states.contains(WidgetState.hovered)) {
           return colors.cool.shade20;
         }
+        if (widget.isInverse) return colors.cool.shade100;
+
         return colors.surfacePrimary;
       }),
       foregroundColor: WidgetStateProperty.resolveWith<Color?>((states) {

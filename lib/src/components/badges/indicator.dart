@@ -96,6 +96,7 @@ class ZetaIndicator extends StatelessWidget {
       width: sizePixels + ZetaSpacing.minimum,
       height: sizePixels + ZetaSpacing.minimum,
       decoration: BoxDecoration(
+        border: Border.all(width: ZetaSpacingBase.x0_5, color: zetaColors.borderSubtle),
         color: (inverse ? foregroundColor : Colors.transparent),
         borderRadius: ZetaRadius.full,
       ),

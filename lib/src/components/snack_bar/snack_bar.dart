@@ -187,7 +187,7 @@ class _Action extends StatelessWidget {
       ZetaSnackBarType.action => _ActionButton(
           onPressed: onPressed,
           label: actionLabel,
-          color: colors.blue.shade50,
+          color: colors.borderPrimaryMain,
         ),
       ZetaSnackBarType.positive ||
       ZetaSnackBarType.info ||
@@ -291,7 +291,10 @@ class _ActionButton extends StatelessWidget {
         onPressed: onPressed,
         child: Text(
           label ?? '',
-          style: ZetaTextStyles.labelLarge.copyWith(color: color),
+          style: ZetaTextStyles.labelLarge.copyWith(
+            color: color,
+            fontWeight: FontWeight.bold,
+          ),
         ),
       ),
     );
