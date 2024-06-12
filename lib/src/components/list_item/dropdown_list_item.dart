@@ -11,8 +11,8 @@ import 'list_scope.dart';
 class ZetaDropdownListItem extends StatefulWidget {
   /// Creates a new [ZetaDropdownListItem]
   const ZetaDropdownListItem({
-    required this.items,
     required this.primaryText,
+    required this.items,
     this.secondaryText,
     this.expanded = false,
     this.leading,

@@ -66,31 +66,47 @@ class _ListItemExampleState extends State<ListItemExample> {
                       },
                     )),
                 _buildListItem(
-                    'Radio Right',
-                    Column(
-                      children: [
-                        ZetaListItem.radio(
-                          primaryText: 'Radio option 1',
-                          value: radioOption1,
-                          groupValue: radioGroupValue,
-                          onChanged: (value) {
-                            setState(() {
-                              radioGroupValue = value;
-                            });
-                          },
-                        ),
-                        ZetaListItem.radio(
-                          primaryText: 'Radio option 2',
-                          value: radioOption2,
-                          groupValue: radioGroupValue,
-                          onChanged: (value) {
-                            setState(() {
-                              radioGroupValue = value;
-                            });
-                          },
-                        ),
-                      ],
-                    )),
+                  'Radio Right',
+                  Column(
+                    children: [
+                      ZetaListItem.radio(
+                        primaryText: 'Radio option 1',
+                        value: radioOption1,
+                        groupValue: radioGroupValue,
+                        onChanged: (value) {
+                          setState(() {
+                            radioGroupValue = value;
+                          });
+                        },
+                      ),
+                      ZetaListItem.radio(
+                        primaryText: 'Radio option 2',
+                        value: radioOption2,
+                        groupValue: radioGroupValue,
+                        onChanged: (value) {
+                          setState(() {
+                            radioGroupValue = value;
+                          });
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+                _buildListItem(
+                  'Dropdown list',
+                  ZetaDropdownListItem(
+                    items: [
+                      ZetaListItem(primaryText: 'List Item'),
+                      ZetaListItem(primaryText: 'List Item'),
+                      ZetaListItem(primaryText: 'List Item'),
+                    ],
+                    expanded: true,
+                    primaryText: 'List Item',
+                    leading: Icon(
+                      ZetaIcons.star_round,
+                    ),
+                  ),
+                ),
               ].divide(const SizedBox(height: 16)).toList(),
             ),
           ),
