@@ -154,7 +154,10 @@ class _ZetaChipState extends State<ZetaChip> {
                   return colors.surfaceDisabled;
                 }
                 if (selected) {
-                  return colors.cool.shade90;
+                  if (states.contains(WidgetState.hovered)) {
+                    return colors.borderHover;
+                  }
+                  return colors.surfaceDefaultInverse;
                 }
                 if (states.contains(WidgetState.pressed) || isDragging) {
                   return colors.surfaceSelected;
@@ -168,7 +171,11 @@ class _ZetaChipState extends State<ZetaChip> {
               border: Border.fromBorderSide(
                 BorderSide(
                   color: _controller.value.contains(WidgetState.focused) ? colors.blue.shade50 : colors.borderDefault,
-                  width: _controller.value.contains(WidgetState.focused) ? ZetaSpacingBase.x0_5 : 1,
+                  width: _controller.value.contains(WidgetState.focused)
+                      ? ZetaSpacingBase.x0_5
+                      : !selected
+                          ? 1
+                          : 0,
                 ),
               ),
             ),
@@ -179,7 +186,7 @@ class _ZetaChipState extends State<ZetaChip> {
                   AnimatedContainer(
                     duration: Durations.short1,
                     width: iconSize,
-                    child: (widget.selected!
+                    child: (selected
                         ? Icon(
                             widget.rounded ? ZetaIcons.check_mark_round : ZetaIcons.check_mark_sharp,
                             color: widget.selected! ? colors.iconInverse : Colors.transparent,
@@ -188,7 +195,7 @@ class _ZetaChipState extends State<ZetaChip> {
                   )
                 else if (widget.leading != null)
                   _renderLeading(foregroundColor),
-                if ((widget.selected != null && widget.selected!) || widget.leading != null)
+                if ((widget.selected != null && selected) || widget.leading != null)
                   const SizedBox.square(dimension: ZetaSpacing.small),
                 Text(
                   widget.label,
