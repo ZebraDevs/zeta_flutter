@@ -1,0 +1,38 @@
+name: Code Quality
+on:
+  workflow_call:
+
+jobs:
+  code-quality:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.head_ref }}
+      - name: Get branch name
+        id: branch-name
+        uses: tj-actions/branch-names@v7.0.7
+      - uses: subosito/flutter-action@v2
+      - name: Setup flutter
+        run: flutter pub get
+      - name: Format code
+        run: dart format . -l 120
+      - name: Apply linter auto-fixes
+        run: dart fix --apply
+      - name: Check for un-fixable issues
+        run: flutter analyze
+      - name: Run tests
+        run: cd example && flutter test
+      - name: Check for modified files
+        id: git-check
+        run: echo "modified=$(if [ -n "$(git status --porcelain)" ]; then echo "true"; else echo "false"; fi)" >>  $GITHUB_ENV
+      - name: Update changes in GitHub repository
+        if: env.modified == 'true'
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+          git add -A
+          git commit -m '[automated commit] lint format and import sort'
+          git push
