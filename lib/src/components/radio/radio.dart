@@ -47,7 +47,7 @@ class ZetaRadio<T> extends StatefulWidget {
 
 class _ZetaRadioState<T> extends State<ZetaRadio<T>> with TickerProviderStateMixin, ToggleableStateMixin {
   ToggleablePainter? _painter;
-  bool _isHovered = false;
+
   @override
   Widget build(BuildContext context) {
     final zetaColors = Zeta.of(context).colors;
@@ -56,7 +56,7 @@ class _ZetaRadioState<T> extends State<ZetaRadio<T>> with TickerProviderStateMix
     return Material(
       color: Colors.transparent,
       child: InkWell(
-        onTap: () => onChanged?.call(true),
+        onTap: !states.contains(WidgetState.disabled) ? () => onChanged?.call(true) : null,
         borderRadius: ZetaRadius.full,
         child: Semantics(
           inMutuallyExclusiveGroup: true,
@@ -64,8 +64,6 @@ class _ZetaRadioState<T> extends State<ZetaRadio<T>> with TickerProviderStateMix
           selected: value,
           excludeSemantics: true,
           child: MouseRegion(
-            onEnter: (_) => setState(() => _isHovered = true),
-            onExit: (_) => setState(() => _isHovered = false),
             cursor: states.contains(WidgetState.disabled) ? SystemMouseCursors.forbidden : SystemMouseCursors.click,
             child: SelectionContainer.disabled(
               child: Row(
@@ -86,12 +84,12 @@ class _ZetaRadioState<T> extends State<ZetaRadio<T>> with TickerProviderStateMix
                       ..downPosition = downPosition
                       ..isFocused = states.contains(WidgetState.focused)
                       ..isHovered = states.contains(WidgetState.hovered)
-                      ..activeColor = _isHovered
+                      ..activeColor = states.contains(WidgetState.hovered)
                           ? zetaColors.cool.shade90
                           : states.contains(WidgetState.disabled)
                               ? zetaColors.cool.shade30
                               : zetaColors.blue.shade60
-                      ..inactiveColor = _isHovered
+                      ..inactiveColor = states.contains(WidgetState.hovered)
                           ? zetaColors.cool.shade90
                           : states.contains(WidgetState.disabled)
                               ? zetaColors.cool.shade30

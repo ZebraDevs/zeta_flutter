@@ -162,13 +162,13 @@ class ZetaListItem extends StatelessWidget {
 
     return Container(
       constraints: const BoxConstraints(minHeight: ZetaSpacing.xl_9),
-      decoration: divide
-          ? BoxDecoration(
-              border: Border(
-                bottom: BorderSide(color: colors.borderDefault),
-              ),
-            )
-          : null,
+      decoration: BoxDecoration(
+        border: Border(
+          bottom: BorderSide(
+            color: divide ? colors.borderDefault : Colors.transparent,
+          ),
+        ),
+      ),
       child: Material(
         color: Zeta.of(context).colors.surfaceDefault,
         child: InkWell(
@@ -197,7 +197,7 @@ class ZetaListItem extends StatelessWidget {
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
                             ),
-                            if (secondaryText != null)
+                            if (secondaryText != null && secondaryText!.isNotEmpty)
                               Text(
                                 secondaryText!,
                                 style: ZetaTextStyles.bodySmall,
