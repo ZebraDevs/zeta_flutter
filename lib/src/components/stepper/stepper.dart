@@ -6,7 +6,7 @@ import '../../../zeta_flutter.dart';
 /// steps. Steppers are particularly useful in the case of forms where one step
 /// requires the completion of another one, or where multiple steps need to be
 /// completed in order to submit the whole form.
-class ZetaStepper extends StatefulWidget {
+class ZetaStepper extends ZetaStatefulWidget {
   /// Creates a stepper from a list of steps.
   ///
   /// This widget is not meant to be rebuilt with a different list of steps
@@ -17,7 +17,7 @@ class ZetaStepper extends StatefulWidget {
     required this.currentStep,
     this.type = ZetaStepperType.horizontal,
     this.onStepTapped,
-    this.rounded = true,
+    super.rounded,
     super.key,
   });
 
@@ -27,9 +27,6 @@ class ZetaStepper extends StatefulWidget {
   /// The callback called when a step is tapped, with its index passed as
   /// an argument.
   final ValueChanged<int>? onStepTapped;
-
-  /// {@macro zeta-component-rounded}
-  final bool rounded;
 
   /// The steps of the stepper whose titles, subtitles, icons always get shown.
   ///
@@ -88,7 +85,9 @@ class _ZetaStepperState extends State<ZetaStepper> with TickerProviderStateMixin
     return widget.currentStep == index;
   }
 
-  Widget _buildHorizotalIcon(int index) {
+  Widget _buildHorizontalIcon(int index) {
+    final rounded = context.rounded;
+
     return SizedBox(
       width: ZetaSpacing.xl_4,
       height: ZetaSpacing.xl_4,
@@ -97,12 +96,12 @@ class _ZetaStepperState extends State<ZetaStepper> with TickerProviderStateMixin
         duration: kThemeAnimationDuration,
         decoration: BoxDecoration(
           color: _getColorForType(widget.steps[index].type),
-          shape: widget.rounded ? BoxShape.circle : BoxShape.rectangle,
+          shape: rounded ? BoxShape.circle : BoxShape.rectangle,
         ),
         child: Center(
           child: switch (widget.steps[index].type) {
             ZetaStepType.complete => Icon(
-                widget.rounded ? ZetaIcons.check_mark_round : ZetaIcons.check_mark_sharp,
+                rounded ? ZetaIcons.check_mark_round : ZetaIcons.check_mark_sharp,
                 color: _colors.textInverse,
               ),
             ZetaStepType.enabled || ZetaStepType.disabled => Text(
@@ -126,12 +125,12 @@ class _ZetaStepperState extends State<ZetaStepper> with TickerProviderStateMixin
         duration: kThemeAnimationDuration,
         decoration: BoxDecoration(
           color: _getColorForType(widget.steps[index].type),
-          shape: widget.rounded ? BoxShape.circle : BoxShape.rectangle,
+          shape: context.rounded ? BoxShape.circle : BoxShape.rectangle,
         ),
         child: Center(
           child: switch (widget.steps[index].type) {
             ZetaStepType.complete => Icon(
-                widget.rounded ? ZetaIcons.check_mark_round : ZetaIcons.check_mark_sharp,
+                context.rounded ? ZetaIcons.check_mark_round : ZetaIcons.check_mark_sharp,
                 color: _colors.textInverse,
               ),
             ZetaStepType.enabled || ZetaStepType.disabled => Text(
@@ -261,108 +260,111 @@ class _ZetaStepperState extends State<ZetaStepper> with TickerProviderStateMixin
 
   @override
   Widget build(BuildContext context) {
-    return switch (widget.type) {
-      ZetaStepperType.vertical => Column(
-          children: [
-            for (int index = 0; index < widget.steps.length; index += 1)
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                key: _keys[index],
-                children: [
+    return ZetaRoundedScope(
+      rounded: context.rounded,
+      child: switch (widget.type) {
+        ZetaStepperType.vertical => Column(
+            children: [
+              for (int index = 0; index < widget.steps.length; index += 1)
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  key: _keys[index],
+                  children: [
+                    InkResponse(
+                      containedInkWell: true,
+                      borderRadius: ZetaRadius.minimal,
+                      onTap: widget.onStepTapped != null ? () => widget.onStepTapped?.call(index) : null,
+                      canRequestFocus: widget.steps[index].type != ZetaStepType.disabled,
+                      child: _getVerticalHeader(index),
+                    ),
+                    _getVerticalBody(index),
+                  ],
+                ),
+            ],
+          ),
+        ZetaStepperType.horizontal => Builder(
+            builder: (context) {
+              final children = [
+                for (int index = 0; index < widget.steps.length; index += 1) ...[
                   InkResponse(
-                    containedInkWell: true,
-                    borderRadius: ZetaRadius.minimal,
                     onTap: widget.onStepTapped != null ? () => widget.onStepTapped?.call(index) : null,
                     canRequestFocus: widget.steps[index].type != ZetaStepType.disabled,
-                    child: _getVerticalHeader(index),
-                  ),
-                  _getVerticalBody(index),
-                ],
-              ),
-          ],
-        ),
-      ZetaStepperType.horizontal => Builder(
-          builder: (context) {
-            final children = [
-              for (int index = 0; index < widget.steps.length; index += 1) ...[
-                InkResponse(
-                  onTap: widget.onStepTapped != null ? () => widget.onStepTapped?.call(index) : null,
-                  canRequestFocus: widget.steps[index].type != ZetaStepType.disabled,
-                  child: Column(
-                    children: [
-                      Center(
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                            vertical: ZetaSpacing.medium,
+                    child: Column(
+                      children: [
+                        Center(
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                              vertical: ZetaSpacing.medium,
+                            ),
+                            child: _buildHorizontalIcon(index),
                           ),
-                          child: _buildHorizotalIcon(index),
+                        ),
+                        _getHeaderText(index),
+                      ],
+                    ),
+                  ),
+                  if (!_isLast(index))
+                    Expanded(
+                      child: Container(
+                        key: Key('line$index'),
+                        margin: const EdgeInsets.only(
+                          top: ZetaSpacing.xl_3,
+                          right: ZetaSpacing.large,
+                          left: ZetaSpacing.large,
+                        ),
+                        height: ZetaSpacingBase.x0_5,
+                        decoration: BoxDecoration(
+                          borderRadius: ZetaRadius.full,
+                          color: switch (widget.steps[index].type) {
+                            ZetaStepType.complete => _colors.green.shade50,
+                            ZetaStepType.disabled => _colors.borderSubtle,
+                            ZetaStepType.enabled => _colors.blue.shade50,
+                          },
                         ),
                       ),
-                      _getHeaderText(index),
-                    ],
+                    ),
+                ],
+              ];
+
+              final List<Widget> stepPanels = <Widget>[];
+              for (int i = 0; i < widget.steps.length; i += 1) {
+                stepPanels.add(
+                  Visibility(
+                    maintainState: true,
+                    visible: i == widget.currentStep,
+                    child: widget.steps[i].content ?? const SizedBox(),
                   ),
-                ),
-                if (!_isLast(index))
-                  Expanded(
+                );
+              }
+
+              return Column(
+                children: [
+                  Material(
+                    color: Colors.transparent,
                     child: Container(
-                      key: Key('line$index'),
-                      margin: const EdgeInsets.only(
-                        top: ZetaSpacing.xl_3,
-                        right: ZetaSpacing.large,
-                        left: ZetaSpacing.large,
-                      ),
-                      height: ZetaSpacingBase.x0_5,
-                      decoration: BoxDecoration(
-                        borderRadius: ZetaRadius.full,
-                        color: switch (widget.steps[index].type) {
-                          ZetaStepType.complete => _colors.green.shade50,
-                          ZetaStepType.disabled => _colors.borderSubtle,
-                          ZetaStepType.enabled => _colors.blue.shade50,
-                        },
+                      margin: const EdgeInsets.symmetric(horizontal: ZetaSpacing.xl_2),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: children,
                       ),
                     ),
                   ),
-              ],
-            ];
-
-            final List<Widget> stepPanels = <Widget>[];
-            for (int i = 0; i < widget.steps.length; i += 1) {
-              stepPanels.add(
-                Visibility(
-                  maintainState: true,
-                  visible: i == widget.currentStep,
-                  child: widget.steps[i].content ?? const SizedBox(),
-                ),
+                  Expanded(
+                    child: AnimatedSize(
+                      curve: Curves.fastOutSlowIn,
+                      duration: kThemeAnimationDuration,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: stepPanels,
+                      ),
+                    ),
+                  ),
+                ],
               );
-            }
-
-            return Column(
-              children: [
-                Material(
-                  color: Colors.transparent,
-                  child: Container(
-                    margin: const EdgeInsets.symmetric(horizontal: ZetaSpacing.xl_2),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: children,
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: AnimatedSize(
-                    curve: Curves.fastOutSlowIn,
-                    duration: kThemeAnimationDuration,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: stepPanels,
-                    ),
-                  ),
-                ),
-              ],
-            );
-          },
-        ),
-    };
+            },
+          ),
+      },
+    );
   }
 }
 

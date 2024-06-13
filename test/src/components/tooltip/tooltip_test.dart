@@ -225,7 +225,7 @@ void main() {
       ).debugFillProperties(diagnostics);
 
       final rounded = diagnostics.properties.where((p) => p.name == 'rounded').map((p) => p.toDescription()).first;
-      expect(rounded, 'true');
+      expect(rounded, 'null');
 
       final padding = diagnostics.properties.where((p) => p.name == 'padding').map((p) => p.toDescription()).first;
       expect(padding, 'EdgeInsets.all(8.0)');

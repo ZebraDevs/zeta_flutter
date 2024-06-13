@@ -4,21 +4,18 @@ import 'package:flutter/material.dart';
 import '../../../zeta_flutter.dart';
 
 /// Zeta Button Group
-class ZetaButtonGroup extends StatelessWidget {
+class ZetaButtonGroup extends ZetaStatelessWidget {
   /// Constructs [ZetaButtonGroup] from a list of [ZetaGroupButton]s
   const ZetaButtonGroup({
     super.key,
     required this.buttons,
-    this.rounded = true,
     this.isLarge = false,
     this.isInverse = false,
+    super.rounded,
   });
 
   /// Determines size of [ZetaGroupButton].
   final bool isLarge;
-
-  /// {@macro zeta-component-rounded}
-  final bool rounded;
 
   /// [ZetaGroupButton]s to be rendered in list.
   final List<ZetaGroupButton> buttons;
@@ -28,9 +25,12 @@ class ZetaButtonGroup extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: getButtons(),
+    return ZetaRoundedScope(
+      rounded: context.rounded,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: getButtons(),
+      ),
     );
   }
 
@@ -43,7 +43,6 @@ class ZetaButtonGroup extends StatelessWidget {
         button.copyWith(
           isLarge: isLarge,
           isInverse: isInverse,
-          rounded: rounded,
           isFinal: index == buttons.length - 1,
           isInitial: index == 0,
         ),
@@ -66,7 +65,7 @@ class ZetaButtonGroup extends StatelessWidget {
 // TODO(UX-854): Create country variant.
 
 /// Group Button item
-class ZetaGroupButton extends StatefulWidget {
+class ZetaGroupButton extends ZetaStatefulWidget {
   /// Public Constructor for [ZetaGroupButton]
   const ZetaGroupButton({
     super.key,
@@ -74,15 +73,16 @@ class ZetaGroupButton extends StatefulWidget {
     this.icon,
     this.onPressed,
     this.dropdown,
+    super.rounded,
   })  : isFinal = false,
         isInitial = false,
         isInverse = false,
-        isLarge = true,
-        rounded = true;
+        isLarge = true;
 
   /// Private constructor
   const ZetaGroupButton._({
     super.key,
+    super.rounded,
     this.label,
     this.icon,
     this.onPressed,
@@ -91,12 +91,12 @@ class ZetaGroupButton extends StatefulWidget {
     required this.isInitial,
     required this.isInverse,
     required this.isLarge,
-    required this.rounded,
   });
 
   /// Constructs dropdown group button
   const ZetaGroupButton.dropdown({
     super.key,
+    super.rounded,
     required this.onPressed,
     required this.dropdown,
     this.icon,
@@ -104,12 +104,12 @@ class ZetaGroupButton extends StatefulWidget {
   })  : isFinal = false,
         isInitial = false,
         isInverse = false,
-        isLarge = true,
-        rounded = true;
+        isLarge = true;
 
   ///Constructs group button with icon
   const ZetaGroupButton.icon({
     super.key,
+    super.rounded,
     required this.icon,
     this.dropdown,
     this.onPressed,
@@ -117,8 +117,7 @@ class ZetaGroupButton extends StatefulWidget {
   })  : isFinal = false,
         isInitial = false,
         isInverse = false,
-        isLarge = true,
-        rounded = true;
+        isLarge = true;
 
   /// Label for [ZetaGroupButton].
   final String? label;
@@ -136,9 +135,6 @@ class ZetaGroupButton extends StatefulWidget {
 
   ///If [ZetaGroupButton] is large.
   final bool isLarge;
-
-  ///If [ZetaGroupButton] is rounded.
-  final bool rounded;
 
   /// If [ZetaGroupButton] is the first button in its list.
   final bool isInitial;
@@ -183,7 +179,6 @@ class ZetaGroupButton extends StatefulWidget {
       ..add(ObjectFlagProperty<VoidCallback?>.has('onPressed', onPressed))
       ..add(DiagnosticsProperty<bool>('isInitial', isInitial))
       ..add(DiagnosticsProperty<bool>('isLarge', isLarge))
-      ..add(DiagnosticsProperty<bool>('rounded', rounded))
       ..add(DiagnosticsProperty<bool>('isFinal', isFinal))
       ..add(DiagnosticsProperty<bool>('isInverse', isInverse));
   }
@@ -215,8 +210,8 @@ class _ZetaGroupButtonState extends State<ZetaGroupButton> {
   @override
   Widget build(BuildContext context) {
     final colors = Zeta.of(context).colors;
-
-    final borderType = widget.rounded ? ZetaWidgetBorder.rounded : ZetaWidgetBorder.sharp;
+    final rounded = context.rounded;
+    final borderType = rounded ? ZetaWidgetBorder.rounded : ZetaWidgetBorder.sharp;
 
     final BorderSide borderSide = _getBorderSide(controller.value, colors, false);
 
@@ -247,7 +242,7 @@ class _ZetaGroupButtonState extends State<ZetaGroupButton> {
               Text(widget.label ?? '', style: ZetaTextStyles.labelMedium),
               if (widget.dropdown != null) // TODO(UX-1006): Dropdown
                 Icon(
-                  widget.rounded ? ZetaIcons.expand_more_round : ZetaIcons.expand_more_sharp,
+                  rounded ? ZetaIcons.expand_more_round : ZetaIcons.expand_more_sharp,
                   size: ZetaSpacing.xl_1,
                 ),
             ].divide(const SizedBox(width: ZetaSpacing.minimum)).toList(),

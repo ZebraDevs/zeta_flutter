@@ -29,15 +29,12 @@ class ZetaProgressCircle extends ZetaProgress {
   const ZetaProgressCircle({
     super.key,
     super.progress = 0,
+    super.rounded,
     this.size = ZetaCircleSizes.xl_1,
-    this.rounded = true,
   });
 
   ///Size of [ZetaProgressCircle]
   final ZetaCircleSizes size;
-
-  ///{@macro zeta-component-rounded}
-  final bool rounded;
 
   @override
   State<ZetaProgressCircle> createState() => ZetaProgressCircleState();
@@ -65,7 +62,7 @@ class ZetaProgressCircleState extends ZetaProgressState<ZetaProgressCircle> {
             size: _getSize(),
             painter: CirclePainter(
               progress: animation.value,
-              rounded: widget.rounded,
+              rounded: context.rounded,
               colors: Zeta.of(context).colors,
             ),
           );

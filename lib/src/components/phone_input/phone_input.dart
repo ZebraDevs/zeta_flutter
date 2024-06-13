@@ -7,14 +7,14 @@ import 'countries.dart';
 import 'countries_dialog.dart';
 
 /// ZetaPhoneInput allows entering phone numbers.
-class ZetaPhoneInput extends StatefulWidget {
+class ZetaPhoneInput extends ZetaStatefulWidget {
   /// Constructor for [ZetaPhoneInput].
   const ZetaPhoneInput({
     super.key,
+    super.rounded,
     this.label,
     this.hint,
     this.enabled = true,
-    this.rounded = true,
     this.hasError = false,
     this.errorText,
     this.onChanged,
@@ -33,9 +33,6 @@ class ZetaPhoneInput extends StatefulWidget {
 
   /// Determines if the inputs should be enabled (default) or disabled.
   final bool enabled;
-
-  /// Determines if the input field corners are rounded (default) or sharp.
-  final bool rounded;
 
   /// Determines if the input field should be displayed in error style.
   /// Default is `false`.
@@ -139,6 +136,7 @@ class _ZetaPhoneInputState extends State<ZetaPhoneInput> {
   Widget build(BuildContext context) {
     final zeta = Zeta.of(context);
     final showError = _hasError && widget.errorText != null;
+    final rounded = context.rounded;
     final hintErrorColor = widget.enabled
         ? showError
             ? zeta.colors.red
@@ -168,7 +166,7 @@ class _ZetaPhoneInputState extends State<ZetaPhoneInput> {
                 child: DecoratedBox(
                   decoration: BoxDecoration(
                     color: widget.enabled ? zeta.colors.surfacePrimary : zeta.colors.cool.shade30,
-                    borderRadius: widget.rounded
+                    borderRadius: rounded
                         ? const BorderRadius.only(
                             topLeft: Radius.circular(ZetaSpacing.minimum),
                             bottomLeft: Radius.circular(ZetaSpacing.minimum),
@@ -201,7 +199,7 @@ class _ZetaPhoneInputState extends State<ZetaPhoneInput> {
                           ),
                         ),
                         Icon(
-                          widget.rounded ? ZetaIcons.expand_more_round : ZetaIcons.expand_more_sharp,
+                          rounded ? ZetaIcons.expand_more_round : ZetaIcons.expand_more_sharp,
                           color: widget.enabled ? zeta.colors.textDefault : zeta.colors.cool.shade50,
                           size: ZetaSpacing.xl_1,
                         ),
@@ -275,14 +273,14 @@ class _ZetaPhoneInputState extends State<ZetaPhoneInput> {
                             : zeta.colors.surfacePrimary
                         : zeta.colors.cool.shade30,
                     enabledBorder: _hasError
-                        ? _errorInputBorder(zeta, rounded: widget.rounded)
-                        : _defaultInputBorder(zeta, rounded: widget.rounded),
+                        ? _errorInputBorder(zeta, rounded: rounded)
+                        : _defaultInputBorder(zeta, rounded: rounded),
                     focusedBorder: _hasError
-                        ? _errorInputBorder(zeta, rounded: widget.rounded)
-                        : _focusedInputBorder(zeta, rounded: widget.rounded),
-                    disabledBorder: _defaultInputBorder(zeta, rounded: widget.rounded),
-                    errorBorder: _errorInputBorder(zeta, rounded: widget.rounded),
-                    focusedErrorBorder: _errorInputBorder(zeta, rounded: widget.rounded),
+                        ? _errorInputBorder(zeta, rounded: rounded)
+                        : _focusedInputBorder(zeta, rounded: rounded),
+                    disabledBorder: _defaultInputBorder(zeta, rounded: rounded),
+                    errorBorder: _errorInputBorder(zeta, rounded: rounded),
+                    focusedErrorBorder: _errorInputBorder(zeta, rounded: rounded),
                   ),
                 ),
               ),
@@ -298,8 +296,8 @@ class _ZetaPhoneInputState extends State<ZetaPhoneInput> {
                   padding: const EdgeInsets.only(right: ZetaSpacing.small),
                   child: Icon(
                     showError && widget.enabled
-                        ? (widget.rounded ? ZetaIcons.error_round : ZetaIcons.error_sharp)
-                        : (widget.rounded ? ZetaIcons.info_round : ZetaIcons.info_sharp),
+                        ? (rounded ? ZetaIcons.error_round : ZetaIcons.error_sharp)
+                        : (rounded ? ZetaIcons.info_round : ZetaIcons.info_sharp),
                     size: ZetaSpacing.large,
                     color: hintErrorColor,
                   ),

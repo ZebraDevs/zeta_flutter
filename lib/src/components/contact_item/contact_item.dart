@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../zeta_flutter.dart';
 
 /// A single row that contains avatar, title and subtitle.
-class ZetaContactItem extends StatelessWidget {
+class ZetaContactItem extends ZetaStatelessWidget {
   /// Constructs [ZetaContactItem].
   const ZetaContactItem({
     required this.title,
@@ -12,6 +12,7 @@ class ZetaContactItem extends StatelessWidget {
     this.enabledDivider = true,
     this.onTap,
     super.key,
+    super.rounded,
   });
 
   /// The main text to be displayed on the top.
@@ -33,56 +34,59 @@ class ZetaContactItem extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = Zeta.of(context).colors;
 
-    return DecoratedBox(
-      decoration: BoxDecoration(
-        color: colors.surfacePrimary,
-        border: enabledDivider
-            ? Border(
-                bottom: BorderSide(color: colors.borderDisabled),
-              )
-            : null,
-      ),
-      child: Material(
-        color: Colors.transparent,
-        child: InkWell(
-          onTap: onTap,
-          child: Padding(
-            padding: const EdgeInsets.only(
-              top: ZetaSpacing.small,
-              bottom: ZetaSpacing.small,
-              left: ZetaSpacing.xl_2,
-            ),
-            child: Row(
-              children: [
-                leading,
-                Flexible(
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: ZetaSpacing.medium),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        DefaultTextStyle(
-                          style: ZetaTextStyles.bodyMedium.copyWith(
-                            color: colors.textDefault,
+    return ZetaRoundedScope(
+      rounded: context.rounded,
+      child: DecoratedBox(
+        decoration: BoxDecoration(
+          color: colors.surfacePrimary,
+          border: enabledDivider
+              ? Border(
+                  bottom: BorderSide(color: colors.borderDisabled),
+                )
+              : null,
+        ),
+        child: Material(
+          color: Colors.transparent,
+          child: InkWell(
+            onTap: onTap,
+            child: Padding(
+              padding: const EdgeInsets.only(
+                top: ZetaSpacing.small,
+                bottom: ZetaSpacing.small,
+                left: ZetaSpacing.xl_2,
+              ),
+              child: Row(
+                children: [
+                  leading,
+                  Flexible(
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: ZetaSpacing.medium),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          DefaultTextStyle(
+                            style: ZetaTextStyles.bodyMedium.copyWith(
+                              color: colors.textDefault,
+                            ),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            child: title,
                           ),
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                          child: title,
-                        ),
-                        DefaultTextStyle(
-                          style: ZetaTextStyles.bodySmall.copyWith(
-                            color: colors.textSubtle,
+                          DefaultTextStyle(
+                            style: ZetaTextStyles.bodySmall.copyWith(
+                              color: colors.textSubtle,
+                            ),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            child: subtitle,
                           ),
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                          child: subtitle,
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),

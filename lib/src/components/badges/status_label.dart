@@ -6,18 +6,15 @@ import '../../../zeta_flutter.dart';
 ///
 /// To help some information, labels, or errors stand out, we present them with badges.
 /// They can look like buttons, but users can’t select them. They just guide users to things they should pay attention to.
-class ZetaStatusLabel extends StatelessWidget {
+class ZetaStatusLabel extends ZetaStatelessWidget {
   ///Constructs [ZetaStatusLabel].
   const ZetaStatusLabel({
     super.key,
     required this.label,
-    this.rounded = true,
     this.status = ZetaWidgetStatus.info,
     this.customIcon,
+    super.rounded,
   });
-
-  /// {@macro zeta-component-rounded}
-  final bool rounded;
 
   /// {@macro zeta-component-badge-status}
   final ZetaWidgetStatus status;
@@ -36,7 +33,7 @@ class ZetaStatusLabel extends StatelessWidget {
       decoration: BoxDecoration(
         color: colors.shade10,
         border: Border.all(color: colors.border),
-        borderRadius: rounded ? ZetaRadius.full : ZetaRadius.none,
+        borderRadius: context.rounded ? ZetaRadius.full : ZetaRadius.none,
       ),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: ZetaSpacing.small, vertical: ZetaSpacingBase.x0_5),

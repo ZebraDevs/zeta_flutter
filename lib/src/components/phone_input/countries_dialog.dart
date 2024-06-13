@@ -4,10 +4,11 @@ import '../../../zeta_flutter.dart';
 import 'countries.dart';
 
 /// Class for [CountriesDialog]
-class CountriesDialog extends StatefulWidget {
+class CountriesDialog extends ZetaStatefulWidget {
   ///Constructor of [CountriesDialog]
   const CountriesDialog({
     super.key,
+    super.rounded,
     this.zeta,
     required this.button,
     required this.items,
@@ -75,19 +76,22 @@ class _CountriesDialogState extends State<CountriesDialog> {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: widget.items.isEmpty || !widget.enabled
-          ? null
-          : () async {
-              final item = await _showCountriesDialog(
-                context,
-                zeta: widget.zeta,
-                items: widget.items,
-                useRootNavigator: widget.useRootNavigator,
-              );
-              widget.onChanged(item);
-            },
-      child: widget.button,
+    return ZetaRoundedScope(
+      rounded: context.rounded,
+      child: InkWell(
+        onTap: widget.items.isEmpty || !widget.enabled
+            ? null
+            : () async {
+                final item = await _showCountriesDialog(
+                  context,
+                  zeta: widget.zeta,
+                  items: widget.items,
+                  useRootNavigator: widget.useRootNavigator,
+                );
+                widget.onChanged(item);
+              },
+        child: widget.button,
+      ),
     );
   }
 }

@@ -3,21 +3,18 @@ import 'package:flutter/material.dart';
 import '../../../zeta_flutter.dart';
 
 /// [ZetaScreenHeaderBar]
-class ZetaScreenHeaderBar extends StatelessWidget {
+class ZetaScreenHeaderBar extends ZetaStatelessWidget {
   /// Constructor for [ZetaScreenHeaderBar].
   const ZetaScreenHeaderBar({
+    super.key,
+    super.rounded,
     this.title,
-    this.rounded = true,
     this.actionButtonLabel,
     this.onActionButtonPressed,
-    super.key,
   });
 
   /// The title of [ZetaScreenHeaderBar]. Normally a [Text] widget.
   final Widget? title;
-
-  /// {@macro zeta-component-rounded}
-  final bool rounded;
 
   /// The label of the action button.
   final String? actionButtonLabel;
@@ -27,22 +24,25 @@ class ZetaScreenHeaderBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ZetaTopAppBar(
-      leading: IconButton(
-        onPressed: () async => Navigator.maybePop(context),
-        icon: Icon(rounded ? ZetaIcons.chevron_left_round : ZetaIcons.chevron_left_sharp),
+    final bool rounded = context.rounded;
+    return ZetaRoundedScope(
+      rounded: rounded,
+      child: ZetaTopAppBar(
+        leading: IconButton(
+          onPressed: () async => Navigator.maybePop(context),
+          icon: Icon(rounded ? ZetaIcons.chevron_left_round : ZetaIcons.chevron_left_sharp),
+        ),
+        title: title,
+        titleTextStyle: ZetaTextStyles.titleLarge,
+        actions: actionButtonLabel == null
+            ? null
+            : [
+                ZetaButton(
+                  label: actionButtonLabel!,
+                  onPressed: onActionButtonPressed,
+                ),
+              ],
       ),
-      title: title,
-      titleTextStyle: ZetaTextStyles.titleLarge,
-      actions: actionButtonLabel == null
-          ? null
-          : [
-              ZetaButton(
-                label: actionButtonLabel!,
-                onPressed: onActionButtonPressed,
-                borderType: rounded ? ZetaWidgetBorder.rounded : ZetaWidgetBorder.sharp,
-              ),
-            ],
     );
   }
 

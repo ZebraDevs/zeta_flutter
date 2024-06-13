@@ -28,7 +28,7 @@ enum ZetaDropdownSize {
 
 /// A class for controlling a [ZetaDropdown]
 ///
-/// Can be accquired from the builder method of a [ZetaDropdown]
+/// Can be acquired from the builder method of a [ZetaDropdown]
 abstract class ZetaDropdownController {
   /// Returns true if the dropdown is open.
   bool get isOpen;
@@ -85,19 +85,19 @@ class ZetaDropdownItem<T> {
 }
 
 /// Class for [ZetaDropdown]
-class ZetaDropdown<T> extends StatefulWidget {
+class ZetaDropdown<T> extends ZetaStatefulWidget {
   /// Creates a new [ZetaDropdown].
   const ZetaDropdown({
     required this.items,
     this.onChange,
     @Deprecated('Set onChange to null. ' 'Disabled is deprecated as of 0.11.0') bool disabled = false,
     this.value,
-    this.rounded = true,
     this.type = ZetaDropdownMenuType.standard,
     this.size = ZetaDropdownSize.standard,
     this.builder,
     this.onDismissed,
     super.key,
+    super.rounded,
   });
 
   /// The items displayed in the dropdown.
@@ -113,11 +113,8 @@ class ZetaDropdown<T> extends StatefulWidget {
   /// {@macro on-change-disable}
   final ValueSetter<ZetaDropdownItem<T>>? onChange;
 
-  /// Called when the dropdown is dimissed.
+  /// Called when the dropdown is dismissed.
   final VoidCallback? onDismissed;
-
-  /// {@macro zeta-component-rounded}
-  final bool rounded;
 
   /// The type of the dropdown menu.
   ///
@@ -253,7 +250,6 @@ class ZetaDropDownState<T> extends State<ZetaDropdown<T>> {
         onPress: widget.onChange != null ? _onTap : null,
         value: _selectedItem ?? widget.items.first,
         allocateLeadingSpace: widget.type == ZetaDropdownMenuType.standard && _selectedItem?.icon != null,
-        rounded: widget.rounded,
         key: _childKey,
       );
     }
@@ -293,7 +289,6 @@ class ZetaDropDownState<T> extends State<ZetaDropdown<T>> {
                   child: _ZetaDropDownMenu<T>(
                     items: widget.items,
                     selected: _selectedItem?.value,
-                    rounded: widget.rounded,
                     allocateLeadingSpace: _allocateLeadingSpace,
                     width: _size,
                     key: _menuKey,
@@ -361,15 +356,11 @@ class _DropdownItem<T> extends StatefulWidget {
     super.key,
     required this.value,
     required this.allocateLeadingSpace,
-    required this.rounded,
     this.selected = false,
     this.menuType = ZetaDropdownMenuType.standard,
     this.itemKey,
     this.onPress,
   });
-
-  /// {@macro zeta-component-rounded}
-  final bool rounded;
 
   final bool allocateLeadingSpace;
 
@@ -394,7 +385,6 @@ class _DropdownItem<T> extends StatefulWidget {
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty<bool>('rounded', rounded))
       ..add(DiagnosticsProperty<bool>('selected', selected))
       ..add(ObjectFlagProperty<VoidCallback?>.has('onPress', onPress))
       ..add(EnumProperty<ZetaDropdownMenuType?>('leadingType', menuType))
@@ -524,7 +514,7 @@ class _DropdownItemState<T> extends State<_DropdownItem<T>> {
       }),
       shape: WidgetStateProperty.all(
         RoundedRectangleBorder(
-          borderRadius: widget.rounded ? ZetaRadius.minimal : ZetaRadius.none,
+          borderRadius: context.rounded ? ZetaRadius.minimal : ZetaRadius.none,
         ),
       ),
       side: WidgetStateBorderSide.resolveWith((states) {
@@ -551,14 +541,13 @@ class _DropdownItemState<T> extends State<_DropdownItem<T>> {
   }
 }
 
-class _ZetaDropDownMenu<T> extends StatefulWidget {
+class _ZetaDropDownMenu<T> extends ZetaStatefulWidget {
   ///Constructor for [_ZetaDropDownMenu]
   const _ZetaDropDownMenu({
     required this.items,
     required this.onSelected,
     required this.selected,
     required this.allocateLeadingSpace,
-    this.rounded = false,
     this.width,
     this.menuType = ZetaDropdownMenuType.standard,
     super.key,
@@ -574,9 +563,6 @@ class _ZetaDropDownMenu<T> extends StatefulWidget {
 
   final T? selected;
 
-  /// {@macro zeta-component-rounded}
-  final bool rounded;
-
   /// Width for menu
   final double? width;
 
@@ -589,7 +575,6 @@ class _ZetaDropDownMenu<T> extends StatefulWidget {
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty<bool>('rounded', rounded))
       ..add(DoubleProperty('width', width))
       ..add(EnumProperty<ZetaDropdownMenuType?>('boxType', menuType))
       ..add(IterableProperty<ZetaDropdownItem<T>>('items', items))
@@ -607,7 +592,7 @@ class _ZetaDropDownMenuState<T> extends State<_ZetaDropDownMenu<T>> {
       padding: const EdgeInsets.all(ZetaSpacing.medium),
       decoration: BoxDecoration(
         color: colors.surfacePrimary,
-        borderRadius: widget.rounded ? ZetaRadius.minimal : ZetaRadius.none,
+        borderRadius: context.rounded ? ZetaRadius.minimal : ZetaRadius.none,
         boxShadow: const [
           BoxShadow(blurRadius: 2, color: Color.fromRGBO(40, 51, 61, 0.04)),
           BoxShadow(
@@ -631,7 +616,6 @@ class _ZetaDropDownMenuState<T> extends State<_ZetaDropDownMenu<T>> {
                     selected: item.value == widget.selected,
                     allocateLeadingSpace: widget.allocateLeadingSpace,
                     menuType: widget.menuType,
-                    rounded: widget.rounded,
                   );
                 })
                 .divide(const SizedBox(height: ZetaSpacing.minimum))

@@ -22,7 +22,7 @@ class ZetaTimeInput extends ZetaFormField<TimeOfDay> {
     super.initialValue,
     super.onChange,
     super.requirementLevel = ZetaFormFieldRequirement.none,
-    this.rounded = true,
+    super.rounded,
     this.use12Hr,
     this.label,
     this.hintText,
@@ -31,9 +31,6 @@ class ZetaTimeInput extends ZetaFormField<TimeOfDay> {
     this.size = ZetaWidgetSize.medium,
     this.pickerInitialEntryMode,
   });
-
-  /// {@macro zeta-component-rounded}
-  final bool rounded;
 
   /// Changes the time input to 12 hour time.
   /// Uses the device default if not set.
@@ -103,8 +100,6 @@ class ZetaTimeInputState extends State<ZetaTimeInput> implements ZetaFormFieldSt
 
   bool get _showClearButton => _controller.text.isNotEmpty;
 
-  BorderRadius get _borderRadius => widget.rounded ? ZetaRadius.minimal : ZetaRadius.none;
-
   int get _hrsLimit => _use12Hr ? _max12HrValue : _maxHrValue;
   final int _minsLimit = _maxMinsValue;
 
@@ -162,6 +157,8 @@ class ZetaTimeInputState extends State<ZetaTimeInput> implements ZetaFormFieldSt
   }
 
   Future<void> _pickTime() async {
+    final rounded = context.rounded;
+
     final result = await showTimePicker(
       context: context,
       initialEntryMode: widget.pickerInitialEntryMode ?? TimePickerEntryMode.dial,
@@ -173,13 +170,13 @@ class ZetaTimeInputState extends State<ZetaTimeInput> implements ZetaFormFieldSt
               dialBackgroundColor: _colors.warm.shade30,
               dayPeriodColor: _colors.primary,
               shape: RoundedRectangleBorder(
-                borderRadius: widget.rounded ? ZetaRadius.rounded : ZetaRadius.none,
+                borderRadius: rounded ? ZetaRadius.rounded : ZetaRadius.none,
               ),
               inputDecorationTheme: InputDecorationTheme(
                 filled: true,
                 isDense: true,
                 border: OutlineInputBorder(
-                  borderRadius: _borderRadius,
+                  borderRadius: rounded ? ZetaRadius.minimal : ZetaRadius.none,
                   borderSide: BorderSide.none,
                 ),
               ),
@@ -213,6 +210,8 @@ class ZetaTimeInputState extends State<ZetaTimeInput> implements ZetaFormFieldSt
 
   @override
   Widget build(BuildContext context) {
+    final rounded = context.rounded;
+
     if (!_firstBuildComplete && widget.initialValue != null) {
       _setText(widget.initialValue!);
       _firstBuildComplete = true;
@@ -252,14 +251,14 @@ class ZetaTimeInputState extends State<ZetaTimeInput> implements ZetaFormFieldSt
         children: [
           if (_showClearButton)
             InputIconButton(
-              icon: widget.rounded ? ZetaIcons.cancel_round : ZetaIcons.cancel_sharp,
+              icon: rounded ? ZetaIcons.cancel_round : ZetaIcons.cancel_sharp,
               onTap: reset,
               disabled: widget.disabled,
               size: widget.size,
               color: _colors.iconSubtle,
             ),
           InputIconButton(
-            icon: widget.rounded ? ZetaIcons.clock_outline_round : ZetaIcons.clock_outline_sharp,
+            icon: rounded ? ZetaIcons.clock_outline_round : ZetaIcons.clock_outline_sharp,
             onTap: _pickTime,
             disabled: widget.disabled,
             size: widget.size,

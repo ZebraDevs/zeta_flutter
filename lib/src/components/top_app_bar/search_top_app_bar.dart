@@ -6,10 +6,11 @@ import '../../../zeta_flutter.dart';
 const _extendedOffset = ZetaSpacing.minimum * 6.5;
 
 /// Creates a search field used on a [ZetaTopAppBar].
-class ZetaTopAppBarSearchField extends StatefulWidget {
+class ZetaTopAppBarSearchField extends ZetaStatefulWidget {
   /// Constructs a [ZetaTopAppBarSearchField].
   const ZetaTopAppBarSearchField({
     super.key,
+    super.rounded,
     required this.child,
     required this.onSearch,
     required this.searchController,
@@ -138,46 +139,49 @@ class _ZetaTopAppBarSearchFieldState extends State<ZetaTopAppBarSearchField> wit
   @override
   Widget build(BuildContext context) {
     final colors = Zeta.of(context).colors;
-    return Stack(
-      alignment: Alignment.center,
-      clipBehavior: Clip.none,
-      children: [
-        Row(
-          mainAxisAlignment:
-              widget.type == ZetaTopAppBarType.centeredTitle ? MainAxisAlignment.center : MainAxisAlignment.start,
-          children: [
-            widget.child ?? const SizedBox(),
-          ],
-        ),
-        ConstrainedBox(
-          constraints: BoxConstraints(maxHeight: widget.isExtended ? _extendedOffset : double.infinity),
-          child: AnimatedBuilder(
-            animation: _animationController,
-            builder: (context, child) => Transform.scale(
-              scaleX: _animationController.value,
-              alignment: Alignment.centerRight,
-              origin: Offset.zero,
-              child: TextField(
-                controller: widget.searchController?.textEditingController,
-                focusNode: _textFocusNode,
-                style: ZetaTextStyles.bodyMedium,
-                cursorColor: colors.cool.shade90,
-                decoration: InputDecoration(
-                  iconColor: colors.cool.shade90,
-                  filled: true,
-                  border: InputBorder.none,
-                  hintStyle: ZetaTextStyles.bodyMedium.copyWith(
-                    color: colors.textDisabled,
+    return ZetaRoundedScope(
+      rounded: context.rounded,
+      child: Stack(
+        alignment: Alignment.center,
+        clipBehavior: Clip.none,
+        children: [
+          Row(
+            mainAxisAlignment:
+                widget.type == ZetaTopAppBarType.centeredTitle ? MainAxisAlignment.center : MainAxisAlignment.start,
+            children: [
+              widget.child ?? const SizedBox(),
+            ],
+          ),
+          ConstrainedBox(
+            constraints: BoxConstraints(maxHeight: widget.isExtended ? _extendedOffset : double.infinity),
+            child: AnimatedBuilder(
+              animation: _animationController,
+              builder: (context, child) => Transform.scale(
+                scaleX: _animationController.value,
+                alignment: Alignment.centerRight,
+                origin: Offset.zero,
+                child: TextField(
+                  controller: widget.searchController?.textEditingController,
+                  focusNode: _textFocusNode,
+                  style: ZetaTextStyles.bodyMedium,
+                  cursorColor: colors.cool.shade90,
+                  decoration: InputDecoration(
+                    iconColor: colors.cool.shade90,
+                    filled: true,
+                    border: InputBorder.none,
+                    hintStyle: ZetaTextStyles.bodyMedium.copyWith(
+                      color: colors.textDisabled,
+                    ),
+                    hintText: widget.hintText,
                   ),
-                  hintText: widget.hintText,
+                  onEditingComplete: _submitSearch,
+                  textInputAction: TextInputAction.search,
                 ),
-                onEditingComplete: _submitSearch,
-                textInputAction: TextInputAction.search,
               ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

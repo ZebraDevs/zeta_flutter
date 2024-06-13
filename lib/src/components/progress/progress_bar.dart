@@ -22,9 +22,9 @@ class ZetaProgressBar extends ZetaProgress {
   ///Constructor for [ZetaProgressBar].
   const ZetaProgressBar({
     super.key,
+    super.rounded,
     required super.progress,
     required this.type,
-    this.rounded = true,
     this.isThin = false,
     this.label,
   });
@@ -32,8 +32,8 @@ class ZetaProgressBar extends ZetaProgress {
   /// Constructs a standard progress bar.
   const ZetaProgressBar.standard({
     super.key,
+    super.rounded,
     required super.progress,
-    this.rounded = true,
     this.isThin = false,
     this.label,
   }) : type = ZetaProgressBarType.standard;
@@ -41,8 +41,8 @@ class ZetaProgressBar extends ZetaProgress {
   /// Constructs buffering example
   const ZetaProgressBar.buffering({
     super.key,
+    super.rounded,
     required super.progress,
-    this.rounded = true,
     this.isThin = false,
     this.label,
   }) : type = ZetaProgressBarType.buffering;
@@ -50,14 +50,11 @@ class ZetaProgressBar extends ZetaProgress {
   /// Constructs indeterminate progress bar.
   const ZetaProgressBar.indeterminate({
     super.key,
+    super.rounded,
     required super.progress,
-    this.rounded = true,
     this.isThin = false,
     this.label,
   }) : type = ZetaProgressBarType.indeterminate;
-
-  /// {@macro zeta-component-rounded}
-  final bool rounded;
 
   /// Type of the progress bar.
   final ZetaProgressBarType type;
@@ -113,7 +110,7 @@ class _ZetaProgressBarState extends ZetaProgressState<ZetaProgressBar> {
                 duration: ZetaAnimationLength.verySlow,
                 height: _weight,
                 child: LinearProgressIndicator(
-                  borderRadius: _border,
+                  borderRadius: context.rounded ? ZetaRadius.rounded : ZetaRadius.none,
                   value: widget.type == ZetaProgressBarType.indeterminate ? null : animation.value,
                   backgroundColor:
                       widget.type == ZetaProgressBarType.buffering ? colors.surfaceDisabled : Colors.transparent,
@@ -126,9 +123,6 @@ class _ZetaProgressBarState extends ZetaProgressState<ZetaProgressBar> {
       ],
     );
   }
-
-  /// Returns border based on widgets border type.
-  BorderRadius get _border => widget.rounded ? ZetaRadius.rounded : ZetaRadius.none;
 
   /// Returns thickness of progress bar based on its weight.
   double get _weight => widget.isThin ? ZetaSpacing.small : ZetaSpacing.large;

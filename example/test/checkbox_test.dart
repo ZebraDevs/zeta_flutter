@@ -21,7 +21,7 @@ void main() {
       final ZetaCheckbox checkbox = tester.firstWidget(checkboxFinder);
 
       expect(checkbox.value, true);
-      expect(checkbox.rounded, true);
+      expect(checkbox.rounded, null);
       expect(checkbox.label, 'Test Checkbox');
     });
 

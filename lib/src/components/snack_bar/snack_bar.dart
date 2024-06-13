@@ -41,7 +41,7 @@ class ZetaSnackBar extends SnackBar {
     VoidCallback? onPressed,
     ZetaSnackBarType? type,
     Icon? leadingIcon,
-    bool rounded = true,
+    bool? rounded,
     String? actionLabel,
     String deleteActionLabel = 'Undo',
     String viewActionLabel = 'View',
@@ -55,36 +55,39 @@ class ZetaSnackBar extends SnackBar {
           shape: RoundedRectangleBorder(
             borderRadius: type != null
                 ? ZetaRadius.full
-                : rounded
+                : rounded ?? context.rounded
                     ? ZetaRadius.minimal
                     : ZetaRadius.none,
           ),
-          content: Padding(
-            padding: const EdgeInsets.symmetric(vertical: ZetaSpacing.small),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Flexible(
-                  child: Row(
-                    children: [
-                      _LeadingIcon(type, leadingIcon),
-                      Flexible(
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: ZetaSpacing.medium),
-                          child: _Content(type: type, child: content),
+          content: ZetaRoundedScope(
+            rounded: rounded ?? context.rounded,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: ZetaSpacing.small),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Flexible(
+                    child: Row(
+                      children: [
+                        _LeadingIcon(type, leadingIcon),
+                        Flexible(
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: ZetaSpacing.medium),
+                            child: _Content(type: type, child: content),
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-                _Action(
-                  type: type,
-                  actionLabel: actionLabel,
-                  onPressed: onPressed,
-                  deleteActionLabel: deleteActionLabel,
-                  viewActionLabel: viewActionLabel,
-                ),
-              ],
+                  _Action(
+                    type: type,
+                    actionLabel: actionLabel,
+                    onPressed: onPressed,
+                    deleteActionLabel: deleteActionLabel,
+                    viewActionLabel: viewActionLabel,
+                  ),
+                ],
+              ),
             ),
           ),
         );

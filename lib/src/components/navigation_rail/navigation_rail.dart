@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 import '../../../zeta_flutter.dart';
 
 /// [ZetaNavigationRail]
-class ZetaNavigationRail extends StatefulWidget {
+class ZetaNavigationRail extends ZetaStatefulWidget {
   /// Constructor for [ZetaNavigationRail].
   const ZetaNavigationRail({
     super.key,
+    super.rounded,
     required this.items,
     this.selectedIndex,
     this.onSelect,
-    this.rounded = true,
     this.margin = const EdgeInsets.all(ZetaSpacing.xl_1),
     this.itemSpacing = const EdgeInsets.only(bottom: ZetaSpacing.minimum),
     this.itemPadding,
@@ -26,9 +26,6 @@ class ZetaNavigationRail extends StatefulWidget {
 
   /// Called when an item is selected.
   final void Function(int)? onSelect;
-
-  /// Determines if the items are rounded (default) or sharp.
-  final bool rounded;
 
   /// The margin around the [ZetaNavigationRail].
   /// Default is:
@@ -78,32 +75,34 @@ class ZetaNavigationRail extends StatefulWidget {
 class _ZetaNavigationRailState extends State<ZetaNavigationRail> {
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: widget.margin,
-      child: IntrinsicWidth(
-        child: Column(
-          children: [
-            for (int i = 0; i < widget.items.length; i++)
-              Row(
-                children: [
-                  Expanded(
-                    child: Padding(
-                      padding: widget.itemSpacing,
-                      child: _ZetaNavigationRailItemContent(
-                        label: widget.items[i].label,
-                        icon: widget.items[i].icon,
-                        selected: widget.selectedIndex == i,
-                        disabled: widget.items[i].disabled,
-                        onTap: () => widget.onSelect?.call(i),
-                        rounded: widget.rounded,
-                        padding: widget.itemPadding,
-                        wordWrap: widget.wordWrap,
+    return ZetaRoundedScope(
+      rounded: context.rounded,
+      child: Padding(
+        padding: widget.margin,
+        child: IntrinsicWidth(
+          child: Column(
+            children: [
+              for (int i = 0; i < widget.items.length; i++)
+                Row(
+                  children: [
+                    Expanded(
+                      child: Padding(
+                        padding: widget.itemSpacing,
+                        child: _ZetaNavigationRailItemContent(
+                          label: widget.items[i].label,
+                          icon: widget.items[i].icon,
+                          selected: widget.selectedIndex == i,
+                          disabled: widget.items[i].disabled,
+                          onTap: () => widget.onSelect?.call(i),
+                          padding: widget.itemPadding,
+                          wordWrap: widget.wordWrap,
+                        ),
                       ),
                     ),
-                  ),
-                ],
-              ),
-          ],
+                  ],
+                ),
+            ],
+          ),
         ),
       ),
     );
@@ -117,7 +116,6 @@ class _ZetaNavigationRailItemContent extends StatelessWidget {
     this.selected = false,
     this.disabled = false,
     this.onTap,
-    this.rounded = true,
     this.padding,
     this.wordWrap,
   });
@@ -127,7 +125,6 @@ class _ZetaNavigationRailItemContent extends StatelessWidget {
   final bool selected;
   final bool disabled;
   final VoidCallback? onTap;
-  final bool rounded;
   final EdgeInsets? padding;
   final bool? wordWrap;
 
@@ -146,7 +143,7 @@ class _ZetaNavigationRailItemContent extends StatelessWidget {
                 : selected
                     ? zeta.colors.blue.shade10
                     : null,
-            borderRadius: rounded ? ZetaRadius.rounded : null,
+            borderRadius: context.rounded ? ZetaRadius.rounded : null,
           ),
           child: ConstrainedBox(
             constraints: const BoxConstraints(
@@ -201,7 +198,6 @@ class _ZetaNavigationRailItemContent extends StatelessWidget {
     super.debugFillProperties(properties);
     properties
       ..add(ObjectFlagProperty<VoidCallback?>.has('onTap', onTap))
-      ..add(DiagnosticsProperty<bool>('rounded', rounded))
       ..add(DiagnosticsProperty<bool>('disabled', disabled))
       ..add(DiagnosticsProperty<bool>('selected', selected))
       ..add(DiagnosticsProperty<EdgeInsets?>('padding', padding))

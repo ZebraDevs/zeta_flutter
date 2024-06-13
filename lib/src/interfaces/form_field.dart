@@ -1,7 +1,6 @@
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 
-import '../utils/enums.dart';
+import '../../zeta_flutter.dart';
 
 /// An interface for all form fields used in Zeta
 abstract class ZetaFormFieldState {
@@ -13,13 +12,14 @@ abstract class ZetaFormFieldState {
 }
 
 /// A common interface shared with all Zeta form elements.
-abstract class ZetaFormField<T> extends StatefulWidget {
-  /// Creats a new [ZetaFormField]
+abstract class ZetaFormField<T> extends ZetaStatefulWidget {
+  /// Creates a new [ZetaFormField]
   const ZetaFormField({
     required this.disabled,
     required this.initialValue,
     required this.onChange,
     required this.requirementLevel,
+    super.rounded,
     super.key,
   });
 

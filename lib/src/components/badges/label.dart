@@ -10,17 +10,14 @@ typedef ZetaBadge = ZetaLabel;
 /// Zeta Badge.
 ///
 /// Text badges notify users of line items that need attention.
-class ZetaLabel extends StatelessWidget {
+class ZetaLabel extends ZetaStatelessWidget {
   ///Constructs [ZetaLabel].
   const ZetaLabel({
     required this.label,
     this.status = ZetaWidgetStatus.info,
-    this.rounded = true,
+    super.rounded,
     super.key,
   });
-
-  /// {@macro zeta-component-rounded}
-  final bool rounded;
 
   /// {@macro zeta-component-badge-status}
   final ZetaWidgetStatus status;
@@ -36,7 +33,7 @@ class ZetaLabel extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: ZetaSpacing.minimum, vertical: ZetaSpacingBase.x0_5),
       decoration: BoxDecoration(
         color: backgroundColor,
-        borderRadius: rounded ? ZetaRadius.minimal : ZetaRadius.none,
+        borderRadius: context.rounded ? ZetaRadius.minimal : ZetaRadius.none,
       ),
       child: Text(
         label,

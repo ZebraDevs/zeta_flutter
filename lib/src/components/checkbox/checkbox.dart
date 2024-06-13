@@ -17,7 +17,7 @@ class ZetaCheckbox extends FormField<bool> {
     required this.value,
     this.label,
     this.onChanged,
-    this.rounded = true,
+    this.rounded,
     this.useIndeterminate = false,
     super.validator,
     super.autovalidateMode,
@@ -43,7 +43,7 @@ class ZetaCheckbox extends FormField<bool> {
         );
 
   /// {@macro zeta-component-rounded}
-  final bool rounded;
+  final bool? rounded;
 
   /// Whether the indeterminate state should be supported.
   ///
@@ -81,15 +81,15 @@ class ZetaCheckboxFormFieldState extends FormFieldState<bool> {
   ZetaCheckbox get widget => super.widget as ZetaCheckbox;
 }
 
-class _Checkbox extends StatefulWidget {
+class _Checkbox extends ZetaStatefulWidget {
   const _Checkbox({
     required this.onChanged,
     this.disabled = false,
     this.value = false,
     this.label,
-    this.rounded = true,
     this.useIndeterminate = false,
     this.error = false,
+    super.rounded,
   });
 
   /// Whether the checkbox is selected, unselected or null (indeterminate)
@@ -100,9 +100,6 @@ class _Checkbox extends StatefulWidget {
 
   /// The label displayed next to the checkbox
   final String? label;
-
-  /// {@macro zeta-component-rounded}
-  final bool rounded;
 
   /// Whether the indeterminate state should be supported.
   ///
@@ -174,15 +171,16 @@ class _CheckboxState extends State<_Checkbox> {
 
   Flex _buildContent(BuildContext context) {
     final theme = Zeta.of(context);
+    final rounded = context.rounded;
 
     final icon = !_checked
         ? const SizedBox.shrink()
         : Icon(
             !widget.useIndeterminate
-                ? widget.rounded
+                ? rounded
                     ? ZetaIcons.check_mark_round
                     : ZetaIcons.check_mark_sharp
-                : widget.rounded
+                : rounded
                     ? ZetaIcons.remove_round
                     : ZetaIcons.remove_sharp,
             color: !widget.disabled ? theme.colors.white : theme.colors.iconDisabled,
@@ -206,7 +204,7 @@ class _CheckboxState extends State<_Checkbox> {
             ],
             color: _getBackground(theme),
             border: Border.all(color: _getBorderColor(theme), width: ZetaSpacingBase.x0_5),
-            borderRadius: widget.rounded ? ZetaRadius.minimal : ZetaRadius.none,
+            borderRadius: rounded ? ZetaRadius.minimal : ZetaRadius.none,
           ),
           width: ZetaSpacing.xl_1,
           height: ZetaSpacing.xl_1,

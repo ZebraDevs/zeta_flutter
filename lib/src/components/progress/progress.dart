@@ -1,13 +1,16 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-
-import '../../theme/tokens.dart';
+import '../../../zeta_flutter.dart';
 
 /// Super class for [ZetaProgress] widgets.
 /// Handles state for progress of [ZetaProgress] widgets.
-abstract class ZetaProgress extends StatefulWidget {
+abstract class ZetaProgress extends ZetaStatefulWidget {
   /// Constructor for abstract [ZetaProgress] class.
-  const ZetaProgress({super.key, this.progress = 0});
+  const ZetaProgress({
+    super.key,
+    super.rounded,
+    this.progress = 0,
+  });
 
   /// ZetaProgress value, decimal value ranging from 0.0 - 1.0, 0.5 = 50%
   final double progress;

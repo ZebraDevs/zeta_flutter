@@ -8,7 +8,7 @@ import 'search_top_app_bar.dart';
 export 'search_top_app_bar.dart' show AppBarSearchController;
 
 /// Top app bars provide content and actions related to the current screen.
-class ZetaTopAppBar extends StatefulWidget implements PreferredSizeWidget {
+class ZetaTopAppBar extends ZetaStatefulWidget implements PreferredSizeWidget {
   /// Creates a ZetaTopAppBar.
   const ZetaTopAppBar({
     this.actions,
@@ -22,6 +22,7 @@ class ZetaTopAppBar extends StatefulWidget implements PreferredSizeWidget {
     this.searchHintText = 'Search',
     this.onSearchMicrophoneIconPressed,
     super.key,
+    super.rounded,
   }) : shrinks = false;
 
   /// Creates a ZetaTopAppBar with centered title.
@@ -223,26 +224,29 @@ class _ZetaTopAppBarState extends State<ZetaTopAppBar> {
       );
     }
 
-    return ColoredBox(
-      color: colors.surfacePrimary,
-      child: IconButtonTheme(
-        data: IconButtonThemeData(style: IconButton.styleFrom(tapTargetSize: MaterialTapTargetSize.shrinkWrap)),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: ZetaSpacing.minimum),
-          child: AppBar(
-            elevation: 0,
-            scrolledUnderElevation: 0,
-            iconTheme: IconThemeData(color: colors.cool.shade90),
-            leadingWidth: ZetaSpacing.xl_6,
-            leading: widget.leading,
-            automaticallyImplyLeading: widget.automaticallyImplyLeading,
-            surfaceTintColor: Colors.transparent,
-            centerTitle: widget.type == ZetaTopAppBarType.centeredTitle,
-            titleTextStyle: widget.titleTextStyle == null
-                ? ZetaTextStyles.bodyLarge.copyWith(color: colors.textDefault)
-                : widget.titleTextStyle!.copyWith(color: colors.textDefault),
-            title: title,
-            actions: actions,
+    return ZetaRoundedScope(
+      rounded: context.rounded,
+      child: ColoredBox(
+        color: colors.surfacePrimary,
+        child: IconButtonTheme(
+          data: IconButtonThemeData(style: IconButton.styleFrom(tapTargetSize: MaterialTapTargetSize.shrinkWrap)),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: ZetaSpacing.minimum),
+            child: AppBar(
+              elevation: 0,
+              scrolledUnderElevation: 0,
+              iconTheme: IconThemeData(color: colors.cool.shade90),
+              leadingWidth: ZetaSpacing.xl_6,
+              leading: widget.leading,
+              automaticallyImplyLeading: widget.automaticallyImplyLeading,
+              surfaceTintColor: Colors.transparent,
+              centerTitle: widget.type == ZetaTopAppBarType.centeredTitle,
+              titleTextStyle: widget.titleTextStyle == null
+                  ? ZetaTextStyles.bodyLarge.copyWith(color: colors.textDefault)
+                  : widget.titleTextStyle!.copyWith(color: colors.textDefault),
+              title: title,
+              actions: actions,
+            ),
           ),
         ),
       ),

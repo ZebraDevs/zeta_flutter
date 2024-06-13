@@ -42,6 +42,7 @@ class ZetaBanner extends MaterialBanner {
     ZetaBannerStatus type = ZetaBannerStatus.primary,
     bool titleStart = false,
     Widget? trailing,
+    bool? rounded,
   }) : super(
           dividerColor: Colors.transparent,
           content: Builder(
@@ -61,25 +62,28 @@ class ZetaBanner extends MaterialBanner {
                 }
               }
 
-              return DefaultTextStyle(
-                style: ZetaTextStyles.labelLarge.copyWith(
-                  color: foregroundColor,
-                  overflow: TextOverflow.ellipsis,
-                ),
-                child: Row(
-                  mainAxisAlignment: titleStart ? MainAxisAlignment.center : MainAxisAlignment.start,
-                  children: [
-                    if (leadingIcon != null)
-                      Padding(
-                        padding: const EdgeInsets.only(right: ZetaSpacing.small),
-                        child: Icon(
-                          leadingIcon,
-                          color: foregroundColor,
-                          size: ZetaSpacing.xl_2,
+              return ZetaRoundedScope(
+                rounded: rounded ?? context.rounded,
+                child: DefaultTextStyle(
+                  style: ZetaTextStyles.labelLarge.copyWith(
+                    color: foregroundColor,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  child: Row(
+                    mainAxisAlignment: titleStart ? MainAxisAlignment.center : MainAxisAlignment.start,
+                    children: [
+                      if (leadingIcon != null)
+                        Padding(
+                          padding: const EdgeInsets.only(right: ZetaSpacing.small),
+                          child: Icon(
+                            leadingIcon,
+                            color: foregroundColor,
+                            size: ZetaSpacing.xl_2,
+                          ),
                         ),
-                      ),
-                    Flexible(child: Text(title)),
-                  ],
+                      Flexible(child: Text(title)),
+                    ],
+                  ),
                 ),
               );
             },

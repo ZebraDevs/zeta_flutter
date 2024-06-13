@@ -6,6 +6,7 @@ class TestWidget extends StatelessWidget {
   final Widget widget;
   final ThemeMode? themeMode;
   final bool removeBody;
+  final bool? rounded;
 
   const TestWidget({
     required this.widget,
@@ -13,6 +14,7 @@ class TestWidget extends StatelessWidget {
     super.key,
     this.themeMode,
     this.removeBody = false,
+    this.rounded,
   });
 
   @override
@@ -21,6 +23,7 @@ class TestWidget extends StatelessWidget {
 
     return ZetaProvider(
       initialThemeMode: themeMode ?? ThemeMode.system,
+      initialThemeData: ZetaThemeData(rounded: rounded ?? true),
       builder: (context, theme, __) {
         return Builder(
           builder: (context) {

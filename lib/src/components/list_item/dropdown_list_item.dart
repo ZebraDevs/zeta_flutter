@@ -1,14 +1,11 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import '../../assets/icons.dart';
-import '../../theme/tokens.dart';
-import '../../zeta.dart';
-import 'list_item.dart';
+import '../../../zeta_flutter.dart';
 import 'list_scope.dart';
 
 /// An expandable list item containing other [ZetaListItem]s within it.
-class ZetaDropdownListItem extends StatefulWidget {
+class ZetaDropdownListItem extends ZetaStatefulWidget {
   /// Creates a new [ZetaDropdownListItem]
   const ZetaDropdownListItem({
     required this.primaryText,
@@ -16,9 +13,9 @@ class ZetaDropdownListItem extends StatefulWidget {
     this.secondaryText,
     this.expanded = false,
     this.leading,
-    this.rounded = true,
     this.showDivider,
     super.key,
+    super.rounded,
   });
 
   /// The list of [ZetaListItem]s contained within the dropdown.
@@ -34,11 +31,9 @@ class ZetaDropdownListItem extends StatefulWidget {
   final Widget? leading;
 
   /// Expands the list item if set to true.
+  ///
   /// Defaults to false.
   final bool expanded;
-
-  /// {@macro zeta-component-rounded}
-  final bool rounded;
 
   /// {@macro list-item-show-divider}
   final bool? showDivider;
@@ -65,7 +60,7 @@ class _ZetaDropdownListItemState extends State<ZetaDropdownListItem> with Single
   late bool _expanded;
 
   IconData get _icon {
-    return widget.rounded ? ZetaIcons.expand_more_round : ZetaIcons.expand_more_sharp;
+    return context.rounded ? ZetaIcons.expand_more_round : ZetaIcons.expand_more_sharp;
   }
 
   @override
@@ -117,47 +112,50 @@ class _ZetaDropdownListItemState extends State<ZetaDropdownListItem> with Single
     final divide = widget.showDivider ?? ListScope.of(context)?.showDivider ?? false;
     final colors = Zeta.of(context).colors;
 
-    // DecoratedBox does not correctly animated the border when the widget expands.
-    // ignore: use_decorated_box
-    return Container(
-      decoration: BoxDecoration(
-        border: Border(
-          bottom: BorderSide(
-            color: divide ? colors.borderDefault : Colors.transparent,
+    return ZetaRoundedScope(
+      rounded: context.rounded,
+      // DecoratedBox does not correctly animated the border when the widget expands.
+      // ignore: use_decorated_box
+      child: Container(
+        decoration: BoxDecoration(
+          border: Border(
+            bottom: BorderSide(
+              color: divide ? colors.borderDefault : Colors.transparent,
+            ),
           ),
         ),
-      ),
-      child: Column(
-        children: [
-          ZetaListItem(
-            primaryText: widget.primaryText,
-            secondaryText: widget.secondaryText,
-            leading: widget.leading,
-            onTap: _onTap,
-            showDivider: false,
-            trailing: IconButton(
-              icon: AnimatedRotation(
-                turns: _expanded ? 0.5 : 0,
-                duration: ZetaAnimationLength.fast,
-                child: Icon(
-                  _icon,
-                  color: colors.iconSubtle,
+        child: Column(
+          children: [
+            ZetaListItem(
+              primaryText: widget.primaryText,
+              secondaryText: widget.secondaryText,
+              leading: widget.leading,
+              onTap: _onTap,
+              showDivider: false,
+              trailing: IconButton(
+                icon: AnimatedRotation(
+                  turns: _expanded ? 0.5 : 0,
+                  duration: ZetaAnimationLength.fast,
+                  child: Icon(
+                    _icon,
+                    color: colors.iconSubtle,
+                  ),
+                ),
+                onPressed: _onTap,
+              ),
+            ),
+            ListScope(
+              showDivider: false,
+              indentItems: true,
+              child: SizeTransition(
+                sizeFactor: _animation,
+                child: Column(
+                  children: widget.items,
                 ),
               ),
-              onPressed: _onTap,
             ),
-          ),
-          ListScope(
-            showDivider: false,
-            indentItems: true,
-            child: SizeTransition(
-              sizeFactor: _animation,
-              child: Column(
-                children: widget.items,
-              ),
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

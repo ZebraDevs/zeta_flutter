@@ -24,7 +24,7 @@ Future<bool?> showZetaDialog(
   VoidCallback? onSecondaryButtonPressed,
   String? tertiaryButtonLabel,
   VoidCallback? onTertiaryButtonPressed,
-  bool rounded = true,
+  bool? rounded,
   bool barrierDismissible = true,
   bool useRootNavigator = true,
 }) =>
@@ -47,7 +47,7 @@ Future<bool?> showZetaDialog(
       ),
     );
 
-class _ZetaDialog extends StatelessWidget {
+class _ZetaDialog extends ZetaStatelessWidget {
   const _ZetaDialog({
     this.headerAlignment = ZetaDialogHeaderAlignment.center,
     this.icon,
@@ -59,7 +59,7 @@ class _ZetaDialog extends StatelessWidget {
     this.onSecondaryButtonPressed,
     this.tertiaryButtonLabel,
     this.onTertiaryButtonPressed,
-    this.rounded = true,
+    super.rounded,
   });
 
   final ZetaDialogHeaderAlignment headerAlignment;
@@ -72,7 +72,6 @@ class _ZetaDialog extends StatelessWidget {
   final VoidCallback? onSecondaryButtonPressed;
   final String? tertiaryButtonLabel;
   final VoidCallback? onTertiaryButtonPressed;
-  final bool rounded;
 
   @override
   Widget build(BuildContext context) {
@@ -82,14 +81,12 @@ class _ZetaDialog extends StatelessWidget {
         : ZetaButton(
             label: primaryButtonLabel!,
             onPressed: onPrimaryButtonPressed ?? () => Navigator.of(context).pop(true),
-            borderType: rounded ? ZetaWidgetBorder.rounded : ZetaWidgetBorder.sharp,
           );
     final secondaryButton = secondaryButtonLabel == null
         ? null
         : ZetaButton.outlineSubtle(
             label: secondaryButtonLabel!,
             onPressed: onSecondaryButtonPressed ?? () => Navigator.of(context).pop(false),
-            borderType: rounded ? ZetaWidgetBorder.rounded : ZetaWidgetBorder.sharp,
           );
     final tertiaryButton = tertiaryButtonLabel == null
         ? null
@@ -99,107 +96,110 @@ class _ZetaDialog extends StatelessWidget {
           );
     final hasButton = primaryButton != null || secondaryButton != null || tertiaryButton != null;
 
-    return AlertDialog(
-      surfaceTintColor: zeta.colors.surfacePrimary,
-      shape: const RoundedRectangleBorder(borderRadius: ZetaRadius.large),
-      title: icon != null || title != null
-          ? Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: switch (headerAlignment) {
-                ZetaDialogHeaderAlignment.left => CrossAxisAlignment.start,
-                ZetaDialogHeaderAlignment.center => CrossAxisAlignment.center,
-              },
+    return ZetaRoundedScope(
+      rounded: context.rounded,
+      child: AlertDialog(
+        surfaceTintColor: zeta.colors.surfacePrimary,
+        shape: const RoundedRectangleBorder(borderRadius: ZetaRadius.large),
+        title: icon != null || title != null
+            ? Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: switch (headerAlignment) {
+                  ZetaDialogHeaderAlignment.left => CrossAxisAlignment.start,
+                  ZetaDialogHeaderAlignment.center => CrossAxisAlignment.center,
+                },
+                children: [
+                  if (icon != null)
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: ZetaSpacing.medium),
+                      child: icon,
+                    ),
+                  if (title != null)
+                    Text(
+                      title!,
+                      textAlign: switch (headerAlignment) {
+                        ZetaDialogHeaderAlignment.left => TextAlign.left,
+                        ZetaDialogHeaderAlignment.center => TextAlign.center,
+                      },
+                    ),
+                ],
+              )
+            : null,
+        titlePadding: context.deviceType == DeviceType.mobilePortrait
+            ? null
+            : const EdgeInsets.only(
+                left: ZetaSpacing.xl_6,
+                right: ZetaSpacing.xl_6,
+                top: ZetaSpacing.xl_2,
+              ),
+        titleTextStyle: zetaTextTheme.headlineSmall?.copyWith(
+          color: zeta.colors.textDefault,
+        ),
+        content: Text(message),
+        contentPadding: context.deviceType == DeviceType.mobilePortrait
+            ? null
+            : const EdgeInsets.only(
+                left: ZetaSpacing.xl_6,
+                right: ZetaSpacing.xl_6,
+                top: ZetaSpacing.medium,
+                bottom: ZetaSpacing.xl_2,
+              ),
+        contentTextStyle: context.deviceType == DeviceType.mobilePortrait
+            ? zetaTextTheme.bodySmall?.copyWith(color: zeta.colors.textDefault)
+            : zetaTextTheme.bodyMedium?.copyWith(color: zeta.colors.textDefault),
+        actions: [
+          if (context.deviceType == DeviceType.mobilePortrait)
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                if (icon != null)
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: ZetaSpacing.medium),
-                    child: icon,
+                if (hasButton) const SizedBox(height: ZetaSpacing.xl_2),
+                if (tertiaryButton == null)
+                  Row(
+                    children: [
+                      if (secondaryButton != null) Expanded(child: secondaryButton),
+                      if (primaryButton != null && secondaryButton != null) const SizedBox(width: ZetaSpacing.large),
+                      if (primaryButton != null) Expanded(child: primaryButton),
+                    ],
+                  )
+                else ...[
+                  if (primaryButton != null) primaryButton,
+                  if (primaryButton != null && secondaryButton != null) const SizedBox(height: ZetaSpacing.medium),
+                  if (secondaryButton != null) secondaryButton,
+                  if (primaryButton != null || secondaryButton != null) const SizedBox(height: ZetaSpacing.small),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [tertiaryButton],
                   ),
-                if (title != null)
-                  Text(
-                    title!,
-                    textAlign: switch (headerAlignment) {
-                      ZetaDialogHeaderAlignment.left => TextAlign.left,
-                      ZetaDialogHeaderAlignment.center => TextAlign.center,
-                    },
-                  ),
+                ],
               ],
             )
-          : null,
-      titlePadding: context.deviceType == DeviceType.mobilePortrait
-          ? null
-          : const EdgeInsets.only(
-              left: ZetaSpacing.xl_6,
-              right: ZetaSpacing.xl_6,
-              top: ZetaSpacing.xl_2,
-            ),
-      titleTextStyle: zetaTextTheme.headlineSmall?.copyWith(
-        color: zeta.colors.textDefault,
-      ),
-      content: Text(message),
-      contentPadding: context.deviceType == DeviceType.mobilePortrait
-          ? null
-          : const EdgeInsets.only(
-              left: ZetaSpacing.xl_6,
-              right: ZetaSpacing.xl_6,
-              top: ZetaSpacing.medium,
-              bottom: ZetaSpacing.xl_2,
-            ),
-      contentTextStyle: context.deviceType == DeviceType.mobilePortrait
-          ? zetaTextTheme.bodySmall?.copyWith(color: zeta.colors.textDefault)
-          : zetaTextTheme.bodyMedium?.copyWith(color: zeta.colors.textDefault),
-      actions: [
-        if (context.deviceType == DeviceType.mobilePortrait)
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              if (hasButton) const SizedBox(height: ZetaSpacing.xl_2),
-              if (tertiaryButton == null)
-                Row(
-                  children: [
-                    if (secondaryButton != null) Expanded(child: secondaryButton),
-                    if (primaryButton != null && secondaryButton != null) const SizedBox(width: ZetaSpacing.large),
-                    if (primaryButton != null) Expanded(child: primaryButton),
-                  ],
-                )
-              else ...[
-                if (primaryButton != null) primaryButton,
-                if (primaryButton != null && secondaryButton != null) const SizedBox(height: ZetaSpacing.medium),
-                if (secondaryButton != null) secondaryButton,
-                if (primaryButton != null || secondaryButton != null) const SizedBox(height: ZetaSpacing.small),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [tertiaryButton],
-                ),
-              ],
-            ],
-          )
-        else
-          Row(
-            children: [
-              if (tertiaryButton != null) tertiaryButton,
-              if (primaryButton != null || secondaryButton != null) ...[
-                const SizedBox(width: ZetaSpacing.xl_2),
-                Expanded(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      if (secondaryButton != null) secondaryButton,
-                      if (primaryButton != null && secondaryButton != null) const SizedBox(width: ZetaSpacing.large),
-                      if (primaryButton != null) primaryButton,
-                    ],
+          else
+            Row(
+              children: [
+                if (tertiaryButton != null) tertiaryButton,
+                if (primaryButton != null || secondaryButton != null) ...[
+                  const SizedBox(width: ZetaSpacing.xl_2),
+                  Expanded(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        if (secondaryButton != null) secondaryButton,
+                        if (primaryButton != null && secondaryButton != null) const SizedBox(width: ZetaSpacing.large),
+                        if (primaryButton != null) primaryButton,
+                      ],
+                    ),
                   ),
-                ),
+                ],
               ],
-            ],
-          ),
-      ],
-      actionsPadding: context.deviceType == DeviceType.mobilePortrait
-          ? null
-          : const EdgeInsets.symmetric(
-              horizontal: ZetaSpacing.xl_6,
-              vertical: ZetaSpacing.xl_2,
             ),
+        ],
+        actionsPadding: context.deviceType == DeviceType.mobilePortrait
+            ? null
+            : const EdgeInsets.symmetric(
+                horizontal: ZetaSpacing.xl_6,
+                vertical: ZetaSpacing.xl_2,
+              ),
+      ),
     );
   }
 

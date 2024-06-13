@@ -6,24 +6,21 @@ import '../../../zeta_flutter.dart';
 /// such as labels or thumbnails. Each item can be "expanded" or "collapsed" to reveal
 /// the content associated with that item. There can be zero expanded items, exactly one,
 /// or more than one item expanded at a time, depending on the configuration.
-class ZetaAccordion extends StatefulWidget {
+class ZetaAccordion extends ZetaStatefulWidget {
   /// The constructor of the component [ZetaAccordion].
   const ZetaAccordion({
     super.key,
     required this.title,
     this.child,
-    this.rounded = true,
     this.contained = false,
     this.isOpen = false,
+    super.rounded,
   });
 
   /// Children displayed when component is opened.
   ///
   /// If null, component will render as disabled.
   final Widget? child;
-
-  /// {@macro zeta-component-rounded}
-  final bool rounded;
 
   /// Determines if the [ZetaAccordion]s should be in a box.
   ///
@@ -37,6 +34,7 @@ class ZetaAccordion extends StatefulWidget {
   ///
   /// Defaults to false(closed).
   final bool isOpen;
+
   @override
   State<ZetaAccordion> createState() => _ZetaAccordionState();
   @override
@@ -93,97 +91,101 @@ class _ZetaAccordionState extends State<ZetaAccordion> with TickerProviderStateM
     final zetaColors = Zeta.of(context).colors;
     final borderColor = _disabled ? zetaColors.borderDisabled : zetaColors.borderSubtle;
     final childTextStyle = ZetaTextStyles.h5.apply(color: zetaColors.textDefault);
-    return DecoratedBox(
-      decoration: BoxDecoration(
-        border: widget.contained ? Border.all(color: borderColor) : Border(top: BorderSide(color: borderColor)),
-        borderRadius: widget.rounded ? ZetaRadius.minimal : ZetaRadius.none,
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(1),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            TextButton(
-              style: ButtonStyle(
-                shape: WidgetStatePropertyAll(
-                  RoundedRectangleBorder(borderRadius: widget.rounded ? ZetaRadius.minimal : ZetaRadius.none),
-                ),
-                overlayColor: WidgetStateProperty.resolveWith((states) {
-                  if (states.contains(WidgetState.hovered)) {
-                    return zetaColors.cool.shade20;
-                  }
-                  if (states.contains(WidgetState.pressed)) {
-                    return zetaColors.cool.shade30;
-                  }
+    final rounded = context.rounded;
+    return ZetaRoundedScope(
+      rounded: rounded,
+      child: DecoratedBox(
+        decoration: BoxDecoration(
+          border: widget.contained ? Border.all(color: borderColor) : Border(top: BorderSide(color: borderColor)),
+          borderRadius: rounded ? ZetaRadius.minimal : ZetaRadius.none,
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(1),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              TextButton(
+                style: ButtonStyle(
+                  shape: WidgetStatePropertyAll(
+                    RoundedRectangleBorder(borderRadius: rounded ? ZetaRadius.minimal : ZetaRadius.none),
+                  ),
+                  overlayColor: WidgetStateProperty.resolveWith((states) {
+                    if (states.contains(WidgetState.hovered)) {
+                      return zetaColors.cool.shade20;
+                    }
+                    if (states.contains(WidgetState.pressed)) {
+                      return zetaColors.cool.shade30;
+                    }
 
-                  if (states.contains(WidgetState.focused)) {
-                    return Colors.transparent;
-                  }
+                    if (states.contains(WidgetState.focused)) {
+                      return Colors.transparent;
+                    }
 
-                  return null;
-                }),
-                side: WidgetStateProperty.resolveWith((states) {
-                  if (states.contains(WidgetState.focused)) {
-                    return BorderSide(color: zetaColors.blue.shade50, width: 2);
-                  }
-                  return null;
-                }),
-              ),
-              onPressed: _disabled
-                  ? null
-                  : () => setState(() {
-                        if (_isOpen) {
-                          _controller.reverse();
-                          _isOpen = false;
-                        } else {
-                          _isOpen = true;
-                          _controller.forward();
-                        }
-                      }),
-              child: Padding(
-                padding: const EdgeInsets.all(ZetaSpacing.large),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    DefaultTextStyle(
-                      style: ZetaTextStyles.titleMedium.apply(
-                        color: _disabled ? zetaColors.textDisabled : zetaColors.textDefault,
-                      ),
-                      child: Flexible(child: Text(widget.title)),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: ZetaSpacing.large),
-                      child: Icon(
-                        _isOpen
-                            ? (widget.rounded ? ZetaIcons.remove_round : ZetaIcons.remove_sharp)
-                            : (widget.rounded ? ZetaIcons.add_round : ZetaIcons.add_sharp),
-                        color: _disabled ? zetaColors.iconDisabled : zetaColors.iconDefault,
-                      ),
-                    ),
-                  ],
+                    return null;
+                  }),
+                  side: WidgetStateProperty.resolveWith((states) {
+                    if (states.contains(WidgetState.focused)) {
+                      return BorderSide(color: zetaColors.blue.shade50, width: 2);
+                    }
+                    return null;
+                  }),
                 ),
-              ),
-            ),
-            SizeTransition(
-              sizeFactor: _animation,
-              axisAlignment: -1,
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(
-                  ZetaSpacing.large,
-                  ZetaSpacing.none,
-                  ZetaSpacing.large,
-                  ZetaSpacing.large,
-                ),
-                child: Theme(
-                  data: Theme.of(context).copyWith(listTileTheme: ListTileThemeData(titleTextStyle: childTextStyle)),
-                  child: DefaultTextStyle(
-                    style: childTextStyle,
-                    child: widget.child ?? const SizedBox(),
+                onPressed: _disabled
+                    ? null
+                    : () => setState(() {
+                          if (_isOpen) {
+                            _controller.reverse();
+                            _isOpen = false;
+                          } else {
+                            _isOpen = true;
+                            _controller.forward();
+                          }
+                        }),
+                child: Padding(
+                  padding: const EdgeInsets.all(ZetaSpacing.large),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      DefaultTextStyle(
+                        style: ZetaTextStyles.titleMedium.apply(
+                          color: _disabled ? zetaColors.textDisabled : zetaColors.textDefault,
+                        ),
+                        child: Flexible(child: Text(widget.title)),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: ZetaSpacing.large),
+                        child: Icon(
+                          _isOpen
+                              ? (rounded ? ZetaIcons.remove_round : ZetaIcons.remove_sharp)
+                              : (rounded ? ZetaIcons.add_round : ZetaIcons.add_sharp),
+                          color: _disabled ? zetaColors.iconDisabled : zetaColors.iconDefault,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ),
-            ),
-          ],
+              SizeTransition(
+                sizeFactor: _animation,
+                axisAlignment: -1,
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(
+                    ZetaSpacing.large,
+                    ZetaSpacing.none,
+                    ZetaSpacing.large,
+                    ZetaSpacing.large,
+                  ),
+                  child: Theme(
+                    data: Theme.of(context).copyWith(listTileTheme: ListTileThemeData(titleTextStyle: childTextStyle)),
+                    child: DefaultTextStyle(
+                      style: childTextStyle,
+                      child: widget.child ?? const SizedBox(),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

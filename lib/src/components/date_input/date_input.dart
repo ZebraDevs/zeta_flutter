@@ -19,7 +19,7 @@ class ZetaDateInput extends ZetaFormField<DateTime> {
     super.initialValue,
     super.onChange,
     super.requirementLevel = ZetaFormFieldRequirement.none,
-    this.rounded = true,
+    super.rounded,
     this.label,
     this.hintText,
     this.errorText,
@@ -30,9 +30,6 @@ class ZetaDateInput extends ZetaFormField<DateTime> {
     this.maxDate,
     this.pickerInitialEntryMode,
   }) : assert((minDate == null || maxDate == null) || minDate.isBefore(maxDate), 'minDate cannot be after maxDate');
-
-  /// {@macro zeta-component-rounded}
-  final bool rounded;
 
   /// The label for the input.
   final String? label;
@@ -166,6 +163,7 @@ class ZetaDateInputState extends State<ZetaDateInput> implements ZetaFormFieldSt
     } else {
       initialDate = _value!;
     }
+    final rounded = context.rounded;
 
     final result = await showDatePicker(
       context: context,
@@ -179,7 +177,7 @@ class ZetaDateInputState extends State<ZetaDateInput> implements ZetaFormFieldSt
             dividerTheme: DividerThemeData(color: _colors.borderSubtle),
             datePickerTheme: DatePickerThemeData(
               shape: RoundedRectangleBorder(
-                borderRadius: widget.rounded ? ZetaRadius.rounded : ZetaRadius.none,
+                borderRadius: rounded ? ZetaRadius.rounded : ZetaRadius.none,
               ),
               headerHeadlineStyle: ZetaTextStyles.titleLarge,
               headerHelpStyle: ZetaTextStyles.labelLarge,
@@ -212,6 +210,8 @@ class ZetaDateInputState extends State<ZetaDateInput> implements ZetaFormFieldSt
 
   @override
   Widget build(BuildContext context) {
+    final rounded = context.rounded;
+
     return ZetaTextInput(
       disabled: widget.disabled,
       key: _key,
@@ -250,14 +250,14 @@ class ZetaDateInputState extends State<ZetaDateInput> implements ZetaFormFieldSt
         children: [
           if (_showClearButton)
             InputIconButton(
-              icon: widget.rounded ? ZetaIcons.cancel_round : ZetaIcons.cancel_sharp,
+              icon: rounded ? ZetaIcons.cancel_round : ZetaIcons.cancel_sharp,
               onTap: reset,
               disabled: widget.disabled,
               size: widget.size,
               color: _colors.iconSubtle,
             ),
           InputIconButton(
-            icon: widget.rounded ? ZetaIcons.calendar_round : ZetaIcons.calendar_sharp,
+            icon: rounded ? ZetaIcons.calendar_round : ZetaIcons.calendar_sharp,
             onTap: _pickDate,
             disabled: widget.disabled,
             size: widget.size,
