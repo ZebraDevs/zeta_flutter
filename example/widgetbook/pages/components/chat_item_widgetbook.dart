@@ -13,7 +13,7 @@ Widget chatItemWidgetBook(BuildContext context) {
   final count = context.knobs.int.input(label: 'Count', initialValue: 3);
   final enabledWarningIcon = context.knobs.boolean(label: 'Warning Icon', initialValue: false);
   final enabledNotificationIcon = context.knobs.boolean(label: 'Notification Icon', initialValue: false);
-  final starred = context.knobs.boolean(label: 'Starred', initialValue: false);
+  final starred = context.knobs.booleanOrNull(label: 'Starred', initialValue: false);
   final enabledOnTap = context.knobs.boolean(label: 'Enabled Tap', initialValue: true);
   final enabledOnDelete = context.knobs.boolean(label: 'Delete', initialValue: true);
   final enabledOnMenuMore = context.knobs.boolean(label: 'Menu More', initialValue: true);
