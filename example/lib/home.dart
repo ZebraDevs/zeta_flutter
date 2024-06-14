@@ -26,8 +26,10 @@ import 'package:zeta_example/pages/components/phone_input_example.dart';
 import 'package:zeta_example/pages/components/radio_example.dart';
 import 'package:zeta_example/pages/components/screen_header_bar_example.dart';
 import 'package:zeta_example/pages/components/select_input_example.dart';
+
 import 'package:zeta_example/pages/components/search_bar_example.dart';
 import 'package:zeta_example/pages/components/segmented_control_example.dart';
+import 'package:zeta_example/pages/components/slider_example.dart';
 import 'package:zeta_example/pages/components/stepper_example.dart';
 import 'package:zeta_example/pages/components/stepper_input_example.dart';
 import 'package:zeta_example/pages/components/switch_example.dart';
@@ -84,6 +86,7 @@ final List<Component> components = [
   Component(DialPadExample.name, (context) => const DialPadExample()),
   Component(RadioButtonExample.name, (context) => const RadioButtonExample()),
   Component(SwitchExample.name, (context) => const SwitchExample()),
+  Component(SliderExample.name, (context) => const SliderExample()),
   Component(DateInputExample.name, (context) => const DateInputExample()),
   Component(PhoneInputExample.name, (context) => const PhoneInputExample()),
   Component(DialogExample.name, (context) => const DialogExample()),
