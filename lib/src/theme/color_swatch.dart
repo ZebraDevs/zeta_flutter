@@ -1,3 +1,4 @@
+import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
 import 'color_extensions.dart';
@@ -6,7 +7,7 @@ import 'contrast.dart';
 
 /// A swatch of colors with values from 10 (light) to 100 (dark).
 @immutable
-class ZetaColorSwatch extends ColorSwatch<int> {
+class ZetaColorSwatch extends ColorSwatch<int> with EquatableMixin {
   /// Constructs a [ZetaColorSwatch].
   ///
   /// See also:
@@ -142,7 +143,8 @@ class ZetaColorSwatch extends ColorSwatch<int> {
 
   /// Returns the color shade for a subtle visual element depending on the ZetaContrast value.
   ///
-  /// For both [ZetaContrast.aa] and [ZetaContrast.aaa], it returns 40.
+  /// For [ZetaContrast.aa], it returns 40.
+  /// For [ZetaContrast.aaa], it returns 60.
   Color get subtle => shade(contrast.subtle);
 
   /// Returns the color shade for a surface depending on the ZetaContrast value.
@@ -185,14 +187,19 @@ class ZetaColorSwatch extends ColorSwatch<int> {
   }
 
   @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      super == other &&
-          other is ZetaColorSwatch &&
-          runtimeType == other.runtimeType &&
-          brightness == other.brightness &&
-          contrast == other.contrast;
-
-  @override
-  int get hashCode => super.hashCode ^ brightness.hashCode ^ contrast.hashCode;
+  List<Object?> get props => [
+        super.value,
+        brightness,
+        contrast,
+        shade10,
+        shade20,
+        shade30,
+        shade40,
+        shade50,
+        shade60,
+        shade70,
+        shade80,
+        shade90,
+        shade100,
+      ];
 }

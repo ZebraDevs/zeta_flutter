@@ -1,3 +1,4 @@
+import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
 import 'color_extensions.dart';
@@ -10,7 +11,7 @@ import 'contrast.dart';
 ///
 /// A customizable, token-based color palette, adapting Zeta colors to Flutter's colorScheme.
 @immutable
-class ZetaColors {
+class ZetaColors extends Equatable {
   /// Default constructor for instance of [ZetaColors].
   ZetaColors({
     this.brightness = Brightness.light,
@@ -305,7 +306,7 @@ class ZetaColors {
   /// Defaults to `ZetaColors.cool.90`.
   ///
   /// {@macro zeta-color-dark}
-  Color get iconDefault => textDefault;
+  Color get iconDefault => cool.shade90;
 
   /// Subtle icon color.
   ///
@@ -314,14 +315,14 @@ class ZetaColors {
   /// Maps to [ColorScheme.onSurface].
   ///
   /// {@macro zeta-color-dark}
-  Color get iconSubtle => textSubtle;
+  Color get iconSubtle => cool.shade70;
 
   /// Disabled icon color.
   ///
   /// Defaults to `ZetaColors.cool.50`.
   ///
   /// {@macro zeta-color-dark}
-  Color get iconDisabled => textDisabled;
+  Color get iconDisabled => cool.shade50;
 
   /// Inverse icon color.
   ///
@@ -330,7 +331,7 @@ class ZetaColors {
   /// Defaults to `ZetaColors.cool.20`.
   ///
   /// {@macro zeta-color-dark}
-  Color get iconInverse => textInverse;
+  Color get iconInverse => cool.shade20;
 
   ///  Default Surface Color
   ///
@@ -350,12 +351,12 @@ class ZetaColors {
   ///  Selected Surface Color
   ///
   /// {@macro zeta-color-dark}
-  Color get surfaceSelected => blue.shade(10);
+  Color get surfaceSelected => primary.shade(10);
 
   ///  Selected-hover Surface Color
   ///
   /// {@macro zeta-color-dark}
-  Color get surfaceSelectedHover => blue.shade(20);
+  Color get surfaceSelectedHover => primary.shade(20);
 
   ///  Disabled Surface Color
   ///
@@ -375,7 +376,7 @@ class ZetaColors {
   ///  Primary-subtle Surface Color
   ///
   /// {@macro zeta-color-dark}
-  Color get surfacePrimarySubtle => blue.shade(10);
+  Color get surfacePrimarySubtle => primary.shade(10);
 
   /// Avatar Avatar Surface Color
   ///
@@ -415,7 +416,7 @@ class ZetaColors {
   ///  Secondary-subtle Surface Color
   ///
   /// {@macro zeta-color-dark}
-  Color get surfaceSecondarySubtle => yellow.shade(10);
+  Color get surfaceSecondarySubtle => secondary.shade(10);
 
   ///  Positive Surface Color
   ///
@@ -490,17 +491,17 @@ class ZetaColors {
   ///  Primary-main Border Color
   ///
   /// {@macro zeta-color-dark}
-  ZetaColorSwatch get borderPrimaryMain => blue;
+  ZetaColorSwatch get borderPrimaryMain => primary;
 
   ///  Primary Border Color
   ///
   /// {@macro zeta-color-dark}
-  Color get borderPrimary => blue.shade(50);
+  Color get borderPrimary => primary.shade(50);
 
   ///  Secondary Border Color
   ///
   /// {@macro zeta-color-dark}
-  Color get borderSecondary => yellow.shade(50);
+  Color get borderSecondary => secondary.shade(50);
 
   ///  Positive Border Color
   ///
@@ -688,53 +689,20 @@ class ZetaColors {
   }
 
   @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is ZetaColors &&
-          runtimeType == other.runtimeType &&
-          brightness == other.brightness &&
-          contrast == other.contrast &&
-          primary == other.primary &&
-          secondary == other.secondary &&
-          error == other.error &&
-          cool == other.cool &&
-          warm == other.warm &&
-          white == other.white &&
-          black == other.black &&
-          surfacePrimary == other.surfacePrimary &&
-          surfaceSecondary == other.surfaceSecondary &&
-          surfaceTertiary == other.surfaceTertiary &&
-          blue == other.blue &&
-          green == other.green &&
-          red == other.red &&
-          orange == other.orange &&
-          purple == other.purple &&
-          yellow == other.yellow &&
-          teal == other.teal &&
-          pink == other.pink;
-
-  @override
-  int get hashCode =>
-      brightness.hashCode ^
-      contrast.hashCode ^
-      primary.hashCode ^
-      secondary.hashCode ^
-      error.hashCode ^
-      cool.hashCode ^
-      warm.hashCode ^
-      white.hashCode ^
-      black.hashCode ^
-      surfacePrimary.hashCode ^
-      surfaceSecondary.hashCode ^
-      surfaceTertiary.hashCode ^
-      blue.hashCode ^
-      green.hashCode ^
-      red.hashCode ^
-      orange.hashCode ^
-      purple.hashCode ^
-      yellow.hashCode ^
-      teal.hashCode ^
-      pink.hashCode;
+  List<Object?> get props => [
+        brightness,
+        contrast,
+        primary,
+        secondary,
+        error,
+        cool,
+        warm,
+        white,
+        black,
+        surfacePrimary,
+        surfaceSecondary,
+        surfaceTertiary,
+      ];
 }
 
 enum _ZetaColorProperties {
@@ -1026,11 +994,13 @@ extension ZetaColorGetters on ColorScheme {
   T _resolveDefault<T>(_ZetaColorProperties property) {
     switch (property) {
       case _ZetaColorProperties.primarySwatch:
-      case _ZetaColorProperties.secondarySwatch:
         return ZetaColorBase.blue.apply(brightness: brightness, contrast: contrast) as T;
+      case _ZetaColorProperties.secondarySwatch:
+        return ZetaColorBase.yellow.apply(brightness: brightness, contrast: contrast) as T;
       case _ZetaColorProperties.cool:
         return ZetaColorBase.cool.apply(brightness: brightness, contrast: contrast) as T;
       case _ZetaColorProperties.warm:
+        return ZetaColorBase.warm.apply(brightness: brightness, contrast: contrast) as T;
       case _ZetaColorProperties.textDefault:
         return ZetaColorBase.cool.apply(brightness: brightness, contrast: contrast).shade90 as T;
       case _ZetaColorProperties.textSubtle:

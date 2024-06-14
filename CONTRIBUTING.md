@@ -34,6 +34,127 @@ For more information on widgetbook, [read the docs](https://docs.widgetbook.io/)
 
 We should also create a test for each widget created.
 
+### Contributing Guide for Writing Tests
+
+#### Folder Structure
+
+To maintain consistency and ease of navigation, follow the same folder structure in the `test` directory as in the `lib` directory. For example, if you have a file located at `lib/src/components/tooltip/tooltip.dart`, your test file should be located at `test/src/components/tooltip/tooltip_test.dart`.
+
+##### Example Folder Structure
+
+```
+lib/
+└── src/
+    └── components/
+        └── tooltip/
+            └── tooltip.dart
+
+test/
+└── src/
+    └── components/
+        └── tooltip/
+            └── tooltip_test.dart
+```
+
+#### Writing Tests
+
+1. **Unit Tests**: Test individual functions and classes.
+2. **Widget Tests**: Test individual widgets and their interactions.
+3. **Integration Tests**: Test the complete app or large parts of it.
+
+##### Guidelines
+
+- Use descriptive test names.
+- Test one thing per test.
+- Mock dependencies using `mockito`.
+- Write tests for edge cases.
+
+#### Measuring Code Coverage
+
+To ensure high code coverage (at least > 96%), use the following steps:
+
+##### With 'lcov'
+1. **Run the script coverage.sh from the project root, which make use of `lcov` to generate the coverage report**:
+   ```sh
+   sh coverage.sh
+   ``` 
+##### Alternatively, with 'genhtml'   
+1. **Install dependencies**:
+   ```sh
+   flutter pub add --dev test coverage
+   ```
+
+2. **Run tests with coverage**:
+   ```sh
+   flutter test --coverage
+   ```
+
+3. **Generate coverage report**:
+   ```sh
+   genhtml coverage/lcov.info -o coverage/html
+   ```
+
+4. **View coverage report**:
+   Open `coverage/html/index.html` in a web browser.
+
+  
+##### Maximizing Coverage
+
+- Write tests for all public methods and classes.
+- Include tests for edge cases and error handling.
+- Avoid excluding files from coverage unless necessary.
+
+#### Golden Tests
+
+Golden tests are used to ensure that the visual output of your widgets remains consistent over time. They are particularly useful for complex UI components.
+
+##### Why Golden Tests?
+
+In the `tooltip` example, the direction of the arrows in the tooltip is crucial. Golden tests help to ensure that any changes to the tooltip do not unintentionally alter the direction of the arrows or other visual aspects.
+
+##### Adding Golden Tests
+
+1. **Set up golden tests**:
+   ```dart
+   import 'package:flutter_test/flutter_test.dart';
+   import 'package:zeta_flutter/zeta_flutter.dart';
+   
+   import '../../../test_utils/test_app.dart';
+
+   void main() {
+    testWidgets('renders with arrow correctly in up direction', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        const TestApp(
+          home: Scaffold(
+            body: ZetaTooltip(
+              arrowDirection: ZetaTooltipArrowDirection.up,
+              child: Text('Tooltip up'),
+            ),
+          ),
+        ),
+      );
+
+      expect(find.text('Tooltip up'), findsOneWidget);
+
+      // Verifying the CustomPaint with different arrow directions.
+      await expectLater(
+        find.byType(ZetaTooltip),
+        matchesGoldenFile(p.join('golden', 'arrow_up.png')),
+      );
+    });
+   }
+   ```
+
+2. **Run golden tests**:
+   ```sh
+   flutter test --update-goldens
+   ```
+
+3. **Verify golden tests**:
+   Ensure that the generated golden files are correct and commit them to the repository.
+
+
+
 ## Code reviews
 
 All submissions, including submissions by project members, require review. We use GitHub pull requests (PRs) for this purpose. Consult [GitHub Help](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests) for more information on using pull requests.

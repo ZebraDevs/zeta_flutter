@@ -36,10 +36,10 @@ class ZetaThemeModeSwitch extends StatelessWidget {
           return DropdownMenuItem<ThemeMode>(
             value: e,
             alignment: Alignment.center,
-            child: CircleAvatar(
+            child: ZetaAvatar(
+              size: ZetaAvatarSize.xxs,
               backgroundColor: colors.primary.surface,
-              foregroundColor: colors.primary,
-              child: Icon(
+              image: Icon(
                   e == ThemeMode.system
                       ? Icons.system_security_update_good
                       : e == ThemeMode.light

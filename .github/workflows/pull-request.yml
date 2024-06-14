@@ -66,6 +66,7 @@ jobs:
           dart format . -l 120
           dart fix --apply
           flutter analyze
+          flutter test
           cd example && flutter test
       - name: Check for modified files
         id: git-check

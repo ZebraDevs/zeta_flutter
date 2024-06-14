@@ -1,3 +1,4 @@
+import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
 import 'color_extensions.dart';
@@ -14,7 +15,7 @@ export 'constants.dart';
 ///
 /// This class encapsulates the colors and fonts used for the Zeta theme in both light and dark modes.
 @immutable
-class ZetaThemeData {
+class ZetaThemeData extends Equatable {
   /// Constructs a [ZetaThemeData].
   ///
   /// If [primary] and/or [secondary] colors are provided, they will be used to create the light and dark Zeta color palettes.
@@ -83,15 +84,10 @@ class ZetaThemeData {
   }
 
   @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is ZetaThemeData &&
-          runtimeType == other.runtimeType &&
-          fontFamily == other.fontFamily &&
-          identifier == other.identifier &&
-          _colorsLight == other._colorsLight &&
-          _colorsDark == other._colorsDark;
-
-  @override
-  int get hashCode => fontFamily.hashCode ^ identifier.hashCode ^ _colorsLight.hashCode ^ _colorsDark.hashCode;
+  List<Object?> get props => [
+        fontFamily,
+        identifier,
+        _colorsLight,
+        _colorsDark,
+      ];
 }
