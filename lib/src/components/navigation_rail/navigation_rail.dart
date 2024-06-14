@@ -221,6 +221,6 @@ class ZetaNavigationRailItem {
   /// Optional item's icon.
   final Widget? icon;
 
-  /// Indicates that this navigation item is inaccessible.
+  /// {@macro zeta-widget-disabled}
   final bool disabled;
 }

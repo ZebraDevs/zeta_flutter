@@ -55,7 +55,7 @@ class ZetaCheckbox extends FormField<bool> {
 
   /// Called when the value of the checkbox should change.
   ///
-  /// {@macro on-change-disable}
+  /// {@macro zeta-widget-change-disable}
   final ValueChanged<bool>? onChanged;
 
   /// The label displayed next to the checkbox
@@ -108,6 +108,7 @@ class _Checkbox extends ZetaStatefulWidget {
 
   final bool error;
 
+  /// {@macro zeta-widget-disabled}
   final bool disabled;
 
   @override

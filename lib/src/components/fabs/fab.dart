@@ -57,7 +57,7 @@ class ZetaFAB extends StatefulWidget {
 
   /// Called when the button is tapped or otherwise activated.
   ///
-  /// {@macro on-change-disable}
+  /// {@macro zeta-widget-change-disable}
   final VoidCallback? onPressed;
 
   /// The [ZetaFAB] uses this controller to react to scroll change and shrink/expand itself.

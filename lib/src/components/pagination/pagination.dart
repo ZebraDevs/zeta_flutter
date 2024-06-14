@@ -47,7 +47,7 @@ class ZetaPagination extends ZetaStatefulWidget {
 
   /// A callback executed every time the page changes.
   ///
-  /// {@macro on-change-disable}
+  /// {@macro zeta-widget-change-disable}
   final void Function(int value)? onChange;
 
   /// The type of the pagination.

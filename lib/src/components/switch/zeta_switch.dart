@@ -42,7 +42,7 @@ class ZetaSwitch extends StatelessWidget {
 
   /// Called when the value of the switch should change.
   ///
-  /// {@macro on-change-disable}
+  /// {@macro zeta-widget-change-disable}
   final ValueChanged<bool?>? onChanged;
 
   /// Variant of switch for different platforms.
