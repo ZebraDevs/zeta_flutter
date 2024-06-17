@@ -29,8 +29,8 @@ class ZetaProgressCircle extends ZetaProgress {
   const ZetaProgressCircle({
     super.key,
     super.progress = 0,
-    super.rounded,
     this.size = ZetaCircleSizes.xl,
+    super.rounded,
     this.onCancel,
   });
 
