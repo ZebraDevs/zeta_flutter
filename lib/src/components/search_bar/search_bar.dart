@@ -40,7 +40,7 @@ class ZetaSearchBar extends StatefulWidget {
   /// A callback, which is invoked when the microphone button is pressed.
   final Future<String?> Function()? onSpeechToText;
 
-  /// {@macro on-change-disable}
+  /// {@macro zeta-widget-disabled}
   final bool disabled;
 
   /// Determines if there should be a leading icon.

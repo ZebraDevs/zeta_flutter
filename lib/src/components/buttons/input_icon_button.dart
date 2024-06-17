@@ -21,7 +21,9 @@ class InputIconButton extends StatelessWidget {
   /// On tap
   final VoidCallback onTap;
 
-  /// Disables the icon and its on tap
+  /// {@template zeta-widget-disabled}
+  ///  Disables the widget.
+  /// {@endtemplate}
   final bool disabled;
 
   /// The size of the icon

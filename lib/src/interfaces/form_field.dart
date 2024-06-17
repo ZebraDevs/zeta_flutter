@@ -23,7 +23,7 @@ abstract class ZetaFormField<T> extends ZetaStatefulWidget {
     super.key,
   });
 
-  /// {@macro disabled}
+  /// {@macro zeta-widget-disabled}
   final bool disabled;
 
   /// The initial value of the form field.

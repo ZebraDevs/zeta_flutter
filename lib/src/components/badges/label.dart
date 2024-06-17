@@ -19,7 +19,11 @@ class ZetaLabel extends ZetaStatelessWidget {
     super.key,
   });
 
-  /// {@macro zeta-component-badge-status}
+  /// {@template zeta-component-badge-status}
+  /// Indicates the status of the badge.
+  ///
+  /// Defaults to "info"
+  /// {@endtemplate}
   final ZetaWidgetStatus status;
 
   /// Label of the badge.

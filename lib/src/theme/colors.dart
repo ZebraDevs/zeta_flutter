@@ -186,7 +186,6 @@ class ZetaColors extends Equatable {
   final Brightness brightness;
 
   /// Represents the Zeta accessibility standard.
-  /// {@macro zeta-color-dark}
   final ZetaContrast contrast;
 
   /// Primary color swatch.
@@ -956,7 +955,9 @@ extension ZetaColorGetters on ColorScheme {
   ///
   /// {@macro zeta-color-dark}
   ///
-  /// {@macro zeta-color-aaa}
+  /// {@template zeta-color-aaa}
+  /// When changing from AA to AAA, the color will increase by 2 stops on the swatch.
+  /// {@endtemplate}
   Color get positive => green;
 
   /// Red negative color.

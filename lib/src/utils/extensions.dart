@@ -18,7 +18,7 @@ extension ListDivider on Iterable<Widget> {
     }
   }
 
-  /// Space out a list of wigets with gap of fixed width
+  /// Space out a list of widgets with gap of fixed width
   List<Widget> gap(double gap) {
     return divide(
       SizedBox.square(

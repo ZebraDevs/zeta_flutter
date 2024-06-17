@@ -51,7 +51,12 @@ abstract final class ZetaColorBase {
 
   /// Pure
   ///
-  /// {@macro zeta-colors-swatch}
+  /// {@template zeta-color-swatch}
+  /// Contains shades from 10 (light) to 100 (dark).
+  ///
+  /// See also:
+  /// * [ZetaColorSwatch].
+  /// {@endtemplate}
   static const ZetaColorSwatch pure = ZetaColorSwatch(
     primary: 0xFF151519,
     swatch: {
@@ -63,7 +68,7 @@ abstract final class ZetaColorBase {
 
   /// Cool
   ///
-  /// {@macro zeta-colors-swatch}
+  /// {@macro zeta-color-swatch}
   static const ZetaColorSwatch cool = ZetaColorSwatch(
     primary: 0xFF7a8190,
     swatch: {
@@ -82,7 +87,7 @@ abstract final class ZetaColorBase {
 
   /// Warm
   ///
-  /// {@macro zeta-colors-swatch}
+  /// {@macro zeta-color-swatch}
   static const ZetaColorSwatch warm = ZetaColorSwatch(
     primary: 0xFF858585,
     swatch: {
@@ -101,7 +106,7 @@ abstract final class ZetaColorBase {
 
   /// Blue
   ///
-  /// {@macro zeta-colors-swatch}
+  /// {@macro zeta-color-swatch}
   static const ZetaColorSwatch blue = ZetaColorSwatch(
     primary: 0xFF0073e6,
     swatch: {
@@ -120,7 +125,7 @@ abstract final class ZetaColorBase {
 
   /// Green
   ///
-  /// {@macro zeta-colors-swatch}
+  /// {@macro zeta-color-swatch}
   static const ZetaColorSwatch green = ZetaColorSwatch(
     primary: 0xFF00864f,
     swatch: {
@@ -139,7 +144,7 @@ abstract final class ZetaColorBase {
 
   /// Red
   ///
-  /// {@macro zeta-colors-swatch}
+  /// {@macro zeta-color-swatch}
   static const ZetaColorSwatch red = ZetaColorSwatch(
     primary: 0xFFd70015,
     swatch: {
@@ -158,7 +163,7 @@ abstract final class ZetaColorBase {
 
   /// Orange
   ///
-  /// {@macro zeta-colors-swatch}
+  /// {@macro zeta-color-swatch}
   static const ZetaColorSwatch orange = ZetaColorSwatch(
     primary: 0xFFae6500,
     swatch: {
@@ -177,7 +182,7 @@ abstract final class ZetaColorBase {
 
   /// Purple
   ///
-  /// {@macro zeta-colors-swatch}
+  /// {@macro zeta-color-swatch}
   static const ZetaColorSwatch purple = ZetaColorSwatch(
     primary: 0xFF7e0cff,
     swatch: {
@@ -196,7 +201,7 @@ abstract final class ZetaColorBase {
 
   /// Yellow
   ///
-  /// {@macro zeta-colors-swatch}
+  /// {@macro zeta-color-swatch}
   static const ZetaColorSwatch yellow = ZetaColorSwatch(
     primary: 0xFF8d7400,
     swatch: {
@@ -215,7 +220,7 @@ abstract final class ZetaColorBase {
 
   /// Teal
   ///
-  /// {@macro zeta-colors-swatch}
+  /// {@macro zeta-color-swatch}
   static const ZetaColorSwatch teal = ZetaColorSwatch(
     primary: 0xFF1a8080,
     swatch: {
@@ -234,7 +239,7 @@ abstract final class ZetaColorBase {
 
   /// Pink
   ///
-  /// {@macro zeta-colors-swatch}
+  /// {@macro zeta-color-swatch}
   static const ZetaColorSwatch pink = ZetaColorSwatch(
     primary: 0xFFd30589,
     swatch: {

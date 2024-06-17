@@ -53,12 +53,19 @@ import 'pages/theme/radius_widgetbook.dart';
 import 'pages/theme/spacing_widgetbook.dart';
 import 'pages/theme/typography_widgetbook.dart';
 import 'utils/zebra.dart';
+import 'package:http/http.dart' as http;
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  // String readme = await rootBundle.loadString('../README.md');
-
-  runApp(HotReload(readme: 'TODO: cannot import readme on windows'));
+  String response = '';
+  try {
+    response =
+        (await http.get(Uri.parse('https://raw.githubusercontent.com/ZebraDevs/zeta_flutter/main/README.md'))).body;
+  } catch (e) {
+    debugPrint('Can not read readme');
+  } finally {
+    runApp(HotReload(readme: response));
+  }
 }
 
 class HotReload extends StatefulWidget {

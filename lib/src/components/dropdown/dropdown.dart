@@ -110,7 +110,7 @@ class ZetaDropdown<T> extends ZetaStatefulWidget {
 
   /// Called with the selected value whenever the dropdown is changed.
   ///
-  /// {@macro on-change-disable}
+  /// {@macro zeta-widget-change-disable}
   final ValueSetter<ZetaDropdownItem<T>>? onChange;
 
   /// Called when the dropdown is dismissed.

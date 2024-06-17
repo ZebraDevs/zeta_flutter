@@ -45,7 +45,7 @@ class ZetaStepperInput extends ZetaStatefulWidget {
 
   /// Called with the value of the stepper whenever it is changed.
   ///
-  /// {@macro on-change-disable}
+  /// {@macro zeta-widget-change-disable}
   final ValueChanged<int>? onChange;
 
   @override

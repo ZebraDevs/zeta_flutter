@@ -127,7 +127,9 @@ class ZetaGroupButton extends ZetaStatefulWidget {
 
   /// Function for when [ZetaGroupButton] is clicked.
   ///
-  /// {@macro on-change-disable}
+  /// {@template zeta-widget-change-disable}
+  /// Setting this to null will disable the widget.
+  /// {@endtemplate}
   final VoidCallback? onPressed;
 
   /// Content of dropdown.
