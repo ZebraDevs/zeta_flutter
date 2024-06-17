@@ -1,6 +1,6 @@
 name: CI - Pull Request
 on:
-  pull_request:
+  pull_request_target:
 
 jobs:
   up-to-date:
@@ -17,9 +17,8 @@ jobs:
       - name: Check PR can access secrets
         id: check
         run: |
-          if [ "${{ secrets.FIREBASE_SERVICE_ACCOUNT_ZETA_DS }}" != '' ]; then
-            echo "defined=true" >> $GITHUB_OUTPUT;
-          else
+          echo "defined=true" >> $GITHUB_OUTPUT;
+          if [ "${{ secrets.FIREBASE_SERVICE_ACCOUNT_ZETA_DS }}" == '' ]; then
             echo "defined=false" >> $GITHUB_OUTPUT;
           fi
 
@@ -31,6 +30,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
+          repository: ${{github.event.pull_request.head.repo.full_name}}
           ref: ${{ github.head_ref }}
       - uses: subosito/flutter-action@v2
       - name: Setup flutter
@@ -42,5 +42,5 @@ jobs:
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: "${{ secrets.GITHUB_TOKEN }}"
-          firebaseServiceAccount: "${{ env.key }}"
+          firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_ZETA_DS }}"
           channelId: "pr-${{ github.event.number }}-${{ github.event.pull_request.head.ref }}"
