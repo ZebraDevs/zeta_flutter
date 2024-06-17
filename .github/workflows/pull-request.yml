@@ -1,5 +1,9 @@
 name: CI - Pull Request
 on:
+<<<<<<< HEAD
+=======
+  pull_request:
+>>>>>>> 638fe8f (ci: check secrets (#54))
   pull_request_target:
 
 jobs:
