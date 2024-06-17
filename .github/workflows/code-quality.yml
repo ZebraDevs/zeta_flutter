@@ -6,6 +6,7 @@ jobs:
   code-quality:
     runs-on: ubuntu-latest
     timeout-minutes: 20
+    permissions: write-all
     steps:
       - uses: actions/checkout@v4
         with:
@@ -71,7 +72,7 @@ jobs:
 
       - name: Print outputs
         env:
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
         run: |
           template='<h2>PR Checks complete</h2>✅ - Linting</br>'
 
@@ -88,7 +89,7 @@ jobs:
           fi
 
           # Add / amend comment on PR.
-          gh pr comment ${{github.event.pull_request.number}} --body="${template}" --edit-last -R ${{github.repository}} || gh pr comment ${{github.event.pull_request.number}} --body="${template}" -R ${{github.repository}} 
+          gh pr comment ${{github.event.pull_request.number}} --body="${template}" --edit-last -R ${{github.repository}} || gh pr comment ${{github.event.pull_request.number}} --body="${template}" -R ${{github.repository}} || echo 'Token not working' 
 
           # Concatenates failure outputs.
           fail="${{steps.fix.outputs.FAILURE}}${{steps.test.outputs.FAILURE}}"
