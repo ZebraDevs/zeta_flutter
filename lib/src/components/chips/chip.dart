@@ -12,13 +12,13 @@ export './input_chip.dart';
 /// This covers the broad functionality of [ZetaAssistChip], [ZetaFilterChip] and [ZetaInputChip].
 ///
 /// If [selected] is not null, the chip will have the toggle behavior of [ZetaFilterChip].
-class ZetaChip extends StatefulWidget {
+class ZetaChip extends ZetaStatefulWidget {
   /// Constructs a [ZetaChip].
   const ZetaChip({
     super.key,
+    super.rounded,
     required this.label,
     this.leading,
-    this.rounded = true,
     this.trailing,
     this.selected,
     this.onTap,
@@ -33,9 +33,6 @@ class ZetaChip extends StatefulWidget {
 
   /// Leading component. Typically an [Icon] or [ZetaAvatar].
   final Widget? leading;
-
-  /// {@macro zeta-component-rounded}
-  final bool rounded;
 
   /// Trailing component. Typically an [Icon].
   final Widget? trailing;
@@ -106,19 +103,22 @@ class _ZetaChipState extends State<ZetaChip> {
     final colors = Zeta.of(context).colors;
     final foregroundColor = selected ? colors.textInverse : colors.textDefault;
 
-    return SelectionContainer.disabled(
-      child: widget.draggable
-          ? Draggable(
-              feedback: Material(
-                color: Colors.transparent,
-                child: child(colors, foregroundColor, isDragging: true),
-              ),
-              childWhenDragging: const SizedBox(),
-              data: widget.data,
-              onDragCompleted: widget.onDragCompleted,
-              child: child(colors, foregroundColor),
-            )
-          : child(colors, foregroundColor),
+    return ZetaRoundedScope(
+      rounded: context.rounded,
+      child: SelectionContainer.disabled(
+        child: widget.draggable
+            ? Draggable(
+                feedback: Material(
+                  color: Colors.transparent,
+                  child: child(colors, foregroundColor, isDragging: true),
+                ),
+                childWhenDragging: const SizedBox(),
+                data: widget.data,
+                onDragCompleted: widget.onDragCompleted,
+                child: child(colors, foregroundColor),
+              )
+            : child(colors, foregroundColor),
+      ),
     );
   }
 
@@ -127,10 +127,10 @@ class _ZetaChipState extends State<ZetaChip> {
       valueListenable: _controller,
       builder: (context, states, child) {
         final double iconSize = selected ? ZetaSpacing.xl_2 : ZetaSpacing.none;
-
+        final bool rounded = context.rounded;
         return InkWell(
           statesController: _controller,
-          borderRadius: widget.rounded ? ZetaRadius.full : ZetaRadius.none,
+          borderRadius: rounded ? ZetaRadius.full : ZetaRadius.none,
           onTap: () {
             if (widget.selected != null) {
               setState(() => selected = !selected);
@@ -167,7 +167,7 @@ class _ZetaChipState extends State<ZetaChip> {
                 }
                 return colors.surfacePrimary;
               }(),
-              borderRadius: widget.rounded ? ZetaRadius.full : ZetaRadius.none,
+              borderRadius: rounded ? ZetaRadius.full : ZetaRadius.none,
               border: Border.fromBorderSide(
                 BorderSide(
                   color: _controller.value.contains(WidgetState.focused) ? colors.blue.shade50 : colors.borderDefault,
@@ -188,7 +188,7 @@ class _ZetaChipState extends State<ZetaChip> {
                     width: iconSize,
                     child: (selected
                         ? Icon(
-                            widget.rounded ? ZetaIcons.check_mark_round : ZetaIcons.check_mark_sharp,
+                            rounded ? ZetaIcons.check_mark_round : ZetaIcons.check_mark_sharp,
                             color: widget.selected! ? colors.iconInverse : Colors.transparent,
                           )
                         : const SizedBox()),

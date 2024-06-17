@@ -67,5 +67,6 @@ export 'src/theme/typography.dart';
 export 'src/utils/debounce.dart';
 export 'src/utils/enums.dart';
 export 'src/utils/extensions.dart';
+export 'src/utils/rounded.dart';
 export 'src/zeta.dart';
 export 'src/zeta_provider.dart';

@@ -17,13 +17,21 @@ When you're ready to start coding, fork the needed repository to your own GitHub
 
 If the change is a bug fix, try to create a test that aligns with the bug.
 
-### Creating a new component
+## Creating a new component
 
 We want the designs to be the source of truth for this repository, so new components will only be accepted if they are with the design files.
 
 New components should use all tokens matching the design, and should not use hardcoded values for color, spacing, or radius. This ensures that changes made to these fundamental tokens are reflected throughout the library.
 
 All components should have inline [dartdoc](https://dart.dev/tools/dart-doc) documentation on public functions and variables. This is enforced by the lint rules.
+
+Components should extend from either `ZetaStatelessWidget` or `ZetaStatefulWidget`. These widgets add the rounded prop and getters, shared by many component variants in the design system, and future-proof our components for future use.
+To add this rounded prop in your widget, add `super.rounded` to your constructor. This should _not_ provide a default value, as that is provided by either the top-level `Zeta` or `ZetaRoundedScope`.
+
+_To use the rounded value, you should call `context.rounded` at all times, not `rounded`, as this allows for global or scoped values to be inserted._.
+If your component has child widgets that can inherit a rounded value, use `ZetaRoundedScope` to provide the correct value for rounded to be consumed.
+
+### Adding to the example app
 
 To demonstrate a component, we need to create 2 examples: firstly in the zeta_flutter example app and secondly in widgetbook.
 

@@ -3,20 +3,17 @@ import 'package:flutter/material.dart';
 import '../../../zeta_flutter.dart';
 
 ///Class for [ZetaBreadCrumbs]
-class ZetaBreadCrumbs extends StatefulWidget {
+class ZetaBreadCrumbs extends ZetaStatefulWidget {
   ///Constructor for [ZetaBreadCrumbs]
   const ZetaBreadCrumbs({
     super.key,
+    super.rounded,
     required this.children,
-    this.rounded = true,
     this.activeIcon,
   });
 
   /// Breadcrumb children
   final List<ZetaBreadCrumb> children;
-
-  /// {@macro zeta-component-rounded}
-  final bool rounded;
 
   /// Active icon for breadcrumb
   final IconData? activeIcon;
@@ -58,32 +55,36 @@ class _ZetaBreadCrumbsState extends State<ZetaBreadCrumbs> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      child: Row(
-        children: renderedChildren(widget.children)
-            .divide(
-              Row(
-                children: [
-                  const SizedBox(
-                    width: ZetaSpacing.small,
-                  ),
-                  Icon(
-                    widget.rounded ? ZetaIcons.chevron_right_round : ZetaIcons.chevron_right_sharp,
-                    size: ZetaSpacing.xl_1,
-                  ),
-                  const SizedBox(
-                    width: ZetaSpacing.small,
-                  ),
-                ],
-              ),
-            )
-            .toList(),
+    final rounded = context.rounded;
+    return ZetaRoundedScope(
+      rounded: rounded,
+      child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Row(
+          children: renderedChildren(widget.children)
+              .divide(
+                Row(
+                  children: [
+                    const SizedBox(
+                      width: ZetaSpacing.small,
+                    ),
+                    Icon(
+                      rounded ? ZetaIcons.chevron_right_round : ZetaIcons.chevron_right_sharp,
+                      size: ZetaSpacing.xl_1,
+                    ),
+                    const SizedBox(
+                      width: ZetaSpacing.small,
+                    ),
+                  ],
+                ),
+              )
+              .toList(),
+        ),
       ),
     );
   }
 
-  ///Creates breadcumb widget
+  ///Creates breadcrumb widget
   ZetaBreadCrumb createBreadCrumb(ZetaBreadCrumb input, int index) {
     return ZetaBreadCrumb(
       label: input.label,
@@ -109,12 +110,7 @@ class _ZetaBreadCrumbsState extends State<ZetaBreadCrumbs> {
         truncatedChildren.add(createBreadCrumb(element, index + 1));
       }
       returnList
-        ..add(
-          BreadCrumbsTruncated(
-            rounded: widget.rounded,
-            children: truncatedChildren,
-          ),
-        )
+        ..add(BreadCrumbsTruncated(children: truncatedChildren))
         ..add(createBreadCrumb(children.last, children.length - 1));
     } else {
       for (final (index, element) in children.indexed) {
@@ -237,22 +233,13 @@ class BreadCrumbsTruncated extends StatefulWidget {
   const BreadCrumbsTruncated({
     super.key,
     required this.children,
-    required this.rounded,
   });
 
   ///Breadcrumb children
   final List<Widget> children;
 
-  /// {@macro zeta-component-rounded}
-  final bool rounded;
-
   @override
   State<BreadCrumbsTruncated> createState() => _BreadCrumbsTruncatedState();
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty<bool>('rounded', rounded));
-  }
 }
 
 class _BreadCrumbsTruncatedState extends State<BreadCrumbsTruncated> {
@@ -261,6 +248,7 @@ class _BreadCrumbsTruncatedState extends State<BreadCrumbsTruncated> {
   @override
   Widget build(BuildContext context) {
     final colors = Zeta.of(context).colors;
+    final rounded = context.rounded;
 
     return _expanded
         ? expandedBreadcrumb()
@@ -291,7 +279,7 @@ class _BreadCrumbsTruncatedState extends State<BreadCrumbsTruncated> {
               }),
               shape: WidgetStatePropertyAll(
                 RoundedRectangleBorder(
-                  borderRadius: (widget.rounded ? ZetaRadius.minimal : ZetaRadius.none),
+                  borderRadius: (rounded ? ZetaRadius.minimal : ZetaRadius.none),
                 ),
               ),
               side: WidgetStateProperty.resolveWith((states) {
@@ -311,7 +299,7 @@ class _BreadCrumbsTruncatedState extends State<BreadCrumbsTruncated> {
               elevation: const WidgetStatePropertyAll(ZetaSpacing.none),
             ),
             child: Icon(
-              widget.rounded ? ZetaIcons.more_horizontal_round : ZetaIcons.more_horizontal_sharp,
+              rounded ? ZetaIcons.more_horizontal_round : ZetaIcons.more_horizontal_sharp,
               size: ZetaSpacing.large,
             ).paddingHorizontal(ZetaSpacing.small).paddingVertical(ZetaSpacing.minimum),
           );

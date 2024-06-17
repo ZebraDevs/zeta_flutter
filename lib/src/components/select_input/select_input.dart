@@ -10,17 +10,17 @@ import '../buttons/input_icon_button.dart';
 class ZetaSelectInput<T> extends ZetaFormField<T> {
   ///Constructor of [ZetaSelectInput]
   const ZetaSelectInput({
-    super.key,
     required this.items,
     this.onTextChanged,
     this.size = ZetaWidgetSize.medium,
     this.label,
     this.hintText,
-    this.rounded = true,
     this.prefix,
     this.placeholder,
     this.validator,
     this.errorText,
+    super.key,
+    super.rounded,
     super.disabled = false,
     super.initialValue,
     super.onChange,
@@ -57,9 +57,6 @@ class ZetaSelectInput<T> extends ZetaFormField<T> {
   /// The placeholder for the input.
   final String? placeholder;
 
-  /// {@macro zeta-component-rounded}
-  final bool rounded;
-
   @override
   State<ZetaSelectInput<T>> createState() => _ZetaSelectInputState<T>();
   @override
@@ -87,10 +84,11 @@ class _ZetaSelectInputState<T> extends State<ZetaSelectInput<T>> {
   bool get _dropdownOpen => _dropdownKey.currentState?.isOpen ?? false;
 
   IconData get _icon {
+    final rounded = context.rounded;
     if (_dropdownOpen) {
-      return widget.rounded ? ZetaIcons.expand_less_round : ZetaIcons.expand_less_sharp;
+      return rounded ? ZetaIcons.expand_less_round : ZetaIcons.expand_less_sharp;
     } else {
-      return widget.rounded ? ZetaIcons.expand_more_round : ZetaIcons.expand_more_sharp;
+      return rounded ? ZetaIcons.expand_more_round : ZetaIcons.expand_more_sharp;
     }
   }
 
@@ -152,43 +150,46 @@ class _ZetaSelectInputState<T> extends State<ZetaSelectInput<T>> {
       filteredItems = widget.items;
     }
 
-    return ZetaDropdown<T>(
-      items: filteredItems,
-      onChange: !widget.disabled ? _onDropdownChanged : null,
-      key: _dropdownKey,
-      value: _selectedItem?.value,
-      onDismissed: () => setState(() {}),
-      builder: (context, _, controller) {
-        return ZetaTextInput(
-          size: widget.size,
-          requirementLevel: widget.requirementLevel,
-          disabled: widget.disabled,
-          validator: (_) {
-            final currentValue = _selectedItem?.value;
-            String? errorText;
-            final customValidation = widget.validator?.call(currentValue);
-            if ((currentValue == null && widget.requirementLevel != ZetaFormFieldRequirement.optional) ||
-                customValidation != null) {
-              errorText = customValidation ?? widget.errorText ?? '';
-            }
-
-            return errorText;
-          },
-          controller: _inputController,
-          prefix: _selectedItem?.icon ?? widget.prefix,
-          label: widget.label,
-          placeholder: widget.placeholder,
-          hintText: widget.hintText,
-          onChange: (val) => _onInputChanged(controller),
-          suffix: InputIconButton(
-            icon: _icon,
-            disabled: widget.disabled,
+    return ZetaRoundedScope(
+      rounded: context.rounded,
+      child: ZetaDropdown<T>(
+        items: filteredItems,
+        onChange: !widget.disabled ? _onDropdownChanged : null,
+        key: _dropdownKey,
+        value: _selectedItem?.value,
+        onDismissed: () => setState(() {}),
+        builder: (context, _, controller) {
+          return ZetaTextInput(
             size: widget.size,
-            color: colors.iconSubtle,
-            onTap: () => _onIconTapped(controller),
-          ),
-        );
-      },
+            requirementLevel: widget.requirementLevel,
+            disabled: widget.disabled,
+            validator: (_) {
+              final currentValue = _selectedItem?.value;
+              String? errorText;
+              final customValidation = widget.validator?.call(currentValue);
+              if ((currentValue == null && widget.requirementLevel != ZetaFormFieldRequirement.optional) ||
+                  customValidation != null) {
+                errorText = customValidation ?? widget.errorText ?? '';
+              }
+
+              return errorText;
+            },
+            controller: _inputController,
+            prefix: _selectedItem?.icon ?? widget.prefix,
+            label: widget.label,
+            placeholder: widget.placeholder,
+            hintText: widget.hintText,
+            onChange: (val) => _onInputChanged(controller),
+            suffix: InputIconButton(
+              icon: _icon,
+              disabled: widget.disabled,
+              size: widget.size,
+              color: colors.iconSubtle,
+              onTap: () => _onIconTapped(controller),
+            ),
+          );
+        },
+      ),
     );
   }
 }

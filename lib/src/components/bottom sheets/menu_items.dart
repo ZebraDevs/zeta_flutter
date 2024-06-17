@@ -14,12 +14,13 @@ enum ZetaMenuItemType {
 /// Zeta Menu Item component.
 ///
 /// Typically used as body of [ZetaBottomSheet].
-class ZetaMenuItem extends StatelessWidget {
+class ZetaMenuItem extends ZetaStatelessWidget {
   /// Constructor for the component [ZetaMenuItem].
   ///
   /// Typically, [ZetaMenuItem.horizontal] or [ZetaMenuItem.vertical] constructors should be used.
   const ZetaMenuItem({
     super.key,
+    super.rounded,
     required this.type,
     required this.label,
     this.onTap,
@@ -30,6 +31,7 @@ class ZetaMenuItem extends StatelessWidget {
   /// Creates horizontal menu item
   const ZetaMenuItem.horizontal({
     super.key,
+    super.rounded,
     required this.label,
     this.onTap,
     this.leading,
@@ -39,6 +41,7 @@ class ZetaMenuItem extends StatelessWidget {
   /// Creates horizontal menu item
   const ZetaMenuItem.vertical({
     super.key,
+    super.rounded,
     required this.label,
     Widget? icon,
     this.onTap,
@@ -75,64 +78,69 @@ class ZetaMenuItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colors = Zeta.of(context).colors;
+    return ZetaRoundedScope(
+      rounded: context.rounded,
+      child: () {
+        final colors = Zeta.of(context).colors;
 
-    final Widget text = DefaultTextStyle(
-      style: ZetaTextStyles.labelLarge.apply(color: _enabled ? colors.textDefault : colors.textDisabled),
-      child: label,
-    );
+        final Widget text = DefaultTextStyle(
+          style: ZetaTextStyles.labelLarge.apply(color: _enabled ? colors.textDefault : colors.textDisabled),
+          child: label,
+        );
 
-    switch (type) {
-      case ZetaMenuItemType.horizontal:
-        return ConstrainedBox(
-          constraints: const BoxConstraints(minHeight: ZetaSpacing.xl_8),
-          child: InkWell(
-            onTap: _onTap,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: ZetaSpacing.large, vertical: ZetaSpacing.medium),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Expanded(
-                    child: Row(
-                      children: [
-                        if (leading != null)
-                          Padding(padding: const EdgeInsets.only(right: ZetaSpacing.small), child: leading),
-                        Expanded(child: text),
-                      ],
-                    ),
+        switch (type) {
+          case ZetaMenuItemType.horizontal:
+            return ConstrainedBox(
+              constraints: const BoxConstraints(minHeight: ZetaSpacing.xl_8),
+              child: InkWell(
+                onTap: _onTap,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: ZetaSpacing.large, vertical: ZetaSpacing.medium),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Expanded(
+                        child: Row(
+                          children: [
+                            if (leading != null)
+                              Padding(padding: const EdgeInsets.only(right: ZetaSpacing.small), child: leading),
+                            Expanded(child: text),
+                          ],
+                        ),
+                      ),
+                      if (trailing != null)
+                        IconTheme(
+                          data: _iconThemeData(colors, _enabled, ZetaSpacing.xl_2),
+                          child: trailing ?? const Icon(Icons.keyboard_arrow_right),
+                        ),
+                    ],
                   ),
-                  if (trailing != null)
-                    IconTheme(
-                      data: _iconThemeData(colors, _enabled, ZetaSpacing.xl_2),
-                      child: trailing ?? const Icon(Icons.keyboard_arrow_right),
-                    ),
-                ],
+                ),
               ),
-            ),
-          ),
-        );
-      case ZetaMenuItemType.vertical:
-        return InkWell(
-          onTap: _onTap,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: ZetaSpacing.large, vertical: ZetaSpacing.medium),
-            child: Column(
-              children: [
-                if (leading != null)
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: ZetaSpacing.medium),
-                    child: IconTheme(
-                      data: _iconThemeData(colors, _enabled, ZetaSpacing.xl_4),
-                      child: leading!,
-                    ),
-                  ),
-                text,
-              ],
-            ),
-          ),
-        );
-    }
+            );
+          case ZetaMenuItemType.vertical:
+            return InkWell(
+              onTap: _onTap,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: ZetaSpacing.large, vertical: ZetaSpacing.medium),
+                child: Column(
+                  children: [
+                    if (leading != null)
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: ZetaSpacing.medium),
+                        child: IconTheme(
+                          data: _iconThemeData(colors, _enabled, ZetaSpacing.xl_4),
+                          child: leading!,
+                        ),
+                      ),
+                    text,
+                  ],
+                ),
+              ),
+            );
+        }
+      }(),
+    );
   }
 
   static IconThemeData _iconThemeData(ZetaColors colors, bool enabled, double size) => IconThemeData(

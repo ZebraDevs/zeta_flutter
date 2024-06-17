@@ -13,24 +13,21 @@ enum ZetaStepperInputSize {
   large,
 }
 
-/// A stepper input, also called numeric stepper, is a common UI element that allows uers to input a number or value simply by clicking the plus and minus buttons.
-class ZetaStepperInput extends StatefulWidget {
+/// A stepper input, also called numeric stepper, is a common UI element that allows users to input a number or value simply by clicking the plus and minus buttons.
+class ZetaStepperInput extends ZetaStatefulWidget {
   /// Creates a new [ZetaStepperInput]
   const ZetaStepperInput({
-    this.rounded = true,
+    super.key,
+    super.rounded,
     this.size = ZetaStepperInputSize.medium,
     this.initialValue,
     this.min,
     this.max,
     this.onChange,
-    super.key,
   }) : assert(
           (min == null || (initialValue ?? 0) >= min) && (max == null || (initialValue ?? 0) <= max),
           'Initial value must be inside given min and max values',
         );
-
-  /// {@macro zeta-component-rounded}
-  final bool rounded;
 
   /// The size of the stepper input.
   final ZetaStepperInputSize size;
@@ -93,7 +90,7 @@ class _ZetaStepperInputState extends State<ZetaStepperInput> {
       borderSide: BorderSide(
         color: !_disabled ? colors.borderSubtle : colors.borderDisabled,
       ),
-      borderRadius: widget.rounded ? ZetaRadius.minimal : ZetaRadius.none,
+      borderRadius: context.rounded ? ZetaRadius.minimal : ZetaRadius.none,
     );
   }
 
@@ -129,17 +126,18 @@ class _ZetaStepperInputState extends State<ZetaStepperInput> {
   }
 
   ZetaIconButton _getButton({bool increase = false}) {
+    final bool rounded = context.rounded;
+
     return ZetaIconButton(
       icon: increase
-          ? widget.rounded
+          ? rounded
               ? ZetaIcons.add_round
               : ZetaIcons.add_sharp
-          : widget.rounded
+          : rounded
               ? ZetaIcons.remove_round
               : ZetaIcons.remove_sharp,
       type: ZetaButtonType.outlineSubtle,
       size: widget.size == ZetaStepperInputSize.medium ? ZetaWidgetSize.medium : ZetaWidgetSize.large,
-      borderType: widget.rounded ? ZetaWidgetBorder.rounded : ZetaWidgetBorder.sharp,
       onPressed: !_disabled && (increase ? _value != widget.max : _value != widget.min)
           ? () => _onChange(
                 _value + (increase ? 1 : -1),
@@ -151,42 +149,45 @@ class _ZetaStepperInputState extends State<ZetaStepperInput> {
   @override
   Widget build(BuildContext context) {
     final colors = Zeta.of(context).colors;
-
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        _getButton(),
-        SizedBox(
-          width: ZetaSpacing.xl_9,
-          child: TextFormField(
-            keyboardType: TextInputType.number,
-            enabled: !_disabled,
-            controller: _controller,
-            onChanged: _onTextChange,
-            textAlign: TextAlign.center,
-            inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  color: _disabled ? colors.textDisabled : null,
-                ),
-            onTapOutside: (_) {
-              if (_controller.text.isEmpty) {
-                _controller.text = _value.toString();
-              }
-            },
-            decoration: InputDecoration(
-              filled: true,
-              fillColor: _disabled ? colors.surfaceDisabled : null,
-              contentPadding: EdgeInsets.zero,
-              constraints: BoxConstraints(maxHeight: _height),
-              border: _border,
-              focusedBorder: _border,
-              enabledBorder: _border,
-              disabledBorder: _border,
+    final bool rounded = context.rounded;
+    return ZetaRoundedScope(
+      rounded: rounded,
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          _getButton(),
+          SizedBox(
+            width: ZetaSpacing.xl_9,
+            child: TextFormField(
+              keyboardType: TextInputType.number,
+              enabled: !_disabled,
+              controller: _controller,
+              onChanged: _onTextChange,
+              textAlign: TextAlign.center,
+              inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    color: _disabled ? colors.textDisabled : null,
+                  ),
+              onTapOutside: (_) {
+                if (_controller.text.isEmpty) {
+                  _controller.text = _value.toString();
+                }
+              },
+              decoration: InputDecoration(
+                filled: true,
+                fillColor: _disabled ? colors.surfaceDisabled : null,
+                contentPadding: EdgeInsets.zero,
+                constraints: BoxConstraints(maxHeight: _height),
+                border: _border,
+                focusedBorder: _border,
+                enabledBorder: _border,
+                disabledBorder: _border,
+              ),
             ),
           ),
-        ),
-        _getButton(increase: true),
-      ].divide(const SizedBox(width: ZetaSpacing.small)).toList(),
+          _getButton(increase: true),
+        ].divide(const SizedBox(width: ZetaSpacing.small)).toList(),
+      ),
     );
   }
 }

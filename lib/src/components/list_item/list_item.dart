@@ -8,7 +8,7 @@ import 'list_scope.dart';
 /// Dividers on individual list items can be hidden or shown by setting their [showDivider] property.
 ///
 /// This wraps [ListView.builder] so it needs to be used in a widget with a constrained height.
-class ZetaList extends StatelessWidget {
+class ZetaList extends ZetaStatelessWidget {
   /// Creates a new [ZetaList].
   const ZetaList({
     required this.items,
@@ -25,11 +25,14 @@ class ZetaList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListScope(
-      showDivider: showDivider,
-      child: ListView.builder(
-        itemBuilder: (context, i) => items[i],
-        itemCount: items.length,
+    return ZetaRoundedScope(
+      rounded: context.rounded,
+      child: ListScope(
+        showDivider: showDivider,
+        child: ListView.builder(
+          itemBuilder: (context, i) => items[i],
+          itemCount: items.length,
+        ),
       ),
     );
   }
@@ -44,7 +47,7 @@ class ZetaList extends StatelessWidget {
 /// A single row that typically contains some text as well as a leading or trailing widgets.
 ///
 /// To create list items with a [ZetaSwitch], [ZetaCheckbox], or [ZetaRadio], use the [ZetaListItem.toggle], [ZetaListItem.checkbox] or the [ZetaListItem.radio] named constructors respectively.
-class ZetaListItem extends StatelessWidget {
+class ZetaListItem extends ZetaStatelessWidget {
   /// Creates a [ZetaListItem].
   const ZetaListItem({
     required this.primaryText,
@@ -54,11 +57,13 @@ class ZetaListItem extends StatelessWidget {
     this.showDivider,
     this.trailing,
     super.key,
+    super.rounded,
   });
 
   /// Creates a [ZetaListItem] with a [ZetaSwitch] in the trailing widget space.
   ZetaListItem.toggle({
     super.key,
+    super.rounded,
     required this.primaryText,
     this.secondaryText,
     this.showDivider,
@@ -75,12 +80,12 @@ class ZetaListItem extends StatelessWidget {
   /// Creates a [ZetaListItem] with a [ZetaCheckbox] in the trailing widget space.
   ZetaListItem.checkbox({
     super.key,
+    super.rounded,
     required this.primaryText,
     this.secondaryText,
     this.leading,
     this.showDivider,
     bool value = false,
-    bool rounded = true,
     ValueChanged<bool>? onChanged,
     bool useIndeterminate = false,
   })  : trailing = ZetaCheckbox(
@@ -100,6 +105,7 @@ class ZetaListItem extends StatelessWidget {
     this.showDivider,
     dynamic groupValue,
     super.key,
+    super.rounded,
     ValueChanged<dynamic>? onChanged,
   })  : trailing = ZetaRadio<dynamic>(
           value: value,

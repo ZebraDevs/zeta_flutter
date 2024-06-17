@@ -25,7 +25,7 @@ class ZetaNavigationBarItem {
 }
 
 /// Navigation Bars (Bottom navigation) allow movement between primary destinations in an app.
-class ZetaNavigationBar extends StatelessWidget {
+class ZetaNavigationBar extends ZetaStatelessWidget {
   /// Creates a new [ZetaNavigationBar].
   const ZetaNavigationBar({
     required this.items,
@@ -35,6 +35,7 @@ class ZetaNavigationBar extends StatelessWidget {
     this.dividerIndex,
     this.action,
     super.key,
+    super.rounded,
   }) : assert(
           items.length >= 2 && items.length <= 6,
           'The number of items should be between 2 and 6',
@@ -47,6 +48,7 @@ class ZetaNavigationBar extends StatelessWidget {
     int? currentIndex,
     void Function(int value)? onTap,
     Key? key,
+    bool? rounded,
   }) : this(
           items: items,
           currentIndex: currentIndex,
@@ -54,6 +56,7 @@ class ZetaNavigationBar extends StatelessWidget {
           splitItems: false,
           dividerIndex: dividerIndex,
           key: key,
+          rounded: rounded,
         );
 
   /// Creates a [ZetaNavigationBar] and splits the items in half.
@@ -62,12 +65,14 @@ class ZetaNavigationBar extends StatelessWidget {
     int? currentIndex,
     void Function(int value)? onTap,
     Key? key,
+    bool? rounded,
   }) : this(
           items: items,
           currentIndex: currentIndex,
           onTap: onTap,
           splitItems: true,
           key: key,
+          rounded: rounded,
         );
 
   /// Creates a [ZetaNavigationBar] with an action.

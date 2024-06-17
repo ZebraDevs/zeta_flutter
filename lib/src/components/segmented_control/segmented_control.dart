@@ -6,21 +6,18 @@ import 'package:flutter/rendering.dart';
 import '../../../zeta_flutter.dart';
 
 /// Creates an segmented control bar.
-class ZetaSegmentedControl<T> extends StatefulWidget {
+class ZetaSegmentedControl<T> extends ZetaStatefulWidget {
   /// Constructs an segmented control bar.
   const ZetaSegmentedControl({
     required this.segments,
     required this.onChanged,
     required this.selected,
-    this.rounded = true,
+    super.rounded,
     super.key,
   });
 
   /// The callback that is called when a new option is tapped.
   final void Function(T)? onChanged;
-
-  /// Whether the corners to be rounded.
-  final bool rounded;
 
   /// Descriptions of the segments in the button.
   final List<ZetaButtonSegment<T>> segments;
@@ -48,6 +45,7 @@ class _ZetaSegmentedControlState<T> extends State<ZetaSegmentedControl<T>>
     with TickerProviderStateMixin<ZetaSegmentedControl<T>> {
   T? _highlighted;
   Animatable<Rect?>? _thumbAnimatable;
+
   late final AnimationController _thumbController = AnimationController(
     duration: kThemeAnimationDuration,
     value: 0,
@@ -111,7 +109,6 @@ class _ZetaSegmentedControlState<T> extends State<ZetaSegmentedControl<T>>
       children.add(
         _Segment<T>(
           key: ValueKey<T>(segment.value),
-          rounded: widget.rounded,
           child: segment.child,
           onTap: () => widget.onChanged?.call(segment.value),
         ),
@@ -121,28 +118,32 @@ class _ZetaSegmentedControlState<T> extends State<ZetaSegmentedControl<T>>
     }
 
     final colors = Zeta.of(context).colors;
+    final rounded = context.rounded;
 
-    return MouseRegion(
-      cursor: SystemMouseCursors.click,
-      child: SelectionContainer.disabled(
-        child: Container(
-          padding: const EdgeInsets.all(ZetaSpacing.minimum),
-          decoration: BoxDecoration(
-            color: colors.surfaceDisabled,
-            borderRadius: widget.rounded ? ZetaRadius.minimal : ZetaRadius.none,
-          ),
-          child: AnimatedBuilder(
-            animation: _thumbScaleAnimation,
-            builder: (BuildContext context, Widget? child) {
-              return _SegmentedControlRenderWidget<T>(
-                highlightedIndex: highlightedIndex,
-                thumbColor: colors.surfacePrimary,
-                thumbScale: _thumbScaleAnimation.value,
-                rounded: widget.rounded,
-                state: this,
-                children: children,
-              );
-            },
+    return ZetaRoundedScope(
+      rounded: rounded,
+      child: MouseRegion(
+        cursor: SystemMouseCursors.click,
+        child: SelectionContainer.disabled(
+          child: Container(
+            padding: const EdgeInsets.all(ZetaSpacing.minimum),
+            decoration: BoxDecoration(
+              color: colors.surfaceDisabled,
+              borderRadius: rounded ? ZetaRadius.minimal : ZetaRadius.none,
+            ),
+            child: AnimatedBuilder(
+              animation: _thumbScaleAnimation,
+              builder: (BuildContext context, Widget? child) {
+                return _SegmentedControlRenderWidget<T>(
+                  highlightedIndex: highlightedIndex,
+                  thumbColor: colors.surfacePrimary,
+                  thumbScale: _thumbScaleAnimation.value,
+                  rounded: rounded,
+                  state: this,
+                  children: children,
+                );
+              },
+            ),
           ),
         ),
       ),
@@ -171,12 +172,10 @@ class _Segment<T> extends StatefulWidget {
   const _Segment({
     required ValueKey<T> key,
     required this.child,
-    required this.rounded,
     required this.onTap,
   }) : super(key: key);
 
   final Widget child;
-  final bool rounded;
   final VoidCallback onTap;
 
   @override
@@ -185,9 +184,7 @@ class _Segment<T> extends StatefulWidget {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty<bool>('rounded', rounded))
-      ..add(ObjectFlagProperty<VoidCallback>.has('onTap', onTap));
+    properties.add(ObjectFlagProperty<VoidCallback>.has('onTap', onTap));
   }
 }
 
@@ -200,7 +197,7 @@ class _SegmentState<T> extends State<_Segment<T>> with TickerProviderStateMixin<
       color: Colors.transparent,
       child: InkWell(
         splashFactory: NoSplash.splashFactory,
-        borderRadius: widget.rounded ? ZetaRadius.minimal : ZetaRadius.none,
+        borderRadius: context.rounded ? ZetaRadius.minimal : ZetaRadius.none,
         onTap: widget.onTap,
         child: IndexedStack(
           alignment: Alignment.center,

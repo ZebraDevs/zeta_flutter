@@ -5,10 +5,11 @@ import 'package:intl/intl.dart';
 import '../../../zeta_flutter.dart';
 
 /// Chat item widget that can be dragged to reveal contextual actions.
-class ZetaChatItem extends StatelessWidget {
+class ZetaChatItem extends ZetaStatelessWidget {
   /// Creates a [ZetaChatItem]
   const ZetaChatItem({
     super.key,
+    super.rounded,
     this.highlighted = false,
     this.time,
     this.timeFormat,
@@ -33,7 +34,7 @@ class ZetaChatItem extends StatelessWidget {
   /// Normally the person name.
   final Widget title;
 
-  /// Normally the begining of the chat message.
+  /// Normally the beginning of the chat message.
   final Widget subtitle;
 
   /// Normally [ZetaAvatar].
@@ -42,7 +43,7 @@ class ZetaChatItem extends StatelessWidget {
   /// The time when the message is sent. It applies default date format - [timeFormat].
   final DateTime? time;
 
-  /// The dafault date format.
+  /// The default date format.
   final DateFormat? timeFormat;
 
   /// Whether to show warning icon.
@@ -125,167 +126,171 @@ class ZetaChatItem extends StatelessWidget {
         ),
     ];
 
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        return Slidable(
-          enabled: slidableActions.isNotEmpty,
-          endActionPane: ActionPane(
-            extentRatio: _getSlidableExtend(
-              slidableActionsCount: slidableActions.length,
-              maxWidth: constraints.maxWidth,
+    return ZetaRoundedScope(
+      rounded: context.rounded,
+      child: LayoutBuilder(
+        builder: (context, constraints) {
+          return Slidable(
+            enabled: slidableActions.isNotEmpty,
+            endActionPane: ActionPane(
+              extentRatio: _getSlidableExtend(
+                slidableActionsCount: slidableActions.length,
+                maxWidth: constraints.maxWidth,
+              ),
+              motion: const ScrollMotion(),
+              children: slidableActions,
             ),
-            motion: const ScrollMotion(),
-            children: slidableActions,
-          ),
-          child: ColoredBox(
-            color: highlighted ? colors.blue.shade10 : colors.surfacePrimary,
-            child: Material(
-              color: Colors.transparent,
-              child: InkWell(
-                onTap: onTap,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: ZetaSpacing.medium,
-                    vertical: ZetaSpacing.small,
-                  ),
-                  child: Row(
-                    children: [
-                      leading,
-                      Flexible(
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: ZetaSpacing.medium),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Row(
-                                children: [
-                                  if (highlighted)
-                                    Container(
-                                      margin: const EdgeInsets.only(
-                                        right: ZetaSpacing.minimum,
-                                      ),
-                                      height: ZetaSpacing.small,
-                                      width: ZetaSpacing.small,
-                                      decoration: BoxDecoration(
-                                        color: colors.primary,
-                                        shape: BoxShape.circle,
-                                      ),
-                                    ),
-                                  Flexible(
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Flexible(
-                                          child: DefaultTextStyle(
-                                            maxLines: 1,
-                                            overflow: TextOverflow.ellipsis,
-                                            style: (highlighted ? ZetaTextStyles.labelLarge : ZetaTextStyles.bodyMedium)
-                                                .copyWith(
-                                              color: colors.textDefault,
-                                            ),
-                                            child: title,
-                                          ),
+            child: ColoredBox(
+              color: highlighted ? colors.blue.shade10 : colors.surfacePrimary,
+              child: Material(
+                color: Colors.transparent,
+                child: InkWell(
+                  onTap: onTap,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: ZetaSpacing.medium,
+                      vertical: ZetaSpacing.small,
+                    ),
+                    child: Row(
+                      children: [
+                        leading,
+                        Flexible(
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: ZetaSpacing.medium),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  children: [
+                                    if (highlighted)
+                                      Container(
+                                        margin: const EdgeInsets.only(
+                                          right: ZetaSpacing.minimum,
                                         ),
-                                        Row(
-                                          children: [
-                                            if (time != null)
-                                              Text(
-                                                _dateFormat.format(time!),
-                                                style: ZetaTextStyles.bodyXSmall,
+                                        height: ZetaSpacing.small,
+                                        width: ZetaSpacing.small,
+                                        decoration: BoxDecoration(
+                                          color: colors.primary,
+                                          shape: BoxShape.circle,
+                                        ),
+                                      ),
+                                    Flexible(
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Flexible(
+                                            child: DefaultTextStyle(
+                                              maxLines: 1,
+                                              overflow: TextOverflow.ellipsis,
+                                              style:
+                                                  (highlighted ? ZetaTextStyles.labelLarge : ZetaTextStyles.bodyMedium)
+                                                      .copyWith(
+                                                color: colors.textDefault,
                                               ),
-                                            IconTheme(
-                                              data: const IconThemeData(
-                                                size: ZetaSpacing.large,
-                                              ),
-                                              child: Row(
-                                                children: [
-                                                  ...additionalIcons,
-                                                  if (enabledWarningIcon)
-                                                    Padding(
-                                                      padding: const EdgeInsets.only(
-                                                        left: ZetaSpacing.minimum,
-                                                      ),
-                                                      child: Icon(
-                                                        ZetaIcons.info_round,
-                                                        color: colors.cool.shade70,
-                                                      ),
-                                                    ),
-                                                  if (enabledWarningIcon)
-                                                    Padding(
-                                                      padding: const EdgeInsets.only(
-                                                        left: ZetaSpacing.minimum,
-                                                      ),
-                                                      child: Icon(
-                                                        Icons.circle_notifications,
-                                                        color: colors.surfaceNegative,
-                                                      ),
-                                                    ),
-                                                  if (_count != null)
-                                                    Container(
-                                                      margin: const EdgeInsets.only(
-                                                        left: ZetaSpacing.minimum,
-                                                      ),
-                                                      padding: const EdgeInsets.symmetric(
-                                                        horizontal: ZetaSpacing.small,
-                                                      ),
-                                                      decoration: BoxDecoration(
-                                                        color: colors.primary,
-                                                        borderRadius: ZetaRadius.full,
-                                                      ),
-                                                      child: Text(
-                                                        _count!,
-                                                        style: ZetaTextStyles.labelSmall.copyWith(
-                                                          color: colors.textInverse,
+                                              child: title,
+                                            ),
+                                          ),
+                                          Row(
+                                            children: [
+                                              if (time != null)
+                                                Text(
+                                                  _dateFormat.format(time!),
+                                                  style: ZetaTextStyles.bodyXSmall,
+                                                ),
+                                              IconTheme(
+                                                data: const IconThemeData(
+                                                  size: ZetaSpacing.large,
+                                                ),
+                                                child: Row(
+                                                  children: [
+                                                    ...additionalIcons,
+                                                    if (enabledWarningIcon)
+                                                      Padding(
+                                                        padding: const EdgeInsets.only(
+                                                          left: ZetaSpacing.minimum,
+                                                        ),
+                                                        child: Icon(
+                                                          ZetaIcons.info_round,
+                                                          color: colors.cool.shade70,
                                                         ),
                                                       ),
-                                                    ),
-                                                ],
+                                                    if (enabledWarningIcon)
+                                                      Padding(
+                                                        padding: const EdgeInsets.only(
+                                                          left: ZetaSpacing.minimum,
+                                                        ),
+                                                        child: Icon(
+                                                          Icons.circle_notifications,
+                                                          color: colors.surfaceNegative,
+                                                        ),
+                                                      ),
+                                                    if (_count != null)
+                                                      Container(
+                                                        margin: const EdgeInsets.only(
+                                                          left: ZetaSpacing.minimum,
+                                                        ),
+                                                        padding: const EdgeInsets.symmetric(
+                                                          horizontal: ZetaSpacing.small,
+                                                        ),
+                                                        decoration: BoxDecoration(
+                                                          color: colors.primary,
+                                                          borderRadius: ZetaRadius.full,
+                                                        ),
+                                                        child: Text(
+                                                          _count!,
+                                                          style: ZetaTextStyles.labelSmall.copyWith(
+                                                            color: colors.textInverse,
+                                                          ),
+                                                        ),
+                                                      ),
+                                                  ],
+                                                ),
                                               ),
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                crossAxisAlignment: CrossAxisAlignment.end,
-                                children: [
-                                  Flexible(
-                                    child: DefaultTextStyle(
-                                      maxLines: 2,
-                                      overflow: TextOverflow.ellipsis,
-                                      style: ZetaTextStyles.bodySmall.copyWith(
-                                        color: colors.textSubtle,
+                                            ],
+                                          ),
+                                        ],
                                       ),
-                                      child: subtitle,
                                     ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(
-                                      left: ZetaSpacing.minimum,
+                                  ],
+                                ),
+                                Row(
+                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                  children: [
+                                    Flexible(
+                                      child: DefaultTextStyle(
+                                        maxLines: 2,
+                                        overflow: TextOverflow.ellipsis,
+                                        style: ZetaTextStyles.bodySmall.copyWith(
+                                          color: colors.textSubtle,
+                                        ),
+                                        child: subtitle,
+                                      ),
                                     ),
-                                    child: Icon(
-                                      starred ? ZetaIcons.star_sharp : ZetaIcons.star_outline_sharp,
-                                      color: starred ? colors.yellow.shade60 : null,
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                        left: ZetaSpacing.minimum,
+                                      ),
+                                      child: Icon(
+                                        starred ? ZetaIcons.star_sharp : ZetaIcons.star_outline_sharp,
+                                        color: starred ? colors.yellow.shade60 : null,
+                                      ),
                                     ),
-                                  ),
-                                ],
-                              ),
-                            ],
+                                  ],
+                                ),
+                              ],
+                            ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
-        );
-      },
+          );
+        },
+      ),
     );
   }
 

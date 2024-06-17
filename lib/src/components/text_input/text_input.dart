@@ -20,6 +20,7 @@ class ZetaTextInput extends ZetaFormField<String> {
     super.disabled = false,
     super.requirementLevel = ZetaFormFieldRequirement.none,
     super.initialValue,
+    super.rounded,
     this.label,
     this.hintText,
     this.placeholder,
@@ -29,7 +30,6 @@ class ZetaTextInput extends ZetaFormField<String> {
     this.suffix,
     this.prefix,
     this.size = ZetaWidgetSize.medium,
-    this.rounded = true,
     this.inputFormatters,
     this.prefixText,
     this.prefixTextStyle,
@@ -82,9 +82,6 @@ class ZetaTextInput extends ZetaFormField<String> {
 
   /// The size of the input.
   final ZetaWidgetSize size;
-
-  /// {@macro zeta-component-rounded}
-  final bool rounded;
 
   /// The input formatters given to the text input.
   final List<TextInputFormatter>? inputFormatters;
@@ -210,16 +207,16 @@ class ZetaTextInputState extends State<ZetaTextInput> implements ZetaFormFieldSt
     return null;
   }
 
-  OutlineInputBorder get _baseBorder => OutlineInputBorder(
-        borderRadius: widget.rounded ? ZetaRadius.minimal : ZetaRadius.none,
+  OutlineInputBorder _baseBorder(bool rounded) => OutlineInputBorder(
+        borderRadius: rounded ? ZetaRadius.minimal : ZetaRadius.none,
         borderSide: BorderSide(color: _hovered ? _colors.borderSelected : _colors.borderSubtle),
       );
 
-  OutlineInputBorder get _focusedBorder => _baseBorder.copyWith(
+  OutlineInputBorder _focusedBorder(bool rounded) => _baseBorder(rounded).copyWith(
         borderSide: BorderSide(color: _colors.primary.shade50, width: ZetaSpacingBase.x0_5),
       ); // TODO(mikecoomber): change to colors.borderPrimary when added
 
-  OutlineInputBorder get _errorBorder => _baseBorder.copyWith(
+  OutlineInputBorder _errorBorder(bool rounded) => _baseBorder(rounded).copyWith(
         borderSide: BorderSide(color: _colors.error, width: ZetaSpacingBase.x0_5),
       );
 
@@ -258,75 +255,80 @@ class ZetaTextInputState extends State<ZetaTextInput> implements ZetaFormFieldSt
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        if (widget.label != null) ...[
-          _Label(
-            label: widget.label!,
-            requirementLevel: widget.requirementLevel,
-            disabled: widget.disabled,
-          ),
-          const SizedBox(height: ZetaSpacing.minimum),
-        ],
-        MouseRegion(
-          onEnter: !widget.disabled
-              ? (_) => setState(() {
-                    _hovered = true;
-                  })
-              : null,
-          onExit: !widget.disabled
-              ? (_) => setState(() {
-                    _hovered = false;
-                  })
-              : null,
-          child: TextFormField(
-            enabled: !widget.disabled,
-            key: _key,
-            controller: _controller,
-            inputFormatters: widget.inputFormatters,
-            validator: (val) {
-              setState(() {
-                _errorText = widget.validator?.call(val);
-              });
-              return _errorText;
-            },
-            onFieldSubmitted: widget.onSubmit,
-            textAlignVertical: TextAlignVertical.center,
-            onChanged: widget.onChange,
-            style: _baseTextStyle,
-            cursorErrorColor: _colors.error,
-            decoration: InputDecoration(
-              isDense: true,
-              contentPadding: _contentPadding,
-              filled: true,
-              prefixIcon: _prefix,
-              prefixIconConstraints: widget.prefixText != null ? _affixConstraints : null,
-              suffixIcon: _suffix,
-              suffixIconConstraints: _affixConstraints,
-              focusColor: _backgroundColor,
-              hoverColor: _backgroundColor,
-              fillColor: _backgroundColor,
-              enabledBorder: _baseBorder,
-              disabledBorder: _baseBorder,
-              focusedBorder: _focusedBorder,
-              focusedErrorBorder: _errorBorder,
-              errorBorder: widget.disabled ? _baseBorder : _errorBorder,
-              hintText: widget.placeholder,
-              errorText: _errorText,
-              hintStyle: _baseTextStyle,
-              errorStyle: const TextStyle(height: 0.001, color: Colors.transparent),
+    final rounded = context.rounded;
+
+    return ZetaRoundedScope(
+      rounded: rounded,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          if (widget.label != null) ...[
+            _Label(
+              label: widget.label!,
+              requirementLevel: widget.requirementLevel,
+              disabled: widget.disabled,
+            ),
+            const SizedBox(height: ZetaSpacing.minimum),
+          ],
+          MouseRegion(
+            onEnter: !widget.disabled
+                ? (_) => setState(() {
+                      _hovered = true;
+                    })
+                : null,
+            onExit: !widget.disabled
+                ? (_) => setState(() {
+                      _hovered = false;
+                    })
+                : null,
+            child: TextFormField(
+              enabled: !widget.disabled,
+              key: _key,
+              controller: _controller,
+              inputFormatters: widget.inputFormatters,
+              validator: (val) {
+                setState(() {
+                  _errorText = widget.validator?.call(val);
+                });
+                return _errorText;
+              },
+              onFieldSubmitted: widget.onSubmit,
+              textAlignVertical: TextAlignVertical.center,
+              onChanged: widget.onChange,
+              style: _baseTextStyle,
+              cursorErrorColor: _colors.error,
+              decoration: InputDecoration(
+                isDense: true,
+                contentPadding: _contentPadding,
+                filled: true,
+                prefixIcon: _prefix,
+                prefixIconConstraints: widget.prefixText != null ? _affixConstraints : null,
+                suffixIcon: _suffix,
+                suffixIconConstraints: _affixConstraints,
+                focusColor: _backgroundColor,
+                hoverColor: _backgroundColor,
+                fillColor: _backgroundColor,
+                enabledBorder: _baseBorder(rounded),
+                disabledBorder: _baseBorder(rounded),
+                focusedBorder: _focusedBorder(rounded),
+                focusedErrorBorder: _errorBorder(rounded),
+                errorBorder: widget.disabled ? _baseBorder(rounded) : _errorBorder(rounded),
+                hintText: widget.placeholder,
+                errorText: _errorText,
+                hintStyle: _baseTextStyle,
+                errorStyle: const TextStyle(height: 0.001, color: Colors.transparent),
+              ),
             ),
           ),
-        ),
-        _HintText(
-          disabled: widget.disabled,
-          rounded: widget.rounded,
-          hintText: widget.hintText,
-          errorText: _errorText,
-        ),
-      ],
+          _HintText(
+            disabled: widget.disabled,
+            rounded: rounded,
+            hintText: widget.hintText,
+            errorText: _errorText,
+          ),
+        ],
+      ),
     );
   }
 }

@@ -13,28 +13,25 @@ enum ZetaTagDirection {
 }
 
 ///Zeta Tag
-class ZetaTag extends StatelessWidget {
+class ZetaTag extends ZetaStatelessWidget {
   ///Constructs [ZetaTag].
   const ZetaTag({
     super.key,
     this.direction = ZetaTagDirection.left,
     required this.label,
-    this.rounded = true,
+    super.rounded,
   });
 
   /// Constructs left facing [ZetaTag].
-  const ZetaTag.left({super.key, required this.label, this.rounded = true}) : direction = ZetaTagDirection.left;
+  const ZetaTag.left({super.key, required this.label, super.rounded}) : direction = ZetaTagDirection.left;
 
   ///Constructs right facing [ZetaTag].
-  const ZetaTag.right({super.key, required this.label, this.rounded = true}) : direction = ZetaTagDirection.right;
+  const ZetaTag.right({super.key, required this.label, super.rounded}) : direction = ZetaTagDirection.right;
 
   ///Determines the direction of the tag
   ///
   /// Defaults to left
   final ZetaTagDirection direction;
-
-  /// {@macro zeta-component-rounded}
-  final bool rounded;
 
   ///tag label
   final String label;
@@ -50,7 +47,7 @@ class ZetaTag extends StatelessWidget {
         Container(
           decoration: BoxDecoration(
             color: Zeta.of(context).colors.surfaceHover,
-            borderRadius: _getBorderRadius(),
+            borderRadius: _getBorderRadius(context),
           ),
           height: _containerSize.height,
           constraints: BoxConstraints(minWidth: _containerSize.width),
@@ -72,8 +69,8 @@ class ZetaTag extends StatelessWidget {
     );
   }
 
-  BorderRadius? _getBorderRadius() {
-    if (!rounded) return null;
+  BorderRadius? _getBorderRadius(BuildContext context) {
+    if (!context.rounded) return null;
     if (direction == ZetaTagDirection.right) {
       return const BorderRadius.only(
         topRight: Radius.circular(ZetaSpacingBase.x0_5),
@@ -93,7 +90,7 @@ class ZetaTag extends StatelessWidget {
       painter: _TagPainter(
         color: Zeta.of(context).colors.surfaceHover,
         direction: direction,
-        rounded: rounded,
+        rounded: context.rounded,
       ),
     );
   }

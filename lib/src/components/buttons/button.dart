@@ -11,7 +11,7 @@ class ZetaButton extends StatelessWidget {
     this.onPressed,
     this.type = ZetaButtonType.primary,
     this.size = ZetaWidgetSize.medium,
-    this.borderType = ZetaWidgetBorder.rounded,
+    this.borderType,
     this.leadingIcon,
     this.trailingIcon,
     super.key,
@@ -22,7 +22,7 @@ class ZetaButton extends StatelessWidget {
     required this.label,
     this.onPressed,
     this.size = ZetaWidgetSize.medium,
-    this.borderType = ZetaWidgetBorder.rounded,
+    this.borderType,
     this.leadingIcon,
     this.trailingIcon,
     super.key,
@@ -33,7 +33,7 @@ class ZetaButton extends StatelessWidget {
     required this.label,
     this.onPressed,
     this.size = ZetaWidgetSize.medium,
-    this.borderType = ZetaWidgetBorder.rounded,
+    this.borderType,
     this.leadingIcon,
     this.trailingIcon,
     super.key,
@@ -44,7 +44,7 @@ class ZetaButton extends StatelessWidget {
     required this.label,
     this.onPressed,
     this.size = ZetaWidgetSize.medium,
-    this.borderType = ZetaWidgetBorder.rounded,
+    this.borderType,
     this.leadingIcon,
     this.trailingIcon,
     super.key,
@@ -55,7 +55,7 @@ class ZetaButton extends StatelessWidget {
     required this.label,
     this.onPressed,
     this.size = ZetaWidgetSize.medium,
-    this.borderType = ZetaWidgetBorder.rounded,
+    this.borderType,
     this.leadingIcon,
     this.trailingIcon,
     super.key,
@@ -66,7 +66,7 @@ class ZetaButton extends StatelessWidget {
     required this.label,
     this.onPressed,
     this.size = ZetaWidgetSize.medium,
-    this.borderType = ZetaWidgetBorder.rounded,
+    this.borderType,
     this.leadingIcon,
     this.trailingIcon,
     super.key,
@@ -77,7 +77,7 @@ class ZetaButton extends StatelessWidget {
     required this.label,
     this.onPressed,
     this.size = ZetaWidgetSize.medium,
-    this.borderType = ZetaWidgetBorder.rounded,
+    this.borderType,
     this.leadingIcon,
     this.trailingIcon,
     super.key,
@@ -88,7 +88,7 @@ class ZetaButton extends StatelessWidget {
     required this.label,
     this.onPressed,
     this.size = ZetaWidgetSize.medium,
-    this.borderType = ZetaWidgetBorder.rounded,
+    this.borderType,
     this.leadingIcon,
     this.trailingIcon,
     super.key,
@@ -107,7 +107,7 @@ class ZetaButton extends StatelessWidget {
 
   /// Whether or not the button is sharp or rounded
   /// Defaults to [ZetaWidgetBorder.rounded]
-  final ZetaWidgetBorder borderType;
+  final ZetaWidgetBorder? borderType;
 
   /// Size of the button. Defaults to large.
   final ZetaWidgetSize size;
@@ -143,13 +143,17 @@ class ZetaButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final zeta = Zeta.of(context);
-    final colors = zeta.colors;
+    final colors = Zeta.of(context).colors;
     return ConstrainedBox(
       constraints: BoxConstraints(minHeight: _minConstraints, minWidth: _minConstraints),
       child: FilledButton(
         onPressed: onPressed,
-        style: buttonStyle(colors, borderType, type, null),
+        style: buttonStyle(
+          colors,
+          borderType ?? (context.rounded ? ZetaWidgetBorder.rounded : ZetaWidgetBorder.sharp),
+          type,
+          null,
+        ),
         child: SelectionContainer.disabled(
           child: Row(
             mainAxisSize: MainAxisSize.min,

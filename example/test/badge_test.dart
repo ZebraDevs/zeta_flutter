@@ -17,7 +17,7 @@ void main() {
     final zetaBadgeFinder = find.byType(ZetaLabel);
     final ZetaLabel badge = tester.firstWidget(zetaBadgeFinder);
 
-    expect(badge.rounded, true);
+    expect(badge.rounded, null);
     expect(badge.label, 'Test Label');
     expect(badge.status, ZetaWidgetStatus.warning);
   });

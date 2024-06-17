@@ -4,20 +4,17 @@ import 'package:flutter/material.dart';
 import '../../../zeta_flutter.dart';
 
 /// Component [ZetaFilterSelection]
-class ZetaFilterSelection extends StatelessWidget {
+class ZetaFilterSelection extends ZetaStatelessWidget {
   /// Constructor for the component [ZetaFilterSelection]
   const ZetaFilterSelection({
     super.key,
+    super.rounded,
     required this.items,
-    this.rounded = true,
     this.onPressed,
   });
 
   /// The filter items - list of [ZetaFilterChip].
   final List<ZetaFilterChip> items;
-
-  /// {@macro zeta-component-rounded}
-  final bool rounded;
 
   /// Called on filter button pressed.
   final VoidCallback? onPressed;
@@ -35,7 +32,7 @@ class ZetaFilterSelection extends StatelessWidget {
               visualDensity: VisualDensity.compact,
               onPressed: onPressed,
               icon: Icon(
-                rounded ? ZetaIcons.filter_round : ZetaIcons.filter_sharp,
+                context.rounded ? ZetaIcons.filter_round : ZetaIcons.filter_sharp,
                 size: ZetaSpacing.xl_2,
               ),
             ),

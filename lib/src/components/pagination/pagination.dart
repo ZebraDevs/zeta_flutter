@@ -18,15 +18,15 @@ enum ZetaPaginationType {
 }
 
 /// Pagination is used to switch between pages.
-class ZetaPagination extends StatefulWidget {
+class ZetaPagination extends ZetaStatefulWidget {
   /// Creates a new [ZetaPagination]
   const ZetaPagination({
     required this.pages,
     this.type = ZetaPaginationType.standard,
     this.onChange,
     this.currentPage = 1,
-    this.rounded = true,
     @Deprecated('Set onChange to null. ' 'Disabled is deprecated as of 0.11.0') bool disabled = false,
+    super.rounded,
     super.key,
   })  : assert(
           pages > 0,
@@ -44,9 +44,6 @@ class ZetaPagination extends StatefulWidget {
   ///
   /// Defaults to 1
   final int currentPage;
-
-  /// {@macro zeta-component-rounded}
-  final bool rounded;
 
   /// A callback executed every time the page changes.
   ///
@@ -107,7 +104,6 @@ class _ZetaPaginationState extends State<ZetaPagination> {
       value: value,
       onPressed: () => _onItemPressed(value),
       selected: _currentPage == value,
-      rounded: widget.rounded,
       disabled: _disabled,
     );
   }
@@ -175,6 +171,8 @@ class _ZetaPaginationState extends State<ZetaPagination> {
 
   Widget get paginationDropdown {
     final colors = Zeta.of(context).colors;
+    final rounded = context.rounded;
+
     final List<DropdownMenuItem<int>> items = List.generate(
       widget.pages,
       (i) => DropdownMenuItem(
@@ -186,7 +184,7 @@ class _ZetaPaginationState extends State<ZetaPagination> {
       height: ZetaSpacing.xl_6,
       decoration: BoxDecoration(
         border: Border.all(color: colors.borderSubtle),
-        borderRadius: widget.rounded ? ZetaRadius.minimal : ZetaRadius.none,
+        borderRadius: rounded ? ZetaRadius.minimal : ZetaRadius.none,
       ),
       // TODO(mikecoomber): Replace with Zeta Dropdown
       child: DropdownButton(
@@ -194,7 +192,7 @@ class _ZetaPaginationState extends State<ZetaPagination> {
         onChanged: (val) => _onItemPressed(val!),
         value: _currentPage,
         icon: Icon(
-          widget.rounded ? ZetaIcons.expand_more_round : ZetaIcons.expand_more_sharp,
+          rounded ? ZetaIcons.expand_more_round : ZetaIcons.expand_more_sharp,
         ).paddingStart(ZetaSpacing.small),
         underline: const SizedBox(),
         style: Theme.of(context).textTheme.bodyLarge?.copyWith(
@@ -209,51 +207,51 @@ class _ZetaPaginationState extends State<ZetaPagination> {
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        final showDropdown =
-            widget.type == ZetaPaginationType.dropdown || constraints.deviceType == DeviceType.mobilePortrait;
+    return ZetaRoundedScope(
+      rounded: context.rounded,
+      child: LayoutBuilder(
+        builder: (context, constraints) {
+          final showDropdown =
+              widget.type == ZetaPaginationType.dropdown || constraints.deviceType == DeviceType.mobilePortrait;
+          final rounded = context.rounded;
 
-        final List<Widget> buttons = [
-          if (!showDropdown)
+          final List<Widget> buttons = [
+            if (!showDropdown)
+              _PaginationItem(
+                icon: rounded ? ZetaIcons.first_page_round : ZetaIcons.first_page_sharp,
+                onPressed: () => _onItemPressed(1),
+                disabled: _disabled,
+              ),
             _PaginationItem(
-              icon: widget.rounded ? ZetaIcons.first_page_round : ZetaIcons.first_page_sharp,
-              onPressed: () => _onItemPressed(1),
+              icon: rounded ? ZetaIcons.chevron_left_round : ZetaIcons.chevron_left_sharp,
+              onPressed: () => _onItemPressed(max(1, _currentPage - 1)),
               disabled: _disabled,
-              rounded: widget.rounded,
             ),
-          _PaginationItem(
-            icon: widget.rounded ? ZetaIcons.chevron_left_round : ZetaIcons.chevron_left_sharp,
-            onPressed: () => _onItemPressed(max(1, _currentPage - 1)),
-            disabled: _disabled,
-            rounded: widget.rounded,
-          ),
-          if (!showDropdown) ...numberedPaginationItems else paginationDropdown,
-          _PaginationItem(
-            icon: widget.rounded ? ZetaIcons.chevron_right_round : ZetaIcons.chevron_right_sharp,
-            onPressed: () => _onItemPressed(
-              min(widget.pages, _currentPage + 1),
-            ),
-            disabled: _disabled,
-            rounded: widget.rounded,
-          ),
-          if (!showDropdown)
+            if (!showDropdown) ...numberedPaginationItems else paginationDropdown,
             _PaginationItem(
-              icon: widget.rounded ? ZetaIcons.last_page_round : ZetaIcons.last_page_sharp,
+              icon: rounded ? ZetaIcons.chevron_right_round : ZetaIcons.chevron_right_sharp,
               onPressed: () => _onItemPressed(
-                widget.pages,
+                min(widget.pages, _currentPage + 1),
               ),
               disabled: _disabled,
-              rounded: widget.rounded,
             ),
-        ];
+            if (!showDropdown)
+              _PaginationItem(
+                icon: rounded ? ZetaIcons.last_page_round : ZetaIcons.last_page_sharp,
+                onPressed: () => _onItemPressed(
+                  widget.pages,
+                ),
+                disabled: _disabled,
+              ),
+          ];
 
-        return Row(
-          key: _paginationKey,
-          mainAxisSize: MainAxisSize.min,
-          children: buttons.divide(const SizedBox(width: ZetaSpacing.small)).toList(),
-        );
-      },
+          return Row(
+            key: _paginationKey,
+            mainAxisSize: MainAxisSize.min,
+            children: buttons.divide(const SizedBox(width: ZetaSpacing.small)).toList(),
+          );
+        },
+      ),
     );
   }
 }
@@ -261,7 +259,6 @@ class _ZetaPaginationState extends State<ZetaPagination> {
 class _PaginationItem extends StatelessWidget {
   const _PaginationItem({
     required this.onPressed,
-    required this.rounded,
     required this.disabled,
     this.selected = false,
     this.value,
@@ -273,11 +270,11 @@ class _PaginationItem extends StatelessWidget {
   final IconData? icon;
   final bool disabled;
   final bool selected;
-  final bool rounded;
 
   @override
   Widget build(BuildContext context) {
     final colors = Zeta.of(context).colors;
+    final rounded = context.rounded;
 
     late final Widget child;
 
@@ -340,8 +337,7 @@ class _PaginationItem extends StatelessWidget {
       ..add(IntProperty('value', value))
       ..add(DiagnosticsProperty<IconData?>('icon', icon))
       ..add(DiagnosticsProperty<bool>('disabled', disabled))
-      ..add(DiagnosticsProperty<bool>('selected', selected))
-      ..add(DiagnosticsProperty<bool>('rounded', rounded));
+      ..add(DiagnosticsProperty<bool>('selected', selected));
   }
 }
 

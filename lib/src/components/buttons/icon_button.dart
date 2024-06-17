@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 import '../../../zeta_flutter.dart';
 
 /// Component [ZetaIconButton]
-class ZetaIconButton extends StatelessWidget {
+class ZetaIconButton extends ZetaStatelessWidget {
   /// Constructor for [ZetaIconButton]
   const ZetaIconButton({
     super.key,
     this.onPressed,
-    this.borderType = ZetaWidgetBorder.rounded,
+    this.borderType,
     this.type = ZetaButtonType.primary,
     this.size = ZetaWidgetSize.medium,
     this.icon = ZetaIcons.more_horizontal_round,
@@ -20,7 +20,7 @@ class ZetaIconButton extends StatelessWidget {
     required this.icon,
     this.onPressed,
     this.size = ZetaWidgetSize.medium,
-    this.borderType = ZetaWidgetBorder.rounded,
+    this.borderType,
     super.key,
   }) : type = ZetaButtonType.primary;
 
@@ -29,7 +29,7 @@ class ZetaIconButton extends StatelessWidget {
     required this.icon,
     this.onPressed,
     this.size = ZetaWidgetSize.medium,
-    this.borderType = ZetaWidgetBorder.rounded,
+    this.borderType,
     super.key,
   }) : type = ZetaButtonType.secondary;
 
@@ -38,7 +38,7 @@ class ZetaIconButton extends StatelessWidget {
     required this.icon,
     this.onPressed,
     this.size = ZetaWidgetSize.medium,
-    this.borderType = ZetaWidgetBorder.rounded,
+    this.borderType,
     super.key,
   }) : type = ZetaButtonType.positive;
 
@@ -46,7 +46,7 @@ class ZetaIconButton extends StatelessWidget {
   const ZetaIconButton.negative({
     this.onPressed,
     this.size = ZetaWidgetSize.medium,
-    this.borderType = ZetaWidgetBorder.rounded,
+    this.borderType,
     required this.icon,
     super.key,
   }) : type = ZetaButtonType.negative;
@@ -56,7 +56,7 @@ class ZetaIconButton extends StatelessWidget {
     required this.icon,
     this.onPressed,
     this.size = ZetaWidgetSize.medium,
-    this.borderType = ZetaWidgetBorder.rounded,
+    this.borderType,
     super.key,
   }) : type = ZetaButtonType.outline;
 
@@ -65,7 +65,7 @@ class ZetaIconButton extends StatelessWidget {
     required this.icon,
     this.onPressed,
     this.size = ZetaWidgetSize.medium,
-    this.borderType = ZetaWidgetBorder.rounded,
+    this.borderType,
     super.key,
   }) : type = ZetaButtonType.outlineSubtle;
 
@@ -74,7 +74,7 @@ class ZetaIconButton extends StatelessWidget {
     required this.icon,
     this.onPressed,
     this.size = ZetaWidgetSize.medium,
-    this.borderType = ZetaWidgetBorder.rounded,
+    this.borderType,
     super.key,
   }) : type = ZetaButtonType.text;
 
@@ -91,7 +91,7 @@ class ZetaIconButton extends StatelessWidget {
 
   /// Whether or not the button is sharp or rounded
   /// Defaults to rounded
-  final ZetaWidgetBorder borderType;
+  final ZetaWidgetBorder? borderType;
 
   /// Size of the button. Defaults to large.
   final ZetaWidgetSize size;
@@ -102,7 +102,12 @@ class ZetaIconButton extends StatelessWidget {
 
     return FilledButton(
       onPressed: onPressed,
-      style: buttonStyle(colors, borderType, type, null),
+      style: buttonStyle(
+        colors,
+        borderType ?? (context.rounded ? ZetaWidgetBorder.rounded : ZetaWidgetBorder.sharp),
+        type,
+        null,
+      ),
       child: SelectionContainer.disabled(
         child: Icon(
           icon,

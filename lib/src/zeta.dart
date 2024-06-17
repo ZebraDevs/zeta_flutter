@@ -51,6 +51,9 @@ class Zeta extends InheritedWidget {
     }
   }
 
+  /// {@macro zeta-component-rounded}
+  bool get rounded => themeData.rounded;
+
   /// Gets the brightness setting for the current theme.
   ///
   /// If the theme mode is set to 'system', it will return the brightness that ties with the device's system theme setting.
@@ -110,6 +113,7 @@ class Zeta extends InheritedWidget {
       ..add(DiagnosticsProperty<ZetaThemeData>('themeData', themeData))
       ..add(DiagnosticsProperty<ZetaColors>('colors', colors))
       ..add(EnumProperty<Brightness>('mediaBrightness', _mediaBrightness))
-      ..add(EnumProperty<Brightness>('brightness', brightness));
+      ..add(EnumProperty<Brightness>('brightness', brightness))
+      ..add(DiagnosticsProperty<bool>('rounded', rounded));
   }
 }

@@ -91,7 +91,6 @@ class ZetaIndicator extends StatelessWidget {
     final Color backgroundColor = (type == ZetaIndicatorType.icon ? zetaColors.blue : zetaColors.surfaceNegative);
     final Color foregroundColor = backgroundColor.onColor;
     final sizePixels = _getSizePixels(size, type);
-
     return Container(
       width: sizePixels + ZetaSpacing.minimum,
       height: sizePixels + ZetaSpacing.minimum,

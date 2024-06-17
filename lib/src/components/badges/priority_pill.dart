@@ -46,22 +46,19 @@ extension on ZetaPriorityPillType {
 }
 
 /// This badge is used to indicate the order of importance.
-class ZetaPriorityPill extends StatelessWidget {
+class ZetaPriorityPill extends ZetaStatelessWidget {
   ///Constructs [ZetaPriorityPill]
   const ZetaPriorityPill({
     this.index,
     @Deprecated('Use label instead. ' 'This variable has been renamed as of 0.11.0') this.priority,
     this.label,
-    this.rounded = true,
     this.isBadge = false,
     this.type = ZetaPriorityPillType.urgent,
     this.size = ZetaPriorityPillSize.large,
     this.customColor,
+    super.rounded,
     super.key,
   });
-
-  /// {@macro zeta-component-rounded}
-  final bool rounded;
 
   /// Leading number / character in component. Will be truncated to single character.
   ///
@@ -102,7 +99,7 @@ class ZetaPriorityPill extends StatelessWidget {
     final ZetaColorSwatch color = customColor ?? type.color(context);
     final size = this.size == ZetaPriorityPillSize.small ? ZetaSpacing.xl_1 : ZetaSpacing.xl_3;
     final label = this.label ?? priority;
-
+    final rounded = context.rounded;
     return DecoratedBox(
       decoration: BoxDecoration(
         borderRadius: rounded ? ZetaRadius.full : ZetaRadius.none,
