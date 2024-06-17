@@ -9,7 +9,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0
           ref: ${{ github.head_ref }}
           repository: ${{github.event.pull_request.head.repo.full_name}}
       - name: Get branch name
@@ -19,13 +18,45 @@ jobs:
       - name: Setup flutter
         run: flutter pub get
       - name: Format code
+        id: format
         run: dart format . -l 120
       - name: Apply linter auto-fixes
+        id: lint
         run: dart fix --apply
       - name: Check for un-fixable issues
-        run: flutter analyze
+        id: fix
+        run: |
+
+          # Allows code to run after an error.
+          set -e
+
+          # Runs flutter analyze; saves output and if it fails.
+          out="$(flutter analyze)" || failed='true'
+
+          echo "$out"
+
+          # Saves output to either success or failure variables.
+          if [ "$failed" == "true" ]; then
+            echo "FAILURE=true" >> $GITHUB_OUTPUT
+          fi
       - name: Run tests
-        run: cd example && flutter test
+        id: test
+        run: |
+
+          cd example
+
+          # Allows code to run after an error.
+          set -e
+
+          # Runs flutter test; saves output and if it fails.
+          out=$(flutter test) || failed='true'
+
+          echo "$out"
+
+          # Saves output to either success or failure variables.
+          if [ "$failed" == "true" ]; then
+            echo "FAILURE=true" >> $GITHUB_OUTPUT
+          fi
       - name: Check for modified files
         id: git-check
         run: echo "modified=$(if [ -n "$(git status --porcelain)" ]; then echo "true"; else echo "false"; fi)" >>  $GITHUB_ENV
@@ -37,3 +68,39 @@ jobs:
           git add -A
           git commit -m '[automated commit] lint format and import sort'
           git push
+
+      - name: Print outputs
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          template='<h1>PR Checks complete</h1></br></br>✅ - Linting</br>'
+
+
+          if [ -n "${{steps.fix.outputs.FAILURE}}" ]; then
+            template="$template ⛔️ - Problems found in code. To replicate, run dart fix</br>"
+          else 
+            template="$template ✅ - No errors found in code</br>"
+          fi
+
+
+          if [ -n "${{steps.test.outputs.FAILURE}}" ]; then
+            template="$template ⛔️ - Tests failed. To replicate, run flutter test</br>"
+          else 
+            template="$template ✅ - All tests passed</br>"
+          fi
+
+          echo '-----------------------------------------'
+          echo ${template}
+          echo '-----------------------------------------'
+
+          gh pr comment ${{github.event.pull_request.number}} --body="${template}"  --edit-last 
+
+          # Concatenates failure outputs.
+          fail="${{steps.fix.outputs.FAILURE}}${{steps.test.outputs.FAILURE}}"
+          # Checks if there is any content in the failure variable.
+          if [[ -z "$fail" ]];
+            then
+              exit 0
+            else
+              exit 1
+          fi
