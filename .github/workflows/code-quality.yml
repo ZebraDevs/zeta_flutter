@@ -76,19 +76,19 @@ jobs:
           template='<h2>PR Checks complete</h2>✅ - Linting</br>'
 
           if [ -n "${{steps.fix.outputs.FAILURE}}" ]; then
-            template="$template ⛔️ - Problems found in code. To replicate, run dart fix</br>"
+            template="$template ⛔️ - Problems found in code. To replicate, run <code>dart fix</code></br>"
           else 
             template="$template ✅ - No errors found in code</br>"
           fi
 
           if [ -n "${{steps.test.outputs.FAILURE}}" ]; then
-            template="$template ⛔️ - Tests failed. To replicate, run flutter test</br>"
+            template="$template ⛔️ - Tests failed. To replicate, run <code>flutter test</code></br>"
           else 
             template="$template ✅ - All tests passed</br>"
           fi
 
           # Add / amend comment on PR.
-          gh pr comment ${{github.event.pull_request.number}} --body="${template}"  --edit-last 
+          gh pr comment ${{github.event.pull_request.number}} --body="${template}" --edit-last -R ${{github.repository}} || gh pr comment ${{github.event.pull_request.number}} --body="${template}" -R ${{github.repository}} 
 
           # Concatenates failure outputs.
           fail="${{steps.fix.outputs.FAILURE}}${{steps.test.outputs.FAILURE}}"
