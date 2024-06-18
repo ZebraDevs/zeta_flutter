@@ -61,7 +61,7 @@ class ZetaDialPad extends StatefulWidget {
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(ObjectFlagProperty<ValueChanged<String>?>.has('onInput', onNumber))
+      ..add(ObjectFlagProperty<ValueChanged<String>?>.has('onNumber', onNumber))
       ..add(IntProperty('buttonsPerRow', buttonsPerRow))
       ..add(DiagnosticsProperty<Map<String, String>>('buttonValues', buttonValues))
       ..add(ObjectFlagProperty<ValueChanged<String>?>.has('onText', onText));
@@ -148,7 +148,7 @@ class ZetaDialPadButton extends StatelessWidget {
     super.key,
     required this.primary,
     this.secondary = '',
-    required this.onTap,
+    this.onTap,
     this.topPadding = 3,
   });
 
@@ -175,8 +175,8 @@ class ZetaDialPadButton extends StatelessWidget {
     super.debugFillProperties(properties);
     properties
       ..add(ObjectFlagProperty<ValueChanged<String>>.has('onTap', onTap))
-      ..add(StringProperty('letters', secondary))
-      ..add(StringProperty('number', primary))
+      ..add(StringProperty('secondary', secondary))
+      ..add(StringProperty('primary', primary))
       ..add(DoubleProperty('topPadding', topPadding));
   }
 

@@ -1,20 +1,15 @@
-import 'dart:io';
+// ignore_for_file: avoid_dynamic_calls
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:path/path.dart' as p;
+import 'package:path/path.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 import '../../../test_utils/test_app.dart';
-import '../../../test_utils/tolerant_comparator.dart';
+import '../../../test_utils/utils.dart';
 
 void main() {
-  setUpAll(() {
-    final testUri = Uri.parse(p.join(Directory.current.path, 'golden').replaceAll(r'\', '/'));
-    goldenFileComparator = TolerantComparator(testUri, tolerance: 0.01);
-  });
-
   group('ZetaTooltip Widget Tests', () {
     testWidgets('renders with default properties', (WidgetTester tester) async {
       await tester.pumpWidget(
@@ -108,7 +103,7 @@ void main() {
       // Verifying the CustomPaint with different arrow directions.
       await expectLater(
         find.byType(ZetaTooltip),
-        matchesGoldenFile(p.join('golden', 'arrow_up.png')),
+        matchesGoldenFile(join(getCurrentPath('tooltip'), 'arrow_up.png')),
       );
     });
 
@@ -128,7 +123,7 @@ void main() {
       // Verifying the CustomPaint with different arrow directions.
       await expectLater(
         find.byType(ZetaTooltip),
-        matchesGoldenFile(p.join('golden', 'arrow_down.png')),
+        matchesGoldenFile(join(getCurrentPath('tooltip'), 'arrow_down.png')),
       );
     });
 
@@ -149,7 +144,7 @@ void main() {
       // Verifying the CustomPaint with different arrow directions.
       await expectLater(
         find.byType(ZetaTooltip),
-        matchesGoldenFile(p.join('golden', 'arrow_left.png')),
+        matchesGoldenFile(join(getCurrentPath('tooltip'), 'arrow_left.png')),
       );
     });
 
@@ -170,7 +165,7 @@ void main() {
       // Verifying the CustomPaint with different arrow directions.
       await expectLater(
         find.byType(ZetaTooltip),
-        matchesGoldenFile(p.join('golden', 'arrow_right.png')),
+        matchesGoldenFile(join(getCurrentPath('tooltip'), 'arrow_right.png')),
       );
     });
 
@@ -224,24 +219,12 @@ void main() {
         child: Text('Rounded tooltip'),
       ).debugFillProperties(diagnostics);
 
-      final rounded = diagnostics.properties.where((p) => p.name == 'rounded').map((p) => p.toDescription()).first;
-      expect(rounded, 'null');
-
-      final padding = diagnostics.properties.where((p) => p.name == 'padding').map((p) => p.toDescription()).first;
-      expect(padding, 'EdgeInsets.all(8.0)');
-
-      final color = diagnostics.properties.where((p) => p.name == 'color').map((p) => p.toDescription()).first;
-      expect(color.toLowerCase(), contains(Colors.amber.hexCode.toLowerCase()));
-
-      final textStyle = diagnostics.properties.where((p) => p.name == 'textStyle').map((p) => p.toDescription()).first;
-      expect(textStyle, contains('size: 9.0'));
-
-      final direction =
-          diagnostics.properties.where((p) => p.name == 'arrowDirection').map((p) => p.toDescription()).first;
-      expect(direction, 'down');
-
-      final maxWidth = diagnostics.properties.where((p) => p.name == 'maxWidth').map((p) => p.toDescription()).first;
-      expect(maxWidth, '170.0');
+      expect(diagnostics.finder('rounded'), 'null');
+      expect(diagnostics.finder('padding'), 'EdgeInsets.all(8.0)');
+      expect(diagnostics.finder('color').toLowerCase(), contains(Colors.amber.hexCode.toLowerCase()));
+      expect(diagnostics.finder('textStyle'), contains('size: 9.0'));
+      expect(diagnostics.finder('arrowDirection'), 'down');
+      expect(diagnostics.finder('maxWidth'), '170.0');
     });
   });
 }

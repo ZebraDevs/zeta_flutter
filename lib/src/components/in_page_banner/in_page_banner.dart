@@ -113,14 +113,8 @@ class ZetaInPageBanner extends ZetaStatelessWidget {
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(
-        ObjectFlagProperty<VoidCallback>.has(
-          'onCloseFunction',
-          onClose,
-        ),
-      )
-      ..add(DiagnosticsProperty<bool>('rounded', rounded))
-      ..add(EnumProperty<ZetaWidgetStatus>('severity', status))
+      ..add(ObjectFlagProperty<VoidCallback>.has('onClose', onClose))
+      ..add(EnumProperty<ZetaWidgetStatus>('status', status))
       ..add(StringProperty('title', title))
       ..add(DiagnosticsProperty<IconData?>('customIcon', customIcon));
   }

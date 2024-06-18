@@ -14,10 +14,11 @@ enum ZetaIndicatorType {
 /// ZetaIndicator.
 ///
 /// Indicators are used to show the status of a user or any messages/notifications they might have.
-class ZetaIndicator extends StatelessWidget {
+class ZetaIndicator extends ZetaStatelessWidget {
   /// Constructor for [ZetaIndicator].
   const ZetaIndicator({
     super.key,
+    super.rounded,
     this.type = ZetaIndicatorType.notification,
     this.size = ZetaWidgetSize.large,
     this.icon,
@@ -29,6 +30,7 @@ class ZetaIndicator extends StatelessWidget {
   /// Constructor for [ZetaIndicator] of type [ZetaIndicatorType.icon].
   const ZetaIndicator.icon({
     super.key,
+    super.rounded,
     this.size = ZetaWidgetSize.large,
     this.inverse = false,
     this.icon,
@@ -39,12 +41,13 @@ class ZetaIndicator extends StatelessWidget {
   /// Constructor for [ZetaIndicator] of type [ZetaIndicatorType.notification].
   const ZetaIndicator.notification({
     super.key,
+    super.rounded,
     this.size = ZetaWidgetSize.large,
     this.inverse = false,
-    this.icon,
     this.value,
     this.color,
-  }) : type = ZetaIndicatorType.notification;
+  })  : type = ZetaIndicatorType.notification,
+        icon = null;
 
   /// The type of the [ZetaIndicator] - icon or notification.
   ///
@@ -75,8 +78,10 @@ class ZetaIndicator extends StatelessWidget {
     IconData? icon,
     int? value,
     bool? inverse,
+    Key? key,
   }) {
     return ZetaIndicator(
+      key: key ?? this.key,
       type: type ?? this.type,
       size: size ?? this.size,
       icon: icon ?? this.icon,
@@ -151,14 +156,8 @@ class ZetaIndicator extends StatelessWidget {
   }
 
   double _getIconSize(ZetaWidgetSize size) {
-    switch (size) {
-      case ZetaWidgetSize.large:
-        return ZetaSpacing.medium;
-      case ZetaWidgetSize.medium:
-        return ZetaSpacing.small;
-      case ZetaWidgetSize.small:
-        return ZetaSpacing.none;
-    }
+    if (size == ZetaWidgetSize.large) return ZetaSpacing.medium;
+    return ZetaSpacing.small;
   }
 
   @override
@@ -169,7 +168,7 @@ class ZetaIndicator extends StatelessWidget {
       ..add(DiagnosticsProperty<ZetaWidgetSize>('size', size))
       ..add(DiagnosticsProperty<int?>('value', value))
       ..add(DiagnosticsProperty<IconData?>('icon', icon))
-      ..add(DiagnosticsProperty<bool>('inverseBorder', inverse))
+      ..add(DiagnosticsProperty<bool>('inverse', inverse))
       ..add(ColorProperty('color', color));
   }
 }
