@@ -36,30 +36,45 @@ class ZetaTextInput extends ZetaFormField<String> {
     this.suffixText,
     this.suffixTextStyle,
     this.onSubmit,
+    this.obscureText = false,
   })  : assert(initialValue == null || controller == null, 'Only one of initial value and controller can be accepted.'),
         assert(prefix == null || prefixText == null, 'Only one of prefix or prefixText can be accepted.'),
         assert(suffix == null || suffixText == null, 'Only one of suffix or suffixText can be accepted.');
 
+  /// {@template text-input-label}
   /// The label displayed above the input.
+  /// {@endtemplate}
   final String? label;
 
+  /// {@template text-input-on-submit}
   /// Called when the input is submitted.
+  /// {@endtemplate}
   final void Function(String? val)? onSubmit;
 
+  /// {@template text-input-hint-text}
   /// The hint text displayed below the input.
+  /// {@endtemplate}
   final String? hintText;
 
+  /// {@template text-input-placeholder}
   /// The placeholder text displayed in the input.
+  /// {@endtemplate}
   final String? placeholder;
 
+  /// {@template text-input-error-text}
   /// The error text shown beneath the input. Replaces [hintText].
+  /// {@endtemplate}
   final String? errorText;
 
+  /// {@template text-input-controller}
   /// The controller given to the input. Cannot be given in addition to [initialValue].
+  /// {@endtemplate}
   final TextEditingController? controller;
 
+  /// {@template text-input-validator}
   /// The validator passed to the input. Should return the error message to be displayed below the input.
   /// Should return null if there is no error.
+  /// {@endtemplate}
   final String? Function(String?)? validator;
 
   /// The widget displayed at the end of the input. Cannot be given in addition to [suffixText].
@@ -80,11 +95,18 @@ class ZetaTextInput extends ZetaFormField<String> {
   /// The style applied to [prefixText].
   final TextStyle? prefixTextStyle;
 
+  ///{@template text-input-size}
   /// The size of the input.
+  /// {@endtemplate}
   final ZetaWidgetSize size;
 
   /// The input formatters given to the text input.
   final List<TextInputFormatter>? inputFormatters;
+
+  /// {@template text-input-obscure-text}
+  /// Obscures the text within the input.
+  /// {@endtemplate}
+  final bool obscureText;
 
   @override
   State<ZetaTextInput> createState() => ZetaTextInputState();
@@ -109,7 +131,8 @@ class ZetaTextInput extends ZetaFormField<String> {
       ..add(DiagnosticsProperty<bool>('disabled', disabled))
       ..add(IterableProperty<TextInputFormatter>('inputFormatters', inputFormatters))
       ..add(EnumProperty<ZetaFormFieldRequirement>('requirementLevel', requirementLevel))
-      ..add(ObjectFlagProperty<void Function(String? val)?>.has('onSubmit', onSubmit));
+      ..add(ObjectFlagProperty<void Function(String? val)?>.has('onSubmit', onSubmit))
+      ..add(DiagnosticsProperty<bool>('obscureText', obscureText));
   }
 }
 
@@ -298,6 +321,7 @@ class ZetaTextInputState extends State<ZetaTextInput> implements ZetaFormFieldSt
               onChanged: widget.onChange,
               style: _baseTextStyle,
               cursorErrorColor: _colors.error,
+              obscureText: widget.obscureText,
               decoration: InputDecoration(
                 isDense: true,
                 contentPadding: _contentPadding,
