@@ -185,7 +185,6 @@ class _HotReloadState extends State<HotReload> {
             WidgetbookUseCase(name: 'Bottom Sheet', builder: (context) => bottomSheetContentUseCase(context)),
             WidgetbookUseCase(name: 'BreadCrumbs', builder: (context) => breadCrumbsUseCase(context)),
             WidgetbookUseCase(name: 'Checkbox', builder: (context) => checkboxUseCase(context)),
-            WidgetbookUseCase(name: 'Bottom Sheet', builder: (context) => bottomSheetContentUseCase(context)),
             WidgetbookUseCase(name: 'Date Input', builder: (context) => dateInputUseCase(context)),
             WidgetbookUseCase(name: 'Dial Pad', builder: (context) => dialPadUseCase(context)),
             WidgetbookUseCase(name: 'Dialog', builder: (context) => dialogUseCase(context)),
