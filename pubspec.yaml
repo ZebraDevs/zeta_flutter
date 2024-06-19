@@ -49,6 +49,9 @@ flutter:
           weight: 400
         - asset: lib/src/assets/fonts/IBMPlexSans-Medium.otf
           weight: 500
+    - family: zeta-icons
+      fonts:
+        - asset: lib/src/assets/fonts/zeta-icons-round.ttf
     - family: zeta-icons-round
       fonts:
         - asset: lib/src/assets/fonts/zeta-icons-round.ttf

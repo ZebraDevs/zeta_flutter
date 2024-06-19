@@ -6,15 +6,7 @@ import 'package:zeta_flutter/zeta_flutter.dart';
 import '../../test/test_components.dart';
 
 Widget iconsUseCase(BuildContext context) {
-  Map<String, IconData> icons =
-      ((context.knobs.boolean(label: 'Rounded', initialValue: true)) ? iconsRound : iconsSharp);
-
-  final Map<String, IconData> sortedIcons = Map.fromEntries(icons.entries.toList()
-    ..sort((a, b) {
-      final _a = (a.key.split('_')..removeLast()).join();
-      final _b = (b.key.split('_')..removeLast()).join();
-      return _a.compareTo(_b);
-    }));
+  bool rounded = context.knobs.boolean(label: 'Rounded', initialValue: true);
 
   return WidgetbookTestWidget(
     removeBody: true,
@@ -28,9 +20,9 @@ Widget iconsUseCase(BuildContext context) {
             Wrap(
               spacing: ZetaSpacing.xl_4,
               runSpacing: ZetaSpacing.xl_4,
-              children: sortedIcons.entries.map(
+              children: icons.entries.map(
                 (e) {
-                  final nameArr = (e.key.split('_')..removeLast()).join(' ').capitalize();
+                  final nameArr = (e.key.split('_')).join(' ').capitalize();
                   return Container(
                     width: 120,
                     height: 120,
@@ -47,7 +39,20 @@ Widget iconsUseCase(BuildContext context) {
                       },
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: [Icon(e.value, size: ZetaSpacing.xl_6), Text(nameArr, textAlign: TextAlign.center)],
+                        children: [
+                          Icon(
+                            IconData(
+                              e.value.codePoint,
+                              fontFamily: rounded ? ZetaIcons.familyRound : ZetaIcons.familySharp,
+                              fontPackage: ZetaIcons.package,
+                            ),
+                            size: ZetaSpacing.xl_6,
+                          ),
+                          Text(
+                            nameArr,
+                            textAlign: TextAlign.center,
+                          )
+                        ],
                       ),
                     ),
                   );

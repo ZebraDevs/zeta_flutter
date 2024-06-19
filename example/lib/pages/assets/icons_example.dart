@@ -27,14 +27,17 @@ class _IconsExampleState extends State<IconsExample> {
             Wrap(
               spacing: 8,
               runSpacing: 8,
-              children: iconsRound.values.map((e) => Icon(e)).toList(),
+              children: icons.values.map((e) => Icon(e)).toList(),
             ),
             const SizedBox(height: 20),
             Text('Sharp', style: ZetaTextStyles.bodyLarge),
             Wrap(
               spacing: 8,
               runSpacing: 8,
-              children: iconsSharp.values.map((e) => Icon(e)).toList(),
+              children: icons.values
+                  .map((e) =>
+                      Icon(IconData(e.codePoint, fontFamily: ZetaIcons.familySharp, fontPackage: ZetaIcons.package)))
+                  .toList(),
             ),
           ],
         ),
