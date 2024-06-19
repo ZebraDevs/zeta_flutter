@@ -71,7 +71,7 @@ jobs:
 
       - name: Print outputs
         env:
-          GH_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          GH_TOKEN: ${{ github.token }}
         run: |
           template='<h2>PR Checks complete</h2>✅ - Linting</br>'
 
