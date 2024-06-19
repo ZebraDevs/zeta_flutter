@@ -14,7 +14,6 @@ class ButtonExample extends StatefulWidget {
 class _ButtonExampleState extends State<ButtonExample> {
   Widget? fab;
   late ScrollController _scrollController;
-  bool expanded = false;
 
   @override
   void initState() {

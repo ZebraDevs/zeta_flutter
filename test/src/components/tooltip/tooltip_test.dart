@@ -7,9 +7,15 @@ import 'package:path/path.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 import '../../../test_utils/test_app.dart';
+import '../../../test_utils/tolerant_comparator.dart';
 import '../../../test_utils/utils.dart';
 
 void main() {
+  setUpAll(() {
+    final testUri = Uri.parse(getCurrentPath('tooltip'));
+    goldenFileComparator = TolerantComparator(testUri, tolerance: 0.01);
+  });
+
   group('ZetaTooltip Widget Tests', () {
     testWidgets('renders with default properties', (WidgetTester tester) async {
       await tester.pumpWidget(

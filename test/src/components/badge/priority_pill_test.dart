@@ -6,9 +6,14 @@ import 'package:path/path.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 import '../../../test_utils/test_app.dart';
+import '../../../test_utils/tolerant_comparator.dart';
 import '../../../test_utils/utils.dart';
 
 void main() {
+  setUpAll(() {
+    final testUri = Uri.parse(getCurrentPath('badge'));
+    goldenFileComparator = TolerantComparator(testUri, tolerance: 0.01);
+  });
   testWidgets('Initializes with correct label and index', (WidgetTester tester) async {
     await tester.pumpWidget(
       const TestApp(

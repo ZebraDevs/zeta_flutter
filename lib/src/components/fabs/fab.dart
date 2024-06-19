@@ -106,7 +106,7 @@ class ZetaFAB extends StatefulWidget {
 class _ZetaFABState extends State<ZetaFAB> {
   @override
   Widget build(BuildContext context) {
-    bool _isExpanded = (widget.initiallyExpanded != null ? widget.initiallyExpanded! : widget.label != null);
+    final bool isExpanded = (widget.initiallyExpanded != null ? widget.initiallyExpanded! : widget.label != null);
     final colors = widget.type.colors(context);
     final backgroundColor = widget.type == ZetaFabType.inverse ? colors.shade80 : colors.shade60;
 
@@ -115,7 +115,7 @@ class _ZetaFABState extends State<ZetaFAB> {
       focusNode: widget.focusNode,
       style: ButtonStyle(
         padding: const WidgetStatePropertyAll(EdgeInsets.zero),
-        shape: WidgetStatePropertyAll(widget.shape.buttonShape(isExpanded: _isExpanded, size: widget.size)),
+        shape: WidgetStatePropertyAll(widget.shape.buttonShape(isExpanded: isExpanded, size: widget.size)),
         backgroundColor: WidgetStateProperty.resolveWith((states) {
           if (states.contains(WidgetState.disabled)) return Zeta.of(context).colors.surfaceDisabled;
           if (states.contains(WidgetState.hovered)) return colors.hover;
@@ -135,14 +135,14 @@ class _ZetaFABState extends State<ZetaFAB> {
       child: AnimatedContainer(
         duration: ZetaAnimationLength.normal,
         child: Padding(
-          padding: _isExpanded
+          padding: isExpanded
               ? const EdgeInsets.symmetric(horizontal: ZetaSpacingBase.x3_5, vertical: ZetaSpacing.medium)
               : EdgeInsets.all(widget.size.padding),
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
               Icon(widget.icon, size: widget.size.iconSize),
-              if (_isExpanded && widget.label != null)
+              if (isExpanded && widget.label != null)
                 Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [Text(widget.label!, style: ZetaTextStyles.labelLarge)],

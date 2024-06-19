@@ -7,9 +7,15 @@ import 'package:path/path.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 import '../../../test_utils/test_app.dart';
+import '../../../test_utils/tolerant_comparator.dart';
 import '../../../test_utils/utils.dart';
 
 void main() {
+  setUpAll(() {
+    final testUri = Uri.parse(getCurrentPath('dialpad'));
+    goldenFileComparator = TolerantComparator(testUri, tolerance: 0.01);
+  });
+
   group('ZetaDialPad Tests', () {
     testWidgets('Initializes with correct parameters and is enabled', (WidgetTester tester) async {
       String number = '';

@@ -25,7 +25,6 @@ class TestApp extends StatelessWidget {
       initialThemeData: ZetaThemeData(rounded: rounded ?? true),
       builder: (context, themeData, themeMode) {
         return MaterialApp(
-          // debugShowCheckedModeBanner: false,
           theme: ThemeData(
             fontFamily: themeData.fontFamily,
             colorScheme: themeData.colorsLight.toScheme(),

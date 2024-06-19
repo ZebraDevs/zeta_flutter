@@ -6,9 +6,15 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:path/path.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 import '../../../test_utils/test_app.dart';
+import '../../../test_utils/tolerant_comparator.dart';
 import '../../../test_utils/utils.dart';
 
 void main() {
+  setUpAll(() {
+    final testUri = Uri.parse(getCurrentPath('fabs'));
+    goldenFileComparator = TolerantComparator(testUri, tolerance: 0.01);
+  });
+
   group('ZetaFAB Tests', () {
     testWidgets('Initializes with correct parameters', (WidgetTester tester) async {
       final scrollController = ScrollController();

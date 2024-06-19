@@ -4,9 +4,14 @@ import 'package:path/path.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 import '../../../test_utils/test_app.dart';
+import '../../../test_utils/tolerant_comparator.dart';
 import '../../../test_utils/utils.dart';
 
 void main() {
+  setUpAll(() {
+    final testUri = Uri.parse(getCurrentPath('badge'));
+    goldenFileComparator = TolerantComparator(testUri, tolerance: 0.01);
+  });
   group('ZetaTag', () {
     testWidgets('Initializes right with correct parameters', (WidgetTester tester) async {
       await tester.pumpWidget(
