@@ -33,7 +33,7 @@ class _PasswordState extends State<_Password> {
             ConstrainedBox(
               constraints: BoxConstraints(maxWidth: 328),
               child: ZetaPasswordInput(
-                enabled: context.knobs.boolean(label: 'Enabled', initialValue: true),
+                disabled: disabledKnob(context),
                 obscureText: context.knobs.boolean(label: 'Obscure text', initialValue: true),
                 size: context.knobs.list(
                   label: 'Size',
@@ -41,12 +41,10 @@ class _PasswordState extends State<_Password> {
                   labelBuilder: enumLabelBuilder,
                 ),
                 rounded: rounded,
-                footerIcon:
-                    iconKnob(context, initial: ZetaIcons.star_half_round, name: 'Footer icon', rounded: rounded),
-                footerText: context.knobs.string(label: 'Footer Text'),
-                hintText: context.knobs.string(label: 'Hint text'),
+                hintText: context.knobs.string(label: 'Hint Text'),
+                placeholder: context.knobs.string(label: 'Placeholder'),
                 label: context.knobs.string(label: 'Label'),
-                onChanged: (_) => _formKey.currentState?.validate(),
+                onChange: (_) => _formKey.currentState?.validate(),
                 validator: (_) => enableValidation ? validationString : null,
                 controller: _passwordController,
               ),

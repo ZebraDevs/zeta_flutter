@@ -38,17 +38,20 @@ class _PasswordInputExampleState extends State<PasswordInputExample> {
                   ZetaPasswordInput(
                     size: ZetaWidgetSize.medium,
                     rounded: false,
-                    footerText: 'Error state is triggered if the password contains digits',
-                    footerIcon: ZetaIcons.info_round,
                     hintText: 'Password',
                     controller: _passwordController,
-                    onChanged: (value) => _formKey.currentState?.validate(),
                     validator: (value) {
                       if (value != null) {
                         final regExp = RegExp(r'\d');
                         if (regExp.hasMatch(value)) return 'Password is incorrect';
                       }
                       return null;
+                    },
+                  ),
+                  ZetaButton.primary(
+                    label: 'Validate',
+                    onPressed: () {
+                      _formKey.currentState?.validate();
                     },
                   ),
                   SizedBox(height: ZetaSpacing.xl_6),
@@ -67,17 +70,26 @@ class _PasswordInputExampleState extends State<PasswordInputExample> {
 
 List<Widget> passwordInputExampleRow(ZetaWidgetSize size, {bool rounded = true}) {
   return [
-    ZetaPasswordInput(size: size, hintText: 'Password', rounded: rounded),
+    ZetaPasswordInput(
+      size: size,
+      hintText: 'Password',
+      rounded: rounded,
+      placeholder: 'Password',
+    ),
     SizedBox(height: 20),
-    ZetaPasswordInput(rounded: rounded, size: size, hintText: 'Password', enabled: false),
+    ZetaPasswordInput(
+      rounded: rounded,
+      size: size,
+      placeholder: 'Password',
+      disabled: true,
+    ),
     SizedBox(height: 20),
     ZetaPasswordInput(
       size: size,
       label: 'Label',
-      hintText: 'Password',
-      footerText: 'Default hint text',
+      placeholder: 'Password',
+      hintText: 'Default hint text',
       rounded: rounded,
-      footerIcon: ZetaIcons.info_round,
     ),
   ];
 }

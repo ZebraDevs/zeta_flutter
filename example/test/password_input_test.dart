@@ -20,12 +20,12 @@ void main() {
         widget: ZetaPasswordInput(),
       ),
     );
-    final obscureIconOff = find.byIcon(ZetaIcons.visibility_off_sharp);
+    final obscureIconOff = find.byIcon(ZetaIcons.visibility_off_round);
     expect(obscureIconOff, findsOneWidget);
     await tester.tap(obscureIconOff);
     await tester.pump();
 
-    final obscureIconOn = find.byIcon(ZetaIcons.visibility_sharp);
+    final obscureIconOn = find.byIcon(ZetaIcons.visibility_round);
     expect(obscureIconOn, findsOneWidget);
   });
 
@@ -36,19 +36,25 @@ void main() {
       return null;
     }
 
+    final controller = TextEditingController();
+    controller.text = 'password123';
+    final formKey = GlobalKey<FormState>();
+
     await tester.pumpWidget(
       TestWidget(
-        widget: ZetaPasswordInput(
-          controller: TextEditingController(),
-          validator: testValidator,
+        widget: Form(
+          key: formKey,
+          child: ZetaPasswordInput(
+            controller: controller,
+            validator: testValidator,
+          ),
         ),
       ),
     );
-
-    final passwordField = find.byType(TextFormField);
-    await tester.enterText(passwordField, 'password12');
+    formKey.currentState?.validate();
     await tester.pump();
 
-    expect(find.text('Error'), findsOneWidget);
+    // There will be two matches for the error text as the form field itself contains a hidden one.
+    expect(find.text('Error'), findsExactly(2));
   });
 }
