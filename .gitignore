@@ -50,7 +50,7 @@ doc/api/
 .fvm/flutter_sdk
 .pub-cache/
 .pub/
-coverage/
+/coverage/**/
 lib/generated_plugin_registrant.dart
 **/android/**/gradle-wrapper.jar
 **/android/.gradle
@@ -97,7 +97,6 @@ lib/generated_plugin_registrant.dart
 *.csr
 *.css
 *.htm
-*.js
 *.jsp
 *.php
 *.rss
@@ -146,3 +145,5 @@ $RECYCLE.BIN/
 *.lnk
 **/Generated.xcconfig
 .fvmrc
+**/node_modules/
+package-lock.json
