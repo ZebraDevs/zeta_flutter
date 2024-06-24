@@ -1,5 +1,52 @@
 # Changelog
 
+## [0.12.0](https://github.com/ZebraDevs/zeta_flutter/compare/v0.11.2...v0.12.0) (2024-06-24)
+
+
+### ✨ New Features
+
+* added inkwells to checkbox and radio button ([a8b31d3](https://github.com/ZebraDevs/zeta_flutter/commit/a8b31d32fbe0f0ea3943bd8f03478d3bb4b6d4b5))
+* create slider component ([#53](https://github.com/ZebraDevs/zeta_flutter/issues/53)) ([6394ef6](https://github.com/ZebraDevs/zeta_flutter/commit/6394ef6b2a96bd919149e0d9e139815615ddf715))
+* Created dropdown list item ([#101](https://github.com/ZebraDevs/zeta_flutter/issues/101)) ([868b26c](https://github.com/ZebraDevs/zeta_flutter/commit/868b26cfbd64a521d6726e3271421a052257ec06))
+* Created list item variants ([#98](https://github.com/ZebraDevs/zeta_flutter/issues/98)) ([a8b31d3](https://github.com/ZebraDevs/zeta_flutter/commit/a8b31d32fbe0f0ea3943bd8f03478d3bb4b6d4b5))
+* Created ZetaAnimationDuration tokens ([868b26c](https://github.com/ZebraDevs/zeta_flutter/commit/868b26cfbd64a521d6726e3271421a052257ec06))
+* created ZetaList to add borders to list items ([a8b31d3](https://github.com/ZebraDevs/zeta_flutter/commit/a8b31d32fbe0f0ea3943bd8f03478d3bb4b6d4b5))
+
+
+### 🪲 Bug Fixes
+
+* minor bugs on ZetaChatItem ([#105](https://github.com/ZebraDevs/zeta_flutter/issues/105)) ([c37e51d](https://github.com/ZebraDevs/zeta_flutter/commit/c37e51d1b2be40e03d35f63db79939247315696c))
+* removed hover color on disabled radio buttons ([a8b31d3](https://github.com/ZebraDevs/zeta_flutter/commit/a8b31d32fbe0f0ea3943bd8f03478d3bb4b6d4b5))
+* **UX-1078:** fixed button group disabled color. ([88d82d8](https://github.com/ZebraDevs/zeta_flutter/commit/88d82d8ae85340cc4c32025c478b25bb955fe8e2))
+* **UX-1080:** Add snackbar action bold text ([88d82d8](https://github.com/ZebraDevs/zeta_flutter/commit/88d82d8ae85340cc4c32025c478b25bb955fe8e2))
+* **UX-1081:** Change snackbar action color ([88d82d8](https://github.com/ZebraDevs/zeta_flutter/commit/88d82d8ae85340cc4c32025c478b25bb955fe8e2))
+* **UX-977:** change indicator border color ([88d82d8](https://github.com/ZebraDevs/zeta_flutter/commit/88d82d8ae85340cc4c32025c478b25bb955fe8e2))
+
+
+### 📈 Documentation
+
+* Added guides for golden and unit testing ([4b41f73](https://github.com/ZebraDevs/zeta_flutter/commit/4b41f738da8d9c45783159a0b8e36299f9cf6df3))
+* Fix documentation macros ([c37e51d](https://github.com/ZebraDevs/zeta_flutter/commit/c37e51d1b2be40e03d35f63db79939247315696c))
+
+
+### ⛓️ Dependencies
+
+* Update zeta-icon library ([#107](https://github.com/ZebraDevs/zeta_flutter/issues/107)) ([ccaf8a9](https://github.com/ZebraDevs/zeta_flutter/commit/ccaf8a98123c46f3415f02fad5df655a91b3ac63))
+
+
+### 🧪 Tests
+
+* 100% test coverage for theme, utils, Zeta and ZetaProvider ([4b41f73](https://github.com/ZebraDevs/zeta_flutter/commit/4b41f738da8d9c45783159a0b8e36299f9cf6df3))
+* Added ZetaTooltip test ([4b41f73](https://github.com/ZebraDevs/zeta_flutter/commit/4b41f738da8d9c45783159a0b8e36299f9cf6df3))
+* Organise tests folder, and increase code coverage and add goldens for existing tests ([0e2d8be](https://github.com/ZebraDevs/zeta_flutter/commit/0e2d8be214c499cb547fb49da3791a606ec839b7))
+
+
+### 🧹 Miscellaneous Chores
+
+* organise existing tests ([#108](https://github.com/ZebraDevs/zeta_flutter/issues/108)) ([0e2d8be](https://github.com/ZebraDevs/zeta_flutter/commit/0e2d8be214c499cb547fb49da3791a606ec839b7))
+* rename debounce file ([c37e51d](https://github.com/ZebraDevs/zeta_flutter/commit/c37e51d1b2be40e03d35f63db79939247315696c))
+* Update widgetbook to pull readme from github ([c37e51d](https://github.com/ZebraDevs/zeta_flutter/commit/c37e51d1b2be40e03d35f63db79939247315696c))
+
 ## [0.11.2](https://github.com/ZebraDevs/zeta_flutter/compare/v0.11.1...v0.11.2) (2024-06-11)
 
 
