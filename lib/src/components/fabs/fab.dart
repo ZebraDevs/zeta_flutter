@@ -117,9 +117,15 @@ class _ZetaFABState extends State<ZetaFAB> {
         padding: const WidgetStatePropertyAll(EdgeInsets.zero),
         shape: WidgetStatePropertyAll(widget.shape.buttonShape(isExpanded: isExpanded, size: widget.size)),
         backgroundColor: WidgetStateProperty.resolveWith((states) {
-          if (states.contains(WidgetState.disabled)) return Zeta.of(context).colors.surfaceDisabled;
-          if (states.contains(WidgetState.hovered)) return colors.hover;
-          if (states.contains(WidgetState.pressed)) return colors.selected;
+          if (states.contains(WidgetState.disabled)) {
+            return Zeta.of(context).colors.surfaceDisabled;
+          }
+          if (states.contains(WidgetState.hovered)) {
+            return colors.hover;
+          }
+          if (states.contains(WidgetState.pressed)) {
+            return colors.selected;
+          }
           return backgroundColor;
         }),
         side: WidgetStateProperty.resolveWith(
