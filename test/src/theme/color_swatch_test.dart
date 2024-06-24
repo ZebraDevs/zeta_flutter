@@ -160,4 +160,23 @@ void main() {
       expect(aaaSwatch.surface.value, Colors.blue.shade100.value);
     });
   });
+
+  testWidgets('Light / Dark mode are inverted', (tester) async {
+    final ZetaColors light = ZetaColors();
+    final ZetaColors dark = ZetaColors(brightness: Brightness.dark);
+
+    expect(light.primary.shade10, dark.primary.shade100);
+    expect(light.primary.shade20, dark.primary.shade90);
+    expect(light.primary.shade30, dark.primary.shade80);
+    expect(light.primary.shade40, dark.primary.shade70);
+    expect(light.primary.shade50, dark.primary.shade60);
+  });
+
+  testWidgets('AAA mode value colors are 2 shades darker', (tester) async {
+    final ZetaColors aa = ZetaColors();
+    final ZetaColors aaa = ZetaColors(brightness: Brightness.dark, contrast: ZetaContrast.aaa);
+
+    expect(aa.primary.value, aa.primary.shade60.value);
+    expect(aaa.primary.value, aaa.primary.shade80.value);
+  });
 }

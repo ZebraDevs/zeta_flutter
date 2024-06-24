@@ -36,7 +36,8 @@ class ZetaFAB extends StatefulWidget {
     this.size = ZetaFabSize.small,
     this.shape = ZetaWidgetBorder.full,
     this.icon = ZetaIcons.add_round,
-    this.initiallyExpanded = false,
+    this.initiallyExpanded,
+    this.focusNode,
     super.key,
   });
 
@@ -78,7 +79,10 @@ class ZetaFAB extends StatefulWidget {
   /// Whether the FAB starts as expanded.
   ///
   /// If [scrollController] or [label] are null, this is the permanent state of the FAB.
-  final bool initiallyExpanded;
+  final bool? initiallyExpanded;
+
+  /// {@macro flutter.widgets.Focus.focusNode}
+  final FocusNode? focusNode;
 
   @override
   State<ZetaFAB> createState() => _ZetaFABState();
@@ -87,61 +91,36 @@ class ZetaFAB extends StatefulWidget {
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(EnumProperty<ZetaFabType>('buttonType', type))
-      ..add(EnumProperty<ZetaFabSize>('buttonSize', size))
-      ..add(EnumProperty<ZetaWidgetBorder>('buttonShape', shape))
+      ..add(EnumProperty<ZetaFabType>('type', type))
+      ..add(EnumProperty<ZetaFabSize>('size', size))
+      ..add(EnumProperty<ZetaWidgetBorder>('shape', shape))
       ..add(ObjectFlagProperty<VoidCallback?>.has('onPressed', onPressed))
       ..add(DiagnosticsProperty<ScrollController>('scrollController', scrollController))
-      ..add(StringProperty('buttonLabel', label))
-      ..add(DiagnosticsProperty<IconData>('buttonIcon', icon))
-      ..add(DiagnosticsProperty<bool>('initiallyExpanded', initiallyExpanded));
+      ..add(StringProperty('label', label))
+      ..add(DiagnosticsProperty<IconData>('icon', icon))
+      ..add(DiagnosticsProperty<bool>('initiallyExpanded', initiallyExpanded))
+      ..add(DiagnosticsProperty<FocusNode>('focusNode', focusNode));
   }
 }
 
 class _ZetaFABState extends State<ZetaFAB> {
-  bool __isExpanded = false;
-  bool get _isExpanded => __isExpanded;
-  set _isExpanded(bool value) {
-    if (value && widget.label != null || !value) __isExpanded = value;
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    _isExpanded = (widget.initiallyExpanded && widget.label != null) || false;
-    widget.scrollController?.addListener(_scrollListener);
-  }
-
-  void _scrollListener() {
-    final expanded = widget.scrollController?.position.userScrollDirection == ScrollDirection.reverse;
-    if (_isExpanded != expanded) {
-      setState(() => _isExpanded = expanded);
-    }
-  }
-
-  @override
-  void dispose() {
-    widget.scrollController?.removeListener(_scrollListener);
-    super.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
+    final bool isExpanded = (widget.initiallyExpanded != null ? widget.initiallyExpanded! : widget.label != null);
     final colors = widget.type.colors(context);
     final backgroundColor = widget.type == ZetaFabType.inverse ? colors.shade80 : colors.shade60;
 
-    return ElevatedButton(
+    return FilledButton(
       onPressed: widget.onPressed,
-      style: ElevatedButton.styleFrom(
-        padding: EdgeInsets.zero,
-        shape: widget.shape.buttonShape(isExpanded: _isExpanded, size: widget.size),
-        backgroundColor: backgroundColor,
-        foregroundColor: backgroundColor.onColor,
-      ).copyWith(
-        overlayColor: WidgetStateProperty.resolveWith((Set<WidgetState> states) {
+      focusNode: widget.focusNode,
+      style: ButtonStyle(
+        padding: const WidgetStatePropertyAll(EdgeInsets.zero),
+        shape: WidgetStatePropertyAll(widget.shape.buttonShape(isExpanded: isExpanded, size: widget.size)),
+        backgroundColor: WidgetStateProperty.resolveWith((states) {
+          if (states.contains(WidgetState.disabled)) return Zeta.of(context).colors.surfaceDisabled;
           if (states.contains(WidgetState.hovered)) return colors.hover;
           if (states.contains(WidgetState.pressed)) return colors.selected;
-          return null;
+          return backgroundColor;
         }),
         side: WidgetStateProperty.resolveWith(
           (Set<WidgetState> states) {
@@ -156,14 +135,14 @@ class _ZetaFABState extends State<ZetaFAB> {
       child: AnimatedContainer(
         duration: ZetaAnimationLength.normal,
         child: Padding(
-          padding: _isExpanded
+          padding: isExpanded
               ? const EdgeInsets.symmetric(horizontal: ZetaSpacingBase.x3_5, vertical: ZetaSpacing.medium)
               : EdgeInsets.all(widget.size.padding),
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
               Icon(widget.icon, size: widget.size.iconSize),
-              if (_isExpanded && widget.label != null)
+              if (isExpanded && widget.label != null)
                 Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [Text(widget.label!, style: ZetaTextStyles.labelLarge)],

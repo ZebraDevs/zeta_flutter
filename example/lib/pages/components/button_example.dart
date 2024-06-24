@@ -29,7 +29,7 @@ class _ButtonExampleState extends State<ButtonExample> {
 
   void setFab(int index) => setState(() => fab = fabs[index]);
 
-  List<Widget> fabs = [];
+  List<ZetaFAB> fabs = [];
   @override
   Widget build(BuildContext context) {
     if (fabs.isEmpty) {
@@ -38,12 +38,13 @@ class _ButtonExampleState extends State<ButtonExample> {
           scrollController: _scrollController,
           label: 'Small Circle Primary',
           size: ZetaFabSize.small,
+          initiallyExpanded: false,
           shape: ZetaWidgetBorder.full,
           type: ZetaFabType.primary,
-          onPressed: () => setFab(0),
         ),
         ZetaFAB(
           scrollController: _scrollController,
+          initiallyExpanded: false,
           label: 'Small Rounded Primary',
           size: ZetaFabSize.small,
           shape: ZetaWidgetBorder.rounded,
@@ -55,6 +56,7 @@ class _ButtonExampleState extends State<ButtonExample> {
           label: 'Small Sharp Primary',
           size: ZetaFabSize.small,
           shape: ZetaWidgetBorder.sharp,
+          initiallyExpanded: false,
           type: ZetaFabType.inverse,
           onPressed: () => setFab(2),
         ),
@@ -64,6 +66,7 @@ class _ButtonExampleState extends State<ButtonExample> {
           size: ZetaFabSize.large,
           shape: ZetaWidgetBorder.full,
           type: ZetaFabType.secondary,
+          initiallyExpanded: false,
           onPressed: () => setFab(3),
         ),
         ZetaFAB(
@@ -71,6 +74,7 @@ class _ButtonExampleState extends State<ButtonExample> {
           label: 'Large Rounded Secondary',
           size: ZetaFabSize.large,
           shape: ZetaWidgetBorder.rounded,
+          initiallyExpanded: false,
           type: ZetaFabType.inverse,
           onPressed: () => setFab(4),
         ),
@@ -80,14 +84,24 @@ class _ButtonExampleState extends State<ButtonExample> {
           size: ZetaFabSize.large,
           shape: ZetaWidgetBorder.sharp,
           type: ZetaFabType.primary,
+          initiallyExpanded: false,
           onPressed: () => setFab(5),
         ),
       ];
     }
-
+    final ZetaFAB theFab = (fab as ZetaFAB?) ?? (fabs.first);
     return ExampleScaffold(
       name: 'Button',
-      floatingActionButton: fab ?? fabs.first,
+      floatingActionButton: ZetaFAB(
+        initiallyExpanded: true,
+        icon: theFab.icon,
+        label: theFab.label,
+        scrollController: _scrollController,
+        size: theFab.size,
+        type: theFab.type,
+        shape: theFab.shape,
+        onPressed: theFab.onPressed,
+      ),
       child: SingleChildScrollView(
         controller: _scrollController,
         child: Row(

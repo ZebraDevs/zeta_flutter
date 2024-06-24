@@ -15,6 +15,7 @@ class ZetaButton extends StatelessWidget {
     this.leadingIcon,
     this.trailingIcon,
     super.key,
+    this.focusNode,
   });
 
   /// Constructs [ZetaButton] with Primary theme.
@@ -26,6 +27,7 @@ class ZetaButton extends StatelessWidget {
     this.leadingIcon,
     this.trailingIcon,
     super.key,
+    this.focusNode,
   }) : type = ZetaButtonType.primary;
 
   /// Constructs [ZetaButton] with Secondary theme.
@@ -37,6 +39,7 @@ class ZetaButton extends StatelessWidget {
     this.leadingIcon,
     this.trailingIcon,
     super.key,
+    this.focusNode,
   }) : type = ZetaButtonType.secondary;
 
   /// Constructs [ZetaButton] with Positive theme.
@@ -48,6 +51,7 @@ class ZetaButton extends StatelessWidget {
     this.leadingIcon,
     this.trailingIcon,
     super.key,
+    this.focusNode,
   }) : type = ZetaButtonType.positive;
 
   /// Constructs [ZetaButton] with Negative theme.
@@ -59,6 +63,7 @@ class ZetaButton extends StatelessWidget {
     this.leadingIcon,
     this.trailingIcon,
     super.key,
+    this.focusNode,
   }) : type = ZetaButtonType.negative;
 
   /// Constructs [ZetaButton] with Outline theme.
@@ -70,6 +75,7 @@ class ZetaButton extends StatelessWidget {
     this.leadingIcon,
     this.trailingIcon,
     super.key,
+    this.focusNode,
   }) : type = ZetaButtonType.outline;
 
   /// Constructs [ZetaButton] with Outline Subtle  theme.
@@ -81,6 +87,7 @@ class ZetaButton extends StatelessWidget {
     this.leadingIcon,
     this.trailingIcon,
     super.key,
+    this.focusNode,
   }) : type = ZetaButtonType.outlineSubtle;
 
   /// Constructs [ZetaButton] with text theme.
@@ -92,6 +99,7 @@ class ZetaButton extends StatelessWidget {
     this.leadingIcon,
     this.trailingIcon,
     super.key,
+    this.focusNode,
   }) : type = ZetaButtonType.text;
 
   /// Button label
@@ -117,6 +125,9 @@ class ZetaButton extends StatelessWidget {
 
   /// Trailing icon of button. Goes behind button.
   final IconData? trailingIcon;
+
+  /// {@macro flutter.widgets.Focus.focusNode}
+  final FocusNode? focusNode;
 
   /// Creates a clone.
   ZetaButton copyWith({
@@ -147,6 +158,7 @@ class ZetaButton extends StatelessWidget {
     return ConstrainedBox(
       constraints: BoxConstraints(minHeight: _minConstraints, minWidth: _minConstraints),
       child: FilledButton(
+        focusNode: focusNode,
         onPressed: onPressed,
         style: buttonStyle(
           colors,
@@ -234,6 +246,7 @@ class ZetaButton extends StatelessWidget {
       ..add(EnumProperty<ZetaWidgetBorder>('borderType', borderType))
       ..add(EnumProperty<ZetaWidgetSize>('size', size))
       ..add(DiagnosticsProperty<IconData?>('leadingIcon', leadingIcon))
-      ..add(DiagnosticsProperty<IconData?>('trailingIcon', trailingIcon));
+      ..add(DiagnosticsProperty<IconData?>('trailingIcon', trailingIcon))
+      ..add(DiagnosticsProperty<FocusNode?>('focusNode', focusNode));
   }
 }

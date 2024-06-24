@@ -64,6 +64,6 @@ class ZetaStatusLabel extends ZetaStatelessWidget {
       ..add(StringProperty('label', label))
       ..add(DiagnosticsProperty<bool>('rounded', rounded))
       ..add(DiagnosticsProperty<IconData?>('customIcon', customIcon))
-      ..add(EnumProperty<ZetaWidgetStatus>('severity', status));
+      ..add(EnumProperty<ZetaWidgetStatus>('status', status));
   }
 }

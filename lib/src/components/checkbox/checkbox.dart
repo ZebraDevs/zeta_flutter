@@ -14,11 +14,12 @@ import '../../../zeta_flutter.dart';
 class ZetaCheckbox extends FormField<bool> {
   /// Constructs a [ZetaCheckbox].
   ZetaCheckbox({
-    required this.value,
+    this.value = false,
     this.label,
     this.onChanged,
     this.rounded,
     this.useIndeterminate = false,
+    this.focusNode,
     super.validator,
     super.autovalidateMode,
     super.restorationId,
@@ -27,7 +28,7 @@ class ZetaCheckbox extends FormField<bool> {
           initialValue: value,
           enabled: onChanged != null,
           builder: (field) {
-            return _Checkbox(
+            return ZetaInternalCheckbox(
               label: label,
               onChanged: (changedValue) {
                 field.didChange(changedValue);
@@ -38,6 +39,7 @@ class ZetaCheckbox extends FormField<bool> {
               value: value,
               error: !field.isValid,
               disabled: onChanged == null,
+              focusNode: focusNode,
             );
           },
         );
@@ -61,17 +63,21 @@ class ZetaCheckbox extends FormField<bool> {
   /// The label displayed next to the checkbox
   final String? label;
 
+  /// {@macro flutter.widgets.Focus.focusNode}
+  final FocusNode? focusNode;
+
   @override
   ZetaCheckboxFormFieldState createState() => ZetaCheckboxFormFieldState();
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty<bool>('isChecked', value))
+      ..add(DiagnosticsProperty<bool>('value', value))
       ..add(StringProperty('label', label))
       ..add(DiagnosticsProperty<bool>('useIndeterminate', useIndeterminate))
       ..add(DiagnosticsProperty<bool>('rounded', rounded))
-      ..add(ObjectFlagProperty<ValueChanged<bool>?>.has('onChanged', onChanged));
+      ..add(ObjectFlagProperty<ValueChanged<bool>?>.has('onChanged', onChanged))
+      ..add(DiagnosticsProperty<FocusNode?>('focusNode', focusNode));
   }
 }
 
@@ -81,14 +87,20 @@ class ZetaCheckboxFormFieldState extends FormFieldState<bool> {
   ZetaCheckbox get widget => super.widget as ZetaCheckbox;
 }
 
-class _Checkbox extends ZetaStatefulWidget {
-  const _Checkbox({
+/// Internal checkbox. Not for external use.
+@visibleForTesting
+@protected
+class ZetaInternalCheckbox extends ZetaStatefulWidget {
+  /// Constructs a [ZetaInternalCheckbox].
+  const ZetaInternalCheckbox({
+    super.key,
     required this.onChanged,
     this.disabled = false,
     this.value = false,
     this.label,
     this.useIndeterminate = false,
     this.error = false,
+    this.focusNode,
     super.rounded,
   });
 
@@ -106,13 +118,17 @@ class _Checkbox extends ZetaStatefulWidget {
   /// Defaults to false.
   final bool useIndeterminate;
 
+  /// Whether field is value.
   final bool error;
 
   /// {@macro zeta-widget-disabled}
   final bool disabled;
 
+  /// {@macro flutter.widgets.Focus.focusNode}
+  final FocusNode? focusNode;
+
   @override
-  State<_Checkbox> createState() => _CheckboxState();
+  State<ZetaInternalCheckbox> createState() => _CheckboxState();
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
@@ -122,12 +138,13 @@ class _Checkbox extends ZetaStatefulWidget {
       ..add(DiagnosticsProperty<bool>('rounded', rounded))
       ..add(DiagnosticsProperty<bool>('useIndeterminate', useIndeterminate))
       ..add(DiagnosticsProperty<bool>('error', error))
-      ..add(DiagnosticsProperty<bool>('enabled', disabled))
-      ..add(ObjectFlagProperty<ValueChanged<bool?>>.has('onChanged', onChanged));
+      ..add(DiagnosticsProperty<bool>('disabled', disabled))
+      ..add(ObjectFlagProperty<ValueChanged<bool?>>.has('onChanged', onChanged))
+      ..add(DiagnosticsProperty<FocusNode>('focusNode', focusNode));
   }
 }
 
-class _CheckboxState extends State<_Checkbox> {
+class _CheckboxState extends State<ZetaInternalCheckbox> {
   bool get _checked => widget.value;
 
   bool _isFocused = false;
@@ -153,12 +170,14 @@ class _CheckboxState extends State<_Checkbox> {
           child: Semantics(
             mixed: widget.useIndeterminate,
             enabled: !widget.disabled,
+            focusable: true,
             child: MouseRegion(
               cursor: !widget.disabled ? SystemMouseCursors.click : SystemMouseCursors.forbidden,
               onEnter: (event) => _setHovered(true),
               onExit: (event) => _setHovered(false),
               child: !widget.disabled
                   ? FocusableActionDetector(
+                      focusNode: widget.focusNode,
                       onFocusChange: (bool focus) => setState(() => _isFocused = focus),
                       child: _buildContent(context),
                     )
@@ -225,7 +244,7 @@ class _CheckboxState extends State<_Checkbox> {
   Color _getBackground(Zeta theme) {
     final ZetaColorSwatch color = widget.error ? theme.colors.error : theme.colors.primary;
     if (widget.disabled) return theme.colors.surfaceDisabled;
-    if (!_checked) return Colors.transparent;
+    if (!_checked) return theme.colors.surfacePrimary;
     if (_isHovered) return theme.colors.borderHover;
 
     return color;
@@ -240,16 +259,5 @@ class _CheckboxState extends State<_Checkbox> {
     }
 
     return theme.colors.cool.shade70;
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty<bool?>('value', widget.value))
-      ..add(ObjectFlagProperty<ValueChanged<bool?>>.has('onChanged', widget.onChanged))
-      ..add(DiagnosticsProperty<bool>('rounded', widget.rounded))
-      ..add(StringProperty('label', widget.label))
-      ..add(DiagnosticsProperty<bool>('useIndeterminate', widget.useIndeterminate));
   }
 }
