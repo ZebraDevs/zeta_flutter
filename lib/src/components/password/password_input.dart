@@ -67,14 +67,8 @@ class ZetaPasswordInput extends ZetaFormField<String> {
       ..add(StringProperty('hintText', hintText))
       ..add(StringProperty('label', label))
       ..add(StringProperty('footerText', hintText))
-      ..add(
-        ObjectFlagProperty<String? Function(String? p1)?>.has(
-          'validator',
-          validator,
-        ),
-      )
+      ..add(ObjectFlagProperty<String? Function(String? p1)?>.has('validator', validator))
       ..add(EnumProperty<ZetaWidgetSize>('size', size))
-      ..add(DiagnosticsProperty<bool>('rounded', rounded))
       ..add(StringProperty('placeholder', placeholder))
       ..add(ObjectFlagProperty<void Function(String? val)?>.has('onSubmit', onSubmit))
       ..add(StringProperty('errorText', errorText));
