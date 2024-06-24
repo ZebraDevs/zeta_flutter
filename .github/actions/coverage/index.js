@@ -26,9 +26,9 @@ try {
     if (oldCoverage != null) {
 
         if (oldCoverage > totalPercent) {
-            totalPercent = totalPercent + `% (🔻 down from ' + oldCoverage + ')`
+            totalPercent = totalPercent + `% (🔻 down from ` + oldCoverage + `)`
         } else if (oldCoverage < totalPercent) {
-            totalPercent = totalPercent + `% (👆 up from ' + oldCoverage + ')`
+            totalPercent = totalPercent + `% (👆 up from ` + oldCoverage + `)`
         } else {
             totalPercent = totalPercent + `% (no change)`
         }
