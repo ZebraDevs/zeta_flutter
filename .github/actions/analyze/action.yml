@@ -1,0 +1,7 @@
+name: "Code analysis"
+outputs:
+  analyze:
+    description: "string to comment"
+runs:
+  using: "node20"
+  main: "index.js"

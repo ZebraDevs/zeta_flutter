@@ -3,9 +3,6 @@ on:
   pull_request_target:
 
 jobs:
-  up-to-date:
-    uses: ./.github/workflows/up-to-date.yml
-
   code-quality:
     uses: ./.github/workflows/code-quality.yml
 
@@ -24,7 +21,7 @@ jobs:
 
   deploy-preview:
     name: Deploy preview version of the storybook on firebase
-    needs: [up-to-date, code-quality, check-secret]
+    needs: [code-quality, check-secret]
     if: needs.check-secret.outputs.secret-exists == 'true'
     runs-on: ubuntu-latest
     steps:
@@ -33,6 +30,8 @@ jobs:
           repository: ${{github.event.pull_request.head.repo.full_name}}
           ref: ${{ github.head_ref }}
       - uses: subosito/flutter-action@v2
+        with:
+          cache: true
       - name: Setup flutter
         run: flutter pub get
       - name: Build example app
