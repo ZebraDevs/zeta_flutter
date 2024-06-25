@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import '../../../zeta_flutter.dart';
 import '../../interfaces/form_field.dart';
 import '../buttons/input_icon_button.dart';
+import '../dropdown/dropdown_controller.dart';
 
 /// Class for [ZetaSelectInput]
 class ZetaSelectInput<T> extends ZetaFormField<T> {
@@ -157,6 +158,7 @@ class _ZetaSelectInputState<T> extends State<ZetaSelectInput<T>> {
         onChange: !widget.disabled ? _onDropdownChanged : null,
         key: _dropdownKey,
         value: _selectedItem?.value,
+        offset: const Offset(0, ZetaSpacing.xl_1 * -1),
         onDismissed: () => setState(() {}),
         builder: (context, _, controller) {
           return ZetaTextInput(

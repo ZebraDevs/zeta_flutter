@@ -72,52 +72,60 @@ class ZetaGroupButton extends ZetaStatefulWidget {
     this.label,
     this.icon,
     this.onPressed,
-    this.dropdown,
     super.rounded,
   })  : isFinal = false,
         isInitial = false,
         isInverse = false,
-        isLarge = true;
+        isLarge = true,
+        initialValue = null,
+        items = null,
+        onChange = null;
 
   /// Private constructor
   const ZetaGroupButton._({
-    super.key,
-    super.rounded,
-    this.label,
-    this.icon,
-    this.onPressed,
-    this.dropdown,
     required this.isFinal,
     required this.isInitial,
     required this.isInverse,
     required this.isLarge,
+    this.onChange,
+    this.label,
+    this.initialValue,
+    this.icon,
+    this.onPressed,
+    this.items,
+    super.key,
+    super.rounded,
   });
 
   /// Constructs dropdown group button
   const ZetaGroupButton.dropdown({
-    super.key,
-    super.rounded,
-    required this.onPressed,
-    required this.dropdown,
+    required this.items,
+    required this.onChange,
+    this.initialValue,
     this.icon,
     this.label,
+    super.key,
+    super.rounded,
   })  : isFinal = false,
         isInitial = false,
         isInverse = false,
-        isLarge = true;
+        isLarge = true,
+        onPressed = null;
 
   ///Constructs group button with icon
   const ZetaGroupButton.icon({
     super.key,
     super.rounded,
     required this.icon,
-    this.dropdown,
     this.onPressed,
     this.label,
   })  : isFinal = false,
         isInitial = false,
         isInverse = false,
-        isLarge = true;
+        isLarge = true,
+        items = null,
+        onChange = null,
+        initialValue = null;
 
   /// Label for [ZetaGroupButton].
   final String? label;
@@ -132,8 +140,15 @@ class ZetaGroupButton extends ZetaStatefulWidget {
   /// {@endtemplate}
   final VoidCallback? onPressed;
 
-  /// Content of dropdown.
-  final Widget? dropdown;
+  /// {@macro dropdown-items}
+  final List<ZetaDropdownItem<dynamic>>? items;
+
+  /// {@macro dropdown-on-change}
+  /// {@macro zeta-widget-change-disable}
+  final void Function(ZetaDropdownItem<dynamic> selectedItem)? onChange;
+
+  /// {@macro dropdown-value}
+  final dynamic initialValue;
 
   ///If [ZetaGroupButton] is large.
   final bool isLarge;
@@ -163,8 +178,10 @@ class ZetaGroupButton extends ZetaStatefulWidget {
       label: label,
       icon: icon,
       onPressed: onPressed,
-      dropdown: dropdown,
+      items: items,
+      onChange: onChange,
       isFinal: isFinal ?? this.isFinal,
+      initialValue: initialValue,
       isInitial: isInitial ?? this.isInitial,
       isLarge: isLarge ?? this.isLarge,
       rounded: rounded ?? this.rounded,
@@ -182,23 +199,20 @@ class ZetaGroupButton extends ZetaStatefulWidget {
       ..add(DiagnosticsProperty<bool>('isInitial', isInitial))
       ..add(DiagnosticsProperty<bool>('isLarge', isLarge))
       ..add(DiagnosticsProperty<bool>('isFinal', isFinal))
-      ..add(DiagnosticsProperty<bool>('isInverse', isInverse));
+      ..add(DiagnosticsProperty<bool>('isInverse', isInverse))
+      ..add(IterableProperty<ZetaDropdownItem<dynamic>>('dropdownItems', items))
+      ..add(ObjectFlagProperty<void Function(ZetaDropdownItem<dynamic> selectedItem)?>.has('onChange', onChange))
+      ..add(DiagnosticsProperty('initialValue', initialValue));
   }
 }
 
 class _ZetaGroupButtonState extends State<ZetaGroupButton> {
-  late WidgetStatesController controller;
+  WidgetStatesController controller = WidgetStatesController();
 
   @override
-  void initState() {
-    super.initState();
-    controller = WidgetStatesController();
-    controller.addListener(() {
-      if (!controller.value.contains(WidgetState.disabled) && context.mounted && mounted) {
-        // TODO(UX-1005): setState causing exception when going from disabled to enabled.
-        setState(() {});
-      }
-    });
+  void dispose() {
+    super.dispose();
+    controller.dispose();
   }
 
   @override
@@ -209,62 +223,16 @@ class _ZetaGroupButtonState extends State<ZetaGroupButton> {
     }
   }
 
-  @override
-  Widget build(BuildContext context) {
-    final colors = Zeta.of(context).colors;
-    final rounded = context.rounded;
-    final borderType = rounded ? ZetaWidgetBorder.rounded : ZetaWidgetBorder.sharp;
-
-    final BorderSide borderSide = _getBorderSide(controller.value, colors, false);
-
-    return Container(
-      decoration: BoxDecoration(
-        border: Border(
-          top: borderSide,
-          left: borderSide,
-          bottom: borderSide,
-          right: controller.value.contains(WidgetState.focused)
-              ? BorderSide(color: colors.blue.shade50, width: 2)
-              : (widget.isFinal)
-                  ? borderSide
-                  : BorderSide.none,
-        ),
-        borderRadius: _getRadius(borderType),
-      ),
-      padding: EdgeInsets.zero,
-      child: FilledButton(
-        statesController: controller,
-        onPressed: widget.onPressed, // TODO(UX-1006): Dropdown
-        style: getStyle(borderType, colors),
-        child: SelectionContainer.disabled(
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              if (widget.icon != null) Icon(widget.icon, size: ZetaSpacing.xl_1),
-              Text(widget.label ?? '', style: ZetaTextStyles.labelMedium),
-              if (widget.dropdown != null) // TODO(UX-1006): Dropdown
-                Icon(
-                  rounded ? ZetaIcons.expand_more_round : ZetaIcons.expand_more_sharp,
-                  size: ZetaSpacing.xl_1,
-                ),
-            ].divide(const SizedBox(width: ZetaSpacing.minimum)).toList(),
-          ).paddingAll(_padding),
-        ),
-      ),
-    );
-  }
-
   double get _padding => widget.isLarge ? ZetaSpacing.large : ZetaSpacing.medium;
 
   BorderSide _getBorderSide(
-    Set<WidgetState> states,
     ZetaColors colors,
     bool finalButton,
   ) {
-    if (states.contains(WidgetState.focused)) {
+    if (controller.value.contains(WidgetState.focused)) {
       return BorderSide(color: colors.blue.shade50, width: ZetaSpacingBase.x0_5);
     }
-    if (states.contains(WidgetState.disabled)) {
+    if (controller.value.contains(WidgetState.disabled)) {
       return BorderSide(color: colors.cool.shade40);
     }
     if (widget.isInverse) return BorderSide(color: colors.black);
@@ -301,10 +269,10 @@ class _ZetaGroupButtonState extends State<ZetaGroupButton> {
           return colors.surfaceDisabled;
         }
         if (states.contains(WidgetState.pressed)) {
-          return colors.primary.shade10;
+          return widget.isInverse ? colors.cool.shade100 : colors.primary.shade10;
         }
         if (states.contains(WidgetState.hovered)) {
-          return colors.cool.shade20;
+          return widget.isInverse ? colors.cool.shade90 : colors.cool.shade20;
         }
         if (widget.isInverse) return colors.cool.shade100;
 
@@ -320,6 +288,106 @@ class _ZetaGroupButtonState extends State<ZetaGroupButton> {
       elevation: const WidgetStatePropertyAll(ZetaSpacing.none),
       padding: WidgetStateProperty.all(EdgeInsets.zero),
     );
+  }
+
+  Widget _getButton(
+    VoidCallback? onPressed, {
+    bool dropdownOpen = false,
+    ZetaDropdownItem<dynamic>? selectedItem,
+  }) {
+    final colors = Zeta.of(context).colors;
+    final rounded = context.rounded;
+    final borderType = rounded ? ZetaWidgetBorder.rounded : ZetaWidgetBorder.sharp;
+    final BorderSide borderSide = _getBorderSide(colors, false);
+
+    late final IconData dropdownIcon;
+
+    if (!dropdownOpen || onPressed == null) {
+      dropdownIcon = rounded ? ZetaIcons.expand_more_round : ZetaIcons.expand_more_sharp;
+    } else {
+      dropdownIcon = rounded ? ZetaIcons.expand_less_round : ZetaIcons.expand_less_sharp;
+    }
+
+    const iconSize = ZetaSpacing.xl_1;
+
+    Widget? leadingIcon;
+    if (selectedItem?.icon != null) {
+      leadingIcon = IconTheme(
+        data: const IconThemeData(
+          size: iconSize,
+        ),
+        child: selectedItem!.icon!,
+      );
+    } else if (selectedItem == null && widget.icon != null) {
+      leadingIcon = Icon(
+        widget.icon,
+        size: iconSize,
+      );
+    }
+
+    return Container(
+      decoration: BoxDecoration(
+        border: Border(
+          top: borderSide,
+          left: borderSide,
+          bottom: borderSide,
+          right: controller.value.contains(WidgetState.focused)
+              ? BorderSide(color: colors.blue.shade50, width: 2)
+              : (widget.isFinal)
+                  ? borderSide
+                  : BorderSide.none,
+        ),
+        borderRadius: _getRadius(borderType),
+      ),
+      padding: EdgeInsets.zero,
+      child: FilledButton(
+        statesController: controller,
+        onPressed: onPressed,
+        style: getStyle(borderType, colors),
+        child: SelectionContainer.disabled(
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              leadingIcon ?? const SizedBox(),
+              Text(selectedItem?.label ?? widget.label ?? '', style: ZetaTextStyles.labelMedium),
+              if (widget.items != null)
+                Icon(
+                  dropdownIcon,
+                  size: ZetaSpacing.xl_1,
+                ),
+            ].divide(const SizedBox(width: ZetaSpacing.minimum)).toList(),
+          ).paddingAll(_padding),
+        ),
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final rounded = context.rounded;
+
+    late final Widget child;
+
+    if (widget.items != null) {
+      child = ZetaDropdown(
+        items: widget.items!,
+        onChange: widget.onChange,
+        onDismissed: () => setState(() {}),
+        value: widget.initialValue,
+        rounded: rounded,
+        builder: (context, selectedItem, controller) {
+          return _getButton(
+            widget.onChange != null ? controller.toggle : null,
+            dropdownOpen: controller.isOpen,
+            selectedItem: selectedItem,
+          );
+        },
+      );
+    } else {
+      child = _getButton(widget.onPressed);
+    }
+
+    return child;
   }
 
   @override
