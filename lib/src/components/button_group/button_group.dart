@@ -69,9 +69,9 @@ class ZetaGroupButton extends ZetaStatefulWidget {
   /// Public Constructor for [ZetaGroupButton]
   const ZetaGroupButton({
     super.key,
+    this.onPressed,
     this.label,
     this.icon,
-    this.onPressed,
     super.rounded,
   })  : isFinal = false,
         isInitial = false,
@@ -100,7 +100,7 @@ class ZetaGroupButton extends ZetaStatefulWidget {
   /// Constructs dropdown group button
   const ZetaGroupButton.dropdown({
     required this.items,
-    required this.onChange,
+    this.onChange,
     this.initialValue,
     this.icon,
     this.label,
@@ -235,7 +235,6 @@ class _ZetaGroupButtonState extends State<ZetaGroupButton> {
     if (controller.value.contains(WidgetState.disabled)) {
       return BorderSide(color: colors.cool.shade40);
     }
-    if (widget.isInverse) return BorderSide(color: colors.black);
     return BorderSide(
       color: finalButton ? colors.borderDefault : colors.borderSubtle,
     );
