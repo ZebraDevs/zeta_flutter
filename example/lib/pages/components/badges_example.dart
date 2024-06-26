@@ -22,12 +22,13 @@ class BadgesExample extends StatelessWidget {
             _PriorityPill(),
             const SizedBox(height: ZetaSpacing.xl_4),
             _PriorityPill(size: ZetaPriorityPillSize.small),
-            _DividingText('Badge'),
-            _Badge(),
+            _DividingText('Label'),
+            _Label(),
             _DividingText('Indicators'),
             _Indicators(),
             _DividingText('Tags'),
             _Tags(),
+            const SizedBox(height: ZetaSpacing.xl_4),
           ],
         ),
       ),
@@ -122,8 +123,8 @@ class _PriorityPill extends StatelessWidget {
   }
 }
 
-class _Badge extends StatelessWidget {
-  const _Badge();
+class _Label extends StatelessWidget {
+  const _Label();
 
   Widget badgeExampleRow(ZetaWidgetStatus type) {
     return Row(

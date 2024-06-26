@@ -102,37 +102,39 @@ class _ButtonExampleState extends State<ButtonExample> {
         shape: theFab.shape,
         onPressed: theFab.onPressed,
       ),
-      child: SingleChildScrollView(
-        controller: _scrollController,
-        child: Row(
-          children: [
-            Expanded(
-              flex: 8,
-              child: Column(
-                children: [
-                  Text('Rounded Buttons', style: ZetaTextStyles.displayMedium),
-                  Column(children: buttons(ZetaWidgetBorder.rounded)),
-                  Text('Sharp Buttons', style: ZetaTextStyles.displayMedium),
-                  Column(children: buttons(ZetaWidgetBorder.sharp)),
-                  Text('Full Buttons', style: ZetaTextStyles.displayMedium),
-                  Column(children: buttons(ZetaWidgetBorder.full)),
-                  Text('Icon Buttons', style: ZetaTextStyles.displayLarge),
-                  Text('Rounded Buttons', style: ZetaTextStyles.displayMedium),
-                  Column(children: inputButtons(ZetaWidgetBorder.rounded)),
-                  Text('Sharp Buttons', style: ZetaTextStyles.displayMedium),
-                  Column(children: inputButtons(ZetaWidgetBorder.sharp)),
-                  Text('Group Buttons', style: ZetaTextStyles.displayLarge),
-                  Column(
-                    children: groupButtons(ZetaWidgetBorder.rounded),
-                  ),
-                  Text('Floating Action Buttons', style: ZetaTextStyles.displayMedium),
-                  Text('Tap buttons to change current FAB: ', style: ZetaTextStyles.bodyMedium),
-                  Wrap(children: fabs.divide(SizedBox.square(dimension: 10)).toList()),
-                ].divide(const SizedBox.square(dimension: ZetaSpacing.xl_2)).toList(),
+      child: Padding(
+        padding: const EdgeInsets.all(ZetaSpacing.xl_2),
+        child: SingleChildScrollView(
+          controller: _scrollController,
+          child: Row(
+            children: [
+              Expanded(
+                flex: 8,
+                child: Column(
+                  children: [
+                    Text('Rounded Buttons', style: ZetaTextStyles.displayMedium),
+                    Column(children: buttons(ZetaWidgetBorder.rounded)),
+                    Text('Sharp Buttons', style: ZetaTextStyles.displayMedium),
+                    Column(children: buttons(ZetaWidgetBorder.sharp)),
+                    Text('Full Buttons', style: ZetaTextStyles.displayMedium),
+                    Column(children: buttons(ZetaWidgetBorder.full)),
+                    Text('Icon Buttons', style: ZetaTextStyles.displayLarge),
+                    Text('Rounded Buttons', style: ZetaTextStyles.displayMedium),
+                    Column(children: inputButtons(ZetaWidgetBorder.rounded)),
+                    Text('Sharp Buttons', style: ZetaTextStyles.displayMedium),
+                    Column(children: inputButtons(ZetaWidgetBorder.sharp)),
+                    Text('Group Buttons', style: ZetaTextStyles.displayLarge),
+                    Column(
+                      children: groupButtons(ZetaWidgetBorder.rounded),
+                    ),
+                    Text('Floating Action Buttons', style: ZetaTextStyles.displayMedium),
+                    Text('Tap buttons to change current FAB: ', style: ZetaTextStyles.bodyMedium),
+                    Wrap(children: fabs.divide(SizedBox.square(dimension: 10)).toList()),
+                  ].divide(const SizedBox.square(dimension: ZetaSpacing.xl_2)).toList(),
+                ),
               ),
-            ),
-            Expanded(child: const SizedBox()),
-          ],
+            ],
+          ),
         ),
       ),
     );
@@ -148,7 +150,7 @@ class _ButtonExampleState extends State<ButtonExample> {
           children: List.generate(
             ZetaButtonType.values.length,
             (index2) => ZetaButton(
-              label: 'Button',
+              label: 'Button $index2',
               onPressed: index == 0 ? null : () {},
               type: ZetaButtonType.values[index2],
               size: ZetaWidgetSize.values[index == 0 ? 0 : index - 1],

@@ -40,7 +40,7 @@ class _BreadCrumbsExampleState extends State<BreadCrumbsExample> {
                       setState(() {
                         _children.add(
                           ZetaBreadCrumb(
-                            label: 'Icon before with seperator',
+                            label: 'Icon before with separator',
                             onPressed: () {
                               print("Breadcrumb clicked");
                             },

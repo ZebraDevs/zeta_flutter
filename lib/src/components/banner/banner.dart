@@ -35,14 +35,32 @@ enum ZetaBannerStatus {
 class ZetaBanner extends MaterialBanner {
   /// Constructor for [ZetaBanner]. See [MaterialBanner] for more information.
   ZetaBanner({
+    /// The [BuildContext] for the widget.
     required BuildContext context,
+
+    /// The title of the banner.
     required String title,
     super.key,
+
+    /// The leading icon for the banner.
     IconData? leadingIcon,
+
+    /// The type of banner. See [ZetaBannerStatus].
     ZetaBannerStatus type = ZetaBannerStatus.primary,
+
+    /// Whether the title should be centered.
     bool titleStart = false,
+
+    /// The trailing widget for the banner.
     Widget? trailing,
+
+    /// {@macro zeta-component-rounded}
     bool? rounded,
+
+    /// The semantic label for the banner.
+    ///
+    /// If this is null, the title will be used.
+    String? semanticLabel,
   }) : super(
           dividerColor: Colors.transparent,
           content: Builder(
@@ -64,25 +82,28 @@ class ZetaBanner extends MaterialBanner {
 
               return ZetaRoundedScope(
                 rounded: rounded ?? context.rounded,
-                child: DefaultTextStyle(
-                  style: ZetaTextStyles.labelLarge.copyWith(
-                    color: foregroundColor,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  child: Row(
-                    mainAxisAlignment: titleStart ? MainAxisAlignment.center : MainAxisAlignment.start,
-                    children: [
-                      if (leadingIcon != null)
-                        Padding(
-                          padding: const EdgeInsets.only(right: ZetaSpacing.small),
-                          child: Icon(
-                            leadingIcon,
-                            color: foregroundColor,
-                            size: ZetaSpacing.xl_2,
+                child: Semantics(
+                  label: semanticLabel ?? title,
+                  child: DefaultTextStyle(
+                    style: ZetaTextStyles.labelLarge.copyWith(
+                      color: foregroundColor,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: titleStart ? MainAxisAlignment.center : MainAxisAlignment.start,
+                      children: [
+                        if (leadingIcon != null)
+                          Padding(
+                            padding: const EdgeInsets.only(right: ZetaSpacing.small),
+                            child: Icon(
+                              leadingIcon,
+                              color: foregroundColor,
+                              size: ZetaSpacing.xl_2,
+                            ),
                           ),
-                        ),
-                      Flexible(child: Text(title)),
-                    ],
+                        Flexible(child: Text(title)),
+                      ],
+                    ),
                   ),
                 ),
               );

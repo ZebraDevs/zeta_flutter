@@ -52,6 +52,8 @@ class ZetaDropdownItem<T> {
 class ZetaDropdown<T> extends ZetaStatefulWidget {
   /// Creates a new [ZetaDropdown].
   const ZetaDropdown({
+    super.key,
+    super.rounded,
     required this.items,
     this.onChange,
     @Deprecated('Set onChange to null. ' 'Disabled is deprecated as of 0.11.0') bool disabled = false,
@@ -61,8 +63,7 @@ class ZetaDropdown<T> extends ZetaStatefulWidget {
     this.offset = Offset.zero,
     this.builder,
     this.onDismissed,
-    super.key,
-    super.rounded,
+    this.onOpen,
   });
 
   /// {@template dropdown-items}
@@ -100,6 +101,9 @@ class ZetaDropdown<T> extends ZetaStatefulWidget {
   /// The offset of the dropdown menu from its parent.
   final Offset offset;
 
+  /// Called when the dropdown is opened.
+  final VoidCallback? onOpen;
+
   /// A custom builder for the child of the dropdown.
   ///
   /// Provides a build context, the currently selected item in the dropdown and a controller which can be used to open/close the dropdown.
@@ -130,7 +134,8 @@ class ZetaDropdown<T> extends ZetaStatefulWidget {
               ZetaDropdownController controller,
             )?>.has('builder', builder),
       )
-      ..add(DiagnosticsProperty<Offset>('offset', offset));
+      ..add(DiagnosticsProperty<Offset>('offset', offset))
+      ..add(ObjectFlagProperty<VoidCallback?>.has('onOpen', onOpen));
   }
 }
 
@@ -198,6 +203,12 @@ class ZetaDropDownState<T> extends State<ZetaDropdown<T>> {
   }
 
   void _toggleDropdown() {
+    if (!isOpen) {
+      widget.onOpen?.call();
+    } else {
+      widget.onDismissed?.call();
+    }
+
     /// Version 1 : Calculate if overflow happens based on using calculations from sizes.
     final height = MediaQuery.of(context).size.height;
     final headerRenderBox = _childKey.currentContext!.findRenderObject()! as RenderBox;
