@@ -7,114 +7,16 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
-      - name: Check PR can access secrets
-        id: check_token
-        run: |
-          echo "defined=true" >> $GITHUB_OUTPUT;
-          if [ "${{ secrets.FIREBASE_SERVICE_ACCOUNT_ZETA_DS }}" == '' ]; then
-            echo "defined=false" >> $GITHUB_OUTPUT;
-          fi
-      - uses: actions/checkout@v4
-        with:
-          ref: ${{ github.head_ref }}
-          repository: ${{github.event.pull_request.head.repo.full_name}}
-      - name: Get branch name
-        id: branch-name
-        uses: tj-actions/branch-names@v7.0.7
-      - uses: subosito/flutter-action@v2
-        with:
-          cache: true
-      - name: Set up scripts
-        run: |
-          cd .github/actions/coverage/
-          npm i
-          cd ../analyze
-          npm i
-          cd ../test
-          npm i
-      - name: Setup flutter
-        run: flutter pub get
-      - name: Format code
-        id: format
-        run: dart format . -l 120
-      - name: Apply linter auto-fixes
-        id: lint
-        run: dart fix --apply
-      - name: Analyze
-        id: analyze
-        uses: ./.github/actions/analyze
-      - name: Test
-        id: test
-        uses: ./.github/actions/test
-      - name: Coverage
-        id: coverage
-        uses: ./.github/actions/coverage
-        with:
-          oldCoverage: ${{steps.test.outputs.oldCoverage}}
-      - name: Check branch is up to date
-        id: upToDate
-        run: |
-          set -e
-          behind_by='err'
-          behind_by=$(gh api /repos/${{github.event.pull_request.head.repo.full_name}}/compare/${{github.event.pull_request.base.sha}}...${{github.event.pull_request.head.sha}} | jq .behind_by ) || true 
-          output=''
-          err=''
-          if [ "$behind_by" == 'err' ]; then
-              output="⚠️ - Can not communicate with Github API"
-              err="true" >> $GITHUB_OUTPUT
-              echo '⚠️'
-          elif [ $behind_by -eq 0 ]; then
-            output="✅ - Branch is not behind"
-            echo '✅'
-          else 
-            output="⛔️ - Branch is behind"
-            err="true" >> $GITHUB_OUTPUT
-            echo '⛔️'
-          fi
-
-          echo "out=$output" >> $GITHUB_OUTPUT
-
-          if [[ -z "$err" ]]; then
-            echo 'err=$err' >> $GITHUB_OUTPUT
-          fi
-
-        env:
-          GH_TOKEN: ${{ github.token }}
-      - name: Check for modified files
-        id: git-check
-        run: echo "modified=$(if [ -n "$(git status --porcelain)" ]; then echo "true"; else echo "false"; fi)" >>  $GITHUB_ENV
-      - name: Update changes in GitHub repository
-        if: env.modified == 'true' && ${{steps.check_token.outputs.defined}}
-        run: |
-          git config --global user.name "github-actions"
-          git config --global user.email "github-actions@github.com"
-          git add -A
-          git commit -m '[automated commit] lint format and import sort'
-          git push
-      - name: Print outputs
-        if: always()
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          template='<h2>PR Checks complete</h2>✅ - Linting / Formatting</br>'
-          template="$template ${{ steps.analyze.outputs.analyze }}</br>"
-          template="$template ${{ steps.test.outputs.test }}</br>"
-          template="$template ${{ steps.upToDate.outputs.out }}</br>"
-
-          if [[ -z "${{steps.test.outputs.err}}" ]]; then
-              template="$template ${{ steps.coverage.outputs.coverage }}</br>"              
-          fi
-
-          # Add / amend comment on PR.
-          gh pr comment ${{github.event.pull_request.number}} --body="${template}" --edit-last -R ${{github.repository}} || gh pr comment ${{github.event.pull_request.number}} --body="${template}" -R ${{github.repository}} || echo 'Token not working' 
-
-          # Concatenates failure outputs.
-          fail="${{steps.analyze.outputs.err}}${{steps.test.outputs.err}}${{steps.upToDate.outputs.err}}"
-
-          # Checks if there is any content in the failure variable.
-          if [[ -z "$fail" ]];
-            then
-              exit 0
-            else
-              exit 1
-          fi
+      code-quality:
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v4
+          with:
+            repository: ${{github.event.pull_request.head.repo.full_name}}
+            ref: ${{ github.head_ref }}
+        - uses: subosito/flutter-action@v2
+          with:
+            cache: true
+        - uses: ZebraDevs/flutter-code-quality@latest
+          with:
+            token: ${{secrets.GITHUB_TOKEN}}

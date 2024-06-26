@@ -1,9 +1,0 @@
-name: "Tests"
-outputs:
-  test:
-    description: "string to comment"
-  oldCoverage:
-    description: "previous coverage percent"
-runs:
-  using: "node20"
-  main: "index.js"
