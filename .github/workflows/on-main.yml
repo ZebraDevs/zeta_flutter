@@ -1,4 +1,4 @@
-name: release-please
+name: CI - On Main
 on:
   push:
     branches:
@@ -16,12 +16,8 @@ jobs:
         with:
           token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
 
-  code-quality:
-    uses: ./.github/workflows/code-quality.yml
-
   deploy-qa-demo:
     name: Deploy preview version of the storybook on firebase
-    needs: code-quality
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
