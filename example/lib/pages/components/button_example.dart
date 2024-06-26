@@ -202,14 +202,18 @@ class _ButtonExampleState extends State<ButtonExample> {
           label: "Label",
         ),
         ZetaGroupButton.dropdown(
-          onPressed: () {},
+          onChange: print,
           label: "Label",
-          dropdown: SizedBox(height: 100, width: 100),
+          items: [
+            ZetaDropdownItem(value: 'Item 1'),
+            ZetaDropdownItem(value: 'Item 2'),
+          ],
         ),
       ]),
       ZetaButtonGroup(
         isLarge: true,
         rounded: true,
+        isInverse: true,
         buttons: [
           ZetaGroupButton.icon(
             icon: ZetaIcons.star_round,
@@ -217,9 +221,18 @@ class _ButtonExampleState extends State<ButtonExample> {
             label: "Label",
           ),
           ZetaGroupButton.dropdown(
-            onPressed: () {},
+            icon: ZetaIcons.star,
+            onChange: (item) {
+              print(item);
+            },
             label: "Label",
-            dropdown: SizedBox(height: 100, width: 100),
+            items: [
+              ZetaDropdownItem(
+                value: 'Item 1',
+                icon: Icon(ZetaIcons.star_half),
+              ),
+              ZetaDropdownItem(value: 'Item 2'),
+            ],
           ),
           ZetaGroupButton.icon(
             icon: ZetaIcons.star_round,

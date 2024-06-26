@@ -40,6 +40,12 @@ class _DropdownExampleState extends State<DropdownExample> {
             value: selectedItem,
             type: ZetaDropdownMenuType.checkbox,
           ),
+          ZetaDropdown(
+            items: items,
+            value: selectedItem,
+            size: ZetaDropdownSize.mini,
+            onChange: (_) {},
+          ),
           Center(
             child: Column(
               mainAxisSize: MainAxisSize.min,

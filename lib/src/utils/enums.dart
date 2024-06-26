@@ -53,3 +53,24 @@ enum ZetaFormFieldRequirement {
   /// An optional form field.
   optional,
 }
+
+/// Sets the type of a [ZetaDropdown]
+enum ZetaDropdownMenuType {
+  /// No leading elements before each item unless an icon is given to the [ZetaDropdownItem]
+  standard,
+
+  /// Displays a [ZetaCheckbox] before each item.
+  checkbox,
+
+  /// Displays a [ZetaRadio] before each item.
+  radio
+}
+
+/// Used to set the size of a [ZetaDropdown]
+enum ZetaDropdownSize {
+  /// The minimum width of the dropdown menu is set to the width of the parent.
+  standard,
+
+  /// The width of the dropdown menu wraps the largest of its children.
+  mini,
+}

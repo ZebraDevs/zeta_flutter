@@ -65,31 +65,39 @@ Widget buttonGroupUseCase(BuildContext context) {
   final onPressed = disabledKnob(context) ? null : () {};
 
   return WidgetbookTestWidget(
-      widget: ZetaButtonGroup(
-    isLarge: context.knobs.boolean(label: 'Large'),
-    rounded: rounded,
-    isInverse: context.knobs.boolean(label: 'Inverse'),
-    buttons: [
-      ZetaGroupButton(
-        label: context.knobs.string(label: 'Button 1 Title', initialValue: 'Button'),
-        onPressed: onPressed,
-        icon: iconKnob(context, name: 'Button 1 Icon', nullable: true, initial: null, rounded: rounded),
-        dropdown: context.knobs.boolean(label: 'Button 1 Dropdown') ? Container() : null,
-      ),
-      ZetaGroupButton(
-        label: context.knobs.string(label: 'Button 2 Title'),
-        onPressed: onPressed,
-        icon: iconKnob(context, name: 'Button 2 Icon', nullable: true, initial: null, rounded: rounded),
-        dropdown: context.knobs.boolean(label: 'Button 2 Dropdown') ? Container() : null,
-      ),
-      ZetaGroupButton(
-        label: context.knobs.string(label: 'Button 3 Title'),
-        onPressed: onPressed,
-        icon: iconKnob(context, name: 'Button 3 Icon', nullable: true, initial: null, rounded: rounded),
-        dropdown: context.knobs.boolean(label: 'Button 3 Dropdown') ? Container() : null,
-      )
-    ],
-  ));
+    widget: ZetaButtonGroup(
+      isLarge: context.knobs.boolean(label: 'Large'),
+      rounded: rounded,
+      isInverse: context.knobs.boolean(label: 'Inverse'),
+      buttons: [
+        ZetaGroupButton(
+          label: context.knobs.string(label: 'Button 1 Title', initialValue: 'Button'),
+          onPressed: onPressed,
+          icon: iconKnob(context, name: 'Button 1 Icon', nullable: true, initial: null, rounded: rounded),
+        ),
+        ZetaGroupButton.dropdown(
+          label: context.knobs.string(label: 'Button 2 Title'),
+          onChange: disabledKnob(context) ? null : (_) {},
+          icon: iconKnob(context, name: 'Button 2 Icon', nullable: true, initial: null, rounded: rounded),
+          items: [
+            ZetaDropdownItem(
+              value: 'Item 1',
+              icon: Icon(ZetaIcons.star),
+            ),
+            ZetaDropdownItem(
+              value: 'Item 2',
+              icon: Icon(ZetaIcons.star_half),
+            ),
+          ],
+        ),
+        ZetaGroupButton(
+          label: context.knobs.string(label: 'Button 3 Title'),
+          onPressed: onPressed,
+          icon: iconKnob(context, name: 'Button 3 Icon', nullable: true, initial: null, rounded: rounded),
+        )
+      ],
+    ),
+  );
 }
 
 Widget floatingActionButtonUseCase(BuildContext context) => WidgetbookTestWidget(
