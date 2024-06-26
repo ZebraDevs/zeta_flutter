@@ -15,8 +15,10 @@ jobs:
       - uses: googleapis/release-please-action@v4
         with:
           token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+
   code-quality:
     uses: ./.github/workflows/code-quality.yml
+
   deploy-qa-demo:
     name: Deploy preview version of the storybook on firebase
     needs: code-quality
@@ -24,6 +26,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: subosito/flutter-action@v2
+        with:
+          cache: true
       - name: Setup flutter
         run: flutter pub get
       - name: Build example app
