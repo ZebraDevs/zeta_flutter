@@ -1,4 +1,4 @@
-name: release-please
+name: CI - On Main
 on:
   push:
     branches:

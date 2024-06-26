@@ -1,4 +1,4 @@
-name: Code Quality
+name: CI - Code Quality
 on:
   workflow_call:
 
@@ -7,16 +7,13 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
-      code-quality:
-      runs-on: ubuntu-latest
-      steps:
-        - uses: actions/checkout@v4
-          with:
-            repository: ${{github.event.pull_request.head.repo.full_name}}
-            ref: ${{ github.head_ref }}
-        - uses: subosito/flutter-action@v2
-          with:
-            cache: true
-        - uses: ZebraDevs/flutter-code-quality@latest
-          with:
-            token: ${{secrets.GITHUB_TOKEN}}
+      - uses: actions/checkout@v4
+        with:
+          repository: ${{github.event.pull_request.head.repo.full_name}}
+          ref: ${{ github.head_ref }}
+      - uses: subosito/flutter-action@v2
+        with:
+          cache: true
+      - uses: ZebraDevs/flutter-code-quality@latest
+        with:
+          token: ${{secrets.GITHUB_TOKEN}}
