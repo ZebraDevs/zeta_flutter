@@ -1,4 +1,4 @@
-name: "CI - Release"
+name: CI - On Release
 on:
   push:
     tags:
@@ -25,6 +25,7 @@ jobs:
         run: dart pub publish --dry-run
       - name: Publish
         run: dart pub publish --force
+
   deploy-website:
     runs-on: ubuntu-latest
     steps:
