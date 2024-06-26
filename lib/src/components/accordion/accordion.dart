@@ -89,7 +89,7 @@ class _ZetaAccordionState extends State<ZetaAccordion> with TickerProviderStateM
   @override
   Widget build(BuildContext context) {
     final zetaColors = Zeta.of(context).colors;
-    final borderColor = _disabled ? zetaColors.borderDisabled : zetaColors.borderSubtle;
+                final borderColor = _disabled ? zetaColors.borderDisabled : zetaColors.borderSubtle;
     final childTextStyle = ZetaTextStyles.h5.apply(color: zetaColors.textDefault);
     final rounded = context.rounded;
     return ZetaRoundedScope(
