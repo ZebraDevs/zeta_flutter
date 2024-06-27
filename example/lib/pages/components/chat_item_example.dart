@@ -23,37 +23,38 @@ class _ChatItemExampleState extends State<ChatItemExample> {
               time: DateTime.now(),
               enabledWarningIcon: true,
               enabledNotificationIcon: true,
-              leading: const ZetaAvatar(
-                size: ZetaAvatarSize.l,
-              ),
+              leading: const ZetaAvatar(initials: 'AZ'),
               count: 100,
               onTap: () {},
-              onDeleteTap: () {},
-              onCallTap: () {},
-              onMenuMoreTap: () {},
-              onPttTap: () {},
+              slidableActions: [
+                ZetaSlidableAction.menuMore(onPressed: () {}),
+                ZetaSlidableAction.call(onPressed: () {}),
+                ZetaSlidableAction.ptt(onPressed: () {}),
+                ZetaSlidableAction.delete(onPressed: () {}),
+              ],
               title: Text("Chat name ID"),
               subtitle: Text(
                   "Dummy text to represent the first lines of most recent message dsadas dsa dsa ds dssd sd sdsd s ds"),
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: ZetaSpacing.large),
-              child: ZetaChatItem(
-                highlighted: true,
-                count: 99,
-                time: DateTime.now(),
-                onTap: () {},
-                starred: true,
-                leading: const ZetaAvatar(
-                  size: ZetaAvatarSize.l,
-                ),
-                title: Text("Chat name ID"),
-                subtitle: Text(
-                  "Dummy text to represent the first lines of most recent message",
-                ),
+            ZetaChatItem(
+              highlighted: true,
+              time: DateTime.now(),
+              count: 99,
+              onTap: () {},
+              slidableActions: [
+                ZetaSlidableAction.menuMore(onPressed: () {}),
+                ZetaSlidableAction.call(onPressed: () {}),
+                ZetaSlidableAction.ptt(onPressed: () {}),
+                ZetaSlidableAction.delete(onPressed: () {}),
+              ],
+              starred: true,
+              leading: const ZetaAvatar(initials: 'ZA'),
+              title: Text("Chat name ID"),
+              subtitle: Text(
+                "Dummy text to represent the first lines of most recent message",
               ),
             ),
-          ],
+          ].gap(ZetaSpacing.large),
         ),
       ),
     );

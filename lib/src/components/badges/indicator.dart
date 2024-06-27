@@ -25,6 +25,7 @@ class ZetaIndicator extends ZetaStatelessWidget {
     this.value,
     this.inverse = false,
     this.color,
+    this.semanticLabel,
   });
 
   /// Constructor for [ZetaIndicator] of type [ZetaIndicatorType.icon].
@@ -35,6 +36,7 @@ class ZetaIndicator extends ZetaStatelessWidget {
     this.inverse = false,
     this.icon,
     this.color,
+    this.semanticLabel,
   })  : type = ZetaIndicatorType.icon,
         value = null;
 
@@ -46,6 +48,7 @@ class ZetaIndicator extends ZetaStatelessWidget {
     this.inverse = false,
     this.value,
     this.color,
+    this.semanticLabel,
   })  : type = ZetaIndicatorType.notification,
         icon = null;
 
@@ -70,6 +73,13 @@ class ZetaIndicator extends ZetaStatelessWidget {
 
   /// Color for zeta indicator
   final Color? color;
+
+  /// Value passed into wrapping [Semantics] widget.
+  ///
+  /// {@macro zeta-widget-semantic-label}
+  ///
+  /// If null, [value] is used.
+  final String? semanticLabel;
 
   /// Creates a clone.
   ZetaIndicator copyWith({
@@ -96,23 +106,27 @@ class ZetaIndicator extends ZetaStatelessWidget {
     final Color backgroundColor = (type == ZetaIndicatorType.icon ? zetaColors.blue : zetaColors.surfaceNegative);
     final Color foregroundColor = backgroundColor.onColor;
     final sizePixels = _getSizePixels(size, type);
-    return Container(
-      width: sizePixels + ZetaSpacing.minimum,
-      height: sizePixels + ZetaSpacing.minimum,
-      decoration: BoxDecoration(
-        border: Border.all(width: ZetaSpacingBase.x0_5, color: zetaColors.borderSubtle),
-        color: (inverse ? foregroundColor : Colors.transparent),
-        borderRadius: ZetaRadius.full,
-      ),
-      child: Center(
-        child: Container(
-          width: sizePixels,
-          height: sizePixels,
-          decoration: BoxDecoration(color: backgroundColor, borderRadius: BorderRadius.circular(ZetaSpacing.large)),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(ZetaSpacing.large),
-            clipBehavior: Clip.hardEdge,
-            child: size == ZetaWidgetSize.small ? null : _buildContent(foregroundColor),
+
+    return Semantics(
+      value: semanticLabel ?? value?.toString() ?? '',
+      child: Container(
+        width: sizePixels + ZetaSpacing.minimum,
+        height: sizePixels + ZetaSpacing.minimum,
+        decoration: BoxDecoration(
+          border: Border.all(width: ZetaSpacingBase.x0_5, color: zetaColors.borderSubtle),
+          color: (inverse ? foregroundColor : Colors.transparent),
+          borderRadius: ZetaRadius.full,
+        ),
+        child: Center(
+          child: Container(
+            width: sizePixels,
+            height: sizePixels,
+            decoration: BoxDecoration(color: backgroundColor, borderRadius: BorderRadius.circular(ZetaSpacing.large)),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(ZetaSpacing.large),
+              clipBehavior: Clip.hardEdge,
+              child: size == ZetaWidgetSize.small ? null : _buildContent(foregroundColor),
+            ),
           ),
         ),
       ),
@@ -169,6 +183,7 @@ class ZetaIndicator extends ZetaStatelessWidget {
       ..add(DiagnosticsProperty<int?>('value', value))
       ..add(DiagnosticsProperty<IconData?>('icon', icon))
       ..add(DiagnosticsProperty<bool>('inverse', inverse))
-      ..add(ColorProperty('color', color));
+      ..add(ColorProperty('color', color))
+      ..add(StringProperty('semanticLabel', semanticLabel));
   }
 }
