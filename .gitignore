@@ -147,3 +147,4 @@ $RECYCLE.BIN/
 .fvmrc
 **/node_modules/
 package-lock.json
+/appium

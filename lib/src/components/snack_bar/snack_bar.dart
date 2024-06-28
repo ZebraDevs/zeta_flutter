@@ -36,18 +36,47 @@ enum ZetaSnackBarType {
 class ZetaSnackBar extends SnackBar {
   /// Sets basic styles for the [SnackBar].
   ZetaSnackBar({
-    required BuildContext context,
-    required Widget content,
-    VoidCallback? onPressed,
-    ZetaSnackBarType? type,
-    Icon? leadingIcon,
-    bool? rounded,
-    String? actionLabel,
-    String deleteActionLabel = 'Undo',
-    String viewActionLabel = 'View',
-    super.margin,
-    super.behavior = SnackBarBehavior.floating,
     super.key,
+    super.behavior = SnackBarBehavior.floating,
+    super.margin,
+
+    /// Context required to get the theme and colors.
+    required BuildContext context,
+
+    /// The main content of the snackbar.
+    required Widget content,
+
+    /// Callback to be called when the action button is pressed.
+    VoidCallback? onPressed,
+
+    /// Type used to define contextual [SnackBar]. The type defines the styles, icons and behavior.
+    ZetaSnackBarType? type,
+
+    /// Icon to display at the start of the content.
+    Icon? leadingIcon,
+
+    /// {@macro zeta-widget-rounded}
+    bool? rounded,
+
+    /// Label for the action button.
+    ///
+    /// Depending on the `type`, the default label will be used; 'Undo' for [ZetaSnackBarType.deletion] and 'View' for [ZetaSnackBarType.view].
+    String? actionLabel,
+
+    /// Label for the delete action button.
+    ///
+    /// If null, 'Delete' will be used.
+    @Deprecated('Use actionLabel instead.' ' Deprecated in 0.12.1') String? deleteActionLabel,
+
+    /// Label for the view action button.
+    ///
+    /// If null, 'View' will be used.
+    @Deprecated('Use actionLabel instead.' ' Deprecated in 0.12.1') String? viewActionLabel,
+
+    /// Semantic label for the action button.
+    ///
+    /// If null, the `actionLabel` will be used.
+    String? actionSemanticLabel,
   }) : super(
           elevation: 0,
           padding: EdgeInsets.zero,
@@ -85,6 +114,7 @@ class ZetaSnackBar extends SnackBar {
                     onPressed: onPressed,
                     deleteActionLabel: deleteActionLabel,
                     viewActionLabel: viewActionLabel,
+                    semanticLabel: actionSemanticLabel,
                   ),
                 ],
               ),
@@ -159,13 +189,15 @@ class _Action extends StatelessWidget {
     required this.onPressed,
     required this.deleteActionLabel,
     required this.viewActionLabel,
+    this.semanticLabel,
   });
 
   final String? actionLabel;
-  final String deleteActionLabel;
+  final String? deleteActionLabel;
   final VoidCallback? onPressed;
   final ZetaSnackBarType? type;
-  final String viewActionLabel;
+  final String? viewActionLabel;
+  final String? semanticLabel;
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
@@ -175,47 +207,66 @@ class _Action extends StatelessWidget {
       ..add(StringProperty('actionLabel', actionLabel))
       ..add(StringProperty('deleteActionLabel', deleteActionLabel))
       ..add(ObjectFlagProperty<VoidCallback?>.has('onPressed', onPressed))
-      ..add(StringProperty('viewActionLabel', viewActionLabel));
+      ..add(StringProperty('viewActionLabel', viewActionLabel))
+      ..add(StringProperty('semanticLabel', semanticLabel));
   }
 
   @override
   Widget build(BuildContext context) {
     final colors = Zeta.of(context).colors;
 
-    return switch (type) {
-      ZetaSnackBarType.defaultType => _IconButton(
-          onPressed: () => ScaffoldMessenger.of(context).removeCurrentSnackBar(),
-          color: colors.iconInverse,
-        ),
-      ZetaSnackBarType.action => _ActionButton(
-          onPressed: onPressed,
-          label: actionLabel,
-          color: colors.borderPrimaryMain,
-        ),
-      ZetaSnackBarType.positive ||
-      ZetaSnackBarType.info ||
-      ZetaSnackBarType.warning ||
-      ZetaSnackBarType.error =>
-        _IconButton(
-          onPressed: () => ScaffoldMessenger.of(context).removeCurrentSnackBar(),
-          color: colors.cool.shade90,
-        ),
-      ZetaSnackBarType.deletion => _ActionButton(
-          onPressed: onPressed,
-          label: deleteActionLabel,
-          color: colors.cool.shade90,
-        ),
-      ZetaSnackBarType.view => _ActionButton(
-          onPressed: onPressed,
-          label: viewActionLabel,
-          color: colors.cool.shade90,
-        ),
-      _ => _ActionButton(
-          onPressed: onPressed,
-          label: actionLabel,
-          color: colors.blue.shade50,
-        ),
-    };
+    String? label = actionLabel;
+    if (label == null) {
+      if (type case ZetaSnackBarType.deletion) {
+        label = deleteActionLabel ?? 'Undo';
+      } else if (type case ZetaSnackBarType.view) {
+        label = viewActionLabel ?? 'View';
+      }
+    }
+
+    return Semantics(
+      label: semanticLabel ?? label ?? '',
+      button: true,
+      enabled: onPressed != null,
+      container: true,
+      excludeSemantics: true,
+      child: () {
+        return switch (type) {
+          ZetaSnackBarType.defaultType => _IconButton(
+              onPressed: () => ScaffoldMessenger.of(context).removeCurrentSnackBar(),
+              color: colors.iconInverse,
+            ),
+          ZetaSnackBarType.action => _ActionButton(
+              onPressed: onPressed,
+              label: label,
+              color: colors.borderPrimaryMain,
+            ),
+          ZetaSnackBarType.positive ||
+          ZetaSnackBarType.info ||
+          ZetaSnackBarType.warning ||
+          ZetaSnackBarType.error =>
+            _IconButton(
+              onPressed: () => ScaffoldMessenger.of(context).removeCurrentSnackBar(),
+              color: colors.cool.shade90,
+            ),
+          ZetaSnackBarType.deletion => _ActionButton(
+              onPressed: onPressed,
+              label: label,
+              color: colors.cool.shade90,
+            ),
+          ZetaSnackBarType.view => _ActionButton(
+              onPressed: onPressed,
+              label: label,
+              color: colors.cool.shade90,
+            ),
+          _ => _ActionButton(
+              onPressed: onPressed,
+              label: label,
+              color: colors.blue.shade50,
+            ),
+        };
+      }(),
+    );
   }
 }
 
