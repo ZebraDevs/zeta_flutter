@@ -44,9 +44,9 @@ class ZetaAvatar extends ZetaStatelessWidget {
     this.lowerBadge,
     this.upperBadge,
     this.borderColor,
-    this.semanticValue = 'avatar',
-    this.semanticUpperBadgeValue = 'upperBadge',
-    this.semanticLowerBadgeValue = 'lowerBadge',
+    this.semanticLabel = 'avatar',
+    this.semanticUpperBadgeLabel = 'upperBadge',
+    this.semanticLowerBadgeLabel = 'lowerBadge',
   });
 
   /// Constructor for [ZetaAvatar] with image.
@@ -57,9 +57,9 @@ class ZetaAvatar extends ZetaStatelessWidget {
     this.lowerBadge,
     this.upperBadge,
     this.borderColor,
-    this.semanticValue = 'avatar',
-    this.semanticUpperBadgeValue = 'upperBadge',
-    this.semanticLowerBadgeValue = 'lowerBadge',
+    this.semanticLabel = 'avatar',
+    this.semanticUpperBadgeLabel = 'upperBadge',
+    this.semanticLowerBadgeLabel = 'lowerBadge',
   })  : backgroundColor = null,
         initials = null;
 
@@ -72,9 +72,9 @@ class ZetaAvatar extends ZetaStatelessWidget {
     this.upperBadge,
     this.borderColor,
     this.backgroundColor,
-    this.semanticValue = 'avatar',
-    this.semanticUpperBadgeValue = 'upperBadge',
-    this.semanticLowerBadgeValue = 'lowerBadge',
+    this.semanticLabel = 'avatar',
+    this.semanticUpperBadgeLabel = 'upperBadge',
+    this.semanticLowerBadgeLabel = 'lowerBadge',
   }) : image = null;
 
   /// Constructor for [ZetaAvatar] with initials from a full name.
@@ -86,9 +86,9 @@ class ZetaAvatar extends ZetaStatelessWidget {
     this.upperBadge,
     this.borderColor,
     this.backgroundColor,
-    this.semanticValue = 'avatar',
-    this.semanticUpperBadgeValue = 'upperBadge',
-    this.semanticLowerBadgeValue = 'lowerBadge',
+    this.semanticLabel = 'avatar',
+    this.semanticUpperBadgeLabel = 'upperBadge',
+    this.semanticLowerBadgeLabel = 'lowerBadge',
   })  : image = null,
         initials = name.initials;
 
@@ -120,17 +120,17 @@ class ZetaAvatar extends ZetaStatelessWidget {
   /// {@template zeta-widget-semantic-label}
   /// This label is used by accessibility frameworks (e.g. TalkBack on Android) to describe the component.
   /// {@endtemplate}
-  final String semanticValue;
+  final String semanticLabel;
 
   /// Value passed into wrapping [Semantics] widget for lower badge.
   ///
   /// {@macro zeta-widget-semantic-label}
-  final String semanticLowerBadgeValue;
+  final String semanticLowerBadgeLabel;
 
   /// Value passed into wrapping [Semantics] widget for upper badge.
   ///
   /// {@macro zeta-widget-semantic-label}
-  final String semanticUpperBadgeValue;
+  final String semanticUpperBadgeLabel;
 
   /// Return copy of avatar with certain changed fields
   ZetaAvatar copyWith({
@@ -186,7 +186,7 @@ class ZetaAvatar extends ZetaStatelessWidget {
     return ZetaRoundedScope(
       rounded: context.rounded,
       child: Semantics(
-        value: semanticValue,
+        value: semanticLabel,
         child: SelectionContainer.disabled(
           child: Stack(
             children: [
@@ -227,7 +227,7 @@ class ZetaAvatar extends ZetaStatelessWidget {
                 Positioned(
                   right: ZetaSpacing.none,
                   child: Semantics(
-                    value: semanticLowerBadgeValue,
+                    value: semanticLowerBadgeLabel,
                     child: upperBadge!.copyWith(
                       size: size,
                     ),
@@ -238,7 +238,7 @@ class ZetaAvatar extends ZetaStatelessWidget {
                   right: ZetaSpacing.none,
                   bottom: ZetaSpacing.none,
                   child: Semantics(
-                    value: semanticLowerBadgeValue,
+                    value: semanticLowerBadgeLabel,
                     child: lowerBadge!.copyWith(size: size),
                   ),
                 ),
@@ -259,9 +259,9 @@ class ZetaAvatar extends ZetaStatelessWidget {
       ..add(DiagnosticsProperty<ZetaAvatarBadge?>('badge', upperBadge))
       ..add(DiagnosticsProperty<Color?>('backgroundColor', backgroundColor))
       ..add(ColorProperty('statusColor', borderColor))
-      ..add(StringProperty('semanticUpperBadgeValue', semanticUpperBadgeValue))
-      ..add(StringProperty('semanticValue', semanticValue))
-      ..add(StringProperty('semanticLowerBadgeValue', semanticLowerBadgeValue));
+      ..add(StringProperty('semanticUpperBadgeValue', semanticUpperBadgeLabel))
+      ..add(StringProperty('semanticValue', semanticLabel))
+      ..add(StringProperty('semanticLowerBadgeValue', semanticLowerBadgeLabel));
   }
 }
 
