@@ -191,9 +191,7 @@ class _ZetaPaginationState extends State<ZetaPagination> {
         items: items,
         onChanged: (val) => _onItemPressed(val!),
         value: _currentPage,
-        icon: Icon(
-          rounded ? ZetaIcons.expand_more_round : ZetaIcons.expand_more_sharp,
-        ).paddingStart(ZetaSpacing.small),
+        icon: const ZetaIcon(ZetaIcons.expand_more).paddingStart(ZetaSpacing.small),
         underline: const SizedBox(),
         style: Theme.of(context).textTheme.bodyLarge?.copyWith(
               color: colors.textSubtle,
@@ -213,23 +211,22 @@ class _ZetaPaginationState extends State<ZetaPagination> {
         builder: (context, constraints) {
           final showDropdown =
               widget.type == ZetaPaginationType.dropdown || constraints.deviceType == DeviceType.mobilePortrait;
-          final rounded = context.rounded;
 
           final List<Widget> buttons = [
             if (!showDropdown)
               _PaginationItem(
-                icon: rounded ? ZetaIcons.first_page_round : ZetaIcons.first_page_sharp,
+                icon: ZetaIcons.first_page,
                 onPressed: () => _onItemPressed(1),
                 disabled: _disabled,
               ),
             _PaginationItem(
-              icon: rounded ? ZetaIcons.chevron_left_round : ZetaIcons.chevron_left_sharp,
+              icon: ZetaIcons.chevron_left,
               onPressed: () => _onItemPressed(max(1, _currentPage - 1)),
               disabled: _disabled,
             ),
             if (!showDropdown) ...numberedPaginationItems else paginationDropdown,
             _PaginationItem(
-              icon: rounded ? ZetaIcons.chevron_right_round : ZetaIcons.chevron_right_sharp,
+              icon: ZetaIcons.chevron_right,
               onPressed: () => _onItemPressed(
                 min(widget.pages, _currentPage + 1),
               ),
@@ -237,7 +234,7 @@ class _ZetaPaginationState extends State<ZetaPagination> {
             ),
             if (!showDropdown)
               _PaginationItem(
-                icon: rounded ? ZetaIcons.last_page_round : ZetaIcons.last_page_sharp,
+                icon: ZetaIcons.last_page,
                 onPressed: () => _onItemPressed(
                   widget.pages,
                 ),
@@ -291,7 +288,7 @@ class _PaginationItem extends StatelessWidget {
             ),
       );
     } else if (icon != null) {
-      child = Icon(
+      child = ZetaIcon(
         icon,
         color: disabled ? colors.iconDisabled : colors.iconDefault,
       );

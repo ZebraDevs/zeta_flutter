@@ -314,7 +314,7 @@ extension on ZetaAvatarSize {
 
 /// Enum of types for [ZetaAvatarBadge]
 enum ZetaAvatarBadgeType {
-  /// Shows an icon on [ZetaAvatarBadge]. Defaults to [ZetaIcons.star_round].
+  /// Shows an icon on [ZetaAvatarBadge]. Defaults to [ZetaIcons.star].
   icon,
 
   /// Shows a number on [ZetaAvatarBadge] from provided [ZetaAvatarBadge.value].
@@ -349,7 +349,7 @@ class ZetaAvatarBadge extends StatelessWidget {
   const ZetaAvatarBadge.icon({
     super.key,
     this.color,
-    this.icon = ZetaIcons.star_round,
+    this.icon = ZetaIcons.star,
     this.iconColor,
     this.size = ZetaAvatarSize.xxxl,
   })  : value = null,
@@ -431,7 +431,7 @@ class ZetaAvatarBadge extends StatelessWidget {
               ),
             )
           : icon != null
-              ? Icon(
+              ? ZetaIcon(
                   icon,
                   size: badgeSize - borderSize,
                   color: iconColor ?? backgroundColor.onColor,

@@ -195,15 +195,9 @@ class _CheckboxState extends State<ZetaInternalCheckbox> {
 
     final icon = !_checked
         ? const SizedBox.shrink()
-        : Icon(
-            !widget.useIndeterminate
-                ? rounded
-                    ? ZetaIcons.check_mark_round
-                    : ZetaIcons.check_mark_sharp
-                : rounded
-                    ? ZetaIcons.remove_round
-                    : ZetaIcons.remove_sharp,
-            color: !widget.disabled ? theme.colors.white : theme.colors.iconDisabled,
+        : ZetaIcon(
+            widget.useIndeterminate ? ZetaIcons.remove : ZetaIcons.check_mark,
+            color: widget.disabled ? theme.colors.iconDisabled : theme.colors.white,
             size: ZetaSpacingBase.x3_5,
           );
 

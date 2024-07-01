@@ -12,7 +12,7 @@ class ZetaIconButton extends ZetaStatelessWidget {
     this.borderType,
     this.type = ZetaButtonType.primary,
     this.size = ZetaWidgetSize.medium,
-    this.icon = ZetaIcons.more_horizontal_round,
+    this.icon = ZetaIcons.more_horizontal,
   });
 
   /// Constructs [ZetaIconButton] with Primary theme.
@@ -108,12 +108,7 @@ class ZetaIconButton extends ZetaStatelessWidget {
         type,
         null,
       ),
-      child: SelectionContainer.disabled(
-        child: Icon(
-          icon,
-          size: _iconSize,
-        ).paddingAll(_iconPadding),
-      ),
+      child: SelectionContainer.disabled(child: ZetaIcon(icon, size: _iconSize).paddingAll(_iconPadding)),
     );
   }
 

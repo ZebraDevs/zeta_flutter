@@ -445,14 +445,8 @@ class _HintText extends StatelessWidget {
 
     return Row(
       children: [
-        Icon(
-          errorText != null
-              ? rounded
-                  ? ZetaIcons.error_round
-                  : ZetaIcons.error_sharp
-              : rounded
-                  ? ZetaIcons.info_round
-                  : ZetaIcons.info_sharp,
+        ZetaIcon(
+          errorText != null ? ZetaIcons.error : ZetaIcons.info,
           size: ZetaSpacing.large,
           color: elementColor,
         ),

@@ -210,8 +210,6 @@ class ZetaDateInputState extends State<ZetaDateInput> implements ZetaFormFieldSt
 
   @override
   Widget build(BuildContext context) {
-    final rounded = context.rounded;
-
     return ZetaTextInput(
       disabled: widget.disabled,
       key: _key,
@@ -250,14 +248,14 @@ class ZetaDateInputState extends State<ZetaDateInput> implements ZetaFormFieldSt
         children: [
           if (_showClearButton)
             InputIconButton(
-              icon: rounded ? ZetaIcons.cancel_round : ZetaIcons.cancel_sharp,
+              icon: ZetaIcons.cancel,
               onTap: reset,
               disabled: widget.disabled,
               size: widget.size,
               color: _colors.iconSubtle,
             ),
           InputIconButton(
-            icon: rounded ? ZetaIcons.calendar_round : ZetaIcons.calendar_sharp,
+            icon: ZetaIcons.calendar,
             onTap: _pickDate,
             disabled: widget.disabled,
             size: widget.size,

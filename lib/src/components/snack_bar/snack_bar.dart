@@ -298,11 +298,7 @@ class _IconButton extends StatelessWidget {
           minimumSize: const Size(ZetaSpacing.xl_1, ZetaSpacing.xl_1),
         ),
         onPressed: onPressed,
-        icon: Icon(
-          ZetaIcons.close_round,
-          color: color,
-          size: ZetaSpacing.xl_1,
-        ),
+        icon: ZetaIcon(ZetaIcons.close, color: color, size: ZetaSpacing.xl_1),
       ),
     );
   }
@@ -380,12 +376,12 @@ class _LeadingIcon extends StatelessWidget {
 
   Widget _getIcon(ZetaSnackBarType? type) {
     return switch (type) {
-      ZetaSnackBarType.positive => const Icon(ZetaIcons.check_circle_round),
-      ZetaSnackBarType.info => const Icon(ZetaIcons.info_round),
-      ZetaSnackBarType.warning => const Icon(ZetaIcons.warning_round),
-      ZetaSnackBarType.error => const Icon(ZetaIcons.error_round),
-      ZetaSnackBarType.deletion => const Icon(ZetaIcons.delete_round),
-      ZetaSnackBarType.view => const Icon(ZetaIcons.open_in_new_window_round),
+      ZetaSnackBarType.positive => const ZetaIcon(ZetaIcons.check_circle),
+      ZetaSnackBarType.info => const ZetaIcon(ZetaIcons.info),
+      ZetaSnackBarType.warning => const ZetaIcon(ZetaIcons.warning),
+      ZetaSnackBarType.error => const ZetaIcon(ZetaIcons.error),
+      ZetaSnackBarType.deletion => const ZetaIcon(ZetaIcons.delete),
+      ZetaSnackBarType.view => const ZetaIcon(ZetaIcons.open_in_new_window),
       _ => const SizedBox(),
     };
   }

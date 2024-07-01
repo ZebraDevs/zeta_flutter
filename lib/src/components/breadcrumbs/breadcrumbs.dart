@@ -63,18 +63,11 @@ class _ZetaBreadCrumbsState extends State<ZetaBreadCrumbs> {
         child: Row(
           children: renderedChildren(widget.children)
               .divide(
-                Row(
+                const Row(
                   children: [
-                    const SizedBox(
-                      width: ZetaSpacing.small,
-                    ),
-                    Icon(
-                      rounded ? ZetaIcons.chevron_right_round : ZetaIcons.chevron_right_sharp,
-                      size: ZetaSpacing.xl_1,
-                    ),
-                    const SizedBox(
-                      width: ZetaSpacing.small,
-                    ),
+                    SizedBox(width: ZetaSpacing.small),
+                    ZetaIcon(ZetaIcons.chevron_right, size: ZetaSpacing.xl_1),
+                    SizedBox(width: ZetaSpacing.small),
                   ],
                 ),
               )
@@ -190,8 +183,8 @@ class _ZetaBreadCrumbState extends State<ZetaBreadCrumb> {
       child: Row(
         children: [
           if (widget.isSelected)
-            Icon(
-              widget.activeIcon ?? ZetaIcons.star_round,
+            ZetaIcon(
+              widget.activeIcon ?? ZetaIcons.star,
               color: getColor(controller.value, colors),
             ),
           const SizedBox(
@@ -298,8 +291,8 @@ class _BreadCrumbsTruncatedState extends State<BreadCrumbsTruncated> {
               minimumSize: WidgetStateProperty.all(Size.zero),
               elevation: const WidgetStatePropertyAll(ZetaSpacing.none),
             ),
-            child: Icon(
-              rounded ? ZetaIcons.more_horizontal_round : ZetaIcons.more_horizontal_sharp,
+            child: const ZetaIcon(
+              ZetaIcons.more_horizontal,
               size: ZetaSpacing.large,
             ).paddingHorizontal(ZetaSpacing.small).paddingVertical(ZetaSpacing.minimum),
           );
@@ -311,16 +304,9 @@ class _BreadCrumbsTruncatedState extends State<BreadCrumbsTruncated> {
           .divide(
             const Row(
               children: [
-                SizedBox(
-                  width: ZetaSpacing.small,
-                ),
-                Icon(
-                  ZetaIcons.chevron_right_round,
-                  size: ZetaSpacing.xl_1,
-                ),
-                SizedBox(
-                  width: ZetaSpacing.small,
-                ),
+                SizedBox(width: ZetaSpacing.small),
+                ZetaIcon(ZetaIcons.chevron_right, size: ZetaSpacing.xl_1),
+                SizedBox(width: ZetaSpacing.small),
               ],
             ),
           )

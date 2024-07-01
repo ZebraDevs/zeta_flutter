@@ -100,8 +100,8 @@ class _ZetaStepperState extends State<ZetaStepper> with TickerProviderStateMixin
         ),
         child: Center(
           child: switch (widget.steps[index].type) {
-            ZetaStepType.complete => Icon(
-                rounded ? ZetaIcons.check_mark_round : ZetaIcons.check_mark_sharp,
+            ZetaStepType.complete => ZetaIcon(
+                ZetaIcons.check_mark,
                 color: _colors.textInverse,
               ),
             ZetaStepType.enabled || ZetaStepType.disabled => Text(
@@ -129,8 +129,8 @@ class _ZetaStepperState extends State<ZetaStepper> with TickerProviderStateMixin
         ),
         child: Center(
           child: switch (widget.steps[index].type) {
-            ZetaStepType.complete => Icon(
-                context.rounded ? ZetaIcons.check_mark_round : ZetaIcons.check_mark_sharp,
+            ZetaStepType.complete => ZetaIcon(
+                ZetaIcons.check_mark,
                 color: _colors.textInverse,
               ),
             ZetaStepType.enabled || ZetaStepType.disabled => Text(

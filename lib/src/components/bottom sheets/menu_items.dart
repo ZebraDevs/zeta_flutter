@@ -111,7 +111,7 @@ class ZetaMenuItem extends ZetaStatelessWidget {
                       if (trailing != null)
                         IconTheme(
                           data: _iconThemeData(colors, _enabled, ZetaSpacing.xl_2),
-                          child: trailing ?? const Icon(Icons.keyboard_arrow_right),
+                          child: trailing!,
                         ),
                     ],
                   ),

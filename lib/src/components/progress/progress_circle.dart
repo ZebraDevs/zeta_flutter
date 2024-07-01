@@ -124,8 +124,8 @@ class ZetaProgressCircleState extends ZetaProgressState<ZetaProgressCircle> {
                                           borderRadius: ZetaRadius.full,
                                         ),
                                         padding: const EdgeInsets.all(ZetaSpacing.small),
-                                        child: Icon(
-                                          context.rounded ? ZetaIcons.close_round : ZetaIcons.close_sharp,
+                                        child: ZetaIcon(
+                                          ZetaIcons.close,
                                           size:
                                               widget.size == ZetaCircleSizes.s ? ZetaSpacing.medium : ZetaSpacing.large,
                                         ),
