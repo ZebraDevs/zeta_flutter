@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.14.0](https://github.com/ZebraDevs/zeta_flutter/compare/v0.13.0...v0.14.0) (2024-07-01)
+
+
+### ✨ New Features
+
+* Add ZetaIcon component ([0b07da1](https://github.com/ZebraDevs/zeta_flutter/commit/0b07da17c85a0b2fdb480b06a7989b1da37b8af3))
+
 ## [0.13.0](https://github.com/ZebraDevs/zeta_flutter/compare/v0.12.0...v0.13.0) (2024-06-28)
 
 
