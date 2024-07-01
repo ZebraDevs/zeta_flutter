@@ -7,3 +7,16 @@ example/macos
 example/web
 example/windows
 example/widgetbook
+appium/
+test/
+build/
+coverage/
+doc/
+coverage.sh
+example/example.iml
+example/assets/
+example/lib/
+example/pubspec.yaml
+example/analysis_options.yaml
+firebase.json
+release-please-config.json
