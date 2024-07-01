@@ -75,7 +75,7 @@ class ZetaBanner extends MaterialBanner {
                       if (leadingIcon != null)
                         Padding(
                           padding: const EdgeInsets.only(right: ZetaSpacing.small),
-                          child: Icon(
+                          child: ZetaIcon(
                             leadingIcon,
                             color: foregroundColor,
                             size: ZetaSpacing.xl_2,

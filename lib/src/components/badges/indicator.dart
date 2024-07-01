@@ -4,7 +4,7 @@ import '../../../zeta_flutter.dart';
 
 /// [ZetaIndicator] type.
 enum ZetaIndicatorType {
-  /// Shows an icon on [ZetaIndicator]. Defaults to [ZetaIcons.star_round].
+  /// Shows an icon on [ZetaIndicator]. Defaults to [ZetaIcons.star].
   icon,
 
   /// Shows a number on [ZetaIndicator] from provided [ZetaIndicator.value].
@@ -65,7 +65,7 @@ class ZetaIndicator extends ZetaStatelessWidget {
   /// Defaults to false.
   final bool inverse;
 
-  /// Indicator icon, default: `ZetaIcons.star_round`.
+  /// Indicator icon, default: `ZetaIcons.star`.
   final IconData? icon;
 
   /// Value for the type `notification`.
@@ -138,8 +138,8 @@ class ZetaIndicator extends ZetaStatelessWidget {
       case ZetaIndicatorType.icon:
         final iconSize = _getIconSize(size);
         return Center(
-          child: Icon(
-            icon ?? ZetaIcons.star_round,
+          child: ZetaIcon(
+            icon ?? ZetaIcons.star,
             color: foregroundColor,
             size: iconSize,
           ),

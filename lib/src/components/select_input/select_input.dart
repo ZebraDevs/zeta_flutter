@@ -84,15 +84,6 @@ class _ZetaSelectInputState<T> extends State<ZetaSelectInput<T>> {
 
   bool get _dropdownOpen => _dropdownKey.currentState?.isOpen ?? false;
 
-  IconData get _icon {
-    final rounded = context.rounded;
-    if (_dropdownOpen) {
-      return rounded ? ZetaIcons.expand_less_round : ZetaIcons.expand_less_sharp;
-    } else {
-      return rounded ? ZetaIcons.expand_more_round : ZetaIcons.expand_more_sharp;
-    }
-  }
-
   @override
   void initState() {
     _inputController.addListener(
@@ -183,7 +174,7 @@ class _ZetaSelectInputState<T> extends State<ZetaSelectInput<T>> {
             hintText: widget.hintText,
             onChange: (val) => _onInputChanged(controller),
             suffix: InputIconButton(
-              icon: _icon,
+              icon: _dropdownOpen ? ZetaIcons.expand_less : ZetaIcons.expand_more,
               disabled: widget.disabled,
               size: widget.size,
               color: colors.iconSubtle,

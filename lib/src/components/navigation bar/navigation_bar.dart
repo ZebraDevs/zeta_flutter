@@ -245,7 +245,7 @@ class _NavigationItem extends StatelessWidget {
                       left: ZetaSpacingBase.x2_5,
                       top: ZetaSpacing.small - _navigationItemBorderWidth,
                       right: ZetaSpacingBase.x2_5,
-                      child: Icon(item.icon, color: elementColor, size: ZetaSpacing.xl_2),
+                      child: ZetaIcon(item.icon, color: elementColor, size: ZetaSpacing.xl_2),
                     ),
                     if (item.badge != null) _getBadge(colors),
                   ],

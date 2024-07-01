@@ -302,9 +302,9 @@ class _ZetaGroupButtonState extends State<ZetaGroupButton> {
     late final IconData dropdownIcon;
 
     if (!dropdownOpen || onPressed == null) {
-      dropdownIcon = rounded ? ZetaIcons.expand_more_round : ZetaIcons.expand_more_sharp;
+      dropdownIcon = ZetaIcons.expand_more;
     } else {
-      dropdownIcon = rounded ? ZetaIcons.expand_less_round : ZetaIcons.expand_less_sharp;
+      dropdownIcon = ZetaIcons.expand_less;
     }
 
     const iconSize = ZetaSpacing.xl_1;
@@ -318,10 +318,7 @@ class _ZetaGroupButtonState extends State<ZetaGroupButton> {
         child: selectedItem!.icon!,
       );
     } else if (selectedItem == null && widget.icon != null) {
-      leadingIcon = Icon(
-        widget.icon,
-        size: iconSize,
-      );
+      leadingIcon = ZetaIcon(widget.icon, size: iconSize);
     }
 
     return Container(
@@ -350,7 +347,7 @@ class _ZetaGroupButtonState extends State<ZetaGroupButton> {
               leadingIcon ?? const SizedBox(),
               Text(selectedItem?.label ?? widget.label ?? '', style: ZetaTextStyles.labelMedium),
               if (widget.items != null)
-                Icon(
+                ZetaIcon(
                   dropdownIcon,
                   size: ZetaSpacing.xl_1,
                 ),

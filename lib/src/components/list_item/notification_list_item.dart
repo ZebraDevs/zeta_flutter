@@ -121,8 +121,8 @@ class _ZetaNotificationListItemState extends State<ZetaNotificationListItem> {
                               Container(
                                 padding: const EdgeInsets.all(2),
                                 decoration: BoxDecoration(color: colors.surfaceNegative, borderRadius: ZetaRadius.full),
-                                child: Icon(
-                                  ZetaIcons.important_notification_round,
+                                child: ZetaIcon(
+                                  ZetaIcons.important_notification,
                                   color: colors.white,
                                   size: ZetaSpacing.medium,
                                 ),
@@ -211,11 +211,11 @@ class ZetaNotificationBadge extends StatelessWidget {
     return avatar != null
         ? avatar!.copyWith(
             size: ZetaAvatarSize.m,
-            lowerBadge: ZetaAvatarBadge.icon(icon: ZetaIcons.check_mark_round, color: colors.green),
+            lowerBadge: ZetaAvatarBadge.icon(icon: ZetaIcons.check_mark, color: colors.green),
             backgroundColor: colors.purple.shade80,
           )
         : icon != null
-            ? Icon(
+            ? ZetaIcon(
                 icon,
                 size: ZetaSpacing.xl_8,
                 color: iconColor,

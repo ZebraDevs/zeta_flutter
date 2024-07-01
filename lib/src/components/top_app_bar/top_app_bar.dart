@@ -174,7 +174,7 @@ class _ZetaTopAppBarState extends State<ZetaTopAppBar> {
                   IconButton(
                     color: colors.cool.shade50,
                     onPressed: () => widget.searchController?.clearText(),
-                    icon: const Icon(ZetaIcons.cancel_round),
+                    icon: const ZetaIcon(ZetaIcons.cancel),
                   ),
                   if (widget.onSearchMicrophoneIconPressed != null) ...[
                     SizedBox(
@@ -183,7 +183,7 @@ class _ZetaTopAppBarState extends State<ZetaTopAppBar> {
                     ),
                     IconButton(
                       onPressed: widget.onSearchMicrophoneIconPressed,
-                      icon: const Icon(ZetaIcons.microphone_round),
+                      icon: const ZetaIcon(ZetaIcons.microphone),
                     ),
                   ],
                 ],

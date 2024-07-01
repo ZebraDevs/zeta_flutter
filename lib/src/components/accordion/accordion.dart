@@ -154,10 +154,8 @@ class _ZetaAccordionState extends State<ZetaAccordion> with TickerProviderStateM
                       ),
                       Padding(
                         padding: const EdgeInsets.only(left: ZetaSpacing.large),
-                        child: Icon(
-                          _isOpen
-                              ? (rounded ? ZetaIcons.remove_round : ZetaIcons.remove_sharp)
-                              : (rounded ? ZetaIcons.add_round : ZetaIcons.add_sharp),
+                        child: ZetaIcon(
+                          _isOpen ? ZetaIcons.remove : ZetaIcons.add,
                           color: _disabled ? zetaColors.iconDisabled : zetaColors.iconDefault,
                         ),
                       ),

@@ -187,8 +187,8 @@ class _ZetaChipState extends State<ZetaChip> {
                     duration: Durations.short1,
                     width: iconSize,
                     child: (selected
-                        ? Icon(
-                            rounded ? ZetaIcons.check_mark_round : ZetaIcons.check_mark_sharp,
+                        ? ZetaIcon(
+                            ZetaIcons.check_mark,
                             color: widget.selected! ? colors.iconInverse : Colors.transparent,
                           )
                         : const SizedBox()),

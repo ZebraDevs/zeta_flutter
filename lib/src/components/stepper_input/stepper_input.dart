@@ -126,22 +126,12 @@ class _ZetaStepperInputState extends State<ZetaStepperInput> {
   }
 
   ZetaIconButton _getButton({bool increase = false}) {
-    final bool rounded = context.rounded;
-
     return ZetaIconButton(
-      icon: increase
-          ? rounded
-              ? ZetaIcons.add_round
-              : ZetaIcons.add_sharp
-          : rounded
-              ? ZetaIcons.remove_round
-              : ZetaIcons.remove_sharp,
+      icon: increase ? ZetaIcons.add : ZetaIcons.remove,
       type: ZetaButtonType.outlineSubtle,
       size: widget.size == ZetaStepperInputSize.medium ? ZetaWidgetSize.medium : ZetaWidgetSize.large,
       onPressed: !_disabled && (increase ? _value != widget.max : _value != widget.min)
-          ? () => _onChange(
-                _value + (increase ? 1 : -1),
-              )
+          ? () => _onChange(_value + (increase ? 1 : -1))
           : null,
     );
   }

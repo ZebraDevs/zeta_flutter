@@ -210,8 +210,6 @@ class ZetaTimeInputState extends State<ZetaTimeInput> implements ZetaFormFieldSt
 
   @override
   Widget build(BuildContext context) {
-    final rounded = context.rounded;
-
     if (!_firstBuildComplete && widget.initialValue != null) {
       _setText(widget.initialValue!);
       _firstBuildComplete = true;
@@ -251,14 +249,14 @@ class ZetaTimeInputState extends State<ZetaTimeInput> implements ZetaFormFieldSt
         children: [
           if (_showClearButton)
             InputIconButton(
-              icon: rounded ? ZetaIcons.cancel_round : ZetaIcons.cancel_sharp,
+              icon: ZetaIcons.cancel,
               onTap: reset,
               disabled: widget.disabled,
               size: widget.size,
               color: _colors.iconSubtle,
             ),
           InputIconButton(
-            icon: rounded ? ZetaIcons.clock_outline_round : ZetaIcons.clock_outline_sharp,
+            icon: ZetaIcons.clock_outline,
             onTap: _pickTime,
             disabled: widget.disabled,
             size: widget.size,

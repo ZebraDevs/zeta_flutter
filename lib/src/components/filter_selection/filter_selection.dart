@@ -31,8 +31,8 @@ class ZetaFilterSelection extends ZetaStatelessWidget {
             child: IconButton(
               visualDensity: VisualDensity.compact,
               onPressed: onPressed,
-              icon: Icon(
-                context.rounded ? ZetaIcons.filter_round : ZetaIcons.filter_sharp,
+              icon: const ZetaIcon(
+                ZetaIcons.filter,
                 size: ZetaSpacing.xl_2,
               ),
             ),

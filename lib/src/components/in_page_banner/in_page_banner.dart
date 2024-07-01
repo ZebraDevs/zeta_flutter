@@ -63,8 +63,8 @@ class ZetaInPageBanner extends ZetaStatelessWidget {
             children: [
               Padding(
                 padding: const EdgeInsetsDirectional.only(top: ZetaSpacing.medium, start: ZetaSpacingBase.x2_5),
-                child: Icon(
-                  customIcon ?? status.icon(rounded: rounded),
+                child: ZetaIcon(
+                  customIcon ?? status.icon,
                   size: ZetaSpacing.xl_1,
                   color: status == ZetaWidgetStatus.neutral ? theme.colors.textDefault : colors.icon,
                 ),
@@ -97,8 +97,8 @@ class ZetaInPageBanner extends ZetaStatelessWidget {
               if (onClose != null)
                 IconButton(
                   onPressed: onClose,
-                  icon: Icon(
-                    !rounded ? ZetaIcons.close_sharp : ZetaIcons.close_round,
+                  icon: const ZetaIcon(
+                    ZetaIcons.close,
                     size: ZetaSpacing.xl_1,
                   ),
                 ),
@@ -121,17 +121,17 @@ class ZetaInPageBanner extends ZetaStatelessWidget {
 }
 
 extension on ZetaWidgetStatus {
-  IconData icon({required bool rounded}) {
+  IconData get icon {
     switch (this) {
       case ZetaWidgetStatus.positive:
-        return rounded ? ZetaIcons.check_circle_round : ZetaIcons.check_circle_sharp;
+        return ZetaIcons.check_circle;
       case ZetaWidgetStatus.warning:
-        return rounded ? ZetaIcons.warning_round : ZetaIcons.warning_sharp;
+        return ZetaIcons.warning;
       case ZetaWidgetStatus.negative:
-        return rounded ? ZetaIcons.error_round : ZetaIcons.error_sharp;
+        return ZetaIcons.error;
       case ZetaWidgetStatus.neutral:
       case ZetaWidgetStatus.info:
-        return rounded ? ZetaIcons.info_round : ZetaIcons.info_sharp;
+        return ZetaIcons.info;
     }
   }
 }

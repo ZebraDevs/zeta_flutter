@@ -35,7 +35,7 @@ class ZetaFAB extends StatefulWidget {
     this.type = ZetaFabType.primary,
     this.size = ZetaFabSize.small,
     this.shape = ZetaWidgetBorder.full,
-    this.icon = ZetaIcons.add_round,
+    this.icon = ZetaIcons.add,
     this.initiallyExpanded,
     this.focusNode,
     super.key,
@@ -73,7 +73,7 @@ class ZetaFAB extends StatefulWidget {
 
   /// Icon for the button
   ///
-  /// Defaults to [ZetaIcons.add_round].
+  /// Defaults to [ZetaIcons.add].
   final IconData icon;
 
   /// Whether the FAB starts as expanded.
@@ -147,7 +147,7 @@ class _ZetaFABState extends State<ZetaFAB> {
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Icon(widget.icon, size: widget.size.iconSize),
+              ZetaIcon(widget.icon, size: widget.size.iconSize),
               if (isExpanded && widget.label != null)
                 Row(
                   mainAxisSize: MainAxisSize.min,

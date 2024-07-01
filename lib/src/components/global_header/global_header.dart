@@ -110,7 +110,7 @@ class _GlobalHeaderState extends State<ZetaGlobalHeader> {
                               height: ZetaSpacing.xl_2,
                               margin: const EdgeInsets.symmetric(horizontal: ZetaSpacing.minimum),
                             ),
-                            IconButton(icon: const Icon(ZetaIcons.apps_round), onPressed: widget.onAppsButton),
+                            IconButton(icon: const ZetaIcon(ZetaIcons.apps), onPressed: widget.onAppsButton),
                           ],
                           const SizedBox(width: ZetaSpacing.small),
                           if (widget.avatar != null) widget.avatar!.copyWith(size: ZetaAvatarSize.m),
