@@ -1,5 +1,21 @@
 # Changelog
 
+## [0.13.0](https://github.com/ZebraDevs/zeta_flutter/compare/v0.12.0...v0.13.0) (2024-06-28)
+
+
+### ✨ New Features
+
+* **UX-1117:** Semantic tags for SYNC  ([#119](https://github.com/ZebraDevs/zeta_flutter/issues/119)) ([1177222](https://github.com/ZebraDevs/zeta_flutter/commit/1177222bb50904dd5a17c12ccf77994239c4f881))
+
+
+### 🪲 Bug Fixes
+
+* add braces to fab color ([#110](https://github.com/ZebraDevs/zeta_flutter/issues/110)) ([82c5feb](https://github.com/ZebraDevs/zeta_flutter/commit/82c5febf32a0529493d886e3f8c3290071bbce53))
+* Changed the functionality of dropdown sizes. Mini now sets the width of the menu to its largest child, and standard will set the minimum width to the width of the dropdown's parent. ([d9bfe19](https://github.com/ZebraDevs/zeta_flutter/commit/d9bfe19f7b32daac5963e628e7d3499d07ff17c1))
+* Removed the default offest from dropdown and added an offest. ([d9bfe19](https://github.com/ZebraDevs/zeta_flutter/commit/d9bfe19f7b32daac5963e628e7d3499d07ff17c1))
+* syntax error in action ([#118](https://github.com/ZebraDevs/zeta_flutter/issues/118)) ([a5fee0b](https://github.com/ZebraDevs/zeta_flutter/commit/a5fee0b4b30db040b400c86db1acd217a10ddc76))
+* **UX-1006:** Gave dropdown functionality to dropdown buttons in button groups  ([#115](https://github.com/ZebraDevs/zeta_flutter/issues/115)) ([d9bfe19](https://github.com/ZebraDevs/zeta_flutter/commit/d9bfe19f7b32daac5963e628e7d3499d07ff17c1))
+
 ## [0.12.0](https://github.com/ZebraDevs/zeta_flutter/compare/v0.11.2...v0.12.0) (2024-06-24)
 
 
