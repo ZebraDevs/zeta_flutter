@@ -156,7 +156,7 @@ class _WrapperState extends State<Wrapper> {
             const SizedBox(width: 40),
             widget.stateChangeable!
                 ? FilledButton(onPressed: setLoading, child: Text("Start Buffering"))
-                : SizedBox.shrink()
+                : const Nothing()
           ],
         )
       ],

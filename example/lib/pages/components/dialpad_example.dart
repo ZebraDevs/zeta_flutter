@@ -57,7 +57,7 @@ class _DialPadExampleState extends State<DialPadExample> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const SizedBox(),
+                      const Nothing(),
                       Text(
                         text,
                         style: ZetaTextStyles.heading3,

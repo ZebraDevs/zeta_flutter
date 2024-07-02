@@ -45,7 +45,7 @@ Widget navigationRailUseCase(BuildContext context) {
                 child: Padding(
                   padding: const EdgeInsets.all(ZetaSpacing.xl_1),
                   child: selectedIndex == null
-                      ? const SizedBox()
+                      ? const Nothing()
                       : Text(
                           itemsList[selectedIndex!],
                           textAlign: TextAlign.center,

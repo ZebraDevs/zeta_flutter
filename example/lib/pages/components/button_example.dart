@@ -131,7 +131,7 @@ class _ButtonExampleState extends State<ButtonExample> {
                 ].divide(const SizedBox.square(dimension: ZetaSpacing.xl_2)).toList(),
               ),
             ),
-            Expanded(child: const SizedBox()),
+            Expanded(child: const Nothing()),
           ],
         ),
       ),
