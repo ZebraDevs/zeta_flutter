@@ -28,7 +28,7 @@ class _NotificationListItemExampleState extends State<NotificationListItemExampl
               overflow: TextOverflow.ellipsis,
             ),
             title: 'Urgent Message',
-            leading: ZetaNotificationBadge.icon(icon: ZetaIcons.check_circle_round),
+            leading: ZetaNotificationBadge.icon(icon: ZetaIcons.check_circle),
             notificationTime: "Just now",
             action: ZetaButton.negative(
               label: "Remove",
@@ -51,7 +51,7 @@ class _NotificationListItemExampleState extends State<NotificationListItemExampl
               ],
             ),
             title: 'Urgent Message',
-            leading: ZetaNotificationBadge.icon(icon: ZetaIcons.check_circle_round),
+            leading: ZetaNotificationBadge.icon(icon: ZetaIcons.check_circle),
             notificationTime: "Just now",
             action: ZetaButton.negative(
               label: "Remove",

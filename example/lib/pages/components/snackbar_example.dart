@@ -54,7 +54,6 @@ class SnackBarExample extends StatelessWidget {
                             ScaffoldMessenger.of(context).hideCurrentSnackBar();
                           },
                           actionLabel: "Action",
-                          rounded: false,
                           content: Text('This is a snackbar'),
                         ),
                       );
@@ -72,7 +71,7 @@ class SnackBarExample extends StatelessWidget {
                         ZetaSnackBar(
                           context: context,
                           type: ZetaSnackBarType.defaultType,
-                          leadingIcon: Icon(Icons.mood_rounded),
+                          leadingIcon: ZetaIcon(Icons.mood),
                           content: Text('Message with icon'),
                         ),
                       );

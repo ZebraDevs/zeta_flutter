@@ -23,7 +23,7 @@ class _DateInputExampleState extends State<DateInputExample> {
           children: [
             Padding(
               padding: const EdgeInsets.only(top: 20),
-              child: Text('Rounded', style: ZetaTextStyles.titleMedium),
+              child: Text('Large', style: ZetaTextStyles.titleMedium),
             ),
             Padding(
               padding: const EdgeInsets.all(20),
@@ -32,34 +32,7 @@ class _DateInputExampleState extends State<DateInputExample> {
                 hintText: 'Enter birthdate',
                 errorText: _errorText ?? 'Invalid date',
                 initialValue: DateTime.now(),
-              ),
-            ),
-            Divider(color: Colors.grey[200]),
-            Padding(
-              padding: const EdgeInsets.only(top: 20),
-              child: Text('Sharp', style: ZetaTextStyles.titleMedium),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(20),
-              child: ZetaDateInput(
-                label: 'Label',
-                hintText: 'Default hint text',
-                errorText: 'Oops! Error hint text',
-                rounded: false,
-                dateFormat: 'yyyy-MM-dd',
-              ),
-            ),
-            Divider(color: Colors.grey[200]),
-            Padding(
-              padding: const EdgeInsets.only(top: 20),
-              child: Text('Disabled', style: ZetaTextStyles.titleMedium),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(20),
-              child: ZetaDateInput(
-                label: 'Label',
-                hintText: 'Default hint text',
-                disabled: true,
+                size: ZetaWidgetSize.large,
               ),
             ),
             Divider(color: Colors.grey[200]),
@@ -88,6 +61,19 @@ class _DateInputExampleState extends State<DateInputExample> {
                 hintText: 'Default hint text',
                 errorText: 'Oops! Error hint text',
                 size: ZetaWidgetSize.small,
+              ),
+            ),
+            Divider(color: Colors.grey[200]),
+            Padding(
+              padding: const EdgeInsets.only(top: 20),
+              child: Text('Disabled', style: ZetaTextStyles.titleMedium),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(20),
+              child: ZetaDateInput(
+                label: 'Label',
+                hintText: 'Default hint text',
+                disabled: true,
               ),
             ),
           ],

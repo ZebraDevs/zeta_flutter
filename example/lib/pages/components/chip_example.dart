@@ -21,33 +21,10 @@ class _ChipExampleState extends State<ChipExample> {
         style: TextStyle(fontWeight: FontWeight.bold),
       ),
       const SizedBox(height: 10),
-      Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          Expanded(
-            child: Column(
-              children: [
-                ZetaInputChip(
-                  label: 'Label',
-                  leading: ZetaAvatar.initials(initials: "ZA"),
-                  trailing: IconButton(icon: Icon(ZetaIcons.close_round), onPressed: () {}),
-                ),
-              ],
-            ),
-          ),
-          Expanded(
-            child: Column(
-              children: [
-                ZetaInputChip(
-                  label: 'Label',
-                  rounded: false,
-                  leading: const Icon(ZetaIcons.user_round),
-                  trailing: Icon(ZetaIcons.close_sharp),
-                ),
-              ],
-            ),
-          ),
-        ],
+      ZetaInputChip(
+        label: 'Label',
+        leading: const ZetaIcon(ZetaIcons.user),
+        trailing: ZetaIcon(ZetaIcons.close),
       ),
     ]);
 
@@ -58,35 +35,14 @@ class _ChipExampleState extends State<ChipExample> {
         style: TextStyle(fontWeight: FontWeight.bold),
       ),
       const SizedBox(height: 10),
-      Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          Expanded(
-            child: Column(
-              children: [
-                ZetaAssistChip(
-                  label: 'Label',
-                  leading: Icon(ZetaIcons.star_round),
-                  draggable: true,
-                  data: 'Round Assist chip',
-                ),
-              ],
-            ),
-          ),
-          Expanded(
-            child: Column(
-              children: [
-                ZetaAssistChip(
-                  label: 'Label',
-                  rounded: false,
-                  leading: Icon(ZetaIcons.star_round),
-                  data: 'Sharp Assist chip',
-                  draggable: true,
-                ),
-              ],
-            ),
-          ),
-        ],
+      SizedBox(
+        height: 40,
+        child: ZetaAssistChip(
+          label: 'Label',
+          leading: ZetaIcon(ZetaIcons.star),
+          draggable: true,
+          data: 'Assist chip',
+        ),
       ),
     ]);
 
@@ -97,35 +53,14 @@ class _ChipExampleState extends State<ChipExample> {
         style: TextStyle(fontWeight: FontWeight.bold),
       ),
       const SizedBox(height: 10),
-      Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          Expanded(
-            child: Column(
-              children: [
-                ZetaFilterChip(
-                  label: 'Label',
-                  selected: true,
-                  data: 'Round filter chip',
-                  draggable: true,
-                ),
-              ],
-            ),
-          ),
-          Expanded(
-            child: Column(
-              children: [
-                ZetaFilterChip(
-                  label: 'Label',
-                  rounded: false,
-                  selected: true,
-                  data: 'Sharp filter chip',
-                  draggable: true,
-                ),
-              ],
-            ),
-          ),
-        ],
+      SizedBox(
+        height: 40,
+        child: ZetaFilterChip(
+          label: 'Label',
+          selected: true,
+          data: 'Filter chip',
+          draggable: true,
+        ),
       ),
     ]);
     final colors = Zeta.of(context).colors;
@@ -136,12 +71,6 @@ class _ChipExampleState extends State<ChipExample> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Row(
-              children: [
-                Expanded(child: Center(child: Text('Rounded'))),
-                Expanded(child: Center(child: Text('Sharp'))),
-              ],
-            ),
             inputChipExample,
             assistChipExample,
             filterChipExample,

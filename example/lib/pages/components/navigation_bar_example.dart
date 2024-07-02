@@ -17,10 +17,10 @@ class _NavigationBarExampleState extends State<NavigationBarExample> {
   @override
   Widget build(BuildContext context) {
     final items = [
-      ZetaNavigationBarItem(icon: ZetaIcons.star_round, label: 'Label', badge: ZetaIndicator(value: 2)),
-      ZetaNavigationBarItem(icon: ZetaIcons.star_round, label: 'Label'),
-      ZetaNavigationBarItem(icon: ZetaIcons.star_round, label: 'Label'),
-      ZetaNavigationBarItem(icon: ZetaIcons.star_round, label: 'Label'),
+      ZetaNavigationBarItem(icon: ZetaIcons.star, label: 'Label', badge: ZetaIndicator(value: 2)),
+      ZetaNavigationBarItem(icon: ZetaIcons.star, label: 'Label'),
+      ZetaNavigationBarItem(icon: ZetaIcons.star, label: 'Label'),
+      ZetaNavigationBarItem(icon: ZetaIcons.star, label: 'Label'),
     ];
 
     return ExampleScaffold(

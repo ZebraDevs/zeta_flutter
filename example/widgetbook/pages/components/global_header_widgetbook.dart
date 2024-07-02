@@ -8,14 +8,14 @@ Widget globalHeaderUseCase(BuildContext context) {
   final actionButtons = [
     IconButton(
       onPressed: () {},
-      icon: const Icon(
-        ZetaIcons.alert_round,
+      icon: const ZetaIcon(
+        ZetaIcons.alert,
       ),
     ),
     IconButton(
       onPressed: () {},
-      icon: const Icon(
-        ZetaIcons.help_round,
+      icon: const ZetaIcon(
+        ZetaIcons.help,
       ),
     ),
   ];

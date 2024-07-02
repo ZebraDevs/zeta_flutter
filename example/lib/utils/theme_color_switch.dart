@@ -53,7 +53,7 @@ class ZetaThemeColorSwitch extends StatelessWidget {
             child: ZetaAvatar(
               size: ZetaAvatarSize.xxs,
               backgroundColor: color.surface,
-              image: Icon(Icons.color_lens, color: color),
+              image: ZetaIcon(Icons.color_lens, color: color),
             ),
           );
         }).toList(),

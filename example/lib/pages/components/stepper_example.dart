@@ -12,7 +12,7 @@ class StepperExample extends StatefulWidget {
 }
 
 class _StepperExampleState extends State<StepperExample> {
-  int _roundedHorizontalStep = 0;
+  int edHorizontalStep = 0;
   int _sharpHorizontalStep = 0;
   int _verticalStep = 0;
 
@@ -36,12 +36,12 @@ class _StepperExampleState extends State<StepperExample> {
             SizedBox(
               height: 150,
               child: ZetaStepper(
-                currentStep: _roundedHorizontalStep,
-                onStepTapped: (index) => setState(() => _roundedHorizontalStep = index),
+                currentStep: edHorizontalStep,
+                onStepTapped: (index) => setState(() => edHorizontalStep = index),
                 steps: [
                   ZetaStep(
                     type: _getForStepIndex(
-                      currentStep: _roundedHorizontalStep,
+                      currentStep: edHorizontalStep,
                       stepIndex: 0,
                     ),
                     title: Text("Title"),
@@ -49,14 +49,14 @@ class _StepperExampleState extends State<StepperExample> {
                   ),
                   ZetaStep(
                     type: _getForStepIndex(
-                      currentStep: _roundedHorizontalStep,
+                      currentStep: edHorizontalStep,
                       stepIndex: 1,
                     ),
                     title: Text("Title 2"),
                   ),
                   ZetaStep(
                     type: _getForStepIndex(
-                      currentStep: _roundedHorizontalStep,
+                      currentStep: edHorizontalStep,
                       stepIndex: 2,
                     ),
                     title: Text("Title 3"),
@@ -68,7 +68,6 @@ class _StepperExampleState extends State<StepperExample> {
             SizedBox(
               height: 150,
               child: ZetaStepper(
-                rounded: false,
                 currentStep: _sharpHorizontalStep,
                 onStepTapped: (index) => setState(() => _sharpHorizontalStep = index),
                 steps: [

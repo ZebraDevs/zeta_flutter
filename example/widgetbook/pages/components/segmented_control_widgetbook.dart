@@ -10,7 +10,7 @@ Widget segmentedControlUseCase(BuildContext context) {
   int selectedIconSegment = iconsSegments.first;
 
   final rounded = context.knobs.boolean(label: "Rounded", initialValue: true);
-  final icon = iconKnob(context, rounded: rounded, initial: ZetaIcons.star_round);
+  final icon = iconKnob(context, rounded: rounded, initial: ZetaIcons.star);
 
   final text = context.knobs.string(label: 'Text', initialValue: "Item");
 
@@ -29,7 +29,7 @@ Widget segmentedControlUseCase(BuildContext context) {
                 for (final value in iconsSegments)
                   ZetaButtonSegment(
                     value: value,
-                    child: Icon(icon),
+                    child: ZetaIcon(icon),
                   ),
               ],
               onChanged: (value) => setState(

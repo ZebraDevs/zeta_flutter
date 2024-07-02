@@ -15,6 +15,7 @@ class IconsExample extends StatefulWidget {
 class _IconsExampleState extends State<IconsExample> {
   bool showGeneratedColors = false;
 
+//TODO: LUKE ADD NAMES TO ICONS
   @override
   Widget build(BuildContext context) {
     return ExampleScaffold(
@@ -23,22 +24,12 @@ class _IconsExampleState extends State<IconsExample> {
         padding: EdgeInsets.all(ZetaSpacing.medium),
         child: Column(
           children: [
-            Text('Round', style: ZetaTextStyles.bodyLarge),
             Wrap(
-              spacing: 8,
-              runSpacing: 8,
-              children: icons.values.map((e) => Icon(e)).toList(),
+              spacing: 20,
+              runSpacing: 20,
+              children: icons.values.map((e) => ZetaIcon(e, size: 48)).toList(),
             ),
             const SizedBox(height: 20),
-            Text('Sharp', style: ZetaTextStyles.bodyLarge),
-            Wrap(
-              spacing: 8,
-              runSpacing: 8,
-              children: icons.values
-                  .map((e) =>
-                      Icon(IconData(e.codePoint, fontFamily: ZetaIcons.familySharp, fontPackage: ZetaIcons.package)))
-                  .toList(),
-            ),
           ],
         ),
       ),

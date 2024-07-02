@@ -37,19 +37,19 @@ class _NavigationRailExampleState extends State<NavigationRailExample> {
               items: [
                 ZetaNavigationRailItem(
                   label: 'Label',
-                  icon: Icon(ZetaIcons.star_round),
+                  icon: ZetaIcon(ZetaIcons.star),
                 ),
                 ZetaNavigationRailItem(
                   label: 'User\nPreferences',
-                  icon: Icon(ZetaIcons.star_round),
+                  icon: ZetaIcon(ZetaIcons.star),
                 ),
                 ZetaNavigationRailItem(
                   label: 'Account Settings',
-                  icon: Icon(ZetaIcons.star_round),
+                  icon: ZetaIcon(ZetaIcons.star),
                 ),
                 ZetaNavigationRailItem(
                   label: 'Label',
-                  icon: Icon(ZetaIcons.star_round),
+                  icon: ZetaIcon(ZetaIcons.star),
                   disabled: true,
                 ),
               ],

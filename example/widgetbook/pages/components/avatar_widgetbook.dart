@@ -19,7 +19,7 @@ Widget avatarUseCase(BuildContext context) {
       ),
       upperBadge: context.knobs.boolean(label: 'Status Badge', initialValue: false)
           ? ZetaAvatarBadge.icon(
-              icon: ZetaIcons.close_round,
+              icon: ZetaIcons.close,
               color: context.knobs.colorOrNull(label: "Upper Badge Color", initialValue: colors.green) ??
                   colors.iconDefault,
             )

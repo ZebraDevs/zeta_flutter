@@ -18,12 +18,12 @@ Widget bannerUseCase(BuildContext context) {
     ),
     leadingIcon: iconKnob(context, rounded: rounded, nullable: true),
     titleStart: context.knobs.boolean(label: 'Center title'),
-    trailing: Icon(iconKnob(
+    trailing: ZetaIcon(iconKnob(
       context,
       rounded: rounded,
       nullable: true,
       name: 'trailing',
-      initial: ZetaIcons.chevron_right_round,
+      initial: ZetaIcons.chevron_right,
     )),
   );
 

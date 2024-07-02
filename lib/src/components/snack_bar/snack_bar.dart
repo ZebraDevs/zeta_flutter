@@ -53,7 +53,9 @@ class ZetaSnackBar extends SnackBar {
     ZetaSnackBarType? type,
 
     /// Icon to display at the start of the content.
-    Icon? leadingIcon,
+    ///
+    /// Should be of type [ZetaIcon] or [Icon].
+    Widget? leadingIcon,
 
     /// {@macro zeta-widget-rounded}
     bool? rounded,
@@ -354,7 +356,7 @@ class _ActionButton extends StatelessWidget {
 class _LeadingIcon extends StatelessWidget {
   const _LeadingIcon(this.type, this.icon);
 
-  final Icon? icon;
+  final Widget? icon;
   final ZetaSnackBarType? type;
 
   @override

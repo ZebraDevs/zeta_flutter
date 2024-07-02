@@ -15,7 +15,7 @@ class AccordionExample extends StatelessWidget {
         padding: EdgeInsets.all(ZetaSpacing.medium),
         child: Column(
           children: [
-            Text('Rounded Divider'),
+            Text('Divider'),
             const SizedBox(height: 20),
             ZetaAccordion(
               title: 'title',
@@ -29,7 +29,7 @@ class AccordionExample extends StatelessWidget {
             ),
             ZetaAccordion(title: 'title'),
             const SizedBox(height: 40),
-            Text('Rounded Contained'),
+            Text('Contained'),
             const SizedBox(height: 20),
             ZetaAccordion(
               contained: true,
@@ -47,44 +47,6 @@ class AccordionExample extends StatelessWidget {
               title: 'title',
             ),
             const SizedBox(height: 40),
-            Text('Sharp Divider'),
-            const SizedBox(height: 20),
-            ZetaAccordion(
-              contained: false,
-              title: 'title',
-              rounded: false,
-              child: Column(
-                children: [
-                  ListTile(title: Text('List Item')),
-                  ListTile(title: Text('List Item')),
-                  ListTile(title: Text('List Item')),
-                ],
-              ),
-            ),
-            ZetaAccordion(
-              contained: false,
-              title: 'title',
-              rounded: false,
-            ),
-            Text('Sharp Contained'),
-            const SizedBox(height: 20),
-            ZetaAccordion(
-              contained: true,
-              title: 'title',
-              rounded: false,
-              child: Column(
-                children: [
-                  ListTile(title: Text('List Item')),
-                  ListTile(title: Text('List Item')),
-                  ListTile(title: Text('List Item')),
-                ],
-              ),
-            ),
-            ZetaAccordion(
-              contained: true,
-              title: 'title',
-              rounded: false,
-            ),
           ].divide(const SizedBox.square(dimension: 10)).toList(),
         ),
       ),

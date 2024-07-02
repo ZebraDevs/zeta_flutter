@@ -38,7 +38,7 @@ class ZetaThemeModeSwitch extends StatelessWidget {
             child: ZetaAvatar(
               size: ZetaAvatarSize.xxs,
               backgroundColor: colors.primary.surface,
-              image: Icon(
+              image: ZetaIcon(
                 e == ThemeMode.system
                     ? Icons.system_security_update_good
                     : e == ThemeMode.light
