@@ -25,11 +25,10 @@ class ZetaThemeModeSwitch extends StatelessWidget {
 
     return DropdownButtonHideUnderline(
       child: DropdownButton<ThemeMode>(
+        padding: EdgeInsets.all(8),
         value: zeta.themeMode,
         elevation: 0,
-        isDense: true,
-        alignment: Alignment.center,
-        icon: SizedBox(width: 8),
+        icon: Nothing(),
         dropdownColor: zeta.colors.borderDisabled,
         items: _themes.map((e) {
           final colors = zetaColors(e);
@@ -40,12 +39,13 @@ class ZetaThemeModeSwitch extends StatelessWidget {
               size: ZetaAvatarSize.xxs,
               backgroundColor: colors.primary.surface,
               image: Icon(
-                  e == ThemeMode.system
-                      ? Icons.system_security_update_good
-                      : e == ThemeMode.light
-                          ? Icons.light_mode
-                          : Icons.dark_mode,
-                  color: colors.primary),
+                e == ThemeMode.system
+                    ? Icons.system_security_update_good
+                    : e == ThemeMode.light
+                        ? Icons.light_mode
+                        : Icons.dark_mode,
+                color: colors.primary,
+              ),
             ),
           );
         }).toList(),
