@@ -79,7 +79,8 @@ class Zeta extends InheritedWidget {
     return oldWidget.contrast != contrast ||
         oldWidget.themeMode != themeMode ||
         oldWidget.themeData != themeData ||
-        oldWidget._mediaBrightness != _mediaBrightness;
+        oldWidget._mediaBrightness != _mediaBrightness ||
+        oldWidget.rounded != rounded;
   }
 
   /// Fetches the [Zeta] instance from the provided [context].

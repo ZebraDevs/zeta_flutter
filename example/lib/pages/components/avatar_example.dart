@@ -20,557 +20,560 @@ class AvatarExample extends StatelessWidget {
     return ExampleScaffold(
       name: AvatarExample.name,
       child: SingleChildScrollView(
-        padding: EdgeInsets.all(ZetaSpacing.medium),
-        child: Column(
-          children: [
-            Column(
-              children: [
-                Text(
-                  'ZetaAvatar.image',
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(height: 15),
-                Row(
-                  children: [
-                    Column(
-                      children: ZetaAvatarSize.values.map((size) {
-                        final height = size.pixelSize;
-                        final padding = (height - 14) / 2;
-                        return Column(
-                          children: [
-                            SizedBox(
-                              height: height,
-                              child: Padding(
-                                padding: EdgeInsets.only(top: padding),
-                                child: Text(size.name.toUpperCase()),
+        scrollDirection: Axis.horizontal,
+        child: SingleChildScrollView(
+          padding: EdgeInsets.all(ZetaSpacing.medium),
+          child: Column(
+            children: [
+              Column(
+                children: [
+                  Text(
+                    'ZetaAvatar.image',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(height: 15),
+                  Row(
+                    children: [
+                      Column(
+                        children: ZetaAvatarSize.values.map((size) {
+                          final height = size.pixelSize;
+                          final padding = (height - 14) / 2;
+                          return Column(
+                            children: [
+                              SizedBox(
+                                height: height,
+                                child: Padding(
+                                  padding: EdgeInsets.only(top: padding),
+                                  child: Text(size.name.toUpperCase()),
+                                ),
                               ),
-                            ),
-                            const SizedBox(height: 20),
-                          ],
-                        );
-                      }).toList(),
-                    ),
-                    const SizedBox(width: 15),
-                    Column(
-                      children: ZetaAvatarSize.values
-                          .map((size) => Column(
-                                children: [
-                                  ZetaAvatar.image(size: size),
-                                  const SizedBox(height: 20),
-                                ],
-                              ))
-                          .toList(),
-                    ),
-                    const SizedBox(width: 15),
-                    Column(
-                      children: ZetaAvatarSize.values
-                          .map((size) => Column(
-                                children: [
-                                  ZetaAvatar.image(
-                                    size: size,
-                                    borderColor: Zeta.of(context).colors.green,
-                                  ),
-                                  const SizedBox(height: 20),
-                                ],
-                              ))
-                          .toList(),
-                    ),
-                    const SizedBox(width: 15),
-                    Column(
-                      children: ZetaAvatarSize.values
-                          .map((size) => Column(
-                                children: [
-                                  ZetaAvatar.image(
-                                    size: size,
-                                    image: image,
-                                  ),
-                                  const SizedBox(height: 20),
-                                ],
-                              ))
-                          .toList(),
-                    ),
-                    const SizedBox(width: 15),
-                    Column(
-                      children: ZetaAvatarSize.values
-                          .map((size) => Column(
-                                children: [
-                                  ZetaAvatar.image(
-                                    size: size,
-                                    borderColor: Zeta.of(context).colors.green,
-                                    image: image,
-                                  ),
-                                  const SizedBox(height: 20),
-                                ],
-                              ))
-                          .toList(),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-            Column(
-              children: [
-                Text(
-                  'ZetaAvatar.initials',
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(height: 15),
-                Row(
-                  children: [
-                    Column(
-                      children: ZetaAvatarSize.values.map((size) {
-                        final height = size.pixelSize;
-                        final padding = (height - 14) / 2;
-                        return Column(
-                          children: [
-                            SizedBox(
-                              height: height,
-                              child: Padding(
-                                padding: EdgeInsets.only(top: padding),
-                                child: Text(size.name.toUpperCase()),
+                              const SizedBox(height: 20),
+                            ],
+                          );
+                        }).toList(),
+                      ),
+                      const SizedBox(width: 15),
+                      Column(
+                        children: ZetaAvatarSize.values
+                            .map((size) => Column(
+                                  children: [
+                                    ZetaAvatar.image(size: size),
+                                    const SizedBox(height: 20),
+                                  ],
+                                ))
+                            .toList(),
+                      ),
+                      const SizedBox(width: 15),
+                      Column(
+                        children: ZetaAvatarSize.values
+                            .map((size) => Column(
+                                  children: [
+                                    ZetaAvatar.image(
+                                      size: size,
+                                      borderColor: Zeta.of(context).colors.green,
+                                    ),
+                                    const SizedBox(height: 20),
+                                  ],
+                                ))
+                            .toList(),
+                      ),
+                      const SizedBox(width: 15),
+                      Column(
+                        children: ZetaAvatarSize.values
+                            .map((size) => Column(
+                                  children: [
+                                    ZetaAvatar.image(
+                                      size: size,
+                                      image: image,
+                                    ),
+                                    const SizedBox(height: 20),
+                                  ],
+                                ))
+                            .toList(),
+                      ),
+                      const SizedBox(width: 15),
+                      Column(
+                        children: ZetaAvatarSize.values
+                            .map((size) => Column(
+                                  children: [
+                                    ZetaAvatar.image(
+                                      size: size,
+                                      borderColor: Zeta.of(context).colors.green,
+                                      image: image,
+                                    ),
+                                    const SizedBox(height: 20),
+                                  ],
+                                ))
+                            .toList(),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              Column(
+                children: [
+                  Text(
+                    'ZetaAvatar.initials',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(height: 15),
+                  Row(
+                    children: [
+                      Column(
+                        children: ZetaAvatarSize.values.map((size) {
+                          final height = size.pixelSize;
+                          final padding = (height - 14) / 2;
+                          return Column(
+                            children: [
+                              SizedBox(
+                                height: height,
+                                child: Padding(
+                                  padding: EdgeInsets.only(top: padding),
+                                  child: Text(size.name.toUpperCase()),
+                                ),
                               ),
-                            ),
-                            const SizedBox(height: 20),
-                          ],
-                        );
-                      }).toList(),
-                    ),
-                    const SizedBox(width: 15),
-                    Column(
-                      children: ZetaAvatarSize.values
-                          .map((size) => Column(
-                                children: [
-                                  ZetaAvatar.initials(
-                                    size: size,
-                                    initials: 'AB',
-                                  ),
-                                  const SizedBox(height: 20),
-                                ],
-                              ))
-                          .toList(),
-                    ),
-                    const SizedBox(width: 15),
-                    Column(
-                      children: ZetaAvatarSize.values
-                          .map((size) => Column(
-                                children: [
-                                  ZetaAvatar.initials(
-                                    size: size,
-                                    initials: 'AB',
-                                    borderColor: Zeta.of(context).colors.green,
-                                  ),
-                                  const SizedBox(height: 20),
-                                ],
-                              ))
-                          .toList(),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-            Column(
-              children: [
-                Text(
-                  'ZetaAvatar.image with badge',
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(height: 15),
-                Row(
-                  children: [
-                    Column(
-                      children: ZetaAvatarSize.values.map((size) {
-                        final height = size.pixelSize;
-                        final padding = (height - 14) / 2;
-                        return Column(
-                          children: [
-                            SizedBox(
-                              height: height,
-                              child: Padding(
-                                padding: EdgeInsets.only(top: padding),
-                                child: Text(size.name.toUpperCase()),
+                              const SizedBox(height: 20),
+                            ],
+                          );
+                        }).toList(),
+                      ),
+                      const SizedBox(width: 15),
+                      Column(
+                        children: ZetaAvatarSize.values
+                            .map((size) => Column(
+                                  children: [
+                                    ZetaAvatar.initials(
+                                      size: size,
+                                      initials: 'AB',
+                                    ),
+                                    const SizedBox(height: 20),
+                                  ],
+                                ))
+                            .toList(),
+                      ),
+                      const SizedBox(width: 15),
+                      Column(
+                        children: ZetaAvatarSize.values
+                            .map((size) => Column(
+                                  children: [
+                                    ZetaAvatar.initials(
+                                      size: size,
+                                      initials: 'AB',
+                                      borderColor: Zeta.of(context).colors.green,
+                                    ),
+                                    const SizedBox(height: 20),
+                                  ],
+                                ))
+                            .toList(),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              Column(
+                children: [
+                  Text(
+                    'ZetaAvatar.image with badge',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(height: 15),
+                  Row(
+                    children: [
+                      Column(
+                        children: ZetaAvatarSize.values.map((size) {
+                          final height = size.pixelSize;
+                          final padding = (height - 14) / 2;
+                          return Column(
+                            children: [
+                              SizedBox(
+                                height: height,
+                                child: Padding(
+                                  padding: EdgeInsets.only(top: padding),
+                                  child: Text(size.name.toUpperCase()),
+                                ),
                               ),
-                            ),
-                            const SizedBox(height: 20),
-                          ],
-                        );
-                      }).toList(),
-                    ),
-                    const SizedBox(width: 12),
-                    Column(
-                      children: ZetaAvatarSize.values
-                          .map((size) => Column(
-                                children: [
-                                  ZetaAvatar.image(
-                                    size: size,
-                                    upperBadge: ZetaAvatarBadge.notification(value: 3),
-                                  ),
-                                  const SizedBox(height: 20),
-                                ],
-                              ))
-                          .toList(),
-                    ),
-                    const SizedBox(width: 12),
-                    Column(
-                      children: ZetaAvatarSize.values
-                          .map((size) => Column(
-                                children: [
-                                  ZetaAvatar.image(
-                                    size: size,
-                                    borderColor: Zeta.of(context).colors.green,
-                                    upperBadge: ZetaAvatarBadge.notification(value: 3),
-                                  ),
-                                  const SizedBox(height: 20),
-                                ],
-                              ))
-                          .toList(),
-                    ),
-                    const SizedBox(width: 12),
-                    Column(
-                      children: ZetaAvatarSize.values
-                          .map((size) => Column(
-                                children: [
-                                  ZetaAvatar.image(
-                                    size: size,
-                                    upperBadge: ZetaAvatarBadge.notification(value: 3),
-                                    image: image,
-                                  ),
-                                  const SizedBox(height: 20),
-                                ],
-                              ))
-                          .toList(),
-                    ),
-                    const SizedBox(width: 12),
-                    Column(
-                      children: ZetaAvatarSize.values
-                          .map((size) => Column(
-                                children: [
-                                  ZetaAvatar.image(
-                                    size: size,
-                                    borderColor: Zeta.of(context).colors.green,
-                                    upperBadge: ZetaAvatarBadge.notification(value: 3),
-                                    image: image,
-                                  ),
-                                  const SizedBox(height: 20),
-                                ],
-                              ))
-                          .toList(),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-            Column(
-              children: [
-                Text(
-                  'ZetaAvatar.initials with badge',
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(height: 15),
-                Row(
-                  children: [
-                    Column(
-                      children: ZetaAvatarSize.values.map((size) {
-                        final height = size.pixelSize;
-                        final padding = (height - 14) / 2;
-                        return Column(
-                          children: [
-                            SizedBox(
-                              height: height,
-                              child: Padding(
-                                padding: EdgeInsets.only(top: padding),
-                                child: Text(size.name.toUpperCase()),
+                              const SizedBox(height: 20),
+                            ],
+                          );
+                        }).toList(),
+                      ),
+                      const SizedBox(width: 12),
+                      Column(
+                        children: ZetaAvatarSize.values
+                            .map((size) => Column(
+                                  children: [
+                                    ZetaAvatar.image(
+                                      size: size,
+                                      upperBadge: ZetaAvatarBadge.notification(value: 3),
+                                    ),
+                                    const SizedBox(height: 20),
+                                  ],
+                                ))
+                            .toList(),
+                      ),
+                      const SizedBox(width: 12),
+                      Column(
+                        children: ZetaAvatarSize.values
+                            .map((size) => Column(
+                                  children: [
+                                    ZetaAvatar.image(
+                                      size: size,
+                                      borderColor: Zeta.of(context).colors.green,
+                                      upperBadge: ZetaAvatarBadge.notification(value: 3),
+                                    ),
+                                    const SizedBox(height: 20),
+                                  ],
+                                ))
+                            .toList(),
+                      ),
+                      const SizedBox(width: 12),
+                      Column(
+                        children: ZetaAvatarSize.values
+                            .map((size) => Column(
+                                  children: [
+                                    ZetaAvatar.image(
+                                      size: size,
+                                      upperBadge: ZetaAvatarBadge.notification(value: 3),
+                                      image: image,
+                                    ),
+                                    const SizedBox(height: 20),
+                                  ],
+                                ))
+                            .toList(),
+                      ),
+                      const SizedBox(width: 12),
+                      Column(
+                        children: ZetaAvatarSize.values
+                            .map((size) => Column(
+                                  children: [
+                                    ZetaAvatar.image(
+                                      size: size,
+                                      borderColor: Zeta.of(context).colors.green,
+                                      upperBadge: ZetaAvatarBadge.notification(value: 3),
+                                      image: image,
+                                    ),
+                                    const SizedBox(height: 20),
+                                  ],
+                                ))
+                            .toList(),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              Column(
+                children: [
+                  Text(
+                    'ZetaAvatar.initials with badge',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(height: 15),
+                  Row(
+                    children: [
+                      Column(
+                        children: ZetaAvatarSize.values.map((size) {
+                          final height = size.pixelSize;
+                          final padding = (height - 14) / 2;
+                          return Column(
+                            children: [
+                              SizedBox(
+                                height: height,
+                                child: Padding(
+                                  padding: EdgeInsets.only(top: padding),
+                                  child: Text(size.name.toUpperCase()),
+                                ),
                               ),
-                            ),
-                            const SizedBox(height: 20),
-                          ],
-                        );
-                      }).toList(),
-                    ),
-                    const SizedBox(width: 12),
-                    Column(
-                      children: ZetaAvatarSize.values
-                          .map((size) => Column(
-                                children: [
-                                  ZetaAvatar.initials(
-                                    size: size,
-                                    initials: 'AB',
-                                    upperBadge: ZetaAvatarBadge.notification(value: 3),
-                                  ),
-                                  const SizedBox(height: 20),
-                                ],
-                              ))
-                          .toList(),
-                    ),
-                    const SizedBox(width: 12),
-                    Column(
-                      children: ZetaAvatarSize.values
-                          .map((size) => Column(
-                                children: [
-                                  ZetaAvatar.initials(
-                                    size: size,
-                                    initials: 'AB',
-                                    borderColor: Zeta.of(context).colors.green,
-                                    upperBadge: ZetaAvatarBadge.notification(value: 3),
-                                  ),
-                                  const SizedBox(height: 20),
-                                ],
-                              ))
-                          .toList(),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-            Column(
-              children: [
-                Text(
-                  'ZetaAvatar.image with special status',
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(height: 15),
-                Row(
-                  children: [
-                    Column(
-                      children: ZetaAvatarSize.values.map((size) {
-                        final height = size.pixelSize;
-                        final padding = (height - 14) / 2;
-                        return Column(
-                          children: [
-                            SizedBox(
-                              height: height,
-                              child: Padding(
-                                padding: EdgeInsets.only(top: padding),
-                                child: Text(size.name.toUpperCase()),
+                              const SizedBox(height: 20),
+                            ],
+                          );
+                        }).toList(),
+                      ),
+                      const SizedBox(width: 12),
+                      Column(
+                        children: ZetaAvatarSize.values
+                            .map((size) => Column(
+                                  children: [
+                                    ZetaAvatar.initials(
+                                      size: size,
+                                      initials: 'AB',
+                                      upperBadge: ZetaAvatarBadge.notification(value: 3),
+                                    ),
+                                    const SizedBox(height: 20),
+                                  ],
+                                ))
+                            .toList(),
+                      ),
+                      const SizedBox(width: 12),
+                      Column(
+                        children: ZetaAvatarSize.values
+                            .map((size) => Column(
+                                  children: [
+                                    ZetaAvatar.initials(
+                                      size: size,
+                                      initials: 'AB',
+                                      borderColor: Zeta.of(context).colors.green,
+                                      upperBadge: ZetaAvatarBadge.notification(value: 3),
+                                    ),
+                                    const SizedBox(height: 20),
+                                  ],
+                                ))
+                            .toList(),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              Column(
+                children: [
+                  Text(
+                    'ZetaAvatar.image with special status',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(height: 15),
+                  Row(
+                    children: [
+                      Column(
+                        children: ZetaAvatarSize.values.map((size) {
+                          final height = size.pixelSize;
+                          final padding = (height - 14) / 2;
+                          return Column(
+                            children: [
+                              SizedBox(
+                                height: height,
+                                child: Padding(
+                                  padding: EdgeInsets.only(top: padding),
+                                  child: Text(size.name.toUpperCase()),
+                                ),
                               ),
-                            ),
-                            const SizedBox(height: 20),
-                          ],
-                        );
-                      }).toList(),
-                    ),
-                    const SizedBox(width: 12),
-                    Column(
-                      children: ZetaAvatarSize.values
-                          .map((size) => Column(
-                                children: [
-                                  ZetaAvatar.image(
-                                    size: size,
-                                    lowerBadge: ZetaAvatarBadge.icon(),
-                                  ),
-                                  const SizedBox(height: 20),
-                                ],
-                              ))
-                          .toList(),
-                    ),
-                    const SizedBox(width: 12),
-                    Column(
-                      children: ZetaAvatarSize.values
-                          .map((size) => Column(
-                                children: [
-                                  ZetaAvatar.image(
-                                    size: size,
-                                    borderColor: Zeta.of(context).colors.green,
-                                    lowerBadge: ZetaAvatarBadge.icon(),
-                                  ),
-                                  const SizedBox(height: 20),
-                                ],
-                              ))
-                          .toList(),
-                    ),
-                    const SizedBox(width: 12),
-                    Column(
-                      children: ZetaAvatarSize.values
-                          .map((size) => Column(
-                                children: [
-                                  ZetaAvatar.image(
-                                    size: size,
-                                    lowerBadge: ZetaAvatarBadge.icon(),
-                                    image: image,
-                                  ),
-                                  const SizedBox(height: 20),
-                                ],
-                              ))
-                          .toList(),
-                    ),
-                    const SizedBox(width: 12),
-                    Column(
-                      children: ZetaAvatarSize.values
-                          .map((size) => Column(
-                                children: [
-                                  ZetaAvatar.image(
-                                    size: size,
-                                    borderColor: Zeta.of(context).colors.green,
-                                    lowerBadge: ZetaAvatarBadge.icon(),
-                                    image: image,
-                                  ),
-                                  const SizedBox(height: 20),
-                                ],
-                              ))
-                          .toList(),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-            Column(
-              children: [
-                Text(
-                  'ZetaAvatar.initials with special status',
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(height: 15),
-                Row(
-                  children: [
-                    Column(
-                      children: ZetaAvatarSize.values.map((size) {
-                        final height = size.pixelSize;
-                        final padding = (height - 14) / 2;
-                        return Column(
-                          children: [
-                            SizedBox(
-                              height: height,
-                              child: Padding(
-                                padding: EdgeInsets.only(top: padding),
-                                child: Text(size.name.toUpperCase()),
+                              const SizedBox(height: 20),
+                            ],
+                          );
+                        }).toList(),
+                      ),
+                      const SizedBox(width: 12),
+                      Column(
+                        children: ZetaAvatarSize.values
+                            .map((size) => Column(
+                                  children: [
+                                    ZetaAvatar.image(
+                                      size: size,
+                                      lowerBadge: ZetaAvatarBadge.icon(),
+                                    ),
+                                    const SizedBox(height: 20),
+                                  ],
+                                ))
+                            .toList(),
+                      ),
+                      const SizedBox(width: 12),
+                      Column(
+                        children: ZetaAvatarSize.values
+                            .map((size) => Column(
+                                  children: [
+                                    ZetaAvatar.image(
+                                      size: size,
+                                      borderColor: Zeta.of(context).colors.green,
+                                      lowerBadge: ZetaAvatarBadge.icon(),
+                                    ),
+                                    const SizedBox(height: 20),
+                                  ],
+                                ))
+                            .toList(),
+                      ),
+                      const SizedBox(width: 12),
+                      Column(
+                        children: ZetaAvatarSize.values
+                            .map((size) => Column(
+                                  children: [
+                                    ZetaAvatar.image(
+                                      size: size,
+                                      lowerBadge: ZetaAvatarBadge.icon(),
+                                      image: image,
+                                    ),
+                                    const SizedBox(height: 20),
+                                  ],
+                                ))
+                            .toList(),
+                      ),
+                      const SizedBox(width: 12),
+                      Column(
+                        children: ZetaAvatarSize.values
+                            .map((size) => Column(
+                                  children: [
+                                    ZetaAvatar.image(
+                                      size: size,
+                                      borderColor: Zeta.of(context).colors.green,
+                                      lowerBadge: ZetaAvatarBadge.icon(),
+                                      image: image,
+                                    ),
+                                    const SizedBox(height: 20),
+                                  ],
+                                ))
+                            .toList(),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              Column(
+                children: [
+                  Text(
+                    'ZetaAvatar.initials with special status',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(height: 15),
+                  Row(
+                    children: [
+                      Column(
+                        children: ZetaAvatarSize.values.map((size) {
+                          final height = size.pixelSize;
+                          final padding = (height - 14) / 2;
+                          return Column(
+                            children: [
+                              SizedBox(
+                                height: height,
+                                child: Padding(
+                                  padding: EdgeInsets.only(top: padding),
+                                  child: Text(size.name.toUpperCase()),
+                                ),
                               ),
-                            ),
-                            const SizedBox(height: 20),
-                          ],
-                        );
-                      }).toList(),
-                    ),
-                    const SizedBox(width: 12),
-                    Column(
-                      children: ZetaAvatarSize.values
-                          .map((size) => Column(
-                                children: [
-                                  ZetaAvatar.initials(
-                                    size: size,
-                                    initials: 'AB',
-                                    lowerBadge: ZetaAvatarBadge.icon(),
-                                  ),
-                                  const SizedBox(height: 20),
-                                ],
-                              ))
-                          .toList(),
-                    ),
-                    const SizedBox(width: 12),
-                    Column(
-                      children: ZetaAvatarSize.values
-                          .map((size) => Column(
-                                children: [
-                                  ZetaAvatar.initials(
-                                    size: size,
-                                    initials: 'AB',
-                                    borderColor: Zeta.of(context).colors.green,
-                                    lowerBadge: ZetaAvatarBadge.icon(),
-                                  ),
-                                  const SizedBox(height: 20),
-                                ],
-                              ))
-                          .toList(),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-            Column(
-              children: [
-                Text(
-                  'ZetaAvatar with notification badge and status badge',
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(height: 15),
-                Row(
-                  children: [
-                    Column(
-                      children: ZetaAvatarSize.values.map((size) {
-                        final height = size.pixelSize;
-                        final padding = (height - 14) / 2;
-                        return Column(
-                          children: [
-                            SizedBox(
-                              height: height,
-                              child: Padding(
-                                padding: EdgeInsets.only(top: padding),
-                                child: Text(size.name.toUpperCase()),
+                              const SizedBox(height: 20),
+                            ],
+                          );
+                        }).toList(),
+                      ),
+                      const SizedBox(width: 12),
+                      Column(
+                        children: ZetaAvatarSize.values
+                            .map((size) => Column(
+                                  children: [
+                                    ZetaAvatar.initials(
+                                      size: size,
+                                      initials: 'AB',
+                                      lowerBadge: ZetaAvatarBadge.icon(),
+                                    ),
+                                    const SizedBox(height: 20),
+                                  ],
+                                ))
+                            .toList(),
+                      ),
+                      const SizedBox(width: 12),
+                      Column(
+                        children: ZetaAvatarSize.values
+                            .map((size) => Column(
+                                  children: [
+                                    ZetaAvatar.initials(
+                                      size: size,
+                                      initials: 'AB',
+                                      borderColor: Zeta.of(context).colors.green,
+                                      lowerBadge: ZetaAvatarBadge.icon(),
+                                    ),
+                                    const SizedBox(height: 20),
+                                  ],
+                                ))
+                            .toList(),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              Column(
+                children: [
+                  Text(
+                    'ZetaAvatar with notification badge and status badge',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(height: 15),
+                  Row(
+                    children: [
+                      Column(
+                        children: ZetaAvatarSize.values.map((size) {
+                          final height = size.pixelSize;
+                          final padding = (height - 14) / 2;
+                          return Column(
+                            children: [
+                              SizedBox(
+                                height: height,
+                                child: Padding(
+                                  padding: EdgeInsets.only(top: padding),
+                                  child: Text(size.name.toUpperCase()),
+                                ),
                               ),
-                            ),
-                            const SizedBox(height: 20),
-                          ],
-                        );
-                      }).toList(),
-                    ),
-                    const SizedBox(width: 12),
-                    Column(
-                      children: ZetaAvatarSize.values
-                          .map((size) => Column(
-                                children: [
-                                  ZetaAvatar.image(
-                                    size: size,
-                                    image: image,
-                                    upperBadge: ZetaAvatarBadge.notification(value: 3),
-                                    lowerBadge: ZetaAvatarBadge.icon(),
-                                  ),
-                                  const SizedBox(height: 20),
-                                ],
-                              ))
-                          .toList(),
-                    ),
-                    const SizedBox(width: 12),
-                    Column(
-                      children: ZetaAvatarSize.values
-                          .map((size) => Column(
-                                children: [
-                                  ZetaAvatar.image(
-                                    size: size,
-                                    image: image,
-                                    borderColor: Zeta.of(context).colors.green,
-                                    upperBadge: ZetaAvatarBadge.notification(value: 3),
-                                    lowerBadge: ZetaAvatarBadge.icon(),
-                                  ),
-                                  const SizedBox(height: 20),
-                                ],
-                              ))
-                          .toList(),
-                    ),
-                    Column(
-                      children: ZetaAvatarSize.values
-                          .map((size) => Column(
-                                children: [
-                                  ZetaAvatar.initials(
-                                    size: size,
-                                    initials: 'AB',
-                                    upperBadge: ZetaAvatarBadge.notification(value: 3),
-                                    lowerBadge: ZetaAvatarBadge.icon(),
-                                  ),
-                                  const SizedBox(height: 20),
-                                ],
-                              ))
-                          .toList(),
-                    ),
-                    const SizedBox(width: 12),
-                    Column(
-                      children: ZetaAvatarSize.values
-                          .map((size) => Column(
-                                children: [
-                                  ZetaAvatar.initials(
-                                    size: size,
-                                    initials: 'AB',
-                                    borderColor: Zeta.of(context).colors.green,
-                                    upperBadge: ZetaAvatarBadge.notification(value: 3),
-                                    lowerBadge: ZetaAvatarBadge.icon(),
-                                  ),
-                                  const SizedBox(height: 20),
-                                ],
-                              ))
-                          .toList(),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ].divide(const SizedBox(height: ZetaSpacing.xl_2)).toList(),
+                              const SizedBox(height: 20),
+                            ],
+                          );
+                        }).toList(),
+                      ),
+                      const SizedBox(width: 12),
+                      Column(
+                        children: ZetaAvatarSize.values
+                            .map((size) => Column(
+                                  children: [
+                                    ZetaAvatar.image(
+                                      size: size,
+                                      image: image,
+                                      upperBadge: ZetaAvatarBadge.notification(value: 3),
+                                      lowerBadge: ZetaAvatarBadge.icon(),
+                                    ),
+                                    const SizedBox(height: 20),
+                                  ],
+                                ))
+                            .toList(),
+                      ),
+                      const SizedBox(width: 12),
+                      Column(
+                        children: ZetaAvatarSize.values
+                            .map((size) => Column(
+                                  children: [
+                                    ZetaAvatar.image(
+                                      size: size,
+                                      image: image,
+                                      borderColor: Zeta.of(context).colors.green,
+                                      upperBadge: ZetaAvatarBadge.notification(value: 3),
+                                      lowerBadge: ZetaAvatarBadge.icon(),
+                                    ),
+                                    const SizedBox(height: 20),
+                                  ],
+                                ))
+                            .toList(),
+                      ),
+                      Column(
+                        children: ZetaAvatarSize.values
+                            .map((size) => Column(
+                                  children: [
+                                    ZetaAvatar.initials(
+                                      size: size,
+                                      initials: 'AB',
+                                      upperBadge: ZetaAvatarBadge.notification(value: 3),
+                                      lowerBadge: ZetaAvatarBadge.icon(),
+                                    ),
+                                    const SizedBox(height: 20),
+                                  ],
+                                ))
+                            .toList(),
+                      ),
+                      const SizedBox(width: 12),
+                      Column(
+                        children: ZetaAvatarSize.values
+                            .map((size) => Column(
+                                  children: [
+                                    ZetaAvatar.initials(
+                                      size: size,
+                                      initials: 'AB',
+                                      borderColor: Zeta.of(context).colors.green,
+                                      upperBadge: ZetaAvatarBadge.notification(value: 3),
+                                      lowerBadge: ZetaAvatarBadge.icon(),
+                                    ),
+                                    const SizedBox(height: 20),
+                                  ],
+                                ))
+                            .toList(),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ].divide(const SizedBox(height: ZetaSpacing.xl_2)).toList(),
+          ),
         ),
       ),
     );

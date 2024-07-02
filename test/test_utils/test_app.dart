@@ -20,21 +20,13 @@ class TestApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ZetaProvider(
+    return ZetaProvider.base(
       initialThemeMode: themeMode ?? ThemeMode.system,
-      initialThemeData: ZetaThemeData(rounded: rounded ?? true),
-      builder: (context, themeData, themeMode) {
+      builder: (context, lightTheme, darkTheme, themeMode) {
         return MaterialApp(
-          theme: ThemeData(
-            fontFamily: themeData.fontFamily,
-            colorScheme: themeData.colorsLight.toScheme(),
-            textTheme: zetaTextTheme,
-          ),
-          darkTheme: ThemeData(
-            fontFamily: themeData.fontFamily,
-            colorScheme: themeData.colorsDark.toScheme(),
-            textTheme: zetaTextTheme,
-          ),
+          theme: lightTheme,
+          darkTheme: darkTheme,
+          themeMode: themeMode,
           home: Scaffold(
             body: removeBody
                 ? home
