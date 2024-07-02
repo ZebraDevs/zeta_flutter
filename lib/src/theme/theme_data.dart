@@ -22,7 +22,6 @@ class ZetaThemeData extends Equatable {
   ZetaThemeData({
     this.fontFamily = kZetaFontFamily,
     this.identifier = 'default',
-    this.rounded = true,
     ZetaContrast contrast = ZetaContrast.aa,
     ZetaColors? colorsLight,
     ZetaColors? colorsDark,
@@ -71,13 +70,6 @@ class ZetaThemeData extends Equatable {
   /// Defaults to a dark mode color palette with default Zeta colors if not explicitly provided.
   ZetaColors get colorsDark => _colorsDark;
 
-  /// {@template zeta-component-rounded}
-  /// Sets rounded or sharp border of the containing box and the icon style.
-  ///
-  /// Defaults to `true`.
-  /// {@endtemplate}
-  final bool rounded;
-
   /// Applies the given [contrast] to the current [ZetaThemeData] and returns a new [ZetaThemeData] with the updated contrast.
   ZetaThemeData apply({
     required ZetaContrast contrast,
@@ -88,7 +80,6 @@ class ZetaThemeData extends Equatable {
       fontFamily: fontFamily,
       colorsDark: colorsDark,
       colorsLight: colorsLight,
-      rounded: rounded,
     );
   }
 

@@ -19,6 +19,7 @@ class Zeta extends InheritedWidget {
     required this.themeMode,
     required this.themeData,
     required super.child,
+    this.rounded = true,
   }) : _mediaBrightness = mediaBrightness;
 
   /// The current contrast setting for the app, which can be one of the predefined
@@ -37,6 +38,13 @@ class Zeta extends InheritedWidget {
   /// Used to determine the theme mode when it's set to [ThemeMode.system].
   final Brightness _mediaBrightness;
 
+  /// {@template zeta-component-rounded}
+  /// Sets rounded or sharp border of the containing box and the icon style.
+  ///
+  /// Defaults to `true`.
+  /// {@endtemplate}
+  final bool rounded;
+
   /// Provides the color set based on the current theme mode.
   ///
   /// It determines the appropriate color set (light or dark) based on the theme mode
@@ -50,9 +58,6 @@ class Zeta extends InheritedWidget {
       return themeData.colorsDark;
     }
   }
-
-  /// {@macro zeta-component-rounded}
-  bool get rounded => themeData.rounded;
 
   /// Gets the brightness setting for the current theme.
   ///
