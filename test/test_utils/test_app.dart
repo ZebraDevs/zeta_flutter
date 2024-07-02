@@ -22,6 +22,7 @@ class TestApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ZetaProvider.base(
       initialThemeMode: themeMode ?? ThemeMode.system,
+      initialRounded: rounded ?? true,
       builder: (context, lightTheme, darkTheme, themeMode) {
         return MaterialApp(
           theme: lightTheme,

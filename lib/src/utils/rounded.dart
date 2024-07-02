@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -68,7 +70,7 @@ extension Rounded on BuildContext {
         return (widget as dynamic).rounded as bool;
       }
     } catch (e) {
-      debugPrint('Widget does not have rounded');
+      log('Widget(${widget.runtimeType}) does not have rounded \n $e');
     }
 
     return ZetaRoundedScope.of(this)?._rounded ?? Zeta.of(this).rounded;
