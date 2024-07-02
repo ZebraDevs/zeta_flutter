@@ -122,21 +122,21 @@ class ZetaChatItem extends ZetaStatelessWidget {
 
     if (onMenuMoreTap != null) {
       actions.add(
-        ZetaSlidableAction(onPressed: onMenuMoreTap, color: colors.purple, icon: ZetaIcons.more_vertical_round),
+        ZetaSlidableAction(onPressed: onMenuMoreTap, color: colors.purple, icon: ZetaIcons.more_vertical),
       );
     }
     if (onCallTap != null) {
       actions.add(
-        ZetaSlidableAction(onPressed: onCallTap, color: colors.green, icon: Icons.call),
+        ZetaSlidableAction(onPressed: onCallTap, color: colors.green, icon: ZetaIcons.phone),
       );
     }
     if (onPttTap != null) {
       actions.add(
-        ZetaSlidableAction(onPressed: onPttTap, color: colors.blue, icon: ZetaIcons.ptt_round),
+        ZetaSlidableAction(onPressed: onPttTap, color: colors.blue, icon: ZetaIcons.ptt),
       );
     }
     if (onDeleteTap != null) {
-      actions.add(ZetaSlidableAction(onPressed: onDeleteTap, color: colors.red, icon: ZetaIcons.delete_round));
+      actions.add(ZetaSlidableAction(onPressed: onDeleteTap, color: colors.red, icon: ZetaIcons.delete));
     }
 
     return ZetaRoundedScope(
@@ -217,8 +217,8 @@ class ZetaChatItem extends ZetaStatelessWidget {
                                                             padding: const EdgeInsets.only(
                                                               left: ZetaSpacing.minimum,
                                                             ),
-                                                            child: Icon(
-                                                              ZetaIcons.error_round,
+                                                            child: ZetaIcon(
+                                                              ZetaIcons.error,
                                                               color: colors.cool.shade70,
                                                             ),
                                                           ),
@@ -280,8 +280,8 @@ class ZetaChatItem extends ZetaStatelessWidget {
                                             padding: const EdgeInsets.only(
                                               left: ZetaSpacing.minimum,
                                             ),
-                                            child: Icon(
-                                              starred! ? ZetaIcons.star_sharp : ZetaIcons.star_outline_sharp,
+                                            child: ZetaIcon(
+                                              starred! ? ZetaIcons.star : ZetaIcons.star_outline,
                                               color: starred! ? colors.yellow.shade60 : null,
                                             ),
                                           ),
@@ -458,7 +458,7 @@ class ZetaSlidableAction extends StatelessWidget {
                 shape: const RoundedRectangleBorder(borderRadius: ZetaRadius.minimal),
                 side: BorderSide.none,
               ),
-              icon: Icon(icon, size: ZetaSpacing.xl_4),
+              icon: ZetaIcon(icon, size: ZetaSpacing.xl_4),
             ),
           ),
         ),

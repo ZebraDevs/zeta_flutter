@@ -30,7 +30,7 @@ class ZetaScreenHeaderBar extends ZetaStatelessWidget {
       child: ZetaTopAppBar(
         leading: IconButton(
           onPressed: () async => Navigator.maybePop(context),
-          icon: Icon(rounded ? ZetaIcons.chevron_left_round : ZetaIcons.chevron_left_sharp),
+          icon: const ZetaIcon(ZetaIcons.chevron_left),
         ),
         title: title,
         titleTextStyle: ZetaTextStyles.titleLarge,

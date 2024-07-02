@@ -84,14 +84,6 @@ class _ZetaPasswordInputState extends State<ZetaPasswordInput> {
     _obscureText = widget.obscureText;
   }
 
-  IconData get _icon {
-    if (context.rounded) {
-      return !_obscureText ? ZetaIcons.visibility_round : ZetaIcons.visibility_off_round;
-    } else {
-      return !_obscureText ? ZetaIcons.visibility_sharp : ZetaIcons.visibility_off_sharp;
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     final rounded = context.rounded;
@@ -110,7 +102,7 @@ class _ZetaPasswordInputState extends State<ZetaPasswordInput> {
       disabled: widget.disabled,
       obscureText: _obscureText,
       suffix: IconButton(
-        icon: Icon(_icon),
+        icon: ZetaIcon(_obscureText ? ZetaIcons.visibility_off : ZetaIcons.visibility),
         onPressed: () {
           setState(() {
             _obscureText = !_obscureText;

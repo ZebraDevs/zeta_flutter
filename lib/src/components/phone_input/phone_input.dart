@@ -198,8 +198,8 @@ class _ZetaPhoneInputState extends State<ZetaPhoneInput> {
                             fit: BoxFit.fitHeight,
                           ),
                         ),
-                        Icon(
-                          rounded ? ZetaIcons.expand_more_round : ZetaIcons.expand_more_sharp,
+                        ZetaIcon(
+                          ZetaIcons.expand_more,
                           color: widget.enabled ? zeta.colors.textDefault : zeta.colors.cool.shade50,
                           size: ZetaSpacing.xl_1,
                         ),
@@ -294,10 +294,8 @@ class _ZetaPhoneInputState extends State<ZetaPhoneInput> {
               children: [
                 Padding(
                   padding: const EdgeInsets.only(right: ZetaSpacing.small),
-                  child: Icon(
-                    showError && widget.enabled
-                        ? (rounded ? ZetaIcons.error_round : ZetaIcons.error_sharp)
-                        : (rounded ? ZetaIcons.info_round : ZetaIcons.info_sharp),
+                  child: ZetaIcon(
+                    (showError && widget.enabled) ? ZetaIcons.error : ZetaIcons.info,
                     size: ZetaSpacing.large,
                     color: hintErrorColor,
                   ),

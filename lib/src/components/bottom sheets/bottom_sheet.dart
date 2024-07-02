@@ -53,8 +53,8 @@ class ZetaBottomSheet extends ZetaStatelessWidget {
                 height: ZetaSpacing.xl_5,
                 child: Padding(
                   padding: const EdgeInsets.only(top: ZetaSpacing.small),
-                  child: Icon(
-                    Icons.maximize_rounded,
+                  child: ZetaIcon(
+                    Icons.maximize,
                     size: ZetaSpacing.xl_9,
                     color: colors.surfaceDisabled,
                   ),

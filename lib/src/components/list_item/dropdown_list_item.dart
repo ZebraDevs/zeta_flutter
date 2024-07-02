@@ -59,10 +59,6 @@ class _ZetaDropdownListItemState extends State<ZetaDropdownListItem> with Single
 
   late bool _expanded;
 
-  IconData get _icon {
-    return context.rounded ? ZetaIcons.expand_more_round : ZetaIcons.expand_more_sharp;
-  }
-
   @override
   void initState() {
     _expanded = widget.expanded;
@@ -136,8 +132,8 @@ class _ZetaDropdownListItemState extends State<ZetaDropdownListItem> with Single
                 icon: AnimatedRotation(
                   turns: _expanded ? 0.5 : 0,
                   duration: ZetaAnimationLength.fast,
-                  child: Icon(
-                    _icon,
+                  child: ZetaIcon(
+                    ZetaIcons.expand_more,
                     color: colors.iconSubtle,
                   ),
                 ),

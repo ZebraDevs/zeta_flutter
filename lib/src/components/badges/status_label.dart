@@ -40,7 +40,7 @@ class ZetaStatusLabel extends ZetaStatelessWidget {
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(
+            ZetaIcon(
               customIcon ?? Icons.circle,
               size: customIcon != null ? ZetaSpacing.xl_1 : ZetaSpacing.small,
               color: colors.icon,

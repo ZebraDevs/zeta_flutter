@@ -58,7 +58,7 @@ class InputIconButton extends StatelessWidget {
       color: !disabled ? color : colors.iconDisabled,
       onPressed: disabled ? null : onTap,
       iconSize: _iconSize,
-      icon: Icon(icon),
+      icon: ZetaIcon(icon),
     );
   }
 
