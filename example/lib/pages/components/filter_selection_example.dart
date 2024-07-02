@@ -34,19 +34,6 @@ class _FilterSelectionExampleState extends State<FilterSelectionExample> {
             ],
             onPressed: () {},
           ),
-          const SizedBox(height: ZetaSpacing.large),
-          ZetaFilterSelection(
-            rounded: false,
-            items: [
-              for (int i = 0; i < items2.length; i++)
-                ZetaFilterChip(
-                  label: 'Label ${i + 1}',
-                  selected: items2[i],
-                  onTap: (value) => setState(() => items2[i] = value),
-                ),
-            ],
-            onPressed: () {},
-          ),
         ],
       ),
     );

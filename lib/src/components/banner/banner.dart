@@ -92,7 +92,7 @@ class ZetaBanner extends MaterialBanner {
           actions: [
             IconTheme(
               data: IconThemeData(color: _backgroundColorFromType(context, type).onColor),
-              child: trailing ?? const SizedBox(),
+              child: trailing ?? const Nothing(),
             ),
           ],
         );

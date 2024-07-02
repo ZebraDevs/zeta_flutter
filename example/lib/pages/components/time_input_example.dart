@@ -58,7 +58,6 @@ class TimeInputExample extends StatelessWidget {
                 ),
                 ZetaTimeInput(label: '12 Hr Time Picker', use12Hr: true),
                 ZetaTimeInput(label: 'Disabled Time Picker', disabled: true, hintText: 'Disabled time picker'),
-                ZetaTimeInput(label: 'Sharp Time Picker', rounded: false),
               ].divide(const SizedBox(height: 12)).toList(),
             ),
           ),

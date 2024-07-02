@@ -19,7 +19,7 @@ Widget dropdownListItemUseCase(BuildContext context) {
 
         final rounded = roundedKnob(context);
 
-        final leading = showIcon ? Icon(ZetaIcons.star_round) : null;
+        final leading = showIcon ? ZetaIcon(ZetaIcons.star) : null;
 
         return ZetaDropdownListItem(
           primaryText: primaryText,

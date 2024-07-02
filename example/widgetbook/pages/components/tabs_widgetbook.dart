@@ -23,8 +23,8 @@ Widget tabsUseCase(BuildContext context) {
                     ? null
                     : (_) {},
                 tabs: [
-                  ZetaTab(icon: Icon(ZetaIcons.star_round), text: "Tab Item"),
-                  ZetaTab(icon: Icon(ZetaIcons.star_round), text: "Tab Item"),
+                  ZetaTab(icon: ZetaIcon(ZetaIcons.star), text: "Tab Item"),
+                  ZetaTab(icon: ZetaIcon(ZetaIcons.star), text: "Tab Item"),
                 ],
               ),
             ),

@@ -21,7 +21,7 @@ Widget inputChipUseCase(BuildContext context) {
             )
           : null,
       rounded: rounded,
-      trailing: trailing != null ? Icon(trailing) : null,
+      trailing: trailing != null ? ZetaIcon(trailing) : null,
     ),
   );
 }
@@ -40,7 +40,7 @@ Widget assistChipUseCase(BuildContext context) {
     widget: ZetaAssistChip(
       label: context.knobs.string(label: 'Label', initialValue: 'Label'),
       rounded: rounded,
-      leading: Icon(iconKnob(context, rounded: rounded)),
+      leading: ZetaIcon(iconKnob(context, rounded: rounded)),
     ),
   );
 }

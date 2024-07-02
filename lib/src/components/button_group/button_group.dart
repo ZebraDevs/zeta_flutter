@@ -344,7 +344,7 @@ class _ZetaGroupButtonState extends State<ZetaGroupButton> {
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              leadingIcon ?? const SizedBox(),
+              leadingIcon ?? const Nothing(),
               Text(selectedItem?.label ?? widget.label ?? '', style: ZetaTextStyles.labelMedium),
               if (widget.items != null)
                 ZetaIcon(

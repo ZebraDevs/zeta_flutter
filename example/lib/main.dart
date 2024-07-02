@@ -14,7 +14,7 @@ void main() async {
   runApp(
     ZetaExample(
       themeService: themeService,
-      initialThemeData: themePreferences.$1 ?? ZetaThemeData(),
+      initialZetaThemeData: themePreferences.$1 ?? ZetaThemeData(),
       initialThemeMode: themePreferences.$2 ?? ThemeMode.system,
       initialContrast: themePreferences.$3 ?? ZetaContrast.aa,
     ),
@@ -27,41 +27,31 @@ class ZetaExample extends StatelessWidget {
     required this.themeService,
     required this.initialContrast,
     required this.initialThemeMode,
-    required this.initialThemeData,
+    required this.initialZetaThemeData,
   });
 
   final ZetaThemeService themeService;
   final ZetaContrast initialContrast;
   final ThemeMode initialThemeMode;
-  final ZetaThemeData initialThemeData;
+  final ZetaThemeData initialZetaThemeData;
 
   @override
   Widget build(BuildContext context) {
-    return ZetaProvider(
-      themeService: themeService,
+    final initialThemeData = null;
+    final initialRounded = true;
+
+    return ZetaProvider.base(
+      initialZetaThemeData: initialZetaThemeData,
+      initialThemeMode: initialThemeMode,
       initialContrast: initialContrast,
       initialThemeData: initialThemeData,
-      initialThemeMode: initialThemeMode,
-      builder: (context, themeData, themeMode) {
-        final dark = themeData.colorsDark.toScheme();
-        final light = themeData.colorsLight.toScheme();
+      initialRounded: initialRounded,
+      builder: (context, lightTheme, darkTheme, themeMode) {
         return MaterialApp.router(
           routerConfig: router,
           themeMode: themeMode,
-          theme: ThemeData(
-            useMaterial3: true,
-            fontFamily: themeData.fontFamily,
-            scaffoldBackgroundColor: light.surfaceTertiary,
-            colorScheme: light,
-            textTheme: zetaTextTheme,
-          ),
-          darkTheme: ThemeData(
-            useMaterial3: true,
-            fontFamily: themeData.fontFamily,
-            scaffoldBackgroundColor: dark.surfaceTertiary,
-            colorScheme: dark,
-            textTheme: zetaTextTheme,
-          ),
+          theme: lightTheme,
+          darkTheme: darkTheme,
         );
       },
     );

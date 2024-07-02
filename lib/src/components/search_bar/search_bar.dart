@@ -184,7 +184,7 @@ class _ZetaSearchBarState extends State<ZetaSearchBar> {
                             size: iconSize,
                           ),
                         )
-                      : const SizedBox(),
+                      : const Nothing(),
                 ),
               ],
             ),

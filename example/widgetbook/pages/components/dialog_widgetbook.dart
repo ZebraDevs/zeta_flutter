@@ -21,7 +21,7 @@ Widget dialogUseCase(BuildContext context) {
     context,
     name: "Icon",
     rounded: rounded,
-    initial: rounded ? Icons.warning_rounded : Icons.warning_sharp,
+    initial: Icons.warning,
   );
   final barrierDismissible = context.knobs.boolean(label: 'Barrier dismissible', initialValue: true);
   final headerAlignment = context.knobs.list<ZetaDialogHeaderAlignment>(
@@ -43,7 +43,7 @@ Widget dialogUseCase(BuildContext context) {
                 barrierDismissible: barrierDismissible,
                 headerAlignment: headerAlignment,
                 title: title,
-                icon: Icon(
+                icon: ZetaIcon(
                   iconData,
                   color: zeta.colors.surfaceWarning,
                 ),
@@ -60,7 +60,7 @@ Widget dialogUseCase(BuildContext context) {
                 barrierDismissible: barrierDismissible,
                 headerAlignment: headerAlignment,
                 title: title,
-                icon: Icon(
+                icon: ZetaIcon(
                   iconData,
                   color: zeta.colors.surfaceWarning,
                 ),
@@ -78,7 +78,7 @@ Widget dialogUseCase(BuildContext context) {
                 barrierDismissible: barrierDismissible,
                 headerAlignment: headerAlignment,
                 title: title,
-                icon: Icon(
+                icon: ZetaIcon(
                   iconData,
                   color: zeta.colors.surfaceWarning,
                 ),

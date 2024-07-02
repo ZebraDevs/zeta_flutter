@@ -17,7 +17,7 @@ Widget navigationRailUseCase(BuildContext context) {
     context,
     name: "Icon",
     rounded: rounded,
-    initial: rounded ? ZetaIcons.star_round : ZetaIcons.star_sharp,
+    initial: ZetaIcons.star,
   );
   final wordWrap = context.knobs.boolean(label: 'Word wrap', initialValue: true);
   final disabled = disabledKnob(context);
@@ -36,7 +36,7 @@ Widget navigationRailUseCase(BuildContext context) {
                 items: itemsList
                     .map((item) => ZetaNavigationRailItem(
                           label: item,
-                          icon: Icon(iconData),
+                          icon: ZetaIcon(iconData),
                           disabled: disabled,
                         ))
                     .toList(),
@@ -45,7 +45,7 @@ Widget navigationRailUseCase(BuildContext context) {
                 child: Padding(
                   padding: const EdgeInsets.all(ZetaSpacing.xl_1),
                   child: selectedIndex == null
-                      ? const SizedBox()
+                      ? const Nothing()
                       : Text(
                           itemsList[selectedIndex!],
                           textAlign: TextAlign.center,

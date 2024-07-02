@@ -110,35 +110,30 @@ class _ButtonExampleState extends State<ButtonExample> {
               flex: 8,
               child: Column(
                 children: [
-                  Text('Rounded Buttons', style: ZetaTextStyles.displayMedium),
-                  Column(children: buttons(ZetaWidgetBorder.rounded)),
-                  Text('Sharp Buttons', style: ZetaTextStyles.displayMedium),
-                  Column(children: buttons(ZetaWidgetBorder.sharp)),
+                  Text('Regular Buttons', style: ZetaTextStyles.displayMedium),
+                  Column(children: buttons(null)),
                   Text('Full Buttons', style: ZetaTextStyles.displayMedium),
                   Column(children: buttons(ZetaWidgetBorder.full)),
                   Text('Icon Buttons', style: ZetaTextStyles.displayLarge),
-                  Text('Rounded Buttons', style: ZetaTextStyles.displayMedium),
-                  Column(children: inputButtons(ZetaWidgetBorder.rounded)),
-                  Text('Sharp Buttons', style: ZetaTextStyles.displayMedium),
-                  Column(children: inputButtons(ZetaWidgetBorder.sharp)),
+                  Column(children: iconButtons(null)),
+                  Text('Full Icon Buttons', style: ZetaTextStyles.displayMedium),
+                  Column(children: iconButtons(ZetaWidgetBorder.full)),
                   Text('Group Buttons', style: ZetaTextStyles.displayLarge),
-                  Column(
-                    children: groupButtons(ZetaWidgetBorder.rounded),
-                  ),
+                  Column(children: groupButtons(null)),
                   Text('Floating Action Buttons', style: ZetaTextStyles.displayMedium),
                   Text('Tap buttons to change current FAB: ', style: ZetaTextStyles.bodyMedium),
                   Wrap(children: fabs.divide(SizedBox.square(dimension: 10)).toList()),
                 ].divide(const SizedBox.square(dimension: ZetaSpacing.xl_2)).toList(),
               ),
             ),
-            Expanded(child: const SizedBox()),
+            Expanded(child: const Nothing()),
           ],
         ),
       ),
     );
   }
 
-  List<Widget> buttons(ZetaWidgetBorder borderType) {
+  List<Widget> buttons(ZetaWidgetBorder? borderType) {
     return List.generate(
       ZetaWidgetSize.values.length + 1,
       (index) => SingleChildScrollView(
@@ -160,7 +155,7 @@ class _ButtonExampleState extends State<ButtonExample> {
     ).reversed.divide(const SizedBox.square(dimension: ZetaSpacing.xl_2)).toList();
   }
 
-  List<Widget> inputButtons(ZetaWidgetBorder borderType) {
+  List<Widget> iconButtons(ZetaWidgetBorder? borderType) {
     return List.generate(
       ZetaWidgetSize.values.length + 1,
       (index) => SingleChildScrollView(
@@ -175,8 +170,8 @@ class _ButtonExampleState extends State<ButtonExample> {
               size: ZetaWidgetSize.values[index == 0 ? 0 : index - 1],
               borderType: borderType,
               icon: ZetaButtonType.values[index2] == ZetaButtonType.negative
-                  ? ZetaIcons.delete_round
-                  : ZetaIcons.more_horizontal_round,
+                  ? ZetaIcons.delete
+                  : ZetaIcons.more_horizontal,
             ),
           ).divide(const SizedBox.square(dimension: ZetaSpacing.xl_2)).toList(),
         ),
@@ -184,9 +179,9 @@ class _ButtonExampleState extends State<ButtonExample> {
     ).reversed.divide(const SizedBox.square(dimension: ZetaSpacing.xl_2)).toList();
   }
 
-  List<Widget> groupButtons(ZetaWidgetBorder) {
+  List<Widget> groupButtons(ZetaWidgetBorder? ZetaWidgetBorder) {
     return [
-      ZetaButtonGroup(isLarge: true, rounded: true, buttons: [
+      ZetaButtonGroup(isLarge: true, buttons: [
         ZetaGroupButton(
           onPressed: () {},
           label: "Label",
@@ -196,7 +191,7 @@ class _ButtonExampleState extends State<ButtonExample> {
           label: "Label",
         ),
       ]),
-      ZetaButtonGroup(isLarge: true, rounded: true, buttons: [
+      ZetaButtonGroup(isLarge: true, buttons: [
         ZetaGroupButton(
           onPressed: () {},
           label: "Label",
@@ -212,11 +207,10 @@ class _ButtonExampleState extends State<ButtonExample> {
       ]),
       ZetaButtonGroup(
         isLarge: true,
-        rounded: true,
         isInverse: true,
         buttons: [
           ZetaGroupButton.icon(
-            icon: ZetaIcons.star_round,
+            icon: ZetaIcons.star,
             onPressed: () {},
             label: "Label",
           ),
@@ -229,33 +223,32 @@ class _ButtonExampleState extends State<ButtonExample> {
             items: [
               ZetaDropdownItem(
                 value: 'Item 1',
-                icon: Icon(ZetaIcons.star_half),
+                icon: ZetaIcon(ZetaIcons.star_half),
               ),
               ZetaDropdownItem(value: 'Item 2'),
             ],
           ),
           ZetaGroupButton.icon(
-            icon: ZetaIcons.star_round,
+            icon: ZetaIcons.star,
             label: "Label",
           ),
         ],
       ),
       ZetaButtonGroup(
         isLarge: true,
-        rounded: true,
         buttons: [
           ZetaGroupButton.icon(
-            icon: ZetaIcons.star_round,
+            icon: ZetaIcons.star,
             label: "Label",
             onPressed: () {},
           ),
           ZetaGroupButton.icon(
-            icon: ZetaIcons.star_round,
+            icon: ZetaIcons.star,
             label: "Label",
             onPressed: () {},
           ),
           ZetaGroupButton.icon(
-            icon: ZetaIcons.star_round,
+            icon: ZetaIcons.star,
             label: "Label",
             onPressed: () {},
           ),

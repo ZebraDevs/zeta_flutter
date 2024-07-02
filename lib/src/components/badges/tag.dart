@@ -43,7 +43,7 @@ class ZetaTag extends ZetaStatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: <Widget>[
-        if (direction == ZetaTagDirection.right) _buildCustomPaint(context),
+        if (direction == ZetaTagDirection.left) _buildCustomPaint(context),
         Container(
           decoration: BoxDecoration(
             color: Zeta.of(context).colors.surfaceHover,
@@ -64,14 +64,14 @@ class ZetaTag extends ZetaStatelessWidget {
             ),
           ),
         ),
-        if (direction == ZetaTagDirection.left) _buildCustomPaint(context),
+        if (direction == ZetaTagDirection.right) _buildCustomPaint(context),
       ],
     );
   }
 
   BorderRadius? _getBorderRadius(BuildContext context) {
     if (!context.rounded) return null;
-    if (direction == ZetaTagDirection.right) {
+    if (direction == ZetaTagDirection.left) {
       return const BorderRadius.only(
         topRight: Radius.circular(ZetaSpacingBase.x0_5),
         bottomRight: Radius.circular(ZetaSpacingBase.x0_5),
@@ -121,7 +121,7 @@ class _TagPainter extends CustomPainter {
     final Paint paint = Paint()
       ..color = color
       ..style = PaintingStyle.fill;
-    final path = _drawPath(size, rounded, direction == ZetaTagDirection.right);
+    final path = _drawPath(size, rounded, direction == ZetaTagDirection.left);
 
     canvas.drawPath(path, paint);
   }

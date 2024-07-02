@@ -18,38 +18,35 @@ class _GroupHeaderExampleState extends State<GroupHeaderExample> {
   Widget build(BuildContext context) {
     return ExampleScaffold(
       name: "Global Header",
-      child: LayoutBuilder(builder: (context, constraints) {
-        return Center(
-          child: SingleChildScrollView(
-            child: Column(children: [
-              Text(constraints.maxWidth.toString()),
-              ZetaGlobalHeader(
-                title: "Title",
-                tabItems: childrenOne,
-                searchBar: ZetaSearchBar(shape: ZetaWidgetBorder.full, size: ZetaWidgetSize.large),
-                onAppsButton: () {},
-                actionButtons: [
-                  IconButton(
-                    onPressed: () {},
-                    icon: const Icon(
-                      ZetaIcons.alert_round,
-                    ),
+      child: Center(
+        child: SingleChildScrollView(
+          child: Column(children: [
+            ZetaGlobalHeader(
+              title: "Title",
+              tabItems: childrenOne,
+              searchBar: ZetaSearchBar(shape: ZetaWidgetBorder.full, size: ZetaWidgetSize.large),
+              onAppsButton: () {},
+              actionButtons: [
+                IconButton(
+                  onPressed: () {},
+                  icon: const ZetaIcon(
+                    ZetaIcons.alert,
                   ),
-                  IconButton(
-                    onPressed: () {},
-                    icon: const Icon(
-                      ZetaIcons.help_round,
-                    ),
+                ),
+                IconButton(
+                  onPressed: () {},
+                  icon: const ZetaIcon(
+                    ZetaIcons.help,
                   ),
-                ],
-                avatar: const ZetaAvatar(initials: 'PS'),
-              ),
-              const SizedBox(height: ZetaSpacing.xl_1),
-              ZetaGlobalHeader(title: "Title", tabItems: childrenTwo),
-            ]),
-          ),
-        );
-      }),
+                ),
+              ],
+              avatar: const ZetaAvatar(initials: 'PS'),
+            ),
+            const SizedBox(height: ZetaSpacing.xl_1),
+            ZetaGlobalHeader(title: "Title", tabItems: childrenTwo),
+          ]),
+        ),
+      ),
     );
   }
 }

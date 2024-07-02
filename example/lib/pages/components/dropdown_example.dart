@@ -18,11 +18,11 @@ class _DropdownExampleState extends State<DropdownExample> {
     final items = [
       ZetaDropdownItem(
         value: "Item 1",
-        icon: Icon(ZetaIcons.star_round),
+        icon: ZetaIcon(ZetaIcons.star),
       ),
       ZetaDropdownItem(
         value: "Item 2",
-        icon: Icon(ZetaIcons.star_half_round),
+        icon: ZetaIcon(ZetaIcons.star_half),
       ),
       ZetaDropdownItem(
         value: "Item 3",

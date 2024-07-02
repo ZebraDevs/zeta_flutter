@@ -19,9 +19,9 @@ class BadgesExample extends StatelessWidget {
             _DividingText('Status Label'),
             _StatusLabel(),
             _DividingText('Priority Pill'),
-            _PriorityPill(),
+            _PriorityPill(ZetaPriorityPillSize.large),
             const SizedBox(height: ZetaSpacing.xl_4),
-            _PriorityPill(size: ZetaPriorityPillSize.small),
+            _PriorityPill(ZetaPriorityPillSize.small),
             _DividingText('Badge'),
             _Badge(),
             _DividingText('Indicators'),
@@ -57,9 +57,7 @@ class _StatusLabel extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         ZetaStatusLabel(label: 'Label', status: type),
-        ZetaStatusLabel(label: 'Label', status: type, customIcon: ZetaIcons.star_round),
-        ZetaStatusLabel(label: 'Label', status: type, rounded: false),
-        ZetaStatusLabel(label: 'Label', status: type, rounded: false, customIcon: ZetaIcons.star_sharp),
+        ZetaStatusLabel(label: 'Label', status: type, customIcon: ZetaIcons.star),
       ],
     );
   }
@@ -79,9 +77,7 @@ class _StatusLabel extends StatelessWidget {
 }
 
 class _PriorityPill extends StatelessWidget {
-  const _PriorityPill({
-    this.size = ZetaPriorityPillSize.large,
-  });
+  const _PriorityPill(this.size);
 
   final ZetaPriorityPillSize size;
 
@@ -108,15 +104,6 @@ class _PriorityPill extends StatelessWidget {
             ZetaPriorityPill(size: size, type: ZetaPriorityPillType.low),
           ].divide(const SizedBox.square(dimension: ZetaSpacing.xl_2)).toList(),
         ),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            ZetaPriorityPill(size: size, rounded: false),
-            ZetaPriorityPill(size: size, rounded: false, type: ZetaPriorityPillType.high),
-            ZetaPriorityPill(size: size, rounded: false, type: ZetaPriorityPillType.medium),
-            ZetaPriorityPill(size: size, rounded: false, type: ZetaPriorityPillType.low),
-          ].divide(const SizedBox.square(dimension: ZetaSpacing.xl_2)).toList(),
-        ),
       ],
     );
   }
@@ -131,7 +118,6 @@ class _Badge extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         ZetaLabel(label: 'Label', status: type),
-        ZetaLabel(label: 'Label', status: type, rounded: false),
       ],
     );
   }
@@ -243,10 +229,8 @@ class _Tags extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          ZetaTag.left(label: 'Sharp', rounded: false),
-          ZetaTag.right(label: 'Sharp', rounded: false),
-          ZetaTag.left(label: 'Rounded'),
-          ZetaTag.right(label: 'Rounded'),
+          ZetaTag.left(label: 'Left'),
+          ZetaTag.right(label: 'Right'),
         ].divide(SizedBox.square(dimension: ZetaSpacing.xl_2)).toList(),
       ),
     );

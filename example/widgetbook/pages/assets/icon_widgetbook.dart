@@ -40,7 +40,7 @@ Widget iconsUseCase(BuildContext context) {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(
+                          ZetaIcon(
                             IconData(
                               e.value.codePoint,
                               fontFamily: rounded ? ZetaIcons.familyRound : ZetaIcons.familySharp,

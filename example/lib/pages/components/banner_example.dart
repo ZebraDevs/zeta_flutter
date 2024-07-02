@@ -24,7 +24,7 @@ class BannerExample extends StatelessWidget {
                 title: 'Centered',
                 context: context,
                 titleStart: true,
-                leadingIcon: ZetaIcons.info_round,
+                leadingIcon: ZetaIcons.info,
               ),
               ZetaBanner(
                 type: ZetaBannerStatus.primary,
@@ -36,30 +36,30 @@ class BannerExample extends StatelessWidget {
                 context: context,
                 title: 'Title left with arrow',
                 titleStart: true,
-                trailing: Icon(ZetaIcons.chevron_right_round),
+                trailing: ZetaIcon(ZetaIcons.chevron_right),
               ),
               ZetaBanner(
                 type: ZetaBannerStatus.primary,
                 title: 'Title left + Icon',
                 titleStart: true,
                 context: context,
-                leadingIcon: ZetaIcons.info_round,
+                leadingIcon: ZetaIcons.info,
               ),
               ZetaBanner(
                 type: ZetaBannerStatus.primary,
                 context: context,
                 title: 'Title left + Icon with Arrow',
                 titleStart: true,
-                leadingIcon: ZetaIcons.info_round,
+                leadingIcon: ZetaIcons.info,
                 trailing: IconButton(
-                  icon: Icon(ZetaIcons.chevron_right_round),
+                  icon: ZetaIcon(ZetaIcons.chevron_right),
                   onPressed: () {
                     ScaffoldMessenger.of(context).showMaterialBanner(ZetaBanner(
                       title: 'Title',
                       context: context,
                       type: ZetaBannerStatus.primary,
                       trailing: IconButton(
-                        icon: Icon(ZetaIcons.close_round),
+                        icon: ZetaIcon(ZetaIcons.close),
                         onPressed: () => ScaffoldMessenger.of(context).clearMaterialBanners(),
                       ),
                     ));
@@ -72,16 +72,16 @@ class BannerExample extends StatelessWidget {
                 context: context,
                 title: 'Centered',
                 titleStart: true,
-                leadingIcon: ZetaIcons.info_round,
+                leadingIcon: ZetaIcons.info,
                 trailing: IconButton(
-                  icon: Icon(ZetaIcons.chevron_right_round),
+                  icon: ZetaIcon(ZetaIcons.chevron_right),
                   onPressed: () {
                     ScaffoldMessenger.of(context).showMaterialBanner(ZetaBanner(
                       title: 'Title',
                       context: context,
                       type: ZetaBannerStatus.positive,
                       trailing: IconButton(
-                        icon: Icon(ZetaIcons.close_round),
+                        icon: ZetaIcon(ZetaIcons.close),
                         onPressed: () => ScaffoldMessenger.of(context).clearMaterialBanners(),
                       ),
                     ));
@@ -93,16 +93,16 @@ class BannerExample extends StatelessWidget {
                 title: 'Centered',
                 context: context,
                 titleStart: true,
-                leadingIcon: ZetaIcons.info_round,
+                leadingIcon: ZetaIcons.info,
                 trailing: IconButton(
-                  icon: Icon(ZetaIcons.chevron_right_round),
+                  icon: ZetaIcon(ZetaIcons.chevron_right),
                   onPressed: () {
                     ScaffoldMessenger.of(context).showMaterialBanner(ZetaBanner(
                       title: 'Title',
                       context: context,
                       type: ZetaBannerStatus.warning,
                       trailing: IconButton(
-                        icon: Icon(ZetaIcons.close_round),
+                        icon: ZetaIcon(ZetaIcons.close),
                         onPressed: () => ScaffoldMessenger.of(context).clearMaterialBanners(),
                       ),
                     ));
@@ -114,16 +114,16 @@ class BannerExample extends StatelessWidget {
                 title: 'Centered',
                 context: context,
                 titleStart: true,
-                leadingIcon: ZetaIcons.info_round,
+                leadingIcon: ZetaIcons.info,
                 trailing: IconButton(
-                  icon: Icon(ZetaIcons.chevron_right_round),
+                  icon: ZetaIcon(ZetaIcons.chevron_right),
                   onPressed: () {
                     ScaffoldMessenger.of(context).showMaterialBanner(ZetaBanner(
                       title: 'Title',
                       context: context,
                       type: ZetaBannerStatus.negative,
                       trailing: IconButton(
-                        icon: Icon(ZetaIcons.close_round),
+                        icon: ZetaIcon(ZetaIcons.close),
                         onPressed: () => ScaffoldMessenger.of(context).clearMaterialBanners(),
                       ),
                     ));
@@ -141,7 +141,6 @@ class BannerExample extends StatelessWidget {
                 onClose: () {},
                 status: ZetaWidgetStatus.positive,
                 title: 'Banner Title',
-                rounded: false,
               ),
               ZetaInPageBanner(
                 content: Text(_content),
@@ -155,7 +154,6 @@ class BannerExample extends StatelessWidget {
                 onClose: () {},
                 status: ZetaWidgetStatus.negative,
                 title: 'Banner Title Banner Title Banner Title Banner Title',
-                rounded: false,
               ),
               ZetaInPageBanner(
                 content: Text(_content),
@@ -177,7 +175,6 @@ class BannerExample extends StatelessWidget {
 
   Column buildExampleBannerColumn(
     ZetaWidgetStatus status, {
-    bool rounded = true,
     IconData? customIcon,
   }) {
     return Column(
@@ -187,7 +184,6 @@ class BannerExample extends StatelessWidget {
         ZetaInPageBanner(
           content: Text(_content),
           onClose: () {},
-          rounded: rounded,
           status: status,
           title: 'Banner Title',
           customIcon: customIcon,

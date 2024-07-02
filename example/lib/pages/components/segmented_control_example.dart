@@ -70,7 +70,7 @@ class _SegmentedControlExampleState extends State<SegmentedControlExample> {
                   for (final value in _iconsSegments)
                     ZetaButtonSegment(
                       value: value,
-                      child: Icon(ZetaIcons.star_round),
+                      child: ZetaIcon(ZetaIcons.star),
                     ),
                 ],
                 onChanged: (value) => setState(

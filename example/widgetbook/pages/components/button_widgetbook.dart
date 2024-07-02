@@ -82,11 +82,11 @@ Widget buttonGroupUseCase(BuildContext context) {
           items: [
             ZetaDropdownItem(
               value: 'Item 1',
-              icon: Icon(ZetaIcons.star),
+              icon: ZetaIcon(ZetaIcons.star),
             ),
             ZetaDropdownItem(
               value: 'Item 2',
-              icon: Icon(ZetaIcons.star_half),
+              icon: ZetaIcon(ZetaIcons.star_half),
             ),
           ],
         ),

@@ -26,7 +26,7 @@ class _StepperInputExampleState extends State<StepperInputExample> {
               initialValue: 5,
               onChange: (_) {},
             ),
-            ZetaStepperInput(rounded: false),
+            ZetaStepperInput(),
             ZetaStepperInput(
               size: ZetaStepperInputSize.large,
               onChange: (_) {},

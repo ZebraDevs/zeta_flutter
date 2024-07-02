@@ -24,7 +24,7 @@ Widget defaultTopAppBarUseCase(BuildContext context) {
     label: "Enabled actions",
     initialValue: true,
   );
-  final leadingIcon = iconKnob(context, name: 'Leading Icon', initial: ZetaIcons.hamburger_menu_round);
+  final leadingIcon = iconKnob(context, name: 'Leading Icon', initial: ZetaIcons.hamburger_menu);
 
   return WidgetbookTestWidget(
       backgroundColor: Colors.green,
@@ -34,7 +34,7 @@ Widget defaultTopAppBarUseCase(BuildContext context) {
           ZetaTopAppBar(
             leading: IconButton(
               onPressed: () {},
-              icon: Icon(leadingIcon),
+              icon: ZetaIcon(leadingIcon),
             ),
             type: type,
             title: Text(title),
@@ -42,15 +42,15 @@ Widget defaultTopAppBarUseCase(BuildContext context) {
                 ? [
                     IconButton(
                       onPressed: () {},
-                      icon: Icon(Icons.language),
+                      icon: ZetaIcon(Icons.language),
                     ),
                     IconButton(
                       onPressed: () {},
-                      icon: Icon(Icons.favorite),
+                      icon: ZetaIcon(Icons.favorite),
                     ),
                     IconButton(
                       onPressed: () {},
-                      icon: Icon(ZetaIcons.more_vertical_round),
+                      icon: ZetaIcon(ZetaIcons.more_vertical),
                     )
                   ]
                 : null,
@@ -92,7 +92,7 @@ class _SearchUseCaseState extends State<_SearchUseCase> {
       },
     );
 
-    final leadingIcon = iconKnob(context, name: 'Leading Icon', initial: ZetaIcons.hamburger_menu_round);
+    final leadingIcon = iconKnob(context, name: 'Leading Icon', initial: ZetaIcons.hamburger_menu);
 
     final enabledSpeechRecognition = context.knobs.boolean(
       label: "Enabled speech recognition",
@@ -104,7 +104,7 @@ class _SearchUseCaseState extends State<_SearchUseCase> {
     return ZetaTopAppBar(
       leading: IconButton(
         onPressed: () {},
-        icon: Icon(leadingIcon),
+        icon: ZetaIcon(leadingIcon),
       ),
       type: type,
       title: Text(title),
@@ -123,7 +123,7 @@ class _SearchUseCaseState extends State<_SearchUseCase> {
             onPressed: () {
               searchController.isEnabled ? searchController.closeSearch() : searchController.startSearch();
             },
-            icon: Icon(ZetaIcons.search_round)),
+            icon: ZetaIcon(ZetaIcons.search)),
       ],
     );
   }
@@ -151,7 +151,7 @@ class _ExtendedSearchState extends State<ExtendedSearch> {
   Widget build(BuildContext context) {
     final title = context.knobs.string(label: "Title", initialValue: "Title");
 
-    final leadingIcon = iconKnob(context, name: 'Leading Icon', initial: ZetaIcons.hamburger_menu_round);
+    final leadingIcon = iconKnob(context, name: 'Leading Icon', initial: ZetaIcons.hamburger_menu);
 
     final showSearch = context.knobs.boolean(label: 'Search variant', initialValue: false);
 
@@ -167,27 +167,27 @@ class _ExtendedSearchState extends State<ExtendedSearch> {
                 child: CustomScrollView(
                   slivers: [
                     ZetaTopAppBar.extended(
-                      leading: IconButton(icon: Icon(leadingIcon), onPressed: () {}),
+                      leading: IconButton(icon: ZetaIcon(leadingIcon), onPressed: () {}),
                       title: Text(title),
                       actions: showSearch
                           ? [
                               IconButton(
                                 onPressed: _showHideSearchExtended,
-                                icon: Icon(ZetaIcons.search_round),
+                                icon: ZetaIcon(ZetaIcons.search),
                               )
                             ]
                           : [
                               IconButton(
                                 onPressed: () {},
-                                icon: Icon(Icons.language),
+                                icon: ZetaIcon(Icons.language),
                               ),
                               IconButton(
                                 onPressed: () {},
-                                icon: Icon(Icons.favorite),
+                                icon: ZetaIcon(Icons.favorite),
                               ),
                               IconButton(
                                 onPressed: () {},
-                                icon: Icon(ZetaIcons.more_vertical_round),
+                                icon: ZetaIcon(ZetaIcons.more_vertical),
                               )
                             ],
                       searchController: showSearch ? _searchControllerExtended : null,

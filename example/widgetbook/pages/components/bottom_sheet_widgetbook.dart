@@ -28,7 +28,7 @@ Widget bottomSheetContentUseCase(BuildContext context) {
 ZetaBottomSheet _bottomSheet(BuildContext context) {
   final bool rounded = roundedKnob(context);
   final leadingIcon = iconKnob(context, rounded: rounded, nullable: true, initial: null);
-  final trailingIcon = iconKnob(context, rounded: rounded, nullable: true, initial: ZetaIcons.chevron_right_round);
+  final trailingIcon = iconKnob(context, rounded: rounded, nullable: true, initial: ZetaIcons.chevron_right);
 
   return ZetaBottomSheet(
     centerTitle: context.knobs.boolean(label: 'Center title', initialValue: true),
@@ -40,8 +40,8 @@ ZetaBottomSheet _bottomSheet(BuildContext context) {
         6,
         (index) => ZetaMenuItem(
           type: context.knobs.boolean(label: 'Grid') ? ZetaMenuItemType.vertical : ZetaMenuItemType.horizontal,
-          leading: leadingIcon != null ? Icon(leadingIcon) : null,
-          trailing: trailingIcon != null ? Icon(trailingIcon) : null,
+          leading: leadingIcon != null ? ZetaIcon(leadingIcon) : null,
+          trailing: trailingIcon != null ? ZetaIcon(trailingIcon) : null,
           label: Text('Menu Item'),
           onTap: context.knobs.boolean(label: 'Disabled') ? null : () {},
         ),

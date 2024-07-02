@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+
 import '../../../zeta_flutter.dart';
 
 /// [ZetaAvatar] size
@@ -47,6 +48,7 @@ class ZetaAvatar extends ZetaStatelessWidget {
     this.semanticLabel = 'avatar',
     this.semanticUpperBadgeLabel = 'upperBadge',
     this.semanticLowerBadgeLabel = 'lowerBadge',
+    this.initialTextStyle,
   });
 
   /// Constructor for [ZetaAvatar] with image.
@@ -61,7 +63,8 @@ class ZetaAvatar extends ZetaStatelessWidget {
     this.semanticUpperBadgeLabel = 'upperBadge',
     this.semanticLowerBadgeLabel = 'lowerBadge',
   })  : backgroundColor = null,
-        initials = null;
+        initials = null,
+        initialTextStyle = null;
 
   /// Constructor for [ZetaAvatar] with initials.
   const ZetaAvatar.initials({
@@ -75,6 +78,7 @@ class ZetaAvatar extends ZetaStatelessWidget {
     this.semanticLabel = 'avatar',
     this.semanticUpperBadgeLabel = 'upperBadge',
     this.semanticLowerBadgeLabel = 'lowerBadge',
+    this.initialTextStyle,
   }) : image = null;
 
   /// Constructor for [ZetaAvatar] with initials from a full name.
@@ -89,6 +93,7 @@ class ZetaAvatar extends ZetaStatelessWidget {
     this.semanticLabel = 'avatar',
     this.semanticUpperBadgeLabel = 'upperBadge',
     this.semanticLowerBadgeLabel = 'lowerBadge',
+    this.initialTextStyle,
   })  : image = null,
         initials = name.initials;
 
@@ -132,6 +137,19 @@ class ZetaAvatar extends ZetaStatelessWidget {
   /// {@macro zeta-widget-semantic-label}
   final String semanticUpperBadgeLabel;
 
+  /// Text style for initials.
+  ///
+  /// Defaults to:
+  /// ```dart
+  ///  TextStyle(
+  ///   fontSize: size.fontSize,
+  ///   letterSpacing: ZetaSpacing.none,
+  ///   color: backgroundColor?.onColor,
+  ///   fontWeight: FontWeight.w500,
+  /// )
+  /// ```
+  final TextStyle? initialTextStyle;
+
   /// Return copy of avatar with certain changed fields
   ZetaAvatar copyWith({
     ZetaAvatarSize? size,
@@ -168,12 +186,13 @@ class ZetaAvatar extends ZetaStatelessWidget {
             ? Center(
                 child: Text(
                   size == ZetaAvatarSize.xs ? initials!.substring(0, 1) : initials!,
-                  style: TextStyle(
-                    fontSize: size.fontSize,
-                    letterSpacing: ZetaSpacing.none,
-                    color: backgroundColor?.onColor,
-                    fontWeight: FontWeight.w500,
-                  ),
+                  style: initialTextStyle ??
+                      TextStyle(
+                        fontSize: size.fontSize,
+                        letterSpacing: ZetaSpacing.none,
+                        color: backgroundColor?.onColor,
+                        fontWeight: FontWeight.w500,
+                      ),
                 ),
               )
             : null);
@@ -261,7 +280,8 @@ class ZetaAvatar extends ZetaStatelessWidget {
       ..add(ColorProperty('statusColor', borderColor))
       ..add(StringProperty('semanticUpperBadgeValue', semanticUpperBadgeLabel))
       ..add(StringProperty('semanticValue', semanticLabel))
-      ..add(StringProperty('semanticLowerBadgeValue', semanticLowerBadgeLabel));
+      ..add(StringProperty('semanticLowerBadgeValue', semanticLowerBadgeLabel))
+      ..add(DiagnosticsProperty<TextStyle>('initialTextStyle', initialTextStyle));
   }
 }
 

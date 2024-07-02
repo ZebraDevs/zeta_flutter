@@ -37,7 +37,6 @@ class _PasswordInputExampleState extends State<PasswordInputExample> {
                   Padding(padding: EdgeInsets.only(top: 20)),
                   ZetaPasswordInput(
                     size: ZetaWidgetSize.medium,
-                    rounded: false,
                     hintText: 'Password',
                     controller: _passwordController,
                     validator: (value) {
@@ -68,17 +67,15 @@ class _PasswordInputExampleState extends State<PasswordInputExample> {
   }
 }
 
-List<Widget> passwordInputExampleRow(ZetaWidgetSize size, {bool rounded = true}) {
+List<Widget> passwordInputExampleRow(ZetaWidgetSize size) {
   return [
     ZetaPasswordInput(
       size: size,
       hintText: 'Password',
-      rounded: rounded,
       placeholder: 'Password',
     ),
     SizedBox(height: 20),
     ZetaPasswordInput(
-      rounded: rounded,
       size: size,
       placeholder: 'Password',
       disabled: true,
@@ -89,7 +86,6 @@ List<Widget> passwordInputExampleRow(ZetaWidgetSize size, {bool rounded = true})
       label: 'Label',
       placeholder: 'Password',
       hintText: 'Default hint text',
-      rounded: rounded,
     ),
   ];
 }

@@ -93,7 +93,7 @@ class _ZetaChipState extends State<ZetaChip> {
     } else if (widget.leading.runtimeType == ZetaAvatar) {
       return (widget.leading! as ZetaAvatar).copyWith(size: ZetaAvatarSize.xxxs);
     }
-    return widget.leading ?? const SizedBox();
+    return widget.leading ?? const Nothing();
   }
 
   final _controller = WidgetStatesController();
@@ -112,7 +112,7 @@ class _ZetaChipState extends State<ZetaChip> {
                   color: Colors.transparent,
                   child: child(colors, foregroundColor, isDragging: true),
                 ),
-                childWhenDragging: const SizedBox(),
+                childWhenDragging: const Nothing(),
                 data: widget.data,
                 onDragCompleted: widget.onDragCompleted,
                 child: child(colors, foregroundColor),
@@ -191,7 +191,7 @@ class _ZetaChipState extends State<ZetaChip> {
                             ZetaIcons.check_mark,
                             color: widget.selected! ? colors.iconInverse : Colors.transparent,
                           )
-                        : const SizedBox()),
+                        : const Nothing()),
                   )
                 else if (widget.leading != null)
                   _renderLeading(foregroundColor),
