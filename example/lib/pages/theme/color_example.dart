@@ -189,7 +189,7 @@ class _ColorExampleState extends State<ColorExample> {
                                 height: constraints.maxWidth / 10,
                                 color: e == 110 ? colors.surfacePrimary : value.value[e],
                                 child: e == 110
-                                    ? SizedBox()
+                                    ? Nothing()
                                     : FittedBox(
                                         fit: BoxFit.scaleDown,
                                         child: Column(

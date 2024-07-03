@@ -74,7 +74,7 @@ class ZetaBottomSheet extends ZetaStatelessWidget {
               ),
             Material(
               color: colors.surfaceSecondary,
-              child: body ?? const SizedBox(),
+              child: body ?? const Nothing(),
             ),
           ],
         ),

@@ -40,7 +40,7 @@ Widget textInputUseCase(BuildContext context) {
             errorText: errorText,
             prefixText: '£',
             suffix: IconButton(
-              icon: Icon(ZetaIcons.star_round),
+              icon: ZetaIcon(ZetaIcons.star),
               onPressed: () {},
             ),
             onChange: (value) {},

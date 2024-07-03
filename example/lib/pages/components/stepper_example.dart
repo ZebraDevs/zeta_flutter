@@ -12,7 +12,6 @@ class StepperExample extends StatefulWidget {
 }
 
 class _StepperExampleState extends State<StepperExample> {
-  int _roundedHorizontalStep = 0;
   int _sharpHorizontalStep = 0;
   int _verticalStep = 0;
 
@@ -36,39 +35,6 @@ class _StepperExampleState extends State<StepperExample> {
             SizedBox(
               height: 150,
               child: ZetaStepper(
-                currentStep: _roundedHorizontalStep,
-                onStepTapped: (index) => setState(() => _roundedHorizontalStep = index),
-                steps: [
-                  ZetaStep(
-                    type: _getForStepIndex(
-                      currentStep: _roundedHorizontalStep,
-                      stepIndex: 0,
-                    ),
-                    title: Text("Title"),
-                    content: Text("Content"),
-                  ),
-                  ZetaStep(
-                    type: _getForStepIndex(
-                      currentStep: _roundedHorizontalStep,
-                      stepIndex: 1,
-                    ),
-                    title: Text("Title 2"),
-                  ),
-                  ZetaStep(
-                    type: _getForStepIndex(
-                      currentStep: _roundedHorizontalStep,
-                      stepIndex: 2,
-                    ),
-                    title: Text("Title 3"),
-                    content: Text("Content 3"),
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(
-              height: 150,
-              child: ZetaStepper(
-                rounded: false,
                 currentStep: _sharpHorizontalStep,
                 onStepTapped: (index) => setState(() => _sharpHorizontalStep = index),
                 steps: [

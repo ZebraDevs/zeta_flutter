@@ -20,8 +20,8 @@ class DialogExample extends StatelessWidget {
                 context,
                 useRootNavigator: false,
                 title: 'Dialog Title',
-                icon: Icon(
-                  ZetaIcons.warning_round,
+                icon: ZetaIcon(
+                  ZetaIcons.warning,
                   color: zeta.colors.surfaceWarning,
                 ),
                 message:
@@ -35,8 +35,8 @@ class DialogExample extends StatelessWidget {
                 context,
                 useRootNavigator: false,
                 title: 'Dialog Title',
-                icon: Icon(
-                  ZetaIcons.warning_round,
+                icon: ZetaIcon(
+                  ZetaIcons.warning,
                   color: zeta.colors.surfaceWarning,
                 ),
                 message:
@@ -51,8 +51,8 @@ class DialogExample extends StatelessWidget {
                 context,
                 useRootNavigator: false,
                 title: 'Dialog Title',
-                icon: Icon(
-                  ZetaIcons.warning_round,
+                icon: ZetaIcon(
+                  ZetaIcons.warning,
                   color: zeta.colors.surfaceWarning,
                 ),
                 message:
@@ -69,8 +69,8 @@ class DialogExample extends StatelessWidget {
                 context,
                 useRootNavigator: false,
                 title: 'Dialog Title',
-                icon: Icon(
-                  ZetaIcons.warning_round,
+                icon: ZetaIcon(
+                  ZetaIcons.warning,
                   color: zeta.colors.surfaceWarning,
                 ),
                 message:
@@ -78,7 +78,6 @@ class DialogExample extends StatelessWidget {
                 headerAlignment: ZetaDialogHeaderAlignment.left,
                 primaryButtonLabel: 'Confirm',
                 secondaryButtonLabel: 'Cancel',
-                rounded: false,
               ),
               child: Text(
                 'Show dialog with header to the left\nand sharp buttons',

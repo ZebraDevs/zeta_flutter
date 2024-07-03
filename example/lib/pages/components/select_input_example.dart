@@ -18,11 +18,11 @@ class _SelectInputExampleState extends State<SelectInputExample> {
     final items = [
       ZetaDropdownItem(
         value: "Item 1",
-        icon: Icon(ZetaIcons.star_round),
+        icon: ZetaIcon(ZetaIcons.star),
       ),
       ZetaDropdownItem(
         value: "Item 2",
-        icon: Icon(ZetaIcons.star_half_round),
+        icon: ZetaIcon(ZetaIcons.star_half),
       ),
       ZetaDropdownItem(
         value: "Item 3",
@@ -43,7 +43,6 @@ class _SelectInputExampleState extends State<SelectInputExample> {
                     label: 'Large',
                     size: ZetaWidgetSize.large,
                     hintText: 'Default hint text',
-                    rounded: false,
                     placeholder: 'Placeholder',
                     initialValue: "Item 1",
                     items: items,

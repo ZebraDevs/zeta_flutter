@@ -32,7 +32,7 @@ Widget notificationListItemUseCase(BuildContext context) => WidgetbookTestWidget
             label: 'Badge',
             options: [
               ZetaNotificationBadge.avatar(avatar: ZetaAvatar.initials(initials: "AO")),
-              ZetaNotificationBadge.icon(icon: ZetaIcons.check_circle_round),
+              ZetaNotificationBadge.icon(icon: ZetaIcons.check_circle),
               ZetaNotificationBadge.image(
                   image: Image.network(
                       "https://www.google.com/url?sa=i&url=https%3A%2F%2Fgithub.com%2Fzebratechnologies&psig=AOvVaw0fBPVE5gUkkpFw8mVf6B8G&ust=1717073069230000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCPCwn-XxsoYDFQAAAAAdAAAAABAE"))

@@ -440,7 +440,7 @@ class _HintText extends StatelessWidget {
     }
 
     if (text == null || text.isEmpty) {
-      return const SizedBox();
+      return const Nothing();
     }
 
     return Row(

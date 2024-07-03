@@ -22,10 +22,6 @@ class _PhoneInputExampleState extends State<PhoneInputExample> {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.only(top: 20),
-              child: Text('Rounded', style: ZetaTextStyles.titleMedium),
-            ),
-            Padding(
               padding: const EdgeInsets.all(20),
               child: ZetaPhoneInput(
                 label: 'Phone number',
@@ -37,26 +33,6 @@ class _PhoneInputExampleState extends State<PhoneInputExample> {
                   print(value);
                 },
                 countries: ['US', 'GB', 'DE', 'AT', 'FR', 'IT', 'BG'],
-              ),
-            ),
-            Divider(color: Colors.grey[200]),
-            Padding(
-              padding: const EdgeInsets.only(top: 20),
-              child: Text('Sharp', style: ZetaTextStyles.titleMedium),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(20),
-              child: ZetaPhoneInput(
-                label: 'Phone number',
-                hint: 'Enter your phone number',
-                countryDialCode: '+44',
-                phoneNumber: '987654321',
-                hasError: _errorText != null,
-                errorText: _errorText,
-                onChanged: (value) {
-                  if (value?.isEmpty ?? true) return setState(() => _errorText = null);
-                },
-                rounded: false,
               ),
             ),
             Divider(color: Colors.grey[200]),

@@ -34,8 +34,8 @@ class _TopAppBarExampleState extends State<TopAppBarExample> {
   Widget build(BuildContext context) {
     final Widget image = CachedNetworkImage(
       imageUrl: "https://i.ytimg.com/vi/KItsWUzFUOs/maxresdefault.jpg",
-      placeholder: (context, url) => Icon(ZetaIcons.user_round),
-      errorWidget: (context, url, error) => Icon(Icons.error),
+      placeholder: (context, url) => ZetaIcon(ZetaIcons.user),
+      errorWidget: (context, url, error) => ZetaIcon(ZetaIcons.error),
       fit: BoxFit.cover,
     );
     final colors = Zeta.of(context).colors;
@@ -51,7 +51,7 @@ class _TopAppBarExampleState extends State<TopAppBarExample> {
               ZetaTopAppBar(
                 leading: IconButton(
                   onPressed: () {},
-                  icon: Icon(Icons.menu_rounded),
+                  icon: Icon(Icons.menu),
                 ),
                 title: Row(
                   children: [
@@ -65,15 +65,15 @@ class _TopAppBarExampleState extends State<TopAppBarExample> {
                 actions: [
                   IconButton(
                     onPressed: () {},
-                    icon: Icon(Icons.language),
+                    icon: ZetaIcon(Icons.language),
                   ),
                   IconButton(
                     onPressed: () {},
-                    icon: Icon(Icons.favorite),
+                    icon: ZetaIcon(Icons.favorite),
                   ),
                   IconButton(
                     onPressed: () {},
-                    icon: Icon(ZetaIcons.more_vertical_round),
+                    icon: ZetaIcon(ZetaIcons.more_vertical),
                   )
                 ],
               ),
@@ -82,13 +82,13 @@ class _TopAppBarExampleState extends State<TopAppBarExample> {
                 type: ZetaTopAppBarType.centeredTitle,
                 leading: IconButton(
                   onPressed: () {},
-                  icon: Icon(Icons.menu_rounded),
+                  icon: ZetaIcon(Icons.menu),
                 ),
                 title: Text("Title"),
                 actions: [
                   IconButton(
                     onPressed: () {},
-                    icon: Icon(Icons.account_circle),
+                    icon: ZetaIcon(Icons.account_circle),
                   ),
                 ],
               ),
@@ -96,25 +96,25 @@ class _TopAppBarExampleState extends State<TopAppBarExample> {
               ZetaTopAppBar(
                 leading: IconButton(
                   onPressed: () {},
-                  icon: Icon(ZetaIcons.close_round),
+                  icon: ZetaIcon(ZetaIcons.close),
                 ),
                 title: Text("2 items"),
                 actions: [
                   IconButton(
                     onPressed: () {},
-                    icon: Icon(ZetaIcons.edit_round),
+                    icon: ZetaIcon(ZetaIcons.edit),
                   ),
                   IconButton(
                     onPressed: () {},
-                    icon: Icon(ZetaIcons.share_round),
+                    icon: ZetaIcon(ZetaIcons.share),
                   ),
                   IconButton(
                     onPressed: () {},
-                    icon: Icon(ZetaIcons.delete_round),
+                    icon: ZetaIcon(ZetaIcons.delete),
                   ),
                   IconButton(
                     onPressed: () {},
-                    icon: Icon(ZetaIcons.more_vertical_round),
+                    icon: ZetaIcon(ZetaIcons.more_vertical),
                   ),
                 ],
               ),
@@ -126,7 +126,7 @@ class _TopAppBarExampleState extends State<TopAppBarExample> {
                 actions: [
                   IconButton(
                     onPressed: _showHideSearchRegular,
-                    icon: Icon(ZetaIcons.search_round),
+                    icon: ZetaIcon(ZetaIcons.search),
                   )
                 ],
                 searchController: _searchControllerRegular,
@@ -148,7 +148,7 @@ class _TopAppBarExampleState extends State<TopAppBarExample> {
                     ZetaTopAppBar.extended(
                       leading: IconButton(
                         onPressed: () {},
-                        icon: Icon(Icons.menu_rounded),
+                        icon: ZetaIcon(Icons.menu),
                       ),
                       title: Row(
                         children: [
@@ -162,15 +162,15 @@ class _TopAppBarExampleState extends State<TopAppBarExample> {
                       actions: [
                         IconButton(
                           onPressed: () {},
-                          icon: Icon(Icons.language),
+                          icon: ZetaIcon(Icons.language),
                         ),
                         IconButton(
                           onPressed: () {},
-                          icon: Icon(Icons.favorite),
+                          icon: ZetaIcon(Icons.favorite),
                         ),
                         IconButton(
                           onPressed: () {},
-                          icon: Icon(ZetaIcons.more_vertical_round),
+                          icon: ZetaIcon(ZetaIcons.more_vertical),
                         )
                       ],
                     ),
@@ -200,7 +200,7 @@ class _TopAppBarExampleState extends State<TopAppBarExample> {
                       actions: [
                         IconButton(
                           onPressed: _showHideSearchExtended,
-                          icon: Icon(ZetaIcons.search_round),
+                          icon: ZetaIcon(ZetaIcons.search),
                         )
                       ],
                       searchController: _searchControllerExtended,

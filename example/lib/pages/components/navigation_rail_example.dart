@@ -37,19 +37,19 @@ class _NavigationRailExampleState extends State<NavigationRailExample> {
               items: [
                 ZetaNavigationRailItem(
                   label: 'Label',
-                  icon: Icon(ZetaIcons.star_round),
+                  icon: ZetaIcon(ZetaIcons.star),
                 ),
                 ZetaNavigationRailItem(
                   label: 'User\nPreferences',
-                  icon: Icon(ZetaIcons.star_round),
+                  icon: ZetaIcon(ZetaIcons.star),
                 ),
                 ZetaNavigationRailItem(
                   label: 'Account Settings',
-                  icon: Icon(ZetaIcons.star_round),
+                  icon: ZetaIcon(ZetaIcons.star),
                 ),
                 ZetaNavigationRailItem(
                   label: 'Label',
-                  icon: Icon(ZetaIcons.star_round),
+                  icon: ZetaIcon(ZetaIcons.star),
                   disabled: true,
                 ),
               ],
@@ -58,7 +58,7 @@ class _NavigationRailExampleState extends State<NavigationRailExample> {
               child: Padding(
                 padding: const EdgeInsets.all(ZetaSpacing.xl_1),
                 child: _selectedIndex == null
-                    ? const SizedBox()
+                    ? const Nothing()
                     : Text(
                         _titles[_selectedIndex!],
                         textAlign: TextAlign.center,

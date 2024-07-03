@@ -57,7 +57,6 @@ class ProgressExampleState extends State<ProgressExample> {
               Wrapper(
                 stepsCompleted: 0,
                 circleSize: ZetaCircleSizes.xl,
-                rounded: false,
                 isCircle: true,
               ),
               SizedBox(
@@ -78,7 +77,6 @@ class Wrapper extends StatefulWidget {
     required this.stepsCompleted,
     this.type = ZetaProgressBarType.standard,
     this.isThin = false,
-    this.rounded = true,
     this.stateChangeable = false,
     this.label,
     this.isCircle = false,
@@ -86,7 +84,6 @@ class Wrapper extends StatefulWidget {
   });
 
   final int stepsCompleted;
-  final bool? rounded;
   final ZetaProgressBarType? type;
   final bool? isThin;
   final String? label;
@@ -139,12 +136,7 @@ class _WrapperState extends State<Wrapper> {
               )
             : SizedBox(
                 width: 400,
-                child: ZetaProgressBar(
-                    progress: progress,
-                    rounded: widget.rounded!,
-                    type: type,
-                    isThin: widget.isThin!,
-                    label: widget.label),
+                child: ZetaProgressBar(progress: progress, type: type, isThin: widget.isThin!, label: widget.label),
               ),
         const SizedBox(width: 40),
         Row(
@@ -156,7 +148,7 @@ class _WrapperState extends State<Wrapper> {
             const SizedBox(width: 40),
             widget.stateChangeable!
                 ? FilledButton(onPressed: setLoading, child: Text("Start Buffering"))
-                : SizedBox.shrink()
+                : const Nothing()
           ],
         )
       ],

@@ -149,7 +149,7 @@ class _ZetaTopAppBarSearchFieldState extends State<ZetaTopAppBarSearchField> wit
             mainAxisAlignment:
                 widget.type == ZetaTopAppBarType.centeredTitle ? MainAxisAlignment.center : MainAxisAlignment.start,
             children: [
-              widget.child ?? const SizedBox(),
+              widget.child ?? const Nothing(),
             ],
           ),
           ConstrainedBox(

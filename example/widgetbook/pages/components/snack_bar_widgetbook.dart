@@ -28,7 +28,7 @@ Widget snackBarUseCase(BuildContext context) {
         final leadingIcon = iconKnob(
           context,
           name: "Leading Icon",
-          initial: Icons.mood_rounded,
+          initial: Icons.mood,
           nullable: true,
         );
 
@@ -43,7 +43,7 @@ Widget snackBarUseCase(BuildContext context) {
                 onPressed: () {},
                 actionLabel: actionLabel,
                 type: type,
-                leadingIcon: leadingIcon != null ? Icon(leadingIcon) : null,
+                leadingIcon: leadingIcon != null ? ZetaIcon(leadingIcon) : null,
                 rounded: rounded,
                 content: Text(text),
               );

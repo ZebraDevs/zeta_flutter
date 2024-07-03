@@ -43,14 +43,10 @@ class _CheckBoxExampleState extends State<CheckBoxExample> {
                 ),
               ],
             ),
-            Row(children: [Text('Sharp Checkbox Enabled')]),
+            Row(children: [Text('Checkbox Enabled')]),
             getCheckBoxRow(isEnabled: true),
-            Row(children: [Text('Sharp Checkbox Disabled')]),
+            Row(children: [Text('Checkbox Disabled')]),
             getCheckBoxRow(isEnabled: false),
-            Row(children: [Text('Rounded Checkbox Enabled')]),
-            getCheckBoxRow(isEnabled: true, isSharp: false),
-            Row(children: [Text('Rounded Checkbox Disabled')]),
-            getCheckBoxRow(isEnabled: false, isSharp: false),
           ],
         ),
       ),
@@ -58,7 +54,7 @@ class _CheckBoxExampleState extends State<CheckBoxExample> {
   }
 }
 
-Row getCheckBoxRow({required bool isEnabled, bool isSharp = true}) {
+Row getCheckBoxRow({required bool isEnabled}) {
   return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -66,17 +62,14 @@ Row getCheckBoxRow({required bool isEnabled, bool isSharp = true}) {
         ZetaCheckbox(
           value: true,
           label: 'Label',
-          rounded: !isSharp,
           onChanged: isEnabled ? (value) => {} : null,
         ),
         ZetaCheckbox(
           value: false,
           label: 'Label',
-          rounded: !isSharp,
           onChanged: isEnabled ? (value) => {} : null,
         ),
         ZetaCheckbox(
-          rounded: !isSharp,
           onChanged: isEnabled ? (value) => {} : null,
           value: false,
         )

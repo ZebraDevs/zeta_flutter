@@ -25,7 +25,7 @@ void main() {
       final providerState = tester.state<ZetaProviderState>(find.byType(ZetaProvider));
       expect(providerState.widget.initialThemeMode, ThemeMode.system);
       expect(providerState.widget.initialContrast, ZetaContrast.aa);
-      expect(providerState.widget.initialThemeData, isNotNull);
+      expect(providerState.widget.initialZetaThemeData, isNotNull);
     });
 
     testWidgets('initializes with provided values', (WidgetTester tester) async {
@@ -42,7 +42,7 @@ void main() {
       final providerState = tester.state<ZetaProviderState>(find.byType(ZetaProvider));
       expect(providerState.widget.initialThemeMode, ThemeMode.light);
       expect(providerState.widget.initialContrast, ZetaContrast.aaa);
-      expect(providerState.widget.initialThemeData, initialThemeData);
+      expect(providerState.widget.initialZetaThemeData, initialThemeData);
       expect(providerState.widget.themeService, mockThemeService);
     });
 

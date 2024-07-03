@@ -239,7 +239,7 @@ class _ZetaStepperState extends State<ZetaStepper> with TickerProviderStateMixin
       children: <Widget>[
         AnimatedCrossFade(
           firstChild: Container(height: 0),
-          secondChild: widget.steps[index].content ?? const SizedBox(),
+          secondChild: widget.steps[index].content ?? const Nothing(),
           firstCurve: const Interval(0, 0.6, curve: Curves.fastOutSlowIn),
           secondCurve: const Interval(0.4, 1, curve: Curves.fastOutSlowIn),
           sizeCurve: Curves.fastOutSlowIn,
@@ -332,7 +332,7 @@ class _ZetaStepperState extends State<ZetaStepper> with TickerProviderStateMixin
                   Visibility(
                     maintainState: true,
                     visible: i == widget.currentStep,
-                    child: widget.steps[i].content ?? const SizedBox(),
+                    child: widget.steps[i].content ?? const Nothing(),
                   ),
                 );
               }

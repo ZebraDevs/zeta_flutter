@@ -18,7 +18,7 @@ class ListExample extends StatelessWidget {
           ZetaListItem(primaryText: 'Item 2'),
           ZetaDropdownListItem(
             primaryText: 'Item 3',
-            leading: Icon(ZetaIcons.star_round),
+            leading: ZetaIcon(ZetaIcons.star),
             expanded: true,
             items: [
               ZetaListItem.checkbox(

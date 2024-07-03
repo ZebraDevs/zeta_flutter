@@ -40,7 +40,7 @@ class _ListItemExampleState extends State<ListItemExample> {
                     )),
                 _buildListItem(
                   'Icon Left',
-                  ZetaListItem(primaryText: 'List Item', leading: Icon(ZetaIcons.star_round)),
+                  ZetaListItem(primaryText: 'List Item', leading: ZetaIcon(ZetaIcons.star)),
                 ),
                 _buildListItem(
                     'Toggle Right',
@@ -102,8 +102,8 @@ class _ListItemExampleState extends State<ListItemExample> {
                     ],
                     expanded: true,
                     primaryText: 'List Item',
-                    leading: Icon(
-                      ZetaIcons.star_round,
+                    leading: ZetaIcon(
+                      ZetaIcons.star,
                     ),
                   ),
                 ),
