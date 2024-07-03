@@ -686,7 +686,8 @@ abstract class ZetaIcons {
   static const IconData chat_search_round = IconData(0xe083, fontFamily: familyRound, fontPackage: package);
   static const IconData check_box_empty_round = IconData(0xe084, fontFamily: familyRound, fontPackage: package);
   static const IconData check_box_round = IconData(0xe085, fontFamily: familyRound, fontPackage: package);
-  static const IconData check_circle_outline_alt_round = IconData(0xe086, fontFamily: familyRound, fontPackage: package);
+  static const IconData check_circle_outline_alt_round =
+      IconData(0xe086, fontFamily: familyRound, fontPackage: package);
   static const IconData check_circle_outline_round = IconData(0xe087, fontFamily: familyRound, fontPackage: package);
   static const IconData check_circle_round = IconData(0xe088, fontFamily: familyRound, fontPackage: package);
   static const IconData check_mark_round = IconData(0xe089, fontFamily: familyRound, fontPackage: package);
@@ -801,7 +802,8 @@ abstract class ZetaIcons {
   static const IconData grid_view_round = IconData(0xe0f6, fontFamily: familyRound, fontPackage: package);
   static const IconData group_round = IconData(0xe0f7, fontFamily: familyRound, fontPackage: package);
   static const IconData groups_round = IconData(0xe0f8, fontFamily: familyRound, fontPackage: package);
-  static const IconData hamburger_menu_navigation_rail_round = IconData(0xe0f9, fontFamily: familyRound, fontPackage: package);
+  static const IconData hamburger_menu_navigation_rail_round =
+      IconData(0xe0f9, fontFamily: familyRound, fontPackage: package);
   static const IconData hamburger_menu_round = IconData(0xe0fa, fontFamily: familyRound, fontPackage: package);
   static const IconData hamburger_menu_thick_round = IconData(0xe0fb, fontFamily: familyRound, fontPackage: package);
   static const IconData hand_round = IconData(0xe0fc, fontFamily: familyRound, fontPackage: package);
@@ -1225,7 +1227,8 @@ abstract class ZetaIcons {
   static const IconData chat_sharp = IconData(0xe083, fontFamily: familySharp, fontPackage: package);
   static const IconData check_box_empty_sharp = IconData(0xe084, fontFamily: familySharp, fontPackage: package);
   static const IconData check_box_sharp = IconData(0xe085, fontFamily: familySharp, fontPackage: package);
-  static const IconData check_circle_outline_alt_sharp = IconData(0xe086, fontFamily: familySharp, fontPackage: package);
+  static const IconData check_circle_outline_alt_sharp =
+      IconData(0xe086, fontFamily: familySharp, fontPackage: package);
   static const IconData check_circle_outline_sharp = IconData(0xe087, fontFamily: familySharp, fontPackage: package);
   static const IconData check_circle_sharp = IconData(0xe088, fontFamily: familySharp, fontPackage: package);
   static const IconData check_mark_sharp = IconData(0xe089, fontFamily: familySharp, fontPackage: package);
@@ -1340,7 +1343,8 @@ abstract class ZetaIcons {
   static const IconData grid_view_sharp = IconData(0xe0f6, fontFamily: familySharp, fontPackage: package);
   static const IconData group_sharp = IconData(0xe0f7, fontFamily: familySharp, fontPackage: package);
   static const IconData groups_sharp = IconData(0xe0f8, fontFamily: familySharp, fontPackage: package);
-  static const IconData hamburger_menu_navigation_rail_sharp = IconData(0xe0f9, fontFamily: familySharp, fontPackage: package);
+  static const IconData hamburger_menu_navigation_rail_sharp =
+      IconData(0xe0f9, fontFamily: familySharp, fontPackage: package);
   static const IconData hamburger_menu_sharp = IconData(0xe0fa, fontFamily: familySharp, fontPackage: package);
   static const IconData hamburger_menu_thick_sharp = IconData(0xe0fb, fontFamily: familySharp, fontPackage: package);
   static const IconData hand_sharp = IconData(0xe0fc, fontFamily: familySharp, fontPackage: package);
@@ -1631,7 +1635,7 @@ abstract class ZetaIcons {
   static const IconData zoom_out_sharp = IconData(0xe219, fontFamily: familySharp, fontPackage: package);
 }
 
-  // List of all rounded icons.
+// List of all rounded icons.
 const Map<String, IconData> icons = {
   'activity': ZetaIcons.activity,
   'add_alert': ZetaIcons.add_alert,
