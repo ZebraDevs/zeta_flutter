@@ -12,7 +12,6 @@ class StepperExample extends StatefulWidget {
 }
 
 class _StepperExampleState extends State<StepperExample> {
-  int edHorizontalStep = 0;
   int _sharpHorizontalStep = 0;
   int _verticalStep = 0;
 
@@ -33,38 +32,6 @@ class _StepperExampleState extends State<StepperExample> {
       child: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox(
-              height: 150,
-              child: ZetaStepper(
-                currentStep: edHorizontalStep,
-                onStepTapped: (index) => setState(() => edHorizontalStep = index),
-                steps: [
-                  ZetaStep(
-                    type: _getForStepIndex(
-                      currentStep: edHorizontalStep,
-                      stepIndex: 0,
-                    ),
-                    title: Text("Title"),
-                    content: Text("Content"),
-                  ),
-                  ZetaStep(
-                    type: _getForStepIndex(
-                      currentStep: edHorizontalStep,
-                      stepIndex: 1,
-                    ),
-                    title: Text("Title 2"),
-                  ),
-                  ZetaStep(
-                    type: _getForStepIndex(
-                      currentStep: edHorizontalStep,
-                      stepIndex: 2,
-                    ),
-                    title: Text("Title 3"),
-                    content: Text("Content 3"),
-                  ),
-                ],
-              ),
-            ),
             SizedBox(
               height: 150,
               child: ZetaStepper(

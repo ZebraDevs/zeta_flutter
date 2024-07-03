@@ -40,7 +40,6 @@ class ZetaThemeColorSwitch extends StatelessWidget {
       child: DropdownButton<String>(
         value: zeta.themeData.identifier,
         elevation: 0,
-        alignment: Alignment.center,
         padding: EdgeInsets.all(8),
         icon: Nothing(),
         dropdownColor: zeta.colors.borderDisabled,

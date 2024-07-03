@@ -216,7 +216,7 @@ void main() {
           ),
         ),
       );
-//TODO: This does not work as expected
+
       await tester.pumpAndSettle(const Duration(milliseconds: 250));
 
       // Verifying through the public interface of Zeta widget

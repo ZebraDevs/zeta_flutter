@@ -37,15 +37,10 @@ class ZetaExample extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final initialThemeData = null;
-    final initialRounded = true;
-
     return ZetaProvider.base(
       initialZetaThemeData: initialZetaThemeData,
       initialThemeMode: initialThemeMode,
       initialContrast: initialContrast,
-      initialThemeData: initialThemeData,
-      initialRounded: initialRounded,
       builder: (context, lightTheme, darkTheme, themeMode) {
         return MaterialApp.router(
           routerConfig: router,

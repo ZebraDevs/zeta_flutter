@@ -84,7 +84,6 @@ class Wrapper extends StatefulWidget {
   });
 
   final int stepsCompleted;
-
   final ZetaProgressBarType? type;
   final bool? isThin;
   final String? label;
