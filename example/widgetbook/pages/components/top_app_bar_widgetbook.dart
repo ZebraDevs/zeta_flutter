@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
-import '../../test/test_components.dart';
+import '../../utils/scaffold.dart';
 import '../../utils/utils.dart';
 
 Widget defaultTopAppBarUseCase(BuildContext context) {
@@ -26,44 +26,44 @@ Widget defaultTopAppBarUseCase(BuildContext context) {
   );
   final leadingIcon = iconKnob(context, name: 'Leading Icon', initial: ZetaIcons.hamburger_menu);
 
-  return WidgetbookTestWidget(
+  return WidgetbookScaffold(
       backgroundColor: Colors.green,
       removeBody: true,
-      widget: Column(
-        children: [
-          ZetaTopAppBar(
-            leading: IconButton(
-              onPressed: () {},
-              icon: ZetaIcon(leadingIcon),
-            ),
-            type: type,
-            title: Text(title),
-            actions: enabledActions
-                ? [
-                    IconButton(
-                      onPressed: () {},
-                      icon: ZetaIcon(Icons.language),
-                    ),
-                    IconButton(
-                      onPressed: () {},
-                      icon: ZetaIcon(Icons.favorite),
-                    ),
-                    IconButton(
-                      onPressed: () {},
-                      icon: ZetaIcon(ZetaIcons.more_vertical),
-                    )
-                  ]
-                : null,
-          ),
-        ],
-      ));
+      builder: (context, _) => Column(
+            children: [
+              ZetaTopAppBar(
+                leading: IconButton(
+                  onPressed: () {},
+                  icon: ZetaIcon(leadingIcon),
+                ),
+                type: type,
+                title: Text(title),
+                actions: enabledActions
+                    ? [
+                        IconButton(
+                          onPressed: () {},
+                          icon: ZetaIcon(Icons.language),
+                        ),
+                        IconButton(
+                          onPressed: () {},
+                          icon: ZetaIcon(Icons.favorite),
+                        ),
+                        IconButton(
+                          onPressed: () {},
+                          icon: ZetaIcon(ZetaIcons.more_vertical),
+                        )
+                      ]
+                    : null,
+              ),
+            ],
+          ));
 }
 
 Widget searchTopAppBarUseCase(BuildContext context) {
-  return WidgetbookTestWidget(
+  return WidgetbookScaffold(
     backgroundColor: Colors.green,
     removeBody: true,
-    widget: Column(children: [_SearchUseCase()]),
+    builder: (context, _) => Column(children: [_SearchUseCase()]),
   );
 }
 
@@ -155,73 +155,67 @@ class _ExtendedSearchState extends State<ExtendedSearch> {
 
     final showSearch = context.knobs.boolean(label: 'Search variant', initialValue: false);
 
-    return WidgetbookTestWidget(
+    return WidgetbookScaffold(
       removeBody: true,
-      widget: SafeArea(
-        child: LayoutBuilder(builder: (context, constraints) {
-          return StatefulBuilder(
-            builder: ((context, setState) {
-              return SizedBox(
-                width: constraints.maxWidth,
-                height: constraints.maxHeight,
-                child: CustomScrollView(
-                  slivers: [
-                    ZetaTopAppBar.extended(
-                      leading: IconButton(icon: ZetaIcon(leadingIcon), onPressed: () {}),
-                      title: Text(title),
-                      actions: showSearch
-                          ? [
-                              IconButton(
-                                onPressed: _showHideSearchExtended,
-                                icon: ZetaIcon(ZetaIcons.search),
-                              )
-                            ]
-                          : [
-                              IconButton(
-                                onPressed: () {},
-                                icon: ZetaIcon(Icons.language),
-                              ),
-                              IconButton(
-                                onPressed: () {},
-                                icon: ZetaIcon(Icons.favorite),
-                              ),
-                              IconButton(
-                                onPressed: () {},
-                                icon: ZetaIcon(ZetaIcons.more_vertical),
-                              )
-                            ],
-                      searchController: showSearch ? _searchControllerExtended : null,
-                      onSearch: showSearch ? (text) => debugPrint('search text: $text') : null,
-                      onSearchMicrophoneIconPressed: showSearch
-                          ? () async {
-                              var sampleTexts = [
-                                'This is a sample text',
-                                'Another sample',
-                                'Speech recognition text',
-                                'Example'
-                              ];
-                              var generatedText = sampleTexts[Random().nextInt(sampleTexts.length)];
-                              _searchControllerExtended.text = generatedText;
-                            }
-                          : null,
-                    ),
-                    SliverToBoxAdapter(
-                      child: Container(
-                        width: constraints.maxWidth,
-                        height: constraints.maxHeight * 4,
-                        color: Zeta.of(context).colors.surfaceSecondary,
-                        child: CustomPaint(
-                          painter: Painter(colors: Zeta.of(context).colors, constraints: constraints),
-                          size: Size(constraints.maxWidth, constraints.maxHeight * 4),
+      builder: (context, constraints) => SafeArea(
+        child: SizedBox(
+          width: constraints.maxWidth,
+          height: constraints.maxHeight,
+          child: CustomScrollView(
+            slivers: [
+              ZetaTopAppBar.extended(
+                leading: IconButton(icon: ZetaIcon(leadingIcon), onPressed: () {}),
+                title: Text(title),
+                actions: showSearch
+                    ? [
+                        IconButton(
+                          onPressed: _showHideSearchExtended,
+                          icon: ZetaIcon(ZetaIcons.search),
+                        )
+                      ]
+                    : [
+                        IconButton(
+                          onPressed: () {},
+                          icon: ZetaIcon(Icons.language),
                         ),
-                      ),
-                    ),
-                  ],
+                        IconButton(
+                          onPressed: () {},
+                          icon: ZetaIcon(Icons.favorite),
+                        ),
+                        IconButton(
+                          onPressed: () {},
+                          icon: ZetaIcon(ZetaIcons.more_vertical),
+                        )
+                      ],
+                searchController: showSearch ? _searchControllerExtended : null,
+                onSearch: showSearch ? (text) => debugPrint('search text: $text') : null,
+                onSearchMicrophoneIconPressed: showSearch
+                    ? () async {
+                        var sampleTexts = [
+                          'This is a sample text',
+                          'Another sample',
+                          'Speech recognition text',
+                          'Example'
+                        ];
+                        var generatedText = sampleTexts[Random().nextInt(sampleTexts.length)];
+                        _searchControllerExtended.text = generatedText;
+                      }
+                    : null,
+              ),
+              SliverToBoxAdapter(
+                child: Container(
+                  width: constraints.maxWidth,
+                  height: constraints.maxHeight * 4,
+                  color: Zeta.of(context).colors.surfaceSecondary,
+                  child: CustomPaint(
+                    painter: Painter(colors: Zeta.of(context).colors, constraints: constraints),
+                    size: Size(constraints.maxWidth, constraints.maxHeight * 4),
+                  ),
                 ),
-              );
-            }),
-          );
-        }),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }

@@ -2,11 +2,11 @@ import 'package:flutter/widgets.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
-import '../../test/test_components.dart';
+import '../../utils/scaffold.dart';
 import '../../utils/utils.dart';
 
-Widget inPageBannerUseCase(BuildContext context) => WidgetbookTestWidget(
-      widget: Padding(
+Widget inPageBannerUseCase(BuildContext context) => WidgetbookScaffold(
+      builder: (context, _) => Padding(
         padding: EdgeInsets.all(ZetaSpacing.xl_1),
         child: ZetaInPageBanner(
           content: Text(
@@ -22,7 +22,6 @@ Widget inPageBannerUseCase(BuildContext context) => WidgetbookTestWidget(
           ),
           onClose: context.knobs.boolean(label: 'Show Close icon') ? () {} : null,
           title: context.knobs.string(label: 'Title', initialValue: 'Title'),
-          rounded: roundedKnob(context),
           actions: () {
             final x = context.knobs.list(label: 'Show Buttons', options: [0, 1, 2]);
 

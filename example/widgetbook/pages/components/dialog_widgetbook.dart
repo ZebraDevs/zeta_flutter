@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
-import '../../test/test_components.dart';
+import '../../utils/scaffold.dart';
 import '../../utils/utils.dart';
 
 Widget dialogUseCase(BuildContext context) {
@@ -16,11 +16,9 @@ Widget dialogUseCase(BuildContext context) {
     initialValue:
         'Lorem ipsum dolor sit amet, conse ctetur adipiscing elit, sed do eiusm od tempor incididunt ut labore et do lore magna aliqua.',
   );
-  final rounded = context.knobs.boolean(label: 'Rounded', initialValue: true);
   final iconData = iconKnob(
     context,
     name: "Icon",
-    rounded: rounded,
     initial: Icons.warning,
   );
   final barrierDismissible = context.knobs.boolean(label: 'Barrier dismissible', initialValue: true);
@@ -29,8 +27,8 @@ Widget dialogUseCase(BuildContext context) {
     options: ZetaDialogHeaderAlignment.values,
     labelBuilder: (value) => value.name,
   );
-  return WidgetbookTestWidget(
-    widget: Padding(
+  return WidgetbookScaffold(
+    builder: (context, _) => Padding(
       padding: const EdgeInsets.all(ZetaSpacing.xl_1),
       child: Center(
         child: Column(
@@ -39,7 +37,6 @@ Widget dialogUseCase(BuildContext context) {
               onPressed: () => showZetaDialog(
                 context,
                 useRootNavigator: false,
-                rounded: rounded,
                 barrierDismissible: barrierDismissible,
                 headerAlignment: headerAlignment,
                 title: title,
@@ -56,7 +53,6 @@ Widget dialogUseCase(BuildContext context) {
               onPressed: () => showZetaDialog(
                 context,
                 useRootNavigator: false,
-                rounded: rounded,
                 barrierDismissible: barrierDismissible,
                 headerAlignment: headerAlignment,
                 title: title,
@@ -74,7 +70,6 @@ Widget dialogUseCase(BuildContext context) {
               onPressed: () => showZetaDialog(
                 context,
                 useRootNavigator: false,
-                rounded: rounded,
                 barrierDismissible: barrierDismissible,
                 headerAlignment: headerAlignment,
                 title: title,

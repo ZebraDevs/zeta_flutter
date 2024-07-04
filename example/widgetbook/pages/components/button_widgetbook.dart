@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
-import '../../test/test_components.dart';
+import '../../utils/scaffold.dart';
 import '../../utils/utils.dart';
 
 Widget buttonUseCase(BuildContext context) {
@@ -11,8 +11,8 @@ Widget buttonUseCase(BuildContext context) {
     labelBuilder: enumLabelBuilder,
     options: ZetaWidgetBorder.values,
   );
-  return WidgetbookTestWidget(
-    widget: ZetaButton(
+  return WidgetbookScaffold(
+    builder: (context, _) => ZetaButton(
       label: context.knobs.string(label: 'Text', initialValue: 'Button'),
       onPressed: context.knobs.boolean(label: 'Disabled') ? null : () {},
       borderType: borderType,
@@ -26,10 +26,8 @@ Widget buttonUseCase(BuildContext context) {
         options: ZetaButtonType.values,
         labelBuilder: enumLabelBuilder,
       ),
-      leadingIcon:
-          iconKnob(context, rounded: borderType != ZetaWidgetBorder.sharp, nullable: true, name: "Leading Icon"),
-      trailingIcon:
-          iconKnob(context, rounded: borderType != ZetaWidgetBorder.sharp, nullable: true, name: "Trailing Icon"),
+      leadingIcon: iconKnob(context, nullable: true, name: "Leading Icon"),
+      trailingIcon: iconKnob(context, nullable: true, name: "Trailing Icon"),
     ),
   );
 }
@@ -40,9 +38,9 @@ Widget iconButtonUseCase(BuildContext context) {
     options: ZetaWidgetBorder.values,
     labelBuilder: enumLabelBuilder,
   );
-  return WidgetbookTestWidget(
-    widget: ZetaIconButton(
-      icon: iconKnob(context, rounded: borderType != ZetaWidgetBorder.sharp)!,
+  return WidgetbookScaffold(
+    builder: (context, _) => ZetaIconButton(
+      icon: iconKnob(context)!,
       onPressed: disabledKnob(context) ? null : () {},
       borderType: borderType,
       size: context.knobs.list(
@@ -60,25 +58,22 @@ Widget iconButtonUseCase(BuildContext context) {
 }
 
 Widget buttonGroupUseCase(BuildContext context) {
-  final bool rounded = roundedKnob(context);
-
   final onPressed = disabledKnob(context) ? null : () {};
 
-  return WidgetbookTestWidget(
-    widget: ZetaButtonGroup(
+  return WidgetbookScaffold(
+    builder: (context, _) => ZetaButtonGroup(
       isLarge: context.knobs.boolean(label: 'Large'),
-      rounded: rounded,
       isInverse: context.knobs.boolean(label: 'Inverse'),
       buttons: [
         ZetaGroupButton(
           label: context.knobs.string(label: 'Button 1 Title', initialValue: 'Button'),
           onPressed: onPressed,
-          icon: iconKnob(context, name: 'Button 1 Icon', nullable: true, initial: null, rounded: rounded),
+          icon: iconKnob(context, name: 'Button 1 Icon', nullable: true, initial: null),
         ),
         ZetaGroupButton.dropdown(
           label: context.knobs.string(label: 'Button 2 Title'),
           onChange: disabledKnob(context) ? null : (_) {},
-          icon: iconKnob(context, name: 'Button 2 Icon', nullable: true, initial: null, rounded: rounded),
+          icon: iconKnob(context, name: 'Button 2 Icon', nullable: true, initial: null),
           items: [
             ZetaDropdownItem(
               value: 'Item 1',
@@ -93,16 +88,15 @@ Widget buttonGroupUseCase(BuildContext context) {
         ZetaGroupButton(
           label: context.knobs.string(label: 'Button 3 Title'),
           onPressed: onPressed,
-          icon: iconKnob(context, name: 'Button 3 Icon', nullable: true, initial: null, rounded: rounded),
+          icon: iconKnob(context, name: 'Button 3 Icon', nullable: true, initial: null),
         )
       ],
     ),
   );
 }
 
-Widget floatingActionButtonUseCase(BuildContext context) => WidgetbookTestWidget(
-      screenSize: Size(1280, 720),
-      widget: Padding(padding: EdgeInsets.all(ZetaSpacing.xl_1), child: FabWidget(context)),
+Widget floatingActionButtonUseCase(BuildContext context) => WidgetbookScaffold(
+      builder: (context, _) => Padding(padding: EdgeInsets.all(ZetaSpacing.xl_1), child: FabWidget(context)),
     );
 
 class FabWidget extends StatefulWidget {
@@ -149,7 +143,7 @@ class _FabWidgetState extends State<FabWidget> {
           scrollController: _scrollController,
           label: widget.c.knobs.string(label: 'Label', initialValue: 'Floating Action Button'),
           onPressed: widget.c.knobs.boolean(label: 'Disabled') ? null : () {},
-          icon: iconKnob(context, rounded: shape != ZetaWidgetBorder.sharp)!,
+          icon: iconKnob(context)!,
           shape: shape,
           size: widget.c.knobs.list(
             label: 'Size',

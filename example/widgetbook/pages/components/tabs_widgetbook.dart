@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
-import '../../test/test_components.dart';
+import '../../utils/scaffold.dart';
 import '../../utils/utils.dart';
 
 Widget tabsUseCase(BuildContext context) {
-  return WidgetbookTestWidget(
-    widget: SingleChildScrollView(
+  return WidgetbookScaffold(
+    builder: (context, _) => SingleChildScrollView(
       child: Column(
         children: [
           Padding(

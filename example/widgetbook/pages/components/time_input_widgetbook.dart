@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
-import '../../test/test_components.dart';
+import '../../utils/scaffold.dart';
 import '../../utils/utils.dart';
 
 Widget timeInputUseCase(BuildContext context) {
   String? _errorText;
 
-  return WidgetbookTestWidget(
-    widget: StatefulBuilder(
+  return WidgetbookScaffold(
+    builder: (context, _) => StatefulBuilder(
       builder: (context, setState) {
         final label = context.knobs.string(
           label: 'Label',
@@ -23,7 +23,6 @@ Widget timeInputUseCase(BuildContext context) {
           label: 'Hint',
           initialValue: 'Default hint text',
         );
-        final rounded = roundedKnob(context);
         final disabled = disabledKnob(context);
         final size = context.knobs.list<ZetaWidgetSize>(
           label: 'Size',
@@ -35,7 +34,6 @@ Widget timeInputUseCase(BuildContext context) {
           padding: const EdgeInsets.all(ZetaSpacing.xl_1),
           child: ZetaTimeInput(
             size: size,
-            rounded: rounded,
             disabled: disabled,
             label: label,
             hintText: hintText,

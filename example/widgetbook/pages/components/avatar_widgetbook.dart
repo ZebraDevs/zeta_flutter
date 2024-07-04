@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
-import '../../test/test_components.dart';
+import '../../utils/scaffold.dart';
 
 Widget avatarUseCase(BuildContext context) {
   final Widget image = Image.asset('assets/Omer.jpg', fit: BoxFit.cover);
   final colors = Zeta.of(context).colors;
 
-  return WidgetbookTestWidget(
-    widget: ZetaAvatar(
+  return WidgetbookScaffold(
+    builder: (context, _) => ZetaAvatar(
       image: context.knobs.boolean(label: 'Image') ? image : null,
       size: context.knobs.list(
         label: 'Size',

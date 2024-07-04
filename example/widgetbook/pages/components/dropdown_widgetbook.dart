@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
-import '../../test/test_components.dart';
+import '../../utils/scaffold.dart';
 import '../../utils/utils.dart';
 
-Widget dropdownUseCase(BuildContext context) => WidgetbookTestWidget(
-      widget: Center(
+Widget dropdownUseCase(BuildContext context) => WidgetbookScaffold(
+      builder: (context, _) => Center(
         child: DropdownExample(),
       ),
     );
@@ -41,7 +41,6 @@ class _DropdownExampleState extends State<DropdownExample> {
       ),
       onChange: disabledKnob(context) ? null : (value) {},
       items: items,
-      rounded: context.knobs.boolean(label: "Rounded"),
       size: context.knobs.list(
         label: 'Size',
         options: ZetaDropdownSize.values,

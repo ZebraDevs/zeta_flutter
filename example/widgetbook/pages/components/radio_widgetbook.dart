@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
-import '../../test/test_components.dart';
+import '../../utils/scaffold.dart';
 import '../../utils/utils.dart';
 
 Widget radioButtonUseCase(BuildContext context) {
@@ -9,8 +9,8 @@ Widget radioButtonUseCase(BuildContext context) {
   String option2 = 'Label 2';
   String? groupValue;
 
-  return WidgetbookTestWidget(
-    widget: StatefulBuilder(
+  return WidgetbookScaffold(
+    builder: (context, _) => StatefulBuilder(
       builder: (context, setState) {
         ValueChanged<String?>? onChanged =
             !disabledKnob(context) ? (value) => setState(() => groupValue = value) : null;

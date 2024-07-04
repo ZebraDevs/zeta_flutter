@@ -369,6 +369,7 @@ ThemeData generateZetaTheme({
   required ColorScheme colorScheme,
   ThemeData? existingTheme,
   String? fontFamily,
+  ZetaThemeData? zetaThemeData,
 }) {
   if (existingTheme != null) {
     // Apply the Zeta styles to the existing theme, ignoring fields that are the same as the default ThemeData.
@@ -398,6 +399,11 @@ ThemeData generateZetaTheme({
     scaffoldBackgroundColor: colorScheme.surfaceTertiary,
     colorScheme: colorScheme.copyWith(brightness: brightness),
     textTheme: zetaTextTheme,
-    iconTheme: const IconThemeData(size: kZetaIconSize),
+    iconTheme: IconThemeData(
+      size: kZetaIconSize,
+      color: (zetaThemeData != null
+          ? (brightness == Brightness.dark ? zetaThemeData.colorsDark : zetaThemeData.colorsLight).iconDefault
+          : colorScheme.onSurface),
+    ),
   );
 }
