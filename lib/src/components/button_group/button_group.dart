@@ -8,10 +8,10 @@ class ZetaButtonGroup extends ZetaStatelessWidget {
   /// Constructs [ZetaButtonGroup] from a list of [ZetaGroupButton]s
   const ZetaButtonGroup({
     super.key,
+    super.rounded,
     required this.buttons,
     this.isLarge = false,
     this.isInverse = false,
-    super.rounded,
   });
 
   /// Determines size of [ZetaGroupButton].
@@ -69,10 +69,10 @@ class ZetaGroupButton extends ZetaStatefulWidget {
   /// Public Constructor for [ZetaGroupButton]
   const ZetaGroupButton({
     super.key,
+    super.rounded,
     this.onPressed,
     this.label,
     this.icon,
-    super.rounded,
   })  : isFinal = false,
         isInitial = false,
         isInverse = false,
@@ -83,6 +83,8 @@ class ZetaGroupButton extends ZetaStatefulWidget {
 
   /// Private constructor
   const ZetaGroupButton._({
+    super.key,
+    super.rounded,
     required this.isFinal,
     required this.isInitial,
     required this.isInverse,
@@ -93,8 +95,6 @@ class ZetaGroupButton extends ZetaStatefulWidget {
     this.icon,
     this.onPressed,
     this.items,
-    super.key,
-    super.rounded,
   });
 
   /// Constructs dropdown group button

@@ -17,29 +17,29 @@ class ZetaIconButton extends ZetaStatelessWidget {
 
   /// Constructs [ZetaIconButton] with Primary theme.
   const ZetaIconButton.primary({
+    super.key,
     required this.icon,
     this.onPressed,
     this.size = ZetaWidgetSize.medium,
     this.borderType,
-    super.key,
   }) : type = ZetaButtonType.primary;
 
   /// Constructs [ZetaIconButton] with Secondary theme.
   const ZetaIconButton.secondary({
+    super.key,
     required this.icon,
     this.onPressed,
     this.size = ZetaWidgetSize.medium,
     this.borderType,
-    super.key,
   }) : type = ZetaButtonType.secondary;
 
   /// Constructs [ZetaIconButton] with Positive theme.
   const ZetaIconButton.positive({
+    super.key,
     required this.icon,
     this.onPressed,
     this.size = ZetaWidgetSize.medium,
     this.borderType,
-    super.key,
   }) : type = ZetaButtonType.positive;
 
   /// Constructs [ZetaIconButton] with Negative theme.
@@ -53,29 +53,29 @@ class ZetaIconButton extends ZetaStatelessWidget {
 
   /// Constructs [ZetaIconButton] with Outline theme.
   const ZetaIconButton.outline({
+    super.key,
     required this.icon,
     this.onPressed,
     this.size = ZetaWidgetSize.medium,
     this.borderType,
-    super.key,
   }) : type = ZetaButtonType.outline;
 
   /// Constructs [ZetaIconButton] with Outline Subtle  theme.
   const ZetaIconButton.outlineSubtle({
+    super.key,
     required this.icon,
     this.onPressed,
     this.size = ZetaWidgetSize.medium,
     this.borderType,
-    super.key,
   }) : type = ZetaButtonType.outlineSubtle;
 
   /// Constructs [ZetaIconButton] with text theme.
   const ZetaIconButton.text({
+    super.key,
     required this.icon,
     this.onPressed,
     this.size = ZetaWidgetSize.medium,
     this.borderType,
-    super.key,
   }) : type = ZetaButtonType.text;
 
   /// Button icon.

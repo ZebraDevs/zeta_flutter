@@ -17,16 +17,16 @@ class ZetaTag extends ZetaStatelessWidget {
   ///Constructs [ZetaTag].
   const ZetaTag({
     super.key,
+    super.rounded,
     this.direction = ZetaTagDirection.left,
     required this.label,
-    super.rounded,
   });
 
   /// Constructs left facing [ZetaTag].
-  const ZetaTag.left({super.key, required this.label, super.rounded}) : direction = ZetaTagDirection.left;
+  const ZetaTag.left({super.key, super.rounded, required this.label}) : direction = ZetaTagDirection.left;
 
   ///Constructs right facing [ZetaTag].
-  const ZetaTag.right({super.key, required this.label, super.rounded}) : direction = ZetaTagDirection.right;
+  const ZetaTag.right({super.key, super.rounded, required this.label}) : direction = ZetaTagDirection.right;
 
   ///Determines the direction of the tag
   ///

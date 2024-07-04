@@ -10,11 +10,11 @@ class ZetaAccordion extends ZetaStatefulWidget {
   /// The constructor of the component [ZetaAccordion].
   const ZetaAccordion({
     super.key,
+    super.rounded,
     required this.title,
     this.child,
     this.contained = false,
     this.isOpen = false,
-    super.rounded,
   });
 
   /// Children displayed when component is opened.

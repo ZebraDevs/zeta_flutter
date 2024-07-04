@@ -8,10 +8,10 @@ class ZetaBottomSheet extends ZetaStatelessWidget {
   /// Constructor for [ZetaBottomSheet].
   const ZetaBottomSheet({
     super.key,
+    super.rounded,
     this.title,
     this.body,
     this.centerTitle = true,
-    super.rounded,
   });
 
   /// The title of [ZetaBottomSheet].

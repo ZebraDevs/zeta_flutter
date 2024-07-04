@@ -21,7 +21,7 @@ class ZetaRoundedSwitch extends StatelessWidget {
             alignment: Alignment.center,
             child: ZetaAvatar(
               size: ZetaAvatarSize.xxs,
-              initials: e ? '●' : '■',
+              image: Icon(e ? Icons.circle : Icons.square, color: zeta.colors.primary),
               initialTextStyle: TextStyle(
                 fontSize: 28,
                 letterSpacing: ZetaSpacing.none,
