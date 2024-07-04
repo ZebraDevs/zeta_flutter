@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
-import '../../test/test_components.dart';
+import '../../utils/scaffold.dart';
 import '../../utils/utils.dart';
 
 const List<String> _items = [
@@ -16,8 +16,8 @@ const List<String> _items = [
 
 Widget searchBarUseCase(BuildContext context) {
   List<String> items = List.from(_items);
-  return WidgetbookTestWidget(
-    widget: StatefulBuilder(
+  return WidgetBookScaffold(
+    builder: (context, _) => StatefulBuilder(
       builder: (context, setState) {
         final hint = context.knobs.string(
           label: 'Hint',

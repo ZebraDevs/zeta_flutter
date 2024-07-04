@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:widgetbook/widgetbook.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
-import '../../test/test_components.dart';
+import '../../utils/scaffold.dart';
 
 Widget iconsUseCase(BuildContext context) {
-  bool rounded = context.knobs.boolean(label: 'Rounded', initialValue: true);
-
-  return WidgetbookTestWidget(
+  return WidgetBookScaffold(
     removeBody: true,
-    widget: SingleChildScrollView(
+    builder: (context, _) => SingleChildScrollView(
       key: PageStorageKey(0),
       child: Center(
         child: Column(
@@ -24,8 +21,8 @@ Widget iconsUseCase(BuildContext context) {
                 (e) {
                   final nameArr = (e.key.split('_')).join(' ').capitalize();
                   return Container(
-                    width: 120,
-                    height: 120,
+                    width: 140,
+                    height: 140,
                     child: InkWell(
                       borderRadius: ZetaRadius.rounded,
                       hoverColor: Zeta.of(context).colors.surfaceHover,
@@ -43,7 +40,7 @@ Widget iconsUseCase(BuildContext context) {
                           ZetaIcon(
                             IconData(
                               e.value.codePoint,
-                              fontFamily: rounded ? ZetaIcons.familyRound : ZetaIcons.familySharp,
+                              fontFamily: ZetaIcons.family,
                               fontPackage: ZetaIcons.package,
                             ),
                             size: ZetaSpacing.xl_6,
@@ -51,6 +48,7 @@ Widget iconsUseCase(BuildContext context) {
                           Text(
                             nameArr,
                             textAlign: TextAlign.center,
+                            maxLines: 2,
                           )
                         ],
                       ),

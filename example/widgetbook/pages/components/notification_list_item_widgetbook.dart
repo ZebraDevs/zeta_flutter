@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
-import '../../test/test_components.dart';
+import '../../utils/scaffold.dart';
 
-Widget notificationListItemUseCase(BuildContext context) => WidgetbookTestWidget(
-      widget: Padding(
+Widget notificationListItemUseCase(BuildContext context) => WidgetBookScaffold(
+      builder: (context, _) => Padding(
         padding: EdgeInsets.symmetric(horizontal: context.knobs.list(label: "Size", options: [100, 200, 400])),
         child: ZetaNotificationListItem(
           body: context.knobs.boolean(label: "Include Link")

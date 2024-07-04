@@ -2,15 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
-import '../../test/test_components.dart';
+import '../../utils/scaffold.dart';
 import '../../utils/utils.dart';
 
 Widget inputChipUseCase(BuildContext context) {
-  final bool rounded = roundedKnob(context);
   final trailing = iconKnob(context);
 
-  return WidgetbookTestWidget(
-    widget: ZetaInputChip(
+  return WidgetBookScaffold(
+    builder: (context, _) => ZetaInputChip(
       label: context.knobs.string(label: 'Label', initialValue: 'Label'),
       leading: context.knobs.boolean(label: 'Avatar', initialValue: true)
           ? ZetaAvatar(
@@ -20,27 +19,23 @@ Widget inputChipUseCase(BuildContext context) {
                   : null,
             )
           : null,
-      rounded: rounded,
       trailing: trailing != null ? ZetaIcon(trailing) : null,
     ),
   );
 }
 
-Widget filterChipUseCase(BuildContext context) => WidgetbookTestWidget(
-      widget: ZetaFilterChip(
+Widget filterChipUseCase(BuildContext context) => WidgetBookScaffold(
+      builder: (context, _) => ZetaFilterChip(
         label: context.knobs.string(label: 'Label', initialValue: 'Label'),
-        rounded: roundedKnob(context),
         selected: context.knobs.boolean(label: 'Selected', initialValue: true),
       ),
     );
 
 Widget assistChipUseCase(BuildContext context) {
-  final rounded = roundedKnob(context);
-  return WidgetbookTestWidget(
-    widget: ZetaAssistChip(
+  return WidgetBookScaffold(
+    builder: (context, _) => ZetaAssistChip(
       label: context.knobs.string(label: 'Label', initialValue: 'Label'),
-      rounded: rounded,
-      leading: ZetaIcon(iconKnob(context, rounded: rounded)),
+      leading: ZetaIcon(iconKnob(context)),
     ),
   );
 }

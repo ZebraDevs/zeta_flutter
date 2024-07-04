@@ -2,11 +2,11 @@ import 'package:flutter/widgets.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
-import '../../test/test_components.dart';
+import '../../utils/scaffold.dart';
 import '../../utils/utils.dart';
 
-Widget progressBarUseCase(BuildContext context) => WidgetbookTestWidget(
-      widget: LayoutBuilder(builder: (context, constraints) {
+Widget progressBarUseCase(BuildContext context) => WidgetBookScaffold(
+      builder: (context, _) => LayoutBuilder(builder: (context, constraints) {
         return SizedBox(
           width: constraints.maxWidth - ZetaSpacing.xl_9,
           child: ZetaProgressBar(
@@ -17,17 +17,15 @@ Widget progressBarUseCase(BuildContext context) => WidgetbookTestWidget(
               labelBuilder: enumLabelBuilder,
             ),
             isThin: context.knobs.boolean(label: 'Thin'),
-            rounded: roundedKnob(context),
             label: context.knobs.stringOrNull(label: 'Label'),
           ),
         );
       }),
     );
 
-Widget progressCircleUseCase(BuildContext context) => WidgetbookTestWidget(
-      widget: ZetaProgressCircle(
+Widget progressCircleUseCase(BuildContext context) => WidgetBookScaffold(
+      builder: (context, _) => ZetaProgressCircle(
         progress: context.knobs.double.slider(label: 'Progress', min: 0, max: 1, initialValue: 0.5).toDouble(),
-        rounded: roundedKnob(context),
         size: context.knobs.list(
           initialOption: ZetaCircleSizes.xl,
           label: 'Size',

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
-import '../../test/test_components.dart';
+import '../../utils/scaffold.dart';
 import '../../utils/utils.dart';
 
 Widget passwordInputUseCase(BuildContext context) => _Password();
@@ -23,12 +23,10 @@ class _PasswordState extends State<_Password> {
     final enableValidation = context.knobs.boolean(label: 'Enable validation', initialValue: false);
     final validationString = context.knobs.string(label: 'Error label', initialValue: 'Incorrect');
 
-    final bool rounded = roundedKnob(context);
-
     return Form(
       key: _formKey,
-      child: WidgetbookTestWidget(
-        widget: Column(
+      child: WidgetBookScaffold(
+        builder: (context, _) => Column(
           children: [
             ConstrainedBox(
               constraints: BoxConstraints(maxWidth: 328),
@@ -40,7 +38,6 @@ class _PasswordState extends State<_Password> {
                   options: ZetaWidgetSize.values,
                   labelBuilder: enumLabelBuilder,
                 ),
-                rounded: rounded,
                 hintText: context.knobs.string(label: 'Hint Text'),
                 placeholder: context.knobs.string(label: 'Placeholder'),
                 label: context.knobs.string(label: 'Label'),

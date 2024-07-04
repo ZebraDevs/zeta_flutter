@@ -2,12 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
-import '../../test/test_components.dart';
-import '../../utils/utils.dart';
+import '../../utils/scaffold.dart';
 
 Widget dropdownListItemUseCase(BuildContext context) {
-  return WidgetbookTestWidget(
-    widget: StatefulBuilder(
+  return WidgetBookScaffold(
+    builder: (context, _) => StatefulBuilder(
       builder: (context, setState) {
         final primaryText = context.knobs.string(label: 'Primary text', initialValue: 'Label');
 
@@ -16,8 +15,6 @@ Widget dropdownListItemUseCase(BuildContext context) {
         final showIcon = context.knobs.boolean(label: 'Show icon');
 
         final showDivider = context.knobs.boolean(label: 'Show divider');
-
-        final rounded = roundedKnob(context);
 
         final leading = showIcon ? ZetaIcon(ZetaIcons.star) : null;
 
@@ -28,7 +25,6 @@ Widget dropdownListItemUseCase(BuildContext context) {
             ZetaListItem(primaryText: 'List Item'),
             ZetaListItem(primaryText: 'List Item'),
           ],
-          rounded: rounded,
           secondaryText: secondaryText,
           leading: leading,
           showDivider: showDivider,

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
-import '../../test/test_components.dart';
+import '../../utils/scaffold.dart';
 import '../../utils/utils.dart';
 
 Widget navigationRailUseCase(BuildContext context) {
@@ -12,19 +12,17 @@ Widget navigationRailUseCase(BuildContext context) {
     label: 'Items separated with comma',
     initialValue: 'Label,User Preferences,Account Settings,Label',
   );
-  final rounded = context.knobs.boolean(label: 'Rounded', initialValue: true);
   final iconData = iconKnob(
     context,
     name: "Icon",
-    rounded: rounded,
     initial: ZetaIcons.star,
   );
   final wordWrap = context.knobs.boolean(label: 'Word wrap', initialValue: true);
   final disabled = disabledKnob(context);
   final itemsList = items.split(',').where((element) => element.trim().isNotEmpty).toList();
   return SafeArea(
-    child: WidgetbookTestWidget(
-      widget: StatefulBuilder(
+    child: WidgetBookScaffold(
+      builder: (context, _) => StatefulBuilder(
         builder: (context, setState) {
           return Row(
             crossAxisAlignment: CrossAxisAlignment.start,

@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
-import '../../test/test_components.dart';
+import '../../utils/scaffold.dart';
 import '../../utils/utils.dart';
 
 Widget textInputUseCase(BuildContext context) {
-  return WidgetbookTestWidget(
-    widget: StatefulBuilder(
+  return WidgetBookScaffold(
+    builder: (context, _) => StatefulBuilder(
       builder: (context, setState) {
         final label = context.knobs.string(
           label: 'Label',
@@ -21,7 +21,6 @@ Widget textInputUseCase(BuildContext context) {
           label: 'Hint',
           initialValue: 'Default hint text',
         );
-        final rounded = roundedKnob(context);
         final disabled = disabledKnob(context);
         final size = context.knobs.list<ZetaWidgetSize>(
           label: 'Size',
@@ -33,7 +32,6 @@ Widget textInputUseCase(BuildContext context) {
           padding: const EdgeInsets.all(ZetaSpacing.xl_1),
           child: ZetaTextInput(
             size: size,
-            rounded: rounded,
             disabled: disabled,
             label: label,
             hintText: hintText,

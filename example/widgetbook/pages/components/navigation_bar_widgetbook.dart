@@ -3,7 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
-import '../../test/test_components.dart';
+import '../../utils/scaffold.dart';
 import '../../utils/utils.dart';
 
 Widget navigationBarUseCase(BuildContext context) {
@@ -16,10 +16,8 @@ Widget navigationBarUseCase(BuildContext context) {
   int? dividerIndex = context.knobs.intOrNull.slider(label: 'Divider', min: 0, max: 6, initialValue: null);
   bool showSplit = context.knobs.boolean(label: 'Split Items');
   return StatefulBuilder(builder: (context, setState) {
-    double width = (items.length * 90) + (showSplit ? 90 : 0) + (dividerIndex != null ? 90 : 0) + (showButton ? 90 : 0);
-    return WidgetbookTestWidget(
-      screenSize: Size(width, 260),
-      widget: ZetaNavigationBar(
+    return WidgetBookScaffold(
+      builder: (context, _) => ZetaNavigationBar(
         items: items,
         action: showButton ? ZetaButton.primary(label: 'Button', onPressed: () {}) : null,
         onTap: (i) => setState(() => currIndex = i),

@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
-import '../../test/test_components.dart';
-import '../../utils/utils.dart';
+import '../../utils/scaffold.dart';
 
 Widget stepperUseCase(BuildContext context) {
   int currentStep = 0;
@@ -25,12 +24,10 @@ Widget stepperUseCase(BuildContext context) {
     labelBuilder: (type) => type.name,
   );
 
-  final rounded = roundedKnob(context);
-
   final enabledContent = context.knobs.boolean(label: 'Enabled Content', initialValue: true);
 
-  return WidgetbookTestWidget(
-    widget: StatefulBuilder(
+  return WidgetBookScaffold(
+    builder: (context, _) => StatefulBuilder(
       builder: (context, setState) {
         return Container(
           height: type == ZetaStepperType.horizontal ? 300 : null,
@@ -40,7 +37,6 @@ Widget stepperUseCase(BuildContext context) {
           child: ZetaStepper(
             currentStep: currentStep,
             onStepTapped: (index) => setState(() => currentStep = index),
-            rounded: type == ZetaStepperType.horizontal ? rounded : true,
             type: type,
             steps: [
               ZetaStep(

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:widgetbook/widgetbook.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
-import '../../test/test_components.dart';
+import '../../utils/scaffold.dart';
 import '../../utils/utils.dart';
 
-Widget breadCrumbsUseCase(BuildContext context) => WidgetbookTestWidget(
-        widget: Center(
-      child: BreadCrumbExample(context),
-    ));
+Widget breadCrumbsUseCase(BuildContext context) => WidgetBookScaffold(
+      builder: (context, _) => Center(
+        child: BreadCrumbExample(context),
+      ),
+    );
 
 class BreadCrumbExample extends StatefulWidget {
   const BreadCrumbExample(this.c);
@@ -37,7 +37,6 @@ class _BreadCrumbExampleState extends State<BreadCrumbExample> {
           child: Column(children: [
             ZetaBreadCrumbs(
               children: _children,
-              rounded: widget.c.knobs.boolean(label: 'Rounded'),
               activeIcon: iconKnob(context),
             ),
             SizedBox(

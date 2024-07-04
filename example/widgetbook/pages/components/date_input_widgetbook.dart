@@ -2,20 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
-import '../../test/test_components.dart';
+import '../../utils/scaffold.dart';
 import '../../utils/utils.dart';
 
 Widget dateInputUseCase(BuildContext context) {
   String? _errorText;
 
-  return WidgetbookTestWidget(
-    widget: StatefulBuilder(
+  return WidgetBookScaffold(
+    builder: (context, _) => StatefulBuilder(
       builder: (context, setState) {
         final errorText = context.knobs.string(
           label: 'Error message for invalid date',
           initialValue: 'Invalid date',
         );
-        final rounded = context.knobs.boolean(label: 'Rounded', initialValue: true);
         final disabled = disabledKnob(context);
         final size = context.knobs.list<ZetaWidgetSize>(
           label: 'Size',
@@ -32,7 +31,6 @@ Widget dateInputUseCase(BuildContext context) {
           padding: const EdgeInsets.all(ZetaSpacing.xl_1),
           child: ZetaDateInput(
             size: size,
-            rounded: rounded,
             disabled: disabled,
             label: 'Birthdate',
             hintText: 'Enter birthdate',

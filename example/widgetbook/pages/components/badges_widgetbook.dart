@@ -2,24 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
-import '../../test/test_components.dart';
+import '../../utils/scaffold.dart';
 import '../../utils/utils.dart';
 
 Widget statusLabelUseCase(BuildContext context) {
-  final bool rounded = roundedKnob(context);
-
-  return WidgetbookTestWidget(
-    widget: Padding(
+  return WidgetBookScaffold(
+    builder: (context, _) => Padding(
       padding: const EdgeInsets.all(ZetaSpacing.xl_2),
       child: ZetaStatusLabel(
         label: context.knobs.string(label: 'Label', initialValue: 'Label'),
-        rounded: rounded,
         status: context.knobs.list(
           label: 'Status',
           labelBuilder: enumLabelBuilder,
           options: ZetaWidgetStatus.values,
         ),
-        customIcon: iconKnob(context, rounded: rounded),
+        customIcon: iconKnob(context),
       ),
     ),
   );
@@ -27,8 +24,8 @@ Widget statusLabelUseCase(BuildContext context) {
 
 Widget priorityPillUseCase(BuildContext context) {
   final colors = Zeta.of(context).colors;
-  return WidgetbookTestWidget(
-    widget: Padding(
+  return WidgetBookScaffold(
+    builder: (context, _) => Padding(
       padding: const EdgeInsets.all(ZetaSpacing.xl_2),
       child: ZetaPriorityPill(
         index: context.knobs.string(label: 'Index', initialValue: 'U'),
@@ -43,7 +40,6 @@ Widget priorityPillUseCase(BuildContext context) {
           options: ZetaPriorityPillType.values,
           labelBuilder: (value) => value.name.capitalize(),
         ),
-        rounded: context.knobs.boolean(label: 'Rounded', initialValue: true),
         isBadge: context.knobs.boolean(label: 'Badge'),
         customColor: context.knobs.listOrNull(
           label: 'Custom color',
@@ -57,12 +53,11 @@ Widget priorityPillUseCase(BuildContext context) {
   );
 }
 
-Widget labelUseCase(BuildContext context) => WidgetbookTestWidget(
-      widget: Padding(
+Widget labelUseCase(BuildContext context) => WidgetBookScaffold(
+      builder: (context, _) => Padding(
         padding: const EdgeInsets.all(ZetaSpacing.xl_2),
         child: ZetaLabel(
           label: context.knobs.string(label: 'Label', initialValue: 'Label'),
-          rounded: roundedKnob(context),
           status: context.knobs.list(
             label: 'Status',
             options: ZetaWidgetStatus.values,
@@ -73,10 +68,8 @@ Widget labelUseCase(BuildContext context) => WidgetbookTestWidget(
     );
 
 Widget indicatorsUseCase(BuildContext context) {
-  final bool rounded = roundedKnob(context);
-
-  return WidgetbookTestWidget(
-    widget: Padding(
+  return WidgetBookScaffold(
+    builder: (context, _) => Padding(
       padding: const EdgeInsets.all(ZetaSpacing.xl_2),
       child: ZetaIndicator(
         type: context.knobs.list(
@@ -84,7 +77,7 @@ Widget indicatorsUseCase(BuildContext context) {
           options: ZetaIndicatorType.values,
           labelBuilder: enumLabelBuilder,
         ),
-        icon: iconKnob(context, rounded: rounded),
+        icon: iconKnob(context),
         inverse: context.knobs.boolean(label: 'Inverse Border'),
         size: context.knobs.list(
           label: 'Size',
@@ -98,15 +91,14 @@ Widget indicatorsUseCase(BuildContext context) {
   );
 }
 
-Widget tagsUseCase(BuildContext context) => WidgetbookTestWidget(
-      widget: Padding(
+Widget tagsUseCase(BuildContext context) => WidgetBookScaffold(
+      builder: (context, _) => Padding(
         padding: const EdgeInsets.all(ZetaSpacing.xl_2),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ZetaTag(
               label: context.knobs.string(label: 'Label', initialValue: 'Tag'),
-              rounded: roundedKnob(context),
               direction: context.knobs.list(
                 label: 'Direction',
                 options: ZetaTagDirection.values,

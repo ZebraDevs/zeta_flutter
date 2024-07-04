@@ -2,12 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
-import '../../test/test_components.dart';
+import '../../utils/scaffold.dart';
 import '../../utils/utils.dart';
 
 Widget bannerUseCase(BuildContext context) {
-  final rounded = roundedKnob(context);
-
   final banner = ZetaBanner(
     context: context,
     title: context.knobs.string(label: 'Title', initialValue: 'Banner Title'),
@@ -16,20 +14,19 @@ Widget bannerUseCase(BuildContext context) {
       options: ZetaBannerStatus.values,
       labelBuilder: enumLabelBuilder,
     ),
-    leadingIcon: iconKnob(context, rounded: rounded, nullable: true),
+    leadingIcon: iconKnob(context, nullable: true),
     titleStart: context.knobs.boolean(label: 'Center title'),
     trailing: ZetaIcon(iconKnob(
       context,
-      rounded: rounded,
       nullable: true,
       name: 'trailing',
       initial: ZetaIcons.chevron_right,
     )),
   );
 
-  return WidgetbookTestWidget(
+  return WidgetBookScaffold(
     removeBody: true,
-    widget: Column(
+    builder: (context, _) => Column(
       children: [
         banner,
         const SizedBox(height: ZetaSpacing.xl_9),

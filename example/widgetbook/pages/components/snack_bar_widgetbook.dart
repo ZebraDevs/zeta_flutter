@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
-import '../../test/test_components.dart';
+import '../../utils/scaffold.dart';
 import '../../utils/utils.dart';
 
 Widget snackBarUseCase(BuildContext context) {
-  return WidgetbookTestWidget(
-    widget: Builder(
+  return WidgetBookScaffold(
+    builder: (context, _) => Builder(
       builder: (context) {
         final text = context.knobs.string(
           label: 'Content Text',
@@ -32,8 +32,6 @@ Widget snackBarUseCase(BuildContext context) {
           nullable: true,
         );
 
-        final rounded = context.knobs.boolean(label: 'Rounded', initialValue: true);
-
         return ZetaButton.primary(
             label: "Show Snackbar",
             onPressed: () {
@@ -44,7 +42,6 @@ Widget snackBarUseCase(BuildContext context) {
                 actionLabel: actionLabel,
                 type: type,
                 leadingIcon: leadingIcon != null ? ZetaIcon(leadingIcon) : null,
-                rounded: rounded,
                 content: Text(text),
               );
 

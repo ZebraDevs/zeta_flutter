@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
-import '../../test/test_components.dart';
+import '../../utils/scaffold.dart';
 import '../../utils/utils.dart';
 
 Widget bottomSheetContentUseCase(BuildContext context) {
   final sheet = _bottomSheet(context);
 
-  return WidgetbookTestWidget(
-    widget: Padding(
+  return WidgetBookScaffold(
+    builder: (context, _) => Padding(
       padding: const EdgeInsets.all(ZetaSpacing.xl_1),
       child: Column(
         children: [
@@ -26,9 +26,8 @@ Widget bottomSheetContentUseCase(BuildContext context) {
 }
 
 ZetaBottomSheet _bottomSheet(BuildContext context) {
-  final bool rounded = roundedKnob(context);
-  final leadingIcon = iconKnob(context, rounded: rounded, nullable: true, initial: null);
-  final trailingIcon = iconKnob(context, rounded: rounded, nullable: true, initial: ZetaIcons.chevron_right);
+  final leadingIcon = iconKnob(context, nullable: true, initial: null);
+  final trailingIcon = iconKnob(context, nullable: true, initial: ZetaIcons.chevron_right);
 
   return ZetaBottomSheet(
     centerTitle: context.knobs.boolean(label: 'Center title', initialValue: true),
