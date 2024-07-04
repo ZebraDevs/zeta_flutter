@@ -11,6 +11,8 @@ export 'search_top_app_bar.dart' show AppBarSearchController;
 class ZetaTopAppBar extends ZetaStatefulWidget implements PreferredSizeWidget {
   /// Creates a ZetaTopAppBar.
   const ZetaTopAppBar({
+    super.key,
+    super.rounded,
     this.actions,
     this.automaticallyImplyLeading = true,
     this.searchController,
@@ -21,12 +23,12 @@ class ZetaTopAppBar extends ZetaStatefulWidget implements PreferredSizeWidget {
     this.onSearch,
     this.searchHintText = 'Search',
     this.onSearchMicrophoneIconPressed,
-    super.key,
-    super.rounded,
   }) : shrinks = false;
 
   /// Creates a ZetaTopAppBar with centered title.
   const ZetaTopAppBar.centered({
+    super.key,
+    super.rounded,
     this.actions,
     this.automaticallyImplyLeading = true,
     this.searchController,
@@ -36,7 +38,6 @@ class ZetaTopAppBar extends ZetaStatefulWidget implements PreferredSizeWidget {
     this.onSearch,
     this.searchHintText = 'Search',
     this.onSearchMicrophoneIconPressed,
-    super.key,
   })  : type = ZetaTopAppBarType.centeredTitle,
         shrinks = false;
 
@@ -44,6 +45,8 @@ class ZetaTopAppBar extends ZetaStatefulWidget implements PreferredSizeWidget {
   ///
   /// This component **must** be placed within a [CustomScrollView].
   const ZetaTopAppBar.extended({
+    super.key,
+    super.rounded,
     this.actions,
     this.automaticallyImplyLeading = true,
     this.searchController,
@@ -54,7 +57,6 @@ class ZetaTopAppBar extends ZetaStatefulWidget implements PreferredSizeWidget {
     this.searchHintText = 'Search',
     this.onSearchMicrophoneIconPressed,
     this.shrinks = true,
-    super.key,
   }) : type = ZetaTopAppBarType.extendedTitle;
 
   /// Called when text in the search field is submitted.

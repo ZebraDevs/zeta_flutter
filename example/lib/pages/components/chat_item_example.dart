@@ -2,20 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:zeta_example/widgets.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
-class ChatItemExample extends StatefulWidget {
-  static const String name = 'ChatItem';
+class ChatItemExample extends StatelessWidget {
+  static const String name = 'Chat Item';
 
   const ChatItemExample({Key? key}) : super(key: key);
 
   @override
-  State<ChatItemExample> createState() => _ChatItemExampleState();
-}
-
-class _ChatItemExampleState extends State<ChatItemExample> {
-  @override
   Widget build(BuildContext context) {
     return ExampleScaffold(
-      name: 'Chat Item',
+      name: name,
       child: SingleChildScrollView(
         child: Column(
           children: [

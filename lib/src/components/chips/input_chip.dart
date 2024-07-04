@@ -14,5 +14,6 @@ class ZetaInputChip extends ZetaChip {
     super.rounded,
     super.trailing,
     super.onTap,
+    super.semanticLabel,
   });
 }

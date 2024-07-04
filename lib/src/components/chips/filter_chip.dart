@@ -20,6 +20,7 @@ class ZetaFilterChip extends ZetaChip {
     super.data,
     super.onDragCompleted,
     ValueSetter<bool>? onTap,
+    super.semanticLabel,
   }) : super(onToggle: onTap);
 
   /// Creates another instance of [ZetaFilterChip].

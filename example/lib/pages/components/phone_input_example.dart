@@ -33,6 +33,7 @@ class _PhoneInputExampleState extends State<PhoneInputExample> {
                   print(value);
                 },
                 countries: ['US', 'GB', 'DE', 'AT', 'FR', 'IT', 'BG'],
+                selectCountrySemanticLabel: 'Choose country code',
               ),
             ),
             Divider(color: Colors.grey[200]),

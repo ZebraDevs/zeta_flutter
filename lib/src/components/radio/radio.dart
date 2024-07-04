@@ -66,6 +66,7 @@ class _ZetaRadioState<T> extends State<ZetaRadio<T>> with TickerProviderStateMix
             checked: widget._selected,
             selected: value,
             excludeSemantics: true,
+            enabled: !states.contains(WidgetState.disabled),
             child: MouseRegion(
               cursor: states.contains(WidgetState.disabled) ? SystemMouseCursors.forbidden : SystemMouseCursors.click,
               child: SelectionContainer.disabled(

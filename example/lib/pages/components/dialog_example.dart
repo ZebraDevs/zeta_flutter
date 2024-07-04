@@ -80,7 +80,7 @@ class DialogExample extends StatelessWidget {
                 secondaryButtonLabel: 'Cancel',
               ),
               child: Text(
-                'Show dialog with header to the left\nand sharp buttons',
+                'Show dialog with header to the left',
                 textAlign: TextAlign.center,
               ),
             ),

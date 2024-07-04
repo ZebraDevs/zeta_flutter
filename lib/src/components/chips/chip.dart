@@ -26,6 +26,7 @@ class ZetaChip extends ZetaStatefulWidget {
     this.data,
     this.onDragCompleted,
     this.onToggle,
+    this.semanticLabel,
   });
 
   /// The label on the [ZetaChip]
@@ -61,6 +62,13 @@ class ZetaChip extends ZetaStatefulWidget {
   /// * [Draggable]
   final VoidCallback? onDragCompleted;
 
+  /// The value passed into wrapping [Semantics] widget.
+  ///
+  /// {@macro zeta-widget-semantic-label}
+  ///
+  /// If null, [label] is used.
+  final String? semanticLabel;
+
   @override
   State<ZetaChip> createState() => _ZetaChipState();
   @override
@@ -74,7 +82,8 @@ class ZetaChip extends ZetaStatefulWidget {
       ..add(DiagnosticsProperty('data', data))
       ..add(ObjectFlagProperty<VoidCallback?>.has('onDragCompleted', onDragCompleted))
       ..add(ObjectFlagProperty<VoidCallback?>.has('onTap', onTap))
-      ..add(ObjectFlagProperty<ValueSetter<bool>>.has('onToggle', onToggle));
+      ..add(ObjectFlagProperty<ValueSetter<bool>>.has('onToggle', onToggle))
+      ..add(StringProperty('semanticLabel', semanticLabel));
   }
 }
 
@@ -105,21 +114,50 @@ class _ZetaChipState extends State<ZetaChip> {
 
     return ZetaRoundedScope(
       rounded: context.rounded,
-      child: SelectionContainer.disabled(
-        child: widget.draggable
-            ? Draggable(
-                feedback: Material(
-                  color: Colors.transparent,
-                  child: child(colors, foregroundColor, isDragging: true),
-                ),
-                childWhenDragging: const Nothing(),
-                data: widget.data,
-                onDragCompleted: widget.onDragCompleted,
-                child: child(colors, foregroundColor),
-              )
-            : child(colors, foregroundColor),
+      child: Semantics(
+        selected: selected,
+        button: widget.onTap != null,
+        label: widget.semanticLabel,
+        child: SelectionContainer.disabled(
+          child: widget.draggable
+              ? Draggable(
+                  feedback: Material(
+                    color: Colors.transparent,
+                    child: child(colors, foregroundColor, isDragging: true),
+                  ),
+                  childWhenDragging: const Nothing(),
+                  data: widget.data,
+                  onDragCompleted: widget.onDragCompleted,
+                  child: child(colors, foregroundColor),
+                )
+              : child(colors, foregroundColor),
+        ),
       ),
     );
+  }
+
+  Widget? get trailing {
+    if (widget.trailing != null) {
+      if (widget.trailing.runtimeType == IconButton) {
+        final t = widget.trailing! as IconButton;
+        return IconButton(
+          icon: Icon((t.icon as Icon).icon, color: t.color),
+          onPressed: t.onPressed,
+          visualDensity: VisualDensity.compact,
+        );
+      }
+    }
+    return widget.trailing;
+  }
+
+  double get _trailingPadding {
+    if (widget.trailing != null) {
+      if (widget.trailing.runtimeType == IconButton) {
+        return ZetaSpacing.none;
+      }
+      return ZetaSpacingBase.x2_5;
+    }
+    return ZetaSpacing.medium;
   }
 
   ValueListenableBuilder<Set<WidgetState>> child(ZetaColors colors, Color foregroundColor, {bool isDragging = false}) {
@@ -145,7 +183,7 @@ class _ZetaChipState extends State<ZetaChip> {
             padding: EdgeInsets.fromLTRB(
               widget.leading != null ? ZetaSpacingBase.x2_5 : ZetaSpacing.medium,
               0,
-              widget.trailing != null ? ZetaSpacingBase.x2_5 : ZetaSpacing.medium,
+              _trailingPadding,
               0,
             ),
             decoration: BoxDecoration(
@@ -205,7 +243,7 @@ class _ZetaChipState extends State<ZetaChip> {
                   const SizedBox.square(dimension: ZetaSpacing.small),
                   IconTheme(
                     data: IconThemeData(color: foregroundColor, size: ZetaSpacing.xl_1),
-                    child: widget.trailing!,
+                    child: trailing!,
                   ),
                 ],
               ],

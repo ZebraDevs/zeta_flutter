@@ -71,8 +71,9 @@ List<Widget> passwordInputExampleRow(ZetaWidgetSize size) {
   return [
     ZetaPasswordInput(
       size: size,
-      hintText: 'Password',
-      placeholder: 'Password',
+      semanticLabel: 'Enter password',
+      showSemanticLabel: 'Show password',
+      obscureSemanticLabel: 'Hide password',
     ),
     SizedBox(height: 20),
     ZetaPasswordInput(
@@ -83,7 +84,6 @@ List<Widget> passwordInputExampleRow(ZetaWidgetSize size) {
     SizedBox(height: 20),
     ZetaPasswordInput(
       size: size,
-      label: 'Label',
       placeholder: 'Password',
       hintText: 'Default hint text',
     ),

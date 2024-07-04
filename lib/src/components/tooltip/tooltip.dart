@@ -82,81 +82,88 @@ class ZetaTooltip extends ZetaStatelessWidget {
       rounded: context.rounded,
       child: LayoutBuilder(
         builder: (context, constraints) {
-          return Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              if (arrowDirection == ZetaTooltipArrowDirection.up)
-                Center(
-                  child: CustomPaint(
-                    painter: _FilledArrow(
-                      color: color,
-                      direction: arrowDirection,
-                    ),
-                    size: _verticalArrowSize,
-                  ),
-                ),
-              Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  if (arrowDirection == ZetaTooltipArrowDirection.left)
-                    Center(
-                      child: CustomPaint(
-                        painter: _FilledArrow(
-                          color: color,
-                          direction: arrowDirection,
+          return MergeSemantics(
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    if (arrowDirection == ZetaTooltipArrowDirection.up)
+                      Center(
+                        child: CustomPaint(
+                          painter: _FilledArrow(
+                            color: color,
+                            direction: arrowDirection,
+                          ),
+                          size: _verticalArrowSize,
                         ),
-                        size: _horizontalArrowSize,
                       ),
-                    ),
-                  ConstrainedBox(
-                    constraints: BoxConstraints(
-                      maxWidth: maxWidth ?? (constraints.maxWidth - horizontalArrowWidth),
-                    ),
-                    child: DecoratedBox(
-                      decoration: BoxDecoration(
-                        color: color,
-                        borderRadius: context.rounded ? ZetaRadius.minimal : null,
-                      ),
-                      child: Padding(
-                        padding: padding ??
-                            const EdgeInsets.symmetric(
-                              horizontal: ZetaSpacing.small,
-                              vertical: ZetaSpacing.minimum,
-                            ),
-                        child: DefaultTextStyle(
-                          style: textStyle ??
-                              ZetaTextStyles.bodyXSmall.copyWith(
-                                color: zeta.colors.textInverse,
-                                fontWeight: FontWeight.w500,
+                    Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        if (arrowDirection == ZetaTooltipArrowDirection.left)
+                          Center(
+                            child: CustomPaint(
+                              painter: _FilledArrow(
+                                color: color,
+                                direction: arrowDirection,
                               ),
-                          child: child,
+                              size: _horizontalArrowSize,
+                            ),
+                          ),
+                        ConstrainedBox(
+                          constraints: BoxConstraints(
+                            maxWidth: maxWidth ?? (constraints.maxWidth - horizontalArrowWidth),
+                          ),
+                          child: DecoratedBox(
+                            decoration: BoxDecoration(
+                              color: color,
+                              borderRadius: context.rounded ? ZetaRadius.minimal : null,
+                            ),
+                            child: Padding(
+                              padding: padding ??
+                                  const EdgeInsets.symmetric(
+                                    horizontal: ZetaSpacing.small,
+                                    vertical: ZetaSpacing.minimum,
+                                  ),
+                              child: DefaultTextStyle(
+                                style: textStyle ??
+                                    ZetaTextStyles.bodyXSmall.copyWith(
+                                      color: zeta.colors.textInverse,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                child: child,
+                              ),
+                            ),
+                          ),
+                        ),
+                        if (arrowDirection == ZetaTooltipArrowDirection.right)
+                          Center(
+                            child: CustomPaint(
+                              painter: _FilledArrow(
+                                color: color,
+                                direction: arrowDirection,
+                              ),
+                              size: _horizontalArrowSize,
+                            ),
+                          ),
+                      ],
+                    ),
+                    if (arrowDirection == ZetaTooltipArrowDirection.down)
+                      Center(
+                        child: CustomPaint(
+                          painter: _FilledArrow(
+                            color: color,
+                            direction: arrowDirection,
+                          ),
+                          size: _verticalArrowSize,
                         ),
                       ),
-                    ),
-                  ),
-                  if (arrowDirection == ZetaTooltipArrowDirection.right)
-                    Center(
-                      child: CustomPaint(
-                        painter: _FilledArrow(
-                          color: color,
-                          direction: arrowDirection,
-                        ),
-                        size: _horizontalArrowSize,
-                      ),
-                    ),
-                ],
-              ),
-              if (arrowDirection == ZetaTooltipArrowDirection.down)
-                Center(
-                  child: CustomPaint(
-                    painter: _FilledArrow(
-                      color: color,
-                      direction: arrowDirection,
-                    ),
-                    size: _verticalArrowSize,
-                  ),
+                  ],
                 ),
-            ],
+              ],
+            ),
           );
         },
       ),

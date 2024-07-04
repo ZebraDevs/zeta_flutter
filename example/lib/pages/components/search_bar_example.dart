@@ -46,17 +46,6 @@ class _SearchBarExampleState extends State<SearchBarExample> {
             ),
             Padding(
               padding: const EdgeInsets.only(top: 20),
-              child: Text('Sharp', style: ZetaTextStyles.titleMedium),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(20),
-              child: ZetaSearchBar(
-                initialValue: 'Initial value',
-                shape: ZetaWidgetBorder.sharp,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 20),
               child: Text('Disabled', style: ZetaTextStyles.titleMedium),
             ),
             Padding(

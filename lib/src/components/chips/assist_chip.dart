@@ -20,5 +20,6 @@ class ZetaAssistChip extends ZetaChip {
     super.data,
     super.onDragCompleted,
     super.onTap,
+    super.semanticLabel,
   });
 }

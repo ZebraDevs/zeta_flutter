@@ -14,6 +14,7 @@ class ZetaStatusLabel extends ZetaStatelessWidget {
     required this.label,
     this.status = ZetaWidgetStatus.info,
     this.customIcon,
+    this.semanticLabel,
   });
 
   /// {@macro zeta-component-badge-status}
@@ -25,33 +26,43 @@ class ZetaStatusLabel extends ZetaStatelessWidget {
   /// Optional custom icon. If null, default circle icon is used.
   final IconData? customIcon;
 
+  /// The value passed into wrapping [Semantics] widget.
+  ///
+  /// {@macro zeta-widget-semantic-label}
+  ///
+  /// If null, [label] is used.
+  final String? semanticLabel;
+
   @override
   Widget build(BuildContext context) {
     final ZetaColorSwatch colors = status.colorSwatch(context);
 
-    return DecoratedBox(
-      decoration: BoxDecoration(
-        color: colors.shade10,
-        border: Border.all(color: colors.border),
-        borderRadius: context.rounded ? ZetaRadius.full : ZetaRadius.none,
-      ),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: ZetaSpacing.small, vertical: ZetaSpacingBase.x0_5),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            ZetaIcon(
-              customIcon ?? Icons.circle,
-              size: customIcon != null ? ZetaSpacing.xl_1 : ZetaSpacing.small,
-              color: colors.icon,
-            ),
-            const SizedBox(width: ZetaSpacing.small),
-            Text(
-              label,
-              style: ZetaTextStyles.bodyMedium.apply(color: colors.shade10.onColor),
-              overflow: TextOverflow.ellipsis,
-            ),
-          ],
+    return Semantics(
+      value: semanticLabel ?? label,
+      child: DecoratedBox(
+        decoration: BoxDecoration(
+          color: colors.shade10,
+          border: Border.all(color: colors.border),
+          borderRadius: context.rounded ? ZetaRadius.full : ZetaRadius.none,
+        ),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: ZetaSpacing.small, vertical: ZetaSpacingBase.x0_5),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(
+                customIcon ?? Icons.circle,
+                size: customIcon != null ? ZetaSpacing.xl_1 : ZetaSpacing.small,
+                color: colors.icon,
+              ),
+              const SizedBox(width: ZetaSpacing.small),
+              Text(
+                label,
+                style: ZetaTextStyles.bodyMedium.apply(color: colors.shade10.onColor),
+                overflow: TextOverflow.ellipsis,
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -64,6 +75,7 @@ class ZetaStatusLabel extends ZetaStatelessWidget {
       ..add(StringProperty('label', label))
       ..add(DiagnosticsProperty<bool>('rounded', rounded))
       ..add(DiagnosticsProperty<IconData?>('customIcon', customIcon))
-      ..add(EnumProperty<ZetaWidgetStatus>('status', status));
+      ..add(EnumProperty<ZetaWidgetStatus>('status', status))
+      ..add(StringProperty('semanticLabel', semanticLabel));
   }
 }

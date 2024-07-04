@@ -89,7 +89,7 @@ class ZetaProgressCircleState extends ZetaProgressState<ZetaProgressCircle> {
       constraints: BoxConstraints.tight(_getSize()),
       child: AnimatedBuilder(
         animation: controller,
-        builder: (context, child) {
+        builder: (_, child) {
           return CustomPaint(
             size: _getSize(),
             painter: CirclePainter(

@@ -17,13 +17,13 @@ class SnackBarExample extends StatelessWidget {
           children: [
             Column(
               children: [
-                // Standard Rounded
+                // Standard
                 Row(
                   children: [
                     Padding(
                       padding: const EdgeInsets.only(top: ZetaSpacing.large),
                       child: ZetaButton.primary(
-                        label: "Standard Rounded SnackBar",
+                        label: "Standard SnackBar",
                         onPressed: () {
                           ScaffoldMessenger.of(context).showSnackBar(
                             ZetaSnackBar(
@@ -39,26 +39,6 @@ class SnackBarExample extends StatelessWidget {
                       ),
                     ),
                   ],
-                ),
-
-                // Standard Sharp
-                Padding(
-                  padding: const EdgeInsets.only(top: ZetaSpacing.large),
-                  child: ZetaButton.primary(
-                    label: "Standard Sharp SnackBar",
-                    onPressed: () {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        ZetaSnackBar(
-                          context: context,
-                          onPressed: () {
-                            ScaffoldMessenger.of(context).hideCurrentSnackBar();
-                          },
-                          actionLabel: "Action",
-                          content: Text('This is a snackbar'),
-                        ),
-                      );
-                    },
-                  ),
                 ),
 
                 // Default
