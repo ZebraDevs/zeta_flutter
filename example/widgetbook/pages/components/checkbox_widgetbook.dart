@@ -8,7 +8,7 @@ import '../../utils/utils.dart';
 Widget checkboxUseCase(BuildContext context) {
   bool b = true;
 
-  return WidgetBookScaffold(
+  return WidgetbookScaffold(
     builder: (context, _) => StatefulBuilder(
       builder: (context, setState) {
         ValueChanged<bool>? onChanged = !disabledKnob(context) ? (b2) => setState(() => b = b2) : null;

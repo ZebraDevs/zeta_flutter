@@ -8,7 +8,7 @@ Widget avatarUseCase(BuildContext context) {
   final Widget image = Image.asset('assets/Omer.jpg', fit: BoxFit.cover);
   final colors = Zeta.of(context).colors;
 
-  return WidgetBookScaffold(
+  return WidgetbookScaffold(
     builder: (context, _) => ZetaAvatar(
       image: context.knobs.boolean(label: 'Image') ? image : null,
       size: context.knobs.list(

@@ -5,7 +5,7 @@ import 'package:zeta_flutter/zeta_flutter.dart';
 import '../../utils/scaffold.dart';
 
 Widget sliderUseCase(BuildContext context) {
-  return WidgetBookScaffold(
+  return WidgetbookScaffold(
     builder: (context, _) => Builder(
       builder: (context) {
         return ZetaSliderExample(context);

@@ -6,7 +6,7 @@ import '../../utils/scaffold.dart';
 import '../../utils/utils.dart';
 
 Widget statusLabelUseCase(BuildContext context) {
-  return WidgetBookScaffold(
+  return WidgetbookScaffold(
     builder: (context, _) => Padding(
       padding: const EdgeInsets.all(ZetaSpacing.xl_2),
       child: ZetaStatusLabel(
@@ -24,7 +24,7 @@ Widget statusLabelUseCase(BuildContext context) {
 
 Widget priorityPillUseCase(BuildContext context) {
   final colors = Zeta.of(context).colors;
-  return WidgetBookScaffold(
+  return WidgetbookScaffold(
     builder: (context, _) => Padding(
       padding: const EdgeInsets.all(ZetaSpacing.xl_2),
       child: ZetaPriorityPill(
@@ -53,7 +53,7 @@ Widget priorityPillUseCase(BuildContext context) {
   );
 }
 
-Widget labelUseCase(BuildContext context) => WidgetBookScaffold(
+Widget labelUseCase(BuildContext context) => WidgetbookScaffold(
       builder: (context, _) => Padding(
         padding: const EdgeInsets.all(ZetaSpacing.xl_2),
         child: ZetaLabel(
@@ -68,7 +68,7 @@ Widget labelUseCase(BuildContext context) => WidgetBookScaffold(
     );
 
 Widget indicatorsUseCase(BuildContext context) {
-  return WidgetBookScaffold(
+  return WidgetbookScaffold(
     builder: (context, _) => Padding(
       padding: const EdgeInsets.all(ZetaSpacing.xl_2),
       child: ZetaIndicator(
@@ -91,7 +91,7 @@ Widget indicatorsUseCase(BuildContext context) {
   );
 }
 
-Widget tagsUseCase(BuildContext context) => WidgetBookScaffold(
+Widget tagsUseCase(BuildContext context) => WidgetbookScaffold(
       builder: (context, _) => Padding(
         padding: const EdgeInsets.all(ZetaSpacing.xl_2),
         child: Row(

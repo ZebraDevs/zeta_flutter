@@ -45,7 +45,7 @@ Widget selectInputUseCase(BuildContext context) {
     labelBuilder: (requirementLevel) => enumLabelBuilder(requirementLevel),
   );
 
-  return WidgetBookScaffold(
+  return WidgetbookScaffold(
     builder: (context, _) => StatefulBuilder(
       builder: (context, setState) {
         return Padding(

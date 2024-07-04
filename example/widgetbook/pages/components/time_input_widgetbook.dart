@@ -8,7 +8,7 @@ import '../../utils/utils.dart';
 Widget timeInputUseCase(BuildContext context) {
   String? _errorText;
 
-  return WidgetBookScaffold(
+  return WidgetbookScaffold(
     builder: (context, _) => StatefulBuilder(
       builder: (context, setState) {
         final label = context.knobs.string(

@@ -8,7 +8,7 @@ import '../../utils/utils.dart';
 Widget switchUseCase(BuildContext context) {
   bool? isOn = false;
 
-  return WidgetBookScaffold(
+  return WidgetbookScaffold(
     builder: (context, _) => StatefulBuilder(
       builder: (context, setState) {
         ValueChanged<bool?>? onChanged = !disabledKnob(context) ? (value) => setState(() => isOn = value) : null;

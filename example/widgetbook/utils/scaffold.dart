@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
-class WidgetBookScaffold extends StatelessWidget {
+class WidgetbookScaffold extends StatelessWidget {
   final Widget Function(BuildContext context, BoxConstraints constraints) builder;
   final bool removeBody;
   final Color? backgroundColor;
 
-  const WidgetBookScaffold({
+  const WidgetbookScaffold({
     required this.builder,
     super.key,
     this.removeBody = false,

@@ -5,7 +5,7 @@ import 'package:zeta_flutter/zeta_flutter.dart';
 import '../../utils/scaffold.dart';
 import '../../utils/utils.dart';
 
-Widget progressBarUseCase(BuildContext context) => WidgetBookScaffold(
+Widget progressBarUseCase(BuildContext context) => WidgetbookScaffold(
       builder: (context, _) => LayoutBuilder(builder: (context, constraints) {
         return SizedBox(
           width: constraints.maxWidth - ZetaSpacing.xl_9,
@@ -23,7 +23,7 @@ Widget progressBarUseCase(BuildContext context) => WidgetBookScaffold(
       }),
     );
 
-Widget progressCircleUseCase(BuildContext context) => WidgetBookScaffold(
+Widget progressCircleUseCase(BuildContext context) => WidgetbookScaffold(
       builder: (context, _) => ZetaProgressCircle(
         progress: context.knobs.double.slider(label: 'Progress', min: 0, max: 1, initialValue: 0.5).toDouble(),
         size: context.knobs.list(

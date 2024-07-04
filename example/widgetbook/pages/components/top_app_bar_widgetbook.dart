@@ -26,7 +26,7 @@ Widget defaultTopAppBarUseCase(BuildContext context) {
   );
   final leadingIcon = iconKnob(context, name: 'Leading Icon', initial: ZetaIcons.hamburger_menu);
 
-  return WidgetBookScaffold(
+  return WidgetbookScaffold(
       backgroundColor: Colors.green,
       removeBody: true,
       builder: (context, _) => Column(
@@ -60,7 +60,7 @@ Widget defaultTopAppBarUseCase(BuildContext context) {
 }
 
 Widget searchTopAppBarUseCase(BuildContext context) {
-  return WidgetBookScaffold(
+  return WidgetbookScaffold(
     backgroundColor: Colors.green,
     removeBody: true,
     builder: (context, _) => Column(children: [_SearchUseCase()]),
@@ -155,7 +155,7 @@ class _ExtendedSearchState extends State<ExtendedSearch> {
 
     final showSearch = context.knobs.boolean(label: 'Search variant', initialValue: false);
 
-    return WidgetBookScaffold(
+    return WidgetbookScaffold(
       removeBody: true,
       builder: (context, constraints) => SafeArea(
         child: SizedBox(

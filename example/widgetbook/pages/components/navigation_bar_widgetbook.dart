@@ -16,7 +16,7 @@ Widget navigationBarUseCase(BuildContext context) {
   int? dividerIndex = context.knobs.intOrNull.slider(label: 'Divider', min: 0, max: 6, initialValue: null);
   bool showSplit = context.knobs.boolean(label: 'Split Items');
   return StatefulBuilder(builder: (context, setState) {
-    return WidgetBookScaffold(
+    return WidgetbookScaffold(
       builder: (context, _) => ZetaNavigationBar(
         items: items,
         action: showButton ? ZetaButton.primary(label: 'Button', onPressed: () {}) : null,

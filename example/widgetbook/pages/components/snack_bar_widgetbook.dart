@@ -6,7 +6,7 @@ import '../../utils/scaffold.dart';
 import '../../utils/utils.dart';
 
 Widget snackBarUseCase(BuildContext context) {
-  return WidgetBookScaffold(
+  return WidgetbookScaffold(
     builder: (context, _) => Builder(
       builder: (context) {
         final text = context.knobs.string(

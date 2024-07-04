@@ -20,7 +20,7 @@ Widget chatItemWidgetBook(BuildContext context) {
   final enabledOnCall = context.knobs.boolean(label: 'Call', initialValue: true);
   final enabledOnPtt = context.knobs.boolean(label: 'Ptt', initialValue: true);
 
-  return WidgetBookScaffold(
+  return WidgetbookScaffold(
     builder: (context, _) => ZetaChatItem(
       time: DateTime.now(),
       enabledWarningIcon: enabledWarningIcon,

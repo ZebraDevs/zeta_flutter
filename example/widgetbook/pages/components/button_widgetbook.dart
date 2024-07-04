@@ -11,7 +11,7 @@ Widget buttonUseCase(BuildContext context) {
     labelBuilder: enumLabelBuilder,
     options: ZetaWidgetBorder.values,
   );
-  return WidgetBookScaffold(
+  return WidgetbookScaffold(
     builder: (context, _) => ZetaButton(
       label: context.knobs.string(label: 'Text', initialValue: 'Button'),
       onPressed: context.knobs.boolean(label: 'Disabled') ? null : () {},
@@ -38,7 +38,7 @@ Widget iconButtonUseCase(BuildContext context) {
     options: ZetaWidgetBorder.values,
     labelBuilder: enumLabelBuilder,
   );
-  return WidgetBookScaffold(
+  return WidgetbookScaffold(
     builder: (context, _) => ZetaIconButton(
       icon: iconKnob(context)!,
       onPressed: disabledKnob(context) ? null : () {},
@@ -60,7 +60,7 @@ Widget iconButtonUseCase(BuildContext context) {
 Widget buttonGroupUseCase(BuildContext context) {
   final onPressed = disabledKnob(context) ? null : () {};
 
-  return WidgetBookScaffold(
+  return WidgetbookScaffold(
     builder: (context, _) => ZetaButtonGroup(
       isLarge: context.knobs.boolean(label: 'Large'),
       isInverse: context.knobs.boolean(label: 'Inverse'),
@@ -95,7 +95,7 @@ Widget buttonGroupUseCase(BuildContext context) {
   );
 }
 
-Widget floatingActionButtonUseCase(BuildContext context) => WidgetBookScaffold(
+Widget floatingActionButtonUseCase(BuildContext context) => WidgetbookScaffold(
       builder: (context, _) => Padding(padding: EdgeInsets.all(ZetaSpacing.xl_1), child: FabWidget(context)),
     );
 

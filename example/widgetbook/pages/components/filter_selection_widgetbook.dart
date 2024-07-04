@@ -6,7 +6,7 @@ import '../../utils/scaffold.dart';
 Widget filterSelectionUseCase(BuildContext context) {
   final items = List.generate(12, (index) => false);
 
-  return WidgetBookScaffold(
+  return WidgetbookScaffold(
     builder: (context, _) => StatefulBuilder(
       builder: (_, setState) {
         return Column(

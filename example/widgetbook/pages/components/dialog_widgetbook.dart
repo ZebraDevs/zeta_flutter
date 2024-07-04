@@ -27,7 +27,7 @@ Widget dialogUseCase(BuildContext context) {
     options: ZetaDialogHeaderAlignment.values,
     labelBuilder: (value) => value.name,
   );
-  return WidgetBookScaffold(
+  return WidgetbookScaffold(
     builder: (context, _) => Padding(
       padding: const EdgeInsets.all(ZetaSpacing.xl_1),
       child: Center(

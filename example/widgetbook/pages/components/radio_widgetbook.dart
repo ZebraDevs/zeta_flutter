@@ -9,7 +9,7 @@ Widget radioButtonUseCase(BuildContext context) {
   String option2 = 'Label 2';
   String? groupValue;
 
-  return WidgetBookScaffold(
+  return WidgetbookScaffold(
     builder: (context, _) => StatefulBuilder(
       builder: (context, setState) {
         ValueChanged<String?>? onChanged =

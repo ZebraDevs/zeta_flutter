@@ -8,7 +8,7 @@ import '../../utils/utils.dart';
 Widget inputChipUseCase(BuildContext context) {
   final trailing = iconKnob(context);
 
-  return WidgetBookScaffold(
+  return WidgetbookScaffold(
     builder: (context, _) => ZetaInputChip(
       label: context.knobs.string(label: 'Label', initialValue: 'Label'),
       leading: context.knobs.boolean(label: 'Avatar', initialValue: true)
@@ -24,7 +24,7 @@ Widget inputChipUseCase(BuildContext context) {
   );
 }
 
-Widget filterChipUseCase(BuildContext context) => WidgetBookScaffold(
+Widget filterChipUseCase(BuildContext context) => WidgetbookScaffold(
       builder: (context, _) => ZetaFilterChip(
         label: context.knobs.string(label: 'Label', initialValue: 'Label'),
         selected: context.knobs.boolean(label: 'Selected', initialValue: true),
@@ -32,7 +32,7 @@ Widget filterChipUseCase(BuildContext context) => WidgetBookScaffold(
     );
 
 Widget assistChipUseCase(BuildContext context) {
-  return WidgetBookScaffold(
+  return WidgetbookScaffold(
     builder: (context, _) => ZetaAssistChip(
       label: context.knobs.string(label: 'Label', initialValue: 'Label'),
       leading: ZetaIcon(iconKnob(context)),

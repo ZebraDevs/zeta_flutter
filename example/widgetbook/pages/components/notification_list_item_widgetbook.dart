@@ -4,7 +4,7 @@ import 'package:zeta_flutter/zeta_flutter.dart';
 
 import '../../utils/scaffold.dart';
 
-Widget notificationListItemUseCase(BuildContext context) => WidgetBookScaffold(
+Widget notificationListItemUseCase(BuildContext context) => WidgetbookScaffold(
       builder: (context, _) => Padding(
         padding: EdgeInsets.symmetric(horizontal: context.knobs.list(label: "Size", options: [100, 200, 400])),
         child: ZetaNotificationListItem(

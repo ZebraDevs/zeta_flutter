@@ -16,7 +16,7 @@ const List<String> _items = [
 
 Widget searchBarUseCase(BuildContext context) {
   List<String> items = List.from(_items);
-  return WidgetBookScaffold(
+  return WidgetbookScaffold(
     builder: (context, _) => StatefulBuilder(
       builder: (context, setState) {
         final hint = context.knobs.string(

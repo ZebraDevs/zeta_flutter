@@ -25,7 +25,7 @@ class _PasswordState extends State<_Password> {
 
     return Form(
       key: _formKey,
-      child: WidgetBookScaffold(
+      child: WidgetbookScaffold(
         builder: (context, _) => Column(
           children: [
             ConstrainedBox(

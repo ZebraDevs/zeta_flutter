@@ -6,7 +6,7 @@ import '../../utils/scaffold.dart';
 import '../../utils/utils.dart';
 
 Widget stepperInputUseCase(BuildContext context) {
-  return WidgetBookScaffold(
+  return WidgetbookScaffold(
     builder: (context, _) => ZetaStepperInput(
       initialValue: context.knobs.int.input(label: 'Initial value'),
       min: context.knobs.int.input(label: 'Minimum value', initialValue: 0),

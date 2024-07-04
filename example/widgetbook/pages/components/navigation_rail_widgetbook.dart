@@ -21,7 +21,7 @@ Widget navigationRailUseCase(BuildContext context) {
   final disabled = disabledKnob(context);
   final itemsList = items.split(',').where((element) => element.trim().isNotEmpty).toList();
   return SafeArea(
-    child: WidgetBookScaffold(
+    child: WidgetbookScaffold(
       builder: (context, _) => StatefulBuilder(
         builder: (context, setState) {
           return Row(

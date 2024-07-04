@@ -10,7 +10,7 @@ Widget phoneInputUseCase(BuildContext context) {
     initialValue: '',
   );
   final enabled = context.knobs.boolean(label: 'Enabled', initialValue: true);
-  return WidgetBookScaffold(
+  return WidgetbookScaffold(
     builder: (context, _) => StatefulBuilder(
       builder: (context, setState) {
         return Padding(

@@ -14,7 +14,7 @@ Widget tooltipUseCase(BuildContext context) {
     options: ZetaTooltipArrowDirection.values,
     labelBuilder: (direction) => direction.name,
   );
-  return WidgetBookScaffold(
+  return WidgetbookScaffold(
     builder: (context, _) => StatefulBuilder(
       builder: (context, setState) {
         return Padding(

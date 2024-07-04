@@ -5,7 +5,7 @@ import 'package:zeta_flutter/zeta_flutter.dart';
 import '../../utils/scaffold.dart';
 
 Widget dropdownListItemUseCase(BuildContext context) {
-  return WidgetBookScaffold(
+  return WidgetbookScaffold(
     builder: (context, _) => StatefulBuilder(
       builder: (context, setState) {
         final primaryText = context.knobs.string(label: 'Primary text', initialValue: 'Label');

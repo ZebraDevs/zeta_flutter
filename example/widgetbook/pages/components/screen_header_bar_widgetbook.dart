@@ -10,7 +10,7 @@ Widget screenHeaderBarUseCase(BuildContext context) {
     initialValue: 'Add Subscribers',
   );
 
-  return WidgetBookScaffold(
+  return WidgetbookScaffold(
     builder: (context, _) => ZetaScreenHeaderBar(
       title: Text(title),
       actionButtonLabel: 'Done',

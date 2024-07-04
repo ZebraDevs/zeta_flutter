@@ -4,7 +4,7 @@ import 'package:zeta_flutter/zeta_flutter.dart';
 
 import '../../utils/scaffold.dart';
 
-Widget dialPadUseCase(BuildContext context) => WidgetBookScaffold(
+Widget dialPadUseCase(BuildContext context) => WidgetbookScaffold(
       builder: (context, _) => SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: ZetaDialPad(

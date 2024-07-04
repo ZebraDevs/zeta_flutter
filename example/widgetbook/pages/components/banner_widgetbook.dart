@@ -24,7 +24,7 @@ Widget bannerUseCase(BuildContext context) {
     )),
   );
 
-  return WidgetBookScaffold(
+  return WidgetbookScaffold(
     removeBody: true,
     builder: (context, _) => Column(
       children: [

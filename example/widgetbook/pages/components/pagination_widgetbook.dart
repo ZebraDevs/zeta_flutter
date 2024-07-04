@@ -5,7 +5,7 @@ import 'package:zeta_flutter/zeta_flutter.dart';
 import '../../utils/scaffold.dart';
 import '../../utils/utils.dart';
 
-Widget paginationUseCase(BuildContext context) => WidgetBookScaffold(
+Widget paginationUseCase(BuildContext context) => WidgetbookScaffold(
       builder: (context, _) => ZetaPagination(
         pages: 10,
         type: context.knobs.list<ZetaPaginationType>(

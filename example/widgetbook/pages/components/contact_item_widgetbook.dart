@@ -9,7 +9,7 @@ Widget contactItemUseCase(BuildContext context) {
   final subtitle = context.knobs.string(label: 'Subtitle', initialValue: "Store Associate - Bakery Dept.");
   final enabledDivider = context.knobs.boolean(label: 'Enabled Divider', initialValue: true);
 
-  return WidgetBookScaffold(
+  return WidgetbookScaffold(
     builder: (context, _) => ZetaContactItem(
       onTap: () {},
       leading: ZetaAvatar(size: ZetaAvatarSize.s),

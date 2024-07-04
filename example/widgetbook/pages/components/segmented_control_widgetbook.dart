@@ -15,7 +15,7 @@ Widget segmentedControlUseCase(BuildContext context) {
   final textSegments = List.generate(3, (index) => "$text ${index + 1}");
   String selectedTextSegment = textSegments.first;
 
-  return WidgetBookScaffold(
+  return WidgetbookScaffold(
     builder: (context, _) => StatefulBuilder(builder: (context, setState) {
       return Column(
         children: [

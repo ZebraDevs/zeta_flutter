@@ -8,7 +8,7 @@ import '../../utils/utils.dart';
 Widget bottomSheetContentUseCase(BuildContext context) {
   final sheet = _bottomSheet(context);
 
-  return WidgetBookScaffold(
+  return WidgetbookScaffold(
     builder: (context, _) => Padding(
       padding: const EdgeInsets.all(ZetaSpacing.xl_1),
       child: Column(

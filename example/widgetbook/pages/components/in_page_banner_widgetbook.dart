@@ -5,7 +5,7 @@ import 'package:zeta_flutter/zeta_flutter.dart';
 import '../../utils/scaffold.dart';
 import '../../utils/utils.dart';
 
-Widget inPageBannerUseCase(BuildContext context) => WidgetBookScaffold(
+Widget inPageBannerUseCase(BuildContext context) => WidgetbookScaffold(
       builder: (context, _) => Padding(
         padding: EdgeInsets.all(ZetaSpacing.xl_1),
         child: ZetaInPageBanner(

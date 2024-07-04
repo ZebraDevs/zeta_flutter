@@ -6,7 +6,7 @@ import '../../utils/scaffold.dart';
 import '../../utils/utils.dart';
 
 Widget textInputUseCase(BuildContext context) {
-  return WidgetBookScaffold(
+  return WidgetbookScaffold(
     builder: (context, _) => StatefulBuilder(
       builder: (context, setState) {
         final label = context.knobs.string(

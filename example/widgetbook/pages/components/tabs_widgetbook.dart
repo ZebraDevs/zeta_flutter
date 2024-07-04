@@ -6,7 +6,7 @@ import '../../utils/scaffold.dart';
 import '../../utils/utils.dart';
 
 Widget tabsUseCase(BuildContext context) {
-  return WidgetBookScaffold(
+  return WidgetbookScaffold(
     builder: (context, _) => SingleChildScrollView(
       child: Column(
         children: [

@@ -5,7 +5,7 @@ import 'package:zeta_flutter/zeta_flutter.dart';
 import '../../utils/scaffold.dart';
 
 Widget iconsUseCase(BuildContext context) {
-  return WidgetBookScaffold(
+  return WidgetbookScaffold(
     removeBody: true,
     builder: (context, _) => SingleChildScrollView(
       key: PageStorageKey(0),

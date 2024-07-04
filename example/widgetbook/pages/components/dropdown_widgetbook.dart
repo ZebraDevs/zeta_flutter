@@ -5,7 +5,7 @@ import 'package:zeta_flutter/zeta_flutter.dart';
 import '../../utils/scaffold.dart';
 import '../../utils/utils.dart';
 
-Widget dropdownUseCase(BuildContext context) => WidgetBookScaffold(
+Widget dropdownUseCase(BuildContext context) => WidgetbookScaffold(
       builder: (context, _) => Center(
         child: DropdownExample(),
       ),

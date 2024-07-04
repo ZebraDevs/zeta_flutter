@@ -26,7 +26,7 @@ Widget stepperUseCase(BuildContext context) {
 
   final enabledContent = context.knobs.boolean(label: 'Enabled Content', initialValue: true);
 
-  return WidgetBookScaffold(
+  return WidgetbookScaffold(
     builder: (context, _) => StatefulBuilder(
       builder: (context, setState) {
         return Container(

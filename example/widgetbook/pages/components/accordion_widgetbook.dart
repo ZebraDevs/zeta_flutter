@@ -4,7 +4,7 @@ import 'package:zeta_flutter/zeta_flutter.dart';
 
 import '../../utils/scaffold.dart';
 
-Widget accordionUseCase(BuildContext context) => WidgetBookScaffold(
+Widget accordionUseCase(BuildContext context) => WidgetbookScaffold(
       builder: (context, _) => Padding(
         padding: const EdgeInsets.all(ZetaSpacing.xl_1),
         child: ZetaAccordion(

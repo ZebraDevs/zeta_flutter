@@ -7,7 +7,7 @@ import '../../utils/scaffold.dart';
 Widget listItemUseCase(BuildContext context) {
   bool checkedValue = false;
 
-  return WidgetBookScaffold(
+  return WidgetbookScaffold(
     builder: (context, _) => StatefulBuilder(
       builder: (context, setState) {
         final type = context.knobs.list(

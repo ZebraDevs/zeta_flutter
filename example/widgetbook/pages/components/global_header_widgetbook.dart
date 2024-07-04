@@ -20,7 +20,7 @@ Widget globalHeaderUseCase(BuildContext context) {
     ),
   ];
 
-  return WidgetBookScaffold(
+  return WidgetbookScaffold(
     builder: (context, _) => ZetaGlobalHeader(
       title: context.knobs.string(label: "Title", initialValue: "Title"),
       tabItems: List.generate(
