@@ -1,5 +1,41 @@
 # Changelog
 
+## [0.14.0](https://github.com/ZebraDevs/zeta_flutter/compare/v0.13.0...v0.14.0) (2024-07-08)
+
+
+### ✨ New Features
+
+* **UX-1121:** Added ZetaProvider.base to allow for better developer experience ([#123](https://github.com/ZebraDevs/zeta_flutter/issues/123)) ([3cc79b0](https://github.com/ZebraDevs/zeta_flutter/commit/3cc79b04366dedddb2551ef46d1bf1aa5391b5ea))
+* ZetaIcon component added ([#121](https://github.com/ZebraDevs/zeta_flutter/issues/121)) ([3b2ddef](https://github.com/ZebraDevs/zeta_flutter/commit/3b2ddefe37a79b0191cbe87910f398097dd93f89))
+
+
+### 🪲 Bug Fixes
+
+* Improve semantics for ChatListItem ([#128](https://github.com/ZebraDevs/zeta_flutter/issues/128)) ([1690a30](https://github.com/ZebraDevs/zeta_flutter/commit/1690a30422567f650f9d31deab8bbfbde0274406))
+
+
+### 📈 Documentation
+
+* Update widget book theme ([#126](https://github.com/ZebraDevs/zeta_flutter/issues/126)) ([8d9d429](https://github.com/ZebraDevs/zeta_flutter/commit/8d9d429f7f7fa91d5225b8ce8ec4d91426d27aca))
+
+
+### ⛓️ Dependencies
+
+* Update zeta-icon library ([#129](https://github.com/ZebraDevs/zeta_flutter/issues/129)) ([a6f72d8](https://github.com/ZebraDevs/zeta_flutter/commit/a6f72d8cbe47394733603f402bb978f640612e90))
+
+
+### 🧪 Tests
+
+* Added test for ZetaIcon ([3b2ddef](https://github.com/ZebraDevs/zeta_flutter/commit/3b2ddefe37a79b0191cbe87910f398097dd93f89))
+* Update golden tests for rounded state change ([3cc79b0](https://github.com/ZebraDevs/zeta_flutter/commit/3cc79b04366dedddb2551ef46d1bf1aa5391b5ea))
+
+
+### 🧹 Miscellaneous Chores
+
+* Add rounded switch to example app ([3cc79b0](https://github.com/ZebraDevs/zeta_flutter/commit/3cc79b04366dedddb2551ef46d1bf1aa5391b5ea))
+* typos ([ff7ecd8](https://github.com/ZebraDevs/zeta_flutter/commit/ff7ecd8e80264a3aca47abaefe79c3f2c04c5e93))
+* Update android app ([ff7ecd8](https://github.com/ZebraDevs/zeta_flutter/commit/ff7ecd8e80264a3aca47abaefe79c3f2c04c5e93))
+
 ## [0.13.0](https://github.com/ZebraDevs/zeta_flutter/compare/v0.12.0...v0.13.0) (2024-06-28)
 
 
