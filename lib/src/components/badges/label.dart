@@ -13,10 +13,10 @@ typedef ZetaBadge = ZetaLabel;
 class ZetaLabel extends ZetaStatelessWidget {
   ///Constructs [ZetaLabel].
   const ZetaLabel({
-    required this.label,
-    this.status = ZetaWidgetStatus.info,
     super.rounded,
     super.key,
+    required this.label,
+    this.status = ZetaWidgetStatus.info,
   });
 
   /// {@template zeta-component-badge-status}

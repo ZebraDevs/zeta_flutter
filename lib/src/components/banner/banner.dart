@@ -35,9 +35,9 @@ enum ZetaBannerStatus {
 class ZetaBanner extends MaterialBanner {
   /// Constructor for [ZetaBanner]. See [MaterialBanner] for more information.
   ZetaBanner({
+    super.key,
     required BuildContext context,
     required String title,
-    super.key,
     IconData? leadingIcon,
     ZetaBannerStatus type = ZetaBannerStatus.primary,
     bool titleStart = false,

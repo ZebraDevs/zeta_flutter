@@ -49,6 +49,8 @@ extension on ZetaPriorityPillType {
 class ZetaPriorityPill extends ZetaStatelessWidget {
   ///Constructs [ZetaPriorityPill]
   const ZetaPriorityPill({
+    super.rounded,
+    super.key,
     this.index,
     @Deprecated('Use label instead. ' 'This variable has been renamed as of 0.11.0') this.priority,
     this.label,
@@ -56,8 +58,6 @@ class ZetaPriorityPill extends ZetaStatelessWidget {
     this.type = ZetaPriorityPillType.urgent,
     this.size = ZetaPriorityPillSize.large,
     this.customColor,
-    super.rounded,
-    super.key,
   });
 
   /// Leading number / character in component. Will be truncated to single character.

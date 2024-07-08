@@ -1,3 +1,7 @@
+## Template
+
+To quickly set up a new project to use zeta_flutter, clone [zeta_flutter_template](https://github.com/zebradevs/zeta_flutter_template) to get started.
+
 ## Set up
 
 To use Zeta components in you app, first the whole app must be wrapped with `ZetaProvider`. The easiest way to do this is with the custom builder `ZetaProvider.custom`.

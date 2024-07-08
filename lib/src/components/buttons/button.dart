@@ -7,6 +7,7 @@ import '../../../zeta_flutter.dart';
 class ZetaButton extends StatelessWidget {
   ///Constructs [ZetaButton]
   const ZetaButton({
+    super.key,
     required this.label,
     this.onPressed,
     this.type = ZetaButtonType.primary,
@@ -14,91 +15,90 @@ class ZetaButton extends StatelessWidget {
     this.borderType,
     this.leadingIcon,
     this.trailingIcon,
-    super.key,
     this.focusNode,
   });
 
   /// Constructs [ZetaButton] with Primary theme.
   const ZetaButton.primary({
+    super.key,
     required this.label,
     this.onPressed,
     this.size = ZetaWidgetSize.medium,
     this.borderType,
     this.leadingIcon,
     this.trailingIcon,
-    super.key,
     this.focusNode,
   }) : type = ZetaButtonType.primary;
 
   /// Constructs [ZetaButton] with Secondary theme.
   const ZetaButton.secondary({
+    super.key,
     required this.label,
     this.onPressed,
     this.size = ZetaWidgetSize.medium,
     this.borderType,
     this.leadingIcon,
     this.trailingIcon,
-    super.key,
     this.focusNode,
   }) : type = ZetaButtonType.secondary;
 
   /// Constructs [ZetaButton] with Positive theme.
   const ZetaButton.positive({
+    super.key,
     required this.label,
     this.onPressed,
     this.size = ZetaWidgetSize.medium,
     this.borderType,
     this.leadingIcon,
     this.trailingIcon,
-    super.key,
     this.focusNode,
   }) : type = ZetaButtonType.positive;
 
   /// Constructs [ZetaButton] with Negative theme.
   const ZetaButton.negative({
+    super.key,
     required this.label,
     this.onPressed,
     this.size = ZetaWidgetSize.medium,
     this.borderType,
     this.leadingIcon,
     this.trailingIcon,
-    super.key,
     this.focusNode,
   }) : type = ZetaButtonType.negative;
 
   /// Constructs [ZetaButton] with Outline theme.
   const ZetaButton.outline({
+    super.key,
     required this.label,
     this.onPressed,
     this.size = ZetaWidgetSize.medium,
     this.borderType,
     this.leadingIcon,
     this.trailingIcon,
-    super.key,
     this.focusNode,
   }) : type = ZetaButtonType.outline;
 
   /// Constructs [ZetaButton] with Outline Subtle  theme.
   const ZetaButton.outlineSubtle({
+    super.key,
     required this.label,
     this.onPressed,
     this.size = ZetaWidgetSize.medium,
     this.borderType,
     this.leadingIcon,
     this.trailingIcon,
-    super.key,
     this.focusNode,
   }) : type = ZetaButtonType.outlineSubtle;
 
   /// Constructs [ZetaButton] with text theme.
   const ZetaButton.text({
+    super.key,
     required this.label,
     this.onPressed,
     this.size = ZetaWidgetSize.medium,
     this.borderType,
     this.leadingIcon,
     this.trailingIcon,
-    super.key,
     this.focusNode,
   }) : type = ZetaButtonType.text;
 

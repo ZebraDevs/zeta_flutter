@@ -10,10 +10,10 @@ class ZetaStatusLabel extends ZetaStatelessWidget {
   ///Constructs [ZetaStatusLabel].
   const ZetaStatusLabel({
     super.key,
+    super.rounded,
     required this.label,
     this.status = ZetaWidgetStatus.info,
     this.customIcon,
-    super.rounded,
   });
 
   /// {@macro zeta-component-badge-status}

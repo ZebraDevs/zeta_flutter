@@ -14,7 +14,7 @@ class BreadCrumbsExample extends StatefulWidget {
 class _BreadCrumbsExampleState extends State<BreadCrumbsExample> {
   List<ZetaBreadCrumb> _children = [
     ZetaBreadCrumb(
-      label: 'Icon before with seperator',
+      label: 'Icon before with separator',
       onPressed: () {
         print("Breadcrumb " + 0.toString() + "Clicked");
       },
