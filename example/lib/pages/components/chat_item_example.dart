@@ -20,6 +20,7 @@ class _ChatItemExampleState extends State<ChatItemExample> {
         child: Column(
           children: [
             ZetaChatItem(
+              explicitChildNodes: false,
               time: DateTime.now(),
               enabledWarningIcon: true,
               enabledNotificationIcon: true,
