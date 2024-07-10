@@ -267,7 +267,7 @@ class ZetaDateInputState extends State<ZetaDateInput> implements ZetaFormFieldSt
               disabled: widget.disabled,
               size: widget.size,
               color: _colors.iconSubtle,
-              semanticLabel: widget.clearSemanticLabel ?? 'clear',
+              semanticLabel: widget.clearSemanticLabel,
             ),
           InputIconButton(
             icon: ZetaIcons.calendar,
@@ -275,7 +275,7 @@ class ZetaDateInputState extends State<ZetaDateInput> implements ZetaFormFieldSt
             disabled: widget.disabled,
             size: widget.size,
             color: _colors.iconDefault,
-            semanticLabel: widget.datePickerSemanticLabel ?? 'calendar',
+            semanticLabel: widget.datePickerSemanticLabel,
           ),
         ],
       ),

@@ -41,9 +41,16 @@ void main() {
           home: ZetaFAB(scrollController: scrollController, label: 'Label', onPressed: () => isPressed = true),
         ),
       );
+      final TestGesture e = await tester.press(find.byType(ZetaFAB));
 
-      await tester.tap(find.byType(ZetaFAB));
       await tester.pumpAndSettle();
+
+      await expectLater(
+        find.byType(ZetaFAB),
+        matchesGoldenFile(join(getCurrentPath('fabs'), 'FAB_pressed.png')),
+      );
+
+      await e.up();
       expect(isPressed, isTrue);
     });
   });
@@ -144,6 +151,26 @@ void main() {
     );
   });
 
+  testWidgets('Disabled FAB', (WidgetTester tester) async {
+    final scrollController = ScrollController();
+    await tester.pumpWidget(
+      TestApp(
+        home: ZetaFAB(scrollController: scrollController, label: 'Disabled'),
+      ),
+    );
+
+    final fabFinder = find.byType(ZetaFAB);
+    final ZetaFAB fab = tester.firstWidget(fabFinder);
+
+    expect(fab.onPressed, isNull);
+    expect(fab.type, ZetaFabType.primary);
+    expect(fab.shape, ZetaWidgetBorder.full);
+
+    await expectLater(
+      find.byType(ZetaFAB),
+      matchesGoldenFile(join(getCurrentPath('fabs'), 'FAB_disabled.png')),
+    );
+  });
   testWidgets('debugFillProperties works correctly', (WidgetTester tester) async {
     final diagnostics = DiagnosticPropertiesBuilder();
     const ZetaFAB().debugFillProperties(diagnostics);

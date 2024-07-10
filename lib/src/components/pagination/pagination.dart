@@ -28,11 +28,11 @@ class ZetaPagination extends ZetaStatefulWidget {
     this.onChange,
     this.currentPage = 1,
     @Deprecated('Set onChange to null. ' 'Disabled is deprecated as of 0.11.0') bool disabled = false,
-    this.semanticFirst = 'First page',
-    this.semanticPrevious = 'Previous page',
-    this.semanticNext = 'Next page',
-    this.semanticLast = 'Last page',
-    this.semanticDropdown = 'Page selection',
+    this.semanticFirst,
+    this.semanticPrevious,
+    this.semanticNext,
+    this.semanticLast,
+    this.semanticDropdown,
   })  : assert(
           pages > 0,
           'Pages must be greater than zero',
@@ -64,36 +64,26 @@ class ZetaPagination extends ZetaStatefulWidget {
   /// Semantic value passed to the first button.
   ///
   /// {@macro zeta-widget-semantic-label}
-  ///
-  /// Defaults to 'First page'.
   final String? semanticFirst;
 
   /// Semantic value passed to the previous button.
   ///
   /// {@macro zeta-widget-semantic-label}
-  ///
-  /// Defaults to 'Previous page'.
   final String? semanticPrevious;
 
   /// Semantic value passed to the next button.
   ///
   /// {@macro zeta-widget-semantic-label}
-  ///
-  /// Defaults to 'Next page'.
   final String? semanticNext;
 
   /// Semantic value passed to the last button.
   ///
   /// {@macro zeta-widget-semantic-label}
-  ///
-  /// Defaults to 'Last page'.
   final String? semanticLast;
 
   /// Semantic value passed to the dropdown.
   ///
   /// {@macro zeta-widget-semantic-label}
-  ///
-  ///  Defaults to 'Page selection'.
   final String? semanticDropdown;
 
   @override
@@ -390,8 +380,8 @@ class _PaginationItem extends ZetaStatelessWidget {
       ..add(IntProperty('value', value))
       ..add(DiagnosticsProperty<IconData?>('icon', icon))
       ..add(DiagnosticsProperty<bool>('disabled', disabled))
-      ..add(DiagnosticsProperty<bool>('selected', selected));
-    properties.add(StringProperty('semanticLabel', semanticLabel));
+      ..add(DiagnosticsProperty<bool>('selected', selected))
+      ..add(StringProperty('semanticLabel', semanticLabel));
   }
 }
 

@@ -554,7 +554,6 @@ class _DropdownItemState<T> extends State<_DropdownItem<T>> {
       }),
       padding: const WidgetStatePropertyAll(EdgeInsets.zero),
       elevation: const WidgetStatePropertyAll(0),
-      // overlayColor: const WidgetStatePropertyAll(Colors.transparent),
     );
   }
 

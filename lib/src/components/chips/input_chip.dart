@@ -8,8 +8,8 @@ import '../../../zeta_flutter.dart';
 class ZetaInputChip extends ZetaChip {
   /// Creates a [ZetaInputChip].
   const ZetaInputChip({
-    super.key,
     required super.label,
+    super.key,
     super.leading,
     super.rounded,
     super.trailing,
