@@ -24,6 +24,7 @@ class ZetaPhoneInput extends ZetaStatefulWidget {
     this.countries,
     this.countrySearchHint,
     this.useRootNavigator = true,
+    this.size = ZetaWidgetSize.medium,
   });
 
   /// If provided, displays a label above the input field.
@@ -62,6 +63,8 @@ class ZetaPhoneInput extends ZetaStatefulWidget {
 
   /// Determines if the root navigator should be used in the [CountriesDialog].
   final bool useRootNavigator;
+
+  final ZetaWidgetSize size;
 
   @override
   State<ZetaPhoneInput> createState() => _ZetaPhoneInputState();
@@ -163,68 +166,67 @@ class _ZetaPhoneInputState extends State<ZetaPhoneInput> {
       label: widget.label,
       hintText: widget.hintText,
       disabled: widget.disabled,
+      size: widget.size,
       inputFormatters: [FilteringTextInputFormatter.allow(RegExp(r'[\d\s\-]'))],
       keyboardType: TextInputType.phone,
       onChange: (value) => _onChanged(phoneNumber: value),
-      prefix: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Row(
+      prefix: ZetaDropdown(
+        offset: const Offset(0, ZetaSpacing.medium),
+        onChange: (value) {
+          setState(() {
+            _selectedCountry = _countries.firstWhere((country) => country.dialCode == value.value);
+          });
+        },
+        value: _selectedCountry.dialCode,
+        onDismissed: () => setState(() {}),
+        items: _dropdownItems,
+        builder: (context, selectedItem, controller) {
+          return Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              ZetaDropdown(
-                offset: const Offset(0, ZetaSpacing.medium),
-                onChange: (value) {
-                  setState(() {
-                    _selectedCountry = _countries.firstWhere((country) => country.dialCode == value.value);
-                  });
-                },
-                value: _selectedCountry.dialCode,
-                onDismissed: () => setState(() {}),
-                items: _dropdownItems,
-                builder: (context, selectedItem, controller) {
-                  return GestureDetector(
-                    onTap: controller.toggle,
-                    child: DecoratedBox(
-                      decoration: BoxDecoration(
-                        border: Border(
-                          right: BorderSide(
-                            color: !widget.disabled ? zeta.colors.borderSubtle : zeta.colors.borderDisabled,
-                          ),
+              DecoratedBox(
+                decoration: BoxDecoration(
+                  border: Border(
+                    right: BorderSide(
+                      color: zeta.colors.borderDefault,
+                    ),
+                  ),
+                ),
+                child: GestureDetector(
+                  onTap: controller.toggle,
+                  child: Column(
+                    children: [
+                      Expanded(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                left: ZetaSpacing.medium,
+                                right: ZetaSpacing.small,
+                              ),
+                              child: selectedItem?.icon,
+                            ),
+                            ZetaIcon(
+                              !controller.isOpen ? ZetaIcons.expand_more : ZetaIcons.expand_less,
+                              color: !widget.disabled ? zeta.colors.iconDefault : zeta.colors.iconDisabled,
+                              size: ZetaSpacing.xl_1,
+                            ),
+                          ],
                         ),
                       ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(
-                              left: ZetaSpacingBase.x2_5,
-                            ),
-                            child: selectedItem?.icon,
-                          ),
-                          const SizedBox(
-                            width: ZetaSpacing.small,
-                          ),
-                          ZetaIcon(
-                            !controller.isOpen ? ZetaIcons.expand_more : ZetaIcons.expand_less,
-                            color: !widget.disabled ? zeta.colors.iconDefault : zeta.colors.iconDisabled,
-                            size: ZetaSpacing.xl_1,
-                          ),
-                        ],
-                      ),
-                    ),
-                  );
-                },
+                    ],
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: ZetaSpacing.small),
+                child: Text(_selectedCountry.dialCode),
               ),
             ],
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: ZetaSpacing.small),
-            child: Text(
-              _selectedCountry.dialCode,
-            ),
-          ),
-        ],
+          );
+        },
       ),
     );
   }

@@ -187,17 +187,22 @@ class ZetaTextInputState extends State<ZetaTextInput> implements ZetaFormFieldSt
   }
 
   BoxConstraints get _affixConstraints {
-    late final double size;
+    late final double width;
+    late final double height;
     switch (widget.size) {
       case ZetaWidgetSize.large:
-        size = ZetaSpacing.xl_6;
+        width = ZetaSpacing.xl_6;
+        height = ZetaSpacing.xl_8;
       case ZetaWidgetSize.medium:
-        size = ZetaSpacing.xl_4;
+        width = ZetaSpacing.xl_4;
+        height = ZetaSpacing.xl_6;
       case ZetaWidgetSize.small:
-        size = ZetaSpacing.xl_2;
+        width = ZetaSpacing.xl_2;
+        height = ZetaSpacing.xl_4;
     }
     return BoxConstraints(
-      minWidth: size,
+      minWidth: width,
+      maxHeight: height,
     );
   }
 
@@ -332,7 +337,7 @@ class ZetaTextInputState extends State<ZetaTextInput> implements ZetaFormFieldSt
                 contentPadding: _contentPadding,
                 filled: true,
                 prefixIcon: _prefix,
-                prefixIconConstraints: widget.prefixText != null ? _affixConstraints : null,
+                prefixIconConstraints: _affixConstraints,
                 suffixIcon: _suffix,
                 suffixIconConstraints: _affixConstraints,
                 focusColor: _backgroundColor,
