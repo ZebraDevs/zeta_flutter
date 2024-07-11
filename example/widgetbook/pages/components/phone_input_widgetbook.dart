@@ -18,7 +18,7 @@ Widget phoneInputUseCase(BuildContext context) {
           child: ZetaPhoneInput(
             disabled: enabled,
             label: 'Phone number',
-            hint: 'Enter your phone number',
+            hintText: 'Enter your phone number',
             countries: countries.isEmpty ? null : countries.toUpperCase().split(','),
             useRootNavigator: false,
           ),

@@ -452,7 +452,6 @@ class _DropdownItemState<T> extends State<_DropdownItem<T>> {
           ),
           child: Row(
             mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               if (leading != null) leading,
               Expanded(

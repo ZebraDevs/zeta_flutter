@@ -25,7 +25,7 @@ class _PhoneInputExampleState extends State<PhoneInputExample> {
               padding: const EdgeInsets.all(20),
               child: ZetaPhoneInput(
                 label: 'Phone number',
-                hint: 'Enter your phone number',
+                hintText: 'Enter your phone number',
                 hasError: _errorText != null,
                 errorText: _errorText,
                 onChanged: (value) {
@@ -44,7 +44,7 @@ class _PhoneInputExampleState extends State<PhoneInputExample> {
               padding: const EdgeInsets.all(20),
               child: ZetaPhoneInput(
                 label: 'Phone number',
-                hint: 'Enter your phone number',
+                hintText: 'Enter your phone number',
                 disabled: true,
               ),
             ),
