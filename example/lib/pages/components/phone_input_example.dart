@@ -45,7 +45,7 @@ class _PhoneInputExampleState extends State<PhoneInputExample> {
               child: ZetaPhoneInput(
                 label: 'Phone number',
                 hint: 'Enter your phone number',
-                enabled: false,
+                disabled: true,
               ),
             ),
           ],

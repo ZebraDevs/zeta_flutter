@@ -37,6 +37,7 @@ class ZetaTextInput extends ZetaFormField<String> {
     this.suffixTextStyle,
     this.onSubmit,
     this.obscureText = false,
+    this.keyboardType,
   })  : assert(initialValue == null || controller == null, 'Only one of initial value and controller can be accepted.'),
         assert(prefix == null || prefixText == null, 'Only one of prefix or prefixText can be accepted.'),
         assert(suffix == null || suffixText == null, 'Only one of suffix or suffixText can be accepted.');
@@ -107,6 +108,8 @@ class ZetaTextInput extends ZetaFormField<String> {
   /// Obscures the text within the input.
   /// {@endtemplate}
   final bool obscureText;
+
+  final TextInputType? keyboardType;
 
   @override
   State<ZetaTextInput> createState() => ZetaTextInputState();
@@ -198,36 +201,37 @@ class ZetaTextInputState extends State<ZetaTextInput> implements ZetaFormFieldSt
     );
   }
 
-  Widget? get _prefix {
-    if (widget.prefix != null) return widget.prefix;
-    if (widget.prefixText != null) {
-      final style = widget.prefixTextStyle ?? _affixStyle;
-      return Center(
+  Widget? get _prefix => _getAffix(
+        widget: widget.prefix,
+        text: widget.prefixText,
+        textStyle: widget.prefixTextStyle,
+      );
+
+  Widget? get _suffix => _getAffix(
+        widget: widget.suffix,
+        text: widget.suffixText,
+        textStyle: widget.suffixTextStyle,
+      );
+
+  Widget? _getAffix({
+    required Widget? widget,
+    required String? text,
+    required TextStyle? textStyle,
+  }) {
+    if (widget == null && text == null) return null;
+
+    late final Widget child;
+    if (widget != null) child = widget;
+    if (text != null) {
+      child = Center(
         widthFactor: 0,
         child: Text(
-          widget.prefixText!,
-          style: style,
+          text,
         ),
       ).paddingStart(ZetaSpacing.small);
     }
 
-    return null;
-  }
-
-  Widget? get _suffix {
-    if (widget.suffix != null) return widget.suffix;
-    if (widget.suffixText != null) {
-      final style = widget.suffixTextStyle ?? _affixStyle;
-      return Center(
-        widthFactor: 0,
-        child: Text(
-          widget.suffixText!,
-          style: style,
-        ),
-      ).paddingEnd(ZetaSpacing.small);
-    }
-
-    return null;
+    return DefaultTextStyle(style: textStyle ?? _affixStyle, child: child);
   }
 
   OutlineInputBorder _baseBorder(bool rounded) => OutlineInputBorder(
@@ -309,6 +313,7 @@ class ZetaTextInputState extends State<ZetaTextInput> implements ZetaFormFieldSt
               enabled: !widget.disabled,
               key: _key,
               controller: _controller,
+              keyboardType: widget.keyboardType,
               inputFormatters: widget.inputFormatters,
               validator: (val) {
                 setState(() {
