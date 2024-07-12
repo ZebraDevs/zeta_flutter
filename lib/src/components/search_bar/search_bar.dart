@@ -17,6 +17,7 @@ class ZetaSearchBar extends StatefulWidget {
     this.showLeadingIcon = true,
     this.showSpeechToText = true,
     @Deprecated('Use disabled instead. ' 'enabled is deprecated as of 0.11.0') bool enabled = true,
+    this.focusNode,
   });
 
   /// Determines the size of the input field.
@@ -51,8 +52,12 @@ class ZetaSearchBar extends StatefulWidget {
   /// Default is `true`.
   final bool showSpeechToText;
 
+  /// A [FocusNode] for the underlying [TextFormField]
+  final FocusNode? focusNode;
+
   @override
   State<ZetaSearchBar> createState() => _ZetaSearchBarState();
+
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
@@ -65,7 +70,8 @@ class ZetaSearchBar extends StatefulWidget {
       ..add(StringProperty('initialValue', initialValue))
       ..add(ObjectFlagProperty<VoidCallback?>.has('onSpeechToText', onSpeechToText))
       ..add(DiagnosticsProperty<bool>('showLeadingIcon', showLeadingIcon))
-      ..add(DiagnosticsProperty<bool>('showSpeechToText', showSpeechToText));
+      ..add(DiagnosticsProperty<bool>('showSpeechToText', showSpeechToText))
+      ..add(DiagnosticsProperty<FocusNode>('focusNode', focusNode));
   }
 }
 
@@ -87,6 +93,9 @@ class _ZetaSearchBarState extends State<ZetaSearchBar> {
     super.didUpdateWidget(oldWidget);
     _size = widget.size ?? ZetaWidgetSize.large;
     _shape = widget.shape ?? ZetaWidgetBorder.rounded;
+    if (oldWidget.initialValue != widget.initialValue) {
+      _controller.text = widget.initialValue ?? '';
+    }
   }
 
   @override
@@ -103,6 +112,7 @@ class _ZetaSearchBarState extends State<ZetaSearchBar> {
     return ZetaRoundedScope(
       rounded: widget.shape != ZetaWidgetBorder.sharp,
       child: TextFormField(
+        focusNode: widget.focusNode,
         enabled: !widget.disabled,
         controller: _controller,
         keyboardType: TextInputType.text,
