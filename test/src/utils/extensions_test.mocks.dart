@@ -1496,6 +1496,13 @@ class MockZeta extends _i1.Mock implements _i10.Zeta {
       ) as _i6.ZetaThemeData);
 
   @override
+  bool get rounded => (super.noSuchMethod(
+        Invocation.getter(#rounded),
+        returnValue: false,
+        returnValueForMissingStub: false,
+      ) as bool);
+
+  @override
   _i6.ZetaColors get colors => (super.noSuchMethod(
         Invocation.getter(#colors),
         returnValue: _FakeZetaColors_5(
