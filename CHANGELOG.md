@@ -1,5 +1,29 @@
 # Changelog
 
+## [0.14.1](https://github.com/ZebraDevs/zeta_flutter/compare/v0.14.0...v0.14.1) (2024-07-15)
+
+
+### ✨ New Features
+
+* Add FocusNode to ZetaSearchBar ([#132](https://github.com/ZebraDevs/zeta_flutter/issues/132)) ([02f5d4c](https://github.com/ZebraDevs/zeta_flutter/commit/02f5d4cd3dcb5dd05039e945748b08cffd15a80e))
+* **UX-1118:** Add basic semantics for all components ([#131](https://github.com/ZebraDevs/zeta_flutter/issues/131)) ([9c26ef1](https://github.com/ZebraDevs/zeta_flutter/commit/9c26ef1e776476f3ba83d28dc02eb8db60650865))
+
+
+### 🪲 Bug Fixes
+
+* Update size of thumb on slider ([9c26ef1](https://github.com/ZebraDevs/zeta_flutter/commit/9c26ef1e776476f3ba83d28dc02eb8db60650865))
+
+
+### 🧪 Tests
+
+* adds tests for ZetaSearchBar ([02f5d4c](https://github.com/ZebraDevs/zeta_flutter/commit/02f5d4cd3dcb5dd05039e945748b08cffd15a80e))
+* Update tests for recently changed files ([9c26ef1](https://github.com/ZebraDevs/zeta_flutter/commit/9c26ef1e776476f3ba83d28dc02eb8db60650865))
+
+
+### 🧹 Miscellaneous Chores
+
+* release 0.14.1 ([1b06765](https://github.com/ZebraDevs/zeta_flutter/commit/1b06765a4621ad813aab3f7448b51b50d1582e3d))
+
 ## [0.14.0](https://github.com/ZebraDevs/zeta_flutter/compare/v0.13.0...v0.14.0) (2024-07-08)
 
 
