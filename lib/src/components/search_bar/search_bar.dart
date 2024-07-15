@@ -12,11 +12,14 @@ class ZetaSearchBar extends StatefulWidget {
     this.hint,
     this.initialValue,
     this.onChanged,
+    this.onSubmit,
     this.onSpeechToText,
     this.disabled = false,
     this.showLeadingIcon = true,
     this.showSpeechToText = true,
     @Deprecated('Use disabled instead. ' 'enabled is deprecated as of 0.11.0') bool enabled = true,
+    this.focusNode,
+    this.textInputAction,
   });
 
   /// Determines the size of the input field.
@@ -35,7 +38,13 @@ class ZetaSearchBar extends StatefulWidget {
   final String? initialValue;
 
   /// A callback, which provides the entered text.
-  final void Function(String?)? onChanged;
+  final void Function(String? text)? onChanged;
+
+  /// A callback, called when [textInputAction] is performed.
+  final void Function(String text)? onSubmit;
+
+  /// The type of action button to use for the keyboard.
+  final TextInputAction? textInputAction;
 
   /// A callback, which is invoked when the microphone button is pressed.
   final Future<String?> Function()? onSpeechToText;
@@ -51,8 +60,12 @@ class ZetaSearchBar extends StatefulWidget {
   /// Default is `true`.
   final bool showSpeechToText;
 
+  /// A [FocusNode] for the underlying [TextFormField]
+  final FocusNode? focusNode;
+
   @override
   State<ZetaSearchBar> createState() => _ZetaSearchBarState();
+
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
@@ -65,7 +78,10 @@ class ZetaSearchBar extends StatefulWidget {
       ..add(StringProperty('initialValue', initialValue))
       ..add(ObjectFlagProperty<VoidCallback?>.has('onSpeechToText', onSpeechToText))
       ..add(DiagnosticsProperty<bool>('showLeadingIcon', showLeadingIcon))
-      ..add(DiagnosticsProperty<bool>('showSpeechToText', showSpeechToText));
+      ..add(DiagnosticsProperty<bool>('showSpeechToText', showSpeechToText))
+      ..add(DiagnosticsProperty<FocusNode>('focusNode', focusNode))
+      ..add(ObjectFlagProperty<void Function(String text)?>.has('onSubmit', onSubmit))
+      ..add(EnumProperty<TextInputAction>('textInputAction', textInputAction));
   }
 }
 
@@ -87,6 +103,9 @@ class _ZetaSearchBarState extends State<ZetaSearchBar> {
     super.didUpdateWidget(oldWidget);
     _size = widget.size ?? ZetaWidgetSize.large;
     _shape = widget.shape ?? ZetaWidgetBorder.rounded;
+    if (oldWidget.initialValue != widget.initialValue) {
+      _controller.text = widget.initialValue ?? '';
+    }
   }
 
   @override
@@ -103,9 +122,12 @@ class _ZetaSearchBarState extends State<ZetaSearchBar> {
     return ZetaRoundedScope(
       rounded: widget.shape != ZetaWidgetBorder.sharp,
       child: TextFormField(
+        focusNode: widget.focusNode,
         enabled: !widget.disabled,
         controller: _controller,
         keyboardType: TextInputType.text,
+        textInputAction: widget.textInputAction,
+        onFieldSubmitted: widget.onSubmit,
         onChanged: (value) => setState(() => widget.onChanged?.call(value)),
         style: ZetaTextStyles.bodyMedium,
         decoration: InputDecoration(
@@ -138,6 +160,7 @@ class _ZetaSearchBarState extends State<ZetaSearchBar> {
               children: [
                 if (_controller.text.isNotEmpty && !widget.disabled) ...[
                   IconButton(
+                    key: const ValueKey('search-clear-btn'),
                     visualDensity: const VisualDensity(
                       horizontal: -4,
                       vertical: -4,
@@ -166,6 +189,7 @@ class _ZetaSearchBarState extends State<ZetaSearchBar> {
                   padding: const EdgeInsets.only(right: ZetaSpacing.minimum),
                   child: widget.showSpeechToText
                       ? IconButton(
+                          key: const ValueKey('speech-to-text-btn'),
                           visualDensity: const VisualDensity(
                             horizontal: -4,
                             vertical: -4,
