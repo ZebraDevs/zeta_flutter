@@ -23,6 +23,7 @@ class ZetaPhoneInput extends ZetaStatefulWidget {
     this.countries,
     this.countrySearchHint,
     this.useRootNavigator = true,
+    this.selectCountrySemanticLabel,
   });
 
   /// If provided, displays a label above the input field.
@@ -62,6 +63,11 @@ class ZetaPhoneInput extends ZetaStatefulWidget {
   /// Determines if the root navigator should be used in the [CountriesDialog].
   final bool useRootNavigator;
 
+  /// The semantic label for the country selection button.
+  ///
+  /// {@macro zeta-widget-semantic-label}
+  final String? selectCountrySemanticLabel;
+
   @override
   State<ZetaPhoneInput> createState() => _ZetaPhoneInputState();
   @override
@@ -79,7 +85,8 @@ class ZetaPhoneInput extends ZetaStatefulWidget {
       ..add(StringProperty('phoneNumber', phoneNumber))
       ..add(IterableProperty<String>('countries', countries))
       ..add(DiagnosticsProperty<bool>('useRootNavigator', useRootNavigator))
-      ..add(StringProperty('countrySearchHint', countrySearchHint));
+      ..add(StringProperty('countrySearchHint', countrySearchHint))
+      ..add(StringProperty('selectCountrySemanticLabel', selectCountrySemanticLabel));
   }
 }
 
@@ -143,175 +150,185 @@ class _ZetaPhoneInputState extends State<ZetaPhoneInput> {
             : zeta.colors.cool.shade70
         : zeta.colors.cool.shade50;
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        if (widget.label != null)
-          Padding(
-            padding: const EdgeInsets.only(bottom: 5),
-            child: Text(
-              widget.label!,
-              style: ZetaTextStyles.bodyMedium.copyWith(
-                color: widget.enabled ? zeta.colors.textDefault : zeta.colors.cool.shade50,
+    return Semantics(
+      enabled: widget.enabled,
+      excludeSemantics: !widget.enabled,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          if (widget.label != null)
+            Padding(
+              padding: const EdgeInsets.only(bottom: 5),
+              child: Text(
+                widget.label!,
+                style: ZetaTextStyles.bodyMedium.copyWith(
+                  color: widget.enabled ? zeta.colors.textDefault : zeta.colors.cool.shade50,
+                ),
               ),
             ),
-          ),
-        SizedBox(
-          width: double.infinity,
-          child: Row(
-            children: [
-              SizedBox(
-                width: ZetaSpacing.xl_9,
-                height: ZetaSpacing.xl_8,
-                child: DecoratedBox(
-                  decoration: BoxDecoration(
-                    color: widget.enabled ? zeta.colors.surfacePrimary : zeta.colors.cool.shade30,
-                    borderRadius: rounded
-                        ? const BorderRadius.only(
-                            topLeft: Radius.circular(ZetaSpacing.minimum),
-                            bottomLeft: Radius.circular(ZetaSpacing.minimum),
-                          )
-                        : ZetaRadius.none,
-                    border: Border(
-                      top: BorderSide(color: zeta.colors.cool.shade40),
-                      bottom: BorderSide(color: zeta.colors.cool.shade40),
-                      left: BorderSide(color: zeta.colors.cool.shade40),
-                    ),
-                  ),
-                  child: CountriesDialog(
-                    zeta: zeta,
-                    useRootNavigator: widget.useRootNavigator,
-                    enabled: widget.enabled,
-                    searchHint: widget.countrySearchHint,
-                    button: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(
-                            left: ZetaSpacingBase.x2_5,
-                          ),
-                          child: Image.asset(
-                            _selectedCountry.flagUri,
-                            package: 'zeta_flutter',
-                            width: 26,
-                            height: 18,
-                            fit: BoxFit.fitHeight,
-                          ),
-                        ),
-                        ZetaIcon(
-                          ZetaIcons.expand_more,
-                          color: widget.enabled ? zeta.colors.textDefault : zeta.colors.cool.shade50,
-                          size: ZetaSpacing.xl_1,
-                        ),
-                      ],
-                    ),
-                    items: _countries
-                        .map(
-                          (country) => CountriesMenuItem(
-                            value: country,
-                            child: Row(
-                              children: [
-                                SizedBox(
-                                  width: 60,
-                                  child: Text(country.dialCode),
-                                ),
-                                Expanded(
-                                  child: Text(country.name),
-                                ),
-                              ],
-                            ),
-                          ),
-                        )
-                        .toList(),
-                    onChanged: (value) => _onChanged(selectedCountry: value),
-                  ),
-                ),
-              ),
-              Expanded(
-                child: TextFormField(
-                  maxLength: 20,
-                  initialValue: widget.phoneNumber,
-                  enabled: widget.enabled,
-                  inputFormatters: [FilteringTextInputFormatter.allow(RegExp(r'[\d\s\-]'))],
-                  keyboardType: TextInputType.phone,
-                  onChanged: (value) => _onChanged(phoneNumber: value),
-                  style: ZetaTextStyles.bodyMedium.copyWith(
-                    color: widget.enabled ? zeta.colors.textDefault : zeta.colors.cool.shade50,
-                  ),
-                  decoration: InputDecoration(
-                    counterText: '',
-                    isDense: true,
-                    contentPadding: const EdgeInsets.symmetric(
-                      horizontal: 10,
-                      vertical: 10,
-                    ),
-                    hintStyle: ZetaTextStyles.bodyMedium.copyWith(
-                      color: widget.enabled ? zeta.colors.textDefault : zeta.colors.cool.shade50,
-                    ),
-                    prefixIcon: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: ZetaSpacing.small),
-                          child: Text(
-                            _selectedCountry.dialCode,
-                            style: ZetaTextStyles.bodyMedium.copyWith(
-                              color: widget.enabled ? zeta.colors.textDefault : zeta.colors.cool.shade50,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    prefixIconConstraints: const BoxConstraints(
-                      minHeight: ZetaSpacing.xl_8,
-                      minWidth: ZetaSpacing.xl_6,
-                    ),
-                    filled: true,
-                    fillColor: widget.enabled
-                        ? _hasError
-                            ? zeta.colors.red.shade10
-                            : zeta.colors.surfacePrimary
-                        : zeta.colors.cool.shade30,
-                    enabledBorder: _hasError
-                        ? _errorInputBorder(zeta, rounded: rounded)
-                        : _defaultInputBorder(zeta, rounded: rounded),
-                    focusedBorder: _hasError
-                        ? _errorInputBorder(zeta, rounded: rounded)
-                        : _focusedInputBorder(zeta, rounded: rounded),
-                    disabledBorder: _defaultInputBorder(zeta, rounded: rounded),
-                    errorBorder: _errorInputBorder(zeta, rounded: rounded),
-                    focusedErrorBorder: _errorInputBorder(zeta, rounded: rounded),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-        if (widget.hint != null || showError)
-          Padding(
-            padding: const EdgeInsets.only(top: 5),
+          SizedBox(
+            width: double.infinity,
             child: Row(
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(right: ZetaSpacing.small),
-                  child: ZetaIcon(
-                    (showError && widget.enabled) ? ZetaIcons.error : ZetaIcons.info,
-                    size: ZetaSpacing.large,
-                    color: hintErrorColor,
+                Semantics(
+                  button: true,
+                  excludeSemantics: true,
+                  enabled: widget.enabled,
+                  label: widget.selectCountrySemanticLabel,
+                  child: SizedBox(
+                    width: ZetaSpacing.xl_9,
+                    height: ZetaSpacing.xl_8,
+                    child: DecoratedBox(
+                      decoration: BoxDecoration(
+                        color: widget.enabled ? zeta.colors.surfacePrimary : zeta.colors.cool.shade30,
+                        borderRadius: rounded
+                            ? const BorderRadius.only(
+                                topLeft: Radius.circular(ZetaSpacing.minimum),
+                                bottomLeft: Radius.circular(ZetaSpacing.minimum),
+                              )
+                            : ZetaRadius.none,
+                        border: Border(
+                          top: BorderSide(color: zeta.colors.cool.shade40),
+                          bottom: BorderSide(color: zeta.colors.cool.shade40),
+                          left: BorderSide(color: zeta.colors.cool.shade40),
+                        ),
+                      ),
+                      child: CountriesDialog(
+                        zeta: zeta,
+                        useRootNavigator: widget.useRootNavigator,
+                        enabled: widget.enabled,
+                        searchHint: widget.countrySearchHint,
+                        button: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                left: ZetaSpacingBase.x2_5,
+                              ),
+                              child: Image.asset(
+                                _selectedCountry.flagUri,
+                                package: 'zeta_flutter',
+                                width: 26,
+                                height: 18,
+                                fit: BoxFit.fitHeight,
+                              ),
+                            ),
+                            ZetaIcon(
+                              ZetaIcons.expand_more,
+                              color: widget.enabled ? zeta.colors.textDefault : zeta.colors.cool.shade50,
+                              size: ZetaSpacing.xl_1,
+                            ),
+                          ],
+                        ),
+                        items: _countries
+                            .map(
+                              (country) => CountriesMenuItem(
+                                value: country,
+                                child: Row(
+                                  children: [
+                                    SizedBox(
+                                      width: 60,
+                                      child: Text(country.dialCode),
+                                    ),
+                                    Expanded(
+                                      child: Text(country.name),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            )
+                            .toList(),
+                        onChanged: (value) => _onChanged(selectedCountry: value),
+                      ),
+                    ),
                   ),
                 ),
                 Expanded(
-                  child: Text(
-                    showError && widget.enabled ? widget.errorText! : widget.hint!,
-                    style: ZetaTextStyles.bodyXSmall.copyWith(
-                      color: hintErrorColor,
+                  child: TextFormField(
+                    maxLength: 20,
+                    initialValue: widget.phoneNumber,
+                    enabled: widget.enabled,
+                    inputFormatters: [FilteringTextInputFormatter.allow(RegExp(r'[\d\s\-]'))],
+                    keyboardType: TextInputType.phone,
+                    onChanged: (value) => _onChanged(phoneNumber: value),
+                    style: ZetaTextStyles.bodyMedium.copyWith(
+                      color: widget.enabled ? zeta.colors.textDefault : zeta.colors.cool.shade50,
+                    ),
+                    decoration: InputDecoration(
+                      counterText: '',
+                      isDense: true,
+                      contentPadding: const EdgeInsets.symmetric(
+                        horizontal: 10,
+                        vertical: 10,
+                      ),
+                      hintStyle: ZetaTextStyles.bodyMedium.copyWith(
+                        color: widget.enabled ? zeta.colors.textDefault : zeta.colors.cool.shade50,
+                      ),
+                      prefixIcon: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: ZetaSpacing.small),
+                            child: Text(
+                              _selectedCountry.dialCode,
+                              style: ZetaTextStyles.bodyMedium.copyWith(
+                                color: widget.enabled ? zeta.colors.textDefault : zeta.colors.cool.shade50,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      prefixIconConstraints: const BoxConstraints(
+                        minHeight: ZetaSpacing.xl_8,
+                        minWidth: ZetaSpacing.xl_6,
+                      ),
+                      filled: true,
+                      fillColor: widget.enabled
+                          ? _hasError
+                              ? zeta.colors.red.shade10
+                              : zeta.colors.surfacePrimary
+                          : zeta.colors.cool.shade30,
+                      enabledBorder: _hasError
+                          ? _errorInputBorder(zeta, rounded: rounded)
+                          : _defaultInputBorder(zeta, rounded: rounded),
+                      focusedBorder: _hasError
+                          ? _errorInputBorder(zeta, rounded: rounded)
+                          : _focusedInputBorder(zeta, rounded: rounded),
+                      disabledBorder: _defaultInputBorder(zeta, rounded: rounded),
+                      errorBorder: _errorInputBorder(zeta, rounded: rounded),
+                      focusedErrorBorder: _errorInputBorder(zeta, rounded: rounded),
                     ),
                   ),
                 ),
               ],
             ),
           ),
-      ],
+          if (widget.hint != null || showError)
+            Padding(
+              padding: const EdgeInsets.only(top: 5),
+              child: Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(right: ZetaSpacing.small),
+                    child: ZetaIcon(
+                      (showError && widget.enabled) ? ZetaIcons.error : ZetaIcons.info,
+                      size: ZetaSpacing.large,
+                      color: hintErrorColor,
+                    ),
+                  ),
+                  Expanded(
+                    child: Text(
+                      showError && widget.enabled ? widget.errorText! : widget.hint!,
+                      style: ZetaTextStyles.bodyXSmall.copyWith(
+                        color: hintErrorColor,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+        ],
+      ),
     );
   }
 

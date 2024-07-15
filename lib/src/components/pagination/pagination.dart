@@ -21,13 +21,18 @@ enum ZetaPaginationType {
 class ZetaPagination extends ZetaStatefulWidget {
   /// Creates a new [ZetaPagination]
   const ZetaPagination({
+    super.rounded,
+    super.key,
     required this.pages,
     this.type = ZetaPaginationType.standard,
     this.onChange,
     this.currentPage = 1,
     @Deprecated('Set onChange to null. ' 'Disabled is deprecated as of 0.11.0') bool disabled = false,
-    super.rounded,
-    super.key,
+    this.semanticFirst,
+    this.semanticPrevious,
+    this.semanticNext,
+    this.semanticLast,
+    this.semanticDropdown,
   })  : assert(
           pages > 0,
           'Pages must be greater than zero',
@@ -56,6 +61,31 @@ class ZetaPagination extends ZetaStatefulWidget {
   /// Default to [ZetaPaginationType.standard]
   final ZetaPaginationType type;
 
+  /// Semantic value passed to the first button.
+  ///
+  /// {@macro zeta-widget-semantic-label}
+  final String? semanticFirst;
+
+  /// Semantic value passed to the previous button.
+  ///
+  /// {@macro zeta-widget-semantic-label}
+  final String? semanticPrevious;
+
+  /// Semantic value passed to the next button.
+  ///
+  /// {@macro zeta-widget-semantic-label}
+  final String? semanticNext;
+
+  /// Semantic value passed to the last button.
+  ///
+  /// {@macro zeta-widget-semantic-label}
+  final String? semanticLast;
+
+  /// Semantic value passed to the dropdown.
+  ///
+  /// {@macro zeta-widget-semantic-label}
+  final String? semanticDropdown;
+
   @override
   State<ZetaPagination> createState() => _ZetaPaginationState();
   @override
@@ -66,7 +96,12 @@ class ZetaPagination extends ZetaStatefulWidget {
       ..add(IntProperty('currentPage', currentPage))
       ..add(DiagnosticsProperty<bool>('rounded', rounded))
       ..add(ObjectFlagProperty<void Function(int value)?>.has('onChange', onChange))
-      ..add(EnumProperty<ZetaPaginationType>('type', type));
+      ..add(EnumProperty<ZetaPaginationType>('type', type))
+      ..add(StringProperty('semanticLast', semanticLast))
+      ..add(StringProperty('semanticFirst', semanticFirst))
+      ..add(StringProperty('semanticPrevious', semanticPrevious))
+      ..add(StringProperty('semanticNext', semanticNext))
+      ..add(StringProperty('semanticDropdown', semanticDropdown));
   }
 }
 
@@ -180,24 +215,28 @@ class _ZetaPaginationState extends State<ZetaPagination> {
         child: Text((i + 1).toString()),
       ),
     );
-    return Container(
-      height: ZetaSpacing.xl_6,
-      decoration: BoxDecoration(
-        border: Border.all(color: colors.borderSubtle),
-        borderRadius: rounded ? ZetaRadius.minimal : ZetaRadius.none,
-      ),
-      // TODO(mikecoomber): Replace with Zeta Dropdown
-      child: DropdownButton(
-        items: items,
-        onChanged: (val) => _onItemPressed(val!),
-        value: _currentPage,
-        icon: const ZetaIcon(ZetaIcons.expand_more).paddingStart(ZetaSpacing.small),
-        underline: const Nothing(),
-        style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-              color: colors.textSubtle,
-            ),
-        padding: const EdgeInsets.symmetric(
-          horizontal: ZetaSpacing.medium,
+    return Semantics(
+      label: widget.semanticDropdown,
+      child: Container(
+        height: ZetaSpacing.xl_6,
+
+        decoration: BoxDecoration(
+          border: Border.all(color: colors.borderSubtle),
+          borderRadius: rounded ? ZetaRadius.minimal : ZetaRadius.none,
+        ),
+        // TODO(mikecoomber): Replace with Zeta Dropdown
+        child: DropdownButton(
+          items: items,
+          onChanged: (val) => _onItemPressed(val!),
+          value: _currentPage,
+          icon: const ZetaIcon(ZetaIcons.expand_more).paddingStart(ZetaSpacing.small),
+          underline: const Nothing(),
+          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                color: colors.textSubtle,
+              ),
+          padding: const EdgeInsets.symmetric(
+            horizontal: ZetaSpacing.medium,
+          ),
         ),
       ),
     );
@@ -217,28 +256,28 @@ class _ZetaPaginationState extends State<ZetaPagination> {
               _PaginationItem(
                 icon: ZetaIcons.first_page,
                 onPressed: () => _onItemPressed(1),
-                disabled: _disabled,
+                disabled: _disabled || _currentPage == 1,
+                semanticLabel: widget.semanticFirst,
               ),
             _PaginationItem(
               icon: ZetaIcons.chevron_left,
               onPressed: () => _onItemPressed(max(1, _currentPage - 1)),
-              disabled: _disabled,
+              disabled: _disabled || _currentPage == 1,
+              semanticLabel: widget.semanticPrevious,
             ),
             if (!showDropdown) ...numberedPaginationItems else paginationDropdown,
             _PaginationItem(
               icon: ZetaIcons.chevron_right,
-              onPressed: () => _onItemPressed(
-                min(widget.pages, _currentPage + 1),
-              ),
-              disabled: _disabled,
+              onPressed: () => _onItemPressed(min(widget.pages, _currentPage + 1)),
+              disabled: _disabled || _currentPage == widget.pages,
+              semanticLabel: widget.semanticNext,
             ),
             if (!showDropdown)
               _PaginationItem(
                 icon: ZetaIcons.last_page,
-                onPressed: () => _onItemPressed(
-                  widget.pages,
-                ),
-                disabled: _disabled,
+                onPressed: () => _onItemPressed(widget.pages),
+                disabled: _disabled || _currentPage == widget.pages,
+                semanticLabel: widget.semanticLast,
               ),
           ];
 
@@ -253,13 +292,14 @@ class _ZetaPaginationState extends State<ZetaPagination> {
   }
 }
 
-class _PaginationItem extends StatelessWidget {
+class _PaginationItem extends ZetaStatelessWidget {
   const _PaginationItem({
     required this.onPressed,
     required this.disabled,
     this.selected = false,
     this.value,
     this.icon,
+    this.semanticLabel,
   });
 
   final VoidCallback onPressed;
@@ -267,6 +307,7 @@ class _PaginationItem extends StatelessWidget {
   final IconData? icon;
   final bool disabled;
   final bool selected;
+  final String? semanticLabel;
 
   @override
   Widget build(BuildContext context) {
@@ -291,35 +332,40 @@ class _PaginationItem extends StatelessWidget {
       child = ZetaIcon(
         icon,
         color: disabled ? colors.iconDisabled : colors.iconDefault,
+        semanticLabel: semanticLabel,
       );
     }
 
-    return ConstrainedBox(
-      constraints: const BoxConstraints(
-        minHeight: _itemHeight,
-        maxHeight: _itemHeight,
-        minWidth: _itemWidth,
-      ),
-      child: Material(
-        borderRadius: rounded ? ZetaRadius.minimal : ZetaRadius.none,
-        color: disabled
-            ? colors.surfaceDisabled
-            : selected
-                ? colors.cool[100]
-                : colors.surfacePrimary,
-        child: InkWell(
-          onTap: disabled ? null : onPressed,
+    return Semantics(
+      button: true,
+      enabled: !disabled,
+      child: ConstrainedBox(
+        constraints: const BoxConstraints(
+          minHeight: _itemHeight,
+          maxHeight: _itemHeight,
+          minWidth: _itemWidth,
+        ),
+        child: Material(
           borderRadius: rounded ? ZetaRadius.minimal : ZetaRadius.none,
-          highlightColor: selected ? colors.cool[100] : colors.surfaceSelected,
-          hoverColor: selected ? colors.cool[100] : colors.surfaceHover,
-          enableFeedback: false,
-          child: Container(
-            alignment: Alignment.center,
-            padding: const EdgeInsets.symmetric(horizontal: ZetaSpacing.minimum),
-            decoration: BoxDecoration(
-              borderRadius: rounded ? ZetaRadius.minimal : ZetaRadius.none,
+          color: disabled
+              ? colors.surfaceDisabled
+              : selected
+                  ? colors.cool[100]
+                  : colors.surfacePrimary,
+          child: InkWell(
+            onTap: disabled ? null : onPressed,
+            borderRadius: rounded ? ZetaRadius.minimal : ZetaRadius.none,
+            highlightColor: selected ? colors.cool[100] : colors.surfaceSelected,
+            hoverColor: selected ? colors.cool[100] : colors.surfaceHover,
+            enableFeedback: false,
+            child: Container(
+              alignment: Alignment.center,
+              padding: const EdgeInsets.symmetric(horizontal: ZetaSpacing.minimum),
+              decoration: BoxDecoration(
+                borderRadius: rounded ? ZetaRadius.minimal : ZetaRadius.none,
+              ),
+              child: child,
             ),
-            child: child,
           ),
         ),
       ),
@@ -334,7 +380,8 @@ class _PaginationItem extends StatelessWidget {
       ..add(IntProperty('value', value))
       ..add(DiagnosticsProperty<IconData?>('icon', icon))
       ..add(DiagnosticsProperty<bool>('disabled', disabled))
-      ..add(DiagnosticsProperty<bool>('selected', selected));
+      ..add(DiagnosticsProperty<bool>('selected', selected))
+      ..add(StringProperty('semanticLabel', semanticLabel));
   }
 }
 

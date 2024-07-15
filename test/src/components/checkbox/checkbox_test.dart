@@ -118,6 +118,30 @@ void main() {
       await tester.pump();
     });
 
+    testWidgets('ZetaCheckbox UI changes on hover', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        TestApp(
+          home: ZetaCheckbox(
+            onChanged: (value) {},
+          ),
+        ),
+      );
+
+      final checkboxFinder = find.byType(ZetaCheckbox);
+
+      // Hover state
+      final gesture = await tester.createGesture(kind: PointerDeviceKind.mouse);
+      await gesture.addPointer(location: Offset.zero);
+      addTearDown(gesture.removePointer);
+      await tester.pump();
+      await gesture.moveTo(tester.getCenter(checkboxFinder));
+      await tester.pumpAndSettle();
+      await expectLater(
+        checkboxFinder,
+        matchesGoldenFile(join(getCurrentPath('checkbox'), 'checkbox_hover.png')),
+      );
+    });
+
     testWidgets('debugFillProperties works correctly', (WidgetTester tester) async {
       final diagnostics = DiagnosticPropertiesBuilder();
       ZetaCheckbox().debugFillProperties(diagnostics);

@@ -12,13 +12,14 @@ import '../../../zeta_flutter.dart';
 class ZetaFilterChip extends ZetaChip {
   /// Creates a [ZetaFilterChip].
   const ZetaFilterChip({
-    super.key,
     required super.label,
+    super.key,
     super.rounded,
     super.selected,
     super.draggable = false,
     super.data,
     super.onDragCompleted,
+    super.semanticLabel,
     ValueSetter<bool>? onTap,
   }) : super(onToggle: onTap);
 

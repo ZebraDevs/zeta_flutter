@@ -372,24 +372,105 @@ ThemeData generateZetaTheme({
   ZetaThemeData? zetaThemeData,
 }) {
   if (existingTheme != null) {
+    final baseThemeData = ThemeData();
+
     // Apply the Zeta styles to the existing theme, ignoring fields that are the same as the default ThemeData.
     return ThemeData(
       brightness: brightness,
       useMaterial3: existingTheme.useMaterial3,
       fontFamily: fontFamily ??
-          (existingTheme.textTheme.bodyMedium?.fontFamily == ThemeData().textTheme.bodyMedium?.fontFamily
-              ? null
+          (existingTheme.textTheme.bodyMedium?.fontFamily == baseThemeData.textTheme.bodyMedium?.fontFamily
+              ? kZetaFontFamily
               : existingTheme.textTheme.bodyMedium?.fontFamily),
-      scaffoldBackgroundColor: (existingTheme.colorScheme.surfaceTertiary == ThemeData().colorScheme.surfaceTertiary
-              ? null
-              : existingTheme.colorScheme.surfaceTertiary) ??
-          colorScheme.surfaceTertiary,
+      scaffoldBackgroundColor: [
+        Colors.grey[850]!,
+        Colors.grey[50]!,
+        baseThemeData.scaffoldBackgroundColor,
+        baseThemeData.colorScheme.surface,
+      ].any((e) => e == existingTheme.scaffoldBackgroundColor)
+          ? colorScheme.surfaceTertiary
+          : existingTheme.scaffoldBackgroundColor,
       colorScheme:
-          ((existingTheme.colorScheme == ThemeData().colorScheme ? null : existingTheme.colorScheme) ?? colorScheme)
+          ((existingTheme.colorScheme == baseThemeData.colorScheme ? null : existingTheme.colorScheme) ?? colorScheme)
               .copyWith(brightness: brightness),
-      textTheme: (existingTheme.textTheme == ThemeData().textTheme ? null : existingTheme.textTheme) ?? zetaTextTheme,
-      iconTheme: (existingTheme.iconTheme == ThemeData().iconTheme ? null : existingTheme.iconTheme) ??
+      textTheme: (existingTheme.textTheme == baseThemeData.textTheme ? null : existingTheme.textTheme) ?? zetaTextTheme,
+      iconTheme: (existingTheme.iconTheme == baseThemeData.iconTheme ? null : existingTheme.iconTheme) ??
           const IconThemeData(size: kZetaIconSize),
+      actionIconTheme: existingTheme.actionIconTheme,
+      applyElevationOverlayColor: existingTheme.applyElevationOverlayColor,
+      cupertinoOverrideTheme: existingTheme.cupertinoOverrideTheme,
+      inputDecorationTheme: existingTheme.inputDecorationTheme,
+      materialTapTargetSize: existingTheme.materialTapTargetSize,
+      pageTransitionsTheme: existingTheme.pageTransitionsTheme,
+      platform: existingTheme.platform,
+      scrollbarTheme: existingTheme.scrollbarTheme,
+      splashFactory: existingTheme.splashFactory,
+      visualDensity: existingTheme.visualDensity,
+      canvasColor: existingTheme.canvasColor,
+      cardColor: existingTheme.cardColor,
+      dialogBackgroundColor: existingTheme.dialogBackgroundColor,
+      disabledColor: existingTheme.disabledColor,
+      dividerColor: existingTheme.dividerColor,
+      focusColor: existingTheme.focusColor,
+      highlightColor: existingTheme.highlightColor,
+      hintColor: existingTheme.hintColor,
+      hoverColor: existingTheme.hoverColor,
+      indicatorColor: existingTheme.indicatorColor,
+      primaryColor: existingTheme.primaryColor,
+      primaryColorDark: existingTheme.primaryColorDark,
+      primaryColorLight: existingTheme.primaryColorLight,
+      secondaryHeaderColor: existingTheme.secondaryHeaderColor,
+      shadowColor: existingTheme.shadowColor,
+      splashColor: existingTheme.splashColor,
+      unselectedWidgetColor: existingTheme.unselectedWidgetColor,
+      primaryIconTheme: existingTheme.primaryIconTheme,
+      primaryTextTheme: existingTheme.primaryTextTheme,
+      typography: existingTheme.typography,
+      appBarTheme: existingTheme.appBarTheme,
+      badgeTheme: existingTheme.badgeTheme,
+      bannerTheme: existingTheme.bannerTheme,
+      bottomAppBarTheme: existingTheme.bottomAppBarTheme,
+      bottomNavigationBarTheme: existingTheme.bottomNavigationBarTheme,
+      bottomSheetTheme: existingTheme.bottomSheetTheme,
+      buttonBarTheme: existingTheme.buttonBarTheme,
+      buttonTheme: existingTheme.buttonTheme,
+      cardTheme: existingTheme.cardTheme,
+      checkboxTheme: existingTheme.checkboxTheme,
+      chipTheme: existingTheme.chipTheme,
+      dataTableTheme: existingTheme.dataTableTheme,
+      datePickerTheme: existingTheme.datePickerTheme,
+      dialogTheme: existingTheme.dialogTheme,
+      dividerTheme: existingTheme.dividerTheme,
+      drawerTheme: existingTheme.drawerTheme,
+      dropdownMenuTheme: existingTheme.dropdownMenuTheme,
+      elevatedButtonTheme: existingTheme.elevatedButtonTheme,
+      expansionTileTheme: existingTheme.expansionTileTheme,
+      filledButtonTheme: existingTheme.filledButtonTheme,
+      floatingActionButtonTheme: existingTheme.floatingActionButtonTheme,
+      iconButtonTheme: existingTheme.iconButtonTheme,
+      listTileTheme: existingTheme.listTileTheme,
+      menuBarTheme: existingTheme.menuBarTheme,
+      menuButtonTheme: existingTheme.menuButtonTheme,
+      menuTheme: existingTheme.menuTheme,
+      navigationBarTheme: existingTheme.navigationBarTheme,
+      navigationDrawerTheme: existingTheme.navigationDrawerTheme,
+      navigationRailTheme: existingTheme.navigationRailTheme,
+      outlinedButtonTheme: existingTheme.outlinedButtonTheme,
+      popupMenuTheme: existingTheme.popupMenuTheme,
+      progressIndicatorTheme: existingTheme.progressIndicatorTheme,
+      radioTheme: existingTheme.radioTheme,
+      searchBarTheme: existingTheme.searchBarTheme,
+      searchViewTheme: existingTheme.searchViewTheme,
+      segmentedButtonTheme: existingTheme.segmentedButtonTheme,
+      sliderTheme: existingTheme.sliderTheme,
+      snackBarTheme: existingTheme.snackBarTheme,
+      switchTheme: existingTheme.switchTheme,
+      tabBarTheme: existingTheme.tabBarTheme,
+      textButtonTheme: existingTheme.textButtonTheme,
+      textSelectionTheme: existingTheme.textSelectionTheme,
+      timePickerTheme: existingTheme.timePickerTheme,
+      toggleButtonsTheme: existingTheme.toggleButtonsTheme,
+      tooltipTheme: existingTheme.tooltipTheme,
     );
   }
   return ThemeData(

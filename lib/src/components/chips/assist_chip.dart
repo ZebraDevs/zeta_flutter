@@ -12,13 +12,14 @@ import '../../../zeta_flutter.dart';
 class ZetaAssistChip extends ZetaChip {
   /// Creates a [ZetaAssistChip].
   const ZetaAssistChip({
-    super.key,
     required super.label,
+    super.key,
     super.leading,
     super.rounded,
     super.draggable = false,
     super.data,
     super.onDragCompleted,
     super.onTap,
+    super.semanticLabel,
   });
 }

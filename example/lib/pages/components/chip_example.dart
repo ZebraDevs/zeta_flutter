@@ -24,7 +24,7 @@ class _ChipExampleState extends State<ChipExample> {
       ZetaInputChip(
         label: 'Label',
         leading: const ZetaIcon(ZetaIcons.user),
-        trailing: ZetaIcon(ZetaIcons.close),
+        trailing: IconButton(icon: Icon(ZetaIcons.close), onPressed: () {}),
       ),
     ]);
 

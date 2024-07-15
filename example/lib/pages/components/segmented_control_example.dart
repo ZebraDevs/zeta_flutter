@@ -30,6 +30,7 @@ class _SegmentedControlExampleState extends State<SegmentedControlExample> {
             Padding(
               padding: const EdgeInsets.all(ZetaSpacing.xl_4),
               child: ZetaSegmentedControl(
+                semanticLabel: 'Segmented Control',
                 segments: [
                   for (final value in _textSegments)
                     ZetaButtonSegment(

@@ -17,6 +17,7 @@ class ZetaLabel extends ZetaStatelessWidget {
     super.key,
     required this.label,
     this.status = ZetaWidgetStatus.info,
+    this.semanticLabel,
   });
 
   /// {@template zeta-component-badge-status}
@@ -29,20 +30,30 @@ class ZetaLabel extends ZetaStatelessWidget {
   /// Label of the badge.
   final String label;
 
+  /// The value passed into wrapping [Semantics] widget.
+  ///
+  /// {@macro zeta-widget-semantic-label}
+  ///
+  /// If null, [label] is used.
+  final String? semanticLabel;
+
   @override
   Widget build(BuildContext context) {
     final Color backgroundColor = status.labelBackgroundColor(context);
 
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: ZetaSpacing.minimum, vertical: ZetaSpacingBase.x0_5),
-      decoration: BoxDecoration(
-        color: backgroundColor,
-        borderRadius: context.rounded ? ZetaRadius.minimal : ZetaRadius.none,
-      ),
-      child: Text(
-        label,
-        style: ZetaTextStyles.labelSmall.apply(color: backgroundColor.onColor),
-        overflow: TextOverflow.ellipsis,
+    return Semantics(
+      label: semanticLabel ?? label,
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: ZetaSpacing.minimum, vertical: ZetaSpacingBase.x0_5),
+        decoration: BoxDecoration(
+          color: backgroundColor,
+          borderRadius: context.rounded ? ZetaRadius.minimal : ZetaRadius.none,
+        ),
+        child: Text(
+          label,
+          style: ZetaTextStyles.labelSmall.apply(color: backgroundColor.onColor),
+          overflow: TextOverflow.ellipsis,
+        ),
       ),
     );
   }
@@ -53,7 +64,8 @@ class ZetaLabel extends ZetaStatelessWidget {
     properties
       ..add(StringProperty('label', label))
       ..add(EnumProperty<ZetaWidgetStatus>('status', status))
-      ..add(DiagnosticsProperty<bool>('rounded', rounded));
+      ..add(DiagnosticsProperty<bool>('rounded', rounded))
+      ..add(StringProperty('semanticLabel', semanticLabel));
   }
 }
 

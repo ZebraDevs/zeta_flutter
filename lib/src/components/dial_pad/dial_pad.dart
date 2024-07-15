@@ -188,6 +188,7 @@ class ZetaDialPadButton extends StatelessWidget {
       button: true,
       value: primary,
       excludeSemantics: true,
+      label: secondary,
       child: AnimatedContainer(
         duration: Durations.short2,
         width: ZetaSpacing.xl_9,

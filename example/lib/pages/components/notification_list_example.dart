@@ -2,26 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:zeta_example/widgets.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
-class NotificationListItemExample extends StatefulWidget {
+class NotificationListItemExample extends StatelessWidget {
+  const NotificationListItemExample({Key? key}) : super(key: key);
   static const String name = 'NotificationListItem';
 
-  const NotificationListItemExample({super.key});
-
-  @override
-  State<NotificationListItemExample> createState() => _NotificationListItemExampleState();
-}
-
-class _NotificationListItemExampleState extends State<NotificationListItemExample> {
   @override
   Widget build(BuildContext context) {
     return ExampleScaffold(
-      name: "NotificationListItem",
-      child: SingleChildScrollView(
-          child: Column(
-              children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 400),
-          child: ZetaNotificationListItem(
+      name: name,
+      child: Column(
+        children: [
+          ZetaNotificationListItem(
             body: Text(
               "New urgent" * 300,
               maxLines: 2,
@@ -35,20 +26,9 @@ class _NotificationListItemExampleState extends State<NotificationListItemExampl
               onPressed: () {},
             ),
           ),
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 200),
-          child: ZetaNotificationListItem(
-            body: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "New urgent" * 300,
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                ),
-                ZetaButton.text(label: "label")
-              ],
+          ZetaNotificationListItem(
+            body: Text(
+              "New urgent",
             ),
             title: 'Urgent Message',
             leading: ZetaNotificationBadge.icon(icon: ZetaIcons.check_circle),
@@ -58,8 +38,8 @@ class _NotificationListItemExampleState extends State<NotificationListItemExampl
               onPressed: () {},
             ),
           ),
-        ),
-      ].gap(ZetaSpacing.xl_4))),
+        ].gap(ZetaSpacing.xl_4),
+      ),
     );
   }
 }

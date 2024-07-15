@@ -13,6 +13,7 @@ class InputIconButton extends StatelessWidget {
     required this.disabled,
     required this.size,
     required this.color,
+    this.semanticLabel,
   });
 
   /// The icon
@@ -32,6 +33,11 @@ class InputIconButton extends StatelessWidget {
   /// The color of the icon
   final Color color;
 
+  /// The semantic label of the icon.
+  ///
+  /// {@macro zeta-widget-semantic-label}
+  final String? semanticLabel;
+
   double get _iconSize {
     switch (size) {
       case ZetaWidgetSize.large:
@@ -47,18 +53,24 @@ class InputIconButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = Zeta.of(context).colors;
 
-    return IconButton(
-      padding: EdgeInsets.all(_iconSize / 2),
-      constraints: BoxConstraints(
-        maxHeight: _iconSize * 2,
-        maxWidth: _iconSize * 2,
-        minHeight: _iconSize * 2,
-        minWidth: _iconSize * 2,
+    return Semantics(
+      button: true,
+      label: semanticLabel,
+      enabled: !disabled,
+      excludeSemantics: true,
+      child: IconButton(
+        padding: EdgeInsets.all(_iconSize / 2),
+        constraints: BoxConstraints(
+          maxHeight: _iconSize * 2,
+          maxWidth: _iconSize * 2,
+          minHeight: _iconSize * 2,
+          minWidth: _iconSize * 2,
+        ),
+        color: !disabled ? color : colors.iconDisabled,
+        onPressed: disabled ? null : onTap,
+        iconSize: _iconSize,
+        icon: ZetaIcon(icon),
       ),
-      color: !disabled ? color : colors.iconDisabled,
-      onPressed: disabled ? null : onTap,
-      iconSize: _iconSize,
-      icon: ZetaIcon(icon),
     );
   }
 
@@ -70,6 +82,7 @@ class InputIconButton extends StatelessWidget {
       ..add(ObjectFlagProperty<VoidCallback>.has('onTap', onTap))
       ..add(DiagnosticsProperty<bool>('disabled', disabled))
       ..add(ColorProperty('color', color))
-      ..add(EnumProperty<ZetaWidgetSize>('size', size));
+      ..add(EnumProperty<ZetaWidgetSize>('size', size))
+      ..add(StringProperty('semanticLabel', semanticLabel));
   }
 }

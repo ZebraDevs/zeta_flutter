@@ -124,6 +124,7 @@ class ZetaBreadCrumb extends StatefulWidget {
     this.isSelected = false,
     required this.onPressed,
     this.activeIcon,
+    this.semanticLabel,
   });
 
   /// [ZetaBreadCrumb] label.
@@ -141,6 +142,13 @@ class ZetaBreadCrumb extends StatefulWidget {
   /// Active icon for [ZetaBreadCrumb]
   final IconData? activeIcon;
 
+  /// Label passed to wrapping [Semantics] widget.
+  ///
+  /// {@macro zeta-widget-semantic-label}
+  ///
+  /// If null, [label] is used.
+  final String? semanticLabel;
+
   @override
   State<ZetaBreadCrumb> createState() => _ZetaBreadCrumbState();
 
@@ -152,7 +160,8 @@ class ZetaBreadCrumb extends StatefulWidget {
       ..add(StringProperty('label', label))
       ..add(DiagnosticsProperty<IconData?>('icon', icon))
       ..add(DiagnosticsProperty<bool>('isSelected', isSelected))
-      ..add(DiagnosticsProperty<IconData?>('activeIcon', activeIcon));
+      ..add(DiagnosticsProperty<IconData?>('activeIcon', activeIcon))
+      ..add(StringProperty('semanticLabel', semanticLabel));
   }
 }
 
@@ -172,29 +181,33 @@ class _ZetaBreadCrumbState extends State<ZetaBreadCrumb> {
   @override
   Widget build(BuildContext context) {
     final colors = Zeta.of(context).colors;
-    return InkWell(
-      statesController: controller,
-      onTap: widget.onPressed,
-      enableFeedback: false,
-      splashColor: Colors.transparent,
-      overlayColor: WidgetStateProperty.resolveWith((states) {
-        return Colors.transparent;
-      }),
-      child: Row(
-        children: [
-          if (widget.isSelected)
-            ZetaIcon(
-              widget.activeIcon ?? ZetaIcons.star,
-              color: getColor(controller.value, colors),
+    return Semantics(
+      label: widget.semanticLabel ?? widget.label,
+      selected: widget.isSelected,
+      child: InkWell(
+        statesController: controller,
+        onTap: widget.onPressed,
+        enableFeedback: false,
+        splashColor: Colors.transparent,
+        overlayColor: WidgetStateProperty.resolveWith((states) {
+          return Colors.transparent;
+        }),
+        child: Row(
+          children: [
+            if (widget.isSelected)
+              Icon(
+                widget.activeIcon ?? ZetaIcons.star_round,
+                color: getColor(controller.value, colors),
+              ),
+            const SizedBox(
+              width: ZetaSpacing.small,
             ),
-          const SizedBox(
-            width: ZetaSpacing.small,
-          ),
-          Text(
-            widget.label,
-            style: ZetaTextStyles.bodySmall.apply(color: getColor(controller.value, colors)),
-          ),
-        ],
+            Text(
+              widget.label,
+              style: ZetaTextStyles.bodySmall.apply(color: getColor(controller.value, colors)),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -226,13 +239,24 @@ class BreadCrumbsTruncated extends StatefulWidget {
   const BreadCrumbsTruncated({
     super.key,
     required this.children,
+    this.semanticLabel = 'More breadcrumbs',
   });
 
   ///Breadcrumb children
   final List<Widget> children;
 
+  /// Label passed to wrapping [Semantics] widget.
+  ///
+  /// {@macro zeta-widget-semantic-label}
+  final String semanticLabel;
+
   @override
   State<BreadCrumbsTruncated> createState() => _BreadCrumbsTruncatedState();
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(StringProperty('semanticLabel', semanticLabel));
+  }
 }
 
 class _BreadCrumbsTruncatedState extends State<BreadCrumbsTruncated> {
@@ -245,56 +269,60 @@ class _BreadCrumbsTruncatedState extends State<BreadCrumbsTruncated> {
 
     return _expanded
         ? expandedBreadcrumb()
-        : FilledButton(
-            onPressed: () {
-              setState(() {
-                _expanded = true;
-              });
-            },
-            style: ButtonStyle(
-              backgroundColor: WidgetStateProperty.resolveWith((states) {
-                if (states.contains(WidgetState.hovered)) {
-                  return colors.surfaceHover;
-                }
-                if (states.contains(WidgetState.pressed)) {
-                  return colors.primary.shade10;
-                }
-                if (states.contains(WidgetState.disabled)) {
-                  return colors.surfaceDisabled;
-                }
-                return colors.warm.shade10;
-              }),
-              foregroundColor: WidgetStateProperty.resolveWith((states) {
-                if (states.contains(WidgetState.disabled)) {
-                  return colors.textDisabled;
-                }
-                return colors.textDefault;
-              }),
-              shape: WidgetStatePropertyAll(
-                RoundedRectangleBorder(
-                  borderRadius: (rounded ? ZetaRadius.minimal : ZetaRadius.none),
+        : Semantics(
+            label: widget.semanticLabel,
+            button: true,
+            child: FilledButton(
+              onPressed: () {
+                setState(() {
+                  _expanded = true;
+                });
+              },
+              style: ButtonStyle(
+                backgroundColor: WidgetStateProperty.resolveWith((states) {
+                  if (states.contains(WidgetState.hovered)) {
+                    return colors.surfaceHover;
+                  }
+                  if (states.contains(WidgetState.pressed)) {
+                    return colors.primary.shade10;
+                  }
+                  if (states.contains(WidgetState.disabled)) {
+                    return colors.surfaceDisabled;
+                  }
+                  return colors.warm.shade10;
+                }),
+                foregroundColor: WidgetStateProperty.resolveWith((states) {
+                  if (states.contains(WidgetState.disabled)) {
+                    return colors.textDisabled;
+                  }
+                  return colors.textDefault;
+                }),
+                shape: WidgetStatePropertyAll(
+                  RoundedRectangleBorder(
+                    borderRadius: (rounded ? ZetaRadius.minimal : ZetaRadius.none),
+                  ),
                 ),
+                side: WidgetStateProperty.resolveWith((states) {
+                  if (states.contains(WidgetState.focused)) {
+                    return BorderSide(
+                      width: ZetaSpacingBase.x0_5,
+                      color: colors.primary.shade100,
+                    );
+                  }
+                  if (states.isEmpty) {
+                    return BorderSide(color: colors.borderDefault, width: 0.5);
+                  }
+                  return null;
+                }),
+                padding: WidgetStateProperty.all(EdgeInsets.zero),
+                minimumSize: WidgetStateProperty.all(Size.zero),
+                elevation: const WidgetStatePropertyAll(ZetaSpacing.none),
               ),
-              side: WidgetStateProperty.resolveWith((states) {
-                if (states.contains(WidgetState.focused)) {
-                  return BorderSide(
-                    width: ZetaSpacingBase.x0_5,
-                    color: colors.primary.shade100,
-                  );
-                }
-                if (states.isEmpty) {
-                  return BorderSide(color: colors.borderDefault, width: 0.5);
-                }
-                return null;
-              }),
-              padding: WidgetStateProperty.all(EdgeInsets.zero),
-              minimumSize: WidgetStateProperty.all(Size.zero),
-              elevation: const WidgetStatePropertyAll(ZetaSpacing.none),
+              child: Icon(
+                rounded ? ZetaIcons.more_horizontal_round : ZetaIcons.more_horizontal_sharp,
+                size: ZetaSpacing.large,
+              ).paddingHorizontal(ZetaSpacing.small).paddingVertical(ZetaSpacing.minimum),
             ),
-            child: const ZetaIcon(
-              ZetaIcons.more_horizontal,
-              size: ZetaSpacing.large,
-            ).paddingHorizontal(ZetaSpacing.small).paddingVertical(ZetaSpacing.minimum),
           );
   }
 

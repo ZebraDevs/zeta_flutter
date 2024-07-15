@@ -6,19 +6,20 @@ import '../../../zeta_flutter.dart';
 class ZetaContactItem extends ZetaStatelessWidget {
   /// Constructs [ZetaContactItem].
   const ZetaContactItem({
+    super.key,
+    super.rounded,
     required this.title,
     required this.leading,
     required this.subtitle,
     this.enabledDivider = true,
     this.onTap,
-    super.key,
-    super.rounded,
+    this.explicitChildNodes = true,
   });
 
   /// The main text to be displayed on the top.
   final Widget title;
 
-  /// Normally an Avatar
+  /// Normally a [ZetaAvatar].
   final Widget leading;
 
   /// Text to be displayed under [title].
@@ -30,62 +31,68 @@ class ZetaContactItem extends ZetaStatelessWidget {
   /// Whether to display a divider at the bottom.
   final bool enabledDivider;
 
+  /// Whether to use explicit child nodes for [Semantics].
+  final bool explicitChildNodes;
+
   @override
   Widget build(BuildContext context) {
     final colors = Zeta.of(context).colors;
 
     return ZetaRoundedScope(
       rounded: context.rounded,
-      child: DecoratedBox(
-        decoration: BoxDecoration(
-          color: colors.surfacePrimary,
-          border: enabledDivider
-              ? Border(
-                  bottom: BorderSide(color: colors.borderDisabled),
-                )
-              : null,
-        ),
-        child: Material(
-          color: Colors.transparent,
-          child: InkWell(
-            onTap: onTap,
-            child: Padding(
-              padding: const EdgeInsets.only(
-                top: ZetaSpacing.small,
-                bottom: ZetaSpacing.small,
-                left: ZetaSpacing.xl_2,
+      child: Semantics(
+        button: true,
+        child: SelectionContainer.disabled(
+          child: Material(
+            color: colors.surfacePrimary,
+            child: DecoratedBox(
+              decoration: BoxDecoration(
+                border: enabledDivider ? Border(bottom: BorderSide(color: colors.borderDisabled)) : null,
               ),
-              child: Row(
-                children: [
-                  leading,
-                  Flexible(
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: ZetaSpacing.medium),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          DefaultTextStyle(
-                            style: ZetaTextStyles.bodyMedium.copyWith(
-                              color: colors.textDefault,
+              child: InkWell(
+                onTap: onTap,
+                child: Semantics(
+                  explicitChildNodes: explicitChildNodes,
+                  child: Padding(
+                    padding: const EdgeInsets.only(
+                      top: ZetaSpacing.small,
+                      bottom: ZetaSpacing.small,
+                      left: ZetaSpacing.xl_2,
+                    ),
+                    child: Row(
+                      children: [
+                        leading,
+                        Flexible(
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: ZetaSpacing.medium),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                DefaultTextStyle(
+                                  style: ZetaTextStyles.bodyMedium.copyWith(
+                                    color: colors.textDefault,
+                                  ),
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                  child: title,
+                                ),
+                                DefaultTextStyle(
+                                  style: ZetaTextStyles.bodySmall.copyWith(
+                                    color: colors.textSubtle,
+                                  ),
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                  child: subtitle,
+                                ),
+                              ],
                             ),
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                            child: title,
                           ),
-                          DefaultTextStyle(
-                            style: ZetaTextStyles.bodySmall.copyWith(
-                              color: colors.textSubtle,
-                            ),
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                            child: subtitle,
-                          ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                   ),
-                ],
+                ),
               ),
             ),
           ),
@@ -99,6 +106,7 @@ class ZetaContactItem extends ZetaStatelessWidget {
     super.debugFillProperties(properties);
     properties
       ..add(ObjectFlagProperty<VoidCallback?>.has('onTap', onTap))
-      ..add(DiagnosticsProperty<bool>('enabledDivider', enabledDivider));
+      ..add(DiagnosticsProperty<bool>('enabledDivider', enabledDivider))
+      ..add(DiagnosticsProperty<bool>('explicitChildNodes', explicitChildNodes));
   }
 }

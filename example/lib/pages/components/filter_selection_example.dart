@@ -24,6 +24,7 @@ class _FilterSelectionExampleState extends State<FilterSelectionExample> {
         children: [
           const SizedBox(height: ZetaSpacing.large),
           ZetaFilterSelection(
+            buttonSemanticLabel: 'Filter',
             items: [
               for (int i = 0; i < items.length; i++)
                 ZetaFilterChip(

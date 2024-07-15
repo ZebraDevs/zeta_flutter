@@ -171,7 +171,7 @@ class _CountriesListState extends State<_CountriesList> {
               padding: const EdgeInsets.only(top: ZetaSpacing.large),
               child: TextButton(
                 onPressed: () => Navigator.of(context).pop(),
-                child: const Text('Close'),
+                child: const Text('Close'), // TODO(UX-1003): Needs localization
               ),
             ),
           ],
@@ -183,15 +183,18 @@ class _CountriesListState extends State<_CountriesList> {
   Widget _listView(BuildContext context) => ListView.builder(
         shrinkWrap: true,
         itemCount: _items.length,
-        itemBuilder: (_, index) => InkWell(
-          onTap: () {
-            Navigator.of(context).pop(_items[index].value);
-          },
-          child: Padding(
-            padding: const EdgeInsets.symmetric(
-              vertical: ZetaSpacing.small,
+        itemBuilder: (_, index) => Semantics(
+          button: true,
+          child: InkWell(
+            onTap: () {
+              Navigator.of(context).pop(_items[index].value);
+            },
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                vertical: ZetaSpacing.small,
+              ),
+              child: _items[index].child,
             ),
-            child: _items[index].child,
           ),
         ),
       );

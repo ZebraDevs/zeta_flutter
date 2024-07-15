@@ -11,6 +11,7 @@ class ZetaScreenHeaderBar extends ZetaStatelessWidget {
     this.title,
     this.actionButtonLabel,
     this.onActionButtonPressed,
+    this.backSemanticLabel,
   });
 
   /// The title of [ZetaScreenHeaderBar]. Normally a [Text] widget.
@@ -22,15 +23,24 @@ class ZetaScreenHeaderBar extends ZetaStatelessWidget {
   /// Called when the action button is pressed.
   final VoidCallback? onActionButtonPressed;
 
+  /// The semantic label for the back button.
+  ///
+  /// {@macro zeta-widget-semantic-label}
+  final String? backSemanticLabel;
+
   @override
   Widget build(BuildContext context) {
-    final bool rounded = context.rounded;
     return ZetaRoundedScope(
-      rounded: rounded,
+      rounded: context.rounded,
       child: ZetaTopAppBar(
-        leading: IconButton(
-          onPressed: () async => Navigator.maybePop(context),
-          icon: const ZetaIcon(ZetaIcons.chevron_left),
+        leading: Semantics(
+          label: backSemanticLabel,
+          excludeSemantics: true,
+          button: true,
+          child: IconButton(
+            onPressed: () async => Navigator.maybePop(context),
+            icon: const ZetaIcon(ZetaIcons.chevron_left),
+          ),
         ),
         title: title,
         titleTextStyle: ZetaTextStyles.titleLarge,
@@ -52,6 +62,7 @@ class ZetaScreenHeaderBar extends ZetaStatelessWidget {
     properties
       ..add(DiagnosticsProperty<bool>('rounded', rounded))
       ..add(StringProperty('actionButtonLabel', actionButtonLabel))
-      ..add(ObjectFlagProperty<VoidCallback?>.has('onActionButtonPressed', onActionButtonPressed));
+      ..add(ObjectFlagProperty<VoidCallback?>.has('onActionButtonPressed', onActionButtonPressed))
+      ..add(StringProperty('backSemanticLabel', backSemanticLabel));
   }
 }

@@ -30,6 +30,8 @@ class ZetaTimeInput extends ZetaFormField<TimeOfDay> {
     this.validator,
     this.size = ZetaWidgetSize.medium,
     this.pickerInitialEntryMode,
+    this.clearSemanticLabel,
+    this.timePickerSemanticLabel,
   });
 
   /// Changes the time input to 12 hour time.
@@ -61,6 +63,16 @@ class ZetaTimeInput extends ZetaFormField<TimeOfDay> {
   /// However, if [validator] catches any of these conditions, the return value of [validator] will be shown.
   final String? Function(TimeOfDay? value)? validator;
 
+  /// Semantic label for the clear button.
+  ///
+  /// {@macro zeta-widget-semantic-label}
+  final String? clearSemanticLabel;
+
+  /// Semantic label for the time picker button.
+  ///
+  /// {@macro zeta-widget-semantic-label}
+  final String? timePickerSemanticLabel;
+
   @override
   State<ZetaTimeInput> createState() => ZetaTimeInputState();
   @override
@@ -77,7 +89,9 @@ class ZetaTimeInput extends ZetaFormField<TimeOfDay> {
       ..add(StringProperty('errorText', errorText))
       ..add(EnumProperty<ZetaWidgetSize>('size', size))
       ..add(ObjectFlagProperty<String? Function(TimeOfDay value)?>.has('validator', validator))
-      ..add(EnumProperty<TimePickerEntryMode?>('pickerInitialEntryMode', pickerInitialEntryMode));
+      ..add(EnumProperty<TimePickerEntryMode?>('pickerInitialEntryMode', pickerInitialEntryMode))
+      ..add(StringProperty('clearSemanticLabel', clearSemanticLabel))
+      ..add(StringProperty('timePickerSemanticLabel', timePickerSemanticLabel));
   }
 }
 
@@ -250,6 +264,7 @@ class ZetaTimeInputState extends State<ZetaTimeInput> implements ZetaFormFieldSt
           if (_showClearButton)
             InputIconButton(
               icon: ZetaIcons.cancel,
+              semanticLabel: widget.clearSemanticLabel,
               onTap: reset,
               disabled: widget.disabled,
               size: widget.size,
@@ -257,6 +272,7 @@ class ZetaTimeInputState extends State<ZetaTimeInput> implements ZetaFormFieldSt
             ),
           InputIconButton(
             icon: ZetaIcons.clock_outline,
+            semanticLabel: widget.timePickerSemanticLabel,
             onTap: _pickTime,
             disabled: widget.disabled,
             size: widget.size,

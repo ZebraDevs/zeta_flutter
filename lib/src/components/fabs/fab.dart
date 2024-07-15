@@ -120,11 +120,11 @@ class _ZetaFABState extends State<ZetaFAB> {
           if (states.contains(WidgetState.disabled)) {
             return Zeta.of(context).colors.surfaceDisabled;
           }
-          if (states.contains(WidgetState.hovered)) {
-            return colors.hover;
-          }
           if (states.contains(WidgetState.pressed)) {
             return colors.selected;
+          }
+          if (states.contains(WidgetState.hovered)) {
+            return colors.hover;
           }
           return backgroundColor;
         }),
