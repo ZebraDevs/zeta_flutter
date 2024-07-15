@@ -70,7 +70,7 @@ class _IntroductionWidgetbookState extends State<IntroductionWidgetbook> {
                         Expanded(
                           child: Text(
                             // x-release-please-start-version
-                            'zeta_flutter v0.14.0',
+                            'zeta_flutter v0.14.1',
                             // x-release-please-end
                             style: ZetaTextStyles.displayLarge.copyWith(fontSize: largeScreen ? null : 24),
                           ),
