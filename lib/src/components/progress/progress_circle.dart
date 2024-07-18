@@ -173,7 +173,11 @@ class _ZetaProgressCircleState extends ZetaProgressState<ZetaProgressCircle> {
   }
 }
 
-///Class definition for [_CirclePainter]
+/// Class definition for [CirclePainter]
+@Deprecated('Deprecated in 0.14.1')
+typedef CirclePainter = _CirclePainter;
+
+/// Class definition for [_CirclePainter]
 class _CirclePainter extends CustomPainter {
   ///Constructor for [_CirclePainter]
   _CirclePainter({this.progress = 0, this.rounded = true, required this.colors});

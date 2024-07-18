@@ -4855,7 +4855,7 @@ abstract class ZetaIcons {
   static const IconData zoom_out_sharp = IconData(0xe219, fontFamily: familySharp, fontPackage: package);
 }
 
-// List of all icons.
+/// List of all icons.
 const Map<String, IconData> icons = {
   'activity': ZetaIcons.activity,
   'add_alert': ZetaIcons.add_alert,
