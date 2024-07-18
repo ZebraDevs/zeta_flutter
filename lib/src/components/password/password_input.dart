@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import '../../../zeta_flutter.dart';
 import '../../interfaces/form_field.dart';
 
-///Zeta Password Input
+/// Zeta Password Input
+/// {@category Components}
 class ZetaPasswordInput extends ZetaFormField<String> {
   ///Constructs [ZetaPasswordInput]
   const ZetaPasswordInput({

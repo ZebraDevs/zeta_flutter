@@ -14,6 +14,7 @@ export 'constants.dart';
 /// A representation of the Zeta theme data.
 ///
 /// This class encapsulates the colors and fonts used for the Zeta theme in both light and dark modes.
+/// {@category Theme}
 @immutable
 class ZetaThemeData extends Equatable {
   /// Constructs a [ZetaThemeData].

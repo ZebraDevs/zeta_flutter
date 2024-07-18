@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 
 import '../../../zeta_flutter.dart';
 
-/// Slider component with customized styling
+/// Slider component with customized styling.
+/// {@category Components}
 class ZetaSlider extends ZetaStatefulWidget {
   /// Default constructor for [ZetaSlider]
   const ZetaSlider({
@@ -55,7 +56,7 @@ class _ZetaSliderState extends State<ZetaSlider> {
         label: widget.semanticLabel,
         child: SliderTheme(
           data: SliderThemeData(
-            /** TODO: Match with new colors */
+            // TODO(UX-1136): Match with new colors
 
             /// Active Track
             activeTrackColor: _activeColor,
@@ -108,6 +109,7 @@ class _ZetaSliderState extends State<ZetaSlider> {
 }
 
 /// Custom slider thumb component
+@Deprecated('To be removed. ' 'This has been deprecated as of 0.14.1')
 class SliderThumb extends SliderComponentShape {
   /// Constructor for [SliderThumb]
   const SliderThumb({required this.size, required this.rounded, required this.color});

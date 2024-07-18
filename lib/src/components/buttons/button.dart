@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 
 import '../../../zeta_flutter.dart';
 
-///Zeta Button
+/// Zeta Button
+/// {@category Components}
 class ZetaButton extends ZetaStatelessWidget {
   ///Constructs [ZetaButton]
   const ZetaButton({

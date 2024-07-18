@@ -25,6 +25,7 @@ class ZetaNavigationBarItem {
 }
 
 /// Navigation Bars (Bottom navigation) allow movement between primary destinations in an app.
+/// {@category Components}
 class ZetaNavigationBar extends ZetaStatelessWidget {
   /// Creates a new [ZetaNavigationBar].
   const ZetaNavigationBar({

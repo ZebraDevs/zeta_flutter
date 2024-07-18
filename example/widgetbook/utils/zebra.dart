@@ -18,5 +18,4 @@ class Zebra {
     platform: TargetPlatform.android,
     screenSize: const Size(720, 1280),
   );
-  // TODO(thelukewalton): Make more device models
 }

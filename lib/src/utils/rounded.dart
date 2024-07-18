@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import '../../zeta_flutter.dart';
 
 /// Sets a default rounded value for all of its Zeta children.
+/// {@category Utils}
 class ZetaRoundedScope extends InheritedWidget {
   /// Constructs a [ZetaRoundedScope].
   const ZetaRoundedScope({
@@ -30,6 +31,7 @@ class ZetaRoundedScope extends InheritedWidget {
 }
 
 ///  Zeta Extension of [StatelessWidget] which adds [rounded] super parameter. Always use `context.rounded` to ensure correct value for [rounded] is used.
+/// {@category Utils}
 abstract class ZetaStatelessWidget extends StatelessWidget {
   /// Constructs a [ZetaStatelessWidget].
   const ZetaStatelessWidget({super.key, this.rounded});
@@ -45,6 +47,7 @@ abstract class ZetaStatelessWidget extends StatelessWidget {
 }
 
 ///  Zeta Extension of [StatefulWidget] which adds [rounded] super parameter. Always use `context.rounded` to ensure correct value for [rounded] is used.
+/// {@category Utils}
 abstract class ZetaStatefulWidget extends StatefulWidget {
   /// Constructs a [ZetaStatefulWidget].
   const ZetaStatefulWidget({super.key, this.rounded});

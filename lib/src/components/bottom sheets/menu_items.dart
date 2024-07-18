@@ -11,9 +11,8 @@ enum ZetaMenuItemType {
   vertical,
 }
 
-/// Zeta Menu Item component.
-///
-/// Typically used as body of [ZetaBottomSheet].
+/// Menu Item component, typically used as body of [ZetaBottomSheet].
+/// {@category Components}
 class ZetaMenuItem extends ZetaStatelessWidget {
   /// Constructor for the component [ZetaMenuItem].
   ///

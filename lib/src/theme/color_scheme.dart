@@ -20,6 +20,7 @@ import 'constants.dart';
 /// the primary color.
 ///
 /// Adjusting the themed background of the [AppBar] is straightforward with [ZetaColorScheme], ensuring it aligns with themed colors.
+/// {@category Theme}
 @immutable
 class ZetaColorScheme extends ColorScheme with Diagnosticable {
   /// Default constructor with no required properties.

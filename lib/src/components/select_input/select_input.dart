@@ -7,7 +7,8 @@ import '../../interfaces/form_field.dart';
 import '../buttons/input_icon_button.dart';
 import '../dropdown/dropdown_controller.dart';
 
-/// Class for [ZetaSelectInput]
+/// Class for [ZetaSelectInput].
+/// {@category Components}
 class ZetaSelectInput<T> extends ZetaFormField<T> {
   ///Constructor of [ZetaSelectInput]
   const ZetaSelectInput({

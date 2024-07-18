@@ -12,9 +12,11 @@ enum ZetaTagDirection {
   right
 }
 
-///Zeta Tag
+/// Tags are used to draw attention to a specific area or information.
+/// The arrow shape helps direct the users attention to the desired place.
+/// {@category Components}
 class ZetaTag extends ZetaStatelessWidget {
-  ///Constructs [ZetaTag].
+  /// Constructs a [ZetaTag].
   const ZetaTag({
     super.key,
     super.rounded,

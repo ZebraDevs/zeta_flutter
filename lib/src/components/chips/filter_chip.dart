@@ -7,8 +7,7 @@ import '../../../zeta_flutter.dart';
 /// The chips are commonly used within a [ZetaFilterSelection].
 ///
 /// These chips use [Draggable] and can be dragged around the screen and placed in new locations using [DragTarget].
-///
-/// Extends [ZetaChip].
+/// {@category Components}
 class ZetaFilterChip extends ZetaChip {
   /// Creates a [ZetaFilterChip].
   const ZetaFilterChip({

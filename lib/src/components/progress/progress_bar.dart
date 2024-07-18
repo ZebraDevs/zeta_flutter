@@ -15,9 +15,10 @@ enum ZetaProgressBarType {
   buffering
 }
 
-/// Linear progress bar.
+/// Progress indicators express an unspecified wait time or display the length of a process.
 ///
-/// Uses progress percentage value to fill bar.
+/// Linear progress bar. Uses progress percentage value to fill bar.
+/// {@category Components}
 class ZetaProgressBar extends ZetaProgress {
   ///Constructor for [ZetaProgressBar].
   const ZetaProgressBar({

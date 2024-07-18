@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import '../../../zeta_flutter.dart';
 
-/// Defines how the bounds of the selected tab indicator are computed. Intended to be used with [ZetaTabBar].
+/// Defines how the bounds of the selected tab indicator are computed.
+/// Intended to be used with [ZetaTabBar].
+/// {@category Components}
 class ZetaTab extends Tab {
   /// Creates a Zeta Design tab bar.
   ZetaTab({

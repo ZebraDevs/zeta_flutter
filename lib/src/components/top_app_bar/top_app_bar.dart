@@ -5,9 +5,10 @@ import '../../../zeta_flutter.dart';
 import 'extended_top_app_bar.dart';
 import 'search_top_app_bar.dart';
 
-export 'search_top_app_bar.dart' show AppBarSearchController;
+export 'search_top_app_bar.dart' show ZetaSearchController;
 
 /// Top app bars provide content and actions related to the current screen.
+/// {@category Components}
 class ZetaTopAppBar extends ZetaStatefulWidget implements PreferredSizeWidget {
   /// Creates a ZetaTopAppBar.
   const ZetaTopAppBar({
@@ -75,7 +76,7 @@ class ZetaTopAppBar extends ZetaStatefulWidget implements PreferredSizeWidget {
   final VoidCallback? onSearchMicrophoneIconPressed;
 
   /// Used to control the search textfield and states.
-  final AppBarSearchController? searchController;
+  final ZetaSearchController? searchController;
 
   /// Label used as hint text. If null, displays 'Search'.
   final String? searchHintText;
@@ -105,7 +106,7 @@ class ZetaTopAppBar extends ZetaStatefulWidget implements PreferredSizeWidget {
       ..add(ObjectFlagProperty<void Function(String p1)?>.has('onSearch', onSearch))
       ..add(DiagnosticsProperty<bool>('automaticallyImplyLeading', automaticallyImplyLeading))
       ..add(ObjectFlagProperty<VoidCallback?>.has('onSearchMicrophoneIconPressed', onSearchMicrophoneIconPressed))
-      ..add(DiagnosticsProperty<AppBarSearchController?>('searchController', searchController))
+      ..add(DiagnosticsProperty<ZetaSearchController?>('searchController', searchController))
       ..add(StringProperty('searchHintText', searchHintText))
       ..add(EnumProperty<ZetaTopAppBarType>('type', type))
       ..add(DiagnosticsProperty<bool>('shrinks', shrinks));

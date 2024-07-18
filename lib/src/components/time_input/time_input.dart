@@ -13,7 +13,8 @@ const _maxMinsValue = 59;
 
 /// A form field used to input time.
 ///
-/// Can be used and validated the same way as a [TextFormField]
+/// Can be used and validated the same way as a [TextFormField].
+/// {@category Components}
 class ZetaTimeInput extends ZetaFormField<TimeOfDay> {
   /// Creates a new [ZetaTimeInput]
   const ZetaTimeInput({
@@ -97,7 +98,7 @@ class ZetaTimeInput extends ZetaFormField<TimeOfDay> {
 
 /// State for [ZetaTimeInput]
 class ZetaTimeInputState extends State<ZetaTimeInput> implements ZetaFormFieldState {
-  // TODO(mikecoomber): add AM/PM selector inline.
+  // TODO(UX-1032): add AM/PM selector inline.
 
   ZetaColors get _colors => Zeta.of(context).colors;
 

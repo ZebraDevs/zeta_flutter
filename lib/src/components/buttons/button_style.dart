@@ -134,7 +134,7 @@ ButtonStyle buttonStyle(
       if (type.border && states.contains(WidgetState.disabled)) {
         return BorderSide(color: colors.borderDisabled);
       }
-      // TODO(thelukewalton): This removes a defualt border when focused, rather than adding a second border when focused.
+      // TODO(UX-1134): This removes a defualt border when focused, rather than adding a second border when focused.
       if (states.contains(WidgetState.focused)) {
         return BorderSide(color: colors.blue, width: ZetaSpacingBase.x0_5);
       }

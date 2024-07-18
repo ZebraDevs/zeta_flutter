@@ -18,6 +18,7 @@ enum ZetaPaginationType {
 }
 
 /// Pagination is used to switch between pages.
+/// {@category Components}
 class ZetaPagination extends ZetaStatefulWidget {
   /// Creates a new [ZetaPagination]
   const ZetaPagination({
@@ -224,7 +225,7 @@ class _ZetaPaginationState extends State<ZetaPagination> {
           border: Border.all(color: colors.borderSubtle),
           borderRadius: rounded ? ZetaRadius.minimal : ZetaRadius.none,
         ),
-        // TODO(mikecoomber): Replace with Zeta Dropdown
+        // TODO(UX-1135): Replace with Zeta Dropdown
         child: DropdownButton(
           items: items,
           onChanged: (val) => _onItemPressed(val!),

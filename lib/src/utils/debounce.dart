@@ -5,6 +5,7 @@ export './extensions.dart';
 const Duration _debounceDuration = Duration(milliseconds: 500);
 
 /// Debounce utility
+/// {@category Utils}
 class ZetaDebounce {
   /// Constructs and starts the debouncer.
   factory ZetaDebounce(void Function() callback, {Duration duration = _debounceDuration}) {

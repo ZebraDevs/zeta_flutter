@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import '../../../zeta_flutter.dart';
 
 /// Zeta Button Group
+/// {@category Components}
 class ZetaButtonGroup extends ZetaStatelessWidget {
   /// Constructs [ZetaButtonGroup] from a list of [ZetaGroupButton]s
   const ZetaButtonGroup({
@@ -63,6 +64,7 @@ class ZetaButtonGroup extends ZetaStatelessWidget {
 }
 
 // TODO(UX-854): Create country variant.
+// TODO(UX-1132): Refactor to make group button a class, not a widget.
 
 /// Group Button item
 class ZetaGroupButton extends ZetaStatefulWidget {
@@ -394,7 +396,7 @@ class _ZetaGroupButtonState extends State<ZetaGroupButton> {
       child = _getButton(widget.onPressed);
     }
 
-    // TODO(thelukewalton): Selected prop in semantics does not work as expected.
+    // TODO(UX-1133): Selected prop in semantics does not work as expected.
 
     return Semantics(
       label: widget.semanticLabel ?? widget.label,

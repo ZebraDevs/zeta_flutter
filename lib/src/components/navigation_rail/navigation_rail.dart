@@ -3,7 +3,12 @@ import 'package:flutter/material.dart';
 
 import '../../../zeta_flutter.dart';
 
-/// [ZetaNavigationRail]
+/// This widget provides a navigation rail for navigating between different
+/// sections of an app. It is designed to be used as a side navigation
+/// menu and can be customized with different icons and labels for each
+/// navigation item.
+/// Should be used with [ZetaNavigationRailItem].
+/// {@category Components}
 class ZetaNavigationRail extends ZetaStatefulWidget {
   /// Constructor for [ZetaNavigationRail].
   const ZetaNavigationRail({
@@ -220,7 +225,7 @@ class _ZetaNavigationRailItemContent extends ZetaStatelessWidget {
   }
 }
 
-/// [ZetaNavigationRailItem]
+/// Represents an item in the [ZetaNavigationRail].
 class ZetaNavigationRailItem {
   /// Constructor for [ZetaNavigationRailItem].
   const ZetaNavigationRailItem({

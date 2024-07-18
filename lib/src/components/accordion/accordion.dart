@@ -6,6 +6,7 @@ import '../../../zeta_flutter.dart';
 /// such as labels or thumbnails. Each item can be "expanded" or "collapsed" to reveal
 /// the content associated with that item. There can be zero expanded items, exactly one,
 /// or more than one item expanded at a time, depending on the configuration.
+/// {@category Components}
 class ZetaAccordion extends ZetaStatefulWidget {
   /// The constructor of the component [ZetaAccordion].
   const ZetaAccordion({

@@ -11,9 +11,8 @@ enum ZetaIndicatorType {
   notification,
 }
 
-/// ZetaIndicator.
-///
 /// Indicators are used to show the status of a user or any messages/notifications they might have.
+/// {@category Components}
 class ZetaIndicator extends ZetaStatelessWidget {
   /// Constructor for [ZetaIndicator].
   const ZetaIndicator({
@@ -148,10 +147,7 @@ class ZetaIndicator extends ZetaStatelessWidget {
         return Center(
           child: Text(
             value.formatMaxChars(),
-            style: ZetaTextStyles.labelIndicator.copyWith(
-              color: foregroundColor,
-              fontSize: size == ZetaWidgetSize.large ? null : 11,
-            ), // TODO(thelukwalton): Awaiting updated design.
+            style: ZetaTextStyles.labelIndicator.copyWith(color: foregroundColor),
           ),
         );
     }

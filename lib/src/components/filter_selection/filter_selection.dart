@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import '../../../zeta_flutter.dart';
 
 /// Component [ZetaFilterSelection]
+/// {@category Components}
 class ZetaFilterSelection extends ZetaStatelessWidget {
   /// Constructor for the component [ZetaFilterSelection]
   const ZetaFilterSelection({

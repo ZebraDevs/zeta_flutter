@@ -75,7 +75,7 @@ class _SearchUseCase extends StatefulWidget {
 }
 
 class _SearchUseCaseState extends State<_SearchUseCase> {
-  late final searchController = AppBarSearchController();
+  late final searchController = ZetaSearchController();
 
   @override
   Widget build(BuildContext context) {
@@ -139,7 +139,7 @@ class ExtendedSearch extends StatefulWidget {
 }
 
 class _ExtendedSearchState extends State<ExtendedSearch> {
-  final _searchControllerExtended = AppBarSearchController();
+  final _searchControllerExtended = ZetaSearchController();
 
   void _showHideSearchExtended() {
     _searchControllerExtended.isEnabled

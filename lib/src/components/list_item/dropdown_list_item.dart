@@ -5,6 +5,7 @@ import '../../../zeta_flutter.dart';
 import 'list_scope.dart';
 
 /// An expandable list item containing other [ZetaListItem]s within it.
+/// {@category Components}
 class ZetaDropdownListItem extends ZetaStatefulWidget {
   /// Creates a new [ZetaDropdownListItem]
   const ZetaDropdownListItem({

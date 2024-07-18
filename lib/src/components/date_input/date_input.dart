@@ -10,7 +10,8 @@ import '../buttons/input_icon_button.dart';
 
 /// A form field used to input dates.
 ///
-/// Can be used and validated the same way as a [TextFormField]
+/// Can be used and validated the same way as a [TextFormField].
+/// {@category Components}
 class ZetaDateInput extends ZetaFormField<DateTime> {
   /// Creates a new [ZetaDateInput]
   ZetaDateInput({
@@ -106,8 +107,6 @@ class ZetaDateInput extends ZetaFormField<DateTime> {
 
 /// State for [ZetaDateInput]
 class ZetaDateInputState extends State<ZetaDateInput> implements ZetaFormFieldState {
-  // TODO(mikecoomber): add AM/PM selector inline.
-
   ZetaColors get _colors => Zeta.of(context).colors;
 
   late final MaskTextInputFormatter _dateFormatter;

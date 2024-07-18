@@ -5,6 +5,7 @@ import 'theme_data.dart';
 
 /// `ZetaThemeService` is an abstract class.
 /// It provides the structure for loading and saving themes in Zeta application.
+/// {@category Theme}
 
 abstract class ZetaThemeService {
   /// Asynchronously load the theme data.

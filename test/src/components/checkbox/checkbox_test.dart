@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:path/path.dart';
+import 'package:zeta_flutter/src/components/checkbox/checkbox.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 import '../../../test_utils/test_app.dart';
@@ -110,9 +111,6 @@ void main() {
       await gesture.moveTo(tester.getCenter(find.byType(ZetaInternalCheckbox)));
 
       await tester.pumpAndSettle();
-
-      // TODO(test): Luke hover state on checkbox
-      // expect((animatedContainer.decoration as BoxDecoration?)?.border?.top.color, ZetaColorBase.cool.shade90);
 
       await tester.tap(find.byType(ZetaCheckbox));
       await tester.pump();
