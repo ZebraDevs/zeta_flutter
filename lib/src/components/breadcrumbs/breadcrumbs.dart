@@ -115,7 +115,7 @@ class _ZetaBreadCrumbsState extends State<ZetaBreadCrumbs> {
         truncatedChildren.add(createBreadCrumb(element, index + 1));
       }
       returnList
-        ..add(_BreadCrumbsTruncated(children: truncatedChildren, semanticLabel: widget.moreSemanticLabel))
+        ..add(_BreadCrumbsTruncated(semanticLabel: widget.moreSemanticLabel, children: truncatedChildren))
         ..add(createBreadCrumb(children.last, children.length - 1));
     } else {
       for (final (index, element) in children.indexed) {
