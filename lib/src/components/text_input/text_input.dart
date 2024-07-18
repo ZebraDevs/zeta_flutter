@@ -4,6 +4,8 @@ import 'package:flutter/services.dart';
 
 import '../../../zeta_flutter.dart';
 import '../../interfaces/form_field.dart';
+import 'hint_text.dart';
+import 'input_label.dart';
 
 /// Text inputs allow the user to enter text.
 ///
@@ -38,6 +40,7 @@ class ZetaTextInput extends ZetaFormField<String> {
     this.onSubmit,
     this.obscureText = false,
     this.keyboardType,
+    this.focusNode,
   })  : assert(initialValue == null || controller == null, 'Only one of initial value and controller can be accepted.'),
         assert(prefix == null || prefixText == null, 'Only one of prefix or prefixText can be accepted.'),
         assert(suffix == null || suffixText == null, 'Only one of suffix or suffixText can be accepted.');
@@ -111,6 +114,8 @@ class ZetaTextInput extends ZetaFormField<String> {
 
   final TextInputType? keyboardType;
 
+  final FocusNode? focusNode;
+
   @override
   State<ZetaTextInput> createState() => ZetaTextInputState();
   @override
@@ -171,10 +176,16 @@ class ZetaTextInputState extends State<ZetaTextInput> implements ZetaFormFieldSt
   EdgeInsets get _contentPadding {
     switch (widget.size) {
       case ZetaWidgetSize.large:
-        return const EdgeInsets.symmetric(horizontal: ZetaSpacing.medium, vertical: ZetaSpacing.large);
+        return const EdgeInsets.symmetric(
+          horizontal: ZetaSpacing.medium,
+          vertical: ZetaSpacing.medium,
+        );
       case ZetaWidgetSize.small:
       case ZetaWidgetSize.medium:
-        return const EdgeInsets.symmetric(horizontal: ZetaSpacing.medium, vertical: ZetaSpacing.medium);
+        return const EdgeInsets.symmetric(
+          horizontal: ZetaSpacing.small,
+          vertical: ZetaSpacing.small,
+        );
     }
   }
 
@@ -235,8 +246,14 @@ class ZetaTextInputState extends State<ZetaTextInput> implements ZetaFormFieldSt
         ),
       ).paddingStart(ZetaSpacing.small);
     }
-
-    return DefaultTextStyle(style: textStyle ?? _affixStyle, child: child);
+    final style = textStyle ?? _affixStyle;
+    return DefaultTextStyle(
+      style: style.copyWith(height: 1.5),
+      textHeightBehavior: const TextHeightBehavior(
+        applyHeightToFirstAscent: false,
+      ),
+      child: child,
+    );
   }
 
   OutlineInputBorder _baseBorder(bool rounded) => OutlineInputBorder(
@@ -296,7 +313,7 @@ class ZetaTextInputState extends State<ZetaTextInput> implements ZetaFormFieldSt
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           if (widget.label != null) ...[
-            _Label(
+            ZetaInputLabel(
               label: widget.label!,
               requirementLevel: widget.requirementLevel,
               disabled: widget.disabled,
@@ -332,6 +349,7 @@ class ZetaTextInputState extends State<ZetaTextInput> implements ZetaFormFieldSt
               style: _baseTextStyle,
               cursorErrorColor: _colors.error,
               obscureText: widget.obscureText,
+              focusNode: widget.focusNode,
               decoration: InputDecoration(
                 isDense: true,
                 contentPadding: _contentPadding,
@@ -355,7 +373,7 @@ class ZetaTextInputState extends State<ZetaTextInput> implements ZetaFormFieldSt
               ),
             ),
           ),
-          _HintText(
+          ZetaHintText(
             disabled: widget.disabled,
             rounded: rounded,
             hintText: widget.hintText,
@@ -364,123 +382,5 @@ class ZetaTextInputState extends State<ZetaTextInput> implements ZetaFormFieldSt
         ],
       ),
     );
-  }
-}
-
-class _Label extends StatelessWidget {
-  const _Label({
-    required this.label,
-    required this.requirementLevel,
-    required this.disabled,
-  });
-
-  final String label;
-  final ZetaFormFieldRequirement requirementLevel;
-  final bool disabled;
-
-  @override
-  Widget build(BuildContext context) {
-    final colors = Zeta.of(context).colors;
-    const textStyle = ZetaTextStyles.bodyMedium;
-
-    Widget? requirementWidget;
-
-    if (requirementLevel == ZetaFormFieldRequirement.optional) {
-      requirementWidget = Text(
-        '(optional)', // TODO(UX-1003): needs localizing.
-        style: textStyle.copyWith(color: disabled ? colors.textDisabled : colors.textSubtle),
-      );
-    } else if (requirementLevel == ZetaFormFieldRequirement.mandatory) {
-      requirementWidget = Text(
-        '*',
-        style: ZetaTextStyles.labelIndicator.copyWith(
-          color: disabled ? colors.textDisabled : colors.error, // TODO(mikecoomber): change to textNegative when added
-        ),
-      );
-    }
-
-    return Row(
-      children: [
-        Text(
-          label,
-          style: textStyle.copyWith(
-            color: disabled ? colors.textDisabled : colors.textDefault,
-          ),
-        ),
-        if (requirementWidget != null) requirementWidget.paddingStart(ZetaSpacing.minimum),
-      ],
-    );
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(StringProperty('label', label))
-      ..add(EnumProperty<ZetaFormFieldRequirement>('requirementLevel', requirementLevel))
-      ..add(DiagnosticsProperty<bool>('disabled', disabled));
-  }
-}
-
-class _HintText extends StatelessWidget {
-  const _HintText({
-    required this.disabled,
-    required this.hintText,
-    required this.errorText,
-    required this.rounded,
-  });
-  final bool disabled;
-  final bool rounded;
-  final String? hintText;
-  final String? errorText;
-
-  @override
-  Widget build(BuildContext context) {
-    final colors = Zeta.of(context).colors;
-    final error = errorText != null && errorText!.isNotEmpty;
-
-    final text = error && !disabled ? errorText : hintText;
-
-    Color elementColor = colors.textSubtle;
-
-    if (disabled) {
-      elementColor = colors.textDisabled;
-    } else if (error) {
-      elementColor = colors.error;
-    }
-
-    if (text == null || text.isEmpty) {
-      return const Nothing();
-    }
-
-    return Row(
-      children: [
-        ZetaIcon(
-          errorText != null ? ZetaIcons.error : ZetaIcons.info,
-          size: ZetaSpacing.large,
-          color: elementColor,
-        ),
-        const SizedBox(
-          width: ZetaSpacing.minimum,
-        ),
-        Expanded(
-          child: Text(
-            text,
-            style: ZetaTextStyles.bodyXSmall.copyWith(color: elementColor),
-            overflow: TextOverflow.ellipsis,
-          ),
-        ),
-      ],
-    ).paddingTop(ZetaSpacing.small);
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty<bool>('disabled', disabled))
-      ..add(DiagnosticsProperty<bool>('rounded', rounded))
-      ..add(StringProperty('hintText', hintText))
-      ..add(StringProperty('errorText', errorText));
   }
 }

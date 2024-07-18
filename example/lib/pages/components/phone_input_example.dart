@@ -32,7 +32,7 @@ class _PhoneInputExampleState extends State<PhoneInputExample> {
                   if (value?.isEmpty ?? true) setState(() => _errorText = null);
                   print(value);
                 },
-                countries: ['US', 'GB', 'DE', 'AT', 'FR', 'IT', 'BG'],
+                // countries: ['US', 'GB', 'DE', 'AT', 'FR', 'IT', 'BG'],
               ),
             ),
             Padding(
@@ -61,6 +61,13 @@ class _PhoneInputExampleState extends State<PhoneInputExample> {
                 label: 'Phone number',
                 hintText: 'Enter your phone number',
                 disabled: true,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(20),
+              child: ZetaPhoneInput(
+                label: 'Phone number',
+                hintText: 'Enter your phone number',
               ),
             ),
           ],

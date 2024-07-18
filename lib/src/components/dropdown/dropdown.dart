@@ -610,21 +610,23 @@ class _ZetaDropDownMenuState<T> extends State<_ZetaDropDownMenu<T>> {
             )
           : null,
       child: IntrinsicWidth(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: widget.items
-              .map((item) {
-                return _DropdownItem(
-                  value: item,
-                  onPress: () => widget.onSelected(item),
-                  selected: item.value == widget.selected,
-                  allocateLeadingSpace: widget.allocateLeadingSpace,
-                  menuType: widget.menuType,
-                );
-              })
-              .divide(const SizedBox(height: ZetaSpacing.minimum))
-              .toList(),
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: widget.items
+                .map((item) {
+                  return _DropdownItem(
+                    value: item,
+                    onPress: () => widget.onSelected(item),
+                    selected: item.value == widget.selected,
+                    allocateLeadingSpace: widget.allocateLeadingSpace,
+                    menuType: widget.menuType,
+                  );
+                })
+                .divide(const SizedBox(height: ZetaSpacing.minimum))
+                .toList(),
+          ),
         ),
       ),
     );
