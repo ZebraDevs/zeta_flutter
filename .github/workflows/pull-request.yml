@@ -3,6 +3,7 @@ on:
   pull_request_target:
   pull_request: #TODO: Remove this after testing
 
+
 jobs:
   code-quality:
     uses: ./.github/workflows/code-quality.yml
