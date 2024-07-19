@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 
 import '../../../zeta_flutter.dart';
 
-/// List Item for notifications
+/// Notification list items are used in notification lists.
+/// {@category Components}
 class ZetaNotificationListItem extends ZetaStatefulWidget {
   /// Constructor for [ZetaNotificationListItem]
   const ZetaNotificationListItem({
@@ -161,6 +162,7 @@ extension on Image {
   }
 }
 
+// TODO(UX-1138): Can this be refactored to use ZetaIndicator?
 /// Badge item for notification list items. Can be an avatar, icon or image
 class ZetaNotificationBadge extends StatelessWidget {
   /// Constructs a notification badge with an avatar.

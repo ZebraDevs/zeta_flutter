@@ -16,6 +16,7 @@ import '../../zeta_flutter.dart';
 /// * [warm]
 /// * [pure]
 /// * [cool].
+/// {@category Theme}
 abstract final class ZetaColorBase {
   /// Link color for light mode.
   @Deprecated('This color has been deprecated as of v0.10.0')

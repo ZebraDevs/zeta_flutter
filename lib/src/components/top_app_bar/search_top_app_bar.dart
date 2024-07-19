@@ -6,6 +6,7 @@ import '../../../zeta_flutter.dart';
 const _extendedOffset = ZetaSpacing.minimum * 6.5;
 
 /// Creates a search field used on a [ZetaTopAppBar].
+/// {@category Components}
 class ZetaTopAppBarSearchField extends ZetaStatefulWidget {
   /// Constructs a [ZetaTopAppBarSearchField].
   const ZetaTopAppBarSearchField({
@@ -29,7 +30,7 @@ class ZetaTopAppBarSearchField extends ZetaStatefulWidget {
   final String hintText;
 
   /// Used to control the search textfield and states.
-  final AppBarSearchController? searchController;
+  final ZetaSearchController? searchController;
 
   /// Defines the styles of the app bar.
   final ZetaTopAppBarType type;
@@ -46,7 +47,7 @@ class ZetaTopAppBarSearchField extends ZetaStatefulWidget {
     properties
       ..add(ObjectFlagProperty<void Function(String value)?>.has('onSearch', onSearch))
       ..add(StringProperty('hintText', hintText))
-      ..add(DiagnosticsProperty<AppBarSearchController?>('searchController', searchController))
+      ..add(DiagnosticsProperty<ZetaSearchController?>('searchController', searchController))
       ..add(EnumProperty<ZetaTopAppBarType>('type', type))
       ..add(DiagnosticsProperty<bool>('isExtended', isExtended));
   }
@@ -186,8 +187,12 @@ class _ZetaTopAppBarSearchFieldState extends State<ZetaTopAppBarSearchField> wit
   }
 }
 
-/// Controls the search.
-class AppBarSearchController extends ChangeNotifier {
+/// A controller used to control the search field in the app bar.
+@Deprecated('Use ZetaSearchController instead. ' 'Deprecated as of 0.14.1')
+typedef AppBarSearchController = ZetaSearchController;
+
+/// A controller used to control the search field in the app bar.
+class ZetaSearchController extends ChangeNotifier {
   bool _enabled = false;
 
   /// Controller used for the search field.

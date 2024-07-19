@@ -6,6 +6,7 @@ import 'colors_base.dart';
 import 'contrast.dart';
 
 /// A swatch of colors with values from 10 (light) to 100 (dark).
+/// {@category Theme}
 @immutable
 class ZetaColorSwatch extends ColorSwatch<int> with EquatableMixin {
   /// Constructs a [ZetaColorSwatch].

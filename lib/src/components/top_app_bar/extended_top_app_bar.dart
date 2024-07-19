@@ -12,6 +12,7 @@ const _topMin = ZetaSpacing.xl_1;
 const _topMax = ZetaSpacing.minimum * 15;
 
 /// Delegate for creating an extended app bar, that grows and shrinks when scrolling.
+/// {@category Components}
 class ZetaExtendedAppBarDelegate extends SliverPersistentHeaderDelegate {
   /// Constructs a [ZetaExtendedAppBarDelegate].
   ZetaExtendedAppBarDelegate({
@@ -32,7 +33,7 @@ class ZetaExtendedAppBarDelegate extends SliverPersistentHeaderDelegate {
   final Widget? leading;
 
   /// Used to control the search textfield and states.
-  final AppBarSearchController? searchController;
+  final ZetaSearchController? searchController;
 
   /// If `ZetaTopAppBarType.extend` shrinks. Does not affect other types of app bar.
   final bool shrinks;

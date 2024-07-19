@@ -7,9 +7,8 @@ import '../../../zeta_flutter.dart';
 @Deprecated('Use ZetaLabel instead. ' 'This widget has been renamed as of 0.11.0')
 typedef ZetaBadge = ZetaLabel;
 
-/// Zeta Badge.
-///
 /// Text badges notify users of line items that need attention.
+/// {@category Components}
 class ZetaLabel extends ZetaStatelessWidget {
   ///Constructs [ZetaLabel].
   const ZetaLabel({

@@ -12,6 +12,7 @@ import '../../interfaces/form_field.dart';
 ///
 /// The input can be reset and validated by Creating a key of type [ZetaTextInputState] and calling either `reset` or `validate`.
 /// However, it is recommended that the input is used and validated as part of a form.
+/// {@category Components}
 class ZetaTextInput extends ZetaFormField<String> {
   /// Creates a new [ZetaTextInput]
   const ZetaTextInput({

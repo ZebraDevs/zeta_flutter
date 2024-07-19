@@ -25,7 +25,8 @@ enum ZetaFabSize {
   large,
 }
 
-///Zeta Floating Action Button Component.
+/// Zeta Floating Action Button Component.
+/// {@category Components}
 class ZetaFAB extends StatefulWidget {
   ///Constructs [ZetaFAB].
   const ZetaFAB({
@@ -131,7 +132,7 @@ class _ZetaFABState extends State<ZetaFAB> {
         side: WidgetStateProperty.resolveWith(
           (Set<WidgetState> states) {
             if (states.contains(WidgetState.focused)) {
-              // TODO(thelukewalton): This removes a defualt border when focused, rather than adding a second border when focused.
+              // TODO(UX-1134): This removes a defualt border when focused, rather than adding a second border when focused.
               return BorderSide(color: Zeta.of(context).colors.blue.shade50, width: ZetaSpacingBase.x0_5);
             }
             return null;

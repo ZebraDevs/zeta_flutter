@@ -2,8 +2,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import '../../../zeta_flutter.dart';
 
-/// Zeta Checkbox.
-///
 /// Checkboxes allow users to select one or more items from a set. Checkboxes can turn an option on or off.
 ///
 /// The checkbox itself does not maintain any state. Instead, when the state of
@@ -11,6 +9,7 @@ import '../../../zeta_flutter.dart';
 /// Widgets that use a checkbox should listen for the [onChanged] callback and
 /// rebuild the checkbox with a new [value] to update the visual appearance of
 /// the checkbox.
+/// {@category Components}
 class ZetaCheckbox extends FormField<bool> {
   /// Constructs a [ZetaCheckbox].
   ZetaCheckbox({

@@ -7,11 +7,10 @@ export './assist_chip.dart';
 export './filter_chip.dart';
 export './input_chip.dart';
 
-/// Zeta Chip component.
-///
 /// This covers the broad functionality of [ZetaAssistChip], [ZetaFilterChip] and [ZetaInputChip].
 ///
 /// If [selected] is not null, the chip will have the toggle behavior of [ZetaFilterChip].
+/// {@category Components}
 class ZetaChip extends ZetaStatefulWidget {
   /// Constructs a [ZetaChip].
   const ZetaChip({

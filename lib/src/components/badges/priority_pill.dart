@@ -46,6 +46,7 @@ extension on ZetaPriorityPillType {
 }
 
 /// This badge is used to indicate the order of importance.
+/// {@category Components}
 class ZetaPriorityPill extends ZetaStatelessWidget {
   ///Constructs [ZetaPriorityPill]
   const ZetaPriorityPill({

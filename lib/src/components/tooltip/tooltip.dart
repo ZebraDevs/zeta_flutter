@@ -21,7 +21,8 @@ enum ZetaTooltipArrowDirection {
   right,
 }
 
-/// [ZetaTooltip]
+/// Tooltips display informative text when users hover over, focus on, or tap an element.
+/// {@category Components}
 class ZetaTooltip extends ZetaStatelessWidget {
   /// Constructor for [ZetaTooltip].
   const ZetaTooltip({

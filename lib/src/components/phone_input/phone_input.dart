@@ -7,6 +7,7 @@ import 'countries.dart';
 import 'countries_dialog.dart';
 
 /// ZetaPhoneInput allows entering phone numbers.
+/// {@category Components}
 class ZetaPhoneInput extends ZetaStatefulWidget {
   /// Constructor for [ZetaPhoneInput].
   const ZetaPhoneInput({

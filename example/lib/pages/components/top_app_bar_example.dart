@@ -15,8 +15,8 @@ class TopAppBarExample extends StatefulWidget {
 }
 
 class _TopAppBarExampleState extends State<TopAppBarExample> {
-  final _searchControllerExtended = AppBarSearchController();
-  final _searchControllerRegular = AppBarSearchController();
+  final _searchControllerExtended = ZetaSearchController();
+  final _searchControllerRegular = ZetaSearchController();
 
   void _showHideSearchExtended() {
     _searchControllerExtended.isEnabled

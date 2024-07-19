@@ -1,13 +1,14 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import 'theme/contrast.dart';
-import 'theme/theme_data.dart';
+import '../theme/contrast.dart';
+import '../theme/theme_data.dart';
 
 /// An [InheritedWidget] that provides access to Zeta theme settings.
 ///
 /// It holds information about the current contrast, theme mode, and theme data.
 /// The [colors] getter provides the correct color set based on the current theme mode.
+/// {@category Utils}
 class Zeta extends InheritedWidget {
   /// Constructs a [Zeta] widget.
   ///

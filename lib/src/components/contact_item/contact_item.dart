@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../zeta_flutter.dart';
 
 /// A single row that contains avatar, title and subtitle.
+/// {@category Components}
 class ZetaContactItem extends ZetaStatelessWidget {
   /// Constructs [ZetaContactItem].
   const ZetaContactItem({

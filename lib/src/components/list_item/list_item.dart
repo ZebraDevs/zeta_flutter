@@ -8,6 +8,7 @@ import 'list_scope.dart';
 /// Dividers on individual list items can be hidden or shown by setting their [showDivider] property.
 ///
 /// This wraps [ListView.builder] so it needs to be used in a widget with a constrained height.
+/// {@category Components}
 class ZetaList extends ZetaStatelessWidget {
   /// Creates a new [ZetaList].
   const ZetaList({
@@ -48,6 +49,7 @@ class ZetaList extends ZetaStatelessWidget {
 /// A single row that typically contains some text as well as a leading or trailing widgets.
 ///
 /// To create list items with a [ZetaSwitch], [ZetaCheckbox], or [ZetaRadio], use the [ZetaListItem.toggle], [ZetaListItem.checkbox] or the [ZetaListItem.radio] named constructors respectively.
+/// {@category Components}
 class ZetaListItem extends ZetaStatelessWidget {
   /// Creates a [ZetaListItem].
   const ZetaListItem({

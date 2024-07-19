@@ -2,10 +2,9 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import '../../../zeta_flutter.dart';
 
-/// Zeta Status Label.
-///
 /// To help some information, labels, or errors stand out, we present them with badges.
 /// They can look like buttons, but users can’t select them. They just guide users to things they should pay attention to.
+/// {@category Components}
 class ZetaStatusLabel extends ZetaStatelessWidget {
   ///Constructs [ZetaStatusLabel].
   const ZetaStatusLabel({

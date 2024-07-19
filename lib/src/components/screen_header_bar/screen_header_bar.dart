@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../zeta_flutter.dart';
 
 /// [ZetaScreenHeaderBar]
+/// {@category Components}
 class ZetaScreenHeaderBar extends ZetaStatelessWidget {
   /// Constructor for [ZetaScreenHeaderBar].
   const ZetaScreenHeaderBar({

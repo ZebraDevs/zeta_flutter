@@ -5,6 +5,7 @@ import 'package:flutter/rendering.dart';
 import '../../../zeta_flutter.dart';
 
 /// Dial pad gives the user the ability to dial a number and start a call. It also has a quick dial security action and a delete entry action.
+/// {@category Components}
 class ZetaDialPad extends StatefulWidget {
   /// Constructs a [ZetaDialPad].
   const ZetaDialPad({

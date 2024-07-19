@@ -26,6 +26,7 @@ class _DropdownControllerImpl implements ZetaDropdownController {
 }
 
 /// An item used in a [ZetaDropdown] or a [ZetaSelectInput].
+/// {@category Components}
 class ZetaDropdownItem<T> {
   /// Creates a new [ZetaDropdownItem]
   ZetaDropdownItem({
@@ -49,6 +50,7 @@ class ZetaDropdownItem<T> {
 }
 
 /// Class for [ZetaDropdown]
+/// {@category Components}
 class ZetaDropdown<T> extends ZetaStatefulWidget {
   /// Creates a new [ZetaDropdown].
   const ZetaDropdown({

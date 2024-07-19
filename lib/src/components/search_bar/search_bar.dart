@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../zeta_flutter.dart';
 
 /// ZetaSearchBar provides input field for searching.
+/// {@category Components}
 class ZetaSearchBar extends ZetaStatefulWidget {
   /// Constructor for [ZetaSearchBar].
   const ZetaSearchBar({

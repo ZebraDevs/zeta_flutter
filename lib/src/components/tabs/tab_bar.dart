@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../../../zeta_flutter.dart';
 
 /// A Zeta Design primary tab bar.
+/// {@category Components}
 class ZetaTabBar extends TabBar {
   /// Creates a Zeta Design primary tab bar.
   ZetaTabBar({

@@ -28,10 +28,9 @@ enum ZetaBannerStatus {
   negative,
 }
 
-/// Zeta Banner. Extends [MaterialBanner].
-///
 /// A banner displays an important, succinct message, and provides action for users to address.
 /// It draws the attention to the message by displaying it at the top in various colors.
+/// {@category Components}
 class ZetaBanner extends MaterialBanner {
   /// Constructor for [ZetaBanner]. See [MaterialBanner] for more information.
   ZetaBanner({

@@ -7,9 +7,8 @@ import 'color_swatch.dart';
 import 'colors_base.dart';
 import 'contrast.dart';
 
-/// Zeta Colors.
-///
 /// A customizable, token-based color palette, adapting Zeta colors to Flutter's colorScheme.
+/// {@category Theme}
 @immutable
 class ZetaColors extends Equatable {
   /// Default constructor for instance of [ZetaColors].

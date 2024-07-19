@@ -3,7 +3,12 @@ import 'package:flutter/material.dart';
 
 import '../../../zeta_flutter.dart';
 
-/// Component [ZetaBottomSheet]
+///Bottom sheets are surfaces containing supplementary content that are anchored to the bottom of the screen.
+///
+/// To display a [ZetaBottomSheet], use the [showZetaBottomSheet] function.
+///
+/// Content should typically consist of a [List] of [ZetaMenuItem]s.
+/// {@category Components}
 class ZetaBottomSheet extends ZetaStatelessWidget {
   /// Constructor for [ZetaBottomSheet].
   const ZetaBottomSheet({

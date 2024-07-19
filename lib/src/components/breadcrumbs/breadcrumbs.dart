@@ -2,7 +2,13 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import '../../../zeta_flutter.dart';
 
-///Class for [ZetaBreadCrumbs]
+// TODO(UX-1131): Refactor this to make BreadCrumbItem a class, not a widget.
+
+/// The breadcrumb is a secondary navigation pattern that helps a user understand the hierarchy among levels and navigate back through them.
+///
+/// [children] should consist of [ZetaBreadCrumb]s.
+///
+/// {@category Components}
 class ZetaBreadCrumbs extends ZetaStatefulWidget {
   ///Constructor for [ZetaBreadCrumbs]
   const ZetaBreadCrumbs({
@@ -10,6 +16,7 @@ class ZetaBreadCrumbs extends ZetaStatefulWidget {
     super.rounded,
     required this.children,
     this.activeIcon,
+    this.moreSemanticLabel,
   });
 
   /// Breadcrumb children
@@ -17,6 +24,10 @@ class ZetaBreadCrumbs extends ZetaStatefulWidget {
 
   /// Active icon for breadcrumb
   final IconData? activeIcon;
+
+  /// Label passed to wrapping [Semantics] widget.
+  /// {@macro zeta-widget-semantic-label}
+  final String? moreSemanticLabel;
 
   @override
   State<ZetaBreadCrumbs> createState() => _ZetaBreadCrumbsState();
@@ -27,7 +38,8 @@ class ZetaBreadCrumbs extends ZetaStatefulWidget {
     properties
       ..add(IterableProperty<ZetaBreadCrumb>('children', children))
       ..add(DiagnosticsProperty<bool?>('rounded', rounded))
-      ..add(DiagnosticsProperty<IconData?>('activeIcon', activeIcon));
+      ..add(DiagnosticsProperty<IconData?>('activeIcon', activeIcon))
+      ..add(StringProperty('moreSemanticLabel', moreSemanticLabel));
   }
 }
 
@@ -103,7 +115,7 @@ class _ZetaBreadCrumbsState extends State<ZetaBreadCrumbs> {
         truncatedChildren.add(createBreadCrumb(element, index + 1));
       }
       returnList
-        ..add(BreadCrumbsTruncated(children: truncatedChildren))
+        ..add(_BreadCrumbsTruncated(semanticLabel: widget.moreSemanticLabel, children: truncatedChildren))
         ..add(createBreadCrumb(children.last, children.length - 1));
     } else {
       for (final (index, element) in children.indexed) {
@@ -114,7 +126,11 @@ class _ZetaBreadCrumbsState extends State<ZetaBreadCrumbs> {
   }
 }
 
+// TODO(UX-1131): Rename to breadcrumbitem
+
 /// Class for untruncated [ZetaBreadCrumb].
+///
+/// Should be a child of [ZetaBreadCrumbs].
 class ZetaBreadCrumb extends StatefulWidget {
   ///Constructor for [ZetaBreadCrumb]
   const ZetaBreadCrumb({
@@ -233,13 +249,15 @@ class _ZetaBreadCrumbState extends State<ZetaBreadCrumb> {
   }
 }
 
-///Class for [BreadCrumbsTruncated]
-class BreadCrumbsTruncated extends StatefulWidget {
-  ///Constructor for [BreadCrumbsTruncated]
-  const BreadCrumbsTruncated({
-    super.key,
+/// Class for [_BreadCrumbsTruncated]
+@Deprecated('This functionality is not needed anymore. Use [ZetaBreadCrumb] instead. ' 'Deprecated since 0.14.1')
+typedef BreadCrumbsTruncated = _BreadCrumbsTruncated;
+
+class _BreadCrumbsTruncated extends StatefulWidget {
+  ///Constructor for [_BreadCrumbsTruncated]
+  const _BreadCrumbsTruncated({
     required this.children,
-    this.semanticLabel = 'More breadcrumbs',
+    this.semanticLabel,
   });
 
   ///Breadcrumb children
@@ -248,10 +266,10 @@ class BreadCrumbsTruncated extends StatefulWidget {
   /// Label passed to wrapping [Semantics] widget.
   ///
   /// {@macro zeta-widget-semantic-label}
-  final String semanticLabel;
+  final String? semanticLabel;
 
   @override
-  State<BreadCrumbsTruncated> createState() => _BreadCrumbsTruncatedState();
+  State<_BreadCrumbsTruncated> createState() => _BreadCrumbsTruncatedState();
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
@@ -259,7 +277,7 @@ class BreadCrumbsTruncated extends StatefulWidget {
   }
 }
 
-class _BreadCrumbsTruncatedState extends State<BreadCrumbsTruncated> {
+class _BreadCrumbsTruncatedState extends State<_BreadCrumbsTruncated> {
   bool _expanded = false;
 
   @override

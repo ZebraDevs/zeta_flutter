@@ -13,7 +13,10 @@ enum ZetaStepperInputSize {
   large,
 }
 
-/// A stepper input, also called numeric stepper, is a common UI element that allows users to input a number or value simply by clicking the plus and minus buttons.
+/// A stepper input, also called numeric stepper, is a common UI element that
+/// allows users to input a number or value simply by clicking the plus and
+/// minus buttons.
+/// {@category Components}
 class ZetaStepperInput extends ZetaStatefulWidget {
   /// Creates a new [ZetaStepperInput]
   const ZetaStepperInput({

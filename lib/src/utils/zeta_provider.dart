@@ -5,7 +5,7 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import '../zeta_flutter.dart';
+import '../../zeta_flutter.dart';
 
 /// A typedef for the ZetaAppBuilder function which passes [BuildContext], [ZetaThemeData],
 /// and [ThemeMode] and returns a [Widget].
@@ -24,6 +24,7 @@ final _emptyBuilder = (_, __, ___) => const Nothing();
 final _emptyBase = (_, __, ___, ____) => const Nothing();
 
 /// A widget that provides Zeta theming and contrast data down the widget tree.
+/// {@category Utils}
 class ZetaProvider extends StatefulWidget with Diagnosticable {
   /// Constructs a [ZetaProvider] widget.
   ///
@@ -146,6 +147,7 @@ class ZetaProvider extends StatefulWidget with Diagnosticable {
 }
 
 /// The state associated with [ZetaProvider].
+/// {@category Utils}
 class ZetaProviderState extends State<ZetaProvider> with Diagnosticable, WidgetsBindingObserver {
   // Fields for ZetaThemeManager.
 

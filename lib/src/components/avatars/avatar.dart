@@ -34,6 +34,7 @@ enum ZetaAvatarSize {
 }
 
 /// An avatar is a visual representation of a user or entity.
+/// {@category Components}
 class ZetaAvatar extends ZetaStatelessWidget {
   /// Constructor for [ZetaAvatar]
   const ZetaAvatar({
@@ -341,7 +342,9 @@ enum ZetaAvatarBadgeType {
   notification,
 }
 
-/// Badge component used with [ZetaAvatar] as either [ZetaAvatar.upperBadge] or[ ZetaAvatar.lowerBadge].
+// TODO(UX-1138): Can this be refactored to use ZetaIndicator?
+
+/// Badge component used with [ZetaAvatar] as either [ZetaAvatar.upperBadge] or [ZetaAvatar.lowerBadge].
 ///
 /// Sizes and styles are managed by the parent [ZetaAvatar].
 class ZetaAvatarBadge extends StatelessWidget {

@@ -27,7 +27,8 @@ enum ZetaSwitchType {
 /// Switch can turn an option on or off.
 ///
 /// Switch has styles for Android, iOS and Web.
-// TODO(switch): Add web icon support.
+/// {@category Components}
+// TODO(UX-1137): Add web icon support.
 class ZetaSwitch extends StatelessWidget {
   /// Constructor for [ZetaSwitch].
   const ZetaSwitch({

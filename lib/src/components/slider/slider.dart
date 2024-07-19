@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 
 import '../../../zeta_flutter.dart';
 
-/// Slider component with customized styling
+/// Slider component with customized styling.
+/// {@category Components}
 class ZetaSlider extends ZetaStatefulWidget {
   /// Default constructor for [ZetaSlider]
   const ZetaSlider({
@@ -55,7 +56,7 @@ class _ZetaSliderState extends State<ZetaSlider> {
         label: widget.semanticLabel,
         child: SliderTheme(
           data: SliderThemeData(
-            /** TODO: Match with new colors */
+            // TODO(UX-1136): Match with new colors
 
             /// Active Track
             activeTrackColor: _activeColor,
@@ -71,8 +72,8 @@ class _ZetaSliderState extends State<ZetaSlider> {
             /// Thumb
             thumbColor: colors.surfaceDefaultInverse,
             disabledThumbColor: colors.surfaceDisabled,
-            overlayShape: SliderThumb(size: ZetaSpacingBase.x2_5, rounded: context.rounded, color: _activeColor),
-            thumbShape: SliderThumb(
+            overlayShape: _SliderThumb(size: ZetaSpacingBase.x2_5, rounded: context.rounded, color: _activeColor),
+            thumbShape: _SliderThumb(
               size: ZetaSpacing.small,
               rounded: context.rounded,
               color: _activeColor,
@@ -108,17 +109,21 @@ class _ZetaSliderState extends State<ZetaSlider> {
 }
 
 /// Custom slider thumb component
-class SliderThumb extends SliderComponentShape {
-  /// Constructor for [SliderThumb]
-  const SliderThumb({required this.size, required this.rounded, required this.color});
+@Deprecated('Deprecated in 0.14.1')
+typedef SliderThumb = _SliderThumb;
 
-  /// Radius or width/height for [SliderThumb] depending on shape
+/// Custom slider thumb component
+class _SliderThumb extends SliderComponentShape {
+  /// Constructor for [_SliderThumb]
+  const _SliderThumb({required this.size, required this.rounded, required this.color});
+
+  /// Radius or width/height for [_SliderThumb] depending on shape
   final double size;
 
-  /// If [SliderThumb] is circular or a square
+  /// If [_SliderThumb] is circular or a square
   final bool rounded;
 
-  /// Color of [SliderThumb]
+  /// Color of [_SliderThumb]
   final Color color;
 
   @override

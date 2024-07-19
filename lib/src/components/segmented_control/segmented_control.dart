@@ -5,7 +5,10 @@ import 'package:flutter/physics.dart';
 import 'package:flutter/rendering.dart';
 import '../../../zeta_flutter.dart';
 
-/// Creates an segmented control bar.
+/// A segmented control is a linear set of two or more segments, each of which
+/// functions as a mutually exclusive button. Like buttons, segments can contain
+/// text or images. Segmented controls are often used to display different views.
+/// {@category Components}
 class ZetaSegmentedControl<T> extends ZetaStatefulWidget {
   /// Constructs an segmented control bar.
   const ZetaSegmentedControl({
