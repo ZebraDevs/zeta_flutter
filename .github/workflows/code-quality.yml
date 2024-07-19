@@ -11,10 +11,11 @@ jobs:
         with:
           repository: ${{github.event.pull_request.head.repo.full_name}}
           ref: ${{ github.head_ref }}
+          fetch-depth: 0
       - uses: subosito/flutter-action@v2
         with:
           cache: true
-      - run: dart run build_runner build
-      - uses: ZebraDevs/flutter-code-quality@v1.0.3
+      - run: dart run build_runner build --delete-conflicting-outputs
+      - uses: ZebraDevs/flutter-code-quality@UX-1139
         with:
           token: ${{secrets.GITHUB_TOKEN}}
