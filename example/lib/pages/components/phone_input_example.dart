@@ -28,11 +28,12 @@ class _PhoneInputExampleState extends State<PhoneInputExample> {
                 hintText: 'Enter your phone number',
                 hasError: _errorText != null,
                 errorText: _errorText,
-                onChanged: (value) {
+                onChange: (value) {
                   if (value?.isEmpty ?? true) setState(() => _errorText = null);
                   print(value);
                 },
-                // countries: ['US', 'GB', 'DE', 'AT', 'FR', 'IT', 'BG'],
+                initialCountry: 'GB',
+                countries: ['US', 'GB', 'DE', 'AT', 'FR', 'IT', 'BG'],
               ),
             ),
             Padding(
@@ -42,8 +43,8 @@ class _PhoneInputExampleState extends State<PhoneInputExample> {
                 hintText: 'Enter your phone number',
                 hasError: _errorText != null,
                 size: ZetaWidgetSize.large,
-                errorText: _errorText,
-                onChanged: (value) {
+                errorText: 'Error',
+                onChange: (value) {
                   if (value?.isEmpty ?? true) setState(() => _errorText = null);
                   print(value);
                 },
@@ -68,15 +69,6 @@ class _PhoneInputExampleState extends State<PhoneInputExample> {
               child: ZetaPhoneInput(
                 label: 'Phone number',
                 hintText: 'Enter your phone number',
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(20),
-              child: TextFormField(
-                decoration: InputDecoration(
-                  isDense: true,
-                  prefixText: 'ddddddddddd',
-                ),
               ),
             ),
           ],

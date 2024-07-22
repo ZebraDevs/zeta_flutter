@@ -199,10 +199,13 @@ class ZetaTextInput extends ZetaFormField<String> {
   /// {@endtemplate}
   final bool obscureText;
 
+  /// The keyboard type of the input.
   final TextInputType? keyboardType;
 
+  /// The focus node of the input.
   final FocusNode? focusNode;
 
+  /// The border radius of the input.
   final BorderRadius? borderRadius;
 
   @override
@@ -229,7 +232,10 @@ class ZetaTextInput extends ZetaFormField<String> {
       ..add(IterableProperty<TextInputFormatter>('inputFormatters', inputFormatters))
       ..add(EnumProperty<ZetaFormFieldRequirement>('requirementLevel', requirementLevel))
       ..add(ObjectFlagProperty<void Function(String? val)?>.has('onSubmit', onSubmit))
-      ..add(DiagnosticsProperty<bool>('obscureText', obscureText));
+      ..add(DiagnosticsProperty<bool>('obscureText', obscureText))
+      ..add(DiagnosticsProperty<TextInputType?>('keyboardType', keyboardType))
+      ..add(DiagnosticsProperty<FocusNode?>('focusNode', focusNode))
+      ..add(DiagnosticsProperty<BorderRadius?>('borderRadius', borderRadius));
   }
 }
 

@@ -3,15 +3,26 @@ import 'package:flutter/widgets.dart';
 
 import '../../../zeta_flutter.dart';
 
-class ZetaInputLabel extends StatelessWidget {
+/// A widget that displays a label above a form field.
+class ZetaInputLabel extends ZetaStatelessWidget {
+  /// Creates a new [ZetaInputLabel]
   const ZetaInputLabel({
     required this.label,
     required this.requirementLevel,
     required this.disabled,
+    super.key,
   });
 
+  /// The label text.
   final String label;
+
+  /// The requirement level of the field.
+  ///
+  /// If set to [ZetaFormFieldRequirement.optional], the label will display '(optional)'.
+  /// If set to [ZetaFormFieldRequirement.mandatory], the label will have an asterix next to it.
   final ZetaFormFieldRequirement requirementLevel;
+
+  /// If true, the label will be disabled.
   final bool disabled;
 
   @override

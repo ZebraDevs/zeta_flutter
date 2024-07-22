@@ -3,16 +3,24 @@ import 'package:flutter/widgets.dart';
 
 import '../../../zeta_flutter.dart';
 
-class ZetaHintText extends StatelessWidget {
+/// A widget that displays hint or error text below a form field.
+class ZetaHintText extends ZetaStatelessWidget {
+  /// Creates a new [ZetaHintText]
   const ZetaHintText({
     required this.disabled,
     required this.hintText,
     required this.errorText,
-    required this.rounded,
+    super.rounded,
+    super.key,
   });
+
+  /// If true, the hint text will be disabled.
   final bool disabled;
-  final bool rounded;
+
+  /// The hint text.
   final String? hintText;
+
+  /// The error text. If defined, it will be shown instead of the hint text.
   final String? errorText;
 
   @override

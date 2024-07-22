@@ -5,25 +5,27 @@ import 'package:flutter/services.dart';
 
 import '../../../zeta_flutter.dart';
 
+import '../../interfaces/form_field.dart';
 import '../text_input/hint_text.dart';
 import '../text_input/input_label.dart';
 import '../text_input/text_input.dart';
 import 'countries.dart';
 
 /// ZetaPhoneInput allows entering phone numbers.
-class ZetaPhoneInput extends ZetaStatefulWidget {
+class ZetaPhoneInput extends ZetaFormField<String> {
   /// Constructor for [ZetaPhoneInput].
   const ZetaPhoneInput({
     super.key,
     super.rounded,
+    super.initialValue,
+    super.onChange,
+    super.requirementLevel = ZetaFormFieldRequirement.none,
     this.label,
     this.hintText,
-    this.disabled = false,
+    super.disabled = false,
     this.hasError = false,
     this.errorText,
-    this.onChanged,
-    this.countryDialCode,
-    this.phoneNumber,
+    this.initialCountry,
     this.countries,
     this.countrySearchHint,
     this.size = ZetaWidgetSize.medium,
@@ -35,9 +37,6 @@ class ZetaPhoneInput extends ZetaStatefulWidget {
   /// If provided, displays a hint below the input field.
   final String? hintText;
 
-  /// Determines if the inputs should be enabled (default) or disabled.
-  final bool disabled;
-
   /// Determines if the input field should be displayed in error style.
   /// Default is `false`.
   /// If `enabled` is `false`, this has no effect.
@@ -47,14 +46,8 @@ class ZetaPhoneInput extends ZetaStatefulWidget {
   /// to be displayed below the input field.
   final String? errorText;
 
-  /// A callback, which provides the entered phone number.
-  final void Function(Map<String, String>?)? onChanged;
-
-  /// The initial value for the country dial code including leading +
-  final String? countryDialCode;
-
-  /// The initial value for the phone number
-  final String? phoneNumber;
+  /// The initial value for the selected country.
+  final String? initialCountry;
 
   /// List of countries ISO 3166-1 alpha-2 codes
   final List<String>? countries;
@@ -63,6 +56,9 @@ class ZetaPhoneInput extends ZetaStatefulWidget {
   /// Default is `Search by name or dial code`.
   final String? countrySearchHint;
 
+  /// The size of the input.
+  ///
+  /// Setting this to small will have no effect.
   final ZetaWidgetSize size;
 
   @override
@@ -77,11 +73,10 @@ class ZetaPhoneInput extends ZetaStatefulWidget {
       ..add(DiagnosticsProperty<bool>('rounded', rounded))
       ..add(DiagnosticsProperty<bool>('hasError', hasError))
       ..add(StringProperty('errorText', errorText))
-      ..add(ObjectFlagProperty<void Function(Map<String, String>? p1)?>.has('onChanged', onChanged))
-      ..add(StringProperty('countryDialCode', countryDialCode))
-      ..add(StringProperty('phoneNumber', phoneNumber))
+      ..add(StringProperty('countryDialCode', initialCountry))
       ..add(IterableProperty<String>('countries', countries))
-      ..add(StringProperty('countrySearchHint', countrySearchHint));
+      ..add(StringProperty('countrySearchHint', countrySearchHint))
+      ..add(EnumProperty<ZetaWidgetSize>('size', size));
   }
 }
 
@@ -91,11 +86,31 @@ class _ZetaPhoneInputState extends State<ZetaPhoneInput> {
   late Country _selectedCountry;
   late String _phoneNumber;
 
-  final FocusNode inputFocusNode = FocusNode();
+  final FocusNode _inputFocusNode = FocusNode();
+
+  ZetaWidgetSize get _size => widget.size == ZetaWidgetSize.small ? ZetaWidgetSize.medium : widget.size;
 
   @override
   void initState() {
     super.initState();
+    _setCountries();
+    _setInitialCountry();
+    _setDropdownItems();
+  }
+
+  @override
+  void didUpdateWidget(ZetaPhoneInput oldWidget) {
+    if (oldWidget.countries != widget.countries) {
+      _setCountries();
+      setState(_setDropdownItems);
+    }
+    if (oldWidget.initialCountry != widget.initialCountry) {
+      setState(_setInitialCountry);
+    }
+    super.didUpdateWidget(oldWidget);
+  }
+
+  void _setCountries() {
     _countries = widget.countries?.isEmpty ?? true
         ? Countries.list
         : Countries.list.where((country) => widget.countries!.contains(country.isoCode)).toList();
@@ -107,21 +122,14 @@ class _ZetaPhoneInputState extends State<ZetaPhoneInput> {
       );
     }
     if (_countries.isEmpty) _countries = Countries.list;
-    _selectedCountry = _countries.firstWhereOrNull(
-          (country) => country.dialCode == widget.countryDialCode,
-        ) ??
-        _countries.first;
-    _phoneNumber = widget.phoneNumber ?? '';
-
-    _setDropdownItems();
   }
 
-  @override
-  void didUpdateWidget(ZetaPhoneInput oldWidget) {
-    if (oldWidget.countries != widget.countries) {
-      setState(_setDropdownItems);
-    }
-    super.didUpdateWidget(oldWidget);
+  void _setInitialCountry() {
+    _selectedCountry = _countries.firstWhereOrNull(
+          (country) => country.isoCode == widget.initialCountry,
+        ) ??
+        _countries.first;
+    _phoneNumber = widget.initialValue ?? '';
   }
 
   void _setDropdownItems() {
@@ -147,14 +155,7 @@ class _ZetaPhoneInputState extends State<ZetaPhoneInput> {
       if (selectedCountry != null) _selectedCountry = selectedCountry;
       if (phoneNumber != null) _phoneNumber = phoneNumber;
     });
-    widget.onChanged?.call(
-      _phoneNumber.isEmpty
-          ? {}
-          : {
-              'countryDialCode': _selectedCountry.dialCode,
-              'phoneNumber': _phoneNumber,
-            },
-    );
+    widget.onChange?.call('${_selectedCountry.dialCode}$_phoneNumber');
   }
 
   @override
@@ -167,7 +168,7 @@ class _ZetaPhoneInputState extends State<ZetaPhoneInput> {
         if (widget.label != null) ...[
           ZetaInputLabel(
             label: widget.label!,
-            requirementLevel: ZetaFormFieldRequirement.none, //TODO implement form field
+            requirementLevel: widget.requirementLevel,
             disabled: widget.disabled,
           ),
           const SizedBox(height: ZetaSpacing.minimum),
@@ -181,7 +182,7 @@ class _ZetaPhoneInputState extends State<ZetaPhoneInput> {
                       setState(() {
                         _selectedCountry = _countries.firstWhere((country) => country.dialCode == value.value);
                       });
-                      inputFocusNode.requestFocus();
+                      _inputFocusNode.requestFocus();
                     }
                   : null,
               value: _selectedCountry.dialCode,
@@ -240,11 +241,13 @@ class _ZetaPhoneInputState extends State<ZetaPhoneInput> {
             ),
             Expanded(
               child: textInputWithBorder(
-                initialValue: widget.phoneNumber,
+                initialValue: widget.initialValue,
                 disabled: widget.disabled,
-                size: widget.size,
+                size: _size,
+                requirementLevel: widget.requirementLevel,
                 rounded: rounded,
-                focusNode: inputFocusNode,
+                focusNode: _inputFocusNode,
+                errorText: widget.errorText != null ? '' : null,
                 inputFormatters: [FilteringTextInputFormatter.allow(RegExp(r'[\d\s\-]'))],
                 keyboardType: TextInputType.phone,
                 onChange: (value) => _onChanged(phoneNumber: value),
