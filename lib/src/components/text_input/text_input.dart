@@ -4,6 +4,66 @@ import 'package:flutter/services.dart';
 
 import '../../../zeta_flutter.dart';
 import '../../interfaces/form_field.dart';
+import 'hint_text.dart';
+import 'input_label.dart';
+
+/// Helper function to create a text input with a custom border.
+/// Not intended for external use.
+Widget textInputWithBorder({
+  Key? key,
+  ValueChanged<String?>? onChange,
+  bool disabled = false,
+  ZetaFormFieldRequirement requirementLevel = ZetaFormFieldRequirement.none,
+  String? initialValue,
+  bool rounded = false,
+  String? label,
+  String? hintText,
+  String? placeholder,
+  String? errorText,
+  TextEditingController? controller,
+  String? Function(String?)? validator,
+  Widget? suffix,
+  Widget? prefix,
+  ZetaWidgetSize size = ZetaWidgetSize.medium,
+  List<TextInputFormatter>? inputFormatters,
+  String? prefixText,
+  TextStyle? prefixTextStyle,
+  String? suffixText,
+  TextStyle? suffixTextStyle,
+  void Function(String? val)? onSubmit,
+  bool obscureText = false,
+  TextInputType? keyboardType,
+  FocusNode? focusNode,
+  BorderRadius? borderRadius,
+}) {
+  return ZetaTextInput._border(
+    key: key,
+    onChange: onChange,
+    disabled: disabled,
+    requirementLevel: requirementLevel,
+    initialValue: initialValue,
+    rounded: rounded,
+    label: label,
+    hintText: hintText,
+    placeholder: placeholder,
+    errorText: errorText,
+    controller: controller,
+    validator: validator,
+    suffix: suffix,
+    prefix: prefix,
+    size: size,
+    inputFormatters: inputFormatters,
+    prefixText: prefixText,
+    prefixTextStyle: prefixTextStyle,
+    suffixText: suffixText,
+    suffixTextStyle: suffixTextStyle,
+    onSubmit: onSubmit,
+    obscureText: obscureText,
+    keyboardType: keyboardType,
+    focusNode: focusNode,
+    borderRadius: borderRadius,
+  );
+}
 
 /// Text inputs allow the user to enter text.
 ///
@@ -38,10 +98,41 @@ class ZetaTextInput extends ZetaFormField<String> {
     this.suffixTextStyle,
     this.onSubmit,
     this.obscureText = false,
+    this.keyboardType,
+    this.focusNode,
     this.semanticLabel,
-  })  : assert(initialValue == null || controller == null, 'Only one of initial value and controller can be accepted.'),
+  })  : borderRadius = null,
+        assert(initialValue == null || controller == null, 'Only one of initial value and controller can be accepted.'),
         assert(prefix == null || prefixText == null, 'Only one of prefix or prefixText can be accepted.'),
         assert(suffix == null || suffixText == null, 'Only one of suffix or suffixText can be accepted.');
+
+  const ZetaTextInput._border({
+    super.key,
+    super.onChange,
+    super.disabled = false,
+    super.requirementLevel = ZetaFormFieldRequirement.none,
+    super.initialValue,
+    super.rounded,
+    this.label,
+    this.hintText,
+    this.placeholder,
+    this.errorText,
+    this.controller,
+    this.validator,
+    this.suffix,
+    this.prefix,
+    this.size = ZetaWidgetSize.medium,
+    this.inputFormatters,
+    this.prefixText,
+    this.prefixTextStyle,
+    this.suffixText,
+    this.suffixTextStyle,
+    this.onSubmit,
+    this.obscureText = false,
+    this.keyboardType,
+    this.focusNode,
+    this.borderRadius,
+  }) : semanticLabel = null;
 
   /// {@template text-input-label}
   /// The label displayed above the input.
@@ -110,6 +201,15 @@ class ZetaTextInput extends ZetaFormField<String> {
   /// {@endtemplate}
   final bool obscureText;
 
+  /// The keyboard type of the input.
+  final TextInputType? keyboardType;
+
+  /// The focus node of the input.
+  final FocusNode? focusNode;
+
+  /// The border radius of the input.
+  final BorderRadius? borderRadius;
+
   /// Value passed to the wrapping [Semantics] widget.
   ///
   /// If null, the label will be used.
@@ -142,6 +242,9 @@ class ZetaTextInput extends ZetaFormField<String> {
       ..add(EnumProperty<ZetaFormFieldRequirement>('requirementLevel', requirementLevel))
       ..add(ObjectFlagProperty<void Function(String? val)?>.has('onSubmit', onSubmit))
       ..add(DiagnosticsProperty<bool>('obscureText', obscureText))
+      ..add(DiagnosticsProperty<TextInputType?>('keyboardType', keyboardType))
+      ..add(DiagnosticsProperty<FocusNode?>('focusNode', focusNode))
+      ..add(DiagnosticsProperty<BorderRadius?>('borderRadius', borderRadius))
       ..add(StringProperty('semanticLabel', semanticLabel));
   }
 }
@@ -178,10 +281,16 @@ class ZetaTextInputState extends State<ZetaTextInput> implements ZetaFormFieldSt
   EdgeInsets get _contentPadding {
     switch (widget.size) {
       case ZetaWidgetSize.large:
-        return const EdgeInsets.symmetric(horizontal: ZetaSpacing.medium, vertical: ZetaSpacing.large);
+        return const EdgeInsets.symmetric(
+          horizontal: ZetaSpacing.medium,
+          vertical: ZetaSpacing.large,
+        );
       case ZetaWidgetSize.small:
       case ZetaWidgetSize.medium:
-        return const EdgeInsets.symmetric(horizontal: ZetaSpacing.medium, vertical: ZetaSpacing.medium);
+        return const EdgeInsets.symmetric(
+          horizontal: ZetaSpacing.medium,
+          vertical: ZetaSpacing.small,
+        );
     }
   }
 
@@ -194,55 +303,69 @@ class ZetaTextInputState extends State<ZetaTextInput> implements ZetaFormFieldSt
   }
 
   BoxConstraints get _affixConstraints {
-    late final double size;
+    late final double width;
+    late final double height;
     switch (widget.size) {
       case ZetaWidgetSize.large:
-        size = ZetaSpacing.xl_6;
+        width = ZetaSpacing.xl_6;
+        height = ZetaSpacing.xl_8;
       case ZetaWidgetSize.medium:
-        size = ZetaSpacing.xl_4;
+        width = ZetaSpacing.xl_6;
+        height = ZetaSpacing.xl_6;
       case ZetaWidgetSize.small:
-        size = ZetaSpacing.xl_2;
+        width = ZetaSpacing.xl_6;
+        height = ZetaSpacing.xl_4;
     }
     return BoxConstraints(
-      minWidth: size,
+      minWidth: width,
+      maxHeight: height,
     );
   }
 
-  Widget? get _prefix {
-    if (widget.prefix != null) return widget.prefix;
-    if (widget.prefixText != null) {
-      final style = widget.prefixTextStyle ?? _affixStyle;
-      return Center(
-        widthFactor: 0,
+  Widget? get _prefix => _getAffix(
+        widget: widget.prefix,
+        text: widget.prefixText,
+        textStyle: widget.prefixTextStyle,
+      );
+
+  Widget? get _suffix => _getAffix(
+        widget: widget.suffix,
+        text: widget.suffixText,
+        textStyle: widget.suffixTextStyle,
+      );
+
+  Widget? _getAffix({
+    required Widget? widget,
+    required String? text,
+    required TextStyle? textStyle,
+  }) {
+    if (widget == null && text == null) return null;
+
+    late final Widget child;
+    if (widget != null) child = widget;
+    if (text != null) {
+      child = Center(
+        widthFactor: 1,
         child: Text(
-          widget.prefixText!,
-          style: style,
+          text,
         ),
-      ).paddingStart(ZetaSpacing.small);
+      ).paddingHorizontal(ZetaSpacing.small);
     }
-
-    return null;
-  }
-
-  Widget? get _suffix {
-    if (widget.suffix != null) return widget.suffix;
-    if (widget.suffixText != null) {
-      final style = widget.suffixTextStyle ?? _affixStyle;
-      return Center(
-        widthFactor: 0,
-        child: Text(
-          widget.suffixText!,
-          style: style,
-        ),
-      ).paddingEnd(ZetaSpacing.small);
-    }
-
-    return null;
+    final style = textStyle ?? _affixStyle;
+    return DefaultTextStyle(
+      style: style.copyWith(height: 1.5),
+      textHeightBehavior: const TextHeightBehavior(
+        applyHeightToFirstAscent: false,
+      ),
+      child: child,
+    );
   }
 
   OutlineInputBorder _baseBorder(bool rounded) => OutlineInputBorder(
-        borderRadius: rounded ? ZetaRadius.minimal : ZetaRadius.none,
-        borderSide: BorderSide(color: _hovered ? _colors.borderSelected : _colors.borderSubtle),
+        borderRadius: widget.borderRadius ?? (rounded ? ZetaRadius.minimal : ZetaRadius.none),
+        borderSide: BorderSide(
+          color: !widget.disabled ? (_hovered ? _colors.borderSelected : _colors.borderSubtle) : _colors.borderDefault,
+        ),
       );
 
   OutlineInputBorder _focusedBorder(bool rounded) => _baseBorder(rounded).copyWith(
@@ -301,7 +424,7 @@ class ZetaTextInputState extends State<ZetaTextInput> implements ZetaFormFieldSt
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             if (widget.label != null) ...[
-              _Label(
+              ZetaInputLabel(
                 label: widget.label!,
                 requirementLevel: widget.requirementLevel,
                 disabled: widget.disabled,
@@ -309,12 +432,21 @@ class ZetaTextInputState extends State<ZetaTextInput> implements ZetaFormFieldSt
               const SizedBox(height: ZetaSpacing.minimum),
             ],
             MouseRegion(
-              onEnter: !widget.disabled ? (_) => setState(() => _hovered = true) : null,
-              onExit: !widget.disabled ? (_) => setState(() => _hovered = false) : null,
+              onEnter: !widget.disabled
+                  ? (_) => setState(() {
+                        _hovered = true;
+                      })
+                  : null,
+              onExit: !widget.disabled
+                  ? (_) => setState(() {
+                        _hovered = false;
+                      })
+                  : null,
               child: TextFormField(
                 enabled: !widget.disabled,
                 key: _key,
                 controller: _controller,
+                keyboardType: widget.keyboardType,
                 inputFormatters: widget.inputFormatters,
                 validator: (val) {
                   setState(() {
@@ -328,6 +460,7 @@ class ZetaTextInputState extends State<ZetaTextInput> implements ZetaFormFieldSt
                 style: _baseTextStyle,
                 cursorErrorColor: _colors.error,
                 obscureText: widget.obscureText,
+                focusNode: widget.focusNode,
                 decoration: InputDecoration(
                   isDense: true,
                   contentPadding: _contentPadding,
@@ -335,7 +468,7 @@ class ZetaTextInputState extends State<ZetaTextInput> implements ZetaFormFieldSt
                   prefixIcon: _prefix,
                   prefixIconConstraints: widget.prefixText != null ? _affixConstraints : null,
                   suffixIcon: _suffix,
-                  suffixIconConstraints: _affixConstraints,
+                  suffixIconConstraints: widget.suffixText != null ? _affixConstraints : null,
                   focusColor: _backgroundColor,
                   hoverColor: _backgroundColor,
                   fillColor: _backgroundColor,
@@ -351,7 +484,7 @@ class ZetaTextInputState extends State<ZetaTextInput> implements ZetaFormFieldSt
                 ),
               ),
             ),
-            _HintText(
+            ZetaHintText(
               disabled: widget.disabled,
               rounded: rounded,
               hintText: widget.hintText,
@@ -361,125 +494,5 @@ class ZetaTextInputState extends State<ZetaTextInput> implements ZetaFormFieldSt
         ),
       ),
     );
-  }
-}
-
-class _Label extends StatelessWidget {
-  const _Label({
-    required this.label,
-    required this.requirementLevel,
-    required this.disabled,
-  });
-
-  final String label;
-  final ZetaFormFieldRequirement requirementLevel;
-  final bool disabled;
-
-  @override
-  Widget build(BuildContext context) {
-    final colors = Zeta.of(context).colors;
-    const textStyle = ZetaTextStyles.bodyMedium;
-
-    Widget? requirementWidget;
-
-    if (requirementLevel == ZetaFormFieldRequirement.optional) {
-      requirementWidget = Text(
-        '(optional)', // TODO(UX-1003): needs localizing.
-        style: textStyle.copyWith(color: disabled ? colors.textDisabled : colors.textSubtle),
-      );
-    } else if (requirementLevel == ZetaFormFieldRequirement.mandatory) {
-      requirementWidget = Text(
-        '*',
-        style: ZetaTextStyles.labelIndicator.copyWith(
-          color: disabled ? colors.textDisabled : colors.error, // TODO(mikecoomber): change to textNegative when added
-        ),
-      );
-    }
-
-    return Row(
-      children: [
-        Text(
-          label,
-          style: textStyle.copyWith(
-            color: disabled ? colors.textDisabled : colors.textDefault,
-          ),
-        ),
-        if (requirementWidget != null) requirementWidget.paddingStart(ZetaSpacing.minimum),
-      ],
-    );
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(StringProperty('label', label))
-      ..add(EnumProperty<ZetaFormFieldRequirement>('requirementLevel', requirementLevel))
-      ..add(DiagnosticsProperty<bool>('disabled', disabled));
-  }
-}
-
-class _HintText extends StatelessWidget {
-  const _HintText({
-    required this.disabled,
-    required this.hintText,
-    required this.errorText,
-    required this.rounded,
-  });
-  final bool disabled;
-  final bool rounded;
-  final String? hintText;
-  final String? errorText;
-
-  @override
-  Widget build(BuildContext context) {
-    final colors = Zeta.of(context).colors;
-    final error = errorText != null && errorText!.isNotEmpty;
-
-    final text = error && !disabled ? errorText : hintText;
-
-    Color elementColor = colors.textSubtle;
-
-    if (disabled) {
-      elementColor = colors.textDisabled;
-    } else if (error) {
-      elementColor = colors.error;
-    }
-
-    if (text == null || text.isEmpty) {
-      return const Nothing();
-    }
-
-    return ExcludeSemantics(
-      child: Row(
-        children: [
-          ZetaIcon(
-            errorText != null ? ZetaIcons.error : ZetaIcons.info,
-            size: ZetaSpacing.large,
-            color: elementColor,
-          ),
-          const SizedBox(
-            width: ZetaSpacing.minimum,
-          ),
-          Expanded(
-            child: Text(
-              text,
-              style: ZetaTextStyles.bodyXSmall.copyWith(color: elementColor),
-              overflow: TextOverflow.ellipsis,
-            ),
-          ),
-        ],
-      ).paddingTop(ZetaSpacing.small),
-    );
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty<bool>('disabled', disabled))
-      ..add(DiagnosticsProperty<bool>('rounded', rounded))
-      ..add(StringProperty('hintText', hintText))
-      ..add(StringProperty('errorText', errorText));
   }
 }

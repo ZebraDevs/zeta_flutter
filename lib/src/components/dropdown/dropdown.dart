@@ -477,17 +477,19 @@ class _DropdownItemState<T> extends State<_DropdownItem<T>> {
           statesController: controller,
           style: _getStyle(colors),
           child: Padding(
-            padding: widget.menuType == ZetaDropdownMenuType.radio
-                ? const EdgeInsets.only(right: ZetaSpacing.medium)
-                : const EdgeInsets.symmetric(
-                    vertical: ZetaSpacingBase.x2_5,
-                    horizontal: ZetaSpacing.medium,
-                  ),
+            padding: const EdgeInsets.symmetric(
+              vertical: ZetaSpacingBase.x2_5,
+              horizontal: ZetaSpacing.medium,
+            ),
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
                 if (leading != null) leading,
-                Expanded(child: Text(widget.value.label)),
+                Expanded(
+                  child: Text(
+                    widget.value.label,
+                  ),
+                ),
               ],
             ),
           ),
@@ -639,21 +641,23 @@ class _ZetaDropDownMenuState<T> extends State<_ZetaDropDownMenu<T>> {
             )
           : null,
       child: IntrinsicWidth(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: widget.items
-              .map((item) {
-                return _DropdownItem(
-                  value: item,
-                  onPress: () => widget.onSelected(item),
-                  selected: item.value == widget.selected,
-                  allocateLeadingSpace: widget.allocateLeadingSpace,
-                  menuType: widget.menuType,
-                );
-              })
-              .divide(const SizedBox(height: ZetaSpacing.minimum))
-              .toList(),
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: widget.items
+                .map((item) {
+                  return _DropdownItem(
+                    value: item,
+                    onPress: () => widget.onSelected(item),
+                    selected: item.value == widget.selected,
+                    allocateLeadingSpace: widget.allocateLeadingSpace,
+                    menuType: widget.menuType,
+                  );
+                })
+                .divide(const SizedBox(height: ZetaSpacing.minimum))
+                .toList(),
+          ),
         ),
       ),
     );
