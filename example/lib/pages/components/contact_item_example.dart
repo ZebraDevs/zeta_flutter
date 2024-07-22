@@ -16,11 +16,21 @@ class _ContactItemExampleState extends State<ContactItemExample> {
   Widget build(BuildContext context) {
     return ExampleScaffold(
       name: ContactItemExample.name,
-      child: ZetaContactItem(
-        onTap: () {},
-        leading: ZetaAvatar(size: ZetaAvatarSize.s),
-        title: Text("Contact / Group Name"),
-        subtitle: Text("Store Associate - Bakery Dept."),
+      child: Column(
+        children: [
+          ZetaContactItem(
+            onTap: () {},
+            leading: ZetaAvatar(size: ZetaAvatarSize.s),
+            title: Text("Contact / Group Name"),
+            subtitle: Text("Store Associate - Bakery Dept."),
+          ),
+          ZetaContactItem(
+            onTap: () {},
+            leading: ZetaAvatar(size: ZetaAvatarSize.s),
+            title: Text("Contact / Group Name"),
+            subtitle: Text("Store Associate - Bakery Dept."),
+          ),
+        ],
       ),
     );
   }

@@ -5,15 +5,19 @@ import 'package:flutter/physics.dart';
 import 'package:flutter/rendering.dart';
 import '../../../zeta_flutter.dart';
 
-/// Creates an segmented control bar.
+/// A segmented control is a linear set of two or more segments, each of which
+/// functions as a mutually exclusive button. Like buttons, segments can contain
+/// text or images. Segmented controls are often used to display different views.
+/// {@category Components}
 class ZetaSegmentedControl<T> extends ZetaStatefulWidget {
   /// Constructs an segmented control bar.
   const ZetaSegmentedControl({
+    super.rounded,
+    super.key,
     required this.segments,
     required this.onChanged,
     required this.selected,
-    super.rounded,
-    super.key,
+    this.semanticLabel,
   });
 
   /// The callback that is called when a new option is tapped.
@@ -25,6 +29,11 @@ class ZetaSegmentedControl<T> extends ZetaStatefulWidget {
   /// Currently selected segment.
   final T selected;
 
+  /// The semantic label for the segmented control.
+  ///
+  /// {@macro zeta-widget-semantic-label}
+  final String? semanticLabel;
+
   @override
   State<ZetaSegmentedControl<T>> createState() => _ZetaSegmentedControlState<T>();
 
@@ -32,12 +41,11 @@ class ZetaSegmentedControl<T> extends ZetaStatefulWidget {
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(
-        ObjectFlagProperty<void Function(T p1)?>.has('onChanged', onChanged),
-      )
+      ..add(ObjectFlagProperty<void Function(T p1)?>.has('onChanged', onChanged))
       ..add(DiagnosticsProperty<bool>('rounded', rounded))
       ..add(IterableProperty<ZetaButtonSegment<T>>('segments', segments))
-      ..add(DiagnosticsProperty<T>('selected', selected));
+      ..add(DiagnosticsProperty<T>('selected', selected))
+      ..add(StringProperty('semanticLabel', semanticLabel));
   }
 }
 
@@ -109,8 +117,9 @@ class _ZetaSegmentedControlState<T> extends State<ZetaSegmentedControl<T>>
       children.add(
         _Segment<T>(
           key: ValueKey<T>(segment.value),
-          child: segment.child,
           onTap: () => widget.onChanged?.call(segment.value),
+          value: segment.value,
+          child: segment.child,
         ),
       );
 
@@ -122,27 +131,31 @@ class _ZetaSegmentedControlState<T> extends State<ZetaSegmentedControl<T>>
 
     return ZetaRoundedScope(
       rounded: rounded,
-      child: MouseRegion(
-        cursor: SystemMouseCursors.click,
-        child: SelectionContainer.disabled(
-          child: Container(
-            padding: const EdgeInsets.all(ZetaSpacing.minimum),
-            decoration: BoxDecoration(
-              color: colors.surfaceDisabled,
-              borderRadius: rounded ? ZetaRadius.minimal : ZetaRadius.none,
-            ),
-            child: AnimatedBuilder(
-              animation: _thumbScaleAnimation,
-              builder: (BuildContext context, Widget? child) {
-                return _SegmentedControlRenderWidget<T>(
-                  highlightedIndex: highlightedIndex,
-                  thumbColor: colors.surfacePrimary,
-                  thumbScale: _thumbScaleAnimation.value,
-                  rounded: rounded,
-                  state: this,
-                  children: children,
-                );
-              },
+      child: Semantics(
+        label: widget.semanticLabel,
+        container: true,
+        child: MouseRegion(
+          cursor: SystemMouseCursors.click,
+          child: SelectionContainer.disabled(
+            child: Container(
+              padding: const EdgeInsets.all(ZetaSpacing.minimum),
+              decoration: BoxDecoration(
+                color: colors.surfaceDisabled,
+                borderRadius: rounded ? ZetaRadius.minimal : ZetaRadius.none,
+              ),
+              child: AnimatedBuilder(
+                animation: _thumbScaleAnimation,
+                builder: (BuildContext context, Widget? child) {
+                  return _SegmentedControlRenderWidget<T>(
+                    highlightedIndex: highlightedIndex,
+                    thumbColor: colors.surfacePrimary,
+                    thumbScale: _thumbScaleAnimation.value,
+                    rounded: rounded,
+                    state: this,
+                    children: children,
+                  );
+                },
+              ),
             ),
           ),
         ),
@@ -168,15 +181,17 @@ class ZetaButtonSegment<T> {
   final T value;
 }
 
-class _Segment<T> extends StatefulWidget {
+class _Segment<T> extends ZetaStatefulWidget {
   const _Segment({
     required ValueKey<T> key,
     required this.child,
     required this.onTap,
+    required this.value,
   }) : super(key: key);
 
   final Widget child;
   final VoidCallback onTap;
+  final T value;
 
   @override
   _SegmentState<T> createState() => _SegmentState<T>();
@@ -184,7 +199,9 @@ class _Segment<T> extends StatefulWidget {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(ObjectFlagProperty<VoidCallback>.has('onTap', onTap));
+    properties
+      ..add(ObjectFlagProperty<VoidCallback>.has('onTap', onTap))
+      ..add(DiagnosticsProperty<T>('value', value));
   }
 }
 
@@ -193,32 +210,37 @@ class _SegmentState<T> extends State<_Segment<T>> with TickerProviderStateMixin<
   Widget build(BuildContext context) {
     final colors = Zeta.of(context).colors;
 
-    return Material(
-      color: Colors.transparent,
-      child: InkWell(
-        splashFactory: NoSplash.splashFactory,
-        borderRadius: context.rounded ? ZetaRadius.minimal : ZetaRadius.none,
-        onTap: widget.onTap,
-        child: IndexedStack(
-          alignment: Alignment.center,
-          children: [
-            widget.child,
-            IconTheme(
-              data: const IconThemeData(size: ZetaSpacing.xl_1),
-              child: DefaultTextStyle(
-                style: ZetaTextStyles.labelMedium.copyWith(
-                  color: colors.textDefault,
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: ZetaSpacing.xl_4,
-                    vertical: ZetaSpacing.minimum,
+    return Semantics(
+      button: true,
+      excludeSemantics: true,
+      value: widget.value.toString(),
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          splashFactory: NoSplash.splashFactory,
+          borderRadius: context.rounded ? ZetaRadius.minimal : ZetaRadius.none,
+          onTap: widget.onTap,
+          child: IndexedStack(
+            alignment: Alignment.center,
+            children: [
+              widget.child,
+              IconTheme(
+                data: const IconThemeData(size: ZetaSpacing.xl_1),
+                child: DefaultTextStyle(
+                  style: ZetaTextStyles.labelMedium.copyWith(
+                    color: colors.textDefault,
                   ),
-                  child: widget.child,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: ZetaSpacing.xl_4,
+                      vertical: ZetaSpacing.minimum,
+                    ),
+                    child: widget.child,
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

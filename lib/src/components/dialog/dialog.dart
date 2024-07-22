@@ -11,7 +11,7 @@ enum ZetaDialogHeaderAlignment {
   center,
 }
 
-/// [showZetaDialog]
+/// Function to show a Zeta dialog.
 Future<bool?> showZetaDialog(
   BuildContext context, {
   ZetaDialogHeaderAlignment headerAlignment = ZetaDialogHeaderAlignment.center,

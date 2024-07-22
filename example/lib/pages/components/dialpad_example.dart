@@ -24,67 +24,68 @@ class _DialPadExampleState extends State<DialPadExample> {
         return Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SizedBox(
-              width: constraints.maxWidth,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const SizedBox(width: _paddingSize),
-                      SizedBox(
-                        width: constraints.maxWidth - (_paddingSize * 2),
-                        child: Text(
-                          number,
+            SingleChildScrollView(
+              child: SizedBox(
+                width: constraints.maxWidth,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const SizedBox(width: _paddingSize),
+                        SizedBox(
+                          child: Text(
+                            number,
+                            style: ZetaTextStyles.heading3,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                        IconButton(
+                          icon: ZetaIcon(Icons.backspace),
+                          onPressed: () => number.length == 0
+                              ? null
+                              : setState(
+                                  () => number = number.substring(0, (number.length - 1)),
+                                ),
+                        )
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Nothing(),
+                        Text(
+                          text,
                           style: ZetaTextStyles.heading3,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                           textAlign: TextAlign.center,
                         ),
-                      ),
-                      IconButton(
-                        icon: ZetaIcon(Icons.backspace),
-                        onPressed: () => number.length == 0
-                            ? null
-                            : setState(
-                                () => number = number.substring(0, (number.length - 1)),
-                              ),
-                      )
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Nothing(),
-                      Text(
-                        text,
-                        style: ZetaTextStyles.heading3,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        textAlign: TextAlign.center,
-                      ),
-                      IconButton(
-                        icon: ZetaIcon(Icons.backspace),
-                        onPressed: () => text.length == 0
-                            ? null
-                            : setState(
-                                () => text = text.substring(0, text.length - 1),
-                              ),
-                      )
-                    ],
-                  ),
-                  ZetaDialPad(
-                    onNumber: (value) => setState(() => number += value),
-                    onText: (value) => setState(() => text += value),
-                  ),
-                  ZetaButton.primary(
-                    label: 'Clear',
-                    borderType: ZetaWidgetBorder.full,
-                    onPressed: () => setState(() => number = text = ''),
-                  )
-                ].divide(const SizedBox(height: ZetaSpacing.xl_2)).toList(),
+                        IconButton(
+                          icon: ZetaIcon(Icons.backspace),
+                          onPressed: () => text.length == 0
+                              ? null
+                              : setState(
+                                  () => text = text.substring(0, text.length - 1),
+                                ),
+                        )
+                      ],
+                    ),
+                    ZetaDialPad(
+                      onNumber: (value) => setState(() => number += value),
+                      onText: (value) => setState(() => text += value),
+                    ),
+                    ZetaButton.primary(
+                      label: 'Clear',
+                      borderType: ZetaWidgetBorder.full,
+                      onPressed: () => setState(() => number = text = ''),
+                    )
+                  ].divide(const SizedBox(height: ZetaSpacing.xl_2)).toList(),
+                ),
               ),
             ),
           ],

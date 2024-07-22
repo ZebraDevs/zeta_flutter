@@ -7,10 +7,17 @@ import '../../interfaces/form_field.dart';
 import '../buttons/input_icon_button.dart';
 import '../dropdown/dropdown_controller.dart';
 
-/// Class for [ZetaSelectInput]
+/// Class for [ZetaSelectInput].
+/// {@category Components}
 class ZetaSelectInput<T> extends ZetaFormField<T> {
   ///Constructor of [ZetaSelectInput]
   const ZetaSelectInput({
+    super.key,
+    super.rounded,
+    super.disabled = false,
+    super.initialValue,
+    super.onChange,
+    super.requirementLevel = ZetaFormFieldRequirement.none,
     required this.items,
     this.onTextChanged,
     this.size = ZetaWidgetSize.medium,
@@ -20,12 +27,7 @@ class ZetaSelectInput<T> extends ZetaFormField<T> {
     this.placeholder,
     this.validator,
     this.errorText,
-    super.key,
-    super.rounded,
-    super.disabled = false,
-    super.initialValue,
-    super.onChange,
-    super.requirementLevel = ZetaFormFieldRequirement.none,
+    this.dropdownSemantics,
   });
 
   /// Input items as list of [ZetaDropdownItem]
@@ -58,6 +60,11 @@ class ZetaSelectInput<T> extends ZetaFormField<T> {
   /// The placeholder for the input.
   final String? placeholder;
 
+  /// The semantics label for the dropdown button.
+  ///
+  /// {@macro zeta-widget-semantic-label}
+  final String? dropdownSemantics;
+
   @override
   State<ZetaSelectInput<T>> createState() => _ZetaSelectInputState<T>();
   @override
@@ -72,7 +79,8 @@ class ZetaSelectInput<T> extends ZetaFormField<T> {
       ..add(StringProperty('errorText', errorText))
       ..add(ObjectFlagProperty<String? Function(T? value)?>.has('validator', validator))
       ..add(StringProperty('label', label))
-      ..add(StringProperty('placeholder', placeholder));
+      ..add(StringProperty('placeholder', placeholder))
+      ..add(StringProperty('dropdownSemantics', dropdownSemantics));
   }
 }
 
@@ -145,6 +153,7 @@ class _ZetaSelectInputState<T> extends State<ZetaSelectInput<T>> {
     return ZetaRoundedScope(
       rounded: context.rounded,
       child: ZetaDropdown<T>(
+        disableButtonSemantics: true,
         items: filteredItems,
         onChange: !widget.disabled ? _onDropdownChanged : null,
         key: _dropdownKey,
@@ -174,6 +183,7 @@ class _ZetaSelectInputState<T> extends State<ZetaSelectInput<T>> {
             hintText: widget.hintText,
             onChange: (val) => _onInputChanged(controller),
             suffix: InputIconButton(
+              semanticLabel: widget.dropdownSemantics,
               icon: _dropdownOpen ? ZetaIcons.expand_less : ZetaIcons.expand_more,
               disabled: widget.disabled,
               size: widget.size,

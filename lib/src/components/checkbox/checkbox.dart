@@ -2,8 +2,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import '../../../zeta_flutter.dart';
 
-/// Zeta Checkbox.
-///
 /// Checkboxes allow users to select one or more items from a set. Checkboxes can turn an option on or off.
 ///
 /// The checkbox itself does not maintain any state. Instead, when the state of
@@ -11,6 +9,7 @@ import '../../../zeta_flutter.dart';
 /// Widgets that use a checkbox should listen for the [onChanged] callback and
 /// rebuild the checkbox with a new [value] to update the visual appearance of
 /// the checkbox.
+/// {@category Components}
 class ZetaCheckbox extends FormField<bool> {
   /// Constructs a [ZetaCheckbox].
   ZetaCheckbox({
@@ -20,6 +19,7 @@ class ZetaCheckbox extends FormField<bool> {
     this.rounded,
     this.useIndeterminate = false,
     this.focusNode,
+    this.semanticLabel,
     super.validator,
     super.autovalidateMode,
     super.restorationId,
@@ -40,6 +40,7 @@ class ZetaCheckbox extends FormField<bool> {
               error: !field.isValid,
               disabled: onChanged == null,
               focusNode: focusNode,
+              semanticLabel: semanticLabel,
             );
           },
         );
@@ -66,6 +67,13 @@ class ZetaCheckbox extends FormField<bool> {
   /// {@macro flutter.widgets.Focus.focusNode}
   final FocusNode? focusNode;
 
+  /// Value passed into wrapping [Semantics] widget.
+  ///
+  /// {@macro zeta-widget-semantic-label}
+  ///
+  /// If null, [label] is used.
+  final String? semanticLabel;
+
   @override
   ZetaCheckboxFormFieldState createState() => ZetaCheckboxFormFieldState();
   @override
@@ -77,7 +85,8 @@ class ZetaCheckbox extends FormField<bool> {
       ..add(DiagnosticsProperty<bool>('useIndeterminate', useIndeterminate))
       ..add(DiagnosticsProperty<bool>('rounded', rounded))
       ..add(ObjectFlagProperty<ValueChanged<bool>?>.has('onChanged', onChanged))
-      ..add(DiagnosticsProperty<FocusNode?>('focusNode', focusNode));
+      ..add(DiagnosticsProperty<FocusNode?>('focusNode', focusNode))
+      ..add(StringProperty('semanticLabel', semanticLabel));
   }
 }
 
@@ -101,6 +110,7 @@ class ZetaInternalCheckbox extends ZetaStatefulWidget {
     this.useIndeterminate = false,
     this.error = false,
     this.focusNode,
+    this.semanticLabel,
     super.rounded,
   });
 
@@ -127,6 +137,13 @@ class ZetaInternalCheckbox extends ZetaStatefulWidget {
   /// {@macro flutter.widgets.Focus.focusNode}
   final FocusNode? focusNode;
 
+  /// Value passed into wrapping [Semantics] widget.
+  ///
+  /// {@macro zeta-widget-semantic-label}
+  ///
+  /// If null, [label] is used.
+  final String? semanticLabel;
+
   @override
   State<ZetaInternalCheckbox> createState() => _CheckboxState();
   @override
@@ -140,7 +157,8 @@ class ZetaInternalCheckbox extends ZetaStatefulWidget {
       ..add(DiagnosticsProperty<bool>('error', error))
       ..add(DiagnosticsProperty<bool>('disabled', disabled))
       ..add(ObjectFlagProperty<ValueChanged<bool?>>.has('onChanged', onChanged))
-      ..add(DiagnosticsProperty<FocusNode>('focusNode', focusNode));
+      ..add(DiagnosticsProperty<FocusNode>('focusNode', focusNode))
+      ..add(StringProperty('semanticLabel', semanticLabel));
   }
 }
 
@@ -160,17 +178,21 @@ class _CheckboxState extends State<ZetaInternalCheckbox> {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      color: Colors.transparent,
-      child: InkWell(
-        onTap: !widget.disabled ? () => widget.onChanged.call(!_checked) : null,
-        borderRadius: ZetaRadius.full,
-        child: Padding(
-          padding: const EdgeInsets.all(ZetaSpacing.medium),
-          child: Semantics(
-            mixed: widget.useIndeterminate,
-            enabled: !widget.disabled,
-            focusable: true,
+    return Semantics(
+      mixed: widget.useIndeterminate,
+      enabled: !widget.disabled,
+      focusable: true,
+      container: true,
+      excludeSemantics: true,
+      checked: !widget.useIndeterminate && _checked,
+      label: widget.semanticLabel ?? widget.label,
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          onTap: !widget.disabled ? () => widget.onChanged.call(!_checked) : null,
+          borderRadius: ZetaRadius.full,
+          child: Padding(
+            padding: const EdgeInsets.all(ZetaSpacing.medium),
             child: MouseRegion(
               cursor: !widget.disabled ? SystemMouseCursors.click : SystemMouseCursors.forbidden,
               onEnter: (event) => _setHovered(true),

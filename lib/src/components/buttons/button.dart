@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 
 import '../../../zeta_flutter.dart';
 
-///Zeta Button
-class ZetaButton extends StatelessWidget {
+/// Zeta Button
+/// {@category Components}
+class ZetaButton extends ZetaStatelessWidget {
   ///Constructs [ZetaButton]
   const ZetaButton({
     super.key,
@@ -16,6 +17,7 @@ class ZetaButton extends StatelessWidget {
     this.leadingIcon,
     this.trailingIcon,
     this.focusNode,
+    this.semanticLabel,
   });
 
   /// Constructs [ZetaButton] with Primary theme.
@@ -28,6 +30,7 @@ class ZetaButton extends StatelessWidget {
     this.leadingIcon,
     this.trailingIcon,
     this.focusNode,
+    this.semanticLabel,
   }) : type = ZetaButtonType.primary;
 
   /// Constructs [ZetaButton] with Secondary theme.
@@ -40,6 +43,7 @@ class ZetaButton extends StatelessWidget {
     this.leadingIcon,
     this.trailingIcon,
     this.focusNode,
+    this.semanticLabel,
   }) : type = ZetaButtonType.secondary;
 
   /// Constructs [ZetaButton] with Positive theme.
@@ -52,6 +56,7 @@ class ZetaButton extends StatelessWidget {
     this.leadingIcon,
     this.trailingIcon,
     this.focusNode,
+    this.semanticLabel,
   }) : type = ZetaButtonType.positive;
 
   /// Constructs [ZetaButton] with Negative theme.
@@ -64,6 +69,7 @@ class ZetaButton extends StatelessWidget {
     this.leadingIcon,
     this.trailingIcon,
     this.focusNode,
+    this.semanticLabel,
   }) : type = ZetaButtonType.negative;
 
   /// Constructs [ZetaButton] with Outline theme.
@@ -76,6 +82,7 @@ class ZetaButton extends StatelessWidget {
     this.leadingIcon,
     this.trailingIcon,
     this.focusNode,
+    this.semanticLabel,
   }) : type = ZetaButtonType.outline;
 
   /// Constructs [ZetaButton] with Outline Subtle  theme.
@@ -88,6 +95,7 @@ class ZetaButton extends StatelessWidget {
     this.leadingIcon,
     this.trailingIcon,
     this.focusNode,
+    this.semanticLabel,
   }) : type = ZetaButtonType.outlineSubtle;
 
   /// Constructs [ZetaButton] with text theme.
@@ -100,6 +108,7 @@ class ZetaButton extends StatelessWidget {
     this.leadingIcon,
     this.trailingIcon,
     this.focusNode,
+    this.semanticLabel,
   }) : type = ZetaButtonType.text;
 
   /// Button label
@@ -129,6 +138,13 @@ class ZetaButton extends StatelessWidget {
   /// {@macro flutter.widgets.Focus.focusNode}
   final FocusNode? focusNode;
 
+  /// The semantic label of the button.
+  ///
+  /// {@macro zeta-widget-semantic-label}
+  ///
+  /// If this property is null, [label] will be used instead.
+  final String? semanticLabel;
+
   /// Creates a clone.
   ZetaButton copyWith({
     String? label,
@@ -155,44 +171,50 @@ class ZetaButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = Zeta.of(context).colors;
-    return ConstrainedBox(
-      constraints: BoxConstraints(minHeight: _minConstraints, minWidth: _minConstraints),
-      child: FilledButton(
-        focusNode: focusNode,
-        onPressed: onPressed,
-        style: buttonStyle(
-          colors,
-          borderType ?? (context.rounded ? ZetaWidgetBorder.rounded : ZetaWidgetBorder.sharp),
-          type,
-          null,
-        ),
-        child: SelectionContainer.disabled(
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              if (leadingIcon != null)
-                ZetaIcon(
-                  leadingIcon,
-                  size: _iconSize,
-                ),
-              if (label.isNotEmpty)
-                Text(
-                  label,
-                  style: _textStyle,
-                ),
-              if (trailingIcon != null)
-                ZetaIcon(
-                  trailingIcon,
-                  size: _iconSize,
-                ),
-            ]
-                .divide(
-                  const SizedBox(
-                    width: ZetaSpacing.small,
+    return Semantics(
+      button: true,
+      enabled: onPressed != null,
+      label: semanticLabel ?? label,
+      excludeSemantics: true,
+      child: ConstrainedBox(
+        constraints: BoxConstraints(minHeight: _minConstraints, minWidth: _minConstraints),
+        child: FilledButton(
+          focusNode: focusNode,
+          onPressed: onPressed,
+          style: buttonStyle(
+            colors,
+            borderType ?? (context.rounded ? ZetaWidgetBorder.rounded : ZetaWidgetBorder.sharp),
+            type,
+            null,
+          ),
+          child: SelectionContainer.disabled(
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                if (leadingIcon != null)
+                  Icon(
+                    leadingIcon,
+                    size: _iconSize,
                   ),
-                )
-                .toList(),
-          ).paddingHorizontal(_textPadding),
+                if (label.isNotEmpty)
+                  Text(
+                    label,
+                    style: _textStyle,
+                  ),
+                if (trailingIcon != null)
+                  Icon(
+                    trailingIcon,
+                    size: _iconSize,
+                  ),
+              ]
+                  .divide(
+                    const SizedBox(
+                      width: ZetaSpacing.small,
+                    ),
+                  )
+                  .toList(),
+            ).paddingHorizontal(_textPadding),
+          ),
         ),
       ),
     );
@@ -247,6 +269,7 @@ class ZetaButton extends StatelessWidget {
       ..add(EnumProperty<ZetaWidgetSize>('size', size))
       ..add(DiagnosticsProperty<IconData?>('leadingIcon', leadingIcon))
       ..add(DiagnosticsProperty<IconData?>('trailingIcon', trailingIcon))
-      ..add(DiagnosticsProperty<FocusNode?>('focusNode', focusNode));
+      ..add(DiagnosticsProperty<FocusNode?>('focusNode', focusNode))
+      ..add(StringProperty('semanticLabel', semanticLabel));
   }
 }

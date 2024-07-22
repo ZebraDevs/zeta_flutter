@@ -2,7 +2,13 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import '../../../zeta_flutter.dart';
 
-///Class for [ZetaBreadCrumbs]
+// TODO(UX-1131): Refactor this to make BreadCrumbItem a class, not a widget.
+
+/// The breadcrumb is a secondary navigation pattern that helps a user understand the hierarchy among levels and navigate back through them.
+///
+/// [children] should consist of [ZetaBreadCrumb]s.
+///
+/// {@category Components}
 class ZetaBreadCrumbs extends ZetaStatefulWidget {
   ///Constructor for [ZetaBreadCrumbs]
   const ZetaBreadCrumbs({
@@ -10,6 +16,7 @@ class ZetaBreadCrumbs extends ZetaStatefulWidget {
     super.rounded,
     required this.children,
     this.activeIcon,
+    this.moreSemanticLabel,
   });
 
   /// Breadcrumb children
@@ -17,6 +24,10 @@ class ZetaBreadCrumbs extends ZetaStatefulWidget {
 
   /// Active icon for breadcrumb
   final IconData? activeIcon;
+
+  /// Label passed to wrapping [Semantics] widget.
+  /// {@macro zeta-widget-semantic-label}
+  final String? moreSemanticLabel;
 
   @override
   State<ZetaBreadCrumbs> createState() => _ZetaBreadCrumbsState();
@@ -27,7 +38,8 @@ class ZetaBreadCrumbs extends ZetaStatefulWidget {
     properties
       ..add(IterableProperty<ZetaBreadCrumb>('children', children))
       ..add(DiagnosticsProperty<bool?>('rounded', rounded))
-      ..add(DiagnosticsProperty<IconData?>('activeIcon', activeIcon));
+      ..add(DiagnosticsProperty<IconData?>('activeIcon', activeIcon))
+      ..add(StringProperty('moreSemanticLabel', moreSemanticLabel));
   }
 }
 
@@ -103,7 +115,7 @@ class _ZetaBreadCrumbsState extends State<ZetaBreadCrumbs> {
         truncatedChildren.add(createBreadCrumb(element, index + 1));
       }
       returnList
-        ..add(BreadCrumbsTruncated(children: truncatedChildren))
+        ..add(_BreadCrumbsTruncated(semanticLabel: widget.moreSemanticLabel, children: truncatedChildren))
         ..add(createBreadCrumb(children.last, children.length - 1));
     } else {
       for (final (index, element) in children.indexed) {
@@ -114,7 +126,11 @@ class _ZetaBreadCrumbsState extends State<ZetaBreadCrumbs> {
   }
 }
 
+// TODO(UX-1131): Rename to breadcrumbitem
+
 /// Class for untruncated [ZetaBreadCrumb].
+///
+/// Should be a child of [ZetaBreadCrumbs].
 class ZetaBreadCrumb extends StatefulWidget {
   ///Constructor for [ZetaBreadCrumb]
   const ZetaBreadCrumb({
@@ -124,6 +140,7 @@ class ZetaBreadCrumb extends StatefulWidget {
     this.isSelected = false,
     required this.onPressed,
     this.activeIcon,
+    this.semanticLabel,
   });
 
   /// [ZetaBreadCrumb] label.
@@ -141,6 +158,13 @@ class ZetaBreadCrumb extends StatefulWidget {
   /// Active icon for [ZetaBreadCrumb]
   final IconData? activeIcon;
 
+  /// Label passed to wrapping [Semantics] widget.
+  ///
+  /// {@macro zeta-widget-semantic-label}
+  ///
+  /// If null, [label] is used.
+  final String? semanticLabel;
+
   @override
   State<ZetaBreadCrumb> createState() => _ZetaBreadCrumbState();
 
@@ -152,7 +176,8 @@ class ZetaBreadCrumb extends StatefulWidget {
       ..add(StringProperty('label', label))
       ..add(DiagnosticsProperty<IconData?>('icon', icon))
       ..add(DiagnosticsProperty<bool>('isSelected', isSelected))
-      ..add(DiagnosticsProperty<IconData?>('activeIcon', activeIcon));
+      ..add(DiagnosticsProperty<IconData?>('activeIcon', activeIcon))
+      ..add(StringProperty('semanticLabel', semanticLabel));
   }
 }
 
@@ -172,29 +197,33 @@ class _ZetaBreadCrumbState extends State<ZetaBreadCrumb> {
   @override
   Widget build(BuildContext context) {
     final colors = Zeta.of(context).colors;
-    return InkWell(
-      statesController: controller,
-      onTap: widget.onPressed,
-      enableFeedback: false,
-      splashColor: Colors.transparent,
-      overlayColor: WidgetStateProperty.resolveWith((states) {
-        return Colors.transparent;
-      }),
-      child: Row(
-        children: [
-          if (widget.isSelected)
-            ZetaIcon(
-              widget.activeIcon ?? ZetaIcons.star,
-              color: getColor(controller.value, colors),
+    return Semantics(
+      label: widget.semanticLabel ?? widget.label,
+      selected: widget.isSelected,
+      child: InkWell(
+        statesController: controller,
+        onTap: widget.onPressed,
+        enableFeedback: false,
+        splashColor: Colors.transparent,
+        overlayColor: WidgetStateProperty.resolveWith((states) {
+          return Colors.transparent;
+        }),
+        child: Row(
+          children: [
+            if (widget.isSelected)
+              Icon(
+                widget.activeIcon ?? ZetaIcons.star_round,
+                color: getColor(controller.value, colors),
+              ),
+            const SizedBox(
+              width: ZetaSpacing.small,
             ),
-          const SizedBox(
-            width: ZetaSpacing.small,
-          ),
-          Text(
-            widget.label,
-            style: ZetaTextStyles.bodySmall.apply(color: getColor(controller.value, colors)),
-          ),
-        ],
+            Text(
+              widget.label,
+              style: ZetaTextStyles.bodySmall.apply(color: getColor(controller.value, colors)),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -220,22 +249,35 @@ class _ZetaBreadCrumbState extends State<ZetaBreadCrumb> {
   }
 }
 
-///Class for [BreadCrumbsTruncated]
-class BreadCrumbsTruncated extends StatefulWidget {
-  ///Constructor for [BreadCrumbsTruncated]
-  const BreadCrumbsTruncated({
-    super.key,
+/// Class for [_BreadCrumbsTruncated]
+@Deprecated('This functionality is not needed anymore. Use [ZetaBreadCrumb] instead. ' 'Deprecated since 0.14.1')
+typedef BreadCrumbsTruncated = _BreadCrumbsTruncated;
+
+class _BreadCrumbsTruncated extends StatefulWidget {
+  ///Constructor for [_BreadCrumbsTruncated]
+  const _BreadCrumbsTruncated({
     required this.children,
+    this.semanticLabel,
   });
 
   ///Breadcrumb children
   final List<Widget> children;
 
+  /// Label passed to wrapping [Semantics] widget.
+  ///
+  /// {@macro zeta-widget-semantic-label}
+  final String? semanticLabel;
+
   @override
-  State<BreadCrumbsTruncated> createState() => _BreadCrumbsTruncatedState();
+  State<_BreadCrumbsTruncated> createState() => _BreadCrumbsTruncatedState();
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(StringProperty('semanticLabel', semanticLabel));
+  }
 }
 
-class _BreadCrumbsTruncatedState extends State<BreadCrumbsTruncated> {
+class _BreadCrumbsTruncatedState extends State<_BreadCrumbsTruncated> {
   bool _expanded = false;
 
   @override
@@ -245,56 +287,60 @@ class _BreadCrumbsTruncatedState extends State<BreadCrumbsTruncated> {
 
     return _expanded
         ? expandedBreadcrumb()
-        : FilledButton(
-            onPressed: () {
-              setState(() {
-                _expanded = true;
-              });
-            },
-            style: ButtonStyle(
-              backgroundColor: WidgetStateProperty.resolveWith((states) {
-                if (states.contains(WidgetState.hovered)) {
-                  return colors.surfaceHover;
-                }
-                if (states.contains(WidgetState.pressed)) {
-                  return colors.primary.shade10;
-                }
-                if (states.contains(WidgetState.disabled)) {
-                  return colors.surfaceDisabled;
-                }
-                return colors.warm.shade10;
-              }),
-              foregroundColor: WidgetStateProperty.resolveWith((states) {
-                if (states.contains(WidgetState.disabled)) {
-                  return colors.textDisabled;
-                }
-                return colors.textDefault;
-              }),
-              shape: WidgetStatePropertyAll(
-                RoundedRectangleBorder(
-                  borderRadius: (rounded ? ZetaRadius.minimal : ZetaRadius.none),
+        : Semantics(
+            label: widget.semanticLabel,
+            button: true,
+            child: FilledButton(
+              onPressed: () {
+                setState(() {
+                  _expanded = true;
+                });
+              },
+              style: ButtonStyle(
+                backgroundColor: WidgetStateProperty.resolveWith((states) {
+                  if (states.contains(WidgetState.hovered)) {
+                    return colors.surfaceHover;
+                  }
+                  if (states.contains(WidgetState.pressed)) {
+                    return colors.primary.shade10;
+                  }
+                  if (states.contains(WidgetState.disabled)) {
+                    return colors.surfaceDisabled;
+                  }
+                  return colors.warm.shade10;
+                }),
+                foregroundColor: WidgetStateProperty.resolveWith((states) {
+                  if (states.contains(WidgetState.disabled)) {
+                    return colors.textDisabled;
+                  }
+                  return colors.textDefault;
+                }),
+                shape: WidgetStatePropertyAll(
+                  RoundedRectangleBorder(
+                    borderRadius: (rounded ? ZetaRadius.minimal : ZetaRadius.none),
+                  ),
                 ),
+                side: WidgetStateProperty.resolveWith((states) {
+                  if (states.contains(WidgetState.focused)) {
+                    return BorderSide(
+                      width: ZetaSpacingBase.x0_5,
+                      color: colors.primary.shade100,
+                    );
+                  }
+                  if (states.isEmpty) {
+                    return BorderSide(color: colors.borderDefault, width: 0.5);
+                  }
+                  return null;
+                }),
+                padding: WidgetStateProperty.all(EdgeInsets.zero),
+                minimumSize: WidgetStateProperty.all(Size.zero),
+                elevation: const WidgetStatePropertyAll(ZetaSpacing.none),
               ),
-              side: WidgetStateProperty.resolveWith((states) {
-                if (states.contains(WidgetState.focused)) {
-                  return BorderSide(
-                    width: ZetaSpacingBase.x0_5,
-                    color: colors.primary.shade100,
-                  );
-                }
-                if (states.isEmpty) {
-                  return BorderSide(color: colors.borderDefault, width: 0.5);
-                }
-                return null;
-              }),
-              padding: WidgetStateProperty.all(EdgeInsets.zero),
-              minimumSize: WidgetStateProperty.all(Size.zero),
-              elevation: const WidgetStatePropertyAll(ZetaSpacing.none),
+              child: Icon(
+                rounded ? ZetaIcons.more_horizontal_round : ZetaIcons.more_horizontal_sharp,
+                size: ZetaSpacing.large,
+              ).paddingHorizontal(ZetaSpacing.small).paddingVertical(ZetaSpacing.minimum),
             ),
-            child: const ZetaIcon(
-              ZetaIcons.more_horizontal,
-              size: ZetaSpacing.large,
-            ).paddingHorizontal(ZetaSpacing.small).paddingVertical(ZetaSpacing.minimum),
           );
   }
 

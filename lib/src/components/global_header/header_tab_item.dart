@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 
 import '../../../zeta_flutter.dart';
 
-/// Tab item to be used in [ZetaGlobalHeader]
+/// Tab item to be used in [ZetaGlobalHeader].
+/// {@category Components}
 class ZetaGlobalHeaderItem extends ZetaStatefulWidget {
   ///Constructor for tab item
   const ZetaGlobalHeaderItem({

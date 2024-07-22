@@ -7,6 +7,7 @@ import 'package:intl/intl.dart';
 import '../../../zeta_flutter.dart';
 
 /// Chat item widget that can be dragged to reveal contextual actions.
+/// {@category Components}
 class ZetaChatItem extends ZetaStatelessWidget {
   /// Creates a [ZetaChatItem]
   const ZetaChatItem({

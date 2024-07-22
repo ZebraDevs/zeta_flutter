@@ -3,9 +3,8 @@ import 'package:flutter/material.dart';
 
 import '../../../zeta_flutter.dart';
 
-/// Zeta Radio Button
-///
-/// Radio Button can select one single option from a group of different options.
+/// Radio buttons are used for mutually exclusive choices, not for multiple choices. Only one radio button can be selected at a time. When a user chooses a new item, the previous choice is automatically deselected.
+/// {@category Components}
 class ZetaRadio<T> extends ZetaStatefulWidget {
   /// Constructor for [ZetaRadio].
   const ZetaRadio({
@@ -66,6 +65,7 @@ class _ZetaRadioState<T> extends State<ZetaRadio<T>> with TickerProviderStateMix
             checked: widget._selected,
             selected: value,
             excludeSemantics: true,
+            enabled: !states.contains(WidgetState.disabled),
             child: MouseRegion(
               cursor: states.contains(WidgetState.disabled) ? SystemMouseCursors.forbidden : SystemMouseCursors.click,
               child: SelectionContainer.disabled(

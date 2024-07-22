@@ -14,7 +14,7 @@ import 'package:zeta_flutter/src/theme/color_scheme.dart' as _i7;
 import 'package:zeta_flutter/src/theme/color_swatch.dart' as _i4;
 import 'package:zeta_flutter/src/theme/contrast.dart' as _i9;
 import 'package:zeta_flutter/src/theme/theme_data.dart' as _i6;
-import 'package:zeta_flutter/src/zeta.dart' as _i10;
+import 'package:zeta_flutter/src/utils/zeta.dart' as _i10;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -1494,6 +1494,13 @@ class MockZeta extends _i1.Mock implements _i10.Zeta {
           Invocation.getter(#themeData),
         ),
       ) as _i6.ZetaThemeData);
+
+  @override
+  bool get rounded => (super.noSuchMethod(
+        Invocation.getter(#rounded),
+        returnValue: false,
+        returnValueForMissingStub: false,
+      ) as bool);
 
   @override
   _i6.ZetaColors get colors => (super.noSuchMethod(

@@ -27,6 +27,10 @@ class _SearchBarExampleState extends State<SearchBarExample> {
               padding: const EdgeInsets.all(20),
               child: ZetaSearchBar(
                 onChanged: (value) {},
+                textInputAction: TextInputAction.search,
+                onSubmit: (text) {
+                  print(text);
+                },
               ),
             ),
             Padding(
@@ -38,17 +42,6 @@ class _SearchBarExampleState extends State<SearchBarExample> {
               child: ZetaSearchBar(
                 shape: ZetaWidgetBorder.full,
                 onSpeechToText: () async => 'I wanted to say...',
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 20),
-              child: Text('Sharp', style: ZetaTextStyles.titleMedium),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(20),
-              child: ZetaSearchBar(
-                initialValue: 'Initial value',
-                shape: ZetaWidgetBorder.sharp,
               ),
             ),
             Padding(

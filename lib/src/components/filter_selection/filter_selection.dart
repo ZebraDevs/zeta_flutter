@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import '../../../zeta_flutter.dart';
 
 /// Component [ZetaFilterSelection]
+/// {@category Components}
 class ZetaFilterSelection extends ZetaStatelessWidget {
   /// Constructor for the component [ZetaFilterSelection]
   const ZetaFilterSelection({
@@ -11,6 +12,7 @@ class ZetaFilterSelection extends ZetaStatelessWidget {
     super.rounded,
     required this.items,
     this.onPressed,
+    this.buttonSemanticLabel,
   });
 
   /// The filter items - list of [ZetaFilterChip].
@@ -19,33 +21,42 @@ class ZetaFilterSelection extends ZetaStatelessWidget {
   /// Called on filter button pressed.
   final VoidCallback? onPressed;
 
+  /// Value passed into semantic label for the button.
+  ///
+  /// {@macro zeta-widget-semantic-label}
+  final String? buttonSemanticLabel;
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: ZetaSpacing.xl_7,
       child: Row(
         children: [
-          Container(
-            height: ZetaSpacing.xl_7,
-            color: Zeta.of(context).colors.surfaceDefault,
-            child: IconButton(
-              visualDensity: VisualDensity.compact,
-              onPressed: onPressed,
-              icon: const ZetaIcon(
-                ZetaIcons.filter,
-                size: ZetaSpacing.xl_2,
+          Semantics(
+            button: true,
+            label: buttonSemanticLabel,
+            excludeSemantics: true,
+            enabled: onPressed != null,
+            child: Container(
+              height: ZetaSpacing.xl_7,
+              color: Zeta.of(context).colors.surfaceDefault,
+              child: IconButton(
+                visualDensity: VisualDensity.compact,
+                onPressed: onPressed,
+                icon: const ZetaIcon(
+                  ZetaIcons.filter,
+                  size: ZetaSpacing.xl_2,
+                ),
               ),
             ),
           ),
           Expanded(
-            child: ListView(
+            child: ListView.builder(
               shrinkWrap: true,
               scrollDirection: Axis.horizontal,
               padding: const EdgeInsets.all(ZetaSpacing.minimum),
-              children: items
-                  .map((e) => e.copyWith(rounded: rounded))
-                  .divide(const SizedBox(width: ZetaSpacing.small))
-                  .toList(),
+              itemCount: items.length,
+              itemBuilder: (context, index) => items[index].paddingHorizontal(ZetaSpacing.minimum),
             ),
           ),
         ],
@@ -58,6 +69,7 @@ class ZetaFilterSelection extends ZetaStatelessWidget {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty<bool>('rounded', rounded))
-      ..add(ObjectFlagProperty<VoidCallback?>.has('onPressed', onPressed));
+      ..add(ObjectFlagProperty<VoidCallback?>.has('onPressed', onPressed))
+      ..add(StringProperty('buttonSemanticLabel', buttonSemanticLabel));
   }
 }

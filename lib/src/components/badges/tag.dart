@@ -12,21 +12,26 @@ enum ZetaTagDirection {
   right
 }
 
-///Zeta Tag
+/// Tags are used to draw attention to a specific area or information.
+/// The arrow shape helps direct the users attention to the desired place.
+/// {@category Components}
 class ZetaTag extends ZetaStatelessWidget {
-  ///Constructs [ZetaTag].
+  /// Constructs a [ZetaTag].
   const ZetaTag({
     super.key,
     super.rounded,
     this.direction = ZetaTagDirection.left,
     required this.label,
+    this.semanticLabel,
   });
 
   /// Constructs left facing [ZetaTag].
-  const ZetaTag.left({super.key, super.rounded, required this.label}) : direction = ZetaTagDirection.left;
+  const ZetaTag.left({super.key, super.rounded, required this.label, this.semanticLabel})
+      : direction = ZetaTagDirection.left;
 
   ///Constructs right facing [ZetaTag].
-  const ZetaTag.right({super.key, super.rounded, required this.label}) : direction = ZetaTagDirection.right;
+  const ZetaTag.right({super.key, super.rounded, required this.label, this.semanticLabel})
+      : direction = ZetaTagDirection.right;
 
   ///Determines the direction of the tag
   ///
@@ -36,36 +41,46 @@ class ZetaTag extends ZetaStatelessWidget {
   ///tag label
   final String label;
 
+  /// The value passed into wrapping [Semantics] widget.
+  ///
+  /// {@macro zeta-widget-semantic-label}
+  ///
+  ///  If null, [label] is used.
+  final String? semanticLabel;
+
   /// Fixed container size
   static const Size _containerSize = Size(ZetaSpacing.xl_5, ZetaSpacing.xl_3);
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: <Widget>[
-        if (direction == ZetaTagDirection.left) _buildCustomPaint(context),
-        Container(
-          decoration: BoxDecoration(
-            color: Zeta.of(context).colors.surfaceHover,
-            borderRadius: _getBorderRadius(context),
-          ),
-          height: _containerSize.height,
-          constraints: BoxConstraints(minWidth: _containerSize.width),
-          child: Center(
-            child: FittedBox(
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(ZetaSpacing.small, 1, ZetaSpacing.small, 1),
-                child: Text(
-                  label,
-                  style: ZetaTextStyles.bodyMedium,
-                  overflow: TextOverflow.ellipsis,
+    return Semantics(
+      value: semanticLabel ?? label,
+      child: Row(
+        children: <Widget>[
+          if (direction == ZetaTagDirection.left) _buildCustomPaint(context),
+          Container(
+            decoration: BoxDecoration(
+              color: Zeta.of(context).colors.surfaceHover,
+              borderRadius: _getBorderRadius(context),
+            ),
+            height: _containerSize.height,
+            constraints: BoxConstraints(minWidth: _containerSize.width),
+            child: Center(
+              child: FittedBox(
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(ZetaSpacing.small, 1, ZetaSpacing.small, 1),
+                  child: Text(
+                    label,
+                    style: ZetaTextStyles.bodyMedium,
+                    overflow: TextOverflow.ellipsis,
+                  ),
                 ),
               ),
             ),
           ),
-        ),
-        if (direction == ZetaTagDirection.right) _buildCustomPaint(context),
-      ],
+          if (direction == ZetaTagDirection.right) _buildCustomPaint(context),
+        ],
+      ),
     );
   }
 
@@ -101,7 +116,8 @@ class ZetaTag extends ZetaStatelessWidget {
     properties
       ..add(EnumProperty<ZetaTagDirection>('direction', direction))
       ..add(StringProperty('label', label))
-      ..add(DiagnosticsProperty<bool>('rounded', rounded));
+      ..add(DiagnosticsProperty<bool>('rounded', rounded))
+      ..add(StringProperty('semanticLabel', semanticLabel));
   }
 }
 

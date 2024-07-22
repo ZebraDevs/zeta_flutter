@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 /// Values are doubles, and can be used for padding, margins and other spacings.
 ///
 /// Semantic zeta spacings.
+/// {@category Theme}
 class ZetaSpacing {
   /// No spacing => 0px.
   static const double none = ZetaSpacingBase.x0;
@@ -188,6 +189,7 @@ class ZetaSpacing {
 }
 
 /// Semantic zeta radii.
+/// {@category Theme}
 class ZetaRadius {
   /// No radius =>  0px radius.
   static const BorderRadius none = BorderRadius.zero;
@@ -213,6 +215,7 @@ class ZetaRadius {
 }
 
 ///Tokens that are used for Spacing
+///{@category Theme}
 class ZetaSpacingBase {
   /// 0dp space
   static const double x0 = 0;
@@ -285,6 +288,7 @@ class ZetaSpacingBase {
 }
 
 ///Tokens that are used for Border Radius
+///{@category Theme}
 class ZetaRadiusBase {
   /// 4px radius
   static const BorderRadius s = BorderRadius.all(Radius.circular(4));
@@ -309,6 +313,7 @@ class ZetaRadiusBase {
 }
 
 /// Tokenised durations used for animations
+/// {@category Theme}
 class ZetaAnimationLength {
   /// 100ms
   static const veryFast = Duration(milliseconds: 100);

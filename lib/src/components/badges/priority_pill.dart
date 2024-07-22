@@ -46,6 +46,7 @@ extension on ZetaPriorityPillType {
 }
 
 /// This badge is used to indicate the order of importance.
+/// {@category Components}
 class ZetaPriorityPill extends ZetaStatelessWidget {
   ///Constructs [ZetaPriorityPill]
   const ZetaPriorityPill({
@@ -58,6 +59,7 @@ class ZetaPriorityPill extends ZetaStatelessWidget {
     this.type = ZetaPriorityPillType.urgent,
     this.size = ZetaPriorityPillSize.large,
     this.customColor,
+    this.semanticLabel,
   });
 
   /// Leading number / character in component. Will be truncated to single character.
@@ -94,61 +96,72 @@ class ZetaPriorityPill extends ZetaStatelessWidget {
   /// Color override
   final ZetaColorSwatch? customColor;
 
+  /// The value passed into wrapping [Semantics] widget.
+  ///
+  /// {@macro zeta-widget-semantic-label}
+  ///
+  /// If null, [label] is used.
+  final String? semanticLabel;
+
   @override
   Widget build(BuildContext context) {
     final ZetaColorSwatch color = customColor ?? type.color(context);
     final size = this.size == ZetaPriorityPillSize.small ? ZetaSpacing.xl_1 : ZetaSpacing.xl_3;
-    final label = this.label ?? priority;
+    final label = (this.label ?? priority) ?? type.name.capitalize();
     final rounded = context.rounded;
-    return DecoratedBox(
-      decoration: BoxDecoration(
-        borderRadius: rounded ? ZetaRadius.full : ZetaRadius.none,
-        color: color.shade10,
-      ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Container(
-            alignment: Alignment.center,
-            height: size,
-            width: size,
-            decoration: BoxDecoration(
-              shape: rounded ? BoxShape.circle : BoxShape.rectangle,
-              color: color,
-            ),
-            child: Text(
-              (index?.isEmpty ?? true)
-                  ? (type == ZetaPriorityPillType.urgent
-                      ? type.name.substring(0, 1).capitalize()
-                      : type.index.toString())
-                  : index!.substring(0, 1).capitalize(),
-              style: this.size == ZetaPriorityPillSize.small
-                  ? ZetaTextStyles.labelSmall.copyWith(
-                      fontSize: 10,
-                      height: 13 / 10,
-                      color: color.onColor,
-                    )
-                  : ZetaTextStyles.labelMedium.apply(color: color.onColor),
-            ),
-          ),
-          if (!isBadge)
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: ZetaSpacing.small,
-                vertical: ZetaSpacing.minimum,
+
+    return Semantics(
+      value: semanticLabel ?? label,
+      child: DecoratedBox(
+        decoration: BoxDecoration(
+          borderRadius: rounded ? ZetaRadius.full : ZetaRadius.none,
+          color: color.shade10,
+        ),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+              alignment: Alignment.center,
+              height: size,
+              width: size,
+              decoration: BoxDecoration(
+                shape: rounded ? BoxShape.circle : BoxShape.rectangle,
+                color: color,
               ),
               child: Text(
-                (label?.isEmpty ?? true) ? type.name.capitalize() : label!,
+                (index?.isEmpty ?? true)
+                    ? (type == ZetaPriorityPillType.urgent
+                        ? type.name.substring(0, 1).capitalize()
+                        : type.index.toString())
+                    : index!.substring(0, 1).capitalize(),
                 style: this.size == ZetaPriorityPillSize.small
-                    ? ZetaTextStyles.bodyXSmall.copyWith(
+                    ? ZetaTextStyles.labelSmall.copyWith(
                         fontSize: 10,
                         height: 13 / 10,
+                        color: color.onColor,
                       )
-                    : ZetaTextStyles.bodySmall,
-                overflow: TextOverflow.ellipsis,
+                    : ZetaTextStyles.labelMedium.apply(color: color.onColor),
               ),
             ),
-        ],
+            if (!isBadge)
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: ZetaSpacing.small,
+                  vertical: ZetaSpacing.minimum,
+                ),
+                child: Text(
+                  label,
+                  style: this.size == ZetaPriorityPillSize.small
+                      ? ZetaTextStyles.bodyXSmall.copyWith(
+                          fontSize: 10,
+                          height: 13 / 10,
+                        )
+                      : ZetaTextStyles.bodySmall,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
+          ],
+        ),
       ),
     );
   }
@@ -164,6 +177,7 @@ class ZetaPriorityPill extends ZetaStatelessWidget {
       ..add(EnumProperty<ZetaPriorityPillSize>('size', size))
       ..add(StringProperty('label', label))
       ..add(ColorProperty('customColor', customColor))
-      ..add(StringProperty('priority', priority));
+      ..add(StringProperty('priority', priority))
+      ..add(StringProperty('semanticLabel', semanticLabel));
   }
 }

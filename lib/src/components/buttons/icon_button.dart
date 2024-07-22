@@ -4,78 +4,95 @@ import 'package:flutter/material.dart';
 import '../../../zeta_flutter.dart';
 
 /// Component [ZetaIconButton]
+/// {@category Components}
 class ZetaIconButton extends ZetaStatelessWidget {
   /// Constructor for [ZetaIconButton]
   const ZetaIconButton({
     super.key,
+    super.rounded,
     this.onPressed,
     this.borderType,
     this.type = ZetaButtonType.primary,
     this.size = ZetaWidgetSize.medium,
     this.icon = ZetaIcons.more_horizontal,
+    this.semanticLabel,
   });
 
   /// Constructs [ZetaIconButton] with Primary theme.
   const ZetaIconButton.primary({
     super.key,
+    super.rounded,
     required this.icon,
     this.onPressed,
     this.size = ZetaWidgetSize.medium,
     this.borderType,
+    this.semanticLabel,
   }) : type = ZetaButtonType.primary;
 
   /// Constructs [ZetaIconButton] with Secondary theme.
   const ZetaIconButton.secondary({
     super.key,
+    super.rounded,
     required this.icon,
     this.onPressed,
     this.size = ZetaWidgetSize.medium,
     this.borderType,
+    this.semanticLabel,
   }) : type = ZetaButtonType.secondary;
 
   /// Constructs [ZetaIconButton] with Positive theme.
   const ZetaIconButton.positive({
     super.key,
+    super.rounded,
     required this.icon,
     this.onPressed,
     this.size = ZetaWidgetSize.medium,
     this.borderType,
+    this.semanticLabel,
   }) : type = ZetaButtonType.positive;
 
   /// Constructs [ZetaIconButton] with Negative theme.
   const ZetaIconButton.negative({
+    super.key,
+    super.rounded,
     this.onPressed,
     this.size = ZetaWidgetSize.medium,
     this.borderType,
     required this.icon,
-    super.key,
+    this.semanticLabel,
   }) : type = ZetaButtonType.negative;
 
   /// Constructs [ZetaIconButton] with Outline theme.
   const ZetaIconButton.outline({
     super.key,
+    super.rounded,
     required this.icon,
     this.onPressed,
     this.size = ZetaWidgetSize.medium,
     this.borderType,
+    this.semanticLabel,
   }) : type = ZetaButtonType.outline;
 
   /// Constructs [ZetaIconButton] with Outline Subtle  theme.
   const ZetaIconButton.outlineSubtle({
     super.key,
+    super.rounded,
     required this.icon,
     this.onPressed,
     this.size = ZetaWidgetSize.medium,
     this.borderType,
+    this.semanticLabel,
   }) : type = ZetaButtonType.outlineSubtle;
 
   /// Constructs [ZetaIconButton] with text theme.
   const ZetaIconButton.text({
     super.key,
+    super.rounded,
     required this.icon,
     this.onPressed,
     this.size = ZetaWidgetSize.medium,
     this.borderType,
+    this.semanticLabel,
   }) : type = ZetaButtonType.text;
 
   /// Button icon.
@@ -96,19 +113,29 @@ class ZetaIconButton extends ZetaStatelessWidget {
   /// Size of the button. Defaults to large.
   final ZetaWidgetSize size;
 
+  /// A semantic description of the button.
+  ///
+  /// {@macro zeta-widget-semantic-label}
+  final String? semanticLabel;
+
   @override
   Widget build(BuildContext context) {
     final colors = Zeta.of(context).colors;
 
-    return FilledButton(
-      onPressed: onPressed,
-      style: buttonStyle(
-        colors,
-        borderType ?? (context.rounded ? ZetaWidgetBorder.rounded : ZetaWidgetBorder.sharp),
-        type,
-        null,
+    return MergeSemantics(
+      child: Semantics(
+        label: semanticLabel,
+        child: FilledButton(
+          onPressed: onPressed,
+          style: buttonStyle(
+            colors,
+            borderType ?? (context.rounded ? ZetaWidgetBorder.rounded : ZetaWidgetBorder.sharp),
+            type,
+            null,
+          ),
+          child: SelectionContainer.disabled(child: ZetaIcon(icon, size: _iconSize).paddingAll(_iconPadding)),
+        ),
       ),
-      child: SelectionContainer.disabled(child: ZetaIcon(icon, size: _iconSize).paddingAll(_iconPadding)),
     );
   }
 
@@ -142,6 +169,7 @@ class ZetaIconButton extends ZetaStatelessWidget {
       ..add(EnumProperty<ZetaWidgetBorder>('borderType', borderType))
       ..add(DiagnosticsProperty<IconData>('icon', icon))
       ..add(ObjectFlagProperty<VoidCallback?>.has('onPressed', onPressed))
-      ..add(EnumProperty<ZetaButtonType>('type', type));
+      ..add(EnumProperty<ZetaButtonType>('type', type))
+      ..add(StringProperty('semanticLabel', semanticLabel));
   }
 }

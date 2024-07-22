@@ -1,18 +1,19 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import '../../theme/tokens.dart';
-import '../../zeta.dart';
+import '../../../zeta_flutter.dart';
 
-/// Slider component with customized styling
-class ZetaSlider extends StatefulWidget {
+/// Slider component with customized styling.
+/// {@category Components}
+class ZetaSlider extends ZetaStatefulWidget {
   /// Default constructor for [ZetaSlider]
   const ZetaSlider({
     super.key,
+    super.rounded,
     required this.value,
     this.onChange,
-    this.rounded = false,
     this.divisions,
+    this.semanticLabel,
   });
 
   /// Double value to represent slider percentage
@@ -21,11 +22,13 @@ class ZetaSlider extends StatefulWidget {
   /// Callback to handle changing of slider
   final ValueChanged<double>? onChange;
 
-  /// {@macro zeta-component-rounded}
-  final bool rounded;
-
   /// Number of divisions.
   final int? divisions;
+
+  /// Value passed to the wrapping [Semantics] widget.
+  ///
+  /// {@macro zeta-widget-semantic-label}
+  final String? semanticLabel;
 
   @override
   State<ZetaSlider> createState() => _ZetaSliderState();
@@ -36,7 +39,8 @@ class ZetaSlider extends StatefulWidget {
       ..add(DiagnosticsProperty<bool>('rounded', rounded))
       ..add(DoubleProperty('value', value))
       ..add(ObjectFlagProperty<ValueChanged<double>?>.has('onChange', onChange))
-      ..add(IntProperty('divisions', divisions));
+      ..add(IntProperty('divisions', divisions))
+      ..add(StringProperty('semanticLabel', semanticLabel));
   }
 }
 
@@ -47,45 +51,50 @@ class _ZetaSliderState extends State<ZetaSlider> {
   Widget build(BuildContext context) {
     final colors = Zeta.of(context).colors;
 
-    return SliderTheme(
-      data: SliderThemeData(
-        /** TODO: Match with new colors */
+    return MergeSemantics(
+      child: Semantics(
+        label: widget.semanticLabel,
+        child: SliderTheme(
+          data: SliderThemeData(
+            // TODO(UX-1136): Match with new colors
 
-        /// Active Track
-        activeTrackColor: _activeColor,
-        disabledActiveTrackColor: colors.surfaceDisabled,
+            /// Active Track
+            activeTrackColor: _activeColor,
+            disabledActiveTrackColor: colors.surfaceDisabled,
 
-        /// Inactive Track
-        inactiveTrackColor: colors.surfaceInfoSubtle,
+            /// Inactive Track
+            inactiveTrackColor: colors.surfaceInfoSubtle,
 
-        /// Ticks
-        activeTickMarkColor: colors.surfaceDefault,
-        inactiveTickMarkColor: colors.surfaceDefault,
+            /// Ticks
+            activeTickMarkColor: colors.surfaceDefault,
+            inactiveTickMarkColor: colors.surfaceDefault,
 
-        /// Thumb
-        thumbColor: colors.surfaceDefaultInverse,
-        disabledThumbColor: colors.surfaceDisabled,
-        overlayShape: SliderThumb(size: ZetaSpacing.xl_1, rounded: widget.rounded, color: _activeColor),
-        thumbShape: SliderThumb(
-          size: ZetaSpacing.large,
-          rounded: widget.rounded,
-          color: _activeColor,
+            /// Thumb
+            thumbColor: colors.surfaceDefaultInverse,
+            disabledThumbColor: colors.surfaceDisabled,
+            overlayShape: _SliderThumb(size: ZetaSpacingBase.x2_5, rounded: context.rounded, color: _activeColor),
+            thumbShape: _SliderThumb(
+              size: ZetaSpacing.small,
+              rounded: context.rounded,
+              color: _activeColor,
+            ),
+          ),
+          child: Slider(
+            value: widget.value,
+            onChanged: widget.onChange,
+            divisions: widget.divisions,
+            onChangeStart: (_) {
+              setState(() {
+                _selected = true;
+              });
+            },
+            onChangeEnd: (_) {
+              setState(() {
+                _selected = false;
+              });
+            },
+          ),
         ),
-      ),
-      child: Slider(
-        value: widget.value,
-        onChanged: widget.onChange,
-        divisions: widget.divisions,
-        onChangeStart: (_) {
-          setState(() {
-            _selected = true;
-          });
-        },
-        onChangeEnd: (_) {
-          setState(() {
-            _selected = false;
-          });
-        },
       ),
     );
   }
@@ -100,17 +109,21 @@ class _ZetaSliderState extends State<ZetaSlider> {
 }
 
 /// Custom slider thumb component
-class SliderThumb extends SliderComponentShape {
-  /// Constructor for [SliderThumb]
-  const SliderThumb({required this.size, required this.rounded, required this.color});
+@Deprecated('Deprecated in 0.14.1')
+typedef SliderThumb = _SliderThumb;
 
-  /// Radius or width/height for [SliderThumb] depending on shape
+/// Custom slider thumb component
+class _SliderThumb extends SliderComponentShape {
+  /// Constructor for [_SliderThumb]
+  const _SliderThumb({required this.size, required this.rounded, required this.color});
+
+  /// Radius or width/height for [_SliderThumb] depending on shape
   final double size;
 
-  /// If [SliderThumb] is circular or a square
+  /// If [_SliderThumb] is circular or a square
   final bool rounded;
 
-  /// Color of [SliderThumb]
+  /// Color of [_SliderThumb]
   final Color color;
 
   @override

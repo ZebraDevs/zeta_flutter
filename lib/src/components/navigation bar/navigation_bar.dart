@@ -25,17 +25,19 @@ class ZetaNavigationBarItem {
 }
 
 /// Navigation Bars (Bottom navigation) allow movement between primary destinations in an app.
+/// {@category Components}
 class ZetaNavigationBar extends ZetaStatelessWidget {
   /// Creates a new [ZetaNavigationBar].
   const ZetaNavigationBar({
+    super.key,
+    super.rounded,
     required this.items,
     this.currentIndex,
     this.onTap,
     this.splitItems = false,
     this.dividerIndex,
     this.action,
-    super.key,
-    super.rounded,
+    this.semanticLabel,
   }) : assert(
           items.length >= 2 && items.length <= 6,
           'The number of items should be between 2 and 6',
@@ -43,52 +45,40 @@ class ZetaNavigationBar extends ZetaStatelessWidget {
 
   /// Creates a [ZetaNavigationBar] with a divider after the item at the given index.
   const ZetaNavigationBar.divided({
-    required List<ZetaNavigationBarItem> items,
-    required int? dividerIndex,
-    int? currentIndex,
-    void Function(int value)? onTap,
-    Key? key,
-    bool? rounded,
-  }) : this(
-          items: items,
-          currentIndex: currentIndex,
-          onTap: onTap,
-          splitItems: false,
-          dividerIndex: dividerIndex,
-          key: key,
-          rounded: rounded,
-        );
+    super.rounded,
+    super.key,
+    required this.items,
+    this.currentIndex,
+    this.onTap,
+    this.dividerIndex,
+    this.semanticLabel,
+  })  : splitItems = false,
+        action = null;
 
   /// Creates a [ZetaNavigationBar] and splits the items in half.
+
   const ZetaNavigationBar.split({
-    required List<ZetaNavigationBarItem> items,
-    int? currentIndex,
-    void Function(int value)? onTap,
-    Key? key,
-    bool? rounded,
-  }) : this(
-          items: items,
-          currentIndex: currentIndex,
-          onTap: onTap,
-          splitItems: true,
-          key: key,
-          rounded: rounded,
-        );
+    super.rounded,
+    super.key,
+    required this.items,
+    this.currentIndex,
+    this.onTap,
+    this.dividerIndex,
+    this.semanticLabel,
+  })  : splitItems = true,
+        action = null;
 
   /// Creates a [ZetaNavigationBar] with an action.
   const ZetaNavigationBar.action({
-    required List<ZetaNavigationBarItem> items,
-    required Widget action,
-    int? currentIndex,
-    void Function(int value)? onTap,
-    Key? key,
-  }) : this(
-          items: items,
-          currentIndex: currentIndex,
-          onTap: onTap,
-          action: action,
-          key: key,
-        );
+    super.key,
+    super.rounded,
+    required this.items,
+    required this.action,
+    this.currentIndex,
+    this.onTap,
+    this.semanticLabel,
+  })  : dividerIndex = null,
+        splitItems = false;
 
   /// The items displayed on the navigation bar.
   final List<ZetaNavigationBarItem> items;
@@ -107,6 +97,11 @@ class ZetaNavigationBar extends ZetaStatelessWidget {
 
   /// The action shown on the navigation bar.
   final Widget? action;
+
+  /// Value passed to the [Semantics] widget.
+  ///
+  /// {@macro zeta-widget-semantic-label}
+  final String? semanticLabel;
 
   Row _generateNavigationItemRow(List<ZetaNavigationBarItem> items) {
     return Row(
@@ -166,15 +161,14 @@ class ZetaNavigationBar extends ZetaStatelessWidget {
     }
 
     return Container(
-      padding: const EdgeInsets.only(
-        left: ZetaSpacing.medium,
-        right: ZetaSpacing.medium,
-      ),
+      padding: const EdgeInsets.symmetric(horizontal: ZetaSpacing.medium),
       decoration: BoxDecoration(
         color: colors.surfacePrimary,
         border: Border(top: BorderSide(color: colors.borderSubtle)),
       ),
-      child: child,
+      child: Semantics(
+        child: child,
+      ),
     );
   }
 
@@ -186,11 +180,12 @@ class ZetaNavigationBar extends ZetaStatelessWidget {
       ..add(IntProperty('currentIndex', currentIndex))
       ..add(ObjectFlagProperty<void Function(int value)?>.has('onTap', onTap))
       ..add(DiagnosticsProperty<bool>('splitItems', splitItems))
-      ..add(IntProperty('dividerIndex', dividerIndex));
+      ..add(IntProperty('dividerIndex', dividerIndex))
+      ..add(StringProperty('semanticLabel', semanticLabel));
   }
 }
 
-class _NavigationItem extends StatelessWidget {
+class _NavigationItem extends ZetaStatelessWidget {
   const _NavigationItem({
     required this.selected,
     required this.item,
@@ -229,35 +224,43 @@ class _NavigationItem extends StatelessWidget {
     return Material(
       color: colors.surfacePrimary,
       child: InkWell(
-        borderRadius: ZetaRadius.rounded,
+        borderRadius: context.rounded ? ZetaRadius.rounded : ZetaRadius.none,
         onTap: onTap,
-        child: Container(
-          padding: const EdgeInsets.only(left: ZetaSpacing.small, right: ZetaSpacing.small, bottom: ZetaSpacing.small),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              SizedBox(
-                width: ZetaSpacing.xl_7,
-                height: ZetaSpacing.xl_4 - _navigationItemBorderWidth,
-                child: Stack(
-                  children: [
-                    Positioned(
-                      left: ZetaSpacingBase.x2_5,
-                      top: ZetaSpacing.small - _navigationItemBorderWidth,
-                      right: ZetaSpacingBase.x2_5,
-                      child: ZetaIcon(item.icon, color: elementColor, size: ZetaSpacing.xl_2),
+        child: Semantics(
+          button: true,
+          explicitChildNodes: true,
+          label: item.label,
+          child: Container(
+            padding:
+                const EdgeInsets.only(left: ZetaSpacing.small, right: ZetaSpacing.small, bottom: ZetaSpacing.small),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                SizedBox(
+                  width: ZetaSpacing.xl_7,
+                  height: ZetaSpacing.xl_4 - _navigationItemBorderWidth,
+                  child: Stack(
+                    children: [
+                      Positioned(
+                        left: ZetaSpacingBase.x2_5,
+                        top: ZetaSpacing.small - _navigationItemBorderWidth,
+                        right: ZetaSpacingBase.x2_5,
+                        child: ZetaIcon(item.icon, color: elementColor, size: ZetaSpacing.xl_2),
+                      ),
+                      if (item.badge != null) _getBadge(colors),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: ZetaSpacing.small),
+                if (item.label != null)
+                  ExcludeSemantics(
+                    child: Text(
+                      item.label!,
+                      style: Theme.of(context).textTheme.labelSmall?.copyWith(color: elementColor),
                     ),
-                    if (item.badge != null) _getBadge(colors),
-                  ],
-                ),
-              ),
-              const SizedBox(height: ZetaSpacing.small),
-              if (item.label != null)
-                Text(
-                  item.label!,
-                  style: Theme.of(context).textTheme.labelSmall?.copyWith(color: elementColor),
-                ),
-            ],
+                  ),
+              ],
+            ),
           ),
         ),
       ),

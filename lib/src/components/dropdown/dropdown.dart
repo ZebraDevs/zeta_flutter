@@ -26,6 +26,7 @@ class _DropdownControllerImpl implements ZetaDropdownController {
 }
 
 /// An item used in a [ZetaDropdown] or a [ZetaSelectInput].
+/// {@category Components}
 class ZetaDropdownItem<T> {
   /// Creates a new [ZetaDropdownItem]
   ZetaDropdownItem({
@@ -49,6 +50,7 @@ class ZetaDropdownItem<T> {
 }
 
 /// Class for [ZetaDropdown]
+/// {@category Components}
 class ZetaDropdown<T> extends ZetaStatefulWidget {
   /// Creates a new [ZetaDropdown].
   const ZetaDropdown({
@@ -64,6 +66,8 @@ class ZetaDropdown<T> extends ZetaStatefulWidget {
     this.builder,
     this.onDismissed,
     this.onOpen,
+    this.semanticDropdownLabel,
+    this.disableButtonSemantics = false,
   });
 
   /// {@template dropdown-items}
@@ -104,6 +108,16 @@ class ZetaDropdown<T> extends ZetaStatefulWidget {
   /// Called when the dropdown is opened.
   final VoidCallback? onOpen;
 
+  /// A semantic label for the dropdown.
+  ///
+  /// If null, the label will be set to the selected item's label.
+  ///
+  /// {@macro zeta-widget-semantic-label}
+  final String? semanticDropdownLabel;
+
+  /// If true, [Semantics] will not include the button variable.
+  final bool disableButtonSemantics;
+
   /// A custom builder for the child of the dropdown.
   ///
   /// Provides a build context, the currently selected item in the dropdown and a controller which can be used to open/close the dropdown.
@@ -135,7 +149,9 @@ class ZetaDropdown<T> extends ZetaStatefulWidget {
             )?>.has('builder', builder),
       )
       ..add(DiagnosticsProperty<Offset>('offset', offset))
-      ..add(ObjectFlagProperty<VoidCallback?>.has('onOpen', onOpen));
+      ..add(ObjectFlagProperty<VoidCallback?>.has('onOpen', onOpen))
+      ..add(StringProperty('semanticDropdownLabel', semanticDropdownLabel))
+      ..add(DiagnosticsProperty<bool>('disableButtonSemantics', disableButtonSemantics));
   }
 }
 
@@ -280,6 +296,7 @@ class ZetaDropDownState<T> extends State<ZetaDropdown<T>> {
         value: _selectedItem ?? widget.items.first,
         allocateLeadingSpace: widget.type == ZetaDropdownMenuType.standard && _selectedItem?.icon != null,
         key: _childKey,
+        explicitChildNodes: false,
       );
       if (widget.size == ZetaDropdownSize.mini) {
         child = IntrinsicWidth(
@@ -290,54 +307,60 @@ class ZetaDropDownState<T> extends State<ZetaDropdown<T>> {
 
     return CompositedTransformTarget(
       link: _link,
-      child: OverlayPortal(
-        controller: _dropdownController.overlayPortalController,
-        overlayChildBuilder: (BuildContext context) {
-          return CompositedTransformFollower(
-            link: _link,
-            targetAnchor: _menuPosition == _MenuPosition.up
-                ? Alignment.topLeft
-                : Alignment.bottomLeft, // Align overlay dropdown in its correct position
-            followerAnchor: _menuPosition == _MenuPosition.up ? Alignment.bottomLeft : Alignment.topLeft,
-            offset: widget.offset,
-            child: Align(
-              alignment:
-                  _menuPosition == _MenuPosition.up ? AlignmentDirectional.bottomStart : AlignmentDirectional.topStart,
-              child: TapRegion(
-                onTapOutside: (event) {
-                  final headerBox = _childKey.currentContext!.findRenderObject()! as RenderBox;
+      child: Semantics(
+        button: !widget.disableButtonSemantics && true,
+        selected: isOpen,
+        label: widget.semanticDropdownLabel ?? _selectedItem?.label,
+        child: OverlayPortal(
+          controller: _dropdownController.overlayPortalController,
+          overlayChildBuilder: (BuildContext context) {
+            return CompositedTransformFollower(
+              link: _link,
+              targetAnchor: _menuPosition == _MenuPosition.up
+                  ? Alignment.topLeft
+                  : Alignment.bottomLeft, // Align overlay dropdown in its correct position
+              followerAnchor: _menuPosition == _MenuPosition.up ? Alignment.bottomLeft : Alignment.topLeft,
+              offset: widget.offset,
+              child: Align(
+                alignment: _menuPosition == _MenuPosition.up
+                    ? AlignmentDirectional.bottomStart
+                    : AlignmentDirectional.topStart,
+                child: TapRegion(
+                  onTapOutside: (event) {
+                    final headerBox = _childKey.currentContext!.findRenderObject()! as RenderBox;
 
-                  final headerPosition = headerBox.localToGlobal(Offset.zero);
-                  final inHeader = _isInHeader(
-                    headerPosition,
-                    headerBox.size,
-                    event.position,
-                  );
-                  if (!inHeader) {
-                    _dropdownController.close();
-                    widget.onDismissed?.call();
-                  }
-                },
-                child: _ZetaDropDownMenu<T>(
-                  items: widget.items,
-                  selected: _selectedItem?.value,
-                  allocateLeadingSpace: _allocateLeadingSpace,
-                  menuSize: _menuSize,
-                  key: _menuKey,
-                  menuType: widget.type,
-                  onSelected: (item) {
-                    setState(() {
-                      _selectedItem = item;
-                    });
-                    widget.onChange?.call(item);
-                    _dropdownController.close();
+                    final headerPosition = headerBox.localToGlobal(Offset.zero);
+                    final inHeader = _isInHeader(
+                      headerPosition,
+                      headerBox.size,
+                      event.position,
+                    );
+                    if (!inHeader) {
+                      _dropdownController.close();
+                      widget.onDismissed?.call();
+                    }
                   },
+                  child: _ZetaDropDownMenu<T>(
+                    items: widget.items,
+                    selected: _selectedItem?.value,
+                    allocateLeadingSpace: _allocateLeadingSpace,
+                    menuSize: _menuSize,
+                    key: _menuKey,
+                    menuType: widget.type,
+                    onSelected: (item) {
+                      setState(() {
+                        _selectedItem = item;
+                      });
+                      widget.onChange?.call(item);
+                      _dropdownController.close();
+                    },
+                  ),
                 ),
               ),
-            ),
-          );
-        },
-        child: child,
+            );
+          },
+          child: child,
+        ),
       ),
     );
   }
@@ -357,34 +380,39 @@ class ZetaDropDownState<T> extends State<ZetaDropdown<T>> {
 }
 
 /// Class for [_DropdownItem]
-class _DropdownItem<T> extends StatefulWidget {
+class _DropdownItem<T> extends ZetaStatefulWidget {
   ///Public constructor for [_DropdownItem]
   const _DropdownItem({
     super.key,
+    super.rounded,
     required this.value,
     required this.allocateLeadingSpace,
     this.selected = false,
     this.menuType = ZetaDropdownMenuType.standard,
     this.itemKey,
     this.onPress,
+    this.explicitChildNodes = true,
   });
 
   final bool allocateLeadingSpace;
 
-  /// If [_DropdownItem] is selected
+  /// If [_DropdownItem] is selected.
   final bool selected;
 
   /// Value of [_DropdownItem]
   final ZetaDropdownItem<T> value;
 
-  /// Handles clicking for [_DropdownItem]
+  /// Handles clicking for [_DropdownItem].
   final VoidCallback? onPress;
 
   /// If checkbox is to be shown, the type of it.
   final ZetaDropdownMenuType menuType;
 
-  /// Key for item
+  /// Key for item.
   final GlobalKey? itemKey;
+
+  /// If child nodes are explicitly defined.
+  final bool explicitChildNodes;
 
   @override
   State<_DropdownItem<T>> createState() => _DropdownItemState<T>();
@@ -402,7 +430,8 @@ class _DropdownItem<T> extends StatefulWidget {
         ),
       )
       ..add(DiagnosticsProperty<bool>('allocateLeadingSpace', allocateLeadingSpace))
-      ..add(DiagnosticsProperty<ZetaDropdownItem<T>>('value', value));
+      ..add(DiagnosticsProperty<ZetaDropdownItem<T>>('value', value))
+      ..add(DiagnosticsProperty<bool>('explicitChildNodes', explicitChildNodes));
   }
 }
 
@@ -438,28 +467,31 @@ class _DropdownItemState<T> extends State<_DropdownItem<T>> {
       );
     }
 
-    return DefaultTextStyle(
-      style: ZetaTextStyles.bodyMedium,
-      child: OutlinedButton(
-        key: widget.itemKey,
-        onPressed: widget.onPress,
-        statesController: controller,
-        style: _getStyle(colors),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(
-            vertical: ZetaSpacingBase.x2_5,
-            horizontal: ZetaSpacing.medium,
-          ),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              if (leading != null) leading,
-              Expanded(
-                child: Text(
-                  widget.value.label,
+    return ExcludeSemantics(
+      excluding: !widget.explicitChildNodes,
+      child: DefaultTextStyle(
+        style: ZetaTextStyles.bodyMedium,
+        child: OutlinedButton(
+          key: widget.itemKey,
+          onPressed: widget.onPress,
+          statesController: controller,
+          style: _getStyle(colors),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              vertical: ZetaSpacingBase.x2_5,
+              horizontal: ZetaSpacing.medium,
+            ),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                if (leading != null) leading,
+                Expanded(
+                  child: Text(
+                    widget.value.label,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
@@ -477,7 +509,7 @@ class _DropdownItemState<T> extends State<_DropdownItem<T>> {
           },
         );
       case ZetaDropdownMenuType.radio:
-        return Radio(
+        return ZetaRadio(
           value: widget.selected,
           groupValue: true,
           onChanged: (val) {
@@ -499,7 +531,7 @@ class _DropdownItemState<T> extends State<_DropdownItem<T>> {
           return colors.surfaceSelected;
         }
         if (states.contains(WidgetState.pressed)) {
-          return colors.surfaceSelected;
+          return colors.surfaceSelectedHover;
         }
         if (states.contains(WidgetState.hovered)) {
           return colors.surfaceHover;
@@ -526,7 +558,6 @@ class _DropdownItemState<T> extends State<_DropdownItem<T>> {
       }),
       padding: const WidgetStatePropertyAll(EdgeInsets.zero),
       elevation: const WidgetStatePropertyAll(0),
-      overlayColor: const WidgetStatePropertyAll(Colors.transparent),
     );
   }
 

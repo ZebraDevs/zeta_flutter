@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import '../../../zeta_flutter.dart';
 
 /// ZetaSearchBar provides input field for searching.
-class ZetaSearchBar extends StatefulWidget {
+/// {@category Components}
+class ZetaSearchBar extends ZetaStatefulWidget {
   /// Constructor for [ZetaSearchBar].
   const ZetaSearchBar({
     super.key,
@@ -12,11 +13,16 @@ class ZetaSearchBar extends StatefulWidget {
     this.hint,
     this.initialValue,
     this.onChanged,
+    this.onSubmit,
     this.onSpeechToText,
     this.disabled = false,
     this.showLeadingIcon = true,
     this.showSpeechToText = true,
     @Deprecated('Use disabled instead. ' 'enabled is deprecated as of 0.11.0') bool enabled = true,
+    this.focusNode,
+    this.textInputAction,
+    this.microphoneSemanticLabel,
+    this.clearSemanticLabel,
   });
 
   /// Determines the size of the input field.
@@ -35,7 +41,13 @@ class ZetaSearchBar extends StatefulWidget {
   final String? initialValue;
 
   /// A callback, which provides the entered text.
-  final void Function(String?)? onChanged;
+  final void Function(String? text)? onChanged;
+
+  /// A callback, called when [textInputAction] is performed.
+  final void Function(String text)? onSubmit;
+
+  /// The type of action button to use for the keyboard.
+  final TextInputAction? textInputAction;
 
   /// A callback, which is invoked when the microphone button is pressed.
   final Future<String?> Function()? onSpeechToText;
@@ -51,8 +63,22 @@ class ZetaSearchBar extends StatefulWidget {
   /// Default is `true`.
   final bool showSpeechToText;
 
+  /// A [FocusNode] for the underlying [TextFormField]
+  final FocusNode? focusNode;
+
+  /// Label passed to the microphone button for semantic purposes.
+  ///
+  /// {@macro zeta-widget-semantic-label}
+  final String? microphoneSemanticLabel;
+
+  /// Label passed to the clear button for semantic purposes.
+  ///
+  /// {@macro zeta-widget-semantic-label}
+  final String? clearSemanticLabel;
+
   @override
   State<ZetaSearchBar> createState() => _ZetaSearchBarState();
+
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
@@ -65,7 +91,12 @@ class ZetaSearchBar extends StatefulWidget {
       ..add(StringProperty('initialValue', initialValue))
       ..add(ObjectFlagProperty<VoidCallback?>.has('onSpeechToText', onSpeechToText))
       ..add(DiagnosticsProperty<bool>('showLeadingIcon', showLeadingIcon))
-      ..add(DiagnosticsProperty<bool>('showSpeechToText', showSpeechToText));
+      ..add(DiagnosticsProperty<bool>('showSpeechToText', showSpeechToText))
+      ..add(DiagnosticsProperty<FocusNode>('focusNode', focusNode))
+      ..add(ObjectFlagProperty<void Function(String text)?>.has('onSubmit', onSubmit))
+      ..add(EnumProperty<TextInputAction>('textInputAction', textInputAction))
+      ..add(StringProperty('microphoneSemanticLabel', microphoneSemanticLabel))
+      ..add(StringProperty('clearSemanticLabel', clearSemanticLabel));
   }
 }
 
@@ -87,6 +118,9 @@ class _ZetaSearchBarState extends State<ZetaSearchBar> {
     super.didUpdateWidget(oldWidget);
     _size = widget.size ?? ZetaWidgetSize.large;
     _shape = widget.shape ?? ZetaWidgetBorder.rounded;
+    if (oldWidget.initialValue != widget.initialValue) {
+      _controller.text = widget.initialValue ?? '';
+    }
   }
 
   @override
@@ -102,70 +136,91 @@ class _ZetaSearchBarState extends State<ZetaSearchBar> {
 
     return ZetaRoundedScope(
       rounded: widget.shape != ZetaWidgetBorder.sharp,
-      child: TextFormField(
-        enabled: !widget.disabled,
-        controller: _controller,
-        keyboardType: TextInputType.text,
-        onChanged: (value) => setState(() => widget.onChanged?.call(value)),
-        style: ZetaTextStyles.bodyMedium,
-        decoration: InputDecoration(
-          isDense: true,
-          contentPadding: EdgeInsets.symmetric(
-            horizontal: 10,
-            vertical: _inputVerticalPadding(_size),
-          ),
-          hintText: widget.hint ?? 'Search',
-          hintStyle: ZetaTextStyles.bodyMedium.copyWith(
-            color: !widget.disabled ? zeta.colors.textDefault : zeta.colors.cool.shade50,
-          ),
-          prefixIcon: widget.showLeadingIcon
-              ? Padding(
-                  padding: const EdgeInsets.only(left: ZetaSpacingBase.x2_5, right: ZetaSpacing.small),
-                  child: ZetaIcon(
-                    ZetaIcons.search,
-                    color: !widget.disabled ? zeta.colors.cool.shade70 : zeta.colors.cool.shade50,
-                    size: iconSize,
-                  ),
-                )
-              : null,
-          prefixIconConstraints: const BoxConstraints(
-            minHeight: ZetaSpacing.xl_2,
-            minWidth: ZetaSpacing.xl_2,
-          ),
-          suffixIcon: IntrinsicHeight(
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                if (_controller.text.isNotEmpty && !widget.disabled) ...[
-                  IconButton(
-                    visualDensity: const VisualDensity(
-                      horizontal: -4,
-                      vertical: -4,
-                    ),
-                    onPressed: () {
-                      setState(_controller.clear);
-                      widget.onChanged?.call('');
-                    },
-                    icon: ZetaIcon(
-                      ZetaIcons.cancel,
-                      color: zeta.colors.cool.shade70,
+      child: Semantics(
+        excludeSemantics: widget.disabled,
+        label: widget.disabled ? widget.hint ?? 'Search' : null, // TODO(UX-1003): Localize
+        enabled: widget.disabled ? false : null,
+        child: TextFormField(
+          focusNode: widget.focusNode,
+          enabled: !widget.disabled,
+          controller: _controller,
+          keyboardType: TextInputType.text,
+          textInputAction: widget.textInputAction,
+          onFieldSubmitted: widget.onSubmit,
+          onChanged: (value) => setState(() => widget.onChanged?.call(value)),
+          style: ZetaTextStyles.bodyMedium,
+          decoration: InputDecoration(
+            isDense: true,
+            contentPadding: EdgeInsets.symmetric(
+              horizontal: 10,
+              vertical: _inputVerticalPadding(_size),
+            ),
+            hintText: widget.hint ?? 'Search', // TODO(UX-1003): Localize
+            hintStyle: ZetaTextStyles.bodyMedium.copyWith(
+              color: !widget.disabled ? zeta.colors.textDefault : zeta.colors.cool.shade50,
+            ),
+            prefixIcon: widget.showLeadingIcon
+                ? Padding(
+                    padding: const EdgeInsets.only(left: ZetaSpacingBase.x2_5, right: ZetaSpacing.small),
+                    child: ZetaIcon(
+                      ZetaIcons.search,
+                      color: !widget.disabled ? zeta.colors.cool.shade70 : zeta.colors.cool.shade50,
                       size: iconSize,
                     ),
-                  ),
-                  if (widget.showSpeechToText)
-                    SizedBox(
-                      height: iconSize,
-                      child: VerticalDivider(
-                        color: zeta.colors.cool.shade40,
-                        width: 5,
-                        thickness: 1,
+                  )
+                : null,
+            prefixIconConstraints: const BoxConstraints(
+              minHeight: ZetaSpacing.xl_2,
+              minWidth: ZetaSpacing.xl_2,
+            ),
+            suffixIcon: IntrinsicHeight(
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  if (_controller.text.isNotEmpty && !widget.disabled) ...[
+                    Semantics(
+                      container: true,
+                      button: true,
+                      excludeSemantics: true,
+                      label: widget.clearSemanticLabel,
+                      child: IconButton(
+                        key: const ValueKey('search-clear-btn'),
+                        visualDensity: const VisualDensity(
+                          horizontal: -4,
+                          vertical: -4,
+                        ),
+                        onPressed: () {
+                          setState(_controller.clear);
+                          widget.onChanged?.call('');
+                        },
+                        icon: ZetaIcon(
+                          ZetaIcons.cancel,
+                          color: zeta.colors.cool.shade70,
+                          size: iconSize,
+                        ),
                       ),
                     ),
-                ],
-                Padding(
-                  padding: const EdgeInsets.only(right: ZetaSpacing.minimum),
-                  child: widget.showSpeechToText
-                      ? IconButton(
+                    if (widget.showSpeechToText)
+                      SizedBox(
+                        height: iconSize,
+                        child: VerticalDivider(
+                          color: zeta.colors.cool.shade40,
+                          width: 5,
+                          thickness: 1,
+                        ),
+                      ),
+                  ],
+                  if (widget.showSpeechToText)
+                    Padding(
+                      padding: const EdgeInsets.only(right: ZetaSpacing.minimum),
+                      child: Semantics(
+                        container: true,
+                        label: widget.microphoneSemanticLabel,
+                        excludeSemantics: true,
+                        button: true,
+                        child: IconButton(
+                          tooltip: widget.microphoneSemanticLabel,
+                          key: const ValueKey('speech-to-text-btn'),
                           visualDensity: const VisualDensity(
                             horizontal: -4,
                             vertical: -4,
@@ -183,21 +238,22 @@ class _ZetaSearchBarState extends State<ZetaSearchBar> {
                             ZetaIcons.microphone,
                             size: iconSize,
                           ),
-                        )
-                      : const Nothing(),
-                ),
-              ],
+                        ),
+                      ),
+                    ),
+                ],
+              ),
             ),
+            suffixIconConstraints: const BoxConstraints(
+              minHeight: ZetaSpacing.xl_2,
+              minWidth: ZetaSpacing.xl_2,
+            ),
+            filled: !widget.disabled ? null : true,
+            fillColor: !widget.disabled ? null : zeta.colors.cool.shade30,
+            enabledBorder: _defaultInputBorder(zeta, shape: _shape),
+            focusedBorder: _focusedInputBorder(zeta, shape: _shape),
+            disabledBorder: _defaultInputBorder(zeta, shape: _shape),
           ),
-          suffixIconConstraints: const BoxConstraints(
-            minHeight: ZetaSpacing.xl_2,
-            minWidth: ZetaSpacing.xl_2,
-          ),
-          filled: !widget.disabled ? null : true,
-          fillColor: !widget.disabled ? null : zeta.colors.cool.shade30,
-          enabledBorder: _defaultInputBorder(zeta, shape: _shape),
-          focusedBorder: _focusedInputBorder(zeta, shape: _shape),
-          disabledBorder: _defaultInputBorder(zeta, shape: _shape),
         ),
       ),
     );

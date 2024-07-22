@@ -1,0 +1,16 @@
+dartdoc:
+  categories:
+    "Components":
+      markdown: doc/Components.md
+      name: Components
+    "Assets":
+      markdown: doc/Assets.md
+      name: Assets
+    "Theme":
+      markdown: doc/Theme.md
+      name: Theme
+    "Utils":
+      markdown: doc/Utils.md
+      name: Utils
+  categoryOrder: ["Components", "Assets", "Theme", "Utils", "Interfaces"]
+  showUndocumentedCategories: true

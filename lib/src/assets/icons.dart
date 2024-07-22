@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 const zetaIconsVersion = '0.5.3';
 
 /// Zeta Icons. Full list of icons can be found at [Zeta Icons](https://zeta-icons.web.app/).
+/// {@category Assets}
 abstract class ZetaIcons {
   static const String family = 'zeta-icons';
   static const String familyRound = 'zeta-icons-round';
@@ -4854,7 +4855,7 @@ abstract class ZetaIcons {
   static const IconData zoom_out_sharp = IconData(0xe219, fontFamily: familySharp, fontPackage: package);
 }
 
-// List of all rounded icons.
+/// List of all icons.
 const Map<String, IconData> icons = {
   'activity': ZetaIcons.activity,
   'add_alert': ZetaIcons.add_alert,

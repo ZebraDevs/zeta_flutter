@@ -23,7 +23,8 @@ enum ZetaCircleSizes {
   xl
 }
 
-///Class definition for [ZetaProgressCircle]
+/// Progress indicators express an unspecified wait time or display the length of a process.
+/// {@category Components}
 class ZetaProgressCircle extends ZetaProgress {
   /// Constructor for [ZetaProgressCircle]
   const ZetaProgressCircle({
@@ -41,7 +42,7 @@ class ZetaProgressCircle extends ZetaProgress {
   final VoidCallback? onCancel;
 
   @override
-  State<ZetaProgressCircle> createState() => ZetaProgressCircleState();
+  State<ZetaProgressCircle> createState() => _ZetaProgressCircleState();
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
@@ -54,8 +55,12 @@ class ZetaProgressCircle extends ZetaProgress {
   }
 }
 
-///Class definition for [ZetaProgressCircleState]
-class ZetaProgressCircleState extends ZetaProgressState<ZetaProgressCircle> {
+/// Class definition for [_ZetaProgressCircleState]
+@Deprecated('Deprecated in 0.14.1')
+typedef ZetaProgressCircleState = _ZetaProgressCircleState;
+
+/// Class definition for [_ZetaProgressCircleState]
+class _ZetaProgressCircleState extends ZetaProgressState<ZetaProgressCircle> {
   final _controller = WidgetStatesController();
 
   @override
@@ -89,10 +94,10 @@ class ZetaProgressCircleState extends ZetaProgressState<ZetaProgressCircle> {
       constraints: BoxConstraints.tight(_getSize()),
       child: AnimatedBuilder(
         animation: controller,
-        builder: (context, child) {
+        builder: (_, child) {
           return CustomPaint(
             size: _getSize(),
-            painter: CirclePainter(
+            painter: _CirclePainter(
               progress: animation.value,
               rounded: context.rounded,
               colors: Zeta.of(context).colors,
@@ -168,10 +173,14 @@ class ZetaProgressCircleState extends ZetaProgressState<ZetaProgressCircle> {
   }
 }
 
-///Class definition for [CirclePainter]
-class CirclePainter extends CustomPainter {
-  ///Constructor for [CirclePainter]
-  CirclePainter({this.progress = 0, this.rounded = true, required this.colors});
+/// Class definition for [CirclePainter]
+@Deprecated('Deprecated in 0.14.1')
+typedef CirclePainter = _CirclePainter;
+
+/// Class definition for [_CirclePainter]
+class _CirclePainter extends CustomPainter {
+  ///Constructor for [_CirclePainter]
+  _CirclePainter({this.progress = 0, this.rounded = true, required this.colors});
 
   ///Percentage of progress in decimal value, defaults to 0
   final double progress;

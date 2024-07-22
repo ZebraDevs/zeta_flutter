@@ -12,6 +12,7 @@ import 'package:flutter/rendering.dart';
 import '../../../zeta_flutter.dart';
 
 /// Custom wrapper for [Icon] that applies the Zeta icon family.
+/// {@category Components}
 class ZetaIcon extends ZetaStatelessWidget {
   /// Constructs a [ZetaIcon].
   const ZetaIcon(

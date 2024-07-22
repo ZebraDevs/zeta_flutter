@@ -46,6 +46,7 @@ class _SelectInputExampleState extends State<SelectInputExample> {
                     placeholder: 'Placeholder',
                     initialValue: "Item 1",
                     items: items,
+                    dropdownSemantics: 'Open dropdown',
                   ),
                   ZetaSelectInput(
                     label: 'Medium',

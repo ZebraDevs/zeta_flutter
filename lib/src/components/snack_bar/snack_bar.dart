@@ -33,6 +33,7 @@ enum ZetaSnackBarType {
 /// bottom of the screen.
 ///
 /// Different styles can be applied to [ZetaSnackBar] with [ZetaSnackBarType].
+/// {@category Components}
 class ZetaSnackBar extends SnackBar {
   /// Sets basic styles for the [SnackBar].
   ZetaSnackBar({

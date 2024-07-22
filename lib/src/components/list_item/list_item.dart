@@ -8,6 +8,7 @@ import 'list_scope.dart';
 /// Dividers on individual list items can be hidden or shown by setting their [showDivider] property.
 ///
 /// This wraps [ListView.builder] so it needs to be used in a widget with a constrained height.
+/// {@category Components}
 class ZetaList extends ZetaStatelessWidget {
   /// Creates a new [ZetaList].
   const ZetaList({
@@ -32,6 +33,7 @@ class ZetaList extends ZetaStatelessWidget {
         child: ListView.builder(
           itemBuilder: (context, i) => items[i],
           itemCount: items.length,
+          addSemanticIndexes: false,
         ),
       ),
     );
@@ -47,6 +49,7 @@ class ZetaList extends ZetaStatelessWidget {
 /// A single row that typically contains some text as well as a leading or trailing widgets.
 ///
 /// To create list items with a [ZetaSwitch], [ZetaCheckbox], or [ZetaRadio], use the [ZetaListItem.toggle], [ZetaListItem.checkbox] or the [ZetaListItem.radio] named constructors respectively.
+/// {@category Components}
 class ZetaListItem extends ZetaStatelessWidget {
   /// Creates a [ZetaListItem].
   const ZetaListItem({
@@ -163,67 +166,72 @@ class ZetaListItem extends ZetaStatelessWidget {
     final Widget? leadingWidget =
         leading ?? ((listScope?.indentItems ?? false) ? const SizedBox(width: ZetaSpacing.xl_2) : null);
 
-    return Material(
-      color: Zeta.of(context).colors.surfaceDefault,
-      child: InkWell(
-        onTap: onTap,
-        child: Container(
-          constraints: const BoxConstraints(minHeight: ZetaSpacing.xl_9),
-          decoration: BoxDecoration(
-            border: Border(
-              bottom: BorderSide(
-                color: divide ? colors.borderDefault : Colors.transparent,
-              ),
-            ),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.only(
-              left: ZetaSpacing.large,
-              right: ZetaSpacing.small,
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Flexible(
-                  child: Row(
-                    children: [
-                      if (leadingWidget != null)
-                        Padding(
-                          padding: const EdgeInsets.only(
-                            right: ZetaSpacing.small,
-                          ),
-                          child: leadingWidget,
-                        ),
-                      Flexible(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              primaryText,
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                            if (secondaryText != null && secondaryText!.isNotEmpty)
-                              Text(
-                                secondaryText!,
-                                style: ZetaTextStyles.bodySmall,
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                          ],
-                        ),
-                      ),
-                    ],
+    return SelectionContainer.disabled(
+      child: MergeSemantics(
+        child: Material(
+          color: Zeta.of(context).colors.surfaceDefault,
+          child: InkWell(
+            onTap: onTap,
+            excludeFromSemantics: true,
+            child: Container(
+              constraints: const BoxConstraints(minHeight: ZetaSpacing.xl_9),
+              decoration: BoxDecoration(
+                border: Border(
+                  bottom: BorderSide(
+                    color: divide ? colors.borderDefault : Colors.transparent,
                   ),
                 ),
-                if (trailing != null)
-                  Padding(
-                    padding: const EdgeInsets.only(
-                      left: ZetaSpacing.large,
+              ),
+              child: Padding(
+                padding: const EdgeInsets.only(
+                  left: ZetaSpacing.large,
+                  right: ZetaSpacing.small,
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Flexible(
+                      child: Row(
+                        children: [
+                          if (leadingWidget != null)
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                right: ZetaSpacing.small,
+                              ),
+                              child: leadingWidget,
+                            ),
+                          Flexible(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  primaryText,
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                                if (secondaryText != null && secondaryText!.isNotEmpty)
+                                  Text(
+                                    secondaryText!,
+                                    style: ZetaTextStyles.bodySmall,
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
-                    child: trailing,
-                  ),
-              ],
+                    if (trailing != null)
+                      Padding(
+                        padding: const EdgeInsets.only(
+                          left: ZetaSpacing.large,
+                        ),
+                        child: trailing,
+                      ),
+                  ],
+                ),
+              ),
             ),
           ),
         ),

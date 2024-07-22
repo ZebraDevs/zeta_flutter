@@ -10,7 +10,8 @@ import '../buttons/input_icon_button.dart';
 
 /// A form field used to input dates.
 ///
-/// Can be used and validated the same way as a [TextFormField]
+/// Can be used and validated the same way as a [TextFormField].
+/// {@category Components}
 class ZetaDateInput extends ZetaFormField<DateTime> {
   /// Creates a new [ZetaDateInput]
   ZetaDateInput({
@@ -29,6 +30,8 @@ class ZetaDateInput extends ZetaFormField<DateTime> {
     this.minDate,
     this.maxDate,
     this.pickerInitialEntryMode,
+    this.datePickerSemanticLabel,
+    this.clearSemanticLabel,
   }) : assert((minDate == null || maxDate == null) || minDate.isBefore(maxDate), 'minDate cannot be after maxDate');
 
   /// The label for the input.
@@ -68,6 +71,16 @@ class ZetaDateInput extends ZetaFormField<DateTime> {
   /// However, if [validator] catches any of these conditions, the return value of [validator] will be shown.
   final String? Function(DateTime? value)? validator;
 
+  /// The semantic label for the clear button.
+  ///
+  /// {@macro zeta-widget-semantic-label}
+  final String? clearSemanticLabel;
+
+  /// The semantic label for the calendar button.
+  ///
+  /// {@macro zeta-widget-semantic-label}
+  final String? datePickerSemanticLabel;
+
   @override
   State<ZetaDateInput> createState() => ZetaDateInputState();
   @override
@@ -86,14 +99,14 @@ class ZetaDateInput extends ZetaFormField<DateTime> {
       ..add(StringProperty('dateFormat', dateFormat))
       ..add(DiagnosticsProperty<DateTime?>('minDate', minDate))
       ..add(DiagnosticsProperty<DateTime?>('maxDate', maxDate))
-      ..add(EnumProperty<DatePickerEntryMode?>('pickerInitialEntryMode', pickerInitialEntryMode));
+      ..add(EnumProperty<DatePickerEntryMode?>('pickerInitialEntryMode', pickerInitialEntryMode))
+      ..add(StringProperty('semanticCalendar', datePickerSemanticLabel))
+      ..add(StringProperty('semanticClear', clearSemanticLabel));
   }
 }
 
 /// State for [ZetaDateInput]
 class ZetaDateInputState extends State<ZetaDateInput> implements ZetaFormFieldState {
-  // TODO(mikecoomber): add AM/PM selector inline.
-
   ZetaColors get _colors => Zeta.of(context).colors;
 
   late final MaskTextInputFormatter _dateFormatter;
@@ -253,6 +266,7 @@ class ZetaDateInputState extends State<ZetaDateInput> implements ZetaFormFieldSt
               disabled: widget.disabled,
               size: widget.size,
               color: _colors.iconSubtle,
+              semanticLabel: widget.clearSemanticLabel,
             ),
           InputIconButton(
             icon: ZetaIcons.calendar,
@@ -260,6 +274,7 @@ class ZetaDateInputState extends State<ZetaDateInput> implements ZetaFormFieldSt
             disabled: widget.disabled,
             size: widget.size,
             color: _colors.iconDefault,
+            semanticLabel: widget.datePickerSemanticLabel,
           ),
         ],
       ),

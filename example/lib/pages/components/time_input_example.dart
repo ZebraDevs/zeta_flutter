@@ -34,6 +34,8 @@ class TimeInputExample extends StatelessWidget {
                         errorText: 'Oops! Error hint text',
                         size: ZetaWidgetSize.large,
                         initialValue: TimeOfDay.now(),
+                        clearSemanticLabel: 'Clear',
+                        timePickerSemanticLabel: 'Open time picker',
                       ),
                       ZetaTimeInput(
                         label: 'Medium',

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import '../../../zeta_flutter.dart';
 
 /// Zeta Button Group
+/// {@category Components}
 class ZetaButtonGroup extends ZetaStatelessWidget {
   /// Constructs [ZetaButtonGroup] from a list of [ZetaGroupButton]s
   const ZetaButtonGroup({
@@ -63,6 +64,7 @@ class ZetaButtonGroup extends ZetaStatelessWidget {
 }
 
 // TODO(UX-854): Create country variant.
+// TODO(UX-1132): Refactor to make group button a class, not a widget.
 
 /// Group Button item
 class ZetaGroupButton extends ZetaStatefulWidget {
@@ -73,6 +75,7 @@ class ZetaGroupButton extends ZetaStatefulWidget {
     this.onPressed,
     this.label,
     this.icon,
+    this.semanticLabel,
   })  : isFinal = false,
         isInitial = false,
         isInverse = false,
@@ -95,17 +98,19 @@ class ZetaGroupButton extends ZetaStatefulWidget {
     this.icon,
     this.onPressed,
     this.items,
+    this.semanticLabel,
   });
 
   /// Constructs dropdown group button
   const ZetaGroupButton.dropdown({
+    super.key,
+    super.rounded,
     required this.items,
     this.onChange,
     this.initialValue,
     this.icon,
     this.label,
-    super.key,
-    super.rounded,
+    this.semanticLabel,
   })  : isFinal = false,
         isInitial = false,
         isInverse = false,
@@ -119,6 +124,7 @@ class ZetaGroupButton extends ZetaStatefulWidget {
     required this.icon,
     this.onPressed,
     this.label,
+    this.semanticLabel,
   })  : isFinal = false,
         isInitial = false,
         isInverse = false,
@@ -162,6 +168,13 @@ class ZetaGroupButton extends ZetaStatefulWidget {
   /// If [ZetaGroupButton] is inverse.
   final bool isInverse;
 
+  /// Semantic label for [ZetaGroupButton].
+  ///
+  /// {@macro zeta-widget-semantic-label}
+  ///
+  /// If this property is null, [label] will be used instead.
+  final String? semanticLabel;
+
   @override
   State<ZetaGroupButton> createState() => _ZetaGroupButtonState();
 
@@ -172,6 +185,7 @@ class ZetaGroupButton extends ZetaStatefulWidget {
     bool? isLarge,
     bool? rounded,
     bool? isInverse,
+    String? semanticLabel,
   }) {
     return ZetaGroupButton._(
       key: key,
@@ -186,6 +200,7 @@ class ZetaGroupButton extends ZetaStatefulWidget {
       isLarge: isLarge ?? this.isLarge,
       rounded: rounded ?? this.rounded,
       isInverse: isInverse ?? this.isInverse,
+      semanticLabel: semanticLabel ?? this.semanticLabel,
     );
   }
 
@@ -202,17 +217,18 @@ class ZetaGroupButton extends ZetaStatefulWidget {
       ..add(DiagnosticsProperty<bool>('isInverse', isInverse))
       ..add(IterableProperty<ZetaDropdownItem<dynamic>>('dropdownItems', items))
       ..add(ObjectFlagProperty<void Function(ZetaDropdownItem<dynamic> selectedItem)?>.has('onChange', onChange))
-      ..add(DiagnosticsProperty('initialValue', initialValue));
+      ..add(DiagnosticsProperty('initialValue', initialValue))
+      ..add(StringProperty('semanticLabel', semanticLabel));
   }
 }
 
 class _ZetaGroupButtonState extends State<ZetaGroupButton> {
-  WidgetStatesController controller = WidgetStatesController();
+  final WidgetStatesController _controller = WidgetStatesController();
 
   @override
   void dispose() {
     super.dispose();
-    controller.dispose();
+    _controller.dispose();
   }
 
   @override
@@ -229,10 +245,10 @@ class _ZetaGroupButtonState extends State<ZetaGroupButton> {
     ZetaColors colors,
     bool finalButton,
   ) {
-    if (controller.value.contains(WidgetState.focused)) {
+    if (_controller.value.contains(WidgetState.focused)) {
       return BorderSide(color: colors.blue.shade50, width: ZetaSpacingBase.x0_5);
     }
-    if (controller.value.contains(WidgetState.disabled)) {
+    if (_controller.value.contains(WidgetState.disabled)) {
       return BorderSide(color: colors.cool.shade40);
     }
     return BorderSide(
@@ -254,39 +270,6 @@ class _ZetaGroupButtonState extends State<ZetaGroupButton> {
       );
     }
     return ZetaRadius.none;
-  }
-
-  ButtonStyle getStyle(ZetaWidgetBorder borderType, ZetaColors colors) {
-    return ButtonStyle(
-      shape: WidgetStateProperty.all(
-        RoundedRectangleBorder(
-          borderRadius: _getRadius(borderType),
-        ),
-      ),
-      backgroundColor: WidgetStateProperty.resolveWith<Color?>((states) {
-        if (states.contains(WidgetState.disabled)) {
-          return colors.surfaceDisabled;
-        }
-        if (states.contains(WidgetState.pressed)) {
-          return widget.isInverse ? colors.cool.shade100 : colors.primary.shade10;
-        }
-        if (states.contains(WidgetState.hovered)) {
-          return widget.isInverse ? colors.cool.shade90 : colors.cool.shade20;
-        }
-        if (widget.isInverse) return colors.cool.shade100;
-
-        return colors.surfacePrimary;
-      }),
-      foregroundColor: WidgetStateProperty.resolveWith<Color?>((states) {
-        if (states.contains(WidgetState.disabled)) {
-          return colors.textDisabled;
-        }
-        if (widget.isInverse) return colors.cool.shade100.onColor;
-        return colors.textDefault;
-      }),
-      elevation: const WidgetStatePropertyAll(ZetaSpacing.none),
-      padding: WidgetStateProperty.all(EdgeInsets.zero),
-    );
   }
 
   Widget _getButton(
@@ -327,7 +310,7 @@ class _ZetaGroupButtonState extends State<ZetaGroupButton> {
           top: borderSide,
           left: borderSide,
           bottom: borderSide,
-          right: controller.value.contains(WidgetState.focused)
+          right: _controller.value.contains(WidgetState.focused)
               ? BorderSide(color: colors.blue.shade50, width: 2)
               : (widget.isFinal)
                   ? borderSide
@@ -336,23 +319,54 @@ class _ZetaGroupButtonState extends State<ZetaGroupButton> {
         borderRadius: _getRadius(borderType),
       ),
       padding: EdgeInsets.zero,
-      child: FilledButton(
-        statesController: controller,
-        onPressed: onPressed,
-        style: getStyle(borderType, colors),
-        child: SelectionContainer.disabled(
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              leadingIcon ?? const Nothing(),
-              Text(selectedItem?.label ?? widget.label ?? '', style: ZetaTextStyles.labelMedium),
-              if (widget.items != null)
-                ZetaIcon(
-                  dropdownIcon,
-                  size: ZetaSpacing.xl_1,
-                ),
-            ].divide(const SizedBox(width: ZetaSpacing.minimum)).toList(),
-          ).paddingAll(_padding),
+      child: ExcludeSemantics(
+        child: FilledButton(
+          statesController: _controller,
+          onPressed: onPressed,
+          style: ButtonStyle(
+            shape: WidgetStateProperty.all(
+              RoundedRectangleBorder(
+                borderRadius: _getRadius(borderType),
+              ),
+            ),
+            backgroundColor: WidgetStateProperty.resolveWith<Color?>((states) {
+              if (states.contains(WidgetState.disabled)) {
+                return colors.surfaceDisabled;
+              }
+              if (states.contains(WidgetState.pressed)) {
+                return widget.isInverse ? colors.cool.shade100 : colors.primary.shade10;
+              }
+              if (states.contains(WidgetState.hovered)) {
+                return widget.isInverse ? colors.cool.shade90 : colors.cool.shade20;
+              }
+              if (widget.isInverse) return colors.cool.shade100;
+
+              return colors.surfacePrimary;
+            }),
+            foregroundColor: WidgetStateProperty.resolveWith<Color?>((states) {
+              if (states.contains(WidgetState.disabled)) {
+                return colors.textDisabled;
+              }
+              if (widget.isInverse) return colors.cool.shade100.onColor;
+              return colors.textDefault;
+            }),
+            elevation: const WidgetStatePropertyAll(ZetaSpacing.none),
+            padding: WidgetStateProperty.all(EdgeInsets.zero),
+          ),
+          child: SelectionContainer.disabled(
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                leadingIcon ?? const Nothing(),
+                Text(selectedItem?.label ?? widget.label ?? '', style: ZetaTextStyles.labelMedium),
+                if (widget.items != null)
+                  Icon(
+                    dropdownIcon,
+                    size: ZetaSpacing.xl_1,
+                  ),
+              ].divide(const SizedBox(width: ZetaSpacing.minimum)).toList(),
+            ).paddingAll(_padding),
+          ),
         ),
       ),
     );
@@ -368,7 +382,6 @@ class _ZetaGroupButtonState extends State<ZetaGroupButton> {
       child = ZetaDropdown(
         items: widget.items!,
         onChange: widget.onChange,
-        onDismissed: () => setState(() {}),
         value: widget.initialValue,
         rounded: rounded,
         builder: (context, selectedItem, controller) {
@@ -383,12 +396,20 @@ class _ZetaGroupButtonState extends State<ZetaGroupButton> {
       child = _getButton(widget.onPressed);
     }
 
-    return child;
+    // TODO(UX-1133): Selected prop in semantics does not work as expected.
+
+    return Semantics(
+      label: widget.semanticLabel ?? widget.label,
+      button: true,
+      enabled: (widget.onPressed != null) || (widget.items != null),
+      selected: (widget.items != null) ? _controller.value.contains(WidgetState.selected) : null,
+      child: child,
+    );
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty<WidgetStatesController>('controller', controller));
+    properties.add(DiagnosticsProperty<WidgetStatesController>('controller', _controller));
   }
 }

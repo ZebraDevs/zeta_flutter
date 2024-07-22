@@ -13,7 +13,10 @@ enum ZetaStepperInputSize {
   large,
 }
 
-/// A stepper input, also called numeric stepper, is a common UI element that allows users to input a number or value simply by clicking the plus and minus buttons.
+/// A stepper input, also called numeric stepper, is a common UI element that
+/// allows users to input a number or value simply by clicking the plus and
+/// minus buttons.
+/// {@category Components}
 class ZetaStepperInput extends ZetaStatefulWidget {
   /// Creates a new [ZetaStepperInput]
   const ZetaStepperInput({
@@ -24,6 +27,8 @@ class ZetaStepperInput extends ZetaStatefulWidget {
     this.min,
     this.max,
     this.onChange,
+    this.semanticDecrement,
+    this.semanticIncrement,
   }) : assert(
           (min == null || (initialValue ?? 0) >= min) && (max == null || (initialValue ?? 0) <= max),
           'Initial value must be inside given min and max values',
@@ -48,6 +53,20 @@ class ZetaStepperInput extends ZetaStatefulWidget {
   /// {@macro zeta-widget-change-disable}
   final ValueChanged<int>? onChange;
 
+  /// Value used for the semantic label of the decrement button.
+  ///
+  /// If null, '-' will be used.
+  ///
+  /// {@macro zeta-widget-semantic-label}
+  final String? semanticDecrement;
+
+  /// Value used for the semantic label of the increment button.
+  ///
+  /// If null, '+' will be used.
+  ///
+  /// {@macro zeta-widget-semantic-label}
+  final String? semanticIncrement;
+
   @override
   State<ZetaStepperInput> createState() => _ZetaStepperInputState();
   @override
@@ -59,7 +78,9 @@ class ZetaStepperInput extends ZetaStatefulWidget {
       ..add(IntProperty('initialValue', initialValue))
       ..add(IntProperty('min', min))
       ..add(IntProperty('max', max))
-      ..add(ObjectFlagProperty<ValueChanged<int>?>.has('onChange', onChange));
+      ..add(ObjectFlagProperty<ValueChanged<int>?>.has('onChange', onChange))
+      ..add(StringProperty('semanticDecrement', semanticDecrement))
+      ..add(StringProperty('semanticIncrement', semanticIncrement));
   }
 }
 
@@ -127,6 +148,7 @@ class _ZetaStepperInputState extends State<ZetaStepperInput> {
 
   ZetaIconButton _getButton({bool increase = false}) {
     return ZetaIconButton(
+      semanticLabel: increase ? (widget.semanticIncrement ?? '+') : (widget.semanticDecrement ?? '-'),
       icon: increase ? ZetaIcons.add : ZetaIcons.remove,
       type: ZetaButtonType.outlineSubtle,
       size: widget.size == ZetaStepperInputSize.medium ? ZetaWidgetSize.medium : ZetaWidgetSize.large,

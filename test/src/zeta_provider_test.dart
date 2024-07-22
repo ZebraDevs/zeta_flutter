@@ -120,6 +120,23 @@ void main() {
       ).called(1);
     });
 
+    testWidgets('updateRounded updates the state correctly', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        ZetaProvider(
+          builder: (context, themeData, themeMode) => Container(),
+          initialThemeData: initialThemeData,
+          themeService: mockThemeService,
+        ),
+      );
+
+      tester.state<ZetaProviderState>(find.byType(ZetaProvider)).updateRounded(false);
+      await tester.pump();
+
+      // Verifying through the public interface of Zeta widget
+      final zeta = tester.widget<Zeta>(find.byType(Zeta));
+      expect(zeta.rounded, false);
+    });
+
     testWidgets('didUpdateWidget in ZetaProviderState works correctly with change in ThemeMode',
         (WidgetTester tester) async {
       await tester.pumpWidget(
@@ -222,6 +239,41 @@ void main() {
       // Verifying through the public interface of Zeta widget
       expect(tester.widget<Zeta>(find.byType(Zeta)).themeData.identifier, 'different');
     });
+    testWidgets('didUpdateWidget in ZetaProviderState works correctly with change rounded',
+        (WidgetTester tester) async {
+      await tester.pumpWidget(
+        ZetaProvider(
+          initialThemeData: initialThemeData,
+          builder: (context, themeData, themeMode) => Builder(
+            builder: (context) {
+              return Container();
+            },
+          ),
+        ),
+      );
+
+      await tester.pumpAndSettle();
+
+      // Verifying through the public interface of Zeta widget
+      expect(tester.widget<Zeta>(find.byType(Zeta)).rounded, true);
+
+      await tester.pumpWidget(
+        ZetaProvider(
+          initialThemeData: initialThemeData,
+          initialRounded: false,
+          builder: (context, themeData, themeMode) => Builder(
+            builder: (context) {
+              return Container();
+            },
+          ),
+        ),
+      );
+
+      await tester.pumpAndSettle(const Duration(milliseconds: 250));
+
+      // Verifying through the public interface of Zeta widget
+      expect(tester.widget<Zeta>(find.byType(Zeta)).rounded, false);
+    });
 
     testWidgets('retrieves ZetaProviderState from context', (WidgetTester tester) async {
       await tester.pumpWidget(
@@ -270,6 +322,56 @@ void main() {
       // Verifying through the public interface of Zeta widget
       final zeta = tester.widget<Zeta>(find.byType(Zeta));
       expect(zeta.brightness, Brightness.dark);
+    });
+
+    testWidgets('generateZetaTheme applies zeta values to existing theme', (WidgetTester tester) async {
+      final ColorScheme colors = ColorScheme.fromSeed(seedColor: Colors.red);
+
+      final theme = generateZetaTheme(
+        brightness: Brightness.light,
+        colorScheme: ZetaColors.light().toScheme(),
+        existingTheme: ThemeData(
+          fontFamily: 'Comic Sans',
+          primaryColor: Colors.red,
+          useMaterial3: false,
+          scaffoldBackgroundColor: Colors.blue,
+          colorScheme: colors,
+        ),
+      );
+      expect(theme.useMaterial3, false);
+      expect(theme.brightness, Brightness.light);
+      expect(theme.primaryColor, Colors.red);
+      expect(theme.scaffoldBackgroundColor, Colors.blue);
+
+      final theme2 = generateZetaTheme(
+        brightness: Brightness.light,
+        colorScheme: colors,
+        existingTheme: ThemeData(
+          fontFamily: 'Comic Sans',
+          primaryColor: Colors.red,
+          useMaterial3: false,
+          colorScheme: colors,
+        ),
+      );
+      expect(theme2.useMaterial3, false);
+      expect(theme2.brightness, Brightness.light);
+      expect(theme2.primaryColor, Colors.red);
+
+      expect(theme2.scaffoldBackgroundColor, ZetaColors.light().toScheme().surfaceTertiary);
+    });
+    testWidgets('generateZetaTheme generates a new theme', (WidgetTester tester) async {
+      final theme = generateZetaTheme(brightness: Brightness.light, colorScheme: ZetaColors.light().toScheme());
+      expect(theme.useMaterial3, true);
+      expect(theme.brightness, Brightness.light);
+      expect(theme.colorScheme, ZetaColors.light().toScheme());
+
+      final theme2 = generateZetaTheme(
+        brightness: Brightness.light,
+        colorScheme: ZetaColors.light().toScheme(),
+        zetaThemeData: initialThemeData,
+      );
+
+      expect(theme2.iconTheme.color, initialThemeData.colorsLight.iconDefault);
     });
 
     testWidgets('debugFillProperties works correctly', (WidgetTester tester) async {

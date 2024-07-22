@@ -204,7 +204,7 @@ void main() {
       mockZeta = MockZeta();
       mockContext = MockBuildContext();
       mockZetaColors = MockZetaColors();
-      when(mockContext.dependOnInheritedWidgetOfExactType<Zeta>()).thenReturn(mockZeta);
+      when(mockContext.dependOnInheritedWidgetOfExactType<Zeta>()).thenReturn(mockZeta as Zeta?);
       when(mockZeta.colors).thenReturn(mockZetaColors);
       when(mockZetaColors.surfaceInfo).thenReturn(ZetaColorBase.purple);
       when(mockZetaColors.surfacePositive).thenReturn(ZetaColorBase.green);

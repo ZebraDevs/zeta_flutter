@@ -4,26 +4,30 @@ import 'package:flutter/material.dart';
 import '../../../zeta_flutter.dart';
 import '../../interfaces/form_field.dart';
 
-///Zeta Password Input
+/// Zeta Password Input
+/// {@category Components}
 class ZetaPasswordInput extends ZetaFormField<String> {
   ///Constructs [ZetaPasswordInput]
   const ZetaPasswordInput({
+    super.key,
+    super.rounded,
+    super.initialValue,
+    super.requirementLevel = ZetaFormFieldRequirement.none,
+    super.onChange,
+    super.disabled = false,
     this.size = ZetaWidgetSize.large,
     this.validator,
-    super.onChange,
     this.onSubmit,
     this.obscureText = true,
     @Deprecated('Use disabled instead. ' 'This property has been renamed as of 0.11.2') bool enabled = true,
-    super.disabled = false,
     this.controller,
     this.hintText,
     this.errorText,
     this.label,
     this.placeholder,
-    super.rounded,
-    super.key,
-    super.initialValue,
-    super.requirementLevel = ZetaFormFieldRequirement.none,
+    this.semanticLabel,
+    this.obscureSemanticLabel,
+    this.showSemanticLabel,
   });
 
   /// {@macro text-input-controller}
@@ -53,6 +57,21 @@ class ZetaPasswordInput extends ZetaFormField<String> {
   /// {@macro text-input-on-submit}
   final void Function(String? val)? onSubmit;
 
+  /// Value passed to the wrapping [Semantics] widget.
+  ///
+  /// {@macro zeta-widget-semantic-label}
+  final String? semanticLabel;
+
+  /// Semantic value on button to obscure text.
+  ///
+  /// {@macro zeta-widget-semantic-label}
+  final String? obscureSemanticLabel;
+
+  /// Semantic value on button to show text.
+  ///
+  /// {@macro zeta-widget-semantic-label}
+  final String? showSemanticLabel;
+
   @override
   State<ZetaPasswordInput> createState() => _ZetaPasswordInputState();
 
@@ -60,9 +79,7 @@ class ZetaPasswordInput extends ZetaFormField<String> {
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(
-        DiagnosticsProperty<TextEditingController?>('controller', controller),
-      )
+      ..add(DiagnosticsProperty<TextEditingController?>('controller', controller))
       ..add(DiagnosticsProperty<bool>('obscureText', obscureText))
       ..add(StringProperty('hintText', hintText))
       ..add(StringProperty('label', label))
@@ -71,7 +88,10 @@ class ZetaPasswordInput extends ZetaFormField<String> {
       ..add(EnumProperty<ZetaWidgetSize>('size', size))
       ..add(StringProperty('placeholder', placeholder))
       ..add(ObjectFlagProperty<void Function(String? val)?>.has('onSubmit', onSubmit))
-      ..add(StringProperty('errorText', errorText));
+      ..add(StringProperty('errorText', errorText))
+      ..add(StringProperty('semanticLabel', semanticLabel))
+      ..add(StringProperty('showSemanticLabel', showSemanticLabel))
+      ..add(StringProperty('obscureSemanticLabel', obscureSemanticLabel));
   }
 }
 
@@ -101,13 +121,19 @@ class _ZetaPasswordInputState extends State<ZetaPasswordInput> {
       onSubmit: widget.onSubmit,
       disabled: widget.disabled,
       obscureText: _obscureText,
-      suffix: IconButton(
-        icon: ZetaIcon(_obscureText ? ZetaIcons.visibility_off : ZetaIcons.visibility),
-        onPressed: () {
-          setState(() {
-            _obscureText = !_obscureText;
-          });
-        },
+      semanticLabel: widget.semanticLabel,
+      suffix: MergeSemantics(
+        child: Semantics(
+          label: _obscureText ? widget.showSemanticLabel : widget.obscureSemanticLabel,
+          child: IconButton(
+            icon: ZetaIcon(_obscureText ? ZetaIcons.visibility_off : ZetaIcons.visibility),
+            onPressed: () {
+              setState(() {
+                _obscureText = !_obscureText;
+              });
+            },
+          ),
+        ),
       ),
     );
   }

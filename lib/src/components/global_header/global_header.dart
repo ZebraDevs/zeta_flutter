@@ -5,6 +5,7 @@ import 'package:flutter/rendering.dart';
 import '../../../zeta_flutter.dart';
 
 /// Global header component
+/// {@category Components}
 class ZetaGlobalHeader extends ZetaStatefulWidget {
   /// Constructor for [ZetaGlobalHeader]
   const ZetaGlobalHeader({
