@@ -16,11 +16,10 @@ Widget phoneInputUseCase(BuildContext context) {
         return Padding(
           padding: const EdgeInsets.all(ZetaSpacing.xl_1),
           child: ZetaPhoneInput(
-            disabled: enabled,
+            disabled: !enabled,
             label: 'Phone number',
             hintText: 'Enter your phone number',
             countries: countries.isEmpty ? null : countries.toUpperCase().split(','),
-            // useRootNavigator: false,
           ),
         );
       },

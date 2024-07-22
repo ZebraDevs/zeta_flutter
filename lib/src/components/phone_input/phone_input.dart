@@ -11,6 +11,7 @@ import '../text_input/input_label.dart';
 import 'countries.dart';
 
 /// ZetaPhoneInput allows entering phone numbers.
+/// {@category Components}
 class ZetaPhoneInput extends ZetaFormField<String> {
   /// Constructor for [ZetaPhoneInput].
   const ZetaPhoneInput({
@@ -200,7 +201,7 @@ class _ZetaPhoneInputState extends State<ZetaPhoneInput> {
                     onTap: !widget.disabled ? controller.toggle : null,
                     child: Container(
                       constraints: BoxConstraints(
-                        maxHeight: widget.size == ZetaWidgetSize.large ? 48 : 40,
+                        maxHeight: widget.size == ZetaWidgetSize.large ? ZetaSpacing.xl_8 : ZetaSpacing.xl_6,
                       ),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.only(
