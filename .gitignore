@@ -148,3 +148,4 @@ $RECYCLE.BIN/
 package-lock.json
 /appium
 /coverage
+/.coverage
