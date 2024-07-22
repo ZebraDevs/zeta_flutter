@@ -53,7 +53,7 @@ export 'src/components/stepper_input/stepper_input.dart';
 export 'src/components/switch/zeta_switch.dart';
 export 'src/components/tabs/tab.dart';
 export 'src/components/tabs/tab_bar.dart';
-export 'src/components/text_input/text_input.dart';
+export 'src/components/text_input/text_input.dart' hide textInputWithBorder;
 export 'src/components/time_input/time_input.dart';
 export 'src/components/tooltip/tooltip.dart';
 export 'src/components/top_app_bar/top_app_bar.dart';

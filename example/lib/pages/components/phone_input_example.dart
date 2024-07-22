@@ -70,6 +70,15 @@ class _PhoneInputExampleState extends State<PhoneInputExample> {
                 hintText: 'Enter your phone number',
               ),
             ),
+            Padding(
+              padding: const EdgeInsets.all(20),
+              child: TextFormField(
+                decoration: InputDecoration(
+                  isDense: true,
+                  prefixText: 'ddddddddddd',
+                ),
+              ),
+            ),
           ],
         ),
       ),

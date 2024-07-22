@@ -7,6 +7,7 @@ import '../../../zeta_flutter.dart';
 
 import '../text_input/hint_text.dart';
 import '../text_input/input_label.dart';
+import '../text_input/text_input.dart';
 import 'countries.dart';
 
 /// ZetaPhoneInput allows entering phone numbers.
@@ -175,75 +176,83 @@ class _ZetaPhoneInputState extends State<ZetaPhoneInput> {
           children: [
             ZetaDropdown(
               offset: const Offset(0, ZetaSpacing.medium),
-              onChange: (value) {
-                setState(() {
-                  _selectedCountry = _countries.firstWhere((country) => country.dialCode == value.value);
-                });
-                inputFocusNode.requestFocus();
-              },
+              onChange: !widget.disabled
+                  ? (value) {
+                      setState(() {
+                        _selectedCountry = _countries.firstWhere((country) => country.dialCode == value.value);
+                      });
+                      inputFocusNode.requestFocus();
+                    }
+                  : null,
               value: _selectedCountry.dialCode,
               onDismissed: () => setState(() {}),
               items: _dropdownItems,
               builder: (context, selectedItem, controller) {
-                return DecoratedBox(
-                  decoration: BoxDecoration(
-                    border: Border(
-                      left: BorderSide(
-                        color: zeta.colors.borderDefault,
-                      ),
-                      top: BorderSide(
-                        color: zeta.colors.borderDefault,
-                      ),
-                      bottom: BorderSide(
-                        color: zeta.colors.borderDefault,
-                      ),
+                final borderSide = BorderSide(
+                  color: widget.disabled ? zeta.colors.borderDefault : zeta.colors.borderSubtle,
+                );
+
+                return GestureDetector(
+                  onTap: !widget.disabled ? controller.toggle : null,
+                  child: Container(
+                    constraints: BoxConstraints(
+                      maxHeight: widget.size == ZetaWidgetSize.large ? 48 : 40,
                     ),
-                  ),
-                  child: GestureDetector(
-                    onTap: controller.toggle,
-                    child: ConstrainedBox(
-                      constraints: BoxConstraints(
-                        maxHeight: widget.size == ZetaWidgetSize.large ? 48 : 40,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                        topLeft: rounded ? const Radius.circular(ZetaSpacing.minimum) : Radius.zero,
+                        bottomLeft: rounded ? const Radius.circular(ZetaSpacing.minimum) : Radius.zero,
                       ),
-                      child: Column(
-                        children: [
-                          Expanded(
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                    left: ZetaSpacing.medium,
-                                    right: ZetaSpacing.small,
-                                  ),
-                                  child: selectedItem?.icon,
+                      border: Border(
+                        left: borderSide,
+                        top: borderSide,
+                        bottom: borderSide,
+                      ),
+                      color: widget.disabled ? zeta.colors.surfaceDisabled : zeta.colors.surfaceDefault,
+                    ),
+                    child: Column(
+                      children: [
+                        Expanded(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                  left: ZetaSpacing.medium,
+                                  right: ZetaSpacing.small,
                                 ),
-                                ZetaIcon(
-                                  !controller.isOpen ? ZetaIcons.expand_more : ZetaIcons.expand_less,
-                                  color: !widget.disabled ? zeta.colors.iconDefault : zeta.colors.iconDisabled,
-                                  size: ZetaSpacing.xl_1,
-                                ),
-                              ],
-                            ),
+                                child: selectedItem?.icon,
+                              ),
+                              ZetaIcon(
+                                !controller.isOpen ? ZetaIcons.expand_more : ZetaIcons.expand_less,
+                                color: !widget.disabled ? zeta.colors.iconDefault : zeta.colors.iconDisabled,
+                                size: ZetaSpacing.xl_1,
+                              ),
+                            ],
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                   ),
                 );
               },
             ),
             Expanded(
-              child: ZetaTextInput(
+              child: textInputWithBorder(
                 initialValue: widget.phoneNumber,
                 disabled: widget.disabled,
                 size: widget.size,
+                rounded: rounded,
                 focusNode: inputFocusNode,
                 inputFormatters: [FilteringTextInputFormatter.allow(RegExp(r'[\d\s\-]'))],
                 keyboardType: TextInputType.phone,
                 onChange: (value) => _onChanged(phoneNumber: value),
                 prefixText: _selectedCountry.dialCode,
+                borderRadius: BorderRadius.only(
+                  topRight: rounded ? const Radius.circular(ZetaSpacing.minimum) : Radius.zero,
+                  bottomRight: rounded ? const Radius.circular(ZetaSpacing.minimum) : Radius.zero,
+                ),
               ),
             ),
           ],
