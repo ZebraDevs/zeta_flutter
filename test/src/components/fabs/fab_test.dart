@@ -72,7 +72,7 @@ void main() {
     final fabFinder = find.byType(ZetaFAB);
     final ZetaFAB fab = tester.firstWidget(fabFinder);
 
-    expect(fab.initiallyExpanded, null);
+    expect(fab.expanded, null);
     expect(fab.type, ZetaFabType.inverse);
     expect(fab.shape, ZetaWidgetBorder.rounded);
 
@@ -86,7 +86,7 @@ void main() {
     await tester.pumpWidget(
       TestApp(
         home: ZetaFAB(
-          initiallyExpanded: true,
+          expanded: true,
           onPressed: () {},
           label: 'Label',
           type: ZetaFabType.secondary,
@@ -98,7 +98,7 @@ void main() {
     final fabFinder = find.byType(ZetaFAB);
     final ZetaFAB fab = tester.firstWidget(fabFinder);
 
-    expect(fab.initiallyExpanded, true);
+    expect(fab.expanded, true);
     expect(fab.type, ZetaFabType.secondary);
     expect(fab.shape, ZetaWidgetBorder.sharp);
 
@@ -113,7 +113,7 @@ void main() {
     await tester.pumpWidget(
       TestApp(
         home: ZetaFAB(
-          initiallyExpanded: true,
+          expanded: true,
           onPressed: () {},
           label: 'Label',
           type: ZetaFabType.secondary,
@@ -128,7 +128,7 @@ void main() {
     final filledButtonFinder = find.byType(FilledButton);
     final FilledButton filledButton = tester.firstWidget(filledButtonFinder);
 
-    expect(fab.initiallyExpanded, true);
+    expect(fab.expanded, true);
     expect(fab.type, ZetaFabType.secondary);
     expect(fab.shape, ZetaWidgetBorder.sharp);
 
@@ -171,6 +171,7 @@ void main() {
       matchesGoldenFile(join(getCurrentPath('fabs'), 'FAB_disabled.png')),
     );
   });
+
   testWidgets('debugFillProperties works correctly', (WidgetTester tester) async {
     final diagnostics = DiagnosticPropertiesBuilder();
     const ZetaFAB().debugFillProperties(diagnostics);
@@ -183,5 +184,36 @@ void main() {
     expect(diagnostics.finder('icon'), 'IconData(U+0E009)');
     expect(diagnostics.finder('initiallyExpanded'), 'null');
     expect(diagnostics.finder('focusNode'), 'null');
+  });
+
+  testWidgets('Expanded changes when label is null', (WidgetTester tester) async {
+    final scrollController = ScrollController();
+    StateSetter? setState;
+    bool expanded = false;
+
+    await tester.pumpWidget(
+      TestApp(
+        home: StatefulBuilder(
+          builder: (context, setState2) {
+            setState = setState2;
+            return ZetaFAB(
+              scrollController: scrollController,
+              expanded: expanded,
+              label: 'Label',
+              onPressed: () {},
+            );
+          },
+        ),
+      ),
+    );
+
+    final labelFinder = find.text('Label');
+
+    expect(labelFinder, findsNothing);
+
+    setState?.call(() => expanded = true);
+
+    await tester.pumpAndSettle();
+    expect(labelFinder, findsOne);
   });
 }
