@@ -95,6 +95,14 @@ class _ZetaChipState extends State<ZetaChip> {
     selected = widget.selected ?? false;
   }
 
+  @override
+  void didUpdateWidget(covariant ZetaChip oldWidget) {
+    if (oldWidget.selected != widget.selected) {
+      setState(() => selected = widget.selected ?? false);
+    }
+    super.didUpdateWidget(oldWidget);
+  }
+
   Widget _renderLeading(Color foregroundColor) {
     if (widget.leading.runtimeType == Icon) {
       return IconTheme(data: IconThemeData(color: foregroundColor, size: ZetaSpacing.xl_1), child: widget.leading!);
