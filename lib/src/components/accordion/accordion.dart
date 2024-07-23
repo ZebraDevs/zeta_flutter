@@ -50,25 +50,25 @@ class ZetaAccordion extends ZetaStatefulWidget {
 }
 
 class _ZetaAccordionState extends State<ZetaAccordion> with TickerProviderStateMixin {
-  late bool isOpen;
-  late bool disabled;
-  late final AnimationController controller;
-  late final Animation<double> animation;
+  late bool _isOpen;
+  late bool _disabled;
+  late final AnimationController _controller;
+  late final Animation<double> _animation;
 
   @override
   void initState() {
     super.initState();
-    controller = AnimationController(
+    _controller = AnimationController(
       duration: ZetaAnimationLength.normal,
       reverseDuration: ZetaAnimationLength.fast,
       vsync: this,
     );
-    animation = CurvedAnimation(
-      parent: controller,
+    _animation = CurvedAnimation(
+      parent: _controller,
       curve: Curves.fastOutSlowIn,
     );
     setInitialOpen();
-    disabled = widget.child == null;
+    _disabled = widget.child == null;
   }
 
   @override
@@ -78,25 +78,25 @@ class _ZetaAccordionState extends State<ZetaAccordion> with TickerProviderStateM
       setInitialOpen();
     }
     if (oldWidget.child != widget.child) {
-      disabled = widget.child == null;
+      _disabled = widget.child == null;
     }
   }
 
   void setInitialOpen() {
-    isOpen = widget.isOpen;
-    controller.value = isOpen ? 1 : 0;
+    _isOpen = widget.isOpen;
+    _controller.value = _isOpen ? 1 : 0;
   }
 
   @override
   void dispose() {
-    controller.dispose();
+    _controller.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     final zetaColors = Zeta.of(context).colors;
-    final borderColor = disabled ? zetaColors.borderDisabled : zetaColors.borderSubtle;
+    final borderColor = _disabled ? zetaColors.borderDisabled : zetaColors.borderSubtle;
     final childTextStyle = ZetaTextStyles.h5.apply(color: zetaColors.textDefault);
     final rounded = context.rounded;
     return ZetaRoundedScope(
@@ -137,15 +137,15 @@ class _ZetaAccordionState extends State<ZetaAccordion> with TickerProviderStateM
                     return null;
                   }),
                 ),
-                onPressed: disabled
+                onPressed: _disabled
                     ? null
                     : () => setState(() {
-                          if (isOpen) {
-                            controller.reverse();
-                            isOpen = false;
+                          if (_isOpen) {
+                            _controller.reverse();
+                            _isOpen = false;
                           } else {
-                            isOpen = true;
-                            controller.forward();
+                            _isOpen = true;
+                            _controller.forward();
                           }
                         }),
                 child: Padding(
@@ -155,15 +155,15 @@ class _ZetaAccordionState extends State<ZetaAccordion> with TickerProviderStateM
                     children: [
                       DefaultTextStyle(
                         style: ZetaTextStyles.titleMedium.apply(
-                          color: disabled ? zetaColors.textDisabled : zetaColors.textDefault,
+                          color: _disabled ? zetaColors.textDisabled : zetaColors.textDefault,
                         ),
                         child: Flexible(child: Text(widget.title)),
                       ),
                       Padding(
                         padding: const EdgeInsets.only(left: ZetaSpacing.large),
                         child: ZetaIcon(
-                          isOpen ? ZetaIcons.remove : ZetaIcons.add,
-                          color: disabled ? zetaColors.iconDisabled : zetaColors.iconDefault,
+                          _isOpen ? ZetaIcons.remove : ZetaIcons.add,
+                          color: _disabled ? zetaColors.iconDisabled : zetaColors.iconDefault,
                         ),
                       ),
                     ],
@@ -171,7 +171,7 @@ class _ZetaAccordionState extends State<ZetaAccordion> with TickerProviderStateM
                 ),
               ),
               SizeTransition(
-                sizeFactor: animation,
+                sizeFactor: _animation,
                 axisAlignment: -1,
                 child: Padding(
                   padding: const EdgeInsets.fromLTRB(
@@ -194,15 +194,5 @@ class _ZetaAccordionState extends State<ZetaAccordion> with TickerProviderStateM
         ),
       ),
     );
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty<bool>('isOpen', isOpen))
-      ..add(DiagnosticsProperty<bool>('disabled', disabled))
-      ..add(DiagnosticsProperty<AnimationController>('controller', controller))
-      ..add(DiagnosticsProperty<Animation<double>>('animation', animation));
   }
 }

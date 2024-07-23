@@ -72,7 +72,7 @@ void main() {
     final fabFinder = find.byType(ZetaFAB);
     final ZetaFAB fab = tester.firstWidget(fabFinder);
 
-    expect(fab.expanded, null);
+    expect(fab.expanded, false);
     expect(fab.type, ZetaFabType.inverse);
     expect(fab.shape, ZetaWidgetBorder.rounded);
 
@@ -182,7 +182,7 @@ void main() {
     expect(diagnostics.finder('size'), 'small');
     expect(diagnostics.finder('shape'), 'full');
     expect(diagnostics.finder('icon'), 'IconData(U+0E009)');
-    expect(diagnostics.finder('initiallyExpanded'), 'null');
+    expect(diagnostics.finder('initiallyExpanded'), 'false');
     expect(diagnostics.finder('focusNode'), 'null');
   });
 
