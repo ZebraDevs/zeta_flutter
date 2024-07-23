@@ -23,13 +23,15 @@ class ZetaStepperInput extends ZetaStatefulWidget {
     super.key,
     super.rounded,
     this.size = ZetaStepperInputSize.medium,
-    this.initialValue,
+    int? value,
+    @Deprecated('Use value instead. ' 'Deprecated in 0.15.0') int? initialValue,
     this.min,
     this.max,
     this.onChange,
     this.semanticDecrement,
     this.semanticIncrement,
-  }) : assert(
+  })  : value = value ?? initialValue,
+        assert(
           (min == null || (initialValue ?? 0) >= min) && (max == null || (initialValue ?? 0) <= max),
           'Initial value must be inside given min and max values',
         );
@@ -40,7 +42,7 @@ class ZetaStepperInput extends ZetaStatefulWidget {
   /// The initial value of the stepper input.
   ///
   /// Must be in the bounds of [min] and [max] (if given).
-  final int? initialValue;
+  final int? value;
 
   /// The minimum value of the stepper input.
   final int? min;
@@ -68,14 +70,14 @@ class ZetaStepperInput extends ZetaStatefulWidget {
   final String? semanticIncrement;
 
   @override
-  State<ZetaStepperInput> createState() => _ZetaStepperInputState();
+  State<ZetaStepperInput> createState() => ZetaStepperInputState();
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty<bool>('rounded', rounded))
       ..add(EnumProperty<ZetaStepperInputSize>('size', size))
-      ..add(IntProperty('initialValue', initialValue))
+      ..add(IntProperty('value', value))
       ..add(IntProperty('min', min))
       ..add(IntProperty('max', max))
       ..add(ObjectFlagProperty<ValueChanged<int>?>.has('onChange', onChange))
@@ -84,18 +86,35 @@ class ZetaStepperInput extends ZetaStatefulWidget {
   }
 }
 
-class _ZetaStepperInputState extends State<ZetaStepperInput> {
+/// Internal state for [ZetaStepperInput].
+///
+/// Not to be used directly.
+@visibleForTesting
+class ZetaStepperInputState extends State<ZetaStepperInput> {
   final TextEditingController _controller = TextEditingController();
-  int _value = 0;
-  bool get _disabled => widget.onChange == null;
+
+  /// Current value of the stepper input.
+  int value = 0;
+
+  /// Shortcut to check if the stepper input is disabled.
+  bool get disabled => widget.onChange == null;
+
+  @override
+  void didUpdateWidget(covariant ZetaStepperInput oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (widget.value != oldWidget.value) {
+      value = widget.value!;
+      _controller.text = value.toString();
+    }
+  }
 
   @override
   void initState() {
     super.initState();
-    if (widget.initialValue != null) {
-      _value = widget.initialValue!;
+    if (widget.value != null) {
+      value = widget.value!;
     }
-    _controller.text = _value.toString();
+    _controller.text = value.toString();
   }
 
   @override
@@ -109,7 +128,7 @@ class _ZetaStepperInputState extends State<ZetaStepperInput> {
 
     return OutlineInputBorder(
       borderSide: BorderSide(
-        color: !_disabled ? colors.borderSubtle : colors.borderDisabled,
+        color: !disabled ? colors.borderSubtle : colors.borderDisabled,
       ),
       borderRadius: context.rounded ? ZetaRadius.minimal : ZetaRadius.none,
     );
@@ -136,10 +155,10 @@ class _ZetaStepperInputState extends State<ZetaStepperInput> {
     }
   }
 
-  void _onChange(int value) {
-    if (!(widget.max != null && value > widget.max! || widget.min != null && value < widget.min!)) {
+  void _onChange(int newValue) {
+    if (!(widget.max != null && newValue > widget.max! || widget.min != null && newValue < widget.min!)) {
       setState(() {
-        _value = value;
+        value = newValue;
       });
       _controller.text = value.toString();
       widget.onChange?.call(value);
@@ -152,8 +171,8 @@ class _ZetaStepperInputState extends State<ZetaStepperInput> {
       icon: increase ? ZetaIcons.add : ZetaIcons.remove,
       type: ZetaButtonType.outlineSubtle,
       size: widget.size == ZetaStepperInputSize.medium ? ZetaWidgetSize.medium : ZetaWidgetSize.large,
-      onPressed: !_disabled && (increase ? _value != widget.max : _value != widget.min)
-          ? () => _onChange(_value + (increase ? 1 : -1))
+      onPressed: !disabled && (increase ? value != widget.max : value != widget.min)
+          ? () => _onChange(value + (increase ? 1 : -1))
           : null,
     );
   }
@@ -172,22 +191,22 @@ class _ZetaStepperInputState extends State<ZetaStepperInput> {
             width: ZetaSpacing.xl_9,
             child: TextFormField(
               keyboardType: TextInputType.number,
-              enabled: !_disabled,
+              enabled: !disabled,
               controller: _controller,
               onChanged: _onTextChange,
               textAlign: TextAlign.center,
               inputFormatters: [FilteringTextInputFormatter.digitsOnly],
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: _disabled ? colors.textDisabled : null,
+                    color: disabled ? colors.textDisabled : null,
                   ),
               onTapOutside: (_) {
                 if (_controller.text.isEmpty) {
-                  _controller.text = _value.toString();
+                  _controller.text = value.toString();
                 }
               },
               decoration: InputDecoration(
                 filled: true,
-                fillColor: _disabled ? colors.surfaceDisabled : null,
+                fillColor: disabled ? colors.surfaceDisabled : null,
                 contentPadding: EdgeInsets.zero,
                 constraints: BoxConstraints(maxHeight: _height),
                 border: _border,
@@ -201,5 +220,13 @@ class _ZetaStepperInputState extends State<ZetaStepperInput> {
         ].divide(const SizedBox(width: ZetaSpacing.small)).toList(),
       ),
     );
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(IntProperty('value', value))
+      ..add(DiagnosticsProperty<bool>('disabled', disabled));
   }
 }
