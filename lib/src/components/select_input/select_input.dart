@@ -103,10 +103,10 @@ class _ZetaSelectInputState<T> extends State<ZetaSelectInput<T>> {
 
   @override
   void didUpdateWidget(covariant ZetaSelectInput<T> oldWidget) {
-    if (oldWidget.initialValue != widget.initialValue) {
-      setState(_setInitialItem);
-    }
     super.didUpdateWidget(oldWidget);
+    if (oldWidget.initialValue != widget.initialValue) {
+      _setInitialItem();
+    }
   }
 
   void _setInitialItem() {

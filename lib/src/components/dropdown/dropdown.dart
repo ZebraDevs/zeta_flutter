@@ -202,7 +202,7 @@ class ZetaDropDownState<T> extends State<ZetaDropdown<T>> {
   void didUpdateWidget(ZetaDropdown<T> oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.value != widget.value) {
-      setState(_setSelectedItem);
+      _setSelectedItem();
     }
     if (oldWidget.size != widget.size) {
       WidgetsBinding.instance.addPostFrameCallback((_) {

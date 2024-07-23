@@ -56,13 +56,11 @@ class _ZetaBreadCrumbsState extends State<ZetaBreadCrumbs> {
 
   @override
   void didUpdateWidget(ZetaBreadCrumbs oldWidget) {
-    if (widget.children.length != _children.length) {
-      setState(() {
-        _selectedIndex = widget.children.length - 1;
-        _children = [...widget.children];
-      });
-    }
     super.didUpdateWidget(oldWidget);
+    if (widget.children.length != _children.length) {
+      _selectedIndex = widget.children.length - 1;
+      _children = [...widget.children];
+    }
   }
 
   @override

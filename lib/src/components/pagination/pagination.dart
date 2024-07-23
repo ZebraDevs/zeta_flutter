@@ -122,9 +122,7 @@ class _ZetaPaginationState extends State<ZetaPagination> {
   void didUpdateWidget(covariant ZetaPagination oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.currentPage != widget.currentPage) {
-      setState(() {
-        _currentPage = widget.currentPage;
-      });
+      _currentPage = widget.currentPage;
     }
   }
 

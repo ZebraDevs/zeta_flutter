@@ -389,15 +389,13 @@ class ZetaTextInputState extends State<ZetaTextInput> implements ZetaFormFieldSt
 
   @override
   void didUpdateWidget(covariant ZetaTextInput oldWidget) {
+    super.didUpdateWidget(oldWidget);
     if (oldWidget.errorText != widget.errorText) {
-      setState(() {
-        _errorText = widget.errorText;
-      });
+      _errorText = widget.errorText;
     }
     if (oldWidget.initialValue != widget.initialValue && widget.initialValue != null) {
       _controller.text = widget.initialValue!;
     }
-    super.didUpdateWidget(oldWidget);
   }
 
   @override

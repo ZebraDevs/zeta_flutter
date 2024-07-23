@@ -67,18 +67,24 @@ class _ZetaAccordionState extends State<ZetaAccordion> with TickerProviderStateM
       parent: _controller,
       curve: Curves.fastOutSlowIn,
     );
-    init();
+    setInitialOpen();
+    _disabled = widget.child == null;
   }
 
   @override
   void didUpdateWidget(ZetaAccordion oldWidget) {
-    init();
     super.didUpdateWidget(oldWidget);
+    if (oldWidget.isOpen != widget.isOpen) {
+      setInitialOpen();
+    }
+    if (oldWidget.child != widget.child) {
+      _disabled = widget.child == null;
+    }
   }
 
-  void init() {
+  void setInitialOpen() {
     _isOpen = widget.isOpen;
-    _disabled = widget.child == null;
+    _controller.value = _isOpen ? 1 : 0;
   }
 
   @override

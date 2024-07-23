@@ -9,7 +9,7 @@ import '../../../zeta_flutter.dart';
 /// navigation item.
 /// Should be used with [ZetaNavigationRailItem].
 /// {@category Components}
-class ZetaNavigationRail extends ZetaStatefulWidget {
+class ZetaNavigationRail extends ZetaStatelessWidget {
   /// Constructor for [ZetaNavigationRail].
   const ZetaNavigationRail({
     super.key,
@@ -67,8 +67,6 @@ class ZetaNavigationRail extends ZetaStatefulWidget {
   final String? semanticLabel;
 
   @override
-  State<ZetaNavigationRail> createState() => _ZetaNavigationRailState();
-  @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
@@ -82,34 +80,32 @@ class ZetaNavigationRail extends ZetaStatefulWidget {
       ..add(DiagnosticsProperty<bool>('wordWrap', wordWrap))
       ..add(StringProperty('semanticLabel', semanticLabel));
   }
-}
 
-class _ZetaNavigationRailState extends State<ZetaNavigationRail> {
   @override
   Widget build(BuildContext context) {
     return ZetaRoundedScope(
       rounded: context.rounded,
       child: Semantics(
-        label: widget.semanticLabel,
+        label: semanticLabel,
         child: Padding(
-          padding: widget.margin,
+          padding: margin,
           child: IntrinsicWidth(
             child: Column(
               children: [
-                for (int i = 0; i < widget.items.length; i++)
+                for (int i = 0; i < items.length; i++)
                   Row(
                     children: [
                       Expanded(
                         child: Padding(
-                          padding: widget.itemSpacing,
+                          padding: itemSpacing,
                           child: _ZetaNavigationRailItemContent(
-                            label: widget.items[i].label,
-                            icon: widget.items[i].icon,
-                            selected: widget.selectedIndex == i,
-                            disabled: widget.items[i].disabled,
-                            onTap: () => widget.onSelect?.call(i),
-                            padding: widget.itemPadding,
-                            wordWrap: widget.wordWrap,
+                            label: items[i].label,
+                            icon: items[i].icon,
+                            selected: selectedIndex == i,
+                            disabled: items[i].disabled,
+                            onTap: () => onSelect?.call(i),
+                            padding: itemPadding,
+                            wordWrap: wordWrap,
                           ),
                         ),
                       ),

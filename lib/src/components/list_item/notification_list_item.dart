@@ -5,7 +5,7 @@ import '../../../zeta_flutter.dart';
 
 /// Notification list items are used in notification lists.
 /// {@category Components}
-class ZetaNotificationListItem extends ZetaStatefulWidget {
+class ZetaNotificationListItem extends ZetaStatelessWidget {
   /// Constructor for [ZetaNotificationListItem]
   const ZetaNotificationListItem({
     super.key,
@@ -47,9 +47,6 @@ class ZetaNotificationListItem extends ZetaStatefulWidget {
   final String? semanticLabel;
 
   @override
-  State<ZetaNotificationListItem> createState() => _ZetaNotificationListItemState();
-
-  @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
@@ -59,9 +56,7 @@ class ZetaNotificationListItem extends ZetaStatefulWidget {
       ..add(DiagnosticsProperty<bool?>('showDivider', showDivider))
       ..add(StringProperty('semanticLabel', semanticLabel));
   }
-}
 
-class _ZetaNotificationListItemState extends State<ZetaNotificationListItem> {
   @override
   Widget build(BuildContext context) {
     final colors = Zeta.of(context).colors;
@@ -69,7 +64,7 @@ class _ZetaNotificationListItemState extends State<ZetaNotificationListItem> {
       rounded: context.rounded,
       child: Semantics(
         explicitChildNodes: true,
-        label: widget.semanticLabel,
+        label: semanticLabel,
         button: true,
         child: DecoratedBox(
           decoration: _getStyle(colors),
@@ -81,7 +76,7 @@ class _ZetaNotificationListItemState extends State<ZetaNotificationListItem> {
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  widget.leading,
+                  leading,
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -92,13 +87,13 @@ class _ZetaNotificationListItemState extends State<ZetaNotificationListItem> {
                             MergeSemantics(
                               child: Row(
                                 children: [
-                                  if (!widget.notificationRead)
+                                  if (!notificationRead)
                                     ZetaIndicator(
                                       color: colors.blue,
                                       size: ZetaWidgetSize.small,
                                     ),
                                   Text(
-                                    widget.title,
+                                    title,
                                     style: ZetaTextStyles.labelLarge,
                                   ),
                                 ],
@@ -106,9 +101,9 @@ class _ZetaNotificationListItemState extends State<ZetaNotificationListItem> {
                             ),
                             Row(
                               children: [
-                                if (widget.notificationTime != null)
+                                if (notificationTime != null)
                                   Text(
-                                    widget.notificationTime!,
+                                    notificationTime!,
                                     style: ZetaTextStyles.bodySmall.apply(color: colors.textDisabled),
                                   ),
                                 Container(
@@ -125,13 +120,13 @@ class _ZetaNotificationListItemState extends State<ZetaNotificationListItem> {
                             ),
                           ],
                         ),
-                        widget.body,
+                        body,
                       ].gap(ZetaSpacing.minimum),
                     ),
                   ),
                 ].gap(ZetaSpacing.small),
               ),
-              Container(alignment: Alignment.centerRight, child: widget.action),
+              Container(alignment: Alignment.centerRight, child: action),
             ],
           ).paddingAll(ZetaSpacing.small),
         ),
@@ -141,11 +136,10 @@ class _ZetaNotificationListItemState extends State<ZetaNotificationListItem> {
 
   BoxDecoration _getStyle(ZetaColors colors) {
     return BoxDecoration(
-      color: widget.notificationRead ? colors.surfacePrimary : colors.surfaceSelected,
+      color: notificationRead ? colors.surfacePrimary : colors.surfaceSelected,
       borderRadius: ZetaRadius.rounded,
-      border: (widget.showDivider ?? false)
-          ? Border(bottom: BorderSide(width: ZetaSpacing.minimum, color: colors.blue))
-          : null,
+      border:
+          (showDivider ?? false) ? Border(bottom: BorderSide(width: ZetaSpacing.minimum, color: colors.blue)) : null,
     );
   }
 }

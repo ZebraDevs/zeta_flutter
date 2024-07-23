@@ -45,7 +45,7 @@ export 'select_input/select_input.dart';
 export 'slider/slider.dart';
 export 'snack_bar/snack_bar.dart';
 export 'stepper/stepper.dart';
-export 'stepper_input/stepper_input.dart';
+export 'stepper_input/stepper_input.dart' hide ZetaStepperInputState;
 export 'switch/zeta_switch.dart';
 export 'tabs/tab.dart';
 export 'tabs/tab_bar.dart';
