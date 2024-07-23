@@ -14,9 +14,13 @@ class ZetaSlider extends ZetaStatefulWidget {
     this.onChange,
     this.divisions,
     this.semanticLabel,
+    this.min = 0.0,
+    this.max = 1.0,
   });
 
-  /// Double value to represent slider percentage
+  /// Double value to represent slider percentage.
+  ///
+  /// Default [min] / [max] are 0.0 and 1.0 respectively; this value should be between [min] and [max].
   final double value;
 
   /// Callback to handle changing of slider
@@ -30,6 +34,12 @@ class ZetaSlider extends ZetaStatefulWidget {
   /// {@macro zeta-widget-semantic-label}
   final String? semanticLabel;
 
+  /// Minimum value of the slider.
+  final double min;
+
+  /// Maximum value of the slider.
+  final double max;
+
   @override
   State<ZetaSlider> createState() => _ZetaSliderState();
   @override
@@ -40,7 +50,9 @@ class ZetaSlider extends ZetaStatefulWidget {
       ..add(DoubleProperty('value', value))
       ..add(ObjectFlagProperty<ValueChanged<double>?>.has('onChange', onChange))
       ..add(IntProperty('divisions', divisions))
-      ..add(StringProperty('semanticLabel', semanticLabel));
+      ..add(StringProperty('semanticLabel', semanticLabel))
+      ..add(DoubleProperty('max', max))
+      ..add(DoubleProperty('min', min));
   }
 }
 
@@ -93,6 +105,8 @@ class _ZetaSliderState extends State<ZetaSlider> {
                 _selected = false;
               });
             },
+            min: widget.min,
+            max: widget.max,
           ),
         ),
       ),
