@@ -121,11 +121,10 @@ class _ZetaTopAppBarSearchFieldState extends State<ZetaTopAppBarSearchField> wit
 
   @override
   void didUpdateWidget(covariant ZetaTopAppBarSearchField oldWidget) {
+    super.didUpdateWidget(oldWidget);
     if (oldWidget.searchController != widget.searchController) {
       _setNextSearchState();
     }
-
-    super.didUpdateWidget(oldWidget);
   }
 
   @override

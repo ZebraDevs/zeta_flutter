@@ -97,10 +97,10 @@ class _ZetaChipState extends State<ZetaChip> {
 
   @override
   void didUpdateWidget(covariant ZetaChip oldWidget) {
-    if (oldWidget.selected != widget.selected) {
-      setState(() => selected = widget.selected ?? false);
-    }
     super.didUpdateWidget(oldWidget);
+    if (oldWidget.selected != widget.selected) {
+      selected = widget.selected ?? false;
+    }
   }
 
   Widget _renderLeading(Color foregroundColor) {

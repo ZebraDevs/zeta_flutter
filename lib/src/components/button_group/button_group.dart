@@ -231,14 +231,6 @@ class _ZetaGroupButtonState extends State<ZetaGroupButton> {
     _controller.dispose();
   }
 
-  @override
-  void didUpdateWidget(ZetaGroupButton oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    if (oldWidget.onPressed != widget.onPressed) {
-      setState(() {});
-    }
-  }
-
   double get _padding => widget.isLarge ? ZetaSpacing.large : ZetaSpacing.medium;
 
   BorderSide _getBorderSide(

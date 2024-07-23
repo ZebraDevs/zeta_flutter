@@ -86,10 +86,10 @@ class _ZetaDropdownListItemState extends State<ZetaDropdownListItem> with Single
 
   @override
   void didUpdateWidget(covariant ZetaDropdownListItem oldWidget) {
+    super.didUpdateWidget(oldWidget);
     if (oldWidget.expanded != widget.expanded) {
       _setExpanded(widget.expanded);
     }
-    super.didUpdateWidget(oldWidget);
   }
 
   @override

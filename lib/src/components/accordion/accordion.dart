@@ -73,13 +73,13 @@ class _ZetaAccordionState extends State<ZetaAccordion> with TickerProviderStateM
 
   @override
   void didUpdateWidget(ZetaAccordion oldWidget) {
+    super.didUpdateWidget(oldWidget);
     if (oldWidget.isOpen != widget.isOpen) {
       setInitialOpen();
     }
     if (oldWidget.child != widget.child) {
       disabled = widget.child == null;
     }
-    super.didUpdateWidget(oldWidget);
   }
 
   void setInitialOpen() {
