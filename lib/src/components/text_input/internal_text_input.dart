@@ -162,7 +162,6 @@ class InternalTextInput extends ZetaStatefulWidget {
 /// The current state of a [InternalTextInput]
 class ZetaTextInputState extends State<InternalTextInput> {
   late final TextEditingController _controller;
-  final GlobalKey<FormFieldState<String>> _key = GlobalKey();
   ZetaColors get _colors => Zeta.of(context).colors;
 
   // TODO(mikecoomber): refactor to use WidgetStateController
@@ -326,7 +325,6 @@ class ZetaTextInputState extends State<InternalTextInput> {
                   : null,
               child: TextField(
                 enabled: !widget.disabled,
-                key: _key,
                 controller: _controller,
                 keyboardType: widget.keyboardType,
                 inputFormatters: widget.inputFormatters,

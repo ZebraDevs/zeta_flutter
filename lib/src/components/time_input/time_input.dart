@@ -64,7 +64,7 @@ class ZetaTimeInput extends ZetaFormField<TimeOfDay> {
                     InputIconButton(
                       icon: ZetaIcons.cancel,
                       semanticLabel: clearSemanticLabel,
-                      onTap: state.reset,
+                      onTap: state.clear,
                       disabled: disabled,
                       size: size,
                       color: colors.iconSubtle,
@@ -139,11 +139,12 @@ class ZetaTimeInput extends ZetaFormField<TimeOfDay> {
 class _ZetaTimeInputState extends FormFieldState<TimeOfDay> {
   // TODO(UX-1032): add AM/PM selector inline.
 
-  ZetaTimeInput get _widget => super.widget as ZetaTimeInput;
+  @override
+  ZetaTimeInput get widget => super.widget as ZetaTimeInput;
 
   final String timeFormat = 'hh:mm'; // TODO(UX-1003): needs localizing.
 
-  bool get _use24HourFormat => _widget.use24HourFormat;
+  bool get _use24HourFormat => widget.use24HourFormat;
 
   late final MaskTextInputFormatter timeFormatter;
   final TextEditingController controller = TextEditingController();
@@ -171,8 +172,12 @@ class _ZetaTimeInputState extends FormFieldState<TimeOfDay> {
 
   @override
   void reset() {
-    _setValue(_widget.initialValue);
+    _setValue(widget.initialValue);
     super.reset();
+  }
+
+  void clear() {
+    _setValue(null);
   }
 
   void _setValue(TimeOfDay? value) {
@@ -210,9 +215,9 @@ class _ZetaTimeInputState extends FormFieldState<TimeOfDay> {
 
   void _onChange() {
     final newValue = _parseValue();
+    super.didChange(newValue);
     if (newValue != value) {
-      _widget.onChange?.call(newValue);
-      super.didChange(newValue);
+      widget.onChange?.call(newValue);
     }
   }
 
@@ -222,7 +227,7 @@ class _ZetaTimeInputState extends FormFieldState<TimeOfDay> {
 
     final result = await showTimePicker(
       context: context,
-      initialEntryMode: _widget.pickerInitialEntryMode ?? TimePickerEntryMode.dial,
+      initialEntryMode: widget.pickerInitialEntryMode ?? TimePickerEntryMode.dial,
       initialTime: value ?? TimeOfDay.now(),
       builder: (BuildContext context, Widget? child) {
         return Theme(
