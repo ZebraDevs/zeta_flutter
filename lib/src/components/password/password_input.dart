@@ -6,7 +6,7 @@ import '../../interfaces/form_field.dart';
 
 /// Zeta Password Input
 /// {@category Components}
-class ZetaPasswordInput extends ZetaFormField<String> {
+class ZetaPasswordInput extends ZetaFormFieldOld<String> {
   ///Constructs [ZetaPasswordInput]
   const ZetaPasswordInput({
     super.key,

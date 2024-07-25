@@ -1,9 +1,10 @@
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 
 import '../../zeta_flutter.dart';
 
 /// An interface for all form fields used in Zeta
-abstract class ZetaFormFieldState {
+abstract class ZetaFormFieldStateOld {
   /// Validates the form field. Returns true if there are no errors.
   bool validate();
 
@@ -11,10 +12,33 @@ abstract class ZetaFormFieldState {
   void reset();
 }
 
-/// A common interface shared with all Zeta form elements.
-abstract class ZetaFormField<T> extends ZetaStatefulWidget {
-  /// Creates a new [ZetaFormField]
+abstract class ZetaFormField<T> extends FormField<T> {
   const ZetaFormField({
+    required super.builder,
+    super.autovalidateMode,
+    super.initialValue,
+    super.validator,
+    super.onSaved,
+    this.onChange,
+    this.onFieldSubmitted,
+    this.requirementLevel = ZetaFormFieldRequirement.none,
+    bool disabled = false,
+    super.key,
+  }) : super(
+          enabled: !disabled,
+        );
+
+  final ValueChanged<T?>? onChange;
+
+  final ValueChanged<T?>? onFieldSubmitted;
+
+  final ZetaFormFieldRequirement requirementLevel;
+}
+
+/// A common interface shared with all Zeta form elements.
+abstract class ZetaFormFieldOld<T> extends ZetaStatefulWidget {
+  /// Creates a new [ZetaFormFieldOld]
+  const ZetaFormFieldOld({
     required this.disabled,
     required this.initialValue,
     required this.onChange,

@@ -12,7 +12,7 @@ import '../buttons/input_icon_button.dart';
 ///
 /// Can be used and validated the same way as a [TextFormField].
 /// {@category Components}
-class ZetaDateInput extends ZetaFormField<DateTime> {
+class ZetaDateInput extends ZetaFormFieldOld<DateTime> {
   /// Creates a new [ZetaDateInput]
   ZetaDateInput({
     super.key,
@@ -106,7 +106,7 @@ class ZetaDateInput extends ZetaFormField<DateTime> {
 }
 
 /// State for [ZetaDateInput]
-class ZetaDateInputState extends State<ZetaDateInput> implements ZetaFormFieldState {
+class ZetaDateInputState extends State<ZetaDateInput> implements ZetaFormFieldStateOld {
   ZetaColors get _colors => Zeta.of(context).colors;
 
   late final MaskTextInputFormatter _dateFormatter;

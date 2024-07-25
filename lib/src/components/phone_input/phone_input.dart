@@ -12,7 +12,7 @@ import 'countries.dart';
 
 /// ZetaPhoneInput allows entering phone numbers.
 /// {@category Components}
-class ZetaPhoneInput extends ZetaFormField<String> {
+class ZetaPhoneInput extends ZetaFormFieldOld<String> {
   /// Constructor for [ZetaPhoneInput].
   const ZetaPhoneInput({
     super.key,

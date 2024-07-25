@@ -9,7 +9,7 @@ import '../dropdown/dropdown_controller.dart';
 
 /// Class for [ZetaSelectInput].
 /// {@category Components}
-class ZetaSelectInput<T> extends ZetaFormField<T> {
+class ZetaSelectInput<T> extends ZetaFormFieldOld<T> {
   ///Constructor of [ZetaSelectInput]
   const ZetaSelectInput({
     super.key,

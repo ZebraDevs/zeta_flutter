@@ -3,84 +3,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../../../zeta_flutter.dart';
-import '../../interfaces/form_field.dart';
 import 'hint_text.dart';
 import 'input_label.dart';
 
-/// Helper function to create a text input with a custom border.
-/// Not intended for external use.
-Widget textInputWithBorder({
-  Key? key,
-  ValueChanged<String?>? onChange,
-  bool disabled = false,
-  ZetaFormFieldRequirement requirementLevel = ZetaFormFieldRequirement.none,
-  String? initialValue,
-  bool rounded = false,
-  String? label,
-  String? hintText,
-  String? placeholder,
-  String? errorText,
-  TextEditingController? controller,
-  String? Function(String?)? validator,
-  Widget? suffix,
-  Widget? prefix,
-  ZetaWidgetSize size = ZetaWidgetSize.medium,
-  List<TextInputFormatter>? inputFormatters,
-  String? prefixText,
-  TextStyle? prefixTextStyle,
-  String? suffixText,
-  TextStyle? suffixTextStyle,
-  void Function(String? val)? onSubmit,
-  bool obscureText = false,
-  TextInputType? keyboardType,
-  FocusNode? focusNode,
-  BorderRadius? borderRadius,
-}) {
-  return ZetaTextInput._border(
-    key: key,
-    onChange: onChange,
-    disabled: disabled,
-    requirementLevel: requirementLevel,
-    initialValue: initialValue,
-    rounded: rounded,
-    label: label,
-    hintText: hintText,
-    placeholder: placeholder,
-    errorText: errorText,
-    controller: controller,
-    validator: validator,
-    suffix: suffix,
-    prefix: prefix,
-    size: size,
-    inputFormatters: inputFormatters,
-    prefixText: prefixText,
-    prefixTextStyle: prefixTextStyle,
-    suffixText: suffixText,
-    suffixTextStyle: suffixTextStyle,
-    onSubmit: onSubmit,
-    obscureText: obscureText,
-    keyboardType: keyboardType,
-    focusNode: focusNode,
-    borderRadius: borderRadius,
-  );
-}
-
 /// Text inputs allow the user to enter text.
-///
-/// To show error messages on the text input, use the [validator]. The string returned from this function will be displayed as the error message.
-/// Error messages can also be managed outside the text input by setting [errorText].
-///
-/// The input can be reset and validated by Creating a key of type [ZetaTextInputState] and calling either `reset` or `validate`.
-/// However, it is recommended that the input is used and validated as part of a form.
-/// {@category Components}
-class ZetaTextInput extends ZetaFormFieldOld<String> {
-  /// Creates a new [ZetaTextInput]
-  const ZetaTextInput({
+/// Not intended for external use.
+class InternalTextInput extends ZetaStatefulWidget {
+  /// Creates a new [InternalTextInput]
+  const InternalTextInput({
     super.key,
-    super.onChange,
-    super.disabled = false,
-    super.requirementLevel = ZetaFormFieldRequirement.none,
-    super.initialValue,
+    this.onChange,
+    this.disabled = false,
+    this.requirementLevel = ZetaFormFieldRequirement.none,
     super.rounded,
     this.label,
     this.hintText,
@@ -102,37 +36,8 @@ class ZetaTextInput extends ZetaFormFieldOld<String> {
     this.focusNode,
     this.semanticLabel,
   })  : borderRadius = null,
-        assert(initialValue == null || controller == null, 'Only one of initial value and controller can be accepted.'),
         assert(prefix == null || prefixText == null, 'Only one of prefix or prefixText can be accepted.'),
         assert(suffix == null || suffixText == null, 'Only one of suffix or suffixText can be accepted.');
-
-  const ZetaTextInput._border({
-    super.key,
-    super.onChange,
-    super.disabled = false,
-    super.requirementLevel = ZetaFormFieldRequirement.none,
-    super.initialValue,
-    super.rounded,
-    this.label,
-    this.hintText,
-    this.placeholder,
-    this.errorText,
-    this.controller,
-    this.validator,
-    this.suffix,
-    this.prefix,
-    this.size = ZetaWidgetSize.medium,
-    this.inputFormatters,
-    this.prefixText,
-    this.prefixTextStyle,
-    this.suffixText,
-    this.suffixTextStyle,
-    this.onSubmit,
-    this.obscureText = false,
-    this.keyboardType,
-    this.focusNode,
-    this.borderRadius,
-  }) : semanticLabel = null;
 
   /// {@template text-input-label}
   /// The label displayed above the input.
@@ -160,7 +65,7 @@ class ZetaTextInput extends ZetaFormFieldOld<String> {
   final String? errorText;
 
   /// {@template text-input-controller}
-  /// The controller given to the input. Cannot be given in addition to [initialValue].
+  /// The controller given to the input.
   /// {@endtemplate}
   final TextEditingController? controller;
 
@@ -217,8 +122,14 @@ class ZetaTextInput extends ZetaFormFieldOld<String> {
   /// {@macro zeta-widget-semantic-label}
   final String? semanticLabel;
 
+  final ValueChanged<String?>? onChange;
+
+  final bool disabled;
+
+  final ZetaFormFieldRequirement requirementLevel;
+
   @override
-  State<ZetaTextInput> createState() => ZetaTextInputState();
+  State<InternalTextInput> createState() => ZetaTextInputState();
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
@@ -226,7 +137,6 @@ class ZetaTextInput extends ZetaFormFieldOld<String> {
       ..add(StringProperty('label', label))
       ..add(StringProperty('hintText', hintText))
       ..add(StringProperty('placeholder', placeholder))
-      ..add(StringProperty('initialValue', initialValue))
       ..add(StringProperty('errorText', errorText))
       ..add(DiagnosticsProperty<TextEditingController?>('controller', controller))
       ..add(ObjectFlagProperty<ValueChanged<String>?>.has('onChanged', onChange))
@@ -249,8 +159,8 @@ class ZetaTextInput extends ZetaFormFieldOld<String> {
   }
 }
 
-/// The current state of a [ZetaTextInput]
-class ZetaTextInputState extends State<ZetaTextInput> implements ZetaFormFieldStateOld {
+/// The current state of a [InternalTextInput]
+class ZetaTextInputState extends State<InternalTextInput> {
   late final TextEditingController _controller;
   final GlobalKey<FormFieldState<String>> _key = GlobalKey();
   ZetaColors get _colors => Zeta.of(context).colors;
@@ -258,13 +168,11 @@ class ZetaTextInputState extends State<ZetaTextInput> implements ZetaFormFieldSt
   // TODO(mikecoomber): refactor to use WidgetStateController
   bool _hovered = false;
 
-  String? _errorText;
-
   Color get _backgroundColor {
     if (widget.disabled) {
       return _colors.surfaceDisabled;
     }
-    if (_errorText != null) {
+    if (widget.errorText != null) {
       return _colors.error.shade10;
     }
     return _colors.surfacePrimary;
@@ -379,32 +287,8 @@ class ZetaTextInputState extends State<ZetaTextInput> implements ZetaFormFieldSt
   @override
   void initState() {
     _controller = widget.controller ?? TextEditingController();
-    _errorText = widget.errorText;
 
-    if (widget.initialValue != null) {
-      _controller.text = widget.initialValue!;
-    }
     super.initState();
-  }
-
-  @override
-  void didUpdateWidget(covariant ZetaTextInput oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    if (oldWidget.errorText != widget.errorText) {
-      _errorText = widget.errorText;
-    }
-    if (oldWidget.initialValue != widget.initialValue && widget.initialValue != null) {
-      _controller.text = widget.initialValue!;
-    }
-  }
-
-  @override
-  bool validate() => _key.currentState?.validate() ?? false;
-
-  @override
-  void reset() {
-    _key.currentState?.reset();
-    _controller.clear();
   }
 
   @override
@@ -440,19 +324,13 @@ class ZetaTextInputState extends State<ZetaTextInput> implements ZetaFormFieldSt
                         _hovered = false;
                       })
                   : null,
-              child: TextFormField(
+              child: TextField(
                 enabled: !widget.disabled,
                 key: _key,
                 controller: _controller,
                 keyboardType: widget.keyboardType,
                 inputFormatters: widget.inputFormatters,
-                validator: (val) {
-                  setState(() {
-                    _errorText = widget.validator?.call(val);
-                  });
-                  return _errorText;
-                },
-                onFieldSubmitted: widget.onSubmit,
+                onSubmitted: widget.onSubmit,
                 textAlignVertical: TextAlignVertical.center,
                 onChanged: widget.onChange,
                 style: _baseTextStyle,
@@ -476,7 +354,7 @@ class ZetaTextInputState extends State<ZetaTextInput> implements ZetaFormFieldSt
                   focusedErrorBorder: _errorBorder(rounded),
                   errorBorder: widget.disabled ? _baseBorder(rounded) : _errorBorder(rounded),
                   hintText: widget.placeholder,
-                  errorText: _errorText,
+                  errorText: widget.errorText,
                   hintStyle: _baseTextStyle,
                   errorStyle: const TextStyle(height: 0.001, color: Colors.transparent),
                 ),
@@ -486,7 +364,7 @@ class ZetaTextInputState extends State<ZetaTextInput> implements ZetaFormFieldSt
               disabled: widget.disabled,
               rounded: rounded,
               hintText: widget.hintText,
-              errorText: _errorText,
+              errorText: widget.errorText,
             ),
           ],
         ),
