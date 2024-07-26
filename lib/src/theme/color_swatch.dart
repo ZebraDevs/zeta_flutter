@@ -5,6 +5,30 @@ import 'color_extensions.dart';
 import 'colors_base.dart';
 import 'contrast.dart';
 
+/// A swatch of colors with values 0 (light), 500 (medium) and 1000(dark).
+class ZetaPureColorSwatch extends ColorSwatch<int> with EquatableMixin {
+  /// Constructs a [ZetaPureColorSwatch].
+  ///
+  /// See also:
+  /// * [MaterialColor].
+  const ZetaPureColorSwatch({
+    required int primary,
+    required Map<int, Color> swatch,
+  }) : super(primary, swatch);
+
+  /// Lightest shade of the color.
+  Color get shade0 => this[0]!;
+
+  /// Medium shade of the color.
+  Color get shade500 => this[0]!;
+
+  /// Darkest shade of the color.
+  Color get shade1000 => this[0]!;
+
+  @override
+  List<Object?> get props => [super.value, shade0, shade500, shade1000];
+}
+
 /// A swatch of colors with values from 10 (light) to 100 (dark).
 /// {@category Theme}
 @immutable
