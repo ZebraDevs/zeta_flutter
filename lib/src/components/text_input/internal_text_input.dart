@@ -34,9 +34,10 @@ class InternalTextInput extends ZetaStatefulWidget {
     this.obscureText = false,
     this.keyboardType,
     this.focusNode,
+    this.externalPrefix,
     this.semanticLabel,
-  })  : borderRadius = null,
-        assert(prefix == null || prefixText == null, 'Only one of prefix or prefixText can be accepted.'),
+    this.borderRadius,
+  })  : assert(prefix == null || prefixText == null, 'Only one of prefix or prefixText can be accepted.'),
         assert(suffix == null || suffixText == null, 'Only one of suffix or suffixText can be accepted.');
 
   /// {@template text-input-label}
@@ -127,6 +128,8 @@ class InternalTextInput extends ZetaStatefulWidget {
   final bool disabled;
 
   final ZetaFormFieldRequirement requirementLevel;
+
+  final Widget? externalPrefix;
 
   @override
   State<InternalTextInput> createState() => ZetaTextInputState();
@@ -312,51 +315,58 @@ class ZetaTextInputState extends State<InternalTextInput> {
               ),
               const SizedBox(height: ZetaSpacing.minimum),
             ],
-            MouseRegion(
-              onEnter: !widget.disabled
-                  ? (_) => setState(() {
-                        _hovered = true;
-                      })
-                  : null,
-              onExit: !widget.disabled
-                  ? (_) => setState(() {
-                        _hovered = false;
-                      })
-                  : null,
-              child: TextField(
-                enabled: !widget.disabled,
-                controller: _controller,
-                keyboardType: widget.keyboardType,
-                inputFormatters: widget.inputFormatters,
-                onSubmitted: widget.onSubmit,
-                textAlignVertical: TextAlignVertical.center,
-                onChanged: widget.onChange,
-                style: _baseTextStyle,
-                cursorErrorColor: _colors.error,
-                obscureText: widget.obscureText,
-                focusNode: widget.focusNode,
-                decoration: InputDecoration(
-                  isDense: true,
-                  contentPadding: _contentPadding,
-                  filled: true,
-                  prefixIcon: _prefix,
-                  prefixIconConstraints: widget.prefixText != null ? _affixConstraints : null,
-                  suffixIcon: _suffix,
-                  suffixIconConstraints: widget.suffixText != null ? _affixConstraints : null,
-                  focusColor: _backgroundColor,
-                  hoverColor: _backgroundColor,
-                  fillColor: _backgroundColor,
-                  enabledBorder: _baseBorder(rounded),
-                  disabledBorder: _baseBorder(rounded),
-                  focusedBorder: _focusedBorder(rounded),
-                  focusedErrorBorder: _errorBorder(rounded),
-                  errorBorder: widget.disabled ? _baseBorder(rounded) : _errorBorder(rounded),
-                  hintText: widget.placeholder,
-                  errorText: widget.errorText,
-                  hintStyle: _baseTextStyle,
-                  errorStyle: const TextStyle(height: 0.001, color: Colors.transparent),
+            Row(
+              children: [
+                if (widget.externalPrefix != null) widget.externalPrefix!,
+                Expanded(
+                  child: MouseRegion(
+                    onEnter: !widget.disabled
+                        ? (_) => setState(() {
+                              _hovered = true;
+                            })
+                        : null,
+                    onExit: !widget.disabled
+                        ? (_) => setState(() {
+                              _hovered = false;
+                            })
+                        : null,
+                    child: TextField(
+                      enabled: !widget.disabled,
+                      controller: _controller,
+                      keyboardType: widget.keyboardType,
+                      inputFormatters: widget.inputFormatters,
+                      onSubmitted: widget.onSubmit,
+                      textAlignVertical: TextAlignVertical.center,
+                      onChanged: widget.onChange,
+                      style: _baseTextStyle,
+                      cursorErrorColor: _colors.error,
+                      obscureText: widget.obscureText,
+                      focusNode: widget.focusNode,
+                      decoration: InputDecoration(
+                        isDense: true,
+                        contentPadding: _contentPadding,
+                        filled: true,
+                        prefixIcon: _prefix,
+                        prefixIconConstraints: widget.prefixText != null ? _affixConstraints : null,
+                        suffixIcon: _suffix,
+                        suffixIconConstraints: widget.suffixText != null ? _affixConstraints : null,
+                        focusColor: _backgroundColor,
+                        hoverColor: _backgroundColor,
+                        fillColor: _backgroundColor,
+                        enabledBorder: _baseBorder(rounded),
+                        disabledBorder: _baseBorder(rounded),
+                        focusedBorder: _focusedBorder(rounded),
+                        focusedErrorBorder: _errorBorder(rounded),
+                        errorBorder: widget.disabled ? _baseBorder(rounded) : _errorBorder(rounded),
+                        hintText: widget.placeholder,
+                        errorText: widget.errorText,
+                        hintStyle: _baseTextStyle,
+                        errorStyle: const TextStyle(height: 0.001, color: Colors.transparent),
+                      ),
+                    ),
+                  ),
                 ),
-              ),
+              ],
             ),
             ZetaHintText(
               disabled: widget.disabled,

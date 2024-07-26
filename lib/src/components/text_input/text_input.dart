@@ -7,64 +7,6 @@ import '../../interfaces/form_field.dart';
 import 'hint_text.dart';
 import 'input_label.dart';
 
-/// Helper function to create a text input with a custom border.
-/// Not intended for external use.
-Widget textInputWithBorder({
-  Key? key,
-  ValueChanged<String?>? onChange,
-  bool disabled = false,
-  ZetaFormFieldRequirement requirementLevel = ZetaFormFieldRequirement.none,
-  String? initialValue,
-  bool rounded = false,
-  String? label,
-  String? hintText,
-  String? placeholder,
-  String? errorText,
-  TextEditingController? controller,
-  String? Function(String?)? validator,
-  Widget? suffix,
-  Widget? prefix,
-  ZetaWidgetSize size = ZetaWidgetSize.medium,
-  List<TextInputFormatter>? inputFormatters,
-  String? prefixText,
-  TextStyle? prefixTextStyle,
-  String? suffixText,
-  TextStyle? suffixTextStyle,
-  void Function(String? val)? onSubmit,
-  bool obscureText = false,
-  TextInputType? keyboardType,
-  FocusNode? focusNode,
-  BorderRadius? borderRadius,
-}) {
-  return ZetaTextInput._border(
-    key: key,
-    onChange: onChange,
-    disabled: disabled,
-    requirementLevel: requirementLevel,
-    initialValue: initialValue,
-    rounded: rounded,
-    label: label,
-    hintText: hintText,
-    placeholder: placeholder,
-    errorText: errorText,
-    controller: controller,
-    validator: validator,
-    suffix: suffix,
-    prefix: prefix,
-    size: size,
-    inputFormatters: inputFormatters,
-    prefixText: prefixText,
-    prefixTextStyle: prefixTextStyle,
-    suffixText: suffixText,
-    suffixTextStyle: suffixTextStyle,
-    onSubmit: onSubmit,
-    obscureText: obscureText,
-    keyboardType: keyboardType,
-    focusNode: focusNode,
-    borderRadius: borderRadius,
-  );
-}
-
 /// Text inputs allow the user to enter text.
 ///
 /// To show error messages on the text input, use the [validator]. The string returned from this function will be displayed as the error message.
@@ -105,34 +47,6 @@ class ZetaTextInput extends ZetaFormFieldOld<String> {
         assert(initialValue == null || controller == null, 'Only one of initial value and controller can be accepted.'),
         assert(prefix == null || prefixText == null, 'Only one of prefix or prefixText can be accepted.'),
         assert(suffix == null || suffixText == null, 'Only one of suffix or suffixText can be accepted.');
-
-  const ZetaTextInput._border({
-    super.key,
-    super.onChange,
-    super.disabled = false,
-    super.requirementLevel = ZetaFormFieldRequirement.none,
-    super.initialValue,
-    super.rounded,
-    this.label,
-    this.hintText,
-    this.placeholder,
-    this.errorText,
-    this.controller,
-    this.validator,
-    this.suffix,
-    this.prefix,
-    this.size = ZetaWidgetSize.medium,
-    this.inputFormatters,
-    this.prefixText,
-    this.prefixTextStyle,
-    this.suffixText,
-    this.suffixTextStyle,
-    this.onSubmit,
-    this.obscureText = false,
-    this.keyboardType,
-    this.focusNode,
-    this.borderRadius,
-  }) : semanticLabel = null;
 
   /// {@template text-input-label}
   /// The label displayed above the input.
