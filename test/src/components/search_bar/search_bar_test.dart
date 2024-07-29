@@ -276,21 +276,18 @@ void main() {
     });
 
     test('debugFillProperties', () {
-      final searchBar = ZetaSearchBar();
-      final properties = DiagnosticPropertiesBuilder();
+      final diagnostics = DiagnosticPropertiesBuilder();
+      ZetaSearchBar().debugFillProperties(diagnostics);
 
-      searchBar.debugFillProperties(properties);
-
-      expect(properties.properties.length, 9);
-      expect(properties.properties[0].name, 'size');
-      expect(properties.properties[1].name, 'shape');
-      expect(properties.properties[2].name, 'hintText');
-      expect(properties.properties[3].name, 'initialValue');
-      expect(properties.properties[4].name, 'onSpeechToText');
-      expect(properties.properties[5].name, 'showSpeechToText');
-      expect(properties.properties[6].name, 'focusNode');
-      expect(properties.properties[7].name, 'textInputAction');
-      expect(properties.properties[8].name, 'microphoneSemanticLabel');
+      expect(diagnostics.finder('size'), 'medium');
+      expect(diagnostics.finder('shape'), 'rounded');
+      expect(diagnostics.finder('hintText'), 'null');
+      expect(diagnostics.finder('textInputAction'), 'null');
+      expect(diagnostics.finder('onSpeechToText'), 'null');
+      expect(diagnostics.finder('showSpeechToText'), 'true');
+      expect(diagnostics.finder('focusNode'), 'null');
+      expect(diagnostics.finder('microphoneSemanticLabel'), 'null');
+      expect(diagnostics.finder('clearSemanticLabel'), 'null');
     });
   });
 }

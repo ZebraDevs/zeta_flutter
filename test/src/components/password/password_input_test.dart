@@ -79,58 +79,16 @@ void main() {
     );
   });
   testWidgets('Test debugFillProperties', (WidgetTester tester) async {
-    final controller = TextEditingController();
-    final formKey = GlobalKey<FormState>();
+    final diagnostics = DiagnosticPropertiesBuilder();
+    ZetaPasswordInput().debugFillProperties(diagnostics);
 
-    await tester.pumpWidget(
-      TestApp(
-        home: Form(
-          key: formKey,
-          child: ZetaPasswordInput(
-            controller: controller,
-            rounded: true,
-            hintText: 'Enter password',
-            label: 'Password',
-            size: ZetaWidgetSize.medium,
-            onSubmit: (value) {},
-            errorText: 'Invalid password',
-            semanticLabel: 'Password input',
-            obscureSemanticLabel: 'Show password',
-            showSemanticLabel: 'Hide password',
-          ),
-        ),
-      ),
-    );
-
-    final zetaPasswordInput = find.byType(ZetaPasswordInput).evaluate().first.widget as ZetaPasswordInput;
-    final properties = DiagnosticPropertiesBuilder();
-
-    zetaPasswordInput.debugFillProperties(properties);
-
-    expect(properties.properties.length, 15);
-    expect(properties.properties[0].name, 'controller');
-    expect(properties.properties[0].value, controller);
-    expect(properties.properties[1].name, 'hintText');
-    expect(properties.properties[1].value, 'Enter password');
-    expect(properties.properties[2].name, 'label');
-    expect(properties.properties[2].value, 'Password');
-    expect(properties.properties[3].name, 'footerText');
-    expect(properties.properties[3].value, null);
-    expect(properties.properties[4].name, 'validator');
-    expect(properties.properties[4].value, null);
-    expect(properties.properties[5].name, 'size');
-    expect(properties.properties[5].value, ZetaWidgetSize.medium);
-    expect(properties.properties[6].name, 'placeholder');
-    expect(properties.properties[6].value, null);
-    expect(properties.properties[7].name, 'onSubmit');
-    expect(properties.properties[7].value, isA<void Function(String?)>());
-    expect(properties.properties[8].name, 'errorText');
-    expect(properties.properties[8].value, 'Invalid password');
-    expect(properties.properties[9].name, 'semanticLabel');
-    expect(properties.properties[9].value, 'Password input');
-    expect(properties.properties[10].name, 'showSemanticLabel');
-    expect(properties.properties[10].value, 'Hide password');
-    expect(properties.properties[11].name, 'obscureSemanticLabel');
-    expect(properties.properties[11].value, 'Show password');
+    expect(diagnostics.finder('size'), 'medium');
+    expect(diagnostics.finder('placeholder'), 'null');
+    expect(diagnostics.finder('label'), 'null');
+    expect(diagnostics.finder('hintText'), 'null');
+    expect(diagnostics.finder('errorText'), 'null');
+    expect(diagnostics.finder('semanticLabel'), 'null');
+    expect(diagnostics.finder('showSemanticLabel'), 'null');
+    expect(diagnostics.finder('obscureSemanticLabel'), 'null');
   });
 }
