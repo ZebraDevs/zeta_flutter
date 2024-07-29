@@ -20,7 +20,8 @@ class ZetaSearchBar extends ZetaTextFormField {
     super.initialValue,
     this.size = ZetaWidgetSize.medium,
     this.shape = ZetaWidgetBorder.rounded,
-    this.hint,
+    @Deprecated('Use hintText instead. ' 'deprecated as of 0.15.0') String? hint,
+    this.hintText,
     this.onSpeechToText,
     this.showSpeechToText = true,
     @Deprecated('Use disabled instead. ' 'enabled is deprecated as of 0.11.0') bool enabled = true,
@@ -78,7 +79,7 @@ class ZetaSearchBar extends ZetaTextFormField {
               rounded: shape != ZetaWidgetBorder.sharp,
               child: Semantics(
                 excludeSemantics: disabled,
-                label: disabled ? hint ?? 'Search' : null, // TODO(UX-1003): Localize
+                label: disabled ? hintText ?? 'Search' : null, // TODO(UX-1003): Localize
                 enabled: disabled ? false : null,
                 child: TextFormField(
                   focusNode: focusNode,
@@ -95,7 +96,7 @@ class ZetaSearchBar extends ZetaTextFormField {
                       horizontal: 10,
                       vertical: padding,
                     ),
-                    hintText: hint ?? 'Search', // TODO(UX-1003): Localize
+                    hintText: hintText ?? 'Search', // TODO(UX-1003): Localize
                     hintStyle: ZetaTextStyles.bodyMedium.copyWith(
                       color: !disabled ? zeta.colors.textSubtle : zeta.colors.textDisabled,
                     ),
@@ -127,6 +128,7 @@ class ZetaSearchBar extends ZetaTextFormField {
                                 disabled: disabled,
                                 size: size,
                                 color: zeta.colors.iconSubtle,
+                                key: const ValueKey('search-clear-btn'),
                               ),
                             ),
                             if (showSpeechToText)
@@ -148,6 +150,7 @@ class ZetaSearchBar extends ZetaTextFormField {
                               child: InputIconButton(
                                 icon: ZetaIcons.microphone,
                                 onTap: state.onSpeechToText,
+                                key: const ValueKey('speech-to-text-btn'),
                                 disabled: disabled,
                                 size: size,
                                 color: zeta.colors.iconDefault,
@@ -182,7 +185,7 @@ class ZetaSearchBar extends ZetaTextFormField {
 
   /// If provided, displays a hint inside the input field.
   /// Default is `Search`.
-  final String? hint;
+  final String? hintText;
 
   /// The type of action button to use for the keyboard.
   final TextInputAction? textInputAction;
@@ -216,7 +219,7 @@ class ZetaSearchBar extends ZetaTextFormField {
     properties
       ..add(EnumProperty<ZetaWidgetSize>('size', size))
       ..add(EnumProperty<ZetaWidgetBorder>('shape', shape))
-      ..add(StringProperty('hint', hint))
+      ..add(StringProperty('hintText', hintText))
       ..add(StringProperty('initialValue', initialValue))
       ..add(ObjectFlagProperty<VoidCallback?>.has('onSpeechToText', onSpeechToText))
       ..add(DiagnosticsProperty<bool>('showSpeechToText', showSpeechToText))

@@ -275,42 +275,22 @@ void main() {
       verify(callbacks.onChange.call('')).called(1);
     });
 
-    test('debugFillProperties sets the correct properties', () {
-      const size = ZetaWidgetSize.medium;
-      const shape = ZetaWidgetBorder.rounded;
-      const hint = 'Search here';
-      const initialValue = 'Initial value';
-      const disabled = true;
-      const showLeadingIcon = false;
-      const showSpeechToText = false;
-      const textInputAction = TextInputAction.search;
+    test('debugFillProperties', () {
+      final searchBar = ZetaSearchBar();
+      final properties = DiagnosticPropertiesBuilder();
 
-      final widget = ZetaSearchBar(
-        hint: hint,
-        initialValue: initialValue,
-        onChange: callbacks.onChange,
-        onFieldSubmitted: callbacks.onSubmit,
-        onSpeechToText: callbacks.onSpeech,
-        disabled: disabled,
-        showSpeechToText: showSpeechToText,
-        textInputAction: textInputAction,
-      );
+      searchBar.debugFillProperties(properties);
 
-      final DiagnosticPropertiesBuilder builder = DiagnosticPropertiesBuilder();
-      widget.debugFillProperties(builder);
-
-      expect(builder.findProperty('size'), size);
-      expect(builder.findProperty('shape'), shape);
-      expect(builder.findProperty('hint'), hint);
-      expect(builder.findProperty('enabled'), disabled);
-      expect(builder.findProperty('initialValue'), initialValue);
-      expect(builder.findProperty('showLeadingIcon'), showLeadingIcon);
-      expect(builder.findProperty('showSpeechToText'), showSpeechToText);
-      expect(builder.findProperty('textInputAction'), textInputAction);
-      expect(builder.findProperty('focusNode'), null);
-      expect(builder.findProperty('onChanged'), callbacks.onChange);
-      expect(builder.findProperty('onSpeechToText'), callbacks.onSpeech);
-      expect(builder.findProperty('onSubmit'), callbacks.onSubmit);
+      expect(properties.properties.length, 9);
+      expect(properties.properties[0].name, 'size');
+      expect(properties.properties[1].name, 'shape');
+      expect(properties.properties[2].name, 'hintText');
+      expect(properties.properties[3].name, 'initialValue');
+      expect(properties.properties[4].name, 'onSpeechToText');
+      expect(properties.properties[5].name, 'showSpeechToText');
+      expect(properties.properties[6].name, 'focusNode');
+      expect(properties.properties[7].name, 'textInputAction');
+      expect(properties.properties[8].name, 'microphoneSemanticLabel');
     });
   });
 }

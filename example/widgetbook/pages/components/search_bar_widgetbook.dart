@@ -49,7 +49,7 @@ Widget searchBarUseCase(BuildContext context) {
                 size: size,
                 shape: shape,
                 disabled: disabled,
-                hint: hint,
+                hintText: hint,
                 showSpeechToText: showSpeechToText,
                 onChange: (value) {
                   if (value == null) return;
