@@ -9,6 +9,7 @@ class TextInputExample extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = TextEditingController(text: 'Initial value');
     final key = GlobalKey<FormState>();
     return ExampleScaffold(
         name: 'Text Input',
@@ -24,6 +25,8 @@ class TextInputExample extends StatelessWidget {
                       size: ZetaWidgetSize.large,
                       placeholder: 'Placeholder',
                       prefixText: '£',
+                      controller: controller,
+                      onChange: print,
                       label: 'Label',
                       requirementLevel: ZetaFormFieldRequirement.mandatory,
                       errorText: 'Error text',

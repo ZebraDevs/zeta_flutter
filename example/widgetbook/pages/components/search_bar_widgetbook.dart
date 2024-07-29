@@ -35,10 +35,6 @@ Widget searchBarUseCase(BuildContext context) {
           options: ZetaWidgetBorder.values,
           labelBuilder: (shape) => shape.name,
         );
-        final showLeadingIcon = context.knobs.boolean(
-          label: 'Show leading icon',
-          initialValue: true,
-        );
         final showSpeechToText = context.knobs.boolean(
           label: 'Show Speech-To-Text button',
           initialValue: true,
@@ -54,9 +50,8 @@ Widget searchBarUseCase(BuildContext context) {
                 shape: shape,
                 disabled: disabled,
                 hint: hint,
-                showLeadingIcon: showLeadingIcon,
                 showSpeechToText: showSpeechToText,
-                onChanged: (value) {
+                onChange: (value) {
                   if (value == null) return;
                   setState(
                     () => items = _items

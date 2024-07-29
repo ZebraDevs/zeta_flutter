@@ -12,7 +12,9 @@ abstract class ZetaFormFieldStateOld {
   void reset();
 }
 
+/// An interface for all form fields used in Zeta
 abstract class ZetaFormField<T> extends FormField<T> {
+  /// Creates a new [ZetaFormField]
   const ZetaFormField({
     required super.builder,
     required super.autovalidateMode,
@@ -29,52 +31,31 @@ abstract class ZetaFormField<T> extends FormField<T> {
           enabled: !disabled,
         );
 
+  /// Called whenever the form field changes.
   final ValueChanged<T?>? onChange;
 
+  /// Called whenever the form field is submitted.
   final ValueChanged<T?>? onFieldSubmitted;
 
+  /// The requirement level of the form field.
   final ZetaFormFieldRequirement? requirementLevel;
-}
 
-/// A common interface shared with all Zeta form elements.
-abstract class ZetaFormFieldOld<T> extends ZetaStatefulWidget {
-  /// Creates a new [ZetaFormFieldOld]
-  const ZetaFormFieldOld({
-    required this.disabled,
-    required this.initialValue,
-    required this.onChange,
-    required this.requirementLevel,
-    super.rounded,
-    super.key,
-  });
-
-  /// {@macro zeta-widget-disabled}
-  final bool disabled;
-
-  /// The initial value of the form field.
-  final T? initialValue;
-
-  /// Called with the current value of the field whenever it is changed.
-  final ValueChanged<T?>? onChange;
-
-  /// The requirement level of the form field, e.g. mandatory or optional.
-  final ZetaFormFieldRequirement requirementLevel;
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty<bool>('disabled', disabled))
-      ..add(DiagnosticsProperty<T?>('initialValue', initialValue))
       ..add(ObjectFlagProperty<ValueChanged<T?>?>.has('onChange', onChange))
-      ..add(EnumProperty<ZetaFormFieldRequirement>('requirementLevel', requirementLevel));
+      ..add(ObjectFlagProperty<ValueChanged<T?>?>.has('onFieldSubmitted', onFieldSubmitted))
+      ..add(EnumProperty<ZetaFormFieldRequirement?>('requirementLevel', requirementLevel));
   }
 }
 
+/// A text form field used in Zeta
 abstract class ZetaTextFormField extends ZetaFormField<String> {
+  /// Creates a new [ZetaTextFormField]
   ZetaTextFormField({
     required super.builder,
     required super.autovalidateMode,
-    required super.initialValue,
     required super.validator,
     required super.onSaved,
     required super.onChange,
@@ -82,16 +63,29 @@ abstract class ZetaTextFormField extends ZetaFormField<String> {
     required super.disabled,
     required super.requirementLevel,
     required this.controller,
+    required String? initialValue,
     super.key,
-  });
+  }) : super(
+          initialValue: controller != null ? controller.text : (initialValue ?? ''),
+        );
 
+  /// The controller for the text form field.
   final TextEditingController? controller;
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty<TextEditingController?>('controller', controller));
+  }
 }
 
+/// The state for a [ZetaTextFormField]
 class ZetaTextFormFieldState extends FormFieldState<String> {
   @override
   ZetaTextFormField get widget => super.widget as ZetaTextFormField;
 
+  /// The effective controller for the form field.
+  /// This is either the controller passed in or a new controller.
   late final TextEditingController effectiveController;
 
   @override
@@ -101,11 +95,12 @@ class ZetaTextFormFieldState extends FormFieldState<String> {
     if (widget.initialValue != null) {
       effectiveController.text = widget.initialValue!;
     }
+    effectiveController.addListener(_handleControllerChange);
     super.initState();
   }
 
   @override
-  void didUpdateWidget(covariant ZetaTextInput oldWidget) {
+  void didUpdateWidget(covariant ZetaTextFormField oldWidget) {
     if (oldWidget.initialValue != widget.initialValue && widget.initialValue != null) {
       effectiveController.text = widget.initialValue!;
     }
@@ -119,13 +114,25 @@ class ZetaTextFormFieldState extends FormFieldState<String> {
     widget.onChange?.call(effectiveController.text);
   }
 
+  /// Called whenever the form field changes.
   void onChange(String? value) {
+    didChange(value);
+    widget.onChange?.call(value);
+  }
+
+  @override
+  void didChange(String? value) {
     super.didChange(value);
 
     if (effectiveController.text != value) {
       effectiveController.text = value ?? '';
     }
-    widget.onChange?.call(value);
+  }
+
+  void _handleControllerChange() {
+    if (effectiveController.text != value) {
+      didChange(effectiveController.text);
+    }
   }
 
   @override
