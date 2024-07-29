@@ -16,7 +16,7 @@ void main() {
 
   testWidgets('ZetaPasswordInput initializes correctly', (WidgetTester tester) async {
     await tester.pumpWidget(
-      const TestApp(
+      TestApp(
         home: ZetaPasswordInput(),
       ),
     );
@@ -30,7 +30,7 @@ void main() {
 
   testWidgets('Test password visibility', (WidgetTester tester) async {
     await tester.pumpWidget(
-      const TestApp(
+      TestApp(
         home: ZetaPasswordInput(),
       ),
     );
@@ -81,7 +81,7 @@ void main() {
 
   testWidgets('debugFillProperties works correctly', (WidgetTester tester) async {
     final diagnostics = DiagnosticPropertiesBuilder();
-    const ZetaPasswordInput().debugFillProperties(diagnostics);
+    ZetaPasswordInput().debugFillProperties(diagnostics);
 
     expect(diagnostics.finder('controller'), 'null');
     expect(diagnostics.finder('obscureText'), 'true');

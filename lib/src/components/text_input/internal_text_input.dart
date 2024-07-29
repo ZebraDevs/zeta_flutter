@@ -131,7 +131,7 @@ class InternalTextInput extends ZetaStatefulWidget {
   final Widget? externalPrefix;
 
   @override
-  State<InternalTextInput> createState() => ZetaTextInputState();
+  State<InternalTextInput> createState() => InternalTextInputState();
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
@@ -161,7 +161,7 @@ class InternalTextInput extends ZetaStatefulWidget {
 }
 
 /// The current state of a [InternalTextInput]
-class ZetaTextInputState extends State<InternalTextInput> {
+class InternalTextInputState extends State<InternalTextInput> {
   late final TextEditingController _controller;
   ZetaColors get _colors => Zeta.of(context).colors;
 

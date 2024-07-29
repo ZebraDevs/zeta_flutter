@@ -69,3 +69,70 @@ abstract class ZetaFormFieldOld<T> extends ZetaStatefulWidget {
       ..add(EnumProperty<ZetaFormFieldRequirement>('requirementLevel', requirementLevel));
   }
 }
+
+abstract class ZetaTextFormField extends ZetaFormField<String> {
+  ZetaTextFormField({
+    required super.builder,
+    required super.autovalidateMode,
+    required super.initialValue,
+    required super.validator,
+    required super.onSaved,
+    required super.onChange,
+    required super.onFieldSubmitted,
+    required super.disabled,
+    required super.requirementLevel,
+    required this.controller,
+    super.key,
+  });
+
+  final TextEditingController? controller;
+}
+
+class ZetaTextFormFieldState extends FormFieldState<String> {
+  @override
+  ZetaTextFormField get widget => super.widget as ZetaTextFormField;
+
+  late final TextEditingController effectiveController;
+
+  @override
+  void initState() {
+    effectiveController = widget.controller ?? TextEditingController();
+
+    if (widget.initialValue != null) {
+      effectiveController.text = widget.initialValue!;
+    }
+    super.initState();
+  }
+
+  @override
+  void didUpdateWidget(covariant ZetaTextInput oldWidget) {
+    if (oldWidget.initialValue != widget.initialValue && widget.initialValue != null) {
+      effectiveController.text = widget.initialValue!;
+    }
+    super.didUpdateWidget(oldWidget);
+  }
+
+  @override
+  void reset() {
+    effectiveController.text = widget.initialValue ?? '';
+    super.reset();
+    widget.onChange?.call(effectiveController.text);
+  }
+
+  void onChange(String? value) {
+    super.didChange(value);
+
+    if (effectiveController.text != value) {
+      effectiveController.text = value ?? '';
+    }
+    widget.onChange?.call(value);
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(
+      DiagnosticsProperty<TextEditingController>('effectiveController', effectiveController),
+    );
+  }
+}

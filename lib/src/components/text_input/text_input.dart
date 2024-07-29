@@ -10,11 +10,8 @@ import 'internal_text_input.dart';
 ///
 /// To show error messages on the text input, use the [validator]. The string returned from this function will be displayed as the error message.
 /// Error messages can also be managed outside the text input by setting [errorText].
-///
-/// The input can be reset and validated by Creating a key of type [_ZetaTextInputState] and calling either `reset` or `validate`.
-/// However, it is recommended that the input is used and validated as part of a form.
 /// {@category Components}
-class ZetaTextInput extends ZetaFormField<String> {
+class ZetaTextInput extends ZetaTextFormField {
   /// Creates a new [ZetaTextInput]
   ZetaTextInput({
     super.key,
@@ -31,7 +28,7 @@ class ZetaTextInput extends ZetaFormField<String> {
     this.hintText,
     this.placeholder,
     this.errorText,
-    this.controller,
+    super.controller,
     this.suffix,
     this.prefix,
     this.size = ZetaWidgetSize.medium,
@@ -50,7 +47,7 @@ class ZetaTextInput extends ZetaFormField<String> {
         assert(suffix == null || suffixText == null, 'Only one of suffix or suffixText can be accepted.'),
         super(
           builder: (field) {
-            final _ZetaTextInputState state = field as _ZetaTextInputState;
+            final ZetaTextFormFieldState state = field as ZetaTextFormFieldState;
 
             return InternalTextInput(
               label: label,
@@ -102,11 +99,6 @@ class ZetaTextInput extends ZetaFormField<String> {
   /// {@endtemplate}
   final String? errorText;
 
-  /// {@template text-input-controller}
-  /// The controller given to the input. Cannot be given in addition to [initialValue].
-  /// {@endtemplate}
-  final TextEditingController? controller;
-
   /// The widget displayed at the end of the input. Cannot be given in addition to [suffixText].
   final Widget? suffix;
 
@@ -152,7 +144,7 @@ class ZetaTextInput extends ZetaFormField<String> {
   final String? semanticLabel;
 
   @override
-  FormFieldState<String> createState() => _ZetaTextInputState();
+  FormFieldState<String> createState() => ZetaTextFormFieldState();
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
@@ -178,54 +170,5 @@ class ZetaTextInput extends ZetaFormField<String> {
       ..add(DiagnosticsProperty<TextInputType?>('keyboardType', keyboardType))
       ..add(DiagnosticsProperty<FocusNode?>('focusNode', focusNode))
       ..add(StringProperty('semanticLabel', semanticLabel));
-  }
-}
-
-/// The current state of a [ZetaTextInput]
-class _ZetaTextInputState extends FormFieldState<String> {
-  @override
-  ZetaTextInput get widget => super.widget as ZetaTextInput;
-
-  late final TextEditingController effectiveController;
-
-  @override
-  void initState() {
-    effectiveController = widget.controller ?? TextEditingController();
-
-    if (widget.initialValue != null) {
-      effectiveController.text = widget.initialValue!;
-    }
-    super.initState();
-  }
-
-  @override
-  void didUpdateWidget(covariant ZetaTextInput oldWidget) {
-    if (oldWidget.initialValue != widget.initialValue && widget.initialValue != null) {
-      effectiveController.text = widget.initialValue!;
-    }
-  }
-
-  @override
-  void reset() {
-    effectiveController.text = widget.initialValue ?? '';
-    super.reset();
-    widget.onChange?.call(effectiveController.text);
-  }
-
-  void onChange(String? value) {
-    super.didChange(value);
-
-    if (effectiveController.text != value) {
-      effectiveController.text = value ?? '';
-    }
-    widget.onChange?.call(value);
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(
-      DiagnosticsProperty<TextEditingController>('effectiveController', effectiveController),
-    );
   }
 }

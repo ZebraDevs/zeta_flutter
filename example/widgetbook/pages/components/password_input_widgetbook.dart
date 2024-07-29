@@ -32,7 +32,6 @@ class _PasswordState extends State<_Password> {
               constraints: BoxConstraints(maxWidth: 328),
               child: ZetaPasswordInput(
                 disabled: disabledKnob(context),
-                obscureText: context.knobs.boolean(label: 'Obscure text', initialValue: true),
                 size: context.knobs.list(
                   label: 'Size',
                   options: ZetaWidgetSize.values,
