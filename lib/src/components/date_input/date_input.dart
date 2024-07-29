@@ -24,6 +24,7 @@ class ZetaDateInput extends ZetaFormField<DateTime> {
     super.validator,
     super.onFieldSubmitted,
     super.onSaved,
+    super.autovalidateMode,
     bool? rounded,
     this.label,
     this.hintText,

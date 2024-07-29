@@ -46,12 +46,25 @@ class _SelectInputExampleState extends State<SelectInputExample> {
                     placeholder: 'Placeholder',
                     initialValue: "Item 1",
                     items: items,
+                    validator: (value) {
+                      if (value == null) {
+                        return 'Please select an item';
+                      }
+                      return null;
+                    },
                     dropdownSemantics: 'Open dropdown',
                   ),
                   ZetaSelectInput(
                     label: 'Medium',
                     hintText: 'Default hint text',
                     placeholder: 'Placeholder',
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    validator: (value) {
+                      if (value != 'Item 2') {
+                        return 'Please select Item 2';
+                      }
+                      return null;
+                    },
                     items: items,
                   ),
                   ZetaSelectInput(
@@ -68,11 +81,22 @@ class _SelectInputExampleState extends State<SelectInputExample> {
                     disabled: true,
                     items: items,
                   ),
-                  ZetaButton(
-                    label: 'Validate',
-                    onPressed: () {
-                      formKey.currentState?.validate();
-                    },
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      ZetaButton(
+                        label: 'Validate',
+                        onPressed: () {
+                          formKey.currentState?.validate();
+                        },
+                      ),
+                      ZetaButton(
+                        label: 'Reset',
+                        onPressed: () {
+                          formKey.currentState?.reset();
+                        },
+                      ),
+                    ],
                   )
                 ].divide(const SizedBox(height: 8)).toList(),
               ),

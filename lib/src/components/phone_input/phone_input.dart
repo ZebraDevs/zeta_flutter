@@ -46,6 +46,7 @@ class ZetaPhoneInput extends ZetaFormField<PhoneNumber> {
     this.countries,
     this.size = ZetaWidgetSize.medium,
     this.selectCountrySemanticLabel,
+    super.autovalidateMode,
   }) : super(
           builder: (field) {
             final _ZetaPhoneInputState state = field as _ZetaPhoneInputState;

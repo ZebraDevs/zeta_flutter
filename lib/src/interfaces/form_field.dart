@@ -15,16 +15,17 @@ abstract class ZetaFormFieldStateOld {
 abstract class ZetaFormField<T> extends FormField<T> {
   const ZetaFormField({
     required super.builder,
-    super.autovalidateMode,
-    super.initialValue,
-    super.validator,
-    super.onSaved,
-    this.onChange,
-    this.onFieldSubmitted,
-    this.requirementLevel = ZetaFormFieldRequirement.none,
+    required super.autovalidateMode,
+    required super.initialValue,
+    required super.validator,
+    required super.onSaved,
+    required this.onChange,
+    required this.onFieldSubmitted,
+    ZetaFormFieldRequirement? requirementLevel,
     bool disabled = false,
     super.key,
-  }) : super(
+  })  : requirementLevel = requirementLevel ?? ZetaFormFieldRequirement.none,
+        super(
           enabled: !disabled,
         );
 
@@ -32,7 +33,7 @@ abstract class ZetaFormField<T> extends FormField<T> {
 
   final ValueChanged<T?>? onFieldSubmitted;
 
-  final ZetaFormFieldRequirement requirementLevel;
+  final ZetaFormFieldRequirement? requirementLevel;
 }
 
 /// A common interface shared with all Zeta form elements.

@@ -14,14 +14,13 @@ class InternalTextInput extends ZetaStatefulWidget {
     super.key,
     this.onChange,
     this.disabled = false,
-    this.requirementLevel = ZetaFormFieldRequirement.none,
+    ZetaFormFieldRequirement? requirementLevel,
     super.rounded,
     this.label,
     this.hintText,
     this.placeholder,
     this.errorText,
     this.controller,
-    this.validator,
     this.suffix,
     this.prefix,
     this.size = ZetaWidgetSize.medium,
@@ -37,7 +36,8 @@ class InternalTextInput extends ZetaStatefulWidget {
     this.externalPrefix,
     this.semanticLabel,
     this.borderRadius,
-  })  : assert(prefix == null || prefixText == null, 'Only one of prefix or prefixText can be accepted.'),
+  })  : requirementLevel = requirementLevel ?? ZetaFormFieldRequirement.none,
+        assert(prefix == null || prefixText == null, 'Only one of prefix or prefixText can be accepted.'),
         assert(suffix == null || suffixText == null, 'Only one of suffix or suffixText can be accepted.');
 
   /// {@template text-input-label}
@@ -69,12 +69,6 @@ class InternalTextInput extends ZetaStatefulWidget {
   /// The controller given to the input.
   /// {@endtemplate}
   final TextEditingController? controller;
-
-  /// {@template text-input-validator}
-  /// The validator passed to the input. Should return the error message to be displayed below the input.
-  /// Should return null if there is no error.
-  /// {@endtemplate}
-  final String? Function(String?)? validator;
 
   /// The widget displayed at the end of the input. Cannot be given in addition to [suffixText].
   final Widget? suffix;
@@ -123,12 +117,17 @@ class InternalTextInput extends ZetaStatefulWidget {
   /// {@macro zeta-widget-semantic-label}
   final String? semanticLabel;
 
+  /// Called when the input changes.
   final ValueChanged<String?>? onChange;
 
+  /// Disables the input.
   final bool disabled;
 
+  /// The requirement level of the input.
+  /// Defaults to [ZetaFormFieldRequirement.none]
   final ZetaFormFieldRequirement requirementLevel;
 
+  /// The widget displayed before the input.
   final Widget? externalPrefix;
 
   @override
@@ -143,7 +142,6 @@ class InternalTextInput extends ZetaStatefulWidget {
       ..add(StringProperty('errorText', errorText))
       ..add(DiagnosticsProperty<TextEditingController?>('controller', controller))
       ..add(ObjectFlagProperty<ValueChanged<String>?>.has('onChanged', onChange))
-      ..add(ObjectFlagProperty<String? Function(String? p1)?>.has('validator', validator))
       ..add(StringProperty('suffixText', suffixText))
       ..add(DiagnosticsProperty<TextStyle?>('suffixTextStyle', suffixTextStyle))
       ..add(StringProperty('prefixText', prefixText))
@@ -335,9 +333,9 @@ class ZetaTextInputState extends State<InternalTextInput> {
                       controller: _controller,
                       keyboardType: widget.keyboardType,
                       inputFormatters: widget.inputFormatters,
-                      onSubmitted: widget.onSubmit,
                       textAlignVertical: TextAlignVertical.center,
                       onChanged: widget.onChange,
+                      onSubmitted: widget.onSubmit,
                       style: _baseTextStyle,
                       cursorErrorColor: _colors.error,
                       obscureText: widget.obscureText,
