@@ -13,6 +13,7 @@ class ZetaSearchBar extends ZetaTextFormField {
     super.validator,
     super.onSaved,
     super.onChange,
+    @Deprecated('Use onFieldSubmitted instead. ' 'deprecated as of 0.15.0') ValueChanged<String?>? onSubmit,
     super.onFieldSubmitted,
     super.requirementLevel,
     super.controller,

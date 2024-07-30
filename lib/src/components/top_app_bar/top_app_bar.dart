@@ -5,7 +5,7 @@ import '../../../zeta_flutter.dart';
 import 'extended_top_app_bar.dart';
 import 'search_top_app_bar.dart';
 
-export 'search_top_app_bar.dart' show ZetaSearchController;
+export 'search_top_app_bar.dart' hide ZetaTopAppBarSearchField;
 
 /// Top app bars provide content and actions related to the current screen.
 /// {@category Components}

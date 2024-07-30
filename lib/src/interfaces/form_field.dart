@@ -4,15 +4,6 @@ import 'package:flutter/material.dart';
 import '../../zeta_flutter.dart';
 
 /// An interface for all form fields used in Zeta
-abstract class ZetaFormFieldStateOld {
-  /// Validates the form field. Returns true if there are no errors.
-  bool validate();
-
-  /// Resets the form field to its initial state.
-  void reset();
-}
-
-/// An interface for all form fields used in Zeta
 abstract class ZetaFormField<T> extends FormField<T> {
   /// Creates a new [ZetaFormField]
   const ZetaFormField({

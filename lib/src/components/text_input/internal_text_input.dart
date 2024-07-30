@@ -165,7 +165,7 @@ class InternalTextInputState extends State<InternalTextInput> {
   late final TextEditingController _controller;
   ZetaColors get _colors => Zeta.of(context).colors;
 
-  // TODO(mikecoomber): refactor to use WidgetStateController
+  // TODO(UX-1143): refactor to use WidgetStateController
   bool _hovered = false;
 
   Color get _backgroundColor {
