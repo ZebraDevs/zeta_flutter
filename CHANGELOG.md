@@ -1,5 +1,46 @@
 # Changelog
 
+## [0.15.0](https://github.com/ZebraDevs/zeta_flutter/compare/v0.14.1...v0.15.0) (2024-07-30)
+
+
+### ✨ New Features
+
+* Added focus node and keyboard type properties to ZetaTextInput ([d99d40c](https://github.com/ZebraDevs/zeta_flutter/commit/d99d40c0121fa5f323f1dc9dd85652f23e2dd845))
+
+
+### 🪲 Bug Fixes
+
+* Add min/max values in slider ([7905388](https://github.com/ZebraDevs/zeta_flutter/commit/7905388e1aeffbc5e59bdfca4a7c5f53a18cd6cd))
+* Dropdown menus now scroll ([d99d40c](https://github.com/ZebraDevs/zeta_flutter/commit/d99d40c0121fa5f323f1dc9dd85652f23e2dd845))
+* FAB expanded state ([7905388](https://github.com/ZebraDevs/zeta_flutter/commit/7905388e1aeffbc5e59bdfca4a7c5f53a18cd6cd))
+* Make Navigation rail and list item stateless ([7905388](https://github.com/ZebraDevs/zeta_flutter/commit/7905388e1aeffbc5e59bdfca4a7c5f53a18cd6cd))
+* **UX-1129:** Accordion, Chip, StepperInput didUpdateState ([7905388](https://github.com/ZebraDevs/zeta_flutter/commit/7905388e1aeffbc5e59bdfca4a7c5f53a18cd6cd))
+* **UX-1129:** Add didUpdateStates to StatefulWidgets ([#138](https://github.com/ZebraDevs/zeta_flutter/issues/138)) ([7905388](https://github.com/ZebraDevs/zeta_flutter/commit/7905388e1aeffbc5e59bdfca4a7c5f53a18cd6cd))
+
+
+### 📈 Documentation
+
+* **UX-1130:** Add dartdoc categories to classes ([#134](https://github.com/ZebraDevs/zeta_flutter/issues/134)) ([cdbd1d1](https://github.com/ZebraDevs/zeta_flutter/commit/cdbd1d1b38ea609dee852e98b9375b5e4e0c6878))
+
+
+### ⛓️ Dependencies
+
+* Update flutter-code-quality to v1.0.6 ([074e11a](https://github.com/ZebraDevs/zeta_flutter/commit/074e11a0843e5db8eec0ea708b1ef5f2ac7ea8b4))
+
+
+### 🧪 Tests
+
+* Accordion, Chip, StepperInput didUpdateState, ([7905388](https://github.com/ZebraDevs/zeta_flutter/commit/7905388e1aeffbc5e59bdfca4a7c5f53a18cd6cd))
+* FAB expanded state ([7905388](https://github.com/ZebraDevs/zeta_flutter/commit/7905388e1aeffbc5e59bdfca4a7c5f53a18cd6cd))
+* Improve existing accordion tests ([7905388](https://github.com/ZebraDevs/zeta_flutter/commit/7905388e1aeffbc5e59bdfca4a7c5f53a18cd6cd))
+* Min/max values in slider ([7905388](https://github.com/ZebraDevs/zeta_flutter/commit/7905388e1aeffbc5e59bdfca4a7c5f53a18cd6cd))
+
+
+### 🧹 Miscellaneous Chores
+
+* Make some classes private that we don't need to export([#134](https://github.com/ZebraDevs/zeta_flutter/issues/134)) ([cdbd1d1](https://github.com/ZebraDevs/zeta_flutter/commit/cdbd1d1b38ea609dee852e98b9375b5e4e0c6878))
+* Refactor existing didUpdateWidgets to best practices - remove setStates and put super call first ([7905388](https://github.com/ZebraDevs/zeta_flutter/commit/7905388e1aeffbc5e59bdfca4a7c5f53a18cd6cd))
+
 ## [0.14.1](https://github.com/ZebraDevs/zeta_flutter/compare/v0.14.0...v0.14.1) (2024-07-15)
 
 
