@@ -16,7 +16,7 @@ void main() {
 
   testWidgets('ZetaPasswordInput initializes correctly', (WidgetTester tester) async {
     await tester.pumpWidget(
-      const TestApp(
+      TestApp(
         home: ZetaPasswordInput(),
       ),
     );
@@ -30,7 +30,7 @@ void main() {
 
   testWidgets('Test password visibility', (WidgetTester tester) async {
     await tester.pumpWidget(
-      const TestApp(
+      TestApp(
         home: ZetaPasswordInput(),
       ),
     );
@@ -78,20 +78,17 @@ void main() {
       matchesGoldenFile(join(getCurrentPath('password'), 'password_error.png')),
     );
   });
-
-  testWidgets('debugFillProperties works correctly', (WidgetTester tester) async {
+  testWidgets('Test debugFillProperties', (WidgetTester tester) async {
     final diagnostics = DiagnosticPropertiesBuilder();
-    const ZetaPasswordInput().debugFillProperties(diagnostics);
+    ZetaPasswordInput().debugFillProperties(diagnostics);
 
-    expect(diagnostics.finder('controller'), 'null');
-    expect(diagnostics.finder('obscureText'), 'true');
-    expect(diagnostics.finder('hintText'), 'null');
-    expect(diagnostics.finder('label'), 'null');
-    expect(diagnostics.finder('footerText'), 'null');
-    expect(diagnostics.finder('validator'), 'null');
-    expect(diagnostics.finder('size'), 'large');
+    expect(diagnostics.finder('size'), 'medium');
     expect(diagnostics.finder('placeholder'), 'null');
-    expect(diagnostics.finder('onSubmit'), 'null');
+    expect(diagnostics.finder('label'), 'null');
+    expect(diagnostics.finder('hintText'), 'null');
     expect(diagnostics.finder('errorText'), 'null');
+    expect(diagnostics.finder('semanticLabel'), 'null');
+    expect(diagnostics.finder('showSemanticLabel'), 'null');
+    expect(diagnostics.finder('obscureSemanticLabel'), 'null');
   });
 }

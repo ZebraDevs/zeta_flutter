@@ -7,6 +7,7 @@ import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import '../../../zeta_flutter.dart';
 import '../../interfaces/form_field.dart';
 import '../buttons/input_icon_button.dart';
+import '../text_input/internal_text_input.dart';
 
 /// A form field used to input dates.
 ///
@@ -20,19 +21,66 @@ class ZetaDateInput extends ZetaFormField<DateTime> {
     super.initialValue,
     super.onChange,
     super.requirementLevel = ZetaFormFieldRequirement.none,
-    super.rounded,
+    super.validator,
+    super.onFieldSubmitted,
+    super.onSaved,
+    super.autovalidateMode,
+    bool? rounded,
     this.label,
     this.hintText,
     this.errorText,
-    this.validator,
     this.size = ZetaWidgetSize.medium,
     this.dateFormat = 'MM/dd/yyyy',
-    this.minDate,
-    this.maxDate,
     this.pickerInitialEntryMode,
     this.datePickerSemanticLabel,
+    this.minDate,
+    this.maxDate,
     this.clearSemanticLabel,
-  }) : assert((minDate == null || maxDate == null) || minDate.isBefore(maxDate), 'minDate cannot be after maxDate');
+  }) : super(
+          builder: (field) {
+            final _ZetaDateInputState state = field as _ZetaDateInputState;
+            final colors = Zeta.of(field.context).colors;
+
+            return InternalTextInput(
+              label: label,
+              hintText: hintText,
+              errorText: field.errorText ?? errorText,
+              size: size,
+              placeholder: dateFormat,
+              controller: state.controller,
+              onSubmit: onFieldSubmitted != null ? (_) => onFieldSubmitted(field.value) : null,
+              requirementLevel: requirementLevel,
+              rounded: rounded,
+              disabled: disabled,
+              inputFormatters: [
+                state._dateFormatter,
+              ],
+              suffix: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  if (state.controller.text.isNotEmpty)
+                    InputIconButton(
+                      icon: ZetaIcons.cancel,
+                      onTap: state.clear,
+                      disabled: disabled,
+                      size: size,
+                      color: colors.iconSubtle,
+                      semanticLabel: clearSemanticLabel,
+                    ),
+                  InputIconButton(
+                    icon: ZetaIcons.calendar,
+                    onTap: state.pickDate,
+                    disabled: disabled,
+                    size: size,
+                    color: colors.iconDefault,
+                    semanticLabel: datePickerSemanticLabel,
+                  ),
+                ],
+              ),
+            );
+          },
+        );
 
   /// The label for the input.
   final String? label;
@@ -41,8 +89,6 @@ class ZetaDateInput extends ZetaFormField<DateTime> {
   final String? hintText;
 
   /// The error displayed below the input.
-  ///
-  /// If you want to have custom error messages for different types of error, use [validator].
   final String? errorText;
 
   /// The format the given date should be in
@@ -61,16 +107,6 @@ class ZetaDateInput extends ZetaFormField<DateTime> {
   /// The initial entry mode of the date picker.
   final DatePickerEntryMode? pickerInitialEntryMode;
 
-  /// The validator passed to the text input.
-  /// Returns a string containing an error message.
-  ///
-  /// By default, the form field checks for if the date is within [minDate] and [maxDate] (if given).
-  /// It also checks for null values unless [requirementLevel] is set to [ZetaFormFieldRequirement.optional]
-  ///
-  /// If the default validation fails, [errorText] will be shown.
-  /// However, if [validator] catches any of these conditions, the return value of [validator] will be shown.
-  final String? Function(DateTime? value)? validator;
-
   /// The semantic label for the clear button.
   ///
   /// {@macro zeta-widget-semantic-label}
@@ -82,48 +118,36 @@ class ZetaDateInput extends ZetaFormField<DateTime> {
   final String? datePickerSemanticLabel;
 
   @override
-  State<ZetaDateInput> createState() => ZetaDateInputState();
+  FormFieldState<DateTime> createState() => _ZetaDateInputState();
+
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty<bool>('rounded', rounded))
       ..add(ObjectFlagProperty<ValueChanged<DateTime?>?>.has('onChange', onChange))
       ..add(DiagnosticsProperty<DateTime?>('initialValue', initialValue))
-      ..add(DiagnosticsProperty<bool>('disabled', disabled))
       ..add(StringProperty('label', label))
       ..add(StringProperty('hintText', hintText))
       ..add(StringProperty('errorText', errorText))
       ..add(EnumProperty<ZetaWidgetSize>('size', size))
       ..add(ObjectFlagProperty<String? Function(DateTime value)?>.has('validator', validator))
       ..add(StringProperty('dateFormat', dateFormat))
-      ..add(DiagnosticsProperty<DateTime?>('minDate', minDate))
-      ..add(DiagnosticsProperty<DateTime?>('maxDate', maxDate))
       ..add(EnumProperty<DatePickerEntryMode?>('pickerInitialEntryMode', pickerInitialEntryMode))
       ..add(StringProperty('semanticCalendar', datePickerSemanticLabel))
-      ..add(StringProperty('semanticClear', clearSemanticLabel));
+      ..add(StringProperty('semanticClear', clearSemanticLabel))
+      ..add(DiagnosticsProperty<DateTime?>('minDate', minDate))
+      ..add(DiagnosticsProperty<DateTime?>('maxDate', maxDate));
   }
 }
 
 /// State for [ZetaDateInput]
-class ZetaDateInputState extends State<ZetaDateInput> implements ZetaFormFieldState {
-  ZetaColors get _colors => Zeta.of(context).colors;
-
+class _ZetaDateInputState extends FormFieldState<DateTime> {
   late final MaskTextInputFormatter _dateFormatter;
 
-  final _controller = TextEditingController();
-  final GlobalKey<ZetaTextInputState> _key = GlobalKey();
+  @override
+  ZetaDateInput get widget => super.widget as ZetaDateInput;
 
-  String? _errorText;
-
-  bool get _showClearButton => _controller.text.isNotEmpty;
-
-  DateTime? get _value {
-    final value = _dateFormatter.getMaskedText().trim();
-    final date = DateFormat(widget.dateFormat).tryParseStrict(value);
-
-    return date;
-  }
+  final TextEditingController controller = TextEditingController();
 
   @override
   void initState() {
@@ -133,34 +157,56 @@ class ZetaDateInputState extends State<ZetaDateInput> implements ZetaFormFieldSt
       type: MaskAutoCompletionType.eager,
     );
 
-    if (widget.initialValue != null) {
-      _setText(widget.initialValue!);
-      WidgetsBinding.instance.addPostFrameCallback((_) {
-        _key.currentState?.validate();
-      });
-    }
+    _setValue(widget.initialValue);
+    controller.addListener(_onChange);
     super.initState();
   }
 
   @override
   void dispose() {
-    _controller.dispose();
+    controller.dispose();
     super.dispose();
   }
 
+  @override
+  void reset() {
+    _setValue(widget.initialValue);
+    super.reset();
+  }
+
+  void clear() {
+    _setValue(null);
+  }
+
+  void _setValue(DateTime? value) {
+    final dateTimeStr = _dateTimeToString(value);
+    _dateFormatter.formatEditUpdate(
+      TextEditingValue.empty,
+      TextEditingValue(text: dateTimeStr),
+    );
+    controller.text = dateTimeStr;
+  }
+
+  DateTime? _parseValue() {
+    final value = _dateFormatter.getMaskedText().trim();
+    final date = DateFormat(widget.dateFormat).tryParseStrict(value);
+
+    return date;
+  }
+
+  String _dateTimeToString(DateTime? value) {
+    return value != null ? DateFormat(widget.dateFormat).format(value) : '';
+  }
+
   void _onChange() {
-    if (_dateFormatter.getMaskedText().length == widget.dateFormat.length && (_key.currentState?.validate() ?? false)) {
-      widget.onChange?.call(_value);
-    }
-    setState(() {});
+    final newValue = _parseValue();
+    widget.onChange?.call(newValue);
+    super.didChange(newValue);
   }
 
-  void _setText(DateTime value) {
-    _controller.text = DateFormat(widget.dateFormat).format(value);
-    _dateFormatter.formatEditUpdate(TextEditingValue.empty, _controller.value);
-  }
+  Future<void> pickDate() async {
+    final colors = Zeta.of(context).colors;
 
-  Future<void> _pickDate() async {
     final firstDate = widget.minDate ?? DateTime(0000);
     final lastDate = widget.maxDate ?? DateTime(3000);
     DateTime fallbackDate = DateTime.now();
@@ -171,10 +217,10 @@ class ZetaDateInputState extends State<ZetaDateInput> implements ZetaFormFieldSt
 
     late final DateTime initialDate;
 
-    if (_value == null || (_value != null && _value!.isBefore(firstDate) || _value!.isAfter(lastDate))) {
+    if (value == null || (value != null && value!.isBefore(firstDate) || value!.isAfter(lastDate))) {
       initialDate = fallbackDate;
     } else {
-      initialDate = _value!;
+      initialDate = value!;
     }
     final rounded = context.rounded;
 
@@ -187,14 +233,14 @@ class ZetaDateInputState extends State<ZetaDateInput> implements ZetaFormFieldSt
       builder: (BuildContext context, Widget? child) {
         return Theme(
           data: Theme.of(context).copyWith(
-            dividerTheme: DividerThemeData(color: _colors.borderSubtle),
+            dividerTheme: DividerThemeData(color: colors.borderSubtle),
             datePickerTheme: DatePickerThemeData(
               shape: RoundedRectangleBorder(
                 borderRadius: rounded ? ZetaRadius.rounded : ZetaRadius.none,
               ),
               headerHeadlineStyle: ZetaTextStyles.titleLarge,
               headerHelpStyle: ZetaTextStyles.labelLarge,
-              dividerColor: _colors.borderSubtle,
+              dividerColor: colors.borderSubtle,
               dayStyle: ZetaTextStyles.bodyMedium,
             ),
           ),
@@ -203,81 +249,13 @@ class ZetaDateInputState extends State<ZetaDateInput> implements ZetaFormFieldSt
       },
     );
     if (result != null) {
-      _setText(result);
+      _setValue(result);
     }
   }
 
   @override
-  void reset() {
-    _dateFormatter.clear();
-    _key.currentState?.reset();
-    setState(() {
-      _errorText = null;
-    });
-    _controller.clear();
-    widget.onChange?.call(null);
-  }
-
-  @override
-  bool validate() => _key.currentState?.validate() ?? false;
-
-  @override
-  Widget build(BuildContext context) {
-    return ZetaTextInput(
-      disabled: widget.disabled,
-      key: _key,
-      rounded: widget.rounded,
-      size: widget.size,
-      errorText: _errorText,
-      label: widget.label,
-      hintText: widget.hintText,
-      placeholder: widget.dateFormat,
-      controller: _controller,
-      inputFormatters: [
-        _dateFormatter,
-      ],
-      validator: (_) {
-        final customValidation = widget.validator?.call(_value);
-        if (_value == null ||
-            (widget.minDate != null && _value!.isBefore(widget.minDate!)) ||
-            (widget.maxDate != null && _value!.isAfter(widget.maxDate!)) ||
-            customValidation != null) {
-          setState(() {
-            _errorText = customValidation ?? widget.errorText ?? '';
-          });
-          return '';
-        }
-
-        setState(() {
-          _errorText = null;
-        });
-        return null;
-      },
-      onChange: (_) => _onChange(),
-      requirementLevel: widget.requirementLevel,
-      suffix: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          if (_showClearButton)
-            InputIconButton(
-              icon: ZetaIcons.cancel,
-              onTap: reset,
-              disabled: widget.disabled,
-              size: widget.size,
-              color: _colors.iconSubtle,
-              semanticLabel: widget.clearSemanticLabel,
-            ),
-          InputIconButton(
-            icon: ZetaIcons.calendar,
-            onTap: _pickDate,
-            disabled: widget.disabled,
-            size: widget.size,
-            color: _colors.iconDefault,
-            semanticLabel: widget.datePickerSemanticLabel,
-          ),
-        ],
-      ),
-    );
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty<TextEditingController>('controller', controller));
   }
 }

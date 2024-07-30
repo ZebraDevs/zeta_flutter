@@ -6,18 +6,23 @@ import '../../../zeta_flutter.dart';
 import '../../interfaces/form_field.dart';
 import '../buttons/input_icon_button.dart';
 import '../dropdown/dropdown_controller.dart';
+import '../text_input/internal_text_input.dart';
 
 /// Class for [ZetaSelectInput].
 /// {@category Components}
 class ZetaSelectInput<T> extends ZetaFormField<T> {
   ///Constructor of [ZetaSelectInput]
-  const ZetaSelectInput({
+  ZetaSelectInput({
     super.key,
-    super.rounded,
+    bool? rounded,
+    super.validator,
+    super.onFieldSubmitted,
+    super.autovalidateMode,
+    super.onSaved,
     super.disabled = false,
     super.initialValue,
     super.onChange,
-    super.requirementLevel = ZetaFormFieldRequirement.none,
+    super.requirementLevel,
     required this.items,
     this.onTextChanged,
     this.size = ZetaWidgetSize.medium,
@@ -25,10 +30,54 @@ class ZetaSelectInput<T> extends ZetaFormField<T> {
     this.hintText,
     this.prefix,
     this.placeholder,
-    this.validator,
     this.errorText,
     this.dropdownSemantics,
-  });
+  }) : super(
+          builder: (field) {
+            final _ZetaSelectInputState<T> state = field as _ZetaSelectInputState<T>;
+            final colors = Zeta.of(field.context).colors;
+
+            return ZetaRoundedScope(
+              rounded: rounded ?? field.context.rounded,
+              child: ZetaDropdown<T>(
+                disableButtonSemantics: true,
+                items: state.currentItems,
+                onChange: !disabled ? state.setItem : null,
+                key: state.dropdownKey,
+                value: state._selectedItem?.value,
+                offset: const Offset(0, ZetaSpacing.xl_1 * -1),
+                onDismissed: state.onDropdownDismissed,
+                builder: (context, _, controller) {
+                  return InternalTextInput(
+                    size: size,
+                    requirementLevel: requirementLevel,
+                    disabled: disabled,
+                    controller: state.inputController,
+                    focusNode: state.inputFocusNode,
+                    prefix: state._selectedItem?.icon ?? prefix,
+                    label: label,
+                    onSubmit: (_) {
+                      state.onInputSubmitted(controller);
+                      onFieldSubmitted?.call(state._selectedItem?.value);
+                    },
+                    errorText: field.errorText ?? errorText,
+                    placeholder: placeholder,
+                    hintText: hintText,
+                    onChange: (val) => state.onInputChanged(controller),
+                    suffix: InputIconButton(
+                      semanticLabel: dropdownSemantics,
+                      icon: controller.isOpen ? ZetaIcons.expand_less : ZetaIcons.expand_more,
+                      disabled: disabled,
+                      size: size,
+                      color: colors.iconSubtle,
+                      onTap: () => state.onIconTapped(controller),
+                    ),
+                  );
+                },
+              ),
+            );
+          },
+        );
 
   /// Input items as list of [ZetaDropdownItem]
   final List<ZetaDropdownItem<T>> items;
@@ -43,9 +92,6 @@ class ZetaSelectInput<T> extends ZetaFormField<T> {
 
   /// The error text shown beneath the input when the validator fails.
   final String? errorText;
-
-  /// The validator for the input.
-  final String? Function(T? value)? validator;
 
   /// Determines the size of the input field.
   /// Defaults to [ZetaWidgetSize.medium]
@@ -66,12 +112,12 @@ class ZetaSelectInput<T> extends ZetaFormField<T> {
   final String? dropdownSemantics;
 
   @override
-  State<ZetaSelectInput<T>> createState() => _ZetaSelectInputState<T>();
+  FormFieldState<T> createState() => _ZetaSelectInputState<T>();
+
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty<bool>('rounded', rounded))
       ..add(EnumProperty<ZetaWidgetSize?>('size', size))
       ..add(StringProperty('hint', hintText))
       ..add(ObjectFlagProperty<ValueSetter<String>?>.has('onTextChanged', onTextChanged))
@@ -84,19 +130,22 @@ class ZetaSelectInput<T> extends ZetaFormField<T> {
   }
 }
 
-class _ZetaSelectInputState<T> extends State<ZetaSelectInput<T>> {
-  final GlobalKey<ZetaDropDownState<T>> _dropdownKey = GlobalKey();
-  final TextEditingController _inputController = TextEditingController();
+class _ZetaSelectInputState<T> extends FormFieldState<T> {
+  @override
+  ZetaSelectInput<T> get widget => super.widget as ZetaSelectInput<T>;
+
+  final GlobalKey<ZetaDropDownState<T>> dropdownKey = GlobalKey();
+
+  final TextEditingController inputController = TextEditingController();
+  final FocusNode inputFocusNode = FocusNode();
+
+  late List<ZetaDropdownItem<T>> currentItems;
 
   ZetaDropdownItem<T>? _selectedItem;
 
-  bool get _dropdownOpen => _dropdownKey.currentState?.isOpen ?? false;
-
   @override
   void initState() {
-    _inputController.addListener(
-      () => setState(() {}),
-    );
+    currentItems = widget.items;
     _setInitialItem();
     super.initState();
   }
@@ -109,90 +158,88 @@ class _ZetaSelectInputState<T> extends State<ZetaSelectInput<T>> {
     }
   }
 
+  @override
+  void reset() {
+    super.reset();
+    _setInitialItem();
+    super.didChange(_selectedItem?.value);
+    widget.onChange?.call(_selectedItem?.value);
+  }
+
   void _setInitialItem() {
     _selectedItem = widget.items.firstWhereOrNull((item) => item.value == widget.initialValue);
-    _inputController.text = _selectedItem?.label ?? '';
+    inputController.text = _selectedItem?.label ?? '';
   }
 
-  void _onInputChanged(ZetaDropdownController dropdownController) {
-    dropdownController.open();
+  void onDropdownDismissed() {
     setState(() {
-      _selectedItem = null;
+      currentItems = widget.items;
+      _onLoseFocus();
     });
-    widget.onChange?.call(null);
   }
 
-  void _onIconTapped(ZetaDropdownController dropdownController) {
-    dropdownController.toggle();
-    setState(() {});
+  void onInputSubmitted(ZetaDropdownController dropdownController) {
+    if (dropdownController.isOpen && currentItems.isNotEmpty) {
+      setItem(currentItems.first);
+    }
+    dropdownController.close();
   }
 
-  void _onDropdownChanged(ZetaDropdownItem<T> item) {
-    _inputController.text = item.label;
-    setState(() {
-      _selectedItem = item;
-    });
-    widget.onChange?.call(item.value);
+  void _onLoseFocus() {
+    if (_selectedItem == null) {
+      inputController.text = '';
+    } else {
+      setItem(_selectedItem!);
+    }
   }
 
-  @override
-  Widget build(BuildContext context) {
-    final colors = Zeta.of(context).colors;
-
+  void _filterItems() {
     late List<ZetaDropdownItem<T>> filteredItems;
-    if (_inputController.text.isNotEmpty) {
+    if (inputController.text.isNotEmpty) {
       filteredItems = widget.items.where(
         (item) {
-          return item.label.toLowerCase().startsWith(_inputController.text.toLowerCase());
+          return item.label.toLowerCase().startsWith(inputController.text.toLowerCase());
         },
       ).toList();
     } else {
       filteredItems = widget.items;
     }
+    setState(() {
+      currentItems = filteredItems;
+    });
+  }
 
-    return ZetaRoundedScope(
-      rounded: context.rounded,
-      child: ZetaDropdown<T>(
-        disableButtonSemantics: true,
-        items: filteredItems,
-        onChange: !widget.disabled ? _onDropdownChanged : null,
-        key: _dropdownKey,
-        value: _selectedItem?.value,
-        offset: const Offset(0, ZetaSpacing.xl_1 * -1),
-        onDismissed: () => setState(() {}),
-        builder: (context, _, controller) {
-          return ZetaTextInput(
-            size: widget.size,
-            requirementLevel: widget.requirementLevel,
-            disabled: widget.disabled,
-            validator: (_) {
-              final currentValue = _selectedItem?.value;
-              String? errorText;
-              final customValidation = widget.validator?.call(currentValue);
-              if ((currentValue == null && widget.requirementLevel != ZetaFormFieldRequirement.optional) ||
-                  customValidation != null) {
-                errorText = customValidation ?? widget.errorText ?? '';
-              }
+  void onInputChanged(ZetaDropdownController dropdownController) {
+    dropdownController.open();
+    _filterItems();
+  }
 
-              return errorText;
-            },
-            controller: _inputController,
-            prefix: _selectedItem?.icon ?? widget.prefix,
-            label: widget.label,
-            placeholder: widget.placeholder,
-            hintText: widget.hintText,
-            onChange: (val) => _onInputChanged(controller),
-            suffix: InputIconButton(
-              semanticLabel: widget.dropdownSemantics,
-              icon: _dropdownOpen ? ZetaIcons.expand_less : ZetaIcons.expand_more,
-              disabled: widget.disabled,
-              size: widget.size,
-              color: colors.iconSubtle,
-              onTap: () => _onIconTapped(controller),
-            ),
-          );
-        },
-      ),
-    );
+  void onIconTapped(ZetaDropdownController dropdownController) {
+    dropdownController.toggle();
+    if (dropdownController.isOpen) {
+      inputFocusNode.requestFocus();
+      setState(() {
+        currentItems = widget.items;
+      });
+    }
+  }
+
+  void setItem(ZetaDropdownItem<T> item) {
+    inputController.text = item.label;
+    setState(() {
+      _selectedItem = item;
+    });
+    super.didChange(item.value);
+    widget.onChange?.call(item.value);
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty<GlobalKey<ZetaDropDownState<T>>>('dropdownKey', dropdownKey))
+      ..add(DiagnosticsProperty<TextEditingController>('inputController', inputController))
+      ..add(DiagnosticsProperty<FocusNode>('inputFocusNode', inputFocusNode))
+      ..add(IterableProperty<ZetaDropdownItem<T>>('currentItems', currentItems));
   }
 }

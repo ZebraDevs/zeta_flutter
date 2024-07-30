@@ -26,9 +26,9 @@ class _SearchBarExampleState extends State<SearchBarExample> {
             Padding(
               padding: const EdgeInsets.all(20),
               child: ZetaSearchBar(
-                onChanged: (value) {},
+                onChange: (value) {},
                 textInputAction: TextInputAction.search,
-                onSubmit: (text) {
+                onFieldSubmitted: (text) {
                   print(text);
                 },
               ),

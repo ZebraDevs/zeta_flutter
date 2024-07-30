@@ -40,18 +40,25 @@ class _PasswordInputExampleState extends State<PasswordInputExample> {
                     hintText: 'Password',
                     controller: _passwordController,
                     validator: (value) {
-                      if (value != null) {
-                        final regExp = RegExp(r'\d');
-                        if (regExp.hasMatch(value)) return 'Password is incorrect';
+                      print('validating');
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter a password';
                       }
                       return null;
                     },
                   ),
-                  ZetaButton.primary(
-                    label: 'Validate',
-                    onPressed: () {
-                      _formKey.currentState?.validate();
-                    },
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      ZetaButton(
+                        label: 'Reset',
+                        onPressed: () => _formKey.currentState?.reset(),
+                      ),
+                      ZetaButton(
+                        label: 'Validate',
+                        onPressed: () => _formKey.currentState?.validate(),
+                      ),
+                    ],
                   ),
                   SizedBox(height: ZetaSpacing.xl_6),
                   ...passwordInputExampleRow(ZetaWidgetSize.large),

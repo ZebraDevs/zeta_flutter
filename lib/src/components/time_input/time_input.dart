@@ -6,10 +6,10 @@ import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import '../../../zeta_flutter.dart';
 import '../../interfaces/form_field.dart';
 import '../buttons/input_icon_button.dart';
+import '../text_input/internal_text_input.dart';
 
 const _maxHrValue = 23;
 const _max12HrValue = 12;
-const _maxMinsValue = 59;
 
 /// A form field used to input time.
 ///
@@ -17,27 +17,77 @@ const _maxMinsValue = 59;
 /// {@category Components}
 class ZetaTimeInput extends ZetaFormField<TimeOfDay> {
   /// Creates a new [ZetaTimeInput]
-  const ZetaTimeInput({
+  ZetaTimeInput({
     super.key,
     super.disabled = false,
     super.initialValue,
     super.onChange,
     super.requirementLevel = ZetaFormFieldRequirement.none,
-    super.rounded,
-    this.use12Hr,
+    super.validator,
+    @Deprecated('Use use24HourFormat instead') bool use12Hr = true,
+    this.use24HourFormat = true,
     this.label,
     this.hintText,
     this.errorText,
-    this.validator,
     this.size = ZetaWidgetSize.medium,
     this.pickerInitialEntryMode,
     this.clearSemanticLabel,
     this.timePickerSemanticLabel,
-  });
+    super.autovalidateMode,
+    super.onFieldSubmitted,
+    super.onSaved,
+    bool? rounded,
+  }) : super(
+          builder: (field) {
+            final _ZetaTimeInputState state = field as _ZetaTimeInputState;
+            final colors = Zeta.of(field.context).colors;
+
+            return InternalTextInput(
+              label: label,
+              hintText: hintText,
+              errorText: field.errorText ?? errorText,
+              size: size,
+              placeholder: state.timeFormat,
+              controller: state.controller,
+              onSubmit: onFieldSubmitted != null ? (_) => onFieldSubmitted(state.value) : null,
+              requirementLevel: requirementLevel,
+              rounded: rounded,
+              disabled: disabled,
+              inputFormatters: [
+                state.timeFormatter,
+              ],
+              suffix: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  if (state.controller.text.isNotEmpty)
+                    InputIconButton(
+                      icon: ZetaIcons.cancel,
+                      semanticLabel: clearSemanticLabel,
+                      onTap: state.clear,
+                      disabled: disabled,
+                      size: size,
+                      color: colors.iconSubtle,
+                    ),
+                  InputIconButton(
+                    icon: ZetaIcons.clock_outline,
+                    semanticLabel: timePickerSemanticLabel,
+                    onTap: state.pickTime,
+                    disabled: disabled,
+                    size: size,
+                    color: colors.iconDefault,
+                  ),
+                ],
+              ),
+            );
+          },
+        );
 
   /// Changes the time input to 12 hour time.
-  /// Uses the device default if not set.
-  final bool? use12Hr;
+  /// Defaults to true.
+  ///
+  /// If you want to set this to the device's default use `MediaQuery.of(context).alwaysUse24HourFormat`
+  final bool use24HourFormat;
 
   /// The label for the input.
   final String? label;
@@ -54,16 +104,6 @@ class ZetaTimeInput extends ZetaFormField<TimeOfDay> {
   /// The initial entry mode of the time picker.
   final TimePickerEntryMode? pickerInitialEntryMode;
 
-  /// The validator passed to the text input.
-  /// Returns a string containing an error message.
-  ///
-  /// By default, the input checks for invalid hour or minute values.
-  /// It also checks for null values unless [requirementLevel] is set to [ZetaFormFieldRequirement.optional]
-  ///
-  /// If the default validation fails, [errorText] will be shown.
-  /// However, if [validator] catches any of these conditions, the return value of [validator] will be shown.
-  final String? Function(TimeOfDay? value)? validator;
-
   /// Semantic label for the clear button.
   ///
   /// {@macro zeta-widget-semantic-label}
@@ -75,16 +115,15 @@ class ZetaTimeInput extends ZetaFormField<TimeOfDay> {
   final String? timePickerSemanticLabel;
 
   @override
-  State<ZetaTimeInput> createState() => ZetaTimeInputState();
+  FormFieldState<TimeOfDay> createState() => _ZetaTimeInputState();
+
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty<bool>('rounded', rounded))
-      ..add(DiagnosticsProperty<bool>('use12Hr', use12Hr))
+      ..add(DiagnosticsProperty<bool>('use12Hr', use24HourFormat))
       ..add(ObjectFlagProperty<ValueChanged<TimeOfDay?>?>.has('onChange', onChange))
       ..add(DiagnosticsProperty<TimeOfDay?>('initialValue', initialValue))
-      ..add(DiagnosticsProperty<bool>('disabled', disabled))
       ..add(StringProperty('label', label))
       ..add(StringProperty('hintText', hintText))
       ..add(StringProperty('errorText', errorText))
@@ -97,93 +136,105 @@ class ZetaTimeInput extends ZetaFormField<TimeOfDay> {
 }
 
 /// State for [ZetaTimeInput]
-class ZetaTimeInputState extends State<ZetaTimeInput> implements ZetaFormFieldState {
+class _ZetaTimeInputState extends FormFieldState<TimeOfDay> {
   // TODO(UX-1032): add AM/PM selector inline.
 
-  ZetaColors get _colors => Zeta.of(context).colors;
+  @override
+  ZetaTimeInput get widget => super.widget as ZetaTimeInput;
 
-  final _timeFormat = 'hh:mm'; // TODO(UX-1003): needs localizing.
-  late final MaskTextInputFormatter _timeFormatter;
+  final String timeFormat = 'hh:mm'; // TODO(UX-1003): needs localizing.
 
-  bool _firstBuildComplete = false;
-  bool get _use12Hr => widget.use12Hr ?? !MediaQuery.of(context).alwaysUse24HourFormat;
+  bool get _use24HourFormat => widget.use24HourFormat;
 
-  final _controller = TextEditingController();
-  final GlobalKey<ZetaTextInputState> _key = GlobalKey();
+  late final MaskTextInputFormatter timeFormatter;
+  final TextEditingController controller = TextEditingController();
 
-  String? _errorText;
+  int get _hrsLimit => !_use24HourFormat ? _max12HrValue : _maxHrValue;
 
-  bool get _showClearButton => _controller.text.isNotEmpty;
+  @override
+  void initState() {
+    timeFormatter = MaskTextInputFormatter(
+      mask: timeFormat.replaceAll(RegExp('[a-z]'), '#'),
+      filter: {'#': RegExp('[0-9]')},
+      type: MaskAutoCompletionType.eager,
+    );
 
-  int get _hrsLimit => _use12Hr ? _max12HrValue : _maxHrValue;
-  final int _minsLimit = _maxMinsValue;
+    _setValue(widget.initialValue);
+    controller.addListener(_onChange);
+    super.initState();
+  }
 
-  TimeOfDay? get _value {
-    final splitValue = _timeFormatter.getMaskedText().trim().split(':');
-    if (splitValue.length > 1) {
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  void reset() {
+    _setValue(widget.initialValue);
+    super.reset();
+  }
+
+  void clear() {
+    _setValue(null);
+  }
+
+  void _setValue(TimeOfDay? value) {
+    final timeOfDayStr = _timeOfDayToString(value);
+    timeFormatter.formatEditUpdate(
+      TextEditingValue.empty,
+      TextEditingValue(text: timeOfDayStr),
+    );
+    controller.text = timeOfDayStr;
+  }
+
+  TimeOfDay? _parseValue() {
+    final splitValue = timeFormatter.getMaskedText().trim().split(':');
+    if (splitValue.length > 1 && splitValue[1].length > 1) {
       final hrsValue = int.tryParse(splitValue[0]);
       final minsValue = int.tryParse(splitValue[1]);
       if (hrsValue != null && minsValue != null) {
         return TimeOfDay(hour: hrsValue, minute: minsValue);
       }
     }
+
     return null;
   }
 
-  @override
-  void initState() {
-    _timeFormatter = MaskTextInputFormatter(
-      mask: _timeFormat.replaceAll(RegExp('[a-z]'), '#'),
-      filter: {'#': RegExp('[0-9]')},
-      type: MaskAutoCompletionType.eager,
-    );
+  String _timeOfDayToString(TimeOfDay? value) {
+    if (value == null) return '';
 
-    if (widget.initialValue != null) {
-      WidgetsBinding.instance.addPostFrameCallback((_) {
-        _key.currentState?.validate();
-      });
-    }
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-
-    super.dispose();
-  }
-
-  void _onChange() {
-    if (_timeFormatter.getUnmaskedText().length > (_timeFormat.length - 2) &&
-        (_key.currentState?.validate() ?? false)) {
-      widget.onChange?.call(_value);
-    }
-    setState(() {});
-  }
-
-  void _setText(TimeOfDay value) {
-    final hrsValue = _use12Hr && value.hour > _hrsLimit ? value.hour - _hrsLimit : value.hour;
+    final hrsValue = !_use24HourFormat && value.hour > _hrsLimit ? value.hour - _hrsLimit : value.hour;
 
     final hrText = hrsValue.toString().padLeft(2, '0');
     final minText = value.minute.toString().padLeft(2, '0');
 
-    _controller.text = _timeFormatter.maskText(hrText + minText);
-    _timeFormatter.formatEditUpdate(TextEditingValue.empty, _controller.value);
+    return timeFormatter.maskText(hrText + minText);
   }
 
-  Future<void> _pickTime() async {
+  void _onChange() {
+    final newValue = _parseValue();
+    super.didChange(newValue);
+    if (newValue != value) {
+      widget.onChange?.call(newValue);
+    }
+  }
+
+  Future<void> pickTime() async {
     final rounded = context.rounded;
+    final colors = Zeta.of(context).colors;
 
     final result = await showTimePicker(
       context: context,
       initialEntryMode: widget.pickerInitialEntryMode ?? TimePickerEntryMode.dial,
-      initialTime: _value ?? TimeOfDay.now(),
+      initialTime: value ?? TimeOfDay.now(),
       builder: (BuildContext context, Widget? child) {
         return Theme(
           data: Theme.of(context).copyWith(
             timePickerTheme: TimePickerThemeData(
-              dialBackgroundColor: _colors.warm.shade30,
-              dayPeriodColor: _colors.primary,
+              dialBackgroundColor: colors.warm.shade30,
+              dayPeriodColor: colors.primary,
               shape: RoundedRectangleBorder(
                 borderRadius: rounded ? ZetaRadius.rounded : ZetaRadius.none,
               ),
@@ -198,89 +249,23 @@ class ZetaTimeInputState extends State<ZetaTimeInput> implements ZetaFormFieldSt
             ),
           ),
           child: MediaQuery(
-            data: MediaQuery.of(context).copyWith(alwaysUse24HourFormat: !_use12Hr),
+            data: MediaQuery.of(context).copyWith(alwaysUse24HourFormat: _use24HourFormat),
             child: child!,
           ),
         );
       },
     );
     if (result != null) {
-      _setText(result);
+      _setValue(result);
     }
   }
 
   @override
-  void reset() {
-    _timeFormatter.clear();
-    _key.currentState?.reset();
-    setState(() {
-      _errorText = null;
-    });
-    _controller.clear();
-    widget.onChange?.call(null);
-  }
-
-  @override
-  bool validate() => _key.currentState?.validate() ?? false;
-
-  @override
-  Widget build(BuildContext context) {
-    if (!_firstBuildComplete && widget.initialValue != null) {
-      _setText(widget.initialValue!);
-      _firstBuildComplete = true;
-    }
-    return ZetaTextInput(
-      disabled: widget.disabled,
-      key: _key,
-      size: widget.size,
-      errorText: _errorText,
-      rounded: widget.rounded,
-      label: widget.label,
-      hintText: widget.hintText,
-      placeholder: _timeFormat,
-      controller: _controller,
-      inputFormatters: [
-        _timeFormatter,
-      ],
-      validator: (_) {
-        String? errorText;
-        final customValidation = widget.validator?.call(_value);
-        if ((_value == null && widget.requirementLevel != ZetaFormFieldRequirement.optional) ||
-            (_value != null && (_value!.hour > _hrsLimit || _value!.minute > _minsLimit)) ||
-            customValidation != null) {
-          errorText = customValidation ?? widget.errorText ?? '';
-        }
-
-        setState(() {
-          _errorText = errorText;
-        });
-        return errorText;
-      },
-      onChange: (_) => _onChange(),
-      requirementLevel: widget.requirementLevel,
-      suffix: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          if (_showClearButton)
-            InputIconButton(
-              icon: ZetaIcons.cancel,
-              semanticLabel: widget.clearSemanticLabel,
-              onTap: reset,
-              disabled: widget.disabled,
-              size: widget.size,
-              color: _colors.iconSubtle,
-            ),
-          InputIconButton(
-            icon: ZetaIcons.clock_outline,
-            semanticLabel: widget.timePickerSemanticLabel,
-            onTap: _pickTime,
-            disabled: widget.disabled,
-            size: widget.size,
-            color: _colors.iconDefault,
-          ),
-        ],
-      ),
-    );
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(StringProperty('timeFormat', timeFormat))
+      ..add(DiagnosticsProperty<MaskTextInputFormatter>('timeFormatter', timeFormatter))
+      ..add(DiagnosticsProperty<TextEditingController>('controller', controller));
   }
 }

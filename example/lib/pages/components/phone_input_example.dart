@@ -12,67 +12,67 @@ class PhoneInputExample extends StatefulWidget {
 }
 
 class _PhoneInputExampleState extends State<PhoneInputExample> {
-  String? _errorText;
+  final key = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     return ExampleScaffold(
       name: 'Phone Input',
       child: SingleChildScrollView(
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(20),
-              child: ZetaPhoneInput(
-                label: 'Phone number',
-                hintText: 'Enter your phone number',
-                hasError: _errorText != null,
-                errorText: _errorText,
-                onChange: (value) {
-                  if (value?.isEmpty ?? true) setState(() => _errorText = null);
-                  print(value);
-                },
-                initialCountry: 'GB',
-                countries: ['US', 'GB', 'DE', 'AT', 'FR', 'IT', 'BG'],
+        child: Form(
+          key: key,
+          child: Column(
+            children: [
+              ZetaButton(label: 'Reset', onPressed: () => key.currentState?.reset()),
+              Padding(
+                padding: const EdgeInsets.all(20),
+                child: ZetaPhoneInput(
+                  label: 'Phone number',
+                  hintText: 'Enter your phone number',
+                  initialValue: const PhoneNumber(dialCode: '+44', number: '1234567890'),
+                  onChange: (value) {
+                    print(value?.dialCode);
+                    print(value?.number);
+                  },
+                  countries: ['US', 'GB', 'DE', 'AT', 'FR', 'IT', 'BG'],
+                ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(20),
-              child: ZetaPhoneInput(
-                label: 'Phone number',
-                hintText: 'Enter your phone number',
-                hasError: _errorText != null,
-                size: ZetaWidgetSize.large,
-                errorText: 'Error',
-                onChange: (value) {
-                  if (value?.isEmpty ?? true) setState(() => _errorText = null);
-                  print(value);
-                },
-                countries: ['US', 'GB', 'DE', 'AT', 'FR', 'IT', 'BG'],
-                selectCountrySemanticLabel: 'Choose country code',
+              Padding(
+                padding: const EdgeInsets.all(20),
+                child: ZetaPhoneInput(
+                  label: 'Phone number',
+                  hintText: 'Enter your phone number',
+                  size: ZetaWidgetSize.large,
+                  errorText: 'Error',
+                  onChange: (value) {
+                    print(value);
+                  },
+                  countries: ['US', 'GB', 'DE', 'AT', 'FR', 'IT', 'BG'],
+                  selectCountrySemanticLabel: 'Choose country code',
+                ),
               ),
-            ),
-            Divider(color: Colors.grey[200]),
-            Padding(
-              padding: const EdgeInsets.only(top: 20),
-              child: Text('Disabled', style: ZetaTextStyles.titleMedium),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(20),
-              child: ZetaPhoneInput(
-                label: 'Phone number',
-                hintText: 'Enter your phone number',
-                disabled: true,
+              Divider(color: Colors.grey[200]),
+              Padding(
+                padding: const EdgeInsets.only(top: 20),
+                child: Text('Disabled', style: ZetaTextStyles.titleMedium),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(20),
-              child: ZetaPhoneInput(
-                label: 'Phone number',
-                hintText: 'Enter your phone number',
+              Padding(
+                padding: const EdgeInsets.all(20),
+                child: ZetaPhoneInput(
+                  label: 'Phone number',
+                  hintText: 'Enter your phone number',
+                  disabled: true,
+                ),
               ),
-            ),
-          ],
+              Padding(
+                padding: const EdgeInsets.all(20),
+                child: ZetaPhoneInput(
+                  label: 'Phone number',
+                  hintText: 'Enter your phone number',
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

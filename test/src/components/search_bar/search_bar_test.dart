@@ -40,7 +40,7 @@ void main() {
   group('ZetaSearchBar', () {
     testWidgets('renders with default parameters', (WidgetTester tester) async {
       await tester.pumpWidget(
-        const TestApp(
+        TestApp(
           home: Scaffold(
             body: ZetaSearchBar(),
           ),
@@ -53,7 +53,7 @@ void main() {
 
     testWidgets('golden: renders initializes correctly', (WidgetTester tester) async {
       await tester.pumpWidget(
-        const TestApp(
+        TestApp(
           home: ZetaSearchBar(),
         ),
       );
@@ -67,10 +67,8 @@ void main() {
 
     testWidgets('golden: renders size medium correctly', (WidgetTester tester) async {
       await tester.pumpWidget(
-        const TestApp(
-          home: ZetaSearchBar(
-            size: ZetaWidgetSize.medium,
-          ),
+        TestApp(
+          home: ZetaSearchBar(),
         ),
       );
       expect(find.byType(ZetaSearchBar), findsOneWidget);
@@ -83,7 +81,7 @@ void main() {
 
     testWidgets('golden: renders size small correctly', (WidgetTester tester) async {
       await tester.pumpWidget(
-        const TestApp(
+        TestApp(
           home: ZetaSearchBar(
             size: ZetaWidgetSize.small,
           ),
@@ -99,7 +97,7 @@ void main() {
 
     testWidgets('golden: renders shape full correctly', (WidgetTester tester) async {
       await tester.pumpWidget(
-        const TestApp(
+        TestApp(
           home: ZetaSearchBar(
             shape: ZetaWidgetBorder.full,
           ),
@@ -115,7 +113,7 @@ void main() {
 
     testWidgets('golden: renders shape sharp correctly', (WidgetTester tester) async {
       await tester.pumpWidget(
-        const TestApp(
+        TestApp(
           home: ZetaSearchBar(
             shape: ZetaWidgetBorder.sharp,
           ),
@@ -133,7 +131,7 @@ void main() {
       const initialValue = 'Initial value';
 
       await tester.pumpWidget(
-        const TestApp(
+        TestApp(
           home: Scaffold(
             body: ZetaSearchBar(initialValue: initialValue),
           ),
@@ -149,7 +147,7 @@ void main() {
       const updatedValue = 'Updated value';
 
       await tester.pumpWidget(
-        const TestApp(
+        TestApp(
           home: Scaffold(
             body: ZetaSearchBar(initialValue: initialValue),
           ),
@@ -160,7 +158,7 @@ void main() {
       expect(find.text(initialValue), findsOneWidget);
 
       await tester.pumpWidget(
-        const TestApp(
+        TestApp(
           home: Scaffold(
             body: ZetaSearchBar(initialValue: updatedValue),
           ),
@@ -175,7 +173,7 @@ void main() {
       await tester.pumpWidget(
         TestApp(
           home: Scaffold(
-            body: ZetaSearchBar(onChanged: callbacks.onChange),
+            body: ZetaSearchBar(onChange: callbacks.onChange),
           ),
         ),
       );
@@ -191,7 +189,7 @@ void main() {
       await tester.pumpWidget(
         TestApp(
           home: Scaffold(
-            body: ZetaSearchBar(onSubmit: callbacks.onSubmit),
+            body: ZetaSearchBar(onFieldSubmitted: callbacks.onSubmit),
           ),
         ),
       );
@@ -226,7 +224,7 @@ void main() {
 
     testWidgets('does not allow text input when disabled', (WidgetTester tester) async {
       await tester.pumpWidget(
-        const TestApp(
+        TestApp(
           home: Scaffold(
             body: ZetaSearchBar(disabled: true),
           ),
@@ -240,12 +238,11 @@ void main() {
       expect(find.text('Disabled input'), findsNothing);
     });
 
-    testWidgets('leading icon and speech-to-text button visibility', (WidgetTester tester) async {
+    testWidgets('speech-to-text button visibility', (WidgetTester tester) async {
       await tester.pumpWidget(
-        const TestApp(
+        TestApp(
           home: Scaffold(
             body: ZetaSearchBar(
-              showLeadingIcon: false,
               showSpeechToText: false,
             ),
           ),
@@ -261,7 +258,7 @@ void main() {
       await tester.pumpWidget(
         TestApp(
           home: Scaffold(
-            body: ZetaSearchBar(onChanged: callbacks.onChange),
+            body: ZetaSearchBar(onChange: callbacks.onChange),
           ),
         ),
       );
@@ -278,45 +275,19 @@ void main() {
       verify(callbacks.onChange.call('')).called(1);
     });
 
-    test('debugFillProperties sets the correct properties', () {
-      const size = ZetaWidgetSize.medium;
-      const shape = ZetaWidgetBorder.rounded;
-      const hint = 'Search here';
-      const initialValue = 'Initial value';
-      const disabled = true;
-      const showLeadingIcon = false;
-      const showSpeechToText = false;
-      const textInputAction = TextInputAction.search;
+    test('debugFillProperties', () {
+      final diagnostics = DiagnosticPropertiesBuilder();
+      ZetaSearchBar().debugFillProperties(diagnostics);
 
-      final widget = ZetaSearchBar(
-        size: size,
-        shape: shape,
-        hint: hint,
-        initialValue: initialValue,
-        onChanged: callbacks.onChange,
-        onSubmit: callbacks.onSubmit,
-        onSpeechToText: callbacks.onSpeech,
-        disabled: disabled,
-        showLeadingIcon: showLeadingIcon,
-        showSpeechToText: showSpeechToText,
-        textInputAction: textInputAction,
-      );
-
-      final DiagnosticPropertiesBuilder builder = DiagnosticPropertiesBuilder();
-      widget.debugFillProperties(builder);
-
-      expect(builder.findProperty('size'), size);
-      expect(builder.findProperty('shape'), shape);
-      expect(builder.findProperty('hint'), hint);
-      expect(builder.findProperty('enabled'), disabled);
-      expect(builder.findProperty('initialValue'), initialValue);
-      expect(builder.findProperty('showLeadingIcon'), showLeadingIcon);
-      expect(builder.findProperty('showSpeechToText'), showSpeechToText);
-      expect(builder.findProperty('textInputAction'), textInputAction);
-      expect(builder.findProperty('focusNode'), null);
-      expect(builder.findProperty('onChanged'), callbacks.onChange);
-      expect(builder.findProperty('onSpeechToText'), callbacks.onSpeech);
-      expect(builder.findProperty('onSubmit'), callbacks.onSubmit);
+      expect(diagnostics.finder('size'), 'medium');
+      expect(diagnostics.finder('shape'), 'rounded');
+      expect(diagnostics.finder('hintText'), 'null');
+      expect(diagnostics.finder('textInputAction'), 'null');
+      expect(diagnostics.finder('onSpeechToText'), 'null');
+      expect(diagnostics.finder('showSpeechToText'), 'true');
+      expect(diagnostics.finder('focusNode'), 'null');
+      expect(diagnostics.finder('microphoneSemanticLabel'), 'null');
+      expect(diagnostics.finder('clearSemanticLabel'), 'null');
     });
   });
 }
