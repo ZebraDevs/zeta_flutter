@@ -5,7 +5,7 @@ description: Zeta is the new, formal, standardized Zebra Design System based off
   and so many aspects are incomplete.
 homepage: https://github.com/zebradevs/zeta_flutter
 repository: https://github.com/zebradevs/zeta_flutter
-issue_tracker: https://github.com/zebradevs/zeta_flutter/issues
+issue_tracker: https://github.com/ZebraDevs/zeta_flutter/issues
 documentation: https://zeta-ds.web.app/flutter/dartdoc/index.html
 
 platforms:
@@ -28,7 +28,7 @@ dependencies:
   flutter_slidable: ^3.1.0
   intl: ^0.19.0
   mask_text_input_formatter: ^2.9.0
-  web: ^0.5.1
+  web: ^1.0.0
 
 dev_dependencies:
   build_runner: ^2.4.10
