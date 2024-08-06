@@ -199,7 +199,7 @@ class ZetaAvatar extends ZetaStatelessWidget {
             : null);
 
     final innerContent = ClipRRect(
-      borderRadius: ZetaRadius.full,
+      borderRadius: Zeta.of(context).radii.full,
       child: innerChild,
     );
 
@@ -215,7 +215,7 @@ class ZetaAvatar extends ZetaStatelessWidget {
                 height: sizePixels(context),
                 decoration: BoxDecoration(
                   border: borderColor != null ? Border.all(color: borderColor!, width: 0) : null,
-                  borderRadius: ZetaRadius.full,
+                  borderRadius: Zeta.of(context).radii.full,
                   color: backgroundColor ?? (_showPlaceholder ? zetaColors.surfacePrimary : zetaColors.cool.shade20),
                 ),
                 child: borderColor != null
@@ -225,20 +225,20 @@ class ZetaAvatar extends ZetaStatelessWidget {
                         decoration: BoxDecoration(
                           color: backgroundColor ?? zetaColors.surfaceHover,
                           border: Border.all(color: borderColor!, width: borderSize(context)),
-                          borderRadius: ZetaRadius.full,
+                          borderRadius: Zeta.of(context).radii.full,
                         ),
                         child: ClipRRect(
-                          borderRadius: ZetaRadius.full,
+                          borderRadius: Zeta.of(context).radii.full,
                           child: innerContent,
                         ),
                       )
                     : DecoratedBox(
                         decoration: BoxDecoration(
-                          borderRadius: ZetaRadius.full,
+                          borderRadius: Zeta.of(context).radii.full,
                           color: backgroundColor ?? zetaColors.surfaceHover,
                         ),
                         child: ClipRRect(
-                          borderRadius: ZetaRadius.full,
+                          borderRadius: Zeta.of(context).radii.full,
                           child: innerContent,
                         ),
                       ),
@@ -324,7 +324,7 @@ extension on ZetaAvatarSize {
       case ZetaAvatarSize.xs:
       case ZetaAvatarSize.xxs:
       case ZetaAvatarSize.xxxs:
-        return ZetaSpacingBase.x0_5;
+        return Zeta.of(context).spacing.minimum / 2; //2dp
     }
   }
 
@@ -440,7 +440,7 @@ class ZetaAvatarBadge extends StatelessWidget {
       margin: const EdgeInsets.all(0.01),
       decoration: BoxDecoration(
         color: backgroundColor,
-        borderRadius: ZetaRadius.full,
+        borderRadius: Zeta.of(context).radii.full,
       ),
       child: value != null
           ? Center(
@@ -466,7 +466,7 @@ class ZetaAvatarBadge extends StatelessWidget {
       width: type == ZetaAvatarBadgeType.icon ? paddedSize : badgeSize * 1.8,
       height: type == ZetaAvatarBadgeType.icon ? paddedSize : badgeSize,
       decoration: BoxDecoration(
-        borderRadius: ZetaRadius.full,
+        borderRadius: Zeta.of(context).radii.full,
         border: type != ZetaAvatarBadgeType.notification
             ? Border.all(
                 width: borderSize,

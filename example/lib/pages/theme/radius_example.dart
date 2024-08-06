@@ -9,7 +9,12 @@ class RadiusExample extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<BorderRadius> radii = [ZetaRadius.none, ZetaRadius.minimal, ZetaRadius.rounded, ZetaRadius.full];
+    List<BorderRadius> radii = [
+      Zeta.of(context).radii.none,
+      Zeta.of(context).radii.minimal,
+      Zeta.of(context).radii.rounded,
+      Zeta.of(context).radii.full
+    ];
     final colors = Zeta.of(context).colors;
     return ExampleScaffold(
       name: name,
@@ -61,10 +66,11 @@ class RadiusExample extends StatelessWidget {
 
 extension on BorderRadius {
   String get radiusString {
-    if (topLeft.x == 0) return 'ZetaRadius.none';
-    if (topLeft.x == 4) return 'ZetaRadius.minimal';
-    if (topLeft.x == 8) return 'ZetaRadius.rounded';
-    if (topLeft.x == 24) return 'ZetaRadius.wide';
-    return 'ZetaRadius.full';
+    if (topLeft.x == 0) return 'Zeta.of(context).radii.none';
+    if (topLeft.x == 4) return 'Zeta.of(context).radii.minimal';
+    if (topLeft.x == 8) return 'Zeta.of(context).radii.rounded';
+    if (topLeft.x == 16) return 'Zeta.of(context).radii.large';
+    if (topLeft.x == 24) return 'Zeta.of(context).radii.xl';
+    return 'Zeta.of(context).radii.full';
   }
 }

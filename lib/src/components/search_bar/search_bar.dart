@@ -40,9 +40,9 @@ class ZetaSearchBar extends ZetaTextFormField {
             final _ZetaSearchBarState state = field as _ZetaSearchBarState;
 
             final BorderRadius borderRadius = switch (shape) {
-              ZetaWidgetBorder.rounded => ZetaRadius.minimal,
-              ZetaWidgetBorder.full => ZetaRadius.full,
-              _ => ZetaRadius.none,
+              ZetaWidgetBorder.rounded => zeta.radii.minimal,
+              ZetaWidgetBorder.full => zeta.radii.full,
+              _ => zeta.radii.none,
             };
 
             final defaultInputBorder = OutlineInputBorder(

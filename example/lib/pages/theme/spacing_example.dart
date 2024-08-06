@@ -3,6 +3,7 @@ import 'package:path_drawing/path_drawing.dart';
 import 'package:zeta_example/widgets.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
+//TODO: Fix this example
 Map<String, double> semanticSpacings = {
   // 'none': Zeta.of(context).spacing.none,
   // 'minimum': Zeta.of(context).spacing.minimum,
@@ -22,24 +23,24 @@ Map<String, double> semanticSpacings = {
   // '11xl': Zeta.of(context).spacing.xl_11,
 };
 Map<String, double> baseSpacings = {
-  'x1': ZetaSpacingBase.x1,
-  'x2': ZetaSpacingBase.x2,
-  'x3': ZetaSpacingBase.x3,
-  'x3.5': ZetaSpacingBase.x3_5,
-  'x4': ZetaSpacingBase.x4,
-  'x5': ZetaSpacingBase.x5,
-  'x6': ZetaSpacingBase.x6,
-  'x7': ZetaSpacingBase.x7,
-  'x8': ZetaSpacingBase.x8,
-  'x9': ZetaSpacingBase.x9,
-  'x10': ZetaSpacingBase.x10,
-  'x11': ZetaSpacingBase.x11,
-  'x12': ZetaSpacingBase.x12,
-  'x13': ZetaSpacingBase.x13,
-  'x14': ZetaSpacingBase.x14,
-  'x15': ZetaSpacingBase.x15,
-  'x30': ZetaSpacingBase.x30,
-  'x50': ZetaSpacingBase.x50,
+  // 'x1': ZetaSpacingBase.x1,
+  // 'x2': ZetaSpacingBase.x2,
+  // 'x3': ZetaSpacingBase.x3,
+  // 'x3.5': ZetaSpacingBase.x3_5,
+  // 'x4': ZetaSpacingBase.x4,
+  // 'x5': ZetaSpacingBase.x5,
+  // 'x6': ZetaSpacingBase.x6,
+  // 'x7': ZetaSpacingBase.x7,
+  // 'x8': ZetaSpacingBase.x8,
+  // 'x9': ZetaSpacingBase.x9,
+  // 'x10': ZetaSpacingBase.x10,
+  // 'x11': ZetaSpacingBase.x11,
+  // 'x12': ZetaSpacingBase.x12,
+  // 'x13': ZetaSpacingBase.x13,
+  // 'x14': ZetaSpacingBase.x14,
+  // 'x15': ZetaSpacingBase.x15,
+  // 'x30': ZetaSpacingBase.x30,
+  // 'x50': ZetaSpacingBase.x50,
 };
 
 class SpacingExample extends StatelessWidget {

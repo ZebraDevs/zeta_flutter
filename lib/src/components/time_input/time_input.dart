@@ -236,13 +236,13 @@ class _ZetaTimeInputState extends FormFieldState<TimeOfDay> {
               dialBackgroundColor: colors.warm.shade30,
               dayPeriodColor: colors.primary,
               shape: RoundedRectangleBorder(
-                borderRadius: rounded ? ZetaRadius.rounded : ZetaRadius.none,
+                borderRadius: rounded ? Zeta.of(context).radii.rounded : Zeta.of(context).radii.none,
               ),
               inputDecorationTheme: InputDecorationTheme(
                 filled: true,
                 isDense: true,
                 border: OutlineInputBorder(
-                  borderRadius: rounded ? ZetaRadius.minimal : ZetaRadius.none,
+                  borderRadius: rounded ? Zeta.of(context).radii.minimal : Zeta.of(context).radii.none,
                   borderSide: BorderSide.none,
                 ),
               ),

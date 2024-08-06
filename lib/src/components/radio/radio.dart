@@ -59,7 +59,7 @@ class _ZetaRadioState<T> extends State<ZetaRadio<T>> with TickerProviderStateMix
         color: Colors.transparent,
         child: InkWell(
           onTap: !states.contains(WidgetState.disabled) ? () => onChanged?.call(true) : null,
-          borderRadius: ZetaRadius.full,
+          borderRadius: Zeta.of(context).radii.full,
           child: Semantics(
             inMutuallyExclusiveGroup: true,
             checked: widget._selected,

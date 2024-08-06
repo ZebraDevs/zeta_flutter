@@ -39,7 +39,7 @@ class _IconsExampleState extends State<IconsExample> {
                       width: 120,
                       height: 120,
                       child: InkWell(
-                        borderRadius: ZetaRadius.rounded,
+                        borderRadius: Zeta.of(context).radii.rounded,
                         hoverColor: Zeta.of(context).colors.surfaceHover,
                         onTap: () async {
                           await Clipboard.setData(ClipboardData(text: 'ZetaIcons.' + e.key));

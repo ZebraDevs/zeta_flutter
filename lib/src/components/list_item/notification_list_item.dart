@@ -108,8 +108,8 @@ class ZetaNotificationListItem extends ZetaStatelessWidget {
                                   ),
                                 Container(
                                   padding: const EdgeInsets.all(2),
-                                  decoration:
-                                      BoxDecoration(color: colors.surfaceNegative, borderRadius: ZetaRadius.full),
+                                  decoration: BoxDecoration(
+                                      color: colors.surfaceNegative, borderRadius: Zeta.of(context).radii.full),
                                   child: ZetaIcon(
                                     ZetaIcons.important_notification,
                                     color: colors.white,
@@ -138,7 +138,7 @@ class ZetaNotificationListItem extends ZetaStatelessWidget {
     final colors = Zeta.of(context).colors;
     return BoxDecoration(
       color: notificationRead ? colors.surfacePrimary : colors.surfaceSelected,
-      borderRadius: ZetaRadius.rounded,
+      borderRadius: Zeta.of(context).radii.rounded,
       border: (showDivider ?? false)
           ? Border(bottom: BorderSide(width: Zeta.of(context).spacing.minimum, color: colors.blue))
           : null,
@@ -213,7 +213,7 @@ class ZetaNotificationBadge extends StatelessWidget {
                 color: iconColor,
               )
             : ClipRRect(
-                borderRadius: ZetaRadius.rounded,
+                borderRadius: Zeta.of(context).radii.rounded,
                 child: SizedBox.fromSize(
                   size: Size.square(Zeta.of(context).spacing.xl_8), // Image radius
                   child: image!.copyWith(fit: BoxFit.cover),

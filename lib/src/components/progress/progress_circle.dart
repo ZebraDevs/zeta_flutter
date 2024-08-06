@@ -119,11 +119,11 @@ class _ZetaProgressCircleState extends ZetaProgressState<ZetaProgressCircle> {
                                   ? InkWell(
                                       enableFeedback: false,
                                       onTap: widget.onCancel,
-                                      borderRadius: ZetaRadius.full,
+                                      borderRadius: Zeta.of(context).radii.full,
                                       child: Container(
                                         decoration: BoxDecoration(
                                           color: colors.surfaceHover,
-                                          borderRadius: ZetaRadius.full,
+                                          borderRadius: Zeta.of(context).radii.full,
                                         ),
                                         padding: EdgeInsets.all(Zeta.of(context).spacing.small),
                                         child: ZetaIcon(

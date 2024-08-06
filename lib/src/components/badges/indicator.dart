@@ -114,7 +114,7 @@ class ZetaIndicator extends ZetaStatelessWidget {
         decoration: BoxDecoration(
           border: Border.all(width: ZetaSpacingBase.x0_5, color: zetaColors.borderSubtle),
           color: (inverse ? foregroundColor : Colors.transparent),
-          borderRadius: ZetaRadius.full,
+          borderRadius: Zeta.of(context).radii.full,
         ),
         child: Center(
           child: Container(

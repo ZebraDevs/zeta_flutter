@@ -185,7 +185,7 @@ class _ZetaStepperState extends State<ZetaStepper> with TickerProviderStateMixin
                 width: Zeta.of(context).spacing.minimum,
                 height: Zeta.of(context).spacing.xl_8,
                 decoration: BoxDecoration(
-                  borderRadius: ZetaRadius.full,
+                  borderRadius: Zeta.of(context).radii.full,
                   color: switch (widget.steps[index].type) {
                     ZetaStepType.complete => _colors.green.shade50,
                     ZetaStepType.disabled => _colors.borderSubtle,
@@ -273,7 +273,7 @@ class _ZetaStepperState extends State<ZetaStepper> with TickerProviderStateMixin
                   children: [
                     InkResponse(
                       containedInkWell: true,
-                      borderRadius: ZetaRadius.minimal,
+                      borderRadius: Zeta.of(context).radii.minimal,
                       onTap: widget.onStepTapped != null ? () => widget.onStepTapped?.call(index) : null,
                       canRequestFocus: widget.steps[index].type != ZetaStepType.disabled,
                       child: _getVerticalHeader(index),
@@ -315,7 +315,7 @@ class _ZetaStepperState extends State<ZetaStepper> with TickerProviderStateMixin
                         ),
                         height: ZetaSpacingBase.x0_5,
                         decoration: BoxDecoration(
-                          borderRadius: ZetaRadius.full,
+                          borderRadius: Zeta.of(context).radii.full,
                           color: switch (widget.steps[index].type) {
                             ZetaStepType.complete => _colors.green.shade50,
                             ZetaStepType.disabled => _colors.borderSubtle,

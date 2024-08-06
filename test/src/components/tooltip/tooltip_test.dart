@@ -176,20 +176,26 @@ void main() {
     });
 
     testWidgets('renders with rounded and sharp corners', (WidgetTester tester) async {
+      Zeta? zeta;
       await tester.pumpWidget(
-        const TestApp(
-          home: Scaffold(
-            body: Column(
-              children: [
-                ZetaTooltip(
-                  child: Text('Rounded tooltip'),
+        TestApp(
+          home: Builder(
+            builder: (context) {
+              zeta = Zeta.of(context);
+              return const Scaffold(
+                body: Column(
+                  children: [
+                    ZetaTooltip(
+                      child: Text('Rounded tooltip'),
+                    ),
+                    ZetaTooltip(
+                      rounded: false,
+                      child: Text('Sharp tooltip'),
+                    ),
+                  ],
                 ),
-                ZetaTooltip(
-                  rounded: false,
-                  child: Text('Sharp tooltip'),
-                ),
-              ],
-            ),
+              );
+            },
           ),
         ),
       );
@@ -211,7 +217,7 @@ void main() {
         ),
       );
 
-      expect((roundedTooltipBox.decoration as BoxDecoration).borderRadius, ZetaRadius.minimal);
+      expect((roundedTooltipBox.decoration as BoxDecoration).borderRadius, zeta?.radii.minimal);
       expect((sharpTooltipBox.decoration as BoxDecoration).borderRadius, null);
     });
 

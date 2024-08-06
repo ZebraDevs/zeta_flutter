@@ -178,7 +178,7 @@ class _ZetaChipState extends State<ZetaChip> {
         final bool rounded = context.rounded;
         return InkWell(
           statesController: _controller,
-          borderRadius: rounded ? ZetaRadius.full : ZetaRadius.none,
+          borderRadius: rounded ? Zeta.of(context).radii.full : Zeta.of(context).radii.none,
           onTap: () {
             if (widget.selected != null) {
               setState(() => selected = !selected);
@@ -215,7 +215,7 @@ class _ZetaChipState extends State<ZetaChip> {
                 }
                 return colors.surfacePrimary;
               }(),
-              borderRadius: rounded ? ZetaRadius.full : ZetaRadius.none,
+              borderRadius: rounded ? Zeta.of(context).radii.full : Zeta.of(context).radii.none,
               border: Border.fromBorderSide(
                 BorderSide(
                   color: _controller.value.contains(WidgetState.focused) ? colors.blue.shade50 : colors.borderDefault,
