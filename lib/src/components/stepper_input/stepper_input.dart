@@ -130,7 +130,7 @@ class ZetaStepperInputState extends State<ZetaStepperInput> {
       borderSide: BorderSide(
         color: !disabled ? colors.borderSubtle : colors.borderDisabled,
       ),
-      borderRadius: context.rounded ? ZetaRadius.minimal : ZetaRadius.none,
+      borderRadius: context.rounded ? Zeta.of(context).radii.minimal : Zeta.of(context).radii.none,
     );
   }
 

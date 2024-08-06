@@ -141,7 +141,7 @@ class _ZetaSegmentedControlState<T> extends State<ZetaSegmentedControl<T>>
               padding: EdgeInsets.all(Zeta.of(context).spacing.minimum),
               decoration: BoxDecoration(
                 color: colors.surfaceDisabled,
-                borderRadius: rounded ? ZetaRadius.minimal : ZetaRadius.none,
+                borderRadius: rounded ? Zeta.of(context).radii.minimal : Zeta.of(context).radii.none,
               ),
               child: AnimatedBuilder(
                 animation: _thumbScaleAnimation,
@@ -218,7 +218,7 @@ class _SegmentState<T> extends State<_Segment<T>> with TickerProviderStateMixin<
         color: Colors.transparent,
         child: InkWell(
           splashFactory: NoSplash.splashFactory,
-          borderRadius: context.rounded ? ZetaRadius.minimal : ZetaRadius.none,
+          borderRadius: context.rounded ? Zeta.of(context).radii.minimal : Zeta.of(context).radii.none,
           onTap: widget.onTap,
           child: IndexedStack(
             alignment: Alignment.center,
@@ -271,6 +271,7 @@ class _SegmentedControlRenderWidget<T> extends MultiChildRenderObjectWidget {
       thumbColor: thumbColor,
       rounded: rounded,
       state: state,
+      zeta: Zeta.of(context),
     );
   }
 
@@ -307,6 +308,7 @@ class _RenderSegmentedControl<T> extends RenderBox
     required Color thumbColor,
     required this.rounded,
     required this.state,
+    required this.zeta,
   })  : _highlightedIndex = highlightedIndex,
         _thumbColor = thumbColor;
 
@@ -320,6 +322,8 @@ class _RenderSegmentedControl<T> extends RenderBox
   final Paint separatorPaint = Paint();
 
   final _ZetaSegmentedControlState<T> state;
+
+  final Zeta zeta;
 
   int? _highlightedIndex;
   Color _thumbColor;
@@ -629,7 +633,7 @@ class _RenderSegmentedControl<T> extends RenderBox
   void _paintThumb(PaintingContext context, Offset offset, Rect thumbRect) {
     final RRect thumbRRect = RRect.fromRectAndRadius(
       thumbRect.shift(offset),
-      rounded ? ZetaRadius.minimal.topLeft : ZetaRadius.none.topLeft,
+      rounded ? zeta.radii.minimal.topLeft : zeta.radii.none.topLeft,
     );
 
     context.canvas.drawRRect(

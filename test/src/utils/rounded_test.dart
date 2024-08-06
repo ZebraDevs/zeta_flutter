@@ -7,13 +7,19 @@ import '../../test_utils/test_app.dart';
 void main() {
   testWidgets('Global round inherited', (WidgetTester tester) async {
     final GlobalKey key = GlobalKey();
+    Zeta? zeta;
     await tester.pumpWidget(
       TestApp(
         rounded: true,
-        home: ZetaAccordion(
-          key: key,
-          title: 'Test Accordion',
-          child: const ZetaStatusLabel(label: 'Label'),
+        home: Builder(
+          builder: (context) {
+            zeta = Zeta.of(context);
+            return ZetaAccordion(
+              key: key,
+              title: 'Test Accordion',
+              child: const ZetaStatusLabel(label: 'Label'),
+            );
+          },
         ),
       ),
     );
@@ -28,17 +34,24 @@ void main() {
     final DecoratedBox box = tester.firstWidget(childFinder);
 
     expect(box.decoration.runtimeType, BoxDecoration);
-    expect((box.decoration as BoxDecoration).borderRadius, ZetaRadius.full);
+    expect((box.decoration as BoxDecoration).borderRadius, zeta?.radii.full);
     expect(Zeta.of(key.currentContext!).rounded, true);
   });
 
   testWidgets('Global sharp inherited', (WidgetTester tester) async {
+    Zeta? zeta;
     await tester.pumpWidget(
-      const TestApp(
+      TestApp(
         rounded: false,
-        home: ZetaAccordion(
-          title: 'Test Accordion',
-          child: ZetaStatusLabel(label: 'Label'),
+        home: Builder(
+          builder: (context) {
+            zeta = Zeta.of(context);
+
+            return const ZetaAccordion(
+              title: 'Test Accordion',
+              child: ZetaStatusLabel(label: 'Label'),
+            );
+          },
         ),
       ),
     );
@@ -52,18 +65,24 @@ void main() {
     final DecoratedBox box = tester.firstWidget(childFinder);
 
     expect(box.decoration.runtimeType, BoxDecoration);
-    expect((box.decoration as BoxDecoration).borderRadius, ZetaRadius.none);
+    expect((box.decoration as BoxDecoration).borderRadius, zeta?.radii.none);
   });
 
   testWidgets('Global sharp, local round, not inherited', (WidgetTester tester) async {
     final GlobalKey key = GlobalKey();
+    Zeta? zeta;
     await tester.pumpWidget(
       TestApp(
         rounded: false,
-        home: ZetaAccordion(
-          key: key,
-          title: 'Test Accordion',
-          child: const ZetaStatusLabel(label: 'Label', rounded: true),
+        home: Builder(
+          builder: (context) {
+            zeta = Zeta.of(context);
+            return ZetaAccordion(
+              key: key,
+              title: 'Test Accordion',
+              child: const ZetaStatusLabel(label: 'Label', rounded: true),
+            );
+          },
         ),
       ),
     );
@@ -78,27 +97,33 @@ void main() {
     final DecoratedBox box = tester.firstWidget(childFinder);
 
     expect(box.decoration.runtimeType, BoxDecoration);
-    expect((box.decoration as BoxDecoration).borderRadius, ZetaRadius.full);
+    expect((box.decoration as BoxDecoration).borderRadius, zeta?.radii.full);
   });
 
   testWidgets('Global sharp, scoped round inherited', (WidgetTester tester) async {
     const Key sharpKey = Key('sharp');
     const Key roundKey = Key('round');
+    Zeta? zeta;
 
     await tester.pumpWidget(
-      const TestApp(
+      TestApp(
         rounded: false,
-        home: Column(
-          children: [
-            ZetaStatusLabel(label: 'Label', key: sharpKey),
-            ZetaRoundedScope(
-              rounded: true,
-              child: ZetaAccordion(
-                title: 'Test Accordion',
-                child: ZetaStatusLabel(label: 'Label', key: roundKey),
-              ),
-            ),
-          ],
+        home: Builder(
+          builder: (context) {
+            zeta = Zeta.of(context);
+            return const Column(
+              children: [
+                ZetaStatusLabel(label: 'Label', key: sharpKey),
+                ZetaRoundedScope(
+                  rounded: true,
+                  child: ZetaAccordion(
+                    title: 'Test Accordion',
+                    child: ZetaStatusLabel(label: 'Label', key: roundKey),
+                  ),
+                ),
+              ],
+            );
+          },
         ),
       ),
     );
@@ -119,30 +144,36 @@ void main() {
     final DecoratedBox roundBox = tester.firstWidget(roundChildFinder);
 
     expect(sharpBox.decoration.runtimeType, BoxDecoration);
-    expect((sharpBox.decoration as BoxDecoration).borderRadius, ZetaRadius.none);
+    expect((sharpBox.decoration as BoxDecoration).borderRadius, zeta?.radii.none);
 
     expect(roundBox.decoration.runtimeType, BoxDecoration);
-    expect((roundBox.decoration as BoxDecoration).borderRadius, ZetaRadius.full);
+    expect((roundBox.decoration as BoxDecoration).borderRadius, zeta?.radii.full);
   });
 
   testWidgets('Global sharp, scoped round, scoped sharp inherited', (WidgetTester tester) async {
     const Key sharpKey = Key('sharp');
     const Key sharpKey2 = Key('round');
+    Zeta? zeta;
 
     await tester.pumpWidget(
-      const TestApp(
+      TestApp(
         rounded: false,
-        home: Column(
-          children: [
-            ZetaStatusLabel(label: 'Label', key: sharpKey),
-            ZetaRoundedScope(
-              rounded: true,
-              child: ZetaAccordion(
-                title: 'Test Accordion',
-                child: ZetaRoundedScope(rounded: false, child: ZetaStatusLabel(label: 'Label', key: sharpKey2)),
-              ),
-            ),
-          ],
+        home: Builder(
+          builder: (context) {
+            zeta = Zeta.of(context);
+            return const Column(
+              children: [
+                ZetaStatusLabel(label: 'Label', key: sharpKey),
+                ZetaRoundedScope(
+                  rounded: true,
+                  child: ZetaAccordion(
+                    title: 'Test Accordion',
+                    child: ZetaRoundedScope(rounded: false, child: ZetaStatusLabel(label: 'Label', key: sharpKey2)),
+                  ),
+                ),
+              ],
+            );
+          },
         ),
       ),
     );
@@ -163,10 +194,10 @@ void main() {
     final DecoratedBox roundBox = tester.firstWidget(roundChildFinder);
 
     expect(sharpBox.decoration.runtimeType, BoxDecoration);
-    expect((sharpBox.decoration as BoxDecoration).borderRadius, ZetaRadius.none);
+    expect((sharpBox.decoration as BoxDecoration).borderRadius, zeta?.radii.none);
 
     expect(roundBox.decoration.runtimeType, BoxDecoration);
-    expect((roundBox.decoration as BoxDecoration).borderRadius, ZetaRadius.none);
+    expect((roundBox.decoration as BoxDecoration).borderRadius, zeta?.radii.none);
   });
 
   testWidgets('ZetaRoundedScope debugFillProperties works correctly', (WidgetTester tester) async {

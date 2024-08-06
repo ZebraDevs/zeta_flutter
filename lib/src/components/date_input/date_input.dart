@@ -236,7 +236,7 @@ class _ZetaDateInputState extends FormFieldState<DateTime> {
             dividerTheme: DividerThemeData(color: colors.borderSubtle),
             datePickerTheme: DatePickerThemeData(
               shape: RoundedRectangleBorder(
-                borderRadius: rounded ? ZetaRadius.rounded : ZetaRadius.none,
+                borderRadius: rounded ? Zeta.of(context).radii.rounded : Zeta.of(context).radii.none,
               ),
               headerHeadlineStyle: ZetaTextStyles.titleLarge,
               headerHelpStyle: ZetaTextStyles.labelLarge,

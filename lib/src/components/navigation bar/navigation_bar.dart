@@ -205,7 +205,7 @@ class _NavigationItem extends ZetaStatelessWidget {
       child: DecoratedBox(
         decoration: BoxDecoration(
           color: colors.surfacePrimary,
-          borderRadius: ZetaRadius.full,
+          borderRadius: Zeta.of(context).radii.full,
         ),
         child: item.badge?.copyWith(
           size: item.badge?.value == null
@@ -227,7 +227,7 @@ class _NavigationItem extends ZetaStatelessWidget {
     return Material(
       color: colors.surfacePrimary,
       child: InkWell(
-        borderRadius: context.rounded ? ZetaRadius.rounded : ZetaRadius.none,
+        borderRadius: context.rounded ? Zeta.of(context).radii.rounded : Zeta.of(context).radii.none,
         onTap: onTap,
         child: Semantics(
           button: true,

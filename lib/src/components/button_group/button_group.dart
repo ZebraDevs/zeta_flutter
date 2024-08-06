@@ -249,19 +249,21 @@ class _ZetaGroupButtonState extends State<ZetaGroupButton> {
   }
 
   BorderRadius _getRadius(ZetaWidgetBorder borderType) {
+    final border = borderType.radius(context);
+
     if (widget.isInitial) {
-      return borderType.radius.copyWith(
+      return border.copyWith(
         topRight: Radius.zero,
         bottomRight: Radius.zero,
       );
     }
     if (widget.isFinal) {
-      return borderType.radius.copyWith(
+      return border.copyWith(
         topLeft: Radius.zero,
         bottomLeft: Radius.zero,
       );
     }
-    return ZetaRadius.none;
+    return Zeta.of(context).radii.none;
   }
 
   Widget _getButton(

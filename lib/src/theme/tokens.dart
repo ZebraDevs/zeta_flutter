@@ -207,23 +207,30 @@ class ZetaSpacing {
 
 /// Semantic zeta radii.
 /// {@category Theme}
+@Deprecated('Use Zeta.of(context).radii instead. ' 'This will be removed in v1.0.0')
 class ZetaRadius {
   /// No radius =>  0px radius.
+  @Deprecated('Use Zeta.of(context).radii.none instead. ' 'This will be removed in v1.0.0')
   static const BorderRadius none = BorderRadius.zero;
 
   /// Minimal radius => 4px radius.
+  @Deprecated('Use Zeta.of(context).radii.minimal instead. ' 'This will be removed in v1.0.0')
   static const BorderRadius minimal = ZetaRadiusBase.s;
 
   /// Rounded radius => 8px radius.
+  @Deprecated('Use Zeta.of(context).radii.rounded instead. ' 'This will be removed in v1.0.0')
   static const BorderRadius rounded = ZetaRadiusBase.m;
 
   /// Large radius => 16px radius.
+  @Deprecated('Use Zeta.of(context).radii.large instead. ' 'This will be removed in v1.0.0')
   static const BorderRadius large = ZetaRadiusBase.l;
 
   /// xl radius => 24px radius.
+  @Deprecated('Use Zeta.of(context).radii.xl instead. ' 'This will be removed in v1.0.0')
   static const BorderRadius xl = ZetaRadiusBase.xl;
 
   /// Full radius => 360px radius.
+  @Deprecated('Use Zeta.of(context).radii.full instead. ' 'This will be removed in v1.0.0')
   static const BorderRadius full = ZetaRadiusBase.x4;
 
   /// Wide border radius; 24px radius.
@@ -233,99 +240,131 @@ class ZetaRadius {
 
 ///Tokens that are used for Spacing
 ///{@category Theme}
+@Deprecated('Use Zeta.of(context).spacing instead. ' 'This will be removed in v1.0.0')
 class ZetaSpacingBase {
   /// 0dp space
+  @Deprecated('Use Zeta.of(context).spacing.none instead. ' 'This will be removed in v1.0.0')
   static const double x0 = 0;
 
   /// 2dp space
+  @Deprecated('This will be removed in v1.0.0')
   static const double x0_5 = 2;
 
   /// 4dp space
+  @Deprecated('Use Zeta.of(context).spacing.minimum instead. ' 'This will be removed in v1.0.0')
   static const double x1 = 4;
 
   /// 8dp space
+  @Deprecated('Use Zeta.of(context).spacing.small instead. ' 'This will be removed in v1.0.0')
   static const double x2 = 8;
 
   /// 10dp space
+  @Deprecated('This will be removed in v1.0.0')
   static const double x2_5 = 10;
 
   /// 12dp space
+  @Deprecated('Use Zeta.of(context).spacing.medium instead. ' 'This will be removed in v1.0.0')
   static const double x3 = 12;
 
   /// 14dp space.
+  @Deprecated('This will be removed in v1.0.0')
   static const double x3_5 = 14;
 
   /// 16dp space
+  @Deprecated('Use Zeta.of(context).spacing.large instead. ' 'This will be removed in v1.0.0')
   static const double x4 = 16;
 
   /// 20dp space
+  @Deprecated(' Use Zeta.of(context).spacing.xl instead. ' 'This will be removed in v1.0.0')
   static const double x5 = 20;
 
   /// 24dp space
+  @Deprecated('Use Zeta.of(context).spacing.xl_2 instead. ' 'This will be removed in v1.0.0')
   static const double x6 = 24;
 
   /// 28dp space
+  @Deprecated('Use Zeta.of(context).spacing.xl_3 instead. ' 'This will be removed in v1.0.0')
   static const double x7 = 28;
 
   /// 30dp space.
+  @Deprecated('This will be removed in v1.0.0')
   static const double x7_5 = 30;
 
   /// 32dp space
+  @Deprecated('Use Zeta.of(context).spacing.xl_4 instead. ' 'This will be removed in v1.0.0')
   static const double x8 = 32;
 
   /// 36dp space
+  @Deprecated('Use Zeta.of(context).spacing.xl_5 instead. ' 'This will be removed in v1.0.0')
   static const double x9 = 36;
 
   /// 40dp space
+  @Deprecated('Use Zeta.of(context).spacing.xl_6 instead. ' 'This will be removed in v1.0.0')
   static const double x10 = 40;
 
   /// 44dp space
+  @Deprecated('Use Zeta.of(context).spacing.xl_7 instead. ' 'This will be removed in v1.0.0')
   static const double x11 = 44;
 
   /// 48dp space
+  @Deprecated('Use Zeta.of(context).spacing.xl_8 instead. ' 'This will be removed in v1.0.0')
   static const double x12 = 48;
 
   /// 56dp space
+  @Deprecated('This will be removed in v1.0.0')
   static const double x12_5 = 56;
 
   /// 64dp space
+  @Deprecated('Use Zeta.of(context).spacing.xl_9 instead. ' 'This will be removed in v1.0.0')
   static const double x13 = 64;
 
   /// 80dp space
+  @Deprecated('Use Zeta.of(context).spacing.xl_10 instead. ' 'This will be removed in v1.0.0')
   static const double x14 = 80;
 
   /// 96dp space
+  @Deprecated('Use Zeta.of(context).spacing.xl_11 instead. ' 'This will be removed in v1.0.0')
   static const double x15 = 96;
 
   /// 120dp space
+  @Deprecated('This will be removed in v1.0.0')
   static const double x30 = 120;
 
   /// 200dp space
+  @Deprecated('This will be removed in v1.0.0')
   static const double x50 = 200;
 }
 
 ///Tokens that are used for Border Radius
 ///{@category Theme}
+@Deprecated('Use Zeta.of(context).radii instead. ' 'This will be removed in v1.0.0')
 class ZetaRadiusBase {
   /// 4px radius
+  @Deprecated('Use Zeta.of(context).radii.minimal instead. ' 'This will be removed in v1.0.0')
   static const BorderRadius s = BorderRadius.all(Radius.circular(4));
 
   /// 8px radius
+  @Deprecated('Use Zeta.of(context).radii.rounded instead. ' 'This will be removed in v1.0.0')
   static const BorderRadius m = BorderRadius.all(Radius.circular(8));
 
   /// 16px radius
+  @Deprecated('Use Zeta.of(context).radii.l instead. ' 'This will be removed in v1.0.0')
   static const BorderRadius l = BorderRadius.all(Radius.circular(16));
 
   /// 24px radius
+  @Deprecated('Use Zeta.of(context).radii.xl instead. ' 'This will be removed in v1.0.0')
   static const BorderRadius xl = BorderRadius.all(Radius.circular(24));
 
   /// 32px radius
+  @Deprecated('This will be removed in v1.0.0')
   static const BorderRadius x2 = BorderRadius.all(Radius.circular(32));
 
   /// 128px radius
+  @Deprecated('This will be removed in v1.0.0')
   static const BorderRadius x3 = BorderRadius.all(Radius.circular(128));
 
   /// 360px radius
+  @Deprecated('Use Zeta.of(context).radii.full instead. ' 'This will be removed in v1.0.0')
   static const BorderRadius x4 = BorderRadius.all(Radius.circular(360));
 }
 

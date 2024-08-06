@@ -64,14 +64,14 @@ extension ButtonFunctions on ZetaButtonType {
 ///Border utility functions
 extension BorderFunctions on ZetaWidgetBorder {
   ///Returns radius based on [ZetaWidgetBorder]
-  BorderRadius get radius {
+  BorderRadius radius(BuildContext context) {
     switch (this) {
       case ZetaWidgetBorder.sharp:
-        return ZetaRadius.none;
+        return Zeta.of(context).radii.none;
       case ZetaWidgetBorder.rounded:
-        return ZetaRadius.minimal;
+        return Zeta.of(context).radii.minimal;
       case ZetaWidgetBorder.full:
-        return ZetaRadius.full;
+        return Zeta.of(context).radii.full;
     }
   }
 }
@@ -92,7 +92,7 @@ ButtonStyle buttonStyle(
   return ButtonStyle(
     minimumSize: WidgetStateProperty.all(Size.square(Zeta.of(context).spacing.xl_4)),
     shape: WidgetStateProperty.all(
-      RoundedRectangleBorder(borderRadius: borderType.radius),
+      RoundedRectangleBorder(borderRadius: borderType.radius(context)),
     ),
     backgroundColor: WidgetStateProperty.resolveWith<Color?>(
       (states) {

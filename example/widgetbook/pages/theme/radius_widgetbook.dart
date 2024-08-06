@@ -4,6 +4,13 @@ import 'package:widgetbook/widgetbook.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 Widget radiusUseCase(BuildContext context) {
+  final radii = [
+    Zeta.of(context).radii.none,
+    Zeta.of(context).radii.minimal,
+    Zeta.of(context).radii.rounded,
+    Zeta.of(context).radii.full
+  ];
+
   final rad = context.knobs.list(
     label: 'Radius',
     options: radii,
@@ -49,12 +56,11 @@ Widget radiusUseCase(BuildContext context) {
 
 extension on BorderRadius {
   String get radiusString {
-    if (topLeft.x == 0) return 'ZetaRadius.none';
-    if (topLeft.x == 4) return 'ZetaRadius.minimal';
-    if (topLeft.x == 8) return 'ZetaRadius.rounded';
-    if (topLeft.x == 24) return 'ZetaRadius.wide';
-    return 'ZetaRadius.full';
+    if (topLeft.x == 0) return 'Zeta.of(context).radii.none';
+    if (topLeft.x == 4) return 'Zeta.of(context).radii.minimal';
+    if (topLeft.x == 8) return 'Zeta.of(context).radii.rounded';
+    if (topLeft.x == 16) return 'Zeta.of(context).radii.large';
+    if (topLeft.x == 24) return 'Zeta.of(context).radii.xl';
+    return 'Zeta.of(context).radii.full';
   }
 }
-
-List<BorderRadius> radii = [ZetaRadius.none, ZetaRadius.minimal, ZetaRadius.rounded, ZetaRadius.full];
