@@ -2,8 +2,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../../zeta_flutter.dart';
-import '../generated/primitives.dart';
-import '../generated/semantics.dart';
 
 /// An [InheritedWidget] that provides access to Zeta theme settings.
 ///
@@ -70,13 +68,11 @@ class Zeta extends InheritedWidget {
     }
   }
 
-  ZetaSizeSemantics get size {
-    return _semantics.size;
-  }
+  /// Spacing object for current theme
+  ZetaSpacingSemantics get spacing => _semantics.size;
 
-  ZetaRadiiSemantics get radii {
-    return _semantics.radii;
-  }
+  /// Radii object for current theme
+  ZetaRadiiSemantics get radii => _semantics.radii;
 
   /// Gets the brightness setting for the current theme.
   ///
@@ -140,8 +136,8 @@ class Zeta extends InheritedWidget {
       ..add(EnumProperty<Brightness>('brightness', brightness))
       ..add(DiagnosticsProperty<bool>('rounded', rounded))
       ..add(DiagnosticsProperty<ZetaColors>('colors', colors))
-      ..add(DiagnosticsProperty<ZetaSizeSemantics>('size', size))
-      ..add(DiagnosticsProperty<ZetaRadiiSemantics>('radii', radii));
+      ..add(DiagnosticsProperty<ZetaRadiiSemantics>('radii', radii))
+      ..add(DiagnosticsProperty<ZetaSpacingSemantics>('spacing', spacing));
   }
 }
 
