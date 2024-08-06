@@ -18,21 +18,21 @@ class TooltipExample extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const SizedBox(height: ZetaSpacing.xl_4),
+            SizedBox(height: Zeta.of(context).spacing.xl_4),
             ZetaTooltip(
               child: Text('Label'),
             ),
-            const SizedBox(height: ZetaSpacing.xl_4),
+            SizedBox(height: Zeta.of(context).spacing.xl_4),
             ZetaTooltip(
               child: Text('Label'),
               arrowDirection: ZetaTooltipArrowDirection.right,
             ),
-            const SizedBox(height: ZetaSpacing.xl_4),
+            SizedBox(height: Zeta.of(context).spacing.xl_4),
             ZetaTooltip(
               child: Text('Label'),
               arrowDirection: ZetaTooltipArrowDirection.up,
             ),
-            const SizedBox(height: ZetaSpacing.xl_4),
+            SizedBox(height: Zeta.of(context).spacing.xl_4),
             ZetaTooltip(
               child: Text('Label'),
               arrowDirection: ZetaTooltipArrowDirection.left,

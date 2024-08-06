@@ -103,7 +103,7 @@ class ZetaNavigationBar extends ZetaStatelessWidget {
   /// {@macro zeta-widget-semantic-label}
   final String? semanticLabel;
 
-  Row _generateNavigationItemRow(List<ZetaNavigationBarItem> items) {
+  Row _generateNavigationItemRow(List<ZetaNavigationBarItem> items, BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: items.map((navItem) {
@@ -112,6 +112,7 @@ class ZetaNavigationBar extends ZetaStatelessWidget {
           selected: index == currentIndex,
           item: navItem,
           onTap: () => onTap?.call(index),
+          context: context,
         );
       }).toList(),
     );
@@ -138,30 +139,30 @@ class ZetaNavigationBar extends ZetaStatelessWidget {
       child = Row(
         mainAxisAlignment: splitItems ? MainAxisAlignment.spaceBetween : MainAxisAlignment.spaceAround,
         children: [
-          _generateNavigationItemRow(leftItems),
+          _generateNavigationItemRow(leftItems, context),
           if (dividerIndex != null)
             Container(
               color: colors.borderSubtle,
               width: _navigationItemBorderWidth,
-              height: ZetaSpacing.xl_7,
+              height: Zeta.of(context).spacing.xl_7,
             ),
-          _generateNavigationItemRow(rightItems),
+          _generateNavigationItemRow(rightItems, context),
         ],
       );
     } else if (action != null) {
       child = Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          _generateNavigationItemRow(items),
+          _generateNavigationItemRow(items, context),
           action!,
         ],
       );
     } else {
-      child = _generateNavigationItemRow(items);
+      child = _generateNavigationItemRow(items, context);
     }
 
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: ZetaSpacing.medium),
+      padding: EdgeInsets.symmetric(horizontal: Zeta.of(context).spacing.medium),
       decoration: BoxDecoration(
         color: colors.surfacePrimary,
         border: Border(top: BorderSide(color: colors.borderSubtle)),
@@ -190,15 +191,17 @@ class _NavigationItem extends ZetaStatelessWidget {
     required this.selected,
     required this.item,
     required this.onTap,
+    required this.context,
   });
 
   final bool selected;
   final ZetaNavigationBarItem item;
   final VoidCallback onTap;
+  final BuildContext context;
 
   Widget _getBadge(ZetaColors colors) {
     return Positioned(
-      right: ZetaSpacing.minimum,
+      right: Zeta.of(context).spacing.minimum,
       child: DecoratedBox(
         decoration: BoxDecoration(
           color: colors.surfacePrimary,
@@ -231,27 +234,30 @@ class _NavigationItem extends ZetaStatelessWidget {
           explicitChildNodes: true,
           label: item.label,
           child: Container(
-            padding:
-                const EdgeInsets.only(left: ZetaSpacing.small, right: ZetaSpacing.small, bottom: ZetaSpacing.small),
+            padding: EdgeInsets.only(
+              left: Zeta.of(context).spacing.small,
+              right: Zeta.of(context).spacing.small,
+              bottom: Zeta.of(context).spacing.small,
+            ),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
                 SizedBox(
-                  width: ZetaSpacing.xl_7,
-                  height: ZetaSpacing.xl_4 - _navigationItemBorderWidth,
+                  width: Zeta.of(context).spacing.xl_7,
+                  height: Zeta.of(context).spacing.xl_4 - _navigationItemBorderWidth,
                   child: Stack(
                     children: [
                       Positioned(
                         left: ZetaSpacingBase.x2_5,
-                        top: ZetaSpacing.small - _navigationItemBorderWidth,
+                        top: Zeta.of(context).spacing.small - _navigationItemBorderWidth,
                         right: ZetaSpacingBase.x2_5,
-                        child: ZetaIcon(item.icon, color: elementColor, size: ZetaSpacing.xl_2),
+                        child: ZetaIcon(item.icon, color: elementColor, size: Zeta.of(context).spacing.xl_2),
                       ),
                       if (item.badge != null) _getBadge(colors),
                     ],
                   ),
                 ),
-                const SizedBox(height: ZetaSpacing.small),
+                SizedBox(height: Zeta.of(context).spacing.small),
                 if (item.label != null)
                   ExcludeSemantics(
                     child: Text(
@@ -273,6 +279,7 @@ class _NavigationItem extends ZetaStatelessWidget {
     properties
       ..add(DiagnosticsProperty<bool>('selected', selected))
       ..add(DiagnosticsProperty<ZetaNavigationBarItem>('item', item))
-      ..add(ObjectFlagProperty<VoidCallback>.has('onTap', onTap));
+      ..add(ObjectFlagProperty<VoidCallback>.has('onTap', onTap))
+      ..add(DiagnosticsProperty<BuildContext>('context', context));
   }
 }

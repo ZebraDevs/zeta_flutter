@@ -53,7 +53,7 @@ class ZetaSearchBar extends ZetaTextFormField {
             final focusedBorder = defaultInputBorder.copyWith(
               borderSide: BorderSide(
                 color: zeta.colors.blue.shade50,
-                width: ZetaSpacing.minimum,
+                width: zeta.spacing.minimum,
               ),
             );
 
@@ -66,14 +66,14 @@ class ZetaSearchBar extends ZetaTextFormField {
 
             switch (size) {
               case ZetaWidgetSize.large:
-                iconSize = ZetaSpacing.xl_2;
-                padding = ZetaSpacing.medium;
+                iconSize = zeta.spacing.xl_2;
+                padding = zeta.spacing.medium;
               case ZetaWidgetSize.medium:
-                iconSize = ZetaSpacing.xl_1;
-                padding = ZetaSpacing.small;
+                iconSize = zeta.spacing.xl;
+                padding = zeta.spacing.small;
               case ZetaWidgetSize.small:
-                iconSize = ZetaSpacing.large;
-                padding = ZetaSpacing.minimum;
+                iconSize = zeta.spacing.large;
+                padding = zeta.spacing.minimum;
             }
 
             return ZetaRoundedScope(
@@ -102,16 +102,16 @@ class ZetaSearchBar extends ZetaTextFormField {
                       color: !disabled ? zeta.colors.textSubtle : zeta.colors.textDisabled,
                     ),
                     prefixIcon: Padding(
-                      padding: const EdgeInsets.only(left: ZetaSpacingBase.x2_5, right: ZetaSpacing.small),
+                      padding: EdgeInsets.only(left: ZetaSpacingBase.x2_5, right: zeta.spacing.small),
                       child: ZetaIcon(
                         ZetaIcons.search,
                         color: !disabled ? zeta.colors.cool.shade70 : zeta.colors.cool.shade50,
                         size: iconSize,
                       ),
                     ),
-                    prefixIconConstraints: const BoxConstraints(
-                      minHeight: ZetaSpacing.xl_2,
-                      minWidth: ZetaSpacing.xl_2,
+                    prefixIconConstraints: BoxConstraints(
+                      minHeight: zeta.spacing.xl_2,
+                      minWidth: zeta.spacing.xl_2,
                     ),
                     suffixIcon: IntrinsicHeight(
                       child: Row(
@@ -160,9 +160,9 @@ class ZetaSearchBar extends ZetaTextFormField {
                         ],
                       ),
                     ),
-                    suffixIconConstraints: const BoxConstraints(
-                      minHeight: ZetaSpacing.xl_2,
-                      minWidth: ZetaSpacing.xl_2,
+                    suffixIconConstraints: BoxConstraints(
+                      minHeight: zeta.spacing.xl_2,
+                      minWidth: zeta.spacing.xl_2,
                     ),
                     filled: !disabled ? null : true,
                     fillColor: !disabled ? null : zeta.colors.cool.shade30,

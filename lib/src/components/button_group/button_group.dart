@@ -231,7 +231,7 @@ class _ZetaGroupButtonState extends State<ZetaGroupButton> {
     _controller.dispose();
   }
 
-  double get _padding => widget.isLarge ? ZetaSpacing.large : ZetaSpacing.medium;
+  double get _padding => widget.isLarge ? Zeta.of(context).spacing.large : Zeta.of(context).spacing.medium;
 
   BorderSide _getBorderSide(
     ZetaColors colors,
@@ -282,12 +282,12 @@ class _ZetaGroupButtonState extends State<ZetaGroupButton> {
       dropdownIcon = ZetaIcons.expand_less;
     }
 
-    const iconSize = ZetaSpacing.xl_1;
+    final iconSize = Zeta.of(context).spacing.xl;
 
     Widget? leadingIcon;
     if (selectedItem?.icon != null) {
       leadingIcon = IconTheme(
-        data: const IconThemeData(
+        data: IconThemeData(
           size: iconSize,
         ),
         child: selectedItem!.icon!,
@@ -342,7 +342,7 @@ class _ZetaGroupButtonState extends State<ZetaGroupButton> {
               if (widget.isInverse) return colors.cool.shade100.onColor;
               return colors.textDefault;
             }),
-            elevation: const WidgetStatePropertyAll(ZetaSpacing.none),
+            elevation: WidgetStatePropertyAll(Zeta.of(context).spacing.none),
             padding: WidgetStateProperty.all(EdgeInsets.zero),
           ),
           child: SelectionContainer.disabled(
@@ -354,9 +354,9 @@ class _ZetaGroupButtonState extends State<ZetaGroupButton> {
                 if (widget.items != null)
                   Icon(
                     dropdownIcon,
-                    size: ZetaSpacing.xl_1,
+                    size: Zeta.of(context).spacing.xl,
                   ),
-              ].divide(const SizedBox(width: ZetaSpacing.minimum)).toList(),
+              ].divide(SizedBox(width: Zeta.of(context).spacing.minimum)).toList(),
             ).paddingAll(_padding),
           ),
         ),

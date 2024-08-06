@@ -462,7 +462,7 @@ class _DropdownItemState<T> extends State<_DropdownItem<T>> {
 
     if (leading != null) {
       leading = Padding(
-        padding: const EdgeInsets.only(right: ZetaSpacing.medium),
+        padding: EdgeInsets.only(right: Zeta.of(context).spacing.medium),
         child: leading,
       );
     }
@@ -477,9 +477,9 @@ class _DropdownItemState<T> extends State<_DropdownItem<T>> {
           statesController: controller,
           style: _getStyle(colors),
           child: Padding(
-            padding: const EdgeInsets.symmetric(
+            padding: EdgeInsets.symmetric(
               vertical: ZetaSpacingBase.x2_5,
-              horizontal: ZetaSpacing.medium,
+              horizontal: Zeta.of(context).spacing.medium,
             ),
             child: Row(
               mainAxisSize: MainAxisSize.min,
@@ -517,7 +517,7 @@ class _DropdownItemState<T> extends State<_DropdownItem<T>> {
           },
         );
       case ZetaDropdownMenuType.standard:
-        return widget.value.icon ?? const SizedBox(width: ZetaSpacing.xl_2);
+        return widget.value.icon ?? SizedBox(width: Zeta.of(context).spacing.xl_2);
     }
   }
 
@@ -552,7 +552,7 @@ class _DropdownItemState<T> extends State<_DropdownItem<T>> {
       ),
       side: WidgetStateBorderSide.resolveWith((states) {
         if (states.contains(WidgetState.focused)) {
-          return BorderSide(color: colors.borderPrimary, width: ZetaSpacing.xl_1);
+          return BorderSide(color: colors.borderPrimary, width: Zeta.of(context).spacing.xl);
         }
         return BorderSide.none;
       }),
@@ -621,7 +621,7 @@ class _ZetaDropDownMenuState<T> extends State<_ZetaDropDownMenu<T>> {
   Widget build(BuildContext context) {
     final colors = Zeta.of(context).colors;
     return Container(
-      padding: const EdgeInsets.all(ZetaSpacing.medium),
+      padding: EdgeInsets.all(Zeta.of(context).spacing.medium),
       decoration: BoxDecoration(
         color: colors.surfacePrimary,
         borderRadius: context.rounded ? ZetaRadius.minimal : ZetaRadius.none,
@@ -655,7 +655,7 @@ class _ZetaDropDownMenuState<T> extends State<_ZetaDropDownMenu<T>> {
                     menuType: widget.menuType,
                   );
                 })
-                .divide(const SizedBox(height: ZetaSpacing.minimum))
+                .divide(SizedBox(height: Zeta.of(context).spacing.minimum))
                 .toList(),
           ),
         ),

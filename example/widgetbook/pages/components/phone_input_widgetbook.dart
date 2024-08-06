@@ -14,7 +14,7 @@ Widget phoneInputUseCase(BuildContext context) {
     builder: (context, _) => StatefulBuilder(
       builder: (context, setState) {
         return Padding(
-          padding: const EdgeInsets.all(ZetaSpacing.xl_1),
+          padding: EdgeInsets.all(Zeta.of(context).spacing.xl),
           child: ZetaPhoneInput(
             disabled: !enabled,
             label: 'Phone number',

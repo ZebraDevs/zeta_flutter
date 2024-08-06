@@ -73,7 +73,7 @@ class _ZetaRadioState<T> extends State<ZetaRadio<T>> with TickerProviderStateMix
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     buildToggleable(
-                      size: const Size(ZetaSpacing.xl_6, ZetaSpacing.xl_6),
+                      size: Size(Zeta.of(context).spacing.xl_6, Zeta.of(context).spacing.xl_6),
                       painter: _painter!
                         ..position = position
                         ..reaction = reaction
@@ -83,7 +83,7 @@ class _ZetaRadioState<T> extends State<ZetaRadio<T>> with TickerProviderStateMix
                         ..reactionColor = Colors.transparent
                         ..hoverColor = Colors.transparent
                         ..focusColor = zetaColors.blue.shade50
-                        ..splashRadius = ZetaSpacing.medium
+                        ..splashRadius = Zeta.of(context).spacing.medium
                         ..downPosition = downPosition
                         ..isFocused = states.contains(WidgetState.focused)
                         ..isHovered = states.contains(WidgetState.hovered)
@@ -111,7 +111,7 @@ class _ZetaRadioState<T> extends State<ZetaRadio<T>> with TickerProviderStateMix
                           height: 1.33,
                         ),
                         child: widget.label!,
-                      ).paddingEnd(ZetaSpacing.minimum),
+                      ).paddingEnd(Zeta.of(context).spacing.minimum),
                   ],
                 ),
               ),

@@ -38,7 +38,7 @@ class NotificationListItemExample extends StatelessWidget {
               onPressed: () {},
             ),
           ),
-        ].gap(ZetaSpacing.xl_4),
+        ].gap(Zeta.of(context).spacing.xl_4),
       ),
     );
   }

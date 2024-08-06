@@ -67,7 +67,7 @@ class ZetaNotificationListItem extends ZetaStatelessWidget {
         label: semanticLabel,
         button: true,
         child: DecoratedBox(
-          decoration: _getStyle(colors),
+          decoration: _getStyle(context),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -113,33 +113,35 @@ class ZetaNotificationListItem extends ZetaStatelessWidget {
                                   child: ZetaIcon(
                                     ZetaIcons.important_notification,
                                     color: colors.white,
-                                    size: ZetaSpacing.medium,
+                                    size: Zeta.of(context).spacing.medium,
                                   ),
                                 ),
-                              ].gap(ZetaSpacing.minimum),
+                              ].gap(Zeta.of(context).spacing.minimum),
                             ),
                           ],
                         ),
                         body,
-                      ].gap(ZetaSpacing.minimum),
+                      ].gap(Zeta.of(context).spacing.minimum),
                     ),
                   ),
-                ].gap(ZetaSpacing.small),
+                ].gap(Zeta.of(context).spacing.small),
               ),
               Container(alignment: Alignment.centerRight, child: action),
             ],
-          ).paddingAll(ZetaSpacing.small),
+          ).paddingAll(Zeta.of(context).spacing.small),
         ),
       ),
     );
   }
 
-  BoxDecoration _getStyle(ZetaColors colors) {
+  BoxDecoration _getStyle(BuildContext context) {
+    final colors = Zeta.of(context).colors;
     return BoxDecoration(
       color: notificationRead ? colors.surfacePrimary : colors.surfaceSelected,
       borderRadius: ZetaRadius.rounded,
-      border:
-          (showDivider ?? false) ? Border(bottom: BorderSide(width: ZetaSpacing.minimum, color: colors.blue)) : null,
+      border: (showDivider ?? false)
+          ? Border(bottom: BorderSide(width: Zeta.of(context).spacing.minimum, color: colors.blue))
+          : null,
     );
   }
 }
@@ -207,13 +209,13 @@ class ZetaNotificationBadge extends StatelessWidget {
         : icon != null
             ? ZetaIcon(
                 icon,
-                size: ZetaSpacing.xl_8,
+                size: Zeta.of(context).spacing.xl_8,
                 color: iconColor,
               )
             : ClipRRect(
                 borderRadius: ZetaRadius.rounded,
                 child: SizedBox.fromSize(
-                  size: const Size.square(ZetaSpacing.xl_8), // Image radius
+                  size: Size.square(Zeta.of(context).spacing.xl_8), // Image radius
                   child: image!.copyWith(fit: BoxFit.cover),
                 ),
               );

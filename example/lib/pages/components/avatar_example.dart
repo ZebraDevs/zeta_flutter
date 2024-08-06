@@ -22,7 +22,7 @@ class AvatarExample extends StatelessWidget {
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: SingleChildScrollView(
-          padding: EdgeInsets.all(ZetaSpacing.medium),
+          padding: EdgeInsets.all(Zeta.of(context).spacing.medium),
           child: Column(
             children: [
               Column(
@@ -37,11 +37,11 @@ class AvatarExample extends StatelessWidget {
                       Column(
                         children: ZetaAvatarSize.values.map((size) {
                           final height = size.pixelSize;
-                          final padding = (height - 14) / 2;
+                          final padding = (height(context) - 14) / 2;
                           return Column(
                             children: [
                               SizedBox(
-                                height: height,
+                                height: height(context),
                                 child: Padding(
                                   padding: EdgeInsets.only(top: padding),
                                   child: Text(size.name.toUpperCase()),
@@ -122,11 +122,11 @@ class AvatarExample extends StatelessWidget {
                       Column(
                         children: ZetaAvatarSize.values.map((size) {
                           final height = size.pixelSize;
-                          final padding = (height - 14) / 2;
+                          final padding = (height(context) - 14) / 2;
                           return Column(
                             children: [
                               SizedBox(
-                                height: height,
+                                height: height(context),
                                 child: Padding(
                                   padding: EdgeInsets.only(top: padding),
                                   child: Text(size.name.toUpperCase()),
@@ -182,11 +182,11 @@ class AvatarExample extends StatelessWidget {
                       Column(
                         children: ZetaAvatarSize.values.map((size) {
                           final height = size.pixelSize;
-                          final padding = (height - 14) / 2;
+                          final padding = (height(context) - 14) / 2;
                           return Column(
                             children: [
                               SizedBox(
-                                height: height,
+                                height: height(context),
                                 child: Padding(
                                   padding: EdgeInsets.only(top: padding),
                                   child: Text(size.name.toUpperCase()),
@@ -273,11 +273,11 @@ class AvatarExample extends StatelessWidget {
                       Column(
                         children: ZetaAvatarSize.values.map((size) {
                           final height = size.pixelSize;
-                          final padding = (height - 14) / 2;
+                          final padding = (height(context) - 14) / 2;
                           return Column(
                             children: [
                               SizedBox(
-                                height: height,
+                                height: height(context),
                                 child: Padding(
                                   padding: EdgeInsets.only(top: padding),
                                   child: Text(size.name.toUpperCase()),
@@ -335,11 +335,11 @@ class AvatarExample extends StatelessWidget {
                       Column(
                         children: ZetaAvatarSize.values.map((size) {
                           final height = size.pixelSize;
-                          final padding = (height - 14) / 2;
+                          final padding = (height(context) - 14) / 2;
                           return Column(
                             children: [
                               SizedBox(
-                                height: height,
+                                height: height(context),
                                 child: Padding(
                                   padding: EdgeInsets.only(top: padding),
                                   child: Text(size.name.toUpperCase()),
@@ -426,11 +426,11 @@ class AvatarExample extends StatelessWidget {
                       Column(
                         children: ZetaAvatarSize.values.map((size) {
                           final height = size.pixelSize;
-                          final padding = (height - 14) / 2;
+                          final padding = (height(context) - 14) / 2;
                           return Column(
                             children: [
                               SizedBox(
-                                height: height,
+                                height: height(context),
                                 child: Padding(
                                   padding: EdgeInsets.only(top: padding),
                                   child: Text(size.name.toUpperCase()),
@@ -488,11 +488,11 @@ class AvatarExample extends StatelessWidget {
                       Column(
                         children: ZetaAvatarSize.values.map((size) {
                           final height = size.pixelSize;
-                          final padding = (height - 14) / 2;
+                          final padding = (height(context) - 14) / 2;
                           return Column(
                             children: [
                               SizedBox(
-                                height: height,
+                                height: height(context),
                                 child: Padding(
                                   padding: EdgeInsets.only(top: padding),
                                   child: Text(size.name.toUpperCase()),
@@ -572,7 +572,7 @@ class AvatarExample extends StatelessWidget {
                   ),
                 ],
               ),
-            ].divide(const SizedBox(height: ZetaSpacing.xl_2)).toList(),
+            ].divide(SizedBox(height: Zeta.of(context).spacing.xl_2)).toList(),
           ),
         ),
       ),
@@ -581,26 +581,26 @@ class AvatarExample extends StatelessWidget {
 }
 
 extension on ZetaAvatarSize {
-  double get pixelSize {
+  double pixelSize(BuildContext context) {
     switch (this) {
       case ZetaAvatarSize.xxxl:
         return ZetaSpacingBase.x50;
       case ZetaAvatarSize.xxl:
         return ZetaSpacingBase.x30;
       case ZetaAvatarSize.xl:
-        return ZetaSpacing.xl_10;
+        return Zeta.of(context).spacing.xl_10;
       case ZetaAvatarSize.l:
-        return ZetaSpacing.xl_9;
+        return Zeta.of(context).spacing.xl_9;
       case ZetaAvatarSize.m:
-        return ZetaSpacing.xl_8;
+        return Zeta.of(context).spacing.xl_8;
       case ZetaAvatarSize.s:
-        return ZetaSpacing.xl_6;
+        return Zeta.of(context).spacing.xl_6;
       case ZetaAvatarSize.xs:
-        return ZetaSpacing.xl_5;
+        return Zeta.of(context).spacing.xl_5;
       case ZetaAvatarSize.xxs:
-        return ZetaSpacing.xl_4;
+        return Zeta.of(context).spacing.xl_4;
       case ZetaAvatarSize.xxxs:
-        return ZetaSpacing.xl_2;
+        return Zeta.of(context).spacing.xl_2;
     }
   }
 }

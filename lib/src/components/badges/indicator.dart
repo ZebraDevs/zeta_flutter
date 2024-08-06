@@ -104,13 +104,13 @@ class ZetaIndicator extends ZetaStatelessWidget {
     final zetaColors = Zeta.of(context).colors;
     final Color backgroundColor = (type == ZetaIndicatorType.icon ? zetaColors.blue : zetaColors.surfaceNegative);
     final Color foregroundColor = backgroundColor.onColor;
-    final sizePixels = _getSizePixels(size, type);
+    final sizePixels = _getSizePixels(size, type, context);
 
     return Semantics(
       value: semanticLabel ?? value?.toString() ?? '',
       child: Container(
-        width: sizePixels + ZetaSpacing.minimum,
-        height: sizePixels + ZetaSpacing.minimum,
+        width: sizePixels + Zeta.of(context).spacing.minimum,
+        height: sizePixels + Zeta.of(context).spacing.minimum,
         decoration: BoxDecoration(
           border: Border.all(width: ZetaSpacingBase.x0_5, color: zetaColors.borderSubtle),
           color: (inverse ? foregroundColor : Colors.transparent),
@@ -120,11 +120,14 @@ class ZetaIndicator extends ZetaStatelessWidget {
           child: Container(
             width: sizePixels,
             height: sizePixels,
-            decoration: BoxDecoration(color: backgroundColor, borderRadius: BorderRadius.circular(ZetaSpacing.large)),
+            decoration: BoxDecoration(
+              color: backgroundColor,
+              borderRadius: BorderRadius.circular(Zeta.of(context).spacing.large),
+            ),
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(ZetaSpacing.large),
+              borderRadius: BorderRadius.circular(Zeta.of(context).spacing.large),
               clipBehavior: Clip.hardEdge,
-              child: size == ZetaWidgetSize.small ? null : _buildContent(foregroundColor),
+              child: size == ZetaWidgetSize.small ? null : _buildContent(foregroundColor, context),
             ),
           ),
         ),
@@ -132,10 +135,10 @@ class ZetaIndicator extends ZetaStatelessWidget {
     );
   }
 
-  Widget _buildContent(Color foregroundColor) {
+  Widget _buildContent(Color foregroundColor, BuildContext context) {
     switch (type) {
       case ZetaIndicatorType.icon:
-        final iconSize = _getIconSize(size);
+        final iconSize = _getIconSize(size, context);
         return Center(
           child: ZetaIcon(
             icon ?? ZetaIcons.star,
@@ -154,20 +157,20 @@ class ZetaIndicator extends ZetaStatelessWidget {
   }
 
   /// Returns the size of [ZetaWidgetSize] in pixels.
-  double _getSizePixels(ZetaWidgetSize size, ZetaIndicatorType type) {
+  double _getSizePixels(ZetaWidgetSize size, ZetaIndicatorType type, BuildContext context) {
     switch (size) {
       case ZetaWidgetSize.large:
-        return ZetaSpacing.large;
+        return Zeta.of(context).spacing.large;
       case ZetaWidgetSize.medium:
-        return type == ZetaIndicatorType.icon ? ZetaSpacing.medium : ZetaSpacingBase.x3_5;
+        return type == ZetaIndicatorType.icon ? Zeta.of(context).spacing.medium : ZetaSpacingBase.x3_5;
       case ZetaWidgetSize.small:
-        return ZetaSpacing.small;
+        return Zeta.of(context).spacing.small;
     }
   }
 
-  double _getIconSize(ZetaWidgetSize size) {
-    if (size == ZetaWidgetSize.large) return ZetaSpacing.medium;
-    return ZetaSpacing.small;
+  double _getIconSize(ZetaWidgetSize size, BuildContext context) {
+    if (size == ZetaWidgetSize.large) return Zeta.of(context).spacing.medium;
+    return Zeta.of(context).spacing.small;
   }
 
   @override

@@ -125,7 +125,7 @@ class _ButtonExampleState extends State<ButtonExample> {
                     Text('Floating Action Buttons', style: ZetaTextStyles.displayMedium),
                     Text('Tap buttons to change current FAB: ', style: ZetaTextStyles.bodyMedium),
                     Wrap(children: fabs.divide(SizedBox.square(dimension: 10)).toList()),
-                  ].divide(const SizedBox.square(dimension: ZetaSpacing.xl_2)).toList(),
+                  ].divide(SizedBox.square(dimension: Zeta.of(context).spacing.xl_2)).toList(),
                 ),
               ),
             ],
@@ -151,10 +151,10 @@ class _ButtonExampleState extends State<ButtonExample> {
               size: ZetaWidgetSize.values[index == 0 ? 0 : index - 1],
               borderType: borderType,
             ),
-          ).divide(const SizedBox.square(dimension: ZetaSpacing.xl_2)).toList(),
+          ).divide(SizedBox.square(dimension: Zeta.of(context).spacing.xl_2)).toList(),
         ),
       ),
-    ).reversed.divide(const SizedBox.square(dimension: ZetaSpacing.xl_2)).toList();
+    ).reversed.divide(SizedBox.square(dimension: Zeta.of(context).spacing.xl_2)).toList();
   }
 
   List<Widget> iconButtons(ZetaWidgetBorder? borderType) {
@@ -175,10 +175,10 @@ class _ButtonExampleState extends State<ButtonExample> {
                   ? ZetaIcons.delete
                   : ZetaIcons.more_horizontal,
             ),
-          ).divide(const SizedBox.square(dimension: ZetaSpacing.xl_2)).toList(),
+          ).divide(SizedBox.square(dimension: Zeta.of(context).spacing.xl_2)).toList(),
         ),
       ),
-    ).reversed.divide(const SizedBox.square(dimension: ZetaSpacing.xl_2)).toList();
+    ).reversed.divide(SizedBox.square(dimension: Zeta.of(context).spacing.xl_2)).toList();
   }
 
   List<Widget> groupButtons(ZetaWidgetBorder? ZetaWidgetBorder) {
@@ -256,6 +256,6 @@ class _ButtonExampleState extends State<ButtonExample> {
           ),
         ],
       ),
-    ].divide(const SizedBox.square(dimension: ZetaSpacing.xl_2)).toList();
+    ].divide(SizedBox.square(dimension: Zeta.of(context).spacing.xl_2)).toList();
   }
 }

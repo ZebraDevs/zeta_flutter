@@ -82,6 +82,7 @@ ButtonStyle buttonStyle(
   ZetaWidgetBorder borderType,
   ZetaButtonType type,
   Color? backgroundColor,
+  BuildContext context,
 ) {
   final ZetaColorSwatch color =
       backgroundColor != null ? ZetaColorSwatch.fromColor(backgroundColor) : type.color(colors);
@@ -89,7 +90,7 @@ ButtonStyle buttonStyle(
   final bool isSolid = type.solid || backgroundColor != null;
 
   return ButtonStyle(
-    minimumSize: WidgetStateProperty.all(const Size.square(ZetaSpacing.xl_4)),
+    minimumSize: WidgetStateProperty.all(Size.square(Zeta.of(context).spacing.xl_4)),
     shape: WidgetStateProperty.all(
       RoundedRectangleBorder(borderRadius: borderType.radius),
     ),

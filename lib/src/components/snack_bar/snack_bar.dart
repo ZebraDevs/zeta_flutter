@@ -94,7 +94,7 @@ class ZetaSnackBar extends SnackBar {
           content: ZetaRoundedScope(
             rounded: rounded ?? context.rounded,
             child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: ZetaSpacing.small),
+              padding: EdgeInsets.symmetric(vertical: Zeta.of(context).spacing.small),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -104,7 +104,7 @@ class ZetaSnackBar extends SnackBar {
                         _LeadingIcon(type, leadingIcon),
                         Flexible(
                           child: Padding(
-                            padding: const EdgeInsets.only(left: ZetaSpacing.medium),
+                            padding: EdgeInsets.only(left: Zeta.of(context).spacing.medium),
                             child: _Content(type: type, child: content),
                           ),
                         ),
@@ -293,15 +293,15 @@ class _IconButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: ZetaSpacing.minimum),
+      padding: EdgeInsets.symmetric(vertical: Zeta.of(context).spacing.minimum),
       child: IconButton(
         style: IconButton.styleFrom(
-          padding: const EdgeInsets.symmetric(horizontal: ZetaSpacing.medium),
+          padding: EdgeInsets.symmetric(horizontal: Zeta.of(context).spacing.medium),
           tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-          minimumSize: const Size(ZetaSpacing.xl_1, ZetaSpacing.xl_1),
+          minimumSize: Size(Zeta.of(context).spacing.xl, Zeta.of(context).spacing.xl),
         ),
         onPressed: onPressed,
-        icon: ZetaIcon(ZetaIcons.close, color: color, size: ZetaSpacing.xl_1),
+        icon: ZetaIcon(ZetaIcons.close, color: color, size: Zeta.of(context).spacing.xl),
       ),
     );
   }
@@ -330,13 +330,13 @@ class _ActionButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: ZetaSpacing.medium),
+      padding: EdgeInsets.symmetric(horizontal: Zeta.of(context).spacing.medium),
       child: TextButton(
         style: TextButton.styleFrom(
           textStyle: ZetaTextStyles.labelLarge,
-          padding: const EdgeInsets.symmetric(
-            horizontal: ZetaSpacing.medium,
-            vertical: ZetaSpacing.minimum,
+          padding: EdgeInsets.symmetric(
+            horizontal: Zeta.of(context).spacing.medium,
+            vertical: Zeta.of(context).spacing.minimum,
           ),
           tapTargetSize: MaterialTapTargetSize.shrinkWrap,
           minimumSize: Size.zero,
@@ -394,7 +394,7 @@ class _LeadingIcon extends StatelessWidget {
     final colors = Zeta.of(context).colors;
 
     return Padding(
-      padding: type != null || icon != null ? const EdgeInsets.only(left: ZetaSpacing.medium) : EdgeInsets.zero,
+      padding: type != null || icon != null ? EdgeInsets.only(left: Zeta.of(context).spacing.medium) : EdgeInsets.zero,
       child: IconTheme(
         data: IconThemeData(
           color: _getIconColor(colors, type),

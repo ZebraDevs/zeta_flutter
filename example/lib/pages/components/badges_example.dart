@@ -20,7 +20,7 @@ class BadgesExample extends StatelessWidget {
             _StatusLabel(),
             _DividingText('Priority Pill'),
             _PriorityPill(ZetaPriorityPillSize.large),
-            const SizedBox(height: ZetaSpacing.xl_4),
+            SizedBox(height: Zeta.of(context).spacing.xl_4),
             _PriorityPill(ZetaPriorityPillSize.small),
             _DividingText('Label'),
             _Label(),
@@ -28,7 +28,7 @@ class BadgesExample extends StatelessWidget {
             _Indicators(),
             _DividingText('Tags'),
             _Tags(),
-            const SizedBox(height: ZetaSpacing.xl_4),
+            SizedBox(height: Zeta.of(context).spacing.xl_4),
           ],
         ),
       ),
@@ -45,7 +45,7 @@ class _DividingText extends StatelessWidget {
     return Text(
       text,
       style: ZetaTextStyles.displayMedium,
-    ).paddingVertical(ZetaSpacing.xl_4);
+    ).paddingVertical(Zeta.of(context).spacing.xl_4);
   }
 }
 
@@ -72,7 +72,7 @@ class _StatusLabel extends StatelessWidget {
         statusLabelExampleRow(ZetaWidgetStatus.positive),
         statusLabelExampleRow(ZetaWidgetStatus.warning),
         statusLabelExampleRow(ZetaWidgetStatus.negative),
-      ].divide(const SizedBox.square(dimension: ZetaSpacing.xl_2)).toList(),
+      ].divide(SizedBox.square(dimension: Zeta.of(context).spacing.xl_2)).toList(),
     );
   }
 }
@@ -94,7 +94,7 @@ class _PriorityPill extends StatelessWidget {
             ZetaPriorityPill(size: size, isBadge: true, type: ZetaPriorityPillType.high),
             ZetaPriorityPill(size: size, isBadge: true, type: ZetaPriorityPillType.medium),
             ZetaPriorityPill(size: size, isBadge: true, type: ZetaPriorityPillType.low),
-          ].divide(const SizedBox.square(dimension: ZetaSpacing.xl_2)).toList(),
+          ].divide(SizedBox.square(dimension: Zeta.of(context).spacing.xl_2)).toList(),
         ),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -103,7 +103,7 @@ class _PriorityPill extends StatelessWidget {
             ZetaPriorityPill(size: size, type: ZetaPriorityPillType.high),
             ZetaPriorityPill(size: size, type: ZetaPriorityPillType.medium),
             ZetaPriorityPill(size: size, type: ZetaPriorityPillType.low),
-          ].divide(const SizedBox.square(dimension: ZetaSpacing.xl_2)).toList(),
+          ].divide(SizedBox.square(dimension: Zeta.of(context).spacing.xl_2)).toList(),
         ),
       ],
     );
@@ -132,7 +132,7 @@ class _Label extends StatelessWidget {
         badgeExampleRow(ZetaWidgetStatus.warning),
         badgeExampleRow(ZetaWidgetStatus.negative),
         badgeExampleRow(ZetaWidgetStatus.neutral),
-      ].divide(const SizedBox(height: ZetaSpacing.xl_2)).toList(),
+      ].divide(SizedBox(height: Zeta.of(context).spacing.xl_2)).toList(),
     );
   }
 }
@@ -164,23 +164,23 @@ class _Indicators extends StatelessWidget {
                         ZetaIndicator.icon(),
                         ZetaIndicator.icon(size: ZetaWidgetSize.medium),
                         ZetaIndicator.icon(size: ZetaWidgetSize.small),
-                      ].divide(const SizedBox.square(dimension: ZetaSpacing.xl_2)).toList(),
+                      ].divide(SizedBox.square(dimension: Zeta.of(context).spacing.xl_2)).toList(),
                     ),
                     Row(
                       children: [
                         ZetaIndicator.icon(inverse: true),
                         ZetaIndicator.icon(size: ZetaWidgetSize.medium, inverse: true),
                         ZetaIndicator.icon(size: ZetaWidgetSize.small, inverse: true),
-                      ].divide(const SizedBox.square(dimension: ZetaSpacing.xl_2)).toList(),
+                      ].divide(SizedBox.square(dimension: Zeta.of(context).spacing.xl_2)).toList(),
                     ),
-                  ].divide(const SizedBox.square(dimension: ZetaSpacing.small)).toList(),
+                  ].divide(SizedBox.square(dimension: Zeta.of(context).spacing.small)).toList(),
                 ),
                 const SizedBox(width: 50),
               ],
             ),
           ],
         ),
-        const SizedBox.square(dimension: ZetaSpacing.xl_9),
+        SizedBox.square(dimension: Zeta.of(context).spacing.xl_9),
         Column(
           children: [
             Text(
@@ -200,16 +200,16 @@ class _Indicators extends StatelessWidget {
                         ZetaIndicator.notification(value: 3),
                         ZetaIndicator.notification(size: ZetaWidgetSize.medium, value: 3),
                         ZetaIndicator.notification(size: ZetaWidgetSize.small),
-                      ].divide(const SizedBox.square(dimension: ZetaSpacing.xl_2)).toList(),
+                      ].divide(SizedBox.square(dimension: Zeta.of(context).spacing.xl_2)).toList(),
                     ),
                     Row(
                       children: [
                         ZetaIndicator.notification(value: 3, inverse: true),
                         ZetaIndicator.notification(size: ZetaWidgetSize.medium, value: 3, inverse: true),
                         ZetaIndicator.notification(size: ZetaWidgetSize.small, inverse: true),
-                      ].divide(const SizedBox.square(dimension: ZetaSpacing.xl_2)).toList(),
+                      ].divide(SizedBox.square(dimension: Zeta.of(context).spacing.xl_2)).toList(),
                     ),
-                  ].divide(const SizedBox.square(dimension: ZetaSpacing.medium)).toList(),
+                  ].divide(SizedBox.square(dimension: Zeta.of(context).spacing.medium)).toList(),
                 ),
               ],
             ),
@@ -232,7 +232,7 @@ class _Tags extends StatelessWidget {
         children: [
           ZetaTag.left(label: 'Left'),
           ZetaTag.right(label: 'Right'),
-        ].divide(SizedBox.square(dimension: ZetaSpacing.xl_2)).toList(),
+        ].divide(SizedBox.square(dimension: Zeta.of(context).spacing.xl_2)).toList(),
       ),
     );
   }

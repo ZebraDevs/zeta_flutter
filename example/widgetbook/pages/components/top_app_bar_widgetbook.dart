@@ -208,7 +208,7 @@ class _ExtendedSearchState extends State<ExtendedSearch> {
                   height: constraints.maxHeight * 4,
                   color: Zeta.of(context).colors.surfaceSecondary,
                   child: CustomPaint(
-                    painter: Painter(colors: Zeta.of(context).colors, constraints: constraints),
+                    painter: Painter(context: context, constraints: constraints),
                     size: Size(constraints.maxWidth, constraints.maxHeight * 4),
                   ),
                 ),
@@ -222,9 +222,9 @@ class _ExtendedSearchState extends State<ExtendedSearch> {
 }
 
 class Painter extends CustomPainter {
-  final ZetaColors colors;
+  final BuildContext context;
   final BoxConstraints constraints;
-  Painter({super.repaint, required this.colors, required this.constraints});
+  Painter({super.repaint, required this.context, required this.constraints});
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -232,8 +232,8 @@ class Painter extends CustomPainter {
       var p1 = Offset(i, -10);
       var p2 = Offset(constraints.maxHeight + i, constraints.maxHeight * 4);
       var paint = Paint()
-        ..color = colors.primary
-        ..strokeWidth = ZetaSpacing.minimum;
+        ..color = Zeta.of(context).colors.primary
+        ..strokeWidth = Zeta.of(context).spacing.minimum;
       canvas.drawLine(p1, p2, paint);
     }
   }

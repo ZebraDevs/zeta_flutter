@@ -50,7 +50,7 @@ class ChatItemExample extends StatelessWidget {
                 "Dummy text to represent the first lines of most recent message",
               ),
             ),
-          ].gap(ZetaSpacing.large),
+          ].gap(Zeta.of(context).spacing.large),
         ),
       ),
     );

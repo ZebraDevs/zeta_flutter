@@ -46,11 +46,11 @@ class ZetaHintText extends ZetaStatelessWidget {
       children: [
         ZetaIcon(
           errorText != null ? ZetaIcons.error : ZetaIcons.info,
-          size: ZetaSpacing.large,
+          size: Zeta.of(context).spacing.large,
           color: elementColor,
         ),
-        const SizedBox(
-          width: ZetaSpacing.minimum,
+        SizedBox(
+          width: Zeta.of(context).spacing.minimum,
         ),
         Expanded(
           child: Text(
@@ -60,7 +60,7 @@ class ZetaHintText extends ZetaStatelessWidget {
           ),
         ),
       ],
-    ).paddingTop(ZetaSpacing.small);
+    ).paddingTop(Zeta.of(context).spacing.small);
   }
 
   @override

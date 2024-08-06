@@ -57,7 +57,7 @@ class _TopAppBarExampleState extends State<TopAppBarExample> {
                   children: [
                     ZetaAvatar(size: ZetaAvatarSize.xs, image: image),
                     Padding(
-                      padding: const EdgeInsets.only(left: ZetaSpacing.medium),
+                      padding: EdgeInsets.only(left: Zeta.of(context).spacing.medium),
                       child: Text("Title"),
                     ),
                   ],
@@ -154,7 +154,7 @@ class _TopAppBarExampleState extends State<TopAppBarExample> {
                         children: [
                           ZetaAvatar(size: ZetaAvatarSize.xs, image: image),
                           Padding(
-                            padding: const EdgeInsets.only(left: ZetaSpacing.medium),
+                            padding: EdgeInsets.only(left: Zeta.of(context).spacing.medium),
                             child: Text("Title"),
                           ),
                         ],
@@ -180,7 +180,7 @@ class _TopAppBarExampleState extends State<TopAppBarExample> {
                         height: 800,
                         color: Zeta.of(context).colors.surfaceSecondary,
                         child: CustomPaint(
-                          painter: Painter(colors: colors),
+                          painter: Painter(zeta: Zeta.of(context)),
                           size: Size(800, 800),
                         ),
                       ),
@@ -222,7 +222,7 @@ class _TopAppBarExampleState extends State<TopAppBarExample> {
                         height: 800,
                         color: Zeta.of(context).colors.surfaceSecondary,
                         child: CustomPaint(
-                          painter: Painter(colors: colors),
+                          painter: Painter(zeta: Zeta.of(context)),
                           size: Size(800, 800),
                         ),
                       ),
@@ -239,9 +239,9 @@ class _TopAppBarExampleState extends State<TopAppBarExample> {
 }
 
 class Painter extends CustomPainter {
-  final ZetaColors colors;
+  final Zeta zeta;
 
-  Painter({super.repaint, required this.colors});
+  Painter({super.repaint, required this.zeta});
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -249,8 +249,8 @@ class Painter extends CustomPainter {
       var p1 = Offset(i, -10);
       var p2 = Offset(800 + i, 810);
       var paint = Paint()
-        ..color = colors.primary
-        ..strokeWidth = ZetaSpacing.minimum;
+        ..color = zeta.colors.primary
+        ..strokeWidth = zeta.spacing.minimum;
       canvas.drawLine(p1, p2, paint);
     }
   }

@@ -41,7 +41,7 @@ Widget navigationRailUseCase(BuildContext context) {
               ),
               Expanded(
                 child: Padding(
-                  padding: const EdgeInsets.all(ZetaSpacing.xl_1),
+                  padding: EdgeInsets.all(Zeta.of(context).spacing.xl),
                   child: selectedIndex == null
                       ? const Nothing()
                       : Text(

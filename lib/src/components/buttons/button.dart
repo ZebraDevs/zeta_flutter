@@ -171,13 +171,15 @@ class ZetaButton extends ZetaStatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = Zeta.of(context).colors;
+    final minConstraints = _minConstraints(context);
+    final iconSize = _iconSize(context);
     return Semantics(
       button: true,
       enabled: onPressed != null,
       label: semanticLabel ?? label,
       excludeSemantics: true,
       child: ConstrainedBox(
-        constraints: BoxConstraints(minHeight: _minConstraints, minWidth: _minConstraints),
+        constraints: BoxConstraints(minHeight: minConstraints, minWidth: minConstraints),
         child: FilledButton(
           focusNode: focusNode,
           onPressed: onPressed,
@@ -186,34 +188,17 @@ class ZetaButton extends ZetaStatelessWidget {
             borderType ?? (context.rounded ? ZetaWidgetBorder.rounded : ZetaWidgetBorder.sharp),
             type,
             null,
+            context,
           ),
           child: SelectionContainer.disabled(
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                if (leadingIcon != null)
-                  Icon(
-                    leadingIcon,
-                    size: _iconSize,
-                  ),
-                if (label.isNotEmpty)
-                  Text(
-                    label,
-                    style: _textStyle,
-                  ),
-                if (trailingIcon != null)
-                  Icon(
-                    trailingIcon,
-                    size: _iconSize,
-                  ),
-              ]
-                  .divide(
-                    const SizedBox(
-                      width: ZetaSpacing.small,
-                    ),
-                  )
-                  .toList(),
-            ).paddingHorizontal(_textPadding),
+                if (leadingIcon != null) Icon(leadingIcon, size: iconSize),
+                if (label.isNotEmpty) Text(label, style: _textStyle),
+                if (trailingIcon != null) Icon(trailingIcon, size: iconSize),
+              ].divide(SizedBox(width: Zeta.of(context).spacing.small)).toList(),
+            ).paddingHorizontal(_textPadding(context)),
           ),
         ),
       ),
@@ -222,39 +207,39 @@ class ZetaButton extends ZetaStatelessWidget {
 
   TextStyle get _textStyle => size == ZetaWidgetSize.small ? ZetaTextStyles.labelSmall : ZetaTextStyles.labelLarge;
 
-  double get _minConstraints {
+  double _minConstraints(BuildContext context) {
     switch (size) {
       case ZetaWidgetSize.large:
-        return ZetaSpacing.xl_8;
+        return Zeta.of(context).spacing.xl_8;
 
       case ZetaWidgetSize.medium:
-        return ZetaSpacing.xl_6;
+        return Zeta.of(context).spacing.xl_6;
 
       case ZetaWidgetSize.small:
-        return ZetaSpacing.xl_4;
+        return Zeta.of(context).spacing.xl_4;
     }
   }
 
-  double get _textPadding {
+  double _textPadding(BuildContext context) {
     switch (size) {
       case ZetaWidgetSize.large:
-        return ZetaSpacing.large;
+        return Zeta.of(context).spacing.large;
 
       case ZetaWidgetSize.medium:
-        return ZetaSpacing.medium;
+        return Zeta.of(context).spacing.medium;
 
       case ZetaWidgetSize.small:
-        return ZetaSpacing.minimum;
+        return Zeta.of(context).spacing.minimum;
     }
   }
 
-  double get _iconSize {
+  double _iconSize(BuildContext context) {
     switch (size) {
       case ZetaWidgetSize.large:
       case ZetaWidgetSize.medium:
-        return ZetaSpacing.xl_1;
+        return Zeta.of(context).spacing.xl;
       case ZetaWidgetSize.small:
-        return ZetaSpacing.large;
+        return Zeta.of(context).spacing.large;
     }
   }
 

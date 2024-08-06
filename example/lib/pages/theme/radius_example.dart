@@ -14,7 +14,7 @@ class RadiusExample extends StatelessWidget {
     return ExampleScaffold(
       name: name,
       child: SingleChildScrollView(
-        padding: EdgeInsets.all(ZetaSpacing.xl_2),
+        padding: EdgeInsets.all(Zeta.of(context).spacing.xl_2),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -36,7 +36,7 @@ class RadiusExample extends StatelessWidget {
                             color: Zeta.of(context).colors.surfacePrimary,
                             border: Border.all(color: colors.blue.shade50, width: 3),
                           ),
-                          padding: EdgeInsets.all(ZetaSpacing.large),
+                          padding: EdgeInsets.all(Zeta.of(context).spacing.large),
                           child: Text(
                             rad.radiusString.split('.').last.capitalize(),
                             style: ZetaTextStyles.titleMedium.apply(
@@ -49,7 +49,7 @@ class RadiusExample extends StatelessWidget {
                       ),
                     );
                   })
-                  .divide(const SizedBox(height: ZetaSpacing.xl_4))
+                  .divide(SizedBox(height: Zeta.of(context).spacing.xl_4))
                   .toList(),
             ),
           ],

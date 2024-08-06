@@ -11,7 +11,7 @@ Widget filterSelectionUseCase(BuildContext context) {
       builder: (_, setState) {
         return Column(
           children: [
-            const SizedBox(height: ZetaSpacing.xl_2),
+            SizedBox(height: Zeta.of(context).spacing.xl_2),
             ZetaFilterSelection(
               items: [
                 for (int i = 0; i < items.length; i++)
