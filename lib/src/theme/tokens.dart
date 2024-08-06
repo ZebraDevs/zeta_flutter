@@ -6,53 +6,70 @@ import 'package:flutter/material.dart';
 ///
 /// Semantic zeta spacings.
 /// {@category Theme}
+@Deprecated('Use Zeta.of(context).spacing instead. ' 'This will be removed in v1.0.0')
 class ZetaSpacing {
   /// No spacing => 0px.
+  @Deprecated('Use Zeta.of(context).spacing.none instead. ' 'This will be removed in v1.0.0')
   static const double none = ZetaSpacingBase.x0;
 
   /// Minimum spacing => 4px.
+  @Deprecated('Use Zeta.of(context).spacing.minimum instead. ' 'This will be removed in v1.0.0')
   static const double minimum = ZetaSpacingBase.x1;
 
   /// Small spacing => 8px.
+  @Deprecated('Use Zeta.of(context).spacing.small instead. ' 'This will be removed in v1.0.0')
   static const double small = ZetaSpacingBase.x2;
 
   /// Medium spacing => 12px.
+  @Deprecated('Use Zeta.of(context).spacing.medium instead. ' 'This will be removed in v1.0.0')
   static const double medium = ZetaSpacingBase.x3;
 
   /// Large spacing => 16px.
+  @Deprecated('Use Zeta.of(context).spacing.large instead. ' 'This will be removed in v1.0.0')
   static const double large = ZetaSpacingBase.x4;
 
   /// 1xl spacing => 20px.
+  @Deprecated('Use Zeta.of(context).spacing.xl instead. ' 'This will be removed in v1.0.0')
   static const double xl_1 = ZetaSpacingBase.x5;
 
   /// 2xl spacing => 24px.
+  @Deprecated('Use Zeta.of(context).spacing.xl_2 instead. ' 'This will be removed in v1.0.0')
   static const double xl_2 = ZetaSpacingBase.x6;
 
   /// 3xl spacing => 28px.
+  @Deprecated('Use Zeta.of(context).spacing.xl_3 instead. ' 'This will be removed in v1.0.0')
   static const double xl_3 = ZetaSpacingBase.x7;
 
   /// 4xl spacing => 32px.
+  @Deprecated('Use Zeta.of(context).spacing.xl_4 instead. ' 'This will be removed in v1.0.0')
   static const double xl_4 = ZetaSpacingBase.x8;
 
   /// 5xl spacing => 36px.
+  @Deprecated('Use Zeta.of(context).spacing.xl_5 instead. ' 'This will be removed in v1.0.0')
   static const double xl_5 = ZetaSpacingBase.x9;
 
   /// 6xl spacing => 40px.
+  @Deprecated('Use Zeta.of(context).spacing.xl_6 instead. ' 'This will be removed in v1.0.0')
   static const double xl_6 = ZetaSpacingBase.x10;
 
   /// 7xl spacing => 44px.
+  @Deprecated('Use Zeta.of(context).spacing.xl_7 instead. ' 'This will be removed in v1.0.0')
   static const double xl_7 = ZetaSpacingBase.x11;
 
   /// 8xl spacing => 48px.
+  @Deprecated('Use Zeta.of(context).spacing.xl_8 instead. ' 'This will be removed in v1.0.0')
   static const double xl_8 = ZetaSpacingBase.x12;
 
   /// 9xl spacing => 64px.
+  @Deprecated('Use Zeta.of(context).spacing.xl_9 instead. ' 'This will be removed in v1.0.0')
   static const double xl_9 = ZetaSpacingBase.x13;
 
   /// 10xl spacing => 80px.
+  @Deprecated('Use Zeta.of(context).spacing.xl_10 instead. ' 'This will be removed in v1.0.0')
   static const double xl_10 = ZetaSpacingBase.x14;
 
   /// 11xl spacing => 96px
+  @Deprecated('Use Zeta.of(context).spacing.xl_11 instead. ' 'This will be removed in v1.0.0')
   static const double xl_11 = ZetaSpacingBase.x15;
 
   /// Base multiplier used to calculate spacing values.

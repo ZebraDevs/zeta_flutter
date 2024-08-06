@@ -61,52 +61,50 @@ class ZetaBanner extends MaterialBanner {
     String? semanticLabel,
   }) : super(
           dividerColor: Colors.transparent,
-          content: Builder(
-            builder: (context) {
-              final backgroundColor = _backgroundColorFromType(context, type);
-              final foregroundColor = backgroundColor.onColor;
-              if (!kIsWeb && Platform.isAndroid && context.mounted) {
-                // ignore: invalid_use_of_visible_for_testing_member
-                final statusBarColor = SystemChrome.latestStyle?.statusBarColor;
-                if (statusBarColor != backgroundColor) {
-                  SystemChrome.setSystemUIOverlayStyle(
-                    SystemUiOverlayStyle(
-                      statusBarColor: backgroundColor,
-                      systemNavigationBarIconBrightness: backgroundColor.isDark ? Brightness.light : Brightness.dark,
-                    ),
-                  );
-                }
+          content: () {
+            final backgroundColor = _backgroundColorFromType(context, type);
+            final foregroundColor = backgroundColor.onColor;
+            if (!kIsWeb && Platform.isAndroid && context.mounted) {
+              // ignore: invalid_use_of_visible_for_testing_member
+              final statusBarColor = SystemChrome.latestStyle?.statusBarColor;
+              if (statusBarColor != backgroundColor) {
+                SystemChrome.setSystemUIOverlayStyle(
+                  SystemUiOverlayStyle(
+                    statusBarColor: backgroundColor,
+                    systemNavigationBarIconBrightness: backgroundColor.isDark ? Brightness.light : Brightness.dark,
+                  ),
+                );
               }
+            }
 
-              return ZetaRoundedScope(
-                rounded: rounded ?? context.rounded,
-                child: Semantics(
-                  label: semanticLabel ?? title,
-                  child: DefaultTextStyle(
-                    style: ZetaTextStyles.labelLarge.copyWith(
-                      color: foregroundColor,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                    child: Row(
-                      mainAxisAlignment: titleStart ? MainAxisAlignment.center : MainAxisAlignment.start,
-                      children: [
-                        if (leadingIcon != null)
-                          Padding(
-                            padding: const EdgeInsets.only(right: ZetaSpacing.small),
-                            child: Icon(
-                              leadingIcon,
-                              color: foregroundColor,
-                              size: ZetaSpacing.xl_2,
-                            ),
+            return ZetaRoundedScope(
+              rounded: rounded ?? context.rounded,
+              child: Semantics(
+                label: semanticLabel ?? title,
+                child: DefaultTextStyle(
+                  style: ZetaTextStyles.labelLarge.copyWith(
+                    color: foregroundColor,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  child: Row(
+                    mainAxisAlignment: titleStart ? MainAxisAlignment.center : MainAxisAlignment.start,
+                    children: [
+                      if (leadingIcon != null)
+                        Padding(
+                          padding: EdgeInsets.only(right: Zeta.of(context).spacing.small),
+                          child: Icon(
+                            leadingIcon,
+                            color: foregroundColor,
+                            size: Zeta.of(context).spacing.xl_2,
                           ),
-                        Flexible(child: Text(title)),
-                      ],
-                    ),
+                        ),
+                      Flexible(child: Text(title)),
+                    ],
                   ),
                 ),
-              );
-            },
-          ),
+              ),
+            );
+          }(),
           backgroundColor: _backgroundColorFromType(context, type),
           actions: [
             IconTheme(

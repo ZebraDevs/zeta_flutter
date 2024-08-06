@@ -138,7 +138,7 @@ class _ZetaSegmentedControlState<T> extends State<ZetaSegmentedControl<T>>
           cursor: SystemMouseCursors.click,
           child: SelectionContainer.disabled(
             child: Container(
-              padding: const EdgeInsets.all(ZetaSpacing.minimum),
+              padding: EdgeInsets.all(Zeta.of(context).spacing.minimum),
               decoration: BoxDecoration(
                 color: colors.surfaceDisabled,
                 borderRadius: rounded ? ZetaRadius.minimal : ZetaRadius.none,
@@ -225,15 +225,15 @@ class _SegmentState<T> extends State<_Segment<T>> with TickerProviderStateMixin<
             children: [
               widget.child,
               IconTheme(
-                data: const IconThemeData(size: ZetaSpacing.xl_1),
+                data: IconThemeData(size: Zeta.of(context).spacing.xl),
                 child: DefaultTextStyle(
                   style: ZetaTextStyles.labelMedium.copyWith(
                     color: colors.textDefault,
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: ZetaSpacing.xl_4,
-                      vertical: ZetaSpacing.minimum,
+                    padding: EdgeInsets.symmetric(
+                      horizontal: Zeta.of(context).spacing.xl_4,
+                      vertical: Zeta.of(context).spacing.minimum,
                     ),
                     child: widget.child,
                   ),
@@ -344,7 +344,7 @@ class _RenderSegmentedControl<T> extends RenderBox
   @override
   double computeMaxIntrinsicHeight(double width) {
     RenderBox? child = firstChild;
-    double maxMaxChildHeight = ZetaSpacing.xl_3;
+    double maxMaxChildHeight = 28;
     while (child != null) {
       final double childHeight = child.getMaxIntrinsicHeight(width);
       maxMaxChildHeight = math.max(maxMaxChildHeight, childHeight);
@@ -369,7 +369,7 @@ class _RenderSegmentedControl<T> extends RenderBox
   @override
   double computeMinIntrinsicHeight(double width) {
     RenderBox? child = firstChild;
-    double maxMinChildHeight = ZetaSpacing.xl_3;
+    double maxMinChildHeight = 28;
     while (child != null) {
       final double childHeight = child.getMinIntrinsicHeight(width);
       maxMinChildHeight = math.max(maxMinChildHeight, childHeight);
@@ -388,7 +388,7 @@ class _RenderSegmentedControl<T> extends RenderBox
       maxMinChildWidth = math.max(maxMinChildWidth, childWidth);
       child = nonSeparatorChildAfter(child);
     }
-    return (maxMinChildWidth + 2 * ZetaSpacing.xl_4) * childCount + totalSeparatorWidth;
+    return (maxMinChildWidth + 64) * childCount + totalSeparatorWidth;
   }
 
   @override
@@ -578,7 +578,7 @@ class _RenderSegmentedControl<T> extends RenderBox
   Size _calculateChildSize(BoxConstraints constraints) {
     final int childCount = this.childCount ~/ 2 + 1;
     double childWidth = (constraints.minWidth - totalSeparatorWidth) / childCount;
-    double maxHeight = ZetaSpacing.xl_3;
+    double maxHeight = 28;
     RenderBox? child = firstChild;
     while (child != null) {
       childWidth = math.max(childWidth, child.getMaxIntrinsicWidth(double.infinity) + 2);

@@ -105,7 +105,10 @@ class _ZetaChipState extends State<ZetaChip> {
 
   Widget _renderLeading(Color foregroundColor) {
     if (widget.leading.runtimeType == Icon) {
-      return IconTheme(data: IconThemeData(color: foregroundColor, size: ZetaSpacing.xl_1), child: widget.leading!);
+      return IconTheme(
+        data: IconThemeData(color: foregroundColor, size: Zeta.of(context).spacing.xl),
+        child: widget.leading!,
+      );
     } else if (widget.leading.runtimeType == ZetaAvatar) {
       return (widget.leading! as ZetaAvatar).copyWith(size: ZetaAvatarSize.xxxs);
     }
@@ -160,18 +163,18 @@ class _ZetaChipState extends State<ZetaChip> {
   double get _trailingPadding {
     if (widget.trailing != null) {
       if (widget.trailing.runtimeType == IconButton) {
-        return ZetaSpacing.none;
+        return Zeta.of(context).spacing.none;
       }
       return ZetaSpacingBase.x2_5;
     }
-    return ZetaSpacing.medium;
+    return Zeta.of(context).spacing.medium;
   }
 
   ValueListenableBuilder<Set<WidgetState>> child(ZetaColors colors, Color foregroundColor, {bool isDragging = false}) {
     return ValueListenableBuilder(
       valueListenable: _controller,
       builder: (context, states, child) {
-        final double iconSize = selected ? ZetaSpacing.xl_2 : ZetaSpacing.none;
+        final double iconSize = selected ? Zeta.of(context).spacing.xl_2 : Zeta.of(context).spacing.none;
         final bool rounded = context.rounded;
         return InkWell(
           statesController: _controller,
@@ -186,9 +189,9 @@ class _ZetaChipState extends State<ZetaChip> {
           },
           child: AnimatedContainer(
             duration: Durations.short3,
-            height: ZetaSpacing.xl_5,
+            height: Zeta.of(context).spacing.xl_5,
             padding: EdgeInsets.fromLTRB(
-              widget.leading != null ? ZetaSpacingBase.x2_5 : ZetaSpacing.medium,
+              widget.leading != null ? ZetaSpacingBase.x2_5 : Zeta.of(context).spacing.medium,
               0,
               _trailingPadding,
               0,
@@ -241,15 +244,15 @@ class _ZetaChipState extends State<ZetaChip> {
                 else if (widget.leading != null)
                   _renderLeading(foregroundColor),
                 if ((widget.selected != null && selected) || widget.leading != null)
-                  const SizedBox.square(dimension: ZetaSpacing.small),
+                  SizedBox.square(dimension: Zeta.of(context).spacing.small),
                 Text(
                   widget.label,
                   style: ZetaTextStyles.bodySmall.apply(color: foregroundColor),
                 ),
                 if (widget.trailing != null) ...[
-                  const SizedBox.square(dimension: ZetaSpacing.small),
+                  SizedBox.square(dimension: Zeta.of(context).spacing.small),
                   IconTheme(
-                    data: IconThemeData(color: foregroundColor, size: ZetaSpacing.xl_1),
+                    data: IconThemeData(color: foregroundColor, size: Zeta.of(context).spacing.xl),
                     child: trailing!,
                   ),
                 ],

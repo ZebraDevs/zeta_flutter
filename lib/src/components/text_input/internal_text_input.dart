@@ -189,15 +189,15 @@ class InternalTextInputState extends State<InternalTextInput> {
   EdgeInsets get _contentPadding {
     switch (widget.size) {
       case ZetaWidgetSize.large:
-        return const EdgeInsets.symmetric(
-          horizontal: ZetaSpacing.medium,
-          vertical: ZetaSpacing.large,
+        return EdgeInsets.symmetric(
+          horizontal: Zeta.of(context).spacing.medium,
+          vertical: Zeta.of(context).spacing.large,
         );
       case ZetaWidgetSize.small:
       case ZetaWidgetSize.medium:
-        return const EdgeInsets.symmetric(
-          horizontal: ZetaSpacing.medium,
-          vertical: ZetaSpacing.small,
+        return EdgeInsets.symmetric(
+          horizontal: Zeta.of(context).spacing.medium,
+          vertical: Zeta.of(context).spacing.small,
         );
     }
   }
@@ -215,14 +215,14 @@ class InternalTextInputState extends State<InternalTextInput> {
     late final double height;
     switch (widget.size) {
       case ZetaWidgetSize.large:
-        width = ZetaSpacing.xl_6;
-        height = ZetaSpacing.xl_8;
+        width = Zeta.of(context).spacing.xl_6;
+        height = Zeta.of(context).spacing.xl_8;
       case ZetaWidgetSize.medium:
-        width = ZetaSpacing.xl_6;
-        height = ZetaSpacing.xl_6;
+        width = Zeta.of(context).spacing.xl_6;
+        height = Zeta.of(context).spacing.xl_6;
       case ZetaWidgetSize.small:
-        width = ZetaSpacing.xl_6;
-        height = ZetaSpacing.xl_4;
+        width = Zeta.of(context).spacing.xl_6;
+        height = Zeta.of(context).spacing.xl_4;
     }
     return BoxConstraints(
       minWidth: width,
@@ -257,7 +257,7 @@ class InternalTextInputState extends State<InternalTextInput> {
         child: Text(
           text,
         ),
-      ).paddingHorizontal(ZetaSpacing.small);
+      ).paddingHorizontal(Zeta.of(context).spacing.small);
     }
     final style = textStyle ?? _affixStyle;
     return DefaultTextStyle(
@@ -311,7 +311,7 @@ class InternalTextInputState extends State<InternalTextInput> {
                 requirementLevel: widget.requirementLevel,
                 disabled: widget.disabled,
               ),
-              const SizedBox(height: ZetaSpacing.minimum),
+              SizedBox(height: Zeta.of(context).spacing.minimum),
             ],
             Row(
               children: [

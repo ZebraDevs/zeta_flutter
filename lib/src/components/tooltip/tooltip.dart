@@ -42,9 +42,9 @@ class ZetaTooltip extends ZetaStatelessWidget {
   /// The padding inside the [ZetaTooltip].
   /// Default is:
   /// ```
-  /// const EdgeInsets.symmetric(
-  ///   horizontal: ZetaSpacing.small,
-  ///   vertical: ZetaSpacing.minimum,
+  ///  EdgeInsets.symmetric(
+  ///   horizontal: Zeta.of(context).spacing.small,
+  ///   vertical: Zeta.of(context).spacing.minimum,
   /// )
   /// ```
   final EdgeInsets? padding;
@@ -77,7 +77,7 @@ class ZetaTooltip extends ZetaStatelessWidget {
     final horizontalArrowWidth =
         [ZetaTooltipArrowDirection.left, ZetaTooltipArrowDirection.right].contains(arrowDirection)
             ? _horizontalArrowSize.width
-            : ZetaSpacing.none;
+            : Zeta.of(context).spacing.none;
 
     return ZetaRoundedScope(
       rounded: context.rounded,
@@ -124,9 +124,9 @@ class ZetaTooltip extends ZetaStatelessWidget {
                             ),
                             child: Padding(
                               padding: padding ??
-                                  const EdgeInsets.symmetric(
-                                    horizontal: ZetaSpacing.small,
-                                    vertical: ZetaSpacing.minimum,
+                                  EdgeInsets.symmetric(
+                                    horizontal: Zeta.of(context).spacing.small,
+                                    vertical: Zeta.of(context).spacing.minimum,
                                   ),
                               child: DefaultTextStyle(
                                 style: textStyle ??

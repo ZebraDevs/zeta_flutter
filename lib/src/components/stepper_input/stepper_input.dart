@@ -136,9 +136,9 @@ class ZetaStepperInputState extends State<ZetaStepperInput> {
 
   double get _height {
     if (widget.size != ZetaStepperInputSize.large) {
-      return ZetaSpacing.xl_6;
+      return Zeta.of(context).spacing.xl_6;
     } else {
-      return ZetaSpacing.xl_8;
+      return Zeta.of(context).spacing.xl_8;
     }
   }
 
@@ -188,7 +188,7 @@ class ZetaStepperInputState extends State<ZetaStepperInput> {
         children: [
           _getButton(),
           SizedBox(
-            width: ZetaSpacing.xl_9,
+            width: Zeta.of(context).spacing.xl_9,
             child: TextFormField(
               keyboardType: TextInputType.number,
               enabled: !disabled,
@@ -217,7 +217,7 @@ class ZetaStepperInputState extends State<ZetaStepperInput> {
             ),
           ),
           _getButton(increase: true),
-        ].divide(const SizedBox(width: ZetaSpacing.small)).toList(),
+        ].divide(SizedBox(width: Zeta.of(context).spacing.small)).toList(),
       ),
     );
   }

@@ -25,7 +25,7 @@ class _IntroductionWidgetbookState extends State<IntroductionWidgetbook> {
   @override
   Widget build(BuildContext context) {
     final colors = Zeta.of(context).colors;
-    final radius = Radius.circular(ZetaSpacing.xl_1);
+    final radius = Radius.circular(Zeta.of(context).spacing.xl);
     final isDark = Zeta.of(context).brightness == Brightness.dark;
     final config = isDark ? MarkdownConfig.darkConfig : MarkdownConfig.defaultConfig;
 
@@ -35,7 +35,8 @@ class _IntroductionWidgetbookState extends State<IntroductionWidgetbook> {
         backgroundColor: colors.black,
         body: SingleChildScrollView(
           child: Padding(
-            padding: EdgeInsets.symmetric(vertical: ZetaSpacing.xl_10, horizontal: ZetaSpacing.medium),
+            padding: EdgeInsets.symmetric(
+                vertical: Zeta.of(context).spacing.xl_10, horizontal: Zeta.of(context).spacing.medium),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
@@ -46,10 +47,10 @@ class _IntroductionWidgetbookState extends State<IntroductionWidgetbook> {
                   ),
                   child: Padding(
                     padding: EdgeInsets.fromLTRB(
-                      ZetaSpacing.xl_6,
-                      ZetaSpacing.xl_9,
-                      ZetaSpacing.xl_8,
-                      ZetaSpacing.xl_6,
+                      Zeta.of(context).spacing.xl_6,
+                      Zeta.of(context).spacing.xl_9,
+                      Zeta.of(context).spacing.xl_8,
+                      Zeta.of(context).spacing.xl_6,
                     ),
                     child: Row(
                       children: [
@@ -66,7 +67,7 @@ class _IntroductionWidgetbookState extends State<IntroductionWidgetbook> {
                                 ])
                               : null,
                         ),
-                        SizedBox(width: largeScreen ? ZetaSpacing.xl_6 : ZetaSpacing.xl_1),
+                        SizedBox(width: largeScreen ? Zeta.of(context).spacing.xl_6 : Zeta.of(context).spacing.xl),
                         Expanded(
                           child: Text(
                             // x-release-please-start-version
@@ -85,7 +86,7 @@ class _IntroductionWidgetbookState extends State<IntroductionWidgetbook> {
                     borderRadius: BorderRadius.only(bottomLeft: radius, bottomRight: radius),
                   ),
                   width: double.infinity,
-                  padding: EdgeInsets.all(ZetaSpacing.xl_4),
+                  padding: EdgeInsets.all(Zeta.of(context).spacing.xl_4),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
@@ -155,12 +156,13 @@ class _CodeWrapperWidget extends StatelessWidget {
         ),
         if (language.isNotEmpty)
           Positioned(
-            top: ZetaSpacing.small,
+            top: Zeta.of(context).spacing.small,
             right: 0,
             child: SelectionContainer.disabled(
               child: Container(
                 child: Text(language),
-                padding: EdgeInsets.symmetric(vertical: ZetaSpacing.minimum, horizontal: ZetaSpacing.medium),
+                padding: EdgeInsets.symmetric(
+                    vertical: Zeta.of(context).spacing.minimum, horizontal: Zeta.of(context).spacing.medium),
                 decoration: BoxDecoration(color: colors.cool.shade40, borderRadius: ZetaRadius.rounded),
               ),
             ),

@@ -39,7 +39,7 @@ class ZetaThemeContrastSwitch extends StatelessWidget {
               initials: e == ZetaContrast.aa ? 'AA' : 'AAA',
               initialTextStyle: TextStyle(
                 fontSize: 14,
-                letterSpacing: ZetaSpacing.none,
+                letterSpacing: Zeta.of(context).spacing.none,
                 color: colors.primary,
                 fontWeight: FontWeight.w500,
               ),

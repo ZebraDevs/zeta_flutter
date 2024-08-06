@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 
 import '../../../zeta_flutter.dart';
 
-const _extendedOffset = ZetaSpacing.minimum * 6.5;
-
 /// Creates a search field used on a [ZetaTopAppBar].
 /// {@category Components}
 class ZetaTopAppBarSearchField extends ZetaStatefulWidget {
@@ -138,6 +136,8 @@ class _ZetaTopAppBarSearchFieldState extends State<ZetaTopAppBarSearchField> wit
 
   @override
   Widget build(BuildContext context) {
+    final extendedOffset = Zeta.of(context).spacing.minimum * 6.5;
+
     final colors = Zeta.of(context).colors;
     return ZetaRoundedScope(
       rounded: context.rounded,
@@ -153,7 +153,7 @@ class _ZetaTopAppBarSearchFieldState extends State<ZetaTopAppBarSearchField> wit
             ],
           ),
           ConstrainedBox(
-            constraints: BoxConstraints(maxHeight: widget.isExtended ? _extendedOffset : double.infinity),
+            constraints: BoxConstraints(maxHeight: widget.isExtended ? extendedOffset : double.infinity),
             child: AnimatedBuilder(
               animation: _animationController,
               builder: (context, child) => Transform.scale(

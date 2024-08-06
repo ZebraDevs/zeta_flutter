@@ -29,7 +29,7 @@ class ZetaFilterSelection extends ZetaStatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: ZetaSpacing.xl_7,
+      height: Zeta.of(context).spacing.xl_7,
       child: Row(
         children: [
           Semantics(
@@ -38,14 +38,14 @@ class ZetaFilterSelection extends ZetaStatelessWidget {
             excludeSemantics: true,
             enabled: onPressed != null,
             child: Container(
-              height: ZetaSpacing.xl_7,
+              height: Zeta.of(context).spacing.xl_7,
               color: Zeta.of(context).colors.surfaceDefault,
               child: IconButton(
                 visualDensity: VisualDensity.compact,
                 onPressed: onPressed,
-                icon: const ZetaIcon(
+                icon: ZetaIcon(
                   ZetaIcons.filter,
-                  size: ZetaSpacing.xl_2,
+                  size: Zeta.of(context).spacing.xl_2,
                 ),
               ),
             ),
@@ -54,9 +54,9 @@ class ZetaFilterSelection extends ZetaStatelessWidget {
             child: ListView.builder(
               shrinkWrap: true,
               scrollDirection: Axis.horizontal,
-              padding: const EdgeInsets.all(ZetaSpacing.minimum),
+              padding: EdgeInsets.all(Zeta.of(context).spacing.minimum),
               itemCount: items.length,
-              itemBuilder: (context, index) => items[index].paddingHorizontal(ZetaSpacing.minimum),
+              itemBuilder: (context, index) => items[index].paddingHorizontal(Zeta.of(context).spacing.minimum),
             ),
           ),
         ],

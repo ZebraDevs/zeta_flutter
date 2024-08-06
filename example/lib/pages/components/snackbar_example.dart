@@ -21,7 +21,7 @@ class SnackBarExample extends StatelessWidget {
                 Row(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(top: ZetaSpacing.large),
+                      padding: EdgeInsets.only(top: Zeta.of(context).spacing.large),
                       child: ZetaButton.primary(
                         label: "Standard SnackBar",
                         onPressed: () {
@@ -43,7 +43,7 @@ class SnackBarExample extends StatelessWidget {
 
                 // Default
                 Padding(
-                  padding: const EdgeInsets.only(top: ZetaSpacing.large),
+                  padding: EdgeInsets.only(top: Zeta.of(context).spacing.large),
                   child: ZetaButton.primary(
                     label: "Contectual Default",
                     onPressed: () {
@@ -61,7 +61,7 @@ class SnackBarExample extends StatelessWidget {
 
                 // Action
                 Padding(
-                  padding: const EdgeInsets.only(top: ZetaSpacing.large),
+                  padding: EdgeInsets.only(top: Zeta.of(context).spacing.large),
                   child: ZetaButton.primary(
                     label: "Action",
                     onPressed: () {
@@ -80,7 +80,7 @@ class SnackBarExample extends StatelessWidget {
 
                 // Positive
                 Padding(
-                  padding: const EdgeInsets.only(top: ZetaSpacing.large),
+                  padding: EdgeInsets.only(top: Zeta.of(context).spacing.large),
                   child: ZetaButton.primary(
                     label: "Positive",
                     onPressed: () {
@@ -97,7 +97,7 @@ class SnackBarExample extends StatelessWidget {
 
                 // Info
                 Padding(
-                  padding: const EdgeInsets.only(top: ZetaSpacing.large),
+                  padding: EdgeInsets.only(top: Zeta.of(context).spacing.large),
                   child: ZetaButton.primary(
                     label: "Info",
                     onPressed: () {
@@ -114,7 +114,7 @@ class SnackBarExample extends StatelessWidget {
 
                 // Info
                 Padding(
-                  padding: const EdgeInsets.only(top: ZetaSpacing.large),
+                  padding: EdgeInsets.only(top: Zeta.of(context).spacing.large),
                   child: ZetaButton.primary(
                     label: "Info",
                     onPressed: () {
@@ -131,7 +131,7 @@ class SnackBarExample extends StatelessWidget {
 
                 // Warning
                 Padding(
-                  padding: const EdgeInsets.only(top: ZetaSpacing.large),
+                  padding: EdgeInsets.only(top: Zeta.of(context).spacing.large),
                   child: ZetaButton.primary(
                     label: "Warning",
                     onPressed: () {
@@ -148,7 +148,7 @@ class SnackBarExample extends StatelessWidget {
 
                 // Error
                 Padding(
-                  padding: const EdgeInsets.only(top: ZetaSpacing.large),
+                  padding: EdgeInsets.only(top: Zeta.of(context).spacing.large),
                   child: ZetaButton.primary(
                     label: "Error",
                     onPressed: () {
@@ -165,7 +165,7 @@ class SnackBarExample extends StatelessWidget {
 
                 // Deletion
                 Padding(
-                  padding: const EdgeInsets.only(top: ZetaSpacing.large),
+                  padding: EdgeInsets.only(top: Zeta.of(context).spacing.large),
                   child: ZetaButton.primary(
                     label: "Deletion",
                     onPressed: () {
@@ -183,7 +183,7 @@ class SnackBarExample extends StatelessWidget {
 
                 // View
                 Padding(
-                  padding: const EdgeInsets.only(top: ZetaSpacing.large),
+                  padding: EdgeInsets.only(top: Zeta.of(context).spacing.large),
                   child: ZetaButton.primary(
                     label: "View",
                     onPressed: () {

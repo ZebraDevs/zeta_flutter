@@ -42,7 +42,7 @@ class _GroupHeaderExampleState extends State<GroupHeaderExample> {
               ],
               avatar: const ZetaAvatar(initials: 'PS'),
             ),
-            const SizedBox(height: ZetaSpacing.xl_1),
+            SizedBox(height: Zeta.of(context).spacing.xl),
             ZetaGlobalHeader(title: "Title", tabItems: childrenTwo),
           ]),
         ),

@@ -73,11 +73,11 @@ class _ZetaBreadCrumbsState extends State<ZetaBreadCrumbs> {
         child: Row(
           children: renderedChildren(widget.children)
               .divide(
-                const Row(
+                Row(
                   children: [
-                    SizedBox(width: ZetaSpacing.small),
-                    ZetaIcon(ZetaIcons.chevron_right, size: ZetaSpacing.xl_1),
-                    SizedBox(width: ZetaSpacing.small),
+                    SizedBox(width: Zeta.of(context).spacing.small),
+                    ZetaIcon(ZetaIcons.chevron_right, size: Zeta.of(context).spacing.xl),
+                    SizedBox(width: Zeta.of(context).spacing.small),
                   ],
                 ),
               )
@@ -213,9 +213,7 @@ class _ZetaBreadCrumbState extends State<ZetaBreadCrumb> {
                 widget.activeIcon ?? ZetaIcons.star_round,
                 color: getColor(controller.value, colors),
               ),
-            const SizedBox(
-              width: ZetaSpacing.small,
-            ),
+            SizedBox(width: Zeta.of(context).spacing.small),
             Text(
               widget.label,
               style: ZetaTextStyles.bodySmall.apply(color: getColor(controller.value, colors)),
@@ -332,12 +330,12 @@ class _BreadCrumbsTruncatedState extends State<_BreadCrumbsTruncated> {
                 }),
                 padding: WidgetStateProperty.all(EdgeInsets.zero),
                 minimumSize: WidgetStateProperty.all(Size.zero),
-                elevation: const WidgetStatePropertyAll(ZetaSpacing.none),
+                elevation: WidgetStatePropertyAll(Zeta.of(context).spacing.none),
               ),
               child: Icon(
                 rounded ? ZetaIcons.more_horizontal_round : ZetaIcons.more_horizontal_sharp,
-                size: ZetaSpacing.large,
-              ).paddingHorizontal(ZetaSpacing.small).paddingVertical(ZetaSpacing.minimum),
+                size: Zeta.of(context).spacing.large,
+              ).paddingHorizontal(Zeta.of(context).spacing.small).paddingVertical(Zeta.of(context).spacing.minimum),
             ),
           );
   }
@@ -346,11 +344,11 @@ class _BreadCrumbsTruncatedState extends State<_BreadCrumbsTruncated> {
     return Row(
       children: widget.children
           .divide(
-            const Row(
+            Row(
               children: [
-                SizedBox(width: ZetaSpacing.small),
-                ZetaIcon(ZetaIcons.chevron_right, size: ZetaSpacing.xl_1),
-                SizedBox(width: ZetaSpacing.small),
+                SizedBox(width: Zeta.of(context).spacing.small),
+                ZetaIcon(ZetaIcons.chevron_right, size: Zeta.of(context).spacing.xl),
+                SizedBox(width: Zeta.of(context).spacing.small),
               ],
             ),
           )

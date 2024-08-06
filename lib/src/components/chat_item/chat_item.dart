@@ -105,8 +105,9 @@ class ZetaChatItem extends ZetaStatelessWidget {
   double _getSlidableExtend({
     required int slidableActionsCount,
     required double maxScreenWidth,
+    required BuildContext context,
   }) {
-    final actionWith = slidableActionsCount * ZetaSpacing.xl_10;
+    final actionWith = slidableActionsCount * Zeta.of(context).spacing.xl_10;
     final maxButtonWidth = actionWith / maxScreenWidth;
     final extend = actionWith / maxScreenWidth;
 
@@ -155,8 +156,11 @@ class ZetaChatItem extends ZetaStatelessWidget {
               return Slidable(
                 enabled: actions.isNotEmpty,
                 endActionPane: ActionPane(
-                  extentRatio:
-                      _getSlidableExtend(slidableActionsCount: actions.length, maxScreenWidth: constraints.maxWidth),
+                  extentRatio: _getSlidableExtend(
+                    slidableActionsCount: actions.length,
+                    maxScreenWidth: constraints.maxWidth,
+                    context: context,
+                  ),
                   motion: const ScrollMotion(),
                   children: actions,
                 ),
@@ -169,14 +173,16 @@ class ZetaChatItem extends ZetaStatelessWidget {
                       child: Semantics(
                         explicitChildNodes: explicitChildNodes,
                         child: Padding(
-                          padding:
-                              const EdgeInsets.symmetric(horizontal: ZetaSpacing.medium, vertical: ZetaSpacing.small),
+                          padding: EdgeInsets.symmetric(
+                            horizontal: Zeta.of(context).spacing.medium,
+                            vertical: Zeta.of(context).spacing.small,
+                          ),
                           child: Row(
                             children: [
                               if (leading != null) _formatLeading!,
                               Flexible(
                                 child: Padding(
-                                  padding: const EdgeInsets.only(left: ZetaSpacing.medium),
+                                  padding: EdgeInsets.only(left: Zeta.of(context).spacing.medium),
                                   child: Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -185,9 +191,9 @@ class ZetaChatItem extends ZetaStatelessWidget {
                                         children: [
                                           if (highlighted)
                                             Container(
-                                              margin: const EdgeInsets.only(right: ZetaSpacing.minimum),
-                                              height: ZetaSpacing.small,
-                                              width: ZetaSpacing.small,
+                                              margin: EdgeInsets.only(right: Zeta.of(context).spacing.minimum),
+                                              height: Zeta.of(context).spacing.small,
+                                              width: Zeta.of(context).spacing.small,
                                               decoration: BoxDecoration(color: colors.primary, shape: BoxShape.circle),
                                             ),
                                           Flexible(
@@ -213,16 +219,14 @@ class ZetaChatItem extends ZetaStatelessWidget {
                                                         style: ZetaTextStyles.bodyXSmall,
                                                       ),
                                                     IconTheme(
-                                                      data: const IconThemeData(
-                                                        size: ZetaSpacing.large,
-                                                      ),
+                                                      data: IconThemeData(size: Zeta.of(context).spacing.large),
                                                       child: Row(
                                                         children: [
                                                           ...additionalIcons,
                                                           if (enabledNotificationIcon)
                                                             Padding(
-                                                              padding: const EdgeInsets.only(
-                                                                left: ZetaSpacing.minimum,
+                                                              padding: EdgeInsets.only(
+                                                                left: Zeta.of(context).spacing.minimum,
                                                               ),
                                                               child: ZetaIcon(
                                                                 ZetaIcons.error,
@@ -231,8 +235,8 @@ class ZetaChatItem extends ZetaStatelessWidget {
                                                             ),
                                                           if (enabledWarningIcon)
                                                             Padding(
-                                                              padding: const EdgeInsets.only(
-                                                                left: ZetaSpacing.minimum,
+                                                              padding: EdgeInsets.only(
+                                                                left: Zeta.of(context).spacing.minimum,
                                                               ),
                                                               child: Icon(
                                                                 Icons.circle_notifications,
@@ -241,11 +245,11 @@ class ZetaChatItem extends ZetaStatelessWidget {
                                                             ),
                                                           if (_count != null)
                                                             Container(
-                                                              margin: const EdgeInsets.only(
-                                                                left: ZetaSpacing.minimum,
+                                                              margin: EdgeInsets.only(
+                                                                left: Zeta.of(context).spacing.minimum,
                                                               ),
-                                                              padding: const EdgeInsets.symmetric(
-                                                                horizontal: ZetaSpacing.small,
+                                                              padding: EdgeInsets.symmetric(
+                                                                horizontal: Zeta.of(context).spacing.small,
                                                               ),
                                                               decoration: BoxDecoration(
                                                                 color: colors.primary,
@@ -284,8 +288,8 @@ class ZetaChatItem extends ZetaStatelessWidget {
                                             ),
                                           if (starred != null)
                                             Padding(
-                                              padding: const EdgeInsets.only(
-                                                left: ZetaSpacing.minimum,
+                                              padding: EdgeInsets.only(
+                                                left: Zeta.of(context).spacing.minimum,
                                               ),
                                               child: ZetaIcon(
                                                 starred! ? ZetaIcons.star : ZetaIcons.star_outline,
@@ -453,7 +457,7 @@ class ZetaSlidableAction extends StatelessWidget {
     return Expanded(
       child: SizedBox.expand(
         child: Padding(
-          padding: const EdgeInsets.only(left: ZetaSpacing.minimum),
+          padding: EdgeInsets.only(left: Zeta.of(context).spacing.minimum),
           child: Semantics(
             label: semanticLabel,
             container: true,
@@ -467,7 +471,7 @@ class ZetaSlidableAction extends StatelessWidget {
                 shape: const RoundedRectangleBorder(borderRadius: ZetaRadius.minimal),
                 side: BorderSide.none,
               ),
-              icon: ZetaIcon(icon, size: ZetaSpacing.xl_4),
+              icon: ZetaIcon(icon, size: Zeta.of(context).spacing.xl_4),
             ),
           ),
         ),

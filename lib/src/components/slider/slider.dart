@@ -86,7 +86,7 @@ class _ZetaSliderState extends State<ZetaSlider> {
             disabledThumbColor: colors.surfaceDisabled,
             overlayShape: _SliderThumb(size: ZetaSpacingBase.x2_5, rounded: context.rounded, color: _activeColor),
             thumbShape: _SliderThumb(
-              size: ZetaSpacing.small,
+              size: Zeta.of(context).spacing.small,
               rounded: context.rounded,
               color: _activeColor,
             ),
@@ -129,7 +129,7 @@ typedef SliderThumb = _SliderThumb;
 /// Custom slider thumb component
 class _SliderThumb extends SliderComponentShape {
   /// Constructor for [_SliderThumb]
-  const _SliderThumb({required this.size, required this.rounded, required this.color});
+  _SliderThumb({required this.size, required this.rounded, required this.color});
 
   /// Radius or width/height for [_SliderThumb] depending on shape
   final double size;

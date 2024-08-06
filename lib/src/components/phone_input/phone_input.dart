@@ -59,7 +59,7 @@ class ZetaPhoneInput extends ZetaFormField<PhoneNumber> {
           builder: (field) {
             final _ZetaPhoneInputState state = field as _ZetaPhoneInputState;
 
-            final colors = Zeta.of(field.context).colors;
+            final zeta = Zeta.of(field.context);
             final newRounded = rounded ?? field.context.rounded;
 
             return InternalTextInput(
@@ -77,37 +77,37 @@ class ZetaPhoneInput extends ZetaFormField<PhoneNumber> {
               keyboardType: TextInputType.phone,
               prefixText: state._selectedCountry.dialCode,
               borderRadius: BorderRadius.only(
-                topRight: newRounded ? const Radius.circular(ZetaSpacing.minimum) : Radius.zero,
-                bottomRight: newRounded ? const Radius.circular(ZetaSpacing.minimum) : Radius.zero,
+                topRight: newRounded ? Radius.circular(zeta.spacing.minimum) : Radius.zero,
+                bottomRight: newRounded ? Radius.circular(zeta.spacing.minimum) : Radius.zero,
               ),
               externalPrefix: ZetaDropdown(
-                offset: const Offset(0, ZetaSpacing.medium),
+                offset: Offset(0, zeta.spacing.medium),
                 onChange: !disabled ? state.onDropdownChanged : null,
                 value: state._selectedCountry.dialCode,
                 onDismissed: state.onDropdownDismissed,
                 items: state._dropdownItems,
                 builder: (context, selectedItem, dropdowncontroller) {
                   final borderSide = BorderSide(
-                    color: disabled ? colors.borderDefault : colors.borderSubtle,
+                    color: disabled ? zeta.colors.borderDefault : zeta.colors.borderSubtle,
                   );
 
                   return GestureDetector(
                     onTap: !disabled ? dropdowncontroller.toggle : null,
                     child: Container(
                       constraints: BoxConstraints(
-                        maxHeight: size == ZetaWidgetSize.large ? ZetaSpacing.xl_8 : ZetaSpacing.xl_6,
+                        maxHeight: size == ZetaWidgetSize.large ? zeta.spacing.xl_8 : zeta.spacing.xl_6,
                       ),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.only(
-                          topLeft: newRounded ? const Radius.circular(ZetaSpacing.minimum) : Radius.zero,
-                          bottomLeft: newRounded ? const Radius.circular(ZetaSpacing.minimum) : Radius.zero,
+                          topLeft: newRounded ? Radius.circular(zeta.spacing.minimum) : Radius.zero,
+                          bottomLeft: newRounded ? Radius.circular(zeta.spacing.minimum) : Radius.zero,
                         ),
                         border: Border(
                           left: borderSide,
                           top: borderSide,
                           bottom: borderSide,
                         ),
-                        color: disabled ? colors.surfaceDisabled : colors.surfaceDefault,
+                        color: disabled ? zeta.colors.surfaceDisabled : zeta.colors.surfaceDefault,
                       ),
                       child: Column(
                         children: [
@@ -117,16 +117,16 @@ class ZetaPhoneInput extends ZetaFormField<PhoneNumber> {
                               mainAxisSize: MainAxisSize.min,
                               children: [
                                 Padding(
-                                  padding: const EdgeInsets.only(
-                                    left: ZetaSpacing.medium,
-                                    right: ZetaSpacing.small,
+                                  padding: EdgeInsets.only(
+                                    left: zeta.spacing.medium,
+                                    right: zeta.spacing.small,
                                   ),
                                   child: selectedItem?.icon,
                                 ),
                                 ZetaIcon(
                                   !dropdowncontroller.isOpen ? ZetaIcons.expand_more : ZetaIcons.expand_less,
-                                  color: !disabled ? colors.iconDefault : colors.iconDisabled,
-                                  size: ZetaSpacing.xl_1,
+                                  color: !disabled ? zeta.colors.iconDefault : zeta.colors.iconDisabled,
+                                  size: zeta.spacing.xl,
                                 ),
                               ],
                             ),

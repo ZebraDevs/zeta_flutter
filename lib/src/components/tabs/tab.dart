@@ -11,26 +11,31 @@ class ZetaTab extends Tab {
     String? text,
     super.key,
   }) : super(
-          child: Semantics(
-            button: true,
-            child: SelectionContainer.disabled(
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  if (icon != null) ...[
-                    const SizedBox(width: ZetaSpacing.medium),
-                    icon,
-                  ],
-                  if (text != null)
-                    Padding(
-                      padding: icon != null ? const EdgeInsets.only(left: ZetaSpacing.small) : EdgeInsets.zero,
-                      child: Text(text),
-                    ),
-                  if (icon != null) const SizedBox(width: ZetaSpacing.medium),
-                ],
-              ),
-            ),
+          child: Builder(
+            builder: (context) {
+              return Semantics(
+                button: true,
+                child: SelectionContainer.disabled(
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      if (icon != null) ...[
+                        SizedBox(width: Zeta.of(context).spacing.medium),
+                        icon,
+                      ],
+                      if (text != null)
+                        Padding(
+                          padding:
+                              icon != null ? EdgeInsets.only(left: Zeta.of(context).spacing.small) : EdgeInsets.zero,
+                          child: Text(text),
+                        ),
+                      if (icon != null) SizedBox(width: Zeta.of(context).spacing.medium),
+                    ],
+                  ),
+                ),
+              );
+            },
           ),
         );
 }

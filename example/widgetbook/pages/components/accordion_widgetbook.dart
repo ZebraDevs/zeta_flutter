@@ -6,7 +6,7 @@ import '../../utils/scaffold.dart';
 
 Widget accordionUseCase(BuildContext context) => WidgetbookScaffold(
       builder: (context, _) => Padding(
-        padding: const EdgeInsets.all(ZetaSpacing.xl_1),
+        padding: EdgeInsets.all(Zeta.of(context).spacing.xl),
         child: ZetaAccordion(
           child: context.knobs.boolean(label: 'Disabled')
               ? null

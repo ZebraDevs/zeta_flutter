@@ -4,22 +4,22 @@ import 'package:zeta_example/widgets.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 Map<String, double> semanticSpacings = {
-  'none': ZetaSpacing.none,
-  'minimum': ZetaSpacing.minimum,
-  'small': ZetaSpacing.small,
-  'medium': ZetaSpacing.medium,
-  'large': ZetaSpacing.large,
-  'xl': ZetaSpacing.xl_1,
-  '2xl': ZetaSpacing.xl_2,
-  '3xl': ZetaSpacing.xl_3,
-  '4xl': ZetaSpacing.xl_4,
-  '5xl': ZetaSpacing.xl_5,
-  '6xl': ZetaSpacing.xl_6,
-  '7xl': ZetaSpacing.xl_7,
-  '8xl': ZetaSpacing.xl_8,
-  '9xl': ZetaSpacing.xl_9,
-  '10xl': ZetaSpacing.xl_10,
-  '11xl': ZetaSpacing.xl_11,
+  // 'none': Zeta.of(context).spacing.none,
+  // 'minimum': Zeta.of(context).spacing.minimum,
+  // 'small': Zeta.of(context).spacing.small,
+  // 'medium': Zeta.of(context).spacing.medium,
+  // 'large': Zeta.of(context).spacing.large,
+  // 'xl': Zeta.of(context).spacing.xl_1,
+  // '2xl': Zeta.of(context).spacing.xl_2,
+  // '3xl': Zeta.of(context).spacing.xl_3,
+  // '4xl': Zeta.of(context).spacing.xl_4,
+  // '5xl': Zeta.of(context).spacing.xl_5,
+  // '6xl': Zeta.of(context).spacing.xl_6,
+  // '7xl': Zeta.of(context).spacing.xl_7,
+  // '8xl': Zeta.of(context).spacing.xl_8,
+  // '9xl': Zeta.of(context).spacing.xl_9,
+  // '10xl': Zeta.of(context).spacing.xl_10,
+  // '11xl': Zeta.of(context).spacing.xl_11,
 };
 Map<String, double> baseSpacings = {
   'x1': ZetaSpacingBase.x1,
@@ -82,16 +82,16 @@ class _SpacingDemo extends StatelessWidget {
     final colors = Zeta.of(context).colors;
     return Container(
       color: colors.blue.shade30,
-      margin: EdgeInsets.all(ZetaSpacing.xl_2),
+      margin: EdgeInsets.all(Zeta.of(context).spacing.xl_2),
       child: CustomPaint(
         painter: _TagPainter(color: colors.pink),
         child: LayoutBuilder(builder: (context, c2) {
           return Container(
             margin: EdgeInsets.all(size.value),
-            padding: EdgeInsets.all(ZetaSpacing.medium),
+            padding: EdgeInsets.all(Zeta.of(context).spacing.medium),
             color: colors.surfacePrimary,
             child: Text(
-              'ZetaSpacing.' + size.key,
+              'Zeta.of(context).spacing.' + size.key,
               style: ZetaTextStyles.titleMedium.apply(
                 color: Zeta.of(context).colors.textDefault,
                 fontStyle: FontStyle.normal,

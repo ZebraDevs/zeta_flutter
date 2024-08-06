@@ -48,11 +48,10 @@ class ZetaTag extends ZetaStatelessWidget {
   ///  If null, [label] is used.
   final String? semanticLabel;
 
-  /// Fixed container size
-  static const Size _containerSize = Size(ZetaSpacing.xl_5, ZetaSpacing.xl_3);
-
   @override
   Widget build(BuildContext context) {
+    /// Fixed container size
+    final Size containerSize = Size(Zeta.of(context).spacing.xl_5, Zeta.of(context).spacing.xl_3);
     return Semantics(
       value: semanticLabel ?? label,
       child: Row(
@@ -63,12 +62,12 @@ class ZetaTag extends ZetaStatelessWidget {
               color: Zeta.of(context).colors.surfaceHover,
               borderRadius: _getBorderRadius(context),
             ),
-            height: _containerSize.height,
-            constraints: BoxConstraints(minWidth: _containerSize.width),
+            height: containerSize.height,
+            constraints: BoxConstraints(minWidth: containerSize.width),
             child: Center(
               child: FittedBox(
                 child: Padding(
-                  padding: const EdgeInsets.fromLTRB(ZetaSpacing.small, 1, ZetaSpacing.small, 1),
+                  padding: EdgeInsets.fromLTRB(Zeta.of(context).spacing.small, 1, Zeta.of(context).spacing.small, 1),
                   child: Text(
                     label,
                     style: ZetaTextStyles.bodyMedium,
@@ -101,7 +100,7 @@ class ZetaTag extends ZetaStatelessWidget {
 
   Widget _buildCustomPaint(BuildContext context) {
     return CustomPaint(
-      size: const Size(ZetaSpacing.medium, ZetaSpacing.xl_3),
+      size: Size(Zeta.of(context).spacing.medium, Zeta.of(context).spacing.xl_3),
       painter: _TagPainter(
         color: Zeta.of(context).colors.surfaceHover,
         direction: direction,

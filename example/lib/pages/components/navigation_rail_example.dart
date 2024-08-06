@@ -56,7 +56,7 @@ class _NavigationRailExampleState extends State<NavigationRailExample> {
             ),
             Expanded(
               child: Padding(
-                padding: const EdgeInsets.all(ZetaSpacing.xl_1),
+                padding: EdgeInsets.all(Zeta.of(context).spacing.xl),
                 child: _selectedIndex == null
                     ? const Nothing()
                     : Text(

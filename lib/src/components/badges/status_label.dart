@@ -45,16 +45,16 @@ class ZetaStatusLabel extends ZetaStatelessWidget {
           borderRadius: context.rounded ? ZetaRadius.full : ZetaRadius.none,
         ),
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: ZetaSpacing.small, vertical: ZetaSpacingBase.x0_5),
+          padding: EdgeInsets.symmetric(horizontal: Zeta.of(context).spacing.small, vertical: ZetaSpacingBase.x0_5),
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
               Icon(
                 customIcon ?? Icons.circle,
-                size: customIcon != null ? ZetaSpacing.xl_1 : ZetaSpacing.small,
+                size: customIcon != null ? Zeta.of(context).spacing.xl : Zeta.of(context).spacing.small,
                 color: colors.icon,
               ),
-              const SizedBox(width: ZetaSpacing.small),
+              SizedBox(width: Zeta.of(context).spacing.small),
               Text(
                 label,
                 style: ZetaTextStyles.bodyMedium.apply(color: colors.shade10.onColor),

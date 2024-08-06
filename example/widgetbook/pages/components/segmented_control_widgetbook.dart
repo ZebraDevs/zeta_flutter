@@ -20,7 +20,7 @@ Widget segmentedControlUseCase(BuildContext context) {
       return Column(
         children: [
           Padding(
-            padding: const EdgeInsets.all(ZetaSpacing.xl_4),
+            padding: EdgeInsets.all(Zeta.of(context).spacing.xl_4),
             child: ZetaSegmentedControl(
               segments: [
                 for (final value in iconsSegments)
@@ -36,7 +36,7 @@ Widget segmentedControlUseCase(BuildContext context) {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(ZetaSpacing.xl_4),
+            padding: EdgeInsets.all(Zeta.of(context).spacing.xl_4),
             child: ZetaSegmentedControl(
               segments: [
                 for (final value in textSegments)
