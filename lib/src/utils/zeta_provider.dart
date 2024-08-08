@@ -434,7 +434,6 @@ ThemeData generateZetaTheme({
       bottomAppBarTheme: existingTheme.bottomAppBarTheme,
       bottomNavigationBarTheme: existingTheme.bottomNavigationBarTheme,
       bottomSheetTheme: existingTheme.bottomSheetTheme,
-      buttonBarTheme: existingTheme.buttonBarTheme,
       buttonTheme: existingTheme.buttonTheme,
       cardTheme: existingTheme.cardTheme,
       checkboxTheme: existingTheme.checkboxTheme,
