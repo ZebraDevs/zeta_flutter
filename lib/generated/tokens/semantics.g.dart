@@ -8,167 +8,188 @@ import 'primitives.g.dart';
 abstract interface class ZetaColorSemantics {
      /// Primitives used to construct semantic colors
 ZetaPrimitives get primitives;
-/// Main Default color
-Color get mainDefault;
-/// Subtle color
-Color get subtle;
-/// Light color
-Color get light;
-/// Inverse color
-Color get inverse;
-/// Disabled color
-Color get disabled;
-/// Primary color
-Color get primary;
-/// Secondary color
-Color get secondary;
-/// Positive color
-Color get positive;
-/// Warning color
-Color get warning;
-/// Negative color
-Color get negative;
-/// Info color
-Color get info;
-/// Border Default color
-Color get borderDefault;
-/// Border Subtle color
-Color get borderSubtle;
-/// Border Hover color
-Color get borderHover;
-/// Border Selected color
-Color get borderSelected;
-/// Border Disabled color
-Color get borderDisabled;
-/// Border Pure color
-Color get borderPure;
-/// Border Primary Main color
-Color get borderPrimaryMain;
-/// Border Primary color
-Color get borderPrimary;
-/// Border Secondary color
-Color get borderSecondary;
-/// Border Positive color
-Color get borderPositive;
-/// Border Warning color
-Color get borderWarning;
-/// Border Negative color
-Color get borderNegative;
-/// Border Info color
-Color get borderInfo;
-/// Surface Default color
-Color get surfaceDefault;
-/// Surface Default Inverse color
-Color get surfaceDefaultInverse;
-/// Surface Hover color
-Color get surfaceHover;
-/// Surface Selected color
-Color get surfaceSelected;
-/// Surface Selected Hover color
-Color get surfaceSelectedHover;
-/// Surface Disabled color
-Color get surfaceDisabled;
-/// Surface Cool color
-Color get surfaceCool;
-/// Surface Warm color
-Color get surfaceWarm;
-/// Surface Primary color
-Color get surfacePrimary;
-/// Surface Primary Subtle color
-Color get surfacePrimarySubtle;
-/// Surface Secondary color
-Color get surfaceSecondary;
-/// Surface Avatar Blue color
-Color get surfaceAvatarBlue;
-/// Surface Avatar Green color
-Color get surfaceAvatarGreen;
-/// Surface Avatar Orange color
-Color get surfaceAvatarOrange;
-/// Surface Avatar Pink color
-Color get surfaceAvatarPink;
-/// Surface Avatar Purple color
-Color get surfaceAvatarPurple;
-/// Surface Avatar Teal color
-Color get surfaceAvatarTeal;
-/// Surface Avatar Yellow color
-Color get surfaceAvatarYellow;
-/// Surface Secondary Subtle color
-Color get surfaceSecondarySubtle;
-/// Surface Positive color
-Color get surfacePositive;
-/// Surface Positive Subtle color
-Color get surfacePositiveSubtle;
-/// Surface Warning color
-Color get surfaceWarning;
-/// Surface Warning Subtle color
-Color get surfaceWarningSubtle;
-/// Surface Negative color
-Color get surfaceNegative;
-/// Surface Negative Subtle color
-Color get surfaceNegativeSubtle;
-/// Surface Info color
-Color get surfaceInfo;
-/// Surface Info Subtle color
-Color get surfaceInfoSubtle;
-/// State Disabled color
-Color get stateDisabled;
-/// Default Enabled color
-Color get defaultEnabled;
-/// Default Hover color
-Color get defaultHover;
-/// Default Selected color
-Color get defaultSelected;
-/// Default Focus color
-Color get defaultFocus;
-/// Primary Enabled color
-Color get primaryEnabled;
-/// Primary Hover color
-Color get primaryHover;
-/// Primary Selected color
-Color get primarySelected;
-/// Primary Focus color
-Color get primaryFocus;
-/// Secondary Enabled color
-Color get secondaryEnabled;
-/// Secondary Hover color
-Color get secondaryHover;
-/// Secondary Selected color
-Color get secondarySelected;
-/// Secondary Focus color
-Color get secondaryFocus;
-/// Positive Enabled color
-Color get positiveEnabled;
-/// Positive Hover color
-Color get positiveHover;
-/// Positive Selected color
-Color get positiveSelected;
-/// Positive Focus color
-Color get positiveFocus;
-/// Negative Enabled color
-Color get negativeEnabled;
-/// Negative Hover color
-Color get negativeHover;
-/// Negative Selected color
-Color get negativeSelected;
-/// Negative Focus color
-Color get negativeFocus;
-/// Info Enabled color
-Color get infoEnabled;
-/// Info Hover color
-Color get infoHover;
-/// Info Selected color
-Color get infoSelected;
-/// Info Focus color
-Color get infoFocus;
-/// Inverse Enabled color
-Color get inverseEnabled;
-/// Inverse Hover color
-Color get inverseHover;
-/// Inverse Selected color
-Color get inverseSelected;
-/// Inverse Focus color
-Color get inverseFocus;
+/// The semantic tokens for Main
+ZetaMainColors get main;
+/// The semantic tokens for Border
+ZetaBorderColors get border;
+/// The semantic tokens for Surface
+ZetaSurfaceColors get surface;
+/// The semantic tokens for Avatar
+ZetaAvatarColors get avatar;
+/// The semantic tokens for State
+ZetaStateColors get state;
+/// The semantic tokens for Disabled
+ZetaDisabledColors get disabled;
+/// The semantic tokens for Default
+ZetaDefaultColors get defaultColor;
+/// The semantic tokens for Primary
+ZetaPrimaryColors get primary;
+/// The semantic tokens for Secondary
+ZetaSecondaryColors get secondary;
+/// The semantic tokens for Positive
+ZetaPositiveColors get positive;
+/// The semantic tokens for Negative
+ZetaNegativeColors get negative;
+/// The semantic tokens for Info
+ZetaInfoColors get info;
+/// The semantic tokens for Inverse
+ZetaInverseColors get inverse;
 }
+
+/// The semantic tokens for Main colors
+abstract interface class ZetaMainColors{
+/// The primitives for the colors
+ZetaPrimitives get primitives;
+/// Default Color
+Color get defaultColor;/// Subtle
+Color get subtle;/// Light
+Color get light;/// Inverse
+Color get inverse;/// Disabled
+Color get disabled;/// Primary
+Color get primary;/// Secondary
+Color get secondary;/// Positive
+Color get positive;/// Warning
+Color get warning;/// Negative
+Color get negative;/// Info
+Color get info;}
+/// The semantic tokens for Border colors
+abstract interface class ZetaBorderColors{
+/// The primitives for the colors
+ZetaPrimitives get primitives;
+/// Default Color
+Color get defaultColor;/// Subtle
+Color get subtle;/// Hover
+Color get hover;/// Selected
+Color get selected;/// Disabled
+Color get disabled;/// Pure
+Color get pure;/// Primary Main
+Color get primaryMain;/// Primary
+Color get primary;/// Secondary
+Color get secondary;/// Positive
+Color get positive;/// Warning
+Color get warning;/// Negative
+Color get negative;/// Info
+Color get info;}
+/// The semantic tokens for Surface colors
+abstract interface class ZetaSurfaceColors{
+/// The primitives for the colors
+ZetaPrimitives get primitives;
+/// Default Color
+Color get defaultColor;/// Default Inverse
+Color get defaultInverse;/// Hover
+Color get hover;/// Selected
+Color get selected;/// Selected Hover
+Color get selectedHover;/// Disabled
+Color get disabled;/// Cool
+Color get cool;/// Warm
+Color get warm;/// Primary
+Color get primary;/// Primary Subtle
+Color get primarySubtle;/// Secondary
+Color get secondary;/// Avatar
+ZetaAvatarColors get avatar;}
+/// The semantic tokens for Avatar colors
+abstract interface class ZetaAvatarColors{
+/// The primitives for the colors
+ZetaPrimitives get primitives;
+/// Blue
+Color get blue;/// Green
+Color get green;/// Orange
+Color get orange;/// Pink
+Color get pink;/// Purple
+Color get purple;/// Teal
+Color get teal;/// Yellow
+Color get yellow;/// Secondary Subtle
+Color get secondarySubtle;/// Positive
+Color get positive;/// Positive Subtle
+Color get positiveSubtle;/// Warning
+Color get warning;/// Warning Subtle
+Color get warningSubtle;/// Negative
+Color get negative;/// Negative Subtle
+Color get negativeSubtle;/// Info
+Color get info;/// Info Subtle
+Color get infoSubtle;}
+/// The semantic tokens for State colors
+abstract interface class ZetaStateColors{
+/// The primitives for the colors
+ZetaPrimitives get primitives;
+/// Disabled
+ZetaDisabledColors get disabled;}
+/// The semantic tokens for Disabled colors
+abstract interface class ZetaDisabledColors{
+/// The primitives for the colors
+ZetaPrimitives get primitives;
+/// Disabled
+Color get disabled;/// Default
+ZetaDefaultColors get defaultColor;}
+/// The semantic tokens for Default colors
+abstract interface class ZetaDefaultColors{
+/// The primitives for the colors
+ZetaPrimitives get primitives;
+/// Enabled
+Color get enabled;/// Hover
+Color get hover;/// Selected
+Color get selected;/// Focus
+Color get focus;/// Primary
+ZetaPrimaryColors get primary;}
+/// The semantic tokens for Primary colors
+abstract interface class ZetaPrimaryColors{
+/// The primitives for the colors
+ZetaPrimitives get primitives;
+/// Enabled
+Color get enabled;/// Hover
+Color get hover;/// Selected
+Color get selected;/// Focus
+Color get focus;/// Secondary
+ZetaSecondaryColors get secondary;}
+/// The semantic tokens for Secondary colors
+abstract interface class ZetaSecondaryColors{
+/// The primitives for the colors
+ZetaPrimitives get primitives;
+/// Enabled
+Color get enabled;/// Hover
+Color get hover;/// Selected
+Color get selected;/// Focus
+Color get focus;/// Positive
+ZetaPositiveColors get positive;}
+/// The semantic tokens for Positive colors
+abstract interface class ZetaPositiveColors{
+/// The primitives for the colors
+ZetaPrimitives get primitives;
+/// Enabled
+Color get enabled;/// Hover
+Color get hover;/// Selected
+Color get selected;/// Focus
+Color get focus;/// Negative
+ZetaNegativeColors get negative;}
+/// The semantic tokens for Negative colors
+abstract interface class ZetaNegativeColors{
+/// The primitives for the colors
+ZetaPrimitives get primitives;
+/// Enabled
+Color get enabled;/// Hover
+Color get hover;/// Selected
+Color get selected;/// Focus
+Color get focus;/// Info
+ZetaInfoColors get info;}
+/// The semantic tokens for Info colors
+abstract interface class ZetaInfoColors{
+/// The primitives for the colors
+ZetaPrimitives get primitives;
+/// Enabled
+Color get enabled;/// Hover
+Color get hover;/// Selected
+Color get selected;/// Focus
+Color get focus;///  Inverse
+ZetaInverseColors get inverse;}
+/// The semantic tokens for Inverse colors
+abstract interface class ZetaInverseColors{
+/// The primitives for the colors
+ZetaPrimitives get primitives;
+/// Enabled
+Color get enabled;/// Hover
+Color get hover;/// Selected
+Color get selected;/// Focus
+Color get focus;}
 
 /// Semantic tokens for Size.
 abstract interface class ZetaSpacingSemantics {
@@ -235,165 +256,31 @@ const ZetaColorAA({required this.primitives});
 final ZetaPrimitives primitives;
 
 @override
-Color get mainDefault => primitives.cool.shade90;
+ZetaMainColors get main => ZetaMainColorsAA(primitives: primitives);
 @override
-Color get subtle => primitives.cool.shade70;
+ZetaBorderColors get border => ZetaBorderColorsAA(primitives: primitives);
 @override
-Color get light => primitives.cool.shade30;
+ZetaSurfaceColors get surface => ZetaSurfaceColorsAA(primitives: primitives);
 @override
-Color get inverse => primitives.cool.shade20;
+ZetaAvatarColors get avatar => ZetaAvatarColorsAA(primitives: primitives);
 @override
-Color get disabled => primitives.cool.shade50;
+ZetaStateColors get state => ZetaStateColorsAA(primitives: primitives);
 @override
-Color get primary => primitives.blue.shade60;
+ZetaDisabledColors get disabled => ZetaDisabledColorsAA(primitives: primitives);
 @override
-Color get secondary => primitives.yellow.shade60;
+ZetaDefaultColors get defaultColor => ZetaDefaultColorsAA(primitives: primitives);
 @override
-Color get positive => primitives.green.shade60;
+ZetaPrimaryColors get primary => ZetaPrimaryColorsAA(primitives: primitives);
 @override
-Color get warning => primitives.orange.shade60;
+ZetaSecondaryColors get secondary => ZetaSecondaryColorsAA(primitives: primitives);
 @override
-Color get negative => primitives.red.shade60;
+ZetaPositiveColors get positive => ZetaPositiveColorsAA(primitives: primitives);
 @override
-Color get info => primitives.purple.shade60;
+ZetaNegativeColors get negative => ZetaNegativeColorsAA(primitives: primitives);
 @override
-Color get borderDefault => primitives.cool.shade40;
+ZetaInfoColors get info => ZetaInfoColorsAA(primitives: primitives);
 @override
-Color get borderSubtle => primitives.cool.shade30;
-@override
-Color get borderHover => primitives.cool.shade90;
-@override
-Color get borderSelected => primitives.cool.shade90;
-@override
-Color get borderDisabled => primitives.cool.shade20;
-@override
-Color get borderPure => primitives.pure.shade0;
-@override
-Color get borderPrimaryMain => primitives.blue.shade60;
-@override
-Color get borderPrimary => primitives.blue.shade50;
-@override
-Color get borderSecondary => primitives.yellow.shade50;
-@override
-Color get borderPositive => primitives.green.shade50;
-@override
-Color get borderWarning => primitives.orange.shade50;
-@override
-Color get borderNegative => primitives.red.shade50;
-@override
-Color get borderInfo => primitives.purple.shade50;
-@override
-Color get surfaceDefault => primitives.pure.shade0;
-@override
-Color get surfaceDefaultInverse => primitives.warm.shade100;
-@override
-Color get surfaceHover => primitives.cool.shade20;
-@override
-Color get surfaceSelected => primitives.blue.shade10;
-@override
-Color get surfaceSelectedHover => primitives.blue.shade20;
-@override
-Color get surfaceDisabled => primitives.cool.shade30;
-@override
-Color get surfaceCool => primitives.cool.shade10;
-@override
-Color get surfaceWarm => primitives.warm.shade10;
-@override
-Color get surfacePrimary => primitives.blue.shade60;
-@override
-Color get surfacePrimarySubtle => primitives.blue.shade10;
-@override
-Color get surfaceSecondary => primitives.yellow.shade60;
-@override
-Color get surfaceAvatarBlue => primitives.blue.shade80;
-@override
-Color get surfaceAvatarGreen => primitives.green.shade60;
-@override
-Color get surfaceAvatarOrange => primitives.orange.shade50;
-@override
-Color get surfaceAvatarPink => primitives.pink.shade80;
-@override
-Color get surfaceAvatarPurple => primitives.purple.shade80;
-@override
-Color get surfaceAvatarTeal => primitives.teal.shade80;
-@override
-Color get surfaceAvatarYellow => primitives.yellow.shade50;
-@override
-Color get surfaceSecondarySubtle => primitives.yellow.shade10;
-@override
-Color get surfacePositive => primitives.green.shade60;
-@override
-Color get surfacePositiveSubtle => primitives.green.shade10;
-@override
-Color get surfaceWarning => primitives.orange.shade60;
-@override
-Color get surfaceWarningSubtle => primitives.orange.shade10;
-@override
-Color get surfaceNegative => primitives.red.shade60;
-@override
-Color get surfaceNegativeSubtle => primitives.red.shade10;
-@override
-Color get surfaceInfo => primitives.purple.shade60;
-@override
-Color get surfaceInfoSubtle => primitives.purple.shade10;
-@override
-Color get stateDisabled => primitives.cool.shade30;
-@override
-Color get defaultEnabled => primitives.pure.shade0;
-@override
-Color get defaultHover => primitives.cool.shade20;
-@override
-Color get defaultSelected => primitives.blue.shade10;
-@override
-Color get defaultFocus => primitives.pure.shade0;
-@override
-Color get primaryEnabled => primitives.blue.shade60;
-@override
-Color get primaryHover => primitives.blue.shade50;
-@override
-Color get primarySelected => primitives.blue.shade70;
-@override
-Color get primaryFocus => primitives.blue.shade60;
-@override
-Color get secondaryEnabled => primitives.yellow.shade40;
-@override
-Color get secondaryHover => primitives.yellow.shade30;
-@override
-Color get secondarySelected => primitives.yellow.shade50;
-@override
-Color get secondaryFocus => primitives.yellow.shade40;
-@override
-Color get positiveEnabled => primitives.green.shade60;
-@override
-Color get positiveHover => primitives.green.shade50;
-@override
-Color get positiveSelected => primitives.green.shade70;
-@override
-Color get positiveFocus => primitives.green.shade60;
-@override
-Color get negativeEnabled => primitives.red.shade60;
-@override
-Color get negativeHover => primitives.red.shade50;
-@override
-Color get negativeSelected => primitives.red.shade70;
-@override
-Color get negativeFocus => primitives.red.shade60;
-@override
-Color get infoEnabled => primitives.purple.shade60;
-@override
-Color get infoHover => primitives.purple.shade50;
-@override
-Color get infoSelected => primitives.purple.shade70;
-@override
-Color get infoFocus => primitives.purple.shade60;
-@override
-Color get inverseEnabled => primitives.cool.shade100;
-@override
-Color get inverseHover => primitives.cool.shade90;
-@override
-Color get inverseSelected => primitives.cool.shade100;
-@override
-Color get inverseFocus => primitives.cool.shade100;
+ZetaInverseColors get inverse => ZetaInverseColorsAA(primitives: primitives);
 }
 /// The semantic colors for AAA
 final class ZetaColorAAA implements ZetaColorSemantics{
@@ -404,165 +291,31 @@ const ZetaColorAAA({required this.primitives});
 final ZetaPrimitives primitives;
 
 @override
-Color get mainDefault => primitives.cool.shade100;
+ZetaMainColors get main => ZetaMainColorsAAA(primitives: primitives);
 @override
-Color get subtle => primitives.cool.shade90;
+ZetaBorderColors get border => ZetaBorderColorsAAA(primitives: primitives);
 @override
-Color get light => primitives.pure.shade0;
+ZetaSurfaceColors get surface => ZetaSurfaceColorsAAA(primitives: primitives);
 @override
-Color get inverse => primitives.pure.shade0;
+ZetaAvatarColors get avatar => ZetaAvatarColorsAAA(primitives: primitives);
 @override
-Color get disabled => primitives.cool.shade60;
+ZetaStateColors get state => ZetaStateColorsAAA(primitives: primitives);
 @override
-Color get primary => primitives.blue.shade80;
+ZetaDisabledColors get disabled => ZetaDisabledColorsAAA(primitives: primitives);
 @override
-Color get secondary => primitives.yellow.shade80;
+ZetaDefaultColors get defaultColor => ZetaDefaultColorsAAA(primitives: primitives);
 @override
-Color get positive => primitives.green.shade80;
+ZetaPrimaryColors get primary => ZetaPrimaryColorsAAA(primitives: primitives);
 @override
-Color get warning => primitives.orange.shade80;
+ZetaSecondaryColors get secondary => ZetaSecondaryColorsAAA(primitives: primitives);
 @override
-Color get negative => primitives.red.shade80;
+ZetaPositiveColors get positive => ZetaPositiveColorsAAA(primitives: primitives);
 @override
-Color get info => primitives.purple.shade80;
+ZetaNegativeColors get negative => ZetaNegativeColorsAAA(primitives: primitives);
 @override
-Color get borderDefault => primitives.cool.shade100;
+ZetaInfoColors get info => ZetaInfoColorsAAA(primitives: primitives);
 @override
-Color get borderSubtle => primitives.cool.shade80;
-@override
-Color get borderHover => primitives.cool.shade90;
-@override
-Color get borderSelected => primitives.cool.shade90;
-@override
-Color get borderDisabled => primitives.cool.shade20;
-@override
-Color get borderPure => primitives.pure.shade0;
-@override
-Color get borderPrimaryMain => primitives.blue.shade80;
-@override
-Color get borderPrimary => primitives.blue.shade70;
-@override
-Color get borderSecondary => primitives.yellow.shade70;
-@override
-Color get borderPositive => primitives.green.shade70;
-@override
-Color get borderWarning => primitives.orange.shade70;
-@override
-Color get borderNegative => primitives.red.shade70;
-@override
-Color get borderInfo => primitives.purple.shade70;
-@override
-Color get surfaceDefault => primitives.pure.shade0;
-@override
-Color get surfaceDefaultInverse => primitives.pure.shade1000;
-@override
-Color get surfaceHover => primitives.cool.shade20;
-@override
-Color get surfaceSelected => primitives.blue.shade10;
-@override
-Color get surfaceSelectedHover => primitives.blue.shade20;
-@override
-Color get surfaceDisabled => primitives.cool.shade30;
-@override
-Color get surfaceCool => primitives.cool.shade10;
-@override
-Color get surfaceWarm => primitives.warm.shade10;
-@override
-Color get surfacePrimary => primitives.blue.shade80;
-@override
-Color get surfacePrimarySubtle => primitives.blue.shade10;
-@override
-Color get surfaceSecondary => primitives.yellow.shade80;
-@override
-Color get surfaceAvatarBlue => primitives.blue.shade80;
-@override
-Color get surfaceAvatarGreen => primitives.green.shade60;
-@override
-Color get surfaceAvatarOrange => primitives.orange.shade50;
-@override
-Color get surfaceAvatarPink => primitives.pink.shade80;
-@override
-Color get surfaceAvatarPurple => primitives.purple.shade80;
-@override
-Color get surfaceAvatarTeal => primitives.teal.shade80;
-@override
-Color get surfaceAvatarYellow => primitives.yellow.shade50;
-@override
-Color get surfaceSecondarySubtle => primitives.yellow.shade10;
-@override
-Color get surfacePositive => primitives.green.shade80;
-@override
-Color get surfacePositiveSubtle => primitives.green.shade10;
-@override
-Color get surfaceWarning => primitives.orange.shade80;
-@override
-Color get surfaceWarningSubtle => primitives.orange.shade10;
-@override
-Color get surfaceNegative => primitives.red.shade80;
-@override
-Color get surfaceNegativeSubtle => primitives.red.shade10;
-@override
-Color get surfaceInfo => primitives.purple.shade80;
-@override
-Color get surfaceInfoSubtle => primitives.purple.shade10;
-@override
-Color get stateDisabled => primitives.cool.shade30;
-@override
-Color get defaultEnabled => primitives.pure.shade0;
-@override
-Color get defaultHover => primitives.cool.shade20;
-@override
-Color get defaultSelected => primitives.blue.shade10;
-@override
-Color get defaultFocus => primitives.pure.shade0;
-@override
-Color get primaryEnabled => primitives.blue.shade80;
-@override
-Color get primaryHover => primitives.blue.shade70;
-@override
-Color get primarySelected => primitives.blue.shade90;
-@override
-Color get primaryFocus => primitives.blue.shade80;
-@override
-Color get secondaryEnabled => primitives.yellow.shade80;
-@override
-Color get secondaryHover => primitives.yellow.shade70;
-@override
-Color get secondarySelected => primitives.yellow.shade90;
-@override
-Color get secondaryFocus => primitives.yellow.shade80;
-@override
-Color get positiveEnabled => primitives.green.shade80;
-@override
-Color get positiveHover => primitives.green.shade70;
-@override
-Color get positiveSelected => primitives.green.shade90;
-@override
-Color get positiveFocus => primitives.green.shade80;
-@override
-Color get negativeEnabled => primitives.red.shade80;
-@override
-Color get negativeHover => primitives.red.shade70;
-@override
-Color get negativeSelected => primitives.red.shade90;
-@override
-Color get negativeFocus => primitives.red.shade80;
-@override
-Color get infoEnabled => primitives.purple.shade80;
-@override
-Color get infoHover => primitives.purple.shade70;
-@override
-Color get infoSelected => primitives.purple.shade90;
-@override
-Color get infoFocus => primitives.purple.shade80;
-@override
-Color get inverseEnabled => primitives.pure.shade1000;
-@override
-Color get inverseHover => primitives.cool.shade90;
-@override
-Color get inverseSelected => primitives.pure.shade1000;
-@override
-Color get inverseFocus => primitives.pure.shade1000;
+ZetaInverseColors get inverse => ZetaInverseColorsAAA(primitives: primitives);
 }
 
 /// The semantic sizes for AA
@@ -720,6 +473,527 @@ BorderRadius get large=> BorderRadius.circular(0);
 BorderRadius get xl=> BorderRadius.circular(0);
 @override
 BorderRadius get full=> BorderRadius.circular(0);}
+
+/// The semantic tokens for Main colors
+final class ZetaMainColorsAA implements ZetaMainColors{
+/// Constructor for MainColorsAA
+const ZetaMainColorsAA({required this.primitives});
+/// The primitives for this sizes
+@override
+final ZetaPrimitives primitives;@override
+Color get defaultColor => primitives.cool.shade90;
+@override
+Color get subtle => primitives.cool.shade70;
+@override
+Color get light => primitives.cool.shade30;
+@override
+Color get inverse => primitives.cool.shade20;
+@override
+Color get disabled => primitives.cool.shade50;
+@override
+Color get primary => primitives.blue.shade60;
+@override
+Color get secondary => primitives.yellow.shade60;
+@override
+Color get positive => primitives.green.shade60;
+@override
+Color get warning => primitives.orange.shade60;
+@override
+Color get negative => primitives.red.shade60;
+@override
+Color get info => primitives.purple.shade60;
+}
+/// The semantic tokens for Border colors
+final class ZetaBorderColorsAA implements ZetaBorderColors{
+/// Constructor for BorderColorsAA
+const ZetaBorderColorsAA({required this.primitives});
+/// The primitives for this sizes
+@override
+final ZetaPrimitives primitives;@override
+Color get defaultColor => primitives.cool.shade40;
+@override
+Color get subtle => primitives.cool.shade30;
+@override
+Color get hover => primitives.cool.shade90;
+@override
+Color get selected => primitives.cool.shade90;
+@override
+Color get disabled => primitives.cool.shade20;
+@override
+Color get pure => primitives.pure.shade0;
+@override
+Color get primaryMain => primitives.blue.shade60;
+@override
+Color get primary => primitives.blue.shade50;
+@override
+Color get secondary => primitives.yellow.shade50;
+@override
+Color get positive => primitives.green.shade50;
+@override
+Color get warning => primitives.orange.shade50;
+@override
+Color get negative => primitives.red.shade50;
+@override
+Color get info => primitives.purple.shade50;
+}
+/// The semantic tokens for Surface colors
+final class ZetaSurfaceColorsAA implements ZetaSurfaceColors{
+/// Constructor for SurfaceColorsAA
+const ZetaSurfaceColorsAA({required this.primitives});
+/// The primitives for this sizes
+@override
+final ZetaPrimitives primitives;@override
+Color get defaultColor => primitives.pure.shade0;
+@override
+Color get defaultInverse => primitives.warm.shade100;
+@override
+Color get hover => primitives.cool.shade20;
+@override
+Color get selected => primitives.blue.shade10;
+@override
+Color get selectedHover => primitives.blue.shade20;
+@override
+Color get disabled => primitives.cool.shade30;
+@override
+Color get cool => primitives.cool.shade10;
+@override
+Color get warm => primitives.warm.shade10;
+@override
+Color get primary => primitives.blue.shade60;
+@override
+Color get primarySubtle => primitives.blue.shade10;
+@override
+Color get secondary => primitives.yellow.shade60;
+@override
+ZetaAvatarColors get avatar => ZetaAvatarColorsAA(primitives: primitives);}
+/// The semantic tokens for Avatar colors
+final class ZetaAvatarColorsAA implements ZetaAvatarColors{
+/// Constructor for AvatarColorsAA
+const ZetaAvatarColorsAA({required this.primitives});
+/// The primitives for this sizes
+@override
+final ZetaPrimitives primitives;@override
+Color get blue => primitives.blue.shade80;
+@override
+Color get green => primitives.green.shade60;
+@override
+Color get orange => primitives.orange.shade50;
+@override
+Color get pink => primitives.pink.shade80;
+@override
+Color get purple => primitives.purple.shade80;
+@override
+Color get teal => primitives.teal.shade80;
+@override
+Color get yellow => primitives.yellow.shade50;
+@override
+Color get secondarySubtle => primitives.yellow.shade10;
+@override
+Color get positive => primitives.green.shade60;
+@override
+Color get positiveSubtle => primitives.green.shade10;
+@override
+Color get warning => primitives.orange.shade60;
+@override
+Color get warningSubtle => primitives.orange.shade10;
+@override
+Color get negative => primitives.red.shade60;
+@override
+Color get negativeSubtle => primitives.red.shade10;
+@override
+Color get info => primitives.purple.shade60;
+@override
+Color get infoSubtle => primitives.purple.shade10;
+}
+/// The semantic tokens for State colors
+final class ZetaStateColorsAA implements ZetaStateColors{
+/// Constructor for StateColorsAA
+const ZetaStateColorsAA({required this.primitives});
+/// The primitives for this sizes
+@override
+final ZetaPrimitives primitives;@override
+ZetaDisabledColors get disabled => ZetaDisabledColorsAA(primitives: primitives);}
+/// The semantic tokens for Disabled colors
+final class ZetaDisabledColorsAA implements ZetaDisabledColors{
+/// Constructor for DisabledColorsAA
+const ZetaDisabledColorsAA({required this.primitives});
+/// The primitives for this sizes
+@override
+final ZetaPrimitives primitives;@override
+Color get disabled => primitives.cool.shade30;
+@override
+ZetaDefaultColors get defaultColor => ZetaDefaultColorsAA(primitives: primitives);}
+/// The semantic tokens for Default colors
+final class ZetaDefaultColorsAA implements ZetaDefaultColors{
+/// Constructor for DefaultColorsAA
+const ZetaDefaultColorsAA({required this.primitives});
+/// The primitives for this sizes
+@override
+final ZetaPrimitives primitives;@override
+Color get enabled => primitives.pure.shade0;
+@override
+Color get hover => primitives.cool.shade20;
+@override
+Color get selected => primitives.blue.shade10;
+@override
+Color get focus => primitives.pure.shade0;
+@override
+ZetaPrimaryColors get primary => ZetaPrimaryColorsAA(primitives: primitives);}
+/// The semantic tokens for Primary colors
+final class ZetaPrimaryColorsAA implements ZetaPrimaryColors{
+/// Constructor for PrimaryColorsAA
+const ZetaPrimaryColorsAA({required this.primitives});
+/// The primitives for this sizes
+@override
+final ZetaPrimitives primitives;@override
+Color get enabled => primitives.blue.shade60;
+@override
+Color get hover => primitives.blue.shade50;
+@override
+Color get selected => primitives.blue.shade70;
+@override
+Color get focus => primitives.blue.shade60;
+@override
+ZetaSecondaryColors get secondary => ZetaSecondaryColorsAA(primitives: primitives);}
+/// The semantic tokens for Secondary colors
+final class ZetaSecondaryColorsAA implements ZetaSecondaryColors{
+/// Constructor for SecondaryColorsAA
+const ZetaSecondaryColorsAA({required this.primitives});
+/// The primitives for this sizes
+@override
+final ZetaPrimitives primitives;@override
+Color get enabled => primitives.yellow.shade40;
+@override
+Color get hover => primitives.yellow.shade30;
+@override
+Color get selected => primitives.yellow.shade50;
+@override
+Color get focus => primitives.yellow.shade40;
+@override
+ZetaPositiveColors get positive => ZetaPositiveColorsAA(primitives: primitives);}
+/// The semantic tokens for Positive colors
+final class ZetaPositiveColorsAA implements ZetaPositiveColors{
+/// Constructor for PositiveColorsAA
+const ZetaPositiveColorsAA({required this.primitives});
+/// The primitives for this sizes
+@override
+final ZetaPrimitives primitives;@override
+Color get enabled => primitives.green.shade60;
+@override
+Color get hover => primitives.green.shade50;
+@override
+Color get selected => primitives.green.shade70;
+@override
+Color get focus => primitives.green.shade60;
+@override
+ZetaNegativeColors get negative => ZetaNegativeColorsAA(primitives: primitives);}
+/// The semantic tokens for Negative colors
+final class ZetaNegativeColorsAA implements ZetaNegativeColors{
+/// Constructor for NegativeColorsAA
+const ZetaNegativeColorsAA({required this.primitives});
+/// The primitives for this sizes
+@override
+final ZetaPrimitives primitives;@override
+Color get enabled => primitives.red.shade60;
+@override
+Color get hover => primitives.red.shade50;
+@override
+Color get selected => primitives.red.shade70;
+@override
+Color get focus => primitives.red.shade60;
+@override
+ZetaInfoColors get info => ZetaInfoColorsAA(primitives: primitives);}
+/// The semantic tokens for Info colors
+final class ZetaInfoColorsAA implements ZetaInfoColors{
+/// Constructor for InfoColorsAA
+const ZetaInfoColorsAA({required this.primitives});
+/// The primitives for this sizes
+@override
+final ZetaPrimitives primitives;@override
+Color get enabled => primitives.purple.shade60;
+@override
+Color get hover => primitives.purple.shade50;
+@override
+Color get selected => primitives.purple.shade70;
+@override
+Color get focus => primitives.purple.shade60;
+@override
+ZetaInverseColors get inverse => ZetaInverseColorsAA(primitives: primitives);}
+/// The semantic tokens for Inverse colors
+final class ZetaInverseColorsAA implements ZetaInverseColors{
+/// Constructor for InverseColorsAA
+const ZetaInverseColorsAA({required this.primitives});
+/// The primitives for this sizes
+@override
+final ZetaPrimitives primitives;@override
+Color get enabled => primitives.cool.shade100;
+@override
+Color get hover => primitives.cool.shade90;
+@override
+Color get selected => primitives.cool.shade100;
+@override
+Color get focus => primitives.cool.shade100;
+}
+/// The semantic tokens for Main colors
+final class ZetaMainColorsAAA implements ZetaMainColors{
+/// Constructor for MainColorsAAA
+const ZetaMainColorsAAA({required this.primitives});
+/// The primitives for this sizes
+@override
+final ZetaPrimitives primitives;@override
+Color get defaultColor => primitives.cool.shade100;
+@override
+Color get subtle => primitives.cool.shade90;
+@override
+Color get light => primitives.pure.shade0;
+@override
+Color get inverse => primitives.pure.shade0;
+@override
+Color get disabled => primitives.cool.shade60;
+@override
+Color get primary => primitives.blue.shade80;
+@override
+Color get secondary => primitives.yellow.shade80;
+@override
+Color get positive => primitives.green.shade80;
+@override
+Color get warning => primitives.orange.shade80;
+@override
+Color get negative => primitives.red.shade80;
+@override
+Color get info => primitives.purple.shade80;
+}
+/// The semantic tokens for Border colors
+final class ZetaBorderColorsAAA implements ZetaBorderColors{
+/// Constructor for BorderColorsAAA
+const ZetaBorderColorsAAA({required this.primitives});
+/// The primitives for this sizes
+@override
+final ZetaPrimitives primitives;@override
+Color get defaultColor => primitives.cool.shade100;
+@override
+Color get subtle => primitives.cool.shade80;
+@override
+Color get hover => primitives.cool.shade90;
+@override
+Color get selected => primitives.cool.shade90;
+@override
+Color get disabled => primitives.cool.shade20;
+@override
+Color get pure => primitives.pure.shade0;
+@override
+Color get primaryMain => primitives.blue.shade80;
+@override
+Color get primary => primitives.blue.shade70;
+@override
+Color get secondary => primitives.yellow.shade70;
+@override
+Color get positive => primitives.green.shade70;
+@override
+Color get warning => primitives.orange.shade70;
+@override
+Color get negative => primitives.red.shade70;
+@override
+Color get info => primitives.purple.shade70;
+}
+/// The semantic tokens for Surface colors
+final class ZetaSurfaceColorsAAA implements ZetaSurfaceColors{
+/// Constructor for SurfaceColorsAAA
+const ZetaSurfaceColorsAAA({required this.primitives});
+/// The primitives for this sizes
+@override
+final ZetaPrimitives primitives;@override
+Color get defaultColor => primitives.pure.shade0;
+@override
+Color get defaultInverse => primitives.pure.shade1000;
+@override
+Color get hover => primitives.cool.shade20;
+@override
+Color get selected => primitives.blue.shade10;
+@override
+Color get selectedHover => primitives.blue.shade20;
+@override
+Color get disabled => primitives.cool.shade30;
+@override
+Color get cool => primitives.cool.shade10;
+@override
+Color get warm => primitives.warm.shade10;
+@override
+Color get primary => primitives.blue.shade80;
+@override
+Color get primarySubtle => primitives.blue.shade10;
+@override
+Color get secondary => primitives.yellow.shade80;
+@override
+ZetaAvatarColors get avatar => ZetaAvatarColorsAAA(primitives: primitives);}
+/// The semantic tokens for Avatar colors
+final class ZetaAvatarColorsAAA implements ZetaAvatarColors{
+/// Constructor for AvatarColorsAAA
+const ZetaAvatarColorsAAA({required this.primitives});
+/// The primitives for this sizes
+@override
+final ZetaPrimitives primitives;@override
+Color get blue => primitives.blue.shade80;
+@override
+Color get green => primitives.green.shade60;
+@override
+Color get orange => primitives.orange.shade50;
+@override
+Color get pink => primitives.pink.shade80;
+@override
+Color get purple => primitives.purple.shade80;
+@override
+Color get teal => primitives.teal.shade80;
+@override
+Color get yellow => primitives.yellow.shade50;
+@override
+Color get secondarySubtle => primitives.yellow.shade10;
+@override
+Color get positive => primitives.green.shade80;
+@override
+Color get positiveSubtle => primitives.green.shade10;
+@override
+Color get warning => primitives.orange.shade80;
+@override
+Color get warningSubtle => primitives.orange.shade10;
+@override
+Color get negative => primitives.red.shade80;
+@override
+Color get negativeSubtle => primitives.red.shade10;
+@override
+Color get info => primitives.purple.shade80;
+@override
+Color get infoSubtle => primitives.purple.shade10;
+}
+/// The semantic tokens for State colors
+final class ZetaStateColorsAAA implements ZetaStateColors{
+/// Constructor for StateColorsAAA
+const ZetaStateColorsAAA({required this.primitives});
+/// The primitives for this sizes
+@override
+final ZetaPrimitives primitives;@override
+ZetaDisabledColors get disabled => ZetaDisabledColorsAAA(primitives: primitives);}
+/// The semantic tokens for Disabled colors
+final class ZetaDisabledColorsAAA implements ZetaDisabledColors{
+/// Constructor for DisabledColorsAAA
+const ZetaDisabledColorsAAA({required this.primitives});
+/// The primitives for this sizes
+@override
+final ZetaPrimitives primitives;@override
+Color get disabled => primitives.cool.shade30;
+@override
+ZetaDefaultColors get defaultColor => ZetaDefaultColorsAAA(primitives: primitives);}
+/// The semantic tokens for Default colors
+final class ZetaDefaultColorsAAA implements ZetaDefaultColors{
+/// Constructor for DefaultColorsAAA
+const ZetaDefaultColorsAAA({required this.primitives});
+/// The primitives for this sizes
+@override
+final ZetaPrimitives primitives;@override
+Color get enabled => primitives.pure.shade0;
+@override
+Color get hover => primitives.cool.shade20;
+@override
+Color get selected => primitives.blue.shade10;
+@override
+Color get focus => primitives.pure.shade0;
+@override
+ZetaPrimaryColors get primary => ZetaPrimaryColorsAAA(primitives: primitives);}
+/// The semantic tokens for Primary colors
+final class ZetaPrimaryColorsAAA implements ZetaPrimaryColors{
+/// Constructor for PrimaryColorsAAA
+const ZetaPrimaryColorsAAA({required this.primitives});
+/// The primitives for this sizes
+@override
+final ZetaPrimitives primitives;@override
+Color get enabled => primitives.blue.shade80;
+@override
+Color get hover => primitives.blue.shade70;
+@override
+Color get selected => primitives.blue.shade90;
+@override
+Color get focus => primitives.blue.shade80;
+@override
+ZetaSecondaryColors get secondary => ZetaSecondaryColorsAAA(primitives: primitives);}
+/// The semantic tokens for Secondary colors
+final class ZetaSecondaryColorsAAA implements ZetaSecondaryColors{
+/// Constructor for SecondaryColorsAAA
+const ZetaSecondaryColorsAAA({required this.primitives});
+/// The primitives for this sizes
+@override
+final ZetaPrimitives primitives;@override
+Color get enabled => primitives.yellow.shade80;
+@override
+Color get hover => primitives.yellow.shade70;
+@override
+Color get selected => primitives.yellow.shade90;
+@override
+Color get focus => primitives.yellow.shade80;
+@override
+ZetaPositiveColors get positive => ZetaPositiveColorsAAA(primitives: primitives);}
+/// The semantic tokens for Positive colors
+final class ZetaPositiveColorsAAA implements ZetaPositiveColors{
+/// Constructor for PositiveColorsAAA
+const ZetaPositiveColorsAAA({required this.primitives});
+/// The primitives for this sizes
+@override
+final ZetaPrimitives primitives;@override
+Color get enabled => primitives.green.shade80;
+@override
+Color get hover => primitives.green.shade70;
+@override
+Color get selected => primitives.green.shade90;
+@override
+Color get focus => primitives.green.shade80;
+@override
+ZetaNegativeColors get negative => ZetaNegativeColorsAAA(primitives: primitives);}
+/// The semantic tokens for Negative colors
+final class ZetaNegativeColorsAAA implements ZetaNegativeColors{
+/// Constructor for NegativeColorsAAA
+const ZetaNegativeColorsAAA({required this.primitives});
+/// The primitives for this sizes
+@override
+final ZetaPrimitives primitives;@override
+Color get enabled => primitives.red.shade80;
+@override
+Color get hover => primitives.red.shade70;
+@override
+Color get selected => primitives.red.shade90;
+@override
+Color get focus => primitives.red.shade80;
+@override
+ZetaInfoColors get info => ZetaInfoColorsAAA(primitives: primitives);}
+/// The semantic tokens for Info colors
+final class ZetaInfoColorsAAA implements ZetaInfoColors{
+/// Constructor for InfoColorsAAA
+const ZetaInfoColorsAAA({required this.primitives});
+/// The primitives for this sizes
+@override
+final ZetaPrimitives primitives;@override
+Color get enabled => primitives.purple.shade80;
+@override
+Color get hover => primitives.purple.shade70;
+@override
+Color get selected => primitives.purple.shade90;
+@override
+Color get focus => primitives.purple.shade80;
+@override
+ZetaInverseColors get inverse => ZetaInverseColorsAAA(primitives: primitives);}
+/// The semantic tokens for Inverse colors
+final class ZetaInverseColorsAAA implements ZetaInverseColors{
+/// Constructor for InverseColorsAAA
+const ZetaInverseColorsAAA({required this.primitives});
+/// The primitives for this sizes
+@override
+final ZetaPrimitives primitives;@override
+Color get enabled => primitives.pure.shade1000;
+@override
+Color get hover => primitives.cool.shade90;
+@override
+Color get selected => primitives.pure.shade1000;
+@override
+Color get focus => primitives.pure.shade1000;
+}
 
 /// The semantic tokens for Zeta
 abstract interface class ZetaSemantics {
