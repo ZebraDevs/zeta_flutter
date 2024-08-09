@@ -179,20 +179,6 @@ void main() {
       expect(zetaColors.borderPrimaryMain, ZetaColorBase.blue);
     });
 
-    test('deprecated properties return correct values', () {
-      final zetaColors = ZetaColors();
-
-      expect(zetaColors.surfaceHovered, zetaColors.surfaceHover);
-      expect(zetaColors.surfaceSelectedHovered, zetaColors.surfaceSelectedHover);
-      expect(zetaColors.positive, zetaColors.surfacePositive);
-      expect(zetaColors.negative, zetaColors.surfaceNegative);
-      expect(zetaColors.warning, zetaColors.surfaceWarning);
-      expect(zetaColors.info, zetaColors.surfaceInfo);
-      expect(zetaColors.shadow, const Color(0x1A49505E));
-      expect(zetaColors.link, ZetaColorBase.linkLight);
-      expect(zetaColors.linkVisited, ZetaColorBase.linkVisitedLight);
-    });
-
     test('props returns correct list of properties', () {
       final zetaColors = ZetaColors();
 
