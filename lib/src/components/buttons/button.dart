@@ -170,7 +170,6 @@ class ZetaButton extends ZetaStatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colors = Zeta.of(context).colors;
     final minConstraints = _minConstraints(context);
     final iconSize = _iconSize(context);
     return Semantics(
@@ -184,10 +183,8 @@ class ZetaButton extends ZetaStatelessWidget {
           focusNode: focusNode,
           onPressed: onPressed,
           style: buttonStyle(
-            colors,
             borderType ?? (context.rounded ? ZetaWidgetBorder.rounded : ZetaWidgetBorder.sharp),
             type,
-            null,
             context,
           ),
           child: SelectionContainer.disabled(

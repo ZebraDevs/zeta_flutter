@@ -20,87 +20,88 @@ class _ColorExampleState extends State<ColorExample> {
     final colors = zeta.colors;
     return LayoutBuilder(
       builder: (context, constraints) {
+        //TODO:
         final Map<String, ZetaColorSwatch> swatches = {
-          'Blue': colors.blue,
-          'Green': colors.green,
-          'Red': colors.red,
-          'Orange': colors.orange,
-          'Purple': colors.purple,
-          'Yellow': colors.yellow,
-          'Teal': colors.teal,
-          'Pink': colors.pink,
-          'Grey Warm': colors.warm,
-          'Grey Cool': colors.cool,
+          // 'Blue': colors.blue,
+          // 'Green': colors.green,
+          // 'Red': colors.red,
+          // 'Orange': colors.orange,
+          // 'Purple': colors.purple,
+          // 'Yellow': colors.yellow,
+          // 'Teal': colors.teal,
+          // 'Pink': colors.pink,
+          // 'Grey Warm': colors.warm,
+          // 'Grey Cool': colors.cool,
         };
 
         final Map<String, ZetaColorSwatch> generatedSwatches = {
-          'Gen-Blue': ZetaColorSwatch.fromColor(
-            colors.blue,
-            brightness: zeta.brightness,
-            contrast: colors.contrast,
-          ),
-          'Blue': colors.blue,
-          'Gen-Green': ZetaColorSwatch.fromColor(
-            colors.green,
-            brightness: zeta.brightness,
-            contrast: colors.contrast,
-          ),
-          'Green': colors.green,
-          'Gen-Red': ZetaColorSwatch.fromColor(
-            colors.red,
-            brightness: zeta.brightness,
-            contrast: colors.contrast,
-          ),
-          'Red': colors.red,
-          'Gen-Orange': ZetaColorSwatch.fromColor(
-            colors.orange,
-            brightness: zeta.brightness,
-            contrast: colors.contrast,
-          ),
-          'Orange': colors.orange,
-          'Gen-Purple': ZetaColorSwatch.fromColor(
-            colors.purple,
-            brightness: zeta.brightness,
-            contrast: colors.contrast,
-          ),
-          'Purple': colors.purple,
-          'Gen-Yellow': ZetaColorSwatch.fromColor(
-            colors.yellow,
-            brightness: zeta.brightness,
-            contrast: colors.contrast,
-          ),
-          'Yellow': colors.yellow,
-          'Gen-Teal': ZetaColorSwatch.fromColor(
-            colors.teal,
-            brightness: zeta.brightness,
-            contrast: colors.contrast,
-          ),
-          'Teal': colors.teal,
-          'Gen-Pink': ZetaColorSwatch.fromColor(
-            colors.pink,
-            brightness: zeta.brightness,
-            contrast: colors.contrast,
-          ),
-          'Pink': colors.pink,
-          'Gen-Grey Warm': ZetaColorSwatch.fromColor(
-            colors.warm,
-            brightness: zeta.brightness,
-            contrast: colors.contrast,
-          ),
-          'Grey Warm': colors.warm,
-          'Gen-Grey Cool': ZetaColorSwatch.fromColor(
-            colors.cool,
-            brightness: zeta.brightness,
-            contrast: colors.contrast,
-          ),
-          'Grey Cool': colors.cool,
+          // 'Gen-Blue': ZetaColorSwatch.fromColor(
+          //   colors.blue,
+          //   brightness: zeta.brightness,
+          //   contrast: colors.contrast,
+          // ),
+          // 'Blue': colors.blue,
+          // 'Gen-Green': ZetaColorSwatch.fromColor(
+          //   colors.green,
+          //   brightness: zeta.brightness,
+          //   contrast: colors.contrast,
+          // ),
+          // 'Green': colors.green,
+          // 'Gen-Red': ZetaColorSwatch.fromColor(
+          //   colors.red,
+          //   brightness: zeta.brightness,
+          //   contrast: colors.contrast,
+          // ),
+          // 'Red': colors.red,
+          // 'Gen-Orange': ZetaColorSwatch.fromColor(
+          //   colors.orange,
+          //   brightness: zeta.brightness,
+          //   contrast: colors.contrast,
+          // ),
+          // 'Orange': colors.orange,
+          // 'Gen-Purple': ZetaColorSwatch.fromColor(
+          //   colors.purple,
+          //   brightness: zeta.brightness,
+          //   contrast: colors.contrast,
+          // ),
+          // 'Purple': colors.purple,
+          // 'Gen-Yellow': ZetaColorSwatch.fromColor(
+          //   colors.yellow,
+          //   brightness: zeta.brightness,
+          //   contrast: colors.contrast,
+          // ),
+          // 'Yellow': colors.yellow,
+          // 'Gen-Teal': ZetaColorSwatch.fromColor(
+          //   colors.teal,
+          //   brightness: zeta.brightness,
+          //   contrast: colors.contrast,
+          // ),
+          // 'Teal': colors.teal,
+          // 'Gen-Pink': ZetaColorSwatch.fromColor(
+          //   colors.pink,
+          //   brightness: zeta.brightness,
+          //   contrast: colors.contrast,
+          // ),
+          // 'Pink': colors.pink,
+          // 'Gen-Grey Warm': ZetaColorSwatch.fromColor(
+          //   colors.warm,
+          //   brightness: zeta.brightness,
+          //   contrast: colors.contrast,
+          // ),
+          // 'Grey Warm': colors.warm,
+          // 'Gen-Grey Cool': ZetaColorSwatch.fromColor(
+          //   colors.cool,
+          //   brightness: zeta.brightness,
+          //   contrast: colors.contrast,
+          // ),
+          // 'Grey Cool': colors.cool,
         };
 
         final Map<String, Color> textIcon = {
-          'textDefault': colors.textDefault,
-          'textSubtle': colors.textSubtle,
-          'textDisabled': colors.textDisabled,
-          'textInverse': colors.textInverse,
+          // 'textDefault': colors.textDefault,
+          // 'textSubtle': colors.textSubtle,
+          // 'textDisabled': colors.textDisabled,
+          // 'textInverse': colors.textInverse,
         };
         final Map<String, Color> border = {
           'borderDefault': colors.borderDefault,
@@ -113,14 +114,14 @@ class _ColorExampleState extends State<ColorExample> {
           'surfaceDisabled': colors.surfaceDisabled,
           'surfaceHover': colors.surfaceHover,
           'surfaceSecondary': colors.surfaceSecondary,
-          'surfaceTertiary': colors.surfaceTertiary,
+          // 'surfaceTertiary': colors.surfaceTertiary,
           'surfaceSelectedHover': colors.surfaceSelectedHover,
           'surfaceSelected': colors.surfaceSelected,
         };
 
         final Map<String, Color> primaries = {
-          'primaryColor': colors.primary.text,
-          'secondaryColor': colors.secondary.text,
+          // 'primaryColor': colors.primary.text,
+          // 'secondaryColor': colors.secondary.text,
         };
 
         final Map<String, Color> alerts = {

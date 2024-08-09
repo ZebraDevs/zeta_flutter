@@ -71,20 +71,51 @@ extension NumExtensions on num? {
 
 /// Extensions on [ZetaWidgetStatus].
 extension ColorSwatches on ZetaWidgetStatus {
-  /// Gets color swatch from [ZetaWidgetStatus]
-  ZetaColorSwatch colorSwatch(BuildContext context) {
-    final colors = Zeta.of(context).colors;
+  /// Gets background color from [ZetaWidgetStatus].
+  Color backgroundColor(ZetaColorSemantics colors) {
     switch (this) {
       case ZetaWidgetStatus.info:
-        return colors.surfaceInfo;
+        return colors.surfaceInfoSubtle;
       case ZetaWidgetStatus.positive:
-        return colors.surfacePositive;
+        return colors.surfacePositiveSubtle;
       case ZetaWidgetStatus.warning:
-        return colors.surfaceWarning;
+        return colors.surfaceWarningSubtle;
       case ZetaWidgetStatus.negative:
-        return colors.surfaceNegative;
+        return colors.surfaceNegativeSubtle;
       case ZetaWidgetStatus.neutral:
-        return colors.cool;
+        return colors.light;
+    }
+  }
+
+  /// Gets foreground color from [ZetaWidgetStatus].
+  Color foregroundColor(ZetaColorSemantics colors) {
+    switch (this) {
+      case ZetaWidgetStatus.info:
+        return colors.info;
+      case ZetaWidgetStatus.positive:
+        return colors.positive;
+      case ZetaWidgetStatus.warning:
+        return colors.warning;
+      case ZetaWidgetStatus.negative:
+        return colors.negative;
+      case ZetaWidgetStatus.neutral:
+        return colors.subtle;
+    }
+  }
+
+  /// Gets border color from [ZetaWidgetStatus].
+  Color borderColor(ZetaColorSemantics colors) {
+    switch (this) {
+      case ZetaWidgetStatus.info:
+        return colors.borderInfo;
+      case ZetaWidgetStatus.positive:
+        return colors.borderPositive;
+      case ZetaWidgetStatus.warning:
+        return colors.borderWarning;
+      case ZetaWidgetStatus.negative:
+        return colors.borderNegative;
+      case ZetaWidgetStatus.neutral:
+        return colors.borderDefault;
     }
   }
 }

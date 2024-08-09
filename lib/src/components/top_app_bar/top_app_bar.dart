@@ -135,7 +135,7 @@ class _ZetaTopAppBarState extends State<ZetaTopAppBar> {
     super.dispose();
   }
 
-  Widget _getTitleText(ZetaColors colors) {
+  Widget _getTitleText(ZetaColorSemantics colors) {
     var title = widget.title;
     if (widget.title is Row) {
       final oldRow = widget.title! as Row;
@@ -164,7 +164,7 @@ class _ZetaTopAppBarState extends State<ZetaTopAppBar> {
     );
   }
 
-  List<Widget>? _getActions(ZetaColors colors) {
+  List<Widget>? _getActions(ZetaColorSemantics colors) {
     return _isSearchEnabled
         ? [
             IconButtonTheme(

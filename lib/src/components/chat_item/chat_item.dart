@@ -352,7 +352,7 @@ extension on _ZetaSlidableActionType {
       case _ZetaSlidableActionType.delete:
         return colors.red;
       case _ZetaSlidableActionType.custom:
-        return colors.primary;
+        return colors.blue;
     }
   }
 }

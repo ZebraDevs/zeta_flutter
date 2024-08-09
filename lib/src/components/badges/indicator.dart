@@ -102,7 +102,7 @@ class ZetaIndicator extends ZetaStatelessWidget {
   @override
   Widget build(BuildContext context) {
     final zetaColors = Zeta.of(context).colors;
-    final Color backgroundColor = (type == ZetaIndicatorType.icon ? zetaColors.blue : zetaColors.surfaceNegative);
+    final Color backgroundColor = (type == ZetaIndicatorType.icon ? zetaColors.primary : zetaColors.surfaceNegative);
     final Color foregroundColor = backgroundColor.onColor;
     final sizePixels = _getSizePixels(size, type, context);
 

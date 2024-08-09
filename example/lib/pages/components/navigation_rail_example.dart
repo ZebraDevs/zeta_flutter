@@ -22,8 +22,6 @@ class _NavigationRailExampleState extends State<NavigationRailExample> {
 
   @override
   Widget build(BuildContext context) {
-    final zeta = Zeta.of(context);
-
     return SafeArea(
       child: ExampleScaffold(
         name: 'Navigation Rail',
@@ -62,10 +60,7 @@ class _NavigationRailExampleState extends State<NavigationRailExample> {
                     : Text(
                         _titles[_selectedIndex!],
                         textAlign: TextAlign.center,
-                        style: ZetaTextStyles.titleMedium.copyWith(
-                          color: zeta.colors.textDefault,
-                          fontWeight: FontWeight.bold,
-                        ),
+                        style: ZetaTextStyles.titleMedium.copyWith(fontWeight: FontWeight.bold),
                       ),
               ),
             ),

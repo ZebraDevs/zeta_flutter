@@ -199,7 +199,7 @@ class _NavigationItem extends ZetaStatelessWidget {
   final VoidCallback onTap;
   final BuildContext context;
 
-  Widget _getBadge(ZetaColors colors) {
+  Widget _getBadge(ZetaColorSemantics colors) {
     return Positioned(
       right: Zeta.of(context).spacing.minimum,
       child: DecoratedBox(

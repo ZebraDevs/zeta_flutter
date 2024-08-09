@@ -234,11 +234,11 @@ class _ZetaGroupButtonState extends State<ZetaGroupButton> {
   double get _padding => widget.isLarge ? Zeta.of(context).spacing.large : Zeta.of(context).spacing.medium;
 
   BorderSide _getBorderSide(
-    ZetaColors colors,
+    ZetaColorSemantics colors,
     bool finalButton,
   ) {
     if (_controller.value.contains(WidgetState.focused)) {
-      return BorderSide(color: colors.blue.shade50, width: ZetaSpacingBase.x0_5);
+      return BorderSide(color: colors.borderPrimary, width: ZetaSpacingBase.x0_5);
     }
     if (_controller.value.contains(WidgetState.disabled)) {
       return BorderSide(color: colors.cool.shade40);
@@ -328,7 +328,7 @@ class _ZetaGroupButtonState extends State<ZetaGroupButton> {
                 return colors.surfaceDisabled;
               }
               if (states.contains(WidgetState.pressed)) {
-                return widget.isInverse ? colors.cool.shade100 : colors.primary.shade10;
+                return widget.isInverse ? colors.cool.shade100 : colors.blue.shade10;
               }
               if (states.contains(WidgetState.hovered)) {
                 return widget.isInverse ? colors.cool.shade90 : colors.cool.shade20;

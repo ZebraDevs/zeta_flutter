@@ -163,21 +163,21 @@ class _HomeState extends State<Home> {
           children: [
             ExpansionTile(
               title: Text('Widgets'),
-              backgroundColor: Zeta.of(context).colors.warm.shade30,
+              backgroundColor: Zeta.of(context).colors.light,
               children: _components
                   .map((item) => ListTile(title: Text(item.name), onTap: () => context.go('/${item.name}')))
                   .toList(),
             ),
             ExpansionTile(
               title: Text('Theme'),
-              backgroundColor: Zeta.of(context).colors.warm.shade30,
+              backgroundColor: Zeta.of(context).colors.light,
               children: _theme
                   .map((item) => ListTile(title: Text(item.name), onTap: () => context.go('/${item.name}')))
                   .toList(),
             ),
             ExpansionTile(
               title: Text('Assets'),
-              backgroundColor: Zeta.of(context).colors.warm.shade30,
+              backgroundColor: Zeta.of(context).colors.light,
               children: _assets
                   .map((item) => ListTile(title: Text(item.name), onTap: () => context.go('/${item.name}')))
                   .toList(),

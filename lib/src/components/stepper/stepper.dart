@@ -72,7 +72,7 @@ class _ZetaStepperState extends State<ZetaStepper> with TickerProviderStateMixin
     );
   }
 
-  ZetaColors get _colors => Zeta.of(context).colors;
+  ZetaColorSemantics get _colors => Zeta.of(context).colors;
 
   bool _isFirst(int index) {
     return index == 0;

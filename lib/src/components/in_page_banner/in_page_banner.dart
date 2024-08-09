@@ -43,16 +43,19 @@ class ZetaInPageBanner extends ZetaStatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Zeta.of(context);
-    final colors = status.colorSwatch(context);
+    // final colors = status.colorSwatch(context);
     final hasTitle = title != null;
     final rounded = context.rounded;
+    final Color backgroundColor = status.backgroundColor(theme.colors);
+    final Color borderColor = status.borderColor(theme.colors);
+    final Color iconColor = status.foregroundColor(theme.colors);
 
     return ZetaRoundedScope(
       rounded: rounded,
       child: DecoratedBox(
         decoration: BoxDecoration(
-          color: colors.surface,
-          border: Border.all(color: colors.border),
+          color: backgroundColor,
+          border: Border.all(color: borderColor),
           borderRadius: rounded ? Zeta.of(context).radii.minimal : Zeta.of(context).radii.none,
         ),
         child: Padding(
@@ -65,7 +68,7 @@ class ZetaInPageBanner extends ZetaStatelessWidget {
                 child: ZetaIcon(
                   customIcon ?? status.icon,
                   size: Zeta.of(context).spacing.xl,
-                  color: status == ZetaWidgetStatus.neutral ? theme.colors.textDefault : colors.icon,
+                  color: iconColor,
                 ),
               ),
               Expanded(

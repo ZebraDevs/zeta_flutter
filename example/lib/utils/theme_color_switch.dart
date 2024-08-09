@@ -37,8 +37,9 @@ class ZetaThemeColorSwitch extends StatelessWidget {
     }
 
     return DropdownButtonHideUnderline(
+      //TODO(LUKE): Check which version of colors is being used.
       child: DropdownButton<String>(
-        value: zeta.themeData.identifier,
+        value: zeta.themeData?.identifier,
         elevation: 0,
         padding: EdgeInsets.all(8),
         icon: Nothing(),

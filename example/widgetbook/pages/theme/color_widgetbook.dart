@@ -41,7 +41,7 @@ class ColorBody extends StatelessWidget {
         'surfaceDisabled': colors.surfaceDisabled,
         'surfaceHover': colors.surfaceHover,
         'surfaceSecondary': colors.surfaceSecondary,
-        'surfaceTertiary': colors.surfaceTertiary,
+        // 'surfaceTertiary': colors.surfaceTertiary,
         'surfaceSelectedHover': colors.surfaceSelectedHover,
         'surfaceSelected': colors.surfaceSelected,
       };

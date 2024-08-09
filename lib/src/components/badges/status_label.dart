@@ -34,14 +34,19 @@ class ZetaStatusLabel extends ZetaStatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ZetaColorSwatch colors = status.colorSwatch(context);
+    final colors = Zeta.of(context).colors;
 
+    // final Color colors = status.colorSwatch(context);
+    final Color backgroundColor = status.backgroundColor(colors);
+    final Color borderColor = status.borderColor(colors);
+    final Color iconColor = status.foregroundColor(colors);
+    final Color textColor = colors.mainDefault;
     return Semantics(
       value: semanticLabel ?? label,
       child: DecoratedBox(
         decoration: BoxDecoration(
-          color: colors.shade10,
-          border: Border.all(color: colors.border),
+          color: backgroundColor,
+          border: Border.all(color: borderColor),
           borderRadius: context.rounded ? Zeta.of(context).radii.full : Zeta.of(context).radii.none,
         ),
         child: Padding(
@@ -52,12 +57,12 @@ class ZetaStatusLabel extends ZetaStatelessWidget {
               Icon(
                 customIcon ?? Icons.circle,
                 size: customIcon != null ? Zeta.of(context).spacing.xl : Zeta.of(context).spacing.small,
-                color: colors.icon,
+                color: iconColor,
               ),
               SizedBox(width: Zeta.of(context).spacing.small),
               Text(
                 label,
-                style: ZetaTextStyles.bodyMedium.apply(color: colors.shade10.onColor),
+                style: ZetaTextStyles.bodyMedium.apply(color: textColor),
                 overflow: TextOverflow.ellipsis,
               ),
             ],

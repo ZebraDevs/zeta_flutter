@@ -114,7 +114,7 @@ class ZetaBanner extends MaterialBanner {
           ],
         );
 
-  static ZetaColorSwatch _backgroundColorFromType(BuildContext context, ZetaBannerStatus type) {
+  static Color _backgroundColorFromType(BuildContext context, ZetaBannerStatus type) {
     final zeta = Zeta.of(context);
 
     switch (type) {
@@ -123,7 +123,7 @@ class ZetaBanner extends MaterialBanner {
       case ZetaBannerStatus.positive:
         return zeta.colors.surfacePositive;
       case ZetaBannerStatus.warning:
-        return zeta.colors.orange;
+        return zeta.colors.surfaceWarning;
       case ZetaBannerStatus.negative:
         return zeta.colors.surfaceNegative;
     }

@@ -31,15 +31,15 @@ class RadiusExample extends StatelessWidget {
                       height: 100,
                       decoration: BoxDecoration(
                         borderRadius: rad,
-                        color: Zeta.of(context).colors.blue.shade30,
-                        border: Border.all(color: colors.blue.shade80, width: 3),
+                        color: Zeta.of(context).colors.surfaceSelectedHover,
+                        border: Border.all(color: colors.surfaceAvatarBlue, width: 3),
                       ),
                       child: Center(
                         child: Container(
                           decoration: BoxDecoration(
                             borderRadius: rad,
                             color: Zeta.of(context).colors.surfacePrimary,
-                            border: Border.all(color: colors.blue.shade50, width: 3),
+                            border: Border.all(color: colors.primaryHover, width: 3),
                           ),
                           padding: EdgeInsets.all(Zeta.of(context).spacing.large),
                           child: Text(

@@ -162,7 +162,7 @@ const double _kInnerRadius = 5;
 class _RadioPainter extends ToggleablePainter {
   _RadioPainter({required this.colors});
 
-  final ZetaColors colors;
+  final ZetaColorSemantics colors;
 
   @override
   void paint(Canvas canvas, Size size) {

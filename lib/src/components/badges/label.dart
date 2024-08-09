@@ -77,11 +77,11 @@ extension on ZetaWidgetStatus {
       case ZetaWidgetStatus.positive:
         return colors.surfacePositive;
       case ZetaWidgetStatus.warning:
-        return colors.surfaceWarning.shade40;
+        return colors.warning; // TODO(Luke): Check this
       case ZetaWidgetStatus.negative:
         return colors.surfaceNegative;
       case ZetaWidgetStatus.neutral:
-        return colors.cool.shade30;
+        return colors.light;
     }
   }
 }

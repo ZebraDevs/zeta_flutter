@@ -6,6 +6,9 @@ import 'primitives.g.dart';
 
 /// Semantic tokens for colors.
 abstract interface class ZetaColorSemantics {
+  /// Primitives used to construct semantic colors
+  ZetaPrimitives get primitives;
+
   /// Main Default color
   Color get mainDefault;
 
@@ -249,6 +252,9 @@ abstract interface class ZetaColorSemantics {
 
 /// Semantic tokens for Size.
 abstract interface class ZetaSpacingSemantics {
+  /// Primitives used to construct semantic spaces
+  ZetaPrimitives get primitives;
+
   /// None space
   double get none;
 
@@ -300,6 +306,9 @@ abstract interface class ZetaSpacingSemantics {
 
 /// Semantic tokens for Radii.
 abstract interface class ZetaRadiiSemantics {
+  /// Primitives used to construct semantic radii
+  ZetaPrimitives get primitives;
+
   /// None radius
   BorderRadius get none;
 
@@ -325,6 +334,7 @@ final class ZetaColorAA implements ZetaColorSemantics {
   const ZetaColorAA({required this.primitives});
 
   /// The primitives for this sizes
+  @override
   final ZetaPrimitives primitives;
 
   @override
@@ -495,6 +505,7 @@ final class ZetaColorAAA implements ZetaColorSemantics {
   const ZetaColorAAA({required this.primitives});
 
   /// The primitives for this sizes
+  @override
   final ZetaPrimitives primitives;
 
   @override
@@ -665,6 +676,7 @@ final class ZetaSpacingAA implements ZetaSpacingSemantics {
   const ZetaSpacingAA({required this.primitives});
 
   /// The primitives for this sizes
+  @override
   final ZetaPrimitives primitives;
 
   /// None space
@@ -738,6 +750,7 @@ final class ZetaSpacingAAA implements ZetaSpacingSemantics {
   const ZetaSpacingAAA({required this.primitives});
 
   /// The primitives for this sizes
+  @override
   final ZetaPrimitives primitives;
 
   /// None space
@@ -811,6 +824,7 @@ final class ZetaRadiiAA implements ZetaRadiiSemantics {
   const ZetaRadiiAA({required this.primitives});
 
   /// The primitives for this radii
+  @override
   final ZetaPrimitives primitives;
 
   @override
@@ -833,6 +847,7 @@ final class ZetaRadiiAAA implements ZetaRadiiSemantics {
   const ZetaRadiiAAA({required this.primitives});
 
   /// The primitives for this radii
+  @override
   final ZetaPrimitives primitives;
 
   @override

@@ -225,12 +225,12 @@ class _ZetaBreadCrumbState extends State<ZetaBreadCrumb> {
   }
 
   /// Get color of breadcrumb based on state.
-  Color getColor(Set<WidgetState> states, ZetaColors colors) {
+  Color getColor(Set<WidgetState> states, ZetaColorSemantics colors) {
     if (states.contains(WidgetState.hovered)) {
-      return colors.blue;
+      return colors.primary;
     }
-    if (widget.isSelected) return colors.black;
-    return colors.textSubtle;
+    if (widget.isSelected) return colors.mainDefault;
+    return colors.subtle;
   }
 
   @override
@@ -298,18 +298,18 @@ class _BreadCrumbsTruncatedState extends State<_BreadCrumbsTruncated> {
                     return colors.surfaceHover;
                   }
                   if (states.contains(WidgetState.pressed)) {
-                    return colors.primary.shade10;
+                    return colors.surfaceSelected;
                   }
                   if (states.contains(WidgetState.disabled)) {
                     return colors.surfaceDisabled;
                   }
-                  return colors.warm.shade10;
+                  return colors.surfaceWarm;
                 }),
                 foregroundColor: WidgetStateProperty.resolveWith((states) {
                   if (states.contains(WidgetState.disabled)) {
-                    return colors.textDisabled;
+                    return colors.disabled;
                   }
-                  return colors.textDefault;
+                  return colors.mainDefault;
                 }),
                 shape: WidgetStatePropertyAll(
                   RoundedRectangleBorder(
@@ -320,7 +320,7 @@ class _BreadCrumbsTruncatedState extends State<_BreadCrumbsTruncated> {
                   if (states.contains(WidgetState.focused)) {
                     return BorderSide(
                       width: ZetaSpacingBase.x0_5,
-                      color: colors.primary.shade100,
+                      color: colors.borderPrimary,
                     );
                   }
                   if (states.isEmpty) {

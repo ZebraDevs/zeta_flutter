@@ -148,8 +148,8 @@ class ZetaMenuItem extends ZetaStatelessWidget {
     );
   }
 
-  static IconThemeData _iconThemeData(ZetaColors colors, bool enabled, double size) => IconThemeData(
-        color: enabled ? colors.iconSubtle : colors.iconDisabled,
+  static IconThemeData _iconThemeData(ZetaColorSemantics colors, bool enabled, double size) => IconThemeData(
+        color: enabled ? colors.subtle : colors.disabled,
         size: size,
       );
 

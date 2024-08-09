@@ -521,7 +521,7 @@ class _DropdownItemState<T> extends State<_DropdownItem<T>> {
     }
   }
 
-  ButtonStyle _getStyle(ZetaColors colors) {
+  ButtonStyle _getStyle(ZetaColorSemantics colors) {
     return ButtonStyle(
       backgroundColor: WidgetStateProperty.resolveWith((states) {
         if (states.contains(WidgetState.disabled)) {

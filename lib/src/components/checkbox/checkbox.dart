@@ -258,7 +258,7 @@ class _CheckboxState extends State<ZetaInternalCheckbox> {
   }
 
   Color _getBackground(Zeta theme) {
-    final ZetaColorSwatch color = widget.error ? theme.colors.error : theme.colors.primary;
+    final Color color = widget.error ? theme.colors.error : theme.colors.primary;
     if (widget.disabled) return theme.colors.surfaceDisabled;
     if (!_checked) return theme.colors.surfacePrimary;
     if (_isHovered) return theme.colors.borderHover;

@@ -172,8 +172,6 @@ class ZetaAvatar extends ZetaStatelessWidget {
     );
   }
 
-  bool get _showPlaceholder => image == null && (initials == null || initials!.isEmpty);
-
   @override
   Widget build(BuildContext context) {
     final zetaColors = Zeta.of(context).colors;
@@ -216,7 +214,6 @@ class ZetaAvatar extends ZetaStatelessWidget {
                 decoration: BoxDecoration(
                   border: borderColor != null ? Border.all(color: borderColor!, width: 0) : null,
                   borderRadius: Zeta.of(context).radii.full,
-                  color: backgroundColor ?? (_showPlaceholder ? zetaColors.surfacePrimary : zetaColors.cool.shade20),
                 ),
                 child: borderColor != null
                     ? Container(

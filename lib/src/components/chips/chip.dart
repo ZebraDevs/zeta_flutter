@@ -170,7 +170,11 @@ class _ZetaChipState extends State<ZetaChip> {
     return Zeta.of(context).spacing.medium;
   }
 
-  ValueListenableBuilder<Set<WidgetState>> child(ZetaColors colors, Color foregroundColor, {bool isDragging = false}) {
+  ValueListenableBuilder<Set<WidgetState>> child(
+    ZetaColorSemantics colors,
+    Color foregroundColor, {
+    bool isDragging = false,
+  }) {
     return ValueListenableBuilder(
       valueListenable: _controller,
       builder: (context, states, child) {
