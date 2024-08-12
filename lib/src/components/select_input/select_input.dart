@@ -69,7 +69,7 @@ class ZetaSelectInput<T> extends ZetaFormField<T> {
                       icon: controller.isOpen ? ZetaIcons.expand_less : ZetaIcons.expand_more,
                       disabled: disabled,
                       size: size,
-                      color: colors.iconSubtle,
+                      color: colors.main.subtle,
                       onTap: () => state.onIconTapped(controller),
                     ),
                   );

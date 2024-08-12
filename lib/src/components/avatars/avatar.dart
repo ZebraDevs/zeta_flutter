@@ -172,8 +172,6 @@ class ZetaAvatar extends ZetaStatelessWidget {
     );
   }
 
-  bool get _showPlaceholder => image == null && (initials == null || initials!.isEmpty);
-
   @override
   Widget build(BuildContext context) {
     final zetaColors = Zeta.of(context).colors;
@@ -216,14 +214,13 @@ class ZetaAvatar extends ZetaStatelessWidget {
                 decoration: BoxDecoration(
                   border: borderColor != null ? Border.all(color: borderColor!, width: 0) : null,
                   borderRadius: Zeta.of(context).radii.full,
-                  color: backgroundColor ?? (_showPlaceholder ? zetaColors.surfacePrimary : zetaColors.cool.shade20),
                 ),
                 child: borderColor != null
                     ? Container(
                         width: contentSizePixels(context),
                         height: contentSizePixels(context),
                         decoration: BoxDecoration(
-                          color: backgroundColor ?? zetaColors.surfaceHover,
+                          color: backgroundColor ?? zetaColors.surface.hover,
                           border: Border.all(color: borderColor!, width: borderSize(context)),
                           borderRadius: Zeta.of(context).radii.full,
                         ),
@@ -235,7 +232,7 @@ class ZetaAvatar extends ZetaStatelessWidget {
                     : DecoratedBox(
                         decoration: BoxDecoration(
                           borderRadius: Zeta.of(context).radii.full,
-                          color: backgroundColor ?? zetaColors.surfaceHover,
+                          color: backgroundColor ?? zetaColors.surface.hover,
                         ),
                         child: ClipRRect(
                           borderRadius: Zeta.of(context).radii.full,
@@ -431,7 +428,7 @@ class ZetaAvatarBadge extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = Zeta.of(context).colors;
     final Color backgroundColor =
-        type == ZetaAvatarBadgeType.notification ? colors.surfaceNegative : (color ?? colors.primary);
+        type == ZetaAvatarBadgeType.notification ? colors.surface.negative : (color ?? colors.main.primary);
     final badgeSize = _getContainerSize(context);
     final borderSize = _getBorderSize(context);
     final paddedSize = badgeSize + Zeta.of(context).spacing.minimum;
@@ -470,7 +467,7 @@ class ZetaAvatarBadge extends StatelessWidget {
         border: type != ZetaAvatarBadgeType.notification
             ? Border.all(
                 width: borderSize,
-                color: Zeta.of(context).colors.surfacePrimary,
+                color: Zeta.of(context).colors.surface.primary,
               )
             : null,
       ),

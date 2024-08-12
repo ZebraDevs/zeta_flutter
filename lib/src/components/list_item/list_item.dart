@@ -169,7 +169,7 @@ class ZetaListItem extends ZetaStatelessWidget {
     return SelectionContainer.disabled(
       child: MergeSemantics(
         child: Material(
-          color: Zeta.of(context).colors.surfaceDefault,
+          color: Zeta.of(context).colors.surface.defaultColor,
           child: InkWell(
             onTap: onTap,
             excludeFromSemantics: true,
@@ -178,7 +178,7 @@ class ZetaListItem extends ZetaStatelessWidget {
               decoration: BoxDecoration(
                 border: Border(
                   bottom: BorderSide(
-                    color: divide ? colors.borderDefault : Colors.transparent,
+                    color: divide ? colors.border.defaultColor : Colors.transparent,
                   ),
                 ),
               ),

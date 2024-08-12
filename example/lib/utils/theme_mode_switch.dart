@@ -14,12 +14,12 @@ class ZetaThemeModeSwitch extends StatelessWidget {
   Widget build(BuildContext context) {
     final zeta = Zeta.of(context);
 
-    ZetaColors zetaColors(ThemeMode mode) {
+    ZetaColors? zetaColors(ThemeMode mode) {
       if ((mode == ThemeMode.system && MediaQuery.of(context).platformBrightness == Brightness.light) ||
           mode == ThemeMode.light) {
-        return zeta.themeData.colorsLight;
+        return zeta.themeData?.colorsLight;
       } else {
-        return zeta.themeData.colorsDark;
+        return zeta.themeData?.colorsDark;
       }
     }
 
@@ -29,7 +29,7 @@ class ZetaThemeModeSwitch extends StatelessWidget {
         value: zeta.themeMode,
         elevation: 0,
         icon: Nothing(),
-        dropdownColor: zeta.colors.borderDisabled,
+        dropdownColor: zeta.colors.border.disabled,
         items: _themes.map((e) {
           final colors = zetaColors(e);
           return DropdownMenuItem<ThemeMode>(
@@ -37,14 +37,14 @@ class ZetaThemeModeSwitch extends StatelessWidget {
             alignment: Alignment.center,
             child: ZetaAvatar(
               size: ZetaAvatarSize.xxs,
-              backgroundColor: colors.primary.surface,
+              backgroundColor: colors?.primary.surface,
               image: ZetaIcon(
                 e == ThemeMode.system
                     ? Icons.system_security_update_good
                     : e == ThemeMode.light
                         ? Icons.light_mode
                         : Icons.dark_mode,
-                color: colors.primary,
+                color: colors?.primary,
               ),
             ),
           );

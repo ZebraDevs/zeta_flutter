@@ -39,18 +39,19 @@ class ZetaLabel extends ZetaStatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Color backgroundColor = status.labelBackgroundColor(context);
+    final Color foregroundColor = status.labelForegroundColor(context);
 
     return Semantics(
       label: semanticLabel ?? label,
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: Zeta.of(context).spacing.minimum, vertical: ZetaSpacingBase.x0_5),
+        padding: EdgeInsets.symmetric(horizontal: Zeta.of(context).spacing.minimum),
         decoration: BoxDecoration(
           color: backgroundColor,
           borderRadius: context.rounded ? Zeta.of(context).radii.minimal : Zeta.of(context).radii.none,
         ),
         child: Text(
           label,
-          style: ZetaTextStyles.labelSmall.apply(color: backgroundColor.onColor),
+          style: ZetaTextStyles.labelSmall.apply(color: foregroundColor),
           overflow: TextOverflow.ellipsis,
         ),
       ),
@@ -73,15 +74,28 @@ extension on ZetaWidgetStatus {
     final colors = Zeta.of(context).colors;
     switch (this) {
       case ZetaWidgetStatus.info:
-        return colors.surfaceInfo;
+        return colors.surface.info;
       case ZetaWidgetStatus.positive:
-        return colors.surfacePositive;
+        return colors.surface.positive;
       case ZetaWidgetStatus.warning:
-        return colors.surfaceWarning.shade40;
+        return colors.surface.warning;
       case ZetaWidgetStatus.negative:
-        return colors.surfaceNegative;
+        return colors.surface.negative;
       case ZetaWidgetStatus.neutral:
-        return colors.cool.shade30;
+        return colors.main.light;
+    }
+  }
+
+  Color labelForegroundColor(BuildContext context) {
+    final colors = Zeta.of(context).colors;
+    switch (this) {
+      case ZetaWidgetStatus.info:
+      case ZetaWidgetStatus.positive:
+      case ZetaWidgetStatus.warning:
+      case ZetaWidgetStatus.negative:
+        return colors.main.inverse;
+      case ZetaWidgetStatus.neutral:
+        return colors.main.defaultColor;
     }
   }
 }

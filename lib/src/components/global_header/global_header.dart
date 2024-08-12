@@ -80,7 +80,7 @@ class _GlobalHeaderState extends State<ZetaGlobalHeader> {
               vertical: Zeta.of(context).spacing.medium,
               horizontal: Zeta.of(context).spacing.large,
             ),
-            decoration: BoxDecoration(color: colors.surfacePrimary),
+            decoration: BoxDecoration(color: colors.surface.primary),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -113,7 +113,7 @@ class _GlobalHeaderState extends State<ZetaGlobalHeader> {
                           ),
                           if (widget.onAppsButton != null) ...[
                             Container(
-                              color: colors.borderDefault,
+                              color: colors.border.defaultColor,
                               width: 1,
                               height: Zeta.of(context).spacing.xl_2,
                               margin: EdgeInsets.symmetric(horizontal: Zeta.of(context).spacing.minimum),
@@ -175,7 +175,7 @@ class _GlobalHeaderState extends State<ZetaGlobalHeader> {
             setState(() {
               _selectedIndex = index;
             });
-            child.handlePress!.call();
+            child.handlePress?.call();
           },
         ),
       );

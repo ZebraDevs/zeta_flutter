@@ -38,11 +38,11 @@ class ZetaThemeColorSwitch extends StatelessWidget {
 
     return DropdownButtonHideUnderline(
       child: DropdownButton<String>(
-        value: zeta.themeData.identifier,
+        value: zeta.themeData?.identifier,
         elevation: 0,
         padding: EdgeInsets.all(8),
         icon: Nothing(),
-        dropdownColor: zeta.colors.borderDisabled,
+        dropdownColor: zeta.colors.border.disabled,
         items: appThemes.entries.map((e) {
           final zetaColors = primary(appThemes[e.key]!);
           final color = zetaColors.primary;

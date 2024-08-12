@@ -135,7 +135,7 @@ class _ZetaTopAppBarState extends State<ZetaTopAppBar> {
     super.dispose();
   }
 
-  Widget _getTitleText(ZetaColors colors) {
+  Widget _getTitleText(ZetaColorSemantics colors) {
     var title = widget.title;
     if (widget.title is Row) {
       final oldRow = widget.title! as Row;
@@ -159,12 +159,12 @@ class _ZetaTopAppBarState extends State<ZetaTopAppBar> {
     }
 
     return DefaultTextStyle(
-      style: (widget.titleTextStyle ?? ZetaTextStyles.bodyLarge).copyWith(color: colors.textDefault),
+      style: (widget.titleTextStyle ?? ZetaTextStyles.bodyLarge).copyWith(color: colors.main.defaultColor),
       child: title ?? const Text(' '),
     );
   }
 
-  List<Widget>? _getActions(ZetaColors colors) {
+  List<Widget>? _getActions(ZetaColorSemantics colors) {
     return _isSearchEnabled
         ? [
             IconButtonTheme(
@@ -175,14 +175,14 @@ class _ZetaTopAppBarState extends State<ZetaTopAppBar> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   IconButton(
-                    color: colors.cool.shade50,
+                    color: colors.main.defaultColor,
                     onPressed: () => widget.searchController?.clearText(),
                     icon: const ZetaIcon(ZetaIcons.cancel),
                   ),
                   if (widget.onSearchMicrophoneIconPressed != null) ...[
                     SizedBox(
                       height: Zeta.of(context).spacing.xl_2,
-                      child: VerticalDivider(width: ZetaSpacingBase.x0_5, color: colors.cool.shade70),
+                      child: VerticalDivider(width: ZetaSpacingBase.x0_5, color: colors.main.subtle),
                     ),
                     IconButton(
                       onPressed: widget.onSearchMicrophoneIconPressed,
@@ -230,7 +230,7 @@ class _ZetaTopAppBarState extends State<ZetaTopAppBar> {
     return ZetaRoundedScope(
       rounded: context.rounded,
       child: ColoredBox(
-        color: colors.surfacePrimary,
+        color: colors.surface.defaultColor,
         child: IconButtonTheme(
           data: IconButtonThemeData(style: IconButton.styleFrom(tapTargetSize: MaterialTapTargetSize.shrinkWrap)),
           child: Padding(
@@ -238,15 +238,15 @@ class _ZetaTopAppBarState extends State<ZetaTopAppBar> {
             child: AppBar(
               elevation: 0,
               scrolledUnderElevation: 0,
-              iconTheme: IconThemeData(color: colors.cool.shade90),
+              iconTheme: IconThemeData(color: colors.main.defaultColor),
               leadingWidth: Zeta.of(context).spacing.xl_6,
               leading: widget.leading,
               automaticallyImplyLeading: widget.automaticallyImplyLeading,
               surfaceTintColor: Colors.transparent,
               centerTitle: widget.type == ZetaTopAppBarType.centeredTitle,
               titleTextStyle: widget.titleTextStyle == null
-                  ? ZetaTextStyles.bodyLarge.copyWith(color: colors.textDefault)
-                  : widget.titleTextStyle!.copyWith(color: colors.textDefault),
+                  ? ZetaTextStyles.bodyLarge.copyWith(color: colors.main.defaultColor)
+                  : widget.titleTextStyle!.copyWith(color: colors.main.defaultColor),
               title: title,
               actions: actions,
             ),

@@ -221,7 +221,7 @@ void main() {
       await tester.pumpAndSettle();
 
       // Verifying through the public interface of Zeta widget
-      expect(tester.widget<Zeta>(find.byType(Zeta)).themeData.identifier, 'default');
+      expect(tester.widget<Zeta>(find.byType(Zeta)).themeData?.identifier, 'default');
 
       await tester.pumpWidget(
         ZetaProvider(
@@ -237,7 +237,7 @@ void main() {
       await tester.pumpAndSettle(const Duration(milliseconds: 250));
 
       // Verifying through the public interface of Zeta widget
-      expect(tester.widget<Zeta>(find.byType(Zeta)).themeData.identifier, 'different');
+      expect(tester.widget<Zeta>(find.byType(Zeta)).themeData?.identifier, 'different');
     });
     testWidgets('didUpdateWidget in ZetaProviderState works correctly with change rounded',
         (WidgetTester tester) async {
@@ -371,7 +371,7 @@ void main() {
         zetaThemeData: initialThemeData,
       );
 
-      expect(theme2.iconTheme.color, initialThemeData.colorsLight.iconDefault);
+      expect(theme2.iconTheme.color, initialThemeData.colorsLight.main.defaultColor);
     });
 
     testWidgets('debugFillProperties works correctly', (WidgetTester tester) async {

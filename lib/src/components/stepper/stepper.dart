@@ -72,7 +72,7 @@ class _ZetaStepperState extends State<ZetaStepper> with TickerProviderStateMixin
     );
   }
 
-  ZetaColors get _colors => Zeta.of(context).colors;
+  ZetaSemanticColors get _colors => Zeta.of(context).colors;
 
   bool _isFirst(int index) {
     return index == 0;
@@ -103,12 +103,12 @@ class _ZetaStepperState extends State<ZetaStepper> with TickerProviderStateMixin
           child: switch (widget.steps[index].type) {
             ZetaStepType.complete => ZetaIcon(
                 ZetaIcons.check_mark,
-                color: _colors.textInverse,
+                color: _colors.main.inverse,
               ),
             ZetaStepType.enabled || ZetaStepType.disabled => Text(
                 (index + 1).toString(),
                 style: ZetaTextStyles.labelLarge.copyWith(
-                  color: _colors.textInverse,
+                  color: _colors.main.inverse,
                 ),
               ),
           },
@@ -132,12 +132,12 @@ class _ZetaStepperState extends State<ZetaStepper> with TickerProviderStateMixin
           child: switch (widget.steps[index].type) {
             ZetaStepType.complete => ZetaIcon(
                 ZetaIcons.check_mark,
-                color: _colors.textInverse,
+                color: _colors.main.inverse,
               ),
             ZetaStepType.enabled || ZetaStepType.disabled => Text(
                 (index + 1).toString(),
                 style: ZetaTextStyles.titleLarge.copyWith(
-                  color: _colors.textInverse,
+                  color: _colors.main.inverse,
                 ),
               ),
           },
@@ -154,10 +154,10 @@ class _ZetaStepperState extends State<ZetaStepper> with TickerProviderStateMixin
         AnimatedDefaultTextStyle(
           style: switch (widget.steps[index].type) {
             ZetaStepType.enabled || ZetaStepType.complete => ZetaTextStyles.bodySmall.copyWith(
-                color: _colors.textDefault,
+                color: _colors.main.defaultColor,
               ),
             ZetaStepType.disabled => ZetaTextStyles.bodySmall.copyWith(
-                color: _colors.textDisabled,
+                color: _colors.main.disabled,
               ),
           },
           maxLines: 1,
@@ -186,11 +186,7 @@ class _ZetaStepperState extends State<ZetaStepper> with TickerProviderStateMixin
                 height: Zeta.of(context).spacing.xl_8,
                 decoration: BoxDecoration(
                   borderRadius: Zeta.of(context).radii.full,
-                  color: switch (widget.steps[index].type) {
-                    ZetaStepType.complete => _colors.green.shade50,
-                    ZetaStepType.disabled => _colors.borderSubtle,
-                    ZetaStepType.enabled => _colors.blue.shade50,
-                  },
+                  color: getLineColor(index),
                 ),
               ),
             ],
@@ -215,10 +211,10 @@ class _ZetaStepperState extends State<ZetaStepper> with TickerProviderStateMixin
                   AnimatedDefaultTextStyle(
                     style: switch (widget.steps[index].type) {
                       ZetaStepType.enabled || ZetaStepType.complete => ZetaTextStyles.titleLarge.copyWith(
-                          color: _colors.textDefault,
+                          color: _colors.main.defaultColor,
                         ),
                       ZetaStepType.disabled => ZetaTextStyles.titleLarge.copyWith(
-                          color: _colors.textDisabled,
+                          color: _colors.main.disabled,
                         ),
                     },
                     maxLines: 1,
@@ -253,9 +249,9 @@ class _ZetaStepperState extends State<ZetaStepper> with TickerProviderStateMixin
 
   Color _getColorForType(ZetaStepType type) {
     return switch (type) {
-      ZetaStepType.complete => _colors.surfacePositive,
-      ZetaStepType.disabled => _colors.cool.shade50,
-      ZetaStepType.enabled => _colors.primary,
+      ZetaStepType.complete => _colors.surface.positive,
+      ZetaStepType.disabled => _colors.main.disabled,
+      ZetaStepType.enabled => _colors.main.primary,
     };
   }
 
@@ -316,11 +312,7 @@ class _ZetaStepperState extends State<ZetaStepper> with TickerProviderStateMixin
                         height: ZetaSpacingBase.x0_5,
                         decoration: BoxDecoration(
                           borderRadius: Zeta.of(context).radii.full,
-                          color: switch (widget.steps[index].type) {
-                            ZetaStepType.complete => _colors.green.shade50,
-                            ZetaStepType.disabled => _colors.borderSubtle,
-                            ZetaStepType.enabled => _colors.blue.shade50,
-                          },
+                          color: getLineColor(index),
                         ),
                       ),
                     ),
@@ -366,6 +358,14 @@ class _ZetaStepperState extends State<ZetaStepper> with TickerProviderStateMixin
           ),
       },
     );
+  }
+
+  Color getLineColor(int index) {
+    return switch (widget.steps[index].type) {
+      ZetaStepType.complete => _colors.border.positive,
+      ZetaStepType.disabled => _colors.border.defaultColor,
+      ZetaStepType.enabled => _colors.border.primary,
+    };
   }
 }
 

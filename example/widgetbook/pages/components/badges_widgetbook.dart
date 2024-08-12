@@ -71,21 +71,27 @@ Widget indicatorsUseCase(BuildContext context) {
   return WidgetbookScaffold(
     builder: (context, _) => Padding(
       padding: EdgeInsets.all(Zeta.of(context).spacing.xl_2),
-      child: ZetaIndicator(
-        type: context.knobs.list(
-          label: 'Type',
-          options: ZetaIndicatorType.values,
-          labelBuilder: enumLabelBuilder,
-        ),
-        icon: iconKnob(context),
-        inverse: context.knobs.boolean(label: 'Inverse Border'),
-        size: context.knobs.list(
-          label: 'Size',
-          labelBuilder: enumLabelBuilder,
-          options: ZetaWidgetSize.values,
-        ),
-        value: context.knobs.int.slider(label: 'Value'),
-        color: context.knobs.colorOrNull(label: 'Custom color'),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Container(width: 20, height: 20, color: Colors.teal),
+          ZetaIndicator(
+            type: context.knobs.list(
+              label: 'Type',
+              options: ZetaIndicatorType.values,
+              labelBuilder: enumLabelBuilder,
+            ),
+            icon: iconKnob(context),
+            inverse: context.knobs.boolean(label: 'Inverse Border'),
+            size: context.knobs.list(
+              label: 'Size',
+              labelBuilder: enumLabelBuilder,
+              options: ZetaWidgetSize.values,
+            ),
+            value: context.knobs.int.slider(label: 'Value'),
+            color: context.knobs.colorOrNull(label: 'Custom color'),
+          ),
+        ],
       ),
     ),
   );

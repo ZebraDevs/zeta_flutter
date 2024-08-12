@@ -27,21 +27,21 @@ Widget radiusUseCase(BuildContext context) {
           height: 250,
           decoration: BoxDecoration(
             borderRadius: rad,
-            color: Zeta.of(context).colors.blue.shade30,
-            border: Border.all(color: colors.blue.shade80, width: 3),
+            color: Zeta.of(context).colors.primitives.blue.shade30,
+            border: Border.all(color: colors.primitives.blue.shade80, width: 3),
           ),
           child: Center(
             child: Container(
               decoration: BoxDecoration(
                 borderRadius: rad,
-                color: Zeta.of(context).colors.surfacePrimary,
-                border: Border.all(color: colors.blue.shade50, width: 3),
+                color: Zeta.of(context).colors.surface.primary,
+                border: Border.all(color: colors.primitives.blue.shade50, width: 3),
               ),
               padding: EdgeInsets.all(Zeta.of(context).spacing.large),
               child: Text(
                 rad.radiusString.split('.').last.capitalize(),
                 style: ZetaTextStyles.titleMedium.apply(
-                  color: Zeta.of(context).colors.textDefault,
+                  color: Zeta.of(context).colors.main.defaultColor,
                   fontStyle: FontStyle.normal,
                   decoration: TextDecoration.none,
                 ),

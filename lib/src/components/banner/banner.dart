@@ -62,8 +62,10 @@ class ZetaBanner extends MaterialBanner {
   }) : super(
           dividerColor: Colors.transparent,
           content: () {
-            final backgroundColor = _backgroundColorFromType(context, type);
-            final foregroundColor = backgroundColor.onColor;
+            final colors = Zeta.of(context).colors;
+            final backgroundColor = type.backgroundColor(context);
+            final foregroundColor = colors.main.inverse;
+
             if (!kIsWeb && Platform.isAndroid && context.mounted) {
               // ignore: invalid_use_of_visible_for_testing_member
               final statusBarColor = SystemChrome.latestStyle?.statusBarColor;
@@ -71,7 +73,7 @@ class ZetaBanner extends MaterialBanner {
                 SystemChrome.setSystemUIOverlayStyle(
                   SystemUiOverlayStyle(
                     statusBarColor: backgroundColor,
-                    systemNavigationBarIconBrightness: backgroundColor.isDark ? Brightness.light : Brightness.dark,
+                    systemNavigationBarIconBrightness: Brightness.light,
                   ),
                 );
               }
@@ -105,27 +107,28 @@ class ZetaBanner extends MaterialBanner {
               ),
             );
           }(),
-          backgroundColor: _backgroundColorFromType(context, type),
+          backgroundColor: type.backgroundColor(context),
           actions: [
             IconTheme(
-              data: IconThemeData(color: _backgroundColorFromType(context, type).onColor),
+              data: IconThemeData(color: Zeta.of(context).colors.main.inverse),
               child: trailing ?? const Nothing(),
             ),
           ],
         );
+}
 
-  static ZetaColorSwatch _backgroundColorFromType(BuildContext context, ZetaBannerStatus type) {
-    final zeta = Zeta.of(context);
-
-    switch (type) {
+extension on ZetaBannerStatus {
+  Color backgroundColor(BuildContext context) {
+    final colors = Zeta.of(context).colors;
+    switch (this) {
       case ZetaBannerStatus.primary:
-        return zeta.colors.primary;
+        return colors.surface.primary;
       case ZetaBannerStatus.positive:
-        return zeta.colors.surfacePositive;
+        return colors.surface.positive;
       case ZetaBannerStatus.warning:
-        return zeta.colors.orange;
+        return colors.surface.warning;
       case ZetaBannerStatus.negative:
-        return zeta.colors.surfaceNegative;
+        return colors.surface.negative;
     }
   }
 }

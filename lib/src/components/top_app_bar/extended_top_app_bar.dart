@@ -44,7 +44,7 @@ class ZetaExtendedAppBarDelegate extends SliverPersistentHeaderDelegate {
     return ConstrainedBox(
       constraints: BoxConstraints(minHeight: Zeta.of(context).spacing.xl_9, maxHeight: _maxExtent),
       child: ColoredBox(
-        color: Zeta.of(context).colors.surfacePrimary,
+        color: Zeta.of(context).colors.surface.primary,
         child: Stack(
           children: [
             Positioned(

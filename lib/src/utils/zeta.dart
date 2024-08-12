@@ -17,7 +17,7 @@ class Zeta extends InheritedWidget {
     required Brightness mediaBrightness,
     required this.contrast,
     required this.themeMode,
-    required this.themeData,
+    this.themeData,
     required super.child,
     this.rounded = true,
   })  : _mediaBrightness = mediaBrightness,
@@ -35,7 +35,7 @@ class Zeta extends InheritedWidget {
   final ThemeMode themeMode;
 
   /// Provides the theme data for the app, which contains all the theming information.
-  final ZetaThemeData themeData;
+  final ZetaThemeData? themeData;
 
   /// Internal property to get the system brightness.
   /// Used to determine the theme mode when it's set to [ThemeMode.system].
@@ -54,17 +54,17 @@ class Zeta extends InheritedWidget {
   ///
   /// It determines the appropriate color set (light or dark) based on the theme mode
   /// and system brightness.
-  // ZetaColorSemantics get colors {
-  //   return _semantics.colors;
-  // }
-
-  ZetaColors get colors {
-    if (themeMode == ThemeMode.system) {
-      return _mediaBrightness == Brightness.light ? themeData.colorsLight : themeData.colorsDark;
-    } else if (themeMode == ThemeMode.light) {
-      return themeData.colorsLight;
+  ZetaColorSemantics get colors {
+    if (themeData == null) {
+      return _semantics.colors;
     } else {
-      return themeData.colorsDark;
+      if (themeMode == ThemeMode.system) {
+        return _mediaBrightness == Brightness.light ? themeData!.colorsLight : themeData!.colorsDark;
+      } else if (themeMode == ThemeMode.light) {
+        return themeData!.colorsLight;
+      } else {
+        return themeData!.colorsDark;
+      }
     }
   }
 
@@ -135,7 +135,7 @@ class Zeta extends InheritedWidget {
       ..add(EnumProperty<Brightness>('mediaBrightness', _mediaBrightness))
       ..add(EnumProperty<Brightness>('brightness', brightness))
       ..add(DiagnosticsProperty<bool>('rounded', rounded))
-      ..add(DiagnosticsProperty<ZetaColors>('colors', colors))
+      ..add(DiagnosticsProperty<dynamic>('colors', colors))
       ..add(DiagnosticsProperty<ZetaRadiiSemantics>('radii', radii))
       ..add(DiagnosticsProperty<ZetaSpacingSemantics>('spacing', spacing));
   }

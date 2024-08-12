@@ -83,7 +83,7 @@ class ZetaMenuItem extends ZetaStatelessWidget {
         final colors = Zeta.of(context).colors;
 
         final Widget text = DefaultTextStyle(
-          style: ZetaTextStyles.labelLarge.apply(color: _enabled ? colors.textDefault : colors.textDisabled),
+          style: ZetaTextStyles.labelLarge.apply(color: _enabled ? colors.main.defaultColor : colors.main.disabled),
           child: label,
         );
 
@@ -148,8 +148,8 @@ class ZetaMenuItem extends ZetaStatelessWidget {
     );
   }
 
-  static IconThemeData _iconThemeData(ZetaColors colors, bool enabled, double size) => IconThemeData(
-        color: enabled ? colors.iconSubtle : colors.iconDisabled,
+  static IconThemeData _iconThemeData(ZetaSemanticColors colors, bool enabled, double size) => IconThemeData(
+        color: enabled ? colors.main.subtle : colors.main.disabled,
         size: size,
       );
 

@@ -93,7 +93,7 @@ void main() {
     final DecoratedBox box = tester.firstWidget(decoratedBoxFinder);
     expect(box.decoration.runtimeType, BoxDecoration);
     final BoxDecoration decoration = box.decoration as BoxDecoration;
-    expect(decoration.color, ZetaColorBase.cool.shade10);
+    expect(decoration.color, ZetaLightPrimitive().pure.shade0);
 
     await tester.tap(find.byKey(key));
     await tester.pumpAndSettle();

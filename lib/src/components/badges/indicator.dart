@@ -102,8 +102,9 @@ class ZetaIndicator extends ZetaStatelessWidget {
   @override
   Widget build(BuildContext context) {
     final zetaColors = Zeta.of(context).colors;
-    final Color backgroundColor = (type == ZetaIndicatorType.icon ? zetaColors.blue : zetaColors.surfaceNegative);
-    final Color foregroundColor = backgroundColor.onColor;
+    final Color backgroundColor =
+        (type == ZetaIndicatorType.icon ? zetaColors.main.primary : zetaColors.surface.negative);
+    final Color foregroundColor = zetaColors.main.inverse;
     final sizePixels = _getSizePixels(size, type, context);
 
     return Semantics(
@@ -112,7 +113,7 @@ class ZetaIndicator extends ZetaStatelessWidget {
         width: sizePixels + Zeta.of(context).spacing.minimum,
         height: sizePixels + Zeta.of(context).spacing.minimum,
         decoration: BoxDecoration(
-          border: Border.all(width: ZetaSpacingBase.x0_5, color: zetaColors.borderSubtle),
+          border: Border.fromBorderSide(ZetaBorderTemp.indicatorBorder(context)),
           color: (inverse ? foregroundColor : Colors.transparent),
           borderRadius: Zeta.of(context).radii.full,
         ),
@@ -150,7 +151,10 @@ class ZetaIndicator extends ZetaStatelessWidget {
         return Center(
           child: Text(
             value.formatMaxChars(),
-            style: ZetaTextStyles.labelIndicator.copyWith(color: foregroundColor),
+            style: ZetaTextStyles.labelIndicator.copyWith(
+              color: foregroundColor,
+              height: size == ZetaWidgetSize.large ? 1 : (12 / 16),
+            ),
           ),
         );
     }
@@ -160,9 +164,9 @@ class ZetaIndicator extends ZetaStatelessWidget {
   double _getSizePixels(ZetaWidgetSize size, ZetaIndicatorType type, BuildContext context) {
     switch (size) {
       case ZetaWidgetSize.large:
-        return Zeta.of(context).spacing.large;
+        return Zeta.of(context).spacing.xl;
       case ZetaWidgetSize.medium:
-        return type == ZetaIndicatorType.icon ? Zeta.of(context).spacing.medium : ZetaSpacingBase.x3_5;
+        return Zeta.of(context).spacing.medium;
       case ZetaWidgetSize.small:
         return Zeta.of(context).spacing.small;
     }

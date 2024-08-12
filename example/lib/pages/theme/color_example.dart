@@ -21,112 +21,112 @@ class _ColorExampleState extends State<ColorExample> {
     return LayoutBuilder(
       builder: (context, constraints) {
         final Map<String, ZetaColorSwatch> swatches = {
-          'Blue': colors.blue,
-          'Green': colors.green,
-          'Red': colors.red,
-          'Orange': colors.orange,
-          'Purple': colors.purple,
-          'Yellow': colors.yellow,
-          'Teal': colors.teal,
-          'Pink': colors.pink,
-          'Grey Warm': colors.warm,
-          'Grey Cool': colors.cool,
+          // 'Blue': colors.blue,
+          // 'Green': colors.green,
+          // 'Red': colors.red,
+          // 'Orange': colors.orange,
+          // 'Purple': colors.purple,
+          // 'Yellow': colors.yellow,
+          // 'Teal': colors.teal,
+          // 'Pink': colors.pink,
+          // 'Grey Warm': colors.warm,
+          // 'Grey Cool': colors.cool,
         };
 
         final Map<String, ZetaColorSwatch> generatedSwatches = {
-          'Gen-Blue': ZetaColorSwatch.fromColor(
-            colors.blue,
-            brightness: zeta.brightness,
-            contrast: colors.contrast,
-          ),
-          'Blue': colors.blue,
-          'Gen-Green': ZetaColorSwatch.fromColor(
-            colors.green,
-            brightness: zeta.brightness,
-            contrast: colors.contrast,
-          ),
-          'Green': colors.green,
-          'Gen-Red': ZetaColorSwatch.fromColor(
-            colors.red,
-            brightness: zeta.brightness,
-            contrast: colors.contrast,
-          ),
-          'Red': colors.red,
-          'Gen-Orange': ZetaColorSwatch.fromColor(
-            colors.orange,
-            brightness: zeta.brightness,
-            contrast: colors.contrast,
-          ),
-          'Orange': colors.orange,
-          'Gen-Purple': ZetaColorSwatch.fromColor(
-            colors.purple,
-            brightness: zeta.brightness,
-            contrast: colors.contrast,
-          ),
-          'Purple': colors.purple,
-          'Gen-Yellow': ZetaColorSwatch.fromColor(
-            colors.yellow,
-            brightness: zeta.brightness,
-            contrast: colors.contrast,
-          ),
-          'Yellow': colors.yellow,
-          'Gen-Teal': ZetaColorSwatch.fromColor(
-            colors.teal,
-            brightness: zeta.brightness,
-            contrast: colors.contrast,
-          ),
-          'Teal': colors.teal,
-          'Gen-Pink': ZetaColorSwatch.fromColor(
-            colors.pink,
-            brightness: zeta.brightness,
-            contrast: colors.contrast,
-          ),
-          'Pink': colors.pink,
-          'Gen-Grey Warm': ZetaColorSwatch.fromColor(
-            colors.warm,
-            brightness: zeta.brightness,
-            contrast: colors.contrast,
-          ),
-          'Grey Warm': colors.warm,
-          'Gen-Grey Cool': ZetaColorSwatch.fromColor(
-            colors.cool,
-            brightness: zeta.brightness,
-            contrast: colors.contrast,
-          ),
-          'Grey Cool': colors.cool,
+          // 'Gen-Blue': ZetaColorSwatch.fromColor(
+          //   colors.blue,
+          //   brightness: zeta.brightness,
+          //   contrast: colors.contrast,
+          // ),
+          // 'Blue': colors.blue,
+          // 'Gen-Green': ZetaColorSwatch.fromColor(
+          //   colors.green,
+          //   brightness: zeta.brightness,
+          //   contrast: colors.contrast,
+          // ),
+          // 'Green': colors.green,
+          // 'Gen-Red': ZetaColorSwatch.fromColor(
+          //   colors.red,
+          //   brightness: zeta.brightness,
+          //   contrast: colors.contrast,
+          // ),
+          // 'Red': colors.red,
+          // 'Gen-Orange': ZetaColorSwatch.fromColor(
+          //   colors.orange,
+          //   brightness: zeta.brightness,
+          //   contrast: colors.contrast,
+          // ),
+          // 'Orange': colors.orange,
+          // 'Gen-Purple': ZetaColorSwatch.fromColor(
+          //   colors.purple,
+          //   brightness: zeta.brightness,
+          //   contrast: colors.contrast,
+          // ),
+          // 'Purple': colors.purple,
+          // 'Gen-Yellow': ZetaColorSwatch.fromColor(
+          //   colors.yellow,
+          //   brightness: zeta.brightness,
+          //   contrast: colors.contrast,
+          // ),
+          // 'Yellow': colors.yellow,
+          // 'Gen-Teal': ZetaColorSwatch.fromColor(
+          //   colors.teal,
+          //   brightness: zeta.brightness,
+          //   contrast: colors.contrast,
+          // ),
+          // 'Teal': colors.teal,
+          // 'Gen-Pink': ZetaColorSwatch.fromColor(
+          //   colors.pink,
+          //   brightness: zeta.brightness,
+          //   contrast: colors.contrast,
+          // ),
+          // 'Pink': colors.pink,
+          // 'Gen-Grey Warm': ZetaColorSwatch.fromColor(
+          //   colors.warm,
+          //   brightness: zeta.brightness,
+          //   contrast: colors.contrast,
+          // ),
+          // 'Grey Warm': colors.warm,
+          // 'Gen-Grey Cool': ZetaColorSwatch.fromColor(
+          //   colors.cool,
+          //   brightness: zeta.brightness,
+          //   contrast: colors.contrast,
+          // ),
+          // 'Grey Cool': colors.cool,
         };
 
         final Map<String, Color> textIcon = {
-          'textDefault': colors.textDefault,
-          'textSubtle': colors.textSubtle,
-          'textDisabled': colors.textDisabled,
-          'textInverse': colors.textInverse,
+          'main.defaultColor': colors.main.defaultColor,
+          'main.subtle': colors.main.subtle,
+          'main.disabled': colors.main.disabled,
+          'main.inverse': colors.main.inverse,
         };
         final Map<String, Color> border = {
-          'borderDefault': colors.borderDefault,
-          'borderSubtle': colors.borderSubtle,
-          'borderDisabled': colors.borderDisabled,
-          'borderSelected': colors.borderSelected,
+          'border.defaultColor': colors.border.defaultColor,
+          'border.subtle': colors.border.subtle,
+          'border.disabled': colors.border.disabled,
+          'border.selected': colors.border.selected,
         };
         final Map<String, Color> backdrop = {
-          'surfacePrimary': colors.surfacePrimary,
-          'surfaceDisabled': colors.surfaceDisabled,
-          'surfaceHover': colors.surfaceHover,
-          'surfaceSecondary': colors.surfaceSecondary,
-          'surfaceTertiary': colors.surfaceTertiary,
-          'surfaceSelectedHover': colors.surfaceSelectedHover,
-          'surfaceSelected': colors.surfaceSelected,
+          'surface.primary': colors.surface.primary,
+          'surface.disabled': colors.surface.disabled,
+          'surface.hover': colors.surface.hover,
+          'surface.secondary': colors.surface.secondary,
+          // 'surfaceTertiary': colors.surfaceTertiary,
+          'surface.selectedHover': colors.surface.selectedHover,
+          'surface.selected': colors.surface.selected,
         };
 
         final Map<String, Color> primaries = {
-          'primaryColor': colors.primary.text,
-          'secondaryColor': colors.secondary.text,
+          'primaryColor': colors.main.primary,
+          'secondaryColor': colors.main.secondary,
         };
 
         final Map<String, Color> alerts = {
-          'negative': colors.surfaceNegative,
-          'warning': colors.surfaceWarning,
-          'info': colors.surfaceInfo,
+          'negative': colors.surface.negative,
+          'warning': colors.surface.warning,
+          'info': colors.surface.info,
         };
 
         return ExampleScaffold(
@@ -187,7 +187,7 @@ class _ColorExampleState extends State<ColorExample> {
                             (e) => Expanded(
                               child: Container(
                                 height: constraints.maxWidth / 10,
-                                color: e == 110 ? colors.surfacePrimary : value.value[e],
+                                color: e == 110 ? colors.surface.primary : value.value[e],
                                 child: e == 110
                                     ? Nothing()
                                     : FittedBox(

@@ -39,8 +39,8 @@ abstract interface class ZetaSemanticMainColors {
   /// Inverse
   Color get inverse;
 
-  /// Disabled Color
-  Color get disabledColor;
+  /// Disabled
+  Color get disabled;
 
   /// Primary
   Color get primary;
@@ -78,8 +78,8 @@ abstract interface class ZetaSemanticBorderColors {
   /// Selected
   Color get selected;
 
-  /// Disabled Color
-  Color get disabledColor;
+  /// Disabled
+  Color get disabled;
 
   /// Pure
   Color get pure;
@@ -126,8 +126,8 @@ abstract interface class ZetaSemanticSurfaceColors {
   /// Selected Hover
   Color get selectedHover;
 
-  /// Disabled Color
-  Color get disabledColor;
+  /// Disabled
+  Color get disabled;
 
   /// Cool
   Color get cool;
@@ -237,8 +237,8 @@ abstract interface class ZetaSemanticDisabledColors {
   /// The primitives for the colors
   ZetaPrimitives get primitives;
 
-  /// Disabled Color
-  Color get disabledColor;
+  /// Disabled
+  Color get disabled;
 }
 
 /// The semantic tokens for Default
@@ -488,7 +488,7 @@ final class ZetaSemanticMainColorsAA implements ZetaSemanticMainColors {
   @override
   Color get inverse => primitives.cool.shade20;
   @override
-  Color get disabledColor => primitives.cool.shade50;
+  Color get disabled => primitives.cool.shade50;
   @override
   Color get primary => primitives.blue.shade60;
   @override
@@ -520,7 +520,7 @@ final class ZetaSemanticBorderColorsAA implements ZetaSemanticBorderColors {
   @override
   Color get selected => primitives.cool.shade90;
   @override
-  Color get disabledColor => primitives.cool.shade20;
+  Color get disabled => primitives.cool.shade20;
   @override
   Color get pure => primitives.pure.shade0;
   @override
@@ -558,7 +558,7 @@ final class ZetaSemanticSurfaceColorsAA implements ZetaSemanticSurfaceColors {
   @override
   Color get selectedHover => primitives.blue.shade20;
   @override
-  Color get disabledColor => primitives.cool.shade30;
+  Color get disabled => primitives.cool.shade30;
   @override
   Color get cool => primitives.cool.shade10;
   @override
@@ -668,7 +668,7 @@ final class ZetaSemanticDisabledColorsAA implements ZetaSemanticDisabledColors {
   @override
   final ZetaPrimitives primitives;
   @override
-  Color get disabledColor => primitives.cool.shade30;
+  Color get disabled => primitives.cool.shade30;
 }
 
 /// Implementation of ZetaSemanticDefaultColors
@@ -840,7 +840,7 @@ final class ZetaSemanticMainColorsAAA implements ZetaSemanticMainColors {
   @override
   Color get inverse => primitives.pure.shade0;
   @override
-  Color get disabledColor => primitives.cool.shade60;
+  Color get disabled => primitives.cool.shade60;
   @override
   Color get primary => primitives.blue.shade80;
   @override
@@ -872,7 +872,7 @@ final class ZetaSemanticBorderColorsAAA implements ZetaSemanticBorderColors {
   @override
   Color get selected => primitives.cool.shade90;
   @override
-  Color get disabledColor => primitives.cool.shade20;
+  Color get disabled => primitives.cool.shade20;
   @override
   Color get pure => primitives.pure.shade0;
   @override
@@ -910,7 +910,7 @@ final class ZetaSemanticSurfaceColorsAAA implements ZetaSemanticSurfaceColors {
   @override
   Color get selectedHover => primitives.blue.shade20;
   @override
-  Color get disabledColor => primitives.cool.shade30;
+  Color get disabled => primitives.cool.shade30;
   @override
   Color get cool => primitives.cool.shade10;
   @override
@@ -1020,7 +1020,7 @@ final class ZetaSemanticDisabledColorsAAA implements ZetaSemanticDisabledColors 
   @override
   final ZetaPrimitives primitives;
   @override
-  Color get disabledColor => primitives.cool.shade30;
+  Color get disabled => primitives.cool.shade30;
 }
 
 /// Implementation of ZetaSemanticDefaultColors

@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
+import '../../generated/generated.dart';
 import 'color_extensions.dart';
 import 'color_scheme.dart';
 import 'color_swatch.dart';
@@ -12,23 +13,23 @@ import 'contrast.dart';
 /// A customizable, token-based color palette, adapting Zeta colors to Flutter's colorScheme.
 /// {@category Theme}
 @immutable
-class ZetaColors extends Equatable {
+class ZetaColors extends Equatable implements ZetaColorSemantics {
   /// Default constructor for instance of [ZetaColors].
   ZetaColors({
-    this.brightness = Brightness.light,
-    this.contrast = ZetaContrast.aa,
-    this.white = ZetaColorBase.white,
-    this.black = ZetaColorBase.black,
-    ZetaColorSwatch? primary,
-    ZetaColorSwatch? secondary,
-    ZetaColorSwatch? error,
-    ZetaColorSwatch? cool,
-    ZetaColorSwatch? warm,
-    ZetaColorSwatch? pure,
-    Color? surfacePrimary,
-    Color? surfaceSecondary,
-    Color? surfaceTertiary,
-    bool adjust = true,
+    @Deprecated('Removed in v1.0.0') this.brightness = Brightness.light,
+    @Deprecated('Removed in v1.0.0') this.contrast = ZetaContrast.aa,
+    @Deprecated('Removed in v1.0.0') this.white = ZetaColorBase.white,
+    @Deprecated('Removed in v1.0.0') this.black = ZetaColorBase.black,
+    @Deprecated('Removed in v1.0.0') ZetaColorSwatch? primary,
+    @Deprecated('Removed in v1.0.0') ZetaColorSwatch? secondary,
+    @Deprecated('Removed in v1.0.0') ZetaColorSwatch? error,
+    @Deprecated('Removed in v1.0.0') ZetaColorSwatch? cool,
+    @Deprecated('Removed in v1.0.0') ZetaColorSwatch? warm,
+    @Deprecated('Removed in v1.0.0') ZetaColorSwatch? pure,
+    @Deprecated('Removed in v1.0.0') Color? surfacePrimary,
+    @Deprecated('Removed in v1.0.0') Color? surfaceSecondary,
+    @Deprecated('Removed in v1.0.0') Color? surfaceTertiary,
+    @Deprecated('Removed in v1.0.0') bool adjust = true,
   })  : primary = _adjustedValue(primary, ZetaColorBase.blue, adjust, brightness, contrast),
         secondary = _adjustedValue(secondary, primary ?? ZetaColorBase.yellow, adjust, brightness, contrast),
         error = _adjustedValue(error, ZetaColorBase.red, adjust, brightness, contrast),
@@ -139,9 +140,11 @@ class ZetaColors extends Equatable {
   /// Constructor Fields
 
   /// Represents the brightness value.
+  @Deprecated('Removed in v1.0.0')
   final Brightness brightness;
 
   /// Represents the Zeta accessibility standard.
+  @Deprecated('Removed in v1.0.0')
   final ZetaContrast contrast;
 
   /// Primary color swatch.
@@ -535,21 +538,8 @@ class ZetaColors extends Equatable {
   final ZetaColorSwatch pink;
 
   /// True if current [ZetaColors] object uses dark mode colors.
+  @Deprecated('Removed in v1.0.0')
   bool get isDarkMode => brightness == Brightness.dark;
-
-  /// List of colorful colors.
-  List<ZetaColorSwatch> get rainbow => [red, orange, yellow, green, blue, teal, pink];
-
-  /// Map of colorful colors.
-  Map<String, ZetaColorSwatch> get rainbowMap => {
-        'red': red,
-        'orange': orange,
-        'yellow': yellow,
-        'green': green,
-        'blue': blue,
-        'teal': teal,
-        'pink': pink,
-      };
 
   /// Helper function to adjust color swatch values based on brightness and contrast
   static ZetaColorSwatch _adjustedValue(
@@ -655,6 +645,26 @@ class ZetaColors extends Equatable {
         surfaceSecondary,
         surfaceTertiary,
       ];
+
+  @override
+  // TODO(colors): implement border
+  ZetaSemanticBorderColors get border => ZetaSemanticBorderColorsAA(primitives: primitives);
+
+  @override
+  // TODO(colors): implement main
+  ZetaSemanticMainColors get main => ZetaSemanticMainColorsAA(primitives: primitives);
+
+  @override
+  // TODO(colors): implement primitives
+  ZetaPrimitives get primitives => brightness == Brightness.dark ? ZetaDarkPrimitive() : ZetaLightPrimitive();
+
+  @override
+  // TODO(colors): implement state
+  ZetaSemanticStateColors get state => ZetaSemanticStateColorsAA(primitives: primitives);
+
+  @override
+  // TODO(colors): implement surface
+  ZetaSemanticSurfaceColors get surface => ZetaSemanticSurfaceColorsAA(primitives: primitives);
 }
 
 enum _ZetaColorProperties {

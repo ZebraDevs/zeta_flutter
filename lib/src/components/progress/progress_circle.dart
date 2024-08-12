@@ -122,7 +122,7 @@ class _ZetaProgressCircleState extends ZetaProgressState<ZetaProgressCircle> {
                                       borderRadius: Zeta.of(context).radii.full,
                                       child: Container(
                                         decoration: BoxDecoration(
-                                          color: colors.surfaceHover,
+                                          color: colors.surface.hover,
                                           borderRadius: Zeta.of(context).radii.full,
                                         ),
                                         padding: EdgeInsets.all(Zeta.of(context).spacing.small),
@@ -193,7 +193,7 @@ class _CirclePainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     if (rounded) _paint.strokeCap = StrokeCap.round;
-    final color = Zeta.of(context).colors.primary;
+    final color = Zeta.of(context).colors.main.primary;
     final strokeWidth = Zeta.of(context).spacing.minimum;
     if (_paint.color != color) _paint.color = color;
     if (_paint.strokeWidth != strokeWidth) _paint.strokeWidth = strokeWidth;

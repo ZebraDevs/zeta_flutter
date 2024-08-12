@@ -59,7 +59,7 @@ class ZetaTag extends ZetaStatelessWidget {
           if (direction == ZetaTagDirection.left) _buildCustomPaint(context),
           Container(
             decoration: BoxDecoration(
-              color: Zeta.of(context).colors.surfaceHover,
+              color: Zeta.of(context).colors.main.light,
               borderRadius: _getBorderRadius(context),
             ),
             height: containerSize.height,
@@ -85,24 +85,19 @@ class ZetaTag extends ZetaStatelessWidget {
 
   BorderRadius? _getBorderRadius(BuildContext context) {
     if (!context.rounded) return null;
-    if (direction == ZetaTagDirection.left) {
-      return const BorderRadius.only(
-        topRight: Radius.circular(ZetaSpacingBase.x0_5),
-        bottomRight: Radius.circular(ZetaSpacingBase.x0_5),
-      );
-    } else {
-      return const BorderRadius.only(
-        topLeft: Radius.circular(ZetaSpacingBase.x0_5),
-        bottomLeft: Radius.circular(ZetaSpacingBase.x0_5),
-      );
-    }
+    return Zeta.of(context).radii.minimal.copyWith(
+          topLeft: direction == ZetaTagDirection.right ? null : Radius.zero,
+          bottomLeft: direction == ZetaTagDirection.right ? null : Radius.zero,
+          topRight: direction == ZetaTagDirection.left ? null : Radius.zero,
+          bottomRight: direction == ZetaTagDirection.left ? null : Radius.zero,
+        );
   }
 
   Widget _buildCustomPaint(BuildContext context) {
     return CustomPaint(
       size: Size(Zeta.of(context).spacing.medium, Zeta.of(context).spacing.xl_3),
       painter: _TagPainter(
-        color: Zeta.of(context).colors.surfaceHover,
+        color: Zeta.of(context).colors.main.light,
         direction: direction,
         rounded: context.rounded,
       ),

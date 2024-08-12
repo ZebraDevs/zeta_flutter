@@ -142,7 +142,7 @@ class ZetaNavigationBar extends ZetaStatelessWidget {
           _generateNavigationItemRow(leftItems, context),
           if (dividerIndex != null)
             Container(
-              color: colors.borderSubtle,
+              color: colors.border.subtle,
               width: _navigationItemBorderWidth,
               height: Zeta.of(context).spacing.xl_7,
             ),
@@ -164,8 +164,8 @@ class ZetaNavigationBar extends ZetaStatelessWidget {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: Zeta.of(context).spacing.medium),
       decoration: BoxDecoration(
-        color: colors.surfacePrimary,
-        border: Border(top: BorderSide(color: colors.borderSubtle)),
+        color: colors.surface.defaultColor,
+        border: Border(top: BorderSide(color: colors.border.subtle)),
       ),
       child: Semantics(
         child: child,
@@ -199,12 +199,13 @@ class _NavigationItem extends ZetaStatelessWidget {
   final VoidCallback onTap;
   final BuildContext context;
 
-  Widget _getBadge(ZetaColors colors) {
+  Widget _getBadge(ZetaSemanticColors colors) {
     return Positioned(
+      top: Zeta.of(context).spacing.minimum,
       right: Zeta.of(context).spacing.minimum,
       child: DecoratedBox(
         decoration: BoxDecoration(
-          color: colors.surfacePrimary,
+          color: colors.surface.primary,
           borderRadius: Zeta.of(context).radii.full,
         ),
         child: item.badge?.copyWith(
@@ -222,10 +223,10 @@ class _NavigationItem extends ZetaStatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = Zeta.of(context).colors;
-    final elementColor = selected ? colors.primary : colors.textSubtle;
+    final elementColor = selected ? colors.surface.primary : colors.main.subtle;
 
     return Material(
-      color: colors.surfacePrimary,
+      color: colors.surface.defaultColor,
       child: InkWell(
         borderRadius: context.rounded ? Zeta.of(context).radii.rounded : Zeta.of(context).radii.none,
         onTap: onTap,
@@ -247,12 +248,9 @@ class _NavigationItem extends ZetaStatelessWidget {
                   height: Zeta.of(context).spacing.xl_4 - _navigationItemBorderWidth,
                   child: Stack(
                     children: [
-                      Positioned(
-                        left: ZetaSpacingBase.x2_5,
-                        top: Zeta.of(context).spacing.small - _navigationItemBorderWidth,
-                        right: ZetaSpacingBase.x2_5,
+                      Center(
                         child: ZetaIcon(item.icon, color: elementColor, size: Zeta.of(context).spacing.xl_2),
-                      ),
+                      ).paddingTop(Zeta.of(context).spacing.small),
                       if (item.badge != null) _getBadge(colors),
                     ],
                   ),

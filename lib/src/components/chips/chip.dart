@@ -120,7 +120,7 @@ class _ZetaChipState extends State<ZetaChip> {
   @override
   Widget build(BuildContext context) {
     final colors = Zeta.of(context).colors;
-    final foregroundColor = selected ? colors.textInverse : colors.textDefault;
+    final foregroundColor = selected ? colors.main.inverse : colors.main.defaultColor;
 
     return ZetaRoundedScope(
       rounded: context.rounded,
@@ -164,13 +164,18 @@ class _ZetaChipState extends State<ZetaChip> {
     if (widget.trailing != null) {
       if (widget.trailing.runtimeType == IconButton) {
         return Zeta.of(context).spacing.none;
+      } else {
+        return Zeta.of(context).spacing.small;
       }
-      return ZetaSpacingBase.x2_5;
     }
-    return Zeta.of(context).spacing.medium;
+    return Zeta.of(context).spacing.large;
   }
 
-  ValueListenableBuilder<Set<WidgetState>> child(ZetaColors colors, Color foregroundColor, {bool isDragging = false}) {
+  ValueListenableBuilder<Set<WidgetState>> child(
+    ZetaSemanticColors colors,
+    Color foregroundColor, {
+    bool isDragging = false,
+  }) {
     return ValueListenableBuilder(
       valueListenable: _controller,
       builder: (context, states, child) {
@@ -191,7 +196,7 @@ class _ZetaChipState extends State<ZetaChip> {
             duration: Durations.short3,
             height: Zeta.of(context).spacing.xl_5,
             padding: EdgeInsets.fromLTRB(
-              widget.leading != null ? ZetaSpacingBase.x2_5 : Zeta.of(context).spacing.medium,
+              widget.leading != null ? Zeta.of(context).spacing.small : Zeta.of(context).spacing.medium,
               0,
               _trailingPadding,
               0,
@@ -199,28 +204,30 @@ class _ZetaChipState extends State<ZetaChip> {
             decoration: BoxDecoration(
               color: () {
                 if (states.contains(WidgetState.disabled)) {
-                  return colors.surfaceDisabled;
+                  return colors.surface.disabled;
                 }
                 if (selected) {
                   if (states.contains(WidgetState.hovered)) {
-                    return colors.borderHover;
+                    return colors.border.hover;
                   }
-                  return colors.surfaceDefaultInverse;
+                  return colors.surface.defaultInverse;
                 }
                 if (states.contains(WidgetState.pressed) || isDragging) {
-                  return colors.surfaceSelected;
+                  return colors.surface.selected;
                 }
                 if (states.contains(WidgetState.hovered)) {
-                  return colors.surfaceHover;
+                  return colors.surface.hover;
                 }
-                return colors.surfacePrimary;
+                return colors.surface.defaultColor;
               }(),
               borderRadius: rounded ? Zeta.of(context).radii.full : Zeta.of(context).radii.none,
               border: Border.fromBorderSide(
                 BorderSide(
-                  color: _controller.value.contains(WidgetState.focused) ? colors.blue.shade50 : colors.borderDefault,
+                  color: _controller.value.contains(WidgetState.focused)
+                      ? colors.border.primary
+                      : colors.border.defaultColor,
                   width: _controller.value.contains(WidgetState.focused)
-                      ? ZetaSpacingBase.x0_5
+                      ? ZetaBorderTemp.borderWidth
                       : !selected
                           ? 1
                           : 0,
@@ -237,7 +244,7 @@ class _ZetaChipState extends State<ZetaChip> {
                     child: (selected
                         ? ZetaIcon(
                             ZetaIcons.check_mark,
-                            color: widget.selected! ? colors.iconInverse : Colors.transparent,
+                            color: widget.selected! ? colors.main.inverse : Colors.transparent,
                           )
                         : const Nothing()),
                   )

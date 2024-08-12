@@ -3,7 +3,7 @@ import 'package:zeta_example/widgets.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 class ChatItemExample extends StatelessWidget {
-  static const String name = 'Chat Item';
+  static const String name = 'ChatItem';
 
   const ChatItemExample({Key? key}) : super(key: key);
 

@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
@@ -24,14 +25,19 @@ Widget progressBarUseCase(BuildContext context) => WidgetbookScaffold(
     );
 
 Widget progressCircleUseCase(BuildContext context) => WidgetbookScaffold(
-      builder: (context, _) => ZetaProgressCircle(
-        progress: context.knobs.double.slider(label: 'Progress', min: 0, max: 1, initialValue: 0.5).toDouble(),
-        size: context.knobs.list(
-          initialOption: ZetaCircleSizes.xl,
-          label: 'Size',
-          options: ZetaCircleSizes.values,
-          labelBuilder: enumLabelBuilder,
-        ),
-        onCancel: context.knobs.boolean(label: "Can Cancel") ? () {} : null,
+      builder: (context, _) => Column(
+        children: [
+          // CircularProgressIndicator(),
+          ZetaProgressCircle(
+            // progress: context.knobs.double.slider(label: 'Progress', min: 0, max: 1, initialValue: 0.5).toDouble(),
+            size: context.knobs.list(
+              initialOption: ZetaCircleSizes.xl,
+              label: 'Size',
+              options: ZetaCircleSizes.values,
+              labelBuilder: enumLabelBuilder,
+            ),
+            onCancel: context.knobs.boolean(label: "Can Cancel") ? () {} : null,
+          ),
+        ],
       ),
     );

@@ -110,8 +110,11 @@ class ZetaFAB extends StatefulWidget {
 class _ZetaFABState extends State<ZetaFAB> {
   @override
   Widget build(BuildContext context) {
-    final colors = widget.type.colors(context);
-    final backgroundColor = widget.type == ZetaFabType.inverse ? colors.shade80 : colors.shade60;
+    final colors = Zeta.of(context).colors;
+    final Color backgroundColor = widget.type.backgroundColor(colors);
+    final Color foregroundColor = widget.type.foregroundColor(colors);
+    final Color backgroundColorHover = widget.type.hoverColor(colors);
+    final Color backgroundColorSelected = widget.type.selectedColor(colors);
 
     return FilledButton(
       onPressed: widget.onPressed,
@@ -123,13 +126,13 @@ class _ZetaFABState extends State<ZetaFAB> {
         ),
         backgroundColor: WidgetStateProperty.resolveWith((states) {
           if (states.contains(WidgetState.disabled)) {
-            return Zeta.of(context).colors.surfaceDisabled;
+            return colors.state.disabled.disabled;
           }
           if (states.contains(WidgetState.pressed)) {
-            return colors.selected;
+            return backgroundColorSelected;
           }
           if (states.contains(WidgetState.hovered)) {
-            return colors.hover;
+            return backgroundColorHover;
           }
           return backgroundColor;
         }),
@@ -137,7 +140,7 @@ class _ZetaFABState extends State<ZetaFAB> {
           (Set<WidgetState> states) {
             if (states.contains(WidgetState.focused)) {
               // TODO(UX-1134): This removes a defualt border when focused, rather than adding a second border when focused.
-              return BorderSide(color: Zeta.of(context).colors.blue.shade50, width: ZetaSpacingBase.x0_5);
+              return ZetaBorderTemp.focusBorder(context);
             }
             return null;
           },
@@ -147,16 +150,23 @@ class _ZetaFABState extends State<ZetaFAB> {
         duration: ZetaAnimationLength.normal,
         child: Padding(
           padding: widget.expanded
-              ? EdgeInsets.symmetric(horizontal: ZetaSpacingBase.x3_5, vertical: Zeta.of(context).spacing.medium)
+              ? EdgeInsets.symmetric(
+                  horizontal: Zeta.of(context).spacing.large,
+                  vertical: Zeta.of(context).spacing.medium,
+                )
               : EdgeInsets.all(widget.size.padding(context)),
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              ZetaIcon(widget.icon, size: widget.size.iconSize(context)),
+              ZetaIcon(
+                widget.icon,
+                size: widget.size.iconSize(context),
+                color: foregroundColor,
+              ),
               if (widget.expanded && widget.label != null)
                 Row(
                   mainAxisSize: MainAxisSize.min,
-                  children: [Text(widget.label!, style: ZetaTextStyles.labelLarge)],
+                  children: [Text(widget.label!, style: ZetaTextStyles.labelLarge.apply(color: foregroundColor))],
                 ),
             ].divide(SizedBox(width: Zeta.of(context).spacing.small)).toList(),
           ),
@@ -167,15 +177,46 @@ class _ZetaFABState extends State<ZetaFAB> {
 }
 
 extension on ZetaFabType {
-  ZetaColorSwatch colors(BuildContext context) {
-    final zetaColors = Zeta.of(context).colors;
+  Color backgroundColor(ZetaColorSemantics colors) {
     switch (this) {
       case ZetaFabType.primary:
-        return zetaColors.primary;
+        return colors.state.primary.enabled;
       case ZetaFabType.secondary:
-        return zetaColors.secondary;
+        return colors.state.secondary.enabled;
       case ZetaFabType.inverse:
-        return zetaColors.cool;
+        return colors.state.inverse.enabled;
+    }
+  }
+
+  Color foregroundColor(ZetaColorSemantics colors) {
+    switch (this) {
+      case ZetaFabType.secondary:
+        return colors.main.defaultColor;
+      case ZetaFabType.primary:
+      case ZetaFabType.inverse:
+        return colors.main.inverse;
+    }
+  }
+
+  Color hoverColor(ZetaColorSemantics colors) {
+    switch (this) {
+      case ZetaFabType.primary:
+        return colors.state.primary.hover;
+      case ZetaFabType.secondary:
+        return colors.state.secondary.hover;
+      case ZetaFabType.inverse:
+        return colors.state.inverse.hover;
+    }
+  }
+
+  Color selectedColor(ZetaColorSemantics colors) {
+    switch (this) {
+      case ZetaFabType.primary:
+        return colors.state.primary.selected;
+      case ZetaFabType.secondary:
+        return colors.state.secondary.selected;
+      case ZetaFabType.inverse:
+        return colors.state.inverse.selected;
     }
   }
 }
@@ -210,6 +251,6 @@ extension on ZetaFabSize {
   }
 
   double padding(BuildContext context) {
-    return this == ZetaFabSize.small ? Zeta.of(context).spacing.large : ZetaSpacingBase.x7_5;
+    return this == ZetaFabSize.small ? Zeta.of(context).spacing.large : Zeta.of(context).spacing.minimum * 7.5;
   }
 }

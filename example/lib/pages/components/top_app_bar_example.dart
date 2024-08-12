@@ -43,7 +43,7 @@ class _TopAppBarExampleState extends State<TopAppBarExample> {
     return ExampleScaffold(
       name: TopAppBarExample.name,
       child: ColoredBox(
-        color: colors.surfaceSecondary,
+        color: colors.surface.warm,
         child: SingleChildScrollView(
           child: Column(
             children: [
@@ -178,7 +178,7 @@ class _TopAppBarExampleState extends State<TopAppBarExample> {
                       child: Container(
                         width: 800,
                         height: 800,
-                        color: Zeta.of(context).colors.surfaceSecondary,
+                        color: Zeta.of(context).colors.surface.selectedHover,
                         child: CustomPaint(
                           painter: Painter(zeta: Zeta.of(context)),
                           size: Size(800, 800),
@@ -220,7 +220,7 @@ class _TopAppBarExampleState extends State<TopAppBarExample> {
                       child: Container(
                         width: 800,
                         height: 800,
-                        color: Zeta.of(context).colors.surfaceSecondary,
+                        color: Zeta.of(context).colors.surface.selectedHover,
                         child: CustomPaint(
                           painter: Painter(zeta: Zeta.of(context)),
                           size: Size(800, 800),
@@ -249,7 +249,7 @@ class Painter extends CustomPainter {
       var p1 = Offset(i, -10);
       var p2 = Offset(800 + i, 810);
       var paint = Paint()
-        ..color = zeta.colors.primary
+        ..color = zeta.colors.surface.defaultColor
         ..strokeWidth = zeta.spacing.minimum;
       canvas.drawLine(p1, p2, paint);
     }

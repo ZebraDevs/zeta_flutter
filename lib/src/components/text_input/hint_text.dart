@@ -30,12 +30,12 @@ class ZetaHintText extends ZetaStatelessWidget {
 
     final text = error && !disabled ? errorText : hintText;
 
-    Color elementColor = colors.textSubtle;
+    Color elementColor = colors.main.subtle;
 
     if (disabled) {
-      elementColor = colors.textDisabled;
+      elementColor = colors.main.disabled;
     } else if (error) {
-      elementColor = colors.error;
+      elementColor = colors.main.negative;
     }
 
     if (text == null || text.isEmpty) {

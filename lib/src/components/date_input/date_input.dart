@@ -65,7 +65,7 @@ class ZetaDateInput extends ZetaFormField<DateTime> {
                       onTap: state.clear,
                       disabled: disabled,
                       size: size,
-                      color: colors.iconSubtle,
+                      color: colors.main.subtle,
                       semanticLabel: clearSemanticLabel,
                     ),
                   InputIconButton(
@@ -73,7 +73,7 @@ class ZetaDateInput extends ZetaFormField<DateTime> {
                     onTap: state.pickDate,
                     disabled: disabled,
                     size: size,
-                    color: colors.iconDefault,
+                    color: colors.main.defaultColor,
                     semanticLabel: datePickerSemanticLabel,
                   ),
                 ],
@@ -233,14 +233,14 @@ class _ZetaDateInputState extends FormFieldState<DateTime> {
       builder: (BuildContext context, Widget? child) {
         return Theme(
           data: Theme.of(context).copyWith(
-            dividerTheme: DividerThemeData(color: colors.borderSubtle),
+            dividerTheme: DividerThemeData(color: colors.border.subtle),
             datePickerTheme: DatePickerThemeData(
               shape: RoundedRectangleBorder(
                 borderRadius: rounded ? Zeta.of(context).radii.rounded : Zeta.of(context).radii.none,
               ),
               headerHeadlineStyle: ZetaTextStyles.titleLarge,
               headerHelpStyle: ZetaTextStyles.labelLarge,
-              dividerColor: colors.borderSubtle,
+              dividerColor: colors.border.subtle,
               dayStyle: ZetaTextStyles.bodyMedium,
             ),
           ),

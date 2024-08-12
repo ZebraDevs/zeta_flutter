@@ -217,7 +217,7 @@ class _ZetaPaginationState extends State<ZetaPagination> {
         height: Zeta.of(context).spacing.xl_6,
 
         decoration: BoxDecoration(
-          border: Border.all(color: colors.borderSubtle),
+          border: Border.all(color: colors.border.subtle),
           borderRadius: rounded ? Zeta.of(context).radii.minimal : Zeta.of(context).radii.none,
         ),
         // TODO(UX-1135): Replace with Zeta Dropdown
@@ -228,7 +228,7 @@ class _ZetaPaginationState extends State<ZetaPagination> {
           icon: const ZetaIcon(ZetaIcons.expand_more).paddingStart(Zeta.of(context).spacing.small),
           underline: const Nothing(),
           style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                color: colors.textSubtle,
+                color: colors.main.subtle,
               ),
           padding: EdgeInsets.symmetric(
             horizontal: Zeta.of(context).spacing.medium,
@@ -318,16 +318,16 @@ class _PaginationItem extends ZetaStatelessWidget {
         maxLines: 1,
         style: Theme.of(context).textTheme.bodyMedium?.copyWith(
               color: disabled
-                  ? colors.textDisabled
+                  ? colors.main.disabled
                   : selected
-                      ? colors.textInverse
-                      : colors.textDefault,
+                      ? colors.main.inverse
+                      : colors.main.defaultColor,
             ),
       );
     } else if (icon != null) {
       child = ZetaIcon(
         icon,
-        color: disabled ? colors.iconDisabled : colors.iconDefault,
+        color: disabled ? colors.main.disabled : colors.main.defaultColor,
         semanticLabel: semanticLabel,
       );
     }
@@ -347,15 +347,14 @@ class _PaginationItem extends ZetaStatelessWidget {
         child: Material(
           borderRadius: rounded ? Zeta.of(context).radii.minimal : Zeta.of(context).radii.none,
           color: disabled
-              ? colors.surfaceDisabled
+              ? colors.state.disabled.disabled
               : selected
-                  ? colors.cool[100]
-                  : colors.surfacePrimary,
+                  ? colors.state.inverse.selected
+                  : colors.state.defaultColor.enabled,
           child: InkWell(
             onTap: disabled ? null : onPressed,
             borderRadius: rounded ? Zeta.of(context).radii.minimal : Zeta.of(context).radii.none,
-            highlightColor: selected ? colors.cool[100] : colors.surfaceSelected,
-            hoverColor: selected ? colors.cool[100] : colors.surfaceHover,
+            hoverColor: selected ? colors.state.inverse.hover : colors.state.defaultColor.hover,
             enableFeedback: false,
             child: Container(
               alignment: Alignment.center,

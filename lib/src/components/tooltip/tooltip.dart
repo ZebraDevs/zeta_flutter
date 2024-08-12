@@ -50,14 +50,14 @@ class ZetaTooltip extends ZetaStatelessWidget {
   final EdgeInsets? padding;
 
   /// The color of the tooltip.
-  /// Default is `zeta.colors.textDefault`.
+  /// Default is `zeta.colors.main.defaultColor`.
   final Color? color;
 
   /// The text style of the tooltip.
   /// Default is:
   /// ```
   /// ZetaTextStyles.bodyXSmall.copyWith(
-  ///   color: zeta.colors.textInverse,
+  ///   color: zeta.colors.main.inverse,
   ///   fontWeight: FontWeight.w500,
   /// ),
   /// ```
@@ -73,7 +73,7 @@ class ZetaTooltip extends ZetaStatelessWidget {
   @override
   Widget build(BuildContext context) {
     final zeta = Zeta.of(context);
-    final color = this.color ?? zeta.colors.textDefault;
+    final color = this.color ?? zeta.colors.main.defaultColor;
     final horizontalArrowWidth =
         [ZetaTooltipArrowDirection.left, ZetaTooltipArrowDirection.right].contains(arrowDirection)
             ? _horizontalArrowSize.width
@@ -131,7 +131,7 @@ class ZetaTooltip extends ZetaStatelessWidget {
                               child: DefaultTextStyle(
                                 style: textStyle ??
                                     ZetaTextStyles.bodyXSmall.copyWith(
-                                      color: zeta.colors.textInverse,
+                                      color: zeta.colors.main.inverse,
                                       fontWeight: FontWeight.w500,
                                     ),
                                 child: child,

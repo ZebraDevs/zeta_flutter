@@ -13,48 +13,48 @@ class ColorBody extends StatelessWidget {
       final colors = Zeta.of(context).colors;
 
       final Map<String, ZetaColorSwatch> swatches = {
-        'Blue': colors.blue,
-        'Green': colors.green,
-        'Red': colors.red,
-        'Orange': colors.orange,
-        'Purple': colors.purple,
-        'Yellow': colors.yellow,
-        'Teal': colors.teal,
-        'Pink': colors.pink,
-        'Grey Warm': colors.warm,
-        'Grey Cool': colors.cool,
+        // 'Blue': colors.blue,
+        // 'Green': colors.green,
+        // 'Red': colors.red,
+        // 'Orange': colors.orange,
+        // 'Purple': colors.purple,
+        // 'Yellow': colors.yellow,
+        // 'Teal': colors.teal,
+        // 'Pink': colors.pink,
+        // 'Grey Warm': colors.warm,
+        // 'Grey Cool': colors.cool,
       };
       final Map<String, Color> textIcon = {
-        'textDefault': colors.textDefault,
-        'textSubtle': colors.textSubtle,
-        'textDisabled': colors.textDisabled,
-        'textInverse': colors.textInverse,
+        'main.defaultColor': colors.main.defaultColor,
+        'main.subtle': colors.main.subtle,
+        'main.disabled': colors.main.disabled,
+        'main.inverse': colors.main.inverse,
       };
       final Map<String, Color> border = {
-        'borderDefault': colors.borderDefault,
-        'borderSubtle': colors.borderSubtle,
-        'borderDisabled': colors.borderDisabled,
-        'borderSelected': colors.borderSelected,
+        'border.defaultColor': colors.border.defaultColor,
+        'border.subtle': colors.border.subtle,
+        'border.disabled': colors.border.disabled,
+        'border.selected': colors.border.selected,
       };
       final Map<String, Color> backdrop = {
-        'surfacePrimary': colors.surfacePrimary,
-        'surfaceDisabled': colors.surfaceDisabled,
-        'surfaceHover': colors.surfaceHover,
-        'surfaceSecondary': colors.surfaceSecondary,
-        'surfaceTertiary': colors.surfaceTertiary,
-        'surfaceSelectedHover': colors.surfaceSelectedHover,
-        'surfaceSelected': colors.surfaceSelected,
+        'surface.primary': colors.surface.primary,
+        'surface.disabled': colors.surface.disabled,
+        'surface.hover': colors.surface.hover,
+        'surface.secondary': colors.surface.secondary,
+        // 'surfaceTertiary': colors.surfaceTertiary,
+        'surface.selectedHover': colors.surface.selectedHover,
+        'surface.selected': colors.surface.selected,
       };
       final Map<String, Color> alerts = {
-        'positive': colors.surfacePositive,
-        'negative': colors.surfaceNegative,
-        'warning': colors.surfaceWarning,
-        'info': colors.surfaceInfo,
+        'positive': colors.surface.positive,
+        'negative': colors.surface.negative,
+        'warning': colors.surface.warning,
+        'info': colors.surface.info,
       };
 
       return DefaultTextStyle(
         style: ZetaTextStyles.displayMedium.apply(
-          color: Zeta.of(context).colors.cool,
+          color: Zeta.of(context).colors.main.defaultColor,
           decoration: TextDecoration.none,
         ),
         child: Container(

@@ -140,7 +140,7 @@ class _ZetaSegmentedControlState<T> extends State<ZetaSegmentedControl<T>>
             child: Container(
               padding: EdgeInsets.all(Zeta.of(context).spacing.minimum),
               decoration: BoxDecoration(
-                color: colors.surfaceDisabled,
+                color: colors.surface.disabled,
                 borderRadius: rounded ? Zeta.of(context).radii.minimal : Zeta.of(context).radii.none,
               ),
               child: AnimatedBuilder(
@@ -148,7 +148,7 @@ class _ZetaSegmentedControlState<T> extends State<ZetaSegmentedControl<T>>
                 builder: (BuildContext context, Widget? child) {
                   return _SegmentedControlRenderWidget<T>(
                     highlightedIndex: highlightedIndex,
-                    thumbColor: colors.surfacePrimary,
+                    thumbColor: colors.surface.primary,
                     thumbScale: _thumbScaleAnimation.value,
                     rounded: rounded,
                     state: this,
@@ -228,7 +228,7 @@ class _SegmentState<T> extends State<_Segment<T>> with TickerProviderStateMixin<
                 data: IconThemeData(size: Zeta.of(context).spacing.xl),
                 child: DefaultTextStyle(
                   style: ZetaTextStyles.labelMedium.copyWith(
-                    color: colors.textDefault,
+                    color: colors.main.defaultColor,
                   ),
                   child: Padding(
                     padding: EdgeInsets.symmetric(

@@ -80,7 +80,7 @@ class _ChipExampleState extends State<ChipExample> {
               builder: (context, _, __) {
                 return Container(
                   padding: EdgeInsets.all(Zeta.of(context).spacing.medium),
-                  color: colors.surfaceSelectedHover,
+                  color: colors.surface.selectedHover,
                   height: 100,
                   width: 200,
                   child: Center(child: Text('Last chip dragged here: $chipType')),

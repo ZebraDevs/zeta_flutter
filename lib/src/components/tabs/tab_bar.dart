@@ -21,17 +21,17 @@ class ZetaTabBar extends TabBar {
           labelPadding: isScrollable ? null : EdgeInsets.zero,
           indicator: UnderlineTabIndicator(
             borderSide: BorderSide(
-              color: Zeta.of(context).colors.primary,
+              color: Zeta.of(context).colors.main.primary,
               width: onTap != null ? Zeta.of(context).spacing.minimum : Zeta.of(context).spacing.none,
             ),
             borderRadius: Zeta.of(context).radii.none,
           ),
           splashFactory: null,
           labelStyle: ZetaTextStyles.labelLarge.copyWith(
-            color: onTap != null ? Zeta.of(context).colors.textDefault : Zeta.of(context).colors.textDisabled,
+            color: onTap != null ? Zeta.of(context).colors.main.defaultColor : Zeta.of(context).colors.main.disabled,
           ),
           unselectedLabelStyle: ZetaTextStyles.labelLarge.copyWith(
-            color: onTap != null ? Zeta.of(context).colors.textSubtle : Zeta.of(context).colors.textDisabled,
+            color: onTap != null ? Zeta.of(context).colors.main.subtle : Zeta.of(context).colors.main.disabled,
           ),
         );
 }

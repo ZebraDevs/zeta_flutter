@@ -234,17 +234,18 @@ class _ZetaGroupButtonState extends State<ZetaGroupButton> {
   double get _padding => widget.isLarge ? Zeta.of(context).spacing.large : Zeta.of(context).spacing.medium;
 
   BorderSide _getBorderSide(
-    ZetaColors colors,
+    ZetaSemanticColors colors,
     bool finalButton,
   ) {
+    // TODO(UX-1200): Focus border does not work as expected.
     if (_controller.value.contains(WidgetState.focused)) {
-      return BorderSide(color: colors.blue.shade50, width: ZetaSpacingBase.x0_5);
+      return ZetaBorderTemp.focusBorder(context);
     }
     if (_controller.value.contains(WidgetState.disabled)) {
-      return BorderSide(color: colors.cool.shade40);
+      return BorderSide(color: colors.border.disabled);
     }
     return BorderSide(
-      color: finalButton ? colors.borderDefault : colors.borderSubtle,
+      color: finalButton ? colors.border.defaultColor : colors.border.subtle,
     );
   }
 
@@ -305,7 +306,7 @@ class _ZetaGroupButtonState extends State<ZetaGroupButton> {
           left: borderSide,
           bottom: borderSide,
           right: _controller.value.contains(WidgetState.focused)
-              ? BorderSide(color: colors.blue.shade50, width: 2)
+              ? BorderSide(color: colors.border.primary, width: 2)
               : (widget.isFinal)
                   ? borderSide
                   : BorderSide.none,
@@ -325,24 +326,24 @@ class _ZetaGroupButtonState extends State<ZetaGroupButton> {
             ),
             backgroundColor: WidgetStateProperty.resolveWith<Color?>((states) {
               if (states.contains(WidgetState.disabled)) {
-                return colors.surfaceDisabled;
+                return colors.surface.disabled;
               }
               if (states.contains(WidgetState.pressed)) {
-                return widget.isInverse ? colors.cool.shade100 : colors.primary.shade10;
+                return widget.isInverse ? colors.state.inverse.selected : colors.state.defaultColor.selected;
               }
               if (states.contains(WidgetState.hovered)) {
-                return widget.isInverse ? colors.cool.shade90 : colors.cool.shade20;
+                return widget.isInverse ? colors.state.inverse.hover : colors.surface.hover;
               }
-              if (widget.isInverse) return colors.cool.shade100;
+              if (widget.isInverse) return colors.state.inverse.enabled;
 
-              return colors.surfacePrimary;
+              return colors.surface.defaultColor;
             }),
             foregroundColor: WidgetStateProperty.resolveWith<Color?>((states) {
               if (states.contains(WidgetState.disabled)) {
-                return colors.textDisabled;
+                return colors.main.disabled;
               }
-              if (widget.isInverse) return colors.cool.shade100.onColor;
-              return colors.textDefault;
+              if (widget.isInverse) return colors.main.inverse;
+              return colors.main.defaultColor;
             }),
             elevation: WidgetStatePropertyAll(Zeta.of(context).spacing.none),
             padding: WidgetStateProperty.all(EdgeInsets.zero),

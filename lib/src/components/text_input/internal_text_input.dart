@@ -163,19 +163,19 @@ class InternalTextInput extends ZetaStatefulWidget {
 /// The current state of a [InternalTextInput]
 class InternalTextInputState extends State<InternalTextInput> {
   late final TextEditingController _controller;
-  ZetaColors get _colors => Zeta.of(context).colors;
+  ZetaSemanticColors get _colors => Zeta.of(context).colors;
 
   // TODO(UX-1143): refactor to use WidgetStateController
   bool _hovered = false;
 
   Color get _backgroundColor {
     if (widget.disabled) {
-      return _colors.surfaceDisabled;
+      return _colors.surface.disabled;
     }
     if (widget.errorText != null) {
-      return _colors.error.shade10;
+      return _colors.surface.negativeSubtle;
     }
-    return _colors.surfacePrimary;
+    return _colors.surface.defaultColor;
   }
 
   TextStyle get _baseTextStyle {
@@ -203,9 +203,9 @@ class InternalTextInputState extends State<InternalTextInput> {
   }
 
   TextStyle get _affixStyle {
-    Color color = _colors.textSubtle;
+    Color color = _colors.main.subtle;
     if (widget.disabled) {
-      color = _colors.textDisabled;
+      color = _colors.main.disabled;
     }
     return _baseTextStyle.copyWith(color: color);
   }
@@ -272,16 +272,24 @@ class InternalTextInputState extends State<InternalTextInput> {
   OutlineInputBorder _baseBorder(bool rounded) => OutlineInputBorder(
         borderRadius: widget.borderRadius ?? (rounded ? Zeta.of(context).radii.minimal : Zeta.of(context).radii.none),
         borderSide: BorderSide(
-          color: !widget.disabled ? (_hovered ? _colors.borderSelected : _colors.borderSubtle) : _colors.borderDefault,
+          color: !widget.disabled
+              ? (_hovered ? _colors.border.selected : _colors.border.subtle)
+              : _colors.border.defaultColor,
         ),
       );
 
   OutlineInputBorder _focusedBorder(bool rounded) => _baseBorder(rounded).copyWith(
-        borderSide: BorderSide(color: _colors.primary.shade50, width: ZetaSpacingBase.x0_5),
+        borderSide: BorderSide(
+          color: _colors.border.primary,
+          width: ZetaSpacingBase.x0_5,
+        ),
       ); // TODO(mikecoomber): change to colors.borderPrimary when added
 
   OutlineInputBorder _errorBorder(bool rounded) => _baseBorder(rounded).copyWith(
-        borderSide: BorderSide(color: _colors.error, width: ZetaSpacingBase.x0_5),
+        borderSide: BorderSide(
+          color: _colors.border.negative,
+          width: ZetaSpacingBase.x0_5,
+        ),
       );
 
   @override
@@ -337,7 +345,7 @@ class InternalTextInputState extends State<InternalTextInput> {
                       onChanged: widget.onChange,
                       onSubmitted: widget.onSubmit,
                       style: _baseTextStyle,
-                      cursorErrorColor: _colors.error,
+                      cursorErrorColor: _colors.main.negative,
                       obscureText: widget.obscureText,
                       focusNode: widget.focusNode,
                       decoration: InputDecoration(

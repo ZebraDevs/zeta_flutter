@@ -43,66 +43,79 @@ class ZetaInPageBanner extends ZetaStatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Zeta.of(context);
-    final colors = status.colorSwatch(context);
     final hasTitle = title != null;
     final rounded = context.rounded;
+    final Color backgroundColor = status.backgroundColor(theme.colors);
+    final Color borderColor = status.borderColor(theme.colors);
+    final Color iconColor = status.foregroundColor(theme.colors);
 
     return ZetaRoundedScope(
       rounded: rounded,
-      child: DecoratedBox(
+      child: Container(
         decoration: BoxDecoration(
-          color: colors.surface,
-          border: Border.all(color: colors.border),
+          color: backgroundColor,
+          border: Border.all(color: borderColor),
           borderRadius: rounded ? Zeta.of(context).radii.minimal : Zeta.of(context).radii.none,
         ),
-        child: Padding(
-          padding: const EdgeInsets.all(ZetaSpacingBase.x0_5),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding: EdgeInsetsDirectional.only(top: Zeta.of(context).spacing.medium, start: ZetaSpacingBase.x2_5),
-                child: ZetaIcon(
-                  customIcon ?? status.icon,
-                  size: Zeta.of(context).spacing.xl,
-                  color: status == ZetaWidgetStatus.neutral ? theme.colors.textDefault : colors.icon,
+        padding: EdgeInsetsDirectional.only(
+          bottom: Zeta.of(context).spacing.medium,
+          start: Zeta.of(context).spacing.medium,
+        ),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Expanded(
+              child: Padding(
+                padding: EdgeInsetsDirectional.only(
+                  top: Zeta.of(context).spacing.medium,
                 ),
-              ),
-              Expanded(
-                child: Column(
+                child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(height: Zeta.of(context).spacing.small),
-                    if (hasTitle)
-                      Text(
-                        title!,
-                        style: ZetaTextStyles.labelLarge,
-                      ).paddingBottom(Zeta.of(context).spacing.minimum),
-                    DefaultTextStyle(
-                      style: ZetaTextStyles.bodySmall.apply(color: theme.colors.textDefault),
-                      child: content,
+                    ZetaIcon(
+                      customIcon ?? status.icon,
+                      size: Zeta.of(context).spacing.xl,
+                      color: iconColor,
                     ),
-                    if (actions.isNotEmpty)
-                      Row(
-                        children: actions
-                            .map((e) => e.copyWith(size: ZetaWidgetSize.medium, type: ZetaButtonType.outlineSubtle))
-                            .divide(SizedBox.square(dimension: Zeta.of(context).spacing.small))
-                            .toList(),
-                      ).paddingTop(Zeta.of(context).spacing.large),
-                    const SizedBox(height: ZetaSpacingBase.x2_5),
+                    SizedBox(width: Zeta.of(context).spacing.small),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          if (hasTitle)
+                            Text(
+                              title!,
+                              style: ZetaTextStyles.labelLarge.copyWith(height: 20 / 16),
+                            ).paddingBottom(Zeta.of(context).spacing.minimum),
+                          DefaultTextStyle(
+                            style: ZetaTextStyles.bodySmall.apply(color: theme.colors.main.defaultColor),
+                            child: content,
+                          ),
+                          if (actions.isNotEmpty)
+                            Row(
+                              children: actions
+                                  .map(
+                                    (e) => e.copyWith(size: ZetaWidgetSize.medium, type: ZetaButtonType.outlineSubtle),
+                                  )
+                                  .divide(SizedBox.square(dimension: Zeta.of(context).spacing.small))
+                                  .toList(),
+                            ).paddingTop(Zeta.of(context).spacing.large),
+                        ],
+                      ),
+                    ),
                   ],
                 ),
               ),
-              if (onClose != null)
-                IconButton(
-                  onPressed: onClose,
-                  icon: ZetaIcon(
-                    ZetaIcons.close,
-                    size: Zeta.of(context).spacing.xl,
-                  ),
+            ),
+            if (onClose != null)
+              IconButton(
+                onPressed: onClose,
+                icon: ZetaIcon(
+                  ZetaIcons.close,
+                  size: Zeta.of(context).spacing.xl,
                 ),
-            ].divide(SizedBox.square(dimension: Zeta.of(context).spacing.small)).toList(),
-          ),
+              ),
+          ].divide(SizedBox.square(dimension: Zeta.of(context).spacing.small)).toList(),
         ),
       ),
     );
@@ -131,6 +144,57 @@ extension on ZetaWidgetStatus {
       case ZetaWidgetStatus.neutral:
       case ZetaWidgetStatus.info:
         return ZetaIcons.info;
+    }
+  }
+}
+
+/// Extensions on [ZetaWidgetStatus].
+extension on ZetaWidgetStatus {
+  /// Gets background color from [ZetaWidgetStatus].
+  Color backgroundColor(ZetaColorSemantics colors) {
+    switch (this) {
+      case ZetaWidgetStatus.info:
+        return colors.surface.infoSubtle;
+      case ZetaWidgetStatus.positive:
+        return colors.surface.positiveSubtle;
+      case ZetaWidgetStatus.warning:
+        return colors.surface.warningSubtle;
+      case ZetaWidgetStatus.negative:
+        return colors.surface.negativeSubtle;
+      case ZetaWidgetStatus.neutral:
+        return colors.surface.defaultColor;
+    }
+  }
+
+  /// Gets foreground color from [ZetaWidgetStatus].
+  Color foregroundColor(ZetaColorSemantics colors) {
+    switch (this) {
+      case ZetaWidgetStatus.info:
+        return colors.main.info;
+      case ZetaWidgetStatus.positive:
+        return colors.main.positive;
+      case ZetaWidgetStatus.warning:
+        return colors.main.warning;
+      case ZetaWidgetStatus.negative:
+        return colors.main.negative;
+      case ZetaWidgetStatus.neutral:
+        return colors.main.defaultColor;
+    }
+  }
+
+  /// Gets border color from [ZetaWidgetStatus].
+  Color borderColor(ZetaColorSemantics colors) {
+    switch (this) {
+      case ZetaWidgetStatus.info:
+        return colors.border.info;
+      case ZetaWidgetStatus.positive:
+        return colors.border.positive;
+      case ZetaWidgetStatus.warning:
+        return colors.border.warning;
+      case ZetaWidgetStatus.negative:
+        return colors.border.negative;
+      case ZetaWidgetStatus.neutral:
+        return colors.border.defaultColor;
     }
   }
 }

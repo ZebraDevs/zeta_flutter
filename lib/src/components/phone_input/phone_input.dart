@@ -88,7 +88,7 @@ class ZetaPhoneInput extends ZetaFormField<PhoneNumber> {
                 items: state._dropdownItems,
                 builder: (context, selectedItem, dropdowncontroller) {
                   final borderSide = BorderSide(
-                    color: disabled ? zeta.colors.borderDefault : zeta.colors.borderSubtle,
+                    color: disabled ? zeta.colors.border.defaultColor : zeta.colors.border.subtle,
                   );
 
                   return GestureDetector(
@@ -107,7 +107,7 @@ class ZetaPhoneInput extends ZetaFormField<PhoneNumber> {
                           top: borderSide,
                           bottom: borderSide,
                         ),
-                        color: disabled ? zeta.colors.surfaceDisabled : zeta.colors.surfaceDefault,
+                        color: disabled ? zeta.colors.surface.disabled : zeta.colors.surface.defaultColor,
                       ),
                       child: Column(
                         children: [
@@ -125,7 +125,7 @@ class ZetaPhoneInput extends ZetaFormField<PhoneNumber> {
                                 ),
                                 ZetaIcon(
                                   !dropdowncontroller.isOpen ? ZetaIcons.expand_more : ZetaIcons.expand_less,
-                                  color: !disabled ? zeta.colors.iconDefault : zeta.colors.iconDisabled,
+                                  color: !disabled ? zeta.colors.main.defaultColor : zeta.colors.main.disabled,
                                   size: zeta.spacing.xl,
                                 ),
                               ],

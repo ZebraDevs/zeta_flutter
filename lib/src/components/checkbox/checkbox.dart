@@ -219,7 +219,7 @@ class _CheckboxState extends State<ZetaInternalCheckbox> {
         ? const Nothing()
         : ZetaIcon(
             widget.useIndeterminate ? ZetaIcons.remove : ZetaIcons.check_mark,
-            color: widget.disabled ? theme.colors.iconDisabled : theme.colors.white,
+            color: widget.disabled ? theme.colors.main.disabled : theme.colors.main.inverse,
             size: ZetaSpacingBase.x3_5,
           );
 
@@ -235,11 +235,11 @@ class _CheckboxState extends State<ZetaInternalCheckbox> {
                 BoxShadow(
                   spreadRadius: 2,
                   blurStyle: BlurStyle.solid,
-                  color: theme.colors.blue.shade50,
+                  color: theme.colors.border.primary,
                 ),
             ],
             color: _getBackground(theme),
-            border: Border.all(color: _getBorderColor(theme), width: ZetaSpacingBase.x0_5),
+            border: Border.all(color: _getBorderColor(theme), width: Zeta.of(context).spacing.minimum / 2),
             borderRadius: rounded ? Zeta.of(context).radii.minimal : Zeta.of(context).radii.none,
           ),
           width: Zeta.of(context).spacing.xl,
@@ -258,12 +258,11 @@ class _CheckboxState extends State<ZetaInternalCheckbox> {
   }
 
   Color _getBackground(Zeta theme) {
-    final ZetaColorSwatch color = widget.error ? theme.colors.error : theme.colors.primary;
-    if (widget.disabled) return theme.colors.surfaceDisabled;
-    if (!_checked) return theme.colors.surfacePrimary;
-    if (_isHovered) return theme.colors.borderHover;
+    if (widget.disabled) return theme.colors.surface.disabled;
+    if (!_checked) return theme.colors.surface.defaultColor;
+    if (_isHovered) return theme.colors.main.defaultColor;
 
-    return color;
+    return theme.colors.main.primary;
   }
 
   Color _getBorderColor(Zeta theme) {
@@ -271,9 +270,9 @@ class _CheckboxState extends State<ZetaInternalCheckbox> {
       return _getBackground(theme);
     }
     if (_isHovered) {
-      return theme.colors.cool.shade90;
+      return theme.colors.border.hover;
     }
 
-    return theme.colors.cool.shade70;
+    return theme.colors.main.subtle;
   }
 }

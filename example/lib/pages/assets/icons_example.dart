@@ -40,7 +40,7 @@ class _IconsExampleState extends State<IconsExample> {
                       height: 120,
                       child: InkWell(
                         borderRadius: Zeta.of(context).radii.rounded,
-                        hoverColor: Zeta.of(context).colors.surfaceHover,
+                        hoverColor: Zeta.of(context).colors.surface.hover,
                         onTap: () async {
                           await Clipboard.setData(ClipboardData(text: 'ZetaIcons.' + e.key));
                           ScaffoldMessenger.of(context).showMaterialBanner(

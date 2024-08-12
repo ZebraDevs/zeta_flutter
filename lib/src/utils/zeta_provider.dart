@@ -484,7 +484,7 @@ ThemeData generateZetaTheme({
     iconTheme: IconThemeData(
       size: kZetaIconSize,
       color: (zetaThemeData != null
-          ? (brightness == Brightness.dark ? zetaThemeData.colorsDark : zetaThemeData.colorsLight).iconDefault
+          ? (brightness == Brightness.dark ? zetaThemeData.colorsDark : zetaThemeData.colorsLight).main.defaultColor
           : colorScheme.onSurface),
     ),
   );

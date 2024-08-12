@@ -72,18 +72,18 @@ class _ZetaSliderState extends State<ZetaSlider> {
 
             /// Active Track
             activeTrackColor: _activeColor,
-            disabledActiveTrackColor: colors.surfaceDisabled,
+            disabledActiveTrackColor: colors.surface.disabled,
 
             /// Inactive Track
-            inactiveTrackColor: colors.surfaceInfoSubtle,
+            inactiveTrackColor: colors.surface.infoSubtle,
 
             /// Ticks
-            activeTickMarkColor: colors.surfaceDefault,
-            inactiveTickMarkColor: colors.surfaceDefault,
+            activeTickMarkColor: colors.surface.defaultColor,
+            inactiveTickMarkColor: colors.surface.defaultColor,
 
             /// Thumb
-            thumbColor: colors.surfaceDefaultInverse,
-            disabledThumbColor: colors.surfaceDisabled,
+            thumbColor: colors.surface.defaultInverse,
+            disabledThumbColor: colors.surface.disabled,
             overlayShape: _SliderThumb(size: ZetaSpacingBase.x2_5, rounded: context.rounded, color: _activeColor),
             thumbShape: _SliderThumb(
               size: Zeta.of(context).spacing.small,
@@ -116,9 +116,9 @@ class _ZetaSliderState extends State<ZetaSlider> {
   Color get _activeColor {
     final colors = Zeta.of(context).colors;
     if (widget.onChange == null) {
-      return colors.surfaceDisabled;
+      return colors.surface.disabled;
     }
-    return _selected ? colors.primary : colors.surfaceDefaultInverse;
+    return _selected ? colors.main.primary : colors.surface.defaultInverse;
   }
 }
 

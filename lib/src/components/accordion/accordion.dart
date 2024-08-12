@@ -96,9 +96,10 @@ class _ZetaAccordionState extends State<ZetaAccordion> with TickerProviderStateM
   @override
   Widget build(BuildContext context) {
     final zetaColors = Zeta.of(context).colors;
-    final borderColor = _disabled ? zetaColors.borderDisabled : zetaColors.borderSubtle;
-    final childTextStyle = ZetaTextStyles.h5.apply(color: zetaColors.textDefault);
+    final borderColor = _disabled ? zetaColors.border.disabled : zetaColors.border.subtle;
+    final childTextStyle = ZetaTextStyles.h5.apply(color: zetaColors.main.defaultColor);
     final rounded = context.rounded;
+    final Color color = _disabled ? zetaColors.main.disabled : zetaColors.main.defaultColor;
     return ZetaRoundedScope(
       rounded: rounded,
       child: DecoratedBox(
@@ -115,14 +116,15 @@ class _ZetaAccordionState extends State<ZetaAccordion> with TickerProviderStateM
                 style: ButtonStyle(
                   shape: WidgetStatePropertyAll(
                     RoundedRectangleBorder(
-                        borderRadius: rounded ? Zeta.of(context).radii.minimal : Zeta.of(context).radii.none),
+                      borderRadius: rounded ? Zeta.of(context).radii.minimal : Zeta.of(context).radii.none,
+                    ),
                   ),
                   overlayColor: WidgetStateProperty.resolveWith((states) {
                     if (states.contains(WidgetState.hovered)) {
-                      return zetaColors.cool.shade20;
+                      return zetaColors.surface.hover;
                     }
                     if (states.contains(WidgetState.pressed)) {
-                      return zetaColors.cool.shade30;
+                      return zetaColors.surface.selectedHover;
                     }
 
                     if (states.contains(WidgetState.focused)) {
@@ -133,7 +135,7 @@ class _ZetaAccordionState extends State<ZetaAccordion> with TickerProviderStateM
                   }),
                   side: WidgetStateProperty.resolveWith((states) {
                     if (states.contains(WidgetState.focused)) {
-                      return BorderSide(color: zetaColors.blue.shade50, width: 2);
+                      return BorderSide(color: zetaColors.border.primary, width: 2);
                     }
                     return null;
                   }),
@@ -156,7 +158,7 @@ class _ZetaAccordionState extends State<ZetaAccordion> with TickerProviderStateM
                     children: [
                       DefaultTextStyle(
                         style: ZetaTextStyles.titleMedium.apply(
-                          color: _disabled ? zetaColors.textDisabled : zetaColors.textDefault,
+                          color: color,
                         ),
                         child: Flexible(child: Text(widget.title)),
                       ),
@@ -164,7 +166,7 @@ class _ZetaAccordionState extends State<ZetaAccordion> with TickerProviderStateM
                         padding: EdgeInsets.only(left: Zeta.of(context).spacing.large),
                         child: ZetaIcon(
                           _isOpen ? ZetaIcons.remove : ZetaIcons.add,
-                          color: _disabled ? zetaColors.iconDisabled : zetaColors.iconDefault,
+                          color: color,
                         ),
                       ),
                     ],

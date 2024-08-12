@@ -128,7 +128,7 @@ class ZetaStepperInputState extends State<ZetaStepperInput> {
 
     return OutlineInputBorder(
       borderSide: BorderSide(
-        color: !disabled ? colors.borderSubtle : colors.borderDisabled,
+        color: !disabled ? colors.border.subtle : colors.border.disabled,
       ),
       borderRadius: context.rounded ? Zeta.of(context).radii.minimal : Zeta.of(context).radii.none,
     );
@@ -197,7 +197,7 @@ class ZetaStepperInputState extends State<ZetaStepperInput> {
               textAlign: TextAlign.center,
               inputFormatters: [FilteringTextInputFormatter.digitsOnly],
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: disabled ? colors.textDisabled : null,
+                    color: disabled ? colors.main.disabled : null,
                   ),
               onTapOutside: (_) {
                 if (_controller.text.isEmpty) {
@@ -206,7 +206,7 @@ class ZetaStepperInputState extends State<ZetaStepperInput> {
               },
               decoration: InputDecoration(
                 filled: true,
-                fillColor: disabled ? colors.surfaceDisabled : null,
+                fillColor: disabled ? colors.surface.disabled : null,
                 contentPadding: EdgeInsets.zero,
                 constraints: BoxConstraints(maxHeight: _height),
                 border: _border,

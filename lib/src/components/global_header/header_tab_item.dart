@@ -61,7 +61,7 @@ class _ZetaGlobalHeaderItemState extends State<ZetaGlobalHeaderItem> {
   Widget build(BuildContext context) {
     final colors = Zeta.of(context).colors;
 
-    final foregroundColor = widget.active! ? colors.primary : colors.textSubtle;
+    final foregroundColor = widget.active! ? colors.main.primary : colors.main.subtle;
 
     return ZetaRoundedScope(
       rounded: context.rounded,

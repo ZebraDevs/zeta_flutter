@@ -88,13 +88,15 @@ class ZetaSwitch extends StatelessWidget {
       trackOutlineColor: const WidgetStatePropertyAll(Colors.transparent),
       trackColor: WidgetStateProperty.resolveWith((states) {
         if (states.contains(WidgetState.disabled)) {
-          return zetaColors.cool.shade30;
+          return zetaColors.surface.disabled;
+        } else if (states.contains(WidgetState.selected)) {
+          return zetaColors.main.primary;
         } else {
-          return states.contains(WidgetState.selected) ? zetaColors.primary : zetaColors.cool.shade50;
+          return zetaColors.main.disabled;
         }
       }),
       thumbColor: WidgetStateProperty.resolveWith(
-        (states) => states.contains(WidgetState.disabled) ? zetaColors.cool.shade50 : zetaColors.cool.shade20,
+        (states) => states.contains(WidgetState.disabled) ? zetaColors.main.disabled : zetaColors.main.inverse,
       ),
       value: value ?? false,
       onChanged: onChanged,

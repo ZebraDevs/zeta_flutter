@@ -1,5 +1,3 @@
-// ignore_for_file: deprecated_member_use_from_same_package
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -30,17 +28,31 @@ enum ZetaPriorityPillSize {
 }
 
 extension on ZetaPriorityPillType {
-  ZetaColorSwatch color(BuildContext context) {
+  Color badgeColor(BuildContext context) {
     final colors = Zeta.of(context).colors;
     switch (this) {
       case ZetaPriorityPillType.urgent:
-        return colors.red;
+        return colors.main.negative;
       case ZetaPriorityPillType.high:
-        return colors.orange;
+        return colors.main.warning;
       case ZetaPriorityPillType.medium:
-        return colors.blue;
+        return colors.main.primary;
       case ZetaPriorityPillType.low:
-        return colors.green;
+        return colors.main.positive;
+    }
+  }
+
+  Color lozengeColor(BuildContext context) {
+    final colors = Zeta.of(context).colors;
+    switch (this) {
+      case ZetaPriorityPillType.urgent:
+        return colors.surface.negativeSubtle;
+      case ZetaPriorityPillType.high:
+        return colors.surface.warningSubtle;
+      case ZetaPriorityPillType.medium:
+        return colors.surface.primarySubtle;
+      case ZetaPriorityPillType.low:
+        return colors.surface.positiveSubtle;
     }
   }
 }
@@ -105,7 +117,10 @@ class ZetaPriorityPill extends ZetaStatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ZetaColorSwatch color = customColor ?? type.color(context);
+    final Color badgeColor = customColor?.shade60 ?? type.badgeColor(context);
+    final Color lozengeColor = customColor?.shade10 ?? type.lozengeColor(context);
+
+    // final ZetaColorSwatch color = customColor ?? type.color(context);
     final size = this.size == ZetaPriorityPillSize.small ? Zeta.of(context).spacing.xl : Zeta.of(context).spacing.xl_3;
     final label = (this.label ?? priority) ?? type.name.capitalize();
     final rounded = context.rounded;
@@ -115,7 +130,7 @@ class ZetaPriorityPill extends ZetaStatelessWidget {
       child: DecoratedBox(
         decoration: BoxDecoration(
           borderRadius: rounded ? Zeta.of(context).radii.full : Zeta.of(context).radii.none,
-          color: color.shade10,
+          color: lozengeColor,
         ),
         child: Row(
           mainAxisSize: MainAxisSize.min,
@@ -126,7 +141,7 @@ class ZetaPriorityPill extends ZetaStatelessWidget {
               width: size,
               decoration: BoxDecoration(
                 shape: rounded ? BoxShape.circle : BoxShape.rectangle,
-                color: color,
+                color: badgeColor,
               ),
               child: Text(
                 (index?.isEmpty ?? true)
@@ -138,9 +153,9 @@ class ZetaPriorityPill extends ZetaStatelessWidget {
                     ? ZetaTextStyles.labelSmall.copyWith(
                         fontSize: 10,
                         height: 13 / 10,
-                        color: color.onColor,
+                        color: Zeta.of(context).colors.main.inverse,
                       )
-                    : ZetaTextStyles.labelMedium.apply(color: color.onColor),
+                    : ZetaTextStyles.labelMedium.apply(color: Zeta.of(context).colors.main.inverse),
               ),
             ),
             if (!isBadge)

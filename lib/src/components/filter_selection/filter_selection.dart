@@ -45,7 +45,7 @@ class ZetaFilterSelection extends ZetaStatelessWidget {
             enabled: onPressed != null,
             child: Container(
               height: Zeta.of(context).spacing.xl_7,
-              color: Zeta.of(context).colors.surfaceDefault,
+              color: Zeta.of(context).colors.surface.defaultColor,
               child: IconButton(
                 visualDensity: VisualDensity.compact,
                 onPressed: onPressed,

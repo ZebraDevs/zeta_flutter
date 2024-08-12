@@ -25,7 +25,7 @@ class ZetaProgressBar extends ZetaProgress {
     super.key,
     super.rounded,
     required super.progress,
-    required this.type,
+    this.type = ZetaProgressBarType.standard,
     this.isThin = false,
     this.label,
   });
@@ -118,7 +118,7 @@ class _ZetaProgressBarState extends ZetaProgressState<ZetaProgressBar> {
                     borderRadius: context.rounded ? Zeta.of(context).radii.rounded : Zeta.of(context).radii.none,
                     value: widget.type == ZetaProgressBarType.indeterminate ? null : animation.value,
                     backgroundColor:
-                        widget.type == ZetaProgressBarType.buffering ? colors.surfaceDisabled : Colors.transparent,
+                        widget.type == ZetaProgressBarType.buffering ? colors.surface.disabled : Colors.transparent,
                   ),
                 ),
               ),
@@ -133,7 +133,7 @@ class _ZetaProgressBarState extends ZetaProgressState<ZetaProgressBar> {
   /// Returns thickness of progress bar based on its weight.
   double get _weight => widget.isThin ? Zeta.of(context).spacing.small : Zeta.of(context).spacing.large;
 
-  Widget bufferingWidget(ZetaColors colors) {
+  Widget bufferingWidget(ZetaSemanticColors colors) {
     final Iterable<List<Widget>> extraList = List.generate(
       3,
       (e) => [
@@ -142,7 +142,7 @@ class _ZetaProgressBarState extends ZetaProgressState<ZetaProgressBar> {
           width: _weight,
           height: _weight,
           decoration: BoxDecoration(
-            color: colors.surfaceDisabled,
+            color: colors.surface.disabled,
             borderRadius: Zeta.of(context).radii.rounded,
           ),
         ),

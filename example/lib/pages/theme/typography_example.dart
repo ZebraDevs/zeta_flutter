@@ -34,31 +34,34 @@ class TypographyExample extends StatelessWidget {
     return ExampleScaffold(
       name: name,
       child: SingleChildScrollView(
-        padding: EdgeInsets.all(Zeta.of(context).spacing.xl_4),
-        child: Row(
-          children: [
-            Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: typography.entries
-                    .map(
-                      (e) => [
-                        Text(e.key, style: e.value),
-                        SizedBox(height: Zeta.of(context).spacing.minimum),
-                        Text(
-                          'Font Size: ' +
-                              e.value.fontSize!.toInt().toString() +
-                              ', Line Height:  ' +
-                              (e.value.height! * e.value.fontSize!).toInt().toString() +
-                              ', Weight: ' +
-                              e.value.fontWeight!.value.toString(),
-                          style: ZetaTextStyles.bodyMedium,
-                        ),
-                        SizedBox(height: Zeta.of(context).spacing.xl_9),
-                      ],
-                    )
-                    .expand((element) => element)
-                    .toList()),
-          ],
+        scrollDirection: Axis.horizontal,
+        child: SingleChildScrollView(
+          padding: EdgeInsets.all(Zeta.of(context).spacing.xl_4),
+          child: Row(
+            children: [
+              Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: typography.entries
+                      .map(
+                        (e) => [
+                          Text(e.key, style: e.value),
+                          SizedBox(height: Zeta.of(context).spacing.minimum),
+                          Text(
+                            'Font Size: ' +
+                                e.value.fontSize!.toInt().toString() +
+                                ', Line Height:  ' +
+                                (e.value.height! * e.value.fontSize!).toInt().toString() +
+                                ', Weight: ' +
+                                e.value.fontWeight!.value.toString(),
+                            style: ZetaTextStyles.bodyMedium,
+                          ),
+                          SizedBox(height: Zeta.of(context).spacing.xl_9),
+                        ],
+                      )
+                      .expand((element) => element)
+                      .toList()),
+            ],
+          ),
         ),
       ),
     );

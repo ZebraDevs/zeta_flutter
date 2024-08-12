@@ -34,30 +34,38 @@ class ZetaStatusLabel extends ZetaStatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ZetaColorSwatch colors = status.colorSwatch(context);
+    final colors = Zeta.of(context).colors;
 
+    // final Color colors = status.colorSwatch(context);
+    final Color backgroundColor = status.backgroundColor(colors);
+    final Color borderColor = status.borderColor(colors);
+    final Color iconColor = status.foregroundColor(colors);
+    final Color textColor = colors.main.defaultColor;
     return Semantics(
       value: semanticLabel ?? label,
       child: DecoratedBox(
         decoration: BoxDecoration(
-          color: colors.shade10,
-          border: Border.all(color: colors.border),
+          color: backgroundColor,
+          border: Border.all(color: borderColor),
           borderRadius: context.rounded ? Zeta.of(context).radii.full : Zeta.of(context).radii.none,
         ),
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: Zeta.of(context).spacing.small, vertical: ZetaSpacingBase.x0_5),
+          padding: EdgeInsets.symmetric(
+            horizontal: Zeta.of(context).spacing.small,
+            vertical: Zeta.of(context).spacing.minimum / 2,
+          ),
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
               Icon(
                 customIcon ?? Icons.circle,
                 size: customIcon != null ? Zeta.of(context).spacing.xl : Zeta.of(context).spacing.small,
-                color: colors.icon,
+                color: iconColor,
               ),
               SizedBox(width: Zeta.of(context).spacing.small),
               Text(
                 label,
-                style: ZetaTextStyles.bodyMedium.apply(color: colors.shade10.onColor),
+                style: ZetaTextStyles.bodyMedium.apply(color: textColor),
                 overflow: TextOverflow.ellipsis,
               ),
             ],
@@ -76,5 +84,56 @@ class ZetaStatusLabel extends ZetaStatelessWidget {
       ..add(DiagnosticsProperty<IconData?>('customIcon', customIcon))
       ..add(EnumProperty<ZetaWidgetStatus>('status', status))
       ..add(StringProperty('semanticLabel', semanticLabel));
+  }
+}
+
+/// Extensions on [ZetaWidgetStatus].
+extension on ZetaWidgetStatus {
+  /// Gets background color from [ZetaWidgetStatus].
+  Color backgroundColor(ZetaColorSemantics colors) {
+    switch (this) {
+      case ZetaWidgetStatus.info:
+        return colors.surface.infoSubtle;
+      case ZetaWidgetStatus.positive:
+        return colors.surface.positiveSubtle;
+      case ZetaWidgetStatus.warning:
+        return colors.surface.warningSubtle;
+      case ZetaWidgetStatus.negative:
+        return colors.surface.negativeSubtle;
+      case ZetaWidgetStatus.neutral:
+        return colors.main.light;
+    }
+  }
+
+  /// Gets foreground color from [ZetaWidgetStatus].
+  Color foregroundColor(ZetaColorSemantics colors) {
+    switch (this) {
+      case ZetaWidgetStatus.info:
+        return colors.main.info;
+      case ZetaWidgetStatus.positive:
+        return colors.main.positive;
+      case ZetaWidgetStatus.warning:
+        return colors.main.warning;
+      case ZetaWidgetStatus.negative:
+        return colors.main.negative;
+      case ZetaWidgetStatus.neutral:
+        return colors.main.subtle;
+    }
+  }
+
+  /// Gets border color from [ZetaWidgetStatus].
+  Color borderColor(ZetaColorSemantics colors) {
+    switch (this) {
+      case ZetaWidgetStatus.info:
+        return colors.border.info;
+      case ZetaWidgetStatus.positive:
+        return colors.border.positive;
+      case ZetaWidgetStatus.warning:
+        return colors.border.warning;
+      case ZetaWidgetStatus.negative:
+        return colors.border.negative;
+      case ZetaWidgetStatus.neutral:
+        return colors.border.defaultColor;
+    }
   }
 }

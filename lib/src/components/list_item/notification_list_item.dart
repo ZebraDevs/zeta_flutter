@@ -89,7 +89,7 @@ class ZetaNotificationListItem extends ZetaStatelessWidget {
                                 children: [
                                   if (!notificationRead)
                                     ZetaIndicator(
-                                      color: colors.blue,
+                                      color: colors.main.primary,
                                       size: ZetaWidgetSize.small,
                                     ),
                                   Text(
@@ -104,15 +104,17 @@ class ZetaNotificationListItem extends ZetaStatelessWidget {
                                 if (notificationTime != null)
                                   Text(
                                     notificationTime!,
-                                    style: ZetaTextStyles.bodySmall.apply(color: colors.textDisabled),
+                                    style: ZetaTextStyles.bodySmall.apply(color: colors.main.disabled),
                                   ),
                                 Container(
                                   padding: const EdgeInsets.all(2),
                                   decoration: BoxDecoration(
-                                      color: colors.surfaceNegative, borderRadius: Zeta.of(context).radii.full),
+                                    color: colors.surface.negative,
+                                    borderRadius: Zeta.of(context).radii.full,
+                                  ),
                                   child: ZetaIcon(
                                     ZetaIcons.important_notification,
-                                    color: colors.white,
+                                    color: colors.main.inverse,
                                     size: Zeta.of(context).spacing.medium,
                                   ),
                                 ),
@@ -137,10 +139,10 @@ class ZetaNotificationListItem extends ZetaStatelessWidget {
   BoxDecoration _getStyle(BuildContext context) {
     final colors = Zeta.of(context).colors;
     return BoxDecoration(
-      color: notificationRead ? colors.surfacePrimary : colors.surfaceSelected,
+      color: notificationRead ? colors.surface.primary : colors.surface.selected,
       borderRadius: Zeta.of(context).radii.rounded,
       border: (showDivider ?? false)
-          ? Border(bottom: BorderSide(width: Zeta.of(context).spacing.minimum, color: colors.blue))
+          ? Border(bottom: BorderSide(width: Zeta.of(context).spacing.minimum, color: colors.main.primary))
           : null,
     );
   }
@@ -199,13 +201,8 @@ class ZetaNotificationBadge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colors = Zeta.of(context).colors;
     return avatar != null
-        ? avatar!.copyWith(
-            size: ZetaAvatarSize.m,
-            lowerBadge: ZetaAvatarBadge.icon(icon: ZetaIcons.check_mark, color: colors.green),
-            backgroundColor: colors.purple.shade80,
-          )
+        ? avatar!.copyWith(size: ZetaAvatarSize.m)
         : icon != null
             ? ZetaIcon(
                 icon,

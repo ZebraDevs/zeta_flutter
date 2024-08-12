@@ -42,7 +42,7 @@ Widget dialogUseCase(BuildContext context) {
                 title: title,
                 icon: ZetaIcon(
                   iconData,
-                  color: zeta.colors.surfaceWarning,
+                  color: zeta.colors.surface.warning,
                 ),
                 message: message,
                 primaryButtonLabel: 'Confirm',
@@ -58,7 +58,7 @@ Widget dialogUseCase(BuildContext context) {
                 title: title,
                 icon: ZetaIcon(
                   iconData,
-                  color: zeta.colors.surfaceWarning,
+                  color: zeta.colors.surface.warning,
                 ),
                 message: message,
                 primaryButtonLabel: 'Confirm',
@@ -75,7 +75,7 @@ Widget dialogUseCase(BuildContext context) {
                 title: title,
                 icon: ZetaIcon(
                   iconData,
-                  color: zeta.colors.surfaceWarning,
+                  color: zeta.colors.surface.warning,
                 ),
                 message: message,
                 primaryButtonLabel: 'Confirm',
