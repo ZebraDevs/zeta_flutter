@@ -24,6 +24,7 @@ import '../../zeta_flutter.dart';
 /// The [getShadeColor] extension is less frequently used and when used,
 /// typically used to color makes colors shades for gradient AppBars, with
 /// default setting to not change black and white.
+@Deprecated('Removed after v1.0.0')
 extension ZetaColorExtensions on Color {
   /// {@macro zeta.color.color_to_swatch}
   ZetaColorSwatch get zetaColorSwatch => ZetaColorSwatch.fromColor(this);

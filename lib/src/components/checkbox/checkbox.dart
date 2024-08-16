@@ -220,7 +220,7 @@ class _CheckboxState extends State<ZetaInternalCheckbox> {
         : ZetaIcon(
             widget.useIndeterminate ? ZetaIcons.remove : ZetaIcons.check_mark,
             color: widget.disabled ? theme.colors.main.disabled : theme.colors.main.inverse,
-            size: ZetaSpacingBase.x3_5,
+            size: 14,
           );
 
     return Flex(

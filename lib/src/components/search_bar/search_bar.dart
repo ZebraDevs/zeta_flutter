@@ -102,7 +102,7 @@ class ZetaSearchBar extends ZetaTextFormField {
                       color: !disabled ? zeta.colors.main.subtle : zeta.colors.main.disabled,
                     ),
                     prefixIcon: Padding(
-                      padding: EdgeInsets.only(left: ZetaSpacingBase.x2_5, right: zeta.spacing.small),
+                      padding: EdgeInsets.only(left: zeta.spacing.medium, right: zeta.spacing.small),
                       child: ZetaIcon(
                         ZetaIcons.search,
                         color: !disabled ? zeta.colors.main.subtle : zeta.colors.main.disabled,

@@ -287,9 +287,11 @@ extension on ZetaAvatarSize {
   double pixelSize(BuildContext context) {
     switch (this) {
       case ZetaAvatarSize.xxxl:
-        return ZetaSpacingBase.x50;
+        return Zeta.of(context).spacing.minimum * 50;
+      // return ZetaSpacingBase.x50;
       case ZetaAvatarSize.xxl:
-        return ZetaSpacingBase.x30;
+        return Zeta.of(context).spacing.minimum * 30;
+      // return ZetaSpacingBase.x30;
       case ZetaAvatarSize.xl:
         return Zeta.of(context).spacing.xl_10;
       case ZetaAvatarSize.l:

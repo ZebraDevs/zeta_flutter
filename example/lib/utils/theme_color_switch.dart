@@ -1,68 +1,50 @@
-import 'package:flutter/material.dart';
-import 'package:zeta_flutter/zeta_flutter.dart';
+// import 'package:flutter/material.dart';
+// import 'package:zeta_flutter/zeta_flutter.dart';
 
-late final appThemes = {
-  "default": ZetaThemeData(),
-  "teal": ZetaThemeData(
-    identifier: 'teal',
-    primary: ZetaColorBase.teal,
-  ),
-  "yellow": ZetaThemeData(
-    identifier: 'yellow',
-    primary: ZetaColorBase.yellow,
-  ),
-  "red": ZetaThemeData(
-    identifier: 'red',
-    primary: ZetaColorBase.red,
-  ),
-  "purple": ZetaThemeData(
-    identifier: 'purple',
-    primary: ZetaColorBase.purple,
-  ),
-};
 
-class ZetaThemeColorSwitch extends StatelessWidget {
-  ZetaThemeColorSwitch({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    final zeta = Zeta.of(context);
+// class ZetaThemeColorSwitch extends StatelessWidget {
+//   ZetaThemeColorSwitch({super.key});
 
-    ZetaColors primary(ZetaThemeData data) {
-      if (zeta.brightness == Brightness.light) {
-        return data.colorsLight;
-      } else {
-        return data.colorsDark;
-      }
-    }
+//   @override
+//   Widget build(BuildContext context) {
+//     final zeta = Zeta.of(context);
 
-    return DropdownButtonHideUnderline(
-      child: DropdownButton<String>(
-        value: zeta.themeData?.identifier,
-        elevation: 0,
-        padding: EdgeInsets.all(8),
-        icon: Nothing(),
-        dropdownColor: zeta.colors.border.disabled,
-        items: appThemes.entries.map((e) {
-          final zetaColors = primary(appThemes[e.key]!);
-          final color = zetaColors.primary;
-          return DropdownMenuItem<String>(
-            value: e.value.identifier,
-            alignment: Alignment.center,
-            child: ZetaAvatar(
-              size: ZetaAvatarSize.xxs,
-              backgroundColor: color.surface,
-              image: ZetaIcon(Icons.color_lens, color: color),
-            ),
-          );
-        }).toList(),
-        onChanged: (value) {
-          final theme = appThemes[value];
-          if (theme != null) {
-            ZetaProvider.of(context).updateThemeData(theme);
-          }
-        },
-      ),
-    );
-  }
-}
+//     ZetaColors primary(ZetaThemeData data) {
+//       if (zeta.brightness == Brightness.light) {
+//         return data.colorsLight;
+//       } else {
+//         return data.colorsDark;
+//       }
+//     }
+
+//     return DropdownButtonHideUnderline(
+//       child: DropdownButton<String>(
+//         value: zeta.themeData?.identifier,
+//         elevation: 0,
+//         padding: EdgeInsets.all(8),
+//         icon: Nothing(),
+//         dropdownColor: zeta.colors.border.disabled,
+//         items: appThemes.entries.map((e) {
+//           final zetaColors = primary(appThemes[e.key]!);
+//           final color = zetaColors.primary;
+//           return DropdownMenuItem<String>(
+//             value: e.value.identifier,
+//             alignment: Alignment.center,
+//             child: ZetaAvatar(
+//               size: ZetaAvatarSize.xxs,
+//               backgroundColor: color.surface,
+//               image: ZetaIcon(Icons.color_lens, color: color),
+//             ),
+//           );
+//         }).toList(),
+//         onChanged: (value) {
+//           final theme = appThemes[value];
+//           if (theme != null) {
+//             ZetaProvider.of(context).updateThemeData(theme);
+//           }
+//         },
+//       ),
+//     );
+//   }
+// }

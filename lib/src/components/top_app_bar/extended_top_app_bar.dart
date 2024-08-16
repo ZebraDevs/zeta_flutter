@@ -37,14 +37,17 @@ class ZetaExtendedAppBarDelegate extends SliverPersistentHeaderDelegate {
     final searchBarOffsetTop = Zeta.of(context).spacing.minimum * 1.5;
     final searchBarOffsetRight = Zeta.of(context).spacing.minimum * 22;
     final leftMin = Zeta.of(context).spacing.large;
-    const leftMax = ZetaSpacingBase.x12_5;
+
+    /// If there is no leading widget, the left margin should not change
+    /// If there is a leading widget, the left margin should be the same as the leading widget's width plus padding
+    final leftMax = leading == null ? leftMin : (Zeta.of(context).spacing.large * (2)) + Zeta.of(context).spacing.xl;
     final topMin = Zeta.of(context).spacing.xl;
     final topMax = Zeta.of(context).spacing.minimum * 15;
 
     return ConstrainedBox(
       constraints: BoxConstraints(minHeight: Zeta.of(context).spacing.xl_9, maxHeight: _maxExtent),
       child: ColoredBox(
-        color: Zeta.of(context).colors.surface.primary,
+        color: Zeta.of(context).colors.surface.defaultColor,
         child: Stack(
           children: [
             Positioned(
@@ -57,7 +60,7 @@ class ZetaExtendedAppBarDelegate extends SliverPersistentHeaderDelegate {
                       topMax,
                     )
                   : topMax,
-              left: shrinks ? ((shrinkOffset / _maxExtent) * ZetaSpacingBase.x50).clamp(leftMin, leftMax) : leftMin,
+              left: shrinks ? ((shrinkOffset / _maxExtent) * leftMax).clamp(leftMin, leftMax) : leftMin,
               right: searchController != null && searchController!.isEnabled
                   ? searchBarOffsetRight
                   : Zeta.of(context).spacing.none,

@@ -51,7 +51,7 @@ class _ZetaRadioState<T> extends State<ZetaRadio<T>> with TickerProviderStateMix
   @override
   Widget build(BuildContext context) {
     final zetaColors = Zeta.of(context).colors;
-    _painter ??= _RadioPainter(colors: zetaColors);
+    _painter ??= _RadioPainter(context: context);
 
     return ZetaRoundedScope(
       rounded: context.rounded,
@@ -161,20 +161,21 @@ const double _kOuterRadius = 10;
 const double _kInnerRadius = 5;
 
 class _RadioPainter extends ToggleablePainter {
-  _RadioPainter({required this.colors});
+  _RadioPainter({required this.context});
 
-  final ZetaColorSemantics colors;
+  final BuildContext context;
 
   @override
   void paint(Canvas canvas, Size size) {
     paintRadialReaction(canvas: canvas, origin: size.center(Offset.zero));
     final Offset center = (Offset.zero & size).center;
+    final colors = Zeta.of(context).colors;
 
     // Background mask for focus
     final Paint paint = Paint()
       ..color = colors.surface.primary
       ..style = PaintingStyle.stroke
-      ..strokeWidth = ZetaSpacingBase.x2_5;
+      ..strokeWidth = Zeta.of(context).spacing.small + ZetaBorderTemp.borderWidth;
     if (isFocused) canvas.drawCircle(center, _kInnerRadius, paint);
 
     // Outer circle
@@ -185,7 +186,7 @@ class _RadioPainter extends ToggleablePainter {
               ? inactiveColor
               : activeColor
       ..style = PaintingStyle.stroke
-      ..strokeWidth = ZetaSpacingBase.x0_5;
+      ..strokeWidth = ZetaBorderTemp.borderWidth;
     canvas.drawCircle(center, _kOuterRadius, paint);
 
     // Inner circle

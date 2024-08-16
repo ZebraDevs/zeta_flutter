@@ -2,7 +2,6 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
 import 'color_extensions.dart';
-import 'colors_base.dart';
 import 'contrast.dart';
 
 /// A swatch of colors with values 0 (light), 500 (medium) and 1000(dark).
@@ -52,7 +51,6 @@ class ZetaColorSwatch extends ColorSwatch<int> with EquatableMixin {
   /// The darker and lighter shades are determined by predefined percentage values.
   ///
   /// It ensures that the 60th and 80th shades from swatch are abide by the AA and AAA accessibility standards on `background`, respectively.
-  /// `background` color defaults to [ZetaColorBase.warm] shade10.
   /// {@endtemplate}
   factory ZetaColorSwatch.fromColor(
     Color primary, {

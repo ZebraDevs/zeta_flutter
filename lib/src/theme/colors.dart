@@ -8,28 +8,28 @@ import 'color_swatch.dart';
 import 'colors_base.dart';
 import 'contrast.dart';
 
-// TODO(thelukewalton): Do all this again for tokens ver 2
-
 /// A customizable, token-based color palette, adapting Zeta colors to Flutter's colorScheme.
 /// {@category Theme}
 @immutable
+@Deprecated('Removed in v1.0.0')
 class ZetaColors extends Equatable implements ZetaColorSemantics {
   /// Default constructor for instance of [ZetaColors].
+  @Deprecated('Removed in v1.0.0')
   ZetaColors({
     @Deprecated('Removed in v1.0.0') this.brightness = Brightness.light,
     @Deprecated('Removed in v1.0.0') this.contrast = ZetaContrast.aa,
     @Deprecated('Removed in v1.0.0') this.white = ZetaColorBase.white,
     @Deprecated('Removed in v1.0.0') this.black = ZetaColorBase.black,
-    @Deprecated('Removed in v1.0.0') ZetaColorSwatch? primary,
-    @Deprecated('Removed in v1.0.0') ZetaColorSwatch? secondary,
-    @Deprecated('Removed in v1.0.0') ZetaColorSwatch? error,
-    @Deprecated('Removed in v1.0.0') ZetaColorSwatch? cool,
-    @Deprecated('Removed in v1.0.0') ZetaColorSwatch? warm,
-    @Deprecated('Removed in v1.0.0') ZetaColorSwatch? pure,
-    @Deprecated('Removed in v1.0.0') Color? surfacePrimary,
-    @Deprecated('Removed in v1.0.0') Color? surfaceSecondary,
-    @Deprecated('Removed in v1.0.0') Color? surfaceTertiary,
-    @Deprecated('Removed in v1.0.0') bool adjust = true,
+    ZetaColorSwatch? primary,
+    ZetaColorSwatch? secondary,
+    ZetaColorSwatch? error,
+    ZetaColorSwatch? cool,
+    ZetaColorSwatch? warm,
+    ZetaColorSwatch? pure,
+    Color? surfacePrimary,
+    Color? surfaceSecondary,
+    Color? surfaceTertiary,
+    bool adjust = true,
   })  : primary = _adjustedValue(primary, ZetaColorBase.blue, adjust, brightness, contrast),
         secondary = _adjustedValue(secondary, primary ?? ZetaColorBase.yellow, adjust, brightness, contrast),
         error = _adjustedValue(error, ZetaColorBase.red, adjust, brightness, contrast),
@@ -74,6 +74,7 @@ class ZetaColors extends Equatable implements ZetaColorSemantics {
   /// [warm] A color swatch for warmer color tones. Defaults to null.
   /// [white] A color option for white color. Defaults to null.
   /// [black] A color option for black color. Defaults to null.
+  @Deprecated('Removed in v1.0.0')
   factory ZetaColors.light({
     ZetaContrast contrast = ZetaContrast.aa,
     ZetaColorSwatch? primary,
@@ -111,6 +112,7 @@ class ZetaColors extends Equatable implements ZetaColorSemantics {
   /// [warm] A color swatch for warmer color tones. Defaults to null.
   /// [white] A color option for white color. Defaults to null.
   /// [black] A color option for black color. Defaults to null.
+  @Deprecated('Removed in v1.0.0')
   factory ZetaColors.dark({
     ZetaContrast contrast = ZetaContrast.aa,
     ZetaColorSwatch? primary,
@@ -194,6 +196,7 @@ class ZetaColors extends Equatable implements ZetaColorSemantics {
   /// Maps to [ColorScheme.surface].
   ///
   /// Defaults to [ZetaColorBase.white].
+  @Deprecated('Removed in v1.0.0')
   final Color white;
 
   /// Shadow color.
@@ -201,6 +204,7 @@ class ZetaColors extends Equatable implements ZetaColorSemantics {
   /// Maps to [ColorScheme.surface].
   ///
   /// Defaults to [ZetaColorBase.black].
+  @Deprecated('Removed in v1.0.0')
   final Color black;
 
   /// Surface color.
@@ -566,6 +570,8 @@ class ZetaColors extends Equatable implements ZetaColorSemantics {
   /// Applies new property values to [ZetaColors] and returns a new copy.
   ///
   /// Each property defaults to the previous value if not specified.
+  ///
+  @Deprecated('Removed in v1.0.0')
   ZetaColors copyWith({
     Brightness? brightness,
     ZetaContrast? contrast,
@@ -600,6 +606,7 @@ class ZetaColors extends Equatable implements ZetaColorSemantics {
   /// Apply the given contrast to the color scheme and return a new color scheme.
   ///
   /// If the contrast is the same as the current one, this method will return the current color scheme.
+  @Deprecated('Removed in v1.0.0')
   ZetaColors apply({
     required ZetaContrast contrast,
   }) {
@@ -610,6 +617,7 @@ class ZetaColors extends Equatable implements ZetaColorSemantics {
   }
 
   /// Returns a [ZetaColorScheme] based on the properties of the current [ZetaColors].
+  @Deprecated('Removed in v1.0.0')
   ZetaColorScheme toScheme() {
     final effectivePrimary = primary.shade(contrast.primary);
     final effectiveSecondary = secondary.shade(contrast.primary);
@@ -647,23 +655,18 @@ class ZetaColors extends Equatable implements ZetaColorSemantics {
       ];
 
   @override
-  // TODO(colors): implement border
   ZetaSemanticBorderColors get border => ZetaSemanticBorderColorsAA(primitives: primitives);
 
   @override
-  // TODO(colors): implement main
   ZetaSemanticMainColors get main => ZetaSemanticMainColorsAA(primitives: primitives);
 
   @override
-  // TODO(colors): implement primitives
   ZetaPrimitives get primitives => brightness == Brightness.dark ? ZetaDarkPrimitive() : ZetaLightPrimitive();
 
   @override
-  // TODO(colors): implement state
   ZetaSemanticStateColors get state => ZetaSemanticStateColorsAA(primitives: primitives);
 
   @override
-  // TODO(colors): implement surface
   ZetaSemanticSurfaceColors get surface => ZetaSemanticSurfaceColorsAA(primitives: primitives);
 }
 
@@ -700,6 +703,7 @@ enum _ZetaColorProperties {
 /// Custom extension on ColorScheme which makes  [ZetaColors] available through theme context.
 ///
 /// A customizable, token-based color palette, adapting Zeta colors to Flutter's colorScheme.
+@Deprecated('Removed in v1.0.0')
 extension ZetaColorGetters on ColorScheme {
   ZetaColorScheme? get _resolve => this is ZetaColorScheme ? this as ZetaColorScheme : null;
 

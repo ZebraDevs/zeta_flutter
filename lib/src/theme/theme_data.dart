@@ -1,6 +1,9 @@
+// ignore_for_file: deprecated_member_use_from_same_package
+
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
+import '../../generated/generated.dart';
 import 'color_extensions.dart';
 import 'colors.dart';
 import 'constants.dart';
@@ -23,11 +26,13 @@ class ZetaThemeData extends Equatable {
   ZetaThemeData({
     this.fontFamily = kZetaFontFamily,
     this.identifier = 'default',
-    ZetaContrast contrast = ZetaContrast.aa,
-    ZetaColors? colorsLight,
-    ZetaColors? colorsDark,
-    Color? primary,
-    Color? secondary,
+    this.primitives,
+    this.semantics,
+    @Deprecated('Removed after v1.0.0') ZetaContrast contrast = ZetaContrast.aa,
+    @Deprecated('Removed after v1.0.0') ZetaColors? colorsLight,
+    @Deprecated('Removed after v1.0.0') ZetaColors? colorsDark,
+    @Deprecated('Removed after v1.0.0') Color? primary,
+    @Deprecated('Removed after v1.0.0') Color? secondary,
   })  : _colorsDark = (primary != null
                 ? ZetaColors.dark(
                     contrast: contrast,
@@ -57,19 +62,29 @@ class ZetaThemeData extends Equatable {
   /// Defaults to 'default'.
   final String identifier;
 
+  @Deprecated('Removed after v1.0.0')
   final ZetaColors _colorsLight;
 
   /// The colors used for the light mode of the Zeta theme.
   ///
   /// Defaults to a light mode color palette with default Zeta colors if not explicitly provided.
+  @Deprecated('Removed after v1.0.0')
   ZetaColors get colorsLight => _colorsLight;
 
+  @Deprecated('Removed after v1.0.0')
   final ZetaColors _colorsDark;
 
   /// The colors used for the dark mode of the Zeta theme.
   ///
   /// Defaults to a dark mode color palette with default Zeta colors if not explicitly provided.
+  @Deprecated('Removed after v1.0.0')
   ZetaColors get colorsDark => _colorsDark;
+
+  /// The semantics used for the Zeta theme.
+  final ZetaSemantics? semantics;
+
+  /// The primitives used for the Zeta theme.
+  final ZetaPrimitives? primitives;
 
   /// Applies the given [contrast] to the current [ZetaThemeData] and returns a new [ZetaThemeData] with the updated contrast.
   ZetaThemeData apply({
@@ -88,7 +103,5 @@ class ZetaThemeData extends Equatable {
   List<Object?> get props => [
         fontFamily,
         identifier,
-        _colorsLight,
-        _colorsDark,
       ];
 }

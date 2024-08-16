@@ -255,7 +255,7 @@ void main() {
     await gesture.moveTo(tester.getCenter(buttonFinder));
     await tester.pumpAndSettle();
 
-    expect(inkWell.overlayColor?.resolve({WidgetState.hovered}), ZetaColorBase.cool.shade20);
+    expect(inkWell.overlayColor?.resolve({WidgetState.hovered}), ZetaLightPrimitive().cool.shade20);
 
     await expectLater(
       buttonFinder,
