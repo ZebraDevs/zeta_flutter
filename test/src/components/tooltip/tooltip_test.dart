@@ -176,12 +176,10 @@ void main() {
     });
 
     testWidgets('renders with rounded and sharp corners', (WidgetTester tester) async {
-      Zeta? zeta;
       await tester.pumpWidget(
         TestApp(
           home: Builder(
             builder: (context) {
-              zeta = Zeta.of(context);
               return const Scaffold(
                 body: Column(
                   children: [
@@ -217,7 +215,7 @@ void main() {
         ),
       );
 
-      expect((roundedTooltipBox.decoration as BoxDecoration).borderRadius, zeta?.radii.minimal);
+      expect((roundedTooltipBox.decoration as BoxDecoration).borderRadius, BorderRadius.all(ZetaPrimitivesLight().s));
       expect((sharpTooltipBox.decoration as BoxDecoration).borderRadius, null);
     });
 

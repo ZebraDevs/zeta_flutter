@@ -99,7 +99,7 @@ class _ZetaDialog extends ZetaStatelessWidget {
     return ZetaRoundedScope(
       rounded: context.rounded,
       child: AlertDialog(
-        surfaceTintColor: zeta.colors.surface.primary,
+        surfaceTintColor: zeta.colors.surface.defaultColor,
         shape: RoundedRectangleBorder(borderRadius: Zeta.of(context).radii.large),
         title: icon != null || title != null
             ? Column(

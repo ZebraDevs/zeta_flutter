@@ -24,8 +24,8 @@ class Zeta extends InheritedWidget {
     this.rounded = true,
   })  : _mediaBrightness = mediaBrightness,
         _semantics = contrast == ZetaContrast.aaa
-            ? ZetaSemanticsAAA(primitives: mediaBrightness.isLight ? ZetaLightPrimitive() : ZetaDarkPrimitive())
-            : ZetaSemanticsAA(primitives: mediaBrightness.isLight ? ZetaLightPrimitive() : ZetaDarkPrimitive());
+            ? ZetaSemanticsAAA(primitives: mediaBrightness.isLight ? ZetaPrimitivesLight() : ZetaPrimitivesDark())
+            : ZetaSemanticsAA(primitives: mediaBrightness.isLight ? ZetaPrimitivesLight() : ZetaPrimitivesDark());
 
   /// The current contrast setting for the app, which can be one of the predefined
   /// values in [ZetaContrast].

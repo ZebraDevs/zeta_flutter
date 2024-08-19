@@ -26,7 +26,7 @@ class _ListItemExampleState extends State<ListItemExample> {
     return ExampleScaffold(
       name: ListItemExample.name,
       child: Container(
-        color: zetaColors.surface.secondary,
+        color: zetaColors.surface.warm,
         child: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(16),

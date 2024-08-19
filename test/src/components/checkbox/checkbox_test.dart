@@ -102,7 +102,7 @@ void main() {
       final AnimatedContainer animatedContainer = tester.firstWidget(animatedContainerFinder);
       expect(
         (animatedContainer.decoration as BoxDecoration?)?.boxShadow?.first.color,
-        ZetaLightPrimitive().blue.shade50,
+        ZetaPrimitivesLight().blue.shade50,
       );
 
       final gesture = await tester.createGesture(kind: PointerDeviceKind.mouse);

@@ -134,7 +134,7 @@ abstract interface class ZetaPrimitives {
 }
 
 /// Light primitives
-final class ZetaLightPrimitive implements ZetaPrimitives {
+final class ZetaPrimitivesLight implements ZetaPrimitives {
   /// Pure
   ///
   /// {@macro zeta-colors-swatch}
@@ -428,7 +428,7 @@ final class ZetaLightPrimitive implements ZetaPrimitives {
 }
 
 /// Dark primitives
-final class ZetaDarkPrimitive implements ZetaPrimitives {
+final class ZetaPrimitivesDark implements ZetaPrimitives {
   /// Pure
   ///
   /// {@macro zeta-colors-swatch}
@@ -722,4 +722,4 @@ final class ZetaDarkPrimitive implements ZetaPrimitives {
 }
 
 /// All primitives
-Map<String, Type> allPrimitives = {'light': ZetaLightPrimitive, 'dark': ZetaDarkPrimitive};
+Map<String, Type> allPrimitives = {'light': ZetaPrimitivesLight, 'dark': ZetaPrimitivesDark};

@@ -18,7 +18,6 @@ void main() {
         ),
       ),
     );
-
     // Verify that the accordion is initially collapsed
     final Finder accordionContent = find.byType(SizeTransition);
     expect(accordionContent, findsOneWidget);
@@ -142,12 +141,12 @@ void main() {
     // Verify that the textButton color matches the hover color
     expect(
       textButton.style!.overlayColor?.resolve({WidgetState.hovered}),
-      ZetaLightPrimitive().cool.shade20,
+      ZetaPrimitivesLight().cool.shade20,
     );
     expect(
       textButton.style!.overlayColor?.resolve({WidgetState.focused}),
       Colors.transparent,
     );
-    expect(textButton.style!.side?.resolve({WidgetState.focused})?.color, ZetaLightPrimitive().blue.shade50);
+    expect(textButton.style!.side?.resolve({WidgetState.focused})?.color, ZetaPrimitivesLight().blue.shade50);
   });
 }

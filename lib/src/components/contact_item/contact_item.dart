@@ -45,7 +45,7 @@ class ZetaContactItem extends ZetaStatelessWidget {
         button: true,
         child: SelectionContainer.disabled(
           child: Material(
-            color: colors.surface.primary,
+            color: colors.surface.defaultColor,
             child: DecoratedBox(
               decoration: BoxDecoration(
                 border: enabledDivider ? Border(bottom: BorderSide(color: colors.border.disabled)) : null,

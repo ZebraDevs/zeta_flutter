@@ -661,7 +661,7 @@ class ZetaColors extends Equatable implements ZetaColorSemantics {
   ZetaSemanticMainColors get main => ZetaSemanticMainColorsAA(primitives: primitives);
 
   @override
-  ZetaPrimitives get primitives => brightness == Brightness.dark ? ZetaDarkPrimitive() : ZetaLightPrimitive();
+  ZetaPrimitives get primitives => brightness == Brightness.dark ? ZetaPrimitivesDark() : ZetaPrimitivesLight();
 
   @override
   ZetaSemanticStateColors get state => ZetaSemanticStateColorsAA(primitives: primitives);

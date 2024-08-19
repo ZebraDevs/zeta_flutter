@@ -148,7 +148,7 @@ class _ZetaSegmentedControlState<T> extends State<ZetaSegmentedControl<T>>
                 builder: (BuildContext context, Widget? child) {
                   return _SegmentedControlRenderWidget<T>(
                     highlightedIndex: highlightedIndex,
-                    thumbColor: colors.surface.primary,
+                    thumbColor: colors.surface.defaultColor,
                     thumbScale: _thumbScaleAnimation.value,
                     rounded: rounded,
                     state: this,

@@ -201,6 +201,14 @@ class ZetaProviderState extends State<ZetaProvider> with Diagnosticable, Widgets
 
     // Set the initial light [ThemeData].
     _darkThemeData = widget.initialDarkThemeData;
+
+    if (widget.initialThemeMode != null) {
+      _themeMode = widget.initialThemeMode!;
+    }
+    if (widget.initialContrast != null) {
+      _contrast = widget.initialContrast!;
+      _zetaThemeData = widget.initialZetaThemeData.apply(contrast: _contrast);
+    }
   }
 
   /// Retrieves the theme values from the shared preferences.
@@ -264,6 +272,9 @@ class ZetaProviderState extends State<ZetaProvider> with Diagnosticable, Widgets
 
   @override
   Widget build(BuildContext context) {
+    if (widget.initialContrast != null && widget.initialThemeMode != null) {
+      return _getChild();
+    }
     return FutureBuilder<dynamic>(
       // ignore: discarded_futures
       future: getThemeValuesFromPreferences(),
@@ -271,40 +282,44 @@ class ZetaProviderState extends State<ZetaProvider> with Diagnosticable, Widgets
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Center(child: CircularProgressIndicator());
         }
-        if (widget.baseBuilder != _emptyBase) {
-          return _InternalProvider(
-            contrast: _contrast,
-            themeMode: _themeMode,
-            zetaThemeData: _zetaThemeData,
-            rounded: _rounded,
-            platformBrightness: _platformBrightness,
-            widget: widget.baseBuilder(
-              context,
-              generateZetaTheme(
-                brightness: Brightness.light,
-                existingTheme: _lightThemeData,
-                colorScheme: _lightThemeData?.colorScheme ?? _zetaThemeData.colorsLight.toScheme(),
-              ),
-              generateZetaTheme(
-                brightness: Brightness.dark,
-                existingTheme: _darkThemeData,
-                colorScheme: _darkThemeData?.colorScheme ?? _zetaThemeData.colorsDark.toScheme(),
-              ),
-              _themeMode,
-            ),
-          );
-        } else {
-          return _InternalProvider(
-            contrast: _contrast,
-            themeMode: _themeMode,
-            zetaThemeData: _zetaThemeData,
-            rounded: _rounded,
-            platformBrightness: _platformBrightness,
-            widget: widget.builder(context, _zetaThemeData, _themeMode),
-          );
-        }
+        return _getChild();
       },
     );
+  }
+
+  Widget _getChild() {
+    if (widget.baseBuilder != _emptyBase) {
+      return _InternalProvider(
+        contrast: _contrast,
+        themeMode: _themeMode,
+        zetaThemeData: _zetaThemeData,
+        rounded: _rounded,
+        platformBrightness: _platformBrightness,
+        widget: widget.baseBuilder(
+          context,
+          generateZetaTheme(
+            brightness: Brightness.light,
+            existingTheme: _lightThemeData,
+            colorScheme: _lightThemeData?.colorScheme ?? _zetaThemeData.colorsLight.toScheme(),
+          ),
+          generateZetaTheme(
+            brightness: Brightness.dark,
+            existingTheme: _darkThemeData,
+            colorScheme: _darkThemeData?.colorScheme ?? _zetaThemeData.colorsDark.toScheme(),
+          ),
+          _themeMode,
+        ),
+      );
+    } else {
+      return _InternalProvider(
+        contrast: _contrast,
+        themeMode: _themeMode,
+        zetaThemeData: _zetaThemeData,
+        rounded: _rounded,
+        platformBrightness: _platformBrightness,
+        widget: widget.builder(context, _zetaThemeData, _themeMode),
+      );
+    }
   }
 
   @override

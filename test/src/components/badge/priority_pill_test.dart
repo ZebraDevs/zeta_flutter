@@ -114,7 +114,7 @@ void main() {
     ZetaPriorityPill(
       label: 'Test label',
       rounded: false,
-      customColor: ZetaLightPrimitive().blue,
+      customColor: ZetaPrimitivesLight().blue,
       index: '1',
     ).debugFillProperties(diagnostics);
 

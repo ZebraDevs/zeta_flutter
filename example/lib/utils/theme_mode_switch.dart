@@ -22,10 +22,9 @@ class ZetaThemeModeSwitch extends StatelessWidget {
         icon: Nothing(),
         dropdownColor: zeta.colors.border.disabled,
         items: _themes.map((e) {
-          // final colors = zetaColors(e);
           final colors = e == ThemeMode.dark
-              ? ZetaSemanticColorsAA(primitives: ZetaDarkPrimitive())
-              : ZetaSemanticColorsAA(primitives: ZetaLightPrimitive());
+              ? ZetaSemanticColorsAA(primitives: ZetaPrimitivesDark())
+              : ZetaSemanticColorsAA(primitives: ZetaPrimitivesLight());
           return DropdownMenuItem<ThemeMode>(
             value: e,
             alignment: Alignment.center,
