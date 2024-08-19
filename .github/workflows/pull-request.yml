@@ -21,7 +21,7 @@ jobs:
           with:
             cache: true
         - run: dart run build_runner build --delete-conflicting-outputs
-        - uses: ZebraDevs/flutter-code-quality@v1.0.7
+        - uses: ZebraDevs/flutter-code-quality@v1.0.8
           with:
             token: ${{secrets.GITHUB_TOKEN}}
             
