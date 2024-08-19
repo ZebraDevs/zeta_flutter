@@ -13,6 +13,7 @@ class ZetaFilterSelection extends ZetaStatelessWidget {
     required this.items,
     this.onPressed,
     this.buttonSemanticLabel,
+    this.icon = ZetaIcons.filter,
   });
 
   /// The filter items - list of [ZetaFilterChip].
@@ -25,6 +26,11 @@ class ZetaFilterSelection extends ZetaStatelessWidget {
   ///
   /// {@macro zeta-widget-semantic-label}
   final String? buttonSemanticLabel;
+
+  /// Icon for the filter button.
+  ///
+  /// Default is [ZetaIcons.filter].
+  final IconData icon;
 
   @override
   Widget build(BuildContext context) {
@@ -43,10 +49,7 @@ class ZetaFilterSelection extends ZetaStatelessWidget {
               child: IconButton(
                 visualDensity: VisualDensity.compact,
                 onPressed: onPressed,
-                icon: const ZetaIcon(
-                  ZetaIcons.filter,
-                  size: ZetaSpacing.xl_2,
-                ),
+                icon: ZetaIcon(icon, size: ZetaSpacing.xl_2),
               ),
             ),
           ),
@@ -70,6 +73,7 @@ class ZetaFilterSelection extends ZetaStatelessWidget {
     properties
       ..add(DiagnosticsProperty<bool>('rounded', rounded))
       ..add(ObjectFlagProperty<VoidCallback?>.has('onPressed', onPressed))
-      ..add(StringProperty('buttonSemanticLabel', buttonSemanticLabel));
+      ..add(StringProperty('buttonSemanticLabel', buttonSemanticLabel))
+      ..add(DiagnosticsProperty<IconData>('icon', icon));
   }
 }
