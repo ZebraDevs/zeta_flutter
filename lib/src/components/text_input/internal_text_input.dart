@@ -279,12 +279,12 @@ class InternalTextInputState extends State<InternalTextInput> {
       );
 
   OutlineInputBorder _focusedBorder(bool rounded) => _baseBorder(rounded).copyWith(
-        borderSide: ZetaBorderTemp.focusBorder(context),
+        borderSide: ZetaBorders.focusBorder(context),
       );
   OutlineInputBorder _errorBorder(bool rounded) => _baseBorder(rounded).copyWith(
         borderSide: BorderSide(
           color: _colors.border.negative,
-          width: ZetaBorderTemp.borderWidth,
+          width: ZetaBorders.borderWidth,
         ),
       );
 

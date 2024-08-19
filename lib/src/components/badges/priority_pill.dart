@@ -122,7 +122,6 @@ class ZetaPriorityPill extends ZetaStatelessWidget {
     final Color badgeColor = customColor?.shade60 ?? type.badgeColor(context);
     final Color lozengeColor = customColor?.shade10 ?? type.lozengeColor(context);
 
-    // final ZetaColorSwatch color = customColor ?? type.color(context);
     final size = this.size == ZetaPriorityPillSize.small ? Zeta.of(context).spacing.xl : Zeta.of(context).spacing.xl_3;
     final label = (this.label ?? priority) ?? type.name.capitalize();
     final rounded = context.rounded;

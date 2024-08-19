@@ -227,7 +227,7 @@ class _ZetaChipState extends State<ZetaChip> {
                       ? colors.border.primary
                       : colors.border.defaultColor,
                   width: _controller.value.contains(WidgetState.focused)
-                      ? ZetaBorderTemp.borderWidth
+                      ? ZetaBorders.borderWidth
                       : !selected
                           ? 1
                           : 0,

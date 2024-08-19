@@ -239,7 +239,7 @@ class _ZetaGroupButtonState extends State<ZetaGroupButton> {
   ) {
     // TODO(UX-1200): Focus border does not work as expected.
     if (_controller.value.contains(WidgetState.focused)) {
-      return ZetaBorderTemp.focusBorder(context);
+      return ZetaBorders.focusBorder(context);
     }
     if (_controller.value.contains(WidgetState.disabled)) {
       return BorderSide(color: colors.border.disabled);

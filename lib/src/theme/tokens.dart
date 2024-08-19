@@ -313,19 +313,13 @@ class ZetaAnimationLength {
 
 /// Temporary class to hold border values.
 // TODO(Tokens): Remove this class and design / develop  Zeta.of(context).border instead.
-class ZetaBorderTemp {
+class ZetaBorders {
   /// Border width
   static double get borderWidth => 2;
 
-  /// Indicator Border
-  static BorderSide indicatorBorder(BuildContext context) => BorderSide(
-        width: Zeta.of(context).spacing.minimum / 2,
-        color: Zeta.of(context).colors.border.pure,
-      );
-
   /// Border applied when the widget is focused.
   static BorderSide focusBorder(BuildContext context) => BorderSide(
+        width: ZetaBorders.borderWidth,
         color: Zeta.of(context).colors.border.primary,
-        width: Zeta.of(context).spacing.minimum / 2,
       );
 }

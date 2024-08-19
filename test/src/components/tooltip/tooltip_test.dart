@@ -177,23 +177,19 @@ void main() {
 
     testWidgets('renders with rounded and sharp corners', (WidgetTester tester) async {
       await tester.pumpWidget(
-        TestApp(
-          home: Builder(
-            builder: (context) {
-              return const Scaffold(
-                body: Column(
-                  children: [
-                    ZetaTooltip(
-                      child: Text('Rounded tooltip'),
-                    ),
-                    ZetaTooltip(
-                      rounded: false,
-                      child: Text('Sharp tooltip'),
-                    ),
-                  ],
+        const TestApp(
+          home: Scaffold(
+            body: Column(
+              children: [
+                ZetaTooltip(
+                  child: Text('Rounded tooltip'),
                 ),
-              );
-            },
+                ZetaTooltip(
+                  rounded: false,
+                  child: Text('Sharp tooltip'),
+                ),
+              ],
+            ),
           ),
         ),
       );

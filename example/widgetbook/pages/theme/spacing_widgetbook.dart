@@ -3,7 +3,46 @@ import 'package:path_drawing/path_drawing.dart';
 
 import 'package:zeta_flutter/zeta_flutter.dart';
 
-Widget spacingUseCase(BuildContext context) => SingleChildScrollView(
+Widget spacingUseCase(BuildContext context) {
+  Map<String, double> semanticSpacings = {
+    'none': Zeta.of(context).spacing.none,
+    'minimum': Zeta.of(context).spacing.minimum,
+    'small': Zeta.of(context).spacing.small,
+    'medium': Zeta.of(context).spacing.medium,
+    'large': Zeta.of(context).spacing.large,
+    'xl': Zeta.of(context).spacing.xl,
+    '2xl': Zeta.of(context).spacing.xl_2,
+    '3xl': Zeta.of(context).spacing.xl_3,
+    '4xl': Zeta.of(context).spacing.xl_4,
+    '5xl': Zeta.of(context).spacing.xl_5,
+    '6xl': Zeta.of(context).spacing.xl_6,
+    '7xl': Zeta.of(context).spacing.xl_7,
+    '8xl': Zeta.of(context).spacing.xl_8,
+    '9xl': Zeta.of(context).spacing.xl_9,
+    '10xl': Zeta.of(context).spacing.xl_10,
+    '11xl': Zeta.of(context).spacing.xl_11,
+  };
+  Map<String, double> baseSpacings = {
+    'x1': Zeta.of(context).spacing.primitives.x1,
+    'x2': Zeta.of(context).spacing.primitives.x2,
+    'x3': Zeta.of(context).spacing.primitives.x3,
+    'x4': Zeta.of(context).spacing.primitives.x4,
+    'x5': Zeta.of(context).spacing.primitives.x5,
+    'x6': Zeta.of(context).spacing.primitives.x6,
+    'x7': Zeta.of(context).spacing.primitives.x7,
+    'x8': Zeta.of(context).spacing.primitives.x8,
+    'x9': Zeta.of(context).spacing.primitives.x9,
+    'x10': Zeta.of(context).spacing.primitives.x10,
+    'x11': Zeta.of(context).spacing.primitives.x11,
+    'x12': Zeta.of(context).spacing.primitives.x12,
+    'x13': Zeta.of(context).spacing.primitives.x13,
+    'x14': Zeta.of(context).spacing.primitives.x14,
+    'x15': Zeta.of(context).spacing.primitives.x15,
+  };
+
+  return SingleChildScrollView(
+    child: SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -17,46 +56,9 @@ Widget spacingUseCase(BuildContext context) => SingleChildScrollView(
           )
         ],
       ),
-    );
-
-Map<String, double> semanticSpacings = {
-  // 'none': Zeta.of(context).spacing.none,
-  // 'minimum': Zeta.of(context).spacing.minimum,
-  // 'small': Zeta.of(context).spacing.small,
-  // 'medium': Zeta.of(context).spacing.medium,
-  // 'large': Zeta.of(context).spacing.large,
-  // 'xl': Zeta.of(context).spacing.xl,
-  // '2xl': Zeta.of(context).spacing.xl_2,
-  // '3xl': Zeta.of(context).spacing.xl_3,
-  // '4xl': Zeta.of(context).spacing.xl_4,
-  // '5xl': Zeta.of(context).spacing.xl_5,
-  // '6xl': Zeta.of(context).spacing.xl_6,
-  // '7xl': Zeta.of(context).spacing.xl_7,
-  // '8xl': Zeta.of(context).spacing.xl_8,
-  // '9xl': Zeta.of(context).spacing.xl_9,
-  // '10xl': Zeta.of(context).spacing.xl_10,
-  // '11xl': Zeta.of(context).spacing.xl_11,
-};
-Map<String, double> baseSpacings = {
-  // 'x1': ZetaSpacingBase.x1,
-  // 'x2': ZetaSpacingBase.x2,
-  // 'x3': ZetaSpacingBase.x3,
-  // 'x3.5': ZetaSpacingBase.x3_5,
-  // 'x4': ZetaSpacingBase.x4,
-  // 'x5': ZetaSpacingBase.x5,
-  // 'x6': ZetaSpacingBase.x6,
-  // 'x7': ZetaSpacingBase.x7,
-  // 'x8': ZetaSpacingBase.x8,
-  // 'x9': ZetaSpacingBase.x9,
-  // 'x10': ZetaSpacingBase.x10,
-  // 'x11': ZetaSpacingBase.x11,
-  // 'x12': ZetaSpacingBase.x12,
-  // 'x13': ZetaSpacingBase.x13,
-  // 'x14': ZetaSpacingBase.x14,
-  // 'x15': ZetaSpacingBase.x15,
-  // 'x30': ZetaSpacingBase.x30,
-  // 'x50': ZetaSpacingBase.x50,
-};
+    ),
+  );
+}
 
 class _SpacingDemo extends StatelessWidget {
   final MapEntry<String, double> size;

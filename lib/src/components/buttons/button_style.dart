@@ -119,7 +119,6 @@ ButtonStyle buttonStyle(
   BuildContext context,
 ) {
   final ZetaColorSemantics colors = Zeta.of(context).colors;
-  // final Color color = backgroundColor != null ? ZetaColorSwatch.fromColor(backgroundColor) : type.color(colors);
   final Color backgroundColor = type.backgroundColor(colors);
   final Color backgroundColorHover = type.hoverColor(colors);
   final Color backgroundColorPressed = type.pressedColor(colors);
@@ -171,7 +170,7 @@ ButtonStyle buttonStyle(
       }
       // TODO(UX-1134): This removes a defualt border when focused, rather than adding a second border when focused.
       if (states.contains(WidgetState.focused)) {
-        return ZetaBorderTemp.focusBorder(context);
+        return ZetaBorders.focusBorder(context);
       }
       if (type.border) {
         return BorderSide(

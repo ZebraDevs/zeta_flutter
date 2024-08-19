@@ -139,11 +139,10 @@ class _ZetaNavigationRailItemContent extends ZetaStatelessWidget {
   final EdgeInsets? padding;
   final bool? wordWrap;
 
+  // TODO(UX-1173): No hover state for navigation rail items
   @override
   Widget build(BuildContext context) {
     final zeta = Zeta.of(context);
-
-    // TODO(thelukewalton): No hover state for navigation rail items
 
     final Color foregroundColor = disabled
         ? zeta.colors.main.disabled

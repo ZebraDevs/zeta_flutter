@@ -109,7 +109,7 @@ class _ZetaRadioState<T> extends State<ZetaRadio<T>> with TickerProviderStateMix
                           color: states.contains(WidgetState.disabled)
                               ? zetaColors.main.disabled
                               : zetaColors.main.defaultColor,
-                          height: 1.33,
+                          height: 4 / 3,
                         ),
                         child: widget.label!,
                       ).paddingEnd(Zeta.of(context).spacing.minimum),
@@ -175,7 +175,7 @@ class _RadioPainter extends ToggleablePainter {
     final Paint paint = Paint()
       ..color = colors.surface.primary
       ..style = PaintingStyle.stroke
-      ..strokeWidth = Zeta.of(context).spacing.small + ZetaBorderTemp.borderWidth;
+      ..strokeWidth = Zeta.of(context).spacing.small + ZetaBorders.borderWidth;
     if (isFocused) canvas.drawCircle(center, _kInnerRadius, paint);
 
     // Outer circle
@@ -186,7 +186,7 @@ class _RadioPainter extends ToggleablePainter {
               ? inactiveColor
               : activeColor
       ..style = PaintingStyle.stroke
-      ..strokeWidth = ZetaBorderTemp.borderWidth;
+      ..strokeWidth = ZetaBorders.borderWidth;
     canvas.drawCircle(center, _kOuterRadius, paint);
 
     // Inner circle

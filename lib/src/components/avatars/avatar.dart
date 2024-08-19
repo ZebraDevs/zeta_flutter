@@ -323,7 +323,7 @@ extension on ZetaAvatarSize {
       case ZetaAvatarSize.xs:
       case ZetaAvatarSize.xxs:
       case ZetaAvatarSize.xxxs:
-        return Zeta.of(context).spacing.minimum / 2; //2dp
+        return ZetaBorders.borderWidth;
     }
   }
 

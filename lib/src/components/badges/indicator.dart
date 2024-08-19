@@ -113,7 +113,10 @@ class ZetaIndicator extends ZetaStatelessWidget {
         width: sizePixels + Zeta.of(context).spacing.minimum,
         height: sizePixels + Zeta.of(context).spacing.minimum,
         decoration: BoxDecoration(
-          border: Border.fromBorderSide(ZetaBorderTemp.indicatorBorder(context)),
+          border: Border.all(
+            width: ZetaBorders.borderWidth,
+            color: Zeta.of(context).colors.border.pure,
+          ),
           color: (inverse ? foregroundColor : Colors.transparent),
           borderRadius: Zeta.of(context).radii.full,
         ),

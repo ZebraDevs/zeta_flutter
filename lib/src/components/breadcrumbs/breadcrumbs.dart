@@ -320,7 +320,7 @@ class _BreadCrumbsTruncatedState extends State<_BreadCrumbsTruncated> {
                 ),
                 side: WidgetStateProperty.resolveWith((states) {
                   if (states.contains(WidgetState.focused)) {
-                    return ZetaBorderTemp.focusBorder(context);
+                    return ZetaBorders.focusBorder(context);
                   }
                   if (states.contains(WidgetState.hovered)) {
                     return BorderSide(color: colors.border.hover, width: 0.5);

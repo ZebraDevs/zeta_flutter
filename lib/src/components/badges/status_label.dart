@@ -36,11 +36,11 @@ class ZetaStatusLabel extends ZetaStatelessWidget {
   Widget build(BuildContext context) {
     final colors = Zeta.of(context).colors;
 
-    // final Color colors = status.colorSwatch(context);
     final Color backgroundColor = status.backgroundColor(colors);
     final Color borderColor = status.borderColor(colors);
     final Color iconColor = status.foregroundColor(colors);
     final Color textColor = colors.main.defaultColor;
+
     return Semantics(
       value: semanticLabel ?? label,
       child: DecoratedBox(

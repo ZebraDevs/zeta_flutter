@@ -16,13 +16,13 @@ class ZetaPureColorSwatch extends ColorSwatch<int> with EquatableMixin {
   }) : super(primary, swatch);
 
   /// Lightest shade of the color.
-  Color get shade0 => this[0]!;
+  Color get shade0 => this[0] ?? Colors.white;
 
   /// Medium shade of the color.
-  Color get shade500 => this[0]!;
+  Color get shade500 => this[500] ?? Colors.grey;
 
   /// Darkest shade of the color.
-  Color get shade1000 => this[0]!;
+  Color get shade1000 => this[1000] ?? Colors.white;
 
   @override
   List<Object?> get props => [super.value, shade0, shade500, shade1000];

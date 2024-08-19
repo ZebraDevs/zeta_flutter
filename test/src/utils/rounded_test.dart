@@ -7,18 +7,13 @@ import '../../test_utils/test_app.dart';
 void main() {
   testWidgets('Global round inherited', (WidgetTester tester) async {
     final GlobalKey key = GlobalKey();
-
     await tester.pumpWidget(
       TestApp(
         rounded: true,
-        home: Builder(
-          builder: (context) {
-            return ZetaAccordion(
-              key: key,
-              title: 'Test Accordion',
-              child: const ZetaStatusLabel(label: 'Label'),
-            );
-          },
+        home: ZetaAccordion(
+          key: key,
+          title: 'Test Accordion',
+          child: const ZetaStatusLabel(label: 'Label'),
         ),
       ),
     );
@@ -39,15 +34,11 @@ void main() {
 
   testWidgets('Global sharp inherited', (WidgetTester tester) async {
     await tester.pumpWidget(
-      TestApp(
+      const TestApp(
         rounded: false,
-        home: Builder(
-          builder: (context) {
-            return const ZetaAccordion(
-              title: 'Test Accordion',
-              child: ZetaStatusLabel(label: 'Label'),
-            );
-          },
+        home: ZetaAccordion(
+          title: 'Test Accordion',
+          child: ZetaStatusLabel(label: 'Label'),
         ),
       ),
     );
@@ -70,14 +61,10 @@ void main() {
     await tester.pumpWidget(
       TestApp(
         rounded: false,
-        home: Builder(
-          builder: (context) {
-            return ZetaAccordion(
-              key: key,
-              title: 'Test Accordion',
-              child: const ZetaStatusLabel(label: 'Label', rounded: true),
-            );
-          },
+        home: ZetaAccordion(
+          key: key,
+          title: 'Test Accordion',
+          child: const ZetaStatusLabel(label: 'Label', rounded: true),
         ),
       ),
     );
@@ -100,23 +87,19 @@ void main() {
     const Key roundKey = Key('round');
 
     await tester.pumpWidget(
-      TestApp(
+      const TestApp(
         rounded: false,
-        home: Builder(
-          builder: (context) {
-            return const Column(
-              children: [
-                ZetaStatusLabel(label: 'Label', key: sharpKey),
-                ZetaRoundedScope(
-                  rounded: true,
-                  child: ZetaAccordion(
-                    title: 'Test Accordion',
-                    child: ZetaStatusLabel(label: 'Label', key: roundKey),
-                  ),
-                ),
-              ],
-            );
-          },
+        home: Column(
+          children: [
+            ZetaStatusLabel(label: 'Label', key: sharpKey),
+            ZetaRoundedScope(
+              rounded: true,
+              child: ZetaAccordion(
+                title: 'Test Accordion',
+                child: ZetaStatusLabel(label: 'Label', key: roundKey),
+              ),
+            ),
+          ],
         ),
       ),
     );
@@ -148,23 +131,19 @@ void main() {
     const Key sharpKey2 = Key('round');
 
     await tester.pumpWidget(
-      TestApp(
+      const TestApp(
         rounded: false,
-        home: Builder(
-          builder: (context) {
-            return const Column(
-              children: [
-                ZetaStatusLabel(label: 'Label', key: sharpKey),
-                ZetaRoundedScope(
-                  rounded: true,
-                  child: ZetaAccordion(
-                    title: 'Test Accordion',
-                    child: ZetaRoundedScope(rounded: false, child: ZetaStatusLabel(label: 'Label', key: sharpKey2)),
-                  ),
-                ),
-              ],
-            );
-          },
+        home: Column(
+          children: [
+            ZetaStatusLabel(label: 'Label', key: sharpKey),
+            ZetaRoundedScope(
+              rounded: true,
+              child: ZetaAccordion(
+                title: 'Test Accordion',
+                child: ZetaRoundedScope(rounded: false, child: ZetaStatusLabel(label: 'Label', key: sharpKey2)),
+              ),
+            ),
+          ],
         ),
       ),
     );

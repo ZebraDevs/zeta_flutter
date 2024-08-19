@@ -147,7 +147,7 @@ void main() {
     await tester.pumpAndSettle();
     expect(
       filledButton.style?.side?.resolve({WidgetState.focused}),
-      BorderSide(color: ZetaPrimitivesLight().blue.shade50, width: ZetaBorderTemp.borderWidth),
+      BorderSide(color: ZetaPrimitivesLight().blue.shade50, width: ZetaBorders.borderWidth),
     );
   });
 

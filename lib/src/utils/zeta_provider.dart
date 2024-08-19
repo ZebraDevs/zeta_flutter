@@ -149,6 +149,8 @@ class ZetaProvider extends StatefulWidget with Diagnosticable {
 /// The state associated with [ZetaProvider].
 /// {@category Utils}
 class ZetaProviderState extends State<ZetaProvider> with Diagnosticable, WidgetsBindingObserver {
+  bool _gotTheme = false;
+
   // Fields for ZetaThemeManager.
 
   /// Represents the late initialization of the ZetaContrast value.
@@ -223,6 +225,9 @@ class ZetaProviderState extends State<ZetaProvider> with Diagnosticable, Widgets
 
     // Apply the initial contrast to the theme data.
     _zetaThemeData = widget.initialZetaThemeData.apply(contrast: _contrast);
+
+    // Ensure this is only triggered once.
+    _gotTheme = true;
   }
 
   /// Clean up function to be called when this object is removed from the tree.
@@ -272,7 +277,7 @@ class ZetaProviderState extends State<ZetaProvider> with Diagnosticable, Widgets
 
   @override
   Widget build(BuildContext context) {
-    if (widget.initialContrast != null && widget.initialThemeMode != null) {
+    if ((widget.initialContrast != null && widget.initialThemeMode != null) || _gotTheme) {
       return _getChild();
     }
     return FutureBuilder<dynamic>(
@@ -282,6 +287,7 @@ class ZetaProviderState extends State<ZetaProvider> with Diagnosticable, Widgets
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Center(child: CircularProgressIndicator());
         }
+
         return _getChild();
       },
     );
