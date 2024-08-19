@@ -1,5 +1,22 @@
 # Changelog
 
+## [0.15.1](https://github.com/ZebraDevs/zeta_flutter/compare/v0.15.0...v0.15.1) (2024-08-19)
+
+
+### 🪲 Bug Fixes
+
+* Allow custom icons in ZetaFilterSelection ([#152](https://github.com/ZebraDevs/zeta_flutter/issues/152)) ([a493129](https://github.com/ZebraDevs/zeta_flutter/commit/a4931291504613d71a09584b442e28d34c71d4a6))
+
+
+### ⛓️ Dependencies
+
+* Update pubspec ([faaa6fe](https://github.com/ZebraDevs/zeta_flutter/commit/faaa6fe5a77953e7b318386a0244f1e98cb88772))
+
+
+### 🧹 Miscellaneous Chores
+
+* Remve support for deprecated buttonBarTheme in ThemeData ([a493129](https://github.com/ZebraDevs/zeta_flutter/commit/a4931291504613d71a09584b442e28d34c71d4a6))
+
 ## [0.15.0](https://github.com/ZebraDevs/zeta_flutter/compare/v0.14.1...v0.15.0) (2024-07-30)
 
 
