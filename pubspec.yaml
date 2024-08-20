@@ -43,21 +43,21 @@ flutter:
   fonts:
     - family: IBMPlexSans
       fonts:
-        - asset: lib/src/assets/fonts/IBMPlexSans-Light.otf
+        - asset: lib/assets/fonts/IBMPlexSans-Light.otf
           weight: 300
-        - asset: lib/src/assets/fonts/IBMPlexSans-Regular.otf
+        - asset: lib/assets/fonts/IBMPlexSans-Regular.otf
           weight: 400
-        - asset: lib/src/assets/fonts/IBMPlexSans-Medium.otf
+        - asset: lib/assets/fonts/IBMPlexSans-Medium.otf
           weight: 500
     - family: zeta-icons
       fonts:
-        - asset: lib/src/assets/fonts/zeta-icons-round.ttf
+        - asset: lib/generated/icons/zeta-icons-round.ttf
     - family: zeta-icons-round
       fonts:
-        - asset: lib/src/assets/fonts/zeta-icons-round.ttf
+        - asset: lib/generated/icons/zeta-icons-round.ttf
     - family: zeta-icons-sharp
       fonts:
-        - asset: lib/src/assets/fonts/zeta-icons-sharp.ttf
+        - asset: lib/generated/icons/zeta-icons-sharp.ttf
   assets:
-    - lib/src/assets/flags/
+    - lib/assets/flags/
   uses-material-design: true
