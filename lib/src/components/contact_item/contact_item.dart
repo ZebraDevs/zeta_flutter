@@ -45,34 +45,34 @@ class ZetaContactItem extends ZetaStatelessWidget {
         button: true,
         child: SelectionContainer.disabled(
           child: Material(
-            color: colors.surfacePrimary,
+            color: colors.surface.defaultColor,
             child: DecoratedBox(
               decoration: BoxDecoration(
-                border: enabledDivider ? Border(bottom: BorderSide(color: colors.borderDisabled)) : null,
+                border: enabledDivider ? Border(bottom: BorderSide(color: colors.border.disabled)) : null,
               ),
               child: InkWell(
                 onTap: onTap,
                 child: Semantics(
                   explicitChildNodes: explicitChildNodes,
                   child: Padding(
-                    padding: const EdgeInsets.only(
-                      top: ZetaSpacing.small,
-                      bottom: ZetaSpacing.small,
-                      left: ZetaSpacing.xl_2,
+                    padding: EdgeInsets.only(
+                      top: Zeta.of(context).spacing.small,
+                      bottom: Zeta.of(context).spacing.small,
+                      left: Zeta.of(context).spacing.xl_2,
                     ),
                     child: Row(
                       children: [
                         leading,
                         Flexible(
                           child: Padding(
-                            padding: const EdgeInsets.only(left: ZetaSpacing.medium),
+                            padding: EdgeInsets.only(left: Zeta.of(context).spacing.medium),
                             child: Column(
                               mainAxisSize: MainAxisSize.min,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 DefaultTextStyle(
                                   style: ZetaTextStyles.bodyMedium.copyWith(
-                                    color: colors.textDefault,
+                                    color: colors.main.defaultColor,
                                   ),
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
@@ -80,7 +80,7 @@ class ZetaContactItem extends ZetaStatelessWidget {
                                 ),
                                 DefaultTextStyle(
                                   style: ZetaTextStyles.bodySmall.copyWith(
-                                    color: colors.textSubtle,
+                                    color: colors.main.subtle,
                                   ),
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,

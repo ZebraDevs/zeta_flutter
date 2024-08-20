@@ -72,21 +72,25 @@ class _ZetaSliderState extends State<ZetaSlider> {
 
             /// Active Track
             activeTrackColor: _activeColor,
-            disabledActiveTrackColor: colors.surfaceDisabled,
+            disabledActiveTrackColor: colors.surface.disabled,
 
             /// Inactive Track
-            inactiveTrackColor: colors.surfaceInfoSubtle,
+            inactiveTrackColor: colors.surface.infoSubtle,
 
             /// Ticks
-            activeTickMarkColor: colors.surfaceDefault,
-            inactiveTickMarkColor: colors.surfaceDefault,
+            activeTickMarkColor: colors.surface.defaultColor,
+            inactiveTickMarkColor: colors.surface.defaultColor,
 
             /// Thumb
-            thumbColor: colors.surfaceDefaultInverse,
-            disabledThumbColor: colors.surfaceDisabled,
-            overlayShape: _SliderThumb(size: ZetaSpacingBase.x2_5, rounded: context.rounded, color: _activeColor),
+            thumbColor: colors.surface.defaultInverse,
+            disabledThumbColor: colors.surface.disabled,
+            overlayShape: _SliderThumb(
+              size: Zeta.of(context).spacing.xl / 2,
+              rounded: context.rounded,
+              color: _activeColor,
+            ),
             thumbShape: _SliderThumb(
-              size: ZetaSpacing.small,
+              size: Zeta.of(context).spacing.large / 2,
               rounded: context.rounded,
               color: _activeColor,
             ),
@@ -116,9 +120,9 @@ class _ZetaSliderState extends State<ZetaSlider> {
   Color get _activeColor {
     final colors = Zeta.of(context).colors;
     if (widget.onChange == null) {
-      return colors.surfaceDisabled;
+      return colors.surface.disabled;
     }
-    return _selected ? colors.primary : colors.surfaceDefaultInverse;
+    return _selected ? colors.main.primary : colors.surface.defaultInverse;
   }
 }
 
@@ -129,7 +133,7 @@ typedef SliderThumb = _SliderThumb;
 /// Custom slider thumb component
 class _SliderThumb extends SliderComponentShape {
   /// Constructor for [_SliderThumb]
-  const _SliderThumb({required this.size, required this.rounded, required this.color});
+  _SliderThumb({required this.size, required this.rounded, required this.color});
 
   /// Radius or width/height for [_SliderThumb] depending on shape
   final double size;

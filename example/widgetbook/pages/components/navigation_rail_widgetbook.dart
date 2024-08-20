@@ -41,14 +41,14 @@ Widget navigationRailUseCase(BuildContext context) {
               ),
               Expanded(
                 child: Padding(
-                  padding: const EdgeInsets.all(ZetaSpacing.xl_1),
+                  padding: EdgeInsets.all(Zeta.of(context).spacing.xl),
                   child: selectedIndex == null
                       ? const Nothing()
                       : Text(
                           itemsList[selectedIndex!],
                           textAlign: TextAlign.center,
                           style: ZetaTextStyles.titleMedium.copyWith(
-                            color: zeta.colors.textDefault,
+                            color: zeta.colors.main.defaultColor,
                             fontWeight: FontWeight.bold,
                           ),
                         ),

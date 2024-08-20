@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
+import '../../generated/generated.dart';
 import 'color_extensions.dart';
 import 'color_scheme.dart';
 import 'color_swatch.dart';
@@ -10,32 +11,31 @@ import 'contrast.dart';
 /// A customizable, token-based color palette, adapting Zeta colors to Flutter's colorScheme.
 /// {@category Theme}
 @immutable
-class ZetaColors extends Equatable {
+@Deprecated('Removed in v1.0.0')
+class ZetaColors extends Equatable implements ZetaColorSemantics {
   /// Default constructor for instance of [ZetaColors].
+  @Deprecated('Removed in v1.0.0')
   ZetaColors({
-    this.brightness = Brightness.light,
-    this.contrast = ZetaContrast.aa,
-    this.white = ZetaColorBase.white,
-    this.black = ZetaColorBase.black,
+    @Deprecated('Removed in v1.0.0') this.brightness = Brightness.light,
+    @Deprecated('Removed in v1.0.0') this.contrast = ZetaContrast.aa,
+    @Deprecated('Removed in v1.0.0') this.white = ZetaColorBase.white,
+    @Deprecated('Removed in v1.0.0') this.black = ZetaColorBase.black,
     ZetaColorSwatch? primary,
     ZetaColorSwatch? secondary,
     ZetaColorSwatch? error,
     ZetaColorSwatch? cool,
     ZetaColorSwatch? warm,
-    ZetaColorSwatch? pure,
+    ZetaPureColorSwatch? pure,
     Color? surfacePrimary,
     Color? surfaceSecondary,
     Color? surfaceTertiary,
     bool adjust = true,
-    @Deprecated('This color has been deprecated as of v0.10.0') link,
-    @Deprecated('This color has been deprecated as of v0.10.0') linkVisited,
-    @Deprecated('This color has been deprecated as of v0.10.0') shadow,
   })  : primary = _adjustedValue(primary, ZetaColorBase.blue, adjust, brightness, contrast),
         secondary = _adjustedValue(secondary, primary ?? ZetaColorBase.yellow, adjust, brightness, contrast),
         error = _adjustedValue(error, ZetaColorBase.red, adjust, brightness, contrast),
         cool = _adjustedValue(cool, ZetaColorBase.cool, adjust, brightness, ZetaContrast.aa),
         warm = _adjustedValue(warm, ZetaColorBase.warm, adjust, brightness, ZetaContrast.aa),
-        pure = _adjustedValue(pure, ZetaColorBase.pure, adjust, brightness, ZetaContrast.aa),
+        pure = _adjustedValuePure(pure, ZetaColorBase.pure, adjust, brightness, ZetaContrast.aa),
         surfacePrimary = surfacePrimary ?? white,
         surfaceSecondary = surfaceSecondary ??
             _adjustedValue(
@@ -74,6 +74,7 @@ class ZetaColors extends Equatable {
   /// [warm] A color swatch for warmer color tones. Defaults to null.
   /// [white] A color option for white color. Defaults to null.
   /// [black] A color option for black color. Defaults to null.
+  @Deprecated('Removed in v1.0.0')
   factory ZetaColors.light({
     ZetaContrast contrast = ZetaContrast.aa,
     ZetaColorSwatch? primary,
@@ -83,9 +84,6 @@ class ZetaColors extends Equatable {
     ZetaColorSwatch? warm,
     Color? white,
     Color? black,
-    @Deprecated('This color has been deprecated as of v0.10.0') link,
-    @Deprecated('This color has been deprecated as of v0.10.0') linkVisited,
-    @Deprecated('This color has been deprecated as of v0.10.0') shadow,
   }) {
     return ZetaColors(
       white: white ?? ZetaColorBase.white,
@@ -114,6 +112,7 @@ class ZetaColors extends Equatable {
   /// [warm] A color swatch for warmer color tones. Defaults to null.
   /// [white] A color option for white color. Defaults to null.
   /// [black] A color option for black color. Defaults to null.
+  @Deprecated('Removed in v1.0.0')
   factory ZetaColors.dark({
     ZetaContrast contrast = ZetaContrast.aa,
     ZetaColorSwatch? primary,
@@ -123,9 +122,6 @@ class ZetaColors extends Equatable {
     ZetaColorSwatch? warm,
     Color? white,
     Color? black,
-    @Deprecated('This color has been deprecated as of v0.10.0') link,
-    @Deprecated('This color has been deprecated as of v0.10.0') linkVisited,
-    @Deprecated('This color has been deprecated as of v0.10.0') shadow,
   }) {
     return ZetaColors(
       cool: cool,
@@ -143,48 +139,14 @@ class ZetaColors extends Equatable {
     );
   }
 
-  /// Hover surface color.
-  @Deprecated('Use surfaceHover instead. ' 'This color has been deprecated as of v0.10.0.')
-  Color get surfaceHovered => surfaceHover;
-
-  /// Selected hover surface color.
-  @Deprecated('Use surfaceSelectedHover instead. ' 'This color has been deprecated as of v0.10.0.')
-  Color get surfaceSelectedHovered => surfaceSelectedHover;
-
-  /// Positive color.
-  @Deprecated('Use surfacePositive instead. ' 'This color has been deprecated as of v0.10.0.')
-  ZetaColorSwatch get positive => surfacePositive;
-
-  /// Negative color.
-  @Deprecated('Use surfaceNegative instead. ' 'This color has been deprecated as of v0.10.0.')
-  ZetaColorSwatch get negative => surfaceNegative;
-
-  /// Warning color.
-  @Deprecated('Use surfaceWarning instead. ' 'This color has been deprecated as of v0.10.0.')
-  ZetaColorSwatch get warning => surfaceWarning;
-
-  /// Info color.
-  @Deprecated('Use surfaceInfo instead. ' 'This color has been deprecated as of v0.10.0.')
-  ZetaColorSwatch get info => surfaceInfo;
-
-  /// Shadow color.
-  @Deprecated('This color has been deprecated as of v0.10.0.')
-  Color get shadow => const Color(0x1A49505E);
-
-  /// Link color
-  @Deprecated('This color has been deprecated as of v0.10.0.')
-  Color get link => ZetaColorBase.linkLight;
-
-  /// Visited link color
-  @Deprecated('This color has been deprecated as of v0.10.0.')
-  Color get linkVisited => ZetaColorBase.linkVisitedLight;
-
   /// Constructor Fields
 
   /// Represents the brightness value.
+  @Deprecated('Removed in v1.0.0')
   final Brightness brightness;
 
   /// Represents the Zeta accessibility standard.
+  @Deprecated('Removed in v1.0.0')
   final ZetaContrast contrast;
 
   /// Primary color swatch.
@@ -227,13 +189,14 @@ class ZetaColors extends Equatable {
   /// Defaults to [ZetaColorBase.pure].
   ///
   /// {@macro zeta-color-dark}
-  final ZetaColorSwatch pure;
+  final ZetaPureColorSwatch pure;
 
   /// White color.
   ///
   /// Maps to [ColorScheme.surface].
   ///
   /// Defaults to [ZetaColorBase.white].
+  @Deprecated('Removed in v1.0.0')
   final Color white;
 
   /// Shadow color.
@@ -241,6 +204,7 @@ class ZetaColors extends Equatable {
   /// Maps to [ColorScheme.surface].
   ///
   /// Defaults to [ZetaColorBase.black].
+  @Deprecated('Removed in v1.0.0')
   final Color black;
 
   /// Surface color.
@@ -578,26 +542,24 @@ class ZetaColors extends Equatable {
   final ZetaColorSwatch pink;
 
   /// True if current [ZetaColors] object uses dark mode colors.
+  @Deprecated('Removed in v1.0.0')
   bool get isDarkMode => brightness == Brightness.dark;
-
-  /// List of colorful colors.
-  List<ZetaColorSwatch> get rainbow => [red, orange, yellow, green, blue, teal, pink];
-
-  /// Map of colorful colors.
-  Map<String, ZetaColorSwatch> get rainbowMap => {
-        'red': red,
-        'orange': orange,
-        'yellow': yellow,
-        'green': green,
-        'blue': blue,
-        'teal': teal,
-        'pink': pink,
-      };
 
   /// Helper function to adjust color swatch values based on brightness and contrast
   static ZetaColorSwatch _adjustedValue(
     ZetaColorSwatch? value,
     ZetaColorSwatch defaultValue,
+    bool adjust,
+    Brightness brightness,
+    ZetaContrast contrast,
+  ) {
+    final swatch = value ?? defaultValue;
+    return adjust ? swatch.apply(brightness: brightness, contrast: contrast) : swatch;
+  }
+
+  static ZetaPureColorSwatch _adjustedValuePure(
+    ZetaPureColorSwatch? value,
+    ZetaPureColorSwatch defaultValue,
     bool adjust,
     Brightness brightness,
     ZetaContrast contrast,
@@ -619,6 +581,8 @@ class ZetaColors extends Equatable {
   /// Applies new property values to [ZetaColors] and returns a new copy.
   ///
   /// Each property defaults to the previous value if not specified.
+  ///
+  @Deprecated('Removed in v1.0.0')
   ZetaColors copyWith({
     Brightness? brightness,
     ZetaContrast? contrast,
@@ -632,9 +596,6 @@ class ZetaColors extends Equatable {
     Color? surfacePrimary,
     Color? surfaceSecondary,
     Color? surfaceTertiary,
-    @Deprecated('This color has been deprecated as of v0.10.0') Color? link,
-    @Deprecated('This color has been deprecated as of v0.10.0') Color? linkVisited,
-    @Deprecated('This color has been deprecated as of v0.10.0') Color? shadow,
   }) {
     return ZetaColors(
       white: white ?? this.white,
@@ -656,6 +617,7 @@ class ZetaColors extends Equatable {
   /// Apply the given contrast to the color scheme and return a new color scheme.
   ///
   /// If the contrast is the same as the current one, this method will return the current color scheme.
+  @Deprecated('Removed in v1.0.0')
   ZetaColors apply({
     required ZetaContrast contrast,
   }) {
@@ -666,6 +628,7 @@ class ZetaColors extends Equatable {
   }
 
   /// Returns a [ZetaColorScheme] based on the properties of the current [ZetaColors].
+  @Deprecated('Removed in v1.0.0')
   ZetaColorScheme toScheme() {
     final effectivePrimary = primary.shade(contrast.primary);
     final effectiveSecondary = secondary.shade(contrast.primary);
@@ -701,6 +664,21 @@ class ZetaColors extends Equatable {
         surfaceSecondary,
         surfaceTertiary,
       ];
+
+  @override
+  ZetaSemanticBorderColors get border => ZetaSemanticBorderColorsAA(primitives: primitives);
+
+  @override
+  ZetaSemanticMainColors get main => ZetaSemanticMainColorsAA(primitives: primitives);
+
+  @override
+  ZetaPrimitives get primitives => brightness == Brightness.dark ? ZetaPrimitivesDark() : ZetaPrimitivesLight();
+
+  @override
+  ZetaSemanticStateColors get state => ZetaSemanticStateColorsAA(primitives: primitives);
+
+  @override
+  ZetaSemanticSurfaceColors get surface => ZetaSemanticSurfaceColorsAA(primitives: primitives);
 }
 
 enum _ZetaColorProperties {
@@ -736,6 +714,7 @@ enum _ZetaColorProperties {
 /// Custom extension on ColorScheme which makes  [ZetaColors] available through theme context.
 ///
 /// A customizable, token-based color palette, adapting Zeta colors to Flutter's colorScheme.
+@Deprecated('Removed in v1.0.0')
 extension ZetaColorGetters on ColorScheme {
   ZetaColorScheme? get _resolve => this is ZetaColorScheme ? this as ZetaColorScheme : null;
 

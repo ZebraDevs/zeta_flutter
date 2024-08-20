@@ -144,7 +144,7 @@ class ZetaAvatar extends ZetaStatelessWidget {
   /// ```dart
   ///  TextStyle(
   ///   fontSize: size.fontSize,
-  ///   letterSpacing: ZetaSpacing.none,
+  ///   letterSpacing: Zeta.of(context).spacing.none,
   ///   color: backgroundColor?.onColor,
   ///   fontWeight: FontWeight.w500,
   /// )
@@ -172,8 +172,6 @@ class ZetaAvatar extends ZetaStatelessWidget {
     );
   }
 
-  bool get _showPlaceholder => image == null && (initials == null || initials!.isEmpty);
-
   @override
   Widget build(BuildContext context) {
     final zetaColors = Zeta.of(context).colors;
@@ -189,8 +187,8 @@ class ZetaAvatar extends ZetaStatelessWidget {
                   size == ZetaAvatarSize.xs ? initials!.substring(0, 1) : initials!,
                   style: initialTextStyle ??
                       TextStyle(
-                        fontSize: size.fontSize,
-                        letterSpacing: ZetaSpacing.none,
+                        fontSize: size.fontSize(context),
+                        letterSpacing: Zeta.of(context).spacing.none,
                         color: backgroundColor?.onColor,
                         fontWeight: FontWeight.w500,
                       ),
@@ -199,7 +197,7 @@ class ZetaAvatar extends ZetaStatelessWidget {
             : null);
 
     final innerContent = ClipRRect(
-      borderRadius: ZetaRadius.full,
+      borderRadius: Zeta.of(context).radii.full,
       child: innerChild,
     );
 
@@ -211,41 +209,40 @@ class ZetaAvatar extends ZetaStatelessWidget {
           child: Stack(
             children: [
               Container(
-                width: sizePixels,
-                height: sizePixels,
+                width: sizePixels(context),
+                height: sizePixels(context),
                 decoration: BoxDecoration(
                   border: borderColor != null ? Border.all(color: borderColor!, width: 0) : null,
-                  borderRadius: ZetaRadius.full,
-                  color: backgroundColor ?? (_showPlaceholder ? zetaColors.surfacePrimary : zetaColors.cool.shade20),
+                  borderRadius: Zeta.of(context).radii.full,
                 ),
                 child: borderColor != null
                     ? Container(
-                        width: contentSizePixels,
-                        height: contentSizePixels,
+                        width: contentSizePixels(context),
+                        height: contentSizePixels(context),
                         decoration: BoxDecoration(
-                          color: backgroundColor ?? zetaColors.surfaceHover,
-                          border: Border.all(color: borderColor!, width: borderSize),
-                          borderRadius: ZetaRadius.full,
+                          color: backgroundColor ?? zetaColors.surface.hover,
+                          border: Border.all(color: borderColor!, width: borderSize(context)),
+                          borderRadius: Zeta.of(context).radii.full,
                         ),
                         child: ClipRRect(
-                          borderRadius: ZetaRadius.full,
+                          borderRadius: Zeta.of(context).radii.full,
                           child: innerContent,
                         ),
                       )
                     : DecoratedBox(
                         decoration: BoxDecoration(
-                          borderRadius: ZetaRadius.full,
-                          color: backgroundColor ?? zetaColors.surfaceHover,
+                          borderRadius: Zeta.of(context).radii.full,
+                          color: backgroundColor ?? zetaColors.surface.hover,
                         ),
                         child: ClipRRect(
-                          borderRadius: ZetaRadius.full,
+                          borderRadius: Zeta.of(context).radii.full,
                           child: innerContent,
                         ),
                       ),
               ),
               if (upperBadge != null)
                 Positioned(
-                  right: ZetaSpacing.none,
+                  right: Zeta.of(context).spacing.none,
                   child: Semantics(
                     value: semanticLowerBadgeLabel,
                     child: upperBadge!.copyWith(
@@ -255,8 +252,8 @@ class ZetaAvatar extends ZetaStatelessWidget {
                 ),
               if (lowerBadge != null)
                 Positioned(
-                  right: ZetaSpacing.none,
-                  bottom: ZetaSpacing.none,
+                  right: Zeta.of(context).spacing.none,
+                  bottom: Zeta.of(context).spacing.none,
                   child: Semantics(
                     value: semanticLowerBadgeLabel,
                     child: lowerBadge!.copyWith(size: size),
@@ -287,30 +284,32 @@ class ZetaAvatar extends ZetaStatelessWidget {
 }
 
 extension on ZetaAvatarSize {
-  double get pixelSize {
+  double pixelSize(BuildContext context) {
     switch (this) {
       case ZetaAvatarSize.xxxl:
-        return ZetaSpacingBase.x50;
+        return Zeta.of(context).spacing.minimum * 50;
+      // return ZetaSpacingBase.x50;
       case ZetaAvatarSize.xxl:
-        return ZetaSpacingBase.x30;
+        return Zeta.of(context).spacing.minimum * 30;
+      // return ZetaSpacingBase.x30;
       case ZetaAvatarSize.xl:
-        return ZetaSpacing.xl_10;
+        return Zeta.of(context).spacing.xl_10;
       case ZetaAvatarSize.l:
-        return ZetaSpacing.xl_9;
+        return Zeta.of(context).spacing.xl_9;
       case ZetaAvatarSize.m:
-        return ZetaSpacing.xl_8;
+        return Zeta.of(context).spacing.xl_8;
       case ZetaAvatarSize.s:
-        return ZetaSpacing.xl_6;
+        return Zeta.of(context).spacing.xl_6;
       case ZetaAvatarSize.xs:
-        return ZetaSpacing.xl_5;
+        return Zeta.of(context).spacing.xl_5;
       case ZetaAvatarSize.xxs:
-        return ZetaSpacing.xl_4;
+        return Zeta.of(context).spacing.xl_4;
       case ZetaAvatarSize.xxxs:
-        return ZetaSpacing.xl_2;
+        return Zeta.of(context).spacing.xl_2;
     }
   }
 
-  double get borderSize {
+  double borderSize(BuildContext context) {
     switch (this) {
       case ZetaAvatarSize.xxxl:
         return 11;
@@ -318,18 +317,18 @@ extension on ZetaAvatarSize {
       case ZetaAvatarSize.xl:
       case ZetaAvatarSize.l:
       case ZetaAvatarSize.m:
-        return ZetaSpacing.minimum;
+        return Zeta.of(context).spacing.minimum;
 
       case ZetaAvatarSize.s:
       case ZetaAvatarSize.xs:
       case ZetaAvatarSize.xxs:
       case ZetaAvatarSize.xxxs:
-        return ZetaSpacingBase.x0_5;
+        return ZetaBorders.borderWidth;
     }
   }
 
-  double get fontSize {
-    return pixelSize * 4 / 9;
+  double fontSize(BuildContext context) {
+    return pixelSize(context) * 4 / 9;
   }
 }
 
@@ -431,16 +430,16 @@ class ZetaAvatarBadge extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = Zeta.of(context).colors;
     final Color backgroundColor =
-        type == ZetaAvatarBadgeType.notification ? colors.surfaceNegative : (color ?? colors.primary);
-    final badgeSize = _getContainerSize();
-    final borderSize = _getBorderSize();
-    final paddedSize = badgeSize + ZetaSpacing.minimum;
+        type == ZetaAvatarBadgeType.notification ? colors.surface.negative : (color ?? colors.main.primary);
+    final badgeSize = _getContainerSize(context);
+    final borderSize = _getBorderSize(context);
+    final paddedSize = badgeSize + Zeta.of(context).spacing.minimum;
 
     final innerContent = Container(
       margin: const EdgeInsets.all(0.01),
       decoration: BoxDecoration(
         color: backgroundColor,
-        borderRadius: ZetaRadius.full,
+        borderRadius: Zeta.of(context).radii.full,
       ),
       child: value != null
           ? Center(
@@ -466,11 +465,11 @@ class ZetaAvatarBadge extends StatelessWidget {
       width: type == ZetaAvatarBadgeType.icon ? paddedSize : badgeSize * 1.8,
       height: type == ZetaAvatarBadgeType.icon ? paddedSize : badgeSize,
       decoration: BoxDecoration(
-        borderRadius: ZetaRadius.full,
+        borderRadius: Zeta.of(context).radii.full,
         border: type != ZetaAvatarBadgeType.notification
             ? Border.all(
                 width: borderSize,
-                color: Zeta.of(context).colors.surfacePrimary,
+                color: Zeta.of(context).colors.surface.primary,
               )
             : null,
       ),
@@ -478,12 +477,12 @@ class ZetaAvatarBadge extends StatelessWidget {
     );
   }
 
-  double _getContainerSize() {
-    return size.pixelSize / 3;
+  double _getContainerSize(BuildContext context) {
+    return size.pixelSize(context) / 3;
   }
 
-  double _getBorderSize() {
-    return size.pixelSize / 48;
+  double _getBorderSize(BuildContext context) {
+    return size.pixelSize(context) / 48;
   }
 
   @override

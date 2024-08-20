@@ -22,11 +22,13 @@ import 'constants.dart';
 /// Adjusting the themed background of the [AppBar] is straightforward with [ZetaColorScheme], ensuring it aligns with themed colors.
 /// {@category Theme}
 @immutable
+@Deprecated('Removed after v1.0.0')
 class ZetaColorScheme extends ColorScheme with Diagnosticable {
   /// Default constructor with no required properties.
   ///
   /// Creates a light theme by default using the M2 colors as its default
   /// theme.
+  @Deprecated('Removed after v1.0.0')
   const ZetaColorScheme({
     required this.zetaColors,
 

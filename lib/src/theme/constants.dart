@@ -21,4 +21,4 @@ const kZetaSwatchTargetContrasts = {
 };
 
 /// Default icon size for Zeta System.
-const double kZetaIconSize = 24;
+const double kZetaIconSize = 20;

@@ -56,14 +56,14 @@ class _NavigationRailExampleState extends State<NavigationRailExample> {
             ),
             Expanded(
               child: Padding(
-                padding: const EdgeInsets.all(ZetaSpacing.xl_1),
+                padding: EdgeInsets.all(Zeta.of(context).spacing.xl),
                 child: _selectedIndex == null
                     ? const Nothing()
                     : Text(
                         _titles[_selectedIndex!],
                         textAlign: TextAlign.center,
                         style: ZetaTextStyles.titleMedium.copyWith(
-                          color: zeta.colors.textDefault,
+                          color: zeta.colors.main.defaultColor,
                           fontWeight: FontWeight.bold,
                         ),
                       ),

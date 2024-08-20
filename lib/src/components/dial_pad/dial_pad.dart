@@ -114,14 +114,15 @@ class _ZetaDialPadState extends State<ZetaDialPad> {
   Widget build(BuildContext context) {
     return SelectionContainer.disabled(
       child: SizedBox(
-        width: (_buttonsPerRow * ZetaSpacing.xl_9) + ((_buttonsPerRow - 1) * ZetaSpacing.xl_5),
+        width:
+            (_buttonsPerRow * Zeta.of(context).spacing.xl_9) + ((_buttonsPerRow - 1) * Zeta.of(context).spacing.xl_5),
         child: GridView.count(
           crossAxisCount: _buttonsPerRow,
           shrinkWrap: true,
           semanticChildCount: _buttonValues.length,
-          mainAxisSpacing: ZetaSpacing.xl_2,
+          mainAxisSpacing: Zeta.of(context).spacing.xl_2,
           physics: const NeverScrollableScrollPhysics(),
-          crossAxisSpacing: ZetaSpacing.xl_5,
+          crossAxisSpacing: Zeta.of(context).spacing.xl_5,
           children: _buttonValues.entries
               .map(
                 (e) => ZetaDialPadButton(
@@ -192,24 +193,24 @@ class ZetaDialPadButton extends StatelessWidget {
       label: secondary,
       child: AnimatedContainer(
         duration: Durations.short2,
-        width: ZetaSpacing.xl_9,
-        height: ZetaSpacing.xl_9,
+        width: Zeta.of(context).spacing.xl_9,
+        height: Zeta.of(context).spacing.xl_9,
         decoration: ShapeDecoration(
           shape: const CircleBorder(),
-          color: colors.warm.shade10,
-          shadows: [BoxShadow(color: colors.black.withOpacity(0.15), blurRadius: 4, offset: const Offset(0, 2))],
+          color: colors.surface.warm,
+          shadows: [BoxShadow(color: Colors.black.withOpacity(0.15), blurRadius: 4, offset: const Offset(0, 2))],
         ),
         child: Material(
           color: Colors.transparent,
           child: InkWell(
             onTap: () => onTap?.call(primary),
-            borderRadius: ZetaRadius.full,
+            borderRadius: Zeta.of(context).radii.full,
             overlayColor: WidgetStateProperty.resolveWith((states) {
               if (states.contains(WidgetState.pressed)) {
-                return colors.surfaceSelectedHover;
+                return colors.surface.selectedHover;
               }
               if (states.contains(WidgetState.hovered)) {
-                return colors.surfaceHover;
+                return colors.surface.hover;
               }
               return null;
             }),

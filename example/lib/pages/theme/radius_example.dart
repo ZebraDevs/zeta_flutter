@@ -9,12 +9,17 @@ class RadiusExample extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<BorderRadius> radii = [ZetaRadius.none, ZetaRadius.minimal, ZetaRadius.rounded, ZetaRadius.full];
+    List<BorderRadius> radii = [
+      Zeta.of(context).radii.none,
+      Zeta.of(context).radii.minimal,
+      Zeta.of(context).radii.rounded,
+      Zeta.of(context).radii.full
+    ];
     final colors = Zeta.of(context).colors;
     return ExampleScaffold(
       name: name,
       child: SingleChildScrollView(
-        padding: EdgeInsets.all(ZetaSpacing.xl_2),
+        padding: EdgeInsets.all(Zeta.of(context).spacing.xl_2),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -26,21 +31,21 @@ class RadiusExample extends StatelessWidget {
                       height: 100,
                       decoration: BoxDecoration(
                         borderRadius: rad,
-                        color: Zeta.of(context).colors.blue.shade30,
-                        border: Border.all(color: colors.blue.shade80, width: 3),
+                        color: Zeta.of(context).colors.primitives.blue.shade30,
+                        border: Border.all(color: colors.primitives.blue.shade80, width: 3),
                       ),
                       child: Center(
                         child: Container(
                           decoration: BoxDecoration(
                             borderRadius: rad,
-                            color: Zeta.of(context).colors.surfacePrimary,
-                            border: Border.all(color: colors.blue.shade50, width: 3),
+                            color: Zeta.of(context).colors.surface.defaultColor,
+                            border: Border.all(color: colors.primitives.blue.shade50, width: 3),
                           ),
-                          padding: EdgeInsets.all(ZetaSpacing.large),
+                          padding: EdgeInsets.all(Zeta.of(context).spacing.large),
                           child: Text(
                             rad.radiusString.split('.').last.capitalize(),
                             style: ZetaTextStyles.titleMedium.apply(
-                              color: Zeta.of(context).colors.textDefault,
+                              color: Zeta.of(context).colors.main.defaultColor,
                               fontStyle: FontStyle.normal,
                               decoration: TextDecoration.none,
                             ),
@@ -49,7 +54,7 @@ class RadiusExample extends StatelessWidget {
                       ),
                     );
                   })
-                  .divide(const SizedBox(height: ZetaSpacing.xl_4))
+                  .divide(SizedBox(height: Zeta.of(context).spacing.xl_4))
                   .toList(),
             ),
           ],
@@ -61,10 +66,11 @@ class RadiusExample extends StatelessWidget {
 
 extension on BorderRadius {
   String get radiusString {
-    if (topLeft.x == 0) return 'ZetaRadius.none';
-    if (topLeft.x == 4) return 'ZetaRadius.minimal';
-    if (topLeft.x == 8) return 'ZetaRadius.rounded';
-    if (topLeft.x == 24) return 'ZetaRadius.wide';
-    return 'ZetaRadius.full';
+    if (topLeft.x == 0) return 'Zeta.of(context).radii.none';
+    if (topLeft.x == 4) return 'Zeta.of(context).radii.minimal';
+    if (topLeft.x == 8) return 'Zeta.of(context).radii.rounded';
+    if (topLeft.x == 16) return 'Zeta.of(context).radii.large';
+    if (topLeft.x == 24) return 'Zeta.of(context).radii.xl';
+    return 'Zeta.of(context).radii.full';
   }
 }

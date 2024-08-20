@@ -23,8 +23,9 @@ const Map<String, TextStyle> allTypes = {
   'Label indicator': ZetaTextStyles.labelIndicator,
 };
 
-Widget typographyUseCase(BuildContext context) => Padding(
-      padding: const EdgeInsets.all(ZetaSpacing.xl_2),
+Widget typographyUseCase(BuildContext context) => Container(
+      color: Zeta.of(context).colors.surface.primary,
+      padding: EdgeInsets.all(Zeta.of(context).spacing.xl_2),
       child: Text(
         context.knobs.string(label: 'Text', initialValue: 'The quick brown fox jumps over the lazy dog.'),
         style: context.knobs
@@ -34,7 +35,7 @@ Widget typographyUseCase(BuildContext context) => Padding(
               options: allTypes.values.toList(),
             )
             .apply(
-              color: Zeta.of(context).colors.textDefault,
+              color: Zeta.of(context).colors.main.defaultColor,
               fontStyle: FontStyle.normal,
               decoration: TextDecoration.none,
             ),

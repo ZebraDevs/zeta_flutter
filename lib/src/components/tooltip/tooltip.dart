@@ -42,22 +42,22 @@ class ZetaTooltip extends ZetaStatelessWidget {
   /// The padding inside the [ZetaTooltip].
   /// Default is:
   /// ```
-  /// const EdgeInsets.symmetric(
-  ///   horizontal: ZetaSpacing.small,
-  ///   vertical: ZetaSpacing.minimum,
+  ///  EdgeInsets.symmetric(
+  ///   horizontal: Zeta.of(context).spacing.small,
+  ///   vertical: Zeta.of(context).spacing.minimum,
   /// )
   /// ```
   final EdgeInsets? padding;
 
   /// The color of the tooltip.
-  /// Default is `zeta.colors.textDefault`.
+  /// Default is `zeta.colors.main.defaultColor`.
   final Color? color;
 
   /// The text style of the tooltip.
   /// Default is:
   /// ```
   /// ZetaTextStyles.bodyXSmall.copyWith(
-  ///   color: zeta.colors.textInverse,
+  ///   color: zeta.colors.main.inverse,
   ///   fontWeight: FontWeight.w500,
   /// ),
   /// ```
@@ -73,11 +73,11 @@ class ZetaTooltip extends ZetaStatelessWidget {
   @override
   Widget build(BuildContext context) {
     final zeta = Zeta.of(context);
-    final color = this.color ?? zeta.colors.textDefault;
+    final color = this.color ?? zeta.colors.main.defaultColor;
     final horizontalArrowWidth =
         [ZetaTooltipArrowDirection.left, ZetaTooltipArrowDirection.right].contains(arrowDirection)
             ? _horizontalArrowSize.width
-            : ZetaSpacing.none;
+            : Zeta.of(context).spacing.none;
 
     return ZetaRoundedScope(
       rounded: context.rounded,
@@ -120,18 +120,18 @@ class ZetaTooltip extends ZetaStatelessWidget {
                           child: DecoratedBox(
                             decoration: BoxDecoration(
                               color: color,
-                              borderRadius: context.rounded ? ZetaRadius.minimal : null,
+                              borderRadius: context.rounded ? Zeta.of(context).radii.minimal : null,
                             ),
                             child: Padding(
                               padding: padding ??
-                                  const EdgeInsets.symmetric(
-                                    horizontal: ZetaSpacing.small,
-                                    vertical: ZetaSpacing.minimum,
+                                  EdgeInsets.symmetric(
+                                    horizontal: Zeta.of(context).spacing.small,
+                                    vertical: Zeta.of(context).spacing.minimum,
                                   ),
                               child: DefaultTextStyle(
                                 style: textStyle ??
                                     ZetaTextStyles.bodyXSmall.copyWith(
-                                      color: zeta.colors.textInverse,
+                                      color: zeta.colors.main.inverse,
                                       fontWeight: FontWeight.w500,
                                     ),
                                 child: child,

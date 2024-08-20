@@ -15,11 +15,11 @@ Widget radioButtonUseCase(BuildContext context) {
         ValueChanged<String?>? onChanged =
             !disabledKnob(context) ? (value) => setState(() => groupValue = value) : null;
         return Padding(
-          padding: const EdgeInsets.all(ZetaSpacing.xl_1),
+          padding: EdgeInsets.all(Zeta.of(context).spacing.xl),
           child: Column(
             children: [
               Padding(
-                padding: const EdgeInsets.only(bottom: ZetaSpacing.xl_1),
+                padding: EdgeInsets.only(bottom: Zeta.of(context).spacing.xl),
                 child: Text('Radio Button'),
               ),
               ZetaRadio<String>(

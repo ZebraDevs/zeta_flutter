@@ -25,12 +25,13 @@ class _IconsExampleState extends State<IconsExample> {
         child: Center(
           child: Column(
             children: [
-              Text('Zeta Icons v' + zetaIconsVersion, style: ZetaTextStyles.displayMedium).paddingAll(ZetaSpacing.xl_4),
+              Text('Zeta Icons v' + zetaIconsVersion, style: ZetaTextStyles.displayMedium)
+                  .paddingAll(Zeta.of(context).spacing.xl_4),
               Text('Tap icon to copy name to clipboard', style: ZetaTextStyles.titleMedium)
-                  .paddingAll(ZetaSpacing.xl_4),
+                  .paddingAll(Zeta.of(context).spacing.xl_4),
               Wrap(
-                spacing: ZetaSpacing.xl_4,
-                runSpacing: ZetaSpacing.xl_4,
+                spacing: Zeta.of(context).spacing.xl_4,
+                runSpacing: Zeta.of(context).spacing.xl_4,
                 children: icons.entries.map(
                   (e) {
                     final nameArr = (e.key.split('_')).join(' ').capitalize();
@@ -38,8 +39,8 @@ class _IconsExampleState extends State<IconsExample> {
                       width: 120,
                       height: 120,
                       child: InkWell(
-                        borderRadius: ZetaRadius.rounded,
-                        hoverColor: Zeta.of(context).colors.surfaceHover,
+                        borderRadius: Zeta.of(context).radii.rounded,
+                        hoverColor: Zeta.of(context).colors.surface.hover,
                         onTap: () async {
                           await Clipboard.setData(ClipboardData(text: 'ZetaIcons.' + e.key));
                           ScaffoldMessenger.of(context).showMaterialBanner(
@@ -57,7 +58,7 @@ class _IconsExampleState extends State<IconsExample> {
                                 fontFamily: context.rounded ? ZetaIcons.familyRound : ZetaIcons.familySharp,
                                 fontPackage: ZetaIcons.package,
                               ),
-                              size: ZetaSpacing.xl_6,
+                              size: Zeta.of(context).spacing.xl_6,
                             ),
                             Text(
                               nameArr,

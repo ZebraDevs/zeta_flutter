@@ -138,17 +138,17 @@ class _ZetaSegmentedControlState<T> extends State<ZetaSegmentedControl<T>>
           cursor: SystemMouseCursors.click,
           child: SelectionContainer.disabled(
             child: Container(
-              padding: const EdgeInsets.all(ZetaSpacing.minimum),
+              padding: EdgeInsets.all(Zeta.of(context).spacing.minimum),
               decoration: BoxDecoration(
-                color: colors.surfaceDisabled,
-                borderRadius: rounded ? ZetaRadius.minimal : ZetaRadius.none,
+                color: colors.surface.disabled,
+                borderRadius: rounded ? Zeta.of(context).radii.minimal : Zeta.of(context).radii.none,
               ),
               child: AnimatedBuilder(
                 animation: _thumbScaleAnimation,
                 builder: (BuildContext context, Widget? child) {
                   return _SegmentedControlRenderWidget<T>(
                     highlightedIndex: highlightedIndex,
-                    thumbColor: colors.surfacePrimary,
+                    thumbColor: colors.surface.defaultColor,
                     thumbScale: _thumbScaleAnimation.value,
                     rounded: rounded,
                     state: this,
@@ -218,22 +218,22 @@ class _SegmentState<T> extends State<_Segment<T>> with TickerProviderStateMixin<
         color: Colors.transparent,
         child: InkWell(
           splashFactory: NoSplash.splashFactory,
-          borderRadius: context.rounded ? ZetaRadius.minimal : ZetaRadius.none,
+          borderRadius: context.rounded ? Zeta.of(context).radii.minimal : Zeta.of(context).radii.none,
           onTap: widget.onTap,
           child: IndexedStack(
             alignment: Alignment.center,
             children: [
               widget.child,
               IconTheme(
-                data: const IconThemeData(size: ZetaSpacing.xl_1),
+                data: IconThemeData(size: Zeta.of(context).spacing.xl),
                 child: DefaultTextStyle(
                   style: ZetaTextStyles.labelMedium.copyWith(
-                    color: colors.textDefault,
+                    color: colors.main.defaultColor,
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: ZetaSpacing.xl_4,
-                      vertical: ZetaSpacing.minimum,
+                    padding: EdgeInsets.symmetric(
+                      horizontal: Zeta.of(context).spacing.xl_4,
+                      vertical: Zeta.of(context).spacing.minimum,
                     ),
                     child: widget.child,
                   ),
@@ -271,6 +271,7 @@ class _SegmentedControlRenderWidget<T> extends MultiChildRenderObjectWidget {
       thumbColor: thumbColor,
       rounded: rounded,
       state: state,
+      zeta: Zeta.of(context),
     );
   }
 
@@ -307,6 +308,7 @@ class _RenderSegmentedControl<T> extends RenderBox
     required Color thumbColor,
     required this.rounded,
     required this.state,
+    required this.zeta,
   })  : _highlightedIndex = highlightedIndex,
         _thumbColor = thumbColor;
 
@@ -320,6 +322,8 @@ class _RenderSegmentedControl<T> extends RenderBox
   final Paint separatorPaint = Paint();
 
   final _ZetaSegmentedControlState<T> state;
+
+  final Zeta zeta;
 
   int? _highlightedIndex;
   Color _thumbColor;
@@ -344,7 +348,7 @@ class _RenderSegmentedControl<T> extends RenderBox
   @override
   double computeMaxIntrinsicHeight(double width) {
     RenderBox? child = firstChild;
-    double maxMaxChildHeight = ZetaSpacing.xl_3;
+    double maxMaxChildHeight = 28;
     while (child != null) {
       final double childHeight = child.getMaxIntrinsicHeight(width);
       maxMaxChildHeight = math.max(maxMaxChildHeight, childHeight);
@@ -369,7 +373,7 @@ class _RenderSegmentedControl<T> extends RenderBox
   @override
   double computeMinIntrinsicHeight(double width) {
     RenderBox? child = firstChild;
-    double maxMinChildHeight = ZetaSpacing.xl_3;
+    double maxMinChildHeight = 28;
     while (child != null) {
       final double childHeight = child.getMinIntrinsicHeight(width);
       maxMinChildHeight = math.max(maxMinChildHeight, childHeight);
@@ -388,7 +392,7 @@ class _RenderSegmentedControl<T> extends RenderBox
       maxMinChildWidth = math.max(maxMinChildWidth, childWidth);
       child = nonSeparatorChildAfter(child);
     }
-    return (maxMinChildWidth + 2 * ZetaSpacing.xl_4) * childCount + totalSeparatorWidth;
+    return (maxMinChildWidth + 64) * childCount + totalSeparatorWidth;
   }
 
   @override
@@ -578,7 +582,7 @@ class _RenderSegmentedControl<T> extends RenderBox
   Size _calculateChildSize(BoxConstraints constraints) {
     final int childCount = this.childCount ~/ 2 + 1;
     double childWidth = (constraints.minWidth - totalSeparatorWidth) / childCount;
-    double maxHeight = ZetaSpacing.xl_3;
+    double maxHeight = 28;
     RenderBox? child = firstChild;
     while (child != null) {
       childWidth = math.max(childWidth, child.getMaxIntrinsicWidth(double.infinity) + 2);
@@ -629,7 +633,7 @@ class _RenderSegmentedControl<T> extends RenderBox
   void _paintThumb(PaintingContext context, Offset offset, Rect thumbRect) {
     final RRect thumbRRect = RRect.fromRectAndRadius(
       thumbRect.shift(offset),
-      rounded ? ZetaRadius.minimal.topLeft : ZetaRadius.none.topLeft,
+      rounded ? zeta.radii.minimal.topLeft : zeta.radii.none.topLeft,
     );
 
     context.canvas.drawRRect(

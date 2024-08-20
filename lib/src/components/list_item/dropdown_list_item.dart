@@ -128,7 +128,7 @@ class _ZetaDropdownListItemState extends State<ZetaDropdownListItem> with Single
           decoration: BoxDecoration(
             border: Border(
               bottom: BorderSide(
-                color: divide ? colors.borderDefault : Colors.transparent,
+                color: divide ? colors.border.defaultColor : Colors.transparent,
               ),
             ),
           ),
@@ -147,7 +147,7 @@ class _ZetaDropdownListItemState extends State<ZetaDropdownListItem> with Single
                       duration: ZetaAnimationLength.fast,
                       child: ZetaIcon(
                         ZetaIcons.expand_more,
-                        color: colors.iconSubtle,
+                        color: colors.main.subtle,
                       ),
                     ),
                     onPressed: _onTap,

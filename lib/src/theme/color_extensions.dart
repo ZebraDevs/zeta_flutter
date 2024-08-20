@@ -1,10 +1,7 @@
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
-import 'color_swatch.dart';
-import 'colors_base.dart';
-import 'constants.dart';
-import 'contrast.dart';
+import '../../zeta_flutter.dart';
 
 /// Extensions on [Color] to brighten, lighten, darken and blend colors and
 /// can get a shade for gradients.
@@ -27,6 +24,7 @@ import 'contrast.dart';
 /// The [getShadeColor] extension is less frequently used and when used,
 /// typically used to color makes colors shades for gradient AppBars, with
 /// default setting to not change black and white.
+@Deprecated('Removed after v1.0.0')
 extension ZetaColorExtensions on Color {
   /// {@macro zeta.color.color_to_swatch}
   ZetaColorSwatch get zetaColorSwatch => ZetaColorSwatch.fromColor(this);
@@ -304,4 +302,32 @@ extension ZetaColorExtensions on Color {
   }) {
     return adjustContrast(on: on, target: standard.targetContrast);
   }
+}
+
+/// Extensions on [ZetaSemanticColors] to provide additional functionality.
+///
+/// ZetaSemanticColors is a generated class, and so should not be manually edited.
+/// Hence, any functions or properties needed should be added in this extension instead.
+extension ZetaSemanticColorExtension on ZetaSemanticColors {
+  /// List of colorful colors.
+  List<ZetaColorSwatch> get rainbow => [
+        primitives.red,
+        primitives.orange,
+        primitives.yellow,
+        primitives.green,
+        primitives.blue,
+        primitives.teal,
+        primitives.pink,
+      ];
+
+  /// Map of colorful colors.
+  Map<String, ZetaColorSwatch> get rainbowMap => {
+        'red': primitives.red,
+        'orange': primitives.orange,
+        'yellow': primitives.yellow,
+        'green': primitives.green,
+        'blue': primitives.blue,
+        'teal': primitives.teal,
+        'pink': primitives.pink,
+      };
 }

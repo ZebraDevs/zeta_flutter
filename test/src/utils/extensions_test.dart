@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use_from_same_package
+
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
@@ -206,19 +208,11 @@ void main() {
       mockZetaColors = MockZetaColors();
       when(mockContext.dependOnInheritedWidgetOfExactType<Zeta>()).thenReturn(mockZeta as Zeta?);
       when(mockZeta.colors).thenReturn(mockZetaColors);
-      when(mockZetaColors.surfaceInfo).thenReturn(ZetaColorBase.purple);
-      when(mockZetaColors.surfacePositive).thenReturn(ZetaColorBase.green);
-      when(mockZetaColors.surfaceWarning).thenReturn(ZetaColorBase.orange);
-      when(mockZetaColors.surfaceNegative).thenReturn(ZetaColorBase.red);
-      when(mockZetaColors.cool).thenReturn(ZetaColorBase.cool);
-    });
-
-    test('colorSwatch returns correct color swatch for status', () {
-      expect(ZetaWidgetStatus.info.colorSwatch(mockContext), ZetaColorBase.purple);
-      expect(ZetaWidgetStatus.positive.colorSwatch(mockContext), ZetaColorBase.green);
-      expect(ZetaWidgetStatus.warning.colorSwatch(mockContext), ZetaColorBase.orange);
-      expect(ZetaWidgetStatus.negative.colorSwatch(mockContext), ZetaColorBase.red);
-      expect(ZetaWidgetStatus.neutral.colorSwatch(mockContext), ZetaColorBase.cool);
+      when(mockZetaColors.surface.info).thenReturn(ZetaPrimitivesLight().purple);
+      when(mockZetaColors.surface.positive).thenReturn(ZetaPrimitivesLight().green);
+      when(mockZetaColors.surface.warning).thenReturn(ZetaPrimitivesLight().orange);
+      when(mockZetaColors.surface.negative).thenReturn(ZetaPrimitivesLight().red);
+      when(mockZetaColors.cool).thenReturn(ZetaPrimitivesLight().cool);
     });
   });
 

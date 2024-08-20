@@ -86,15 +86,15 @@ class ZetaSnackBar extends SnackBar {
           backgroundColor: _getBackgroundColorForType(context, type),
           shape: RoundedRectangleBorder(
             borderRadius: type != null
-                ? ZetaRadius.full
+                ? Zeta.of(context).radii.full
                 : rounded ?? context.rounded
-                    ? ZetaRadius.minimal
-                    : ZetaRadius.none,
+                    ? Zeta.of(context).radii.minimal
+                    : Zeta.of(context).radii.none,
           ),
           content: ZetaRoundedScope(
             rounded: rounded ?? context.rounded,
             child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: ZetaSpacing.small),
+              padding: EdgeInsets.symmetric(vertical: Zeta.of(context).spacing.small),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -104,7 +104,7 @@ class ZetaSnackBar extends SnackBar {
                         _LeadingIcon(type, leadingIcon),
                         Flexible(
                           child: Padding(
-                            padding: const EdgeInsets.only(left: ZetaSpacing.medium),
+                            padding: EdgeInsets.only(left: Zeta.of(context).spacing.medium),
                             child: _Content(type: type, child: content),
                           ),
                         ),
@@ -132,12 +132,12 @@ class ZetaSnackBar extends SnackBar {
     final colors = Zeta.of(context).colors;
 
     return switch (type) {
-      ZetaSnackBarType.positive => colors.green.shade10,
-      ZetaSnackBarType.info => colors.purple.shade10,
-      ZetaSnackBarType.warning => colors.orange.shade10,
-      ZetaSnackBarType.deletion || ZetaSnackBarType.error => colors.red.shade10,
-      ZetaSnackBarType.view => colors.blue.shade10,
-      _ => colors.warm.shade100,
+      ZetaSnackBarType.positive => colors.surface.positiveSubtle,
+      ZetaSnackBarType.info => colors.surface.infoSubtle,
+      ZetaSnackBarType.warning => colors.surface.warningSubtle,
+      ZetaSnackBarType.deletion || ZetaSnackBarType.error => colors.surface.negativeSubtle,
+      ZetaSnackBarType.view => colors.surface.primarySubtle,
+      _ => colors.surface.defaultInverse,
     };
   }
 }
@@ -157,7 +157,7 @@ class _Content extends StatelessWidget {
   }
 
   Color _getColorForType(
-    ZetaColors colors,
+    ZetaColorSemantics colors,
     ZetaSnackBarType? type,
   ) {
     return switch (type) {
@@ -167,8 +167,8 @@ class _Content extends StatelessWidget {
       ZetaSnackBarType.deletion ||
       ZetaSnackBarType.error ||
       ZetaSnackBarType.view =>
-        colors.textDefault,
-      _ => colors.textInverse,
+        colors.main.defaultColor,
+      _ => colors.main.inverse,
     };
   }
 
@@ -237,12 +237,12 @@ class _Action extends StatelessWidget {
         return switch (type) {
           ZetaSnackBarType.defaultType => _IconButton(
               onPressed: () => ScaffoldMessenger.of(context).removeCurrentSnackBar(),
-              color: colors.iconInverse,
+              color: colors.surface.defaultInverse,
             ),
           ZetaSnackBarType.action => _ActionButton(
               onPressed: onPressed,
               label: label,
-              color: colors.borderPrimaryMain,
+              color: colors.border.primaryMain,
             ),
           ZetaSnackBarType.positive ||
           ZetaSnackBarType.info ||
@@ -250,22 +250,22 @@ class _Action extends StatelessWidget {
           ZetaSnackBarType.error =>
             _IconButton(
               onPressed: () => ScaffoldMessenger.of(context).removeCurrentSnackBar(),
-              color: colors.cool.shade90,
+              color: colors.main.defaultColor,
             ),
           ZetaSnackBarType.deletion => _ActionButton(
               onPressed: onPressed,
               label: label,
-              color: colors.cool.shade90,
+              color: colors.main.defaultColor,
             ),
           ZetaSnackBarType.view => _ActionButton(
               onPressed: onPressed,
               label: label,
-              color: colors.cool.shade90,
+              color: colors.main.defaultColor,
             ),
           _ => _ActionButton(
               onPressed: onPressed,
               label: label,
-              color: colors.blue.shade50,
+              color: colors.border.primaryMain,
             ),
         };
       }(),
@@ -293,15 +293,15 @@ class _IconButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: ZetaSpacing.minimum),
+      padding: EdgeInsets.symmetric(vertical: Zeta.of(context).spacing.minimum),
       child: IconButton(
         style: IconButton.styleFrom(
-          padding: const EdgeInsets.symmetric(horizontal: ZetaSpacing.medium),
+          padding: EdgeInsets.symmetric(horizontal: Zeta.of(context).spacing.medium),
           tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-          minimumSize: const Size(ZetaSpacing.xl_1, ZetaSpacing.xl_1),
+          minimumSize: Size(Zeta.of(context).spacing.xl, Zeta.of(context).spacing.xl),
         ),
         onPressed: onPressed,
-        icon: ZetaIcon(ZetaIcons.close, color: color, size: ZetaSpacing.xl_1),
+        icon: ZetaIcon(ZetaIcons.close, color: color, size: Zeta.of(context).spacing.xl),
       ),
     );
   }
@@ -330,13 +330,13 @@ class _ActionButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: ZetaSpacing.medium),
+      padding: EdgeInsets.symmetric(horizontal: Zeta.of(context).spacing.medium),
       child: TextButton(
         style: TextButton.styleFrom(
           textStyle: ZetaTextStyles.labelLarge,
-          padding: const EdgeInsets.symmetric(
-            horizontal: ZetaSpacing.medium,
-            vertical: ZetaSpacing.minimum,
+          padding: EdgeInsets.symmetric(
+            horizontal: Zeta.of(context).spacing.medium,
+            vertical: Zeta.of(context).spacing.minimum,
           ),
           tapTargetSize: MaterialTapTargetSize.shrinkWrap,
           minimumSize: Size.zero,
@@ -366,14 +366,14 @@ class _LeadingIcon extends StatelessWidget {
     properties.add(EnumProperty<ZetaSnackBarType?>('type', type));
   }
 
-  Color _getIconColor(ZetaColors colors, ZetaSnackBarType? type) {
+  Color _getIconColor(ZetaColorSemantics colors, ZetaSnackBarType? type) {
     return switch (type) {
-      ZetaSnackBarType.positive => colors.surfacePositive,
-      ZetaSnackBarType.info => colors.surfaceInfo,
-      ZetaSnackBarType.warning => colors.surfaceWarning,
-      ZetaSnackBarType.error || ZetaSnackBarType.deletion => colors.surfaceNegative,
-      ZetaSnackBarType.view => colors.primary,
-      _ => colors.iconInverse,
+      ZetaSnackBarType.positive => colors.surface.positive,
+      ZetaSnackBarType.info => colors.surface.info,
+      ZetaSnackBarType.warning => colors.surface.warning,
+      ZetaSnackBarType.error || ZetaSnackBarType.deletion => colors.surface.negative,
+      ZetaSnackBarType.view => colors.main.primary,
+      _ => colors.main.inverse,
     };
   }
 
@@ -394,7 +394,7 @@ class _LeadingIcon extends StatelessWidget {
     final colors = Zeta.of(context).colors;
 
     return Padding(
-      padding: type != null || icon != null ? const EdgeInsets.only(left: ZetaSpacing.medium) : EdgeInsets.zero,
+      padding: type != null || icon != null ? EdgeInsets.only(left: Zeta.of(context).spacing.medium) : EdgeInsets.zero,
       child: IconTheme(
         data: IconThemeData(
           color: _getIconColor(colors, type),

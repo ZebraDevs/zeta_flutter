@@ -16,7 +16,7 @@ class WidgetbookScaffold extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: backgroundColor ?? Zeta.of(context).colors.surfaceDefault,
+      backgroundColor: backgroundColor ?? Zeta.of(context).colors.surface.defaultColor,
       body: LayoutBuilder(builder: (context, constraints) {
         return Center(
           child: ListView(

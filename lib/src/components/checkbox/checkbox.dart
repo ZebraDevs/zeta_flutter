@@ -190,9 +190,9 @@ class _CheckboxState extends State<ZetaInternalCheckbox> {
         color: Colors.transparent,
         child: InkWell(
           onTap: !widget.disabled ? () => widget.onChanged.call(!_checked) : null,
-          borderRadius: ZetaRadius.full,
+          borderRadius: Zeta.of(context).radii.full,
           child: Padding(
-            padding: const EdgeInsets.all(ZetaSpacing.medium),
+            padding: EdgeInsets.all(Zeta.of(context).spacing.medium),
             child: MouseRegion(
               cursor: !widget.disabled ? SystemMouseCursors.click : SystemMouseCursors.forbidden,
               onEnter: (event) => _setHovered(true),
@@ -219,8 +219,8 @@ class _CheckboxState extends State<ZetaInternalCheckbox> {
         ? const Nothing()
         : ZetaIcon(
             widget.useIndeterminate ? ZetaIcons.remove : ZetaIcons.check_mark,
-            color: widget.disabled ? theme.colors.iconDisabled : theme.colors.white,
-            size: ZetaSpacingBase.x3_5,
+            color: widget.disabled ? theme.colors.main.disabled : theme.colors.main.inverse,
+            size: 14,
           );
 
     return Flex(
@@ -235,21 +235,21 @@ class _CheckboxState extends State<ZetaInternalCheckbox> {
                 BoxShadow(
                   spreadRadius: 2,
                   blurStyle: BlurStyle.solid,
-                  color: theme.colors.blue.shade50,
+                  color: theme.colors.border.primary,
                 ),
             ],
             color: _getBackground(theme),
-            border: Border.all(color: _getBorderColor(theme), width: ZetaSpacingBase.x0_5),
-            borderRadius: rounded ? ZetaRadius.minimal : ZetaRadius.none,
+            border: Border.all(color: _getBorderColor(theme), width: Zeta.of(context).spacing.minimum / 2),
+            borderRadius: rounded ? Zeta.of(context).radii.minimal : Zeta.of(context).radii.none,
           ),
-          width: ZetaSpacing.xl_1,
-          height: ZetaSpacing.xl_1,
+          width: Zeta.of(context).spacing.xl,
+          height: Zeta.of(context).spacing.xl,
           child: icon,
         ),
         if (widget.label != null)
           Flexible(
             child: Padding(
-              padding: const EdgeInsets.only(left: ZetaSpacing.medium),
+              padding: EdgeInsets.only(left: Zeta.of(context).spacing.medium),
               child: Text(widget.label!, style: ZetaTextStyles.bodyMedium),
             ),
           ),
@@ -258,12 +258,11 @@ class _CheckboxState extends State<ZetaInternalCheckbox> {
   }
 
   Color _getBackground(Zeta theme) {
-    final ZetaColorSwatch color = widget.error ? theme.colors.error : theme.colors.primary;
-    if (widget.disabled) return theme.colors.surfaceDisabled;
-    if (!_checked) return theme.colors.surfacePrimary;
-    if (_isHovered) return theme.colors.borderHover;
+    if (widget.disabled) return theme.colors.surface.disabled;
+    if (!_checked) return theme.colors.surface.defaultColor;
+    if (_isHovered) return theme.colors.main.defaultColor;
 
-    return color;
+    return theme.colors.main.primary;
   }
 
   Color _getBorderColor(Zeta theme) {
@@ -271,9 +270,9 @@ class _CheckboxState extends State<ZetaInternalCheckbox> {
       return _getBackground(theme);
     }
     if (_isHovered) {
-      return theme.colors.cool.shade90;
+      return theme.colors.border.hover;
     }
 
-    return theme.colors.cool.shade70;
+    return theme.colors.main.subtle;
   }
 }

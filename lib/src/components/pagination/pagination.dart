@@ -5,9 +5,6 @@ import 'package:flutter/material.dart';
 
 import '../../../zeta_flutter.dart';
 
-const _itemHeight = ZetaSpacing.xl_5;
-const _itemWidth = ZetaSpacing.xl_4;
-
 /// The type of a [ZetaPagination]
 enum ZetaPaginationType {
   /// A standard pagination with buttons for each page.
@@ -217,24 +214,24 @@ class _ZetaPaginationState extends State<ZetaPagination> {
     return Semantics(
       label: widget.semanticDropdown,
       child: Container(
-        height: ZetaSpacing.xl_6,
+        height: Zeta.of(context).spacing.xl_6,
 
         decoration: BoxDecoration(
-          border: Border.all(color: colors.borderSubtle),
-          borderRadius: rounded ? ZetaRadius.minimal : ZetaRadius.none,
+          border: Border.all(color: colors.border.subtle),
+          borderRadius: rounded ? Zeta.of(context).radii.minimal : Zeta.of(context).radii.none,
         ),
         // TODO(UX-1135): Replace with Zeta Dropdown
         child: DropdownButton(
           items: items,
           onChanged: (val) => _onItemPressed(val!),
           value: _currentPage,
-          icon: const ZetaIcon(ZetaIcons.expand_more).paddingStart(ZetaSpacing.small),
+          icon: const ZetaIcon(ZetaIcons.expand_more).paddingStart(Zeta.of(context).spacing.small),
           underline: const Nothing(),
           style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                color: colors.textSubtle,
+                color: colors.main.subtle,
               ),
-          padding: const EdgeInsets.symmetric(
-            horizontal: ZetaSpacing.medium,
+          padding: EdgeInsets.symmetric(
+            horizontal: Zeta.of(context).spacing.medium,
           ),
         ),
       ),
@@ -283,7 +280,7 @@ class _ZetaPaginationState extends State<ZetaPagination> {
           return Row(
             key: _paginationKey,
             mainAxisSize: MainAxisSize.min,
-            children: buttons.divide(const SizedBox(width: ZetaSpacing.small)).toList(),
+            children: buttons.divide(SizedBox(width: Zeta.of(context).spacing.small)).toList(),
           );
         },
       ),
@@ -321,47 +318,49 @@ class _PaginationItem extends ZetaStatelessWidget {
         maxLines: 1,
         style: Theme.of(context).textTheme.bodyMedium?.copyWith(
               color: disabled
-                  ? colors.textDisabled
+                  ? colors.main.disabled
                   : selected
-                      ? colors.textInverse
-                      : colors.textDefault,
+                      ? colors.main.inverse
+                      : colors.main.defaultColor,
             ),
       );
     } else if (icon != null) {
       child = ZetaIcon(
         icon,
-        color: disabled ? colors.iconDisabled : colors.iconDefault,
+        color: disabled ? colors.main.disabled : colors.main.defaultColor,
         semanticLabel: semanticLabel,
       );
     }
+
+    final itemHeight = Zeta.of(context).spacing.xl_5;
+    final itemWidth = Zeta.of(context).spacing.xl_4;
 
     return Semantics(
       button: true,
       enabled: !disabled,
       child: ConstrainedBox(
-        constraints: const BoxConstraints(
-          minHeight: _itemHeight,
-          maxHeight: _itemHeight,
-          minWidth: _itemWidth,
+        constraints: BoxConstraints(
+          minHeight: itemHeight,
+          maxHeight: itemHeight,
+          minWidth: itemWidth,
         ),
         child: Material(
-          borderRadius: rounded ? ZetaRadius.minimal : ZetaRadius.none,
+          borderRadius: rounded ? Zeta.of(context).radii.minimal : Zeta.of(context).radii.none,
           color: disabled
-              ? colors.surfaceDisabled
+              ? colors.state.disabled.disabled
               : selected
-                  ? colors.cool[100]
-                  : colors.surfacePrimary,
+                  ? colors.state.inverse.selected
+                  : colors.state.defaultColor.enabled,
           child: InkWell(
             onTap: disabled ? null : onPressed,
-            borderRadius: rounded ? ZetaRadius.minimal : ZetaRadius.none,
-            highlightColor: selected ? colors.cool[100] : colors.surfaceSelected,
-            hoverColor: selected ? colors.cool[100] : colors.surfaceHover,
+            borderRadius: rounded ? Zeta.of(context).radii.minimal : Zeta.of(context).radii.none,
+            hoverColor: selected ? colors.state.inverse.hover : colors.state.defaultColor.hover,
             enableFeedback: false,
             child: Container(
               alignment: Alignment.center,
-              padding: const EdgeInsets.symmetric(horizontal: ZetaSpacing.minimum),
+              padding: EdgeInsets.symmetric(horizontal: Zeta.of(context).spacing.minimum),
               decoration: BoxDecoration(
-                borderRadius: rounded ? ZetaRadius.minimal : ZetaRadius.none,
+                borderRadius: rounded ? Zeta.of(context).radii.minimal : Zeta.of(context).radii.none,
               ),
               child: child,
             ),
@@ -389,10 +388,12 @@ class _Elipsis extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SizedBox(
-      width: _itemWidth,
-      height: _itemHeight,
-      child: Center(child: Text('...')),
+    final itemHeight = Zeta.of(context).spacing.xl_5;
+    final itemWidth = Zeta.of(context).spacing.xl_4;
+    return SizedBox(
+      width: itemWidth,
+      height: itemHeight,
+      child: const Center(child: Text('...')),
     );
   }
 }

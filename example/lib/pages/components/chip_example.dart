@@ -67,7 +67,7 @@ class _ChipExampleState extends State<ChipExample> {
     return ExampleScaffold(
       name: ChipExample.name,
       child: SingleChildScrollView(
-        padding: EdgeInsets.all(ZetaSpacing.medium),
+        padding: EdgeInsets.all(Zeta.of(context).spacing.medium),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
@@ -79,8 +79,8 @@ class _ChipExampleState extends State<ChipExample> {
               onAcceptWithDetails: (details) => setState(() => chipType = details.data),
               builder: (context, _, __) {
                 return Container(
-                  padding: EdgeInsets.all(ZetaSpacing.medium),
-                  color: colors.surfaceSelectedHover,
+                  padding: EdgeInsets.all(Zeta.of(context).spacing.medium),
+                  color: colors.surface.selectedHover,
                   height: 100,
                   width: 200,
                   child: Center(child: Text('Last chip dragged here: $chipType')),

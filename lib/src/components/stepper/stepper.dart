@@ -72,7 +72,7 @@ class _ZetaStepperState extends State<ZetaStepper> with TickerProviderStateMixin
     );
   }
 
-  ZetaColors get _colors => Zeta.of(context).colors;
+  ZetaSemanticColors get _colors => Zeta.of(context).colors;
 
   bool _isFirst(int index) {
     return index == 0;
@@ -90,8 +90,8 @@ class _ZetaStepperState extends State<ZetaStepper> with TickerProviderStateMixin
     final rounded = context.rounded;
 
     return SizedBox(
-      width: ZetaSpacing.xl_4,
-      height: ZetaSpacing.xl_4,
+      width: Zeta.of(context).spacing.xl_4,
+      height: Zeta.of(context).spacing.xl_4,
       child: AnimatedContainer(
         curve: Curves.fastOutSlowIn,
         duration: kThemeAnimationDuration,
@@ -103,12 +103,12 @@ class _ZetaStepperState extends State<ZetaStepper> with TickerProviderStateMixin
           child: switch (widget.steps[index].type) {
             ZetaStepType.complete => ZetaIcon(
                 ZetaIcons.check_mark,
-                color: _colors.textInverse,
+                color: _colors.main.inverse,
               ),
             ZetaStepType.enabled || ZetaStepType.disabled => Text(
                 (index + 1).toString(),
                 style: ZetaTextStyles.labelLarge.copyWith(
-                  color: _colors.textInverse,
+                  color: _colors.main.inverse,
                 ),
               ),
           },
@@ -119,8 +119,8 @@ class _ZetaStepperState extends State<ZetaStepper> with TickerProviderStateMixin
 
   Widget _getVerticalIcon(int index) {
     return SizedBox(
-      width: ZetaSpacing.xl_8,
-      height: ZetaSpacing.xl_8,
+      width: Zeta.of(context).spacing.xl_8,
+      height: Zeta.of(context).spacing.xl_8,
       child: AnimatedContainer(
         curve: Curves.fastOutSlowIn,
         duration: kThemeAnimationDuration,
@@ -132,12 +132,12 @@ class _ZetaStepperState extends State<ZetaStepper> with TickerProviderStateMixin
           child: switch (widget.steps[index].type) {
             ZetaStepType.complete => ZetaIcon(
                 ZetaIcons.check_mark,
-                color: _colors.textInverse,
+                color: _colors.main.inverse,
               ),
             ZetaStepType.enabled || ZetaStepType.disabled => Text(
                 (index + 1).toString(),
                 style: ZetaTextStyles.titleLarge.copyWith(
-                  color: _colors.textInverse,
+                  color: _colors.main.inverse,
                 ),
               ),
           },
@@ -154,10 +154,10 @@ class _ZetaStepperState extends State<ZetaStepper> with TickerProviderStateMixin
         AnimatedDefaultTextStyle(
           style: switch (widget.steps[index].type) {
             ZetaStepType.enabled || ZetaStepType.complete => ZetaTextStyles.bodySmall.copyWith(
-                color: _colors.textDefault,
+                color: _colors.main.defaultColor,
               ),
             ZetaStepType.disabled => ZetaTextStyles.bodySmall.copyWith(
-                color: _colors.textDisabled,
+                color: _colors.main.disabled,
               ),
           },
           maxLines: 1,
@@ -173,7 +173,7 @@ class _ZetaStepperState extends State<ZetaStepper> with TickerProviderStateMixin
     final subtitle = widget.steps[index].subtitle;
 
     return Container(
-      margin: EdgeInsets.only(top: _isFirst(index) ? 0.0 : ZetaSpacing.xl_2),
+      margin: EdgeInsets.only(top: _isFirst(index) ? 0.0 : Zeta.of(context).spacing.xl_2),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -181,23 +181,19 @@ class _ZetaStepperState extends State<ZetaStepper> with TickerProviderStateMixin
             children: [
               _getVerticalIcon(index),
               Container(
-                margin: const EdgeInsets.only(top: ZetaSpacing.minimum),
-                width: ZetaSpacing.minimum,
-                height: ZetaSpacing.xl_8,
+                margin: EdgeInsets.only(top: Zeta.of(context).spacing.minimum),
+                width: Zeta.of(context).spacing.minimum,
+                height: Zeta.of(context).spacing.xl_8,
                 decoration: BoxDecoration(
-                  borderRadius: ZetaRadius.full,
-                  color: switch (widget.steps[index].type) {
-                    ZetaStepType.complete => _colors.green.shade50,
-                    ZetaStepType.disabled => _colors.borderSubtle,
-                    ZetaStepType.enabled => _colors.blue.shade50,
-                  },
+                  borderRadius: Zeta.of(context).radii.full,
+                  color: getLineColor(index),
                 ),
               ),
             ],
           ),
           Expanded(
             child: Container(
-              margin: const EdgeInsets.symmetric(horizontal: ZetaSpacing.xl_2),
+              margin: EdgeInsets.symmetric(horizontal: Zeta.of(context).spacing.xl_2),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
@@ -215,10 +211,10 @@ class _ZetaStepperState extends State<ZetaStepper> with TickerProviderStateMixin
                   AnimatedDefaultTextStyle(
                     style: switch (widget.steps[index].type) {
                       ZetaStepType.enabled || ZetaStepType.complete => ZetaTextStyles.titleLarge.copyWith(
-                          color: _colors.textDefault,
+                          color: _colors.main.defaultColor,
                         ),
                       ZetaStepType.disabled => ZetaTextStyles.titleLarge.copyWith(
-                          color: _colors.textDisabled,
+                          color: _colors.main.disabled,
                         ),
                     },
                     maxLines: 1,
@@ -253,9 +249,9 @@ class _ZetaStepperState extends State<ZetaStepper> with TickerProviderStateMixin
 
   Color _getColorForType(ZetaStepType type) {
     return switch (type) {
-      ZetaStepType.complete => _colors.surfacePositive,
-      ZetaStepType.disabled => _colors.cool.shade50,
-      ZetaStepType.enabled => _colors.primary,
+      ZetaStepType.complete => _colors.surface.positive,
+      ZetaStepType.disabled => _colors.main.disabled,
+      ZetaStepType.enabled => _colors.main.primary,
     };
   }
 
@@ -273,7 +269,7 @@ class _ZetaStepperState extends State<ZetaStepper> with TickerProviderStateMixin
                   children: [
                     InkResponse(
                       containedInkWell: true,
-                      borderRadius: ZetaRadius.minimal,
+                      borderRadius: Zeta.of(context).radii.minimal,
                       onTap: widget.onStepTapped != null ? () => widget.onStepTapped?.call(index) : null,
                       canRequestFocus: widget.steps[index].type != ZetaStepType.disabled,
                       child: _getVerticalHeader(index),
@@ -294,8 +290,8 @@ class _ZetaStepperState extends State<ZetaStepper> with TickerProviderStateMixin
                       children: [
                         Center(
                           child: Padding(
-                            padding: const EdgeInsets.symmetric(
-                              vertical: ZetaSpacing.medium,
+                            padding: EdgeInsets.symmetric(
+                              vertical: Zeta.of(context).spacing.medium,
                             ),
                             child: _buildHorizontalIcon(index),
                           ),
@@ -308,19 +304,15 @@ class _ZetaStepperState extends State<ZetaStepper> with TickerProviderStateMixin
                     Expanded(
                       child: Container(
                         key: Key('line$index'),
-                        margin: const EdgeInsets.only(
-                          top: ZetaSpacing.xl_3,
-                          right: ZetaSpacing.large,
-                          left: ZetaSpacing.large,
+                        margin: EdgeInsets.only(
+                          top: Zeta.of(context).spacing.xl_3,
+                          right: Zeta.of(context).spacing.large,
+                          left: Zeta.of(context).spacing.large,
                         ),
-                        height: ZetaSpacingBase.x0_5,
+                        height: ZetaBorders.borderWidth,
                         decoration: BoxDecoration(
-                          borderRadius: ZetaRadius.full,
-                          color: switch (widget.steps[index].type) {
-                            ZetaStepType.complete => _colors.green.shade50,
-                            ZetaStepType.disabled => _colors.borderSubtle,
-                            ZetaStepType.enabled => _colors.blue.shade50,
-                          },
+                          borderRadius: Zeta.of(context).radii.full,
+                          color: getLineColor(index),
                         ),
                       ),
                     ),
@@ -343,7 +335,7 @@ class _ZetaStepperState extends State<ZetaStepper> with TickerProviderStateMixin
                   Material(
                     color: Colors.transparent,
                     child: Container(
-                      margin: const EdgeInsets.symmetric(horizontal: ZetaSpacing.xl_2),
+                      margin: EdgeInsets.symmetric(horizontal: Zeta.of(context).spacing.xl_2),
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: children,
@@ -367,6 +359,14 @@ class _ZetaStepperState extends State<ZetaStepper> with TickerProviderStateMixin
       },
     );
   }
+
+  Color getLineColor(int index) {
+    return switch (widget.steps[index].type) {
+      ZetaStepType.complete => _colors.border.positive,
+      ZetaStepType.disabled => _colors.border.defaultColor,
+      ZetaStepType.enabled => _colors.border.primary,
+    };
+  }
 }
 
 /// Zeta step used in [ZetaStepper]. The step can have a title and subtitle,
@@ -374,7 +374,7 @@ class _ZetaStepperState extends State<ZetaStepper> with TickerProviderStateMixin
 /// styling.
 class ZetaStep {
   /// Creates a step for a [ZetaStepper].
-  const ZetaStep({
+  ZetaStep({
     required this.title,
     this.content,
     this.subtitle,

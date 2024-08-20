@@ -7,14 +7,14 @@ import 'dart:ui' as _i5;
 
 import 'package:flutter/foundation.dart' as _i3;
 import 'package:flutter/material.dart' as _i2;
-import 'package:flutter/src/widgets/notification_listener.dart' as _i8;
+import 'package:flutter/src/widgets/notification_listener.dart' as _i9;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:mockito/src/dummies.dart' as _i11;
-import 'package:zeta_flutter/src/theme/color_scheme.dart' as _i7;
+import 'package:zeta_flutter/generated/generated.dart' as _i6;
+import 'package:zeta_flutter/src/theme/color_scheme.dart' as _i8;
 import 'package:zeta_flutter/src/theme/color_swatch.dart' as _i4;
-import 'package:zeta_flutter/src/theme/contrast.dart' as _i9;
-import 'package:zeta_flutter/src/theme/theme_data.dart' as _i6;
-import 'package:zeta_flutter/src/utils/zeta.dart' as _i10;
+import 'package:zeta_flutter/src/theme/contrast.dart' as _i10;
+import 'package:zeta_flutter/zeta_flutter.dart' as _i7;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -82,8 +82,8 @@ class _FakeZetaColorSwatch_3 extends _i1.SmartFake implements _i4.ZetaColorSwatc
         );
 }
 
-class _FakeColor_4 extends _i1.SmartFake implements _i5.Color {
-  _FakeColor_4(
+class _FakeZetaPureColorSwatch_4 extends _i1.SmartFake implements _i4.ZetaPureColorSwatch {
+  _FakeZetaPureColorSwatch_4(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -92,8 +92,8 @@ class _FakeColor_4 extends _i1.SmartFake implements _i5.Color {
         );
 }
 
-class _FakeZetaColors_5 extends _i1.SmartFake implements _i6.ZetaColors {
-  _FakeZetaColors_5(
+class _FakeColor_5 extends _i1.SmartFake implements _i5.Color {
+  _FakeColor_5(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -102,8 +102,68 @@ class _FakeZetaColors_5 extends _i1.SmartFake implements _i6.ZetaColors {
         );
 }
 
-class _FakeZetaColorScheme_6 extends _i1.SmartFake implements _i7.ZetaColorScheme {
-  _FakeZetaColorScheme_6(
+class _FakeZetaSemanticBorderColors_6 extends _i1.SmartFake implements _i6.ZetaSemanticBorderColors {
+  _FakeZetaSemanticBorderColors_6(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
+class _FakeZetaSemanticMainColors_7 extends _i1.SmartFake implements _i6.ZetaSemanticMainColors {
+  _FakeZetaSemanticMainColors_7(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
+class _FakeZetaPrimitives_8 extends _i1.SmartFake implements _i6.ZetaPrimitives {
+  _FakeZetaPrimitives_8(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
+class _FakeZetaSemanticStateColors_9 extends _i1.SmartFake implements _i6.ZetaSemanticStateColors {
+  _FakeZetaSemanticStateColors_9(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
+class _FakeZetaSemanticSurfaceColors_10 extends _i1.SmartFake implements _i6.ZetaSemanticSurfaceColors {
+  _FakeZetaSemanticSurfaceColors_10(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
+class _FakeZetaColors_11 extends _i1.SmartFake implements _i7.ZetaColors {
+  _FakeZetaColors_11(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
+class _FakeZetaColorScheme_12 extends _i1.SmartFake implements _i8.ZetaColorScheme {
+  _FakeZetaColorScheme_12(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -115,8 +175,8 @@ class _FakeZetaColorScheme_6 extends _i1.SmartFake implements _i7.ZetaColorSchem
   String toString({_i3.DiagnosticLevel? minLevel = _i3.DiagnosticLevel.info}) => super.toString();
 }
 
-class _FakeZetaThemeData_7 extends _i1.SmartFake implements _i6.ZetaThemeData {
-  _FakeZetaThemeData_7(
+class _FakeZetaSemanticColors_13 extends _i1.SmartFake implements _i6.ZetaSemanticColors {
+  _FakeZetaSemanticColors_13(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -125,8 +185,28 @@ class _FakeZetaThemeData_7 extends _i1.SmartFake implements _i6.ZetaThemeData {
         );
 }
 
-class _FakeInheritedElement_8 extends _i1.SmartFake implements _i2.InheritedElement {
-  _FakeInheritedElement_8(
+class _FakeZetaSpacingSemantics_14 extends _i1.SmartFake implements _i6.ZetaSpacingSemantics {
+  _FakeZetaSpacingSemantics_14(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
+class _FakeZetaRadiiSemantics_15 extends _i1.SmartFake implements _i6.ZetaRadiiSemantics {
+  _FakeZetaRadiiSemantics_15(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
+class _FakeInheritedElement_16 extends _i1.SmartFake implements _i2.InheritedElement {
+  _FakeInheritedElement_16(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -217,7 +297,7 @@ class MockBuildContext extends _i1.Mock implements _i2.BuildContext {
       );
 
   @override
-  void dispatchNotification(_i8.Notification? notification) => super.noSuchMethod(
+  void dispatchNotification(_i9.Notification? notification) => super.noSuchMethod(
         Invocation.method(
           #dispatchNotification,
           [notification],
@@ -321,7 +401,7 @@ class MockBuildContext extends _i1.Mock implements _i2.BuildContext {
 ///
 /// See the documentation for Mockito's code generation for more information.
 // ignore: must_be_immutable
-class MockZetaColors extends _i1.Mock implements _i6.ZetaColors {
+class MockZetaColors extends _i1.Mock implements _i7.ZetaColors {
   @override
   _i5.Brightness get brightness => (super.noSuchMethod(
         Invocation.getter(#brightness),
@@ -330,11 +410,11 @@ class MockZetaColors extends _i1.Mock implements _i6.ZetaColors {
       ) as _i5.Brightness);
 
   @override
-  _i9.ZetaContrast get contrast => (super.noSuchMethod(
+  _i10.ZetaContrast get contrast => (super.noSuchMethod(
         Invocation.getter(#contrast),
-        returnValue: _i9.ZetaContrast.aa,
-        returnValueForMissingStub: _i9.ZetaContrast.aa,
-      ) as _i9.ZetaContrast);
+        returnValue: _i10.ZetaContrast.aa,
+        returnValueForMissingStub: _i10.ZetaContrast.aa,
+      ) as _i10.ZetaContrast);
 
   @override
   _i4.ZetaColorSwatch get primary => (super.noSuchMethod(
@@ -402,26 +482,26 @@ class MockZetaColors extends _i1.Mock implements _i6.ZetaColors {
       ) as _i4.ZetaColorSwatch);
 
   @override
-  _i4.ZetaColorSwatch get pure => (super.noSuchMethod(
+  _i4.ZetaPureColorSwatch get pure => (super.noSuchMethod(
         Invocation.getter(#pure),
-        returnValue: _FakeZetaColorSwatch_3(
+        returnValue: _FakeZetaPureColorSwatch_4(
           this,
           Invocation.getter(#pure),
         ),
-        returnValueForMissingStub: _FakeZetaColorSwatch_3(
+        returnValueForMissingStub: _FakeZetaPureColorSwatch_4(
           this,
           Invocation.getter(#pure),
         ),
-      ) as _i4.ZetaColorSwatch);
+      ) as _i4.ZetaPureColorSwatch);
 
   @override
   _i5.Color get white => (super.noSuchMethod(
         Invocation.getter(#white),
-        returnValue: _FakeColor_4(
+        returnValue: _FakeColor_5(
           this,
           Invocation.getter(#white),
         ),
-        returnValueForMissingStub: _FakeColor_4(
+        returnValueForMissingStub: _FakeColor_5(
           this,
           Invocation.getter(#white),
         ),
@@ -430,11 +510,11 @@ class MockZetaColors extends _i1.Mock implements _i6.ZetaColors {
   @override
   _i5.Color get black => (super.noSuchMethod(
         Invocation.getter(#black),
-        returnValue: _FakeColor_4(
+        returnValue: _FakeColor_5(
           this,
           Invocation.getter(#black),
         ),
-        returnValueForMissingStub: _FakeColor_4(
+        returnValueForMissingStub: _FakeColor_5(
           this,
           Invocation.getter(#black),
         ),
@@ -443,11 +523,11 @@ class MockZetaColors extends _i1.Mock implements _i6.ZetaColors {
   @override
   _i5.Color get surfacePrimary => (super.noSuchMethod(
         Invocation.getter(#surfacePrimary),
-        returnValue: _FakeColor_4(
+        returnValue: _FakeColor_5(
           this,
           Invocation.getter(#surfacePrimary),
         ),
-        returnValueForMissingStub: _FakeColor_4(
+        returnValueForMissingStub: _FakeColor_5(
           this,
           Invocation.getter(#surfacePrimary),
         ),
@@ -456,11 +536,11 @@ class MockZetaColors extends _i1.Mock implements _i6.ZetaColors {
   @override
   _i5.Color get surfaceSecondary => (super.noSuchMethod(
         Invocation.getter(#surfaceSecondary),
-        returnValue: _FakeColor_4(
+        returnValue: _FakeColor_5(
           this,
           Invocation.getter(#surfaceSecondary),
         ),
-        returnValueForMissingStub: _FakeColor_4(
+        returnValueForMissingStub: _FakeColor_5(
           this,
           Invocation.getter(#surfaceSecondary),
         ),
@@ -469,11 +549,11 @@ class MockZetaColors extends _i1.Mock implements _i6.ZetaColors {
   @override
   _i5.Color get surfaceTertiary => (super.noSuchMethod(
         Invocation.getter(#surfaceTertiary),
-        returnValue: _FakeColor_4(
+        returnValue: _FakeColor_5(
           this,
           Invocation.getter(#surfaceTertiary),
         ),
-        returnValueForMissingStub: _FakeColor_4(
+        returnValueForMissingStub: _FakeColor_5(
           this,
           Invocation.getter(#surfaceTertiary),
         ),
@@ -584,130 +664,13 @@ class MockZetaColors extends _i1.Mock implements _i6.ZetaColors {
       ) as _i4.ZetaColorSwatch);
 
   @override
-  _i5.Color get surfaceHovered => (super.noSuchMethod(
-        Invocation.getter(#surfaceHovered),
-        returnValue: _FakeColor_4(
-          this,
-          Invocation.getter(#surfaceHovered),
-        ),
-        returnValueForMissingStub: _FakeColor_4(
-          this,
-          Invocation.getter(#surfaceHovered),
-        ),
-      ) as _i5.Color);
-
-  @override
-  _i5.Color get surfaceSelectedHovered => (super.noSuchMethod(
-        Invocation.getter(#surfaceSelectedHovered),
-        returnValue: _FakeColor_4(
-          this,
-          Invocation.getter(#surfaceSelectedHovered),
-        ),
-        returnValueForMissingStub: _FakeColor_4(
-          this,
-          Invocation.getter(#surfaceSelectedHovered),
-        ),
-      ) as _i5.Color);
-
-  @override
-  _i4.ZetaColorSwatch get positive => (super.noSuchMethod(
-        Invocation.getter(#positive),
-        returnValue: _FakeZetaColorSwatch_3(
-          this,
-          Invocation.getter(#positive),
-        ),
-        returnValueForMissingStub: _FakeZetaColorSwatch_3(
-          this,
-          Invocation.getter(#positive),
-        ),
-      ) as _i4.ZetaColorSwatch);
-
-  @override
-  _i4.ZetaColorSwatch get negative => (super.noSuchMethod(
-        Invocation.getter(#negative),
-        returnValue: _FakeZetaColorSwatch_3(
-          this,
-          Invocation.getter(#negative),
-        ),
-        returnValueForMissingStub: _FakeZetaColorSwatch_3(
-          this,
-          Invocation.getter(#negative),
-        ),
-      ) as _i4.ZetaColorSwatch);
-
-  @override
-  _i4.ZetaColorSwatch get warning => (super.noSuchMethod(
-        Invocation.getter(#warning),
-        returnValue: _FakeZetaColorSwatch_3(
-          this,
-          Invocation.getter(#warning),
-        ),
-        returnValueForMissingStub: _FakeZetaColorSwatch_3(
-          this,
-          Invocation.getter(#warning),
-        ),
-      ) as _i4.ZetaColorSwatch);
-
-  @override
-  _i4.ZetaColorSwatch get info => (super.noSuchMethod(
-        Invocation.getter(#info),
-        returnValue: _FakeZetaColorSwatch_3(
-          this,
-          Invocation.getter(#info),
-        ),
-        returnValueForMissingStub: _FakeZetaColorSwatch_3(
-          this,
-          Invocation.getter(#info),
-        ),
-      ) as _i4.ZetaColorSwatch);
-
-  @override
-  _i5.Color get shadow => (super.noSuchMethod(
-        Invocation.getter(#shadow),
-        returnValue: _FakeColor_4(
-          this,
-          Invocation.getter(#shadow),
-        ),
-        returnValueForMissingStub: _FakeColor_4(
-          this,
-          Invocation.getter(#shadow),
-        ),
-      ) as _i5.Color);
-
-  @override
-  _i5.Color get link => (super.noSuchMethod(
-        Invocation.getter(#link),
-        returnValue: _FakeColor_4(
-          this,
-          Invocation.getter(#link),
-        ),
-        returnValueForMissingStub: _FakeColor_4(
-          this,
-          Invocation.getter(#link),
-        ),
-      ) as _i5.Color);
-
-  @override
-  _i5.Color get linkVisited => (super.noSuchMethod(
-        Invocation.getter(#linkVisited),
-        returnValue: _FakeColor_4(
-          this,
-          Invocation.getter(#linkVisited),
-        ),
-        returnValueForMissingStub: _FakeColor_4(
-          this,
-          Invocation.getter(#linkVisited),
-        ),
-      ) as _i5.Color);
-
-  @override
   _i5.Color get textDefault => (super.noSuchMethod(
         Invocation.getter(#textDefault),
-        returnValue: _FakeColor_4(
+        returnValue: _FakeColor_5(
           this,
           Invocation.getter(#textDefault),
         ),
-        returnValueForMissingStub: _FakeColor_4(
+        returnValueForMissingStub: _FakeColor_5(
           this,
           Invocation.getter(#textDefault),
         ),
@@ -716,11 +679,11 @@ class MockZetaColors extends _i1.Mock implements _i6.ZetaColors {
   @override
   _i5.Color get textSubtle => (super.noSuchMethod(
         Invocation.getter(#textSubtle),
-        returnValue: _FakeColor_4(
+        returnValue: _FakeColor_5(
           this,
           Invocation.getter(#textSubtle),
         ),
-        returnValueForMissingStub: _FakeColor_4(
+        returnValueForMissingStub: _FakeColor_5(
           this,
           Invocation.getter(#textSubtle),
         ),
@@ -729,11 +692,11 @@ class MockZetaColors extends _i1.Mock implements _i6.ZetaColors {
   @override
   _i5.Color get textDisabled => (super.noSuchMethod(
         Invocation.getter(#textDisabled),
-        returnValue: _FakeColor_4(
+        returnValue: _FakeColor_5(
           this,
           Invocation.getter(#textDisabled),
         ),
-        returnValueForMissingStub: _FakeColor_4(
+        returnValueForMissingStub: _FakeColor_5(
           this,
           Invocation.getter(#textDisabled),
         ),
@@ -742,11 +705,11 @@ class MockZetaColors extends _i1.Mock implements _i6.ZetaColors {
   @override
   _i5.Color get textInverse => (super.noSuchMethod(
         Invocation.getter(#textInverse),
-        returnValue: _FakeColor_4(
+        returnValue: _FakeColor_5(
           this,
           Invocation.getter(#textInverse),
         ),
-        returnValueForMissingStub: _FakeColor_4(
+        returnValueForMissingStub: _FakeColor_5(
           this,
           Invocation.getter(#textInverse),
         ),
@@ -755,11 +718,11 @@ class MockZetaColors extends _i1.Mock implements _i6.ZetaColors {
   @override
   _i5.Color get iconDefault => (super.noSuchMethod(
         Invocation.getter(#iconDefault),
-        returnValue: _FakeColor_4(
+        returnValue: _FakeColor_5(
           this,
           Invocation.getter(#iconDefault),
         ),
-        returnValueForMissingStub: _FakeColor_4(
+        returnValueForMissingStub: _FakeColor_5(
           this,
           Invocation.getter(#iconDefault),
         ),
@@ -768,11 +731,11 @@ class MockZetaColors extends _i1.Mock implements _i6.ZetaColors {
   @override
   _i5.Color get iconSubtle => (super.noSuchMethod(
         Invocation.getter(#iconSubtle),
-        returnValue: _FakeColor_4(
+        returnValue: _FakeColor_5(
           this,
           Invocation.getter(#iconSubtle),
         ),
-        returnValueForMissingStub: _FakeColor_4(
+        returnValueForMissingStub: _FakeColor_5(
           this,
           Invocation.getter(#iconSubtle),
         ),
@@ -781,11 +744,11 @@ class MockZetaColors extends _i1.Mock implements _i6.ZetaColors {
   @override
   _i5.Color get iconDisabled => (super.noSuchMethod(
         Invocation.getter(#iconDisabled),
-        returnValue: _FakeColor_4(
+        returnValue: _FakeColor_5(
           this,
           Invocation.getter(#iconDisabled),
         ),
-        returnValueForMissingStub: _FakeColor_4(
+        returnValueForMissingStub: _FakeColor_5(
           this,
           Invocation.getter(#iconDisabled),
         ),
@@ -794,11 +757,11 @@ class MockZetaColors extends _i1.Mock implements _i6.ZetaColors {
   @override
   _i5.Color get iconInverse => (super.noSuchMethod(
         Invocation.getter(#iconInverse),
-        returnValue: _FakeColor_4(
+        returnValue: _FakeColor_5(
           this,
           Invocation.getter(#iconInverse),
         ),
-        returnValueForMissingStub: _FakeColor_4(
+        returnValueForMissingStub: _FakeColor_5(
           this,
           Invocation.getter(#iconInverse),
         ),
@@ -807,11 +770,11 @@ class MockZetaColors extends _i1.Mock implements _i6.ZetaColors {
   @override
   _i5.Color get surfaceDefault => (super.noSuchMethod(
         Invocation.getter(#surfaceDefault),
-        returnValue: _FakeColor_4(
+        returnValue: _FakeColor_5(
           this,
           Invocation.getter(#surfaceDefault),
         ),
-        returnValueForMissingStub: _FakeColor_4(
+        returnValueForMissingStub: _FakeColor_5(
           this,
           Invocation.getter(#surfaceDefault),
         ),
@@ -820,11 +783,11 @@ class MockZetaColors extends _i1.Mock implements _i6.ZetaColors {
   @override
   _i5.Color get surfaceDefaultInverse => (super.noSuchMethod(
         Invocation.getter(#surfaceDefaultInverse),
-        returnValue: _FakeColor_4(
+        returnValue: _FakeColor_5(
           this,
           Invocation.getter(#surfaceDefaultInverse),
         ),
-        returnValueForMissingStub: _FakeColor_4(
+        returnValueForMissingStub: _FakeColor_5(
           this,
           Invocation.getter(#surfaceDefaultInverse),
         ),
@@ -833,11 +796,11 @@ class MockZetaColors extends _i1.Mock implements _i6.ZetaColors {
   @override
   _i5.Color get surfaceHover => (super.noSuchMethod(
         Invocation.getter(#surfaceHover),
-        returnValue: _FakeColor_4(
+        returnValue: _FakeColor_5(
           this,
           Invocation.getter(#surfaceHover),
         ),
-        returnValueForMissingStub: _FakeColor_4(
+        returnValueForMissingStub: _FakeColor_5(
           this,
           Invocation.getter(#surfaceHover),
         ),
@@ -846,11 +809,11 @@ class MockZetaColors extends _i1.Mock implements _i6.ZetaColors {
   @override
   _i5.Color get surfaceSelected => (super.noSuchMethod(
         Invocation.getter(#surfaceSelected),
-        returnValue: _FakeColor_4(
+        returnValue: _FakeColor_5(
           this,
           Invocation.getter(#surfaceSelected),
         ),
-        returnValueForMissingStub: _FakeColor_4(
+        returnValueForMissingStub: _FakeColor_5(
           this,
           Invocation.getter(#surfaceSelected),
         ),
@@ -859,11 +822,11 @@ class MockZetaColors extends _i1.Mock implements _i6.ZetaColors {
   @override
   _i5.Color get surfaceSelectedHover => (super.noSuchMethod(
         Invocation.getter(#surfaceSelectedHover),
-        returnValue: _FakeColor_4(
+        returnValue: _FakeColor_5(
           this,
           Invocation.getter(#surfaceSelectedHover),
         ),
-        returnValueForMissingStub: _FakeColor_4(
+        returnValueForMissingStub: _FakeColor_5(
           this,
           Invocation.getter(#surfaceSelectedHover),
         ),
@@ -872,11 +835,11 @@ class MockZetaColors extends _i1.Mock implements _i6.ZetaColors {
   @override
   _i5.Color get surfaceDisabled => (super.noSuchMethod(
         Invocation.getter(#surfaceDisabled),
-        returnValue: _FakeColor_4(
+        returnValue: _FakeColor_5(
           this,
           Invocation.getter(#surfaceDisabled),
         ),
-        returnValueForMissingStub: _FakeColor_4(
+        returnValueForMissingStub: _FakeColor_5(
           this,
           Invocation.getter(#surfaceDisabled),
         ),
@@ -885,11 +848,11 @@ class MockZetaColors extends _i1.Mock implements _i6.ZetaColors {
   @override
   _i5.Color get surfaceCool => (super.noSuchMethod(
         Invocation.getter(#surfaceCool),
-        returnValue: _FakeColor_4(
+        returnValue: _FakeColor_5(
           this,
           Invocation.getter(#surfaceCool),
         ),
-        returnValueForMissingStub: _FakeColor_4(
+        returnValueForMissingStub: _FakeColor_5(
           this,
           Invocation.getter(#surfaceCool),
         ),
@@ -898,11 +861,11 @@ class MockZetaColors extends _i1.Mock implements _i6.ZetaColors {
   @override
   _i5.Color get surfaceWarm => (super.noSuchMethod(
         Invocation.getter(#surfaceWarm),
-        returnValue: _FakeColor_4(
+        returnValue: _FakeColor_5(
           this,
           Invocation.getter(#surfaceWarm),
         ),
-        returnValueForMissingStub: _FakeColor_4(
+        returnValueForMissingStub: _FakeColor_5(
           this,
           Invocation.getter(#surfaceWarm),
         ),
@@ -911,11 +874,11 @@ class MockZetaColors extends _i1.Mock implements _i6.ZetaColors {
   @override
   _i5.Color get surfacePrimarySubtle => (super.noSuchMethod(
         Invocation.getter(#surfacePrimarySubtle),
-        returnValue: _FakeColor_4(
+        returnValue: _FakeColor_5(
           this,
           Invocation.getter(#surfacePrimarySubtle),
         ),
-        returnValueForMissingStub: _FakeColor_4(
+        returnValueForMissingStub: _FakeColor_5(
           this,
           Invocation.getter(#surfacePrimarySubtle),
         ),
@@ -924,11 +887,11 @@ class MockZetaColors extends _i1.Mock implements _i6.ZetaColors {
   @override
   _i5.Color get surfaceAvatarBlue => (super.noSuchMethod(
         Invocation.getter(#surfaceAvatarBlue),
-        returnValue: _FakeColor_4(
+        returnValue: _FakeColor_5(
           this,
           Invocation.getter(#surfaceAvatarBlue),
         ),
-        returnValueForMissingStub: _FakeColor_4(
+        returnValueForMissingStub: _FakeColor_5(
           this,
           Invocation.getter(#surfaceAvatarBlue),
         ),
@@ -950,11 +913,11 @@ class MockZetaColors extends _i1.Mock implements _i6.ZetaColors {
   @override
   _i5.Color get surfaceAvatarOrange => (super.noSuchMethod(
         Invocation.getter(#surfaceAvatarOrange),
-        returnValue: _FakeColor_4(
+        returnValue: _FakeColor_5(
           this,
           Invocation.getter(#surfaceAvatarOrange),
         ),
-        returnValueForMissingStub: _FakeColor_4(
+        returnValueForMissingStub: _FakeColor_5(
           this,
           Invocation.getter(#surfaceAvatarOrange),
         ),
@@ -963,11 +926,11 @@ class MockZetaColors extends _i1.Mock implements _i6.ZetaColors {
   @override
   _i5.Color get surfaceAvatarPink => (super.noSuchMethod(
         Invocation.getter(#surfaceAvatarPink),
-        returnValue: _FakeColor_4(
+        returnValue: _FakeColor_5(
           this,
           Invocation.getter(#surfaceAvatarPink),
         ),
-        returnValueForMissingStub: _FakeColor_4(
+        returnValueForMissingStub: _FakeColor_5(
           this,
           Invocation.getter(#surfaceAvatarPink),
         ),
@@ -976,11 +939,11 @@ class MockZetaColors extends _i1.Mock implements _i6.ZetaColors {
   @override
   _i5.Color get surfaceAvatarPurple => (super.noSuchMethod(
         Invocation.getter(#surfaceAvatarPurple),
-        returnValue: _FakeColor_4(
+        returnValue: _FakeColor_5(
           this,
           Invocation.getter(#surfaceAvatarPurple),
         ),
-        returnValueForMissingStub: _FakeColor_4(
+        returnValueForMissingStub: _FakeColor_5(
           this,
           Invocation.getter(#surfaceAvatarPurple),
         ),
@@ -989,11 +952,11 @@ class MockZetaColors extends _i1.Mock implements _i6.ZetaColors {
   @override
   _i5.Color get surfaceAvatarTeal => (super.noSuchMethod(
         Invocation.getter(#surfaceAvatarTeal),
-        returnValue: _FakeColor_4(
+        returnValue: _FakeColor_5(
           this,
           Invocation.getter(#surfaceAvatarTeal),
         ),
-        returnValueForMissingStub: _FakeColor_4(
+        returnValueForMissingStub: _FakeColor_5(
           this,
           Invocation.getter(#surfaceAvatarTeal),
         ),
@@ -1002,11 +965,11 @@ class MockZetaColors extends _i1.Mock implements _i6.ZetaColors {
   @override
   _i5.Color get surfaceAvatarYellow => (super.noSuchMethod(
         Invocation.getter(#surfaceAvatarYellow),
-        returnValue: _FakeColor_4(
+        returnValue: _FakeColor_5(
           this,
           Invocation.getter(#surfaceAvatarYellow),
         ),
-        returnValueForMissingStub: _FakeColor_4(
+        returnValueForMissingStub: _FakeColor_5(
           this,
           Invocation.getter(#surfaceAvatarYellow),
         ),
@@ -1015,11 +978,11 @@ class MockZetaColors extends _i1.Mock implements _i6.ZetaColors {
   @override
   _i5.Color get surfaceSecondarySubtle => (super.noSuchMethod(
         Invocation.getter(#surfaceSecondarySubtle),
-        returnValue: _FakeColor_4(
+        returnValue: _FakeColor_5(
           this,
           Invocation.getter(#surfaceSecondarySubtle),
         ),
-        returnValueForMissingStub: _FakeColor_4(
+        returnValueForMissingStub: _FakeColor_5(
           this,
           Invocation.getter(#surfaceSecondarySubtle),
         ),
@@ -1041,11 +1004,11 @@ class MockZetaColors extends _i1.Mock implements _i6.ZetaColors {
   @override
   _i5.Color get surfacePositiveSubtle => (super.noSuchMethod(
         Invocation.getter(#surfacePositiveSubtle),
-        returnValue: _FakeColor_4(
+        returnValue: _FakeColor_5(
           this,
           Invocation.getter(#surfacePositiveSubtle),
         ),
-        returnValueForMissingStub: _FakeColor_4(
+        returnValueForMissingStub: _FakeColor_5(
           this,
           Invocation.getter(#surfacePositiveSubtle),
         ),
@@ -1067,11 +1030,11 @@ class MockZetaColors extends _i1.Mock implements _i6.ZetaColors {
   @override
   _i5.Color get surfaceWarningSubtle => (super.noSuchMethod(
         Invocation.getter(#surfaceWarningSubtle),
-        returnValue: _FakeColor_4(
+        returnValue: _FakeColor_5(
           this,
           Invocation.getter(#surfaceWarningSubtle),
         ),
-        returnValueForMissingStub: _FakeColor_4(
+        returnValueForMissingStub: _FakeColor_5(
           this,
           Invocation.getter(#surfaceWarningSubtle),
         ),
@@ -1093,11 +1056,11 @@ class MockZetaColors extends _i1.Mock implements _i6.ZetaColors {
   @override
   _i5.Color get surfaceNegativeSubtle => (super.noSuchMethod(
         Invocation.getter(#surfaceNegativeSubtle),
-        returnValue: _FakeColor_4(
+        returnValue: _FakeColor_5(
           this,
           Invocation.getter(#surfaceNegativeSubtle),
         ),
-        returnValueForMissingStub: _FakeColor_4(
+        returnValueForMissingStub: _FakeColor_5(
           this,
           Invocation.getter(#surfaceNegativeSubtle),
         ),
@@ -1119,11 +1082,11 @@ class MockZetaColors extends _i1.Mock implements _i6.ZetaColors {
   @override
   _i5.Color get surfaceInfoSubtle => (super.noSuchMethod(
         Invocation.getter(#surfaceInfoSubtle),
-        returnValue: _FakeColor_4(
+        returnValue: _FakeColor_5(
           this,
           Invocation.getter(#surfaceInfoSubtle),
         ),
-        returnValueForMissingStub: _FakeColor_4(
+        returnValueForMissingStub: _FakeColor_5(
           this,
           Invocation.getter(#surfaceInfoSubtle),
         ),
@@ -1132,11 +1095,11 @@ class MockZetaColors extends _i1.Mock implements _i6.ZetaColors {
   @override
   _i5.Color get borderDefault => (super.noSuchMethod(
         Invocation.getter(#borderDefault),
-        returnValue: _FakeColor_4(
+        returnValue: _FakeColor_5(
           this,
           Invocation.getter(#borderDefault),
         ),
-        returnValueForMissingStub: _FakeColor_4(
+        returnValueForMissingStub: _FakeColor_5(
           this,
           Invocation.getter(#borderDefault),
         ),
@@ -1145,11 +1108,11 @@ class MockZetaColors extends _i1.Mock implements _i6.ZetaColors {
   @override
   _i5.Color get borderSubtle => (super.noSuchMethod(
         Invocation.getter(#borderSubtle),
-        returnValue: _FakeColor_4(
+        returnValue: _FakeColor_5(
           this,
           Invocation.getter(#borderSubtle),
         ),
-        returnValueForMissingStub: _FakeColor_4(
+        returnValueForMissingStub: _FakeColor_5(
           this,
           Invocation.getter(#borderSubtle),
         ),
@@ -1158,11 +1121,11 @@ class MockZetaColors extends _i1.Mock implements _i6.ZetaColors {
   @override
   _i5.Color get borderHover => (super.noSuchMethod(
         Invocation.getter(#borderHover),
-        returnValue: _FakeColor_4(
+        returnValue: _FakeColor_5(
           this,
           Invocation.getter(#borderHover),
         ),
-        returnValueForMissingStub: _FakeColor_4(
+        returnValueForMissingStub: _FakeColor_5(
           this,
           Invocation.getter(#borderHover),
         ),
@@ -1171,11 +1134,11 @@ class MockZetaColors extends _i1.Mock implements _i6.ZetaColors {
   @override
   _i5.Color get borderSelected => (super.noSuchMethod(
         Invocation.getter(#borderSelected),
-        returnValue: _FakeColor_4(
+        returnValue: _FakeColor_5(
           this,
           Invocation.getter(#borderSelected),
         ),
-        returnValueForMissingStub: _FakeColor_4(
+        returnValueForMissingStub: _FakeColor_5(
           this,
           Invocation.getter(#borderSelected),
         ),
@@ -1184,11 +1147,11 @@ class MockZetaColors extends _i1.Mock implements _i6.ZetaColors {
   @override
   _i5.Color get borderDisabled => (super.noSuchMethod(
         Invocation.getter(#borderDisabled),
-        returnValue: _FakeColor_4(
+        returnValue: _FakeColor_5(
           this,
           Invocation.getter(#borderDisabled),
         ),
-        returnValueForMissingStub: _FakeColor_4(
+        returnValueForMissingStub: _FakeColor_5(
           this,
           Invocation.getter(#borderDisabled),
         ),
@@ -1197,11 +1160,11 @@ class MockZetaColors extends _i1.Mock implements _i6.ZetaColors {
   @override
   _i5.Color get borderPure => (super.noSuchMethod(
         Invocation.getter(#borderPure),
-        returnValue: _FakeColor_4(
+        returnValue: _FakeColor_5(
           this,
           Invocation.getter(#borderPure),
         ),
-        returnValueForMissingStub: _FakeColor_4(
+        returnValueForMissingStub: _FakeColor_5(
           this,
           Invocation.getter(#borderPure),
         ),
@@ -1223,11 +1186,11 @@ class MockZetaColors extends _i1.Mock implements _i6.ZetaColors {
   @override
   _i5.Color get borderPrimary => (super.noSuchMethod(
         Invocation.getter(#borderPrimary),
-        returnValue: _FakeColor_4(
+        returnValue: _FakeColor_5(
           this,
           Invocation.getter(#borderPrimary),
         ),
-        returnValueForMissingStub: _FakeColor_4(
+        returnValueForMissingStub: _FakeColor_5(
           this,
           Invocation.getter(#borderPrimary),
         ),
@@ -1236,11 +1199,11 @@ class MockZetaColors extends _i1.Mock implements _i6.ZetaColors {
   @override
   _i5.Color get borderSecondary => (super.noSuchMethod(
         Invocation.getter(#borderSecondary),
-        returnValue: _FakeColor_4(
+        returnValue: _FakeColor_5(
           this,
           Invocation.getter(#borderSecondary),
         ),
-        returnValueForMissingStub: _FakeColor_4(
+        returnValueForMissingStub: _FakeColor_5(
           this,
           Invocation.getter(#borderSecondary),
         ),
@@ -1249,11 +1212,11 @@ class MockZetaColors extends _i1.Mock implements _i6.ZetaColors {
   @override
   _i5.Color get borderPositive => (super.noSuchMethod(
         Invocation.getter(#borderPositive),
-        returnValue: _FakeColor_4(
+        returnValue: _FakeColor_5(
           this,
           Invocation.getter(#borderPositive),
         ),
-        returnValueForMissingStub: _FakeColor_4(
+        returnValueForMissingStub: _FakeColor_5(
           this,
           Invocation.getter(#borderPositive),
         ),
@@ -1262,11 +1225,11 @@ class MockZetaColors extends _i1.Mock implements _i6.ZetaColors {
   @override
   _i5.Color get borderWarning => (super.noSuchMethod(
         Invocation.getter(#borderWarning),
-        returnValue: _FakeColor_4(
+        returnValue: _FakeColor_5(
           this,
           Invocation.getter(#borderWarning),
         ),
-        returnValueForMissingStub: _FakeColor_4(
+        returnValueForMissingStub: _FakeColor_5(
           this,
           Invocation.getter(#borderWarning),
         ),
@@ -1275,11 +1238,11 @@ class MockZetaColors extends _i1.Mock implements _i6.ZetaColors {
   @override
   _i5.Color get borderNegative => (super.noSuchMethod(
         Invocation.getter(#borderNegative),
-        returnValue: _FakeColor_4(
+        returnValue: _FakeColor_5(
           this,
           Invocation.getter(#borderNegative),
         ),
-        returnValueForMissingStub: _FakeColor_4(
+        returnValueForMissingStub: _FakeColor_5(
           this,
           Invocation.getter(#borderNegative),
         ),
@@ -1288,11 +1251,11 @@ class MockZetaColors extends _i1.Mock implements _i6.ZetaColors {
   @override
   _i5.Color get borderInfo => (super.noSuchMethod(
         Invocation.getter(#borderInfo),
-        returnValue: _FakeColor_4(
+        returnValue: _FakeColor_5(
           this,
           Invocation.getter(#borderInfo),
         ),
-        returnValueForMissingStub: _FakeColor_4(
+        returnValueForMissingStub: _FakeColor_5(
           this,
           Invocation.getter(#borderInfo),
         ),
@@ -1306,20 +1269,6 @@ class MockZetaColors extends _i1.Mock implements _i6.ZetaColors {
       ) as bool);
 
   @override
-  List<_i4.ZetaColorSwatch> get rainbow => (super.noSuchMethod(
-        Invocation.getter(#rainbow),
-        returnValue: <_i4.ZetaColorSwatch>[],
-        returnValueForMissingStub: <_i4.ZetaColorSwatch>[],
-      ) as List<_i4.ZetaColorSwatch>);
-
-  @override
-  Map<String, _i4.ZetaColorSwatch> get rainbowMap => (super.noSuchMethod(
-        Invocation.getter(#rainbowMap),
-        returnValue: <String, _i4.ZetaColorSwatch>{},
-        returnValueForMissingStub: <String, _i4.ZetaColorSwatch>{},
-      ) as Map<String, _i4.ZetaColorSwatch>);
-
-  @override
   List<Object?> get props => (super.noSuchMethod(
         Invocation.getter(#props),
         returnValue: <Object?>[],
@@ -1327,9 +1276,74 @@ class MockZetaColors extends _i1.Mock implements _i6.ZetaColors {
       ) as List<Object?>);
 
   @override
-  _i6.ZetaColors copyWith({
+  _i6.ZetaSemanticBorderColors get border => (super.noSuchMethod(
+        Invocation.getter(#border),
+        returnValue: _FakeZetaSemanticBorderColors_6(
+          this,
+          Invocation.getter(#border),
+        ),
+        returnValueForMissingStub: _FakeZetaSemanticBorderColors_6(
+          this,
+          Invocation.getter(#border),
+        ),
+      ) as _i6.ZetaSemanticBorderColors);
+
+  @override
+  _i6.ZetaSemanticMainColors get main => (super.noSuchMethod(
+        Invocation.getter(#main),
+        returnValue: _FakeZetaSemanticMainColors_7(
+          this,
+          Invocation.getter(#main),
+        ),
+        returnValueForMissingStub: _FakeZetaSemanticMainColors_7(
+          this,
+          Invocation.getter(#main),
+        ),
+      ) as _i6.ZetaSemanticMainColors);
+
+  @override
+  _i6.ZetaPrimitives get primitives => (super.noSuchMethod(
+        Invocation.getter(#primitives),
+        returnValue: _FakeZetaPrimitives_8(
+          this,
+          Invocation.getter(#primitives),
+        ),
+        returnValueForMissingStub: _FakeZetaPrimitives_8(
+          this,
+          Invocation.getter(#primitives),
+        ),
+      ) as _i6.ZetaPrimitives);
+
+  @override
+  _i6.ZetaSemanticStateColors get state => (super.noSuchMethod(
+        Invocation.getter(#state),
+        returnValue: _FakeZetaSemanticStateColors_9(
+          this,
+          Invocation.getter(#state),
+        ),
+        returnValueForMissingStub: _FakeZetaSemanticStateColors_9(
+          this,
+          Invocation.getter(#state),
+        ),
+      ) as _i6.ZetaSemanticStateColors);
+
+  @override
+  _i6.ZetaSemanticSurfaceColors get surface => (super.noSuchMethod(
+        Invocation.getter(#surface),
+        returnValue: _FakeZetaSemanticSurfaceColors_10(
+          this,
+          Invocation.getter(#surface),
+        ),
+        returnValueForMissingStub: _FakeZetaSemanticSurfaceColors_10(
+          this,
+          Invocation.getter(#surface),
+        ),
+      ) as _i6.ZetaSemanticSurfaceColors);
+
+  @override
+  _i7.ZetaColors copyWith({
     _i5.Brightness? brightness,
-    _i9.ZetaContrast? contrast,
+    _i10.ZetaContrast? contrast,
     _i4.ZetaColorSwatch? primary,
     _i4.ZetaColorSwatch? secondary,
     _i4.ZetaColorSwatch? error,
@@ -1340,9 +1354,6 @@ class MockZetaColors extends _i1.Mock implements _i6.ZetaColors {
     _i5.Color? surfacePrimary,
     _i5.Color? surfaceSecondary,
     _i5.Color? surfaceTertiary,
-    _i5.Color? link,
-    _i5.Color? linkVisited,
-    _i5.Color? shadow,
   }) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -1361,12 +1372,9 @@ class MockZetaColors extends _i1.Mock implements _i6.ZetaColors {
             #surfacePrimary: surfacePrimary,
             #surfaceSecondary: surfaceSecondary,
             #surfaceTertiary: surfaceTertiary,
-            #link: link,
-            #linkVisited: linkVisited,
-            #shadow: shadow,
           },
         ),
-        returnValue: _FakeZetaColors_5(
+        returnValue: _FakeZetaColors_11(
           this,
           Invocation.method(
             #copyWith,
@@ -1384,13 +1392,10 @@ class MockZetaColors extends _i1.Mock implements _i6.ZetaColors {
               #surfacePrimary: surfacePrimary,
               #surfaceSecondary: surfaceSecondary,
               #surfaceTertiary: surfaceTertiary,
-              #link: link,
-              #linkVisited: linkVisited,
-              #shadow: shadow,
             },
           ),
         ),
-        returnValueForMissingStub: _FakeZetaColors_5(
+        returnValueForMissingStub: _FakeZetaColors_11(
           this,
           Invocation.method(
             #copyWith,
@@ -1408,22 +1413,19 @@ class MockZetaColors extends _i1.Mock implements _i6.ZetaColors {
               #surfacePrimary: surfacePrimary,
               #surfaceSecondary: surfaceSecondary,
               #surfaceTertiary: surfaceTertiary,
-              #link: link,
-              #linkVisited: linkVisited,
-              #shadow: shadow,
             },
           ),
         ),
-      ) as _i6.ZetaColors);
+      ) as _i7.ZetaColors);
 
   @override
-  _i6.ZetaColors apply({required _i9.ZetaContrast? contrast}) => (super.noSuchMethod(
+  _i7.ZetaColors apply({required _i10.ZetaContrast? contrast}) => (super.noSuchMethod(
         Invocation.method(
           #apply,
           [],
           {#contrast: contrast},
         ),
-        returnValue: _FakeZetaColors_5(
+        returnValue: _FakeZetaColors_11(
           this,
           Invocation.method(
             #apply,
@@ -1431,7 +1433,7 @@ class MockZetaColors extends _i1.Mock implements _i6.ZetaColors {
             {#contrast: contrast},
           ),
         ),
-        returnValueForMissingStub: _FakeZetaColors_5(
+        returnValueForMissingStub: _FakeZetaColors_11(
           this,
           Invocation.method(
             #apply,
@@ -1439,41 +1441,41 @@ class MockZetaColors extends _i1.Mock implements _i6.ZetaColors {
             {#contrast: contrast},
           ),
         ),
-      ) as _i6.ZetaColors);
+      ) as _i7.ZetaColors);
 
   @override
-  _i7.ZetaColorScheme toScheme() => (super.noSuchMethod(
+  _i8.ZetaColorScheme toScheme() => (super.noSuchMethod(
         Invocation.method(
           #toScheme,
           [],
         ),
-        returnValue: _FakeZetaColorScheme_6(
+        returnValue: _FakeZetaColorScheme_12(
           this,
           Invocation.method(
             #toScheme,
             [],
           ),
         ),
-        returnValueForMissingStub: _FakeZetaColorScheme_6(
+        returnValueForMissingStub: _FakeZetaColorScheme_12(
           this,
           Invocation.method(
             #toScheme,
             [],
           ),
         ),
-      ) as _i7.ZetaColorScheme);
+      ) as _i8.ZetaColorScheme);
 }
 
 /// A class which mocks [Zeta].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockZeta extends _i1.Mock implements _i10.Zeta {
+class MockZeta extends _i1.Mock implements _i7.Zeta {
   @override
-  _i9.ZetaContrast get contrast => (super.noSuchMethod(
+  _i10.ZetaContrast get contrast => (super.noSuchMethod(
         Invocation.getter(#contrast),
-        returnValue: _i9.ZetaContrast.aa,
-        returnValueForMissingStub: _i9.ZetaContrast.aa,
-      ) as _i9.ZetaContrast);
+        returnValue: _i10.ZetaContrast.aa,
+        returnValueForMissingStub: _i10.ZetaContrast.aa,
+      ) as _i10.ZetaContrast);
 
   @override
   _i2.ThemeMode get themeMode => (super.noSuchMethod(
@@ -1483,19 +1485,6 @@ class MockZeta extends _i1.Mock implements _i10.Zeta {
       ) as _i2.ThemeMode);
 
   @override
-  _i6.ZetaThemeData get themeData => (super.noSuchMethod(
-        Invocation.getter(#themeData),
-        returnValue: _FakeZetaThemeData_7(
-          this,
-          Invocation.getter(#themeData),
-        ),
-        returnValueForMissingStub: _FakeZetaThemeData_7(
-          this,
-          Invocation.getter(#themeData),
-        ),
-      ) as _i6.ZetaThemeData);
-
-  @override
   bool get rounded => (super.noSuchMethod(
         Invocation.getter(#rounded),
         returnValue: false,
@@ -1503,17 +1492,43 @@ class MockZeta extends _i1.Mock implements _i10.Zeta {
       ) as bool);
 
   @override
-  _i6.ZetaColors get colors => (super.noSuchMethod(
+  _i6.ZetaSemanticColors get colors => (super.noSuchMethod(
         Invocation.getter(#colors),
-        returnValue: _FakeZetaColors_5(
+        returnValue: _FakeZetaSemanticColors_13(
           this,
           Invocation.getter(#colors),
         ),
-        returnValueForMissingStub: _FakeZetaColors_5(
+        returnValueForMissingStub: _FakeZetaSemanticColors_13(
           this,
           Invocation.getter(#colors),
         ),
-      ) as _i6.ZetaColors);
+      ) as _i6.ZetaSemanticColors);
+
+  @override
+  _i6.ZetaSpacingSemantics get spacing => (super.noSuchMethod(
+        Invocation.getter(#spacing),
+        returnValue: _FakeZetaSpacingSemantics_14(
+          this,
+          Invocation.getter(#spacing),
+        ),
+        returnValueForMissingStub: _FakeZetaSpacingSemantics_14(
+          this,
+          Invocation.getter(#spacing),
+        ),
+      ) as _i6.ZetaSpacingSemantics);
+
+  @override
+  _i6.ZetaRadiiSemantics get radii => (super.noSuchMethod(
+        Invocation.getter(#radii),
+        returnValue: _FakeZetaRadiiSemantics_15(
+          this,
+          Invocation.getter(#radii),
+        ),
+        returnValueForMissingStub: _FakeZetaRadiiSemantics_15(
+          this,
+          Invocation.getter(#radii),
+        ),
+      ) as _i6.ZetaRadiiSemantics);
 
   @override
   _i5.Brightness get brightness => (super.noSuchMethod(
@@ -1560,14 +1575,14 @@ class MockZeta extends _i1.Mock implements _i10.Zeta {
           #createElement,
           [],
         ),
-        returnValue: _FakeInheritedElement_8(
+        returnValue: _FakeInheritedElement_16(
           this,
           Invocation.method(
             #createElement,
             [],
           ),
         ),
-        returnValueForMissingStub: _FakeInheritedElement_8(
+        returnValueForMissingStub: _FakeInheritedElement_16(
           this,
           Invocation.method(
             #createElement,

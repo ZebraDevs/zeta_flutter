@@ -231,37 +231,40 @@ class _ZetaGroupButtonState extends State<ZetaGroupButton> {
     _controller.dispose();
   }
 
-  double get _padding => widget.isLarge ? ZetaSpacing.large : ZetaSpacing.medium;
+  double get _padding => widget.isLarge ? Zeta.of(context).spacing.large : Zeta.of(context).spacing.medium;
 
   BorderSide _getBorderSide(
-    ZetaColors colors,
+    ZetaSemanticColors colors,
     bool finalButton,
   ) {
+    // TODO(UX-1200): Focus border does not work as expected.
     if (_controller.value.contains(WidgetState.focused)) {
-      return BorderSide(color: colors.blue.shade50, width: ZetaSpacingBase.x0_5);
+      return ZetaBorders.focusBorder(context);
     }
     if (_controller.value.contains(WidgetState.disabled)) {
-      return BorderSide(color: colors.cool.shade40);
+      return BorderSide(color: colors.border.disabled);
     }
     return BorderSide(
-      color: finalButton ? colors.borderDefault : colors.borderSubtle,
+      color: finalButton ? colors.border.defaultColor : colors.border.subtle,
     );
   }
 
   BorderRadius _getRadius(ZetaWidgetBorder borderType) {
+    final border = borderType.radius(context);
+
     if (widget.isInitial) {
-      return borderType.radius.copyWith(
+      return border.copyWith(
         topRight: Radius.zero,
         bottomRight: Radius.zero,
       );
     }
     if (widget.isFinal) {
-      return borderType.radius.copyWith(
+      return border.copyWith(
         topLeft: Radius.zero,
         bottomLeft: Radius.zero,
       );
     }
-    return ZetaRadius.none;
+    return Zeta.of(context).radii.none;
   }
 
   Widget _getButton(
@@ -282,12 +285,12 @@ class _ZetaGroupButtonState extends State<ZetaGroupButton> {
       dropdownIcon = ZetaIcons.expand_less;
     }
 
-    const iconSize = ZetaSpacing.xl_1;
+    final iconSize = Zeta.of(context).spacing.xl;
 
     Widget? leadingIcon;
     if (selectedItem?.icon != null) {
       leadingIcon = IconTheme(
-        data: const IconThemeData(
+        data: IconThemeData(
           size: iconSize,
         ),
         child: selectedItem!.icon!,
@@ -303,7 +306,7 @@ class _ZetaGroupButtonState extends State<ZetaGroupButton> {
           left: borderSide,
           bottom: borderSide,
           right: _controller.value.contains(WidgetState.focused)
-              ? BorderSide(color: colors.blue.shade50, width: 2)
+              ? BorderSide(color: colors.border.primary, width: 2)
               : (widget.isFinal)
                   ? borderSide
                   : BorderSide.none,
@@ -323,26 +326,26 @@ class _ZetaGroupButtonState extends State<ZetaGroupButton> {
             ),
             backgroundColor: WidgetStateProperty.resolveWith<Color?>((states) {
               if (states.contains(WidgetState.disabled)) {
-                return colors.surfaceDisabled;
+                return colors.surface.disabled;
               }
               if (states.contains(WidgetState.pressed)) {
-                return widget.isInverse ? colors.cool.shade100 : colors.primary.shade10;
+                return widget.isInverse ? colors.state.inverse.selected : colors.state.defaultColor.selected;
               }
               if (states.contains(WidgetState.hovered)) {
-                return widget.isInverse ? colors.cool.shade90 : colors.cool.shade20;
+                return widget.isInverse ? colors.state.inverse.hover : colors.surface.hover;
               }
-              if (widget.isInverse) return colors.cool.shade100;
+              if (widget.isInverse) return colors.state.inverse.enabled;
 
-              return colors.surfacePrimary;
+              return colors.surface.defaultColor;
             }),
             foregroundColor: WidgetStateProperty.resolveWith<Color?>((states) {
               if (states.contains(WidgetState.disabled)) {
-                return colors.textDisabled;
+                return colors.main.disabled;
               }
-              if (widget.isInverse) return colors.cool.shade100.onColor;
-              return colors.textDefault;
+              if (widget.isInverse) return colors.main.inverse;
+              return colors.main.defaultColor;
             }),
-            elevation: const WidgetStatePropertyAll(ZetaSpacing.none),
+            elevation: WidgetStatePropertyAll(Zeta.of(context).spacing.none),
             padding: WidgetStateProperty.all(EdgeInsets.zero),
           ),
           child: SelectionContainer.disabled(
@@ -354,9 +357,9 @@ class _ZetaGroupButtonState extends State<ZetaGroupButton> {
                 if (widget.items != null)
                   Icon(
                     dropdownIcon,
-                    size: ZetaSpacing.xl_1,
+                    size: Zeta.of(context).spacing.xl,
                   ),
-              ].divide(const SizedBox(width: ZetaSpacing.minimum)).toList(),
+              ].divide(SizedBox(width: Zeta.of(context).spacing.minimum)).toList(),
             ).paddingAll(_padding),
           ),
         ),

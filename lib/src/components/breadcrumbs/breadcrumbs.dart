@@ -73,11 +73,11 @@ class _ZetaBreadCrumbsState extends State<ZetaBreadCrumbs> {
         child: Row(
           children: renderedChildren(widget.children)
               .divide(
-                const Row(
+                Row(
                   children: [
-                    SizedBox(width: ZetaSpacing.small),
-                    ZetaIcon(ZetaIcons.chevron_right, size: ZetaSpacing.xl_1),
-                    SizedBox(width: ZetaSpacing.small),
+                    SizedBox(width: Zeta.of(context).spacing.small),
+                    ZetaIcon(ZetaIcons.chevron_right, size: Zeta.of(context).spacing.xl),
+                    SizedBox(width: Zeta.of(context).spacing.small),
                   ],
                 ),
               )
@@ -195,6 +195,8 @@ class _ZetaBreadCrumbState extends State<ZetaBreadCrumb> {
   @override
   Widget build(BuildContext context) {
     final colors = Zeta.of(context).colors;
+
+    final foregroundColor = getColor(controller.value, colors);
     return Semantics(
       label: widget.semanticLabel ?? widget.label,
       selected: widget.isSelected,
@@ -211,14 +213,12 @@ class _ZetaBreadCrumbState extends State<ZetaBreadCrumb> {
             if (widget.isSelected)
               Icon(
                 widget.activeIcon ?? ZetaIcons.star_round,
-                color: getColor(controller.value, colors),
+                color: foregroundColor,
               ),
-            const SizedBox(
-              width: ZetaSpacing.small,
-            ),
+            SizedBox(width: Zeta.of(context).spacing.small),
             Text(
               widget.label,
-              style: ZetaTextStyles.bodySmall.apply(color: getColor(controller.value, colors)),
+              style: ZetaTextStyles.bodySmall.apply(color: foregroundColor),
             ),
           ],
         ),
@@ -227,12 +227,12 @@ class _ZetaBreadCrumbState extends State<ZetaBreadCrumb> {
   }
 
   /// Get color of breadcrumb based on state.
-  Color getColor(Set<WidgetState> states, ZetaColors colors) {
+  Color getColor(Set<WidgetState> states, ZetaSemanticColors colors) {
     if (states.contains(WidgetState.hovered)) {
-      return colors.blue;
+      return colors.main.primary;
     }
-    if (widget.isSelected) return colors.black;
-    return colors.textSubtle;
+    if (widget.isSelected) return colors.main.defaultColor;
+    return colors.main.subtle;
   }
 
   @override
@@ -297,47 +297,48 @@ class _BreadCrumbsTruncatedState extends State<_BreadCrumbsTruncated> {
               style: ButtonStyle(
                 backgroundColor: WidgetStateProperty.resolveWith((states) {
                   if (states.contains(WidgetState.hovered)) {
-                    return colors.surfaceHover;
+                    return colors.surface.hover;
                   }
                   if (states.contains(WidgetState.pressed)) {
-                    return colors.primary.shade10;
+                    return colors.surface.selected;
                   }
                   if (states.contains(WidgetState.disabled)) {
-                    return colors.surfaceDisabled;
+                    return colors.surface.disabled;
                   }
-                  return colors.warm.shade10;
+                  return colors.surface.warm;
                 }),
                 foregroundColor: WidgetStateProperty.resolveWith((states) {
                   if (states.contains(WidgetState.disabled)) {
-                    return colors.textDisabled;
+                    return colors.main.disabled;
                   }
-                  return colors.textDefault;
+                  return colors.main.defaultColor;
                 }),
                 shape: WidgetStatePropertyAll(
                   RoundedRectangleBorder(
-                    borderRadius: (rounded ? ZetaRadius.minimal : ZetaRadius.none),
+                    borderRadius: (rounded ? Zeta.of(context).radii.minimal : Zeta.of(context).radii.none),
                   ),
                 ),
                 side: WidgetStateProperty.resolveWith((states) {
                   if (states.contains(WidgetState.focused)) {
-                    return BorderSide(
-                      width: ZetaSpacingBase.x0_5,
-                      color: colors.primary.shade100,
-                    );
+                    return ZetaBorders.focusBorder(context);
                   }
-                  if (states.isEmpty) {
-                    return BorderSide(color: colors.borderDefault, width: 0.5);
+                  if (states.contains(WidgetState.hovered)) {
+                    return BorderSide(color: colors.border.hover, width: 0.5);
                   }
-                  return null;
+                  if (states.contains(WidgetState.pressed)) {
+                    return BorderSide(color: colors.border.selected, width: 0.5);
+                  }
+
+                  return BorderSide(color: colors.border.defaultColor, width: 0.5);
                 }),
                 padding: WidgetStateProperty.all(EdgeInsets.zero),
                 minimumSize: WidgetStateProperty.all(Size.zero),
-                elevation: const WidgetStatePropertyAll(ZetaSpacing.none),
+                elevation: WidgetStatePropertyAll(Zeta.of(context).spacing.none),
               ),
               child: Icon(
                 rounded ? ZetaIcons.more_horizontal_round : ZetaIcons.more_horizontal_sharp,
-                size: ZetaSpacing.large,
-              ).paddingHorizontal(ZetaSpacing.small).paddingVertical(ZetaSpacing.minimum),
+                size: Zeta.of(context).spacing.large,
+              ).paddingHorizontal(Zeta.of(context).spacing.small).paddingVertical(Zeta.of(context).spacing.minimum),
             ),
           );
   }
@@ -346,11 +347,11 @@ class _BreadCrumbsTruncatedState extends State<_BreadCrumbsTruncated> {
     return Row(
       children: widget.children
           .divide(
-            const Row(
+            Row(
               children: [
-                SizedBox(width: ZetaSpacing.small),
-                ZetaIcon(ZetaIcons.chevron_right, size: ZetaSpacing.xl_1),
-                SizedBox(width: ZetaSpacing.small),
+                SizedBox(width: Zeta.of(context).spacing.small),
+                ZetaIcon(ZetaIcons.chevron_right, size: Zeta.of(context).spacing.xl),
+                SizedBox(width: Zeta.of(context).spacing.small),
               ],
             ),
           )

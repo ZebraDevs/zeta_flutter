@@ -128,17 +128,17 @@ class ZetaStepperInputState extends State<ZetaStepperInput> {
 
     return OutlineInputBorder(
       borderSide: BorderSide(
-        color: !disabled ? colors.borderSubtle : colors.borderDisabled,
+        color: !disabled ? colors.border.subtle : colors.border.disabled,
       ),
-      borderRadius: context.rounded ? ZetaRadius.minimal : ZetaRadius.none,
+      borderRadius: context.rounded ? Zeta.of(context).radii.minimal : Zeta.of(context).radii.none,
     );
   }
 
   double get _height {
     if (widget.size != ZetaStepperInputSize.large) {
-      return ZetaSpacing.xl_6;
+      return Zeta.of(context).spacing.xl_6;
     } else {
-      return ZetaSpacing.xl_8;
+      return Zeta.of(context).spacing.xl_8;
     }
   }
 
@@ -188,7 +188,7 @@ class ZetaStepperInputState extends State<ZetaStepperInput> {
         children: [
           _getButton(),
           SizedBox(
-            width: ZetaSpacing.xl_9,
+            width: Zeta.of(context).spacing.xl_9,
             child: TextFormField(
               keyboardType: TextInputType.number,
               enabled: !disabled,
@@ -197,7 +197,7 @@ class ZetaStepperInputState extends State<ZetaStepperInput> {
               textAlign: TextAlign.center,
               inputFormatters: [FilteringTextInputFormatter.digitsOnly],
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: disabled ? colors.textDisabled : null,
+                    color: disabled ? colors.main.disabled : null,
                   ),
               onTapOutside: (_) {
                 if (_controller.text.isEmpty) {
@@ -206,7 +206,7 @@ class ZetaStepperInputState extends State<ZetaStepperInput> {
               },
               decoration: InputDecoration(
                 filled: true,
-                fillColor: disabled ? colors.surfaceDisabled : null,
+                fillColor: disabled ? colors.surface.disabled : null,
                 contentPadding: EdgeInsets.zero,
                 constraints: BoxConstraints(maxHeight: _height),
                 border: _border,
@@ -217,7 +217,7 @@ class ZetaStepperInputState extends State<ZetaStepperInput> {
             ),
           ),
           _getButton(increase: true),
-        ].divide(const SizedBox(width: ZetaSpacing.small)).toList(),
+        ].divide(SizedBox(width: Zeta.of(context).spacing.small)).toList(),
       ),
     );
   }

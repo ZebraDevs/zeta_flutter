@@ -25,7 +25,7 @@ class ZetaProgressBar extends ZetaProgress {
     super.key,
     super.rounded,
     required super.progress,
-    required this.type,
+    this.type = ZetaProgressBarType.standard,
     this.isThin = false,
     this.label,
   });
@@ -105,7 +105,7 @@ class _ZetaProgressBarState extends ZetaProgressState<ZetaProgressBar> {
                     : ''),
             style: ZetaTextStyles.titleMedium,
             textAlign: TextAlign.start,
-          ).paddingBottom(ZetaSpacing.large),
+          ).paddingBottom(Zeta.of(context).spacing.large),
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
@@ -115,10 +115,10 @@ class _ZetaProgressBarState extends ZetaProgressState<ZetaProgressBar> {
                   duration: ZetaAnimationLength.verySlow,
                   height: _weight,
                   child: LinearProgressIndicator(
-                    borderRadius: context.rounded ? ZetaRadius.rounded : ZetaRadius.none,
+                    borderRadius: context.rounded ? Zeta.of(context).radii.rounded : Zeta.of(context).radii.none,
                     value: widget.type == ZetaProgressBarType.indeterminate ? null : animation.value,
                     backgroundColor:
-                        widget.type == ZetaProgressBarType.buffering ? colors.surfaceDisabled : Colors.transparent,
+                        widget.type == ZetaProgressBarType.buffering ? colors.surface.disabled : Colors.transparent,
                   ),
                 ),
               ),
@@ -131,19 +131,19 @@ class _ZetaProgressBarState extends ZetaProgressState<ZetaProgressBar> {
   }
 
   /// Returns thickness of progress bar based on its weight.
-  double get _weight => widget.isThin ? ZetaSpacing.small : ZetaSpacing.large;
+  double get _weight => widget.isThin ? Zeta.of(context).spacing.small : Zeta.of(context).spacing.large;
 
-  Widget bufferingWidget(ZetaColors colors) {
+  Widget bufferingWidget(ZetaSemanticColors colors) {
     final Iterable<List<Widget>> extraList = List.generate(
       3,
       (e) => [
-        const SizedBox(width: ZetaSpacing.large),
+        SizedBox(width: Zeta.of(context).spacing.large),
         Container(
           width: _weight,
           height: _weight,
           decoration: BoxDecoration(
-            color: colors.surfaceDisabled,
-            borderRadius: ZetaRadius.rounded,
+            color: colors.surface.disabled,
+            borderRadius: Zeta.of(context).radii.rounded,
           ),
         ),
       ],

@@ -161,30 +161,40 @@ class _HomeState extends State<Home> {
       child: SingleChildScrollView(
         child: Column(
           children: [
-            ExpansionTile(
-              title: Text('Widgets'),
-              backgroundColor: Zeta.of(context).colors.warm.shade30,
-              children: _components
-                  .map((item) => ListTile(title: Text(item.name), onTap: () => context.go('/${item.name}')))
-                  .toList(),
-            ),
-            ExpansionTile(
-              title: Text('Theme'),
-              backgroundColor: Zeta.of(context).colors.warm.shade30,
-              children: _theme
-                  .map((item) => ListTile(title: Text(item.name), onTap: () => context.go('/${item.name}')))
-                  .toList(),
-            ),
-            ExpansionTile(
-              title: Text('Assets'),
-              backgroundColor: Zeta.of(context).colors.warm.shade30,
-              children: _assets
-                  .map((item) => ListTile(title: Text(item.name), onTap: () => context.go('/${item.name}')))
-                  .toList(),
-            ),
+            ExampleListTile(name: 'Components', children: _components),
+            ExampleListTile(name: 'Theme', children: _theme),
+            ExampleListTile(name: 'Assets', children: _assets),
           ],
         ),
       ),
+    );
+  }
+}
+
+class ExampleListTile extends StatelessWidget {
+  const ExampleListTile({
+    super.key,
+    required this.children,
+    required this.name,
+  });
+
+  final List<Component> children;
+  final String name;
+
+  @override
+  Widget build(BuildContext context) {
+    return ExpansionTile(
+      title: Text(name),
+      children: children
+          .map(
+            (item) => ListTile(
+              title: Text(item.name),
+              onTap: () => context.go('/${item.name}'),
+              hoverColor: Zeta.of(context).colors.surface.hover,
+              tileColor: Zeta.of(context).colors.surface.defaultColor,
+            ),
+          )
+          .toList(),
     );
   }
 }

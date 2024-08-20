@@ -228,11 +228,11 @@ void main() {
     await gesture.moveTo(tester.getCenter(find.byType(ZetaButton)));
     await tester.pumpAndSettle();
 
-    expect(filledButton.style?.backgroundColor?.resolve({WidgetState.hovered}), ZetaColorBase.blue.shade50);
+    expect(filledButton.style?.backgroundColor?.resolve({WidgetState.hovered}), ZetaPrimitivesLight().blue.shade50);
 
     await gesture.down(tester.getCenter(find.byType(ZetaButton)));
     await tester.pumpAndSettle();
-    expect(filledButton.style?.backgroundColor?.resolve({WidgetState.pressed}), ZetaColorBase.blue.shade70);
+    expect(filledButton.style?.backgroundColor?.resolve({WidgetState.pressed}), ZetaPrimitivesLight().blue.shade70);
 
     await gesture.up();
 
@@ -262,7 +262,7 @@ void main() {
     expect(button.size, ZetaWidgetSize.medium);
     expect(
       filledButton.style?.side?.resolve({WidgetState.focused}),
-      const BorderSide(color: ZetaColorBase.blue, width: ZetaSpacingBase.x0_5),
+      BorderSide(color: ZetaPrimitivesLight().blue.shade50, width: ZetaBorders.borderWidth),
     );
   });
   testWidgets('debugFillProperties works correctly', (WidgetTester tester) async {

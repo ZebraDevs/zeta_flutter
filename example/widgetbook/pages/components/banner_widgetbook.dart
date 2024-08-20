@@ -29,7 +29,7 @@ Widget bannerUseCase(BuildContext context) {
     builder: (context, _) => Column(
       children: [
         banner,
-        const SizedBox(height: ZetaSpacing.xl_9),
+        SizedBox(height: Zeta.of(context).spacing.xl_9),
         ZetaButton.text(
           label: 'Popup',
           onPressed: () {

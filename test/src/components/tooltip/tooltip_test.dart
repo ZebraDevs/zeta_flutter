@@ -211,7 +211,7 @@ void main() {
         ),
       );
 
-      expect((roundedTooltipBox.decoration as BoxDecoration).borderRadius, ZetaRadius.minimal);
+      expect((roundedTooltipBox.decoration as BoxDecoration).borderRadius, BorderRadius.all(ZetaPrimitivesLight().s));
       expect((sharpTooltipBox.decoration as BoxDecoration).borderRadius, null);
     });
 

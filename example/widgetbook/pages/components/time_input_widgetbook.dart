@@ -31,7 +31,7 @@ Widget timeInputUseCase(BuildContext context) {
         );
 
         return Padding(
-          padding: const EdgeInsets.all(ZetaSpacing.xl_1),
+          padding: EdgeInsets.all(Zeta.of(context).spacing.xl),
           child: ZetaTimeInput(
             size: size,
             disabled: disabled,

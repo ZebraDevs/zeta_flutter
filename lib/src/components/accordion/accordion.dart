@@ -96,15 +96,16 @@ class _ZetaAccordionState extends State<ZetaAccordion> with TickerProviderStateM
   @override
   Widget build(BuildContext context) {
     final zetaColors = Zeta.of(context).colors;
-    final borderColor = _disabled ? zetaColors.borderDisabled : zetaColors.borderSubtle;
-    final childTextStyle = ZetaTextStyles.h5.apply(color: zetaColors.textDefault);
+    final borderColor = _disabled ? zetaColors.border.disabled : zetaColors.border.subtle;
+    final childTextStyle = ZetaTextStyles.h5.apply(color: zetaColors.main.defaultColor);
     final rounded = context.rounded;
+    final Color color = _disabled ? zetaColors.main.disabled : zetaColors.main.defaultColor;
     return ZetaRoundedScope(
       rounded: rounded,
       child: DecoratedBox(
         decoration: BoxDecoration(
           border: widget.contained ? Border.all(color: borderColor) : Border(top: BorderSide(color: borderColor)),
-          borderRadius: rounded ? ZetaRadius.minimal : ZetaRadius.none,
+          borderRadius: rounded ? Zeta.of(context).radii.minimal : Zeta.of(context).radii.none,
         ),
         child: Padding(
           padding: const EdgeInsets.all(1),
@@ -114,14 +115,16 @@ class _ZetaAccordionState extends State<ZetaAccordion> with TickerProviderStateM
               TextButton(
                 style: ButtonStyle(
                   shape: WidgetStatePropertyAll(
-                    RoundedRectangleBorder(borderRadius: rounded ? ZetaRadius.minimal : ZetaRadius.none),
+                    RoundedRectangleBorder(
+                      borderRadius: rounded ? Zeta.of(context).radii.minimal : Zeta.of(context).radii.none,
+                    ),
                   ),
                   overlayColor: WidgetStateProperty.resolveWith((states) {
                     if (states.contains(WidgetState.hovered)) {
-                      return zetaColors.cool.shade20;
+                      return zetaColors.surface.hover;
                     }
                     if (states.contains(WidgetState.pressed)) {
-                      return zetaColors.cool.shade30;
+                      return zetaColors.surface.selectedHover;
                     }
 
                     if (states.contains(WidgetState.focused)) {
@@ -132,7 +135,7 @@ class _ZetaAccordionState extends State<ZetaAccordion> with TickerProviderStateM
                   }),
                   side: WidgetStateProperty.resolveWith((states) {
                     if (states.contains(WidgetState.focused)) {
-                      return BorderSide(color: zetaColors.blue.shade50, width: 2);
+                      return BorderSide(color: zetaColors.border.primary, width: 2);
                     }
                     return null;
                   }),
@@ -149,21 +152,21 @@ class _ZetaAccordionState extends State<ZetaAccordion> with TickerProviderStateM
                           }
                         }),
                 child: Padding(
-                  padding: const EdgeInsets.all(ZetaSpacing.large),
+                  padding: EdgeInsets.all(Zeta.of(context).spacing.large),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       DefaultTextStyle(
                         style: ZetaTextStyles.titleMedium.apply(
-                          color: _disabled ? zetaColors.textDisabled : zetaColors.textDefault,
+                          color: color,
                         ),
                         child: Flexible(child: Text(widget.title)),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(left: ZetaSpacing.large),
+                        padding: EdgeInsets.only(left: Zeta.of(context).spacing.large),
                         child: ZetaIcon(
                           _isOpen ? ZetaIcons.remove : ZetaIcons.add,
-                          color: _disabled ? zetaColors.iconDisabled : zetaColors.iconDefault,
+                          color: color,
                         ),
                       ),
                     ],
@@ -174,11 +177,11 @@ class _ZetaAccordionState extends State<ZetaAccordion> with TickerProviderStateM
                 sizeFactor: _animation,
                 axisAlignment: -1,
                 child: Padding(
-                  padding: const EdgeInsets.fromLTRB(
-                    ZetaSpacing.large,
-                    ZetaSpacing.none,
-                    ZetaSpacing.large,
-                    ZetaSpacing.large,
+                  padding: EdgeInsets.fromLTRB(
+                    Zeta.of(context).spacing.large,
+                    Zeta.of(context).spacing.none,
+                    Zeta.of(context).spacing.large,
+                    Zeta.of(context).spacing.large,
                   ),
                   child: Theme(
                     data: Theme.of(context).copyWith(listTileTheme: ListTileThemeData(titleTextStyle: childTextStyle)),

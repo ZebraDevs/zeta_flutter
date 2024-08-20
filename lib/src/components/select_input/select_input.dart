@@ -45,7 +45,7 @@ class ZetaSelectInput<T> extends ZetaFormField<T> {
                 onChange: !disabled ? state.setItem : null,
                 key: state.dropdownKey,
                 value: state._selectedItem?.value,
-                offset: const Offset(0, ZetaSpacing.xl_1 * -1),
+                offset: Offset(0, Zeta.of(field.context).spacing.xl * -1),
                 onDismissed: state.onDropdownDismissed,
                 builder: (context, _, controller) {
                   return InternalTextInput(
@@ -69,7 +69,7 @@ class ZetaSelectInput<T> extends ZetaFormField<T> {
                       icon: controller.isOpen ? ZetaIcons.expand_less : ZetaIcons.expand_more,
                       disabled: disabled,
                       size: size,
-                      color: colors.iconSubtle,
+                      color: colors.main.subtle,
                       onTap: () => state.onIconTapped(controller),
                     ),
                   );

@@ -29,7 +29,7 @@ Widget dialogUseCase(BuildContext context) {
   );
   return WidgetbookScaffold(
     builder: (context, _) => Padding(
-      padding: const EdgeInsets.all(ZetaSpacing.xl_1),
+      padding: EdgeInsets.all(Zeta.of(context).spacing.xl),
       child: Center(
         child: Column(
           children: [
@@ -42,7 +42,7 @@ Widget dialogUseCase(BuildContext context) {
                 title: title,
                 icon: ZetaIcon(
                   iconData,
-                  color: zeta.colors.surfaceWarning,
+                  color: zeta.colors.surface.warning,
                 ),
                 message: message,
                 primaryButtonLabel: 'Confirm',
@@ -58,7 +58,7 @@ Widget dialogUseCase(BuildContext context) {
                 title: title,
                 icon: ZetaIcon(
                   iconData,
-                  color: zeta.colors.surfaceWarning,
+                  color: zeta.colors.surface.warning,
                 ),
                 message: message,
                 primaryButtonLabel: 'Confirm',
@@ -75,7 +75,7 @@ Widget dialogUseCase(BuildContext context) {
                 title: title,
                 icon: ZetaIcon(
                   iconData,
-                  color: zeta.colors.surfaceWarning,
+                  color: zeta.colors.surface.warning,
                 ),
                 message: message,
                 primaryButtonLabel: 'Confirm',

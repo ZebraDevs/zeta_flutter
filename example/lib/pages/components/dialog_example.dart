@@ -22,7 +22,7 @@ class DialogExample extends StatelessWidget {
                 title: 'Dialog Title',
                 icon: ZetaIcon(
                   ZetaIcons.warning,
-                  color: zeta.colors.surfaceWarning,
+                  color: zeta.colors.surface.warning,
                 ),
                 message:
                     'Lorem ipsum dolor sit amet, conse ctetur adipiscing elit, sed do eiusm od tempor incididunt ut labore et do lore magna aliqua.',
@@ -37,7 +37,7 @@ class DialogExample extends StatelessWidget {
                 title: 'Dialog Title',
                 icon: ZetaIcon(
                   ZetaIcons.warning,
-                  color: zeta.colors.surfaceWarning,
+                  color: zeta.colors.surface.warning,
                 ),
                 message:
                     'Lorem ipsum dolor sit amet, conse ctetur adipiscing elit, sed do eiusm od tempor incididunt ut labore et do lore magna aliqua.',
@@ -53,7 +53,7 @@ class DialogExample extends StatelessWidget {
                 title: 'Dialog Title',
                 icon: ZetaIcon(
                   ZetaIcons.warning,
-                  color: zeta.colors.surfaceWarning,
+                  color: zeta.colors.surface.warning,
                 ),
                 message:
                     'Lorem ipsum dolor sit amet, conse ctetur adipiscing elit, sed do eiusm od tempor incididunt ut labore et do lore magna aliqua.',
@@ -71,7 +71,7 @@ class DialogExample extends StatelessWidget {
                 title: 'Dialog Title',
                 icon: ZetaIcon(
                   ZetaIcons.warning,
-                  color: zeta.colors.surfaceWarning,
+                  color: zeta.colors.surface.warning,
                 ),
                 message:
                     'Lorem ipsum dolor sit amet, conse ctetur adipiscing elit, sed do eiusm od tempor incididunt ut labore et do lore magna aliqua.',

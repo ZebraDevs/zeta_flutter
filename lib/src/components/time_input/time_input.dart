@@ -67,7 +67,7 @@ class ZetaTimeInput extends ZetaFormField<TimeOfDay> {
                       onTap: state.clear,
                       disabled: disabled,
                       size: size,
-                      color: colors.iconSubtle,
+                      color: colors.main.subtle,
                     ),
                   InputIconButton(
                     icon: ZetaIcons.clock_outline,
@@ -75,7 +75,7 @@ class ZetaTimeInput extends ZetaFormField<TimeOfDay> {
                     onTap: state.pickTime,
                     disabled: disabled,
                     size: size,
-                    color: colors.iconDefault,
+                    color: colors.main.defaultColor,
                   ),
                 ],
               ),
@@ -233,16 +233,16 @@ class _ZetaTimeInputState extends FormFieldState<TimeOfDay> {
         return Theme(
           data: Theme.of(context).copyWith(
             timePickerTheme: TimePickerThemeData(
-              dialBackgroundColor: colors.warm.shade30,
-              dayPeriodColor: colors.primary,
+              dialBackgroundColor: colors.surface.primarySubtle,
+              dayPeriodColor: colors.main.primary,
               shape: RoundedRectangleBorder(
-                borderRadius: rounded ? ZetaRadius.rounded : ZetaRadius.none,
+                borderRadius: rounded ? Zeta.of(context).radii.rounded : Zeta.of(context).radii.none,
               ),
               inputDecorationTheme: InputDecorationTheme(
                 filled: true,
                 isDense: true,
                 border: OutlineInputBorder(
-                  borderRadius: rounded ? ZetaRadius.minimal : ZetaRadius.none,
+                  borderRadius: rounded ? Zeta.of(context).radii.minimal : Zeta.of(context).radii.none,
                   borderSide: BorderSide.none,
                 ),
               ),
