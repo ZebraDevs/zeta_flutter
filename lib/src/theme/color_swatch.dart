@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use_from_same_package
+
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
@@ -13,7 +15,11 @@ class ZetaPureColorSwatch extends ColorSwatch<int> with EquatableMixin {
   const ZetaPureColorSwatch({
     required int primary,
     required Map<int, Color> swatch,
+    this.brightness = Brightness.light,
   }) : super(primary, swatch);
+
+  /// Selected contrast level of the system
+  final Brightness brightness;
 
   /// Lightest shade of the color.
   Color get shade0 => this[0] ?? Colors.white;
@@ -23,6 +29,36 @@ class ZetaPureColorSwatch extends ColorSwatch<int> with EquatableMixin {
 
   /// Darkest shade of the color.
   Color get shade1000 => this[1000] ?? Colors.white;
+
+  /// Takes an integer as argument and returns a color shade based on that number.
+  Color shade(int number) => this[number]!;
+
+  /// Creates a copy of the current [ZetaColorSwatch] with potential modifications
+  /// based on the provided [contrast] and [brightness].
+  ///
+  /// The [contrast] determines which shade of the color should be used
+  /// as the primary color in the copied swatch.
+  ///
+  /// - [contrast] : The shade to use as the primary color in the new swatch.
+  ///   Defaults to [ZetaContrast.aa].
+  /// - [brightness] : The brightness value for the new swatch.
+  ///   Defaults to [Brightness.light].
+  ZetaPureColorSwatch apply({
+    ZetaContrast contrast = ZetaContrast.aa,
+    Brightness brightness = Brightness.light,
+  }) {
+    if (this.brightness == brightness) return this;
+
+    return ZetaPureColorSwatch(
+      brightness: brightness,
+      primary: this[500]!.value,
+      swatch: {
+        0: this[0]!,
+        500: this[500]!,
+        1000: this[1000]!,
+      },
+    );
+  }
 
   @override
   List<Object?> get props => [super.value, shade0, shade500, shade1000];
@@ -50,8 +86,9 @@ class ZetaColorSwatch extends ColorSwatch<int> with EquatableMixin {
   /// This factory constructor creates a color swatch based on a provided primary color.
   /// The darker and lighter shades are determined by predefined percentage values.
   ///
-  /// It ensures that the 60th and 80th shades from swatch are abide by the AA and AAA accessibility standards on `background`, respectively.
+  /// It ensures that the 60th and 80th shades from swatch abide by AA and AAA accessibility standards on `background`, respectively.
   /// {@endtemplate}
+  @Deprecated('Removed from v1.0.0')
   factory ZetaColorSwatch.fromColor(
     Color primary, {
     Brightness brightness = Brightness.light,
@@ -132,47 +169,55 @@ class ZetaColorSwatch extends ColorSwatch<int> with EquatableMixin {
   ///
   /// For [ZetaContrast.aa], it returns 60.
   /// For [ZetaContrast.aaa], it returns 80.
+  @Deprecated('Removed from v1.0.0')
   Color get text => shade(contrast.text);
 
   /// Returns the color shade for an icon depending on the ZetaContrast value.
   ///
   /// For [ZetaContrast.aa], it returns 60.
   /// For [ZetaContrast.aaa], it returns 80.
+  @Deprecated('Removed from v1.0.0')
   Color get icon => shade(contrast.icon);
 
   /// Returns the color shade for a hover state depending on the ZetaContrast value.
   ///
   /// For [ZetaContrast.aa], it returns 70.
   /// For [ZetaContrast.aaa], it returns 90.
+  @Deprecated('Removed from v1.0.0')
   Color get hover => shade(contrast.hover);
 
   /// Returns the color shade for a selected state depending on the ZetaContrast value.
   ///
   /// For [ZetaContrast.aa], it returns 80.
   /// For [ZetaContrast.aaa], it returns 100.
+  @Deprecated('Removed from v1.0.0')
   Color get selected => shade(contrast.selected);
 
   /// Returns the color shade for a focus state depending on the ZetaContrast value.
   ///
   /// For [ZetaContrast.aa], it returns 80.
   /// For [ZetaContrast.aaa], it returns 100.
+  @Deprecated('Removed from v1.0.0')
   Color get focus => shade(contrast.focus);
 
   /// Returns the color shade for a border depending on the ZetaContrast value.
   ///
   /// For [ZetaContrast.aa], it returns 60.
   /// For [ZetaContrast.aaa], it returns 80.
+  @Deprecated('Removed from v1.0.0')
   Color get border => shade(contrast.border);
 
   /// Returns the color shade for a subtle visual element depending on the ZetaContrast value.
   ///
   /// For [ZetaContrast.aa], it returns 40.
   /// For [ZetaContrast.aaa], it returns 60.
+  @Deprecated('Removed from v1.0.0')
   Color get subtle => shade(contrast.subtle);
 
   /// Returns the color shade for a surface depending on the ZetaContrast value.
   ///
   /// For both [ZetaContrast.aa] and [ZetaContrast.aaa], it returns 10.
+  @Deprecated('Removed from v1.0.0')
   Color get surface => shade(contrast.surface);
 
   /// Creates a copy of the current [ZetaColorSwatch] with potential modifications
@@ -213,7 +258,6 @@ class ZetaColorSwatch extends ColorSwatch<int> with EquatableMixin {
   List<Object?> get props => [
         super.value,
         brightness,
-        contrast,
         shade10,
         shade20,
         shade30,

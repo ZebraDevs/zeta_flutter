@@ -16,8 +16,7 @@ class _ColorExampleState extends State<ColorExample> {
 
   @override
   Widget build(BuildContext context) {
-    final zeta = Zeta.of(context);
-    final colors = zeta.colors;
+    final colors = Zeta.of(context).colors;
     return LayoutBuilder(
       builder: (context, constraints) {
         final blockSize = constraints.maxWidth / 11;

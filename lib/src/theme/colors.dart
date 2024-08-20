@@ -25,7 +25,7 @@ class ZetaColors extends Equatable implements ZetaColorSemantics {
     ZetaColorSwatch? error,
     ZetaColorSwatch? cool,
     ZetaColorSwatch? warm,
-    ZetaColorSwatch? pure,
+    ZetaPureColorSwatch? pure,
     Color? surfacePrimary,
     Color? surfaceSecondary,
     Color? surfaceTertiary,
@@ -35,7 +35,7 @@ class ZetaColors extends Equatable implements ZetaColorSemantics {
         error = _adjustedValue(error, ZetaColorBase.red, adjust, brightness, contrast),
         cool = _adjustedValue(cool, ZetaColorBase.cool, adjust, brightness, ZetaContrast.aa),
         warm = _adjustedValue(warm, ZetaColorBase.warm, adjust, brightness, ZetaContrast.aa),
-        pure = _adjustedValue(pure, ZetaColorBase.pure, adjust, brightness, ZetaContrast.aa),
+        pure = _adjustedValuePure(pure, ZetaColorBase.pure, adjust, brightness, ZetaContrast.aa),
         surfacePrimary = surfacePrimary ?? white,
         surfaceSecondary = surfaceSecondary ??
             _adjustedValue(
@@ -189,7 +189,7 @@ class ZetaColors extends Equatable implements ZetaColorSemantics {
   /// Defaults to [ZetaColorBase.pure].
   ///
   /// {@macro zeta-color-dark}
-  final ZetaColorSwatch pure;
+  final ZetaPureColorSwatch pure;
 
   /// White color.
   ///
@@ -549,6 +549,17 @@ class ZetaColors extends Equatable implements ZetaColorSemantics {
   static ZetaColorSwatch _adjustedValue(
     ZetaColorSwatch? value,
     ZetaColorSwatch defaultValue,
+    bool adjust,
+    Brightness brightness,
+    ZetaContrast contrast,
+  ) {
+    final swatch = value ?? defaultValue;
+    return adjust ? swatch.apply(brightness: brightness, contrast: contrast) : swatch;
+  }
+
+  static ZetaPureColorSwatch _adjustedValuePure(
+    ZetaPureColorSwatch? value,
+    ZetaPureColorSwatch defaultValue,
     bool adjust,
     Brightness brightness,
     ZetaContrast contrast,
