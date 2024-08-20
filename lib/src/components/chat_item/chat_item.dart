@@ -109,8 +109,7 @@ class ZetaChatItem extends ZetaStatelessWidget {
     final actionWith = slidableActionsCount * ZetaSpacing.xl_10;
     final maxButtonWidth = actionWith / maxScreenWidth;
     final extend = actionWith / maxScreenWidth;
-
-    return extend.clamp(0, maxButtonWidth);
+    return extend.clamp(0, maxButtonWidth).toDouble();
   }
 
   Widget? get _formatLeading {
@@ -154,12 +153,16 @@ class ZetaChatItem extends ZetaStatelessWidget {
             builder: (context, constraints) {
               return Slidable(
                 enabled: actions.isNotEmpty,
-                endActionPane: ActionPane(
-                  extentRatio:
-                      _getSlidableExtend(slidableActionsCount: actions.length, maxScreenWidth: constraints.maxWidth),
-                  motion: const ScrollMotion(),
-                  children: actions,
-                ),
+                endActionPane: actions.isEmpty
+                    ? null
+                    : ActionPane(
+                        extentRatio: _getSlidableExtend(
+                          slidableActionsCount: actions.length,
+                          maxScreenWidth: constraints.maxWidth,
+                        ),
+                        motion: const ScrollMotion(),
+                        children: actions,
+                      ),
                 child: ColoredBox(
                   color: highlighted ? colors.blue.shade10 : colors.surfacePrimary,
                   child: Material(
