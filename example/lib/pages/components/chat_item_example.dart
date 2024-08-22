@@ -3,7 +3,7 @@ import 'package:zeta_example/widgets.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 class ChatItemExample extends StatelessWidget {
-  static const String name = 'Chat Item';
+  static const String name = 'ChatItem';
 
   const ChatItemExample({Key? key}) : super(key: key);
 
@@ -22,6 +22,7 @@ class ChatItemExample extends StatelessWidget {
               leading: const ZetaAvatar(initials: 'AZ'),
               count: 100,
               onTap: () {},
+              paleButtonColors: true,
               slidableActions: [
                 ZetaSlidableAction.menuMore(onPressed: () {}),
                 ZetaSlidableAction.call(onPressed: () {}),
