@@ -15,6 +15,31 @@ class ChatItemExample extends StatelessWidget {
         child: Column(
           children: [
             ZetaChatItem(
+              leading: const ZetaAvatar(initials: 'AZ'),
+              slidableActions: [
+                ZetaSlidableAction(
+                  onPressed: () {},
+                  paleColor: true,
+                  icon: Icons.star,
+                ),
+                ZetaSlidableAction(
+                  onPressed: () {},
+                  paleColor: true,
+                  icon: Icons.delete,
+                ),
+                ZetaSlidableAction(
+                  onPressed: () {},
+                  icon: Icons.call,
+                ),
+                ZetaSlidableAction(
+                  onPressed: () {},
+                  icon: Icons.message,
+                ),
+              ],
+              title: Text('title'),
+              subtitle: Text('subtitle'),
+            ),
+            ZetaChatItem(
               explicitChildNodes: false,
               time: DateTime.now(),
               enabledWarningIcon: true,

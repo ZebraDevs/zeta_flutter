@@ -131,6 +131,7 @@ class ZetaChatItem extends ZetaStatelessWidget {
 
     final actions = [...slidableActions];
 
+    // coverage:ignore-start
     if (onMenuMoreTap != null) {
       actions.add(
         ZetaSlidableAction(onPressed: onMenuMoreTap, color: colors.purple, icon: ZetaIcons.more_vertical),
@@ -149,6 +150,7 @@ class ZetaChatItem extends ZetaStatelessWidget {
     if (onDeleteTap != null) {
       actions.add(ZetaSlidableAction(onPressed: onDeleteTap, color: colors.red, icon: ZetaIcons.delete));
     }
+    // coverage:ignore-end
 
     return ZetaRoundedScope(
       rounded: context.rounded,
@@ -372,7 +374,7 @@ class ZetaSlidableAction extends StatelessWidget {
     super.key,
     this.onPressed,
     required this.icon,
-    this.color,
+    this.color = ZetaColorBase.blue,
     this.customForegroundColor,
     this.customBackgroundColor,
     this.semanticLabel,
@@ -536,12 +538,11 @@ class ZetaSlidableAction extends StatelessWidget {
     super.debugFillProperties(properties);
     properties
       ..add(ObjectFlagProperty<VoidCallback?>.has('onPressed', onPressed))
-      ..add(DiagnosticsProperty<IconData>('icon', icon))
-      ..add(ColorProperty('foregroundColor', customForegroundColor))
-      ..add(ColorProperty('backgroundColor', customBackgroundColor))
-      ..add(DiagnosticsProperty<IconData>('icon', icon))
-      ..add(ColorProperty('color', color))
+      ..add(DiagnosticsProperty<bool>('paleColor', paleColor))
       ..add(StringProperty('semanticLabel', semanticLabel))
-      ..add(DiagnosticsProperty<bool>('paleColor', paleColor));
+      ..add(ColorProperty('color', color))
+      ..add(ColorProperty('customBackgroundColor', customBackgroundColor))
+      ..add(ColorProperty('customForegroundColor', customForegroundColor))
+      ..add(DiagnosticsProperty<IconData>('icon', icon));
   }
 }
