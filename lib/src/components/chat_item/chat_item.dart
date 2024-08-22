@@ -27,6 +27,7 @@ class ZetaChatItem extends ZetaStatelessWidget {
     this.starred,
     this.slidableActions = const [],
     this.explicitChildNodes = true,
+    this.paleButtonColors,
     @Deprecated('Use slidableActions instead.' ' This variable has been replaced as of 0.12.1') this.onMenuMoreTap,
     @Deprecated('Use slidableActions instead.' ' This variable has been replaced as of 0.12.1') this.onCallTap,
     @Deprecated('Use slidableActions instead.' ' This variable has been replaced as of 0.12.1') this.onDeleteTap,
@@ -78,6 +79,11 @@ class ZetaChatItem extends ZetaStatelessWidget {
   /// Whether to show explicit child nodes in the semantics tree.
   final bool explicitChildNodes;
 
+  /// Whether to apply pale color.
+  ///
+  /// Pale buttons was the default behavior before 0.15.2, but now buttons have darker colors by default.
+  final bool? paleButtonColors;
+
   /// Callback for slidable action -  menu more.
   @Deprecated('Use slidableActions instead.' ' This variable has been replaced as of 0.12.1')
   final VoidCallback? onMenuMoreTap;
@@ -109,8 +115,7 @@ class ZetaChatItem extends ZetaStatelessWidget {
     final actionWith = slidableActionsCount * ZetaSpacing.xl_10;
     final maxButtonWidth = actionWith / maxScreenWidth;
     final extend = actionWith / maxScreenWidth;
-
-    return extend.clamp(0, maxButtonWidth);
+    return extend.clamp(0, maxButtonWidth).toDouble();
   }
 
   Widget? get _formatLeading {
@@ -126,6 +131,7 @@ class ZetaChatItem extends ZetaStatelessWidget {
 
     final actions = [...slidableActions];
 
+    // coverage:ignore-start
     if (onMenuMoreTap != null) {
       actions.add(
         ZetaSlidableAction(onPressed: onMenuMoreTap, color: colors.purple, icon: ZetaIcons.more_vertical),
@@ -144,6 +150,7 @@ class ZetaChatItem extends ZetaStatelessWidget {
     if (onDeleteTap != null) {
       actions.add(ZetaSlidableAction(onPressed: onDeleteTap, color: colors.red, icon: ZetaIcons.delete));
     }
+    // coverage:ignore-end
 
     return ZetaRoundedScope(
       rounded: context.rounded,
@@ -154,12 +161,18 @@ class ZetaChatItem extends ZetaStatelessWidget {
             builder: (context, constraints) {
               return Slidable(
                 enabled: actions.isNotEmpty,
-                endActionPane: ActionPane(
-                  extentRatio:
-                      _getSlidableExtend(slidableActionsCount: actions.length, maxScreenWidth: constraints.maxWidth),
-                  motion: const ScrollMotion(),
-                  children: actions,
-                ),
+                endActionPane: actions.isEmpty
+                    ? null
+                    : ActionPane(
+                        extentRatio: _getSlidableExtend(
+                          slidableActionsCount: actions.length,
+                          maxScreenWidth: constraints.maxWidth,
+                        ),
+                        motion: const ScrollMotion(),
+                        children: paleButtonColors != null
+                            ? actions.map((action) => action.copyWith(paleColor: paleButtonColors)).toList()
+                            : actions,
+                      ),
                 child: ColoredBox(
                   color: highlighted ? colors.blue.shade10 : colors.surfacePrimary,
                   child: Material(
@@ -329,7 +342,8 @@ class ZetaChatItem extends ZetaStatelessWidget {
       ..add(ObjectFlagProperty<VoidCallback?>.has('onCallTap', onCallTap))
       ..add(ObjectFlagProperty<VoidCallback?>.has('onDeleteTap', onDeleteTap))
       ..add(ObjectFlagProperty<VoidCallback?>.has('onPttTap', onPttTap))
-      ..add(DiagnosticsProperty<bool>('explicitChildNodes', explicitChildNodes));
+      ..add(DiagnosticsProperty<bool>('explicitChildNodes', explicitChildNodes))
+      ..add(DiagnosticsProperty<bool>('paleButtonColors', paleButtonColors));
   }
 }
 
@@ -360,21 +374,35 @@ class ZetaSlidableAction extends StatelessWidget {
     super.key,
     this.onPressed,
     required this.icon,
-    this.color,
+    this.color = ZetaColorBase.blue,
     this.customForegroundColor,
     this.customBackgroundColor,
     this.semanticLabel,
+    this.paleColor = false,
   })  : _type = _ZetaSlidableActionType.custom,
         assert(
           color != null || (customForegroundColor != null && customBackgroundColor != null),
           'Ensure either color, or both customForegroundColor and customBackgroundColor are provided.',
         );
 
+  const ZetaSlidableAction._({
+    super.key,
+    this.onPressed,
+    required this.icon,
+    this.color,
+    this.customForegroundColor,
+    this.customBackgroundColor,
+    this.semanticLabel,
+    this.paleColor = false,
+    _ZetaSlidableActionType? type,
+  }) : _type = type ?? _ZetaSlidableActionType.custom;
+
   /// Constructs a More menu [ZetaSlidableAction].
   const ZetaSlidableAction.menuMore({
     super.key,
     this.onPressed,
     this.semanticLabel = 'More',
+    this.paleColor = false,
   })  : icon = ZetaIcons.more_vertical,
         color = null,
         customForegroundColor = null,
@@ -386,6 +414,7 @@ class ZetaSlidableAction extends StatelessWidget {
     super.key,
     this.onPressed,
     this.semanticLabel = 'Call',
+    this.paleColor = false,
   })  : icon = ZetaIcons.phone,
         color = null,
         customForegroundColor = null,
@@ -397,6 +426,7 @@ class ZetaSlidableAction extends StatelessWidget {
     super.key,
     this.onPressed,
     this.semanticLabel = 'PTT',
+    this.paleColor = false,
   })  : icon = ZetaIcons.ptt,
         color = null,
         customForegroundColor = null,
@@ -408,6 +438,7 @@ class ZetaSlidableAction extends StatelessWidget {
     super.key,
     this.onPressed,
     this.semanticLabel = 'Delete',
+    this.paleColor = false,
   })  : icon = ZetaIcons.delete,
         color = null,
         customForegroundColor = null,
@@ -448,6 +479,9 @@ class ZetaSlidableAction extends StatelessWidget {
   /// {@macro zeta-widget-semantic-label}
   final String? semanticLabel;
 
+  /// Whether to apply pale color.
+  final bool paleColor;
+
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -462,8 +496,9 @@ class ZetaSlidableAction extends StatelessWidget {
             child: IconButton(
               onPressed: () => onPressed?.call(),
               style: IconButton.styleFrom(
-                backgroundColor: customBackgroundColor ?? (color ?? _type.getColor(context)).shade10,
-                foregroundColor: customForegroundColor ?? (color ?? _type.getColor(context)).shade60,
+                backgroundColor: customBackgroundColor ?? (color ?? _type.getColor(context)).shade(paleColor ? 10 : 60),
+                foregroundColor: customForegroundColor ??
+                    (paleColor ? (color ?? _type.getColor(context)).shade60 : Zeta.of(context).colors.surfaceDefault),
                 shape: const RoundedRectangleBorder(borderRadius: ZetaRadius.minimal),
                 side: BorderSide.none,
               ),
@@ -475,16 +510,39 @@ class ZetaSlidableAction extends StatelessWidget {
     );
   }
 
+  /// Creates a copy of this [ZetaSlidableAction] but with the given fields replaced with the new values.
+  ZetaSlidableAction copyWith({
+    VoidCallback? onPressed,
+    IconData? icon,
+    Color? customForegroundColor,
+    Color? customBackgroundColor,
+    ZetaColorSwatch? color,
+    String? semanticLabel,
+    bool? paleColor,
+  }) {
+    return ZetaSlidableAction._(
+      key: key,
+      onPressed: onPressed ?? this.onPressed,
+      icon: icon ?? this.icon,
+      customForegroundColor: customForegroundColor ?? this.customForegroundColor,
+      customBackgroundColor: customBackgroundColor ?? this.customBackgroundColor,
+      color: color ?? this.color,
+      semanticLabel: semanticLabel ?? this.semanticLabel,
+      paleColor: paleColor ?? this.paleColor,
+      type: _type,
+    );
+  }
+
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
       ..add(ObjectFlagProperty<VoidCallback?>.has('onPressed', onPressed))
-      ..add(DiagnosticsProperty<IconData>('icon', icon))
-      ..add(ColorProperty('foregroundColor', customForegroundColor))
-      ..add(ColorProperty('backgroundColor', customBackgroundColor))
-      ..add(DiagnosticsProperty<IconData>('icon', icon))
+      ..add(DiagnosticsProperty<bool>('paleColor', paleColor))
+      ..add(StringProperty('semanticLabel', semanticLabel))
       ..add(ColorProperty('color', color))
-      ..add(StringProperty('semanticLabel', semanticLabel));
+      ..add(ColorProperty('customBackgroundColor', customBackgroundColor))
+      ..add(ColorProperty('customForegroundColor', customForegroundColor))
+      ..add(DiagnosticsProperty<IconData>('icon', icon));
   }
 }
