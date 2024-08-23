@@ -115,7 +115,7 @@ class _ZetaProgressBarState extends ZetaProgressState<ZetaProgressBar> {
                   duration: ZetaAnimationLength.verySlow,
                   height: _weight,
                   child: LinearProgressIndicator(
-                    borderRadius: context.rounded ? ZetaRadius.rounded : ZetaRadius.none,
+                    borderRadius: context.rounded ? Zeta.of(context).radius.rounded : Zeta.of(context).radius.none,
                     value: widget.type == ZetaProgressBarType.indeterminate ? null : animation.value,
                     backgroundColor:
                         widget.type == ZetaProgressBarType.buffering ? colors.surfaceDisabled : Colors.transparent,
@@ -143,7 +143,7 @@ class _ZetaProgressBarState extends ZetaProgressState<ZetaProgressBar> {
           height: _weight,
           decoration: BoxDecoration(
             color: colors.surfaceDisabled,
-            borderRadius: ZetaRadius.rounded,
+            borderRadius: Zeta.of(context).radius.rounded,
           ),
         ),
       ],

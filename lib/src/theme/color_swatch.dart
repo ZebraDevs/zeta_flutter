@@ -204,3 +204,61 @@ class ZetaColorSwatch extends ColorSwatch<int> with EquatableMixin {
         shade100,
       ];
 }
+
+/// A swatch of colors with values 0 (light), 500 (medium) and 1000(dark).
+class ZetaPureColorSwatch extends ColorSwatch<int> with EquatableMixin {
+  /// Constructs a [ZetaPureColorSwatch].
+  ///
+  /// See also:
+  /// * [MaterialColor].
+  const ZetaPureColorSwatch({
+    required int primary,
+    required Map<int, Color> swatch,
+    this.brightness = Brightness.light,
+  }) : super(primary, swatch);
+
+  /// Selected contrast level of the system
+  final Brightness brightness;
+
+  /// Lightest shade of the color.
+  Color get shade0 => this[0] ?? Colors.white;
+
+  /// Medium shade of the color.
+  Color get shade500 => this[500] ?? Colors.grey;
+
+  /// Darkest shade of the color.
+  Color get shade1000 => this[1000] ?? Colors.white;
+
+  /// Takes an integer as argument and returns a color shade based on that number.
+  Color shade(int number) => this[number]!;
+
+  /// Creates a copy of the current [ZetaColorSwatch] with potential modifications
+  /// based on the provided [contrast] and [brightness].
+  ///
+  /// The [contrast] determines which shade of the color should be used
+  /// as the primary color in the copied swatch.
+  ///
+  /// - [contrast] : The shade to use as the primary color in the new swatch.
+  ///   Defaults to [ZetaContrast.aa].
+  /// - [brightness] : The brightness value for the new swatch.
+  ///   Defaults to [Brightness.light].
+  ZetaPureColorSwatch apply({
+    ZetaContrast contrast = ZetaContrast.aa,
+    Brightness brightness = Brightness.light,
+  }) {
+    if (this.brightness == brightness) return this;
+
+    return ZetaPureColorSwatch(
+      brightness: brightness,
+      primary: this[500]!.value,
+      swatch: {
+        0: this[0]!,
+        500: this[500]!,
+        1000: this[1000]!,
+      },
+    );
+  }
+
+  @override
+  List<Object?> get props => [super.value, shade0, shade500, shade1000];
+}

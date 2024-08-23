@@ -141,7 +141,7 @@ class _ZetaSegmentedControlState<T> extends State<ZetaSegmentedControl<T>>
               padding: const EdgeInsets.all(ZetaSpacing.minimum),
               decoration: BoxDecoration(
                 color: colors.surfaceDisabled,
-                borderRadius: rounded ? ZetaRadius.minimal : ZetaRadius.none,
+                borderRadius: rounded ? Zeta.of(context).radius.minimal : Zeta.of(context).radius.none,
               ),
               child: AnimatedBuilder(
                 animation: _thumbScaleAnimation,
@@ -218,7 +218,7 @@ class _SegmentState<T> extends State<_Segment<T>> with TickerProviderStateMixin<
         color: Colors.transparent,
         child: InkWell(
           splashFactory: NoSplash.splashFactory,
-          borderRadius: context.rounded ? ZetaRadius.minimal : ZetaRadius.none,
+          borderRadius: context.rounded ? Zeta.of(context).radius.minimal : Zeta.of(context).radius.none,
           onTap: widget.onTap,
           child: IndexedStack(
             alignment: Alignment.center,
@@ -271,6 +271,7 @@ class _SegmentedControlRenderWidget<T> extends MultiChildRenderObjectWidget {
       thumbColor: thumbColor,
       rounded: rounded,
       state: state,
+      context: context,
     );
   }
 
@@ -307,6 +308,7 @@ class _RenderSegmentedControl<T> extends RenderBox
     required Color thumbColor,
     required this.rounded,
     required this.state,
+    required this.context,
   })  : _highlightedIndex = highlightedIndex,
         _thumbColor = thumbColor;
 
@@ -320,6 +322,8 @@ class _RenderSegmentedControl<T> extends RenderBox
   final Paint separatorPaint = Paint();
 
   final _ZetaSegmentedControlState<T> state;
+
+  final BuildContext context;
 
   int? _highlightedIndex;
   Color _thumbColor;
@@ -401,7 +405,8 @@ class _RenderSegmentedControl<T> extends RenderBox
       ..add(DiagnosticsProperty<_ZetaSegmentedControlState<T>>('state', state))
       ..add(IntProperty('highlightedIndex', highlightedIndex))
       ..add(ColorProperty('thumbColor', thumbColor))
-      ..add(DoubleProperty('totalSeparatorWidth', totalSeparatorWidth));
+      ..add(DoubleProperty('totalSeparatorWidth', totalSeparatorWidth))
+      ..add(DiagnosticsProperty<BuildContext>('context', context));
   }
 
   @override
@@ -626,13 +631,13 @@ class _RenderSegmentedControl<T> extends RenderBox
     context.paintChild(child, childParentData.offset + offset);
   }
 
-  void _paintThumb(PaintingContext context, Offset offset, Rect thumbRect) {
+  void _paintThumb(PaintingContext paintingContext, Offset offset, Rect thumbRect) {
     final RRect thumbRRect = RRect.fromRectAndRadius(
       thumbRect.shift(offset),
-      rounded ? ZetaRadius.minimal.topLeft : ZetaRadius.none.topLeft,
+      rounded ? Zeta.of(context).radius.minimal.topLeft : Zeta.of(context).radius.none.topLeft,
     );
 
-    context.canvas.drawRRect(
+    paintingContext.canvas.drawRRect(
       thumbRRect,
       Paint()..color = thumbColor,
     );

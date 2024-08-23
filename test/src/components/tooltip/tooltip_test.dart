@@ -3,16 +3,25 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:mockito/annotations.dart';
+import 'package:mockito/mockito.dart';
 import 'package:path/path.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 import '../../../test_utils/test_app.dart';
 import '../../../test_utils/tolerant_comparator.dart';
 import '../../../test_utils/utils.dart';
+import 'tooltip_test.mocks.dart';
 
+@GenerateNiceMocks([
+  MockSpec<Zeta>(),
+])
 void main() {
+  final mockZeta = MockZeta();
+  when(mockZeta.radius).thenReturn(ZetaRadiiAA(primitives: ZetaPrimitivesLight()));
   setUpAll(() {
     final testUri = Uri.parse(getCurrentPath('tooltip'));
+
     goldenFileComparator = TolerantComparator(testUri, tolerance: 0.01);
   });
 
@@ -211,7 +220,7 @@ void main() {
         ),
       );
 
-      expect((roundedTooltipBox.decoration as BoxDecoration).borderRadius, ZetaRadius.minimal);
+      expect((roundedTooltipBox.decoration as BoxDecoration).borderRadius, mockZeta.radius.minimal);
       expect((sharpTooltipBox.decoration as BoxDecoration).borderRadius, null);
     });
 

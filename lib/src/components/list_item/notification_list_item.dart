@@ -67,7 +67,7 @@ class ZetaNotificationListItem extends ZetaStatelessWidget {
         label: semanticLabel,
         button: true,
         child: DecoratedBox(
-          decoration: _getStyle(colors),
+          decoration: _getStyle(context),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -108,8 +108,10 @@ class ZetaNotificationListItem extends ZetaStatelessWidget {
                                   ),
                                 Container(
                                   padding: const EdgeInsets.all(2),
-                                  decoration:
-                                      BoxDecoration(color: colors.surfaceNegative, borderRadius: ZetaRadius.full),
+                                  decoration: BoxDecoration(
+                                    color: colors.surfaceNegative,
+                                    borderRadius: Zeta.of(context).radius.full,
+                                  ),
                                   child: ZetaIcon(
                                     ZetaIcons.important_notification,
                                     color: colors.white,
@@ -134,10 +136,12 @@ class ZetaNotificationListItem extends ZetaStatelessWidget {
     );
   }
 
-  BoxDecoration _getStyle(ZetaColors colors) {
+  BoxDecoration _getStyle(BuildContext context) {
+    final colors = Zeta.of(context).colors;
+
     return BoxDecoration(
       color: notificationRead ? colors.surfacePrimary : colors.surfaceSelected,
-      borderRadius: ZetaRadius.rounded,
+      borderRadius: Zeta.of(context).radius.rounded,
       border:
           (showDivider ?? false) ? Border(bottom: BorderSide(width: ZetaSpacing.minimum, color: colors.blue)) : null,
     );
@@ -211,7 +215,7 @@ class ZetaNotificationBadge extends StatelessWidget {
                 color: iconColor,
               )
             : ClipRRect(
-                borderRadius: ZetaRadius.rounded,
+                borderRadius: Zeta.of(context).radius.rounded,
                 child: SizedBox.fromSize(
                   size: const Size.square(ZetaSpacing.xl_8), // Image radius
                   child: image!.copyWith(fit: BoxFit.cover),

@@ -157,7 +157,7 @@ class _ZetaNavigationRailItemContent extends ZetaStatelessWidget {
                   : selected
                       ? zeta.colors.blue.shade10
                       : null,
-              borderRadius: context.rounded ? ZetaRadius.rounded : null,
+              borderRadius: context.rounded ? Zeta.of(context).radius.rounded : null,
             ),
             child: ConstrainedBox(
               constraints: const BoxConstraints(

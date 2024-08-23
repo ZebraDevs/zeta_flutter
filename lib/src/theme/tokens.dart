@@ -190,6 +190,7 @@ class ZetaSpacing {
 
 /// Semantic zeta radii.
 /// {@category Theme}
+@Deprecated('Use Zeta.of(contest).radius instead ' 'This size has been deprecated as of 0.11.0')
 class ZetaRadius {
   /// No radius =>  0px radius.
   static const BorderRadius none = BorderRadius.zero;
@@ -289,6 +290,7 @@ class ZetaSpacingBase {
 
 ///Tokens that are used for Border Radius
 ///{@category Theme}
+@Deprecated('Use Zeta.of(contest).radius instead ' 'This size has been deprecated as of 0.11.0')
 class ZetaRadiusBase {
   /// 4px radius
   static const BorderRadius s = BorderRadius.all(Radius.circular(4));

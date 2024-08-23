@@ -24,7 +24,7 @@ Widget iconsUseCase(BuildContext context) {
                     width: 140,
                     height: 140,
                     child: InkWell(
-                      borderRadius: ZetaRadius.rounded,
+                      borderRadius: Zeta.of(context).radius.rounded,
                       hoverColor: Zeta.of(context).colors.surfaceHover,
                       onTap: () async {
                         await Clipboard.setData(ClipboardData(text: 'ZetaIcons.' + e.key));

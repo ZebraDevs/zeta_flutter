@@ -315,7 +315,7 @@ class _BreadCrumbsTruncatedState extends State<_BreadCrumbsTruncated> {
                 }),
                 shape: WidgetStatePropertyAll(
                   RoundedRectangleBorder(
-                    borderRadius: (rounded ? ZetaRadius.minimal : ZetaRadius.none),
+                    borderRadius: (rounded ? Zeta.of(context).radius.minimal : Zeta.of(context).radius.none),
                   ),
                 ),
                 side: WidgetStateProperty.resolveWith((states) {
