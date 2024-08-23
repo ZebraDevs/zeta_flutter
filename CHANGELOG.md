@@ -1,5 +1,25 @@
 # Changelog
 
+## [0.15.2](https://github.com/ZebraDevs/zeta_flutter/compare/v0.15.1...v0.15.2) (2024-08-23)
+
+
+### 🪲 Bug Fixes
+
+* **UX-1141:** Integrating ZetaSemanticRadii ([#158](https://github.com/ZebraDevs/zeta_flutter/issues/158)) ([d2c57db](https://github.com/ZebraDevs/zeta_flutter/commit/d2c57db208184bdcb40631447661ff846ff6c447))
+* **UX-1171:** ExtendedTopAppBar padding without leading ([#157](https://github.com/ZebraDevs/zeta_flutter/issues/157)) ([280c63d](https://github.com/ZebraDevs/zeta_flutter/commit/280c63d53a9fbdc172617306c65effd3c2e7ad56))
+* **UX-1201:** Update Slidable button colors in ZetaChatItem ([#156](https://github.com/ZebraDevs/zeta_flutter/issues/156)) ([0b18961](https://github.com/ZebraDevs/zeta_flutter/commit/0b18961211b4f03c66f365d229616c3942a1f93a))
+
+
+### ⛓️ Dependencies
+
+* **automated:** Update icons 2024-08-20 ([#153](https://github.com/ZebraDevs/zeta_flutter/issues/153)) ([6ed3978](https://github.com/ZebraDevs/zeta_flutter/commit/6ed397837b37df34fa3a59cd597a4909b09e56f4))
+
+
+### 🧪 Tests
+
+* Add basic tests for ExtendedTopAppBar ([280c63d](https://github.com/ZebraDevs/zeta_flutter/commit/280c63d53a9fbdc172617306c65effd3c2e7ad56))
+* Added basic test cases for ZetaChatItem ([0b18961](https://github.com/ZebraDevs/zeta_flutter/commit/0b18961211b4f03c66f365d229616c3942a1f93a))
+
 ## [0.15.1](https://github.com/ZebraDevs/zeta_flutter/compare/v0.15.0...v0.15.1) (2024-08-19)
 
 
