@@ -192,7 +192,7 @@ class _CheckboxState extends State<ZetaInternalCheckbox> {
           onTap: !widget.disabled ? () => widget.onChanged.call(!_checked) : null,
           borderRadius: Zeta.of(context).radius.full,
           child: Padding(
-            padding: const EdgeInsets.all(ZetaSpacing.medium),
+            padding: EdgeInsets.all(Zeta.of(context).spacing.medium),
             child: MouseRegion(
               cursor: !widget.disabled ? SystemMouseCursors.click : SystemMouseCursors.forbidden,
               onEnter: (event) => _setHovered(true),
@@ -220,7 +220,7 @@ class _CheckboxState extends State<ZetaInternalCheckbox> {
         : ZetaIcon(
             widget.useIndeterminate ? ZetaIcons.remove : ZetaIcons.check_mark,
             color: widget.disabled ? theme.colors.iconDisabled : theme.colors.white,
-            size: ZetaSpacingBase.x3_5,
+            size: 14, // TODO(UX-1202): ZetaSpacingBase
           );
 
     return Flex(
@@ -239,17 +239,17 @@ class _CheckboxState extends State<ZetaInternalCheckbox> {
                 ),
             ],
             color: _getBackground(theme),
-            border: Border.all(color: _getBorderColor(theme), width: ZetaSpacingBase.x0_5),
+            border: Border.all(color: _getBorderColor(theme), width: Zeta.of(context).spacing.minimum / 2),
             borderRadius: rounded ? Zeta.of(context).radius.minimal : Zeta.of(context).radius.none,
           ),
-          width: ZetaSpacing.xl_1,
-          height: ZetaSpacing.xl_1,
+          width: Zeta.of(context).spacing.xl,
+          height: Zeta.of(context).spacing.xl,
           child: icon,
         ),
         if (widget.label != null)
           Flexible(
             child: Padding(
-              padding: const EdgeInsets.only(left: ZetaSpacing.medium),
+              padding: EdgeInsets.only(left: Zeta.of(context).spacing.medium),
               child: Text(widget.label!, style: ZetaTextStyles.bodyMedium),
             ),
           ),

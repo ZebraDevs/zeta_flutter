@@ -28,7 +28,7 @@ class _SegmentedControlExampleState extends State<SegmentedControlExample> {
           children: [
             // Text
             Padding(
-              padding: const EdgeInsets.all(ZetaSpacing.xl_4),
+              padding: EdgeInsets.all(Zeta.of(context).spacing.xl_4),
               child: ZetaSegmentedControl(
                 semanticLabel: 'Segmented Control',
                 segments: [
@@ -47,7 +47,7 @@ class _SegmentedControlExampleState extends State<SegmentedControlExample> {
 
             // Numbers
             Padding(
-              padding: const EdgeInsets.all(ZetaSpacing.xl_4),
+              padding: EdgeInsets.all(Zeta.of(context).spacing.xl_4),
               child: ZetaSegmentedControl(
                 segments: [
                   for (final value in _numberSegments)
@@ -65,7 +65,7 @@ class _SegmentedControlExampleState extends State<SegmentedControlExample> {
 
             // Icons
             Padding(
-              padding: const EdgeInsets.all(ZetaSpacing.xl_4),
+              padding: EdgeInsets.all(Zeta.of(context).spacing.xl_4),
               child: ZetaSegmentedControl(
                 segments: [
                   for (final value in _iconsSegments)

@@ -131,31 +131,33 @@ class ZetaIconButton extends ZetaStatelessWidget {
             type,
             null,
           ),
-          child: SelectionContainer.disabled(child: ZetaIcon(icon, size: _iconSize).paddingAll(_iconPadding)),
+          child: SelectionContainer.disabled(
+            child: ZetaIcon(icon, size: _iconSize(context)).paddingAll(_iconPadding(context)),
+          ),
         ),
       ),
     );
   }
 
-  double get _iconPadding {
+  double _iconPadding(BuildContext context) {
     switch (size) {
       case ZetaWidgetSize.large:
-        return ZetaSpacing.medium;
+        return Zeta.of(context).spacing.medium;
       case ZetaWidgetSize.medium:
-        return ZetaSpacing.small;
+        return Zeta.of(context).spacing.small;
       case ZetaWidgetSize.small:
-        return ZetaSpacing.minimum;
+        return Zeta.of(context).spacing.minimum;
     }
   }
 
-  double get _iconSize {
+  double _iconSize(BuildContext context) {
     switch (size) {
       case ZetaWidgetSize.large:
-        return ZetaSpacing.xl_2;
+        return Zeta.of(context).spacing.xl_2;
       case ZetaWidgetSize.medium:
-        return ZetaSpacing.xl_2;
+        return Zeta.of(context).spacing.xl_2;
       case ZetaWidgetSize.small:
-        return ZetaSpacing.xl_1;
+        return Zeta.of(context).spacing.xl;
     }
   }
 

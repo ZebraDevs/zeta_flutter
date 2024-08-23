@@ -37,7 +37,7 @@ Widget radiusUseCase(BuildContext context) {
                 color: Zeta.of(context).colors.surfacePrimary,
                 border: Border.all(color: colors.blue.shade50, width: 3),
               ),
-              padding: EdgeInsets.all(ZetaSpacing.large),
+              padding: EdgeInsets.all(Zeta.of(context).spacing.large),
               child: Text(
                 rad.radiusString.split('.').last.capitalize(),
                 style: ZetaTextStyles.titleMedium.apply(

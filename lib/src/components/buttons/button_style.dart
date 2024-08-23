@@ -90,7 +90,7 @@ ButtonStyle buttonStyle(
   final bool isSolid = type.solid || backgroundColor != null;
 
   return ButtonStyle(
-    minimumSize: WidgetStateProperty.all(const Size.square(ZetaSpacing.xl_4)),
+    minimumSize: WidgetStateProperty.all(Size.square(Zeta.of(context).spacing.xl_4)),
     shape: WidgetStateProperty.all(
       RoundedRectangleBorder(borderRadius: borderType.radius(context)),
     ),
@@ -137,7 +137,7 @@ ButtonStyle buttonStyle(
       }
       // TODO(UX-1134): This removes a defualt border when focused, rather than adding a second border when focused.
       if (states.contains(WidgetState.focused)) {
-        return BorderSide(color: colors.blue, width: ZetaSpacingBase.x0_5);
+        return BorderSide(color: colors.blue, width: ZetaBorders.borderWidth);
       }
       if (type.border) {
         return BorderSide(

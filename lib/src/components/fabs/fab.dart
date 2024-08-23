@@ -118,7 +118,9 @@ class _ZetaFABState extends State<ZetaFAB> {
       focusNode: widget.focusNode,
       style: ButtonStyle(
         padding: const WidgetStatePropertyAll(EdgeInsets.zero),
-        shape: WidgetStatePropertyAll(widget.shape.buttonShape(isExpanded: widget.expanded, size: widget.size)),
+        shape: WidgetStatePropertyAll(
+          widget.shape.buttonShape(isExpanded: widget.expanded, size: widget.size, context: context),
+        ),
         backgroundColor: WidgetStateProperty.resolveWith((states) {
           if (states.contains(WidgetState.disabled)) {
             return Zeta.of(context).colors.surfaceDisabled;
@@ -135,7 +137,7 @@ class _ZetaFABState extends State<ZetaFAB> {
           (Set<WidgetState> states) {
             if (states.contains(WidgetState.focused)) {
               // TODO(UX-1134): This removes a defualt border when focused, rather than adding a second border when focused.
-              return BorderSide(color: Zeta.of(context).colors.blue.shade50, width: ZetaSpacingBase.x0_5);
+              return BorderSide(color: Zeta.of(context).colors.blue.shade50, width: ZetaBorders.borderWidth);
             }
             return null;
           },
@@ -145,18 +147,21 @@ class _ZetaFABState extends State<ZetaFAB> {
         duration: ZetaAnimationLength.normal,
         child: Padding(
           padding: widget.expanded
-              ? const EdgeInsets.symmetric(horizontal: ZetaSpacingBase.x3_5, vertical: ZetaSpacing.medium)
-              : EdgeInsets.all(widget.size.padding),
+              ? EdgeInsets.symmetric(
+                  horizontal: Zeta.of(context).spacing.large,
+                  vertical: Zeta.of(context).spacing.medium,
+                )
+              : EdgeInsets.all(widget.size.padding(context)),
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              ZetaIcon(widget.icon, size: widget.size.iconSize),
+              ZetaIcon(widget.icon, size: widget.size.iconSize(context)),
               if (widget.expanded && widget.label != null)
                 Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [Text(widget.label!, style: ZetaTextStyles.labelLarge)],
                 ),
-            ].divide(const SizedBox(width: ZetaSpacing.small)).toList(),
+            ].divide(SizedBox(width: Zeta.of(context).spacing.small)).toList(),
           ),
         ),
       ),
@@ -179,7 +184,7 @@ extension on ZetaFabType {
 }
 
 extension on ZetaWidgetBorder {
-  OutlinedBorder buttonShape({required bool isExpanded, required ZetaFabSize size}) {
+  OutlinedBorder buttonShape({required bool isExpanded, required ZetaFabSize size, required BuildContext context}) {
     if (this == ZetaWidgetBorder.full && !isExpanded) {
       return const CircleBorder();
     }
@@ -191,18 +196,25 @@ extension on ZetaWidgetBorder {
         isExpanded
             ? this == ZetaWidgetBorder.full
                 ? size == ZetaFabSize.small
-                    ? ZetaSpacing.xl_3
-                    : ZetaSpacing.xl_8
-                : ZetaSpacing.small
+                    ? Zeta.of(context).spacing.xl_3
+                    : Zeta.of(context).spacing.xl_8
+                : Zeta.of(context).spacing.small
             : size == ZetaFabSize.small
-                ? ZetaSpacing.small
-                : ZetaSpacing.large,
+                ? Zeta.of(context).spacing.small
+                : Zeta.of(context).spacing.large,
       ),
     );
   }
 }
 
 extension on ZetaFabSize {
-  double get iconSize => this == ZetaFabSize.small ? ZetaSpacing.xl_2 : ZetaSpacing.xl_5;
-  double get padding => this == ZetaFabSize.small ? ZetaSpacing.large : ZetaSpacingBase.x7_5;
+  double iconSize(BuildContext context) {
+    return this == ZetaFabSize.small ? Zeta.of(context).spacing.xl_2 : Zeta.of(context).spacing.xl_5;
+  }
+
+  double padding(BuildContext context) {
+    return this == ZetaFabSize.small
+        ? Zeta.of(context).spacing.large
+        : Zeta.of(context).spacing.minimum * 7.5; // TODO(UX-1202): ZetaSpacingBase
+  }
 }

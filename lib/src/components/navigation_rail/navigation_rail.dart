@@ -17,8 +17,8 @@ class ZetaNavigationRail extends ZetaStatelessWidget {
     required this.items,
     this.selectedIndex,
     this.onSelect,
-    this.margin = const EdgeInsets.all(ZetaSpacing.xl_1),
-    this.itemSpacing = const EdgeInsets.only(bottom: ZetaSpacing.minimum),
+    this.margin,
+    this.itemSpacing,
     this.itemPadding,
     this.wordWrap,
     this.semanticLabel,
@@ -34,25 +34,25 @@ class ZetaNavigationRail extends ZetaStatelessWidget {
   final void Function(int)? onSelect;
 
   /// The margin around the [ZetaNavigationRail].
-  /// Default is:
+  /// If undefined, defaults to:
   /// ```
-  /// const EdgeInsets.all(ZetaSpacing.xl_1)
+  ///  EdgeInsets.all(Zeta.of(context).spacing.xl)
   /// ```
-  final EdgeInsets margin;
+  final EdgeInsets? margin;
 
   /// The spacing between items in [ZetaNavigationRail].
-  /// Default is:
+  /// If undefined, defaults to:
   /// ```
-  /// const EdgeInsets.only(bottom: ZetaSpacing.minimum)
+  ///  EdgeInsets.only(bottom: Zeta.of(context).spacing.minimum)
   /// ```
-  final EdgeInsets itemSpacing;
+  final EdgeInsets? itemSpacing;
 
   /// The padding within an item in [ZetaNavigationRail].
   /// Default is:
   /// ```
-  /// const EdgeInsets.symmetric(
-  ///   horizontal: ZetaSpacing.small,
-  ///   vertical: ZetaSpacing.medium,
+  ///  EdgeInsets.symmetric(
+  ///   horizontal: Zeta.of(context).spacing.small,
+  ///   vertical: Zeta.of(context).spacing.medium,
   /// ),
   /// ```
   final EdgeInsets? itemPadding;
@@ -88,7 +88,7 @@ class ZetaNavigationRail extends ZetaStatelessWidget {
       child: Semantics(
         label: semanticLabel,
         child: Padding(
-          padding: margin,
+          padding: margin ?? EdgeInsets.all(Zeta.of(context).spacing.xl),
           child: IntrinsicWidth(
             child: Column(
               children: [
@@ -97,7 +97,7 @@ class ZetaNavigationRail extends ZetaStatelessWidget {
                     children: [
                       Expanded(
                         child: Padding(
-                          padding: itemSpacing,
+                          padding: EdgeInsets.only(bottom: Zeta.of(context).spacing.minimum),
                           child: _ZetaNavigationRailItemContent(
                             label: items[i].label,
                             icon: items[i].icon,
@@ -139,6 +139,7 @@ class _ZetaNavigationRailItemContent extends ZetaStatelessWidget {
   final EdgeInsets? padding;
   final bool? wordWrap;
 
+  // TODO(UX-1173): No hover state for navigation rail items
   @override
   Widget build(BuildContext context) {
     final zeta = Zeta.of(context);
@@ -160,16 +161,16 @@ class _ZetaNavigationRailItemContent extends ZetaStatelessWidget {
               borderRadius: context.rounded ? Zeta.of(context).radius.rounded : null,
             ),
             child: ConstrainedBox(
-              constraints: const BoxConstraints(
-                minWidth: ZetaSpacing.xl_9,
-                minHeight: ZetaSpacing.xl_9,
+              constraints: BoxConstraints(
+                minWidth: Zeta.of(context).spacing.xl_9,
+                minHeight: Zeta.of(context).spacing.xl_9,
               ),
               child: SelectionContainer.disabled(
                 child: Padding(
                   padding: padding ??
-                      const EdgeInsets.symmetric(
-                        horizontal: ZetaSpacing.small,
-                        vertical: ZetaSpacing.medium,
+                      EdgeInsets.symmetric(
+                        horizontal: Zeta.of(context).spacing.small,
+                        vertical: Zeta.of(context).spacing.medium,
                       ),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -182,7 +183,7 @@ class _ZetaNavigationRailItemContent extends ZetaStatelessWidget {
                                 : selected
                                     ? zeta.colors.textDefault
                                     : zeta.colors.cool.shade70,
-                            size: ZetaSpacing.xl_2,
+                            size: Zeta.of(context).spacing.xl_2,
                           ),
                           child: icon!,
                         ),

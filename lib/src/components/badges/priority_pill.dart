@@ -106,7 +106,7 @@ class ZetaPriorityPill extends ZetaStatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ZetaColorSwatch color = customColor ?? type.color(context);
-    final size = this.size == ZetaPriorityPillSize.small ? ZetaSpacing.xl_1 : ZetaSpacing.xl_3;
+    final size = this.size == ZetaPriorityPillSize.small ? Zeta.of(context).spacing.xl : Zeta.of(context).spacing.xl_3;
     final label = (this.label ?? priority) ?? type.name.capitalize();
     final rounded = context.rounded;
 
@@ -145,9 +145,9 @@ class ZetaPriorityPill extends ZetaStatelessWidget {
             ),
             if (!isBadge)
               Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: ZetaSpacing.small,
-                  vertical: ZetaSpacing.minimum,
+                padding: EdgeInsets.symmetric(
+                  horizontal: Zeta.of(context).spacing.small,
+                  vertical: Zeta.of(context).spacing.minimum,
                 ),
                 child: Text(
                   label,

@@ -13,7 +13,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
-const double _kSwitchMinSize = kMinInteractiveDimension - 8.0;
+double _kSwitchMinSize = kMinInteractiveDimension - 8.0;
 
 // Zeta change:
 // Converted Flutter's private stateless [_MaterialSwitch]

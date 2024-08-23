@@ -87,7 +87,7 @@ class _ZetaProgressCircleState extends ZetaProgressState<ZetaProgressCircle> {
       textVal,
       style: widget.size != ZetaCircleSizes.s
           ? ZetaTextStyles.labelSmall
-          : ZetaTextStyles.labelSmall.copyWith(fontSize: ZetaSpacing.small),
+          : ZetaTextStyles.labelSmall.copyWith(fontSize: Zeta.of(context).spacing.small),
     );
 
     return ConstrainedBox(
@@ -100,7 +100,7 @@ class _ZetaProgressCircleState extends ZetaProgressState<ZetaProgressCircle> {
             painter: _CirclePainter(
               progress: animation.value,
               rounded: context.rounded,
-              colors: Zeta.of(context).colors,
+              context: context,
             ),
             child: Center(
               child: widget.size == ZetaCircleSizes.xs
@@ -128,11 +128,12 @@ class _ZetaProgressCircleState extends ZetaProgressState<ZetaProgressCircle> {
                                           color: colors.surfaceHover,
                                           borderRadius: Zeta.of(context).radius.full,
                                         ),
-                                        padding: const EdgeInsets.all(ZetaSpacing.small),
+                                        padding: EdgeInsets.all(Zeta.of(context).spacing.small),
                                         child: ZetaIcon(
                                           ZetaIcons.close,
-                                          size:
-                                              widget.size == ZetaCircleSizes.s ? ZetaSpacing.medium : ZetaSpacing.large,
+                                          size: widget.size == ZetaCircleSizes.s
+                                              ? Zeta.of(context).spacing.medium
+                                              : Zeta.of(context).spacing.large,
                                         ),
                                       ),
                                     )
@@ -151,15 +152,15 @@ class _ZetaProgressCircleState extends ZetaProgressState<ZetaProgressCircle> {
   Size _getSize() {
     switch (widget.size) {
       case ZetaCircleSizes.xs:
-        return const Size(ZetaSpacing.xl_2, ZetaSpacing.xl_2);
+        return Size(Zeta.of(context).spacing.xl_2, Zeta.of(context).spacing.xl_2);
       case ZetaCircleSizes.s:
-        return const Size(ZetaSpacing.xl_5, ZetaSpacing.xl_5);
+        return Size(Zeta.of(context).spacing.xl_5, Zeta.of(context).spacing.xl_5);
       case ZetaCircleSizes.m:
-        return const Size(ZetaSpacing.xl_6, ZetaSpacing.xl_6);
+        return Size(Zeta.of(context).spacing.xl_6, Zeta.of(context).spacing.xl_6);
       case ZetaCircleSizes.l:
-        return const Size(ZetaSpacing.xl_8, ZetaSpacing.xl_8);
+        return Size(Zeta.of(context).spacing.xl_8, Zeta.of(context).spacing.xl_8);
       case ZetaCircleSizes.xl:
-        return const Size(ZetaSpacing.xl_9, ZetaSpacing.xl_9);
+        return Size(Zeta.of(context).spacing.xl_9, Zeta.of(context).spacing.xl_9);
     }
   }
 
@@ -180,7 +181,7 @@ typedef CirclePainter = _CirclePainter;
 /// Class definition for [_CirclePainter]
 class _CirclePainter extends CustomPainter {
   ///Constructor for [_CirclePainter]
-  _CirclePainter({this.progress = 0, this.rounded = true, required this.colors});
+  _CirclePainter({this.progress = 0, this.rounded = true, required this.context});
 
   ///Percentage of progress in decimal value, defaults to 0
   final double progress;
@@ -188,17 +189,17 @@ class _CirclePainter extends CustomPainter {
   ///Is circle rounded, defaults to true
   final bool rounded;
 
-  /// ZetaColors
-  final ZetaColors colors;
+  final BuildContext context;
 
-  final _paint = Paint()
-    ..strokeWidth = ZetaSpacing.minimum
-    ..style = PaintingStyle.stroke;
+  final _paint = Paint();
 
   @override
   void paint(Canvas canvas, Size size) {
     if (rounded) _paint.strokeCap = StrokeCap.round;
-    _paint.color = colors.primary;
+    _paint
+      ..strokeWidth = Zeta.of(context).spacing.minimum
+      ..style = PaintingStyle.stroke
+      ..color = Zeta.of(context).colors.primary;
 
     const double fullCircle = 2 * math.pi;
 

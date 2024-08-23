@@ -151,7 +151,7 @@ class _ZetaAccordionState extends State<ZetaAccordion> with TickerProviderStateM
                           }
                         }),
                 child: Padding(
-                  padding: const EdgeInsets.all(ZetaSpacing.large),
+                  padding: EdgeInsets.all(Zeta.of(context).spacing.large),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -162,7 +162,7 @@ class _ZetaAccordionState extends State<ZetaAccordion> with TickerProviderStateM
                         child: Flexible(child: Text(widget.title)),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(left: ZetaSpacing.large),
+                        padding: EdgeInsets.only(left: Zeta.of(context).spacing.large),
                         child: ZetaIcon(
                           _isOpen ? ZetaIcons.remove : ZetaIcons.add,
                           color: _disabled ? zetaColors.iconDisabled : zetaColors.iconDefault,
@@ -176,11 +176,11 @@ class _ZetaAccordionState extends State<ZetaAccordion> with TickerProviderStateM
                 sizeFactor: _animation,
                 axisAlignment: -1,
                 child: Padding(
-                  padding: const EdgeInsets.fromLTRB(
-                    ZetaSpacing.large,
-                    ZetaSpacing.none,
-                    ZetaSpacing.large,
-                    ZetaSpacing.large,
+                  padding: EdgeInsets.fromLTRB(
+                    Zeta.of(context).spacing.large,
+                    Zeta.of(context).spacing.none,
+                    Zeta.of(context).spacing.large,
+                    Zeta.of(context).spacing.large,
                   ),
                   child: Theme(
                     data: Theme.of(context).copyWith(listTileTheme: ListTileThemeData(titleTextStyle: childTextStyle)),

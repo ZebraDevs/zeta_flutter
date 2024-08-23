@@ -18,7 +18,7 @@ Widget tooltipUseCase(BuildContext context) {
     builder: (context, _) => StatefulBuilder(
       builder: (context, setState) {
         return Padding(
-          padding: const EdgeInsets.all(ZetaSpacing.xl_4),
+          padding: EdgeInsets.all(Zeta.of(context).spacing.xl_4),
           child: ZetaTooltip(
             child: Text(text),
             arrowDirection: direction,

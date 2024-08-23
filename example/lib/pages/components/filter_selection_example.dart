@@ -22,7 +22,7 @@ class _FilterSelectionExampleState extends State<FilterSelectionExample> {
       name: FilterSelectionExample.name,
       child: Column(
         children: [
-          const SizedBox(height: ZetaSpacing.large),
+          SizedBox(height: Zeta.of(context).spacing.large),
           ZetaFilterSelection(
             buttonSemanticLabel: 'Filter',
             items: [

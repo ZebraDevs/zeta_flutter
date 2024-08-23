@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 ///
 /// Semantic zeta spacings.
 /// {@category Theme}
+@Deprecated('Use Zeta.of(context).spacing instead ' 'This has been deprecated as of 0.16.0')
 class ZetaSpacing {
   /// No spacing => 0px.
   static const double none = ZetaSpacingBase.x0;
@@ -217,6 +218,7 @@ class ZetaRadius {
 
 ///Tokens that are used for Spacing
 ///{@category Theme}
+@Deprecated('Use Zeta.of(context).spacing instead ' 'This has been deprecated as of 0.16.0')
 class ZetaSpacingBase {
   /// 0dp space
   static const double x0 = 0;
@@ -331,4 +333,11 @@ class ZetaAnimationLength {
 
   /// 500ms
   static const verySlow = Duration(milliseconds: 500);
+}
+
+/// Temporary class to hold border values.
+// TODO(Tokens): Remove this class and design / develop  Zeta.of(context).border instead.
+abstract final class ZetaBorders {
+  /// Border width
+  static double get borderWidth => 2;
 }

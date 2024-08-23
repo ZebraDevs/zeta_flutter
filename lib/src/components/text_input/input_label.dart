@@ -54,7 +54,7 @@ class ZetaInputLabel extends ZetaStatelessWidget {
             color: disabled ? colors.textDisabled : colors.textDefault,
           ),
         ),
-        if (requirementWidget != null) requirementWidget.paddingStart(ZetaSpacing.minimum),
+        if (requirementWidget != null) requirementWidget.paddingStart(Zeta.of(context).spacing.minimum),
       ],
     );
   }

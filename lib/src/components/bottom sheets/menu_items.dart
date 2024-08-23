@@ -90,11 +90,14 @@ class ZetaMenuItem extends ZetaStatelessWidget {
         switch (type) {
           case ZetaMenuItemType.horizontal:
             return ConstrainedBox(
-              constraints: const BoxConstraints(minHeight: ZetaSpacing.xl_8),
+              constraints: BoxConstraints(minHeight: Zeta.of(context).spacing.xl_8),
               child: InkWell(
                 onTap: _onTap,
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: ZetaSpacing.large, vertical: ZetaSpacing.medium),
+                  padding: EdgeInsets.symmetric(
+                    horizontal: Zeta.of(context).spacing.large,
+                    vertical: Zeta.of(context).spacing.medium,
+                  ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -102,14 +105,17 @@ class ZetaMenuItem extends ZetaStatelessWidget {
                         child: Row(
                           children: [
                             if (leading != null)
-                              Padding(padding: const EdgeInsets.only(right: ZetaSpacing.small), child: leading),
+                              Padding(
+                                padding: EdgeInsets.only(right: Zeta.of(context).spacing.small),
+                                child: leading,
+                              ),
                             Expanded(child: text),
                           ],
                         ),
                       ),
                       if (trailing != null)
                         IconTheme(
-                          data: _iconThemeData(colors, _enabled, ZetaSpacing.xl_2),
+                          data: _iconThemeData(colors, _enabled, Zeta.of(context).spacing.xl_2),
                           child: trailing!,
                         ),
                     ],
@@ -121,14 +127,17 @@ class ZetaMenuItem extends ZetaStatelessWidget {
             return InkWell(
               onTap: _onTap,
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: ZetaSpacing.large, vertical: ZetaSpacing.medium),
+                padding: EdgeInsets.symmetric(
+                  horizontal: Zeta.of(context).spacing.large,
+                  vertical: Zeta.of(context).spacing.medium,
+                ),
                 child: Column(
                   children: [
                     if (leading != null)
                       Padding(
-                        padding: const EdgeInsets.only(bottom: ZetaSpacing.medium),
+                        padding: EdgeInsets.only(bottom: Zeta.of(context).spacing.medium),
                         child: IconTheme(
-                          data: _iconThemeData(colors, _enabled, ZetaSpacing.xl_4),
+                          data: _iconThemeData(colors, _enabled, Zeta.of(context).spacing.xl_4),
                           child: leading!,
                         ),
                       ),

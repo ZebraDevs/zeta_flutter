@@ -170,13 +170,15 @@ class ZetaButton extends ZetaStatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final minConstraints = _minConstraints(context);
+    final iconSize = _iconSize(context);
     return Semantics(
       button: true,
       enabled: onPressed != null,
       label: semanticLabel ?? label,
       excludeSemantics: true,
       child: ConstrainedBox(
-        constraints: BoxConstraints(minHeight: _minConstraints, minWidth: _minConstraints),
+        constraints: BoxConstraints(minHeight: minConstraints, minWidth: minConstraints),
         child: FilledButton(
           focusNode: focusNode,
           onPressed: onPressed,
@@ -193,7 +195,7 @@ class ZetaButton extends ZetaStatelessWidget {
                 if (leadingIcon != null)
                   Icon(
                     leadingIcon,
-                    size: _iconSize,
+                    size: iconSize,
                   ),
                 if (label.isNotEmpty)
                   Text(
@@ -203,16 +205,16 @@ class ZetaButton extends ZetaStatelessWidget {
                 if (trailingIcon != null)
                   Icon(
                     trailingIcon,
-                    size: _iconSize,
+                    size: iconSize,
                   ),
               ]
                   .divide(
-                    const SizedBox(
-                      width: ZetaSpacing.small,
+                    SizedBox(
+                      width: Zeta.of(context).spacing.small,
                     ),
                   )
                   .toList(),
-            ).paddingHorizontal(_textPadding),
+            ).paddingHorizontal(_textPadding(context)),
           ),
         ),
       ),
@@ -221,39 +223,39 @@ class ZetaButton extends ZetaStatelessWidget {
 
   TextStyle get _textStyle => size == ZetaWidgetSize.small ? ZetaTextStyles.labelSmall : ZetaTextStyles.labelLarge;
 
-  double get _minConstraints {
+  double _minConstraints(BuildContext context) {
     switch (size) {
       case ZetaWidgetSize.large:
-        return ZetaSpacing.xl_8;
+        return Zeta.of(context).spacing.xl_8;
 
       case ZetaWidgetSize.medium:
-        return ZetaSpacing.xl_6;
+        return Zeta.of(context).spacing.xl_6;
 
       case ZetaWidgetSize.small:
-        return ZetaSpacing.xl_4;
+        return Zeta.of(context).spacing.xl_4;
     }
   }
 
-  double get _textPadding {
+  double _textPadding(BuildContext context) {
     switch (size) {
       case ZetaWidgetSize.large:
-        return ZetaSpacing.large;
+        return Zeta.of(context).spacing.large;
 
       case ZetaWidgetSize.medium:
-        return ZetaSpacing.medium;
+        return Zeta.of(context).spacing.medium;
 
       case ZetaWidgetSize.small:
-        return ZetaSpacing.minimum;
+        return Zeta.of(context).spacing.minimum;
     }
   }
 
-  double get _iconSize {
+  double _iconSize(BuildContext context) {
     switch (size) {
       case ZetaWidgetSize.large:
       case ZetaWidgetSize.medium:
-        return ZetaSpacing.xl_1;
+        return Zeta.of(context).spacing.xl;
       case ZetaWidgetSize.small:
-        return ZetaSpacing.large;
+        return Zeta.of(context).spacing.large;
     }
   }
 

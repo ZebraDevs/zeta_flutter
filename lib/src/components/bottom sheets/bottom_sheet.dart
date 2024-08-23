@@ -37,17 +37,17 @@ class ZetaBottomSheet extends ZetaStatelessWidget {
     return ZetaRoundedScope(
       rounded: context.rounded,
       child: Container(
-        padding: const EdgeInsets.fromLTRB(
-          ZetaSpacing.xl_1,
-          ZetaSpacing.none,
-          ZetaSpacing.xl_1,
-          ZetaSpacing.xl_1,
+        padding: EdgeInsets.fromLTRB(
+          Zeta.of(context).spacing.xl,
+          Zeta.of(context).spacing.none,
+          Zeta.of(context).spacing.xl,
+          Zeta.of(context).spacing.xl,
         ),
         decoration: BoxDecoration(
           color: colors.surfaceSecondary,
-          borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(ZetaSpacing.xl_2),
-            topRight: Radius.circular(ZetaSpacing.xl_2),
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(Zeta.of(context).spacing.xl_2),
+            topRight: Radius.circular(Zeta.of(context).spacing.xl_2),
           ),
         ),
         child: Column(
@@ -55,12 +55,12 @@ class ZetaBottomSheet extends ZetaStatelessWidget {
           children: [
             Align(
               child: SizedBox(
-                height: ZetaSpacing.xl_5,
+                height: Zeta.of(context).spacing.xl_5,
                 child: Padding(
-                  padding: const EdgeInsets.only(top: ZetaSpacing.small),
+                  padding: EdgeInsets.only(top: Zeta.of(context).spacing.small),
                   child: ZetaIcon(
                     Icons.maximize,
-                    size: ZetaSpacing.xl_9,
+                    size: Zeta.of(context).spacing.xl_9,
                     color: colors.surfaceDisabled,
                   ),
                 ),
@@ -68,7 +68,8 @@ class ZetaBottomSheet extends ZetaStatelessWidget {
             ),
             if (title != null)
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: ZetaSpacing.medium, vertical: ZetaSpacing.xl_2),
+                padding: EdgeInsets.symmetric(
+                    horizontal: Zeta.of(context).spacing.medium, vertical: Zeta.of(context).spacing.xl_2,),
                 child: Align(
                   alignment: centerTitle ? Alignment.center : Alignment.centerLeft,
                   child: Text(

@@ -34,7 +34,7 @@ Widget chatItemWidgetBook(BuildContext context) {
         if (enabledOnPtt) ZetaSlidableAction.ptt(onPressed: () {}),
       ],
       starred: starred,
-      leading: const ZetaAvatar.initials(initials: 'AZ', size: ZetaAvatarSize.m),
+      leading: ZetaAvatar.initials(initials: 'AZ', size: ZetaAvatarSize.m),
       title: Text(title),
       subtitle: Text(subtitle),
     ),

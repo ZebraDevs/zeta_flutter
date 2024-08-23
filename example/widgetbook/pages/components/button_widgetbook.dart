@@ -96,11 +96,11 @@ Widget buttonGroupUseCase(BuildContext context) {
 }
 
 Widget floatingActionButtonUseCase(BuildContext context) => WidgetbookScaffold(
-      builder: (context, _) => Padding(padding: EdgeInsets.all(ZetaSpacing.xl_1), child: FabWidget(context)),
+      builder: (context, _) => Padding(padding: EdgeInsets.all(Zeta.of(context).spacing.xl), child: FabWidget(context)),
     );
 
 class FabWidget extends StatefulWidget {
-  const FabWidget(this.c);
+  FabWidget(this.c);
   final BuildContext c;
 
   @override

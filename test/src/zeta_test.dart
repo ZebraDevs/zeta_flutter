@@ -168,6 +168,9 @@ void main() {
 
       final radius = diagnostics.properties.where((p) => p.name == 'radius').map((p) => p.toDescription()).first;
       expect(radius, "Instance of 'ZetaRadiiAA'");
+
+      final spacing = diagnostics.properties.where((p) => p.name == 'spacing').map((p) => p.toDescription()).first;
+      expect(spacing, "Instance of 'ZetaSpacingAA'");
     });
   });
 }

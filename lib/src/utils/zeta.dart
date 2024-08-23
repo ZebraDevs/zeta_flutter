@@ -77,6 +77,9 @@ class Zeta extends InheritedWidget {
   /// Gets the radius values based on the tokens.
   ZetaRadiiSemantics get radius => _semantics.radii;
 
+  /// Gets the spacing values based on the tokens.
+  ZetaSpacingSemantics get spacing => _semantics.size;
+
   /// Gets the [ZetaPrimitives] instance based on the current brightness setting.
   ///
   /// This is a temporary function used whilst the full implementation of tokens is taking place.
@@ -135,6 +138,7 @@ class Zeta extends InheritedWidget {
       ..add(DiagnosticsProperty<bool>('rounded', rounded))
       ..add(DiagnosticsProperty<ZetaColors>('colors', colors))
       ..add(EnumProperty<Brightness>('brightness', brightness))
-      ..add(DiagnosticsProperty<ZetaRadiiSemantics>('radius', radius));
+      ..add(DiagnosticsProperty<ZetaRadiiSemantics>('radius', radius))
+      ..add(DiagnosticsProperty<ZetaSpacingSemantics>('spacing', spacing));
   }
 }

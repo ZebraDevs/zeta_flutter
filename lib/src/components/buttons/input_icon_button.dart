@@ -38,37 +38,37 @@ class InputIconButton extends StatelessWidget {
   /// {@macro zeta-widget-semantic-label}
   final String? semanticLabel;
 
-  double get _iconSize {
+  double _iconSize(BuildContext context) {
     switch (size) {
       case ZetaWidgetSize.large:
-        return ZetaSpacing.xl_2;
+        return Zeta.of(context).spacing.xl_2;
       case ZetaWidgetSize.medium:
-        return ZetaSpacing.xl_1;
+        return Zeta.of(context).spacing.xl;
       case ZetaWidgetSize.small:
-        return ZetaSpacing.large;
+        return Zeta.of(context).spacing.large;
     }
   }
 
   @override
   Widget build(BuildContext context) {
     final colors = Zeta.of(context).colors;
-
+    final iconSize = _iconSize(context);
     return Semantics(
       button: true,
       label: semanticLabel,
       enabled: !disabled,
       excludeSemantics: true,
       child: IconButton(
-        padding: EdgeInsets.all(_iconSize / 2),
+        padding: EdgeInsets.all(iconSize / 2),
         constraints: BoxConstraints(
-          maxHeight: _iconSize * 2,
-          maxWidth: _iconSize * 2,
-          minHeight: _iconSize * 2,
-          minWidth: _iconSize * 2,
+          maxHeight: iconSize * 2,
+          maxWidth: iconSize * 2,
+          minHeight: iconSize * 2,
+          minWidth: iconSize * 2,
         ),
         color: !disabled ? color : colors.iconDisabled,
         onPressed: disabled ? null : onTap,
-        iconSize: _iconSize,
+        iconSize: iconSize,
         icon: ZetaIcon(icon),
       ),
     );

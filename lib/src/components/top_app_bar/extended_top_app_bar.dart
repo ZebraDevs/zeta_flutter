@@ -34,20 +34,19 @@ class ZetaExtendedAppBarDelegate extends SliverPersistentHeaderDelegate {
 
   @override
   Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
-    const searchBarOffsetTop = ZetaSpacing.minimum * 1.5;
-    const searchBarOffsetRight = ZetaSpacing.minimum * 22;
-    const maxExtent = ZetaSpacing.minimum * 26;
-    const leftMin = ZetaSpacing.large;
-
-    const topMin = ZetaSpacing.xl_1;
-    const topMax = ZetaSpacing.minimum * 15;
+    final searchBarOffsetTop = Zeta.of(context).spacing.minimum * 1.5;
+    final searchBarOffsetRight = Zeta.of(context).spacing.minimum * 22;
+    final maxExtent = Zeta.of(context).spacing.minimum * 26;
+    final leftMin = Zeta.of(context).spacing.large;
+    final topMin = Zeta.of(context).spacing.xl;
+    final topMax = Zeta.of(context).spacing.minimum * 15;
 
     /// If there is no leading widget, the left margin should not change
     /// If there is a leading widget, the left margin should be the same as the leading widget's width plus padding
-    final leftMax = leading == null ? leftMin : _minExtent + ZetaSpacing.small;
+    final leftMax = leading == null ? leftMin : _minExtent + Zeta.of(context).spacing.small;
 
     return ConstrainedBox(
-      constraints: const BoxConstraints(minHeight: ZetaSpacing.xl_9, maxHeight: maxExtent),
+      constraints: BoxConstraints(minHeight: Zeta.of(context).spacing.xl_9, maxHeight: maxExtent),
       child: ColoredBox(
         color: Zeta.of(context).colors.surfacePrimary,
         child: Stack(
@@ -58,17 +57,24 @@ class ZetaExtendedAppBarDelegate extends SliverPersistentHeaderDelegate {
                       topMin -
                           (searchController != null && searchController!.isEnabled
                               ? searchBarOffsetTop
-                              : ZetaSpacing.none),
+                              : Zeta.of(context).spacing.none),
                       topMax,
                     )
                   : topMax,
-              left: shrinks ? ((shrinkOffset / maxExtent) * ZetaSpacingBase.x50).clamp(leftMin, leftMax) : leftMin,
-              right: searchController != null && searchController!.isEnabled ? searchBarOffsetRight : ZetaSpacing.none,
+              left: shrinks ? ((shrinkOffset / maxExtent) * _maxExtent).clamp(leftMin, leftMax) : leftMin,
+              right: searchController != null && searchController!.isEnabled
+                  ? searchBarOffsetRight
+                  : Zeta.of(context).spacing.none,
               child: title,
             ),
-            if (leading != null) Positioned(top: ZetaSpacing.medium, left: ZetaSpacing.small, child: leading!),
+            if (leading != null)
+              Positioned(top: Zeta.of(context).spacing.medium, left: Zeta.of(context).spacing.small, child: leading!),
             if (actions != null)
-              Positioned(top: ZetaSpacing.medium, right: ZetaSpacing.small, child: Row(children: actions!)),
+              Positioned(
+                top: Zeta.of(context).spacing.medium,
+                right: Zeta.of(context).spacing.small,
+                child: Row(children: actions!),
+              ),
           ],
         ),
       ),
