@@ -9,12 +9,11 @@ import 'package:flutter/foundation.dart' as _i3;
 import 'package:flutter/material.dart' as _i2;
 import 'package:flutter/src/widgets/notification_listener.dart' as _i8;
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:mockito/src/dummies.dart' as _i11;
+import 'package:mockito/src/dummies.dart' as _i10;
 import 'package:zeta_flutter/src/theme/color_scheme.dart' as _i7;
 import 'package:zeta_flutter/src/theme/color_swatch.dart' as _i4;
 import 'package:zeta_flutter/src/theme/contrast.dart' as _i9;
-import 'package:zeta_flutter/src/theme/theme_data.dart' as _i6;
-import 'package:zeta_flutter/src/utils/zeta.dart' as _i10;
+import 'package:zeta_flutter/zeta_flutter.dart' as _i6;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -39,10 +38,12 @@ class _FakeWidget_0 extends _i1.SmartFake implements _i2.Widget {
         );
 
   @override
-  String toString({_i3.DiagnosticLevel? minLevel = _i3.DiagnosticLevel.info}) => super.toString();
+  String toString({_i3.DiagnosticLevel? minLevel = _i3.DiagnosticLevel.info}) =>
+      super.toString();
 }
 
-class _FakeInheritedWidget_1 extends _i1.SmartFake implements _i2.InheritedWidget {
+class _FakeInheritedWidget_1 extends _i1.SmartFake
+    implements _i2.InheritedWidget {
   _FakeInheritedWidget_1(
     Object parent,
     Invocation parentInvocation,
@@ -52,10 +53,12 @@ class _FakeInheritedWidget_1 extends _i1.SmartFake implements _i2.InheritedWidge
         );
 
   @override
-  String toString({_i3.DiagnosticLevel? minLevel = _i3.DiagnosticLevel.info}) => super.toString();
+  String toString({_i3.DiagnosticLevel? minLevel = _i3.DiagnosticLevel.info}) =>
+      super.toString();
 }
 
-class _FakeDiagnosticsNode_2 extends _i1.SmartFake implements _i3.DiagnosticsNode {
+class _FakeDiagnosticsNode_2 extends _i1.SmartFake
+    implements _i3.DiagnosticsNode {
   _FakeDiagnosticsNode_2(
     Object parent,
     Invocation parentInvocation,
@@ -72,7 +75,8 @@ class _FakeDiagnosticsNode_2 extends _i1.SmartFake implements _i3.DiagnosticsNod
       super.toString();
 }
 
-class _FakeZetaColorSwatch_3 extends _i1.SmartFake implements _i4.ZetaColorSwatch {
+class _FakeZetaColorSwatch_3 extends _i1.SmartFake
+    implements _i4.ZetaColorSwatch {
   _FakeZetaColorSwatch_3(
     Object parent,
     Invocation parentInvocation,
@@ -102,7 +106,8 @@ class _FakeZetaColors_5 extends _i1.SmartFake implements _i6.ZetaColors {
         );
 }
 
-class _FakeZetaColorScheme_6 extends _i1.SmartFake implements _i7.ZetaColorScheme {
+class _FakeZetaColorScheme_6 extends _i1.SmartFake
+    implements _i7.ZetaColorScheme {
   _FakeZetaColorScheme_6(
     Object parent,
     Invocation parentInvocation,
@@ -112,7 +117,8 @@ class _FakeZetaColorScheme_6 extends _i1.SmartFake implements _i7.ZetaColorSchem
         );
 
   @override
-  String toString({_i3.DiagnosticLevel? minLevel = _i3.DiagnosticLevel.info}) => super.toString();
+  String toString({_i3.DiagnosticLevel? minLevel = _i3.DiagnosticLevel.info}) =>
+      super.toString();
 }
 
 class _FakeZetaThemeData_7 extends _i1.SmartFake implements _i6.ZetaThemeData {
@@ -125,8 +131,20 @@ class _FakeZetaThemeData_7 extends _i1.SmartFake implements _i6.ZetaThemeData {
         );
 }
 
-class _FakeInheritedElement_8 extends _i1.SmartFake implements _i2.InheritedElement {
-  _FakeInheritedElement_8(
+class _FakeZetaRadiiSemantics_8 extends _i1.SmartFake
+    implements _i6.ZetaRadiiSemantics {
+  _FakeZetaRadiiSemantics_8(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
+class _FakeInheritedElement_9 extends _i1.SmartFake
+    implements _i2.InheritedElement {
+  _FakeInheritedElement_9(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -135,7 +153,8 @@ class _FakeInheritedElement_8 extends _i1.SmartFake implements _i2.InheritedElem
         );
 
   @override
-  String toString({_i3.DiagnosticLevel? minLevel = _i3.DiagnosticLevel.info}) => super.toString();
+  String toString({_i3.DiagnosticLevel? minLevel = _i3.DiagnosticLevel.info}) =>
+      super.toString();
 }
 
 /// A class which mocks [BuildContext].
@@ -199,7 +218,8 @@ class MockBuildContext extends _i1.Mock implements _i2.BuildContext {
       ) as _i2.InheritedWidget);
 
   @override
-  void visitAncestorElements(_i2.ConditionalElementVisitor? visitor) => super.noSuchMethod(
+  void visitAncestorElements(_i2.ConditionalElementVisitor? visitor) =>
+      super.noSuchMethod(
         Invocation.method(
           #visitAncestorElements,
           [visitor],
@@ -217,7 +237,8 @@ class MockBuildContext extends _i1.Mock implements _i2.BuildContext {
       );
 
   @override
-  void dispatchNotification(_i8.Notification? notification) => super.noSuchMethod(
+  void dispatchNotification(_i8.Notification? notification) =>
+      super.noSuchMethod(
         Invocation.method(
           #dispatchNotification,
           [notification],
@@ -284,7 +305,9 @@ class MockBuildContext extends _i1.Mock implements _i2.BuildContext {
       ) as _i3.DiagnosticsNode);
 
   @override
-  List<_i3.DiagnosticsNode> describeMissingAncestor({required Type? expectedAncestorType}) => (super.noSuchMethod(
+  List<_i3.DiagnosticsNode> describeMissingAncestor(
+          {required Type? expectedAncestorType}) =>
+      (super.noSuchMethod(
         Invocation.method(
           #describeMissingAncestor,
           [],
@@ -295,7 +318,8 @@ class MockBuildContext extends _i1.Mock implements _i2.BuildContext {
       ) as List<_i3.DiagnosticsNode>);
 
   @override
-  _i3.DiagnosticsNode describeOwnershipChain(String? name) => (super.noSuchMethod(
+  _i3.DiagnosticsNode describeOwnershipChain(String? name) =>
+      (super.noSuchMethod(
         Invocation.method(
           #describeOwnershipChain,
           [name],
@@ -1417,7 +1441,8 @@ class MockZetaColors extends _i1.Mock implements _i6.ZetaColors {
       ) as _i6.ZetaColors);
 
   @override
-  _i6.ZetaColors apply({required _i9.ZetaContrast? contrast}) => (super.noSuchMethod(
+  _i6.ZetaColors apply({required _i9.ZetaContrast? contrast}) =>
+      (super.noSuchMethod(
         Invocation.method(
           #apply,
           [],
@@ -1467,7 +1492,7 @@ class MockZetaColors extends _i1.Mock implements _i6.ZetaColors {
 /// A class which mocks [Zeta].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockZeta extends _i1.Mock implements _i10.Zeta {
+class MockZeta extends _i1.Mock implements _i6.Zeta {
   @override
   _i9.ZetaContrast get contrast => (super.noSuchMethod(
         Invocation.getter(#contrast),
@@ -1523,6 +1548,19 @@ class MockZeta extends _i1.Mock implements _i10.Zeta {
       ) as _i5.Brightness);
 
   @override
+  _i6.ZetaRadiiSemantics get radius => (super.noSuchMethod(
+        Invocation.getter(#radius),
+        returnValue: _FakeZetaRadiiSemantics_8(
+          this,
+          Invocation.getter(#radius),
+        ),
+        returnValueForMissingStub: _FakeZetaRadiiSemantics_8(
+          this,
+          Invocation.getter(#radius),
+        ),
+      ) as _i6.ZetaRadiiSemantics);
+
+  @override
   _i2.Widget get child => (super.noSuchMethod(
         Invocation.getter(#child),
         returnValue: _FakeWidget_0(
@@ -1536,7 +1574,8 @@ class MockZeta extends _i1.Mock implements _i10.Zeta {
       ) as _i2.Widget);
 
   @override
-  bool updateShouldNotify(_i2.InheritedWidget? oldWidget) => (super.noSuchMethod(
+  bool updateShouldNotify(_i2.InheritedWidget? oldWidget) =>
+      (super.noSuchMethod(
         Invocation.method(
           #updateShouldNotify,
           [oldWidget],
@@ -1546,7 +1585,8 @@ class MockZeta extends _i1.Mock implements _i10.Zeta {
       ) as bool);
 
   @override
-  void debugFillProperties(_i3.DiagnosticPropertiesBuilder? properties) => super.noSuchMethod(
+  void debugFillProperties(_i3.DiagnosticPropertiesBuilder? properties) =>
+      super.noSuchMethod(
         Invocation.method(
           #debugFillProperties,
           [properties],
@@ -1560,14 +1600,14 @@ class MockZeta extends _i1.Mock implements _i10.Zeta {
           #createElement,
           [],
         ),
-        returnValue: _FakeInheritedElement_8(
+        returnValue: _FakeInheritedElement_9(
           this,
           Invocation.method(
             #createElement,
             [],
           ),
         ),
-        returnValueForMissingStub: _FakeInheritedElement_8(
+        returnValueForMissingStub: _FakeInheritedElement_9(
           this,
           Invocation.method(
             #createElement,
@@ -1582,14 +1622,14 @@ class MockZeta extends _i1.Mock implements _i10.Zeta {
           #toStringShort,
           [],
         ),
-        returnValue: _i11.dummyValue<String>(
+        returnValue: _i10.dummyValue<String>(
           this,
           Invocation.method(
             #toStringShort,
             [],
           ),
         ),
-        returnValueForMissingStub: _i11.dummyValue<String>(
+        returnValueForMissingStub: _i10.dummyValue<String>(
           this,
           Invocation.method(
             #toStringShort,
@@ -1612,7 +1652,7 @@ class MockZeta extends _i1.Mock implements _i10.Zeta {
             #minLevel: minLevel,
           },
         ),
-        returnValue: _i11.dummyValue<String>(
+        returnValue: _i10.dummyValue<String>(
           this,
           Invocation.method(
             #toStringShallow,
@@ -1623,7 +1663,7 @@ class MockZeta extends _i1.Mock implements _i10.Zeta {
             },
           ),
         ),
-        returnValueForMissingStub: _i11.dummyValue<String>(
+        returnValueForMissingStub: _i10.dummyValue<String>(
           this,
           Invocation.method(
             #toStringShallow,
@@ -1652,7 +1692,7 @@ class MockZeta extends _i1.Mock implements _i10.Zeta {
             #minLevel: minLevel,
           },
         ),
-        returnValue: _i11.dummyValue<String>(
+        returnValue: _i10.dummyValue<String>(
           this,
           Invocation.method(
             #toStringDeep,
@@ -1664,7 +1704,7 @@ class MockZeta extends _i1.Mock implements _i10.Zeta {
             },
           ),
         ),
-        returnValueForMissingStub: _i11.dummyValue<String>(
+        returnValueForMissingStub: _i10.dummyValue<String>(
           this,
           Invocation.method(
             #toStringDeep,
@@ -1727,5 +1767,6 @@ class MockZeta extends _i1.Mock implements _i10.Zeta {
       ) as List<_i3.DiagnosticsNode>);
 
   @override
-  String toString({_i3.DiagnosticLevel? minLevel = _i3.DiagnosticLevel.info}) => super.toString();
+  String toString({_i3.DiagnosticLevel? minLevel = _i3.DiagnosticLevel.info}) =>
+      super.toString();
 }

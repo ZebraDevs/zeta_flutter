@@ -196,13 +196,14 @@ class _NavigationItem extends ZetaStatelessWidget {
   final ZetaNavigationBarItem item;
   final VoidCallback onTap;
 
-  Widget _getBadge(ZetaColors colors) {
+  Widget _getBadge(BuildContext context) {
+    final ZetaColors colors = Zeta.of(context).colors;
     return Positioned(
       right: ZetaSpacing.minimum,
       child: DecoratedBox(
         decoration: BoxDecoration(
           color: colors.surfacePrimary,
-          borderRadius: ZetaRadius.full,
+          borderRadius: Zeta.of(context).radius.full,
         ),
         child: item.badge?.copyWith(
           size: item.badge?.value == null
@@ -224,7 +225,7 @@ class _NavigationItem extends ZetaStatelessWidget {
     return Material(
       color: colors.surfacePrimary,
       child: InkWell(
-        borderRadius: context.rounded ? ZetaRadius.rounded : ZetaRadius.none,
+        borderRadius: context.rounded ? Zeta.of(context).radius.rounded : Zeta.of(context).radius.none,
         onTap: onTap,
         child: Semantics(
           button: true,
@@ -247,7 +248,7 @@ class _NavigationItem extends ZetaStatelessWidget {
                         right: ZetaSpacingBase.x2_5,
                         child: ZetaIcon(item.icon, color: elementColor, size: ZetaSpacing.xl_2),
                       ),
-                      if (item.badge != null) _getBadge(colors),
+                      if (item.badge != null) _getBadge(context),
                     ],
                   ),
                 ),

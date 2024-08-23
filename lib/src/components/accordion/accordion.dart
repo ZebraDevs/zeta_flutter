@@ -104,7 +104,7 @@ class _ZetaAccordionState extends State<ZetaAccordion> with TickerProviderStateM
       child: DecoratedBox(
         decoration: BoxDecoration(
           border: widget.contained ? Border.all(color: borderColor) : Border(top: BorderSide(color: borderColor)),
-          borderRadius: rounded ? ZetaRadius.minimal : ZetaRadius.none,
+          borderRadius: rounded ? Zeta.of(context).radius.minimal : Zeta.of(context).radius.none,
         ),
         child: Padding(
           padding: const EdgeInsets.all(1),
@@ -114,7 +114,9 @@ class _ZetaAccordionState extends State<ZetaAccordion> with TickerProviderStateM
               TextButton(
                 style: ButtonStyle(
                   shape: WidgetStatePropertyAll(
-                    RoundedRectangleBorder(borderRadius: rounded ? ZetaRadius.minimal : ZetaRadius.none),
+                    RoundedRectangleBorder(
+                      borderRadius: rounded ? Zeta.of(context).radius.minimal : Zeta.of(context).radius.none,
+                    ),
                   ),
                   overlayColor: WidgetStateProperty.resolveWith((states) {
                     if (states.contains(WidgetState.hovered)) {

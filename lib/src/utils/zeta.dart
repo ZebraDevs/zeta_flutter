@@ -1,8 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import '../theme/contrast.dart';
-import '../theme/theme_data.dart';
+import '../../zeta_flutter.dart';
 
 /// An [InheritedWidget] that provides access to Zeta theme settings.
 ///
@@ -75,6 +74,21 @@ class Zeta extends InheritedWidget {
     }
   }
 
+  /// Gets the radius values based on the tokens.
+  ZetaRadiiSemantics get radius => _semantics.radii;
+
+  /// Gets the [ZetaPrimitives] instance based on the current brightness setting.
+  ///
+  /// This is a temporary function used whilst the full implementation of tokens is taking place.
+  ZetaPrimitives get _primitives => brightness == Brightness.light ? ZetaPrimitivesLight() : ZetaPrimitivesDark();
+
+  /// Gets the [ZetaSemantics] instance based on the current contrast setting.
+  ///
+  /// This is a temporary function used whilst the full implementation of tokens is taking place.
+  ZetaSemantics get _semantics => contrast == ZetaContrast.aa
+      ? ZetaSemanticsAA(primitives: _primitives)
+      : ZetaSemanticsAAA(primitives: _primitives);
+
   @override
   bool updateShouldNotify(covariant Zeta oldWidget) {
     return oldWidget.contrast != contrast ||
@@ -115,12 +129,12 @@ class Zeta extends InheritedWidget {
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(EnumProperty<ZetaContrast>('contrast', contrast))
       ..add(EnumProperty<ThemeMode>('themeMode', themeMode))
+      ..add(EnumProperty<ZetaContrast>('contrast', contrast))
       ..add(DiagnosticsProperty<ZetaThemeData>('themeData', themeData))
+      ..add(DiagnosticsProperty<bool>('rounded', rounded))
       ..add(DiagnosticsProperty<ZetaColors>('colors', colors))
-      ..add(EnumProperty<Brightness>('mediaBrightness', _mediaBrightness))
       ..add(EnumProperty<Brightness>('brightness', brightness))
-      ..add(DiagnosticsProperty<bool>('rounded', rounded));
+      ..add(DiagnosticsProperty<ZetaRadiiSemantics>('radius', radius));
   }
 }

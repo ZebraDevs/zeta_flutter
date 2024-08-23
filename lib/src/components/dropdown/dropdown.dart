@@ -547,7 +547,7 @@ class _DropdownItemState<T> extends State<_DropdownItem<T>> {
       }),
       shape: WidgetStateProperty.all(
         RoundedRectangleBorder(
-          borderRadius: context.rounded ? ZetaRadius.minimal : ZetaRadius.none,
+          borderRadius: context.rounded ? Zeta.of(context).radius.minimal : Zeta.of(context).radius.none,
         ),
       ),
       side: WidgetStateBorderSide.resolveWith((states) {
@@ -624,7 +624,7 @@ class _ZetaDropDownMenuState<T> extends State<_ZetaDropDownMenu<T>> {
       padding: const EdgeInsets.all(ZetaSpacing.medium),
       decoration: BoxDecoration(
         color: colors.surfacePrimary,
-        borderRadius: context.rounded ? ZetaRadius.minimal : ZetaRadius.none,
+        borderRadius: context.rounded ? Zeta.of(context).radius.minimal : Zeta.of(context).radius.none,
         boxShadow: const [
           BoxShadow(blurRadius: 2, color: Color.fromRGBO(40, 51, 61, 0.04)),
           BoxShadow(

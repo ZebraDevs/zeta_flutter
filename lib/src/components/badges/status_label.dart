@@ -42,7 +42,7 @@ class ZetaStatusLabel extends ZetaStatelessWidget {
         decoration: BoxDecoration(
           color: colors.shade10,
           border: Border.all(color: colors.border),
-          borderRadius: context.rounded ? ZetaRadius.full : ZetaRadius.none,
+          borderRadius: context.rounded ? Zeta.of(context).radius.full : Zeta.of(context).radius.none,
         ),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: ZetaSpacing.small, vertical: ZetaSpacingBase.x0_5),

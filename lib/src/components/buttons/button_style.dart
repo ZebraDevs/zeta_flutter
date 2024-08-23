@@ -64,25 +64,26 @@ extension ButtonFunctions on ZetaButtonType {
 ///Border utility functions
 extension BorderFunctions on ZetaWidgetBorder {
   ///Returns radius based on [ZetaWidgetBorder]
-  BorderRadius get radius {
+  BorderRadius radius(BuildContext context) {
     switch (this) {
       case ZetaWidgetBorder.sharp:
-        return ZetaRadius.none;
+        return Zeta.of(context).radius.none;
       case ZetaWidgetBorder.rounded:
-        return ZetaRadius.minimal;
+        return Zeta.of(context).radius.minimal;
       case ZetaWidgetBorder.full:
-        return ZetaRadius.full;
+        return Zeta.of(context).radius.full;
     }
   }
 }
 
 /// Shared buttonStyle for buttons and icon buttons
 ButtonStyle buttonStyle(
-  ZetaColors colors,
+  BuildContext context,
   ZetaWidgetBorder borderType,
   ZetaButtonType type,
   Color? backgroundColor,
 ) {
+  final ZetaColors colors = Zeta.of(context).colors;
   final ZetaColorSwatch color =
       backgroundColor != null ? ZetaColorSwatch.fromColor(backgroundColor) : type.color(colors);
 
@@ -91,7 +92,7 @@ ButtonStyle buttonStyle(
   return ButtonStyle(
     minimumSize: WidgetStateProperty.all(const Size.square(ZetaSpacing.xl_4)),
     shape: WidgetStateProperty.all(
-      RoundedRectangleBorder(borderRadius: borderType.radius),
+      RoundedRectangleBorder(borderRadius: borderType.radius(context)),
     ),
     backgroundColor: WidgetStateProperty.resolveWith<Color?>(
       (states) {

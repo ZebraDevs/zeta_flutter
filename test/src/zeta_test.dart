@@ -162,13 +162,12 @@ void main() {
       final colors = diagnostics.properties.where((p) => p.name == 'colors').map((p) => p.toDescription()).first;
       expect(colors, contains('ZetaColors'));
 
-      final mediaBrightness =
-          diagnostics.properties.where((p) => p.name == 'mediaBrightness').map((p) => p.toDescription()).first;
-      expect(mediaBrightness, 'light');
-
       final brightness =
           diagnostics.properties.where((p) => p.name == 'brightness').map((p) => p.toDescription()).first;
       expect(brightness, 'light');
+
+      final radius = diagnostics.properties.where((p) => p.name == 'radius').map((p) => p.toDescription()).first;
+      expect(radius, "Instance of 'ZetaRadiiAA'");
     });
   });
 }

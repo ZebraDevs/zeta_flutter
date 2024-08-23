@@ -170,7 +170,6 @@ class ZetaButton extends ZetaStatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colors = Zeta.of(context).colors;
     return Semantics(
       button: true,
       enabled: onPressed != null,
@@ -182,7 +181,7 @@ class ZetaButton extends ZetaStatelessWidget {
           focusNode: focusNode,
           onPressed: onPressed,
           style: buttonStyle(
-            colors,
+            context,
             borderType ?? (context.rounded ? ZetaWidgetBorder.rounded : ZetaWidgetBorder.sharp),
             type,
             null,

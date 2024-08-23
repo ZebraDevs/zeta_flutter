@@ -46,7 +46,7 @@ class ZetaLabel extends ZetaStatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: ZetaSpacing.minimum, vertical: ZetaSpacingBase.x0_5),
         decoration: BoxDecoration(
           color: backgroundColor,
-          borderRadius: context.rounded ? ZetaRadius.minimal : ZetaRadius.none,
+          borderRadius: context.rounded ? Zeta.of(context).radius.minimal : Zeta.of(context).radius.none,
         ),
         child: Text(
           label,

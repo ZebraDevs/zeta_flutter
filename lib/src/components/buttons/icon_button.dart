@@ -120,15 +120,13 @@ class ZetaIconButton extends ZetaStatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colors = Zeta.of(context).colors;
-
     return MergeSemantics(
       child: Semantics(
         label: semanticLabel,
         child: FilledButton(
           onPressed: onPressed,
           style: buttonStyle(
-            colors,
+            context,
             borderType ?? (context.rounded ? ZetaWidgetBorder.rounded : ZetaWidgetBorder.sharp),
             type,
             null,

@@ -24,7 +24,7 @@ class ZetaTabBar extends TabBar {
               color: Zeta.of(context).colors.primary,
               width: onTap != null ? ZetaSpacing.minimum : ZetaSpacing.none,
             ),
-            borderRadius: ZetaRadius.none,
+            borderRadius: Zeta.of(context).radius.none,
           ),
           splashFactory: null,
           labelStyle: ZetaTextStyles.labelLarge.copyWith(

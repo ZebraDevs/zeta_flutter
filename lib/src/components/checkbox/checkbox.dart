@@ -190,7 +190,7 @@ class _CheckboxState extends State<ZetaInternalCheckbox> {
         color: Colors.transparent,
         child: InkWell(
           onTap: !widget.disabled ? () => widget.onChanged.call(!_checked) : null,
-          borderRadius: ZetaRadius.full,
+          borderRadius: Zeta.of(context).radius.full,
           child: Padding(
             padding: const EdgeInsets.all(ZetaSpacing.medium),
             child: MouseRegion(
@@ -240,7 +240,7 @@ class _CheckboxState extends State<ZetaInternalCheckbox> {
             ],
             color: _getBackground(theme),
             border: Border.all(color: _getBorderColor(theme), width: ZetaSpacingBase.x0_5),
-            borderRadius: rounded ? ZetaRadius.minimal : ZetaRadius.none,
+            borderRadius: rounded ? Zeta.of(context).radius.minimal : Zeta.of(context).radius.none,
           ),
           width: ZetaSpacing.xl_1,
           height: ZetaSpacing.xl_1,
