@@ -9,56 +9,17 @@ abstract interface class ZetaSemanticColors {
   /// The primitives for the colors
   ZetaPrimitives get primitives;
 
-  /// Main
-  ZetaSemanticMainColors get main;
-
   /// Border
   ZetaSemanticBorderColors get border;
 
-  /// Surface
-  ZetaSemanticSurfaceColors get surface;
+  /// Main
+  ZetaSemanticMainColors get main;
 
   /// State
   ZetaSemanticStateColors get state;
-}
 
-/// The semantic tokens for Main
-abstract interface class ZetaSemanticMainColors {
-  /// The primitives for the colors
-  ZetaPrimitives get primitives;
-
-  /// Default Color
-  Color get defaultColor;
-
-  /// Subtle
-  Color get subtle;
-
-  /// Light
-  Color get light;
-
-  /// Inverse
-  Color get inverse;
-
-  /// Disabled
-  Color get disabled;
-
-  /// Primary
-  Color get primary;
-
-  /// Secondary
-  Color get secondary;
-
-  /// Positive
-  Color get positive;
-
-  /// Warning
-  Color get warning;
-
-  /// Negative
-  Color get negative;
-
-  /// Info
-  Color get info;
+  /// Surface
+  ZetaSemanticSurfaceColors get surface;
 }
 
 /// The semantic tokens for Border
@@ -69,23 +30,68 @@ abstract interface class ZetaSemanticBorderColors {
   /// Default Color
   Color get defaultColor;
 
-  /// Subtle
-  Color get subtle;
+  /// Disabled
+  Color get disabled;
 
   /// Hover
   Color get hover;
 
-  /// Selected
-  Color get selected;
+  /// Info
+  Color get info;
 
-  /// Disabled
-  Color get disabled;
+  /// Negative
+  Color get negative;
+
+  /// Positive
+  Color get positive;
+
+  /// Primary
+  Color get primary;
+
+  /// Primary Main
+  Color get primaryMain;
 
   /// Pure
   Color get pure;
 
-  /// Primary Main
-  Color get primaryMain;
+  /// Secondary
+  Color get secondary;
+
+  /// Selected
+  Color get selected;
+
+  /// Subtle
+  Color get subtle;
+
+  /// Warning
+  Color get warning;
+}
+
+/// The semantic tokens for Main
+abstract interface class ZetaSemanticMainColors {
+  /// The primitives for the colors
+  ZetaPrimitives get primitives;
+
+  /// Default Color
+  Color get defaultColor;
+
+  /// Disabled
+  Color get disabled;
+
+  /// Info
+  Color get info;
+
+  /// Inverse
+  Color get inverse;
+
+  /// Light
+  Color get light;
+
+  /// Negative
+  Color get negative;
+
+  /// Positive
+  Color get positive;
 
   /// Primary
   Color get primary;
@@ -93,17 +99,176 @@ abstract interface class ZetaSemanticBorderColors {
   /// Secondary
   Color get secondary;
 
-  /// Positive
-  Color get positive;
+  /// Subtle
+  Color get subtle;
 
   /// Warning
   Color get warning;
+}
 
-  /// Negative
-  Color get negative;
+/// The semantic tokens for State
+abstract interface class ZetaSemanticStateColors {
+  /// The primitives for the colors
+  ZetaPrimitives get primitives;
+
+  ///  Inverse
+  ZetaSemanticInverseColors get inverse;
+
+  /// Default
+  ZetaSemanticDefaultColors get defaultColor;
+
+  /// Disabled
+  ZetaSemanticDisabledColors get disabled;
 
   /// Info
-  Color get info;
+  ZetaSemanticInfoColors get info;
+
+  /// Negative
+  ZetaSemanticNegativeColors get negative;
+
+  /// Positive
+  ZetaSemanticPositiveColors get positive;
+
+  /// Primary
+  ZetaSemanticPrimaryColors get primary;
+
+  /// Secondary
+  ZetaSemanticSecondaryColors get secondary;
+}
+
+/// The semantic tokens for Inverse
+abstract interface class ZetaSemanticInverseColors {
+  /// The primitives for the colors
+  ZetaPrimitives get primitives;
+
+  /// Enabled
+  Color get enabled;
+
+  /// Focus
+  Color get focus;
+
+  /// Hover
+  Color get hover;
+
+  /// Selected
+  Color get selected;
+}
+
+/// The semantic tokens for Default
+abstract interface class ZetaSemanticDefaultColors {
+  /// The primitives for the colors
+  ZetaPrimitives get primitives;
+
+  /// Enabled
+  Color get enabled;
+
+  /// Focus
+  Color get focus;
+
+  /// Hover
+  Color get hover;
+
+  /// Selected
+  Color get selected;
+}
+
+/// The semantic tokens for Disabled
+abstract interface class ZetaSemanticDisabledColors {
+  /// The primitives for the colors
+  ZetaPrimitives get primitives;
+
+  /// Disabled
+  Color get disabled;
+}
+
+/// The semantic tokens for Info
+abstract interface class ZetaSemanticInfoColors {
+  /// The primitives for the colors
+  ZetaPrimitives get primitives;
+
+  /// Enabled
+  Color get enabled;
+
+  /// Focus
+  Color get focus;
+
+  /// Hover
+  Color get hover;
+
+  /// Selected
+  Color get selected;
+}
+
+/// The semantic tokens for Negative
+abstract interface class ZetaSemanticNegativeColors {
+  /// The primitives for the colors
+  ZetaPrimitives get primitives;
+
+  /// Enabled
+  Color get enabled;
+
+  /// Focus
+  Color get focus;
+
+  /// Hover
+  Color get hover;
+
+  /// Selected
+  Color get selected;
+}
+
+/// The semantic tokens for Positive
+abstract interface class ZetaSemanticPositiveColors {
+  /// The primitives for the colors
+  ZetaPrimitives get primitives;
+
+  /// Enabled
+  Color get enabled;
+
+  /// Focus
+  Color get focus;
+
+  /// Hover
+  Color get hover;
+
+  /// Selected
+  Color get selected;
+}
+
+/// The semantic tokens for Primary
+abstract interface class ZetaSemanticPrimaryColors {
+  /// The primitives for the colors
+  ZetaPrimitives get primitives;
+
+  /// Enabled
+  Color get enabled;
+
+  /// Focus
+  Color get focus;
+
+  /// Hover
+  Color get hover;
+
+  /// Selected
+  Color get selected;
+}
+
+/// The semantic tokens for Secondary
+abstract interface class ZetaSemanticSecondaryColors {
+  /// The primitives for the colors
+  ZetaPrimitives get primitives;
+
+  /// Enabled
+  Color get enabled;
+
+  /// Focus
+  Color get focus;
+
+  /// Hover
+  Color get hover;
+
+  /// Selected
+  Color get selected;
 }
 
 /// The semantic tokens for Surface
@@ -111,29 +276,41 @@ abstract interface class ZetaSemanticSurfaceColors {
   /// The primitives for the colors
   ZetaPrimitives get primitives;
 
+  /// Avatar
+  ZetaSemanticAvatarColors get avatar;
+
+  /// Cool
+  Color get cool;
+
   /// Default Color
   Color get defaultColor;
 
   /// Default Inverse
   Color get defaultInverse;
 
-  /// Hover
-  Color get hover;
-
-  /// Selected
-  Color get selected;
-
-  /// Selected Hover
-  Color get selectedHover;
-
   /// Disabled
   Color get disabled;
 
-  /// Cool
-  Color get cool;
+  /// Hover
+  Color get hover;
 
-  /// Warm
-  Color get warm;
+  /// Info
+  Color get info;
+
+  /// Info Subtle
+  Color get infoSubtle;
+
+  /// Negative
+  Color get negative;
+
+  /// Negative Subtle
+  Color get negativeSubtle;
+
+  /// Positive
+  Color get positive;
+
+  /// Positive Subtle
+  Color get positiveSubtle;
 
   /// Primary
   Color get primary;
@@ -144,35 +321,23 @@ abstract interface class ZetaSemanticSurfaceColors {
   /// Secondary
   Color get secondary;
 
-  /// Avatar
-  ZetaSemanticAvatarColors get avatar;
-
   /// Secondary Subtle
   Color get secondarySubtle;
 
-  /// Positive
-  Color get positive;
+  /// Selected
+  Color get selected;
 
-  /// Positive Subtle
-  Color get positiveSubtle;
+  /// Selected Hover
+  Color get selectedHover;
+
+  /// Warm
+  Color get warm;
 
   /// Warning
   Color get warning;
 
   /// Warning Subtle
   Color get warningSubtle;
-
-  /// Negative
-  Color get negative;
-
-  /// Negative Subtle
-  Color get negativeSubtle;
-
-  /// Info
-  Color get info;
-
-  /// Info Subtle
-  Color get infoSubtle;
 }
 
 /// The semantic tokens for Avatar
@@ -200,171 +365,6 @@ abstract interface class ZetaSemanticAvatarColors {
 
   /// Yellow
   Color get yellow;
-}
-
-/// The semantic tokens for State
-abstract interface class ZetaSemanticStateColors {
-  /// The primitives for the colors
-  ZetaPrimitives get primitives;
-
-  /// Disabled
-  ZetaSemanticDisabledColors get disabled;
-
-  /// Default
-  ZetaSemanticDefaultColors get defaultColor;
-
-  /// Primary
-  ZetaSemanticPrimaryColors get primary;
-
-  /// Secondary
-  ZetaSemanticSecondaryColors get secondary;
-
-  /// Positive
-  ZetaSemanticPositiveColors get positive;
-
-  /// Negative
-  ZetaSemanticNegativeColors get negative;
-
-  /// Info
-  ZetaSemanticInfoColors get info;
-
-  ///  Inverse
-  ZetaSemanticInverseColors get inverse;
-}
-
-/// The semantic tokens for Disabled
-abstract interface class ZetaSemanticDisabledColors {
-  /// The primitives for the colors
-  ZetaPrimitives get primitives;
-
-  /// Disabled
-  Color get disabled;
-}
-
-/// The semantic tokens for Default
-abstract interface class ZetaSemanticDefaultColors {
-  /// The primitives for the colors
-  ZetaPrimitives get primitives;
-
-  /// Enabled
-  Color get enabled;
-
-  /// Hover
-  Color get hover;
-
-  /// Selected
-  Color get selected;
-
-  /// Focus
-  Color get focus;
-}
-
-/// The semantic tokens for Primary
-abstract interface class ZetaSemanticPrimaryColors {
-  /// The primitives for the colors
-  ZetaPrimitives get primitives;
-
-  /// Enabled
-  Color get enabled;
-
-  /// Hover
-  Color get hover;
-
-  /// Selected
-  Color get selected;
-
-  /// Focus
-  Color get focus;
-}
-
-/// The semantic tokens for Secondary
-abstract interface class ZetaSemanticSecondaryColors {
-  /// The primitives for the colors
-  ZetaPrimitives get primitives;
-
-  /// Enabled
-  Color get enabled;
-
-  /// Hover
-  Color get hover;
-
-  /// Selected
-  Color get selected;
-
-  /// Focus
-  Color get focus;
-}
-
-/// The semantic tokens for Positive
-abstract interface class ZetaSemanticPositiveColors {
-  /// The primitives for the colors
-  ZetaPrimitives get primitives;
-
-  /// Enabled
-  Color get enabled;
-
-  /// Hover
-  Color get hover;
-
-  /// Selected
-  Color get selected;
-
-  /// Focus
-  Color get focus;
-}
-
-/// The semantic tokens for Negative
-abstract interface class ZetaSemanticNegativeColors {
-  /// The primitives for the colors
-  ZetaPrimitives get primitives;
-
-  /// Enabled
-  Color get enabled;
-
-  /// Hover
-  Color get hover;
-
-  /// Selected
-  Color get selected;
-
-  /// Focus
-  Color get focus;
-}
-
-/// The semantic tokens for Info
-abstract interface class ZetaSemanticInfoColors {
-  /// The primitives for the colors
-  ZetaPrimitives get primitives;
-
-  /// Enabled
-  Color get enabled;
-
-  /// Hover
-  Color get hover;
-
-  /// Selected
-  Color get selected;
-
-  /// Focus
-  Color get focus;
-}
-
-/// The semantic tokens for Inverse
-abstract interface class ZetaSemanticInverseColors {
-  /// The primitives for the colors
-  ZetaPrimitives get primitives;
-
-  /// Enabled
-  Color get enabled;
-
-  /// Hover
-  Color get hover;
-
-  /// Selected
-  Color get selected;
-
-  /// Focus
-  Color get focus;
 }
 
 /// Semantic tokens for Size.
@@ -454,53 +454,21 @@ final class ZetaSemanticColorsAA implements ZetaSemanticColors {
   @override
   final ZetaPrimitives primitives;
 
-  /// Main
-  @override
-  ZetaSemanticMainColors get main => ZetaSemanticMainColorsAA(primitives: primitives);
-
   /// Border
   @override
   ZetaSemanticBorderColors get border => ZetaSemanticBorderColorsAA(primitives: primitives);
 
-  /// Surface
+  /// Main
   @override
-  ZetaSemanticSurfaceColors get surface => ZetaSemanticSurfaceColorsAA(primitives: primitives);
+  ZetaSemanticMainColors get main => ZetaSemanticMainColorsAA(primitives: primitives);
 
   /// State
   @override
   ZetaSemanticStateColors get state => ZetaSemanticStateColorsAA(primitives: primitives);
-}
 
-/// Implementation of ZetaSemanticMainColors
-final class ZetaSemanticMainColorsAA implements ZetaSemanticMainColors {
-  /// Constructor for ZetaSemanticMainColorsAA
-  const ZetaSemanticMainColorsAA({required this.primitives});
-
-  /// The primitives for this sizes
+  /// Surface
   @override
-  final ZetaPrimitives primitives;
-  @override
-  Color get defaultColor => primitives.cool.shade90;
-  @override
-  Color get subtle => primitives.cool.shade70;
-  @override
-  Color get light => primitives.cool.shade30;
-  @override
-  Color get inverse => primitives.cool.shade20;
-  @override
-  Color get disabled => primitives.cool.shade50;
-  @override
-  Color get primary => primitives.blue.shade60;
-  @override
-  Color get secondary => primitives.yellow.shade60;
-  @override
-  Color get positive => primitives.green.shade60;
-  @override
-  Color get warning => primitives.orange.shade60;
-  @override
-  Color get negative => primitives.red.shade60;
-  @override
-  Color get info => primitives.purple.shade60;
+  ZetaSemanticSurfaceColors get surface => ZetaSemanticSurfaceColorsAA(primitives: primitives);
 }
 
 /// Implementation of ZetaSemanticBorderColors
@@ -514,29 +482,241 @@ final class ZetaSemanticBorderColorsAA implements ZetaSemanticBorderColors {
   @override
   Color get defaultColor => primitives.cool.shade40;
   @override
-  Color get subtle => primitives.cool.shade30;
+  Color get disabled => primitives.cool.shade20;
   @override
   Color get hover => primitives.cool.shade90;
   @override
-  Color get selected => primitives.cool.shade90;
-  @override
-  Color get disabled => primitives.cool.shade20;
-  @override
-  Color get pure => primitives.pure.shade0;
-  @override
-  Color get primaryMain => primitives.blue.shade60;
-  @override
-  Color get primary => primitives.blue.shade50;
-  @override
-  Color get secondary => primitives.yellow.shade50;
-  @override
-  Color get positive => primitives.green.shade50;
-  @override
-  Color get warning => primitives.orange.shade50;
+  Color get info => primitives.purple.shade50;
   @override
   Color get negative => primitives.red.shade50;
   @override
-  Color get info => primitives.purple.shade50;
+  Color get positive => primitives.green.shade50;
+  @override
+  Color get primary => primitives.blue.shade50;
+  @override
+  Color get primaryMain => primitives.blue.shade60;
+  @override
+  Color get pure => primitives.pure.shade0;
+  @override
+  Color get secondary => primitives.yellow.shade50;
+  @override
+  Color get selected => primitives.cool.shade90;
+  @override
+  Color get subtle => primitives.cool.shade30;
+  @override
+  Color get warning => primitives.orange.shade50;
+}
+
+/// Implementation of ZetaSemanticMainColors
+final class ZetaSemanticMainColorsAA implements ZetaSemanticMainColors {
+  /// Constructor for ZetaSemanticMainColorsAA
+  const ZetaSemanticMainColorsAA({required this.primitives});
+
+  /// The primitives for this sizes
+  @override
+  final ZetaPrimitives primitives;
+  @override
+  Color get defaultColor => primitives.cool.shade90;
+  @override
+  Color get disabled => primitives.cool.shade50;
+  @override
+  Color get info => primitives.purple.shade60;
+  @override
+  Color get inverse => primitives.cool.shade20;
+  @override
+  Color get light => primitives.cool.shade30;
+  @override
+  Color get negative => primitives.red.shade60;
+  @override
+  Color get positive => primitives.green.shade60;
+  @override
+  Color get primary => primitives.blue.shade60;
+  @override
+  Color get secondary => primitives.yellow.shade60;
+  @override
+  Color get subtle => primitives.cool.shade70;
+  @override
+  Color get warning => primitives.orange.shade60;
+}
+
+/// Implementation of ZetaSemanticStateColors
+final class ZetaSemanticStateColorsAA implements ZetaSemanticStateColors {
+  /// Constructor for ZetaSemanticStateColorsAA
+  const ZetaSemanticStateColorsAA({required this.primitives});
+
+  /// The primitives for this sizes
+  @override
+  final ZetaPrimitives primitives;
+
+  ///  Inverse
+  @override
+  ZetaSemanticInverseColors get inverse => ZetaSemanticInverseColorsAA(primitives: primitives);
+
+  /// Default
+  @override
+  ZetaSemanticDefaultColors get defaultColor => ZetaSemanticDefaultColorsAA(primitives: primitives);
+
+  /// Disabled
+  @override
+  ZetaSemanticDisabledColors get disabled => ZetaSemanticDisabledColorsAA(primitives: primitives);
+
+  /// Info
+  @override
+  ZetaSemanticInfoColors get info => ZetaSemanticInfoColorsAA(primitives: primitives);
+
+  /// Negative
+  @override
+  ZetaSemanticNegativeColors get negative => ZetaSemanticNegativeColorsAA(primitives: primitives);
+
+  /// Positive
+  @override
+  ZetaSemanticPositiveColors get positive => ZetaSemanticPositiveColorsAA(primitives: primitives);
+
+  /// Primary
+  @override
+  ZetaSemanticPrimaryColors get primary => ZetaSemanticPrimaryColorsAA(primitives: primitives);
+
+  /// Secondary
+  @override
+  ZetaSemanticSecondaryColors get secondary => ZetaSemanticSecondaryColorsAA(primitives: primitives);
+}
+
+/// Implementation of ZetaSemanticInverseColors
+final class ZetaSemanticInverseColorsAA implements ZetaSemanticInverseColors {
+  /// Constructor for ZetaSemanticInverseColorsAA
+  const ZetaSemanticInverseColorsAA({required this.primitives});
+
+  /// The primitives for this sizes
+  @override
+  final ZetaPrimitives primitives;
+  @override
+  Color get enabled => primitives.cool.shade100;
+  @override
+  Color get focus => primitives.cool.shade100;
+  @override
+  Color get hover => primitives.cool.shade90;
+  @override
+  Color get selected => primitives.cool.shade100;
+}
+
+/// Implementation of ZetaSemanticDefaultColors
+final class ZetaSemanticDefaultColorsAA implements ZetaSemanticDefaultColors {
+  /// Constructor for ZetaSemanticDefaultColorsAA
+  const ZetaSemanticDefaultColorsAA({required this.primitives});
+
+  /// The primitives for this sizes
+  @override
+  final ZetaPrimitives primitives;
+  @override
+  Color get enabled => primitives.pure.shade0;
+  @override
+  Color get focus => primitives.pure.shade0;
+  @override
+  Color get hover => primitives.cool.shade20;
+  @override
+  Color get selected => primitives.blue.shade10;
+}
+
+/// Implementation of ZetaSemanticDisabledColors
+final class ZetaSemanticDisabledColorsAA implements ZetaSemanticDisabledColors {
+  /// Constructor for ZetaSemanticDisabledColorsAA
+  const ZetaSemanticDisabledColorsAA({required this.primitives});
+
+  /// The primitives for this sizes
+  @override
+  final ZetaPrimitives primitives;
+  @override
+  Color get disabled => primitives.cool.shade30;
+}
+
+/// Implementation of ZetaSemanticInfoColors
+final class ZetaSemanticInfoColorsAA implements ZetaSemanticInfoColors {
+  /// Constructor for ZetaSemanticInfoColorsAA
+  const ZetaSemanticInfoColorsAA({required this.primitives});
+
+  /// The primitives for this sizes
+  @override
+  final ZetaPrimitives primitives;
+  @override
+  Color get enabled => primitives.purple.shade60;
+  @override
+  Color get focus => primitives.purple.shade60;
+  @override
+  Color get hover => primitives.purple.shade50;
+  @override
+  Color get selected => primitives.purple.shade70;
+}
+
+/// Implementation of ZetaSemanticNegativeColors
+final class ZetaSemanticNegativeColorsAA implements ZetaSemanticNegativeColors {
+  /// Constructor for ZetaSemanticNegativeColorsAA
+  const ZetaSemanticNegativeColorsAA({required this.primitives});
+
+  /// The primitives for this sizes
+  @override
+  final ZetaPrimitives primitives;
+  @override
+  Color get enabled => primitives.red.shade60;
+  @override
+  Color get focus => primitives.red.shade60;
+  @override
+  Color get hover => primitives.red.shade50;
+  @override
+  Color get selected => primitives.red.shade70;
+}
+
+/// Implementation of ZetaSemanticPositiveColors
+final class ZetaSemanticPositiveColorsAA implements ZetaSemanticPositiveColors {
+  /// Constructor for ZetaSemanticPositiveColorsAA
+  const ZetaSemanticPositiveColorsAA({required this.primitives});
+
+  /// The primitives for this sizes
+  @override
+  final ZetaPrimitives primitives;
+  @override
+  Color get enabled => primitives.green.shade60;
+  @override
+  Color get focus => primitives.green.shade60;
+  @override
+  Color get hover => primitives.green.shade50;
+  @override
+  Color get selected => primitives.green.shade70;
+}
+
+/// Implementation of ZetaSemanticPrimaryColors
+final class ZetaSemanticPrimaryColorsAA implements ZetaSemanticPrimaryColors {
+  /// Constructor for ZetaSemanticPrimaryColorsAA
+  const ZetaSemanticPrimaryColorsAA({required this.primitives});
+
+  /// The primitives for this sizes
+  @override
+  final ZetaPrimitives primitives;
+  @override
+  Color get enabled => primitives.blue.shade60;
+  @override
+  Color get focus => primitives.blue.shade60;
+  @override
+  Color get hover => primitives.blue.shade50;
+  @override
+  Color get selected => primitives.blue.shade70;
+}
+
+/// Implementation of ZetaSemanticSecondaryColors
+final class ZetaSemanticSecondaryColorsAA implements ZetaSemanticSecondaryColors {
+  /// Constructor for ZetaSemanticSecondaryColorsAA
+  const ZetaSemanticSecondaryColorsAA({required this.primitives});
+
+  /// The primitives for this sizes
+  @override
+  final ZetaPrimitives primitives;
+  @override
+  Color get enabled => primitives.yellow.shade40;
+  @override
+  Color get focus => primitives.yellow.shade40;
+  @override
+  Color get hover => primitives.yellow.shade30;
+  @override
+  Color get selected => primitives.yellow.shade50;
 }
 
 /// Implementation of ZetaSemanticSurfaceColors
@@ -547,50 +727,50 @@ final class ZetaSemanticSurfaceColorsAA implements ZetaSemanticSurfaceColors {
   /// The primitives for this sizes
   @override
   final ZetaPrimitives primitives;
+
+  /// Avatar
+  @override
+  ZetaSemanticAvatarColors get avatar => ZetaSemanticAvatarColorsAA(primitives: primitives);
+  @override
+  Color get cool => primitives.cool.shade10;
   @override
   Color get defaultColor => primitives.pure.shade0;
   @override
   Color get defaultInverse => primitives.warm.shade100;
   @override
-  Color get hover => primitives.cool.shade20;
-  @override
-  Color get selected => primitives.blue.shade10;
-  @override
-  Color get selectedHover => primitives.blue.shade20;
-  @override
   Color get disabled => primitives.cool.shade30;
   @override
-  Color get cool => primitives.cool.shade10;
+  Color get hover => primitives.cool.shade20;
   @override
-  Color get warm => primitives.warm.shade10;
+  Color get info => primitives.purple.shade60;
+  @override
+  Color get infoSubtle => primitives.purple.shade10;
+  @override
+  Color get negative => primitives.red.shade60;
+  @override
+  Color get negativeSubtle => primitives.red.shade10;
+  @override
+  Color get positive => primitives.green.shade60;
+  @override
+  Color get positiveSubtle => primitives.green.shade10;
   @override
   Color get primary => primitives.blue.shade60;
   @override
   Color get primarySubtle => primitives.blue.shade10;
   @override
   Color get secondary => primitives.yellow.shade60;
-
-  /// Avatar
-  @override
-  ZetaSemanticAvatarColors get avatar => ZetaSemanticAvatarColorsAA(primitives: primitives);
   @override
   Color get secondarySubtle => primitives.yellow.shade10;
   @override
-  Color get positive => primitives.green.shade60;
+  Color get selected => primitives.blue.shade10;
   @override
-  Color get positiveSubtle => primitives.green.shade10;
+  Color get selectedHover => primitives.blue.shade20;
+  @override
+  Color get warm => primitives.warm.shade10;
   @override
   Color get warning => primitives.orange.shade60;
   @override
   Color get warningSubtle => primitives.orange.shade10;
-  @override
-  Color get negative => primitives.red.shade60;
-  @override
-  Color get negativeSubtle => primitives.red.shade10;
-  @override
-  Color get info => primitives.purple.shade60;
-  @override
-  Color get infoSubtle => primitives.purple.shade10;
 }
 
 /// Implementation of ZetaSemanticAvatarColors
@@ -617,186 +797,6 @@ final class ZetaSemanticAvatarColorsAA implements ZetaSemanticAvatarColors {
   Color get yellow => primitives.yellow.shade50;
 }
 
-/// Implementation of ZetaSemanticStateColors
-final class ZetaSemanticStateColorsAA implements ZetaSemanticStateColors {
-  /// Constructor for ZetaSemanticStateColorsAA
-  const ZetaSemanticStateColorsAA({required this.primitives});
-
-  /// The primitives for this sizes
-  @override
-  final ZetaPrimitives primitives;
-
-  /// Disabled
-  @override
-  ZetaSemanticDisabledColors get disabled => ZetaSemanticDisabledColorsAA(primitives: primitives);
-
-  /// Default
-  @override
-  ZetaSemanticDefaultColors get defaultColor => ZetaSemanticDefaultColorsAA(primitives: primitives);
-
-  /// Primary
-  @override
-  ZetaSemanticPrimaryColors get primary => ZetaSemanticPrimaryColorsAA(primitives: primitives);
-
-  /// Secondary
-  @override
-  ZetaSemanticSecondaryColors get secondary => ZetaSemanticSecondaryColorsAA(primitives: primitives);
-
-  /// Positive
-  @override
-  ZetaSemanticPositiveColors get positive => ZetaSemanticPositiveColorsAA(primitives: primitives);
-
-  /// Negative
-  @override
-  ZetaSemanticNegativeColors get negative => ZetaSemanticNegativeColorsAA(primitives: primitives);
-
-  /// Info
-  @override
-  ZetaSemanticInfoColors get info => ZetaSemanticInfoColorsAA(primitives: primitives);
-
-  ///  Inverse
-  @override
-  ZetaSemanticInverseColors get inverse => ZetaSemanticInverseColorsAA(primitives: primitives);
-}
-
-/// Implementation of ZetaSemanticDisabledColors
-final class ZetaSemanticDisabledColorsAA implements ZetaSemanticDisabledColors {
-  /// Constructor for ZetaSemanticDisabledColorsAA
-  const ZetaSemanticDisabledColorsAA({required this.primitives});
-
-  /// The primitives for this sizes
-  @override
-  final ZetaPrimitives primitives;
-  @override
-  Color get disabled => primitives.cool.shade30;
-}
-
-/// Implementation of ZetaSemanticDefaultColors
-final class ZetaSemanticDefaultColorsAA implements ZetaSemanticDefaultColors {
-  /// Constructor for ZetaSemanticDefaultColorsAA
-  const ZetaSemanticDefaultColorsAA({required this.primitives});
-
-  /// The primitives for this sizes
-  @override
-  final ZetaPrimitives primitives;
-  @override
-  Color get enabled => primitives.pure.shade0;
-  @override
-  Color get hover => primitives.cool.shade20;
-  @override
-  Color get selected => primitives.blue.shade10;
-  @override
-  Color get focus => primitives.pure.shade0;
-}
-
-/// Implementation of ZetaSemanticPrimaryColors
-final class ZetaSemanticPrimaryColorsAA implements ZetaSemanticPrimaryColors {
-  /// Constructor for ZetaSemanticPrimaryColorsAA
-  const ZetaSemanticPrimaryColorsAA({required this.primitives});
-
-  /// The primitives for this sizes
-  @override
-  final ZetaPrimitives primitives;
-  @override
-  Color get enabled => primitives.blue.shade60;
-  @override
-  Color get hover => primitives.blue.shade50;
-  @override
-  Color get selected => primitives.blue.shade70;
-  @override
-  Color get focus => primitives.blue.shade60;
-}
-
-/// Implementation of ZetaSemanticSecondaryColors
-final class ZetaSemanticSecondaryColorsAA implements ZetaSemanticSecondaryColors {
-  /// Constructor for ZetaSemanticSecondaryColorsAA
-  const ZetaSemanticSecondaryColorsAA({required this.primitives});
-
-  /// The primitives for this sizes
-  @override
-  final ZetaPrimitives primitives;
-  @override
-  Color get enabled => primitives.yellow.shade40;
-  @override
-  Color get hover => primitives.yellow.shade30;
-  @override
-  Color get selected => primitives.yellow.shade50;
-  @override
-  Color get focus => primitives.yellow.shade40;
-}
-
-/// Implementation of ZetaSemanticPositiveColors
-final class ZetaSemanticPositiveColorsAA implements ZetaSemanticPositiveColors {
-  /// Constructor for ZetaSemanticPositiveColorsAA
-  const ZetaSemanticPositiveColorsAA({required this.primitives});
-
-  /// The primitives for this sizes
-  @override
-  final ZetaPrimitives primitives;
-  @override
-  Color get enabled => primitives.green.shade60;
-  @override
-  Color get hover => primitives.green.shade50;
-  @override
-  Color get selected => primitives.green.shade70;
-  @override
-  Color get focus => primitives.green.shade60;
-}
-
-/// Implementation of ZetaSemanticNegativeColors
-final class ZetaSemanticNegativeColorsAA implements ZetaSemanticNegativeColors {
-  /// Constructor for ZetaSemanticNegativeColorsAA
-  const ZetaSemanticNegativeColorsAA({required this.primitives});
-
-  /// The primitives for this sizes
-  @override
-  final ZetaPrimitives primitives;
-  @override
-  Color get enabled => primitives.red.shade60;
-  @override
-  Color get hover => primitives.red.shade50;
-  @override
-  Color get selected => primitives.red.shade70;
-  @override
-  Color get focus => primitives.red.shade60;
-}
-
-/// Implementation of ZetaSemanticInfoColors
-final class ZetaSemanticInfoColorsAA implements ZetaSemanticInfoColors {
-  /// Constructor for ZetaSemanticInfoColorsAA
-  const ZetaSemanticInfoColorsAA({required this.primitives});
-
-  /// The primitives for this sizes
-  @override
-  final ZetaPrimitives primitives;
-  @override
-  Color get enabled => primitives.purple.shade60;
-  @override
-  Color get hover => primitives.purple.shade50;
-  @override
-  Color get selected => primitives.purple.shade70;
-  @override
-  Color get focus => primitives.purple.shade60;
-}
-
-/// Implementation of ZetaSemanticInverseColors
-final class ZetaSemanticInverseColorsAA implements ZetaSemanticInverseColors {
-  /// Constructor for ZetaSemanticInverseColorsAA
-  const ZetaSemanticInverseColorsAA({required this.primitives});
-
-  /// The primitives for this sizes
-  @override
-  final ZetaPrimitives primitives;
-  @override
-  Color get enabled => primitives.cool.shade100;
-  @override
-  Color get hover => primitives.cool.shade90;
-  @override
-  Color get selected => primitives.cool.shade100;
-  @override
-  Color get focus => primitives.cool.shade100;
-}
-
 /// Implementation of ZetaSemanticColors
 final class ZetaSemanticColorsAAA implements ZetaSemanticColors {
   /// Constructor for ZetaSemanticColorsAAA
@@ -806,53 +806,21 @@ final class ZetaSemanticColorsAAA implements ZetaSemanticColors {
   @override
   final ZetaPrimitives primitives;
 
-  /// Main
-  @override
-  ZetaSemanticMainColors get main => ZetaSemanticMainColorsAAA(primitives: primitives);
-
   /// Border
   @override
   ZetaSemanticBorderColors get border => ZetaSemanticBorderColorsAAA(primitives: primitives);
 
-  /// Surface
+  /// Main
   @override
-  ZetaSemanticSurfaceColors get surface => ZetaSemanticSurfaceColorsAAA(primitives: primitives);
+  ZetaSemanticMainColors get main => ZetaSemanticMainColorsAAA(primitives: primitives);
 
   /// State
   @override
   ZetaSemanticStateColors get state => ZetaSemanticStateColorsAAA(primitives: primitives);
-}
 
-/// Implementation of ZetaSemanticMainColors
-final class ZetaSemanticMainColorsAAA implements ZetaSemanticMainColors {
-  /// Constructor for ZetaSemanticMainColorsAAA
-  const ZetaSemanticMainColorsAAA({required this.primitives});
-
-  /// The primitives for this sizes
+  /// Surface
   @override
-  final ZetaPrimitives primitives;
-  @override
-  Color get defaultColor => primitives.cool.shade100;
-  @override
-  Color get subtle => primitives.cool.shade90;
-  @override
-  Color get light => primitives.pure.shade0;
-  @override
-  Color get inverse => primitives.pure.shade0;
-  @override
-  Color get disabled => primitives.cool.shade60;
-  @override
-  Color get primary => primitives.blue.shade80;
-  @override
-  Color get secondary => primitives.yellow.shade80;
-  @override
-  Color get positive => primitives.green.shade80;
-  @override
-  Color get warning => primitives.orange.shade80;
-  @override
-  Color get negative => primitives.red.shade80;
-  @override
-  Color get info => primitives.purple.shade80;
+  ZetaSemanticSurfaceColors get surface => ZetaSemanticSurfaceColorsAAA(primitives: primitives);
 }
 
 /// Implementation of ZetaSemanticBorderColors
@@ -866,29 +834,241 @@ final class ZetaSemanticBorderColorsAAA implements ZetaSemanticBorderColors {
   @override
   Color get defaultColor => primitives.cool.shade100;
   @override
-  Color get subtle => primitives.cool.shade80;
+  Color get disabled => primitives.cool.shade20;
   @override
   Color get hover => primitives.cool.shade90;
   @override
-  Color get selected => primitives.cool.shade90;
-  @override
-  Color get disabled => primitives.cool.shade20;
-  @override
-  Color get pure => primitives.pure.shade0;
-  @override
-  Color get primaryMain => primitives.blue.shade80;
-  @override
-  Color get primary => primitives.blue.shade70;
-  @override
-  Color get secondary => primitives.yellow.shade70;
-  @override
-  Color get positive => primitives.green.shade70;
-  @override
-  Color get warning => primitives.orange.shade70;
+  Color get info => primitives.purple.shade70;
   @override
   Color get negative => primitives.red.shade70;
   @override
-  Color get info => primitives.purple.shade70;
+  Color get positive => primitives.green.shade70;
+  @override
+  Color get primary => primitives.blue.shade70;
+  @override
+  Color get primaryMain => primitives.blue.shade80;
+  @override
+  Color get pure => primitives.pure.shade0;
+  @override
+  Color get secondary => primitives.yellow.shade70;
+  @override
+  Color get selected => primitives.cool.shade90;
+  @override
+  Color get subtle => primitives.cool.shade80;
+  @override
+  Color get warning => primitives.orange.shade70;
+}
+
+/// Implementation of ZetaSemanticMainColors
+final class ZetaSemanticMainColorsAAA implements ZetaSemanticMainColors {
+  /// Constructor for ZetaSemanticMainColorsAAA
+  const ZetaSemanticMainColorsAAA({required this.primitives});
+
+  /// The primitives for this sizes
+  @override
+  final ZetaPrimitives primitives;
+  @override
+  Color get defaultColor => primitives.cool.shade100;
+  @override
+  Color get disabled => primitives.cool.shade60;
+  @override
+  Color get info => primitives.purple.shade80;
+  @override
+  Color get inverse => primitives.pure.shade0;
+  @override
+  Color get light => primitives.pure.shade0;
+  @override
+  Color get negative => primitives.red.shade80;
+  @override
+  Color get positive => primitives.green.shade80;
+  @override
+  Color get primary => primitives.blue.shade80;
+  @override
+  Color get secondary => primitives.yellow.shade80;
+  @override
+  Color get subtle => primitives.cool.shade90;
+  @override
+  Color get warning => primitives.orange.shade80;
+}
+
+/// Implementation of ZetaSemanticStateColors
+final class ZetaSemanticStateColorsAAA implements ZetaSemanticStateColors {
+  /// Constructor for ZetaSemanticStateColorsAAA
+  const ZetaSemanticStateColorsAAA({required this.primitives});
+
+  /// The primitives for this sizes
+  @override
+  final ZetaPrimitives primitives;
+
+  ///  Inverse
+  @override
+  ZetaSemanticInverseColors get inverse => ZetaSemanticInverseColorsAAA(primitives: primitives);
+
+  /// Default
+  @override
+  ZetaSemanticDefaultColors get defaultColor => ZetaSemanticDefaultColorsAAA(primitives: primitives);
+
+  /// Disabled
+  @override
+  ZetaSemanticDisabledColors get disabled => ZetaSemanticDisabledColorsAAA(primitives: primitives);
+
+  /// Info
+  @override
+  ZetaSemanticInfoColors get info => ZetaSemanticInfoColorsAAA(primitives: primitives);
+
+  /// Negative
+  @override
+  ZetaSemanticNegativeColors get negative => ZetaSemanticNegativeColorsAAA(primitives: primitives);
+
+  /// Positive
+  @override
+  ZetaSemanticPositiveColors get positive => ZetaSemanticPositiveColorsAAA(primitives: primitives);
+
+  /// Primary
+  @override
+  ZetaSemanticPrimaryColors get primary => ZetaSemanticPrimaryColorsAAA(primitives: primitives);
+
+  /// Secondary
+  @override
+  ZetaSemanticSecondaryColors get secondary => ZetaSemanticSecondaryColorsAAA(primitives: primitives);
+}
+
+/// Implementation of ZetaSemanticInverseColors
+final class ZetaSemanticInverseColorsAAA implements ZetaSemanticInverseColors {
+  /// Constructor for ZetaSemanticInverseColorsAAA
+  const ZetaSemanticInverseColorsAAA({required this.primitives});
+
+  /// The primitives for this sizes
+  @override
+  final ZetaPrimitives primitives;
+  @override
+  Color get enabled => primitives.pure.shade1000;
+  @override
+  Color get focus => primitives.pure.shade1000;
+  @override
+  Color get hover => primitives.cool.shade90;
+  @override
+  Color get selected => primitives.pure.shade1000;
+}
+
+/// Implementation of ZetaSemanticDefaultColors
+final class ZetaSemanticDefaultColorsAAA implements ZetaSemanticDefaultColors {
+  /// Constructor for ZetaSemanticDefaultColorsAAA
+  const ZetaSemanticDefaultColorsAAA({required this.primitives});
+
+  /// The primitives for this sizes
+  @override
+  final ZetaPrimitives primitives;
+  @override
+  Color get enabled => primitives.pure.shade0;
+  @override
+  Color get focus => primitives.pure.shade0;
+  @override
+  Color get hover => primitives.cool.shade20;
+  @override
+  Color get selected => primitives.blue.shade10;
+}
+
+/// Implementation of ZetaSemanticDisabledColors
+final class ZetaSemanticDisabledColorsAAA implements ZetaSemanticDisabledColors {
+  /// Constructor for ZetaSemanticDisabledColorsAAA
+  const ZetaSemanticDisabledColorsAAA({required this.primitives});
+
+  /// The primitives for this sizes
+  @override
+  final ZetaPrimitives primitives;
+  @override
+  Color get disabled => primitives.cool.shade30;
+}
+
+/// Implementation of ZetaSemanticInfoColors
+final class ZetaSemanticInfoColorsAAA implements ZetaSemanticInfoColors {
+  /// Constructor for ZetaSemanticInfoColorsAAA
+  const ZetaSemanticInfoColorsAAA({required this.primitives});
+
+  /// The primitives for this sizes
+  @override
+  final ZetaPrimitives primitives;
+  @override
+  Color get enabled => primitives.purple.shade80;
+  @override
+  Color get focus => primitives.purple.shade80;
+  @override
+  Color get hover => primitives.purple.shade70;
+  @override
+  Color get selected => primitives.purple.shade90;
+}
+
+/// Implementation of ZetaSemanticNegativeColors
+final class ZetaSemanticNegativeColorsAAA implements ZetaSemanticNegativeColors {
+  /// Constructor for ZetaSemanticNegativeColorsAAA
+  const ZetaSemanticNegativeColorsAAA({required this.primitives});
+
+  /// The primitives for this sizes
+  @override
+  final ZetaPrimitives primitives;
+  @override
+  Color get enabled => primitives.red.shade80;
+  @override
+  Color get focus => primitives.red.shade80;
+  @override
+  Color get hover => primitives.red.shade70;
+  @override
+  Color get selected => primitives.red.shade90;
+}
+
+/// Implementation of ZetaSemanticPositiveColors
+final class ZetaSemanticPositiveColorsAAA implements ZetaSemanticPositiveColors {
+  /// Constructor for ZetaSemanticPositiveColorsAAA
+  const ZetaSemanticPositiveColorsAAA({required this.primitives});
+
+  /// The primitives for this sizes
+  @override
+  final ZetaPrimitives primitives;
+  @override
+  Color get enabled => primitives.green.shade80;
+  @override
+  Color get focus => primitives.green.shade80;
+  @override
+  Color get hover => primitives.green.shade70;
+  @override
+  Color get selected => primitives.green.shade90;
+}
+
+/// Implementation of ZetaSemanticPrimaryColors
+final class ZetaSemanticPrimaryColorsAAA implements ZetaSemanticPrimaryColors {
+  /// Constructor for ZetaSemanticPrimaryColorsAAA
+  const ZetaSemanticPrimaryColorsAAA({required this.primitives});
+
+  /// The primitives for this sizes
+  @override
+  final ZetaPrimitives primitives;
+  @override
+  Color get enabled => primitives.blue.shade80;
+  @override
+  Color get focus => primitives.blue.shade80;
+  @override
+  Color get hover => primitives.blue.shade70;
+  @override
+  Color get selected => primitives.blue.shade90;
+}
+
+/// Implementation of ZetaSemanticSecondaryColors
+final class ZetaSemanticSecondaryColorsAAA implements ZetaSemanticSecondaryColors {
+  /// Constructor for ZetaSemanticSecondaryColorsAAA
+  const ZetaSemanticSecondaryColorsAAA({required this.primitives});
+
+  /// The primitives for this sizes
+  @override
+  final ZetaPrimitives primitives;
+  @override
+  Color get enabled => primitives.yellow.shade80;
+  @override
+  Color get focus => primitives.yellow.shade80;
+  @override
+  Color get hover => primitives.yellow.shade70;
+  @override
+  Color get selected => primitives.yellow.shade90;
 }
 
 /// Implementation of ZetaSemanticSurfaceColors
@@ -899,50 +1079,50 @@ final class ZetaSemanticSurfaceColorsAAA implements ZetaSemanticSurfaceColors {
   /// The primitives for this sizes
   @override
   final ZetaPrimitives primitives;
+
+  /// Avatar
+  @override
+  ZetaSemanticAvatarColors get avatar => ZetaSemanticAvatarColorsAAA(primitives: primitives);
+  @override
+  Color get cool => primitives.cool.shade10;
   @override
   Color get defaultColor => primitives.pure.shade0;
   @override
   Color get defaultInverse => primitives.pure.shade1000;
   @override
-  Color get hover => primitives.cool.shade20;
-  @override
-  Color get selected => primitives.blue.shade10;
-  @override
-  Color get selectedHover => primitives.blue.shade20;
-  @override
   Color get disabled => primitives.cool.shade30;
   @override
-  Color get cool => primitives.cool.shade10;
+  Color get hover => primitives.cool.shade20;
   @override
-  Color get warm => primitives.warm.shade10;
+  Color get info => primitives.purple.shade80;
+  @override
+  Color get infoSubtle => primitives.purple.shade10;
+  @override
+  Color get negative => primitives.red.shade80;
+  @override
+  Color get negativeSubtle => primitives.red.shade10;
+  @override
+  Color get positive => primitives.green.shade80;
+  @override
+  Color get positiveSubtle => primitives.green.shade10;
   @override
   Color get primary => primitives.blue.shade80;
   @override
   Color get primarySubtle => primitives.blue.shade10;
   @override
   Color get secondary => primitives.yellow.shade80;
-
-  /// Avatar
-  @override
-  ZetaSemanticAvatarColors get avatar => ZetaSemanticAvatarColorsAAA(primitives: primitives);
   @override
   Color get secondarySubtle => primitives.yellow.shade10;
   @override
-  Color get positive => primitives.green.shade80;
+  Color get selected => primitives.blue.shade10;
   @override
-  Color get positiveSubtle => primitives.green.shade10;
+  Color get selectedHover => primitives.blue.shade20;
+  @override
+  Color get warm => primitives.warm.shade10;
   @override
   Color get warning => primitives.orange.shade80;
   @override
   Color get warningSubtle => primitives.orange.shade10;
-  @override
-  Color get negative => primitives.red.shade80;
-  @override
-  Color get negativeSubtle => primitives.red.shade10;
-  @override
-  Color get info => primitives.purple.shade80;
-  @override
-  Color get infoSubtle => primitives.purple.shade10;
 }
 
 /// Implementation of ZetaSemanticAvatarColors
@@ -967,186 +1147,6 @@ final class ZetaSemanticAvatarColorsAAA implements ZetaSemanticAvatarColors {
   Color get teal => primitives.teal.shade80;
   @override
   Color get yellow => primitives.yellow.shade50;
-}
-
-/// Implementation of ZetaSemanticStateColors
-final class ZetaSemanticStateColorsAAA implements ZetaSemanticStateColors {
-  /// Constructor for ZetaSemanticStateColorsAAA
-  const ZetaSemanticStateColorsAAA({required this.primitives});
-
-  /// The primitives for this sizes
-  @override
-  final ZetaPrimitives primitives;
-
-  /// Disabled
-  @override
-  ZetaSemanticDisabledColors get disabled => ZetaSemanticDisabledColorsAAA(primitives: primitives);
-
-  /// Default
-  @override
-  ZetaSemanticDefaultColors get defaultColor => ZetaSemanticDefaultColorsAAA(primitives: primitives);
-
-  /// Primary
-  @override
-  ZetaSemanticPrimaryColors get primary => ZetaSemanticPrimaryColorsAAA(primitives: primitives);
-
-  /// Secondary
-  @override
-  ZetaSemanticSecondaryColors get secondary => ZetaSemanticSecondaryColorsAAA(primitives: primitives);
-
-  /// Positive
-  @override
-  ZetaSemanticPositiveColors get positive => ZetaSemanticPositiveColorsAAA(primitives: primitives);
-
-  /// Negative
-  @override
-  ZetaSemanticNegativeColors get negative => ZetaSemanticNegativeColorsAAA(primitives: primitives);
-
-  /// Info
-  @override
-  ZetaSemanticInfoColors get info => ZetaSemanticInfoColorsAAA(primitives: primitives);
-
-  ///  Inverse
-  @override
-  ZetaSemanticInverseColors get inverse => ZetaSemanticInverseColorsAAA(primitives: primitives);
-}
-
-/// Implementation of ZetaSemanticDisabledColors
-final class ZetaSemanticDisabledColorsAAA implements ZetaSemanticDisabledColors {
-  /// Constructor for ZetaSemanticDisabledColorsAAA
-  const ZetaSemanticDisabledColorsAAA({required this.primitives});
-
-  /// The primitives for this sizes
-  @override
-  final ZetaPrimitives primitives;
-  @override
-  Color get disabled => primitives.cool.shade30;
-}
-
-/// Implementation of ZetaSemanticDefaultColors
-final class ZetaSemanticDefaultColorsAAA implements ZetaSemanticDefaultColors {
-  /// Constructor for ZetaSemanticDefaultColorsAAA
-  const ZetaSemanticDefaultColorsAAA({required this.primitives});
-
-  /// The primitives for this sizes
-  @override
-  final ZetaPrimitives primitives;
-  @override
-  Color get enabled => primitives.pure.shade0;
-  @override
-  Color get hover => primitives.cool.shade20;
-  @override
-  Color get selected => primitives.blue.shade10;
-  @override
-  Color get focus => primitives.pure.shade0;
-}
-
-/// Implementation of ZetaSemanticPrimaryColors
-final class ZetaSemanticPrimaryColorsAAA implements ZetaSemanticPrimaryColors {
-  /// Constructor for ZetaSemanticPrimaryColorsAAA
-  const ZetaSemanticPrimaryColorsAAA({required this.primitives});
-
-  /// The primitives for this sizes
-  @override
-  final ZetaPrimitives primitives;
-  @override
-  Color get enabled => primitives.blue.shade80;
-  @override
-  Color get hover => primitives.blue.shade70;
-  @override
-  Color get selected => primitives.blue.shade90;
-  @override
-  Color get focus => primitives.blue.shade80;
-}
-
-/// Implementation of ZetaSemanticSecondaryColors
-final class ZetaSemanticSecondaryColorsAAA implements ZetaSemanticSecondaryColors {
-  /// Constructor for ZetaSemanticSecondaryColorsAAA
-  const ZetaSemanticSecondaryColorsAAA({required this.primitives});
-
-  /// The primitives for this sizes
-  @override
-  final ZetaPrimitives primitives;
-  @override
-  Color get enabled => primitives.yellow.shade80;
-  @override
-  Color get hover => primitives.yellow.shade70;
-  @override
-  Color get selected => primitives.yellow.shade90;
-  @override
-  Color get focus => primitives.yellow.shade80;
-}
-
-/// Implementation of ZetaSemanticPositiveColors
-final class ZetaSemanticPositiveColorsAAA implements ZetaSemanticPositiveColors {
-  /// Constructor for ZetaSemanticPositiveColorsAAA
-  const ZetaSemanticPositiveColorsAAA({required this.primitives});
-
-  /// The primitives for this sizes
-  @override
-  final ZetaPrimitives primitives;
-  @override
-  Color get enabled => primitives.green.shade80;
-  @override
-  Color get hover => primitives.green.shade70;
-  @override
-  Color get selected => primitives.green.shade90;
-  @override
-  Color get focus => primitives.green.shade80;
-}
-
-/// Implementation of ZetaSemanticNegativeColors
-final class ZetaSemanticNegativeColorsAAA implements ZetaSemanticNegativeColors {
-  /// Constructor for ZetaSemanticNegativeColorsAAA
-  const ZetaSemanticNegativeColorsAAA({required this.primitives});
-
-  /// The primitives for this sizes
-  @override
-  final ZetaPrimitives primitives;
-  @override
-  Color get enabled => primitives.red.shade80;
-  @override
-  Color get hover => primitives.red.shade70;
-  @override
-  Color get selected => primitives.red.shade90;
-  @override
-  Color get focus => primitives.red.shade80;
-}
-
-/// Implementation of ZetaSemanticInfoColors
-final class ZetaSemanticInfoColorsAAA implements ZetaSemanticInfoColors {
-  /// Constructor for ZetaSemanticInfoColorsAAA
-  const ZetaSemanticInfoColorsAAA({required this.primitives});
-
-  /// The primitives for this sizes
-  @override
-  final ZetaPrimitives primitives;
-  @override
-  Color get enabled => primitives.purple.shade80;
-  @override
-  Color get hover => primitives.purple.shade70;
-  @override
-  Color get selected => primitives.purple.shade90;
-  @override
-  Color get focus => primitives.purple.shade80;
-}
-
-/// Implementation of ZetaSemanticInverseColors
-final class ZetaSemanticInverseColorsAAA implements ZetaSemanticInverseColors {
-  /// Constructor for ZetaSemanticInverseColorsAAA
-  const ZetaSemanticInverseColorsAAA({required this.primitives});
-
-  /// The primitives for this sizes
-  @override
-  final ZetaPrimitives primitives;
-  @override
-  Color get enabled => primitives.pure.shade1000;
-  @override
-  Color get hover => primitives.cool.shade90;
-  @override
-  Color get selected => primitives.pure.shade1000;
-  @override
-  Color get focus => primitives.pure.shade1000;
 }
 
 /// The semantic sizes for AA

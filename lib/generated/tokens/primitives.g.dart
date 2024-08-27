@@ -8,60 +8,60 @@ import 'package:zeta_flutter/zeta_flutter.dart';
 
 /// Interface used for zeta color primitives
 abstract interface class ZetaPrimitives {
-  /// Pure
+  /// Blue
   ///
   /// {@macro zeta-colors-swatch}
-  ZetaPureColorSwatch get pure;
+  ZetaColorSwatch get blue;
 
   /// Cool
   ///
   /// {@macro zeta-colors-swatch}
   ZetaColorSwatch get cool;
 
-  /// Warm
-  ///
-  /// {@macro zeta-colors-swatch}
-  ZetaColorSwatch get warm;
-
-  /// Blue
-  ///
-  /// {@macro zeta-colors-swatch}
-  ZetaColorSwatch get blue;
-
   /// Green
   ///
   /// {@macro zeta-colors-swatch}
   ZetaColorSwatch get green;
-
-  /// Red
-  ///
-  /// {@macro zeta-colors-swatch}
-  ZetaColorSwatch get red;
 
   /// Orange
   ///
   /// {@macro zeta-colors-swatch}
   ZetaColorSwatch get orange;
 
+  /// Pink
+  ///
+  /// {@macro zeta-colors-swatch}
+  ZetaColorSwatch get pink;
+
+  /// Pure
+  ///
+  /// {@macro zeta-colors-swatch}
+  ZetaPureColorSwatch get pure;
+
   /// Purple
   ///
   /// {@macro zeta-colors-swatch}
   ZetaColorSwatch get purple;
 
-  /// Yellow
+  /// Red
   ///
   /// {@macro zeta-colors-swatch}
-  ZetaColorSwatch get yellow;
+  ZetaColorSwatch get red;
 
   /// Teal
   ///
   /// {@macro zeta-colors-swatch}
   ZetaColorSwatch get teal;
 
-  /// Pink
+  /// Warm
   ///
   /// {@macro zeta-colors-swatch}
-  ZetaColorSwatch get pink;
+  ZetaColorSwatch get warm;
+
+  /// Yellow
+  ///
+  /// {@macro zeta-colors-swatch}
+  ZetaColorSwatch get yellow;
 
   /// 0dp space
   double get x0;
@@ -135,17 +135,24 @@ abstract interface class ZetaPrimitives {
 
 /// Light primitives
 final class ZetaPrimitivesLight implements ZetaPrimitives {
-  /// Pure
+  /// Blue
   ///
   /// {@macro zeta-colors-swatch}
   @override
-  ZetaPureColorSwatch pure = const ZetaPureColorSwatch(
+  ZetaColorSwatch blue = const ZetaColorSwatch(
     swatch: {
-      0: Color(0xFFffffff),
-      500: Color(0xFF151519),
-      1000: Color(0xFF151519),
+      10: Color(0xFFf1f8ff),
+      20: Color(0xFFe2f1ff),
+      30: Color(0xFFb7dbff),
+      40: Color(0xFF7ebeff),
+      50: Color(0xFF599fe5),
+      60: Color(0xFF0073e6),
+      70: Color(0xFF0061c2),
+      80: Color(0xFF004d99),
+      90: Color(0xFF002c58),
+      100: Color(0xFF101b25),
     },
-    primary: 0xFF151519,
+    primary: 0xFF0073e6,
   );
 
   /// Cool
@@ -168,46 +175,6 @@ final class ZetaPrimitivesLight implements ZetaPrimitives {
     primary: 0xFF7a8190,
   );
 
-  /// Warm
-  ///
-  /// {@macro zeta-colors-swatch}
-  @override
-  ZetaColorSwatch warm = const ZetaColorSwatch(
-    swatch: {
-      10: Color(0xFFfafafa),
-      20: Color(0xFFf6f6f6),
-      30: Color(0xFFececec),
-      40: Color(0xFFdedede),
-      50: Color(0xFFb9b9b9),
-      60: Color(0xFF858585),
-      70: Color(0xFF585858),
-      80: Color(0xFF313131),
-      90: Color(0xFF1d1e23),
-      100: Color(0xFF151519),
-    },
-    primary: 0xFF858585,
-  );
-
-  /// Blue
-  ///
-  /// {@macro zeta-colors-swatch}
-  @override
-  ZetaColorSwatch blue = const ZetaColorSwatch(
-    swatch: {
-      10: Color(0xFFf1f8ff),
-      20: Color(0xFFe2f1ff),
-      30: Color(0xFFb7dbff),
-      40: Color(0xFF7ebeff),
-      50: Color(0xFF599fe5),
-      60: Color(0xFF0073e6),
-      70: Color(0xFF0061c2),
-      80: Color(0xFF004d99),
-      90: Color(0xFF002c58),
-      100: Color(0xFF101b25),
-    },
-    primary: 0xFF0073e6,
-  );
-
   /// Green
   ///
   /// {@macro zeta-colors-swatch}
@@ -226,26 +193,6 @@ final class ZetaPrimitivesLight implements ZetaPrimitives {
       100: Color(0xFF081711),
     },
     primary: 0xFF00864f,
-  );
-
-  /// Red
-  ///
-  /// {@macro zeta-colors-swatch}
-  @override
-  ZetaColorSwatch red = const ZetaColorSwatch(
-    swatch: {
-      10: Color(0xFFfff0f1),
-      20: Color(0xFFffe1e4),
-      30: Color(0xFFffb3bb),
-      40: Color(0xFFf98c97),
-      50: Color(0xFFf36170),
-      60: Color(0xFFd70015),
-      70: Color(0xFFb50012),
-      80: Color(0xFF8f000e),
-      90: Color(0xFF520008),
-      100: Color(0xFF220f11),
-    },
-    primary: 0xFFd70015,
   );
 
   /// Orange
@@ -268,6 +215,39 @@ final class ZetaPrimitivesLight implements ZetaPrimitives {
     primary: 0xFFae6500,
   );
 
+  /// Pink
+  ///
+  /// {@macro zeta-colors-swatch}
+  @override
+  ZetaColorSwatch pink = const ZetaColorSwatch(
+    swatch: {
+      10: Color(0xFFfff7fc),
+      20: Color(0xFFffe3f5),
+      30: Color(0xFFffbee7),
+      40: Color(0xFFff94d8),
+      50: Color(0xFFee78c3),
+      60: Color(0xFFd30589),
+      70: Color(0xFFab006d),
+      80: Color(0xFF840054),
+      90: Color(0xFF640040),
+      100: Color(0xFF2e001e),
+    },
+    primary: 0xFFd30589,
+  );
+
+  /// Pure
+  ///
+  /// {@macro zeta-colors-swatch}
+  @override
+  ZetaPureColorSwatch pure = const ZetaPureColorSwatch(
+    swatch: {
+      0: Color(0xFFffffff),
+      500: Color(0xFF151519),
+      1000: Color(0xFF151519),
+    },
+    primary: 0xFF151519,
+  );
+
   /// Purple
   ///
   /// {@macro zeta-colors-swatch}
@@ -288,24 +268,24 @@ final class ZetaPrimitivesLight implements ZetaPrimitives {
     primary: 0xFF7e0cff,
   );
 
-  /// Yellow
+  /// Red
   ///
   /// {@macro zeta-colors-swatch}
   @override
-  ZetaColorSwatch yellow = const ZetaColorSwatch(
+  ZetaColorSwatch red = const ZetaColorSwatch(
     swatch: {
-      10: Color(0xFFfff7d4),
-      20: Color(0xFFffea89),
-      30: Color(0xFFf3d961),
-      40: Color(0xFFdbb91c),
-      50: Color(0xFFc2a728),
-      60: Color(0xFF8d7400),
-      70: Color(0xFF766200),
-      80: Color(0xFF564908),
-      90: Color(0xFF352b00),
-      100: Color(0xFF181400),
+      10: Color(0xFFfff0f1),
+      20: Color(0xFFffe1e4),
+      30: Color(0xFFffb3bb),
+      40: Color(0xFFf98c97),
+      50: Color(0xFFf36170),
+      60: Color(0xFFd70015),
+      70: Color(0xFFb50012),
+      80: Color(0xFF8f000e),
+      90: Color(0xFF520008),
+      100: Color(0xFF220f11),
     },
-    primary: 0xFF8d7400,
+    primary: 0xFFd70015,
   );
 
   /// Teal
@@ -328,24 +308,44 @@ final class ZetaPrimitivesLight implements ZetaPrimitives {
     primary: 0xFF1a8080,
   );
 
-  /// Pink
+  /// Warm
   ///
   /// {@macro zeta-colors-swatch}
   @override
-  ZetaColorSwatch pink = const ZetaColorSwatch(
+  ZetaColorSwatch warm = const ZetaColorSwatch(
     swatch: {
-      10: Color(0xFFfff7fc),
-      20: Color(0xFFffe3f5),
-      30: Color(0xFFffbee7),
-      40: Color(0xFFff94d8),
-      50: Color(0xFFee78c3),
-      60: Color(0xFFd30589),
-      70: Color(0xFFab006d),
-      80: Color(0xFF840054),
-      90: Color(0xFF640040),
-      100: Color(0xFF2e001e),
+      10: Color(0xFFfafafa),
+      20: Color(0xFFf6f6f6),
+      30: Color(0xFFececec),
+      40: Color(0xFFdedede),
+      50: Color(0xFFb9b9b9),
+      60: Color(0xFF858585),
+      70: Color(0xFF585858),
+      80: Color(0xFF313131),
+      90: Color(0xFF1d1e23),
+      100: Color(0xFF151519),
     },
-    primary: 0xFFd30589,
+    primary: 0xFF858585,
+  );
+
+  /// Yellow
+  ///
+  /// {@macro zeta-colors-swatch}
+  @override
+  ZetaColorSwatch yellow = const ZetaColorSwatch(
+    swatch: {
+      10: Color(0xFFfff7d4),
+      20: Color(0xFFffea89),
+      30: Color(0xFFf3d961),
+      40: Color(0xFFdbb91c),
+      50: Color(0xFFc2a728),
+      60: Color(0xFF8d7400),
+      70: Color(0xFF766200),
+      80: Color(0xFF564908),
+      90: Color(0xFF352b00),
+      100: Color(0xFF181400),
+    },
+    primary: 0xFF8d7400,
   );
 
   /// 0dp space
@@ -429,17 +429,24 @@ final class ZetaPrimitivesLight implements ZetaPrimitives {
 
 /// Dark primitives
 final class ZetaPrimitivesDark implements ZetaPrimitives {
-  /// Pure
+  /// Blue
   ///
   /// {@macro zeta-colors-swatch}
   @override
-  ZetaPureColorSwatch pure = const ZetaPureColorSwatch(
+  ZetaColorSwatch blue = const ZetaColorSwatch(
     swatch: {
-      0: Color(0xFF151519),
-      500: Color(0xFF1d1e23),
-      1000: Color(0xFFffffff),
+      10: Color(0xFF101b25),
+      20: Color(0xFF002c58),
+      30: Color(0xFF004d99),
+      40: Color(0xFF0061c2),
+      50: Color(0xFF0073e6),
+      60: Color(0xFF599fe5),
+      70: Color(0xFF7ebeff),
+      80: Color(0xFFb7dbff),
+      90: Color(0xFFe2f1ff),
+      100: Color(0xFFf1f8ff),
     },
-    primary: 0xFF1d1e23,
+    primary: 0xFF599fe5,
   );
 
   /// Cool
@@ -462,46 +469,6 @@ final class ZetaPrimitivesDark implements ZetaPrimitives {
     primary: 0xFF8d95a3,
   );
 
-  /// Warm
-  ///
-  /// {@macro zeta-colors-swatch}
-  @override
-  ZetaColorSwatch warm = const ZetaColorSwatch(
-    swatch: {
-      10: Color(0xFF151519),
-      20: Color(0xFF1d1e23),
-      30: Color(0xFF313131),
-      40: Color(0xFF585858),
-      50: Color(0xFF858585),
-      60: Color(0xFFb9b9b9),
-      70: Color(0xFFdedede),
-      80: Color(0xFFececec),
-      90: Color(0xFFf6f6f6),
-      100: Color(0xFFfafafa),
-    },
-    primary: 0xFFb9b9b9,
-  );
-
-  /// Blue
-  ///
-  /// {@macro zeta-colors-swatch}
-  @override
-  ZetaColorSwatch blue = const ZetaColorSwatch(
-    swatch: {
-      10: Color(0xFF101b25),
-      20: Color(0xFF002c58),
-      30: Color(0xFF004d99),
-      40: Color(0xFF0061c2),
-      50: Color(0xFF0073e6),
-      60: Color(0xFF599fe5),
-      70: Color(0xFF7ebeff),
-      80: Color(0xFFb7dbff),
-      90: Color(0xFFe2f1ff),
-      100: Color(0xFFf1f8ff),
-    },
-    primary: 0xFF599fe5,
-  );
-
   /// Green
   ///
   /// {@macro zeta-colors-swatch}
@@ -520,26 +487,6 @@ final class ZetaPrimitivesDark implements ZetaPrimitives {
       100: Color(0xFFecfff7),
     },
     primary: 0xFF67b796,
-  );
-
-  /// Red
-  ///
-  /// {@macro zeta-colors-swatch}
-  @override
-  ZetaColorSwatch red = const ZetaColorSwatch(
-    swatch: {
-      10: Color(0xFF220f11),
-      20: Color(0xFF520008),
-      30: Color(0xFF8f000e),
-      40: Color(0xFFb50012),
-      50: Color(0xFFd70015),
-      60: Color(0xFFf36170),
-      70: Color(0xFFf98c97),
-      80: Color(0xFFffb3bb),
-      90: Color(0xFFffe1e4),
-      100: Color(0xFFfff0f1),
-    },
-    primary: 0xFFf36170,
   );
 
   /// Orange
@@ -562,6 +509,39 @@ final class ZetaPrimitivesDark implements ZetaPrimitives {
     primary: 0xFFd78d26,
   );
 
+  /// Pink
+  ///
+  /// {@macro zeta-colors-swatch}
+  @override
+  ZetaColorSwatch pink = const ZetaColorSwatch(
+    swatch: {
+      10: Color(0xFF2e001e),
+      20: Color(0xFF640040),
+      30: Color(0xFF840054),
+      40: Color(0xFFab006d),
+      50: Color(0xFFd30589),
+      60: Color(0xFFee78c3),
+      70: Color(0xFFff94d8),
+      80: Color(0xFFffbee7),
+      90: Color(0xFFffe3f5),
+      100: Color(0xFFfff7fc),
+    },
+    primary: 0xFFee78c3,
+  );
+
+  /// Pure
+  ///
+  /// {@macro zeta-colors-swatch}
+  @override
+  ZetaPureColorSwatch pure = const ZetaPureColorSwatch(
+    swatch: {
+      0: Color(0xFF151519),
+      500: Color(0xFF1d1e23),
+      1000: Color(0xFFffffff),
+    },
+    primary: 0xFF1d1e23,
+  );
+
   /// Purple
   ///
   /// {@macro zeta-colors-swatch}
@@ -582,24 +562,24 @@ final class ZetaPrimitivesDark implements ZetaPrimitives {
     primary: 0xFF9b71df,
   );
 
-  /// Yellow
+  /// Red
   ///
   /// {@macro zeta-colors-swatch}
   @override
-  ZetaColorSwatch yellow = const ZetaColorSwatch(
+  ZetaColorSwatch red = const ZetaColorSwatch(
     swatch: {
-      10: Color(0xFF181400),
-      20: Color(0xFF352b00),
-      30: Color(0xFF564908),
-      40: Color(0xFF766200),
-      50: Color(0xFF8d7400),
-      60: Color(0xFFc2a728),
-      70: Color(0xFFdbb91c),
-      80: Color(0xFFf3d961),
-      90: Color(0xFFffea89),
-      100: Color(0xFFfff7d4),
+      10: Color(0xFF220f11),
+      20: Color(0xFF520008),
+      30: Color(0xFF8f000e),
+      40: Color(0xFFb50012),
+      50: Color(0xFFd70015),
+      60: Color(0xFFf36170),
+      70: Color(0xFFf98c97),
+      80: Color(0xFFffb3bb),
+      90: Color(0xFFffe1e4),
+      100: Color(0xFFfff0f1),
     },
-    primary: 0xFFc2a728,
+    primary: 0xFFf36170,
   );
 
   /// Teal
@@ -622,24 +602,44 @@ final class ZetaPrimitivesDark implements ZetaPrimitives {
     primary: 0xFF65c4c4,
   );
 
-  /// Pink
+  /// Warm
   ///
   /// {@macro zeta-colors-swatch}
   @override
-  ZetaColorSwatch pink = const ZetaColorSwatch(
+  ZetaColorSwatch warm = const ZetaColorSwatch(
     swatch: {
-      10: Color(0xFF2e001e),
-      20: Color(0xFF640040),
-      30: Color(0xFF840054),
-      40: Color(0xFFab006d),
-      50: Color(0xFFd30589),
-      60: Color(0xFFee78c3),
-      70: Color(0xFFff94d8),
-      80: Color(0xFFffbee7),
-      90: Color(0xFFffe3f5),
-      100: Color(0xFFfff7fc),
+      10: Color(0xFF151519),
+      20: Color(0xFF1d1e23),
+      30: Color(0xFF313131),
+      40: Color(0xFF585858),
+      50: Color(0xFF858585),
+      60: Color(0xFFb9b9b9),
+      70: Color(0xFFdedede),
+      80: Color(0xFFececec),
+      90: Color(0xFFf6f6f6),
+      100: Color(0xFFfafafa),
     },
-    primary: 0xFFee78c3,
+    primary: 0xFFb9b9b9,
+  );
+
+  /// Yellow
+  ///
+  /// {@macro zeta-colors-swatch}
+  @override
+  ZetaColorSwatch yellow = const ZetaColorSwatch(
+    swatch: {
+      10: Color(0xFF181400),
+      20: Color(0xFF352b00),
+      30: Color(0xFF564908),
+      40: Color(0xFF766200),
+      50: Color(0xFF8d7400),
+      60: Color(0xFFc2a728),
+      70: Color(0xFFdbb91c),
+      80: Color(0xFFf3d961),
+      90: Color(0xFFffea89),
+      100: Color(0xFFfff7d4),
+    },
+    primary: 0xFFc2a728,
   );
 
   /// 0dp space
