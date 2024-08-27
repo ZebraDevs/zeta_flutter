@@ -84,9 +84,13 @@ class _ZetaSliderState extends State<ZetaSlider> {
             /// Thumb
             thumbColor: colors.surfaceDefaultInverse,
             disabledThumbColor: colors.surfaceDisabled,
-            overlayShape: _SliderThumb(size: ZetaSpacingBase.x2_5, rounded: context.rounded, color: _activeColor),
+            overlayShape: _SliderThumb(
+              size: Zeta.of(context).spacing.xl / 2,
+              rounded: context.rounded,
+              color: _activeColor,
+            ),
             thumbShape: _SliderThumb(
-              size: ZetaSpacing.small,
+              size: Zeta.of(context).spacing.large / 2,
               rounded: context.rounded,
               color: _activeColor,
             ),

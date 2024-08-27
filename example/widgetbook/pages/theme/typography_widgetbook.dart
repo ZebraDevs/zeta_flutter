@@ -24,7 +24,7 @@ const Map<String, TextStyle> allTypes = {
 };
 
 Widget typographyUseCase(BuildContext context) => Padding(
-      padding: const EdgeInsets.all(ZetaSpacing.xl_2),
+      padding: EdgeInsets.all(Zeta.of(context).spacing.xl_2),
       child: Text(
         context.knobs.string(label: 'Text', initialValue: 'The quick brown fox jumps over the lazy dog.'),
         style: context.knobs

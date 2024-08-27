@@ -134,8 +134,18 @@ class _FakeZetaRadiiSemantics_8 extends _i1.SmartFake implements _i6.ZetaRadiiSe
         );
 }
 
-class _FakeInheritedElement_9 extends _i1.SmartFake implements _i2.InheritedElement {
-  _FakeInheritedElement_9(
+class _FakeZetaSpacingSemantics_9 extends _i1.SmartFake implements _i6.ZetaSpacingSemantics {
+  _FakeZetaSpacingSemantics_9(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
+class _FakeInheritedElement_10 extends _i1.SmartFake implements _i2.InheritedElement {
+  _FakeInheritedElement_10(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -1545,6 +1555,19 @@ class MockZeta extends _i1.Mock implements _i6.Zeta {
       ) as _i6.ZetaRadiiSemantics);
 
   @override
+  _i6.ZetaSpacingSemantics get spacing => (super.noSuchMethod(
+        Invocation.getter(#spacing),
+        returnValue: _FakeZetaSpacingSemantics_9(
+          this,
+          Invocation.getter(#spacing),
+        ),
+        returnValueForMissingStub: _FakeZetaSpacingSemantics_9(
+          this,
+          Invocation.getter(#spacing),
+        ),
+      ) as _i6.ZetaSpacingSemantics);
+
+  @override
   _i2.Widget get child => (super.noSuchMethod(
         Invocation.getter(#child),
         returnValue: _FakeWidget_0(
@@ -1582,14 +1605,14 @@ class MockZeta extends _i1.Mock implements _i6.Zeta {
           #createElement,
           [],
         ),
-        returnValue: _FakeInheritedElement_9(
+        returnValue: _FakeInheritedElement_10(
           this,
           Invocation.method(
             #createElement,
             [],
           ),
         ),
-        returnValueForMissingStub: _FakeInheritedElement_9(
+        returnValueForMissingStub: _FakeInheritedElement_10(
           this,
           Invocation.method(
             #createElement,

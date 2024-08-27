@@ -60,6 +60,7 @@ class ZetaPhoneInput extends ZetaFormField<PhoneNumber> {
             final _ZetaPhoneInputState state = field as _ZetaPhoneInputState;
 
             final colors = Zeta.of(field.context).colors;
+            final spacing = Zeta.of(field.context).spacing;
             final newRounded = rounded ?? field.context.rounded;
 
             return InternalTextInput(
@@ -77,11 +78,11 @@ class ZetaPhoneInput extends ZetaFormField<PhoneNumber> {
               keyboardType: TextInputType.phone,
               prefixText: state._selectedCountry.dialCode,
               borderRadius: BorderRadius.only(
-                topRight: newRounded ? const Radius.circular(ZetaSpacing.minimum) : Radius.zero,
-                bottomRight: newRounded ? const Radius.circular(ZetaSpacing.minimum) : Radius.zero,
+                topRight: newRounded ? Radius.circular(spacing.minimum) : Radius.zero,
+                bottomRight: newRounded ? Radius.circular(spacing.minimum) : Radius.zero,
               ),
               externalPrefix: ZetaDropdown(
-                offset: const Offset(0, ZetaSpacing.medium),
+                offset: Offset(0, spacing.medium),
                 onChange: !disabled ? state.onDropdownChanged : null,
                 value: state._selectedCountry.dialCode,
                 onDismissed: state.onDropdownDismissed,
@@ -95,12 +96,14 @@ class ZetaPhoneInput extends ZetaFormField<PhoneNumber> {
                     onTap: !disabled ? dropdowncontroller.toggle : null,
                     child: Container(
                       constraints: BoxConstraints(
-                        maxHeight: size == ZetaWidgetSize.large ? ZetaSpacing.xl_8 : ZetaSpacing.xl_6,
+                        maxHeight: size == ZetaWidgetSize.large
+                            ? Zeta.of(context).spacing.xl_8
+                            : Zeta.of(context).spacing.xl_6,
                       ),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.only(
-                          topLeft: newRounded ? const Radius.circular(ZetaSpacing.minimum) : Radius.zero,
-                          bottomLeft: newRounded ? const Radius.circular(ZetaSpacing.minimum) : Radius.zero,
+                          topLeft: newRounded ? Radius.circular(spacing.minimum) : Radius.zero,
+                          bottomLeft: newRounded ? Radius.circular(spacing.minimum) : Radius.zero,
                         ),
                         border: Border(
                           left: borderSide,
@@ -117,16 +120,16 @@ class ZetaPhoneInput extends ZetaFormField<PhoneNumber> {
                               mainAxisSize: MainAxisSize.min,
                               children: [
                                 Padding(
-                                  padding: const EdgeInsets.only(
-                                    left: ZetaSpacing.medium,
-                                    right: ZetaSpacing.small,
+                                  padding: EdgeInsets.only(
+                                    left: spacing.medium,
+                                    right: spacing.small,
                                   ),
                                   child: selectedItem?.icon,
                                 ),
                                 ZetaIcon(
                                   !dropdowncontroller.isOpen ? ZetaIcons.expand_more : ZetaIcons.expand_less,
                                   color: !disabled ? colors.iconDefault : colors.iconDisabled,
-                                  size: ZetaSpacing.xl_1,
+                                  size: Zeta.of(context).spacing.xl,
                                 ),
                               ],
                             ),

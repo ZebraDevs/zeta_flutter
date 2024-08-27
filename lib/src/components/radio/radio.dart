@@ -51,7 +51,7 @@ class _ZetaRadioState<T> extends State<ZetaRadio<T>> with TickerProviderStateMix
   @override
   Widget build(BuildContext context) {
     final zetaColors = Zeta.of(context).colors;
-    _painter ??= _RadioPainter(colors: zetaColors);
+    _painter ??= _RadioPainter(context: context);
 
     return ZetaRoundedScope(
       rounded: context.rounded,
@@ -73,7 +73,7 @@ class _ZetaRadioState<T> extends State<ZetaRadio<T>> with TickerProviderStateMix
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     buildToggleable(
-                      size: const Size(ZetaSpacing.xl_6, ZetaSpacing.xl_6),
+                      size: Size(Zeta.of(context).spacing.xl_6, Zeta.of(context).spacing.xl_6),
                       painter: _painter!
                         ..position = position
                         ..reaction = reaction
@@ -83,7 +83,7 @@ class _ZetaRadioState<T> extends State<ZetaRadio<T>> with TickerProviderStateMix
                         ..reactionColor = Colors.transparent
                         ..hoverColor = Colors.transparent
                         ..focusColor = zetaColors.blue.shade50
-                        ..splashRadius = ZetaSpacing.medium
+                        ..splashRadius = Zeta.of(context).spacing.medium
                         ..downPosition = downPosition
                         ..isFocused = states.contains(WidgetState.focused)
                         ..isHovered = states.contains(WidgetState.hovered)
@@ -108,10 +108,10 @@ class _ZetaRadioState<T> extends State<ZetaRadio<T>> with TickerProviderStateMix
                         style: ZetaTextStyles.bodyMedium.copyWith(
                           color:
                               states.contains(WidgetState.disabled) ? zetaColors.textDisabled : zetaColors.textDefault,
-                          height: 1.33,
+                          height: 4 / 3,
                         ),
                         child: widget.label!,
-                      ).paddingEnd(ZetaSpacing.minimum),
+                      ).paddingEnd(Zeta.of(context).spacing.minimum),
                   ],
                 ),
               ),
@@ -160,20 +160,21 @@ const double _kOuterRadius = 10;
 const double _kInnerRadius = 5;
 
 class _RadioPainter extends ToggleablePainter {
-  _RadioPainter({required this.colors});
+  _RadioPainter({required this.context});
 
-  final ZetaColors colors;
+  final BuildContext context;
 
   @override
   void paint(Canvas canvas, Size size) {
     paintRadialReaction(canvas: canvas, origin: size.center(Offset.zero));
     final Offset center = (Offset.zero & size).center;
+    final colors = Zeta.of(context).colors;
 
     // Background mask for focus
     final Paint paint = Paint()
       ..color = colors.surfacePrimary
       ..style = PaintingStyle.stroke
-      ..strokeWidth = ZetaSpacingBase.x2_5;
+      ..strokeWidth = Zeta.of(context).spacing.small + ZetaBorders.borderWidth;
     if (isFocused) canvas.drawCircle(center, _kInnerRadius, paint);
 
     // Outer circle
@@ -184,7 +185,7 @@ class _RadioPainter extends ToggleablePainter {
               ? inactiveColor
               : activeColor
       ..style = PaintingStyle.stroke
-      ..strokeWidth = ZetaSpacingBase.x0_5;
+      ..strokeWidth = ZetaBorders.borderWidth;
     canvas.drawCircle(center, _kOuterRadius, paint);
 
     // Inner circle

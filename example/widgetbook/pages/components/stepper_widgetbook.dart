@@ -32,7 +32,7 @@ Widget stepperUseCase(BuildContext context) {
         return Container(
           height: type == ZetaStepperType.horizontal ? 300 : null,
           padding: EdgeInsets.all(
-            type == ZetaStepperType.horizontal ? 0.0 : ZetaSpacing.xl_4,
+            type == ZetaStepperType.horizontal ? 0.0 : Zeta.of(context).spacing.xl_4,
           ),
           child: ZetaStepper(
             currentStep: currentStep,

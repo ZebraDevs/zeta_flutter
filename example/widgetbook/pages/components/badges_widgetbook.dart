@@ -8,7 +8,7 @@ import '../../utils/utils.dart';
 Widget statusLabelUseCase(BuildContext context) {
   return WidgetbookScaffold(
     builder: (context, _) => Padding(
-      padding: const EdgeInsets.all(ZetaSpacing.xl_2),
+      padding: EdgeInsets.all(Zeta.of(context).spacing.xl_2),
       child: ZetaStatusLabel(
         label: context.knobs.string(label: 'Label', initialValue: 'Label'),
         status: context.knobs.list(
@@ -26,7 +26,7 @@ Widget priorityPillUseCase(BuildContext context) {
   final colors = Zeta.of(context).colors;
   return WidgetbookScaffold(
     builder: (context, _) => Padding(
-      padding: const EdgeInsets.all(ZetaSpacing.xl_2),
+      padding: EdgeInsets.all(Zeta.of(context).spacing.xl_2),
       child: ZetaPriorityPill(
         index: context.knobs.string(label: 'Index', initialValue: 'U'),
         label: context.knobs.string(label: 'Label', initialValue: 'Urgent'),
@@ -55,7 +55,7 @@ Widget priorityPillUseCase(BuildContext context) {
 
 Widget labelUseCase(BuildContext context) => WidgetbookScaffold(
       builder: (context, _) => Padding(
-        padding: const EdgeInsets.all(ZetaSpacing.xl_2),
+        padding: EdgeInsets.all(Zeta.of(context).spacing.xl_2),
         child: ZetaLabel(
           label: context.knobs.string(label: 'Label', initialValue: 'Label'),
           status: context.knobs.list(
@@ -70,7 +70,7 @@ Widget labelUseCase(BuildContext context) => WidgetbookScaffold(
 Widget indicatorsUseCase(BuildContext context) {
   return WidgetbookScaffold(
     builder: (context, _) => Padding(
-      padding: const EdgeInsets.all(ZetaSpacing.xl_2),
+      padding: EdgeInsets.all(Zeta.of(context).spacing.xl_2),
       child: ZetaIndicator(
         type: context.knobs.list(
           label: 'Type',
@@ -93,7 +93,7 @@ Widget indicatorsUseCase(BuildContext context) {
 
 Widget tagsUseCase(BuildContext context) => WidgetbookScaffold(
       builder: (context, _) => Padding(
-        padding: const EdgeInsets.all(ZetaSpacing.xl_2),
+        padding: EdgeInsets.all(Zeta.of(context).spacing.xl_2),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

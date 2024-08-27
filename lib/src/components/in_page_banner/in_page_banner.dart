@@ -49,60 +49,71 @@ class ZetaInPageBanner extends ZetaStatelessWidget {
 
     return ZetaRoundedScope(
       rounded: rounded,
-      child: DecoratedBox(
+      child: Container(
         decoration: BoxDecoration(
           color: colors.surface,
           border: Border.all(color: colors.border),
           borderRadius: rounded ? Zeta.of(context).radius.minimal : Zeta.of(context).radius.none,
         ),
-        child: Padding(
-          padding: const EdgeInsets.all(ZetaSpacingBase.x0_5),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding: const EdgeInsetsDirectional.only(top: ZetaSpacing.medium, start: ZetaSpacingBase.x2_5),
-                child: ZetaIcon(
-                  customIcon ?? status.icon,
-                  size: ZetaSpacing.xl_1,
-                  color: status == ZetaWidgetStatus.neutral ? theme.colors.textDefault : colors.icon,
+        padding: EdgeInsetsDirectional.only(
+          bottom: Zeta.of(context).spacing.medium,
+          start: Zeta.of(context).spacing.medium,
+        ),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Expanded(
+              child: Padding(
+                padding: EdgeInsetsDirectional.only(
+                  top: Zeta.of(context).spacing.medium,
                 ),
-              ),
-              Expanded(
-                child: Column(
+                child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const SizedBox(height: ZetaSpacing.small),
-                    if (hasTitle)
-                      Text(
-                        title!,
-                        style: ZetaTextStyles.labelLarge,
-                      ).paddingBottom(ZetaSpacing.minimum),
-                    DefaultTextStyle(
-                      style: ZetaTextStyles.bodySmall.apply(color: theme.colors.textDefault),
-                      child: content,
+                    ZetaIcon(
+                      customIcon ?? status.icon,
+                      size: Zeta.of(context).spacing.xl,
+                      color: status == ZetaWidgetStatus.neutral ? theme.colors.textDefault : colors.icon,
                     ),
-                    if (actions.isNotEmpty)
-                      Row(
-                        children: actions
-                            .map((e) => e.copyWith(size: ZetaWidgetSize.medium, type: ZetaButtonType.outlineSubtle))
-                            .divide(const SizedBox.square(dimension: ZetaSpacing.small))
-                            .toList(),
-                      ).paddingTop(ZetaSpacing.large),
-                    const SizedBox(height: ZetaSpacingBase.x2_5),
+                    SizedBox(width: Zeta.of(context).spacing.small),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          if (hasTitle)
+                            Text(
+                              title!,
+                              style: ZetaTextStyles.labelLarge.copyWith(height: 20 / 16),
+                            ).paddingBottom(Zeta.of(context).spacing.minimum),
+                          DefaultTextStyle(
+                            style: ZetaTextStyles.bodySmall.apply(color: theme.colors.textDefault),
+                            child: content,
+                          ),
+                          if (actions.isNotEmpty)
+                            Row(
+                              children: actions
+                                  .map(
+                                    (e) => e.copyWith(size: ZetaWidgetSize.medium, type: ZetaButtonType.outlineSubtle),
+                                  )
+                                  .divide(SizedBox.square(dimension: Zeta.of(context).spacing.small))
+                                  .toList(),
+                            ).paddingTop(Zeta.of(context).spacing.large),
+                        ],
+                      ),
+                    ),
                   ],
                 ),
               ),
-              if (onClose != null)
-                IconButton(
-                  onPressed: onClose,
-                  icon: const ZetaIcon(
-                    ZetaIcons.close,
-                    size: ZetaSpacing.xl_1,
-                  ),
+            ),
+            if (onClose != null)
+              IconButton(
+                onPressed: onClose,
+                icon: ZetaIcon(
+                  ZetaIcons.close,
+                  size: Zeta.of(context).spacing.xl,
                 ),
-            ].divide(const SizedBox.square(dimension: ZetaSpacing.small)).toList(),
-          ),
+              ),
+          ].divide(SizedBox.square(dimension: Zeta.of(context).spacing.small)).toList(),
         ),
       ),
     );

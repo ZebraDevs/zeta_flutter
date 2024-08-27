@@ -164,7 +164,7 @@ class ZetaListItem extends ZetaStatelessWidget {
 
     final divide = showDivider ?? listScope?.showDivider ?? false;
     final Widget? leadingWidget =
-        leading ?? ((listScope?.indentItems ?? false) ? const SizedBox(width: ZetaSpacing.xl_2) : null);
+        leading ?? ((listScope?.indentItems ?? false) ? SizedBox(width: Zeta.of(context).spacing.xl_2) : null);
 
     return SelectionContainer.disabled(
       child: MergeSemantics(
@@ -174,7 +174,7 @@ class ZetaListItem extends ZetaStatelessWidget {
             onTap: onTap,
             excludeFromSemantics: true,
             child: Container(
-              constraints: const BoxConstraints(minHeight: ZetaSpacing.xl_9),
+              constraints: BoxConstraints(minHeight: Zeta.of(context).spacing.xl_9),
               decoration: BoxDecoration(
                 border: Border(
                   bottom: BorderSide(
@@ -183,9 +183,9 @@ class ZetaListItem extends ZetaStatelessWidget {
                 ),
               ),
               child: Padding(
-                padding: const EdgeInsets.only(
-                  left: ZetaSpacing.large,
-                  right: ZetaSpacing.small,
+                padding: EdgeInsets.only(
+                  left: Zeta.of(context).spacing.large,
+                  right: Zeta.of(context).spacing.small,
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -195,8 +195,8 @@ class ZetaListItem extends ZetaStatelessWidget {
                         children: [
                           if (leadingWidget != null)
                             Padding(
-                              padding: const EdgeInsets.only(
-                                right: ZetaSpacing.small,
+                              padding: EdgeInsets.only(
+                                right: Zeta.of(context).spacing.small,
                               ),
                               child: leadingWidget,
                             ),
@@ -224,8 +224,8 @@ class ZetaListItem extends ZetaStatelessWidget {
                     ),
                     if (trailing != null)
                       Padding(
-                        padding: const EdgeInsets.only(
-                          left: ZetaSpacing.large,
+                        padding: EdgeInsets.only(
+                          left: Zeta.of(context).spacing.large,
                         ),
                         child: trailing,
                       ),

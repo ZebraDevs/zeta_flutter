@@ -55,17 +55,17 @@ class ZetaContactItem extends ZetaStatelessWidget {
                 child: Semantics(
                   explicitChildNodes: explicitChildNodes,
                   child: Padding(
-                    padding: const EdgeInsets.only(
-                      top: ZetaSpacing.small,
-                      bottom: ZetaSpacing.small,
-                      left: ZetaSpacing.xl_2,
+                    padding: EdgeInsets.only(
+                      top: Zeta.of(context).spacing.small,
+                      bottom: Zeta.of(context).spacing.small,
+                      left: Zeta.of(context).spacing.xl_2,
                     ),
                     child: Row(
                       children: [
                         leading,
                         Flexible(
                           child: Padding(
-                            padding: const EdgeInsets.only(left: ZetaSpacing.medium),
+                            padding: EdgeInsets.only(left: Zeta.of(context).spacing.medium),
                             child: Column(
                               mainAxisSize: MainAxisSize.min,
                               crossAxisAlignment: CrossAxisAlignment.start,

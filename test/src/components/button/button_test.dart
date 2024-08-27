@@ -262,7 +262,7 @@ void main() {
     expect(button.size, ZetaWidgetSize.medium);
     expect(
       filledButton.style?.side?.resolve({WidgetState.focused}),
-      const BorderSide(color: ZetaColorBase.blue, width: ZetaSpacingBase.x0_5),
+      BorderSide(color: ZetaColorBase.blue, width: ZetaBorders.borderWidth),
     );
   });
   testWidgets('debugFillProperties works correctly', (WidgetTester tester) async {
