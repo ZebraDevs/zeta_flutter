@@ -29,26 +29,15 @@ import 'package:zeta_flutter/src/theme/theme_service.dart' as _i2;
 /// See the documentation for Mockito's code generation for more information.
 class MockZetaThemeService extends _i1.Mock implements _i2.ZetaThemeService {
   @override
-  _i3.Future<(_i4.ZetaThemeData?, _i5.ThemeMode?, _i6.ZetaContrast?)>
-      loadTheme() => (super.noSuchMethod(
-            Invocation.method(
-              #loadTheme,
-              [],
-            ),
-            returnValue: _i3.Future<
-                (
-                  _i4.ZetaThemeData?,
-                  _i5.ThemeMode?,
-                  _i6.ZetaContrast?
-                )>.value((null, null, null)),
-            returnValueForMissingStub: _i3.Future<
-                (
-                  _i4.ZetaThemeData?,
-                  _i5.ThemeMode?,
-                  _i6.ZetaContrast?
-                )>.value((null, null, null)),
-          ) as _i3
-              .Future<(_i4.ZetaThemeData?, _i5.ThemeMode?, _i6.ZetaContrast?)>);
+  _i3.Future<(_i4.ZetaThemeData?, _i5.ThemeMode?, _i6.ZetaContrast?)> loadTheme() => (super.noSuchMethod(
+        Invocation.method(
+          #loadTheme,
+          [],
+        ),
+        returnValue: _i3.Future<(_i4.ZetaThemeData?, _i5.ThemeMode?, _i6.ZetaContrast?)>.value((null, null, null)),
+        returnValueForMissingStub:
+            _i3.Future<(_i4.ZetaThemeData?, _i5.ThemeMode?, _i6.ZetaContrast?)>.value((null, null, null)),
+      ) as _i3.Future<(_i4.ZetaThemeData?, _i5.ThemeMode?, _i6.ZetaContrast?)>);
 
   @override
   _i3.Future<void> saveTheme({
