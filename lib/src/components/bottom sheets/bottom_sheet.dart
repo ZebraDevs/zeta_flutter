@@ -69,7 +69,9 @@ class ZetaBottomSheet extends ZetaStatelessWidget {
             if (title != null)
               Padding(
                 padding: EdgeInsets.symmetric(
-                    horizontal: Zeta.of(context).spacing.medium, vertical: Zeta.of(context).spacing.xl_2,),
+                  horizontal: Zeta.of(context).spacing.medium,
+                  vertical: Zeta.of(context).spacing.xl_2,
+                ),
                 child: Align(
                   alignment: centerTitle ? Alignment.center : Alignment.centerLeft,
                   child: Text(
