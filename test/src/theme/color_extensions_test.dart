@@ -36,7 +36,7 @@ void main() {
       expect(color.onColor, ZetaColorBase.white);
 
       const lightColor = Colors.white;
-      expect(lightColor.onColor, ZetaColorBase.cool.shade90);
+      expect(lightColor.onColor, ZetaColorBase.cool.shade40);
     });
 
     test('isLight returns true for light colors', () {

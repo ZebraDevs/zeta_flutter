@@ -1,11 +1,12 @@
 name: CI - Pull Request
 on:
-  pull_request_target:
+  # pull_request_target:
+  pull_request:
   
 # Pull Request Runs on the same branch will be cancelled
-concurrency:
-  group: ${{ github.head_ref }}
-  cancel-in-progress: true
+# concurrency:
+  # group: ${{ github.head_ref }}
+  # cancel-in-progress: true
 
 
 jobs:
@@ -14,53 +15,53 @@ jobs:
       steps:
         - uses: actions/checkout@v4
           with:
-            repository: ${{github.event.pull_request.head.repo.full_name}}
-            ref: ${{ github.head_ref }}
+            # repository: ${{github.event.pull_request.head.repo.full_name}}
+            # ref: ${{ github.head_ref }}
             fetch-depth: 0
         - uses: subosito/flutter-action@v2
           with:
             cache: true
         - run: dart run build_runner build --delete-conflicting-outputs
-        - uses: ZebraDevs/flutter-code-quality@main
+        - uses: ZebraDevs/flutter-code-quality@fix/testFailedComment
           with:
             token: ${{secrets.GITHUB_TOKEN}}  
             coverage-pass-score: '1'
             
             
-  check-secret:
-    runs-on: ubuntu-latest
-    outputs:
-      secret-exists: ${{ steps.check.outputs.defined }}
-    steps:
-      - name: Check PR can access secrets
-        id: check
-        run: |
-          echo "defined=true" >> $GITHUB_OUTPUT;
-          if [ "${{ secrets.FIREBASE_SERVICE_ACCOUNT_ZETA_DS }}" == '' ]; then
-            echo "defined=false" >> $GITHUB_OUTPUT;
-          fi
+  # check-secret:
+  #   runs-on: ubuntu-latest
+  #   outputs:
+  #     secret-exists: ${{ steps.check.outputs.defined }}
+  #   steps:
+  #     - name: Check PR can access secrets
+  #       id: check
+  #       run: |
+  #         echo "defined=true" >> $GITHUB_OUTPUT;
+  #         if [ "${{ secrets.FIREBASE_SERVICE_ACCOUNT_ZETA_DS }}" == '' ]; then
+  #           echo "defined=false" >> $GITHUB_OUTPUT;
+  #         fi
 
-  deploy-preview:
-    name: Deploy preview version of the storybook on firebase
-    needs: [code-quality, check-secret]
-    if: needs.check-secret.outputs.secret-exists == 'true'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          repository: ${{github.event.pull_request.head.repo.full_name}}
-          ref: ${{ github.head_ref }}
-      - uses: subosito/flutter-action@v2
-        with:
-          cache: true
-      - name: Setup flutter
-        run: flutter pub get
-      - name: Build example app
-        run: |
-          cd example
-          flutter build web -t widgetbook/main.dart -o ../build --no-tree-shake-icons
-      - uses: FirebaseExtended/action-hosting-deploy@v0
-        with:
-          repoToken: "${{ secrets.GITHUB_TOKEN }}"
-          firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_ZETA_DS }}"
-          channelId: "pr-${{ github.event.number }}-${{ github.event.pull_request.head.ref }}"
+  # deploy-preview:
+  #   name: Deploy preview version of the storybook on firebase
+  #   needs: [code-quality, check-secret]
+  #   if: needs.check-secret.outputs.secret-exists == 'true'
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #       with:
+  #         repository: ${{github.event.pull_request.head.repo.full_name}}
+  #         ref: ${{ github.head_ref }}
+  #     - uses: subosito/flutter-action@v2
+  #       with:
+  #         cache: true
+  #     - name: Setup flutter
+  #       run: flutter pub get
+  #     - name: Build example app
+  #       run: |
+  #         cd example
+  #         flutter build web -t widgetbook/main.dart -o ../build --no-tree-shake-icons
+  #     - uses: FirebaseExtended/action-hosting-deploy@v0
+  #       with:
+  #         repoToken: "${{ secrets.GITHUB_TOKEN }}"
+  #         firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_ZETA_DS }}"
+  #         channelId: "pr-${{ github.event.number }}-${{ github.event.pull_request.head.ref }}"
