@@ -182,7 +182,7 @@ class _ZetaTopAppBarState extends State<ZetaTopAppBar> {
                   if (widget.onSearchMicrophoneIconPressed != null) ...[
                     SizedBox(
                       height: Zeta.of(context).spacing.xl_2,
-                      child: VerticalDivider(width: ZetaBorders.borderWidth, color: colors.cool.shade70),
+                      child: VerticalDivider(width: ZetaBorders.medium, color: colors.cool.shade70),
                     ),
                     IconButton(
                       onPressed: widget.onSearchMicrophoneIconPressed,

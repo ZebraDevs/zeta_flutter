@@ -1,5 +1,4 @@
 // ignore_for_file: deprecated_member_use_from_same_package
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
@@ -134,22 +133,16 @@ class ZetaChatItem extends ZetaStatelessWidget {
 
     // coverage:ignore-start
     if (onMenuMoreTap != null) {
-      actions.add(
-        ZetaSlidableAction(onPressed: onMenuMoreTap, color: colors.purple, icon: ZetaIcons.more_vertical),
-      );
+      actions.add(ZetaSlidableAction.menuMore(onPressed: onMenuMoreTap));
     }
     if (onCallTap != null) {
-      actions.add(
-        ZetaSlidableAction(onPressed: onCallTap, color: colors.green, icon: ZetaIcons.phone),
-      );
+      actions.add(ZetaSlidableAction.call(onPressed: onCallTap));
     }
     if (onPttTap != null) {
-      actions.add(
-        ZetaSlidableAction(onPressed: onPttTap, color: colors.blue, icon: ZetaIcons.ptt),
-      );
+      actions.add(ZetaSlidableAction.ptt(onPressed: onPttTap));
     }
     if (onDeleteTap != null) {
-      actions.add(ZetaSlidableAction(onPressed: onDeleteTap, color: colors.red, icon: ZetaIcons.delete));
+      actions.add(ZetaSlidableAction.delete(onPressed: onDeleteTap));
     }
     // coverage:ignore-end
 

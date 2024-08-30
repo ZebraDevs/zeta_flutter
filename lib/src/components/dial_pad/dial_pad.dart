@@ -198,7 +198,7 @@ class ZetaDialPadButton extends StatelessWidget {
         decoration: ShapeDecoration(
           shape: const CircleBorder(),
           color: colors.warm.shade10,
-          shadows: [BoxShadow(color: colors.black.withOpacity(0.15), blurRadius: 4, offset: const Offset(0, 2))],
+          shadows: [BoxShadow(color: Colors.black.withOpacity(0.15), blurRadius: 4, offset: const Offset(0, 2))],
         ),
         child: Material(
           color: Colors.transparent,

@@ -238,7 +238,7 @@ class _ZetaGroupButtonState extends State<ZetaGroupButton> {
     bool finalButton,
   ) {
     if (_controller.value.contains(WidgetState.focused)) {
-      return BorderSide(color: colors.blue.shade50, width: ZetaBorders.borderWidth);
+      return BorderSide(color: colors.blue.shade50, width: ZetaBorders.medium);
     }
     if (_controller.value.contains(WidgetState.disabled)) {
       return BorderSide(color: colors.cool.shade40);

@@ -326,7 +326,7 @@ extension on ZetaAvatarSize {
       case ZetaAvatarSize.xs:
       case ZetaAvatarSize.xxs:
       case ZetaAvatarSize.xxxs:
-        return ZetaBorders.borderWidth;
+        return ZetaBorders.medium;
     }
   }
 

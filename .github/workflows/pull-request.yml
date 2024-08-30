@@ -24,7 +24,7 @@ jobs:
         - uses: ZebraDevs/flutter-code-quality@main
           with:
             token: ${{secrets.GITHUB_TOKEN}}  
-            coverage-pass-score: '1'
+            coverage-pass-score: '90'
             
             
   check-secret:
