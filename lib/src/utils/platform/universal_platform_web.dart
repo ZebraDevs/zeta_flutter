@@ -2,7 +2,8 @@
 // https://gist.github.com/rydmike/1771fe24c050ebfe792fa309371154d8
 
 // ignore: avoid_web_libraries_in_flutter
-import 'dart:html';
+
+import 'package:web/web.dart';
 
 import 'platform_is.dart';
 
@@ -15,7 +16,7 @@ final Navigator _nav = window.navigator;
 
 /// UniversalPlatform for Flutter WEB build.
 ///
-/// We can use dart:html Navigator to get the current platform.
+/// We can use Navigator to get the current platform.
 ///
 /// This function is borrowed, with minor modifications, from GetX utils library with MIT license.
 /// Credits for it belong to its author Jonny Borges https://github.com/jonataslaw
@@ -38,7 +39,7 @@ class UniversalPlatform implements AbstractPlatform {
   @override
   bool get iOS {
     // maxTouchPoints is needed to separate iPad iOS13 vs new MacOS
-    return _hasMatch(_nav.platform, '/iPad|iPhone|iPod/') || (_nav.platform == 'MacIntel' && _nav.maxTouchPoints! > 1);
+    return _hasMatch(_nav.platform, '/iPad|iPhone|iPod/') || (_nav.platform == 'MacIntel' && _nav.maxTouchPoints > 1);
   }
 
   // Theoretically we could be in a Web browser on Fuchsia too, but
