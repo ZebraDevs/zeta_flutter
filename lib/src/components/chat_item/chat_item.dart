@@ -354,7 +354,7 @@ class ZetaChatItem extends ZetaStatelessWidget {
 enum _ZetaSlidableActionType { menuMore, call, ptt, delete, custom }
 
 extension on _ZetaSlidableActionType {
-  Color _getMainColor(BuildContext context) {
+  Color getMainColor(BuildContext context) {
     final colors = Zeta.of(context).colors;
     switch (this) {
       case _ZetaSlidableActionType.menuMore:
@@ -386,7 +386,7 @@ extension on _ZetaSlidableActionType {
           return colors.surfacePrimarySubtle;
       }
     } else {
-      return _getMainColor(context);
+      return getMainColor(context);
     }
   }
 

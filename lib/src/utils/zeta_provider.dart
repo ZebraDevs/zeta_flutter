@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_function_declarations_over_variables, deprecated_member_use_from_same_package
-
 import 'dart:async';
 
 import 'package:flutter/foundation.dart';
@@ -7,21 +5,14 @@ import 'package:flutter/material.dart';
 
 import '../../zeta_flutter.dart';
 
-/// A typedef for the ZetaAppBuilder function which passes [BuildContext], [ZetaThemeData],
-/// and [ThemeMode] and returns a [Widget].
-typedef ZetaAppBuilder = Widget Function(BuildContext context, ZetaThemeData themeData, ThemeMode themeMode);
-
 /// A typedef for the ZetaAppBuilder function which passes [BuildContext], light [ThemeData],
 /// dark [ThemeData] and [ThemeMode] and returns a [Widget].
-typedef ZetaBaseAppBuilder = Widget Function(
+typedef ZetaAppBuilder = Widget Function(
   BuildContext context,
   ThemeData light,
   ThemeData dark,
   ThemeMode themeMode,
 );
-
-final _emptyBuilder = (_, __, ___) => const Nothing();
-final _emptyBase = (_, __, ___, ____) => const Nothing();
 
 /// A widget that provides Zeta theming and contrast data down the widget tree.
 /// {@category Utils}
@@ -29,37 +20,14 @@ class ZetaProvider extends StatefulWidget with Diagnosticable {
   /// Constructs a [ZetaProvider] widget.
   ///
   /// The [builder] argument is required. The [initialThemeMode], [initialContrast],
-  /// and [initialThemeData] arguments provide initial values.
   ZetaProvider({
     super.key,
     required this.builder,
-    this.initialThemeMode = ThemeMode.system,
-    this.initialContrast = ZetaContrast.aa,
-    ZetaThemeData? initialThemeData,
-    this.themeService = const ZetaDefaultThemeService(),
-    this.initialRounded = true,
-  })  : initialZetaThemeData = initialThemeData ?? ZetaThemeData(),
-        baseBuilder = _emptyBase,
-        initialLightThemeData = null,
-        initialDarkThemeData = null;
-
-  /// ZetaProvider constructor that returns light and dark [ThemeData]s ready to be consumed.
-  ///
-  /// The [builder] argument is required. The [initialThemeMode], [initialContrast],
-  /// and [initialLightThemeData] arguments provide initial values.
-  ZetaProvider.base({
-    super.key,
-    required ZetaBaseAppBuilder builder,
     this.initialThemeMode,
     this.initialContrast,
-    ZetaThemeData? initialZetaThemeData,
-    this.initialLightThemeData,
-    this.initialDarkThemeData,
-    this.initialRounded = true,
     this.themeService = const ZetaDefaultThemeService(),
-  })  : baseBuilder = builder,
-        initialZetaThemeData = initialZetaThemeData ?? ZetaThemeData(),
-        builder = _emptyBuilder;
+    this.initialRounded = true,
+  });
 
   /// Specifies the initial theme mode for the app.
   ///
@@ -67,38 +35,18 @@ class ZetaProvider extends StatefulWidget with Diagnosticable {
   /// Defaults to [ThemeMode.system].
   final ThemeMode? initialThemeMode;
 
-  /// Provides the initial theme data for the app.
-  ///
-  /// This contains all the theming information. If not provided,
-  /// it defaults to a basic [ZetaThemeData] instance.
-  final ZetaThemeData initialZetaThemeData;
-
   /// Specifies the initial contrast setting for the app.
   ///
   /// Defaults to [ZetaContrast.aa].
   final ZetaContrast? initialContrast;
 
   /// A builder function to construct the widget tree using the provided theming information.
-  ///
-  /// It receives the [BuildContext], [ZetaThemeData], and [ThemeMode] as arguments
-  /// and is expected to return a [Widget].
   final ZetaAppBuilder builder;
-
-  /// A builder function to construct the widget tree using the provided theming information.
-  ///
-  /// This builder returns light and dark [ThemeData]s ready to be consumed.
-  final ZetaBaseAppBuilder baseBuilder;
 
   /// A `ZetaThemeService`
   ///
   /// It provides the structure for loading and saving themes in Zeta application.
   final ZetaThemeService themeService;
-
-  /// Light [ThemeData] used in [ZetaProvider.base] constructor as the foundation for a custom theme.
-  final ThemeData? initialLightThemeData;
-
-  /// Dark [ThemeData] used in [ZetaProvider.base] constructor as the foundation for a custom theme.
-  final ThemeData? initialDarkThemeData;
 
   /// Sets whether app should start with components in their rounded or sharp variants.
   final bool initialRounded;
@@ -110,15 +58,11 @@ class ZetaProvider extends StatefulWidget with Diagnosticable {
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty<ZetaThemeData>('themeData', initialZetaThemeData))
       ..add(ObjectFlagProperty<ZetaAppBuilder>.has('builder', builder))
       ..add(EnumProperty<ThemeMode>('initialThemeMode', initialThemeMode))
       ..add(EnumProperty<ZetaContrast>('initialContrast', initialContrast))
       ..add(DiagnosticsProperty<ZetaThemeService?>('themeService', themeService))
-      ..add(ObjectFlagProperty<ZetaBaseAppBuilder?>.has('customBuilder', baseBuilder))
-      ..add(DiagnosticsProperty<ThemeData?>('initialThemeData', initialLightThemeData))
-      ..add(DiagnosticsProperty<bool?>('initialRounded', initialRounded))
-      ..add(DiagnosticsProperty<ThemeData?>('initialDarkThemeData', initialDarkThemeData));
+      ..add(DiagnosticsProperty<bool?>('initialRounded', initialRounded));
   }
 
   /// Retrieves the [ZetaProviderState] from the provided context.
@@ -151,28 +95,17 @@ class ZetaProvider extends StatefulWidget with Diagnosticable {
 class ZetaProviderState extends State<ZetaProvider> with Diagnosticable, WidgetsBindingObserver {
   bool _gotTheme = false;
 
-  // Fields for ZetaThemeManager.
-
   /// Represents the late initialization of the ZetaContrast value.
   late ZetaContrast _contrast;
 
   /// Represents the late initialization of the ThemeMode value.
   late ThemeMode _themeMode;
 
-  /// Represents the late initialization of the ZetaThemeData object.
-  late ZetaThemeData _zetaThemeData;
-
   /// Represents the late initialization of the system's current brightness (dark or light mode).
   late Brightness _platformBrightness;
 
   /// {@macro zeta-component-rounded}
   late bool _rounded;
-
-  /// Represents the late initialization of the light [ThemeData] object.
-  late ThemeData? _lightThemeData;
-
-  /// Represents the late initialization of the dark [ThemeData] object.
-  late ThemeData? _darkThemeData;
 
   /// Represents a nullable brightness value to be used for brightness change debouncing.
   Brightness? _debounceBrightness;
@@ -198,33 +131,23 @@ class ZetaProviderState extends State<ZetaProvider> with Diagnosticable, Widgets
     // Sets the initial rounded.
     _rounded = widget.initialRounded;
 
-    // Set the initial light [ThemeData].
-    _lightThemeData = widget.initialLightThemeData;
-
-    // Set the initial light [ThemeData].
-    _darkThemeData = widget.initialDarkThemeData;
-
     if (widget.initialThemeMode != null) {
       _themeMode = widget.initialThemeMode!;
     }
     if (widget.initialContrast != null) {
       _contrast = widget.initialContrast!;
-      _zetaThemeData = widget.initialZetaThemeData.apply(contrast: _contrast);
     }
   }
 
   /// Retrieves the theme values from the shared preferences.
   Future<void> getThemeValuesFromPreferences() async {
-    final (themeData, themeMode, contrast) = await widget.themeService.loadTheme();
+    final (themeMode, contrast) = await widget.themeService.loadTheme();
 
     // Set the initial theme mode.
     _themeMode = themeMode ?? widget.initialThemeMode ?? ThemeMode.system;
 
     // Set the initial contrast.
     _contrast = contrast ?? widget.initialContrast ?? ZetaContrast.aa;
-
-    // Apply the initial contrast to the theme data.
-    _zetaThemeData = widget.initialZetaThemeData.apply(contrast: _contrast);
 
     // Ensure this is only triggered once.
     _gotTheme = true;
@@ -294,38 +217,13 @@ class ZetaProviderState extends State<ZetaProvider> with Diagnosticable, Widgets
   }
 
   Widget _getChild() {
-    if (widget.baseBuilder != _emptyBase) {
-      return _InternalProvider(
-        contrast: _contrast,
-        themeMode: _themeMode,
-        zetaThemeData: _zetaThemeData,
-        rounded: _rounded,
-        platformBrightness: _platformBrightness,
-        widget: widget.baseBuilder(
-          context,
-          generateZetaTheme(
-            brightness: Brightness.light,
-            existingTheme: _lightThemeData,
-            colorScheme: _lightThemeData?.colorScheme ?? _zetaThemeData.colorsLight.toScheme(),
-          ),
-          generateZetaTheme(
-            brightness: Brightness.dark,
-            existingTheme: _darkThemeData,
-            colorScheme: _darkThemeData?.colorScheme ?? _zetaThemeData.colorsDark.toScheme(),
-          ),
-          _themeMode,
-        ),
-      );
-    } else {
-      return _InternalProvider(
-        contrast: _contrast,
-        themeMode: _themeMode,
-        zetaThemeData: _zetaThemeData,
-        rounded: _rounded,
-        platformBrightness: _platformBrightness,
-        widget: widget.builder(context, _zetaThemeData, _themeMode),
-      );
-    }
+    return _InternalProvider(
+      contrast: _contrast,
+      themeMode: _themeMode,
+      rounded: _rounded,
+      platformBrightness: _platformBrightness,
+      widget: widget.builder,
+    );
   }
 
   @override
@@ -333,14 +231,10 @@ class ZetaProviderState extends State<ZetaProvider> with Diagnosticable, Widgets
     super.didUpdateWidget(oldWidget);
     if (oldWidget.initialContrast != widget.initialContrast ||
         oldWidget.initialThemeMode != widget.initialThemeMode ||
-        oldWidget.initialLightThemeData != widget.initialLightThemeData ||
-        oldWidget.initialZetaThemeData != widget.initialZetaThemeData ||
         oldWidget.initialRounded != widget.initialRounded) {
       setState(() {
         _themeMode = widget.initialThemeMode ?? _themeMode;
         _contrast = widget.initialContrast ?? _contrast;
-        _zetaThemeData = widget.initialZetaThemeData.apply(contrast: _contrast);
-        _lightThemeData = widget.initialLightThemeData;
         _rounded = widget.initialRounded;
       });
     }
@@ -354,19 +248,10 @@ class ZetaProviderState extends State<ZetaProvider> with Diagnosticable, Widgets
     });
   }
 
-  /// Updates the current theme data.
-  void updateThemeData(ZetaThemeData data) {
-    setState(() {
-      _zetaThemeData = data.apply(contrast: _contrast);
-      _saveThemeChange();
-    });
-  }
-
   /// Updates the current contrast.
   void updateContrast(ZetaContrast contrast) {
     setState(() {
       _contrast = contrast;
-      _zetaThemeData = _zetaThemeData.apply(contrast: contrast);
       _saveThemeChange();
     });
   }
@@ -383,7 +268,6 @@ class ZetaProviderState extends State<ZetaProvider> with Diagnosticable, Widgets
   void _saveThemeChange() {
     unawaited(
       widget.themeService.saveTheme(
-        themeData: _zetaThemeData,
         themeMode: _themeMode,
         contrast: _contrast,
       ),
@@ -394,7 +278,6 @@ class ZetaProviderState extends State<ZetaProvider> with Diagnosticable, Widgets
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty<ZetaThemeData>('themeData', _zetaThemeData))
       ..add(EnumProperty<ZetaContrast>('contrast', _contrast))
       ..add(EnumProperty<ThemeMode>('themeMode', _themeMode));
   }
@@ -404,7 +287,6 @@ class _InternalProvider extends StatefulWidget {
   const _InternalProvider({
     required this.contrast,
     required this.themeMode,
-    required this.zetaThemeData,
     required this.rounded,
     required this.platformBrightness,
     required this.widget,
@@ -416,13 +298,11 @@ class _InternalProvider extends StatefulWidget {
   /// Represents the late initialization of the ThemeMode value.
   final ThemeMode themeMode;
 
-  final ZetaThemeData zetaThemeData;
-
   final bool rounded;
 
   final Brightness platformBrightness;
 
-  final Widget widget;
+  final ZetaAppBuilder widget;
 
   @override
   State<_InternalProvider> createState() => __InternalProviderState();
@@ -434,8 +314,7 @@ class _InternalProvider extends StatefulWidget {
       ..add(EnumProperty<ThemeMode>('themeMode', themeMode))
       ..add(EnumProperty<ZetaContrast>('contrast', contrast))
       ..add(EnumProperty<Brightness>('platformBrightness', platformBrightness))
-      ..add(DiagnosticsProperty<bool>('rounded', rounded))
-      ..add(DiagnosticsProperty<ZetaThemeData>('zetaThemeData', zetaThemeData));
+      ..add(DiagnosticsProperty<bool>('rounded', rounded));
   }
 }
 
@@ -444,11 +323,18 @@ class __InternalProviderState extends State<_InternalProvider> {
   Widget build(BuildContext context) {
     return Zeta(
       themeMode: widget.themeMode,
-      themeData: widget.zetaThemeData,
       contrast: widget.contrast,
       rounded: widget.rounded,
-      mediaBrightness: widget.platformBrightness,
-      child: widget.widget,
+      child: Builder(
+        builder: (context) {
+          return widget.widget(
+            context,
+            generateZetaTheme(brightness: Brightness.light, colorScheme: Zeta.of(context).colors.toColorScheme),
+            generateZetaTheme(brightness: Brightness.dark, colorScheme: Zeta.of(context).colors.toColorScheme),
+            widget.themeMode,
+          );
+        },
+      ),
     );
   }
 }
@@ -459,7 +345,6 @@ ThemeData generateZetaTheme({
   required ColorScheme colorScheme,
   ThemeData? existingTheme,
   String? fontFamily,
-  ZetaThemeData? zetaThemeData,
 }) {
   if (existingTheme != null) {
     final baseThemeData = ThemeData();
@@ -472,14 +357,7 @@ ThemeData generateZetaTheme({
           (existingTheme.textTheme.bodyMedium?.fontFamily == baseThemeData.textTheme.bodyMedium?.fontFamily
               ? kZetaFontFamily
               : existingTheme.textTheme.bodyMedium?.fontFamily),
-      scaffoldBackgroundColor: [
-        Colors.grey[850]!,
-        Colors.grey[50]!,
-        baseThemeData.scaffoldBackgroundColor,
-        baseThemeData.colorScheme.surface,
-      ].any((e) => e == existingTheme.scaffoldBackgroundColor)
-          ? colorScheme.surfaceTertiary
-          : existingTheme.scaffoldBackgroundColor,
+      scaffoldBackgroundColor: existingTheme.scaffoldBackgroundColor,
       colorScheme:
           ((existingTheme.colorScheme == baseThemeData.colorScheme ? null : existingTheme.colorScheme) ?? colorScheme)
               .copyWith(brightness: brightness),
@@ -566,15 +444,11 @@ ThemeData generateZetaTheme({
     useMaterial3: true,
     fontFamily: fontFamily ?? kZetaFontFamily,
     brightness: brightness,
-    scaffoldBackgroundColor: colorScheme.surfaceTertiary,
     colorScheme: colorScheme.copyWith(brightness: brightness),
     textTheme: zetaTextTheme,
     iconTheme: IconThemeData(
       size: kZetaIconSize,
-      color: (zetaThemeData != null
-          ? (zetaThemeData.semantics?.colors.mainDefault ??
-              (brightness == Brightness.dark ? zetaThemeData.colorsDark : zetaThemeData.colorsLight).mainDefault)
-          : colorScheme.onSurface),
+      color: brightness == Brightness.light ? colorScheme.onPrimary : colorScheme.onSurface,
     ),
   );
 }

@@ -22,7 +22,7 @@ class TestApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ZetaProvider.base(
+    return ZetaProvider(
       initialThemeMode: themeMode ?? ThemeMode.system,
       initialRounded: rounded ?? true,
       initialContrast: contrast ?? ZetaContrast.aa,

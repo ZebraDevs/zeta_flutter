@@ -1,7 +1,6 @@
-// ignore_for_file: deprecated_member_use_from_same_package
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 
 import '../../zeta_flutter.dart';
 
@@ -12,33 +11,32 @@ import '../../zeta_flutter.dart';
 /// {@category Utils}
 class Zeta extends InheritedWidget {
   /// Constructs a [Zeta] widget.
-  ///
-  /// The [contrast], [themeMode], [themeData], and [child] arguments are required.
   const Zeta({
     super.key,
-    required Brightness mediaBrightness,
-    required this.contrast,
-    required this.themeMode,
-    this.themeData,
     required super.child,
     this.rounded = true,
-  }) : _mediaBrightness = mediaBrightness;
+    this.contrast = ZetaContrast.aa,
+    this.themeMode = ThemeMode.system,
+    ZetaPrimitives? customPrimitives,
+    ZetaSemantics? customSemantics,
+    // String? fontFamily,
+  })  : _customPrimitives = customPrimitives,
+        _customSemantics = customSemantics;
 
-  /// The current contrast setting for the app, which can be one of the predefined
-  /// values in [ZetaContrast].
-  final ZetaContrast contrast;
+  final ZetaPrimitives? _customPrimitives;
 
-  /// Specifies the theme mode for the app, which determines how the UI is rendered.
-  ///
-  /// It can be one of the values: [ThemeMode.system], [ThemeMode.light], or [ThemeMode.dark].
-  final ThemeMode themeMode;
+  final ZetaSemantics? _customSemantics;
 
-  /// Provides the theme data for the app, which contains all the theming information.
-  final ZetaThemeData? themeData;
+  /// Primitives used for colors, spacing and radii in the Zeta theme.
+  ZetaPrimitives get primitives =>
+      _customPrimitives ?? (brightness == Brightness.light ? ZetaPrimitivesLight() : ZetaPrimitivesDark());
 
-  /// Internal property to get the system brightness.
-  /// Used to determine the theme mode when it's set to [ThemeMode.system].
-  final Brightness _mediaBrightness;
+  /// Semantics used for colors, spacing and radii in the Zeta theme.
+  ZetaSemantics get semantics =>
+      _customSemantics ??
+      (contrast == ZetaContrast.aa
+          ? ZetaSemanticsAA(primitives: primitives)
+          : ZetaSemanticsAAA(primitives: primitives));
 
   /// {@template zeta-component-rounded}
   /// Sets rounded or sharp border of the containing box and the icon style.
@@ -47,23 +45,21 @@ class Zeta extends InheritedWidget {
   /// {@endtemplate}
   final bool rounded;
 
+  /// The contrast level of the Zeta theme.
+  ///
+  /// This will determine the color contrast level of the theme when using default semantics.
+  final ZetaContrast contrast;
+
+  /// The theme mode of the Zeta theme.
+  /// It can be set to 'system', 'light', or 'dark'.
+  /// The default value is 'system'.
+  final ThemeMode themeMode;
+
   /// Provides the color set based on the current theme mode.
   ///
   /// It determines the appropriate color set (light or dark) based on the theme mode
   /// and system brightness.
-  ZetaColorSemantics get colors {
-    if (themeData == null) {
-      return _semantics.colors;
-    } else {
-      if (themeMode == ThemeMode.system) {
-        return _mediaBrightness == Brightness.light ? themeData!.colorsLight : themeData!.colorsDark;
-      } else if (themeMode == ThemeMode.light) {
-        return themeData!.colorsLight;
-      } else {
-        return themeData!.colorsDark;
-      }
-    }
-  }
+  ZetaColorSemantics get colors => semantics.colors;
 
   /// Gets the brightness setting for the current theme.
   ///
@@ -72,7 +68,8 @@ class Zeta extends InheritedWidget {
   /// If neither, it returns `Brightness.dark` by default (i.e., when the theme mode is 'dark').
   Brightness get brightness {
     if (themeMode == ThemeMode.system) {
-      return _mediaBrightness; // Return the current system brightness setting
+      return SchedulerBinding
+          .instance.platformDispatcher.platformBrightness; // Return the current system brightness setting
     } else if (themeMode == ThemeMode.light) {
       return Brightness.light; // Return the light mode brightness
     } else {
@@ -81,31 +78,19 @@ class Zeta extends InheritedWidget {
   }
 
   /// Gets the radius values based on the tokens.
-  ZetaRadiiSemantics get radius => _semantics.radii;
+  ZetaRadiiSemantics get radius => semantics.radii;
 
   /// Gets the spacing values based on the tokens.
-  ZetaSpacingSemantics get spacing => _semantics.size;
-
-  /// Gets the [ZetaPrimitives] instance based on the current brightness setting.
-  ///
-  /// This is a temporary function used whilst the full implementation of tokens is taking place.
-  ZetaPrimitives get _primitives =>
-      brightness == Brightness.light ? const ZetaPrimitivesLight() : const ZetaPrimitivesDark();
-
-  /// Gets the [ZetaSemantics] instance based on the current contrast setting.
-  ///
-  /// This is a temporary function used whilst the full implementation of tokens is taking place.
-  ZetaSemantics get _semantics => contrast == ZetaContrast.aa
-      ? ZetaSemanticsAA(primitives: _primitives)
-      : ZetaSemanticsAAA(primitives: _primitives);
+  ZetaSpacingSemantics get spacing => semantics.size;
 
   @override
   bool updateShouldNotify(covariant Zeta oldWidget) {
     return oldWidget.contrast != contrast ||
+        oldWidget.rounded != rounded ||
+        oldWidget.brightness != brightness ||
         oldWidget.themeMode != themeMode ||
-        oldWidget.themeData != themeData ||
-        oldWidget._mediaBrightness != _mediaBrightness ||
-        oldWidget.rounded != rounded;
+        oldWidget._customPrimitives != _customPrimitives ||
+        oldWidget._customSemantics != _customSemantics;
   }
 
   /// Fetches the [Zeta] instance from the provided [context].
@@ -139,13 +124,14 @@ class Zeta extends InheritedWidget {
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(EnumProperty<ThemeMode>('themeMode', themeMode))
-      ..add(EnumProperty<ZetaContrast>('contrast', contrast))
-      ..add(DiagnosticsProperty<ZetaThemeData?>('themeData', themeData))
       ..add(DiagnosticsProperty<bool>('rounded', rounded))
       ..add(DiagnosticsProperty<ZetaColorSemantics>('colors', colors))
       ..add(EnumProperty<Brightness>('brightness', brightness))
       ..add(DiagnosticsProperty<ZetaRadiiSemantics>('radius', radius))
-      ..add(DiagnosticsProperty<ZetaSpacingSemantics>('spacing', spacing));
+      ..add(DiagnosticsProperty<ZetaSpacingSemantics>('spacing', spacing))
+      ..add(DiagnosticsProperty<ZetaPrimitives>('primitives', primitives))
+      ..add(DiagnosticsProperty<ZetaSemantics>('semantics', semantics))
+      ..add(EnumProperty<ZetaContrast>('contrast', contrast))
+      ..add(EnumProperty<ThemeMode>('themeMode', themeMode));
   }
 }

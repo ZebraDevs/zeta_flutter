@@ -105,61 +105,6 @@ class ZetaColorSwatch extends ColorSwatch<int> with EquatableMixin {
   ///
   Color shade(int number) => this[number]!;
 
-  /// Returns the color shade for a surface depending on the ZetaContrast value.
-  ///
-  /// For [ZetaContrast.aa], it returns 60.
-  /// For [ZetaContrast.aaa], it returns 80.
-  @Deprecated('This has been deprecated as of 0.16.0')
-  Color get text => shade(contrast.text);
-
-  /// Returns the color shade for an icon depending on the ZetaContrast value.
-  ///
-  /// For [ZetaContrast.aa], it returns 60.
-  /// For [ZetaContrast.aaa], it returns 80.
-  @Deprecated('This has been deprecated as of 0.16.0')
-  Color get icon => shade(contrast.icon);
-
-  /// Returns the color shade for a hover state depending on the ZetaContrast value.
-  ///
-  /// For [ZetaContrast.aa], it returns 70.
-  /// For [ZetaContrast.aaa], it returns 90.
-  @Deprecated('This has been deprecated as of 0.16.0')
-  Color get hover => shade(contrast.hover);
-
-  /// Returns the color shade for a selected state depending on the ZetaContrast value.
-  ///
-  /// For [ZetaContrast.aa], it returns 80.
-  /// For [ZetaContrast.aaa], it returns 100.
-  @Deprecated('This has been deprecated as of 0.16.0')
-  Color get selected => shade(contrast.selected);
-
-  /// Returns the color shade for a focus state depending on the ZetaContrast value.
-  ///
-  /// For [ZetaContrast.aa], it returns 80.
-  /// For [ZetaContrast.aaa], it returns 100.
-  @Deprecated('This has been deprecated as of 0.16.0')
-  Color get focus => shade(contrast.focus);
-
-  /// Returns the color shade for a border depending on the ZetaContrast value.
-  ///
-  /// For [ZetaContrast.aa], it returns 60.
-  /// For [ZetaContrast.aaa], it returns 80.
-  @Deprecated('This has been deprecated as of 0.16.0')
-  Color get border => shade(contrast.border);
-
-  /// Returns the color shade for a subtle visual element depending on the ZetaContrast value.
-  ///
-  /// For [ZetaContrast.aa], it returns 40.
-  /// For [ZetaContrast.aaa], it returns 60.
-  @Deprecated('This has been deprecated as of 0.16.0')
-  Color get subtle => shade(contrast.subtle);
-
-  /// Returns the color shade for a surface depending on the ZetaContrast value.
-  ///
-  /// For both [ZetaContrast.aa] and [ZetaContrast.aaa], it returns 10.
-  @Deprecated('This has been deprecated as of 0.16.0')
-  Color get surface => shade(contrast.surface);
-
   /// Creates a copy of the current [ZetaColorSwatch] with potential modifications
   /// based on the provided [contrast] and [brightness].
   ///

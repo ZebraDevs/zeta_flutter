@@ -329,4 +329,16 @@ extension ZetaSemanticColorExtension on ZetaSemanticColors {
         'teal': primitives.teal,
         'pink': primitives.pink,
       };
+
+  ColorScheme get toColorScheme => ColorScheme(
+        brightness: primitives.brightness,
+        primary: mainPrimary,
+        onPrimary: mainPrimary.onColor,
+        secondary: mainSecondary,
+        onSecondary: mainSecondary.onColor,
+        error: mainNegative,
+        onError: mainNegative.onColor,
+        surface: surfaceDefault,
+        onSurface: mainDefault,
+      );
 }

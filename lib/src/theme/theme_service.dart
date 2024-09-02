@@ -2,13 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'contrast.dart';
-import 'theme_data.dart';
 
 const String _kThemeMode = 'themeMode';
 const String _kContrast = 'contrast';
-const String _kLight = 'light';
-const String _kDark = 'dark';
-const String _kAAA = 'aaa';
 
 /// `ZetaThemeService` is an abstract class.
 /// It provides the structure for loading and saving themes in Zeta application.
@@ -30,7 +26,7 @@ abstract class ZetaThemeService {
   /// `ZetaContrast` defines different contrast styles to use across the application.
   ///
   /// Returns a Future `(ZetaThemeData?, ThemeMode?, ZetaContrast?)`.
-  Future<(ZetaThemeData?, ThemeMode?, ZetaContrast?)> loadTheme();
+  Future<(ThemeMode?, ZetaContrast?)> loadTheme();
 
   /// Saves the provided theme data as the application's theme.
   ///
@@ -41,7 +37,6 @@ abstract class ZetaThemeService {
   /// Returns a `Future` that completes when the theme data has been successfully saved.
 
   Future<void> saveTheme({
-    required ZetaThemeData themeData,
     required ThemeMode themeMode,
     required ZetaContrast contrast,
   });
@@ -53,38 +48,31 @@ class ZetaDefaultThemeService extends ZetaThemeService {
   const ZetaDefaultThemeService();
 
   @override
-  Future<(ZetaThemeData?, ThemeMode?, ZetaContrast?)> loadTheme() async {
+  Future<(ThemeMode?, ZetaContrast?)> loadTheme() async {
     final preferences = await SharedPreferences.getInstance();
 
     final modeString = preferences.getString(_kThemeMode);
-    final themeMode = modeString == _kLight
+
+    final themeMode = modeString == ThemeMode.light.name
         ? ThemeMode.light
-        : modeString == _kDark
+        : modeString == ThemeMode.dark.name
             ? ThemeMode.dark
             : ThemeMode.system;
 
     final contrastString = preferences.getString(_kContrast);
-    final contrast = contrastString == _kAAA ? ZetaContrast.aaa : ZetaContrast.aa;
+    final contrast = contrastString == ZetaContrast.aaa.name ? ZetaContrast.aaa : ZetaContrast.aa;
 
-    return (null, themeMode, contrast);
+    return (themeMode, contrast);
   }
 
   @override
   Future<void> saveTheme({
-    required ZetaThemeData themeData,
     required ThemeMode themeMode,
     required ZetaContrast contrast,
   }) async {
     final preferences = await SharedPreferences.getInstance();
-    await preferences.setString('theme', themeData.identifier);
-    final modeString = themeMode == ThemeMode.light
-        ? 'light'
-        : themeMode == ThemeMode.dark
-            ? 'dark'
-            : 'system';
-    await preferences.setString('themeMode', modeString);
 
-    final contrastString = contrast == ZetaContrast.aaa ? 'aaa' : 'aa';
-    await preferences.setString('contrast', contrastString);
+    await preferences.setString('themeMode', themeMode.name);
+    await preferences.setString('contrast', contrast.name);
   }
 }
