@@ -175,7 +175,7 @@ class _GlobalHeaderState extends State<ZetaGlobalHeader> {
             setState(() {
               _selectedIndex = index;
             });
-            child.handlePress!.call();
+            child.handlePress?.call();
           },
         ),
       );

@@ -313,7 +313,7 @@ class _ZetaStepperState extends State<ZetaStepper> with TickerProviderStateMixin
                           right: Zeta.of(context).spacing.large,
                           left: Zeta.of(context).spacing.large,
                         ),
-                        height: ZetaBorders.borderWidth,
+                        height: ZetaBorders.medium,
                         decoration: BoxDecoration(
                           borderRadius: Zeta.of(context).radius.full,
                           color: switch (widget.steps[index].type) {

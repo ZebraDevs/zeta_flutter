@@ -174,7 +174,7 @@ class _RadioPainter extends ToggleablePainter {
     final Paint paint = Paint()
       ..color = colors.surfacePrimary
       ..style = PaintingStyle.stroke
-      ..strokeWidth = Zeta.of(context).spacing.small + ZetaBorders.borderWidth;
+      ..strokeWidth = Zeta.of(context).spacing.small + ZetaBorders.medium;
     if (isFocused) canvas.drawCircle(center, _kInnerRadius, paint);
 
     // Outer circle
@@ -185,7 +185,7 @@ class _RadioPainter extends ToggleablePainter {
               ? inactiveColor
               : activeColor
       ..style = PaintingStyle.stroke
-      ..strokeWidth = ZetaBorders.borderWidth;
+      ..strokeWidth = ZetaBorders.medium;
     canvas.drawCircle(center, _kOuterRadius, paint);
 
     // Inner circle
