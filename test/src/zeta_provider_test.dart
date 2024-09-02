@@ -1,3 +1,4 @@
+// ignore_for_file: deprecated_member_use_from_same_package
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -221,7 +222,7 @@ void main() {
       await tester.pumpAndSettle();
 
       // Verifying through the public interface of Zeta widget
-      expect(tester.widget<Zeta>(find.byType(Zeta)).themeData.identifier, 'default');
+      expect(tester.widget<Zeta>(find.byType(Zeta)).themeData?.identifier, 'default');
 
       await tester.pumpWidget(
         ZetaProvider(
@@ -237,7 +238,7 @@ void main() {
       await tester.pumpAndSettle(const Duration(milliseconds: 250));
 
       // Verifying through the public interface of Zeta widget
-      expect(tester.widget<Zeta>(find.byType(Zeta)).themeData.identifier, 'different');
+      expect(tester.widget<Zeta>(find.byType(Zeta)).themeData?.identifier, 'different');
     });
     testWidgets('didUpdateWidget in ZetaProviderState works correctly with change rounded',
         (WidgetTester tester) async {
@@ -371,7 +372,7 @@ void main() {
         zetaThemeData: initialThemeData,
       );
 
-      expect(theme2.iconTheme.color, initialThemeData.colorsLight.iconDefault);
+      expect(theme2.iconTheme.color, initialThemeData.colorsLight.mainDefault);
     });
 
     testWidgets('debugFillProperties works correctly', (WidgetTester tester) async {

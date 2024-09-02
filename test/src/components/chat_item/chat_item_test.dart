@@ -2,17 +2,27 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:intl/intl.dart';
+import 'package:mockito/annotations.dart';
+import 'package:mockito/mockito.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 import '../../../test_utils/test_app.dart';
 import '../../../test_utils/tolerant_comparator.dart';
 import '../../../test_utils/utils.dart';
+import 'chat_item_test.mocks.dart';
 
+@GenerateNiceMocks([
+  MockSpec<ZetaSemanticColors>(),
+])
 void main() {
   const goldenFile = GoldenFiles(component: 'chat_item');
+  late MockZetaSemanticColors mockZetaColors;
 
   setUpAll(() {
     goldenFileComparator = TolerantComparator(goldenFile.uri);
+
+    mockZetaColors = MockZetaSemanticColors();
+    when(mockZetaColors.primitives).thenReturn(const ZetaPrimitivesLight());
   });
 
   group('ZetaChatItem Tests', () {

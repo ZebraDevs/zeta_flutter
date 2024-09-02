@@ -232,7 +232,7 @@ class Painter extends CustomPainter {
       var p1 = Offset(i, -10);
       var p2 = Offset(constraints.maxHeight + i, constraints.maxHeight * 4);
       var paint = Paint()
-        ..color = Zeta.of(context).colors.primary
+        ..color = Zeta.of(context).colors.mainPrimary
         ..strokeWidth = Zeta.of(context).spacing.minimum;
       canvas.drawLine(p1, p2, paint);
     }

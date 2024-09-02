@@ -132,12 +132,12 @@ class ZetaSnackBar extends SnackBar {
     final colors = Zeta.of(context).colors;
 
     return switch (type) {
-      ZetaSnackBarType.positive => colors.green.shade10,
-      ZetaSnackBarType.info => colors.purple.shade10,
-      ZetaSnackBarType.warning => colors.orange.shade10,
-      ZetaSnackBarType.deletion || ZetaSnackBarType.error => colors.red.shade10,
-      ZetaSnackBarType.view => colors.blue.shade10,
-      _ => colors.warm.shade100,
+      ZetaSnackBarType.positive => colors.surfacePositiveSubtle,
+      ZetaSnackBarType.info => colors.surfaceInfoSubtle,
+      ZetaSnackBarType.warning => colors.surfaceWarningSubtle,
+      ZetaSnackBarType.deletion || ZetaSnackBarType.error => colors.surfaceNegativeSubtle,
+      ZetaSnackBarType.view => colors.surfacePrimarySubtle,
+      _ => colors.surfaceDefaultInverse,
     };
   }
 }
@@ -157,7 +157,7 @@ class _Content extends StatelessWidget {
   }
 
   Color _getColorForType(
-    ZetaColors colors,
+    ZetaColorSemantics colors,
     ZetaSnackBarType? type,
   ) {
     return switch (type) {
@@ -167,8 +167,8 @@ class _Content extends StatelessWidget {
       ZetaSnackBarType.deletion ||
       ZetaSnackBarType.error ||
       ZetaSnackBarType.view =>
-        colors.textDefault,
-      _ => colors.textInverse,
+        colors.mainDefault,
+      _ => colors.mainInverse,
     };
   }
 
@@ -237,7 +237,7 @@ class _Action extends StatelessWidget {
         return switch (type) {
           ZetaSnackBarType.defaultType => _IconButton(
               onPressed: () => ScaffoldMessenger.of(context).removeCurrentSnackBar(),
-              color: colors.iconInverse,
+              color: colors.surfaceDefaultInverse,
             ),
           ZetaSnackBarType.action => _ActionButton(
               onPressed: onPressed,
@@ -250,22 +250,22 @@ class _Action extends StatelessWidget {
           ZetaSnackBarType.error =>
             _IconButton(
               onPressed: () => ScaffoldMessenger.of(context).removeCurrentSnackBar(),
-              color: colors.cool.shade90,
+              color: colors.mainDefault,
             ),
           ZetaSnackBarType.deletion => _ActionButton(
               onPressed: onPressed,
               label: label,
-              color: colors.cool.shade90,
+              color: colors.mainDefault,
             ),
           ZetaSnackBarType.view => _ActionButton(
               onPressed: onPressed,
               label: label,
-              color: colors.cool.shade90,
+              color: colors.mainDefault,
             ),
           _ => _ActionButton(
               onPressed: onPressed,
               label: label,
-              color: colors.blue.shade50,
+              color: colors.borderPrimaryMain,
             ),
         };
       }(),
@@ -366,14 +366,14 @@ class _LeadingIcon extends StatelessWidget {
     properties.add(EnumProperty<ZetaSnackBarType?>('type', type));
   }
 
-  Color _getIconColor(ZetaColors colors, ZetaSnackBarType? type) {
+  Color _getIconColor(ZetaColorSemantics colors, ZetaSnackBarType? type) {
     return switch (type) {
       ZetaSnackBarType.positive => colors.surfacePositive,
       ZetaSnackBarType.info => colors.surfaceInfo,
       ZetaSnackBarType.warning => colors.surfaceWarning,
       ZetaSnackBarType.error || ZetaSnackBarType.deletion => colors.surfaceNegative,
-      ZetaSnackBarType.view => colors.primary,
-      _ => colors.iconInverse,
+      ZetaSnackBarType.view => colors.mainPrimary,
+      _ => colors.mainInverse,
     };
   }
 

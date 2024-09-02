@@ -186,7 +186,6 @@ class ZetaButton extends ZetaStatelessWidget {
             context,
             borderType ?? (context.rounded ? ZetaWidgetBorder.rounded : ZetaWidgetBorder.sharp),
             type,
-            null,
           ),
           child: SelectionContainer.disabled(
             child: Row(

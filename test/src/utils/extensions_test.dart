@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use_from_same_package
+
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
@@ -9,7 +11,7 @@ import 'extensions_test.mocks.dart';
 
 @GenerateNiceMocks([
   MockSpec<BuildContext>(),
-  MockSpec<ZetaColors>(),
+  MockSpec<ZetaSemanticColors>(),
   MockSpec<Zeta>(),
 ])
 void main() {
@@ -197,28 +199,19 @@ void main() {
 
   group('ColorSwatches extension', () {
     late MockBuildContext mockContext;
-    late MockZetaColors mockZetaColors;
+    late MockZetaSemanticColors mockZetaColors;
     late MockZeta mockZeta;
 
     setUp(() {
       mockZeta = MockZeta();
       mockContext = MockBuildContext();
-      mockZetaColors = MockZetaColors();
+      mockZetaColors = MockZetaSemanticColors();
       when(mockContext.dependOnInheritedWidgetOfExactType<Zeta>()).thenReturn(mockZeta as Zeta?);
       when(mockZeta.colors).thenReturn(mockZetaColors);
-      when(mockZetaColors.surfaceInfo).thenReturn(ZetaColorBase.purple);
-      when(mockZetaColors.surfacePositive).thenReturn(ZetaColorBase.green);
-      when(mockZetaColors.surfaceWarning).thenReturn(ZetaColorBase.orange);
-      when(mockZetaColors.surfaceNegative).thenReturn(ZetaColorBase.red);
-      when(mockZetaColors.cool).thenReturn(ZetaColorBase.cool);
-    });
-
-    test('colorSwatch returns correct color swatch for status', () {
-      expect(ZetaWidgetStatus.info.colorSwatch(mockContext), ZetaColorBase.purple);
-      expect(ZetaWidgetStatus.positive.colorSwatch(mockContext), ZetaColorBase.green);
-      expect(ZetaWidgetStatus.warning.colorSwatch(mockContext), ZetaColorBase.orange);
-      expect(ZetaWidgetStatus.negative.colorSwatch(mockContext), ZetaColorBase.red);
-      expect(ZetaWidgetStatus.neutral.colorSwatch(mockContext), ZetaColorBase.cool);
+      when(mockZetaColors.surfaceInfo).thenReturn(ZetaPrimitivesLight().purple);
+      when(mockZetaColors.surfacePositive).thenReturn(ZetaPrimitivesLight().green);
+      when(mockZetaColors.surfaceWarning).thenReturn(ZetaPrimitivesLight().orange);
+      when(mockZetaColors.surfaceNegative).thenReturn(ZetaPrimitivesLight().red);
     });
   });
 

@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use_from_same_package
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -17,7 +19,7 @@ class Zeta extends InheritedWidget {
     required Brightness mediaBrightness,
     required this.contrast,
     required this.themeMode,
-    required this.themeData,
+    this.themeData,
     required super.child,
     this.rounded = true,
   }) : _mediaBrightness = mediaBrightness;
@@ -32,7 +34,7 @@ class Zeta extends InheritedWidget {
   final ThemeMode themeMode;
 
   /// Provides the theme data for the app, which contains all the theming information.
-  final ZetaThemeData themeData;
+  final ZetaThemeData? themeData;
 
   /// Internal property to get the system brightness.
   /// Used to determine the theme mode when it's set to [ThemeMode.system].
@@ -49,13 +51,17 @@ class Zeta extends InheritedWidget {
   ///
   /// It determines the appropriate color set (light or dark) based on the theme mode
   /// and system brightness.
-  ZetaColors get colors {
-    if (themeMode == ThemeMode.system) {
-      return _mediaBrightness == Brightness.light ? themeData.colorsLight : themeData.colorsDark;
-    } else if (themeMode == ThemeMode.light) {
-      return themeData.colorsLight;
+  ZetaColorSemantics get colors {
+    if (themeData == null) {
+      return _semantics.colors;
     } else {
-      return themeData.colorsDark;
+      if (themeMode == ThemeMode.system) {
+        return _mediaBrightness == Brightness.light ? themeData!.colorsLight : themeData!.colorsDark;
+      } else if (themeMode == ThemeMode.light) {
+        return themeData!.colorsLight;
+      } else {
+        return themeData!.colorsDark;
+      }
     }
   }
 
@@ -135,9 +141,9 @@ class Zeta extends InheritedWidget {
     properties
       ..add(EnumProperty<ThemeMode>('themeMode', themeMode))
       ..add(EnumProperty<ZetaContrast>('contrast', contrast))
-      ..add(DiagnosticsProperty<ZetaThemeData>('themeData', themeData))
+      ..add(DiagnosticsProperty<ZetaThemeData?>('themeData', themeData))
       ..add(DiagnosticsProperty<bool>('rounded', rounded))
-      ..add(DiagnosticsProperty<ZetaColors>('colors', colors))
+      ..add(DiagnosticsProperty<ZetaColorSemantics>('colors', colors))
       ..add(EnumProperty<Brightness>('brightness', brightness))
       ..add(DiagnosticsProperty<ZetaRadiiSemantics>('radius', radius))
       ..add(DiagnosticsProperty<ZetaSpacingSemantics>('spacing', spacing));

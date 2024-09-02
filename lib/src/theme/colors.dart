@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
+import '../../generated/generated.dart';
 import 'color_extensions.dart';
 import 'color_scheme.dart';
 import 'color_swatch.dart';
@@ -10,8 +11,10 @@ import 'contrast.dart';
 /// A customizable, token-based color palette, adapting Zeta colors to Flutter's colorScheme.
 /// {@category Theme}
 @immutable
-class ZetaColors extends Equatable {
+@Deprecated('This has been deprecated as of 0.16.0')
+class ZetaColors extends Equatable implements ZetaColorSemantics {
   /// Default constructor for instance of [ZetaColors].
+  @Deprecated('This has been deprecated as of 0.16.0')
   ZetaColors({
     this.brightness = Brightness.light,
     this.contrast = ZetaContrast.aa,
@@ -22,20 +25,17 @@ class ZetaColors extends Equatable {
     ZetaColorSwatch? error,
     ZetaColorSwatch? cool,
     ZetaColorSwatch? warm,
-    ZetaColorSwatch? pure,
+    ZetaPureColorSwatch? pure,
     Color? surfacePrimary,
     Color? surfaceSecondary,
     Color? surfaceTertiary,
     bool adjust = true,
-    @Deprecated('This color has been deprecated as of v0.10.0') link,
-    @Deprecated('This color has been deprecated as of v0.10.0') linkVisited,
-    @Deprecated('This color has been deprecated as of v0.10.0') shadow,
   })  : primary = _adjustedValue(primary, ZetaColorBase.blue, adjust, brightness, contrast),
         secondary = _adjustedValue(secondary, primary ?? ZetaColorBase.yellow, adjust, brightness, contrast),
         error = _adjustedValue(error, ZetaColorBase.red, adjust, brightness, contrast),
         cool = _adjustedValue(cool, ZetaColorBase.cool, adjust, brightness, ZetaContrast.aa),
         warm = _adjustedValue(warm, ZetaColorBase.warm, adjust, brightness, ZetaContrast.aa),
-        pure = _adjustedValue(pure, ZetaColorBase.pure, adjust, brightness, ZetaContrast.aa),
+        pure = _adjustedValuePure(pure, ZetaColorBase.pure, adjust, brightness, ZetaContrast.aa),
         surfacePrimary = surfacePrimary ?? white,
         surfaceSecondary = surfaceSecondary ??
             _adjustedValue(
@@ -74,6 +74,7 @@ class ZetaColors extends Equatable {
   /// [warm] A color swatch for warmer color tones. Defaults to null.
   /// [white] A color option for white color. Defaults to null.
   /// [black] A color option for black color. Defaults to null.
+  @Deprecated('This has been deprecated as of 0.16.0')
   factory ZetaColors.light({
     ZetaContrast contrast = ZetaContrast.aa,
     ZetaColorSwatch? primary,
@@ -114,6 +115,7 @@ class ZetaColors extends Equatable {
   /// [warm] A color swatch for warmer color tones. Defaults to null.
   /// [white] A color option for white color. Defaults to null.
   /// [black] A color option for black color. Defaults to null.
+  @Deprecated('This has been deprecated as of 0.16.0')
   factory ZetaColors.dark({
     ZetaContrast contrast = ZetaContrast.aa,
     ZetaColorSwatch? primary,
@@ -142,42 +144,6 @@ class ZetaColors extends Equatable {
       surfacePrimary: black ?? ZetaColorBase.black,
     );
   }
-
-  /// Hover surface color.
-  @Deprecated('Use surfaceHover instead. ' 'This color has been deprecated as of v0.10.0.')
-  Color get surfaceHovered => surfaceHover;
-
-  /// Selected hover surface color.
-  @Deprecated('Use surfaceSelectedHover instead. ' 'This color has been deprecated as of v0.10.0.')
-  Color get surfaceSelectedHovered => surfaceSelectedHover;
-
-  /// Positive color.
-  @Deprecated('Use surfacePositive instead. ' 'This color has been deprecated as of v0.10.0.')
-  ZetaColorSwatch get positive => surfacePositive;
-
-  /// Negative color.
-  @Deprecated('Use surfaceNegative instead. ' 'This color has been deprecated as of v0.10.0.')
-  ZetaColorSwatch get negative => surfaceNegative;
-
-  /// Warning color.
-  @Deprecated('Use surfaceWarning instead. ' 'This color has been deprecated as of v0.10.0.')
-  ZetaColorSwatch get warning => surfaceWarning;
-
-  /// Info color.
-  @Deprecated('Use surfaceInfo instead. ' 'This color has been deprecated as of v0.10.0.')
-  ZetaColorSwatch get info => surfaceInfo;
-
-  /// Shadow color.
-  @Deprecated('This color has been deprecated as of v0.10.0.')
-  Color get shadow => const Color(0x1A49505E);
-
-  /// Link color
-  @Deprecated('This color has been deprecated as of v0.10.0.')
-  Color get link => ZetaColorBase.linkLight;
-
-  /// Visited link color
-  @Deprecated('This color has been deprecated as of v0.10.0.')
-  Color get linkVisited => ZetaColorBase.linkVisitedLight;
 
   /// Constructor Fields
 
@@ -227,7 +193,7 @@ class ZetaColors extends Equatable {
   /// Defaults to [ZetaColorBase.pure].
   ///
   /// {@macro zeta-color-dark}
-  final ZetaColorSwatch pure;
+  final ZetaPureColorSwatch pure;
 
   /// White color.
   ///
@@ -249,11 +215,13 @@ class ZetaColors extends Equatable {
   ///
   /// * Light mode: `ZetaColors.black`
   /// * Dark mode: `ZetaColors.white`.
+  @override
   final Color surfacePrimary;
 
   /// Secondary surface color.
   ///
   /// * `ZetaColors.cool.10`.
+  @override
   final Color surfaceSecondary;
 
   /// Tertiary surface color.
@@ -334,191 +302,229 @@ class ZetaColors extends Equatable {
   ///  Default Surface Color
   ///
   /// {@macro zeta-color-dark}
+  @override
   Color get surfaceDefault => pure.shade(0);
 
   ///  Default-inverse Surface Color
   ///
   /// {@macro zeta-color-dark}
+  @override
   Color get surfaceDefaultInverse => warm.shade(100);
 
   ///  Hover Surface Color
   ///
   /// {@macro zeta-color-dark}
+  @override
   Color get surfaceHover => cool.shade(20);
 
   ///  Selected Surface Color
   ///
   /// {@macro zeta-color-dark}
+  @override
   Color get surfaceSelected => primary.shade(10);
 
   ///  Selected-hover Surface Color
   ///
   /// {@macro zeta-color-dark}
+  @override
   Color get surfaceSelectedHover => primary.shade(20);
 
   ///  Disabled Surface Color
   ///
   /// {@macro zeta-color-dark}
+  @override
   Color get surfaceDisabled => cool.shade(30);
 
   ///  Cool Surface Color
   ///
   /// {@macro zeta-color-dark}
+  @override
   Color get surfaceCool => cool.shade(10);
 
   ///  Warm Surface Color
   ///
   /// {@macro zeta-color-dark}
+  @override
   Color get surfaceWarm => warm.shade(10);
 
   ///  Primary-subtle Surface Color
   ///
   /// {@macro zeta-color-dark}
+  @override
   Color get surfacePrimarySubtle => primary.shade(10);
 
   /// Avatar Avatar Surface Color
   ///
   /// {@macro zeta-color-dark}
+  @override
   Color get surfaceAvatarBlue => blue.shade(80);
 
   /// Avatar Avatar Surface Color
   ///
   /// {@macro zeta-color-dark}
+  @override
   ZetaColorSwatch get surfaceAvatarGreen => green;
 
   /// Avatar Avatar Surface Color
   ///
   /// {@macro zeta-color-dark}
+  @override
   Color get surfaceAvatarOrange => orange.shade(50);
 
   /// Avatar Avatar Surface Color
   ///
   /// {@macro zeta-color-dark}
+  @override
   Color get surfaceAvatarPink => pink.shade(80);
 
   /// Avatar Avatar Surface Color
   ///
   /// {@macro zeta-color-dark}
+  @override
   Color get surfaceAvatarPurple => purple.shade(80);
 
   /// Avatar Avatar Surface Color
   ///
   /// {@macro zeta-color-dark}
+  @override
   Color get surfaceAvatarTeal => teal.shade(80);
 
   /// Avatar Avatar Surface Color
   ///
   /// {@macro zeta-color-dark}
+  @override
   Color get surfaceAvatarYellow => yellow.shade(50);
 
   ///  Secondary-subtle Surface Color
   ///
   /// {@macro zeta-color-dark}
+  @override
   Color get surfaceSecondarySubtle => secondary.shade(10);
 
   ///  Positive Surface Color
   ///
   /// {@macro zeta-color-dark}
+  @override
   ZetaColorSwatch get surfacePositive => green;
 
   ///  Positive-subtle Surface Color
   ///
   /// {@macro zeta-color-dark}
+  @override
   Color get surfacePositiveSubtle => green.shade(10);
 
   ///  Warning Surface Color
   ///
   /// {@macro zeta-color-dark}
+  @override
   ZetaColorSwatch get surfaceWarning => orange;
 
   ///  Warning-subtle Surface Color
   ///
   /// {@macro zeta-color-dark}
+  @override
   Color get surfaceWarningSubtle => orange.shade(10);
 
   ///  Negative Surface Color
   ///
   /// {@macro zeta-color-dark}
+  @override
   ZetaColorSwatch get surfaceNegative => red;
 
   ///  Negative-subtle Surface Color
   ///
   /// {@macro zeta-color-dark}
+  @override
   Color get surfaceNegativeSubtle => red.shade(10);
 
   ///  Info Surface Color
   ///
   /// {@macro zeta-color-dark}
+  @override
   ZetaColorSwatch get surfaceInfo => purple;
 
   ///  Info-subtle Surface Color
   ///
   /// {@macro zeta-color-dark}
+  @override
   Color get surfaceInfoSubtle => purple.shade(10);
 
   ///  Default Border Color
   ///
   /// {@macro zeta-color-dark}
+  @override
   Color get borderDefault => cool.shade(40);
 
   ///  Subtle Border Color
   ///
   /// {@macro zeta-color-dark}
+  @override
   Color get borderSubtle => cool.shade(30);
 
   ///  Hover Border Color
   ///
   /// {@macro zeta-color-dark}
+  @override
   Color get borderHover => cool.shade(90);
 
   ///  Selected Border Color
   ///
   /// {@macro zeta-color-dark}
+  @override
   Color get borderSelected => cool.shade(90);
 
   ///  Disabled Border Color
   ///
   /// {@macro zeta-color-dark}
+  @override
   Color get borderDisabled => cool.shade(20);
 
   ///  Pure Border Color
   ///
   /// {@macro zeta-color-dark}
+  @override
   Color get borderPure => pure.shade(0);
 
   ///  Primary-main Border Color
   ///
   /// {@macro zeta-color-dark}
+  @override
   ZetaColorSwatch get borderPrimaryMain => primary;
 
   ///  Primary Border Color
   ///
   /// {@macro zeta-color-dark}
+  @override
   Color get borderPrimary => primary.shade(50);
 
   ///  Secondary Border Color
   ///
   /// {@macro zeta-color-dark}
+  @override
   Color get borderSecondary => secondary.shade(50);
 
   ///  Positive Border Color
   ///
   /// {@macro zeta-color-dark}
+  @override
   Color get borderPositive => green.shade(50);
 
   ///  Warning Border Color
   ///
   /// {@macro zeta-color-dark}
+  @override
   Color get borderWarning => orange.shade(50);
 
   ///  Negative Border Color
   ///
   /// {@macro zeta-color-dark}
+  @override
   Color get borderNegative => red.shade(50);
 
   ///  Info Border Color
   ///
   /// {@macro zeta-color-dark}
+  @override
   Color get borderInfo => purple.shade(50);
 
   /// Blue color swatch
@@ -526,6 +532,7 @@ class ZetaColors extends Equatable {
   /// Defaults to [ZetaColorBase.blue]
   ///
   /// {@macro zeta-color-dark}
+  @Deprecated('Use `Zeta.of(context).primitives.blue` instead.')
   final ZetaColorSwatch blue;
 
   /// Green color swatch
@@ -598,6 +605,17 @@ class ZetaColors extends Equatable {
   static ZetaColorSwatch _adjustedValue(
     ZetaColorSwatch? value,
     ZetaColorSwatch defaultValue,
+    bool adjust,
+    Brightness brightness,
+    ZetaContrast contrast,
+  ) {
+    final swatch = value ?? defaultValue;
+    return adjust ? swatch.apply(brightness: brightness, contrast: contrast) : swatch;
+  }
+
+  static ZetaPureColorSwatch _adjustedValuePure(
+    ZetaPureColorSwatch? value,
+    ZetaPureColorSwatch defaultValue,
     bool adjust,
     Brightness brightness,
     ZetaContrast contrast,
@@ -701,6 +719,209 @@ class ZetaColors extends Equatable {
         surfaceSecondary,
         surfaceTertiary,
       ];
+
+  @override
+  Color get mainDefault => contrast == ZetaContrast.aa
+      ? ZetaSemanticColorsAA(primitives: primitives).mainDefault
+      : ZetaSemanticColorsAAA(primitives: primitives).mainDefault;
+
+  @override
+  Color get mainDisabled => contrast == ZetaContrast.aa
+      ? ZetaSemanticColorsAA(primitives: primitives).mainDisabled
+      : ZetaSemanticColorsAAA(primitives: primitives).mainDisabled;
+
+  @override
+  Color get mainInfo => contrast == ZetaContrast.aa
+      ? ZetaSemanticColorsAA(primitives: primitives).mainInfo
+      : ZetaSemanticColorsAAA(primitives: primitives).mainInfo;
+
+  @override
+  Color get mainInverse => contrast == ZetaContrast.aa
+      ? ZetaSemanticColorsAA(primitives: primitives).mainInverse
+      : ZetaSemanticColorsAAA(primitives: primitives).mainInverse;
+
+  @override
+  Color get mainLight => contrast == ZetaContrast.aa
+      ? ZetaSemanticColorsAA(primitives: primitives).mainLight
+      : ZetaSemanticColorsAAA(primitives: primitives).mainLight;
+
+  @override
+  Color get mainNegative => contrast == ZetaContrast.aa
+      ? ZetaSemanticColorsAA(primitives: primitives).mainNegative
+      : ZetaSemanticColorsAAA(primitives: primitives).mainNegative;
+
+  @override
+  Color get mainPositive => contrast == ZetaContrast.aa
+      ? ZetaSemanticColorsAA(primitives: primitives).mainPositive
+      : ZetaSemanticColorsAAA(primitives: primitives).mainPositive;
+
+  @override
+  Color get mainPrimary => contrast == ZetaContrast.aa
+      ? ZetaSemanticColorsAA(primitives: primitives).mainPrimary
+      : ZetaSemanticColorsAAA(primitives: primitives).mainPrimary;
+
+  @override
+  Color get mainSecondary => contrast == ZetaContrast.aa
+      ? ZetaSemanticColorsAA(primitives: primitives).mainSecondary
+      : ZetaSemanticColorsAAA(primitives: primitives).mainSecondary;
+
+  @override
+  Color get mainSubtle => contrast == ZetaContrast.aa
+      ? ZetaSemanticColorsAA(primitives: primitives).mainSubtle
+      : ZetaSemanticColorsAAA(primitives: primitives).mainSubtle;
+
+  @override
+  Color get mainWarning => contrast == ZetaContrast.aa
+      ? ZetaSemanticColorsAA(primitives: primitives).mainWarning
+      : ZetaSemanticColorsAAA(primitives: primitives).mainWarning;
+
+  @override
+  Color get stateDefaultEnabled => contrast == ZetaContrast.aa
+      ? ZetaSemanticColorsAA(primitives: primitives).stateDefaultEnabled
+      : ZetaSemanticColorsAAA(primitives: primitives).stateDefaultEnabled;
+
+  @override
+  Color get stateDefaultFocus => contrast == ZetaContrast.aa
+      ? ZetaSemanticColorsAA(primitives: primitives).stateDefaultFocus
+      : ZetaSemanticColorsAAA(primitives: primitives).stateDefaultFocus;
+
+  @override
+  Color get stateDefaultHover => contrast == ZetaContrast.aa
+      ? ZetaSemanticColorsAA(primitives: primitives).stateDefaultHover
+      : ZetaSemanticColorsAAA(primitives: primitives).stateDefaultHover;
+
+  @override
+  Color get stateDefaultSelected => contrast == ZetaContrast.aa
+      ? ZetaSemanticColorsAA(primitives: primitives).stateDefaultSelected
+      : ZetaSemanticColorsAAA(primitives: primitives).stateDefaultSelected;
+
+  @override
+  Color get stateDisabledDisabled => contrast == ZetaContrast.aa
+      ? ZetaSemanticColorsAA(primitives: primitives).stateDisabledDisabled
+      : ZetaSemanticColorsAAA(primitives: primitives).stateDisabledDisabled;
+
+  @override
+  Color get stateInfoEnabled => contrast == ZetaContrast.aa
+      ? ZetaSemanticColorsAA(primitives: primitives).stateInfoEnabled
+      : ZetaSemanticColorsAAA(primitives: primitives).stateInfoEnabled;
+
+  @override
+  Color get stateInfoFocus => contrast == ZetaContrast.aa
+      ? ZetaSemanticColorsAA(primitives: primitives).stateInfoFocus
+      : ZetaSemanticColorsAAA(primitives: primitives).stateInfoFocus;
+
+  @override
+  Color get stateInfoHover => contrast == ZetaContrast.aa
+      ? ZetaSemanticColorsAA(primitives: primitives).stateInfoHover
+      : ZetaSemanticColorsAAA(primitives: primitives).stateInfoHover;
+
+  @override
+  Color get stateInfoSelected => contrast == ZetaContrast.aa
+      ? ZetaSemanticColorsAA(primitives: primitives).stateInfoSelected
+      : ZetaSemanticColorsAAA(primitives: primitives).stateInfoSelected;
+
+  @override
+  Color get stateInverseEnabled => contrast == ZetaContrast.aa
+      ? ZetaSemanticColorsAA(primitives: primitives).stateInverseEnabled
+      : ZetaSemanticColorsAAA(primitives: primitives).stateInverseEnabled;
+
+  @override
+  Color get stateInverseFocus => contrast == ZetaContrast.aa
+      ? ZetaSemanticColorsAA(primitives: primitives).stateInverseFocus
+      : ZetaSemanticColorsAAA(primitives: primitives).stateInverseFocus;
+
+  @override
+  Color get stateInverseHover => contrast == ZetaContrast.aa
+      ? ZetaSemanticColorsAA(primitives: primitives).stateInverseHover
+      : ZetaSemanticColorsAAA(primitives: primitives).stateInverseHover;
+
+  @override
+  Color get stateInverseSelected => contrast == ZetaContrast.aa
+      ? ZetaSemanticColorsAA(primitives: primitives).stateInverseSelected
+      : ZetaSemanticColorsAAA(primitives: primitives).stateInverseSelected;
+
+  @override
+  Color get stateNegativeEnabled => contrast == ZetaContrast.aa
+      ? ZetaSemanticColorsAA(primitives: primitives).stateNegativeEnabled
+      : ZetaSemanticColorsAAA(primitives: primitives).stateNegativeEnabled;
+
+  @override
+  Color get stateNegativeFocus => contrast == ZetaContrast.aa
+      ? ZetaSemanticColorsAA(primitives: primitives).stateNegativeFocus
+      : ZetaSemanticColorsAAA(primitives: primitives).stateNegativeFocus;
+
+  @override
+  Color get stateNegativeHover => contrast == ZetaContrast.aa
+      ? ZetaSemanticColorsAA(primitives: primitives).stateNegativeHover
+      : ZetaSemanticColorsAAA(primitives: primitives).stateNegativeHover;
+
+  @override
+  Color get stateNegativeSelected => contrast == ZetaContrast.aa
+      ? ZetaSemanticColorsAA(primitives: primitives).stateNegativeSelected
+      : ZetaSemanticColorsAAA(primitives: primitives).stateNegativeSelected;
+
+  @override
+  Color get statePositiveEnabled => contrast == ZetaContrast.aa
+      ? ZetaSemanticColorsAA(primitives: primitives).statePositiveEnabled
+      : ZetaSemanticColorsAAA(primitives: primitives).statePositiveEnabled;
+
+  @override
+  Color get statePositiveFocus => contrast == ZetaContrast.aa
+      ? ZetaSemanticColorsAA(primitives: primitives).statePositiveFocus
+      : ZetaSemanticColorsAAA(primitives: primitives).statePositiveFocus;
+
+  @override
+  Color get statePositiveHover => contrast == ZetaContrast.aa
+      ? ZetaSemanticColorsAA(primitives: primitives).statePositiveHover
+      : ZetaSemanticColorsAAA(primitives: primitives).statePositiveHover;
+
+  @override
+  Color get statePositiveSelected => contrast == ZetaContrast.aa
+      ? ZetaSemanticColorsAA(primitives: primitives).statePositiveSelected
+      : ZetaSemanticColorsAAA(primitives: primitives).statePositiveSelected;
+
+  @override
+  Color get statePrimaryEnabled => contrast == ZetaContrast.aa
+      ? ZetaSemanticColorsAA(primitives: primitives).statePrimaryEnabled
+      : ZetaSemanticColorsAAA(primitives: primitives).statePrimaryEnabled;
+
+  @override
+  Color get statePrimaryFocus => contrast == ZetaContrast.aa
+      ? ZetaSemanticColorsAA(primitives: primitives).statePrimaryFocus
+      : ZetaSemanticColorsAAA(primitives: primitives).statePrimaryFocus;
+
+  @override
+  Color get statePrimaryHover => contrast == ZetaContrast.aa
+      ? ZetaSemanticColorsAA(primitives: primitives).statePrimaryHover
+      : ZetaSemanticColorsAAA(primitives: primitives).statePrimaryHover;
+
+  @override
+  Color get statePrimarySelected => contrast == ZetaContrast.aa
+      ? ZetaSemanticColorsAA(primitives: primitives).statePrimarySelected
+      : ZetaSemanticColorsAAA(primitives: primitives).statePrimarySelected;
+
+  @override
+  Color get stateSecondaryEnabled => contrast == ZetaContrast.aa
+      ? ZetaSemanticColorsAA(primitives: primitives).stateSecondaryEnabled
+      : ZetaSemanticColorsAAA(primitives: primitives).stateSecondaryEnabled;
+
+  @override
+  Color get stateSecondaryFocus => contrast == ZetaContrast.aa
+      ? ZetaSemanticColorsAA(primitives: primitives).stateSecondaryFocus
+      : ZetaSemanticColorsAAA(primitives: primitives).stateSecondaryFocus;
+
+  @override
+  Color get stateSecondaryHover => contrast == ZetaContrast.aa
+      ? ZetaSemanticColorsAA(primitives: primitives).stateSecondaryHover
+      : ZetaSemanticColorsAAA(primitives: primitives).stateSecondaryHover;
+
+  @override
+  Color get stateSecondarySelected => contrast == ZetaContrast.aa
+      ? ZetaSemanticColorsAA(primitives: primitives).stateSecondarySelected
+      : ZetaSemanticColorsAAA(primitives: primitives).stateSecondarySelected;
+
+  @override
+  ZetaPrimitives get primitives => brightness == Brightness.dark ? ZetaPrimitivesDark() : ZetaPrimitivesLight();
 }
 
 enum _ZetaColorProperties {
@@ -736,6 +957,7 @@ enum _ZetaColorProperties {
 /// Custom extension on ColorScheme which makes  [ZetaColors] available through theme context.
 ///
 /// A customizable, token-based color palette, adapting Zeta colors to Flutter's colorScheme.
+@Deprecated('This has been deprecated as of 0.16.0')
 extension ZetaColorGetters on ColorScheme {
   ZetaColorScheme? get _resolve => this is ZetaColorScheme ? this as ZetaColorScheme : null;
 

@@ -80,7 +80,7 @@ class _GlobalHeaderState extends State<ZetaGlobalHeader> {
               vertical: Zeta.of(context).spacing.medium,
               horizontal: Zeta.of(context).spacing.large,
             ),
-            decoration: BoxDecoration(color: colors.surfacePrimary),
+            decoration: BoxDecoration(color: colors.surfaceDefault),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

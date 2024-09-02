@@ -164,7 +164,7 @@ class ZetaNavigationBar extends ZetaStatelessWidget {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: Zeta.of(context).spacing.medium),
       decoration: BoxDecoration(
-        color: colors.surfacePrimary,
+        color: colors.surfaceDefault,
         border: Border(top: BorderSide(color: colors.borderSubtle)),
       ),
       child: Semantics(
@@ -200,7 +200,7 @@ class _NavigationItem extends ZetaStatelessWidget {
   final BuildContext context;
 
   Widget get badge {
-    final ZetaColors colors = Zeta.of(context).colors;
+    final colors = Zeta.of(context).colors;
     return Positioned(
       top: Zeta.of(context).spacing.minimum,
       right: Zeta.of(context).spacing.minimum,
@@ -224,10 +224,10 @@ class _NavigationItem extends ZetaStatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = Zeta.of(context).colors;
-    final elementColor = selected ? colors.primary : colors.textSubtle;
+    final elementColor = selected ? colors.surfacePrimary : colors.mainSubtle;
 
     return Material(
-      color: colors.surfacePrimary,
+      color: colors.surfaceDefault,
       child: InkWell(
         borderRadius: context.rounded ? Zeta.of(context).radius.rounded : Zeta.of(context).radius.none,
         onTap: onTap,

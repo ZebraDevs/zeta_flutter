@@ -10,6 +10,7 @@ class TestApp extends StatelessWidget {
     this.themeMode,
     this.removeBody = true,
     this.rounded,
+    this.contrast,
   });
 
   final Widget home;
@@ -17,12 +18,14 @@ class TestApp extends StatelessWidget {
   final ThemeMode? themeMode;
   final bool removeBody;
   final bool? rounded;
+  final ZetaContrast? contrast;
 
   @override
   Widget build(BuildContext context) {
     return ZetaProvider.base(
       initialThemeMode: themeMode ?? ThemeMode.system,
       initialRounded: rounded ?? true,
+      initialContrast: contrast ?? ZetaContrast.aa,
       builder: (context, lightTheme, darkTheme, themeMode) {
         return MaterialApp(
           theme: lightTheme,
@@ -52,6 +55,7 @@ class TestApp extends StatelessWidget {
       ..add(DiagnosticsProperty<Size?>('screenSize', screenSize))
       ..add(EnumProperty<ThemeMode?>('themeMode', themeMode))
       ..add(DiagnosticsProperty<bool>('removeBody', removeBody))
-      ..add(DiagnosticsProperty<bool?>('rounded', rounded));
+      ..add(DiagnosticsProperty<bool?>('rounded', rounded))
+      ..add(EnumProperty<ZetaContrast?>('contrast', contrast));
   }
 }

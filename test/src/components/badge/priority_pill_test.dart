@@ -110,10 +110,10 @@ void main() {
   });
   testWidgets('debugFillProperties works correctly', (WidgetTester tester) async {
     final diagnostics = DiagnosticPropertiesBuilder();
-    const ZetaPriorityPill(
+    ZetaPriorityPill(
       label: 'Test label',
       rounded: false,
-      customColor: ZetaColorBase.blue,
+      customColor: ZetaPrimitivesLight().blue,
       index: '1',
     ).debugFillProperties(diagnostics);
 

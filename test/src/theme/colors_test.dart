@@ -19,15 +19,15 @@ void main() {
       expect(zetaColors.cool, isNotNull);
       expect(zetaColors.warm, isNotNull);
       expect(zetaColors.pure, isNotNull);
-      expect(zetaColors.surfacePrimary, ZetaColorBase.white);
+      expect(zetaColors.surfaceDefault, ZetaColorBase.white);
       expect(zetaColors.surfaceSecondary, isNotNull);
       expect(zetaColors.surfaceTertiary, isNotNull);
     });
 
     test('light constructor initializes correctly', () {
       final zetaColors = ZetaColors.light(
-        warm: ZetaColorBase.warm,
-        cool: ZetaColorBase.cool,
+        warm: ZetaPrimitivesLight().warm,
+        cool: ZetaPrimitivesLight().cool,
       );
 
       expect(zetaColors.brightness, Brightness.light);
@@ -40,15 +40,15 @@ void main() {
       expect(zetaColors.cool, isNotNull);
       expect(zetaColors.warm, isNotNull);
       expect(zetaColors.pure, isNotNull);
-      expect(zetaColors.surfacePrimary, ZetaColorBase.white);
+      expect(zetaColors.surfaceDefault, ZetaColorBase.white);
       expect(zetaColors.surfaceSecondary, isNotNull);
       expect(zetaColors.surfaceTertiary, isNotNull);
     });
 
     test('dark constructor initializes correctly', () {
       final zetaColors = ZetaColors.dark(
-        warm: ZetaColorBase.warm,
-        cool: ZetaColorBase.cool,
+        warm: ZetaPrimitivesLight().warm,
+        cool: ZetaPrimitivesLight().cool,
       );
 
       expect(zetaColors.brightness, Brightness.dark);
@@ -61,7 +61,7 @@ void main() {
       expect(zetaColors.cool, isNotNull);
       expect(zetaColors.warm, isNotNull);
       expect(zetaColors.pure, isNotNull);
-      expect(zetaColors.surfacePrimary, ZetaColorBase.black);
+      expect(zetaColors.surfaceDefault, ZetaPrimitivesDark().pure.shade0);
       expect(zetaColors.surfaceSecondary, isNotNull);
       expect(zetaColors.surfaceTertiary, isNotNull);
     });
@@ -71,15 +71,21 @@ void main() {
       final newColors = zetaColors.copyWith(
         brightness: Brightness.dark,
         contrast: ZetaContrast.aaa,
-        primary: ZetaColorBase.green,
-        secondary: ZetaColorBase.orange,
+        primary: ZetaPrimitivesLight().green,
+        secondary: ZetaPrimitivesLight().orange,
       );
 
       expect(newColors.isDarkMode, true);
       expect(newColors.brightness, Brightness.dark);
       expect(newColors.contrast, ZetaContrast.aaa);
-      expect(newColors.primary, ZetaColorBase.green.apply(brightness: Brightness.dark, contrast: ZetaContrast.aaa));
-      expect(newColors.secondary, ZetaColorBase.orange.apply(brightness: Brightness.dark, contrast: ZetaContrast.aaa));
+      expect(
+        newColors.primary,
+        ZetaPrimitivesLight().green.apply(brightness: Brightness.dark, contrast: ZetaContrast.aaa),
+      );
+      expect(
+        newColors.secondary,
+        ZetaPrimitivesLight().orange.apply(brightness: Brightness.dark, contrast: ZetaContrast.aaa),
+      );
       expect(newColors.white, zetaColors.white);
       expect(newColors.black, zetaColors.black);
     });
@@ -124,73 +130,59 @@ void main() {
       expect(scheme.brightness, zetaColors.brightness);
       expect(scheme.primary, zetaColors.primary.shade(zetaColors.contrast.primary));
       expect(scheme.secondary, zetaColors.secondary.shade(zetaColors.contrast.primary));
-      expect(scheme.surface, zetaColors.surfacePrimary);
+      expect(scheme.surface, zetaColors.surfaceDefault);
       expect(scheme.error, zetaColors.error);
     });
 
     test('Color getter returns correct values', () {
       final zetaColors = ZetaColors();
 
-      expect(zetaColors.textDefault, ZetaColorBase.cool.shade90);
-      expect(zetaColors.textSubtle, ZetaColorBase.cool.shade70);
-      expect(zetaColors.textDisabled, ZetaColorBase.cool.shade50);
-      expect(zetaColors.textInverse, ZetaColorBase.cool.shade20);
-      expect(zetaColors.iconDefault, ZetaColorBase.cool.shade90);
-      expect(zetaColors.iconSubtle, ZetaColorBase.cool.shade70);
-      expect(zetaColors.iconDisabled, ZetaColorBase.cool.shade50);
-      expect(zetaColors.iconInverse, ZetaColorBase.cool.shade20);
-      expect(zetaColors.surfaceDefault, ZetaColorBase.pure.shade(0));
-      expect(zetaColors.surfaceDefaultInverse, ZetaColorBase.warm.shade(100));
-      expect(zetaColors.surfaceHover, ZetaColorBase.cool.shade(20));
-      expect(zetaColors.surfaceSelected, ZetaColorBase.blue.shade(10));
-      expect(zetaColors.surfaceSelectedHover, ZetaColorBase.blue.shade(20));
-      expect(zetaColors.surfaceDisabled, ZetaColorBase.cool.shade(30));
-      expect(zetaColors.surfaceCool, ZetaColorBase.cool.shade(10));
-      expect(zetaColors.surfaceWarm, ZetaColorBase.warm.shade(10));
-      expect(zetaColors.surfacePrimarySubtle, ZetaColorBase.blue.shade(10));
-      expect(zetaColors.surfaceAvatarBlue, ZetaColorBase.blue.shade(80));
-      expect(zetaColors.surfaceAvatarOrange, ZetaColorBase.orange.shade(50));
-      expect(zetaColors.surfaceAvatarPink, ZetaColorBase.pink.shade(80));
-      expect(zetaColors.surfaceAvatarPurple, ZetaColorBase.purple.shade(80));
-      expect(zetaColors.surfaceAvatarTeal, ZetaColorBase.teal.shade(80));
-      expect(zetaColors.surfaceAvatarYellow, ZetaColorBase.yellow.shade(50));
-      expect(zetaColors.surfaceSecondarySubtle, ZetaColorBase.yellow.shade(10));
-      expect(zetaColors.surfacePositiveSubtle, ZetaColorBase.green.shade(10));
-      expect(zetaColors.surfaceWarningSubtle, ZetaColorBase.orange.shade(10));
-      expect(zetaColors.surfaceNegativeSubtle, ZetaColorBase.red.shade(10));
-      expect(zetaColors.surfaceInfoSubtle, ZetaColorBase.purple.shade(10));
-      expect(zetaColors.borderDefault, ZetaColorBase.cool.shade(40));
-      expect(zetaColors.borderSubtle, ZetaColorBase.cool.shade(30));
-      expect(zetaColors.borderHover, ZetaColorBase.cool.shade(90));
-      expect(zetaColors.borderSelected, ZetaColorBase.cool.shade(90));
-      expect(zetaColors.borderDisabled, ZetaColorBase.cool.shade(20));
-      expect(zetaColors.borderPure, ZetaColorBase.pure.shade(0));
-      expect(zetaColors.borderPrimary, ZetaColorBase.blue.shade(50));
-      expect(zetaColors.borderSecondary, ZetaColorBase.yellow.shade(50));
-      expect(zetaColors.borderPositive, ZetaColorBase.green.shade(50));
-      expect(zetaColors.borderWarning, ZetaColorBase.orange.shade(50));
-      expect(zetaColors.borderNegative, ZetaColorBase.red.shade(50));
-      expect(zetaColors.borderInfo, ZetaColorBase.purple.shade(50));
-      expect(zetaColors.surfacePositive, ZetaColorBase.green);
-      expect(zetaColors.surfaceWarning, ZetaColorBase.orange);
-      expect(zetaColors.surfaceNegative, ZetaColorBase.red);
-      expect(zetaColors.surfaceAvatarGreen, ZetaColorBase.green);
-      expect(zetaColors.surfaceInfo, ZetaColorBase.purple);
-      expect(zetaColors.borderPrimaryMain, ZetaColorBase.blue);
-    });
-
-    test('deprecated properties return correct values', () {
-      final zetaColors = ZetaColors();
-
-      expect(zetaColors.surfaceHovered, zetaColors.surfaceHover);
-      expect(zetaColors.surfaceSelectedHovered, zetaColors.surfaceSelectedHover);
-      expect(zetaColors.positive, zetaColors.surfacePositive);
-      expect(zetaColors.negative, zetaColors.surfaceNegative);
-      expect(zetaColors.warning, zetaColors.surfaceWarning);
-      expect(zetaColors.info, zetaColors.surfaceInfo);
-      expect(zetaColors.shadow, const Color(0x1A49505E));
-      expect(zetaColors.link, ZetaColorBase.linkLight);
-      expect(zetaColors.linkVisited, ZetaColorBase.linkVisitedLight);
+      expect(zetaColors.mainDefault, ZetaPrimitivesLight().cool.shade90);
+      expect(zetaColors.mainSubtle, ZetaPrimitivesLight().cool.shade70);
+      expect(zetaColors.mainDisabled, ZetaPrimitivesLight().cool.shade50);
+      expect(zetaColors.mainInverse, ZetaPrimitivesLight().cool.shade20);
+      expect(zetaColors.mainDefault, ZetaPrimitivesLight().cool.shade90);
+      expect(zetaColors.mainSubtle, ZetaPrimitivesLight().cool.shade70);
+      expect(zetaColors.mainDisabled, ZetaPrimitivesLight().cool.shade50);
+      expect(zetaColors.iconInverse, ZetaPrimitivesLight().cool.shade20);
+      expect(zetaColors.surfaceDefault, ZetaPrimitivesLight().pure.shade(0));
+      expect(zetaColors.surfaceDefaultInverse, ZetaPrimitivesLight().warm.shade(100));
+      expect(zetaColors.surfaceHover, ZetaPrimitivesLight().cool.shade(20));
+      expect(zetaColors.surfaceSelected, ZetaPrimitivesLight().blue.shade(10));
+      expect(zetaColors.surfaceSelectedHover, ZetaPrimitivesLight().blue.shade(20));
+      expect(zetaColors.surfaceDisabled, ZetaPrimitivesLight().cool.shade(30));
+      expect(zetaColors.surfaceCool, ZetaPrimitivesLight().cool.shade(10));
+      expect(zetaColors.surfaceWarm, ZetaPrimitivesLight().warm.shade(10));
+      expect(zetaColors.surfacePrimarySubtle, ZetaPrimitivesLight().blue.shade(10));
+      expect(zetaColors.surfaceAvatarBlue, ZetaPrimitivesLight().blue.shade(80));
+      expect(zetaColors.surfaceAvatarOrange, ZetaPrimitivesLight().orange.shade(50));
+      expect(zetaColors.surfaceAvatarPink, ZetaPrimitivesLight().pink.shade(80));
+      expect(zetaColors.surfaceAvatarPurple, ZetaPrimitivesLight().purple.shade(80));
+      expect(zetaColors.surfaceAvatarTeal, ZetaPrimitivesLight().teal.shade(80));
+      expect(zetaColors.surfaceAvatarYellow, ZetaPrimitivesLight().yellow.shade(50));
+      expect(zetaColors.surfaceSecondarySubtle, ZetaPrimitivesLight().yellow.shade(10));
+      expect(zetaColors.surfacePositiveSubtle, ZetaPrimitivesLight().green.shade(10));
+      expect(zetaColors.surfaceWarningSubtle, ZetaPrimitivesLight().orange.shade(10));
+      expect(zetaColors.surfaceNegativeSubtle, ZetaPrimitivesLight().red.shade(10));
+      expect(zetaColors.surfaceInfoSubtle, ZetaPrimitivesLight().purple.shade(10));
+      expect(zetaColors.borderDefault, ZetaPrimitivesLight().cool.shade(40));
+      expect(zetaColors.borderSubtle, ZetaPrimitivesLight().cool.shade(30));
+      expect(zetaColors.borderHover, ZetaPrimitivesLight().cool.shade(90));
+      expect(zetaColors.borderSelected, ZetaPrimitivesLight().cool.shade(90));
+      expect(zetaColors.borderDisabled, ZetaPrimitivesLight().cool.shade(20));
+      expect(zetaColors.borderPure, ZetaPrimitivesLight().pure.shade(0));
+      expect(zetaColors.borderPrimary, ZetaPrimitivesLight().blue.shade(50));
+      expect(zetaColors.borderSecondary, ZetaPrimitivesLight().yellow.shade(50));
+      expect(zetaColors.borderPositive, ZetaPrimitivesLight().green.shade(50));
+      expect(zetaColors.borderWarning, ZetaPrimitivesLight().orange.shade(50));
+      expect(zetaColors.borderNegative, ZetaPrimitivesLight().red.shade(50));
+      expect(zetaColors.borderInfo, ZetaPrimitivesLight().purple.shade(50));
+      expect(zetaColors.surfacePositive, ZetaPrimitivesLight().green.shade60);
+      expect(zetaColors.surfaceWarning, ZetaPrimitivesLight().orange.shade60);
+      expect(zetaColors.surfaceNegative, ZetaPrimitivesLight().red.shade60);
+      expect(zetaColors.surfaceAvatarGreen, ZetaPrimitivesLight().green);
+      expect(zetaColors.surfaceInfo, ZetaPrimitivesLight().purple.shade60);
+      expect(zetaColors.borderPrimaryMain, ZetaPrimitivesLight().blue);
     });
 
     test('props returns correct list of properties', () {
@@ -224,12 +216,12 @@ void main() {
       expect(themeData.colorScheme.secondarySwatch, zetaColors.secondary);
       expect(themeData.colorScheme.cool, zetaColors.cool);
       expect(themeData.colorScheme.warm, zetaColors.warm);
-      expect(themeData.colorScheme.textDefault, zetaColors.textDefault);
-      expect(themeData.colorScheme.textSubtle, zetaColors.textSubtle);
-      expect(themeData.colorScheme.textDisabled, zetaColors.textDisabled);
-      expect(themeData.colorScheme.textInverse, zetaColors.textInverse);
-      expect(themeData.colorScheme.surfacePrimary, zetaColors.surfacePrimary);
-      expect(themeData.colorScheme.surfaceSecondary, zetaColors.surfaceSecondary);
+      expect(themeData.colorScheme.textDefault, zetaColors.mainDefault);
+      expect(themeData.colorScheme.textSubtle, zetaColors.mainSubtle);
+      expect(themeData.colorScheme.textDisabled, zetaColors.mainDisabled);
+      expect(themeData.colorScheme.textInverse, zetaColors.mainInverse);
+      expect(themeData.colorScheme.surfacePrimary, zetaColors.surfaceDefault);
+      expect(themeData.colorScheme.surfaceSecondary, zetaColors.surfaceCool);
       expect(themeData.colorScheme.surfaceTertiary, zetaColors.surfaceTertiary);
       expect(themeData.colorScheme.surfaceDisabled, zetaColors.surfaceDisabled);
       expect(themeData.colorScheme.surfaceHover, zetaColors.surfaceHover);
@@ -255,37 +247,37 @@ void main() {
 
     test('ColorScheme extension getters should return default colors when ZetaColorScheme scheme is not injected', () {
       final themeData = ThemeData.light();
-      expect(themeData.colorScheme.primarySwatch, ZetaColorBase.blue);
-      expect(themeData.colorScheme.secondarySwatch, ZetaColorBase.yellow);
-      expect(themeData.colorScheme.cool, ZetaColorBase.cool);
-      expect(themeData.colorScheme.warm, ZetaColorBase.warm);
-      expect(themeData.colorScheme.textDefault, ZetaColorBase.cool.shade90);
-      expect(themeData.colorScheme.textSubtle, ZetaColorBase.cool.shade70);
-      expect(themeData.colorScheme.textDisabled, ZetaColorBase.cool.shade50);
-      expect(themeData.colorScheme.textInverse, ZetaColorBase.cool.shade20);
-      expect(themeData.colorScheme.surfacePrimary, ZetaColorBase.white);
-      expect(themeData.colorScheme.surfaceSecondary, ZetaColorBase.cool.shade10);
-      expect(themeData.colorScheme.surfaceTertiary, ZetaColorBase.warm.shade10);
-      expect(themeData.colorScheme.surfaceDisabled, ZetaColorBase.cool.shade30);
-      expect(themeData.colorScheme.surfaceHover, ZetaColorBase.cool.shade20);
-      expect(themeData.colorScheme.surfaceSelected, ZetaColorBase.blue.shade10);
-      expect(themeData.colorScheme.surfaceSelectedHover, ZetaColorBase.blue.shade20);
-      expect(themeData.colorScheme.borderDefault, ZetaColorBase.cool.shade50);
-      expect(themeData.colorScheme.borderSubtle, ZetaColorBase.cool.shade40);
-      expect(themeData.colorScheme.borderDisabled, ZetaColorBase.cool.shade30);
-      expect(themeData.colorScheme.borderSelected, ZetaColorBase.cool.shade90);
-      expect(themeData.colorScheme.blue, ZetaColorBase.blue);
-      expect(themeData.colorScheme.green, ZetaColorBase.green);
-      expect(themeData.colorScheme.red, ZetaColorBase.red);
-      expect(themeData.colorScheme.orange, ZetaColorBase.orange);
-      expect(themeData.colorScheme.purple, ZetaColorBase.purple);
-      expect(themeData.colorScheme.yellow, ZetaColorBase.yellow);
-      expect(themeData.colorScheme.teal, ZetaColorBase.teal);
-      expect(themeData.colorScheme.pink, ZetaColorBase.pink);
-      expect(themeData.colorScheme.positive, ZetaColorBase.green);
-      expect(themeData.colorScheme.negative, ZetaColorBase.red);
-      expect(themeData.colorScheme.warning, ZetaColorBase.orange);
-      expect(themeData.colorScheme.info, ZetaColorBase.purple);
+      expect(themeData.colorScheme.primarySwatch, ZetaPrimitivesLight().blue);
+      expect(themeData.colorScheme.secondarySwatch, ZetaPrimitivesLight().yellow);
+      expect(themeData.colorScheme.cool, ZetaPrimitivesLight().cool);
+      expect(themeData.colorScheme.warm, ZetaPrimitivesLight().warm);
+      expect(themeData.colorScheme.textDefault, ZetaPrimitivesLight().cool.shade90);
+      expect(themeData.colorScheme.textSubtle, ZetaPrimitivesLight().cool.shade70);
+      expect(themeData.colorScheme.textDisabled, ZetaPrimitivesLight().cool.shade50);
+      expect(themeData.colorScheme.textInverse, ZetaPrimitivesLight().cool.shade20);
+      expect(themeData.colorScheme.surfacePrimary, ZetaPrimitivesLight().pure.shade0);
+      expect(themeData.colorScheme.surfaceSecondary, ZetaPrimitivesLight().cool.shade10);
+      expect(themeData.colorScheme.surfaceTertiary, ZetaPrimitivesLight().warm.shade10);
+      expect(themeData.colorScheme.surfaceDisabled, ZetaPrimitivesLight().cool.shade30);
+      expect(themeData.colorScheme.surfaceHover, ZetaPrimitivesLight().cool.shade20);
+      expect(themeData.colorScheme.surfaceSelected, ZetaPrimitivesLight().blue.shade10);
+      expect(themeData.colorScheme.surfaceSelectedHover, ZetaPrimitivesLight().blue.shade20);
+      expect(themeData.colorScheme.borderDefault, ZetaPrimitivesLight().cool.shade50);
+      expect(themeData.colorScheme.borderSubtle, ZetaPrimitivesLight().cool.shade40);
+      expect(themeData.colorScheme.borderDisabled, ZetaPrimitivesLight().cool.shade30);
+      expect(themeData.colorScheme.borderSelected, ZetaPrimitivesLight().cool.shade90);
+      expect(themeData.colorScheme.blue, ZetaPrimitivesLight().blue);
+      expect(themeData.colorScheme.green, ZetaPrimitivesLight().green);
+      expect(themeData.colorScheme.red, ZetaPrimitivesLight().red);
+      expect(themeData.colorScheme.orange, ZetaPrimitivesLight().orange);
+      expect(themeData.colorScheme.purple, ZetaPrimitivesLight().purple);
+      expect(themeData.colorScheme.yellow, ZetaPrimitivesLight().yellow);
+      expect(themeData.colorScheme.teal, ZetaPrimitivesLight().teal);
+      expect(themeData.colorScheme.pink, ZetaPrimitivesLight().pink);
+      expect(themeData.colorScheme.positive, ZetaPrimitivesLight().green);
+      expect(themeData.colorScheme.negative, ZetaPrimitivesLight().red);
+      expect(themeData.colorScheme.warning, ZetaPrimitivesLight().orange);
+      expect(themeData.colorScheme.info, ZetaPrimitivesLight().purple);
     });
   });
 }

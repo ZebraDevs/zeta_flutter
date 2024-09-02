@@ -164,13 +164,13 @@ class _ZetaTopAppBarSearchFieldState extends State<ZetaTopAppBarSearchField> wit
                   controller: widget.searchController?.textEditingController,
                   focusNode: _textFocusNode,
                   style: ZetaTextStyles.bodyMedium,
-                  cursorColor: colors.cool.shade90,
+                  cursorColor: colors.mainDefault,
                   decoration: InputDecoration(
-                    iconColor: colors.cool.shade90,
+                    iconColor: colors.mainDefault,
                     filled: true,
                     border: InputBorder.none,
                     hintStyle: ZetaTextStyles.bodyMedium.copyWith(
-                      color: colors.textDisabled,
+                      color: colors.mainDisabled,
                     ),
                     hintText: widget.hintText,
                   ),

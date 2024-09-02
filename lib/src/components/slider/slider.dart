@@ -122,7 +122,7 @@ class _ZetaSliderState extends State<ZetaSlider> {
     if (widget.onChange == null) {
       return colors.surfaceDisabled;
     }
-    return _selected ? colors.primary : colors.surfaceDefaultInverse;
+    return _selected ? colors.mainPrimary : colors.surfaceDefaultInverse;
   }
 }
 

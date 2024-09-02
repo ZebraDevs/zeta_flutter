@@ -120,7 +120,7 @@ class _ZetaChipState extends State<ZetaChip> {
   @override
   Widget build(BuildContext context) {
     final colors = Zeta.of(context).colors;
-    final foregroundColor = selected ? colors.textInverse : colors.textDefault;
+    final foregroundColor = selected ? colors.mainInverse : colors.mainDefault;
 
     return ZetaRoundedScope(
       rounded: context.rounded,
@@ -172,7 +172,7 @@ class _ZetaChipState extends State<ZetaChip> {
   }
 
   ValueListenableBuilder<Set<WidgetState>> child(
-    ZetaColors colors,
+    ZetaSemanticColors colors,
     Color foregroundColor, {
     bool isDragging = false,
   }) {
@@ -218,12 +218,12 @@ class _ZetaChipState extends State<ZetaChip> {
                 if (states.contains(WidgetState.hovered)) {
                   return colors.surfaceHover;
                 }
-                return colors.surfacePrimary;
+                return colors.surfaceDefault;
               }(),
               borderRadius: rounded ? Zeta.of(context).radius.full : Zeta.of(context).radius.none,
               border: Border.fromBorderSide(
                 BorderSide(
-                  color: _controller.value.contains(WidgetState.focused) ? colors.blue.shade50 : colors.borderDefault,
+                  color: _controller.value.contains(WidgetState.focused) ? colors.borderPrimary : colors.borderDefault,
                   width: _controller.value.contains(WidgetState.focused)
                       ? ZetaBorders.medium
                       : !selected
@@ -242,7 +242,7 @@ class _ZetaChipState extends State<ZetaChip> {
                     child: (selected
                         ? ZetaIcon(
                             ZetaIcons.check_mark,
-                            color: widget.selected! ? colors.iconInverse : Colors.transparent,
+                            color: widget.selected! ? colors.mainInverse : Colors.transparent,
                           )
                         : const Nothing()),
                   )

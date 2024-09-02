@@ -59,8 +59,8 @@ class SpacingExample extends StatelessWidget {
               ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: baseSpacings.entries.map((obj) => _SpacingDemo(obj)).toList(),
-              ),
+                children: baseSpacings.entries.map((obj) => _SpacingDemo(obj, true)).toList(),
+              )
             ],
           ),
         ),
@@ -71,17 +71,18 @@ class SpacingExample extends StatelessWidget {
 
 class _SpacingDemo extends StatelessWidget {
   final MapEntry<String, double> size;
+  final bool primitive;
 
-  const _SpacingDemo(this.size);
+  const _SpacingDemo(this.size, [this.primitive = false]);
 
   @override
   Widget build(BuildContext context) {
     final colors = Zeta.of(context).colors;
     return Container(
-      color: colors.blue.shade30,
+      color: colors.primitives.blue.shade30,
       margin: EdgeInsets.all(Zeta.of(context).spacing.xl_2),
       child: CustomPaint(
-        painter: _TagPainter(color: colors.pink),
+        painter: _TagPainter(color: colors.primitives.pink),
         child: LayoutBuilder(builder: (context, c2) {
           return Container(
             margin: EdgeInsets.all(size.value),
@@ -90,7 +91,7 @@ class _SpacingDemo extends StatelessWidget {
             child: Text(
               'Zeta.of(context).spacing.' + size.key,
               style: ZetaTextStyles.titleMedium.apply(
-                color: Zeta.of(context).colors.textDefault,
+                color: Zeta.of(context).colors.mainDefault,
                 fontStyle: FontStyle.normal,
                 decoration: TextDecoration.none,
               ),

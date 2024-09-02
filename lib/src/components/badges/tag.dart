@@ -59,7 +59,7 @@ class ZetaTag extends ZetaStatelessWidget {
           if (direction == ZetaTagDirection.left) _buildCustomPaint(context),
           Container(
             decoration: BoxDecoration(
-              color: Zeta.of(context).colors.surfaceHover,
+              color: Zeta.of(context).colors.mainLight,
               borderRadius: _getBorderRadius(context),
             ),
             height: containerSize.height,
@@ -97,7 +97,7 @@ class ZetaTag extends ZetaStatelessWidget {
     return CustomPaint(
       size: Size(Zeta.of(context).spacing.medium, Zeta.of(context).spacing.xl_3),
       painter: _TagPainter(
-        color: Zeta.of(context).colors.surfaceHover,
+        color: Zeta.of(context).colors.mainLight,
         direction: direction,
         rounded: context.rounded,
       ),

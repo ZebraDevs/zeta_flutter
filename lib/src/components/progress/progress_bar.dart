@@ -25,7 +25,7 @@ class ZetaProgressBar extends ZetaProgress {
     super.key,
     super.rounded,
     required super.progress,
-    required this.type,
+    this.type = ZetaProgressBarType.standard,
     this.isThin = false,
     this.label,
   });
@@ -133,7 +133,7 @@ class _ZetaProgressBarState extends ZetaProgressState<ZetaProgressBar> {
   /// Returns thickness of progress bar based on its weight.
   double get _weight => widget.isThin ? Zeta.of(context).spacing.small : Zeta.of(context).spacing.large;
 
-  Widget bufferingWidget(ZetaColors colors) {
+  Widget bufferingWidget(ZetaSemanticColors colors) {
     final Iterable<List<Widget>> extraList = List.generate(
       3,
       (e) => [

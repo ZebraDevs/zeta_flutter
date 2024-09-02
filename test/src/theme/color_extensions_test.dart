@@ -33,10 +33,10 @@ void main() {
 
     test('onColor returns the correct on color', () {
       const color = Colors.blue;
-      expect(color.onColor, ZetaColorBase.white);
+      expect(color.onColor, ZetaPrimitivesLight().pure.shade0);
 
       const lightColor = Colors.white;
-      expect(lightColor.onColor, ZetaColorBase.cool.shade90);
+      expect(lightColor.onColor, Colors.black87);
     });
 
     test('isLight returns true for light colors', () {

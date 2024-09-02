@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use_from_same_package
+
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
@@ -44,9 +46,11 @@ void main() {
         Colors.blue,
       );
 
-      expect(swatch.value, Colors.blue.value);
       expect(swatch.brightness, Brightness.light);
       expect(swatch.contrast, ZetaContrast.aa);
+
+      expect(num.parse(swatch.shade60.contrastRatio(Colors.white).toStringAsFixed(1)) >= 4.5, true);
+      expect(num.parse(swatch.shade80.contrastRatio(Colors.white).toStringAsFixed(1)) >= 7, true);
     });
 
     test('apply method', () {

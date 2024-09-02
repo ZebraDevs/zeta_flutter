@@ -128,7 +128,7 @@ class ZetaPhoneInput extends ZetaFormField<PhoneNumber> {
                                 ),
                                 ZetaIcon(
                                   !dropdowncontroller.isOpen ? ZetaIcons.expand_more : ZetaIcons.expand_less,
-                                  color: !disabled ? colors.iconDefault : colors.iconDisabled,
+                                  color: !disabled ? colors.mainDefault : colors.mainDisabled,
                                   size: Zeta.of(context).spacing.xl,
                                 ),
                               ],

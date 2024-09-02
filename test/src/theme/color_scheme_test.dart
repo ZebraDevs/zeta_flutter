@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use_from_same_package
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -7,11 +9,11 @@ void main() {
   group('ZetaColorScheme', () {
     const String fontFamily = 'TestFontFamily';
     final ZetaColors zetaColors = ZetaColors(
-      primary: ZetaColorBase.blue,
-      secondary: ZetaColorBase.green,
-      surfacePrimary: ZetaColorBase.white,
-      surfaceTertiary: ZetaColorBase.white,
-      error: ZetaColorBase.red,
+      primary: ZetaPrimitivesLight().blue,
+      secondary: ZetaPrimitivesLight().green,
+      surfacePrimary: ZetaPrimitivesLight().pure.shade0,
+      surfaceTertiary: ZetaPrimitivesLight().pure.shade0,
+      error: ZetaPrimitivesLight().red,
     );
 
     final ZetaColorScheme zetaColorScheme = ZetaColorScheme(
@@ -44,11 +46,11 @@ void main() {
 
     test('copyWith copies and overrides properties correctly', () {
       final newZetaColors = ZetaColors(
-        primary: ZetaColorBase.purple,
-        secondary: ZetaColorBase.orange,
-        surfacePrimary: ZetaColorBase.yellow,
-        surfaceTertiary: ZetaColorBase.yellow,
-        error: ZetaColorBase.pink,
+        primary: ZetaPrimitivesLight().purple,
+        secondary: ZetaPrimitivesLight().orange,
+        surfacePrimary: ZetaPrimitivesLight().yellow,
+        surfaceTertiary: ZetaPrimitivesLight().yellow,
+        error: ZetaPrimitivesLight().pink,
       );
       const newFontFamily = 'NewTestFontFamily';
 

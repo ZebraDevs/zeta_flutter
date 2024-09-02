@@ -216,7 +216,7 @@ class ZetaAvatar extends ZetaStatelessWidget {
                 decoration: BoxDecoration(
                   border: borderColor != null ? Border.all(color: borderColor!, width: 0) : null,
                   borderRadius: Zeta.of(context).radius.full,
-                  color: backgroundColor ?? (_showPlaceholder ? zetaColors.surfacePrimary : zetaColors.cool.shade20),
+                  color: backgroundColor ?? (_showPlaceholder ? zetaColors.surfacePrimary : zetaColors.surfaceWarm),
                 ),
                 child: borderColor != null
                     ? Container(
@@ -433,7 +433,7 @@ class ZetaAvatarBadge extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = Zeta.of(context).colors;
     final Color backgroundColor =
-        type == ZetaAvatarBadgeType.notification ? colors.surfaceNegative : (color ?? colors.primary);
+        type == ZetaAvatarBadgeType.notification ? colors.surfaceNegative : (color ?? colors.mainPrimary);
     final badgeSize = _getContainerSize(context);
     final borderSize = _getBorderSize(context);
     final paddedSize = badgeSize + Zeta.of(context).spacing.minimum;

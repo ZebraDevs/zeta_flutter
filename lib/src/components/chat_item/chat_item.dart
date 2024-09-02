@@ -172,7 +172,7 @@ class ZetaChatItem extends ZetaStatelessWidget {
                             : actions,
                       ),
                 child: ColoredBox(
-                  color: highlighted ? colors.blue.shade10 : colors.surfacePrimary,
+                  color: highlighted ? colors.surfaceSelected : colors.surfaceDefault,
                   child: Material(
                     color: Colors.transparent,
                     child: InkWell(
@@ -201,7 +201,10 @@ class ZetaChatItem extends ZetaStatelessWidget {
                                               margin: EdgeInsets.only(right: Zeta.of(context).spacing.minimum),
                                               height: Zeta.of(context).spacing.small,
                                               width: Zeta.of(context).spacing.small,
-                                              decoration: BoxDecoration(color: colors.primary, shape: BoxShape.circle),
+                                              decoration: BoxDecoration(
+                                                color: colors.mainPrimary,
+                                                shape: BoxShape.circle,
+                                              ),
                                             ),
                                           Flexible(
                                             child: Row(
@@ -214,7 +217,7 @@ class ZetaChatItem extends ZetaStatelessWidget {
                                                     style: (highlighted
                                                             ? ZetaTextStyles.labelLarge
                                                             : ZetaTextStyles.bodyMedium)
-                                                        .copyWith(color: colors.textDefault),
+                                                        .copyWith(color: colors.mainDefault),
                                                     child: title,
                                                   ),
                                                 ),
@@ -239,7 +242,7 @@ class ZetaChatItem extends ZetaStatelessWidget {
                                                               ),
                                                               child: ZetaIcon(
                                                                 ZetaIcons.error,
-                                                                color: colors.cool.shade70,
+                                                                color: colors.mainSubtle,
                                                               ),
                                                             ),
                                                           if (enabledWarningIcon)
@@ -261,13 +264,13 @@ class ZetaChatItem extends ZetaStatelessWidget {
                                                                 horizontal: Zeta.of(context).spacing.small,
                                                               ),
                                                               decoration: BoxDecoration(
-                                                                color: colors.primary,
+                                                                color: colors.mainPrimary,
                                                                 borderRadius: Zeta.of(context).radius.full,
                                                               ),
                                                               child: Text(
                                                                 _count!,
                                                                 style: ZetaTextStyles.labelSmall.copyWith(
-                                                                  color: colors.textInverse,
+                                                                  color: colors.mainInverse,
                                                                 ),
                                                               ),
                                                             ),
@@ -291,7 +294,7 @@ class ZetaChatItem extends ZetaStatelessWidget {
                                                 maxLines: 2,
                                                 overflow: TextOverflow.ellipsis,
                                                 style: ZetaTextStyles.bodySmall.copyWith(
-                                                  color: colors.textSubtle,
+                                                  color: colors.mainSubtle,
                                                 ),
                                                 child: subtitle!,
                                               ),
@@ -303,7 +306,7 @@ class ZetaChatItem extends ZetaStatelessWidget {
                                               ),
                                               child: ZetaIcon(
                                                 starred! ? ZetaIcons.star : ZetaIcons.star_outline,
-                                                color: starred! ? colors.yellow.shade60 : null,
+                                                color: starred! ? colors.mainSecondary : null,
                                               ),
                                             ),
                                         ],
@@ -351,19 +354,59 @@ class ZetaChatItem extends ZetaStatelessWidget {
 enum _ZetaSlidableActionType { menuMore, call, ptt, delete, custom }
 
 extension on _ZetaSlidableActionType {
-  ZetaColorSwatch getColor(BuildContext context) {
+  Color _getMainColor(BuildContext context) {
     final colors = Zeta.of(context).colors;
     switch (this) {
       case _ZetaSlidableActionType.menuMore:
-        return colors.purple;
+        return colors.surfaceInfo;
       case _ZetaSlidableActionType.call:
-        return colors.green;
+        return colors.surfacePositive;
       case _ZetaSlidableActionType.ptt:
-        return colors.blue;
+        return colors.surfacePrimary;
       case _ZetaSlidableActionType.delete:
-        return colors.red;
+        return colors.surfaceNegative;
       case _ZetaSlidableActionType.custom:
-        return colors.primary;
+        return colors.surfacePrimary;
+    }
+  }
+
+  Color getBackgroundColor(BuildContext context, {bool pale = false}) {
+    final colors = Zeta.of(context).colors;
+    if (pale) {
+      switch (this) {
+        case _ZetaSlidableActionType.menuMore:
+          return colors.surfaceInfoSubtle;
+        case _ZetaSlidableActionType.call:
+          return colors.surfacePositiveSubtle;
+        case _ZetaSlidableActionType.ptt:
+          return colors.surfacePrimarySubtle;
+        case _ZetaSlidableActionType.delete:
+          return colors.surfaceNegativeSubtle;
+        case _ZetaSlidableActionType.custom:
+          return colors.surfacePrimarySubtle;
+      }
+    } else {
+      return _getMainColor(context);
+    }
+  }
+
+  Color getForegroundColor(BuildContext context, {bool pale = false}) {
+    final colors = Zeta.of(context).colors;
+    if (pale) {
+      switch (this) {
+        case _ZetaSlidableActionType.menuMore:
+          return colors.surfaceInfo;
+        case _ZetaSlidableActionType.call:
+          return colors.surfacePositive;
+        case _ZetaSlidableActionType.ptt:
+          return colors.surfacePrimary;
+        case _ZetaSlidableActionType.delete:
+          return colors.surfaceNegative;
+        case _ZetaSlidableActionType.custom:
+          return colors.surfacePrimary;
+      }
+    } else {
+      return colors.surfaceDefault;
     }
   }
 }
@@ -375,16 +418,12 @@ class ZetaSlidableAction extends StatelessWidget {
     super.key,
     this.onPressed,
     required this.icon,
-    this.color = ZetaColorBase.blue,
+    this.color,
     this.customForegroundColor,
     this.customBackgroundColor,
     this.semanticLabel,
     this.paleColor = false,
-  })  : _type = _ZetaSlidableActionType.custom,
-        assert(
-          color != null || (customForegroundColor != null && customBackgroundColor != null),
-          'Ensure either color, or both customForegroundColor and customBackgroundColor are provided.',
-        );
+  }) : _type = _ZetaSlidableActionType.custom;
 
   const ZetaSlidableAction._({
     super.key,
@@ -485,6 +524,19 @@ class ZetaSlidableAction extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final Color backgroundColor = customBackgroundColor ??
+        (color != null
+            ? paleColor
+                ? color!.shade10
+                : color!.shade60
+            : _type.getBackgroundColor(context, pale: paleColor));
+    final Color foregroundColor = customForegroundColor ??
+        (color != null
+            ? paleColor
+                ? Zeta.of(context).colors.surfaceDefault
+                : color!.shade10
+            : _type.getForegroundColor(context, pale: paleColor));
+
     return Expanded(
       child: SizedBox.expand(
         child: Padding(
@@ -497,9 +549,8 @@ class ZetaSlidableAction extends StatelessWidget {
             child: IconButton(
               onPressed: () => onPressed?.call(),
               style: IconButton.styleFrom(
-                backgroundColor: customBackgroundColor ?? (color ?? _type.getColor(context)).shade(paleColor ? 10 : 60),
-                foregroundColor: customForegroundColor ??
-                    (paleColor ? (color ?? _type.getColor(context)).shade60 : Zeta.of(context).colors.surfaceDefault),
+                backgroundColor: backgroundColor,
+                foregroundColor: foregroundColor,
                 shape: RoundedRectangleBorder(borderRadius: Zeta.of(context).radius.minimal),
                 side: BorderSide.none,
               ),

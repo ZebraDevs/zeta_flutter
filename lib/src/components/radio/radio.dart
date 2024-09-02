@@ -82,23 +82,23 @@ class _ZetaRadioState<T> extends State<ZetaRadio<T>> with TickerProviderStateMix
                         ..inactiveReactionColor = Colors.transparent
                         ..reactionColor = Colors.transparent
                         ..hoverColor = Colors.transparent
-                        ..focusColor = zetaColors.blue.shade50
+                        ..focusColor = zetaColors.mainPrimary
                         ..splashRadius = Zeta.of(context).spacing.medium
                         ..downPosition = downPosition
                         ..isFocused = states.contains(WidgetState.focused)
                         ..isHovered = states.contains(WidgetState.hovered)
                         ..activeColor = states.contains(WidgetState.hovered)
-                            ? zetaColors.cool.shade90
+                            ? zetaColors.borderHover
                             : states.contains(WidgetState.disabled)
-                                ? zetaColors.cool.shade30
-                                : zetaColors.blue.shade60
+                                ? zetaColors.surfaceDisabled
+                                : zetaColors.mainPrimary
                         ..inactiveColor = states.contains(WidgetState.hovered)
-                            ? zetaColors.cool.shade90
+                            ? zetaColors.borderHover
                             : states.contains(WidgetState.disabled)
-                                ? zetaColors.cool.shade30
+                                ? zetaColors.mainDisabled
                                 : states.contains(WidgetState.focused)
-                                    ? zetaColors.blue.shade50
-                                    : zetaColors.cool.shade70,
+                                    ? zetaColors.borderPrimary
+                                    : zetaColors.mainSubtle,
                       mouseCursor: WidgetStateProperty.all(
                         states.contains(WidgetState.disabled) ? SystemMouseCursors.forbidden : SystemMouseCursors.click,
                       ),
@@ -107,7 +107,7 @@ class _ZetaRadioState<T> extends State<ZetaRadio<T>> with TickerProviderStateMix
                       DefaultTextStyle(
                         style: ZetaTextStyles.bodyMedium.copyWith(
                           color:
-                              states.contains(WidgetState.disabled) ? zetaColors.textDisabled : zetaColors.textDefault,
+                              states.contains(WidgetState.disabled) ? zetaColors.mainDisabled : zetaColors.mainDefault,
                           height: 4 / 3,
                         ),
                         child: widget.label!,
@@ -180,7 +180,7 @@ class _RadioPainter extends ToggleablePainter {
     // Outer circle
     paint
       ..color = isHovered
-          ? colors.black
+          ? colors.borderHover
           : position.isDismissed
               ? inactiveColor
               : activeColor
