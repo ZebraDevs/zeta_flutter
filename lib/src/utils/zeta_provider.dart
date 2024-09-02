@@ -315,6 +315,7 @@ class _InternalProvider extends StatefulWidget {
       ..add(EnumProperty<ZetaContrast>('contrast', contrast))
       ..add(EnumProperty<Brightness>('platformBrightness', platformBrightness))
       ..add(DiagnosticsProperty<bool>('rounded', rounded));
+      properties.add(ObjectFlagProperty<ZetaAppBuilder>.has('widget', widget));
   }
 }
 
