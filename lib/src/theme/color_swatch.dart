@@ -4,11 +4,18 @@ import 'package:flutter/material.dart';
 import 'color_extensions.dart';
 import 'contrast.dart';
 
-/// A swatch of colors with values from 10 (light) to 100 (dark).
+/// {@template zeta-colors-swatch}
+/// Contains shades from 10 (light) to 100 (dark).
+///
+/// See also:
+/// * [ColorSwatch].
+/// {@endtemplate}
+///
 /// {@category Theme}
 @immutable
 class ZetaColorSwatch extends ColorSwatch<int> with EquatableMixin {
   /// Constructs a [ZetaColorSwatch].
+  ///
   ///
   /// See also:
   /// * [MaterialColor].
