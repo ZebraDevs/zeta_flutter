@@ -27,12 +27,11 @@ class ZetaProvider extends StatefulWidget with Diagnosticable {
     this.initialContrast,
     this.themeService = const ZetaDefaultThemeService(),
     this.initialRounded = true,
-    Color? primary,
-    Color? secondary,
-  })  : _primary = primary?.generateSwatch(),
-        _secondary = secondary?.generateSwatch();
-  // TODO(mikecoomber): generateSwatch needs to return Map as its used in super constructor
-  // think about how to handle this
+    this.customPrimary,
+    this.customPrimaryDark,
+    this.customSecondary,
+    this.customSecondaryDark,
+  });
 
   /// Specifies the initial theme mode for the app.
   ///
@@ -56,8 +55,25 @@ class ZetaProvider extends StatefulWidget with Diagnosticable {
   /// Sets whether app should start with components in their rounded or sharp variants.
   final bool initialRounded;
 
-  final ZetaColorSwatch? _primary;
-  final ZetaColorSwatch? _secondary;
+  /// Custom primary color for the app.
+  /// {@template zeta-custom-color}
+  /// To define every shade of the color, provide a [ZetaColorSwatch] or a [MaterialColor].
+  /// If only a [Color] is provided, a [ZetaColorSwatch] will be automatically generated.
+  /// {@endtemplate}
+  final Color? customPrimary;
+
+  /// Custom primary color used for dark mode.
+  /// [customPrimary] must be provided for this to be applied.
+  /// If this is null, the [customPrimary] will be inverted to generate the dark variant.
+  final Color? customPrimaryDark;
+
+  /// Custom secondary color for the app.
+  /// {@macro zeta-custom-color}
+  final Color? customSecondary;
+
+  /// [customSecondary] must be provided for this to be applied.
+  /// If this is null, the [customSecondary] will be inverted to generate the dark variant.
+  final Color? customSecondaryDark;
 
   @override
   State<ZetaProvider> createState() => ZetaProviderState();
@@ -70,7 +86,11 @@ class ZetaProvider extends StatefulWidget with Diagnosticable {
       ..add(EnumProperty<ThemeMode>('initialThemeMode', initialThemeMode))
       ..add(EnumProperty<ZetaContrast>('initialContrast', initialContrast))
       ..add(DiagnosticsProperty<ZetaThemeService?>('themeService', themeService))
-      ..add(DiagnosticsProperty<bool?>('initialRounded', initialRounded));
+      ..add(DiagnosticsProperty<bool?>('initialRounded', initialRounded))
+      ..add(ColorProperty('primary', customPrimary))
+      ..add(ColorProperty('primaryDark', customPrimaryDark))
+      ..add(ColorProperty('secondary', customSecondary))
+      ..add(ColorProperty('secondaryDark', customSecondaryDark));
   }
 
   /// Retrieves the [ZetaProviderState] from the provided context.
@@ -109,6 +129,14 @@ class ZetaProviderState extends State<ZetaProvider> with Diagnosticable, Widgets
   /// Represents the late initialization of the ThemeMode value.
   late ThemeMode _themeMode;
 
+  ZetaColorSwatch? _customPrimary;
+
+  ZetaColorSwatch? _customPrimaryDark;
+
+  ZetaColorSwatch? _customSecondary;
+
+  ZetaColorSwatch? _customSecondaryDark;
+
   /// Represents the late initialization of the system's current brightness (dark or light mode).
   late Brightness _platformBrightness;
 
@@ -138,6 +166,13 @@ class ZetaProviderState extends State<ZetaProvider> with Diagnosticable, Widgets
 
     // Sets the initial rounded.
     _rounded = widget.initialRounded;
+
+    _setSwatches(
+      primary: widget.customPrimary,
+      primaryDark: widget.customPrimaryDark,
+      secondary: widget.customSecondary,
+      secondaryDark: widget.customSecondaryDark,
+    );
 
     if (widget.initialThemeMode != null) {
       _themeMode = widget.initialThemeMode!;
@@ -231,6 +266,10 @@ class ZetaProviderState extends State<ZetaProvider> with Diagnosticable, Widgets
       rounded: _rounded,
       platformBrightness: _platformBrightness,
       widget: widget.builder,
+      customPrimary: _customPrimary,
+      customSecondary: _customSecondary,
+      customPrimaryDark: _customPrimaryDark,
+      customSecondaryDark: _customSecondaryDark,
     );
   }
 
@@ -253,6 +292,60 @@ class ZetaProviderState extends State<ZetaProvider> with Diagnosticable, Widgets
     setState(() {
       _themeMode = themeMode;
       _saveThemeChange();
+    });
+  }
+
+  /// Generates and sets swatches with the provided colors.
+  void _setSwatches({
+    Color? primary,
+    Color? primaryDark,
+    Color? secondary,
+    Color? secondaryDark,
+  }) {
+    if (primary != null) {
+      _customPrimary = _getSwatch(primary);
+
+      if (primaryDark != null) {
+        _customPrimaryDark = _getSwatch(primaryDark);
+      } else {
+        _customPrimaryDark = ZetaColorSwatch.inverse(_customPrimary!);
+      }
+    }
+    if (secondary != null) {
+      _customSecondary = _getSwatch(secondary);
+
+      if (secondaryDark != null) {
+        _customSecondaryDark = _getSwatch(secondaryDark);
+      } else {
+        _customSecondaryDark = ZetaColorSwatch.inverse(_customSecondary!);
+      }
+    }
+  }
+
+  ZetaColorSwatch _getSwatch(Color color) {
+    if (color is ZetaColorSwatch) {
+      return color;
+    } else if (color is MaterialColor) {
+      return ZetaColorSwatch.fromMaterialColor(color);
+    }
+    return ZetaColorSwatch.fromColor(color);
+  }
+
+  /// Updates the current theme data.
+  /// {@macro zeta-custom-color}
+  void updateThemeData({
+    Color? primary,
+    Color? primaryDark,
+    Color? secondary,
+    Color? secondaryDark,
+  }) {
+    setState(() {
+      _setSwatches(
+        primary: primary,
+        primaryDark: primaryDark,
+        secondary: secondary,
+        secondaryDark: secondaryDark,
+      );
     });
   }
 
@@ -298,7 +391,16 @@ class _InternalProvider extends StatefulWidget {
     required this.rounded,
     required this.platformBrightness,
     required this.widget,
+    required this.customPrimary,
+    required this.customSecondary,
+    required this.customPrimaryDark,
+    required this.customSecondaryDark,
   });
+
+  final ZetaColorSwatch? customPrimary;
+  final ZetaColorSwatch? customSecondary;
+  final ZetaColorSwatch? customPrimaryDark;
+  final ZetaColorSwatch? customSecondaryDark;
 
   /// Represents the late initialization of the ZetaContrast value.
   final ZetaContrast contrast;
@@ -313,7 +415,7 @@ class _InternalProvider extends StatefulWidget {
   final ZetaAppBuilder widget;
 
   @override
-  State<_InternalProvider> createState() => __InternalProviderState();
+  State<_InternalProvider> createState() => _InternalProviderState();
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
@@ -323,28 +425,30 @@ class _InternalProvider extends StatefulWidget {
       ..add(EnumProperty<ZetaContrast>('contrast', contrast))
       ..add(EnumProperty<Brightness>('platformBrightness', platformBrightness))
       ..add(DiagnosticsProperty<bool>('rounded', rounded))
-      ..add(ObjectFlagProperty<ZetaAppBuilder>.has('widget', widget));
+      ..add(ObjectFlagProperty<ZetaAppBuilder>.has('widget', widget))
+      ..add(ColorProperty('customPrimary', customPrimary))
+      ..add(ColorProperty('customSecondary', customSecondary))
+      ..add(ColorProperty('customPrimaryDark', customPrimaryDark))
+      ..add(ColorProperty('customSecondaryDark', customSecondaryDark));
   }
 }
 
-class __InternalProviderState extends State<_InternalProvider> {
+class _InternalProviderState extends State<_InternalProvider> {
   @override
   Widget build(BuildContext context) {
     return Zeta(
       themeMode: widget.themeMode,
       contrast: widget.contrast,
       rounded: widget.rounded,
-      // customPrimitives: widget.themeMode.isLight
-      //     ? ZetaLightPrimitives(
-      //         primary: customPrimary,
-      //         secondary: customSecondary,
-      //       )
-      //     : ZetaDarkPrimitives(
-      //         primary: customPrimary,
-      //         secondary: customSecondary,
-      //       ),
-      // customPrimitives: TODO: Add custom primitives based on theme mode,
-      // TODO: Add back into the example app
+      customPrimitives: widget.themeMode == ThemeMode.light
+          ? ZetaPrimitivesLight(
+              primary: widget.customPrimary,
+              secondary: widget.customSecondary,
+            )
+          : ZetaPrimitivesDark(
+              primary: widget.customPrimaryDark,
+              secondary: widget.customSecondaryDark,
+            ),
       child: Builder(
         builder: (context) {
           return widget.widget(

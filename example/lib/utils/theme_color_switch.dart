@@ -1,49 +1,58 @@
-// TODO(mikecoomber): Re implement this widget
-// import 'package:flutter/material.dart';
-// import 'package:zeta_flutter/zeta_flutter.dart';
+import 'package:flutter/material.dart';
+import 'package:zeta_flutter/zeta_flutter.dart';
 
-// class ZetaThemeColorSwitch extends StatelessWidget {
-//   ZetaThemeColorSwitch({super.key});
+class ZetaThemeColorSwitch extends StatefulWidget {
+  ZetaThemeColorSwitch({super.key});
 
-//   @override
-//   Widget build(BuildContext context) {
-//     final zeta = Zeta.of(context);
+  @override
+  State<ZetaThemeColorSwitch> createState() => _ZetaThemeColorSwitchState();
+}
 
-//     ZetaColors primary(ZetaThemeData data) {
-//       if (zeta.brightness == Brightness.light) {
-//         return data.colorsLight;
-//       } else {
-//         return data.colorsDark;
-//       }
-//     }
+class _ZetaThemeColorSwitchState extends State<ZetaThemeColorSwitch> {
+  String currentTheme = "default";
 
-//     return DropdownButtonHideUnderline(
-//       child: DropdownButton<String>(
-//         value: zeta.themeData?.identifier,
-//         elevation: 0,
-//         padding: EdgeInsets.all(8),
-//         icon: Nothing(),
-//         dropdownColor: zeta.colors.borderDisabled,
-//         items: appThemes.entries.map((e) {
-//           final zetaColors = primary(appThemes[e.key]!);
-//           final color = zetaColors.primary;
-//           return DropdownMenuItem<String>(
-//             value: e.value.identifier,
-//             alignment: Alignment.center,
-//             child: ZetaAvatar(
-//               size: ZetaAvatarSize.xxs,
-//               backgroundColor: color.surface,
-//               image: ZetaIcon(Icons.color_lens, color: color),
-//             ),
-//           );
-//         }).toList(),
-//         onChanged: (value) {
-//           final theme = appThemes[value];
-//           if (theme != null) {
-//             ZetaProvider.of(context).updateThemeData(theme);
-//           }
-//         },
-//       ),
-//     );
-//   }
-// }
+  final Map<String, ZetaColorSwatch> appThemes = {
+    "default": ZetaPrimitivesLight().blue,
+    "teal": ZetaPrimitivesLight().teal,
+    "yellow": ZetaPrimitivesLight().yellow,
+    "red": ZetaPrimitivesLight().red,
+    "purple": ZetaPrimitivesLight().purple,
+  };
+
+  @override
+  Widget build(BuildContext context) {
+    final zeta = Zeta.of(context);
+
+    return DropdownButtonHideUnderline(
+      child: DropdownButton<String>(
+        value: currentTheme,
+        elevation: 0,
+        padding: EdgeInsets.all(8),
+        icon: Nothing(),
+        dropdownColor: zeta.colors.borderDisabled,
+        items: appThemes.entries.map((e) {
+          final color = e.value;
+          final name = e.key;
+          return DropdownMenuItem<String>(
+            value: name,
+            alignment: Alignment.center,
+            child: ZetaAvatar(
+              size: ZetaAvatarSize.xxs,
+              backgroundColor: color,
+              image: ZetaIcon(Icons.color_lens, color: color),
+            ),
+          );
+        }).toList(),
+        onChanged: (value) {
+          final theme = appThemes[value];
+          if (theme != null && value != null) {
+            ZetaProvider.of(context).updateThemeData(primary: theme);
+            setState(() {
+              currentTheme = value;
+            });
+          }
+        },
+      ),
+    );
+  }
+}

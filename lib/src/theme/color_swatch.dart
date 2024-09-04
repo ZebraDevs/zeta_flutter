@@ -13,8 +13,6 @@ class ZetaColorSwatch extends ColorSwatch<int> with EquatableMixin {
   /// See also:
   /// * [MaterialColor].
   const ZetaColorSwatch({
-    this.brightness = Brightness.light,
-    this.contrast = ZetaContrast.aa,
     required int primary,
     required Map<int, Color> swatch,
   }) : super(primary, swatch);
@@ -31,8 +29,6 @@ class ZetaColorSwatch extends ColorSwatch<int> with EquatableMixin {
   // TODO(UX-1144): Find a way to make this better
   factory ZetaColorSwatch.fromColor(
     Color primary, {
-    Brightness brightness = Brightness.light,
-    ZetaContrast contrast = ZetaContrast.aa,
     Color background = Colors.white,
   }) {
     /// Returns a map of colors shades with their respective indexes.
@@ -43,29 +39,48 @@ class ZetaColorSwatch extends ColorSwatch<int> with EquatableMixin {
     /// - 60 is the primary color itself.
     /// - 50, 40, 30, 20, and 10 are progressively lighter shades of the primary color.
     return ZetaColorSwatch(
-      contrast: contrast,
-      brightness: brightness,
       primary: primary.value,
       swatch: primary.generateSwatch(background: background),
-    ).apply(brightness: brightness);
+    );
   }
 
-  /// Selected contrast level of the system
-  final Brightness brightness;
+  /// Creates a [ZetaColorSwatch] from a [MaterialColor] swatch.
+  factory ZetaColorSwatch.fromMaterialColor(MaterialColor swatch) {
+    return ZetaColorSwatch(
+      primary: swatch.value,
+      swatch: {
+        10: swatch.shade50,
+        20: swatch.shade100,
+        30: swatch.shade200,
+        40: swatch.shade300,
+        50: swatch.shade400,
+        60: swatch.shade500,
+        70: swatch.shade600,
+        80: swatch.shade700,
+        90: swatch.shade800,
+        100: swatch.shade900,
+      },
+    );
+  }
 
-  /// Selected contrast level of the system
-  final ZetaContrast contrast;
-
-  /// This method is an override of the index operator.
-  ///
-  /// If the requested index is not in the table (i.e., it results in `null`), the method returns `this`,
-  /// presumably the default color.
-  ///
-  /// [index] The index of the color swatch to return. Must be a non-negative integer.
-  ///
-  /// Returns the color at the specified swatch index, or the default color if the index is not in the table.
-  @override
-  Color? operator [](int index) => super[brightness == Brightness.dark ? 110 - index : index] ?? this;
+  /// Creates a [ZetaColorSwatch] from a [ZetaColorSwatch] with inverted shades.
+  factory ZetaColorSwatch.inverse(ZetaColorSwatch swatch) {
+    return ZetaColorSwatch(
+      primary: swatch.shade40.value,
+      swatch: {
+        10: swatch.shade100,
+        20: swatch.shade90,
+        30: swatch.shade80,
+        40: swatch.shade70,
+        50: swatch.shade60,
+        60: swatch.shade50,
+        70: swatch.shade40,
+        80: swatch.shade30,
+        90: swatch.shade20,
+        100: swatch.shade10,
+      },
+    );
+  }
 
   /// The lightest shade.
   Color get shade10 => this[10]!;
@@ -119,8 +134,6 @@ class ZetaColorSwatch extends ColorSwatch<int> with EquatableMixin {
     ZetaContrast contrast = ZetaContrast.aa,
     Brightness brightness = Brightness.light,
   }) {
-    if (this.contrast == contrast && this.brightness == brightness) return this;
-
     // Generate a list of indices based on brightness level
     final indices = List.generate(10, (index) => (index + 1) * 10);
 
@@ -132,8 +145,6 @@ class ZetaColorSwatch extends ColorSwatch<int> with EquatableMixin {
 
     // Return a new ZetaColorSwatch object with the new primaryIndex color and swatch
     return ZetaColorSwatch(
-      contrast: contrast,
-      brightness: brightness,
       primary: swatch[primaryIndex]!.value,
       swatch: swatch,
     );
@@ -142,8 +153,6 @@ class ZetaColorSwatch extends ColorSwatch<int> with EquatableMixin {
   @override
   List<Object?> get props => [
         super.value,
-        brightness,
-        contrast,
         shade10,
         shade20,
         shade30,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:zeta_example/utils/rounded_switch.dart';
+import 'package:zeta_example/utils/theme_color_switch.dart';
 import 'package:zeta_example/utils/theme_constrast_switch.dart';
 import 'package:zeta_example/utils/theme_mode_switch.dart';
 
@@ -36,7 +37,7 @@ class ExampleScaffold extends StatelessWidget {
           ZetaRoundedSwitch(),
           ZetaThemeModeSwitch(),
           ZetaThemeContrastSwitch(),
-          // ZetaThemeColorSwitch(),
+          ZetaThemeColorSwitch(),
         ],
       ),
       backgroundColor: colors.surface,
