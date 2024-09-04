@@ -83,7 +83,7 @@ class Zeta extends InheritedWidget {
   /// Gets the [ZetaPrimitives] instance based on the current brightness setting.
   ///
   /// This is a temporary function used whilst the full implementation of tokens is taking place.
-  ZetaPrimitives get _primitives => brightness == Brightness.light ? ZetaPrimitivesLight() : ZetaPrimitivesDark();
+  ZetaPrimitives get _primitives => brightness == Brightness.light ? const ZetaPrimitivesLight() : const ZetaPrimitivesDark();
 
   /// Gets the [ZetaSemantics] instance based on the current contrast setting.
   ///
