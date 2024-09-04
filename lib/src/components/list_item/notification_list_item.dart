@@ -15,9 +15,11 @@ class ZetaNotificationListItem extends ZetaStatelessWidget {
     required this.title,
     this.notificationRead = false,
     this.notificationTime,
-    required this.action,
+    this.action,
     this.showDivider = false,
     this.semanticLabel,
+    this.attachment,
+    this.showBellIcon = false,
   });
 
   /// Notification Badge to indicate type of notification or who it's coming from
@@ -39,12 +41,18 @@ class ZetaNotificationListItem extends ZetaStatelessWidget {
   final bool? showDivider;
 
   /// Pass in a action widget to handle action functionality.
-  final Widget action;
+  final Widget? action;
 
   /// Semantic label for the notification list item.
   ///
   /// {@macro zeta-widget-semantic-label}
   final String? semanticLabel;
+
+  /// Pass in a widget to display an attached file.
+  final Widget? attachment;
+
+  /// Show bell icon if notification is recent/important.
+  final bool? showBellIcon;
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
@@ -54,83 +62,115 @@ class ZetaNotificationListItem extends ZetaStatelessWidget {
       ..add(StringProperty('title', title))
       ..add(DiagnosticsProperty<bool>('notificationRead', notificationRead))
       ..add(DiagnosticsProperty<bool?>('showDivider', showDivider))
-      ..add(StringProperty('semanticLabel', semanticLabel));
+      ..add(StringProperty('semanticLabel', semanticLabel))
+      ..add(DiagnosticsProperty<Widget?>('attachment', attachment))
+      ..add(DiagnosticsProperty<bool?>('showBellIcon', showBellIcon));
   }
 
   @override
   Widget build(BuildContext context) {
     final colors = Zeta.of(context).colors;
-    return ZetaRoundedScope(
-      rounded: context.rounded,
-      child: Semantics(
-        explicitChildNodes: true,
-        label: semanticLabel,
-        button: true,
-        child: DecoratedBox(
-          decoration: _getStyle(context),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Row(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  leading,
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            MergeSemantics(
+    return Padding(
+      padding: EdgeInsets.all(Zeta.of(context).spacing.small),
+      child: ZetaRoundedScope(
+        rounded: context.rounded,
+        child: Semantics(
+          explicitChildNodes: true,
+          label: semanticLabel,
+          button: true,
+          child: DecoratedBox(
+            decoration: _getStyle(context),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    leading,
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              MergeSemantics(
+                                child: Row(
+                                  children: [
+                                    if (!notificationRead)
+                                      ZetaIndicator.icon(
+                                        color: ZetaColors().primary,
+                                        size: ZetaWidgetSize.small,
+                                      ),
+                                    SizedBox(
+                                      width: Zeta.of(context).spacing.minimum,
+                                    ),
+                                    Text(
+                                      title,
+                                      style: ZetaTextStyles.labelLarge,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Row(
+                                children: [
+                                  if (notificationTime != null)
+                                    Text(
+                                      notificationTime!,
+                                      style: ZetaTextStyles.bodySmall
+                                          .apply(color: colors.textDisabled),
+                                    ),
+                                  if (showBellIcon ?? false)
+                                    Container(
+                                      padding: const EdgeInsets.all(2),
+                                      decoration: BoxDecoration(
+                                        color: colors.surfaceNegative,
+                                        borderRadius:
+                                            Zeta.of(context).radius.full,
+                                      ),
+                                      child: ZetaIcon(
+                                        ZetaIcons.important_notification,
+                                        color: colors.white,
+                                        size: Zeta.of(context).spacing.large,
+                                      ),
+                                    ),
+                                ].gap(Zeta.of(context).spacing.minimum),
+                              ),
+                            ],
+                          ),
+                          body,
+                          if (attachment != null)
+                            Container(
+                              padding: EdgeInsets.symmetric(
+                                vertical: Zeta.of(context).spacing.minimum,
+                              ),
                               child: Row(
                                 children: [
-                                  if (!notificationRead)
-                                    ZetaIndicator(
-                                      color: colors.blue,
-                                      size: ZetaWidgetSize.small,
-                                    ),
-                                  Text(
-                                    title,
-                                    style: ZetaTextStyles.labelLarge,
+                                  ZetaIcon(
+                                    ZetaIcons.attachment,
+                                    size: Zeta.of(context).spacing.medium,
+                                    color: colors.primary,
+                                  ),
+                                  DefaultTextStyle(
+                                    child: attachment!,
+                                    style: ZetaTextStyles.bodyXSmall
+                                        .apply(color: colors.primary),
                                   ),
                                 ],
                               ),
                             ),
-                            Row(
-                              children: [
-                                if (notificationTime != null)
-                                  Text(
-                                    notificationTime!,
-                                    style: ZetaTextStyles.bodySmall.apply(color: colors.textDisabled),
-                                  ),
-                                Container(
-                                  padding: const EdgeInsets.all(2),
-                                  decoration: BoxDecoration(
-                                    color: colors.surfaceNegative,
-                                    borderRadius: Zeta.of(context).radius.full,
-                                  ),
-                                  child: ZetaIcon(
-                                    ZetaIcons.important_notification,
-                                    color: colors.white,
-                                    size: Zeta.of(context).spacing.medium,
-                                  ),
-                                ),
-                              ].gap(Zeta.of(context).spacing.minimum),
-                            ),
-                          ],
-                        ),
-                        body,
-                      ].gap(Zeta.of(context).spacing.minimum),
+                        ].gap(Zeta.of(context).spacing.minimum),
+                      ),
                     ),
-                  ),
-                ].gap(Zeta.of(context).spacing.small),
-              ),
-              Container(alignment: Alignment.centerRight, child: action),
-            ],
-          ).paddingAll(Zeta.of(context).spacing.small),
+                  ].gap(Zeta.of(context).spacing.small),
+                ),
+                if (action != null)
+                  Container(alignment: Alignment.bottomRight, child: action),
+              ],
+            ).paddingAll(Zeta.of(context).spacing.small),
+          ),
         ),
       ),
     );
@@ -142,8 +182,13 @@ class ZetaNotificationListItem extends ZetaStatelessWidget {
     return BoxDecoration(
       color: notificationRead ? colors.surfacePrimary : colors.surfaceSelected,
       borderRadius: Zeta.of(context).radius.rounded,
-      border: (showDivider ?? false)
-          ? Border(bottom: BorderSide(width: Zeta.of(context).spacing.minimum, color: colors.blue))
+      boxShadow: (showDivider ?? false)
+          ? [
+              BoxShadow(
+                color: colors.primary,
+                offset: Offset(0, Zeta.of(context).spacing.minimum),
+              ),
+            ]
           : null,
     );
   }
@@ -206,7 +251,6 @@ class ZetaNotificationBadge extends StatelessWidget {
     return avatar != null
         ? avatar!.copyWith(
             size: ZetaAvatarSize.m,
-            lowerBadge: ZetaAvatarBadge.icon(icon: ZetaIcons.check_mark, color: colors.green),
             backgroundColor: colors.purple.shade80,
           )
         : icon != null
@@ -218,7 +262,8 @@ class ZetaNotificationBadge extends StatelessWidget {
             : ClipRRect(
                 borderRadius: Zeta.of(context).radius.rounded,
                 child: SizedBox.fromSize(
-                  size: Size.square(Zeta.of(context).spacing.xl_8), // Image radius
+                  size: Size.square(
+                      Zeta.of(context).spacing.xl_8), // Image radius
                   child: image!.copyWith(fit: BoxFit.cover),
                 ),
               );
