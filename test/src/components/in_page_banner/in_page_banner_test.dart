@@ -29,7 +29,7 @@ void main() {
 
       expect(box.decoration.runtimeType, BoxDecoration);
       final BoxDecoration decoration = box.decoration as BoxDecoration;
-      expect(decoration.color, ZetaPrimitivesLight().purple.shade10);
+      expect(decoration.color, const ZetaPrimitivesLight().purple.shade10);
 
       await expectLater(
         find.byType(ZetaInPageBanner),
@@ -48,7 +48,7 @@ void main() {
     final DecoratedBox box = tester.firstWidget(decoratedBoxFinder);
     expect(box.decoration.runtimeType, BoxDecoration);
     final BoxDecoration decoration = box.decoration as BoxDecoration;
-    expect(decoration.color, ZetaPrimitivesLight().red.shade10);
+    expect(decoration.color, const ZetaPrimitivesLight().red.shade10);
     await expectLater(
       find.byType(ZetaInPageBanner),
       matchesGoldenFile(goldenFile.getFileUri('in_page_banner_negative')),
@@ -64,7 +64,7 @@ void main() {
     final DecoratedBox box = tester.firstWidget(decoratedBoxFinder);
     expect(box.decoration.runtimeType, BoxDecoration);
     final BoxDecoration decoration = box.decoration as BoxDecoration;
-    expect(decoration.color, ZetaPrimitivesLight().green.shade10);
+    expect(decoration.color, const ZetaPrimitivesLight().green.shade10);
     await expectLater(
       find.byType(ZetaInPageBanner),
       matchesGoldenFile(goldenFile.getFileUri('in_page_banner_positive')),
@@ -94,7 +94,7 @@ void main() {
     final DecoratedBox box = tester.firstWidget(decoratedBoxFinder);
     expect(box.decoration.runtimeType, BoxDecoration);
     final BoxDecoration decoration = box.decoration as BoxDecoration;
-    expect(decoration.color, ZetaPrimitivesLight().pure.shade0);
+    expect(decoration.color, const ZetaPrimitivesLight().pure.shade0);
 
     await tester.tap(find.byKey(key));
     await tester.pumpAndSettle();

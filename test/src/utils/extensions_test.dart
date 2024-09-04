@@ -208,10 +208,10 @@ void main() {
       mockZetaColors = MockZetaSemanticColors();
       when(mockContext.dependOnInheritedWidgetOfExactType<Zeta>()).thenReturn(mockZeta as Zeta?);
       when(mockZeta.colors).thenReturn(mockZetaColors);
-      when(mockZetaColors.surfaceInfo).thenReturn(ZetaPrimitivesLight().purple);
-      when(mockZetaColors.surfacePositive).thenReturn(ZetaPrimitivesLight().green);
-      when(mockZetaColors.surfaceWarning).thenReturn(ZetaPrimitivesLight().orange);
-      when(mockZetaColors.surfaceNegative).thenReturn(ZetaPrimitivesLight().red);
+      when(mockZetaColors.surfaceInfo).thenReturn(const ZetaPrimitivesLight().purple);
+      when(mockZetaColors.surfacePositive).thenReturn(const ZetaPrimitivesLight().green);
+      when(mockZetaColors.surfaceWarning).thenReturn(const ZetaPrimitivesLight().orange);
+      when(mockZetaColors.surfaceNegative).thenReturn(const ZetaPrimitivesLight().red);
     });
   });
 

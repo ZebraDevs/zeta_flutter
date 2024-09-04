@@ -330,6 +330,7 @@ extension ZetaSemanticColorExtension on ZetaSemanticColors {
         'pink': primitives.pink,
       };
 
+  /// Creates a [ColorScheme] based on the current semantic colors.
   ColorScheme get toColorScheme => ColorScheme(
         brightness: primitives.brightness,
         primary: mainPrimary,

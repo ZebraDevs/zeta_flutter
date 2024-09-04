@@ -142,12 +142,12 @@ void main() {
     // Verify that the textButton color matches the hover color
     expect(
       textButton.style!.overlayColor?.resolve({WidgetState.hovered}),
-      ZetaPrimitivesLight().cool.shade20,
+      const ZetaPrimitivesLight().cool.shade20,
     );
     expect(
       textButton.style!.overlayColor?.resolve({WidgetState.focused}),
       Colors.transparent,
     );
-    expect(textButton.style!.side?.resolve({WidgetState.focused})?.color, ZetaPrimitivesLight().blue.shade50);
+    expect(textButton.style!.side?.resolve({WidgetState.focused})?.color, const ZetaPrimitivesLight().blue.shade50);
   });
 }

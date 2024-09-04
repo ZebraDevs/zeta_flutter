@@ -29,7 +29,7 @@ class Zeta extends InheritedWidget {
 
   /// Primitives used for colors, spacing and radii in the Zeta theme.
   ZetaPrimitives get primitives =>
-      _customPrimitives ?? (brightness == Brightness.light ? ZetaPrimitivesLight() : ZetaPrimitivesDark());
+      _customPrimitives ?? (brightness == Brightness.light ? const ZetaPrimitivesLight() : const ZetaPrimitivesDark());
 
   /// Semantics used for colors, spacing and radii in the Zeta theme.
   ZetaSemantics get semantics =>

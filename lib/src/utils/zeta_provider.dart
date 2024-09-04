@@ -27,7 +27,12 @@ class ZetaProvider extends StatefulWidget with Diagnosticable {
     this.initialContrast,
     this.themeService = const ZetaDefaultThemeService(),
     this.initialRounded = true,
-  });
+    Color? primary,
+    Color? secondary,
+  })  : _primary = primary?.generateSwatch(),
+        _secondary = secondary?.generateSwatch();
+  // TODO(mikecoomber): generateSwatch needs to return Map as its used in super constructor
+  // think about how to handle this
 
   /// Specifies the initial theme mode for the app.
   ///
@@ -50,6 +55,9 @@ class ZetaProvider extends StatefulWidget with Diagnosticable {
 
   /// Sets whether app should start with components in their rounded or sharp variants.
   final bool initialRounded;
+
+  final ZetaColorSwatch? _primary;
+  final ZetaColorSwatch? _secondary;
 
   @override
   State<ZetaProvider> createState() => ZetaProviderState();
@@ -314,8 +322,8 @@ class _InternalProvider extends StatefulWidget {
       ..add(EnumProperty<ThemeMode>('themeMode', themeMode))
       ..add(EnumProperty<ZetaContrast>('contrast', contrast))
       ..add(EnumProperty<Brightness>('platformBrightness', platformBrightness))
-      ..add(DiagnosticsProperty<bool>('rounded', rounded));
-      properties.add(ObjectFlagProperty<ZetaAppBuilder>.has('widget', widget));
+      ..add(DiagnosticsProperty<bool>('rounded', rounded))
+      ..add(ObjectFlagProperty<ZetaAppBuilder>.has('widget', widget));
   }
 }
 
@@ -326,6 +334,17 @@ class __InternalProviderState extends State<_InternalProvider> {
       themeMode: widget.themeMode,
       contrast: widget.contrast,
       rounded: widget.rounded,
+      // customPrimitives: widget.themeMode.isLight
+      //     ? ZetaLightPrimitives(
+      //         primary: customPrimary,
+      //         secondary: customSecondary,
+      //       )
+      //     : ZetaDarkPrimitives(
+      //         primary: customPrimary,
+      //         secondary: customSecondary,
+      //       ),
+      // customPrimitives: TODO: Add custom primitives based on theme mode,
+      // TODO: Add back into the example app
       child: Builder(
         builder: (context) {
           return widget.widget(
