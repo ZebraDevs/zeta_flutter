@@ -5,7 +5,10 @@ import 'contrast.dart';
 
 const String _kThemeMode = 'themeMode';
 const String _kContrast = 'contrast';
-
+const String _kColor = 'color';
+// TODO(colors): Revert this to include color also?
+// TODO(colors): Re-add custom font somewhere (not here)
+// TODO(colors): Add tests
 /// `ZetaThemeService` is an abstract class.
 /// It provides the structure for loading and saving themes in Zeta application.
 /// {@category Theme}

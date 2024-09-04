@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:collection/collection.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 class ZetaThemeColorSwitch extends StatefulWidget {
@@ -11,13 +12,30 @@ class ZetaThemeColorSwitch extends StatefulWidget {
 class _ZetaThemeColorSwitchState extends State<ZetaThemeColorSwitch> {
   String currentTheme = "default";
 
-  final Map<String, ZetaColorSwatch> appThemes = {
-    "default": ZetaPrimitivesLight().blue,
+  final Map<String, ZetaColorSwatch?> appThemes = {
+    "default": null,
     "teal": ZetaPrimitivesLight().teal,
     "yellow": ZetaPrimitivesLight().yellow,
     "red": ZetaPrimitivesLight().red,
     "purple": ZetaPrimitivesLight().purple,
+    "green": ZetaPrimitivesLight().green,
   };
+
+  String get currentValue {
+    if (Zeta.of(context).brightness == Brightness.light) {
+      return appThemes.entries
+              .firstWhereOrNull((element) => element.value?.value == Zeta.of(context).colors.mainPrimary.value)
+              ?.key ??
+          "default";
+    }
+    if (Zeta.of(context).brightness == Brightness.dark) {
+      return appThemes.entries
+              .firstWhereOrNull((element) => element.value?.shade50.value == Zeta.of(context).colors.mainPrimary.value)
+              ?.key ??
+          "default";
+    }
+    return 'default';
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +43,7 @@ class _ZetaThemeColorSwitchState extends State<ZetaThemeColorSwitch> {
 
     return DropdownButtonHideUnderline(
       child: DropdownButton<String>(
-        value: currentTheme,
+        value: currentValue,
         elevation: 0,
         padding: EdgeInsets.all(8),
         icon: Nothing(),
@@ -38,8 +56,14 @@ class _ZetaThemeColorSwitchState extends State<ZetaThemeColorSwitch> {
             alignment: Alignment.center,
             child: ZetaAvatar(
               size: ZetaAvatarSize.xxs,
-              backgroundColor: color,
-              image: ZetaIcon(Icons.color_lens, color: color),
+              backgroundColor: Zeta.of(context).colors.surfaceDefault,
+              image: ZetaIcon(
+                Icons.color_lens,
+                color: color ??
+                    (Zeta.of(context).brightness == Brightness.light
+                        ? ZetaPrimitivesLight().blue
+                        : ZetaPrimitivesDark().blue),
+              ),
             ),
           );
         }).toList(),

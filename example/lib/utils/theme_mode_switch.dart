@@ -13,6 +13,7 @@ class ZetaThemeModeSwitch extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final zeta = Zeta.of(context);
+    final colors = zeta.colors;
 
     return DropdownButtonHideUnderline(
       child: DropdownButton<ThemeMode>(
@@ -22,9 +23,6 @@ class ZetaThemeModeSwitch extends StatelessWidget {
         icon: Nothing(),
         dropdownColor: zeta.colors.borderDisabled,
         items: _themes.map((e) {
-          final colors = e == ThemeMode.dark
-              ? ZetaSemanticColorsAA(primitives: ZetaPrimitivesDark())
-              : ZetaSemanticColorsAA(primitives: ZetaPrimitivesLight());
           return DropdownMenuItem<ThemeMode>(
             value: e,
             alignment: Alignment.center,
