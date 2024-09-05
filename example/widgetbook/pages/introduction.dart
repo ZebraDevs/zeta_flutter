@@ -32,7 +32,7 @@ class _IntroductionWidgetbookState extends State<IntroductionWidgetbook> {
     return LayoutBuilder(builder: (context, constraints) {
       final bool largeScreen = constraints.maxWidth > 480;
       return Scaffold(
-        backgroundColor: colors.black,
+        backgroundColor: Colors.black,
         body: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.symmetric(

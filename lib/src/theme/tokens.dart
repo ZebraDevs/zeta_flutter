@@ -338,6 +338,9 @@ class ZetaAnimationLength {
 /// Temporary class to hold border values.
 // TODO(Tokens): Remove this class and design / develop  Zeta.of(context).border instead.
 abstract final class ZetaBorders {
-  /// Border width
-  static double get borderWidth => 2;
+  /// Small border width
+  static double get small => 0.5;
+
+  /// Medium border width
+  static double get medium => 2;
 }

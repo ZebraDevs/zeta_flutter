@@ -313,12 +313,8 @@ class ZetaNotificationBadge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colors = Zeta.of(context).colors;
     return avatar != null
-        ? avatar!.copyWith(
-            size: ZetaAvatarSize.m,
-            backgroundColor: colors.purple.shade80,
-          )
+        ? avatar!.copyWith(size: ZetaAvatarSize.m)
         : icon != null
             ? ZetaIcon(
                 icon,

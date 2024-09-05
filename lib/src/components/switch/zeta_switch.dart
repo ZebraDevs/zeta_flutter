@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -62,12 +60,9 @@ class ZetaSwitch extends StatelessWidget {
 
   ZetaSwitchType get _variant {
     if (variant != null) return variant!;
-    if (kIsWeb) return ZetaSwitchType.web;
-    return switch (Platform.operatingSystem) {
-      'ios' => ZetaSwitchType.ios,
-      'android' => ZetaSwitchType.android,
-      _ => ZetaSwitchType.web,
-    };
+    if (PlatformIs.android) return ZetaSwitchType.android;
+    if (PlatformIs.iOS) return ZetaSwitchType.ios;
+    return ZetaSwitchType.web;
   }
 
   Size get _size {

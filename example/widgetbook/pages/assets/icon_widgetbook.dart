@@ -51,7 +51,7 @@ Widget iconsUseCase(BuildContext context) {
                             nameArr,
                             textAlign: TextAlign.center,
                             maxLines: 2,
-                          )
+                          ),
                         ],
                       ),
                     ),
