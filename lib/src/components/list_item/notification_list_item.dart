@@ -75,6 +75,9 @@ class ZetaNotificationListItem extends ZetaStatelessWidget {
     final actionWith = slidableActionsCount * Zeta.of(context).spacing.xl_10;
     final maxButtonWidth = actionWith / maxScreenWidth;
     final extend = actionWith / maxScreenWidth;
+    if (extend.clamp(0, maxButtonWidth).toDouble() > 1) {
+      return 1;
+    } 
     return extend.clamp(0, maxButtonWidth).toDouble();
   }
 
