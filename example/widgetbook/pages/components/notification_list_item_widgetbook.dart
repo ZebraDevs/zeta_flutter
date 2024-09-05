@@ -6,32 +6,30 @@ import '../../utils/scaffold.dart';
 
 Widget notificationListItemUseCase(BuildContext context) => WidgetbookScaffold(
       builder: (context, _) => Padding(
-        padding: EdgeInsets.symmetric(horizontal: context.knobs.list(label: "Size", options: [100, 200, 400])),
+        padding: EdgeInsets.symmetric(
+            horizontal:
+                context.knobs.list(label: "Size", options: [100, 200, 400])),
         child: ZetaNotificationListItem(
-          body: context.knobs.boolean(label: "Include Link")
-              ? Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "New urgent" * 300,
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                    ZetaButton.text(label: "label")
-                  ],
-                )
-              : Text(
-                  "New urgent" * 300,
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                ),
-          title: context.knobs.string(label: "Title", initialValue: "Urgent Notification"),
-          notificationTime: context.knobs.stringOrNull(label: "Notification Time", initialValue: "Just Now"),
-          notificationRead: context.knobs.boolean(label: "Notification Read", initialValue: false),
+          body: Text(
+            "New urgent message " * 300,
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+          ),
+          attachment:
+              context.knobs.boolean(label: "Attachment", initialValue: false)
+                  ? Text("Spring-Donation-Drive.pdf")
+                  : null,
+          title: context.knobs
+              .string(label: "Title", initialValue: "Urgent Notification"),
+          notificationTime: context.knobs.stringOrNull(
+              label: "Notification Time", initialValue: "Just Now"),
+          notificationRead: context.knobs
+              .boolean(label: "Notification Read", initialValue: false),
           leading: context.knobs.list(
             label: 'Badge',
             options: [
-              ZetaNotificationBadge.avatar(avatar: ZetaAvatar.initials(initials: "AO")),
+              ZetaNotificationBadge.avatar(
+                  avatar: ZetaAvatar.initials(initials: "JS")),
               ZetaNotificationBadge.icon(icon: ZetaIcons.check_circle),
               ZetaNotificationBadge.image(
                   image: Image.network(
@@ -43,23 +41,19 @@ Widget notificationListItemUseCase(BuildContext context) => WidgetbookScaffold(
                     ? "Icon"
                     : "Image",
           ),
-          action: context.knobs.list(
-            label: "Action Buttons",
-            options: [
-              ZetaButton.negative(label: "Remove"),
-              ZetaButton.positive(label: "Add"),
-              ZetaButton.outline(label: "Action"),
-            ],
-            labelBuilder: (value) {
-              final button = (value as ZetaButton);
-              return button.label == "Remove"
-                  ? "Negative"
-                  : button.label == "Add"
-                      ? "Positive"
-                      : "Netutral";
-            },
-          ),
-          showDivider: context.knobs.booleanOrNull(label: "Has More"),
+          action:
+              context.knobs.boolean(label: "Show action", initialValue: true)
+                  ? ZetaButton.outline(
+                      label: "User Action",
+                      onPressed: () {},
+                      size: ZetaWidgetSize.small,
+                      borderType: ZetaWidgetBorder.rounded,
+                    )
+                  : null,
+          showDivider:
+              context.knobs.boolean(label: "Show Divider", initialValue: false),
+          showBellIcon: context.knobs
+              .boolean(label: "Show Bell Icon", initialValue: true),
         ),
       ),
     );
