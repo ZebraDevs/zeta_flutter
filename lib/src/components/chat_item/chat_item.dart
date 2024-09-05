@@ -117,7 +117,7 @@ class ZetaChatItem extends ZetaStatelessWidget {
     final extend = actionWith / maxScreenWidth;
     if (extend.clamp(0, maxButtonWidth).toDouble() > 1) {
       return 1;
-    } 
+    }
     return extend.clamp(0, maxButtonWidth).toDouble();
   }
 
