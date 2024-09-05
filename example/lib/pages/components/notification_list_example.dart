@@ -44,7 +44,13 @@ class NotificationListItemExample extends StatelessWidget {
                 onPressed: () {},
                 size: ZetaWidgetSize.small,
               ),
-              // attachment: Text("Spring-Donation-Drive.pdf"),
+              slidableActions: [
+                ZetaSlidableAction.menuMore(onPressed: () {}),
+                ZetaSlidableAction.call(onPressed: () {}),
+                ZetaSlidableAction.ptt(onPressed: () {}),
+                ZetaSlidableAction.delete(onPressed: () {}),
+              ],
+              paleButtonColors: true,
             ),
             ZetaNotificationListItem(
               body: Text(
@@ -65,6 +71,10 @@ class NotificationListItemExample extends StatelessWidget {
               notificationTime: "10:32 AM",
               showBellIcon: true,
               attachment: Text("Spring-Donation-Drive.pdf"),
+              slidableActions: [
+                ZetaSlidableAction.menuMore(onPressed: () {}),
+                ZetaSlidableAction.delete(onPressed: () {}),
+              ],
             ),
             ZetaNotificationListItem(
               body: Text(
@@ -84,6 +94,11 @@ class NotificationListItemExample extends StatelessWidget {
               ),
               notificationRead: true,
               notificationTime: "03/09/2024",
+              slidableActions: [
+                ZetaSlidableAction.call(onPressed: () {}),
+                ZetaSlidableAction.ptt(onPressed: () {}),
+              ],
+              paleButtonColors: true,
             ),
             const SizedBox(height: 20),
             Text(
@@ -108,6 +123,13 @@ class NotificationListItemExample extends StatelessWidget {
                 size: ZetaWidgetSize.small,
               ),
               attachment: Text("Spring-Donation-Drive.pdf"),
+              slidableActions: [
+                ZetaSlidableAction.menuMore(onPressed: () {}),
+                ZetaSlidableAction.call(onPressed: () {}),
+                ZetaSlidableAction.ptt(onPressed: () {}),
+                ZetaSlidableAction.delete(onPressed: () {}),
+              ],
+              paleButtonColors: true,
             ),
             ZetaNotificationListItem(
               body: Text(
@@ -123,6 +145,10 @@ class NotificationListItemExample extends StatelessWidget {
               notificationTime: "10:32 AM",
               showBellIcon: true,
               attachment: Text("Spring-Donation-Drive.pdf"),
+              slidableActions: [
+                ZetaSlidableAction.menuMore(onPressed: () {}),
+                ZetaSlidableAction.delete(onPressed: () {}),
+              ],
             ),
             ZetaNotificationListItem(
               body: Text(
@@ -136,6 +162,11 @@ class NotificationListItemExample extends StatelessWidget {
               ),
               notificationRead: true,
               notificationTime: "03/09/2024",
+              slidableActions: [
+                ZetaSlidableAction.call(onPressed: () {}),
+                ZetaSlidableAction.ptt(onPressed: () {}),
+              ],
+              paleButtonColors: true,
             ),
             const SizedBox(height: 20),
             Text(
@@ -158,6 +189,13 @@ class NotificationListItemExample extends StatelessWidget {
                 size: ZetaWidgetSize.small,
               ),
               attachment: Text("Spring-Donation-Drive.pdf"),
+              slidableActions: [
+                ZetaSlidableAction.menuMore(onPressed: () {}),
+                ZetaSlidableAction.call(onPressed: () {}),
+                ZetaSlidableAction.ptt(onPressed: () {}),
+                ZetaSlidableAction.delete(onPressed: () {}),
+              ],
+              paleButtonColors: true,
             ),
             ZetaNotificationListItem(
               body: Text(
@@ -171,6 +209,10 @@ class NotificationListItemExample extends StatelessWidget {
               notificationTime: "10:32 AM",
               showBellIcon: true,
               attachment: Text("Spring-Donation-Drive.pdf"),
+              slidableActions: [
+                ZetaSlidableAction.menuMore(onPressed: () {}),
+                ZetaSlidableAction.delete(onPressed: () {}),
+              ],
             ),
             ZetaNotificationListItem(
               body: Text(
@@ -182,6 +224,11 @@ class NotificationListItemExample extends StatelessWidget {
               leading: ZetaNotificationBadge.icon(icon: ZetaIcons.check_circle),
               notificationRead: true,
               notificationTime: "03/09/2024",
+              slidableActions: [
+                ZetaSlidableAction.call(onPressed: () {}),
+                ZetaSlidableAction.ptt(onPressed: () {}),
+              ],
+              paleButtonColors: true,
             ),
           ].gap(Zeta.of(context).spacing.xl_4),
         ),
