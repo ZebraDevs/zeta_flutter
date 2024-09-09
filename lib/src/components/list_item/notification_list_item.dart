@@ -77,7 +77,7 @@ class ZetaNotificationListItem extends ZetaStatelessWidget {
     final extend = actionWith / maxScreenWidth;
     if (extend.clamp(0, maxButtonWidth).toDouble() > 1) {
       return 1;
-    } 
+    }
     return extend.clamp(0, maxButtonWidth).toDouble();
   }
 
@@ -148,8 +148,7 @@ class ZetaNotificationListItem extends ZetaStatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
                                     MergeSemantics(
                                       child: Row(
@@ -160,9 +159,7 @@ class ZetaNotificationListItem extends ZetaStatelessWidget {
                                               size: ZetaWidgetSize.small,
                                             ),
                                           SizedBox(
-                                            width: Zeta.of(context)
-                                                .spacing
-                                                .minimum,
+                                            width: Zeta.of(context).spacing.minimum,
                                           ),
                                           Text(
                                             title,
@@ -176,8 +173,7 @@ class ZetaNotificationListItem extends ZetaStatelessWidget {
                                         if (notificationTime != null)
                                           Text(
                                             notificationTime!,
-                                            style:
-                                                ZetaTextStyles.bodySmall.apply(
+                                            style: ZetaTextStyles.bodySmall.apply(
                                               color: colors.textDisabled,
                                             ),
                                           ),
@@ -186,15 +182,12 @@ class ZetaNotificationListItem extends ZetaStatelessWidget {
                                             padding: const EdgeInsets.all(2),
                                             decoration: BoxDecoration(
                                               color: colors.surfaceNegative,
-                                              borderRadius:
-                                                  Zeta.of(context).radius.full,
+                                              borderRadius: Zeta.of(context).radius.full,
                                             ),
                                             child: ZetaIcon(
                                               ZetaIcons.important_notification,
                                               color: colors.white,
-                                              size: Zeta.of(context)
-                                                  .spacing
-                                                  .large,
+                                              size: Zeta.of(context).spacing.large,
                                             ),
                                           ),
                                       ].gap(Zeta.of(context).spacing.minimum),
@@ -205,8 +198,7 @@ class ZetaNotificationListItem extends ZetaStatelessWidget {
                                 if (attachment != null)
                                   Container(
                                     padding: EdgeInsets.symmetric(
-                                      vertical:
-                                          Zeta.of(context).spacing.minimum,
+                                      vertical: Zeta.of(context).spacing.minimum,
                                     ),
                                     child: Row(
                                       children: [
@@ -216,8 +208,7 @@ class ZetaNotificationListItem extends ZetaStatelessWidget {
                                           color: colors.primary,
                                         ),
                                         DefaultTextStyle(
-                                          style: ZetaTextStyles.bodyXSmall
-                                              .apply(color: colors.primary),
+                                          style: ZetaTextStyles.bodyXSmall.apply(color: colors.primary),
                                           child: attachment!,
                                         ),
                                       ],
@@ -228,9 +219,7 @@ class ZetaNotificationListItem extends ZetaStatelessWidget {
                           ),
                         ].gap(Zeta.of(context).spacing.small),
                       ),
-                      if (action != null)
-                        Container(
-                            alignment: Alignment.bottomRight, child: action),
+                      if (action != null) Container(alignment: Alignment.bottomRight, child: action),
                     ],
                   ).paddingAll(Zeta.of(context).spacing.small),
                 ),
