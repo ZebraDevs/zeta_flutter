@@ -5,8 +5,7 @@ import 'contrast.dart';
 
 const String _kThemeMode = 'themeMode';
 const String _kContrast = 'contrast';
-const String _kColor = 'color';
-// TODO(colors): Revert this to include color also?
+const String _kThemeId = 'theme_id';
 // TODO(colors): Re-add custom font somewhere (not here)
 // TODO(colors): Add tests
 /// `ZetaThemeService` is an abstract class.
@@ -29,7 +28,7 @@ abstract class ZetaThemeService {
   /// `ZetaContrast` defines different contrast styles to use across the application.
   ///
   /// Returns a Future `(ZetaThemeData?, ThemeMode?, ZetaContrast?)`.
-  Future<(ThemeMode?, ZetaContrast?)> loadTheme();
+  Future<(ThemeMode?, ZetaContrast?, String?)> loadTheme();
 
   /// Saves the provided theme data as the application's theme.
   ///
@@ -42,6 +41,7 @@ abstract class ZetaThemeService {
   Future<void> saveTheme({
     required ThemeMode themeMode,
     required ZetaContrast contrast,
+    required String? themeId,
   });
 }
 
@@ -51,7 +51,7 @@ class ZetaDefaultThemeService extends ZetaThemeService {
   const ZetaDefaultThemeService();
 
   @override
-  Future<(ThemeMode?, ZetaContrast?)> loadTheme() async {
+  Future<(ThemeMode?, ZetaContrast?, String?)> loadTheme() async {
     final preferences = await SharedPreferences.getInstance();
 
     final modeString = preferences.getString(_kThemeMode);
@@ -65,17 +65,22 @@ class ZetaDefaultThemeService extends ZetaThemeService {
     final contrastString = preferences.getString(_kContrast);
     final contrast = contrastString == ZetaContrast.aaa.name ? ZetaContrast.aaa : ZetaContrast.aa;
 
-    return (themeMode, contrast);
+    final themeId = preferences.getString(_kThemeId);
+
+    return (themeMode, contrast, themeId);
   }
 
   @override
   Future<void> saveTheme({
     required ThemeMode themeMode,
     required ZetaContrast contrast,
+    required String? themeId,
   }) async {
     final preferences = await SharedPreferences.getInstance();
 
-    await preferences.setString('themeMode', themeMode.name);
-    await preferences.setString('contrast', contrast.name);
+    await preferences.setString(_kThemeMode, themeMode.name);
+    await preferences.setString(_kContrast, contrast.name);
+
+    if (themeId != null) await preferences.setString(_kThemeId, themeId);
   }
 }

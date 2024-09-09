@@ -45,6 +45,11 @@ class ZetaColorSwatch extends ColorSwatch<int> with EquatableMixin {
     /// - 100, 90, 80, and 70 are darker shades of the primary color.
     /// - 60 is the primary color itself.
     /// - 50, 40, 30, 20, and 10 are progressively lighter shades of the primary color.
+    if (primary is ZetaColorSwatch) {
+      return primary;
+    } else if (primary is MaterialColor) {
+      return ZetaColorSwatch.fromMaterialColor(primary);
+    }
     return ZetaColorSwatch(
       primary: primary.value,
       swatch: primary.generateSwatch(background: background),
