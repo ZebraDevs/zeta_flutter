@@ -401,12 +401,12 @@ void main() {
                 slidableActions: [
                   ZetaSlidableAction(
                     onPressed: () {},
-                    color: ZetaColorBase.orange,
+                    color: const ZetaPrimitivesLight().orange,
                     icon: Icons.star,
                   ),
                   ZetaSlidableAction(
                     onPressed: () {},
-                    color: ZetaColorBase.red,
+                    color: const ZetaPrimitivesLight().red,
                     icon: Icons.delete,
                   ),
                 ],
@@ -486,7 +486,7 @@ void main() {
       expect(diagnosticsZetaSlidableAction.finder('icon'), 'IconData(U+0E5F9)');
       expect(diagnosticsZetaSlidableAction.finder('foregroundColor'), null);
       expect(diagnosticsZetaSlidableAction.finder('backgroundColor'), null);
-      expect(diagnosticsZetaSlidableAction.finder('color'), ZetaColorBase.blue.toString());
+      expect(diagnosticsZetaSlidableAction.finder('color'), const ZetaPrimitivesLight().blue.toString());
       expect(diagnosticsZetaSlidableAction.finder('semanticLabel'), 'null');
       expect(diagnosticsZetaSlidableAction.finder('paleColor'), 'false');
     });
