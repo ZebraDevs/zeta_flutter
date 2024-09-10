@@ -37,5 +37,6 @@ jobs:
               owner: 'zebratechnologies',
               repo: 'zeta',
               workflow_id: 'deploy.yml',
-              ref: 'main'
+              ref: 'main',
+              environment: 'stage',
             })
