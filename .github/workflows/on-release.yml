@@ -36,6 +36,7 @@ jobs:
             await github.rest.actions.createWorkflowDispatch({
               owner: 'zebratechnologies',
               repo: 'zeta',
-              workflow_id: 'deploy-prod.yml',
-              ref: 'main'
+              workflow_id: 'deploy.yml',
+              ref: 'main',
+              environment: 'stage',
             })
