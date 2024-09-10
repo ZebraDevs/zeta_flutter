@@ -3,7 +3,6 @@ import 'dart:ui';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:path/path.dart';
 import 'package:zeta_flutter/src/components/checkbox/checkbox.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
@@ -12,9 +11,10 @@ import '../../../test_utils/tolerant_comparator.dart';
 import '../../../test_utils/utils.dart';
 
 void main() {
+  const goldenFile = GoldenFiles(component: 'checkbox');
+
   setUpAll(() {
-    final testUri = Uri.parse(getCurrentPath('checkbox'));
-    goldenFileComparator = TolerantComparator(testUri, tolerance: 0.01);
+    goldenFileComparator = TolerantComparator(goldenFile.uri);
   });
 
   group('ZetaCheckbox Tests', () {
@@ -54,7 +54,7 @@ void main() {
       final checkboxFinder = find.byType(ZetaCheckbox);
       await expectLater(
         checkboxFinder,
-        matchesGoldenFile(join(getCurrentPath('checkbox'), 'checkbox_enabled.png')),
+        matchesGoldenFile(goldenFile.getFileUri('checkbox_enabled')),
       );
       await tester.tap(find.byType(ZetaCheckbox));
       await tester.pump();
@@ -73,7 +73,7 @@ void main() {
       final checkboxFinder = find.byType(ZetaCheckbox);
       await expectLater(
         checkboxFinder,
-        matchesGoldenFile(join(getCurrentPath('checkbox'), 'checkbox_disabled.png')),
+        matchesGoldenFile(goldenFile.getFileUri('checkbox_disabled')),
       );
       await tester.tap(find.byType(ZetaCheckbox));
       await tester.pump();
@@ -136,7 +136,7 @@ void main() {
       await tester.pumpAndSettle();
       await expectLater(
         checkboxFinder,
-        matchesGoldenFile(join(getCurrentPath('checkbox'), 'checkbox_hover.png')),
+        matchesGoldenFile(goldenFile.getFileUri('checkbox_hover')),
       );
     });
 

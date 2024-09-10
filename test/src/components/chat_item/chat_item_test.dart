@@ -2,7 +2,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:intl/intl.dart';
-import 'package:path/path.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 import '../../../test_utils/test_app.dart';
@@ -10,9 +9,10 @@ import '../../../test_utils/tolerant_comparator.dart';
 import '../../../test_utils/utils.dart';
 
 void main() {
+  const goldenFile = GoldenFiles(component: 'chat_item');
+
   setUpAll(() {
-    final testUri = Uri.parse(getCurrentPath('chat_item'));
-    goldenFileComparator = TolerantComparator(testUri, tolerance: 0.01);
+    goldenFileComparator = TolerantComparator(goldenFile.uri);
   });
 
   group('ZetaChatItem Tests', () {
@@ -67,7 +67,7 @@ void main() {
 
       await expectLater(
         chatItemFinder,
-        matchesGoldenFile(join(getCurrentPath('chat_item'), 'chat_item_default.png')),
+        matchesGoldenFile(goldenFile.getFileUri('chat_item_default')),
       );
     });
 
@@ -122,7 +122,7 @@ void main() {
 
       await expectLater(
         chatItemFinder,
-        matchesGoldenFile(join(getCurrentPath('chat_item'), 'chat_item_highlighted.png')),
+        matchesGoldenFile(goldenFile.getFileUri('chat_item_highlighted')),
       );
     });
 
@@ -184,7 +184,7 @@ void main() {
 
       await expectLater(
         chatItemFinder,
-        matchesGoldenFile(join(getCurrentPath('chat_item'), 'chat_item_slidable_actions.png')),
+        matchesGoldenFile(goldenFile.getFileUri('chat_item_slidable_actions')),
       );
     });
 
@@ -238,7 +238,7 @@ void main() {
 
       await expectLater(
         chatItemFinder,
-        matchesGoldenFile(join(getCurrentPath('chat_item'), 'chat_item_pale_slidable_buttons.png')),
+        matchesGoldenFile(goldenFile.getFileUri('chat_item_pale_slidable_buttons')),
       );
     });
 
@@ -326,7 +326,7 @@ void main() {
 
       await expectLater(
         chatItemFinder,
-        matchesGoldenFile(join(getCurrentPath('chat_item'), 'chat_item_pale_and_regular_buttons.png')),
+        matchesGoldenFile(goldenFile.getFileUri('chat_item_pale_and_regular_buttons')),
       );
     });
 
@@ -370,7 +370,7 @@ void main() {
 
       await expectLater(
         chatItemFinder,
-        matchesGoldenFile(join(getCurrentPath('chat_item'), 'chat_item_custom_leading.png')),
+        matchesGoldenFile(goldenFile.getFileUri('chat_item_custom_leading')),
       );
     });
 
@@ -428,7 +428,7 @@ void main() {
 
       await expectLater(
         chatItemFinder,
-        matchesGoldenFile(join(getCurrentPath('chat_item'), 'chat_item_custom_slidable_buttons.png')),
+        matchesGoldenFile(goldenFile.getFileUri('chat_item_custom_slidable_buttons')),
       );
     });
 
@@ -544,7 +544,7 @@ void main() {
 
       await expectLater(
         chatItemFinder,
-        matchesGoldenFile(join(getCurrentPath('chat_item'), 'chat_item_small_screen_slidable_button.png')),
+        matchesGoldenFile(goldenFile.getFileUri('chat_item_small_screen_slidable_button')),
       );
     });
   });

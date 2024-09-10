@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:path/path.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 import '../../../test_utils/test_app.dart';
@@ -8,9 +7,10 @@ import '../../../test_utils/tolerant_comparator.dart';
 import '../../../test_utils/utils.dart';
 
 void main() {
+  const goldenFile = GoldenFiles(component: 'top_app_bar');
+
   setUpAll(() {
-    final testUri = Uri.parse(getCurrentPath('top_app_bar'));
-    goldenFileComparator = TolerantComparator(testUri, tolerance: 0.01);
+    goldenFileComparator = TolerantComparator(goldenFile.uri);
   });
 
   testWidgets('ZetaExtendedAppBarDelegate builds correctly', (WidgetTester tester) async {
@@ -65,7 +65,7 @@ void main() {
 
     await expectLater(
       appBarFinder,
-      matchesGoldenFile(join(getCurrentPath('top_app_bar'), 'extended_app_bar_shrinks.png')),
+      matchesGoldenFile(goldenFile.getFileUri('extended_app_bar_shrinks')),
     );
   });
 
@@ -163,7 +163,7 @@ void main() {
 
     await expectLater(
       appBarFinder,
-      matchesGoldenFile(join(getCurrentPath('top_app_bar'), 'extended_app_bar_shrinks_with_no_leading.png')),
+      matchesGoldenFile(goldenFile.getFileUri('extended_app_bar_shrinks_with_no_leading')),
     );
   });
 }

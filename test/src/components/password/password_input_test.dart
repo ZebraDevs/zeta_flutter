@@ -1,7 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:path/path.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 import '../../../test_utils/test_app.dart';
@@ -9,9 +8,10 @@ import '../../../test_utils/tolerant_comparator.dart';
 import '../../../test_utils/utils.dart';
 
 void main() {
+  const goldenFile = GoldenFiles(component: 'password');
+
   setUpAll(() {
-    final testUri = Uri.parse(getCurrentPath('password'));
-    goldenFileComparator = TolerantComparator(testUri, tolerance: 0.01);
+    goldenFileComparator = TolerantComparator(goldenFile.uri);
   });
 
   testWidgets('ZetaPasswordInput initializes correctly', (WidgetTester tester) async {
@@ -24,7 +24,7 @@ void main() {
 
     await expectLater(
       find.byType(ZetaPasswordInput),
-      matchesGoldenFile(join(getCurrentPath('password'), 'password_default.png')),
+      matchesGoldenFile(goldenFile.getFileUri('password_default')),
     );
   });
 
@@ -75,7 +75,7 @@ void main() {
 
     await expectLater(
       find.byType(ZetaPasswordInput),
-      matchesGoldenFile(join(getCurrentPath('password'), 'password_error.png')),
+      matchesGoldenFile(goldenFile.getFileUri('password_error')),
     );
   });
   testWidgets('Test debugFillProperties', (WidgetTester tester) async {

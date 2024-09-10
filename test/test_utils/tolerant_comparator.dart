@@ -5,13 +5,13 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:image/image.dart' as img;
 
 class TolerantComparator extends LocalFileComparator {
-  TolerantComparator(super.testFile, {this.tolerance = 0.0});
+  TolerantComparator(Uri testFile, {this.tolerance = 0.01}) : super(testFile.replace(scheme: 'file'));
 
   final double tolerance;
 
   @override
   Future<bool> compare(Uint8List imageBytes, Uri golden) async {
-    final goldenFile = File.fromUri(golden);
+    final goldenFile = File.fromUri(golden.replace(scheme: 'file'));
     if (!goldenFile.existsSync()) {
       goldenFile
         ..createSync(recursive: true)
