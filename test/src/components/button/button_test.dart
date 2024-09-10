@@ -3,7 +3,6 @@ import 'dart:ui';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:path/path.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 import '../../../test_utils/test_app.dart';
@@ -11,9 +10,10 @@ import '../../../test_utils/tolerant_comparator.dart';
 import '../../../test_utils/utils.dart';
 
 void main() {
+  const goldenFile = GoldenFinder(component: 'button');
+
   setUpAll(() {
-    final testUri = Uri.parse(getCurrentPath('button'));
-    goldenFileComparator = TolerantComparator(testUri, tolerance: 0.01);
+    goldenFileComparator = TolerantComparator(goldenFile.uri);
   });
 
   group('ZetaButton Tests', () {
@@ -55,7 +55,7 @@ void main() {
     expect(button.size, ZetaWidgetSize.medium);
     expect(button.type, ZetaButtonType.primary);
 
-    await expectLater(find.byType(ZetaButton), matchesGoldenFile(join(getCurrentPath('button'), 'button_primary.png')));
+    await expectLater(find.byType(ZetaButton), matchesGoldenFile(goldenFile.getFileUri('button_primary.png')));
   });
   testWidgets('Initializes secondary with correct Label', (WidgetTester tester) async {
     await tester.pumpWidget(
@@ -80,7 +80,7 @@ void main() {
 
     await expectLater(
       find.byType(ZetaButton),
-      matchesGoldenFile(join(getCurrentPath('button'), 'button_secondary.png')),
+      matchesGoldenFile(goldenFile.getFileUri('button_secondary.png')),
     );
   });
   testWidgets('Initializes positive with correct Label', (WidgetTester tester) async {
@@ -101,7 +101,7 @@ void main() {
 
     await expectLater(
       find.byType(ZetaButton),
-      matchesGoldenFile(join(getCurrentPath('button'), 'button_positive.png')),
+      matchesGoldenFile(goldenFile.getFileUri('button_positive.png')),
     );
   });
   testWidgets('Initializes negative with correct Label', (WidgetTester tester) async {
@@ -122,7 +122,7 @@ void main() {
 
     await expectLater(
       find.byType(ZetaButton),
-      matchesGoldenFile(join(getCurrentPath('button'), 'button_negative.png')),
+      matchesGoldenFile(goldenFile.getFileUri('button_negative.png')),
     );
   });
   testWidgets('Initializes outline with correct Label', (WidgetTester tester) async {
@@ -141,7 +141,7 @@ void main() {
     expect(button.size, ZetaWidgetSize.large);
     expect(button.type, ZetaButtonType.outline);
 
-    await expectLater(find.byType(ZetaButton), matchesGoldenFile(join(getCurrentPath('button'), 'button_outline.png')));
+    await expectLater(find.byType(ZetaButton), matchesGoldenFile(goldenFile.getFileUri('button_outline.png')));
   });
   testWidgets('Initializes outlineSubtle with correct Label', (WidgetTester tester) async {
     await tester.pumpWidget(
@@ -161,7 +161,7 @@ void main() {
 
     await expectLater(
       find.byType(ZetaButton),
-      matchesGoldenFile(join(getCurrentPath('button'), 'button_outline_subtle.png')),
+      matchesGoldenFile(goldenFile.getFileUri('button_outline_subtle.png')),
     );
   });
   testWidgets('Initializes text with correct Label', (WidgetTester tester) async {
@@ -182,7 +182,7 @@ void main() {
 
     await expectLater(
       find.byType(ZetaButton),
-      matchesGoldenFile(join(getCurrentPath('button'), 'button_text.png')),
+      matchesGoldenFile(goldenFile.getFileUri('button_text.png')),
     );
   });
 
@@ -205,7 +205,7 @@ void main() {
 
     await expectLater(
       find.byType(ZetaButton),
-      matchesGoldenFile(join(getCurrentPath('button'), 'button_disabled.png')),
+      matchesGoldenFile(goldenFile.getFileUri('button_disabled.png')),
     );
   });
   testWidgets('Interaction with button', (WidgetTester tester) async {

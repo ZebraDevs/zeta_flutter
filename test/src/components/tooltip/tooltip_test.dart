@@ -1,11 +1,9 @@
 // ignore_for_file: avoid_dynamic_calls
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-import 'package:path/path.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 import '../../../test_utils/test_app.dart';
@@ -19,10 +17,10 @@ import 'tooltip_test.mocks.dart';
 void main() {
   final mockZeta = MockZeta();
   when(mockZeta.radius).thenReturn(const ZetaRadiiAA(primitives: ZetaPrimitivesLight()));
-  setUpAll(() {
-    final testUri = Uri.parse(getCurrentPath('tooltip'));
+  const goldenFile = GoldenFinder(component: 'tooltip');
 
-    goldenFileComparator = TolerantComparator(testUri, tolerance: 0.01);
+  setUpAll(() {
+    goldenFileComparator = TolerantComparator(goldenFile.uri);
   });
 
   group('ZetaTooltip Widget Tests', () {
@@ -118,7 +116,7 @@ void main() {
       // Verifying the CustomPaint with different arrow directions.
       await expectLater(
         find.byType(ZetaTooltip),
-        matchesGoldenFile(join(getCurrentPath('tooltip'), 'arrow_up.png')),
+        matchesGoldenFile(goldenFile.getFileUri('arrow_up.png')),
       );
     });
 
@@ -138,7 +136,7 @@ void main() {
       // Verifying the CustomPaint with different arrow directions.
       await expectLater(
         find.byType(ZetaTooltip),
-        matchesGoldenFile(join(getCurrentPath('tooltip'), 'arrow_down.png')),
+        matchesGoldenFile(goldenFile.getFileUri('arrow_down.png')),
       );
     });
 
@@ -159,7 +157,7 @@ void main() {
       // Verifying the CustomPaint with different arrow directions.
       await expectLater(
         find.byType(ZetaTooltip),
-        matchesGoldenFile(join(getCurrentPath('tooltip'), 'arrow_left.png')),
+        matchesGoldenFile(goldenFile.getFileUri('arrow_left.png')),
       );
     });
 
@@ -180,7 +178,7 @@ void main() {
       // Verifying the CustomPaint with different arrow directions.
       await expectLater(
         find.byType(ZetaTooltip),
-        matchesGoldenFile(join(getCurrentPath('tooltip'), 'arrow_right.png')),
+        matchesGoldenFile(goldenFile.getFileUri('arrow_right.png')),
       );
     });
 

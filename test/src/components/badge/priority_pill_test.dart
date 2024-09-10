@@ -1,8 +1,6 @@
 // ignore_for_file: avoid_dynamic_calls
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:path/path.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 import '../../../test_utils/test_app.dart';
@@ -10,9 +8,10 @@ import '../../../test_utils/tolerant_comparator.dart';
 import '../../../test_utils/utils.dart';
 
 void main() {
+  const goldenFile = GoldenFinder(component: 'badge');
+
   setUpAll(() {
-    final testUri = Uri.parse(getCurrentPath('badge'));
-    goldenFileComparator = TolerantComparator(testUri, tolerance: 0.01);
+    goldenFileComparator = TolerantComparator(goldenFile.uri);
   });
   testWidgets('Initializes with correct label and index', (WidgetTester tester) async {
     await tester.pumpWidget(
@@ -36,7 +35,7 @@ void main() {
 
     await expectLater(
       find.byType(ZetaPriorityPill),
-      matchesGoldenFile(join(getCurrentPath('badge'), 'priority_pill_default.png')),
+      matchesGoldenFile(goldenFile.getFileUri('priority_pill_default.png')),
     );
   });
   testWidgets('High priority pill', (WidgetTester tester) async {
@@ -64,7 +63,7 @@ void main() {
 
     await expectLater(
       find.byType(ZetaPriorityPill),
-      matchesGoldenFile(join(getCurrentPath('badge'), 'priority_pill_high.png')),
+      matchesGoldenFile(goldenFile.getFileUri('priority_pill_high.png')),
     );
   });
   testWidgets('Medium priority pill', (WidgetTester tester) async {
@@ -84,7 +83,7 @@ void main() {
 
     await expectLater(
       find.byType(ZetaPriorityPill),
-      matchesGoldenFile(join(getCurrentPath('badge'), 'priority_pill_medium.png')),
+      matchesGoldenFile(goldenFile.getFileUri('priority_pill_medium.png')),
     );
   });
   testWidgets('Low priority pill', (WidgetTester tester) async {
@@ -106,7 +105,7 @@ void main() {
 
     await expectLater(
       find.byType(ZetaPriorityPill),
-      matchesGoldenFile(join(getCurrentPath('badge'), 'priority_pill_low.png')),
+      matchesGoldenFile(goldenFile.getFileUri('priority_pill_low.png')),
     );
   });
   testWidgets('debugFillProperties works correctly', (WidgetTester tester) async {

@@ -3,7 +3,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-import 'package:path/path.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 import '../../../test_utils/test_app.dart';
@@ -27,10 +26,10 @@ abstract class ISearchBarEvents {
 ])
 void main() {
   late MockISearchBarEvents callbacks;
+  const goldenFile = GoldenFinder(component: 'search_bar');
 
   setUpAll(() {
-    final testUri = Uri.parse(getCurrentPath('search_bar'));
-    goldenFileComparator = TolerantComparator(testUri, tolerance: 0.01);
+    goldenFileComparator = TolerantComparator(goldenFile.uri);
   });
 
   setUp(() {
@@ -61,7 +60,7 @@ void main() {
 
       await expectLater(
         find.byType(ZetaSearchBar),
-        matchesGoldenFile(join(getCurrentPath('search_bar'), 'search_bar_default.png')),
+        matchesGoldenFile(goldenFile.getFileUri('search_bar_default.png')),
       );
     });
 
@@ -75,7 +74,7 @@ void main() {
 
       await expectLater(
         find.byType(ZetaSearchBar),
-        matchesGoldenFile(join(getCurrentPath('search_bar'), 'search_bar_medium.png')),
+        matchesGoldenFile(goldenFile.getFileUri('search_bar_medium.png')),
       );
     });
 
@@ -91,7 +90,7 @@ void main() {
 
       await expectLater(
         find.byType(ZetaSearchBar),
-        matchesGoldenFile(join(getCurrentPath('search_bar'), 'search_bar_small.png')),
+        matchesGoldenFile(goldenFile.getFileUri('search_bar_small.png')),
       );
     });
 
@@ -107,7 +106,7 @@ void main() {
 
       await expectLater(
         find.byType(ZetaSearchBar),
-        matchesGoldenFile(join(getCurrentPath('search_bar'), 'search_bar_full.png')),
+        matchesGoldenFile(goldenFile.getFileUri('search_bar_full.png')),
       );
     });
 
@@ -123,7 +122,7 @@ void main() {
 
       await expectLater(
         find.byType(ZetaSearchBar),
-        matchesGoldenFile(join(getCurrentPath('search_bar'), 'search_bar_sharp.png')),
+        matchesGoldenFile(goldenFile.getFileUri('search_bar_sharp.png')),
       );
     });
 

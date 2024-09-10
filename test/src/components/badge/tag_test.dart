@@ -1,6 +1,5 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:path/path.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 import '../../../test_utils/test_app.dart';
@@ -8,9 +7,10 @@ import '../../../test_utils/tolerant_comparator.dart';
 import '../../../test_utils/utils.dart';
 
 void main() {
+  const goldenFile = GoldenFinder(component: 'badge');
+
   setUpAll(() {
-    final testUri = Uri.parse(getCurrentPath('badge'));
-    goldenFileComparator = TolerantComparator(testUri, tolerance: 0.01);
+    goldenFileComparator = TolerantComparator(goldenFile.uri);
   });
   group('ZetaTag', () {
     testWidgets('Initializes right with correct parameters', (WidgetTester tester) async {
@@ -24,7 +24,7 @@ void main() {
 
       await expectLater(
         find.byType(ZetaTag),
-        matchesGoldenFile(join(getCurrentPath('badge'), 'tag_right.png')),
+        matchesGoldenFile(goldenFile.getFileUri('tag_right.png')),
       );
     });
 
@@ -38,7 +38,7 @@ void main() {
 
       await expectLater(
         find.byType(ZetaTag),
-        matchesGoldenFile(join(getCurrentPath('badge'), 'tag_left.png')),
+        matchesGoldenFile(goldenFile.getFileUri('tag_left.png')),
       );
     });
   });

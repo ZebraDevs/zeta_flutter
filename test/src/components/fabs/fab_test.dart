@@ -3,16 +3,16 @@ import 'dart:ui';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:path/path.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 import '../../../test_utils/test_app.dart';
 import '../../../test_utils/tolerant_comparator.dart';
 import '../../../test_utils/utils.dart';
 
 void main() {
+  const goldenFile = GoldenFinder(component: 'fab');
+
   setUpAll(() {
-    final testUri = Uri.parse(getCurrentPath('fabs'));
-    goldenFileComparator = TolerantComparator(testUri, tolerance: 0.01);
+    goldenFileComparator = TolerantComparator(goldenFile.uri);
   });
 
   group('ZetaFAB Tests', () {
@@ -28,7 +28,7 @@ void main() {
 
       await expectLater(
         find.byType(ZetaFAB),
-        matchesGoldenFile(join(getCurrentPath('fabs'), 'FAB_default.png')),
+        matchesGoldenFile(goldenFile.getFileUri('FAB_default.png')),
       );
     });
 
@@ -47,7 +47,7 @@ void main() {
 
       await expectLater(
         find.byType(ZetaFAB),
-        matchesGoldenFile(join(getCurrentPath('fabs'), 'FAB_pressed.png')),
+        matchesGoldenFile(goldenFile.getFileUri('FAB_pressed.png')),
       );
 
       await e.up();
@@ -78,7 +78,7 @@ void main() {
 
     await expectLater(
       find.byType(ZetaFAB),
-      matchesGoldenFile(join(getCurrentPath('fabs'), 'FAB_inverse.png')),
+      matchesGoldenFile(goldenFile.getFileUri('FAB_inverse.png')),
     );
   });
 
@@ -104,7 +104,7 @@ void main() {
 
     await expectLater(
       find.byType(ZetaFAB),
-      matchesGoldenFile(join(getCurrentPath('fabs'), 'FAB_secondary.png')),
+      matchesGoldenFile(goldenFile.getFileUri('FAB_secondary.png')),
     );
   });
   testWidgets('ZetaFAB interactive', (WidgetTester tester) async {
@@ -168,7 +168,7 @@ void main() {
 
     await expectLater(
       find.byType(ZetaFAB),
-      matchesGoldenFile(join(getCurrentPath('fabs'), 'FAB_disabled.png')),
+      matchesGoldenFile(goldenFile.getFileUri('FAB_disabled.png')),
     );
   });
 

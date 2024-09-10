@@ -1,16 +1,17 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:path/path.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
+
 import '../../../test_utils/test_app.dart';
 import '../../../test_utils/tolerant_comparator.dart';
 import '../../../test_utils/utils.dart';
 
 void main() {
+  const goldenFile = GoldenFinder(component: 'in_page_banner');
+
   setUpAll(() {
-    final testUri = Uri.parse(getCurrentPath('in_page_banner'));
-    goldenFileComparator = TolerantComparator(testUri, tolerance: 0.01);
+    goldenFileComparator = TolerantComparator(goldenFile.uri);
   });
 
   group('ZetaInPageBanner Tests', () {
@@ -32,7 +33,7 @@ void main() {
 
       await expectLater(
         find.byType(ZetaInPageBanner),
-        matchesGoldenFile(join(getCurrentPath('in_page_banner'), 'in_page_banner_default.png')),
+        matchesGoldenFile(goldenFile.getFileUri('in_page_banner_default.png')),
       );
     });
   });
@@ -50,7 +51,7 @@ void main() {
     expect(decoration.color, ZetaColorBase.red.shade10);
     await expectLater(
       find.byType(ZetaInPageBanner),
-      matchesGoldenFile(join(getCurrentPath('in_page_banner'), 'in_page_banner_negative.png')),
+      matchesGoldenFile(goldenFile.getFileUri('in_page_banner_negative.png')),
     );
   });
 
@@ -66,7 +67,7 @@ void main() {
     expect(decoration.color, ZetaColorBase.green.shade10);
     await expectLater(
       find.byType(ZetaInPageBanner),
-      matchesGoldenFile(join(getCurrentPath('in_page_banner'), 'in_page_banner_positive.png')),
+      matchesGoldenFile(goldenFile.getFileUri('in_page_banner_positive.png')),
     );
   });
 
@@ -101,7 +102,7 @@ void main() {
 
     await expectLater(
       find.byType(ZetaInPageBanner),
-      matchesGoldenFile(join(getCurrentPath('in_page_banner'), 'in_page_banner_buttons.png')),
+      matchesGoldenFile(goldenFile.getFileUri('in_page_banner_buttons.png')),
     );
   });
   testWidgets("ZetaInPageBanner 'close' icon tap test", (WidgetTester tester) async {

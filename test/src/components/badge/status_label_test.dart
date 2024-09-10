@@ -1,7 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:path/path.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 import '../../../test_utils/test_app.dart';
@@ -9,9 +8,10 @@ import '../../../test_utils/tolerant_comparator.dart';
 import '../../../test_utils/utils.dart';
 
 void main() {
+  const goldenFile = GoldenFinder(component: 'badge');
+
   setUpAll(() {
-    final testUri = Uri.parse(getCurrentPath('badge'));
-    goldenFileComparator = TolerantComparator(testUri, tolerance: 0.01);
+    goldenFileComparator = TolerantComparator(goldenFile.uri);
   });
   group('ZetaStatusLabel Tests', () {
     testWidgets('Initializes with correct properties', (WidgetTester tester) async {
@@ -24,7 +24,7 @@ void main() {
 
       await expectLater(
         find.byType(ZetaStatusLabel),
-        matchesGoldenFile(join(getCurrentPath('badge'), 'status_label_default.png')),
+        matchesGoldenFile(goldenFile.getFileUri('status_label_default.png')),
       );
     });
   });
@@ -43,7 +43,7 @@ void main() {
 
     await expectLater(
       find.byType(ZetaStatusLabel),
-      matchesGoldenFile(join(getCurrentPath('badge'), 'status_label_custom.png')),
+      matchesGoldenFile(goldenFile.getFileUri('status_label_custom.png')),
     );
   });
   testWidgets('debugFillProperties works correctly', (WidgetTester tester) async {
