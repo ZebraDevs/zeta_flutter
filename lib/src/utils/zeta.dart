@@ -1,6 +1,5 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 
 import '../../zeta_flutter.dart';
 
@@ -66,16 +65,7 @@ class Zeta extends InheritedWidget {
   /// If the theme mode is set to 'system', it will return the brightness that ties with the device's system theme setting.
   /// If the theme mode is set to 'light', it always returns `Brightness.light`.
   /// If neither, it returns `Brightness.dark` by default (i.e., when the theme mode is 'dark').
-  Brightness get brightness {
-    if (themeMode == ThemeMode.system) {
-      return SchedulerBinding
-          .instance.platformDispatcher.platformBrightness; // Return the current system brightness setting
-    } else if (themeMode == ThemeMode.light) {
-      return Brightness.light; // Return the light mode brightness
-    } else {
-      return Brightness.dark; // Default: Return the dark mode brightness
-    }
-  }
+  Brightness get brightness => themeMode.brightness;
 
   /// Gets the radius values based on the tokens.
   ZetaRadiiSemantics get radius => semantics.radii;

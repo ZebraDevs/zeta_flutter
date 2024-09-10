@@ -49,33 +49,36 @@ class ZetaExtendedAppBarDelegate extends SliverPersistentHeaderDelegate {
       constraints: BoxConstraints(minHeight: Zeta.of(context).spacing.xl_9, maxHeight: maxExtent),
       child: ColoredBox(
         color: Zeta.of(context).colors.surfaceDefault,
-        child: Stack(
-          children: [
-            Positioned(
-              top: shrinks
-                  ? (topMax + (-1 * shrinkOffset)).clamp(
-                      topMin -
-                          (searchController != null && searchController!.isEnabled
-                              ? searchBarOffsetTop
-                              : Zeta.of(context).spacing.none),
-                      topMax,
-                    )
-                  : topMax,
-              left: shrinks ? ((shrinkOffset / maxExtent) * _maxExtent).clamp(leftMin, leftMax) : leftMin,
-              right: searchController != null && searchController!.isEnabled
-                  ? searchBarOffsetRight
-                  : Zeta.of(context).spacing.none,
-              child: title,
-            ),
-            if (leading != null)
-              Positioned(top: Zeta.of(context).spacing.medium, left: Zeta.of(context).spacing.small, child: leading!),
-            if (actions != null)
+        child: IconTheme(
+          data: IconThemeData(color: Zeta.of(context).colors.mainDefault),
+          child: Stack(
+            children: [
               Positioned(
-                top: Zeta.of(context).spacing.medium,
-                right: Zeta.of(context).spacing.small,
-                child: Row(children: actions!),
+                top: shrinks
+                    ? (topMax + (-1 * shrinkOffset)).clamp(
+                        topMin -
+                            (searchController != null && searchController!.isEnabled
+                                ? searchBarOffsetTop
+                                : Zeta.of(context).spacing.none),
+                        topMax,
+                      )
+                    : topMax,
+                left: shrinks ? ((shrinkOffset / maxExtent) * _maxExtent).clamp(leftMin, leftMax) : leftMin,
+                right: searchController != null && searchController!.isEnabled
+                    ? searchBarOffsetRight
+                    : Zeta.of(context).spacing.none,
+                child: title,
               ),
-          ],
+              if (leading != null)
+                Positioned(top: Zeta.of(context).spacing.medium, left: Zeta.of(context).spacing.small, child: leading!),
+              if (actions != null)
+                Positioned(
+                  top: Zeta.of(context).spacing.medium,
+                  right: Zeta.of(context).spacing.small,
+                  child: Row(children: actions!),
+                ),
+            ],
+          ),
         ),
       ),
     );

@@ -172,15 +172,15 @@ class ZetaProviderState extends State<ZetaProvider> with Diagnosticable, Widgets
 
   /// Retrieves the theme values from the shared preferences.
   Future<void> getThemeValuesFromPreferences() async {
-    final (themeMode, contrast, themeId) = await widget.themeService.loadTheme();
+    final ZetaThemeServiceData themeServiceData = await widget.themeService.loadTheme();
 
     // Set the initial theme mode.
-    _themeMode = themeMode ?? widget.initialThemeMode ?? ThemeMode.system;
+    _themeMode = themeServiceData.themeMode ?? widget.initialThemeMode ?? ThemeMode.system;
 
     // Set the initial contrast.
-    _contrast = contrast ?? widget.initialContrast ?? ZetaContrast.aa;
+    _contrast = themeServiceData.contrast ?? widget.initialContrast ?? ZetaContrast.aa;
 
-    final loadedTheme = _customThemes[widget.initialTheme ?? themeId];
+    final loadedTheme = _customThemes[themeServiceData.themeId ?? widget.initialTheme];
 
     if (loadedTheme != null) {
       _customTheme = loadedTheme;
@@ -319,9 +319,11 @@ class ZetaProviderState extends State<ZetaProvider> with Diagnosticable, Widgets
   void _saveThemeChange() {
     unawaited(
       widget.themeService.saveTheme(
-        themeMode: _themeMode,
-        contrast: _contrast,
-        themeId: _customTheme?.id,
+        themeData: ZetaThemeServiceData(
+          themeMode: _themeMode,
+          contrast: _contrast,
+          themeId: _customTheme?.id,
+        ),
       ),
     );
   }
@@ -356,7 +358,6 @@ class _InternalProvider extends StatefulWidget {
   /// Represents the late initialization of the ZetaContrast value.
   final ZetaContrast contrast;
 
-  /// Represents the late initialization of the ThemeMode value.
   final ThemeMode themeMode;
 
   final bool rounded;
@@ -389,14 +390,14 @@ class _InternalProviderState extends State<_InternalProvider> {
       themeMode: widget.themeMode,
       contrast: widget.contrast,
       rounded: widget.rounded,
-      customPrimitives: widget.themeMode == ThemeMode.light
-          ? ZetaPrimitivesLight(
-              primary: widget.customTheme?.primary,
-              secondary: widget.customTheme?.secondary,
-            )
-          : ZetaPrimitivesDark(
+      customPrimitives: widget.themeMode.isDark
+          ? ZetaPrimitivesDark(
               primary: widget.customTheme?.primaryDark,
               secondary: widget.customTheme?.secondaryDark,
+            )
+          : ZetaPrimitivesLight(
+              primary: widget.customTheme?.primary,
+              secondary: widget.customTheme?.secondary,
             ),
       child: Builder(
         builder: (context) {

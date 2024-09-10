@@ -6,6 +6,28 @@ import 'contrast.dart';
 const String _kThemeMode = 'themeMode';
 const String _kContrast = 'contrast';
 const String _kThemeId = 'theme_id';
+const String _kFontFamily = 'fontFamily';
+
+/// `ZetaThemeData` is a class that holds the theme data to be stored with the theme service.
+class ZetaThemeServiceData {
+  /// Constructs a [ZetaThemeServiceData].
+  ///
+  /// All fields are optional. If null, defaults will be used.
+  ZetaThemeServiceData({this.themeId, this.themeMode, this.contrast, this.fontFamily});
+
+  /// The unique identifier for the custom theme data.
+  final String? themeId;
+
+  /// The theme mode of the Zeta theme.
+  final ThemeMode? themeMode;
+
+  /// The contrast of the Zeta theme.
+  final ZetaContrast? contrast;
+
+  /// The font family of the Zeta theme.
+  final String? fontFamily;
+}
+
 // TODO(colors): Re-add custom font somewhere (not here)
 // TODO(colors): Add tests
 /// `ZetaThemeService` is an abstract class.
@@ -27,8 +49,8 @@ abstract class ZetaThemeService {
   ///
   /// `ZetaContrast` defines different contrast styles to use across the application.
   ///
-  /// Returns a Future `(ZetaThemeData?, ThemeMode?, ZetaContrast?)`.
-  Future<(ThemeMode?, ZetaContrast?, String?)> loadTheme();
+  /// Returns a Future [ZetaThemeServiceData].
+  Future<ZetaThemeServiceData> loadTheme();
 
   /// Saves the provided theme data as the application's theme.
   ///
@@ -38,11 +60,7 @@ abstract class ZetaThemeService {
   ///
   /// Returns a `Future` that completes when the theme data has been successfully saved.
 
-  Future<void> saveTheme({
-    required ThemeMode themeMode,
-    required ZetaContrast contrast,
-    required String? themeId,
-  });
+  Future<void> saveTheme({required ZetaThemeServiceData themeData});
 }
 
 /// A default implementation of `ZetaThemeService` that uses `SharedPreferences` to store the theme data.
@@ -51,7 +69,7 @@ class ZetaDefaultThemeService extends ZetaThemeService {
   const ZetaDefaultThemeService();
 
   @override
-  Future<(ThemeMode?, ZetaContrast?, String?)> loadTheme() async {
+  Future<ZetaThemeServiceData> loadTheme() async {
     final preferences = await SharedPreferences.getInstance();
 
     final modeString = preferences.getString(_kThemeMode);
@@ -66,21 +84,33 @@ class ZetaDefaultThemeService extends ZetaThemeService {
     final contrast = contrastString == ZetaContrast.aaa.name ? ZetaContrast.aaa : ZetaContrast.aa;
 
     final themeId = preferences.getString(_kThemeId);
+    final fontFamily = preferences.getString(_kFontFamily);
 
-    return (themeMode, contrast, themeId);
+    return ZetaThemeServiceData(
+      themeMode: themeMode,
+      contrast: contrast,
+      themeId: themeId,
+      fontFamily: fontFamily,
+    );
   }
 
   @override
-  Future<void> saveTheme({
-    required ThemeMode themeMode,
-    required ZetaContrast contrast,
-    required String? themeId,
-  }) async {
+  Future<void> saveTheme({required ZetaThemeServiceData themeData}) async {
     final preferences = await SharedPreferences.getInstance();
+    final List<Future<void>> futures = [];
 
-    await preferences.setString(_kThemeMode, themeMode.name);
-    await preferences.setString(_kContrast, contrast.name);
-
-    if (themeId != null) await preferences.setString(_kThemeId, themeId);
+    if (themeData.fontFamily != null) {
+      futures.add(preferences.setString(_kFontFamily, themeData.fontFamily!));
+    }
+    if (themeData.themeMode != null) {
+      futures.add(preferences.setString(_kThemeMode, themeData.themeMode!.name));
+    }
+    if (themeData.contrast != null) {
+      futures.add(preferences.setString(_kContrast, themeData.contrast!.name));
+    }
+    if (themeData.themeId != null) {
+      futures.add(preferences.setString(_kThemeId, themeData.themeId!));
+    }
+    await Future.wait(futures);
   }
 }

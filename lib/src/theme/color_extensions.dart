@@ -1,4 +1,5 @@
 import 'dart:math' as math;
+import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import '../../zeta_flutter.dart';
@@ -342,4 +343,18 @@ extension ZetaSemanticColorExtension on ZetaSemanticColors {
         surface: surfaceDefault,
         onSurface: mainDefault,
       );
+}
+
+/// Extensions on [ThemeMode] to provide additional functionality.
+extension ZetaThemeModeExtension on ThemeMode {
+  /// Returns true if the theme mode is dark.
+  bool get isDark =>
+      this == ThemeMode.system ? PlatformDispatcher.instance.platformBrightness.isDark : this == ThemeMode.dark;
+
+  /// Returns the brightness value based on the theme mode.
+  Brightness get brightness => isDark ? Brightness.dark : Brightness.light;
+}
+
+extension on Brightness {
+  bool get isDark => this == Brightness.dark;
 }
