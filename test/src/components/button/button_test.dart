@@ -10,7 +10,7 @@ import '../../../test_utils/tolerant_comparator.dart';
 import '../../../test_utils/utils.dart';
 
 void main() {
-  const goldenFile = GoldenFinder(component: 'button');
+  const goldenFile = GoldenFiles(component: 'button');
 
   setUpAll(() {
     goldenFileComparator = TolerantComparator(goldenFile.uri);
@@ -55,7 +55,7 @@ void main() {
     expect(button.size, ZetaWidgetSize.medium);
     expect(button.type, ZetaButtonType.primary);
 
-    await expectLater(find.byType(ZetaButton), matchesGoldenFile(goldenFile.getFileUri('button_primary.png')));
+    await expectLater(find.byType(ZetaButton), matchesGoldenFile(goldenFile.getFileUri('button_primary')));
   });
   testWidgets('Initializes secondary with correct Label', (WidgetTester tester) async {
     await tester.pumpWidget(
@@ -80,7 +80,7 @@ void main() {
 
     await expectLater(
       find.byType(ZetaButton),
-      matchesGoldenFile(goldenFile.getFileUri('button_secondary.png')),
+      matchesGoldenFile(goldenFile.getFileUri('button_secondary')),
     );
   });
   testWidgets('Initializes positive with correct Label', (WidgetTester tester) async {
@@ -101,7 +101,7 @@ void main() {
 
     await expectLater(
       find.byType(ZetaButton),
-      matchesGoldenFile(goldenFile.getFileUri('button_positive.png')),
+      matchesGoldenFile(goldenFile.getFileUri('button_positive')),
     );
   });
   testWidgets('Initializes negative with correct Label', (WidgetTester tester) async {
@@ -122,7 +122,7 @@ void main() {
 
     await expectLater(
       find.byType(ZetaButton),
-      matchesGoldenFile(goldenFile.getFileUri('button_negative.png')),
+      matchesGoldenFile(goldenFile.getFileUri('button_negative')),
     );
   });
   testWidgets('Initializes outline with correct Label', (WidgetTester tester) async {
@@ -141,7 +141,7 @@ void main() {
     expect(button.size, ZetaWidgetSize.large);
     expect(button.type, ZetaButtonType.outline);
 
-    await expectLater(find.byType(ZetaButton), matchesGoldenFile(goldenFile.getFileUri('button_outline.png')));
+    await expectLater(find.byType(ZetaButton), matchesGoldenFile(goldenFile.getFileUri('button_outline')));
   });
   testWidgets('Initializes outlineSubtle with correct Label', (WidgetTester tester) async {
     await tester.pumpWidget(
@@ -161,7 +161,7 @@ void main() {
 
     await expectLater(
       find.byType(ZetaButton),
-      matchesGoldenFile(goldenFile.getFileUri('button_outline_subtle.png')),
+      matchesGoldenFile(goldenFile.getFileUri('button_outline_subtle')),
     );
   });
   testWidgets('Initializes text with correct Label', (WidgetTester tester) async {
@@ -182,7 +182,7 @@ void main() {
 
     await expectLater(
       find.byType(ZetaButton),
-      matchesGoldenFile(goldenFile.getFileUri('button_text.png')),
+      matchesGoldenFile(goldenFile.getFileUri('button_text')),
     );
   });
 
@@ -205,7 +205,7 @@ void main() {
 
     await expectLater(
       find.byType(ZetaButton),
-      matchesGoldenFile(goldenFile.getFileUri('button_disabled.png')),
+      matchesGoldenFile(goldenFile.getFileUri('button_disabled')),
     );
   });
   testWidgets('Interaction with button', (WidgetTester tester) async {

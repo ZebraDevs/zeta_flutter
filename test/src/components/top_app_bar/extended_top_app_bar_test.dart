@@ -7,7 +7,7 @@ import '../../../test_utils/tolerant_comparator.dart';
 import '../../../test_utils/utils.dart';
 
 void main() {
-  const goldenFile = GoldenFinder(component: 'top_app_bar');
+  const goldenFile = GoldenFiles(component: 'top_app_bar');
 
   setUpAll(() {
     goldenFileComparator = TolerantComparator(goldenFile.uri);
@@ -65,7 +65,7 @@ void main() {
 
     await expectLater(
       appBarFinder,
-      matchesGoldenFile(goldenFile.getFileUri('extended_app_bar_shrinks.png')),
+      matchesGoldenFile(goldenFile.getFileUri('extended_app_bar_shrinks')),
     );
   });
 
@@ -163,7 +163,7 @@ void main() {
 
     await expectLater(
       appBarFinder,
-      matchesGoldenFile(goldenFile.getFileUri('extended_app_bar_shrinks_with_no_leading.png')),
+      matchesGoldenFile(goldenFile.getFileUri('extended_app_bar_shrinks_with_no_leading')),
     );
   });
 }

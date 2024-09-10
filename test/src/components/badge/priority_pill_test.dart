@@ -8,7 +8,7 @@ import '../../../test_utils/tolerant_comparator.dart';
 import '../../../test_utils/utils.dart';
 
 void main() {
-  const goldenFile = GoldenFinder(component: 'badge');
+  const goldenFile = GoldenFiles(component: 'badge');
 
   setUpAll(() {
     goldenFileComparator = TolerantComparator(goldenFile.uri);
@@ -35,7 +35,7 @@ void main() {
 
     await expectLater(
       find.byType(ZetaPriorityPill),
-      matchesGoldenFile(goldenFile.getFileUri('priority_pill_default.png')),
+      matchesGoldenFile(goldenFile.getFileUri('priority_pill_default')),
     );
   });
   testWidgets('High priority pill', (WidgetTester tester) async {
@@ -63,7 +63,7 @@ void main() {
 
     await expectLater(
       find.byType(ZetaPriorityPill),
-      matchesGoldenFile(goldenFile.getFileUri('priority_pill_high.png')),
+      matchesGoldenFile(goldenFile.getFileUri('priority_pill_high')),
     );
   });
   testWidgets('Medium priority pill', (WidgetTester tester) async {
@@ -83,7 +83,7 @@ void main() {
 
     await expectLater(
       find.byType(ZetaPriorityPill),
-      matchesGoldenFile(goldenFile.getFileUri('priority_pill_medium.png')),
+      matchesGoldenFile(goldenFile.getFileUri('priority_pill_medium')),
     );
   });
   testWidgets('Low priority pill', (WidgetTester tester) async {
@@ -105,7 +105,7 @@ void main() {
 
     await expectLater(
       find.byType(ZetaPriorityPill),
-      matchesGoldenFile(goldenFile.getFileUri('priority_pill_low.png')),
+      matchesGoldenFile(goldenFile.getFileUri('priority_pill_low')),
     );
   });
   testWidgets('debugFillProperties works correctly', (WidgetTester tester) async {

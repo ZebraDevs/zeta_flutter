@@ -8,7 +8,7 @@ import '../../../test_utils/tolerant_comparator.dart';
 import '../../../test_utils/utils.dart';
 
 void main() {
-  const goldenFile = GoldenFinder(component: 'in_page_banner');
+  const goldenFile = GoldenFiles(component: 'in_page_banner');
 
   setUpAll(() {
     goldenFileComparator = TolerantComparator(goldenFile.uri);
@@ -33,7 +33,7 @@ void main() {
 
       await expectLater(
         find.byType(ZetaInPageBanner),
-        matchesGoldenFile(goldenFile.getFileUri('in_page_banner_default.png')),
+        matchesGoldenFile(goldenFile.getFileUri('in_page_banner_default')),
       );
     });
   });
@@ -51,7 +51,7 @@ void main() {
     expect(decoration.color, ZetaColorBase.red.shade10);
     await expectLater(
       find.byType(ZetaInPageBanner),
-      matchesGoldenFile(goldenFile.getFileUri('in_page_banner_negative.png')),
+      matchesGoldenFile(goldenFile.getFileUri('in_page_banner_negative')),
     );
   });
 
@@ -67,7 +67,7 @@ void main() {
     expect(decoration.color, ZetaColorBase.green.shade10);
     await expectLater(
       find.byType(ZetaInPageBanner),
-      matchesGoldenFile(goldenFile.getFileUri('in_page_banner_positive.png')),
+      matchesGoldenFile(goldenFile.getFileUri('in_page_banner_positive')),
     );
   });
 
@@ -102,7 +102,7 @@ void main() {
 
     await expectLater(
       find.byType(ZetaInPageBanner),
-      matchesGoldenFile(goldenFile.getFileUri('in_page_banner_buttons.png')),
+      matchesGoldenFile(goldenFile.getFileUri('in_page_banner_buttons')),
     );
   });
   testWidgets("ZetaInPageBanner 'close' icon tap test", (WidgetTester tester) async {

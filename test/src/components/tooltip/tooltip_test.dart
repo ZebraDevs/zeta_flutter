@@ -17,7 +17,7 @@ import 'tooltip_test.mocks.dart';
 void main() {
   final mockZeta = MockZeta();
   when(mockZeta.radius).thenReturn(const ZetaRadiiAA(primitives: ZetaPrimitivesLight()));
-  const goldenFile = GoldenFinder(component: 'tooltip');
+  const goldenFile = GoldenFiles(component: 'tooltip');
 
   setUpAll(() {
     goldenFileComparator = TolerantComparator(goldenFile.uri);
@@ -116,7 +116,7 @@ void main() {
       // Verifying the CustomPaint with different arrow directions.
       await expectLater(
         find.byType(ZetaTooltip),
-        matchesGoldenFile(goldenFile.getFileUri('arrow_up.png')),
+        matchesGoldenFile(goldenFile.getFileUri('arrow_up')),
       );
     });
 
@@ -136,7 +136,7 @@ void main() {
       // Verifying the CustomPaint with different arrow directions.
       await expectLater(
         find.byType(ZetaTooltip),
-        matchesGoldenFile(goldenFile.getFileUri('arrow_down.png')),
+        matchesGoldenFile(goldenFile.getFileUri('arrow_down')),
       );
     });
 
@@ -157,7 +157,7 @@ void main() {
       // Verifying the CustomPaint with different arrow directions.
       await expectLater(
         find.byType(ZetaTooltip),
-        matchesGoldenFile(goldenFile.getFileUri('arrow_left.png')),
+        matchesGoldenFile(goldenFile.getFileUri('arrow_left')),
       );
     });
 
@@ -178,7 +178,7 @@ void main() {
       // Verifying the CustomPaint with different arrow directions.
       await expectLater(
         find.byType(ZetaTooltip),
-        matchesGoldenFile(goldenFile.getFileUri('arrow_right.png')),
+        matchesGoldenFile(goldenFile.getFileUri('arrow_right')),
       );
     });
 

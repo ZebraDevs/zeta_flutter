@@ -11,7 +11,7 @@ import '../../../test_utils/tolerant_comparator.dart';
 import '../../../test_utils/utils.dart';
 
 void main() {
-  const goldenFile = GoldenFinder(component: 'checkbox');
+  const goldenFile = GoldenFiles(component: 'checkbox');
 
   setUpAll(() {
     goldenFileComparator = TolerantComparator(goldenFile.uri);
@@ -54,7 +54,7 @@ void main() {
       final checkboxFinder = find.byType(ZetaCheckbox);
       await expectLater(
         checkboxFinder,
-        matchesGoldenFile(goldenFile.getFileUri('checkbox_enabled.png')),
+        matchesGoldenFile(goldenFile.getFileUri('checkbox_enabled')),
       );
       await tester.tap(find.byType(ZetaCheckbox));
       await tester.pump();
@@ -73,7 +73,7 @@ void main() {
       final checkboxFinder = find.byType(ZetaCheckbox);
       await expectLater(
         checkboxFinder,
-        matchesGoldenFile(goldenFile.getFileUri('checkbox_disabled.png')),
+        matchesGoldenFile(goldenFile.getFileUri('checkbox_disabled')),
       );
       await tester.tap(find.byType(ZetaCheckbox));
       await tester.pump();
@@ -136,7 +136,7 @@ void main() {
       await tester.pumpAndSettle();
       await expectLater(
         checkboxFinder,
-        matchesGoldenFile(goldenFile.getFileUri('checkbox_hover.png')),
+        matchesGoldenFile(goldenFile.getFileUri('checkbox_hover')),
       );
     });
 

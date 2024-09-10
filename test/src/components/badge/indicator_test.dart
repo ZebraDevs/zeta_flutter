@@ -7,7 +7,7 @@ import '../../../test_utils/tolerant_comparator.dart';
 import '../../../test_utils/utils.dart';
 
 void main() {
-  const goldenFile = GoldenFinder(component: 'badge');
+  const goldenFile = GoldenFiles(component: 'badge');
 
   setUpAll(() {
     goldenFileComparator = TolerantComparator(goldenFile.uri);
@@ -28,7 +28,7 @@ void main() {
 
     await expectLater(
       find.byType(ZetaIndicator),
-      matchesGoldenFile(goldenFile.getFileUri('indicator_default.png')),
+      matchesGoldenFile(goldenFile.getFileUri('indicator_default')),
     );
   });
 
@@ -101,7 +101,7 @@ void main() {
 
     await expectLater(
       find.byType(ZetaIndicator),
-      matchesGoldenFile(goldenFile.getFileUri('indicator_icon_values.png')),
+      matchesGoldenFile(goldenFile.getFileUri('indicator_icon_values')),
     );
   });
   testWidgets('Notification constructor initializes with correct parameters', (WidgetTester tester) async {
@@ -120,7 +120,7 @@ void main() {
 
     await expectLater(
       find.byType(ZetaIndicator),
-      matchesGoldenFile(goldenFile.getFileUri('indicator_notification_default.png')),
+      matchesGoldenFile(goldenFile.getFileUri('indicator_notification_default')),
     );
   });
   testWidgets('Notification constructor with values', (WidgetTester tester) async {
@@ -149,7 +149,7 @@ void main() {
 
     await expectLater(
       find.byType(ZetaIndicator),
-      matchesGoldenFile(goldenFile.getFileUri('indicator_notification_values.png')),
+      matchesGoldenFile(goldenFile.getFileUri('indicator_notification_values')),
     );
   });
   testWidgets('debugFillProperties works correctly', (WidgetTester tester) async {

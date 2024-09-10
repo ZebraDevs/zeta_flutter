@@ -8,7 +8,7 @@ import '../../../test_utils/tolerant_comparator.dart';
 import '../../../test_utils/utils.dart';
 
 void main() {
-  const goldenFile = GoldenFinder(component: 'password');
+  const goldenFile = GoldenFiles(component: 'password');
 
   setUpAll(() {
     goldenFileComparator = TolerantComparator(goldenFile.uri);
@@ -24,7 +24,7 @@ void main() {
 
     await expectLater(
       find.byType(ZetaPasswordInput),
-      matchesGoldenFile(goldenFile.getFileUri('password_default.png')),
+      matchesGoldenFile(goldenFile.getFileUri('password_default')),
     );
   });
 
@@ -75,7 +75,7 @@ void main() {
 
     await expectLater(
       find.byType(ZetaPasswordInput),
-      matchesGoldenFile(goldenFile.getFileUri('password_error.png')),
+      matchesGoldenFile(goldenFile.getFileUri('password_error')),
     );
   });
   testWidgets('Test debugFillProperties', (WidgetTester tester) async {

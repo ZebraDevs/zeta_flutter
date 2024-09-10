@@ -26,7 +26,7 @@ abstract class ISearchBarEvents {
 ])
 void main() {
   late MockISearchBarEvents callbacks;
-  const goldenFile = GoldenFinder(component: 'search_bar');
+  const goldenFile = GoldenFiles(component: 'search_bar');
 
   setUpAll(() {
     goldenFileComparator = TolerantComparator(goldenFile.uri);
@@ -60,7 +60,7 @@ void main() {
 
       await expectLater(
         find.byType(ZetaSearchBar),
-        matchesGoldenFile(goldenFile.getFileUri('search_bar_default.png')),
+        matchesGoldenFile(goldenFile.getFileUri('search_bar_default')),
       );
     });
 
@@ -74,7 +74,7 @@ void main() {
 
       await expectLater(
         find.byType(ZetaSearchBar),
-        matchesGoldenFile(goldenFile.getFileUri('search_bar_medium.png')),
+        matchesGoldenFile(goldenFile.getFileUri('search_bar_medium')),
       );
     });
 
@@ -90,7 +90,7 @@ void main() {
 
       await expectLater(
         find.byType(ZetaSearchBar),
-        matchesGoldenFile(goldenFile.getFileUri('search_bar_small.png')),
+        matchesGoldenFile(goldenFile.getFileUri('search_bar_small')),
       );
     });
 
@@ -106,7 +106,7 @@ void main() {
 
       await expectLater(
         find.byType(ZetaSearchBar),
-        matchesGoldenFile(goldenFile.getFileUri('search_bar_full.png')),
+        matchesGoldenFile(goldenFile.getFileUri('search_bar_full')),
       );
     });
 
@@ -122,7 +122,7 @@ void main() {
 
       await expectLater(
         find.byType(ZetaSearchBar),
-        matchesGoldenFile(goldenFile.getFileUri('search_bar_sharp.png')),
+        matchesGoldenFile(goldenFile.getFileUri('search_bar_sharp')),
       );
     });
 

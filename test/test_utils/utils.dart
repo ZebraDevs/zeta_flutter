@@ -14,8 +14,8 @@ extension Util on DiagnosticPropertiesBuilder {
   }
 }
 
-class GoldenFinder {
-  const GoldenFinder({required this.component, this.type = 'components'});
+class GoldenFiles {
+  const GoldenFiles({required this.component, this.type = 'components'});
 
   final String component;
   final String type;
@@ -23,7 +23,7 @@ class GoldenFinder {
   Uri get uri => getFileUri('');
 
   Uri getFileUri(String fileName) {
-    return Uri.parse(join(Directory.current.path, 'test', 'src', type, component, 'golden', fileName))
+    return Uri.parse(join(Directory.current.path, 'test', 'src', type, component, 'golden', '$fileName.png'))
         .replace(scheme: 'file');
   }
 }

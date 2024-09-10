@@ -7,7 +7,7 @@ import '../../../test_utils/tolerant_comparator.dart';
 import '../../../test_utils/utils.dart';
 
 void main() {
-  const goldenFile = GoldenFinder(component: 'badge');
+  const goldenFile = GoldenFiles(component: 'badge');
 
   setUpAll(() {
     goldenFileComparator = TolerantComparator(goldenFile.uri);
@@ -24,7 +24,7 @@ void main() {
 
       await expectLater(
         find.byType(ZetaTag),
-        matchesGoldenFile(goldenFile.getFileUri('tag_right.png')),
+        matchesGoldenFile(goldenFile.getFileUri('tag_right')),
       );
     });
 
@@ -38,7 +38,7 @@ void main() {
 
       await expectLater(
         find.byType(ZetaTag),
-        matchesGoldenFile(goldenFile.getFileUri('tag_left.png')),
+        matchesGoldenFile(goldenFile.getFileUri('tag_left')),
       );
     });
   });

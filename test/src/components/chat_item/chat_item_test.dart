@@ -9,7 +9,7 @@ import '../../../test_utils/tolerant_comparator.dart';
 import '../../../test_utils/utils.dart';
 
 void main() {
-  const goldenFile = GoldenFinder(component: 'chat_item');
+  const goldenFile = GoldenFiles(component: 'chat_item');
 
   setUpAll(() {
     goldenFileComparator = TolerantComparator(goldenFile.uri);
@@ -67,7 +67,7 @@ void main() {
 
       await expectLater(
         chatItemFinder,
-        matchesGoldenFile(goldenFile.getFileUri('chat_item_default.png')),
+        matchesGoldenFile(goldenFile.getFileUri('chat_item_default')),
       );
     });
 
@@ -122,7 +122,7 @@ void main() {
 
       await expectLater(
         chatItemFinder,
-        matchesGoldenFile(goldenFile.getFileUri('chat_item_highlighted.png')),
+        matchesGoldenFile(goldenFile.getFileUri('chat_item_highlighted')),
       );
     });
 
@@ -184,7 +184,7 @@ void main() {
 
       await expectLater(
         chatItemFinder,
-        matchesGoldenFile(goldenFile.getFileUri('chat_item_slidable_actions.png')),
+        matchesGoldenFile(goldenFile.getFileUri('chat_item_slidable_actions')),
       );
     });
 
@@ -238,7 +238,7 @@ void main() {
 
       await expectLater(
         chatItemFinder,
-        matchesGoldenFile(goldenFile.getFileUri('chat_item_pale_slidable_buttons.png')),
+        matchesGoldenFile(goldenFile.getFileUri('chat_item_pale_slidable_buttons')),
       );
     });
 
@@ -326,7 +326,7 @@ void main() {
 
       await expectLater(
         chatItemFinder,
-        matchesGoldenFile(goldenFile.getFileUri('chat_item_pale_and_regular_buttons.png')),
+        matchesGoldenFile(goldenFile.getFileUri('chat_item_pale_and_regular_buttons')),
       );
     });
 
@@ -370,7 +370,7 @@ void main() {
 
       await expectLater(
         chatItemFinder,
-        matchesGoldenFile(goldenFile.getFileUri('chat_item_custom_leading.png')),
+        matchesGoldenFile(goldenFile.getFileUri('chat_item_custom_leading')),
       );
     });
 
@@ -428,7 +428,7 @@ void main() {
 
       await expectLater(
         chatItemFinder,
-        matchesGoldenFile(goldenFile.getFileUri('chat_item_custom_slidable_buttons.png')),
+        matchesGoldenFile(goldenFile.getFileUri('chat_item_custom_slidable_buttons')),
       );
     });
 
@@ -544,7 +544,7 @@ void main() {
 
       await expectLater(
         chatItemFinder,
-        matchesGoldenFile(goldenFile.getFileUri('chat_item_small_screen_slidable_button.png')),
+        matchesGoldenFile(goldenFile.getFileUri('chat_item_small_screen_slidable_button')),
       );
     });
   });

@@ -10,7 +10,7 @@ import '../../../test_utils/tolerant_comparator.dart';
 import '../../../test_utils/utils.dart';
 
 void main() {
-  const goldenFile = GoldenFinder(component: 'dialpad');
+  const goldenFile = GoldenFiles(component: 'dialpad');
 
   setUpAll(() {
     goldenFileComparator = TolerantComparator(goldenFile.uri);
@@ -126,7 +126,7 @@ void main() {
 
       await expectLater(
         dialPadFinder,
-        matchesGoldenFile(goldenFile.getFileUri('dialpad_enabled.png')),
+        matchesGoldenFile(goldenFile.getFileUri('dialpad_enabled')),
       );
     });
   });
@@ -235,7 +235,7 @@ void main() {
 
     await expectLater(
       dialPadFinder,
-      matchesGoldenFile(goldenFile.getFileUri('dialpad_disabled.png')),
+      matchesGoldenFile(goldenFile.getFileUri('dialpad_disabled')),
     );
   });
   testWidgets('ZetaDialPadButton interaction', (WidgetTester tester) async {
@@ -259,7 +259,7 @@ void main() {
 
     await expectLater(
       buttonFinder,
-      matchesGoldenFile(goldenFile.getFileUri('dialpadbutton.png')),
+      matchesGoldenFile(goldenFile.getFileUri('dialpadbutton')),
     );
   });
 

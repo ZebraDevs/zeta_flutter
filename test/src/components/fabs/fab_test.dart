@@ -9,7 +9,7 @@ import '../../../test_utils/tolerant_comparator.dart';
 import '../../../test_utils/utils.dart';
 
 void main() {
-  const goldenFile = GoldenFinder(component: 'fab');
+  const goldenFile = GoldenFiles(component: 'fab');
 
   setUpAll(() {
     goldenFileComparator = TolerantComparator(goldenFile.uri);
@@ -28,7 +28,7 @@ void main() {
 
       await expectLater(
         find.byType(ZetaFAB),
-        matchesGoldenFile(goldenFile.getFileUri('FAB_default.png')),
+        matchesGoldenFile(goldenFile.getFileUri('FAB_default')),
       );
     });
 
@@ -47,7 +47,7 @@ void main() {
 
       await expectLater(
         find.byType(ZetaFAB),
-        matchesGoldenFile(goldenFile.getFileUri('FAB_pressed.png')),
+        matchesGoldenFile(goldenFile.getFileUri('FAB_pressed')),
       );
 
       await e.up();
@@ -78,7 +78,7 @@ void main() {
 
     await expectLater(
       find.byType(ZetaFAB),
-      matchesGoldenFile(goldenFile.getFileUri('FAB_inverse.png')),
+      matchesGoldenFile(goldenFile.getFileUri('FAB_inverse')),
     );
   });
 
@@ -104,7 +104,7 @@ void main() {
 
     await expectLater(
       find.byType(ZetaFAB),
-      matchesGoldenFile(goldenFile.getFileUri('FAB_secondary.png')),
+      matchesGoldenFile(goldenFile.getFileUri('FAB_secondary')),
     );
   });
   testWidgets('ZetaFAB interactive', (WidgetTester tester) async {
@@ -168,7 +168,7 @@ void main() {
 
     await expectLater(
       find.byType(ZetaFAB),
-      matchesGoldenFile(goldenFile.getFileUri('FAB_disabled.png')),
+      matchesGoldenFile(goldenFile.getFileUri('FAB_disabled')),
     );
   });
 
