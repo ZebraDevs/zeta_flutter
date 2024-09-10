@@ -339,9 +339,9 @@ class ZetaSemanticColorsAA implements ZetaSemanticColors {
   @override
   Color get mainSubtle => primitives.cool.shade70;
   @override
-  Color get mainPrimary => primitives.blue.shade60;
+  Color get mainPrimary => primitives.primary.shade60;
   @override
-  Color get mainSecondary => primitives.yellow.shade60;
+  Color get mainSecondary => primitives.secondary.shade60;
   @override
   Color get mainPositive => primitives.green.shade60;
   @override
@@ -369,11 +369,11 @@ class ZetaSemanticColorsAA implements ZetaSemanticColors {
   @override
   Color get borderPure => primitives.pure.shade0;
   @override
-  Color get borderPrimaryMain => primitives.blue.shade60;
+  Color get borderPrimaryMain => primitives.primary.shade60;
   @override
-  Color get borderPrimary => primitives.blue.shade50;
+  Color get borderPrimary => primitives.primary.shade50;
   @override
-  Color get borderSecondary => primitives.yellow.shade50;
+  Color get borderSecondary => primitives.secondary.shade50;
   @override
   Color get borderPositive => primitives.green.shade50;
   @override
@@ -399,11 +399,11 @@ class ZetaSemanticColorsAA implements ZetaSemanticColors {
   @override
   Color get surfaceWarm => primitives.warm.shade10;
   @override
-  Color get surfacePrimary => primitives.blue.shade60;
+  Color get surfacePrimary => primitives.primary.shade60;
   @override
-  Color get surfacePrimarySubtle => primitives.blue.shade10;
+  Color get surfacePrimarySubtle => primitives.primary.shade10;
   @override
-  Color get surfaceSecondary => primitives.yellow.shade60;
+  Color get surfaceSecondary => primitives.secondary.shade60;
   @override
   Color get surfaceAvatarBlue => primitives.blue.shade80;
   @override
@@ -419,7 +419,7 @@ class ZetaSemanticColorsAA implements ZetaSemanticColors {
   @override
   Color get surfaceAvatarYellow => primitives.yellow.shade50;
   @override
-  Color get surfaceSecondarySubtle => primitives.yellow.shade10;
+  Color get surfaceSecondarySubtle => primitives.secondary.shade10;
   @override
   Color get surfacePositive => primitives.green.shade60;
   @override
@@ -447,21 +447,21 @@ class ZetaSemanticColorsAA implements ZetaSemanticColors {
   @override
   Color get stateDefaultFocus => primitives.pure.shade0;
   @override
-  Color get statePrimaryEnabled => primitives.blue.shade60;
+  Color get statePrimaryEnabled => primitives.primary.shade60;
   @override
-  Color get statePrimaryHover => primitives.blue.shade50;
+  Color get statePrimaryHover => primitives.primary.shade50;
   @override
-  Color get statePrimarySelected => primitives.blue.shade70;
+  Color get statePrimarySelected => primitives.primary.shade70;
   @override
-  Color get statePrimaryFocus => primitives.blue.shade60;
+  Color get statePrimaryFocus => primitives.primary.shade60;
   @override
-  Color get stateSecondaryEnabled => primitives.yellow.shade40;
+  Color get stateSecondaryEnabled => primitives.secondary.shade40;
   @override
-  Color get stateSecondaryHover => primitives.yellow.shade30;
+  Color get stateSecondaryHover => primitives.secondary.shade30;
   @override
-  Color get stateSecondarySelected => primitives.yellow.shade50;
+  Color get stateSecondarySelected => primitives.secondary.shade50;
   @override
-  Color get stateSecondaryFocus => primitives.yellow.shade40;
+  Color get stateSecondaryFocus => primitives.secondary.shade40;
   @override
   Color get stateNegativeEnabled => primitives.red.shade60;
   @override
@@ -507,9 +507,9 @@ class ZetaSemanticColorsAAA implements ZetaSemanticColors {
   @override
   Color get mainSubtle => primitives.cool.shade90;
   @override
-  Color get mainPrimary => primitives.blue.shade80;
+  Color get mainPrimary => primitives.primary.shade80;
   @override
-  Color get mainSecondary => primitives.yellow.shade80;
+  Color get mainSecondary => primitives.secondary.shade80;
   @override
   Color get mainPositive => primitives.green.shade80;
   @override
@@ -537,11 +537,11 @@ class ZetaSemanticColorsAAA implements ZetaSemanticColors {
   @override
   Color get borderPure => primitives.pure.shade0;
   @override
-  Color get borderPrimaryMain => primitives.blue.shade80;
+  Color get borderPrimaryMain => primitives.primary.shade80;
   @override
-  Color get borderPrimary => primitives.blue.shade70;
+  Color get borderPrimary => primitives.primary.shade70;
   @override
-  Color get borderSecondary => primitives.yellow.shade70;
+  Color get borderSecondary => primitives.secondary.shade70;
   @override
   Color get borderPositive => primitives.green.shade70;
   @override
@@ -567,11 +567,11 @@ class ZetaSemanticColorsAAA implements ZetaSemanticColors {
   @override
   Color get surfaceWarm => primitives.warm.shade10;
   @override
-  Color get surfacePrimary => primitives.blue.shade80;
+  Color get surfacePrimary => primitives.primary.shade80;
   @override
-  Color get surfacePrimarySubtle => primitives.blue.shade10;
+  Color get surfacePrimarySubtle => primitives.primary.shade10;
   @override
-  Color get surfaceSecondary => primitives.yellow.shade80;
+  Color get surfaceSecondary => primitives.secondary.shade80;
   @override
   Color get surfaceAvatarBlue => primitives.blue.shade80;
   @override
@@ -587,7 +587,7 @@ class ZetaSemanticColorsAAA implements ZetaSemanticColors {
   @override
   Color get surfaceAvatarYellow => primitives.yellow.shade50;
   @override
-  Color get surfaceSecondarySubtle => primitives.yellow.shade10;
+  Color get surfaceSecondarySubtle => primitives.secondary.shade10;
   @override
   Color get surfacePositive => primitives.green.shade80;
   @override
@@ -615,21 +615,21 @@ class ZetaSemanticColorsAAA implements ZetaSemanticColors {
   @override
   Color get stateDefaultFocus => primitives.pure.shade0;
   @override
-  Color get statePrimaryEnabled => primitives.blue.shade80;
+  Color get statePrimaryEnabled => primitives.primary.shade80;
   @override
-  Color get statePrimaryHover => primitives.blue.shade70;
+  Color get statePrimaryHover => primitives.primary.shade70;
   @override
-  Color get statePrimarySelected => primitives.blue.shade90;
+  Color get statePrimarySelected => primitives.primary.shade90;
   @override
-  Color get statePrimaryFocus => primitives.blue.shade80;
+  Color get statePrimaryFocus => primitives.primary.shade80;
   @override
-  Color get stateSecondaryEnabled => primitives.yellow.shade80;
+  Color get stateSecondaryEnabled => primitives.secondary.shade80;
   @override
-  Color get stateSecondaryHover => primitives.yellow.shade70;
+  Color get stateSecondaryHover => primitives.secondary.shade70;
   @override
-  Color get stateSecondarySelected => primitives.yellow.shade90;
+  Color get stateSecondarySelected => primitives.secondary.shade90;
   @override
-  Color get stateSecondaryFocus => primitives.yellow.shade80;
+  Color get stateSecondaryFocus => primitives.secondary.shade80;
   @override
   Color get stateNegativeEnabled => primitives.red.shade80;
   @override
