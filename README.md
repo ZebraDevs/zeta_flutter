@@ -11,6 +11,8 @@ dart sdk: ">=3.2.0 <4.0.0"
 flutter: ">=3.16.0"
 ```
 
+// TODO(LUKE): Update readme 
+
 ## Installation
 
 To install `zeta_flutter`, follow the instructions [here](https://pub.dev/packages/zeta_flutter/install).

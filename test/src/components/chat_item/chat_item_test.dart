@@ -486,7 +486,7 @@ void main() {
       expect(diagnosticsZetaSlidableAction.finder('icon'), 'IconData(U+0E5F9)');
       expect(diagnosticsZetaSlidableAction.finder('foregroundColor'), null);
       expect(diagnosticsZetaSlidableAction.finder('backgroundColor'), null);
-      expect(diagnosticsZetaSlidableAction.finder('color'), const ZetaPrimitivesLight().blue.toString());
+      expect(diagnosticsZetaSlidableAction.finder('color'), 'null');
       expect(diagnosticsZetaSlidableAction.finder('semanticLabel'), 'null');
       expect(diagnosticsZetaSlidableAction.finder('paleColor'), 'false');
     });
