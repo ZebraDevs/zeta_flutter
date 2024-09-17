@@ -54,6 +54,10 @@ class ZetaList extends ZetaStatelessWidget {
 ///
 /// To create list items with a [ZetaSwitch], [ZetaCheckbox], or [ZetaRadio], use the [ZetaListItem.toggle], [ZetaListItem.checkbox] or the [ZetaListItem.radio] named constructors respectively.
 /// {@category Components}
+///
+/// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=229-17&node-type=canvas&m=dev
+///
+/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/list-items/list-item
 class ZetaListItem extends ZetaStatelessWidget {
   /// Creates a [ZetaListItem].
   const ZetaListItem({
