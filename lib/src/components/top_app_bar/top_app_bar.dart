@@ -9,6 +9,10 @@ export 'search_top_app_bar.dart' hide ZetaTopAppBarSearchField;
 
 /// Top app bars provide content and actions related to the current screen.
 /// {@category Components}
+///
+/// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=229-37&node-type=canvas&m=dev
+///
+/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/top-app-bar/default
 class ZetaTopAppBar extends ZetaStatefulWidget implements PreferredSizeWidget {
   /// Creates a ZetaTopAppBar.
   const ZetaTopAppBar({

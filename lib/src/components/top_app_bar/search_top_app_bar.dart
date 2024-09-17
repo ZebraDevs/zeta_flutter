@@ -5,6 +5,10 @@ import '../../../zeta_flutter.dart';
 
 /// Creates a search field used on a [ZetaTopAppBar].
 /// {@category Components}
+///
+/// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=229-37&node-type=canvas&m=dev
+///
+/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/top-app-bar/search
 class ZetaTopAppBarSearchField extends ZetaStatefulWidget {
   /// Constructs a [ZetaTopAppBarSearchField].
   const ZetaTopAppBarSearchField({

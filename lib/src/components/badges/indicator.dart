@@ -13,6 +13,10 @@ enum ZetaIndicatorType {
 
 /// Indicators are used to show the status of a user or any messages/notifications they might have.
 /// {@category Components}
+///
+/// Figma: https://www.figma.com/file/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?type=design&node-id=22000-10045&mode=design&t=6mhOcUUr3tgxxFdd-0
+///
+/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/badge/indicators
 class ZetaIndicator extends ZetaStatelessWidget {
   /// Constructor for [ZetaIndicator].
   const ZetaIndicator({

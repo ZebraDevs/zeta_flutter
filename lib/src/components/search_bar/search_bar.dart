@@ -6,6 +6,10 @@ import '../buttons/input_icon_button.dart';
 
 /// ZetaSearchBar provides input field for searching.
 /// {@category Components}
+///
+/// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=875-17463&node-type=canvas&m=dev
+///
+/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/search-bar
 class ZetaSearchBar extends ZetaTextFormField {
   /// Constructor for [ZetaSearchBar].
   ZetaSearchBar({
