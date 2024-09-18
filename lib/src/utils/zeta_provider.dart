@@ -29,7 +29,7 @@ class ZetaProvider extends StatefulWidget with Diagnosticable {
     this.initialRounded = true,
     this.customThemes = const [],
     this.initialTheme,
-    //TODO(mikecoomber): customLoadingWidget here - this can be used to remove the circular progress indicator, hopefully allowing pumpAndSettle to work in tests, as well as being nicer for end users
+    // TODO(mikecoomber): customLoadingWidget here - this can be used to remove the circular progress indicator, hopefully allowing pumpAndSettle to work in tests, as well as being nicer for end users
   });
 
   /// Specifies the initial theme mode for the app.

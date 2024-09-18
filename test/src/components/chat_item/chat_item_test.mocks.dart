@@ -22,8 +22,7 @@ import 'package:zeta_flutter/generated/tokens/semantics.g.dart' as _i4;
 // ignore_for_file: camel_case_types
 // ignore_for_file: subtype_of_sealed_class
 
-class _FakeZetaPrimitives_0 extends _i1.SmartFake
-    implements _i2.ZetaPrimitives {
+class _FakeZetaPrimitives_0 extends _i1.SmartFake implements _i2.ZetaPrimitives {
   _FakeZetaPrimitives_0(
     Object parent,
     Invocation parentInvocation,
@@ -46,8 +45,7 @@ class _FakeColor_1 extends _i1.SmartFake implements _i3.Color {
 /// A class which mocks [ZetaSemanticColors].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockZetaSemanticColors extends _i1.Mock
-    implements _i4.ZetaSemanticColors {
+class MockZetaSemanticColors extends _i1.Mock implements _i4.ZetaSemanticColors {
   @override
   _i2.ZetaPrimitives get primitives => (super.noSuchMethod(
         Invocation.getter(#primitives),

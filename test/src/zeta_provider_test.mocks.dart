@@ -21,8 +21,7 @@ import 'package:zeta_flutter/src/theme/theme_service.dart' as _i2;
 // ignore_for_file: camel_case_types
 // ignore_for_file: subtype_of_sealed_class
 
-class _FakeZetaThemeServiceData_0 extends _i1.SmartFake
-    implements _i2.ZetaThemeServiceData {
+class _FakeZetaThemeServiceData_0 extends _i1.SmartFake implements _i2.ZetaThemeServiceData {
   _FakeZetaThemeServiceData_0(
     Object parent,
     Invocation parentInvocation,
@@ -42,16 +41,14 @@ class MockZetaThemeService extends _i1.Mock implements _i2.ZetaThemeService {
           #loadTheme,
           [],
         ),
-        returnValue: _i3.Future<_i2.ZetaThemeServiceData>.value(
-            _FakeZetaThemeServiceData_0(
+        returnValue: _i3.Future<_i2.ZetaThemeServiceData>.value(_FakeZetaThemeServiceData_0(
           this,
           Invocation.method(
             #loadTheme,
             [],
           ),
         )),
-        returnValueForMissingStub: _i3.Future<_i2.ZetaThemeServiceData>.value(
-            _FakeZetaThemeServiceData_0(
+        returnValueForMissingStub: _i3.Future<_i2.ZetaThemeServiceData>.value(_FakeZetaThemeServiceData_0(
           this,
           Invocation.method(
             #loadTheme,
@@ -61,8 +58,7 @@ class MockZetaThemeService extends _i1.Mock implements _i2.ZetaThemeService {
       ) as _i3.Future<_i2.ZetaThemeServiceData>);
 
   @override
-  _i3.Future<void> saveTheme({required _i2.ZetaThemeServiceData? themeData}) =>
-      (super.noSuchMethod(
+  _i3.Future<void> saveTheme({required _i2.ZetaThemeServiceData? themeData}) => (super.noSuchMethod(
         Invocation.method(
           #saveTheme,
           [],
