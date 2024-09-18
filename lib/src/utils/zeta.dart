@@ -7,6 +7,7 @@ import '../../zeta_flutter.dart';
 ///
 /// It holds information about the current contrast, theme mode, and theme data.
 /// The [colors] getter provides the correct color set based on the current theme mode.
+///
 /// {@category Utils}
 class Zeta extends InheritedWidget {
   /// Constructs a [Zeta] widget.
@@ -58,7 +59,7 @@ class Zeta extends InheritedWidget {
   ///
   /// It determines the appropriate color set (light or dark) based on the theme mode
   /// and system brightness.
-  ZetaColorSemantics get colors => semantics.colors;
+  ZetaSemanticColors get colors => semantics.colors;
 
   /// Gets the brightness setting for the current theme.
   ///
@@ -68,10 +69,10 @@ class Zeta extends InheritedWidget {
   Brightness get brightness => themeMode.brightness;
 
   /// Gets the radius values based on the tokens.
-  ZetaRadiiSemantics get radius => semantics.radii;
+  ZetaSemanticRadii get radius => semantics.radii;
 
   /// Gets the spacing values based on the tokens.
-  ZetaSpacingSemantics get spacing => semantics.size;
+  ZetaSemanticSpaces get spacing => semantics.size;
 
   @override
   bool updateShouldNotify(covariant Zeta oldWidget) {
@@ -115,10 +116,10 @@ class Zeta extends InheritedWidget {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty<bool>('rounded', rounded))
-      ..add(DiagnosticsProperty<ZetaColorSemantics>('colors', colors))
+      ..add(DiagnosticsProperty<ZetaSemanticColors>('colors', colors))
       ..add(EnumProperty<Brightness>('brightness', brightness))
-      ..add(DiagnosticsProperty<ZetaRadiiSemantics>('radius', radius))
-      ..add(DiagnosticsProperty<ZetaSpacingSemantics>('spacing', spacing))
+      ..add(DiagnosticsProperty<ZetaSemanticRadii>('radius', radius))
+      ..add(DiagnosticsProperty<ZetaSemanticSpaces>('spacing', spacing))
       ..add(DiagnosticsProperty<ZetaPrimitives>('primitives', primitives))
       ..add(DiagnosticsProperty<ZetaSemantics>('semantics', semantics))
       ..add(EnumProperty<ZetaContrast>('contrast', contrast))

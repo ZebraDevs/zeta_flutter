@@ -177,7 +177,7 @@ class _ZetaFABState extends State<ZetaFAB> {
 }
 
 extension on ZetaFabType {
-  Color backgroundColor(ZetaColorSemantics colors) {
+  Color backgroundColor(ZetaSemanticColors colors) {
     switch (this) {
       case ZetaFabType.primary:
         return colors.statePrimaryEnabled;
@@ -188,7 +188,7 @@ extension on ZetaFabType {
     }
   }
 
-  Color foregroundColor(ZetaColorSemantics colors) {
+  Color foregroundColor(ZetaSemanticColors colors) {
     switch (this) {
       case ZetaFabType.secondary:
         return colors.mainDefault;
@@ -198,7 +198,7 @@ extension on ZetaFabType {
     }
   }
 
-  Color hoverColor(ZetaColorSemantics colors) {
+  Color hoverColor(ZetaSemanticColors colors) {
     switch (this) {
       case ZetaFabType.primary:
         return colors.statePrimaryHover;
@@ -209,7 +209,7 @@ extension on ZetaFabType {
     }
   }
 
-  Color selectedColor(ZetaColorSemantics colors) {
+  Color selectedColor(ZetaSemanticColors colors) {
     switch (this) {
       case ZetaFabType.primary:
         return colors.statePrimarySelected;

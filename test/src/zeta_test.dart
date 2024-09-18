@@ -1,180 +1,217 @@
-// TODO(LUKE): Add this back
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:zeta_flutter/zeta_flutter.dart';
 
-// // ignore_for_file: deprecated_member_use_from_same_package
+import '../test_utils/utils.dart';
 
-// import 'package:flutter/foundation.dart';
-// import 'package:flutter/material.dart';
-// import 'package:flutter_test/flutter_test.dart';
-// import 'package:zeta_flutter/src/theme/contrast.dart';
-// import 'package:zeta_flutter/src/theme/theme_data.dart';
-// import 'package:zeta_flutter/src/utils/zeta.dart';
+void main() {
+  group('Zeta InheritedWidget', () {
+    testWidgets('provides correct default colors in light mode', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        Zeta(
+          themeMode: ThemeMode.light,
+          child: Container(),
+        ),
+      );
 
-// void main() {
-//   group('Zeta InheritedWidget', () {
-//     testWidgets('provides correct colors in light mode', (WidgetTester tester) async {
-//       const themeData = ZetaThemeData();
+      await tester.pumpAndSettle();
 
-//       await tester.pumpWidget(
-//         Zeta(
-//           mediaBrightness: Brightness.light,
-//           contrast: ZetaContrast.aa,
-//           themeMode: ThemeMode.light,
-//           themeData: themeData,
-//           child: Container(),
-//         ),
-//       );
+      final zeta = Zeta.of(tester.element(find.byType(Container)));
+      expect(zeta.colors, const ZetaSemanticColorsAA(primitives: ZetaPrimitivesLight()));
+    });
 
-//       await tester.pumpAndSettle();
+    testWidgets('provides correct default colors in dark mode', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        Zeta(
+          themeMode: ThemeMode.dark,
+          child: Container(),
+        ),
+      );
 
-//       final zeta = Zeta.of(tester.element(find.byType(Container)));
-//       expect(zeta.colors, themeData.colorsLight);
-//     });
+      await tester.pumpAndSettle();
 
-//     testWidgets('provides correct colors in dark mode', (WidgetTester tester) async {
-//       const themeData = ZetaThemeData();
+      final zeta = Zeta.of(tester.element(find.byType(Container)));
+      expect(zeta.colors, const ZetaSemanticColorsAA(primitives: ZetaPrimitivesDark()));
+    });
 
-//       await tester.pumpWidget(
-//         Zeta(
-//           mediaBrightness: Brightness.dark,
-//           contrast: ZetaContrast.aa,
-//           themeMode: ThemeMode.dark,
-//           themeData: themeData,
-//           child: Container(),
-//         ),
-//       );
+    testWidgets('provides AAA colors in light mode', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        Zeta(
+          themeMode: ThemeMode.light,
+          contrast: ZetaContrast.aaa,
+          child: Container(),
+        ),
+      );
 
-//       await tester.pumpAndSettle();
+      await tester.pumpAndSettle();
 
-//       final zeta = Zeta.of(tester.element(find.byType(Container)));
-//       expect(zeta.colors, themeData.colorsDark);
-//     });
+      final zeta = Zeta.of(tester.element(find.byType(Container)));
 
-//     testWidgets('provides correct colors in system mode with light media brightness', (WidgetTester tester) async {
-//       const themeData = ZetaThemeData();
+      expect(zeta.colors, const ZetaSemanticColorsAAA(primitives: ZetaPrimitivesLight()));
+    });
 
-//       await tester.pumpWidget(
-//         Zeta(
-//           mediaBrightness: Brightness.light,
-//           contrast: ZetaContrast.aa,
-//           themeMode: ThemeMode.system,
-//           themeData: themeData,
-//           child: Container(),
-//         ),
-//       );
+    testWidgets('provides AAA colors in dark mode', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        Zeta(
+          themeMode: ThemeMode.dark,
+          contrast: ZetaContrast.aaa,
+          child: Container(),
+        ),
+      );
 
-//       await tester.pumpAndSettle();
+      await tester.pumpAndSettle();
 
-//       final zeta = Zeta.of(tester.element(find.byType(Container)));
-//       expect(zeta.colors, themeData.colorsLight);
-//     });
+      final zeta = Zeta.of(tester.element(find.byType(Container)));
 
-//     testWidgets('provides correct colors in system mode with dark media brightness', (WidgetTester tester) async {
-//       const themeData = ZetaThemeData();
+      expect(zeta.colors, const ZetaSemanticColorsAAA(primitives: ZetaPrimitivesDark()));
+    });
 
-//       await tester.pumpWidget(
-//         Zeta(
-//           mediaBrightness: Brightness.dark,
-//           contrast: ZetaContrast.aa,
-//           themeMode: ThemeMode.system,
-//           themeData: themeData,
-//           child: Container(),
-//         ),
-//       );
+    testWidgets('provides custom primitives in light mode', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        Zeta(
+          themeMode: ThemeMode.light,
+          customPrimitives: const ZetaPrimitivesDark(),
+          child: Container(),
+        ),
+      );
 
-//       await tester.pumpAndSettle();
+      await tester.pumpAndSettle();
 
-//       final zeta = Zeta.of(tester.element(find.byType(Container)));
-//       expect(zeta.colors, themeData.colorsDark);
-//     });
+      final zeta = Zeta.of(tester.element(find.byType(Container)));
 
-//     testWidgets('throws FlutterError if Zeta is not found in widget tree', (WidgetTester tester) async {
-//       await tester.pumpWidget(Container());
-//       await tester.pumpAndSettle();
-//       expect(() => Zeta.of(tester.element(find.byType(Container))), throwsA(isA<Error>()));
-//     });
-//   });
+      /// We set custom primitives to be dark, even though the theme mode is light.
+      expect(zeta.colors, const ZetaSemanticColorsAA(primitives: ZetaPrimitivesDark()));
+    });
 
-//   group('Zeta properties', () {
-//     testWidgets('brightness getter works correctly', (WidgetTester tester) async {
-//       const themeData = ZetaThemeData();
+    testWidgets('provides custom primitives in dark mode', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        Zeta(
+          themeMode: ThemeMode.dark,
+          customPrimitives: const ZetaPrimitivesLight(),
+          child: Container(),
+        ),
+      );
 
-//       await tester.pumpWidget(
-//         Zeta(
-//           mediaBrightness: Brightness.light,
-//           contrast: ZetaContrast.aa,
-//           themeMode: ThemeMode.system,
-//           themeData: themeData,
-//           child: Container(),
-//         ),
-//       );
+      await tester.pumpAndSettle();
 
-//       final zeta = Zeta.of(tester.element(find.byType(Container)));
-//       expect(zeta.brightness, Brightness.light);
+      final zeta = Zeta.of(tester.element(find.byType(Container)));
 
-//       await tester.pumpWidget(
-//         Zeta(
-//           mediaBrightness: Brightness.dark,
-//           contrast: ZetaContrast.aa,
-//           themeMode: ThemeMode.dark,
-//           themeData: themeData,
-//           child: Builder(
-//             builder: (context) {
-//               return Container();
-//             },
-//           ),
-//         ),
-//       );
+      /// We set custom primitives to be light, even though the theme mode is dark.
+      expect(zeta.colors, const ZetaSemanticColorsAA(primitives: ZetaPrimitivesLight()));
+    });
 
-//       final zetaDark = Zeta.of(tester.element(find.byType(Container)));
-//       expect(zetaDark.brightness, Brightness.dark);
+    testWidgets('provides custom semantics in AA mode', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        Zeta(
+          // ignore: avoid_redundant_argument_values
+          contrast: ZetaContrast.aa,
+          customSemantics: ZetaSemanticsAAA(primitives: const ZetaPrimitivesLight()),
+          child: Container(),
+        ),
+      );
 
-//       await tester.pumpWidget(
-//         Zeta(
-//           mediaBrightness: Brightness.light,
-//           contrast: ZetaContrast.aa,
-//           themeMode: ThemeMode.light,
-//           themeData: themeData,
-//           child: Container(),
-//         ),
-//       );
+      await tester.pumpAndSettle();
 
-//       final zetaLight = Zeta.of(tester.element(find.byType(Container)));
-//       expect(zetaLight.brightness, Brightness.light);
-//     });
+      final zeta = Zeta.of(tester.element(find.byType(Container)));
 
-//     testWidgets('debugFillProperties works correctly', (WidgetTester tester) async {
-//       const themeData = ZetaThemeData();
+      /// We set custom primitives to be AAA, even though the contrast is AA.
+      expect(zeta.colors, const ZetaSemanticColorsAAA(primitives: ZetaPrimitivesLight()));
+    });
 
-//       final diagnostics = DiagnosticPropertiesBuilder();
-//       Zeta(
-//         mediaBrightness: Brightness.light,
-//         contrast: ZetaContrast.aa,
-//         themeMode: ThemeMode.system,
-//         themeData: themeData,
-//         child: Container(),
-//       ).debugFillProperties(diagnostics);
+    testWidgets('provides custom semantics in AAA mode', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        Zeta(
+          contrast: ZetaContrast.aaa,
+          customSemantics: ZetaSemanticsAA(primitives: const ZetaPrimitivesLight()),
+          child: Container(),
+        ),
+      );
 
-//       final description = diagnostics.properties.where((p) => p.name == 'contrast').map((p) => p.toDescription()).first;
-//       expect(description, 'aa');
+      await tester.pumpAndSettle();
 
-//       final themeMode = diagnostics.properties.where((p) => p.name == 'themeMode').map((p) => p.toDescription()).first;
-//       expect(themeMode, 'system');
+      final zeta = Zeta.of(tester.element(find.byType(Container)));
 
-//       final thData = diagnostics.properties.where((p) => p.name == 'themeData').map((p) => p.toDescription()).first;
-//       expect(thData, contains('ZetaThemeData'));
+      /// We set custom primitives to be AA, even though the contrast is AAA.
+      expect(zeta.colors, const ZetaSemanticColorsAA(primitives: ZetaPrimitivesLight()));
+    });
 
-//       final colors = diagnostics.properties.where((p) => p.name == 'colors').map((p) => p.toDescription()).first;
-//       expect(colors, contains('ZetaColors'));
+    testWidgets('provides size tokens', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        Zeta(
+          themeMode: ThemeMode.light,
+          child: Container(),
+        ),
+      );
 
-//       final brightness =
-//           diagnostics.properties.where((p) => p.name == 'brightness').map((p) => p.toDescription()).first;
-//       expect(brightness, 'light');
+      await tester.pumpAndSettle();
+      final zeta = Zeta.of(tester.element(find.byType(Container)));
 
-//       final radius = diagnostics.properties.where((p) => p.name == 'radius').map((p) => p.toDescription()).first;
-//       expect(radius, "Instance of 'ZetaRadiiAA'");
+      expect(zeta.spacing, const ZetaSemanticSpacesAA(primitives: ZetaPrimitivesLight()));
+    });
 
-//       final spacing = diagnostics.properties.where((p) => p.name == 'spacing').map((p) => p.toDescription()).first;
-//       expect(spacing, "Instance of 'ZetaSpacingAA'");
-//     });
-//   });
-// }
+    testWidgets('provides radius tokens', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        Zeta(
+          themeMode: ThemeMode.light,
+          child: Container(),
+        ),
+      );
+
+      await tester.pumpAndSettle();
+      final zeta = Zeta.of(tester.element(find.byType(Container)));
+
+      expect(zeta.radius, const ZetaSemanticRadiiAA(primitives: ZetaPrimitivesLight()));
+    });
+
+    testWidgets('throws FlutterError if Zeta is not found in widget tree', (WidgetTester tester) async {
+      await tester.pumpWidget(Container());
+      await tester.pumpAndSettle();
+      expect(() => Zeta.of(tester.element(find.byType(Container))), throwsA(isA<Error>()));
+    });
+  });
+
+  group('Zeta properties', () {
+    testWidgets('updates correctly on state change', (WidgetTester tester) async {
+      // TODO(mikecoomber): test updateShouldNotify
+    });
+
+    testWidgets('brightness getter works correctly', (WidgetTester tester) async {
+      const Key test1 = Key('1');
+      const Key test2 = Key('2');
+      await tester.pumpWidget(
+        Zeta(
+          themeMode: ThemeMode.light,
+          child: Container(key: test1),
+        ),
+      );
+
+      final zeta = Zeta.of(tester.element(find.byKey(test1)));
+      expect(zeta.brightness, Brightness.light);
+
+      await tester.pumpWidget(
+        Zeta(
+          themeMode: ThemeMode.dark,
+          child: Container(key: test2),
+        ),
+      );
+
+      final zetaDark = Zeta.of(tester.element(find.byKey(test2)));
+      expect(zetaDark.brightness, Brightness.dark);
+    });
+
+    testWidgets('debugFillProperties works correctly', (WidgetTester tester) async {
+      final diagnostics = DiagnosticPropertiesBuilder();
+      Zeta(child: Container()).debugFillProperties(diagnostics);
+      expect(diagnostics.finder('rounded'), 'true');
+      expect(diagnostics.finder('colors'), const ZetaSemanticColorsAA(primitives: ZetaPrimitivesLight()).toString());
+      expect(diagnostics.finder('brightness'), Brightness.light.name);
+      expect(diagnostics.finder('radius'), const ZetaSemanticRadiiAA(primitives: ZetaPrimitivesLight()).toString());
+      expect(diagnostics.finder('spacing'), const ZetaSemanticSpacesAA(primitives: ZetaPrimitivesLight()).toString());
+      expect(diagnostics.finder('primitives'), const ZetaPrimitivesLight().toString());
+      expect(diagnostics.finder('semantics'), ZetaSemanticsAA(primitives: const ZetaPrimitivesLight()).toString());
+      expect(diagnostics.finder('contrast'), ZetaContrast.aa.name);
+      expect(diagnostics.finder('themeMode'), ThemeMode.system.name);
+    });
+  });
+}

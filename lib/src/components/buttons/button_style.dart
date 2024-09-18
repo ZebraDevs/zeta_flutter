@@ -37,7 +37,7 @@ enum ZetaButtonType {
 /// Button utility functions for styling
 extension ButtonFunctions on ZetaButtonType {
   /// Returns background color based on [ZetaButtonType]
-  Color backgroundColor(ZetaColorSemantics colors) {
+  Color backgroundColor(ZetaSemanticColors colors) {
     switch (this) {
       case ZetaButtonType.primary:
         return colors.statePrimaryEnabled;
@@ -55,7 +55,7 @@ extension ButtonFunctions on ZetaButtonType {
   }
 
   /// Returns hover color based on [ZetaButtonType]
-  Color hoverColor(ZetaColorSemantics colors) {
+  Color hoverColor(ZetaSemanticColors colors) {
     switch (this) {
       case ZetaButtonType.primary:
         return colors.statePrimaryHover;
@@ -73,7 +73,7 @@ extension ButtonFunctions on ZetaButtonType {
   }
 
   /// Returns pressed color based on [ZetaButtonType]
-  Color pressedColor(ZetaColorSemantics colors) {
+  Color pressedColor(ZetaSemanticColors colors) {
     switch (this) {
       case ZetaButtonType.primary:
         return colors.statePrimarySelected;
@@ -118,7 +118,7 @@ ButtonStyle buttonStyle(
   ZetaWidgetBorder borderType,
   ZetaButtonType type,
 ) {
-  final ZetaColorSemantics colors = Zeta.of(context).colors;
+  final ZetaSemanticColors colors = Zeta.of(context).colors;
   final Color backgroundColor = type.backgroundColor(colors);
   final Color backgroundColorHover = type.hoverColor(colors);
   final Color backgroundColorPressed = type.pressedColor(colors);

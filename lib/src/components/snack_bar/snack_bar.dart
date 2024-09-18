@@ -157,7 +157,7 @@ class _Content extends StatelessWidget {
   }
 
   Color _getColorForType(
-    ZetaColorSemantics colors,
+    ZetaSemanticColors colors,
     ZetaSnackBarType? type,
   ) {
     return switch (type) {
@@ -366,7 +366,7 @@ class _LeadingIcon extends StatelessWidget {
     properties.add(EnumProperty<ZetaSnackBarType?>('type', type));
   }
 
-  Color _getIconColor(ZetaColorSemantics colors, ZetaSnackBarType? type) {
+  Color _getIconColor(ZetaSemanticColors colors, ZetaSnackBarType? type) {
     return switch (type) {
       ZetaSnackBarType.positive => colors.surfacePositive,
       ZetaSnackBarType.info => colors.surfaceInfo,

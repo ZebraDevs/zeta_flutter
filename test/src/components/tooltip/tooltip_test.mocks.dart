@@ -24,7 +24,8 @@ import 'package:zeta_flutter/zeta_flutter.dart' as _i2;
 // ignore_for_file: camel_case_types
 // ignore_for_file: subtype_of_sealed_class
 
-class _FakeZetaPrimitives_0 extends _i1.SmartFake implements _i2.ZetaPrimitives {
+class _FakeZetaPrimitives_0 extends _i1.SmartFake
+    implements _i2.ZetaPrimitives {
   _FakeZetaPrimitives_0(
     Object parent,
     Invocation parentInvocation,
@@ -44,7 +45,8 @@ class _FakeZetaSemantics_1 extends _i1.SmartFake implements _i2.ZetaSemantics {
         );
 }
 
-class _FakeZetaSemanticColors_2 extends _i1.SmartFake implements _i2.ZetaSemanticColors {
+class _FakeZetaSemanticColors_2 extends _i1.SmartFake
+    implements _i2.ZetaSemanticColors {
   _FakeZetaSemanticColors_2(
     Object parent,
     Invocation parentInvocation,
@@ -54,8 +56,9 @@ class _FakeZetaSemanticColors_2 extends _i1.SmartFake implements _i2.ZetaSemanti
         );
 }
 
-class _FakeZetaRadiiSemantics_3 extends _i1.SmartFake implements _i2.ZetaRadiiSemantics {
-  _FakeZetaRadiiSemantics_3(
+class _FakeZetaSemanticRadii_3 extends _i1.SmartFake
+    implements _i2.ZetaSemanticRadii {
+  _FakeZetaSemanticRadii_3(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -64,8 +67,9 @@ class _FakeZetaRadiiSemantics_3 extends _i1.SmartFake implements _i2.ZetaRadiiSe
         );
 }
 
-class _FakeZetaSpacingSemantics_4 extends _i1.SmartFake implements _i2.ZetaSpacingSemantics {
-  _FakeZetaSpacingSemantics_4(
+class _FakeZetaSemanticSpaces_4 extends _i1.SmartFake
+    implements _i2.ZetaSemanticSpaces {
+  _FakeZetaSemanticSpaces_4(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -84,10 +88,12 @@ class _FakeWidget_5 extends _i1.SmartFake implements _i3.Widget {
         );
 
   @override
-  String toString({_i4.DiagnosticLevel? minLevel = _i4.DiagnosticLevel.info}) => super.toString();
+  String toString({_i4.DiagnosticLevel? minLevel = _i4.DiagnosticLevel.info}) =>
+      super.toString();
 }
 
-class _FakeInheritedElement_6 extends _i1.SmartFake implements _i3.InheritedElement {
+class _FakeInheritedElement_6 extends _i1.SmartFake
+    implements _i3.InheritedElement {
   _FakeInheritedElement_6(
     Object parent,
     Invocation parentInvocation,
@@ -97,10 +103,12 @@ class _FakeInheritedElement_6 extends _i1.SmartFake implements _i3.InheritedElem
         );
 
   @override
-  String toString({_i4.DiagnosticLevel? minLevel = _i4.DiagnosticLevel.info}) => super.toString();
+  String toString({_i4.DiagnosticLevel? minLevel = _i4.DiagnosticLevel.info}) =>
+      super.toString();
 }
 
-class _FakeDiagnosticsNode_7 extends _i1.SmartFake implements _i4.DiagnosticsNode {
+class _FakeDiagnosticsNode_7 extends _i1.SmartFake
+    implements _i4.DiagnosticsNode {
   _FakeDiagnosticsNode_7(
     Object parent,
     Invocation parentInvocation,
@@ -189,30 +197,30 @@ class MockZeta extends _i1.Mock implements _i2.Zeta {
       ) as _i5.Brightness);
 
   @override
-  _i2.ZetaRadiiSemantics get radius => (super.noSuchMethod(
+  _i2.ZetaSemanticRadii get radius => (super.noSuchMethod(
         Invocation.getter(#radius),
-        returnValue: _FakeZetaRadiiSemantics_3(
+        returnValue: _FakeZetaSemanticRadii_3(
           this,
           Invocation.getter(#radius),
         ),
-        returnValueForMissingStub: _FakeZetaRadiiSemantics_3(
+        returnValueForMissingStub: _FakeZetaSemanticRadii_3(
           this,
           Invocation.getter(#radius),
         ),
-      ) as _i2.ZetaRadiiSemantics);
+      ) as _i2.ZetaSemanticRadii);
 
   @override
-  _i2.ZetaSpacingSemantics get spacing => (super.noSuchMethod(
+  _i2.ZetaSemanticSpaces get spacing => (super.noSuchMethod(
         Invocation.getter(#spacing),
-        returnValue: _FakeZetaSpacingSemantics_4(
+        returnValue: _FakeZetaSemanticSpaces_4(
           this,
           Invocation.getter(#spacing),
         ),
-        returnValueForMissingStub: _FakeZetaSpacingSemantics_4(
+        returnValueForMissingStub: _FakeZetaSemanticSpaces_4(
           this,
           Invocation.getter(#spacing),
         ),
-      ) as _i2.ZetaSpacingSemantics);
+      ) as _i2.ZetaSemanticSpaces);
 
   @override
   _i3.Widget get child => (super.noSuchMethod(
@@ -228,7 +236,8 @@ class MockZeta extends _i1.Mock implements _i2.Zeta {
       ) as _i3.Widget);
 
   @override
-  bool updateShouldNotify(_i3.InheritedWidget? oldWidget) => (super.noSuchMethod(
+  bool updateShouldNotify(_i3.InheritedWidget? oldWidget) =>
+      (super.noSuchMethod(
         Invocation.method(
           #updateShouldNotify,
           [oldWidget],
@@ -238,7 +247,8 @@ class MockZeta extends _i1.Mock implements _i2.Zeta {
       ) as bool);
 
   @override
-  void debugFillProperties(_i4.DiagnosticPropertiesBuilder? properties) => super.noSuchMethod(
+  void debugFillProperties(_i4.DiagnosticPropertiesBuilder? properties) =>
+      super.noSuchMethod(
         Invocation.method(
           #debugFillProperties,
           [properties],
@@ -419,5 +429,6 @@ class MockZeta extends _i1.Mock implements _i2.Zeta {
       ) as List<_i4.DiagnosticsNode>);
 
   @override
-  String toString({_i4.DiagnosticLevel? minLevel = _i4.DiagnosticLevel.info}) => super.toString();
+  String toString({_i4.DiagnosticLevel? minLevel = _i4.DiagnosticLevel.info}) =>
+      super.toString();
 }

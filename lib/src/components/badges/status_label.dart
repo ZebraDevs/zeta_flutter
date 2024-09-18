@@ -90,7 +90,7 @@ class ZetaStatusLabel extends ZetaStatelessWidget {
 /// Extensions on [ZetaWidgetStatus].
 extension on ZetaWidgetStatus {
   /// Gets background color from [ZetaWidgetStatus].
-  Color backgroundColor(ZetaColorSemantics colors) {
+  Color backgroundColor(ZetaSemanticColors colors) {
     switch (this) {
       case ZetaWidgetStatus.info:
         return colors.surfaceInfoSubtle;
@@ -106,7 +106,7 @@ extension on ZetaWidgetStatus {
   }
 
   /// Gets foreground color from [ZetaWidgetStatus].
-  Color foregroundColor(ZetaColorSemantics colors) {
+  Color foregroundColor(ZetaSemanticColors colors) {
     switch (this) {
       case ZetaWidgetStatus.info:
         return colors.mainInfo;
@@ -122,7 +122,7 @@ extension on ZetaWidgetStatus {
   }
 
   /// Gets border color from [ZetaWidgetStatus].
-  Color borderColor(ZetaColorSemantics colors) {
+  Color borderColor(ZetaSemanticColors colors) {
     switch (this) {
       case ZetaWidgetStatus.info:
         return colors.borderInfo;

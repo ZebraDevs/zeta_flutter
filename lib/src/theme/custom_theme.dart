@@ -14,11 +14,11 @@ class ZetaCustomTheme {
     Color? secondary,
     Color? secondaryDark,
   })  : assert(
-          primaryDark != null && primary != null,
+          !(primaryDark != null && primary == null),
           'Primary dark cannot be set without a primary color',
         ),
         assert(
-          secondary != null && secondaryDark != null,
+          !(secondaryDark != null && secondary == null),
           'Secondary dark cannot be set without a secondary color',
         ),
         primary = primary != null ? ZetaColorSwatch.fromColor(primary) : null,

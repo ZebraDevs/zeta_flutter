@@ -29,6 +29,7 @@ class ZetaProvider extends StatefulWidget with Diagnosticable {
     this.initialRounded = true,
     this.customThemes = const [],
     this.initialTheme,
+    //TODO(mikecoomber): customLoadingWidget here - this can be used to remove the circular progress indicator, hopefully allowing pumpAndSettle to work in tests, as well as being nicer for end users
   });
 
   /// Specifies the initial theme mode for the app.
@@ -254,11 +255,10 @@ class ZetaProviderState extends State<ZetaProvider> with Diagnosticable, Widgets
   }
 
   Widget _getChild() {
-    return _InternalProvider(
+    return InternalProvider(
       contrast: _contrast,
       themeMode: _themeMode,
       rounded: _rounded,
-      platformBrightness: _platformBrightness,
       widget: widget.builder,
       customTheme: _customTheme,
       customThemes: customThemes,
@@ -340,34 +340,46 @@ class ZetaProviderState extends State<ZetaProvider> with Diagnosticable, Widgets
   }
 }
 
-class _InternalProvider extends StatefulWidget {
-  const _InternalProvider({
+/// Provider used within ZetaProvider, placed within FutureBuilder to allow time for theme data to be pulled from async function
+///
+/// For internal use only.
+@visibleForTesting
+class InternalProvider extends StatefulWidget {
+  /// Constructs an [InternalProvider].
+  ///
+  /// For internal use only.
+
+  @visibleForTesting
+  const InternalProvider({
+    super.key,
     required this.contrast,
     required this.themeMode,
     required this.rounded,
-    required this.platformBrightness,
     required this.widget,
     required this.customTheme,
     required this.customThemes,
   });
 
+  ///  Current custom theme.
   final ZetaCustomTheme? customTheme;
 
+  /// List of all custom themes.
   final List<ZetaCustomTheme> customThemes;
 
   /// Represents the late initialization of the ZetaContrast value.
   final ZetaContrast contrast;
 
+  /// Current theme mode.
   final ThemeMode themeMode;
 
+  /// Current rounded value.
   final bool rounded;
 
-  final Brightness platformBrightness;
-
+  /// Builder
   final ZetaAppBuilder widget;
 
   @override
-  State<_InternalProvider> createState() => _InternalProviderState();
+  State<InternalProvider> createState() => InternalProviderState();
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
@@ -375,7 +387,6 @@ class _InternalProvider extends StatefulWidget {
     properties
       ..add(EnumProperty<ThemeMode>('themeMode', themeMode))
       ..add(EnumProperty<ZetaContrast>('contrast', contrast))
-      ..add(EnumProperty<Brightness>('platformBrightness', platformBrightness))
       ..add(DiagnosticsProperty<bool>('rounded', rounded))
       ..add(ObjectFlagProperty<ZetaAppBuilder>.has('widget', widget))
       ..add(DiagnosticsProperty<ZetaCustomTheme?>('customTheme', customTheme))
@@ -383,7 +394,11 @@ class _InternalProvider extends StatefulWidget {
   }
 }
 
-class _InternalProviderState extends State<_InternalProvider> {
+/// State for [InternalProvider].
+///
+/// For internal use only.
+@visibleForTesting
+class InternalProviderState extends State<InternalProvider> {
   @override
   Widget build(BuildContext context) {
     return Zeta(
@@ -414,6 +429,7 @@ class _InternalProviderState extends State<_InternalProvider> {
 }
 
 /// Creates a variant of [ThemeData] with added [Zeta] styles.
+@visibleForTesting
 ThemeData generateZetaTheme({
   required Brightness brightness,
   required ColorScheme colorScheme,

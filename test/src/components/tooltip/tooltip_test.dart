@@ -16,7 +16,7 @@ import 'tooltip_test.mocks.dart';
 ])
 void main() {
   final mockZeta = MockZeta();
-  when(mockZeta.radius).thenReturn(const ZetaRadiiAA(primitives: ZetaPrimitivesLight()));
+  when(mockZeta.radius).thenReturn(const ZetaSemanticRadiiAA(primitives: ZetaPrimitivesLight()));
   const goldenFile = GoldenFiles(component: 'tooltip');
 
   setUpAll(() {
