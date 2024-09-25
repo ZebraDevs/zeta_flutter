@@ -34,6 +34,10 @@ enum ZetaSnackBarType {
 ///
 /// Different styles can be applied to [ZetaSnackBar] with [ZetaSnackBarType].
 /// {@category Components}
+///
+/// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=229-13&node-type=canvas&m=dev
+///
+/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/snack-bar
 class ZetaSnackBar extends SnackBar {
   /// Sets basic styles for the [SnackBar].
   ZetaSnackBar({

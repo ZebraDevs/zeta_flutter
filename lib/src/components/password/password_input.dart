@@ -7,6 +7,10 @@ import '../text_input/internal_text_input.dart';
 
 /// Zeta Password Input
 /// {@category Components}
+///
+/// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=948-13002&node-type=canvas&m=dev
+///
+/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/password-input
 class ZetaPasswordInput extends ZetaTextFormField {
   ///Constructs [ZetaPasswordInput]
   ZetaPasswordInput({

@@ -7,6 +7,10 @@ import '../../../zeta_flutter.dart';
 
 /// Chat item widget that can be dragged to reveal contextual actions.
 /// {@category Components}
+///
+/// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=24828-46282&node-type=canvas&m=dev
+///
+/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/list-items/chat-list-item
 class ZetaChatItem extends ZetaStatelessWidget {
   /// Creates a [ZetaChatItem]
   const ZetaChatItem({

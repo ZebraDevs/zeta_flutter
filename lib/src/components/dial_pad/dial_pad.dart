@@ -6,6 +6,10 @@ import '../../../zeta_flutter.dart';
 
 /// Dial pad gives the user the ability to dial a number and start a call. It also has a quick dial security action and a delete entry action.
 /// {@category Components}
+///
+/// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=21156-16370&node-type=canvas&m=dev
+///
+/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/dial-pad
 class ZetaDialPad extends StatefulWidget {
   /// Constructs a [ZetaDialPad].
   const ZetaDialPad({

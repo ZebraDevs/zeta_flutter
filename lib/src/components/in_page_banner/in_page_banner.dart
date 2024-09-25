@@ -5,6 +5,10 @@ import '../../../zeta_flutter.dart';
 
 /// In page banners display an important, succinct message, and may provide actions for users to address. Banners should be displayed at the top of the screen,below a top app bar. Only one banner should be shown at a time.
 /// {@category Components}
+///
+/// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=21156-20085&node-type=canvas&m=dev
+///
+/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/in-page-banners
 class ZetaInPageBanner extends ZetaStatelessWidget {
   /// Constructs [ZetaInPageBanner].
   const ZetaInPageBanner({
