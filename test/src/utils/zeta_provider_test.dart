@@ -11,19 +11,21 @@ import './zeta_provider_test.mocks.dart';
 
 @GenerateNiceMocks([MockSpec<ZetaThemeService>()])
 void main() {
-  final mockThemeService = MockZetaThemeService();
-
-  setUp(() async {
-    when(mockThemeService.loadTheme()).thenAnswer(
-      (_) async => ZetaThemeServiceData(),
-    );
-    when(mockThemeService.saveTheme(themeData: anyNamed('themeData'))).thenAnswer(
-      (_) async => {},
-    );
-  });
-
   group('ZetaProvider', () {
-    group('Initializers', () {
+    late MockZetaThemeService mockThemeService;
+
+    setUp(() async {
+      mockThemeService = MockZetaThemeService();
+
+      when(mockThemeService.loadTheme()).thenAnswer(
+        (_) async => const ZetaThemeServiceData(),
+      );
+      when(mockThemeService.saveTheme(themeData: anyNamed('themeData'))).thenAnswer(
+        (_) async => {},
+      );
+    });
+
+    group('initializers', () {
       testWidgets('initializes with correct default values', (WidgetTester tester) async {
         await tester.pumpWidget(
           ZetaProvider(builder: (context, light, dark, themeMode) => Container()),
@@ -81,12 +83,16 @@ void main() {
       });
     });
 
-    group('Updates state', () {
-      final subject = ZetaProvider(
-        builder: (context, light, dark, themeMode) => Container(),
-        initialThemeMode: ThemeMode.light,
-        themeService: mockThemeService,
-      );
+    group('updates state', () {
+      late ZetaProvider subject;
+
+      setUp(() {
+        subject = ZetaProvider(
+          builder: (context, light, dark, themeMode) => Container(),
+          initialThemeMode: ThemeMode.light,
+          themeService: mockThemeService,
+        );
+      });
 
       testWidgets('updateThemeMode updates the state correctly', (WidgetTester tester) async {
         await tester.pumpWidget(subject);
@@ -126,11 +132,15 @@ void main() {
     });
 
     group('didUpdateWidget', () {
-      final subject = ZetaProvider(
-        builder: (context, light, dark, themeMode) => Container(),
-        initialThemeMode: ThemeMode.light,
-        themeService: mockThemeService,
-      );
+      late ZetaProvider subject;
+
+      setUp(() {
+        subject = ZetaProvider(
+          builder: (context, light, dark, themeMode) => Container(),
+          initialThemeMode: ThemeMode.light,
+          themeService: mockThemeService,
+        );
+      });
 
       testWidgets('didUpdateWidget in ZetaProviderState works correctly with change in ThemeMode',
           (WidgetTester tester) async {
@@ -317,6 +327,8 @@ void main() {
     });
 
     group('custom theme', () {
+      late ZetaProvider subject;
+
       final customPrimary = ZetaColorSwatch.fromColor(Colors.red);
 
       final customThemes = [
@@ -324,13 +336,15 @@ void main() {
         ZetaCustomTheme(id: '2', primary: Colors.orange),
       ];
 
-      final subject = ZetaProvider(
-        themeService: mockThemeService,
-        customThemes: customThemes,
-        initialThemeMode: ThemeMode.light,
-        initialTheme: '1',
-        builder: (_, __, ___, ____) => const SizedBox(),
-      );
+      setUp(() {
+        subject = ZetaProvider(
+          themeService: mockThemeService,
+          customThemes: customThemes,
+          initialThemeMode: ThemeMode.light,
+          initialTheme: '1',
+          builder: (_, __, ___, ____) => const SizedBox(),
+        );
+      });
 
       testWidgets('initial theme gets set correctly', (tester) async {
         await tester.pumpWidget(subject);
@@ -347,7 +361,7 @@ void main() {
 
         await tester.pump();
 
-        final providerState = tester.state<ZetaProviderState>(find.byType(ZetaProvider));
+        final providerState = tester.widget<Zeta>(find.byType(Zeta));
 
         expect(providerState.customThemeId, '1');
       });
@@ -381,9 +395,9 @@ void main() {
             .updateCustomTheme(themeId: '2');
         await tester.pump();
 
-        final providerState = tester.state<ZetaProviderState>(find.byType(ZetaProvider));
+        final zeta = tester.widget<Zeta>(find.byType(Zeta));
 
-        expect(providerState.customThemeId, '2');
+        expect(zeta.customThemeId, '2');
       });
     });
 
@@ -391,7 +405,7 @@ void main() {
       group('load theme', () {
         setUp(() async {
           when(mockThemeService.loadTheme()).thenAnswer(
-            (_) async => ZetaThemeServiceData(
+            (_) async => const ZetaThemeServiceData(
               contrast: ZetaContrast.aaa,
               themeMode: ThemeMode.dark,
               themeId: '1',
@@ -415,16 +429,33 @@ void main() {
           );
           await tester.pump();
 
-          final providerState = tester.state<ZetaProviderState>(find.byType(ZetaProvider));
           final zeta = tester.widget<Zeta>(find.byType(Zeta));
 
           verify(mockThemeService.loadTheme()).called(1);
-          expect(providerState.customThemeId, '1');
+          expect(zeta.customThemeId, '1');
           expect(zeta.themeMode, ThemeMode.dark);
           expect(zeta.contrast, ZetaContrast.aaa);
         });
 
-        testWidgets('theme is not loaded if all defaults are given to provider', (tester) async {
+        testWidgets('theme is not loaded if all defaults are given to provider and no custom themes are provided',
+            (tester) async {
+          await tester.pumpWidget(
+            ZetaProvider(
+              themeService: mockThemeService,
+              initialThemeMode: ThemeMode.light,
+              initialContrast: ZetaContrast.aa,
+              builder: (_, __, ___, ____) {
+                return const SizedBox();
+              },
+            ),
+          );
+          await tester.pump();
+
+          verifyNever(mockThemeService.loadTheme());
+        });
+
+        testWidgets('theme is not loaded if all defaults are given to provider and custom themes contains initialTheme',
+            (tester) async {
           final customThemes = [
             ZetaCustomTheme(id: '1', primary: Colors.red),
           ];
@@ -466,9 +497,31 @@ void main() {
           verify(mockThemeService.loadTheme()).called(1);
         });
 
+        testWidgets(
+            'theme is loaded if all other defaults are specified but custom themes does not contain initialTheme',
+            (tester) async {
+          await tester.pumpWidget(
+            ZetaProvider(
+              themeService: mockThemeService,
+              initialContrast: ZetaContrast.aa,
+              customThemes: [
+                ZetaCustomTheme(id: '1', primary: Colors.red),
+              ],
+              initialTheme: 'not found',
+              initialThemeMode: ThemeMode.light,
+              builder: (_, __, ___, ____) {
+                return const SizedBox();
+              },
+            ),
+          );
+          await tester.pump();
+
+          verify(mockThemeService.loadTheme()).called(1);
+        });
+
         testWidgets('use default theme if saved custom theme is not found by theme service', (tester) async {
           when(mockThemeService.loadTheme()).thenAnswer(
-            (_) async => ZetaThemeServiceData(themeId: 'this theme does not exist'),
+            (_) async => const ZetaThemeServiceData(themeId: 'this theme does not exist'),
           );
 
           await tester.pumpWidget(
@@ -483,10 +536,9 @@ void main() {
           );
           await tester.pump();
 
-          final providerState = tester.state<ZetaProviderState>(find.byType(ZetaProvider));
           final zeta = tester.widget<Zeta>(find.byType(Zeta));
 
-          expect(providerState.customThemeId, null);
+          expect(zeta.customThemeId, null);
           expect(
             zeta.colors.primitives.primary,
             const ZetaPrimitivesLight().primary,
@@ -495,10 +547,14 @@ void main() {
       });
 
       group('save theme', () {
-        final subject = ZetaProvider(
-          themeService: mockThemeService,
-          builder: (context, light, dark, themeMode) => Container(),
-        );
+        late ZetaProvider subject;
+
+        setUp(() {
+          subject = ZetaProvider(
+            themeService: mockThemeService,
+            builder: (context, light, dark, themeMode) => Container(),
+          );
+        });
 
         testWidgets('saveTheme is called when theme mode is updated', (tester) async {
           await tester.pumpWidget(subject);
@@ -572,7 +628,6 @@ void main() {
         await tester.pump();
         tester.state<ZetaProviderState>(find.byType(ZetaProvider)).debugFillProperties(diagnostics);
 
-        expect(diagnostics.finder('customThemeId'), 'null');
         expect(diagnostics.finder('themeMode'), ThemeMode.system.name);
         expect(diagnostics.finder('contrast'), ZetaContrast.aa.name);
         expect(diagnostics.finder('customThemes'), '[]');

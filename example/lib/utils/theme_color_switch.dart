@@ -38,7 +38,7 @@ class _ZetaThemeColorSwitchState extends State<ZetaThemeColorSwitch> {
 
     return DropdownButtonHideUnderline(
       child: DropdownButton<String?>(
-        value: zetaProvider.customThemeId,
+        value: zeta.customThemeId,
         elevation: 0,
         padding: EdgeInsets.all(8),
         icon: Nothing(),

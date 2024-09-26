@@ -17,6 +17,7 @@ class Zeta extends InheritedWidget {
     this.rounded = true,
     this.contrast = ZetaContrast.aa,
     this.themeMode = ThemeMode.system,
+    this.customThemeId,
     ZetaPrimitives? customPrimitives,
     ZetaSemantics? customSemantics,
     // String? fontFamily,
@@ -55,6 +56,10 @@ class Zeta extends InheritedWidget {
   /// The default value is 'system'.
   final ThemeMode themeMode;
 
+  /// The ID of the current custom theme.
+  /// Set to null if no custom theme is being used.
+  final String? customThemeId;
+
   /// Provides the color set based on the current theme mode.
   ///
   /// It determines the appropriate color set (light or dark) based on the theme mode
@@ -81,7 +86,8 @@ class Zeta extends InheritedWidget {
         oldWidget.brightness != brightness ||
         oldWidget.themeMode != themeMode ||
         oldWidget._customPrimitives != _customPrimitives ||
-        oldWidget._customSemantics != _customSemantics;
+        oldWidget._customSemantics != _customSemantics ||
+        oldWidget.customThemeId != customThemeId;
   }
 
   /// Fetches the [Zeta] instance from the provided [context].
@@ -123,6 +129,7 @@ class Zeta extends InheritedWidget {
       ..add(DiagnosticsProperty<ZetaPrimitives>('primitives', primitives))
       ..add(DiagnosticsProperty<ZetaSemantics>('semantics', semantics))
       ..add(EnumProperty<ZetaContrast>('contrast', contrast))
-      ..add(EnumProperty<ThemeMode>('themeMode', themeMode));
+      ..add(EnumProperty<ThemeMode>('themeMode', themeMode))
+      ..add(StringProperty('customThemeId', customThemeId));
   }
 }

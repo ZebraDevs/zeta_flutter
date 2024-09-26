@@ -174,6 +174,7 @@ void main() {
   group('Zeta properties', () {
     testWidgets('updates correctly on state change', (WidgetTester tester) async {
       // TODO(mikecoomber): test updateShouldNotify
+      // I think this test might be redundant because all of this is essentially being tested in the zeta_provider tests.
     });
 
     testWidgets('brightness getter works correctly', (WidgetTester tester) async {

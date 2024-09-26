@@ -14,7 +14,7 @@ class ZetaThemeServiceData extends Equatable {
   /// Constructs a [ZetaThemeServiceData].
   ///
   /// All fields are optional. If null, defaults will be used.
-  ZetaThemeServiceData({this.themeId, this.themeMode, this.contrast, this.fontFamily});
+  const ZetaThemeServiceData({this.themeId, this.themeMode, this.contrast, this.fontFamily});
 
   /// The unique identifier for the custom theme data.
   final String? themeId;

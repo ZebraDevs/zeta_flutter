@@ -25,6 +25,7 @@ class TestApp extends StatelessWidget {
     return ZetaProvider(
       initialThemeMode: themeMode ?? ThemeMode.system,
       initialRounded: rounded ?? true,
+      customLoadingWidget: const SizedBox(),
       initialContrast: contrast ?? ZetaContrast.aa,
       builder: (context, lightTheme, darkTheme, themeMode) {
         return MaterialApp(

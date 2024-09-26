@@ -122,9 +122,6 @@ class ZetaProviderState extends State<ZetaProvider> with Diagnosticable, Widgets
 
   ZetaCustomTheme? _customTheme;
 
-  /// The ID of the current custom theme
-  String? get customThemeId => _customTheme?.id;
-
   /// Represents the late initialization of the system's current brightness (dark or light mode).
   late Brightness _platformBrightness;
 
@@ -241,7 +238,9 @@ class ZetaProviderState extends State<ZetaProvider> with Diagnosticable, Widgets
 
   @override
   Widget build(BuildContext context) {
-    if ((widget.initialContrast != null && widget.initialThemeMode != null && widget.initialTheme != null) ||
+    if ((widget.initialContrast != null &&
+            widget.initialThemeMode != null &&
+            (widget.customThemes.isEmpty || _customThemes[widget.initialTheme] != null)) ||
         _gotTheme) {
       return _getChild();
     }
@@ -340,8 +339,7 @@ class ZetaProviderState extends State<ZetaProvider> with Diagnosticable, Widgets
       ..add(EnumProperty<ZetaContrast>('contrast', _contrast))
       ..add(EnumProperty<ThemeMode>('themeMode', _themeMode))
       ..add(IterableProperty<ZetaCustomTheme>('customThemes', customThemes))
-      ..add(DiagnosticsProperty<ZetaCustomTheme?>('customTheme', _customTheme))
-      ..add(StringProperty('customThemeId', customThemeId));
+      ..add(DiagnosticsProperty<ZetaCustomTheme?>('customTheme', _customTheme));
   }
 }
 
@@ -409,6 +407,7 @@ class InternalProviderState extends State<InternalProvider> {
     return Zeta(
       themeMode: widget.themeMode,
       contrast: widget.contrast,
+      customThemeId: widget.customTheme?.id,
       rounded: widget.rounded,
       customPrimitives: widget.themeMode.isDark
           ? ZetaPrimitivesDark(
