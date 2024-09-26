@@ -29,7 +29,7 @@ class ZetaProvider extends StatefulWidget with Diagnosticable {
     this.initialRounded = true,
     this.customThemes = const [],
     this.initialTheme,
-    // TODO(mikecoomber): customLoadingWidget here - this can be used to remove the circular progress indicator, hopefully allowing pumpAndSettle to work in tests, as well as being nicer for end users
+    this.customLoadingWidget,
   });
 
   /// Specifies the initial theme mode for the app.
@@ -59,6 +59,9 @@ class ZetaProvider extends StatefulWidget with Diagnosticable {
 
   /// Specifies the id of the initial custom theme to be used in the app.
   final String? initialTheme;
+
+  /// A custom loading widget to be displayed while the theme is being loaded.
+  final Widget? customLoadingWidget;
 
   @override
   State<ZetaProvider> createState() => ZetaProviderState();
@@ -112,7 +115,7 @@ class ZetaProviderState extends State<ZetaProvider> with Diagnosticable, Widgets
   /// Represents the late initialization of the ThemeMode value.
   late ThemeMode _themeMode;
 
-  late final Map<String, ZetaCustomTheme> _customThemes;
+  Map<String, ZetaCustomTheme> _customThemes = {};
 
   /// The list of custom themes in the app
   List<ZetaCustomTheme> get customThemes => _customThemes.values.toList();
@@ -238,15 +241,17 @@ class ZetaProviderState extends State<ZetaProvider> with Diagnosticable, Widgets
 
   @override
   Widget build(BuildContext context) {
-    if ((widget.initialContrast != null && widget.initialThemeMode != null) || _gotTheme) {
+    if ((widget.initialContrast != null && widget.initialThemeMode != null && widget.initialTheme != null) ||
+        _gotTheme) {
       return _getChild();
     }
+
     return FutureBuilder<dynamic>(
       // ignore: discarded_futures
       future: getThemeValuesFromPreferences(),
       builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Center(child: CircularProgressIndicator());
+          return widget.customLoadingWidget ?? const Center(child: CircularProgressIndicator());
         }
 
         return _getChild();
@@ -289,7 +294,7 @@ class ZetaProviderState extends State<ZetaProvider> with Diagnosticable, Widgets
 
   /// Updates the current custom theme.
   /// The id of the theme must correspond to a [ZetaCustomTheme] object in the [customThemes] list.
-  /// If [themeId] is null, the default theme is used.
+  /// If [themeId] is null or a corresponding theme cannot be found, the default theme is used.
   void updateCustomTheme({
     required String? themeId,
   }) {

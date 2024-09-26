@@ -2,6 +2,7 @@ import 'dart:math' as math;
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import '../../zeta_flutter.dart';
 
 /// Extensions on [Color] to brighten, lighten, darken and blend colors and
@@ -348,8 +349,9 @@ extension ZetaSemanticColorExtension on ZetaSemanticColors {
 /// Extensions on [ThemeMode] to provide additional functionality.
 extension ZetaThemeModeExtension on ThemeMode {
   /// Returns true if the theme mode is dark.
-  bool get isDark =>
-      this == ThemeMode.system ? PlatformDispatcher.instance.platformBrightness.isDark : this == ThemeMode.dark;
+  bool get isDark => this == ThemeMode.system
+      ? SchedulerBinding.instance.platformDispatcher.platformBrightness.isDark
+      : this == ThemeMode.dark;
 
   /// Returns the brightness value based on the theme mode.
   Brightness get brightness => isDark ? Brightness.dark : Brightness.light;

@@ -1,3 +1,4 @@
+import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -9,7 +10,7 @@ const String _kThemeId = 'theme_id';
 const String _kFontFamily = 'fontFamily';
 
 /// `ZetaThemeData` is a class that holds the theme data to be stored with the theme service.
-class ZetaThemeServiceData {
+class ZetaThemeServiceData extends Equatable {
   /// Constructs a [ZetaThemeServiceData].
   ///
   /// All fields are optional. If null, defaults will be used.
@@ -26,6 +27,9 @@ class ZetaThemeServiceData {
 
   /// The font family of the Zeta theme.
   final String? fontFamily;
+
+  @override
+  List<Object?> get props => [themeId, themeMode, contrast, fontFamily];
 }
 
 // TODO(colors): Re-add custom font somewhere (not here)
