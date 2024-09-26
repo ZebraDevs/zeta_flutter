@@ -82,19 +82,16 @@ void main() {
     });
 
     group('Updates state', () {
+      final subject = ZetaProvider(
+        builder: (context, light, dark, themeMode) => Container(),
+        initialThemeMode: ThemeMode.light,
+        themeService: mockThemeService,
+      );
+
       testWidgets('updateThemeMode updates the state correctly', (WidgetTester tester) async {
-        await tester.pumpWidget(
-          ZetaProvider(
-            builder: (context, light, dark, themeMode) => Container(),
-            themeService: mockThemeService,
-            initialThemeMode: ThemeMode.light,
-            customLoadingWidget: const SizedBox(),
-          ),
-        );
-        await tester.pumpAndSettle();
+        await tester.pumpWidget(subject);
 
         tester.state<ZetaProviderState>(find.byType(ZetaProvider)).updateThemeMode(ThemeMode.dark);
-
         await tester.pump();
 
         final zeta = tester.widget<Zeta>(find.byType(Zeta));
@@ -104,17 +101,10 @@ void main() {
       });
 
       testWidgets('updateContrast updates the state correctly', (WidgetTester tester) async {
-        await tester.pumpWidget(
-          ZetaProvider(
-            builder: (context, light, dark, themeMode) => Container(),
-            themeService: mockThemeService,
-          ),
-        );
-        await tester.pumpAndSettle();
+        await tester.pumpWidget(subject);
 
         tester.state<ZetaProviderState>(find.byType(ZetaProvider)).updateContrast(ZetaContrast.aaa);
-
-        await tester.pumpAndSettle();
+        await tester.pump();
 
         // Verifying through the public interface of Zeta widget
         final zeta = tester.widget<Zeta>(find.byType(Zeta));
@@ -123,12 +113,7 @@ void main() {
       });
 
       testWidgets('updateRounded updates the state correctly', (WidgetTester tester) async {
-        await tester.pumpWidget(
-          ZetaProvider(
-            builder: (context, light, dark, themeMode) => Container(),
-            themeService: mockThemeService,
-          ),
-        );
+        await tester.pumpWidget(subject);
 
         tester.state<ZetaProviderState>(find.byType(ZetaProvider)).updateRounded(false);
         await tester.pump();
@@ -141,20 +126,15 @@ void main() {
     });
 
     group('didUpdateWidget', () {
+      final subject = ZetaProvider(
+        builder: (context, light, dark, themeMode) => Container(),
+        initialThemeMode: ThemeMode.light,
+        themeService: mockThemeService,
+      );
+
       testWidgets('didUpdateWidget in ZetaProviderState works correctly with change in ThemeMode',
           (WidgetTester tester) async {
-        await tester.pumpWidget(
-          ZetaProvider(
-            initialThemeMode: ThemeMode.light,
-            themeService: mockThemeService,
-            customLoadingWidget: const SizedBox(),
-            builder: (context, light, dark, themeMode) => Builder(
-              builder: (context) {
-                return Container();
-              },
-            ),
-          ),
-        );
+        await tester.pumpWidget(subject);
 
         await tester.pump();
         // Verifying through the public interface of Zeta widget
@@ -180,16 +160,7 @@ void main() {
 
       testWidgets('didUpdateWidget in ZetaProviderState works correctly with change in contrast',
           (WidgetTester tester) async {
-        await tester.pumpWidget(
-          ZetaProvider(
-            themeService: mockThemeService,
-            builder: (context, light, dark, themeMode) => Builder(
-              builder: (context) {
-                return Container();
-              },
-            ),
-          ),
-        );
+        await tester.pumpWidget(subject);
 
         await tester.pumpAndSettle();
 
@@ -215,17 +186,7 @@ void main() {
 
       testWidgets('didUpdateWidget in ZetaProviderState works correctly with change rounded',
           (WidgetTester tester) async {
-        await tester.pumpWidget(
-          ZetaProvider(
-            customLoadingWidget: const SizedBox(),
-            themeService: mockThemeService,
-            builder: (context, light, dark, themeMode) => Builder(
-              builder: (context) {
-                return Container();
-              },
-            ),
-          ),
-        );
+        await tester.pumpWidget(subject);
 
         await tester.pumpAndSettle();
 
@@ -289,8 +250,6 @@ void main() {
       );
 
       // Rebuild the widget tree
-      await tester.pump(Durations.extralong4);
-      await tester.pump(Durations.extralong4);
       await tester.pump(Durations.extralong4);
 
       // Get test binding
@@ -358,19 +317,23 @@ void main() {
     });
 
     group('custom theme', () {
-      testWidgets('initial theme gets set correctly', (tester) async {
-        final customPrimary = ZetaColorSwatch.fromColor(Colors.red);
-        final customThemes = [ZetaCustomTheme(id: '1', primary: customPrimary)];
+      final customPrimary = ZetaColorSwatch.fromColor(Colors.red);
 
-        await tester.pumpWidget(
-          ZetaProvider(
-            themeService: mockThemeService,
-            customThemes: customThemes,
-            initialThemeMode: ThemeMode.light,
-            initialTheme: '1',
-            builder: (_, __, ___, ____) => const SizedBox(),
-          ),
-        );
+      final customThemes = [
+        ZetaCustomTheme(id: '1', primary: customPrimary),
+        ZetaCustomTheme(id: '2', primary: Colors.orange),
+      ];
+
+      final subject = ZetaProvider(
+        themeService: mockThemeService,
+        customThemes: customThemes,
+        initialThemeMode: ThemeMode.light,
+        initialTheme: '1',
+        builder: (_, __, ___, ____) => const SizedBox(),
+      );
+
+      testWidgets('initial theme gets set correctly', (tester) async {
+        await tester.pumpWidget(subject);
 
         await tester.pump();
 
@@ -380,17 +343,7 @@ void main() {
       });
 
       testWidgets('customThemeId getter works as expected', (tester) async {
-        final customThemes = [ZetaCustomTheme(id: '1', primary: Colors.red)];
-        await tester.pumpWidget(
-          ZetaProvider(
-            themeService: mockThemeService,
-            customThemes: customThemes,
-            initialTheme: '1',
-            builder: (_, __, ___, ____) {
-              return const SizedBox();
-            },
-          ),
-        );
+        await tester.pumpWidget(subject);
 
         await tester.pump();
 
@@ -400,21 +353,7 @@ void main() {
       });
 
       testWidgets('custom themes can be changed', (tester) async {
-        final customThemes = [
-          ZetaCustomTheme(id: '1', primary: Colors.red),
-          ZetaCustomTheme(id: '2', primary: Colors.orange),
-        ];
-
-        await tester.pumpWidget(
-          ZetaProvider(
-            themeService: mockThemeService,
-            customThemes: customThemes,
-            initialTheme: '1',
-            builder: (_, __, ___, ____) {
-              return const SizedBox();
-            },
-          ),
-        );
+        await tester.pumpWidget(subject);
         await tester.pump();
 
         final newThemes = [
@@ -432,28 +371,14 @@ void main() {
       });
 
       testWidgets('updateCustomTheme works as expected', (tester) async {
-        final customThemes = [
-          ZetaCustomTheme(id: '1', primary: Colors.red),
-          ZetaCustomTheme(id: '2', primary: Colors.orange),
-        ];
-
-        await tester.pumpWidget(
-          ZetaProvider(
-            themeService: mockThemeService,
-            customThemes: customThemes,
-            initialTheme: '1',
-            builder: (ctx, __, ___, ____) {
-              return const SizedBox();
-            },
-          ),
-        );
+        await tester.pumpWidget(subject);
         await tester.pump();
+
         tester
             .state<ZetaProviderState>(
               find.byType(ZetaProvider),
             )
             .updateCustomTheme(themeId: '2');
-
         await tester.pump();
 
         final providerState = tester.state<ZetaProviderState>(find.byType(ZetaProvider));
