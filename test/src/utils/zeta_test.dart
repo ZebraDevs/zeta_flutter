@@ -172,9 +172,132 @@ void main() {
   });
 
   group('Zeta properties', () {
-    testWidgets('updates correctly on state change', (WidgetTester tester) async {
-      // TODO(mikecoomber): test updateShouldNotify
-      // I think this test might be redundant because all of this is essentially being tested in the zeta_provider tests.
+    group('updates state', () {
+      late Zeta subject;
+      const Key subjectKey = Key('subject');
+
+      setUp(() {
+        subject = Zeta(
+          key: subjectKey,
+          themeMode: ThemeMode.light,
+          child: Container(),
+        );
+      });
+
+      testWidgets('changing contrast updates state correctly', (WidgetTester tester) async {
+        await tester.pumpWidget(subject);
+        await tester.pumpAndSettle();
+
+        await tester.pumpWidget(
+          Zeta(
+            key: subjectKey,
+            themeMode: ThemeMode.light,
+            contrast: ZetaContrast.aaa,
+            child: Container(),
+          ),
+        );
+
+        await tester.pumpAndSettle();
+
+        final zeta = Zeta.of(tester.element(find.byType(Container)));
+        expect(zeta.contrast, ZetaContrast.aaa);
+      });
+
+      testWidgets('changing rounded updates state correctly', (WidgetTester tester) async {
+        await tester.pumpWidget(subject);
+        await tester.pumpAndSettle();
+
+        await tester.pumpWidget(
+          Zeta(
+            key: subjectKey,
+            themeMode: ThemeMode.light,
+            rounded: false,
+            child: Container(),
+          ),
+        );
+
+        await tester.pumpAndSettle();
+
+        final zeta = Zeta.of(tester.element(find.byType(Container)));
+        expect(zeta.rounded, false);
+      });
+
+      testWidgets('changing theme mode updates state correctly', (WidgetTester tester) async {
+        await tester.pumpWidget(subject);
+        await tester.pumpAndSettle();
+
+        await tester.pumpWidget(
+          Zeta(
+            key: subjectKey,
+            themeMode: ThemeMode.dark,
+            child: Container(),
+          ),
+        );
+
+        await tester.pumpAndSettle();
+
+        final zeta = Zeta.of(tester.element(find.byType(Container)));
+        expect(zeta.themeMode, ThemeMode.dark);
+      });
+
+      testWidgets('changing custom primitives updates state correctly', (WidgetTester tester) async {
+        await tester.pumpWidget(subject);
+        await tester.pumpAndSettle();
+
+        await tester.pumpWidget(
+          Zeta(
+            key: subjectKey,
+            themeMode: ThemeMode.light,
+            customPrimitives: const ZetaPrimitivesDark(),
+            child: Container(),
+          ),
+        );
+
+        await tester.pumpAndSettle();
+
+        final zeta = Zeta.of(tester.element(find.byType(Container)));
+        expect(zeta.primitives, const ZetaPrimitivesDark());
+      });
+
+      testWidgets('changing custom semantics updates state correctly', (WidgetTester tester) async {
+        await tester.pumpWidget(subject);
+        await tester.pumpAndSettle();
+
+        final newSemantics = ZetaSemanticsAAA(primitives: const ZetaPrimitivesLight());
+
+        await tester.pumpWidget(
+          Zeta(
+            key: subjectKey,
+            themeMode: ThemeMode.light,
+            customSemantics: newSemantics,
+            child: Container(),
+          ),
+        );
+
+        await tester.pumpAndSettle();
+
+        final zeta = Zeta.of(tester.element(find.byType(Container)));
+        expect(zeta.semantics, newSemantics);
+      });
+
+      testWidgets('changing customThemeId updates state correctly', (WidgetTester tester) async {
+        await tester.pumpWidget(subject);
+        await tester.pumpAndSettle();
+
+        await tester.pumpWidget(
+          Zeta(
+            key: subjectKey,
+            themeMode: ThemeMode.light,
+            customThemeId: 'custom',
+            child: Container(),
+          ),
+        );
+
+        await tester.pumpAndSettle();
+
+        final zeta = Zeta.of(tester.element(find.byType(Container)));
+        expect(zeta.customThemeId, 'custom');
+      });
     });
 
     testWidgets('brightness getter works correctly', (WidgetTester tester) async {

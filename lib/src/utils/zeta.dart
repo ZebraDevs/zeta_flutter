@@ -83,7 +83,6 @@ class Zeta extends InheritedWidget {
   bool updateShouldNotify(covariant Zeta oldWidget) {
     return oldWidget.contrast != contrast ||
         oldWidget.rounded != rounded ||
-        oldWidget.brightness != brightness ||
         oldWidget.themeMode != themeMode ||
         oldWidget._customPrimitives != _customPrimitives ||
         oldWidget._customSemantics != _customSemantics ||
