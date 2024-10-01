@@ -20,351 +20,236 @@ class CommsButtonExample extends StatelessWidget {
             children: [
               Column(
                 children: [
-                  ZetaCommsButton(
-                    semanticLabel: "Reject / Answer",
+                  ZetaCommsButton.reject(
                     label: 'Reject',
                     size: ZetaWidgetSize.large,
-                    type: ZetaCommsButtonType.reject,
-                    icon: ZetaIcons.end_call,
-                    onToggle: () {
-                      print('Toggled');
-                    },
-                    toggledIcon: ZetaIcons.phone,
-                    toggledType: ZetaCommsButtonType.on,
-                    toggledLabel: 'Call Back',
                   ),
-                  ZetaCommsButton(
+                  ZetaCommsButton.reject(
                     label: 'Reject',
                     size: ZetaWidgetSize.medium,
-                    type: ZetaCommsButtonType.reject,
-                    icon: ZetaIcons.end_call,
-                    onToggle: () {
-                      print('Toggled');
-                    },
-                    toggledIcon: ZetaIcons.phone,
-                    toggledType: ZetaCommsButtonType.on,
-                    toggledLabel: 'Call Back',
                   ),
-                  ZetaCommsButton(
+                  ZetaCommsButton.reject(
                     label: 'Reject',
                     size: ZetaWidgetSize.small,
-                    type: ZetaCommsButtonType.reject,
-                    icon: ZetaIcons.end_call,
-                    onToggle: () {
-                      print('Toggled');
-                    },
-                    toggledIcon: ZetaIcons.phone,
-                    toggledType: ZetaCommsButtonType.on,
-                    toggledLabel: 'Call Back',
                   ),
                 ].gap(Zeta.of(context).spacing.large),
               ),
               Column(
                 children: [
-                  ZetaCommsButton(
+                  ZetaCommsButton.answer(
                     label: 'Answer',
                     size: ZetaWidgetSize.large,
-                    type: ZetaCommsButtonType.answer,
-                    icon: ZetaIcons.phone,
-                    onToggle: () {
-                      print('Toggled');
-                    },
-                    toggledIcon: ZetaIcons.end_call,
-                    toggledType: ZetaCommsButtonType.reject,
-                    toggledLabel: 'End Call',
                   ),
-                  ZetaCommsButton(
+                  ZetaCommsButton.answer(
                     label: 'Answer',
                     size: ZetaWidgetSize.medium,
-                    type: ZetaCommsButtonType.answer,
-                    icon: ZetaIcons.phone,
-                    onToggle: () {
-                      print('Toggled');
-                    },
-                    toggledIcon: ZetaIcons.end_call,
-                    toggledType: ZetaCommsButtonType.reject,
-                    toggledLabel: 'End Call',
                   ),
-                  ZetaCommsButton(
+                  ZetaCommsButton.answer(
                     label: 'Answer',
                     size: ZetaWidgetSize.small,
-                    type: ZetaCommsButtonType.answer,
-                    icon: ZetaIcons.phone,
-                    onToggle: () {
-                      print('Toggled');
-                    },
-                    toggledIcon: ZetaIcons.end_call,
-                    toggledType: ZetaCommsButtonType.reject,
-                    toggledLabel: 'End Call',
                   ),
                 ].gap(Zeta.of(context).spacing.large),
               ),
               Column(
                 children: [
-                  ZetaCommsButton(
+                  ZetaCommsButton.mute(
                     label: 'Mute',
                     size: ZetaWidgetSize.large,
-                    type: ZetaCommsButtonType.on,
-                    icon: ZetaIcons.microphone,
-                    onToggle: () {
+                    onToggle: (isToggled) {
                       print('Toggled');
+                      print(isToggled);
                     },
-                    toggledIcon: ZetaIcons.microphone_off,
-                    toggledType: ZetaCommsButtonType.off,
                     toggledLabel: 'Un-Mute',
                   ),
-                  ZetaCommsButton(
+                  ZetaCommsButton.mute(
                     label: 'Mute',
                     size: ZetaWidgetSize.medium,
-                    type: ZetaCommsButtonType.on,
-                    icon: ZetaIcons.microphone,
-                    onToggle: () {
+                    onToggle: (isToggled) {
                       print('Toggled');
+                      print(isToggled);
                     },
-                    toggledIcon: ZetaIcons.microphone_off,
-                    toggledType: ZetaCommsButtonType.off,
                     toggledLabel: 'Un-Mute',
                   ),
-                  ZetaCommsButton(
+                  ZetaCommsButton.mute(
                     label: 'Mute',
                     size: ZetaWidgetSize.small,
-                    type: ZetaCommsButtonType.on,
-                    icon: ZetaIcons.microphone,
-                    onToggle: () {
+                    onToggle: (isToggled) {
                       print('Toggled');
+                      print(isToggled);
                     },
-                    toggledIcon: ZetaIcons.microphone_off,
-                    toggledType: ZetaCommsButtonType.off,
                     toggledLabel: 'Un-Mute',
                   ),
                 ].gap(Zeta.of(context).spacing.large),
               ),
               Column(
                 children: [
-                  ZetaCommsButton(
+                  ZetaCommsButton.video(
                     label: 'Hide Video',
                     size: ZetaWidgetSize.large,
-                    type: ZetaCommsButtonType.on,
-                    icon: ZetaIcons.video,
-                    onToggle: () {
+                    onToggle: (isToggled) {
                       print('Toggled');
+                      print(isToggled);
                     },
-                    toggledIcon: ZetaIcons.video_off,
-                    toggledType: ZetaCommsButtonType.off,
                     toggledLabel: 'Show Video',
                   ),
-                  ZetaCommsButton(
+                  ZetaCommsButton.video(
                     label: 'Hide Video',
                     size: ZetaWidgetSize.medium,
-                    type: ZetaCommsButtonType.on,
-                    icon: ZetaIcons.video,
-                    onToggle: () {
+                    onToggle: (isToggled) {
                       print('Toggled');
+                      print(isToggled);
                     },
-                    toggledIcon: ZetaIcons.video_off,
-                    toggledType: ZetaCommsButtonType.off,
                     toggledLabel: 'Show Video',
                   ),
-                  ZetaCommsButton(
+                  ZetaCommsButton.video(
                     label: 'Hide Video',
                     size: ZetaWidgetSize.small,
-                    type: ZetaCommsButtonType.on,
-                    icon: ZetaIcons.video,
-                    onToggle: () {
+                    onToggle: (isToggled) {
                       print('Toggled');
+                      print(isToggled);
                     },
-                    toggledIcon: ZetaIcons.video_off,
-                    toggledType: ZetaCommsButtonType.off,
                     toggledLabel: 'Show Video',
                   ),
                 ].gap(Zeta.of(context).spacing.large),
               ),
               Column(
                 children: [
-                  ZetaCommsButton(
+                  ZetaCommsButton.transfer(
                     label: 'Transfer',
                     size: ZetaWidgetSize.large,
-                    type: ZetaCommsButtonType.on,
-                    icon: ZetaIcons.forward,
                   ),
-                  ZetaCommsButton(
+                  ZetaCommsButton.transfer(
                     label: 'Transfer',
                     size: ZetaWidgetSize.medium,
-                    type: ZetaCommsButtonType.on,
-                    icon: ZetaIcons.forward,
                   ),
-                  ZetaCommsButton(
+                  ZetaCommsButton.transfer(
                     label: 'Transfer',
                     size: ZetaWidgetSize.small,
-                    type: ZetaCommsButtonType.on,
-                    icon: ZetaIcons.forward,
                   ),
                 ].gap(Zeta.of(context).spacing.large),
               ),
               Column(
                 children: [
-                  ZetaCommsButton(
+                  ZetaCommsButton.hold(
                     label: 'Hold Call',
                     size: ZetaWidgetSize.large,
-                    type: ZetaCommsButtonType.on,
-                    icon: ZetaIcons.pause,
-                    onToggle: () {
+                    onToggle: (isToggled) {
                       print('Toggled');
+                      print(isToggled);
                     },
-                    toggledIcon: ZetaIcons.pause,
-                    toggledType: ZetaCommsButtonType.off,
                     toggledLabel: 'On Hold',
                   ),
-                  ZetaCommsButton(
+                  ZetaCommsButton.hold(
                     label: 'Hold Call',
                     size: ZetaWidgetSize.medium,
-                    type: ZetaCommsButtonType.on,
-                    icon: ZetaIcons.pause,
-                    onToggle: () {
+                    onToggle: (isToggled) {
                       print('Toggled');
+                      print(isToggled);
                     },
-                    toggledIcon: ZetaIcons.pause,
-                    toggledType: ZetaCommsButtonType.off,
                     toggledLabel: 'On Hold',
                   ),
-                  ZetaCommsButton(
+                  ZetaCommsButton.hold(
                     label: 'Hold Call',
                     size: ZetaWidgetSize.small,
-                    type: ZetaCommsButtonType.on,
-                    icon: ZetaIcons.pause,
-                    onToggle: () {
+                    onToggle: (isToggled) {
                       print('Toggled');
+                      print(isToggled);
                     },
-                    toggledIcon: ZetaIcons.pause,
-                    toggledType: ZetaCommsButtonType.off,
                     toggledLabel: 'On Hold',
                   ),
                 ].gap(Zeta.of(context).spacing.large),
               ),
               Column(
                 children: [
-                  ZetaCommsButton(
+                  ZetaCommsButton.speaker(
                     label: 'Speaker On',
                     size: ZetaWidgetSize.large,
-                    type: ZetaCommsButtonType.on,
-                    icon: ZetaIcons.volume_up,
-                    onToggle: () {
+                    onToggle: (isToggled) {
                       print('Toggled');
+                      print(isToggled);
                     },
-                    toggledIcon: ZetaIcons.volume_off,
-                    toggledType: ZetaCommsButtonType.off,
                     toggledLabel: 'Speaker Off',
                   ),
-                  ZetaCommsButton(
+                  ZetaCommsButton.speaker(
                     label: 'Speaker On',
                     size: ZetaWidgetSize.medium,
-                    type: ZetaCommsButtonType.on,
-                    icon: ZetaIcons.volume_up,
-                    onToggle: () {
+                    onToggle: (isToggled) {
                       print('Toggled');
+                      print(isToggled);
                     },
-                    toggledIcon: ZetaIcons.volume_off,
-                    toggledType: ZetaCommsButtonType.off,
                     toggledLabel: 'Speaker Off',
                   ),
-                  ZetaCommsButton(
+                  ZetaCommsButton.speaker(
                     label: 'Speaker On',
                     size: ZetaWidgetSize.small,
-                    type: ZetaCommsButtonType.on,
-                    icon: ZetaIcons.volume_up,
-                    onToggle: () {
+                    onToggle: (isToggled) {
                       print('Toggled');
+                      print(isToggled);
                     },
-                    toggledIcon: ZetaIcons.volume_off,
-                    toggledType: ZetaCommsButtonType.off,
                     toggledLabel: 'Speaker Off',
                   ),
                 ].gap(Zeta.of(context).spacing.large),
               ),
               Column(
                 children: [
-                  ZetaCommsButton(
+                  ZetaCommsButton.record(
                     label: 'Record',
                     size: ZetaWidgetSize.large,
-                    type: ZetaCommsButtonType.on,
-                    icon: ZetaIcons.recording,
-                    onToggle: () {
+                    onToggle: (isToggled) {
                       print('Toggled');
+                      print(isToggled);
                     },
-                    toggledIcon: ZetaIcons.stop,
-                    toggledType: ZetaCommsButtonType.off,
                     toggledLabel: 'Stop',
                   ),
-                  ZetaCommsButton(
+                  ZetaCommsButton.record(
                     label: 'Record',
                     size: ZetaWidgetSize.medium,
-                    type: ZetaCommsButtonType.on,
-                    icon: ZetaIcons.recording,
-                    onToggle: () {
+                    onToggle: (isToggled) {
                       print('Toggled');
+                      print(isToggled);
                     },
-                    toggledIcon: ZetaIcons.stop,
-                    toggledType: ZetaCommsButtonType.off,
                     toggledLabel: 'Stop',
                   ),
-                  ZetaCommsButton(
+                  ZetaCommsButton.record(
                     label: 'Record',
                     size: ZetaWidgetSize.small,
-                    type: ZetaCommsButtonType.on,
-                    icon: ZetaIcons.recording,
-                    onToggle: () {
+                    onToggle: (isToggled) {
                       print('Toggled');
+                      print(isToggled);
                     },
-                    toggledIcon: ZetaIcons.stop,
-                    toggledType: ZetaCommsButtonType.off,
                     toggledLabel: 'Stop',
                   ),
                 ].gap(Zeta.of(context).spacing.large),
               ),
               Column(
                 children: [
-                  ZetaCommsButton(
+                  ZetaCommsButton.add(
                     label: 'Add',
                     size: ZetaWidgetSize.large,
-                    type: ZetaCommsButtonType.on,
-                    icon: ZetaIcons.add_group_sharp,
                   ),
-                  ZetaCommsButton(
+                  ZetaCommsButton.add(
                     label: 'Add',
                     size: ZetaWidgetSize.medium,
-                    type: ZetaCommsButtonType.on,
-                    icon: ZetaIcons.add_group_sharp,
                   ),
-                  ZetaCommsButton(
+                  ZetaCommsButton.add(
                     label: 'Add',
                     size: ZetaWidgetSize.small,
-                    type: ZetaCommsButtonType.on,
-                    icon: ZetaIcons.add_group_sharp,
                   ),
                 ].gap(Zeta.of(context).spacing.large),
               ),
               Column(
                 children: [
-                  ZetaCommsButton(
+                  ZetaCommsButton.security(
                     label: 'Security',
                     size: ZetaWidgetSize.large,
-                    type: ZetaCommsButtonType.security,
-                    icon: ZetaIcons.alert_active,
-                    onPressed: () {
-                      print('Pressed');
-                    },
                   ),
-                  ZetaCommsButton(
+                  ZetaCommsButton.security(
                     label: 'Security',
                     size: ZetaWidgetSize.medium,
-                    type: ZetaCommsButtonType.security,
-                    icon: ZetaIcons.alert_active,
                   ),
-                  ZetaCommsButton(
+                  ZetaCommsButton.security(
                     label: 'Security',
                     size: ZetaWidgetSize.small,
-                    type: ZetaCommsButtonType.security,
-                    icon: ZetaIcons.alert_active,
                   ),
                 ].gap(Zeta.of(context).spacing.large),
               ),

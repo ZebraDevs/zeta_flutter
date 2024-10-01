@@ -6,10 +6,10 @@ import '../../../zeta_flutter.dart';
 /// Enum for the type of comms button.
 enum ZetaCommsButtonType {
   /// Green background, no border, white icon
-  answer,
+  positive,
 
   /// Red background, no border, white icon
-  reject,
+  negative,
 
   /// Light grey background, dark grey border, black icon
   on,
@@ -18,7 +18,7 @@ enum ZetaCommsButtonType {
   off,
 
   /// Transparent background, red border, red icon
-  security,
+  warning,
 }
 
 /// Comms button component.
@@ -27,7 +27,7 @@ enum ZetaCommsButtonType {
 ///
 /// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=20816-7765&node-type=canvas&t=nc1YR061CeZRr6IJ-0
 ///
-/// Widgetbook:
+/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/comms-button
 class ZetaCommsButton extends StatefulWidget {
   /// Constructs [ZetaCommsButton]
   const ZetaCommsButton({
@@ -45,47 +45,197 @@ class ZetaCommsButton extends StatefulWidget {
     this.semanticLabel,
   });
 
-  /// Button label
+  /// Constructs answer call [ZetaCommsButton]
+  const ZetaCommsButton.answer({
+    super.key,
+    this.label,
+    this.size = ZetaWidgetSize.medium,
+    this.onToggle,
+    this.toggledIcon,
+    this.toggledLabel,
+    this.toggledType,
+    this.onPressed,
+    this.focusNode,
+    this.semanticLabel,
+  })  : type = ZetaCommsButtonType.positive,
+        icon = ZetaIcons.phone;
+
+  /// Constructs reject call [ZetaCommsButton]
+  const ZetaCommsButton.reject({
+    super.key,
+    this.label,
+    this.size = ZetaWidgetSize.medium,
+    this.onToggle,
+    this.toggledIcon,
+    this.toggledLabel,
+    this.toggledType,
+    this.onPressed,
+    this.focusNode,
+    this.semanticLabel,
+  })  : type = ZetaCommsButtonType.negative,
+        icon = ZetaIcons.end_call;
+
+  /// Constructs mute [ZetaCommsButton]
+  const ZetaCommsButton.mute({
+    super.key,
+    this.label,
+    this.size = ZetaWidgetSize.medium,
+    this.onToggle,
+    this.toggledLabel,
+    this.onPressed,
+    this.focusNode,
+    this.semanticLabel,
+  })  : type = ZetaCommsButtonType.on,
+        icon = ZetaIcons.microphone,
+        toggledIcon = ZetaIcons.microphone_off,
+        toggledType = ZetaCommsButtonType.off;
+
+  /// Constructs video [ZetaCommsButton]
+  const ZetaCommsButton.video({
+    super.key,
+    this.label,
+    this.size = ZetaWidgetSize.medium,
+    this.onToggle,
+    this.toggledLabel,
+    this.onPressed,
+    this.focusNode,
+    this.semanticLabel,
+  })  : type = ZetaCommsButtonType.on,
+        icon = ZetaIcons.video,
+        toggledIcon = ZetaIcons.video_off,
+        toggledType = ZetaCommsButtonType.off;
+
+  /// Constructs transfer [ZetaCommsButton]
+  const ZetaCommsButton.transfer({
+    super.key,
+    this.label,
+    this.size = ZetaWidgetSize.medium,
+    this.onToggle,
+    this.toggledIcon,
+    this.toggledLabel,
+    this.toggledType,
+    this.onPressed,
+    this.focusNode,
+    this.semanticLabel,
+  })  : type = ZetaCommsButtonType.on,
+        icon = ZetaIcons.forward;
+
+  /// Constructs hold [ZetaCommsButton]
+  const ZetaCommsButton.hold({
+    super.key,
+    this.label,
+    this.size = ZetaWidgetSize.medium,
+    this.onToggle,
+    this.toggledLabel,
+    this.onPressed,
+    this.focusNode,
+    this.semanticLabel,
+  })  : type = ZetaCommsButtonType.on,
+        icon = ZetaIcons.pause,
+        toggledIcon = ZetaIcons.pause,
+        toggledType = ZetaCommsButtonType.off;
+
+  /// Constructs speaker [ZetaCommsButton]
+  const ZetaCommsButton.speaker({
+    super.key,
+    this.label,
+    this.size = ZetaWidgetSize.medium,
+    this.onToggle,
+    this.toggledLabel,
+    this.onPressed,
+    this.focusNode,
+    this.semanticLabel,
+  })  : type = ZetaCommsButtonType.on,
+        icon = ZetaIcons.volume_up,
+        toggledIcon = ZetaIcons.volume_off,
+        toggledType = ZetaCommsButtonType.off;
+
+  /// Constructs record [ZetaCommsButton]
+  const ZetaCommsButton.record({
+    super.key,
+    this.label,
+    this.size = ZetaWidgetSize.medium,
+    this.onToggle,
+    this.toggledLabel,
+    this.onPressed,
+    this.focusNode,
+    this.semanticLabel,
+  })  : type = ZetaCommsButtonType.on,
+        icon = ZetaIcons.recording,
+        toggledIcon = ZetaIcons.stop,
+        toggledType = ZetaCommsButtonType.off;
+
+  /// Constructs add [ZetaCommsButton]
+  const ZetaCommsButton.add({
+    super.key,
+    this.label,
+    this.size = ZetaWidgetSize.medium,
+    this.onToggle,
+    this.toggledIcon,
+    this.toggledLabel,
+    this.toggledType,
+    this.onPressed,
+    this.focusNode,
+    this.semanticLabel,
+  })  : type = ZetaCommsButtonType.on,
+        icon = ZetaIcons.add_group;
+
+  /// Constructs security [ZetaCommsButton]
+  const ZetaCommsButton.security({
+    super.key,
+    this.label,
+    this.size = ZetaWidgetSize.medium,
+    this.onToggle,
+    this.toggledIcon,
+    this.toggledLabel,
+    this.toggledType,
+    this.onPressed,
+    this.focusNode,
+    this.semanticLabel,
+  })  : type = ZetaCommsButtonType.warning,
+        icon = ZetaIcons.alert_active;
+
+  /// Comms button label
   final String? label;
 
-  /// Called when the button is toggled.
-  /// If null, the button will not be toggleable.
-  final VoidCallback? onToggle;
+  /// Called when the comms button is toggled.
+  /// If null, the comms button will not be toggleable.
+  final ValueChanged<bool>? onToggle;
 
-  /// Icon to display when the button is toggled.
+  /// Icon to display when the comms button is toggled.
   final IconData? toggledIcon;
 
-  /// Label to display when the button is toggled.
+  /// Label to display when the comms button is toggled.
   /// If null, the [label] will be used instead.
-  /// If both [label] and [toggledLabel] are null, the button will not display a label.
+  /// If both [label] and [toggledLabel] are null, the comms button will not display a label.
   final String? toggledLabel;
 
-  /// The coloring type of the button when toggled.
+  /// The coloring type of the comms button when toggled.
   /// Defaults to [ZetaCommsButtonType.on].
   final ZetaCommsButtonType? toggledType;
 
-  /// Called when the button is tapped or otherwise activated.
+  /// Called when the comms button is tapped or otherwise activated.
   ///
   /// {@macro zeta-widget-change-disable}
   final VoidCallback? onPressed;
 
-  /// The coloring type of the button
+  /// The coloring type of the comms button
   final ZetaCommsButtonType type;
 
-  /// Size of the button. Defaults to large.
+  /// Size of the comms button. Defaults to [ZetaWidgetSize.medium].
   final ZetaWidgetSize size;
 
-  /// Leading icon of button. Goes in front of button.
+  /// Icon of comms button. Goes in centre of button.
   final IconData? icon;
 
   /// {@macro flutter.widgets.Focus.focusNode}
   final FocusNode? focusNode;
 
-  /// The semantic label of the button.
+  /// The semantic label of the comms button.
   ///
   /// {@macro zeta-widget-semantic-label}
   ///
-  /// If this property is null, [label] will be used instead.
+  /// If this property is null, [label] or [toggledLabel] will be used instead.
   final String? semanticLabel;
 
   @override
@@ -97,7 +247,7 @@ class ZetaCommsButton extends StatefulWidget {
     properties
       ..add(StringProperty('label', label))
       ..add(ObjectFlagProperty<VoidCallback?>.has('onPressed', onPressed))
-      ..add(ObjectFlagProperty<VoidCallback?>.has('onToggle', onToggle))
+      ..add(ObjectFlagProperty<ValueChanged<bool>?>.has('onToggle', onToggle))
       ..add(ObjectFlagProperty<IconData?>.has('toggledIcon', toggledIcon))
       ..add(StringProperty('toggledLabel', toggledLabel))
       ..add(EnumProperty<ZetaCommsButtonType>('type', type))
@@ -129,14 +279,13 @@ class _ZetaCommsButtonState extends State<ZetaCommsButton> {
 
     return Semantics(
       button: true,
-      label: widget.semanticLabel ?? widget.label,
-      value: widget.semanticLabel ?? widget.label,
+      label: widget.semanticLabel ?? (isToggled ? widget.toggledLabel : widget.label),
       toggled: isToggled,
+      excludeSemantics: true,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           IconButton.filled(
-            tooltip: widget.label ?? widget.semanticLabel,
             constraints: BoxConstraints(
               minWidth: _minConstraints(context),
               minHeight: _minConstraints(context),
@@ -144,7 +293,7 @@ class _ZetaCommsButtonState extends State<ZetaCommsButton> {
             iconSize: iconSize,
             onPressed: () {
               if (widget.onToggle != null) {
-                widget.onToggle!();
+                widget.onToggle!(isToggled);
                 setState(() {
                   isToggled = !isToggled;
                   if (widget.toggledType != null) {
@@ -155,12 +304,13 @@ class _ZetaCommsButtonState extends State<ZetaCommsButton> {
                   }
                 });
               }
-              if (widget.onPressed != null) {
-                widget.onPressed?.call();
-              }
+              widget.onPressed?.call();
             },
             isSelected: isToggled,
-            icon: Icon(widget.icon),
+            icon: Icon(
+              widget.icon,
+              semanticLabel: isToggled ? widget.toggledLabel : widget.label,
+            ),
             selectedIcon: Icon(widget.toggledIcon),
             style: ButtonStyle(
               iconColor: WidgetStateProperty.all(iconColor),
@@ -184,47 +334,51 @@ class _ZetaCommsButtonState extends State<ZetaCommsButton> {
     );
   }
 
+  /// Gets the border color based on the type
   Color _borderColor(BuildContext context, ZetaCommsButtonType type) {
     switch (type) {
-      case ZetaCommsButtonType.answer:
-      case ZetaCommsButtonType.reject:
+      case ZetaCommsButtonType.positive:
+      case ZetaCommsButtonType.negative:
         return Colors.transparent;
       case ZetaCommsButtonType.off:
       case ZetaCommsButtonType.on:
         return Zeta.of(context).colors.borderSubtle;
-      case ZetaCommsButtonType.security:
+      case ZetaCommsButtonType.warning:
         return Zeta.of(context).colors.surfaceNegative;
     }
   }
 
+  /// Gets the background color based on the type
   Color _backgroundColor(BuildContext context, ZetaCommsButtonType type) {
     switch (type) {
-      case ZetaCommsButtonType.answer:
+      case ZetaCommsButtonType.positive:
         return Zeta.of(context).colors.surfacePositive;
-      case ZetaCommsButtonType.reject:
+      case ZetaCommsButtonType.negative:
         return Zeta.of(context).colors.surfaceNegative;
       case ZetaCommsButtonType.off:
         return Zeta.of(context).colors.textDefault;
       case ZetaCommsButtonType.on:
         return Zeta.of(context).colors.textInverse;
-      case ZetaCommsButtonType.security:
+      case ZetaCommsButtonType.warning:
         return Colors.transparent;
     }
   }
 
+  /// Gets the icon color based on the type
   Color _iconColor(BuildContext context, ZetaCommsButtonType type) {
     switch (type) {
-      case ZetaCommsButtonType.answer:
-      case ZetaCommsButtonType.reject:
+      case ZetaCommsButtonType.positive:
+      case ZetaCommsButtonType.negative:
       case ZetaCommsButtonType.off:
         return Zeta.of(context).colors.iconInverse;
       case ZetaCommsButtonType.on:
         return Zeta.of(context).colors.iconDefault;
-      case ZetaCommsButtonType.security:
+      case ZetaCommsButtonType.warning:
         return Zeta.of(context).colors.surfaceNegative;
     }
   }
 
+  /// Gets the label size
   TextStyle? _labelSize(BuildContext context) {
     switch (widget.size) {
       case ZetaWidgetSize.small:
@@ -235,6 +389,7 @@ class _ZetaCommsButtonState extends State<ZetaCommsButton> {
     }
   }
 
+  /// Gets the icon size
   double _iconSize(BuildContext context) {
     switch (widget.size) {
       case ZetaWidgetSize.small:
@@ -246,14 +401,13 @@ class _ZetaCommsButtonState extends State<ZetaCommsButton> {
     }
   }
 
+  /// Gets the minimum constraints to set the size of the button
   double _minConstraints(BuildContext context) {
     switch (widget.size) {
       case ZetaWidgetSize.large:
         return Zeta.of(context).spacing.xl_10;
-
       case ZetaWidgetSize.medium:
         return Zeta.of(context).spacing.xl_9;
-
       case ZetaWidgetSize.small:
         return Zeta.of(context).spacing.xl_7;
     }

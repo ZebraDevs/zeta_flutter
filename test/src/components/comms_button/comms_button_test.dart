@@ -17,7 +17,7 @@ void main() {
     testWidgets('Initializes with correct label', (WidgetTester tester) async {
       await tester.pumpWidget(
         const TestApp(
-          home: ZetaCommsButton(label: 'Label', icon: ZetaIcons.phone, type: ZetaCommsButtonType.answer),
+          home: ZetaCommsButton(label: 'Label', icon: ZetaIcons.phone, type: ZetaCommsButtonType.positive),
         ),
       );
 
@@ -32,7 +32,7 @@ void main() {
     testWidgets('Initializes with correct icon', (WidgetTester tester) async {
       await tester.pumpWidget(
         const TestApp(
-          home: ZetaCommsButton(label: 'Label', icon: ZetaIcons.phone, type: ZetaCommsButtonType.answer),
+          home: ZetaCommsButton(label: 'Label', icon: ZetaIcons.phone, type: ZetaCommsButtonType.positive),
         ),
       );
 
@@ -42,7 +42,7 @@ void main() {
     testWidgets('Initializes with correct type', (WidgetTester tester) async {
       await tester.pumpWidget(
         const TestApp(
-          home: ZetaCommsButton(label: 'Label', icon: ZetaIcons.phone, type: ZetaCommsButtonType.answer),
+          home: ZetaCommsButton(label: 'Label', icon: ZetaIcons.phone, type: ZetaCommsButtonType.positive),
         ),
       );
 
@@ -55,18 +55,18 @@ void main() {
           home: ZetaCommsButton(
             label: 'Label',
             icon: ZetaIcons.phone,
-            type: ZetaCommsButtonType.answer,
+            type: ZetaCommsButtonType.positive,
             toggledLabel: 'Toggled Label',
             toggledIcon: ZetaIcons.end_call,
-            toggledType: ZetaCommsButtonType.reject,
-            onToggle: () {},
+            toggledType: ZetaCommsButtonType.negative,
+            onToggle: (isToggled) {},
           ),
         ),
       );
 
       expect(find.text('Label'), findsOneWidget);
       expect(find.widgetWithIcon(ZetaCommsButton, ZetaIcons.phone), findsOneWidget);
-      expect(tester.widget<ZetaCommsButton>(find.byType(ZetaCommsButton)).type, ZetaCommsButtonType.answer);
+      expect(tester.widget<ZetaCommsButton>(find.byType(ZetaCommsButton)).type, ZetaCommsButtonType.positive);
       var iconButton = tester.widget<IconButton>(find.byType(IconButton));
       final context = tester.element(find.byType(ZetaCommsButton));
       expect(iconButton.style?.backgroundColor?.resolve({}), Zeta.of(context).colors.surfacePositive);
@@ -76,7 +76,7 @@ void main() {
 
       expect(find.text('Toggled Label'), findsOneWidget);
       expect(find.widgetWithIcon(ZetaCommsButton, ZetaIcons.end_call), findsOneWidget);
-      expect(tester.widget<ZetaCommsButton>(find.byType(ZetaCommsButton)).toggledType, ZetaCommsButtonType.reject);
+      expect(tester.widget<ZetaCommsButton>(find.byType(ZetaCommsButton)).toggledType, ZetaCommsButtonType.negative);
       iconButton = tester.widget<IconButton>(find.byType(IconButton));
       expect(iconButton.style?.backgroundColor?.resolve({}), Zeta.of(context).colors.surfaceNegative);
     });
@@ -87,17 +87,17 @@ void main() {
           home: ZetaCommsButton(
             label: 'Label',
             icon: ZetaIcons.phone,
-            type: ZetaCommsButtonType.answer,
+            type: ZetaCommsButtonType.positive,
             toggledLabel: 'Toggled Label',
             toggledIcon: ZetaIcons.end_call,
-            toggledType: ZetaCommsButtonType.reject,
+            toggledType: ZetaCommsButtonType.negative,
           ),
         ),
       );
 
       expect(find.text('Label'), findsOneWidget);
       expect(find.widgetWithIcon(ZetaCommsButton, ZetaIcons.phone), findsOneWidget);
-      expect(tester.widget<ZetaCommsButton>(find.byType(ZetaCommsButton)).type, ZetaCommsButtonType.answer);
+      expect(tester.widget<ZetaCommsButton>(find.byType(ZetaCommsButton)).type, ZetaCommsButtonType.positive);
       var iconButton = tester.widget<IconButton>(find.byType(IconButton));
       final context = tester.element(find.byType(ZetaCommsButton));
       expect(iconButton.style?.backgroundColor?.resolve({}), Zeta.of(context).colors.surfacePositive);
@@ -107,7 +107,7 @@ void main() {
 
       expect(find.text('Label'), findsOneWidget);
       expect(find.widgetWithIcon(ZetaCommsButton, ZetaIcons.phone), findsOneWidget);
-      expect(tester.widget<ZetaCommsButton>(find.byType(ZetaCommsButton)).type, ZetaCommsButtonType.answer);
+      expect(tester.widget<ZetaCommsButton>(find.byType(ZetaCommsButton)).type, ZetaCommsButtonType.positive);
       iconButton = tester.widget<IconButton>(find.byType(IconButton));
       expect(iconButton.style?.backgroundColor?.resolve({}), Zeta.of(context).colors.surfacePositive);
     });
@@ -120,7 +120,7 @@ void main() {
           home: ZetaCommsButton(
             label: 'Label',
             icon: ZetaIcons.phone,
-            type: ZetaCommsButtonType.answer,
+            type: ZetaCommsButtonType.positive,
             onPressed: () {
               pressed = true;
             },
@@ -139,7 +139,7 @@ void main() {
       const ZetaCommsButton(
         label: 'Label',
         icon: ZetaIcons.phone,
-        type: ZetaCommsButtonType.answer,
+        type: ZetaCommsButtonType.positive,
       ).debugFillProperties(diagnostic);
 
       expect(diagnostic.finder('label'), '"Label"');
@@ -163,7 +163,7 @@ void main() {
             label: 'Label',
             semanticLabel: 'Phone',
             icon: ZetaIcons.phone,
-            type: ZetaCommsButtonType.answer,
+            type: ZetaCommsButtonType.positive,
           ),
         ),
       );
@@ -183,11 +183,11 @@ void main() {
             label: 'Label',
             semanticLabel: 'Phone',
             icon: ZetaIcons.phone,
-            type: ZetaCommsButtonType.answer,
+            type: ZetaCommsButtonType.positive,
             toggledLabel: 'Toggled Label',
             toggledIcon: ZetaIcons.end_call,
-            toggledType: ZetaCommsButtonType.reject,
-            onToggle: () {},
+            toggledType: ZetaCommsButtonType.negative,
+            onToggle: (isToggled) {},
           ),
         ),
       );
