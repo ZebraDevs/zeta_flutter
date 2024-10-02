@@ -150,7 +150,7 @@ void main() {
       expect(diagnostic.finder('toggleType'), null);
       expect(diagnostic.finder('focusNode'), 'null');
       expect(diagnostic.finder('semanticLabel'), 'null');
-      expect(diagnostic.finder('type'), 'answer');
+      expect(diagnostic.finder('type'), 'positive');
       expect(diagnostic.finder('size'), 'medium');
       expect(diagnostic.finder('icon'), 'IconData(U+0E16B)');
     });

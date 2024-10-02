@@ -17,12 +17,17 @@ enum ZetaCommsButtonType {
   /// Dark grey background, light grey border, white icon
   off,
 
-  /// Transparent background, red border, red icon
+  /// White background, red border, red icon
   warning,
 }
 
 /// Comms button component.
 /// This component is used to display a button for communication action. Answer, reject, mute, hold, speaker, etc.
+///
+/// Use the constructors to create preconfigured comms buttons.
+///
+/// `ZetaCommsButton.answer()`, `ZetaCommsButton.reject()`, `ZetaCommsButton.mute()`,
+/// `ZetaCommsButton.hold()`, `ZetaCommsButton.speaker()`, `ZetaCommsButton.record()`, etc.
 /// {@category Components}
 ///
 /// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=20816-7765&node-type=canvas&t=nc1YR061CeZRr6IJ-0
@@ -50,30 +55,30 @@ class ZetaCommsButton extends StatefulWidget {
     super.key,
     this.label,
     this.size = ZetaWidgetSize.medium,
-    this.onToggle,
-    this.toggledIcon,
-    this.toggledLabel,
-    this.toggledType,
     this.onPressed,
     this.focusNode,
     this.semanticLabel,
   })  : type = ZetaCommsButtonType.positive,
-        icon = ZetaIcons.phone;
+        icon = ZetaIcons.phone,
+        onToggle = null,
+        toggledIcon = null,
+        toggledLabel = null,
+        toggledType = null;
 
   /// Constructs reject call [ZetaCommsButton]
   const ZetaCommsButton.reject({
     super.key,
     this.label,
     this.size = ZetaWidgetSize.medium,
-    this.onToggle,
-    this.toggledIcon,
-    this.toggledLabel,
-    this.toggledType,
     this.onPressed,
     this.focusNode,
     this.semanticLabel,
   })  : type = ZetaCommsButtonType.negative,
-        icon = ZetaIcons.end_call;
+        icon = ZetaIcons.end_call,
+        onToggle = null,
+        toggledIcon = null,
+        toggledLabel = null,
+        toggledType = null;
 
   /// Constructs mute [ZetaCommsButton]
   const ZetaCommsButton.mute({
@@ -110,15 +115,15 @@ class ZetaCommsButton extends StatefulWidget {
     super.key,
     this.label,
     this.size = ZetaWidgetSize.medium,
-    this.onToggle,
-    this.toggledIcon,
-    this.toggledLabel,
-    this.toggledType,
     this.onPressed,
     this.focusNode,
     this.semanticLabel,
   })  : type = ZetaCommsButtonType.on,
-        icon = ZetaIcons.forward;
+        icon = ZetaIcons.forward,
+        onToggle = null,
+        toggledIcon = null,
+        toggledLabel = null,
+        toggledType = null;
 
   /// Constructs hold [ZetaCommsButton]
   const ZetaCommsButton.hold({
@@ -170,30 +175,30 @@ class ZetaCommsButton extends StatefulWidget {
     super.key,
     this.label,
     this.size = ZetaWidgetSize.medium,
-    this.onToggle,
-    this.toggledIcon,
-    this.toggledLabel,
-    this.toggledType,
     this.onPressed,
     this.focusNode,
     this.semanticLabel,
   })  : type = ZetaCommsButtonType.on,
-        icon = ZetaIcons.add_group;
+        icon = ZetaIcons.add_group,
+        onToggle = null,
+        toggledIcon = null,
+        toggledLabel = null,
+        toggledType = null;
 
   /// Constructs security [ZetaCommsButton]
   const ZetaCommsButton.security({
     super.key,
     this.label,
     this.size = ZetaWidgetSize.medium,
-    this.onToggle,
-    this.toggledIcon,
-    this.toggledLabel,
-    this.toggledType,
     this.onPressed,
     this.focusNode,
     this.semanticLabel,
   })  : type = ZetaCommsButtonType.warning,
-        icon = ZetaIcons.alert_active;
+        icon = ZetaIcons.alert_active,
+        onToggle = null,
+        toggledIcon = null,
+        toggledLabel = null,
+        toggledType = null;
 
   /// Comms button label
   final String? label;
@@ -339,7 +344,7 @@ class _ZetaCommsButtonState extends State<ZetaCommsButton> {
     switch (type) {
       case ZetaCommsButtonType.positive:
       case ZetaCommsButtonType.negative:
-        return Colors.transparent;
+        return Zeta.of(context).colors.surfaceDefault;
       case ZetaCommsButtonType.off:
       case ZetaCommsButtonType.on:
         return Zeta.of(context).colors.borderSubtle;
@@ -360,7 +365,7 @@ class _ZetaCommsButtonState extends State<ZetaCommsButton> {
       case ZetaCommsButtonType.on:
         return Zeta.of(context).colors.textInverse;
       case ZetaCommsButtonType.warning:
-        return Colors.transparent;
+        return Zeta.of(context).colors.surfaceDefault;
     }
   }
 
