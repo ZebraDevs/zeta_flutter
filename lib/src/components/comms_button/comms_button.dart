@@ -5,19 +5,19 @@ import '../../../zeta_flutter.dart';
 
 /// Enum for the type of comms button.
 enum ZetaCommsButtonType {
-  /// Green background, no border, white icon
+  /// Green background, no border, white icon.
   positive,
 
-  /// Red background, no border, white icon
+  /// Red background, no border, white icon.
   negative,
 
-  /// Light grey background, dark grey border, black icon
+  /// Light grey background, dark grey border, black icon.
   on,
 
-  /// Dark grey background, light grey border, white icon
+  /// Dark grey background, light grey border, white icon.
   off,
 
-  /// White background, red border, red icon
+  /// White background, red border, red icon.
   warning,
 }
 
