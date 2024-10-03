@@ -188,7 +188,8 @@ class ZetaAvatar extends ZetaStatelessWidget {
         (initials != null
             ? Center(
                 child: Text(
-                  size == ZetaAvatarSize.xs ? initials!.substring(0, 1) : initials!,
+                  size == ZetaAvatarSize.xs ? initials!.substring(0, 1) : initials!, //TODO DE: Luke is this correct?
+                  // initials!,
                   style: initialTextStyle ??
                       TextStyle(
                         fontSize: size.fontSize(context),
@@ -288,11 +289,11 @@ class ZetaAvatar extends ZetaStatelessWidget {
       ..add(StringProperty('semanticLowerBadgeValue', semanticLowerBadgeLabel))
       ..add(DiagnosticsProperty<TextStyle>('initialTextStyle', initialTextStyle));
   }
-}
 
-extension on ZetaAvatarSize {
-  double pixelSize(BuildContext context) {
-    switch (this) {
+  //TODO BK butchered this to make pixelSize reusable. Mike, is this ok?
+  ///
+  static double pixelSize(BuildContext context, ZetaAvatarSize size) {
+    switch (size) {
       case ZetaAvatarSize.xxxl:
         return Zeta.of(context).spacing.minimum * 50; // TODO(UX-1202): ZetaSpacingBase
       // return ZetaSpacingBase.x50;
@@ -316,6 +317,17 @@ extension on ZetaAvatarSize {
     }
   }
 
+  static double fontSize(BuildContext context, ZetaAvatarSize size) {
+    return pixelSize(context, size) * 4 / 9;
+  }
+}
+
+extension on ZetaAvatarSize {
+  double pixelSize(BuildContext context) {
+    //TODO BK butchered this to make pixelSize reusable. Mike, is this ok?
+    return ZetaAvatar.pixelSize(context, this);
+  }
+
   double borderSize(BuildContext context) {
     switch (this) {
       case ZetaAvatarSize.xxxl:
@@ -335,7 +347,7 @@ extension on ZetaAvatarSize {
   }
 
   double fontSize(BuildContext context) {
-    return pixelSize(context) * 4 / 9;
+    return ZetaAvatar.fontSize(context, this);
   }
 }
 
