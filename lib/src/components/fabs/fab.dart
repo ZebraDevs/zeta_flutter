@@ -177,7 +177,7 @@ class _ZetaFABState extends State<ZetaFAB> {
         if (!widget.expanded && widget.label != null)
           Container(
             margin: EdgeInsets.only(top: Zeta.of(context).spacing.minimum),
-            width: 100, // TODO DE: Is there a better way to do this?
+            width: 100, // TODODE: Is there a better way to do this?
             alignment: Alignment.center,
             child: Text(
               widget.label!,
