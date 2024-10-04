@@ -58,6 +58,7 @@ class ZetaMenuItem extends ZetaStatelessWidget {
   /// What to do when [ZetaMenuItem] is pressed.
   final VoidCallback? onTap;
 
+  // TODO DE: Should this label be text or widget? If its a string then we can add a semantic label to the root of the widget. If its a widget then the user has to add the semantic label to the widget.
   /// The label of the [ZetaMenuItem].
   final Widget label;
 
