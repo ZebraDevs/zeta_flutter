@@ -15,6 +15,32 @@ void main() {
     goldenFileComparator = TolerantComparator(goldenFile.uri);
   });
 
+  testWidgets('ZetaAvatar meets accessibility  requirements', (WidgetTester tester) async {
+    final SemanticsHandle handle = tester.ensureSemantics();
+    await tester.pumpWidget(
+      const TestApp(
+        home: ZetaAvatar.initials(
+          initials: 'AB',
+          backgroundColor: Colors.black,
+          borderColor: Colors.white,
+          lowerBadge: ZetaAvatarBadge(
+            icon: Icons.abc,
+          ),
+          upperBadge: ZetaAvatarBadge(
+            icon: Icons.abc,
+          ),
+          size: ZetaAvatarSize.l,
+        ),
+      ),
+    );
+    await expectLater(tester, meetsGuideline(androidTapTargetGuideline));
+    await expectLater(tester, meetsGuideline(iOSTapTargetGuideline));
+    await expectLater(tester, meetsGuideline(labeledTapTargetGuideline));
+    await expectLater(tester, meetsGuideline(textContrastGuideline));
+
+    handle.dispose();
+  });
+
   group('ZetaAvatar Colour Tests', () {
     testWidgets('ZetaAvatar default background colour', (WidgetTester tester) async {
       await tester.pumpWidget(
@@ -179,6 +205,39 @@ void main() {
   });
 
   group('ZetaAvatar Text Tests', () {
+    const names = [
+      'John Doe',
+      'Jane Doe',
+      'John Jim Smith',
+      'Jane Lane Smith',
+      'Emily Bukowsik Johnson',
+      'Michael John Brad Brown',
+      'Emma Amy Davis',
+      'William Charlie Wilson',
+      'Olivia Johnston',
+      'James Oliver',
+      'Isabella Smith',
+    ];
+
+    // TODO DE: Should the initials be the first letter of the first name and the last name or the second name?
+    // Or how do we localize this? Should we have a parameter for it?
+    for (final name in names) {
+      testWidgets('ZetaAvatar intiatls show the first letter of the first name and the last name $name',
+          (WidgetTester tester) async {
+        final nameParts = name.split(' ');
+        final initials = nameParts[0][0].toUpperCase() + nameParts[nameParts.length - 1][0].toUpperCase();
+        await tester.pumpWidget(
+          TestApp(
+            home: ZetaAvatar.fromName(
+              name: name,
+            ),
+          ),
+        );
+
+        expect(find.text(initials), findsOneWidget);
+      });
+    }
+
     for (final size in ZetaAvatarSize.values) {
       testWidgets('ZetaAvatar with initials $size text is correct', (WidgetTester tester) async {
         await tester.pumpWidget(
