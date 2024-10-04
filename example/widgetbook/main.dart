@@ -20,6 +20,7 @@ import 'pages/components/button_widgetbook.dart';
 import 'pages/components/chat_item_widgetbook.dart';
 import 'pages/components/checkbox_widgetbook.dart';
 import 'pages/components/chip_widgetbook.dart';
+import 'pages/components/comms_button_widgetbook.dart';
 import 'pages/components/contact_item_widgetbook.dart';
 import 'pages/components/date_input_widgetbook.dart';
 import 'pages/components/dial_pad_widgetbook.dart';
@@ -185,6 +186,7 @@ class _HotReloadState extends State<HotReload> {
             WidgetbookUseCase(name: 'Bottom Sheet', builder: (context) => bottomSheetContentUseCase(context)),
             WidgetbookUseCase(name: 'BreadCrumbs', builder: (context) => breadCrumbsUseCase(context)),
             WidgetbookUseCase(name: 'Checkbox', builder: (context) => checkboxUseCase(context)),
+            WidgetbookUseCase(name: 'Comms Button', builder: (context) => commsButtonUseCase(context)),
             WidgetbookUseCase(name: 'Date Input', builder: (context) => dateInputUseCase(context)),
             WidgetbookUseCase(name: 'Dial Pad', builder: (context) => dialPadUseCase(context)),
             WidgetbookUseCase(name: 'Dialog', builder: (context) => dialogUseCase(context)),
