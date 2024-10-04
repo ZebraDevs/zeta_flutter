@@ -423,9 +423,6 @@ class _ZetaCommsButtonState extends State<ZetaCommsButton> {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty<bool>('isToggled', isToggled))
-      // ..add(ColorProperty('iconColor', iconColor))
-      // ..add(ColorProperty('backgroundColor', backgroundColor))
-      // ..add(ColorProperty('borderColor', borderColor))
       ..add(EnumProperty<ZetaCommsButtonType>('type', type));
   }
 }
