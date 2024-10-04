@@ -265,11 +265,8 @@ class ZetaCommsButton extends StatefulWidget {
 }
 
 class _ZetaCommsButtonState extends State<ZetaCommsButton> {
-  bool isToggled = false;
   late ZetaCommsButtonType type;
-  late Color iconColor = _iconColor(context, type);
-  late Color backgroundColor = _backgroundColor(context, type);
-  late Color borderColor = _borderColor(context, type);
+  bool isToggled = false;
 
   @override
   void initState() {
@@ -279,6 +276,9 @@ class _ZetaCommsButtonState extends State<ZetaCommsButton> {
 
   @override
   Widget build(BuildContext context) {
+    Color iconColor = _iconColor(context, type);
+    Color backgroundColor = _backgroundColor(context, type);
+    Color borderColor = _borderColor(context, type);
     final iconSize = _iconSize(context);
     final labelSize = _labelSize(context);
 
@@ -423,9 +423,9 @@ class _ZetaCommsButtonState extends State<ZetaCommsButton> {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty<bool>('isToggled', isToggled))
-      ..add(ColorProperty('iconColor', iconColor))
-      ..add(ColorProperty('backgroundColor', backgroundColor))
-      ..add(ColorProperty('borderColor', borderColor))
+      // ..add(ColorProperty('iconColor', iconColor))
+      // ..add(ColorProperty('backgroundColor', backgroundColor))
+      // ..add(ColorProperty('borderColor', borderColor))
       ..add(EnumProperty<ZetaCommsButtonType>('type', type));
   }
 }
