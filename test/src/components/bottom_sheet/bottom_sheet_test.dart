@@ -14,25 +14,6 @@ void main() {
     goldenFileComparator = TolerantComparator(goldenFile.uri);
   });
   group('BottomSheet Colors Tests', () {
-    testWidgets(
-      'displays the correct title color',
-      (WidgetTester tester) async {
-        // TODO: color is not being set on the title
-        markTestSkipped('color is not being set on the title');
-        await tester.pumpWidget(
-          const TestApp(
-            home: ZetaBottomSheet(
-              title: 'Bottom Sheet',
-            ),
-          ),
-        );
-
-        final title = tester.widget<Text>(find.text('Bottom Sheet'));
-        expect(title.style!.color, equals(Zeta.of(tester.element(find.byType(ZetaBottomSheet))).colors.textDefault));
-      },
-      skip: true,
-    );
-
     testWidgets('displays the correct background color', (WidgetTester tester) async {
       await tester.pumpWidget(
         const TestApp(
@@ -117,7 +98,7 @@ void main() {
   });
 
   group('BottomSheet Text Tests', () {
-    testWidgets('displays the correct title', (WidgetTester tester) async {
+    testWidgets('displays the correct title with the correct styles', (WidgetTester tester) async {
       await tester.pumpWidget(
         const TestApp(
           home: ZetaBottomSheet(
@@ -127,9 +108,13 @@ void main() {
       );
 
       expect(find.text('Bottom Sheet'), findsOneWidget);
+
+      final title = tester.widget<Text>(find.text('Bottom Sheet'));
+      expect(title.style, equals(ZetaTextStyles.titleMedium));
     });
 
-    testWidgets('vertical menu items labels are correct', (WidgetTester tester) async {
+    testWidgets('vertical menu items labels are correct with the correct styles and colors',
+        (WidgetTester tester) async {
       await tester.pumpWidget(
         TestApp(
           home: ZetaBottomSheet(
@@ -150,10 +135,28 @@ void main() {
         ),
       );
 
-      expect(find.text('Menu Item'), findsNWidgets(6));
+      final textFinder = find.text('Menu Item');
+      expect(textFinder, findsNWidgets(6));
+      final textStyleFinder = find.byWidgetPredicate((widget) => widget is DefaultTextStyle);
+      final Iterable<DefaultTextStyle> texts = textStyleFinder.evaluate().map((e) => e.widget as DefaultTextStyle);
+
+      var i = 0;
+      for (final text in texts) {
+        if (i >= 3) {
+          expect(
+            text.style,
+            equals(
+              ZetaTextStyles.labelLarge
+                  .apply(color: Zeta.of(tester.element(find.byType(ZetaBottomSheet))).colors.textDefault),
+            ),
+          );
+        }
+        i++;
+      }
     });
 
-    testWidgets('horizontal menu items labels are correct', (WidgetTester tester) async {
+    testWidgets('horizontal menu items labels are correct with the correct styles and colors',
+        (WidgetTester tester) async {
       await tester.pumpWidget(
         TestApp(
           home: ZetaBottomSheet(
@@ -173,7 +176,24 @@ void main() {
         ),
       );
 
-      expect(find.text('Menu Item'), findsNWidgets(6));
+      final textFinder = find.text('Menu Item');
+      expect(textFinder, findsNWidgets(6));
+      final textStyleFinder = find.byWidgetPredicate((widget) => widget is DefaultTextStyle);
+      final Iterable<DefaultTextStyle> texts = textStyleFinder.evaluate().map((e) => e.widget as DefaultTextStyle);
+
+      var i = 0;
+      for (final text in texts) {
+        if (i >= 3) {
+          expect(
+            text.style,
+            equals(
+              ZetaTextStyles.labelLarge
+                  .apply(color: Zeta.of(tester.element(find.byType(ZetaBottomSheet))).colors.textDefault),
+            ),
+          );
+        }
+        i++;
+      }
     });
   });
 
@@ -342,35 +362,39 @@ void main() {
       skip: true,
     );
 
-    testWidgets('has semantic labels for horizontal menu items', (WidgetTester tester) async {
-      // TODO: This test is failing because the horizontal menu items have no semantic label.
-      markTestSkipped('This test is failing because the horizontal menu items have no semantic label');
-      await tester.pumpWidget(
-        TestApp(
-          home: ZetaBottomSheet(
-            title: 'Bottom Sheet',
-            body: Wrap(
-              spacing: 12,
-              runSpacing: 12,
-              children: List.generate(
-                6,
-                (index) => ZetaMenuItem.horizontal(
-                  label: const Text('Menu Item'),
-                  onTap: () {},
-                  leading: const ZetaIcon(ZetaIcons.star),
-                  trailing: const ZetaIcon(ZetaIcons.chevron_right),
+    testWidgets(
+      'has semantic labels for horizontal menu items',
+      (WidgetTester tester) async {
+        // TODO: This test is failing because the horizontal menu items have no semantic label.
+        markTestSkipped('This test is failing because the horizontal menu items have no semantic label');
+        await tester.pumpWidget(
+          TestApp(
+            home: ZetaBottomSheet(
+              title: 'Bottom Sheet',
+              body: Wrap(
+                spacing: 12,
+                runSpacing: 12,
+                children: List.generate(
+                  6,
+                  (index) => ZetaMenuItem.horizontal(
+                    label: const Text('Menu Item'),
+                    onTap: () {},
+                    leading: const ZetaIcon(ZetaIcons.star),
+                    trailing: const ZetaIcon(ZetaIcons.chevron_right),
+                  ),
                 ),
               ),
             ),
           ),
-        ),
-      );
+        );
 
-      final semanticLabels = tester.widgetList<Semantics>(find.byType(Semantics));
-      for (final semantics in semanticLabels) {
-        expect(semantics.properties.label, isNotNull);
-      }
-    }, skip: true);
+        final semanticLabels = tester.widgetList<Semantics>(find.byType(Semantics));
+        for (final semantics in semanticLabels) {
+          expect(semantics.properties.label, isNotNull);
+        }
+      },
+      skip: true,
+    );
 
     testWidgets('meets accessiblity standards', (WidgetTester tester) async {
       final SemanticsHandle handle = tester.ensureSemantics();
@@ -432,19 +456,19 @@ void main() {
 
   group('ZetaBottomSheet Interaction Tests', () {
     testWidgets('ZetaBottomSheet is shown when ZetaMenuItem.horizontal is tapped', (WidgetTester tester) async {
-      // TODO: How do I test if it's open or not?
-      markTestSkipped('How do I test if its open or not?');
+      final GlobalKey key = GlobalKey();
       await tester.pumpWidget(
-        Builder(
-          builder: (context) {
-            return TestApp(
-              home: ZetaMenuItem.horizontal(
+        TestApp(
+          home: Builder(
+            builder: (context) {
+              return ZetaMenuItem.horizontal(
                 label: const Text('Grid'),
                 onTap: () {
                   showModalBottomSheet<void>(
                     context: context,
                     builder: (BuildContext context) {
                       return ZetaBottomSheet(
+                        key: key,
                         title: 'Bottom Sheet',
                         body: Wrap(
                           spacing: 12,
@@ -462,17 +486,24 @@ void main() {
                     },
                   );
                 },
-              ),
-            );
-          },
+              );
+            },
+          ),
         ),
       );
 
-      // final horizontalMenuItemFinder = find.byType(ZetaMenuItem);
-      // await tester.tap(horizontalMenuItemFinder.first);
-      // await tester.pumpAndSettle();
+      expect(find.byKey(key), findsNothing);
 
-      // expect(find.byType(ZetaBottomSheet), findsOneWidget);
-    }, skip: true);
+      final horizontalMenuItemFinder = find.byType(ZetaMenuItem);
+      await tester.tap(horizontalMenuItemFinder.first);
+      await tester.pumpAndSettle();
+
+      expect(find.byKey(key), findsOneWidget);
+
+      await tester.tap(horizontalMenuItemFinder.first, warnIfMissed: false);
+      await tester.pumpAndSettle();
+
+      expect(find.byKey(key), findsNothing);
+    });
   });
 }
