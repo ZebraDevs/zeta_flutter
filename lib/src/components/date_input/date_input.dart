@@ -69,7 +69,7 @@ class ZetaDateInput extends ZetaFormField<DateTime> {
                       onTap: state.clear,
                       disabled: disabled,
                       size: size,
-                      color: colors.iconSubtle,
+                      color: colors.mainSubtle,
                       semanticLabel: clearSemanticLabel,
                     ),
                   InputIconButton(
@@ -77,7 +77,7 @@ class ZetaDateInput extends ZetaFormField<DateTime> {
                     onTap: state.pickDate,
                     disabled: disabled,
                     size: size,
-                    color: colors.iconDefault,
+                    color: colors.mainDefault,
                     semanticLabel: datePickerSemanticLabel,
                   ),
                 ],

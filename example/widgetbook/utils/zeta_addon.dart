@@ -17,7 +17,7 @@ class ZetaAddon extends WidgetbookAddon<_ZetaAddon> {
 
   @override
   Widget buildUseCase(BuildContext context, Widget child, _ZetaAddon data) {
-    return ZetaProvider.base(
+    return ZetaProvider(
       initialRounded: data.rounded,
       initialThemeMode: data.themeMode,
       initialContrast: data.contrast,

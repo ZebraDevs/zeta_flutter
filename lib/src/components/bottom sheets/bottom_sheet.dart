@@ -48,7 +48,7 @@ class ZetaBottomSheet extends ZetaStatelessWidget {
           Zeta.of(context).spacing.xl,
         ),
         decoration: BoxDecoration(
-          color: colors.surfaceSecondary,
+          color: colors.surfaceDefault,
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(Zeta.of(context).spacing.xl_2),
             topRight: Radius.circular(Zeta.of(context).spacing.xl_2),
@@ -85,7 +85,7 @@ class ZetaBottomSheet extends ZetaStatelessWidget {
                 ),
               ),
             Material(
-              color: colors.surfaceSecondary,
+              color: colors.surfaceDefault,
               child: body ?? const Nothing(),
             ),
           ],

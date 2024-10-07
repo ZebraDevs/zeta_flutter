@@ -51,12 +51,12 @@ class ZetaSearchBar extends ZetaTextFormField {
 
             final defaultInputBorder = OutlineInputBorder(
               borderRadius: borderRadius,
-              borderSide: BorderSide(color: zeta.colors.cool.shade40),
+              borderSide: BorderSide(color: zeta.colors.borderDefault),
             );
 
             final focusedBorder = defaultInputBorder.copyWith(
               borderSide: BorderSide(
-                color: zeta.colors.blue.shade50,
+                color: zeta.colors.borderPrimary,
                 width: zeta.spacing.minimum,
               ),
             );
@@ -103,13 +103,13 @@ class ZetaSearchBar extends ZetaTextFormField {
                     ),
                     hintText: hintText ?? 'Search', // TODO(UX-1003): Localize
                     hintStyle: ZetaTextStyles.bodyMedium.copyWith(
-                      color: !disabled ? zeta.colors.textSubtle : zeta.colors.textDisabled,
+                      color: !disabled ? zeta.colors.mainSubtle : zeta.colors.mainDisabled,
                     ),
                     prefixIcon: Padding(
                       padding: EdgeInsets.only(left: zeta.spacing.medium, right: zeta.spacing.small),
                       child: ZetaIcon(
                         ZetaIcons.search,
-                        color: !disabled ? zeta.colors.cool.shade70 : zeta.colors.cool.shade50,
+                        color: !disabled ? zeta.colors.mainSubtle : zeta.colors.mainDisabled,
                         size: iconSize,
                       ),
                     ),
@@ -132,7 +132,7 @@ class ZetaSearchBar extends ZetaTextFormField {
                                 onTap: () => state.onChange(''),
                                 disabled: disabled,
                                 size: size,
-                                color: zeta.colors.iconSubtle,
+                                color: zeta.colors.mainSubtle,
                                 key: const ValueKey('search-clear-btn'),
                               ),
                             ),
@@ -140,7 +140,7 @@ class ZetaSearchBar extends ZetaTextFormField {
                               SizedBox(
                                 height: iconSize,
                                 child: VerticalDivider(
-                                  color: zeta.colors.cool.shade40,
+                                  color: zeta.colors.mainSubtle,
                                   width: 5,
                                   thickness: 1,
                                 ),
@@ -158,7 +158,7 @@ class ZetaSearchBar extends ZetaTextFormField {
                                 key: const ValueKey('speech-to-text-btn'),
                                 disabled: disabled,
                                 size: size,
-                                color: zeta.colors.iconDefault,
+                                color: zeta.colors.mainDefault,
                               ),
                             ),
                         ],
@@ -169,7 +169,7 @@ class ZetaSearchBar extends ZetaTextFormField {
                       minWidth: zeta.spacing.xl_2,
                     ),
                     filled: !disabled ? null : true,
-                    fillColor: !disabled ? null : zeta.colors.cool.shade30,
+                    fillColor: !disabled ? null : zeta.colors.surfaceDisabled,
                     enabledBorder: defaultInputBorder,
                     focusedBorder: focusedBorder,
                     disabledBorder: disabledborder,

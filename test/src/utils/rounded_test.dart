@@ -16,7 +16,7 @@ void main() {
   testWidgets('Global round inherited', (WidgetTester tester) async {
     final GlobalKey key = GlobalKey();
 
-    when(mockZeta.radius).thenReturn(const ZetaRadiiAA(primitives: ZetaPrimitivesLight()));
+    when(mockZeta.radius).thenReturn(const ZetaSemanticRadiiAA(primitives: ZetaPrimitivesLight()));
     await tester.pumpWidget(
       TestApp(
         rounded: true,

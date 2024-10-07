@@ -163,7 +163,7 @@ class InternalTextInput extends ZetaStatefulWidget {
 /// The current state of a [InternalTextInput]
 class InternalTextInputState extends State<InternalTextInput> {
   late final TextEditingController _controller;
-  ZetaColors get _colors => Zeta.of(context).colors;
+  ZetaSemanticColors get _colors => Zeta.of(context).colors;
 
   // TODO(UX-1143): refactor to use WidgetStateController
   bool _hovered = false;
@@ -173,9 +173,9 @@ class InternalTextInputState extends State<InternalTextInput> {
       return _colors.surfaceDisabled;
     }
     if (widget.errorText != null) {
-      return _colors.error.shade10;
+      return _colors.surfaceNegativeSubtle;
     }
-    return _colors.surfacePrimary;
+    return _colors.surfaceDefault;
   }
 
   TextStyle get _baseTextStyle {
@@ -203,9 +203,9 @@ class InternalTextInputState extends State<InternalTextInput> {
   }
 
   TextStyle get _affixStyle {
-    Color color = _colors.textSubtle;
+    Color color = _colors.mainSubtle;
     if (widget.disabled) {
-      color = _colors.textDisabled;
+      color = _colors.mainDisabled;
     }
     return _baseTextStyle.copyWith(color: color);
   }
@@ -277,11 +277,10 @@ class InternalTextInputState extends State<InternalTextInput> {
       );
 
   OutlineInputBorder _focusedBorder(bool rounded) => _baseBorder(rounded).copyWith(
-        borderSide: BorderSide(color: _colors.primary.shade50, width: ZetaBorders.medium),
-      ); // TODO(mikecoomber): change to colors.borderPrimary when added
-
+        borderSide: BorderSide(color: _colors.borderPrimary, width: ZetaBorders.medium),
+      );
   OutlineInputBorder _errorBorder(bool rounded) => _baseBorder(rounded).copyWith(
-        borderSide: BorderSide(color: _colors.error, width: ZetaBorders.medium),
+        borderSide: BorderSide(color: _colors.borderNegative, width: ZetaBorders.medium),
       );
 
   @override
@@ -337,7 +336,7 @@ class InternalTextInputState extends State<InternalTextInput> {
                       onChanged: widget.onChange,
                       onSubmitted: widget.onSubmit,
                       style: _baseTextStyle,
-                      cursorErrorColor: _colors.error,
+                      cursorErrorColor: _colors.mainNegative,
                       obscureText: widget.obscureText,
                       focusNode: widget.focusNode,
                       decoration: InputDecoration(

@@ -20,18 +20,19 @@ Widget avatarUseCase(BuildContext context) {
       upperBadge: context.knobs.boolean(label: 'Status Badge', initialValue: false)
           ? ZetaAvatarBadge.icon(
               icon: ZetaIcons.close,
-              color: context.knobs.colorOrNull(label: "Upper Badge Color", initialValue: colors.green) ??
-                  colors.iconDefault,
+              color: context.knobs.colorOrNull(label: "Upper Badge Color", initialValue: colors.primitives.green) ??
+                  colors.mainDefault,
             )
           : null,
-      borderColor: context.knobs.colorOrNull(label: 'Outline', initialValue: colors.green),
+      borderColor: context.knobs.colorOrNull(label: 'Outline', initialValue: colors.primitives.green),
       lowerBadge: context.knobs.boolean(label: 'Notification Badge', initialValue: false)
           ? ZetaAvatarBadge.notification(
               value: context.knobs.intOrNull.input(label: "Value", initialValue: 1),
             )
           : null,
       initials: context.knobs.stringOrNull(label: 'Initials', initialValue: 'AZ'),
-      backgroundColor: context.knobs.colorOrNull(label: 'Background color', initialValue: colors.purple.shade80),
+      backgroundColor:
+          context.knobs.colorOrNull(label: 'Background color', initialValue: colors.primitives.purple.shade80),
     ),
   );
 }

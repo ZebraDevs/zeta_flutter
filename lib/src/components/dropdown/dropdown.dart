@@ -496,7 +496,7 @@ class _DropdownItemState<T> extends State<_DropdownItem<T>> {
                 Expanded(
                   child: Text(
                     widget.value.label,
-                    style: ZetaTextStyles.bodyMedium.copyWith(color: colors.textDefault, height: 1.5),
+                    style: ZetaTextStyles.bodyMedium.copyWith(color: colors.mainDefault, height: 1.5),
                   ),
                 ),
               ],
@@ -530,7 +530,7 @@ class _DropdownItemState<T> extends State<_DropdownItem<T>> {
     }
   }
 
-  ButtonStyle _getStyle(ZetaColors colors) {
+  ButtonStyle _getStyle(ZetaSemanticColors colors) {
     return ButtonStyle(
       backgroundColor: WidgetStateProperty.resolveWith((states) {
         if (states.contains(WidgetState.disabled)) {
@@ -546,13 +546,13 @@ class _DropdownItemState<T> extends State<_DropdownItem<T>> {
           return colors.surfaceHover;
         }
 
-        return colors.surfacePrimary;
+        return colors.surfaceDefault;
       }),
       foregroundColor: WidgetStateProperty.resolveWith((states) {
         if (states.contains(WidgetState.disabled)) {
-          return colors.textDisabled;
+          return colors.mainDisabled;
         }
-        return colors.textDefault;
+        return colors.mainDefault;
       }),
       shape: WidgetStateProperty.all(
         RoundedRectangleBorder(
