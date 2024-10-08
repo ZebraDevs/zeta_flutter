@@ -268,7 +268,7 @@ void main() {
 
   group('ZetaBanner Styling Tests', () {
     for (final type in ZetaBannerStatus.values) {
-      testWidgets('ZetaBanner title styles are correct for $type', (WidgetTester tester) async {
+      testWidgets('title styles are correct for $type', (WidgetTester tester) async {
         await tester.pumpWidget(
           TestApp(
             home: Builder(
@@ -293,10 +293,8 @@ void main() {
           ),
         );
       });
-    }
 
-    for (final type in ZetaBannerStatus.values) {
-      testWidgets('ZetaBanner icon color is correct for $type', (WidgetTester tester) async {
+      testWidgets('icon color is correct for $type', (WidgetTester tester) async {
         await tester.pumpWidget(
           TestApp(
             home: Builder(
@@ -311,11 +309,31 @@ void main() {
             ),
           ),
         );
+
         final Finder iconFinder = find.byIcon(Icons.info);
 
-        // Color
         final Icon iconWidget = tester.widget(iconFinder);
         expect(iconWidget.color, _backgroundColorFromType(tester.element(iconFinder), type).onColor);
+      });
+
+      testWidgets('background colors are correct for $type', (WidgetTester tester) async {
+        await tester.pumpWidget(
+          TestApp(
+            home: Builder(
+              builder: (context) {
+                return ZetaBanner(
+                  context: context,
+                  title: 'Banner Title',
+                  type: type,
+                );
+              },
+            ),
+          ),
+        );
+        final Finder finder = find.byType(ZetaBanner);
+        final ZetaBanner widget = tester.firstWidget(finder);
+
+        expect(widget.backgroundColor, equals(_backgroundColorFromType(tester.element(finder), type)));
       });
     }
   });
