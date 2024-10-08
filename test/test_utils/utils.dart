@@ -3,8 +3,8 @@ import 'dart:io';
 import 'package:collection/collection.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:path/path.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:path/path.dart';
 
 extension Util on DiagnosticPropertiesBuilder {
   dynamic finder(String finder) {
