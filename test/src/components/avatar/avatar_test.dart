@@ -261,9 +261,10 @@ void main() {
     testWidgets('ZetaAvatar with background colour', (WidgetTester tester) async {
       await tester.pumpWidget(
         const TestApp(
-            home: ZetaAvatar(
-          backgroundColor: Colors.red,
-        )),
+          home: ZetaAvatar(
+            backgroundColor: Colors.red,
+          ),
+        ),
       );
 
       final avatarBackgroundColor =
@@ -302,8 +303,10 @@ void main() {
           ),
         );
 
-        await expectLater(find.byType(ZetaAvatar),
-            matchesGoldenFile(goldenFile.getFileUri('avatar_default_${size.toString().split('.').last}')));
+        await expectLater(
+          find.byType(ZetaAvatar),
+          matchesGoldenFile(goldenFile.getFileUri('avatar_default_${size.toString().split('.').last}')),
+        );
       });
 
       testWidgets('ZetaAvatar with initials', (WidgetTester tester) async {
@@ -316,8 +319,10 @@ void main() {
           ),
         );
 
-        await expectLater(find.byType(ZetaAvatar),
-            matchesGoldenFile(goldenFile.getFileUri('avatar_initials_${size.toString().split('.').last}')));
+        await expectLater(
+          find.byType(ZetaAvatar),
+          matchesGoldenFile(goldenFile.getFileUri('avatar_initials_${size.toString().split('.').last}')),
+        );
       });
 
       testWidgets('ZetaAvatar with image', (WidgetTester tester) async {
@@ -330,8 +335,10 @@ void main() {
           ),
         );
 
-        await expectLater(find.byType(ZetaAvatar),
-            matchesGoldenFile(goldenFile.getFileUri('avatar_image_${size.toString().split('.').last}')));
+        await expectLater(
+          find.byType(ZetaAvatar),
+          matchesGoldenFile(goldenFile.getFileUri('avatar_image_${size.toString().split('.').last}')),
+        );
       });
 
       testWidgets('ZetaAvatar with fromName', (WidgetTester tester) async {
@@ -344,8 +351,10 @@ void main() {
           ),
         );
 
-        await expectLater(find.byType(ZetaAvatar),
-            matchesGoldenFile(goldenFile.getFileUri('avatar_from_name_${size.toString().split('.').last}')));
+        await expectLater(
+          find.byType(ZetaAvatar),
+          matchesGoldenFile(goldenFile.getFileUri('avatar_from_name_${size.toString().split('.').last}')),
+        );
       });
 
       testWidgets('ZetaAvatar with upper badge', (WidgetTester tester) async {
@@ -358,8 +367,10 @@ void main() {
           ),
         );
 
-        await expectLater(find.byType(ZetaAvatar),
-            matchesGoldenFile(goldenFile.getFileUri('avatar_upper_badge_${size.toString().split('.').last}')));
+        await expectLater(
+          find.byType(ZetaAvatar),
+          matchesGoldenFile(goldenFile.getFileUri('avatar_upper_badge_${size.toString().split('.').last}')),
+        );
       });
 
       testWidgets('ZetaAvatar with lower badge', (WidgetTester tester) async {
@@ -372,8 +383,10 @@ void main() {
           ),
         );
 
-        await expectLater(find.byType(ZetaAvatar),
-            matchesGoldenFile(goldenFile.getFileUri('avatar_lower_badge_${size.toString().split('.').last}')));
+        await expectLater(
+          find.byType(ZetaAvatar),
+          matchesGoldenFile(goldenFile.getFileUri('avatar_lower_badge_${size.toString().split('.').last}')),
+        );
       });
     }
   });
