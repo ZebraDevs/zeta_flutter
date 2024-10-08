@@ -188,8 +188,7 @@ class ZetaAvatar extends ZetaStatelessWidget {
         (initials != null
             ? Center(
                 child: Text(
-                  size == ZetaAvatarSize.xs ? initials!.substring(0, 1) : initials!, //TODO DE: Luke is this correct?
-                  // initials!,
+                  initials!,
                   style: initialTextStyle ??
                       TextStyle(
                         fontSize: size.fontSize(context),
