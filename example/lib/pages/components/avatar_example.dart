@@ -142,10 +142,9 @@ class AvatarExample extends StatelessWidget {
                         children: ZetaAvatarSize.values
                             .map((size) => Column(
                                   children: [
-                                    ZetaAvatar.fromName(
+                                    ZetaAvatar.initials(
                                       size: size,
-                                      // initials: 'AB',
-                                      name: "Daniel William Eshkeri",
+                                      initials: 'AB',
                                     ),
                                     const SizedBox(height: 20),
                                   ],
