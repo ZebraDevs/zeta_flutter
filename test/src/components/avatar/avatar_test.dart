@@ -58,7 +58,7 @@ void main() {
       'Isabella Smith',
     ];
 
-    // TODO DE: We need options for which initials should be displayed. Could use a bitmask?
+    // TODODE: We need options for which initials should be displayed. Could use a bitmask?
     for (final name in names) {
       testWidgets(
         'ZetaAvatar intiatls show the first letter of the first name and the last name $name',
@@ -150,7 +150,7 @@ void main() {
 
         final avatarSize = tester.getSize(find.byType(ZetaAvatar));
         final typeSize = ZetaAvatar.pixelSize(tester.element(find.byType(ZetaAvatar)),
-            size); //TODO BK butchered this to make pixelSize reusable. Mike, is this ok?
+            size,); //TODO BK butchered this to make pixelSize reusable. Mike, is this ok?
 
         expect(avatarSize.width, equals(typeSize));
         expect(avatarSize.height, equals(typeSize));
