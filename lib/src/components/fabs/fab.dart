@@ -117,58 +117,79 @@ class _ZetaFABState extends State<ZetaFAB> {
     final colors = widget.type.colors(context);
     final backgroundColor = widget.type == ZetaFabType.inverse ? colors.shade80 : colors.shade60;
 
-    return FilledButton(
-      onPressed: widget.onPressed,
-      focusNode: widget.focusNode,
-      style: ButtonStyle(
-        padding: const WidgetStatePropertyAll(EdgeInsets.zero),
-        shape: WidgetStatePropertyAll(
-          widget.shape.buttonShape(isExpanded: widget.expanded, size: widget.size, context: context),
-        ),
-        backgroundColor: WidgetStateProperty.resolveWith((states) {
-          if (states.contains(WidgetState.disabled)) {
-            return Zeta.of(context).colors.surfaceDisabled;
-          }
-          if (states.contains(WidgetState.pressed)) {
-            return colors.selected;
-          }
-          if (states.contains(WidgetState.hovered)) {
-            return colors.hover;
-          }
-          return backgroundColor;
-        }),
-        side: WidgetStateProperty.resolveWith(
-          (Set<WidgetState> states) {
-            if (states.contains(WidgetState.focused)) {
-              // TODO(UX-1134): This removes a defualt border when focused, rather than adding a second border when focused.
-              return BorderSide(color: Zeta.of(context).colors.blue.shade50, width: ZetaBorders.medium);
-            }
-            return null;
-          },
-        ),
-      ),
-      child: AnimatedContainer(
-        duration: ZetaAnimationLength.normal,
-        child: Padding(
-          padding: widget.expanded
-              ? EdgeInsets.symmetric(
-                  horizontal: Zeta.of(context).spacing.large,
-                  vertical: Zeta.of(context).spacing.medium,
-                )
-              : EdgeInsets.all(widget.size.padding(context)),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              ZetaIcon(widget.icon, size: widget.size.iconSize(context)),
-              if (widget.expanded && widget.label != null)
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [Text(widget.label!, style: ZetaTextStyles.labelLarge)],
-                ),
-            ].divide(SizedBox(width: Zeta.of(context).spacing.small)).toList(),
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        FilledButton(
+          onPressed: widget.onPressed,
+          focusNode: widget.focusNode,
+          style: ButtonStyle(
+            padding: const WidgetStatePropertyAll(EdgeInsets.zero),
+            shape: WidgetStatePropertyAll(
+              widget.shape.buttonShape(isExpanded: widget.expanded, size: widget.size, context: context),
+            ),
+            backgroundColor: WidgetStateProperty.resolveWith((states) {
+              if (states.contains(WidgetState.disabled)) {
+                return Zeta.of(context).colors.surfaceDisabled;
+              }
+              if (states.contains(WidgetState.pressed)) {
+                return colors.selected;
+              }
+              if (states.contains(WidgetState.hovered)) {
+                return colors.hover;
+              }
+              return backgroundColor;
+            }),
+            side: WidgetStateProperty.resolveWith(
+              (Set<WidgetState> states) {
+                if (states.contains(WidgetState.focused)) {
+                  // TODO(UX-1134): This removes a defualt border when focused, rather than adding a second border when focused.
+                  return BorderSide(color: Zeta.of(context).colors.blue.shade50, width: ZetaBorders.medium);
+                }
+                return null;
+              },
+            ),
+          ),
+          child: AnimatedContainer(
+            duration: ZetaAnimationLength.normal,
+            child: Padding(
+              padding: widget.expanded
+                  ? EdgeInsets.symmetric(
+                      horizontal: Zeta.of(context).spacing.large,
+                      vertical: Zeta.of(context).spacing.medium,
+                    )
+                  : EdgeInsets.all(widget.size.padding(context)),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  ZetaIcon(widget.icon, size: widget.size.iconSize(context)),
+                  if (widget.expanded && widget.label != null)
+                    Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          widget.label!,
+                          style: ZetaTextStyles.labelLarge,
+                        ),
+                      ],
+                    ),
+                ].divide(SizedBox(width: Zeta.of(context).spacing.small)).toList(),
+              ),
+            ),
           ),
         ),
-      ),
+        if (!widget.expanded && widget.label != null)
+          Container(
+            margin: EdgeInsets.only(top: Zeta.of(context).spacing.minimum),
+            width: 100, // TODODE: Is there a better way to do this?
+            alignment: Alignment.center,
+            child: Text(
+              widget.label!,
+              style: ZetaTextStyles.bodyMedium,
+              textAlign: TextAlign.center,
+            ),
+          ),
+      ],
     );
   }
 }
