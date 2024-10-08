@@ -55,7 +55,6 @@ void main() {
     }
 
     testWidgets('semantic label works correctly', (WidgetTester tester) async {
-      // The banner only having one action means that it only needs one semantic label for the whole elemenet.
       String semanticLabelText = 'Banner Title';
       StateSetter? setState;
 
@@ -78,16 +77,12 @@ void main() {
         ),
       );
 
-      // The last Semantics widget is the one that contains the label.
       final Semantics titleSematicLabel = tester.widgetList<Semantics>(find.byType(Semantics)).last;
-      // The label should be 'Banner Title' as that is the value of the semanticLabel property.
       expect(titleSematicLabel.properties.label, equals('Banner Title'));
 
-      // Change the semantic label to an empty string.
       setState?.call(() => semanticLabelText = '');
       await tester.pumpAndSettle();
 
-      // The label should now be an empty string.
       final Semantics titleSematicLabel2 = tester.widgetList<Semantics>(find.byType(Semantics)).last;
       expect(titleSematicLabel2.properties.label, equals(''));
     });
@@ -114,15 +109,12 @@ void main() {
         ),
       );
 
-      // The last Semantics widget is the one that contains the label.
       final Semantics titleSematicLabel = tester.widgetList<Semantics>(find.byType(Semantics)).last;
       expect(titleSematicLabel.properties.label, equals('Banner Title'));
 
-      // Change the title to an empty string.
       setState?.call(() => titleText = '');
       await tester.pumpAndSettle();
 
-      // The label should now be an empty string.
       final Semantics titleSematicLabel2 = tester.widgetList<Semantics>(find.byType(Semantics)).last;
       expect(titleSematicLabel2.properties.label, equals(''));
     });
