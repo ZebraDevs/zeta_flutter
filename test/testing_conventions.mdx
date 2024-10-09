@@ -1,0 +1,53 @@
+# Testing Conventions Flutter Components
+
+## Groups
+
+- Accessibility Tests  
+  Semantic labels, touch areas, contrast ratios, etc.
+- Content Tests  
+  Finds the widget, parameter statuses, etc.
+- Dimensions Tests  
+  Size, padding, margin, alignment, etc.
+- Styling Tests  
+  Rendered colors, fonts, borders, radii etc.
+- Interaction Tests  
+  Gesture recognizers, taps, drags, etc.
+- Golden Tests  
+  Compares the rendered widget with the golden file. Use the `goldenTest()` function from test_utils/utils.dart.
+- Performance Tests  
+  Animation performance, rendering performance, data manupulation performance, etc.
+
+## Testing File Template
+
+```
+import 'dart:ui';
+
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:zeta_flutter/zeta_flutter.dart';
+
+import '../../../test_utils/test_app.dart';
+import '../../../test_utils/tolerant_comparator.dart';
+import '../../../test_utils/utils.dart';
+
+void main() {
+    const String componentName = 'ENTER_COMPONENT_NAME (e.g. ZetaButton)';
+    const String parentFolder = 'ENTER_PARENT_FOLDER (e.g. button)';
+
+    const goldenFile = GoldenFiles(component: parentFolder);
+    setUpAll(() {
+        goldenFileComparator = TolerantComparator(goldenFile.uri);
+    });
+
+    group('$componentName Accessibility Tests', () {});
+    group('$componentName Content Tests', () {});
+    group('$componentName Dimensions Tests', () {});
+    group('$componentName Styling Tests', () {});
+    group('$componentName Interaction Tests', () {});
+    group('$componentName Golden Tests', () {
+        goldenTest(goldenFile, widget, widgetType, 'PNG_FILE_NAME');
+    });
+    group('$componentName Performance Tests', () {});
+}
+```
