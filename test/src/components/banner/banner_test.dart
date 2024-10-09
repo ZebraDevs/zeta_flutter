@@ -341,7 +341,7 @@ void main() {
                   context: context,
                   title: 'Banner Title',
                   leadingIcon: Icons.info,
-                  trailing: const Icon(Icons.chevron_right),
+                  trailing: const ZetaIcon(Icons.chevron_right),
                   type: type,
                 );
               },
