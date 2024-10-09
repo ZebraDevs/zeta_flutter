@@ -149,8 +149,10 @@ void main() {
         );
 
         final avatarSize = tester.getSize(find.byType(ZetaAvatar));
-        final typeSize = ZetaAvatar.pixelSize(tester.element(find.byType(ZetaAvatar)),
-            size,); //TODO BK butchered this to make pixelSize reusable. Mike, is this ok?
+        final typeSize = ZetaAvatar.pixelSize(
+          tester.element(find.byType(ZetaAvatar)),
+          size,
+        ); //TODO BK butchered this to make pixelSize reusable. Mike, is this ok?
 
         expect(avatarSize.width, equals(typeSize));
         expect(avatarSize.height, equals(typeSize));
@@ -273,21 +275,24 @@ void main() {
       expect(avatarBackgroundColor, equals(Colors.red));
     });
 
-    testWidgets('ZetaAvatar with border colour', (WidgetTester tester) async {
-      await tester.pumpWidget(
-        const TestApp(
-          home: ZetaAvatar(
-            borderColor: Colors.red,
+    for (final size in ZetaAvatarSize.values) {
+      testWidgets('ZetaAvatar with border colour for $size', (WidgetTester tester) async {
+        await tester.pumpWidget(
+          TestApp(
+            home: ZetaAvatar(
+              borderColor: Colors.red,
+              size: size,
+            ),
           ),
-        ),
-      );
+        );
 
-      final avatarBorderColor =
-          (((tester.firstWidget(find.byType(Container)) as Container).decoration! as BoxDecoration).border! as Border)
-              .top
-              .color;
-      expect(avatarBorderColor, equals(Colors.red));
-    });
+        final avatarBorderColor =
+            (((tester.firstWidget(find.byType(Container)) as Container).decoration! as BoxDecoration).border! as Border)
+                .top
+                .color;
+        expect(avatarBorderColor, equals(Colors.red));
+      });
+    }
   });
 
   group('ZetaAvatar Interaction Tests', () {});
