@@ -50,3 +50,14 @@ void goldenTest(GoldenFiles goldenFile, Widget widget, Type widgetType, String f
 BuildContext getBuildContext(WidgetTester tester, Type type) {
   return tester.element(find.byType(type));
 }
+
+void debugFillPropertiesTests(Widget widget, Map<String, String> properties) {
+  testWidgets('debugFillProperties works correctly', (WidgetTester tester) async {
+    final diagnostics = DiagnosticPropertiesBuilder();
+    widget.debugFillProperties(diagnostics);
+
+    properties.forEach((key, value) {
+      expect(diagnostics.finder(key), value);
+    });
+  });
+}

@@ -1,6 +1,3 @@
-import 'dart:ui';
-
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
@@ -18,8 +15,22 @@ void main() {
     goldenFileComparator = TolerantComparator(goldenFile.uri);
   });
 
-  // group('$componentName Accessibility Tests', () {});
+  group('$componentName Accessibility Tests', () {});
   group('$componentName Content Tests', () {
+    final debugFillProperties = {
+      'label': '"Test label"',
+      'status': 'positive',
+      'rounded': 'false',
+    };
+    debugFillPropertiesTests(
+      const ZetaLabel(
+        label: 'Test label',
+        rounded: false,
+        status: ZetaWidgetStatus.positive,
+      ),
+      debugFillProperties,
+    );
+
     testWidgets('Initializes with correct parameters', (WidgetTester tester) async {
       await tester.pumpWidget(const TestApp(home: ZetaLabel(label: 'Test Label')));
 
@@ -89,23 +100,10 @@ void main() {
 
       expect(label.rounded, false);
     });
-
-    testWidgets('debugFillProperties works correctly', (WidgetTester tester) async {
-      final diagnostics = DiagnosticPropertiesBuilder();
-      const ZetaLabel(
-        label: 'Test label',
-        rounded: false,
-        status: ZetaWidgetStatus.positive,
-      ).debugFillProperties(diagnostics);
-
-      expect(diagnostics.finder('label'), '"Test label"');
-      expect(diagnostics.finder('status'), 'positive');
-      expect(diagnostics.finder('rounded'), 'false');
-    });
   });
-  // group('$componentName Dimensions Tests', () {});
-  // group('$componentName Styling Tests', () {});
-  // group('$componentName Interaction Tests', () {});
+  group('$componentName Dimensions Tests', () {});
+  group('$componentName Styling Tests', () {});
+  group('$componentName Interaction Tests', () {});
   group('$componentName Golden Tests', () {
     goldenTest(goldenFile, const ZetaLabel(label: 'Test Label'), ZetaLabel, 'label_default');
     goldenTest(
@@ -135,5 +133,5 @@ void main() {
     goldenTest(goldenFile, const ZetaLabel(label: 'Test Label'), ZetaLabel, 'label_dark', darkMode: true);
     goldenTest(goldenFile, const ZetaLabel(label: 'Test Label', rounded: false), ZetaLabel, 'label_sharp');
   });
-  // group('$componentName Performance Tests', () {});
+  group('$componentName Performance Tests', () {});
 }

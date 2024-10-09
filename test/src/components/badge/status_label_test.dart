@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
@@ -8,12 +7,31 @@ import '../../../test_utils/tolerant_comparator.dart';
 import '../../../test_utils/utils.dart';
 
 void main() {
-  const goldenFile = GoldenFiles(component: 'badge');
+  const String componentName = 'ZetaStatusLabel';
+  const String parentFolder = 'badge';
 
+  const goldenFile = GoldenFiles(component: parentFolder);
   setUpAll(() {
     goldenFileComparator = TolerantComparator(goldenFile.uri);
   });
-  group('ZetaStatusLabel Tests', () {
+
+  group('$componentName Accessibility Tests', () {});
+  group('$componentName Content Tests', () {
+    final debugFillProperties = {
+      'label': '"Test label"',
+      'rounded': 'false',
+      'customIcon': 'IconData(U+F04B6)',
+      'status': 'info',
+    };
+    debugFillPropertiesTests(
+      const ZetaStatusLabel(
+        label: 'Test label',
+        rounded: false,
+        customIcon: Icons.abc,
+      ),
+      debugFillProperties,
+    );
+
     testWidgets('Initializes with correct properties', (WidgetTester tester) async {
       await tester.pumpWidget(
         const TestApp(
@@ -21,42 +39,35 @@ void main() {
         ),
       );
       expect(find.text('Test Label'), findsOneWidget);
+    });
 
-      await expectLater(
-        find.byType(ZetaStatusLabel),
-        matchesGoldenFile(goldenFile.getFileUri('status_label_default')),
+    testWidgets('Initializes with correct label and custom icon', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        const TestApp(
+          home: ZetaStatusLabel(
+            label: 'Custom Icon',
+            customIcon: Icons.person,
+          ),
+        ),
       );
+      expect(find.text('Custom Icon'), findsOneWidget);
+      expect(find.byIcon(Icons.person), findsOneWidget);
     });
   });
-
-  testWidgets('Initializes with correct label and custom icon', (WidgetTester tester) async {
-    await tester.pumpWidget(
-      const TestApp(
-        home: ZetaStatusLabel(
-          label: 'Custom Icon',
-          customIcon: Icons.person,
-        ),
+  group('$componentName Dimensions Tests', () {});
+  group('$componentName Styling Tests', () {});
+  group('$componentName Interaction Tests', () {});
+  group('$componentName Golden Tests', () {
+    goldenTest(goldenFile, const ZetaStatusLabel(label: 'Test Label'), ZetaStatusLabel, 'status_label_default');
+    goldenTest(
+      goldenFile,
+      const ZetaStatusLabel(
+        label: 'Custom Icon',
+        customIcon: Icons.person,
       ),
-    );
-    expect(find.text('Custom Icon'), findsOneWidget);
-    expect(find.byIcon(Icons.person), findsOneWidget);
-
-    await expectLater(
-      find.byType(ZetaStatusLabel),
-      matchesGoldenFile(goldenFile.getFileUri('status_label_custom')),
+      ZetaStatusLabel,
+      'status_label_custom',
     );
   });
-  testWidgets('debugFillProperties works correctly', (WidgetTester tester) async {
-    final diagnostics = DiagnosticPropertiesBuilder();
-    const ZetaStatusLabel(
-      label: 'Test label',
-      rounded: false,
-      customIcon: Icons.abc,
-    ).debugFillProperties(diagnostics);
-
-    expect(diagnostics.finder('label'), '"Test label"');
-    expect(diagnostics.finder('rounded'), 'false');
-    expect(diagnostics.finder('customIcon'), 'IconData(U+F04B6)');
-    expect(diagnostics.finder('status'), 'info');
-  });
+  group('$componentName Performance Tests', () {});
 }

@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
@@ -15,8 +14,30 @@ void main() {
     goldenFileComparator = TolerantComparator(goldenFile.uri);
   });
 
-  // group('$componentName Accessibility Tests', () {});
+  group('$componentName Accessibility Tests', () {});
   group('$componentName Content Tests', () {
+    final debugFillProperties = {
+      'color': 'MaterialColor(primary value: Color(0xffff9800))',
+      'icon': 'IconData(U+F04B6)',
+      'inverse': 'true',
+      'rounded': 'false',
+      'size': 'ZetaWidgetSize.small',
+      'type': 'ZetaIndicatorType.icon',
+      'value': '1',
+    };
+    debugFillPropertiesTests(
+      const ZetaIndicator(
+        color: Colors.orange,
+        icon: Icons.abc,
+        inverse: true,
+        rounded: false,
+        size: ZetaWidgetSize.small,
+        type: ZetaIndicatorType.icon,
+        value: 1,
+      ),
+      debugFillProperties,
+    );
+
     testWidgets('Default constructor initializes with correct parameters', (WidgetTester tester) async {
       await tester.pumpWidget(const TestApp(home: ZetaIndicator()));
 
@@ -132,30 +153,10 @@ void main() {
       expect(indicator.inverse, true);
       expect(indicator.color, Colors.green);
     });
-    testWidgets('debugFillProperties works correctly', (WidgetTester tester) async {
-      final diagnostics = DiagnosticPropertiesBuilder();
-      const ZetaIndicator(
-        color: Colors.orange,
-        icon: Icons.abc,
-        inverse: true,
-        rounded: false,
-        size: ZetaWidgetSize.small,
-        type: ZetaIndicatorType.icon,
-        value: 1,
-      ).debugFillProperties(diagnostics);
-
-      expect(diagnostics.finder('color'), 'MaterialColor(primary value: Color(0xffff9800))');
-      expect(diagnostics.finder('icon'), 'IconData(U+F04B6)');
-      expect(diagnostics.finder('inverse'), 'true');
-      expect(diagnostics.finder('rounded'), 'false');
-      expect(diagnostics.finder('size'), 'ZetaWidgetSize.small');
-      expect(diagnostics.finder('type'), 'ZetaIndicatorType.icon');
-      expect(diagnostics.finder('value'), '1');
-    });
   });
-  // group('$componentName Dimensions Tests', () {});
-  // group('$componentName Styling Tests', () {});
-  // group('$componentName Interaction Tests', () {});
+  group('$componentName Dimensions Tests', () {});
+  group('$componentName Styling Tests', () {});
+  group('$componentName Interaction Tests', () {});
   group('$componentName Golden Tests', () {
     goldenTest(goldenFile, const ZetaIndicator(), ZetaIndicator, 'indicator_default');
     goldenTest(goldenFile, const ZetaIndicator.icon(), ZetaIndicator, 'indicator_icon_default');
@@ -184,5 +185,5 @@ void main() {
       'indicator_notification_values',
     );
   });
-  // group('$componentName Performance Tests', () {});
+  group('$componentName Performance Tests', () {});
 }

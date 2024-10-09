@@ -41,7 +41,15 @@ void main() {
     });
 
     group('$componentName Accessibility Tests', () {});
-    group('$componentName Content Tests', () {});
+    group('$componentName Content Tests', () {
+      final debugFillProperties = {
+        '': '',
+      };
+      debugFillPropertiesTests(
+        widget,
+        debugFillProperties,
+      );
+    });
     group('$componentName Dimensions Tests', () {});
     group('$componentName Styling Tests', () {});
     group('$componentName Interaction Tests', () {});
