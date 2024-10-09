@@ -1,6 +1,15 @@
 # Testing Conventions Flutter Components
 
-## Groups
+### Helper Functions
+
+As you are writing tests think about helper function you could write and add them to the `test_utils/utils.dart` file. This will help you and others write tests faster and more consistently.
+
+- For golden tests  
+  `goldenTest(GoldenFiles goldenFile, Widget widget, Type widgetType, String fileName, {bool darkMode = false})`
+- For debugFillProperties tests
+  `debugFillPropertiesTests(Widget widget, Map<String, dynamic> debugFillProperties)`
+
+### Groups
 
 - Accessibility Tests  
   Semantic labels, touch areas, contrast ratios, etc.
@@ -17,7 +26,7 @@
 - Performance Tests  
   Animation performance, rendering performance, data manupulation performance, etc.
 
-## Testing File Template
+### Testing File Template
 
 ```
 import 'dart:ui';
