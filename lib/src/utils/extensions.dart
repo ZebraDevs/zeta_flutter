@@ -97,9 +97,7 @@ extension StringExtensions on String? {
     final List<String> nameParts = this!.split(RegExp(r'\W+'))..removeWhere((item) => item.isEmpty);
     if (nameParts.isEmpty) return '';
     return (nameParts.length > 1
-            // TODODE: Should the initials be the first letter of the first name and the last name or the second name?
-            // ? nameParts[0].substring(0, 1) + nameParts[nameParts.length - 1].substring(0, 1)
-            ? nameParts[0].substring(0, 1) + nameParts[1].substring(0, 1)
+            ? nameParts[0].substring(0, 1) + nameParts[nameParts.length - 1].substring(0, 1)
             : nameParts[0].length > 1
                 ? nameParts[0].substring(0, 2)
                 : nameParts[0])

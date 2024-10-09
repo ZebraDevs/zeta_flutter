@@ -316,6 +316,7 @@ class ZetaAvatar extends ZetaStatelessWidget {
     }
   }
 
+  /// Font size for initials
   static double fontSize(BuildContext context, ZetaAvatarSize size) {
     return pixelSize(context, size) * 4 / 9;
   }
@@ -323,7 +324,6 @@ class ZetaAvatar extends ZetaStatelessWidget {
 
 extension on ZetaAvatarSize {
   double pixelSize(BuildContext context) {
-    //TODO BK butchered this to make pixelSize reusable. Mike, is this ok?
     return ZetaAvatar.pixelSize(context, this);
   }
 
