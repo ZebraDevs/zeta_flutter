@@ -101,7 +101,14 @@ class ZetaBanner extends MaterialBanner {
                               size: Zeta.of(context).spacing.xl_2,
                             ),
                           ),
-                        Flexible(child: Text(title)),
+                        Flexible(
+                          child: Text(
+                            title,
+                            style: ZetaTextStyles.labelLarge.copyWith(
+                              color: Zeta.of(context).colors.textInverse,
+                            ),
+                          ),
+                        ),
                       ],
                     ),
                   ),
