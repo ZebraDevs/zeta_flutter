@@ -1,77 +1,86 @@
 {
   "test/src/components\\accordion\\accordion_test.dart": {
-    "Accessibility Tests": 0,
-    "Content Tests": 2,
-    "Dimensions Tests": 0,
-    "Styling Tests": 1,
-    "Interaction Tests": 2,
-    "Golden Tests": 0,
-    "Performance Tests": 0
+    "'$componentName Accessibility Tests'": 0,
+    "'$componentName Content Tests'": 1,
+    "'$componentName Dimensions Tests'": 0,
+    "'$componentName Styling Tests'": 1,
+    "'$componentName Interaction Tests'": 2,
+    "'$componentName Golden Tests'": 0,
+    "'$componentName Performance Tests'": 0
   },
   "test/src/components\\badge\\indicator_test.dart": {
-    "Accessibility Tests": 0,
-    "Content Tests": 7,
-    "Dimensions Tests": 0,
-    "Styling Tests": 0,
-    "Interaction Tests": 0,
-    "Golden Tests": 5,
-    "Performance Tests": 0
+    "'$componentName Accessibility Tests'": 0,
+    "'$componentName Content Tests'": 6,
+    "'$componentName Dimensions Tests'": 0,
+    "'$componentName Styling Tests'": 0,
+    "'$componentName Interaction Tests'": 0,
+    "'$componentName Golden Tests'": 0,
+    "'$componentName Performance Tests'": 0
   },
   "test/src/components\\badge\\label_test.dart": {
-    "Accessibility Tests": 0,
-    "Content Tests": 8,
-    "Dimensions Tests": 0,
-    "Styling Tests": 0,
-    "Interaction Tests": 0,
-    "Golden Tests": 7,
-    "Performance Tests": 0
+    "'$componentName Accessibility Tests'": 0,
+    "'$componentName Content Tests'": 7,
+    "'$componentName Dimensions Tests'": 0,
+    "'$componentName Styling Tests'": 0,
+    "'$componentName Interaction Tests'": 0,
+    "'$componentName Golden Tests'": 0,
+    "'$componentName Performance Tests'": 0
   },
   "test/src/components\\badge\\priority_pill_test.dart": {
-    "Accessibility Tests": 0,
-    "Content Tests": 5,
-    "Dimensions Tests": 0,
-    "Styling Tests": 0,
-    "Interaction Tests": 0,
-    "Golden Tests": 4,
-    "Performance Tests": 0
+    "'$componentName Accessibility Tests'": 0,
+    "'$componentName Content Tests'": 4,
+    "'$componentName Dimensions Tests'": 0,
+    "'$componentName Styling Tests'": 0,
+    "'$componentName Interaction Tests'": 0,
+    "'$componentName Golden Tests'": 0,
+    "'$componentName Performance Tests'": 0
   },
   "test/src/components\\badge\\status_label_test.dart": {
-    "Accessibility Tests": 0,
-    "Content Tests": 3,
-    "Dimensions Tests": 0,
-    "Styling Tests": 0,
-    "Interaction Tests": 0,
-    "Golden Tests": 2,
-    "Performance Tests": 0
+    "'$componentName Accessibility Tests'": 0,
+    "'$componentName Content Tests'": 2,
+    "'$componentName Dimensions Tests'": 0,
+    "'$componentName Styling Tests'": 0,
+    "'$componentName Interaction Tests'": 0,
+    "'$componentName Golden Tests'": 0,
+    "'$componentName Performance Tests'": 0
   },
   "test/src/components\\badge\\tag_test.dart": {
-    "Accessibility Tests": 0,
-    "Content Tests": 3,
-    "Dimensions Tests": 0,
-    "Styling Tests": 0,
-    "Interaction Tests": 0,
-    "Golden Tests": 2,
-    "Performance Tests": 0
+    "'$componentName Accessibility Tests'": 0,
+    "'$componentName Content Tests'": 2,
+    "'$componentName Dimensions Tests'": 0,
+    "'$componentName Styling Tests'": 0,
+    "'$componentName Interaction Tests'": 0,
+    "'$componentName Golden Tests'": 0,
+    "'$componentName Performance Tests'": 0
   },
-  "test/src/components\\button\\button_test.dart": { "unorganised": 13 },
-  "test/src/components\\chat_item\\chat_item_test.dart": { "unorganised": 9 },
-  "test/src/components\\checkbox\\checkbox_test.dart": { "unorganised": 5 },
-  "test/src/components\\chips\\chip_test.dart": { "unorganised": 6 },
+  "test/src/components\\button\\button_test.dart": { "'ZetaButton Tests'": 1 },
+  "test/src/components\\chat_item\\chat_item_test.dart": {
+    "'ZetaChatItem Tests'": 9
+  },
+  "test/src/components\\checkbox\\checkbox_test.dart": {
+    "'ZetaCheckbox Tests'": 6
+  },
+  "test/src/components\\chips\\chip_test.dart": { "'ZetaChip'": 5 },
   "test/src/components\\comms_button\\comms_button_test.dart": {
-    "unorganised": 9
+    "'ZetaCommsButton Tests'": 9,
+    "'ZetaCommsButton Golden Tests'": 1
   },
-  "test/src/components\\dialpad\\dialpad_test.dart": { "unorganised": 4 },
-  "test/src/components\\fabs\\fab_test.dart": { "unorganised": 8 },
-  "test/src/components\\icon\\icon_test.dart": { "unorganised": 12 },
+  "test/src/components\\dialpad\\dialpad_test.dart": {
+    "'ZetaDialPad Tests'": 1
+  },
+  "test/src/components\\fabs\\fab_test.dart": { "'ZetaFAB Tests'": 2 },
+  "test/src/components\\icon\\icon_test.dart": { "'Zeta Icon'": 12 },
   "test/src/components\\in_page_banner\\in_page_banner_test.dart": {
-    "unorganised": 3
+    "'ZetaInPageBanner Tests'": 1
   },
   "test/src/components\\password\\password_input_test.dart": {},
   "test/src/components\\search_bar\\search_bar_test.dart": {
-    "unorganised": 14
+    "'ZetaSearchBar'": 14
   },
   "test/src/components\\slider\\slider_test.dart": {},
   "test/src/components\\stepper input\\stepper_input_test.dart": {},
-  "test/src/components\\tooltip\\tooltip_test.dart": { "unorganised": 9 },
+  "test/src/components\\tooltip\\tooltip_test.dart": {
+    "'ZetaTooltip Widget Tests'": 9
+  },
   "test/src/components\\top_app_bar\\extended_top_app_bar_test.dart": {}
 }

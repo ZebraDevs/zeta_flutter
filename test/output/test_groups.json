@@ -1,0 +1,269 @@
+{
+  "test/src/components\\accordion\\accordion_test.dart": [
+    { "group": "'$componentName Accessibility Tests'", "tests": [] },
+    {
+      "group": "'$componentName Content Tests'",
+      "tests": [{ "name": "'Programatically change child'" }]
+    },
+    { "group": "'$componentName Dimensions Tests'", "tests": [] },
+    {
+      "group": "'$componentName Styling Tests'",
+      "tests": [{ "name": "'ZetaAccordion changes color on hover'" }]
+    },
+    {
+      "group": "'$componentName Interaction Tests'",
+      "tests": [
+        { "name": "'ZetaAccordion expands and collapses correctly'" },
+        { "name": "'ZetaAccordion changes isOpen property correctly'" }
+      ]
+    },
+    { "group": "'$componentName Golden Tests'", "tests": [] },
+    { "group": "'$componentName Performance Tests'", "tests": [] }
+  ],
+  "test/src/components\\badge\\indicator_test.dart": [
+    { "group": "'$componentName Accessibility Tests'", "tests": [] },
+    {
+      "group": "'$componentName Content Tests'",
+      "tests": [
+        { "name": "'Default constructor initializes with correct parameters'" },
+        { "name": "'Copy with function works'" },
+        { "name": "'Icon constructor initializes with correct parameters'" },
+        { "name": "'Icon constructor with values'" },
+        {
+          "name": "'Notification constructor initializes with correct parameters'"
+        },
+        { "name": "'Notification constructor with values'" }
+      ]
+    },
+    { "group": "'$componentName Dimensions Tests'", "tests": [] },
+    { "group": "'$componentName Styling Tests'", "tests": [] },
+    { "group": "'$componentName Interaction Tests'", "tests": [] },
+    { "group": "'$componentName Golden Tests'", "tests": [] },
+    { "group": "'$componentName Performance Tests'", "tests": [] }
+  ],
+  "test/src/components\\badge\\label_test.dart": [
+    { "group": "'$componentName Accessibility Tests'", "tests": [] },
+    {
+      "group": "'$componentName Content Tests'",
+      "tests": [
+        { "name": "'Initializes with correct parameters'" },
+        { "name": "'Positive status'" },
+        { "name": "'Warning status'" },
+        { "name": "'Negative status'" },
+        { "name": "'Neutral status'" },
+        { "name": "'Dark mode'" },
+        { "name": "'Sharp'" }
+      ]
+    },
+    { "group": "'$componentName Dimensions Tests'", "tests": [] },
+    { "group": "'$componentName Styling Tests'", "tests": [] },
+    { "group": "'$componentName Interaction Tests'", "tests": [] },
+    { "group": "'$componentName Golden Tests'", "tests": [] },
+    { "group": "'$componentName Performance Tests'", "tests": [] }
+  ],
+  "test/src/components\\badge\\priority_pill_test.dart": [
+    { "group": "'$componentName Accessibility Tests'", "tests": [] },
+    {
+      "group": "'$componentName Content Tests'",
+      "tests": [
+        { "name": "'Initializes with correct label and index'" },
+        { "name": "'High priority pill'" },
+        { "name": "'Medium priority pill'" },
+        { "name": "'Low priority pill'" }
+      ]
+    },
+    { "group": "'$componentName Dimensions Tests'", "tests": [] },
+    { "group": "'$componentName Styling Tests'", "tests": [] },
+    { "group": "'$componentName Interaction Tests'", "tests": [] },
+    { "group": "'$componentName Golden Tests'", "tests": [] },
+    { "group": "'$componentName Performance Tests'", "tests": [] }
+  ],
+  "test/src/components\\badge\\status_label_test.dart": [
+    { "group": "'$componentName Accessibility Tests'", "tests": [] },
+    {
+      "group": "'$componentName Content Tests'",
+      "tests": [
+        { "name": "'Initializes with correct properties'" },
+        { "name": "'Initializes with correct label and custom icon'" }
+      ]
+    },
+    { "group": "'$componentName Dimensions Tests'", "tests": [] },
+    { "group": "'$componentName Styling Tests'", "tests": [] },
+    { "group": "'$componentName Interaction Tests'", "tests": [] },
+    { "group": "'$componentName Golden Tests'", "tests": [] },
+    { "group": "'$componentName Performance Tests'", "tests": [] }
+  ],
+  "test/src/components\\badge\\tag_test.dart": [
+    { "group": "'$componentName Accessibility Tests'", "tests": [] },
+    {
+      "group": "'$componentName Content Tests'",
+      "tests": [
+        { "name": "'Initializes right with correct parameters'" },
+        { "name": "'Initializes left with correct parameters'" }
+      ]
+    },
+    { "group": "'$componentName Dimensions Tests'", "tests": [] },
+    { "group": "'$componentName Styling Tests'", "tests": [] },
+    { "group": "'$componentName Interaction Tests'", "tests": [] },
+    { "group": "'$componentName Golden Tests'", "tests": [] },
+    { "group": "'$componentName Performance Tests'", "tests": [] }
+  ],
+  "test/src/components\\button\\button_test.dart": [
+    {
+      "group": "'ZetaButton Tests'",
+      "tests": [{ "name": "'Initializes with correct Label'" }]
+    }
+  ],
+  "test/src/components\\chat_item\\chat_item_test.dart": [
+    {
+      "group": "'ZetaChatItem Tests'",
+      "tests": [
+        { "name": "'ZetaChatItem displays correctly'" },
+        { "name": "'ZetaChatItem highlighted'" },
+        { "name": "'ZetaChatItem slidable actions'" },
+        { "name": "'ZetaChatItem with pale slidable button colors'" },
+        { "name": "'ZetaChatItem with 2 pale buttons and 2 regular buttons'" },
+        { "name": "'ZetaChatItem with custom leading widget'" },
+        { "name": "'ZetaChatItem with custom slidable buttons'" },
+        { "name": "'debugFillProperties works correctly'" },
+        { "name": "'ZetaChatItem displays correctly'" }
+      ]
+    }
+  ],
+  "test/src/components\\checkbox\\checkbox_test.dart": [
+    {
+      "group": "'ZetaCheckbox Tests'",
+      "tests": [
+        { "name": "'Initializes with correct parameters'" },
+        { "name": "'ZetaCheckbox changes state on tap'" },
+        { "name": "\"Disabled ZetaCheckbox doesn't change state on tap\"" },
+        { "name": "'ZetaCheckbox interaction'" },
+        { "name": "'ZetaCheckbox UI changes on hover'" },
+        { "name": "'debugFillProperties works correctly'" }
+      ]
+    }
+  ],
+  "test/src/components\\chips\\chip_test.dart": [
+    {
+      "group": "'ZetaChip'",
+      "tests": [
+        { "name": "'renders label correctly'" },
+        { "name": "'triggers onTap callback when tapped'" },
+        { "name": "'triggers onToggle callback when selected'" },
+        { "name": "'renders leading widget correctly'" },
+        { "name": "'renders trailing widget correctly'" }
+      ]
+    }
+  ],
+  "test/src/components\\comms_button\\comms_button_test.dart": [
+    {
+      "group": "'ZetaCommsButton Tests'",
+      "tests": [
+        { "name": "'Initializes with correct label'" },
+        { "name": "'Initializes with correct icon'" },
+        { "name": "'Initializes with correct type'" },
+        { "name": "'Changes label, icon, and type when toggled'" },
+        { "name": "'Button is not toggleable when onToggle is null'" },
+        { "name": "'Button calls onPressed callback when pressed'" },
+        { "name": "'debugFillProperties Test'" },
+        { "name": "'Button meets accessibility  requirements'" },
+        { "name": "'Button meets accessibility requirements when toggled'" }
+      ]
+    },
+    {
+      "group": "'ZetaCommsButton Golden Tests'",
+      "tests": [{ "name": "'ZetaCommsButton with type $type'" }]
+    }
+  ],
+  "test/src/components\\dialpad\\dialpad_test.dart": [
+    {
+      "group": "'ZetaDialPad Tests'",
+      "tests": [
+        { "name": "'Initializes with correct parameters and is enabled'" }
+      ]
+    }
+  ],
+  "test/src/components\\fabs\\fab_test.dart": [
+    {
+      "group": "'ZetaFAB Tests'",
+      "tests": [
+        { "name": "'Initializes with correct parameters'" },
+        { "name": "'OnPressed callback'" }
+      ]
+    }
+  ],
+  "test/src/components\\icon\\icon_test.dart": [
+    {
+      "group": "'Zeta Icon'",
+      "tests": [
+        { "name": "'renders icon correctly'" },
+        { "name": "'applies correct size to icon'" },
+        { "name": "'applies correct color to icon'" },
+        { "name": "'applies correct semantic label to icon'" },
+        { "name": "'applies sharp family to icon'" },
+        { "name": "'applies correct font family to icon'" },
+        { "name": "'applies correct font family when rounded is false'" },
+        {
+          "name": "'does not change fontFamily if specific rounded / sharp variant is requested'"
+        },
+        { "name": "'apply() sets round icon font'" },
+        { "name": "'apply() uses rounded from context'" },
+        {
+          "name": "'apply() returns the same icon if not in ZetaIcons family'"
+        },
+        { "name": "'debugFillProperties works correctly'" }
+      ]
+    }
+  ],
+  "test/src/components\\in_page_banner\\in_page_banner_test.dart": [
+    {
+      "group": "'ZetaInPageBanner Tests'",
+      "tests": [{ "name": "'ZetaInPageBanner creation'" }]
+    }
+  ],
+  "test/src/components\\password\\password_input_test.dart": [],
+  "test/src/components\\search_bar\\search_bar_test.dart": [
+    {
+      "group": "'ZetaSearchBar'",
+      "tests": [
+        { "name": "'renders with default parameters'" },
+        { "name": "'golden: renders initializes correctly'" },
+        { "name": "'golden: renders size medium correctly'" },
+        { "name": "'golden: renders size small correctly'" },
+        { "name": "'golden: renders shape full correctly'" },
+        { "name": "'golden: renders shape sharp correctly'" },
+        { "name": "'sets initial value correctly'" },
+        { "name": "'sets updated initial value correctly'" },
+        { "name": "'triggers onChanged callback when text is entered'" },
+        {
+          "name": "'triggers onSubmit callback when submit action is performed'"
+        },
+        {
+          "name": "'triggers onSpeechToText callback when microphone button is pressed'"
+        },
+        { "name": "'does not allow text input when disabled'" },
+        { "name": "'speech-to-text button visibility'" },
+        { "name": "'clear button functionality'" }
+      ]
+    }
+  ],
+  "test/src/components\\slider\\slider_test.dart": [],
+  "test/src/components\\stepper input\\stepper_input_test.dart": [],
+  "test/src/components\\tooltip\\tooltip_test.dart": [
+    {
+      "group": "'ZetaTooltip Widget Tests'",
+      "tests": [
+        { "name": "'renders with default properties'" },
+        { "name": "'renders with custom color and padding'" },
+        { "name": "'renders with custom text style'" },
+        { "name": "'renders with arrow correctly in up direction'" },
+        { "name": "'renders with arrow correctly in down direction'" },
+        { "name": "'renders with arrow correctly in left direction'" },
+        { "name": "'renders with arrow correctly in right direction'" },
+        { "name": "'renders with rounded and sharp corners'" },
+        { "name": "'debugFillProperties works correctly'" }
+      ]
+    }
+  ],
+  "test/src/components\\top_app_bar\\extended_top_app_bar_test.dart": []
+}
