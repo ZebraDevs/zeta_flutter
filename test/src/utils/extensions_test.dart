@@ -225,7 +225,7 @@ void main() {
   group('StringExtensions extension', () {
     test('initials returns correct initials', () {
       expect('John Doe'.initials, 'JD');
-      expect('A B C'.initials, 'AB');
+      expect('A B C'.initials, 'AC');
       expect('Single'.initials, 'SI');
       expect('A'.initials, 'A');
       expect('a'.initials, 'A');
