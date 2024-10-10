@@ -1,6 +1,5 @@
 import 'dart:ui';
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
@@ -10,19 +9,20 @@ import '../../../test_utils/utils.dart';
 
 void main() {
   const String componentName = 'ZetaAccordion';
-  // group('$componentName Accessibility Tests', () {});
+  group('$componentName Accessibility Tests', () {});
   group('$componentName Content Tests', () {
-    testWidgets('debugFillProperties works correctly', (WidgetTester tester) async {
-      final diagnostics = DiagnosticPropertiesBuilder();
+    final debugFillProperties = {
+      'title': '"Title"',
+      'rounded': 'null',
+      'contained': 'false',
+      'isOpen': 'false',
+    };
+    debugFillPropertiesTests(
       const ZetaAccordion(
         title: 'Title',
-      ).debugFillProperties(diagnostics);
-
-      expect(diagnostics.finder('title'), '"Title"');
-      expect(diagnostics.finder('rounded'), 'null');
-      expect(diagnostics.finder('contained'), 'false');
-      expect(diagnostics.finder('isOpen'), 'false');
-    });
+      ),
+      debugFillProperties,
+    );
 
     testWidgets('Programatically change child', (WidgetTester tester) async {
       Widget? child = const Text('Text 1');
@@ -49,7 +49,7 @@ void main() {
       expect(accordionContent, findsNothing);
     });
   });
-  // group('$componentName Dimensions Tests', () {});
+  group('$componentName Dimensions Tests', () {});
   group('$componentName Styling Tests', () {
     testWidgets('ZetaAccordion changes color on hover', (WidgetTester tester) async {
       await tester.pumpWidget(
@@ -157,6 +157,6 @@ void main() {
       expect(sizeTransition.sizeFactor.value, 0);
     });
   });
-  // group('$componentName Golden Tests', () {});
-  // group('$componentName Performance Tests', () {});
+  group('$componentName Golden Tests', () {});
+  group('$componentName Performance Tests', () {});
 }
