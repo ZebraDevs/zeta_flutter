@@ -152,7 +152,7 @@ void main() {
         final typeSize = ZetaAvatar.pixelSize(
           tester.element(find.byType(ZetaAvatar)),
           size,
-        ); //TODO BK butchered this to make pixelSize reusable. Mike, is this ok?
+        );
 
         expect(avatarSize.width, equals(typeSize));
         expect(avatarSize.height, equals(typeSize));

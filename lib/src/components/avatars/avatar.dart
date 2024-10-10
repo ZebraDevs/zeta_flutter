@@ -289,8 +289,7 @@ class ZetaAvatar extends ZetaStatelessWidget {
       ..add(DiagnosticsProperty<TextStyle>('initialTextStyle', initialTextStyle));
   }
 
-  //TODO BK butchered this to make pixelSize reusable. Mike, is this ok?
-  ///
+  /// Returns pixel size for [ZetaAvatarSize]
   static double pixelSize(BuildContext context, ZetaAvatarSize size) {
     switch (size) {
       case ZetaAvatarSize.xxxl:
