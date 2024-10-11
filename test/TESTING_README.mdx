@@ -1,0 +1,76 @@
+# Testing Conventions Flutter Components
+
+### Helper Functions
+
+As you are writing tests think about helper function you could write and add them to the `test_utils/utils.dart` file. This will help you and others write tests faster and more consistently.
+
+- For golden tests  
+  `goldenTest(GoldenFiles goldenFile, Widget widget, Type widgetType, String fileName, {bool darkMode = false})`
+- For debugFillProperties tests
+  `debugFillPropertiesTest(Widget widget, Map<String, dynamic> debugFillProperties)`
+
+### Groups
+
+- Accessibility Tests  
+  Semantic labels, touch areas, contrast ratios, etc.
+- Content Tests  
+  Finds the widget, parameter statuses, etc.
+- Dimensions Tests  
+  Size, padding, margin, alignment, etc.
+- Styling Tests  
+  Rendered colors, fonts, borders, radii etc.
+- Interaction Tests  
+  Gesture recognizers, taps, drags, etc.
+- Golden Tests  
+  Compares the rendered widget with the golden file. Use the `goldenTest()` function from test_utils/utils.dart.
+- Performance Tests  
+  Animation performance, rendering performance, data manupulation performance, etc.
+
+### Testing File Template
+
+```
+import 'dart:ui';
+
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:zeta_flutter/zeta_flutter.dart';
+
+import '../../../test_utils/test_app.dart';
+import '../../../test_utils/tolerant_comparator.dart';
+import '../../../test_utils/utils.dart';
+
+void main() {
+    const String componentName = 'ENTER_COMPONENT_NAME (e.g. ZetaButton)';
+    const String parentFolder = 'ENTER_PARENT_FOLDER (e.g. button)';
+
+    const goldenFile = GoldenFiles(component: parentFolder);
+    setUpAll(() {
+        goldenFileComparator = TolerantComparator(goldenFile.uri);
+    });
+
+    group('$componentName Accessibility Tests', () {});
+    group('$componentName Content Tests', () {
+      final debugFillProperties = {
+        '': '',
+      };
+      debugFillPropertiesTest(
+        widget,
+        debugFillProperties,
+      );
+    });
+    group('$componentName Dimensions Tests', () {});
+    group('$componentName Styling Tests', () {});
+    group('$componentName Interaction Tests', () {});
+    group('$componentName Golden Tests', () {
+        goldenTest(goldenFile, widget, widgetType, 'PNG_FILE_NAME');
+    });
+    group('$componentName Performance Tests', () {});
+}
+```
+
+#### Visibility Excel Sheet
+
+https://zebra-my.sharepoint.com/:x:/p/de7924/Ea0l7BF7AzJJoBVPrg4cIswBZRyek6iNT3zzwDcLn-5ZGg?e=NTJIZU
+
+### Test Table
