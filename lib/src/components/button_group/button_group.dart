@@ -290,6 +290,7 @@ class _ZetaGroupButtonState extends State<ZetaGroupButton> {
       leadingIcon = IconTheme(
         data: IconThemeData(
           size: iconSize,
+          color: widget.isInverse ? colors.mainInverse : colors.mainDefault,
         ),
         child: selectedItem!.icon!,
       );

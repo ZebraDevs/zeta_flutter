@@ -235,7 +235,7 @@ class ZetaNotificationListItem extends ZetaStatelessWidget {
     final colors = Zeta.of(context).colors;
 
     return BoxDecoration(
-      color: notificationRead ? colors.surfacePrimary : colors.surfaceSelected,
+      color: notificationRead ? colors.surfaceDefault : colors.surfaceSelected,
       borderRadius: Zeta.of(context).radius.rounded,
       boxShadow: (showDivider ?? false)
           ? [

@@ -171,11 +171,11 @@ class _GlobalHeaderState extends State<ZetaGlobalHeader> {
         child.copyWith(
           active: _selectedIndex == index,
           dropdown: child.dropdown,
-          handlePress: () {
+          onTap: () {
             setState(() {
               _selectedIndex = index;
             });
-            child.handlePress?.call();
+            child.onTap?.call();
           },
         ),
       );

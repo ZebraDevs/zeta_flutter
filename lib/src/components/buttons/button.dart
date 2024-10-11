@@ -244,7 +244,7 @@ class ZetaButton extends ZetaStatelessWidget {
         return Zeta.of(context).spacing.medium;
 
       case ZetaWidgetSize.small:
-        return Zeta.of(context).spacing.minimum;
+        return Zeta.of(context).spacing.small;
     }
   }
 

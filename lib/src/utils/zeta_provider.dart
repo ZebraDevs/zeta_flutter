@@ -540,9 +540,6 @@ ThemeData generateZetaTheme({
     brightness: brightness,
     colorScheme: colorScheme.copyWith(brightness: brightness),
     textTheme: zetaTextTheme,
-    iconTheme: IconThemeData(
-      size: kZetaIconSize,
-      color: brightness == Brightness.light ? colorScheme.onPrimary : colorScheme.onSurface,
-    ),
+    iconTheme: const IconThemeData(size: kZetaIconSize),
   );
 }

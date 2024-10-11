@@ -137,7 +137,7 @@ class _ZetaTopAppBarSearchFieldState extends State<ZetaTopAppBarSearchField> wit
   @override
   Widget build(BuildContext context) {
     final colors = Zeta.of(context).colors;
-    final extendedOffset = Zeta.of(context).spacing.minimum * 6.5; // TODO(UX-1202): Irregular spacing values
+    final extendedOffset = Zeta.of(context).spacing.minimum * 6; // TODO(UX-1202): Irregular spacing values
 
     return ZetaRoundedScope(
       rounded: context.rounded,

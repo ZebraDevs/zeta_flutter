@@ -9,7 +9,7 @@ class ZetaTabBar extends TabBar {
     required BuildContext context,
     required List<ZetaTab> super.tabs,
     TabAlignment super.tabAlignment = TabAlignment.center,
-    @Deprecated('Use disabled instead. ' 'enabled is deprecated as of 0.11.0') bool enabled = true,
+    @Deprecated('Set ontap to null instead. ' 'enabled is deprecated as of 0.11.0') bool enabled = true,
     super.isScrollable,
     super.enableFeedback,
     super.dragStartBehavior,
@@ -33,5 +33,6 @@ class ZetaTabBar extends TabBar {
           unselectedLabelStyle: ZetaTextStyles.labelLarge.copyWith(
             color: onTap != null ? Zeta.of(context).colors.mainSubtle : Zeta.of(context).colors.mainDisabled,
           ),
+          dividerColor: Colors.transparent,
         );
 }

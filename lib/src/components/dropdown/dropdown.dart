@@ -518,7 +518,7 @@ class _DropdownItemState<T> extends State<_DropdownItem<T>> {
           },
         );
       case ZetaDropdownMenuType.standard:
-        return widget.value.icon ?? SizedBox(width: Zeta.of(context).spacing.xl_2);
+        return widget.value.icon ?? SizedBox(width: Zeta.of(context).spacing.xl);
     }
   }
 
