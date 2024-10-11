@@ -27,7 +27,7 @@ void main() {
       'type': 'urgent',
       'size': 'large',
     };
-    debugFillPropertiesTests(
+    debugFillPropertiesTest(
       const ZetaPriorityPill(
         label: 'Test label',
         rounded: false,

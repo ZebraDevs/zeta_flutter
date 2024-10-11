@@ -22,7 +22,7 @@ void main() {
       'status': 'positive',
       'rounded': 'false',
     };
-    debugFillPropertiesTests(
+    debugFillPropertiesTest(
       const ZetaLabel(
         label: 'Test label',
         rounded: false,

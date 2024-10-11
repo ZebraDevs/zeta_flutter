@@ -9,6 +9,7 @@ import '../../../test_utils/utils.dart';
 
 void main() {
   const String componentName = 'ZetaAccordion';
+
   group('$componentName Accessibility Tests', () {});
   group('$componentName Content Tests', () {
     final debugFillProperties = {
@@ -17,7 +18,7 @@ void main() {
       'contained': 'false',
       'isOpen': 'false',
     };
-    debugFillPropertiesTests(
+    debugFillPropertiesTest(
       const ZetaAccordion(
         title: 'Title',
       ),

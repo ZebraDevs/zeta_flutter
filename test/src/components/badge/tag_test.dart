@@ -21,7 +21,7 @@ void main() {
       'rounded': 'false',
       'direction': 'left',
     };
-    debugFillPropertiesTests(
+    debugFillPropertiesTest(
       const ZetaTag(
         label: 'Test label',
         rounded: false,

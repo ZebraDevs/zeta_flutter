@@ -1,170 +1,3 @@
-// import 'dart:convert';
-// import 'dart:io';
-
-// enum TestGroups {
-//   accessibility,
-//   content,
-//   dimensions,
-//   styling,
-//   interaction,
-//   golden,
-//   performance,
-// }
-
-// void main() async {
-//   final testDirectory = Directory('test/src/components');
-//   final outputDirectory = Directory('test/output');
-//   if (!outputDirectory.existsSync()) {
-//     await outputDirectory.create(recursive: true);
-//   }
-
-//   final testFiles =
-//       testDirectory.listSync(recursive: true).where((entity) => entity is File && entity.path.endsWith('_test.dart'));
-//   final Map<String, Map<String, int>> testCounts = {};
-
-//   for (final FileSystemEntity file in testFiles) {
-//     final String content = await File(file.path).readAsString();
-
-//     // final List<String> content = await File(file.path).readAsLines();
-//     final Map<String, int> testGroups = _extractTestGroups(content);
-//     testCounts[file.path] = testGroups;
-//   }
-
-//   final jsonOutput = jsonEncode(testCounts);
-//   final outputFile = File('${outputDirectory.path}/test_counts.json');
-//   await outputFile.writeAsString(jsonOutput);
-
-//   print('Test counts saved to ${outputFile.path}');
-// }
-
-// Map<String, int> _extractTestGroups(String content) {
-//   final Map<String, int> testGroups = {};
-//   final groupRegex = RegExp(r"group\('([^']+)'");
-//   final testRegex = RegExp(r"testWidgets\('([^']+)'");
-//   final goldenTestRegex = RegExp(r'goldenTest\(');
-//   final debugFillPropertiesRegex = RegExp(r'debugFillPropertiesTests\(');
-
-//   final groupMatches = groupRegex.allMatches(content);
-//   for (var groupMatch in groupMatches) {
-//     final groupName = groupMatch.group(1);
-//     print('groupMatch: $groupMatch');
-//     if (groupName != null) {
-//       final groupContent = content.substring(groupMatch.end).split('});\r\n  });').first;
-//       print('groupContent: $groupName + $groupContent');
-
-//       final testMatches = testRegex.allMatches(groupContent).toList() +
-//           goldenTestRegex.allMatches(groupContent).toList() +
-//           debugFillPropertiesRegex.allMatches(groupContent).toList();
-//       if (!TestGroups.values
-//           .map((el) => el.name)
-//           .contains(groupName.split('Name').last.trim().split('Tests').first.trim().toLowerCase())) {
-//         testGroups['unorganised'] = testMatches.length;
-//         return testGroups;
-//       }
-//       testGroups[groupName.split('Name').last.trim()] = testMatches.length;
-//     }
-//   }
-
-//   return testGroups;
-// }
-
-// void main() async {
-//   final outputDirectory = Directory('test/output');
-//   if (!outputDirectory.existsSync()) {
-//     await outputDirectory.create(recursive: true);
-//   }
-//   const filePath = 'test/src/components/accordion/accordion_test.dart';
-//   final file = File(filePath);
-//   final contents = await file.readAsString();
-//   final groupRegex = RegExp(r"group\('(.+?)', \(\) \{([\s\S]*?)\}\);", multiLine: true);
-//   // final groupRegex = RegExp(r"group\('(.+?)', \(\) \{([\s\S]+?)\}\);", multiLine: true);
-//   // final testRegex = RegExp(r"testWidgets\('(.+?)', \((.+?)\) async \{([\s\S]+?)\}\);", multiLine: true);
-//   // final testRegex = RegExp(r"testWidgets\('(.+?)', \((.+?)\) async \{([\s\S]*?)\}\);", multiLine: true);
-//   final testRegex = RegExp(r"testWidgets\('([^']+)'");
-
-//   final groups = <Map<String, dynamic>>[];
-
-//   for (final groupMatch in groupRegex.allMatches(contents)) {
-//     final groupName = groupMatch.group(1);
-//     final groupBody = groupMatch.group(0);
-//     print('$groupName:::: $groupBody');
-//     // final l = groupMatch.group(0);
-//     // print('groupMatch: $l');
-
-//     final tests = <Map<String, dynamic>>[];
-
-//     for (final testMatch in testRegex.allMatches(groupBody!)) {
-//       final testName = testMatch.group(0);
-//       // final testBody = testMatch.group(3);
-//       // print('$testName');
-
-//       // final steps = testBody!.split(';').map((step) => step.trim()).where((step) => step.isNotEmpty).toList();
-
-//       tests.add({
-//         'name': testName,
-//         // 'steps': steps,
-//       });
-//     }
-
-//     groups.add({
-//       'group': groupName,
-//       'tests': tests,
-//     });
-//   }
-
-//   final jsonOutput = jsonEncode(groups);
-//   print(jsonOutput);
-//   final outputFile = File('${outputDirectory.path}/test_groups.json');
-//   await outputFile.writeAsString(jsonOutput);
-// }
-
-// void main() async {
-//   final outputDirectory = Directory('test/output');
-//   if (!outputDirectory.existsSync()) {
-//     await outputDirectory.create(recursive: true);
-//   }
-
-//   const filePath = 'test/src/components/accordion/accordion_test.dart';
-//   final file = File(filePath);
-//   final contents = await file.readAsString();
-
-//   final groupRegex = RegExp(r"group\('(.+?)', \(\) \{([\s\S]*?)\}\);", multiLine: true);
-//   final testRegex = RegExp(r"testWidgets\('(.+?)', \((.+?)\) async \{([\s\S]*?)\}\);", multiLine: true);
-
-//   final groups = <Map<String, dynamic>>[];
-
-//   for (final groupMatch in groupRegex.allMatches(contents)) {
-//     final groupName = groupMatch.group(1);
-//     final groupBody = groupMatch.group(2);
-
-//     final tests = <Map<String, dynamic>>[];
-
-//     for (final testMatch in testRegex.allMatches(groupBody!)) {
-//       final testName = testMatch.group(1);
-//       final testBody = testMatch.group(3);
-
-//       final steps = testBody!
-//           .split(';')
-//           .map((step) => step.trim())
-//           .where((step) => step.isNotEmpty)
-//           .toList();
-
-//       tests.add({
-//         'name': testName,
-//         'steps': steps,
-//       });
-//     }
-
-//     groups.add({
-//       'group': groupName,
-//       'tests': tests,
-//     });
-//   }
-
-//   final jsonOutput = jsonEncode(groups);
-//   print(jsonOutput);
-// }
-
 import 'dart:convert';
 import 'dart:io';
 
@@ -172,33 +5,93 @@ import 'package:analyzer/dart/analysis/utilities.dart';
 import 'package:analyzer/dart/ast/ast.dart';
 import 'package:analyzer/dart/ast/visitor.dart';
 
-class TestOutlineVisitor extends RecursiveAstVisitor<void> {
+String getGroupName(MethodInvocation node) {
+  return node.argumentList.arguments.first
+      .toString()
+      .replaceAll("'", '')
+      .replaceAll(r'$componentName ', '')
+      .replaceAll(' Tests', '');
+}
+
+String getTestName(MethodInvocation node) {
+  return node.argumentList.arguments.first.toString().replaceAll("'", '');
+}
+
+String getMethodName(MethodInvocation node) {
+  return node.methodName.name;
+}
+
+bool hasNullParent(MethodInvocation node) {
+  return node.parent!.parent!.thisOrAncestorMatching((node) => node is MethodInvocation) == null;
+}
+
+bool methodIsOneOf(List<String> methods, MethodInvocation node) {
+  return methods.contains(node.methodName.name);
+}
+
+extension StringExtension on String {
+  String capitalize() {
+    if (isEmpty) return this;
+    return this[0].toUpperCase() + substring(1);
+  }
+
+  String capitalizeEachWord() {
+    return split(' ').map((word) => word.capitalize()).join(' ');
+  }
+}
+
+String getComponentNameFromTestPath(String path) {
+  return path.split(r'\').last.split('_test').first.replaceAll('_', ' ').capitalizeEachWord();
+}
+
+class TestGroupVisitor extends RecursiveAstVisitor<void> {
   final List<Map<String, dynamic>> groups = [];
 
   @override
   void visitMethodInvocation(MethodInvocation node) {
-    if (node.methodName.name == 'group') {
-      final groupName = node.argumentList.arguments.first.toString();
-      final groupBody = node.argumentList.arguments.last;
+    if (hasNullParent(node)) {
+      if (methodIsOneOf(['group'], node)) {
+        final groupName = getGroupName(node);
+        final groupBody = node.argumentList.arguments.last;
 
-      final tests = <Map<String, dynamic>>[];
+        final tests = <Map<String, dynamic>>[];
 
-      if (groupBody is FunctionExpression) {
-        final body = groupBody.body;
-        if (body is BlockFunctionBody) {
-          body.block.visitChildren(TestVisitor(tests));
+        if (groupBody is FunctionExpression) {
+          final body = groupBody.body;
+          if (body is BlockFunctionBody) {
+            body.block.visitChildren(TestVisitor(tests));
+          }
+        }
+
+        groups.add({
+          'group': groupName,
+          'tests': tests,
+        });
+      } else if (methodIsOneOf(['testWidgets', 'test', 'goldenTest', 'debugFillPropertiesTest'], node)) {
+        final testName = getTestName(node);
+
+        if (groups.any((el) => el['group'] == 'unorganised')) {
+          final unorganisedGroup = groups.firstWhere((el) => el['group'] == 'unorganised');
+          (unorganisedGroup['tests'] as List).add({
+            'name': testName,
+          });
+        } else {
+          groups.add({
+            'group': 'unorganised',
+            'tests': [
+              {
+                'name': testName,
+              },
+            ],
+          });
         }
       }
-
-      groups.add({
-        'group': groupName,
-        'tests': tests,
-      });
     }
     super.visitMethodInvocation(node);
   }
 }
 
+// Visitor to extract test names
 class TestVisitor extends RecursiveAstVisitor<void> {
   TestVisitor(this.tests);
 
@@ -206,42 +99,117 @@ class TestVisitor extends RecursiveAstVisitor<void> {
 
   @override
   void visitMethodInvocation(MethodInvocation node) {
-    if (node.methodName.name == 'testWidgets') {
-      final testName = node.argumentList.arguments.first.toString();
-
+    if (methodIsOneOf(['testWidgets', 'test'], node)) {
+      final testName = getTestName(node);
       tests.add({
         'name': testName,
       });
+    } else if (methodIsOneOf(['debugFillPropertiesTest'], node)) {
+      tests.add({
+        'name': getMethodName(node),
+      });
+    } else if (methodIsOneOf(['goldenTest'], node)) {
+      tests.add({
+        'name': node.toString(),
+      });
     }
+
     super.visitMethodInvocation(node);
   }
 }
 
+String generateMDX(Map<String, Map<String, int>> testCount) {
+  final List<String> groupNames = [
+    'Accessibility',
+    'Content',
+    'Dimensions',
+    'Styling',
+    'Interaction',
+    'Golden',
+    'Performance',
+    'unorganised',
+  ];
+
+  final List<String> data = [
+    '| Component | Accessibility | Content | Dimensions | Styling | Interaction | Golden | Performance | Unorganised | Total Tests |',
+    '| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |',
+  ];
+
+  testCount.forEach((filePath, groups) {
+    final componentName = getComponentNameFromTestPath(filePath);
+    final totalTests = groups.values.fold(0, (previousValue, element) => previousValue + element);
+    int otherGroups = 0;
+    groups.forEach((key, value) {
+      if (!groupNames.contains(key)) {
+        otherGroups += value;
+      }
+    });
+    otherGroups += groups['unorganised'] ?? 0;
+
+    data.add(
+      '| $componentName | ${groups['Accessibility'] ?? 0} | ${groups['Content'] ?? 0} | ${groups['Dimensions'] ?? 0} | ${groups['Styling'] ?? 0} | ${groups['Interaction'] ?? 0} | ${groups['Golden'] ?? 0} | ${groups['Performance'] ?? 0} | $otherGroups | $totalTests |',
+    );
+  });
+
+  final Map<String, int> groupTotals = {
+    'Accessibility': 0,
+    'Content': 0,
+    'Dimensions': 0,
+    'Styling': 0,
+    'Interaction': 0,
+    'Golden': 0,
+    'Performance': 0,
+    'unorganised': 0,
+  };
+
+  testCount.forEach((filePath, groups) {
+    groups.forEach((key, value) {
+      if (!groupNames.contains(key)) {
+        groupTotals['unorganised'] = groupTotals['unorganised']! + value;
+      } else {
+        groupTotals[key] = groupTotals[key]! + value;
+      }
+    });
+  });
+
+  data.add(
+    '| Total Tests | ${groupTotals['Accessibility']} | ${groupTotals['Content']} | ${groupTotals['Dimensions']} | ${groupTotals['Styling']} | ${groupTotals['Interaction']} | ${groupTotals['Golden']} | ${groupTotals['Performance']} | ${groupTotals['unorganised']} | ${groupTotals.values.fold(0, (previousValue, element) => previousValue + element)} |',
+  );
+
+  return data.join('\n');
+}
+
 void main() async {
+  // check for output directory and create if it doesn't exist
   final outputDirectory = Directory('test/output');
   if (!outputDirectory.existsSync()) {
     await outputDirectory.create(recursive: true);
   }
+
+  // get all test files
   final testDirectory = Directory('test/src/components');
   final testFiles =
       testDirectory.listSync(recursive: true).where((entity) => entity is File && entity.path.endsWith('_test.dart'));
   final Map<String, List<Map<String, dynamic>>> testGroups = {};
 
+  // parse each test file and extract test groups
   for (final FileSystemEntity file in testFiles) {
     final contents = await File(file.path).readAsString();
 
     final parseResult = parseString(content: contents);
-    final visitor = TestOutlineVisitor();
+    final visitor = TestGroupVisitor();
     parseResult.unit.visitChildren(visitor);
     testGroups[file.path] = visitor.groups;
   }
 
-  final jsonOutputGroups = jsonEncode(testGroups);
-  final outputFileGroups = File('${outputDirectory.path}/test_groups.json');
-  await outputFileGroups.writeAsString(jsonOutputGroups);
+  // write test groups to file
+  // final jsonOutputGroups = jsonEncode(testGroups);
+  // final outputFileGroups = File('${outputDirectory.path}/test_groups.json');
+  // await outputFileGroups.writeAsString(jsonOutputGroups);
 
   final Map<String, Map<String, int>> testCount = {};
 
+  // count the number of tests in each group
   testGroups.forEach((filePath, groups) {
     final Map<String, int> groupCounts = {};
     for (final group in groups) {
@@ -251,8 +219,23 @@ void main() async {
     }
     testCount[filePath] = groupCounts;
   });
-  final jsonOutput = jsonEncode(testCount);
-  print(jsonOutput);
-  final outputFile = File('${outputDirectory.path}/test_counts.json');
-  await outputFile.writeAsString(jsonOutput);
+
+  // write test counts to file
+  // final jsonOutput = jsonEncode(testCount);
+  // final outputFile = File('${outputDirectory.path}/test_counts.json');
+  // await outputFile.writeAsString(jsonOutput);
+
+  // generate MDX table
+  final mdxOutput = generateMDX(testCount);
+  final mdxFile = File('${outputDirectory.path}/test_table.mdx');
+  await mdxFile.writeAsString(mdxOutput);
 }
+
+
+
+/** TODO: 
+ * - Abstract the code into functions
+ * - Add comments
+ * - Add error handling
+ * - GITHUB ACTION TO RUN THE SCRIPT
+ * */ 

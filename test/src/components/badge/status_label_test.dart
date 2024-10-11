@@ -23,7 +23,7 @@ void main() {
       'customIcon': 'IconData(U+F04B6)',
       'status': 'info',
     };
-    debugFillPropertiesTests(
+    debugFillPropertiesTest(
       const ZetaStatusLabel(
         label: 'Test label',
         rounded: false,

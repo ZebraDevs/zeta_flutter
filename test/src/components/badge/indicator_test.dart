@@ -25,7 +25,7 @@ void main() {
       'type': 'ZetaIndicatorType.icon',
       'value': '1',
     };
-    debugFillPropertiesTests(
+    debugFillPropertiesTest(
       const ZetaIndicator(
         color: Colors.orange,
         icon: Icons.abc,
