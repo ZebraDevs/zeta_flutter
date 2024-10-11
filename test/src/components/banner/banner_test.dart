@@ -23,13 +23,16 @@ ZetaColorSwatch _backgroundColorFromType(BuildContext context, ZetaBannerStatus 
 }
 
 void main() {
-  const goldenFile = GoldenFiles(component: 'banner');
+  const String componentName = 'ZetaBanner';
+  const String parentFolder = 'banner';
+
+  const goldenFile = GoldenFiles(component: parentFolder);
 
   setUpAll(() {
     goldenFileComparator = TolerantComparator(goldenFile.uri);
   });
 
-  group('ZetaBanner Accessibility Tests', () {
+  group('$componentName Accessibility Tests', () {
     for (final type in ZetaBannerStatus.values) {
       testWidgets('meets contrast ratio guideline for $type', (WidgetTester tester) async {
         await tester.pumpWidget(
@@ -118,7 +121,7 @@ void main() {
     });
   });
 
-  group('ZetaBanner Content Tests', () {
+  group('$componentName Content Tests', () {
     testWidgets('ZetaBanner title is correct', (WidgetTester tester) async {
       await tester.pumpWidget(
         TestApp(
@@ -192,7 +195,7 @@ void main() {
     });
   });
 
-  group('ZetaBanner Dimension Tests', () {
+  group('$componentName Dimension Tests', () {
     testWidgets('icon is the correct size', (WidgetTester tester) async {
       await tester.pumpWidget(
         TestApp(
@@ -256,7 +259,7 @@ void main() {
     });
   });
 
-  group('ZetaBanner Styling Tests', () {
+  group('$componentName Styling Tests', () {
     for (final type in ZetaBannerStatus.values) {
       testWidgets('title styles are correct for $type', (WidgetTester tester) async {
         await tester.pumpWidget(
@@ -328,32 +331,28 @@ void main() {
     }
   });
 
-  group('ZetaBanner Interaction Tests', () {});
+  group('$componentName Interaction Tests', () {});
 
-  group('ZetaBanner Golden Tests', () {
+  group('$componentName Golden Tests', () {
     for (final type in ZetaBannerStatus.values) {
-      testWidgets('ZetaBanner ${type.toString().split('.').last} golden', (WidgetTester tester) async {
-        await tester.pumpWidget(
-          TestApp(
-            home: Builder(
-              builder: (context) {
-                return ZetaBanner(
-                  context: context,
-                  title: 'Banner Title',
-                  leadingIcon: Icons.info,
-                  trailing: const ZetaIcon(Icons.chevron_right),
-                  type: type,
-                );
-              },
-            ),
-          ),
-        );
-
-        await expectLater(
-          find.byType(ZetaBanner),
-          matchesGoldenFile(goldenFile.getFileUri('banner_${type.toString().split('.').last}')),
-        );
-      });
+      goldenTest(
+        goldenFile,
+        Builder(
+          builder: (context) {
+            return ZetaBanner(
+              context: context,
+              title: 'Banner Title',
+              leadingIcon: Icons.info,
+              trailing: const ZetaIcon(Icons.chevron_right),
+              type: type,
+            );
+          },
+        ),
+        ZetaBanner,
+        'banner_${type.toString().split('.').last}',
+      );
     }
   });
+
+  group('$componentName Performace Tests', () {});
 }
