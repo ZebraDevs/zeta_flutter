@@ -1,19 +1,96 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
+
 import '../../../test_utils/test_app.dart';
 import '../../../test_utils/tolerant_comparator.dart';
 import '../../../test_utils/utils.dart';
 
 void main() {
-  const goldenFile = GoldenFiles(component: 'comms_button');
+  const String componentName = 'ZetaCommsButton';
+  const String parentFolder = 'comms_button';
 
+  const goldenFile = GoldenFiles(component: parentFolder);
   setUpAll(() {
     goldenFileComparator = TolerantComparator(goldenFile.uri);
   });
 
-  group('ZetaCommsButton Tests', () {
+  group('$componentName Accessibility Tests', () {
+    testWidgets('Button meets accessibility  requirements', (WidgetTester tester) async {
+      final SemanticsHandle handle = tester.ensureSemantics();
+      await tester.pumpWidget(
+        const TestApp(
+          home: ZetaCommsButton(
+            label: 'Label',
+            semanticLabel: 'Phone',
+            icon: ZetaIcons.phone,
+            type: ZetaCommsButtonType.positive,
+          ),
+        ),
+      );
+      await expectLater(tester, meetsGuideline(androidTapTargetGuideline));
+      await expectLater(tester, meetsGuideline(iOSTapTargetGuideline));
+      await expectLater(tester, meetsGuideline(labeledTapTargetGuideline));
+      await expectLater(tester, meetsGuideline(textContrastGuideline));
+
+      handle.dispose();
+    });
+
+    testWidgets('Button meets accessibility requirements when toggled', (WidgetTester tester) async {
+      final SemanticsHandle handle = tester.ensureSemantics();
+      await tester.pumpWidget(
+        TestApp(
+          home: ZetaCommsButton(
+            label: 'Label',
+            semanticLabel: 'Phone',
+            icon: ZetaIcons.phone,
+            type: ZetaCommsButtonType.positive,
+            toggledLabel: 'Toggled Label',
+            toggledIcon: ZetaIcons.end_call,
+            toggledType: ZetaCommsButtonType.negative,
+            onToggle: (isToggled) {},
+          ),
+        ),
+      );
+      await expectLater(tester, meetsGuideline(androidTapTargetGuideline));
+      await expectLater(tester, meetsGuideline(iOSTapTargetGuideline));
+      await expectLater(tester, meetsGuideline(labeledTapTargetGuideline));
+      await expectLater(tester, meetsGuideline(textContrastGuideline));
+
+      await tester.tap(find.byType(ZetaCommsButton));
+      await tester.pumpAndSettle();
+
+      await expectLater(tester, meetsGuideline(androidTapTargetGuideline));
+      await expectLater(tester, meetsGuideline(iOSTapTargetGuideline));
+      await expectLater(tester, meetsGuideline(labeledTapTargetGuideline));
+      await expectLater(tester, meetsGuideline(textContrastGuideline));
+
+      handle.dispose();
+    });
+  });
+  group('$componentName Content Tests', () {
+    final debugFillProperties = {
+      'label': '"Label"',
+      'onPressed': 'null',
+      'onToggle': 'null',
+      'toggledIcon': 'null',
+      'toggledLabel': 'null',
+      'toggleType': null,
+      'focusNode': 'null',
+      'semanticLabel': 'null',
+      'type': 'positive',
+      'size': 'medium',
+      'icon': 'IconData(U+0E16B)',
+    };
+    debugFillPropertiesTest(
+      const ZetaCommsButton(
+        label: 'Label',
+        icon: ZetaIcons.phone,
+        type: ZetaCommsButtonType.positive,
+      ),
+      debugFillProperties,
+    );
+
     testWidgets('Initializes with correct label', (WidgetTester tester) async {
       await tester.pumpWidget(
         const TestApp(
@@ -22,11 +99,6 @@ void main() {
       );
 
       expect(find.text('Label'), findsOneWidget);
-
-      await expectLater(
-        find.byType(ZetaCommsButton),
-        matchesGoldenFile(goldenFile.getFileUri('CommsButton_default')),
-      );
     });
 
     testWidgets('Initializes with correct icon', (WidgetTester tester) async {
@@ -133,99 +205,23 @@ void main() {
 
       expect(pressed, isTrue);
     });
-
-    testWidgets('debugFillProperties Test', (WidgetTester tester) async {
-      final diagnostic = DiagnosticPropertiesBuilder();
-      const ZetaCommsButton(
-        label: 'Label',
-        icon: ZetaIcons.phone,
-        type: ZetaCommsButtonType.positive,
-      ).debugFillProperties(diagnostic);
-
-      expect(diagnostic.finder('label'), '"Label"');
-      expect(diagnostic.finder('onPressed'), 'null');
-      expect(diagnostic.finder('onToggle'), 'null');
-      expect(diagnostic.finder('toggledIcon'), 'null');
-      expect(diagnostic.finder('toggledLabel'), 'null');
-      expect(diagnostic.finder('toggleType'), null);
-      expect(diagnostic.finder('focusNode'), 'null');
-      expect(diagnostic.finder('semanticLabel'), 'null');
-      expect(diagnostic.finder('type'), 'positive');
-      expect(diagnostic.finder('size'), 'medium');
-      expect(diagnostic.finder('icon'), 'IconData(U+0E16B)');
-    });
-
-    testWidgets('Button meets accessibility  requirements', (WidgetTester tester) async {
-      final SemanticsHandle handle = tester.ensureSemantics();
-      await tester.pumpWidget(
-        const TestApp(
-          home: ZetaCommsButton(
-            label: 'Label',
-            semanticLabel: 'Phone',
-            icon: ZetaIcons.phone,
-            type: ZetaCommsButtonType.positive,
-          ),
-        ),
-      );
-      await expectLater(tester, meetsGuideline(androidTapTargetGuideline));
-      await expectLater(tester, meetsGuideline(iOSTapTargetGuideline));
-      await expectLater(tester, meetsGuideline(labeledTapTargetGuideline));
-      await expectLater(tester, meetsGuideline(textContrastGuideline));
-
-      handle.dispose();
-    });
-
-    testWidgets('Button meets accessibility requirements when toggled', (WidgetTester tester) async {
-      final SemanticsHandle handle = tester.ensureSemantics();
-      await tester.pumpWidget(
-        TestApp(
-          home: ZetaCommsButton(
-            label: 'Label',
-            semanticLabel: 'Phone',
-            icon: ZetaIcons.phone,
-            type: ZetaCommsButtonType.positive,
-            toggledLabel: 'Toggled Label',
-            toggledIcon: ZetaIcons.end_call,
-            toggledType: ZetaCommsButtonType.negative,
-            onToggle: (isToggled) {},
-          ),
-        ),
-      );
-      await expectLater(tester, meetsGuideline(androidTapTargetGuideline));
-      await expectLater(tester, meetsGuideline(iOSTapTargetGuideline));
-      await expectLater(tester, meetsGuideline(labeledTapTargetGuideline));
-      await expectLater(tester, meetsGuideline(textContrastGuideline));
-
-      await tester.tap(find.byType(ZetaCommsButton));
-      await tester.pumpAndSettle();
-
-      await expectLater(tester, meetsGuideline(androidTapTargetGuideline));
-      await expectLater(tester, meetsGuideline(iOSTapTargetGuideline));
-      await expectLater(tester, meetsGuideline(labeledTapTargetGuideline));
-      await expectLater(tester, meetsGuideline(textContrastGuideline));
-
-      handle.dispose();
-    });
   });
-
-  group('ZetaCommsButton Golden Tests', () {
+  group('$componentName Dimensions Tests', () {});
+  group('$componentName Styling Tests', () {});
+  group('$componentName Interaction Tests', () {});
+  group('$componentName Golden Tests', () {
     for (final type in ZetaCommsButtonType.values) {
-      testWidgets('ZetaCommsButton with type $type', (WidgetTester tester) async {
-        await tester.pumpWidget(
-          TestApp(
-            home: ZetaCommsButton(
-              label: 'Label',
-              icon: ZetaIcons.phone,
-              type: type,
-            ),
-          ),
-        );
-
-        await expectLater(
-          find.byType(ZetaCommsButton),
-          matchesGoldenFile(goldenFile.getFileUri('CommsButton_${type.name}')),
-        );
-      });
+      goldenTest(
+        goldenFile,
+        ZetaCommsButton(
+          label: 'Label',
+          icon: ZetaIcons.phone,
+          type: type,
+        ),
+        ZetaCommsButton,
+        'CommsButton_${type.name}',
+      );
     }
   });
+  group('$componentName Performance Tests', () {});
 }

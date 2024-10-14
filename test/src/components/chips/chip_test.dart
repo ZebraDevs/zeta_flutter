@@ -1,11 +1,33 @@
+import 'dart:ui';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 import '../../../test_utils/test_app.dart';
+import '../../../test_utils/tolerant_comparator.dart';
+import '../../../test_utils/utils.dart';
 
 void main() {
-  group('ZetaChip', () {
+  const String componentName = 'ZetaChip';
+  const String parentFolder = 'chips';
+
+  const goldenFile = GoldenFiles(component: parentFolder);
+  setUpAll(() {
+    goldenFileComparator = TolerantComparator(goldenFile.uri);
+  });
+
+  group('$componentName Accessibility Tests', () {});
+  group('$componentName Content Tests', () {
+    // final debugFillProperties = {
+    //   '': '',
+    // };
+    // debugFillPropertiesTest(
+    //   widget,
+    //   debugFillProperties,
+    // );
+
     testWidgets('renders label correctly', (WidgetTester tester) async {
       await tester.pumpWidget(
         const TestApp(home: ZetaChip(label: 'Test Chip')),
@@ -13,7 +35,10 @@ void main() {
 
       expect(find.text('Test Chip'), findsOneWidget);
     });
-
+  });
+  group('$componentName Dimensions Tests', () {});
+  group('$componentName Styling Tests', () {});
+  group('$componentName Interaction Tests', () {
     testWidgets('triggers onTap callback when tapped', (WidgetTester tester) async {
       bool tapped = false;
 
@@ -72,30 +97,33 @@ void main() {
 
       expect(find.byIcon(Icons.close), findsOneWidget);
     });
-  });
+    testWidgets('ZetaChip changes selected property correctly', (WidgetTester tester) async {
+      bool selected = false;
+      StateSetter? setState;
 
-  testWidgets('ZetaChip changes selected property correctly', (WidgetTester tester) async {
-    bool selected = false;
-    StateSetter? setState;
-
-    await tester.pumpWidget(
-      TestApp(
-        home: StatefulBuilder(
-          builder: (context, setState2) {
-            setState = setState2;
-            return ZetaChip(label: 'Chip', selected: selected);
-          },
+      await tester.pumpWidget(
+        TestApp(
+          home: StatefulBuilder(
+            builder: (context, setState2) {
+              setState = setState2;
+              return ZetaChip(label: 'Chip', selected: selected);
+            },
+          ),
         ),
-      ),
-    );
+      );
 
-    final Finder iconFinder = find.byIcon(ZetaIcons.check_mark_round);
-    expect(iconFinder, findsNothing);
+      final Finder iconFinder = find.byIcon(ZetaIcons.check_mark_round);
+      expect(iconFinder, findsNothing);
 
-    // Change isOpen property to true
-    setState?.call(() => selected = true);
-    await tester.pumpAndSettle();
+      // Change isOpen property to true
+      setState?.call(() => selected = true);
+      await tester.pumpAndSettle();
 
-    expect(iconFinder, findsOne);
+      expect(iconFinder, findsOne);
+    });
   });
+  group('$componentName Golden Tests', () {
+    // goldenTest(goldenFile, widget, widgetType, 'PNG_FILE_NAME');
+  });
+  group('$componentName Performance Tests', () {});
 }

@@ -25,6 +25,10 @@ void main() {
 
       await tester.pumpWidget(
         TestApp(
+          // before: (tester) async {
+          //  tester.view.devicePixelRatio = 1.0;
+          //  tester.view.physicalSize = const Size(481, 480);
+          // },
           screenSize: const Size(1000, 1000),
           home: ZetaDialPad(
             onNumber: (value) => number += value,
