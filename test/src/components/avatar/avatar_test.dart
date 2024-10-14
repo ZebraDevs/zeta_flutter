@@ -125,7 +125,7 @@ void main() {
           TestApp(
             home: ZetaAvatar(
               size: size,
-              lowerBadge: const ZetaAvatarBadge.icon(icon: Icons.star),
+              badge: const ZetaAvatarBadge.icon(icon: Icons.star),
             ),
           ),
         );
@@ -382,7 +382,7 @@ void main() {
         await tester.pumpWidget(
           TestApp(
             home: ZetaAvatar(
-              lowerBadge: const ZetaAvatarBadge.icon(icon: Icons.star),
+              badge: const ZetaAvatarBadge.icon(icon: Icons.star),
               size: size,
             ),
           ),

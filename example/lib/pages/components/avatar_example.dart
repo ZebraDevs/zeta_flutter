@@ -57,7 +57,10 @@ class AvatarExample extends StatelessWidget {
                         children: ZetaAvatarSize.values
                             .map((size) => Column(
                                   children: [
-                                    ZetaAvatar.image(size: size),
+                                    ZetaAvatar.image(
+                                      size: size,
+                                      onClose: () {},
+                                    ),
                                     const SizedBox(height: 20),
                                   ],
                                 ))
@@ -70,7 +73,7 @@ class AvatarExample extends StatelessWidget {
                                   children: [
                                     ZetaAvatar.image(
                                       size: size,
-                                      borderColor: Zeta.of(context).colors.green,
+                                      showRing: true,
                                     ),
                                     const SizedBox(height: 20),
                                   ],
@@ -98,7 +101,7 @@ class AvatarExample extends StatelessWidget {
                                   children: [
                                     ZetaAvatar.image(
                                       size: size,
-                                      borderColor: Zeta.of(context).colors.green,
+                                      showRing: true,
                                       image: image,
                                     ),
                                     const SizedBox(height: 20),
@@ -159,7 +162,7 @@ class AvatarExample extends StatelessWidget {
                                     ZetaAvatar.initials(
                                       size: size,
                                       initials: 'AB',
-                                      borderColor: Zeta.of(context).colors.green,
+                                      showRing: true,
                                     ),
                                     const SizedBox(height: 20),
                                   ],
@@ -204,7 +207,7 @@ class AvatarExample extends StatelessWidget {
                                   children: [
                                     ZetaAvatar.image(
                                       size: size,
-                                      upperBadge: ZetaAvatarBadge.notification(value: 3),
+                                      badge: ZetaIndicator.notification(value: 3),
                                     ),
                                     const SizedBox(height: 20),
                                   ],
@@ -218,8 +221,8 @@ class AvatarExample extends StatelessWidget {
                                   children: [
                                     ZetaAvatar.image(
                                       size: size,
-                                      borderColor: Zeta.of(context).colors.green,
-                                      upperBadge: ZetaAvatarBadge.notification(value: 3),
+                                      showRing: true,
+                                      badge: ZetaIndicator.notification(value: 3),
                                     ),
                                     const SizedBox(height: 20),
                                   ],
@@ -233,7 +236,7 @@ class AvatarExample extends StatelessWidget {
                                   children: [
                                     ZetaAvatar.image(
                                       size: size,
-                                      upperBadge: ZetaAvatarBadge.notification(value: 3),
+                                      badge: ZetaIndicator.notification(value: 3),
                                       image: image,
                                     ),
                                     const SizedBox(height: 20),
@@ -248,8 +251,8 @@ class AvatarExample extends StatelessWidget {
                                   children: [
                                     ZetaAvatar.image(
                                       size: size,
-                                      borderColor: Zeta.of(context).colors.green,
-                                      upperBadge: ZetaAvatarBadge.notification(value: 3),
+                                      showRing: true,
+                                      badge: ZetaIndicator.notification(value: 3),
                                       image: image,
                                     ),
                                     const SizedBox(height: 20),
@@ -296,7 +299,7 @@ class AvatarExample extends StatelessWidget {
                                     ZetaAvatar.initials(
                                       size: size,
                                       initials: 'AB',
-                                      upperBadge: ZetaAvatarBadge.notification(value: 3),
+                                      badge: ZetaIndicator.notification(value: 3),
                                     ),
                                     const SizedBox(height: 20),
                                   ],
@@ -311,8 +314,8 @@ class AvatarExample extends StatelessWidget {
                                     ZetaAvatar.initials(
                                       size: size,
                                       initials: 'AB',
-                                      borderColor: Zeta.of(context).colors.green,
-                                      upperBadge: ZetaAvatarBadge.notification(value: 3),
+                                      showRing: true,
+                                      badge: ZetaIndicator.notification(value: 3),
                                     ),
                                     const SizedBox(height: 20),
                                   ],
@@ -357,7 +360,6 @@ class AvatarExample extends StatelessWidget {
                                   children: [
                                     ZetaAvatar.image(
                                       size: size,
-                                      lowerBadge: ZetaAvatarBadge.icon(),
                                     ),
                                     const SizedBox(height: 20),
                                   ],
@@ -371,8 +373,7 @@ class AvatarExample extends StatelessWidget {
                                   children: [
                                     ZetaAvatar.image(
                                       size: size,
-                                      borderColor: Zeta.of(context).colors.green,
-                                      lowerBadge: ZetaAvatarBadge.icon(),
+                                      showRing: true,
                                     ),
                                     const SizedBox(height: 20),
                                   ],
@@ -386,7 +387,6 @@ class AvatarExample extends StatelessWidget {
                                   children: [
                                     ZetaAvatar.image(
                                       size: size,
-                                      lowerBadge: ZetaAvatarBadge.icon(),
                                       image: image,
                                     ),
                                     const SizedBox(height: 20),
@@ -401,8 +401,7 @@ class AvatarExample extends StatelessWidget {
                                   children: [
                                     ZetaAvatar.image(
                                       size: size,
-                                      borderColor: Zeta.of(context).colors.green,
-                                      lowerBadge: ZetaAvatarBadge.icon(),
+                                      showRing: true,
                                       image: image,
                                     ),
                                     const SizedBox(height: 20),
@@ -449,7 +448,6 @@ class AvatarExample extends StatelessWidget {
                                     ZetaAvatar.initials(
                                       size: size,
                                       initials: 'AB',
-                                      lowerBadge: ZetaAvatarBadge.icon(),
                                     ),
                                     const SizedBox(height: 20),
                                   ],
@@ -464,8 +462,7 @@ class AvatarExample extends StatelessWidget {
                                     ZetaAvatar.initials(
                                       size: size,
                                       initials: 'AB',
-                                      borderColor: Zeta.of(context).colors.green,
-                                      lowerBadge: ZetaAvatarBadge.icon(),
+                                      showRing: true,
                                     ),
                                     const SizedBox(height: 20),
                                   ],
@@ -511,8 +508,7 @@ class AvatarExample extends StatelessWidget {
                                     ZetaAvatar.image(
                                       size: size,
                                       image: image,
-                                      upperBadge: ZetaAvatarBadge.notification(value: 3),
-                                      lowerBadge: ZetaAvatarBadge.icon(),
+                                      badge: ZetaIndicator.notification(value: 3),
                                     ),
                                     const SizedBox(height: 20),
                                   ],
@@ -527,9 +523,8 @@ class AvatarExample extends StatelessWidget {
                                     ZetaAvatar.image(
                                       size: size,
                                       image: image,
-                                      borderColor: Zeta.of(context).colors.green,
-                                      upperBadge: ZetaAvatarBadge.notification(value: 3),
-                                      lowerBadge: ZetaAvatarBadge.icon(),
+                                      showRing: true,
+                                      badge: ZetaIndicator.notification(value: 3),
                                     ),
                                     const SizedBox(height: 20),
                                   ],
@@ -543,8 +538,7 @@ class AvatarExample extends StatelessWidget {
                                     ZetaAvatar.initials(
                                       size: size,
                                       initials: 'AB',
-                                      upperBadge: ZetaAvatarBadge.notification(value: 3),
-                                      lowerBadge: ZetaAvatarBadge.icon(),
+                                      badge: ZetaIndicator.notification(value: 3),
                                     ),
                                     const SizedBox(height: 20),
                                   ],
@@ -559,9 +553,8 @@ class AvatarExample extends StatelessWidget {
                                     ZetaAvatar.initials(
                                       size: size,
                                       initials: 'AB',
-                                      borderColor: Zeta.of(context).colors.green,
-                                      upperBadge: ZetaAvatarBadge.notification(value: 3),
-                                      lowerBadge: ZetaAvatarBadge.icon(),
+                                      showRing: true,
+                                      badge: ZetaIndicator.notification(value: 3),
                                     ),
                                     const SizedBox(height: 20),
                                   ],
