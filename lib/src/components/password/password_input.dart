@@ -50,6 +50,7 @@ class ZetaPasswordInput extends ZetaTextFormField {
               requirementLevel: requirementLevel,
               errorText: field.errorText ?? errorText,
               onSubmit: onSubmit,
+              constrained: true,
               disabled: disabled,
               obscureText: state._obscureText,
               semanticLabel: semanticLabel,

@@ -54,6 +54,7 @@ class ZetaSelectInput<T> extends ZetaFormField<T> {
                 builder: (context, _, controller) {
                   return InternalTextInput(
                     size: size,
+                    constrained: true,
                     requirementLevel: requirementLevel,
                     disabled: disabled,
                     controller: state.inputController,

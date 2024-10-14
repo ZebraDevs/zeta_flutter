@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../zeta_flutter.dart';
 import '../../interfaces/form_field.dart';
 import '../buttons/input_icon_button.dart';
+import '../text_input/internal_text_input.dart';
 
 /// ZetaSearchBar provides input field for searching.
 /// {@category Components}
@@ -25,8 +26,9 @@ class ZetaSearchBar extends ZetaTextFormField {
     super.initialValue,
     this.size = ZetaWidgetSize.medium,
     this.shape = ZetaWidgetBorder.rounded,
-    @Deprecated('Use hintText instead. ' 'deprecated as of 0.15.0') String? hint,
-    this.hintText,
+    @Deprecated('hint has been removed. ' 'deprecated as of 0.15.0') String? hint,
+    @Deprecated('Use placeholder instead. ' 'deprecated as of 0.16.0') String? hintText,
+    this.placeholder,
     this.onSpeechToText,
     this.showSpeechToText = true,
     @Deprecated('Use disabled instead. ' 'enabled is deprecated as of 0.11.0') bool enabled = true,
@@ -49,130 +51,74 @@ class ZetaSearchBar extends ZetaTextFormField {
               _ => zeta.radius.none,
             };
 
-            final defaultInputBorder = OutlineInputBorder(
-              borderRadius: borderRadius,
-              borderSide: BorderSide(color: zeta.colors.cool.shade40),
-            );
-
-            final focusedBorder = defaultInputBorder.copyWith(
-              borderSide: BorderSide(
-                color: zeta.colors.blue.shade50,
-                width: zeta.spacing.minimum,
-              ),
-            );
-
-            final disabledborder = defaultInputBorder.copyWith(
-              borderSide: BorderSide(color: zeta.colors.borderDisabled),
-            );
-
             late final double iconSize;
-            late final double padding;
 
             switch (size) {
               case ZetaWidgetSize.large:
                 iconSize = zeta.spacing.xl_2;
-                padding = zeta.spacing.medium;
               case ZetaWidgetSize.medium:
                 iconSize = zeta.spacing.xl;
-                padding = zeta.spacing.small;
               case ZetaWidgetSize.small:
                 iconSize = zeta.spacing.large;
-                padding = zeta.spacing.minimum;
             }
 
             return ZetaRoundedScope(
               rounded: shape != ZetaWidgetBorder.sharp,
               child: Semantics(
                 excludeSemantics: disabled,
-                label: disabled ? hintText ?? 'Search' : null, // TODO(UX-1003): Localize
+                label: disabled ? placeholder ?? 'Search' : null, // TODO(UX-1003): Localize
                 enabled: disabled ? false : null,
-                child: TextFormField(
+                child: InternalTextInput(
                   focusNode: focusNode,
-                  enabled: !disabled,
+                  size: size,
+                  disabled: disabled,
+                  constrained: true,
+                  borderRadius: borderRadius,
                   controller: state.effectiveController,
                   keyboardType: TextInputType.text,
                   textInputAction: textInputAction,
-                  onFieldSubmitted: onFieldSubmitted,
-                  onChanged: state.onChange,
-                  style: ZetaTextStyles.bodyMedium,
-                  decoration: InputDecoration(
-                    isDense: true,
-                    contentPadding: EdgeInsets.symmetric(
-                      horizontal: 10,
-                      vertical: padding,
-                    ),
-                    hintText: hintText ?? 'Search', // TODO(UX-1003): Localize
-                    hintStyle: ZetaTextStyles.bodyMedium.copyWith(
-                      color: !disabled ? zeta.colors.textSubtle : zeta.colors.textDisabled,
-                    ),
-                    prefixIcon: Padding(
-                      padding: EdgeInsets.only(left: zeta.spacing.medium, right: zeta.spacing.small),
-                      child: ZetaIcon(
-                        ZetaIcons.search,
-                        color: !disabled ? zeta.colors.cool.shade70 : zeta.colors.cool.shade50,
-                        size: iconSize,
-                      ),
-                    ),
-                    prefixIconConstraints: BoxConstraints(
-                      minHeight: zeta.spacing.xl_2,
-                      minWidth: zeta.spacing.xl_2,
-                    ),
-                    suffixIcon: IntrinsicHeight(
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          if (state.effectiveController.text.isNotEmpty && !disabled) ...[
-                            Semantics(
-                              container: true,
-                              button: true,
-                              excludeSemantics: true,
-                              label: clearSemanticLabel,
-                              child: InputIconButton(
-                                icon: ZetaIcons.cancel,
-                                onTap: () => state.onChange(''),
-                                disabled: disabled,
-                                size: size,
-                                color: zeta.colors.iconSubtle,
-                                key: const ValueKey('search-clear-btn'),
-                              ),
+                  placeholder: placeholder ?? 'Search', // TODO(UX-1003): Localize
+                  onSubmit: onFieldSubmitted,
+                  onChange: state.onChange,
+                  prefix: ZetaIcon(
+                    ZetaIcons.search,
+                    color: !disabled ? zeta.colors.iconSubtle : zeta.colors.iconDisabled,
+                    size: iconSize,
+                  ),
+                  suffix: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      if (state.effectiveController.text.isNotEmpty && !disabled) ...[
+                        InputIconButton(
+                          icon: ZetaIcons.cancel,
+                          onTap: () => state.onChange(''),
+                          disabled: disabled,
+                          size: size,
+                          semanticLabel: clearSemanticLabel,
+                          color: zeta.colors.iconSubtle,
+                          key: const ValueKey('search-clear-btn'),
+                        ),
+                        if (showSpeechToText)
+                          SizedBox(
+                            height: iconSize,
+                            child: VerticalDivider(
+                              color: zeta.colors.cool.shade40,
+                              width: 5,
+                              thickness: 1,
                             ),
-                            if (showSpeechToText)
-                              SizedBox(
-                                height: iconSize,
-                                child: VerticalDivider(
-                                  color: zeta.colors.cool.shade40,
-                                  width: 5,
-                                  thickness: 1,
-                                ),
-                              ),
-                          ],
-                          if (showSpeechToText)
-                            Semantics(
-                              label: microphoneSemanticLabel,
-                              container: true,
-                              button: true,
-                              excludeSemantics: true,
-                              child: InputIconButton(
-                                icon: ZetaIcons.microphone,
-                                onTap: state.onSpeechToText,
-                                key: const ValueKey('speech-to-text-btn'),
-                                disabled: disabled,
-                                size: size,
-                                color: zeta.colors.iconDefault,
-                              ),
-                            ),
-                        ],
-                      ),
-                    ),
-                    suffixIconConstraints: BoxConstraints(
-                      minHeight: zeta.spacing.xl_2,
-                      minWidth: zeta.spacing.xl_2,
-                    ),
-                    filled: !disabled ? null : true,
-                    fillColor: !disabled ? null : zeta.colors.cool.shade30,
-                    enabledBorder: defaultInputBorder,
-                    focusedBorder: focusedBorder,
-                    disabledBorder: disabledborder,
+                          ),
+                      ],
+                      if (showSpeechToText)
+                        InputIconButton(
+                          icon: ZetaIcons.microphone,
+                          onTap: state.onSpeechToText,
+                          key: const ValueKey('speech-to-text-btn'),
+                          disabled: disabled,
+                          semanticLabel: microphoneSemanticLabel,
+                          size: size,
+                          color: zeta.colors.iconDefault,
+                        ),
+                    ],
                   ),
                 ),
               ),
@@ -184,13 +130,12 @@ class ZetaSearchBar extends ZetaTextFormField {
   /// Default is [ZetaWidgetSize.medium]
   final ZetaWidgetSize size;
 
+  /// Placeholder text for the search field.
+  final String? placeholder;
+
   /// Determines the shape of the input field.
   /// Default is [ZetaWidgetBorder.rounded]
   final ZetaWidgetBorder shape;
-
-  /// If provided, displays a hint inside the input field.
-  /// Default is `Search`.
-  final String? hintText;
 
   /// The type of action button to use for the keyboard.
   final TextInputAction? textInputAction;
@@ -224,14 +169,14 @@ class ZetaSearchBar extends ZetaTextFormField {
     properties
       ..add(EnumProperty<ZetaWidgetSize>('size', size))
       ..add(EnumProperty<ZetaWidgetBorder>('shape', shape))
-      ..add(StringProperty('hintText', hintText))
       ..add(StringProperty('initialValue', initialValue))
       ..add(ObjectFlagProperty<VoidCallback?>.has('onSpeechToText', onSpeechToText))
       ..add(DiagnosticsProperty<bool>('showSpeechToText', showSpeechToText))
       ..add(DiagnosticsProperty<FocusNode>('focusNode', focusNode))
       ..add(EnumProperty<TextInputAction>('textInputAction', textInputAction))
       ..add(StringProperty('microphoneSemanticLabel', microphoneSemanticLabel))
-      ..add(StringProperty('clearSemanticLabel', clearSemanticLabel));
+      ..add(StringProperty('clearSemanticLabel', clearSemanticLabel))
+      ..add(StringProperty('placeholder', placeholder));
   }
 }
 
