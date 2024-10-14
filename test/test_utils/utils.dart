@@ -31,14 +31,30 @@ class GoldenFiles {
   }
 }
 
-void goldenTest(GoldenFiles goldenFile, Widget widget, Type widgetType, String fileName, {bool darkMode = false}) {
+void goldenTest(
+  GoldenFiles goldenFile,
+  Widget widget,
+  Type widgetType,
+  String fileName, {
+  Future<void> Function(WidgetTester)? before,
+  Future<void> Function(WidgetTester)? after,
+  bool darkMode = false,
+}) {
   testWidgets('$fileName golden', (WidgetTester tester) async {
+    if (before != null) {
+      await before(tester);
+    }
+
     await tester.pumpWidget(
       TestApp(
         themeMode: darkMode ? ThemeMode.dark : ThemeMode.light,
         home: widget,
       ),
     );
+
+    if (after != null) {
+      await after(tester);
+    }
 
     await expectLater(
       find.byType(widgetType),
@@ -51,7 +67,7 @@ BuildContext getBuildContext(WidgetTester tester, Type type) {
   return tester.element(find.byType(type));
 }
 
-void debugFillPropertiesTest(Widget widget, Map<String, String> properties) {
+void debugFillPropertiesTest(Widget widget, Map<String, dynamic> properties) {
   testWidgets('debugFillProperties works correctly', (WidgetTester tester) async {
     final diagnostics = DiagnosticPropertiesBuilder();
     widget.debugFillProperties(diagnostics);
