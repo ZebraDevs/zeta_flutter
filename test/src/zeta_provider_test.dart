@@ -86,9 +86,6 @@ void main() {
 
       // Verifying through the public interface of Zeta widget
       final zeta = tester.widget<Zeta>(find.byType(Zeta));
-
-      //TODO: if you change newThemeData to initalThemeData it will still pass
-      // expect(zeta.themeData, initialThemeData);
       expect(zeta.themeData, newThemeData);
       verify(
         mockThemeService.saveTheme(
