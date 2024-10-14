@@ -47,6 +47,7 @@ class ZetaDateInput extends ZetaFormField<DateTime> {
 
             return InternalTextInput(
               label: label,
+              constrained: true,
               hintText: hintText,
               errorText: field.errorText ?? errorText,
               size: size,

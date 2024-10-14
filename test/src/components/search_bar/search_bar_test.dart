@@ -47,7 +47,7 @@ void main() {
       );
 
       await tester.pumpAndSettle();
-      expect(find.byType(TextFormField), findsOneWidget);
+      expect(find.byType(TextField), findsOneWidget);
     });
 
     testWidgets('golden: renders initializes correctly', (WidgetTester tester) async {
@@ -178,7 +178,7 @@ void main() {
       );
 
       await tester.pumpAndSettle();
-      await tester.enterText(find.byType(TextFormField), 'New text');
+      await tester.enterText(find.byType(TextField), 'New text');
       await tester.pump();
 
       verify(callbacks.onChange.call('New text')).called(1);
@@ -194,7 +194,7 @@ void main() {
       );
 
       await tester.pumpAndSettle();
-      await tester.enterText(find.byType(TextFormField), 'Submit text');
+      await tester.enterText(find.byType(TextField), 'Submit text');
       await tester.testTextInput.receiveAction(TextInputAction.done);
       await tester.pump();
 
@@ -231,7 +231,7 @@ void main() {
       );
 
       await tester.pumpAndSettle();
-      await tester.enterText(find.byType(TextFormField), 'Disabled input');
+      await tester.enterText(find.byType(TextField), 'Disabled input');
       await tester.pump();
 
       expect(find.text('Disabled input'), findsNothing);
@@ -263,7 +263,7 @@ void main() {
       );
 
       await tester.pumpAndSettle();
-      await tester.enterText(find.byType(TextFormField), 'New text');
+      await tester.enterText(find.byType(TextField), 'New text');
       await tester.pump();
 
       verify(callbacks.onChange.call('New text')).called(1);
@@ -280,7 +280,7 @@ void main() {
 
       expect(diagnostics.finder('size'), 'medium');
       expect(diagnostics.finder('shape'), 'rounded');
-      expect(diagnostics.finder('hintText'), 'null');
+      expect(diagnostics.finder('placeholder'), 'null');
       expect(diagnostics.finder('textInputAction'), 'null');
       expect(diagnostics.finder('onSpeechToText'), 'null');
       expect(diagnostics.finder('showSpeechToText'), 'true');

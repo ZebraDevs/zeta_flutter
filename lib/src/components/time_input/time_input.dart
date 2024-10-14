@@ -49,6 +49,7 @@ class ZetaTimeInput extends ZetaFormField<TimeOfDay> {
             return InternalTextInput(
               label: label,
               hintText: hintText,
+              constrained: true,
               errorText: field.errorText ?? errorText,
               size: size,
               placeholder: state.timeFormat,
