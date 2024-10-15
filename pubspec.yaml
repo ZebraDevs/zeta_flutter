@@ -32,6 +32,7 @@ dependencies:
   web: ^1.0.0
 
 dev_dependencies:
+  analyzer: ^6.7.0
   build_runner: ^2.4.10
   flutter_test:
     sdk: flutter

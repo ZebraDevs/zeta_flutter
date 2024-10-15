@@ -9,6 +9,10 @@ import '../../../zeta_flutter.dart';
 /// navigation item.
 /// Should be used with [ZetaNavigationRailItem].
 /// {@category Components}
+///
+/// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=229-43&node-type=canvas&m=dev
+///
+/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/navigation-rail
 class ZetaNavigationRail extends ZetaStatelessWidget {
   /// Constructor for [ZetaNavigationRail].
   const ZetaNavigationRail({

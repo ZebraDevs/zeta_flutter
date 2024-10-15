@@ -16,6 +16,7 @@ export 'buttons/icon_button.dart';
 export 'chat_item/chat_item.dart';
 export 'checkbox/checkbox.dart' hide ZetaInternalCheckbox;
 export 'chips/chip.dart';
+export 'comms_button/comms_button.dart';
 export 'contact_item/contact_item.dart';
 export 'date_input/date_input.dart';
 export 'dial_pad/dial_pad.dart';

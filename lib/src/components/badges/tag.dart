@@ -15,6 +15,10 @@ enum ZetaTagDirection {
 /// Tags are used to draw attention to a specific area or information.
 /// The arrow shape helps direct the users attention to the desired place.
 /// {@category Components}
+///
+/// Figma: https://www.figma.com/file/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?type=design&node-id=22000-13170
+///
+/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/badge/tags
 class ZetaTag extends ZetaStatelessWidget {
   /// Constructs a [ZetaTag].
   const ZetaTag({

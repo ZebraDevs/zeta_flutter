@@ -35,6 +35,10 @@ enum ZetaAvatarSize {
 
 /// An avatar is a visual representation of a user or entity.
 /// {@category Components}
+///
+/// Figma: https://www.figma.com/file/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?type=design&node-id=20816-388
+///
+/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/avatar
 class ZetaAvatar extends ZetaStatelessWidget {
   /// Constructor for [ZetaAvatar]
   const ZetaAvatar({
@@ -184,7 +188,7 @@ class ZetaAvatar extends ZetaStatelessWidget {
         (initials != null
             ? Center(
                 child: Text(
-                  size == ZetaAvatarSize.xs ? initials!.substring(0, 1) : initials!,
+                  initials!,
                   style: initialTextStyle ??
                       TextStyle(
                         fontSize: size.fontSize(context),
@@ -284,11 +288,10 @@ class ZetaAvatar extends ZetaStatelessWidget {
       ..add(StringProperty('semanticLowerBadgeValue', semanticLowerBadgeLabel))
       ..add(DiagnosticsProperty<TextStyle>('initialTextStyle', initialTextStyle));
   }
-}
 
-extension on ZetaAvatarSize {
-  double pixelSize(BuildContext context) {
-    switch (this) {
+  /// Returns pixel size for [ZetaAvatarSize]
+  static double pixelSize(BuildContext context, ZetaAvatarSize size) {
+    switch (size) {
       case ZetaAvatarSize.xxxl:
         return Zeta.of(context).spacing.minimum * 50; // TODO(UX-1202): ZetaSpacingBase
       // return ZetaSpacingBase.x50;
@@ -312,6 +315,17 @@ extension on ZetaAvatarSize {
     }
   }
 
+  /// Font size for initials
+  static double fontSize(BuildContext context, ZetaAvatarSize size) {
+    return pixelSize(context, size) * 4 / 9;
+  }
+}
+
+extension on ZetaAvatarSize {
+  double pixelSize(BuildContext context) {
+    return ZetaAvatar.pixelSize(context, this);
+  }
+
   double borderSize(BuildContext context) {
     switch (this) {
       case ZetaAvatarSize.xxxl:
@@ -331,7 +345,7 @@ extension on ZetaAvatarSize {
   }
 
   double fontSize(BuildContext context) {
-    return pixelSize(context) * 4 / 9;
+    return ZetaAvatar.fontSize(context, this);
   }
 }
 

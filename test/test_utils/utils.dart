@@ -2,6 +2,8 @@ import 'dart:io';
 
 import 'package:collection/collection.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
 import 'package:path/path.dart';
 
 extension Util on DiagnosticPropertiesBuilder {
@@ -26,4 +28,8 @@ class GoldenFiles {
     return Uri.parse(join(Directory.current.path, 'test', 'src', type, component, 'golden', '$fileName.png'))
         .replace(scheme: 'file');
   }
+}
+
+BuildContext getBuildContext(WidgetTester tester, Type type) {
+  return tester.element(find.byType(type));
 }

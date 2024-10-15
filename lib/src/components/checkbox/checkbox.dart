@@ -10,6 +10,10 @@ import '../../../zeta_flutter.dart';
 /// rebuild the checkbox with a new [value] to update the visual appearance of
 /// the checkbox.
 /// {@category Components}
+///
+/// Figma: https://www.figma.com/file/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=21510-54003
+///
+/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/checkbox
 class ZetaCheckbox extends FormField<bool> {
   /// Constructs a [ZetaCheckbox].
   ZetaCheckbox({

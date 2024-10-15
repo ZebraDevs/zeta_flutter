@@ -6,6 +6,10 @@ import '../../../zeta_flutter.dart';
 
 /// Global header component
 /// {@category Components}
+///
+/// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=1120-26358&node-type=canvas&m=dev
+///
+/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/global-header
 class ZetaGlobalHeader extends ZetaStatefulWidget {
   /// Constructor for [ZetaGlobalHeader]
   const ZetaGlobalHeader({

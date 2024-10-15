@@ -5,6 +5,10 @@ import '../../../zeta_flutter.dart';
 
 /// Zeta Button Group
 /// {@category Components}
+///
+/// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=229-45&node-type=canvas&m=dev
+///
+/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/buttons/group-button
 class ZetaButtonGroup extends ZetaStatelessWidget {
   /// Constructs [ZetaButtonGroup] from a list of [ZetaGroupButton]s
   const ZetaButtonGroup({

@@ -4,6 +4,10 @@ import '../../../zeta_flutter.dart';
 
 /// [ZetaScreenHeaderBar]
 /// {@category Components}
+///
+/// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=24601-6781&node-type=canvas&m=dev
+///
+/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/screen-header-bar
 class ZetaScreenHeaderBar extends ZetaStatelessWidget {
   /// Constructor for [ZetaScreenHeaderBar].
   const ZetaScreenHeaderBar({

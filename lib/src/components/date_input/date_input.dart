@@ -13,6 +13,10 @@ import '../text_input/internal_text_input.dart';
 ///
 /// Can be used and validated the same way as a [TextFormField].
 /// {@category Components}
+///
+/// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=229-36&node-type=canvas&m=dev
+///
+/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/date-input
 class ZetaDateInput extends ZetaFormField<DateTime> {
   /// Creates a new [ZetaDateInput]
   ZetaDateInput({
@@ -43,6 +47,7 @@ class ZetaDateInput extends ZetaFormField<DateTime> {
 
             return InternalTextInput(
               label: label,
+              constrained: true,
               hintText: hintText,
               errorText: field.errorText ?? errorText,
               size: size,

@@ -5,9 +5,11 @@ import 'package:flutter/material.dart';
 // DO NOT MODIFY
 
 /// Current version of Zeta Icons
-const zetaIconsVersion = '0.5.5';
+// x-release-please-start-version
+const zetaIconsVersion = '0.6.2';
+// x-release-please-end
 
-/// Zeta Icons. Full list of icons can be found at [Zeta Icons](https://zeta-icons.web.app/).
+/// Zeta Icons. Full list of icons can be found at [Zeta Icons](https://design.zebra.com/icons/).
 /// {@category Assets}
 abstract class ZetaIcons {
   /// Default icon font name

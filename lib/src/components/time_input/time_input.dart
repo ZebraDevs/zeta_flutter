@@ -15,6 +15,10 @@ const _max12HrValue = 12;
 ///
 /// Can be used and validated the same way as a [TextFormField].
 /// {@category Components}
+///
+/// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=724-6821&node-type=canvas&m=dev
+///
+/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/time-input
 class ZetaTimeInput extends ZetaFormField<TimeOfDay> {
   /// Creates a new [ZetaTimeInput]
   ZetaTimeInput({
@@ -45,6 +49,7 @@ class ZetaTimeInput extends ZetaFormField<TimeOfDay> {
             return InternalTextInput(
               label: label,
               hintText: hintText,
+              constrained: true,
               errorText: field.errorText ?? errorText,
               size: size,
               placeholder: state.timeFormat,

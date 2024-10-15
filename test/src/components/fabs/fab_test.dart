@@ -189,7 +189,7 @@ void main() {
     expect(diagnostics.finder('focusNode'), 'null');
   });
 
-  testWidgets('Expanded changes when label is null', (WidgetTester tester) async {
+  testWidgets('Label is correct', (WidgetTester tester) async {
     final scrollController = ScrollController();
     StateSetter? setState;
     bool expanded = false;
@@ -212,7 +212,7 @@ void main() {
 
     final labelFinder = find.text('Label');
 
-    expect(labelFinder, findsNothing);
+    expect(labelFinder, findsOne);
 
     setState?.call(() => expanded = true);
 

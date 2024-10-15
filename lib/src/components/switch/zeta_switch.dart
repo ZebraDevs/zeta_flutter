@@ -26,6 +26,11 @@ enum ZetaSwitchType {
 ///
 /// Switch has styles for Android, iOS and Web.
 /// {@category Components}
+///
+/// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=229-41&node-type=canvas&m=dev
+///
+/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/switch
+///
 // TODO(UX-1137): Add web icon support.
 class ZetaSwitch extends StatelessWidget {
   /// Constructor for [ZetaSwitch].

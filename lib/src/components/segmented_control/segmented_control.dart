@@ -9,6 +9,10 @@ import '../../../zeta_flutter.dart';
 /// functions as a mutually exclusive button. Like buttons, segments can contain
 /// text or images. Segmented controls are often used to display different views.
 /// {@category Components}
+///
+/// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=1046-20148&node-type=canvas&m=dev
+///
+/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/segmented-control
 class ZetaSegmentedControl<T> extends ZetaStatefulWidget {
   /// Constructs an segmented control bar.
   const ZetaSegmentedControl({

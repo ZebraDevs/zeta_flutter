@@ -6,6 +6,10 @@ import '../../../zeta_flutter.dart';
 
 /// Notification list items are used in notification lists.
 /// {@category Components}
+///
+/// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=25043-100110&node-type=canvas&m=dev
+///
+/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/list-items/notification-list-item
 class ZetaNotificationListItem extends ZetaStatelessWidget {
   /// Constructor for [ZetaNotificationListItem]
   const ZetaNotificationListItem({

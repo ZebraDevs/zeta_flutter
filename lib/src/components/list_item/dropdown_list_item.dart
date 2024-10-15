@@ -6,6 +6,10 @@ import 'list_scope.dart';
 
 /// An expandable list item containing other [ZetaListItem]s within it.
 /// {@category Components}
+///
+/// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=229-17&node-type=canvas&m=dev
+///
+/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/list-items/dropdown-list-item
 class ZetaDropdownListItem extends ZetaStatefulWidget {
   /// Creates a new [ZetaDropdownListItem]
   const ZetaDropdownListItem({
