@@ -1,6 +1,5 @@
 import 'dart:ui';
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:zeta_flutter/src/components/checkbox/checkbox.dart';
@@ -11,13 +10,41 @@ import '../../../test_utils/tolerant_comparator.dart';
 import '../../../test_utils/utils.dart';
 
 void main() {
-  const goldenFile = GoldenFiles(component: 'checkbox');
+  const String parentFolder = 'checkbox';
 
+  const goldenFile = GoldenFiles(component: parentFolder);
   setUpAll(() {
     goldenFileComparator = TolerantComparator(goldenFile.uri);
   });
 
-  group('ZetaCheckbox Tests', () {
+  group('Accessibility Tests', () {});
+  group('Content Tests', () {
+    final debugFillPropertiesCheckbox = {
+      'value': 'false',
+      'label': 'null',
+      'onChanged': 'null',
+      'rounded': 'null',
+      'useIndeterminate': 'false',
+      'focusNode': 'null',
+    };
+    debugFillPropertiesTest(
+      ZetaCheckbox(),
+      debugFillPropertiesCheckbox,
+    );
+    final debugFillPropertiesCheckboxInternal = {
+      'value': 'false',
+      'label': 'null',
+      'rounded': 'null',
+      'useIndeterminate': 'false',
+      'error': 'false',
+      'disabled': 'false',
+      'focusNode': 'null',
+    };
+    debugFillPropertiesTest(
+      ZetaInternalCheckbox(onChanged: (_) {}),
+      debugFillPropertiesCheckboxInternal,
+    );
+
     testWidgets('Initializes with correct parameters', (WidgetTester tester) async {
       await tester.pumpWidget(
         TestApp(
@@ -36,7 +63,10 @@ void main() {
       expect(checkbox.rounded, null);
       expect(checkbox.label, 'Test Checkbox');
     });
-
+  });
+  group('Dimensions Tests', () {});
+  group('Styling Tests', () {});
+  group('Interaction Tests', () {
     testWidgets('ZetaCheckbox changes state on tap', (WidgetTester tester) async {
       bool? checkboxValue = true;
 
@@ -51,11 +81,6 @@ void main() {
         ),
       );
 
-      final checkboxFinder = find.byType(ZetaCheckbox);
-      await expectLater(
-        checkboxFinder,
-        matchesGoldenFile(goldenFile.getFileUri('checkbox_enabled')),
-      );
       await tester.tap(find.byType(ZetaCheckbox));
       await tester.pump();
 
@@ -71,10 +96,7 @@ void main() {
       );
 
       final checkboxFinder = find.byType(ZetaCheckbox);
-      await expectLater(
-        checkboxFinder,
-        matchesGoldenFile(goldenFile.getFileUri('checkbox_disabled')),
-      );
+
       await tester.tap(find.byType(ZetaCheckbox));
       await tester.pump();
       final ZetaCheckbox checkbox = tester.firstWidget(checkboxFinder);
@@ -115,51 +137,46 @@ void main() {
       await tester.tap(find.byType(ZetaCheckbox));
       await tester.pump();
     });
-
-    testWidgets('ZetaCheckbox UI changes on hover', (WidgetTester tester) async {
-      await tester.pumpWidget(
-        TestApp(
-          home: ZetaCheckbox(
-            onChanged: (value) {},
-          ),
-        ),
-      );
-
-      final checkboxFinder = find.byType(ZetaCheckbox);
-
-      // Hover state
-      final gesture = await tester.createGesture(kind: PointerDeviceKind.mouse);
-      await gesture.addPointer(location: Offset.zero);
-      addTearDown(gesture.removePointer);
-      await tester.pump();
-      await gesture.moveTo(tester.getCenter(checkboxFinder));
-      await tester.pumpAndSettle();
-      await expectLater(
-        checkboxFinder,
-        matchesGoldenFile(goldenFile.getFileUri('checkbox_hover')),
-      );
-    });
-
-    testWidgets('debugFillProperties works correctly', (WidgetTester tester) async {
-      final diagnostics = DiagnosticPropertiesBuilder();
-      ZetaCheckbox().debugFillProperties(diagnostics);
-
-      expect(diagnostics.finder('value'), 'false');
-      expect(diagnostics.finder('label'), 'null');
-      expect(diagnostics.finder('onChanged'), 'null');
-      expect(diagnostics.finder('rounded'), 'null');
-      expect(diagnostics.finder('useIndeterminate'), 'false');
-      expect(diagnostics.finder('focusNode'), 'null');
-
-      final internalDiagnostics = DiagnosticPropertiesBuilder();
-      ZetaInternalCheckbox(onChanged: (_) {}).debugFillProperties(internalDiagnostics);
-      expect(internalDiagnostics.finder('value'), 'false');
-      expect(internalDiagnostics.finder('label'), 'null');
-      expect(internalDiagnostics.finder('rounded'), 'null');
-      expect(internalDiagnostics.finder('useIndeterminate'), 'false');
-      expect(internalDiagnostics.finder('error'), 'false');
-      expect(internalDiagnostics.finder('disabled'), 'false');
-      expect(internalDiagnostics.finder('focusNode'), 'null');
-    });
   });
+  group('Golden Tests', () {
+    goldenTestWithCallbacks(
+      goldenFile,
+      ZetaCheckbox(
+        onChanged: (value) {},
+      ),
+      ZetaCheckbox,
+      'checkbox_hover',
+      after: (tester) async {
+        final checkboxFinder = find.byType(ZetaCheckbox);
+
+        // Hover state
+        final gesture = await tester.createGesture(kind: PointerDeviceKind.mouse);
+        await gesture.addPointer(location: Offset.zero);
+        addTearDown(gesture.removePointer);
+        await tester.pump();
+        await gesture.moveTo(tester.getCenter(checkboxFinder));
+        await tester.pumpAndSettle();
+      },
+    );
+
+    goldenTest(
+      goldenFile,
+      ZetaCheckbox(
+        value: true,
+        onChanged: print,
+      ),
+      ZetaCheckbox,
+      'checkbox_enabled',
+    );
+
+    goldenTest(
+      goldenFile,
+      ZetaCheckbox(
+        value: true,
+      ),
+      ZetaCheckbox,
+      'checkbox_disabled',
+    );
+  });
+  group('Performance Tests', () {});
 }

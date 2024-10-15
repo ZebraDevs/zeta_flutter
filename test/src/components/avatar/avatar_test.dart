@@ -9,13 +9,14 @@ import '../../../test_utils/tolerant_comparator.dart';
 import '../../../test_utils/utils.dart';
 
 void main() {
-  const goldenFile = GoldenFiles(component: 'avatar');
+  const String parentFolder = 'avatar';
 
+  const goldenFile = GoldenFiles(component: parentFolder);
   setUpAll(() {
     goldenFileComparator = TolerantComparator(goldenFile.uri);
   });
 
-  group('ZetaAvatar Accessibility Tests', () {
+  group('Accessibility Tests', () {
     testWidgets('ZetaAvatar meets accessibility  requirements', (WidgetTester tester) async {
       final SemanticsHandle handle = tester.ensureSemantics();
       await tester.pumpWidget(
@@ -43,7 +44,24 @@ void main() {
     });
   });
 
-  group('ZetaAvatar Content Tests', () {
+  group('Content Tests', () {
+    final debugFillProperties = {
+      'size': 'ZetaAvatarSize.xl',
+      'name': 'null',
+      'specialStatus': 'null',
+      'badge': 'null',
+      'backgroundColor': 'null',
+      'statusColor': 'null',
+      'semanticUpperBadgeValue': '"upperBadge"',
+      'semanticValue': '"avatar"',
+      'semanticLowerBadgeValue': '"lowerBadge"',
+      'initialTextStyle': 'null',
+    };
+    debugFillPropertiesTest(
+      const ZetaAvatar(),
+      debugFillProperties,
+    );
+
     const names = [
       'John Doe',
       'Jane Doe',
@@ -96,7 +114,7 @@ void main() {
     }
   });
 
-  group('ZetaAvatar Dimensions Tests', () {
+  group('Dimensions Tests', () {
     for (final size in ZetaAvatarSize.values) {
       testWidgets(
         'ZetaAvatar size $size with upper badge',
@@ -211,7 +229,7 @@ void main() {
     }
   });
 
-  group('ZetaAvatar Styling Tests', () {
+  group('Styling Tests', () {
     for (final size in ZetaAvatarSize.values) {
       testWidgets('ZetaAvatar with initials $size text size is correct', (WidgetTester tester) async {
         await tester.pumpWidget(
@@ -295,106 +313,65 @@ void main() {
     }
   });
 
-  group('ZetaAvatar Interaction Tests', () {});
+  group('Interaction Tests', () {});
 
-  group('ZetaAvatar Golden Tests', () {
+  group('Golden Tests', () {
     for (final size in ZetaAvatarSize.values) {
-      testWidgets('ZetaAvatar default ${size.toString().split('.').last}', (WidgetTester tester) async {
-        await tester.pumpWidget(
-          TestApp(
-            home: ZetaAvatar(
-              size: size,
-            ),
-          ),
-        );
-
-        await expectLater(
-          find.byType(ZetaAvatar),
-          matchesGoldenFile(goldenFile.getFileUri('avatar_default_${size.toString().split('.').last}')),
-        );
-      });
-
-      testWidgets('ZetaAvatar with initials', (WidgetTester tester) async {
-        await tester.pumpWidget(
-          TestApp(
-            home: ZetaAvatar.initials(
-              initials: 'AB',
-              size: size,
-            ),
-          ),
-        );
-
-        await expectLater(
-          find.byType(ZetaAvatar),
-          matchesGoldenFile(goldenFile.getFileUri('avatar_initials_${size.toString().split('.').last}')),
-        );
-      });
-
-      testWidgets('ZetaAvatar with image', (WidgetTester tester) async {
-        await tester.pumpWidget(
-          TestApp(
-            home: ZetaAvatar.image(
-              image: Image.file(File('/assets/maxresdefault.jpg')),
-              size: size,
-            ),
-          ),
-        );
-
-        await expectLater(
-          find.byType(ZetaAvatar),
-          matchesGoldenFile(goldenFile.getFileUri('avatar_image_${size.toString().split('.').last}')),
-        );
-      });
-
-      testWidgets('ZetaAvatar with fromName', (WidgetTester tester) async {
-        await tester.pumpWidget(
-          TestApp(
-            home: ZetaAvatar.fromName(
-              name: 'John Doe',
-              size: size,
-            ),
-          ),
-        );
-
-        await expectLater(
-          find.byType(ZetaAvatar),
-          matchesGoldenFile(goldenFile.getFileUri('avatar_from_name_${size.toString().split('.').last}')),
-        );
-      });
-
-      testWidgets('ZetaAvatar with upper badge', (WidgetTester tester) async {
-        await tester.pumpWidget(
-          TestApp(
-            home: ZetaAvatar(
-              upperBadge: const ZetaAvatarBadge.notification(value: 3),
-              size: size,
-            ),
-          ),
-        );
-
-        await expectLater(
-          find.byType(ZetaAvatar),
-          matchesGoldenFile(goldenFile.getFileUri('avatar_upper_badge_${size.toString().split('.').last}')),
-        );
-      });
-
-      testWidgets('ZetaAvatar with lower badge', (WidgetTester tester) async {
-        await tester.pumpWidget(
-          TestApp(
-            home: ZetaAvatar(
-              lowerBadge: const ZetaAvatarBadge.icon(icon: Icons.star),
-              size: size,
-            ),
-          ),
-        );
-
-        await expectLater(
-          find.byType(ZetaAvatar),
-          matchesGoldenFile(goldenFile.getFileUri('avatar_lower_badge_${size.toString().split('.').last}')),
-        );
-      });
+      goldenTest(
+        goldenFile,
+        ZetaAvatar(
+          size: size,
+        ),
+        ZetaAvatar,
+        'avatar_default_${size.toString().split('.').last}',
+      );
+      goldenTest(
+        goldenFile,
+        ZetaAvatar.initials(
+          initials: 'AB',
+          size: size,
+        ),
+        ZetaAvatar,
+        'avatar_initials_${size.toString().split('.').last}',
+      );
+      goldenTest(
+        goldenFile,
+        ZetaAvatar.image(
+          image: Image.file(File('/assets/maxresdefault.jpg')),
+          size: size,
+        ),
+        ZetaAvatar,
+        'avatar_image_${size.toString().split('.').last}',
+      );
+      goldenTest(
+        goldenFile,
+        ZetaAvatar.fromName(
+          name: 'John Doe',
+          size: size,
+        ),
+        ZetaAvatar,
+        'avatar_from_name_${size.toString().split('.').last}',
+      );
+      goldenTest(
+        goldenFile,
+        ZetaAvatar(
+          upperBadge: const ZetaAvatarBadge.notification(value: 3),
+          size: size,
+        ),
+        ZetaAvatar,
+        'avatar_upper_badge_${size.toString().split('.').last}',
+      );
+      goldenTest(
+        goldenFile,
+        ZetaAvatar(
+          lowerBadge: const ZetaAvatarBadge.icon(icon: Icons.star),
+          size: size,
+        ),
+        ZetaAvatar,
+        'avatar_lower_badge_${size.toString().split('.').last}',
+      );
     }
   });
 
-  group('ZetaAvatar Performance Tests', () {});
+  group('Performance Tests', () {});
 }

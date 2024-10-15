@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:intl/intl.dart';
@@ -9,13 +8,67 @@ import '../../../test_utils/tolerant_comparator.dart';
 import '../../../test_utils/utils.dart';
 
 void main() {
-  const goldenFile = GoldenFiles(component: 'chat_item');
+  const String parentFolder = 'chat_item';
 
+  const goldenFile = GoldenFiles(component: parentFolder);
   setUpAll(() {
     goldenFileComparator = TolerantComparator(goldenFile.uri);
   });
 
-  group('ZetaChatItem Tests', () {
+  group('Accessibility Tests', () {});
+  group('Content Tests', () {
+    final time = DateTime.now();
+    final debugFillPropertiesChatItem = {
+      'rounded': 'null',
+      'highlighted': 'true',
+      'time': time.toString(),
+      'timeFormat': 'null',
+      'enabledWarningIcon': 'true',
+      'enabledNotificationIcon': 'true',
+      'count': '1',
+      'onTap': 'null',
+      'starred': 'true',
+      'onMenuMoreTap': 'null',
+      'onCallTap': 'null',
+      'onDeleteTap': 'null',
+      'onPttTap': 'null',
+      'explicitChildNodes': 'true',
+      'paleButtonColors': 'null',
+    };
+    debugFillPropertiesTest(
+      ZetaChatItem(
+        title: const Text('Title'),
+        subtitle: const Text('Subtitle'),
+        time: time,
+        leading: const ZetaAvatar(initials: 'AZ'),
+        slidableActions: [
+          ZetaSlidableAction.menuMore(onPressed: () {}),
+          ZetaSlidableAction.call(onPressed: () {}),
+          ZetaSlidableAction.ptt(onPressed: () {}),
+          ZetaSlidableAction.delete(onPressed: () {}),
+        ],
+        count: 1,
+        enabledNotificationIcon: true,
+        highlighted: true,
+        enabledWarningIcon: true,
+        starred: true,
+      ),
+      debugFillPropertiesChatItem,
+    );
+    final debugFillPropertiesSlidableAction = {
+      'onPressed': 'null',
+      'icon': 'IconData(U+0E5F9)',
+      'foregroundColor': null,
+      'backgroundColor': null,
+      'color': ZetaColorBase.blue.toString(),
+      'semanticLabel': 'null',
+      'paleColor': 'false',
+    };
+    debugFillPropertiesTest(
+      const ZetaSlidableAction(icon: Icons.star),
+      debugFillPropertiesSlidableAction,
+    );
+
     testWidgets('ZetaChatItem displays correctly', (WidgetTester tester) async {
       tester.view.devicePixelRatio = 1.0;
       tester.view.physicalSize = const Size(481, 480);
@@ -64,11 +117,6 @@ void main() {
       await tester.tap(chatItemFinder);
       await tester.pumpAndSettle();
       expect(tester.takeException(), isNull);
-
-      await expectLater(
-        chatItemFinder,
-        matchesGoldenFile(goldenFile.getFileUri('chat_item_default')),
-      );
     });
 
     testWidgets('ZetaChatItem highlighted', (WidgetTester tester) async {
@@ -119,11 +167,6 @@ void main() {
       await tester.tap(chatItemFinder);
       await tester.pumpAndSettle();
       expect(tester.takeException(), isNull);
-
-      await expectLater(
-        chatItemFinder,
-        matchesGoldenFile(goldenFile.getFileUri('chat_item_highlighted')),
-      );
     });
 
     testWidgets('ZetaChatItem slidable actions', (WidgetTester tester) async {
@@ -181,11 +224,6 @@ void main() {
       await tester.tap(find.byIcon(ZetaIcons.delete_round));
       await tester.pumpAndSettle();
       expect(tester.takeException(), isNull);
-
-      await expectLater(
-        chatItemFinder,
-        matchesGoldenFile(goldenFile.getFileUri('chat_item_slidable_actions')),
-      );
     });
 
     testWidgets('ZetaChatItem with pale slidable button colors', (WidgetTester tester) async {
@@ -235,11 +273,6 @@ void main() {
       expect(find.byIcon(ZetaIcons.phone_round), findsOneWidget);
       expect(find.byIcon(ZetaIcons.ptt_round), findsOneWidget);
       expect(find.byIcon(ZetaIcons.delete_round), findsOneWidget);
-
-      await expectLater(
-        chatItemFinder,
-        matchesGoldenFile(goldenFile.getFileUri('chat_item_pale_slidable_buttons')),
-      );
     });
 
     testWidgets('ZetaChatItem with 2 pale buttons and 2 regular buttons', (WidgetTester tester) async {
@@ -323,11 +356,6 @@ void main() {
       await tester.tap(find.byIcon(Icons.message));
       await tester.pumpAndSettle();
       expect(tester.takeException(), isNull);
-
-      await expectLater(
-        chatItemFinder,
-        matchesGoldenFile(goldenFile.getFileUri('chat_item_pale_and_regular_buttons')),
-      );
     });
 
     testWidgets('ZetaChatItem with custom leading widget', (WidgetTester tester) async {
@@ -362,16 +390,9 @@ void main() {
         ),
       );
 
-      final chatItemFinder = find.byType(ZetaChatItem);
-
       // Verify that the custom leading widget is displayed correctly
       expect(find.byType(Container), findsOneWidget);
       expect(find.byWidgetPredicate((widget) => widget is Container && widget.color == Colors.blue), findsOneWidget);
-
-      await expectLater(
-        chatItemFinder,
-        matchesGoldenFile(goldenFile.getFileUri('chat_item_custom_leading')),
-      );
     });
 
     testWidgets('ZetaChatItem with custom slidable buttons', (WidgetTester tester) async {
@@ -425,60 +446,6 @@ void main() {
       await tester.tap(find.byIcon(Icons.delete));
       await tester.pumpAndSettle();
       expect(tester.takeException(), isNull);
-
-      await expectLater(
-        chatItemFinder,
-        matchesGoldenFile(goldenFile.getFileUri('chat_item_custom_slidable_buttons')),
-      );
-    });
-
-    testWidgets('debugFillProperties works correctly', (WidgetTester tester) async {
-      final diagnosticsZetaChatItem = DiagnosticPropertiesBuilder();
-      final time = DateTime.now();
-      ZetaChatItem(
-        title: const Text('Title'),
-        subtitle: const Text('Subtitle'),
-        time: time,
-        leading: const ZetaAvatar(initials: 'AZ'),
-        slidableActions: [
-          ZetaSlidableAction.menuMore(onPressed: () {}),
-          ZetaSlidableAction.call(onPressed: () {}),
-          ZetaSlidableAction.ptt(onPressed: () {}),
-          ZetaSlidableAction.delete(onPressed: () {}),
-        ],
-        count: 1,
-        enabledNotificationIcon: true,
-        highlighted: true,
-        enabledWarningIcon: true,
-        starred: true,
-      ).debugFillProperties(diagnosticsZetaChatItem);
-
-      expect(diagnosticsZetaChatItem.finder('rounded'), 'null');
-      expect(diagnosticsZetaChatItem.finder('highlighted'), 'true');
-      expect(diagnosticsZetaChatItem.finder('time'), time.toString());
-      expect(diagnosticsZetaChatItem.finder('timeFormat'), 'null');
-      expect(diagnosticsZetaChatItem.finder('enabledWarningIcon'), 'true');
-      expect(diagnosticsZetaChatItem.finder('enabledNotificationIcon'), 'true');
-      expect(diagnosticsZetaChatItem.finder('count'), '1');
-      expect(diagnosticsZetaChatItem.finder('onTap'), 'null');
-      expect(diagnosticsZetaChatItem.finder('starred'), 'true');
-      expect(diagnosticsZetaChatItem.finder('onMenuMoreTap'), 'null');
-      expect(diagnosticsZetaChatItem.finder('onCallTap'), 'null');
-      expect(diagnosticsZetaChatItem.finder('onDeleteTap'), 'null');
-      expect(diagnosticsZetaChatItem.finder('onPttTap'), 'null');
-      expect(diagnosticsZetaChatItem.finder('explicitChildNodes'), 'true');
-      expect(diagnosticsZetaChatItem.finder('paleButtonColors'), 'null');
-
-      final diagnosticsZetaSlidableAction = DiagnosticPropertiesBuilder();
-      const ZetaSlidableAction(icon: Icons.star).debugFillProperties(diagnosticsZetaSlidableAction);
-
-      expect(diagnosticsZetaSlidableAction.finder('onPressed'), 'null');
-      expect(diagnosticsZetaSlidableAction.finder('icon'), 'IconData(U+0E5F9)');
-      expect(diagnosticsZetaSlidableAction.finder('foregroundColor'), null);
-      expect(diagnosticsZetaSlidableAction.finder('backgroundColor'), null);
-      expect(diagnosticsZetaSlidableAction.finder('color'), ZetaColorBase.blue.toString());
-      expect(diagnosticsZetaSlidableAction.finder('semanticLabel'), 'null');
-      expect(diagnosticsZetaSlidableAction.finder('paleColor'), 'false');
     });
 
     testWidgets('ZetaChatItem displays correctly', (WidgetTester tester) async {
@@ -541,11 +508,298 @@ void main() {
       await tester.tap(find.byIcon(ZetaIcons.delete_round));
       await tester.pumpAndSettle();
       expect(tester.takeException(), isNull);
-
-      await expectLater(
-        chatItemFinder,
-        matchesGoldenFile(goldenFile.getFileUri('chat_item_small_screen_slidable_button')),
-      );
     });
   });
+  group('Dimensions Tests', () {});
+  group('Styling Tests', () {});
+  group('Interaction Tests', () {});
+  group('Golden Tests', () {
+    const title = Text('John Doe');
+    const subtitle = Text('Hello, how are you?');
+    final time = DateTime.now();
+
+    goldenTestWithCallbacks(
+      goldenFile,
+      Scaffold(
+        body: Column(
+          children: [
+            ZetaChatItem(
+              explicitChildNodes: false,
+              time: time,
+              enabledWarningIcon: true,
+              enabledNotificationIcon: true,
+              leading: const ZetaAvatar(initials: 'AZ'),
+              count: 100,
+              onTap: () {},
+              paleButtonColors: true,
+              slidableActions: [
+                ZetaSlidableAction.menuMore(onPressed: () {}),
+                ZetaSlidableAction.call(onPressed: () {}),
+                ZetaSlidableAction.ptt(onPressed: () {}),
+                ZetaSlidableAction.delete(onPressed: () {}),
+              ],
+              title: title,
+              subtitle: subtitle,
+            ),
+          ],
+        ),
+      ),
+      ZetaChatItem,
+      'chat_item_default',
+      before: (tester) async {
+        tester.view.devicePixelRatio = 1.0;
+        tester.view.physicalSize = const Size(481, 480);
+      },
+    );
+
+    goldenTestWithCallbacks(
+      goldenFile,
+      Column(
+        children: [
+          ZetaChatItem(
+            explicitChildNodes: false,
+            time: time,
+            enabledWarningIcon: true,
+            enabledNotificationIcon: true,
+            leading: const ZetaAvatar(initials: 'AZ'),
+            count: 100,
+            onTap: () {},
+            paleButtonColors: false,
+            starred: true,
+            slidableActions: [
+              ZetaSlidableAction.menuMore(onPressed: () {}),
+              ZetaSlidableAction.call(onPressed: () {}),
+              ZetaSlidableAction.ptt(onPressed: () {}),
+              ZetaSlidableAction.delete(onPressed: () {}),
+            ],
+            highlighted: true,
+            title: title,
+            subtitle: subtitle,
+          ),
+        ],
+      ),
+      ZetaChatItem,
+      'chat_item_highlighted',
+      before: (tester) async {
+        tester.view.devicePixelRatio = 1.0;
+        tester.view.physicalSize = const Size(481, 480);
+      },
+    );
+
+    goldenTestWithCallbacks(
+      goldenFile,
+      Column(
+        children: [
+          ZetaChatItem(
+            time: time,
+            leading: const ZetaAvatar(initials: 'AZ'),
+            slidableActions: [
+              ZetaSlidableAction.menuMore(onPressed: () {}),
+              ZetaSlidableAction.call(onPressed: () {}),
+              ZetaSlidableAction.ptt(onPressed: () {}),
+              ZetaSlidableAction.delete(onPressed: () {}),
+            ],
+            title: title,
+            subtitle: subtitle,
+          ),
+        ],
+      ),
+      ZetaChatItem,
+      'chat_item_slidable_actions',
+      before: (tester) async {
+        tester.view.devicePixelRatio = 1.0;
+        tester.view.physicalSize = const Size(481, 480);
+      },
+      after: (tester) async {
+        final chatItemFinder = find.byType(ZetaChatItem);
+        await tester.drag(chatItemFinder, const Offset(-200, 0));
+        await tester.pumpAndSettle();
+      },
+    );
+
+    goldenTestWithCallbacks(
+      goldenFile,
+      Column(
+        children: [
+          ZetaChatItem(
+            time: time,
+            leading: const ZetaAvatar(initials: 'AZ'),
+            paleButtonColors: true,
+            slidableActions: [
+              ZetaSlidableAction.menuMore(
+                onPressed: () {},
+              ),
+              ZetaSlidableAction.call(
+                onPressed: () {},
+              ),
+              ZetaSlidableAction.ptt(
+                onPressed: () {},
+              ),
+              ZetaSlidableAction.delete(
+                onPressed: () {},
+              ),
+            ],
+            title: title,
+            subtitle: subtitle,
+          ),
+        ],
+      ),
+      ZetaChatItem,
+      'chat_item_pale_slidable_buttons',
+      before: (tester) async {
+        tester.view.devicePixelRatio = 1.0;
+        tester.view.physicalSize = const Size(481, 480);
+      },
+      after: (tester) async {
+        final chatItemFinder = find.byType(ZetaChatItem);
+        await tester.drag(chatItemFinder, const Offset(-200, 0));
+        await tester.pumpAndSettle();
+      },
+    );
+
+    goldenTestWithCallbacks(
+      goldenFile,
+      Column(
+        children: [
+          ZetaChatItem(
+            time: time,
+            leading: const ZetaAvatar(initials: 'AZ'),
+            slidableActions: [
+              ZetaSlidableAction(
+                onPressed: () {},
+                paleColor: true,
+                icon: Icons.star,
+              ),
+              ZetaSlidableAction(
+                onPressed: () {},
+                paleColor: true,
+                icon: Icons.delete,
+              ),
+              ZetaSlidableAction(
+                onPressed: () {},
+                icon: Icons.call,
+              ),
+              ZetaSlidableAction(
+                onPressed: () {},
+                icon: Icons.message,
+              ),
+            ],
+            title: title,
+            subtitle: subtitle,
+          ),
+        ],
+      ),
+      ZetaChatItem,
+      'chat_item_pale_and_regular_buttons',
+      before: (tester) async {
+        tester.view.devicePixelRatio = 1.0;
+        tester.view.physicalSize = const Size(481, 480);
+      },
+      after: (tester) async {
+        final chatItemFinder = find.byType(ZetaChatItem);
+        await tester.drag(chatItemFinder, const Offset(-200, 0));
+        await tester.pumpAndSettle();
+      },
+    );
+
+    goldenTestWithCallbacks(
+      goldenFile,
+      Column(
+        children: [
+          ZetaChatItem(
+            time: time,
+            leading: Container(
+              width: 40,
+              height: 40,
+              color: Colors.blue,
+            ),
+            slidableActions: [
+              ZetaSlidableAction.menuMore(onPressed: () {}),
+              ZetaSlidableAction.call(onPressed: () {}),
+              ZetaSlidableAction.ptt(onPressed: () {}),
+              ZetaSlidableAction.delete(onPressed: () {}),
+            ],
+            title: title,
+            subtitle: subtitle,
+          ),
+        ],
+      ),
+      ZetaChatItem,
+      'chat_item_custom_leading',
+      before: (tester) async {
+        tester.view.devicePixelRatio = 1.0;
+        tester.view.physicalSize = const Size(481, 480);
+      },
+    );
+
+    goldenTestWithCallbacks(
+      goldenFile,
+      Column(
+        children: [
+          ZetaChatItem(
+            time: time,
+            leading: const ZetaAvatar(initials: 'AZ'),
+            slidableActions: [
+              ZetaSlidableAction(
+                onPressed: () {},
+                color: ZetaColorBase.orange,
+                icon: Icons.star,
+              ),
+              ZetaSlidableAction(
+                onPressed: () {},
+                color: ZetaColorBase.red,
+                icon: Icons.delete,
+              ),
+            ],
+            title: title,
+            subtitle: subtitle,
+          ),
+        ],
+      ),
+      ZetaChatItem,
+      'chat_item_custom_slidable_buttons',
+      before: (tester) async {
+        tester.view.devicePixelRatio = 1.0;
+        tester.view.physicalSize = const Size(481, 480);
+      },
+      after: (tester) async {
+        final chatItemFinder = find.byType(ZetaChatItem);
+        await tester.drag(chatItemFinder, const Offset(-200, 0));
+        await tester.pumpAndSettle();
+      },
+    );
+
+    goldenTestWithCallbacks(
+      goldenFile,
+      Column(
+        children: [
+          ZetaChatItem(
+            time: time,
+            leading: const ZetaAvatar(initials: 'AZ'),
+            slidableActions: [
+              ZetaSlidableAction.menuMore(onPressed: () {}),
+              ZetaSlidableAction.call(onPressed: () {}),
+              ZetaSlidableAction.ptt(onPressed: () {}),
+              ZetaSlidableAction.delete(onPressed: () {}),
+            ],
+            title: title,
+            count: 1,
+            subtitle: subtitle,
+          ),
+        ],
+      ),
+      ZetaChatItem,
+      'chat_item_small_screen_slidable_button',
+      before: (tester) async {
+        tester.view.devicePixelRatio = 1.0;
+        tester.view.physicalSize = const Size(315, 480);
+      },
+      after: (tester) async {
+        final chatItemFinder = find.byType(ZetaChatItem);
+        await tester.drag(chatItemFinder, const Offset(-200, 0));
+        await tester.pumpAndSettle();
+      },
+    );
+  });
+  group('Performance Tests', () {});
 }

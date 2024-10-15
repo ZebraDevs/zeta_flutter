@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:path/path.dart';
+import '../test_utils/test_app.dart';
 
 extension Util on DiagnosticPropertiesBuilder {
   dynamic finder(String finder) {
@@ -30,6 +31,77 @@ class GoldenFiles {
   }
 }
 
+void goldenTest(
+  GoldenFiles goldenFile,
+  Widget widget,
+  Type widgetType,
+  String fileName, {
+  ThemeMode themeMode = ThemeMode.system,
+  Size? screenSize,
+  bool? rounded,
+}) {
+  testWidgets('$fileName golden', (WidgetTester tester) async {
+    await tester.pumpWidget(
+      TestApp(
+        screenSize: screenSize,
+        themeMode: themeMode,
+        rounded: rounded,
+        home: widget,
+      ),
+    );
+
+    await expectLater(
+      find.byType(widgetType),
+      matchesGoldenFile(goldenFile.getFileUri(fileName)),
+    );
+  });
+}
+
+void goldenTestWithCallbacks(
+  GoldenFiles goldenFile,
+  Widget widget,
+  Type widgetType,
+  String fileName, {
+  Future<void> Function(WidgetTester)? before,
+  Future<void> Function(WidgetTester)? after,
+  bool darkMode = false,
+  Size? screenSize,
+}) {
+  testWidgets('$fileName golden', (WidgetTester tester) async {
+    if (before != null) {
+      await before(tester);
+    }
+
+    await tester.pumpWidget(
+      TestApp(
+        screenSize: screenSize,
+        themeMode: darkMode ? ThemeMode.dark : ThemeMode.light,
+        home: widget,
+      ),
+    );
+
+    if (after != null) {
+      await after(tester);
+    }
+
+    await expectLater(
+      find.byType(widgetType),
+      matchesGoldenFile(goldenFile.getFileUri(fileName)),
+    );
+  });
+}
+
 BuildContext getBuildContext(WidgetTester tester, Type type) {
   return tester.element(find.byType(type));
+}
+
+void debugFillPropertiesTest(Widget widget, Map<String, dynamic> properties) {
+  testWidgets('debugFillProperties works correctly', (WidgetTester tester) async {
+    final diagnostics = DiagnosticPropertiesBuilder();
+    widget.debugFillProperties(diagnostics);
+
+    properties.forEach((key, value) {
+      expect(diagnostics.finder(key), value);
+    });
+  });
 }

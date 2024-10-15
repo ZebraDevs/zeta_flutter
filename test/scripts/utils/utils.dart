@@ -58,11 +58,7 @@ extension NodeExtension on MethodInvocation {
   /// Returns:
   ///   A [String] containing the sanitized name of the group.
   String getGroupName() {
-    return argumentList.arguments.first
-        .toString()
-        .replaceAll("'", '')
-        .replaceAll(r'$componentName ', '')
-        .replaceAll(' Tests', '');
+    return argumentList.arguments.first.toString().replaceAll("'", '').replaceAll(' Tests', '');
   }
 
   /// Retrieves and sanitizes the name of the test.
@@ -185,16 +181,16 @@ Future<void> writeJSONToFile(String path, dynamic content) async {
   await outputFileGroups.writeAsString(jsonOutputGroups);
 }
 
-/// Writes the given MDX data to a file at the specified path.
+/// Writes the given MD data to a file at the specified path.
 ///
-/// This function asynchronously writes the provided MDX data to a file
+/// This function asynchronously writes the provided MD data to a file
 /// located at the given path. If the file does not exist, it will be created.
 ///
-/// [path] The file path where the MDX data should be written.
-/// [mdxData] The MDX data to write to the file.
-Future<void> writeMDXToFile(String path, String mdxData) async {
-  final mdxFile = File(path);
-  await mdxFile.writeAsString(mdxData);
+/// [path] The file path where the MD data should be written.
+/// [mdData] The MD data to write to the file.
+Future<void> writeMDToFile(String path, String mdData) async {
+  final mdFile = File(path);
+  await mdFile.writeAsString(mdData);
 }
 
 extension ListExtension on List<String> {
