@@ -26,7 +26,6 @@ abstract class ISearchBarEvents {
 ])
 void main() {
   late MockISearchBarEvents callbacks;
-  const String componentName = 'ZetaSearchBar';
   const String parentFolder = 'search_bar';
 
   const goldenFile = GoldenFiles(component: parentFolder);
@@ -38,8 +37,8 @@ void main() {
     callbacks = MockISearchBarEvents();
   });
 
-  group('$componentName Accessibility Tests', () {});
-  group('$componentName Content Tests', () {
+  group('Accessibility Tests', () {});
+  group('Content Tests', () {
     final debugFillProperties = {
       'size': 'medium',
       'shape': 'rounded',
@@ -127,9 +126,9 @@ void main() {
       expect(find.byIcon(ZetaIcons.microphone), findsNothing);
     });
   });
-  group('$componentName Dimensions Tests', () {});
-  group('$componentName Styling Tests', () {});
-  group('$componentName Interaction Tests', () {
+  group('Dimensions Tests', () {});
+  group('Styling Tests', () {});
+  group('Interaction Tests', () {
     testWidgets('triggers onChanged callback when text is entered', (WidgetTester tester) async {
       await tester.pumpWidget(
         TestApp(
@@ -220,7 +219,7 @@ void main() {
       verify(callbacks.onChange.call('')).called(1);
     });
   });
-  group('$componentName Golden Tests', () {
+  group('Golden Tests', () {
     goldenTest(goldenFile, ZetaSearchBar(), ZetaSearchBar, 'search_bar_default');
     goldenTest(goldenFile, ZetaSearchBar(), ZetaSearchBar, 'search_bar_medium');
     goldenTest(
@@ -248,5 +247,5 @@ void main() {
       'search_bar_sharp',
     );
   });
-  group('$componentName Performance Tests', () {});
+  group('Performance Tests', () {});
 }

@@ -7,7 +7,6 @@ import '../../../test_utils/tolerant_comparator.dart';
 import '../../../test_utils/utils.dart';
 
 void main() {
-  const String componentName = 'ZetaPasswordInput';
   const String parentFolder = 'password';
 
   const goldenFile = GoldenFiles(component: parentFolder);
@@ -15,8 +14,8 @@ void main() {
     goldenFileComparator = TolerantComparator(goldenFile.uri);
   });
 
-  group('$componentName Accessibility Tests', () {});
-  group('$componentName Content Tests', () {
+  group('Accessibility Tests', () {});
+  group('Content Tests', () {
     final debugFillProperties = {
       'size': 'medium',
       'placeholder': 'null',
@@ -87,10 +86,10 @@ void main() {
       expect(obscureIconOn, findsOneWidget);
     });
   });
-  group('$componentName Dimensions Tests', () {});
-  group('$componentName Styling Tests', () {});
-  group('$componentName Interaction Tests', () {});
-  group('$componentName Golden Tests', () {
+  group('Dimensions Tests', () {});
+  group('Styling Tests', () {});
+  group('Interaction Tests', () {});
+  group('Golden Tests', () {
     goldenTest(goldenFile, ZetaPasswordInput(), ZetaPasswordInput, 'password_default');
     final formKey = GlobalKey<FormState>();
     goldenTestWithCallbacks(
@@ -115,5 +114,5 @@ void main() {
       },
     );
   });
-  group('$componentName Performance Tests', () {});
+  group('Performance Tests', () {});
 }

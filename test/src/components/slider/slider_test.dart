@@ -7,7 +7,6 @@ import '../../../test_utils/tolerant_comparator.dart';
 import '../../../test_utils/utils.dart';
 
 void main() {
-  const String componentName = 'ZetaSlider';
   const String parentFolder = 'slider';
 
   const goldenFile = GoldenFiles(component: parentFolder);
@@ -15,9 +14,9 @@ void main() {
     goldenFileComparator = TolerantComparator(goldenFile.uri);
   });
 
-  group('$componentName Accessibility Tests', () {});
+  group('Accessibility Tests', () {});
 
-  group('$componentName Content Tests', () {
+  group('Content Tests', () {
     // final debugFillProperties = {
     //   '': '',
     // };
@@ -27,11 +26,11 @@ void main() {
     // );
   });
 
-  group('$componentName Dimensions Tests', () {});
+  group('Dimensions Tests', () {});
 
-  group('$componentName Styling Tests', () {});
+  group('Styling Tests', () {});
 
-  group('$componentName Interaction Tests', () {
+  group('Interaction Tests', () {
     testWidgets('ZetaSlider min/max values', (WidgetTester tester) async {
       const double sliderValue = 0.5;
       double? changedValue;
@@ -61,9 +60,9 @@ void main() {
     });
   });
 
-  group('$componentName Golden Tests', () {
+  group('Golden Tests', () {
     // goldenTest(goldenFile, widget, widgetType, 'PNG_FILE_NAME');
   });
 
-  group('$componentName Performance Tests', () {});
+  group('Performance Tests', () {});
 }

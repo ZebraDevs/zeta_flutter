@@ -9,7 +9,6 @@ import '../../../test_utils/tolerant_comparator.dart';
 import '../../../test_utils/utils.dart';
 
 void main() {
-  const String componentName = 'ZetaAvatar';
   const String parentFolder = 'avatar';
 
   const goldenFile = GoldenFiles(component: parentFolder);
@@ -17,7 +16,7 @@ void main() {
     goldenFileComparator = TolerantComparator(goldenFile.uri);
   });
 
-  group('$componentName Accessibility Tests', () {
+  group('Accessibility Tests', () {
     testWidgets('ZetaAvatar meets accessibility  requirements', (WidgetTester tester) async {
       final SemanticsHandle handle = tester.ensureSemantics();
       await tester.pumpWidget(
@@ -45,7 +44,7 @@ void main() {
     });
   });
 
-  group('$componentName Content Tests', () {
+  group('Content Tests', () {
     final debugFillProperties = {
       'size': 'ZetaAvatarSize.xl',
       'name': 'null',
@@ -115,7 +114,7 @@ void main() {
     }
   });
 
-  group('$componentName Dimensions Tests', () {
+  group('Dimensions Tests', () {
     for (final size in ZetaAvatarSize.values) {
       testWidgets(
         'ZetaAvatar size $size with upper badge',
@@ -230,7 +229,7 @@ void main() {
     }
   });
 
-  group('$componentName Styling Tests', () {
+  group('Styling Tests', () {
     for (final size in ZetaAvatarSize.values) {
       testWidgets('ZetaAvatar with initials $size text size is correct', (WidgetTester tester) async {
         await tester.pumpWidget(
@@ -314,9 +313,9 @@ void main() {
     }
   });
 
-  group('$componentName Interaction Tests', () {});
+  group('Interaction Tests', () {});
 
-  group('$componentName Golden Tests', () {
+  group('Golden Tests', () {
     for (final size in ZetaAvatarSize.values) {
       goldenTest(
         goldenFile,
@@ -374,5 +373,5 @@ void main() {
     }
   });
 
-  group('$componentName Performance Tests', () {});
+  group('Performance Tests', () {});
 }

@@ -7,7 +7,6 @@ import '../../../test_utils/tolerant_comparator.dart';
 import '../../../test_utils/utils.dart';
 
 void main() {
-  const String componentName = 'ZetaCommsButton';
   const String parentFolder = 'comms_button';
 
   const goldenFile = GoldenFiles(component: parentFolder);
@@ -15,7 +14,7 @@ void main() {
     goldenFileComparator = TolerantComparator(goldenFile.uri);
   });
 
-  group('$componentName Accessibility Tests', () {
+  group('Accessibility Tests', () {
     testWidgets('Button meets accessibility  requirements', (WidgetTester tester) async {
       final SemanticsHandle handle = tester.ensureSemantics();
       await tester.pumpWidget(
@@ -68,7 +67,7 @@ void main() {
       handle.dispose();
     });
   });
-  group('$componentName Content Tests', () {
+  group('Content Tests', () {
     final debugFillProperties = {
       'label': '"Label"',
       'onPressed': 'null',
@@ -206,10 +205,10 @@ void main() {
       expect(pressed, isTrue);
     });
   });
-  group('$componentName Dimensions Tests', () {});
-  group('$componentName Styling Tests', () {});
-  group('$componentName Interaction Tests', () {});
-  group('$componentName Golden Tests', () {
+  group('Dimensions Tests', () {});
+  group('Styling Tests', () {});
+  group('Interaction Tests', () {});
+  group('Golden Tests', () {
     for (final type in ZetaCommsButtonType.values) {
       goldenTest(
         goldenFile,
@@ -223,5 +222,5 @@ void main() {
       );
     }
   });
-  group('$componentName Performance Tests', () {});
+  group('Performance Tests', () {});
 }

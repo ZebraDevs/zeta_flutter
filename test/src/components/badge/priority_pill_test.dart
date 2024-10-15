@@ -7,7 +7,6 @@ import '../../../test_utils/tolerant_comparator.dart';
 import '../../../test_utils/utils.dart';
 
 void main() {
-  const String componentName = 'ZetaPriorityPill';
   const String parentFolder = 'badge';
 
   const goldenFile = GoldenFiles(component: parentFolder);
@@ -15,8 +14,8 @@ void main() {
     goldenFileComparator = TolerantComparator(goldenFile.uri);
   });
 
-  group('$componentName Accessibility Tests', () {});
-  group('$componentName Content Tests', () {
+  group('Accessibility Tests', () {});
+  group('Content Tests', () {
     final debugFillProperties = {
       'label': '"Test label"',
       'rounded': 'false',
@@ -118,10 +117,10 @@ void main() {
       expect(zetaPriorityPill.size, ZetaPriorityPillSize.small);
     });
   });
-  group('$componentName Dimensions Tests', () {});
-  group('$componentName Styling Tests', () {});
-  group('$componentName Interaction Tests', () {});
-  group('$componentName Golden Tests', () {
+  group('Dimensions Tests', () {});
+  group('Styling Tests', () {});
+  group('Interaction Tests', () {});
+  group('Golden Tests', () {
     goldenTest(goldenFile, const ZetaPriorityPill(), ZetaPriorityPill, 'priority_pill_default');
     goldenTest(
       goldenFile,
@@ -155,5 +154,5 @@ void main() {
       'priority_pill_low',
     );
   });
-  group('$componentName Performance Tests', () {});
+  group('Performance Tests', () {});
 }

@@ -9,7 +9,6 @@ import '../../../test_utils/tolerant_comparator.dart';
 import '../../../test_utils/utils.dart';
 
 void main() {
-  const String componentName = 'ZetaButton';
   const String parentFolder = 'button';
 
   const goldenFile = GoldenFiles(component: parentFolder);
@@ -17,9 +16,9 @@ void main() {
     goldenFileComparator = TolerantComparator(goldenFile.uri);
   });
 
-  group('$componentName Accessibility Tests', () {});
+  group('Accessibility Tests', () {});
 
-  group('$componentName Content Tests', () {
+  group('Content Tests', () {
     final debugFillProperties = {
       'label': '"Test label"',
       'onPressed': 'null',
@@ -182,9 +181,9 @@ void main() {
     });
   });
 
-  group('$componentName Dimensions Tests', () {});
+  group('Dimensions Tests', () {});
 
-  group('$componentName Styling Tests', () {
+  group('Styling Tests', () {
     testWidgets('Hover states are correct', (WidgetTester tester) async {
       await tester.pumpWidget(
         TestApp(
@@ -245,7 +244,7 @@ void main() {
     });
   });
 
-  group('$componentName Interaction Tests', () {
+  group('Interaction Tests', () {
     testWidgets('Triggers callback on tap', (WidgetTester tester) async {
       bool callbackTriggered = false;
       await tester.pumpWidget(
@@ -258,7 +257,7 @@ void main() {
     });
   });
 
-  group('$componentName Golden Tests', () {
+  group('Golden Tests', () {
     goldenTest(goldenFile, ZetaButton.primary(onPressed: () {}, label: 'Test Button'), ZetaButton, 'button_primary');
     goldenTest(
       goldenFile,
@@ -304,5 +303,5 @@ void main() {
     );
   });
 
-  group('$componentName Performance Tests', () {});
+  group('Performance Tests', () {});
 }

@@ -9,7 +9,6 @@ import '../../../test_utils/tolerant_comparator.dart';
 import '../../../test_utils/utils.dart';
 
 void main() {
-  const String componentName = 'ZetaDialPad';
   const String parentFolder = 'dialpad';
 
   const goldenFile = GoldenFiles(component: parentFolder);
@@ -17,9 +16,9 @@ void main() {
     goldenFileComparator = TolerantComparator(goldenFile.uri);
   });
 
-  group('$componentName Accessibility Tests', () {});
+  group('Accessibility Tests', () {});
 
-  group('$componentName Content Tests', () {
+  group('Content Tests', () {
     final debugFillProperties = {
       'onNumber': 'null',
       'onText': 'null',
@@ -43,9 +42,9 @@ void main() {
     );
   });
 
-  group('$componentName Dimensions Tests', () {});
+  group('Dimensions Tests', () {});
 
-  group('$componentName Styling Tests', () {
+  group('Styling Tests', () {
     testWidgets('Hover styles for button are correct', (WidgetTester tester) async {
       await tester.pumpWidget(
         const TestApp(
@@ -67,7 +66,7 @@ void main() {
     });
   });
 
-  group('$componentName Interaction Tests', () {
+  group('Interaction Tests', () {
     testWidgets('Initializes with correct parameters and is enabled', (WidgetTester tester) async {
       String number = '';
       String text = '';
@@ -281,7 +280,7 @@ void main() {
     });
   });
 
-  group('$componentName Golden Tests', () {
+  group('Golden Tests', () {
     goldenTest(
       goldenFile,
       const ZetaDialPad(
@@ -308,5 +307,5 @@ void main() {
     );
   });
 
-  group('$componentName Performance Tests', () {});
+  group('Performance Tests', () {});
 }

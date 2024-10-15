@@ -6,7 +6,6 @@ import '../../../test_utils/tolerant_comparator.dart';
 import '../../../test_utils/utils.dart';
 
 void main() {
-  const String componentName = 'ZetaIndicator';
   const String parentFolder = 'badge';
 
   const goldenFile = GoldenFiles(component: parentFolder);
@@ -14,8 +13,8 @@ void main() {
     goldenFileComparator = TolerantComparator(goldenFile.uri);
   });
 
-  group('$componentName Accessibility Tests', () {});
-  group('$componentName Content Tests', () {
+  group('Accessibility Tests', () {});
+  group('Content Tests', () {
     final debugFillProperties = {
       'color': 'MaterialColor(primary value: Color(0xffff9800))',
       'icon': 'IconData(U+F04B6)',
@@ -154,10 +153,10 @@ void main() {
       expect(indicator.color, Colors.green);
     });
   });
-  group('$componentName Dimensions Tests', () {});
-  group('$componentName Styling Tests', () {});
-  group('$componentName Interaction Tests', () {});
-  group('$componentName Golden Tests', () {
+  group('Dimensions Tests', () {});
+  group('Styling Tests', () {});
+  group('Interaction Tests', () {});
+  group('Golden Tests', () {
     goldenTest(goldenFile, const ZetaIndicator(), ZetaIndicator, 'indicator_default');
     goldenTest(goldenFile, const ZetaIndicator.icon(), ZetaIndicator, 'indicator_icon_default');
     goldenTest(
@@ -185,5 +184,5 @@ void main() {
       'indicator_notification_values',
     );
   });
-  group('$componentName Performance Tests', () {});
+  group('Performance Tests', () {});
 }

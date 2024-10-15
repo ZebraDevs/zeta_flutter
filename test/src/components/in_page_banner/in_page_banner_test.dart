@@ -7,7 +7,6 @@ import '../../../test_utils/tolerant_comparator.dart';
 import '../../../test_utils/utils.dart';
 
 void main() {
-  const String componentName = 'ZetaInPageBanner';
   const String parentFolder = 'in_page_banner';
 
   const goldenFile = GoldenFiles(component: parentFolder);
@@ -15,8 +14,8 @@ void main() {
     goldenFileComparator = TolerantComparator(goldenFile.uri);
   });
 
-  group('$componentName Accessibility Tests', () {});
-  group('$componentName Content Tests', () {
+  group('Accessibility Tests', () {});
+  group('Content Tests', () {
     final debugFillProperties = {
       'onClose': 'null',
       'status': 'info',
@@ -53,8 +52,8 @@ void main() {
       expect(find.byIcon(ZetaIcons.close_round), findsNothing);
     });
   });
-  group('$componentName Dimensions Tests', () {});
-  group('$componentName Styling Tests', () {
+  group('Dimensions Tests', () {});
+  group('Styling Tests', () {
     testWidgets('default background colour is correct', (WidgetTester tester) async {
       await tester.pumpWidget(
         const TestApp(
@@ -105,7 +104,7 @@ void main() {
       expect(decoration.color, ZetaColorBase.cool.shade10);
     });
   });
-  group('$componentName Interaction Tests', () {
+  group('Interaction Tests', () {
     testWidgets('button callback works', (WidgetTester tester) async {
       bool onPressed = false;
       final key = GlobalKey();
@@ -142,7 +141,7 @@ void main() {
     });
   });
 
-  group('$componentName Golden Tests', () {
+  group('Golden Tests', () {
     goldenTest(
       goldenFile,
       const ZetaInPageBanner(content: Text('Test'), title: 'Title'),
@@ -177,5 +176,5 @@ void main() {
       'in_page_banner_buttons',
     );
   });
-  group('$componentName Performance Tests', () {});
+  group('Performance Tests', () {});
 }

@@ -23,7 +23,6 @@ ZetaColorSwatch _backgroundColorFromType(BuildContext context, ZetaBannerStatus 
 }
 
 void main() {
-  const String componentName = 'ZetaBanner';
   const String parentFolder = 'banner';
 
   const goldenFile = GoldenFiles(component: parentFolder);
@@ -32,7 +31,7 @@ void main() {
     goldenFileComparator = TolerantComparator(goldenFile.uri);
   });
 
-  group('$componentName Accessibility Tests', () {
+  group('Accessibility Tests', () {
     for (final type in ZetaBannerStatus.values) {
       testWidgets('meets contrast ratio guideline for $type', (WidgetTester tester) async {
         await tester.pumpWidget(
@@ -121,7 +120,7 @@ void main() {
     });
   });
 
-  group('$componentName Content Tests', () {
+  group('Content Tests', () {
     testWidgets('ZetaBanner title is correct', (WidgetTester tester) async {
       await tester.pumpWidget(
         TestApp(
@@ -195,7 +194,7 @@ void main() {
     });
   });
 
-  group('$componentName Dimension Tests', () {
+  group('Dimension Tests', () {
     testWidgets('icon is the correct size', (WidgetTester tester) async {
       await tester.pumpWidget(
         TestApp(
@@ -259,7 +258,7 @@ void main() {
     });
   });
 
-  group('$componentName Styling Tests', () {
+  group('Styling Tests', () {
     for (final type in ZetaBannerStatus.values) {
       testWidgets('title styles are correct for $type', (WidgetTester tester) async {
         await tester.pumpWidget(
@@ -331,9 +330,9 @@ void main() {
     }
   });
 
-  group('$componentName Interaction Tests', () {});
+  group('Interaction Tests', () {});
 
-  group('$componentName Golden Tests', () {
+  group('Golden Tests', () {
     for (final type in ZetaBannerStatus.values) {
       goldenTest(
         goldenFile,
@@ -354,5 +353,5 @@ void main() {
     }
   });
 
-  group('$componentName Performace Tests', () {});
+  group('Performace Tests', () {});
 }

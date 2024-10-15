@@ -8,7 +8,6 @@ import '../../../test_utils/tolerant_comparator.dart';
 import '../../../test_utils/utils.dart';
 
 void main() {
-  const String componentName = 'ZetaChatItem';
   const String parentFolder = 'chat_item';
 
   const goldenFile = GoldenFiles(component: parentFolder);
@@ -16,8 +15,8 @@ void main() {
     goldenFileComparator = TolerantComparator(goldenFile.uri);
   });
 
-  group('$componentName Accessibility Tests', () {});
-  group('$componentName Content Tests', () {
+  group('Accessibility Tests', () {});
+  group('Content Tests', () {
     final time = DateTime.now();
     final debugFillPropertiesChatItem = {
       'rounded': 'null',
@@ -511,10 +510,10 @@ void main() {
       expect(tester.takeException(), isNull);
     });
   });
-  group('$componentName Dimensions Tests', () {});
-  group('$componentName Styling Tests', () {});
-  group('$componentName Interaction Tests', () {});
-  group('$componentName Golden Tests', () {
+  group('Dimensions Tests', () {});
+  group('Styling Tests', () {});
+  group('Interaction Tests', () {});
+  group('Golden Tests', () {
     const title = Text('John Doe');
     const subtitle = Text('Hello, how are you?');
     final time = DateTime.now();
@@ -802,5 +801,5 @@ void main() {
       },
     );
   });
-  group('$componentName Performance Tests', () {});
+  group('Performance Tests', () {});
 }

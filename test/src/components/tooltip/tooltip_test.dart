@@ -15,7 +15,6 @@ import 'tooltip_test.mocks.dart';
   MockSpec<Zeta>(),
 ])
 void main() {
-  const String componentName = 'ZetaTooltip';
   const String parentFolder = 'tooltip';
 
   final mockZeta = MockZeta();
@@ -26,8 +25,8 @@ void main() {
     goldenFileComparator = TolerantComparator(goldenFile.uri);
   });
 
-  group('$componentName Accessibility Tests', () {});
-  group('$componentName Content Tests', () {
+  group('Accessibility Tests', () {});
+  group('Content Tests', () {
     final debugFillProperties = {
       'rounded': 'null',
       'padding': 'EdgeInsets.all(8.0)',
@@ -80,7 +79,7 @@ void main() {
       expect(find.byType(ZetaTooltip), findsOneWidget);
     });
   });
-  group('$componentName Dimensions Tests', () {
+  group('Dimensions Tests', () {
     testWidgets('renders with custom padding', (WidgetTester tester) async {
       await tester.pumpWidget(
         const TestApp(
@@ -103,7 +102,7 @@ void main() {
       expect(padding.padding, const EdgeInsets.all(20));
     });
   });
-  group('$componentName Styling Tests', () {
+  group('Styling Tests', () {
     testWidgets('renders with custom color', (WidgetTester tester) async {
       await tester.pumpWidget(
         const TestApp(
@@ -195,8 +194,8 @@ void main() {
       expect((sharpTooltipBox.decoration as BoxDecoration).borderRadius, null);
     });
   });
-  group('$componentName Interaction Tests', () {});
-  group('$componentName Golden Tests', () {
+  group('Interaction Tests', () {});
+  group('Golden Tests', () {
     goldenTest(
       goldenFile,
       const Scaffold(
@@ -241,5 +240,5 @@ void main() {
       'arrow_right',
     );
   });
-  group('$componentName Performance Tests', () {});
+  group('Performance Tests', () {});
 }

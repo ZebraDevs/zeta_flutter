@@ -7,7 +7,6 @@ import '../../../test_utils/tolerant_comparator.dart';
 import '../../../test_utils/utils.dart';
 
 void main() {
-  const String componentName = 'ZetaIcon';
   const String parentFolder = 'icon';
 
   const goldenFile = GoldenFiles(component: parentFolder);
@@ -15,7 +14,7 @@ void main() {
     goldenFileComparator = TolerantComparator(goldenFile.uri);
   });
 
-  group('$componentName Accessibility Tests', () {
+  group('Accessibility Tests', () {
     testWidgets('applies correct semantic label to icon', (WidgetTester tester) async {
       const String semanticLabel = 'Add Icon';
       await tester.pumpWidget(const TestApp(home: ZetaIcon(ZetaIcons.add_round, semanticLabel: semanticLabel)));
@@ -24,7 +23,7 @@ void main() {
       expect(iconWidget.semanticLabel, equals(semanticLabel));
     });
   });
-  group('$componentName Content Tests', () {
+  group('Content Tests', () {
     final debugFillProperties = {
       'icon': 'IconData(U+0E045)',
       'rounded': 'false',
@@ -84,7 +83,7 @@ void main() {
       expect(iconFinderSharp, findsExactly(1));
     });
   });
-  group('$componentName Dimensions Tests', () {
+  group('Dimensions Tests', () {
     testWidgets('applies correct size to icon', (WidgetTester tester) async {
       const double iconSize = 24;
       await tester.pumpWidget(const TestApp(home: ZetaIcon(ZetaIcons.add_round, size: iconSize)));
@@ -94,7 +93,7 @@ void main() {
       expect(sizeOfIcon.height, equals(iconSize));
     });
   });
-  group('$componentName Styling Tests', () {
+  group('Styling Tests', () {
     testWidgets('applies correct font family to icon', (WidgetTester tester) async {
       await tester.pumpWidget(const TestApp(home: ZetaIcon(ZetaIcons.add_round)));
       final iconFinder = find.byIcon(ZetaIcons.add_round);
@@ -182,9 +181,9 @@ void main() {
       expect(iconWidget.icon?.fontFamily, equals('MaterialIcons'));
     });
   });
-  group('$componentName Interaction Tests', () {});
-  group('$componentName Golden Tests', () {
+  group('Interaction Tests', () {});
+  group('Golden Tests', () {
     // goldenTest(goldenFile, widget, widgetType, 'PNG_FILE_NAME');
   });
-  group('$componentName Performance Tests', () {});
+  group('Performance Tests', () {});
 }

@@ -10,7 +10,6 @@ import '../../../test_utils/tolerant_comparator.dart';
 import '../../../test_utils/utils.dart';
 
 void main() {
-  const String componentName = 'ZetaCheckbox';
   const String parentFolder = 'checkbox';
 
   const goldenFile = GoldenFiles(component: parentFolder);
@@ -18,8 +17,8 @@ void main() {
     goldenFileComparator = TolerantComparator(goldenFile.uri);
   });
 
-  group('$componentName Accessibility Tests', () {});
-  group('$componentName Content Tests', () {
+  group('Accessibility Tests', () {});
+  group('Content Tests', () {
     final debugFillPropertiesCheckbox = {
       'value': 'false',
       'label': 'null',
@@ -65,9 +64,9 @@ void main() {
       expect(checkbox.label, 'Test Checkbox');
     });
   });
-  group('$componentName Dimensions Tests', () {});
-  group('$componentName Styling Tests', () {});
-  group('$componentName Interaction Tests', () {
+  group('Dimensions Tests', () {});
+  group('Styling Tests', () {});
+  group('Interaction Tests', () {
     testWidgets('ZetaCheckbox changes state on tap', (WidgetTester tester) async {
       bool? checkboxValue = true;
 
@@ -139,7 +138,7 @@ void main() {
       await tester.pump();
     });
   });
-  group('$componentName Golden Tests', () {
+  group('Golden Tests', () {
     goldenTestWithCallbacks(
       goldenFile,
       ZetaCheckbox(
@@ -179,5 +178,5 @@ void main() {
       'checkbox_disabled',
     );
   });
-  group('$componentName Performance Tests', () {});
+  group('Performance Tests', () {});
 }

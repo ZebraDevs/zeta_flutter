@@ -9,7 +9,6 @@ import '../../../test_utils/tolerant_comparator.dart';
 import '../../../test_utils/utils.dart';
 
 void main() {
-  const String componentName = 'ZetaFAB';
   const String parentFolder = 'fab';
 
   const goldenFile = GoldenFiles(component: parentFolder);
@@ -17,9 +16,9 @@ void main() {
     goldenFileComparator = TolerantComparator(goldenFile.uri);
   });
 
-  group('$componentName Accessibility Tests', () {});
+  group('Accessibility Tests', () {});
 
-  group('$componentName Content Tests', () {
+  group('Content Tests', () {
     final debugFillProperties = {
       'label': 'null',
       'onPressed': 'null',
@@ -137,9 +136,9 @@ void main() {
     });
   });
 
-  group('$componentName Dimensions Tests', () {});
+  group('Dimensions Tests', () {});
 
-  group('$componentName Styling Tests', () {
+  group('Styling Tests', () {
     testWidgets('hover colours are correct', (WidgetTester tester) async {
       final FocusNode node = FocusNode();
 
@@ -185,7 +184,7 @@ void main() {
     });
   });
 
-  group('$componentName Interaction Tests', () {
+  group('Interaction Tests', () {
     testWidgets('OnPressed callback', (WidgetTester tester) async {
       bool isPressed = false;
       final scrollController = ScrollController();
@@ -204,7 +203,7 @@ void main() {
     });
   });
 
-  group('$componentName Golden Tests', () {
+  group('Golden Tests', () {
     goldenTest(
       goldenFile,
       ZetaFAB(
@@ -267,5 +266,5 @@ void main() {
     );
   });
 
-  group('$componentName Performance Tests', () {});
+  group('Performance Tests', () {});
 }

@@ -8,10 +8,8 @@ import '../../../test_utils/test_app.dart';
 import '../../../test_utils/utils.dart';
 
 void main() {
-  const String componentName = 'ZetaAccordion';
-
-  group('$componentName Accessibility Tests', () {});
-  group('$componentName Content Tests', () {
+  group('Accessibility Tests', () {});
+  group('Content Tests', () {
     final debugFillProperties = {
       'title': '"Title"',
       'rounded': 'null',
@@ -50,8 +48,8 @@ void main() {
       expect(accordionContent, findsNothing);
     });
   });
-  group('$componentName Dimensions Tests', () {});
-  group('$componentName Styling Tests', () {
+  group('Dimensions Tests', () {});
+  group('Styling Tests', () {
     testWidgets('ZetaAccordion changes color on hover', (WidgetTester tester) async {
       await tester.pumpWidget(
         const TestApp(
@@ -83,7 +81,7 @@ void main() {
       expect(textButton.style!.side?.resolve({WidgetState.focused})?.color, ZetaColorBase.blue.shade50);
     });
   });
-  group('$componentName Interaction Tests', () {
+  group('Interaction Tests', () {
     testWidgets('ZetaAccordion expands and collapses correctly', (WidgetTester tester) async {
       await tester.pumpWidget(
         const TestApp(
@@ -158,6 +156,6 @@ void main() {
       expect(sizeTransition.sizeFactor.value, 0);
     });
   });
-  group('$componentName Golden Tests', () {});
-  group('$componentName Performance Tests', () {});
+  group('Golden Tests', () {});
+  group('Performance Tests', () {});
 }

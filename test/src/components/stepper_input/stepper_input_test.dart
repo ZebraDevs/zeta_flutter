@@ -8,7 +8,6 @@ import '../../../test_utils/tolerant_comparator.dart';
 import '../../../test_utils/utils.dart';
 
 void main() {
-  const String componentName = 'ZetaStepperInput';
   const String parentFolder = 'stepper_input';
 
   const goldenFile = GoldenFiles(component: parentFolder);
@@ -16,8 +15,8 @@ void main() {
     goldenFileComparator = TolerantComparator(goldenFile.uri);
   });
 
-  group('$componentName Accessibility Tests', () {});
-  group('$componentName Content Tests', () {
+  group('Accessibility Tests', () {});
+  group('Content Tests', () {
     // final debugFillProperties = {
     //   '': '',
     // };
@@ -60,11 +59,11 @@ void main() {
     });
   });
 
-  group('$componentName Dimensions Tests', () {});
+  group('Dimensions Tests', () {});
 
-  group('$componentName Styling Tests', () {});
+  group('Styling Tests', () {});
 
-  group('$componentName Interaction Tests', () {
+  group('Interaction Tests', () {
     testWidgets('ZetaStepperInput increases value when increment button is pressed', (WidgetTester tester) async {
       int value = 0;
       await tester.pumpWidget(
@@ -87,9 +86,9 @@ void main() {
     });
   });
 
-  group('$componentName Golden Tests', () {
+  group('Golden Tests', () {
     // goldenTest(goldenFile, widget, widgetType, 'PNG_FILE_NAME');
   });
 
-  group('$componentName Performance Tests', () {});
+  group('Performance Tests', () {});
 }

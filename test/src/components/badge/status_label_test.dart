@@ -7,7 +7,6 @@ import '../../../test_utils/tolerant_comparator.dart';
 import '../../../test_utils/utils.dart';
 
 void main() {
-  const String componentName = 'ZetaStatusLabel';
   const String parentFolder = 'badge';
 
   const goldenFile = GoldenFiles(component: parentFolder);
@@ -15,8 +14,8 @@ void main() {
     goldenFileComparator = TolerantComparator(goldenFile.uri);
   });
 
-  group('$componentName Accessibility Tests', () {});
-  group('$componentName Content Tests', () {
+  group('Accessibility Tests', () {});
+  group('Content Tests', () {
     final debugFillProperties = {
       'label': '"Test label"',
       'rounded': 'false',
@@ -54,10 +53,10 @@ void main() {
       expect(find.byIcon(Icons.person), findsOneWidget);
     });
   });
-  group('$componentName Dimensions Tests', () {});
-  group('$componentName Styling Tests', () {});
-  group('$componentName Interaction Tests', () {});
-  group('$componentName Golden Tests', () {
+  group('Dimensions Tests', () {});
+  group('Styling Tests', () {});
+  group('Interaction Tests', () {});
+  group('Golden Tests', () {
     goldenTest(goldenFile, const ZetaStatusLabel(label: 'Test Label'), ZetaStatusLabel, 'status_label_default');
     goldenTest(
       goldenFile,
@@ -69,5 +68,5 @@ void main() {
       'status_label_custom',
     );
   });
-  group('$componentName Performance Tests', () {});
+  group('Performance Tests', () {});
 }
