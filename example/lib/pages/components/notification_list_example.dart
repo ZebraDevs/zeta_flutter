@@ -11,6 +11,7 @@ class NotificationListItemExample extends StatelessWidget {
     final Image image = Image.network(
       "https://i.ytimg.com/vi/KItsWUzFUOs/maxresdefault.jpg",
     );
+    final colors = Zeta.of(context).colors;
 
     return ExampleScaffold(
       name: name,
@@ -32,7 +33,7 @@ class NotificationListItemExample extends StatelessWidget {
                   avatar: ZetaAvatar.initials(
                 initials: "JS",
                 lowerBadge: ZetaAvatarBadge.icon(
-                  color: ZetaColors().surfacePositive,
+                  color: colors.surfacePositive,
                   icon: Icons.check,
                 ),
               )),
@@ -63,7 +64,7 @@ class NotificationListItemExample extends StatelessWidget {
                   avatar: ZetaAvatar.initials(
                 initials: "JS",
                 lowerBadge: ZetaAvatarBadge.icon(
-                  color: ZetaColors().surfacePositive,
+                  color: colors.surfacePositive,
                   icon: Icons.check,
                 ),
               )),
@@ -87,7 +88,7 @@ class NotificationListItemExample extends StatelessWidget {
                 avatar: ZetaAvatar.initials(
                   initials: "JS",
                   lowerBadge: ZetaAvatarBadge.icon(
-                    color: ZetaColors().surfacePositive,
+                    color: colors.surfacePositive,
                     icon: Icons.check,
                   ),
                 ),

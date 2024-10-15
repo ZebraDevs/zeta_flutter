@@ -201,7 +201,7 @@ class ZetaStepperInputState extends State<ZetaStepperInput> {
               textAlign: TextAlign.center,
               inputFormatters: [FilteringTextInputFormatter.digitsOnly],
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: disabled ? colors.textDisabled : null,
+                    color: disabled ? colors.mainDisabled : null,
                   ),
               onTapOutside: (_) {
                 if (_controller.text.isEmpty) {

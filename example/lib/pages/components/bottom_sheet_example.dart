@@ -57,7 +57,6 @@ class _BottomSheetExampleState extends State<BottomSheetExample> {
                   centerTitle: centerTitle,
                   body: Wrap(
                     spacing: 12,
-                    runSpacing: 12,
                     children: List.generate(
                       6,
                       (index) => ZetaMenuItem.horizontal(

@@ -106,8 +106,9 @@ class ZetaIndicator extends ZetaStatelessWidget {
   @override
   Widget build(BuildContext context) {
     final zetaColors = Zeta.of(context).colors;
-    final Color backgroundColor = (type == ZetaIndicatorType.icon ? zetaColors.blue : zetaColors.surfaceNegative);
-    final Color foregroundColor = backgroundColor.onColor;
+    final Color backgroundColor =
+        (type == ZetaIndicatorType.icon ? zetaColors.mainPrimary : zetaColors.surfaceNegative);
+    final Color foregroundColor = zetaColors.mainInverse;
     final sizePixels = _getSizePixels(size, type, context);
 
     return Semantics(
@@ -118,7 +119,7 @@ class ZetaIndicator extends ZetaStatelessWidget {
         decoration: BoxDecoration(
           border: Border.all(
             width: ZetaBorders.medium,
-            color: Zeta.of(context).colors.borderSubtle,
+            color: Zeta.of(context).colors.borderPure,
           ),
           color: (inverse ? foregroundColor : Colors.transparent),
           borderRadius: Zeta.of(context).radius.full,

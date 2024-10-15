@@ -180,7 +180,7 @@ class _TopAppBarExampleState extends State<TopAppBarExample> {
                         height: 800,
                         color: Zeta.of(context).colors.surfaceSelectedHover,
                         child: CustomPaint(
-                          painter: Painter(context: context),
+                          painter: Painter(zeta: Zeta.of(context)),
                           size: Size(800, 800),
                         ),
                       ),
@@ -222,7 +222,7 @@ class _TopAppBarExampleState extends State<TopAppBarExample> {
                         height: 800,
                         color: Zeta.of(context).colors.surfaceSelectedHover,
                         child: CustomPaint(
-                          painter: Painter(context: context),
+                          painter: Painter(zeta: Zeta.of(context)),
                           size: Size(800, 800),
                         ),
                       ),
@@ -239,9 +239,9 @@ class _TopAppBarExampleState extends State<TopAppBarExample> {
 }
 
 class Painter extends CustomPainter {
-  final BuildContext context;
+  final Zeta zeta;
 
-  Painter({super.repaint, required this.context});
+  Painter({super.repaint, required this.zeta});
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -249,8 +249,8 @@ class Painter extends CustomPainter {
       var p1 = Offset(i, -10);
       var p2 = Offset(800 + i, 810);
       var paint = Paint()
-        ..color = Zeta.of(context).colors.surfaceDefault
-        ..strokeWidth = Zeta.of(context).spacing.minimum;
+        ..color = zeta.colors.surfaceDefault
+        ..strokeWidth = zeta.spacing.minimum;
       canvas.drawLine(p1, p2, paint);
     }
   }
