@@ -53,7 +53,7 @@ Widget defaultTopAppBarUseCase(BuildContext context) {
                           icon: ZetaIcon(ZetaIcons.more_vertical),
                         )
                       ]
-                    : null,
+                    : [],
               ),
             ],
           ));

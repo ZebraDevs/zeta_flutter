@@ -15,7 +15,6 @@ class ZetaExtendedAppBarDelegate extends SliverPersistentHeaderDelegate {
     required this.shrinks,
     this.actions,
     this.leading,
-    this.searchController,
   });
 
   /// Title of the app bar.
@@ -27,56 +26,49 @@ class ZetaExtendedAppBarDelegate extends SliverPersistentHeaderDelegate {
   /// Widget displayed first in the app bar row.
   final Widget? leading;
 
-  /// Used to control the search textfield and states.
-  final ZetaSearchController? searchController;
-
   /// If `ZetaTopAppBarType.extend` shrinks. Does not affect other types of app bar.
   final bool shrinks;
 
   static const double _maxExtent = 104;
-  static const double _minExtent = 52;
+  static const double _minExtent = 56;
 
   @override
   Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
-    final searchBarOffsetTop = Zeta.of(context).spacing.minimum * 1.5;
-    final searchBarOffsetRight = Zeta.of(context).spacing.minimum * 22;
-    final maxExtent = Zeta.of(context).spacing.minimum * 26;
-    final leftMin = Zeta.of(context).spacing.large;
-    final topMin = Zeta.of(context).spacing.xl;
-    final topMax = Zeta.of(context).spacing.minimum * 15;
+    final spacing = Zeta.of(context).spacing;
+
+    final maxExtent = spacing.minimum * 26;
+    final leftMin = spacing.large;
+    final topMin = spacing.xl;
+    final topMax = spacing.minimum * 15;
 
     /// If there is no leading widget, the left margin should not change
     /// If there is a leading widget, the left margin should be the same as the leading widget's width plus padding
-    final leftMax = leading == null ? leftMin : _minExtent + Zeta.of(context).spacing.small;
+    final leftMax = leading == null ? leftMin : _minExtent + spacing.small;
+
+    final top = shrinks
+        ? (topMax + (-1 * shrinkOffset)).clamp(
+            topMin - (spacing.minimum),
+            topMax - (spacing.minimum),
+          )
+        : topMax;
 
     return ConstrainedBox(
-      constraints: BoxConstraints(minHeight: Zeta.of(context).spacing.xl_9, maxHeight: maxExtent),
+      constraints: BoxConstraints(minHeight: spacing.xl_9, maxHeight: maxExtent),
       child: ColoredBox(
         color: Zeta.of(context).colors.surfacePrimary,
         child: Stack(
           children: [
             Positioned(
-              top: shrinks
-                  ? (topMax + (-1 * shrinkOffset)).clamp(
-                      topMin -
-                          (searchController != null && searchController!.isEnabled
-                              ? searchBarOffsetTop
-                              : Zeta.of(context).spacing.none),
-                      topMax,
-                    )
-                  : topMax,
+              top: top,
               left: shrinks ? ((shrinkOffset / maxExtent) * _maxExtent).clamp(leftMin, leftMax) : leftMin,
-              right: searchController != null && searchController!.isEnabled
-                  ? searchBarOffsetRight
-                  : Zeta.of(context).spacing.none,
+              right: spacing.none,
               child: title,
             ),
-            if (leading != null)
-              Positioned(top: Zeta.of(context).spacing.medium, left: Zeta.of(context).spacing.small, child: leading!),
+            if (leading != null) Positioned(top: spacing.small, left: spacing.small, child: leading!),
             if (actions != null)
               Positioned(
-                top: Zeta.of(context).spacing.medium,
-                right: Zeta.of(context).spacing.small,
+                top: spacing.small,
+                right: spacing.small,
                 child: Row(children: actions!),
               ),
           ],
