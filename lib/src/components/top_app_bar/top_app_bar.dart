@@ -57,9 +57,14 @@ class ZetaTopAppBar extends ZetaStatefulWidget implements PreferredSizeWidget {
         shrinks = false;
 
   /// Creates a ZetaTopAppBar with an expanding search field.
+  /// This will append a search icon to the right of the app bar.
+  /// When the search icon is pressed, the search field will expand and replace the title widget.
+  /// It will replace the leading widget with a back button which closes the search field.
+  /// The search field can be controlled externally by the [searchController].
   const ZetaTopAppBar.search({
     super.key,
     super.rounded,
+    this.type = ZetaTopAppBarType.defaultAppBar,
     this.automaticallyImplyLeading = true,
     this.searchController,
     this.leading,
@@ -69,8 +74,8 @@ class ZetaTopAppBar extends ZetaStatefulWidget implements PreferredSizeWidget {
     this.searchHintText,
     this.onSearchMicrophoneIconPressed,
     this.actions = const [],
-  })  : type = ZetaTopAppBarType.centered,
-        shrinks = false;
+  })  : shrinks = false,
+        assert(type != ZetaTopAppBarType.extended, 'Search app bars cannot be extended');
 
   /// Creates a ZetaTopAppBar with an extended title over 2 lines.
   ///

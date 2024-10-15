@@ -13,7 +13,7 @@ Widget defaultTopAppBarUseCase(BuildContext context) {
     label: "Title Alignment",
     options: [
       ZetaTopAppBarType.defaultAppBar,
-      ZetaTopAppBarType.centeredTitle,
+      ZetaTopAppBarType.centered,
     ],
     initialOption: ZetaTopAppBarType.defaultAppBar,
     labelBuilder: (option) {
@@ -84,7 +84,7 @@ class _SearchUseCaseState extends State<_SearchUseCase> {
       label: "Title Alignment",
       options: [
         ZetaTopAppBarType.defaultAppBar,
-        ZetaTopAppBarType.centeredTitle,
+        ZetaTopAppBarType.centered,
       ],
       initialOption: ZetaTopAppBarType.defaultAppBar,
       labelBuilder: (option) {
@@ -101,7 +101,7 @@ class _SearchUseCaseState extends State<_SearchUseCase> {
       initialValue: false,
     );
 
-    return ZetaTopAppBar(
+    return ZetaTopAppBar.search(
       leading: IconButton(
         onPressed: () {},
         icon: ZetaIcon(leadingIcon),
@@ -118,105 +118,6 @@ class _SearchUseCaseState extends State<_SearchUseCase> {
               searchController.text = generatedText;
             }
           : null,
-      actions: [
-        IconButton(
-            onPressed: () {
-              searchController.isEnabled ? searchController.closeSearch() : searchController.startSearch();
-            },
-            icon: ZetaIcon(ZetaIcons.search)),
-      ],
-    );
-  }
-}
-
-Widget extendedTopAppBarUseCase(BuildContext context) => ExtendedSearch();
-
-class ExtendedSearch extends StatefulWidget {
-  const ExtendedSearch({super.key});
-
-  @override
-  State<ExtendedSearch> createState() => _ExtendedSearchState();
-}
-
-class _ExtendedSearchState extends State<ExtendedSearch> {
-  final _searchControllerExtended = ZetaSearchController();
-
-  void _showHideSearchExtended() {
-    _searchControllerExtended.isEnabled
-        ? _searchControllerExtended.closeSearch()
-        : _searchControllerExtended.startSearch();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final title = context.knobs.string(label: "Title", initialValue: "Title");
-
-    final leadingIcon = iconKnob(context, name: 'Leading Icon', initial: ZetaIcons.hamburger_menu);
-
-    final showSearch = context.knobs.boolean(label: 'Search variant', initialValue: false);
-
-    return WidgetbookScaffold(
-      removeBody: true,
-      builder: (context, constraints) => SafeArea(
-        child: SizedBox(
-          width: constraints.maxWidth,
-          height: constraints.maxHeight,
-          child: CustomScrollView(
-            slivers: [
-              ZetaTopAppBar.extended(
-                leading: IconButton(icon: ZetaIcon(leadingIcon), onPressed: () {}),
-                title: Text(title),
-                actions: showSearch
-                    ? [
-                        IconButton(
-                          onPressed: _showHideSearchExtended,
-                          icon: ZetaIcon(ZetaIcons.search),
-                        )
-                      ]
-                    : [
-                        IconButton(
-                          onPressed: () {},
-                          icon: ZetaIcon(Icons.language),
-                        ),
-                        IconButton(
-                          onPressed: () {},
-                          icon: ZetaIcon(Icons.favorite),
-                        ),
-                        IconButton(
-                          onPressed: () {},
-                          icon: ZetaIcon(ZetaIcons.more_vertical),
-                        )
-                      ],
-                searchController: showSearch ? _searchControllerExtended : null,
-                onSearch: showSearch ? (text) => debugPrint('search text: $text') : null,
-                onSearchMicrophoneIconPressed: showSearch
-                    ? () async {
-                        var sampleTexts = [
-                          'This is a sample text',
-                          'Another sample',
-                          'Speech recognition text',
-                          'Example'
-                        ];
-                        var generatedText = sampleTexts[Random().nextInt(sampleTexts.length)];
-                        _searchControllerExtended.text = generatedText;
-                      }
-                    : null,
-              ),
-              SliverToBoxAdapter(
-                child: Container(
-                  width: constraints.maxWidth,
-                  height: constraints.maxHeight * 4,
-                  color: Zeta.of(context).colors.surfaceSecondary,
-                  child: CustomPaint(
-                    painter: Painter(context: context, constraints: constraints),
-                    size: Size(constraints.maxWidth, constraints.maxHeight * 4),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
     );
   }
 }
