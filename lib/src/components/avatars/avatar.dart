@@ -43,7 +43,7 @@ class ZetaAvatar extends ZetaStatelessWidget {
   /// Constructor for [ZetaAvatar]
   const ZetaAvatar({
     super.key,
-    this.size = ZetaAvatarSize.xl,
+    this.size = ZetaAvatarSize.m,
     this.image,
     this.initials,
     this.backgroundColor,
@@ -59,7 +59,7 @@ class ZetaAvatar extends ZetaStatelessWidget {
   /// Constructor for [ZetaAvatar] with image.
   const ZetaAvatar.image({
     super.key,
-    this.size = ZetaAvatarSize.xl,
+    this.size = ZetaAvatarSize.m,
     this.image,
     this.badge,
     this.showRing = false,
@@ -75,7 +75,7 @@ class ZetaAvatar extends ZetaStatelessWidget {
   const ZetaAvatar.initials({
     super.key,
     required this.initials,
-    this.size = ZetaAvatarSize.xl,
+    this.size = ZetaAvatarSize.m,
     this.badge,
     this.showRing = false,
     this.backgroundColor,
@@ -90,7 +90,7 @@ class ZetaAvatar extends ZetaStatelessWidget {
   ZetaAvatar.fromName({
     super.key,
     required String name,
-    this.size = ZetaAvatarSize.xl,
+    this.size = ZetaAvatarSize.m,
     this.badge,
     this.showRing = false,
     this.backgroundColor,

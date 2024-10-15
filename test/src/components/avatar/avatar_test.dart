@@ -23,11 +23,8 @@ void main() {
           home: ZetaAvatar.initials(
             initials: 'AB',
             backgroundColor: Colors.black,
-            borderColor: Colors.white,
-            lowerBadge: ZetaAvatarBadge(
-              icon: Icons.abc,
-            ),
-            upperBadge: ZetaAvatarBadge(
+            showRing: true,
+            badge: ZetaAvatarBadge(
               icon: Icons.abc,
             ),
             size: ZetaAvatarSize.l,
@@ -105,7 +102,7 @@ void main() {
             TestApp(
               home: ZetaAvatar(
                 size: size,
-                upperBadge: const ZetaAvatarBadge.notification(value: 3),
+                badge: const ZetaAvatarBadge.notification(value: 3),
               ),
             ),
           );
@@ -280,7 +277,7 @@ void main() {
         await tester.pumpWidget(
           TestApp(
             home: ZetaAvatar(
-              borderColor: Colors.red,
+              showRing: true,
               size: size,
             ),
           ),
@@ -366,7 +363,7 @@ void main() {
         await tester.pumpWidget(
           TestApp(
             home: ZetaAvatar(
-              upperBadge: const ZetaAvatarBadge.notification(value: 3),
+              badge: const ZetaAvatarBadge.notification(value: 3),
               size: size,
             ),
           ),

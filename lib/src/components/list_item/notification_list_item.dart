@@ -30,7 +30,7 @@ class ZetaNotificationListItem extends ZetaStatelessWidget {
   });
 
   /// Notification Badge to indicate type of notification or who it's coming from
-  final ZetaNotificationBadge leading;
+  final Widget? leading;
 
   /// Body of notification item
   final Widget body;
@@ -102,11 +102,12 @@ class ZetaNotificationListItem extends ZetaStatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = Zeta.of(context).colors;
+    final spacing = Zeta.of(context).spacing;
 
     final actions = [...slidableActions];
 
     return Padding(
-      padding: EdgeInsets.all(Zeta.of(context).spacing.small),
+      padding: EdgeInsets.all(spacing.small),
       child: ZetaRoundedScope(
         rounded: context.rounded,
         child: Semantics(
@@ -146,7 +147,7 @@ class ZetaNotificationListItem extends ZetaStatelessWidget {
                         mainAxisSize: MainAxisSize.min,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          leading,
+                          if (leading != null) leading!,
                           Expanded(
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -157,14 +158,15 @@ class ZetaNotificationListItem extends ZetaStatelessWidget {
                                     MergeSemantics(
                                       child: Row(
                                         children: [
-                                          if (!notificationRead)
+                                          if (!notificationRead) ...[
                                             ZetaIndicator.icon(
                                               color: ZetaColors().primary,
                                               size: ZetaWidgetSize.small,
                                             ),
-                                          SizedBox(
-                                            width: Zeta.of(context).spacing.minimum,
-                                          ),
+                                            SizedBox(
+                                              width: spacing.minimum,
+                                            ),
+                                          ],
                                           Text(
                                             title,
                                             style: ZetaTextStyles.labelLarge,
@@ -191,10 +193,10 @@ class ZetaNotificationListItem extends ZetaStatelessWidget {
                                             child: ZetaIcon(
                                               ZetaIcons.important_notification,
                                               color: colors.white,
-                                              size: Zeta.of(context).spacing.large,
+                                              size: spacing.large,
                                             ),
                                           ),
-                                      ].gap(Zeta.of(context).spacing.minimum),
+                                      ].gap(spacing.minimum),
                                     ),
                                   ],
                                 ),
@@ -202,13 +204,16 @@ class ZetaNotificationListItem extends ZetaStatelessWidget {
                                 if (attachment != null)
                                   Container(
                                     padding: EdgeInsets.symmetric(
-                                      vertical: Zeta.of(context).spacing.minimum,
+                                      vertical: spacing.minimum,
                                     ),
                                     child: Row(
                                       children: [
+                                        SizedBox(
+                                          width: spacing.small,
+                                        ),
                                         ZetaIcon(
                                           ZetaIcons.attachment,
-                                          size: Zeta.of(context).spacing.medium,
+                                          size: spacing.medium,
                                           color: colors.primary,
                                         ),
                                         DefaultTextStyle(
@@ -218,14 +223,14 @@ class ZetaNotificationListItem extends ZetaStatelessWidget {
                                       ],
                                     ),
                                   ),
-                              ].gap(Zeta.of(context).spacing.minimum),
+                              ].gap(spacing.minimum),
                             ),
                           ),
-                        ].gap(Zeta.of(context).spacing.small),
+                        ].gap(spacing.small),
                       ),
                       if (action != null) Container(alignment: Alignment.bottomRight, child: action),
                     ],
-                  ).paddingAll(Zeta.of(context).spacing.small),
+                  ).paddingAll(spacing.small),
                 ),
               );
             },
@@ -267,8 +272,10 @@ extension on Image {
 
 // TODO(UX-1138): Can this be refactored to use ZetaIndicator?
 /// Badge item for notification list items. Can be an avatar, icon or image
+@Deprecated('Use ZetaIndicator.notification instead. ' 'Deprecated since 0.16.0')
 class ZetaNotificationBadge extends StatelessWidget {
   /// Constructs a notification badge with an avatar.
+  @Deprecated('Use ZetaAvatar instead. ' 'Deprecated since 0.16.0')
   const ZetaNotificationBadge.avatar({
     super.key,
     required this.avatar,
@@ -277,6 +284,7 @@ class ZetaNotificationBadge extends StatelessWidget {
         image = null;
 
   /// Constructs a notification badge with an icon.
+  @Deprecated('Use ZetaIcon instead. ' 'Deprecated since 0.16.0')
   const ZetaNotificationBadge.icon({
     super.key,
     required this.icon,
@@ -285,6 +293,7 @@ class ZetaNotificationBadge extends StatelessWidget {
         image = null;
 
   /// Constructs a notification badge with an image.
+  @Deprecated('Use ZetaIndicator.icon instead. ' 'Deprecated since 0.16.0')
   const ZetaNotificationBadge.image({
     super.key,
     required this.image,
@@ -306,19 +315,21 @@ class ZetaNotificationBadge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final spacing = Zeta.of(context).spacing;
+
     return avatar != null
         ? avatar!.copyWith(size: ZetaAvatarSize.m)
         : icon != null
             ? ZetaIcon(
                 icon,
-                size: Zeta.of(context).spacing.xl_8,
+                size: spacing.xl_8,
                 color: iconColor,
               )
             : ClipRRect(
                 borderRadius: Zeta.of(context).radius.rounded,
                 child: SizedBox.fromSize(
                   size: Size.square(
-                    Zeta.of(context).spacing.xl_8,
+                    spacing.xl_8,
                   ), // Image radius
                   child: image!.copyWith(fit: BoxFit.cover),
                 ),
