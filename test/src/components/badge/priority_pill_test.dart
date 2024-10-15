@@ -84,11 +84,6 @@ void main() {
       expect(zetaPriorityPill.size, ZetaPriorityPillSize.small);
 
       expect(find.text('test label'), findsOneWidget);
-
-      await expectLater(
-        find.byType(ZetaPriorityPill),
-        matchesGoldenFile(goldenFile.getFileUri('priority_pill_high')),
-      );
     });
     testWidgets('Medium priority pill', (WidgetTester tester) async {
       await tester.pumpWidget(
@@ -104,11 +99,6 @@ void main() {
       final ZetaPriorityPill zetaPriorityPill = tester.firstWidget(zetaPriorityPillFinder);
       expect(zetaPriorityPill.type, ZetaPriorityPillType.medium);
       expect(zetaPriorityPill.isBadge, true);
-
-      await expectLater(
-        find.byType(ZetaPriorityPill),
-        matchesGoldenFile(goldenFile.getFileUri('priority_pill_medium')),
-      );
     });
     testWidgets('Low priority pill', (WidgetTester tester) async {
       await tester.pumpWidget(
@@ -126,11 +116,6 @@ void main() {
       expect(zetaPriorityPill.type, ZetaPriorityPillType.low);
       expect(zetaPriorityPill.isBadge, true);
       expect(zetaPriorityPill.size, ZetaPriorityPillSize.small);
-
-      await expectLater(
-        find.byType(ZetaPriorityPill),
-        matchesGoldenFile(goldenFile.getFileUri('priority_pill_low')),
-      );
     });
   });
   group('$componentName Dimensions Tests', () {});

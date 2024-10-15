@@ -15,15 +15,56 @@ import 'tooltip_test.mocks.dart';
   MockSpec<Zeta>(),
 ])
 void main() {
+  const String componentName = 'ZetaTooltip';
+  const String parentFolder = 'tooltip';
+
   final mockZeta = MockZeta();
   when(mockZeta.radius).thenReturn(const ZetaRadiiAA(primitives: ZetaPrimitivesLight()));
-  const goldenFile = GoldenFiles(component: 'tooltip');
 
+  const goldenFile = GoldenFiles(component: parentFolder);
   setUpAll(() {
     goldenFileComparator = TolerantComparator(goldenFile.uri);
   });
 
-  group('ZetaTooltip Widget Tests', () {
+  group('$componentName Accessibility Tests', () {});
+  group('$componentName Content Tests', () {
+    final debugFillProperties = {
+      'rounded': 'null',
+      'padding': 'EdgeInsets.all(8.0)',
+      'color': 'MaterialColor(primary value: Color(0xffffc107))',
+      'textStyle': 'TextStyle(inherit: true, size: 9.0)',
+      'arrowDirection': 'down',
+      'maxWidth': '170.0',
+    };
+    debugFillPropertiesTest(
+      const ZetaTooltip(
+        padding: EdgeInsets.all(8),
+        color: Colors.amber,
+        textStyle: TextStyle(fontSize: 9),
+        maxWidth: 170,
+        child: Text('Rounded tooltip'),
+      ),
+      debugFillProperties,
+    );
+
+    testWidgets('debugFillProperties works correctly', (WidgetTester tester) async {
+      final diagnostics = DiagnosticPropertiesBuilder();
+      const ZetaTooltip(
+        padding: EdgeInsets.all(8),
+        color: Colors.amber,
+        textStyle: TextStyle(fontSize: 9),
+        maxWidth: 170,
+        child: Text('Rounded tooltip'),
+      ).debugFillProperties(diagnostics);
+
+      expect(diagnostics.finder('rounded'), 'null');
+      expect(diagnostics.finder('padding'), 'EdgeInsets.all(8.0)');
+      expect(diagnostics.finder('color').toLowerCase(), contains(Colors.amber.hexCode.toLowerCase()));
+      expect(diagnostics.finder('textStyle'), contains('size: 9.0'));
+      expect(diagnostics.finder('arrowDirection'), 'down');
+      expect(diagnostics.finder('maxWidth'), '170.0');
+    });
+
     testWidgets('renders with default properties', (WidgetTester tester) async {
       await tester.pumpWidget(
         const TestApp(
@@ -38,8 +79,32 @@ void main() {
       expect(find.text('Tooltip text'), findsOneWidget);
       expect(find.byType(ZetaTooltip), findsOneWidget);
     });
+  });
+  group('$componentName Dimensions Tests', () {
+    testWidgets('renders with custom padding', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        const TestApp(
+          home: Scaffold(
+            body: ZetaTooltip(
+              padding: EdgeInsets.all(20),
+              child: Text('Tooltip text'),
+            ),
+          ),
+        ),
+      );
 
-    testWidgets('renders with custom color and padding', (WidgetTester tester) async {
+      final padding = tester.widget<Padding>(
+        find.descendant(
+          of: find.byType(ZetaTooltip),
+          matching: find.byType(Padding),
+        ),
+      );
+
+      expect(padding.padding, const EdgeInsets.all(20));
+    });
+  });
+  group('$componentName Styling Tests', () {
+    testWidgets('renders with custom color', (WidgetTester tester) async {
       await tester.pumpWidget(
         const TestApp(
           home: Scaffold(
@@ -60,15 +125,6 @@ void main() {
       );
 
       expect((tooltipBox.decoration as BoxDecoration).color, Colors.red);
-
-      final padding = tester.widget<Padding>(
-        find.descendant(
-          of: find.byType(ZetaTooltip),
-          matching: find.byType(Padding),
-        ),
-      );
-
-      expect(padding.padding, const EdgeInsets.all(20));
     });
 
     testWidgets('renders with custom text style', (WidgetTester tester) async {
@@ -97,89 +153,6 @@ void main() {
 
       expect(textSpan.style?.fontSize, 24);
       expect(textSpan.style?.color, Colors.blue);
-    });
-
-    testWidgets('renders with arrow correctly in up direction', (WidgetTester tester) async {
-      await tester.pumpWidget(
-        const TestApp(
-          home: Scaffold(
-            body: ZetaTooltip(
-              arrowDirection: ZetaTooltipArrowDirection.up,
-              child: Text('Tooltip up'),
-            ),
-          ),
-        ),
-      );
-
-      expect(find.text('Tooltip up'), findsOneWidget);
-
-      // Verifying the CustomPaint with different arrow directions.
-      await expectLater(
-        find.byType(ZetaTooltip),
-        matchesGoldenFile(goldenFile.getFileUri('arrow_up')),
-      );
-    });
-
-    testWidgets('renders with arrow correctly in down direction', (WidgetTester tester) async {
-      await tester.pumpWidget(
-        const TestApp(
-          home: Scaffold(
-            body: ZetaTooltip(
-              child: Text('Tooltip down'),
-            ),
-          ),
-        ),
-      );
-
-      expect(find.text('Tooltip down'), findsOneWidget);
-
-      // Verifying the CustomPaint with different arrow directions.
-      await expectLater(
-        find.byType(ZetaTooltip),
-        matchesGoldenFile(goldenFile.getFileUri('arrow_down')),
-      );
-    });
-
-    testWidgets('renders with arrow correctly in left direction', (WidgetTester tester) async {
-      await tester.pumpWidget(
-        const TestApp(
-          home: Scaffold(
-            body: ZetaTooltip(
-              arrowDirection: ZetaTooltipArrowDirection.left,
-              child: Text('Tooltip left'),
-            ),
-          ),
-        ),
-      );
-
-      expect(find.text('Tooltip left'), findsOneWidget);
-
-      // Verifying the CustomPaint with different arrow directions.
-      await expectLater(
-        find.byType(ZetaTooltip),
-        matchesGoldenFile(goldenFile.getFileUri('arrow_left')),
-      );
-    });
-
-    testWidgets('renders with arrow correctly in right direction', (WidgetTester tester) async {
-      await tester.pumpWidget(
-        const TestApp(
-          home: Scaffold(
-            body: ZetaTooltip(
-              arrowDirection: ZetaTooltipArrowDirection.right,
-              child: Text('Tooltip right'),
-            ),
-          ),
-        ),
-      );
-
-      expect(find.text('Tooltip right'), findsOneWidget);
-
-      // Verifying the CustomPaint with different arrow directions.
-      await expectLater(
-        find.byType(ZetaTooltip),
-        matchesGoldenFile(goldenFile.getFileUri('arrow_right')),
-      );
     });
 
     testWidgets('renders with rounded and sharp corners', (WidgetTester tester) async {
@@ -221,23 +194,52 @@ void main() {
       expect((roundedTooltipBox.decoration as BoxDecoration).borderRadius, mockZeta.radius.minimal);
       expect((sharpTooltipBox.decoration as BoxDecoration).borderRadius, null);
     });
-
-    testWidgets('debugFillProperties works correctly', (WidgetTester tester) async {
-      final diagnostics = DiagnosticPropertiesBuilder();
-      const ZetaTooltip(
-        padding: EdgeInsets.all(8),
-        color: Colors.amber,
-        textStyle: TextStyle(fontSize: 9),
-        maxWidth: 170,
-        child: Text('Rounded tooltip'),
-      ).debugFillProperties(diagnostics);
-
-      expect(diagnostics.finder('rounded'), 'null');
-      expect(diagnostics.finder('padding'), 'EdgeInsets.all(8.0)');
-      expect(diagnostics.finder('color').toLowerCase(), contains(Colors.amber.hexCode.toLowerCase()));
-      expect(diagnostics.finder('textStyle'), contains('size: 9.0'));
-      expect(diagnostics.finder('arrowDirection'), 'down');
-      expect(diagnostics.finder('maxWidth'), '170.0');
-    });
   });
+  group('$componentName Interaction Tests', () {});
+  group('$componentName Golden Tests', () {
+    goldenTest(
+      goldenFile,
+      const Scaffold(
+        body: ZetaTooltip(
+          arrowDirection: ZetaTooltipArrowDirection.up,
+          child: Text('Tooltip up'),
+        ),
+      ),
+      ZetaTooltip,
+      'arrow_up',
+    );
+    goldenTest(
+      goldenFile,
+      const Scaffold(
+        body: ZetaTooltip(
+          child: Text('Tooltip down'),
+        ),
+      ),
+      ZetaTooltip,
+      'arrow_down',
+    );
+    goldenTest(
+      goldenFile,
+      const Scaffold(
+        body: ZetaTooltip(
+          arrowDirection: ZetaTooltipArrowDirection.left,
+          child: Text('Tooltip left'),
+        ),
+      ),
+      ZetaTooltip,
+      'arrow_left',
+    );
+    goldenTest(
+      goldenFile,
+      const Scaffold(
+        body: ZetaTooltip(
+          arrowDirection: ZetaTooltipArrowDirection.right,
+          child: Text('Tooltip right'),
+        ),
+      ),
+      ZetaTooltip,
+      'arrow_right',
+    );
+  });
+  group('$componentName Performance Tests', () {});
 }

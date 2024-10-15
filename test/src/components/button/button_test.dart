@@ -284,8 +284,12 @@ void main() {
       ZetaButton,
       'button_outline',
     );
-    goldenTest(goldenFile, const ZetaButton.outlineSubtle(label: 'Test Button', borderType: ZetaWidgetBorder.sharp),
-        ZetaButton, 'button_outline_subtle');
+    goldenTest(
+      goldenFile,
+      const ZetaButton.outlineSubtle(label: 'Test Button', borderType: ZetaWidgetBorder.sharp),
+      ZetaButton,
+      'button_outline_subtle',
+    );
     goldenTest(
       goldenFile,
       ZetaButton.text(onPressed: () {}, label: 'Test Button', borderType: ZetaWidgetBorder.full),

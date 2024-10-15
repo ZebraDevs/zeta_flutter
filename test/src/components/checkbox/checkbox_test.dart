@@ -140,7 +140,7 @@ void main() {
     });
   });
   group('$componentName Golden Tests', () {
-    goldenTest(
+    goldenTestWithCallbacks(
       goldenFile,
       ZetaCheckbox(
         onChanged: (value) {},

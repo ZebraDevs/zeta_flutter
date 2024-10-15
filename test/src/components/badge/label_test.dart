@@ -130,7 +130,7 @@ void main() {
       ZetaLabel,
       'label_neutral',
     );
-    goldenTest(goldenFile, const ZetaLabel(label: 'Test Label'), ZetaLabel, 'label_dark', darkMode: true);
+    goldenTest(goldenFile, const ZetaLabel(label: 'Test Label'), ZetaLabel, 'label_dark', themeMode: ThemeMode.dark);
     goldenTest(goldenFile, const ZetaLabel(label: 'Test Label', rounded: false), ZetaLabel, 'label_sharp');
   });
   group('$componentName Performance Tests', () {});
