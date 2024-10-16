@@ -33,6 +33,10 @@ class ZetaTopAppBar extends ZetaStatefulWidget implements PreferredSizeWidget {
         onSearch = null,
         searchHintText = null,
         searchController = null,
+        clearSemanticLabel = null,
+        microphoneSemanticLabel = null,
+        searchBackSemanticLabel = null,
+        searchSemanticLabel = null,
         onSearchMicrophoneIconPressed = null;
 
   /// Creates a ZetaTopAppBar with centered title.
@@ -54,6 +58,10 @@ class ZetaTopAppBar extends ZetaStatefulWidget implements PreferredSizeWidget {
         searchHintText = null,
         searchController = null,
         onSearchMicrophoneIconPressed = null,
+        clearSemanticLabel = null,
+        searchBackSemanticLabel = null,
+        microphoneSemanticLabel = null,
+        searchSemanticLabel = null,
         shrinks = false;
 
   /// Creates a ZetaTopAppBar with an expanding search field.
@@ -74,6 +82,10 @@ class ZetaTopAppBar extends ZetaStatefulWidget implements PreferredSizeWidget {
     this.searchHintText,
     this.onSearchMicrophoneIconPressed,
     this.actions = const [],
+    this.clearSemanticLabel,
+    this.microphoneSemanticLabel,
+    this.searchSemanticLabel,
+    this.searchBackSemanticLabel,
   })  : shrinks = false,
         assert(type != ZetaTopAppBarType.extended, 'Search app bars cannot be extended');
 
@@ -98,6 +110,10 @@ class ZetaTopAppBar extends ZetaStatefulWidget implements PreferredSizeWidget {
         onSearch = null,
         searchHintText = null,
         onSearchMicrophoneIconPressed = null,
+        clearSemanticLabel = null,
+        microphoneSemanticLabel = null,
+        searchSemanticLabel = null,
+        searchBackSemanticLabel = null,
         searchController = null;
 
   /// Called when text in the search field is submitted.
@@ -133,6 +149,17 @@ class ZetaTopAppBar extends ZetaStatefulWidget implements PreferredSizeWidget {
   /// If `ZetaTopAppBarType.extend` shrinks. Does not affect other types of app bar.
   final bool shrinks;
 
+  /// The semantic label for the clear icon.
+  final String? clearSemanticLabel;
+
+  /// The semantic label for the microphone icon.
+  final String? microphoneSemanticLabel;
+
+  final String? searchSemanticLabel;
+
+  /// The semantic label for the back icon when search is open.
+  final String? searchBackSemanticLabel;
+
   @override
   State<ZetaTopAppBar> createState() => _ZetaTopAppBarState();
 
@@ -163,12 +190,6 @@ class _ZetaTopAppBarState extends State<ZetaTopAppBar> {
     _searchController = widget.searchController ?? ZetaSearchController();
     _searchController.addListener(() => setState(() {}));
     super.initState();
-  }
-
-  @override
-  void dispose() {
-    _searchController.dispose();
-    super.dispose();
   }
 
   Widget _getTitleText(ZetaColors colors) {
@@ -203,30 +224,36 @@ class _ZetaTopAppBarState extends State<ZetaTopAppBar> {
   List<Widget>? _getActions(ZetaColors colors) {
     if (_searchActive) {
       return [
-        IconButtonTheme(
-          data: IconButtonThemeData(
-            style: IconButton.styleFrom(iconSize: Zeta.of(context).spacing.xl),
-          ),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              IconButton(
+        Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Semantics(
+              label: widget.clearSemanticLabel,
+              button: true,
+              child: IconButton(
                 color: colors.cool.shade50,
                 onPressed: () => _searchController.clearText(),
-                icon: const ZetaIcon(ZetaIcons.cancel),
-              ),
-              if (widget.onSearchMicrophoneIconPressed != null) ...[
-                SizedBox(
-                  height: Zeta.of(context).spacing.xl_2,
-                  child: VerticalDivider(width: ZetaBorders.medium, color: colors.cool.shade70),
+                icon: ZetaIcon(
+                  ZetaIcons.cancel,
+                  size: Zeta.of(context).spacing.xl,
                 ),
-                IconButton(
+              ),
+            ),
+            if (widget.onSearchMicrophoneIconPressed != null) ...[
+              SizedBox(
+                height: Zeta.of(context).spacing.xl_2,
+                child: VerticalDivider(width: ZetaBorders.medium, color: colors.cool.shade70),
+              ),
+              Semantics(
+                label: widget.microphoneSemanticLabel,
+                button: true,
+                child: IconButton(
                   onPressed: widget.onSearchMicrophoneIconPressed,
                   icon: const ZetaIcon(ZetaIcons.microphone),
                 ),
-              ],
+              ),
             ],
-          ),
+          ],
         ),
       ];
     }
@@ -234,11 +261,15 @@ class _ZetaTopAppBarState extends State<ZetaTopAppBar> {
     if (_searchEnabled) {
       return [
         ...widget.actions,
-        IconButton(
-          onPressed: () => setState(() {
-            _searchController.startSearch();
-          }),
-          icon: const ZetaIcon(ZetaIcons.search),
+        Semantics(
+          label: widget.searchSemanticLabel,
+          button: true,
+          child: IconButton(
+            onPressed: () => setState(() {
+              _searchController.startSearch();
+            }),
+            icon: const ZetaIcon(ZetaIcons.search),
+          ),
         ),
       ];
     }
@@ -278,9 +309,13 @@ class _ZetaTopAppBarState extends State<ZetaTopAppBar> {
     Widget? leading = widget.leading;
 
     if (_searchActive) {
-      leading = IconButton(
-        onPressed: _searchController.closeSearch,
-        icon: const ZetaIcon(ZetaIcons.arrow_back),
+      leading = Semantics(
+        label: widget.searchBackSemanticLabel,
+        button: true,
+        child: IconButton(
+          onPressed: _searchController.closeSearch,
+          icon: const ZetaIcon(ZetaIcons.arrow_back),
+        ),
       );
     }
 
@@ -288,25 +323,21 @@ class _ZetaTopAppBarState extends State<ZetaTopAppBar> {
       rounded: context.rounded,
       child: ColoredBox(
         color: colors.surfacePrimary,
-        child: IconButtonTheme(
-          data: IconButtonThemeData(style: IconButton.styleFrom(tapTargetSize: MaterialTapTargetSize.shrinkWrap)),
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: Zeta.of(context).spacing.minimum),
-            child: AppBar(
-              elevation: 0,
-              scrolledUnderElevation: 0,
-              iconTheme: IconThemeData(color: colors.cool.shade90),
-              leadingWidth: Zeta.of(context).spacing.xl_6,
-              leading: leading,
-              automaticallyImplyLeading: widget.automaticallyImplyLeading,
-              surfaceTintColor: Colors.transparent,
-              centerTitle: widget.type == ZetaTopAppBarType.centered,
-              titleTextStyle: widget.titleTextStyle == null
-                  ? ZetaTextStyles.bodyLarge.copyWith(color: colors.textDefault)
-                  : widget.titleTextStyle!.copyWith(color: colors.textDefault),
-              title: title,
-              actions: actions,
-            ),
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: Zeta.of(context).spacing.minimum),
+          child: AppBar(
+            elevation: 0,
+            scrolledUnderElevation: 0,
+            iconTheme: IconThemeData(color: colors.iconDefault),
+            leading: leading,
+            automaticallyImplyLeading: widget.automaticallyImplyLeading,
+            surfaceTintColor: Colors.transparent,
+            centerTitle: widget.type == ZetaTopAppBarType.centered,
+            titleTextStyle: widget.titleTextStyle == null
+                ? ZetaTextStyles.bodyLarge.copyWith(color: colors.textDefault)
+                : widget.titleTextStyle!.copyWith(color: colors.textDefault),
+            title: title,
+            actions: actions,
           ),
         ),
       ),
