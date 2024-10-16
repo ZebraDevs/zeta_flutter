@@ -90,9 +90,9 @@ void main() {
   group('Styling Tests', () {});
   group('Interaction Tests', () {});
   group('Golden Tests', () {
-    goldenTest(goldenFile, ZetaPasswordInput(), ZetaPasswordInput, 'password_default');
+    goldenTest(goldenFile, ZetaPasswordInput(), 'password_default');
     final formKey = GlobalKey<FormState>();
-    goldenTestWithCallbacks(
+    goldenTest(
       goldenFile,
       Form(
         key: formKey,
@@ -106,9 +106,8 @@ void main() {
           rounded: false,
         ),
       ),
-      ZetaPasswordInput,
       'password_error',
-      after: (tester) async {
+      beforeComparison: (tester) async {
         formKey.currentState?.validate();
         await tester.pump();
       },

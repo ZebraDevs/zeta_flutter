@@ -121,7 +121,7 @@ void main() {
   group('Styling Tests', () {});
   group('Interaction Tests', () {});
   group('Golden Tests', () {
-    goldenTest(goldenFile, const ZetaPriorityPill(), ZetaPriorityPill, 'priority_pill_default');
+    goldenTest(goldenFile, const ZetaPriorityPill(), 'priority_pill_default');
     goldenTest(
       goldenFile,
       const ZetaPriorityPill(
@@ -131,7 +131,6 @@ void main() {
         rounded: false,
         size: ZetaPriorityPillSize.small,
       ),
-      ZetaPriorityPill,
       'priority_pill_high',
     );
     goldenTest(
@@ -140,7 +139,6 @@ void main() {
         type: ZetaPriorityPillType.medium,
         isBadge: true,
       ),
-      ZetaPriorityPill,
       'priority_pill_medium',
     );
     goldenTest(
@@ -150,7 +148,6 @@ void main() {
         size: ZetaPriorityPillSize.small,
         isBadge: true,
       ),
-      ZetaPriorityPill,
       'priority_pill_low',
     );
   });

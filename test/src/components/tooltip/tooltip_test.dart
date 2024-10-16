@@ -204,8 +204,8 @@ void main() {
           child: Text('Tooltip up'),
         ),
       ),
-      ZetaTooltip,
       'arrow_up',
+      widgetType: ZetaTooltip,
     );
     goldenTest(
       goldenFile,
@@ -214,8 +214,8 @@ void main() {
           child: Text('Tooltip down'),
         ),
       ),
-      ZetaTooltip,
       'arrow_down',
+      widgetType: ZetaTooltip,
     );
     goldenTest(
       goldenFile,
@@ -225,8 +225,8 @@ void main() {
           child: Text('Tooltip left'),
         ),
       ),
-      ZetaTooltip,
       'arrow_left',
+      widgetType: ZetaTooltip,
     );
     goldenTest(
       goldenFile,
@@ -236,8 +236,8 @@ void main() {
           child: Text('Tooltip right'),
         ),
       ),
-      ZetaTooltip,
       'arrow_right',
+      widgetType: ZetaTooltip,
     );
   });
   group('Performance Tests', () {});

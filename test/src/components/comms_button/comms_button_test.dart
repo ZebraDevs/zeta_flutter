@@ -217,7 +217,6 @@ void main() {
           icon: ZetaIcons.phone,
           type: type,
         ),
-        ZetaCommsButton,
         'CommsButton_${type.name}',
       );
     }

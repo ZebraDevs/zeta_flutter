@@ -57,14 +57,13 @@ void main() {
   group('Styling Tests', () {});
   group('Interaction Tests', () {});
   group('Golden Tests', () {
-    goldenTest(goldenFile, const ZetaStatusLabel(label: 'Test Label'), ZetaStatusLabel, 'status_label_default');
+    goldenTest(goldenFile, const ZetaStatusLabel(label: 'Test Label'), 'status_label_default');
     goldenTest(
       goldenFile,
       const ZetaStatusLabel(
         label: 'Custom Icon',
         customIcon: Icons.person,
       ),
-      ZetaStatusLabel,
       'status_label_custom',
     );
   });

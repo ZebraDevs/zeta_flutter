@@ -50,8 +50,8 @@ void main() {
   group('Styling Tests', () {});
   group('Interaction Tests', () {});
   group('Golden Tests', () {
-    goldenTest(goldenFile, const ZetaTag.right(label: 'Tag', rounded: false), ZetaTag, 'tag_right');
-    goldenTest(goldenFile, const ZetaTag.left(label: 'Tag', rounded: true), ZetaTag, 'tag_left');
+    goldenTest(goldenFile, const ZetaTag.right(label: 'Tag', rounded: false), 'tag_right');
+    goldenTest(goldenFile, const ZetaTag.left(label: 'Tag', rounded: true), 'tag_left');
   });
   group('Performance Tests', () {});
 }

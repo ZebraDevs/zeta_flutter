@@ -145,19 +145,16 @@ void main() {
     goldenTest(
       goldenFile,
       const ZetaInPageBanner(content: Text('Test'), title: 'Title'),
-      ZetaInPageBanner,
       'in_page_banner_default',
     );
     goldenTest(
       goldenFile,
       ZetaInPageBanner(content: const Text('Test'), onClose: () {}, status: ZetaWidgetStatus.negative),
-      ZetaInPageBanner,
       'in_page_banner_negative',
     );
     goldenTest(
       goldenFile,
       const ZetaInPageBanner(content: Text('Test'), status: ZetaWidgetStatus.positive),
-      ZetaInPageBanner,
       'in_page_banner_positive',
     );
     goldenTest(
@@ -172,7 +169,6 @@ void main() {
           ),
         ],
       ),
-      ZetaInPageBanner,
       'in_page_banner_buttons',
     );
   });

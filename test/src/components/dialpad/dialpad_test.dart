@@ -287,21 +287,18 @@ void main() {
         onNumber: print,
         onText: print,
       ),
-      ZetaDialPad,
       'dialpad_enabled',
       screenSize: const Size(1000, 1000),
     );
     goldenTest(
       goldenFile,
       const ZetaDialPad(),
-      ZetaDialPad,
       'dialpad_disabled',
       screenSize: const Size(1000, 1000),
     );
     goldenTest(
       goldenFile,
       const ZetaDialPadButton(primary: '1'),
-      ZetaDialPadButton,
       'dialpadbutton',
       screenSize: const Size(1000, 1000),
     );

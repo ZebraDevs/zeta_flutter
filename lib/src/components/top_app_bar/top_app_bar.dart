@@ -155,6 +155,7 @@ class ZetaTopAppBar extends ZetaStatefulWidget implements PreferredSizeWidget {
   /// The semantic label for the microphone icon.
   final String? microphoneSemanticLabel;
 
+  /// The semantic label for the search icon.
   final String? searchSemanticLabel;
 
   /// The semantic label for the back icon when search is open.
@@ -176,7 +177,11 @@ class ZetaTopAppBar extends ZetaStatefulWidget implements PreferredSizeWidget {
       ..add(DiagnosticsProperty<ZetaSearchController?>('searchController', searchController))
       ..add(StringProperty('searchHintText', searchHintText))
       ..add(EnumProperty<ZetaTopAppBarType>('type', type))
-      ..add(DiagnosticsProperty<bool>('shrinks', shrinks));
+      ..add(DiagnosticsProperty<bool>('shrinks', shrinks))
+      ..add(StringProperty('clearSemanticLabel', clearSemanticLabel))
+      ..add(StringProperty('microphoneSemanticLabel', microphoneSemanticLabel))
+      ..add(StringProperty('searchSemanticLabel', searchSemanticLabel))
+      ..add(StringProperty('searchBackSemanticLabel', searchBackSemanticLabel));
   }
 }
 
@@ -192,7 +197,7 @@ class _ZetaTopAppBarState extends State<ZetaTopAppBar> {
     super.initState();
   }
 
-  Widget _getTitleText(ZetaColors colors) {
+  Widget _getTitle(ZetaColors colors) {
     Widget? title = widget.title;
     if (widget.title is Row) {
       final oldRow = widget.title! as Row;
@@ -279,9 +284,10 @@ class _ZetaTopAppBarState extends State<ZetaTopAppBar> {
   @override
   Widget build(BuildContext context) {
     final colors = Zeta.of(context).colors;
+    final spacing = Zeta.of(context).spacing;
 
     final actions = _getActions(colors);
-    final titleText = _getTitleText(colors);
+    final titleText = _getTitle(colors);
 
     final title = widget.searchController != null
         ? ZetaTopAppBarSearchField(
@@ -321,24 +327,23 @@ class _ZetaTopAppBarState extends State<ZetaTopAppBar> {
 
     return ZetaRoundedScope(
       rounded: context.rounded,
-      child: ColoredBox(
-        color: colors.surfacePrimary,
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: Zeta.of(context).spacing.minimum),
-          child: AppBar(
-            elevation: 0,
-            scrolledUnderElevation: 0,
-            iconTheme: IconThemeData(color: colors.iconDefault),
-            leading: leading,
-            automaticallyImplyLeading: widget.automaticallyImplyLeading,
-            surfaceTintColor: Colors.transparent,
-            centerTitle: widget.type == ZetaTopAppBarType.centered,
-            titleTextStyle: widget.titleTextStyle == null
-                ? ZetaTextStyles.bodyLarge.copyWith(color: colors.textDefault)
-                : widget.titleTextStyle!.copyWith(color: colors.textDefault),
-            title: title,
-            actions: actions,
-          ),
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: spacing.minimum),
+        child: AppBar(
+          elevation: 0,
+          scrolledUnderElevation: 0,
+          backgroundColor: colors.surfacePrimary,
+          iconTheme: IconThemeData(color: colors.iconDefault),
+          leading: leading,
+          toolbarHeight: spacing.xl_9,
+          automaticallyImplyLeading: widget.automaticallyImplyLeading,
+          surfaceTintColor: Colors.transparent,
+          centerTitle: widget.type == ZetaTopAppBarType.centered,
+          titleTextStyle: widget.titleTextStyle == null
+              ? ZetaTextStyles.bodyLarge.copyWith(color: colors.textDefault)
+              : widget.titleTextStyle!.copyWith(color: colors.textDefault),
+          title: title,
+          actions: actions,
         ),
       ),
     );

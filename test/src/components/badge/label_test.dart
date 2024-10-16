@@ -104,33 +104,29 @@ void main() {
   group('Styling Tests', () {});
   group('Interaction Tests', () {});
   group('Golden Tests', () {
-    goldenTest(goldenFile, const ZetaLabel(label: 'Test Label'), ZetaLabel, 'label_default');
+    goldenTest(goldenFile, const ZetaLabel(label: 'Test Label'), 'label_default');
     goldenTest(
       goldenFile,
       const ZetaLabel(label: 'Test Label', status: ZetaWidgetStatus.positive),
-      ZetaLabel,
       'label_positive',
     );
     goldenTest(
       goldenFile,
       const ZetaLabel(label: 'Test Label', status: ZetaWidgetStatus.warning),
-      ZetaLabel,
       'label_warning',
     );
     goldenTest(
       goldenFile,
       const ZetaLabel(label: 'Test Label', status: ZetaWidgetStatus.negative),
-      ZetaLabel,
       'label_negative',
     );
     goldenTest(
       goldenFile,
       const ZetaLabel(label: 'Test Label', status: ZetaWidgetStatus.neutral),
-      ZetaLabel,
       'label_neutral',
     );
-    goldenTest(goldenFile, const ZetaLabel(label: 'Test Label'), ZetaLabel, 'label_dark', themeMode: ThemeMode.dark);
-    goldenTest(goldenFile, const ZetaLabel(label: 'Test Label', rounded: false), ZetaLabel, 'label_sharp');
+    goldenTest(goldenFile, const ZetaLabel(label: 'Test Label'), 'label_dark', themeMode: ThemeMode.dark);
+    goldenTest(goldenFile, const ZetaLabel(label: 'Test Label', rounded: false), 'label_sharp');
   });
   group('Performance Tests', () {});
 }

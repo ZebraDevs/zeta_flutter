@@ -219,14 +219,13 @@ void main() {
     });
   });
   group('Golden Tests', () {
-    goldenTest(goldenFile, ZetaSearchBar(), ZetaSearchBar, 'search_bar_default');
-    goldenTest(goldenFile, ZetaSearchBar(), ZetaSearchBar, 'search_bar_medium');
+    goldenTest(goldenFile, ZetaSearchBar(), 'search_bar_default');
+    goldenTest(goldenFile, ZetaSearchBar(), 'search_bar_medium');
     goldenTest(
       goldenFile,
       ZetaSearchBar(
         size: ZetaWidgetSize.small,
       ),
-      ZetaSearchBar,
       'search_bar_small',
     );
     goldenTest(
@@ -234,7 +233,6 @@ void main() {
       ZetaSearchBar(
         shape: ZetaWidgetBorder.full,
       ),
-      ZetaSearchBar,
       'search_bar_full',
     );
     goldenTest(
@@ -242,7 +240,6 @@ void main() {
       ZetaSearchBar(
         shape: ZetaWidgetBorder.sharp,
       ),
-      ZetaSearchBar,
       'search_bar_sharp',
     );
   });

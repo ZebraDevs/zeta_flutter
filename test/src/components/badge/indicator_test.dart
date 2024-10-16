@@ -157,8 +157,8 @@ void main() {
   group('Styling Tests', () {});
   group('Interaction Tests', () {});
   group('Golden Tests', () {
-    goldenTest(goldenFile, const ZetaIndicator(), ZetaIndicator, 'indicator_default');
-    goldenTest(goldenFile, const ZetaIndicator.icon(), ZetaIndicator, 'indicator_icon_default');
+    goldenTest(goldenFile, const ZetaIndicator(), 'indicator_default');
+    goldenTest(goldenFile, const ZetaIndicator.icon(), 'indicator_icon_default');
     goldenTest(
       goldenFile,
       const ZetaIndicator.icon(
@@ -167,10 +167,9 @@ void main() {
         inverse: true,
         size: ZetaWidgetSize.medium,
       ),
-      ZetaIndicator,
       'indicator_icon_values',
     );
-    goldenTest(goldenFile, const ZetaIndicator.notification(), ZetaIndicator, 'indicator_notification_default');
+    goldenTest(goldenFile, const ZetaIndicator.notification(), 'indicator_notification_default');
     goldenTest(
       goldenFile,
       const ZetaIndicator.notification(
@@ -180,7 +179,6 @@ void main() {
         size: ZetaWidgetSize.small,
         value: 1,
       ),
-      ZetaIndicator,
       'indicator_notification_values',
     );
   });

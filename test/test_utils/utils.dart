@@ -34,13 +34,19 @@ class GoldenFiles {
 void goldenTest(
   GoldenFiles goldenFile,
   Widget widget,
-  Type widgetType,
   String fileName, {
+  Type? widgetType,
   ThemeMode themeMode = ThemeMode.system,
   Size? screenSize,
   bool? rounded,
+  Future<void> Function(WidgetTester)? setUp,
+  Future<void> Function(WidgetTester)? beforeComparison,
 }) {
   testWidgets('$fileName golden', (WidgetTester tester) async {
+    final computedType = widgetType ?? widget.runtimeType;
+    if (setUp != null) {
+      await setUp(tester);
+    }
     await tester.pumpWidget(
       TestApp(
         screenSize: screenSize,
@@ -50,42 +56,12 @@ void goldenTest(
       ),
     );
 
-    await expectLater(
-      find.byType(widgetType),
-      matchesGoldenFile(goldenFile.getFileUri(fileName)),
-    );
-  });
-}
-
-void goldenTestWithCallbacks(
-  GoldenFiles goldenFile,
-  Widget widget,
-  Type widgetType,
-  String fileName, {
-  Future<void> Function(WidgetTester)? before,
-  Future<void> Function(WidgetTester)? after,
-  bool darkMode = false,
-  Size? screenSize,
-}) {
-  testWidgets('$fileName golden', (WidgetTester tester) async {
-    if (before != null) {
-      await before(tester);
-    }
-
-    await tester.pumpWidget(
-      TestApp(
-        screenSize: screenSize,
-        themeMode: darkMode ? ThemeMode.dark : ThemeMode.light,
-        home: widget,
-      ),
-    );
-
-    if (after != null) {
-      await after(tester);
+    if (beforeComparison != null) {
+      await beforeComparison(tester);
     }
 
     await expectLater(
-      find.byType(widgetType),
+      find.byType(computedType),
       matchesGoldenFile(goldenFile.getFileUri(fileName)),
     );
   });
