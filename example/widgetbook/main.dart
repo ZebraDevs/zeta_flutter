@@ -126,6 +126,7 @@ class _HotReloadState extends State<HotReload> {
               useCases: [
                 WidgetbookUseCase(name: 'Default', builder: (context) => defaultTopAppBarUseCase(context)),
                 WidgetbookUseCase(name: 'Search', builder: (context) => searchTopAppBarUseCase(context)),
+                WidgetbookUseCase(name: 'Extended', builder: (context) => extendedTopAppBarUseCase(context)),
               ],
             ),
             WidgetbookComponent(

@@ -122,6 +122,67 @@ class _SearchUseCaseState extends State<_SearchUseCase> {
   }
 }
 
+Widget extendedTopAppBarUseCase(BuildContext context) => ExtendedTopAppBar();
+
+class ExtendedTopAppBar extends StatefulWidget {
+  const ExtendedTopAppBar({super.key});
+
+  @override
+  State<ExtendedTopAppBar> createState() => _ExtendedTopAppBarState();
+}
+
+class _ExtendedTopAppBarState extends State<ExtendedTopAppBar> {
+  @override
+  Widget build(BuildContext context) {
+    final title = context.knobs.string(label: "Title", initialValue: "Title");
+
+    final leadingIcon = iconKnob(context, name: 'Leading Icon', initial: ZetaIcons.hamburger_menu);
+
+    return WidgetbookScaffold(
+      removeBody: true,
+      builder: (context, constraints) => SafeArea(
+        child: SizedBox(
+          width: constraints.maxWidth,
+          height: constraints.maxHeight,
+          child: CustomScrollView(
+            slivers: [
+              ZetaTopAppBar.extended(
+                leading: IconButton(icon: ZetaIcon(leadingIcon), onPressed: () {}),
+                title: Text(title),
+                actions: [
+                  IconButton(
+                    onPressed: () {},
+                    icon: ZetaIcon(Icons.language),
+                  ),
+                  IconButton(
+                    onPressed: () {},
+                    icon: ZetaIcon(Icons.favorite),
+                  ),
+                  IconButton(
+                    onPressed: () {},
+                    icon: ZetaIcon(ZetaIcons.more_vertical),
+                  )
+                ],
+              ),
+              SliverToBoxAdapter(
+                child: Container(
+                  width: constraints.maxWidth,
+                  height: constraints.maxHeight * 4,
+                  color: Zeta.of(context).colors.surfaceSecondary,
+                  child: CustomPaint(
+                    painter: Painter(context: context, constraints: constraints),
+                    size: Size(constraints.maxWidth, constraints.maxHeight * 4),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
 class Painter extends CustomPainter {
   final BuildContext context;
   final BoxConstraints constraints;
@@ -133,7 +194,7 @@ class Painter extends CustomPainter {
       var p1 = Offset(i, -10);
       var p2 = Offset(constraints.maxHeight + i, constraints.maxHeight * 4);
       var paint = Paint()
-        ..color = Zeta.of(context).colors.primary
+        ..color = Zeta.of(context).colors.surfacePrimarySubtle
         ..strokeWidth = Zeta.of(context).spacing.minimum;
       canvas.drawLine(p1, p2, paint);
     }
