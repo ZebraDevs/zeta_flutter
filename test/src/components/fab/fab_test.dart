@@ -211,15 +211,13 @@ void main() {
         label: 'Label',
         onPressed: () {},
       ),
-      ZetaFAB,
       'FAB_default',
     );
-    goldenTestWithCallbacks(
+    goldenTest(
       goldenFile,
       ZetaFAB(scrollController: ScrollController(), label: 'Label', onPressed: () => {}),
-      ZetaFAB,
       'FAB_pressed',
-      after: (tester) async {
+      beforeComparison: (tester) async {
         await tester.press(find.byType(ZetaFAB));
         await tester.pumpAndSettle();
       },
@@ -233,15 +231,13 @@ void main() {
         shape: ZetaWidgetBorder.rounded,
         size: ZetaFabSize.large,
       ),
-      ZetaFAB,
       'FAB_inverse',
     );
-    goldenTestWithCallbacks(
+    goldenTest(
       goldenFile,
       ZetaFAB(scrollController: ScrollController(), label: 'Label', onPressed: () => {}),
-      ZetaFAB,
       'FAB_pressed',
-      after: (tester) async {
+      beforeComparison: (tester) async {
         await tester.press(find.byType(ZetaFAB));
         await tester.pumpAndSettle();
       },
@@ -255,13 +251,11 @@ void main() {
         type: ZetaFabType.secondary,
         shape: ZetaWidgetBorder.sharp,
       ),
-      ZetaFAB,
       'FAB_secondary',
     );
     goldenTest(
       goldenFile,
       ZetaFAB(scrollController: ScrollController(), label: 'Disabled'),
-      ZetaFAB,
       'FAB_disabled',
     );
   });

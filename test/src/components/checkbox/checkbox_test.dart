@@ -139,14 +139,13 @@ void main() {
     });
   });
   group('Golden Tests', () {
-    goldenTestWithCallbacks(
+    goldenTest(
       goldenFile,
       ZetaCheckbox(
         onChanged: (value) {},
       ),
-      ZetaCheckbox,
       'checkbox_hover',
-      after: (tester) async {
+      beforeComparison: (tester) async {
         final checkboxFinder = find.byType(ZetaCheckbox);
 
         // Hover state
@@ -165,7 +164,6 @@ void main() {
         value: true,
         onChanged: print,
       ),
-      ZetaCheckbox,
       'checkbox_enabled',
     );
 
@@ -174,7 +172,6 @@ void main() {
       ZetaCheckbox(
         value: true,
       ),
-      ZetaCheckbox,
       'checkbox_disabled',
     );
   });

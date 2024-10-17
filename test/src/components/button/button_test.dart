@@ -258,47 +258,44 @@ void main() {
   });
 
   group('Golden Tests', () {
-    goldenTest(goldenFile, ZetaButton.primary(onPressed: () {}, label: 'Test Button'), ZetaButton, 'button_primary');
+    goldenTest(
+      goldenFile,
+      ZetaButton.primary(onPressed: () {}, label: 'Test Button'),
+      'button_primary',
+    );
     goldenTest(
       goldenFile,
       ZetaButton.secondary(onPressed: () {}, label: 'Test Button', leadingIcon: Icons.abc, size: ZetaWidgetSize.small),
-      ZetaButton,
       'button_secondary',
     );
     goldenTest(
       goldenFile,
       ZetaButton.positive(onPressed: () {}, label: 'Test Button', trailingIcon: Icons.abc),
-      ZetaButton,
       'button_positive',
     );
     goldenTest(
       goldenFile,
       ZetaButton.negative(onPressed: () {}, label: 'Test Button', size: ZetaWidgetSize.small),
-      ZetaButton,
       'button_negative',
     );
     goldenTest(
       goldenFile,
       ZetaButton.outline(onPressed: () {}, label: 'Test Button', size: ZetaWidgetSize.large),
-      ZetaButton,
       'button_outline',
     );
     goldenTest(
       goldenFile,
       const ZetaButton.outlineSubtle(label: 'Test Button', borderType: ZetaWidgetBorder.sharp),
-      ZetaButton,
       'button_outline_subtle',
     );
     goldenTest(
       goldenFile,
       ZetaButton.text(onPressed: () {}, label: 'Test Button', borderType: ZetaWidgetBorder.full),
-      ZetaButton,
       'button_text',
     );
     goldenTest(
       goldenFile,
       const ZetaButton.text(label: 'Test Button', borderType: ZetaWidgetBorder.full),
-      ZetaButton,
       'button_disabled',
     );
   });

@@ -8,6 +8,8 @@ import 'search_top_app_bar.dart';
 export 'search_top_app_bar.dart' hide ZetaTopAppBarSearchField;
 
 /// Top app bars provide content and actions related to the current screen.
+///
+/// To create Extended, Centered, or Search app bars, use the respective constructors.
 /// {@category Components}
 ///
 /// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=229-37&node-type=canvas&m=dev
@@ -18,33 +20,76 @@ class ZetaTopAppBar extends ZetaStatefulWidget implements PreferredSizeWidget {
   const ZetaTopAppBar({
     super.key,
     super.rounded,
-    this.actions,
+    this.actions = const [],
     this.automaticallyImplyLeading = true,
-    this.searchController,
     this.leading,
     this.title,
     this.titleTextStyle,
     this.type = ZetaTopAppBarType.defaultAppBar,
-    this.onSearch,
-    this.searchHintText = 'Search',
-    this.onSearchMicrophoneIconPressed,
-  }) : shrinks = false;
+    @Deprecated('Use ZetaTopAppBar.search instead. ' 'Deprecated as of 0.16.0') ValueChanged<String>? onSearch,
+    @Deprecated('Use ZetaTopAppBar.search instead. ' 'Deprecated as of 0.16.0') String? searchHintText,
+    @Deprecated('Use ZetaTopAppBar.search instead. ' 'Deprecated as of 0.16.0') ZetaSearchController? searchController,
+    @Deprecated('Use ZetaTopAppBar.search instead. ' 'Deprecated as of 0.16.0')
+    VoidCallback? onSearchMicrophoneIconPressed,
+  })  : shrinks = false,
+        onSearch = null,
+        searchHintText = null,
+        searchController = null,
+        clearSemanticLabel = null,
+        microphoneSemanticLabel = null,
+        searchBackSemanticLabel = null,
+        searchSemanticLabel = null,
+        onSearchMicrophoneIconPressed = null;
 
   /// Creates a ZetaTopAppBar with centered title.
   const ZetaTopAppBar.centered({
     super.key,
     super.rounded,
-    this.actions,
+    this.actions = const [],
+    this.automaticallyImplyLeading = true,
+    this.leading,
+    this.title,
+    this.titleTextStyle,
+    @Deprecated('Use ZetaTopAppBar.search instead. ' 'Deprecated as of 0.16.0') ValueChanged<String>? onSearch,
+    @Deprecated('Use ZetaTopAppBar.search instead. ' 'Deprecated as of 0.16.0') String? searchHintText,
+    @Deprecated('Use ZetaTopAppBar.search instead. ' 'Deprecated as of 0.16.0') ZetaSearchController? searchController,
+    @Deprecated('Use ZetaTopAppBar.search instead. ' 'Deprecated as of 0.16.0')
+    VoidCallback? onSearchMicrophoneIconPressed,
+  })  : type = ZetaTopAppBarType.centered,
+        onSearch = null,
+        searchHintText = null,
+        searchController = null,
+        onSearchMicrophoneIconPressed = null,
+        clearSemanticLabel = null,
+        searchBackSemanticLabel = null,
+        microphoneSemanticLabel = null,
+        searchSemanticLabel = null,
+        shrinks = false;
+
+  /// Creates a ZetaTopAppBar with an expanding search field.
+  /// This will append a search icon to the right of the app bar.
+  /// When the search icon is pressed, the search field will expand and replace the title widget.
+  /// It will replace the leading widget with a back button which closes the search field.
+  /// The search field can be controlled externally by the [searchController].
+  const ZetaTopAppBar.search({
+    super.key,
+    super.rounded,
+    this.type = ZetaTopAppBarType.defaultAppBar,
     this.automaticallyImplyLeading = true,
     this.searchController,
     this.leading,
     this.title,
     this.titleTextStyle,
     this.onSearch,
-    this.searchHintText = 'Search',
+    this.searchHintText,
     this.onSearchMicrophoneIconPressed,
-  })  : type = ZetaTopAppBarType.centeredTitle,
-        shrinks = false;
+    this.actions = const [],
+    this.clearSemanticLabel,
+    this.microphoneSemanticLabel,
+    this.searchSemanticLabel,
+    this.searchBackSemanticLabel,
+  })  : shrinks = false,
+        assert(type != ZetaTopAppBarType.extended, 'Search app bars cannot be extended');
 
   /// Creates a ZetaTopAppBar with an extended title over 2 lines.
   ///
@@ -52,23 +97,32 @@ class ZetaTopAppBar extends ZetaStatefulWidget implements PreferredSizeWidget {
   const ZetaTopAppBar.extended({
     super.key,
     super.rounded,
-    this.actions,
+    this.actions = const [],
     this.automaticallyImplyLeading = true,
-    this.searchController,
     this.leading,
     this.title,
     this.titleTextStyle,
-    this.onSearch,
-    this.searchHintText = 'Search',
-    this.onSearchMicrophoneIconPressed,
     this.shrinks = true,
-  }) : type = ZetaTopAppBarType.extendedTitle;
+    @Deprecated('Use ZetaTopAppBar.search instead. ' 'Deprecated as of 0.16.0') ValueChanged<String>? onSearch,
+    @Deprecated('Use ZetaTopAppBar.search instead. ' 'Deprecated as of 0.16.0') String? searchHintText,
+    @Deprecated('Use ZetaTopAppBar.search instead. ' 'Deprecated as of 0.16.0') ZetaSearchController? searchController,
+    @Deprecated('Use ZetaTopAppBar.search instead. ' 'Deprecated as of 0.16.0')
+    VoidCallback? onSearchMicrophoneIconPressed,
+  })  : type = ZetaTopAppBarType.extended,
+        onSearch = null,
+        searchHintText = null,
+        onSearchMicrophoneIconPressed = null,
+        clearSemanticLabel = null,
+        microphoneSemanticLabel = null,
+        searchSemanticLabel = null,
+        searchBackSemanticLabel = null,
+        searchController = null;
 
   /// Called when text in the search field is submitted.
-  final void Function(String)? onSearch;
+  final ValueChanged<String>? onSearch;
 
   /// A list of Widgets to display in a row after the [title] widget.
-  final List<Widget>? actions;
+  final List<Widget> actions;
 
   /// Configures whether the back button to be displayed.
   final bool automaticallyImplyLeading;
@@ -97,6 +151,18 @@ class ZetaTopAppBar extends ZetaStatefulWidget implements PreferredSizeWidget {
   /// If `ZetaTopAppBarType.extend` shrinks. Does not affect other types of app bar.
   final bool shrinks;
 
+  /// The semantic label for the clear icon.
+  final String? clearSemanticLabel;
+
+  /// The semantic label for the microphone icon.
+  final String? microphoneSemanticLabel;
+
+  /// The semantic label for the search icon.
+  final String? searchSemanticLabel;
+
+  /// The semantic label for the back icon when search is open.
+  final String? searchBackSemanticLabel;
+
   @override
   State<ZetaTopAppBar> createState() => _ZetaTopAppBarState();
 
@@ -113,34 +179,28 @@ class ZetaTopAppBar extends ZetaStatefulWidget implements PreferredSizeWidget {
       ..add(DiagnosticsProperty<ZetaSearchController?>('searchController', searchController))
       ..add(StringProperty('searchHintText', searchHintText))
       ..add(EnumProperty<ZetaTopAppBarType>('type', type))
-      ..add(DiagnosticsProperty<bool>('shrinks', shrinks));
+      ..add(DiagnosticsProperty<bool>('shrinks', shrinks))
+      ..add(StringProperty('clearSemanticLabel', clearSemanticLabel))
+      ..add(StringProperty('microphoneSemanticLabel', microphoneSemanticLabel))
+      ..add(StringProperty('searchSemanticLabel', searchSemanticLabel))
+      ..add(StringProperty('searchBackSemanticLabel', searchBackSemanticLabel));
   }
 }
 
 class _ZetaTopAppBarState extends State<ZetaTopAppBar> {
-  bool _isSearchEnabled = false;
+  late ZetaSearchController _searchController;
+  bool get _searchEnabled => widget.searchController != null || widget.onSearch != null;
+  bool get _searchActive => _searchController.isEnabled;
 
   @override
   void initState() {
-    widget.searchController?.addListener(_onSearchControllerChanged);
+    _searchController = widget.searchController ?? ZetaSearchController();
+    _searchController.addListener(() => setState(() {}));
     super.initState();
   }
 
-  void _onSearchControllerChanged() {
-    final controller = widget.searchController;
-    if (controller == null) return;
-
-    setState(() => _isSearchEnabled = controller.isEnabled);
-  }
-
-  @override
-  void dispose() {
-    widget.searchController?.removeListener(_onSearchControllerChanged);
-    super.dispose();
-  }
-
-  Widget _getTitleText(ZetaColors colors) {
-    var title = widget.title;
+  Widget _getTitle(ZetaColors colors) {
+    Widget? title = widget.title;
     if (widget.title is Row) {
       final oldRow = widget.title! as Row;
       title = Row(
@@ -169,43 +229,67 @@ class _ZetaTopAppBarState extends State<ZetaTopAppBar> {
   }
 
   List<Widget>? _getActions(ZetaColors colors) {
-    return _isSearchEnabled
-        ? [
-            IconButtonTheme(
-              data: IconButtonThemeData(
-                style: IconButton.styleFrom(iconSize: Zeta.of(context).spacing.xl),
-              ),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  IconButton(
-                    color: colors.cool.shade50,
-                    onPressed: () => widget.searchController?.clearText(),
-                    icon: const ZetaIcon(ZetaIcons.cancel),
-                  ),
-                  if (widget.onSearchMicrophoneIconPressed != null) ...[
-                    SizedBox(
-                      height: Zeta.of(context).spacing.xl_2,
-                      child: VerticalDivider(width: ZetaBorders.medium, color: colors.cool.shade70),
-                    ),
-                    IconButton(
-                      onPressed: widget.onSearchMicrophoneIconPressed,
-                      icon: const ZetaIcon(ZetaIcons.microphone),
-                    ),
-                  ],
-                ],
+    if (_searchActive) {
+      return [
+        Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Semantics(
+              label: widget.clearSemanticLabel,
+              button: true,
+              child: IconButton(
+                color: colors.cool.shade50,
+                onPressed: () => _searchController.clearText(),
+                icon: ZetaIcon(
+                  ZetaIcons.cancel,
+                  size: Zeta.of(context).spacing.xl,
+                ),
               ),
             ),
-          ]
-        : widget.actions;
+            if (widget.onSearchMicrophoneIconPressed != null) ...[
+              SizedBox(
+                height: Zeta.of(context).spacing.xl_2,
+                child: VerticalDivider(width: ZetaBorders.medium, color: colors.cool.shade70),
+              ),
+              Semantics(
+                label: widget.microphoneSemanticLabel,
+                button: true,
+                child: IconButton(
+                  onPressed: widget.onSearchMicrophoneIconPressed,
+                  icon: const ZetaIcon(ZetaIcons.microphone),
+                ),
+              ),
+            ],
+          ],
+        ),
+      ];
+    }
+
+    if (_searchEnabled) {
+      return [
+        ...widget.actions,
+        Semantics(
+          label: widget.searchSemanticLabel,
+          button: true,
+          child: IconButton(
+            onPressed: () => setState(() {
+              _searchController.startSearch();
+            }),
+            icon: const ZetaIcon(ZetaIcons.search),
+          ),
+        ),
+      ];
+    }
+    return widget.actions;
   }
 
   @override
   Widget build(BuildContext context) {
     final colors = Zeta.of(context).colors;
+    final spacing = Zeta.of(context).spacing;
 
     final actions = _getActions(colors);
-    final titleText = _getTitleText(colors);
+    final titleText = _getTitle(colors);
 
     final title = widget.searchController != null
         ? ZetaTopAppBarSearchField(
@@ -213,48 +297,55 @@ class _ZetaTopAppBarState extends State<ZetaTopAppBar> {
             hintText: widget.searchHintText ?? 'Search',
             onSearch: widget.onSearch,
             type: widget.type,
-            isExtended: widget.type == ZetaTopAppBarType.extendedTitle,
+            isExtended: widget.type == ZetaTopAppBarType.extended,
             child: titleText,
           )
         : titleText;
 
-    if (widget.type == ZetaTopAppBarType.extendedTitle) {
+    if (widget.type == ZetaTopAppBarType.extended) {
       return SliverPersistentHeader(
         pinned: true,
         delegate: ZetaExtendedAppBarDelegate(
           actions: actions,
           leading: widget.leading,
-          searchController: widget.searchController,
           title: title,
           shrinks: widget.shrinks,
         ),
       );
     }
 
+    Widget? leading = widget.leading;
+
+    if (_searchActive) {
+      leading = Semantics(
+        label: widget.searchBackSemanticLabel,
+        button: true,
+        child: IconButton(
+          onPressed: _searchController.closeSearch,
+          icon: const ZetaIcon(ZetaIcons.arrow_back),
+        ),
+      );
+    }
+
     return ZetaRoundedScope(
       rounded: context.rounded,
-      child: ColoredBox(
-        color: colors.surfacePrimary,
-        child: IconButtonTheme(
-          data: IconButtonThemeData(style: IconButton.styleFrom(tapTargetSize: MaterialTapTargetSize.shrinkWrap)),
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: Zeta.of(context).spacing.minimum),
-            child: AppBar(
-              elevation: 0,
-              scrolledUnderElevation: 0,
-              iconTheme: IconThemeData(color: colors.cool.shade90),
-              leadingWidth: Zeta.of(context).spacing.xl_6,
-              leading: widget.leading,
-              automaticallyImplyLeading: widget.automaticallyImplyLeading,
-              surfaceTintColor: Colors.transparent,
-              centerTitle: widget.type == ZetaTopAppBarType.centeredTitle,
-              titleTextStyle: widget.titleTextStyle == null
-                  ? ZetaTextStyles.bodyLarge.copyWith(color: colors.textDefault)
-                  : widget.titleTextStyle!.copyWith(color: colors.textDefault),
-              title: title,
-              actions: actions,
-            ),
-          ),
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: spacing.minimum),
+        child: AppBar(
+          elevation: 0,
+          scrolledUnderElevation: 0,
+          backgroundColor: colors.surfacePrimary,
+          iconTheme: IconThemeData(color: colors.iconDefault),
+          leading: leading,
+          toolbarHeight: spacing.xl_9,
+          automaticallyImplyLeading: widget.automaticallyImplyLeading,
+          surfaceTintColor: Colors.transparent,
+          centerTitle: widget.type == ZetaTopAppBarType.centered,
+          titleTextStyle: widget.titleTextStyle == null
+              ? ZetaTextStyles.bodyLarge.copyWith(color: colors.textDefault)
+              : widget.titleTextStyle!.copyWith(color: colors.textDefault),
+          title: title,
+          actions: actions,
         ),
       ),
     );
@@ -267,8 +358,16 @@ enum ZetaTopAppBarType {
   defaultAppBar,
 
   /// Title in the center.
+  @Deprecated('Use ZetaTopAppBar.centered instead. ' 'Deprecated as of 0.16.0')
   centeredTitle,
 
+  /// Aligns the title to the center of the app bar.
+  centered,
+
   /// Title below the app bar.
+  @Deprecated('Use ZetaTopAppBar.extended instead. ' 'Deprecated as of 0.16.0')
   extendedTitle,
+
+  /// Title extends over 2 lines and collapses when scrolled.
+  extended,
 }

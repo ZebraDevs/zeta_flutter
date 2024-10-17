@@ -518,7 +518,7 @@ void main() {
     const subtitle = Text('Hello, how are you?');
     final time = DateTime.now();
 
-    goldenTestWithCallbacks(
+    goldenTest(
       goldenFile,
       Scaffold(
         body: Column(
@@ -544,15 +544,15 @@ void main() {
           ],
         ),
       ),
-      ZetaChatItem,
       'chat_item_default',
-      before: (tester) async {
+      widgetType: ZetaChatItem,
+      setUp: (tester) async {
         tester.view.devicePixelRatio = 1.0;
         tester.view.physicalSize = const Size(481, 480);
       },
     );
 
-    goldenTestWithCallbacks(
+    goldenTest(
       goldenFile,
       Column(
         children: [
@@ -578,15 +578,15 @@ void main() {
           ),
         ],
       ),
-      ZetaChatItem,
       'chat_item_highlighted',
-      before: (tester) async {
+      widgetType: ZetaChatItem,
+      setUp: (tester) async {
         tester.view.devicePixelRatio = 1.0;
         tester.view.physicalSize = const Size(481, 480);
       },
     );
 
-    goldenTestWithCallbacks(
+    goldenTest(
       goldenFile,
       Column(
         children: [
@@ -604,20 +604,20 @@ void main() {
           ),
         ],
       ),
-      ZetaChatItem,
       'chat_item_slidable_actions',
-      before: (tester) async {
+      widgetType: ZetaChatItem,
+      setUp: (tester) async {
         tester.view.devicePixelRatio = 1.0;
         tester.view.physicalSize = const Size(481, 480);
       },
-      after: (tester) async {
+      beforeComparison: (tester) async {
         final chatItemFinder = find.byType(ZetaChatItem);
         await tester.drag(chatItemFinder, const Offset(-200, 0));
         await tester.pumpAndSettle();
       },
     );
 
-    goldenTestWithCallbacks(
+    goldenTest(
       goldenFile,
       Column(
         children: [
@@ -644,20 +644,20 @@ void main() {
           ),
         ],
       ),
-      ZetaChatItem,
       'chat_item_pale_slidable_buttons',
-      before: (tester) async {
+      widgetType: ZetaChatItem,
+      setUp: (tester) async {
         tester.view.devicePixelRatio = 1.0;
         tester.view.physicalSize = const Size(481, 480);
       },
-      after: (tester) async {
+      beforeComparison: (tester) async {
         final chatItemFinder = find.byType(ZetaChatItem);
         await tester.drag(chatItemFinder, const Offset(-200, 0));
         await tester.pumpAndSettle();
       },
     );
 
-    goldenTestWithCallbacks(
+    goldenTest(
       goldenFile,
       Column(
         children: [
@@ -689,20 +689,20 @@ void main() {
           ),
         ],
       ),
-      ZetaChatItem,
       'chat_item_pale_and_regular_buttons',
-      before: (tester) async {
+      widgetType: ZetaChatItem,
+      setUp: (tester) async {
         tester.view.devicePixelRatio = 1.0;
         tester.view.physicalSize = const Size(481, 480);
       },
-      after: (tester) async {
+      beforeComparison: (tester) async {
         final chatItemFinder = find.byType(ZetaChatItem);
         await tester.drag(chatItemFinder, const Offset(-200, 0));
         await tester.pumpAndSettle();
       },
     );
 
-    goldenTestWithCallbacks(
+    goldenTest(
       goldenFile,
       Column(
         children: [
@@ -724,15 +724,15 @@ void main() {
           ),
         ],
       ),
-      ZetaChatItem,
       'chat_item_custom_leading',
-      before: (tester) async {
+      widgetType: ZetaChatItem,
+      setUp: (tester) async {
         tester.view.devicePixelRatio = 1.0;
         tester.view.physicalSize = const Size(481, 480);
       },
     );
 
-    goldenTestWithCallbacks(
+    goldenTest(
       goldenFile,
       Column(
         children: [
@@ -756,20 +756,20 @@ void main() {
           ),
         ],
       ),
-      ZetaChatItem,
       'chat_item_custom_slidable_buttons',
-      before: (tester) async {
+      widgetType: ZetaChatItem,
+      setUp: (tester) async {
         tester.view.devicePixelRatio = 1.0;
         tester.view.physicalSize = const Size(481, 480);
       },
-      after: (tester) async {
+      beforeComparison: (tester) async {
         final chatItemFinder = find.byType(ZetaChatItem);
         await tester.drag(chatItemFinder, const Offset(-200, 0));
         await tester.pumpAndSettle();
       },
     );
 
-    goldenTestWithCallbacks(
+    goldenTest(
       goldenFile,
       Column(
         children: [
@@ -788,13 +788,13 @@ void main() {
           ),
         ],
       ),
-      ZetaChatItem,
       'chat_item_small_screen_slidable_button',
-      before: (tester) async {
+      widgetType: ZetaChatItem,
+      setUp: (tester) async {
         tester.view.devicePixelRatio = 1.0;
         tester.view.physicalSize = const Size(315, 480);
       },
-      after: (tester) async {
+      beforeComparison: (tester) async {
         final chatItemFinder = find.byType(ZetaChatItem);
         await tester.drag(chatItemFinder, const Offset(-200, 0));
         await tester.pumpAndSettle();

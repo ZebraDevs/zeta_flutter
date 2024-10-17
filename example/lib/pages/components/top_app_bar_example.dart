@@ -15,20 +15,7 @@ class TopAppBarExample extends StatefulWidget {
 }
 
 class _TopAppBarExampleState extends State<TopAppBarExample> {
-  final _searchControllerExtended = ZetaSearchController();
-  final _searchControllerRegular = ZetaSearchController();
-
-  void _showHideSearchExtended() {
-    _searchControllerExtended.isEnabled
-        ? _searchControllerExtended.closeSearch()
-        : _searchControllerExtended.startSearch();
-  }
-
-  void _showHideSearchRegular() {
-    _searchControllerRegular.isEnabled
-        ? _searchControllerRegular.closeSearch()
-        : _searchControllerRegular.startSearch();
-  }
+  final _searchController = ZetaSearchController();
 
   @override
   Widget build(BuildContext context) {
@@ -78,8 +65,7 @@ class _TopAppBarExampleState extends State<TopAppBarExample> {
                 ],
               ),
               Text('Centered', style: ZetaTextStyles.titleLarge),
-              ZetaTopAppBar(
-                type: ZetaTopAppBarType.centeredTitle,
+              ZetaTopAppBar.centered(
                 leading: IconButton(
                   onPressed: () {},
                   icon: ZetaIcon(Icons.menu),
@@ -119,24 +105,20 @@ class _TopAppBarExampleState extends State<TopAppBarExample> {
                 ],
               ),
               Text('Search', style: ZetaTextStyles.titleLarge),
-              ZetaTopAppBar(
-                type: ZetaTopAppBarType.centeredTitle,
-                leading: BackButton(),
+              ZetaTopAppBar.search(
+                leading: IconButton(
+                  onPressed: () {},
+                  icon: ZetaIcon(Icons.menu),
+                ),
                 title: Text("Title"),
-                actions: [
-                  IconButton(
-                    onPressed: _showHideSearchRegular,
-                    icon: ZetaIcon(ZetaIcons.search),
-                  )
-                ],
-                searchController: _searchControllerRegular,
+                searchController: _searchController,
                 onSearch: (text) => debugPrint('search text: $text'),
                 onSearchMicrophoneIconPressed: () async {
                   var sampleTexts = ['This is a sample text', 'Another sample', 'Speech recognition text', 'Example'];
 
                   var generatedText = sampleTexts[Random().nextInt(sampleTexts.length)];
 
-                  _searchControllerRegular.text = generatedText;
+                  _searchController.text = generatedText;
                 },
               ),
               Text('Extended', style: ZetaTextStyles.titleLarge),
@@ -173,48 +155,6 @@ class _TopAppBarExampleState extends State<TopAppBarExample> {
                           icon: ZetaIcon(ZetaIcons.more_vertical),
                         )
                       ],
-                    ),
-                    SliverToBoxAdapter(
-                      child: Container(
-                        width: 800,
-                        height: 800,
-                        color: Zeta.of(context).colors.surfaceSelectedHover,
-                        child: CustomPaint(
-                          painter: Painter(context: context),
-                          size: Size(800, 800),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Text('Extended Search', style: ZetaTextStyles.titleLarge),
-              SizedBox(
-                width: 800,
-                height: 200,
-                child: CustomScrollView(
-                  slivers: [
-                    ZetaTopAppBar.extended(
-                      leading: BackButton(),
-                      title: Text("Title"),
-                      actions: [
-                        IconButton(
-                          onPressed: _showHideSearchExtended,
-                          icon: ZetaIcon(ZetaIcons.search),
-                        )
-                      ],
-                      searchController: _searchControllerExtended,
-                      onSearch: (text) => debugPrint('search text: $text'),
-                      onSearchMicrophoneIconPressed: () async {
-                        var sampleTexts = [
-                          'This is a sample text',
-                          'Another sample',
-                          'Speech recognition text',
-                          'Example'
-                        ];
-                        var generatedText = sampleTexts[Random().nextInt(sampleTexts.length)];
-                        _searchControllerExtended.text = generatedText;
-                      },
                     ),
                     SliverToBoxAdapter(
                       child: Container(

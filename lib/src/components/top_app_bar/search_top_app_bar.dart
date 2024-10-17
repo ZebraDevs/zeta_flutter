@@ -66,18 +66,10 @@ class _ZetaTopAppBarSearchFieldState extends State<ZetaTopAppBarSearchField> wit
 
   @override
   void initState() {
-    _textFocusNode.addListener(_onFocusChanged);
     widget.searchController?.addListener(_onSearchControllerChanged);
     widget.searchController?.textEditingController ??= TextEditingController();
 
     super.initState();
-  }
-
-  void _onFocusChanged() {
-    final text = widget.searchController?.text ?? '';
-    final shouldCloseSearch = _isSearching && text.isEmpty && !_textFocusNode.hasFocus;
-
-    if (shouldCloseSearch) _closeSearch();
   }
 
   void _onSearchControllerChanged() {
@@ -151,7 +143,7 @@ class _ZetaTopAppBarSearchFieldState extends State<ZetaTopAppBarSearchField> wit
         children: [
           Row(
             mainAxisAlignment:
-                widget.type == ZetaTopAppBarType.centeredTitle ? MainAxisAlignment.center : MainAxisAlignment.start,
+                widget.type == ZetaTopAppBarType.centered ? MainAxisAlignment.center : MainAxisAlignment.start,
             children: [
               widget.child ?? const Nothing(),
             ],

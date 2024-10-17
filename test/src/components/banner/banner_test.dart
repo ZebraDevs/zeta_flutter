@@ -347,8 +347,8 @@ void main() {
             );
           },
         ),
-        ZetaBanner,
         'banner_${type.toString().split('.').last}',
+        widgetType: ZetaBanner,
       );
     }
   });

@@ -322,7 +322,6 @@ void main() {
         ZetaAvatar(
           size: size,
         ),
-        ZetaAvatar,
         'avatar_default_${size.toString().split('.').last}',
       );
       goldenTest(
@@ -331,7 +330,6 @@ void main() {
           initials: 'AB',
           size: size,
         ),
-        ZetaAvatar,
         'avatar_initials_${size.toString().split('.').last}',
       );
       goldenTest(
@@ -340,7 +338,6 @@ void main() {
           image: Image.file(File('/assets/maxresdefault.jpg')),
           size: size,
         ),
-        ZetaAvatar,
         'avatar_image_${size.toString().split('.').last}',
       );
       goldenTest(
@@ -349,7 +346,6 @@ void main() {
           name: 'John Doe',
           size: size,
         ),
-        ZetaAvatar,
         'avatar_from_name_${size.toString().split('.').last}',
       );
       goldenTest(
@@ -358,7 +354,6 @@ void main() {
           upperBadge: const ZetaAvatarBadge.notification(value: 3),
           size: size,
         ),
-        ZetaAvatar,
         'avatar_upper_badge_${size.toString().split('.').last}',
       );
       goldenTest(
@@ -367,7 +362,6 @@ void main() {
           lowerBadge: const ZetaAvatarBadge.icon(icon: Icons.star),
           size: size,
         ),
-        ZetaAvatar,
         'avatar_lower_badge_${size.toString().split('.').last}',
       );
     }
