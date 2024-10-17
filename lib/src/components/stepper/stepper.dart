@@ -52,15 +52,14 @@ class ZetaStepper extends ZetaStatefulWidget {
     super.debugFillProperties(properties);
     properties
       ..add(IterableProperty<ZetaStep>('steps', steps))
-      ..properties.add(IntProperty('currentStep', currentStep))
+      ..add(IntProperty('currentStep', currentStep))
       ..add(EnumProperty<ZetaStepperType>('type', type))
       ..add(
         ObjectFlagProperty<ValueChanged<int>?>.has(
           'onStepTapped',
           onStepTapped,
         ),
-      )
-      ..properties.add(DiagnosticsProperty<bool>('rounded', rounded));
+      );
   }
 }
 
@@ -75,8 +74,6 @@ class _ZetaStepperState extends State<ZetaStepper> with TickerProviderStateMixin
 
   @override
   Widget build(BuildContext context) {
-    final spacing = Zeta.of(context).spacing;
-
     return ZetaRoundedScope(
       rounded: context.rounded,
       child: switch (widget.type) {
@@ -85,7 +82,7 @@ class _ZetaStepperState extends State<ZetaStepper> with TickerProviderStateMixin
               crossAxisAlignment: CrossAxisAlignment.start,
               children: widget.steps
                   .map(
-                    (step) => _VerticalStep(
+                    (step) => VerticalStep(
                       step: step,
                       index: widget.steps.indexOf(step),
                       completed: _isComplete(widget.steps.indexOf(step)),
@@ -105,7 +102,7 @@ class _ZetaStepperState extends State<ZetaStepper> with TickerProviderStateMixin
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   for (final step in widget.steps) ...[
-                    _HorizontalStep(
+                    HorizontalStep(
                       step: step,
                       index: widget.steps.indexOf(step),
                       completed: _isComplete(widget.steps.indexOf(step)),
@@ -113,17 +110,10 @@ class _ZetaStepperState extends State<ZetaStepper> with TickerProviderStateMixin
                     ),
                     if (!_isLast(widget.steps.indexOf(step)))
                       Expanded(
-                        child: Container(
-                          margin: EdgeInsets.only(
-                            top: spacing.xl_3,
-                            right: spacing.small,
-                            left: spacing.small,
-                          ),
-                          height: ZetaBorders.medium,
-                          decoration: BoxDecoration(
-                            borderRadius: Zeta.of(context).radius.full,
-                            color: _getElementColor(context, step.disabled, _isComplete(widget.steps.indexOf(step))),
-                          ),
+                        child: StepDivider(
+                          disabled: step.disabled,
+                          type: ZetaStepperType.horizontal,
+                          completed: _isComplete(widget.steps.indexOf(step)),
                         ),
                       ),
                   ],
@@ -141,7 +131,7 @@ Color _getElementColor(BuildContext context, bool disabled, bool completed) {
   Color boxColor = colors.primary;
 
   if (disabled) {
-    boxColor = colors.borderSubtle;
+    boxColor = colors.iconDisabled;
   } else if (completed) {
     boxColor = colors.surfacePositive;
   }
@@ -149,47 +139,61 @@ Color _getElementColor(BuildContext context, bool disabled, bool completed) {
   return boxColor;
 }
 
-class _StepIcon extends StatelessWidget {
-  const _StepIcon({
+/// The icon that represents a step in the [ZetaStepper] widget.
+@visibleForTesting
+@protected
+class StepIcon extends StatelessWidget {
+  /// Creates a step icon for the [ZetaStepper] widget.
+  const StepIcon({
     required this.index,
     required this.completed,
     required this.disabled,
-    required this.size,
+    required this.type,
+    super.key,
   });
 
+  /// The index of the step in the list of steps.
   final int index;
+
+  /// Whether the step is completed.
   final bool completed;
+
+  /// Whether the step is disabled.
   final bool disabled;
-  final double size;
+
+  /// The size of the icon.
+  final ZetaStepperType type;
 
   @override
   Widget build(BuildContext context) {
     final rounded = context.rounded;
     final colors = Zeta.of(context).colors;
+    final spacing = Zeta.of(context).spacing;
 
-    return SizedBox(
+    final size = switch (type) {
+      ZetaStepperType.horizontal => spacing.xl_4,
+      ZetaStepperType.vertical => spacing.xl_6,
+    };
+
+    return Container(
       width: size,
       height: size,
-      child: AnimatedContainer(
-        curve: Curves.fastOutSlowIn,
-        duration: kThemeAnimationDuration,
-        decoration: BoxDecoration(
-          color: _getElementColor(context, disabled, completed),
-          shape: rounded ? BoxShape.circle : BoxShape.rectangle,
-        ),
-        child: Center(
-          child: completed && !disabled
-              ? ZetaIcon(
-                  ZetaIcons.check_mark,
+      decoration: BoxDecoration(
+        color: _getElementColor(context, disabled, completed),
+        shape: rounded ? BoxShape.circle : BoxShape.rectangle,
+      ),
+      child: Center(
+        child: completed && !disabled
+            ? ZetaIcon(
+                ZetaIcons.check_mark,
+                color: colors.textInverse,
+              )
+            : Text(
+                (index + 1).toString(),
+                style: ZetaTextStyles.labelLarge.copyWith(
                   color: colors.textInverse,
-                )
-              : Text(
-                  (index + 1).toString(),
-                  style: ZetaTextStyles.labelLarge.copyWith(
-                    color: colors.textInverse,
-                  ),
                 ),
-        ),
+              ),
       ),
     );
   }
@@ -201,21 +205,103 @@ class _StepIcon extends StatelessWidget {
       ..add(IntProperty('index', index))
       ..add(DiagnosticsProperty<bool>('completed', completed))
       ..add(DiagnosticsProperty<bool>('disabled', disabled))
-      ..add(DoubleProperty('size', size));
+      ..add(EnumProperty<ZetaStepperType>('type', type));
   }
 }
 
-class _HorizontalStep extends StatelessWidget {
-  const _HorizontalStep({
+/// A divider that separates steps in the [ZetaStepper] widget.
+@visibleForTesting
+@protected
+class StepDivider extends StatelessWidget {
+  /// Creates a step divider for the [ZetaStepper] widget.
+  const StepDivider({
+    super.key,
+    required this.type,
+    required this.disabled,
+    required this.completed,
+  });
+
+  /// Disables the divider and changes its color.
+  final bool disabled;
+
+  /// Changes the color of the divider to indicate completion.
+  final bool completed;
+
+  /// The type of the divider.
+  final ZetaStepperType type;
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = Zeta.of(context).colors;
+    final spacing = Zeta.of(context).spacing;
+
+    Color color = colors.borderPrimary;
+
+    if (disabled) {
+      color = colors.borderDefault;
+    } else if (completed) {
+      color = colors.borderPositive;
+    }
+
+    return Container(
+      margin: switch (type) {
+        ZetaStepperType.horizontal => EdgeInsets.only(
+            top: spacing.xl_3,
+            right: spacing.small,
+            left: spacing.small,
+          ),
+        ZetaStepperType.vertical => EdgeInsets.only(
+            top: spacing.minimum,
+          ),
+      },
+      width: switch (type) {
+        ZetaStepperType.horizontal => double.infinity,
+        ZetaStepperType.vertical => spacing.minimum,
+      },
+      height: switch (type) {
+        ZetaStepperType.horizontal => ZetaBorders.medium,
+        ZetaStepperType.vertical => spacing.xl_8,
+      },
+      decoration: BoxDecoration(
+        borderRadius: Zeta.of(context).radius.full,
+        color: color,
+      ),
+    );
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty<bool>('disabled', disabled))
+      ..add(DiagnosticsProperty<bool>('completed', completed))
+      ..add(EnumProperty<ZetaStepperType>('type', type));
+  }
+}
+
+/// A horizontal step in the [ZetaStepper] widget.
+@visibleForTesting
+@protected
+class HorizontalStep extends StatelessWidget {
+  /// Creates a horizontal step in the [ZetaStepper] widget.
+  const HorizontalStep({
     required this.step,
     required this.index,
     required this.completed,
     this.onStepTapped,
+    super.key,
   });
 
+  /// The step that this widget represents.
   final ZetaStep step;
+
+  /// The index of the step in the list of steps.
   final int index;
+
+  /// Whether the step is completed.
   final bool completed;
+
+  /// The callback called when the step is tapped.
   final VoidCallback? onStepTapped;
 
   @override
@@ -224,41 +310,41 @@ class _HorizontalStep extends StatelessWidget {
     final colors = Zeta.of(context).colors;
     final radius = Zeta.of(context).radius;
 
-    return Row(
-      children: [
-        InkWell(
-          onTap: onStepTapped,
-          canRequestFocus: !step.disabled,
-          borderRadius: radius.minimal,
-          child: Padding(
-            padding: EdgeInsets.only(left: spacing.small, right: spacing.small, bottom: spacing.small),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Center(
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(
-                      vertical: spacing.medium,
-                    ),
-                    child: _StepIcon(
-                      index: index,
-                      completed: completed,
-                      disabled: step.disabled,
-                      size: spacing.xl_4,
-                    ),
+    return Semantics(
+      label: step.semanticLabel,
+      excludeSemantics: step.semanticLabel != null,
+      child: InkWell(
+        onTap: onStepTapped,
+        canRequestFocus: !step.disabled,
+        borderRadius: radius.minimal,
+        child: Padding(
+          padding: EdgeInsets.only(left: spacing.small, right: spacing.small, bottom: spacing.small),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Center(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(
+                    vertical: spacing.medium,
+                  ),
+                  child: StepIcon(
+                    index: index,
+                    completed: completed,
+                    disabled: step.disabled,
+                    type: ZetaStepperType.horizontal,
                   ),
                 ),
-                DefaultTextStyle(
-                  style: ZetaTextStyles.bodySmall.copyWith(
-                    color: step.disabled ? colors.textDisabled : colors.textDefault,
-                  ),
-                  child: step.title,
+              ),
+              DefaultTextStyle(
+                style: ZetaTextStyles.bodySmall.copyWith(
+                  color: step.disabled ? colors.textDisabled : colors.textDefault,
                 ),
-              ],
-            ),
+                child: step.title,
+              ),
+            ],
           ),
         ),
-      ],
+      ),
     );
   }
 
@@ -273,19 +359,33 @@ class _HorizontalStep extends StatelessWidget {
   }
 }
 
-class _VerticalStep extends StatelessWidget {
-  const _VerticalStep({
+/// A vertical step in the [ZetaStepper] widget.
+@visibleForTesting
+@protected
+class VerticalStep extends StatelessWidget {
+  /// Creates a vertical step in the [ZetaStepper] widget.
+  const VerticalStep({
     required this.step,
     required this.index,
     required this.completed,
     required this.isLast,
     this.onStepTapped,
+    super.key,
   });
 
+  /// The step that this widget represents.
   final ZetaStep step;
+
+  /// The index of the step in the list of steps.
   final int index;
+
+  /// Whether the step is completed.
   final bool completed;
+
+  /// Whether the step is the last one in the list.
   final bool isLast;
+
+  /// The callback called when the step is tapped.
   final VoidCallback? onStepTapped;
 
   @override
@@ -293,62 +393,62 @@ class _VerticalStep extends StatelessWidget {
     final spacing = Zeta.of(context).spacing;
     final colors = Zeta.of(context).colors;
 
-    return InkWell(
-      borderRadius: Zeta.of(context).radius.minimal,
-      onTap: onStepTapped,
-      canRequestFocus: !step.disabled,
-      child: Container(
-        padding: EdgeInsets.all(
-          spacing.medium,
-        ),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Column(
-              children: [
-                _StepIcon(
-                  index: index,
-                  completed: completed,
-                  disabled: step.disabled,
-                  size: spacing.xl_6,
-                ),
-                if (!isLast)
-                  Container(
-                    margin: EdgeInsets.only(top: spacing.minimum),
-                    width: Zeta.of(context).spacing.minimum,
-                    height: Zeta.of(context).spacing.xl_8,
-                    decoration: BoxDecoration(
-                      borderRadius: Zeta.of(context).radius.full,
-                      color: _getElementColor(context, step.disabled, completed),
-                    ),
+    return Semantics(
+      label: step.semanticLabel,
+      excludeSemantics: step.semanticLabel != null,
+      child: InkWell(
+        borderRadius: Zeta.of(context).radius.minimal,
+        onTap: onStepTapped,
+        canRequestFocus: !step.disabled,
+        child: Container(
+          padding: EdgeInsets.all(
+            spacing.medium,
+          ),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Column(
+                children: [
+                  StepIcon(
+                    index: index,
+                    completed: completed,
+                    disabled: step.disabled,
+                    type: ZetaStepperType.vertical,
                   ),
-              ],
-            ),
-            SizedBox(width: spacing.xl_2),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                if (step.subtitle != null)
-                  AnimatedDefaultTextStyle(
-                    style: ZetaTextStyles.bodyMedium.copyWith(
-                      color: _getElementColor(context, step.disabled, completed),
+                  if (!isLast)
+                    StepDivider(
+                      type: ZetaStepperType.vertical,
+                      completed: completed,
+                      disabled: step.disabled,
+                    ),
+                ],
+              ),
+              SizedBox(width: spacing.xl_2),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  if (step.subtitle != null)
+                    AnimatedDefaultTextStyle(
+                      style: ZetaTextStyles.bodyMedium.copyWith(
+                        color: _getElementColor(context, step.disabled, completed),
+                      ),
+                      maxLines: 1,
+                      duration: kThemeAnimationDuration,
+                      curve: Curves.fastOutSlowIn,
+                      child: step.subtitle!,
+                    ),
+                  DefaultTextStyle(
+                    style: ZetaTextStyles.titleLarge.copyWith(
+                      color: step.disabled ? colors.textDisabled : colors.textDefault,
                     ),
                     maxLines: 1,
-                    duration: kThemeAnimationDuration,
-                    curve: Curves.fastOutSlowIn,
-                    child: step.subtitle!,
+                    child: step.title,
                   ),
-                DefaultTextStyle(
-                  style: ZetaTextStyles.titleLarge.copyWith(
-                    color: step.disabled ? colors.textDisabled : colors.textDefault,
-                  ),
-                  maxLines: 1,
-                  child: step.title,
-                ),
-              ],
-            ),
-          ],
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -376,6 +476,7 @@ class ZetaStep {
     @Deprecated('Steps no longer manage their own content. ' 'Deprecated as of 0.16.1') this.content,
     this.subtitle,
     this.disabled = false,
+    this.semanticLabel,
     @Deprecated(
         'To disable a step, set its disabled prop to true. To complete a step, set the currentStep prop on the stepper greater than the step index. '
         'Deprecated as of 0.16.1')
@@ -391,6 +492,9 @@ class ZetaStep {
 
   /// The title of the step that typically describes it.
   final Widget title;
+
+  /// The semantic label of the step that is read by screen readers.
+  final String? semanticLabel;
 
   /// Whether the step is disabled and does not react to taps.
   final bool disabled;
