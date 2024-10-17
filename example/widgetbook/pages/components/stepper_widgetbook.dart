@@ -7,13 +7,6 @@ import '../../utils/scaffold.dart';
 Widget stepperUseCase(BuildContext context) {
   int currentStep = 0;
 
-  ZetaStepType getForStepIndex(int stepIndex) {
-    if (currentStep == stepIndex) return ZetaStepType.enabled;
-    if (currentStep > stepIndex) return ZetaStepType.complete;
-
-    return ZetaStepType.disabled;
-  }
-
   final type = context.knobs.list(
     label: "Type",
     options: [
@@ -23,8 +16,6 @@ Widget stepperUseCase(BuildContext context) {
     initialOption: ZetaStepperType.horizontal,
     labelBuilder: (type) => type.name,
   );
-
-  final enabledContent = context.knobs.boolean(label: 'Enabled Content', initialValue: true);
 
   return WidgetbookScaffold(
     builder: (context, _) => StatefulBuilder(
@@ -40,19 +31,13 @@ Widget stepperUseCase(BuildContext context) {
             type: type,
             steps: [
               ZetaStep(
-                type: getForStepIndex(0),
                 title: Text("Title"),
-                content: enabledContent ? Text("Content") : null,
               ),
               ZetaStep(
-                type: getForStepIndex(1),
                 title: Text("Title 2"),
-                content: enabledContent ? Text("Content 2") : null,
               ),
               ZetaStep(
-                type: getForStepIndex(2),
                 title: Text("Title 3"),
-                content: enabledContent ? Text("Content 3") : null,
               ),
             ],
           ),

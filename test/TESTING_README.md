@@ -59,6 +59,7 @@ void main() {
     });
 
     group('Accessibility Tests', () {});
+
     group('Content Tests', () {
       final debugFillProperties = {
         '': '',
@@ -68,12 +69,17 @@ void main() {
         debugFillProperties,
       );
     });
+
     group('Dimensions Tests', () {});
+
     group('Styling Tests', () {});
+
     group('Interaction Tests', () {});
+
     group('Golden Tests', () {
         goldenTest(goldenFile, widget, widgetType, 'PNG_FILE_NAME');
     });
+
     group('Performance Tests', () {});
 }
 ```
