@@ -6,6 +6,26 @@ import '../../../zeta_flutter.dart';
 /// steps. Steppers are particularly useful in the case of forms where one step
 /// requires the completion of another one, or where multiple steps need to be
 /// completed in order to submit the whole form.
+///
+/// The steppers current step is managed through the [currentStep] property.
+/// To change it, store this value in state and change it with the [onStepTapped] callback.
+/// The stored value can then be used to update content depending on the selected step.
+///
+/// ```dart
+/// ZetaStepper(
+///   steps: [
+///     ZetaStep(title: Text('Step 1')),
+///     ZetaStep(title: Text('Step 2')),
+///     ZetaStep(title: Text('Step 3')),
+///   ],
+///   currentStep: currentStep,
+///   onStepTapped: (step) {
+///     setState(() {
+///       currentStep = step;
+///     });
+///   },
+/// )
+/// ```
 /// {@category Components}
 ///
 /// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=3420-67488&node-type=canvas&m=dev
