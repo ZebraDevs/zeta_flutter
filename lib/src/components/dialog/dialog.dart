@@ -32,7 +32,7 @@ Future<bool?> showZetaDialog(
       context: context,
       barrierDismissible: barrierDismissible,
       useRootNavigator: useRootNavigator,
-      builder: (_) => _ZetaDialog(
+      builder: (_) => ZetaDialog(
         headerAlignment: headerAlignment,
         icon: icon,
         title: title,
@@ -53,30 +53,53 @@ Future<bool?> showZetaDialog(
 /// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=23954-93337&node-type=frame&m=dev
 ///
 /// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/dialog
-class _ZetaDialog extends ZetaStatelessWidget {
-  const _ZetaDialog({
+class ZetaDialog extends ZetaStatelessWidget {
+  /// Constructor for Zeta Dialog.
+  ///
+  /// It is not recommended to use this constructor directly; use the [showZetaDialog] function instead.
+  const ZetaDialog({
+    required this.message,
     this.headerAlignment = ZetaDialogHeaderAlignment.center,
     this.icon,
     this.title,
-    required this.message,
     this.primaryButtonLabel,
     this.onPrimaryButtonPressed,
     this.secondaryButtonLabel,
     this.onSecondaryButtonPressed,
     this.tertiaryButtonLabel,
     this.onTertiaryButtonPressed,
+    super.key,
     super.rounded,
   });
 
+  /// Alignment of the header.
   final ZetaDialogHeaderAlignment headerAlignment;
+
+  /// Icon to display in the header.
   final Widget? icon;
+
+  /// Title to display in the header.
   final String? title;
+
+  /// Message to display in the content.
   final String message;
+
+  /// Label for the primary button.
   final String? primaryButtonLabel;
+
+  /// Callback for the primary button.
   final VoidCallback? onPrimaryButtonPressed;
+
+  /// Label for the secondary button.
   final String? secondaryButtonLabel;
+
+  /// Callback for the secondary button.
   final VoidCallback? onSecondaryButtonPressed;
+
+  /// Label for the tertiary button.
   final String? tertiaryButtonLabel;
+
+  /// Callback for the tertiary button.
   final VoidCallback? onTertiaryButtonPressed;
 
   @override
