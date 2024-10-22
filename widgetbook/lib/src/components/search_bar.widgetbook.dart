@@ -20,7 +20,7 @@ const List<String> _items = [
       'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=21286-35997&t=9UKEEDe1Zek0JZal-4',
 )
 Widget searchBarUseCase(BuildContext context) {
-  List<String> items = List.from(_items);
+  var items = List<String>.from(_items);
   return StatefulBuilder(
     builder: (context, setState) {
       final hint = context.knobs.string(label: 'Hint', initialValue: 'Search');
@@ -29,7 +29,7 @@ Widget searchBarUseCase(BuildContext context) {
       final size = context.knobs
           .list<ZetaWidgetSize>(label: 'Size', options: ZetaWidgetSize.values, labelBuilder: (size) => size.name);
       final shape = context.knobs.list<ZetaWidgetBorder>(
-          label: 'Shape', options: ZetaWidgetBorder.values, labelBuilder: (shape) => shape.name);
+          label: 'Shape', options: ZetaWidgetBorder.values, labelBuilder: (shape) => shape.name,);
       final showSpeechToText = context.knobs.boolean(label: 'Show Speech-To-Text button', initialValue: true);
 
       return Padding(
@@ -49,14 +49,14 @@ Widget searchBarUseCase(BuildContext context) {
                   () => items = _items
                       .where((item) => item.toLowerCase().contains(
                             value.toLowerCase(),
-                          ))
+                          ),)
                       .toList(),
                 );
               },
               onSpeechToText: () async => 'I wanted to say...',
             ),
             SizedBox(height: Zeta.of(context).spacing.xl),
-            ...items.map((item) => Text(item)),
+            ...items.map(Text.new),
           ],
         ),
       );

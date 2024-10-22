@@ -11,7 +11,7 @@ import 'package:zeta_widgetbook/src/utils/utils.dart';
       'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=26325-6829&t=9UKEEDe1Zek0JZal-4',
 )
 Widget listItem(BuildContext context) {
-  final showIcon = iconKnob(context, name: 'Leading icon', nullable: true, initial: null);
+  final showIcon = iconKnob(context, name: 'Leading icon', nullable: true);
 
   return ZetaListItem(
     primaryText: context.knobs.string(label: 'Primary text', initialValue: 'Label'),
@@ -28,11 +28,11 @@ Widget listItem(BuildContext context) {
       'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=26325-6829&t=9UKEEDe1Zek0JZal-4',
 )
 Widget checkbox(BuildContext context) {
-  bool checkedValue = false;
+  var checkedValue = false;
 
   return StatefulBuilder(
     builder: (context, setState) {
-      final showIcon = iconKnob(context, name: 'Leading icon', nullable: true, initial: null);
+      final showIcon = iconKnob(context, name: 'Leading icon', nullable: true);
 
       return ZetaListItem.checkbox(
         primaryText: context.knobs.string(label: 'Primary text', initialValue: 'Label'),
@@ -53,11 +53,11 @@ Widget checkbox(BuildContext context) {
       'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=26325-6829&t=9UKEEDe1Zek0JZal-4',
 )
 Widget toggle(BuildContext context) {
-  bool checkedValue = false;
+  var checkedValue = false;
 
   return StatefulBuilder(
     builder: (context, setState) {
-      final showIcon = iconKnob(context, name: 'Leading icon', nullable: true, initial: null);
+      final showIcon = iconKnob(context, name: 'Leading icon', nullable: true);
 
       return ZetaListItem.toggle(
         primaryText: context.knobs.string(label: 'Primary text', initialValue: 'Label'),
@@ -78,11 +78,11 @@ Widget toggle(BuildContext context) {
       'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=26325-6829&t=9UKEEDe1Zek0JZal-4',
 )
 Widget radio(BuildContext context) {
-  bool checkedValue = false;
+  const checkedValue = false;
 
   return StatefulBuilder(
     builder: (context, setState) {
-      final showIcon = iconKnob(context, name: 'Leading icon', nullable: true, initial: null);
+      final showIcon = iconKnob(context, name: 'Leading icon', nullable: true);
 
       return ZetaListItem.radio(
         primaryText: context.knobs.string(label: 'Primary text', initialValue: 'Label'),

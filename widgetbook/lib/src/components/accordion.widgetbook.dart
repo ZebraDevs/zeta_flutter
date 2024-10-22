@@ -12,7 +12,7 @@ import 'package:zeta_flutter/zeta_flutter.dart';
 Widget accordion(BuildContext context) {
   return ZetaAccordion(
     title: context.knobs.string(label: 'Accordion Title', initialValue: 'Title'),
-    contained: context.knobs.boolean(label: 'Contained', initialValue: false),
+    contained: context.knobs.boolean(label: 'Contained'),
     child: context.knobs.boolean(label: 'Disabled')
         ? null
         : const Column(

@@ -3,7 +3,7 @@ import 'package:widgetbook/widgetbook.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 import 'package:zeta_flutter/zeta_flutter.dart';
 
-import '../utils/utils.dart';
+import 'package:zeta_widgetbook/src/utils/utils.dart';
 
 // TODO(luke): Test this
 @widgetbook.UseCase(
@@ -17,7 +17,7 @@ Widget passwordInputUseCase(BuildContext context) {
   final formKey = GlobalKey<FormState>();
 
   return StatefulBuilder(builder: (context, setState) {
-    final enableValidation = context.knobs.boolean(label: 'Enable validation', initialValue: false);
+    final enableValidation = context.knobs.boolean(label: 'Enable validation');
     final validationString = context.knobs.string(label: 'Error label', initialValue: 'Incorrect');
 
     return Form(
@@ -40,5 +40,5 @@ Widget passwordInputUseCase(BuildContext context) {
         ),
       ),
     );
-  });
+  },);
 }

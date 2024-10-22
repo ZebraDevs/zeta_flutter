@@ -14,7 +14,7 @@ Widget screenHeaderBarUseCase(BuildContext context) {
     title: Text(context.knobs.string(
       label: 'Title',
       initialValue: 'Add Subscribers',
-    )),
+    ),),
     actionButtonLabel: 'Done',
     onActionButtonPressed: () {},
   );

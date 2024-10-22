@@ -12,14 +12,14 @@ import 'package:zeta_widgetbook/src/utils/utils.dart';
       'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=21186-40498&t=6jmGZpLRLKTDIfJL-4',
 )
 Widget navigationBar(BuildContext context) {
-  List<ZetaNavigationBarItem> items = List.generate(
+  final items = List<ZetaNavigationBarItem>.generate(
     context.knobs.int.slider(label: 'Items', min: 2, max: 6, initialValue: 2),
     (index) => ZetaNavigationBarItem(icon: iconKnob(context)!, label: 'Label $index'),
   );
-  int currIndex = 0;
-  bool showButton = context.knobs.boolean(label: 'Button');
-  int? dividerIndex = context.knobs.intOrNull.slider(label: 'Divider', min: 0, max: 6, initialValue: null);
-  bool showSplit = context.knobs.boolean(label: 'Split Items');
+  var currIndex = 0;
+  final showButton = context.knobs.boolean(label: 'Button');
+  final dividerIndex = context.knobs.intOrNull.slider(label: 'Divider', max: 6);
+  final showSplit = context.knobs.boolean(label: 'Split Items');
   return StatefulBuilder(
     builder: (context, setState) => ZetaNavigationBar(
       items: items,

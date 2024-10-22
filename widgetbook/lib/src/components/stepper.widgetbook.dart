@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
-import 'package:zeta_flutter/zeta_flutter.dart';
-
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
+import 'package:zeta_flutter/zeta_flutter.dart';
 
 @widgetbook.UseCase(
   name: 'Stepper - Horizontal',
@@ -11,7 +10,7 @@ import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
       'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=21529-11408&t=9UKEEDe1Zek0JZal-4',
 )
 Widget horizontal(BuildContext context) {
-  int currentStep = 0;
+  var currentStep = 0;
 
   ZetaStepType getForStepIndex(int stepIndex) {
     if (currentStep == stepIndex) return ZetaStepType.enabled;
@@ -27,22 +26,21 @@ Widget horizontal(BuildContext context) {
       return ZetaStepper(
         currentStep: currentStep,
         onStepTapped: (index) => setState(() => currentStep = index),
-        type: ZetaStepperType.horizontal,
         steps: [
           ZetaStep(
             type: getForStepIndex(0),
-            title: const Text("Title"),
-            content: enabledContent ? const Text("Content") : null,
+            title: const Text('Title'),
+            content: enabledContent ? const Text('Content') : null,
           ),
           ZetaStep(
             type: getForStepIndex(1),
-            title: const Text("Title 2"),
-            content: enabledContent ? const Text("Content 2") : null,
+            title: const Text('Title 2'),
+            content: enabledContent ? const Text('Content 2') : null,
           ),
           ZetaStep(
             type: getForStepIndex(2),
-            title: const Text("Title 3"),
-            content: enabledContent ? const Text("Content 3") : null,
+            title: const Text('Title 3'),
+            content: enabledContent ? const Text('Content 3') : null,
           ),
         ],
       );
@@ -57,7 +55,7 @@ Widget horizontal(BuildContext context) {
       'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=21529-11408&t=9UKEEDe1Zek0JZal-4',
 )
 Widget vertical(BuildContext context) {
-  int currentStep = 0;
+  var currentStep = 0;
 
   ZetaStepType getForStepIndex(int stepIndex) {
     if (currentStep == stepIndex) return ZetaStepType.enabled;
@@ -77,18 +75,18 @@ Widget vertical(BuildContext context) {
         steps: [
           ZetaStep(
             type: getForStepIndex(0),
-            title: const Text("Title"),
-            content: enabledContent ? const Text("Content") : null,
+            title: const Text('Title'),
+            content: enabledContent ? const Text('Content') : null,
           ),
           ZetaStep(
             type: getForStepIndex(1),
-            title: const Text("Title 2"),
-            content: enabledContent ? const Text("Content 2") : null,
+            title: const Text('Title 2'),
+            content: enabledContent ? const Text('Content 2') : null,
           ),
           ZetaStep(
             type: getForStepIndex(2),
-            title: const Text("Title 3"),
-            content: enabledContent ? const Text("Content 3") : null,
+            title: const Text('Title 3'),
+            content: enabledContent ? const Text('Content 3') : null,
           ),
         ],
       );

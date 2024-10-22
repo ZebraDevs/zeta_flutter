@@ -19,6 +19,6 @@ Widget tooltip(BuildContext context) {
     child: Text(context.knobs.string(
       label: 'Tooltip text',
       initialValue: 'Label',
-    )),
+    ),),
   );
 }

@@ -13,7 +13,6 @@ import 'package:zeta_flutter/zeta_flutter.dart';
 Widget phoneInputUseCase(BuildContext context) {
   final countries = context.knobs.string(
     label: 'ISO 3166-1 alpha-2 county codes',
-    initialValue: '',
   );
 
   return ZetaPhoneInput(

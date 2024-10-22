@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:widgetbook/widgetbook.dart';
-import 'package:zeta_flutter/zeta_flutter.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
+import 'package:zeta_flutter/zeta_flutter.dart';
 import 'package:zeta_widgetbook/src/utils/utils.dart';
 
 @widgetbook.UseCase(
@@ -13,7 +13,7 @@ import 'package:zeta_widgetbook/src/utils/utils.dart';
 Widget buttonGroup(BuildContext context) {
   final onPressed = disabledKnob(context) ? null : () {};
   final label = context.knobs.string(label: 'Label');
-  final icon = iconKnob(context, name: 'Icon', nullable: true, initial: null);
+  final icon = iconKnob(context, nullable: true);
   return ZetaButtonGroup(
     isLarge: context.knobs.boolean(label: 'Large'),
     isInverse: context.knobs.boolean(label: 'Inverse'),
@@ -36,7 +36,7 @@ Widget buttonGroup(BuildContext context) {
         label: label,
         onPressed: onPressed,
         icon: icon,
-      )
+      ),
     ],
   );
 }
@@ -51,8 +51,8 @@ Widget buttonGroup(BuildContext context) {
 Widget groupButton(BuildContext context) {
   final onPressed = disabledKnob(context) ? null : () {};
   final label = context.knobs.string(label: 'Label');
-  final icon = iconKnob(context, name: 'Icon', nullable: true, initial: null);
-  final bool dropdown = context.knobs.boolean(label: 'Dropdown');
+  final icon = iconKnob(context, nullable: true);
+  final dropdown = context.knobs.boolean(label: 'Dropdown');
 
   return dropdown
       ? ZetaGroupButton.dropdown(

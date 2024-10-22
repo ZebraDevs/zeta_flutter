@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
-import 'package:zeta_flutter/zeta_flutter.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
+import 'package:zeta_flutter/zeta_flutter.dart';
 import 'package:zeta_widgetbook/src/utils/utils.dart';
 
 @widgetbook.UseCase(
@@ -12,13 +12,13 @@ import 'package:zeta_widgetbook/src/utils/utils.dart';
 )
 Widget segmentedControlUseCase(BuildContext context) {
   final iconsSegments = List.generate(5, (index) => index);
-  int selectedIconSegment = iconsSegments.first;
+  var selectedIconSegment = iconsSegments.first;
 
   final icon = iconKnob(context, initial: ZetaIcons.star);
-  final text = context.knobs.string(label: 'Text', initialValue: "Item");
+  final text = context.knobs.string(label: 'Text', initialValue: 'Item');
 
-  final textSegments = List.generate(3, (index) => "$text ${index + 1}");
-  String selectedTextSegment = textSegments.first;
+  final textSegments = List.generate(3, (index) => '$text ${index + 1}');
+  var selectedTextSegment = textSegments.first;
 
   return StatefulBuilder(builder: (context, setState) {
     return Column(
@@ -59,5 +59,5 @@ Widget segmentedControlUseCase(BuildContext context) {
         ),
       ],
     );
-  });
+  },);
 }

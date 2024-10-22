@@ -12,7 +12,7 @@ import 'package:zeta_widgetbook/src/utils/utils.dart';
       'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=875-10317&t=fFNXUv3Vk4zGNrMG-4',
 )
 Widget checkbox(BuildContext context) {
-  bool b = true;
+  var b = true;
   return StatefulBuilder(
     builder: (context, setState) {
       return ZetaCheckbox(

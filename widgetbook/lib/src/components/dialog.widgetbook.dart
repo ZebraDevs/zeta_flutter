@@ -4,7 +4,7 @@ import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 import 'package:zeta_flutter/zeta_flutter.dart';
 import 'package:zeta_widgetbook/src/utils/utils.dart';
 
-/// TODO(luke): Refactor this widgetbook
+// TODO(luke): Refactor this widgetbook
 @widgetbook.UseCase(
   name: 'Dialog',
   type: ZetaDialog,
@@ -24,7 +24,6 @@ Widget dialog(BuildContext context) {
   );
   final iconData = iconKnob(
     context,
-    name: "Icon",
     initial: Icons.warning,
   );
   final barrierDismissible = context.knobs.boolean(label: 'Barrier dismissible', initialValue: true);

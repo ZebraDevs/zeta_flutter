@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 import 'package:widgetbook/widgetbook.dart';
+import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 import 'package:zeta_flutter/zeta_flutter.dart';
 import 'package:zeta_widgetbook/src/utils/utils.dart';
 
@@ -12,7 +12,7 @@ import 'package:zeta_widgetbook/src/utils/utils.dart';
       'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=22748-95311&t=6jmGZpLRLKTDIfJL-4',
 )
 Widget fab(BuildContext context) {
-  ScrollController scrollController = ScrollController();
+  final scrollController = ScrollController();
 
   return StatefulBuilder(
     builder: (context, setState) {
@@ -28,7 +28,7 @@ Widget fab(BuildContext context) {
             key: const PageStorageKey(0),
             itemCount: MediaQuery.of(context).size.height.toInt(),
             controller: scrollController,
-            itemBuilder: (context, index) => Text("$index"),
+            itemBuilder: (context, index) => Text('$index'),
           ),
           floatingActionButton: ZetaFAB(
             scrollController: scrollController,
@@ -60,7 +60,7 @@ Widget fab(BuildContext context) {
       'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=22163-75208&t=6jmGZpLRLKTDIfJL-4',
 )
 Widget extendedFab(BuildContext context) {
-  ScrollController scrollController = ScrollController();
+  final scrollController = ScrollController();
 
   return StatefulBuilder(
     builder: (context, setState) {
@@ -76,7 +76,7 @@ Widget extendedFab(BuildContext context) {
             key: const PageStorageKey(0),
             itemCount: MediaQuery.of(context).size.height.toInt(),
             controller: scrollController,
-            itemBuilder: (context, index) => Text("$index"),
+            itemBuilder: (context, index) => Text('$index'),
           ),
           floatingActionButton: ZetaFAB(
             scrollController: scrollController,

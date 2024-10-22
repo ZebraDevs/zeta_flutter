@@ -23,7 +23,7 @@ Widget dialPad(BuildContext context) => ZetaDialPad(
               '🦊': '',
               '🏆': '',
               '⛺️': '',
-              '🧽': ''
+              '🧽': '',
             }
           : null,
       buttonsPerRow: context.knobs.int.slider(label: 'Buttons per row', initialValue: 3, min: 1, max: 9),

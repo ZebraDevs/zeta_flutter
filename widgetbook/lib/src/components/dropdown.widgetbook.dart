@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 import 'package:zeta_flutter/zeta_flutter.dart';
-import '../utils/utils.dart';
+import 'package:zeta_widgetbook/src/utils/utils.dart';
 
 @widgetbook.UseCase(
   name: 'Dropdown Menu',
@@ -12,15 +12,15 @@ import '../utils/utils.dart';
 )
 Widget dropdown(BuildContext context) => ZetaDropdown(
       type: context.knobs.list(
-        label: "Dropdown type",
+        label: 'Dropdown type',
         options: ZetaDropdownMenuType.values,
         labelBuilder: enumLabelBuilder,
       ),
       onChange: disabledKnob(context) ? null : (value) {},
       items: [
-        ZetaDropdownItem(value: "Item 1", icon: const ZetaIcon(ZetaIcons.star)),
-        ZetaDropdownItem(value: "Item 2", icon: const ZetaIcon(ZetaIcons.star_half)),
-        ZetaDropdownItem(value: "Item 3")
+        ZetaDropdownItem(value: 'Item 1', icon: const ZetaIcon(ZetaIcons.star)),
+        ZetaDropdownItem(value: 'Item 2', icon: const ZetaIcon(ZetaIcons.star_half)),
+        ZetaDropdownItem(value: 'Item 3'),
       ],
       size: context.knobs.list(
         label: 'Size',

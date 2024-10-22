@@ -12,8 +12,8 @@ import 'package:zeta_flutter/zeta_flutter.dart';
 Widget chatItem(BuildContext context) {
   return ZetaChatItem(
     time: DateTime.now(),
-    enabledWarningIcon: context.knobs.boolean(label: 'Warning Icon', initialValue: false),
-    enabledNotificationIcon: context.knobs.boolean(label: 'Notification Icon', initialValue: false),
+    enabledWarningIcon: context.knobs.boolean(label: 'Warning Icon'),
+    enabledNotificationIcon: context.knobs.boolean(label: 'Notification Icon'),
     count: context.knobs.int.input(label: 'Count', initialValue: 3),
     onTap: context.knobs.boolean(label: 'Enabled Tap', initialValue: true) ? () {} : null,
     slidableActions: context.knobs.boolean(label: 'Slidable actions')
@@ -30,6 +30,6 @@ Widget chatItem(BuildContext context) {
     subtitle: Text(context.knobs.string(
       label: 'Subtitle',
       initialValue: 'Dummy text to represent the first lines of most recent message',
-    )),
+    ),),
   );
 }

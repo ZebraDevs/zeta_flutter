@@ -6,7 +6,7 @@ import 'package:zeta_widgetbook/src/utils/utils.dart';
 
 @widgetbook.UseCase(
   name: 'Tabs',
-  type: ZetaAccordion,
+  type: ZetaTabBar,
   designLink:
       'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=875-10317&t=fFNXUv3Vk4zGNrMG-4',
 )
@@ -19,15 +19,10 @@ Widget tabsUseCase(BuildContext context) {
           length: 2,
           child: ZetaTabBar(
             context: context,
-            onTap: context.knobs.boolean(
-              label: "Disabled",
-              initialValue: false,
-            )
-                ? null
-                : (_) {},
+            onTap: context.knobs.boolean(label: 'Disabled') ? null : (_) {},
             tabs: [
-              ZetaTab(icon: const ZetaIcon(ZetaIcons.star), text: "Tab Item"),
-              ZetaTab(icon: const ZetaIcon(ZetaIcons.star), text: "Tab Item"),
+              ZetaTab(icon: const ZetaIcon(ZetaIcons.star), text: 'Tab Item'),
+              ZetaTab(icon: const ZetaIcon(ZetaIcons.star), text: 'Tab Item'),
             ],
           ),
         ),
@@ -41,11 +36,11 @@ Widget tabsUseCase(BuildContext context) {
             onTap: disabledKnob(context) ? null : (_) {},
             isScrollable: true,
             tabs: [
-              ZetaTab(text: "Tab Item"),
-              ZetaTab(text: "Tab Item"),
-              ZetaTab(text: "Tab Item"),
-              ZetaTab(text: "Tab Item"),
-              ZetaTab(text: "Tab Item"),
+              ZetaTab(text: 'Tab Item'),
+              ZetaTab(text: 'Tab Item'),
+              ZetaTab(text: 'Tab Item'),
+              ZetaTab(text: 'Tab Item'),
+              ZetaTab(text: 'Tab Item'),
             ],
           ),
         ),

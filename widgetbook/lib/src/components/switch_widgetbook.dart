@@ -13,9 +13,10 @@ import 'package:zeta_widgetbook/src/utils/utils.dart';
 Widget switchUseCase(BuildContext context) {
   bool? isOn = false;
 
-  return StatefulBuilder(builder: (context, setState) {
-    ValueChanged<bool?>? onChanged = !disabledKnob(context) ? (value) => setState(() => isOn = value) : null;
-    return Padding(
+  return StatefulBuilder(
+    builder: (context, setState) {
+      final onChanged = !disabledKnob(context) ? (value) => setState(() => isOn = value) : null;
+      return Padding(
         padding: EdgeInsets.all(Zeta.of(context).spacing.xl),
         child: Column(
           children: [
@@ -28,8 +29,10 @@ Widget switchUseCase(BuildContext context) {
                 labelBuilder: enumLabelBuilder,
               ),
             ),
-            Text(isOn == true ? 'On' : 'Off'),
+            Text((isOn ?? false) ? 'On' : 'Off'),
           ],
-        ));
-  });
+        ),
+      );
+    },
+  );
 }

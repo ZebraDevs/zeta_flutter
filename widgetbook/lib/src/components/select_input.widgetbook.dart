@@ -15,19 +15,19 @@ Widget selectInputUseCase(BuildContext context) => ZetaSelectInput(
       size: context.knobs.list<ZetaWidgetSize>(
         label: 'Size',
         options: ZetaWidgetSize.values,
-        labelBuilder: (size) => enumLabelBuilder(size),
+        labelBuilder: enumLabelBuilder,
       ),
       items: [
-        ZetaDropdownItem(value: "Item 1", icon: const ZetaIcon(ZetaIcons.star)),
-        ZetaDropdownItem(value: "Item 2", icon: const ZetaIcon(ZetaIcons.star_half)),
-        ZetaDropdownItem(value: "Item 3"),
+        ZetaDropdownItem(value: 'Item 1', icon: const ZetaIcon(ZetaIcons.star)),
+        ZetaDropdownItem(value: 'Item 2', icon: const ZetaIcon(ZetaIcons.star_half)),
+        ZetaDropdownItem(value: 'Item 3'),
       ],
       label: context.knobs.string(label: 'Label', initialValue: 'Label'),
       hintText: context.knobs.string(label: 'Hint', initialValue: 'Default hint text'),
       requirementLevel: context.knobs.list<ZetaFormFieldRequirement>(
         label: 'Requirement Level',
         options: ZetaFormFieldRequirement.values,
-        labelBuilder: (requirementLevel) => enumLabelBuilder(requirementLevel),
+        labelBuilder: enumLabelBuilder,
       ),
       errorText: context.knobs.stringOrNull(label: 'Error message', initialValue: 'Oops! Error hint text'),
     );

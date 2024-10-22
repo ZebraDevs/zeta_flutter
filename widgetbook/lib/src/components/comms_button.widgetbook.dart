@@ -24,5 +24,5 @@ Widget commsButton(BuildContext context) => ZetaCommsButton(
         labelBuilder: enumLabelBuilder,
         initialOption: ZetaCommsButtonType.positive,
       ),
-      icon: iconKnob(context, nullable: false, name: "Icon", initial: ZetaIcons.phone),
+      icon: iconKnob(context, initial: ZetaIcons.phone),
     );

@@ -16,7 +16,7 @@ IconData? iconKnob(
   BuildContext context, {
   bool nullable = false,
   String name = 'Icon',
-  final IconData? initial,
+  IconData? initial,
 }) {
   return nullable
       ? context.knobs.listOrNull(
@@ -35,5 +35,4 @@ IconData? iconKnob(
 
 bool disabledKnob(BuildContext context) => context.knobs.boolean(
       label: 'Disabled',
-      initialValue: false,
     );

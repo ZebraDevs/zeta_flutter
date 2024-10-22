@@ -13,7 +13,7 @@ import 'package:zeta_widgetbook/src/utils/utils.dart';
 Widget stepperInputUseCase(BuildContext context) {
   return ZetaStepperInput(
     value: context.knobs.int.input(label: 'Value'),
-    min: context.knobs.int.input(label: 'Minimum value', initialValue: 0),
+    min: context.knobs.int.input(label: 'Minimum value'),
     max: context.knobs.int.input(label: 'Maximum value', initialValue: 10),
     size: context.knobs.list(label: 'Size', options: ZetaStepperInputSize.values, labelBuilder: enumLabelBuilder),
     onChange: disabledKnob(context) ? null : (_) {},

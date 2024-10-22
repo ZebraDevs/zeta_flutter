@@ -3,7 +3,7 @@ import 'package:widgetbook/widgetbook.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 import 'package:zeta_flutter/zeta_flutter.dart';
 
-import '../utils/utils.dart';
+import 'package:zeta_widgetbook/src/utils/utils.dart';
 
 @widgetbook.UseCase(
   name: 'Button',
@@ -31,8 +31,8 @@ Widget button(BuildContext context) {
       options: ZetaButtonType.values,
       labelBuilder: enumLabelBuilder,
     ),
-    leadingIcon: iconKnob(context, nullable: true, name: "Leading Icon"),
-    trailingIcon: iconKnob(context, nullable: true, name: "Trailing Icon"),
+    leadingIcon: iconKnob(context, nullable: true, name: 'Leading Icon'),
+    trailingIcon: iconKnob(context, nullable: true, name: 'Trailing Icon'),
   );
 }
 

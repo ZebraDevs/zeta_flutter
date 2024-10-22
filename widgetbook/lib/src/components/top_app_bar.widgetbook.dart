@@ -17,16 +17,15 @@ Widget defaultTopAppBar(BuildContext context) => ZetaTopAppBar(
         onPressed: () {},
         icon: ZetaIcon(iconKnob(context, name: 'Leading Icon', initial: ZetaIcons.hamburger_menu)),
       ),
-      type: ZetaTopAppBarType.defaultAppBar,
-      title: Text(context.knobs.string(label: "Title", initialValue: "Title")),
+      title: Text(context.knobs.string(label: 'Title', initialValue: 'Title')),
       actions: context.knobs.boolean(
-        label: "Enabled actions",
+        label: 'Enabled actions',
         initialValue: true,
       )
           ? [
               IconButton(onPressed: () {}, icon: const ZetaIcon(Icons.language)),
               IconButton(onPressed: () {}, icon: const ZetaIcon(Icons.favorite)),
-              IconButton(onPressed: () {}, icon: const ZetaIcon(ZetaIcons.more_vertical))
+              IconButton(onPressed: () {}, icon: const ZetaIcon(ZetaIcons.more_vertical)),
             ]
           : null,
     );
@@ -44,9 +43,9 @@ Widget centered(BuildContext context) => ZetaTopAppBar(
         icon: ZetaIcon(iconKnob(context, name: 'Leading Icon', initial: ZetaIcons.hamburger_menu)),
       ),
       type: ZetaTopAppBarType.centeredTitle,
-      title: Text(context.knobs.string(label: "Title", initialValue: "Title")),
+      title: Text(context.knobs.string(label: 'Title', initialValue: 'Title')),
       actions: context.knobs.boolean(
-        label: "Enabled actions",
+        label: 'Enabled actions',
         initialValue: true,
       )
           ? [
@@ -61,7 +60,7 @@ Widget centered(BuildContext context) => ZetaTopAppBar(
               IconButton(
                 onPressed: () {},
                 icon: const ZetaIcon(ZetaIcons.more_vertical),
-              )
+              ),
             ]
           : null,
     );
@@ -77,10 +76,9 @@ Widget contextual(BuildContext context) => ZetaTopAppBar(
         onPressed: () {},
         icon: ZetaIcon(iconKnob(context, name: 'Leading Icon', initial: ZetaIcons.close)),
       ),
-      type: ZetaTopAppBarType.defaultAppBar,
-      title: Text(context.knobs.string(label: "Title", initialValue: "Title")),
+      title: Text(context.knobs.string(label: 'Title', initialValue: 'Title')),
       actions: context.knobs.boolean(
-        label: "Enabled actions",
+        label: 'Enabled actions',
         initialValue: true,
       )
           ? [
@@ -95,12 +93,12 @@ Widget contextual(BuildContext context) => ZetaTopAppBar(
               IconButton(
                 onPressed: () {},
                 icon: const ZetaIcon(ZetaIcons.more_vertical),
-              )
+              ),
             ]
           : null,
     );
 
-//TODO(luke): Test this
+// TODO(luke): Test this
 @widgetbook.UseCase(
   name: 'Search',
   type: ZetaTopAppBar,
@@ -116,14 +114,12 @@ Widget search(BuildContext context) {
         onPressed: () {},
         icon: ZetaIcon(iconKnob(context, name: 'Leading Icon', initial: ZetaIcons.arrow_back)),
       ),
-      type: ZetaTopAppBarType.defaultAppBar,
-      title: Text(context.knobs.string(label: "Title", initialValue: "Title")),
+      title: Text(context.knobs.string(label: 'Title', initialValue: 'Title')),
       searchController: searchController,
       onSearchMicrophoneIconPressed: context.knobs.boolean(
-        label: "Enabled speech recognition",
+        label: 'Enabled speech recognition',
         description:
-            "Randomly generated text. There is no real speech recognition. That is just for testing the functionality",
-        initialValue: false,
+            'Randomly generated text. There is no real speech recognition. That is just for testing the functionality',
       )
           ? () {
               const sampleTexts = ['This is a sample text', 'Another sample', 'Speech recognition text', 'Example'];
@@ -136,13 +132,13 @@ Widget search(BuildContext context) {
             onPressed: () {
               searchController.isEnabled ? searchController.closeSearch() : searchController.startSearch();
             },
-            icon: const ZetaIcon(ZetaIcons.search)),
+            icon: const ZetaIcon(ZetaIcons.search),),
       ],
     );
-  });
+  },);
 }
 
-//TODO(luke): Test this
+// TODO(luke): Test this
 
 @widgetbook.UseCase(
   name: 'Extended',
@@ -162,8 +158,8 @@ Widget extendedTopAppBarUseCase(BuildContext context) {
               ZetaTopAppBar.extended(
                 leading: IconButton(
                     icon: ZetaIcon(iconKnob(context, name: 'Leading Icon', initial: ZetaIcons.hamburger_menu)),
-                    onPressed: () {}),
-                title: Text(context.knobs.string(label: "Title", initialValue: "Title")),
+                    onPressed: () {},),
+                title: Text(context.knobs.string(label: 'Title', initialValue: 'Title')),
                 actions: [
                   IconButton(
                     onPressed: () {},
@@ -176,7 +172,7 @@ Widget extendedTopAppBarUseCase(BuildContext context) {
                   IconButton(
                     onPressed: () {},
                     icon: const ZetaIcon(ZetaIcons.more_vertical),
-                  )
+                  ),
                 ],
               ),
               SliverToBoxAdapter(
@@ -195,20 +191,20 @@ Widget extendedTopAppBarUseCase(BuildContext context) {
         ),
       ),
     );
-  });
+  },);
 }
 
 class Painter extends CustomPainter {
+  Painter({super.repaint, required this.context, required this.constraints});
   final BuildContext context;
   final BoxConstraints constraints;
-  Painter({super.repaint, required this.context, required this.constraints});
 
   @override
   void paint(Canvas canvas, Size size) {
-    for (double i = -(constraints.maxWidth + 1000); i < constraints.maxWidth; i += 50) {
-      var p1 = Offset(i, -10);
-      var p2 = Offset(constraints.maxHeight + i, constraints.maxHeight * 4);
-      var paint = Paint()
+    for (var i = -(constraints.maxWidth + 1000); i < constraints.maxWidth; i += 50) {
+      final p1 = Offset(i, -10);
+      final p2 = Offset(constraints.maxHeight + i, constraints.maxHeight * 4);
+      final paint = Paint()
         ..color = Zeta.of(context).colors.primary
         ..strokeWidth = Zeta.of(context).spacing.minimum;
       canvas.drawLine(p1, p2, paint);

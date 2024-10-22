@@ -22,17 +22,17 @@ Widget avatar(BuildContext context) {
       labelBuilder: (value) => value.name.split('.').last.toUpperCase(),
       initialOption: ZetaAvatarSize.m,
     ),
-    upperBadge: context.knobs.boolean(label: 'Status Badge', initialValue: false)
+    upperBadge: context.knobs.boolean(label: 'Status Badge')
         ? ZetaAvatarBadge.icon(
             icon: ZetaIcons.close,
             color:
-                context.knobs.colorOrNull(label: "Upper Badge Color", initialValue: colors.green) ?? colors.iconDefault,
+                context.knobs.colorOrNull(label: 'Upper Badge Color', initialValue: colors.green) ?? colors.iconDefault,
           )
         : null,
     borderColor: context.knobs.colorOrNull(label: 'Outline', initialValue: colors.green),
-    lowerBadge: context.knobs.boolean(label: 'Notification Badge', initialValue: false)
+    lowerBadge: context.knobs.boolean(label: 'Notification Badge')
         ? ZetaAvatarBadge.notification(
-            value: context.knobs.intOrNull.input(label: "Value", initialValue: 1),
+            value: context.knobs.intOrNull.input(label: 'Value', initialValue: 1),
           )
         : null,
     initials: context.knobs.stringOrNull(label: 'Initials', initialValue: 'AZ'),

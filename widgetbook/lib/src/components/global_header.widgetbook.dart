@@ -10,13 +10,13 @@ import 'package:zeta_flutter/zeta_flutter.dart';
       'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=23144-118110&m=dev',
 )
 Widget globalHeader(BuildContext context) => ZetaGlobalHeader(
-      title: context.knobs.string(label: "Title", initialValue: "Title"),
+      title: context.knobs.string(label: 'Title', initialValue: 'Title'),
       tabItems: List.generate(
-          context.knobs.int.slider(label: "Tabs"), (index) => ZetaGlobalHeaderItem(label: 'Button ${index + 1}')),
+          context.knobs.int.slider(label: 'Tabs'), (index) => ZetaGlobalHeaderItem(label: 'Button ${index + 1}'),),
       searchBar: context.knobs.boolean(label: 'Search bar', initialValue: true)
           ? ZetaSearchBar(shape: ZetaWidgetBorder.full, size: ZetaWidgetSize.large)
           : null,
-      actionButtons: context.knobs.boolean(label: "Menu buttons", initialValue: true)
+      actionButtons: context.knobs.boolean(label: 'Menu buttons', initialValue: true)
           ? [
               IconButton(
                 onPressed: () {},
@@ -32,8 +32,8 @@ Widget globalHeader(BuildContext context) => ZetaGlobalHeader(
               ),
             ]
           : [],
-      avatar: context.knobs.boolean(label: "Show Avatar", initialValue: true)
+      avatar: context.knobs.boolean(label: 'Show Avatar', initialValue: true)
           ? const ZetaAvatar(initials: 'PS', size: ZetaAvatarSize.s)
           : null,
-      onAppsButton: context.knobs.boolean(label: "Apps menu", initialValue: true) ? () => {} : null,
+      onAppsButton: context.knobs.boolean(label: 'Apps menu', initialValue: true) ? () => {} : null,
     );

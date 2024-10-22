@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 import 'package:widgetbook/widgetbook.dart';
+import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 import 'package:zeta_flutter/zeta_flutter.dart';
 import 'package:zeta_widgetbook/src/utils/utils.dart';
 
@@ -26,7 +26,7 @@ Widget banner(BuildContext context) {
       nullable: true,
       name: 'trailing',
       initial: ZetaIcons.chevron_right,
-    )),
+    ),),
   );
 
   return Column(
@@ -43,7 +43,7 @@ Widget banner(BuildContext context) {
             },
           );
         },
-      )
+      ),
     ],
   );
 }

@@ -7,8 +7,8 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 class IntroductionWidgetbook extends StatefulWidget {
-  final String readme;
   const IntroductionWidgetbook({super.key, required this.readme});
+  final String readme;
 
   @override
   State<IntroductionWidgetbook> createState() => _IntroductionWidgetbookState();
@@ -30,17 +30,16 @@ class _IntroductionWidgetbookState extends State<IntroductionWidgetbook> {
     final config = isDark ? MarkdownConfig.darkConfig : MarkdownConfig.defaultConfig;
 
     return LayoutBuilder(builder: (context, constraints) {
-      final bool largeScreen = constraints.maxWidth > 480;
+      final largeScreen = constraints.maxWidth > 480;
       return Scaffold(
         backgroundColor: Colors.black,
         body: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.symmetric(
-                vertical: Zeta.of(context).spacing.xl_10, horizontal: Zeta.of(context).spacing.medium),
+                vertical: Zeta.of(context).spacing.xl_10, horizontal: Zeta.of(context).spacing.medium,),
             child: Column(
-              mainAxisSize: MainAxisSize.max,
               children: [
-                Container(
+                DecoratedBox(
                   decoration: BoxDecoration(
                     color: colors.cool.shade20,
                     borderRadius: BorderRadius.only(topLeft: radius, topRight: radius),
@@ -101,12 +100,11 @@ class _IntroductionWidgetbookState extends State<IntroductionWidgetbook> {
                                 decoration: TextDecoration.underline,
                               ),
                               onTap: (url) {
-                                final Uri? uri = Uri.tryParse(url);
+                                final uri = Uri.tryParse(url);
                                 if (uri != null && uri.isAbsolute) {
                                   launchUrl(uri);
                                 } else {
-                                  final Uri? uri2 =
-                                      Uri.tryParse('https://github.com/ZebraDevs/zeta_flutter/blob/main/$url');
+                                  final uri2 = Uri.tryParse('https://github.com/ZebraDevs/zeta_flutter/blob/main/$url');
                                   if (uri2 != null && uri2.isAbsolute) {
                                     launchUrl(uri2);
                                   }
@@ -114,18 +112,16 @@ class _IntroductionWidgetbookState extends State<IntroductionWidgetbook> {
                               },
                             ),
                             CodeConfig(style: GoogleFonts.ibmPlexMono()),
-                            isDark
-                                ? PreConfig.darkConfig.copy(
+                            if (isDark) PreConfig.darkConfig.copy(
                                     textStyle: GoogleFonts.ibmPlexMono(),
                                     wrapper: (child, _, language) => _CodeWrapperWidget(child, language),
-                                  )
-                                : PreConfig(
+                                  ) else PreConfig(
                                     textStyle: GoogleFonts.ibmPlexMono(),
                                     wrapper: (child, _, language) => _CodeWrapperWidget(child, language),
-                                  )
+                                  ),
                           ],
                         ),
-                      )
+                      ),
                     ],
                   ),
                 ),
@@ -134,15 +130,14 @@ class _IntroductionWidgetbookState extends State<IntroductionWidgetbook> {
           ),
         ),
       );
-    });
+    },);
   }
 }
 
 class _CodeWrapperWidget extends StatelessWidget {
+  const _CodeWrapperWidget(this.child, this.language);
   final Widget child;
   final String language;
-
-  const _CodeWrapperWidget(this.child, this.language);
 
   @override
   Widget build(BuildContext context) {
@@ -161,7 +156,7 @@ class _CodeWrapperWidget extends StatelessWidget {
             child: SelectionContainer.disabled(
               child: Container(
                 padding: EdgeInsets.symmetric(
-                    vertical: Zeta.of(context).spacing.minimum, horizontal: Zeta.of(context).spacing.medium),
+                    vertical: Zeta.of(context).spacing.minimum, horizontal: Zeta.of(context).spacing.medium,),
                 decoration: BoxDecoration(color: colors.cool.shade40, borderRadius: Zeta.of(context).radius.rounded),
                 child: Text(language),
               ),
