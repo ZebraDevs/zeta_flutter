@@ -194,7 +194,7 @@ void main() {
     });
   });
 
-  group('Dimension Tests', () {
+  group('Dimensions Tests', () {
     testWidgets('icon is the correct size', (WidgetTester tester) async {
       await tester.pumpWidget(
         TestApp(
