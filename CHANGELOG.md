@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.16.1](https://github.com/ZebraDevs/zeta_flutter/compare/v0.16.0...v0.16.1) (2024-10-24)
+
+
+### 🧪 Tests
+
+* changed the word 'Dimension' to 'Dimensions' ([#194](https://github.com/ZebraDevs/zeta_flutter/issues/194)) ([17a6995](https://github.com/ZebraDevs/zeta_flutter/commit/17a69951628d17edc635408d1b026abbf3dc92c5))
+
 ## [0.16.0](https://github.com/ZebraDevs/zeta_flutter/compare/v0.15.2...v0.16.0) (2024-10-22)
 
 
