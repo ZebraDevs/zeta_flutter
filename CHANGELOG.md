@@ -1,5 +1,32 @@
 # Changelog
 
+## [0.17.0](https://github.com/ZebraDevs/zeta_flutter/compare/v0.16.0...v0.17.0) (2024-10-28)
+
+
+### ✨ New Features
+
+* added label to avatar ([823370e](https://github.com/ZebraDevs/zeta_flutter/commit/823370e161dd753abd22060d8dd862752dc8a34f))
+* created avatar rail ([823370e](https://github.com/ZebraDevs/zeta_flutter/commit/823370e161dd753abd22060d8dd862752dc8a34f))
+* **UX-1231:** created avatar rail ([#196](https://github.com/ZebraDevs/zeta_flutter/issues/196)) ([823370e](https://github.com/ZebraDevs/zeta_flutter/commit/823370e161dd753abd22060d8dd862752dc8a34f))
+
+
+### 🪲 Bug Fixes
+
+* added MainAxisSize.min to avatar column to regulate height ([823370e](https://github.com/ZebraDevs/zeta_flutter/commit/823370e161dd753abd22060d8dd862752dc8a34f))
+* widgetbook max lines avatar rail ([823370e](https://github.com/ZebraDevs/zeta_flutter/commit/823370e161dd753abd22060d8dd862752dc8a34f))
+
+
+### 🧪 Tests
+
+* changed the word 'Dimension' to 'Dimensions' ([#194](https://github.com/ZebraDevs/zeta_flutter/issues/194)) ([17a6995](https://github.com/ZebraDevs/zeta_flutter/commit/17a69951628d17edc635408d1b026abbf3dc92c5))
+* created tests for avatar rail ([823370e](https://github.com/ZebraDevs/zeta_flutter/commit/823370e161dd753abd22060d8dd862752dc8a34f))
+* fixed parent folder for stepper ([823370e](https://github.com/ZebraDevs/zeta_flutter/commit/823370e161dd753abd22060d8dd862752dc8a34f))
+
+
+### 🧹 Miscellaneous Chores
+
+* **automated:** Lint commit and format ([823370e](https://github.com/ZebraDevs/zeta_flutter/commit/823370e161dd753abd22060d8dd862752dc8a34f))
+
 ## [0.16.0](https://github.com/ZebraDevs/zeta_flutter/compare/v0.15.2...v0.16.0) (2024-10-22)
 
 
