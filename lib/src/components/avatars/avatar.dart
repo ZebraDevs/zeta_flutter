@@ -252,6 +252,7 @@ class ZetaAvatar extends ZetaStatelessWidget {
         value: semanticLabel,
         child: SelectionContainer.disabled(
           child: Column(
+            mainAxisSize: MainAxisSize.min,
             children: [
               Stack(
                 children: [

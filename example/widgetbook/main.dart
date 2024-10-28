@@ -253,7 +253,6 @@ class _HotReloadState extends State<HotReload> {
         ZetaAddon(),
         InspectorAddon(enabled: false),
         ZoomAddon(initialZoom: 1.0),
-        // min: 1, max: 2, divisions: 4,
         TextScaleAddon(scales: [1, 1.25, 1.5, 1.75, 2], initialScale: 1),
       ],
     );
