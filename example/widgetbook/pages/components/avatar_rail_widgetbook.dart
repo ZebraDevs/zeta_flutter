@@ -10,6 +10,7 @@ Widget avatarRailUseCase(BuildContext context) {
 
   return WidgetbookScaffold(
     builder: (context, _) => ZetaAvatarRail(
+      labelMaxLines: context.knobs.int.slider(label: 'Label Max Lines', min: 1, max: 3, initialValue: 1),
       avatars: [
         ZetaAvatar(
           image: context.knobs.boolean(label: 'Image') ? image : null,
@@ -36,7 +37,6 @@ Widget avatarRailUseCase(BuildContext context) {
           backgroundColor: context.knobs.colorOrNull(label: 'Background color', initialValue: colors.purple.shade80),
           onTap: () => print('Avatar tapped'),
           label: context.knobs.stringOrNull(label: 'Label', initialValue: 'ABC'),
-          labelMaxLines: context.knobs.int.slider(label: 'Label Max Lines', min: 1, max: 3, initialValue: 1),
         ),
         ZetaAvatar(
           image: context.knobs.boolean(label: 'Image') ? image : null,
@@ -63,7 +63,6 @@ Widget avatarRailUseCase(BuildContext context) {
           backgroundColor: context.knobs.colorOrNull(label: 'Background color', initialValue: colors.purple.shade80),
           onTap: () => print('Avatar tapped'),
           label: context.knobs.stringOrNull(label: 'Label', initialValue: 'ABC'),
-          labelMaxLines: context.knobs.int.slider(label: 'Label Max Lines', min: 1, max: 3, initialValue: 1),
         ),
         ZetaAvatar(
           image: context.knobs.boolean(label: 'Image') ? image : null,
@@ -90,7 +89,6 @@ Widget avatarRailUseCase(BuildContext context) {
           backgroundColor: context.knobs.colorOrNull(label: 'Background color', initialValue: colors.purple.shade80),
           onTap: () => print('Avatar tapped'),
           label: context.knobs.stringOrNull(label: 'Label', initialValue: 'ABC'),
-          labelMaxLines: context.knobs.int.slider(label: 'Label Max Lines', min: 1, max: 3, initialValue: 1),
         ),
         ZetaAvatar(
           image: context.knobs.boolean(label: 'Image') ? image : null,
@@ -117,7 +115,6 @@ Widget avatarRailUseCase(BuildContext context) {
           backgroundColor: context.knobs.colorOrNull(label: 'Background color', initialValue: colors.purple.shade80),
           onTap: () => print('Avatar tapped'),
           label: context.knobs.stringOrNull(label: 'Label', initialValue: 'ABC'),
-          labelMaxLines: context.knobs.int.slider(label: 'Label Max Lines', min: 1, max: 3, initialValue: 1),
         ),
         ZetaAvatar(
           image: context.knobs.boolean(label: 'Image') ? image : null,
@@ -144,7 +141,6 @@ Widget avatarRailUseCase(BuildContext context) {
           backgroundColor: context.knobs.colorOrNull(label: 'Background color', initialValue: colors.purple.shade80),
           onTap: () => print('Avatar tapped'),
           label: context.knobs.stringOrNull(label: 'Label', initialValue: 'ABC'),
-          labelMaxLines: context.knobs.int.slider(label: 'Label Max Lines', min: 1, max: 3, initialValue: 1),
         ),
         ZetaAvatar(
           image: context.knobs.boolean(label: 'Image') ? image : null,
@@ -171,7 +167,6 @@ Widget avatarRailUseCase(BuildContext context) {
           backgroundColor: context.knobs.colorOrNull(label: 'Background color', initialValue: colors.purple.shade80),
           onTap: () => print('Avatar tapped'),
           label: context.knobs.stringOrNull(label: 'Label', initialValue: 'ABC'),
-          labelMaxLines: context.knobs.int.slider(label: 'Label Max Lines', min: 1, max: 3, initialValue: 1),
         ),
       ],
     ),
