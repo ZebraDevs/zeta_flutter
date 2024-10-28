@@ -1,4 +1,5 @@
 export 'accordion/accordion.dart';
+export 'avatar_rail/avatar_rail.dart';
 export 'avatars/avatar.dart';
 export 'badges/indicator.dart';
 export 'badges/label.dart';

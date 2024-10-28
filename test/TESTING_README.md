@@ -77,7 +77,7 @@ void main() {
     group('Interaction Tests', () {});
 
     group('Golden Tests', () {
-        goldenTest(goldenFile, widget, widgetType, 'PNG_FILE_NAME');
+        goldenTest(goldenFile, widget, 'PNG_FILE_NAME');
     });
 
     group('Performance Tests', () {});

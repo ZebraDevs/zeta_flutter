@@ -32,6 +32,9 @@ Widget avatarUseCase(BuildContext context) {
           : null,
       initials: context.knobs.stringOrNull(label: 'Initials', initialValue: 'AZ'),
       backgroundColor: context.knobs.colorOrNull(label: 'Background color', initialValue: colors.purple.shade80),
+      onTap: () => print('Avatar tapped'),
+      label: context.knobs.stringOrNull(label: 'Label', initialValue: 'ABC'),
+      labelMaxLines: context.knobs.int.slider(label: 'Label Max Lines', min: 1, max: 3, initialValue: 1),
     ),
   );
 }
