@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:zeta_example/pages/components/accordion_example.dart';
+import 'package:zeta_example/pages/components/avatar_rail_example.dart';
 import 'package:zeta_example/pages/components/avatar_example.dart';
 import 'package:zeta_example/pages/components/badges_example.dart';
 import 'package:zeta_example/pages/components/banner_example.dart';
@@ -61,6 +62,7 @@ class Component {
 final List<Component> components = [
   Component(AccordionExample.name, (context) => const AccordionExample()),
   Component(TopAppBarExample.name, (context) => const TopAppBarExample()),
+  Component(AvatarRailExample.name, (context) => const AvatarRailExample()),
   Component(AvatarExample.name, (context) => const AvatarExample()),
   Component(BannerExample.name, (context) => const BannerExample()),
   Component(BadgesExample.name, (context) => const BadgesExample()),

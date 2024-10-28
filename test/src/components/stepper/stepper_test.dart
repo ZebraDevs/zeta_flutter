@@ -8,7 +8,7 @@ import '../../../test_utils/tolerant_comparator.dart';
 import '../../../test_utils/utils.dart';
 
 void main() {
-  const String parentFolder = 'ENTER_PARENT_FOLDER (e.g. button)';
+  const String parentFolder = 'stepper';
 
   const goldenFile = GoldenFiles(component: parentFolder);
   setUpAll(() {
@@ -16,7 +16,7 @@ void main() {
   });
 
   group('ZetaStepper Accessibility Tests', () {
-    testWidgets('Horizontal stepper meets accessibility  requirements', (WidgetTester tester) async {
+    testWidgets('Horizontal stepper meets accessibility requirements', (WidgetTester tester) async {
       final SemanticsHandle handle = tester.ensureSemantics();
       await tester.pumpWidget(
         TestApp(
