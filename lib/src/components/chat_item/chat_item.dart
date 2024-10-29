@@ -106,7 +106,7 @@ class ZetaChatItem extends ZetaStatelessWidget {
   /// List of slidable actions.
   ///
   /// The actions are displayed in the order they are provided; from left to right.
-  final List<ZetaSlidableAction> slidableActions;
+  final List<ZetaSlidableAction>? slidableActions;
 
   DateFormat get _dateFormat => timeFormat ?? DateFormat('hh:mm a');
   String? get _count => count != null && count! > 99 ? '99+' : count?.toString();
@@ -136,7 +136,7 @@ class ZetaChatItem extends ZetaStatelessWidget {
   Widget build(BuildContext context) {
     final colors = Zeta.of(context).colors;
 
-    final actions = [...slidableActions];
+    final List<ZetaSlidableAction> actions = slidableActions != null ? [...slidableActions!] : [];
 
     // coverage:ignore-start
     if (onMenuMoreTap != null) {

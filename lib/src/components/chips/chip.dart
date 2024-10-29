@@ -103,15 +103,16 @@ class _ZetaChipState extends State<ZetaChip> {
   }
 
   Widget _renderLeading(Color foregroundColor) {
-    if (widget.leading.runtimeType == Icon) {
+    if (widget.leading.runtimeType == ZetaAvatar) {
+      return (widget.leading! as ZetaAvatar).copyWith(size: ZetaAvatarSize.xxxs);
+    } else if (widget.leading != null) {
       return IconTheme(
         data: IconThemeData(color: foregroundColor, size: Zeta.of(context).spacing.xl),
         child: widget.leading!,
       );
-    } else if (widget.leading.runtimeType == ZetaAvatar) {
-      return (widget.leading! as ZetaAvatar).copyWith(size: ZetaAvatarSize.xxxs);
+    } else {
+      return const Nothing();
     }
-    return widget.leading ?? const Nothing();
   }
 
   final _controller = WidgetStatesController();
