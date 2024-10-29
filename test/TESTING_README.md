@@ -11,24 +11,34 @@ As you are writing tests think about helper function you could write and add the
 
 ### Groups
 
-- Accessibility Tests  
+- **Accessibility Tests**  
   Semantic labels, touch areas, contrast ratios, etc.
-- Content Tests  
-  Finds the widget, parameter statuses, etc.
-- Dimensions Tests  
-  Size, padding, margin, alignment, etc.
-- Styling Tests  
+
+- **Content Tests**  
+  Finds the widget, parameter statuses, etc.  
+  Checking for the value of props and attributes of the widget. Checking for the presence of widgets.
+
+- **Dimensions Tests**  
+  Size, padding, margin, alignment, etc.  
+  getSize().
+
+- **Styling Tests**  
   Rendered colors, fonts, borders, radii etc.
-- Interaction Tests  
+  Checking the style of widgets and child widgets.
+
+- **Interaction Tests**  
   Gesture recognizers, taps, drags, etc.
-- Golden Tests  
+  For example, using a boolean to check if the widgets interaction function runs.
+
+- **Golden Tests**  
   Compares the rendered widget with the golden file. Use the `goldenTest()` function from test_utils/utils.dart.
-- Performance Tests  
+
+- **Performance Tests**  
   Animation performance, rendering performance, data manupulation performance, etc.
 
 ### Testing File Template
 
-```
+```dart
 import 'dart:ui';
 
 import 'package:flutter/foundation.dart';
@@ -41,7 +51,6 @@ import '../../../test_utils/tolerant_comparator.dart';
 import '../../../test_utils/utils.dart';
 
 void main() {
-    const String componentName = 'ENTER_COMPONENT_NAME (e.g. ZetaButton)';
     const String parentFolder = 'ENTER_PARENT_FOLDER (e.g. button)';
 
     const goldenFile = GoldenFiles(component: parentFolder);
@@ -49,8 +58,9 @@ void main() {
         goldenFileComparator = TolerantComparator(goldenFile.uri);
     });
 
-    group('$componentName Accessibility Tests', () {});
-    group('$componentName Content Tests', () {
+    group('Accessibility Tests', () {});
+
+    group('Content Tests', () {
       final debugFillProperties = {
         '': '',
       };
@@ -59,13 +69,18 @@ void main() {
         debugFillProperties,
       );
     });
-    group('$componentName Dimensions Tests', () {});
-    group('$componentName Styling Tests', () {});
-    group('$componentName Interaction Tests', () {});
-    group('$componentName Golden Tests', () {
-        goldenTest(goldenFile, widget, widgetType, 'PNG_FILE_NAME');
+
+    group('Dimensions Tests', () {});
+
+    group('Styling Tests', () {});
+
+    group('Interaction Tests', () {});
+
+    group('Golden Tests', () {
+        goldenTest(goldenFile, widget, 'PNG_FILE_NAME');
     });
-    group('$componentName Performance Tests', () {});
+
+    group('Performance Tests', () {});
 }
 ```
 

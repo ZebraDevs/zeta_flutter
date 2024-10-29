@@ -1,41 +1,65 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 import '../../../test_utils/test_app.dart';
+import '../../../test_utils/tolerant_comparator.dart';
 import '../../../test_utils/utils.dart';
 
 void main() {
-  group('Zeta Icon', () {
-    testWidgets('renders icon correctly', (WidgetTester tester) async {
-      await tester.pumpWidget(const TestApp(home: ZetaIcon(ZetaIcons.add_round)));
-      final iconFinder = find.byIcon(ZetaIcons.add_round);
-      expect(iconFinder, findsOneWidget);
-    });
+  const String parentFolder = 'icon';
 
-    testWidgets('applies correct size to icon', (WidgetTester tester) async {
-      const double iconSize = 24;
-      await tester.pumpWidget(const TestApp(home: ZetaIcon(ZetaIcons.add_round, size: iconSize)));
-      final iconFinder = find.byIcon(ZetaIcons.add_round);
-      final iconWidget = tester.widget<Icon>(iconFinder);
-      expect(iconWidget.size, equals(iconSize));
-    });
+  const goldenFile = GoldenFiles(component: parentFolder);
+  setUpAll(() {
+    goldenFileComparator = TolerantComparator(goldenFile.uri);
+  });
 
-    testWidgets('applies correct color to icon', (WidgetTester tester) async {
-      const Color iconColor = Colors.red;
-      await tester.pumpWidget(const TestApp(home: ZetaIcon(ZetaIcons.add_round, color: iconColor)));
-      final iconFinder = find.byIcon(ZetaIcons.add_round);
-      final iconWidget = tester.widget<Icon>(iconFinder);
-      expect(iconWidget.color, equals(iconColor));
-    });
-
+  group('Accessibility Tests', () {
     testWidgets('applies correct semantic label to icon', (WidgetTester tester) async {
       const String semanticLabel = 'Add Icon';
       await tester.pumpWidget(const TestApp(home: ZetaIcon(ZetaIcons.add_round, semanticLabel: semanticLabel)));
       final iconFinder = find.byIcon(ZetaIcons.add_round);
       final iconWidget = tester.widget<Icon>(iconFinder);
       expect(iconWidget.semanticLabel, equals(semanticLabel));
+    });
+  });
+  group('Content Tests', () {
+    final debugFillProperties = {
+      'icon': 'IconData(U+0E045)',
+      'rounded': 'false',
+      'size': '10.0',
+      'fill': 'null',
+      'weight': 'null',
+      'grade': 'null',
+      'opticalSize': 'null',
+      'color': 'null',
+      'shadows': 'null',
+      'semanticLabel': '"Cached"',
+      'textDirection': 'null',
+      'applyTextScaling': 'null',
+    };
+    debugFillPropertiesTest(
+      const ZetaIcon(
+        ZetaIcons.cached,
+        rounded: false,
+        size: 10,
+        semanticLabel: 'Cached',
+      ),
+      debugFillProperties,
+    );
+
+    testWidgets('renders icon correctly', (WidgetTester tester) async {
+      await tester.pumpWidget(const TestApp(home: ZetaIcon(ZetaIcons.add_round)));
+      final iconFinder = find.byIcon(ZetaIcons.add_round);
+      expect(iconFinder, findsOneWidget);
+    });
+
+    testWidgets('color value is correct', (WidgetTester tester) async {
+      const Color iconColor = Colors.red;
+      await tester.pumpWidget(const TestApp(home: ZetaIcon(ZetaIcons.add_round, color: iconColor)));
+      final iconFinder = find.byIcon(ZetaIcons.add_round);
+      final iconWidget = tester.widget<Icon>(iconFinder);
+      expect(iconWidget.color, equals(iconColor));
     });
 
     testWidgets('applies sharp family to icon', (WidgetTester tester) async {
@@ -58,7 +82,18 @@ void main() {
       expect(iconFinderRound, findsOneWidget);
       expect(iconFinderSharp, findsExactly(1));
     });
-
+  });
+  group('Dimensions Tests', () {
+    testWidgets('applies correct size to icon', (WidgetTester tester) async {
+      const double iconSize = 24;
+      await tester.pumpWidget(const TestApp(home: ZetaIcon(ZetaIcons.add_round, size: iconSize)));
+      final iconFinder = find.byIcon(ZetaIcons.add_round);
+      final sizeOfIcon = tester.getSize(iconFinder);
+      expect(sizeOfIcon.width, equals(iconSize));
+      expect(sizeOfIcon.height, equals(iconSize));
+    });
+  });
+  group('Styling Tests', () {
     testWidgets('applies correct font family to icon', (WidgetTester tester) async {
       await tester.pumpWidget(const TestApp(home: ZetaIcon(ZetaIcons.add_round)));
       final iconFinder = find.byIcon(ZetaIcons.add_round);
@@ -145,28 +180,10 @@ void main() {
       final iconWidget = tester.widget<Icon>(iconFinder);
       expect(iconWidget.icon?.fontFamily, equals('MaterialIcons'));
     });
-
-    testWidgets('debugFillProperties works correctly', (WidgetTester tester) async {
-      final diagnostics = DiagnosticPropertiesBuilder();
-      const ZetaIcon(
-        ZetaIcons.cached,
-        rounded: false,
-        size: 10,
-        semanticLabel: 'Cached',
-      ).debugFillProperties(diagnostics);
-
-      expect(diagnostics.finder('icon'), 'IconData(U+0E045)');
-      expect(diagnostics.finder('rounded'), 'false');
-      expect(diagnostics.finder('size'), '10.0');
-      expect(diagnostics.finder('fill'), 'null');
-      expect(diagnostics.finder('weight'), 'null');
-      expect(diagnostics.finder('grade'), 'null');
-      expect(diagnostics.finder('opticalSize'), 'null');
-      expect(diagnostics.finder('color'), 'null');
-      expect(diagnostics.finder('shadows'), 'null');
-      expect(diagnostics.finder('semanticLabel'), '"Cached"');
-      expect(diagnostics.finder('textDirection'), 'null');
-      expect(diagnostics.finder('applyTextScaling'), 'null');
-    });
   });
+  group('Interaction Tests', () {});
+  group('Golden Tests', () {
+    // goldenTest(goldenFile, widget, widgetType, 'PNG_FILE_NAME');
+  });
+  group('Performance Tests', () {});
 }

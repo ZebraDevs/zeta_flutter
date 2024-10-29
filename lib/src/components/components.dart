@@ -1,4 +1,5 @@
 export 'accordion/accordion.dart';
+export 'avatar_rail/avatar_rail.dart';
 export 'avatars/avatar.dart';
 export 'badges/indicator.dart';
 export 'badges/label.dart';
@@ -45,7 +46,7 @@ export 'segmented_control/segmented_control.dart';
 export 'select_input/select_input.dart';
 export 'slider/slider.dart';
 export 'snack_bar/snack_bar.dart';
-export 'stepper/stepper.dart';
+export 'stepper/stepper.dart' hide HorizontalStep, StepDivider, StepIcon, VerticalStep;
 export 'stepper_input/stepper_input.dart' hide ZetaStepperInputState;
 export 'switch/zeta_switch.dart';
 export 'tabs/tab.dart';

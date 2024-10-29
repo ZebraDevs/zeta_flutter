@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:path/path.dart';
+import '../test_utils/test_app.dart';
 
 extension Util on DiagnosticPropertiesBuilder {
   dynamic finder(String finder) {
@@ -30,6 +31,53 @@ class GoldenFiles {
   }
 }
 
+void goldenTest(
+  GoldenFiles goldenFile,
+  Widget widget,
+  String fileName, {
+  Type? widgetType,
+  ThemeMode themeMode = ThemeMode.system,
+  Size? screenSize,
+  bool? rounded,
+  Future<void> Function(WidgetTester)? setUp,
+  Future<void> Function(WidgetTester)? beforeComparison,
+}) {
+  testWidgets('$fileName golden', (WidgetTester tester) async {
+    final computedType = widgetType ?? widget.runtimeType;
+    if (setUp != null) {
+      await setUp(tester);
+    }
+    await tester.pumpWidget(
+      TestApp(
+        screenSize: screenSize,
+        themeMode: themeMode,
+        rounded: rounded,
+        home: widget,
+      ),
+    );
+
+    if (beforeComparison != null) {
+      await beforeComparison(tester);
+    }
+
+    await expectLater(
+      find.byType(computedType),
+      matchesGoldenFile(goldenFile.getFileUri(fileName)),
+    );
+  });
+}
+
 BuildContext getBuildContext(WidgetTester tester, Type type) {
   return tester.element(find.byType(type));
+}
+
+void debugFillPropertiesTest(Widget widget, Map<String, dynamic> properties) {
+  testWidgets('debugFillProperties works correctly', (WidgetTester tester) async {
+    final diagnostics = DiagnosticPropertiesBuilder();
+    widget.debugFillProperties(diagnostics);
+
+    properties.forEach((key, value) {
+      expect(diagnostics.finder(key), value);
+    });
+  });
 }

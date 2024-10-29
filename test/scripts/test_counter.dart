@@ -124,7 +124,7 @@ class TestVisitor extends RecursiveAstVisitor<void> {
   }
 }
 
-/// Generates an MDX (Markdown Extended) table representation of the test counts.
+/// Generates an MD (Markdown) table representation of the test counts.
 ///
 /// The function takes a nested map where the outer map's keys are test group names,
 /// and the inner map's keys are test names with their corresponding integer counts.
@@ -139,7 +139,7 @@ class TestVisitor extends RecursiveAstVisitor<void> {
 /// ```
 ///
 /// Example output:
-/// ```mdx
+/// ```md
 /// | Component   | Accessibility | Content | Dimensions | Styling | Interaction | Golden | Performance | Unorganised | Total Tests |
 /// | ----------- | ------------- | ------- | ---------- | ------- | ----------- | ------ | ----------- | ----------- | ----------- |
 /// | Banner      | 3             | 0       | 0          | 0       | 0           | 0      | 0           | 0           | 3           |
@@ -151,8 +151,8 @@ class TestVisitor extends RecursiveAstVisitor<void> {
 ///   of test names with their corresponding counts.
 ///
 /// Returns:
-/// - A string in MDX format representing the test counts in a table with totals.
-String generateMDX(Map<String, Map<String, int>> testCount) {
+/// - A string in MD format representing the test counts in a table with totals.
+String generateMD(Map<String, Map<String, int>> testCount) {
   final Map<String, int> groupTotals = {
     'Accessibility': 0,
     'Content': 0,
@@ -228,14 +228,17 @@ void main() async {
   final TestGroups testGroups = await parseTestFiles(testFiles);
 
   // write test groups to file
-  await writeJSONToFile('${outputDirectory.path}/test_groups.json', testGroups);
+  // await writeJSONToFile('${outputDirectory.path}/test_groups.json', testGroups);
 
   // count the number of tests in each group
   final TestCount testCount = countTests(testGroups);
 
   // write test counts to file
-  await writeJSONToFile('${outputDirectory.path}/test_counts.json', testCount);
+  // await writeJSONToFile('${outputDirectory.path}/test_counts.json', testCount);
 
-  // generate MDX table
-  await writeMDXToFile('${outputDirectory.path}/test_table.mdx', generateMDX(testCount));
+  // generate MD table
+  await writeMDToFile('${outputDirectory.path}/test_table.md', generateMD(testCount));
+
+  // ignore: avoid_print
+  print('Test table generated successfully!');
 }

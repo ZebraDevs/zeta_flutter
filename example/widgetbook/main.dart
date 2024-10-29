@@ -11,6 +11,7 @@ import 'pages/components/notification_list_item_widgetbook.dart';
 import 'pages/components/slider_widgetbook.dart';
 import 'pages/components/text_input_widgetbook.dart';
 import 'pages/components/top_app_bar_widgetbook.dart';
+import 'pages/components/avatar_rail_widgetbook.dart';
 import 'pages/components/avatar_widgetbook.dart';
 import 'pages/components/badges_widgetbook.dart';
 import 'pages/components/banner_widgetbook.dart';
@@ -122,6 +123,13 @@ class _HotReloadState extends State<HotReload> {
           isInitiallyExpanded: false,
           children: [
             WidgetbookComponent(
+              name: 'Avatar',
+              useCases: [
+                WidgetbookUseCase(name: 'Avatar', builder: (context) => avatarUseCase(context)),
+                WidgetbookUseCase(name: 'Avatar Rail', builder: (context) => avatarRailUseCase(context)),
+              ],
+            ),
+            WidgetbookComponent(
               name: 'Top App Bar',
               useCases: [
                 WidgetbookUseCase(name: 'Default', builder: (context) => defaultTopAppBarUseCase(context)),
@@ -181,7 +189,6 @@ class _HotReloadState extends State<HotReload> {
               ],
             ),
             WidgetbookUseCase(name: 'Accordion', builder: (context) => accordionUseCase(context)),
-            WidgetbookUseCase(name: 'Avatar', builder: (context) => avatarUseCase(context)),
             WidgetbookUseCase(name: 'Banners', builder: (context) => bannerUseCase(context)),
             WidgetbookUseCase(name: 'Bottom Sheet', builder: (context) => bottomSheetContentUseCase(context)),
             WidgetbookUseCase(name: 'BreadCrumbs', builder: (context) => breadCrumbsUseCase(context)),
@@ -246,7 +253,7 @@ class _HotReloadState extends State<HotReload> {
         ZetaAddon(),
         InspectorAddon(enabled: false),
         ZoomAddon(initialZoom: 1.0),
-        TextScaleAddon(scales: [1.0, 1.2, 1.4, 1.6, 1.8, 2.0], initialScale: 1),
+        TextScaleAddon(min: 1, max: 2, divisions: 4, initialScale: 1),
       ],
     );
   }

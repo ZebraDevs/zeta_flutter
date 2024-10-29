@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
@@ -26,8 +25,9 @@ abstract class ISearchBarEvents {
 ])
 void main() {
   late MockISearchBarEvents callbacks;
-  const goldenFile = GoldenFiles(component: 'search_bar');
+  const String parentFolder = 'search_bar';
 
+  const goldenFile = GoldenFiles(component: parentFolder);
   setUpAll(() {
     goldenFileComparator = TolerantComparator(goldenFile.uri);
   });
@@ -36,8 +36,25 @@ void main() {
     callbacks = MockISearchBarEvents();
   });
 
-  group('ZetaSearchBar', () {
-    testWidgets('renders with default parameters', (WidgetTester tester) async {
+  group('Accessibility Tests', () {});
+  group('Content Tests', () {
+    final debugFillProperties = {
+      'size': 'medium',
+      'shape': 'rounded',
+      'placeholder': 'null',
+      'textInputAction': 'null',
+      'onSpeechToText': 'null',
+      'showSpeechToText': 'true',
+      'focusNode': 'null',
+      'microphoneSemanticLabel': 'null',
+      'clearSemanticLabel': 'null',
+    };
+    debugFillPropertiesTest(
+      ZetaSearchBar(),
+      debugFillProperties,
+    );
+
+    testWidgets('renders text field', (WidgetTester tester) async {
       await tester.pumpWidget(
         TestApp(
           home: Scaffold(
@@ -48,82 +65,6 @@ void main() {
 
       await tester.pumpAndSettle();
       expect(find.byType(TextField), findsOneWidget);
-    });
-
-    testWidgets('golden: renders initializes correctly', (WidgetTester tester) async {
-      await tester.pumpWidget(
-        TestApp(
-          home: ZetaSearchBar(),
-        ),
-      );
-      expect(find.byType(ZetaSearchBar), findsOneWidget);
-
-      await expectLater(
-        find.byType(ZetaSearchBar),
-        matchesGoldenFile(goldenFile.getFileUri('search_bar_default')),
-      );
-    });
-
-    testWidgets('golden: renders size medium correctly', (WidgetTester tester) async {
-      await tester.pumpWidget(
-        TestApp(
-          home: ZetaSearchBar(),
-        ),
-      );
-      expect(find.byType(ZetaSearchBar), findsOneWidget);
-
-      await expectLater(
-        find.byType(ZetaSearchBar),
-        matchesGoldenFile(goldenFile.getFileUri('search_bar_medium')),
-      );
-    });
-
-    testWidgets('golden: renders size small correctly', (WidgetTester tester) async {
-      await tester.pumpWidget(
-        TestApp(
-          home: ZetaSearchBar(
-            size: ZetaWidgetSize.small,
-          ),
-        ),
-      );
-      expect(find.byType(ZetaSearchBar), findsOneWidget);
-
-      await expectLater(
-        find.byType(ZetaSearchBar),
-        matchesGoldenFile(goldenFile.getFileUri('search_bar_small')),
-      );
-    });
-
-    testWidgets('golden: renders shape full correctly', (WidgetTester tester) async {
-      await tester.pumpWidget(
-        TestApp(
-          home: ZetaSearchBar(
-            shape: ZetaWidgetBorder.full,
-          ),
-        ),
-      );
-      expect(find.byType(ZetaSearchBar), findsOneWidget);
-
-      await expectLater(
-        find.byType(ZetaSearchBar),
-        matchesGoldenFile(goldenFile.getFileUri('search_bar_full')),
-      );
-    });
-
-    testWidgets('golden: renders shape sharp correctly', (WidgetTester tester) async {
-      await tester.pumpWidget(
-        TestApp(
-          home: ZetaSearchBar(
-            shape: ZetaWidgetBorder.sharp,
-          ),
-        ),
-      );
-      expect(find.byType(ZetaSearchBar), findsOneWidget);
-
-      await expectLater(
-        find.byType(ZetaSearchBar),
-        matchesGoldenFile(goldenFile.getFileUri('search_bar_sharp')),
-      );
     });
 
     testWidgets('sets initial value correctly', (WidgetTester tester) async {
@@ -168,6 +109,25 @@ void main() {
       expect(find.text(updatedValue), findsOneWidget);
     });
 
+    testWidgets('speech-to-text button visibility', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        TestApp(
+          home: Scaffold(
+            body: ZetaSearchBar(
+              showSpeechToText: false,
+            ),
+          ),
+        ),
+      );
+
+      await tester.pumpAndSettle();
+      expect(find.byIcon(ZetaIcons.search), findsNothing);
+      expect(find.byIcon(ZetaIcons.microphone), findsNothing);
+    });
+  });
+  group('Dimensions Tests', () {});
+  group('Styling Tests', () {});
+  group('Interaction Tests', () {
     testWidgets('triggers onChanged callback when text is entered', (WidgetTester tester) async {
       await tester.pumpWidget(
         TestApp(
@@ -237,22 +197,6 @@ void main() {
       expect(find.text('Disabled input'), findsNothing);
     });
 
-    testWidgets('speech-to-text button visibility', (WidgetTester tester) async {
-      await tester.pumpWidget(
-        TestApp(
-          home: Scaffold(
-            body: ZetaSearchBar(
-              showSpeechToText: false,
-            ),
-          ),
-        ),
-      );
-
-      await tester.pumpAndSettle();
-      expect(find.byIcon(ZetaIcons.search), findsNothing);
-      expect(find.byIcon(ZetaIcons.microphone), findsNothing);
-    });
-
     testWidgets('clear button functionality', (WidgetTester tester) async {
       await tester.pumpWidget(
         TestApp(
@@ -273,20 +217,31 @@ void main() {
 
       verify(callbacks.onChange.call('')).called(1);
     });
-
-    test('debugFillProperties', () {
-      final diagnostics = DiagnosticPropertiesBuilder();
-      ZetaSearchBar().debugFillProperties(diagnostics);
-
-      expect(diagnostics.finder('size'), 'medium');
-      expect(diagnostics.finder('shape'), 'rounded');
-      expect(diagnostics.finder('placeholder'), 'null');
-      expect(diagnostics.finder('textInputAction'), 'null');
-      expect(diagnostics.finder('onSpeechToText'), 'null');
-      expect(diagnostics.finder('showSpeechToText'), 'true');
-      expect(diagnostics.finder('focusNode'), 'null');
-      expect(diagnostics.finder('microphoneSemanticLabel'), 'null');
-      expect(diagnostics.finder('clearSemanticLabel'), 'null');
-    });
   });
+  group('Golden Tests', () {
+    goldenTest(goldenFile, ZetaSearchBar(), 'search_bar_default');
+    goldenTest(goldenFile, ZetaSearchBar(), 'search_bar_medium');
+    goldenTest(
+      goldenFile,
+      ZetaSearchBar(
+        size: ZetaWidgetSize.small,
+      ),
+      'search_bar_small',
+    );
+    goldenTest(
+      goldenFile,
+      ZetaSearchBar(
+        shape: ZetaWidgetBorder.full,
+      ),
+      'search_bar_full',
+    );
+    goldenTest(
+      goldenFile,
+      ZetaSearchBar(
+        shape: ZetaWidgetBorder.sharp,
+      ),
+      'search_bar_sharp',
+    );
+  });
+  group('Performance Tests', () {});
 }

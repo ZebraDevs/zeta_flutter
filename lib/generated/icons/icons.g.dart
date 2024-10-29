@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 
 /// Current version of Zeta Icons
 // x-release-please-start-version
-const zetaIconsVersion = '0.6.2';
+const zetaIconsVersion = '0.8.0';
 // x-release-please-end
 
 /// Zeta Icons. Full list of icons can be found at [Zeta Icons](https://design.zebra.com/icons/).
