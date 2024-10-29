@@ -63,7 +63,7 @@ class _NavigationRailExampleState extends State<NavigationRailExample> {
                         _titles[_selectedIndex!],
                         textAlign: TextAlign.center,
                         style: ZetaTextStyles.titleMedium.copyWith(
-                          color: zeta.colors.textDefault,
+                          color: zeta.colors.mainDefault,
                           fontWeight: FontWeight.bold,
                         ),
                       ),

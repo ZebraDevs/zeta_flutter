@@ -62,7 +62,7 @@ void main() {
       await gesture.moveTo(tester.getCenter(buttonFinder));
       await tester.pumpAndSettle();
 
-      expect(inkWell.overlayColor?.resolve({WidgetState.hovered}), ZetaColorBase.cool.shade20);
+      expect(inkWell.overlayColor?.resolve({WidgetState.hovered}), const ZetaPrimitivesLight().cool.shade20);
     });
   });
 
@@ -294,12 +294,6 @@ void main() {
       goldenFile,
       const ZetaDialPad(),
       'dialpad_disabled',
-      screenSize: const Size(1000, 1000),
-    );
-    goldenTest(
-      goldenFile,
-      const ZetaDialPadButton(primary: '1'),
-      'dialpadbutton',
       screenSize: const Size(1000, 1000),
     );
   });

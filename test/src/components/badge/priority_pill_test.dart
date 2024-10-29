@@ -1,4 +1,5 @@
 // ignore_for_file: avoid_dynamic_calls
+import 'package:flutter/foundation.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
@@ -21,16 +22,15 @@ void main() {
       'rounded': 'false',
       'isBadge': 'false',
       'index': '"1"',
-      'customColor':
-          'ZetaColorSwatch(4278219750, Brightness.light, ZetaContrast.aa, Color(0xfff1f8ff), Color(0xffe2f1ff), Color(0xffb7dbff), Color(0xff7ebeff), Color(0xff599fe5), Color(0xff0073e6), Color(0xff0061c2), Color(0xff004d99), Color(0xff002c58), Color(0xff101b25))',
+      'customColor': const ZetaPrimitivesLight().blue.toString(),
       'type': 'urgent',
       'size': 'large',
     };
     debugFillPropertiesTest(
-      const ZetaPriorityPill(
+      ZetaPriorityPill(
         label: 'Test label',
         rounded: false,
-        customColor: ZetaColorBase.blue,
+        customColor: const ZetaPrimitivesLight().blue,
         index: '1',
       ),
       debugFillProperties,
@@ -151,5 +151,21 @@ void main() {
       'priority_pill_low',
     );
   });
-  group('Performance Tests', () {});
+  testWidgets('debugFillProperties works correctly', (WidgetTester tester) async {
+    final diagnostics = DiagnosticPropertiesBuilder();
+    ZetaPriorityPill(
+      label: 'Test label',
+      rounded: false,
+      customColor: const ZetaPrimitivesLight().blue,
+      index: '1',
+    ).debugFillProperties(diagnostics);
+
+    expect(diagnostics.finder('label'), '"Test label"');
+    expect(diagnostics.finder('rounded'), 'false');
+    expect(diagnostics.finder('isBadge'), 'false');
+    expect(diagnostics.finder('index'), '"1"');
+    expect(diagnostics.finder('customColor').split('(').first, 'ZetaColorSwatch');
+    expect(diagnostics.finder('type'), 'urgent');
+    expect(diagnostics.finder('size'), 'large');
+  });
 }

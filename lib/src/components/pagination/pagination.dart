@@ -231,7 +231,9 @@ class _ZetaPaginationState extends State<ZetaPagination> {
           value: _currentPage,
           icon: const ZetaIcon(ZetaIcons.expand_more).paddingStart(Zeta.of(context).spacing.small),
           underline: const Nothing(),
-          style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: colors.textSubtle),
+          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                color: colors.mainSubtle,
+              ),
           padding: EdgeInsets.symmetric(
             horizontal: Zeta.of(context).spacing.medium,
           ),
@@ -320,16 +322,16 @@ class _PaginationItem extends ZetaStatelessWidget {
         maxLines: 1,
         style: Theme.of(context).textTheme.bodyMedium?.copyWith(
               color: disabled
-                  ? colors.textDisabled
+                  ? colors.mainDisabled
                   : selected
-                      ? colors.textInverse
-                      : colors.textDefault,
+                      ? colors.mainInverse
+                      : colors.mainDefault,
             ),
       );
     } else if (icon != null) {
       child = ZetaIcon(
         icon,
-        color: disabled ? colors.textDisabled : colors.textDefault,
+        color: disabled ? colors.mainDisabled : colors.mainDefault,
         semanticLabel: semanticLabel,
       );
     }
@@ -349,15 +351,14 @@ class _PaginationItem extends ZetaStatelessWidget {
         child: Material(
           borderRadius: rounded ? Zeta.of(context).radius.minimal : Zeta.of(context).radius.none,
           color: disabled
-              ? colors.surfaceDisabled
+              ? colors.stateDisabledDisabled
               : selected
-                  ? colors.cool[100]
-                  : colors.surfacePrimary,
+                  ? colors.stateInverseSelected
+                  : colors.stateDefaultEnabled,
           child: InkWell(
             onTap: disabled ? null : onPressed,
             borderRadius: rounded ? Zeta.of(context).radius.minimal : Zeta.of(context).radius.none,
-            highlightColor: selected ? colors.cool[100] : colors.surfaceSelected,
-            hoverColor: selected ? colors.cool[100] : colors.surfaceHover,
+            hoverColor: selected ? colors.stateInverseHover : colors.stateDefaultHover,
             enableFeedback: false,
             child: Container(
               alignment: Alignment.center,

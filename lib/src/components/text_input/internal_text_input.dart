@@ -173,7 +173,7 @@ class InternalTextInput extends ZetaStatefulWidget {
 /// The current state of a [InternalTextInput]
 class InternalTextInputState extends State<InternalTextInput> {
   late final TextEditingController _controller;
-  ZetaColors get _colors => Zeta.of(context).colors;
+  ZetaSemanticColors get _colors => Zeta.of(context).colors;
 
   // TODO(UX-1143): refactor to use WidgetStateController
   bool _hovered = false;
@@ -183,9 +183,9 @@ class InternalTextInputState extends State<InternalTextInput> {
       return _colors.surfaceDisabled;
     }
     if (widget.errorText != null) {
-      return _colors.error.shade10;
+      return _colors.surfaceNegativeSubtle;
     }
-    return _colors.surfacePrimary;
+    return _colors.surfaceDefault;
   }
 
   TextStyle get _baseTextStyle {
@@ -213,9 +213,9 @@ class InternalTextInputState extends State<InternalTextInput> {
   }
 
   TextStyle get _affixStyle {
-    Color color = _colors.textSubtle;
+    Color color = _colors.mainSubtle;
     if (widget.disabled) {
-      color = _colors.textDisabled;
+      color = _colors.mainDisabled;
     }
     return _baseTextStyle.copyWith(color: color);
   }
@@ -347,8 +347,8 @@ class InternalTextInputState extends State<InternalTextInput> {
                       onChanged: widget.onChange,
                       onSubmitted: widget.onSubmit,
                       style: _baseTextStyle,
+                      cursorErrorColor: _colors.mainNegative,
                       textInputAction: widget.textInputAction,
-                      cursorErrorColor: _colors.error,
                       obscureText: widget.obscureText,
                       focusNode: widget.focusNode,
                       decoration: InputDecoration(
@@ -372,7 +372,7 @@ class InternalTextInputState extends State<InternalTextInput> {
                         hintText: widget.placeholder,
                         errorText: widget.errorText,
                         hintStyle: _baseTextStyle.copyWith(
-                          color: widget.disabled ? _colors.textDisabled : _colors.textSubtle,
+                          color: widget.disabled ? _colors.mainDisabled : _colors.mainSubtle,
                         ),
                         errorStyle: const TextStyle(height: 0.001, color: Colors.transparent),
                       ),

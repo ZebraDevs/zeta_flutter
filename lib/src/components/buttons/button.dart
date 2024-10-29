@@ -190,7 +190,6 @@ class ZetaButton extends ZetaStatelessWidget {
             context,
             borderType ?? (context.rounded ? ZetaWidgetBorder.rounded : ZetaWidgetBorder.sharp),
             type,
-            null,
           ),
           child: SelectionContainer.disabled(
             child: Row(
@@ -249,7 +248,7 @@ class ZetaButton extends ZetaStatelessWidget {
         return Zeta.of(context).spacing.medium;
 
       case ZetaWidgetSize.small:
-        return Zeta.of(context).spacing.minimum;
+        return Zeta.of(context).spacing.small;
     }
   }
 
