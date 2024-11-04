@@ -88,7 +88,6 @@ class ZetaAvatarRail extends StatelessWidget {
       children: [
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
-          hitTestBehavior: HitTestBehavior.translucent,
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
