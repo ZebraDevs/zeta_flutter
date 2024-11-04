@@ -112,12 +112,10 @@ class ZetaBanner extends MaterialBanner {
                         Padding(
                           padding:
                               !_titleCenter && leadingIcon != null ? const EdgeInsets.only(left: 40) : EdgeInsets.zero,
-                          child: Flexible(
-                            child: Text(
-                              title,
-                              style: ZetaTextStyles.labelLarge.copyWith(
-                                color: Zeta.of(context).colors.textInverse,
-                              ),
+                          child: Text(
+                            title,
+                            style: ZetaTextStyles.labelLarge.copyWith(
+                              color: Zeta.of(context).colors.textInverse,
                             ),
                           ),
                         ),
