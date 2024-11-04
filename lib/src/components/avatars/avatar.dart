@@ -256,41 +256,44 @@ class ZetaAvatar extends ZetaStatelessWidget {
             children: [
               Stack(
                 children: [
-                  GestureDetector(
-                    onTap: onTap,
-                    child: Container(
-                      width: pSize,
-                      height: pSize,
-                      decoration: BoxDecoration(
-                        border: borderColor != null ? Border.all(color: borderColor!, width: 0) : null,
-                        borderRadius: Zeta.of(context).radius.full,
-                        color:
-                            backgroundColor ?? (_showPlaceholder ? zetaColors.surfacePrimary : zetaColors.cool.shade20),
+                  MouseRegion(
+                    cursor: onTap != null ? SystemMouseCursors.click : SystemMouseCursors.basic,
+                    child: GestureDetector(
+                      onTap: onTap,
+                      child: Container(
+                        width: pSize,
+                        height: pSize,
+                        decoration: BoxDecoration(
+                          border: borderColor != null ? Border.all(color: borderColor!, width: 0) : null,
+                          borderRadius: Zeta.of(context).radius.full,
+                          color: backgroundColor ??
+                              (_showPlaceholder ? zetaColors.surfacePrimary : zetaColors.cool.shade20),
+                        ),
+                        child: borderColor != null
+                            ? Container(
+                                width: pSize,
+                                height: pSize,
+                                decoration: BoxDecoration(
+                                  color: backgroundColor ?? zetaColors.surfaceHover,
+                                  border: Border.all(color: borderColor!, width: borderSize(context)),
+                                  borderRadius: Zeta.of(context).radius.full,
+                                ),
+                                child: ClipRRect(
+                                  borderRadius: Zeta.of(context).radius.full,
+                                  child: innerContent,
+                                ),
+                              )
+                            : DecoratedBox(
+                                decoration: BoxDecoration(
+                                  borderRadius: Zeta.of(context).radius.full,
+                                  color: backgroundColor ?? zetaColors.surfaceHover,
+                                ),
+                                child: ClipRRect(
+                                  borderRadius: Zeta.of(context).radius.full,
+                                  child: innerContent,
+                                ),
+                              ),
                       ),
-                      child: borderColor != null
-                          ? Container(
-                              width: pSize,
-                              height: pSize,
-                              decoration: BoxDecoration(
-                                color: backgroundColor ?? zetaColors.surfaceHover,
-                                border: Border.all(color: borderColor!, width: borderSize(context)),
-                                borderRadius: Zeta.of(context).radius.full,
-                              ),
-                              child: ClipRRect(
-                                borderRadius: Zeta.of(context).radius.full,
-                                child: innerContent,
-                              ),
-                            )
-                          : DecoratedBox(
-                              decoration: BoxDecoration(
-                                borderRadius: Zeta.of(context).radius.full,
-                                color: backgroundColor ?? zetaColors.surfaceHover,
-                              ),
-                              child: ClipRRect(
-                                borderRadius: Zeta.of(context).radius.full,
-                                child: innerContent,
-                              ),
-                            ),
                     ),
                   ),
                   if (upperBadge != null)
