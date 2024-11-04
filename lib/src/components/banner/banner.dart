@@ -52,7 +52,7 @@ class ZetaBanner extends MaterialBanner {
     bool titleCenter = false,
 
     /// Whether the title should be centered.
-    @Deprecated('Use titleCenter instead. ' 'This widget has been renamed as of 0.18.0') bool? titleStart,
+    @Deprecated('Use titleCenter instead. ' 'This attribute has been renamed as of 0.18.0') bool? titleStart,
 
     /// The trailing widget for the banner.
     Widget? trailing,
