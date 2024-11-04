@@ -37,6 +37,7 @@ class ZetaProgressCircle extends ZetaProgress {
     this.size = ZetaCircleSizes.xl,
     super.rounded,
     this.onCancel,
+    this.label,
   });
 
   ///Size of [ZetaProgressCircle]
@@ -44,6 +45,9 @@ class ZetaProgressCircle extends ZetaProgress {
 
   /// Cancel function => cancel upload.
   final VoidCallback? onCancel;
+
+  /// Label for [ZetaProgressCircle], override default percentage label.
+  final String? label;
 
   @override
   State<ZetaProgressCircle> createState() => _ZetaProgressCircleState();
@@ -55,7 +59,8 @@ class ZetaProgressCircle extends ZetaProgress {
       ..add(EnumProperty<ZetaCircleSizes>('size', size))
       ..add(DoubleProperty('progress', progress))
       ..add(DiagnosticsProperty<bool>('rounded', rounded))
-      ..add(ObjectFlagProperty<VoidCallback?>.has('onCancel', onCancel));
+      ..add(ObjectFlagProperty<VoidCallback?>.has('onCancel', onCancel))
+      ..add(StringProperty('label', label));
   }
 }
 
@@ -85,13 +90,11 @@ class _ZetaProgressCircleState extends ZetaProgressState<ZetaProgressCircle> {
 
   @override
   Widget build(BuildContext context) {
-    final textVal = '${(widget.progress * 100).round()}%';
+    final textVal = widget.label ?? '${(widget.progress * 100).round()}%';
     final colors = Zeta.of(context).colors;
     final textWidget = Text(
       textVal,
-      style: widget.size != ZetaCircleSizes.s
-          ? ZetaTextStyles.labelSmall
-          : ZetaTextStyles.labelSmall.copyWith(fontSize: Zeta.of(context).spacing.small),
+      style: _getTextSize(),
     );
 
     return ConstrainedBox(
@@ -165,6 +168,19 @@ class _ZetaProgressCircleState extends ZetaProgressState<ZetaProgressCircle> {
         return Size(Zeta.of(context).spacing.xl_8, Zeta.of(context).spacing.xl_8);
       case ZetaCircleSizes.xl:
         return Size(Zeta.of(context).spacing.xl_9, Zeta.of(context).spacing.xl_9);
+    }
+  }
+
+  TextStyle _getTextSize() {
+    switch (widget.size) {
+      case ZetaCircleSizes.xs:
+      case ZetaCircleSizes.s:
+        return ZetaTextStyles.labelSmall;
+      case ZetaCircleSizes.m:
+        return ZetaTextStyles.labelMedium;
+      case ZetaCircleSizes.l:
+      case ZetaCircleSizes.xl:
+        return ZetaTextStyles.labelLarge;
     }
   }
 

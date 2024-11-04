@@ -33,5 +33,6 @@ Widget progressCircleUseCase(BuildContext context) => WidgetbookScaffold(
           labelBuilder: enumLabelBuilder,
         ),
         onCancel: context.knobs.boolean(label: "Can Cancel") ? () {} : null,
+        label: context.knobs.stringOrNull(label: 'Label'),
       ),
     );

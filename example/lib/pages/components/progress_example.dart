@@ -132,6 +132,7 @@ class _WrapperState extends State<Wrapper> {
                 child: ZetaProgressCircle(
                   progress: progress,
                   size: widget.circleSize!,
+                  label: '30%',
                 ),
               )
             : SizedBox(
