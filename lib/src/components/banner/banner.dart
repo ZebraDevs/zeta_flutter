@@ -152,22 +152,4 @@ class ZetaBanner extends MaterialBanner {
         return zeta.colors.surfaceNegative;
     }
   }
-
-  // static Widget _getTitle(bool titleStart, String title, BuildContext context) {
-  //   if (titleStart) {
-  //     return
-  //   } else {
-  //     return Positioned(
-  //       left: 10,
-  //       child: Flexible(
-  //         child: Text(
-  //           title,
-  //           style: ZetaTextStyles.labelLarge.copyWith(
-  //             color: Zeta.of(context).colors.textInverse,
-  //           ),
-  //         ),
-  //       ),
-  //     );
-  //   }
-  // }
 }
