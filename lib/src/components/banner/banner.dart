@@ -49,7 +49,10 @@ class ZetaBanner extends MaterialBanner {
     ZetaBannerStatus type = ZetaBannerStatus.primary,
 
     /// Whether the title should be centered.
-    bool titleStart = false,
+    bool titleCenter = false,
+
+    /// Whether the title should be centered.
+    @Deprecated('Use titleCenter instead. ' 'This widget has been renamed as of 0.18.0') bool? titleStart,
 
     /// The trailing widget for the banner.
     Widget? trailing,
@@ -80,6 +83,8 @@ class ZetaBanner extends MaterialBanner {
                 }
               }
 
+              // ignore: no_leading_underscores_for_local_identifiers
+              final _titleCenter = titleStart ?? titleCenter;
               return ZetaRoundedScope(
                 rounded: rounded ?? context.rounded,
                 child: Semantics(
@@ -89,26 +94,41 @@ class ZetaBanner extends MaterialBanner {
                       color: foregroundColor,
                       overflow: TextOverflow.ellipsis,
                     ),
-                    child: Row(
-                      mainAxisAlignment: titleStart ? MainAxisAlignment.center : MainAxisAlignment.start,
+                    child: Stack(
+                      alignment: _titleCenter ? Alignment.center : Alignment.centerLeft,
                       children: [
                         if (leadingIcon != null)
-                          Padding(
-                            padding: EdgeInsets.only(right: Zeta.of(context).spacing.small),
-                            child: Icon(
-                              leadingIcon,
-                              color: foregroundColor,
-                              size: Zeta.of(context).spacing.xl_2,
+                          Positioned(
+                            left: 0,
+                            child: Padding(
+                              padding: EdgeInsets.only(right: Zeta.of(context).spacing.small),
+                              child: Icon(
+                                leadingIcon,
+                                color: foregroundColor,
+                                size: Zeta.of(context).spacing.xl_2,
+                              ),
                             ),
                           ),
-                        Flexible(
-                          child: Text(
-                            title,
-                            style: ZetaTextStyles.labelLarge.copyWith(
-                              color: Zeta.of(context).colors.textInverse,
+                        Padding(
+                          padding:
+                              !_titleCenter && leadingIcon != null ? const EdgeInsets.only(left: 40) : EdgeInsets.zero,
+                          child: Flexible(
+                            child: Text(
+                              title,
+                              style: ZetaTextStyles.labelLarge.copyWith(
+                                color: Zeta.of(context).colors.textInverse,
+                              ),
                             ),
                           ),
                         ),
+                        if (trailing != null)
+                          Positioned(
+                            right: 0,
+                            child: IconTheme(
+                              data: IconThemeData(color: _backgroundColorFromType(context, type).onColor),
+                              child: trailing,
+                            ),
+                          ),
                       ],
                     ),
                   ),
@@ -117,12 +137,7 @@ class ZetaBanner extends MaterialBanner {
             },
           ),
           backgroundColor: _backgroundColorFromType(context, type),
-          actions: [
-            IconTheme(
-              data: IconThemeData(color: _backgroundColorFromType(context, type).onColor),
-              child: trailing ?? const Nothing(),
-            ),
-          ],
+          actions: [const Nothing()],
         );
 
   static ZetaColorSwatch _backgroundColorFromType(BuildContext context, ZetaBannerStatus type) {
@@ -139,4 +154,22 @@ class ZetaBanner extends MaterialBanner {
         return zeta.colors.surfaceNegative;
     }
   }
+
+  // static Widget _getTitle(bool titleStart, String title, BuildContext context) {
+  //   if (titleStart) {
+  //     return
+  //   } else {
+  //     return Positioned(
+  //       left: 10,
+  //       child: Flexible(
+  //         child: Text(
+  //           title,
+  //           style: ZetaTextStyles.labelLarge.copyWith(
+  //             color: Zeta.of(context).colors.textInverse,
+  //           ),
+  //         ),
+  //       ),
+  //     );
+  //   }
+  // }
 }
