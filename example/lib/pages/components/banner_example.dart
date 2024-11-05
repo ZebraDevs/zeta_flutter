@@ -23,7 +23,7 @@ class BannerExample extends StatelessWidget {
                 type: ZetaBannerStatus.primary,
                 title: 'Centered',
                 context: context,
-                titleStart: true,
+                titleCenter: true,
                 leadingIcon: ZetaIcons.info,
               ),
               ZetaBanner(
@@ -35,13 +35,13 @@ class BannerExample extends StatelessWidget {
                 type: ZetaBannerStatus.primary,
                 context: context,
                 title: 'Title left with arrow',
-                titleStart: true,
+                titleCenter: true,
                 trailing: ZetaIcon(ZetaIcons.chevron_right),
               ),
               ZetaBanner(
                 type: ZetaBannerStatus.primary,
                 title: 'Title left + Icon',
-                titleStart: true,
+                titleCenter: true,
                 context: context,
                 leadingIcon: ZetaIcons.info,
               ),
@@ -49,7 +49,7 @@ class BannerExample extends StatelessWidget {
                 type: ZetaBannerStatus.primary,
                 context: context,
                 title: 'Title left + Icon with Arrow',
-                titleStart: true,
+                titleCenter: true,
                 leadingIcon: ZetaIcons.info,
                 trailing: IconButton(
                   icon: ZetaIcon(ZetaIcons.chevron_right),
@@ -71,7 +71,7 @@ class BannerExample extends StatelessWidget {
                 type: ZetaBannerStatus.positive,
                 context: context,
                 title: 'Centered',
-                titleStart: true,
+                titleCenter: true,
                 leadingIcon: ZetaIcons.info,
                 trailing: IconButton(
                   icon: ZetaIcon(ZetaIcons.chevron_right),
@@ -92,7 +92,7 @@ class BannerExample extends StatelessWidget {
                 type: ZetaBannerStatus.warning,
                 title: 'Centered',
                 context: context,
-                titleStart: true,
+                titleCenter: true,
                 leadingIcon: ZetaIcons.info,
                 trailing: IconButton(
                   icon: ZetaIcon(ZetaIcons.chevron_right),
@@ -113,7 +113,7 @@ class BannerExample extends StatelessWidget {
                 type: ZetaBannerStatus.negative,
                 title: 'Centered',
                 context: context,
-                titleStart: true,
+                titleCenter: true,
                 leadingIcon: ZetaIcons.info,
                 trailing: IconButton(
                   icon: ZetaIcon(ZetaIcons.chevron_right),
