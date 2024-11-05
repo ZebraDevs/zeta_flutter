@@ -1,7 +1,10 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../../../zeta_flutter.dart';
 
+/// The [ZetaStatusChip] is a chip that displays a status/label.
+/// It can be dragged around the screen and placed in new locations using [DragTarget].
 ///
 /// {@category Components}
 ///
@@ -52,22 +55,42 @@ class ZetaStatusChip extends ZetaStatelessWidget {
                 ? Draggable(
                     feedback: Material(
                       color: Colors.transparent,
-                      child: child(context),
+                      child: _Child(context: context, label: label),
                     ),
                     childWhenDragging: const Nothing(),
                     data: data,
                     onDragCompleted: onDragCompleted,
-                    child: child(context),
+                    child: _Child(context: context, label: label),
                   )
-                : child(context),
+                : _Child(context: context, label: label),
           ),
         ),
       ),
     );
   }
 
-  /// The child widget of the chip.
-  Widget child(BuildContext context) {
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(StringProperty('label', label))
+      ..add(DiagnosticsProperty<bool>('draggable', draggable))
+      ..add(DiagnosticsProperty('data', data))
+      ..add(ObjectFlagProperty<VoidCallback?>.has('onDragCompleted', onDragCompleted))
+      ..add(StringProperty('semanticLabel', semanticLabel));
+  }
+}
+
+/// The child widget of the [ZetaStatusChip].
+class _Child extends StatelessWidget {
+  const _Child({required this.context, required this.label});
+
+  final BuildContext context;
+
+  final String label;
+
+  @override
+  Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
         color: Zeta.of(context).colors.surfaceWarm,
@@ -83,5 +106,13 @@ class ZetaStatusChip extends ZetaStatelessWidget {
       ),
       child: Text(label, style: ZetaTextStyles.bodyXSmall),
     );
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty<BuildContext>('context', context))
+      ..add(StringProperty('label', label));
   }
 }
