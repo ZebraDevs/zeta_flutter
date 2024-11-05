@@ -16,7 +16,7 @@ class ZetaStatusChip extends ZetaStatelessWidget {
   const ZetaStatusChip({
     super.key,
     required this.label,
-    super.rounded,
+    super.rounded = true,
     this.draggable = false,
     this.data,
     this.onDragCompleted,
@@ -94,11 +94,13 @@ class _Child extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: Zeta.of(context).colors.surfaceWarm,
-        borderRadius: BorderRadius.all(
-          Radius.circular(
-            Zeta.of(context).spacing.small,
-          ),
-        ),
+        borderRadius: context.rounded
+            ? BorderRadius.all(
+                Radius.circular(
+                  Zeta.of(context).spacing.small,
+                ),
+              )
+            : null,
       ),
       padding: EdgeInsets.symmetric(
         horizontal: Zeta.of(context).spacing.small,
