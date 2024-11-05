@@ -34,6 +34,7 @@ class ZetaProgressCircle extends ZetaProgress {
   const ZetaProgressCircle({
     super.key,
     super.progress = 0,
+    super.maxValue = 1,
     this.size = ZetaCircleSizes.xl,
     super.rounded,
     this.onCancel,
@@ -60,6 +61,7 @@ class ZetaProgressCircle extends ZetaProgress {
       ..add(DoubleProperty('progress', progress))
       ..add(DiagnosticsProperty<bool>('rounded', rounded))
       ..add(ObjectFlagProperty<VoidCallback?>.has('onCancel', onCancel))
+      ..add(DoubleProperty('maxValue', maxValue))
       ..add(StringProperty('label', label));
   }
 }
@@ -108,6 +110,7 @@ class _ZetaProgressCircleState extends ZetaProgressState<ZetaProgressCircle> {
               progress: animation.value,
               rounded: context.rounded,
               context: context,
+              maxValue: widget.maxValue,
             ),
             child: Center(
               child: widget.size == ZetaCircleSizes.xs
@@ -201,7 +204,12 @@ typedef CirclePainter = _CirclePainter;
 /// Class definition for [_CirclePainter]
 class _CirclePainter extends CustomPainter {
   ///Constructor for [_CirclePainter]
-  _CirclePainter({this.progress = 0, this.rounded = true, required this.context});
+  _CirclePainter({
+    this.progress = 0,
+    this.rounded = true,
+    required this.context,
+    this.maxValue = 1,
+  });
 
   ///Percentage of progress in decimal value, defaults to 0
   final double progress;
@@ -210,6 +218,9 @@ class _CirclePainter extends CustomPainter {
   final bool rounded;
 
   final BuildContext context;
+
+  /// Maximum value for progress, defaults to 1
+  final double maxValue;
 
   final _paint = Paint();
 
@@ -226,7 +237,7 @@ class _CirclePainter extends CustomPainter {
     canvas.drawArc(
       Rect.fromLTRB(0, 0, size.width, size.height),
       3 * math.pi / 2,
-      progress * fullCircle,
+      progress / maxValue * fullCircle,
       false,
       _paint,
     );
