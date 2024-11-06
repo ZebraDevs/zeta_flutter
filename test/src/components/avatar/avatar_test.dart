@@ -48,8 +48,8 @@ void main() {
     final debugFillProperties = {
       'size': 'ZetaAvatarSize.xl',
       'name': 'null',
-      'specialStatus': 'null',
-      'badge': 'null',
+      'upperBadge': 'null',
+      'lowerBadge': 'null',
       'backgroundColor': 'null',
       'statusColor': 'null',
       'semanticUpperBadgeValue': '"upperBadge"',

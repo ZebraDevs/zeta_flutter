@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'dart:io';
 
 import 'package:collection/collection.dart';
@@ -77,7 +79,12 @@ void debugFillPropertiesTest(Widget widget, Map<String, dynamic> properties) {
     widget.debugFillProperties(diagnostics);
 
     properties.forEach((key, value) {
-      expect(diagnostics.finder(key), value);
+      try {
+        expect(diagnostics.finder(key), value);
+      } catch (e) {
+        print('Error on $key');
+        rethrow;
+      }
     });
   });
 }
