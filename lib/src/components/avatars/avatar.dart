@@ -35,6 +35,8 @@ enum ZetaAvatarSize {
 }
 
 /// An avatar is a visual representation of a user or entity.
+///
+/// It is recommended to use [ZetaAvatar] with [ZetaAvatarBadge] for status and notification badges, but any widget can be used.
 /// {@category Components}
 ///
 /// Figma: https://www.figma.com/file/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?type=design&node-id=20816-388
@@ -137,10 +139,10 @@ class ZetaAvatar extends ZetaStatelessWidget {
   final Color? borderColor;
 
   /// Status badge shown at lower right corner of avatar.
-  final ZetaAvatarBadge? lowerBadge;
+  final Widget? lowerBadge;
 
   /// Notification Badge shown at top right corner of avatar.
-  final ZetaAvatarBadge? upperBadge;
+  final Widget? upperBadge;
 
   /// Value passed into wrapping [Semantics] widget.
   ///
@@ -191,8 +193,8 @@ class ZetaAvatar extends ZetaStatelessWidget {
     String? initials,
     Color? backgroundColor,
     Color? borderColor,
-    ZetaAvatarBadge? lowerBadge,
-    ZetaAvatarBadge? upperBadge,
+    Widget? lowerBadge,
+    Widget? upperBadge,
     String? label,
     TextStyle? labelTextStyle,
     int? labelMaxLines,
@@ -301,9 +303,9 @@ class ZetaAvatar extends ZetaStatelessWidget {
                       right: Zeta.of(context).spacing.none,
                       child: Semantics(
                         value: semanticLowerBadgeLabel,
-                        child: upperBadge!.copyWith(
-                          size: size,
-                        ),
+                        child: upperBadge.runtimeType == ZetaAvatarBadge
+                            ? (upperBadge! as ZetaAvatarBadge).copyWith(size: size)
+                            : upperBadge,
                       ),
                     ),
                   if (lowerBadge != null)
@@ -312,7 +314,9 @@ class ZetaAvatar extends ZetaStatelessWidget {
                       bottom: Zeta.of(context).spacing.none,
                       child: Semantics(
                         value: semanticLowerBadgeLabel,
-                        child: lowerBadge!.copyWith(size: size),
+                        child: lowerBadge.runtimeType == ZetaAvatarBadge
+                            ? (lowerBadge! as ZetaAvatarBadge).copyWith(size: size)
+                            : upperBadge,
                       ),
                     ),
                 ],
@@ -348,8 +352,8 @@ class ZetaAvatar extends ZetaStatelessWidget {
     properties
       ..add(DiagnosticsProperty<ZetaAvatarSize>('size', size))
       ..add(DiagnosticsProperty<String?>('name', initials))
-      ..add(DiagnosticsProperty<ZetaAvatarBadge>('specialStatus', lowerBadge))
-      ..add(DiagnosticsProperty<ZetaAvatarBadge?>('badge', upperBadge))
+      ..add(DiagnosticsProperty<Widget>('lowerBadge', lowerBadge))
+      ..add(DiagnosticsProperty<Widget?>('upperBadge', upperBadge))
       ..add(DiagnosticsProperty<Color?>('backgroundColor', backgroundColor))
       ..add(ColorProperty('statusColor', borderColor))
       ..add(StringProperty('semanticUpperBadgeValue', semanticUpperBadgeLabel))
@@ -400,20 +404,26 @@ extension on ZetaAvatarSize {
   }
 
   double borderSize(BuildContext context) {
+    // TODO(UX-1304): Awaiting updated design specs for border size
     switch (this) {
       case ZetaAvatarSize.xxxl:
-        return 11;
+        return 11.12;
       case ZetaAvatarSize.xxl:
+        return 6.67;
       case ZetaAvatarSize.xl:
+        return 4.45;
       case ZetaAvatarSize.l:
+        return 3.56;
       case ZetaAvatarSize.m:
-        return Zeta.of(context).spacing.minimum;
-
+        return 2.66;
       case ZetaAvatarSize.s:
+        return 2.22;
       case ZetaAvatarSize.xs:
+        return 2;
       case ZetaAvatarSize.xxs:
+        return 1.78;
       case ZetaAvatarSize.xxxs:
-        return ZetaBorders.medium;
+        return 1.33;
     }
   }
 
