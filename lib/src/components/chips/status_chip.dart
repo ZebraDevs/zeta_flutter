@@ -49,7 +49,7 @@ class ZetaStatusChip extends ZetaStatelessWidget {
       child: MouseRegion(
         cursor: draggable ? SystemMouseCursors.click : SystemMouseCursors.basic,
         child: Semantics(
-          label: semanticLabel,
+          label: semanticLabel ?? label,
           child: SelectionContainer.disabled(
             child: draggable
                 ? Draggable(
@@ -106,7 +106,12 @@ class _Child extends StatelessWidget {
         horizontal: Zeta.of(context).spacing.small,
         vertical: Zeta.of(context).spacing.minimum,
       ),
-      child: Text(label, style: ZetaTextStyles.bodyXSmall),
+      child: Text(
+        label,
+        style: ZetaTextStyles.bodyXSmall.copyWith(
+          color: Zeta.of(context).colors.textDefault,
+        ),
+      ),
     );
   }
 
