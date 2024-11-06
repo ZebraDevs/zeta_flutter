@@ -400,20 +400,26 @@ extension on ZetaAvatarSize {
   }
 
   double borderSize(BuildContext context) {
+    // TODO(UX-1304): Awaiting updated design specs for border size
     switch (this) {
       case ZetaAvatarSize.xxxl:
-        return 11;
+        return 11.12;
       case ZetaAvatarSize.xxl:
+        return 6.67;
       case ZetaAvatarSize.xl:
+        return 4.45;
       case ZetaAvatarSize.l:
+        return 3.56;
       case ZetaAvatarSize.m:
-        return Zeta.of(context).spacing.minimum;
-
+        return 2.66;
       case ZetaAvatarSize.s:
+        return 2.22;
       case ZetaAvatarSize.xs:
+        return 2;
       case ZetaAvatarSize.xxs:
+        return 1.78;
       case ZetaAvatarSize.xxxs:
-        return ZetaBorders.medium;
+        return 1.33;
     }
   }
 
