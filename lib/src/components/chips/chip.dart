@@ -6,6 +6,7 @@ import '../../../zeta_flutter.dart';
 export './assist_chip.dart';
 export './filter_chip.dart';
 export './input_chip.dart';
+export './status_chip.dart';
 
 /// This covers the broad functionality of [ZetaAssistChip], [ZetaFilterChip] and [ZetaInputChip].
 ///

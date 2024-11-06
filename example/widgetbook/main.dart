@@ -163,6 +163,7 @@ class _HotReloadState extends State<HotReload> {
                 WidgetbookUseCase(name: 'Filter Chip', builder: (context) => filterChipUseCase(context)),
                 WidgetbookUseCase(name: 'Input Chip', builder: (context) => inputChipUseCase(context)),
                 WidgetbookUseCase(name: 'Assist Chip', builder: (context) => assistChipUseCase(context)),
+                WidgetbookUseCase(name: 'Status Chip', builder: (context) => statusChipUseCase(context)),
               ],
             ),
             WidgetbookComponent(

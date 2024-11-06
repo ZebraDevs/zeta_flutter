@@ -63,6 +63,21 @@ class _ChipExampleState extends State<ChipExample> {
         ),
       ),
     ]);
+
+    final Widget statusChipExample = Column(children: [
+      Text(
+        'Status Chip',
+        textAlign: TextAlign.center,
+        style: TextStyle(fontWeight: FontWeight.bold),
+      ),
+      const SizedBox(height: 10),
+      ZetaStatusChip(
+        label: 'Label',
+        data: 'Status chip',
+        draggable: true,
+      ),
+    ]);
+
     final colors = Zeta.of(context).colors;
     return ExampleScaffold(
       name: ChipExample.name,
@@ -74,6 +89,7 @@ class _ChipExampleState extends State<ChipExample> {
             inputChipExample,
             assistChipExample,
             filterChipExample,
+            statusChipExample,
             const SizedBox(height: 100),
             DragTarget<String>(
               onAcceptWithDetails: (details) => setState(() => chipType = details.data),

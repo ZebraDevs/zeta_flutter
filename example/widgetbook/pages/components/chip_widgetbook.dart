@@ -39,3 +39,14 @@ Widget assistChipUseCase(BuildContext context) {
     ),
   );
 }
+
+Widget statusChipUseCase(BuildContext context) {
+  return WidgetbookScaffold(
+    builder: (context, _) => ZetaStatusChip(
+      label: context.knobs.string(label: 'Label', initialValue: 'Label'),
+      draggable: context.knobs.boolean(label: 'Draggable', initialValue: false),
+      rounded: context.knobs.boolean(label: 'Rounded', initialValue: true),
+      onDragCompleted: () => print('Drag completed'),
+    ),
+  );
+}
