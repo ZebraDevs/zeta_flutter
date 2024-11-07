@@ -95,9 +95,7 @@ class _ZetaChipState extends State<ZetaChip> {
     super.initState();
     selected = widget.selected ?? false;
     _draggable = widget.draggable;
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      _updateControllerState();
-    });
+    _handleDisabledState();
   }
 
   @override
@@ -106,12 +104,10 @@ class _ZetaChipState extends State<ZetaChip> {
     if (oldWidget.selected != widget.selected) {
       selected = widget.selected ?? false;
     }
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      _updateControllerState();
-    });
+    _handleDisabledState();
   }
 
-  void _updateControllerState() {
+  void _handleDisabledState() {
     if (widget.onTap == null && widget.onToggle == null) {
       _controller.update(WidgetState.disabled, true);
       setState(() {
