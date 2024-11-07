@@ -10,7 +10,8 @@ Widget inputChipUseCase(BuildContext context) {
 
   return WidgetbookScaffold(
     builder: (context, _) => ZetaInputChip(
-      onTap: context.knobs.boolean(label: 'Selectable', initialValue: true) ? () {} : null,
+      onTap: context.knobs.boolean(label: 'Disabled', initialValue: false) ? null : () {},
+      rounded: context.knobs.boolean(label: 'Rounded', initialValue: true),
       label: context.knobs.string(label: 'Label', initialValue: 'Label'),
       leading: context.knobs.boolean(label: 'Avatar', initialValue: true)
           ? ZetaAvatar(
@@ -27,7 +28,8 @@ Widget inputChipUseCase(BuildContext context) {
 
 Widget filterChipUseCase(BuildContext context) => WidgetbookScaffold(
       builder: (context, _) => ZetaFilterChip(
-        onTap: context.knobs.boolean(label: 'Selectable', initialValue: true) ? (value) {} : null,
+        onTap: context.knobs.boolean(label: 'Disabled', initialValue: false) ? null : (i) {},
+        rounded: context.knobs.boolean(label: 'Rounded', initialValue: true),
         label: context.knobs.string(label: 'Label', initialValue: 'Label'),
         selected: context.knobs.boolean(label: 'Selected', initialValue: true),
       ),
@@ -36,7 +38,8 @@ Widget filterChipUseCase(BuildContext context) => WidgetbookScaffold(
 Widget assistChipUseCase(BuildContext context) {
   return WidgetbookScaffold(
     builder: (context, _) => ZetaAssistChip(
-      onTap: context.knobs.boolean(label: 'Selectable', initialValue: true) ? () {} : null,
+      onTap: context.knobs.boolean(label: 'Disabled', initialValue: false) ? null : () {},
+      rounded: context.knobs.boolean(label: 'Rounded', initialValue: true),
       label: context.knobs.string(label: 'Label', initialValue: 'Label'),
       leading: ZetaIcon(iconKnob(context)),
     ),
