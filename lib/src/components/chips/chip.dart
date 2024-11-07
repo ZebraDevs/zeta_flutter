@@ -276,7 +276,7 @@ class _ZetaChipState extends State<ZetaChip> {
                     child: (selected
                         ? ZetaIcon(
                             ZetaIcons.check_mark,
-                            color: states.contains(WidgetState.disabled) ? colors.iconDisabled : colors.iconInverse,
+                            color: disabled ? colors.iconDisabled : colors.iconInverse,
                           )
                         : const Nothing()),
                   )
