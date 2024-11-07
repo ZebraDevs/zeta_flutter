@@ -25,6 +25,7 @@ class _ChipExampleState extends State<ChipExample> {
         label: 'Label',
         leading: ZetaIcon(ZetaIcons.user),
         trailing: IconButton(icon: Icon(ZetaIcons.close), onPressed: () {}),
+        onTap: () {},
       ),
     ]);
 
@@ -42,6 +43,7 @@ class _ChipExampleState extends State<ChipExample> {
           leading: ZetaIcon(ZetaIcons.star),
           draggable: true,
           data: 'Assist chip',
+          onTap: () {},
         ),
       ),
     ]);
@@ -60,6 +62,7 @@ class _ChipExampleState extends State<ChipExample> {
           selected: true,
           data: 'Filter chip',
           draggable: true,
+          onTap: (bool selected) {},
         ),
       ),
     ]);
