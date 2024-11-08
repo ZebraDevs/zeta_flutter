@@ -16,13 +16,21 @@ void main() {
 
   group('Accessibility Tests', () {});
   group('Content Tests', () {
-    // final debugFillProperties = {
-    //   '': '',
-    // };
-    // debugFillPropertiesTest(
-    //   widget,
-    //   debugFillProperties,
-    // );
+    final debugFillProperties = {
+      'label': '"Test Chip"',
+      'rounded': 'null',
+      'selected': 'null',
+      'draggable': 'false',
+      'data': 'null',
+      'onDragCompleted': 'null',
+      'semanticLabel': 'null',
+      'onTap': 'null',
+      'onToggle': 'null',
+    };
+    debugFillPropertiesTest(
+      const ZetaChip(label: 'Test Chip'),
+      debugFillProperties,
+    );
 
     testWidgets('renders label correctly', (WidgetTester tester) async {
       await tester.pumpWidget(

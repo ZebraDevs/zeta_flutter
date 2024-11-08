@@ -88,11 +88,14 @@ class ZetaChip extends ZetaStatefulWidget {
 
 class _ZetaChipState extends State<ZetaChip> {
   bool selected = false;
+  bool _draggable = false;
 
   @override
   void initState() {
     super.initState();
     selected = widget.selected ?? false;
+    _draggable = widget.draggable;
+    _handleDisabledState();
   }
 
   @override
@@ -101,10 +104,25 @@ class _ZetaChipState extends State<ZetaChip> {
     if (oldWidget.selected != widget.selected) {
       selected = widget.selected ?? false;
     }
+    _handleDisabledState();
+  }
+
+  void _handleDisabledState() {
+    if (widget.onTap == null && widget.onToggle == null) {
+      _controller.update(WidgetState.disabled, true);
+      setState(() {
+        _draggable = false;
+      });
+    } else {
+      _controller.update(WidgetState.disabled, false);
+      setState(() {
+        _draggable = widget.draggable;
+      });
+    }
   }
 
   Widget _renderLeading(Color foregroundColor) {
-    if (widget.leading.runtimeType == Icon) {
+    if (widget.leading.runtimeType == ZetaIcon || widget.leading.runtimeType == Icon) {
       return IconTheme(
         data: IconThemeData(color: foregroundColor, size: Zeta.of(context).spacing.xl),
         child: widget.leading!,
@@ -120,7 +138,6 @@ class _ZetaChipState extends State<ZetaChip> {
   @override
   Widget build(BuildContext context) {
     final colors = Zeta.of(context).colors;
-    final foregroundColor = selected ? colors.textInverse : colors.textDefault;
 
     return ZetaRoundedScope(
       rounded: context.rounded,
@@ -129,18 +146,18 @@ class _ZetaChipState extends State<ZetaChip> {
         button: widget.onTap != null,
         label: widget.semanticLabel,
         child: SelectionContainer.disabled(
-          child: widget.draggable
+          child: _draggable
               ? Draggable(
                   feedback: Material(
                     color: Colors.transparent,
-                    child: child(colors, foregroundColor, isDragging: true),
+                    child: child(colors, isDragging: true),
                   ),
                   childWhenDragging: const Nothing(),
                   data: widget.data,
                   onDragCompleted: widget.onDragCompleted,
-                  child: child(colors, foregroundColor),
+                  child: child(colors),
                 )
-              : child(colors, foregroundColor),
+              : child(colors),
         ),
       ),
     );
@@ -171,25 +188,41 @@ class _ZetaChipState extends State<ZetaChip> {
     return Zeta.of(context).spacing.large;
   }
 
+  Color _foregroundColor(ZetaColors colors, bool disabled) {
+    if (!disabled) {
+      if (selected) {
+        return colors.textInverse;
+      } else {
+        return colors.textDefault;
+      }
+    } else {
+      return colors.textDisabled;
+    }
+  }
+
   ValueListenableBuilder<Set<WidgetState>> child(
-    ZetaColors colors,
-    Color foregroundColor, {
+    ZetaColors colors, {
     bool isDragging = false,
   }) {
     return ValueListenableBuilder(
       valueListenable: _controller,
       builder: (context, states, child) {
+        final disabled = states.contains(WidgetState.disabled);
+        final Color foregroundColor = _foregroundColor(colors, disabled);
         final double iconSize = selected ? Zeta.of(context).spacing.xl_2 : Zeta.of(context).spacing.none;
         final bool rounded = context.rounded;
         return InkWell(
-          statesController: _controller,
+          statesController: !disabled ? _controller : null,
+          mouseCursor: !disabled ? SystemMouseCursors.click : SystemMouseCursors.basic,
           borderRadius: rounded ? Zeta.of(context).radius.full : Zeta.of(context).radius.none,
           onTap: () {
-            if (widget.selected != null) {
-              setState(() => selected = !selected);
-              widget.onToggle?.call(selected);
-            } else {
-              widget.onTap?.call();
+            if (!disabled) {
+              if (widget.selected != null) {
+                setState(() => selected = !selected);
+                widget.onToggle?.call(selected);
+              } else {
+                widget.onTap?.call();
+              }
             }
           },
           child: AnimatedContainer(
@@ -203,22 +236,23 @@ class _ZetaChipState extends State<ZetaChip> {
             ),
             decoration: BoxDecoration(
               color: () {
-                if (states.contains(WidgetState.disabled)) {
+                if (disabled) {
                   return colors.surfaceDisabled;
-                }
-                if (selected) {
-                  if (states.contains(WidgetState.hovered)) {
-                    return colors.borderHover;
+                } else {
+                  if (selected) {
+                    if (states.contains(WidgetState.hovered)) {
+                      return colors.borderHover;
+                    }
+                    return colors.surfaceDefaultInverse;
                   }
-                  return colors.surfaceDefaultInverse;
+                  if (states.contains(WidgetState.pressed) || isDragging) {
+                    return colors.surfaceSelected;
+                  }
+                  if (states.contains(WidgetState.hovered)) {
+                    return colors.surfaceHover;
+                  }
+                  return colors.surfacePrimary;
                 }
-                if (states.contains(WidgetState.pressed) || isDragging) {
-                  return colors.surfaceSelected;
-                }
-                if (states.contains(WidgetState.hovered)) {
-                  return colors.surfaceHover;
-                }
-                return colors.surfacePrimary;
               }(),
               borderRadius: rounded ? Zeta.of(context).radius.full : Zeta.of(context).radius.none,
               border: Border.fromBorderSide(
@@ -242,7 +276,7 @@ class _ZetaChipState extends State<ZetaChip> {
                     child: (selected
                         ? ZetaIcon(
                             ZetaIcons.check_mark,
-                            color: widget.selected! ? colors.iconInverse : Colors.transparent,
+                            color: disabled ? colors.iconDisabled : colors.iconInverse,
                           )
                         : const Nothing()),
                   )
