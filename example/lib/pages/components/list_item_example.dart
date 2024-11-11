@@ -39,6 +39,14 @@ class _ListItemExampleState extends State<ListItemExample> {
                       secondaryText: 'Descriptor',
                     )),
                 _buildListItem(
+                    'Custom Title',
+                    ZetaListItem(
+                      title: ZetaButton(
+                        label: 'Custom Title Button',
+                        onPressed: () {},
+                      ),
+                    )),
+                _buildListItem(
                   'Icon Left',
                   ZetaListItem(primaryText: 'List Item', leading: ZetaIcon(ZetaIcons.star)),
                 ),
