@@ -79,7 +79,7 @@ void main() {
       'semanticLabel': 'null',
       'type': 'positive',
       'size': 'medium',
-      'icon': 'IconData(U+0E16B)',
+      'icon': 'IconData(U+0E16E)',
     };
     debugFillPropertiesTest(
       const ZetaCommsButton(
