@@ -15,23 +15,39 @@ class ZetaDropdownListItem extends ZetaStatefulWidget {
   const ZetaDropdownListItem({
     super.key,
     super.rounded,
-    required this.primaryText,
     required this.items,
+    this.title,
+    this.primaryText,
     this.secondaryText,
+    this.primaryTextStyle,
+    this.secondaryTextStyle,
     this.expanded = false,
     this.leading,
     this.showDivider,
     this.semanticLabel,
-  });
+  }) : assert(
+          (title != null && primaryText == null && secondaryText == null) ||
+              (title == null && (primaryText != null || secondaryText != null)),
+          'Provide one of either title or primaryText/secondaryText',
+        );
 
   /// The list of [ZetaListItem]s contained within the dropdown.
   final List<ZetaListItem> items;
 
+  /// {@macro list-item-title}
+  final Widget? title;
+
   /// {@macro list-item-primary-text}
-  final String primaryText;
+  final String? primaryText;
+
+  /// {@macro list-item-primary-text-style}
+  final TextStyle? primaryTextStyle;
 
   /// {@macro list-item-secondary-text}
   final String? secondaryText;
+
+  /// {@macro list-item-secondary-text-style}
+  final TextStyle? secondaryTextStyle;
 
   /// {@macro list-item-leading}
   final Widget? leading;
@@ -61,7 +77,9 @@ class ZetaDropdownListItem extends ZetaStatefulWidget {
       ..add(DiagnosticsProperty<bool>('expanded', expanded))
       ..add(DiagnosticsProperty<bool>('rounded', rounded))
       ..add(DiagnosticsProperty<bool?>('showDivider', showDivider))
-      ..add(StringProperty('semanticLabel', semanticLabel));
+      ..add(StringProperty('semanticLabel', semanticLabel))
+      ..add(DiagnosticsProperty<TextStyle?>('primaryTextStyle', primaryTextStyle))
+      ..add(DiagnosticsProperty<TextStyle?>('secondaryTextStyle', secondaryTextStyle));
   }
 }
 
@@ -125,7 +143,7 @@ class _ZetaDropdownListItemState extends State<ZetaDropdownListItem> with Single
       child: Semantics(
         button: true,
         selected: _expanded,
-        label: widget.semanticLabel ?? (widget.primaryText + (widget.secondaryText ?? '')),
+        label: widget.semanticLabel ?? ((widget.primaryText ?? '') + (widget.secondaryText ?? '')),
         // DecoratedBox does not correctly animated the border when the widget expands.
         // ignore: use_decorated_box
         child: Container(
@@ -140,8 +158,11 @@ class _ZetaDropdownListItemState extends State<ZetaDropdownListItem> with Single
             children: [
               ExcludeSemantics(
                 child: ZetaListItem(
+                  title: widget.title,
                   primaryText: widget.primaryText,
+                  primaryTextStyle: widget.primaryTextStyle,
                   secondaryText: widget.secondaryText,
+                  secondaryTextStyle: widget.secondaryTextStyle,
                   leading: widget.leading,
                   onTap: _onTap,
                   showDivider: false,
