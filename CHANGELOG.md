@@ -1,5 +1,60 @@
 # Changelog
 
+## [0.18.0](https://github.com/ZebraDevs/zeta_flutter/compare/v0.17.0...v0.18.0) (2024-11-11)
+
+
+### ✨ New Features
+
+* Added disabled variant to chip ([321b57d](https://github.com/ZebraDevs/zeta_flutter/commit/321b57de1cfc39cc940d28716fa1a49efc577d84))
+* Added label prop to progress circle which overrides default percentage label ([e035a47](https://github.com/ZebraDevs/zeta_flutter/commit/e035a47178efd5b1528c86fc4f5c46bd7ad179f5))
+* added maxValue to progress circle ([e035a47](https://github.com/ZebraDevs/zeta_flutter/commit/e035a47178efd5b1528c86fc4f5c46bd7ad179f5))
+* Added mouse region to avatar for give click pointer ([37b0f8e](https://github.com/ZebraDevs/zeta_flutter/commit/37b0f8e284d0b734a1ca9b3e17fccbbca6c60fa5))
+* Added NavRail focus state ([39c5cdf](https://github.com/ZebraDevs/zeta_flutter/commit/39c5cdf4a150b6aae1c57cfc4a7daa1c70f09883))
+* Added NavRail hover state ([#204](https://github.com/ZebraDevs/zeta_flutter/issues/204)) ([39c5cdf](https://github.com/ZebraDevs/zeta_flutter/commit/39c5cdf4a150b6aae1c57cfc4a7daa1c70f09883))
+* added onTap to widgetbook ([321b57d](https://github.com/ZebraDevs/zeta_flutter/commit/321b57de1cfc39cc940d28716fa1a49efc577d84))
+* Added onTaps to chips in example app ([321b57d](https://github.com/ZebraDevs/zeta_flutter/commit/321b57de1cfc39cc940d28716fa1a49efc577d84))
+* added rounded to widgetbook ([321b57d](https://github.com/ZebraDevs/zeta_flutter/commit/321b57de1cfc39cc940d28716fa1a49efc577d84))
+* created status chip ([c69d3b7](https://github.com/ZebraDevs/zeta_flutter/commit/c69d3b76afcd14a8ffa5777483687f818ac70876))
+* implemented status chip widgetbook use case ([c69d3b7](https://github.com/ZebraDevs/zeta_flutter/commit/c69d3b76afcd14a8ffa5777483687f818ac70876))
+* **UX-1233:** Added disabled variant to chip ([#203](https://github.com/ZebraDevs/zeta_flutter/issues/203)) ([321b57d](https://github.com/ZebraDevs/zeta_flutter/commit/321b57de1cfc39cc940d28716fa1a49efc577d84))
+* **UX-1234:** Status Chip ([#201](https://github.com/ZebraDevs/zeta_flutter/issues/201)) ([c69d3b7](https://github.com/ZebraDevs/zeta_flutter/commit/c69d3b76afcd14a8ffa5777483687f818ac70876))
+* **UX-1247:** extend ZetaProgressCircle  ([#199](https://github.com/ZebraDevs/zeta_flutter/issues/199)) ([e035a47](https://github.com/ZebraDevs/zeta_flutter/commit/e035a47178efd5b1528c86fc4f5c46bd7ad179f5))
+* **UX-1310:** Added more customization options to ZetaListItem ([#205](https://github.com/ZebraDevs/zeta_flutter/issues/205)) ([6e13502](https://github.com/ZebraDevs/zeta_flutter/commit/6e135020cbddcf7e448abdfadd7eaca127acff56))
+
+
+### 🪲 Bug Fixes
+
+* Banner title alignment when centered ([044ed2e](https://github.com/ZebraDevs/zeta_flutter/commit/044ed2ea47ae9e82ce7433ff251582a2fc861271))
+* changed _updateControllerState to _handleDisabledState ([321b57d](https://github.com/ZebraDevs/zeta_flutter/commit/321b57de1cfc39cc940d28716fa1a49efc577d84))
+* converted child widget function to a stateless widget class in status chip ([c69d3b7](https://github.com/ZebraDevs/zeta_flutter/commit/c69d3b76afcd14a8ffa5777483687f818ac70876))
+* Removed hit test behavior from avatar rail ([37b0f8e](https://github.com/ZebraDevs/zeta_flutter/commit/37b0f8e284d0b734a1ca9b3e17fccbbca6c60fa5))
+* removed hit test behaviour from avatar rail ([#197](https://github.com/ZebraDevs/zeta_flutter/issues/197)) ([37b0f8e](https://github.com/ZebraDevs/zeta_flutter/commit/37b0f8e284d0b734a1ca9b3e17fccbbca6c60fa5))
+* set rounded to default to true ([c69d3b7](https://github.com/ZebraDevs/zeta_flutter/commit/c69d3b76afcd14a8ffa5777483687f818ac70876))
+* used variable ([321b57d](https://github.com/ZebraDevs/zeta_flutter/commit/321b57de1cfc39cc940d28716fa1a49efc577d84))
+* **UX-1161:** banner title alignment when centered ([#200](https://github.com/ZebraDevs/zeta_flutter/issues/200)) ([044ed2e](https://github.com/ZebraDevs/zeta_flutter/commit/044ed2ea47ae9e82ce7433ff251582a2fc861271))
+* **UX-1298:** ZetaDialog button overflow ([51b4172](https://github.com/ZebraDevs/zeta_flutter/commit/51b4172d3e926e9fa2c87fd1be4f2c2ec5b4a71b))
+* **UX-1303:** Update avatar boarder width ([#202](https://github.com/ZebraDevs/zeta_flutter/issues/202)) ([51b4172](https://github.com/ZebraDevs/zeta_flutter/commit/51b4172d3e926e9fa2c87fd1be4f2c2ec5b4a71b))
+* **UX-1309:** Wrapped initials with FittedBox inside ZetaAvatar so that the text scales correctly with device text scaling ([6e13502](https://github.com/ZebraDevs/zeta_flutter/commit/6e135020cbddcf7e448abdfadd7eaca127acff56))
+
+
+### 📈 Documentation
+
+* added description for status chip ([c69d3b7](https://github.com/ZebraDevs/zeta_flutter/commit/c69d3b76afcd14a8ffa5777483687f818ac70876))
+* added more info to global header. Info about where to use the header ([#206](https://github.com/ZebraDevs/zeta_flutter/issues/206)) ([c9c84c0](https://github.com/ZebraDevs/zeta_flutter/commit/c9c84c0d7b80934e59b76ba3501639d6de37f35a))
+
+
+### ⛓️ Dependencies
+
+* **automated:** Update icons ([#207](https://github.com/ZebraDevs/zeta_flutter/issues/207)) ([87a5df1](https://github.com/ZebraDevs/zeta_flutter/commit/87a5df158653a7623f09894961fe985635362d95))
+
+
+### 🧪 Tests
+
+* Add a log on debugFillPropertiesTest if it fails ([51b4172](https://github.com/ZebraDevs/zeta_flutter/commit/51b4172d3e926e9fa2c87fd1be4f2c2ec5b4a71b))
+* Added debugfillproperties test to chip_test ([321b57d](https://github.com/ZebraDevs/zeta_flutter/commit/321b57de1cfc39cc940d28716fa1a49efc577d84))
+* **UX-1305:** Update avatar test ([51b4172](https://github.com/ZebraDevs/zeta_flutter/commit/51b4172d3e926e9fa2c87fd1be4f2c2ec5b4a71b))
+* wrote tests for status chip ([c69d3b7](https://github.com/ZebraDevs/zeta_flutter/commit/c69d3b76afcd14a8ffa5777483687f818ac70876))
+
 ## [0.17.0](https://github.com/ZebraDevs/zeta_flutter/compare/v0.16.0...v0.17.0) (2024-10-28)
 
 
