@@ -228,15 +228,17 @@ class ZetaAvatar extends ZetaStatelessWidget {
     final innerChild = image ??
         (initials != null
             ? Center(
-                child: Text(
-                  initials!,
-                  style: initialTextStyle ??
-                      TextStyle(
-                        fontSize: size.fontSize(context),
-                        letterSpacing: Zeta.of(context).spacing.none,
-                        color: backgroundColor?.onColor,
-                        fontWeight: FontWeight.w500,
-                      ),
+                child: FittedBox(
+                  child: Text(
+                    initials!,
+                    style: initialTextStyle ??
+                        TextStyle(
+                          fontSize: size.fontSize(context),
+                          letterSpacing: Zeta.of(context).spacing.none,
+                          color: backgroundColor?.onColor,
+                          fontWeight: FontWeight.w500,
+                        ),
+                  ),
                 ),
               )
             : null);
@@ -280,20 +282,14 @@ class ZetaAvatar extends ZetaStatelessWidget {
                                   border: Border.all(color: borderColor!, width: borderSize(context)),
                                   borderRadius: Zeta.of(context).radius.full,
                                 ),
-                                child: ClipRRect(
-                                  borderRadius: Zeta.of(context).radius.full,
-                                  child: innerContent,
-                                ),
+                                child: innerContent,
                               )
                             : DecoratedBox(
                                 decoration: BoxDecoration(
                                   borderRadius: Zeta.of(context).radius.full,
                                   color: backgroundColor ?? zetaColors.surfaceHover,
                                 ),
-                                child: ClipRRect(
-                                  borderRadius: Zeta.of(context).radius.full,
-                                  child: innerContent,
-                                ),
+                                child: innerContent,
                               ),
                       ),
                     ),
