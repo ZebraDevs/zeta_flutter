@@ -52,12 +52,7 @@ abstract final class ZetaColorBase {
 
   /// Pure
   ///
-  /// {@template zeta-color-swatch}
-  /// Contains shades from 10 (light) to 100 (dark).
-  ///
-  /// See also:
-  /// * [ZetaColorSwatch].
-  /// {@endtemplate}
+  /// {@macro zeta-color-swatch}
   static const ZetaColorSwatch pure = ZetaColorSwatch(
     primary: 0xFF151519,
     swatch: {

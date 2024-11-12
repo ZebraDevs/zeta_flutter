@@ -38,5 +38,5 @@ jobs:
               repo: 'zeta',
               workflow_id: 'deploy.yml',
               ref: 'main',
-              environment: 'stage',
+              environment: 'production',
             })

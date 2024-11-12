@@ -5,7 +5,13 @@ import 'color_extensions.dart';
 import 'colors_base.dart';
 import 'contrast.dart';
 
-/// A swatch of colors with values from 10 (light) to 100 (dark).
+/// {@template zeta-color-swatch}
+///  A swatch of colors with values from 10 (light) to 100 (dark).
+///
+/// See also:
+/// * [MaterialColor].
+/// {@endtemplate}
+///
 /// {@category Theme}
 @immutable
 class ZetaColorSwatch extends ColorSwatch<int> with EquatableMixin {
