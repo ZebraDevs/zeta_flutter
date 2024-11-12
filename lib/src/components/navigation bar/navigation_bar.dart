@@ -124,7 +124,7 @@ class ZetaNavigationBar extends ZetaStatelessWidget {
         final index = items.indexOf(navItem);
         return Expanded(
           flex: !shrinkItems ? 1 : 0,
-          child: _NavigationItem(
+          child: NavigationItem(
             selected: index == currentIndex,
             item: navItem,
             onTap: () => onTap?.call(index),
@@ -179,7 +179,7 @@ class ZetaNavigationBar extends ZetaStatelessWidget {
     }
 
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: Zeta.of(context).spacing.medium),
+      padding: EdgeInsets.symmetric(horizontal: Zeta.of(context).spacing.large),
       decoration: BoxDecoration(
         color: colors.surfacePrimary,
         border: Border(top: BorderSide(color: colors.borderSubtle)),
@@ -204,19 +204,32 @@ class ZetaNavigationBar extends ZetaStatelessWidget {
   }
 }
 
-class _NavigationItem extends ZetaStatelessWidget {
-  const _NavigationItem({
+/// A single item in a [ZetaNavigationBar].
+@visibleForTesting
+@protected
+class NavigationItem extends ZetaStatelessWidget {
+  /// Creates a new [NavigationItem].
+  const NavigationItem({
+    super.key,
     required this.selected,
     required this.item,
     required this.onTap,
     required this.context,
   });
 
+  /// Whether the item is selected.
   final bool selected;
+
+  /// The item to display.
   final ZetaNavigationBarItem item;
+
+  /// Called when the item is tapped.
   final VoidCallback onTap;
+
+  /// The build context of the [ZetaNavigationBar].
   final BuildContext context;
 
+  /// The badge to show on the navigation item.
   Widget get badge {
     final ZetaColors colors = Zeta.of(context).colors;
     return Positioned(
@@ -251,7 +264,7 @@ class _NavigationItem extends ZetaStatelessWidget {
         onTap: onTap,
         child: Semantics(
           button: true,
-          explicitChildNodes: true,
+          excludeSemantics: true,
           label: item.label,
           child: Container(
             padding: EdgeInsets.only(
@@ -276,11 +289,9 @@ class _NavigationItem extends ZetaStatelessWidget {
                 ),
                 SizedBox(height: Zeta.of(context).spacing.small),
                 if (item.label != null)
-                  ExcludeSemantics(
-                    child: Text(
-                      item.label!,
-                      style: Theme.of(context).textTheme.labelSmall?.copyWith(color: elementColor),
-                    ),
+                  Text(
+                    item.label!,
+                    style: Theme.of(context).textTheme.labelSmall?.copyWith(color: elementColor),
                   ),
               ],
             ),

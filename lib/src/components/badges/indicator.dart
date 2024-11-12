@@ -159,6 +159,7 @@ class ZetaIndicator extends ZetaStatelessWidget {
             value.formatMaxChars(),
             style: ZetaTextStyles.labelIndicator.copyWith(
               color: foregroundColor,
+              fontSize: size == ZetaWidgetSize.large ? 12 : 11,
               height: size == ZetaWidgetSize.large ? 1 : (12 / 16),
             ),
           ),
