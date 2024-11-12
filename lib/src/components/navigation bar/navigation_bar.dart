@@ -42,6 +42,7 @@ class ZetaNavigationBar extends ZetaStatelessWidget {
     this.dividerIndex,
     this.action,
     this.semanticLabel,
+    this.shrinkItems = false,
   }) : assert(
           items.length >= 2 && items.length <= 6,
           'The number of items should be between 2 and 6',
@@ -56,6 +57,7 @@ class ZetaNavigationBar extends ZetaStatelessWidget {
     this.onTap,
     this.dividerIndex,
     this.semanticLabel,
+    this.shrinkItems = false,
   })  : splitItems = false,
         action = null;
 
@@ -70,7 +72,8 @@ class ZetaNavigationBar extends ZetaStatelessWidget {
     this.dividerIndex,
     this.semanticLabel,
   })  : splitItems = true,
-        action = null;
+        action = null,
+        shrinkItems = true;
 
   /// Creates a [ZetaNavigationBar] with an action.
   const ZetaNavigationBar.action({
@@ -81,6 +84,7 @@ class ZetaNavigationBar extends ZetaStatelessWidget {
     this.currentIndex,
     this.onTap,
     this.semanticLabel,
+    this.shrinkItems = false,
   })  : dividerIndex = null,
         splitItems = false;
 
@@ -107,16 +111,25 @@ class ZetaNavigationBar extends ZetaStatelessWidget {
   /// {@macro zeta-widget-semantic-label}
   final String? semanticLabel;
 
+  /// When set to true the items will shrink to take up less space.
+  /// This is useful when there are many items in the navigation bar.
+  /// Defaults to false.
+  /// When set to false the items will take up equal space and will expand to fill the bar.
+  final bool shrinkItems;
+
   Row _generateNavigationItemRow(List<ZetaNavigationBarItem> items, BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: items.map((navItem) {
         final index = items.indexOf(navItem);
-        return _NavigationItem(
-          selected: index == currentIndex,
-          item: navItem,
-          onTap: () => onTap?.call(index),
-          context: context,
+        return Expanded(
+          flex: !shrinkItems ? 1 : 0,
+          child: _NavigationItem(
+            selected: index == currentIndex,
+            item: navItem,
+            onTap: () => onTap?.call(index),
+            context: context,
+          ),
         );
       }).toList(),
     );
@@ -143,21 +156,21 @@ class ZetaNavigationBar extends ZetaStatelessWidget {
       child = Row(
         mainAxisAlignment: splitItems ? MainAxisAlignment.spaceBetween : MainAxisAlignment.spaceAround,
         children: [
-          _generateNavigationItemRow(leftItems, context),
+          Expanded(flex: !shrinkItems ? 1 : 0, child: _generateNavigationItemRow(leftItems, context)),
           if (dividerIndex != null)
             Container(
               color: colors.borderSubtle,
               width: _navigationItemBorderWidth,
               height: Zeta.of(context).spacing.xl_7,
             ),
-          _generateNavigationItemRow(rightItems, context),
+          Expanded(flex: !shrinkItems ? 1 : 0, child: _generateNavigationItemRow(rightItems, context)),
         ],
       );
     } else if (action != null) {
       child = Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          _generateNavigationItemRow(items, context),
+          Expanded(flex: !shrinkItems ? 1 : 0, child: _generateNavigationItemRow(items, context)),
           action!,
         ],
       );
@@ -186,7 +199,8 @@ class ZetaNavigationBar extends ZetaStatelessWidget {
       ..add(ObjectFlagProperty<void Function(int value)?>.has('onTap', onTap))
       ..add(DiagnosticsProperty<bool>('splitItems', splitItems))
       ..add(IntProperty('dividerIndex', dividerIndex))
-      ..add(StringProperty('semanticLabel', semanticLabel));
+      ..add(StringProperty('semanticLabel', semanticLabel))
+      ..add(DiagnosticsProperty<bool>('shrinkItems', shrinkItems));
   }
 }
 
