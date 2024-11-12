@@ -14,7 +14,7 @@ void main() {
     goldenFileComparator = TolerantComparator(goldenFile.uri);
   });
 
-  group('ZetaTopAppBar Accessibility Tests', () {
+  group('Accessibility Tests', () {
     testWidgets('ZetaTopAppBar meets accessibility  requirements', (WidgetTester tester) async {
       final SemanticsHandle handle = tester.ensureSemantics();
       await tester.pumpWidget(
@@ -87,7 +87,7 @@ void main() {
     });
   });
 
-  group('ZetaTopAppBar Content Tests', () {
+  group('Content Tests', () {
     final debugFillProperties = {
       'titleTextStyle': 'null',
       'onSearch': 'null',
@@ -216,7 +216,7 @@ void main() {
     });
   });
 
-  group('ZetaTopAppBar Dimensions Tests', () {
+  group('Dimensions Tests', () {
     testWidgets('ZetaTopAppBar has the correct height', (WidgetTester tester) async {
       await tester.pumpWidget(
         const TestApp(
@@ -231,7 +231,7 @@ void main() {
     });
   });
 
-  group('ZetaTopAppBar Styling Tests', () {
+  group('Styling Tests', () {
     testWidgets('ZetaTopAppBar has the correct background color', (WidgetTester tester) async {
       await tester.pumpWidget(
         const TestApp(
@@ -247,7 +247,7 @@ void main() {
     });
   });
 
-  group('ZetaTopAppBar Interaction Tests', () {
+  group('Interaction Tests', () {
     late ZetaSearchController searchController;
     const searchLabel = 'Search';
     const clearLabel = 'Clear';
@@ -430,7 +430,7 @@ void main() {
     });
   });
 
-  group('ZetaTopAppBar Golden Tests', () {
+  group('Golden Tests', () {
     goldenTest(
       goldenFile,
       const ZetaTopAppBar(
@@ -553,5 +553,5 @@ void main() {
     );
   });
 
-  group('ZetaTopAppBar Performance Tests', () {});
+  group('Performance Tests', () {});
 }
