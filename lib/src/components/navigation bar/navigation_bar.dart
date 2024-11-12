@@ -172,7 +172,9 @@ class ZetaNavigationBar extends ZetaStatelessWidget {
         border: Border(top: BorderSide(color: colors.borderSubtle)),
       ),
       child: Semantics(
-        child: child,
+        child: SafeArea(
+          child: child,
+        ),
       ),
     );
   }
@@ -232,7 +234,7 @@ class _NavigationItem extends ZetaStatelessWidget {
 
     return Material(
       color: colors.surfacePrimary,
-      child: InkWell(
+      child: InkResponse(
         borderRadius: context.rounded ? Zeta.of(context).radius.rounded : Zeta.of(context).radius.none,
         onTap: onTap,
         child: Semantics(
