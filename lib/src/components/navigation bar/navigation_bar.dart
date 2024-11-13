@@ -43,6 +43,7 @@ class ZetaNavigationBar extends ZetaStatelessWidget {
     this.action,
     this.semanticLabel,
     this.shrinkItems = false,
+    this.useSafeArea = true,
   }) : assert(
           items.length >= 2 && items.length <= 6,
           'The number of items should be between 2 and 6',
@@ -58,6 +59,7 @@ class ZetaNavigationBar extends ZetaStatelessWidget {
     this.dividerIndex,
     this.semanticLabel,
     this.shrinkItems = false,
+    this.useSafeArea = true,
   })  : splitItems = false,
         action = null;
 
@@ -71,6 +73,7 @@ class ZetaNavigationBar extends ZetaStatelessWidget {
     this.onTap,
     this.dividerIndex,
     this.semanticLabel,
+    this.useSafeArea = true,
   })  : splitItems = true,
         action = null,
         shrinkItems = true;
@@ -85,6 +88,7 @@ class ZetaNavigationBar extends ZetaStatelessWidget {
     this.onTap,
     this.semanticLabel,
     this.shrinkItems = false,
+    this.useSafeArea = true,
   })  : dividerIndex = null,
         splitItems = false;
 
@@ -116,6 +120,9 @@ class ZetaNavigationBar extends ZetaStatelessWidget {
   /// Defaults to false.
   /// When set to false the items will take up equal space and will expand to fill the bar.
   final bool shrinkItems;
+
+  /// Whether the child should be wrapped in a [SafeArea].
+  final bool useSafeArea;
 
   Row _generateNavigationItemRow(List<ZetaNavigationBarItem> items, BuildContext context) {
     return Row(
@@ -184,11 +191,7 @@ class ZetaNavigationBar extends ZetaStatelessWidget {
         color: colors.surfacePrimary,
         border: Border(top: BorderSide(color: colors.borderSubtle)),
       ),
-      child: Semantics(
-        child: SafeArea(
-          child: child,
-        ),
-      ),
+      child: Semantics(child: useSafeArea ? SafeArea(child: child) : child),
     );
   }
 
@@ -202,7 +205,8 @@ class ZetaNavigationBar extends ZetaStatelessWidget {
       ..add(DiagnosticsProperty<bool>('splitItems', splitItems))
       ..add(IntProperty('dividerIndex', dividerIndex))
       ..add(StringProperty('semanticLabel', semanticLabel))
-      ..add(DiagnosticsProperty<bool>('shrinkItems', shrinkItems));
+      ..add(DiagnosticsProperty<bool>('shrinkItems', shrinkItems))
+      ..add(DiagnosticsProperty<bool>('useSafeArea', useSafeArea));
   }
 }
 
