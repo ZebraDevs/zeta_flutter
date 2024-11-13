@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:zeta_flutter/src/components/navigation%20bar/navigation_bar.dart';
@@ -22,12 +23,70 @@ void main() {
     ZetaNavigationBarItem(icon: ZetaIcons.star, label: 'Label2'),
     ZetaNavigationBarItem(icon: ZetaIcons.star, label: 'Label3'),
   ];
+  final action = ZetaButton.primary(
+    label: 'Button',
+    onPressed: () {},
+  );
 
   group('Accessibility Tests', () {
     testWidgets('meets accessibility requirements', (WidgetTester tester) async {
       await tester.pumpWidget(
         TestApp(
           home: ZetaNavigationBar(
+            items: items,
+            currentIndex: 0,
+          ),
+        ),
+      );
+
+      await expectLater(tester, meetsGuideline(androidTapTargetGuideline));
+      await expectLater(tester, meetsGuideline(iOSTapTargetGuideline));
+      await expectLater(tester, meetsGuideline(labeledTapTargetGuideline));
+
+      // TODO: fails accessibility due to ZetaIndicator failing text contrast
+      // await expectLater(tester, meetsGuideline(textContrastGuideline));
+    });
+
+    testWidgets('meets accessibility requirements with action', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        TestApp(
+          home: ZetaNavigationBar.action(
+            items: items,
+            action: action,
+          ),
+        ),
+      );
+
+      await expectLater(tester, meetsGuideline(androidTapTargetGuideline));
+      await expectLater(tester, meetsGuideline(iOSTapTargetGuideline));
+      await expectLater(tester, meetsGuideline(labeledTapTargetGuideline));
+
+      // TODO: fails accessibility due to ZetaIndicator failing text contrast
+      // await expectLater(tester, meetsGuideline(textContrastGuideline));
+    });
+
+    testWidgets('meets accessibility requirements with divider', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        const TestApp(
+          home: ZetaNavigationBar.divided(
+            items: items,
+            dividerIndex: 2,
+          ),
+        ),
+      );
+
+      await expectLater(tester, meetsGuideline(androidTapTargetGuideline));
+      await expectLater(tester, meetsGuideline(iOSTapTargetGuideline));
+      await expectLater(tester, meetsGuideline(labeledTapTargetGuideline));
+
+      // TODO: fails accessibility due to ZetaIndicator failing text contrast
+      // await expectLater(tester, meetsGuideline(textContrastGuideline));
+    });
+
+    testWidgets('meets accessibility requirements with split', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        const TestApp(
+          home: ZetaNavigationBar.split(
             items: items,
           ),
         ),
@@ -137,6 +196,38 @@ void main() {
         expect(badges[i].value, i);
       }
     });
+
+    testWidgets('renders the action', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        TestApp(
+          home: ZetaNavigationBar.action(
+            items: items,
+            action: action,
+          ),
+        ),
+      );
+
+      final buttonFinder = find.byType(ZetaButton);
+      expect(buttonFinder, findsOneWidget);
+    });
+
+    testWidgets('renders the divider', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        const TestApp(
+          home: ZetaNavigationBar.divided(
+            items: items,
+            dividerIndex: 2,
+          ),
+        ),
+      );
+      final context = getBuildContext(tester, ZetaNavigationBar);
+
+      final dividerFinder = find.byWidgetPredicate(
+        (widget) => widget is Container && widget.color == Zeta.of(context).colors.borderSubtle,
+      );
+
+      expect(dividerFinder, findsOneWidget);
+    });
   });
 
   group('Dimensions Tests', () {
@@ -152,8 +243,10 @@ void main() {
 
       final containerFinder = find.byType(Container).first;
 
-      expect(tester.widget<Container>(containerFinder).padding,
-          EdgeInsets.symmetric(horizontal: Zeta.of(context).spacing.large));
+      expect(
+        tester.widget<Container>(containerFinder).padding,
+        EdgeInsets.symmetric(horizontal: Zeta.of(context).spacing.large),
+      );
     });
 
     testWidgets('items render the correct padding', (WidgetTester tester) async {
@@ -186,6 +279,27 @@ void main() {
         }
       }
     });
+
+    testWidgets('the divider is the correct size', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        const TestApp(
+          home: ZetaNavigationBar.divided(
+            items: items,
+            dividerIndex: 2,
+          ),
+        ),
+      );
+      final context = getBuildContext(tester, ZetaNavigationBar);
+
+      final dividerFinder = find.byWidgetPredicate(
+        (widget) => widget is Container && widget.color == Zeta.of(context).colors.borderSubtle,
+      );
+
+      expect(dividerFinder, findsOneWidget);
+
+      expect(dividerFinder.evaluate().first.size?.height, Zeta.of(context).spacing.xl_7);
+      expect(dividerFinder.evaluate().first.size?.width, 1);
+    });
   });
 
   group('Styling Tests', () {
@@ -207,25 +321,119 @@ void main() {
       expect(boxDecoration.color, Zeta.of(context).colors.surfacePrimary);
     });
 
-    // testWidgets('items are the correct color', (WidgetTester tester) async {});
+    testWidgets('items are the correct color', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        TestApp(
+          home: ZetaNavigationBar(
+            items: items,
+          ),
+        ),
+      );
+      final context = getBuildContext(tester, ZetaNavigationBar);
 
-    // testWidgets('selected item is the correct color', (WidgetTester tester) async {});
+      final itemFinder = find.byType(NavigationItem);
+      final icon =
+          tester.widget<ZetaIcon>(find.descendant(of: itemFinder.first, matching: find.byType(ZetaIcon)).first);
+      final label = tester.widget<Text>(find.descendant(of: itemFinder.first, matching: find.text('Label0')));
 
-    // testWidgets('hover background color is correct', (WidgetTester tester) async {});
+      expect(icon.color, Zeta.of(context).colors.textSubtle);
+      expect(label.style, Theme.of(context).textTheme.labelSmall?.copyWith(color: Zeta.of(context).colors.textSubtle));
+    });
+
+    testWidgets('selected item is the correct color', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        TestApp(
+          home: ZetaNavigationBar(
+            items: items,
+            currentIndex: 0,
+          ),
+        ),
+      );
+      final context = getBuildContext(tester, ZetaNavigationBar);
+
+      final itemFinder = find.byType(NavigationItem);
+      final icon =
+          tester.widget<ZetaIcon>(find.descendant(of: itemFinder.first, matching: find.byType(ZetaIcon)).first);
+      final label = tester.widget<Text>(find.descendant(of: itemFinder.first, matching: find.text('Label0')));
+
+      expect(icon.color, Zeta.of(context).colors.primary);
+      expect(label.style, Theme.of(context).textTheme.labelSmall?.copyWith(color: Zeta.of(context).colors.primary));
+    });
+
+    testWidgets('hover background color is correct', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        TestApp(
+          home: ZetaNavigationBar(
+            items: items,
+            currentIndex: 0,
+          ),
+        ),
+      );
+      final context = getBuildContext(tester, ZetaNavigationBar);
+
+      final itemFinder = find.byType(NavigationItem).first;
+
+      final gesture = await tester.createGesture(kind: PointerDeviceKind.mouse);
+      await gesture.addPointer(location: tester.getCenter(itemFinder));
+      addTearDown(gesture.removePointer);
+
+      await tester.pumpAndSettle();
+
+      final inkwell = tester.widget<InkWell>(find.descendant(of: itemFinder, matching: find.byType(InkWell)).first);
+
+      expect(inkwell.hoverColor, Zeta.of(context).colors.surfaceHover);
+    });
   });
 
   group('Interaction Tests', () {
-    // testWidgets('calls onTap when an item is tapped', (WidgetTester tester) async {});
+    testWidgets('calls onTap when an item is tapped', (WidgetTester tester) async {
+      var tappedIndex = -1;
+      await tester.pumpWidget(
+        TestApp(
+          home: ZetaNavigationBar(
+            items: items,
+            onTap: (index) => tappedIndex = index,
+          ),
+        ),
+      );
 
-    // testWidgets('updates the selected item when an item is tapped', (WidgetTester tester) {
-    //   // ZetaNavigationBar(
-    //   //   items: items,
-    //   //   currentIndex: selectedIndex,
-    //   //   onTap: (val) => setState(() {
-    //   //     selectedIndex = val;
-    //   //   }),
-    //   // ),
-    // });
+      final itemFinder = find.byType(NavigationItem).first;
+      await tester.tap(itemFinder);
+
+      expect(tappedIndex, 0);
+
+      final lastItemFinder = find.byType(NavigationItem).last;
+      await tester.tap(lastItemFinder);
+
+      expect(tappedIndex, 3);
+    });
+
+    testWidgets('updates the selected item when an item is tapped', (WidgetTester tester) async {
+      var selectedIndex = -1;
+      await tester.pumpWidget(
+        StatefulBuilder(
+          builder: (context, setState) {
+            return TestApp(
+              home: ZetaNavigationBar(
+                items: items,
+                currentIndex: selectedIndex,
+                onTap: (val) => setState(() {
+                  selectedIndex = val;
+                }),
+              ),
+            );
+          },
+        ),
+      );
+
+      final itemFinder = find.byType(NavigationItem).first;
+      await tester.tap(itemFinder);
+      expect(selectedIndex, 0);
+
+      final lastItemFinder = find.byType(NavigationItem).last;
+      await tester.tap(lastItemFinder);
+      expect(selectedIndex, 3);
+    });
   });
 
   group('Golden Tests', () {
@@ -238,10 +446,29 @@ void main() {
       goldenFile,
       ZetaNavigationBar(
         items: items,
-        currentIndex: 0,
+        shrinkItems: true,
       ),
-      'navigation_bar_current_index_0',
+      'navigation_bar_shrink_items',
     );
+    for (int i = 0; i < items.length; i++) {
+      goldenTest(
+        goldenFile,
+        ZetaNavigationBar(
+          items: items,
+          currentIndex: i,
+        ),
+        'navigation_bar_current_index_$i',
+      );
+
+      goldenTest(
+        goldenFile,
+        ZetaNavigationBar.divided(
+          items: items,
+          dividerIndex: i,
+        ),
+        'navigation_bar_divider_at_$i',
+      );
+    }
     goldenTest(
       goldenFile,
       const ZetaNavigationBar.action(
@@ -249,14 +476,6 @@ void main() {
         action: ZetaButton(label: 'Button'),
       ),
       'navigation_bar_action',
-    );
-    goldenTest(
-      goldenFile,
-      const ZetaNavigationBar.divided(
-        items: items,
-        dividerIndex: 2,
-      ),
-      'navigation_bar_divider',
     );
     goldenTest(
       goldenFile,

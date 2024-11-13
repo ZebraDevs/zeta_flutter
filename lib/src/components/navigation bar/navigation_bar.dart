@@ -262,6 +262,7 @@ class NavigationItem extends ZetaStatelessWidget {
       child: InkWell(
         borderRadius: context.rounded ? Zeta.of(context).radius.rounded : Zeta.of(context).radius.none,
         onTap: onTap,
+        hoverColor: colors.surfaceHover,
         child: Semantics(
           button: true,
           excludeSemantics: true,
