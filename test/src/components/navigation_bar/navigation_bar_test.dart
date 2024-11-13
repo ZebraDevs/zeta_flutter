@@ -370,9 +370,10 @@ void main() {
 
       await tester.pumpAndSettle();
 
-      final inkwell = tester.widget<InkWell>(find.descendant(of: itemFinder, matching: find.byType(InkWell)).first);
+      final inkResponse =
+          tester.widget<InkResponse>(find.descendant(of: itemFinder, matching: find.byType(InkResponse)).first);
 
-      expect(inkwell.hoverColor, Zeta.of(context).colors.surfaceHover);
+      expect(inkResponse.hoverColor, Zeta.of(context).colors.surfaceHover);
     });
   });
 
