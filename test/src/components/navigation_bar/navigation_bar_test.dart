@@ -16,7 +16,6 @@ void main() {
     goldenFileComparator = TolerantComparator(goldenFile.uri);
   });
 
-  const selectedIndex = 0;
   const items = [
     ZetaNavigationBarItem(icon: ZetaIcons.star, label: 'Label0', badge: ZetaIndicator(value: 2)),
     ZetaNavigationBarItem(icon: ZetaIcons.star, label: 'Label1'),
@@ -42,9 +41,7 @@ void main() {
       await expectLater(tester, meetsGuideline(androidTapTargetGuideline));
       await expectLater(tester, meetsGuideline(iOSTapTargetGuideline));
       await expectLater(tester, meetsGuideline(labeledTapTargetGuideline));
-
-      // TODO: fails accessibility due to ZetaIndicator failing text contrast
-      // await expectLater(tester, meetsGuideline(textContrastGuideline));
+      await expectLater(tester, meetsGuideline(textContrastGuideline));
     });
 
     testWidgets('meets accessibility requirements with action', (WidgetTester tester) async {
@@ -60,9 +57,7 @@ void main() {
       await expectLater(tester, meetsGuideline(androidTapTargetGuideline));
       await expectLater(tester, meetsGuideline(iOSTapTargetGuideline));
       await expectLater(tester, meetsGuideline(labeledTapTargetGuideline));
-
-      // TODO: fails accessibility due to ZetaIndicator failing text contrast
-      // await expectLater(tester, meetsGuideline(textContrastGuideline));
+      await expectLater(tester, meetsGuideline(textContrastGuideline));
     });
 
     testWidgets('meets accessibility requirements with divider', (WidgetTester tester) async {
@@ -78,9 +73,7 @@ void main() {
       await expectLater(tester, meetsGuideline(androidTapTargetGuideline));
       await expectLater(tester, meetsGuideline(iOSTapTargetGuideline));
       await expectLater(tester, meetsGuideline(labeledTapTargetGuideline));
-
-      // TODO: fails accessibility due to ZetaIndicator failing text contrast
-      // await expectLater(tester, meetsGuideline(textContrastGuideline));
+      await expectLater(tester, meetsGuideline(textContrastGuideline));
     });
 
     testWidgets('meets accessibility requirements with split', (WidgetTester tester) async {
@@ -95,9 +88,7 @@ void main() {
       await expectLater(tester, meetsGuideline(androidTapTargetGuideline));
       await expectLater(tester, meetsGuideline(iOSTapTargetGuideline));
       await expectLater(tester, meetsGuideline(labeledTapTargetGuideline));
-
-      // TODO: fails accessibility due to ZetaIndicator failing text contrast
-      // await expectLater(tester, meetsGuideline(textContrastGuideline));
+      await expectLater(tester, meetsGuideline(textContrastGuideline));
     });
 
     testWidgets('items have semantic labels', (WidgetTester tester) async {
