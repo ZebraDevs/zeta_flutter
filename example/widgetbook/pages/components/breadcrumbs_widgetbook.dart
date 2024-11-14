@@ -2,62 +2,53 @@ import 'package:flutter/material.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 import '../../utils/scaffold.dart';
+import 'package:widgetbook/widgetbook.dart';
+
 import '../../utils/utils.dart';
 
-Widget breadCrumbsUseCase(BuildContext context) => WidgetbookScaffold(
+final List<ZetaBreadcrumbItem> children = [
+  ZetaBreadcrumbItem(label: 'Breadcrumb', onPressed: () {}),
+  ZetaBreadcrumbItem(label: 'Item 1', onPressed: () {}),
+  ZetaBreadcrumbItem(label: 'Item 2', onPressed: () {}),
+  ZetaBreadcrumbItem(label: 'Item 3', onPressed: () {}),
+  ZetaBreadcrumbItem(label: 'Item 4', onPressed: () {}),
+  ZetaBreadcrumbItem(label: 'Item 5', onPressed: () {}),
+  ZetaBreadcrumbItem(label: 'Item 6', onPressed: () {})
+];
+
+Widget breadCrumbUseCase(BuildContext context) => WidgetbookScaffold(
       builder: (context, _) => Center(
-        child: BreadCrumbExample(context),
+        child: BreadCrumbExample(context, children),
       ),
     );
 
-class BreadCrumbExample extends StatefulWidget {
-  const BreadCrumbExample(this.c);
-  final BuildContext c;
-
-  @override
-  State<BreadCrumbExample> createState() => _BreadCrumbExampleState();
-}
-
-class _BreadCrumbExampleState extends State<BreadCrumbExample> {
-  List<ZetaBreadCrumb> _children = [
-    ZetaBreadCrumb(
-      label: 'Icon before with seperator',
-      onPressed: () {
-        print("Breadcrumb " + 0.toString() + "Clicked");
-      },
-    ),
-  ];
-  int index = 1;
+class BreadCrumbExample extends StatelessWidget {
+  BreadCrumbExample(this.context, this.children);
+  final BuildContext context;
+  final List<ZetaBreadcrumbItem> children;
 
   @override
   Widget build(BuildContext _) {
     return SingleChildScrollView(
       child: SizedBox(
-          width: double.infinity,
-          child: Column(children: [
-            ZetaBreadCrumbs(
-              children: _children,
+        width: double.infinity,
+        child: Column(
+          children: [
+            ZetaBreadcrumb(
+              children: context.knobs.list(
+                label: 'Items',
+                labelBuilder: (value) => value.length.toString(),
+                initialOption: children.sublist(0, 2),
+                options: List.generate(
+                  children.length,
+                  (index) => children.sublist(0, index + 1),
+                ),
+              ),
               activeIcon: iconKnob(context),
             ),
-            SizedBox(
-              height: 50,
-            ),
-            FilledButton(
-                onPressed: () {
-                  setState(() {
-                    _children.add(
-                      ZetaBreadCrumb(
-                        label: 'Icon before with seperator',
-                        onPressed: () {
-                          print("Breadcrumb clicked");
-                        },
-                      ),
-                    );
-                    index++;
-                  });
-                },
-                child: Text("Add Breadcrumb"))
-          ])),
+          ],
+        ),
+      ),
     );
   }
 }

@@ -6,16 +6,16 @@ import '../../../zeta_flutter.dart';
 
 /// The breadcrumb is a secondary navigation pattern that helps a user understand the hierarchy among levels and navigate back through them.
 ///
-/// [children] should consist of [ZetaBreadCrumb]s.
+/// [children] should consist of [ZetaBreadcrumbItem]s.
 ///
 /// {@category Components}
 ///
 /// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=229-5&node-type=canvas&m=dev
 ///
 /// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/breadcrumbs
-class ZetaBreadCrumbs extends ZetaStatefulWidget {
-  ///Constructor for [ZetaBreadCrumbs]
-  const ZetaBreadCrumbs({
+class ZetaBreadcrumb extends ZetaStatefulWidget {
+  ///Constructor for [ZetaBreadcrumb]
+  const ZetaBreadcrumb({
     super.key,
     super.rounded,
     required this.children,
@@ -24,7 +24,7 @@ class ZetaBreadCrumbs extends ZetaStatefulWidget {
   });
 
   /// Breadcrumb children
-  final List<ZetaBreadCrumb> children;
+  final List<ZetaBreadcrumbItem> children;
 
   /// Active icon for breadcrumb
   final IconData? activeIcon;
@@ -34,37 +34,39 @@ class ZetaBreadCrumbs extends ZetaStatefulWidget {
   final String? moreSemanticLabel;
 
   @override
-  State<ZetaBreadCrumbs> createState() => _ZetaBreadCrumbsState();
+  State<ZetaBreadcrumb> createState() => _ZetaBreadcrumbsState();
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(IterableProperty<ZetaBreadCrumb>('children', children))
+      ..add(IterableProperty<ZetaBreadcrumbItem>('children', children))
       ..add(DiagnosticsProperty<bool?>('rounded', rounded))
       ..add(DiagnosticsProperty<IconData?>('activeIcon', activeIcon))
       ..add(StringProperty('moreSemanticLabel', moreSemanticLabel));
   }
 }
 
-class _ZetaBreadCrumbsState extends State<ZetaBreadCrumbs> {
+class _ZetaBreadcrumbsState extends State<ZetaBreadcrumb> {
   late int _selectedIndex;
-  late List<ZetaBreadCrumb> _children;
+  late List<ZetaBreadcrumbItem> _children;
 
   @override
   void initState() {
     super.initState();
+    // selects the last item
     _selectedIndex = widget.children.length - 1;
     _children = [...widget.children];
   }
 
   @override
-  void didUpdateWidget(ZetaBreadCrumbs oldWidget) {
+  void didUpdateWidget(ZetaBreadcrumb oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (widget.children.length != _children.length) {
-      _selectedIndex = widget.children.length - 1;
-      _children = [...widget.children];
-    }
+    // will always be equal???
+    // if (widget.children.length != _children.length) {
+    _selectedIndex = widget.children.length - 1;
+    _children = [...widget.children];
+    // }
   }
 
   @override
@@ -75,7 +77,7 @@ class _ZetaBreadCrumbsState extends State<ZetaBreadCrumbs> {
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: Row(
-          children: renderedChildren(widget.children)
+          children: renderedChildren(_children)
               .divide(
                 Row(
                   children: [
@@ -92,13 +94,14 @@ class _ZetaBreadCrumbsState extends State<ZetaBreadCrumbs> {
   }
 
   ///Creates breadcrumb widget
-  ZetaBreadCrumb createBreadCrumb(ZetaBreadCrumb input, int index) {
-    return ZetaBreadCrumb(
+  ZetaBreadcrumbItem createBreadCrumb(ZetaBreadcrumbItem input, int index) {
+    return ZetaBreadcrumbItem(
       label: input.label,
       isSelected: _selectedIndex == index,
       onPressed: () {
         setState(() {
           _selectedIndex = index;
+          _children = _children.sublist(0, index + 1);
         });
         input.onPressed.call();
       },
@@ -106,7 +109,7 @@ class _ZetaBreadCrumbsState extends State<ZetaBreadCrumbs> {
     );
   }
 
-  List<Widget> renderedChildren(List<ZetaBreadCrumb> children) {
+  List<Widget> renderedChildren(List<ZetaBreadcrumbItem> children) {
     final List<Widget> returnList = [];
     if (children.length > 3) {
       returnList.add(createBreadCrumb(children.first, 0));
@@ -117,7 +120,7 @@ class _ZetaBreadCrumbsState extends State<ZetaBreadCrumbs> {
         truncatedChildren.add(createBreadCrumb(element, index + 1));
       }
       returnList
-        ..add(_BreadCrumbsTruncated(semanticLabel: widget.moreSemanticLabel, children: truncatedChildren))
+        ..add(_TruncatedItem(semanticLabel: widget.moreSemanticLabel, children: truncatedChildren))
         ..add(createBreadCrumb(children.last, children.length - 1));
     } else {
       for (final (index, element) in children.indexed) {
@@ -128,14 +131,12 @@ class _ZetaBreadCrumbsState extends State<ZetaBreadCrumbs> {
   }
 }
 
-// TODO(UX-1131): Rename to breadcrumbitem
-
-/// Class for untruncated [ZetaBreadCrumb].
+/// Class for untruncated [ZetaBreadcrumbItem].
 ///
-/// Should be a child of [ZetaBreadCrumbs].
-class ZetaBreadCrumb extends StatefulWidget {
-  ///Constructor for [ZetaBreadCrumb]
-  const ZetaBreadCrumb({
+/// Should be a child of [ZetaBreadcrumb].
+class ZetaBreadcrumbItem extends StatefulWidget {
+  ///Constructor for [ZetaBreadcrumbItem]
+  const ZetaBreadcrumbItem({
     super.key,
     required this.label,
     this.icon,
@@ -145,19 +146,19 @@ class ZetaBreadCrumb extends StatefulWidget {
     this.semanticLabel,
   });
 
-  /// [ZetaBreadCrumb] label.
+  /// [ZetaBreadcrumbItem] label.
   final String label;
 
   /// Selected icon.
   final IconData? icon;
 
-  /// Is [ZetaBreadCrumb] selected.
+  /// Is [ZetaBreadcrumbItem] selected.
   final bool isSelected;
 
-  /// Handles press for [ZetaBreadCrumb]
+  /// Handles press for [ZetaBreadcrumbItem]
   final VoidCallback onPressed;
 
-  /// Active icon for [ZetaBreadCrumb]
+  /// Active icon for [ZetaBreadcrumbItem]
   final IconData? activeIcon;
 
   /// Label passed to wrapping [Semantics] widget.
@@ -168,7 +169,7 @@ class ZetaBreadCrumb extends StatefulWidget {
   final String? semanticLabel;
 
   @override
-  State<ZetaBreadCrumb> createState() => _ZetaBreadCrumbState();
+  State<ZetaBreadcrumbItem> createState() => _ZetaBreadcrumbState();
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
@@ -183,7 +184,7 @@ class ZetaBreadCrumb extends StatefulWidget {
   }
 }
 
-class _ZetaBreadCrumbState extends State<ZetaBreadCrumb> {
+class _ZetaBreadcrumbState extends State<ZetaBreadcrumbItem> {
   final controller = WidgetStatesController();
 
   @override
@@ -251,13 +252,13 @@ class _ZetaBreadCrumbState extends State<ZetaBreadCrumb> {
   }
 }
 
-/// Class for [_BreadCrumbsTruncated]
-@Deprecated('This functionality is not needed anymore. Use [ZetaBreadCrumb] instead. ' 'Deprecated since 0.14.1')
-typedef BreadCrumbsTruncated = _BreadCrumbsTruncated;
+/// Class for [_TruncatedItem]
+@Deprecated('This functionality is not needed anymore. Use [ZetaBreadcrumb] instead. ' 'Deprecated since 0.14.1')
+typedef TruncatedItem = _TruncatedItem;
 
-class _BreadCrumbsTruncated extends StatefulWidget {
-  ///Constructor for [_BreadCrumbsTruncated]
-  const _BreadCrumbsTruncated({
+class _TruncatedItem extends StatefulWidget {
+  ///Constructor for [_TruncatedItem]
+  const _TruncatedItem({
     required this.children,
     this.semanticLabel,
   });
@@ -271,7 +272,7 @@ class _BreadCrumbsTruncated extends StatefulWidget {
   final String? semanticLabel;
 
   @override
-  State<_BreadCrumbsTruncated> createState() => _BreadCrumbsTruncatedState();
+  State<_TruncatedItem> createState() => _TruncatedItemState();
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
@@ -279,7 +280,7 @@ class _BreadCrumbsTruncated extends StatefulWidget {
   }
 }
 
-class _BreadCrumbsTruncatedState extends State<_BreadCrumbsTruncated> {
+class _TruncatedItemState extends State<_TruncatedItem> {
   bool _expanded = false;
 
   @override

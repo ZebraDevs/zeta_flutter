@@ -12,15 +12,63 @@ class BreadCrumbsExample extends StatefulWidget {
 }
 
 class _BreadCrumbsExampleState extends State<BreadCrumbsExample> {
-  List<ZetaBreadCrumb> _children = [
-    ZetaBreadCrumb(
-      label: 'Icon before with separator',
-      onPressed: () {
-        print("Breadcrumb " + 0.toString() + "Clicked");
-      },
-    ),
-  ];
-  int index = 1;
+  List<ZetaBreadcrumbItem> _children = [];
+  int index = 3;
+
+  @override
+  void initState() {
+    super.initState();
+    _children = [
+      ZetaBreadcrumbItem(
+        label: 'Breadcrumb',
+        onPressed: () {
+          print("Breadcrumb clicked");
+        },
+      ),
+      ZetaBreadcrumbItem(
+        label: 'Item 1',
+        onPressed: () {
+          print("Breadcrumb clicked");
+        },
+      ),
+      ZetaBreadcrumbItem(
+        label: 'Item 2',
+        onPressed: () {
+          print("Breadcrumb clicked");
+        },
+      ),
+      ZetaBreadcrumbItem(
+        label: 'Item 3',
+        onPressed: () {
+          print("Breadcrumb clicked");
+        },
+      ),
+      ZetaBreadcrumbItem(
+        label: 'Item 4',
+        onPressed: () {
+          print("Breadcrumb clicked");
+        },
+      ),
+      ZetaBreadcrumbItem(
+        label: 'Item 5',
+        onPressed: () {
+          print("Breadcrumb clicked");
+        },
+      ),
+      ZetaBreadcrumbItem(
+        label: 'Item 6',
+        onPressed: () {
+          print("Breadcrumb clicked");
+        },
+      ),
+      ZetaBreadcrumbItem(
+        label: 'Item 7',
+        onPressed: () {
+          print("Breadcrumb clicked");
+        },
+      ),
+    ];
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,25 +79,35 @@ class _BreadCrumbsExampleState extends State<BreadCrumbsExample> {
           child: SizedBox(
               width: double.infinity,
               child: Column(children: [
-                ZetaBreadCrumbs(children: _children),
+                ZetaBreadcrumb(children: _children.sublist(0, 1)),
                 SizedBox(
                   height: 50,
                 ),
-                FilledButton(
-                    onPressed: () {
-                      setState(() {
-                        _children.add(
-                          ZetaBreadCrumb(
-                            label: 'Icon before with seperator',
-                            onPressed: () {
-                              print("Breadcrumb clicked");
-                            },
-                          ),
-                        );
-                        index++;
-                      });
-                    },
-                    child: Text("Add Breadcrumb"))
+                ZetaBreadcrumb(children: _children.sublist(0, 2)),
+                SizedBox(
+                  height: 50,
+                ),
+                ZetaBreadcrumb(children: _children.sublist(0, 3)),
+                SizedBox(
+                  height: 50,
+                ),
+                ZetaBreadcrumb(children: _children.sublist(0, 4)),
+                SizedBox(
+                  height: 50,
+                ),
+                ZetaBreadcrumb(children: _children.sublist(0, 5)),
+                SizedBox(
+                  height: 50,
+                ),
+                ZetaBreadcrumb(children: _children.sublist(0, 6)),
+                SizedBox(
+                  height: 50,
+                ),
+                ZetaBreadcrumb(children: _children.sublist(0, 7)),
+                SizedBox(
+                  height: 50,
+                ),
+                ZetaBreadcrumb(children: _children),
               ])),
         ),
       ),
