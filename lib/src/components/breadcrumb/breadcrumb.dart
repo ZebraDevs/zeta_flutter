@@ -24,7 +24,7 @@ class ZetaBreadcrumb extends ZetaStatefulWidget {
   /// Breadcrumb children
   final List<ZetaBreadcrumbItem> children;
 
-  /// Label passed to wrapping [Semantics] widget.
+  /// Semantic ;abel passed to [_TruncatedItem].
   /// {@macro zeta-widget-semantic-label}
   final String? moreSemanticLabel;
 
@@ -119,7 +119,8 @@ class _ZetaBreadcrumbsState extends State<ZetaBreadcrumb> {
       for (final (index, element) in children.sublist(1, children.length - (widget.maxItemsShown - 1)).indexed) {
         truncatedChildren.add(createBreadCrumb(element, index + 1));
       }
-      returnList.add(_TruncatedItem(semanticLabel: widget.moreSemanticLabel, children: truncatedChildren));
+      returnList
+          .add(_TruncatedItem(semanticLabel: widget.moreSemanticLabel ?? 'View More', children: truncatedChildren));
 
       for (final (index, element) in children.sublist(children.length - (widget.maxItemsShown - 1)).indexed) {
         returnList.add(createBreadCrumb(element, index + children.length - (widget.maxItemsShown)));
@@ -252,7 +253,7 @@ class _TruncatedItem extends StatefulWidget {
   ///Constructor for [_TruncatedItem]
   const _TruncatedItem({
     required this.children,
-    this.semanticLabel,
+    required this.semanticLabel,
   });
 
   ///Breadcrumb children
@@ -261,7 +262,7 @@ class _TruncatedItem extends StatefulWidget {
   /// Label passed to wrapping [Semantics] widget.
   ///
   /// {@macro zeta-widget-semantic-label}
-  final String? semanticLabel;
+  final String semanticLabel;
 
   @override
   State<_TruncatedItem> createState() => _TruncatedItemState();
@@ -287,6 +288,7 @@ class _TruncatedItemState extends State<_TruncatedItem> {
             child: Semantics(
               label: widget.semanticLabel,
               button: true,
+              excludeSemantics: true,
               child: FilledButton(
                 onPressed: () {
                   setState(() {
