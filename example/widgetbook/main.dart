@@ -16,7 +16,7 @@ import 'pages/components/avatar_widgetbook.dart';
 import 'pages/components/badges_widgetbook.dart';
 import 'pages/components/banner_widgetbook.dart';
 import 'pages/components/bottom_sheet_widgetbook.dart';
-import 'pages/components/breadcrumbs_widgetbook.dart';
+import 'pages/components/breadcrumb_widgetbook.dart';
 import 'pages/components/button_widgetbook.dart';
 import 'pages/components/chat_item_widgetbook.dart';
 import 'pages/components/checkbox_widgetbook.dart';
@@ -192,7 +192,7 @@ class _HotReloadState extends State<HotReload> {
             WidgetbookUseCase(name: 'Accordion', builder: (context) => accordionUseCase(context)),
             WidgetbookUseCase(name: 'Banners', builder: (context) => bannerUseCase(context)),
             WidgetbookUseCase(name: 'Bottom Sheet', builder: (context) => bottomSheetContentUseCase(context)),
-            WidgetbookUseCase(name: 'BreadCrumbs', builder: (context) => breadCrumbUseCase(context)),
+            WidgetbookUseCase(name: 'Breadcrumb', builder: (context) => breadcrumbUseCase(context)),
             WidgetbookUseCase(name: 'Checkbox', builder: (context) => checkboxUseCase(context)),
             WidgetbookUseCase(name: 'Comms Button', builder: (context) => commsButtonUseCase(context)),
             WidgetbookUseCase(name: 'Date Input', builder: (context) => dateInputUseCase(context)),

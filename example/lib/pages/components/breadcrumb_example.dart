@@ -2,18 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:zeta_example/widgets.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
-class BreadCrumbsExample extends StatefulWidget {
-  static const String name = 'Breadcrumbs';
+class BreadcrumbExample extends StatefulWidget {
+  static const String name = 'Breadcrumb';
 
-  const BreadCrumbsExample({super.key});
+  const BreadcrumbExample({super.key});
 
   @override
-  State<BreadCrumbsExample> createState() => _BreadCrumbsExampleState();
+  State<BreadcrumbExample> createState() => _BreadcrumbExampleState();
 }
 
-class _BreadCrumbsExampleState extends State<BreadCrumbsExample> {
+class _BreadcrumbExampleState extends State<BreadcrumbExample> {
   List<ZetaBreadcrumbItem> _children = [];
-  int index = 3;
 
   @override
   void initState() {
@@ -39,6 +38,7 @@ class _BreadCrumbsExampleState extends State<BreadCrumbsExample> {
       ),
       ZetaBreadcrumbItem(
         label: 'Item 3',
+        icon: ZetaIcons.star,
         onPressed: () {
           print("Breadcrumb clicked");
         },
@@ -73,7 +73,7 @@ class _BreadCrumbsExampleState extends State<BreadCrumbsExample> {
   @override
   Widget build(BuildContext context) {
     return ExampleScaffold(
-      name: 'Breadcrumbs',
+      name: 'Breadcrumb',
       child: Center(
         child: SingleChildScrollView(
           child: SizedBox(
@@ -91,23 +91,37 @@ class _BreadCrumbsExampleState extends State<BreadCrumbsExample> {
                 SizedBox(
                   height: 50,
                 ),
-                ZetaBreadcrumb(children: _children.sublist(0, 4)),
+                ZetaBreadcrumb(
+                  children: _children.sublist(0, 4),
+                  maxItemsShown: 3,
+                ),
                 SizedBox(
                   height: 50,
                 ),
-                ZetaBreadcrumb(children: _children.sublist(0, 5)),
+                ZetaBreadcrumb(
+                  children: _children.sublist(0, 5),
+                  maxItemsShown: 4,
+                ),
                 SizedBox(
                   height: 50,
                 ),
-                ZetaBreadcrumb(children: _children.sublist(0, 6)),
+                ZetaBreadcrumb(
+                  children: _children.sublist(0, 6),
+                  maxItemsShown: 3,
+                ),
                 SizedBox(
                   height: 50,
                 ),
-                ZetaBreadcrumb(children: _children.sublist(0, 7)),
+                ZetaBreadcrumb(
+                  children: _children.sublist(0, 7),
+                ),
                 SizedBox(
                   height: 50,
                 ),
-                ZetaBreadcrumb(children: _children),
+                ZetaBreadcrumb(
+                  children: _children,
+                  maxItemsShown: 1,
+                ),
               ])),
         ),
       ),
