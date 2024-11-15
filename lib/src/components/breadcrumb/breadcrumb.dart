@@ -82,6 +82,7 @@ class _ZetaBreadcrumbsState extends State<ZetaBreadcrumb> {
                       ZetaIcons.chevron_right,
                       size: Zeta.of(context).spacing.xl,
                       rounded: rounded,
+                      color: Zeta.of(context).colors.textSubtle,
                     ),
                     SizedBox(width: Zeta.of(context).spacing.small),
                   ],
@@ -351,7 +352,11 @@ class _TruncatedItemState extends State<_TruncatedItem> {
             Row(
               children: [
                 SizedBox(width: Zeta.of(context).spacing.small),
-                ZetaIcon(ZetaIcons.chevron_right, size: Zeta.of(context).spacing.xl),
+                ZetaIcon(
+                  ZetaIcons.chevron_right,
+                  size: Zeta.of(context).spacing.xl,
+                  color: Zeta.of(context).colors.textSubtle,
+                ),
                 SizedBox(width: Zeta.of(context).spacing.small),
               ],
             ),

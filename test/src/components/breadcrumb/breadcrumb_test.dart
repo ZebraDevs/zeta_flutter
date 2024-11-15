@@ -1,6 +1,3 @@
-import 'dart:ui';
-
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
@@ -141,10 +138,77 @@ void main() {
 
   group('Dimensions Tests', () {
     // each item is equally spaced
+    testWidgets('ZetaBreadcrumb items are equally spaced', (tester) async {
+      await tester.pumpWidget(
+        TestApp(
+          home: ZetaBreadcrumb(
+            maxItemsShown: 7,
+            children: [
+              ZetaBreadcrumbItem(label: 'Item 0', onPressed: () {}),
+              ZetaBreadcrumbItem(label: 'Item 1', onPressed: () {}),
+              ZetaBreadcrumbItem(label: 'Item 2', onPressed: () {}),
+              ZetaBreadcrumbItem(label: 'Item 3', onPressed: () {}),
+              ZetaBreadcrumbItem(label: 'Item 4', onPressed: () {}),
+              ZetaBreadcrumbItem(label: 'Item 5', onPressed: () {}),
+              ZetaBreadcrumbItem(label: 'Item 6', onPressed: () {}),
+            ],
+          ),
+        ),
+      );
+
+      final itemFinder = find.byType(ZetaBreadcrumbItem);
+
+      final List<double> itemPositions = [];
+      for (int i = 0; i < children.length; i++) {
+        expect(itemFinder.at(i), findsOneWidget);
+        itemPositions.add(tester.getTopLeft(itemFinder.at(i)).dx);
+      }
+
+      final double distance = itemPositions[1] - itemPositions[0];
+      for (int i = 1; i < itemPositions.length; i++) {
+        expect(itemPositions[i] - itemPositions[i - 1], distance);
+      }
+    });
   });
 
   group('Styling Tests', () {
-    // label and icon colors are correct
+    testWidgets('ZetaBreadcrumb label and icon colors are correct', (tester) async {
+      await tester.pumpWidget(
+        TestApp(
+          home: ZetaBreadcrumb(
+            maxItemsShown: 7,
+            children: children,
+          ),
+        ),
+      );
+      final context = getBuildContext(tester, ZetaBreadcrumb);
+      final colors = Zeta.of(context).colors;
+
+      final labelFinder = find.byType(Text);
+      final iconFinder = find.byType(ZetaIcon);
+
+      for (int i = 0; i < children.length; i++) {
+        if (i == children.length - 1) {
+          expect(
+            (tester.firstWidget(labelFinder.at(i)) as Text).style?.color,
+            colors.black,
+          );
+        } else {
+          expect(
+            (tester.firstWidget(labelFinder.at(i)) as Text).style?.color,
+            colors.textSubtle,
+          );
+        }
+      }
+
+      for (int i = 0; i < iconFinder.evaluate().length; i++) {
+        expect(
+          (tester.firstWidget(iconFinder.at(i)) as ZetaIcon).color,
+          colors.textSubtle,
+        );
+      }
+    });
+
     // label font styles are correct
     // icon sizes are correct
 
