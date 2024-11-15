@@ -416,6 +416,29 @@ void main() {
       expect(tappedIndex, 3);
     });
 
+    testWidgets('calls onTap when an item is tapped off center', (WidgetTester tester) async {
+      var tappedIndex = -1;
+      await tester.pumpWidget(
+        TestApp(
+          home: ZetaNavigationBar(
+            items: items,
+            onTap: (index) => tappedIndex = index,
+          ),
+        ),
+      );
+
+      final itemFinder = find.byType(NavigationItem).first;
+      final offset = tester.getSize(itemFinder).width / 4;
+
+      await tester.tapAt(tester.getCenter(itemFinder) + Offset(offset, 0));
+      expect(tappedIndex, 0);
+
+      final lastItemFinder = find.byType(NavigationItem).last;
+
+      await tester.tapAt(tester.getCenter(lastItemFinder) + Offset(-offset, 0));
+      expect(tappedIndex, 3);
+    });
+
     testWidgets('updates the selected item when an item is tapped', (WidgetTester tester) async {
       var selectedIndex = -1;
       await tester.pumpWidget(
