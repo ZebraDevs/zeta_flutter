@@ -13,7 +13,46 @@ void main() {
     goldenFileComparator = TolerantComparator(goldenFile.uri);
   });
 
-  group('Accessibility Tests', () {});
+  group('Accessibility Tests', () {
+    for (int i = 0; i < 10; i++) {
+      testWidgets('medium notification value $i meets accessibility standards', (tester) async {
+        final SemanticsHandle handle = tester.ensureSemantics();
+        await tester.pumpWidget(
+          TestApp(
+            home: ZetaIndicator(
+              size: ZetaWidgetSize.medium,
+              value: i,
+            ),
+          ),
+        );
+
+        await expectLater(tester, meetsGuideline(androidTapTargetGuideline));
+        await expectLater(tester, meetsGuideline(iOSTapTargetGuideline));
+        await expectLater(tester, meetsGuideline(labeledTapTargetGuideline));
+        await expectLater(tester, meetsGuideline(textContrastGuideline));
+
+        handle.dispose();
+      });
+
+      testWidgets('default notification value $i meets accessibility standards', (tester) async {
+        final SemanticsHandle handle = tester.ensureSemantics();
+        await tester.pumpWidget(
+          TestApp(
+            home: ZetaIndicator(
+              value: i,
+            ),
+          ),
+        );
+
+        await expectLater(tester, meetsGuideline(androidTapTargetGuideline));
+        await expectLater(tester, meetsGuideline(iOSTapTargetGuideline));
+        await expectLater(tester, meetsGuideline(labeledTapTargetGuideline));
+        await expectLater(tester, meetsGuideline(textContrastGuideline));
+
+        handle.dispose();
+      });
+    }
+  });
   group('Content Tests', () {
     final debugFillProperties = {
       'color': 'MaterialColor(primary value: Color(0xffff9800))',
@@ -170,6 +209,11 @@ void main() {
       'indicator_icon_values',
     );
     goldenTest(goldenFile, const ZetaIndicator.notification(), 'indicator_notification_default');
+    goldenTest(
+      goldenFile,
+      const ZetaIndicator.notification(value: 3, size: ZetaWidgetSize.medium),
+      'indicator_notification_with_value',
+    );
     goldenTest(
       goldenFile,
       const ZetaIndicator.notification(

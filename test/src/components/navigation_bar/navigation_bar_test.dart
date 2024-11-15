@@ -17,8 +17,13 @@ void main() {
   });
 
   const items = [
-    ZetaNavigationBarItem(icon: ZetaIcons.star, label: 'Label0', badge: ZetaIndicator(value: 2)),
-    ZetaNavigationBarItem(icon: ZetaIcons.star, label: 'Label1'),
+    ZetaNavigationBarItem(
+        icon: ZetaIcons.star,
+        label: 'Label0',
+        badge: ZetaIndicator(
+          value: 2,
+        )),
+    ZetaNavigationBarItem(icon: ZetaIcons.star, label: 'Label1', badge: ZetaIndicator(value: 2)),
     ZetaNavigationBarItem(icon: ZetaIcons.star, label: 'Label2'),
     ZetaNavigationBarItem(icon: ZetaIcons.star, label: 'Label3'),
   ];
@@ -29,6 +34,7 @@ void main() {
 
   group('Accessibility Tests', () {
     testWidgets('meets accessibility requirements', (WidgetTester tester) async {
+      final SemanticsHandle handle = tester.ensureSemantics();
       await tester.pumpWidget(
         TestApp(
           home: ZetaNavigationBar(
@@ -42,9 +48,11 @@ void main() {
       await expectLater(tester, meetsGuideline(iOSTapTargetGuideline));
       await expectLater(tester, meetsGuideline(labeledTapTargetGuideline));
       await expectLater(tester, meetsGuideline(textContrastGuideline));
+      handle.dispose();
     });
 
     testWidgets('meets accessibility requirements with action', (WidgetTester tester) async {
+      final SemanticsHandle handle = tester.ensureSemantics();
       await tester.pumpWidget(
         TestApp(
           home: ZetaNavigationBar.action(
@@ -58,9 +66,11 @@ void main() {
       await expectLater(tester, meetsGuideline(iOSTapTargetGuideline));
       await expectLater(tester, meetsGuideline(labeledTapTargetGuideline));
       await expectLater(tester, meetsGuideline(textContrastGuideline));
+      handle.dispose();
     });
 
     testWidgets('meets accessibility requirements with divider', (WidgetTester tester) async {
+      final SemanticsHandle handle = tester.ensureSemantics();
       await tester.pumpWidget(
         const TestApp(
           home: ZetaNavigationBar.divided(
@@ -74,9 +84,11 @@ void main() {
       await expectLater(tester, meetsGuideline(iOSTapTargetGuideline));
       await expectLater(tester, meetsGuideline(labeledTapTargetGuideline));
       await expectLater(tester, meetsGuideline(textContrastGuideline));
+      handle.dispose();
     });
 
     testWidgets('meets accessibility requirements with split', (WidgetTester tester) async {
+      final SemanticsHandle handle = tester.ensureSemantics();
       await tester.pumpWidget(
         const TestApp(
           home: ZetaNavigationBar.split(
@@ -89,21 +101,25 @@ void main() {
       await expectLater(tester, meetsGuideline(iOSTapTargetGuideline));
       await expectLater(tester, meetsGuideline(labeledTapTargetGuideline));
       await expectLater(tester, meetsGuideline(textContrastGuideline));
+      handle.dispose();
     });
 
-    testWidgets('items have semantic labels', (WidgetTester tester) async {
+    testWidgets('meets accessibility requirements with shrink items', (WidgetTester tester) async {
+      final SemanticsHandle handle = tester.ensureSemantics();
       await tester.pumpWidget(
         TestApp(
           home: ZetaNavigationBar(
             items: items,
+            shrinkItems: true,
           ),
         ),
       );
 
-      for (int i = 0; i < items.length; i++) {
-        final itemsFinder = find.bySemanticsLabel('Label$i');
-        expect(itemsFinder, findsOneWidget);
-      }
+      await expectLater(tester, meetsGuideline(androidTapTargetGuideline));
+      await expectLater(tester, meetsGuideline(iOSTapTargetGuideline));
+      await expectLater(tester, meetsGuideline(labeledTapTargetGuideline));
+      await expectLater(tester, meetsGuideline(textContrastGuideline));
+      handle.dispose();
     });
   });
 

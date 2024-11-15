@@ -239,7 +239,7 @@ class NavigationItem extends ZetaStatelessWidget {
       right: Zeta.of(context).spacing.minimum,
       child: DecoratedBox(
         decoration: BoxDecoration(
-          color: colors.surfacePrimary,
+          color: colors.surfaceDefault,
           borderRadius: Zeta.of(context).radius.full,
         ),
         child: item.badge?.copyWith(
@@ -249,6 +249,7 @@ class NavigationItem extends ZetaStatelessWidget {
                   ? ZetaWidgetSize.medium
                   : null,
           type: ZetaIndicatorType.notification,
+          semanticLabel: item.badge?.semanticLabel,
         ),
       ),
     );
@@ -268,7 +269,6 @@ class NavigationItem extends ZetaStatelessWidget {
         highlightShape: BoxShape.rectangle,
         child: Semantics(
           button: true,
-          excludeSemantics: true,
           label: item.label,
           child: Container(
             padding: EdgeInsets.only(
@@ -293,9 +293,11 @@ class NavigationItem extends ZetaStatelessWidget {
                 ),
                 SizedBox(height: Zeta.of(context).spacing.small),
                 if (item.label != null)
-                  Text(
-                    item.label!,
-                    style: Theme.of(context).textTheme.labelSmall?.copyWith(color: elementColor),
+                  ExcludeSemantics(
+                    child: Text(
+                      item.label!,
+                      style: Theme.of(context).textTheme.labelSmall?.copyWith(color: elementColor),
+                    ),
                   ),
               ],
             ),
