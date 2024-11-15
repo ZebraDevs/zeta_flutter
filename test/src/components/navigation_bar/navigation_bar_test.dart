@@ -22,7 +22,7 @@ void main() {
         label: 'Label0',
         badge: ZetaIndicator(
           value: 2,
-        )),
+        ),),
     ZetaNavigationBarItem(icon: ZetaIcons.star, label: 'Label1', badge: ZetaIndicator(value: 2)),
     ZetaNavigationBarItem(icon: ZetaIcons.star, label: 'Label2'),
     ZetaNavigationBarItem(icon: ZetaIcons.star, label: 'Label3'),
