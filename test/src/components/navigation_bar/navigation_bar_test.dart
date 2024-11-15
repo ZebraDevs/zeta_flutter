@@ -18,11 +18,12 @@ void main() {
 
   const items = [
     ZetaNavigationBarItem(
-        icon: ZetaIcons.star,
-        label: 'Label0',
-        badge: ZetaIndicator(
-          value: 2,
-        ),),
+      icon: ZetaIcons.star,
+      label: 'Label0',
+      badge: ZetaIndicator(
+        value: 2,
+      ),
+    ),
     ZetaNavigationBarItem(icon: ZetaIcons.star, label: 'Label1', badge: ZetaIndicator(value: 2)),
     ZetaNavigationBarItem(icon: ZetaIcons.star, label: 'Label2'),
     ZetaNavigationBarItem(icon: ZetaIcons.star, label: 'Label3'),
@@ -428,14 +429,13 @@ void main() {
       );
 
       final itemFinder = find.byType(NavigationItem).first;
-      final offset = tester.getSize(itemFinder).width / 4;
 
-      await tester.tapAt(tester.getCenter(itemFinder) + Offset(offset, 0));
+      await tester.tapAt(tester.getCenter(itemFinder) + const Offset(80, 0));
       expect(tappedIndex, 0);
 
       final lastItemFinder = find.byType(NavigationItem).last;
 
-      await tester.tapAt(tester.getCenter(lastItemFinder) + Offset(-offset, 0));
+      await tester.tapAt(tester.getCenter(lastItemFinder) + const Offset(-80, 0));
       expect(tappedIndex, 3);
     });
 
