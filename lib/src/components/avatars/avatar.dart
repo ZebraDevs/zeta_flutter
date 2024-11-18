@@ -53,9 +53,9 @@ class ZetaAvatar extends ZetaStatelessWidget {
     this.lowerBadge,
     this.upperBadge,
     this.borderColor,
-    this.semanticLabel = 'avatar',
-    this.semanticUpperBadgeLabel = 'upperBadge',
-    this.semanticLowerBadgeLabel = 'lowerBadge',
+    this.semanticLabel,
+    this.semanticUpperBadgeLabel,
+    this.semanticLowerBadgeLabel,
     this.initialTextStyle,
     this.label,
     this.labelTextStyle,
@@ -149,17 +149,17 @@ class ZetaAvatar extends ZetaStatelessWidget {
   /// {@template zeta-widget-semantic-label}
   /// This label is used by accessibility frameworks (e.g. TalkBack on Android) to describe the component.
   /// {@endtemplate}
-  final String semanticLabel;
+  final String? semanticLabel;
 
   /// Value passed into wrapping [Semantics] widget for lower badge.
   ///
   /// {@macro zeta-widget-semantic-label}
-  final String semanticLowerBadgeLabel;
+  final String? semanticLowerBadgeLabel;
 
   /// Value passed into wrapping [Semantics] widget for upper badge.
   ///
   /// {@macro zeta-widget-semantic-label}
-  final String semanticUpperBadgeLabel;
+  final String? semanticUpperBadgeLabel;
 
   /// Text style for initials.
   ///

@@ -114,6 +114,7 @@ class ZetaIndicator extends ZetaStatelessWidget {
 
     return Semantics(
       label: semanticLabel,
+      container: true,
       child: Container(
         width: sizePixels + Zeta.of(context).spacing.minimum,
         height: sizePixels + Zeta.of(context).spacing.minimum,
