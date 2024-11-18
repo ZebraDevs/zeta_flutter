@@ -1,5 +1,64 @@
 # Changelog
 
+## [0.19.0](https://github.com/ZebraDevs/zeta_flutter/compare/v0.18.0...v0.19.0) (2024-11-18)
+
+
+### ✨ New Features
+
+* Added shrink items to navigation bar so the items can expand to fill the space and shrink ([5a785f0](https://github.com/ZebraDevs/zeta_flutter/commit/5a785f0cd35a827297ca2d8b96a7f96cf45215cc))
+* **UX-1096:** Added shrink items to navigation bar so the items can expand or shrink. To match web ([#210](https://github.com/ZebraDevs/zeta_flutter/issues/210)) ([5a785f0](https://github.com/ZebraDevs/zeta_flutter/commit/5a785f0cd35a827297ca2d8b96a7f96cf45215cc))
+
+
+### 🪲 Bug Fixes
+
+* add SafeArea to ZetaNavigationBar ([#211](https://github.com/ZebraDevs/zeta_flutter/issues/211)) ([aa7a1e4](https://github.com/ZebraDevs/zeta_flutter/commit/aa7a1e4eff10274f4fb11111a825e21a496522a6))
+* added shrink items to widgetbook ([5a785f0](https://github.com/ZebraDevs/zeta_flutter/commit/5a785f0cd35a827297ca2d8b96a7f96cf45215cc))
+* breadcrumb now removes the items after the one that is clicked ([d97440b](https://github.com/ZebraDevs/zeta_flutter/commit/d97440b6acde461ed615b1ea827064b4b53af351))
+* breadcrumb select index ([d97440b](https://github.com/ZebraDevs/zeta_flutter/commit/d97440b6acde461ed615b1ea827064b4b53af351))
+* Changed font size of medium indicator from 12 to 11 ([9f6ed48](https://github.com/ZebraDevs/zeta_flutter/commit/9f6ed48a91d5a0f681d7c3df43da49dc40852f1d))
+* Extra verbose semantic label ([9f6ed48](https://github.com/ZebraDevs/zeta_flutter/commit/9f6ed48a91d5a0f681d7c3df43da49dc40852f1d))
+* hover color on navigation item ([9f6ed48](https://github.com/ZebraDevs/zeta_flutter/commit/9f6ed48a91d5a0f681d7c3df43da49dc40852f1d))
+* indicator semantic labels ([9f6ed48](https://github.com/ZebraDevs/zeta_flutter/commit/9f6ed48a91d5a0f681d7c3df43da49dc40852f1d))
+* intruduced a value listenable builder to handle hover and pressed states on breadcrumb item ([d97440b](https://github.com/ZebraDevs/zeta_flutter/commit/d97440b6acde461ed615b1ea827064b4b53af351))
+* made NavigationItem visible for testing ([9f6ed48](https://github.com/ZebraDevs/zeta_flutter/commit/9f6ed48a91d5a0f681d7c3df43da49dc40852f1d))
+* navigation bar semantic labels ([9f6ed48](https://github.com/ZebraDevs/zeta_flutter/commit/9f6ed48a91d5a0f681d7c3df43da49dc40852f1d))
+* removed active icon prop ([d97440b](https://github.com/ZebraDevs/zeta_flutter/commit/d97440b6acde461ed615b1ea827064b4b53af351))
+* rounded now affects breadcrumb icons ([d97440b](https://github.com/ZebraDevs/zeta_flutter/commit/d97440b6acde461ed615b1ea827064b4b53af351))
+* set navigation item highlight shape to rectangle ([9f6ed48](https://github.com/ZebraDevs/zeta_flutter/commit/9f6ed48a91d5a0f681d7c3df43da49dc40852f1d))
+* The icon that was passed in now shows on breadcrumb ([d97440b](https://github.com/ZebraDevs/zeta_flutter/commit/d97440b6acde461ed615b1ea827064b4b53af351))
+* truncated only hides any breadcrumbs over the maxItemsShown number ([d97440b](https://github.com/ZebraDevs/zeta_flutter/commit/d97440b6acde461ed615b1ea827064b4b53af351))
+* typo ";abel" =&gt; "label" ([d97440b](https://github.com/ZebraDevs/zeta_flutter/commit/d97440b6acde461ed615b1ea827064b4b53af351))
+* **UX-1232:** Breadcrumb Issues ([#214](https://github.com/ZebraDevs/zeta_flutter/issues/214)) ([d97440b](https://github.com/ZebraDevs/zeta_flutter/commit/d97440b6acde461ed615b1ea827064b4b53af351))
+* **UX-1315:** Update license  ([#208](https://github.com/ZebraDevs/zeta_flutter/issues/208)) ([bfbfa23](https://github.com/ZebraDevs/zeta_flutter/commit/bfbfa238f3356368d1f36d32d15ba8de4706646e))
+* **UX-1316:** Update macro desciption ([bfbfa23](https://github.com/ZebraDevs/zeta_flutter/commit/bfbfa238f3356368d1f36d32d15ba8de4706646e))
+
+
+### ⛓️ Dependencies
+
+* Update example app android dependencies ([#212](https://github.com/ZebraDevs/zeta_flutter/issues/212)) ([179c2cb](https://github.com/ZebraDevs/zeta_flutter/commit/179c2cba6ef0f65523d273d8dad2399f8292e220))
+
+
+### 🧪 Tests
+
+* added more tests for navigation bar ([9f6ed48](https://github.com/ZebraDevs/zeta_flutter/commit/9f6ed48a91d5a0f681d7c3df43da49dc40852f1d))
+* breadcrumb items are spaced equally ([d97440b](https://github.com/ZebraDevs/zeta_flutter/commit/d97440b6acde461ed615b1ea827064b4b53af351))
+* breadcrumb label and icon default colors ([d97440b](https://github.com/ZebraDevs/zeta_flutter/commit/d97440b6acde461ed615b1ea827064b4b53af351))
+* edited test to pass after merge ([9f6ed48](https://github.com/ZebraDevs/zeta_flutter/commit/9f6ed48a91d5a0f681d7c3df43da49dc40852f1d))
+* fixed debug fill props avatar ([9f6ed48](https://github.com/ZebraDevs/zeta_flutter/commit/9f6ed48a91d5a0f681d7c3df43da49dc40852f1d))
+* hardcoded offset ([9f6ed48](https://github.com/ZebraDevs/zeta_flutter/commit/9f6ed48a91d5a0f681d7c3df43da49dc40852f1d))
+* Navigation Bar ([#213](https://github.com/ZebraDevs/zeta_flutter/issues/213)) ([9f6ed48](https://github.com/ZebraDevs/zeta_flutter/commit/9f6ed48a91d5a0f681d7c3df43da49dc40852f1d))
+* navigation item calls onTap when an item is tapped off center ([9f6ed48](https://github.com/ZebraDevs/zeta_flutter/commit/9f6ed48a91d5a0f681d7c3df43da49dc40852f1d))
+* ran test counter ([9f6ed48](https://github.com/ZebraDevs/zeta_flutter/commit/9f6ed48a91d5a0f681d7c3df43da49dc40852f1d))
+* Uncommented text contrast tests ([9f6ed48](https://github.com/ZebraDevs/zeta_flutter/commit/9f6ed48a91d5a0f681d7c3df43da49dc40852f1d))
+* writing tests for navigation bar ([9f6ed48](https://github.com/ZebraDevs/zeta_flutter/commit/9f6ed48a91d5a0f681d7c3df43da49dc40852f1d))
+* wrote content and accessibility tests ([d97440b](https://github.com/ZebraDevs/zeta_flutter/commit/d97440b6acde461ed615b1ea827064b4b53af351))
+
+
+### 🧹 Miscellaneous Chores
+
+* **automated:** Lint commit and format ([9f6ed48](https://github.com/ZebraDevs/zeta_flutter/commit/9f6ed48a91d5a0f681d7c3df43da49dc40852f1d))
+* **automated:** Lint commit and format ([9f6ed48](https://github.com/ZebraDevs/zeta_flutter/commit/9f6ed48a91d5a0f681d7c3df43da49dc40852f1d))
+
 ## [0.18.0](https://github.com/ZebraDevs/zeta_flutter/compare/v0.17.0...v0.18.0) (2024-11-11)
 
 
