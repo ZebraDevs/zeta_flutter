@@ -131,7 +131,7 @@ class ZetaNavigationBar extends ZetaStatelessWidget {
         final index = items.indexOf(navItem);
         return Expanded(
           flex: !shrinkItems ? 1 : 0,
-          child: _NavigationItem(
+          child: NavigationItem(
             selected: index == currentIndex,
             item: navItem,
             onTap: () => onTap?.call(index),
@@ -186,7 +186,7 @@ class ZetaNavigationBar extends ZetaStatelessWidget {
     }
 
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: Zeta.of(context).spacing.medium),
+      padding: EdgeInsets.symmetric(horizontal: Zeta.of(context).spacing.large),
       decoration: BoxDecoration(
         color: colors.surfacePrimary,
         border: Border(top: BorderSide(color: colors.borderSubtle)),
@@ -210,19 +210,32 @@ class ZetaNavigationBar extends ZetaStatelessWidget {
   }
 }
 
-class _NavigationItem extends ZetaStatelessWidget {
-  const _NavigationItem({
+/// A single item in a [ZetaNavigationBar].
+@visibleForTesting
+@protected
+class NavigationItem extends ZetaStatelessWidget {
+  /// Creates a new [NavigationItem].
+  const NavigationItem({
+    super.key,
     required this.selected,
     required this.item,
     required this.onTap,
     required this.context,
   });
 
+  /// Whether the item is selected.
   final bool selected;
+
+  /// The item to display.
   final ZetaNavigationBarItem item;
+
+  /// Called when the item is tapped.
   final VoidCallback onTap;
+
+  /// The build context of the [ZetaNavigationBar].
   final BuildContext context;
 
+  /// The badge to show on the navigation item.
   Widget get badge {
     final ZetaColors colors = Zeta.of(context).colors;
     return Positioned(
@@ -230,7 +243,7 @@ class _NavigationItem extends ZetaStatelessWidget {
       right: Zeta.of(context).spacing.minimum,
       child: DecoratedBox(
         decoration: BoxDecoration(
-          color: colors.surfacePrimary,
+          color: colors.surfaceDefault,
           borderRadius: Zeta.of(context).radius.full,
         ),
         child: item.badge?.copyWith(
@@ -240,6 +253,7 @@ class _NavigationItem extends ZetaStatelessWidget {
                   ? ZetaWidgetSize.medium
                   : null,
           type: ZetaIndicatorType.notification,
+          semanticLabel: item.badge?.semanticLabel,
         ),
       ),
     );
@@ -255,9 +269,10 @@ class _NavigationItem extends ZetaStatelessWidget {
       child: InkResponse(
         borderRadius: context.rounded ? Zeta.of(context).radius.rounded : Zeta.of(context).radius.none,
         onTap: onTap,
+        hoverColor: colors.surfaceHover,
+        highlightShape: BoxShape.rectangle,
         child: Semantics(
           button: true,
-          explicitChildNodes: true,
           label: item.label,
           child: Container(
             padding: EdgeInsets.only(

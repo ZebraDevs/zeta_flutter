@@ -32,7 +32,7 @@ export 'in_page_banner/in_page_banner.dart';
 export 'list_item/dropdown_list_item.dart';
 export 'list_item/list_item.dart';
 export 'list_item/notification_list_item.dart';
-export 'navigation bar/navigation_bar.dart';
+export 'navigation bar/navigation_bar.dart' hide NavigationItem;
 export 'navigation_rail/navigation_rail.dart';
 export 'pagination/pagination.dart';
 export 'password/password_input.dart';
