@@ -24,7 +24,7 @@ class ZetaBreadcrumb extends ZetaStatefulWidget {
   /// Breadcrumb children
   final List<ZetaBreadcrumbItem> children;
 
-  /// Semantic ;abel passed to [_TruncatedItem].
+  /// Semantic label passed to [_TruncatedItem].
   /// {@macro zeta-widget-semantic-label}
   final String? moreSemanticLabel;
 
