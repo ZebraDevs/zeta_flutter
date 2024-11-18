@@ -124,7 +124,7 @@ class _ZetaBreadcrumbsState extends State<ZetaBreadcrumb> {
           .add(_TruncatedItem(semanticLabel: widget.moreSemanticLabel ?? 'View More', children: truncatedChildren));
 
       for (final (index, element) in children.sublist(children.length - (widget.maxItemsShown - 1)).indexed) {
-        returnList.add(createBreadCrumb(element, index + children.length - (widget.maxItemsShown)));
+        returnList.add(createBreadCrumb(element, index + children.length - (widget.maxItemsShown) + 1));
       }
     } else {
       for (final (index, element) in children.indexed) {

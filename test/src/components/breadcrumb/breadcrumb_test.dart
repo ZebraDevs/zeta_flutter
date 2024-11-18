@@ -68,7 +68,6 @@ void main() {
       await tester.pumpWidget(
         TestApp(
           home: ZetaBreadcrumb(
-            maxItemsShown: maxItemsShown,
             children: children,
           ),
         ),

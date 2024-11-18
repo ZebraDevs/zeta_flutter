@@ -18,55 +18,14 @@ class _BreadcrumbExampleState extends State<BreadcrumbExample> {
   void initState() {
     super.initState();
     _children = [
-      ZetaBreadcrumbItem(
-        label: 'Breadcrumb',
-        onPressed: () {
-          print("Breadcrumb clicked");
-        },
-      ),
-      ZetaBreadcrumbItem(
-        label: 'Item 1',
-        onPressed: () {
-          print("Breadcrumb clicked");
-        },
-      ),
-      ZetaBreadcrumbItem(
-        label: 'Item 2',
-        onPressed: () {
-          print("Breadcrumb clicked");
-        },
-      ),
-      ZetaBreadcrumbItem(
-        label: 'Item 3',
-        icon: ZetaIcons.star,
-        onPressed: () {
-          print("Breadcrumb clicked");
-        },
-      ),
-      ZetaBreadcrumbItem(
-        label: 'Item 4',
-        onPressed: () {
-          print("Breadcrumb clicked");
-        },
-      ),
-      ZetaBreadcrumbItem(
-        label: 'Item 5',
-        onPressed: () {
-          print("Breadcrumb clicked");
-        },
-      ),
-      ZetaBreadcrumbItem(
-        label: 'Item 6',
-        onPressed: () {
-          print("Breadcrumb clicked");
-        },
-      ),
-      ZetaBreadcrumbItem(
-        label: 'Item 7',
-        onPressed: () {
-          print("Breadcrumb clicked");
-        },
-      ),
+      ZetaBreadcrumbItem(label: 'Breadcrumb', onPressed: () {}),
+      ZetaBreadcrumbItem(label: 'Item 1', onPressed: () {}),
+      ZetaBreadcrumbItem(label: 'Item 2', onPressed: () {}),
+      ZetaBreadcrumbItem(label: 'Item 3', icon: ZetaIcons.star, onPressed: () {}),
+      ZetaBreadcrumbItem(label: 'Item 4', onPressed: () {}),
+      ZetaBreadcrumbItem(label: 'Item 5', onPressed: () {}),
+      ZetaBreadcrumbItem(label: 'Item 6', onPressed: () {}),
+      ZetaBreadcrumbItem(label: 'Item 7', onPressed: () {}),
     ];
   }
 
@@ -77,52 +36,20 @@ class _BreadcrumbExampleState extends State<BreadcrumbExample> {
       child: Center(
         child: SingleChildScrollView(
           child: SizedBox(
-              width: double.infinity,
-              child: Column(children: [
+            width: double.infinity,
+            child: Column(
+              children: [
                 ZetaBreadcrumb(children: _children.sublist(0, 1)),
-                SizedBox(
-                  height: 50,
-                ),
                 ZetaBreadcrumb(children: _children.sublist(0, 2)),
-                SizedBox(
-                  height: 50,
-                ),
                 ZetaBreadcrumb(children: _children.sublist(0, 3)),
-                SizedBox(
-                  height: 50,
-                ),
-                ZetaBreadcrumb(
-                  children: _children.sublist(0, 4),
-                  maxItemsShown: 3,
-                ),
-                SizedBox(
-                  height: 50,
-                ),
-                ZetaBreadcrumb(
-                  children: _children.sublist(0, 5),
-                  maxItemsShown: 4,
-                ),
-                SizedBox(
-                  height: 50,
-                ),
-                ZetaBreadcrumb(
-                  children: _children.sublist(0, 6),
-                  maxItemsShown: 3,
-                ),
-                SizedBox(
-                  height: 50,
-                ),
-                ZetaBreadcrumb(
-                  children: _children.sublist(0, 7),
-                ),
-                SizedBox(
-                  height: 50,
-                ),
-                ZetaBreadcrumb(
-                  children: _children,
-                  maxItemsShown: 1,
-                ),
-              ])),
+                ZetaBreadcrumb(children: _children.sublist(0, 4), maxItemsShown: 3),
+                ZetaBreadcrumb(children: _children.sublist(0, 5), maxItemsShown: 5),
+                ZetaBreadcrumb(children: _children.sublist(0, 6), maxItemsShown: 3),
+                ZetaBreadcrumb(children: _children.sublist(0, 7)),
+                ZetaBreadcrumb(children: _children, maxItemsShown: 1),
+              ].gap(50),
+            ),
+          ),
         ),
       ),
     );
