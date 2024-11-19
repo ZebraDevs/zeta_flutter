@@ -38,6 +38,7 @@ import 'pages/components/password_input_widgetbook.dart';
 import 'pages/components/phone_input_widgetbook.dart';
 import 'pages/components/progress_widgetbook.dart';
 import 'pages/components/radio_widgetbook.dart';
+import 'pages/components/range_selector_widgetbook.dart';
 import 'pages/components/screen_header_bar_widgetbook.dart';
 import 'pages/components/search_bar_widgetbook.dart';
 import 'pages/components/segmented_control_widgetbook.dart';
@@ -212,6 +213,7 @@ class _HotReloadState extends State<HotReload> {
             WidgetbookUseCase(name: 'Segmented Control', builder: (context) => segmentedControlUseCase(context)),
             WidgetbookUseCase(name: 'Select Input', builder: (context) => selectInputUseCase(context)),
             WidgetbookUseCase(name: 'Slider', builder: (context) => sliderUseCase(context)),
+            WidgetbookUseCase(name: 'Range Selector', builder: (context) => rangeSelectorUseCase(context)),
             WidgetbookUseCase(name: 'Snack Bar', builder: (context) => snackBarUseCase(context)),
             WidgetbookUseCase(name: 'Stepper Input', builder: (context) => stepperInputUseCase(context)),
             WidgetbookUseCase(name: 'Stepper', builder: (context) => stepperUseCase(context)),
