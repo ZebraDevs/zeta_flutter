@@ -329,23 +329,26 @@ class _ZetaTopAppBarState extends State<ZetaTopAppBar> {
 
     return ZetaRoundedScope(
       rounded: context.rounded,
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: spacing.minimum),
-        child: AppBar(
-          elevation: 0,
-          scrolledUnderElevation: 0,
-          backgroundColor: colors.surfacePrimary,
-          iconTheme: IconThemeData(color: colors.iconDefault),
-          leading: leading,
-          toolbarHeight: spacing.xl_9,
-          automaticallyImplyLeading: widget.automaticallyImplyLeading,
-          surfaceTintColor: Colors.transparent,
-          centerTitle: widget.type == ZetaTopAppBarType.centered,
-          titleTextStyle: widget.titleTextStyle == null
-              ? ZetaTextStyles.bodyLarge.copyWith(color: colors.textDefault)
-              : widget.titleTextStyle!.copyWith(color: colors.textDefault),
-          title: title,
-          actions: actions,
+      child: ColoredBox(
+        color: colors.surfaceDefault,
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: spacing.minimum),
+          child: AppBar(
+            elevation: 0,
+            scrolledUnderElevation: 0,
+            backgroundColor: colors.surfacePrimary,
+            iconTheme: IconThemeData(color: colors.iconDefault),
+            leading: leading,
+            toolbarHeight: spacing.xl_9,
+            automaticallyImplyLeading: widget.automaticallyImplyLeading,
+            surfaceTintColor: Colors.transparent,
+            centerTitle: widget.type == ZetaTopAppBarType.centered,
+            titleTextStyle: widget.titleTextStyle == null
+                ? ZetaTextStyles.bodyLarge.copyWith(color: colors.textDefault)
+                : widget.titleTextStyle!.copyWith(color: colors.textDefault),
+            title: title,
+            actions: actions,
+          ),
         ),
       ),
     );
