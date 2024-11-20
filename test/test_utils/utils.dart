@@ -88,3 +88,39 @@ void debugFillPropertiesTest(Widget widget, Map<String, dynamic> properties) {
     });
   });
 }
+
+void meetsAccessbilityGuidelinesTest(
+  Widget widget, {
+  ThemeMode themeMode = ThemeMode.system,
+  Size? screenSize,
+  bool? rounded,
+  Future<void> Function(WidgetTester)? setUp,
+  Future<void> Function(WidgetTester)? beforeTest,
+}) {
+  testWidgets('meets accessibility requirements', (WidgetTester tester) async {
+    final SemanticsHandle handle = tester.ensureSemantics();
+    if (setUp != null) {
+      await setUp(tester);
+    }
+
+    await tester.pumpWidget(
+      TestApp(
+        screenSize: screenSize,
+        themeMode: themeMode,
+        rounded: rounded,
+        home: widget,
+      ),
+    );
+
+    if (beforeTest != null) {
+      await beforeTest(tester);
+    }
+
+    await expectLater(tester, meetsGuideline(androidTapTargetGuideline));
+    await expectLater(tester, meetsGuideline(iOSTapTargetGuideline));
+    await expectLater(tester, meetsGuideline(labeledTapTargetGuideline));
+    await expectLater(tester, meetsGuideline(textContrastGuideline));
+
+    handle.dispose();
+  });
+}

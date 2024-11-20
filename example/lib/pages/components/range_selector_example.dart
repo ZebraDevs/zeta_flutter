@@ -26,14 +26,13 @@ class _RangeSelectorExampleState extends State<RangeSelectorExample> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Slider - Rounded - Continuous', style: ZetaTextStyles.bodyLarge),
+                  Text('Range Slider - Rounded - Continuous', style: ZetaTextStyles.bodyLarge),
                   ZetaRangeSelector(
                     onChange: (value) {
                       print(value.start);
                       print(value.end);
                     },
-                    lowerValue: 20,
-                    upperValue: 80,
+                    initialValues: RangeValues(20, 80),
                     min: 0,
                     max: 100,
                     showValues: false,
@@ -43,11 +42,10 @@ class _RangeSelectorExampleState extends State<RangeSelectorExample> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Slider - Rounded - Stepped', style: ZetaTextStyles.bodyLarge),
+                  Text('Range Slider - Rounded - Stepped', style: ZetaTextStyles.bodyLarge),
                   ZetaRangeSelector(
                     onChange: (value) {},
-                    lowerValue: 20,
-                    upperValue: 80,
+                    initialValues: RangeValues(20, 80),
                     min: 0,
                     max: 100,
                     showValues: false,
@@ -58,10 +56,9 @@ class _RangeSelectorExampleState extends State<RangeSelectorExample> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Slider - Rounded - Disabled', style: ZetaTextStyles.bodyLarge),
+                  Text('Range Slider - Rounded - Disabled', style: ZetaTextStyles.bodyLarge),
                   ZetaRangeSelector(
-                    lowerValue: 20,
-                    upperValue: 80,
+                    initialValues: RangeValues(20, 80),
                     min: 0,
                     max: 100,
                     showValues: false,
@@ -71,11 +68,10 @@ class _RangeSelectorExampleState extends State<RangeSelectorExample> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Slider - Sharp - Continuous', style: ZetaTextStyles.bodyLarge),
+                  Text('Range Slider - Sharp - Continuous', style: ZetaTextStyles.bodyLarge),
                   ZetaRangeSelector(
                     onChange: (value) {},
-                    lowerValue: 20,
-                    upperValue: 80,
+                    initialValues: RangeValues(20, 80),
                     min: 0,
                     max: 100,
                     showValues: false,
@@ -86,11 +82,10 @@ class _RangeSelectorExampleState extends State<RangeSelectorExample> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Slider - Sharp - Stepped', style: ZetaTextStyles.bodyLarge),
+                  Text('Range Slider - Sharp - Stepped', style: ZetaTextStyles.bodyLarge),
                   ZetaRangeSelector(
                     onChange: (value) {},
-                    lowerValue: 20,
-                    upperValue: 80,
+                    initialValues: RangeValues(20, 80),
                     min: 0,
                     max: 100,
                     showValues: false,
@@ -102,10 +97,9 @@ class _RangeSelectorExampleState extends State<RangeSelectorExample> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Slider - Sharp - Disabled', style: ZetaTextStyles.bodyLarge),
+                  Text('Range Slider - Sharp - Disabled', style: ZetaTextStyles.bodyLarge),
                   ZetaRangeSelector(
-                    lowerValue: 20,
-                    upperValue: 80,
+                    initialValues: RangeValues(20, 80),
                     min: 0,
                     max: 100,
                     showValues: false,
@@ -122,11 +116,11 @@ class _RangeSelectorExampleState extends State<RangeSelectorExample> {
                   Text('Range Selector - Rounded - Continuous', style: ZetaTextStyles.bodyLarge),
                   ZetaRangeSelector(
                     onChange: (value) {},
-                    lowerValue: 20,
-                    upperValue: 80,
+                    initialValues: RangeValues(20, 40),
                     min: 0,
-                    max: 100,
+                    max: 50,
                     label: 'Label',
+                    semanticLabel: 'Hello World!',
                   ),
                 ].gap(12),
               ),
@@ -136,8 +130,7 @@ class _RangeSelectorExampleState extends State<RangeSelectorExample> {
                   Text('Range Selector - Rounded - Stepped', style: ZetaTextStyles.bodyLarge),
                   ZetaRangeSelector(
                     onChange: (value) {},
-                    lowerValue: 20,
-                    upperValue: 80,
+                    initialValues: RangeValues(20, 80),
                     min: 0,
                     max: 100,
                     label: 'Label',
@@ -150,8 +143,7 @@ class _RangeSelectorExampleState extends State<RangeSelectorExample> {
                 children: [
                   Text('Range Selector - Rounded - Disabled', style: ZetaTextStyles.bodyLarge),
                   ZetaRangeSelector(
-                    lowerValue: 20,
-                    upperValue: 80,
+                    initialValues: RangeValues(20, 80),
                     min: 0,
                     max: 100,
                     label: 'Label',
@@ -165,8 +157,7 @@ class _RangeSelectorExampleState extends State<RangeSelectorExample> {
                   Text('Range Selector - Sharp - Continuous', style: ZetaTextStyles.bodyLarge),
                   ZetaRangeSelector(
                     onChange: (value) {},
-                    lowerValue: 20,
-                    upperValue: 80,
+                    initialValues: RangeValues(20, 80),
                     min: 0,
                     max: 100,
                     label: 'Label',
@@ -180,8 +171,7 @@ class _RangeSelectorExampleState extends State<RangeSelectorExample> {
                   Text('Range Selector - Sharp - Stepped', style: ZetaTextStyles.bodyLarge),
                   ZetaRangeSelector(
                     onChange: (value) {},
-                    lowerValue: 20,
-                    upperValue: 80,
+                    initialValues: RangeValues(20, 80),
                     min: 0,
                     max: 100,
                     label: 'Label',
@@ -195,8 +185,7 @@ class _RangeSelectorExampleState extends State<RangeSelectorExample> {
                 children: [
                   Text('Range Selector - Sharp - Disabled', style: ZetaTextStyles.bodyLarge),
                   ZetaRangeSelector(
-                    lowerValue: 20,
-                    upperValue: 80,
+                    initialValues: RangeValues(20, 80),
                     min: 0,
                     max: 100,
                     label: 'Label',
