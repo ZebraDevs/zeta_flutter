@@ -116,9 +116,9 @@ class _RangeSelectorExampleState extends State<RangeSelectorExample> {
                   Text('Range Selector - Rounded - Continuous', style: ZetaTextStyles.bodyLarge),
                   ZetaRangeSelector(
                     onChange: (value) {},
-                    initialValues: RangeValues(20, 40),
+                    initialValues: RangeValues(20, 80),
                     min: 0,
-                    max: 50,
+                    max: 100,
                     label: 'Label',
                     semanticLabel: 'Hello World!',
                   ),

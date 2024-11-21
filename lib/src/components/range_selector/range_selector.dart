@@ -217,7 +217,7 @@ class _ZetaRangeSelectorState extends State<ZetaRangeSelector> {
                       /// Ticks
                       activeTickMarkColor: colors.surfaceDefault,
                       inactiveTickMarkColor: colors.surfaceDefault,
-                      rangeTickMarkShape: const RoundRangeSliderTickMarkShape(tickMarkRadius: 2),
+                      rangeTickMarkShape: const RoundRangeSliderTickMarkShape(tickMarkRadius: 1),
 
                       /// Thumbs
                       overlayShape: _DrawThumbOverlay(
@@ -335,7 +335,7 @@ class _ValueField extends StatelessWidget {
         controller: controller,
         onEditingComplete: onEditingComplete,
         onChanged: onChanged,
-        onTapOutside: (event) => onTapOutside?.call(event),
+        onTapOutside: onTapOutside.call,
         textAlign: TextAlign.center,
         inputFormatters: [FilteringTextInputFormatter.digitsOnly],
         style: Theme.of(context).textTheme.bodyMedium?.copyWith(

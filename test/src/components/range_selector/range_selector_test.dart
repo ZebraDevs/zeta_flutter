@@ -1,5 +1,3 @@
-import 'dart:nativewrappers/_internal/vm/lib/ffi_allocation_patch.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
@@ -318,79 +316,70 @@ void main() {
       expect(secondValue!.round(), 61);
     });
 
-    // input boxes set the value of the slider
     testWidgets('TextFormFields set the value of the slider', (tester) async {
+      RangeValues values = const RangeValues(20, 80);
       await tester.pumpWidget(
         TestApp(
           home: Padding(
             padding: const EdgeInsets.all(32),
             child: ZetaRangeSelector(
               label: 'Range Selector',
-              initialValues: const RangeValues(20, 80),
-              onChange: (value) => ,
+              initialValues: values,
+              onChange: (newValues) {
+                values = newValues;
+              },
             ),
           ),
         ),
       );
 
-      await tester.pumpAndSettle();
-
-      final slider = find.byType(ZetaRangeSelector);
-      final sliderWidget = tester.widget<ZetaRangeSelector>(slider);
-
-      expect(slider.first., const RangeValues(20, 80));
-
-      final textFields = find.byType(TextField);
-      final firstTextField = textFields.first;
-      final lastTextField = textFields.last;
-
-      await tester.enterText(firstTextField, '50');
-
-      await tester.tapAt(const Offset(100, 100));
-      await tester.enterText(lastTextField, '70');
-      await tester.tapAt(const Offset(100, 100));
+      final firstTextFinder = find.ancestor(of: find.text('20'), matching: find.byType(TextFormField));
+      final secondTextFinder = find.ancestor(of: find.text('80'), matching: find.byType(TextFormField));
 
       await tester.pumpAndSettle();
+      await tester.enterText(firstTextFinder, '40');
+      await tester.testTextInput.receiveAction(TextInputAction.done);
 
-      expect(sliderWidget.values, const RangeValues(50, 70));
+      await tester.enterText(secondTextFinder, '60');
+      await tester.testTextInput.receiveAction(TextInputAction.done);
+      await tester.pump();
+
+      expect(values, const RangeValues(40, 60));
     });
 
-        testWidgets('TextFormFields set the value of the slider', (tester) async {
+    testWidgets('TextFormFields set the value of the slider on tap outside', (tester) async {
+      RangeValues values = const RangeValues(20, 80);
       await tester.pumpWidget(
-        MaterialApp(
+        TestApp(
           home: Padding(
             padding: const EdgeInsets.all(32),
             child: ZetaRangeSelector(
               label: 'Range Selector',
-              initialValues: const RangeValues(20, 80),
-              onChange: (value) {},
+              initialValues: values,
+              onChange: (newValues) {
+                values = newValues;
+              },
             ),
           ),
         ),
       );
 
+      final firstTextFinder = find.ancestor(of: find.text('20'), matching: find.byType(TextFormField));
+      final secondTextFinder = find.ancestor(of: find.text('80'), matching: find.byType(TextFormField));
+
       await tester.pumpAndSettle();
+      await tester.enterText(firstTextFinder, '30');
+      await tester.pump();
+      await tester.tapAt(Offset.zero);
+      await tester.pump();
 
-
-      final sliderFinder = find.byType(ZetaRangeSelector);
-      expect(sliderFinder, findsOneWidget);
-
-      final state = tester.;
-      expect(state._values, const RangeValues(20, 80));
-
-      final textFields = find.byType(TextField);
-      final firstTextField = textFields.first;
-      final lastTextField = textFields.last;
-
-      await tester.enterText(firstTextField, '50');
-      await tester.testTextInput.receiveAction(TextInputAction.done);
       await tester.pumpAndSettle();
+      await tester.enterText(secondTextFinder, '70');
+      await tester.pump();
+      await tester.tapAt(Offset.zero);
+      await tester.pump();
 
-      await tester.enterText(lastTextField, '70');
-      await tester.testTextInput.receiveAction(TextInputAction.done);
-      await tester.pumpAndSettle();
-
-      expect(state._values, const RangeValues(50, 70));
+      expect(values, const RangeValues(30, 70));
     });
   });
 
