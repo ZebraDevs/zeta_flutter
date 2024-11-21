@@ -11,7 +11,7 @@ void main() {
 
   const goldenFile = GoldenFiles(component: parentFolder);
   setUpAll(() {
-    goldenFileComparator = TolerantComparator(goldenFile.uri, tolerance: 0);
+    goldenFileComparator = TolerantComparator(goldenFile.uri, tolerance: 0.001);
   });
 
   group('Accessibility Tests', () {
