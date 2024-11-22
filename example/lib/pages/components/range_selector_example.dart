@@ -120,7 +120,6 @@ class _RangeSelectorExampleState extends State<RangeSelectorExample> {
                     min: 0,
                     max: 100,
                     label: 'Label',
-                    semanticLabel: 'Hello World!',
                   ),
                 ].gap(12),
               ),

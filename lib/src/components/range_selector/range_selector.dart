@@ -21,7 +21,6 @@ class ZetaRangeSelector extends ZetaStatefulWidget {
     this.divisions,
     this.semanticLabel,
     this.showValues = true,
-    this.largeSliderThumbs = false,
   }) : assert(
           min <= initialValues.start && initialValues.start <= initialValues.end && initialValues.end <= max,
           'The start value must be less than or equal to the end value, and both must be within the range of min and max.',
@@ -51,12 +50,7 @@ class ZetaRangeSelector extends ZetaStatefulWidget {
   final String? semanticLabel;
 
   /// Whether to show the values of the range selector.
-  /// Defaults to true.
   final bool showValues;
-
-  /// Whether to use larger slider thumbs.
-  /// Defaults to false.
-  final bool largeSliderThumbs;
 
   @override
   State<ZetaRangeSelector> createState() => _ZetaRangeSelectorState();
@@ -72,8 +66,7 @@ class ZetaRangeSelector extends ZetaStatefulWidget {
       ..add(IntProperty('divisions', divisions))
       ..add(StringProperty('semanticLabel', semanticLabel))
       ..add(DiagnosticsProperty<bool>('showValues', showValues))
-      ..add(DiagnosticsProperty<RangeValues>('initialValues', initialValues))
-      ..add(DiagnosticsProperty<bool>('largeSliderThumbs', largeSliderThumbs));
+      ..add(DiagnosticsProperty<RangeValues>('initialValues', initialValues));
   }
 }
 
@@ -221,12 +214,12 @@ class _ZetaRangeSelectorState extends State<ZetaRangeSelector> {
 
                       /// Thumbs
                       overlayShape: _DrawThumbOverlay(
-                        size: widget.largeSliderThumbs ? spacing.xl_3 / 2 : spacing.xl / 2,
+                        size: spacing.xl / 2,
                         rounded: rounded,
                         color: _activeColor,
                       ),
                       rangeThumbShape: _DrawThumb(
-                        size: widget.largeSliderThumbs ? spacing.xl_2 / 2 : spacing.large / 2,
+                        size: spacing.large / 2,
                         rounded: rounded,
                         color: _activeColor,
                       ),

@@ -24,8 +24,6 @@ class RangeSelectorExample extends StatelessWidget {
         divisions: context.knobs.intOrNull.input(label: 'Divisions', initialValue: null),
         showValues: context.knobs.boolean(label: 'Show Values', initialValue: true),
         onChange: disabledKnob(context) ? null : (value) {},
-        largeSliderThumbs: context.knobs.boolean(label: 'Large Slider Thumbs', initialValue: false),
-        rounded: context.knobs.booleanOrNull(label: 'Rounded', initialValue: true),
         initialValues: context.knobs.range(label: 'Initial Range', initialValue: RangeValues(20, 80)),
         min: context.knobs.double.input(label: 'Min', initialValue: 0),
         max: context.knobs.double.input(label: 'Max', initialValue: 100),
