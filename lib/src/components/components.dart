@@ -40,6 +40,7 @@ export 'phone_input/phone_input.dart';
 export 'progress/progress_bar.dart';
 export 'progress/progress_circle.dart';
 export 'radio/radio.dart';
+export 'range_selector/range_selector.dart';
 export 'screen_header_bar/screen_header_bar.dart';
 export 'search_bar/search_bar.dart';
 export 'segmented_control/segmented_control.dart';
