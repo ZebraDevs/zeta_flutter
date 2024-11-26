@@ -312,7 +312,7 @@ class ZetaAvatar extends ZetaStatelessWidget {
                         value: semanticLowerBadgeLabel,
                         child: lowerBadge.runtimeType == ZetaAvatarBadge
                             ? (lowerBadge! as ZetaAvatarBadge).copyWith(size: size)
-                            : upperBadge,
+                            : lowerBadge,
                       ),
                     ),
                 ],
