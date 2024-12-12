@@ -27,3263 +27,4890 @@ abstract class ZetaIcons {
   // Icons
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/activity_round.png"></br>Activity icon </i>
   static const IconData activity = IconData(0xe001, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/add_alert_round.png"></br>Add Alert icon </i>
   static const IconData add_alert = IconData(0xe002, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/add_box_round.png"></br>Add Box icon </i>
   static const IconData add_box = IconData(0xe003, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/add_call_round.png"></br>Add Call icon </i>
   static const IconData add_call = IconData(0xe004, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/add_circle_outline_round.png"></br>Add Circle Outline icon </i>
   static const IconData add_circle_outline = IconData(0xe005, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/add_circle_round.png"></br>Add Circle icon </i>
   static const IconData add_circle = IconData(0xe006, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/add_group_round.png"></br>Add Group icon </i>
   static const IconData add_group = IconData(0xe007, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/add_person_round.png"></br>Add Person icon </i>
   static const IconData add_person = IconData(0xe008, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/add_round.png"></br>Add icon </i>
   static const IconData add = IconData(0xe009, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/add_task_round.png"></br>Add Task icon </i>
   static const IconData add_task = IconData(0xe00a, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/adjustments_round.png"></br>Adjustments icon </i>
   static const IconData adjustments = IconData(0xe00b, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/alarm_round.png"></br>Alarm icon </i>
   static const IconData alarm = IconData(0xe00c, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/alert_active_round.png"></br>Alert Active icon </i>
   static const IconData alert_active = IconData(0xe00d, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/alert_outline_round.png"></br>Alert Outline icon </i>
   static const IconData alert_outline = IconData(0xe00e, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/alert_round.png"></br>Alert icon </i>
   static const IconData alert = IconData(0xe00f, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/align_center_round.png"></br>Align Center icon </i>
   static const IconData align_center = IconData(0xe010, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/align_horizontal_center_round.png"></br>Align Horizontal Center icon </i>
   static const IconData align_horizontal_center = IconData(0xe011, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/align_horizontal_left_round.png"></br>Align Horizontal Left icon </i>
   static const IconData align_horizontal_left = IconData(0xe012, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/align_horizontal_right_round.png"></br>Align Horizontal Right icon </i>
   static const IconData align_horizontal_right = IconData(0xe013, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/align_left_round.png"></br>Align Left icon </i>
   static const IconData align_left = IconData(0xe014, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/align_right_round.png"></br>Align Right icon </i>
   static const IconData align_right = IconData(0xe015, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/align_vertical_bottom_round.png"></br>Align Vertical Bottom icon </i>
   static const IconData align_vertical_bottom = IconData(0xe016, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/align_vertical_center_round.png"></br>Align Vertical Center icon </i>
   static const IconData align_vertical_center = IconData(0xe017, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/align_vertical_top_round.png"></br>Align Vertical Top icon </i>
   static const IconData align_vertical_top = IconData(0xe018, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/analytics_round.png"></br>Analytics icon </i>
   static const IconData analytics = IconData(0xe019, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/android_round.png"></br>Android icon </i>
   static const IconData android = IconData(0xe01a, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/antenna_round.png"></br>Antenna icon </i>
   static const IconData antenna = IconData(0xe01b, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/app_edit_round.png"></br>App Edit icon </i>
   static const IconData app_edit = IconData(0xe01c, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/apps_round.png"></br>Apps icon </i>
   static const IconData apps = IconData(0xe01d, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/ar_round.png"></br>Ar icon </i>
   static const IconData ar = IconData(0xe01e, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/arrow_back_round.png"></br>Arrow Back icon </i>
   static const IconData arrow_back = IconData(0xe01f, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/arrow_down_round.png"></br>Arrow Down icon </i>
   static const IconData arrow_down = IconData(0xe020, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/arrow_forward_round.png"></br>Arrow Forward icon </i>
   static const IconData arrow_forward = IconData(0xe021, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/arrow_up_round.png"></br>Arrow Up icon </i>
   static const IconData arrow_up = IconData(0xe022, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/attachment_round.png"></br>Attachment icon </i>
   static const IconData attachment = IconData(0xe023, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/audio_round.png"></br>Audio icon </i>
   static const IconData audio = IconData(0xe024, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/audit_activity_round.png"></br>Audit Activity icon </i>
   static const IconData audit_activity = IconData(0xe025, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/auto_delete_round.png"></br>Auto Delete icon </i>
   static const IconData auto_delete = IconData(0xe026, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/auto_round.png"></br>Auto icon </i>
   static const IconData auto = IconData(0xe027, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/awb_round.png"></br>Awb icon </i>
   static const IconData awb = IconData(0xe028, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/backspace_round.png"></br>Backspace icon </i>
   static const IconData backspace = IconData(0xe029, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/bad_mood_round.png"></br>Bad Mood icon </i>
   static const IconData bad_mood = IconData(0xe02a, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/barcode_bluetooth_round.png"></br>Barcode Bluetooth icon </i>
   static const IconData barcode_bluetooth = IconData(0xe02b, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/barcode_done_round.png"></br>Barcode Done icon </i>
   static const IconData barcode_done = IconData(0xe02c, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/barcode_image_scan_round.png"></br>Barcode Image Scan icon </i>
   static const IconData barcode_image_scan = IconData(0xe02d, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/barcode_qr_code_round.png"></br>Barcode Qr Code icon </i>
   static const IconData barcode_qr_code = IconData(0xe02e, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/barcode_round.png"></br>Barcode icon </i>
   static const IconData barcode = IconData(0xe02f, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/barcode_scanner_down_round.png"></br>Barcode Scanner Down icon </i>
   static const IconData barcode_scanner_down = IconData(0xe030, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/barcode_settings_round.png"></br>Barcode Settings icon </i>
   static const IconData barcode_settings = IconData(0xe031, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/basket_round.png"></br>Basket icon </i>
   static const IconData basket = IconData(0xe032, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/battery_alert_round.png"></br>Battery Alert icon </i>
   static const IconData battery_alert = IconData(0xe033, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/battery_charging_round.png"></br>Battery Charging icon </i>
   static const IconData battery_charging = IconData(0xe034, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/battery_round.png"></br>Battery icon </i>
   static const IconData battery = IconData(0xe035, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/block_content_round.png"></br>Block Content icon </i>
   static const IconData block_content = IconData(0xe036, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/block_round.png"></br>Block icon </i>
   static const IconData block = IconData(0xe037, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/blog_round.png"></br>Blog icon </i>
   static const IconData blog = IconData(0xe038, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/bluetooth_disabled_round.png"></br>Bluetooth Disabled icon </i>
   static const IconData bluetooth_disabled = IconData(0xe039, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/bluetooth_round.png"></br>Bluetooth icon </i>
   static const IconData bluetooth = IconData(0xe03a, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/bluetooth_searching_round.png"></br>Bluetooth Searching icon </i>
   static const IconData bluetooth_searching = IconData(0xe03b, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/bold_round.png"></br>Bold icon </i>
   static const IconData bold = IconData(0xe03c, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/bookmark_outline_round.png"></br>Bookmark Outline icon </i>
   static const IconData bookmark_outline = IconData(0xe03d, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/bookmark_round.png"></br>Bookmark icon </i>
   static const IconData bookmark = IconData(0xe03e, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/brightness_round.png"></br>Brightness icon </i>
   static const IconData brightness = IconData(0xe03f, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/broadcast_round.png"></br>Broadcast icon </i>
   static const IconData broadcast = IconData(0xe040, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/build_round.png"></br>Build icon </i>
   static const IconData build = IconData(0xe041, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/building_round.png"></br>Building icon </i>
   static const IconData building = IconData(0xe042, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/bullet_list_round.png"></br>Bullet List icon </i>
   static const IconData bullet_list = IconData(0xe043, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/bus_round.png"></br>Bus icon </i>
   static const IconData bus = IconData(0xe044, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/cached_round.png"></br>Cached icon </i>
   static const IconData cached = IconData(0xe045, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/cafe_round.png"></br>Cafe icon </i>
   static const IconData cafe = IconData(0xe046, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/calculator_round.png"></br>Calculator icon </i>
   static const IconData calculator = IconData(0xe047, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/calendar_3_day_round.png"></br>Calendar 3 Day icon </i>
   static const IconData calendar_3_day = IconData(0xe048, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/calendar_alt_1_round.png"></br>Calendar Alt 1 icon </i>
   static const IconData calendar_alt_1 = IconData(0xe049, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/calendar_alt_2_round.png"></br>Calendar Alt 2 icon </i>
   static const IconData calendar_alt_2 = IconData(0xe04a, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/calendar_available_round.png"></br>Calendar Available icon </i>
   static const IconData calendar_available = IconData(0xe04b, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/calendar_day_round.png"></br>Calendar Day icon </i>
   static const IconData calendar_day = IconData(0xe04c, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/calendar_edit_round.png"></br>Calendar Edit icon </i>
   static const IconData calendar_edit = IconData(0xe04d, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/calendar_gantt_round.png"></br>Calendar Gantt icon </i>
   static const IconData calendar_gantt = IconData(0xe04e, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/calendar_monthly_round.png"></br>Calendar Monthly icon </i>
   static const IconData calendar_monthly = IconData(0xe04f, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/calendar_next_round.png"></br>Calendar Next icon </i>
   static const IconData calendar_next = IconData(0xe050, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/calendar_range_round.png"></br>Calendar Range icon </i>
   static const IconData calendar_range = IconData(0xe051, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/calendar_rollover_round.png"></br>Calendar Rollover icon </i>
   static const IconData calendar_rollover = IconData(0xe052, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/calendar_round.png"></br>Calendar icon </i>
   static const IconData calendar = IconData(0xe053, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/calendar_unavailable_round.png"></br>Calendar Unavailable icon </i>
   static const IconData calendar_unavailable = IconData(0xe054, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/calendar_weekly_round.png"></br>Calendar Weekly icon </i>
   static const IconData calendar_weekly = IconData(0xe055, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/calendar_yearly_round.png"></br>Calendar Yearly icon </i>
   static const IconData calendar_yearly = IconData(0xe056, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/call_back_round.png"></br>Call Back icon </i>
   static const IconData call_back = IconData(0xe057, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/camera_round.png"></br>Camera icon </i>
   static const IconData camera = IconData(0xe058, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/camera_shutter_round.png"></br>Camera Shutter icon </i>
   static const IconData camera_shutter = IconData(0xe059, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/camera_switch_image_round.png"></br>Camera Switch Image icon </i>
   static const IconData camera_switch_image = IconData(0xe05a, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/camera_switch_round.png"></br>Camera Switch icon </i>
   static const IconData camera_switch = IconData(0xe05b, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/cancel_outline_round.png"></br>Cancel Outline icon </i>
   static const IconData cancel_outline = IconData(0xe05c, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/cancel_round.png"></br>Cancel icon </i>
   static const IconData cancel = IconData(0xe05d, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/car_round.png"></br>Car icon </i>
   static const IconData car = IconData(0xe05e, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/card_orientation_round.png"></br>Card Orientation icon </i>
   static const IconData card_orientation = IconData(0xe05f, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/card_with_chip_round.png"></br>Card With Chip icon </i>
   static const IconData card_with_chip = IconData(0xe060, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/caret_down_round.png"></br>Caret Down icon </i>
   static const IconData caret_down = IconData(0xe061, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/caret_left_round.png"></br>Caret Left icon </i>
   static const IconData caret_left = IconData(0xe062, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/caret_right_round.png"></br>Caret Right icon </i>
   static const IconData caret_right = IconData(0xe063, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/caret_sort_round.png"></br>Caret Sort icon </i>
   static const IconData caret_sort = IconData(0xe064, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/caret_up_round.png"></br>Caret Up icon </i>
   static const IconData caret_up = IconData(0xe065, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/cast_connected_round.png"></br>Cast Connected icon </i>
   static const IconData cast_connected = IconData(0xe066, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/cast_round.png"></br>Cast icon </i>
   static const IconData cast = IconData(0xe067, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/cellular_signal_round.png"></br>Cellular Signal icon </i>
   static const IconData cellular_signal = IconData(0xe068, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/certificate_round.png"></br>Certificate icon </i>
   static const IconData certificate = IconData(0xe069, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/certified_round.png"></br>Certified icon </i>
   static const IconData certified = IconData(0xe06a, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/chain_round.png"></br>Chain icon </i>
   static const IconData chain = IconData(0xe06b, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/chart_bar_round.png"></br>Chart Bar icon </i>
   static const IconData chart_bar = IconData(0xe06c, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/chart_bubble_charts_round.png"></br>Chart Bubble Charts icon </i>
   static const IconData chart_bubble_charts = IconData(0xe06d, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/chart_bubble_round.png"></br>Chart Bubble icon </i>
   static const IconData chart_bubble = IconData(0xe06e, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/chart_doughnut_round.png"></br>Chart Doughnut icon </i>
   static const IconData chart_doughnut = IconData(0xe06f, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/chart_filled_enterprise_round.png"></br>Chart Filled Enterprise icon </i>
   static const IconData chart_filled_enterprise = IconData(0xe070, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/chart_filled_round.png"></br>Chart Filled icon </i>
   static const IconData chart_filled = IconData(0xe071, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/chart_gantt_round.png"></br>Chart Gantt icon </i>
   static const IconData chart_gantt = IconData(0xe072, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/chart_line_predict_round.png"></br>Chart Line Predict icon </i>
   static const IconData chart_line_predict = IconData(0xe073, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/chart_line_round.png"></br>Chart Line icon </i>
   static const IconData chart_line = IconData(0xe074, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/chart_line_stacked_round.png"></br>Chart Line Stacked icon </i>
   static const IconData chart_line_stacked = IconData(0xe075, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/chart_outline_round.png"></br>Chart Outline icon </i>
   static const IconData chart_outline = IconData(0xe076, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/chart_pie_charts_round.png"></br>Chart Pie Charts icon </i>
   static const IconData chart_pie_charts = IconData(0xe077, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/chart_pie_content_round.png"></br>Chart Pie Content icon </i>
   static const IconData chart_pie_content = IconData(0xe078, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/chart_pie_round.png"></br>Chart Pie icon </i>
   static const IconData chart_pie = IconData(0xe079, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/chart_scatter_plot_round.png"></br>Chart Scatter Plot icon </i>
   static const IconData chart_scatter_plot = IconData(0xe07a, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/chart_stacked_round.png"></br>Chart Stacked icon </i>
   static const IconData chart_stacked = IconData(0xe07b, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/chart_waterfall_round.png"></br>Chart Waterfall icon </i>
   static const IconData chart_waterfall = IconData(0xe07c, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/chat_bot_round.png"></br>Chat Bot icon </i>
   static const IconData chat_bot = IconData(0xe07d, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/chat_bubble_outline_round.png"></br>Chat Bubble Outline icon </i>
   static const IconData chat_bubble_outline = IconData(0xe07e, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/chat_bubble_round.png"></br>Chat Bubble icon </i>
   static const IconData chat_bubble = IconData(0xe07f, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/chat_message_read_round.png"></br>Chat Message Read icon </i>
   static const IconData chat_message_read = IconData(0xe080, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/chat_message_unread_round.png"></br>Chat Message Unread icon </i>
   static const IconData chat_message_unread = IconData(0xe081, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/chat_round.png"></br>Chat icon </i>
   static const IconData chat = IconData(0xe082, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/chat_search_round.png"></br>Chat Search icon </i>
   static const IconData chat_search = IconData(0xe083, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/check_box_empty_round.png"></br>Check Box Empty icon </i>
   static const IconData check_box_empty = IconData(0xe084, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/check_box_round.png"></br>Check Box icon </i>
   static const IconData check_box = IconData(0xe085, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/check_circle_outline_alt_round.png"></br>Check Circle Outline Alt icon </i>
   static const IconData check_circle_outline_alt = IconData(0xe086, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/check_circle_outline_round.png"></br>Check Circle Outline icon </i>
   static const IconData check_circle_outline = IconData(0xe087, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/check_circle_round.png"></br>Check Circle icon </i>
   static const IconData check_circle = IconData(0xe088, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/check_mark_round.png"></br>Check Mark icon </i>
   static const IconData check_mark = IconData(0xe089, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/checklist_round.png"></br>Checklist icon </i>
   static const IconData checklist = IconData(0xe08a, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/chevron_left_round.png"></br>Chevron Left icon </i>
   static const IconData chevron_left = IconData(0xe08b, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/chevron_right_round.png"></br>Chevron Right icon </i>
   static const IconData chevron_right = IconData(0xe08c, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/choices_round.png"></br>Choices icon </i>
   static const IconData choices = IconData(0xe08d, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/clipboard_action_round.png"></br>Clipboard Action icon </i>
   static const IconData clipboard_action = IconData(0xe08e, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/clipboard_round.png"></br>Clipboard icon </i>
   static const IconData clipboard = IconData(0xe08f, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/clock_available_round.png"></br>Clock Available icon </i>
   static const IconData clock_available = IconData(0xe090, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/clock_bid_round.png"></br>Clock Bid icon </i>
   static const IconData clock_bid = IconData(0xe091, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/clock_edit_round.png"></br>Clock Edit icon </i>
   static const IconData clock_edit = IconData(0xe092, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/clock_flexible_round.png"></br>Clock Flexible icon </i>
   static const IconData clock_flexible = IconData(0xe093, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/clock_in_progress_round.png"></br>Clock In Progress icon </i>
   static const IconData clock_in_progress = IconData(0xe094, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/clock_info_round.png"></br>Clock Info icon </i>
   static const IconData clock_info = IconData(0xe095, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/clock_missed_round.png"></br>Clock Missed icon </i>
   static const IconData clock_missed = IconData(0xe096, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/clock_on_round.png"></br>Clock On icon </i>
   static const IconData clock_on = IconData(0xe097, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/clock_outline_round.png"></br>Clock Outline icon </i>
   static const IconData clock_outline = IconData(0xe098, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/clock_rollover_round.png"></br>Clock Rollover icon </i>
   static const IconData clock_rollover = IconData(0xe099, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/clock_round.png"></br>Clock icon </i>
   static const IconData clock = IconData(0xe09a, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/clock_segment_round.png"></br>Clock Segment icon </i>
   static const IconData clock_segment = IconData(0xe09b, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/clock_start_round.png"></br>Clock Start icon </i>
   static const IconData clock_start = IconData(0xe09c, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/clock_stop_round.png"></br>Clock Stop icon </i>
   static const IconData clock_stop = IconData(0xe09d, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/clock_switch_round.png"></br>Clock Switch icon </i>
   static const IconData clock_switch = IconData(0xe09e, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/clock_timer_round.png"></br>Clock Timer icon </i>
   static const IconData clock_timer = IconData(0xe09f, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/clock_upcoming_round.png"></br>Clock Upcoming icon </i>
   static const IconData clock_upcoming = IconData(0xe0a0, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/close_round.png"></br>Close icon </i>
   static const IconData close = IconData(0xe0a1, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/closed_caption_round.png"></br>Closed Caption icon </i>
   static const IconData closed_caption = IconData(0xe0a2, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/cloud_done_round.png"></br>Cloud Done icon </i>
   static const IconData cloud_done = IconData(0xe0a3, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/cloud_download_round.png"></br>Cloud Download icon </i>
   static const IconData cloud_download = IconData(0xe0a4, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/cloud_off_round.png"></br>Cloud Off icon </i>
   static const IconData cloud_off = IconData(0xe0a5, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/cloud_outline_round.png"></br>Cloud Outline icon </i>
   static const IconData cloud_outline = IconData(0xe0a6, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/cloud_round.png"></br>Cloud icon </i>
   static const IconData cloud = IconData(0xe0a7, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/cloud_upload_round.png"></br>Cloud Upload icon </i>
   static const IconData cloud_upload = IconData(0xe0a8, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/color_fill_round.png"></br>Color Fill icon </i>
   static const IconData color_fill = IconData(0xe0a9, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/columns_round.png"></br>Columns icon </i>
   static const IconData columns = IconData(0xe0aa, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/comms_chat_new_round.png"></br>Comms Chat New icon </i>
   static const IconData comms_chat_new = IconData(0xe0ab, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/comms_chat_round.png"></br>Comms Chat icon </i>
   static const IconData comms_chat = IconData(0xe0ac, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/comms_chat_unread_round.png"></br>Comms Chat Unread icon </i>
   static const IconData comms_chat_unread = IconData(0xe0ad, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/contactless_pay_round.png"></br>Contactless Pay icon </i>
   static const IconData contactless_pay = IconData(0xe0ae, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/content_round.png"></br>Content icon </i>
   static const IconData content = IconData(0xe0af, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/contrast_image_round.png"></br>Contrast Image icon </i>
   static const IconData contrast_image = IconData(0xe0b0, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/contrast_round.png"></br>Contrast icon </i>
   static const IconData contrast = IconData(0xe0b1, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/conversation_round.png"></br>Conversation icon </i>
   static const IconData conversation = IconData(0xe0b2, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/copy_file_round.png"></br>Copy File icon </i>
   static const IconData copy_file = IconData(0xe0b3, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/create_new_folder_round.png"></br>Create New Folder icon </i>
   static const IconData create_new_folder = IconData(0xe0b4, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/credit_card_round.png"></br>Credit Card icon </i>
   static const IconData credit_card = IconData(0xe0b5, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/credit_card_swipe_round.png"></br>Credit Card Swipe icon </i>
   static const IconData credit_card_swipe = IconData(0xe0b6, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/crop_round.png"></br>Crop icon </i>
   static const IconData crop = IconData(0xe0b7, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/dark_mode_round.png"></br>Dark Mode icon </i>
   static const IconData dark_mode = IconData(0xe0b8, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/dashboard_round.png"></br>Dashboard icon </i>
   static const IconData dashboard = IconData(0xe0b9, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/delete_forever_round.png"></br>Delete Forever icon </i>
   static const IconData delete_forever = IconData(0xe0ba, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/delete_outline_round.png"></br>Delete Outline icon </i>
   static const IconData delete_outline = IconData(0xe0bb, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/delete_round.png"></br>Delete icon </i>
   static const IconData delete = IconData(0xe0bc, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/desktop_round.png"></br>Desktop icon </i>
   static const IconData desktop = IconData(0xe0bd, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/device_settings_round.png"></br>Device Settings icon </i>
   static const IconData device_settings = IconData(0xe0be, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/devices_ecosystem_round.png"></br>Devices Ecosystem icon </i>
   static const IconData devices_ecosystem = IconData(0xe0bf, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/devices_round.png"></br>Devices icon </i>
   static const IconData devices = IconData(0xe0c0, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/dialpad_round.png"></br>Dialpad icon </i>
   static const IconData dialpad = IconData(0xe0c1, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/dislike_round.png"></br>Dislike icon </i>
   static const IconData dislike = IconData(0xe0c2, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/distribute_horizontal_round.png"></br>Distribute Horizontal icon </i>
   static const IconData distribute_horizontal = IconData(0xe0c3, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/distribute_vertical_round.png"></br>Distribute Vertical icon </i>
   static const IconData distribute_vertical = IconData(0xe0c4, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/doc_attach_round.png"></br>Doc Attach icon </i>
   static const IconData doc_attach = IconData(0xe0c5, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/document_round.png"></br>Document icon </i>
   static const IconData document = IconData(0xe0c6, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/dollar_round.png"></br>Dollar icon </i>
   static const IconData dollar = IconData(0xe0c7, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/download_round.png"></br>Download icon </i>
   static const IconData download = IconData(0xe0c8, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/downloading_round.png"></br>Downloading icon </i>
   static const IconData downloading = IconData(0xe0c9, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/drop_down_circle_round.png"></br>Drop Down Circle icon </i>
   static const IconData drop_down_circle = IconData(0xe0ca, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/eas_round.png"></br>Eas icon </i>
   static const IconData eas = IconData(0xe0cb, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/edit_border_round.png"></br>Edit Border icon </i>
   static const IconData edit_border = IconData(0xe0cc, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/edit_round.png"></br>Edit icon </i>
   static const IconData edit = IconData(0xe0cd, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/email_alt_round.png"></br>Email Alt icon </i>
   static const IconData email_alt = IconData(0xe0ce, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/email_outline_round.png"></br>Email Outline icon </i>
   static const IconData email_outline = IconData(0xe0cf, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/email_reply_all_round.png"></br>Email Reply All icon </i>
   static const IconData email_reply_all = IconData(0xe0d0, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/email_round.png"></br>Email icon </i>
   static const IconData email = IconData(0xe0d1, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/end_call_round.png"></br>End Call icon </i>
   static const IconData end_call = IconData(0xe0d2, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/enterprise_diagnostics_round.png"></br>Enterprise Diagnostics icon </i>
   static const IconData enterprise_diagnostics = IconData(0xe0d3, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/environmental_round.png"></br>Environmental icon </i>
   static const IconData environmental = IconData(0xe0d4, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/error_outline_round.png"></br>Error Outline icon </i>
   static const IconData error_outline = IconData(0xe0d5, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/error_round.png"></br>Error icon </i>
   static const IconData error = IconData(0xe0d6, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/ethernet_round.png"></br>Ethernet icon </i>
   static const IconData ethernet = IconData(0xe0d7, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/exit_round.png"></br>Exit icon </i>
   static const IconData exit = IconData(0xe0d8, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/expand_less_round.png"></br>Expand Less icon </i>
   static const IconData expand_less = IconData(0xe0d9, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/expand_more_round.png"></br>Expand More icon </i>
   static const IconData expand_more = IconData(0xe0da, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/eye_dropper_round.png"></br>Eye Dropper icon </i>
   static const IconData eye_dropper = IconData(0xe0db, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/eye_preview_round.png"></br>Eye Preview icon </i>
   static const IconData eye_preview = IconData(0xe0dc, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/face_id_round.png"></br>Face Id icon </i>
   static const IconData face_id = IconData(0xe0dd, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/facebook_round.png"></br>Facebook icon </i>
   static const IconData facebook = IconData(0xe0de, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/factory_round.png"></br>Factory icon </i>
   static const IconData factory = IconData(0xe0df, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/fast_forward_round.png"></br>Fast Forward icon </i>
   static const IconData fast_forward = IconData(0xe0e0, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/fast_rewind_round.png"></br>Fast Rewind icon </i>
   static const IconData fast_rewind = IconData(0xe0e1, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/file_round.png"></br>File icon </i>
   static const IconData file = IconData(0xe0e2, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/filter_alt_round.png"></br>Filter Alt icon </i>
   static const IconData filter_alt = IconData(0xe0e3, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/filter_round.png"></br>Filter icon </i>
   static const IconData filter = IconData(0xe0e4, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/finished_download_round.png"></br>Finished Download icon </i>
   static const IconData finished_download = IconData(0xe0e5, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/first_page_round.png"></br>First Page icon </i>
   static const IconData first_page = IconData(0xe0e6, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/flag_round.png"></br>Flag icon </i>
   static const IconData flag = IconData(0xe0e7, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/flight_mode_round.png"></br>Flight Mode icon </i>
   static const IconData flight_mode = IconData(0xe0e8, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/flight_round.png"></br>Flight icon </i>
   static const IconData flight = IconData(0xe0e9, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/flip_round.png"></br>Flip icon </i>
   static const IconData flip = IconData(0xe0ea, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/folder_file_round.png"></br>Folder File icon </i>
   static const IconData folder_file = IconData(0xe0eb, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/folder_outline_round.png"></br>Folder Outline icon </i>
   static const IconData folder_outline = IconData(0xe0ec, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/folder_round.png"></br>Folder icon </i>
   static const IconData folder = IconData(0xe0ed, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/font_size_decrease_round.png"></br>Font Size Decrease icon </i>
   static const IconData font_size_decrease = IconData(0xe0ee, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/font_size_increase_round.png"></br>Font Size Increase icon </i>
   static const IconData font_size_increase = IconData(0xe0ef, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/format_shapes_round.png"></br>Format Shapes icon </i>
   static const IconData format_shapes = IconData(0xe0f0, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/forward_round.png"></br>Forward icon </i>
   static const IconData forward = IconData(0xe0f1, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/freezer_round.png"></br>Freezer icon </i>
   static const IconData freezer = IconData(0xe0f2, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/full_screen_exit_round.png"></br>Full Screen Exit icon </i>
   static const IconData full_screen_exit = IconData(0xe0f3, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/full_screen_round.png"></br>Full Screen icon </i>
   static const IconData full_screen = IconData(0xe0f4, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/gif_round.png"></br>Gif icon </i>
   static const IconData gif = IconData(0xe0f5, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/glossary_round.png"></br>Glossary icon </i>
   static const IconData glossary = IconData(0xe0f6, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/google_drive_round.png"></br>Google Drive icon </i>
   static const IconData google_drive = IconData(0xe0f7, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/grid_off_round.png"></br>Grid Off icon </i>
   static const IconData grid_off = IconData(0xe0f8, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/grid_on_round.png"></br>Grid On icon </i>
   static const IconData grid_on = IconData(0xe0f9, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/grid_view_round.png"></br>Grid View icon </i>
   static const IconData grid_view = IconData(0xe0fa, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/group_round.png"></br>Group icon </i>
   static const IconData group = IconData(0xe0fb, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/groups_round.png"></br>Groups icon </i>
   static const IconData groups = IconData(0xe0fc, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/hamburger_menu_navigation_rail_round.png"></br>Hamburger Menu Navigation Rail icon </i>
   static const IconData hamburger_menu_navigation_rail = IconData(0xe0fd, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/hamburger_menu_round.png"></br>Hamburger Menu icon </i>
   static const IconData hamburger_menu = IconData(0xe0fe, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/hamburger_menu_thick_round.png"></br>Hamburger Menu Thick icon </i>
   static const IconData hamburger_menu_thick = IconData(0xe0ff, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/hand_round.png"></br>Hand icon </i>
   static const IconData hand = IconData(0xe100, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/happy_round.png"></br>Happy icon </i>
   static const IconData happy = IconData(0xe101, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/hdmi_round.png"></br>Hdmi icon </i>
   static const IconData hdmi = IconData(0xe102, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/hdr_round.png"></br>Hdr icon </i>
   static const IconData hdr = IconData(0xe103, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/headphones_round.png"></br>Headphones icon </i>
   static const IconData headphones = IconData(0xe104, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/headset_round.png"></br>Headset icon </i>
   static const IconData headset = IconData(0xe105, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/help_outline_round.png"></br>Help Outline icon </i>
   static const IconData help_outline = IconData(0xe106, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/help_round.png"></br>Help icon </i>
   static const IconData help = IconData(0xe107, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/history_round.png"></br>History icon </i>
   static const IconData history = IconData(0xe108, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/home_round.png"></br>Home icon </i>
   static const IconData home = IconData(0xe109, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/hourglass_round.png"></br>Hourglass icon </i>
   static const IconData hourglass = IconData(0xe10a, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/how_do_i_round.png"></br>How Do I icon </i>
   static const IconData how_do_i = IconData(0xe10b, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/image_library_round.png"></br>Image Library icon </i>
   static const IconData image_library = IconData(0xe10c, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/image_round.png"></br>Image icon </i>
   static const IconData image = IconData(0xe10d, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/important_notification_round.png"></br>Important Notification icon </i>
   static const IconData important_notification = IconData(0xe10e, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/inbox_round.png"></br>Inbox icon </i>
   static const IconData inbox = IconData(0xe10f, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/indent_decrease_round.png"></br>Indent Decrease icon </i>
   static const IconData indent_decrease = IconData(0xe110, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/indent_increase_round.png"></br>Indent Increase icon </i>
   static const IconData indent_increase = IconData(0xe111, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/indeterminate_check_box_round.png"></br>Indeterminate Check Box icon </i>
   static const IconData indeterminate_check_box = IconData(0xe112, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/info_round.png"></br>Info icon </i>
   static const IconData info = IconData(0xe113, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/instagram_round.png"></br>Instagram icon </i>
   static const IconData instagram = IconData(0xe114, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/ios_share_round.png"></br>Ios Share icon </i>
   static const IconData ios_share = IconData(0xe115, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/iso_round.png"></br>Iso icon </i>
   static const IconData iso = IconData(0xe116, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/issue_audit_round.png"></br>Issue Audit icon </i>
   static const IconData issue_audit = IconData(0xe117, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/italic_round.png"></br>Italic icon </i>
   static const IconData italic = IconData(0xe118, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/jpg_attach_round.png"></br>Jpg Attach icon </i>
   static const IconData jpg_attach = IconData(0xe119, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/justify_round.png"></br>Justify icon </i>
   static const IconData justify = IconData(0xe11a, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/keyboard_round.png"></br>Keyboard icon </i>
   static const IconData keyboard = IconData(0xe11b, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/label_round.png"></br>Label icon </i>
   static const IconData label = IconData(0xe11c, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/laptop_round.png"></br>Laptop icon </i>
   static const IconData laptop = IconData(0xe11d, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/last_page_round.png"></br>Last Page icon </i>
   static const IconData last_page = IconData(0xe11e, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/layers_round.png"></br>Layers icon </i>
   static const IconData layers = IconData(0xe11f, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/light_mode_round.png"></br>Light Mode icon </i>
   static const IconData light_mode = IconData(0xe120, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/light_rail_train_round.png"></br>Light Rail Train icon </i>
   static const IconData light_rail_train = IconData(0xe121, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/lightbulb_round.png"></br>Lightbulb icon </i>
   static const IconData lightbulb = IconData(0xe122, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/like_round.png"></br>Like icon </i>
   static const IconData like = IconData(0xe123, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/line_spacing_round.png"></br>Line Spacing icon </i>
   static const IconData line_spacing = IconData(0xe124, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/link_add_round.png"></br>Link Add icon </i>
   static const IconData link_add = IconData(0xe125, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/link_round.png"></br>Link icon </i>
   static const IconData link = IconData(0xe126, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/linkedin_round.png"></br>Linkedin icon </i>
   static const IconData linkedin = IconData(0xe127, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/list_alt_round.png"></br>List Alt icon </i>
   static const IconData list_alt = IconData(0xe128, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/list_bullet_contained_round.png"></br>List Bullet Contained icon </i>
   static const IconData list_bullet_contained = IconData(0xe129, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/list_feedback_round.png"></br>List Feedback icon </i>
   static const IconData list_feedback = IconData(0xe12a, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/list_form_round.png"></br>List Form icon </i>
   static const IconData list_form = IconData(0xe12b, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/list_round.png"></br>List icon </i>
   static const IconData list = IconData(0xe12c, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/local_shipping_round.png"></br>Local Shipping icon </i>
   static const IconData local_shipping = IconData(0xe12d, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/location_off_round.png"></br>Location Off icon </i>
   static const IconData location_off = IconData(0xe12e, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/location_point_round.png"></br>Location Point icon </i>
   static const IconData location_point = IconData(0xe12f, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/location_round.png"></br>Location icon </i>
   static const IconData location = IconData(0xe130, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/lock_alt_round.png"></br>Lock Alt icon </i>
   static const IconData lock_alt = IconData(0xe131, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/lock_round.png"></br>Lock icon </i>
   static const IconData lock = IconData(0xe132, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/lock_undo_round.png"></br>Lock Undo icon </i>
   static const IconData lock_undo = IconData(0xe133, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/log_in_round.png"></br>Log In icon </i>
   static const IconData log_in = IconData(0xe134, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/log_out_round.png"></br>Log Out icon </i>
   static const IconData log_out = IconData(0xe135, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/love_outline_round.png"></br>Love Outline icon </i>
   static const IconData love_outline = IconData(0xe136, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/love_round.png"></br>Love icon </i>
   static const IconData love = IconData(0xe137, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/maintenance_round.png"></br>Maintenance icon </i>
   static const IconData maintenance = IconData(0xe138, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/map_round.png"></br>Map icon </i>
   static const IconData map = IconData(0xe139, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/meal_round.png"></br>Meal icon </i>
   static const IconData meal = IconData(0xe13a, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/medium_round.png"></br>Medium icon </i>
   static const IconData medium = IconData(0xe13b, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/memory_round.png"></br>Memory icon </i>
   static const IconData memory = IconData(0xe13c, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/message_round.png"></br>Message icon </i>
   static const IconData message = IconData(0xe13d, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/microphone_off_round.png"></br>Microphone Off icon </i>
   static const IconData microphone_off = IconData(0xe13e, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/microphone_outline_round.png"></br>Microphone Outline icon </i>
   static const IconData microphone_outline = IconData(0xe13f, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/microphone_round.png"></br>Microphone icon </i>
   static const IconData microphone = IconData(0xe140, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/mobile_friendly_round.png"></br>Mobile Friendly icon </i>
   static const IconData mobile_friendly = IconData(0xe141, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/money_euro_round.png"></br>Money Euro icon </i>
   static const IconData money_euro = IconData(0xe142, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/money_pound_round.png"></br>Money Pound icon </i>
   static const IconData money_pound = IconData(0xe143, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/money_usd_round.png"></br>Money Usd icon </i>
   static const IconData money_usd = IconData(0xe144, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/monitor_round.png"></br>Monitor icon </i>
   static const IconData monitor = IconData(0xe145, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/more_horizontal_round.png"></br>More Horizontal icon </i>
   static const IconData more_horizontal = IconData(0xe146, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/more_vertical_round.png"></br>More Vertical icon </i>
   static const IconData more_vertical = IconData(0xe147, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/my_location_round.png"></br>My Location icon </i>
   static const IconData my_location = IconData(0xe148, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/navigate_round.png"></br>Navigate icon </i>
   static const IconData navigate = IconData(0xe149, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/navigation_round.png"></br>Navigation icon </i>
   static const IconData navigation = IconData(0xe14a, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/near_me_round.png"></br>Near Me icon </i>
   static const IconData near_me = IconData(0xe14b, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/network_signal_round.png"></br>Network Signal icon </i>
   static const IconData network_signal = IconData(0xe14c, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/new_chat_round.png"></br>New Chat icon </i>
   static const IconData new_chat = IconData(0xe14d, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/nfc_round.png"></br>Nfc icon </i>
   static const IconData nfc = IconData(0xe14e, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/night_round.png"></br>Night icon </i>
   static const IconData night = IconData(0xe14f, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/no_color_round.png"></br>No Color icon </i>
   static const IconData no_color = IconData(0xe150, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/note_round.png"></br>Note icon </i>
   static const IconData note = IconData(0xe151, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/notifications_off_round.png"></br>Notifications Off icon </i>
   static const IconData notifications_off = IconData(0xe152, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/numbered_list_round.png"></br>Numbered List icon </i>
   static const IconData numbered_list = IconData(0xe153, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/open_in_full_round.png"></br>Open In Full icon </i>
   static const IconData open_in_full = IconData(0xe154, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/open_in_new_window_round.png"></br>Open In New Window icon </i>
   static const IconData open_in_new_window = IconData(0xe155, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/open_new_off_round.png"></br>Open New Off icon </i>
   static const IconData open_new_off = IconData(0xe156, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/page_height_round.png"></br>Page Height icon </i>
   static const IconData page_height = IconData(0xe157, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/page_rotate_round.png"></br>Page Rotate icon </i>
   static const IconData page_rotate = IconData(0xe158, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/page_width_round.png"></br>Page Width icon </i>
   static const IconData page_width = IconData(0xe159, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/palette_round.png"></br>Palette icon </i>
   static const IconData palette = IconData(0xe15a, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/partner_round.png"></br>Partner icon </i>
   static const IconData partner = IconData(0xe15b, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/pause_circle_round.png"></br>Pause Circle icon </i>
   static const IconData pause_circle = IconData(0xe15c, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/pause_round.png"></br>Pause icon </i>
   static const IconData pause = IconData(0xe15d, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/pdf_attach_round.png"></br>Pdf Attach icon </i>
   static const IconData pdf_attach = IconData(0xe15e, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/pending_round.png"></br>Pending icon </i>
   static const IconData pending = IconData(0xe15f, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/person_admin_round.png"></br>Person Admin icon </i>
   static const IconData person_admin = IconData(0xe160, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/person_assign_round.png"></br>Person Assign icon </i>
   static const IconData person_assign = IconData(0xe161, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/person_clock_round.png"></br>Person Clock icon </i>
   static const IconData person_clock = IconData(0xe162, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/person_info_round.png"></br>Person Info icon </i>
   static const IconData person_info = IconData(0xe163, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/person_manager_round.png"></br>Person Manager icon </i>
   static const IconData person_manager = IconData(0xe164, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/person_move_round.png"></br>Person Move icon </i>
   static const IconData person_move = IconData(0xe165, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/person_outline_round.png"></br>Person Outline icon </i>
   static const IconData person_outline = IconData(0xe166, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/person_round.png"></br>Person icon </i>
   static const IconData person = IconData(0xe167, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/person_search_round.png"></br>Person Search icon </i>
   static const IconData person_search = IconData(0xe168, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/person_swap_round.png"></br>Person Swap icon </i>
   static const IconData person_swap = IconData(0xe169, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/person_walk_round.png"></br>Person Walk icon </i>
   static const IconData person_walk = IconData(0xe16a, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/phone_android_round.png"></br>Phone Android icon </i>
   static const IconData phone_android = IconData(0xe16b, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/phone_bluetooth_speaker_round.png"></br>Phone Bluetooth Speaker icon </i>
   static const IconData phone_bluetooth_speaker = IconData(0xe16c, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/phone_in_talk_round.png"></br>Phone In Talk icon </i>
   static const IconData phone_in_talk = IconData(0xe16d, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/phone_iphone_round.png"></br>Phone Iphone icon </i>
   static const IconData phone_iphone = IconData(0xe16e, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/phone_round.png"></br>Phone icon </i>
   static const IconData phone = IconData(0xe16f, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/phonelink_round.png"></br>Phonelink icon </i>
   static const IconData phonelink = IconData(0xe170, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/phrase_round.png"></br>Phrase icon </i>
   static const IconData phrase = IconData(0xe171, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/pin_round.png"></br>Pin icon </i>
   static const IconData pin = IconData(0xe172, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/place_round.png"></br>Place icon </i>
   static const IconData place = IconData(0xe173, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/planogram_round.png"></br>Planogram icon </i>
   static const IconData planogram = IconData(0xe174, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/play_circle_round.png"></br>Play Circle icon </i>
   static const IconData play_circle = IconData(0xe175, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/play_outline_round.png"></br>Play Outline icon </i>
   static const IconData play_outline = IconData(0xe176, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/play_round.png"></br>Play icon </i>
   static const IconData play = IconData(0xe177, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/png_attach_round.png"></br>Png Attach icon </i>
   static const IconData png_attach = IconData(0xe178, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/point_gift_round.png"></br>Point Gift icon </i>
   static const IconData point_gift = IconData(0xe179, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/point_heart_round.png"></br>Point Heart icon </i>
   static const IconData point_heart = IconData(0xe17a, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/point_money_round.png"></br>Point Money icon </i>
   static const IconData point_money = IconData(0xe17b, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/point_star_round.png"></br>Point Star icon </i>
   static const IconData point_star = IconData(0xe17c, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/point_token_round.png"></br>Point Token icon </i>
   static const IconData point_token = IconData(0xe17d, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/portrait_round.png"></br>Portrait icon </i>
   static const IconData portrait = IconData(0xe17e, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/ppt_attach_round.png"></br>Ppt Attach icon </i>
   static const IconData ppt_attach = IconData(0xe17f, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/price_round.png"></br>Price icon </i>
   static const IconData price = IconData(0xe180, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/printer_round.png"></br>Printer icon </i>
   static const IconData printer = IconData(0xe181, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/priority_round.png"></br>Priority icon </i>
   static const IconData priority = IconData(0xe182, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/pro_round.png"></br>Pro icon </i>
   static const IconData pro = IconData(0xe183, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/productivity_apps_round.png"></br>Productivity Apps icon </i>
   static const IconData productivity_apps = IconData(0xe184, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/ptt_round.png"></br>Ptt icon </i>
   static const IconData ptt = IconData(0xe185, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/publish_round.png"></br>Publish icon </i>
   static const IconData publish = IconData(0xe186, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/push_pin_off_round.png"></br>Push Pin Off icon </i>
   static const IconData push_pin_off = IconData(0xe187, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/push_pin_round.png"></br>Push Pin icon </i>
   static const IconData push_pin = IconData(0xe188, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/qr_code_round.png"></br>Qr Code icon </i>
   static const IconData qr_code = IconData(0xe189, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/queue_round.png"></br>Queue icon </i>
   static const IconData queue = IconData(0xe18a, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/radio_button_checked_round.png"></br>Radio Button Checked icon </i>
   static const IconData radio_button_checked = IconData(0xe18b, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/radio_button_unchecked_round.png"></br>Radio Button Unchecked icon </i>
   static const IconData radio_button_unchecked = IconData(0xe18c, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/react_add_round.png"></br>React Add icon </i>
   static const IconData react_add = IconData(0xe18d, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/react_thumbsup_round.png"></br>React Thumbsup icon </i>
   static const IconData react_thumbsup = IconData(0xe18e, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/recall_round.png"></br>Recall icon </i>
   static const IconData recall = IconData(0xe18f, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/receipt_round.png"></br>Receipt icon </i>
   static const IconData receipt = IconData(0xe190, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/recording_round.png"></br>Recording icon </i>
   static const IconData recording = IconData(0xe191, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/redo_round.png"></br>Redo icon </i>
   static const IconData redo = IconData(0xe192, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/refresh_round.png"></br>Refresh icon </i>
   static const IconData refresh = IconData(0xe193, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/remove_box_round.png"></br>Remove Box icon </i>
   static const IconData remove_box = IconData(0xe194, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/remove_circle_outline_round.png"></br>Remove Circle Outline icon </i>
   static const IconData remove_circle_outline = IconData(0xe195, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/remove_circle_round.png"></br>Remove Circle icon </i>
   static const IconData remove_circle = IconData(0xe196, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/remove_group_round.png"></br>Remove Group icon </i>
   static const IconData remove_group = IconData(0xe197, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/remove_person_round.png"></br>Remove Person icon </i>
   static const IconData remove_person = IconData(0xe198, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/remove_round.png"></br>Remove icon </i>
   static const IconData remove = IconData(0xe199, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/renew_round.png"></br>Renew icon </i>
   static const IconData renew = IconData(0xe19a, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/reorder_round.png"></br>Reorder icon </i>
   static const IconData reorder = IconData(0xe19b, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/repeat_round.png"></br>Repeat icon </i>
   static const IconData repeat = IconData(0xe19c, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/replay_round.png"></br>Replay icon </i>
   static const IconData replay = IconData(0xe19d, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/reply_round.png"></br>Reply icon </i>
   static const IconData reply = IconData(0xe19e, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/report_round.png"></br>Report icon </i>
   static const IconData report = IconData(0xe19f, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/restart_alt_round.png"></br>Restart Alt icon </i>
   static const IconData restart_alt = IconData(0xe1a0, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/review_round.png"></br>Review icon </i>
   static const IconData review = IconData(0xe1a1, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/road_map_round.png"></br>Road Map icon </i>
   static const IconData road_map = IconData(0xe1a2, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/rotate_left_round.png"></br>Rotate Left icon </i>
   static const IconData rotate_left = IconData(0xe1a3, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/rotate_right_round.png"></br>Rotate Right icon </i>
   static const IconData rotate_right = IconData(0xe1a4, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/rss_feed_round.png"></br>Rss Feed icon </i>
   static const IconData rss_feed = IconData(0xe1a5, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/rules_round.png"></br>Rules icon </i>
   static const IconData rules = IconData(0xe1a6, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/sad_round.png"></br>Sad icon </i>
   static const IconData sad = IconData(0xe1a7, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/satisfied_round.png"></br>Satisfied icon </i>
   static const IconData satisfied = IconData(0xe1a8, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/save_alt_round.png"></br>Save Alt icon </i>
   static const IconData save_alt = IconData(0xe1a9, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/save_content_round.png"></br>Save Content icon </i>
   static const IconData save_content = IconData(0xe1aa, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/save_round.png"></br>Save icon </i>
   static const IconData save = IconData(0xe1ab, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/scan_rate_round.png"></br>Scan Rate icon </i>
   static const IconData scan_rate = IconData(0xe1ac, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/scanner_round.png"></br>Scanner icon </i>
   static const IconData scanner = IconData(0xe1ad, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/schedule_round.png"></br>Schedule icon </i>
   static const IconData schedule = IconData(0xe1ae, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/school_round.png"></br>School icon </i>
   static const IconData school = IconData(0xe1af, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/screen_rotation_round.png"></br>Screen Rotation icon </i>
   static const IconData screen_rotation = IconData(0xe1b0, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/sd_card_round.png"></br>Sd Card icon </i>
   static const IconData sd_card = IconData(0xe1b1, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/search_round.png"></br>Search icon </i>
   static const IconData search = IconData(0xe1b2, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/security_check_round.png"></br>Security Check icon </i>
   static const IconData security_check = IconData(0xe1b3, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/security_round.png"></br>Security icon </i>
   static const IconData security = IconData(0xe1b4, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/send_round.png"></br>Send icon </i>
   static const IconData send = IconData(0xe1b5, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/settings_round.png"></br>Settings icon </i>
   static const IconData settings = IconData(0xe1b6, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/shape_recognition_round.png"></br>Shape Recognition icon </i>
   static const IconData shape_recognition = IconData(0xe1b7, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/share_round.png"></br>Share icon </i>
   static const IconData share = IconData(0xe1b8, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/shared_folder_round.png"></br>Shared Folder icon </i>
   static const IconData shared_folder = IconData(0xe1b9, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/ship_round.png"></br>Ship icon </i>
   static const IconData ship = IconData(0xe1ba, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/sim_card_round.png"></br>Sim Card icon </i>
   static const IconData sim_card = IconData(0xe1bb, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/skip_next_round.png"></br>Skip Next icon </i>
   static const IconData skip_next = IconData(0xe1bc, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/skip_previous_round.png"></br>Skip Previous icon </i>
   static const IconData skip_previous = IconData(0xe1bd, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/slide_show_round.png"></br>Slide Show icon </i>
   static const IconData slide_show = IconData(0xe1be, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/smart_phone_round.png"></br>Smart Phone icon </i>
   static const IconData smart_phone = IconData(0xe1bf, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/sms_round.png"></br>Sms icon </i>
   static const IconData sms = IconData(0xe1c0, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/snooze_round.png"></br>Snooze icon </i>
   static const IconData snooze = IconData(0xe1c1, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/solutions_round.png"></br>Solutions icon </i>
   static const IconData solutions = IconData(0xe1c2, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/sort_content_round.png"></br>Sort Content icon </i>
   static const IconData sort_content = IconData(0xe1c3, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/sort_round.png"></br>Sort icon </i>
   static const IconData sort = IconData(0xe1c4, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/speaker_round.png"></br>Speaker icon </i>
   static const IconData speaker = IconData(0xe1c5, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/star_half_round.png"></br>Star Half icon </i>
   static const IconData star_half = IconData(0xe1c6, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/star_outline_round.png"></br>Star Outline icon </i>
   static const IconData star_outline = IconData(0xe1c7, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/star_round.png"></br>Star icon </i>
   static const IconData star = IconData(0xe1c8, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/steps_round.png"></br>Steps icon </i>
   static const IconData steps = IconData(0xe1c9, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/sticker_round.png"></br>Sticker icon </i>
   static const IconData sticker = IconData(0xe1ca, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/stop_circle_round.png"></br>Stop Circle icon </i>
   static const IconData stop_circle = IconData(0xe1cb, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/stop_round.png"></br>Stop icon </i>
   static const IconData stop = IconData(0xe1cc, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/store_release_round.png"></br>Store Release icon </i>
   static const IconData store_release = IconData(0xe1cd, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/store_round.png"></br>Store icon </i>
   static const IconData store = IconData(0xe1ce, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/store_swap_round.png"></br>Store Swap icon </i>
   static const IconData store_swap = IconData(0xe1cf, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/store_transfer_round.png"></br>Store Transfer icon </i>
   static const IconData store_transfer = IconData(0xe1d0, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/straighten_round.png"></br>Straighten icon </i>
   static const IconData straighten = IconData(0xe1d1, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/strategy_round.png"></br>Strategy icon </i>
   static const IconData strategy = IconData(0xe1d2, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/strikethrough_round.png"></br>Strikethrough icon </i>
   static const IconData strikethrough = IconData(0xe1d3, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/subscribe_round.png"></br>Subscribe icon </i>
   static const IconData subscribe = IconData(0xe1d4, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/swap_round.png"></br>Swap icon </i>
   static const IconData swap = IconData(0xe1d5, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/switch_user_round.png"></br>Switch User icon </i>
   static const IconData switch_user = IconData(0xe1d6, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/sync_action_round.png"></br>Sync Action icon </i>
   static const IconData sync_action = IconData(0xe1d7, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/sync_disabled_round.png"></br>Sync Disabled icon </i>
   static const IconData sync_disabled = IconData(0xe1d8, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/sync_round.png"></br>Sync icon </i>
   static const IconData sync = IconData(0xe1d9, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/table_round.png"></br>Table icon </i>
   static const IconData table = IconData(0xe1da, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/tablet_mac_round.png"></br>Tablet Mac icon </i>
   static const IconData tablet_mac = IconData(0xe1db, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/tablet_round.png"></br>Tablet icon </i>
   static const IconData tablet = IconData(0xe1dc, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/tag_enterprise_round.png"></br>Tag Enterprise icon </i>
   static const IconData tag_enterprise = IconData(0xe1dd, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/tag_round.png"></br>Tag icon </i>
   static const IconData tag = IconData(0xe1de, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/tap_to_pay_round.png"></br>Tap To Pay icon </i>
   static const IconData tap_to_pay = IconData(0xe1df, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/taxi_round.png"></br>Taxi icon </i>
   static const IconData taxi = IconData(0xe1e0, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/text_color_round.png"></br>Text Color icon </i>
   static const IconData text_color = IconData(0xe1e1, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/tiers_round.png"></br>Tiers icon </i>
   static const IconData tiers = IconData(0xe1e2, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/timecard_approve_round.png"></br>Timecard Approve icon </i>
   static const IconData timecard_approve = IconData(0xe1e3, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/timecard_round.png"></br>Timecard icon </i>
   static const IconData timecard = IconData(0xe1e4, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/timecard_warning_round.png"></br>Timecard Warning icon </i>
   static const IconData timecard_warning = IconData(0xe1e5, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/timer_round.png"></br>Timer icon </i>
   static const IconData timer = IconData(0xe1e6, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/toggle_off_round.png"></br>Toggle Off icon </i>
   static const IconData toggle_off = IconData(0xe1e7, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/toggle_on_round.png"></br>Toggle On icon </i>
   static const IconData toggle_on = IconData(0xe1e8, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/touch_round.png"></br>Touch icon </i>
   static const IconData touch = IconData(0xe1e9, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/train_round.png"></br>Train icon </i>
   static const IconData train = IconData(0xe1ea, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/transfer_round.png"></br>Transfer icon </i>
   static const IconData transfer = IconData(0xe1eb, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/trending_down_round.png"></br>Trending Down icon </i>
   static const IconData trending_down = IconData(0xe1ec, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/trending_up_round.png"></br>Trending Up icon </i>
   static const IconData trending_up = IconData(0xe1ed, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/tv_round.png"></br>Tv icon </i>
   static const IconData tv = IconData(0xe1ee, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/twitter_round.png"></br>Twitter icon </i>
   static const IconData twitter = IconData(0xe1ef, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/type_round.png"></br>Type icon </i>
   static const IconData type = IconData(0xe1f0, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/uhf_rfid_round.png"></br>Uhf Rfid icon </i>
   static const IconData uhf_rfid = IconData(0xe1f1, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/underline_round.png"></br>Underline icon </i>
   static const IconData underline = IconData(0xe1f2, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/undo_round.png"></br>Undo icon </i>
   static const IconData undo = IconData(0xe1f3, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/unfold_less_round.png"></br>Unfold Less icon </i>
   static const IconData unfold_less = IconData(0xe1f4, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/unfold_more_round.png"></br>Unfold More icon </i>
   static const IconData unfold_more = IconData(0xe1f5, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/unlock_alt_round.png"></br>Unlock Alt icon </i>
   static const IconData unlock_alt = IconData(0xe1f6, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/unlock_round.png"></br>Unlock icon </i>
   static const IconData unlock = IconData(0xe1f7, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/unsubscribe_round.png"></br>Unsubscribe icon </i>
   static const IconData unsubscribe = IconData(0xe1f8, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/update_round.png"></br>Update icon </i>
   static const IconData update = IconData(0xe1f9, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/upload_file_round.png"></br>Upload File icon </i>
   static const IconData upload_file = IconData(0xe1fa, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/upload_round.png"></br>Upload icon </i>
   static const IconData upload = IconData(0xe1fb, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/usb_alt_device_round.png"></br>Usb Alt Device icon </i>
   static const IconData usb_alt_device = IconData(0xe1fc, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/usb_alt_round.png"></br>Usb Alt icon </i>
   static const IconData usb_alt = IconData(0xe1fd, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/usb_round.png"></br>Usb icon </i>
   static const IconData usb = IconData(0xe1fe, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/user_circle_round.png"></br>User Circle icon </i>
   static const IconData user_circle = IconData(0xe1ff, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/user_minor_round.png"></br>User Minor icon </i>
   static const IconData user_minor = IconData(0xe200, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/user_round.png"></br>User icon </i>
   static const IconData user = IconData(0xe201, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/user_settings_round.png"></br>User Settings icon </i>
   static const IconData user_settings = IconData(0xe202, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/vacation_round.png"></br>Vacation icon </i>
   static const IconData vacation = IconData(0xe203, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/verified_round.png"></br>Verified icon </i>
   static const IconData verified = IconData(0xe204, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/very_satisfied_round.png"></br>Very Satisfied icon </i>
   static const IconData very_satisfied = IconData(0xe205, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/video_camera_round.png"></br>Video Camera icon </i>
   static const IconData video_camera = IconData(0xe206, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/video_off_round.png"></br>Video Off icon </i>
   static const IconData video_off = IconData(0xe207, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/video_play_round.png"></br>Video Play icon </i>
   static const IconData video_play = IconData(0xe208, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/video_round.png"></br>Video icon </i>
   static const IconData video = IconData(0xe209, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/visibility_off_round.png"></br>Visibility Off icon </i>
   static const IconData visibility_off = IconData(0xe20a, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/visibility_round.png"></br>Visibility icon </i>
   static const IconData visibility = IconData(0xe20b, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/volte_round.png"></br>Volte icon </i>
   static const IconData volte = IconData(0xe20c, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/volume_down_round.png"></br>Volume Down icon </i>
   static const IconData volume_down = IconData(0xe20d, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/volume_mute_round.png"></br>Volume Mute icon </i>
   static const IconData volume_mute = IconData(0xe20e, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/volume_off_round.png"></br>Volume Off icon </i>
   static const IconData volume_off = IconData(0xe20f, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/volume_up_round.png"></br>Volume Up icon </i>
   static const IconData volume_up = IconData(0xe210, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/warning_outline_round.png"></br>Warning Outline icon </i>
   static const IconData warning_outline = IconData(0xe211, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/warning_round.png"></br>Warning icon </i>
   static const IconData warning = IconData(0xe212, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/watch_round.png"></br>Watch icon </i>
   static const IconData watch = IconData(0xe213, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/wb_image_round.png"></br>Wb Image icon </i>
   static const IconData wb_image = IconData(0xe214, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/wb_round.png"></br>Wb icon </i>
   static const IconData wb = IconData(0xe215, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/world_action_round.png"></br>World Action icon </i>
   static const IconData world_action = IconData(0xe216, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/world_round.png"></br>World icon </i>
   static const IconData world = IconData(0xe217, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/write_round.png"></br>Write icon </i>
   static const IconData write = IconData(0xe218, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/youtube_round.png"></br>Youtube icon </i>
   static const IconData youtube = IconData(0xe219, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/zero_scale_round.png"></br>Zero Scale icon </i>
   static const IconData zero_scale = IconData(0xe21a, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/zoom_in_map_round.png"></br>Zoom In Map icon </i>
   static const IconData zoom_in_map = IconData(0xe21b, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/zoom_in_round.png"></br>Zoom In icon </i>
   static const IconData zoom_in = IconData(0xe21c, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/zoom_out_map_round.png"></br>Zoom Out Map icon </i>
   static const IconData zoom_out_map = IconData(0xe21d, fontFamily: family, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/zoom_out_round.png"></br>Zoom Out icon </i>
   static const IconData zoom_out = IconData(0xe21e, fontFamily: family, fontPackage: package);
 
   // Round Icons
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/activity_round.png"></br>Activity icon (round)</i>
   static const IconData activity_round = IconData(0xe001, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/add_alert_round.png"></br>Add Alert icon (round)</i>
   static const IconData add_alert_round = IconData(0xe002, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/add_box_round.png"></br>Add Box icon (round)</i>
   static const IconData add_box_round = IconData(0xe003, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/add_call_round.png"></br>Add Call icon (round)</i>
   static const IconData add_call_round = IconData(0xe004, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/add_circle_outline_round.png"></br>Add Circle Outline icon (round)</i>
   static const IconData add_circle_outline_round = IconData(0xe005, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/add_circle_round.png"></br>Add Circle icon (round)</i>
   static const IconData add_circle_round = IconData(0xe006, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/add_group_round.png"></br>Add Group icon (round)</i>
   static const IconData add_group_round = IconData(0xe007, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/add_person_round.png"></br>Add Person icon (round)</i>
   static const IconData add_person_round = IconData(0xe008, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/add_round.png"></br>Add icon (round)</i>
   static const IconData add_round = IconData(0xe009, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/add_task_round.png"></br>Add Task icon (round)</i>
   static const IconData add_task_round = IconData(0xe00a, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/adjustments_round.png"></br>Adjustments icon (round)</i>
   static const IconData adjustments_round = IconData(0xe00b, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/alarm_round.png"></br>Alarm icon (round)</i>
   static const IconData alarm_round = IconData(0xe00c, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/alert_active_round.png"></br>Alert Active icon (round)</i>
   static const IconData alert_active_round = IconData(0xe00d, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/alert_outline_round.png"></br>Alert Outline icon (round)</i>
   static const IconData alert_outline_round = IconData(0xe00e, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/alert_round.png"></br>Alert icon (round)</i>
   static const IconData alert_round = IconData(0xe00f, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/align_center_round.png"></br>Align Center icon (round)</i>
   static const IconData align_center_round = IconData(0xe010, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/align_horizontal_center_round.png"></br>Align Horizontal Center icon (round)</i>
   static const IconData align_horizontal_center_round = IconData(0xe011, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/align_horizontal_left_round.png"></br>Align Horizontal Left icon (round)</i>
   static const IconData align_horizontal_left_round = IconData(0xe012, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/align_horizontal_right_round.png"></br>Align Horizontal Right icon (round)</i>
   static const IconData align_horizontal_right_round = IconData(0xe013, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/align_left_round.png"></br>Align Left icon (round)</i>
   static const IconData align_left_round = IconData(0xe014, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/align_right_round.png"></br>Align Right icon (round)</i>
   static const IconData align_right_round = IconData(0xe015, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/align_vertical_bottom_round.png"></br>Align Vertical Bottom icon (round)</i>
   static const IconData align_vertical_bottom_round = IconData(0xe016, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/align_vertical_center_round.png"></br>Align Vertical Center icon (round)</i>
   static const IconData align_vertical_center_round = IconData(0xe017, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/align_vertical_top_round.png"></br>Align Vertical Top icon (round)</i>
   static const IconData align_vertical_top_round = IconData(0xe018, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/analytics_round.png"></br>Analytics icon (round)</i>
   static const IconData analytics_round = IconData(0xe019, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/android_round.png"></br>Android icon (round)</i>
   static const IconData android_round = IconData(0xe01a, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/antenna_round.png"></br>Antenna icon (round)</i>
   static const IconData antenna_round = IconData(0xe01b, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/app_edit_round.png"></br>App Edit icon (round)</i>
   static const IconData app_edit_round = IconData(0xe01c, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/apps_round.png"></br>Apps icon (round)</i>
   static const IconData apps_round = IconData(0xe01d, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/ar_round.png"></br>Ar icon (round)</i>
   static const IconData ar_round = IconData(0xe01e, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/arrow_back_round.png"></br>Arrow Back icon (round)</i>
   static const IconData arrow_back_round = IconData(0xe01f, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/arrow_down_round.png"></br>Arrow Down icon (round)</i>
   static const IconData arrow_down_round = IconData(0xe020, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/arrow_forward_round.png"></br>Arrow Forward icon (round)</i>
   static const IconData arrow_forward_round = IconData(0xe021, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/arrow_up_round.png"></br>Arrow Up icon (round)</i>
   static const IconData arrow_up_round = IconData(0xe022, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/attachment_round.png"></br>Attachment icon (round)</i>
   static const IconData attachment_round = IconData(0xe023, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/audio_round.png"></br>Audio icon (round)</i>
   static const IconData audio_round = IconData(0xe024, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/audit_activity_round.png"></br>Audit Activity icon (round)</i>
   static const IconData audit_activity_round = IconData(0xe025, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/auto_delete_round.png"></br>Auto Delete icon (round)</i>
   static const IconData auto_delete_round = IconData(0xe026, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/auto_round.png"></br>Auto icon (round)</i>
   static const IconData auto_round = IconData(0xe027, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/awb_round.png"></br>Awb icon (round)</i>
   static const IconData awb_round = IconData(0xe028, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/backspace_round.png"></br>Backspace icon (round)</i>
   static const IconData backspace_round = IconData(0xe029, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/bad_mood_round.png"></br>Bad Mood icon (round)</i>
   static const IconData bad_mood_round = IconData(0xe02a, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/barcode_bluetooth_round.png"></br>Barcode Bluetooth icon (round)</i>
   static const IconData barcode_bluetooth_round = IconData(0xe02b, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/barcode_done_round.png"></br>Barcode Done icon (round)</i>
   static const IconData barcode_done_round = IconData(0xe02c, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/barcode_image_scan_round.png"></br>Barcode Image Scan icon (round)</i>
   static const IconData barcode_image_scan_round = IconData(0xe02d, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/barcode_qr_code_round.png"></br>Barcode Qr Code icon (round)</i>
   static const IconData barcode_qr_code_round = IconData(0xe02e, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/barcode_round.png"></br>Barcode icon (round)</i>
   static const IconData barcode_round = IconData(0xe02f, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/barcode_scanner_down_round.png"></br>Barcode Scanner Down icon (round)</i>
   static const IconData barcode_scanner_down_round = IconData(0xe030, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/barcode_settings_round.png"></br>Barcode Settings icon (round)</i>
   static const IconData barcode_settings_round = IconData(0xe031, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/basket_round.png"></br>Basket icon (round)</i>
   static const IconData basket_round = IconData(0xe032, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/battery_alert_round.png"></br>Battery Alert icon (round)</i>
   static const IconData battery_alert_round = IconData(0xe033, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/battery_charging_round.png"></br>Battery Charging icon (round)</i>
   static const IconData battery_charging_round = IconData(0xe034, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/battery_round.png"></br>Battery icon (round)</i>
   static const IconData battery_round = IconData(0xe035, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/block_content_round.png"></br>Block Content icon (round)</i>
   static const IconData block_content_round = IconData(0xe036, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/block_round.png"></br>Block icon (round)</i>
   static const IconData block_round = IconData(0xe037, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/blog_round.png"></br>Blog icon (round)</i>
   static const IconData blog_round = IconData(0xe038, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/bluetooth_disabled_round.png"></br>Bluetooth Disabled icon (round)</i>
   static const IconData bluetooth_disabled_round = IconData(0xe039, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/bluetooth_round.png"></br>Bluetooth icon (round)</i>
   static const IconData bluetooth_round = IconData(0xe03a, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/bluetooth_searching_round.png"></br>Bluetooth Searching icon (round)</i>
   static const IconData bluetooth_searching_round = IconData(0xe03b, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/bold_round.png"></br>Bold icon (round)</i>
   static const IconData bold_round = IconData(0xe03c, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/bookmark_outline_round.png"></br>Bookmark Outline icon (round)</i>
   static const IconData bookmark_outline_round = IconData(0xe03d, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/bookmark_round.png"></br>Bookmark icon (round)</i>
   static const IconData bookmark_round = IconData(0xe03e, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/brightness_round.png"></br>Brightness icon (round)</i>
   static const IconData brightness_round = IconData(0xe03f, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/broadcast_round.png"></br>Broadcast icon (round)</i>
   static const IconData broadcast_round = IconData(0xe040, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/build_round.png"></br>Build icon (round)</i>
   static const IconData build_round = IconData(0xe041, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/building_round.png"></br>Building icon (round)</i>
   static const IconData building_round = IconData(0xe042, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/bullet_list_round.png"></br>Bullet List icon (round)</i>
   static const IconData bullet_list_round = IconData(0xe043, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/bus_round.png"></br>Bus icon (round)</i>
   static const IconData bus_round = IconData(0xe044, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/cached_round.png"></br>Cached icon (round)</i>
   static const IconData cached_round = IconData(0xe045, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/cafe_round.png"></br>Cafe icon (round)</i>
   static const IconData cafe_round = IconData(0xe046, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/calculator_round.png"></br>Calculator icon (round)</i>
   static const IconData calculator_round = IconData(0xe047, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/calendar_3_day_round.png"></br>Calendar 3 Day icon (round)</i>
   static const IconData calendar_3_day_round = IconData(0xe048, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/calendar_alt_1_round.png"></br>Calendar Alt 1 icon (round)</i>
   static const IconData calendar_alt_1_round = IconData(0xe049, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/calendar_alt_2_round.png"></br>Calendar Alt 2 icon (round)</i>
   static const IconData calendar_alt_2_round = IconData(0xe04a, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/calendar_available_round.png"></br>Calendar Available icon (round)</i>
   static const IconData calendar_available_round = IconData(0xe04b, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/calendar_day_round.png"></br>Calendar Day icon (round)</i>
   static const IconData calendar_day_round = IconData(0xe04c, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/calendar_edit_round.png"></br>Calendar Edit icon (round)</i>
   static const IconData calendar_edit_round = IconData(0xe04d, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/calendar_gantt_round.png"></br>Calendar Gantt icon (round)</i>
   static const IconData calendar_gantt_round = IconData(0xe04e, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/calendar_monthly_round.png"></br>Calendar Monthly icon (round)</i>
   static const IconData calendar_monthly_round = IconData(0xe04f, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/calendar_next_round.png"></br>Calendar Next icon (round)</i>
   static const IconData calendar_next_round = IconData(0xe050, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/calendar_range_round.png"></br>Calendar Range icon (round)</i>
   static const IconData calendar_range_round = IconData(0xe051, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/calendar_rollover_round.png"></br>Calendar Rollover icon (round)</i>
   static const IconData calendar_rollover_round = IconData(0xe052, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/calendar_round.png"></br>Calendar icon (round)</i>
   static const IconData calendar_round = IconData(0xe053, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/calendar_unavailable_round.png"></br>Calendar Unavailable icon (round)</i>
   static const IconData calendar_unavailable_round = IconData(0xe054, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/calendar_weekly_round.png"></br>Calendar Weekly icon (round)</i>
   static const IconData calendar_weekly_round = IconData(0xe055, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/calendar_yearly_round.png"></br>Calendar Yearly icon (round)</i>
   static const IconData calendar_yearly_round = IconData(0xe056, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/call_back_round.png"></br>Call Back icon (round)</i>
   static const IconData call_back_round = IconData(0xe057, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/camera_round.png"></br>Camera icon (round)</i>
   static const IconData camera_round = IconData(0xe058, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/camera_shutter_round.png"></br>Camera Shutter icon (round)</i>
   static const IconData camera_shutter_round = IconData(0xe059, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/camera_switch_image_round.png"></br>Camera Switch Image icon (round)</i>
   static const IconData camera_switch_image_round = IconData(0xe05a, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/camera_switch_round.png"></br>Camera Switch icon (round)</i>
   static const IconData camera_switch_round = IconData(0xe05b, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/cancel_outline_round.png"></br>Cancel Outline icon (round)</i>
   static const IconData cancel_outline_round = IconData(0xe05c, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/cancel_round.png"></br>Cancel icon (round)</i>
   static const IconData cancel_round = IconData(0xe05d, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/car_round.png"></br>Car icon (round)</i>
   static const IconData car_round = IconData(0xe05e, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/card_orientation_round.png"></br>Card Orientation icon (round)</i>
   static const IconData card_orientation_round = IconData(0xe05f, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/card_with_chip_round.png"></br>Card With Chip icon (round)</i>
   static const IconData card_with_chip_round = IconData(0xe060, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/caret_down_round.png"></br>Caret Down icon (round)</i>
   static const IconData caret_down_round = IconData(0xe061, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/caret_left_round.png"></br>Caret Left icon (round)</i>
   static const IconData caret_left_round = IconData(0xe062, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/caret_right_round.png"></br>Caret Right icon (round)</i>
   static const IconData caret_right_round = IconData(0xe063, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/caret_sort_round.png"></br>Caret Sort icon (round)</i>
   static const IconData caret_sort_round = IconData(0xe064, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/caret_up_round.png"></br>Caret Up icon (round)</i>
   static const IconData caret_up_round = IconData(0xe065, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/cast_connected_round.png"></br>Cast Connected icon (round)</i>
   static const IconData cast_connected_round = IconData(0xe066, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/cast_round.png"></br>Cast icon (round)</i>
   static const IconData cast_round = IconData(0xe067, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/cellular_signal_round.png"></br>Cellular Signal icon (round)</i>
   static const IconData cellular_signal_round = IconData(0xe068, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/certificate_round.png"></br>Certificate icon (round)</i>
   static const IconData certificate_round = IconData(0xe069, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/certified_round.png"></br>Certified icon (round)</i>
   static const IconData certified_round = IconData(0xe06a, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/chain_round.png"></br>Chain icon (round)</i>
   static const IconData chain_round = IconData(0xe06b, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/chart_bar_round.png"></br>Chart Bar icon (round)</i>
   static const IconData chart_bar_round = IconData(0xe06c, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/chart_bubble_charts_round.png"></br>Chart Bubble Charts icon (round)</i>
   static const IconData chart_bubble_charts_round = IconData(0xe06d, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/chart_bubble_round.png"></br>Chart Bubble icon (round)</i>
   static const IconData chart_bubble_round = IconData(0xe06e, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/chart_doughnut_round.png"></br>Chart Doughnut icon (round)</i>
   static const IconData chart_doughnut_round = IconData(0xe06f, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/chart_filled_enterprise_round.png"></br>Chart Filled Enterprise icon (round)</i>
   static const IconData chart_filled_enterprise_round = IconData(0xe070, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/chart_filled_round.png"></br>Chart Filled icon (round)</i>
   static const IconData chart_filled_round = IconData(0xe071, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/chart_gantt_round.png"></br>Chart Gantt icon (round)</i>
   static const IconData chart_gantt_round = IconData(0xe072, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/chart_line_predict_round.png"></br>Chart Line Predict icon (round)</i>
   static const IconData chart_line_predict_round = IconData(0xe073, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/chart_line_round.png"></br>Chart Line icon (round)</i>
   static const IconData chart_line_round = IconData(0xe074, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/chart_line_stacked_round.png"></br>Chart Line Stacked icon (round)</i>
   static const IconData chart_line_stacked_round = IconData(0xe075, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/chart_outline_round.png"></br>Chart Outline icon (round)</i>
   static const IconData chart_outline_round = IconData(0xe076, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/chart_pie_charts_round.png"></br>Chart Pie Charts icon (round)</i>
   static const IconData chart_pie_charts_round = IconData(0xe077, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/chart_pie_content_round.png"></br>Chart Pie Content icon (round)</i>
   static const IconData chart_pie_content_round = IconData(0xe078, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/chart_pie_round.png"></br>Chart Pie icon (round)</i>
   static const IconData chart_pie_round = IconData(0xe079, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/chart_scatter_plot_round.png"></br>Chart Scatter Plot icon (round)</i>
   static const IconData chart_scatter_plot_round = IconData(0xe07a, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/chart_stacked_round.png"></br>Chart Stacked icon (round)</i>
   static const IconData chart_stacked_round = IconData(0xe07b, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/chart_waterfall_round.png"></br>Chart Waterfall icon (round)</i>
   static const IconData chart_waterfall_round = IconData(0xe07c, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/chat_bot_round.png"></br>Chat Bot icon (round)</i>
   static const IconData chat_bot_round = IconData(0xe07d, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/chat_bubble_outline_round.png"></br>Chat Bubble Outline icon (round)</i>
   static const IconData chat_bubble_outline_round = IconData(0xe07e, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/chat_bubble_round.png"></br>Chat Bubble icon (round)</i>
   static const IconData chat_bubble_round = IconData(0xe07f, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/chat_message_read_round.png"></br>Chat Message Read icon (round)</i>
   static const IconData chat_message_read_round = IconData(0xe080, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/chat_message_unread_round.png"></br>Chat Message Unread icon (round)</i>
   static const IconData chat_message_unread_round = IconData(0xe081, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/chat_round.png"></br>Chat icon (round)</i>
   static const IconData chat_round = IconData(0xe082, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/chat_search_round.png"></br>Chat Search icon (round)</i>
   static const IconData chat_search_round = IconData(0xe083, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/check_box_empty_round.png"></br>Check Box Empty icon (round)</i>
   static const IconData check_box_empty_round = IconData(0xe084, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/check_box_round.png"></br>Check Box icon (round)</i>
   static const IconData check_box_round = IconData(0xe085, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/check_circle_outline_alt_round.png"></br>Check Circle Outline Alt icon (round)</i>
-  static const IconData check_circle_outline_alt_round = IconData(0xe086, fontFamily: familyRound, fontPackage: package);
+  static const IconData check_circle_outline_alt_round =
+      IconData(0xe086, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/check_circle_outline_round.png"></br>Check Circle Outline icon (round)</i>
   static const IconData check_circle_outline_round = IconData(0xe087, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/check_circle_round.png"></br>Check Circle icon (round)</i>
   static const IconData check_circle_round = IconData(0xe088, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/check_mark_round.png"></br>Check Mark icon (round)</i>
   static const IconData check_mark_round = IconData(0xe089, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/checklist_round.png"></br>Checklist icon (round)</i>
   static const IconData checklist_round = IconData(0xe08a, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/chevron_left_round.png"></br>Chevron Left icon (round)</i>
   static const IconData chevron_left_round = IconData(0xe08b, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/chevron_right_round.png"></br>Chevron Right icon (round)</i>
   static const IconData chevron_right_round = IconData(0xe08c, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/choices_round.png"></br>Choices icon (round)</i>
   static const IconData choices_round = IconData(0xe08d, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/clipboard_action_round.png"></br>Clipboard Action icon (round)</i>
   static const IconData clipboard_action_round = IconData(0xe08e, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/clipboard_round.png"></br>Clipboard icon (round)</i>
   static const IconData clipboard_round = IconData(0xe08f, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/clock_available_round.png"></br>Clock Available icon (round)</i>
   static const IconData clock_available_round = IconData(0xe090, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/clock_bid_round.png"></br>Clock Bid icon (round)</i>
   static const IconData clock_bid_round = IconData(0xe091, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/clock_edit_round.png"></br>Clock Edit icon (round)</i>
   static const IconData clock_edit_round = IconData(0xe092, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/clock_flexible_round.png"></br>Clock Flexible icon (round)</i>
   static const IconData clock_flexible_round = IconData(0xe093, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/clock_in_progress_round.png"></br>Clock In Progress icon (round)</i>
   static const IconData clock_in_progress_round = IconData(0xe094, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/clock_info_round.png"></br>Clock Info icon (round)</i>
   static const IconData clock_info_round = IconData(0xe095, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/clock_missed_round.png"></br>Clock Missed icon (round)</i>
   static const IconData clock_missed_round = IconData(0xe096, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/clock_on_round.png"></br>Clock On icon (round)</i>
   static const IconData clock_on_round = IconData(0xe097, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/clock_outline_round.png"></br>Clock Outline icon (round)</i>
   static const IconData clock_outline_round = IconData(0xe098, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/clock_rollover_round.png"></br>Clock Rollover icon (round)</i>
   static const IconData clock_rollover_round = IconData(0xe099, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/clock_round.png"></br>Clock icon (round)</i>
   static const IconData clock_round = IconData(0xe09a, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/clock_segment_round.png"></br>Clock Segment icon (round)</i>
   static const IconData clock_segment_round = IconData(0xe09b, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/clock_start_round.png"></br>Clock Start icon (round)</i>
   static const IconData clock_start_round = IconData(0xe09c, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/clock_stop_round.png"></br>Clock Stop icon (round)</i>
   static const IconData clock_stop_round = IconData(0xe09d, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/clock_switch_round.png"></br>Clock Switch icon (round)</i>
   static const IconData clock_switch_round = IconData(0xe09e, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/clock_timer_round.png"></br>Clock Timer icon (round)</i>
   static const IconData clock_timer_round = IconData(0xe09f, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/clock_upcoming_round.png"></br>Clock Upcoming icon (round)</i>
   static const IconData clock_upcoming_round = IconData(0xe0a0, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/close_round.png"></br>Close icon (round)</i>
   static const IconData close_round = IconData(0xe0a1, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/closed_caption_round.png"></br>Closed Caption icon (round)</i>
   static const IconData closed_caption_round = IconData(0xe0a2, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/cloud_done_round.png"></br>Cloud Done icon (round)</i>
   static const IconData cloud_done_round = IconData(0xe0a3, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/cloud_download_round.png"></br>Cloud Download icon (round)</i>
   static const IconData cloud_download_round = IconData(0xe0a4, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/cloud_off_round.png"></br>Cloud Off icon (round)</i>
   static const IconData cloud_off_round = IconData(0xe0a5, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/cloud_outline_round.png"></br>Cloud Outline icon (round)</i>
   static const IconData cloud_outline_round = IconData(0xe0a6, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/cloud_round.png"></br>Cloud icon (round)</i>
   static const IconData cloud_round = IconData(0xe0a7, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/cloud_upload_round.png"></br>Cloud Upload icon (round)</i>
   static const IconData cloud_upload_round = IconData(0xe0a8, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/color_fill_round.png"></br>Color Fill icon (round)</i>
   static const IconData color_fill_round = IconData(0xe0a9, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/columns_round.png"></br>Columns icon (round)</i>
   static const IconData columns_round = IconData(0xe0aa, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/comms_chat_new_round.png"></br>Comms Chat New icon (round)</i>
   static const IconData comms_chat_new_round = IconData(0xe0ab, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/comms_chat_round.png"></br>Comms Chat icon (round)</i>
   static const IconData comms_chat_round = IconData(0xe0ac, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/comms_chat_unread_round.png"></br>Comms Chat Unread icon (round)</i>
   static const IconData comms_chat_unread_round = IconData(0xe0ad, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/contactless_pay_round.png"></br>Contactless Pay icon (round)</i>
   static const IconData contactless_pay_round = IconData(0xe0ae, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/content_round.png"></br>Content icon (round)</i>
   static const IconData content_round = IconData(0xe0af, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/contrast_image_round.png"></br>Contrast Image icon (round)</i>
   static const IconData contrast_image_round = IconData(0xe0b0, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/contrast_round.png"></br>Contrast icon (round)</i>
   static const IconData contrast_round = IconData(0xe0b1, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/conversation_round.png"></br>Conversation icon (round)</i>
   static const IconData conversation_round = IconData(0xe0b2, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/copy_file_round.png"></br>Copy File icon (round)</i>
   static const IconData copy_file_round = IconData(0xe0b3, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/create_new_folder_round.png"></br>Create New Folder icon (round)</i>
   static const IconData create_new_folder_round = IconData(0xe0b4, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/credit_card_round.png"></br>Credit Card icon (round)</i>
   static const IconData credit_card_round = IconData(0xe0b5, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/credit_card_swipe_round.png"></br>Credit Card Swipe icon (round)</i>
   static const IconData credit_card_swipe_round = IconData(0xe0b6, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/crop_round.png"></br>Crop icon (round)</i>
   static const IconData crop_round = IconData(0xe0b7, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/dark_mode_round.png"></br>Dark Mode icon (round)</i>
   static const IconData dark_mode_round = IconData(0xe0b8, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/dashboard_round.png"></br>Dashboard icon (round)</i>
   static const IconData dashboard_round = IconData(0xe0b9, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/delete_forever_round.png"></br>Delete Forever icon (round)</i>
   static const IconData delete_forever_round = IconData(0xe0ba, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/delete_outline_round.png"></br>Delete Outline icon (round)</i>
   static const IconData delete_outline_round = IconData(0xe0bb, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/delete_round.png"></br>Delete icon (round)</i>
   static const IconData delete_round = IconData(0xe0bc, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/desktop_round.png"></br>Desktop icon (round)</i>
   static const IconData desktop_round = IconData(0xe0bd, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/device_settings_round.png"></br>Device Settings icon (round)</i>
   static const IconData device_settings_round = IconData(0xe0be, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/devices_ecosystem_round.png"></br>Devices Ecosystem icon (round)</i>
   static const IconData devices_ecosystem_round = IconData(0xe0bf, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/devices_round.png"></br>Devices icon (round)</i>
   static const IconData devices_round = IconData(0xe0c0, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/dialpad_round.png"></br>Dialpad icon (round)</i>
   static const IconData dialpad_round = IconData(0xe0c1, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/dislike_round.png"></br>Dislike icon (round)</i>
   static const IconData dislike_round = IconData(0xe0c2, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/distribute_horizontal_round.png"></br>Distribute Horizontal icon (round)</i>
   static const IconData distribute_horizontal_round = IconData(0xe0c3, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/distribute_vertical_round.png"></br>Distribute Vertical icon (round)</i>
   static const IconData distribute_vertical_round = IconData(0xe0c4, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/doc_attach_round.png"></br>Doc Attach icon (round)</i>
   static const IconData doc_attach_round = IconData(0xe0c5, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/document_round.png"></br>Document icon (round)</i>
   static const IconData document_round = IconData(0xe0c6, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/dollar_round.png"></br>Dollar icon (round)</i>
   static const IconData dollar_round = IconData(0xe0c7, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/download_round.png"></br>Download icon (round)</i>
   static const IconData download_round = IconData(0xe0c8, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/downloading_round.png"></br>Downloading icon (round)</i>
   static const IconData downloading_round = IconData(0xe0c9, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/drop_down_circle_round.png"></br>Drop Down Circle icon (round)</i>
   static const IconData drop_down_circle_round = IconData(0xe0ca, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/eas_round.png"></br>Eas icon (round)</i>
   static const IconData eas_round = IconData(0xe0cb, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/edit_border_round.png"></br>Edit Border icon (round)</i>
   static const IconData edit_border_round = IconData(0xe0cc, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/edit_round.png"></br>Edit icon (round)</i>
   static const IconData edit_round = IconData(0xe0cd, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/email_alt_round.png"></br>Email Alt icon (round)</i>
   static const IconData email_alt_round = IconData(0xe0ce, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/email_outline_round.png"></br>Email Outline icon (round)</i>
   static const IconData email_outline_round = IconData(0xe0cf, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/email_reply_all_round.png"></br>Email Reply All icon (round)</i>
   static const IconData email_reply_all_round = IconData(0xe0d0, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/email_round.png"></br>Email icon (round)</i>
   static const IconData email_round = IconData(0xe0d1, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/end_call_round.png"></br>End Call icon (round)</i>
   static const IconData end_call_round = IconData(0xe0d2, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/enterprise_diagnostics_round.png"></br>Enterprise Diagnostics icon (round)</i>
   static const IconData enterprise_diagnostics_round = IconData(0xe0d3, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/environmental_round.png"></br>Environmental icon (round)</i>
   static const IconData environmental_round = IconData(0xe0d4, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/error_outline_round.png"></br>Error Outline icon (round)</i>
   static const IconData error_outline_round = IconData(0xe0d5, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/error_round.png"></br>Error icon (round)</i>
   static const IconData error_round = IconData(0xe0d6, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/ethernet_round.png"></br>Ethernet icon (round)</i>
   static const IconData ethernet_round = IconData(0xe0d7, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/exit_round.png"></br>Exit icon (round)</i>
   static const IconData exit_round = IconData(0xe0d8, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/expand_less_round.png"></br>Expand Less icon (round)</i>
   static const IconData expand_less_round = IconData(0xe0d9, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/expand_more_round.png"></br>Expand More icon (round)</i>
   static const IconData expand_more_round = IconData(0xe0da, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/eye_dropper_round.png"></br>Eye Dropper icon (round)</i>
   static const IconData eye_dropper_round = IconData(0xe0db, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/eye_preview_round.png"></br>Eye Preview icon (round)</i>
   static const IconData eye_preview_round = IconData(0xe0dc, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/face_id_round.png"></br>Face Id icon (round)</i>
   static const IconData face_id_round = IconData(0xe0dd, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/facebook_round.png"></br>Facebook icon (round)</i>
   static const IconData facebook_round = IconData(0xe0de, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/factory_round.png"></br>Factory icon (round)</i>
   static const IconData factory_round = IconData(0xe0df, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/fast_forward_round.png"></br>Fast Forward icon (round)</i>
   static const IconData fast_forward_round = IconData(0xe0e0, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/fast_rewind_round.png"></br>Fast Rewind icon (round)</i>
   static const IconData fast_rewind_round = IconData(0xe0e1, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/file_round.png"></br>File icon (round)</i>
   static const IconData file_round = IconData(0xe0e2, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/filter_alt_round.png"></br>Filter Alt icon (round)</i>
   static const IconData filter_alt_round = IconData(0xe0e3, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/filter_round.png"></br>Filter icon (round)</i>
   static const IconData filter_round = IconData(0xe0e4, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/finished_download_round.png"></br>Finished Download icon (round)</i>
   static const IconData finished_download_round = IconData(0xe0e5, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/first_page_round.png"></br>First Page icon (round)</i>
   static const IconData first_page_round = IconData(0xe0e6, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/flag_round.png"></br>Flag icon (round)</i>
   static const IconData flag_round = IconData(0xe0e7, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/flight_mode_round.png"></br>Flight Mode icon (round)</i>
   static const IconData flight_mode_round = IconData(0xe0e8, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/flight_round.png"></br>Flight icon (round)</i>
   static const IconData flight_round = IconData(0xe0e9, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/flip_round.png"></br>Flip icon (round)</i>
   static const IconData flip_round = IconData(0xe0ea, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/folder_file_round.png"></br>Folder File icon (round)</i>
   static const IconData folder_file_round = IconData(0xe0eb, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/folder_outline_round.png"></br>Folder Outline icon (round)</i>
   static const IconData folder_outline_round = IconData(0xe0ec, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/folder_round.png"></br>Folder icon (round)</i>
   static const IconData folder_round = IconData(0xe0ed, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/font_size_decrease_round.png"></br>Font Size Decrease icon (round)</i>
   static const IconData font_size_decrease_round = IconData(0xe0ee, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/font_size_increase_round.png"></br>Font Size Increase icon (round)</i>
   static const IconData font_size_increase_round = IconData(0xe0ef, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/format_shapes_round.png"></br>Format Shapes icon (round)</i>
   static const IconData format_shapes_round = IconData(0xe0f0, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/forward_round.png"></br>Forward icon (round)</i>
   static const IconData forward_round = IconData(0xe0f1, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/freezer_round.png"></br>Freezer icon (round)</i>
   static const IconData freezer_round = IconData(0xe0f2, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/full_screen_exit_round.png"></br>Full Screen Exit icon (round)</i>
   static const IconData full_screen_exit_round = IconData(0xe0f3, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/full_screen_round.png"></br>Full Screen icon (round)</i>
   static const IconData full_screen_round = IconData(0xe0f4, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/gif_round.png"></br>Gif icon (round)</i>
   static const IconData gif_round = IconData(0xe0f5, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/glossary_round.png"></br>Glossary icon (round)</i>
   static const IconData glossary_round = IconData(0xe0f6, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/google_drive_round.png"></br>Google Drive icon (round)</i>
   static const IconData google_drive_round = IconData(0xe0f7, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/grid_off_round.png"></br>Grid Off icon (round)</i>
   static const IconData grid_off_round = IconData(0xe0f8, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/grid_on_round.png"></br>Grid On icon (round)</i>
   static const IconData grid_on_round = IconData(0xe0f9, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/grid_view_round.png"></br>Grid View icon (round)</i>
   static const IconData grid_view_round = IconData(0xe0fa, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/group_round.png"></br>Group icon (round)</i>
   static const IconData group_round = IconData(0xe0fb, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/groups_round.png"></br>Groups icon (round)</i>
   static const IconData groups_round = IconData(0xe0fc, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/hamburger_menu_navigation_rail_round.png"></br>Hamburger Menu Navigation Rail icon (round)</i>
-  static const IconData hamburger_menu_navigation_rail_round = IconData(0xe0fd, fontFamily: familyRound, fontPackage: package);
+  static const IconData hamburger_menu_navigation_rail_round =
+      IconData(0xe0fd, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/hamburger_menu_round.png"></br>Hamburger Menu icon (round)</i>
   static const IconData hamburger_menu_round = IconData(0xe0fe, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/hamburger_menu_thick_round.png"></br>Hamburger Menu Thick icon (round)</i>
   static const IconData hamburger_menu_thick_round = IconData(0xe0ff, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/hand_round.png"></br>Hand icon (round)</i>
   static const IconData hand_round = IconData(0xe100, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/happy_round.png"></br>Happy icon (round)</i>
   static const IconData happy_round = IconData(0xe101, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/hdmi_round.png"></br>Hdmi icon (round)</i>
   static const IconData hdmi_round = IconData(0xe102, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/hdr_round.png"></br>Hdr icon (round)</i>
   static const IconData hdr_round = IconData(0xe103, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/headphones_round.png"></br>Headphones icon (round)</i>
   static const IconData headphones_round = IconData(0xe104, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/headset_round.png"></br>Headset icon (round)</i>
   static const IconData headset_round = IconData(0xe105, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/help_outline_round.png"></br>Help Outline icon (round)</i>
   static const IconData help_outline_round = IconData(0xe106, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/help_round.png"></br>Help icon (round)</i>
   static const IconData help_round = IconData(0xe107, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/history_round.png"></br>History icon (round)</i>
   static const IconData history_round = IconData(0xe108, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/home_round.png"></br>Home icon (round)</i>
   static const IconData home_round = IconData(0xe109, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/hourglass_round.png"></br>Hourglass icon (round)</i>
   static const IconData hourglass_round = IconData(0xe10a, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/how_do_i_round.png"></br>How Do I icon (round)</i>
   static const IconData how_do_i_round = IconData(0xe10b, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/image_library_round.png"></br>Image Library icon (round)</i>
   static const IconData image_library_round = IconData(0xe10c, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/image_round.png"></br>Image icon (round)</i>
   static const IconData image_round = IconData(0xe10d, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/important_notification_round.png"></br>Important Notification icon (round)</i>
   static const IconData important_notification_round = IconData(0xe10e, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/inbox_round.png"></br>Inbox icon (round)</i>
   static const IconData inbox_round = IconData(0xe10f, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/indent_decrease_round.png"></br>Indent Decrease icon (round)</i>
   static const IconData indent_decrease_round = IconData(0xe110, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/indent_increase_round.png"></br>Indent Increase icon (round)</i>
   static const IconData indent_increase_round = IconData(0xe111, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/indeterminate_check_box_round.png"></br>Indeterminate Check Box icon (round)</i>
   static const IconData indeterminate_check_box_round = IconData(0xe112, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/info_round.png"></br>Info icon (round)</i>
   static const IconData info_round = IconData(0xe113, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/instagram_round.png"></br>Instagram icon (round)</i>
   static const IconData instagram_round = IconData(0xe114, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/ios_share_round.png"></br>Ios Share icon (round)</i>
   static const IconData ios_share_round = IconData(0xe115, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/iso_round.png"></br>Iso icon (round)</i>
   static const IconData iso_round = IconData(0xe116, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/issue_audit_round.png"></br>Issue Audit icon (round)</i>
   static const IconData issue_audit_round = IconData(0xe117, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/italic_round.png"></br>Italic icon (round)</i>
   static const IconData italic_round = IconData(0xe118, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/jpg_attach_round.png"></br>Jpg Attach icon (round)</i>
   static const IconData jpg_attach_round = IconData(0xe119, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/justify_round.png"></br>Justify icon (round)</i>
   static const IconData justify_round = IconData(0xe11a, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/keyboard_round.png"></br>Keyboard icon (round)</i>
   static const IconData keyboard_round = IconData(0xe11b, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/label_round.png"></br>Label icon (round)</i>
   static const IconData label_round = IconData(0xe11c, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/laptop_round.png"></br>Laptop icon (round)</i>
   static const IconData laptop_round = IconData(0xe11d, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/last_page_round.png"></br>Last Page icon (round)</i>
   static const IconData last_page_round = IconData(0xe11e, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/layers_round.png"></br>Layers icon (round)</i>
   static const IconData layers_round = IconData(0xe11f, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/light_mode_round.png"></br>Light Mode icon (round)</i>
   static const IconData light_mode_round = IconData(0xe120, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/light_rail_train_round.png"></br>Light Rail Train icon (round)</i>
   static const IconData light_rail_train_round = IconData(0xe121, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/lightbulb_round.png"></br>Lightbulb icon (round)</i>
   static const IconData lightbulb_round = IconData(0xe122, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/like_round.png"></br>Like icon (round)</i>
   static const IconData like_round = IconData(0xe123, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/line_spacing_round.png"></br>Line Spacing icon (round)</i>
   static const IconData line_spacing_round = IconData(0xe124, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/link_add_round.png"></br>Link Add icon (round)</i>
   static const IconData link_add_round = IconData(0xe125, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/link_round.png"></br>Link icon (round)</i>
   static const IconData link_round = IconData(0xe126, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/linkedin_round.png"></br>Linkedin icon (round)</i>
   static const IconData linkedin_round = IconData(0xe127, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/list_alt_round.png"></br>List Alt icon (round)</i>
   static const IconData list_alt_round = IconData(0xe128, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/list_bullet_contained_round.png"></br>List Bullet Contained icon (round)</i>
   static const IconData list_bullet_contained_round = IconData(0xe129, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/list_feedback_round.png"></br>List Feedback icon (round)</i>
   static const IconData list_feedback_round = IconData(0xe12a, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/list_form_round.png"></br>List Form icon (round)</i>
   static const IconData list_form_round = IconData(0xe12b, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/list_round.png"></br>List icon (round)</i>
   static const IconData list_round = IconData(0xe12c, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/local_shipping_round.png"></br>Local Shipping icon (round)</i>
   static const IconData local_shipping_round = IconData(0xe12d, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/location_off_round.png"></br>Location Off icon (round)</i>
   static const IconData location_off_round = IconData(0xe12e, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/location_point_round.png"></br>Location Point icon (round)</i>
   static const IconData location_point_round = IconData(0xe12f, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/location_round.png"></br>Location icon (round)</i>
   static const IconData location_round = IconData(0xe130, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/lock_alt_round.png"></br>Lock Alt icon (round)</i>
   static const IconData lock_alt_round = IconData(0xe131, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/lock_round.png"></br>Lock icon (round)</i>
   static const IconData lock_round = IconData(0xe132, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/lock_undo_round.png"></br>Lock Undo icon (round)</i>
   static const IconData lock_undo_round = IconData(0xe133, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/log_in_round.png"></br>Log In icon (round)</i>
   static const IconData log_in_round = IconData(0xe134, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/log_out_round.png"></br>Log Out icon (round)</i>
   static const IconData log_out_round = IconData(0xe135, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/love_outline_round.png"></br>Love Outline icon (round)</i>
   static const IconData love_outline_round = IconData(0xe136, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/love_round.png"></br>Love icon (round)</i>
   static const IconData love_round = IconData(0xe137, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/maintenance_round.png"></br>Maintenance icon (round)</i>
   static const IconData maintenance_round = IconData(0xe138, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/map_round.png"></br>Map icon (round)</i>
   static const IconData map_round = IconData(0xe139, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/meal_round.png"></br>Meal icon (round)</i>
   static const IconData meal_round = IconData(0xe13a, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/medium_round.png"></br>Medium icon (round)</i>
   static const IconData medium_round = IconData(0xe13b, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/memory_round.png"></br>Memory icon (round)</i>
   static const IconData memory_round = IconData(0xe13c, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/message_round.png"></br>Message icon (round)</i>
   static const IconData message_round = IconData(0xe13d, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/microphone_off_round.png"></br>Microphone Off icon (round)</i>
   static const IconData microphone_off_round = IconData(0xe13e, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/microphone_outline_round.png"></br>Microphone Outline icon (round)</i>
   static const IconData microphone_outline_round = IconData(0xe13f, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/microphone_round.png"></br>Microphone icon (round)</i>
   static const IconData microphone_round = IconData(0xe140, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/mobile_friendly_round.png"></br>Mobile Friendly icon (round)</i>
   static const IconData mobile_friendly_round = IconData(0xe141, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/money_euro_round.png"></br>Money Euro icon (round)</i>
   static const IconData money_euro_round = IconData(0xe142, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/money_pound_round.png"></br>Money Pound icon (round)</i>
   static const IconData money_pound_round = IconData(0xe143, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/money_usd_round.png"></br>Money Usd icon (round)</i>
   static const IconData money_usd_round = IconData(0xe144, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/monitor_round.png"></br>Monitor icon (round)</i>
   static const IconData monitor_round = IconData(0xe145, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/more_horizontal_round.png"></br>More Horizontal icon (round)</i>
   static const IconData more_horizontal_round = IconData(0xe146, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/more_vertical_round.png"></br>More Vertical icon (round)</i>
   static const IconData more_vertical_round = IconData(0xe147, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/my_location_round.png"></br>My Location icon (round)</i>
   static const IconData my_location_round = IconData(0xe148, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/navigate_round.png"></br>Navigate icon (round)</i>
   static const IconData navigate_round = IconData(0xe149, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/navigation_round.png"></br>Navigation icon (round)</i>
   static const IconData navigation_round = IconData(0xe14a, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/near_me_round.png"></br>Near Me icon (round)</i>
   static const IconData near_me_round = IconData(0xe14b, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/network_signal_round.png"></br>Network Signal icon (round)</i>
   static const IconData network_signal_round = IconData(0xe14c, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/new_chat_round.png"></br>New Chat icon (round)</i>
   static const IconData new_chat_round = IconData(0xe14d, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/nfc_round.png"></br>Nfc icon (round)</i>
   static const IconData nfc_round = IconData(0xe14e, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/night_round.png"></br>Night icon (round)</i>
   static const IconData night_round = IconData(0xe14f, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/no_color_round.png"></br>No Color icon (round)</i>
   static const IconData no_color_round = IconData(0xe150, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/note_round.png"></br>Note icon (round)</i>
   static const IconData note_round = IconData(0xe151, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/notifications_off_round.png"></br>Notifications Off icon (round)</i>
   static const IconData notifications_off_round = IconData(0xe152, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/numbered_list_round.png"></br>Numbered List icon (round)</i>
   static const IconData numbered_list_round = IconData(0xe153, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/open_in_full_round.png"></br>Open In Full icon (round)</i>
   static const IconData open_in_full_round = IconData(0xe154, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/open_in_new_window_round.png"></br>Open In New Window icon (round)</i>
   static const IconData open_in_new_window_round = IconData(0xe155, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/open_new_off_round.png"></br>Open New Off icon (round)</i>
   static const IconData open_new_off_round = IconData(0xe156, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/page_height_round.png"></br>Page Height icon (round)</i>
   static const IconData page_height_round = IconData(0xe157, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/page_rotate_round.png"></br>Page Rotate icon (round)</i>
   static const IconData page_rotate_round = IconData(0xe158, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/page_width_round.png"></br>Page Width icon (round)</i>
   static const IconData page_width_round = IconData(0xe159, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/palette_round.png"></br>Palette icon (round)</i>
   static const IconData palette_round = IconData(0xe15a, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/partner_round.png"></br>Partner icon (round)</i>
   static const IconData partner_round = IconData(0xe15b, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/pause_circle_round.png"></br>Pause Circle icon (round)</i>
   static const IconData pause_circle_round = IconData(0xe15c, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/pause_round.png"></br>Pause icon (round)</i>
   static const IconData pause_round = IconData(0xe15d, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/pdf_attach_round.png"></br>Pdf Attach icon (round)</i>
   static const IconData pdf_attach_round = IconData(0xe15e, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/pending_round.png"></br>Pending icon (round)</i>
   static const IconData pending_round = IconData(0xe15f, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/person_admin_round.png"></br>Person Admin icon (round)</i>
   static const IconData person_admin_round = IconData(0xe160, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/person_assign_round.png"></br>Person Assign icon (round)</i>
   static const IconData person_assign_round = IconData(0xe161, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/person_clock_round.png"></br>Person Clock icon (round)</i>
   static const IconData person_clock_round = IconData(0xe162, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/person_info_round.png"></br>Person Info icon (round)</i>
   static const IconData person_info_round = IconData(0xe163, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/person_manager_round.png"></br>Person Manager icon (round)</i>
   static const IconData person_manager_round = IconData(0xe164, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/person_move_round.png"></br>Person Move icon (round)</i>
   static const IconData person_move_round = IconData(0xe165, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/person_outline_round.png"></br>Person Outline icon (round)</i>
   static const IconData person_outline_round = IconData(0xe166, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/person_round.png"></br>Person icon (round)</i>
   static const IconData person_round = IconData(0xe167, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/person_search_round.png"></br>Person Search icon (round)</i>
   static const IconData person_search_round = IconData(0xe168, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/person_swap_round.png"></br>Person Swap icon (round)</i>
   static const IconData person_swap_round = IconData(0xe169, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/person_walk_round.png"></br>Person Walk icon (round)</i>
   static const IconData person_walk_round = IconData(0xe16a, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/phone_android_round.png"></br>Phone Android icon (round)</i>
   static const IconData phone_android_round = IconData(0xe16b, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/phone_bluetooth_speaker_round.png"></br>Phone Bluetooth Speaker icon (round)</i>
   static const IconData phone_bluetooth_speaker_round = IconData(0xe16c, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/phone_in_talk_round.png"></br>Phone In Talk icon (round)</i>
   static const IconData phone_in_talk_round = IconData(0xe16d, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/phone_iphone_round.png"></br>Phone Iphone icon (round)</i>
   static const IconData phone_iphone_round = IconData(0xe16e, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/phone_round.png"></br>Phone icon (round)</i>
   static const IconData phone_round = IconData(0xe16f, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/phonelink_round.png"></br>Phonelink icon (round)</i>
   static const IconData phonelink_round = IconData(0xe170, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/phrase_round.png"></br>Phrase icon (round)</i>
   static const IconData phrase_round = IconData(0xe171, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/pin_round.png"></br>Pin icon (round)</i>
   static const IconData pin_round = IconData(0xe172, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/place_round.png"></br>Place icon (round)</i>
   static const IconData place_round = IconData(0xe173, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/planogram_round.png"></br>Planogram icon (round)</i>
   static const IconData planogram_round = IconData(0xe174, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/play_circle_round.png"></br>Play Circle icon (round)</i>
   static const IconData play_circle_round = IconData(0xe175, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/play_outline_round.png"></br>Play Outline icon (round)</i>
   static const IconData play_outline_round = IconData(0xe176, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/play_round.png"></br>Play icon (round)</i>
   static const IconData play_round = IconData(0xe177, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/png_attach_round.png"></br>Png Attach icon (round)</i>
   static const IconData png_attach_round = IconData(0xe178, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/point_gift_round.png"></br>Point Gift icon (round)</i>
   static const IconData point_gift_round = IconData(0xe179, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/point_heart_round.png"></br>Point Heart icon (round)</i>
   static const IconData point_heart_round = IconData(0xe17a, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/point_money_round.png"></br>Point Money icon (round)</i>
   static const IconData point_money_round = IconData(0xe17b, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/point_star_round.png"></br>Point Star icon (round)</i>
   static const IconData point_star_round = IconData(0xe17c, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/point_token_round.png"></br>Point Token icon (round)</i>
   static const IconData point_token_round = IconData(0xe17d, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/portrait_round.png"></br>Portrait icon (round)</i>
   static const IconData portrait_round = IconData(0xe17e, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/ppt_attach_round.png"></br>Ppt Attach icon (round)</i>
   static const IconData ppt_attach_round = IconData(0xe17f, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/price_round.png"></br>Price icon (round)</i>
   static const IconData price_round = IconData(0xe180, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/printer_round.png"></br>Printer icon (round)</i>
   static const IconData printer_round = IconData(0xe181, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/priority_round.png"></br>Priority icon (round)</i>
   static const IconData priority_round = IconData(0xe182, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/pro_round.png"></br>Pro icon (round)</i>
   static const IconData pro_round = IconData(0xe183, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/productivity_apps_round.png"></br>Productivity Apps icon (round)</i>
   static const IconData productivity_apps_round = IconData(0xe184, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/ptt_round.png"></br>Ptt icon (round)</i>
   static const IconData ptt_round = IconData(0xe185, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/publish_round.png"></br>Publish icon (round)</i>
   static const IconData publish_round = IconData(0xe186, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/push_pin_off_round.png"></br>Push Pin Off icon (round)</i>
   static const IconData push_pin_off_round = IconData(0xe187, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/push_pin_round.png"></br>Push Pin icon (round)</i>
   static const IconData push_pin_round = IconData(0xe188, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/qr_code_round.png"></br>Qr Code icon (round)</i>
   static const IconData qr_code_round = IconData(0xe189, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/queue_round.png"></br>Queue icon (round)</i>
   static const IconData queue_round = IconData(0xe18a, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/radio_button_checked_round.png"></br>Radio Button Checked icon (round)</i>
   static const IconData radio_button_checked_round = IconData(0xe18b, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/radio_button_unchecked_round.png"></br>Radio Button Unchecked icon (round)</i>
   static const IconData radio_button_unchecked_round = IconData(0xe18c, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/react_add_round.png"></br>React Add icon (round)</i>
   static const IconData react_add_round = IconData(0xe18d, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/react_thumbsup_round.png"></br>React Thumbsup icon (round)</i>
   static const IconData react_thumbsup_round = IconData(0xe18e, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/recall_round.png"></br>Recall icon (round)</i>
   static const IconData recall_round = IconData(0xe18f, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/receipt_round.png"></br>Receipt icon (round)</i>
   static const IconData receipt_round = IconData(0xe190, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/recording_round.png"></br>Recording icon (round)</i>
   static const IconData recording_round = IconData(0xe191, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/redo_round.png"></br>Redo icon (round)</i>
   static const IconData redo_round = IconData(0xe192, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/refresh_round.png"></br>Refresh icon (round)</i>
   static const IconData refresh_round = IconData(0xe193, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/remove_box_round.png"></br>Remove Box icon (round)</i>
   static const IconData remove_box_round = IconData(0xe194, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/remove_circle_outline_round.png"></br>Remove Circle Outline icon (round)</i>
   static const IconData remove_circle_outline_round = IconData(0xe195, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/remove_circle_round.png"></br>Remove Circle icon (round)</i>
   static const IconData remove_circle_round = IconData(0xe196, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/remove_group_round.png"></br>Remove Group icon (round)</i>
   static const IconData remove_group_round = IconData(0xe197, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/remove_person_round.png"></br>Remove Person icon (round)</i>
   static const IconData remove_person_round = IconData(0xe198, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/remove_round.png"></br>Remove icon (round)</i>
   static const IconData remove_round = IconData(0xe199, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/renew_round.png"></br>Renew icon (round)</i>
   static const IconData renew_round = IconData(0xe19a, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/reorder_round.png"></br>Reorder icon (round)</i>
   static const IconData reorder_round = IconData(0xe19b, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/repeat_round.png"></br>Repeat icon (round)</i>
   static const IconData repeat_round = IconData(0xe19c, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/replay_round.png"></br>Replay icon (round)</i>
   static const IconData replay_round = IconData(0xe19d, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/reply_round.png"></br>Reply icon (round)</i>
   static const IconData reply_round = IconData(0xe19e, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/report_round.png"></br>Report icon (round)</i>
   static const IconData report_round = IconData(0xe19f, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/restart_alt_round.png"></br>Restart Alt icon (round)</i>
   static const IconData restart_alt_round = IconData(0xe1a0, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/review_round.png"></br>Review icon (round)</i>
   static const IconData review_round = IconData(0xe1a1, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/road_map_round.png"></br>Road Map icon (round)</i>
   static const IconData road_map_round = IconData(0xe1a2, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/rotate_left_round.png"></br>Rotate Left icon (round)</i>
   static const IconData rotate_left_round = IconData(0xe1a3, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/rotate_right_round.png"></br>Rotate Right icon (round)</i>
   static const IconData rotate_right_round = IconData(0xe1a4, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/rss_feed_round.png"></br>Rss Feed icon (round)</i>
   static const IconData rss_feed_round = IconData(0xe1a5, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/rules_round.png"></br>Rules icon (round)</i>
   static const IconData rules_round = IconData(0xe1a6, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/sad_round.png"></br>Sad icon (round)</i>
   static const IconData sad_round = IconData(0xe1a7, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/satisfied_round.png"></br>Satisfied icon (round)</i>
   static const IconData satisfied_round = IconData(0xe1a8, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/save_alt_round.png"></br>Save Alt icon (round)</i>
   static const IconData save_alt_round = IconData(0xe1a9, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/save_content_round.png"></br>Save Content icon (round)</i>
   static const IconData save_content_round = IconData(0xe1aa, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/save_round.png"></br>Save icon (round)</i>
   static const IconData save_round = IconData(0xe1ab, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/scan_rate_round.png"></br>Scan Rate icon (round)</i>
   static const IconData scan_rate_round = IconData(0xe1ac, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/scanner_round.png"></br>Scanner icon (round)</i>
   static const IconData scanner_round = IconData(0xe1ad, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/schedule_round.png"></br>Schedule icon (round)</i>
   static const IconData schedule_round = IconData(0xe1ae, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/school_round.png"></br>School icon (round)</i>
   static const IconData school_round = IconData(0xe1af, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/screen_rotation_round.png"></br>Screen Rotation icon (round)</i>
   static const IconData screen_rotation_round = IconData(0xe1b0, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/sd_card_round.png"></br>Sd Card icon (round)</i>
   static const IconData sd_card_round = IconData(0xe1b1, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/search_round.png"></br>Search icon (round)</i>
   static const IconData search_round = IconData(0xe1b2, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/security_check_round.png"></br>Security Check icon (round)</i>
   static const IconData security_check_round = IconData(0xe1b3, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/security_round.png"></br>Security icon (round)</i>
   static const IconData security_round = IconData(0xe1b4, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/send_round.png"></br>Send icon (round)</i>
   static const IconData send_round = IconData(0xe1b5, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/settings_round.png"></br>Settings icon (round)</i>
   static const IconData settings_round = IconData(0xe1b6, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/shape_recognition_round.png"></br>Shape Recognition icon (round)</i>
   static const IconData shape_recognition_round = IconData(0xe1b7, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/share_round.png"></br>Share icon (round)</i>
   static const IconData share_round = IconData(0xe1b8, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/shared_folder_round.png"></br>Shared Folder icon (round)</i>
   static const IconData shared_folder_round = IconData(0xe1b9, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/ship_round.png"></br>Ship icon (round)</i>
   static const IconData ship_round = IconData(0xe1ba, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/sim_card_round.png"></br>Sim Card icon (round)</i>
   static const IconData sim_card_round = IconData(0xe1bb, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/skip_next_round.png"></br>Skip Next icon (round)</i>
   static const IconData skip_next_round = IconData(0xe1bc, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/skip_previous_round.png"></br>Skip Previous icon (round)</i>
   static const IconData skip_previous_round = IconData(0xe1bd, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/slide_show_round.png"></br>Slide Show icon (round)</i>
   static const IconData slide_show_round = IconData(0xe1be, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/smart_phone_round.png"></br>Smart Phone icon (round)</i>
   static const IconData smart_phone_round = IconData(0xe1bf, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/sms_round.png"></br>Sms icon (round)</i>
   static const IconData sms_round = IconData(0xe1c0, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/snooze_round.png"></br>Snooze icon (round)</i>
   static const IconData snooze_round = IconData(0xe1c1, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/solutions_round.png"></br>Solutions icon (round)</i>
   static const IconData solutions_round = IconData(0xe1c2, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/sort_content_round.png"></br>Sort Content icon (round)</i>
   static const IconData sort_content_round = IconData(0xe1c3, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/sort_round.png"></br>Sort icon (round)</i>
   static const IconData sort_round = IconData(0xe1c4, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/speaker_round.png"></br>Speaker icon (round)</i>
   static const IconData speaker_round = IconData(0xe1c5, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/star_half_round.png"></br>Star Half icon (round)</i>
   static const IconData star_half_round = IconData(0xe1c6, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/star_outline_round.png"></br>Star Outline icon (round)</i>
   static const IconData star_outline_round = IconData(0xe1c7, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/star_round.png"></br>Star icon (round)</i>
   static const IconData star_round = IconData(0xe1c8, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/steps_round.png"></br>Steps icon (round)</i>
   static const IconData steps_round = IconData(0xe1c9, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/sticker_round.png"></br>Sticker icon (round)</i>
   static const IconData sticker_round = IconData(0xe1ca, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/stop_circle_round.png"></br>Stop Circle icon (round)</i>
   static const IconData stop_circle_round = IconData(0xe1cb, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/stop_round.png"></br>Stop icon (round)</i>
   static const IconData stop_round = IconData(0xe1cc, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/store_release_round.png"></br>Store Release icon (round)</i>
   static const IconData store_release_round = IconData(0xe1cd, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/store_round.png"></br>Store icon (round)</i>
   static const IconData store_round = IconData(0xe1ce, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/store_swap_round.png"></br>Store Swap icon (round)</i>
   static const IconData store_swap_round = IconData(0xe1cf, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/store_transfer_round.png"></br>Store Transfer icon (round)</i>
   static const IconData store_transfer_round = IconData(0xe1d0, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/straighten_round.png"></br>Straighten icon (round)</i>
   static const IconData straighten_round = IconData(0xe1d1, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/strategy_round.png"></br>Strategy icon (round)</i>
   static const IconData strategy_round = IconData(0xe1d2, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/strikethrough_round.png"></br>Strikethrough icon (round)</i>
   static const IconData strikethrough_round = IconData(0xe1d3, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/subscribe_round.png"></br>Subscribe icon (round)</i>
   static const IconData subscribe_round = IconData(0xe1d4, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/swap_round.png"></br>Swap icon (round)</i>
   static const IconData swap_round = IconData(0xe1d5, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/switch_user_round.png"></br>Switch User icon (round)</i>
   static const IconData switch_user_round = IconData(0xe1d6, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/sync_action_round.png"></br>Sync Action icon (round)</i>
   static const IconData sync_action_round = IconData(0xe1d7, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/sync_disabled_round.png"></br>Sync Disabled icon (round)</i>
   static const IconData sync_disabled_round = IconData(0xe1d8, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/sync_round.png"></br>Sync icon (round)</i>
   static const IconData sync_round = IconData(0xe1d9, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/table_round.png"></br>Table icon (round)</i>
   static const IconData table_round = IconData(0xe1da, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/tablet_mac_round.png"></br>Tablet Mac icon (round)</i>
   static const IconData tablet_mac_round = IconData(0xe1db, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/tablet_round.png"></br>Tablet icon (round)</i>
   static const IconData tablet_round = IconData(0xe1dc, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/tag_enterprise_round.png"></br>Tag Enterprise icon (round)</i>
   static const IconData tag_enterprise_round = IconData(0xe1dd, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/tag_round.png"></br>Tag icon (round)</i>
   static const IconData tag_round = IconData(0xe1de, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/tap_to_pay_round.png"></br>Tap To Pay icon (round)</i>
   static const IconData tap_to_pay_round = IconData(0xe1df, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/taxi_round.png"></br>Taxi icon (round)</i>
   static const IconData taxi_round = IconData(0xe1e0, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/text_color_round.png"></br>Text Color icon (round)</i>
   static const IconData text_color_round = IconData(0xe1e1, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/tiers_round.png"></br>Tiers icon (round)</i>
   static const IconData tiers_round = IconData(0xe1e2, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/timecard_approve_round.png"></br>Timecard Approve icon (round)</i>
   static const IconData timecard_approve_round = IconData(0xe1e3, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/timecard_round.png"></br>Timecard icon (round)</i>
   static const IconData timecard_round = IconData(0xe1e4, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/timecard_warning_round.png"></br>Timecard Warning icon (round)</i>
   static const IconData timecard_warning_round = IconData(0xe1e5, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/timer_round.png"></br>Timer icon (round)</i>
   static const IconData timer_round = IconData(0xe1e6, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/toggle_off_round.png"></br>Toggle Off icon (round)</i>
   static const IconData toggle_off_round = IconData(0xe1e7, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/toggle_on_round.png"></br>Toggle On icon (round)</i>
   static const IconData toggle_on_round = IconData(0xe1e8, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/touch_round.png"></br>Touch icon (round)</i>
   static const IconData touch_round = IconData(0xe1e9, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/train_round.png"></br>Train icon (round)</i>
   static const IconData train_round = IconData(0xe1ea, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/transfer_round.png"></br>Transfer icon (round)</i>
   static const IconData transfer_round = IconData(0xe1eb, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/trending_down_round.png"></br>Trending Down icon (round)</i>
   static const IconData trending_down_round = IconData(0xe1ec, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/trending_up_round.png"></br>Trending Up icon (round)</i>
   static const IconData trending_up_round = IconData(0xe1ed, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/tv_round.png"></br>Tv icon (round)</i>
   static const IconData tv_round = IconData(0xe1ee, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/twitter_round.png"></br>Twitter icon (round)</i>
   static const IconData twitter_round = IconData(0xe1ef, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/type_round.png"></br>Type icon (round)</i>
   static const IconData type_round = IconData(0xe1f0, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/uhf_rfid_round.png"></br>Uhf Rfid icon (round)</i>
   static const IconData uhf_rfid_round = IconData(0xe1f1, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/underline_round.png"></br>Underline icon (round)</i>
   static const IconData underline_round = IconData(0xe1f2, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/undo_round.png"></br>Undo icon (round)</i>
   static const IconData undo_round = IconData(0xe1f3, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/unfold_less_round.png"></br>Unfold Less icon (round)</i>
   static const IconData unfold_less_round = IconData(0xe1f4, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/unfold_more_round.png"></br>Unfold More icon (round)</i>
   static const IconData unfold_more_round = IconData(0xe1f5, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/unlock_alt_round.png"></br>Unlock Alt icon (round)</i>
   static const IconData unlock_alt_round = IconData(0xe1f6, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/unlock_round.png"></br>Unlock icon (round)</i>
   static const IconData unlock_round = IconData(0xe1f7, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/unsubscribe_round.png"></br>Unsubscribe icon (round)</i>
   static const IconData unsubscribe_round = IconData(0xe1f8, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/update_round.png"></br>Update icon (round)</i>
   static const IconData update_round = IconData(0xe1f9, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/upload_file_round.png"></br>Upload File icon (round)</i>
   static const IconData upload_file_round = IconData(0xe1fa, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/upload_round.png"></br>Upload icon (round)</i>
   static const IconData upload_round = IconData(0xe1fb, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/usb_alt_device_round.png"></br>Usb Alt Device icon (round)</i>
   static const IconData usb_alt_device_round = IconData(0xe1fc, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/usb_alt_round.png"></br>Usb Alt icon (round)</i>
   static const IconData usb_alt_round = IconData(0xe1fd, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/usb_round.png"></br>Usb icon (round)</i>
   static const IconData usb_round = IconData(0xe1fe, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/user_circle_round.png"></br>User Circle icon (round)</i>
   static const IconData user_circle_round = IconData(0xe1ff, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/user_minor_round.png"></br>User Minor icon (round)</i>
   static const IconData user_minor_round = IconData(0xe200, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/user_round.png"></br>User icon (round)</i>
   static const IconData user_round = IconData(0xe201, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/user_settings_round.png"></br>User Settings icon (round)</i>
   static const IconData user_settings_round = IconData(0xe202, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/vacation_round.png"></br>Vacation icon (round)</i>
   static const IconData vacation_round = IconData(0xe203, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/verified_round.png"></br>Verified icon (round)</i>
   static const IconData verified_round = IconData(0xe204, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/very_satisfied_round.png"></br>Very Satisfied icon (round)</i>
   static const IconData very_satisfied_round = IconData(0xe205, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/video_camera_round.png"></br>Video Camera icon (round)</i>
   static const IconData video_camera_round = IconData(0xe206, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/video_off_round.png"></br>Video Off icon (round)</i>
   static const IconData video_off_round = IconData(0xe207, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/video_play_round.png"></br>Video Play icon (round)</i>
   static const IconData video_play_round = IconData(0xe208, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/video_round.png"></br>Video icon (round)</i>
   static const IconData video_round = IconData(0xe209, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/visibility_off_round.png"></br>Visibility Off icon (round)</i>
   static const IconData visibility_off_round = IconData(0xe20a, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/visibility_round.png"></br>Visibility icon (round)</i>
   static const IconData visibility_round = IconData(0xe20b, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/volte_round.png"></br>Volte icon (round)</i>
   static const IconData volte_round = IconData(0xe20c, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/volume_down_round.png"></br>Volume Down icon (round)</i>
   static const IconData volume_down_round = IconData(0xe20d, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/volume_mute_round.png"></br>Volume Mute icon (round)</i>
   static const IconData volume_mute_round = IconData(0xe20e, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/volume_off_round.png"></br>Volume Off icon (round)</i>
   static const IconData volume_off_round = IconData(0xe20f, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/volume_up_round.png"></br>Volume Up icon (round)</i>
   static const IconData volume_up_round = IconData(0xe210, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/warning_outline_round.png"></br>Warning Outline icon (round)</i>
   static const IconData warning_outline_round = IconData(0xe211, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/warning_round.png"></br>Warning icon (round)</i>
   static const IconData warning_round = IconData(0xe212, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/watch_round.png"></br>Watch icon (round)</i>
   static const IconData watch_round = IconData(0xe213, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/wb_image_round.png"></br>Wb Image icon (round)</i>
   static const IconData wb_image_round = IconData(0xe214, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/wb_round.png"></br>Wb icon (round)</i>
   static const IconData wb_round = IconData(0xe215, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/world_action_round.png"></br>World Action icon (round)</i>
   static const IconData world_action_round = IconData(0xe216, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/world_round.png"></br>World icon (round)</i>
   static const IconData world_round = IconData(0xe217, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/write_round.png"></br>Write icon (round)</i>
   static const IconData write_round = IconData(0xe218, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/youtube_round.png"></br>Youtube icon (round)</i>
   static const IconData youtube_round = IconData(0xe219, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/zero_scale_round.png"></br>Zero Scale icon (round)</i>
   static const IconData zero_scale_round = IconData(0xe21a, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/zoom_in_map_round.png"></br>Zoom In Map icon (round)</i>
   static const IconData zoom_in_map_round = IconData(0xe21b, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/zoom_in_round.png"></br>Zoom In icon (round)</i>
   static const IconData zoom_in_round = IconData(0xe21c, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/zoom_out_map_round.png"></br>Zoom Out Map icon (round)</i>
   static const IconData zoom_out_map_round = IconData(0xe21d, fontFamily: familyRound, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/zoom_out_round.png"></br>Zoom Out icon (round)</i>
   static const IconData zoom_out_round = IconData(0xe21e, fontFamily: familyRound, fontPackage: package);
 
   // Sharp Icons
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/activity_sharp.png"></br>Activity icon (sharp)</i>
   static const IconData activity_sharp = IconData(0xe001, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/add_alert_sharp.png"></br>Add Alert icon (sharp)</i>
   static const IconData add_alert_sharp = IconData(0xe002, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/add_box_sharp.png"></br>Add Box icon (sharp)</i>
   static const IconData add_box_sharp = IconData(0xe003, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/add_call_sharp.png"></br>Add Call icon (sharp)</i>
   static const IconData add_call_sharp = IconData(0xe004, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/add_circle_outline_sharp.png"></br>Add Circle Outline icon (sharp)</i>
   static const IconData add_circle_outline_sharp = IconData(0xe005, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/add_circle_sharp.png"></br>Add Circle icon (sharp)</i>
   static const IconData add_circle_sharp = IconData(0xe006, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/add_group_sharp.png"></br>Add Group icon (sharp)</i>
   static const IconData add_group_sharp = IconData(0xe007, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/add_person_sharp.png"></br>Add Person icon (sharp)</i>
   static const IconData add_person_sharp = IconData(0xe008, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/add_sharp.png"></br>Add icon (sharp)</i>
   static const IconData add_sharp = IconData(0xe009, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/add_task_sharp.png"></br>Add Task icon (sharp)</i>
   static const IconData add_task_sharp = IconData(0xe00a, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/adjustments_sharp.png"></br>Adjustments icon (sharp)</i>
   static const IconData adjustments_sharp = IconData(0xe00b, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/alarm_sharp.png"></br>Alarm icon (sharp)</i>
   static const IconData alarm_sharp = IconData(0xe00c, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/alert_active_sharp.png"></br>Alert Active icon (sharp)</i>
   static const IconData alert_active_sharp = IconData(0xe00d, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/alert_outline_sharp.png"></br>Alert Outline icon (sharp)</i>
   static const IconData alert_outline_sharp = IconData(0xe00e, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/alert_sharp.png"></br>Alert icon (sharp)</i>
   static const IconData alert_sharp = IconData(0xe00f, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/align_center_sharp.png"></br>Align Center icon (sharp)</i>
   static const IconData align_center_sharp = IconData(0xe010, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/align_horizontal_center_sharp.png"></br>Align Horizontal Center icon (sharp)</i>
   static const IconData align_horizontal_center_sharp = IconData(0xe011, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/align_horizontal_left_sharp.png"></br>Align Horizontal Left icon (sharp)</i>
   static const IconData align_horizontal_left_sharp = IconData(0xe012, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/align_horizontal_right_sharp.png"></br>Align Horizontal Right icon (sharp)</i>
   static const IconData align_horizontal_right_sharp = IconData(0xe013, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/align_left_sharp.png"></br>Align Left icon (sharp)</i>
   static const IconData align_left_sharp = IconData(0xe014, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/align_right_sharp.png"></br>Align Right icon (sharp)</i>
   static const IconData align_right_sharp = IconData(0xe015, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/align_vertical_bottom_sharp.png"></br>Align Vertical Bottom icon (sharp)</i>
   static const IconData align_vertical_bottom_sharp = IconData(0xe016, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/align_vertical_center_sharp.png"></br>Align Vertical Center icon (sharp)</i>
   static const IconData align_vertical_center_sharp = IconData(0xe017, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/align_vertical_top_sharp.png"></br>Align Vertical Top icon (sharp)</i>
   static const IconData align_vertical_top_sharp = IconData(0xe018, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/analytics_sharp.png"></br>Analytics icon (sharp)</i>
   static const IconData analytics_sharp = IconData(0xe019, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/android_sharp.png"></br>Android icon (sharp)</i>
   static const IconData android_sharp = IconData(0xe01a, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/antenna_sharp.png"></br>Antenna icon (sharp)</i>
   static const IconData antenna_sharp = IconData(0xe01b, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/app_edit_sharp.png"></br>App Edit icon (sharp)</i>
   static const IconData app_edit_sharp = IconData(0xe01c, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/apps_sharp.png"></br>Apps icon (sharp)</i>
   static const IconData apps_sharp = IconData(0xe01d, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/ar_sharp.png"></br>Ar icon (sharp)</i>
   static const IconData ar_sharp = IconData(0xe01e, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/arrow_back_sharp.png"></br>Arrow Back icon (sharp)</i>
   static const IconData arrow_back_sharp = IconData(0xe01f, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/arrow_down_sharp.png"></br>Arrow Down icon (sharp)</i>
   static const IconData arrow_down_sharp = IconData(0xe020, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/arrow_forward_sharp.png"></br>Arrow Forward icon (sharp)</i>
   static const IconData arrow_forward_sharp = IconData(0xe021, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/arrow_up_sharp.png"></br>Arrow Up icon (sharp)</i>
   static const IconData arrow_up_sharp = IconData(0xe022, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/attachment_sharp.png"></br>Attachment icon (sharp)</i>
   static const IconData attachment_sharp = IconData(0xe023, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/audio_sharp.png"></br>Audio icon (sharp)</i>
   static const IconData audio_sharp = IconData(0xe024, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/audit_activity_sharp.png"></br>Audit Activity icon (sharp)</i>
   static const IconData audit_activity_sharp = IconData(0xe025, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/auto_delete_sharp.png"></br>Auto Delete icon (sharp)</i>
   static const IconData auto_delete_sharp = IconData(0xe026, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/auto_sharp.png"></br>Auto icon (sharp)</i>
   static const IconData auto_sharp = IconData(0xe027, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/awb_sharp.png"></br>Awb icon (sharp)</i>
   static const IconData awb_sharp = IconData(0xe028, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/backspace_sharp.png"></br>Backspace icon (sharp)</i>
   static const IconData backspace_sharp = IconData(0xe029, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/bad_mood_sharp.png"></br>Bad Mood icon (sharp)</i>
   static const IconData bad_mood_sharp = IconData(0xe02a, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/barcode_bluetooth_sharp.png"></br>Barcode Bluetooth icon (sharp)</i>
   static const IconData barcode_bluetooth_sharp = IconData(0xe02b, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/barcode_done_sharp.png"></br>Barcode Done icon (sharp)</i>
   static const IconData barcode_done_sharp = IconData(0xe02c, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/barcode_image_scan_sharp.png"></br>Barcode Image Scan icon (sharp)</i>
   static const IconData barcode_image_scan_sharp = IconData(0xe02d, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/barcode_qr_code_sharp.png"></br>Barcode Qr Code icon (sharp)</i>
   static const IconData barcode_qr_code_sharp = IconData(0xe02e, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/barcode_scanner_down_sharp.png"></br>Barcode Scanner Down icon (sharp)</i>
   static const IconData barcode_scanner_down_sharp = IconData(0xe02f, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/barcode_settings_sharp.png"></br>Barcode Settings icon (sharp)</i>
   static const IconData barcode_settings_sharp = IconData(0xe030, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/barcode_sharp.png"></br>Barcode icon (sharp)</i>
   static const IconData barcode_sharp = IconData(0xe031, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/basket_sharp.png"></br>Basket icon (sharp)</i>
   static const IconData basket_sharp = IconData(0xe032, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/battery_alert_sharp.png"></br>Battery Alert icon (sharp)</i>
   static const IconData battery_alert_sharp = IconData(0xe033, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/battery_charging_sharp.png"></br>Battery Charging icon (sharp)</i>
   static const IconData battery_charging_sharp = IconData(0xe034, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/battery_sharp.png"></br>Battery icon (sharp)</i>
   static const IconData battery_sharp = IconData(0xe035, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/block_content_sharp.png"></br>Block Content icon (sharp)</i>
   static const IconData block_content_sharp = IconData(0xe036, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/block_sharp.png"></br>Block icon (sharp)</i>
   static const IconData block_sharp = IconData(0xe037, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/blog_sharp.png"></br>Blog icon (sharp)</i>
   static const IconData blog_sharp = IconData(0xe038, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/bluetooth_disabled_sharp.png"></br>Bluetooth Disabled icon (sharp)</i>
   static const IconData bluetooth_disabled_sharp = IconData(0xe039, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/bluetooth_searching_sharp.png"></br>Bluetooth Searching icon (sharp)</i>
   static const IconData bluetooth_searching_sharp = IconData(0xe03a, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/bluetooth_sharp.png"></br>Bluetooth icon (sharp)</i>
   static const IconData bluetooth_sharp = IconData(0xe03b, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/bold_sharp.png"></br>Bold icon (sharp)</i>
   static const IconData bold_sharp = IconData(0xe03c, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/bookmark_outline_sharp.png"></br>Bookmark Outline icon (sharp)</i>
   static const IconData bookmark_outline_sharp = IconData(0xe03d, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/bookmark_sharp.png"></br>Bookmark icon (sharp)</i>
   static const IconData bookmark_sharp = IconData(0xe03e, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/brightness_sharp.png"></br>Brightness icon (sharp)</i>
   static const IconData brightness_sharp = IconData(0xe03f, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/broadcast_sharp.png"></br>Broadcast icon (sharp)</i>
   static const IconData broadcast_sharp = IconData(0xe040, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/build_sharp.png"></br>Build icon (sharp)</i>
   static const IconData build_sharp = IconData(0xe041, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/building_sharp.png"></br>Building icon (sharp)</i>
   static const IconData building_sharp = IconData(0xe042, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/bullet_list_sharp.png"></br>Bullet List icon (sharp)</i>
   static const IconData bullet_list_sharp = IconData(0xe043, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/bus_sharp.png"></br>Bus icon (sharp)</i>
   static const IconData bus_sharp = IconData(0xe044, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/cached_sharp.png"></br>Cached icon (sharp)</i>
   static const IconData cached_sharp = IconData(0xe045, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/cafe_sharp.png"></br>Cafe icon (sharp)</i>
   static const IconData cafe_sharp = IconData(0xe046, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/calculator_sharp.png"></br>Calculator icon (sharp)</i>
   static const IconData calculator_sharp = IconData(0xe047, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/calendar_3_day_sharp.png"></br>Calendar 3 Day icon (sharp)</i>
   static const IconData calendar_3_day_sharp = IconData(0xe048, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/calendar_alt_1_sharp.png"></br>Calendar Alt 1 icon (sharp)</i>
   static const IconData calendar_alt_1_sharp = IconData(0xe049, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/calendar_alt_2_sharp.png"></br>Calendar Alt 2 icon (sharp)</i>
   static const IconData calendar_alt_2_sharp = IconData(0xe04a, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/calendar_available_sharp.png"></br>Calendar Available icon (sharp)</i>
   static const IconData calendar_available_sharp = IconData(0xe04b, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/calendar_day_sharp.png"></br>Calendar Day icon (sharp)</i>
   static const IconData calendar_day_sharp = IconData(0xe04c, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/calendar_edit_sharp.png"></br>Calendar Edit icon (sharp)</i>
   static const IconData calendar_edit_sharp = IconData(0xe04d, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/calendar_gantt_sharp.png"></br>Calendar Gantt icon (sharp)</i>
   static const IconData calendar_gantt_sharp = IconData(0xe04e, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/calendar_monthly_sharp.png"></br>Calendar Monthly icon (sharp)</i>
   static const IconData calendar_monthly_sharp = IconData(0xe04f, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/calendar_next_sharp.png"></br>Calendar Next icon (sharp)</i>
   static const IconData calendar_next_sharp = IconData(0xe050, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/calendar_range_sharp.png"></br>Calendar Range icon (sharp)</i>
   static const IconData calendar_range_sharp = IconData(0xe051, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/calendar_rollover_sharp.png"></br>Calendar Rollover icon (sharp)</i>
   static const IconData calendar_rollover_sharp = IconData(0xe052, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/calendar_sharp.png"></br>Calendar icon (sharp)</i>
   static const IconData calendar_sharp = IconData(0xe053, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/calendar_unavailable_sharp.png"></br>Calendar Unavailable icon (sharp)</i>
   static const IconData calendar_unavailable_sharp = IconData(0xe054, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/calendar_weekly_sharp.png"></br>Calendar Weekly icon (sharp)</i>
   static const IconData calendar_weekly_sharp = IconData(0xe055, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/calendar_yearly_sharp.png"></br>Calendar Yearly icon (sharp)</i>
   static const IconData calendar_yearly_sharp = IconData(0xe056, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/call_back_sharp.png"></br>Call Back icon (sharp)</i>
   static const IconData call_back_sharp = IconData(0xe057, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/camera_sharp.png"></br>Camera icon (sharp)</i>
   static const IconData camera_sharp = IconData(0xe058, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/camera_shutter_sharp.png"></br>Camera Shutter icon (sharp)</i>
   static const IconData camera_shutter_sharp = IconData(0xe059, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/camera_switch_image_sharp.png"></br>Camera Switch Image icon (sharp)</i>
   static const IconData camera_switch_image_sharp = IconData(0xe05a, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/camera_switch_sharp.png"></br>Camera Switch icon (sharp)</i>
   static const IconData camera_switch_sharp = IconData(0xe05b, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/cancel_outline_sharp.png"></br>Cancel Outline icon (sharp)</i>
   static const IconData cancel_outline_sharp = IconData(0xe05c, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/cancel_sharp.png"></br>Cancel icon (sharp)</i>
   static const IconData cancel_sharp = IconData(0xe05d, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/car_sharp.png"></br>Car icon (sharp)</i>
   static const IconData car_sharp = IconData(0xe05e, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/card_orientation_sharp.png"></br>Card Orientation icon (sharp)</i>
   static const IconData card_orientation_sharp = IconData(0xe05f, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/card_with_chip_sharp.png"></br>Card With Chip icon (sharp)</i>
   static const IconData card_with_chip_sharp = IconData(0xe060, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/caret_down_sharp.png"></br>Caret Down icon (sharp)</i>
   static const IconData caret_down_sharp = IconData(0xe061, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/caret_left_sharp.png"></br>Caret Left icon (sharp)</i>
   static const IconData caret_left_sharp = IconData(0xe062, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/caret_right_sharp.png"></br>Caret Right icon (sharp)</i>
   static const IconData caret_right_sharp = IconData(0xe063, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/caret_sort_sharp.png"></br>Caret Sort icon (sharp)</i>
   static const IconData caret_sort_sharp = IconData(0xe064, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/caret_up_sharp.png"></br>Caret Up icon (sharp)</i>
   static const IconData caret_up_sharp = IconData(0xe065, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/cast_connected_sharp.png"></br>Cast Connected icon (sharp)</i>
   static const IconData cast_connected_sharp = IconData(0xe066, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/cast_sharp.png"></br>Cast icon (sharp)</i>
   static const IconData cast_sharp = IconData(0xe067, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/cellular_signal_sharp.png"></br>Cellular Signal icon (sharp)</i>
   static const IconData cellular_signal_sharp = IconData(0xe068, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/certificate_sharp.png"></br>Certificate icon (sharp)</i>
   static const IconData certificate_sharp = IconData(0xe069, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/certified_sharp.png"></br>Certified icon (sharp)</i>
   static const IconData certified_sharp = IconData(0xe06a, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/chain_sharp.png"></br>Chain icon (sharp)</i>
   static const IconData chain_sharp = IconData(0xe06b, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/chart_bar_sharp.png"></br>Chart Bar icon (sharp)</i>
   static const IconData chart_bar_sharp = IconData(0xe06c, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/chart_bubble_charts_sharp.png"></br>Chart Bubble Charts icon (sharp)</i>
   static const IconData chart_bubble_charts_sharp = IconData(0xe06d, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/chart_bubble_sharp.png"></br>Chart Bubble icon (sharp)</i>
   static const IconData chart_bubble_sharp = IconData(0xe06e, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/chart_doughnut_sharp.png"></br>Chart Doughnut icon (sharp)</i>
   static const IconData chart_doughnut_sharp = IconData(0xe06f, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/chart_filled_enterprise_sharp.png"></br>Chart Filled Enterprise icon (sharp)</i>
   static const IconData chart_filled_enterprise_sharp = IconData(0xe070, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/chart_filled_sharp.png"></br>Chart Filled icon (sharp)</i>
   static const IconData chart_filled_sharp = IconData(0xe071, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/chart_gantt_sharp.png"></br>Chart Gantt icon (sharp)</i>
   static const IconData chart_gantt_sharp = IconData(0xe072, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/chart_line_predict_sharp.png"></br>Chart Line Predict icon (sharp)</i>
   static const IconData chart_line_predict_sharp = IconData(0xe073, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/chart_line_sharp.png"></br>Chart Line icon (sharp)</i>
   static const IconData chart_line_sharp = IconData(0xe074, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/chart_line_stacked_sharp.png"></br>Chart Line Stacked icon (sharp)</i>
   static const IconData chart_line_stacked_sharp = IconData(0xe075, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/chart_outline_sharp.png"></br>Chart Outline icon (sharp)</i>
   static const IconData chart_outline_sharp = IconData(0xe076, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/chart_pie_charts_sharp.png"></br>Chart Pie Charts icon (sharp)</i>
   static const IconData chart_pie_charts_sharp = IconData(0xe077, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/chart_pie_content_sharp.png"></br>Chart Pie Content icon (sharp)</i>
   static const IconData chart_pie_content_sharp = IconData(0xe078, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/chart_pie_sharp.png"></br>Chart Pie icon (sharp)</i>
   static const IconData chart_pie_sharp = IconData(0xe079, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/chart_scatter_plot_sharp.png"></br>Chart Scatter Plot icon (sharp)</i>
   static const IconData chart_scatter_plot_sharp = IconData(0xe07a, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/chart_stacked_sharp.png"></br>Chart Stacked icon (sharp)</i>
   static const IconData chart_stacked_sharp = IconData(0xe07b, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/chart_waterfall_sharp.png"></br>Chart Waterfall icon (sharp)</i>
   static const IconData chart_waterfall_sharp = IconData(0xe07c, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/chat_bot_sharp.png"></br>Chat Bot icon (sharp)</i>
   static const IconData chat_bot_sharp = IconData(0xe07d, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/chat_bubble_outline_sharp.png"></br>Chat Bubble Outline icon (sharp)</i>
   static const IconData chat_bubble_outline_sharp = IconData(0xe07e, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/chat_bubble_sharp.png"></br>Chat Bubble icon (sharp)</i>
   static const IconData chat_bubble_sharp = IconData(0xe07f, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/chat_message_read_sharp.png"></br>Chat Message Read icon (sharp)</i>
   static const IconData chat_message_read_sharp = IconData(0xe080, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/chat_message_unread_sharp.png"></br>Chat Message Unread icon (sharp)</i>
   static const IconData chat_message_unread_sharp = IconData(0xe081, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/chat_search_sharp.png"></br>Chat Search icon (sharp)</i>
   static const IconData chat_search_sharp = IconData(0xe082, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/chat_sharp.png"></br>Chat icon (sharp)</i>
   static const IconData chat_sharp = IconData(0xe083, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/check_box_empty_sharp.png"></br>Check Box Empty icon (sharp)</i>
   static const IconData check_box_empty_sharp = IconData(0xe084, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/check_box_sharp.png"></br>Check Box icon (sharp)</i>
   static const IconData check_box_sharp = IconData(0xe085, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/check_circle_outline_alt_sharp.png"></br>Check Circle Outline Alt icon (sharp)</i>
-  static const IconData check_circle_outline_alt_sharp = IconData(0xe086, fontFamily: familySharp, fontPackage: package);
+  static const IconData check_circle_outline_alt_sharp =
+      IconData(0xe086, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/check_circle_outline_sharp.png"></br>Check Circle Outline icon (sharp)</i>
   static const IconData check_circle_outline_sharp = IconData(0xe087, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/check_circle_sharp.png"></br>Check Circle icon (sharp)</i>
   static const IconData check_circle_sharp = IconData(0xe088, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/check_mark_sharp.png"></br>Check Mark icon (sharp)</i>
   static const IconData check_mark_sharp = IconData(0xe089, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/checklist_sharp.png"></br>Checklist icon (sharp)</i>
   static const IconData checklist_sharp = IconData(0xe08a, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/chevron_left_sharp.png"></br>Chevron Left icon (sharp)</i>
   static const IconData chevron_left_sharp = IconData(0xe08b, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/chevron_right_sharp.png"></br>Chevron Right icon (sharp)</i>
   static const IconData chevron_right_sharp = IconData(0xe08c, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/choices_sharp.png"></br>Choices icon (sharp)</i>
   static const IconData choices_sharp = IconData(0xe08d, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/clipboard_action_sharp.png"></br>Clipboard Action icon (sharp)</i>
   static const IconData clipboard_action_sharp = IconData(0xe08e, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/clipboard_sharp.png"></br>Clipboard icon (sharp)</i>
   static const IconData clipboard_sharp = IconData(0xe08f, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/clock_available_sharp.png"></br>Clock Available icon (sharp)</i>
   static const IconData clock_available_sharp = IconData(0xe090, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/clock_bid_sharp.png"></br>Clock Bid icon (sharp)</i>
   static const IconData clock_bid_sharp = IconData(0xe091, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/clock_edit_sharp.png"></br>Clock Edit icon (sharp)</i>
   static const IconData clock_edit_sharp = IconData(0xe092, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/clock_flexible_sharp.png"></br>Clock Flexible icon (sharp)</i>
   static const IconData clock_flexible_sharp = IconData(0xe093, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/clock_in_progress_sharp.png"></br>Clock In Progress icon (sharp)</i>
   static const IconData clock_in_progress_sharp = IconData(0xe094, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/clock_info_sharp.png"></br>Clock Info icon (sharp)</i>
   static const IconData clock_info_sharp = IconData(0xe095, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/clock_missed_sharp.png"></br>Clock Missed icon (sharp)</i>
   static const IconData clock_missed_sharp = IconData(0xe096, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/clock_on_sharp.png"></br>Clock On icon (sharp)</i>
   static const IconData clock_on_sharp = IconData(0xe097, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/clock_outline_sharp.png"></br>Clock Outline icon (sharp)</i>
   static const IconData clock_outline_sharp = IconData(0xe098, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/clock_rollover_sharp.png"></br>Clock Rollover icon (sharp)</i>
   static const IconData clock_rollover_sharp = IconData(0xe099, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/clock_segment_sharp.png"></br>Clock Segment icon (sharp)</i>
   static const IconData clock_segment_sharp = IconData(0xe09a, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/clock_sharp.png"></br>Clock icon (sharp)</i>
   static const IconData clock_sharp = IconData(0xe09b, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/clock_start_sharp.png"></br>Clock Start icon (sharp)</i>
   static const IconData clock_start_sharp = IconData(0xe09c, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/clock_stop_sharp.png"></br>Clock Stop icon (sharp)</i>
   static const IconData clock_stop_sharp = IconData(0xe09d, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/clock_switch_sharp.png"></br>Clock Switch icon (sharp)</i>
   static const IconData clock_switch_sharp = IconData(0xe09e, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/clock_timer_sharp.png"></br>Clock Timer icon (sharp)</i>
   static const IconData clock_timer_sharp = IconData(0xe09f, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/clock_upcoming_sharp.png"></br>Clock Upcoming icon (sharp)</i>
   static const IconData clock_upcoming_sharp = IconData(0xe0a0, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/close_sharp.png"></br>Close icon (sharp)</i>
   static const IconData close_sharp = IconData(0xe0a1, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/closed_caption_sharp.png"></br>Closed Caption icon (sharp)</i>
   static const IconData closed_caption_sharp = IconData(0xe0a2, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/cloud_done_sharp.png"></br>Cloud Done icon (sharp)</i>
   static const IconData cloud_done_sharp = IconData(0xe0a3, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/cloud_download_sharp.png"></br>Cloud Download icon (sharp)</i>
   static const IconData cloud_download_sharp = IconData(0xe0a4, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/cloud_off_sharp.png"></br>Cloud Off icon (sharp)</i>
   static const IconData cloud_off_sharp = IconData(0xe0a5, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/cloud_outline_sharp.png"></br>Cloud Outline icon (sharp)</i>
   static const IconData cloud_outline_sharp = IconData(0xe0a6, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/cloud_sharp.png"></br>Cloud icon (sharp)</i>
   static const IconData cloud_sharp = IconData(0xe0a7, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/cloud_upload_sharp.png"></br>Cloud Upload icon (sharp)</i>
   static const IconData cloud_upload_sharp = IconData(0xe0a8, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/color_fill_sharp.png"></br>Color Fill icon (sharp)</i>
   static const IconData color_fill_sharp = IconData(0xe0a9, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/columns_sharp.png"></br>Columns icon (sharp)</i>
   static const IconData columns_sharp = IconData(0xe0aa, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/comms_chat_new_sharp.png"></br>Comms Chat New icon (sharp)</i>
   static const IconData comms_chat_new_sharp = IconData(0xe0ab, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/comms_chat_sharp.png"></br>Comms Chat icon (sharp)</i>
   static const IconData comms_chat_sharp = IconData(0xe0ac, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/comms_chat_unread_sharp.png"></br>Comms Chat Unread icon (sharp)</i>
   static const IconData comms_chat_unread_sharp = IconData(0xe0ad, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/contactless_pay_sharp.png"></br>Contactless Pay icon (sharp)</i>
   static const IconData contactless_pay_sharp = IconData(0xe0ae, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/content_sharp.png"></br>Content icon (sharp)</i>
   static const IconData content_sharp = IconData(0xe0af, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/contrast_image_sharp.png"></br>Contrast Image icon (sharp)</i>
   static const IconData contrast_image_sharp = IconData(0xe0b0, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/contrast_sharp.png"></br>Contrast icon (sharp)</i>
   static const IconData contrast_sharp = IconData(0xe0b1, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/conversation_sharp.png"></br>Conversation icon (sharp)</i>
   static const IconData conversation_sharp = IconData(0xe0b2, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/copy_file_sharp.png"></br>Copy File icon (sharp)</i>
   static const IconData copy_file_sharp = IconData(0xe0b3, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/create_new_folder_sharp.png"></br>Create New Folder icon (sharp)</i>
   static const IconData create_new_folder_sharp = IconData(0xe0b4, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/credit_card_sharp.png"></br>Credit Card icon (sharp)</i>
   static const IconData credit_card_sharp = IconData(0xe0b5, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/credit_card_swipe_sharp.png"></br>Credit Card Swipe icon (sharp)</i>
   static const IconData credit_card_swipe_sharp = IconData(0xe0b6, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/crop_sharp.png"></br>Crop icon (sharp)</i>
   static const IconData crop_sharp = IconData(0xe0b7, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/dark_mode_sharp.png"></br>Dark Mode icon (sharp)</i>
   static const IconData dark_mode_sharp = IconData(0xe0b8, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/dashboard_sharp.png"></br>Dashboard icon (sharp)</i>
   static const IconData dashboard_sharp = IconData(0xe0b9, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/delete_forever_sharp.png"></br>Delete Forever icon (sharp)</i>
   static const IconData delete_forever_sharp = IconData(0xe0ba, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/delete_outline_sharp.png"></br>Delete Outline icon (sharp)</i>
   static const IconData delete_outline_sharp = IconData(0xe0bb, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/delete_sharp.png"></br>Delete icon (sharp)</i>
   static const IconData delete_sharp = IconData(0xe0bc, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/desktop_sharp.png"></br>Desktop icon (sharp)</i>
   static const IconData desktop_sharp = IconData(0xe0bd, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/device_settings_sharp.png"></br>Device Settings icon (sharp)</i>
   static const IconData device_settings_sharp = IconData(0xe0be, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/devices_ecosystem_sharp.png"></br>Devices Ecosystem icon (sharp)</i>
   static const IconData devices_ecosystem_sharp = IconData(0xe0bf, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/devices_sharp.png"></br>Devices icon (sharp)</i>
   static const IconData devices_sharp = IconData(0xe0c0, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/dialpad_sharp.png"></br>Dialpad icon (sharp)</i>
   static const IconData dialpad_sharp = IconData(0xe0c1, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/dislike_sharp.png"></br>Dislike icon (sharp)</i>
   static const IconData dislike_sharp = IconData(0xe0c2, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/distribute_horizontal_sharp.png"></br>Distribute Horizontal icon (sharp)</i>
   static const IconData distribute_horizontal_sharp = IconData(0xe0c3, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/distribute_vertical_sharp.png"></br>Distribute Vertical icon (sharp)</i>
   static const IconData distribute_vertical_sharp = IconData(0xe0c4, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/doc_attach_sharp.png"></br>Doc Attach icon (sharp)</i>
   static const IconData doc_attach_sharp = IconData(0xe0c5, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/document_sharp.png"></br>Document icon (sharp)</i>
   static const IconData document_sharp = IconData(0xe0c6, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/dollar_sharp.png"></br>Dollar icon (sharp)</i>
   static const IconData dollar_sharp = IconData(0xe0c7, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/download_sharp.png"></br>Download icon (sharp)</i>
   static const IconData download_sharp = IconData(0xe0c8, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/downloading_sharp.png"></br>Downloading icon (sharp)</i>
   static const IconData downloading_sharp = IconData(0xe0c9, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/drop_down_circle_sharp.png"></br>Drop Down Circle icon (sharp)</i>
   static const IconData drop_down_circle_sharp = IconData(0xe0ca, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/eas_sharp.png"></br>Eas icon (sharp)</i>
   static const IconData eas_sharp = IconData(0xe0cb, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/edit_border_sharp.png"></br>Edit Border icon (sharp)</i>
   static const IconData edit_border_sharp = IconData(0xe0cc, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/edit_sharp.png"></br>Edit icon (sharp)</i>
   static const IconData edit_sharp = IconData(0xe0cd, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/email_alt_sharp.png"></br>Email Alt icon (sharp)</i>
   static const IconData email_alt_sharp = IconData(0xe0ce, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/email_outline_sharp.png"></br>Email Outline icon (sharp)</i>
   static const IconData email_outline_sharp = IconData(0xe0cf, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/email_reply_all_sharp.png"></br>Email Reply All icon (sharp)</i>
   static const IconData email_reply_all_sharp = IconData(0xe0d0, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/email_sharp.png"></br>Email icon (sharp)</i>
   static const IconData email_sharp = IconData(0xe0d1, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/end_call_sharp.png"></br>End Call icon (sharp)</i>
   static const IconData end_call_sharp = IconData(0xe0d2, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/enterprise_diagnostics_sharp.png"></br>Enterprise Diagnostics icon (sharp)</i>
   static const IconData enterprise_diagnostics_sharp = IconData(0xe0d3, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/environmental_sharp.png"></br>Environmental icon (sharp)</i>
   static const IconData environmental_sharp = IconData(0xe0d4, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/error_outline_sharp.png"></br>Error Outline icon (sharp)</i>
   static const IconData error_outline_sharp = IconData(0xe0d5, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/error_sharp.png"></br>Error icon (sharp)</i>
   static const IconData error_sharp = IconData(0xe0d6, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/ethernet_sharp.png"></br>Ethernet icon (sharp)</i>
   static const IconData ethernet_sharp = IconData(0xe0d7, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/exit_sharp.png"></br>Exit icon (sharp)</i>
   static const IconData exit_sharp = IconData(0xe0d8, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/expand_less_sharp.png"></br>Expand Less icon (sharp)</i>
   static const IconData expand_less_sharp = IconData(0xe0d9, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/expand_more_sharp.png"></br>Expand More icon (sharp)</i>
   static const IconData expand_more_sharp = IconData(0xe0da, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/eye_dropper_sharp.png"></br>Eye Dropper icon (sharp)</i>
   static const IconData eye_dropper_sharp = IconData(0xe0db, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/eye_preview_sharp.png"></br>Eye Preview icon (sharp)</i>
   static const IconData eye_preview_sharp = IconData(0xe0dc, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/face_id_sharp.png"></br>Face Id icon (sharp)</i>
   static const IconData face_id_sharp = IconData(0xe0dd, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/facebook_sharp.png"></br>Facebook icon (sharp)</i>
   static const IconData facebook_sharp = IconData(0xe0de, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/factory_sharp.png"></br>Factory icon (sharp)</i>
   static const IconData factory_sharp = IconData(0xe0df, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/fast_forward_sharp.png"></br>Fast Forward icon (sharp)</i>
   static const IconData fast_forward_sharp = IconData(0xe0e0, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/fast_rewind_sharp.png"></br>Fast Rewind icon (sharp)</i>
   static const IconData fast_rewind_sharp = IconData(0xe0e1, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/file_sharp.png"></br>File icon (sharp)</i>
   static const IconData file_sharp = IconData(0xe0e2, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/filter_alt_sharp.png"></br>Filter Alt icon (sharp)</i>
   static const IconData filter_alt_sharp = IconData(0xe0e3, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/filter_sharp.png"></br>Filter icon (sharp)</i>
   static const IconData filter_sharp = IconData(0xe0e4, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/finished_download_sharp.png"></br>Finished Download icon (sharp)</i>
   static const IconData finished_download_sharp = IconData(0xe0e5, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/first_page_sharp.png"></br>First Page icon (sharp)</i>
   static const IconData first_page_sharp = IconData(0xe0e6, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/flag_sharp.png"></br>Flag icon (sharp)</i>
   static const IconData flag_sharp = IconData(0xe0e7, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/flight_mode_sharp.png"></br>Flight Mode icon (sharp)</i>
   static const IconData flight_mode_sharp = IconData(0xe0e8, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/flight_sharp.png"></br>Flight icon (sharp)</i>
   static const IconData flight_sharp = IconData(0xe0e9, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/flip_sharp.png"></br>Flip icon (sharp)</i>
   static const IconData flip_sharp = IconData(0xe0ea, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/folder_file_sharp.png"></br>Folder File icon (sharp)</i>
   static const IconData folder_file_sharp = IconData(0xe0eb, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/folder_outline_sharp.png"></br>Folder Outline icon (sharp)</i>
   static const IconData folder_outline_sharp = IconData(0xe0ec, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/folder_sharp.png"></br>Folder icon (sharp)</i>
   static const IconData folder_sharp = IconData(0xe0ed, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/font_size_decrease_sharp.png"></br>Font Size Decrease icon (sharp)</i>
   static const IconData font_size_decrease_sharp = IconData(0xe0ee, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/font_size_increase_sharp.png"></br>Font Size Increase icon (sharp)</i>
   static const IconData font_size_increase_sharp = IconData(0xe0ef, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/format_shapes_sharp.png"></br>Format Shapes icon (sharp)</i>
   static const IconData format_shapes_sharp = IconData(0xe0f0, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/forward_sharp.png"></br>Forward icon (sharp)</i>
   static const IconData forward_sharp = IconData(0xe0f1, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/freezer_sharp.png"></br>Freezer icon (sharp)</i>
   static const IconData freezer_sharp = IconData(0xe0f2, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/full_screen_exit_sharp.png"></br>Full Screen Exit icon (sharp)</i>
   static const IconData full_screen_exit_sharp = IconData(0xe0f3, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/full_screen_sharp.png"></br>Full Screen icon (sharp)</i>
   static const IconData full_screen_sharp = IconData(0xe0f4, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/gif_sharp.png"></br>Gif icon (sharp)</i>
   static const IconData gif_sharp = IconData(0xe0f5, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/glossary_sharp.png"></br>Glossary icon (sharp)</i>
   static const IconData glossary_sharp = IconData(0xe0f6, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/google_drive_sharp.png"></br>Google Drive icon (sharp)</i>
   static const IconData google_drive_sharp = IconData(0xe0f7, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/grid_off_sharp.png"></br>Grid Off icon (sharp)</i>
   static const IconData grid_off_sharp = IconData(0xe0f8, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/grid_on_sharp.png"></br>Grid On icon (sharp)</i>
   static const IconData grid_on_sharp = IconData(0xe0f9, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/grid_view_sharp.png"></br>Grid View icon (sharp)</i>
   static const IconData grid_view_sharp = IconData(0xe0fa, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/group_sharp.png"></br>Group icon (sharp)</i>
   static const IconData group_sharp = IconData(0xe0fb, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/groups_sharp.png"></br>Groups icon (sharp)</i>
   static const IconData groups_sharp = IconData(0xe0fc, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/hamburger_menu_navigation_rail_sharp.png"></br>Hamburger Menu Navigation Rail icon (sharp)</i>
-  static const IconData hamburger_menu_navigation_rail_sharp = IconData(0xe0fd, fontFamily: familySharp, fontPackage: package);
+  static const IconData hamburger_menu_navigation_rail_sharp =
+      IconData(0xe0fd, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/hamburger_menu_sharp.png"></br>Hamburger Menu icon (sharp)</i>
   static const IconData hamburger_menu_sharp = IconData(0xe0fe, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/hamburger_menu_thick_sharp.png"></br>Hamburger Menu Thick icon (sharp)</i>
   static const IconData hamburger_menu_thick_sharp = IconData(0xe0ff, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/hand_sharp.png"></br>Hand icon (sharp)</i>
   static const IconData hand_sharp = IconData(0xe100, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/happy_sharp.png"></br>Happy icon (sharp)</i>
   static const IconData happy_sharp = IconData(0xe101, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/hdmi_sharp.png"></br>Hdmi icon (sharp)</i>
   static const IconData hdmi_sharp = IconData(0xe102, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/hdr_sharp.png"></br>Hdr icon (sharp)</i>
   static const IconData hdr_sharp = IconData(0xe103, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/headphones_sharp.png"></br>Headphones icon (sharp)</i>
   static const IconData headphones_sharp = IconData(0xe104, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/headset_sharp.png"></br>Headset icon (sharp)</i>
   static const IconData headset_sharp = IconData(0xe105, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/help_outline_sharp.png"></br>Help Outline icon (sharp)</i>
   static const IconData help_outline_sharp = IconData(0xe106, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/help_sharp.png"></br>Help icon (sharp)</i>
   static const IconData help_sharp = IconData(0xe107, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/history_sharp.png"></br>History icon (sharp)</i>
   static const IconData history_sharp = IconData(0xe108, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/home_sharp.png"></br>Home icon (sharp)</i>
   static const IconData home_sharp = IconData(0xe109, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/hourglass_sharp.png"></br>Hourglass icon (sharp)</i>
   static const IconData hourglass_sharp = IconData(0xe10a, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/how_do_i_sharp.png"></br>How Do I icon (sharp)</i>
   static const IconData how_do_i_sharp = IconData(0xe10b, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/image_library_sharp.png"></br>Image Library icon (sharp)</i>
   static const IconData image_library_sharp = IconData(0xe10c, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/image_sharp.png"></br>Image icon (sharp)</i>
   static const IconData image_sharp = IconData(0xe10d, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/important_notification_sharp.png"></br>Important Notification icon (sharp)</i>
   static const IconData important_notification_sharp = IconData(0xe10e, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/inbox_sharp.png"></br>Inbox icon (sharp)</i>
   static const IconData inbox_sharp = IconData(0xe10f, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/indent_decrease_sharp.png"></br>Indent Decrease icon (sharp)</i>
   static const IconData indent_decrease_sharp = IconData(0xe110, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/indent_increase_sharp.png"></br>Indent Increase icon (sharp)</i>
   static const IconData indent_increase_sharp = IconData(0xe111, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/indeterminate_check_box_sharp.png"></br>Indeterminate Check Box icon (sharp)</i>
   static const IconData indeterminate_check_box_sharp = IconData(0xe112, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/info_sharp.png"></br>Info icon (sharp)</i>
   static const IconData info_sharp = IconData(0xe113, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/instagram_sharp.png"></br>Instagram icon (sharp)</i>
   static const IconData instagram_sharp = IconData(0xe114, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/ios_share_sharp.png"></br>Ios Share icon (sharp)</i>
   static const IconData ios_share_sharp = IconData(0xe115, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/iso_sharp.png"></br>Iso icon (sharp)</i>
   static const IconData iso_sharp = IconData(0xe116, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/issue_audit_sharp.png"></br>Issue Audit icon (sharp)</i>
   static const IconData issue_audit_sharp = IconData(0xe117, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/italic_sharp.png"></br>Italic icon (sharp)</i>
   static const IconData italic_sharp = IconData(0xe118, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/jpg_attach_sharp.png"></br>Jpg Attach icon (sharp)</i>
   static const IconData jpg_attach_sharp = IconData(0xe119, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/justify_sharp.png"></br>Justify icon (sharp)</i>
   static const IconData justify_sharp = IconData(0xe11a, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/keyboard_sharp.png"></br>Keyboard icon (sharp)</i>
   static const IconData keyboard_sharp = IconData(0xe11b, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/label_sharp.png"></br>Label icon (sharp)</i>
   static const IconData label_sharp = IconData(0xe11c, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/laptop_sharp.png"></br>Laptop icon (sharp)</i>
   static const IconData laptop_sharp = IconData(0xe11d, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/last_page_sharp.png"></br>Last Page icon (sharp)</i>
   static const IconData last_page_sharp = IconData(0xe11e, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/layers_sharp.png"></br>Layers icon (sharp)</i>
   static const IconData layers_sharp = IconData(0xe11f, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/light_mode_sharp.png"></br>Light Mode icon (sharp)</i>
   static const IconData light_mode_sharp = IconData(0xe120, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/light_rail_train_sharp.png"></br>Light Rail Train icon (sharp)</i>
   static const IconData light_rail_train_sharp = IconData(0xe121, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/lightbulb_sharp.png"></br>Lightbulb icon (sharp)</i>
   static const IconData lightbulb_sharp = IconData(0xe122, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/like_sharp.png"></br>Like icon (sharp)</i>
   static const IconData like_sharp = IconData(0xe123, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/line_spacing_sharp.png"></br>Line Spacing icon (sharp)</i>
   static const IconData line_spacing_sharp = IconData(0xe124, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/link_add_sharp.png"></br>Link Add icon (sharp)</i>
   static const IconData link_add_sharp = IconData(0xe125, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/link_sharp.png"></br>Link icon (sharp)</i>
   static const IconData link_sharp = IconData(0xe126, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/linkedin_sharp.png"></br>Linkedin icon (sharp)</i>
   static const IconData linkedin_sharp = IconData(0xe127, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/list_alt_sharp.png"></br>List Alt icon (sharp)</i>
   static const IconData list_alt_sharp = IconData(0xe128, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/list_bullet_contained_sharp.png"></br>List Bullet Contained icon (sharp)</i>
   static const IconData list_bullet_contained_sharp = IconData(0xe129, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/list_feedback_sharp.png"></br>List Feedback icon (sharp)</i>
   static const IconData list_feedback_sharp = IconData(0xe12a, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/list_form_sharp.png"></br>List Form icon (sharp)</i>
   static const IconData list_form_sharp = IconData(0xe12b, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/list_sharp.png"></br>List icon (sharp)</i>
   static const IconData list_sharp = IconData(0xe12c, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/local_shipping_sharp.png"></br>Local Shipping icon (sharp)</i>
   static const IconData local_shipping_sharp = IconData(0xe12d, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/location_off_sharp.png"></br>Location Off icon (sharp)</i>
   static const IconData location_off_sharp = IconData(0xe12e, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/location_point_sharp.png"></br>Location Point icon (sharp)</i>
   static const IconData location_point_sharp = IconData(0xe12f, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/location_sharp.png"></br>Location icon (sharp)</i>
   static const IconData location_sharp = IconData(0xe130, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/lock_alt_sharp.png"></br>Lock Alt icon (sharp)</i>
   static const IconData lock_alt_sharp = IconData(0xe131, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/lock_sharp.png"></br>Lock icon (sharp)</i>
   static const IconData lock_sharp = IconData(0xe132, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/lock_undo_sharp.png"></br>Lock Undo icon (sharp)</i>
   static const IconData lock_undo_sharp = IconData(0xe133, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/log_in_sharp.png"></br>Log In icon (sharp)</i>
   static const IconData log_in_sharp = IconData(0xe134, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/log_out_sharp.png"></br>Log Out icon (sharp)</i>
   static const IconData log_out_sharp = IconData(0xe135, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/love_outline_sharp.png"></br>Love Outline icon (sharp)</i>
   static const IconData love_outline_sharp = IconData(0xe136, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/love_sharp.png"></br>Love icon (sharp)</i>
   static const IconData love_sharp = IconData(0xe137, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/maintenance_sharp.png"></br>Maintenance icon (sharp)</i>
   static const IconData maintenance_sharp = IconData(0xe138, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/map_sharp.png"></br>Map icon (sharp)</i>
   static const IconData map_sharp = IconData(0xe139, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/meal_sharp.png"></br>Meal icon (sharp)</i>
   static const IconData meal_sharp = IconData(0xe13a, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/medium_sharp.png"></br>Medium icon (sharp)</i>
   static const IconData medium_sharp = IconData(0xe13b, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/memory_sharp.png"></br>Memory icon (sharp)</i>
   static const IconData memory_sharp = IconData(0xe13c, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/message_sharp.png"></br>Message icon (sharp)</i>
   static const IconData message_sharp = IconData(0xe13d, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/microphone_off_sharp.png"></br>Microphone Off icon (sharp)</i>
   static const IconData microphone_off_sharp = IconData(0xe13e, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/microphone_outline_sharp.png"></br>Microphone Outline icon (sharp)</i>
   static const IconData microphone_outline_sharp = IconData(0xe13f, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/microphone_sharp.png"></br>Microphone icon (sharp)</i>
   static const IconData microphone_sharp = IconData(0xe140, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/mobile_friendly_sharp.png"></br>Mobile Friendly icon (sharp)</i>
   static const IconData mobile_friendly_sharp = IconData(0xe141, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/money_euro_sharp.png"></br>Money Euro icon (sharp)</i>
   static const IconData money_euro_sharp = IconData(0xe142, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/money_pound_sharp.png"></br>Money Pound icon (sharp)</i>
   static const IconData money_pound_sharp = IconData(0xe143, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/money_usd_sharp.png"></br>Money Usd icon (sharp)</i>
   static const IconData money_usd_sharp = IconData(0xe144, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/monitor_sharp.png"></br>Monitor icon (sharp)</i>
   static const IconData monitor_sharp = IconData(0xe145, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/more_horizontal_sharp.png"></br>More Horizontal icon (sharp)</i>
   static const IconData more_horizontal_sharp = IconData(0xe146, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/more_vertical_sharp.png"></br>More Vertical icon (sharp)</i>
   static const IconData more_vertical_sharp = IconData(0xe147, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/my_location_sharp.png"></br>My Location icon (sharp)</i>
   static const IconData my_location_sharp = IconData(0xe148, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/navigate_sharp.png"></br>Navigate icon (sharp)</i>
   static const IconData navigate_sharp = IconData(0xe149, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/navigation_sharp.png"></br>Navigation icon (sharp)</i>
   static const IconData navigation_sharp = IconData(0xe14a, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/near_me_sharp.png"></br>Near Me icon (sharp)</i>
   static const IconData near_me_sharp = IconData(0xe14b, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/network_signal_sharp.png"></br>Network Signal icon (sharp)</i>
   static const IconData network_signal_sharp = IconData(0xe14c, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/new_chat_sharp.png"></br>New Chat icon (sharp)</i>
   static const IconData new_chat_sharp = IconData(0xe14d, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/nfc_sharp.png"></br>Nfc icon (sharp)</i>
   static const IconData nfc_sharp = IconData(0xe14e, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/night_sharp.png"></br>Night icon (sharp)</i>
   static const IconData night_sharp = IconData(0xe14f, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/no_color_sharp.png"></br>No Color icon (sharp)</i>
   static const IconData no_color_sharp = IconData(0xe150, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/note_sharp.png"></br>Note icon (sharp)</i>
   static const IconData note_sharp = IconData(0xe151, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/notifications_off_sharp.png"></br>Notifications Off icon (sharp)</i>
   static const IconData notifications_off_sharp = IconData(0xe152, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/numbered_list_sharp.png"></br>Numbered List icon (sharp)</i>
   static const IconData numbered_list_sharp = IconData(0xe153, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/open_in_full_sharp.png"></br>Open In Full icon (sharp)</i>
   static const IconData open_in_full_sharp = IconData(0xe154, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/open_in_new_window_sharp.png"></br>Open In New Window icon (sharp)</i>
   static const IconData open_in_new_window_sharp = IconData(0xe155, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/open_new_off_sharp.png"></br>Open New Off icon (sharp)</i>
   static const IconData open_new_off_sharp = IconData(0xe156, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/page_height_sharp.png"></br>Page Height icon (sharp)</i>
   static const IconData page_height_sharp = IconData(0xe157, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/page_rotate_sharp.png"></br>Page Rotate icon (sharp)</i>
   static const IconData page_rotate_sharp = IconData(0xe158, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/page_width_sharp.png"></br>Page Width icon (sharp)</i>
   static const IconData page_width_sharp = IconData(0xe159, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/palette_sharp.png"></br>Palette icon (sharp)</i>
   static const IconData palette_sharp = IconData(0xe15a, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/partner_sharp.png"></br>Partner icon (sharp)</i>
   static const IconData partner_sharp = IconData(0xe15b, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/pause_circle_sharp.png"></br>Pause Circle icon (sharp)</i>
   static const IconData pause_circle_sharp = IconData(0xe15c, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/pause_sharp.png"></br>Pause icon (sharp)</i>
   static const IconData pause_sharp = IconData(0xe15d, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/pdf_attach_sharp.png"></br>Pdf Attach icon (sharp)</i>
   static const IconData pdf_attach_sharp = IconData(0xe15e, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/pending_sharp.png"></br>Pending icon (sharp)</i>
   static const IconData pending_sharp = IconData(0xe15f, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/person_admin_sharp.png"></br>Person Admin icon (sharp)</i>
   static const IconData person_admin_sharp = IconData(0xe160, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/person_assign_sharp.png"></br>Person Assign icon (sharp)</i>
   static const IconData person_assign_sharp = IconData(0xe161, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/person_clock_sharp.png"></br>Person Clock icon (sharp)</i>
   static const IconData person_clock_sharp = IconData(0xe162, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/person_info_sharp.png"></br>Person Info icon (sharp)</i>
   static const IconData person_info_sharp = IconData(0xe163, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/person_manager_sharp.png"></br>Person Manager icon (sharp)</i>
   static const IconData person_manager_sharp = IconData(0xe164, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/person_move_sharp.png"></br>Person Move icon (sharp)</i>
   static const IconData person_move_sharp = IconData(0xe165, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/person_outline_sharp.png"></br>Person Outline icon (sharp)</i>
   static const IconData person_outline_sharp = IconData(0xe166, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/person_search_sharp.png"></br>Person Search icon (sharp)</i>
   static const IconData person_search_sharp = IconData(0xe167, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/person_sharp.png"></br>Person icon (sharp)</i>
   static const IconData person_sharp = IconData(0xe168, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/person_swap_sharp.png"></br>Person Swap icon (sharp)</i>
   static const IconData person_swap_sharp = IconData(0xe169, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/person_walk_sharp.png"></br>Person Walk icon (sharp)</i>
   static const IconData person_walk_sharp = IconData(0xe16a, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/phone_android_sharp.png"></br>Phone Android icon (sharp)</i>
   static const IconData phone_android_sharp = IconData(0xe16b, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/phone_bluetooth_speaker_sharp.png"></br>Phone Bluetooth Speaker icon (sharp)</i>
   static const IconData phone_bluetooth_speaker_sharp = IconData(0xe16c, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/phone_in_talk_sharp.png"></br>Phone In Talk icon (sharp)</i>
   static const IconData phone_in_talk_sharp = IconData(0xe16d, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/phone_iphone_sharp.png"></br>Phone Iphone icon (sharp)</i>
   static const IconData phone_iphone_sharp = IconData(0xe16e, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/phone_sharp.png"></br>Phone icon (sharp)</i>
   static const IconData phone_sharp = IconData(0xe16f, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/phonelink_sharp.png"></br>Phonelink icon (sharp)</i>
   static const IconData phonelink_sharp = IconData(0xe170, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/phrase_sharp.png"></br>Phrase icon (sharp)</i>
   static const IconData phrase_sharp = IconData(0xe171, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/pin_sharp.png"></br>Pin icon (sharp)</i>
   static const IconData pin_sharp = IconData(0xe172, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/place_sharp.png"></br>Place icon (sharp)</i>
   static const IconData place_sharp = IconData(0xe173, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/planogram_sharp.png"></br>Planogram icon (sharp)</i>
   static const IconData planogram_sharp = IconData(0xe174, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/play_circle_sharp.png"></br>Play Circle icon (sharp)</i>
   static const IconData play_circle_sharp = IconData(0xe175, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/play_outline_sharp.png"></br>Play Outline icon (sharp)</i>
   static const IconData play_outline_sharp = IconData(0xe176, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/play_sharp.png"></br>Play icon (sharp)</i>
   static const IconData play_sharp = IconData(0xe177, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/png_attach_sharp.png"></br>Png Attach icon (sharp)</i>
   static const IconData png_attach_sharp = IconData(0xe178, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/point_gift_sharp.png"></br>Point Gift icon (sharp)</i>
   static const IconData point_gift_sharp = IconData(0xe179, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/point_heart_sharp.png"></br>Point Heart icon (sharp)</i>
   static const IconData point_heart_sharp = IconData(0xe17a, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/point_money_sharp.png"></br>Point Money icon (sharp)</i>
   static const IconData point_money_sharp = IconData(0xe17b, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/point_star_sharp.png"></br>Point Star icon (sharp)</i>
   static const IconData point_star_sharp = IconData(0xe17c, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/point_token_sharp.png"></br>Point Token icon (sharp)</i>
   static const IconData point_token_sharp = IconData(0xe17d, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/portrait_sharp.png"></br>Portrait icon (sharp)</i>
   static const IconData portrait_sharp = IconData(0xe17e, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/ppt_attach_sharp.png"></br>Ppt Attach icon (sharp)</i>
   static const IconData ppt_attach_sharp = IconData(0xe17f, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/price_sharp.png"></br>Price icon (sharp)</i>
   static const IconData price_sharp = IconData(0xe180, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/printer_sharp.png"></br>Printer icon (sharp)</i>
   static const IconData printer_sharp = IconData(0xe181, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/priority_sharp.png"></br>Priority icon (sharp)</i>
   static const IconData priority_sharp = IconData(0xe182, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/pro_sharp.png"></br>Pro icon (sharp)</i>
   static const IconData pro_sharp = IconData(0xe183, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/productivity_apps_sharp.png"></br>Productivity Apps icon (sharp)</i>
   static const IconData productivity_apps_sharp = IconData(0xe184, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/ptt_sharp.png"></br>Ptt icon (sharp)</i>
   static const IconData ptt_sharp = IconData(0xe185, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/publish_sharp.png"></br>Publish icon (sharp)</i>
   static const IconData publish_sharp = IconData(0xe186, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/push_pin_off_sharp.png"></br>Push Pin Off icon (sharp)</i>
   static const IconData push_pin_off_sharp = IconData(0xe187, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/push_pin_sharp.png"></br>Push Pin icon (sharp)</i>
   static const IconData push_pin_sharp = IconData(0xe188, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/qr_code_sharp.png"></br>Qr Code icon (sharp)</i>
   static const IconData qr_code_sharp = IconData(0xe189, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/queue_sharp.png"></br>Queue icon (sharp)</i>
   static const IconData queue_sharp = IconData(0xe18a, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/radio_button_checked_sharp.png"></br>Radio Button Checked icon (sharp)</i>
   static const IconData radio_button_checked_sharp = IconData(0xe18b, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/radio_button_unchecked_sharp.png"></br>Radio Button Unchecked icon (sharp)</i>
   static const IconData radio_button_unchecked_sharp = IconData(0xe18c, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/react_add_sharp.png"></br>React Add icon (sharp)</i>
   static const IconData react_add_sharp = IconData(0xe18d, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/react_thumbsup_sharp.png"></br>React Thumbsup icon (sharp)</i>
   static const IconData react_thumbsup_sharp = IconData(0xe18e, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/recall_sharp.png"></br>Recall icon (sharp)</i>
   static const IconData recall_sharp = IconData(0xe18f, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/receipt_sharp.png"></br>Receipt icon (sharp)</i>
   static const IconData receipt_sharp = IconData(0xe190, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/recording_sharp.png"></br>Recording icon (sharp)</i>
   static const IconData recording_sharp = IconData(0xe191, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/redo_sharp.png"></br>Redo icon (sharp)</i>
   static const IconData redo_sharp = IconData(0xe192, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/refresh_sharp.png"></br>Refresh icon (sharp)</i>
   static const IconData refresh_sharp = IconData(0xe193, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/remove_box_sharp.png"></br>Remove Box icon (sharp)</i>
   static const IconData remove_box_sharp = IconData(0xe194, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/remove_circle_outline_sharp.png"></br>Remove Circle Outline icon (sharp)</i>
   static const IconData remove_circle_outline_sharp = IconData(0xe195, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/remove_circle_sharp.png"></br>Remove Circle icon (sharp)</i>
   static const IconData remove_circle_sharp = IconData(0xe196, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/remove_group_sharp.png"></br>Remove Group icon (sharp)</i>
   static const IconData remove_group_sharp = IconData(0xe197, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/remove_person_sharp.png"></br>Remove Person icon (sharp)</i>
   static const IconData remove_person_sharp = IconData(0xe198, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/remove_sharp.png"></br>Remove icon (sharp)</i>
   static const IconData remove_sharp = IconData(0xe199, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/renew_sharp.png"></br>Renew icon (sharp)</i>
   static const IconData renew_sharp = IconData(0xe19a, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/reorder_sharp.png"></br>Reorder icon (sharp)</i>
   static const IconData reorder_sharp = IconData(0xe19b, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/repeat_sharp.png"></br>Repeat icon (sharp)</i>
   static const IconData repeat_sharp = IconData(0xe19c, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/replay_sharp.png"></br>Replay icon (sharp)</i>
   static const IconData replay_sharp = IconData(0xe19d, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/reply_sharp.png"></br>Reply icon (sharp)</i>
   static const IconData reply_sharp = IconData(0xe19e, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/report_sharp.png"></br>Report icon (sharp)</i>
   static const IconData report_sharp = IconData(0xe19f, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/restart_alt_sharp.png"></br>Restart Alt icon (sharp)</i>
   static const IconData restart_alt_sharp = IconData(0xe1a0, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/review_sharp.png"></br>Review icon (sharp)</i>
   static const IconData review_sharp = IconData(0xe1a1, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/road_map_sharp.png"></br>Road Map icon (sharp)</i>
   static const IconData road_map_sharp = IconData(0xe1a2, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/rotate_left_sharp.png"></br>Rotate Left icon (sharp)</i>
   static const IconData rotate_left_sharp = IconData(0xe1a3, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/rotate_right_sharp.png"></br>Rotate Right icon (sharp)</i>
   static const IconData rotate_right_sharp = IconData(0xe1a4, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/rss_feed_sharp.png"></br>Rss Feed icon (sharp)</i>
   static const IconData rss_feed_sharp = IconData(0xe1a5, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/rules_sharp.png"></br>Rules icon (sharp)</i>
   static const IconData rules_sharp = IconData(0xe1a6, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/sad_sharp.png"></br>Sad icon (sharp)</i>
   static const IconData sad_sharp = IconData(0xe1a7, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/satisfied_sharp.png"></br>Satisfied icon (sharp)</i>
   static const IconData satisfied_sharp = IconData(0xe1a8, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/save_alt_sharp.png"></br>Save Alt icon (sharp)</i>
   static const IconData save_alt_sharp = IconData(0xe1a9, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/save_content_sharp.png"></br>Save Content icon (sharp)</i>
   static const IconData save_content_sharp = IconData(0xe1aa, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/save_sharp.png"></br>Save icon (sharp)</i>
   static const IconData save_sharp = IconData(0xe1ab, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/scan_rate_sharp.png"></br>Scan Rate icon (sharp)</i>
   static const IconData scan_rate_sharp = IconData(0xe1ac, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/scanner_sharp.png"></br>Scanner icon (sharp)</i>
   static const IconData scanner_sharp = IconData(0xe1ad, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/schedule_sharp.png"></br>Schedule icon (sharp)</i>
   static const IconData schedule_sharp = IconData(0xe1ae, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/school_sharp.png"></br>School icon (sharp)</i>
   static const IconData school_sharp = IconData(0xe1af, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/screen_rotation_sharp.png"></br>Screen Rotation icon (sharp)</i>
   static const IconData screen_rotation_sharp = IconData(0xe1b0, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/sd_card_sharp.png"></br>Sd Card icon (sharp)</i>
   static const IconData sd_card_sharp = IconData(0xe1b1, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/search_sharp.png"></br>Search icon (sharp)</i>
   static const IconData search_sharp = IconData(0xe1b2, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/security_check_sharp.png"></br>Security Check icon (sharp)</i>
   static const IconData security_check_sharp = IconData(0xe1b3, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/security_sharp.png"></br>Security icon (sharp)</i>
   static const IconData security_sharp = IconData(0xe1b4, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/send_sharp.png"></br>Send icon (sharp)</i>
   static const IconData send_sharp = IconData(0xe1b5, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/settings_sharp.png"></br>Settings icon (sharp)</i>
   static const IconData settings_sharp = IconData(0xe1b6, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/shape_recognition_sharp.png"></br>Shape Recognition icon (sharp)</i>
   static const IconData shape_recognition_sharp = IconData(0xe1b7, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/share_sharp.png"></br>Share icon (sharp)</i>
   static const IconData share_sharp = IconData(0xe1b8, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/shared_folder_sharp.png"></br>Shared Folder icon (sharp)</i>
   static const IconData shared_folder_sharp = IconData(0xe1b9, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/ship_sharp.png"></br>Ship icon (sharp)</i>
   static const IconData ship_sharp = IconData(0xe1ba, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/sim_card_sharp.png"></br>Sim Card icon (sharp)</i>
   static const IconData sim_card_sharp = IconData(0xe1bb, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/skip_next_sharp.png"></br>Skip Next icon (sharp)</i>
   static const IconData skip_next_sharp = IconData(0xe1bc, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/skip_previous_sharp.png"></br>Skip Previous icon (sharp)</i>
   static const IconData skip_previous_sharp = IconData(0xe1bd, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/slide_show_sharp.png"></br>Slide Show icon (sharp)</i>
   static const IconData slide_show_sharp = IconData(0xe1be, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/smart_phone_sharp.png"></br>Smart Phone icon (sharp)</i>
   static const IconData smart_phone_sharp = IconData(0xe1bf, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/sms_sharp.png"></br>Sms icon (sharp)</i>
   static const IconData sms_sharp = IconData(0xe1c0, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/snooze_sharp.png"></br>Snooze icon (sharp)</i>
   static const IconData snooze_sharp = IconData(0xe1c1, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/solutions_sharp.png"></br>Solutions icon (sharp)</i>
   static const IconData solutions_sharp = IconData(0xe1c2, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/sort_content_sharp.png"></br>Sort Content icon (sharp)</i>
   static const IconData sort_content_sharp = IconData(0xe1c3, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/sort_sharp.png"></br>Sort icon (sharp)</i>
   static const IconData sort_sharp = IconData(0xe1c4, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/speaker_sharp.png"></br>Speaker icon (sharp)</i>
   static const IconData speaker_sharp = IconData(0xe1c5, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/star_half_sharp.png"></br>Star Half icon (sharp)</i>
   static const IconData star_half_sharp = IconData(0xe1c6, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/star_outline_sharp.png"></br>Star Outline icon (sharp)</i>
   static const IconData star_outline_sharp = IconData(0xe1c7, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/star_sharp.png"></br>Star icon (sharp)</i>
   static const IconData star_sharp = IconData(0xe1c8, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/steps_sharp.png"></br>Steps icon (sharp)</i>
   static const IconData steps_sharp = IconData(0xe1c9, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/sticker_sharp.png"></br>Sticker icon (sharp)</i>
   static const IconData sticker_sharp = IconData(0xe1ca, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/stop_circle_sharp.png"></br>Stop Circle icon (sharp)</i>
   static const IconData stop_circle_sharp = IconData(0xe1cb, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/stop_sharp.png"></br>Stop icon (sharp)</i>
   static const IconData stop_sharp = IconData(0xe1cc, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/store_release_sharp.png"></br>Store Release icon (sharp)</i>
   static const IconData store_release_sharp = IconData(0xe1cd, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/store_sharp.png"></br>Store icon (sharp)</i>
   static const IconData store_sharp = IconData(0xe1ce, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/store_swap_sharp.png"></br>Store Swap icon (sharp)</i>
   static const IconData store_swap_sharp = IconData(0xe1cf, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/store_transfer_sharp.png"></br>Store Transfer icon (sharp)</i>
   static const IconData store_transfer_sharp = IconData(0xe1d0, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/straighten_sharp.png"></br>Straighten icon (sharp)</i>
   static const IconData straighten_sharp = IconData(0xe1d1, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/strategy_sharp.png"></br>Strategy icon (sharp)</i>
   static const IconData strategy_sharp = IconData(0xe1d2, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/strikethrough_sharp.png"></br>Strikethrough icon (sharp)</i>
   static const IconData strikethrough_sharp = IconData(0xe1d3, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/subscribe_sharp.png"></br>Subscribe icon (sharp)</i>
   static const IconData subscribe_sharp = IconData(0xe1d4, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/swap_sharp.png"></br>Swap icon (sharp)</i>
   static const IconData swap_sharp = IconData(0xe1d5, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/switch_user_sharp.png"></br>Switch User icon (sharp)</i>
   static const IconData switch_user_sharp = IconData(0xe1d6, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/sync_action_sharp.png"></br>Sync Action icon (sharp)</i>
   static const IconData sync_action_sharp = IconData(0xe1d7, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/sync_disabled_sharp.png"></br>Sync Disabled icon (sharp)</i>
   static const IconData sync_disabled_sharp = IconData(0xe1d8, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/sync_sharp.png"></br>Sync icon (sharp)</i>
   static const IconData sync_sharp = IconData(0xe1d9, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/table_sharp.png"></br>Table icon (sharp)</i>
   static const IconData table_sharp = IconData(0xe1da, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/tablet_mac_sharp.png"></br>Tablet Mac icon (sharp)</i>
   static const IconData tablet_mac_sharp = IconData(0xe1db, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/tablet_sharp.png"></br>Tablet icon (sharp)</i>
   static const IconData tablet_sharp = IconData(0xe1dc, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/tag_enterprise_sharp.png"></br>Tag Enterprise icon (sharp)</i>
   static const IconData tag_enterprise_sharp = IconData(0xe1dd, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/tag_sharp.png"></br>Tag icon (sharp)</i>
   static const IconData tag_sharp = IconData(0xe1de, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/tap_to_pay_sharp.png"></br>Tap To Pay icon (sharp)</i>
   static const IconData tap_to_pay_sharp = IconData(0xe1df, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/taxi_sharp.png"></br>Taxi icon (sharp)</i>
   static const IconData taxi_sharp = IconData(0xe1e0, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/text_color_sharp.png"></br>Text Color icon (sharp)</i>
   static const IconData text_color_sharp = IconData(0xe1e1, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/tiers_sharp.png"></br>Tiers icon (sharp)</i>
   static const IconData tiers_sharp = IconData(0xe1e2, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/timecard_approve_sharp.png"></br>Timecard Approve icon (sharp)</i>
   static const IconData timecard_approve_sharp = IconData(0xe1e3, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/timecard_sharp.png"></br>Timecard icon (sharp)</i>
   static const IconData timecard_sharp = IconData(0xe1e4, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/timecard_warning_sharp.png"></br>Timecard Warning icon (sharp)</i>
   static const IconData timecard_warning_sharp = IconData(0xe1e5, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/timer_sharp.png"></br>Timer icon (sharp)</i>
   static const IconData timer_sharp = IconData(0xe1e6, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/toggle_off_sharp.png"></br>Toggle Off icon (sharp)</i>
   static const IconData toggle_off_sharp = IconData(0xe1e7, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/toggle_on_sharp.png"></br>Toggle On icon (sharp)</i>
   static const IconData toggle_on_sharp = IconData(0xe1e8, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/touch_sharp.png"></br>Touch icon (sharp)</i>
   static const IconData touch_sharp = IconData(0xe1e9, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/train_sharp.png"></br>Train icon (sharp)</i>
   static const IconData train_sharp = IconData(0xe1ea, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/transfer_sharp.png"></br>Transfer icon (sharp)</i>
   static const IconData transfer_sharp = IconData(0xe1eb, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/trending_down_sharp.png"></br>Trending Down icon (sharp)</i>
   static const IconData trending_down_sharp = IconData(0xe1ec, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/trending_up_sharp.png"></br>Trending Up icon (sharp)</i>
   static const IconData trending_up_sharp = IconData(0xe1ed, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/tv_sharp.png"></br>Tv icon (sharp)</i>
   static const IconData tv_sharp = IconData(0xe1ee, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/twitter_sharp.png"></br>Twitter icon (sharp)</i>
   static const IconData twitter_sharp = IconData(0xe1ef, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/type_sharp.png"></br>Type icon (sharp)</i>
   static const IconData type_sharp = IconData(0xe1f0, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/uhf_rfid_sharp.png"></br>Uhf Rfid icon (sharp)</i>
   static const IconData uhf_rfid_sharp = IconData(0xe1f1, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/underline_sharp.png"></br>Underline icon (sharp)</i>
   static const IconData underline_sharp = IconData(0xe1f2, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/undo_sharp.png"></br>Undo icon (sharp)</i>
   static const IconData undo_sharp = IconData(0xe1f3, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/unfold_less_sharp.png"></br>Unfold Less icon (sharp)</i>
   static const IconData unfold_less_sharp = IconData(0xe1f4, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/unfold_more_sharp.png"></br>Unfold More icon (sharp)</i>
   static const IconData unfold_more_sharp = IconData(0xe1f5, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/unlock_alt_sharp.png"></br>Unlock Alt icon (sharp)</i>
   static const IconData unlock_alt_sharp = IconData(0xe1f6, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/unlock_sharp.png"></br>Unlock icon (sharp)</i>
   static const IconData unlock_sharp = IconData(0xe1f7, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/unsubscribe_sharp.png"></br>Unsubscribe icon (sharp)</i>
   static const IconData unsubscribe_sharp = IconData(0xe1f8, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/update_sharp.png"></br>Update icon (sharp)</i>
   static const IconData update_sharp = IconData(0xe1f9, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/upload_file_sharp.png"></br>Upload File icon (sharp)</i>
   static const IconData upload_file_sharp = IconData(0xe1fa, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/upload_sharp.png"></br>Upload icon (sharp)</i>
   static const IconData upload_sharp = IconData(0xe1fb, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/usb_alt_device_sharp.png"></br>Usb Alt Device icon (sharp)</i>
   static const IconData usb_alt_device_sharp = IconData(0xe1fc, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/usb_alt_sharp.png"></br>Usb Alt icon (sharp)</i>
   static const IconData usb_alt_sharp = IconData(0xe1fd, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/usb_sharp.png"></br>Usb icon (sharp)</i>
   static const IconData usb_sharp = IconData(0xe1fe, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/user_circle_sharp.png"></br>User Circle icon (sharp)</i>
   static const IconData user_circle_sharp = IconData(0xe1ff, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/user_minor_sharp.png"></br>User Minor icon (sharp)</i>
   static const IconData user_minor_sharp = IconData(0xe200, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/user_settings_sharp.png"></br>User Settings icon (sharp)</i>
   static const IconData user_settings_sharp = IconData(0xe201, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/user_sharp.png"></br>User icon (sharp)</i>
   static const IconData user_sharp = IconData(0xe202, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/vacation_sharp.png"></br>Vacation icon (sharp)</i>
   static const IconData vacation_sharp = IconData(0xe203, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/verified_sharp.png"></br>Verified icon (sharp)</i>
   static const IconData verified_sharp = IconData(0xe204, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/very_satisfied_sharp.png"></br>Very Satisfied icon (sharp)</i>
   static const IconData very_satisfied_sharp = IconData(0xe205, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/video_camera_sharp.png"></br>Video Camera icon (sharp)</i>
   static const IconData video_camera_sharp = IconData(0xe206, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/video_off_sharp.png"></br>Video Off icon (sharp)</i>
   static const IconData video_off_sharp = IconData(0xe207, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/video_play_sharp.png"></br>Video Play icon (sharp)</i>
   static const IconData video_play_sharp = IconData(0xe208, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/video_sharp.png"></br>Video icon (sharp)</i>
   static const IconData video_sharp = IconData(0xe209, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/visibility_off_sharp.png"></br>Visibility Off icon (sharp)</i>
   static const IconData visibility_off_sharp = IconData(0xe20a, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/visibility_sharp.png"></br>Visibility icon (sharp)</i>
   static const IconData visibility_sharp = IconData(0xe20b, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/volte_sharp.png"></br>Volte icon (sharp)</i>
   static const IconData volte_sharp = IconData(0xe20c, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/volume_down_sharp.png"></br>Volume Down icon (sharp)</i>
   static const IconData volume_down_sharp = IconData(0xe20d, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/volume_mute_sharp.png"></br>Volume Mute icon (sharp)</i>
   static const IconData volume_mute_sharp = IconData(0xe20e, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/volume_off_sharp.png"></br>Volume Off icon (sharp)</i>
   static const IconData volume_off_sharp = IconData(0xe20f, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/volume_up_sharp.png"></br>Volume Up icon (sharp)</i>
   static const IconData volume_up_sharp = IconData(0xe210, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/warning_outline_sharp.png"></br>Warning Outline icon (sharp)</i>
   static const IconData warning_outline_sharp = IconData(0xe211, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/warning_sharp.png"></br>Warning icon (sharp)</i>
   static const IconData warning_sharp = IconData(0xe212, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/watch_sharp.png"></br>Watch icon (sharp)</i>
   static const IconData watch_sharp = IconData(0xe213, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/wb_image_sharp.png"></br>Wb Image icon (sharp)</i>
   static const IconData wb_image_sharp = IconData(0xe214, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/wb_sharp.png"></br>Wb icon (sharp)</i>
   static const IconData wb_sharp = IconData(0xe215, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/world_action_sharp.png"></br>World Action icon (sharp)</i>
   static const IconData world_action_sharp = IconData(0xe216, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/world_sharp.png"></br>World icon (sharp)</i>
   static const IconData world_sharp = IconData(0xe217, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/write_sharp.png"></br>Write icon (sharp)</i>
   static const IconData write_sharp = IconData(0xe218, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/youtube_sharp.png"></br>Youtube icon (sharp)</i>
   static const IconData youtube_sharp = IconData(0xe219, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/zero_scale_sharp.png"></br>Zero Scale icon (sharp)</i>
   static const IconData zero_scale_sharp = IconData(0xe21a, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/zoom_in_map_sharp.png"></br>Zoom In Map icon (sharp)</i>
   static const IconData zoom_in_map_sharp = IconData(0xe21b, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/zoom_in_sharp.png"></br>Zoom In icon (sharp)</i>
   static const IconData zoom_in_sharp = IconData(0xe21c, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/zoom_out_map_sharp.png"></br>Zoom Out Map icon (sharp)</i>
   static const IconData zoom_out_map_sharp = IconData(0xe21d, fontFamily: familySharp, fontPackage: package);
+
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/zoom_out_sharp.png"></br>Zoom Out icon (sharp)</i>
   static const IconData zoom_out_sharp = IconData(0xe21e, fontFamily: familySharp, fontPackage: package);
 }
 
-  /// List of all icons.
+/// List of all icons.
 const Map<String, IconData> icons = {
   'activity': ZetaIcons.activity,
   'add_alert': ZetaIcons.add_alert,
