@@ -310,6 +310,7 @@ class MockZeta extends _i1.Mock implements _i2.Zeta {
     String? prefixLineOne = r'',
     String? prefixOtherLines,
     _i4.DiagnosticLevel? minLevel = _i4.DiagnosticLevel.debug,
+    int? wrapWidth = 65,
   }) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -319,6 +320,7 @@ class MockZeta extends _i1.Mock implements _i2.Zeta {
             #prefixLineOne: prefixLineOne,
             #prefixOtherLines: prefixOtherLines,
             #minLevel: minLevel,
+            #wrapWidth: wrapWidth,
           },
         ),
         returnValue: _i6.dummyValue<String>(
@@ -330,6 +332,7 @@ class MockZeta extends _i1.Mock implements _i2.Zeta {
               #prefixLineOne: prefixLineOne,
               #prefixOtherLines: prefixOtherLines,
               #minLevel: minLevel,
+              #wrapWidth: wrapWidth,
             },
           ),
         ),
@@ -342,6 +345,7 @@ class MockZeta extends _i1.Mock implements _i2.Zeta {
               #prefixLineOne: prefixLineOne,
               #prefixOtherLines: prefixOtherLines,
               #minLevel: minLevel,
+              #wrapWidth: wrapWidth,
             },
           ),
         ),
