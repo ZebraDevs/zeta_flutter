@@ -1,5 +1,41 @@
 # Changelog
 
+## [0.20.0](https://github.com/ZebraDevs/zeta_flutter/compare/v0.19.0...v0.20.0) (2024-12-12)
+
+
+### ✨ New Features
+
+* Created Range Selector ([7257c40](https://github.com/ZebraDevs/zeta_flutter/commit/7257c409afaaf10b51a577856ab9623510d43e70))
+* **UX-881:** Range Selector ([#217](https://github.com/ZebraDevs/zeta_flutter/issues/217)) ([7257c40](https://github.com/ZebraDevs/zeta_flutter/commit/7257c409afaaf10b51a577856ab9623510d43e70))
+
+
+### 🪲 Bug Fixes
+
+* Fixed issue where avatar lower badge was not showing ([#218](https://github.com/ZebraDevs/zeta_flutter/issues/218)) ([a1742a3](https://github.com/ZebraDevs/zeta_flutter/commit/a1742a3cabb9aad03d2f79ee4bf832a54cec928f))
+* removed defaults to true on showValues ([7257c40](https://github.com/ZebraDevs/zeta_flutter/commit/7257c409afaaf10b51a577856ab9623510d43e70))
+* removed large thumbs ([7257c40](https://github.com/ZebraDevs/zeta_flutter/commit/7257c409afaaf10b51a577856ab9623510d43e70))
+* removed rounded from widgetbook ([7257c40](https://github.com/ZebraDevs/zeta_flutter/commit/7257c409afaaf10b51a577856ab9623510d43e70))
+* Top app bar padding ([#215](https://github.com/ZebraDevs/zeta_flutter/issues/215)) ([7b374b7](https://github.com/ZebraDevs/zeta_flutter/commit/7b374b7e929c07d20220d9ab8e9ee09a12206442))
+
+
+### 📈 Documentation
+
+* widgetbook and example for range selector ([7257c40](https://github.com/ZebraDevs/zeta_flutter/commit/7257c409afaaf10b51a577856ab9623510d43e70))
+
+
+### ⛓️ Dependencies
+
+* **automated:** Update icons ([#219](https://github.com/ZebraDevs/zeta_flutter/issues/219)) ([1bd8bfa](https://github.com/ZebraDevs/zeta_flutter/commit/1bd8bfa0a8a6fda8782860779fa02e1d195f67ea))
+* **automated:** Update icons ([#221](https://github.com/ZebraDevs/zeta_flutter/issues/221)) ([10cc97c](https://github.com/ZebraDevs/zeta_flutter/commit/10cc97c225e6644099b10b8fefa537546d842408))
+
+
+### 🧪 Tests
+
+* adjusted golden tolerance ([7257c40](https://github.com/ZebraDevs/zeta_flutter/commit/7257c409afaaf10b51a577856ab9623510d43e70))
+* created interaction tests ([7257c40](https://github.com/ZebraDevs/zeta_flutter/commit/7257c409afaaf10b51a577856ab9623510d43e70))
+* testing range selector ([7257c40](https://github.com/ZebraDevs/zeta_flutter/commit/7257c409afaaf10b51a577856ab9623510d43e70))
+* wrote 1 test for range selector ([7257c40](https://github.com/ZebraDevs/zeta_flutter/commit/7257c409afaaf10b51a577856ab9623510d43e70))
+
 ## [0.19.0](https://github.com/ZebraDevs/zeta_flutter/compare/v0.18.0...v0.19.0) (2024-11-18)
 
 
