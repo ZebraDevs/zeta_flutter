@@ -37,10 +37,10 @@ extension ZetaColorExtensions on Color {
     if (amount <= 0) return this;
     if (amount > 100) return Colors.white;
     final Color color = Color.fromARGB(
-      alpha,
-      math.max(0, math.min(255, red - (255 * -(amount / 100)).round())),
-      math.max(0, math.min(255, green - (255 * -(amount / 100)).round())),
-      math.max(0, math.min(255, blue - (255 * -(amount / 100)).round())),
+      (a * 255).toInt(),
+      math.max(0, math.min(255, (r * 255).toInt() - (255 * -(amount / 100)).round())),
+      math.max(0, math.min(255, (g * 255).toInt() - (255 * -(amount / 100)).round())),
+      math.max(0, math.min(255, (b * 255).toInt() - (255 * -(amount / 100)).round())),
     );
     return color;
   }
@@ -168,9 +168,7 @@ extension ZetaColorExtensions on Color {
   }
 
   /// Return uppercase Flutter style hex code string of the color.
-  String get hexCode {
-    return value.toRadixString(16).toUpperCase().padLeft(8, '0');
-  }
+  String get hexCode => toHexInt.toString();
 
   /// Applies lightness percentage to color.
   Color withLightness(double percentage) {
@@ -304,4 +302,18 @@ extension ZetaColorExtensions on Color {
   }) {
     return adjustContrast(on: on, target: standard.targetContrast);
   }
+
+  // ignore: deprecated_member_use
+  /// Simple replacement for [withOpacity] that takes a double value between 0 and 1.
+  /// The function will throw an exception if the opacity value is outside the range.
+  /// The function returns a new color with the given opacity.
+  Color setOpacity(double opacity) {
+    if (opacity < 0 || opacity > 1) {
+      throw Exception('Opacity must be between 0 and 1');
+    }
+    return withAlpha((opacity * 255).toInt());
+  }
+
+  /// Returns the color as an integer in hexadecimal format.
+  int get toHexInt => int.parse('${(r * 255).toInt()}${(g * 255).toInt()}${(b * 255).toInt()}');
 }

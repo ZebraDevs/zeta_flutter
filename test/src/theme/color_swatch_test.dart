@@ -8,7 +8,7 @@ void main() {
 
     setUp(() {
       zetaColorSwatch = ZetaColorSwatch(
-        primary: Colors.blue.value,
+        primary: Colors.blue.toHexInt,
         swatch: {
           10: Colors.blue.shade100,
           20: Colors.blue.shade200,
@@ -44,7 +44,7 @@ void main() {
         Colors.blue,
       );
 
-      expect(swatch.value, Colors.blue.value);
+      expect(swatch.toHexInt, Colors.blue.toHexInt);
       expect(swatch.brightness, Brightness.light);
       expect(swatch.contrast, ZetaContrast.aa);
     });
@@ -71,7 +71,7 @@ void main() {
 
     test('equality operator works as expected', () {
       final identicalSwatch = ZetaColorSwatch(
-        primary: Colors.blue.value,
+        primary: Colors.blue.toHexInt,
         swatch: {
           10: Colors.blue.shade100,
           20: Colors.blue.shade200,
@@ -92,7 +92,7 @@ void main() {
 
     test('hashCode method works as expected', () {
       final identicalSwatch = ZetaColorSwatch(
-        primary: Colors.blue.value,
+        primary: Colors.blue.toHexInt,
         swatch: {
           10: Colors.blue.shade100,
           20: Colors.blue.shade200,
@@ -124,18 +124,18 @@ void main() {
     });
 
     test('token getters works as expected', () {
-      expect(zetaColorSwatch.text.value, Colors.blue.value);
-      expect(zetaColorSwatch.icon.value, Colors.blue.value);
-      expect(zetaColorSwatch.hover.value, Colors.blue.shade700.value);
-      expect(zetaColorSwatch.selected.value, Colors.blue.shade800.value);
-      expect(zetaColorSwatch.focus.value, Colors.blue.shade800.value);
-      expect(zetaColorSwatch.border.value, Colors.blue.value);
-      expect(zetaColorSwatch.subtle.value, Colors.blue.shade400.value);
-      expect(zetaColorSwatch.surface.value, Colors.blue.shade100.value);
+      expect(zetaColorSwatch.text.toHexInt, Colors.blue.toHexInt);
+      expect(zetaColorSwatch.icon.toHexInt, Colors.blue.toHexInt);
+      expect(zetaColorSwatch.hover.toHexInt, Colors.blue.shade700.toHexInt);
+      expect(zetaColorSwatch.selected.toHexInt, Colors.blue.shade800.toHexInt);
+      expect(zetaColorSwatch.focus.toHexInt, Colors.blue.shade800.toHexInt);
+      expect(zetaColorSwatch.border.toHexInt, Colors.blue.toHexInt);
+      expect(zetaColorSwatch.subtle.toHexInt, Colors.blue.shade400.toHexInt);
+      expect(zetaColorSwatch.surface.toHexInt, Colors.blue.shade100.toHexInt);
 
       final aaaSwatch = ZetaColorSwatch(
         contrast: ZetaContrast.aaa,
-        primary: Colors.blue.value,
+        primary: Colors.blue.toHexInt,
         swatch: {
           10: Colors.blue.shade100,
           20: Colors.blue.shade200,
@@ -150,14 +150,14 @@ void main() {
         },
       );
 
-      expect(aaaSwatch.text.value, Colors.blue.shade800.value);
-      expect(aaaSwatch.icon.value, Colors.blue.shade800.value);
-      expect(aaaSwatch.hover.value, Colors.blue.shade900.value);
-      expect(aaaSwatch.selected.value, Colors.blue.shade900.value);
-      expect(aaaSwatch.focus.value, Colors.blue.shade900.value);
-      expect(aaaSwatch.border.value, Colors.blue.shade800.value);
-      expect(aaaSwatch.subtle.value, Colors.blue.shade500.value);
-      expect(aaaSwatch.surface.value, Colors.blue.shade100.value);
+      expect(aaaSwatch.text.toHexInt, Colors.blue.shade800.toHexInt);
+      expect(aaaSwatch.icon.toHexInt, Colors.blue.shade800.toHexInt);
+      expect(aaaSwatch.hover.toHexInt, Colors.blue.shade900.toHexInt);
+      expect(aaaSwatch.selected.toHexInt, Colors.blue.shade900.toHexInt);
+      expect(aaaSwatch.focus.toHexInt, Colors.blue.shade900.toHexInt);
+      expect(aaaSwatch.border.toHexInt, Colors.blue.shade800.toHexInt);
+      expect(aaaSwatch.subtle.toHexInt, Colors.blue.shade500.toHexInt);
+      expect(aaaSwatch.surface.toHexInt, Colors.blue.shade100.toHexInt);
     });
   });
 
@@ -176,7 +176,7 @@ void main() {
     final ZetaColors aa = ZetaColors();
     final ZetaColors aaa = ZetaColors(brightness: Brightness.dark, contrast: ZetaContrast.aaa);
 
-    expect(aa.primary.value, aa.primary.shade60.value);
-    expect(aaa.primary.value, aaa.primary.shade80.value);
+    expect(aa.primary.toHexInt, aa.primary.shade60.toHexInt);
+    expect(aaa.primary.toHexInt, aaa.primary.shade80.toHexInt);
   });
 }
