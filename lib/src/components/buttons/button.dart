@@ -201,14 +201,14 @@ class ZetaButton extends ZetaStatelessWidget {
                     leadingIcon,
                     size: iconSize,
                   ),
-                if (label.isNotEmpty)
-                  Flexible(
-                    child: Text(
-                      label,
-                      style: _textStyle,
-                      textAlign: TextAlign.center,
-                    ).paddingVertical(Zeta.of(context).spacing.minimum),
-                  ),
+                // if (label.isNotEmpty)
+                //   Flexible(
+                //     child: Text(
+                //       label,
+                //       style: _textStyle,
+                //       textAlign: TextAlign.center,
+                //     ).paddingVertical(Zeta.of(context).spacing.minimum),
+                //   ),
                 if (trailingIcon != null)
                   Icon(
                     trailingIcon,
