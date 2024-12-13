@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.20.1](https://github.com/ZebraDevs/zeta_flutter/compare/v0.20.0...v0.20.1) (2024-12-13)
+
+
+### 🪲 Bug Fixes
+
+* Fab icon color ([#222](https://github.com/ZebraDevs/zeta_flutter/issues/222)) ([58b9222](https://github.com/ZebraDevs/zeta_flutter/commit/58b9222446e47d976761ffd347546717b043aa23))
+
 ## [0.20.0](https://github.com/ZebraDevs/zeta_flutter/compare/v0.19.0...v0.20.0) (2024-12-12)
 
 
