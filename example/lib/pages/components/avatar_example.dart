@@ -18,6 +18,13 @@ class AvatarExample extends StatelessWidget {
     );
 
     return ExampleScaffold(
+      actions: [
+        ZetaAvatar.initials(
+          initials: 'W W',
+          size: ZetaAvatarSize.xxs,
+          backgroundColor: Zeta.of(context).colors.primitives.green,
+        ),
+      ],
       name: AvatarExample.name,
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
@@ -25,6 +32,11 @@ class AvatarExample extends StatelessWidget {
           padding: EdgeInsets.all(Zeta.of(context).spacing.medium),
           child: Column(
             children: [
+              ZetaAvatar.initials(
+                initials: 'WW',
+                size: ZetaAvatarSize.xxs,
+                backgroundColor: Zeta.of(context).colors.primitives.green,
+              ),
               Column(
                 children: [
                   Text(

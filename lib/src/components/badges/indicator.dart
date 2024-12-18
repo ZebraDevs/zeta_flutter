@@ -92,6 +92,7 @@ class ZetaIndicator extends ZetaStatelessWidget {
     int? value,
     bool? inverse,
     Key? key,
+    String? semanticLabel,
   }) {
     return ZetaIndicator(
       key: key ?? this.key,
@@ -100,6 +101,7 @@ class ZetaIndicator extends ZetaStatelessWidget {
       icon: icon ?? this.icon,
       value: value ?? this.value,
       inverse: inverse ?? this.inverse,
+      semanticLabel: semanticLabel ?? this.semanticLabel,
     );
   }
 
@@ -112,18 +114,21 @@ class ZetaIndicator extends ZetaStatelessWidget {
     final sizePixels = _getSizePixels(size, type, context);
 
     return Semantics(
-      value: semanticLabel ?? value?.toString() ?? '',
+      label: semanticLabel,
+      container: true,
       child: Container(
         width: sizePixels + Zeta.of(context).spacing.minimum,
         height: sizePixels + Zeta.of(context).spacing.minimum,
-        decoration: BoxDecoration(
-          border: Border.all(
-            width: ZetaBorders.medium,
-            color: Zeta.of(context).colors.borderPure,
-          ),
-          color: (inverse ? foregroundColor : Colors.transparent),
-          borderRadius: Zeta.of(context).radius.full,
-        ),
+        decoration: type == ZetaIndicatorType.icon
+            ? BoxDecoration(
+                border: Border.all(
+                  width: ZetaBorders.medium,
+                  color: Zeta.of(context).colors.borderPure,
+                ),
+                color: (inverse ? foregroundColor : Colors.transparent),
+                borderRadius: Zeta.of(context).radius.full,
+              )
+            : null,
         child: Center(
           child: Container(
             width: sizePixels,
@@ -156,11 +161,15 @@ class ZetaIndicator extends ZetaStatelessWidget {
         );
       case ZetaIndicatorType.notification:
         return Center(
-          child: Text(
-            value.formatMaxChars(),
-            style: ZetaTextStyles.labelIndicator.copyWith(
-              color: foregroundColor,
-              height: size == ZetaWidgetSize.large ? 1 : (12 / 16),
+          child: ExcludeSemantics(
+            excluding: semanticLabel != null,
+            child: Text(
+              value.formatMaxChars(),
+              style: ZetaTextStyles.labelIndicator.copyWith(
+                color: foregroundColor,
+                fontSize: size == ZetaWidgetSize.large ? 12 : 11,
+                height: size == ZetaWidgetSize.large ? 1 : (0.5 / 16),
+              ),
             ),
           ),
         );

@@ -19,6 +19,8 @@ jobs:
       - uses: subosito/flutter-action@v2
         with:
           cache: true
+          channel: stable
+          flutter-version: 3.24.x # TODO UX-1347
       - run: dart run build_runner build --delete-conflicting-outputs
       - uses: ZebraDevs/flutter-code-quality@main
         with:
@@ -51,6 +53,8 @@ jobs:
       - uses: subosito/flutter-action@v2
         with:
           cache: true
+          channel: stable
+          flutter-version: 3.24.x # TODO UX-1347
       - name: Setup flutter
         run: flutter pub get
       - name: Build example app

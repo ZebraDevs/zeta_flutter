@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'dart:io';
 
 import 'package:collection/collection.dart';
@@ -77,7 +79,48 @@ void debugFillPropertiesTest(Widget widget, Map<String, dynamic> properties) {
     widget.debugFillProperties(diagnostics);
 
     properties.forEach((key, value) {
-      expect(diagnostics.finder(key), value);
+      try {
+        expect(diagnostics.finder(key), value);
+      } catch (e) {
+        print('Error on $key');
+        rethrow;
+      }
     });
+  });
+}
+
+void meetsAccessbilityGuidelinesTest(
+  Widget widget, {
+  ThemeMode themeMode = ThemeMode.system,
+  Size? screenSize,
+  bool? rounded,
+  Future<void> Function(WidgetTester)? setUp,
+  Future<void> Function(WidgetTester)? beforeTest,
+}) {
+  testWidgets('meets accessibility requirements', (WidgetTester tester) async {
+    final SemanticsHandle handle = tester.ensureSemantics();
+    if (setUp != null) {
+      await setUp(tester);
+    }
+
+    await tester.pumpWidget(
+      TestApp(
+        screenSize: screenSize,
+        themeMode: themeMode,
+        rounded: rounded,
+        home: widget,
+      ),
+    );
+
+    if (beforeTest != null) {
+      await beforeTest(tester);
+    }
+
+    await expectLater(tester, meetsGuideline(androidTapTargetGuideline));
+    await expectLater(tester, meetsGuideline(iOSTapTargetGuideline));
+    await expectLater(tester, meetsGuideline(labeledTapTargetGuideline));
+    await expectLater(tester, meetsGuideline(textContrastGuideline));
+
+    handle.dispose();
   });
 }

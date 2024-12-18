@@ -87,6 +87,7 @@ class NotificationListItemExample extends StatelessWidget {
               leading: ZetaNotificationBadge.avatar(
                 avatar: ZetaAvatar.initials(
                   initials: "JS",
+                  semanticUpperBadgeLabel: 'Urgent',
                   lowerBadge: ZetaAvatarBadge.icon(
                     color: colors.surfacePositive,
                     icon: Icons.check,

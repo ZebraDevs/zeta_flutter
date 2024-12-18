@@ -15,7 +15,7 @@ void main() {
     goldenFileComparator = TolerantComparator(goldenFile.uri);
   });
 
-  group('ZetaStepper Accessibility Tests', () {
+  group('Accessibility Tests', () {
     testWidgets('Horizontal stepper meets accessibility requirements', (WidgetTester tester) async {
       final SemanticsHandle handle = tester.ensureSemantics();
       await tester.pumpWidget(
@@ -91,7 +91,7 @@ void main() {
     });
   });
 
-  group('ZetaStepper Content Tests', () {
+  group('Content Tests', () {
     testWidgets('Horizontal stepper renders the correct steps', (WidgetTester tester) async {
       await tester.pumpWidget(
         TestApp(
@@ -202,7 +202,7 @@ void main() {
     );
   });
 
-  group('ZetaStepper Dimensions Tests', () {
+  group('Dimensions Tests', () {
     testWidgets('StepIcon horiztonal has the correct size', (WidgetTester tester) async {
       await tester.pumpWidget(
         const TestApp(
@@ -275,7 +275,7 @@ void main() {
     });
   });
 
-  group('ZetaStepper Styling Tests', () {
+  group('Styling Tests', () {
     testWidgets(
       'StepIcon has the correct colour when enabled',
       (WidgetTester tester) async {
@@ -401,7 +401,7 @@ void main() {
     );
   });
 
-  group('ZetaStepper Interaction Tests', () {
+  group('Interaction Tests', () {
     testWidgets('Horizontal stepper calls onStepTapped when a step is tapped', (WidgetTester tester) async {
       int tappedStep = -1;
       await tester.pumpWidget(
@@ -448,7 +448,7 @@ void main() {
     });
   });
 
-  group('ZetaStepper Golden Tests', () {
+  group('Golden Tests', () {
     goldenTest(
       goldenFile,
       const ZetaStepper(

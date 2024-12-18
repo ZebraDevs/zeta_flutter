@@ -15,7 +15,7 @@ Widget bannerUseCase(BuildContext context) {
       labelBuilder: enumLabelBuilder,
     ),
     leadingIcon: iconKnob(context, nullable: true),
-    titleStart: context.knobs.boolean(label: 'Center title'),
+    titleCenter: context.knobs.boolean(label: 'Center title'),
     trailing: ZetaIcon(iconKnob(
       context,
       nullable: true,

@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import '../../../zeta_flutter.dart';
 
@@ -124,7 +125,7 @@ class ZetaNavigationRail extends ZetaStatelessWidget {
   }
 }
 
-class _ZetaNavigationRailItemContent extends ZetaStatelessWidget {
+class _ZetaNavigationRailItemContent extends ZetaStatefulWidget {
   const _ZetaNavigationRailItemContent({
     required this.label,
     this.icon,
@@ -143,62 +144,107 @@ class _ZetaNavigationRailItemContent extends ZetaStatelessWidget {
   final EdgeInsets? padding;
   final bool? wordWrap;
 
-  // TODO(UX-1173): No hover state for navigation rail items
+  @override
+  State<_ZetaNavigationRailItemContent> createState() => _ZetaNavigationRailItemContentState();
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(StringProperty('label', label))
+      ..add(DiagnosticsProperty<bool>('selected', selected))
+      ..add(DiagnosticsProperty<bool>('disabled', disabled))
+      ..add(ObjectFlagProperty<VoidCallback?>.has('onTap', onTap))
+      ..add(DiagnosticsProperty<EdgeInsets?>('padding', padding))
+      ..add(DiagnosticsProperty<bool?>('wordWrap', wordWrap));
+  }
+}
+
+class _ZetaNavigationRailItemContentState extends State<_ZetaNavigationRailItemContent> {
+  bool _hovered = false;
+  bool _focused = false;
+
   @override
   Widget build(BuildContext context) {
     final zeta = Zeta.of(context);
 
-    final Color foregroundColor = disabled
-        ? zeta.colors.mainDisabled
-        : selected
-            ? zeta.colors.mainDefault
-            : zeta.colors.mainSubtle;
+    // final Color foregroundColor = disabled
+    //     ? zeta.colors.mainDisabled
+    //     : selected
+    //         ? zeta.colors.mainDefault
+    //         : zeta.colors.mainSubtle;
+
     return Semantics(
       button: true,
-      enabled: !disabled,
-      child: MouseRegion(
-        cursor: disabled ? SystemMouseCursors.forbidden : SystemMouseCursors.click,
-        child: GestureDetector(
-          behavior: HitTestBehavior.translucent,
-          onTap: disabled ? null : onTap,
-          child: DecoratedBox(
-            decoration: BoxDecoration(
-              color: disabled
-                  ? null
-                  : selected
-                      ? zeta.colors.stateDefaultSelected
-                      : null,
-              borderRadius: context.rounded ? Zeta.of(context).radius.rounded : null,
-            ),
-            child: ConstrainedBox(
-              constraints: BoxConstraints(
-                minWidth: Zeta.of(context).spacing.xl_9,
-                minHeight: Zeta.of(context).spacing.xl_9,
+      enabled: !widget.disabled,
+      child: Focus(
+        onFocusChange: (focused) => setState(() => _focused = focused),
+        onKeyEvent: (node, event) {
+          if (event.logicalKey == LogicalKeyboardKey.enter || event.logicalKey == LogicalKeyboardKey.space) {
+            widget.onTap?.call();
+            return KeyEventResult.handled;
+          }
+          return KeyEventResult.ignored;
+        },
+        child: MouseRegion(
+          cursor: widget.disabled ? SystemMouseCursors.forbidden : SystemMouseCursors.click,
+          onEnter: (_) => setState(() => _hovered = true),
+          onExit: (_) => setState(() => _hovered = false),
+          child: GestureDetector(
+            behavior: HitTestBehavior.translucent,
+            onTap: widget.disabled ? null : widget.onTap,
+            child: DecoratedBox(
+              decoration: BoxDecoration(
+                color: widget.disabled
+                    ? null
+                    : widget.selected
+                        ? zeta.colors.primitives.blue.shade10
+                        : _hovered
+                            ? zeta.colors.surfaceHover
+                            : null,
+                border: _focused ? Border.all(color: zeta.colors.primitives.blue, width: 2) : null,
+                borderRadius: context.rounded ? Zeta.of(context).radius.rounded : null,
               ),
-              child: SelectionContainer.disabled(
-                child: Padding(
-                  padding: padding ??
-                      EdgeInsets.symmetric(
-                        horizontal: Zeta.of(context).spacing.small,
-                        vertical: Zeta.of(context).spacing.medium,
-                      ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      if (icon != null)
-                        IconTheme(
-                          data: IconThemeData(
-                            color: foregroundColor,
-                            size: Zeta.of(context).spacing.xl_2,
-                          ),
-                          child: icon!,
+              child: ConstrainedBox(
+                constraints: BoxConstraints(
+                  minWidth: Zeta.of(context).spacing.xl_9,
+                  minHeight: Zeta.of(context).spacing.xl_9,
+                ),
+                child: SelectionContainer.disabled(
+                  child: Padding(
+                    padding: widget.padding ??
+                        EdgeInsets.symmetric(
+                          horizontal: Zeta.of(context).spacing.small,
+                          vertical: Zeta.of(context).spacing.medium,
                         ),
-                      Text(
-                        (wordWrap ?? true) ? label.replaceAll(' ', '\n') : label,
-                        textAlign: TextAlign.center,
-                        style: ZetaTextStyles.titleSmall.copyWith(color: foregroundColor),
-                      ),
-                    ],
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        if (widget.icon != null)
+                          IconTheme(
+                            data: IconThemeData(
+                              color: widget.disabled
+                                  ? zeta.colors.primitives.cool.shade50
+                                  : widget.selected || _hovered
+                                      ? zeta.colors.mainDefault
+                                      : zeta.colors.primitives.cool.shade70,
+                              size: Zeta.of(context).spacing.xl_2,
+                            ),
+                            child: widget.icon!,
+                          ),
+                        Text(
+                          (widget.wordWrap ?? true) ? widget.label.replaceAll(' ', '\n') : widget.label,
+                          textAlign: TextAlign.center,
+                          style: ZetaTextStyles.titleSmall.copyWith(
+                            color: widget.disabled
+                                ? zeta.colors.primitives.cool.shade50
+                                : widget.selected || _hovered
+                                    ? zeta.colors.mainDefault
+                                    : zeta.colors.primitives.cool.shade70,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -213,12 +259,12 @@ class _ZetaNavigationRailItemContent extends ZetaStatelessWidget {
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(ObjectFlagProperty<VoidCallback?>.has('onTap', onTap))
-      ..add(DiagnosticsProperty<bool>('disabled', disabled))
-      ..add(DiagnosticsProperty<bool>('selected', selected))
-      ..add(DiagnosticsProperty<EdgeInsets?>('padding', padding))
-      ..add(StringProperty('label', label))
-      ..add(DiagnosticsProperty<bool?>('wordWrap', wordWrap));
+      ..add(ObjectFlagProperty<VoidCallback?>.has('onTap', widget.onTap))
+      ..add(DiagnosticsProperty<bool>('disabled', widget.disabled))
+      ..add(DiagnosticsProperty<bool>('selected', widget.selected))
+      ..add(DiagnosticsProperty<EdgeInsets?>('padding', widget.padding))
+      ..add(StringProperty('label', widget.label))
+      ..add(DiagnosticsProperty<bool?>('wordWrap', widget.wordWrap));
   }
 }
 

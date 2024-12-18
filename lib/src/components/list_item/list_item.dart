@@ -61,22 +61,32 @@ class ZetaList extends ZetaStatelessWidget {
 class ZetaListItem extends ZetaStatelessWidget {
   /// Creates a [ZetaListItem].
   const ZetaListItem({
-    required this.primaryText,
+    this.title,
+    this.primaryText,
     this.secondaryText,
+    this.primaryTextStyle,
+    this.secondaryTextStyle,
     this.leading,
     this.onTap,
     this.showDivider,
     this.trailing,
     super.key,
     super.rounded,
-  });
+  }) : assert(
+          (title != null && primaryText == null && secondaryText == null) ||
+              (title == null && primaryText != null || secondaryText != null),
+          'Provide one of either title or primaryText/secondaryText',
+        );
 
   /// Creates a [ZetaListItem] with a [ZetaSwitch] in the trailing widget space.
   ZetaListItem.toggle({
     super.key,
     super.rounded,
-    required this.primaryText,
+    this.title,
+    this.primaryText,
     this.secondaryText,
+    this.primaryTextStyle,
+    this.secondaryTextStyle,
     this.showDivider,
     this.leading,
     bool value = false,
@@ -86,14 +96,22 @@ class ZetaListItem extends ZetaStatelessWidget {
           onChanged: onChanged,
           variant: ZetaSwitchType.android,
         ),
-        onTap = (() => onChanged?.call(!value));
+        onTap = (() => onChanged?.call(!value)),
+        assert(
+          (title != null && primaryText == null && secondaryText == null) ||
+              (title == null && (primaryText != null || secondaryText != null)),
+          'Provide one of either title or primaryText/secondaryText',
+        );
 
   /// Creates a [ZetaListItem] with a [ZetaCheckbox] in the trailing widget space.
   ZetaListItem.checkbox({
     super.key,
     super.rounded,
-    required this.primaryText,
+    this.title,
+    this.primaryText,
     this.secondaryText,
+    this.primaryTextStyle,
+    this.secondaryTextStyle,
     this.leading,
     this.showDivider,
     bool value = false,
@@ -105,13 +123,21 @@ class ZetaListItem extends ZetaStatelessWidget {
           useIndeterminate: useIndeterminate,
           rounded: rounded,
         ),
-        onTap = (() => onChanged?.call(!value));
+        onTap = (() => onChanged?.call(!value)),
+        assert(
+          (title != null && primaryText == null && secondaryText == null) ||
+              (title == null && (primaryText != null || secondaryText != null)),
+          'Provide one of either title or primaryText/secondaryText',
+        );
 
   /// Creates a [ZetaListItem] with a [ZetaRadio] in the trailing widget space.
   ZetaListItem.radio({
-    required this.primaryText,
     required dynamic value,
+    this.title,
+    this.primaryText,
     this.secondaryText,
+    this.primaryTextStyle,
+    this.secondaryTextStyle,
     this.leading,
     this.showDivider,
     dynamic groupValue,
@@ -123,7 +149,12 @@ class ZetaListItem extends ZetaStatelessWidget {
           groupValue: groupValue,
           onChanged: onChanged,
         ),
-        onTap = (() => onChanged?.call(value));
+        onTap = (() => onChanged?.call(value)),
+        assert(
+          (title != null && primaryText == null && secondaryText == null) ||
+              (title == null && (primaryText != null || secondaryText != null)),
+          'Provide one of either title or primaryText/secondaryText',
+        );
 
   /// {@template list-item-leading}
   /// A widget to display before the title;
@@ -133,15 +164,33 @@ class ZetaListItem extends ZetaStatelessWidget {
   /// Called when user taps on the [ZetaListItem].
   final VoidCallback? onTap;
 
+  /// {@template list-item-title}
+  /// The primary content of the list item.
+  /// Cannot be provided with [primaryText] or [secondaryText].
+  /// {@endtemplate}
+  final Widget? title;
+
   /// {@template list-item-primary-text}
   /// The primary text of the [ZetaListItem].
+  /// Cannot be provided with [title].
   /// {@endtemplate}
-  final String primaryText;
+  final String? primaryText;
+
+  /// {@template list-item-primary-text-style}
+  /// The text style applied to [primaryText].
+  /// {@endtemplate}
+  final TextStyle? primaryTextStyle;
 
   /// {@template list-item-secondary-text}
   /// The secondary text of the [ZetaListItem].
+  /// Cannot be provided with [title].
   /// {@endtemplate}
   final String? secondaryText;
+
+  /// {@template list-item-secondary-text-style}
+  /// The text style applied to [secondaryText].
+  /// {@endtemplate}
+  final TextStyle? secondaryTextStyle;
 
   /// A widget to display after the primary text.
   /// If this is a checkbox, radio button, or switch, use the relevant named constructor.
@@ -162,7 +211,9 @@ class ZetaListItem extends ZetaStatelessWidget {
       ..add(DiagnosticsProperty<Widget>('trailing', trailing))
       ..add(StringProperty('label', primaryText))
       ..add(StringProperty('secondaryText', secondaryText))
-      ..add(DiagnosticsProperty<bool?>('showDivider', showDivider));
+      ..add(DiagnosticsProperty<bool?>('showDivider', showDivider))
+      ..add(DiagnosticsProperty<TextStyle?>('secondaryTextStyle', secondaryTextStyle))
+      ..add(DiagnosticsProperty<TextStyle?>('primaryTextStyle', primaryTextStyle));
   }
 
   @override
@@ -209,23 +260,26 @@ class ZetaListItem extends ZetaStatelessWidget {
                               child: leadingWidget,
                             ),
                           Flexible(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  primaryText,
-                                  maxLines: 1,
-                                  overflow: TextOverflow.ellipsis,
+                            child: title ??
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    if (primaryText != null && primaryText!.isNotEmpty)
+                                      Text(
+                                        primaryText!,
+                                        maxLines: 1,
+                                        overflow: TextOverflow.ellipsis,
+                                        style: primaryTextStyle,
+                                      ),
+                                    if (secondaryText != null && secondaryText!.isNotEmpty)
+                                      Text(
+                                        secondaryText!,
+                                        style: secondaryTextStyle ?? ZetaTextStyles.bodySmall,
+                                        maxLines: 1,
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
+                                  ],
                                 ),
-                                if (secondaryText != null && secondaryText!.isNotEmpty)
-                                  Text(
-                                    secondaryText!,
-                                    style: ZetaTextStyles.bodySmall,
-                                    maxLines: 1,
-                                    overflow: TextOverflow.ellipsis,
-                                  ),
-                              ],
-                            ),
                           ),
                         ],
                       ),

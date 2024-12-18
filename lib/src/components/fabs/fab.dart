@@ -165,7 +165,13 @@ class _ZetaFABState extends State<ZetaFAB> {
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  ZetaIcon(widget.icon, size: widget.size.iconSize(context), color: foregroundColor),
+                  ZetaIcon(
+                    widget.icon,
+                    size: widget.size.iconSize(context),
+                    color: widget.onPressed != null
+                        ? widget.type.iconColors(context)
+                        : Zeta.of(context).colors.mainDisabled,
+                  ),
                   if (widget.expanded && widget.label != null)
                     Row(
                       mainAxisSize: MainAxisSize.min,
@@ -238,6 +244,17 @@ extension on ZetaFabType {
         return colors.stateSecondarySelected;
       case ZetaFabType.inverse:
         return colors.stateInverseSelected;
+    }
+  }
+
+  Color iconColors(BuildContext context) {
+    final zetaColors = Zeta.of(context).colors;
+    switch (this) {
+      case ZetaFabType.primary:
+      case ZetaFabType.inverse:
+        return zetaColors.mainInverse;
+      case ZetaFabType.secondary:
+        return zetaColors.mainDefault;
     }
   }
 }

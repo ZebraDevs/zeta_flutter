@@ -79,7 +79,7 @@ void main() {
       'semanticLabel': 'null',
       'type': 'positive',
       'size': 'medium',
-      'icon': 'IconData(U+0E16B)',
+      'icon': 'IconData(U+0${ZetaIcons.phone.codePoint.toRadixString(16).toUpperCase()})',
     };
     debugFillPropertiesTest(
       const ZetaCommsButton(

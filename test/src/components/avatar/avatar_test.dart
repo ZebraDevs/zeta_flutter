@@ -17,7 +17,7 @@ void main() {
   });
 
   group('Accessibility Tests', () {
-    testWidgets('ZetaAvatar meets accessibility  requirements', (WidgetTester tester) async {
+    testWidgets('ZetaAvatar meets accessibility requirements', (WidgetTester tester) async {
       final SemanticsHandle handle = tester.ensureSemantics();
       await tester.pumpWidget(
         const TestApp(
@@ -48,13 +48,13 @@ void main() {
     final debugFillProperties = {
       'size': 'ZetaAvatarSize.xl',
       'name': 'null',
-      'specialStatus': 'null',
-      'badge': 'null',
+      'upperBadge': 'null',
+      'lowerBadge': 'null',
       'backgroundColor': 'null',
       'statusColor': 'null',
-      'semanticUpperBadgeValue': '"upperBadge"',
-      'semanticValue': '"avatar"',
-      'semanticLowerBadgeValue': '"lowerBadge"',
+      'semanticUpperBadgeValue': 'null',
+      'semanticValue': 'null',
+      'semanticLowerBadgeValue': 'null',
       'initialTextStyle': 'null',
     };
     debugFillPropertiesTest(

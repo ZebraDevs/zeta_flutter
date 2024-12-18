@@ -3,14 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../../zeta_flutter.dart';
 
-/// [ZetaBanner] type.
-@Deprecated('Use ZetaBannerStatus instead. ' 'This widget has been renamed as of 0.11.0')
-typedef ZetaSystemBannerStatus = ZetaBannerStatus;
-
-/// Zeta Banner. Extends [MaterialBanner].
-@Deprecated('Use ZetaBanner instead. ' 'This widget has been renamed as of 0.11.0')
-typedef ZetaSystemBanner = ZetaBanner;
-
 /// [ZetaBanner] type
 enum ZetaBannerStatus {
   /// Primary background.
@@ -49,7 +41,10 @@ class ZetaBanner extends MaterialBanner {
     ZetaBannerStatus type = ZetaBannerStatus.primary,
 
     /// Whether the title should be centered.
-    bool titleStart = false,
+    bool titleCenter = false,
+
+    /// Whether the title should be centered.
+    @Deprecated('Use titleCenter instead. ' 'This attribute has been renamed as of 0.18.0') bool? titleStart,
 
     /// The trailing widget for the banner.
     Widget? trailing,
@@ -63,81 +58,90 @@ class ZetaBanner extends MaterialBanner {
     String? semanticLabel,
   }) : super(
           dividerColor: Colors.transparent,
-          content: () {
-            final colors = Zeta.of(context).colors;
-            final backgroundColor = type.backgroundColor(context);
-            final foregroundColor = colors.mainInverse;
-
-            if (!kIsWeb && PlatformIs.android && context.mounted) {
-              // ignore: invalid_use_of_visible_for_testing_member
-              final statusBarColor = SystemChrome.latestStyle?.statusBarColor;
-              if (statusBarColor != backgroundColor) {
-                SystemChrome.setSystemUIOverlayStyle(
-                  SystemUiOverlayStyle(
-                    statusBarColor: backgroundColor,
-                    systemNavigationBarIconBrightness: Brightness.light,
-                  ),
-                );
+          content: Builder(
+            builder: (context) {
+              final backgroundColor = _backgroundColorFromType(context, type);
+              final foregroundColor = backgroundColor.onColor;
+              if (!kIsWeb && PlatformIs.android && context.mounted) {
+                // ignore: invalid_use_of_visible_for_testing_member
+                final statusBarColor = SystemChrome.latestStyle?.statusBarColor;
+                if (statusBarColor != backgroundColor) {
+                  SystemChrome.setSystemUIOverlayStyle(
+                    SystemUiOverlayStyle(
+                      statusBarColor: backgroundColor,
+                      systemNavigationBarIconBrightness: backgroundColor.isDark ? Brightness.light : Brightness.dark,
+                    ),
+                  );
+                }
               }
-            }
 
-            return ZetaRoundedScope(
-              rounded: rounded ?? context.rounded,
-              child: Semantics(
-                label: semanticLabel ?? title,
-                child: DefaultTextStyle(
-                  style: ZetaTextStyles.labelLarge.copyWith(
-                    color: foregroundColor,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  child: Row(
-                    mainAxisAlignment: titleStart ? MainAxisAlignment.center : MainAxisAlignment.start,
-                    children: [
-                      if (leadingIcon != null)
+              // ignore: no_leading_underscores_for_local_identifiers
+              final _titleCenter = titleStart ?? titleCenter;
+              return ZetaRoundedScope(
+                rounded: rounded ?? context.rounded,
+                child: Semantics(
+                  label: semanticLabel ?? title,
+                  child: DefaultTextStyle(
+                    style: ZetaTextStyles.labelLarge.copyWith(
+                      color: foregroundColor,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    child: Stack(
+                      alignment: _titleCenter ? Alignment.center : Alignment.centerLeft,
+                      children: [
+                        if (leadingIcon != null)
+                          Positioned(
+                            left: 0,
+                            child: Padding(
+                              padding: EdgeInsets.only(right: Zeta.of(context).spacing.small),
+                              child: Icon(
+                                leadingIcon,
+                                color: foregroundColor,
+                                size: Zeta.of(context).spacing.xl_2,
+                              ),
+                            ),
+                          ),
                         Padding(
-                          padding: EdgeInsets.only(right: Zeta.of(context).spacing.small),
-                          child: Icon(
-                            leadingIcon,
-                            color: foregroundColor,
-                            size: Zeta.of(context).spacing.xl_2,
+                          padding:
+                              !_titleCenter && leadingIcon != null ? const EdgeInsets.only(left: 40) : EdgeInsets.zero,
+                          child: Text(
+                            title,
+                            style: ZetaTextStyles.labelLarge.copyWith(
+                              color: Zeta.of(context).colors.mainInverse,
+                            ),
                           ),
                         ),
-                      Flexible(
-                        child: Text(
-                          title,
-                          style: ZetaTextStyles.labelLarge.copyWith(
-                            color: Zeta.of(context).colors.mainInverse,
+                        if (trailing != null)
+                          Positioned(
+                            right: 0,
+                            child: IconTheme(
+                              data: IconThemeData(color: _backgroundColorFromType(context, type).onColor),
+                              child: trailing,
+                            ),
                           ),
-                        ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
-              ),
-            );
-          }(),
-          backgroundColor: type.backgroundColor(context),
-          actions: [
-            IconTheme(
-              data: IconThemeData(color: Zeta.of(context).colors.mainInverse),
-              child: trailing ?? const Nothing(),
-            ),
-          ],
+              );
+            },
+          ),
+          backgroundColor: _backgroundColorFromType(context, type),
+          actions: [const Nothing()],
         );
-}
 
-extension on ZetaBannerStatus {
-  Color backgroundColor(BuildContext context) {
-    final colors = Zeta.of(context).colors;
-    switch (this) {
+  static ZetaColorSwatch _backgroundColorFromType(BuildContext context, ZetaBannerStatus type) {
+    final zeta = Zeta.of(context);
+
+    switch (type) {
       case ZetaBannerStatus.primary:
-        return colors.surfacePrimary;
+        return zeta.colors.primitives.primary;
       case ZetaBannerStatus.positive:
-        return colors.surfacePositive;
+        return zeta.colors.primitives.green;
       case ZetaBannerStatus.warning:
-        return colors.surfaceWarning;
+        return zeta.colors.primitives.orange;
       case ZetaBannerStatus.negative:
-        return colors.surfaceNegative;
+        return zeta.colors.primitives.red;
     }
   }
 }
