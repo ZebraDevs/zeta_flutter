@@ -77,7 +77,7 @@ ZetaColors has the following modifiers:
 - positive, onPositive, negative, onNegative, warning, onWarning, info, onInfo
 - surface, onSurface, surfaceDisabled, surfaceHover, surfaceSecondary, surfaceTertiary, surfaceSelectedHover, surfaceSelected
 - background, onBackground
-- textDefault, textSubtle, textDisabled, textInverse,
+- mainDefault, mainSubtle, mainDisabled, textInverse,
 - borderDefault, borderSubtle, borderDisabled, borderSelected,
 - white, black
 - link, linkVisited,

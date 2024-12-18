@@ -188,20 +188,20 @@ class _ZetaChipState extends State<ZetaChip> {
     return Zeta.of(context).spacing.large;
   }
 
-  Color _foregroundColor(ZetaColors colors, bool disabled) {
+  Color _foregroundColor(ZetaSemanticColors colors, bool disabled) {
     if (!disabled) {
       if (selected) {
-        return colors.textInverse;
+        return colors.mainInverse;
       } else {
-        return colors.textDefault;
+        return colors.mainDefault;
       }
     } else {
-      return colors.textDisabled;
+      return colors.mainDisabled;
     }
   }
 
   ValueListenableBuilder<Set<WidgetState>> child(
-    ZetaColors colors, {
+    ZetaSemanticColors colors, {
     bool isDragging = false,
   }) {
     return ValueListenableBuilder(
@@ -257,7 +257,7 @@ class _ZetaChipState extends State<ZetaChip> {
               borderRadius: rounded ? Zeta.of(context).radius.full : Zeta.of(context).radius.none,
               border: Border.fromBorderSide(
                 BorderSide(
-                  color: _controller.value.contains(WidgetState.focused) ? colors.blue.shade50 : colors.borderDefault,
+                  color: _controller.value.contains(WidgetState.focused) ? colors.borderPrimary : colors.borderDefault,
                   width: _controller.value.contains(WidgetState.focused)
                       ? ZetaBorders.medium
                       : !selected
@@ -276,7 +276,7 @@ class _ZetaChipState extends State<ZetaChip> {
                     child: (selected
                         ? ZetaIcon(
                             ZetaIcons.check_mark,
-                            color: disabled ? colors.iconDisabled : colors.iconInverse,
+                            color: disabled ? colors.mainDisabled : colors.mainInverse,
                           )
                         : const Nothing()),
                   )

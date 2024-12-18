@@ -293,7 +293,7 @@ void main() {
         final container = tester.widget<Container>(find.byType(Container));
         expect(
           (container.decoration! as BoxDecoration).color,
-          Zeta.of(getBuildContext(tester, Container)).colors.primary,
+          Zeta.of(getBuildContext(tester, Container)).colors.mainPrimary,
         );
       },
     );
@@ -335,7 +335,7 @@ void main() {
         final container = tester.widget<Container>(find.byType(Container));
         expect(
           (container.decoration! as BoxDecoration).color,
-          Zeta.of(getBuildContext(tester, Container)).colors.iconDisabled,
+          Zeta.of(getBuildContext(tester, Container)).colors.mainDisabled,
         );
       },
     );

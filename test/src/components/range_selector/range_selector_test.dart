@@ -202,7 +202,7 @@ void main() {
       final label = find.text('Range Selector');
       final labelWidget = tester.widget<Text>(label);
 
-      expect(labelWidget.style!.color, colors.textDefault);
+      expect(labelWidget.style!.color, colors.mainDefault);
       expect(labelWidget.style!.fontSize, 14);
       expect(labelWidget.style!.fontWeight, FontWeight.w400);
     });
@@ -223,13 +223,13 @@ void main() {
       final textFields = find.byType(TextField);
       final firstTextFieldWidget = tester.widget<TextField>(textFields.first);
 
-      expect(firstTextFieldWidget.style!.color, colors.textSubtle);
+      expect(firstTextFieldWidget.style!.color, colors.mainSubtle);
       expect(firstTextFieldWidget.style!.fontSize, 16);
       expect(firstTextFieldWidget.style!.fontWeight, FontWeight.w400);
 
       final lastTextFieldWidget = tester.widget<TextField>(textFields.last);
 
-      expect(lastTextFieldWidget.style!.color, colors.textSubtle);
+      expect(lastTextFieldWidget.style!.color, colors.mainSubtle);
       expect(lastTextFieldWidget.style!.fontSize, 16);
       expect(lastTextFieldWidget.style!.fontWeight, FontWeight.w400);
     });

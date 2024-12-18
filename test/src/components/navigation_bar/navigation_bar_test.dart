@@ -344,8 +344,8 @@ void main() {
           tester.widget<ZetaIcon>(find.descendant(of: itemFinder.first, matching: find.byType(ZetaIcon)).first);
       final label = tester.widget<Text>(find.descendant(of: itemFinder.first, matching: find.text('Label0')));
 
-      expect(icon.color, Zeta.of(context).colors.textSubtle);
-      expect(label.style, Theme.of(context).textTheme.labelSmall?.copyWith(color: Zeta.of(context).colors.textSubtle));
+      expect(icon.color, Zeta.of(context).colors.mainSubtle);
+      expect(label.style, Theme.of(context).textTheme.labelSmall?.copyWith(color: Zeta.of(context).colors.mainSubtle));
     });
 
     testWidgets('selected item is the correct color', (WidgetTester tester) async {
@@ -364,8 +364,8 @@ void main() {
           tester.widget<ZetaIcon>(find.descendant(of: itemFinder.first, matching: find.byType(ZetaIcon)).first);
       final label = tester.widget<Text>(find.descendant(of: itemFinder.first, matching: find.text('Label0')));
 
-      expect(icon.color, Zeta.of(context).colors.primary);
-      expect(label.style, Theme.of(context).textTheme.labelSmall?.copyWith(color: Zeta.of(context).colors.primary));
+      expect(icon.color, Zeta.of(context).colors.mainPrimary);
+      expect(label.style, Theme.of(context).textTheme.labelSmall?.copyWith(color: Zeta.of(context).colors.mainPrimary));
     });
 
     testWidgets('hover background color is correct', (WidgetTester tester) async {

@@ -258,6 +258,37 @@ class ZetaAvatar extends ZetaStatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
+              // Container( TODO(Luke) check old version here
+              //   width: pSize,
+              //   height: pSize,
+              //   decoration: BoxDecoration(
+              //     border: borderColor != null ? Border.all(color: borderColor!, width: 0) : null,
+              //     borderRadius: Zeta.of(context).radius.full,
+              //     color: backgroundColor ?? (_showPlaceholder ? zetaColors.surfacePrimary : zetaColors.surfaceWarm),
+              //   ),
+              //   child: borderColor != null
+              //       ? Container(
+              //           width: pSize,
+              //           height: pSize,
+              //           decoration: BoxDecoration(
+              //             color: backgroundColor ?? zetaColors.surfaceHover,
+              //             border: Border.all(color: borderColor!, width: borderSize(context)),
+              //             borderRadius: Zeta.of(context).radius.full,
+              //           ),
+              //           child: ClipRRect(
+              //             borderRadius: Zeta.of(context).radius.full,
+              //             child: innerContent,
+              //           ),
+              //         )
+              //       : DecoratedBox(
+              //           decoration: BoxDecoration(
+              //             borderRadius: Zeta.of(context).radius.full,
+              //             color: backgroundColor ?? zetaColors.surfaceHover,
+              //           ),
+              //           child: ClipRRect(
+              //             borderRadius: Zeta.of(context).radius.full,
+              //             child: innerContent,
+              //           ),
               Stack(
                 children: [
                   MouseRegion(
@@ -271,7 +302,7 @@ class ZetaAvatar extends ZetaStatelessWidget {
                           border: borderColor != null ? Border.all(color: borderColor!, width: 0) : null,
                           borderRadius: Zeta.of(context).radius.full,
                           color: backgroundColor ??
-                              (_showPlaceholder ? zetaColors.surfacePrimary : zetaColors.cool.shade20),
+                              (_showPlaceholder ? zetaColors.surfacePrimary : zetaColors.primitives.cool.shade20),
                         ),
                         child: borderColor != null
                             ? Container(
@@ -326,10 +357,7 @@ class ZetaAvatar extends ZetaStatelessWidget {
                   width: pSize,
                   child: Text(
                     label!,
-                    style: labelTextStyle ??
-                        size.labelStyle(context).copyWith(
-                              color: zetaColors.textSubtle,
-                            ),
+                    style: labelTextStyle ?? size.labelStyle(context).copyWith(color: zetaColors.mainSubtle),
                     maxLines: labelMaxLines,
                     overflow: TextOverflow.ellipsis,
                     textAlign: TextAlign.center,
@@ -546,7 +574,7 @@ class ZetaAvatarBadge extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = Zeta.of(context).colors;
     final Color backgroundColor =
-        type == ZetaAvatarBadgeType.notification ? colors.surfaceNegative : (color ?? colors.primary);
+        type == ZetaAvatarBadgeType.notification ? colors.surfaceNegative : (color ?? colors.mainPrimary);
     final badgeSize = _getContainerSize(context);
     final borderSize = _getBorderSize(context);
     final paddedSize = badgeSize + Zeta.of(context).spacing.minimum;

@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
@@ -204,11 +205,17 @@ void main() {
       await gesture.moveTo(tester.getCenter(find.byType(ZetaButton)));
       await tester.pumpAndSettle();
 
-      expect(filledButton.style?.backgroundColor?.resolve({WidgetState.hovered}), ZetaColorBase.blue.shade50);
+      expect(
+        filledButton.style?.backgroundColor?.resolve({WidgetState.hovered}),
+        const ZetaPrimitivesLight().blue.shade50,
+      );
 
       await gesture.down(tester.getCenter(find.byType(ZetaButton)));
       await tester.pumpAndSettle();
-      expect(filledButton.style?.backgroundColor?.resolve({WidgetState.pressed}), ZetaColorBase.blue.shade70);
+      expect(
+        filledButton.style?.backgroundColor?.resolve({WidgetState.pressed}),
+        const ZetaPrimitivesLight().blue.shade70,
+      );
 
       await gesture.up();
 
@@ -239,7 +246,7 @@ void main() {
       expect(button.size, ZetaWidgetSize.medium);
       expect(
         filledButton.style?.side?.resolve({WidgetState.focused}),
-        BorderSide(color: ZetaColorBase.blue, width: ZetaBorders.medium),
+        BorderSide(color: const ZetaPrimitivesLight().blue.shade50, width: ZetaBorders.medium),
       );
     });
   });
@@ -300,5 +307,101 @@ void main() {
     );
   });
 
-  group('Performance Tests', () {});
+  testWidgets('Disabled button', (WidgetTester tester) async {
+    await tester.pumpWidget(
+      const TestApp(
+        home: ZetaButton.text(label: 'Test Button', borderType: ZetaWidgetBorder.full),
+      ),
+    );
+
+    final buttonFinder = find.byType(ZetaButton);
+    final ZetaButton button = tester.firstWidget(buttonFinder);
+    expect(button.borderType, ZetaWidgetBorder.full);
+    expect(button.label, 'Test Button');
+    expect(button.leadingIcon, null);
+    expect(button.trailingIcon, null);
+    expect(button.onPressed, null);
+    expect(button.size, ZetaWidgetSize.medium);
+    expect(button.type, ZetaButtonType.text);
+
+    await expectLater(
+      find.byType(ZetaButton),
+      matchesGoldenFile(goldenFile.getFileUri('button_disabled')),
+    );
+  });
+  testWidgets('Interaction with button', (WidgetTester tester) async {
+    await tester.pumpWidget(
+      TestApp(
+        home: ZetaButton(label: 'Test Button', onPressed: () {}),
+      ),
+    );
+
+    final buttonFinder = find.byType(ZetaButton);
+    final ZetaButton button = tester.firstWidget(buttonFinder);
+
+    final filledButtonFinder = find.byType(FilledButton);
+    final FilledButton filledButton = tester.firstWidget(filledButtonFinder);
+
+    final gesture = await tester.createGesture(kind: PointerDeviceKind.mouse);
+    await gesture.addPointer(location: Offset.zero);
+    addTearDown(gesture.removePointer);
+    await tester.pump();
+    await gesture.moveTo(tester.getCenter(find.byType(ZetaButton)));
+    await tester.pumpAndSettle();
+
+    expect(
+      filledButton.style?.backgroundColor?.resolve({WidgetState.hovered}),
+      const ZetaPrimitivesLight().blue.shade50,
+    );
+
+    await gesture.down(tester.getCenter(find.byType(ZetaButton)));
+    await tester.pumpAndSettle();
+    expect(
+      filledButton.style?.backgroundColor?.resolve({WidgetState.pressed}),
+      const ZetaPrimitivesLight().blue.shade70,
+    );
+
+    await gesture.up();
+
+    await tester.pumpAndSettle();
+    expect(button.label, 'Test Button');
+    expect(button.leadingIcon, null);
+    expect(button.trailingIcon, null);
+    expect(button.size, ZetaWidgetSize.medium);
+  });
+  testWidgets('Interaction with button', (WidgetTester tester) async {
+    final FocusNode focusNode = FocusNode();
+    await tester.pumpWidget(
+      TestApp(
+        home: ZetaButton(label: 'Test Button', onPressed: () {}, focusNode: focusNode),
+      ),
+    );
+    final buttonFinder = find.byType(ZetaButton);
+    final ZetaButton button = tester.firstWidget(buttonFinder);
+    focusNode.requestFocus();
+    await tester.pump();
+    final filledButtonFinder = find.byType(FilledButton);
+    final FilledButton filledButton = tester.firstWidget(filledButtonFinder);
+
+    expect(button.label, 'Test Button');
+    expect(button.leadingIcon, null);
+    expect(button.trailingIcon, null);
+    expect(button.size, ZetaWidgetSize.medium);
+    expect(
+      filledButton.style?.side?.resolve({WidgetState.focused}),
+      BorderSide(color: const ZetaPrimitivesLight().blue.shade50, width: ZetaBorders.medium),
+    );
+  });
+  testWidgets('debugFillProperties works correctly', (WidgetTester tester) async {
+    final diagnostics = DiagnosticPropertiesBuilder();
+    const ZetaButton(label: 'Test label').debugFillProperties(diagnostics);
+
+    expect(diagnostics.finder('label'), '"Test label"');
+    expect(diagnostics.finder('onPressed'), 'null');
+    expect(diagnostics.finder('type'), 'primary');
+    expect(diagnostics.finder('borderType'), 'null');
+    expect(diagnostics.finder('size'), 'medium');
+    expect(diagnostics.finder('leadingIcon'), 'null');
+    expect(diagnostics.finder('trailingIcon'), 'null');
+  });
 }

@@ -167,6 +167,13 @@ class _ZetaNavigationRailItemContentState extends State<_ZetaNavigationRailItemC
   @override
   Widget build(BuildContext context) {
     final zeta = Zeta.of(context);
+
+    // final Color foregroundColor = disabled
+    //     ? zeta.colors.mainDisabled
+    //     : selected
+    //         ? zeta.colors.mainDefault
+    //         : zeta.colors.mainSubtle;
+
     return Semantics(
       button: true,
       enabled: !widget.disabled,
@@ -191,11 +198,11 @@ class _ZetaNavigationRailItemContentState extends State<_ZetaNavigationRailItemC
                 color: widget.disabled
                     ? null
                     : widget.selected
-                        ? zeta.colors.blue.shade10
+                        ? zeta.colors.primitives.blue.shade10
                         : _hovered
                             ? zeta.colors.surfaceHover
                             : null,
-                border: _focused ? Border.all(color: zeta.colors.blue, width: 2) : null,
+                border: _focused ? Border.all(color: zeta.colors.primitives.blue, width: 2) : null,
                 borderRadius: context.rounded ? Zeta.of(context).radius.rounded : null,
               ),
               child: ConstrainedBox(
@@ -217,10 +224,10 @@ class _ZetaNavigationRailItemContentState extends State<_ZetaNavigationRailItemC
                           IconTheme(
                             data: IconThemeData(
                               color: widget.disabled
-                                  ? zeta.colors.cool.shade50
+                                  ? zeta.colors.primitives.cool.shade50
                                   : widget.selected || _hovered
-                                      ? zeta.colors.textDefault
-                                      : zeta.colors.cool.shade70,
+                                      ? zeta.colors.mainDefault
+                                      : zeta.colors.primitives.cool.shade70,
                               size: Zeta.of(context).spacing.xl_2,
                             ),
                             child: widget.icon!,
@@ -230,10 +237,10 @@ class _ZetaNavigationRailItemContentState extends State<_ZetaNavigationRailItemC
                           textAlign: TextAlign.center,
                           style: ZetaTextStyles.titleSmall.copyWith(
                             color: widget.disabled
-                                ? zeta.colors.cool.shade50
+                                ? zeta.colors.primitives.cool.shade50
                                 : widget.selected || _hovered
-                                    ? zeta.colors.textDefault
-                                    : zeta.colors.cool.shade70,
+                                    ? zeta.colors.mainDefault
+                                    : zeta.colors.primitives.cool.shade70,
                           ),
                         ),
                       ],

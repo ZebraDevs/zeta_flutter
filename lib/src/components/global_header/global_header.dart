@@ -114,7 +114,7 @@ class _GlobalHeaderState extends State<ZetaGlobalHeader> {
               vertical: Zeta.of(context).spacing.medium,
               horizontal: Zeta.of(context).spacing.large,
             ),
-            decoration: BoxDecoration(color: colors.surfacePrimary),
+            decoration: BoxDecoration(color: colors.surfaceDefault),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -205,11 +205,11 @@ class _GlobalHeaderState extends State<ZetaGlobalHeader> {
         child.copyWith(
           active: _selectedIndex == index,
           dropdown: child.dropdown,
-          handlePress: () {
+          onTap: () {
             setState(() {
               _selectedIndex = index;
             });
-            child.handlePress?.call();
+            child.onTap?.call();
           },
         ),
       );

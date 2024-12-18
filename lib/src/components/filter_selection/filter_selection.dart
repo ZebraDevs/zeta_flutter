@@ -53,7 +53,10 @@ class ZetaFilterSelection extends ZetaStatelessWidget {
               child: IconButton(
                 visualDensity: VisualDensity.compact,
                 onPressed: onPressed,
-                icon: ZetaIcon(icon, size: Zeta.of(context).spacing.xl_2),
+                icon: ZetaIcon(
+                  icon,
+                  size: Zeta.of(context).spacing.xl_2,
+                ),
               ),
             ),
           ),
