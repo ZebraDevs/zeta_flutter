@@ -5,6 +5,10 @@ import '../../../zeta_flutter.dart';
 
 /// Creates a search field used on a [ZetaTopAppBar].
 /// {@category Components}
+///
+/// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=229-37&node-type=canvas&m=dev
+///
+/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/top-app-bar/search
 class ZetaTopAppBarSearchField extends ZetaStatefulWidget {
   /// Constructs a [ZetaTopAppBarSearchField].
   const ZetaTopAppBarSearchField({
@@ -62,18 +66,10 @@ class _ZetaTopAppBarSearchFieldState extends State<ZetaTopAppBarSearchField> wit
 
   @override
   void initState() {
-    _textFocusNode.addListener(_onFocusChanged);
     widget.searchController?.addListener(_onSearchControllerChanged);
     widget.searchController?.textEditingController ??= TextEditingController();
 
     super.initState();
-  }
-
-  void _onFocusChanged() {
-    final text = widget.searchController?.text ?? '';
-    final shouldCloseSearch = _isSearching && text.isEmpty && !_textFocusNode.hasFocus;
-
-    if (shouldCloseSearch) _closeSearch();
   }
 
   void _onSearchControllerChanged() {
@@ -137,7 +133,7 @@ class _ZetaTopAppBarSearchFieldState extends State<ZetaTopAppBarSearchField> wit
   @override
   Widget build(BuildContext context) {
     final colors = Zeta.of(context).colors;
-    final extendedOffset = Zeta.of(context).spacing.minimum * 6.5; // TODO(UX-1202): Irregular spacing values
+    final extendedOffset = Zeta.of(context).spacing.minimum * 6; // TODO(UX-1202): Irregular spacing values
 
     return ZetaRoundedScope(
       rounded: context.rounded,
@@ -147,7 +143,7 @@ class _ZetaTopAppBarSearchFieldState extends State<ZetaTopAppBarSearchField> wit
         children: [
           Row(
             mainAxisAlignment:
-                widget.type == ZetaTopAppBarType.centeredTitle ? MainAxisAlignment.center : MainAxisAlignment.start,
+                widget.type == ZetaTopAppBarType.centered ? MainAxisAlignment.center : MainAxisAlignment.start,
             children: [
               widget.child ?? const Nothing(),
             ],
@@ -164,13 +160,13 @@ class _ZetaTopAppBarSearchFieldState extends State<ZetaTopAppBarSearchField> wit
                   controller: widget.searchController?.textEditingController,
                   focusNode: _textFocusNode,
                   style: ZetaTextStyles.bodyMedium,
-                  cursorColor: colors.cool.shade90,
+                  cursorColor: colors.mainDefault,
                   decoration: InputDecoration(
-                    iconColor: colors.cool.shade90,
+                    iconColor: colors.mainDefault,
                     filled: true,
                     border: InputBorder.none,
                     hintStyle: ZetaTextStyles.bodyMedium.copyWith(
-                      color: colors.textDisabled,
+                      color: colors.mainDisabled,
                     ),
                     hintText: widget.hintText,
                   ),

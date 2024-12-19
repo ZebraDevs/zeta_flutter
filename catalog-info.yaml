@@ -1,0 +1,29 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: zeta_flutter
+  title: Zeta Flutter Library
+  description: |
+    A library of Flutter UI components for the Zeta project.
+    This library is intended to be used by any Zebra Fluter to ensure a consistent look and feel by using UI components that implement the Zebra Design System User Experience.
+  links: 
+    - url: https://pub.dev/packages/zeta_flutter
+      title: pub.dev
+    - url: https://design.zebra.com/flutter/widgetbook/
+      title: Widgetbook
+    - url: https://design-zebra.web.app/flutter/dartdoc/
+      title: DartDoc
+  tags: 
+    - flutter
+    - dart
+  annotations:
+    github.com/project-slug: ZebraDevs/zeta_flutter
+    github.com/team-slug: zebratechnologies/front-end-development
+#    backstage.io/techdocs-ref: dir:.
+spec:
+  type: library
+  owner: group:DMO-FED
+  lifecycle: experimental
+  system: zeta
+  dependsOn:
+    - Resource:zeta-figma

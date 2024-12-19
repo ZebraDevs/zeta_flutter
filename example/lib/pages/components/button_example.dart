@@ -36,7 +36,7 @@ class _ButtonExampleState extends State<ButtonExample> {
       fabs = [
         ZetaFAB(
           scrollController: _scrollController,
-          label: 'Small Circle Primary',
+          label: 'Small Circle Disabled',
           size: ZetaFabSize.small,
           expanded: false,
           shape: ZetaWidgetBorder.full,
@@ -45,7 +45,7 @@ class _ButtonExampleState extends State<ButtonExample> {
         ZetaFAB(
           scrollController: _scrollController,
           expanded: false,
-          label: 'Small Rounded Primary',
+          label: 'Small Rounded Secondary',
           size: ZetaFabSize.small,
           shape: ZetaWidgetBorder.rounded,
           type: ZetaFabType.secondary,
@@ -53,7 +53,7 @@ class _ButtonExampleState extends State<ButtonExample> {
         ),
         ZetaFAB(
           scrollController: _scrollController,
-          label: 'Small Sharp Primary',
+          label: 'Small Sharp Inverse',
           size: ZetaFabSize.small,
           shape: ZetaWidgetBorder.sharp,
           expanded: false,
@@ -62,7 +62,7 @@ class _ButtonExampleState extends State<ButtonExample> {
         ),
         ZetaFAB(
           scrollController: _scrollController,
-          label: 'Large Circle Primary',
+          label: 'Large Circle Secondary',
           size: ZetaFabSize.large,
           shape: ZetaWidgetBorder.full,
           type: ZetaFabType.secondary,
@@ -71,7 +71,7 @@ class _ButtonExampleState extends State<ButtonExample> {
         ),
         ZetaFAB(
           scrollController: _scrollController,
-          label: 'Large Rounded Secondary',
+          label: 'Large Rounded Inverse',
           size: ZetaFabSize.large,
           shape: ZetaWidgetBorder.rounded,
           expanded: false,
@@ -80,7 +80,7 @@ class _ButtonExampleState extends State<ButtonExample> {
         ),
         ZetaFAB(
           scrollController: _scrollController,
-          label: 'Large Sharp Secondary',
+          label: 'Large Sharp Primary',
           size: ZetaFabSize.large,
           shape: ZetaWidgetBorder.sharp,
           type: ZetaFabType.primary,

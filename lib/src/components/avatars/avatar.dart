@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
@@ -34,7 +35,13 @@ enum ZetaAvatarSize {
 }
 
 /// An avatar is a visual representation of a user or entity.
+///
+/// It is recommended to use [ZetaAvatar] with [ZetaAvatarBadge] for status and notification badges, but any widget can be used.
 /// {@category Components}
+///
+/// Figma: https://www.figma.com/file/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?type=design&node-id=20816-388
+///
+/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/avatar/avatar
 class ZetaAvatar extends ZetaStatelessWidget {
   /// Constructor for [ZetaAvatar]
   const ZetaAvatar({
@@ -46,10 +53,14 @@ class ZetaAvatar extends ZetaStatelessWidget {
     this.lowerBadge,
     this.upperBadge,
     this.borderColor,
-    this.semanticLabel = 'avatar',
-    this.semanticUpperBadgeLabel = 'upperBadge',
-    this.semanticLowerBadgeLabel = 'lowerBadge',
+    this.semanticLabel,
+    this.semanticUpperBadgeLabel,
+    this.semanticLowerBadgeLabel,
     this.initialTextStyle,
+    this.label,
+    this.labelTextStyle,
+    this.labelMaxLines = 1,
+    this.onTap,
   });
 
   /// Constructor for [ZetaAvatar] with image.
@@ -63,6 +74,10 @@ class ZetaAvatar extends ZetaStatelessWidget {
     this.semanticLabel = 'avatar',
     this.semanticUpperBadgeLabel = 'upperBadge',
     this.semanticLowerBadgeLabel = 'lowerBadge',
+    this.label,
+    this.labelTextStyle,
+    this.labelMaxLines = 1,
+    this.onTap,
   })  : backgroundColor = null,
         initials = null,
         initialTextStyle = null;
@@ -80,6 +95,10 @@ class ZetaAvatar extends ZetaStatelessWidget {
     this.semanticUpperBadgeLabel = 'upperBadge',
     this.semanticLowerBadgeLabel = 'lowerBadge',
     this.initialTextStyle,
+    this.label,
+    this.labelTextStyle,
+    this.labelMaxLines = 1,
+    this.onTap,
   }) : image = null;
 
   /// Constructor for [ZetaAvatar] with initials from a full name.
@@ -95,6 +114,10 @@ class ZetaAvatar extends ZetaStatelessWidget {
     this.semanticUpperBadgeLabel = 'upperBadge',
     this.semanticLowerBadgeLabel = 'lowerBadge',
     this.initialTextStyle,
+    this.label,
+    this.labelTextStyle,
+    this.labelMaxLines = 1,
+    this.onTap,
   })  : image = null,
         initials = name.initials;
 
@@ -116,27 +139,27 @@ class ZetaAvatar extends ZetaStatelessWidget {
   final Color? borderColor;
 
   /// Status badge shown at lower right corner of avatar.
-  final ZetaAvatarBadge? lowerBadge;
+  final Widget? lowerBadge;
 
   /// Notification Badge shown at top right corner of avatar.
-  final ZetaAvatarBadge? upperBadge;
+  final Widget? upperBadge;
 
   /// Value passed into wrapping [Semantics] widget.
   ///
   /// {@template zeta-widget-semantic-label}
   /// This label is used by accessibility frameworks (e.g. TalkBack on Android) to describe the component.
   /// {@endtemplate}
-  final String semanticLabel;
+  final String? semanticLabel;
 
   /// Value passed into wrapping [Semantics] widget for lower badge.
   ///
   /// {@macro zeta-widget-semantic-label}
-  final String semanticLowerBadgeLabel;
+  final String? semanticLowerBadgeLabel;
 
   /// Value passed into wrapping [Semantics] widget for upper badge.
   ///
   /// {@macro zeta-widget-semantic-label}
-  final String semanticUpperBadgeLabel;
+  final String? semanticUpperBadgeLabel;
 
   /// Text style for initials.
   ///
@@ -151,6 +174,18 @@ class ZetaAvatar extends ZetaStatelessWidget {
   /// ```
   final TextStyle? initialTextStyle;
 
+  /// Label to display below the avatar.
+  final String? label;
+
+  /// Text style for label.
+  final TextStyle? labelTextStyle;
+
+  /// Maximum number of lines for label.
+  final int labelMaxLines;
+
+  /// Callback when avatar is tapped.
+  final VoidCallback? onTap;
+
   /// Return copy of avatar with certain changed fields
   ZetaAvatar copyWith({
     ZetaAvatarSize? size,
@@ -158,8 +193,13 @@ class ZetaAvatar extends ZetaStatelessWidget {
     String? initials,
     Color? backgroundColor,
     Color? borderColor,
-    ZetaAvatarBadge? lowerBadge,
-    ZetaAvatarBadge? upperBadge,
+    Widget? lowerBadge,
+    Widget? upperBadge,
+    String? label,
+    TextStyle? labelTextStyle,
+    int? labelMaxLines,
+    VoidCallback? onTap,
+    Key? key,
   }) {
     return ZetaAvatar(
       size: size ?? this.size,
@@ -169,6 +209,11 @@ class ZetaAvatar extends ZetaStatelessWidget {
       borderColor: borderColor ?? this.borderColor,
       lowerBadge: lowerBadge ?? this.lowerBadge,
       upperBadge: upperBadge ?? this.upperBadge,
+      label: label ?? this.label,
+      labelTextStyle: labelTextStyle ?? this.labelTextStyle,
+      labelMaxLines: labelMaxLines ?? this.labelMaxLines,
+      onTap: onTap ?? this.onTap,
+      key: key ?? this.key,
     );
   }
 
@@ -183,15 +228,17 @@ class ZetaAvatar extends ZetaStatelessWidget {
     final innerChild = image ??
         (initials != null
             ? Center(
-                child: Text(
-                  size == ZetaAvatarSize.xs ? initials!.substring(0, 1) : initials!,
-                  style: initialTextStyle ??
-                      TextStyle(
-                        fontSize: size.fontSize(context),
-                        letterSpacing: Zeta.of(context).spacing.none,
-                        color: backgroundColor?.onColor,
-                        fontWeight: FontWeight.w500,
-                      ),
+                child: FittedBox(
+                  child: Text(
+                    initials!,
+                    style: initialTextStyle ??
+                        TextStyle(
+                          fontSize: size.fontSize(context),
+                          letterSpacing: Zeta.of(context).spacing.none,
+                          color: backgroundColor?.onColor,
+                          fontWeight: FontWeight.w500,
+                        ),
+                  ),
                 ),
               )
             : null);
@@ -208,58 +255,112 @@ class ZetaAvatar extends ZetaStatelessWidget {
       child: Semantics(
         value: semanticLabel,
         child: SelectionContainer.disabled(
-          child: Stack(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
             children: [
-              Container(
-                width: pSize,
-                height: pSize,
-                decoration: BoxDecoration(
-                  border: borderColor != null ? Border.all(color: borderColor!, width: 0) : null,
-                  borderRadius: Zeta.of(context).radius.full,
-                  color: backgroundColor ?? (_showPlaceholder ? zetaColors.surfacePrimary : zetaColors.cool.shade20),
-                ),
-                child: borderColor != null
-                    ? Container(
+              // Container( TODO(Luke) check old version here
+              //   width: pSize,
+              //   height: pSize,
+              //   decoration: BoxDecoration(
+              //     border: borderColor != null ? Border.all(color: borderColor!, width: 0) : null,
+              //     borderRadius: Zeta.of(context).radius.full,
+              //     color: backgroundColor ?? (_showPlaceholder ? zetaColors.surfacePrimary : zetaColors.surfaceWarm),
+              //   ),
+              //   child: borderColor != null
+              //       ? Container(
+              //           width: pSize,
+              //           height: pSize,
+              //           decoration: BoxDecoration(
+              //             color: backgroundColor ?? zetaColors.surfaceHover,
+              //             border: Border.all(color: borderColor!, width: borderSize(context)),
+              //             borderRadius: Zeta.of(context).radius.full,
+              //           ),
+              //           child: ClipRRect(
+              //             borderRadius: Zeta.of(context).radius.full,
+              //             child: innerContent,
+              //           ),
+              //         )
+              //       : DecoratedBox(
+              //           decoration: BoxDecoration(
+              //             borderRadius: Zeta.of(context).radius.full,
+              //             color: backgroundColor ?? zetaColors.surfaceHover,
+              //           ),
+              //           child: ClipRRect(
+              //             borderRadius: Zeta.of(context).radius.full,
+              //             child: innerContent,
+              //           ),
+              Stack(
+                children: [
+                  MouseRegion(
+                    cursor: onTap != null ? SystemMouseCursors.click : SystemMouseCursors.basic,
+                    child: GestureDetector(
+                      onTap: onTap,
+                      child: Container(
                         width: pSize,
                         height: pSize,
                         decoration: BoxDecoration(
-                          color: backgroundColor ?? zetaColors.surfaceHover,
-                          border: Border.all(color: borderColor!, width: borderSize(context)),
+                          border: borderColor != null ? Border.all(color: borderColor!, width: 0) : null,
                           borderRadius: Zeta.of(context).radius.full,
+                          color: backgroundColor ??
+                              (_showPlaceholder ? zetaColors.surfacePrimary : zetaColors.primitives.cool.shade20),
                         ),
-                        child: ClipRRect(
-                          borderRadius: Zeta.of(context).radius.full,
-                          child: innerContent,
-                        ),
-                      )
-                    : DecoratedBox(
-                        decoration: BoxDecoration(
-                          borderRadius: Zeta.of(context).radius.full,
-                          color: backgroundColor ?? zetaColors.surfaceHover,
-                        ),
-                        child: ClipRRect(
-                          borderRadius: Zeta.of(context).radius.full,
-                          child: innerContent,
-                        ),
+                        child: borderColor != null
+                            ? Container(
+                                width: pSize,
+                                height: pSize,
+                                decoration: BoxDecoration(
+                                  color: backgroundColor ?? zetaColors.surfaceHover,
+                                  border: Border.all(color: borderColor!, width: borderSize(context)),
+                                  borderRadius: Zeta.of(context).radius.full,
+                                ),
+                                child: innerContent,
+                              )
+                            : DecoratedBox(
+                                decoration: BoxDecoration(
+                                  borderRadius: Zeta.of(context).radius.full,
+                                  color: backgroundColor ?? zetaColors.surfaceHover,
+                                ),
+                                child: innerContent,
+                              ),
                       ),
-              ),
-              if (upperBadge != null)
-                Positioned(
-                  right: Zeta.of(context).spacing.none,
-                  child: Semantics(
-                    value: semanticLowerBadgeLabel,
-                    child: upperBadge!.copyWith(
-                      size: size,
                     ),
                   ),
+                  if (upperBadge != null)
+                    Positioned(
+                      right: Zeta.of(context).spacing.none,
+                      child: Semantics(
+                        value: semanticLowerBadgeLabel,
+                        child: upperBadge.runtimeType == ZetaAvatarBadge
+                            ? (upperBadge! as ZetaAvatarBadge).copyWith(size: size)
+                            : upperBadge,
+                      ),
+                    ),
+                  if (lowerBadge != null)
+                    Positioned(
+                      right: Zeta.of(context).spacing.none,
+                      bottom: Zeta.of(context).spacing.none,
+                      child: Semantics(
+                        value: semanticLowerBadgeLabel,
+                        child: lowerBadge.runtimeType == ZetaAvatarBadge
+                            ? (lowerBadge! as ZetaAvatarBadge).copyWith(size: size)
+                            : lowerBadge,
+                      ),
+                    ),
+                ],
+              ),
+              if (label != null)
+                SizedBox(
+                  height: Zeta.of(context).spacing.minimum,
                 ),
-              if (lowerBadge != null)
-                Positioned(
-                  right: Zeta.of(context).spacing.none,
-                  bottom: Zeta.of(context).spacing.none,
-                  child: Semantics(
-                    value: semanticLowerBadgeLabel,
-                    child: lowerBadge!.copyWith(size: size),
+              if (label != null)
+                SizedBox(
+                  width: pSize,
+                  child: Text(
+                    label!,
+                    style: labelTextStyle ?? size.labelStyle(context).copyWith(color: zetaColors.mainSubtle),
+                    maxLines: labelMaxLines,
+                    overflow: TextOverflow.ellipsis,
+                    textAlign: TextAlign.center,
                   ),
                 ),
             ],
@@ -275,20 +376,23 @@ class ZetaAvatar extends ZetaStatelessWidget {
     properties
       ..add(DiagnosticsProperty<ZetaAvatarSize>('size', size))
       ..add(DiagnosticsProperty<String?>('name', initials))
-      ..add(DiagnosticsProperty<ZetaAvatarBadge>('specialStatus', lowerBadge))
-      ..add(DiagnosticsProperty<ZetaAvatarBadge?>('badge', upperBadge))
+      ..add(DiagnosticsProperty<Widget>('lowerBadge', lowerBadge))
+      ..add(DiagnosticsProperty<Widget?>('upperBadge', upperBadge))
       ..add(DiagnosticsProperty<Color?>('backgroundColor', backgroundColor))
       ..add(ColorProperty('statusColor', borderColor))
       ..add(StringProperty('semanticUpperBadgeValue', semanticUpperBadgeLabel))
       ..add(StringProperty('semanticValue', semanticLabel))
       ..add(StringProperty('semanticLowerBadgeValue', semanticLowerBadgeLabel))
-      ..add(DiagnosticsProperty<TextStyle>('initialTextStyle', initialTextStyle));
+      ..add(DiagnosticsProperty<TextStyle>('initialTextStyle', initialTextStyle))
+      ..add(DiagnosticsProperty<TextStyle?>('labelTextStyle', labelTextStyle))
+      ..add(StringProperty('label', label))
+      ..add(IntProperty('labelMaxLines', labelMaxLines))
+      ..add(ObjectFlagProperty<VoidCallback?>.has('onTap', onTap));
   }
-}
 
-extension on ZetaAvatarSize {
-  double pixelSize(BuildContext context) {
-    switch (this) {
+  /// Returns pixel size for [ZetaAvatarSize]
+  static double pixelSize(BuildContext context, ZetaAvatarSize size) {
+    switch (size) {
       case ZetaAvatarSize.xxxl:
         return Zeta.of(context).spacing.minimum * 50; // TODO(UX-1202): ZetaSpacingBase
       // return ZetaSpacingBase.x50;
@@ -312,26 +416,63 @@ extension on ZetaAvatarSize {
     }
   }
 
+  /// Font size for initials
+  static double fontSize(BuildContext context, ZetaAvatarSize size) {
+    return pixelSize(context, size) * 4 / 9;
+  }
+}
+
+extension on ZetaAvatarSize {
+  double pixelSize(BuildContext context) {
+    return ZetaAvatar.pixelSize(context, this);
+  }
+
   double borderSize(BuildContext context) {
+    // TODO(UX-1304): Awaiting updated design specs for border size
     switch (this) {
       case ZetaAvatarSize.xxxl:
-        return 11;
+        return 11.12;
       case ZetaAvatarSize.xxl:
+        return 6.67;
       case ZetaAvatarSize.xl:
+        return 4.45;
       case ZetaAvatarSize.l:
+        return 3.56;
       case ZetaAvatarSize.m:
-        return Zeta.of(context).spacing.minimum;
-
+        return 2.66;
       case ZetaAvatarSize.s:
+        return 2.22;
       case ZetaAvatarSize.xs:
+        return 2;
       case ZetaAvatarSize.xxs:
+        return 1.78;
       case ZetaAvatarSize.xxxs:
-        return ZetaBorders.medium;
+        return 1.33;
     }
   }
 
   double fontSize(BuildContext context) {
-    return pixelSize(context) * 4 / 9;
+    return ZetaAvatar.fontSize(context, this);
+  }
+
+  TextStyle labelStyle(BuildContext context) {
+    switch (this) {
+      case ZetaAvatarSize.xxxl:
+        return ZetaTextStyles.displaySmall;
+      case ZetaAvatarSize.xxl:
+      case ZetaAvatarSize.xl:
+        return ZetaTextStyles.bodyLarge;
+      case ZetaAvatarSize.l:
+        return ZetaTextStyles.bodyMedium;
+      case ZetaAvatarSize.m:
+        return ZetaTextStyles.bodySmall;
+      case ZetaAvatarSize.s:
+      case ZetaAvatarSize.xs:
+      case ZetaAvatarSize.xxs:
+        return ZetaTextStyles.bodyXSmall;
+      case ZetaAvatarSize.xxxs:
+        return ZetaTextStyles.bodyXSmall;
+    }
   }
 }
 
@@ -433,7 +574,7 @@ class ZetaAvatarBadge extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = Zeta.of(context).colors;
     final Color backgroundColor =
-        type == ZetaAvatarBadgeType.notification ? colors.surfaceNegative : (color ?? colors.primary);
+        type == ZetaAvatarBadgeType.notification ? colors.surfaceNegative : (color ?? colors.mainPrimary);
     final badgeSize = _getContainerSize(context);
     final borderSize = _getBorderSize(context);
     final paddedSize = badgeSize + Zeta.of(context).spacing.minimum;

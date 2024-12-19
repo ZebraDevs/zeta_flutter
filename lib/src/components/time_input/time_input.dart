@@ -15,6 +15,10 @@ const _max12HrValue = 12;
 ///
 /// Can be used and validated the same way as a [TextFormField].
 /// {@category Components}
+///
+/// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=724-6821&node-type=canvas&m=dev
+///
+/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/time-input
 class ZetaTimeInput extends ZetaFormField<TimeOfDay> {
   /// Creates a new [ZetaTimeInput]
   ZetaTimeInput({
@@ -45,6 +49,7 @@ class ZetaTimeInput extends ZetaFormField<TimeOfDay> {
             return InternalTextInput(
               label: label,
               hintText: hintText,
+              constrained: true,
               errorText: field.errorText ?? errorText,
               size: size,
               placeholder: state.timeFormat,
@@ -67,7 +72,7 @@ class ZetaTimeInput extends ZetaFormField<TimeOfDay> {
                       onTap: state.clear,
                       disabled: disabled,
                       size: size,
-                      color: colors.iconSubtle,
+                      color: colors.mainSubtle,
                     ),
                   InputIconButton(
                     icon: ZetaIcons.clock_outline,
@@ -75,7 +80,7 @@ class ZetaTimeInput extends ZetaFormField<TimeOfDay> {
                     onTap: state.pickTime,
                     disabled: disabled,
                     size: size,
-                    color: colors.iconDefault,
+                    color: colors.mainDefault,
                   ),
                 ],
               ),
@@ -233,8 +238,8 @@ class _ZetaTimeInputState extends FormFieldState<TimeOfDay> {
         return Theme(
           data: Theme.of(context).copyWith(
             timePickerTheme: TimePickerThemeData(
-              dialBackgroundColor: colors.warm.shade30,
-              dayPeriodColor: colors.primary,
+              dialBackgroundColor: colors.surfacePrimarySubtle,
+              dayPeriodColor: colors.mainPrimary,
               shape: RoundedRectangleBorder(
                 borderRadius: rounded ? Zeta.of(context).radius.rounded : Zeta.of(context).radius.none,
               ),

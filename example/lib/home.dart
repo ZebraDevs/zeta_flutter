@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:zeta_example/pages/components/accordion_example.dart';
+import 'package:zeta_example/pages/components/avatar_rail_example.dart';
 import 'package:zeta_example/pages/components/avatar_example.dart';
 import 'package:zeta_example/pages/components/badges_example.dart';
 import 'package:zeta_example/pages/components/banner_example.dart';
 import 'package:zeta_example/pages/components/bottom_sheet_example.dart';
-import 'package:zeta_example/pages/components/breadcrumbs_example.dart';
+import 'package:zeta_example/pages/components/breadcrumb_example.dart';
 import 'package:zeta_example/pages/components/button_example.dart';
 import 'package:zeta_example/pages/components/chat_item_example.dart';
 import 'package:zeta_example/pages/components/checkbox_example.dart';
 import 'package:zeta_example/pages/components/chip_example.dart';
+import 'package:zeta_example/pages/components/comms_button_example.dart';
 import 'package:zeta_example/pages/components/contact_item_example.dart';
 import 'package:zeta_example/pages/components/date_input_example.dart';
 import 'package:zeta_example/pages/components/dialog_example.dart';
@@ -24,6 +26,7 @@ import 'package:zeta_example/pages/components/navigation_rail_example.dart';
 import 'package:zeta_example/pages/components/notification_list_example.dart';
 import 'package:zeta_example/pages/components/phone_input_example.dart';
 import 'package:zeta_example/pages/components/radio_example.dart';
+import 'package:zeta_example/pages/components/range_selector_example.dart';
 import 'package:zeta_example/pages/components/screen_header_bar_example.dart';
 import 'package:zeta_example/pages/components/select_input_example.dart';
 
@@ -60,15 +63,17 @@ class Component {
 final List<Component> components = [
   Component(AccordionExample.name, (context) => const AccordionExample()),
   Component(TopAppBarExample.name, (context) => const TopAppBarExample()),
+  Component(AvatarRailExample.name, (context) => const AvatarRailExample()),
   Component(AvatarExample.name, (context) => const AvatarExample()),
   Component(BannerExample.name, (context) => const BannerExample()),
   Component(BadgesExample.name, (context) => const BadgesExample()),
   Component(BottomSheetExample.name, (context) => const BottomSheetExample()),
-  Component(BreadCrumbsExample.name, (context) => const BreadCrumbsExample()),
+  Component(BreadcrumbExample.name, (context) => const BreadcrumbExample()),
   Component(ButtonExample.name, (context) => const ButtonExample()),
   Component(ChatItemExample.name, (context) => const ChatItemExample()),
   Component(CheckBoxExample.name, (context) => const CheckBoxExample()),
   Component(ChipExample.name, (context) => const ChipExample()),
+  Component(CommsButtonExample.name, (context) => const CommsButtonExample()),
   Component(ContactItemExample.name, (context) => const ContactItemExample()),
   Component(ListExample.name, (context) => const ListExample()),
   Component(ListItemExample.name, (context) => const ListItemExample()),
@@ -85,6 +90,7 @@ final List<Component> components = [
   Component(TabsExample.name, (context) => const TabsExample()),
   Component(DialPadExample.name, (context) => const DialPadExample()),
   Component(RadioButtonExample.name, (context) => const RadioButtonExample()),
+  Component(RangeSelectorExample.name, (context) => const RangeSelectorExample()),
   Component(SwitchExample.name, (context) => const SwitchExample()),
   Component(SliderExample.name, (context) => const SliderExample()),
   Component(DateInputExample.name, (context) => const DateInputExample()),
@@ -156,7 +162,7 @@ class _HomeState extends State<Home> {
     final _theme = theme..sort((a, b) => a.name.compareTo(b.name));
     return ExampleScaffold(
       // x-release-please-start-version
-      name: 'zeta_flutter v0.15.2',
+      name: 'zeta_flutter v0.20.1',
       // x-release-please-end
       child: SingleChildScrollView(
         child: Column(

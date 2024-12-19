@@ -47,6 +47,12 @@ Future<bool?> showZetaDialog(
       ),
     );
 
+/// The Zeta Dialog component.
+/// {@category Components}
+///
+/// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=23954-93337&node-type=frame&m=dev
+///
+/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/dialog
 class _ZetaDialog extends ZetaStatelessWidget {
   const _ZetaDialog({
     this.headerAlignment = ZetaDialogHeaderAlignment.center,
@@ -100,6 +106,11 @@ class _ZetaDialog extends ZetaStatelessWidget {
       rounded: context.rounded,
       child: AlertDialog(
         surfaceTintColor: zeta.colors.surfacePrimary,
+        // TODO: Luke
+        // insetPadding: EdgeInsets.symmetric(
+        //   horizontal: Zeta.of(context).spacing.xl,
+        //   vertical: Zeta.of(context).spacing.xl_2,
+        // ),
         shape: RoundedRectangleBorder(borderRadius: Zeta.of(context).radius.large),
         title: icon != null || title != null
             ? Column(
@@ -133,7 +144,7 @@ class _ZetaDialog extends ZetaStatelessWidget {
                 top: Zeta.of(context).spacing.xl_2,
               ),
         titleTextStyle: zetaTextTheme.headlineSmall?.copyWith(
-          color: zeta.colors.textDefault,
+          color: zeta.colors.mainDefault,
         ),
         content: Text(message),
         contentPadding: context.deviceType == DeviceType.mobilePortrait
@@ -145,8 +156,8 @@ class _ZetaDialog extends ZetaStatelessWidget {
                 bottom: Zeta.of(context).spacing.xl_2,
               ),
         contentTextStyle: context.deviceType == DeviceType.mobilePortrait
-            ? zetaTextTheme.bodySmall?.copyWith(color: zeta.colors.textDefault)
-            : zetaTextTheme.bodyMedium?.copyWith(color: zeta.colors.textDefault),
+            ? zetaTextTheme.bodySmall?.copyWith(color: zeta.colors.mainDefault)
+            : zetaTextTheme.bodyMedium?.copyWith(color: zeta.colors.mainDefault),
         actions: [
           if (context.deviceType == DeviceType.mobilePortrait)
             Column(

@@ -113,7 +113,7 @@ void main() {
     final positionedFinder = find.descendant(of: appBarFinder, matching: find.byType(Positioned));
 
     final positionedWidget = tester.widget<Positioned>(positionedFinder.first);
-    expect(positionedWidget.left, 60);
+    expect(positionedWidget.left, 64);
   });
   testWidgets('ZetaExtendedAppBarDelegate shrinks correctly with padding and no leading', (WidgetTester tester) async {
     const title = Text('Title');

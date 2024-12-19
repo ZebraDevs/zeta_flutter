@@ -1,5 +1,300 @@
 # Changelog
 
+## [0.20.1](https://github.com/ZebraDevs/zeta_flutter/compare/v0.20.0...v0.20.1) (2024-12-13)
+
+
+### 🪲 Bug Fixes
+
+* Fab icon color ([#222](https://github.com/ZebraDevs/zeta_flutter/issues/222)) ([58b9222](https://github.com/ZebraDevs/zeta_flutter/commit/58b9222446e47d976761ffd347546717b043aa23))
+
+## [0.20.0](https://github.com/ZebraDevs/zeta_flutter/compare/v0.19.0...v0.20.0) (2024-12-12)
+
+
+### ✨ New Features
+
+* Created Range Selector ([7257c40](https://github.com/ZebraDevs/zeta_flutter/commit/7257c409afaaf10b51a577856ab9623510d43e70))
+* **UX-881:** Range Selector ([#217](https://github.com/ZebraDevs/zeta_flutter/issues/217)) ([7257c40](https://github.com/ZebraDevs/zeta_flutter/commit/7257c409afaaf10b51a577856ab9623510d43e70))
+
+
+### 🪲 Bug Fixes
+
+* Fixed issue where avatar lower badge was not showing ([#218](https://github.com/ZebraDevs/zeta_flutter/issues/218)) ([a1742a3](https://github.com/ZebraDevs/zeta_flutter/commit/a1742a3cabb9aad03d2f79ee4bf832a54cec928f))
+* removed defaults to true on showValues ([7257c40](https://github.com/ZebraDevs/zeta_flutter/commit/7257c409afaaf10b51a577856ab9623510d43e70))
+* removed large thumbs ([7257c40](https://github.com/ZebraDevs/zeta_flutter/commit/7257c409afaaf10b51a577856ab9623510d43e70))
+* removed rounded from widgetbook ([7257c40](https://github.com/ZebraDevs/zeta_flutter/commit/7257c409afaaf10b51a577856ab9623510d43e70))
+* Top app bar padding ([#215](https://github.com/ZebraDevs/zeta_flutter/issues/215)) ([7b374b7](https://github.com/ZebraDevs/zeta_flutter/commit/7b374b7e929c07d20220d9ab8e9ee09a12206442))
+
+
+### 📈 Documentation
+
+* widgetbook and example for range selector ([7257c40](https://github.com/ZebraDevs/zeta_flutter/commit/7257c409afaaf10b51a577856ab9623510d43e70))
+
+
+### ⛓️ Dependencies
+
+* **automated:** Update icons ([#219](https://github.com/ZebraDevs/zeta_flutter/issues/219)) ([1bd8bfa](https://github.com/ZebraDevs/zeta_flutter/commit/1bd8bfa0a8a6fda8782860779fa02e1d195f67ea))
+* **automated:** Update icons ([#221](https://github.com/ZebraDevs/zeta_flutter/issues/221)) ([10cc97c](https://github.com/ZebraDevs/zeta_flutter/commit/10cc97c225e6644099b10b8fefa537546d842408))
+
+
+### 🧪 Tests
+
+* adjusted golden tolerance ([7257c40](https://github.com/ZebraDevs/zeta_flutter/commit/7257c409afaaf10b51a577856ab9623510d43e70))
+* created interaction tests ([7257c40](https://github.com/ZebraDevs/zeta_flutter/commit/7257c409afaaf10b51a577856ab9623510d43e70))
+* testing range selector ([7257c40](https://github.com/ZebraDevs/zeta_flutter/commit/7257c409afaaf10b51a577856ab9623510d43e70))
+* wrote 1 test for range selector ([7257c40](https://github.com/ZebraDevs/zeta_flutter/commit/7257c409afaaf10b51a577856ab9623510d43e70))
+
+## [0.19.0](https://github.com/ZebraDevs/zeta_flutter/compare/v0.18.0...v0.19.0) (2024-11-18)
+
+
+### ✨ New Features
+
+* Added shrink items to navigation bar so the items can expand to fill the space and shrink ([5a785f0](https://github.com/ZebraDevs/zeta_flutter/commit/5a785f0cd35a827297ca2d8b96a7f96cf45215cc))
+* **UX-1096:** Added shrink items to navigation bar so the items can expand or shrink. To match web ([#210](https://github.com/ZebraDevs/zeta_flutter/issues/210)) ([5a785f0](https://github.com/ZebraDevs/zeta_flutter/commit/5a785f0cd35a827297ca2d8b96a7f96cf45215cc))
+
+
+### 🪲 Bug Fixes
+
+* add SafeArea to ZetaNavigationBar ([#211](https://github.com/ZebraDevs/zeta_flutter/issues/211)) ([aa7a1e4](https://github.com/ZebraDevs/zeta_flutter/commit/aa7a1e4eff10274f4fb11111a825e21a496522a6))
+* added shrink items to widgetbook ([5a785f0](https://github.com/ZebraDevs/zeta_flutter/commit/5a785f0cd35a827297ca2d8b96a7f96cf45215cc))
+* breadcrumb now removes the items after the one that is clicked ([d97440b](https://github.com/ZebraDevs/zeta_flutter/commit/d97440b6acde461ed615b1ea827064b4b53af351))
+* breadcrumb select index ([d97440b](https://github.com/ZebraDevs/zeta_flutter/commit/d97440b6acde461ed615b1ea827064b4b53af351))
+* Changed font size of medium indicator from 12 to 11 ([9f6ed48](https://github.com/ZebraDevs/zeta_flutter/commit/9f6ed48a91d5a0f681d7c3df43da49dc40852f1d))
+* Extra verbose semantic label ([9f6ed48](https://github.com/ZebraDevs/zeta_flutter/commit/9f6ed48a91d5a0f681d7c3df43da49dc40852f1d))
+* hover color on navigation item ([9f6ed48](https://github.com/ZebraDevs/zeta_flutter/commit/9f6ed48a91d5a0f681d7c3df43da49dc40852f1d))
+* indicator semantic labels ([9f6ed48](https://github.com/ZebraDevs/zeta_flutter/commit/9f6ed48a91d5a0f681d7c3df43da49dc40852f1d))
+* intruduced a value listenable builder to handle hover and pressed states on breadcrumb item ([d97440b](https://github.com/ZebraDevs/zeta_flutter/commit/d97440b6acde461ed615b1ea827064b4b53af351))
+* made NavigationItem visible for testing ([9f6ed48](https://github.com/ZebraDevs/zeta_flutter/commit/9f6ed48a91d5a0f681d7c3df43da49dc40852f1d))
+* navigation bar semantic labels ([9f6ed48](https://github.com/ZebraDevs/zeta_flutter/commit/9f6ed48a91d5a0f681d7c3df43da49dc40852f1d))
+* removed active icon prop ([d97440b](https://github.com/ZebraDevs/zeta_flutter/commit/d97440b6acde461ed615b1ea827064b4b53af351))
+* rounded now affects breadcrumb icons ([d97440b](https://github.com/ZebraDevs/zeta_flutter/commit/d97440b6acde461ed615b1ea827064b4b53af351))
+* set navigation item highlight shape to rectangle ([9f6ed48](https://github.com/ZebraDevs/zeta_flutter/commit/9f6ed48a91d5a0f681d7c3df43da49dc40852f1d))
+* The icon that was passed in now shows on breadcrumb ([d97440b](https://github.com/ZebraDevs/zeta_flutter/commit/d97440b6acde461ed615b1ea827064b4b53af351))
+* truncated only hides any breadcrumbs over the maxItemsShown number ([d97440b](https://github.com/ZebraDevs/zeta_flutter/commit/d97440b6acde461ed615b1ea827064b4b53af351))
+* typo ";abel" =&gt; "label" ([d97440b](https://github.com/ZebraDevs/zeta_flutter/commit/d97440b6acde461ed615b1ea827064b4b53af351))
+* **UX-1232:** Breadcrumb Issues ([#214](https://github.com/ZebraDevs/zeta_flutter/issues/214)) ([d97440b](https://github.com/ZebraDevs/zeta_flutter/commit/d97440b6acde461ed615b1ea827064b4b53af351))
+* **UX-1315:** Update license  ([#208](https://github.com/ZebraDevs/zeta_flutter/issues/208)) ([bfbfa23](https://github.com/ZebraDevs/zeta_flutter/commit/bfbfa238f3356368d1f36d32d15ba8de4706646e))
+* **UX-1316:** Update macro desciption ([bfbfa23](https://github.com/ZebraDevs/zeta_flutter/commit/bfbfa238f3356368d1f36d32d15ba8de4706646e))
+
+
+### ⛓️ Dependencies
+
+* Update example app android dependencies ([#212](https://github.com/ZebraDevs/zeta_flutter/issues/212)) ([179c2cb](https://github.com/ZebraDevs/zeta_flutter/commit/179c2cba6ef0f65523d273d8dad2399f8292e220))
+
+
+### 🧪 Tests
+
+* added more tests for navigation bar ([9f6ed48](https://github.com/ZebraDevs/zeta_flutter/commit/9f6ed48a91d5a0f681d7c3df43da49dc40852f1d))
+* breadcrumb items are spaced equally ([d97440b](https://github.com/ZebraDevs/zeta_flutter/commit/d97440b6acde461ed615b1ea827064b4b53af351))
+* breadcrumb label and icon default colors ([d97440b](https://github.com/ZebraDevs/zeta_flutter/commit/d97440b6acde461ed615b1ea827064b4b53af351))
+* edited test to pass after merge ([9f6ed48](https://github.com/ZebraDevs/zeta_flutter/commit/9f6ed48a91d5a0f681d7c3df43da49dc40852f1d))
+* fixed debug fill props avatar ([9f6ed48](https://github.com/ZebraDevs/zeta_flutter/commit/9f6ed48a91d5a0f681d7c3df43da49dc40852f1d))
+* hardcoded offset ([9f6ed48](https://github.com/ZebraDevs/zeta_flutter/commit/9f6ed48a91d5a0f681d7c3df43da49dc40852f1d))
+* Navigation Bar ([#213](https://github.com/ZebraDevs/zeta_flutter/issues/213)) ([9f6ed48](https://github.com/ZebraDevs/zeta_flutter/commit/9f6ed48a91d5a0f681d7c3df43da49dc40852f1d))
+* navigation item calls onTap when an item is tapped off center ([9f6ed48](https://github.com/ZebraDevs/zeta_flutter/commit/9f6ed48a91d5a0f681d7c3df43da49dc40852f1d))
+* ran test counter ([9f6ed48](https://github.com/ZebraDevs/zeta_flutter/commit/9f6ed48a91d5a0f681d7c3df43da49dc40852f1d))
+* Uncommented text contrast tests ([9f6ed48](https://github.com/ZebraDevs/zeta_flutter/commit/9f6ed48a91d5a0f681d7c3df43da49dc40852f1d))
+* writing tests for navigation bar ([9f6ed48](https://github.com/ZebraDevs/zeta_flutter/commit/9f6ed48a91d5a0f681d7c3df43da49dc40852f1d))
+* wrote content and accessibility tests ([d97440b](https://github.com/ZebraDevs/zeta_flutter/commit/d97440b6acde461ed615b1ea827064b4b53af351))
+
+
+### 🧹 Miscellaneous Chores
+
+* **automated:** Lint commit and format ([9f6ed48](https://github.com/ZebraDevs/zeta_flutter/commit/9f6ed48a91d5a0f681d7c3df43da49dc40852f1d))
+* **automated:** Lint commit and format ([9f6ed48](https://github.com/ZebraDevs/zeta_flutter/commit/9f6ed48a91d5a0f681d7c3df43da49dc40852f1d))
+
+## [0.18.0](https://github.com/ZebraDevs/zeta_flutter/compare/v0.17.0...v0.18.0) (2024-11-11)
+
+
+### ✨ New Features
+
+* Added disabled variant to chip ([321b57d](https://github.com/ZebraDevs/zeta_flutter/commit/321b57de1cfc39cc940d28716fa1a49efc577d84))
+* Added label prop to progress circle which overrides default percentage label ([e035a47](https://github.com/ZebraDevs/zeta_flutter/commit/e035a47178efd5b1528c86fc4f5c46bd7ad179f5))
+* added maxValue to progress circle ([e035a47](https://github.com/ZebraDevs/zeta_flutter/commit/e035a47178efd5b1528c86fc4f5c46bd7ad179f5))
+* Added mouse region to avatar for give click pointer ([37b0f8e](https://github.com/ZebraDevs/zeta_flutter/commit/37b0f8e284d0b734a1ca9b3e17fccbbca6c60fa5))
+* Added NavRail focus state ([39c5cdf](https://github.com/ZebraDevs/zeta_flutter/commit/39c5cdf4a150b6aae1c57cfc4a7daa1c70f09883))
+* Added NavRail hover state ([#204](https://github.com/ZebraDevs/zeta_flutter/issues/204)) ([39c5cdf](https://github.com/ZebraDevs/zeta_flutter/commit/39c5cdf4a150b6aae1c57cfc4a7daa1c70f09883))
+* added onTap to widgetbook ([321b57d](https://github.com/ZebraDevs/zeta_flutter/commit/321b57de1cfc39cc940d28716fa1a49efc577d84))
+* Added onTaps to chips in example app ([321b57d](https://github.com/ZebraDevs/zeta_flutter/commit/321b57de1cfc39cc940d28716fa1a49efc577d84))
+* added rounded to widgetbook ([321b57d](https://github.com/ZebraDevs/zeta_flutter/commit/321b57de1cfc39cc940d28716fa1a49efc577d84))
+* created status chip ([c69d3b7](https://github.com/ZebraDevs/zeta_flutter/commit/c69d3b76afcd14a8ffa5777483687f818ac70876))
+* implemented status chip widgetbook use case ([c69d3b7](https://github.com/ZebraDevs/zeta_flutter/commit/c69d3b76afcd14a8ffa5777483687f818ac70876))
+* **UX-1233:** Added disabled variant to chip ([#203](https://github.com/ZebraDevs/zeta_flutter/issues/203)) ([321b57d](https://github.com/ZebraDevs/zeta_flutter/commit/321b57de1cfc39cc940d28716fa1a49efc577d84))
+* **UX-1234:** Status Chip ([#201](https://github.com/ZebraDevs/zeta_flutter/issues/201)) ([c69d3b7](https://github.com/ZebraDevs/zeta_flutter/commit/c69d3b76afcd14a8ffa5777483687f818ac70876))
+* **UX-1247:** extend ZetaProgressCircle  ([#199](https://github.com/ZebraDevs/zeta_flutter/issues/199)) ([e035a47](https://github.com/ZebraDevs/zeta_flutter/commit/e035a47178efd5b1528c86fc4f5c46bd7ad179f5))
+* **UX-1310:** Added more customization options to ZetaListItem ([#205](https://github.com/ZebraDevs/zeta_flutter/issues/205)) ([6e13502](https://github.com/ZebraDevs/zeta_flutter/commit/6e135020cbddcf7e448abdfadd7eaca127acff56))
+
+
+### 🪲 Bug Fixes
+
+* Banner title alignment when centered ([044ed2e](https://github.com/ZebraDevs/zeta_flutter/commit/044ed2ea47ae9e82ce7433ff251582a2fc861271))
+* changed _updateControllerState to _handleDisabledState ([321b57d](https://github.com/ZebraDevs/zeta_flutter/commit/321b57de1cfc39cc940d28716fa1a49efc577d84))
+* converted child widget function to a stateless widget class in status chip ([c69d3b7](https://github.com/ZebraDevs/zeta_flutter/commit/c69d3b76afcd14a8ffa5777483687f818ac70876))
+* Removed hit test behavior from avatar rail ([37b0f8e](https://github.com/ZebraDevs/zeta_flutter/commit/37b0f8e284d0b734a1ca9b3e17fccbbca6c60fa5))
+* removed hit test behaviour from avatar rail ([#197](https://github.com/ZebraDevs/zeta_flutter/issues/197)) ([37b0f8e](https://github.com/ZebraDevs/zeta_flutter/commit/37b0f8e284d0b734a1ca9b3e17fccbbca6c60fa5))
+* set rounded to default to true ([c69d3b7](https://github.com/ZebraDevs/zeta_flutter/commit/c69d3b76afcd14a8ffa5777483687f818ac70876))
+* used variable ([321b57d](https://github.com/ZebraDevs/zeta_flutter/commit/321b57de1cfc39cc940d28716fa1a49efc577d84))
+* **UX-1161:** banner title alignment when centered ([#200](https://github.com/ZebraDevs/zeta_flutter/issues/200)) ([044ed2e](https://github.com/ZebraDevs/zeta_flutter/commit/044ed2ea47ae9e82ce7433ff251582a2fc861271))
+* **UX-1298:** ZetaDialog button overflow ([51b4172](https://github.com/ZebraDevs/zeta_flutter/commit/51b4172d3e926e9fa2c87fd1be4f2c2ec5b4a71b))
+* **UX-1303:** Update avatar boarder width ([#202](https://github.com/ZebraDevs/zeta_flutter/issues/202)) ([51b4172](https://github.com/ZebraDevs/zeta_flutter/commit/51b4172d3e926e9fa2c87fd1be4f2c2ec5b4a71b))
+* **UX-1309:** Wrapped initials with FittedBox inside ZetaAvatar so that the text scales correctly with device text scaling ([6e13502](https://github.com/ZebraDevs/zeta_flutter/commit/6e135020cbddcf7e448abdfadd7eaca127acff56))
+
+
+### 📈 Documentation
+
+* added description for status chip ([c69d3b7](https://github.com/ZebraDevs/zeta_flutter/commit/c69d3b76afcd14a8ffa5777483687f818ac70876))
+* added more info to global header. Info about where to use the header ([#206](https://github.com/ZebraDevs/zeta_flutter/issues/206)) ([c9c84c0](https://github.com/ZebraDevs/zeta_flutter/commit/c9c84c0d7b80934e59b76ba3501639d6de37f35a))
+
+
+### ⛓️ Dependencies
+
+* **automated:** Update icons ([#207](https://github.com/ZebraDevs/zeta_flutter/issues/207)) ([87a5df1](https://github.com/ZebraDevs/zeta_flutter/commit/87a5df158653a7623f09894961fe985635362d95))
+
+
+### 🧪 Tests
+
+* Add a log on debugFillPropertiesTest if it fails ([51b4172](https://github.com/ZebraDevs/zeta_flutter/commit/51b4172d3e926e9fa2c87fd1be4f2c2ec5b4a71b))
+* Added debugfillproperties test to chip_test ([321b57d](https://github.com/ZebraDevs/zeta_flutter/commit/321b57de1cfc39cc940d28716fa1a49efc577d84))
+* **UX-1305:** Update avatar test ([51b4172](https://github.com/ZebraDevs/zeta_flutter/commit/51b4172d3e926e9fa2c87fd1be4f2c2ec5b4a71b))
+* wrote tests for status chip ([c69d3b7](https://github.com/ZebraDevs/zeta_flutter/commit/c69d3b76afcd14a8ffa5777483687f818ac70876))
+
+## [0.17.0](https://github.com/ZebraDevs/zeta_flutter/compare/v0.16.0...v0.17.0) (2024-10-28)
+
+
+### ✨ New Features
+
+* added label to avatar ([823370e](https://github.com/ZebraDevs/zeta_flutter/commit/823370e161dd753abd22060d8dd862752dc8a34f))
+* created avatar rail ([823370e](https://github.com/ZebraDevs/zeta_flutter/commit/823370e161dd753abd22060d8dd862752dc8a34f))
+* **UX-1231:** created avatar rail ([#196](https://github.com/ZebraDevs/zeta_flutter/issues/196)) ([823370e](https://github.com/ZebraDevs/zeta_flutter/commit/823370e161dd753abd22060d8dd862752dc8a34f))
+
+
+### 🪲 Bug Fixes
+
+* added MainAxisSize.min to avatar column to regulate height ([823370e](https://github.com/ZebraDevs/zeta_flutter/commit/823370e161dd753abd22060d8dd862752dc8a34f))
+* widgetbook max lines avatar rail ([823370e](https://github.com/ZebraDevs/zeta_flutter/commit/823370e161dd753abd22060d8dd862752dc8a34f))
+
+
+### 🧪 Tests
+
+* changed the word 'Dimension' to 'Dimensions' ([#194](https://github.com/ZebraDevs/zeta_flutter/issues/194)) ([17a6995](https://github.com/ZebraDevs/zeta_flutter/commit/17a69951628d17edc635408d1b026abbf3dc92c5))
+* created tests for avatar rail ([823370e](https://github.com/ZebraDevs/zeta_flutter/commit/823370e161dd753abd22060d8dd862752dc8a34f))
+* fixed parent folder for stepper ([823370e](https://github.com/ZebraDevs/zeta_flutter/commit/823370e161dd753abd22060d8dd862752dc8a34f))
+
+
+### 🧹 Miscellaneous Chores
+
+* **automated:** Lint commit and format ([823370e](https://github.com/ZebraDevs/zeta_flutter/commit/823370e161dd753abd22060d8dd862752dc8a34f))
+
+## [0.16.0](https://github.com/ZebraDevs/zeta_flutter/compare/v0.15.2...v0.16.0) (2024-10-22)
+
+
+### ✨ New Features
+
+* added swipe-able actions to notification list item ([057defd](https://github.com/ZebraDevs/zeta_flutter/commit/057defd5a945382826ae8746416473943304da32))
+* comms buttons ([af95815](https://github.com/ZebraDevs/zeta_flutter/commit/af958159b3e4f3fad06c24e64983aff5861a9482))
+* updated notification list item to match latest design ([057defd](https://github.com/ZebraDevs/zeta_flutter/commit/057defd5a945382826ae8746416473943304da32))
+* **UX-1064:** Comms Buttons ([#182](https://github.com/ZebraDevs/zeta_flutter/issues/182)) ([af95815](https://github.com/ZebraDevs/zeta_flutter/commit/af958159b3e4f3fad06c24e64983aff5861a9482))
+* **UX-1073:** List Item notification ([#172](https://github.com/ZebraDevs/zeta_flutter/issues/172)) ([057defd](https://github.com/ZebraDevs/zeta_flutter/commit/057defd5a945382826ae8746416473943304da32))
+
+
+### 🪲 Bug Fixes
+
+* _getSlidableExtend() now won't return over 1.0 ([057defd](https://github.com/ZebraDevs/zeta_flutter/commit/057defd5a945382826ae8746416473943304da32))
+* A variety of small bug fixes ([#168](https://github.com/ZebraDevs/zeta_flutter/issues/168)) ([cb37705](https://github.com/ZebraDevs/zeta_flutter/commit/cb3770520d21b6e1de4f0bb928d800b12fc49042))
+* Add PlatformIs to not use dart:io ([cb37705](https://github.com/ZebraDevs/zeta_flutter/commit/cb3770520d21b6e1de4f0bb928d800b12fc49042))
+* added different constructors to zetacommsbutton ([af95815](https://github.com/ZebraDevs/zeta_flutter/commit/af958159b3e4f3fad06c24e64983aff5861a9482))
+* added golden group to testing_conventions.mdx ([7fba9b2](https://github.com/ZebraDevs/zeta_flutter/commit/7fba9b27e399fc3ac5ebc0c09908ae4c3be92e3c))
+* added some commas ([ef050af](https://github.com/ZebraDevs/zeta_flutter/commit/ef050af9af8caf9552aa2b7aa1a4465320e4c870))
+* added styles to banner text ([7fba9b2](https://github.com/ZebraDevs/zeta_flutter/commit/7fba9b27e399fc3ac5ebc0c09908ae4c3be92e3c))
+* Border sizes ([cb37705](https://github.com/ZebraDevs/zeta_flutter/commit/cb3770520d21b6e1de4f0bb928d800b12fc49042))
+* changed avatar xs so it shows two initals ([ef050af](https://github.com/ZebraDevs/zeta_flutter/commit/ef050af9af8caf9552aa2b7aa1a4465320e4c870))
+* changed Colors.transparent to Zeta.of(context).colors.surfaceDefault ([af95815](https://github.com/ZebraDevs/zeta_flutter/commit/af958159b3e4f3fad06c24e64983aff5861a9482))
+* changed example back ([ef050af](https://github.com/ZebraDevs/zeta_flutter/commit/ef050af9af8caf9552aa2b7aa1a4465320e4c870))
+* changed storybook to widgetbook in name of deploy preview in pull request github action ([ba4901d](https://github.com/ZebraDevs/zeta_flutter/commit/ba4901d74fff20d6319050f331c5f6d60f99b438))
+* chat item ([#174](https://github.com/ZebraDevs/zeta_flutter/issues/174)) ([3ac64a7](https://github.com/ZebraDevs/zeta_flutter/commit/3ac64a7fa68de77d865c0f95745fdbac760d0984))
+* chat item actions _getSlidableExtend now won't return over 1.0 ([3ac64a7](https://github.com/ZebraDevs/zeta_flutter/commit/3ac64a7fa68de77d865c0f95745fdbac760d0984))
+* Components using the internal text input are now sized correctly ([38b865b](https://github.com/ZebraDevs/zeta_flutter/commit/38b865b8460fe0b8543bab3fa8245750ac2d3d6d))
+* get initials now returns the first and last name initials rather than first and second names. ([ef050af](https://github.com/ZebraDevs/zeta_flutter/commit/ef050af9af8caf9552aa2b7aa1a4465320e4c870))
+* moved analyzer package from dependencies to dev dependencies ([5987c21](https://github.com/ZebraDevs/zeta_flutter/commit/5987c211f79ff6357a47b462a654ca191f64498b))
+* put dev dependencies in alphabetical order ([5987c21](https://github.com/ZebraDevs/zeta_flutter/commit/5987c211f79ff6357a47b462a654ca191f64498b))
+* removed '$componentName' from all test files ([ba4901d](https://github.com/ZebraDevs/zeta_flutter/commit/ba4901d74fff20d6319050f331c5f6d60f99b438))
+* removed analyzer from dependencies ([ba4901d](https://github.com/ZebraDevs/zeta_flutter/commit/ba4901d74fff20d6319050f331c5f6d60f99b438))
+* set toggle related properties on non-toggle constructors to null ([af95815](https://github.com/ZebraDevs/zeta_flutter/commit/af958159b3e4f3fad06c24e64983aff5861a9482))
+* Spacings in example app ([cb37705](https://github.com/ZebraDevs/zeta_flutter/commit/cb3770520d21b6e1de4f0bb928d800b12fc49042))
+* **UX-1105:** Updated search bar to use internal text field ([#186](https://github.com/ZebraDevs/zeta_flutter/issues/186)) ([38b865b](https://github.com/ZebraDevs/zeta_flutter/commit/38b865b8460fe0b8543bab3fa8245750ac2d3d6d))
+* **UX-1141:** Update Spacing tokens ([#159](https://github.com/ZebraDevs/zeta_flutter/issues/159)) ([d22898f](https://github.com/ZebraDevs/zeta_flutter/commit/d22898f7e77704b5a4dd628320662530f1c2a1b4))
+* **UX-1207:** The search box on the search app bar now gets closed when the back button is pressed. ([58fc7f5](https://github.com/ZebraDevs/zeta_flutter/commit/58fc7f5c3e40888ade19a30a5592e70f5340585a))
+* **UX-1241:** Fixed inkwell on ZetaStepper ([#190](https://github.com/ZebraDevs/zeta_flutter/issues/190)) ([60a137f](https://github.com/ZebraDevs/zeta_flutter/commit/60a137f17dbeb989cf2a9f0b0dc3ee4b78ebb488))
+* **UX-1242:** Fixed extended app bar alignment ([#189](https://github.com/ZebraDevs/zeta_flutter/issues/189)) ([58fc7f5](https://github.com/ZebraDevs/zeta_flutter/commit/58fc7f5c3e40888ade19a30a5592e70f5340585a))
+* **UX-922:** FAB-redesign ([#181](https://github.com/ZebraDevs/zeta_flutter/issues/181)) ([11f266b](https://github.com/ZebraDevs/zeta_flutter/commit/11f266bbd955df2ef993f7edee2989bc9be60655))
+
+
+### 📈 Documentation
+
+* abstracted functions in test_counter ([5987c21](https://github.com/ZebraDevs/zeta_flutter/commit/5987c211f79ff6357a47b462a654ca191f64498b))
+* added brief docs for fontSize function in avatar ([ef050af](https://github.com/ZebraDevs/zeta_flutter/commit/ef050af9af8caf9552aa2b7aa1a4465320e4c870))
+* added comments to the class about named constructors ([af95815](https://github.com/ZebraDevs/zeta_flutter/commit/af958159b3e4f3fad06c24e64983aff5861a9482))
+* added doc comments to test_counter script and utils file ([5987c21](https://github.com/ZebraDevs/zeta_flutter/commit/5987c211f79ff6357a47b462a654ca191f64498b))
+* added figma and widgetbook links to all components ([#180](https://github.com/ZebraDevs/zeta_flutter/issues/180)) ([e1d2ba0](https://github.com/ZebraDevs/zeta_flutter/commit/e1d2ba04bfae99f7f383566b483c6558d9a91ec5))
+* added helper function section to TESTING_README ([ba4901d](https://github.com/ZebraDevs/zeta_flutter/commit/ba4901d74fff20d6319050f331c5f6d60f99b438))
+* added info about how to run the script to testing read me ([5987c21](https://github.com/ZebraDevs/zeta_flutter/commit/5987c211f79ff6357a47b462a654ca191f64498b))
+* added link to excel sheet in TESTING_README ([ba4901d](https://github.com/ZebraDevs/zeta_flutter/commit/ba4901d74fff20d6319050f331c5f6d60f99b438))
+* added testing_conventions.mdx to keep track how we are testing in flutter ([7fba9b2](https://github.com/ZebraDevs/zeta_flutter/commit/7fba9b27e399fc3ac5ebc0c09908ae4c3be92e3c))
+* changed comms button example to use assorted constructors ([af95815](https://github.com/ZebraDevs/zeta_flutter/commit/af958159b3e4f3fad06c24e64983aff5861a9482))
+* created test counter script ([ba4901d](https://github.com/ZebraDevs/zeta_flutter/commit/ba4901d74fff20d6319050f331c5f6d60f99b438))
+* moved helper functions from test_counter to utils file ([5987c21](https://github.com/ZebraDevs/zeta_flutter/commit/5987c211f79ff6357a47b462a654ca191f64498b))
+* set initial values for comms button on widgetbook ([af95815](https://github.com/ZebraDevs/zeta_flutter/commit/af958159b3e4f3fad06c24e64983aff5861a9482))
+* test counter ([#187](https://github.com/ZebraDevs/zeta_flutter/issues/187)) ([5987c21](https://github.com/ZebraDevs/zeta_flutter/commit/5987c211f79ff6357a47b462a654ca191f64498b))
+* test_counter script improvements ([ba4901d](https://github.com/ZebraDevs/zeta_flutter/commit/ba4901d74fff20d6319050f331c5f6d60f99b438))
+* testing counter script ([5987c21](https://github.com/ZebraDevs/zeta_flutter/commit/5987c211f79ff6357a47b462a654ca191f64498b))
+
+
+### ⛓️ Dependencies
+
+* **automated:** Update icons ([#191](https://github.com/ZebraDevs/zeta_flutter/issues/191)) ([0c09633](https://github.com/ZebraDevs/zeta_flutter/commit/0c09633b330594cb66457604ff684ab082ab2a4b))
+* **automated:** Update icons 2024-10-14 ([18ea9a2](https://github.com/ZebraDevs/zeta_flutter/commit/18ea9a2b123182f6da3382b9ee042297a4d721ae))
+* **automated:** Update tokens - 2024-08-27 ([#163](https://github.com/ZebraDevs/zeta_flutter/issues/163)) ([b499e22](https://github.com/ZebraDevs/zeta_flutter/commit/b499e221c58327ac6e6d18851986d3a503464de6))
+* **automated:** Update tokens ([#170](https://github.com/ZebraDevs/zeta_flutter/issues/170)) ([361b1c7](https://github.com/ZebraDevs/zeta_flutter/commit/361b1c7b7a271a990994ce35ac5d800315e7a753))
+* **automated:** Update tokens ([#176](https://github.com/ZebraDevs/zeta_flutter/issues/176)) ([2bd38de](https://github.com/ZebraDevs/zeta_flutter/commit/2bd38de3454f7544c0e19f9b60f1c2ce9e8e310c))
+* Update widgetbook dep for text scale addon ([#193](https://github.com/ZebraDevs/zeta_flutter/issues/193)) ([1852502](https://github.com/ZebraDevs/zeta_flutter/commit/185250206e151ce46e8311fd752bdeb23c82b6b6))
+
+
+### 🧪 Tests
+
+* Add new GoldenFiles class to simplify generating golden file Uris ([a77211a](https://github.com/ZebraDevs/zeta_flutter/commit/a77211a9fd33dfee170605a33098e9df6d634be2))
+* added background color test ([7fba9b2](https://github.com/ZebraDevs/zeta_flutter/commit/7fba9b27e399fc3ac5ebc0c09908ae4c3be92e3c))
+* added debugFillProperties test helper function ([ba4901d](https://github.com/ZebraDevs/zeta_flutter/commit/ba4901d74fff20d6319050f331c5f6d60f99b438))
+* added loop for zetaavatar with border color for $size ([ef050af](https://github.com/ZebraDevs/zeta_flutter/commit/ef050af9af8caf9552aa2b7aa1a4465320e4c870))
+* added test count script ([ba4901d](https://github.com/ZebraDevs/zeta_flutter/commit/ba4901d74fff20d6319050f331c5f6d60f99b438))
+* avatar ([#183](https://github.com/ZebraDevs/zeta_flutter/issues/183)) ([ef050af](https://github.com/ZebraDevs/zeta_flutter/commit/ef050af9af8caf9552aa2b7aa1a4465320e4c870))
+* banner ([#184](https://github.com/ZebraDevs/zeta_flutter/issues/184)) ([7fba9b2](https://github.com/ZebraDevs/zeta_flutter/commit/7fba9b27e399fc3ac5ebc0c09908ae4c3be92e3c))
+* banner tests ([7fba9b2](https://github.com/ZebraDevs/zeta_flutter/commit/7fba9b27e399fc3ac5ebc0c09908ae4c3be92e3c))
+* changed extension test to reflect changes ([ef050af](https://github.com/ZebraDevs/zeta_flutter/commit/ef050af9af8caf9552aa2b7aa1a4465320e4c870))
+* changed the iconbutton to a ZetaIcon for golden tests ([7fba9b2](https://github.com/ZebraDevs/zeta_flutter/commit/7fba9b27e399fc3ac5ebc0c09908ae4c3be92e3c))
+* comms goldens ([af95815](https://github.com/ZebraDevs/zeta_flutter/commit/af958159b3e4f3fad06c24e64983aff5861a9482))
+* Fix bug in golden tests that meant they failed on windows ([#177](https://github.com/ZebraDevs/zeta_flutter/issues/177)) ([a77211a](https://github.com/ZebraDevs/zeta_flutter/commit/a77211a9fd33dfee170605a33098e9df6d634be2))
+* implemented helper function in avatar and banner tests ([ba4901d](https://github.com/ZebraDevs/zeta_flutter/commit/ba4901d74fff20d6319050f331c5f6d60f99b438))
+* improved banner tests ([7fba9b2](https://github.com/ZebraDevs/zeta_flutter/commit/7fba9b27e399fc3ac5ebc0c09908ae4c3be92e3c))
+* moved script files to different PR ([ba4901d](https://github.com/ZebraDevs/zeta_flutter/commit/ba4901d74fff20d6319050f331c5f6d60f99b438))
+* organizing tests into groups ([#188](https://github.com/ZebraDevs/zeta_flutter/issues/188)) ([ba4901d](https://github.com/ZebraDevs/zeta_flutter/commit/ba4901d74fff20d6319050f331c5f6d60f99b438))
+* removed comment that was cause github action to fail ([ef050af](https://github.com/ZebraDevs/zeta_flutter/commit/ef050af9af8caf9552aa2b7aa1a4465320e4c870))
+* removed unused import ([7fba9b2](https://github.com/ZebraDevs/zeta_flutter/commit/7fba9b27e399fc3ac5ebc0c09908ae4c3be92e3c))
+* replaced IconButton with Icon from golden tests ([7fba9b2](https://github.com/ZebraDevs/zeta_flutter/commit/7fba9b27e399fc3ac5ebc0c09908ae4c3be92e3c))
+* standardizing tests for badges ([ba4901d](https://github.com/ZebraDevs/zeta_flutter/commit/ba4901d74fff20d6319050f331c5f6d60f99b438))
+* started making banner tests ([7fba9b2](https://github.com/ZebraDevs/zeta_flutter/commit/7fba9b27e399fc3ac5ebc0c09908ae4c3be92e3c))
+* Wrote tests for ZetaStepper ([60a137f](https://github.com/ZebraDevs/zeta_flutter/commit/60a137f17dbeb989cf2a9f0b0dc3ee4b78ebb488))
+* Wrote tests for ZetaTopAppbar ([58fc7f5](https://github.com/ZebraDevs/zeta_flutter/commit/58fc7f5c3e40888ade19a30a5592e70f5340585a))
+
+
+### 🧹 Miscellaneous Chores
+
+* **automated:** Lint commit and format ([ba4901d](https://github.com/ZebraDevs/zeta_flutter/commit/ba4901d74fff20d6319050f331c5f6d60f99b438))
+* **automated:** Lint commit and format ([ef050af](https://github.com/ZebraDevs/zeta_flutter/commit/ef050af9af8caf9552aa2b7aa1a4465320e4c870))
+* **automated:** Lint commit and format ([7fba9b2](https://github.com/ZebraDevs/zeta_flutter/commit/7fba9b27e399fc3ac5ebc0c09908ae4c3be92e3c))
+* **automated:** Lint commit and format ([af95815](https://github.com/ZebraDevs/zeta_flutter/commit/af958159b3e4f3fad06c24e64983aff5861a9482))
+* **automated:** Lint commit and format ([3ac64a7](https://github.com/ZebraDevs/zeta_flutter/commit/3ac64a7fa68de77d865c0f95745fdbac760d0984))
+* Merged goldenTest and goldenTestWithCallbacks. Also made the widgetType parameter optional and defaulted it to the type of widget. ([58fc7f5](https://github.com/ZebraDevs/zeta_flutter/commit/58fc7f5c3e40888ade19a30a5592e70f5340585a))
+* Update third party licenses ([cb37705](https://github.com/ZebraDevs/zeta_flutter/commit/cb3770520d21b6e1de4f0bb928d800b12fc49042))
+
 ## [0.15.2](https://github.com/ZebraDevs/zeta_flutter/compare/v0.15.1...v0.15.2) (2024-08-23)
 
 

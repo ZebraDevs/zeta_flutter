@@ -139,7 +139,7 @@ class _FabWidgetState extends State<FabWidget> {
           itemBuilder: (context, index) => Text("$index"),
         ),
         floatingActionButton: ZetaFAB(
-          expanded: true,
+          expanded: widget.c.knobs.boolean(label: 'Expanded'),
           scrollController: _scrollController,
           label: widget.c.knobs.string(label: 'Label', initialValue: 'Floating Action Button'),
           onPressed: widget.c.knobs.boolean(label: 'Disabled') ? null : () {},

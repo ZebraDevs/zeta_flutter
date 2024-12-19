@@ -23,6 +23,10 @@ enum ZetaTooltipArrowDirection {
 
 /// Tooltips display informative text when users hover over, focus on, or tap an element.
 /// {@category Components}
+///
+/// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=229-16&node-type=canvas&m=dev
+///
+/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/tooltip
 class ZetaTooltip extends ZetaStatelessWidget {
   /// Constructor for [ZetaTooltip].
   const ZetaTooltip({
@@ -50,14 +54,14 @@ class ZetaTooltip extends ZetaStatelessWidget {
   final EdgeInsets? padding;
 
   /// The color of the tooltip.
-  /// Default is `zeta.colors.textDefault`.
+  /// Default is `zeta.colors.mainDefault`.
   final Color? color;
 
   /// The text style of the tooltip.
   /// Default is:
   /// ```
   /// ZetaTextStyles.bodyXSmall.copyWith(
-  ///   color: zeta.colors.textInverse,
+  ///   color: zeta.colors.mainInverse,
   ///   fontWeight: FontWeight.w500,
   /// ),
   /// ```
@@ -73,7 +77,7 @@ class ZetaTooltip extends ZetaStatelessWidget {
   @override
   Widget build(BuildContext context) {
     final zeta = Zeta.of(context);
-    final color = this.color ?? zeta.colors.textDefault;
+    final color = this.color ?? zeta.colors.mainDefault;
     final horizontalArrowWidth =
         [ZetaTooltipArrowDirection.left, ZetaTooltipArrowDirection.right].contains(arrowDirection)
             ? _horizontalArrowSize.width
@@ -131,7 +135,7 @@ class ZetaTooltip extends ZetaStatelessWidget {
                               child: DefaultTextStyle(
                                 style: textStyle ??
                                     ZetaTextStyles.bodyXSmall.copyWith(
-                                      color: zeta.colors.textInverse,
+                                      color: zeta.colors.mainInverse,
                                       fontWeight: FontWeight.w500,
                                     ),
                                 child: child,

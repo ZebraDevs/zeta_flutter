@@ -5,7 +5,41 @@ import 'package:flutter/rendering.dart';
 import '../../../zeta_flutter.dart';
 
 /// Global header component
+/// This component should not be used as an appbar in a scaffold.
+/// It can be used in custom scroll views and columns.
+///
+/// ```
+/// SingleChildScrollView(
+///   child: Column(children: [
+///     ZetaGlobalHeader(
+///       title: "Title",
+///       tabItems: childrenOne,
+///       searchBar: ZetaSearchBar(shape: ZetaWidgetBorder.full, size: ZetaWidgetSize.large),
+///       onAppsButton: () {},
+///       actionButtons: [
+///         IconButton(
+///           onPressed: () {},
+///           icon: const ZetaIcon(
+///             ZetaIcons.alert,
+///           ),
+///         ),
+///         IconButton(
+///           onPressed: () {},
+///           icon: const ZetaIcon(
+///             ZetaIcons.help,
+///           ),
+///         ),
+///       ],
+///       avatar: const ZetaAvatar(initials: 'PS'),
+///     ),
+///   ]),
+/// ),
+/// ```
 /// {@category Components}
+///
+/// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=1120-26358&node-type=canvas&m=dev
+///
+/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/global-header
 class ZetaGlobalHeader extends ZetaStatefulWidget {
   /// Constructor for [ZetaGlobalHeader]
   const ZetaGlobalHeader({
@@ -80,7 +114,7 @@ class _GlobalHeaderState extends State<ZetaGlobalHeader> {
               vertical: Zeta.of(context).spacing.medium,
               horizontal: Zeta.of(context).spacing.large,
             ),
-            decoration: BoxDecoration(color: colors.surfacePrimary),
+            decoration: BoxDecoration(color: colors.surfaceDefault),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -171,11 +205,11 @@ class _GlobalHeaderState extends State<ZetaGlobalHeader> {
         child.copyWith(
           active: _selectedIndex == index,
           dropdown: child.dropdown,
-          handlePress: () {
+          onTap: () {
             setState(() {
               _selectedIndex = index;
             });
-            child.handlePress?.call();
+            child.onTap?.call();
           },
         ),
       );

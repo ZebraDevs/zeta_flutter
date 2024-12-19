@@ -25,6 +25,7 @@ class _ChipExampleState extends State<ChipExample> {
         label: 'Label',
         leading: ZetaIcon(ZetaIcons.user),
         trailing: IconButton(icon: Icon(ZetaIcons.close), onPressed: () {}),
+        onTap: () {},
       ),
     ]);
 
@@ -42,6 +43,7 @@ class _ChipExampleState extends State<ChipExample> {
           leading: ZetaIcon(ZetaIcons.star),
           draggable: true,
           data: 'Assist chip',
+          onTap: () {},
         ),
       ),
     ]);
@@ -60,9 +62,25 @@ class _ChipExampleState extends State<ChipExample> {
           selected: true,
           data: 'Filter chip',
           draggable: true,
+          onTap: (bool selected) {},
         ),
       ),
     ]);
+
+    final Widget statusChipExample = Column(children: [
+      Text(
+        'Status Chip',
+        textAlign: TextAlign.center,
+        style: TextStyle(fontWeight: FontWeight.bold),
+      ),
+      const SizedBox(height: 10),
+      ZetaStatusChip(
+        label: 'Label',
+        data: 'Status chip',
+        draggable: true,
+      ),
+    ]);
+
     final colors = Zeta.of(context).colors;
     return ExampleScaffold(
       name: ChipExample.name,
@@ -74,6 +92,7 @@ class _ChipExampleState extends State<ChipExample> {
             inputChipExample,
             assistChipExample,
             filterChipExample,
+            statusChipExample,
             const SizedBox(height: 100),
             DragTarget<String>(
               onAcceptWithDetails: (details) => setState(() => chipType = details.data),

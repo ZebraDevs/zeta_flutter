@@ -27,6 +27,10 @@ enum ZetaFabSize {
 
 /// Zeta Floating Action Button Component.
 /// {@category Components}
+///
+/// Figma: https://www.figma.com/file/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=21816-4283&m=dev
+///
+/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/buttons/floating-action-button
 class ZetaFAB extends StatefulWidget {
   ///Constructs [ZetaFAB].
   const ZetaFAB({
@@ -110,75 +114,147 @@ class ZetaFAB extends StatefulWidget {
 class _ZetaFABState extends State<ZetaFAB> {
   @override
   Widget build(BuildContext context) {
-    final colors = widget.type.colors(context);
-    final backgroundColor = widget.type == ZetaFabType.inverse ? colors.shade80 : colors.shade60;
+    final colors = Zeta.of(context).colors;
+    final Color backgroundColor = widget.type.backgroundColor(colors);
+    final Color foregroundColor = widget.type.foregroundColor(colors);
+    final Color backgroundColorHover = widget.type.hoverColor(colors);
+    final Color backgroundColorSelected = widget.type.selectedColor(colors);
 
-    return FilledButton(
-      onPressed: widget.onPressed,
-      focusNode: widget.focusNode,
-      style: ButtonStyle(
-        padding: const WidgetStatePropertyAll(EdgeInsets.zero),
-        shape: WidgetStatePropertyAll(
-          widget.shape.buttonShape(isExpanded: widget.expanded, size: widget.size, context: context),
-        ),
-        backgroundColor: WidgetStateProperty.resolveWith((states) {
-          if (states.contains(WidgetState.disabled)) {
-            return Zeta.of(context).colors.surfaceDisabled;
-          }
-          if (states.contains(WidgetState.pressed)) {
-            return colors.selected;
-          }
-          if (states.contains(WidgetState.hovered)) {
-            return colors.hover;
-          }
-          return backgroundColor;
-        }),
-        side: WidgetStateProperty.resolveWith(
-          (Set<WidgetState> states) {
-            if (states.contains(WidgetState.focused)) {
-              // TODO(UX-1134): This removes a defualt border when focused, rather than adding a second border when focused.
-              return BorderSide(color: Zeta.of(context).colors.blue.shade50, width: ZetaBorders.medium);
-            }
-            return null;
-          },
-        ),
-      ),
-      child: AnimatedContainer(
-        duration: ZetaAnimationLength.normal,
-        child: Padding(
-          padding: widget.expanded
-              ? EdgeInsets.symmetric(
-                  horizontal: Zeta.of(context).spacing.large,
-                  vertical: Zeta.of(context).spacing.medium,
-                )
-              : EdgeInsets.all(widget.size.padding(context)),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              ZetaIcon(widget.icon, size: widget.size.iconSize(context)),
-              if (widget.expanded && widget.label != null)
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [Text(widget.label!, style: ZetaTextStyles.labelLarge)],
-                ),
-            ].divide(SizedBox(width: Zeta.of(context).spacing.small)).toList(),
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        FilledButton(
+          onPressed: widget.onPressed,
+          focusNode: widget.focusNode,
+          style: ButtonStyle(
+            padding: const WidgetStatePropertyAll(EdgeInsets.zero),
+            shape: WidgetStatePropertyAll(
+              widget.shape.buttonShape(isExpanded: widget.expanded, size: widget.size, context: context),
+            ),
+            backgroundColor: WidgetStateProperty.resolveWith((states) {
+              if (states.contains(WidgetState.disabled)) {
+                return colors.stateDisabledDisabled;
+              }
+              if (states.contains(WidgetState.pressed)) {
+                return backgroundColorSelected;
+              }
+              if (states.contains(WidgetState.hovered)) {
+                return backgroundColorHover;
+              }
+              return backgroundColor;
+            }),
+            side: WidgetStateProperty.resolveWith(
+              (Set<WidgetState> states) {
+                if (states.contains(WidgetState.focused)) {
+                  // TODO(UX-1134): This removes a defualt border when focused, rather than adding a second border when focused.
+                  return BorderSide(color: Zeta.of(context).colors.borderPrimary, width: ZetaBorders.medium);
+                }
+                return null;
+              },
+            ),
+          ),
+          child: AnimatedContainer(
+            duration: ZetaAnimationLength.normal,
+            child: Padding(
+              padding: widget.expanded
+                  ? EdgeInsets.symmetric(
+                      horizontal: Zeta.of(context).spacing.large,
+                      vertical: Zeta.of(context).spacing.medium,
+                    )
+                  : EdgeInsets.all(widget.size.padding(context)),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  ZetaIcon(
+                    widget.icon,
+                    size: widget.size.iconSize(context),
+                    color: widget.onPressed != null
+                        ? widget.type.iconColors(context)
+                        : Zeta.of(context).colors.mainDisabled,
+                  ),
+                  if (widget.expanded && widget.label != null)
+                    Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          widget.label!,
+                          style: ZetaTextStyles.labelLarge.apply(color: foregroundColor),
+                        ),
+                      ],
+                    ),
+                ].divide(SizedBox(width: Zeta.of(context).spacing.small)).toList(),
+              ),
+            ),
           ),
         ),
-      ),
+        if (!widget.expanded && widget.label != null)
+          Container(
+            margin: EdgeInsets.only(top: Zeta.of(context).spacing.minimum),
+            width: 100, // TODODE: Is there a better way to do this?
+            alignment: Alignment.center,
+            child: Text(
+              widget.label!,
+              style: ZetaTextStyles.bodyMedium,
+              textAlign: TextAlign.center,
+            ),
+          ),
+      ],
     );
   }
 }
 
 extension on ZetaFabType {
-  ZetaColorSwatch colors(BuildContext context) {
+  Color backgroundColor(ZetaSemanticColors colors) {
+    switch (this) {
+      case ZetaFabType.primary:
+        return colors.statePrimaryEnabled;
+      case ZetaFabType.secondary:
+        return colors.stateSecondaryEnabled;
+      case ZetaFabType.inverse:
+        return colors.stateInverseEnabled;
+    }
+  }
+
+  Color foregroundColor(ZetaSemanticColors colors) {
+    switch (this) {
+      case ZetaFabType.secondary:
+        return colors.mainDefault;
+      case ZetaFabType.primary:
+      case ZetaFabType.inverse:
+        return colors.mainInverse;
+    }
+  }
+
+  Color hoverColor(ZetaSemanticColors colors) {
+    switch (this) {
+      case ZetaFabType.primary:
+        return colors.statePrimaryHover;
+      case ZetaFabType.secondary:
+        return colors.stateSecondaryHover;
+      case ZetaFabType.inverse:
+        return colors.stateInverseHover;
+    }
+  }
+
+  Color selectedColor(ZetaSemanticColors colors) {
+    switch (this) {
+      case ZetaFabType.primary:
+        return colors.statePrimarySelected;
+      case ZetaFabType.secondary:
+        return colors.stateSecondarySelected;
+      case ZetaFabType.inverse:
+        return colors.stateInverseSelected;
+    }
+  }
+
+  Color iconColors(BuildContext context) {
     final zetaColors = Zeta.of(context).colors;
     switch (this) {
       case ZetaFabType.primary:
-        return zetaColors.primary;
-      case ZetaFabType.secondary:
-        return zetaColors.secondary;
       case ZetaFabType.inverse:
-        return zetaColors.cool;
+        return zetaColors.mainInverse;
+      case ZetaFabType.secondary:
+        return zetaColors.mainDefault;
     }
   }
 }

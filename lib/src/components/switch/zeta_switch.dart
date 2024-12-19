@@ -26,6 +26,11 @@ enum ZetaSwitchType {
 ///
 /// Switch has styles for Android, iOS and Web.
 /// {@category Components}
+///
+/// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=229-41&node-type=canvas&m=dev
+///
+/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/switch
+///
 // TODO(UX-1137): Add web icon support.
 class ZetaSwitch extends StatelessWidget {
   /// Constructor for [ZetaSwitch].
@@ -83,13 +88,15 @@ class ZetaSwitch extends StatelessWidget {
       trackOutlineColor: const WidgetStatePropertyAll(Colors.transparent),
       trackColor: WidgetStateProperty.resolveWith((states) {
         if (states.contains(WidgetState.disabled)) {
-          return zetaColors.cool.shade30;
+          return zetaColors.surfaceDisabled;
+        } else if (states.contains(WidgetState.selected)) {
+          return zetaColors.mainPrimary;
         } else {
-          return states.contains(WidgetState.selected) ? zetaColors.primary : zetaColors.cool.shade50;
+          return zetaColors.mainDisabled;
         }
       }),
       thumbColor: WidgetStateProperty.resolveWith(
-        (states) => states.contains(WidgetState.disabled) ? zetaColors.cool.shade50 : zetaColors.cool.shade20,
+        (states) => states.contains(WidgetState.disabled) ? zetaColors.mainDisabled : zetaColors.mainInverse,
       ),
       value: value ?? false,
       onChanged: onChanged,

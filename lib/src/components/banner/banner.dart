@@ -3,14 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../../zeta_flutter.dart';
 
-/// [ZetaBanner] type.
-@Deprecated('Use ZetaBannerStatus instead. ' 'This widget has been renamed as of 0.11.0')
-typedef ZetaSystemBannerStatus = ZetaBannerStatus;
-
-/// Zeta Banner. Extends [MaterialBanner].
-@Deprecated('Use ZetaBanner instead. ' 'This widget has been renamed as of 0.11.0')
-typedef ZetaSystemBanner = ZetaBanner;
-
 /// [ZetaBanner] type
 enum ZetaBannerStatus {
   /// Primary background.
@@ -29,6 +21,10 @@ enum ZetaBannerStatus {
 /// A banner displays an important, succinct message, and provides action for users to address.
 /// It draws the attention to the message by displaying it at the top in various colors.
 /// {@category Components}
+///
+/// Figma: https://www.figma.com/file/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=22195-43965
+///
+/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/banners
 class ZetaBanner extends MaterialBanner {
   /// Constructor for [ZetaBanner]. See [MaterialBanner] for more information.
   ZetaBanner({
@@ -45,7 +41,10 @@ class ZetaBanner extends MaterialBanner {
     ZetaBannerStatus type = ZetaBannerStatus.primary,
 
     /// Whether the title should be centered.
-    bool titleStart = false,
+    bool titleCenter = false,
+
+    /// Whether the title should be centered.
+    @Deprecated('Use titleCenter instead. ' 'This attribute has been renamed as of 0.18.0') bool? titleStart,
 
     /// The trailing widget for the banner.
     Widget? trailing,
@@ -76,6 +75,8 @@ class ZetaBanner extends MaterialBanner {
                 }
               }
 
+              // ignore: no_leading_underscores_for_local_identifiers
+              final _titleCenter = titleStart ?? titleCenter;
               return ZetaRoundedScope(
                 rounded: rounded ?? context.rounded,
                 child: Semantics(
@@ -85,19 +86,39 @@ class ZetaBanner extends MaterialBanner {
                       color: foregroundColor,
                       overflow: TextOverflow.ellipsis,
                     ),
-                    child: Row(
-                      mainAxisAlignment: titleStart ? MainAxisAlignment.center : MainAxisAlignment.start,
+                    child: Stack(
+                      alignment: _titleCenter ? Alignment.center : Alignment.centerLeft,
                       children: [
                         if (leadingIcon != null)
-                          Padding(
-                            padding: EdgeInsets.only(right: Zeta.of(context).spacing.small),
-                            child: Icon(
-                              leadingIcon,
-                              color: foregroundColor,
-                              size: Zeta.of(context).spacing.xl_2,
+                          Positioned(
+                            left: 0,
+                            child: Padding(
+                              padding: EdgeInsets.only(right: Zeta.of(context).spacing.small),
+                              child: Icon(
+                                leadingIcon,
+                                color: foregroundColor,
+                                size: Zeta.of(context).spacing.xl_2,
+                              ),
                             ),
                           ),
-                        Flexible(child: Text(title)),
+                        Padding(
+                          padding:
+                              !_titleCenter && leadingIcon != null ? const EdgeInsets.only(left: 40) : EdgeInsets.zero,
+                          child: Text(
+                            title,
+                            style: ZetaTextStyles.labelLarge.copyWith(
+                              color: Zeta.of(context).colors.mainInverse,
+                            ),
+                          ),
+                        ),
+                        if (trailing != null)
+                          Positioned(
+                            right: 0,
+                            child: IconTheme(
+                              data: IconThemeData(color: _backgroundColorFromType(context, type).onColor),
+                              child: trailing,
+                            ),
+                          ),
                       ],
                     ),
                   ),
@@ -106,12 +127,7 @@ class ZetaBanner extends MaterialBanner {
             },
           ),
           backgroundColor: _backgroundColorFromType(context, type),
-          actions: [
-            IconTheme(
-              data: IconThemeData(color: _backgroundColorFromType(context, type).onColor),
-              child: trailing ?? const Nothing(),
-            ),
-          ],
+          actions: [const Nothing()],
         );
 
   static ZetaColorSwatch _backgroundColorFromType(BuildContext context, ZetaBannerStatus type) {
@@ -119,13 +135,13 @@ class ZetaBanner extends MaterialBanner {
 
     switch (type) {
       case ZetaBannerStatus.primary:
-        return zeta.colors.primary;
+        return zeta.colors.primitives.primary;
       case ZetaBannerStatus.positive:
-        return zeta.colors.surfacePositive;
+        return zeta.colors.primitives.green;
       case ZetaBannerStatus.warning:
-        return zeta.colors.orange;
+        return zeta.colors.primitives.orange;
       case ZetaBannerStatus.negative:
-        return zeta.colors.surfaceNegative;
+        return zeta.colors.primitives.red;
     }
   }
 }

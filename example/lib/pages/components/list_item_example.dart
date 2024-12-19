@@ -26,7 +26,7 @@ class _ListItemExampleState extends State<ListItemExample> {
     return ExampleScaffold(
       name: ListItemExample.name,
       child: Container(
-        color: zetaColors.surfaceSecondary,
+        color: zetaColors.surfaceWarm,
         child: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(16),
@@ -37,6 +37,14 @@ class _ListItemExampleState extends State<ListItemExample> {
                     ZetaListItem(
                       primaryText: 'List Item',
                       secondaryText: 'Descriptor',
+                    )),
+                _buildListItem(
+                    'Custom Title',
+                    ZetaListItem(
+                      title: ZetaButton(
+                        label: 'Custom Title Button',
+                        onPressed: () {},
+                      ),
                     )),
                 _buildListItem(
                   'Icon Left',

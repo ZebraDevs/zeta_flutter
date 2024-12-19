@@ -11,15 +11,17 @@ import 'pages/components/notification_list_item_widgetbook.dart';
 import 'pages/components/slider_widgetbook.dart';
 import 'pages/components/text_input_widgetbook.dart';
 import 'pages/components/top_app_bar_widgetbook.dart';
+import 'pages/components/avatar_rail_widgetbook.dart';
 import 'pages/components/avatar_widgetbook.dart';
 import 'pages/components/badges_widgetbook.dart';
 import 'pages/components/banner_widgetbook.dart';
 import 'pages/components/bottom_sheet_widgetbook.dart';
-import 'pages/components/breadcrumbs_widgetbook.dart';
+import 'pages/components/breadcrumb_widgetbook.dart';
 import 'pages/components/button_widgetbook.dart';
 import 'pages/components/chat_item_widgetbook.dart';
 import 'pages/components/checkbox_widgetbook.dart';
 import 'pages/components/chip_widgetbook.dart';
+import 'pages/components/comms_button_widgetbook.dart';
 import 'pages/components/contact_item_widgetbook.dart';
 import 'pages/components/date_input_widgetbook.dart';
 import 'pages/components/dial_pad_widgetbook.dart';
@@ -36,6 +38,7 @@ import 'pages/components/password_input_widgetbook.dart';
 import 'pages/components/phone_input_widgetbook.dart';
 import 'pages/components/progress_widgetbook.dart';
 import 'pages/components/radio_widgetbook.dart';
+import 'pages/components/range_selector_widgetbook.dart';
 import 'pages/components/screen_header_bar_widgetbook.dart';
 import 'pages/components/search_bar_widgetbook.dart';
 import 'pages/components/segmented_control_widgetbook.dart';
@@ -121,6 +124,13 @@ class _HotReloadState extends State<HotReload> {
           isInitiallyExpanded: false,
           children: [
             WidgetbookComponent(
+              name: 'Avatar',
+              useCases: [
+                WidgetbookUseCase(name: 'Avatar', builder: (context) => avatarUseCase(context)),
+                WidgetbookUseCase(name: 'Avatar Rail', builder: (context) => avatarRailUseCase(context)),
+              ],
+            ),
+            WidgetbookComponent(
               name: 'Top App Bar',
               useCases: [
                 WidgetbookUseCase(name: 'Default', builder: (context) => defaultTopAppBarUseCase(context)),
@@ -154,6 +164,7 @@ class _HotReloadState extends State<HotReload> {
                 WidgetbookUseCase(name: 'Filter Chip', builder: (context) => filterChipUseCase(context)),
                 WidgetbookUseCase(name: 'Input Chip', builder: (context) => inputChipUseCase(context)),
                 WidgetbookUseCase(name: 'Assist Chip', builder: (context) => assistChipUseCase(context)),
+                WidgetbookUseCase(name: 'Status Chip', builder: (context) => statusChipUseCase(context)),
               ],
             ),
             WidgetbookComponent(
@@ -180,11 +191,11 @@ class _HotReloadState extends State<HotReload> {
               ],
             ),
             WidgetbookUseCase(name: 'Accordion', builder: (context) => accordionUseCase(context)),
-            WidgetbookUseCase(name: 'Avatar', builder: (context) => avatarUseCase(context)),
             WidgetbookUseCase(name: 'Banners', builder: (context) => bannerUseCase(context)),
             WidgetbookUseCase(name: 'Bottom Sheet', builder: (context) => bottomSheetContentUseCase(context)),
-            WidgetbookUseCase(name: 'BreadCrumbs', builder: (context) => breadCrumbsUseCase(context)),
+            WidgetbookUseCase(name: 'Breadcrumb', builder: (context) => breadcrumbUseCase(context)),
             WidgetbookUseCase(name: 'Checkbox', builder: (context) => checkboxUseCase(context)),
+            WidgetbookUseCase(name: 'Comms Button', builder: (context) => commsButtonUseCase(context)),
             WidgetbookUseCase(name: 'Date Input', builder: (context) => dateInputUseCase(context)),
             WidgetbookUseCase(name: 'Dial Pad', builder: (context) => dialPadUseCase(context)),
             WidgetbookUseCase(name: 'Dialog', builder: (context) => dialogUseCase(context)),
@@ -202,6 +213,7 @@ class _HotReloadState extends State<HotReload> {
             WidgetbookUseCase(name: 'Segmented Control', builder: (context) => segmentedControlUseCase(context)),
             WidgetbookUseCase(name: 'Select Input', builder: (context) => selectInputUseCase(context)),
             WidgetbookUseCase(name: 'Slider', builder: (context) => sliderUseCase(context)),
+            WidgetbookUseCase(name: 'Range Selector', builder: (context) => rangeSelectorUseCase(context)),
             WidgetbookUseCase(name: 'Snack Bar', builder: (context) => snackBarUseCase(context)),
             WidgetbookUseCase(name: 'Stepper Input', builder: (context) => stepperInputUseCase(context)),
             WidgetbookUseCase(name: 'Stepper', builder: (context) => stepperUseCase(context)),
@@ -244,7 +256,7 @@ class _HotReloadState extends State<HotReload> {
         ZetaAddon(),
         InspectorAddon(enabled: false),
         ZoomAddon(initialZoom: 1.0),
-        TextScaleAddon(scales: [1.0, 1.2, 1.4, 1.6, 1.8, 2.0], initialScale: 1),
+        TextScaleAddon(min: 1, max: 2, divisions: 4, initialScale: 1),
       ],
     );
   }

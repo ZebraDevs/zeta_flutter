@@ -5,6 +5,10 @@ import '../../../zeta_flutter.dart';
 
 /// Zeta Button
 /// {@category Components}
+///
+/// Figma: https://www.figma.com/file/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=23126-110945
+///
+/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/buttons/button
 class ZetaButton extends ZetaStatelessWidget {
   ///Constructs [ZetaButton]
   const ZetaButton({
@@ -186,7 +190,6 @@ class ZetaButton extends ZetaStatelessWidget {
             context,
             borderType ?? (context.rounded ? ZetaWidgetBorder.rounded : ZetaWidgetBorder.sharp),
             type,
-            null,
           ),
           child: SelectionContainer.disabled(
             child: Row(
@@ -198,9 +201,12 @@ class ZetaButton extends ZetaStatelessWidget {
                     size: iconSize,
                   ),
                 if (label.isNotEmpty)
-                  Text(
-                    label,
-                    style: _textStyle,
+                  Flexible(
+                    child: Text(
+                      label,
+                      style: _textStyle,
+                      textAlign: TextAlign.center,
+                    ).paddingVertical(Zeta.of(context).spacing.minimum),
                   ),
                 if (trailingIcon != null)
                   Icon(
@@ -245,7 +251,7 @@ class ZetaButton extends ZetaStatelessWidget {
         return Zeta.of(context).spacing.medium;
 
       case ZetaWidgetSize.small:
-        return Zeta.of(context).spacing.minimum;
+        return Zeta.of(context).spacing.small;
     }
   }
 

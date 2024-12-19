@@ -10,6 +10,10 @@ import '../text_input/internal_text_input.dart';
 
 /// Class for [ZetaSelectInput].
 /// {@category Components}
+///
+/// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=229-39&node-type=canvas&m=dev
+///
+/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/select-input
 class ZetaSelectInput<T> extends ZetaFormField<T> {
   ///Constructor of [ZetaSelectInput]
   ZetaSelectInput({
@@ -50,6 +54,7 @@ class ZetaSelectInput<T> extends ZetaFormField<T> {
                 builder: (context, _, controller) {
                   return InternalTextInput(
                     size: size,
+                    constrained: true,
                     requirementLevel: requirementLevel,
                     disabled: disabled,
                     controller: state.inputController,
@@ -69,7 +74,7 @@ class ZetaSelectInput<T> extends ZetaFormField<T> {
                       icon: controller.isOpen ? ZetaIcons.expand_less : ZetaIcons.expand_more,
                       disabled: disabled,
                       size: size,
-                      color: colors.iconSubtle,
+                      color: colors.mainSubtle,
                       onTap: () => state.onIconTapped(controller),
                     ),
                   );

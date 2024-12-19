@@ -48,7 +48,7 @@ Widget navigationRailUseCase(BuildContext context) {
                           itemsList[selectedIndex!],
                           textAlign: TextAlign.center,
                           style: ZetaTextStyles.titleMedium.copyWith(
-                            color: zeta.colors.textDefault,
+                            color: zeta.colors.mainDefault,
                             fontWeight: FontWeight.bold,
                           ),
                         ),

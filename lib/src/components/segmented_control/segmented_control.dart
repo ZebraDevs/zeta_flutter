@@ -9,6 +9,10 @@ import '../../../zeta_flutter.dart';
 /// functions as a mutually exclusive button. Like buttons, segments can contain
 /// text or images. Segmented controls are often used to display different views.
 /// {@category Components}
+///
+/// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=1046-20148&node-type=canvas&m=dev
+///
+/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/segmented-control
 class ZetaSegmentedControl<T> extends ZetaStatefulWidget {
   /// Constructs an segmented control bar.
   const ZetaSegmentedControl({
@@ -148,7 +152,7 @@ class _ZetaSegmentedControlState<T> extends State<ZetaSegmentedControl<T>>
                 builder: (BuildContext context, Widget? child) {
                   return _SegmentedControlRenderWidget<T>(
                     highlightedIndex: highlightedIndex,
-                    thumbColor: colors.surfacePrimary,
+                    thumbColor: colors.surfaceDefault,
                     thumbScale: _thumbScaleAnimation.value,
                     rounded: rounded,
                     state: this,
@@ -228,7 +232,7 @@ class _SegmentState<T> extends State<_Segment<T>> with TickerProviderStateMixin<
                 data: IconThemeData(size: Zeta.of(context).spacing.xl),
                 child: DefaultTextStyle(
                   style: ZetaTextStyles.labelMedium.copyWith(
-                    color: colors.textDefault,
+                    color: colors.mainDefault,
                   ),
                   child: Padding(
                     padding: EdgeInsets.symmetric(

@@ -25,14 +25,20 @@ enum ZetaCircleSizes {
 
 /// Progress indicators express an unspecified wait time or display the length of a process.
 /// {@category Components}
+///
+/// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=229-22&node-type=canvas&m=dev
+///
+/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/progress/circle
 class ZetaProgressCircle extends ZetaProgress {
   /// Constructor for [ZetaProgressCircle]
   const ZetaProgressCircle({
     super.key,
     super.progress = 0,
+    super.maxValue = 1,
     this.size = ZetaCircleSizes.xl,
     super.rounded,
     this.onCancel,
+    this.label,
   });
 
   ///Size of [ZetaProgressCircle]
@@ -40,6 +46,9 @@ class ZetaProgressCircle extends ZetaProgress {
 
   /// Cancel function => cancel upload.
   final VoidCallback? onCancel;
+
+  /// Label for [ZetaProgressCircle], override default percentage label.
+  final String? label;
 
   @override
   State<ZetaProgressCircle> createState() => _ZetaProgressCircleState();
@@ -51,7 +60,9 @@ class ZetaProgressCircle extends ZetaProgress {
       ..add(EnumProperty<ZetaCircleSizes>('size', size))
       ..add(DoubleProperty('progress', progress))
       ..add(DiagnosticsProperty<bool>('rounded', rounded))
-      ..add(ObjectFlagProperty<VoidCallback?>.has('onCancel', onCancel));
+      ..add(ObjectFlagProperty<VoidCallback?>.has('onCancel', onCancel))
+      ..add(DoubleProperty('maxValue', maxValue))
+      ..add(StringProperty('label', label));
   }
 }
 
@@ -81,26 +92,26 @@ class _ZetaProgressCircleState extends ZetaProgressState<ZetaProgressCircle> {
 
   @override
   Widget build(BuildContext context) {
-    final textVal = '${(widget.progress * 100).round()}%';
+    final textVal = widget.label ?? '${(widget.progress * 100).round()}%';
     final colors = Zeta.of(context).colors;
     final textWidget = Text(
       textVal,
-      style: widget.size != ZetaCircleSizes.s
-          ? ZetaTextStyles.labelSmall
-          : ZetaTextStyles.labelSmall.copyWith(fontSize: Zeta.of(context).spacing.small),
+      style: _getTextSize(),
     );
+    final size = _getSize(context);
 
     return ConstrainedBox(
-      constraints: BoxConstraints.tight(_getSize()),
+      constraints: BoxConstraints.tight(size),
       child: AnimatedBuilder(
         animation: controller,
         builder: (_, child) {
           return CustomPaint(
-            size: _getSize(),
+            size: _getSize(context),
             painter: _CirclePainter(
               progress: animation.value,
               rounded: context.rounded,
               context: context,
+              maxValue: widget.maxValue,
             ),
             child: Center(
               child: widget.size == ZetaCircleSizes.xs
@@ -149,7 +160,7 @@ class _ZetaProgressCircleState extends ZetaProgressState<ZetaProgressCircle> {
     );
   }
 
-  Size _getSize() {
+  Size _getSize(BuildContext context) {
     switch (widget.size) {
       case ZetaCircleSizes.xs:
         return Size(Zeta.of(context).spacing.xl_2, Zeta.of(context).spacing.xl_2);
@@ -161,6 +172,19 @@ class _ZetaProgressCircleState extends ZetaProgressState<ZetaProgressCircle> {
         return Size(Zeta.of(context).spacing.xl_8, Zeta.of(context).spacing.xl_8);
       case ZetaCircleSizes.xl:
         return Size(Zeta.of(context).spacing.xl_9, Zeta.of(context).spacing.xl_9);
+    }
+  }
+
+  TextStyle _getTextSize() {
+    switch (widget.size) {
+      case ZetaCircleSizes.xs:
+      case ZetaCircleSizes.s:
+        return ZetaTextStyles.labelSmall;
+      case ZetaCircleSizes.m:
+        return ZetaTextStyles.labelMedium;
+      case ZetaCircleSizes.l:
+      case ZetaCircleSizes.xl:
+        return ZetaTextStyles.labelLarge;
     }
   }
 
@@ -181,7 +205,12 @@ typedef CirclePainter = _CirclePainter;
 /// Class definition for [_CirclePainter]
 class _CirclePainter extends CustomPainter {
   ///Constructor for [_CirclePainter]
-  _CirclePainter({this.progress = 0, this.rounded = true, required this.context});
+  _CirclePainter({
+    this.progress = 0,
+    this.rounded = true,
+    required this.context,
+    this.maxValue = 1,
+  });
 
   ///Percentage of progress in decimal value, defaults to 0
   final double progress;
@@ -191,6 +220,9 @@ class _CirclePainter extends CustomPainter {
 
   final BuildContext context;
 
+  /// Maximum value for progress, defaults to 1
+  final double maxValue;
+
   final _paint = Paint();
 
   @override
@@ -199,14 +231,14 @@ class _CirclePainter extends CustomPainter {
     _paint
       ..strokeWidth = Zeta.of(context).spacing.minimum
       ..style = PaintingStyle.stroke
-      ..color = Zeta.of(context).colors.primary;
+      ..color = Zeta.of(context).colors.mainPrimary;
 
     const double fullCircle = 2 * math.pi;
 
     canvas.drawArc(
       Rect.fromLTRB(0, 0, size.width, size.height),
       3 * math.pi / 2,
-      progress * fullCircle,
+      progress / maxValue * fullCircle,
       false,
       _paint,
     );

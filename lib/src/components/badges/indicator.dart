@@ -13,6 +13,10 @@ enum ZetaIndicatorType {
 
 /// Indicators are used to show the status of a user or any messages/notifications they might have.
 /// {@category Components}
+///
+/// Figma: https://www.figma.com/file/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?type=design&node-id=22000-10045&mode=design&t=6mhOcUUr3tgxxFdd-0
+///
+/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/badge/indicators
 class ZetaIndicator extends ZetaStatelessWidget {
   /// Constructor for [ZetaIndicator].
   const ZetaIndicator({
@@ -88,6 +92,7 @@ class ZetaIndicator extends ZetaStatelessWidget {
     int? value,
     bool? inverse,
     Key? key,
+    String? semanticLabel,
   }) {
     return ZetaIndicator(
       key: key ?? this.key,
@@ -96,29 +101,34 @@ class ZetaIndicator extends ZetaStatelessWidget {
       icon: icon ?? this.icon,
       value: value ?? this.value,
       inverse: inverse ?? this.inverse,
+      semanticLabel: semanticLabel ?? this.semanticLabel,
     );
   }
 
   @override
   Widget build(BuildContext context) {
     final zetaColors = Zeta.of(context).colors;
-    final Color backgroundColor = (type == ZetaIndicatorType.icon ? zetaColors.blue : zetaColors.surfaceNegative);
-    final Color foregroundColor = backgroundColor.onColor;
+    final Color backgroundColor =
+        (type == ZetaIndicatorType.icon ? zetaColors.mainPrimary : zetaColors.surfaceNegative);
+    final Color foregroundColor = zetaColors.mainInverse;
     final sizePixels = _getSizePixels(size, type, context);
 
     return Semantics(
-      value: semanticLabel ?? value?.toString() ?? '',
+      label: semanticLabel,
+      container: true,
       child: Container(
         width: sizePixels + Zeta.of(context).spacing.minimum,
         height: sizePixels + Zeta.of(context).spacing.minimum,
-        decoration: BoxDecoration(
-          border: Border.all(
-            width: ZetaBorders.medium,
-            color: Zeta.of(context).colors.borderSubtle,
-          ),
-          color: (inverse ? foregroundColor : Colors.transparent),
-          borderRadius: Zeta.of(context).radius.full,
-        ),
+        decoration: type == ZetaIndicatorType.icon
+            ? BoxDecoration(
+                border: Border.all(
+                  width: ZetaBorders.medium,
+                  color: Zeta.of(context).colors.borderPure,
+                ),
+                color: (inverse ? foregroundColor : Colors.transparent),
+                borderRadius: Zeta.of(context).radius.full,
+              )
+            : null,
         child: Center(
           child: Container(
             width: sizePixels,
@@ -151,11 +161,15 @@ class ZetaIndicator extends ZetaStatelessWidget {
         );
       case ZetaIndicatorType.notification:
         return Center(
-          child: Text(
-            value.formatMaxChars(),
-            style: ZetaTextStyles.labelIndicator.copyWith(
-              color: foregroundColor,
-              height: size == ZetaWidgetSize.large ? 1 : (12 / 16),
+          child: ExcludeSemantics(
+            excluding: semanticLabel != null,
+            child: Text(
+              value.formatMaxChars(),
+              style: ZetaTextStyles.labelIndicator.copyWith(
+                color: foregroundColor,
+                fontSize: size == ZetaWidgetSize.large ? 12 : 11,
+                height: size == ZetaWidgetSize.large ? 1 : (0.5 / 16),
+              ),
             ),
           ),
         );

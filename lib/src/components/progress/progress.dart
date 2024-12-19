@@ -10,14 +10,21 @@ abstract class ZetaProgress extends ZetaStatefulWidget {
     super.key,
     super.rounded,
     this.progress = 0,
+    this.maxValue = 1,
   });
 
   /// ZetaProgress value, decimal value ranging from 0.0 - 1.0, 0.5 = 50%
   final double progress;
+
+  /// Maximum value for progress, defaults to 1
+  final double maxValue;
+
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DoubleProperty('progress', progress));
+    properties
+      ..add(DoubleProperty('progress', progress))
+      ..add(DoubleProperty('maxValue', maxValue));
   }
 }
 
@@ -48,7 +55,7 @@ abstract class ZetaProgressState<T extends ZetaProgress> extends State<T> with T
     ).animate(controller)
       ..addListener(() {
         setState(() {
-          progress = animation.value;
+          progress = animation.value / widget.maxValue;
         });
       });
   }
@@ -65,10 +72,12 @@ abstract class ZetaProgressState<T extends ZetaProgress> extends State<T> with T
 
     setState(() {
       animation = Tween<double>(
-        begin: progress,
+        begin: progress * widget.maxValue,
         end: newProgress,
       ).animate(controller);
-      controller.forward(from: progress);
+      controller
+        ..reset()
+        ..forward(from: 0);
     });
   }
 

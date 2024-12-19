@@ -4,6 +4,10 @@ import '../../../zeta_flutter.dart';
 
 /// A single row that contains avatar, title and subtitle.
 /// {@category Components}
+///
+/// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=24828-46282&node-type=canvas&m=dev
+///
+/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/list-items/contact-item
 class ZetaContactItem extends ZetaStatelessWidget {
   /// Constructs [ZetaContactItem].
   const ZetaContactItem({
@@ -45,7 +49,7 @@ class ZetaContactItem extends ZetaStatelessWidget {
         button: true,
         child: SelectionContainer.disabled(
           child: Material(
-            color: colors.surfacePrimary,
+            color: colors.surfaceDefault,
             child: DecoratedBox(
               decoration: BoxDecoration(
                 border: enabledDivider ? Border(bottom: BorderSide(color: colors.borderDisabled)) : null,
@@ -72,7 +76,7 @@ class ZetaContactItem extends ZetaStatelessWidget {
                               children: [
                                 DefaultTextStyle(
                                   style: ZetaTextStyles.bodyMedium.copyWith(
-                                    color: colors.textDefault,
+                                    color: colors.mainDefault,
                                   ),
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
@@ -80,7 +84,7 @@ class ZetaContactItem extends ZetaStatelessWidget {
                                 ),
                                 DefaultTextStyle(
                                   style: ZetaTextStyles.bodySmall.copyWith(
-                                    color: colors.textSubtle,
+                                    color: colors.mainSubtle,
                                   ),
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
