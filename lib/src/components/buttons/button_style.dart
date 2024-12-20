@@ -31,13 +31,9 @@ enum ZetaButtonType {
   /// Background: None.
   /// Border: None.
   /// Foreground color: Primary; defaults to blue.
-  text,
-}
+  text;
 
-/// Button utility functions for styling
-extension ButtonFunctions on ZetaButtonType {
-  /// Returns background color based on [ZetaButtonType]
-  Color backgroundColor(ZetaColors colors) {
+  Color _backgroundColor(ZetaColors colors) {
     switch (this) {
       case ZetaButtonType.primary:
         return colors.statePrimaryEnabled;
@@ -55,7 +51,7 @@ extension ButtonFunctions on ZetaButtonType {
   }
 
   /// Returns hover color based on [ZetaButtonType]
-  Color hoverColor(ZetaColors colors) {
+  Color _hoverColor(ZetaColors colors) {
     switch (this) {
       case ZetaButtonType.primary:
         return colors.statePrimaryHover;
@@ -73,7 +69,7 @@ extension ButtonFunctions on ZetaButtonType {
   }
 
   /// Returns pressed color based on [ZetaButtonType]
-  Color pressedColor(ZetaColors colors) {
+  Color _pressedColor(ZetaColors colors) {
     switch (this) {
       case ZetaButtonType.primary:
         return colors.statePrimarySelected;
@@ -91,10 +87,7 @@ extension ButtonFunctions on ZetaButtonType {
   }
 
   /// Returns if button has border
-  bool get border => this == ZetaButtonType.outline || this == ZetaButtonType.outlineSubtle;
-
-  ///Returns if button is solid
-  bool get solid => index < 4;
+  bool get _border => this == ZetaButtonType.outline || this == ZetaButtonType.outlineSubtle;
 }
 
 ///Border utility functions
@@ -119,9 +112,9 @@ ButtonStyle buttonStyle(
   ZetaButtonType type,
 ) {
   final ZetaColors colors = Zeta.of(context).colors;
-  final Color backgroundColor = type.backgroundColor(colors);
-  final Color backgroundColorHover = type.hoverColor(colors);
-  final Color backgroundColorPressed = type.pressedColor(colors);
+  final Color backgroundColor = type._backgroundColor(colors);
+  final Color backgroundColorHover = type._hoverColor(colors);
+  final Color backgroundColorPressed = type._pressedColor(colors);
 
   return ButtonStyle(
     minimumSize: WidgetStateProperty.all(Size.square(Zeta.of(context).spacing.xl_4)),
@@ -165,14 +158,14 @@ ButtonStyle buttonStyle(
       return null;
     }),
     side: WidgetStateProperty.resolveWith((Set<WidgetState> states) {
-      if (type.border && states.contains(WidgetState.disabled)) {
+      if (type._border && states.contains(WidgetState.disabled)) {
         return BorderSide(color: colors.borderDisabled);
       }
       // TODO(UX-1134): This removes a defualt border when focused, rather than adding a second border when focused.
       if (states.contains(WidgetState.focused)) {
         return BorderSide(color: colors.borderPrimary, width: ZetaBorders.medium);
       }
-      if (type.border) {
+      if (type._border) {
         return BorderSide(
           color: type == ZetaButtonType.outline ? colors.borderPrimaryMain : colors.borderSubtle,
         );
