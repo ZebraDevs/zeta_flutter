@@ -32,7 +32,7 @@ class NotificationListItemExample extends StatelessWidget {
                   avatar: ZetaAvatar.initials(
                 initials: "JS",
                 lowerBadge: ZetaAvatarBadge.icon(
-                  color: ZetaColors().surfacePositive,
+                  color: Zeta.of(context).colors.surfacePositive,
                   icon: Icons.check,
                 ),
               )),
@@ -63,7 +63,7 @@ class NotificationListItemExample extends StatelessWidget {
                   avatar: ZetaAvatar.initials(
                 initials: "JS",
                 lowerBadge: ZetaAvatarBadge.icon(
-                  color: ZetaColors().surfacePositive,
+                  color: Zeta.of(context).colors.surfacePositive,
                   icon: Icons.check,
                 ),
               )),
@@ -88,7 +88,7 @@ class NotificationListItemExample extends StatelessWidget {
                   initials: "JS",
                   semanticUpperBadgeLabel: 'Urgent',
                   lowerBadge: ZetaAvatarBadge.icon(
-                    color: ZetaColors().surfacePositive,
+                    color: Zeta.of(context).colors.surfacePositive,
                     icon: Icons.check,
                   ),
                 ),

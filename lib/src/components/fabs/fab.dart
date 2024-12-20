@@ -13,7 +13,61 @@ enum ZetaFabType {
   secondary,
 
   /// Inverse color scheme. Defaults to dark grey.
-  inverse
+  inverse;
+
+  Color _backgroundColor(ZetaColors colors) {
+    switch (this) {
+      case ZetaFabType.primary:
+        return colors.statePrimaryEnabled;
+      case ZetaFabType.secondary:
+        return colors.stateSecondaryEnabled;
+      case ZetaFabType.inverse:
+        return colors.stateInverseEnabled;
+    }
+  }
+
+  Color _foregroundColor(ZetaColors colors) {
+    switch (this) {
+      case ZetaFabType.secondary:
+        return colors.mainDefault;
+      case ZetaFabType.primary:
+      case ZetaFabType.inverse:
+        return colors.mainInverse;
+    }
+  }
+
+  Color _hoverColor(ZetaColors colors) {
+    switch (this) {
+      case ZetaFabType.primary:
+        return colors.statePrimaryHover;
+      case ZetaFabType.secondary:
+        return colors.stateSecondaryHover;
+      case ZetaFabType.inverse:
+        return colors.stateInverseHover;
+    }
+  }
+
+  Color _selectedColor(ZetaColors colors) {
+    switch (this) {
+      case ZetaFabType.primary:
+        return colors.statePrimarySelected;
+      case ZetaFabType.secondary:
+        return colors.stateSecondarySelected;
+      case ZetaFabType.inverse:
+        return colors.stateInverseSelected;
+    }
+  }
+
+  Color _iconColors(BuildContext context) {
+    final zetaColors = Zeta.of(context).colors;
+    switch (this) {
+      case ZetaFabType.primary:
+      case ZetaFabType.inverse:
+        return zetaColors.mainInverse;
+      case ZetaFabType.secondary:
+        return zetaColors.mainDefault;
+    }
+  }
 }
 
 ///Defines the size of the floating action button
@@ -22,7 +76,19 @@ enum ZetaFabSize {
   small,
 
   /// [large] 96 pixels
-  large,
+  large;
+
+  /// Size of icon based on Fab size
+  double iconSize(BuildContext context) => {
+        ZetaFabSize.small: Zeta.of(context).spacing.xl_2,
+        ZetaFabSize.large: Zeta.of(context).spacing.xl_5,
+      }[this]!;
+
+  /// Padding based on Fab size
+  double padding(BuildContext context) => {
+        ZetaFabSize.small: Zeta.of(context).spacing.large,
+        ZetaFabSize.large: Zeta.of(context).spacing.minimum * 7.5, // TODO(UX-1202): ZetaSpacingBase
+      }[this]!;
 }
 
 /// Zeta Floating Action Button Component.
@@ -114,8 +180,11 @@ class ZetaFAB extends StatefulWidget {
 class _ZetaFABState extends State<ZetaFAB> {
   @override
   Widget build(BuildContext context) {
-    final colors = widget.type.colors(context);
-    final backgroundColor = widget.type == ZetaFabType.inverse ? colors.shade80 : colors.shade60;
+    final colors = Zeta.of(context).colors;
+    final Color backgroundColor = widget.type._backgroundColor(colors);
+    final Color foregroundColor = widget.type._foregroundColor(colors);
+    final Color backgroundColorHover = widget.type._hoverColor(colors);
+    final Color backgroundColorSelected = widget.type._selectedColor(colors);
 
     return Column(
       mainAxisSize: MainAxisSize.min,
@@ -130,13 +199,13 @@ class _ZetaFABState extends State<ZetaFAB> {
             ),
             backgroundColor: WidgetStateProperty.resolveWith((states) {
               if (states.contains(WidgetState.disabled)) {
-                return Zeta.of(context).colors.surfaceDisabled;
+                return colors.stateDisabledDisabled;
               }
               if (states.contains(WidgetState.pressed)) {
-                return colors.selected;
+                return backgroundColorSelected;
               }
               if (states.contains(WidgetState.hovered)) {
-                return colors.hover;
+                return backgroundColorHover;
               }
               return backgroundColor;
             }),
@@ -144,7 +213,7 @@ class _ZetaFABState extends State<ZetaFAB> {
               (Set<WidgetState> states) {
                 if (states.contains(WidgetState.focused)) {
                   // TODO(UX-1134): This removes a defualt border when focused, rather than adding a second border when focused.
-                  return BorderSide(color: Zeta.of(context).colors.blue.shade50, width: ZetaBorders.medium);
+                  return BorderSide(color: Zeta.of(context).colors.borderPrimary, width: ZetaBorders.medium);
                 }
                 return null;
               },
@@ -166,8 +235,8 @@ class _ZetaFABState extends State<ZetaFAB> {
                     widget.icon,
                     size: widget.size.iconSize(context),
                     color: widget.onPressed != null
-                        ? widget.type.iconColors(context)
-                        : Zeta.of(context).colors.iconDisabled,
+                        ? widget.type._iconColors(context)
+                        : Zeta.of(context).colors.mainDisabled,
                   ),
                   if (widget.expanded && widget.label != null)
                     Row(
@@ -175,7 +244,7 @@ class _ZetaFABState extends State<ZetaFAB> {
                       children: [
                         Text(
                           widget.label!,
-                          style: ZetaTextStyles.labelLarge,
+                          style: ZetaTextStyles.labelLarge.apply(color: foregroundColor),
                         ),
                       ],
                     ),
@@ -200,31 +269,6 @@ class _ZetaFABState extends State<ZetaFAB> {
   }
 }
 
-extension on ZetaFabType {
-  ZetaColorSwatch colors(BuildContext context) {
-    final zetaColors = Zeta.of(context).colors;
-    switch (this) {
-      case ZetaFabType.primary:
-        return zetaColors.primary;
-      case ZetaFabType.secondary:
-        return zetaColors.secondary;
-      case ZetaFabType.inverse:
-        return zetaColors.cool;
-    }
-  }
-
-  Color iconColors(BuildContext context) {
-    final zetaColors = Zeta.of(context).colors;
-    switch (this) {
-      case ZetaFabType.primary:
-      case ZetaFabType.inverse:
-        return zetaColors.iconInverse;
-      case ZetaFabType.secondary:
-        return zetaColors.iconDefault;
-    }
-  }
-}
-
 extension on ZetaWidgetBorder {
   OutlinedBorder buttonShape({required bool isExpanded, required ZetaFabSize size, required BuildContext context}) {
     if (this == ZetaWidgetBorder.full && !isExpanded) {
@@ -246,17 +290,5 @@ extension on ZetaWidgetBorder {
                 : Zeta.of(context).spacing.large,
       ),
     );
-  }
-}
-
-extension on ZetaFabSize {
-  double iconSize(BuildContext context) {
-    return this == ZetaFabSize.small ? Zeta.of(context).spacing.xl_2 : Zeta.of(context).spacing.xl_5;
-  }
-
-  double padding(BuildContext context) {
-    return this == ZetaFabSize.small
-        ? Zeta.of(context).spacing.large
-        : Zeta.of(context).spacing.minimum * 7.5; // TODO(UX-1202): ZetaSpacingBase
   }
 }

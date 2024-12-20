@@ -361,9 +361,9 @@ class _ZetaCommsButtonState extends State<ZetaCommsButton> {
       case ZetaCommsButtonType.negative:
         return Zeta.of(context).colors.surfaceNegative;
       case ZetaCommsButtonType.off:
-        return Zeta.of(context).colors.textDefault;
+        return Zeta.of(context).colors.mainDefault;
       case ZetaCommsButtonType.on:
-        return Zeta.of(context).colors.textInverse;
+        return Zeta.of(context).colors.mainInverse;
       case ZetaCommsButtonType.warning:
         return Zeta.of(context).colors.surfaceDefault;
     }
@@ -375,9 +375,9 @@ class _ZetaCommsButtonState extends State<ZetaCommsButton> {
       case ZetaCommsButtonType.positive:
       case ZetaCommsButtonType.negative:
       case ZetaCommsButtonType.off:
-        return Zeta.of(context).colors.iconInverse;
+        return Zeta.of(context).colors.mainInverse;
       case ZetaCommsButtonType.on:
-        return Zeta.of(context).colors.iconDefault;
+        return Zeta.of(context).colors.mainDefault;
       case ZetaCommsButtonType.warning:
         return Zeta.of(context).colors.surfaceNegative;
     }

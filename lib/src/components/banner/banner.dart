@@ -3,14 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../../zeta_flutter.dart';
 
-/// [ZetaBanner] type.
-@Deprecated('Use ZetaBannerStatus instead. ' 'This widget has been renamed as of 0.11.0')
-typedef ZetaSystemBannerStatus = ZetaBannerStatus;
-
-/// Zeta Banner. Extends [MaterialBanner].
-@Deprecated('Use ZetaBanner instead. ' 'This widget has been renamed as of 0.11.0')
-typedef ZetaSystemBanner = ZetaBanner;
-
 /// [ZetaBanner] type
 enum ZetaBannerStatus {
   /// Primary background.
@@ -69,7 +61,7 @@ class ZetaBanner extends MaterialBanner {
           content: Builder(
             builder: (context) {
               final backgroundColor = _backgroundColorFromType(context, type);
-              final foregroundColor = backgroundColor.onColor;
+              final foregroundColor = Zeta.of(context).colors.mainInverse;
               if (!kIsWeb && PlatformIs.android && context.mounted) {
                 // ignore: invalid_use_of_visible_for_testing_member
                 final statusBarColor = SystemChrome.latestStyle?.statusBarColor;
@@ -115,7 +107,7 @@ class ZetaBanner extends MaterialBanner {
                           child: Text(
                             title,
                             style: ZetaTextStyles.labelLarge.copyWith(
-                              color: Zeta.of(context).colors.textInverse,
+                              color: foregroundColor,
                             ),
                           ),
                         ),
@@ -123,7 +115,7 @@ class ZetaBanner extends MaterialBanner {
                           Positioned(
                             right: 0,
                             child: IconTheme(
-                              data: IconThemeData(color: _backgroundColorFromType(context, type).onColor),
+                              data: IconThemeData(color: foregroundColor),
                               child: trailing,
                             ),
                           ),
@@ -143,13 +135,13 @@ class ZetaBanner extends MaterialBanner {
 
     switch (type) {
       case ZetaBannerStatus.primary:
-        return zeta.colors.primary;
+        return zeta.colors.primitives.primary;
       case ZetaBannerStatus.positive:
-        return zeta.colors.surfacePositive;
+        return zeta.colors.primitives.green;
       case ZetaBannerStatus.warning:
-        return zeta.colors.orange;
+        return zeta.colors.primitives.orange;
       case ZetaBannerStatus.negative:
-        return zeta.colors.surfaceNegative;
+        return zeta.colors.primitives.red;
     }
   }
 }

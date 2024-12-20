@@ -98,14 +98,15 @@ class _ZetaProgressCircleState extends ZetaProgressState<ZetaProgressCircle> {
       textVal,
       style: _getTextSize(),
     );
+    final size = _getSize(context);
 
     return ConstrainedBox(
-      constraints: BoxConstraints.tight(_getSize()),
+      constraints: BoxConstraints.tight(size),
       child: AnimatedBuilder(
         animation: controller,
         builder: (_, child) {
           return CustomPaint(
-            size: _getSize(),
+            size: size,
             painter: _CirclePainter(
               progress: animation.value,
               rounded: context.rounded,
@@ -159,7 +160,7 @@ class _ZetaProgressCircleState extends ZetaProgressState<ZetaProgressCircle> {
     );
   }
 
-  Size _getSize() {
+  Size _getSize(BuildContext context) {
     switch (widget.size) {
       case ZetaCircleSizes.xs:
         return Size(Zeta.of(context).spacing.xl_2, Zeta.of(context).spacing.xl_2);
@@ -230,7 +231,7 @@ class _CirclePainter extends CustomPainter {
     _paint
       ..strokeWidth = Zeta.of(context).spacing.minimum
       ..style = PaintingStyle.stroke
-      ..color = Zeta.of(context).colors.primary;
+      ..color = Zeta.of(context).colors.mainPrimary;
 
     const double fullCircle = 2 * math.pi;
 
