@@ -1,10 +1,8 @@
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
-import 'color_swatch.dart';
-import 'colors_base.dart';
-import 'constants.dart';
-import 'contrast.dart';
+import 'package:flutter/scheduler.dart';
+import '../../zeta_flutter.dart';
 
 /// Extensions on [Color] to brighten, lighten, darken and blend colors and
 /// can get a shade for gradients.
@@ -70,9 +68,9 @@ extension ZetaColorExtensions on Color {
   /// It will return a color chosen according to the brightness of this color.
   ///
   /// * The [Color] instance on which this getter is called is used to determine the brightness based on [ThemeData.estimateBrightnessForColor] method.
-  /// * If the estimated brightness is light, it will return a color [ZetaColorBase.cool].shade90.
-  /// * If the estimated brightness is not light (meaning it's dark), it will return [ZetaColorBase.white].
-  Color get onColor => isLight ? ZetaColorBase.cool.shade90 : ZetaColorBase.white;
+  /// * If the estimated brightness is light, it will return a color [Colors.black87].
+  /// * If the estimated brightness is not light (meaning it's dark), it will return [Colors.white].
+  Color get onColor => isLight ? Colors.black87 : Colors.white;
 
   /// Returns true if the color's brightness is [Brightness.light], else false.
   bool get isLight => ThemeData.estimateBrightnessForColor(this) == Brightness.light;
@@ -247,14 +245,14 @@ extension ZetaColorExtensions on Color {
   ///
   /// * [primary] (Default = [kZetaSwatchPrimaryIndex]) - The primary color index for the swatch. This number should be a key in the swatch map.
   /// * [targetContrasts] (Default = [kZetaSwatchTargetContrasts]) - Map of target contrast values for each color index.
-  /// * [background] (Default = [ZetaColorBase.white]) - The color used to determine the contrast of the colors in the swatch. Generally, this should be the background color that the color swatch will be displayed on.
+  /// * [background] (Default = [Colors.white]) - The color used to determine the contrast of the colors in the swatch. Generally, this should be the background color that the color swatch will be displayed on.
   /// * [adjustPrimary] (Default = true) - Determines whether to adjust the contrast of the primary color on the background color. Useful in cases the brand color is being used.
   ///
   /// Returns a Map<int, Color> object.
   Map<int, Color> generateSwatch({
     int primary = kZetaSwatchPrimaryIndex,
     Map<int, double> targetContrasts = kZetaSwatchTargetContrasts,
-    Color background = ZetaColorBase.white,
+    Color background = Colors.white,
     bool adjustPrimary = true,
   }) {
     assert(
@@ -319,4 +317,60 @@ extension ZetaColorExtensions on Color {
     // TODO(UX-1353): Remove this method as int color values should be removed
     return _intAlpha << 24 | _intRed << 16 | _intGreen << 8 | _intBlue;
   }
+}
+
+/// Extensions on [ZetaColors] to provide additional functionality.
+///
+/// ZetaColors is a generated class, and so should not be manually edited.
+/// Hence, any functions or properties needed should be added in this extension instead.
+extension ZetaSemanticColorExtension on ZetaColors {
+  /// List of colorful colors.
+  List<ZetaColorSwatch> get rainbow => [
+        primitives.red,
+        primitives.orange,
+        primitives.yellow,
+        primitives.green,
+        primitives.blue,
+        primitives.teal,
+        primitives.pink,
+      ];
+
+  /// Map of colorful colors.
+  Map<String, ZetaColorSwatch> get rainbowMap => {
+        'red': primitives.red,
+        'orange': primitives.orange,
+        'yellow': primitives.yellow,
+        'green': primitives.green,
+        'blue': primitives.blue,
+        'teal': primitives.teal,
+        'pink': primitives.pink,
+      };
+
+  /// Creates a [ColorScheme] based on the current semantic colors.
+  ColorScheme get toColorScheme => ColorScheme(
+        brightness: primitives.brightness,
+        primary: mainPrimary,
+        onPrimary: mainPrimary.onColor,
+        secondary: mainSecondary,
+        onSecondary: mainSecondary.onColor,
+        error: mainNegative,
+        onError: mainNegative.onColor,
+        surface: surfaceDefault,
+        onSurface: mainDefault,
+      );
+}
+
+/// Extensions on [ThemeMode] to provide additional functionality.
+extension ZetaThemeModeExtension on ThemeMode {
+  /// Returns true if the theme mode is dark.
+  bool get isDark => this == ThemeMode.system
+      ? SchedulerBinding.instance.platformDispatcher.platformBrightness.isDark
+      : this == ThemeMode.dark;
+
+  /// Returns the brightness value based on the theme mode.
+  Brightness get brightness => isDark ? Brightness.dark : Brightness.light;
+}
+
+extension on Brightness {
+  bool get isDark => this == Brightness.dark;
 }

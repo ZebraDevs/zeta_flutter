@@ -13,15 +13,7 @@ class ZetaThemeModeSwitch extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final zeta = Zeta.of(context);
-
-    ZetaColors zetaColors(ThemeMode mode) {
-      if ((mode == ThemeMode.system && MediaQuery.of(context).platformBrightness == Brightness.light) ||
-          mode == ThemeMode.light) {
-        return zeta.themeData.colorsLight;
-      } else {
-        return zeta.themeData.colorsDark;
-      }
-    }
+    final colors = zeta.colors;
 
     return DropdownButtonHideUnderline(
       child: DropdownButton<ThemeMode>(
@@ -31,20 +23,19 @@ class ZetaThemeModeSwitch extends StatelessWidget {
         icon: Nothing(),
         dropdownColor: zeta.colors.borderDisabled,
         items: _themes.map((e) {
-          final colors = zetaColors(e);
           return DropdownMenuItem<ThemeMode>(
             value: e,
             alignment: Alignment.center,
             child: ZetaAvatar(
               size: ZetaAvatarSize.xxs,
-              backgroundColor: colors.primary.surface,
+              backgroundColor: colors.surfaceDefault,
               image: ZetaIcon(
                 e == ThemeMode.system
                     ? Icons.system_security_update_good
                     : e == ThemeMode.light
                         ? Icons.light_mode
                         : Icons.dark_mode,
-                color: colors.primary,
+                color: colors.mainPrimary,
               ),
             ),
           );

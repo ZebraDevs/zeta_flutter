@@ -133,7 +133,6 @@ class ZetaIconButton extends ZetaStatelessWidget {
             context,
             borderType ?? (context.rounded ? ZetaWidgetBorder.rounded : ZetaWidgetBorder.sharp),
             type,
-            null,
           ),
           child: SelectionContainer.disabled(
             child: ZetaIcon(icon, size: _iconSize(context)).paddingAll(_iconPadding(context)),

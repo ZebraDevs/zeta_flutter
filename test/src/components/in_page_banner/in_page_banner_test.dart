@@ -65,7 +65,7 @@ void main() {
 
       expect(box.decoration.runtimeType, BoxDecoration);
       final BoxDecoration decoration = box.decoration as BoxDecoration;
-      expect(decoration.color, ZetaColorBase.purple.shade10);
+      expect(decoration.color, const ZetaPrimitivesLight().purple.shade10);
     });
 
     testWidgets('negative background colour is correct', (WidgetTester tester) async {
@@ -77,7 +77,7 @@ void main() {
       final DecoratedBox box = tester.firstWidget(decoratedBoxFinder);
       expect(box.decoration.runtimeType, BoxDecoration);
       final BoxDecoration decoration = box.decoration as BoxDecoration;
-      expect(decoration.color, ZetaColorBase.red.shade10);
+      expect(decoration.color, const ZetaPrimitivesLight().red.shade10);
     });
 
     testWidgets('positive background colour is correct', (WidgetTester tester) async {
@@ -89,7 +89,7 @@ void main() {
       final DecoratedBox box = tester.firstWidget(decoratedBoxFinder);
       expect(box.decoration.runtimeType, BoxDecoration);
       final BoxDecoration decoration = box.decoration as BoxDecoration;
-      expect(decoration.color, ZetaColorBase.green.shade10);
+      expect(decoration.color, const ZetaPrimitivesLight().green.shade10);
     });
 
     testWidgets('neutral background colour is correct', (WidgetTester tester) async {
@@ -101,7 +101,7 @@ void main() {
       final DecoratedBox box = tester.firstWidget(decoratedBoxFinder);
       expect(box.decoration.runtimeType, BoxDecoration);
       final BoxDecoration decoration = box.decoration as BoxDecoration;
-      expect(decoration.color, ZetaColorBase.cool.shade10);
+      expect(decoration.color, const ZetaPrimitivesLight().pure.shade0);
     });
   });
   group('Interaction Tests', () {
