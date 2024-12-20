@@ -20,7 +20,7 @@ class Zeta extends InheritedWidget {
     this.customThemeId,
     ZetaPrimitives? customPrimitives,
     ZetaSemantics? customSemantics,
-    // String? fontFamily,
+    // String? fontFamily, TODO(tokens): Add support for custom fonts
   })  : _customPrimitives = customPrimitives,
         _customSemantics = customSemantics;
 

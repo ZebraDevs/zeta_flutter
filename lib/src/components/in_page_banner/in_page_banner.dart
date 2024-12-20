@@ -136,6 +136,7 @@ class ZetaInPageBanner extends ZetaStatelessWidget {
   }
 }
 
+/// Extensions on [ZetaWidgetStatus].
 extension on ZetaWidgetStatus {
   IconData get icon {
     switch (this) {
@@ -150,11 +151,8 @@ extension on ZetaWidgetStatus {
         return ZetaIcons.info;
     }
   }
-}
 
-/// Extensions on [ZetaWidgetStatus].
-extension on ZetaWidgetStatus {
-  /// Gets background color from [ZetaWidgetStatus].
+  /// Gets background color from [ZetaWidgetStatus]
   Color backgroundColor(ZetaColors colors) {
     switch (this) {
       case ZetaWidgetStatus.info:

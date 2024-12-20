@@ -31,7 +31,55 @@ enum ZetaAvatarSize {
   xxs,
 
   /// [xxxs] 24 pixels
-  xxxs,
+  xxxs;
+
+  double _pixelSize(BuildContext context) => ZetaAvatar.pixelSize(context, this);
+
+  double _borderSize(BuildContext context) {
+    // TODO(UX-1304): Awaiting updated design specs for border size
+    switch (this) {
+      case ZetaAvatarSize.xxxl:
+        return 11.12;
+      case ZetaAvatarSize.xxl:
+        return 6.67;
+      case ZetaAvatarSize.xl:
+        return 4.45;
+      case ZetaAvatarSize.l:
+        return 3.56;
+      case ZetaAvatarSize.m:
+        return 2.66;
+      case ZetaAvatarSize.s:
+        return 2.22;
+      case ZetaAvatarSize.xs:
+        return 2;
+      case ZetaAvatarSize.xxs:
+        return 1.78;
+      case ZetaAvatarSize.xxxs:
+        return 1.33;
+    }
+  }
+
+  double _fontSize(BuildContext context) => ZetaAvatar.fontSize(context, this);
+
+  TextStyle _labelStyle(BuildContext context) {
+    switch (this) {
+      case ZetaAvatarSize.xxxl:
+        return ZetaTextStyles.displaySmall;
+      case ZetaAvatarSize.xxl:
+      case ZetaAvatarSize.xl:
+        return ZetaTextStyles.bodyLarge;
+      case ZetaAvatarSize.l:
+        return ZetaTextStyles.bodyMedium;
+      case ZetaAvatarSize.m:
+        return ZetaTextStyles.bodySmall;
+      case ZetaAvatarSize.s:
+      case ZetaAvatarSize.xs:
+      case ZetaAvatarSize.xxs:
+        return ZetaTextStyles.bodyXSmall;
+      case ZetaAvatarSize.xxxs:
+        return ZetaTextStyles.bodyXSmall;
+    }
+  }
 }
 
 /// An avatar is a visual representation of a user or entity.
@@ -223,7 +271,7 @@ class ZetaAvatar extends ZetaStatelessWidget {
   Widget build(BuildContext context) {
     final zetaColors = Zeta.of(context).colors;
 
-    final borderSize = size.borderSize;
+    final borderSize = size._borderSize;
 
     final innerChild = image ??
         (initials != null
@@ -233,7 +281,7 @@ class ZetaAvatar extends ZetaStatelessWidget {
                     initials!,
                     style: initialTextStyle ??
                         TextStyle(
-                          fontSize: size.fontSize(context),
+                          fontSize: size._fontSize(context),
                           letterSpacing: Zeta.of(context).spacing.none,
                           color: backgroundColor?.onColor,
                           fontWeight: FontWeight.w500,
@@ -248,7 +296,7 @@ class ZetaAvatar extends ZetaStatelessWidget {
       child: innerChild,
     );
 
-    final pSize = size.pixelSize(context);
+    final pSize = size._pixelSize(context);
 
     return ZetaRoundedScope(
       rounded: context.rounded,
@@ -327,7 +375,7 @@ class ZetaAvatar extends ZetaStatelessWidget {
                   child: Text(
                     label!,
                     style: labelTextStyle ??
-                        size.labelStyle(context).copyWith(
+                        size._labelStyle(context).copyWith(
                               color: zetaColors.mainSubtle,
                             ),
                     maxLines: labelMaxLines,
@@ -391,60 +439,6 @@ class ZetaAvatar extends ZetaStatelessWidget {
   /// Font size for initials
   static double fontSize(BuildContext context, ZetaAvatarSize size) {
     return pixelSize(context, size) * 4 / 9;
-  }
-}
-
-extension on ZetaAvatarSize {
-  double pixelSize(BuildContext context) {
-    return ZetaAvatar.pixelSize(context, this);
-  }
-
-  double borderSize(BuildContext context) {
-    // TODO(UX-1304): Awaiting updated design specs for border size
-    switch (this) {
-      case ZetaAvatarSize.xxxl:
-        return 11.12;
-      case ZetaAvatarSize.xxl:
-        return 6.67;
-      case ZetaAvatarSize.xl:
-        return 4.45;
-      case ZetaAvatarSize.l:
-        return 3.56;
-      case ZetaAvatarSize.m:
-        return 2.66;
-      case ZetaAvatarSize.s:
-        return 2.22;
-      case ZetaAvatarSize.xs:
-        return 2;
-      case ZetaAvatarSize.xxs:
-        return 1.78;
-      case ZetaAvatarSize.xxxs:
-        return 1.33;
-    }
-  }
-
-  double fontSize(BuildContext context) {
-    return ZetaAvatar.fontSize(context, this);
-  }
-
-  TextStyle labelStyle(BuildContext context) {
-    switch (this) {
-      case ZetaAvatarSize.xxxl:
-        return ZetaTextStyles.displaySmall;
-      case ZetaAvatarSize.xxl:
-      case ZetaAvatarSize.xl:
-        return ZetaTextStyles.bodyLarge;
-      case ZetaAvatarSize.l:
-        return ZetaTextStyles.bodyMedium;
-      case ZetaAvatarSize.m:
-        return ZetaTextStyles.bodySmall;
-      case ZetaAvatarSize.s:
-      case ZetaAvatarSize.xs:
-      case ZetaAvatarSize.xxs:
-        return ZetaTextStyles.bodyXSmall;
-      case ZetaAvatarSize.xxxs:
-        return ZetaTextStyles.bodyXSmall;
-    }
   }
 }
 
@@ -594,11 +588,11 @@ class ZetaAvatarBadge extends StatelessWidget {
   }
 
   double _getContainerSize(BuildContext context) {
-    return size.pixelSize(context) / 3;
+    return size._pixelSize(context) / 3;
   }
 
   double _getBorderSize(BuildContext context) {
-    return size.pixelSize(context) / 48;
+    return size._pixelSize(context) / 48;
   }
 
   @override
