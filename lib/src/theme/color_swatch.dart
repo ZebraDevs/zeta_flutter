@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'color_extensions.dart';
 import 'contrast.dart';
 
-/// {@template zeta-color-swatch}
+/// {@template zeta-colors-swatch}
 /// Contains shades from 10 (light) to 100 (dark).
 ///
 /// See also:
