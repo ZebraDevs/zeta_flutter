@@ -112,7 +112,7 @@ void main() {
       expect(
         widget.decoration,
         BoxDecoration(
-          color: ZetaColors.light().surfaceWarm,
+          color: const ZetaColorsAA(primitives: ZetaPrimitivesLight()).surfaceWarm,
           borderRadius: BorderRadius.circular(8),
         ),
       );
@@ -133,12 +133,12 @@ void main() {
       expect(
         widget.decoration,
         BoxDecoration(
-          color: ZetaColors.light().surfaceWarm,
+          color: const ZetaColorsAA(primitives: ZetaPrimitivesLight()).surfaceWarm,
         ),
       );
     });
 
-    testWidgets('text style is ZetaTextStyles.bodyXSmall and text color is textDefault', (WidgetTester tester) async {
+    testWidgets('text style is ZetaTextStyles.bodyXSmall and text color is mainDefault', (WidgetTester tester) async {
       await tester.pumpWidget(
         const TestApp(
           home: ZetaStatusChip(
@@ -149,7 +149,12 @@ void main() {
       final Finder finder = find.byType(Text);
       expect(finder, findsOneWidget);
       final Text widget = tester.widget(finder);
-      expect(widget.style, ZetaTextStyles.bodyXSmall.copyWith(color: ZetaColors.light().textDefault));
+      expect(
+        widget.style,
+        ZetaTextStyles.bodyXSmall.copyWith(
+          color: const ZetaColorsAA(primitives: ZetaPrimitivesLight()).mainDefault,
+        ),
+      );
     });
   });
 

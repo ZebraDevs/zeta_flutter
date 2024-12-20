@@ -241,11 +241,12 @@ class _ZetaGroupButtonState extends State<ZetaGroupButton> {
     ZetaColors colors,
     bool finalButton,
   ) {
+    // TODO(UX-1200): Focus border does not work as expected.
     if (_controller.value.contains(WidgetState.focused)) {
-      return BorderSide(color: colors.blue.shade50, width: ZetaBorders.medium);
+      return BorderSide(color: colors.borderPrimary, width: ZetaBorders.medium);
     }
     if (_controller.value.contains(WidgetState.disabled)) {
-      return BorderSide(color: colors.cool.shade40);
+      return BorderSide(color: colors.borderDisabled);
     }
     return BorderSide(
       color: finalButton ? colors.borderDefault : colors.borderSubtle,
@@ -293,6 +294,7 @@ class _ZetaGroupButtonState extends State<ZetaGroupButton> {
       leadingIcon = IconTheme(
         data: IconThemeData(
           size: iconSize,
+          color: widget.isInverse ? colors.mainInverse : colors.mainDefault,
         ),
         child: selectedItem!.icon!,
       );
@@ -307,7 +309,7 @@ class _ZetaGroupButtonState extends State<ZetaGroupButton> {
           left: borderSide,
           bottom: borderSide,
           right: _controller.value.contains(WidgetState.focused)
-              ? BorderSide(color: colors.blue.shade50, width: 2)
+              ? BorderSide(color: colors.borderPrimary, width: 2)
               : (widget.isFinal)
                   ? borderSide
                   : BorderSide.none,
@@ -330,21 +332,21 @@ class _ZetaGroupButtonState extends State<ZetaGroupButton> {
                 return colors.surfaceDisabled;
               }
               if (states.contains(WidgetState.pressed)) {
-                return widget.isInverse ? colors.cool.shade100 : colors.primary.shade10;
+                return widget.isInverse ? colors.stateInverseSelected : colors.stateDefaultSelected;
               }
               if (states.contains(WidgetState.hovered)) {
-                return widget.isInverse ? colors.cool.shade90 : colors.cool.shade20;
+                return widget.isInverse ? colors.stateInverseHover : colors.surfaceHover;
               }
-              if (widget.isInverse) return colors.cool.shade100;
+              if (widget.isInverse) return colors.stateInverseEnabled;
 
-              return colors.surfacePrimary;
+              return colors.surfaceDefault;
             }),
             foregroundColor: WidgetStateProperty.resolveWith<Color?>((states) {
               if (states.contains(WidgetState.disabled)) {
-                return colors.textDisabled;
+                return colors.mainDisabled;
               }
-              if (widget.isInverse) return colors.cool.shade100.onColor;
-              return colors.textDefault;
+              if (widget.isInverse) return colors.mainInverse;
+              return colors.mainDefault;
             }),
             elevation: WidgetStatePropertyAll(Zeta.of(context).spacing.none),
             padding: WidgetStateProperty.all(EdgeInsets.zero),

@@ -1,5 +1,4 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
@@ -204,11 +203,17 @@ void main() {
       await gesture.moveTo(tester.getCenter(find.byType(ZetaButton)));
       await tester.pumpAndSettle();
 
-      expect(filledButton.style?.backgroundColor?.resolve({WidgetState.hovered}), ZetaColorBase.blue.shade50);
+      expect(
+        filledButton.style?.backgroundColor?.resolve({WidgetState.hovered}),
+        const ZetaPrimitivesLight().blue.shade50,
+      );
 
       await gesture.down(tester.getCenter(find.byType(ZetaButton)));
       await tester.pumpAndSettle();
-      expect(filledButton.style?.backgroundColor?.resolve({WidgetState.pressed}), ZetaColorBase.blue.shade70);
+      expect(
+        filledButton.style?.backgroundColor?.resolve({WidgetState.pressed}),
+        const ZetaPrimitivesLight().blue.shade70,
+      );
 
       await gesture.up();
 
@@ -239,7 +244,7 @@ void main() {
       expect(button.size, ZetaWidgetSize.medium);
       expect(
         filledButton.style?.side?.resolve({WidgetState.focused}),
-        BorderSide(color: ZetaColorBase.blue, width: ZetaBorders.medium),
+        BorderSide(color: const ZetaPrimitivesLight().blue.shade50, width: ZetaBorders.medium),
       );
     });
   });

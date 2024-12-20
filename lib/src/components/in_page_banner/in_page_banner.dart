@@ -47,16 +47,18 @@ class ZetaInPageBanner extends ZetaStatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Zeta.of(context);
-    final colors = status.colorSwatch(context);
     final hasTitle = title != null;
     final rounded = context.rounded;
+    final Color backgroundColor = status.backgroundColor(theme.colors);
+    final Color borderColor = status.borderColor(theme.colors);
+    final Color iconColor = status.foregroundColor(theme.colors);
 
     return ZetaRoundedScope(
       rounded: rounded,
       child: Container(
         decoration: BoxDecoration(
-          color: colors.surface,
-          border: Border.all(color: colors.border),
+          color: backgroundColor,
+          border: Border.all(color: borderColor),
           borderRadius: rounded ? Zeta.of(context).radius.minimal : Zeta.of(context).radius.none,
         ),
         padding: EdgeInsetsDirectional.only(
@@ -77,7 +79,7 @@ class ZetaInPageBanner extends ZetaStatelessWidget {
                     ZetaIcon(
                       customIcon ?? status.icon,
                       size: Zeta.of(context).spacing.xl,
-                      color: status == ZetaWidgetStatus.neutral ? theme.colors.textDefault : colors.icon,
+                      color: iconColor,
                     ),
                     SizedBox(width: Zeta.of(context).spacing.small),
                     Expanded(
@@ -90,7 +92,7 @@ class ZetaInPageBanner extends ZetaStatelessWidget {
                               style: ZetaTextStyles.labelLarge.copyWith(height: 20 / 16),
                             ).paddingBottom(Zeta.of(context).spacing.minimum),
                           DefaultTextStyle(
-                            style: ZetaTextStyles.bodySmall.apply(color: theme.colors.textDefault),
+                            style: ZetaTextStyles.bodySmall.apply(color: theme.colors.mainDefault),
                             child: content,
                           ),
                           if (actions.isNotEmpty)
@@ -146,6 +148,57 @@ extension on ZetaWidgetStatus {
       case ZetaWidgetStatus.neutral:
       case ZetaWidgetStatus.info:
         return ZetaIcons.info;
+    }
+  }
+}
+
+/// Extensions on [ZetaWidgetStatus].
+extension on ZetaWidgetStatus {
+  /// Gets background color from [ZetaWidgetStatus].
+  Color backgroundColor(ZetaColors colors) {
+    switch (this) {
+      case ZetaWidgetStatus.info:
+        return colors.surfaceInfoSubtle;
+      case ZetaWidgetStatus.positive:
+        return colors.surfacePositiveSubtle;
+      case ZetaWidgetStatus.warning:
+        return colors.surfaceWarningSubtle;
+      case ZetaWidgetStatus.negative:
+        return colors.surfaceNegativeSubtle;
+      case ZetaWidgetStatus.neutral:
+        return colors.surfaceDefault;
+    }
+  }
+
+  /// Gets foreground color from [ZetaWidgetStatus].
+  Color foregroundColor(ZetaColors colors) {
+    switch (this) {
+      case ZetaWidgetStatus.info:
+        return colors.mainInfo;
+      case ZetaWidgetStatus.positive:
+        return colors.mainPositive;
+      case ZetaWidgetStatus.warning:
+        return colors.mainWarning;
+      case ZetaWidgetStatus.negative:
+        return colors.mainNegative;
+      case ZetaWidgetStatus.neutral:
+        return colors.mainDefault;
+    }
+  }
+
+  /// Gets border color from [ZetaWidgetStatus].
+  Color borderColor(ZetaColors colors) {
+    switch (this) {
+      case ZetaWidgetStatus.info:
+        return colors.borderInfo;
+      case ZetaWidgetStatus.positive:
+        return colors.borderPositive;
+      case ZetaWidgetStatus.warning:
+        return colors.borderWarning;
+      case ZetaWidgetStatus.negative:
+        return colors.borderNegative;
+      case ZetaWidgetStatus.neutral:
+        return colors.borderDefault;
     }
   }
 }

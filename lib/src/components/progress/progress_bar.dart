@@ -29,7 +29,7 @@ class ZetaProgressBar extends ZetaProgress {
     super.key,
     super.rounded,
     required super.progress,
-    required this.type,
+    this.type = ZetaProgressBarType.standard,
     this.isThin = false,
     this.label,
   });

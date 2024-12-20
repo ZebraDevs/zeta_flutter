@@ -37,35 +37,37 @@ class ZetaBottomSheet extends ZetaStatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = Zeta.of(context).colors;
+    final spacing = Zeta.of(context).spacing;
+    final radius = Zeta.of(context).radius;
 
     return ZetaRoundedScope(
       rounded: context.rounded,
       child: Container(
         padding: EdgeInsets.fromLTRB(
-          Zeta.of(context).spacing.xl,
-          Zeta.of(context).spacing.none,
-          Zeta.of(context).spacing.xl,
-          Zeta.of(context).spacing.xl,
+          spacing.xl,
+          spacing.none,
+          spacing.xl,
+          spacing.xl,
         ),
         decoration: BoxDecoration(
-          color: colors.surfaceSecondary,
+          color: colors.surfaceDefault,
           borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(Zeta.of(context).spacing.xl_2),
-            topRight: Radius.circular(Zeta.of(context).spacing.xl_2),
+            topLeft: Radius.circular(spacing.xl_2),
+            topRight: Radius.circular(spacing.xl_2),
           ),
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             Align(
-              child: SizedBox(
-                height: Zeta.of(context).spacing.xl_5,
-                child: Padding(
-                  padding: EdgeInsets.only(top: Zeta.of(context).spacing.small),
-                  child: ZetaIcon(
-                    Icons.maximize,
-                    size: Zeta.of(context).spacing.xl_9,
+              child: Padding(
+                padding: EdgeInsets.only(top: spacing.small),
+                child: Container(
+                  width: 40,
+                  height: 4,
+                  decoration: BoxDecoration(
                     color: colors.surfaceDisabled,
+                    borderRadius: radius.full,
                   ),
                 ),
               ),
@@ -73,8 +75,8 @@ class ZetaBottomSheet extends ZetaStatelessWidget {
             if (title != null)
               Padding(
                 padding: EdgeInsets.symmetric(
-                  horizontal: Zeta.of(context).spacing.medium,
-                  vertical: Zeta.of(context).spacing.xl_2,
+                  horizontal: spacing.medium,
+                  vertical: spacing.xl_2,
                 ),
                 child: Align(
                   alignment: centerTitle ? Alignment.center : Alignment.centerLeft,
@@ -85,7 +87,7 @@ class ZetaBottomSheet extends ZetaStatelessWidget {
                 ),
               ),
             Material(
-              color: colors.surfaceSecondary,
+              color: colors.surfaceDefault,
               child: body ?? const Nothing(),
             ),
           ],

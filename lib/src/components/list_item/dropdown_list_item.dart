@@ -172,7 +172,7 @@ class _ZetaDropdownListItemState extends State<ZetaDropdownListItem> with Single
                       duration: ZetaAnimationLength.fast,
                       child: ZetaIcon(
                         ZetaIcons.expand_more,
-                        color: colors.iconSubtle,
+                        color: colors.mainSubtle,
                       ),
                     ),
                     onPressed: _onTap,

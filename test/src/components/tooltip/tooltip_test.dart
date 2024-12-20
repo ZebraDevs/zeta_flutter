@@ -18,7 +18,7 @@ void main() {
   const String parentFolder = 'tooltip';
 
   final mockZeta = MockZeta();
-  when(mockZeta.radius).thenReturn(const ZetaRadiiAA(primitives: ZetaPrimitivesLight()));
+  when(mockZeta.radius).thenReturn(const ZetaRadiusAA(primitives: ZetaPrimitivesLight()));
 
   const goldenFile = GoldenFiles(component: parentFolder);
   setUpAll(() {
@@ -198,8 +198,8 @@ void main() {
   group('Golden Tests', () {
     goldenTest(
       goldenFile,
-      const Scaffold(
-        body: ZetaTooltip(
+      const TestApp(
+        home: ZetaTooltip(
           arrowDirection: ZetaTooltipArrowDirection.up,
           child: Text('Tooltip up'),
         ),
@@ -209,8 +209,8 @@ void main() {
     );
     goldenTest(
       goldenFile,
-      const Scaffold(
-        body: ZetaTooltip(
+      const TestApp(
+        home: ZetaTooltip(
           child: Text('Tooltip down'),
         ),
       ),
@@ -219,8 +219,8 @@ void main() {
     );
     goldenTest(
       goldenFile,
-      const Scaffold(
-        body: ZetaTooltip(
+      const TestApp(
+        home: ZetaTooltip(
           arrowDirection: ZetaTooltipArrowDirection.left,
           child: Text('Tooltip left'),
         ),
@@ -230,8 +230,8 @@ void main() {
     );
     goldenTest(
       goldenFile,
-      const Scaffold(
-        body: ZetaTooltip(
+      const TestApp(
+        home: ZetaTooltip(
           arrowDirection: ZetaTooltipArrowDirection.right,
           child: Text('Tooltip right'),
         ),

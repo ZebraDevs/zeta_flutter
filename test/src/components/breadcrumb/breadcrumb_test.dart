@@ -190,12 +190,12 @@ void main() {
         if (i == children.length - 1) {
           expect(
             (tester.firstWidget(labelFinder.at(i)) as Text).style?.color,
-            colors.black,
+            colors.primitives.pure.shade1000,
           );
         } else {
           expect(
             (tester.firstWidget(labelFinder.at(i)) as Text).style?.color,
-            colors.textSubtle,
+            colors.mainSubtle,
           );
         }
       }
@@ -203,7 +203,7 @@ void main() {
       for (int i = 0; i < iconFinder.evaluate().length; i++) {
         expect(
           (tester.firstWidget(iconFinder.at(i)) as ZetaIcon).color,
-          colors.textSubtle,
+          colors.mainSubtle,
         );
       }
     });

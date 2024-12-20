@@ -105,7 +105,7 @@ class _ZetaDialog extends ZetaStatelessWidget {
     return ZetaRoundedScope(
       rounded: context.rounded,
       child: AlertDialog(
-        surfaceTintColor: zeta.colors.surfacePrimary,
+        surfaceTintColor: zeta.colors.surfaceDefault,
         insetPadding: EdgeInsets.symmetric(
           horizontal: Zeta.of(context).spacing.xl,
           vertical: Zeta.of(context).spacing.xl_2,
@@ -143,7 +143,7 @@ class _ZetaDialog extends ZetaStatelessWidget {
                 top: Zeta.of(context).spacing.xl_2,
               ),
         titleTextStyle: zetaTextTheme.headlineSmall?.copyWith(
-          color: zeta.colors.textDefault,
+          color: zeta.colors.mainDefault,
         ),
         content: Text(message),
         contentPadding: context.deviceType == DeviceType.mobilePortrait
@@ -155,8 +155,8 @@ class _ZetaDialog extends ZetaStatelessWidget {
                 bottom: Zeta.of(context).spacing.xl_2,
               ),
         contentTextStyle: context.deviceType == DeviceType.mobilePortrait
-            ? zetaTextTheme.bodySmall?.copyWith(color: zeta.colors.textDefault)
-            : zetaTextTheme.bodyMedium?.copyWith(color: zeta.colors.textDefault),
+            ? zetaTextTheme.bodySmall?.copyWith(color: zeta.colors.mainDefault)
+            : zetaTextTheme.bodyMedium?.copyWith(color: zeta.colors.mainDefault),
         actions: [
           if (context.deviceType == DeviceType.mobilePortrait)
             Column(

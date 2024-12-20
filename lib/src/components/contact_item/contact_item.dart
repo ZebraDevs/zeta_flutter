@@ -49,7 +49,7 @@ class ZetaContactItem extends ZetaStatelessWidget {
         button: true,
         child: SelectionContainer.disabled(
           child: Material(
-            color: colors.surfacePrimary,
+            color: colors.surfaceDefault,
             child: DecoratedBox(
               decoration: BoxDecoration(
                 border: enabledDivider ? Border(bottom: BorderSide(color: colors.borderDisabled)) : null,
@@ -76,7 +76,7 @@ class ZetaContactItem extends ZetaStatelessWidget {
                               children: [
                                 DefaultTextStyle(
                                   style: ZetaTextStyles.bodyMedium.copyWith(
-                                    color: colors.textDefault,
+                                    color: colors.mainDefault,
                                   ),
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
@@ -84,7 +84,7 @@ class ZetaContactItem extends ZetaStatelessWidget {
                                 ),
                                 DefaultTextStyle(
                                   style: ZetaTextStyles.bodySmall.copyWith(
-                                    color: colors.textSubtle,
+                                    color: colors.mainSubtle,
                                   ),
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
