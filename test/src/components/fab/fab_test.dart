@@ -170,7 +170,10 @@ void main() {
       await gesture.moveTo(tester.getCenter(fabFinder));
       await tester.pumpAndSettle();
 
-      expect(filledButton.style?.backgroundColor?.resolve({WidgetState.hovered}), ZetaColorBase.yellow.shade70);
+      expect(
+        filledButton.style?.backgroundColor?.resolve({WidgetState.hovered}),
+        const ZetaPrimitivesLight().yellow.shade30,
+      );
 
       await gesture.moveTo(Offset.zero);
       await tester.pumpAndSettle();
@@ -179,7 +182,7 @@ void main() {
       await tester.pumpAndSettle();
       expect(
         filledButton.style?.side?.resolve({WidgetState.focused}),
-        BorderSide(color: ZetaColorBase.blue[50]!, width: ZetaBorders.medium),
+        BorderSide(color: const ZetaPrimitivesLight().blue[50]!, width: ZetaBorders.medium),
       );
     });
   });

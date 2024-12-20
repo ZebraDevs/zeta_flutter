@@ -183,9 +183,9 @@ class InternalTextInputState extends State<InternalTextInput> {
       return _colors.surfaceDisabled;
     }
     if (widget.errorText != null) {
-      return _colors.error.shade10;
+      return _colors.surfaceNegativeSubtle;
     }
-    return _colors.surfacePrimary;
+    return _colors.surfaceDefault;
   }
 
   TextStyle get _baseTextStyle {
@@ -213,9 +213,9 @@ class InternalTextInputState extends State<InternalTextInput> {
   }
 
   TextStyle get _affixStyle {
-    Color color = _colors.textSubtle;
+    Color color = _colors.mainSubtle;
     if (widget.disabled) {
-      color = _colors.textDisabled;
+      color = _colors.mainDisabled;
     }
     return _baseTextStyle.copyWith(color: color);
   }
@@ -348,7 +348,7 @@ class InternalTextInputState extends State<InternalTextInput> {
                       onSubmitted: widget.onSubmit,
                       style: _baseTextStyle,
                       textInputAction: widget.textInputAction,
-                      cursorErrorColor: _colors.error,
+                      cursorErrorColor: _colors.mainNegative,
                       obscureText: widget.obscureText,
                       focusNode: widget.focusNode,
                       decoration: InputDecoration(
@@ -372,7 +372,7 @@ class InternalTextInputState extends State<InternalTextInput> {
                         hintText: widget.placeholder,
                         errorText: widget.errorText,
                         hintStyle: _baseTextStyle.copyWith(
-                          color: widget.disabled ? _colors.textDisabled : _colors.textSubtle,
+                          color: widget.disabled ? _colors.mainDisabled : _colors.mainSubtle,
                         ),
                         errorStyle: const TextStyle(height: 0.001, color: Colors.transparent),
                       ),

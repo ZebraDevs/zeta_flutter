@@ -159,7 +159,7 @@ class ZetaNotificationListItem extends ZetaStatelessWidget {
                                         children: [
                                           if (!notificationRead)
                                             ZetaIndicator.icon(
-                                              color: ZetaColors().primary,
+                                              color: colors.mainPrimary,
                                               size: ZetaWidgetSize.small,
                                             ),
                                           SizedBox(
@@ -178,7 +178,7 @@ class ZetaNotificationListItem extends ZetaStatelessWidget {
                                           Text(
                                             notificationTime!,
                                             style: ZetaTextStyles.bodySmall.apply(
-                                              color: colors.textDisabled,
+                                              color: colors.mainDisabled,
                                             ),
                                           ),
                                         if (showBellIcon ?? false)
@@ -190,7 +190,7 @@ class ZetaNotificationListItem extends ZetaStatelessWidget {
                                             ),
                                             child: ZetaIcon(
                                               ZetaIcons.important_notification,
-                                              color: colors.white,
+                                              color: colors.mainInverse,
                                               size: Zeta.of(context).spacing.large,
                                             ),
                                           ),
@@ -209,10 +209,10 @@ class ZetaNotificationListItem extends ZetaStatelessWidget {
                                         ZetaIcon(
                                           ZetaIcons.attachment,
                                           size: Zeta.of(context).spacing.medium,
-                                          color: colors.primary,
+                                          color: colors.mainPrimary,
                                         ),
                                         DefaultTextStyle(
-                                          style: ZetaTextStyles.bodyXSmall.apply(color: colors.primary),
+                                          style: ZetaTextStyles.bodyXSmall.apply(color: colors.mainPrimary),
                                           child: attachment!,
                                         ),
                                       ],
@@ -239,12 +239,12 @@ class ZetaNotificationListItem extends ZetaStatelessWidget {
     final colors = Zeta.of(context).colors;
 
     return BoxDecoration(
-      color: notificationRead ? colors.surfacePrimary : colors.surfaceSelected,
+      color: notificationRead ? colors.surfaceDefault : colors.surfaceSelected,
       borderRadius: Zeta.of(context).radius.rounded,
       boxShadow: (showDivider ?? false)
           ? [
               BoxShadow(
-                color: colors.primary,
+                color: colors.mainPrimary,
                 offset: Offset(0, Zeta.of(context).spacing.minimum),
               ),
             ]

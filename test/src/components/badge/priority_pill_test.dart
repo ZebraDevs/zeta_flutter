@@ -1,4 +1,3 @@
-// ignore_for_file: avoid_dynamic_calls
 import 'package:flutter_test/flutter_test.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
@@ -21,16 +20,15 @@ void main() {
       'rounded': 'false',
       'isBadge': 'false',
       'index': '"1"',
-      'customColor':
-          'ZetaColorSwatch(4278219750, Brightness.light, ZetaContrast.aa, Color(0xfff1f8ff), Color(0xffe2f1ff), Color(0xffb7dbff), Color(0xff7ebeff), Color(0xff599fe5), Color(0xff0073e6), Color(0xff0061c2), Color(0xff004d99), Color(0xff002c58), Color(0xff101b25))',
+      'customColor': const ZetaPrimitivesLight().blue.toString(),
       'type': 'urgent',
       'size': 'large',
     };
     debugFillPropertiesTest(
-      const ZetaPriorityPill(
+      ZetaPriorityPill(
         label: 'Test label',
         rounded: false,
-        customColor: ZetaColorBase.blue,
+        customColor: const ZetaPrimitivesLight().blue,
         index: '1',
       ),
       debugFillProperties,

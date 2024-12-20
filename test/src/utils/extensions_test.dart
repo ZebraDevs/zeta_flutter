@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
-import 'package:mockito/mockito.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 import '../../test_utils/test_app.dart';
-import 'extensions_test.mocks.dart';
 
 @GenerateNiceMocks([
   MockSpec<BuildContext>(),
@@ -192,33 +190,6 @@ void main() {
       expect(123.formatMaxChars(2), '99+');
       expect(9.formatMaxChars(2), '9');
       expect(null.formatMaxChars(2), '');
-    });
-  });
-
-  group('ColorSwatches extension', () {
-    late MockBuildContext mockContext;
-    late MockZetaColors mockZetaColors;
-    late MockZeta mockZeta;
-
-    setUp(() {
-      mockZeta = MockZeta();
-      mockContext = MockBuildContext();
-      mockZetaColors = MockZetaColors();
-      when(mockContext.dependOnInheritedWidgetOfExactType<Zeta>()).thenReturn(mockZeta as Zeta?);
-      when(mockZeta.colors).thenReturn(mockZetaColors);
-      when(mockZetaColors.surfaceInfo).thenReturn(ZetaColorBase.purple);
-      when(mockZetaColors.surfacePositive).thenReturn(ZetaColorBase.green);
-      when(mockZetaColors.surfaceWarning).thenReturn(ZetaColorBase.orange);
-      when(mockZetaColors.surfaceNegative).thenReturn(ZetaColorBase.red);
-      when(mockZetaColors.cool).thenReturn(ZetaColorBase.cool);
-    });
-
-    test('colorSwatch returns correct color swatch for status', () {
-      expect(ZetaWidgetStatus.info.colorSwatch(mockContext), ZetaColorBase.purple);
-      expect(ZetaWidgetStatus.positive.colorSwatch(mockContext), ZetaColorBase.green);
-      expect(ZetaWidgetStatus.warning.colorSwatch(mockContext), ZetaColorBase.orange);
-      expect(ZetaWidgetStatus.negative.colorSwatch(mockContext), ZetaColorBase.red);
-      expect(ZetaWidgetStatus.neutral.colorSwatch(mockContext), ZetaColorBase.cool);
     });
   });
 

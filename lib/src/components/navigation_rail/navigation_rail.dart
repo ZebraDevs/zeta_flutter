@@ -191,11 +191,11 @@ class _ZetaNavigationRailItemContentState extends State<_ZetaNavigationRailItemC
                 color: widget.disabled
                     ? null
                     : widget.selected
-                        ? zeta.colors.blue.shade10
+                        ? zeta.colors.stateDefaultSelected
                         : _hovered
                             ? zeta.colors.surfaceHover
                             : null,
-                border: _focused ? Border.all(color: zeta.colors.blue, width: 2) : null,
+                border: _focused ? Border.all(color: zeta.colors.borderPrimary, width: 2) : null,
                 borderRadius: context.rounded ? Zeta.of(context).radius.rounded : null,
               ),
               child: ConstrainedBox(
@@ -217,10 +217,10 @@ class _ZetaNavigationRailItemContentState extends State<_ZetaNavigationRailItemC
                           IconTheme(
                             data: IconThemeData(
                               color: widget.disabled
-                                  ? zeta.colors.cool.shade50
+                                  ? zeta.colors.mainDisabled
                                   : widget.selected || _hovered
-                                      ? zeta.colors.textDefault
-                                      : zeta.colors.cool.shade70,
+                                      ? zeta.colors.mainDefault
+                                      : zeta.colors.mainSubtle,
                               size: Zeta.of(context).spacing.xl_2,
                             ),
                             child: widget.icon!,
@@ -230,10 +230,10 @@ class _ZetaNavigationRailItemContentState extends State<_ZetaNavigationRailItemC
                           textAlign: TextAlign.center,
                           style: ZetaTextStyles.titleSmall.copyWith(
                             color: widget.disabled
-                                ? zeta.colors.cool.shade50
+                                ? zeta.colors.mainDisabled
                                 : widget.selected || _hovered
-                                    ? zeta.colors.textDefault
-                                    : zeta.colors.cool.shade70,
+                                    ? zeta.colors.mainDefault
+                                    : zeta.colors.mainSubtle,
                           ),
                         ),
                       ],

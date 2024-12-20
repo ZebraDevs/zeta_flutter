@@ -13,14 +13,6 @@ class ZetaThemeContrastSwitch extends StatelessWidget {
   Widget build(BuildContext context) {
     final zeta = Zeta.of(context);
 
-    ZetaColors zetaColors(ZetaContrast contrast) {
-      if (zeta.brightness == Brightness.light) {
-        return zeta.themeData.apply(contrast: contrast).colorsLight;
-      } else {
-        return zeta.themeData.apply(contrast: contrast).colorsDark;
-      }
-    }
-
     return DropdownButtonHideUnderline(
       child: DropdownButton<ZetaContrast>(
         value: zeta.contrast,
@@ -29,18 +21,20 @@ class ZetaThemeContrastSwitch extends StatelessWidget {
         icon: Nothing(),
         dropdownColor: zeta.colors.borderDisabled,
         items: _themes.map((e) {
-          final colors = zetaColors(e);
+          final ZetaColors colors = (e == ZetaContrast.aa
+              ? ZetaColorsAA(primitives: Zeta.of(context).colors.primitives)
+              : ZetaColorsAAA(primitives: Zeta.of(context).colors.primitives)) as ZetaColors;
           return DropdownMenuItem<ZetaContrast>(
             value: e,
             alignment: Alignment.center,
             child: ZetaAvatar(
               size: ZetaAvatarSize.xxs,
-              backgroundColor: colors.primary.surface,
-              initials: e == ZetaContrast.aa ? 'AA' : 'AAA',
+              backgroundColor: colors.surfaceDefault,
+              initials: e.name.toUpperCase(),
               initialTextStyle: TextStyle(
                 fontSize: 14,
                 letterSpacing: Zeta.of(context).spacing.none,
-                color: colors.primary,
+                color: colors.mainPrimary,
                 fontWeight: FontWeight.w500,
               ),
             ),

@@ -191,12 +191,12 @@ class _ZetaChipState extends State<ZetaChip> {
   Color _foregroundColor(ZetaColors colors, bool disabled) {
     if (!disabled) {
       if (selected) {
-        return colors.textInverse;
+        return colors.mainInverse;
       } else {
-        return colors.textDefault;
+        return colors.mainDefault;
       }
     } else {
-      return colors.textDisabled;
+      return colors.mainDisabled;
     }
   }
 
@@ -251,13 +251,13 @@ class _ZetaChipState extends State<ZetaChip> {
                   if (states.contains(WidgetState.hovered)) {
                     return colors.surfaceHover;
                   }
-                  return colors.surfacePrimary;
+                  return colors.surfaceDefault;
                 }
               }(),
               borderRadius: rounded ? Zeta.of(context).radius.full : Zeta.of(context).radius.none,
               border: Border.fromBorderSide(
                 BorderSide(
-                  color: _controller.value.contains(WidgetState.focused) ? colors.blue.shade50 : colors.borderDefault,
+                  color: _controller.value.contains(WidgetState.focused) ? colors.borderPrimary : colors.borderDefault,
                   width: _controller.value.contains(WidgetState.focused)
                       ? ZetaBorders.medium
                       : !selected
@@ -276,7 +276,7 @@ class _ZetaChipState extends State<ZetaChip> {
                     child: (selected
                         ? ZetaIcon(
                             ZetaIcons.check_mark,
-                            color: disabled ? colors.iconDisabled : colors.iconInverse,
+                            color: disabled ? colors.mainDisabled : colors.mainInverse,
                           )
                         : const Nothing()),
                   )

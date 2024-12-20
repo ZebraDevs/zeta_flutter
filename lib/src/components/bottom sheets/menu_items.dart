@@ -85,9 +85,10 @@ class ZetaMenuItem extends ZetaStatelessWidget {
       rounded: context.rounded,
       child: () {
         final colors = Zeta.of(context).colors;
+        final radius = Zeta.of(context).radius;
 
         final Widget text = DefaultTextStyle(
-          style: ZetaTextStyles.labelLarge.apply(color: _enabled ? colors.textDefault : colors.textDisabled),
+          style: ZetaTextStyles.labelLarge.apply(color: _enabled ? colors.mainDefault : colors.mainDisabled),
           child: label,
         );
 
@@ -96,6 +97,7 @@ class ZetaMenuItem extends ZetaStatelessWidget {
             return ConstrainedBox(
               constraints: BoxConstraints(minHeight: Zeta.of(context).spacing.xl_8),
               child: InkWell(
+                borderRadius: radius.rounded,
                 onTap: _onTap,
                 child: Padding(
                   padding: EdgeInsets.symmetric(
@@ -111,7 +113,10 @@ class ZetaMenuItem extends ZetaStatelessWidget {
                             if (leading != null)
                               Padding(
                                 padding: EdgeInsets.only(right: Zeta.of(context).spacing.small),
-                                child: leading,
+                                child: IconTheme(
+                                  data: _iconThemeData(colors, _enabled, Zeta.of(context).spacing.xl_2),
+                                  child: leading!,
+                                ),
                               ),
                             Expanded(child: text),
                           ],
@@ -130,6 +135,7 @@ class ZetaMenuItem extends ZetaStatelessWidget {
           case ZetaMenuItemType.vertical:
             return InkWell(
               onTap: _onTap,
+              borderRadius: radius.rounded,
               child: Padding(
                 padding: EdgeInsets.symmetric(
                   horizontal: Zeta.of(context).spacing.large,
@@ -156,7 +162,7 @@ class ZetaMenuItem extends ZetaStatelessWidget {
   }
 
   static IconThemeData _iconThemeData(ZetaColors colors, bool enabled, double size) => IconThemeData(
-        color: enabled ? colors.iconSubtle : colors.iconDisabled,
+        color: enabled ? colors.mainSubtle : colors.mainDisabled,
         size: size,
       );
 
