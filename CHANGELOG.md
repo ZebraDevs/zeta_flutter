@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.20.3](https://github.com/ZebraDevs/zeta_flutter/compare/v0.20.2...v0.20.3) (2024-12-30)
+
+
+### 🧹 Miscellaneous Chores
+
+* Update publignore to not ignore docs ([#230](https://github.com/ZebraDevs/zeta_flutter/issues/230)) ([9c529fc](https://github.com/ZebraDevs/zeta_flutter/commit/9c529fc978b0654503335279948a982c7d505cbe))
+
 ## [0.20.2](https://github.com/ZebraDevs/zeta_flutter/compare/v0.20.1...v0.20.2) (2024-12-20)
 
 
