@@ -11,7 +11,6 @@ appium/
 test/
 build/
 coverage/
-doc/
 coverage.sh
 example/example.iml
 example/assets/
