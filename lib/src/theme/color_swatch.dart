@@ -52,7 +52,7 @@ class ZetaColorSwatch extends ColorSwatch<int> with EquatableMixin {
     return ZetaColorSwatch(
       contrast: contrast,
       brightness: brightness,
-      primary: primary.value,
+      primary: primary.intValue,
       swatch: primary.generateSwatch(background: background),
     ).apply(brightness: brightness);
   }
@@ -188,14 +188,13 @@ class ZetaColorSwatch extends ColorSwatch<int> with EquatableMixin {
     return ZetaColorSwatch(
       contrast: contrast,
       brightness: brightness,
-      primary: swatch[primaryIndex]!.value,
+      primary: swatch[primaryIndex]!.intValue,
       swatch: swatch,
     );
   }
 
   @override
   List<Object?> get props => [
-        super.value,
         brightness,
         contrast,
         shade10,
@@ -256,7 +255,7 @@ class ZetaPureColorSwatch extends ColorSwatch<int> with EquatableMixin {
 
     return ZetaPureColorSwatch(
       brightness: brightness,
-      primary: this[500]!.value,
+      primary: this[500]!.intValue,
       swatch: {
         0: this[0]!,
         500: this[500]!,
@@ -266,5 +265,5 @@ class ZetaPureColorSwatch extends ColorSwatch<int> with EquatableMixin {
   }
 
   @override
-  List<Object?> get props => [super.value, shade0, shade500, shade1000];
+  List<Object?> get props => [shade0, shade500, shade1000];
 }

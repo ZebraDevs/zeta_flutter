@@ -47,7 +47,6 @@ doc/api/
 *.js.deps
 *.js.map
 .env
-.fvm/flutter_sdk
 .pub-cache/
 .pub/
 /coverage/**/
@@ -143,9 +142,9 @@ $RECYCLE.BIN/
 *.msp
 *.lnk
 **/Generated.xcconfig
-.fvmrc
 **/node_modules/
 package-lock.json
 /appium
 /coverage
 /.coverage
+.fvm/
