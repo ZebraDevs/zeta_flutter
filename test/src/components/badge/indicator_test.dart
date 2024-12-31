@@ -55,7 +55,7 @@ void main() {
   });
   group('Content Tests', () {
     final debugFillProperties = {
-      'color': 'MaterialColor(primary value: Color(0xffff9800))',
+      'color': Colors.orange.toString(),
       'icon': 'IconData(U+F04B6)',
       'inverse': 'true',
       'rounded': 'false',

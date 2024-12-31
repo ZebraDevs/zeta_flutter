@@ -36,13 +36,13 @@ extension ZetaColorExtensions on Color {
   Color brighten([int amount = 10]) {
     if (amount <= 0) return this;
     if (amount > 100) return Colors.white;
-    final Color color = Color.fromARGB(
-      alpha,
-      math.max(0, math.min(255, red - (255 * -(amount / 100)).round())),
-      math.max(0, math.min(255, green - (255 * -(amount / 100)).round())),
-      math.max(0, math.min(255, blue - (255 * -(amount / 100)).round())),
+
+    return Color.fromARGB(
+      _intAlpha,
+      math.max(0, math.min(255, _intRed - (255 * -(amount / 100)).round())),
+      math.max(0, math.min(255, _intGreen - (255 * -(amount / 100)).round())),
+      math.max(0, math.min(255, _intBlue - (255 * -(amount / 100)).round())),
     );
-    return color;
   }
 
   /// Lightens the color with the given integer percentage amount.
@@ -169,7 +169,7 @@ extension ZetaColorExtensions on Color {
 
   /// Return uppercase Flutter style hex code string of the color.
   String get hexCode {
-    return value.toRadixString(16).toUpperCase().padLeft(8, '0');
+    return intValue.toRadixString(16).toUpperCase().padLeft(8, '0');
   }
 
   /// Applies lightness percentage to color.
@@ -303,5 +303,20 @@ extension ZetaColorExtensions on Color {
     ZetaContrast standard = ZetaContrast.aa,
   }) {
     return adjustContrast(on: on, target: standard.targetContrast);
+  }
+
+  int get _intAlpha => _floatToInt8(a);
+  int get _intRed => _floatToInt8(r);
+  int get _intGreen => _floatToInt8(g);
+  int get _intBlue => _floatToInt8(b);
+
+  int _floatToInt8(double x) {
+    return (x * 255.0).round() & 0xff;
+  }
+
+  /// Returns the integer value of the color.
+  int get intValue {
+    // TODO(UX-1353): Remove this method as int color values should be removed
+    return _intAlpha << 24 | _intRed << 16 | _intGreen << 8 | _intBlue;
   }
 }
