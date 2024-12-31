@@ -8,7 +8,7 @@ void main() {
 
     setUp(() {
       zetaColorSwatch = ZetaColorSwatch(
-        primary: Colors.blue.value,
+        primary: Colors.blue.intValue,
         swatch: {
           10: Colors.blue.shade100,
           20: Colors.blue.shade200,
@@ -44,7 +44,7 @@ void main() {
         Colors.blue,
       );
 
-      expect(swatch.value, Colors.blue.value);
+      expect(swatch.intValue, Colors.blue.intValue);
       expect(swatch.brightness, Brightness.light);
       expect(swatch.contrast, ZetaContrast.aa);
     });
@@ -71,7 +71,7 @@ void main() {
 
     test('equality operator works as expected', () {
       final identicalSwatch = ZetaColorSwatch(
-        primary: Colors.blue.value,
+        primary: Colors.blue.intValue,
         swatch: {
           10: Colors.blue.shade100,
           20: Colors.blue.shade200,
@@ -92,7 +92,7 @@ void main() {
 
     test('hashCode method works as expected', () {
       final identicalSwatch = ZetaColorSwatch(
-        primary: Colors.blue.value,
+        primary: Colors.blue.intValue,
         swatch: {
           10: Colors.blue.shade100,
           20: Colors.blue.shade200,
@@ -124,18 +124,18 @@ void main() {
     });
 
     test('token getters works as expected', () {
-      expect(zetaColorSwatch.text.value, Colors.blue.value);
-      expect(zetaColorSwatch.icon.value, Colors.blue.value);
-      expect(zetaColorSwatch.hover.value, Colors.blue.shade700.value);
-      expect(zetaColorSwatch.selected.value, Colors.blue.shade800.value);
-      expect(zetaColorSwatch.focus.value, Colors.blue.shade800.value);
-      expect(zetaColorSwatch.border.value, Colors.blue.value);
-      expect(zetaColorSwatch.subtle.value, Colors.blue.shade400.value);
-      expect(zetaColorSwatch.surface.value, Colors.blue.shade100.value);
+      expect(zetaColorSwatch.text, isSameColorAs(Colors.blue));
+      expect(zetaColorSwatch.icon, isSameColorAs(Colors.blue));
+      expect(zetaColorSwatch.hover, isSameColorAs(Colors.blue.shade700));
+      expect(zetaColorSwatch.selected, isSameColorAs(Colors.blue.shade800));
+      expect(zetaColorSwatch.focus, isSameColorAs(Colors.blue.shade800));
+      expect(zetaColorSwatch.border, isSameColorAs(Colors.blue));
+      expect(zetaColorSwatch.subtle, isSameColorAs(Colors.blue.shade400));
+      expect(zetaColorSwatch.surface, isSameColorAs(Colors.blue.shade100));
 
       final aaaSwatch = ZetaColorSwatch(
         contrast: ZetaContrast.aaa,
-        primary: Colors.blue.value,
+        primary: Colors.blue.intValue,
         swatch: {
           10: Colors.blue.shade100,
           20: Colors.blue.shade200,
@@ -150,14 +150,14 @@ void main() {
         },
       );
 
-      expect(aaaSwatch.text.value, Colors.blue.shade800.value);
-      expect(aaaSwatch.icon.value, Colors.blue.shade800.value);
-      expect(aaaSwatch.hover.value, Colors.blue.shade900.value);
-      expect(aaaSwatch.selected.value, Colors.blue.shade900.value);
-      expect(aaaSwatch.focus.value, Colors.blue.shade900.value);
-      expect(aaaSwatch.border.value, Colors.blue.shade800.value);
-      expect(aaaSwatch.subtle.value, Colors.blue.shade500.value);
-      expect(aaaSwatch.surface.value, Colors.blue.shade100.value);
+      expect(aaaSwatch.text, isSameColorAs(Colors.blue.shade800));
+      expect(aaaSwatch.icon, isSameColorAs(Colors.blue.shade800));
+      expect(aaaSwatch.hover, isSameColorAs(Colors.blue.shade900));
+      expect(aaaSwatch.selected, isSameColorAs(Colors.blue.shade900));
+      expect(aaaSwatch.focus, isSameColorAs(Colors.blue.shade900));
+      expect(aaaSwatch.border, isSameColorAs(Colors.blue.shade800));
+      expect(aaaSwatch.subtle, isSameColorAs(Colors.blue.shade500));
+      expect(aaaSwatch.surface, isSameColorAs(Colors.blue.shade100));
     });
   });
 
@@ -176,7 +176,7 @@ void main() {
     final ZetaColors aa = ZetaColors();
     final ZetaColors aaa = ZetaColors(brightness: Brightness.dark, contrast: ZetaContrast.aaa);
 
-    expect(aa.primary.value, aa.primary.shade60.value);
-    expect(aaa.primary.value, aaa.primary.shade80.value);
+    expect(aa.primary, isSameColorAs(aa.primary.shade60));
+    expect(aaa.primary, isSameColorAs(aaa.primary.shade80));
   });
 }

@@ -1,5 +1,4 @@
 // ignore_for_file: avoid_dynamic_calls
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
@@ -30,7 +29,7 @@ void main() {
     final debugFillProperties = {
       'rounded': 'null',
       'padding': 'EdgeInsets.all(8.0)',
-      'color': 'MaterialColor(primary value: Color(0xffffc107))',
+      'color': Colors.amber.toString(),
       'textStyle': 'TextStyle(inherit: true, size: 9.0)',
       'arrowDirection': 'down',
       'maxWidth': '170.0',
@@ -45,24 +44,6 @@ void main() {
       ),
       debugFillProperties,
     );
-
-    testWidgets('debugFillProperties works correctly', (WidgetTester tester) async {
-      final diagnostics = DiagnosticPropertiesBuilder();
-      const ZetaTooltip(
-        padding: EdgeInsets.all(8),
-        color: Colors.amber,
-        textStyle: TextStyle(fontSize: 9),
-        maxWidth: 170,
-        child: Text('Rounded tooltip'),
-      ).debugFillProperties(diagnostics);
-
-      expect(diagnostics.finder('rounded'), 'null');
-      expect(diagnostics.finder('padding'), 'EdgeInsets.all(8.0)');
-      expect(diagnostics.finder('color').toLowerCase(), contains(Colors.amber.hexCode.toLowerCase()));
-      expect(diagnostics.finder('textStyle'), contains('size: 9.0'));
-      expect(diagnostics.finder('arrowDirection'), 'down');
-      expect(diagnostics.finder('maxWidth'), '170.0');
-    });
 
     testWidgets('renders with default properties', (WidgetTester tester) async {
       await tester.pumpWidget(
