@@ -42,10 +42,9 @@ class ZetaFAB extends StatefulWidget {
     this.shape = ZetaWidgetBorder.full,
     this.icon = ZetaIcons.add,
     bool? expanded,
-    @Deprecated('Please use expanded instead. ' 'Deprecated in 0.15.0') bool? initiallyExpanded,
     this.focusNode,
     super.key,
-  }) : expanded = expanded ?? initiallyExpanded ?? label != null;
+  }) : expanded = expanded ?? label != null;
 
   /// Defines the color of the button.
   ///

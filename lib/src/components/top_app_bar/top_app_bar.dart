@@ -26,11 +26,6 @@ class ZetaTopAppBar extends ZetaStatefulWidget implements PreferredSizeWidget {
     this.title,
     this.titleTextStyle,
     this.type = ZetaTopAppBarType.defaultAppBar,
-    @Deprecated('Use ZetaTopAppBar.search instead. ' 'Deprecated as of 0.16.0') ValueChanged<String>? onSearch,
-    @Deprecated('Use ZetaTopAppBar.search instead. ' 'Deprecated as of 0.16.0') String? searchHintText,
-    @Deprecated('Use ZetaTopAppBar.search instead. ' 'Deprecated as of 0.16.0') ZetaSearchController? searchController,
-    @Deprecated('Use ZetaTopAppBar.search instead. ' 'Deprecated as of 0.16.0')
-    VoidCallback? onSearchMicrophoneIconPressed,
   })  : shrinks = false,
         onSearch = null,
         searchHintText = null,
@@ -50,11 +45,6 @@ class ZetaTopAppBar extends ZetaStatefulWidget implements PreferredSizeWidget {
     this.leading,
     this.title,
     this.titleTextStyle,
-    @Deprecated('Use ZetaTopAppBar.search instead. ' 'Deprecated as of 0.16.0') ValueChanged<String>? onSearch,
-    @Deprecated('Use ZetaTopAppBar.search instead. ' 'Deprecated as of 0.16.0') String? searchHintText,
-    @Deprecated('Use ZetaTopAppBar.search instead. ' 'Deprecated as of 0.16.0') ZetaSearchController? searchController,
-    @Deprecated('Use ZetaTopAppBar.search instead. ' 'Deprecated as of 0.16.0')
-    VoidCallback? onSearchMicrophoneIconPressed,
   })  : type = ZetaTopAppBarType.centered,
         onSearch = null,
         searchHintText = null,
@@ -103,11 +93,6 @@ class ZetaTopAppBar extends ZetaStatefulWidget implements PreferredSizeWidget {
     this.title,
     this.titleTextStyle,
     this.shrinks = true,
-    @Deprecated('Use ZetaTopAppBar.search instead. ' 'Deprecated as of 0.16.0') ValueChanged<String>? onSearch,
-    @Deprecated('Use ZetaTopAppBar.search instead. ' 'Deprecated as of 0.16.0') String? searchHintText,
-    @Deprecated('Use ZetaTopAppBar.search instead. ' 'Deprecated as of 0.16.0') ZetaSearchController? searchController,
-    @Deprecated('Use ZetaTopAppBar.search instead. ' 'Deprecated as of 0.16.0')
-    VoidCallback? onSearchMicrophoneIconPressed,
   })  : type = ZetaTopAppBarType.extended,
         onSearch = null,
         searchHintText = null,
@@ -360,16 +345,8 @@ enum ZetaTopAppBarType {
   /// Title positioned on the left side.
   defaultAppBar,
 
-  /// Title in the center.
-  @Deprecated('Use ZetaTopAppBar.centered instead. ' 'Deprecated as of 0.16.0')
-  centeredTitle,
-
   /// Aligns the title to the center of the app bar.
   centered,
-
-  /// Title below the app bar.
-  @Deprecated('Use ZetaTopAppBar.extended instead. ' 'Deprecated as of 0.16.0')
-  extendedTitle,
 
   /// Title extends over 2 lines and collapses when scrolled.
   extended,

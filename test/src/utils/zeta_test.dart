@@ -105,6 +105,7 @@ void main() {
     testWidgets('provides custom semantics in AA mode', (WidgetTester tester) async {
       await tester.pumpWidget(
         Zeta(
+          // Ignored in case this ever changes in the future and alters the test.
           // ignore: avoid_redundant_argument_values
           contrast: ZetaContrast.aa,
           customSemantics: ZetaSemanticsAAA(primitives: const ZetaPrimitivesLight()),

@@ -3,10 +3,6 @@ import 'package:flutter/material.dart';
 
 import '../../../zeta_flutter.dart';
 
-///Zeta Badge.
-@Deprecated('Use ZetaLabel instead. ' 'This widget has been renamed as of 0.11.0')
-typedef ZetaBadge = ZetaLabel;
-
 /// Text badges notify users of line items that need attention.
 /// {@category Components}
 ///

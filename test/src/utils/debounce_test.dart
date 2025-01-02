@@ -1,5 +1,3 @@
-// ignore_for_file: inference_failure_on_instance_creation
-
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
@@ -20,7 +18,7 @@ void main() {
       const debounceDuration = Duration(milliseconds: 100);
       ZetaDebounce(mockCallback.call, duration: debounceDuration);
 
-      await Future.delayed(debounceDuration + const Duration(milliseconds: 50));
+      await Future<void>.delayed(debounceDuration + const Duration(milliseconds: 50));
 
       verify(mockCallback()).called(1);
     });
@@ -29,7 +27,7 @@ void main() {
       const debounceDuration = Duration(milliseconds: 100);
       ZetaDebounce(mockCallback.call, duration: debounceDuration).cancel();
 
-      await Future.delayed(debounceDuration + const Duration(milliseconds: 50));
+      await Future<void>.delayed(debounceDuration + const Duration(milliseconds: 50));
 
       verifyNever(mockCallback());
     });
@@ -38,13 +36,13 @@ void main() {
       const debounceDuration = Duration(milliseconds: 100);
       final debouncer = ZetaDebounce(mockCallback.call, duration: debounceDuration);
 
-      await Future.delayed(const Duration(milliseconds: 50));
+      await Future<void>.delayed(const Duration(milliseconds: 50));
       debouncer.debounce();
 
-      await Future.delayed(const Duration(milliseconds: 75));
+      await Future<void>.delayed(const Duration(milliseconds: 75));
       verifyNever(mockCallback());
 
-      await Future.delayed(const Duration(milliseconds: 50));
+      await Future<void>.delayed(const Duration(milliseconds: 50));
       verify(mockCallback()).called(1);
     });
 
@@ -52,7 +50,7 @@ void main() {
       const debounceDuration = Duration(milliseconds: 100);
       ZetaDebounce.stopped(mockCallback.call, duration: debounceDuration);
 
-      await Future.delayed(debounceDuration + const Duration(milliseconds: 50));
+      await Future<void>.delayed(debounceDuration + const Duration(milliseconds: 50));
 
       verifyNever(mockCallback());
     });
@@ -64,7 +62,7 @@ void main() {
       final newCallback = MockCallback();
       debouncer.debounce(newCallback: newCallback.call);
 
-      await Future.delayed(debounceDuration + const Duration(milliseconds: 50));
+      await Future<void>.delayed(debounceDuration + const Duration(milliseconds: 50));
 
       verifyNever(mockCallback());
       verify(newCallback()).called(1);
