@@ -72,90 +72,90 @@ void main() {
       // Verify that the textButton color matches the hover color
       expect(
         textButton.style!.overlayColor?.resolve({WidgetState.hovered}),
-        ZetaColorBase.cool.shade20,
+        const ZetaPrimitivesLight().cool.shade20,
       );
       expect(
         textButton.style!.overlayColor?.resolve({WidgetState.focused}),
         Colors.transparent,
       );
-      expect(textButton.style!.side?.resolve({WidgetState.focused})?.color, ZetaColorBase.blue.shade50);
+      expect(textButton.style!.side?.resolve({WidgetState.focused})?.color, const ZetaPrimitivesLight().blue.shade50);
     });
-  });
-  group('Interaction Tests', () {
-    testWidgets('ZetaAccordion expands and collapses correctly', (WidgetTester tester) async {
-      await tester.pumpWidget(
-        const TestApp(
-          home: ZetaAccordion(
-            title: 'Accordion Title',
-            child: Text('Accordion Content'),
+    group('Interaction Tests', () {
+      testWidgets('ZetaAccordion expands and collapses correctly', (WidgetTester tester) async {
+        await tester.pumpWidget(
+          const TestApp(
+            home: ZetaAccordion(
+              title: 'Accordion Title',
+              child: Text('Accordion Content'),
+            ),
           ),
-        ),
-      );
+        );
 
-      // Verify that the accordion is initially collapsed
-      final Finder accordionContent = find.byType(SizeTransition);
-      expect(accordionContent, findsOneWidget);
+        // Verify that the accordion is initially collapsed
+        final Finder accordionContent = find.byType(SizeTransition);
+        expect(accordionContent, findsOneWidget);
 
-      final SizeTransition sizeTransition = tester.widget(accordionContent);
-      expect(sizeTransition.sizeFactor.value, 0);
+        final SizeTransition sizeTransition = tester.widget(accordionContent);
+        expect(sizeTransition.sizeFactor.value, 0);
 
-      // Tap on the accordion to expand it
-      await tester.tap(find.text('Accordion Title'));
-      await tester.pumpAndSettle();
+        // Tap on the accordion to expand it
+        await tester.tap(find.text('Accordion Title'));
+        await tester.pumpAndSettle();
 
-      // Verify that the accordion is now expanded
-      expect(sizeTransition.sizeFactor.value, 1);
+        // Verify that the accordion is now expanded
+        expect(sizeTransition.sizeFactor.value, 1);
 
-      // Tap on the accordion again to collapse it
-      await tester.tap(find.text('Accordion Title'));
-      await tester.pumpAndSettle();
+        // Tap on the accordion again to collapse it
+        await tester.tap(find.text('Accordion Title'));
+        await tester.pumpAndSettle();
 
-      expect(sizeTransition.sizeFactor.value, 0);
-    });
+        expect(sizeTransition.sizeFactor.value, 0);
+      });
 
-    testWidgets('ZetaAccordion changes isOpen property correctly', (WidgetTester tester) async {
-      bool isOpen = false;
-      StateSetter? setState;
+      testWidgets('ZetaAccordion changes isOpen property correctly', (WidgetTester tester) async {
+        bool isOpen = false;
+        StateSetter? setState;
 
-      await tester.pumpWidget(
-        TestApp(
-          home: StatefulBuilder(
-            builder: (context, setState2) {
-              setState = setState2;
-              return ZetaAccordion(
-                title: 'Accordion Title',
-                isOpen: isOpen,
-                child: const Text('Accordion Content'),
-              );
-            },
+        await tester.pumpWidget(
+          TestApp(
+            home: StatefulBuilder(
+              builder: (context, setState2) {
+                setState = setState2;
+                return ZetaAccordion(
+                  title: 'Accordion Title',
+                  isOpen: isOpen,
+                  child: const Text('Accordion Content'),
+                );
+              },
+            ),
           ),
-        ),
-      );
+        );
 
-      // Verify that the accordion is initially closed
-      final Finder accordionContent = find.byType(SizeTransition);
-      expect(accordionContent, findsOneWidget);
+        // Verify that the accordion is initially closed
+        final Finder accordionContent = find.byType(SizeTransition);
+        expect(accordionContent, findsOneWidget);
 
-      final SizeTransition sizeTransition = tester.widget(accordionContent);
-      expect(sizeTransition.sizeFactor.value, 0);
+        final SizeTransition sizeTransition = tester.widget(accordionContent);
+        expect(sizeTransition.sizeFactor.value, 0);
 
-      // Change isOpen property to true
-      setState?.call(() => isOpen = true);
+        // Change isOpen property to true
+        setState?.call(() => isOpen = true);
 
-      await tester.pumpAndSettle();
+        await tester.pumpAndSettle();
 
-      // Verify that the accordion is now open
-      expect(sizeTransition.sizeFactor.value, 1);
+        // Verify that the accordion is now open
+        expect(sizeTransition.sizeFactor.value, 1);
 
-      // Change isOpen property to false
-      setState?.call(() => isOpen = false);
+        // Change isOpen property to false
+        setState?.call(() => isOpen = false);
 
-      await tester.pumpAndSettle();
+        await tester.pumpAndSettle();
 
-      // Verify that the accordion is now closed
-      expect(sizeTransition.sizeFactor.value, 0);
+        // Verify that the accordion is now closed
+        expect(sizeTransition.sizeFactor.value, 0);
+      });
     });
+    group('Golden Tests', () {});
+    group('Performance Tests', () {});
   });
-  group('Golden Tests', () {});
-  group('Performance Tests', () {});
 }

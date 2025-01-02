@@ -1,66 +1,57 @@
 import 'package:flutter/material.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
-late final appThemes = {
-  "default": ZetaThemeData(),
-  "teal": ZetaThemeData(
-    identifier: 'teal',
-    primary: ZetaColorBase.teal,
-  ),
-  "yellow": ZetaThemeData(
-    identifier: 'yellow',
-    primary: ZetaColorBase.yellow,
-  ),
-  "red": ZetaThemeData(
-    identifier: 'red',
-    primary: ZetaColorBase.red,
-  ),
-  "purple": ZetaThemeData(
-    identifier: 'purple',
-    primary: ZetaColorBase.purple,
-  ),
-};
-
-class ZetaThemeColorSwitch extends StatelessWidget {
+class ZetaThemeColorSwitch extends StatefulWidget {
   ZetaThemeColorSwitch({super.key});
 
   @override
+  State<ZetaThemeColorSwitch> createState() => _ZetaThemeColorSwitchState();
+}
+
+class _ZetaThemeColorSwitchState extends State<ZetaThemeColorSwitch> {
+  @override
   Widget build(BuildContext context) {
     final zeta = Zeta.of(context);
+    final zetaProvider = ZetaProvider.of(context);
 
-    ZetaColors primary(ZetaThemeData data) {
-      if (zeta.brightness == Brightness.light) {
-        return data.colorsLight;
-      } else {
-        return data.colorsDark;
-      }
-    }
+    final Map<String?, Widget> items = {};
+    items.putIfAbsent(null, () => ZetaIcon(ZetaIcons.block));
+
+    zetaProvider.customThemes.forEach((e) {
+      final color = e.primary;
+      final name = e.id;
+      items.putIfAbsent(
+        name,
+        () => ZetaAvatar(
+          size: ZetaAvatarSize.xxs,
+          backgroundColor: zeta.colors.surfaceDefault,
+          image: ZetaIcon(
+            Icons.color_lens,
+            color: color ??
+                (Zeta.of(context).brightness == Brightness.light
+                    ? ZetaPrimitivesLight().blue
+                    : ZetaPrimitivesDark().blue),
+          ),
+        ),
+      );
+    });
 
     return DropdownButtonHideUnderline(
-      child: DropdownButton<String>(
-        value: zeta.themeData.identifier,
+      child: DropdownButton<String?>(
+        value: zeta.customThemeId,
         elevation: 0,
         padding: EdgeInsets.all(8),
         icon: Nothing(),
         dropdownColor: zeta.colors.borderDisabled,
-        items: appThemes.entries.map((e) {
-          final zetaColors = primary(appThemes[e.key]!);
-          final color = zetaColors.primary;
-          return DropdownMenuItem<String>(
-            value: e.value.identifier,
-            alignment: Alignment.center,
-            child: ZetaAvatar(
-              size: ZetaAvatarSize.xxs,
-              backgroundColor: color.surface,
-              image: ZetaIcon(Icons.color_lens, color: color),
-            ),
-          );
-        }).toList(),
+        items: items.entries
+            .map((e) => DropdownMenuItem<String?>(
+                  value: e.key,
+                  alignment: Alignment.center,
+                  child: e.value,
+                ))
+            .toList(),
         onChanged: (value) {
-          final theme = appThemes[value];
-          if (theme != null) {
-            ZetaProvider.of(context).updateThemeData(theme);
-          }
+          ZetaProvider.of(context).updateCustomTheme(themeId: value);
         },
       ),
     );

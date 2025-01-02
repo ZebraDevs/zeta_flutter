@@ -114,8 +114,11 @@ class ZetaFAB extends StatefulWidget {
 class _ZetaFABState extends State<ZetaFAB> {
   @override
   Widget build(BuildContext context) {
-    final colors = widget.type.colors(context);
-    final backgroundColor = widget.type == ZetaFabType.inverse ? colors.shade80 : colors.shade60;
+    final colors = Zeta.of(context).colors;
+    final Color backgroundColor = widget.type.backgroundColor(colors);
+    final Color foregroundColor = widget.type.foregroundColor(colors);
+    final Color backgroundColorHover = widget.type.hoverColor(colors);
+    final Color backgroundColorSelected = widget.type.selectedColor(colors);
 
     return Column(
       mainAxisSize: MainAxisSize.min,
@@ -130,13 +133,13 @@ class _ZetaFABState extends State<ZetaFAB> {
             ),
             backgroundColor: WidgetStateProperty.resolveWith((states) {
               if (states.contains(WidgetState.disabled)) {
-                return Zeta.of(context).colors.surfaceDisabled;
+                return colors.stateDisabledDisabled;
               }
               if (states.contains(WidgetState.pressed)) {
-                return colors.selected;
+                return backgroundColorSelected;
               }
               if (states.contains(WidgetState.hovered)) {
-                return colors.hover;
+                return backgroundColorHover;
               }
               return backgroundColor;
             }),
@@ -144,7 +147,7 @@ class _ZetaFABState extends State<ZetaFAB> {
               (Set<WidgetState> states) {
                 if (states.contains(WidgetState.focused)) {
                   // TODO(UX-1134): This removes a defualt border when focused, rather than adding a second border when focused.
-                  return BorderSide(color: Zeta.of(context).colors.blue.shade50, width: ZetaBorders.medium);
+                  return BorderSide(color: Zeta.of(context).colors.borderPrimary, width: ZetaBorders.medium);
                 }
                 return null;
               },
@@ -167,7 +170,7 @@ class _ZetaFABState extends State<ZetaFAB> {
                     size: widget.size.iconSize(context),
                     color: widget.onPressed != null
                         ? widget.type.iconColors(context)
-                        : Zeta.of(context).colors.iconDisabled,
+                        : Zeta.of(context).colors.mainDisabled,
                   ),
                   if (widget.expanded && widget.label != null)
                     Row(
@@ -175,7 +178,7 @@ class _ZetaFABState extends State<ZetaFAB> {
                       children: [
                         Text(
                           widget.label!,
-                          style: ZetaTextStyles.labelLarge,
+                          style: ZetaTextStyles.labelLarge.apply(color: foregroundColor),
                         ),
                       ],
                     ),
@@ -201,15 +204,46 @@ class _ZetaFABState extends State<ZetaFAB> {
 }
 
 extension on ZetaFabType {
-  ZetaColorSwatch colors(BuildContext context) {
-    final zetaColors = Zeta.of(context).colors;
+  Color backgroundColor(ZetaColors colors) {
     switch (this) {
       case ZetaFabType.primary:
-        return zetaColors.primary;
+        return colors.statePrimaryEnabled;
       case ZetaFabType.secondary:
-        return zetaColors.secondary;
+        return colors.stateSecondaryEnabled;
       case ZetaFabType.inverse:
-        return zetaColors.cool;
+        return colors.stateInverseEnabled;
+    }
+  }
+
+  Color foregroundColor(ZetaColors colors) {
+    switch (this) {
+      case ZetaFabType.secondary:
+        return colors.mainDefault;
+      case ZetaFabType.primary:
+      case ZetaFabType.inverse:
+        return colors.mainInverse;
+    }
+  }
+
+  Color hoverColor(ZetaColors colors) {
+    switch (this) {
+      case ZetaFabType.primary:
+        return colors.statePrimaryHover;
+      case ZetaFabType.secondary:
+        return colors.stateSecondaryHover;
+      case ZetaFabType.inverse:
+        return colors.stateInverseHover;
+    }
+  }
+
+  Color selectedColor(ZetaColors colors) {
+    switch (this) {
+      case ZetaFabType.primary:
+        return colors.statePrimarySelected;
+      case ZetaFabType.secondary:
+        return colors.stateSecondarySelected;
+      case ZetaFabType.inverse:
+        return colors.stateInverseSelected;
     }
   }
 
@@ -218,9 +252,9 @@ extension on ZetaFabType {
     switch (this) {
       case ZetaFabType.primary:
       case ZetaFabType.inverse:
-        return zetaColors.iconInverse;
+        return zetaColors.mainInverse;
       case ZetaFabType.secondary:
-        return zetaColors.iconDefault;
+        return zetaColors.mainDefault;
     }
   }
 }

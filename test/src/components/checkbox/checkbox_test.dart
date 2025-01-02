@@ -122,7 +122,10 @@ void main() {
 
       final animatedContainerFinder = find.byType(AnimatedContainer);
       final AnimatedContainer animatedContainer = tester.firstWidget(animatedContainerFinder);
-      expect((animatedContainer.decoration as BoxDecoration?)?.boxShadow?.first.color, ZetaColorBase.blue.shade50);
+      expect(
+        (animatedContainer.decoration as BoxDecoration?)?.boxShadow?.first.color,
+        const ZetaPrimitivesLight().blue.shade50,
+      );
 
       final gesture = await tester.createGesture(kind: PointerDeviceKind.mouse);
       await gesture.addPointer(location: Offset.zero);
