@@ -35,13 +35,13 @@ class ZetaInputLabel extends ZetaStatelessWidget {
     if (requirementLevel == ZetaFormFieldRequirement.optional) {
       requirementWidget = Text(
         '(optional)', // TODO(UX-1003): needs localizing.
-        style: textStyle.copyWith(color: disabled ? colors.textDisabled : colors.textSubtle),
+        style: textStyle.copyWith(color: disabled ? colors.mainDisabled : colors.mainSubtle),
       );
     } else if (requirementLevel == ZetaFormFieldRequirement.mandatory) {
       requirementWidget = Text(
         '*',
         style: ZetaTextStyles.labelIndicator.copyWith(
-          color: disabled ? colors.textDisabled : colors.error, // TODO(mikecoomber): change to textNegative when added
+          color: disabled ? colors.mainDisabled : colors.mainNegative,
         ),
       );
     }
@@ -51,7 +51,7 @@ class ZetaInputLabel extends ZetaStatelessWidget {
         Text(
           label,
           style: textStyle.copyWith(
-            color: disabled ? colors.textDisabled : colors.textDefault,
+            color: disabled ? colors.mainDisabled : colors.mainDefault,
           ),
         ),
         if (requirementWidget != null) requirementWidget.paddingStart(Zeta.of(context).spacing.minimum),

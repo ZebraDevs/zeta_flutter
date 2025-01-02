@@ -148,10 +148,10 @@ class _ZetaStepperState extends State<ZetaStepper> with TickerProviderStateMixin
 
 Color _getElementColor(BuildContext context, bool disabled, bool completed) {
   final colors = Zeta.of(context).colors;
-  Color boxColor = colors.primary;
+  Color boxColor = colors.mainPrimary;
 
   if (disabled) {
-    boxColor = colors.iconDisabled;
+    boxColor = colors.mainDisabled;
   } else if (completed) {
     boxColor = colors.surfacePositive;
   }
@@ -206,12 +206,12 @@ class StepIcon extends StatelessWidget {
         child: completed && !disabled
             ? ZetaIcon(
                 ZetaIcons.check_mark,
-                color: colors.textInverse,
+                color: colors.mainInverse,
               )
             : Text(
                 (index + 1).toString(),
                 style: ZetaTextStyles.labelLarge.copyWith(
-                  color: colors.textInverse,
+                  color: colors.mainInverse,
                 ),
               ),
       ),
@@ -357,7 +357,7 @@ class HorizontalStep extends StatelessWidget {
               ),
               DefaultTextStyle(
                 style: ZetaTextStyles.bodySmall.copyWith(
-                  color: step.disabled ? colors.textDisabled : colors.textDefault,
+                  color: step.disabled ? colors.mainDisabled : colors.mainDefault,
                 ),
                 child: step.title,
               ),
@@ -460,7 +460,7 @@ class VerticalStep extends StatelessWidget {
                     ),
                   DefaultTextStyle(
                     style: ZetaTextStyles.titleLarge.copyWith(
-                      color: step.disabled ? colors.textDisabled : colors.textDefault,
+                      color: step.disabled ? colors.mainDisabled : colors.mainDefault,
                     ),
                     maxLines: 1,
                     child: step.title,

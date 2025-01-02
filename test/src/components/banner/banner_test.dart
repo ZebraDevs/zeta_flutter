@@ -7,18 +7,18 @@ import '../../../test_utils/test_app.dart';
 import '../../../test_utils/tolerant_comparator.dart';
 import '../../../test_utils/utils.dart';
 
-ZetaColorSwatch _backgroundColorFromType(BuildContext context, ZetaBannerStatus type) {
+ZetaColorSwatch _colorFromType(BuildContext context, ZetaBannerStatus type) {
   final zeta = Zeta.of(context);
 
   switch (type) {
     case ZetaBannerStatus.primary:
-      return zeta.colors.primary;
+      return zeta.colors.primitives.primary;
     case ZetaBannerStatus.positive:
-      return zeta.colors.surfacePositive;
+      return zeta.colors.primitives.green;
     case ZetaBannerStatus.warning:
-      return zeta.colors.orange;
+      return zeta.colors.primitives.orange;
     case ZetaBannerStatus.negative:
-      return zeta.colors.surfaceNegative;
+      return zeta.colors.primitives.red;
   }
 }
 
@@ -280,7 +280,7 @@ void main() {
           textWidget.style,
           equals(
             ZetaTextStyles.labelLarge.copyWith(
-              color: Zeta.of(tester.element(textFinder)).colors.textInverse,
+              color: Zeta.of(tester.element(textFinder)).colors.mainInverse,
             ),
           ),
         );
@@ -305,7 +305,7 @@ void main() {
         final Finder iconFinder = find.byIcon(Icons.info);
 
         final Icon iconWidget = tester.widget(iconFinder);
-        expect(iconWidget.color, _backgroundColorFromType(tester.element(iconFinder), type).onColor);
+        expect(iconWidget.color, const ZetaColorsAA(primitives: ZetaPrimitivesLight()).mainInverse);
       });
 
       testWidgets('background colors are correct for $type', (WidgetTester tester) async {
@@ -325,7 +325,7 @@ void main() {
         final Finder finder = find.byType(ZetaBanner);
         final ZetaBanner widget = tester.firstWidget(finder);
 
-        expect(widget.backgroundColor, equals(_backgroundColorFromType(tester.element(finder), type)));
+        expect(widget.backgroundColor, equals(_colorFromType(tester.element(finder), type)));
       });
     }
   });

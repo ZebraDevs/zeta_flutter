@@ -82,7 +82,7 @@ class _ZetaBreadcrumbsState extends State<ZetaBreadcrumb> {
                       ZetaIcons.chevron_right,
                       size: Zeta.of(context).spacing.xl,
                       rounded: rounded,
-                      color: Zeta.of(context).colors.textSubtle,
+                      color: Zeta.of(context).colors.mainSubtle,
                     ),
                     SizedBox(width: Zeta.of(context).spacing.small),
                   ],
@@ -221,10 +221,10 @@ class ZetaBreadcrumbItem extends ZetaStatelessWidget {
   /// Get color of breadcrumb based on state.
   Color getColor(Set<WidgetState> states, ZetaColors colors) {
     if (states.contains(WidgetState.hovered)) {
-      return colors.blue;
+      return colors.primitives.blue;
     }
-    if (isSelected) return colors.black;
-    return colors.textSubtle;
+    if (isSelected) return colors.primitives.pure.shade1000;
+    return colors.mainSubtle;
   }
 
   @override
@@ -302,18 +302,18 @@ class _TruncatedItemState extends State<_TruncatedItem> {
                       return colors.surfaceHover;
                     }
                     if (states.contains(WidgetState.pressed)) {
-                      return colors.primary.shade10;
+                      return colors.surfaceSelected;
                     }
                     if (states.contains(WidgetState.disabled)) {
                       return colors.surfaceDisabled;
                     }
-                    return colors.warm.shade10;
+                    return colors.surfaceWarm;
                   }),
                   foregroundColor: WidgetStateProperty.resolveWith((states) {
                     if (states.contains(WidgetState.disabled)) {
-                      return colors.textDisabled;
+                      return colors.mainDisabled;
                     }
-                    return colors.textDefault;
+                    return colors.mainDefault;
                   }),
                   shape: WidgetStatePropertyAll(
                     RoundedRectangleBorder(
@@ -324,7 +324,7 @@ class _TruncatedItemState extends State<_TruncatedItem> {
                     if (states.contains(WidgetState.focused)) {
                       return BorderSide(
                         width: ZetaBorders.medium,
-                        color: colors.primary.shade100,
+                        color: colors.borderPrimary,
                       );
                     }
                     if (states.isEmpty) {
@@ -355,7 +355,7 @@ class _TruncatedItemState extends State<_TruncatedItem> {
                 ZetaIcon(
                   ZetaIcons.chevron_right,
                   size: Zeta.of(context).spacing.xl,
-                  color: Zeta.of(context).colors.textSubtle,
+                  color: Zeta.of(context).colors.mainSubtle,
                 ),
                 SizedBox(width: Zeta.of(context).spacing.small),
               ],

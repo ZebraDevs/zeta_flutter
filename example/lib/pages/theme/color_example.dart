@@ -16,117 +16,131 @@ class _ColorExampleState extends State<ColorExample> {
 
   @override
   Widget build(BuildContext context) {
-    final zeta = Zeta.of(context);
-    final colors = zeta.colors;
+    final colors = Zeta.of(context).colors;
     return LayoutBuilder(
       builder: (context, constraints) {
-        final Map<String, ZetaColorSwatch> swatches = {
-          'Blue': colors.blue,
-          'Green': colors.green,
-          'Red': colors.red,
-          'Orange': colors.orange,
-          'Purple': colors.purple,
-          'Yellow': colors.yellow,
-          'Teal': colors.teal,
-          'Pink': colors.pink,
-          'Grey Warm': colors.warm,
-          'Grey Cool': colors.cool,
+        final blockSize = constraints.maxWidth / 11;
+        final Map<String, ZetaColorSwatch> primitives = {
+          'cool': colors.primitives.cool,
+          'warm': colors.primitives.warm,
+          'blue': colors.primitives.blue,
+          'green': colors.primitives.green,
+          'red': colors.primitives.red,
+          'orange': colors.primitives.orange,
+          'purple': colors.primitives.purple,
+          'yellow': colors.primitives.yellow,
+          'teal': colors.primitives.teal,
+          'pink': colors.primitives.pink,
+        };
+        final Map<String, Color> primitivesPure = {
+          'white': colors.primitives.pure.shade0,
+          'mid': colors.primitives.pure.shade500,
+          'black': colors.primitives.pure.shade1000,
         };
 
-        final Map<String, ZetaColorSwatch> generatedSwatches = {
-          'Gen-Blue': ZetaColorSwatch.fromColor(
-            colors.blue,
-            brightness: zeta.brightness,
-            contrast: colors.contrast,
-          ),
-          'Blue': colors.blue,
-          'Gen-Green': ZetaColorSwatch.fromColor(
-            colors.green,
-            brightness: zeta.brightness,
-            contrast: colors.contrast,
-          ),
-          'Green': colors.green,
-          'Gen-Red': ZetaColorSwatch.fromColor(
-            colors.red,
-            brightness: zeta.brightness,
-            contrast: colors.contrast,
-          ),
-          'Red': colors.red,
-          'Gen-Orange': ZetaColorSwatch.fromColor(
-            colors.orange,
-            brightness: zeta.brightness,
-            contrast: colors.contrast,
-          ),
-          'Orange': colors.orange,
-          'Gen-Purple': ZetaColorSwatch.fromColor(
-            colors.purple,
-            brightness: zeta.brightness,
-            contrast: colors.contrast,
-          ),
-          'Purple': colors.purple,
-          'Gen-Yellow': ZetaColorSwatch.fromColor(
-            colors.yellow,
-            brightness: zeta.brightness,
-            contrast: colors.contrast,
-          ),
-          'Yellow': colors.yellow,
-          'Gen-Teal': ZetaColorSwatch.fromColor(
-            colors.teal,
-            brightness: zeta.brightness,
-            contrast: colors.contrast,
-          ),
-          'Teal': colors.teal,
-          'Gen-Pink': ZetaColorSwatch.fromColor(
-            colors.pink,
-            brightness: zeta.brightness,
-            contrast: colors.contrast,
-          ),
-          'Pink': colors.pink,
-          'Gen-Grey Warm': ZetaColorSwatch.fromColor(
-            colors.warm,
-            brightness: zeta.brightness,
-            contrast: colors.contrast,
-          ),
-          'Grey Warm': colors.warm,
-          'Gen-Grey Cool': ZetaColorSwatch.fromColor(
-            colors.cool,
-            brightness: zeta.brightness,
-            contrast: colors.contrast,
-          ),
-          'Grey Cool': colors.cool,
+        final Map<String, Color> mainColors = {
+          'defaultColor': colors.mainDefault,
+          'subtle': colors.mainSubtle,
+          'light': colors.mainLight,
+          'inverse': colors.mainInverse,
+          'disabled': colors.mainDisabled,
+          'primary': colors.mainPrimary,
+          'secondary': colors.mainSecondary,
+          'positive': colors.mainPositive,
+          'warning': colors.mainWarning,
+          'negative': colors.mainNegative,
+          'info': colors.mainInfo,
         };
-
-        final Map<String, Color> textIcon = {
-          'textDefault': colors.textDefault,
-          'textSubtle': colors.textSubtle,
-          'textDisabled': colors.textDisabled,
-          'textInverse': colors.textInverse,
+        final Map<String, Color> borderColors = {
+          'defaultColor': colors.borderDefault,
+          'subtle': colors.borderSubtle,
+          'hover': colors.borderHover,
+          'selected': colors.borderSelected,
+          'disabled': colors.borderDisabled,
+          'pure': colors.borderPure,
+          'primaryMain': colors.borderPrimaryMain,
+          'primary': colors.borderPrimary,
+          'secondary': colors.borderSecondary,
+          'positive': colors.borderPositive,
+          'warning': colors.borderWarning,
+          'negative': colors.borderNegative,
+          'info': colors.borderInfo,
         };
-        final Map<String, Color> border = {
-          'borderDefault': colors.borderDefault,
-          'borderSubtle': colors.borderSubtle,
-          'borderDisabled': colors.borderDisabled,
-          'borderSelected': colors.borderSelected,
-        };
-        final Map<String, Color> backdrop = {
-          'surfacePrimary': colors.surfacePrimary,
-          'surfaceDisabled': colors.surfaceDisabled,
-          'surfaceHover': colors.surfaceHover,
-          'surfaceSecondary': colors.surfaceSecondary,
-          'surfaceTertiary': colors.surfaceTertiary,
-          'surfaceSelectedHover': colors.surfaceSelectedHover,
-          'surfaceSelected': colors.surfaceSelected,
-        };
-
-        final Map<String, Color> primaries = {
-          'primaryColor': colors.primary.text,
-          'secondaryColor': colors.secondary.text,
-        };
-
-        final Map<String, Color> alerts = {
-          'negative': colors.surfaceNegative,
+        final Map<String, Color> surfaceColors = {
+          'defaultColor': colors.surfaceDefault,
+          'defaultInverse': colors.surfaceDefaultInverse,
+          'hover': colors.surfaceHover,
+          'selected': colors.surfaceSelected,
+          'selectedHover': colors.surfaceSelectedHover,
+          'disabled': colors.surfaceDisabled,
+          'cool': colors.surfaceCool,
+          'warm': colors.surfaceWarm,
+          'primary': colors.surfacePrimary,
+          'primarySubtle': colors.surfacePrimarySubtle,
+          'secondary': colors.surfaceSecondary,
+          'secondarySubtle': colors.surfaceSecondarySubtle,
+          'positive': colors.surfacePositive,
+          'positiveSubtle': colors.surfacePositiveSubtle,
           'warning': colors.surfaceWarning,
+          'warningSubtle': colors.surfaceWarningSubtle,
+          'negative': colors.surfaceNegative,
+          'negativeSubtle': colors.surfaceNegativeSubtle,
           'info': colors.surfaceInfo,
+          'infoSubtle': colors.surfaceInfoSubtle,
+        };
+        final Map<String, Color> avatarColors = {
+          'blue': colors.surfaceAvatarBlue,
+          'green': colors.surfaceAvatarGreen,
+          'orange': colors.surfaceAvatarOrange,
+          'pink': colors.surfaceAvatarPink,
+          'purple': colors.surfaceAvatarPurple,
+          'teal': colors.surfaceAvatarTeal,
+          'yellow': colors.surfaceAvatarYellow,
+        };
+        final Map<String, Color> disabled = {
+          'disabled': colors.stateDisabledDisabled,
+        };
+        final Map<String, Color> defaultColors = {
+          'enabled': colors.stateDefaultEnabled,
+          'hover': colors.stateDefaultHover,
+          'selected': colors.stateDefaultSelected,
+          'focus': colors.stateDefaultFocus,
+        };
+        final Map<String, Color> primary = {
+          'enabled': colors.statePrimaryEnabled,
+          'hover': colors.statePrimaryHover,
+          'selected': colors.statePrimarySelected,
+          'focus': colors.statePrimaryFocus,
+        };
+        final Map<String, Color> secondary = {
+          'enabled': colors.stateSecondaryEnabled,
+          'hover': colors.stateSecondaryHover,
+          'selected': colors.stateSecondarySelected,
+          'focus': colors.stateSecondaryFocus,
+        };
+        final Map<String, Color> positive = {
+          'enabled': colors.statePositiveEnabled,
+          'hover': colors.statePositiveHover,
+          'selected': colors.statePositiveSelected,
+          'focus': colors.statePositiveFocus,
+        };
+        final Map<String, Color> negative = {
+          'enabled': colors.stateNegativeEnabled,
+          'hover': colors.stateNegativeHover,
+          'selected': colors.stateNegativeSelected,
+          'focus': colors.stateNegativeFocus,
+        };
+        final Map<String, Color> info = {
+          'enabled': colors.stateInfoEnabled,
+          'hover': colors.stateInfoHover,
+          'selected': colors.stateInfoSelected,
+          'focus': colors.stateInfoFocus,
+        };
+        final Map<String, Color> inverse = {
+          'enabled': colors.stateInverseEnabled,
+          'hover': colors.stateInverseHover,
+          'selected': colors.stateInverseSelected,
+          'focus': colors.stateInverseFocus,
         };
 
         return ExampleScaffold(
@@ -135,95 +149,91 @@ class _ColorExampleState extends State<ColorExample> {
             padding: EdgeInsets.all(Zeta.of(context).spacing.medium),
             child: Column(
               children: [
-                MyRow(children: textIcon, title: 'Text and icon styles'),
-                MyRow(children: border, title: 'Border styles'),
-                MyRow(children: backdrop, title: 'Backdrop colors'),
-                MyRow(children: primaries, title: 'Primary colors'),
-                MyRow(children: alerts, title: 'Alert colors'),
-                Row(children: [Text('Full color swatches', style: ZetaTextStyles.displayMedium)])
-                    .paddingVertical(Zeta.of(context).spacing.xl_4),
-                ...swatches.entries.map(
-                  (value) => Row(
-                    children: List.generate(10, (index) => 100 - (10 * index))
-                        .map(
-                          (e) => Expanded(
-                            child: Container(
-                              height: constraints.maxWidth / 10,
-                              color: value.value[e],
-                              child: FittedBox(
-                                fit: BoxFit.scaleDown,
-                                child: Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
-                                  DefaultTextStyle(
-                                    style: ZetaTextStyles.bodyMedium
-                                        .copyWith(color: calculateTextColor(value.value[e] ?? Colors.white)),
-                                    child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                      children: [
-                                        Text('${value.key.toLowerCase().replaceAll(' ', '')}-$e'),
-                                        Text(value.value[e].toString().replaceAll('Color(0xff', '#').substring(0, 7)),
-                                      ],
-                                    ),
-                                  ),
-                                ]),
-                              ),
-                            ),
-                          ),
-                        )
-                        .toList(),
-                  ),
+                Text('Semantic colors', style: ZetaTextStyles.displaySmall),
+                MyRow(children: mainColors, title: 'Main Colors'),
+                MyRow(children: borderColors, title: 'Main Colors'),
+                MyRow(children: surfaceColors, title: 'Surface Colors'),
+                MyRow(children: avatarColors, title: 'Surface / Avatar  Colors'),
+                MyRow(children: disabled, title: 'State / disabled  Colors'),
+                MyRow(children: defaultColors, title: 'State / default  Colors'),
+                MyRow(children: primary, title: 'State / primary  Colors'),
+                MyRow(children: secondary, title: 'State / secondary  Colors'),
+                MyRow(children: positive, title: 'State / positive  Colors'),
+                MyRow(children: negative, title: 'State / negative  Colors'),
+                MyRow(children: info, title: 'State / info  Colors'),
+                MyRow(children: inverse, title: 'State / inverse  Colors'),
+                Row(children: [
+                  Text('Full color swatches', style: ZetaTextStyles.displayMedium),
+                ]).paddingVertical(Zeta.of(context).spacing.xl_4),
+                Row(
+                  children: primitivesPure.entries
+                      .map(
+                        (value) => SwatchBox(
+                          color: value.value,
+                          name: 'pure',
+                          blockSize: blockSize,
+                          value: value.key == 'mid'
+                              ? 500
+                              : value.key == 'white'
+                                  ? 0
+                                  : 1000,
+                        ),
+                      )
+                      .toList(),
                 ),
-                ElevatedButton(
-                  onPressed: () => setState(() => showGeneratedColors = !showGeneratedColors),
-                  child: const Text('Toggle generated colors').paddingAll(Zeta.of(context).spacing.medium),
-                ).paddingAll(Zeta.of(context).spacing.medium),
-                if (showGeneratedColors)
-                  Row(children: [Text('Generated color swatches', style: ZetaTextStyles.displayMedium)])
-                      .paddingVertical(Zeta.of(context).spacing.xl_4),
-                if (showGeneratedColors)
-                  ...generatedSwatches.entries.map(
-                    (value) => Row(
-                      children: List.generate(11, (index) => 110 - (10 * index))
-                          .map(
-                            (e) => Expanded(
-                              child: Container(
-                                height: constraints.maxWidth / 10,
-                                color: e == 110 ? colors.surfacePrimary : value.value[e],
-                                child: e == 110
-                                    ? Nothing()
-                                    : FittedBox(
-                                        fit: BoxFit.scaleDown,
-                                        child: Column(
-                                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                          children: [
-                                            DefaultTextStyle(
-                                              style: ZetaTextStyles.bodyMedium
-                                                  .copyWith(color: calculateTextColor(value.value[e] ?? Colors.white)),
-                                              child: Column(
-                                                children: [
-                                                  Text('${value.key.toLowerCase().replaceAll(' ', '')}-$e'),
-                                                  Text(
-                                                    value.value[e]
-                                                        .toString()
-                                                        .replaceAll('Color(0xff', '#')
-                                                        .substring(0, 7),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                              ),
-                            ),
-                          )
-                          .toList(),
-                    ),
-                  ),
+                ...primitives.entries
+                    .map(
+                      (value) => Row(
+                          children: List.generate(10, (index) => 100 - (10 * index))
+                              .map(
+                                (e) => SwatchBox(
+                                  color: value.value[e] ?? Colors.white,
+                                  name: value.key,
+                                  blockSize: blockSize,
+                                  value: e,
+                                ),
+                              )
+                              .toList()),
+                    )
+                    .toList(),
               ],
             ),
           ),
         );
       },
+    );
+  }
+}
+
+class SwatchBox extends StatelessWidget {
+  const SwatchBox({super.key, required this.color, required this.name, required this.blockSize, required this.value});
+
+  final Color color;
+  final int value;
+  final String name;
+  final double blockSize;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: blockSize,
+      width: blockSize,
+      color: color,
+      child: FittedBox(
+        fit: BoxFit.scaleDown,
+        child: Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
+          DefaultTextStyle(
+            style: ZetaTextStyles.bodyMedium.copyWith(color: calculateTextColor(color)),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Text('${name.toLowerCase().replaceAll(' ', '')}-$value'),
+                Text(color.toString().replaceAll('Color(0xff', '#').substring(0, 7)),
+              ],
+            ),
+          ),
+        ]),
+      ),
     );
   }
 }

@@ -43,6 +43,7 @@ class ZetaLabel extends ZetaStatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Color backgroundColor = status.labelBackgroundColor(context);
+    final Color foregroundColor = status.labelForegroundColor(context);
 
     return Semantics(
       label: semanticLabel ?? label,
@@ -54,7 +55,7 @@ class ZetaLabel extends ZetaStatelessWidget {
         ),
         child: Text(
           label,
-          style: ZetaTextStyles.labelSmall.apply(color: backgroundColor.onColor),
+          style: ZetaTextStyles.labelSmall.apply(color: foregroundColor),
           overflow: TextOverflow.ellipsis,
         ),
       ),
@@ -81,11 +82,24 @@ extension on ZetaWidgetStatus {
       case ZetaWidgetStatus.positive:
         return colors.surfacePositive;
       case ZetaWidgetStatus.warning:
-        return colors.surfaceWarning.shade40;
+        return colors.surfaceWarning;
       case ZetaWidgetStatus.negative:
         return colors.surfaceNegative;
       case ZetaWidgetStatus.neutral:
-        return colors.cool.shade30;
+        return colors.mainLight;
+    }
+  }
+
+  Color labelForegroundColor(BuildContext context) {
+    final colors = Zeta.of(context).colors;
+    switch (this) {
+      case ZetaWidgetStatus.info:
+      case ZetaWidgetStatus.positive:
+      case ZetaWidgetStatus.warning:
+      case ZetaWidgetStatus.negative:
+        return colors.mainInverse;
+      case ZetaWidgetStatus.neutral:
+        return colors.mainDefault;
     }
   }
 }

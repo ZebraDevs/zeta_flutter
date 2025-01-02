@@ -42,7 +42,7 @@ class _IntroductionWidgetbookState extends State<IntroductionWidgetbook> {
               children: [
                 Container(
                   decoration: BoxDecoration(
-                    color: colors.cool.shade20,
+                    color: colors.surfaceHover,
                     borderRadius: BorderRadius.only(topLeft: radius, topRight: radius),
                   ),
                   child: Padding(
@@ -82,7 +82,7 @@ class _IntroductionWidgetbookState extends State<IntroductionWidgetbook> {
                 ),
                 Container(
                   decoration: BoxDecoration(
-                    color: isDark ? colors.warm.shade10 : colors.surfacePrimary,
+                    color: colors.surfaceDefault,
                     borderRadius: BorderRadius.only(bottomLeft: radius, bottomRight: radius),
                   ),
                   width: double.infinity,
@@ -97,7 +97,7 @@ class _IntroductionWidgetbookState extends State<IntroductionWidgetbook> {
                           configs: [
                             LinkConfig(
                               style: TextStyle(
-                                color: colors.blue.shade50,
+                                color: colors.mainPrimary,
                                 decoration: TextDecoration.underline,
                               ),
                               onTap: (url) {
@@ -151,7 +151,7 @@ class _CodeWrapperWidget extends StatelessWidget {
     return Stack(
       children: [
         DefaultTextStyle(
-          style: GoogleFonts.ibmPlexMono(color: Zeta.of(context).colors.textDefault),
+          style: GoogleFonts.ibmPlexMono(color: Zeta.of(context).colors.mainDefault),
           child: child,
         ),
         if (language.isNotEmpty)
@@ -163,7 +163,8 @@ class _CodeWrapperWidget extends StatelessWidget {
                 child: Text(language),
                 padding: EdgeInsets.symmetric(
                     vertical: Zeta.of(context).spacing.minimum, horizontal: Zeta.of(context).spacing.medium),
-                decoration: BoxDecoration(color: colors.cool.shade40, borderRadius: Zeta.of(context).radius.rounded),
+                decoration:
+                    BoxDecoration(color: colors.surfaceSelectedHover, borderRadius: Zeta.of(context).radius.rounded),
               ),
             ),
           ),

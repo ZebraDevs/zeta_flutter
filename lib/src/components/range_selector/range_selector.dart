@@ -108,9 +108,9 @@ class _ZetaRangeSelectorState extends State<ZetaRangeSelector> {
   Color get _activeColor {
     final colors = Zeta.of(context).colors;
     if (widget.onChange == null) {
-      return colors.textDisabled;
+      return colors.mainDisabled;
     }
-    return _selected ? colors.primary : colors.surfaceDefaultInverse;
+    return _selected ? colors.mainPrimary : colors.surfaceDefaultInverse;
   }
 
   void _onSubmit(TextEditingController controller, {bool lower = true}) {
@@ -181,7 +181,7 @@ class _ZetaRangeSelectorState extends State<ZetaRangeSelector> {
               Text(
                 widget.label!,
                 style: ZetaTextStyles.bodySmall.copyWith(
-                  color: disabled ? colors.textDisabled : colors.textDefault,
+                  color: disabled ? colors.mainDisabled : colors.mainDefault,
                 ),
               ),
             Row(
@@ -289,7 +289,7 @@ class _ValueField extends StatelessWidget {
     return Zeta.of(context).colors;
   }
 
-  ZetaSpacingSemantics get _spacing {
+  ZetaSpacing get _spacing {
     return Zeta.of(context).spacing;
   }
 
@@ -332,7 +332,7 @@ class _ValueField extends StatelessWidget {
         textAlign: TextAlign.center,
         inputFormatters: [FilteringTextInputFormatter.digitsOnly],
         style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-              color: disabled ? _colors.textDisabled : _colors.textSubtle,
+              color: disabled ? _colors.mainDisabled : _colors.mainSubtle,
             ),
         decoration: _inputDecoration,
       ),
