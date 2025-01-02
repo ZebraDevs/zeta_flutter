@@ -4,6 +4,10 @@ import '../../../zeta_flutter.dart';
 ///
 /// Leading widget should typically be a [ZetaAvatar].
 /// {@category Components}
+///
+/// Figma: https://www.figma.com/file/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=21265-2159
+///
+/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/chips/input-chip
 class ZetaInputChip extends ZetaChip {
   /// Creates a [ZetaInputChip].
   const ZetaInputChip({

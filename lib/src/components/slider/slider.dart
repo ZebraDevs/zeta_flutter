@@ -5,6 +5,10 @@ import '../../../zeta_flutter.dart';
 
 /// Slider component with customized styling.
 /// {@category Components}
+///
+/// Figma: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/slider
+///
+/// Widgetbook: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=875-11860&node-type=canvas&m=dev
 class ZetaSlider extends ZetaStatefulWidget {
   /// Default constructor for [ZetaSlider]
   const ZetaSlider({
@@ -122,7 +126,7 @@ class _ZetaSliderState extends State<ZetaSlider> {
     if (widget.onChange == null) {
       return colors.surfaceDisabled;
     }
-    return _selected ? colors.primary : colors.surfaceDefaultInverse;
+    return _selected ? colors.mainPrimary : colors.surfaceDefaultInverse;
   }
 }
 

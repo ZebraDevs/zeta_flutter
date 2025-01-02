@@ -9,6 +9,10 @@ import '../../../zeta_flutter.dart';
 /// navigation item.
 /// Should be used with [ZetaNavigationRailItem].
 /// {@category Components}
+///
+/// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=229-43&node-type=canvas&m=dev
+///
+/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/navigation-rail
 class ZetaNavigationRail extends ZetaStatelessWidget {
   /// Constructor for [ZetaNavigationRail].
   const ZetaNavigationRail({
@@ -143,6 +147,12 @@ class _ZetaNavigationRailItemContent extends ZetaStatelessWidget {
   @override
   Widget build(BuildContext context) {
     final zeta = Zeta.of(context);
+
+    final Color foregroundColor = disabled
+        ? zeta.colors.mainDisabled
+        : selected
+            ? zeta.colors.mainDefault
+            : zeta.colors.mainSubtle;
     return Semantics(
       button: true,
       enabled: !disabled,
@@ -156,7 +166,7 @@ class _ZetaNavigationRailItemContent extends ZetaStatelessWidget {
               color: disabled
                   ? null
                   : selected
-                      ? zeta.colors.blue.shade10
+                      ? zeta.colors.stateDefaultSelected
                       : null,
               borderRadius: context.rounded ? Zeta.of(context).radius.rounded : null,
             ),
@@ -178,11 +188,7 @@ class _ZetaNavigationRailItemContent extends ZetaStatelessWidget {
                       if (icon != null)
                         IconTheme(
                           data: IconThemeData(
-                            color: disabled
-                                ? zeta.colors.cool.shade50
-                                : selected
-                                    ? zeta.colors.textDefault
-                                    : zeta.colors.cool.shade70,
+                            color: foregroundColor,
                             size: Zeta.of(context).spacing.xl_2,
                           ),
                           child: icon!,
@@ -190,13 +196,7 @@ class _ZetaNavigationRailItemContent extends ZetaStatelessWidget {
                       Text(
                         (wordWrap ?? true) ? label.replaceAll(' ', '\n') : label,
                         textAlign: TextAlign.center,
-                        style: ZetaTextStyles.titleSmall.copyWith(
-                          color: disabled
-                              ? zeta.colors.cool.shade50
-                              : selected
-                                  ? zeta.colors.textDefault
-                                  : zeta.colors.cool.shade70,
-                        ),
+                        style: ZetaTextStyles.titleSmall.copyWith(color: foregroundColor),
                       ),
                     ],
                   ),

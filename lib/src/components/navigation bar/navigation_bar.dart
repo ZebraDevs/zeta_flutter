@@ -26,6 +26,10 @@ class ZetaNavigationBarItem {
 
 /// Navigation Bars (Bottom navigation) allow movement between primary destinations in an app.
 /// {@category Components}
+///
+/// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=1052-24751&node-type=canvas&m=dev
+///
+/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/navigation-bar
 class ZetaNavigationBar extends ZetaStatelessWidget {
   /// Creates a new [ZetaNavigationBar].
   const ZetaNavigationBar({
@@ -164,7 +168,7 @@ class ZetaNavigationBar extends ZetaStatelessWidget {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: Zeta.of(context).spacing.medium),
       decoration: BoxDecoration(
-        color: colors.surfacePrimary,
+        color: colors.surfaceDefault,
         border: Border(top: BorderSide(color: colors.borderSubtle)),
       ),
       child: Semantics(
@@ -200,7 +204,7 @@ class _NavigationItem extends ZetaStatelessWidget {
   final BuildContext context;
 
   Widget get badge {
-    final ZetaColors colors = Zeta.of(context).colors;
+    final colors = Zeta.of(context).colors;
     return Positioned(
       top: Zeta.of(context).spacing.minimum,
       right: Zeta.of(context).spacing.minimum,
@@ -224,10 +228,10 @@ class _NavigationItem extends ZetaStatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = Zeta.of(context).colors;
-    final elementColor = selected ? colors.primary : colors.textSubtle;
+    final elementColor = selected ? colors.surfacePrimary : colors.mainSubtle;
 
     return Material(
-      color: colors.surfacePrimary,
+      color: colors.surfaceDefault,
       child: InkWell(
         borderRadius: context.rounded ? Zeta.of(context).radius.rounded : Zeta.of(context).radius.none,
         onTap: onTap,

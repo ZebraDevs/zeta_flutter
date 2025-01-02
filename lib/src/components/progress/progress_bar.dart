@@ -19,13 +19,17 @@ enum ZetaProgressBarType {
 ///
 /// Linear progress bar. Uses progress percentage value to fill bar.
 /// {@category Components}
+///
+/// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=229-22&node-type=canvas&m=dev
+///
+/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/progress/bar
 class ZetaProgressBar extends ZetaProgress {
   ///Constructor for [ZetaProgressBar].
   const ZetaProgressBar({
     super.key,
     super.rounded,
     required super.progress,
-    required this.type,
+    this.type = ZetaProgressBarType.standard,
     this.isThin = false,
     this.label,
   });
@@ -133,7 +137,7 @@ class _ZetaProgressBarState extends ZetaProgressState<ZetaProgressBar> {
   /// Returns thickness of progress bar based on its weight.
   double get _weight => widget.isThin ? Zeta.of(context).spacing.small : Zeta.of(context).spacing.large;
 
-  Widget bufferingWidget(ZetaColors colors) {
+  Widget bufferingWidget(ZetaSemanticColors colors) {
     final Iterable<List<Widget>> extraList = List.generate(
       3,
       (e) => [

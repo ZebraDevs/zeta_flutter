@@ -10,6 +10,10 @@ import '../../../zeta_flutter.dart';
 /// rebuild the checkbox with a new [value] to update the visual appearance of
 /// the checkbox.
 /// {@category Components}
+///
+/// Figma: https://www.figma.com/file/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=21510-54003
+///
+/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/checkbox
 class ZetaCheckbox extends FormField<bool> {
   /// Constructs a [ZetaCheckbox].
   ZetaCheckbox({
@@ -219,7 +223,7 @@ class _CheckboxState extends State<ZetaInternalCheckbox> {
         ? const Nothing()
         : ZetaIcon(
             widget.useIndeterminate ? ZetaIcons.remove : ZetaIcons.check_mark,
-            color: widget.disabled ? theme.colors.iconDisabled : theme.colors.white,
+            color: widget.disabled ? theme.colors.mainDisabled : theme.colors.mainInverse,
             size: 14, // TODO(UX-1202): ZetaSpacingBase
           );
 
@@ -235,7 +239,7 @@ class _CheckboxState extends State<ZetaInternalCheckbox> {
                 BoxShadow(
                   spreadRadius: 2,
                   blurStyle: BlurStyle.solid,
-                  color: theme.colors.blue.shade50,
+                  color: theme.colors.borderPrimary,
                 ),
             ],
             color: _getBackground(theme),
@@ -258,12 +262,11 @@ class _CheckboxState extends State<ZetaInternalCheckbox> {
   }
 
   Color _getBackground(Zeta theme) {
-    final ZetaColorSwatch color = widget.error ? theme.colors.error : theme.colors.primary;
     if (widget.disabled) return theme.colors.surfaceDisabled;
-    if (!_checked) return theme.colors.surfacePrimary;
-    if (_isHovered) return theme.colors.borderHover;
+    if (!_checked) return theme.colors.surfaceDefault;
+    if (_isHovered) return theme.colors.mainDefault;
 
-    return color;
+    return theme.colors.mainPrimary;
   }
 
   Color _getBorderColor(Zeta theme) {
@@ -271,9 +274,9 @@ class _CheckboxState extends State<ZetaInternalCheckbox> {
       return _getBackground(theme);
     }
     if (_isHovered) {
-      return theme.colors.cool.shade90;
+      return theme.colors.borderHover;
     }
 
-    return theme.colors.cool.shade70;
+    return theme.colors.mainSubtle;
   }
 }

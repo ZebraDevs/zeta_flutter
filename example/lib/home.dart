@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:zeta_example/pages/components/accordion_example.dart';
+import 'package:zeta_example/pages/components/avatar_rail_example.dart';
 import 'package:zeta_example/pages/components/avatar_example.dart';
 import 'package:zeta_example/pages/components/badges_example.dart';
 import 'package:zeta_example/pages/components/banner_example.dart';
@@ -10,6 +11,7 @@ import 'package:zeta_example/pages/components/button_example.dart';
 import 'package:zeta_example/pages/components/chat_item_example.dart';
 import 'package:zeta_example/pages/components/checkbox_example.dart';
 import 'package:zeta_example/pages/components/chip_example.dart';
+import 'package:zeta_example/pages/components/comms_button_example.dart';
 import 'package:zeta_example/pages/components/contact_item_example.dart';
 import 'package:zeta_example/pages/components/date_input_example.dart';
 import 'package:zeta_example/pages/components/dialog_example.dart';
@@ -60,6 +62,7 @@ class Component {
 final List<Component> components = [
   Component(AccordionExample.name, (context) => const AccordionExample()),
   Component(TopAppBarExample.name, (context) => const TopAppBarExample()),
+  Component(AvatarRailExample.name, (context) => const AvatarRailExample()),
   Component(AvatarExample.name, (context) => const AvatarExample()),
   Component(BannerExample.name, (context) => const BannerExample()),
   Component(BadgesExample.name, (context) => const BadgesExample()),
@@ -69,6 +72,7 @@ final List<Component> components = [
   Component(ChatItemExample.name, (context) => const ChatItemExample()),
   Component(CheckBoxExample.name, (context) => const CheckBoxExample()),
   Component(ChipExample.name, (context) => const ChipExample()),
+  Component(CommsButtonExample.name, (context) => const CommsButtonExample()),
   Component(ContactItemExample.name, (context) => const ContactItemExample()),
   Component(ListExample.name, (context) => const ListExample()),
   Component(ListItemExample.name, (context) => const ListItemExample()),
@@ -156,7 +160,7 @@ class _HomeState extends State<Home> {
     final _theme = theme..sort((a, b) => a.name.compareTo(b.name));
     return ExampleScaffold(
       // x-release-please-start-version
-      name: 'zeta_flutter v0.15.2',
+      name: 'zeta_flutter v0.16.0',
       // x-release-please-end
       child: SingleChildScrollView(
         child: Column(

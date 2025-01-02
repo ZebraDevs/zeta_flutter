@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../zeta_flutter.dart';
-
 /// Extension to add dividers to any view that can take an iterable.
 ///
 /// Iterable can be converted to a list with [toList].
@@ -69,26 +67,6 @@ extension NumExtensions on num? {
   }
 }
 
-/// Extensions on [ZetaWidgetStatus].
-extension ColorSwatches on ZetaWidgetStatus {
-  /// Gets color swatch from [ZetaWidgetStatus]
-  ZetaColorSwatch colorSwatch(BuildContext context) {
-    final colors = Zeta.of(context).colors;
-    switch (this) {
-      case ZetaWidgetStatus.info:
-        return colors.surfaceInfo;
-      case ZetaWidgetStatus.positive:
-        return colors.surfacePositive;
-      case ZetaWidgetStatus.warning:
-        return colors.surfaceWarning;
-      case ZetaWidgetStatus.negative:
-        return colors.surfaceNegative;
-      case ZetaWidgetStatus.neutral:
-        return colors.cool;
-    }
-  }
-}
-
 /// Extensions on [String].
 extension StringExtensions on String? {
   /// Returns initials from a name.
@@ -97,7 +75,7 @@ extension StringExtensions on String? {
     final List<String> nameParts = this!.split(RegExp(r'\W+'))..removeWhere((item) => item.isEmpty);
     if (nameParts.isEmpty) return '';
     return (nameParts.length > 1
-            ? nameParts[0].substring(0, 1) + nameParts[1].substring(0, 1)
+            ? nameParts[0].substring(0, 1) + nameParts[nameParts.length - 1].substring(0, 1)
             : nameParts[0].length > 1
                 ? nameParts[0].substring(0, 2)
                 : nameParts[0])

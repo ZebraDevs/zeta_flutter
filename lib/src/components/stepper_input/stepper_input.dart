@@ -17,6 +17,10 @@ enum ZetaStepperInputSize {
 /// allows users to input a number or value simply by clicking the plus and
 /// minus buttons.
 /// {@category Components}
+///
+/// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=229-47&node-type=canvas&m=dev
+///
+/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/stepper-input
 class ZetaStepperInput extends ZetaStatefulWidget {
   /// Creates a new [ZetaStepperInput]
   const ZetaStepperInput({
@@ -197,7 +201,7 @@ class ZetaStepperInputState extends State<ZetaStepperInput> {
               textAlign: TextAlign.center,
               inputFormatters: [FilteringTextInputFormatter.digitsOnly],
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: disabled ? colors.textDisabled : null,
+                    color: disabled ? colors.mainDisabled : null,
                   ),
               onTapOutside: (_) {
                 if (_controller.text.isEmpty) {

@@ -9,6 +9,10 @@ import '../../../zeta_flutter.dart';
 /// [children] should consist of [ZetaBreadCrumb]s.
 ///
 /// {@category Components}
+///
+/// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=229-5&node-type=canvas&m=dev
+///
+/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/breadcrumbs
 class ZetaBreadCrumbs extends ZetaStatefulWidget {
   ///Constructor for [ZetaBreadCrumbs]
   const ZetaBreadCrumbs({
@@ -195,6 +199,8 @@ class _ZetaBreadCrumbState extends State<ZetaBreadCrumb> {
   @override
   Widget build(BuildContext context) {
     final colors = Zeta.of(context).colors;
+
+    final foregroundColor = getColor(controller.value, colors);
     return Semantics(
       label: widget.semanticLabel ?? widget.label,
       selected: widget.isSelected,
@@ -211,14 +217,12 @@ class _ZetaBreadCrumbState extends State<ZetaBreadCrumb> {
             if (widget.isSelected)
               Icon(
                 widget.activeIcon ?? ZetaIcons.star_round,
-                color: getColor(controller.value, colors),
+                color: foregroundColor,
               ),
-            SizedBox(
-              width: Zeta.of(context).spacing.small,
-            ),
+            SizedBox(width: Zeta.of(context).spacing.small),
             Text(
               widget.label,
-              style: ZetaTextStyles.bodySmall.apply(color: getColor(controller.value, colors)),
+              style: ZetaTextStyles.bodySmall.apply(color: foregroundColor),
             ),
           ],
         ),
@@ -227,12 +231,12 @@ class _ZetaBreadCrumbState extends State<ZetaBreadCrumb> {
   }
 
   /// Get color of breadcrumb based on state.
-  Color getColor(Set<WidgetState> states, ZetaColors colors) {
+  Color getColor(Set<WidgetState> states, ZetaSemanticColors colors) {
     if (states.contains(WidgetState.hovered)) {
-      return colors.blue;
+      return colors.mainPrimary;
     }
-    if (widget.isSelected) return colors.black;
-    return colors.textSubtle;
+    if (widget.isSelected) return colors.mainDefault;
+    return colors.mainSubtle;
   }
 
   @override
@@ -300,18 +304,18 @@ class _BreadCrumbsTruncatedState extends State<_BreadCrumbsTruncated> {
                     return colors.surfaceHover;
                   }
                   if (states.contains(WidgetState.pressed)) {
-                    return colors.primary.shade10;
+                    return colors.surfaceSelected;
                   }
                   if (states.contains(WidgetState.disabled)) {
                     return colors.surfaceDisabled;
                   }
-                  return colors.warm.shade10;
+                  return colors.surfaceWarm;
                 }),
                 foregroundColor: WidgetStateProperty.resolveWith((states) {
                   if (states.contains(WidgetState.disabled)) {
-                    return colors.textDisabled;
+                    return colors.mainDisabled;
                   }
-                  return colors.textDefault;
+                  return colors.mainDefault;
                 }),
                 shape: WidgetStatePropertyAll(
                   RoundedRectangleBorder(
@@ -322,13 +326,17 @@ class _BreadCrumbsTruncatedState extends State<_BreadCrumbsTruncated> {
                   if (states.contains(WidgetState.focused)) {
                     return BorderSide(
                       width: ZetaBorders.medium,
-                      color: colors.primary.shade100,
+                      color: colors.borderPrimary,
                     );
                   }
-                  if (states.isEmpty) {
-                    return BorderSide(color: colors.borderDefault, width: 0.5);
+                  if (states.contains(WidgetState.hovered)) {
+                    return BorderSide(color: colors.borderHover, width: ZetaBorders.small);
                   }
-                  return null;
+                  if (states.contains(WidgetState.pressed)) {
+                    return BorderSide(color: colors.borderSelected, width: ZetaBorders.small);
+                  }
+
+                  return BorderSide(color: colors.borderDefault, width: ZetaBorders.small);
                 }),
                 padding: WidgetStateProperty.all(EdgeInsets.zero),
                 minimumSize: WidgetStateProperty.all(Size.zero),

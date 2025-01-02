@@ -32,7 +32,7 @@ Future<bool?> showZetaDialog(
       context: context,
       barrierDismissible: barrierDismissible,
       useRootNavigator: useRootNavigator,
-      builder: (_) => _ZetaDialog(
+      builder: (_) => ZetaDialog(
         headerAlignment: headerAlignment,
         icon: icon,
         title: title,
@@ -47,8 +47,18 @@ Future<bool?> showZetaDialog(
       ),
     );
 
-class _ZetaDialog extends ZetaStatelessWidget {
-  const _ZetaDialog({
+/// The Zeta Dialog component.
+///
+/// For most cases, you should use [showZetaDialog] to make a dialog, rather than using this widget.
+/// {@category Components}
+///
+/// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=23954-93337&node-type=frame&m=dev
+///
+/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/dialog
+class ZetaDialog extends ZetaStatelessWidget {
+  /// Constructs a [ZetaDialog].
+  const ZetaDialog({
+    super.key,
     this.headerAlignment = ZetaDialogHeaderAlignment.center,
     this.icon,
     this.title,
@@ -62,15 +72,34 @@ class _ZetaDialog extends ZetaStatelessWidget {
     super.rounded,
   });
 
+  /// The alignment of the header.
   final ZetaDialogHeaderAlignment headerAlignment;
+
+  /// Icon to show in the header of the dialog.
   final Widget? icon;
+
+  /// Title displayed at the top of the dialog.
   final String? title;
+
+  /// Message displayed in the dialog.
   final String message;
+
+  /// Label for the primary button.
   final String? primaryButtonLabel;
+
+  /// Callback for the primary button.
   final VoidCallback? onPrimaryButtonPressed;
+
+  /// Label for the secondary button.
   final String? secondaryButtonLabel;
+
+  /// Callback for the secondary button.
   final VoidCallback? onSecondaryButtonPressed;
+
+  /// Label for the tertiary button.
   final String? tertiaryButtonLabel;
+
+  /// Callback for the tertiary button.
   final VoidCallback? onTertiaryButtonPressed;
 
   @override
@@ -99,7 +128,7 @@ class _ZetaDialog extends ZetaStatelessWidget {
     return ZetaRoundedScope(
       rounded: context.rounded,
       child: AlertDialog(
-        surfaceTintColor: zeta.colors.surfacePrimary,
+        surfaceTintColor: zeta.colors.surfaceDefault,
         shape: RoundedRectangleBorder(borderRadius: Zeta.of(context).radius.large),
         title: icon != null || title != null
             ? Column(
@@ -133,7 +162,7 @@ class _ZetaDialog extends ZetaStatelessWidget {
                 top: Zeta.of(context).spacing.xl_2,
               ),
         titleTextStyle: zetaTextTheme.headlineSmall?.copyWith(
-          color: zeta.colors.textDefault,
+          color: zeta.colors.mainDefault,
         ),
         content: Text(message),
         contentPadding: context.deviceType == DeviceType.mobilePortrait
@@ -145,8 +174,8 @@ class _ZetaDialog extends ZetaStatelessWidget {
                 bottom: Zeta.of(context).spacing.xl_2,
               ),
         contentTextStyle: context.deviceType == DeviceType.mobilePortrait
-            ? zetaTextTheme.bodySmall?.copyWith(color: zeta.colors.textDefault)
-            : zetaTextTheme.bodyMedium?.copyWith(color: zeta.colors.textDefault),
+            ? zetaTextTheme.bodySmall?.copyWith(color: zeta.colors.mainDefault)
+            : zetaTextTheme.bodyMedium?.copyWith(color: zeta.colors.mainDefault),
         actions: [
           if (context.deviceType == DeviceType.mobilePortrait)
             Column(

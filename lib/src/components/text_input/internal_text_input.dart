@@ -36,6 +36,8 @@ class InternalTextInput extends ZetaStatefulWidget {
     this.externalPrefix,
     this.semanticLabel,
     this.borderRadius,
+    this.textInputAction,
+    this.constrained = false,
   })  : requirementLevel = requirementLevel ?? ZetaFormFieldRequirement.none,
         assert(prefix == null || prefixText == null, 'Only one of prefix or prefixText can be accepted.'),
         assert(suffix == null || suffixText == null, 'Only one of suffix or suffixText can be accepted.');
@@ -130,6 +132,12 @@ class InternalTextInput extends ZetaStatefulWidget {
   /// The widget displayed before the input.
   final Widget? externalPrefix;
 
+  /// The action to take when the user submits the input.
+  final TextInputAction? textInputAction;
+
+  /// Determines if the prefix and suffix should be constrained.
+  final bool constrained;
+
   @override
   State<InternalTextInput> createState() => InternalTextInputState();
   @override
@@ -156,14 +164,16 @@ class InternalTextInput extends ZetaStatefulWidget {
       ..add(DiagnosticsProperty<TextInputType?>('keyboardType', keyboardType))
       ..add(DiagnosticsProperty<FocusNode?>('focusNode', focusNode))
       ..add(DiagnosticsProperty<BorderRadius?>('borderRadius', borderRadius))
-      ..add(StringProperty('semanticLabel', semanticLabel));
+      ..add(StringProperty('semanticLabel', semanticLabel))
+      ..add(EnumProperty<TextInputAction?>('textInputAction', textInputAction))
+      ..add(DiagnosticsProperty<bool>('constrained', constrained));
   }
 }
 
 /// The current state of a [InternalTextInput]
 class InternalTextInputState extends State<InternalTextInput> {
   late final TextEditingController _controller;
-  ZetaColors get _colors => Zeta.of(context).colors;
+  ZetaSemanticColors get _colors => Zeta.of(context).colors;
 
   // TODO(UX-1143): refactor to use WidgetStateController
   bool _hovered = false;
@@ -173,9 +183,9 @@ class InternalTextInputState extends State<InternalTextInput> {
       return _colors.surfaceDisabled;
     }
     if (widget.errorText != null) {
-      return _colors.error.shade10;
+      return _colors.surfaceNegativeSubtle;
     }
-    return _colors.surfacePrimary;
+    return _colors.surfaceDefault;
   }
 
   TextStyle get _baseTextStyle {
@@ -197,15 +207,15 @@ class InternalTextInputState extends State<InternalTextInput> {
       case ZetaWidgetSize.medium:
         return EdgeInsets.symmetric(
           horizontal: Zeta.of(context).spacing.medium,
-          vertical: Zeta.of(context).spacing.small,
+          vertical: Zeta.of(context).spacing.medium,
         );
     }
   }
 
   TextStyle get _affixStyle {
-    Color color = _colors.textSubtle;
+    Color color = _colors.mainSubtle;
     if (widget.disabled) {
-      color = _colors.textDisabled;
+      color = _colors.mainDisabled;
     }
     return _baseTextStyle.copyWith(color: color);
   }
@@ -221,7 +231,7 @@ class InternalTextInputState extends State<InternalTextInput> {
         width = Zeta.of(context).spacing.xl_6;
         height = Zeta.of(context).spacing.xl_6;
       case ZetaWidgetSize.small:
-        width = Zeta.of(context).spacing.xl_6;
+        width = Zeta.of(context).spacing.xl_4;
         height = Zeta.of(context).spacing.xl_4;
     }
     return BoxConstraints(
@@ -277,11 +287,11 @@ class InternalTextInputState extends State<InternalTextInput> {
       );
 
   OutlineInputBorder _focusedBorder(bool rounded) => _baseBorder(rounded).copyWith(
-        borderSide: BorderSide(color: _colors.primary.shade50, width: ZetaBorders.medium),
-      ); // TODO(mikecoomber): change to colors.borderPrimary when added
+        borderSide: BorderSide(color: _colors.borderPrimary, width: ZetaBorders.medium),
+      );
 
   OutlineInputBorder _errorBorder(bool rounded) => _baseBorder(rounded).copyWith(
-        borderSide: BorderSide(color: _colors.error, width: ZetaBorders.medium),
+        borderSide: BorderSide(color: _colors.borderNegative, width: ZetaBorders.medium),
       );
 
   @override
@@ -337,7 +347,8 @@ class InternalTextInputState extends State<InternalTextInput> {
                       onChanged: widget.onChange,
                       onSubmitted: widget.onSubmit,
                       style: _baseTextStyle,
-                      cursorErrorColor: _colors.error,
+                      cursorErrorColor: _colors.mainNegative,
+                      textInputAction: widget.textInputAction,
                       obscureText: widget.obscureText,
                       focusNode: widget.focusNode,
                       decoration: InputDecoration(
@@ -345,9 +356,11 @@ class InternalTextInputState extends State<InternalTextInput> {
                         contentPadding: _contentPadding,
                         filled: true,
                         prefixIcon: _prefix,
-                        prefixIconConstraints: widget.prefixText != null ? _affixConstraints : null,
+                        prefixIconConstraints:
+                            widget.prefixText != null || widget.constrained ? _affixConstraints : null,
                         suffixIcon: _suffix,
-                        suffixIconConstraints: widget.suffixText != null ? _affixConstraints : null,
+                        suffixIconConstraints:
+                            widget.suffixText != null || widget.constrained ? _affixConstraints : null,
                         focusColor: _backgroundColor,
                         hoverColor: _backgroundColor,
                         fillColor: _backgroundColor,
@@ -358,7 +371,9 @@ class InternalTextInputState extends State<InternalTextInput> {
                         errorBorder: widget.disabled ? _baseBorder(rounded) : _errorBorder(rounded),
                         hintText: widget.placeholder,
                         errorText: widget.errorText,
-                        hintStyle: _baseTextStyle,
+                        hintStyle: _baseTextStyle.copyWith(
+                          color: widget.disabled ? _colors.mainDisabled : _colors.mainSubtle,
+                        ),
                         errorStyle: const TextStyle(height: 0.001, color: Colors.transparent),
                       ),
                     ),

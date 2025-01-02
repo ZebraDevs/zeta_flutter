@@ -5,6 +5,10 @@ import '../../../zeta_flutter.dart';
 
 /// Tab item to be used in [ZetaGlobalHeader].
 /// {@category Components}
+///
+/// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=1120-26358&node-type=canvas&m=dev
+///
+/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/global-header
 class ZetaGlobalHeaderItem extends ZetaStatefulWidget {
   ///Constructor for tab item
   const ZetaGlobalHeaderItem({
@@ -12,7 +16,8 @@ class ZetaGlobalHeaderItem extends ZetaStatefulWidget {
     super.rounded,
     this.dropdown,
     this.active,
-    this.handlePress,
+    @Deprecated('Use onTap instead') VoidCallback? handlePress,
+    this.onTap,
     required this.label,
   });
 
@@ -23,7 +28,7 @@ class ZetaGlobalHeaderItem extends ZetaStatefulWidget {
   final bool? active;
 
   /// Handle press of tab item
-  final VoidCallback? handlePress;
+  final VoidCallback? onTap;
 
   /// Content displayed on tab.
   final String label;
@@ -35,13 +40,13 @@ class ZetaGlobalHeaderItem extends ZetaStatefulWidget {
   ZetaGlobalHeaderItem copyWith({
     Widget? dropdown,
     bool? active,
-    VoidCallback? handlePress,
+    VoidCallback? onTap,
     String? label,
   }) {
     return ZetaGlobalHeaderItem(
       dropdown: dropdown ?? this.dropdown,
       active: active ?? this.active,
-      handlePress: handlePress ?? this.handlePress,
+      onTap: onTap ?? this.onTap,
       label: label ?? this.label,
     );
   }
@@ -51,7 +56,7 @@ class ZetaGlobalHeaderItem extends ZetaStatefulWidget {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty<bool?>('active', active))
-      ..add(ObjectFlagProperty<VoidCallback?>.has('handlePress', handlePress))
+      ..add(ObjectFlagProperty<VoidCallback?>.has('handlePress', onTap))
       ..add(StringProperty('label', label));
   }
 }
@@ -60,15 +65,17 @@ class _ZetaGlobalHeaderItemState extends State<ZetaGlobalHeaderItem> {
   @override
   Widget build(BuildContext context) {
     final colors = Zeta.of(context).colors;
+    final radius = Zeta.of(context).radius;
 
-    final foregroundColor = widget.active! ? colors.primary : colors.textSubtle;
+    final foregroundColor = widget.active! ? colors.mainPrimary : colors.mainSubtle;
 
     return ZetaRoundedScope(
       rounded: context.rounded,
       child: Material(
         color: Colors.transparent,
         child: InkWell(
-          onTap: widget.handlePress,
+          onTap: widget.onTap,
+          borderRadius: context.rounded ? radius.rounded : radius.none,
           child: Row(
             children: [
               Text(widget.label, style: TextStyle(color: foregroundColor)),

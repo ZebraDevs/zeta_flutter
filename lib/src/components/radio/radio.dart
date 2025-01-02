@@ -5,6 +5,10 @@ import '../../../zeta_flutter.dart';
 
 /// Radio buttons are used for mutually exclusive choices, not for multiple choices. Only one radio button can be selected at a time. When a user chooses a new item, the previous choice is automatically deselected.
 /// {@category Components}
+///
+/// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=229-7&node-type=canvas&m=dev
+///
+/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/radio-button
 class ZetaRadio<T> extends ZetaStatefulWidget {
   /// Constructor for [ZetaRadio].
   const ZetaRadio({
@@ -82,23 +86,23 @@ class _ZetaRadioState<T> extends State<ZetaRadio<T>> with TickerProviderStateMix
                         ..inactiveReactionColor = Colors.transparent
                         ..reactionColor = Colors.transparent
                         ..hoverColor = Colors.transparent
-                        ..focusColor = zetaColors.blue.shade50
+                        ..focusColor = zetaColors.mainPrimary
                         ..splashRadius = Zeta.of(context).spacing.medium
                         ..downPosition = downPosition
                         ..isFocused = states.contains(WidgetState.focused)
                         ..isHovered = states.contains(WidgetState.hovered)
                         ..activeColor = states.contains(WidgetState.hovered)
-                            ? zetaColors.cool.shade90
+                            ? zetaColors.borderHover
                             : states.contains(WidgetState.disabled)
-                                ? zetaColors.cool.shade30
-                                : zetaColors.blue.shade60
+                                ? zetaColors.surfaceDisabled
+                                : zetaColors.mainPrimary
                         ..inactiveColor = states.contains(WidgetState.hovered)
-                            ? zetaColors.cool.shade90
+                            ? zetaColors.borderHover
                             : states.contains(WidgetState.disabled)
-                                ? zetaColors.cool.shade30
+                                ? zetaColors.mainDisabled
                                 : states.contains(WidgetState.focused)
-                                    ? zetaColors.blue.shade50
-                                    : zetaColors.cool.shade70,
+                                    ? zetaColors.borderPrimary
+                                    : zetaColors.mainSubtle,
                       mouseCursor: WidgetStateProperty.all(
                         states.contains(WidgetState.disabled) ? SystemMouseCursors.forbidden : SystemMouseCursors.click,
                       ),
@@ -107,7 +111,7 @@ class _ZetaRadioState<T> extends State<ZetaRadio<T>> with TickerProviderStateMix
                       DefaultTextStyle(
                         style: ZetaTextStyles.bodyMedium.copyWith(
                           color:
-                              states.contains(WidgetState.disabled) ? zetaColors.textDisabled : zetaColors.textDefault,
+                              states.contains(WidgetState.disabled) ? zetaColors.mainDisabled : zetaColors.mainDefault,
                           height: 4 / 3,
                         ),
                         child: widget.label!,
@@ -180,7 +184,7 @@ class _RadioPainter extends ToggleablePainter {
     // Outer circle
     paint
       ..color = isHovered
-          ? colors.black
+          ? colors.borderHover
           : position.isDismissed
               ? inactiveColor
               : activeColor

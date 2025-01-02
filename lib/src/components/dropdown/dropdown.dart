@@ -27,6 +27,10 @@ class _DropdownControllerImpl implements ZetaDropdownController {
 
 /// An item used in a [ZetaDropdown] or a [ZetaSelectInput].
 /// {@category Components}
+///
+/// Figma: https://www.figma.com/file/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=22391-10146
+///
+/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/dropdown
 class ZetaDropdownItem<T> {
   /// Creates a new [ZetaDropdownItem]
   ZetaDropdownItem({
@@ -51,6 +55,10 @@ class ZetaDropdownItem<T> {
 
 /// Class for [ZetaDropdown]
 /// {@category Components}
+///
+/// Figma: https://www.figma.com/file/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=22391-10146
+///
+/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/dropdown
 class ZetaDropdown<T> extends ZetaStatefulWidget {
   /// Creates a new [ZetaDropdown].
   const ZetaDropdown({
@@ -488,7 +496,7 @@ class _DropdownItemState<T> extends State<_DropdownItem<T>> {
                 Expanded(
                   child: Text(
                     widget.value.label,
-                    style: ZetaTextStyles.bodyMedium.copyWith(color: colors.textDefault, height: 1.5),
+                    style: ZetaTextStyles.bodyMedium.copyWith(color: colors.mainDefault, height: 1.5),
                   ),
                 ),
               ],
@@ -518,11 +526,11 @@ class _DropdownItemState<T> extends State<_DropdownItem<T>> {
           },
         );
       case ZetaDropdownMenuType.standard:
-        return widget.value.icon ?? SizedBox(width: Zeta.of(context).spacing.xl_2);
+        return widget.value.icon ?? SizedBox(width: Zeta.of(context).spacing.xl);
     }
   }
 
-  ButtonStyle _getStyle(ZetaColors colors) {
+  ButtonStyle _getStyle(ZetaSemanticColors colors) {
     return ButtonStyle(
       backgroundColor: WidgetStateProperty.resolveWith((states) {
         if (states.contains(WidgetState.disabled)) {
@@ -538,13 +546,13 @@ class _DropdownItemState<T> extends State<_DropdownItem<T>> {
           return colors.surfaceHover;
         }
 
-        return colors.surfacePrimary;
+        return colors.surfaceDefault;
       }),
       foregroundColor: WidgetStateProperty.resolveWith((states) {
         if (states.contains(WidgetState.disabled)) {
-          return colors.textDisabled;
+          return colors.mainDisabled;
         }
-        return colors.textDefault;
+        return colors.mainDefault;
       }),
       shape: WidgetStateProperty.all(
         RoundedRectangleBorder(
