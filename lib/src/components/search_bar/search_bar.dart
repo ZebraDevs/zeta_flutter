@@ -82,7 +82,7 @@ class ZetaSearchBar extends ZetaTextFormField {
                   onChange: state.onChange,
                   prefix: ZetaIcon(
                     ZetaIcons.search,
-                    color: !disabled ? zeta.colors.iconSubtle : zeta.colors.iconDisabled,
+                    color: !disabled ? zeta.colors.mainSubtle : zeta.colors.mainDisabled,
                     size: iconSize,
                   ),
                   suffix: Row(
@@ -95,14 +95,14 @@ class ZetaSearchBar extends ZetaTextFormField {
                           disabled: disabled,
                           size: size,
                           semanticLabel: clearSemanticLabel,
-                          color: zeta.colors.iconSubtle,
+                          color: zeta.colors.mainSubtle,
                           key: const ValueKey('search-clear-btn'),
                         ),
                         if (showSpeechToText)
                           SizedBox(
                             height: iconSize,
                             child: VerticalDivider(
-                              color: zeta.colors.cool.shade40,
+                              color: zeta.colors.mainSubtle,
                               width: 5,
                               thickness: 1,
                             ),
@@ -116,7 +116,7 @@ class ZetaSearchBar extends ZetaTextFormField {
                           disabled: disabled,
                           semanticLabel: microphoneSemanticLabel,
                           size: size,
-                          color: zeta.colors.iconDefault,
+                          color: zeta.colors.mainDefault,
                         ),
                     ],
                   ),

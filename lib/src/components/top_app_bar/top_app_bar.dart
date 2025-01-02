@@ -223,7 +223,7 @@ class _ZetaTopAppBarState extends State<ZetaTopAppBar> {
     }
 
     return DefaultTextStyle(
-      style: (widget.titleTextStyle ?? ZetaTextStyles.bodyLarge).copyWith(color: colors.textDefault),
+      style: (widget.titleTextStyle ?? ZetaTextStyles.bodyLarge).copyWith(color: colors.mainDefault),
       child: title ?? const Text(' '),
     );
   }
@@ -238,7 +238,7 @@ class _ZetaTopAppBarState extends State<ZetaTopAppBar> {
               label: widget.clearSemanticLabel,
               button: true,
               child: IconButton(
-                color: colors.cool.shade50,
+                color: colors.mainDefault,
                 onPressed: () => _searchController.clearText(),
                 icon: ZetaIcon(
                   ZetaIcons.cancel,
@@ -249,7 +249,7 @@ class _ZetaTopAppBarState extends State<ZetaTopAppBar> {
             if (widget.onSearchMicrophoneIconPressed != null) ...[
               SizedBox(
                 height: Zeta.of(context).spacing.xl_2,
-                child: VerticalDivider(width: ZetaBorders.medium, color: colors.cool.shade70),
+                child: VerticalDivider(width: ZetaBorders.medium, color: colors.mainSubtle),
               ),
               Semantics(
                 label: widget.microphoneSemanticLabel,
@@ -336,16 +336,16 @@ class _ZetaTopAppBarState extends State<ZetaTopAppBar> {
           child: AppBar(
             elevation: 0,
             scrolledUnderElevation: 0,
-            backgroundColor: colors.surfacePrimary,
-            iconTheme: IconThemeData(color: colors.iconDefault),
+            backgroundColor: colors.surfaceDefault,
+            iconTheme: IconThemeData(color: colors.mainDefault),
             leading: leading,
             toolbarHeight: spacing.xl_9,
             automaticallyImplyLeading: widget.automaticallyImplyLeading,
             surfaceTintColor: Colors.transparent,
             centerTitle: widget.type == ZetaTopAppBarType.centered,
             titleTextStyle: widget.titleTextStyle == null
-                ? ZetaTextStyles.bodyLarge.copyWith(color: colors.textDefault)
-                : widget.titleTextStyle!.copyWith(color: colors.textDefault),
+                ? ZetaTextStyles.bodyLarge.copyWith(color: colors.mainDefault)
+                : widget.titleTextStyle!.copyWith(color: colors.mainDefault),
             title: title,
             actions: actions,
           ),

@@ -78,7 +78,6 @@ builder: (context, themeData, themeMode) {
 To tie everything together, use the `ZetaProvider` constructor. The `builder` argument is mandatory, while the others are optional but allow you to set initial values:
 
 ```dart
-
  @override
   Widget build(BuildContext context) {
     return ZetaProvider(
@@ -103,6 +102,67 @@ To tie everything together, use the `ZetaProvider` constructor. The `builder` ar
     );
   }
 ```
+
+### Customization
+
+#### Creating custom themes
+
+Custom themes can be made by creating `ZetaCustomTheme` objects. `ZetaCustomTheme` can be constructed by passing in a primary or secondary color and, optionally, their dark variants:
+
+```dart
+ZetaCustomTheme(
+  id: 'custom-theme-red',
+  primary: Colors.red,
+  primaryDark : // Dark variant here,
+  secondary: Colors.blue,
+  secondaryDark: // Dark variant here,
+)
+```
+
+Color arguments can be of type `ZetaColorSwatch`, `MaterialColor`, or `Color`. If only a `Color` is provided, Zeta will generate a `ZetaColorSwatch`. <b>To have control over every shade of a given color, we reccomend providing either a `ZetaColorSwatch` or a `MaterialColor`.</b>
+
+If a dark variant of a color is not provided, Zeta generate one by inverting the corresponding color swatch.
+
+#### Adding custom themes
+
+Once you have defined the custom themes for your app, give them to the ZetaProvider by passing them through the construtor. You can also initialize the custom theme by setting the `initialTheme` argument to the id of the desired theme.
+
+```dart
+  ZetaProvider(
+    initialTheme: 'custom-theme-red'
+    customThemes: [
+      ZetaCustomTheme(
+        id: 'custom-theme-red',
+        primary: Colors.red,
+        secondary: Colors.purple
+      ),
+      ZetaCustomTheme(
+        id: 'custom-theme-purple',
+        primary: Colors.purple,
+        secondary: Colors.green
+      ),
+    ]
+  )
+```
+
+You can also get and set the custom themes via the `ZetaProvider`:
+
+`ZetaProvider.of(context).customThemes`
+`ZetaProvider.of(context).setCustomThemes(newCustomThemes)`
+
+#### Changing the custom theme
+
+To change the custom theme, call the `updateCustomTheme` function on `ZetaProvider` with an id corresponding to a `ZetaCustomTheme` object:
+
+`ZetaProvider.of(context).updateCustomTheme('custom-theme-purple')`
+
+If the id provided does not correspond to a given theme, Zeta will fall back to its default theme.
+
+You can fetch the id of the currently applied custom theme via the `Zeta` object:
+
+`Zeta.of(context).customThemeId`
+
+This will return null if no custom theme is in use.
 
 With these configurations, Zeta makes it easy to achieve consistent theming throughout your Flutter application.
 

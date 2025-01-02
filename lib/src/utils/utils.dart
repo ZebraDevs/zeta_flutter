@@ -5,4 +5,4 @@ export 'nothing.dart';
 export 'platform/platform_is.dart' show PlatformIs;
 export 'rounded.dart';
 export 'zeta.dart';
-export 'zeta_provider.dart';
+export 'zeta_provider.dart' hide InternalProvider, InternalProviderState, generateZetaTheme;

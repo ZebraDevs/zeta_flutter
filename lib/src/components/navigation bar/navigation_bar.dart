@@ -188,7 +188,7 @@ class ZetaNavigationBar extends ZetaStatelessWidget {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: Zeta.of(context).spacing.large),
       decoration: BoxDecoration(
-        color: colors.surfacePrimary,
+        color: colors.surfaceDefault,
         border: Border(top: BorderSide(color: colors.borderSubtle)),
       ),
       child: Semantics(child: useSafeArea ? SafeArea(child: child) : child),
@@ -262,10 +262,10 @@ class NavigationItem extends ZetaStatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = Zeta.of(context).colors;
-    final elementColor = selected ? colors.primary : colors.textSubtle;
+    final elementColor = selected ? colors.surfacePrimary : colors.mainSubtle;
 
     return Material(
-      color: colors.surfacePrimary,
+      color: colors.surfaceDefault,
       child: InkResponse(
         borderRadius: context.rounded ? Zeta.of(context).radius.rounded : Zeta.of(context).radius.none,
         onTap: onTap,
