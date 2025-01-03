@@ -5,12 +5,8 @@ enum ZetaContrast {
   aa,
 
   /// AAA: The contrast ratio should be at least 8.33:1
-  aaa,
-}
+  aaa;
 
-/// Extension on [ZetaContrast] to provide color indices
-/// for certain accessibility scenarios
-extension AccessibilityIndices on ZetaContrast {
   /// Returns the color index value for a primary depending on the ZetaContrast value.
   ///
   /// For [ZetaContrast.aa], it returns 60.
