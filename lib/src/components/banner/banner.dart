@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../../zeta_flutter.dart';
@@ -43,9 +42,6 @@ class ZetaBanner extends MaterialBanner {
     /// Whether the title should be centered.
     bool titleCenter = false,
 
-    /// Whether the title should be centered.
-    @Deprecated('Use titleCenter instead. ' 'This attribute has been renamed as of 0.18.0') bool? titleStart,
-
     /// The trailing widget for the banner.
     Widget? trailing,
 
@@ -58,25 +54,22 @@ class ZetaBanner extends MaterialBanner {
     String? semanticLabel,
   }) : super(
           dividerColor: Colors.transparent,
+          onVisible: () {
+            if (PlatformIs.android) {
+              final backgroundColor = _backgroundColorFromType(context, type);
+
+              SystemChrome.setSystemUIOverlayStyle(
+                SystemUiOverlayStyle(
+                  statusBarColor: backgroundColor,
+                  systemNavigationBarIconBrightness: backgroundColor.isDark ? Brightness.light : Brightness.dark,
+                ),
+              );
+            }
+          },
           content: Builder(
             builder: (context) {
-              final backgroundColor = _backgroundColorFromType(context, type);
               final foregroundColor = Zeta.of(context).colors.mainInverse;
-              if (!kIsWeb && PlatformIs.android && context.mounted) {
-                // ignore: invalid_use_of_visible_for_testing_member
-                final statusBarColor = SystemChrome.latestStyle?.statusBarColor;
-                if (statusBarColor != backgroundColor) {
-                  SystemChrome.setSystemUIOverlayStyle(
-                    SystemUiOverlayStyle(
-                      statusBarColor: backgroundColor,
-                      systemNavigationBarIconBrightness: backgroundColor.isDark ? Brightness.light : Brightness.dark,
-                    ),
-                  );
-                }
-              }
 
-              // ignore: no_leading_underscores_for_local_identifiers
-              final _titleCenter = titleStart ?? titleCenter;
               return ZetaRoundedScope(
                 rounded: rounded ?? context.rounded,
                 child: Semantics(
@@ -87,7 +80,7 @@ class ZetaBanner extends MaterialBanner {
                       overflow: TextOverflow.ellipsis,
                     ),
                     child: Stack(
-                      alignment: _titleCenter ? Alignment.center : Alignment.centerLeft,
+                      alignment: titleCenter ? Alignment.center : Alignment.centerLeft,
                       children: [
                         if (leadingIcon != null)
                           Positioned(
@@ -103,7 +96,7 @@ class ZetaBanner extends MaterialBanner {
                           ),
                         Padding(
                           padding:
-                              !_titleCenter && leadingIcon != null ? const EdgeInsets.only(left: 40) : EdgeInsets.zero,
+                              !titleCenter && leadingIcon != null ? const EdgeInsets.only(left: 40) : EdgeInsets.zero,
                           child: Text(
                             title,
                             style: ZetaTextStyles.labelLarge.copyWith(

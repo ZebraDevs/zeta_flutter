@@ -40,21 +40,21 @@ class ZetaNavigationRail extends ZetaStatelessWidget {
 
   /// The margin around the [ZetaNavigationRail].
   /// If undefined, defaults to:
-  /// ```
+  /// ```dart
   ///  EdgeInsets.all(Zeta.of(context).spacing.xl)
   /// ```
   final EdgeInsets? margin;
 
   /// The spacing between items in [ZetaNavigationRail].
   /// If undefined, defaults to:
-  /// ```
+  /// ```dart
   ///  EdgeInsets.only(bottom: Zeta.of(context).spacing.minimum)
   /// ```
   final EdgeInsets? itemSpacing;
 
   /// The padding within an item in [ZetaNavigationRail].
   /// Default is:
-  /// ```
+  /// ```dart
   ///  EdgeInsets.symmetric(
   ///   horizontal: Zeta.of(context).spacing.small,
   ///   vertical: Zeta.of(context).spacing.medium,

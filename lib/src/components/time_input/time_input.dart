@@ -28,7 +28,6 @@ class ZetaTimeInput extends ZetaFormField<TimeOfDay> {
     super.onChange,
     super.requirementLevel = ZetaFormFieldRequirement.none,
     super.validator,
-    @Deprecated('Use use24HourFormat instead') bool use12Hr = true,
     this.use24HourFormat = true,
     this.label,
     this.hintText,

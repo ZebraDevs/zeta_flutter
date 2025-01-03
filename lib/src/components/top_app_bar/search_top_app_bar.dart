@@ -183,10 +183,6 @@ class _ZetaTopAppBarSearchFieldState extends State<ZetaTopAppBarSearchField> wit
 }
 
 /// A controller used to control the search field in the app bar.
-@Deprecated('Use ZetaSearchController instead. ' 'Deprecated as of 0.14.1')
-typedef AppBarSearchController = ZetaSearchController;
-
-/// A controller used to control the search field in the app bar.
 class ZetaSearchController extends ChangeNotifier {
   bool _enabled = false;
 

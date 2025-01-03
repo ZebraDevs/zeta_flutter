@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:intl/intl.dart';
@@ -28,10 +27,6 @@ void main() {
       'count': '1',
       'onTap': 'null',
       'starred': 'true',
-      'onMenuMoreTap': 'null',
-      'onCallTap': 'null',
-      'onDeleteTap': 'null',
-      'onPttTap': 'null',
       'explicitChildNodes': 'true',
       'paleButtonColors': 'null',
     };
@@ -451,55 +446,6 @@ void main() {
         chatItemFinder,
         matchesGoldenFile(goldenFile.getFileUri('chat_item_custom_slidable_buttons')),
       );
-    });
-
-    testWidgets('debugFillProperties works correctly', (WidgetTester tester) async {
-      final diagnosticsZetaChatItem = DiagnosticPropertiesBuilder();
-      final time = DateTime.now();
-      ZetaChatItem(
-        title: const Text('Title'),
-        subtitle: const Text('Subtitle'),
-        time: time,
-        leading: const ZetaAvatar(initials: 'AZ'),
-        slidableActions: [
-          ZetaSlidableAction.menuMore(onPressed: () {}),
-          ZetaSlidableAction.call(onPressed: () {}),
-          ZetaSlidableAction.ptt(onPressed: () {}),
-          ZetaSlidableAction.delete(onPressed: () {}),
-        ],
-        count: 1,
-        enabledNotificationIcon: true,
-        highlighted: true,
-        enabledWarningIcon: true,
-        starred: true,
-      ).debugFillProperties(diagnosticsZetaChatItem);
-
-      expect(diagnosticsZetaChatItem.finder('rounded'), 'null');
-      expect(diagnosticsZetaChatItem.finder('highlighted'), 'true');
-      expect(diagnosticsZetaChatItem.finder('time'), time.toString());
-      expect(diagnosticsZetaChatItem.finder('timeFormat'), 'null');
-      expect(diagnosticsZetaChatItem.finder('enabledWarningIcon'), 'true');
-      expect(diagnosticsZetaChatItem.finder('enabledNotificationIcon'), 'true');
-      expect(diagnosticsZetaChatItem.finder('count'), '1');
-      expect(diagnosticsZetaChatItem.finder('onTap'), 'null');
-      expect(diagnosticsZetaChatItem.finder('starred'), 'true');
-      expect(diagnosticsZetaChatItem.finder('onMenuMoreTap'), 'null');
-      expect(diagnosticsZetaChatItem.finder('onCallTap'), 'null');
-      expect(diagnosticsZetaChatItem.finder('onDeleteTap'), 'null');
-      expect(diagnosticsZetaChatItem.finder('onPttTap'), 'null');
-      expect(diagnosticsZetaChatItem.finder('explicitChildNodes'), 'true');
-      expect(diagnosticsZetaChatItem.finder('paleButtonColors'), 'null');
-
-      final diagnosticsZetaSlidableAction = DiagnosticPropertiesBuilder();
-      const ZetaSlidableAction(icon: Icons.star).debugFillProperties(diagnosticsZetaSlidableAction);
-
-      expect(diagnosticsZetaSlidableAction.finder('onPressed'), 'null');
-      expect(diagnosticsZetaSlidableAction.finder('icon'), 'IconData(U+0E5F9)');
-      expect(diagnosticsZetaSlidableAction.finder('foregroundColor'), null);
-      expect(diagnosticsZetaSlidableAction.finder('backgroundColor'), null);
-      expect(diagnosticsZetaSlidableAction.finder('color'), 'null');
-      expect(diagnosticsZetaSlidableAction.finder('semanticLabel'), 'null');
-      expect(diagnosticsZetaSlidableAction.finder('paleColor'), 'false');
     });
 
     testWidgets('ZetaChatItem displays correctly', (WidgetTester tester) async {

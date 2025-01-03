@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:analyzer/dart/analysis/utilities.dart';
 import 'package:analyzer/dart/ast/ast.dart';
 import 'package:analyzer/dart/ast/visitor.dart';
+import 'package:flutter/material.dart';
 
 import 'utils/utils.dart';
 
@@ -239,6 +240,5 @@ void main() async {
   // generate MD table
   await writeMDToFile('${outputDirectory.path}/test_table.md', generateMD(testCount));
 
-  // ignore: avoid_print
-  print('Test table generated successfully!');
+  debugPrint('Test table generated successfully!');
 }

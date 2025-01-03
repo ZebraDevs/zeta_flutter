@@ -9,7 +9,7 @@ export 'badges/tag.dart';
 export 'banner/banner.dart';
 export 'bottom sheets/bottom_sheet.dart';
 export 'bottom sheets/menu_items.dart';
-export 'breadcrumb/breadcrumb.dart';
+export 'breadcrumb/breadcrumb.dart' hide TruncatedItem;
 export 'button_group/button_group.dart';
 export 'buttons/button.dart';
 export 'buttons/button_style.dart';

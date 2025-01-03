@@ -493,19 +493,10 @@ class ZetaStep {
   /// Creates a step for a [ZetaStepper].
   const ZetaStep({
     required this.title,
-    @Deprecated('Steps no longer manage their own content. ' 'Deprecated as of 0.16.1') this.content,
     this.subtitle,
     this.disabled = false,
     this.semanticLabel,
-    @Deprecated(
-        'To disable a step, set its disabled prop to true. To complete a step, set the currentStep prop on the stepper greater than the step index. '
-        'Deprecated as of 0.16.1')
-    this.type = ZetaStepType.disabled,
   });
-
-  /// The content of the step that appears below the [title] and [subtitle].
-  @Deprecated('Steps no longer manage their own content. ' 'Deprecated as of 0.16.1')
-  final Widget? content;
 
   /// The subtitle of the step that appears above the title.
   final Widget? subtitle;
@@ -518,28 +509,6 @@ class ZetaStep {
 
   /// Whether the step is disabled and does not react to taps.
   final bool disabled;
-
-  /// The type of the step which determines the styling of its components
-  /// and whether steps are interactive.
-  @Deprecated(
-      'To disable a step, set its disabled prop to true. To complete a step, set the activeStep prop on the stepper greater than the step index. '
-      'Deprecated as of 0.16.1')
-  final ZetaStepType type;
-}
-
-/// The type of a [ZetaStep] which is used to control the style of the circle and text.
-@Deprecated(
-    'To disable a step, set its disabled prop to true. To complete a step, set the activeStep prop on the stepper greater than the step index. '
-    'Deprecated as of 0.16.1')
-enum ZetaStepType {
-  /// A step that is currently selected with primary color icon
-  enabled,
-
-  /// A step that displays a tick icon in its circle.
-  complete,
-
-  /// A step that is disabled and does not to react to taps.
-  disabled,
 }
 
 /// Defines the [ZetaStepper]'s main axis.

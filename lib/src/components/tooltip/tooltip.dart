@@ -45,7 +45,7 @@ class ZetaTooltip extends ZetaStatelessWidget {
 
   /// The padding inside the [ZetaTooltip].
   /// Default is:
-  /// ```
+  /// ```dart
   ///  EdgeInsets.symmetric(
   ///   horizontal: Zeta.of(context).spacing.small,
   ///   vertical: Zeta.of(context).spacing.minimum,
@@ -59,7 +59,7 @@ class ZetaTooltip extends ZetaStatelessWidget {
 
   /// The text style of the tooltip.
   /// Default is:
-  /// ```
+  /// ```dart
   /// ZetaTextStyles.bodyXSmall.copyWith(
   ///   color: zeta.colors.mainInverse,
   ///   fontWeight: FontWeight.w500,

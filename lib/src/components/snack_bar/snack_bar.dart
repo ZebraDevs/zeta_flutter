@@ -70,16 +70,6 @@ class ZetaSnackBar extends SnackBar {
     /// Depending on the `type`, the default label will be used; 'Undo' for [ZetaSnackBarType.deletion] and 'View' for [ZetaSnackBarType.view].
     String? actionLabel,
 
-    /// Label for the delete action button.
-    ///
-    /// If null, 'Delete' will be used.
-    @Deprecated('Use actionLabel instead.' ' Deprecated in 0.12.1') String? deleteActionLabel,
-
-    /// Label for the view action button.
-    ///
-    /// If null, 'View' will be used.
-    @Deprecated('Use actionLabel instead.' ' Deprecated in 0.12.1') String? viewActionLabel,
-
     /// Semantic label for the action button.
     ///
     /// If null, the `actionLabel` will be used.
@@ -119,8 +109,6 @@ class ZetaSnackBar extends SnackBar {
                     type: type,
                     actionLabel: actionLabel,
                     onPressed: onPressed,
-                    deleteActionLabel: deleteActionLabel,
-                    viewActionLabel: viewActionLabel,
                     semanticLabel: actionSemanticLabel,
                   ),
                 ],
@@ -194,16 +182,12 @@ class _Action extends StatelessWidget {
     required this.type,
     required this.actionLabel,
     required this.onPressed,
-    required this.deleteActionLabel,
-    required this.viewActionLabel,
     this.semanticLabel,
   });
 
   final String? actionLabel;
-  final String? deleteActionLabel;
   final VoidCallback? onPressed;
   final ZetaSnackBarType? type;
-  final String? viewActionLabel;
   final String? semanticLabel;
 
   @override
@@ -212,9 +196,7 @@ class _Action extends StatelessWidget {
     properties
       ..add(EnumProperty<ZetaSnackBarType?>('type', type))
       ..add(StringProperty('actionLabel', actionLabel))
-      ..add(StringProperty('deleteActionLabel', deleteActionLabel))
       ..add(ObjectFlagProperty<VoidCallback?>.has('onPressed', onPressed))
-      ..add(StringProperty('viewActionLabel', viewActionLabel))
       ..add(StringProperty('semanticLabel', semanticLabel));
   }
 
@@ -225,9 +207,9 @@ class _Action extends StatelessWidget {
     String? label = actionLabel;
     if (label == null) {
       if (type case ZetaSnackBarType.deletion) {
-        label = deleteActionLabel ?? 'Undo';
+        label = 'Undo'; // TODO(UX-1003): Localize
       } else if (type case ZetaSnackBarType.view) {
-        label = viewActionLabel ?? 'View';
+        label = 'View'; // TODO(UX-1003): Localize
       }
     }
 

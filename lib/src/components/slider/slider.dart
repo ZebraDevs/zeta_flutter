@@ -131,10 +131,6 @@ class _ZetaSliderState extends State<ZetaSlider> {
 }
 
 /// Custom slider thumb component
-@Deprecated('Deprecated in 0.14.1')
-typedef SliderThumb = _SliderThumb;
-
-/// Custom slider thumb component
 class _SliderThumb extends SliderComponentShape {
   /// Constructor for [_SliderThumb]
   const _SliderThumb({required this.size, required this.rounded, required this.color});

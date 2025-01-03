@@ -8,7 +8,7 @@ import '../../../zeta_flutter.dart';
 /// This component should not be used as an appbar in a scaffold.
 /// It can be used in custom scroll views and columns.
 ///
-/// ```
+/// ```dart
 /// SingleChildScrollView(
 ///   child: Column(children: [
 ///     ZetaGlobalHeader(

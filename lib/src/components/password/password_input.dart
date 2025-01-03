@@ -26,7 +26,6 @@ class ZetaPasswordInput extends ZetaTextFormField {
     this.size = ZetaWidgetSize.medium,
     super.validator,
     this.onSubmit,
-    @Deprecated('Use disabled instead. ' 'This property has been renamed as of 0.11.2') bool enabled = true,
     super.controller,
     this.hintText,
     this.errorText,

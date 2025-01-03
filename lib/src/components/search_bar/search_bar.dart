@@ -18,7 +18,6 @@ class ZetaSearchBar extends ZetaTextFormField {
     super.validator,
     super.onSaved,
     super.onChange,
-    @Deprecated('Use onFieldSubmitted instead. ' 'deprecated as of 0.15.0') ValueChanged<String?>? onSubmit,
     super.onFieldSubmitted,
     super.requirementLevel,
     super.controller,
@@ -26,19 +25,14 @@ class ZetaSearchBar extends ZetaTextFormField {
     super.initialValue,
     this.size = ZetaWidgetSize.medium,
     this.shape = ZetaWidgetBorder.rounded,
-    @Deprecated('hint has been removed. ' 'deprecated as of 0.15.0') String? hint,
-    @Deprecated('Use placeholder instead. ' 'deprecated as of 0.16.0') String? hintText,
     this.placeholder,
     this.onSpeechToText,
     this.showSpeechToText = true,
-    @Deprecated('Use disabled instead. ' 'enabled is deprecated as of 0.11.0') bool enabled = true,
     this.focusNode,
     this.textInputAction,
     this.microphoneSemanticLabel,
     this.clearSemanticLabel,
     super.key,
-    @Deprecated('Show leading icon is deprecated as of 0.14.2') bool showLeadingIcon = true,
-    @Deprecated('Use onChange instead') ValueChanged<String?>? onChanged,
   }) : super(
           builder: (field) {
             final zeta = Zeta.of(field.context);

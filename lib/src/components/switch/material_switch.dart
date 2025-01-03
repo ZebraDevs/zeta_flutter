@@ -1,3 +1,4 @@
+// Ignored as this file is a copy of the original Flutter file and should not be used by end users.
 // ignore_for_file: prefer_asserts_with_message, public_member_api_docs
 
 // The content of this file is taken from

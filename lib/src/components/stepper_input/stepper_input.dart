@@ -27,16 +27,14 @@ class ZetaStepperInput extends ZetaStatefulWidget {
     super.key,
     super.rounded,
     this.size = ZetaStepperInputSize.medium,
-    int? value,
-    @Deprecated('Use value instead. ' 'Deprecated in 0.15.0') int? initialValue,
+    this.value,
     this.min,
     this.max,
     this.onChange,
     this.semanticDecrement,
     this.semanticIncrement,
-  })  : value = value ?? initialValue,
-        assert(
-          (min == null || (initialValue ?? 0) >= min) && (max == null || (initialValue ?? 0) <= max),
+  }) : assert(
+          (min == null || (value ?? 0) >= min) && (max == null || (value ?? 0) <= max),
           'Initial value must be inside given min and max values',
         );
 

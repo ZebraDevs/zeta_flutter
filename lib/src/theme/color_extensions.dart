@@ -248,7 +248,7 @@ extension ZetaColorExtensions on Color {
   /// * [background] (Default = [Colors.white]) - The color used to determine the contrast of the colors in the swatch. Generally, this should be the background color that the color swatch will be displayed on.
   /// * [adjustPrimary] (Default = true) - Determines whether to adjust the contrast of the primary color on the background color. Useful in cases the brand color is being used.
   ///
-  /// Returns a Map<int, Color> object.
+  /// Returns a `Map<int, Color>` object.
   Map<int, Color> generateSwatch({
     int primary = kZetaSwatchPrimaryIndex,
     Map<int, double> targetContrasts = kZetaSwatchTargetContrasts,

@@ -67,10 +67,6 @@ class ZetaProgressCircle extends ZetaProgress {
 }
 
 /// Class definition for [_ZetaProgressCircleState]
-@Deprecated('Deprecated in 0.14.1')
-typedef ZetaProgressCircleState = _ZetaProgressCircleState;
-
-/// Class definition for [_ZetaProgressCircleState]
 class _ZetaProgressCircleState extends ZetaProgressState<ZetaProgressCircle> {
   final _controller = WidgetStatesController();
 
@@ -197,10 +193,6 @@ class _ZetaProgressCircleState extends ZetaProgressState<ZetaProgressCircle> {
       ..add(DiagnosticsProperty<Animation<double>>('animation', animation));
   }
 }
-
-/// Class definition for [CirclePainter]
-@Deprecated('Deprecated in 0.14.1')
-typedef CirclePainter = _CirclePainter;
 
 /// Class definition for [_CirclePainter]
 class _CirclePainter extends CustomPainter {
