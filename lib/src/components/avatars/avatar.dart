@@ -278,7 +278,7 @@ class ZetaAvatar extends ZetaStatelessWidget {
       child: innerChild,
     );
 
-    final pSize = size._pixelSize(context);
+    final pSize = size.pixelSize(context);
 
     return ZetaRoundedScope(
       rounded: context.rounded,
