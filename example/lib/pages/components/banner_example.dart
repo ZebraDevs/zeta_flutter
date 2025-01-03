@@ -19,33 +19,33 @@ class BannerExample extends StatelessWidget {
             children: [
               Text('System Banner', style: ZetaTextStyles.displayMedium),
               _getTitle('Style variants'),
-              ZetaBanner(
+              ZetaSystemBanner(
                 type: ZetaBannerStatus.primary,
                 title: 'Centered',
                 context: context,
                 titleCenter: true,
                 leadingIcon: ZetaIcons.info,
               ),
-              ZetaBanner(
+              ZetaSystemBanner(
                 type: ZetaBannerStatus.primary,
                 context: context,
                 title: 'Title Left',
               ),
-              ZetaBanner(
+              ZetaSystemBanner(
                 type: ZetaBannerStatus.primary,
                 context: context,
                 title: 'Title left with arrow',
                 titleCenter: true,
                 trailing: ZetaIcon(ZetaIcons.chevron_right),
               ),
-              ZetaBanner(
+              ZetaSystemBanner(
                 type: ZetaBannerStatus.primary,
                 title: 'Title left + Icon',
                 titleCenter: true,
                 context: context,
                 leadingIcon: ZetaIcons.info,
               ),
-              ZetaBanner(
+              ZetaSystemBanner(
                 type: ZetaBannerStatus.primary,
                 context: context,
                 title: 'Title left + Icon with Arrow',
@@ -54,7 +54,7 @@ class BannerExample extends StatelessWidget {
                 trailing: IconButton(
                   icon: ZetaIcon(ZetaIcons.chevron_right),
                   onPressed: () {
-                    ScaffoldMessenger.of(context).showMaterialBanner(ZetaBanner(
+                    ScaffoldMessenger.of(context).showMaterialBanner(ZetaSystemBanner(
                       title: 'Title',
                       context: context,
                       type: ZetaBannerStatus.primary,
@@ -67,7 +67,7 @@ class BannerExample extends StatelessWidget {
                 ),
               ),
               _getTitle('Color variants'),
-              ZetaBanner(
+              ZetaSystemBanner(
                 type: ZetaBannerStatus.positive,
                 context: context,
                 title: 'Centered',
@@ -76,7 +76,7 @@ class BannerExample extends StatelessWidget {
                 trailing: IconButton(
                   icon: ZetaIcon(ZetaIcons.chevron_right),
                   onPressed: () {
-                    ScaffoldMessenger.of(context).showMaterialBanner(ZetaBanner(
+                    ScaffoldMessenger.of(context).showMaterialBanner(ZetaSystemBanner(
                       title: 'Title',
                       context: context,
                       type: ZetaBannerStatus.positive,
@@ -88,7 +88,7 @@ class BannerExample extends StatelessWidget {
                   },
                 ),
               ),
-              ZetaBanner(
+              ZetaSystemBanner(
                 type: ZetaBannerStatus.warning,
                 title: 'Centered',
                 context: context,
@@ -97,7 +97,7 @@ class BannerExample extends StatelessWidget {
                 trailing: IconButton(
                   icon: ZetaIcon(ZetaIcons.chevron_right),
                   onPressed: () {
-                    ScaffoldMessenger.of(context).showMaterialBanner(ZetaBanner(
+                    ScaffoldMessenger.of(context).showMaterialBanner(ZetaSystemBanner(
                       title: 'Title',
                       context: context,
                       type: ZetaBannerStatus.warning,
@@ -109,7 +109,7 @@ class BannerExample extends StatelessWidget {
                   },
                 ),
               ),
-              ZetaBanner(
+              ZetaSystemBanner(
                 type: ZetaBannerStatus.negative,
                 title: 'Centered',
                 context: context,
@@ -118,7 +118,7 @@ class BannerExample extends StatelessWidget {
                 trailing: IconButton(
                   icon: ZetaIcon(ZetaIcons.chevron_right),
                   onPressed: () {
-                    ScaffoldMessenger.of(context).showMaterialBanner(ZetaBanner(
+                    ScaffoldMessenger.of(context).showMaterialBanner(ZetaSystemBanner(
                       title: 'Title',
                       context: context,
                       type: ZetaBannerStatus.negative,

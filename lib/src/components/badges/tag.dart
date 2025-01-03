@@ -59,6 +59,7 @@ class ZetaTag extends ZetaStatelessWidget {
     return Semantics(
       value: semanticLabel ?? label,
       child: Row(
+        mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           if (direction == ZetaTagDirection.left) _buildCustomPaint(context),
           Container(

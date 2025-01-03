@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../../../zeta_flutter.dart';
 
-///Bottom sheets are surfaces containing supplementary content that are anchored to the bottom of the screen.
+/// Bottom sheets are surfaces containing supplementary content that are anchored to the bottom of the screen.
 ///
 /// To display a [ZetaBottomSheet], use the [showZetaBottomSheet] function.
 ///

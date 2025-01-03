@@ -235,7 +235,7 @@ class _ZetaDateInputState extends FormFieldState<DateTime> {
       lastDate: lastDate,
       initialEntryMode: widget.pickerInitialEntryMode ?? DatePickerEntryMode.calendar,
       initialDate: initialDate,
-      builder: (BuildContext context, Widget? child) {
+      builder: (BuildContext _, Widget? child) {
         return Theme(
           data: Theme.of(context).copyWith(
             dividerTheme: DividerThemeData(color: colors.borderSubtle),

@@ -17,7 +17,21 @@ enum ZetaPriorityPillType {
   medium,
 
   /// Sets the default color to `ZetaColors.green` and index to '3'.
-  low,
+  low;
+
+  Color _badgeColor(BuildContext context) => switch (this) {
+        ZetaPriorityPillType.urgent => Zeta.of(context).colors.mainNegative,
+        ZetaPriorityPillType.high => Zeta.of(context).colors.mainWarning,
+        ZetaPriorityPillType.medium => Zeta.of(context).colors.mainPrimary,
+        ZetaPriorityPillType.low => Zeta.of(context).colors.mainPositive,
+      };
+
+  Color _lozengeColor(BuildContext context) => switch (this) {
+        ZetaPriorityPillType.urgent => Zeta.of(context).colors.surfaceNegativeSubtle,
+        ZetaPriorityPillType.high => Zeta.of(context).colors.surfaceWarningSubtle,
+        ZetaPriorityPillType.medium => Zeta.of(context).colors.surfacePrimarySubtle,
+        ZetaPriorityPillType.low => Zeta.of(context).colors.surfacePositiveSubtle,
+      };
 }
 
 /// The size of [ZetaPriorityPill].
@@ -27,36 +41,6 @@ enum ZetaPriorityPillSize {
 
   /// Small size contains badge only.
   small,
-}
-
-extension on ZetaPriorityPillType {
-  Color badgeColor(BuildContext context) {
-    final colors = Zeta.of(context).colors;
-    switch (this) {
-      case ZetaPriorityPillType.urgent:
-        return colors.mainNegative;
-      case ZetaPriorityPillType.high:
-        return colors.mainWarning;
-      case ZetaPriorityPillType.medium:
-        return colors.mainPrimary;
-      case ZetaPriorityPillType.low:
-        return colors.mainPositive;
-    }
-  }
-
-  Color lozengeColor(BuildContext context) {
-    final colors = Zeta.of(context).colors;
-    switch (this) {
-      case ZetaPriorityPillType.urgent:
-        return colors.surfaceNegativeSubtle;
-      case ZetaPriorityPillType.high:
-        return colors.surfaceWarningSubtle;
-      case ZetaPriorityPillType.medium:
-        return colors.surfacePrimarySubtle;
-      case ZetaPriorityPillType.low:
-        return colors.surfacePositiveSubtle;
-    }
-  }
 }
 
 /// This badge is used to indicate the order of importance.
@@ -123,8 +107,8 @@ class ZetaPriorityPill extends ZetaStatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Color badgeColor = customColor?.shade60 ?? type.badgeColor(context);
-    final Color lozengeColor = customColor?.shade10 ?? type.lozengeColor(context);
+    final Color badgeColor = customColor?.shade60 ?? type._badgeColor(context);
+    final Color lozengeColor = customColor?.shade10 ?? type._lozengeColor(context);
 
     final size = this.size == ZetaPriorityPillSize.small ? Zeta.of(context).spacing.xl : Zeta.of(context).spacing.xl_3;
     final label = (this.label ?? priority) ?? type.name.capitalize();

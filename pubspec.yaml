@@ -62,4 +62,6 @@ flutter:
         - asset: lib/generated/icons/zeta-icons-sharp.ttf
   assets:
     - lib/assets/flags/
+    - lib/assets/logos/
+
   uses-material-design: true

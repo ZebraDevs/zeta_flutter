@@ -85,18 +85,6 @@ class ZetaGlobalHeader extends ZetaStatefulWidget {
   }
 }
 
-extension on DeviceType {
-  /// Render buttons along the top menu half
-  bool get isLarge {
-    return this == DeviceType.desktopL || this == DeviceType.desktopXL;
-  }
-
-  /// Render search bar on bottom half of menu
-  bool get isSmall {
-    return this == DeviceType.mobilePortrait || this == DeviceType.mobileLandscape;
-  }
-}
-
 class _GlobalHeaderState extends State<ZetaGlobalHeader> {
   int _selectedIndex = -1;
 

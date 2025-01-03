@@ -189,6 +189,7 @@ class ZetaChatItem extends ZetaStatelessWidget {
                             vertical: Zeta.of(context).spacing.small,
                           ),
                           child: Row(
+                            mainAxisSize: MainAxisSize.min,
                             children: [
                               if (leading != null) _formatLeading!,
                               Flexible(
@@ -196,6 +197,7 @@ class ZetaChatItem extends ZetaStatelessWidget {
                                   padding: EdgeInsets.only(left: Zeta.of(context).spacing.medium),
                                   child: Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
+                                    mainAxisSize: MainAxisSize.min,
                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
                                       Row(
@@ -353,24 +355,20 @@ class ZetaChatItem extends ZetaStatelessWidget {
   }
 }
 
-enum _ZetaSlidableActionType { menuMore, call, ptt, delete, custom }
+enum _ZetaSlidableActionType {
+  menuMore,
+  call,
+  ptt,
+  delete,
+  custom;
 
-extension on _ZetaSlidableActionType {
-  ZetaColorSwatch getColor(BuildContext context) {
-    final colors = Zeta.of(context).colors;
-    switch (this) {
-      case _ZetaSlidableActionType.menuMore:
-        return colors.primitives.purple;
-      case _ZetaSlidableActionType.call:
-        return colors.primitives.green;
-      case _ZetaSlidableActionType.ptt:
-        return colors.primitives.blue;
-      case _ZetaSlidableActionType.delete:
-        return colors.primitives.red;
-      case _ZetaSlidableActionType.custom:
-        return colors.primitives.primary;
-    }
-  }
+  ZetaColorSwatch getColor(BuildContext context) => switch (this) {
+        _ZetaSlidableActionType.menuMore => Zeta.of(context).colors.primitives.purple,
+        _ZetaSlidableActionType.call => Zeta.of(context).colors.primitives.green,
+        _ZetaSlidableActionType.ptt => Zeta.of(context).colors.primitives.blue,
+        _ZetaSlidableActionType.delete => Zeta.of(context).colors.primitives.red,
+        _ZetaSlidableActionType.custom => Zeta.of(context).colors.primitives.primary,
+      };
 }
 
 /// Slidable action widget for [ZetaChatItem].

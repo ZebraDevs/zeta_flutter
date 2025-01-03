@@ -38,7 +38,7 @@ void main() {
           TestApp(
             home: Builder(
               builder: (context) {
-                return ZetaBanner(
+                return ZetaSystemBanner(
                   context: context,
                   title: 'Banner Title',
                   leadingIcon: Icons.info,
@@ -65,7 +65,7 @@ void main() {
             return TestApp(
               home: Builder(
                 builder: (context) {
-                  return ZetaBanner(
+                  return ZetaSystemBanner(
                     context: context,
                     title: 'Banner Title',
                     semanticLabel: semanticLabelText,
@@ -98,7 +98,7 @@ void main() {
             return TestApp(
               home: Builder(
                 builder: (context) {
-                  return ZetaBanner(
+                  return ZetaSystemBanner(
                     context: context,
                     title: titleText,
                   );
@@ -126,7 +126,7 @@ void main() {
         TestApp(
           home: Builder(
             builder: (context) {
-              return ZetaBanner(
+              return ZetaSystemBanner(
                 context: context,
                 title: 'Banner Title',
               );
@@ -143,7 +143,7 @@ void main() {
         TestApp(
           home: Builder(
             builder: (context) {
-              return ZetaBanner(
+              return ZetaSystemBanner(
                 context: context,
                 title: 'Banner Title',
                 leadingIcon: Icons.info,
@@ -164,7 +164,7 @@ void main() {
         TestApp(
           home: Builder(
             builder: (context) {
-              return ZetaBanner(
+              return ZetaSystemBanner(
                 context: context,
                 title: 'Banner Title',
                 trailing: const ZetaIconButton(icon: ZetaIcons.close),
@@ -200,7 +200,7 @@ void main() {
         TestApp(
           home: Builder(
             builder: (context) {
-              return ZetaBanner(
+              return ZetaSystemBanner(
                 context: context,
                 title: 'Banner Title',
                 leadingIcon: ZetaIcons.info,
@@ -221,7 +221,7 @@ void main() {
         TestApp(
           home: Builder(
             builder: (context) {
-              return ZetaBanner(
+              return ZetaSystemBanner(
                 context: context,
                 title: 'Banner Title',
                 leadingIcon: ZetaIcons.info,
@@ -242,7 +242,7 @@ void main() {
         TestApp(
           home: Builder(
             builder: (context) {
-              return ZetaBanner(
+              return ZetaSystemBanner(
                 context: context,
                 title: 'Banner Title',
               );
@@ -265,7 +265,7 @@ void main() {
           TestApp(
             home: Builder(
               builder: (context) {
-                return ZetaBanner(
+                return ZetaSystemBanner(
                   context: context,
                   title: 'Banner Title',
                   type: type,
@@ -291,7 +291,7 @@ void main() {
           TestApp(
             home: Builder(
               builder: (context) {
-                return ZetaBanner(
+                return ZetaSystemBanner(
                   context: context,
                   title: 'Banner Title',
                   leadingIcon: Icons.info,
@@ -313,7 +313,7 @@ void main() {
           TestApp(
             home: Builder(
               builder: (context) {
-                return ZetaBanner(
+                return ZetaSystemBanner(
                   context: context,
                   title: 'Banner Title',
                   type: type,
@@ -322,8 +322,8 @@ void main() {
             ),
           ),
         );
-        final Finder finder = find.byType(ZetaBanner);
-        final ZetaBanner widget = tester.firstWidget(finder);
+        final Finder finder = find.byType(ZetaSystemBanner);
+        final ZetaSystemBanner widget = tester.firstWidget(finder);
 
         expect(widget.backgroundColor, equals(_colorFromType(tester.element(finder), type)));
       });
@@ -338,7 +338,7 @@ void main() {
         goldenFile,
         Builder(
           builder: (context) {
-            return ZetaBanner(
+            return ZetaSystemBanner(
               context: context,
               title: 'Banner Title',
               leadingIcon: Icons.info,
@@ -348,7 +348,7 @@ void main() {
           },
         ),
         'banner_${type.toString().split('.').last}',
-        widgetType: ZetaBanner,
+        widgetType: ZetaSystemBanner,
       );
     }
   });

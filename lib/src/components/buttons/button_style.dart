@@ -31,13 +31,9 @@ enum ZetaButtonType {
   /// Background: None.
   /// Border: None.
   /// Foreground color: Primary; defaults to blue.
-  text,
-}
+  text;
 
-/// Button utility functions for styling
-extension ButtonFunctions on ZetaButtonType {
-  /// Returns background color based on [ZetaButtonType]
-  Color backgroundColor(ZetaColors colors) {
+  Color _backgroundColor(ZetaColors colors) {
     switch (this) {
       case ZetaButtonType.primary:
         return colors.statePrimaryEnabled;
@@ -97,21 +93,6 @@ extension ButtonFunctions on ZetaButtonType {
   bool get solid => index < 4;
 }
 
-///Border utility functions
-extension BorderFunctions on ZetaWidgetBorder {
-  ///Returns radius based on [ZetaWidgetBorder]
-  BorderRadius radius(BuildContext context) {
-    switch (this) {
-      case ZetaWidgetBorder.sharp:
-        return Zeta.of(context).radius.none;
-      case ZetaWidgetBorder.rounded:
-        return Zeta.of(context).radius.minimal;
-      case ZetaWidgetBorder.full:
-        return Zeta.of(context).radius.full;
-    }
-  }
-}
-
 /// Shared buttonStyle for buttons and icon buttons
 ButtonStyle buttonStyle(
   BuildContext context,
@@ -119,7 +100,7 @@ ButtonStyle buttonStyle(
   ZetaButtonType type,
 ) {
   final ZetaColors colors = Zeta.of(context).colors;
-  final Color backgroundColor = type.backgroundColor(colors);
+  final Color backgroundColor = type._backgroundColor(colors);
   final Color backgroundColorHover = type.hoverColor(colors);
   final Color backgroundColorPressed = type.pressedColor(colors);
 
@@ -182,5 +163,24 @@ ButtonStyle buttonStyle(
     }),
     elevation: const WidgetStatePropertyAll(0),
     padding: WidgetStateProperty.all(EdgeInsets.zero),
+    iconColor: WidgetStateProperty.resolveWith<Color?>(
+      (states) {
+        if (states.contains(WidgetState.disabled)) {
+          return colors.mainDisabled;
+        }
+        switch (type) {
+          case ZetaButtonType.outline:
+          case ZetaButtonType.text:
+            return colors.mainPrimary;
+          case ZetaButtonType.outlineSubtle:
+            return colors.mainDefault;
+          case ZetaButtonType.primary:
+          case ZetaButtonType.secondary:
+          case ZetaButtonType.positive:
+          case ZetaButtonType.negative:
+            return colors.mainInverse;
+        }
+      },
+    ),
   );
 }
