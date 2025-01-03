@@ -1,2 +1,5 @@
 # include: package:zds_analysis/analysis_options_lib_all_files.yaml
 include: package:zds_analysis/analysis_options_lib.yaml
+
+analyzer:
+  exclude:
