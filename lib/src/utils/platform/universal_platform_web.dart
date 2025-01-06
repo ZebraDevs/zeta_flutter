@@ -1,8 +1,6 @@
 // The content of this file is adapted from Mike Rydstrom:
 // https://gist.github.com/rydmike/1771fe24c050ebfe792fa309371154d8
 
-// ignore: avoid_web_libraries_in_flutter
-
 import 'package:web/web.dart';
 
 import 'platform_is.dart';
@@ -49,6 +47,9 @@ class UniversalPlatform implements AbstractPlatform {
 }
 
 bool _hasMatch(String? value, String pattern) {
-  // ignore: avoid_bool_literals_in_conditional_expressions
-  return (value == null) ? false : RegExp(pattern).hasMatch(value);
+  if (value == null) {
+    return false;
+  } else {
+    return RegExp(pattern).hasMatch(value);
+  }
 }

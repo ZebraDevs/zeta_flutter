@@ -1,4 +1,3 @@
-// ignore_for_file: deprecated_member_use_from_same_package
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
@@ -31,10 +30,6 @@ class ZetaChatItem extends ZetaStatelessWidget {
     this.slidableActions = const [],
     this.explicitChildNodes = true,
     this.paleButtonColors,
-    @Deprecated('Use slidableActions instead.' ' This variable has been replaced as of 0.12.1') this.onMenuMoreTap,
-    @Deprecated('Use slidableActions instead.' ' This variable has been replaced as of 0.12.1') this.onCallTap,
-    @Deprecated('Use slidableActions instead.' ' This variable has been replaced as of 0.12.1') this.onDeleteTap,
-    @Deprecated('Use slidableActions instead.' ' This variable has been replaced as of 0.12.1') this.onPttTap,
   });
 
   /// Whether to apply different background color.
@@ -87,22 +82,6 @@ class ZetaChatItem extends ZetaStatelessWidget {
   /// Pale buttons was the default behavior before 0.15.2, but now buttons have darker colors by default.
   final bool? paleButtonColors;
 
-  /// Callback for slidable action -  menu more.
-  @Deprecated('Use slidableActions instead.' ' This variable has been replaced as of 0.12.1')
-  final VoidCallback? onMenuMoreTap;
-
-  /// Callback for slidable action -  call.
-  @Deprecated('Use slidableActions instead.' ' This variable has been replaced as of 0.12.1')
-  final VoidCallback? onCallTap;
-
-  /// Callback for slidable action -  delete.
-  @Deprecated('Use slidableActions instead.' ' This variable has been replaced as of 0.12.1')
-  final VoidCallback? onDeleteTap;
-
-  /// Callback for slidable action -  ptt.
-  @Deprecated('Use slidableActions instead.' ' This variable has been replaced as of 0.12.1')
-  final VoidCallback? onPttTap;
-
   /// List of slidable actions.
   ///
   /// The actions are displayed in the order they are provided; from left to right.
@@ -137,21 +116,6 @@ class ZetaChatItem extends ZetaStatelessWidget {
     final colors = Zeta.of(context).colors;
 
     final actions = [...slidableActions];
-
-    // coverage:ignore-start
-    if (onMenuMoreTap != null) {
-      actions.add(ZetaSlidableAction.menuMore(onPressed: onMenuMoreTap));
-    }
-    if (onCallTap != null) {
-      actions.add(ZetaSlidableAction.call(onPressed: onCallTap));
-    }
-    if (onPttTap != null) {
-      actions.add(ZetaSlidableAction.ptt(onPressed: onPttTap));
-    }
-    if (onDeleteTap != null) {
-      actions.add(ZetaSlidableAction.delete(onPressed: onDeleteTap));
-    }
-    // coverage:ignore-end
 
     return ZetaRoundedScope(
       rounded: context.rounded,
@@ -344,10 +308,6 @@ class ZetaChatItem extends ZetaStatelessWidget {
       ..add(IntProperty('count', count))
       ..add(ObjectFlagProperty<VoidCallback?>.has('onTap', onTap))
       ..add(DiagnosticsProperty<bool?>('starred', starred))
-      ..add(ObjectFlagProperty<VoidCallback?>.has('onMenuMoreTap', onMenuMoreTap))
-      ..add(ObjectFlagProperty<VoidCallback?>.has('onCallTap', onCallTap))
-      ..add(ObjectFlagProperty<VoidCallback?>.has('onDeleteTap', onDeleteTap))
-      ..add(ObjectFlagProperty<VoidCallback?>.has('onPttTap', onPttTap))
       ..add(DiagnosticsProperty<bool>('explicitChildNodes', explicitChildNodes))
       ..add(DiagnosticsProperty<bool>('paleButtonColors', paleButtonColors));
   }

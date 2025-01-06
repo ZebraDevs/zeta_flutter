@@ -24,7 +24,7 @@ class ZetaBreadcrumb extends ZetaStatefulWidget {
   /// Breadcrumb children
   final List<ZetaBreadcrumbItem> children;
 
-  /// Semantic label passed to [_TruncatedItem].
+  /// Semantic label passed to [TruncatedItem].
   /// {@macro zeta-widget-semantic-label}
   final String? moreSemanticLabel;
 
@@ -121,7 +121,7 @@ class _ZetaBreadcrumbsState extends State<ZetaBreadcrumb> {
         truncatedChildren.add(createBreadCrumb(element, index + 1));
       }
       returnList
-          .add(_TruncatedItem(semanticLabel: widget.moreSemanticLabel ?? 'View More', children: truncatedChildren));
+          .add(TruncatedItem(semanticLabel: widget.moreSemanticLabel ?? 'View More', children: truncatedChildren));
 
       for (final (index, element) in children.sublist(children.length - (widget.maxItemsShown - 1)).indexed) {
         returnList.add(createBreadCrumb(element, index + children.length - (widget.maxItemsShown) + 1));
@@ -246,13 +246,12 @@ class ZetaBreadcrumbItem extends ZetaStatelessWidget {
   }
 }
 
-/// Class for [_TruncatedItem]
-@Deprecated('This functionality is not needed anymore. Use [ZetaBreadcrumb] instead. ' 'Deprecated since 0.14.1')
-typedef TruncatedItem = _TruncatedItem;
-
-class _TruncatedItem extends StatefulWidget {
-  ///Constructor for [_TruncatedItem]
-  const _TruncatedItem({
+/// Class for truncated [ZetaBreadcrumbItem].
+@visibleForTesting
+class TruncatedItem extends StatefulWidget {
+  ///Constructor for [TruncatedItem]
+  const TruncatedItem({
+    super.key,
     required this.children,
     required this.semanticLabel,
   });
@@ -266,7 +265,7 @@ class _TruncatedItem extends StatefulWidget {
   final String semanticLabel;
 
   @override
-  State<_TruncatedItem> createState() => _TruncatedItemState();
+  State<TruncatedItem> createState() => _TruncatedItemState();
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
@@ -274,7 +273,7 @@ class _TruncatedItem extends StatefulWidget {
   }
 }
 
-class _TruncatedItemState extends State<_TruncatedItem> {
+class _TruncatedItemState extends State<TruncatedItem> {
   bool _expanded = false;
 
   @override

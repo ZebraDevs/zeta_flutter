@@ -66,7 +66,6 @@ class ZetaDropdown<T> extends ZetaStatefulWidget {
     super.rounded,
     required this.items,
     this.onChange,
-    @Deprecated('Set onChange to null. ' 'Disabled is deprecated as of 0.11.0') bool disabled = false,
     this.value,
     this.type = ZetaDropdownMenuType.standard,
     this.size = ZetaDropdownSize.standard,
