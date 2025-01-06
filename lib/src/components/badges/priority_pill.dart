@@ -1,5 +1,3 @@
-// ignore_for_file: deprecated_member_use_from_same_package
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -69,7 +67,6 @@ class ZetaPriorityPill extends ZetaStatelessWidget {
     super.rounded,
     super.key,
     this.index,
-    @Deprecated('Use label instead. ' 'This variable has been renamed as of 0.11.0') this.priority,
     this.label,
     this.isBadge = false,
     this.type = ZetaPriorityPillType.urgent,
@@ -86,10 +83,6 @@ class ZetaPriorityPill extends ZetaStatelessWidget {
   ///  * Medium = 2
   ///  * Low = 3
   final String? index;
-
-  /// Text in main part of component.
-  @Deprecated('Use label instead. ' 'This variable has been renamed as of 0.11.0')
-  final String? priority;
 
   /// Text in main part of component.
   final String? label;
@@ -125,7 +118,7 @@ class ZetaPriorityPill extends ZetaStatelessWidget {
     final Color lozengeColor = customColor?.shade10 ?? type._lozengeColor(context);
 
     final size = this.size == ZetaPriorityPillSize.small ? Zeta.of(context).spacing.xl : Zeta.of(context).spacing.xl_3;
-    final label = (this.label ?? priority) ?? type.name.capitalize();
+    final label = this.label ?? type.name.capitalize();
     final rounded = context.rounded;
 
     return Semantics(
@@ -195,7 +188,6 @@ class ZetaPriorityPill extends ZetaStatelessWidget {
       ..add(EnumProperty<ZetaPriorityPillSize>('size', size))
       ..add(StringProperty('label', label))
       ..add(ColorProperty('customColor', customColor))
-      ..add(StringProperty('priority', priority))
       ..add(StringProperty('semanticLabel', semanticLabel));
   }
 }

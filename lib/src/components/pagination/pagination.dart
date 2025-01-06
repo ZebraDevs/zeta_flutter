@@ -29,7 +29,6 @@ class ZetaPagination extends ZetaStatefulWidget {
     this.type = ZetaPaginationType.standard,
     this.onChange,
     this.currentPage = 1,
-    @Deprecated('Set onChange to null. ' 'Disabled is deprecated as of 0.11.0') bool disabled = false,
     this.semanticFirst,
     this.semanticPrevious,
     this.semanticNext,
