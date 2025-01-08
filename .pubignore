@@ -19,3 +19,4 @@ example/pubspec.yaml
 example/analysis_options.yaml
 firebase.json
 release-please-config.json
+widgetbook/
