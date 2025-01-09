@@ -32,7 +32,7 @@ Future<bool?> showZetaDialog(
       context: context,
       barrierDismissible: barrierDismissible,
       useRootNavigator: useRootNavigator,
-      builder: (_) => _ZetaDialog(
+      builder: (_) => ZetaDialog(
         headerAlignment: headerAlignment,
         icon: icon,
         title: title,
@@ -53,8 +53,10 @@ Future<bool?> showZetaDialog(
 /// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=23954-93337&node-type=frame&m=dev
 ///
 /// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/dialog
-class _ZetaDialog extends ZetaStatelessWidget {
-  const _ZetaDialog({
+class ZetaDialog extends ZetaStatelessWidget {
+  /// Creates a Zeta Dialog.
+  const ZetaDialog({
+    super.key,
     this.headerAlignment = ZetaDialogHeaderAlignment.center,
     this.icon,
     this.title,
@@ -68,15 +70,34 @@ class _ZetaDialog extends ZetaStatelessWidget {
     super.rounded,
   });
 
+  /// The alignment of the header.
   final ZetaDialogHeaderAlignment headerAlignment;
+
+  /// The icon to display in the header.
   final Widget? icon;
+
+  /// The title to display in the header.
   final String? title;
+
+  /// The message to display in the content.
   final String message;
+
+  /// The label for the primary button.
   final String? primaryButtonLabel;
+
+  /// The callback for the primary button.
   final VoidCallback? onPrimaryButtonPressed;
+
+  /// The label for the secondary button.
   final String? secondaryButtonLabel;
+
+  /// The callback for the secondary button.
   final VoidCallback? onSecondaryButtonPressed;
+
+  /// The label for the tertiary button.
   final String? tertiaryButtonLabel;
+
+  /// The callback for the tertiary button.
   final VoidCallback? onTertiaryButtonPressed;
 
   @override
@@ -96,9 +117,9 @@ class _ZetaDialog extends ZetaStatelessWidget {
           );
     final tertiaryButton = tertiaryButtonLabel == null
         ? null
-        : TextButton(
+        : ZetaButton.text(
             onPressed: onTertiaryButtonPressed,
-            child: Text(tertiaryButtonLabel!),
+            label: tertiaryButtonLabel!,
           );
     final hasButton = primaryButton != null || secondaryButton != null || tertiaryButton != null;
 

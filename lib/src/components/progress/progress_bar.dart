@@ -119,7 +119,8 @@ class _ZetaProgressBarState extends ZetaProgressState<ZetaProgressBar> {
                   duration: ZetaAnimationLength.verySlow,
                   height: _weight,
                   child: LinearProgressIndicator(
-                    borderRadius: context.rounded ? Zeta.of(context).radius.rounded : Zeta.of(context).radius.none,
+                    borderRadius: const BorderRadius.all(Radius.circular(12)),
+                    // TODO(Design): This does not use a token but is hardcoded
                     value: widget.type == ZetaProgressBarType.indeterminate ? null : animation.value,
                     backgroundColor:
                         widget.type == ZetaProgressBarType.buffering ? colors.surfaceDisabled : Colors.transparent,
@@ -145,10 +146,7 @@ class _ZetaProgressBarState extends ZetaProgressState<ZetaProgressBar> {
         Container(
           width: _weight,
           height: _weight,
-          decoration: BoxDecoration(
-            color: colors.surfaceDisabled,
-            borderRadius: Zeta.of(context).radius.rounded,
-          ),
+          decoration: BoxDecoration(color: colors.surfaceDisabled, shape: BoxShape.circle),
         ),
       ],
     );

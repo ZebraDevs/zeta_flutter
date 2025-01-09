@@ -294,12 +294,15 @@ class _ZetaGroupButtonState extends State<ZetaGroupButton> {
       leadingIcon = IconTheme(
         data: IconThemeData(
           size: iconSize,
-          color: widget.isInverse ? colors.mainInverse : colors.mainDefault,
         ),
         child: selectedItem!.icon!,
       );
     } else if (selectedItem == null && widget.icon != null) {
-      leadingIcon = ZetaIcon(widget.icon, size: iconSize);
+      leadingIcon = ZetaIcon(
+        widget.icon,
+        size: iconSize,
+        color: widget.isInverse ? colors.mainInverse : colors.mainDefault,
+      );
     }
 
     return Container(
@@ -361,6 +364,11 @@ class _ZetaGroupButtonState extends State<ZetaGroupButton> {
                   Icon(
                     dropdownIcon,
                     size: Zeta.of(context).spacing.xl,
+                    color: widget.onChange == null
+                        ? colors.mainDisabled
+                        : widget.isInverse
+                            ? colors.mainInverse
+                            : colors.mainDefault,
                   ),
               ].divide(SizedBox(width: Zeta.of(context).spacing.minimum)).toList(),
             ).paddingAll(_padding),

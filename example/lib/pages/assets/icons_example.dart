@@ -44,7 +44,7 @@ class _IconsExampleState extends State<IconsExample> {
                         onTap: () async {
                           await Clipboard.setData(ClipboardData(text: 'ZetaIcons.' + e.key));
                           ScaffoldMessenger.of(context).showMaterialBanner(
-                            ZetaBanner(context: context, title: 'Icon name copied'),
+                            ZetaSystemBanner(context: context, title: 'Icon name copied'),
                           );
                           await Future.delayed(Duration(seconds: 4));
                           ScaffoldMessenger.of(context).clearMaterialBanners();

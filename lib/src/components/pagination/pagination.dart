@@ -126,10 +126,9 @@ class _ZetaPaginationState extends State<ZetaPagination> {
     }
   }
 
-  void _onItemPressed(int value) {
-    setState(() {
-      _currentPage = value;
-    });
+  void _onItemPressed(int? value) {
+    if (value == null) return;
+    setState(() => _currentPage = value);
     widget.onChange?.call(value);
   }
 
@@ -224,9 +223,9 @@ class _ZetaPaginationState extends State<ZetaPagination> {
           borderRadius: rounded ? Zeta.of(context).radius.minimal : Zeta.of(context).radius.none,
         ),
         // TODO(UX-1135): Replace with Zeta Dropdown
-        child: DropdownButton(
+        child: DropdownButton<int>(
           items: items,
-          onChanged: (val) => _onItemPressed(val!),
+          onChanged: widget.onChange != null ? _onItemPressed : null,
           value: _currentPage,
           icon: const ZetaIcon(ZetaIcons.expand_more).paddingStart(Zeta.of(context).spacing.small),
           underline: const Nothing(),

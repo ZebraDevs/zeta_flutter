@@ -100,6 +100,7 @@ class _ZetaStepperState extends State<ZetaStepper> with TickerProviderStateMixin
         ZetaStepperType.vertical => IntrinsicWidth(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
               children: widget.steps
                   .map(
                     (step) => VerticalStep(

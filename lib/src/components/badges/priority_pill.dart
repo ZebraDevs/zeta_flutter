@@ -17,33 +17,19 @@ enum ZetaPriorityPillType {
   /// Sets the default color to `ZetaColors.green` and index to '3'.
   low;
 
-  Color _badgeColor(BuildContext context) {
-    final colors = Zeta.of(context).colors;
-    switch (this) {
-      case ZetaPriorityPillType.urgent:
-        return colors.mainNegative;
-      case ZetaPriorityPillType.high:
-        return colors.mainWarning;
-      case ZetaPriorityPillType.medium:
-        return colors.mainPrimary;
-      case ZetaPriorityPillType.low:
-        return colors.mainPositive;
-    }
-  }
+  Color _badgeColor(BuildContext context) => switch (this) {
+        ZetaPriorityPillType.urgent => Zeta.of(context).colors.mainNegative,
+        ZetaPriorityPillType.high => Zeta.of(context).colors.mainWarning,
+        ZetaPriorityPillType.medium => Zeta.of(context).colors.mainPrimary,
+        ZetaPriorityPillType.low => Zeta.of(context).colors.mainPositive,
+      };
 
-  Color _lozengeColor(BuildContext context) {
-    final colors = Zeta.of(context).colors;
-    switch (this) {
-      case ZetaPriorityPillType.urgent:
-        return colors.surfaceNegativeSubtle;
-      case ZetaPriorityPillType.high:
-        return colors.surfaceWarningSubtle;
-      case ZetaPriorityPillType.medium:
-        return colors.surfacePrimarySubtle;
-      case ZetaPriorityPillType.low:
-        return colors.surfacePositiveSubtle;
-    }
-  }
+  Color _lozengeColor(BuildContext context) => switch (this) {
+        ZetaPriorityPillType.urgent => Zeta.of(context).colors.surfaceNegativeSubtle,
+        ZetaPriorityPillType.high => Zeta.of(context).colors.surfaceWarningSubtle,
+        ZetaPriorityPillType.medium => Zeta.of(context).colors.surfacePrimarySubtle,
+        ZetaPriorityPillType.low => Zeta.of(context).colors.surfacePositiveSubtle,
+      };
 }
 
 /// The size of [ZetaPriorityPill].

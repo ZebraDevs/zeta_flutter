@@ -19,34 +19,34 @@ class BannerExample extends StatelessWidget {
             children: [
               Text('System Banner', style: ZetaTextStyles.displayMedium),
               _getTitle('Style variants'),
-              ZetaBanner(
-                type: ZetaBannerStatus.primary,
+              ZetaSystemBanner(
+                type: ZetaSystemBannerStatus.primary,
                 title: 'Centered',
                 context: context,
                 titleCenter: true,
                 leadingIcon: ZetaIcons.info,
               ),
-              ZetaBanner(
-                type: ZetaBannerStatus.primary,
+              ZetaSystemBanner(
+                type: ZetaSystemBannerStatus.primary,
                 context: context,
                 title: 'Title Left',
               ),
-              ZetaBanner(
-                type: ZetaBannerStatus.primary,
+              ZetaSystemBanner(
+                type: ZetaSystemBannerStatus.primary,
                 context: context,
                 title: 'Title left with arrow',
                 titleCenter: true,
                 trailing: ZetaIcon(ZetaIcons.chevron_right),
               ),
-              ZetaBanner(
-                type: ZetaBannerStatus.primary,
+              ZetaSystemBanner(
+                type: ZetaSystemBannerStatus.primary,
                 title: 'Title left + Icon',
                 titleCenter: true,
                 context: context,
                 leadingIcon: ZetaIcons.info,
               ),
-              ZetaBanner(
-                type: ZetaBannerStatus.primary,
+              ZetaSystemBanner(
+                type: ZetaSystemBannerStatus.primary,
                 context: context,
                 title: 'Title left + Icon with Arrow',
                 titleCenter: true,
@@ -54,10 +54,10 @@ class BannerExample extends StatelessWidget {
                 trailing: IconButton(
                   icon: ZetaIcon(ZetaIcons.chevron_right),
                   onPressed: () {
-                    ScaffoldMessenger.of(context).showMaterialBanner(ZetaBanner(
+                    ScaffoldMessenger.of(context).showMaterialBanner(ZetaSystemBanner(
                       title: 'Title',
                       context: context,
-                      type: ZetaBannerStatus.primary,
+                      type: ZetaSystemBannerStatus.primary,
                       trailing: IconButton(
                         icon: ZetaIcon(ZetaIcons.close),
                         onPressed: () => ScaffoldMessenger.of(context).clearMaterialBanners(),
@@ -67,8 +67,8 @@ class BannerExample extends StatelessWidget {
                 ),
               ),
               _getTitle('Color variants'),
-              ZetaBanner(
-                type: ZetaBannerStatus.positive,
+              ZetaSystemBanner(
+                type: ZetaSystemBannerStatus.positive,
                 context: context,
                 title: 'Centered',
                 titleCenter: true,
@@ -76,10 +76,10 @@ class BannerExample extends StatelessWidget {
                 trailing: IconButton(
                   icon: ZetaIcon(ZetaIcons.chevron_right),
                   onPressed: () {
-                    ScaffoldMessenger.of(context).showMaterialBanner(ZetaBanner(
+                    ScaffoldMessenger.of(context).showMaterialBanner(ZetaSystemBanner(
                       title: 'Title',
                       context: context,
-                      type: ZetaBannerStatus.positive,
+                      type: ZetaSystemBannerStatus.positive,
                       trailing: IconButton(
                         icon: ZetaIcon(ZetaIcons.close),
                         onPressed: () => ScaffoldMessenger.of(context).clearMaterialBanners(),
@@ -88,8 +88,8 @@ class BannerExample extends StatelessWidget {
                   },
                 ),
               ),
-              ZetaBanner(
-                type: ZetaBannerStatus.warning,
+              ZetaSystemBanner(
+                type: ZetaSystemBannerStatus.warning,
                 title: 'Centered',
                 context: context,
                 titleCenter: true,
@@ -97,10 +97,10 @@ class BannerExample extends StatelessWidget {
                 trailing: IconButton(
                   icon: ZetaIcon(ZetaIcons.chevron_right),
                   onPressed: () {
-                    ScaffoldMessenger.of(context).showMaterialBanner(ZetaBanner(
+                    ScaffoldMessenger.of(context).showMaterialBanner(ZetaSystemBanner(
                       title: 'Title',
                       context: context,
-                      type: ZetaBannerStatus.warning,
+                      type: ZetaSystemBannerStatus.warning,
                       trailing: IconButton(
                         icon: ZetaIcon(ZetaIcons.close),
                         onPressed: () => ScaffoldMessenger.of(context).clearMaterialBanners(),
@@ -109,8 +109,8 @@ class BannerExample extends StatelessWidget {
                   },
                 ),
               ),
-              ZetaBanner(
-                type: ZetaBannerStatus.negative,
+              ZetaSystemBanner(
+                type: ZetaSystemBannerStatus.negative,
                 title: 'Centered',
                 context: context,
                 titleCenter: true,
@@ -118,10 +118,10 @@ class BannerExample extends StatelessWidget {
                 trailing: IconButton(
                   icon: ZetaIcon(ZetaIcons.chevron_right),
                   onPressed: () {
-                    ScaffoldMessenger.of(context).showMaterialBanner(ZetaBanner(
+                    ScaffoldMessenger.of(context).showMaterialBanner(ZetaSystemBanner(
                       title: 'Title',
                       context: context,
-                      type: ZetaBannerStatus.negative,
+                      type: ZetaSystemBannerStatus.negative,
                       trailing: IconButton(
                         icon: ZetaIcon(ZetaIcons.close),
                         onPressed: () => ScaffoldMessenger.of(context).clearMaterialBanners(),
