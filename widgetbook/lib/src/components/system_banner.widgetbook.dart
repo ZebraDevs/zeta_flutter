@@ -18,9 +18,9 @@ Widget banner(BuildContext context) {
     title: context.knobs.string(label: 'Title', initialValue: 'Banner Title'),
     type: context.knobs.list(
       label: 'Type',
-      options: ZetaBannerStatus.values,
+      options: ZetaSystemBannerStatus.values,
       labelBuilder: enumLabelBuilder,
-      initialOption: ZetaBannerStatus.primary,
+      initialOption: ZetaSystemBannerStatus.primary,
     ),
     leadingIcon: iconKnob(context, nullable: true),
     titleCenter: context.knobs.boolean(label: 'Center title'),

@@ -592,3 +592,28 @@ class AvatarExample extends StatelessWidget {
     );
   }
 }
+
+extension on ZetaAvatarSize {
+  double pixelSize(BuildContext context) {
+    switch (this) {
+      case ZetaAvatarSize.xxxl:
+        return Zeta.of(context).spacing.minimum * 50;
+      case ZetaAvatarSize.xxl:
+        return Zeta.of(context).spacing.minimum * 30;
+      case ZetaAvatarSize.xl:
+        return Zeta.of(context).spacing.xl_10;
+      case ZetaAvatarSize.l:
+        return Zeta.of(context).spacing.xl_9;
+      case ZetaAvatarSize.m:
+        return Zeta.of(context).spacing.xl_8;
+      case ZetaAvatarSize.s:
+        return Zeta.of(context).spacing.xl_6;
+      case ZetaAvatarSize.xs:
+        return Zeta.of(context).spacing.xl_5;
+      case ZetaAvatarSize.xxs:
+        return Zeta.of(context).spacing.xl_4;
+      case ZetaAvatarSize.xxxs:
+        return Zeta.of(context).spacing.xl_2;
+    }
+  }
+}
