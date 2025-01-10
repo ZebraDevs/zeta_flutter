@@ -4,33 +4,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../../../zeta_flutter.dart';
-
-import '../../interfaces/form_field.dart';
 import '../text_input/internal_text_input.dart';
-import 'countries.dart';
-
-/// A phone number.
-class PhoneNumber {
-  /// Creates a new [PhoneNumber].
-  const PhoneNumber({
-    required this.dialCode,
-    required this.number,
-  });
-
-  /// The dial code of the phone number.
-  final String dialCode;
-
-  /// The number of the phone number.
-  final String number;
-}
 
 /// ZetaPhoneInput allows entering phone numbers.
+///
 /// {@category Components}
 ///
 /// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=916-10934&node-type=canvas&m=dev
 ///
 /// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/phone-input
-class ZetaPhoneInput extends ZetaFormField<PhoneNumber> {
+class ZetaPhoneInput extends ZetaFormField<ZetaPhoneNumber> {
   /// Constructor for [ZetaPhoneInput].
   ZetaPhoneInput({
     super.key,
@@ -162,7 +145,7 @@ class ZetaPhoneInput extends ZetaFormField<PhoneNumber> {
   final String? selectCountrySemanticLabel;
 
   @override
-  FormFieldState<PhoneNumber> createState() => _ZetaPhoneInputState();
+  FormFieldState<ZetaPhoneNumber> createState() => _ZetaPhoneInputState();
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
@@ -177,10 +160,10 @@ class ZetaPhoneInput extends ZetaFormField<PhoneNumber> {
   }
 }
 
-class _ZetaPhoneInputState extends FormFieldState<PhoneNumber> {
-  late List<Country> _countries;
+class _ZetaPhoneInputState extends FormFieldState<ZetaPhoneNumber> {
+  late List<ZetaCountry> _countries;
   late List<ZetaDropdownItem<String>> _dropdownItems;
-  late Country _selectedCountry;
+  late ZetaCountry _selectedCountry;
   final FocusNode _inputFocusNode = FocusNode();
 
   final TextEditingController controller = TextEditingController();
@@ -245,8 +228,8 @@ class _ZetaPhoneInputState extends FormFieldState<PhoneNumber> {
 
   void _setCountries() {
     _countries = widget.countries?.isEmpty ?? true
-        ? Countries.list
-        : Countries.list.where((country) => widget.countries!.contains(country.isoCode)).toList();
+        ? ZetaCountries.list
+        : ZetaCountries.list.where((country) => widget.countries!.contains(country.isoCode)).toList();
     if (_countries.isNotEmpty && (widget.countries?.isNotEmpty ?? false)) {
       _countries.sort(
         (a, b) => widget.countries!.indexOf(a.isoCode).compareTo(
@@ -254,7 +237,7 @@ class _ZetaPhoneInputState extends FormFieldState<PhoneNumber> {
             ),
       );
     }
-    if (_countries.isEmpty) _countries = Countries.list;
+    if (_countries.isEmpty) _countries = ZetaCountries.list;
   }
 
   void _setInitialCountry() {
@@ -283,7 +266,7 @@ class _ZetaPhoneInputState extends FormFieldState<PhoneNumber> {
   }
 
   void _onChanged() {
-    final newValue = PhoneNumber(dialCode: _selectedCountry.dialCode, number: controller.text);
+    final newValue = ZetaPhoneNumber(dialCode: _selectedCountry.dialCode, number: controller.text);
     widget.onChange?.call(newValue);
     super.didChange(newValue);
   }

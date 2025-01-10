@@ -145,7 +145,7 @@ class _ZetaTopAppBarSearchFieldState extends State<ZetaTopAppBarSearchField> wit
             mainAxisAlignment:
                 widget.type == ZetaTopAppBarType.centered ? MainAxisAlignment.center : MainAxisAlignment.start,
             children: [
-              widget.child ?? const Nothing(),
+              widget.child ?? const ZetaNothing(),
             ],
           ),
           ConstrainedBox(
@@ -183,6 +183,8 @@ class _ZetaTopAppBarSearchFieldState extends State<ZetaTopAppBarSearchField> wit
 }
 
 /// A controller used to control the search field in the app bar.
+///
+/// {@category Utils}
 class ZetaSearchController extends ChangeNotifier {
   bool _enabled = false;
 

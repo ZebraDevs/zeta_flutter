@@ -57,7 +57,7 @@ class ZetaStatusChip extends ZetaStatelessWidget {
                       color: Colors.transparent,
                       child: _Child(context: context, label: label),
                     ),
-                    childWhenDragging: const Nothing(),
+                    childWhenDragging: const ZetaNothing(),
                     data: data,
                     onDragCompleted: onDragCompleted,
                     child: _Child(context: context, label: label),

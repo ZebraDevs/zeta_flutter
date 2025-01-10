@@ -13,7 +13,7 @@ class ZetaRoundedSwitch extends StatelessWidget {
         value: zeta.rounded,
         padding: EdgeInsets.all(8),
         elevation: 0,
-        icon: Nothing(),
+        icon: ZetaNothing(),
         dropdownColor: zeta.colors.borderDisabled,
         items: [true, false].map((e) {
           return DropdownMenuItem<bool>(

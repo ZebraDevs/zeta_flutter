@@ -230,6 +230,7 @@ class ZetaTextStyles {
 }
 
 /// [ZetaTextStyles] combined into a [TextTheme].
+///
 /// {@category Theme}
 const TextTheme zetaTextTheme = TextTheme(
   displayLarge: ZetaTextStyles.displayLarge,

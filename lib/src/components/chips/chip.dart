@@ -3,14 +3,16 @@ import 'package:flutter/material.dart';
 
 import '../../../zeta_flutter.dart';
 
-export './assist_chip.dart';
-export './filter_chip.dart';
-export './input_chip.dart';
-export './status_chip.dart';
+export 'assist_chip.dart';
+export 'filter_chip.dart';
+export 'input_chip.dart';
+export 'status_chip.dart';
 
 /// This covers the broad functionality of [ZetaAssistChip], [ZetaFilterChip] and [ZetaInputChip].
 ///
 /// If [selected] is not null, the chip will have the toggle behavior of [ZetaFilterChip].
+///
+/// {@category Components}
 class ZetaChip extends ZetaStatefulWidget {
   /// Constructs a [ZetaChip].
   const ZetaChip({
@@ -130,7 +132,7 @@ class _ZetaChipState extends State<ZetaChip> {
     } else if (widget.leading.runtimeType == ZetaAvatar) {
       return (widget.leading! as ZetaAvatar).copyWith(size: ZetaAvatarSize.xxxs);
     }
-    return widget.leading ?? const Nothing();
+    return widget.leading ?? const ZetaNothing();
   }
 
   final _controller = WidgetStatesController();
@@ -152,7 +154,7 @@ class _ZetaChipState extends State<ZetaChip> {
                     color: Colors.transparent,
                     child: child(colors, isDragging: true),
                   ),
-                  childWhenDragging: const Nothing(),
+                  childWhenDragging: const ZetaNothing(),
                   data: widget.data,
                   onDragCompleted: widget.onDragCompleted,
                   child: child(colors),
@@ -278,7 +280,7 @@ class _ZetaChipState extends State<ZetaChip> {
                             ZetaIcons.check_mark,
                             color: disabled ? colors.mainDisabled : colors.mainInverse,
                           )
-                        : const Nothing()),
+                        : const ZetaNothing()),
                   )
                 else if (widget.leading != null)
                   _renderLeading(foregroundColor),

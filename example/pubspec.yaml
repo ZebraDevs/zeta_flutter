@@ -16,9 +16,6 @@ dependencies:
   zeta_flutter:
     path: ../
 
-dev_dependencies:
-  zds_analysis: ^1.1.1
-
 flutter:
   uses-material-design: true
   assets:

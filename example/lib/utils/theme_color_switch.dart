@@ -41,7 +41,7 @@ class _ZetaThemeColorSwitchState extends State<ZetaThemeColorSwitch> {
         value: zeta.customThemeId,
         elevation: 0,
         padding: EdgeInsets.all(8),
-        icon: Nothing(),
+        icon: ZetaNothing(),
         dropdownColor: zeta.colors.borderDisabled,
         items: items.entries
             .map((e) => DropdownMenuItem<String?>(

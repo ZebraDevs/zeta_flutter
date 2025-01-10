@@ -55,7 +55,7 @@ class ZetaSystemBanner extends MaterialBanner {
   }) : super(
           dividerColor: Colors.transparent,
           onVisible: () {
-            if (PlatformIs.android) {
+            if (ZetaPlatformIs.android) {
               final backgroundColor = _backgroundColorFromType(context, type);
 
               SystemChrome.setSystemUIOverlayStyle(
@@ -120,7 +120,7 @@ class ZetaSystemBanner extends MaterialBanner {
             },
           ),
           backgroundColor: _backgroundColorFromType(context, type),
-          actions: [const Nothing()],
+          actions: [const ZetaNothing()],
         );
 
   static ZetaColorSwatch _backgroundColorFromType(BuildContext context, ZetaSystemBannerStatus type) {

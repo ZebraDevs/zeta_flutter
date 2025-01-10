@@ -65,8 +65,8 @@ class ZetaSwitch extends StatelessWidget {
 
   ZetaSwitchType get _variant {
     if (variant != null) return variant!;
-    if (PlatformIs.android) return ZetaSwitchType.android;
-    if (PlatformIs.iOS) return ZetaSwitchType.ios;
+    if (ZetaPlatformIs.android) return ZetaSwitchType.android;
+    if (ZetaPlatformIs.iOS) return ZetaSwitchType.ios;
     return ZetaSwitchType.web;
   }
 

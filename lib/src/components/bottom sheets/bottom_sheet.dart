@@ -88,7 +88,7 @@ class ZetaBottomSheet extends ZetaStatelessWidget {
               ),
             Material(
               color: colors.surfaceDefault,
-              child: body ?? const Nothing(),
+              child: body ?? const ZetaNothing(),
             ),
           ],
         ),
@@ -108,6 +108,8 @@ class ZetaBottomSheet extends ZetaStatelessWidget {
 /// Function to show [ZetaBottomSheet].
 ///
 /// Uses [showModalBottomSheet] for functionality, but with Zeta styling and simplified functionality.
+///
+/// {@category Components}
 Future<T?> showZetaBottomSheet<T>({
   required BuildContext context,
   String? title,

@@ -12,5 +12,7 @@ dartdoc:
     "Utils":
       markdown: doc/Utils.md
       name: Utils
+    "Interfaces":
+      name: Interfaces
   categoryOrder: ["Components", "Assets", "Theme", "Utils", "Interfaces"]
   showUndocumentedCategories: true

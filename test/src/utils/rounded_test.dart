@@ -182,7 +182,7 @@ void main() {
   testWidgets('ZetaRoundedScope debugFillProperties works correctly', (WidgetTester tester) async {
     final diagnostics = DiagnosticPropertiesBuilder();
 
-    const ZetaRoundedScope(rounded: true, child: Nothing()).debugFillProperties(diagnostics);
+    const ZetaRoundedScope(rounded: true, child: ZetaNothing()).debugFillProperties(diagnostics);
 
     final rounded = diagnostics.properties.where((p) => p.name == 'rounded').map((p) => p.toDescription()).first;
     expect(rounded, 'true');

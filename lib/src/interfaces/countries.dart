@@ -1,7 +1,9 @@
-/// [Country]
-class Country {
-  /// Constructor for [Country]
-  const Country({
+/// Class definition for a country with its name, dial code, and ISO code.
+///
+/// {@category Components}
+class ZetaCountry {
+  /// Constructor for [ZetaCountry]
+  const ZetaCountry({
     required this.name,
     required this.dialCode,
     required this.isoCode,
@@ -27,1232 +29,1234 @@ class Country {
       }.toString();
 }
 
-/// [Countries]
-class Countries {
-  /// List of [Country] for most countries around the world.
-  static List<Country> get list => _countriesList;
-  static final List<Country> _countriesList = [
-    const Country(
+/// Class definition for a list of countries.
+///
+/// {@category Interfaces}
+class ZetaCountries {
+  /// List of [ZetaCountry] for most countries around the world.
+  static List<ZetaCountry> get list => _countriesList;
+  static final List<ZetaCountry> _countriesList = [
+    const ZetaCountry(
       isoCode: 'AF',
       name: 'Afghanistan',
       dialCode: '+93',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'AX',
       name: 'Åland Islands',
       dialCode: '+358',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'AL',
       name: 'Albania',
       dialCode: '+355',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'DZ',
       name: 'Algeria',
       dialCode: '+213',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'AS',
       name: 'American Samoa',
       dialCode: '+1684',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'AD',
       name: 'Andorra',
       dialCode: '+376',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'AO',
       name: 'Angola',
       dialCode: '+244',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'AI',
       name: 'Anguilla',
       dialCode: '+1264',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'AQ',
       name: 'Antarctica',
       dialCode: '+672',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'AG',
       name: 'Antigua and Barbuda',
       dialCode: '+1268',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'AR',
       name: 'Argentina',
       dialCode: '+54',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'AM',
       name: 'Armenia',
       dialCode: '+374',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'AW',
       name: 'Aruba',
       dialCode: '+297',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'AU',
       name: 'Australia',
       dialCode: '+61',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'AT',
       name: 'Austria',
       dialCode: '+43',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'AZ',
       name: 'Azerbaijan',
       dialCode: '+994',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'BS',
       name: 'Bahamas',
       dialCode: '+1242',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'BH',
       name: 'Bahrain',
       dialCode: '+973',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'BD',
       name: 'Bangladesh',
       dialCode: '+880',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'BB',
       name: 'Barbados',
       dialCode: '+1246',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'BY',
       name: 'Belarus',
       dialCode: '+375',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'BE',
       name: 'Belgium',
       dialCode: '+32',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'BZ',
       name: 'Belize',
       dialCode: '+501',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'BJ',
       name: 'Benin',
       dialCode: '+229',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'BM',
       name: 'Bermuda',
       dialCode: '+1441',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'BT',
       name: 'Bhutan',
       dialCode: '+975',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'BO',
       name: 'Bolivia (Plurinational State of)',
       dialCode: '+591',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'BA',
       name: 'Bosnia and Herzegovina',
       dialCode: '+387',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'BW',
       name: 'Botswana',
       dialCode: '+267',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'BV',
       name: 'Bouvet Island',
       dialCode: '+47',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'BR',
       name: 'Brazil',
       dialCode: '+55',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'IO',
       name: 'British Indian Ocean Territory',
       dialCode: '+246',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'BN',
       name: 'Brunei Darussalam',
       dialCode: '+673',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'BG',
       name: 'Bulgaria',
       dialCode: '+359',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'BF',
       name: 'Burkina Faso',
       dialCode: '+226',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'BI',
       name: 'Burundi',
       dialCode: '+257',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'CV',
       name: 'Cabo Verde',
       dialCode: '+238',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'KH',
       name: 'Cambodia',
       dialCode: '+855',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'CM',
       name: 'Cameroon',
       dialCode: '+237',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'CA',
       name: 'Canada',
       dialCode: '+1',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'KY',
       name: 'Cayman Islands',
       dialCode: '+1345',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'CF',
       name: 'Central African Republic',
       dialCode: '+236',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'TD',
       name: 'Chad',
       dialCode: '+235',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'CL',
       name: 'Chile',
       dialCode: '+56',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'CN',
       name: 'China',
       dialCode: '+86',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'CX',
       name: 'Christmas Island',
       dialCode: '+61',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'CC',
       name: 'Cocos (Keeling) Islands',
       dialCode: '+61',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'CO',
       name: 'Colombia',
       dialCode: '+57',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'KM',
       name: 'Comoros',
       dialCode: '+269',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'CG',
       name: 'Congo (Republic of the)',
       dialCode: '+242',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'CD',
       name: 'Congo (Democratic Republic of the)',
       dialCode: '+243',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'CK',
       name: 'Cook Islands',
       dialCode: '+682',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'CR',
       name: 'Costa Rica',
       dialCode: '+506',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'CI',
       name: 'Côte d`Ivoire',
       dialCode: '+225',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'HR',
       name: 'Croatia',
       dialCode: '+385',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'CU',
       name: 'Cuba',
       dialCode: '+53',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'CY',
       name: 'Cyprus',
       dialCode: '+357',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'CZ',
       name: 'Czech Republic',
       dialCode: '+420',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'DK',
       name: 'Denmark',
       dialCode: '+45',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'DJ',
       name: 'Djibouti',
       dialCode: '+253',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'DM',
       name: 'Dominica',
       dialCode: '+1767',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'DO',
       name: 'Dominican Republic',
       dialCode: '+1',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'EC',
       name: 'Ecuador',
       dialCode: '+593',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'EG',
       name: 'Egypt',
       dialCode: '+20',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'SV',
       name: 'El Salvador',
       dialCode: '+503',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'GQ',
       name: 'Equatorial Guinea',
       dialCode: '+240',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'ER',
       name: 'Eritrea',
       dialCode: '+291',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'EE',
       name: 'Estonia',
       dialCode: '+372',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'ET',
       name: 'Ethiopia',
       dialCode: '+251',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'FK',
       name: 'Falkland Islands (Malvinas)',
       dialCode: '+500',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'FO',
       name: 'Faroe Islands',
       dialCode: '+298',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'FJ',
       name: 'Fiji',
       dialCode: '+679',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'FI',
       name: 'Finland',
       dialCode: '+358',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'FR',
       name: 'France',
       dialCode: '+33',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'GF',
       name: 'French Guiana',
       dialCode: '+594',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'PF',
       name: 'French Polynesia',
       dialCode: '+689',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'TF',
       name: 'French Southern Territories',
       dialCode: '+262',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'GA',
       name: 'Gabon',
       dialCode: '+241',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'GM',
       name: 'Gambia',
       dialCode: '+220',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'GE',
       name: 'Georgia',
       dialCode: '+995',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'DE',
       name: 'Germany',
       dialCode: '+49',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'GH',
       name: 'Ghana',
       dialCode: '+233',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'GI',
       name: 'Gibraltar',
       dialCode: '+350',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'GR',
       name: 'Greece',
       dialCode: '+30',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'GL',
       name: 'Greenland',
       dialCode: '+299',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'GD',
       name: 'Grenada',
       dialCode: '+1473',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'GP',
       name: 'Guadeloupe',
       dialCode: '+590',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'GU',
       name: 'Guam',
       dialCode: '+1671',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'GT',
       name: 'Guatemala',
       dialCode: '+502',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'GG',
       name: 'Guernsey',
       dialCode: '+44',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'GN',
       name: 'Guinea',
       dialCode: '+224',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'GW',
       name: 'Guinea-Bissau',
       dialCode: '+245',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'GY',
       name: 'Guyana',
       dialCode: '+592',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'HT',
       name: 'Haiti',
       dialCode: '+509',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'HM',
       name: 'Heard Island and McDonald Islands',
       dialCode: '+0',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'VA',
       name: 'Vatican City State',
       dialCode: '+379',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'HN',
       name: 'Honduras',
       dialCode: '+504',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'HK',
       name: 'Hong Kong',
       dialCode: '+852',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'HU',
       name: 'Hungary',
       dialCode: '+36',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'IS',
       name: 'Iceland',
       dialCode: '+354',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'IN',
       name: 'India',
       dialCode: '+91',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'ID',
       name: 'Indonesia',
       dialCode: '+62',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'IR',
       name: 'Iran',
       dialCode: '+98',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'IQ',
       name: 'Iraq',
       dialCode: '+964',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'IE',
       name: 'Ireland',
       dialCode: '+353',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'IM',
       name: 'Isle of Man',
       dialCode: '+44',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'IL',
       name: 'Israel',
       dialCode: '+972',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'IT',
       name: 'Italy',
       dialCode: '+39',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'JM',
       name: 'Jamaica',
       dialCode: '+1876',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'JP',
       name: 'Japan',
       dialCode: '+81',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'JE',
       name: 'Jersey',
       dialCode: '+44',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'JO',
       name: 'Jordan',
       dialCode: '+962',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'KZ',
       name: 'Kazakhstan',
       dialCode: '+7',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'KE',
       name: 'Kenya',
       dialCode: '+254',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'KI',
       name: 'Kiribati',
       dialCode: '+686',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'XK',
       name: 'Kosovo (Republic of)',
       dialCode: '+383',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'KP',
       name: 'Korea (Democratic People`s Republic of)',
       dialCode: '+850',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'KR',
       name: 'Korea (Republic of)',
       dialCode: '+82',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'KW',
       name: 'Kuwait',
       dialCode: '+965',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'KG',
       name: 'Kyrgyzstan',
       dialCode: '+996',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'LA',
       name: 'Lao People`s Democratic Republic',
       dialCode: '+856',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'LV',
       name: 'Latvia',
       dialCode: '+371',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'LB',
       name: 'Lebanon',
       dialCode: '+961',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'LS',
       name: 'Lesotho',
       dialCode: '+266',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'LR',
       name: 'Liberia',
       dialCode: '+231',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'LY',
       name: 'Libya',
       dialCode: '+218',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'LI',
       name: 'Liechtenstein',
       dialCode: '+423',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'LT',
       name: 'Lithuania',
       dialCode: '+370',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'LU',
       name: 'Luxembourg',
       dialCode: '+352',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'MO',
       name: 'Macao',
       dialCode: '+853',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'MK',
       name: 'Macedonia (the former Yugoslav Republic of)',
       dialCode: '+389',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'MG',
       name: 'Madagascar',
       dialCode: '+261',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'MW',
       name: 'Malawi',
       dialCode: '+265',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'MY',
       name: 'Malaysia',
       dialCode: '+60',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'MV',
       name: 'Maldives',
       dialCode: '+960',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'ML',
       name: 'Mali',
       dialCode: '+223',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'MT',
       name: 'Malta',
       dialCode: '+356',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'MH',
       name: 'Marshall Islands',
       dialCode: '+692',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'MQ',
       name: 'Martinique',
       dialCode: '+596',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'MR',
       name: 'Mauritania',
       dialCode: '+222',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'MU',
       name: 'Mauritius',
       dialCode: '+230',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'YT',
       name: 'Mayotte',
       dialCode: '+262',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'MX',
       name: 'Mexico',
       dialCode: '+52',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'FM',
       name: 'Micronesia (Federated States of)',
       dialCode: '+691',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'MD',
       name: 'Moldova (Republic of)',
       dialCode: '+373',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'MC',
       name: 'Monaco',
       dialCode: '+377',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'MN',
       name: 'Mongolia',
       dialCode: '+976',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'ME',
       name: 'Montenegro',
       dialCode: '+382',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'MS',
       name: 'Montserrat',
       dialCode: '+1664',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'MA',
       name: 'Morocco',
       dialCode: '+212',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'MZ',
       name: 'Mozambique',
       dialCode: '+258',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'MM',
       name: 'Myanmar',
       dialCode: '+95',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'NA',
       name: 'Namibia',
       dialCode: '+264',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'NR',
       name: 'Nauru',
       dialCode: '+674',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'NP',
       name: 'Nepal',
       dialCode: '+977',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'NL',
       name: 'Netherlands',
       dialCode: '+31',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'NC',
       name: 'New Caledonia',
       dialCode: '+687',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'NZ',
       name: 'New Zealand',
       dialCode: '+64',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'NI',
       name: 'Nicaragua',
       dialCode: '+505',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'NE',
       name: 'Niger',
       dialCode: '+227',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'NG',
       name: 'Nigeria',
       dialCode: '+234',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'NU',
       name: 'Niue',
       dialCode: '+683',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'NF',
       name: 'Norfolk Island',
       dialCode: '+672',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'MP',
       name: 'Northern Mariana Islands',
       dialCode: '+1670',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'NO',
       name: 'Norway',
       dialCode: '+47',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'OM',
       name: 'Oman',
       dialCode: '+968',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'PK',
       name: 'Pakistan',
       dialCode: '+92',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'PW',
       name: 'Palau',
       dialCode: '+680',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'PS',
       name: 'Palestine, State of',
       dialCode: '+970',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'PA',
       name: 'Panama',
       dialCode: '+507',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'PG',
       name: 'Papua New Guinea',
       dialCode: '+675',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'PY',
       name: 'Paraguay',
       dialCode: '+595',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'PE',
       name: 'Peru',
       dialCode: '+51',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'PH',
       name: 'Philippines',
       dialCode: '+63',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'PN',
       name: 'Pitcairn',
       dialCode: '+64',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'PL',
       name: 'Poland',
       dialCode: '+48',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'PT',
       name: 'Portugal',
       dialCode: '+351',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'PR',
       name: 'Puerto Rico',
       dialCode: '+1939',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'QA',
       name: 'Qatar',
       dialCode: '+974',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'RE',
       name: 'Réunion',
       dialCode: '+262',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'RO',
       name: 'Romania',
       dialCode: '+40',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'RU',
       name: 'Russian Federation',
       dialCode: '+7',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'RW',
       name: 'Rwanda',
       dialCode: '+250',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'BL',
       name: 'Saint Barthélemy',
       dialCode: '+590',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'SH',
       name: 'Saint Helena, Ascension and Tristan da Cunha',
       dialCode: '+290',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'KN',
       name: 'Saint Kitts and Nevis',
       dialCode: '+1869',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'LC',
       name: 'Saint Lucia',
       dialCode: '+1758',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'MF',
       name: 'Saint Martin (French part)',
       dialCode: '+590',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'PM',
       name: 'Saint Pierre and Miquelon',
       dialCode: '+508',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'VC',
       name: 'Saint Vincent and the Grenadines',
       dialCode: '+1784',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'WS',
       name: 'Samoa',
       dialCode: '+685',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'SM',
       name: 'San Marino',
       dialCode: '+378',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'ST',
       name: 'Sao Tome and Principe',
       dialCode: '+239',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'SA',
       name: 'Saudi Arabia',
       dialCode: '+966',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'SN',
       name: 'Senegal',
       dialCode: '+221',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'RS',
       name: 'Serbia',
       dialCode: '+381',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'SC',
       name: 'Seychelles',
       dialCode: '+248',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'SL',
       name: 'Sierra Leone',
       dialCode: '+232',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'SG',
       name: 'Singapore',
       dialCode: '+65',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'SK',
       name: 'Slovakia',
       dialCode: '+421',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'SI',
       name: 'Slovenia',
       dialCode: '+386',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'SB',
       name: 'Solomon Islands',
       dialCode: '+677',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'SO',
       name: 'Somalia',
       dialCode: '+252',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'ZA',
       name: 'South Africa',
       dialCode: '+27',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'GS',
       name: 'South Georgia and the South Sandwich Islands',
       dialCode: '+500',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'SS',
       name: 'South Sudan',
       dialCode: '+211',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'ES',
       name: 'Spain',
       dialCode: '+34',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'LK',
       name: 'Sri Lanka',
       dialCode: '+94',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'SD',
       name: 'Sudan',
       dialCode: '+249',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'SR',
       name: 'Suriname',
       dialCode: '+597',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'SJ',
       name: 'Svalbard and Jan Mayen',
       dialCode: '+47',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'SZ',
       name: 'Swaziland',
       dialCode: '+268',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'SE',
       name: 'Sweden',
       dialCode: '+46',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'CH',
       name: 'Switzerland',
       dialCode: '+41',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'SY',
       name: 'Syrian Arab Republic',
       dialCode: '+963',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'TW',
       name: 'Taiwan',
       dialCode: '+886',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'TJ',
       name: 'Tajikistan',
       dialCode: '+992',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'TZ',
       name: 'Tanzania, United Republic of',
       dialCode: '+255',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'TH',
       name: 'Thailand',
       dialCode: '+66',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'TL',
       name: 'Timor-Leste',
       dialCode: '+670',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'TG',
       name: 'Togo',
       dialCode: '+228',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'TK',
       name: 'Tokelau',
       dialCode: '+690',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'TO',
       name: 'Tonga',
       dialCode: '+676',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'TT',
       name: 'Trinidad and Tobago',
       dialCode: '+1868',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'TN',
       name: 'Tunisia',
       dialCode: '+216',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'TR',
       name: 'Turkey',
       dialCode: '+90',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'TM',
       name: 'Turkmenistan',
       dialCode: '+993',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'TC',
       name: 'Turks and Caicos Islands',
       dialCode: '+1649',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'TV',
       name: 'Tuvalu',
       dialCode: '+688',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'UG',
       name: 'Uganda',
       dialCode: '+256',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'UA',
       name: 'Ukraine',
       dialCode: '+380',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'AE',
       name: 'United Arab Emirates',
       dialCode: '+971',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'GB',
       name: 'United Kingdom of Great Britain and Northern Ireland',
       dialCode: '+44',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'US',
       name: 'United States of America',
       dialCode: '+1',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'UY',
       name: 'Uruguay',
       dialCode: '+598',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'UZ',
       name: 'Uzbekistan',
       dialCode: '+998',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'VU',
       name: 'Vanuatu',
       dialCode: '+678',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'VE',
       name: 'Venezuela (Bolivarian Republic of)',
       dialCode: '+58',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'VN',
       name: 'Vietnam',
       dialCode: '+84',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'VG',
       name: 'Virgin Islands (British)',
       dialCode: '+1284',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'VI',
       name: 'Virgin Islands (U.S.)',
       dialCode: '+1340',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'WF',
       name: 'Wallis and Futuna',
       dialCode: '+681',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'YE',
       name: 'Yemen',
       dialCode: '+967',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'ZM',
       name: 'Zambia',
       dialCode: '+260',
     ),
-    const Country(
+    const ZetaCountry(
       isoCode: 'ZW',
       name: 'Zimbabwe',
       dialCode: '+263',

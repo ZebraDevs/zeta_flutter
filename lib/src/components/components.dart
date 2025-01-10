@@ -11,7 +11,7 @@ export 'bottom sheets/menu_items.dart';
 export 'breadcrumb/breadcrumb.dart' hide TruncatedItem;
 export 'button_group/button_group.dart';
 export 'buttons/button.dart';
-export 'buttons/button_style.dart';
+export 'buttons/button_style.dart' show ZetaButtonType;
 export 'buttons/icon_button.dart';
 export 'chat_item/chat_item.dart';
 export 'chat_item/contact_item.dart';

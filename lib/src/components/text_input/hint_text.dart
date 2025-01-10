@@ -39,7 +39,7 @@ class ZetaHintText extends ZetaStatelessWidget {
     }
 
     if (text == null || text.isEmpty) {
-      return const Nothing();
+      return const ZetaNothing();
     }
 
     return Row(

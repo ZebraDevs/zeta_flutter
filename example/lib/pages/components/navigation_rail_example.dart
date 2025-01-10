@@ -58,7 +58,7 @@ class _NavigationRailExampleState extends State<NavigationRailExample> {
               child: Padding(
                 padding: EdgeInsets.all(Zeta.of(context).spacing.xl),
                 child: _selectedIndex == null
-                    ? const Nothing()
+                    ? const ZetaNothing()
                     : Text(
                         _titles[_selectedIndex!],
                         textAlign: TextAlign.center,
