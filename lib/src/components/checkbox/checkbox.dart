@@ -223,7 +223,7 @@ class _CheckboxState extends State<ZetaInternalCheckbox> {
     final rounded = context.rounded;
 
     final icon = !_checked
-        ? const Nothing()
+        ? const ZetaNothing()
         : ZetaIcon(
             widget.useIndeterminate ? ZetaIcons.remove : ZetaIcons.check_mark,
             color: widget.disabled ? theme.colors.mainDisabled : theme.colors.mainInverse,

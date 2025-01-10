@@ -88,7 +88,7 @@ class ZetaBottomSheet extends ZetaStatelessWidget {
               ),
             Material(
               color: colors.surfaceDefault,
-              child: body ?? const Nothing(),
+              child: body ?? const ZetaNothing(),
             ),
           ],
         ),
