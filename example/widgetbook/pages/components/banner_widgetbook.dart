@@ -6,12 +6,12 @@ import '../../utils/scaffold.dart';
 import '../../utils/utils.dart';
 
 Widget bannerUseCase(BuildContext context) {
-  final banner = ZetaBanner(
+  final banner = ZetaSystemBanner(
     context: context,
     title: context.knobs.string(label: 'Title', initialValue: 'Banner Title'),
     type: context.knobs.list(
       label: 'Type',
-      options: ZetaBannerStatus.values,
+      options: ZetaSystemBannerStatus.values,
       labelBuilder: enumLabelBuilder,
     ),
     leadingIcon: iconKnob(context, nullable: true),

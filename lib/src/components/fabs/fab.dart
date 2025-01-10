@@ -255,7 +255,7 @@ class _ZetaFABState extends State<ZetaFAB> {
         if (!widget.expanded && widget.label != null)
           Container(
             margin: EdgeInsets.only(top: Zeta.of(context).spacing.minimum),
-            width: 100, // TODODE: Is there a better way to do this?
+            width: 100, // TODO(DE): Is there a better way to do this?
             alignment: Alignment.center,
             child: Text(
               widget.label!,
@@ -270,24 +270,6 @@ class _ZetaFABState extends State<ZetaFAB> {
 
 extension on ZetaWidgetBorder {
   OutlinedBorder buttonShape({required bool isExpanded, required ZetaFabSize size, required BuildContext context}) {
-    if (this == ZetaWidgetBorder.full && !isExpanded) {
-      return const CircleBorder();
-    }
-    if (this == ZetaWidgetBorder.sharp) {
-      return const RoundedRectangleBorder();
-    }
-    return RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(
-        isExpanded
-            ? this == ZetaWidgetBorder.full
-                ? size == ZetaFabSize.small
-                    ? Zeta.of(context).spacing.xl_3
-                    : Zeta.of(context).spacing.xl_8
-                : Zeta.of(context).spacing.small
-            : size == ZetaFabSize.small
-                ? Zeta.of(context).spacing.small
-                : Zeta.of(context).spacing.large,
-      ),
-    );
+    return RoundedRectangleBorder(borderRadius: radius(context));
   }
 }

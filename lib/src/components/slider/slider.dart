@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 
 import '../../../zeta_flutter.dart';
 
+// TODO(UX-1355): Create slider input field.
+
 /// Slider component with customized styling.
+///
 /// {@category Components}
 ///
 /// Figma: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/slider

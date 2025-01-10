@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../../zeta_flutter.dart';
 
-/// [ZetaBanner] type
-enum ZetaBannerStatus {
+/// [ZetaSystemBanner] type
+enum ZetaSystemBannerStatus {
   /// Primary background.
   primary,
 
@@ -24,9 +24,9 @@ enum ZetaBannerStatus {
 /// Figma: https://www.figma.com/file/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=22195-43965
 ///
 /// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/banners
-class ZetaBanner extends MaterialBanner {
-  /// Constructor for [ZetaBanner]. See [MaterialBanner] for more information.
-  ZetaBanner({
+class ZetaSystemBanner extends MaterialBanner {
+  /// Constructor for [ZetaSystemBanner]. See [MaterialBanner] for more information.
+  ZetaSystemBanner({
     super.key,
     required BuildContext context,
 
@@ -36,8 +36,8 @@ class ZetaBanner extends MaterialBanner {
     /// The leading icon for the banner.
     IconData? leadingIcon,
 
-    /// The type of banner. See [ZetaBannerStatus].
-    ZetaBannerStatus type = ZetaBannerStatus.primary,
+    /// The type of banner. See [ZetaSystemBannerStatus].
+    ZetaSystemBannerStatus type = ZetaSystemBannerStatus.primary,
 
     /// Whether the title should be centered.
     bool titleCenter = false,
@@ -123,17 +123,17 @@ class ZetaBanner extends MaterialBanner {
           actions: [const Nothing()],
         );
 
-  static ZetaColorSwatch _backgroundColorFromType(BuildContext context, ZetaBannerStatus type) {
+  static ZetaColorSwatch _backgroundColorFromType(BuildContext context, ZetaSystemBannerStatus type) {
     final zeta = Zeta.of(context);
 
     switch (type) {
-      case ZetaBannerStatus.primary:
+      case ZetaSystemBannerStatus.primary:
         return zeta.colors.primitives.primary;
-      case ZetaBannerStatus.positive:
+      case ZetaSystemBannerStatus.positive:
         return zeta.colors.primitives.green;
-      case ZetaBannerStatus.warning:
+      case ZetaSystemBannerStatus.warning:
         return zeta.colors.primitives.orange;
-      case ZetaBannerStatus.negative:
+      case ZetaSystemBannerStatus.negative:
         return zeta.colors.primitives.red;
     }
   }

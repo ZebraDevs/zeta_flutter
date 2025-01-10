@@ -186,7 +186,7 @@ class ZetaNotificationListItem extends ZetaStatelessWidget {
                                             padding: const EdgeInsets.all(2),
                                             decoration: BoxDecoration(
                                               color: colors.surfaceNegative,
-                                              borderRadius: Zeta.of(context).radius.full,
+                                              shape: BoxShape.circle,
                                             ),
                                             child: ZetaIcon(
                                               ZetaIcons.important_notification,
@@ -296,7 +296,7 @@ class ZetaNotificationBadge extends StatelessWidget {
   final ZetaAvatar? avatar;
 
   /// Image to display as notification badge.
-  final Image? image;
+  final Widget? image;
 
   /// Icon to display as notification badge.
   final IconData? icon;
@@ -320,7 +320,7 @@ class ZetaNotificationBadge extends StatelessWidget {
                   size: Size.square(
                     Zeta.of(context).spacing.xl_8,
                   ), // Image radius
-                  child: image!.copyWith(fit: BoxFit.cover),
+                  child: image is Image ? (image! as Image).copyWith(fit: BoxFit.cover) : image,
                 ),
               );
   }

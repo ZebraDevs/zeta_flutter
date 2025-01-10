@@ -33,53 +33,34 @@ enum ZetaAvatarSize {
   /// [xxxs] 24 pixels
   xxxs;
 
+  /// Returns the calculated pixel size for the [ZetaAvatarSize].
   double _pixelSize(BuildContext context) => ZetaAvatar.pixelSize(context, this);
 
-  double _borderSize(BuildContext context) {
-    // TODO(UX-1304): Awaiting updated design specs for border size
-    switch (this) {
-      case ZetaAvatarSize.xxxl:
-        return 11.12;
-      case ZetaAvatarSize.xxl:
-        return 6.67;
-      case ZetaAvatarSize.xl:
-        return 4.45;
-      case ZetaAvatarSize.l:
-        return 3.56;
-      case ZetaAvatarSize.m:
-        return 2.66;
-      case ZetaAvatarSize.s:
-        return 2.22;
-      case ZetaAvatarSize.xs:
-        return 2;
-      case ZetaAvatarSize.xxs:
-        return 1.78;
-      case ZetaAvatarSize.xxxs:
-        return 1.33;
-    }
-  }
+  double get _borderSize => switch (this) {
+        ZetaAvatarSize.xxxl => 11.12,
+        ZetaAvatarSize.xxl => 6.67,
+        ZetaAvatarSize.xl => 4.45,
+        ZetaAvatarSize.l => 3.56,
+        ZetaAvatarSize.m => 2.66,
+        ZetaAvatarSize.s => 2.22,
+        ZetaAvatarSize.xs => 2,
+        ZetaAvatarSize.xxs => 1.78,
+        ZetaAvatarSize.xxxs => 1.33,
+      };
 
   double _fontSize(BuildContext context) => ZetaAvatar.fontSize(context, this);
 
-  TextStyle _labelStyle(BuildContext context) {
-    switch (this) {
-      case ZetaAvatarSize.xxxl:
-        return ZetaTextStyles.displaySmall;
-      case ZetaAvatarSize.xxl:
-      case ZetaAvatarSize.xl:
-        return ZetaTextStyles.bodyLarge;
-      case ZetaAvatarSize.l:
-        return ZetaTextStyles.bodyMedium;
-      case ZetaAvatarSize.m:
-        return ZetaTextStyles.bodySmall;
-      case ZetaAvatarSize.s:
-      case ZetaAvatarSize.xs:
-      case ZetaAvatarSize.xxs:
-        return ZetaTextStyles.bodyXSmall;
-      case ZetaAvatarSize.xxxs:
-        return ZetaTextStyles.bodyXSmall;
-    }
-  }
+  TextStyle _labelStyle(BuildContext context) => switch (this) {
+        ZetaAvatarSize.xxxl => ZetaTextStyles.displaySmall,
+        ZetaAvatarSize.xxl => ZetaTextStyles.bodyLarge,
+        ZetaAvatarSize.xl => ZetaTextStyles.bodyLarge,
+        ZetaAvatarSize.l => ZetaTextStyles.bodyMedium,
+        ZetaAvatarSize.m => ZetaTextStyles.bodySmall,
+        ZetaAvatarSize.s => ZetaTextStyles.bodyXSmall,
+        ZetaAvatarSize.xs => ZetaTextStyles.bodyXSmall,
+        ZetaAvatarSize.xxs => ZetaTextStyles.bodyXSmall,
+        ZetaAvatarSize.xxxs => ZetaTextStyles.bodyXSmall,
+      };
 }
 
 /// An avatar is a visual representation of a user or entity.
@@ -317,7 +298,7 @@ class ZetaAvatar extends ZetaStatelessWidget {
                         height: pSize,
                         decoration: BoxDecoration(
                           border: borderColor != null ? Border.all(color: borderColor!, width: 0) : null,
-                          borderRadius: Zeta.of(context).radius.full,
+                          shape: BoxShape.circle,
                           color: backgroundColor ??
                               (_showPlaceholder ? zetaColors.surfacePrimary : zetaColors.primitives.cool.shade20),
                         ),
@@ -327,14 +308,14 @@ class ZetaAvatar extends ZetaStatelessWidget {
                                 height: pSize,
                                 decoration: BoxDecoration(
                                   color: backgroundColor ?? zetaColors.surfaceHover,
-                                  border: Border.all(color: borderColor!, width: borderSize(context)),
-                                  borderRadius: Zeta.of(context).radius.full,
+                                  border: Border.all(color: borderColor!, width: borderSize),
+                                  shape: BoxShape.circle,
                                 ),
                                 child: innerContent,
                               )
                             : DecoratedBox(
                                 decoration: BoxDecoration(
-                                  borderRadius: Zeta.of(context).radius.full,
+                                  shape: BoxShape.circle,
                                   color: backgroundColor ?? zetaColors.surfaceHover,
                                 ),
                                 child: innerContent,
@@ -549,7 +530,7 @@ class ZetaAvatarBadge extends StatelessWidget {
       margin: const EdgeInsets.all(0.01),
       decoration: BoxDecoration(
         color: backgroundColor,
-        borderRadius: Zeta.of(context).radius.full,
+        shape: BoxShape.circle,
       ),
       child: value != null
           ? Center(
@@ -575,25 +556,18 @@ class ZetaAvatarBadge extends StatelessWidget {
       width: type == ZetaAvatarBadgeType.icon ? paddedSize : badgeSize * 1.8,
       height: type == ZetaAvatarBadgeType.icon ? paddedSize : badgeSize,
       decoration: BoxDecoration(
-        borderRadius: Zeta.of(context).radius.full,
+        shape: BoxShape.circle,
         border: type != ZetaAvatarBadgeType.notification
-            ? Border.all(
-                width: borderSize,
-                color: Zeta.of(context).colors.surfacePrimary,
-              )
+            ? Border.all(width: borderSize, color: Zeta.of(context).colors.surfaceDefault)
             : null,
       ),
       child: innerContent,
     );
   }
 
-  double _getContainerSize(BuildContext context) {
-    return size._pixelSize(context) / 3;
-  }
+  double _getContainerSize(BuildContext context) => size._pixelSize(context) / 3;
 
-  double _getBorderSize(BuildContext context) {
-    return size._pixelSize(context) / 48;
-  }
+  double _getBorderSize(BuildContext context) => size._pixelSize(context) / 48;
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {

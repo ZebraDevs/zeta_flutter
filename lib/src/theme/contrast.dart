@@ -11,14 +11,7 @@ enum ZetaContrast {
   ///
   /// For [ZetaContrast.aa], it returns 60.
   /// For [ZetaContrast.aaa], it returns 80.
-  int get primary {
-    switch (this) {
-      case ZetaContrast.aa:
-        return 60;
-      case ZetaContrast.aaa:
-        return 80;
-    }
-  }
+  int get primary => switch (this) { ZetaContrast.aa => 60, ZetaContrast.aaa => 80 };
 
   /// Returns the target contrast value.
   ///
@@ -32,12 +25,5 @@ enum ZetaContrast {
   /// These values serve as benchmarks for the contrast between the colours on a app's text
   /// and background. Being able to measure and adjust this contrast plays a critical role in
   /// improving a app's accessibility.
-  double get targetContrast {
-    switch (this) {
-      case ZetaContrast.aa:
-        return 4.53;
-      case ZetaContrast.aaa:
-        return 8.33;
-    }
-  }
+  double get targetContrast => switch (this) { ZetaContrast.aa => 4.53, ZetaContrast.aaa => 8.33 };
 }

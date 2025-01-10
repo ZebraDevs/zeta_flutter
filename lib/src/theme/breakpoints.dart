@@ -21,7 +21,13 @@ enum DeviceType {
   desktopL,
 
   /// A device with width between 1440 and 1920.
-  desktopXL,
+  desktopXL;
+
+  /// If the device is a desktop.
+  bool get isLarge => this == DeviceType.desktopL || this == DeviceType.desktopXL;
+
+  /// If the device is a mobile.
+  bool get isSmall => this == DeviceType.mobilePortrait || this == DeviceType.mobileLandscape;
 }
 
 /// Utils to determine the [DeviceType] from some box constraints.
@@ -41,9 +47,7 @@ extension BreakpointFull on BuildContext {
   /// Determines the [DeviceType] from the current context.
   ///
   /// Returns based on the full size of the screen, so can be inaccurate in certain scenarios.
-  DeviceType get deviceType {
-    return _resolveDeviceType(MediaQuery.of(this).size.width);
-  }
+  DeviceType get deviceType => _resolveDeviceType(MediaQuery.of(this).size.width);
 }
 
 DeviceType _resolveDeviceType(double width) {
