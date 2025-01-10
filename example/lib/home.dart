@@ -4,7 +4,7 @@ import 'package:zeta_example/pages/components/accordion_example.dart';
 import 'package:zeta_example/pages/components/avatar_rail_example.dart';
 import 'package:zeta_example/pages/components/avatar_example.dart';
 import 'package:zeta_example/pages/components/badges_example.dart';
-import 'package:zeta_example/pages/components/banner_example.dart';
+import 'package:zeta_example/pages/components/system_banner_example.dart';
 import 'package:zeta_example/pages/components/bottom_sheet_example.dart';
 import 'package:zeta_example/pages/components/breadcrumb_example.dart';
 import 'package:zeta_example/pages/components/button_example.dart';

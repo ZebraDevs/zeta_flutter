@@ -49,7 +49,7 @@ class ZetaInPageBanner extends ZetaStatelessWidget {
     final theme = Zeta.of(context);
     final hasTitle = title != null;
     final rounded = context.rounded;
-    final Color backgroundColor = status.surfaceSubtleColor(context);
+    final Color backgroundColor = status.surfaceSubtleInPageBannerColor(context);
     final Color borderColor = status.borderColor(context);
     final Color iconColor = status.mainColor(context);
 
@@ -67,6 +67,7 @@ class ZetaInPageBanner extends ZetaStatelessWidget {
         ),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
           children: [
             Expanded(
               child: Padding(

@@ -77,6 +77,15 @@ enum ZetaWidgetStatus {
         ZetaWidgetStatus.neutral => Zeta.of(context).colors.mainLight,
       };
 
+  /// Gets the surface subtle color for [ZetaWidgetStatus].
+  Color surfaceSubtleInPageBannerColor(BuildContext context) => switch (this) {
+        ZetaWidgetStatus.info => Zeta.of(context).colors.surfaceInfoSubtle,
+        ZetaWidgetStatus.positive => Zeta.of(context).colors.surfacePositiveSubtle,
+        ZetaWidgetStatus.warning => Zeta.of(context).colors.surfaceWarningSubtle,
+        ZetaWidgetStatus.negative => Zeta.of(context).colors.surfaceNegativeSubtle,
+        ZetaWidgetStatus.neutral => Zeta.of(context).colors.surfaceDefault,
+      };
+
   /// Gets foreground color from [ZetaWidgetStatus].
   Color mainColor(BuildContext context) => switch (this) {
         ZetaWidgetStatus.info => Zeta.of(context).colors.mainInfo,
