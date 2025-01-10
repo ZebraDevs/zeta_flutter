@@ -233,7 +233,7 @@ class _ZetaTimeInputState extends FormFieldState<TimeOfDay> {
       context: context,
       initialEntryMode: widget.pickerInitialEntryMode ?? TimePickerEntryMode.dial,
       initialTime: value ?? TimeOfDay.now(),
-      builder: (BuildContext context, Widget? child) {
+      builder: (BuildContext _, Widget? child) {
         return Theme(
           data: Theme.of(context).copyWith(
             timePickerTheme: TimePickerThemeData(

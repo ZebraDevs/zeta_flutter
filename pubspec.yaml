@@ -5,7 +5,7 @@ description: Zeta is the new, formal, standardized Zebra Design System based off
   and so many aspects are incomplete.
 homepage: https://github.com/ZebraDevs/zeta_flutter
 repository: https://github.com/ZebraDevs/zeta_flutter
-issue_tracker: https://github.com/ZebraDevs/zeta_flutter/issues
+issue_tracker: https://github.com/zebradevs/zeta_flutter/issues
 documentation: https://design.zebra.com/flutter/dartdoc/index.html
 
 platforms:
@@ -39,7 +39,7 @@ dev_dependencies:
   image: ^4.2.0
   mockito: ^5.4.4
   path: ^1.9.0
-  zds_analysis: ^1.0.1
+  zds_analysis: ^1.1.1
 
 flutter:
   fonts:
@@ -62,4 +62,5 @@ flutter:
         - asset: lib/generated/icons/zeta-icons-sharp.ttf
   assets:
     - lib/assets/flags/
+    - lib/assets/logos/
   uses-material-design: true

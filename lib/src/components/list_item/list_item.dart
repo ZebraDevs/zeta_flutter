@@ -262,6 +262,7 @@ class ZetaListItem extends ZetaStatelessWidget {
                           Flexible(
                             child: title ??
                                 Column(
+                                  mainAxisSize: MainAxisSize.min,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     if (primaryText != null && primaryText!.isNotEmpty)

@@ -49,9 +49,9 @@ class ZetaInPageBanner extends ZetaStatelessWidget {
     final theme = Zeta.of(context);
     final hasTitle = title != null;
     final rounded = context.rounded;
-    final Color backgroundColor = status.backgroundColor(theme.colors);
-    final Color borderColor = status.borderColor(theme.colors);
-    final Color iconColor = status.foregroundColor(theme.colors);
+    final Color backgroundColor = status.surfaceSubtleInPageBannerColor(context);
+    final Color borderColor = status.borderColor(context);
+    final Color iconColor = status.mainColor(context);
 
     return ZetaRoundedScope(
       rounded: rounded,
@@ -67,6 +67,7 @@ class ZetaInPageBanner extends ZetaStatelessWidget {
         ),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
           children: [
             Expanded(
               child: Padding(
@@ -85,6 +86,7 @@ class ZetaInPageBanner extends ZetaStatelessWidget {
                     Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.min,
                         children: [
                           if (hasTitle)
                             Text(
@@ -149,54 +151,6 @@ extension on ZetaWidgetStatus {
       case ZetaWidgetStatus.neutral:
       case ZetaWidgetStatus.info:
         return ZetaIcons.info;
-    }
-  }
-
-  /// Gets background color from [ZetaWidgetStatus]
-  Color backgroundColor(ZetaColors colors) {
-    switch (this) {
-      case ZetaWidgetStatus.info:
-        return colors.surfaceInfoSubtle;
-      case ZetaWidgetStatus.positive:
-        return colors.surfacePositiveSubtle;
-      case ZetaWidgetStatus.warning:
-        return colors.surfaceWarningSubtle;
-      case ZetaWidgetStatus.negative:
-        return colors.surfaceNegativeSubtle;
-      case ZetaWidgetStatus.neutral:
-        return colors.surfaceDefault;
-    }
-  }
-
-  /// Gets foreground color from [ZetaWidgetStatus].
-  Color foregroundColor(ZetaColors colors) {
-    switch (this) {
-      case ZetaWidgetStatus.info:
-        return colors.mainInfo;
-      case ZetaWidgetStatus.positive:
-        return colors.mainPositive;
-      case ZetaWidgetStatus.warning:
-        return colors.mainWarning;
-      case ZetaWidgetStatus.negative:
-        return colors.mainNegative;
-      case ZetaWidgetStatus.neutral:
-        return colors.mainDefault;
-    }
-  }
-
-  /// Gets border color from [ZetaWidgetStatus].
-  Color borderColor(ZetaColors colors) {
-    switch (this) {
-      case ZetaWidgetStatus.info:
-        return colors.borderInfo;
-      case ZetaWidgetStatus.positive:
-        return colors.borderPositive;
-      case ZetaWidgetStatus.warning:
-        return colors.borderWarning;
-      case ZetaWidgetStatus.negative:
-        return colors.borderNegative;
-      case ZetaWidgetStatus.neutral:
-        return colors.borderDefault;
     }
   }
 }

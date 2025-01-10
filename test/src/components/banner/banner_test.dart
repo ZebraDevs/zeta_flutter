@@ -7,17 +7,17 @@ import '../../../test_utils/test_app.dart';
 import '../../../test_utils/tolerant_comparator.dart';
 import '../../../test_utils/utils.dart';
 
-ZetaColorSwatch _colorFromType(BuildContext context, ZetaBannerStatus type) {
+ZetaColorSwatch _colorFromType(BuildContext context, ZetaSystemBannerStatus type) {
   final zeta = Zeta.of(context);
 
   switch (type) {
-    case ZetaBannerStatus.primary:
+    case ZetaSystemBannerStatus.primary:
       return zeta.colors.primitives.primary;
-    case ZetaBannerStatus.positive:
+    case ZetaSystemBannerStatus.positive:
       return zeta.colors.primitives.green;
-    case ZetaBannerStatus.warning:
+    case ZetaSystemBannerStatus.warning:
       return zeta.colors.primitives.orange;
-    case ZetaBannerStatus.negative:
+    case ZetaSystemBannerStatus.negative:
       return zeta.colors.primitives.red;
   }
 }
@@ -32,13 +32,13 @@ void main() {
   });
 
   group('Accessibility Tests', () {
-    for (final type in ZetaBannerStatus.values) {
+    for (final type in ZetaSystemBannerStatus.values) {
       testWidgets('meets contrast ratio guideline for $type', (WidgetTester tester) async {
         await tester.pumpWidget(
           TestApp(
             home: Builder(
               builder: (context) {
-                return ZetaBanner(
+                return ZetaSystemBanner(
                   context: context,
                   title: 'Banner Title',
                   leadingIcon: Icons.info,
@@ -65,7 +65,7 @@ void main() {
             return TestApp(
               home: Builder(
                 builder: (context) {
-                  return ZetaBanner(
+                  return ZetaSystemBanner(
                     context: context,
                     title: 'Banner Title',
                     semanticLabel: semanticLabelText,
@@ -98,7 +98,7 @@ void main() {
             return TestApp(
               home: Builder(
                 builder: (context) {
-                  return ZetaBanner(
+                  return ZetaSystemBanner(
                     context: context,
                     title: titleText,
                   );
@@ -121,12 +121,12 @@ void main() {
   });
 
   group('Content Tests', () {
-    testWidgets('ZetaBanner title is correct', (WidgetTester tester) async {
+    testWidgets('ZetaSystemBanner title is correct', (WidgetTester tester) async {
       await tester.pumpWidget(
         TestApp(
           home: Builder(
             builder: (context) {
-              return ZetaBanner(
+              return ZetaSystemBanner(
                 context: context,
                 title: 'Banner Title',
               );
@@ -138,12 +138,12 @@ void main() {
       expect(textFinder, findsOneWidget);
     });
 
-    testWidgets('ZetaBanner leading icon is correct', (WidgetTester tester) async {
+    testWidgets('ZetaSystemBanner leading icon is correct', (WidgetTester tester) async {
       await tester.pumpWidget(
         TestApp(
           home: Builder(
             builder: (context) {
-              return ZetaBanner(
+              return ZetaSystemBanner(
                 context: context,
                 title: 'Banner Title',
                 leadingIcon: Icons.info,
@@ -164,7 +164,7 @@ void main() {
         TestApp(
           home: Builder(
             builder: (context) {
-              return ZetaBanner(
+              return ZetaSystemBanner(
                 context: context,
                 title: 'Banner Title',
                 trailing: const ZetaIconButton(icon: ZetaIcons.close),
@@ -200,7 +200,7 @@ void main() {
         TestApp(
           home: Builder(
             builder: (context) {
-              return ZetaBanner(
+              return ZetaSystemBanner(
                 context: context,
                 title: 'Banner Title',
                 leadingIcon: ZetaIcons.info,
@@ -221,7 +221,7 @@ void main() {
         TestApp(
           home: Builder(
             builder: (context) {
-              return ZetaBanner(
+              return ZetaSystemBanner(
                 context: context,
                 title: 'Banner Title',
                 leadingIcon: ZetaIcons.info,
@@ -242,7 +242,7 @@ void main() {
         TestApp(
           home: Builder(
             builder: (context) {
-              return ZetaBanner(
+              return ZetaSystemBanner(
                 context: context,
                 title: 'Banner Title',
               );
@@ -259,13 +259,13 @@ void main() {
   });
 
   group('Styling Tests', () {
-    for (final type in ZetaBannerStatus.values) {
+    for (final type in ZetaSystemBannerStatus.values) {
       testWidgets('title styles are correct for $type', (WidgetTester tester) async {
         await tester.pumpWidget(
           TestApp(
             home: Builder(
               builder: (context) {
-                return ZetaBanner(
+                return ZetaSystemBanner(
                   context: context,
                   title: 'Banner Title',
                   type: type,
@@ -291,7 +291,7 @@ void main() {
           TestApp(
             home: Builder(
               builder: (context) {
-                return ZetaBanner(
+                return ZetaSystemBanner(
                   context: context,
                   title: 'Banner Title',
                   leadingIcon: Icons.info,
@@ -313,7 +313,7 @@ void main() {
           TestApp(
             home: Builder(
               builder: (context) {
-                return ZetaBanner(
+                return ZetaSystemBanner(
                   context: context,
                   title: 'Banner Title',
                   type: type,
@@ -322,8 +322,8 @@ void main() {
             ),
           ),
         );
-        final Finder finder = find.byType(ZetaBanner);
-        final ZetaBanner widget = tester.firstWidget(finder);
+        final Finder finder = find.byType(ZetaSystemBanner);
+        final ZetaSystemBanner widget = tester.firstWidget(finder);
 
         expect(widget.backgroundColor, equals(_colorFromType(tester.element(finder), type)));
       });
@@ -333,12 +333,12 @@ void main() {
   group('Interaction Tests', () {});
 
   group('Golden Tests', () {
-    for (final type in ZetaBannerStatus.values) {
+    for (final type in ZetaSystemBannerStatus.values) {
       goldenTest(
         goldenFile,
         Builder(
           builder: (context) {
-            return ZetaBanner(
+            return ZetaSystemBanner(
               context: context,
               title: 'Banner Title',
               leadingIcon: Icons.info,
@@ -348,7 +348,7 @@ void main() {
           },
         ),
         'banner_${type.toString().split('.').last}',
-        widgetType: ZetaBanner,
+        widgetType: ZetaSystemBanner,
       );
     }
   });

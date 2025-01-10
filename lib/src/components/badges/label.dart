@@ -38,7 +38,7 @@ class ZetaLabel extends ZetaStatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Color backgroundColor = status.labelBackgroundColor(context);
+    final Color backgroundColor = status.surfaceColor(context);
     final Color foregroundColor = status.labelForegroundColor(context);
 
     return Semantics(
@@ -66,36 +66,5 @@ class ZetaLabel extends ZetaStatelessWidget {
       ..add(EnumProperty<ZetaWidgetStatus>('status', status))
       ..add(DiagnosticsProperty<bool>('rounded', rounded))
       ..add(StringProperty('semanticLabel', semanticLabel));
-  }
-}
-
-extension on ZetaWidgetStatus {
-  Color labelBackgroundColor(BuildContext context) {
-    final colors = Zeta.of(context).colors;
-    switch (this) {
-      case ZetaWidgetStatus.info:
-        return colors.surfaceInfo;
-      case ZetaWidgetStatus.positive:
-        return colors.surfacePositive;
-      case ZetaWidgetStatus.warning:
-        return colors.surfaceWarning;
-      case ZetaWidgetStatus.negative:
-        return colors.surfaceNegative;
-      case ZetaWidgetStatus.neutral:
-        return colors.mainLight;
-    }
-  }
-
-  Color labelForegroundColor(BuildContext context) {
-    final colors = Zeta.of(context).colors;
-    switch (this) {
-      case ZetaWidgetStatus.info:
-      case ZetaWidgetStatus.positive:
-      case ZetaWidgetStatus.warning:
-      case ZetaWidgetStatus.negative:
-        return colors.mainInverse;
-      case ZetaWidgetStatus.neutral:
-        return colors.mainDefault;
-    }
   }
 }
