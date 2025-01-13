@@ -148,3 +148,4 @@ package-lock.json
 /coverage
 /.coverage
 .fvm/
+pubspec_overrides.yaml

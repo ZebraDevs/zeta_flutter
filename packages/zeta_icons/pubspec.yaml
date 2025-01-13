@@ -1,0 +1,30 @@
+name: zeta_icons
+description: "An icon library for the Zeta Design System."
+version: 1.0.0-alpha.1
+
+environment:
+  sdk: ^3.6.0
+  flutter: ^3.27.0
+
+resolution: workspace
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  zds_analysis: ^1.1.1
+
+flutter:
+  fonts:
+    - family: zeta-icons
+      fonts:
+        - asset: assets/zeta-icons-round.ttf
+    - family: zeta-icons-round
+      fonts:
+        - asset: assets/zeta-icons-round.ttf
+    - family: zeta-icons-sharp
+      fonts:
+        - asset: assets/zeta-icons-sharp.ttf

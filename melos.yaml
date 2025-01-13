@@ -1,0 +1,12 @@
+name: zeta_flutter
+
+packages:
+  - packages/**
+  - example/*
+  - widgetbook/*
+
+scripts:
+  analyze:
+    exec: dart analyze .
+  fix:
+    exec: dart fix --apply

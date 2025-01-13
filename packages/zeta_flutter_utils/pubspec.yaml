@@ -1,0 +1,24 @@
+name: zeta_flutter_utils
+description: "Utility functions for the Zeta Design System."
+version: 1.0.0-alpha
+homepage: https://design.zebra.com
+
+environment:
+  sdk: ^3.6.0
+  flutter: ^3.27.0
+
+resolution: workspace
+
+dependencies:
+  analyzer: ^6.0.0
+  flutter:
+    sdk: flutter
+  web: ^1.1.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  mockito: ^5.4.5
+  zds_analysis: ^1.1.1
+  zeta_flutter:
+    path: ../zeta_flutter

@@ -1,0 +1,1 @@
+export 'icons.g.dart';
