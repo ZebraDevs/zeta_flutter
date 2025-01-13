@@ -39,8 +39,8 @@ import 'universal_platform_web.dart' if (dart.library.io) 'universal_platform_vm
 /// supported. If running in a Web browser on Fuchsia, PlatformIs.web will be true, but
 /// PlatformIs.fuchsia will be false. Future versions, when Fuchsia is released,
 /// may fix this.
-class ZetaPlatformIs {
-  ZetaPlatformIs._();
+class PlatformIs {
+  PlatformIs._();
 
   /// Web
   static bool get web => const UniversalPlatform().web;
@@ -64,10 +64,10 @@ class ZetaPlatformIs {
   static bool get fuchsia => const UniversalPlatform().fuchsia;
 
   /// Mobile (Android or iOS)
-  static bool get mobile => ZetaPlatformIs.iOS || ZetaPlatformIs.android;
+  static bool get mobile => PlatformIs.iOS || PlatformIs.android;
 
   /// Desktop (Windows, macOS, Linux)
-  static bool get desktop => ZetaPlatformIs.macOS || ZetaPlatformIs.windows || ZetaPlatformIs.linux;
+  static bool get desktop => PlatformIs.macOS || PlatformIs.windows || PlatformIs.linux;
 }
 
 /// Abstract platform interface.
