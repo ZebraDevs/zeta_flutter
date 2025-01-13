@@ -1,6 +1,6 @@
 import 'dart:async';
 
-export './extensions.dart';
+export 'extensions.dart';
 
 const Duration _debounceDuration = Duration(milliseconds: 500);
 

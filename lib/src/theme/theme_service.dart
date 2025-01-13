@@ -10,6 +10,10 @@ const String _kThemeId = 'theme_id';
 const String _kFontFamily = 'fontFamily';
 
 /// `ZetaThemeData` is a class that holds the theme data to be stored with the theme service.
+///
+/// It contains the theme mode, contrast, and font family.
+///
+/// {@category Theme}
 class ZetaThemeServiceData extends Equatable {
   /// Constructs a [ZetaThemeServiceData].
   ///

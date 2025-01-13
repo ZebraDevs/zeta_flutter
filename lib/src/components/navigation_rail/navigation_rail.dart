@@ -8,7 +8,9 @@ import '../../../zeta_flutter.dart';
 /// sections of an app. It is designed to be used as a side navigation
 /// menu and can be customized with different icons and labels for each
 /// navigation item.
+///
 /// Should be used with [ZetaNavigationRailItem].
+///
 /// {@category Components}
 ///
 /// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=229-43&node-type=canvas&m=dev
@@ -262,6 +264,8 @@ class _ZetaNavigationRailItemContentState extends State<_ZetaNavigationRailItemC
 }
 
 /// Represents an item in the [ZetaNavigationRail].
+
+/// {@category Components}
 class ZetaNavigationRailItem {
   /// Constructor for [ZetaNavigationRailItem].
   const ZetaNavigationRailItem({

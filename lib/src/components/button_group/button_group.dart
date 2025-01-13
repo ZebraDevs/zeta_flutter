@@ -70,7 +70,9 @@ class ZetaButtonGroup extends ZetaStatelessWidget {
 // TODO(UX-854): Create country variant.
 // TODO(UX-1132): Refactor to make group button a class, not a widget.
 
-/// Group Button item
+/// Group Button item.
+///
+/// {@category Components}
 class ZetaGroupButton extends ZetaStatefulWidget {
   /// Public Constructor for [ZetaGroupButton]
   const ZetaGroupButton({

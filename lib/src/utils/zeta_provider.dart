@@ -7,6 +7,10 @@ import '../../zeta_flutter.dart';
 
 /// A typedef for the ZetaAppBuilder function which passes [BuildContext], light [ThemeData],
 /// dark [ThemeData] and [ThemeMode] and returns a [Widget].
+///
+/// This function is used to build the app with the provided theming information.
+///
+/// {@category Utils}
 typedef ZetaAppBuilder = Widget Function(
   BuildContext context,
   ThemeData light,

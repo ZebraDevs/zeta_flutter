@@ -53,13 +53,13 @@ flutter:
           weight: 500
     - family: zeta-icons
       fonts:
-        - asset: lib/generated/icons/zeta-icons-round.ttf
+        - asset: lib/src/generated/icons/zeta-icons-round.ttf
     - family: zeta-icons-round
       fonts:
-        - asset: lib/generated/icons/zeta-icons-round.ttf
+        - asset: lib/src/generated/icons/zeta-icons-round.ttf
     - family: zeta-icons-sharp
       fonts:
-        - asset: lib/generated/icons/zeta-icons-sharp.ttf
+        - asset: lib/src/generated/icons/zeta-icons-sharp.ttf
   assets:
     - lib/assets/flags/
     - lib/assets/logos/
