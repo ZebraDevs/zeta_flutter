@@ -1,8 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import '../../utils/utils.dart';
-import '../avatars/avatar.dart';
+import '../../../zeta_flutter.dart';
 
 /// A stateless widget that represents an avatar rail in the Zeta application.
 ///

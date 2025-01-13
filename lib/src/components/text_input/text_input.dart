@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../../../zeta_flutter.dart';
-import '../../interfaces/form_field.dart';
 import 'internal_text_input.dart';
 
 /// Text inputs allow the user to enter text.
 ///
 /// To show error messages on the text input, use the [validator]. The string returned from this function will be displayed as the error message.
 /// Error messages can also be managed outside the text input by setting [errorText].
+///
 /// {@category Components}
 ///
 /// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=229-38&node-type=canvas&m=dev

@@ -10,7 +10,7 @@ import 'package:flutter/material.dart' as _i2;
 import 'package:flutter/src/widgets/notification_listener.dart' as _i7;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:mockito/src/dummies.dart' as _i8;
-import 'package:zeta_flutter/generated/tokens/primitives.g.dart' as _i4;
+import 'package:zeta_flutter/src/generated/tokens/primitives.g.dart' as _i4;
 import 'package:zeta_flutter/zeta_flutter.dart' as _i6;
 
 // ignore_for_file: type=lint

@@ -138,6 +138,8 @@ class _ZetaBreadcrumbsState extends State<ZetaBreadcrumb> {
 /// Class for untruncated [ZetaBreadcrumbItem].
 ///
 /// Should be a child of [ZetaBreadcrumb].
+///
+/// {@category Components}
 class ZetaBreadcrumbItem extends ZetaStatelessWidget {
   ///Constructor for [ZetaBreadcrumbItem]
   ZetaBreadcrumbItem({

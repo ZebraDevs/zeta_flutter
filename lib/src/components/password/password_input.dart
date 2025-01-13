@@ -2,7 +2,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../../../zeta_flutter.dart';
-import '../../interfaces/form_field.dart';
 import '../text_input/internal_text_input.dart';
 
 /// Zeta Password Input

@@ -7,7 +7,9 @@ import '../../../zeta_flutter.dart';
 /// The [ZetaRangeSelector] is a customizable range selector widget that
 /// allows users to select a range of values within a specified minimum
 /// and maximum range. It provides a visual representation of the selected
-/// range and allows for precise adjustments through both dragging and direct input
+/// range and allows for precise adjustments through both dragging and direct input.
+///
+/// {@category Components}
 class ZetaRangeSelector extends ZetaStatefulWidget {
   /// Creates a new [ZetaRangeSelector]
   ZetaRangeSelector({

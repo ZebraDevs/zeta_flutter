@@ -18,6 +18,9 @@ class ZetaAnimationLength {
 }
 
 /// Temporary class to hold border values.
+///
+/// {@category Theme}
+///
 // TODO(Tokens): Remove this class and design / develop  Zeta.of(context).border instead.
 abstract final class ZetaBorders {
   /// Small border width

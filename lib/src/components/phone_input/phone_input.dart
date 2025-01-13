@@ -4,27 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../../../zeta_flutter.dart';
-
-import '../../interfaces/form_field.dart';
 import '../text_input/internal_text_input.dart';
-import 'countries.dart';
-
-/// A phone number.
-class PhoneNumber {
-  /// Creates a new [PhoneNumber].
-  const PhoneNumber({
-    required this.dialCode,
-    required this.number,
-  });
-
-  /// The dial code of the phone number.
-  final String dialCode;
-
-  /// The number of the phone number.
-  final String number;
-}
 
 /// ZetaPhoneInput allows entering phone numbers.
+///
 /// {@category Components}
 ///
 /// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=916-10934&node-type=canvas&m=dev
