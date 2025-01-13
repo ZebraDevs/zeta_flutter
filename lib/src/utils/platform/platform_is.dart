@@ -39,6 +39,8 @@ import 'universal_platform_web.dart' if (dart.library.io) 'universal_platform_vm
 /// supported. If running in a Web browser on Fuchsia, PlatformIs.web will be true, but
 /// PlatformIs.fuchsia will be false. Future versions, when Fuchsia is released,
 /// may fix this.
+///
+/// {@category Utils}
 class PlatformIs {
   PlatformIs._();
 
