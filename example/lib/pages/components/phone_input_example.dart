@@ -29,7 +29,7 @@ class _PhoneInputExampleState extends State<PhoneInputExample> {
                 child: ZetaPhoneInput(
                   label: 'Phone number',
                   hintText: 'Enter your phone number',
-                  initialValue: const ZetaPhoneNumber(dialCode: '+44', number: '1234567890'),
+                  initialValue: const PhoneNumber(dialCode: '+44', number: '1234567890'),
                   onChange: (value) {
                     print(value?.dialCode);
                     print(value?.number);

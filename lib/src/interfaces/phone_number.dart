@@ -1,9 +1,9 @@
 /// A phone number.
 ///
 /// {@category Interfaces}
-class ZetaPhoneNumber {
-  /// Creates a new [ZetaPhoneNumber].
-  const ZetaPhoneNumber({
+class PhoneNumber {
+  /// Creates a new [PhoneNumber].
+  const PhoneNumber({
     required this.dialCode,
     required this.number,
   });

@@ -18,7 +18,7 @@ class ZetaThemeContrastSwitch extends StatelessWidget {
         value: zeta.contrast,
         padding: EdgeInsets.all(8),
         elevation: 0,
-        icon: ZetaNothing(),
+        icon: Nothing(),
         dropdownColor: zeta.colors.borderDisabled,
         items: _themes.map((e) {
           final ZetaColors colors = (e == ZetaContrast.aa

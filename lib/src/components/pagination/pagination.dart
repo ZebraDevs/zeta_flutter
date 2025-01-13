@@ -228,7 +228,7 @@ class _ZetaPaginationState extends State<ZetaPagination> {
           onChanged: widget.onChange != null ? _onItemPressed : null,
           value: _currentPage,
           icon: const ZetaIcon(ZetaIcons.expand_more).paddingStart(Zeta.of(context).spacing.small),
-          underline: const ZetaNothing(),
+          underline: const Nothing(),
           style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                 color: colors.mainSubtle,
               ),
