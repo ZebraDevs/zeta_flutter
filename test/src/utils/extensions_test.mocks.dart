@@ -28,75 +28,59 @@ import 'package:zeta_flutter/zeta_flutter.dart' as _i6;
 // ignore_for_file: subtype_of_sealed_class
 
 class _FakeWidget_0 extends _i1.SmartFake implements _i2.Widget {
-  _FakeWidget_0(Object parent, Invocation parentInvocation)
-    : super(parent, parentInvocation);
+  _FakeWidget_0(Object parent, Invocation parentInvocation) : super(parent, parentInvocation);
 
   @override
-  String toString({_i3.DiagnosticLevel? minLevel = _i3.DiagnosticLevel.info}) =>
-      super.toString();
+  String toString({_i3.DiagnosticLevel? minLevel = _i3.DiagnosticLevel.info}) => super.toString();
 }
 
-class _FakeInheritedWidget_1 extends _i1.SmartFake
-    implements _i2.InheritedWidget {
-  _FakeInheritedWidget_1(Object parent, Invocation parentInvocation)
-    : super(parent, parentInvocation);
+class _FakeInheritedWidget_1 extends _i1.SmartFake implements _i2.InheritedWidget {
+  _FakeInheritedWidget_1(Object parent, Invocation parentInvocation) : super(parent, parentInvocation);
 
   @override
-  String toString({_i3.DiagnosticLevel? minLevel = _i3.DiagnosticLevel.info}) =>
-      super.toString();
+  String toString({_i3.DiagnosticLevel? minLevel = _i3.DiagnosticLevel.info}) => super.toString();
 }
 
-class _FakeDiagnosticsNode_2 extends _i1.SmartFake
-    implements _i3.DiagnosticsNode {
-  _FakeDiagnosticsNode_2(Object parent, Invocation parentInvocation)
-    : super(parent, parentInvocation);
+class _FakeDiagnosticsNode_2 extends _i1.SmartFake implements _i3.DiagnosticsNode {
+  _FakeDiagnosticsNode_2(Object parent, Invocation parentInvocation) : super(parent, parentInvocation);
 
   @override
   String toString({
     _i3.TextTreeConfiguration? parentConfiguration,
     _i3.DiagnosticLevel? minLevel = _i3.DiagnosticLevel.info,
-  }) => super.toString();
+  }) =>
+      super.toString();
 }
 
-class _FakeZetaPrimitives_3 extends _i1.SmartFake
-    implements _i4.ZetaPrimitives {
-  _FakeZetaPrimitives_3(Object parent, Invocation parentInvocation)
-    : super(parent, parentInvocation);
+class _FakeZetaPrimitives_3 extends _i1.SmartFake implements _i4.ZetaPrimitives {
+  _FakeZetaPrimitives_3(Object parent, Invocation parentInvocation) : super(parent, parentInvocation);
 }
 
 class _FakeColor_4 extends _i1.SmartFake implements _i5.Color {
-  _FakeColor_4(Object parent, Invocation parentInvocation)
-    : super(parent, parentInvocation);
+  _FakeColor_4(Object parent, Invocation parentInvocation) : super(parent, parentInvocation);
 }
 
 class _FakeZetaSemantics_5 extends _i1.SmartFake implements _i6.ZetaSemantics {
-  _FakeZetaSemantics_5(Object parent, Invocation parentInvocation)
-    : super(parent, parentInvocation);
+  _FakeZetaSemantics_5(Object parent, Invocation parentInvocation) : super(parent, parentInvocation);
 }
 
 class _FakeZetaColors_6 extends _i1.SmartFake implements _i6.ZetaColors {
-  _FakeZetaColors_6(Object parent, Invocation parentInvocation)
-    : super(parent, parentInvocation);
+  _FakeZetaColors_6(Object parent, Invocation parentInvocation) : super(parent, parentInvocation);
 }
 
 class _FakeZetaRadius_7 extends _i1.SmartFake implements _i6.ZetaRadius {
-  _FakeZetaRadius_7(Object parent, Invocation parentInvocation)
-    : super(parent, parentInvocation);
+  _FakeZetaRadius_7(Object parent, Invocation parentInvocation) : super(parent, parentInvocation);
 }
 
 class _FakeZetaSpacing_8 extends _i1.SmartFake implements _i6.ZetaSpacing {
-  _FakeZetaSpacing_8(Object parent, Invocation parentInvocation)
-    : super(parent, parentInvocation);
+  _FakeZetaSpacing_8(Object parent, Invocation parentInvocation) : super(parent, parentInvocation);
 }
 
-class _FakeInheritedElement_9 extends _i1.SmartFake
-    implements _i2.InheritedElement {
-  _FakeInheritedElement_9(Object parent, Invocation parentInvocation)
-    : super(parent, parentInvocation);
+class _FakeInheritedElement_9 extends _i1.SmartFake implements _i2.InheritedElement {
+  _FakeInheritedElement_9(Object parent, Invocation parentInvocation) : super(parent, parentInvocation);
 
   @override
-  String toString({_i3.DiagnosticLevel? minLevel = _i3.DiagnosticLevel.info}) =>
-      super.toString();
+  String toString({_i3.DiagnosticLevel? minLevel = _i3.DiagnosticLevel.info}) => super.toString();
 }
 
 /// A class which mocks [BuildContext].
@@ -104,34 +88,28 @@ class _FakeInheritedElement_9 extends _i1.SmartFake
 /// See the documentation for Mockito's code generation for more information.
 class MockBuildContext extends _i1.Mock implements _i2.BuildContext {
   @override
-  _i2.Widget get widget =>
-      (super.noSuchMethod(
-            Invocation.getter(#widget),
-            returnValue: _FakeWidget_0(this, Invocation.getter(#widget)),
-            returnValueForMissingStub: _FakeWidget_0(
-              this,
-              Invocation.getter(#widget),
-            ),
-          )
-          as _i2.Widget);
+  _i2.Widget get widget => (super.noSuchMethod(
+        Invocation.getter(#widget),
+        returnValue: _FakeWidget_0(this, Invocation.getter(#widget)),
+        returnValueForMissingStub: _FakeWidget_0(
+          this,
+          Invocation.getter(#widget),
+        ),
+      ) as _i2.Widget);
 
   @override
-  bool get mounted =>
-      (super.noSuchMethod(
-            Invocation.getter(#mounted),
-            returnValue: false,
-            returnValueForMissingStub: false,
-          )
-          as bool);
+  bool get mounted => (super.noSuchMethod(
+        Invocation.getter(#mounted),
+        returnValue: false,
+        returnValueForMissingStub: false,
+      ) as bool);
 
   @override
-  bool get debugDoingBuild =>
-      (super.noSuchMethod(
-            Invocation.getter(#debugDoingBuild),
-            returnValue: false,
-            returnValueForMissingStub: false,
-          )
-          as bool);
+  bool get debugDoingBuild => (super.noSuchMethod(
+        Invocation.getter(#debugDoingBuild),
+        returnValue: false,
+        returnValueForMissingStub: false,
+      ) as bool);
 
   @override
   _i2.InheritedWidget dependOnInheritedElement(
@@ -139,46 +117,43 @@ class MockBuildContext extends _i1.Mock implements _i2.BuildContext {
     Object? aspect,
   }) =>
       (super.noSuchMethod(
-            Invocation.method(
-              #dependOnInheritedElement,
-              [ancestor],
-              {#aspect: aspect},
-            ),
-            returnValue: _FakeInheritedWidget_1(
-              this,
-              Invocation.method(
-                #dependOnInheritedElement,
-                [ancestor],
-                {#aspect: aspect},
-              ),
-            ),
-            returnValueForMissingStub: _FakeInheritedWidget_1(
-              this,
-              Invocation.method(
-                #dependOnInheritedElement,
-                [ancestor],
-                {#aspect: aspect},
-              ),
-            ),
-          )
-          as _i2.InheritedWidget);
+        Invocation.method(
+          #dependOnInheritedElement,
+          [ancestor],
+          {#aspect: aspect},
+        ),
+        returnValue: _FakeInheritedWidget_1(
+          this,
+          Invocation.method(
+            #dependOnInheritedElement,
+            [ancestor],
+            {#aspect: aspect},
+          ),
+        ),
+        returnValueForMissingStub: _FakeInheritedWidget_1(
+          this,
+          Invocation.method(
+            #dependOnInheritedElement,
+            [ancestor],
+            {#aspect: aspect},
+          ),
+        ),
+      ) as _i2.InheritedWidget);
 
   @override
-  void visitAncestorElements(_i2.ConditionalElementVisitor? visitor) =>
-      super.noSuchMethod(
+  void visitAncestorElements(_i2.ConditionalElementVisitor? visitor) => super.noSuchMethod(
         Invocation.method(#visitAncestorElements, [visitor]),
         returnValueForMissingStub: null,
       );
 
   @override
   void visitChildElements(_i2.ElementVisitor? visitor) => super.noSuchMethod(
-    Invocation.method(#visitChildElements, [visitor]),
-    returnValueForMissingStub: null,
-  );
+        Invocation.method(#visitChildElements, [visitor]),
+        returnValueForMissingStub: null,
+      );
 
   @override
-  void dispatchNotification(_i7.Notification? notification) =>
-      super.noSuchMethod(
+  void dispatchNotification(_i7.Notification? notification) => super.noSuchMethod(
         Invocation.method(#dispatchNotification, [notification]),
         returnValueForMissingStub: null,
       );
@@ -189,17 +164,16 @@ class MockBuildContext extends _i1.Mock implements _i2.BuildContext {
     _i3.DiagnosticsTreeStyle? style = _i3.DiagnosticsTreeStyle.errorProperty,
   }) =>
       (super.noSuchMethod(
-            Invocation.method(#describeElement, [name], {#style: style}),
-            returnValue: _FakeDiagnosticsNode_2(
-              this,
-              Invocation.method(#describeElement, [name], {#style: style}),
-            ),
-            returnValueForMissingStub: _FakeDiagnosticsNode_2(
-              this,
-              Invocation.method(#describeElement, [name], {#style: style}),
-            ),
-          )
-          as _i3.DiagnosticsNode);
+        Invocation.method(#describeElement, [name], {#style: style}),
+        returnValue: _FakeDiagnosticsNode_2(
+          this,
+          Invocation.method(#describeElement, [name], {#style: style}),
+        ),
+        returnValueForMissingStub: _FakeDiagnosticsNode_2(
+          this,
+          Invocation.method(#describeElement, [name], {#style: style}),
+        ),
+      ) as _i3.DiagnosticsNode);
 
   @override
   _i3.DiagnosticsNode describeWidget(
@@ -207,45 +181,41 @@ class MockBuildContext extends _i1.Mock implements _i2.BuildContext {
     _i3.DiagnosticsTreeStyle? style = _i3.DiagnosticsTreeStyle.errorProperty,
   }) =>
       (super.noSuchMethod(
-            Invocation.method(#describeWidget, [name], {#style: style}),
-            returnValue: _FakeDiagnosticsNode_2(
-              this,
-              Invocation.method(#describeWidget, [name], {#style: style}),
-            ),
-            returnValueForMissingStub: _FakeDiagnosticsNode_2(
-              this,
-              Invocation.method(#describeWidget, [name], {#style: style}),
-            ),
-          )
-          as _i3.DiagnosticsNode);
+        Invocation.method(#describeWidget, [name], {#style: style}),
+        returnValue: _FakeDiagnosticsNode_2(
+          this,
+          Invocation.method(#describeWidget, [name], {#style: style}),
+        ),
+        returnValueForMissingStub: _FakeDiagnosticsNode_2(
+          this,
+          Invocation.method(#describeWidget, [name], {#style: style}),
+        ),
+      ) as _i3.DiagnosticsNode);
 
   @override
   List<_i3.DiagnosticsNode> describeMissingAncestor({
     required Type? expectedAncestorType,
   }) =>
       (super.noSuchMethod(
-            Invocation.method(#describeMissingAncestor, [], {
-              #expectedAncestorType: expectedAncestorType,
-            }),
-            returnValue: <_i3.DiagnosticsNode>[],
-            returnValueForMissingStub: <_i3.DiagnosticsNode>[],
-          )
-          as List<_i3.DiagnosticsNode>);
+        Invocation.method(#describeMissingAncestor, [], {
+          #expectedAncestorType: expectedAncestorType,
+        }),
+        returnValue: <_i3.DiagnosticsNode>[],
+        returnValueForMissingStub: <_i3.DiagnosticsNode>[],
+      ) as List<_i3.DiagnosticsNode>);
 
   @override
-  _i3.DiagnosticsNode describeOwnershipChain(String? name) =>
-      (super.noSuchMethod(
-            Invocation.method(#describeOwnershipChain, [name]),
-            returnValue: _FakeDiagnosticsNode_2(
-              this,
-              Invocation.method(#describeOwnershipChain, [name]),
-            ),
-            returnValueForMissingStub: _FakeDiagnosticsNode_2(
-              this,
-              Invocation.method(#describeOwnershipChain, [name]),
-            ),
-          )
-          as _i3.DiagnosticsNode);
+  _i3.DiagnosticsNode describeOwnershipChain(String? name) => (super.noSuchMethod(
+        Invocation.method(#describeOwnershipChain, [name]),
+        returnValue: _FakeDiagnosticsNode_2(
+          this,
+          Invocation.method(#describeOwnershipChain, [name]),
+        ),
+        returnValueForMissingStub: _FakeDiagnosticsNode_2(
+          this,
+          Invocation.method(#describeOwnershipChain, [name]),
+        ),
+      ) as _i3.DiagnosticsNode);
 }
 
 /// A class which mocks [ZetaColors].
@@ -253,1246 +223,1066 @@ class MockBuildContext extends _i1.Mock implements _i2.BuildContext {
 /// See the documentation for Mockito's code generation for more information.
 class MockZetaColors extends _i1.Mock implements _i6.ZetaColors {
   @override
-  _i4.ZetaPrimitives get primitives =>
-      (super.noSuchMethod(
-            Invocation.getter(#primitives),
-            returnValue: _FakeZetaPrimitives_3(
-              this,
-              Invocation.getter(#primitives),
-            ),
-            returnValueForMissingStub: _FakeZetaPrimitives_3(
-              this,
-              Invocation.getter(#primitives),
-            ),
-          )
-          as _i4.ZetaPrimitives);
-
-  @override
-  _i5.Color get mainDefault =>
-      (super.noSuchMethod(
-            Invocation.getter(#mainDefault),
-            returnValue: _FakeColor_4(this, Invocation.getter(#mainDefault)),
-            returnValueForMissingStub: _FakeColor_4(
-              this,
-              Invocation.getter(#mainDefault),
-            ),
-          )
-          as _i5.Color);
-
-  @override
-  _i5.Color get mainSubtle =>
-      (super.noSuchMethod(
-            Invocation.getter(#mainSubtle),
-            returnValue: _FakeColor_4(this, Invocation.getter(#mainSubtle)),
-            returnValueForMissingStub: _FakeColor_4(
-              this,
-              Invocation.getter(#mainSubtle),
-            ),
-          )
-          as _i5.Color);
-
-  @override
-  _i5.Color get mainPrimary =>
-      (super.noSuchMethod(
-            Invocation.getter(#mainPrimary),
-            returnValue: _FakeColor_4(this, Invocation.getter(#mainPrimary)),
-            returnValueForMissingStub: _FakeColor_4(
-              this,
-              Invocation.getter(#mainPrimary),
-            ),
-          )
-          as _i5.Color);
-
-  @override
-  _i5.Color get mainSecondary =>
-      (super.noSuchMethod(
-            Invocation.getter(#mainSecondary),
-            returnValue: _FakeColor_4(this, Invocation.getter(#mainSecondary)),
-            returnValueForMissingStub: _FakeColor_4(
-              this,
-              Invocation.getter(#mainSecondary),
-            ),
-          )
-          as _i5.Color);
-
-  @override
-  _i5.Color get mainPositive =>
-      (super.noSuchMethod(
-            Invocation.getter(#mainPositive),
-            returnValue: _FakeColor_4(this, Invocation.getter(#mainPositive)),
-            returnValueForMissingStub: _FakeColor_4(
-              this,
-              Invocation.getter(#mainPositive),
-            ),
-          )
-          as _i5.Color);
-
-  @override
-  _i5.Color get mainWarning =>
-      (super.noSuchMethod(
-            Invocation.getter(#mainWarning),
-            returnValue: _FakeColor_4(this, Invocation.getter(#mainWarning)),
-            returnValueForMissingStub: _FakeColor_4(
-              this,
-              Invocation.getter(#mainWarning),
-            ),
-          )
-          as _i5.Color);
-
-  @override
-  _i5.Color get mainNegative =>
-      (super.noSuchMethod(
-            Invocation.getter(#mainNegative),
-            returnValue: _FakeColor_4(this, Invocation.getter(#mainNegative)),
-            returnValueForMissingStub: _FakeColor_4(
-              this,
-              Invocation.getter(#mainNegative),
-            ),
-          )
-          as _i5.Color);
-
-  @override
-  _i5.Color get mainInfo =>
-      (super.noSuchMethod(
-            Invocation.getter(#mainInfo),
-            returnValue: _FakeColor_4(this, Invocation.getter(#mainInfo)),
-            returnValueForMissingStub: _FakeColor_4(
-              this,
-              Invocation.getter(#mainInfo),
-            ),
-          )
-          as _i5.Color);
-
-  @override
-  _i5.Color get mainDisabled =>
-      (super.noSuchMethod(
-            Invocation.getter(#mainDisabled),
-            returnValue: _FakeColor_4(this, Invocation.getter(#mainDisabled)),
-            returnValueForMissingStub: _FakeColor_4(
-              this,
-              Invocation.getter(#mainDisabled),
-            ),
-          )
-          as _i5.Color);
-
-  @override
-  _i5.Color get mainLight =>
-      (super.noSuchMethod(
-            Invocation.getter(#mainLight),
-            returnValue: _FakeColor_4(this, Invocation.getter(#mainLight)),
-            returnValueForMissingStub: _FakeColor_4(
-              this,
-              Invocation.getter(#mainLight),
-            ),
-          )
-          as _i5.Color);
-
-  @override
-  _i5.Color get mainInverse =>
-      (super.noSuchMethod(
-            Invocation.getter(#mainInverse),
-            returnValue: _FakeColor_4(this, Invocation.getter(#mainInverse)),
-            returnValueForMissingStub: _FakeColor_4(
-              this,
-              Invocation.getter(#mainInverse),
-            ),
-          )
-          as _i5.Color);
-
-  @override
-  _i5.Color get textDefault =>
-      (super.noSuchMethod(
-            Invocation.getter(#textDefault),
-            returnValue: _FakeColor_4(this, Invocation.getter(#textDefault)),
-            returnValueForMissingStub: _FakeColor_4(
-              this,
-              Invocation.getter(#textDefault),
-            ),
-          )
-          as _i5.Color);
-
-  @override
-  _i5.Color get iconSubtle =>
-      (super.noSuchMethod(
-            Invocation.getter(#iconSubtle),
-            returnValue: _FakeColor_4(this, Invocation.getter(#iconSubtle)),
-            returnValueForMissingStub: _FakeColor_4(
-              this,
-              Invocation.getter(#iconSubtle),
-            ),
-          )
-          as _i5.Color);
-
-  @override
-  _i5.Color get iconInverse =>
-      (super.noSuchMethod(
-            Invocation.getter(#iconInverse),
-            returnValue: _FakeColor_4(this, Invocation.getter(#iconInverse)),
-            returnValueForMissingStub: _FakeColor_4(
-              this,
-              Invocation.getter(#iconInverse),
-            ),
-          )
-          as _i5.Color);
-
-  @override
-  _i5.Color get iconDisabled =>
-      (super.noSuchMethod(
-            Invocation.getter(#iconDisabled),
-            returnValue: _FakeColor_4(this, Invocation.getter(#iconDisabled)),
-            returnValueForMissingStub: _FakeColor_4(
-              this,
-              Invocation.getter(#iconDisabled),
-            ),
-          )
-          as _i5.Color);
-
-  @override
-  _i5.Color get iconFlavorPrimary =>
-      (super.noSuchMethod(
-            Invocation.getter(#iconFlavorPrimary),
-            returnValue: _FakeColor_4(
-              this,
-              Invocation.getter(#iconFlavorPrimary),
-            ),
-            returnValueForMissingStub: _FakeColor_4(
-              this,
-              Invocation.getter(#iconFlavorPrimary),
-            ),
-          )
-          as _i5.Color);
-
-  @override
-  _i5.Color get iconFlavorPositive =>
-      (super.noSuchMethod(
-            Invocation.getter(#iconFlavorPositive),
-            returnValue: _FakeColor_4(
-              this,
-              Invocation.getter(#iconFlavorPositive),
-            ),
-            returnValueForMissingStub: _FakeColor_4(
-              this,
-              Invocation.getter(#iconFlavorPositive),
-            ),
-          )
-          as _i5.Color);
-
-  @override
-  _i5.Color get iconFlavorWarning =>
-      (super.noSuchMethod(
-            Invocation.getter(#iconFlavorWarning),
-            returnValue: _FakeColor_4(
-              this,
-              Invocation.getter(#iconFlavorWarning),
-            ),
-            returnValueForMissingStub: _FakeColor_4(
-              this,
-              Invocation.getter(#iconFlavorWarning),
-            ),
-          )
-          as _i5.Color);
-
-  @override
-  _i5.Color get iconFlavorNegative =>
-      (super.noSuchMethod(
-            Invocation.getter(#iconFlavorNegative),
-            returnValue: _FakeColor_4(
-              this,
-              Invocation.getter(#iconFlavorNegative),
-            ),
-            returnValueForMissingStub: _FakeColor_4(
-              this,
-              Invocation.getter(#iconFlavorNegative),
-            ),
-          )
-          as _i5.Color);
-
-  @override
-  _i5.Color get iconFlavorInfo =>
-      (super.noSuchMethod(
-            Invocation.getter(#iconFlavorInfo),
-            returnValue: _FakeColor_4(this, Invocation.getter(#iconFlavorInfo)),
-            returnValueForMissingStub: _FakeColor_4(
-              this,
-              Invocation.getter(#iconFlavorInfo),
-            ),
-          )
-          as _i5.Color);
-
-  @override
-  _i5.Color get borderDefault =>
-      (super.noSuchMethod(
-            Invocation.getter(#borderDefault),
-            returnValue: _FakeColor_4(this, Invocation.getter(#borderDefault)),
-            returnValueForMissingStub: _FakeColor_4(
-              this,
-              Invocation.getter(#borderDefault),
-            ),
-          )
-          as _i5.Color);
-
-  @override
-  _i5.Color get borderSelected =>
-      (super.noSuchMethod(
-            Invocation.getter(#borderSelected),
-            returnValue: _FakeColor_4(this, Invocation.getter(#borderSelected)),
-            returnValueForMissingStub: _FakeColor_4(
-              this,
-              Invocation.getter(#borderSelected),
-            ),
-          )
-          as _i5.Color);
-
-  @override
-  _i5.Color get borderHover =>
-      (super.noSuchMethod(
-            Invocation.getter(#borderHover),
-            returnValue: _FakeColor_4(this, Invocation.getter(#borderHover)),
-            returnValueForMissingStub: _FakeColor_4(
-              this,
-              Invocation.getter(#borderHover),
-            ),
-          )
-          as _i5.Color);
-
-  @override
-  _i5.Color get borderSubtle =>
-      (super.noSuchMethod(
-            Invocation.getter(#borderSubtle),
-            returnValue: _FakeColor_4(this, Invocation.getter(#borderSubtle)),
-            returnValueForMissingStub: _FakeColor_4(
-              this,
-              Invocation.getter(#borderSubtle),
-            ),
-          )
-          as _i5.Color);
-
-  @override
-  _i5.Color get borderDisabled =>
-      (super.noSuchMethod(
-            Invocation.getter(#borderDisabled),
-            returnValue: _FakeColor_4(this, Invocation.getter(#borderDisabled)),
-            returnValueForMissingStub: _FakeColor_4(
-              this,
-              Invocation.getter(#borderDisabled),
-            ),
-          )
-          as _i5.Color);
-
-  @override
-  _i5.Color get borderPure =>
-      (super.noSuchMethod(
-            Invocation.getter(#borderPure),
-            returnValue: _FakeColor_4(this, Invocation.getter(#borderPure)),
-            returnValueForMissingStub: _FakeColor_4(
-              this,
-              Invocation.getter(#borderPure),
-            ),
-          )
-          as _i5.Color);
-
-  @override
-  _i5.Color get borderPrimaryMain =>
-      (super.noSuchMethod(
-            Invocation.getter(#borderPrimaryMain),
-            returnValue: _FakeColor_4(
-              this,
-              Invocation.getter(#borderPrimaryMain),
-            ),
-            returnValueForMissingStub: _FakeColor_4(
-              this,
-              Invocation.getter(#borderPrimaryMain),
-            ),
-          )
-          as _i5.Color);
-
-  @override
-  _i5.Color get borderPrimary =>
-      (super.noSuchMethod(
-            Invocation.getter(#borderPrimary),
-            returnValue: _FakeColor_4(this, Invocation.getter(#borderPrimary)),
-            returnValueForMissingStub: _FakeColor_4(
-              this,
-              Invocation.getter(#borderPrimary),
-            ),
-          )
-          as _i5.Color);
-
-  @override
-  _i5.Color get borderSecondary =>
-      (super.noSuchMethod(
-            Invocation.getter(#borderSecondary),
-            returnValue: _FakeColor_4(
-              this,
-              Invocation.getter(#borderSecondary),
-            ),
-            returnValueForMissingStub: _FakeColor_4(
-              this,
-              Invocation.getter(#borderSecondary),
-            ),
-          )
-          as _i5.Color);
-
-  @override
-  _i5.Color get borderPositive =>
-      (super.noSuchMethod(
-            Invocation.getter(#borderPositive),
-            returnValue: _FakeColor_4(this, Invocation.getter(#borderPositive)),
-            returnValueForMissingStub: _FakeColor_4(
-              this,
-              Invocation.getter(#borderPositive),
-            ),
-          )
-          as _i5.Color);
-
-  @override
-  _i5.Color get borderWarning =>
-      (super.noSuchMethod(
-            Invocation.getter(#borderWarning),
-            returnValue: _FakeColor_4(this, Invocation.getter(#borderWarning)),
-            returnValueForMissingStub: _FakeColor_4(
-              this,
-              Invocation.getter(#borderWarning),
-            ),
-          )
-          as _i5.Color);
-
-  @override
-  _i5.Color get borderNegative =>
-      (super.noSuchMethod(
-            Invocation.getter(#borderNegative),
-            returnValue: _FakeColor_4(this, Invocation.getter(#borderNegative)),
-            returnValueForMissingStub: _FakeColor_4(
-              this,
-              Invocation.getter(#borderNegative),
-            ),
-          )
-          as _i5.Color);
-
-  @override
-  _i5.Color get borderInfo =>
-      (super.noSuchMethod(
-            Invocation.getter(#borderInfo),
-            returnValue: _FakeColor_4(this, Invocation.getter(#borderInfo)),
-            returnValueForMissingStub: _FakeColor_4(
-              this,
-              Invocation.getter(#borderInfo),
-            ),
-          )
-          as _i5.Color);
-
-  @override
-  _i5.Color get surfaceDefault =>
-      (super.noSuchMethod(
-            Invocation.getter(#surfaceDefault),
-            returnValue: _FakeColor_4(this, Invocation.getter(#surfaceDefault)),
-            returnValueForMissingStub: _FakeColor_4(
-              this,
-              Invocation.getter(#surfaceDefault),
-            ),
-          )
-          as _i5.Color);
-
-  @override
-  _i5.Color get surfaceDefaultInverse =>
-      (super.noSuchMethod(
-            Invocation.getter(#surfaceDefaultInverse),
-            returnValue: _FakeColor_4(
-              this,
-              Invocation.getter(#surfaceDefaultInverse),
-            ),
-            returnValueForMissingStub: _FakeColor_4(
-              this,
-              Invocation.getter(#surfaceDefaultInverse),
-            ),
-          )
-          as _i5.Color);
-
-  @override
-  _i5.Color get surfaceHover =>
-      (super.noSuchMethod(
-            Invocation.getter(#surfaceHover),
-            returnValue: _FakeColor_4(this, Invocation.getter(#surfaceHover)),
-            returnValueForMissingStub: _FakeColor_4(
-              this,
-              Invocation.getter(#surfaceHover),
-            ),
-          )
-          as _i5.Color);
-
-  @override
-  _i5.Color get surfaceSelected =>
-      (super.noSuchMethod(
-            Invocation.getter(#surfaceSelected),
-            returnValue: _FakeColor_4(
-              this,
-              Invocation.getter(#surfaceSelected),
-            ),
-            returnValueForMissingStub: _FakeColor_4(
-              this,
-              Invocation.getter(#surfaceSelected),
-            ),
-          )
-          as _i5.Color);
-
-  @override
-  _i5.Color get surfaceSelectedHover =>
-      (super.noSuchMethod(
-            Invocation.getter(#surfaceSelectedHover),
-            returnValue: _FakeColor_4(
-              this,
-              Invocation.getter(#surfaceSelectedHover),
-            ),
-            returnValueForMissingStub: _FakeColor_4(
-              this,
-              Invocation.getter(#surfaceSelectedHover),
-            ),
-          )
-          as _i5.Color);
-
-  @override
-  _i5.Color get surfaceDisabled =>
-      (super.noSuchMethod(
-            Invocation.getter(#surfaceDisabled),
-            returnValue: _FakeColor_4(
-              this,
-              Invocation.getter(#surfaceDisabled),
-            ),
-            returnValueForMissingStub: _FakeColor_4(
-              this,
-              Invocation.getter(#surfaceDisabled),
-            ),
-          )
-          as _i5.Color);
-
-  @override
-  _i5.Color get surfaceCool =>
-      (super.noSuchMethod(
-            Invocation.getter(#surfaceCool),
-            returnValue: _FakeColor_4(this, Invocation.getter(#surfaceCool)),
-            returnValueForMissingStub: _FakeColor_4(
-              this,
-              Invocation.getter(#surfaceCool),
-            ),
-          )
-          as _i5.Color);
-
-  @override
-  _i5.Color get surfaceWarm =>
-      (super.noSuchMethod(
-            Invocation.getter(#surfaceWarm),
-            returnValue: _FakeColor_4(this, Invocation.getter(#surfaceWarm)),
-            returnValueForMissingStub: _FakeColor_4(
-              this,
-              Invocation.getter(#surfaceWarm),
-            ),
-          )
-          as _i5.Color);
-
-  @override
-  _i5.Color get surfacePrimary =>
-      (super.noSuchMethod(
-            Invocation.getter(#surfacePrimary),
-            returnValue: _FakeColor_4(this, Invocation.getter(#surfacePrimary)),
-            returnValueForMissingStub: _FakeColor_4(
-              this,
-              Invocation.getter(#surfacePrimary),
-            ),
-          )
-          as _i5.Color);
-
-  @override
-  _i5.Color get surfacePrimarySubtle =>
-      (super.noSuchMethod(
-            Invocation.getter(#surfacePrimarySubtle),
-            returnValue: _FakeColor_4(
-              this,
-              Invocation.getter(#surfacePrimarySubtle),
-            ),
-            returnValueForMissingStub: _FakeColor_4(
-              this,
-              Invocation.getter(#surfacePrimarySubtle),
-            ),
-          )
-          as _i5.Color);
-
-  @override
-  _i5.Color get surfaceSecondary =>
-      (super.noSuchMethod(
-            Invocation.getter(#surfaceSecondary),
-            returnValue: _FakeColor_4(
-              this,
-              Invocation.getter(#surfaceSecondary),
-            ),
-            returnValueForMissingStub: _FakeColor_4(
-              this,
-              Invocation.getter(#surfaceSecondary),
-            ),
-          )
-          as _i5.Color);
-
-  @override
-  _i5.Color get surfaceAvatarBlue =>
-      (super.noSuchMethod(
-            Invocation.getter(#surfaceAvatarBlue),
-            returnValue: _FakeColor_4(
-              this,
-              Invocation.getter(#surfaceAvatarBlue),
-            ),
-            returnValueForMissingStub: _FakeColor_4(
-              this,
-              Invocation.getter(#surfaceAvatarBlue),
-            ),
-          )
-          as _i5.Color);
-
-  @override
-  _i5.Color get surfaceAvatarGreen =>
-      (super.noSuchMethod(
-            Invocation.getter(#surfaceAvatarGreen),
-            returnValue: _FakeColor_4(
-              this,
-              Invocation.getter(#surfaceAvatarGreen),
-            ),
-            returnValueForMissingStub: _FakeColor_4(
-              this,
-              Invocation.getter(#surfaceAvatarGreen),
-            ),
-          )
-          as _i5.Color);
-
-  @override
-  _i5.Color get surfaceAvatarOrange =>
-      (super.noSuchMethod(
-            Invocation.getter(#surfaceAvatarOrange),
-            returnValue: _FakeColor_4(
-              this,
-              Invocation.getter(#surfaceAvatarOrange),
-            ),
-            returnValueForMissingStub: _FakeColor_4(
-              this,
-              Invocation.getter(#surfaceAvatarOrange),
-            ),
-          )
-          as _i5.Color);
-
-  @override
-  _i5.Color get surfaceAvatarPink =>
-      (super.noSuchMethod(
-            Invocation.getter(#surfaceAvatarPink),
-            returnValue: _FakeColor_4(
-              this,
-              Invocation.getter(#surfaceAvatarPink),
-            ),
-            returnValueForMissingStub: _FakeColor_4(
-              this,
-              Invocation.getter(#surfaceAvatarPink),
-            ),
-          )
-          as _i5.Color);
-
-  @override
-  _i5.Color get surfaceAvatarPurple =>
-      (super.noSuchMethod(
-            Invocation.getter(#surfaceAvatarPurple),
-            returnValue: _FakeColor_4(
-              this,
-              Invocation.getter(#surfaceAvatarPurple),
-            ),
-            returnValueForMissingStub: _FakeColor_4(
-              this,
-              Invocation.getter(#surfaceAvatarPurple),
-            ),
-          )
-          as _i5.Color);
-
-  @override
-  _i5.Color get surfaceAvatarTeal =>
-      (super.noSuchMethod(
-            Invocation.getter(#surfaceAvatarTeal),
-            returnValue: _FakeColor_4(
-              this,
-              Invocation.getter(#surfaceAvatarTeal),
-            ),
-            returnValueForMissingStub: _FakeColor_4(
-              this,
-              Invocation.getter(#surfaceAvatarTeal),
-            ),
-          )
-          as _i5.Color);
-
-  @override
-  _i5.Color get surfaceAvatarYellow =>
-      (super.noSuchMethod(
-            Invocation.getter(#surfaceAvatarYellow),
-            returnValue: _FakeColor_4(
-              this,
-              Invocation.getter(#surfaceAvatarYellow),
-            ),
-            returnValueForMissingStub: _FakeColor_4(
-              this,
-              Invocation.getter(#surfaceAvatarYellow),
-            ),
-          )
-          as _i5.Color);
-
-  @override
-  _i5.Color get surfaceSecondarySubtle =>
-      (super.noSuchMethod(
-            Invocation.getter(#surfaceSecondarySubtle),
-            returnValue: _FakeColor_4(
-              this,
-              Invocation.getter(#surfaceSecondarySubtle),
-            ),
-            returnValueForMissingStub: _FakeColor_4(
-              this,
-              Invocation.getter(#surfaceSecondarySubtle),
-            ),
-          )
-          as _i5.Color);
-
-  @override
-  _i5.Color get surfacePositive =>
-      (super.noSuchMethod(
-            Invocation.getter(#surfacePositive),
-            returnValue: _FakeColor_4(
-              this,
-              Invocation.getter(#surfacePositive),
-            ),
-            returnValueForMissingStub: _FakeColor_4(
-              this,
-              Invocation.getter(#surfacePositive),
-            ),
-          )
-          as _i5.Color);
-
-  @override
-  _i5.Color get surfacePositiveSubtle =>
-      (super.noSuchMethod(
-            Invocation.getter(#surfacePositiveSubtle),
-            returnValue: _FakeColor_4(
-              this,
-              Invocation.getter(#surfacePositiveSubtle),
-            ),
-            returnValueForMissingStub: _FakeColor_4(
-              this,
-              Invocation.getter(#surfacePositiveSubtle),
-            ),
-          )
-          as _i5.Color);
-
-  @override
-  _i5.Color get surfaceWarning =>
-      (super.noSuchMethod(
-            Invocation.getter(#surfaceWarning),
-            returnValue: _FakeColor_4(this, Invocation.getter(#surfaceWarning)),
-            returnValueForMissingStub: _FakeColor_4(
-              this,
-              Invocation.getter(#surfaceWarning),
-            ),
-          )
-          as _i5.Color);
-
-  @override
-  _i5.Color get surfaceWarningSubtle =>
-      (super.noSuchMethod(
-            Invocation.getter(#surfaceWarningSubtle),
-            returnValue: _FakeColor_4(
-              this,
-              Invocation.getter(#surfaceWarningSubtle),
-            ),
-            returnValueForMissingStub: _FakeColor_4(
-              this,
-              Invocation.getter(#surfaceWarningSubtle),
-            ),
-          )
-          as _i5.Color);
-
-  @override
-  _i5.Color get surfaceNegative =>
-      (super.noSuchMethod(
-            Invocation.getter(#surfaceNegative),
-            returnValue: _FakeColor_4(
-              this,
-              Invocation.getter(#surfaceNegative),
-            ),
-            returnValueForMissingStub: _FakeColor_4(
-              this,
-              Invocation.getter(#surfaceNegative),
-            ),
-          )
-          as _i5.Color);
-
-  @override
-  _i5.Color get surfaceNegativeSubtle =>
-      (super.noSuchMethod(
-            Invocation.getter(#surfaceNegativeSubtle),
-            returnValue: _FakeColor_4(
-              this,
-              Invocation.getter(#surfaceNegativeSubtle),
-            ),
-            returnValueForMissingStub: _FakeColor_4(
-              this,
-              Invocation.getter(#surfaceNegativeSubtle),
-            ),
-          )
-          as _i5.Color);
-
-  @override
-  _i5.Color get surfaceInfo =>
-      (super.noSuchMethod(
-            Invocation.getter(#surfaceInfo),
-            returnValue: _FakeColor_4(this, Invocation.getter(#surfaceInfo)),
-            returnValueForMissingStub: _FakeColor_4(
-              this,
-              Invocation.getter(#surfaceInfo),
-            ),
-          )
-          as _i5.Color);
-
-  @override
-  _i5.Color get surfaceInfoSubtle =>
-      (super.noSuchMethod(
-            Invocation.getter(#surfaceInfoSubtle),
-            returnValue: _FakeColor_4(
-              this,
-              Invocation.getter(#surfaceInfoSubtle),
-            ),
-            returnValueForMissingStub: _FakeColor_4(
-              this,
-              Invocation.getter(#surfaceInfoSubtle),
-            ),
-          )
-          as _i5.Color);
-
-  @override
-  _i5.Color get stateDisabledDisabled =>
-      (super.noSuchMethod(
-            Invocation.getter(#stateDisabledDisabled),
-            returnValue: _FakeColor_4(
-              this,
-              Invocation.getter(#stateDisabledDisabled),
-            ),
-            returnValueForMissingStub: _FakeColor_4(
-              this,
-              Invocation.getter(#stateDisabledDisabled),
-            ),
-          )
-          as _i5.Color);
-
-  @override
-  _i5.Color get stateDefaultEnabled =>
-      (super.noSuchMethod(
-            Invocation.getter(#stateDefaultEnabled),
-            returnValue: _FakeColor_4(
-              this,
-              Invocation.getter(#stateDefaultEnabled),
-            ),
-            returnValueForMissingStub: _FakeColor_4(
-              this,
-              Invocation.getter(#stateDefaultEnabled),
-            ),
-          )
-          as _i5.Color);
-
-  @override
-  _i5.Color get stateDefaultHover =>
-      (super.noSuchMethod(
-            Invocation.getter(#stateDefaultHover),
-            returnValue: _FakeColor_4(
-              this,
-              Invocation.getter(#stateDefaultHover),
-            ),
-            returnValueForMissingStub: _FakeColor_4(
-              this,
-              Invocation.getter(#stateDefaultHover),
-            ),
-          )
-          as _i5.Color);
-
-  @override
-  _i5.Color get stateDefaultSelected =>
-      (super.noSuchMethod(
-            Invocation.getter(#stateDefaultSelected),
-            returnValue: _FakeColor_4(
-              this,
-              Invocation.getter(#stateDefaultSelected),
-            ),
-            returnValueForMissingStub: _FakeColor_4(
-              this,
-              Invocation.getter(#stateDefaultSelected),
-            ),
-          )
-          as _i5.Color);
-
-  @override
-  _i5.Color get stateDefaultFocus =>
-      (super.noSuchMethod(
-            Invocation.getter(#stateDefaultFocus),
-            returnValue: _FakeColor_4(
-              this,
-              Invocation.getter(#stateDefaultFocus),
-            ),
-            returnValueForMissingStub: _FakeColor_4(
-              this,
-              Invocation.getter(#stateDefaultFocus),
-            ),
-          )
-          as _i5.Color);
-
-  @override
-  _i5.Color get statePrimaryEnabled =>
-      (super.noSuchMethod(
-            Invocation.getter(#statePrimaryEnabled),
-            returnValue: _FakeColor_4(
-              this,
-              Invocation.getter(#statePrimaryEnabled),
-            ),
-            returnValueForMissingStub: _FakeColor_4(
-              this,
-              Invocation.getter(#statePrimaryEnabled),
-            ),
-          )
-          as _i5.Color);
-
-  @override
-  _i5.Color get statePrimaryHover =>
-      (super.noSuchMethod(
-            Invocation.getter(#statePrimaryHover),
-            returnValue: _FakeColor_4(
-              this,
-              Invocation.getter(#statePrimaryHover),
-            ),
-            returnValueForMissingStub: _FakeColor_4(
-              this,
-              Invocation.getter(#statePrimaryHover),
-            ),
-          )
-          as _i5.Color);
-
-  @override
-  _i5.Color get statePrimarySelected =>
-      (super.noSuchMethod(
-            Invocation.getter(#statePrimarySelected),
-            returnValue: _FakeColor_4(
-              this,
-              Invocation.getter(#statePrimarySelected),
-            ),
-            returnValueForMissingStub: _FakeColor_4(
-              this,
-              Invocation.getter(#statePrimarySelected),
-            ),
-          )
-          as _i5.Color);
-
-  @override
-  _i5.Color get statePrimaryFocus =>
-      (super.noSuchMethod(
-            Invocation.getter(#statePrimaryFocus),
-            returnValue: _FakeColor_4(
-              this,
-              Invocation.getter(#statePrimaryFocus),
-            ),
-            returnValueForMissingStub: _FakeColor_4(
-              this,
-              Invocation.getter(#statePrimaryFocus),
-            ),
-          )
-          as _i5.Color);
-
-  @override
-  _i5.Color get stateSecondaryEnabled =>
-      (super.noSuchMethod(
-            Invocation.getter(#stateSecondaryEnabled),
-            returnValue: _FakeColor_4(
-              this,
-              Invocation.getter(#stateSecondaryEnabled),
-            ),
-            returnValueForMissingStub: _FakeColor_4(
-              this,
-              Invocation.getter(#stateSecondaryEnabled),
-            ),
-          )
-          as _i5.Color);
-
-  @override
-  _i5.Color get stateSecondaryHover =>
-      (super.noSuchMethod(
-            Invocation.getter(#stateSecondaryHover),
-            returnValue: _FakeColor_4(
-              this,
-              Invocation.getter(#stateSecondaryHover),
-            ),
-            returnValueForMissingStub: _FakeColor_4(
-              this,
-              Invocation.getter(#stateSecondaryHover),
-            ),
-          )
-          as _i5.Color);
-
-  @override
-  _i5.Color get stateSecondarySelected =>
-      (super.noSuchMethod(
-            Invocation.getter(#stateSecondarySelected),
-            returnValue: _FakeColor_4(
-              this,
-              Invocation.getter(#stateSecondarySelected),
-            ),
-            returnValueForMissingStub: _FakeColor_4(
-              this,
-              Invocation.getter(#stateSecondarySelected),
-            ),
-          )
-          as _i5.Color);
-
-  @override
-  _i5.Color get stateSecondaryFocus =>
-      (super.noSuchMethod(
-            Invocation.getter(#stateSecondaryFocus),
-            returnValue: _FakeColor_4(
-              this,
-              Invocation.getter(#stateSecondaryFocus),
-            ),
-            returnValueForMissingStub: _FakeColor_4(
-              this,
-              Invocation.getter(#stateSecondaryFocus),
-            ),
-          )
-          as _i5.Color);
-
-  @override
-  _i5.Color get stateNegativeEnabled =>
-      (super.noSuchMethod(
-            Invocation.getter(#stateNegativeEnabled),
-            returnValue: _FakeColor_4(
-              this,
-              Invocation.getter(#stateNegativeEnabled),
-            ),
-            returnValueForMissingStub: _FakeColor_4(
-              this,
-              Invocation.getter(#stateNegativeEnabled),
-            ),
-          )
-          as _i5.Color);
-
-  @override
-  _i5.Color get stateNegativeHover =>
-      (super.noSuchMethod(
-            Invocation.getter(#stateNegativeHover),
-            returnValue: _FakeColor_4(
-              this,
-              Invocation.getter(#stateNegativeHover),
-            ),
-            returnValueForMissingStub: _FakeColor_4(
-              this,
-              Invocation.getter(#stateNegativeHover),
-            ),
-          )
-          as _i5.Color);
-
-  @override
-  _i5.Color get stateNegativeSelected =>
-      (super.noSuchMethod(
-            Invocation.getter(#stateNegativeSelected),
-            returnValue: _FakeColor_4(
-              this,
-              Invocation.getter(#stateNegativeSelected),
-            ),
-            returnValueForMissingStub: _FakeColor_4(
-              this,
-              Invocation.getter(#stateNegativeSelected),
-            ),
-          )
-          as _i5.Color);
-
-  @override
-  _i5.Color get stateNegativeFocus =>
-      (super.noSuchMethod(
-            Invocation.getter(#stateNegativeFocus),
-            returnValue: _FakeColor_4(
-              this,
-              Invocation.getter(#stateNegativeFocus),
-            ),
-            returnValueForMissingStub: _FakeColor_4(
-              this,
-              Invocation.getter(#stateNegativeFocus),
-            ),
-          )
-          as _i5.Color);
-
-  @override
-  _i5.Color get stateInfoEnabled =>
-      (super.noSuchMethod(
-            Invocation.getter(#stateInfoEnabled),
-            returnValue: _FakeColor_4(
-              this,
-              Invocation.getter(#stateInfoEnabled),
-            ),
-            returnValueForMissingStub: _FakeColor_4(
-              this,
-              Invocation.getter(#stateInfoEnabled),
-            ),
-          )
-          as _i5.Color);
-
-  @override
-  _i5.Color get stateInfoHover =>
-      (super.noSuchMethod(
-            Invocation.getter(#stateInfoHover),
-            returnValue: _FakeColor_4(this, Invocation.getter(#stateInfoHover)),
-            returnValueForMissingStub: _FakeColor_4(
-              this,
-              Invocation.getter(#stateInfoHover),
-            ),
-          )
-          as _i5.Color);
-
-  @override
-  _i5.Color get stateInfoSelected =>
-      (super.noSuchMethod(
-            Invocation.getter(#stateInfoSelected),
-            returnValue: _FakeColor_4(
-              this,
-              Invocation.getter(#stateInfoSelected),
-            ),
-            returnValueForMissingStub: _FakeColor_4(
-              this,
-              Invocation.getter(#stateInfoSelected),
-            ),
-          )
-          as _i5.Color);
-
-  @override
-  _i5.Color get stateInfoFocus =>
-      (super.noSuchMethod(
-            Invocation.getter(#stateInfoFocus),
-            returnValue: _FakeColor_4(this, Invocation.getter(#stateInfoFocus)),
-            returnValueForMissingStub: _FakeColor_4(
-              this,
-              Invocation.getter(#stateInfoFocus),
-            ),
-          )
-          as _i5.Color);
-
-  @override
-  _i5.Color get stateInverseEnabled =>
-      (super.noSuchMethod(
-            Invocation.getter(#stateInverseEnabled),
-            returnValue: _FakeColor_4(
-              this,
-              Invocation.getter(#stateInverseEnabled),
-            ),
-            returnValueForMissingStub: _FakeColor_4(
-              this,
-              Invocation.getter(#stateInverseEnabled),
-            ),
-          )
-          as _i5.Color);
-
-  @override
-  _i5.Color get stateInverseHover =>
-      (super.noSuchMethod(
-            Invocation.getter(#stateInverseHover),
-            returnValue: _FakeColor_4(
-              this,
-              Invocation.getter(#stateInverseHover),
-            ),
-            returnValueForMissingStub: _FakeColor_4(
-              this,
-              Invocation.getter(#stateInverseHover),
-            ),
-          )
-          as _i5.Color);
-
-  @override
-  _i5.Color get stateInverseSelected =>
-      (super.noSuchMethod(
-            Invocation.getter(#stateInverseSelected),
-            returnValue: _FakeColor_4(
-              this,
-              Invocation.getter(#stateInverseSelected),
-            ),
-            returnValueForMissingStub: _FakeColor_4(
-              this,
-              Invocation.getter(#stateInverseSelected),
-            ),
-          )
-          as _i5.Color);
-
-  @override
-  _i5.Color get stateInverseFocus =>
-      (super.noSuchMethod(
-            Invocation.getter(#stateInverseFocus),
-            returnValue: _FakeColor_4(
-              this,
-              Invocation.getter(#stateInverseFocus),
-            ),
-            returnValueForMissingStub: _FakeColor_4(
-              this,
-              Invocation.getter(#stateInverseFocus),
-            ),
-          )
-          as _i5.Color);
-
-  @override
-  _i5.Color get statePositiveEnabled =>
-      (super.noSuchMethod(
-            Invocation.getter(#statePositiveEnabled),
-            returnValue: _FakeColor_4(
-              this,
-              Invocation.getter(#statePositiveEnabled),
-            ),
-            returnValueForMissingStub: _FakeColor_4(
-              this,
-              Invocation.getter(#statePositiveEnabled),
-            ),
-          )
-          as _i5.Color);
-
-  @override
-  _i5.Color get statePositiveHover =>
-      (super.noSuchMethod(
-            Invocation.getter(#statePositiveHover),
-            returnValue: _FakeColor_4(
-              this,
-              Invocation.getter(#statePositiveHover),
-            ),
-            returnValueForMissingStub: _FakeColor_4(
-              this,
-              Invocation.getter(#statePositiveHover),
-            ),
-          )
-          as _i5.Color);
-
-  @override
-  _i5.Color get statePositiveSelected =>
-      (super.noSuchMethod(
-            Invocation.getter(#statePositiveSelected),
-            returnValue: _FakeColor_4(
-              this,
-              Invocation.getter(#statePositiveSelected),
-            ),
-            returnValueForMissingStub: _FakeColor_4(
-              this,
-              Invocation.getter(#statePositiveSelected),
-            ),
-          )
-          as _i5.Color);
-
-  @override
-  _i5.Color get statePositiveFocus =>
-      (super.noSuchMethod(
-            Invocation.getter(#statePositiveFocus),
-            returnValue: _FakeColor_4(
-              this,
-              Invocation.getter(#statePositiveFocus),
-            ),
-            returnValueForMissingStub: _FakeColor_4(
-              this,
-              Invocation.getter(#statePositiveFocus),
-            ),
-          )
-          as _i5.Color);
+  _i4.ZetaPrimitives get primitives => (super.noSuchMethod(
+        Invocation.getter(#primitives),
+        returnValue: _FakeZetaPrimitives_3(
+          this,
+          Invocation.getter(#primitives),
+        ),
+        returnValueForMissingStub: _FakeZetaPrimitives_3(
+          this,
+          Invocation.getter(#primitives),
+        ),
+      ) as _i4.ZetaPrimitives);
+
+  @override
+  _i5.Color get mainDefault => (super.noSuchMethod(
+        Invocation.getter(#mainDefault),
+        returnValue: _FakeColor_4(this, Invocation.getter(#mainDefault)),
+        returnValueForMissingStub: _FakeColor_4(
+          this,
+          Invocation.getter(#mainDefault),
+        ),
+      ) as _i5.Color);
+
+  @override
+  _i5.Color get mainSubtle => (super.noSuchMethod(
+        Invocation.getter(#mainSubtle),
+        returnValue: _FakeColor_4(this, Invocation.getter(#mainSubtle)),
+        returnValueForMissingStub: _FakeColor_4(
+          this,
+          Invocation.getter(#mainSubtle),
+        ),
+      ) as _i5.Color);
+
+  @override
+  _i5.Color get mainPrimary => (super.noSuchMethod(
+        Invocation.getter(#mainPrimary),
+        returnValue: _FakeColor_4(this, Invocation.getter(#mainPrimary)),
+        returnValueForMissingStub: _FakeColor_4(
+          this,
+          Invocation.getter(#mainPrimary),
+        ),
+      ) as _i5.Color);
+
+  @override
+  _i5.Color get mainSecondary => (super.noSuchMethod(
+        Invocation.getter(#mainSecondary),
+        returnValue: _FakeColor_4(this, Invocation.getter(#mainSecondary)),
+        returnValueForMissingStub: _FakeColor_4(
+          this,
+          Invocation.getter(#mainSecondary),
+        ),
+      ) as _i5.Color);
+
+  @override
+  _i5.Color get mainPositive => (super.noSuchMethod(
+        Invocation.getter(#mainPositive),
+        returnValue: _FakeColor_4(this, Invocation.getter(#mainPositive)),
+        returnValueForMissingStub: _FakeColor_4(
+          this,
+          Invocation.getter(#mainPositive),
+        ),
+      ) as _i5.Color);
+
+  @override
+  _i5.Color get mainWarning => (super.noSuchMethod(
+        Invocation.getter(#mainWarning),
+        returnValue: _FakeColor_4(this, Invocation.getter(#mainWarning)),
+        returnValueForMissingStub: _FakeColor_4(
+          this,
+          Invocation.getter(#mainWarning),
+        ),
+      ) as _i5.Color);
+
+  @override
+  _i5.Color get mainNegative => (super.noSuchMethod(
+        Invocation.getter(#mainNegative),
+        returnValue: _FakeColor_4(this, Invocation.getter(#mainNegative)),
+        returnValueForMissingStub: _FakeColor_4(
+          this,
+          Invocation.getter(#mainNegative),
+        ),
+      ) as _i5.Color);
+
+  @override
+  _i5.Color get mainInfo => (super.noSuchMethod(
+        Invocation.getter(#mainInfo),
+        returnValue: _FakeColor_4(this, Invocation.getter(#mainInfo)),
+        returnValueForMissingStub: _FakeColor_4(
+          this,
+          Invocation.getter(#mainInfo),
+        ),
+      ) as _i5.Color);
+
+  @override
+  _i5.Color get mainDisabled => (super.noSuchMethod(
+        Invocation.getter(#mainDisabled),
+        returnValue: _FakeColor_4(this, Invocation.getter(#mainDisabled)),
+        returnValueForMissingStub: _FakeColor_4(
+          this,
+          Invocation.getter(#mainDisabled),
+        ),
+      ) as _i5.Color);
+
+  @override
+  _i5.Color get mainLight => (super.noSuchMethod(
+        Invocation.getter(#mainLight),
+        returnValue: _FakeColor_4(this, Invocation.getter(#mainLight)),
+        returnValueForMissingStub: _FakeColor_4(
+          this,
+          Invocation.getter(#mainLight),
+        ),
+      ) as _i5.Color);
+
+  @override
+  _i5.Color get mainInverse => (super.noSuchMethod(
+        Invocation.getter(#mainInverse),
+        returnValue: _FakeColor_4(this, Invocation.getter(#mainInverse)),
+        returnValueForMissingStub: _FakeColor_4(
+          this,
+          Invocation.getter(#mainInverse),
+        ),
+      ) as _i5.Color);
+
+  @override
+  _i5.Color get textDefault => (super.noSuchMethod(
+        Invocation.getter(#textDefault),
+        returnValue: _FakeColor_4(this, Invocation.getter(#textDefault)),
+        returnValueForMissingStub: _FakeColor_4(
+          this,
+          Invocation.getter(#textDefault),
+        ),
+      ) as _i5.Color);
+
+  @override
+  _i5.Color get iconSubtle => (super.noSuchMethod(
+        Invocation.getter(#iconSubtle),
+        returnValue: _FakeColor_4(this, Invocation.getter(#iconSubtle)),
+        returnValueForMissingStub: _FakeColor_4(
+          this,
+          Invocation.getter(#iconSubtle),
+        ),
+      ) as _i5.Color);
+
+  @override
+  _i5.Color get iconInverse => (super.noSuchMethod(
+        Invocation.getter(#iconInverse),
+        returnValue: _FakeColor_4(this, Invocation.getter(#iconInverse)),
+        returnValueForMissingStub: _FakeColor_4(
+          this,
+          Invocation.getter(#iconInverse),
+        ),
+      ) as _i5.Color);
+
+  @override
+  _i5.Color get iconDisabled => (super.noSuchMethod(
+        Invocation.getter(#iconDisabled),
+        returnValue: _FakeColor_4(this, Invocation.getter(#iconDisabled)),
+        returnValueForMissingStub: _FakeColor_4(
+          this,
+          Invocation.getter(#iconDisabled),
+        ),
+      ) as _i5.Color);
+
+  @override
+  _i5.Color get iconFlavorPrimary => (super.noSuchMethod(
+        Invocation.getter(#iconFlavorPrimary),
+        returnValue: _FakeColor_4(
+          this,
+          Invocation.getter(#iconFlavorPrimary),
+        ),
+        returnValueForMissingStub: _FakeColor_4(
+          this,
+          Invocation.getter(#iconFlavorPrimary),
+        ),
+      ) as _i5.Color);
+
+  @override
+  _i5.Color get iconFlavorPositive => (super.noSuchMethod(
+        Invocation.getter(#iconFlavorPositive),
+        returnValue: _FakeColor_4(
+          this,
+          Invocation.getter(#iconFlavorPositive),
+        ),
+        returnValueForMissingStub: _FakeColor_4(
+          this,
+          Invocation.getter(#iconFlavorPositive),
+        ),
+      ) as _i5.Color);
+
+  @override
+  _i5.Color get iconFlavorWarning => (super.noSuchMethod(
+        Invocation.getter(#iconFlavorWarning),
+        returnValue: _FakeColor_4(
+          this,
+          Invocation.getter(#iconFlavorWarning),
+        ),
+        returnValueForMissingStub: _FakeColor_4(
+          this,
+          Invocation.getter(#iconFlavorWarning),
+        ),
+      ) as _i5.Color);
+
+  @override
+  _i5.Color get iconFlavorNegative => (super.noSuchMethod(
+        Invocation.getter(#iconFlavorNegative),
+        returnValue: _FakeColor_4(
+          this,
+          Invocation.getter(#iconFlavorNegative),
+        ),
+        returnValueForMissingStub: _FakeColor_4(
+          this,
+          Invocation.getter(#iconFlavorNegative),
+        ),
+      ) as _i5.Color);
+
+  @override
+  _i5.Color get iconFlavorInfo => (super.noSuchMethod(
+        Invocation.getter(#iconFlavorInfo),
+        returnValue: _FakeColor_4(this, Invocation.getter(#iconFlavorInfo)),
+        returnValueForMissingStub: _FakeColor_4(
+          this,
+          Invocation.getter(#iconFlavorInfo),
+        ),
+      ) as _i5.Color);
+
+  @override
+  _i5.Color get borderDefault => (super.noSuchMethod(
+        Invocation.getter(#borderDefault),
+        returnValue: _FakeColor_4(this, Invocation.getter(#borderDefault)),
+        returnValueForMissingStub: _FakeColor_4(
+          this,
+          Invocation.getter(#borderDefault),
+        ),
+      ) as _i5.Color);
+
+  @override
+  _i5.Color get borderSelected => (super.noSuchMethod(
+        Invocation.getter(#borderSelected),
+        returnValue: _FakeColor_4(this, Invocation.getter(#borderSelected)),
+        returnValueForMissingStub: _FakeColor_4(
+          this,
+          Invocation.getter(#borderSelected),
+        ),
+      ) as _i5.Color);
+
+  @override
+  _i5.Color get borderHover => (super.noSuchMethod(
+        Invocation.getter(#borderHover),
+        returnValue: _FakeColor_4(this, Invocation.getter(#borderHover)),
+        returnValueForMissingStub: _FakeColor_4(
+          this,
+          Invocation.getter(#borderHover),
+        ),
+      ) as _i5.Color);
+
+  @override
+  _i5.Color get borderSubtle => (super.noSuchMethod(
+        Invocation.getter(#borderSubtle),
+        returnValue: _FakeColor_4(this, Invocation.getter(#borderSubtle)),
+        returnValueForMissingStub: _FakeColor_4(
+          this,
+          Invocation.getter(#borderSubtle),
+        ),
+      ) as _i5.Color);
+
+  @override
+  _i5.Color get borderDisabled => (super.noSuchMethod(
+        Invocation.getter(#borderDisabled),
+        returnValue: _FakeColor_4(this, Invocation.getter(#borderDisabled)),
+        returnValueForMissingStub: _FakeColor_4(
+          this,
+          Invocation.getter(#borderDisabled),
+        ),
+      ) as _i5.Color);
+
+  @override
+  _i5.Color get borderPure => (super.noSuchMethod(
+        Invocation.getter(#borderPure),
+        returnValue: _FakeColor_4(this, Invocation.getter(#borderPure)),
+        returnValueForMissingStub: _FakeColor_4(
+          this,
+          Invocation.getter(#borderPure),
+        ),
+      ) as _i5.Color);
+
+  @override
+  _i5.Color get borderPrimaryMain => (super.noSuchMethod(
+        Invocation.getter(#borderPrimaryMain),
+        returnValue: _FakeColor_4(
+          this,
+          Invocation.getter(#borderPrimaryMain),
+        ),
+        returnValueForMissingStub: _FakeColor_4(
+          this,
+          Invocation.getter(#borderPrimaryMain),
+        ),
+      ) as _i5.Color);
+
+  @override
+  _i5.Color get borderPrimary => (super.noSuchMethod(
+        Invocation.getter(#borderPrimary),
+        returnValue: _FakeColor_4(this, Invocation.getter(#borderPrimary)),
+        returnValueForMissingStub: _FakeColor_4(
+          this,
+          Invocation.getter(#borderPrimary),
+        ),
+      ) as _i5.Color);
+
+  @override
+  _i5.Color get borderSecondary => (super.noSuchMethod(
+        Invocation.getter(#borderSecondary),
+        returnValue: _FakeColor_4(
+          this,
+          Invocation.getter(#borderSecondary),
+        ),
+        returnValueForMissingStub: _FakeColor_4(
+          this,
+          Invocation.getter(#borderSecondary),
+        ),
+      ) as _i5.Color);
+
+  @override
+  _i5.Color get borderPositive => (super.noSuchMethod(
+        Invocation.getter(#borderPositive),
+        returnValue: _FakeColor_4(this, Invocation.getter(#borderPositive)),
+        returnValueForMissingStub: _FakeColor_4(
+          this,
+          Invocation.getter(#borderPositive),
+        ),
+      ) as _i5.Color);
+
+  @override
+  _i5.Color get borderWarning => (super.noSuchMethod(
+        Invocation.getter(#borderWarning),
+        returnValue: _FakeColor_4(this, Invocation.getter(#borderWarning)),
+        returnValueForMissingStub: _FakeColor_4(
+          this,
+          Invocation.getter(#borderWarning),
+        ),
+      ) as _i5.Color);
+
+  @override
+  _i5.Color get borderNegative => (super.noSuchMethod(
+        Invocation.getter(#borderNegative),
+        returnValue: _FakeColor_4(this, Invocation.getter(#borderNegative)),
+        returnValueForMissingStub: _FakeColor_4(
+          this,
+          Invocation.getter(#borderNegative),
+        ),
+      ) as _i5.Color);
+
+  @override
+  _i5.Color get borderInfo => (super.noSuchMethod(
+        Invocation.getter(#borderInfo),
+        returnValue: _FakeColor_4(this, Invocation.getter(#borderInfo)),
+        returnValueForMissingStub: _FakeColor_4(
+          this,
+          Invocation.getter(#borderInfo),
+        ),
+      ) as _i5.Color);
+
+  @override
+  _i5.Color get surfaceDefault => (super.noSuchMethod(
+        Invocation.getter(#surfaceDefault),
+        returnValue: _FakeColor_4(this, Invocation.getter(#surfaceDefault)),
+        returnValueForMissingStub: _FakeColor_4(
+          this,
+          Invocation.getter(#surfaceDefault),
+        ),
+      ) as _i5.Color);
+
+  @override
+  _i5.Color get surfaceDefaultInverse => (super.noSuchMethod(
+        Invocation.getter(#surfaceDefaultInverse),
+        returnValue: _FakeColor_4(
+          this,
+          Invocation.getter(#surfaceDefaultInverse),
+        ),
+        returnValueForMissingStub: _FakeColor_4(
+          this,
+          Invocation.getter(#surfaceDefaultInverse),
+        ),
+      ) as _i5.Color);
+
+  @override
+  _i5.Color get surfaceHover => (super.noSuchMethod(
+        Invocation.getter(#surfaceHover),
+        returnValue: _FakeColor_4(this, Invocation.getter(#surfaceHover)),
+        returnValueForMissingStub: _FakeColor_4(
+          this,
+          Invocation.getter(#surfaceHover),
+        ),
+      ) as _i5.Color);
+
+  @override
+  _i5.Color get surfaceSelected => (super.noSuchMethod(
+        Invocation.getter(#surfaceSelected),
+        returnValue: _FakeColor_4(
+          this,
+          Invocation.getter(#surfaceSelected),
+        ),
+        returnValueForMissingStub: _FakeColor_4(
+          this,
+          Invocation.getter(#surfaceSelected),
+        ),
+      ) as _i5.Color);
+
+  @override
+  _i5.Color get surfaceSelectedHover => (super.noSuchMethod(
+        Invocation.getter(#surfaceSelectedHover),
+        returnValue: _FakeColor_4(
+          this,
+          Invocation.getter(#surfaceSelectedHover),
+        ),
+        returnValueForMissingStub: _FakeColor_4(
+          this,
+          Invocation.getter(#surfaceSelectedHover),
+        ),
+      ) as _i5.Color);
+
+  @override
+  _i5.Color get surfaceDisabled => (super.noSuchMethod(
+        Invocation.getter(#surfaceDisabled),
+        returnValue: _FakeColor_4(
+          this,
+          Invocation.getter(#surfaceDisabled),
+        ),
+        returnValueForMissingStub: _FakeColor_4(
+          this,
+          Invocation.getter(#surfaceDisabled),
+        ),
+      ) as _i5.Color);
+
+  @override
+  _i5.Color get surfaceCool => (super.noSuchMethod(
+        Invocation.getter(#surfaceCool),
+        returnValue: _FakeColor_4(this, Invocation.getter(#surfaceCool)),
+        returnValueForMissingStub: _FakeColor_4(
+          this,
+          Invocation.getter(#surfaceCool),
+        ),
+      ) as _i5.Color);
+
+  @override
+  _i5.Color get surfaceWarm => (super.noSuchMethod(
+        Invocation.getter(#surfaceWarm),
+        returnValue: _FakeColor_4(this, Invocation.getter(#surfaceWarm)),
+        returnValueForMissingStub: _FakeColor_4(
+          this,
+          Invocation.getter(#surfaceWarm),
+        ),
+      ) as _i5.Color);
+
+  @override
+  _i5.Color get surfacePrimary => (super.noSuchMethod(
+        Invocation.getter(#surfacePrimary),
+        returnValue: _FakeColor_4(this, Invocation.getter(#surfacePrimary)),
+        returnValueForMissingStub: _FakeColor_4(
+          this,
+          Invocation.getter(#surfacePrimary),
+        ),
+      ) as _i5.Color);
+
+  @override
+  _i5.Color get surfacePrimarySubtle => (super.noSuchMethod(
+        Invocation.getter(#surfacePrimarySubtle),
+        returnValue: _FakeColor_4(
+          this,
+          Invocation.getter(#surfacePrimarySubtle),
+        ),
+        returnValueForMissingStub: _FakeColor_4(
+          this,
+          Invocation.getter(#surfacePrimarySubtle),
+        ),
+      ) as _i5.Color);
+
+  @override
+  _i5.Color get surfaceSecondary => (super.noSuchMethod(
+        Invocation.getter(#surfaceSecondary),
+        returnValue: _FakeColor_4(
+          this,
+          Invocation.getter(#surfaceSecondary),
+        ),
+        returnValueForMissingStub: _FakeColor_4(
+          this,
+          Invocation.getter(#surfaceSecondary),
+        ),
+      ) as _i5.Color);
+
+  @override
+  _i5.Color get surfaceAvatarBlue => (super.noSuchMethod(
+        Invocation.getter(#surfaceAvatarBlue),
+        returnValue: _FakeColor_4(
+          this,
+          Invocation.getter(#surfaceAvatarBlue),
+        ),
+        returnValueForMissingStub: _FakeColor_4(
+          this,
+          Invocation.getter(#surfaceAvatarBlue),
+        ),
+      ) as _i5.Color);
+
+  @override
+  _i5.Color get surfaceAvatarGreen => (super.noSuchMethod(
+        Invocation.getter(#surfaceAvatarGreen),
+        returnValue: _FakeColor_4(
+          this,
+          Invocation.getter(#surfaceAvatarGreen),
+        ),
+        returnValueForMissingStub: _FakeColor_4(
+          this,
+          Invocation.getter(#surfaceAvatarGreen),
+        ),
+      ) as _i5.Color);
+
+  @override
+  _i5.Color get surfaceAvatarOrange => (super.noSuchMethod(
+        Invocation.getter(#surfaceAvatarOrange),
+        returnValue: _FakeColor_4(
+          this,
+          Invocation.getter(#surfaceAvatarOrange),
+        ),
+        returnValueForMissingStub: _FakeColor_4(
+          this,
+          Invocation.getter(#surfaceAvatarOrange),
+        ),
+      ) as _i5.Color);
+
+  @override
+  _i5.Color get surfaceAvatarPink => (super.noSuchMethod(
+        Invocation.getter(#surfaceAvatarPink),
+        returnValue: _FakeColor_4(
+          this,
+          Invocation.getter(#surfaceAvatarPink),
+        ),
+        returnValueForMissingStub: _FakeColor_4(
+          this,
+          Invocation.getter(#surfaceAvatarPink),
+        ),
+      ) as _i5.Color);
+
+  @override
+  _i5.Color get surfaceAvatarPurple => (super.noSuchMethod(
+        Invocation.getter(#surfaceAvatarPurple),
+        returnValue: _FakeColor_4(
+          this,
+          Invocation.getter(#surfaceAvatarPurple),
+        ),
+        returnValueForMissingStub: _FakeColor_4(
+          this,
+          Invocation.getter(#surfaceAvatarPurple),
+        ),
+      ) as _i5.Color);
+
+  @override
+  _i5.Color get surfaceAvatarTeal => (super.noSuchMethod(
+        Invocation.getter(#surfaceAvatarTeal),
+        returnValue: _FakeColor_4(
+          this,
+          Invocation.getter(#surfaceAvatarTeal),
+        ),
+        returnValueForMissingStub: _FakeColor_4(
+          this,
+          Invocation.getter(#surfaceAvatarTeal),
+        ),
+      ) as _i5.Color);
+
+  @override
+  _i5.Color get surfaceAvatarYellow => (super.noSuchMethod(
+        Invocation.getter(#surfaceAvatarYellow),
+        returnValue: _FakeColor_4(
+          this,
+          Invocation.getter(#surfaceAvatarYellow),
+        ),
+        returnValueForMissingStub: _FakeColor_4(
+          this,
+          Invocation.getter(#surfaceAvatarYellow),
+        ),
+      ) as _i5.Color);
+
+  @override
+  _i5.Color get surfaceSecondarySubtle => (super.noSuchMethod(
+        Invocation.getter(#surfaceSecondarySubtle),
+        returnValue: _FakeColor_4(
+          this,
+          Invocation.getter(#surfaceSecondarySubtle),
+        ),
+        returnValueForMissingStub: _FakeColor_4(
+          this,
+          Invocation.getter(#surfaceSecondarySubtle),
+        ),
+      ) as _i5.Color);
+
+  @override
+  _i5.Color get surfacePositive => (super.noSuchMethod(
+        Invocation.getter(#surfacePositive),
+        returnValue: _FakeColor_4(
+          this,
+          Invocation.getter(#surfacePositive),
+        ),
+        returnValueForMissingStub: _FakeColor_4(
+          this,
+          Invocation.getter(#surfacePositive),
+        ),
+      ) as _i5.Color);
+
+  @override
+  _i5.Color get surfacePositiveSubtle => (super.noSuchMethod(
+        Invocation.getter(#surfacePositiveSubtle),
+        returnValue: _FakeColor_4(
+          this,
+          Invocation.getter(#surfacePositiveSubtle),
+        ),
+        returnValueForMissingStub: _FakeColor_4(
+          this,
+          Invocation.getter(#surfacePositiveSubtle),
+        ),
+      ) as _i5.Color);
+
+  @override
+  _i5.Color get surfaceWarning => (super.noSuchMethod(
+        Invocation.getter(#surfaceWarning),
+        returnValue: _FakeColor_4(this, Invocation.getter(#surfaceWarning)),
+        returnValueForMissingStub: _FakeColor_4(
+          this,
+          Invocation.getter(#surfaceWarning),
+        ),
+      ) as _i5.Color);
+
+  @override
+  _i5.Color get surfaceWarningSubtle => (super.noSuchMethod(
+        Invocation.getter(#surfaceWarningSubtle),
+        returnValue: _FakeColor_4(
+          this,
+          Invocation.getter(#surfaceWarningSubtle),
+        ),
+        returnValueForMissingStub: _FakeColor_4(
+          this,
+          Invocation.getter(#surfaceWarningSubtle),
+        ),
+      ) as _i5.Color);
+
+  @override
+  _i5.Color get surfaceNegative => (super.noSuchMethod(
+        Invocation.getter(#surfaceNegative),
+        returnValue: _FakeColor_4(
+          this,
+          Invocation.getter(#surfaceNegative),
+        ),
+        returnValueForMissingStub: _FakeColor_4(
+          this,
+          Invocation.getter(#surfaceNegative),
+        ),
+      ) as _i5.Color);
+
+  @override
+  _i5.Color get surfaceNegativeSubtle => (super.noSuchMethod(
+        Invocation.getter(#surfaceNegativeSubtle),
+        returnValue: _FakeColor_4(
+          this,
+          Invocation.getter(#surfaceNegativeSubtle),
+        ),
+        returnValueForMissingStub: _FakeColor_4(
+          this,
+          Invocation.getter(#surfaceNegativeSubtle),
+        ),
+      ) as _i5.Color);
+
+  @override
+  _i5.Color get surfaceInfo => (super.noSuchMethod(
+        Invocation.getter(#surfaceInfo),
+        returnValue: _FakeColor_4(this, Invocation.getter(#surfaceInfo)),
+        returnValueForMissingStub: _FakeColor_4(
+          this,
+          Invocation.getter(#surfaceInfo),
+        ),
+      ) as _i5.Color);
+
+  @override
+  _i5.Color get surfaceInfoSubtle => (super.noSuchMethod(
+        Invocation.getter(#surfaceInfoSubtle),
+        returnValue: _FakeColor_4(
+          this,
+          Invocation.getter(#surfaceInfoSubtle),
+        ),
+        returnValueForMissingStub: _FakeColor_4(
+          this,
+          Invocation.getter(#surfaceInfoSubtle),
+        ),
+      ) as _i5.Color);
+
+  @override
+  _i5.Color get stateDisabledDisabled => (super.noSuchMethod(
+        Invocation.getter(#stateDisabledDisabled),
+        returnValue: _FakeColor_4(
+          this,
+          Invocation.getter(#stateDisabledDisabled),
+        ),
+        returnValueForMissingStub: _FakeColor_4(
+          this,
+          Invocation.getter(#stateDisabledDisabled),
+        ),
+      ) as _i5.Color);
+
+  @override
+  _i5.Color get stateDefaultEnabled => (super.noSuchMethod(
+        Invocation.getter(#stateDefaultEnabled),
+        returnValue: _FakeColor_4(
+          this,
+          Invocation.getter(#stateDefaultEnabled),
+        ),
+        returnValueForMissingStub: _FakeColor_4(
+          this,
+          Invocation.getter(#stateDefaultEnabled),
+        ),
+      ) as _i5.Color);
+
+  @override
+  _i5.Color get stateDefaultHover => (super.noSuchMethod(
+        Invocation.getter(#stateDefaultHover),
+        returnValue: _FakeColor_4(
+          this,
+          Invocation.getter(#stateDefaultHover),
+        ),
+        returnValueForMissingStub: _FakeColor_4(
+          this,
+          Invocation.getter(#stateDefaultHover),
+        ),
+      ) as _i5.Color);
+
+  @override
+  _i5.Color get stateDefaultSelected => (super.noSuchMethod(
+        Invocation.getter(#stateDefaultSelected),
+        returnValue: _FakeColor_4(
+          this,
+          Invocation.getter(#stateDefaultSelected),
+        ),
+        returnValueForMissingStub: _FakeColor_4(
+          this,
+          Invocation.getter(#stateDefaultSelected),
+        ),
+      ) as _i5.Color);
+
+  @override
+  _i5.Color get stateDefaultFocus => (super.noSuchMethod(
+        Invocation.getter(#stateDefaultFocus),
+        returnValue: _FakeColor_4(
+          this,
+          Invocation.getter(#stateDefaultFocus),
+        ),
+        returnValueForMissingStub: _FakeColor_4(
+          this,
+          Invocation.getter(#stateDefaultFocus),
+        ),
+      ) as _i5.Color);
+
+  @override
+  _i5.Color get statePrimaryEnabled => (super.noSuchMethod(
+        Invocation.getter(#statePrimaryEnabled),
+        returnValue: _FakeColor_4(
+          this,
+          Invocation.getter(#statePrimaryEnabled),
+        ),
+        returnValueForMissingStub: _FakeColor_4(
+          this,
+          Invocation.getter(#statePrimaryEnabled),
+        ),
+      ) as _i5.Color);
+
+  @override
+  _i5.Color get statePrimaryHover => (super.noSuchMethod(
+        Invocation.getter(#statePrimaryHover),
+        returnValue: _FakeColor_4(
+          this,
+          Invocation.getter(#statePrimaryHover),
+        ),
+        returnValueForMissingStub: _FakeColor_4(
+          this,
+          Invocation.getter(#statePrimaryHover),
+        ),
+      ) as _i5.Color);
+
+  @override
+  _i5.Color get statePrimarySelected => (super.noSuchMethod(
+        Invocation.getter(#statePrimarySelected),
+        returnValue: _FakeColor_4(
+          this,
+          Invocation.getter(#statePrimarySelected),
+        ),
+        returnValueForMissingStub: _FakeColor_4(
+          this,
+          Invocation.getter(#statePrimarySelected),
+        ),
+      ) as _i5.Color);
+
+  @override
+  _i5.Color get statePrimaryFocus => (super.noSuchMethod(
+        Invocation.getter(#statePrimaryFocus),
+        returnValue: _FakeColor_4(
+          this,
+          Invocation.getter(#statePrimaryFocus),
+        ),
+        returnValueForMissingStub: _FakeColor_4(
+          this,
+          Invocation.getter(#statePrimaryFocus),
+        ),
+      ) as _i5.Color);
+
+  @override
+  _i5.Color get stateSecondaryEnabled => (super.noSuchMethod(
+        Invocation.getter(#stateSecondaryEnabled),
+        returnValue: _FakeColor_4(
+          this,
+          Invocation.getter(#stateSecondaryEnabled),
+        ),
+        returnValueForMissingStub: _FakeColor_4(
+          this,
+          Invocation.getter(#stateSecondaryEnabled),
+        ),
+      ) as _i5.Color);
+
+  @override
+  _i5.Color get stateSecondaryHover => (super.noSuchMethod(
+        Invocation.getter(#stateSecondaryHover),
+        returnValue: _FakeColor_4(
+          this,
+          Invocation.getter(#stateSecondaryHover),
+        ),
+        returnValueForMissingStub: _FakeColor_4(
+          this,
+          Invocation.getter(#stateSecondaryHover),
+        ),
+      ) as _i5.Color);
+
+  @override
+  _i5.Color get stateSecondarySelected => (super.noSuchMethod(
+        Invocation.getter(#stateSecondarySelected),
+        returnValue: _FakeColor_4(
+          this,
+          Invocation.getter(#stateSecondarySelected),
+        ),
+        returnValueForMissingStub: _FakeColor_4(
+          this,
+          Invocation.getter(#stateSecondarySelected),
+        ),
+      ) as _i5.Color);
+
+  @override
+  _i5.Color get stateSecondaryFocus => (super.noSuchMethod(
+        Invocation.getter(#stateSecondaryFocus),
+        returnValue: _FakeColor_4(
+          this,
+          Invocation.getter(#stateSecondaryFocus),
+        ),
+        returnValueForMissingStub: _FakeColor_4(
+          this,
+          Invocation.getter(#stateSecondaryFocus),
+        ),
+      ) as _i5.Color);
+
+  @override
+  _i5.Color get stateNegativeEnabled => (super.noSuchMethod(
+        Invocation.getter(#stateNegativeEnabled),
+        returnValue: _FakeColor_4(
+          this,
+          Invocation.getter(#stateNegativeEnabled),
+        ),
+        returnValueForMissingStub: _FakeColor_4(
+          this,
+          Invocation.getter(#stateNegativeEnabled),
+        ),
+      ) as _i5.Color);
+
+  @override
+  _i5.Color get stateNegativeHover => (super.noSuchMethod(
+        Invocation.getter(#stateNegativeHover),
+        returnValue: _FakeColor_4(
+          this,
+          Invocation.getter(#stateNegativeHover),
+        ),
+        returnValueForMissingStub: _FakeColor_4(
+          this,
+          Invocation.getter(#stateNegativeHover),
+        ),
+      ) as _i5.Color);
+
+  @override
+  _i5.Color get stateNegativeSelected => (super.noSuchMethod(
+        Invocation.getter(#stateNegativeSelected),
+        returnValue: _FakeColor_4(
+          this,
+          Invocation.getter(#stateNegativeSelected),
+        ),
+        returnValueForMissingStub: _FakeColor_4(
+          this,
+          Invocation.getter(#stateNegativeSelected),
+        ),
+      ) as _i5.Color);
+
+  @override
+  _i5.Color get stateNegativeFocus => (super.noSuchMethod(
+        Invocation.getter(#stateNegativeFocus),
+        returnValue: _FakeColor_4(
+          this,
+          Invocation.getter(#stateNegativeFocus),
+        ),
+        returnValueForMissingStub: _FakeColor_4(
+          this,
+          Invocation.getter(#stateNegativeFocus),
+        ),
+      ) as _i5.Color);
+
+  @override
+  _i5.Color get stateInfoEnabled => (super.noSuchMethod(
+        Invocation.getter(#stateInfoEnabled),
+        returnValue: _FakeColor_4(
+          this,
+          Invocation.getter(#stateInfoEnabled),
+        ),
+        returnValueForMissingStub: _FakeColor_4(
+          this,
+          Invocation.getter(#stateInfoEnabled),
+        ),
+      ) as _i5.Color);
+
+  @override
+  _i5.Color get stateInfoHover => (super.noSuchMethod(
+        Invocation.getter(#stateInfoHover),
+        returnValue: _FakeColor_4(this, Invocation.getter(#stateInfoHover)),
+        returnValueForMissingStub: _FakeColor_4(
+          this,
+          Invocation.getter(#stateInfoHover),
+        ),
+      ) as _i5.Color);
+
+  @override
+  _i5.Color get stateInfoSelected => (super.noSuchMethod(
+        Invocation.getter(#stateInfoSelected),
+        returnValue: _FakeColor_4(
+          this,
+          Invocation.getter(#stateInfoSelected),
+        ),
+        returnValueForMissingStub: _FakeColor_4(
+          this,
+          Invocation.getter(#stateInfoSelected),
+        ),
+      ) as _i5.Color);
+
+  @override
+  _i5.Color get stateInfoFocus => (super.noSuchMethod(
+        Invocation.getter(#stateInfoFocus),
+        returnValue: _FakeColor_4(this, Invocation.getter(#stateInfoFocus)),
+        returnValueForMissingStub: _FakeColor_4(
+          this,
+          Invocation.getter(#stateInfoFocus),
+        ),
+      ) as _i5.Color);
+
+  @override
+  _i5.Color get stateInverseEnabled => (super.noSuchMethod(
+        Invocation.getter(#stateInverseEnabled),
+        returnValue: _FakeColor_4(
+          this,
+          Invocation.getter(#stateInverseEnabled),
+        ),
+        returnValueForMissingStub: _FakeColor_4(
+          this,
+          Invocation.getter(#stateInverseEnabled),
+        ),
+      ) as _i5.Color);
+
+  @override
+  _i5.Color get stateInverseHover => (super.noSuchMethod(
+        Invocation.getter(#stateInverseHover),
+        returnValue: _FakeColor_4(
+          this,
+          Invocation.getter(#stateInverseHover),
+        ),
+        returnValueForMissingStub: _FakeColor_4(
+          this,
+          Invocation.getter(#stateInverseHover),
+        ),
+      ) as _i5.Color);
+
+  @override
+  _i5.Color get stateInverseSelected => (super.noSuchMethod(
+        Invocation.getter(#stateInverseSelected),
+        returnValue: _FakeColor_4(
+          this,
+          Invocation.getter(#stateInverseSelected),
+        ),
+        returnValueForMissingStub: _FakeColor_4(
+          this,
+          Invocation.getter(#stateInverseSelected),
+        ),
+      ) as _i5.Color);
+
+  @override
+  _i5.Color get stateInverseFocus => (super.noSuchMethod(
+        Invocation.getter(#stateInverseFocus),
+        returnValue: _FakeColor_4(
+          this,
+          Invocation.getter(#stateInverseFocus),
+        ),
+        returnValueForMissingStub: _FakeColor_4(
+          this,
+          Invocation.getter(#stateInverseFocus),
+        ),
+      ) as _i5.Color);
+
+  @override
+  _i5.Color get statePositiveEnabled => (super.noSuchMethod(
+        Invocation.getter(#statePositiveEnabled),
+        returnValue: _FakeColor_4(
+          this,
+          Invocation.getter(#statePositiveEnabled),
+        ),
+        returnValueForMissingStub: _FakeColor_4(
+          this,
+          Invocation.getter(#statePositiveEnabled),
+        ),
+      ) as _i5.Color);
+
+  @override
+  _i5.Color get statePositiveHover => (super.noSuchMethod(
+        Invocation.getter(#statePositiveHover),
+        returnValue: _FakeColor_4(
+          this,
+          Invocation.getter(#statePositiveHover),
+        ),
+        returnValueForMissingStub: _FakeColor_4(
+          this,
+          Invocation.getter(#statePositiveHover),
+        ),
+      ) as _i5.Color);
+
+  @override
+  _i5.Color get statePositiveSelected => (super.noSuchMethod(
+        Invocation.getter(#statePositiveSelected),
+        returnValue: _FakeColor_4(
+          this,
+          Invocation.getter(#statePositiveSelected),
+        ),
+        returnValueForMissingStub: _FakeColor_4(
+          this,
+          Invocation.getter(#statePositiveSelected),
+        ),
+      ) as _i5.Color);
+
+  @override
+  _i5.Color get statePositiveFocus => (super.noSuchMethod(
+        Invocation.getter(#statePositiveFocus),
+        returnValue: _FakeColor_4(
+          this,
+          Invocation.getter(#statePositiveFocus),
+        ),
+        returnValueForMissingStub: _FakeColor_4(
+          this,
+          Invocation.getter(#statePositiveFocus),
+        ),
+      ) as _i5.Color);
 }
 
 /// A class which mocks [Zeta].
@@ -1500,164 +1290,137 @@ class MockZetaColors extends _i1.Mock implements _i6.ZetaColors {
 /// See the documentation for Mockito's code generation for more information.
 class MockZeta extends _i1.Mock implements _i6.Zeta {
   @override
-  bool get rounded =>
-      (super.noSuchMethod(
-            Invocation.getter(#rounded),
-            returnValue: false,
-            returnValueForMissingStub: false,
-          )
-          as bool);
+  bool get rounded => (super.noSuchMethod(
+        Invocation.getter(#rounded),
+        returnValue: false,
+        returnValueForMissingStub: false,
+      ) as bool);
 
   @override
-  _i6.ZetaContrast get contrast =>
-      (super.noSuchMethod(
-            Invocation.getter(#contrast),
-            returnValue: _i6.ZetaContrast.aa,
-            returnValueForMissingStub: _i6.ZetaContrast.aa,
-          )
-          as _i6.ZetaContrast);
+  _i6.ZetaContrast get contrast => (super.noSuchMethod(
+        Invocation.getter(#contrast),
+        returnValue: _i6.ZetaContrast.aa,
+        returnValueForMissingStub: _i6.ZetaContrast.aa,
+      ) as _i6.ZetaContrast);
 
   @override
-  _i2.ThemeMode get themeMode =>
-      (super.noSuchMethod(
-            Invocation.getter(#themeMode),
-            returnValue: _i2.ThemeMode.system,
-            returnValueForMissingStub: _i2.ThemeMode.system,
-          )
-          as _i2.ThemeMode);
+  _i2.ThemeMode get themeMode => (super.noSuchMethod(
+        Invocation.getter(#themeMode),
+        returnValue: _i2.ThemeMode.system,
+        returnValueForMissingStub: _i2.ThemeMode.system,
+      ) as _i2.ThemeMode);
 
   @override
-  _i4.ZetaPrimitives get primitives =>
-      (super.noSuchMethod(
-            Invocation.getter(#primitives),
-            returnValue: _FakeZetaPrimitives_3(
-              this,
-              Invocation.getter(#primitives),
-            ),
-            returnValueForMissingStub: _FakeZetaPrimitives_3(
-              this,
-              Invocation.getter(#primitives),
-            ),
-          )
-          as _i4.ZetaPrimitives);
+  _i4.ZetaPrimitives get primitives => (super.noSuchMethod(
+        Invocation.getter(#primitives),
+        returnValue: _FakeZetaPrimitives_3(
+          this,
+          Invocation.getter(#primitives),
+        ),
+        returnValueForMissingStub: _FakeZetaPrimitives_3(
+          this,
+          Invocation.getter(#primitives),
+        ),
+      ) as _i4.ZetaPrimitives);
 
   @override
-  _i6.ZetaSemantics get semantics =>
-      (super.noSuchMethod(
-            Invocation.getter(#semantics),
-            returnValue: _FakeZetaSemantics_5(
-              this,
-              Invocation.getter(#semantics),
-            ),
-            returnValueForMissingStub: _FakeZetaSemantics_5(
-              this,
-              Invocation.getter(#semantics),
-            ),
-          )
-          as _i6.ZetaSemantics);
+  _i6.ZetaSemantics get semantics => (super.noSuchMethod(
+        Invocation.getter(#semantics),
+        returnValue: _FakeZetaSemantics_5(
+          this,
+          Invocation.getter(#semantics),
+        ),
+        returnValueForMissingStub: _FakeZetaSemantics_5(
+          this,
+          Invocation.getter(#semantics),
+        ),
+      ) as _i6.ZetaSemantics);
 
   @override
-  _i6.ZetaColors get colors =>
-      (super.noSuchMethod(
-            Invocation.getter(#colors),
-            returnValue: _FakeZetaColors_6(this, Invocation.getter(#colors)),
-            returnValueForMissingStub: _FakeZetaColors_6(
-              this,
-              Invocation.getter(#colors),
-            ),
-          )
-          as _i6.ZetaColors);
+  _i6.ZetaColors get colors => (super.noSuchMethod(
+        Invocation.getter(#colors),
+        returnValue: _FakeZetaColors_6(this, Invocation.getter(#colors)),
+        returnValueForMissingStub: _FakeZetaColors_6(
+          this,
+          Invocation.getter(#colors),
+        ),
+      ) as _i6.ZetaColors);
 
   @override
-  _i5.Brightness get brightness =>
-      (super.noSuchMethod(
-            Invocation.getter(#brightness),
-            returnValue: _i5.Brightness.dark,
-            returnValueForMissingStub: _i5.Brightness.dark,
-          )
-          as _i5.Brightness);
+  _i5.Brightness get brightness => (super.noSuchMethod(
+        Invocation.getter(#brightness),
+        returnValue: _i5.Brightness.dark,
+        returnValueForMissingStub: _i5.Brightness.dark,
+      ) as _i5.Brightness);
 
   @override
-  _i6.ZetaRadius get radius =>
-      (super.noSuchMethod(
-            Invocation.getter(#radius),
-            returnValue: _FakeZetaRadius_7(this, Invocation.getter(#radius)),
-            returnValueForMissingStub: _FakeZetaRadius_7(
-              this,
-              Invocation.getter(#radius),
-            ),
-          )
-          as _i6.ZetaRadius);
+  _i6.ZetaRadius get radius => (super.noSuchMethod(
+        Invocation.getter(#radius),
+        returnValue: _FakeZetaRadius_7(this, Invocation.getter(#radius)),
+        returnValueForMissingStub: _FakeZetaRadius_7(
+          this,
+          Invocation.getter(#radius),
+        ),
+      ) as _i6.ZetaRadius);
 
   @override
-  _i6.ZetaSpacing get spacing =>
-      (super.noSuchMethod(
-            Invocation.getter(#spacing),
-            returnValue: _FakeZetaSpacing_8(this, Invocation.getter(#spacing)),
-            returnValueForMissingStub: _FakeZetaSpacing_8(
-              this,
-              Invocation.getter(#spacing),
-            ),
-          )
-          as _i6.ZetaSpacing);
+  _i6.ZetaSpacing get spacing => (super.noSuchMethod(
+        Invocation.getter(#spacing),
+        returnValue: _FakeZetaSpacing_8(this, Invocation.getter(#spacing)),
+        returnValueForMissingStub: _FakeZetaSpacing_8(
+          this,
+          Invocation.getter(#spacing),
+        ),
+      ) as _i6.ZetaSpacing);
 
   @override
-  _i2.Widget get child =>
-      (super.noSuchMethod(
-            Invocation.getter(#child),
-            returnValue: _FakeWidget_0(this, Invocation.getter(#child)),
-            returnValueForMissingStub: _FakeWidget_0(
-              this,
-              Invocation.getter(#child),
-            ),
-          )
-          as _i2.Widget);
+  _i2.Widget get child => (super.noSuchMethod(
+        Invocation.getter(#child),
+        returnValue: _FakeWidget_0(this, Invocation.getter(#child)),
+        returnValueForMissingStub: _FakeWidget_0(
+          this,
+          Invocation.getter(#child),
+        ),
+      ) as _i2.Widget);
 
   @override
-  bool updateShouldNotify(_i2.InheritedWidget? oldWidget) =>
-      (super.noSuchMethod(
-            Invocation.method(#updateShouldNotify, [oldWidget]),
-            returnValue: false,
-            returnValueForMissingStub: false,
-          )
-          as bool);
+  bool updateShouldNotify(_i2.InheritedWidget? oldWidget) => (super.noSuchMethod(
+        Invocation.method(#updateShouldNotify, [oldWidget]),
+        returnValue: false,
+        returnValueForMissingStub: false,
+      ) as bool);
 
   @override
-  void debugFillProperties(_i3.DiagnosticPropertiesBuilder? properties) =>
-      super.noSuchMethod(
+  void debugFillProperties(_i3.DiagnosticPropertiesBuilder? properties) => super.noSuchMethod(
         Invocation.method(#debugFillProperties, [properties]),
         returnValueForMissingStub: null,
       );
 
   @override
-  _i2.InheritedElement createElement() =>
-      (super.noSuchMethod(
-            Invocation.method(#createElement, []),
-            returnValue: _FakeInheritedElement_9(
-              this,
-              Invocation.method(#createElement, []),
-            ),
-            returnValueForMissingStub: _FakeInheritedElement_9(
-              this,
-              Invocation.method(#createElement, []),
-            ),
-          )
-          as _i2.InheritedElement);
+  _i2.InheritedElement createElement() => (super.noSuchMethod(
+        Invocation.method(#createElement, []),
+        returnValue: _FakeInheritedElement_9(
+          this,
+          Invocation.method(#createElement, []),
+        ),
+        returnValueForMissingStub: _FakeInheritedElement_9(
+          this,
+          Invocation.method(#createElement, []),
+        ),
+      ) as _i2.InheritedElement);
 
   @override
-  String toStringShort() =>
-      (super.noSuchMethod(
-            Invocation.method(#toStringShort, []),
-            returnValue: _i8.dummyValue<String>(
-              this,
-              Invocation.method(#toStringShort, []),
-            ),
-            returnValueForMissingStub: _i8.dummyValue<String>(
-              this,
-              Invocation.method(#toStringShort, []),
-            ),
-          )
-          as String);
+  String toStringShort() => (super.noSuchMethod(
+        Invocation.method(#toStringShort, []),
+        returnValue: _i8.dummyValue<String>(
+          this,
+          Invocation.method(#toStringShort, []),
+        ),
+        returnValueForMissingStub: _i8.dummyValue<String>(
+          this,
+          Invocation.method(#toStringShort, []),
+        ),
+      ) as String);
 
   @override
   String toStringShallow({
@@ -1665,26 +1428,25 @@ class MockZeta extends _i1.Mock implements _i6.Zeta {
     _i3.DiagnosticLevel? minLevel = _i3.DiagnosticLevel.debug,
   }) =>
       (super.noSuchMethod(
-            Invocation.method(#toStringShallow, [], {
-              #joiner: joiner,
-              #minLevel: minLevel,
-            }),
-            returnValue: _i8.dummyValue<String>(
-              this,
-              Invocation.method(#toStringShallow, [], {
-                #joiner: joiner,
-                #minLevel: minLevel,
-              }),
-            ),
-            returnValueForMissingStub: _i8.dummyValue<String>(
-              this,
-              Invocation.method(#toStringShallow, [], {
-                #joiner: joiner,
-                #minLevel: minLevel,
-              }),
-            ),
-          )
-          as String);
+        Invocation.method(#toStringShallow, [], {
+          #joiner: joiner,
+          #minLevel: minLevel,
+        }),
+        returnValue: _i8.dummyValue<String>(
+          this,
+          Invocation.method(#toStringShallow, [], {
+            #joiner: joiner,
+            #minLevel: minLevel,
+          }),
+        ),
+        returnValueForMissingStub: _i8.dummyValue<String>(
+          this,
+          Invocation.method(#toStringShallow, [], {
+            #joiner: joiner,
+            #minLevel: minLevel,
+          }),
+        ),
+      ) as String);
 
   @override
   String toStringDeep({
@@ -1694,32 +1456,31 @@ class MockZeta extends _i1.Mock implements _i6.Zeta {
     int? wrapWidth = 65,
   }) =>
       (super.noSuchMethod(
-            Invocation.method(#toStringDeep, [], {
-              #prefixLineOne: prefixLineOne,
-              #prefixOtherLines: prefixOtherLines,
-              #minLevel: minLevel,
-              #wrapWidth: wrapWidth,
-            }),
-            returnValue: _i8.dummyValue<String>(
-              this,
-              Invocation.method(#toStringDeep, [], {
-                #prefixLineOne: prefixLineOne,
-                #prefixOtherLines: prefixOtherLines,
-                #minLevel: minLevel,
-                #wrapWidth: wrapWidth,
-              }),
-            ),
-            returnValueForMissingStub: _i8.dummyValue<String>(
-              this,
-              Invocation.method(#toStringDeep, [], {
-                #prefixLineOne: prefixLineOne,
-                #prefixOtherLines: prefixOtherLines,
-                #minLevel: minLevel,
-                #wrapWidth: wrapWidth,
-              }),
-            ),
-          )
-          as String);
+        Invocation.method(#toStringDeep, [], {
+          #prefixLineOne: prefixLineOne,
+          #prefixOtherLines: prefixOtherLines,
+          #minLevel: minLevel,
+          #wrapWidth: wrapWidth,
+        }),
+        returnValue: _i8.dummyValue<String>(
+          this,
+          Invocation.method(#toStringDeep, [], {
+            #prefixLineOne: prefixLineOne,
+            #prefixOtherLines: prefixOtherLines,
+            #minLevel: minLevel,
+            #wrapWidth: wrapWidth,
+          }),
+        ),
+        returnValueForMissingStub: _i8.dummyValue<String>(
+          this,
+          Invocation.method(#toStringDeep, [], {
+            #prefixLineOne: prefixLineOne,
+            #prefixOtherLines: prefixOtherLines,
+            #minLevel: minLevel,
+            #wrapWidth: wrapWidth,
+          }),
+        ),
+      ) as String);
 
   @override
   _i3.DiagnosticsNode toDiagnosticsNode({
@@ -1727,37 +1488,33 @@ class MockZeta extends _i1.Mock implements _i6.Zeta {
     _i3.DiagnosticsTreeStyle? style,
   }) =>
       (super.noSuchMethod(
-            Invocation.method(#toDiagnosticsNode, [], {
-              #name: name,
-              #style: style,
-            }),
-            returnValue: _FakeDiagnosticsNode_2(
-              this,
-              Invocation.method(#toDiagnosticsNode, [], {
-                #name: name,
-                #style: style,
-              }),
-            ),
-            returnValueForMissingStub: _FakeDiagnosticsNode_2(
-              this,
-              Invocation.method(#toDiagnosticsNode, [], {
-                #name: name,
-                #style: style,
-              }),
-            ),
-          )
-          as _i3.DiagnosticsNode);
+        Invocation.method(#toDiagnosticsNode, [], {
+          #name: name,
+          #style: style,
+        }),
+        returnValue: _FakeDiagnosticsNode_2(
+          this,
+          Invocation.method(#toDiagnosticsNode, [], {
+            #name: name,
+            #style: style,
+          }),
+        ),
+        returnValueForMissingStub: _FakeDiagnosticsNode_2(
+          this,
+          Invocation.method(#toDiagnosticsNode, [], {
+            #name: name,
+            #style: style,
+          }),
+        ),
+      ) as _i3.DiagnosticsNode);
 
   @override
-  List<_i3.DiagnosticsNode> debugDescribeChildren() =>
-      (super.noSuchMethod(
-            Invocation.method(#debugDescribeChildren, []),
-            returnValue: <_i3.DiagnosticsNode>[],
-            returnValueForMissingStub: <_i3.DiagnosticsNode>[],
-          )
-          as List<_i3.DiagnosticsNode>);
+  List<_i3.DiagnosticsNode> debugDescribeChildren() => (super.noSuchMethod(
+        Invocation.method(#debugDescribeChildren, []),
+        returnValue: <_i3.DiagnosticsNode>[],
+        returnValueForMissingStub: <_i3.DiagnosticsNode>[],
+      ) as List<_i3.DiagnosticsNode>);
 
   @override
-  String toString({_i3.DiagnosticLevel? minLevel = _i3.DiagnosticLevel.info}) =>
-      super.toString();
+  String toString({_i3.DiagnosticLevel? minLevel = _i3.DiagnosticLevel.info}) => super.toString();
 }
