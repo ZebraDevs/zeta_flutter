@@ -76,6 +76,7 @@ class _ZetaRadioState<T> extends State<ZetaRadio<T>> with TickerProviderStateMix
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
+                    // TODO(UX-1368): Potentially move label into the buildToggleable
                     buildToggleable(
                       size: Size(Zeta.of(context).spacing.xl_6, Zeta.of(context).spacing.xl_6),
                       painter: _painter!
@@ -107,7 +108,8 @@ class _ZetaRadioState<T> extends State<ZetaRadio<T>> with TickerProviderStateMix
                         states.contains(WidgetState.disabled) ? SystemMouseCursors.forbidden : SystemMouseCursors.click,
                       ),
                     ),
-                    if (widget.label != null)
+                    if (widget.label != null &&
+                        ((widget.label is Text && (widget.label! as Text).data != '') || (widget.label is! Text)))
                       DefaultTextStyle(
                         style: ZetaTextStyles.bodyMedium.copyWith(
                           color:

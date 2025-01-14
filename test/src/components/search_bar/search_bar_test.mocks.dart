@@ -29,20 +29,22 @@ import 'search_bar_test.dart' as _i2;
 class MockISearchBarEvents extends _i1.Mock implements _i2.ISearchBarEvents {
   @override
   void onChange(String? text) => super.noSuchMethod(
-        Invocation.method(#onChange, [text]),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#onChange, [text]),
+    returnValueForMissingStub: null,
+  );
 
   @override
   void onSubmit(String? text) => super.noSuchMethod(
-        Invocation.method(#onSubmit, [text]),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#onSubmit, [text]),
+    returnValueForMissingStub: null,
+  );
 
   @override
-  _i3.Future<String?> onSpeech() => (super.noSuchMethod(
-        Invocation.method(#onSpeech, []),
-        returnValue: _i3.Future<String?>.value(),
-        returnValueForMissingStub: _i3.Future<String?>.value(),
-      ) as _i3.Future<String?>);
+  _i3.Future<String?> onSpeech() =>
+      (super.noSuchMethod(
+            Invocation.method(#onSpeech, []),
+            returnValue: _i3.Future<String?>.value(),
+            returnValueForMissingStub: _i3.Future<String?>.value(),
+          )
+          as _i3.Future<String?>);
 }

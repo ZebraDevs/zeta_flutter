@@ -198,6 +198,7 @@ class _ZetaTopAppBarState extends State<ZetaTopAppBar> {
         verticalDirection: oldRow.verticalDirection,
         children: oldRow.children.map(
           (item) {
+            // TODO(UX-1359): Fix support for avatar in title.
             if (item is ZetaAvatar) {
               item = item.copyWith(size: ZetaAvatarSize.xxxs);
             }

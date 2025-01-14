@@ -52,7 +52,7 @@ void main() {
       handle.dispose();
     });
 
-    // TODO(design): Button is not accessible.
+    // TODO(UX-1361): Button is not accessible.
     // testWidgets('meets accessibility requirements with action', (WidgetTester tester) async {
     //   final SemanticsHandle handle = tester.ensureSemantics();
     //   await tester.pumpWidget(
