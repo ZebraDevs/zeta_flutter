@@ -3,10 +3,10 @@ import 'package:http/http.dart' as http;
 import 'package:widgetbook/widgetbook.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 import 'package:zeta_flutter/zeta_flutter.dart';
-import 'package:zeta_widgetbook/introduction.widgetbook.dart';
+import 'package:zeta_widgetbook/introduction.dart';
 import 'package:zeta_widgetbook/main.directories.g.dart';
-import 'package:zeta_widgetbook/src/utils/zebra_devices.widgetbook.dart';
-import 'package:zeta_widgetbook/src/utils/zeta_addon.widgetbook.dart';
+import 'package:zeta_widgetbook/src/utils/zebra_devices.dart';
+import 'package:zeta_widgetbook/src/utils/zeta_addon.dart';
 
 const componentsPath = 'Components';
 

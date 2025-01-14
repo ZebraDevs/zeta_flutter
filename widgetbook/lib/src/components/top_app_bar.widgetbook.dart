@@ -17,7 +17,10 @@ const String appBarPath = '$componentsPath/Top App Bar';
       'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=24183-7212&t=eEOivHU9uV4K8qJq-4',
 )
 Widget defaultTopAppBar(BuildContext context) => ZetaTopAppBar(
-      leading: ZetaIcon(iconKnob(context, name: 'Leading Icon', initial: ZetaIcons.hamburger_menu)),
+      leading: IconButton(
+        icon: ZetaIcon(iconKnob(context, name: 'Leading Icon', initial: ZetaIcons.hamburger_menu)),
+        onPressed: () {},
+      ),
       title: Text(context.knobs.string(label: 'Title', initialValue: 'Title')),
       actions: context.knobs.boolean(label: 'Enabled actions', initialValue: true)
           ? [
@@ -28,7 +31,6 @@ Widget defaultTopAppBar(BuildContext context) => ZetaTopAppBar(
           : [],
     );
 
-// TODO(luke): Avatar?
 @widgetbook.UseCase(
   name: 'Centered',
   type: ZetaTopAppBar,

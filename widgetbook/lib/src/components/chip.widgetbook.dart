@@ -21,7 +21,6 @@ Widget assistChip(BuildContext context) => ZetaAssistChip(
       onTap: disabledKnob(context) ? null : () {},
     );
 
-// TODO(thelukewalton): Not draggable
 @widgetbook.UseCase(
   name: 'Input Chip',
   type: ZetaInputChip,

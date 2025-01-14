@@ -112,15 +112,41 @@ Widget radio(BuildContext context) {
       'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=26522-37745&t=N8coJ9AFu6DS3mOF-4',
 )
 Widget dropdownListItem(BuildContext context) => SmallContentWrapper(
-      child: ZetaDropdownListItem(
-        primaryText: context.knobs.string(label: 'Primary text', initialValue: 'Label'),
-        items: const [
-          ZetaListItem(primaryText: 'List Item'),
-          ZetaListItem(primaryText: 'List Item'),
-          ZetaListItem(primaryText: 'List Item'),
+      child: Column(
+        children: [
+          ZetaDropdownListItem(
+            primaryText: context.knobs.string(label: 'Primary text', initialValue: 'Label'),
+            items: const [
+              ZetaListItem(primaryText: 'List Item'),
+              ZetaListItem(primaryText: 'List Item'),
+              ZetaListItem(primaryText: 'List Item'),
+            ],
+            secondaryText: context.knobs.string(label: 'Secondary text', initialValue: 'Descriptor'),
+            leading: context.knobs.boolean(label: 'Show icon') ? const ZetaIcon(ZetaIcons.star) : null,
+            showDivider: context.knobs.boolean(label: 'Show divider'),
+          ),
+          ZetaDropdownListItem(
+            primaryText: context.knobs.string(label: 'Primary text', initialValue: 'Label'),
+            items: const [
+              ZetaListItem(primaryText: 'List Item'),
+              ZetaListItem(primaryText: 'List Item'),
+              ZetaListItem(primaryText: 'List Item'),
+            ],
+            secondaryText: context.knobs.string(label: 'Secondary text', initialValue: 'Descriptor'),
+            leading: context.knobs.boolean(label: 'Show icon') ? const ZetaIcon(ZetaIcons.star) : null,
+            showDivider: context.knobs.boolean(label: 'Show divider'),
+          ),
+          ZetaDropdownListItem(
+            primaryText: context.knobs.string(label: 'Primary text', initialValue: 'Label'),
+            items: const [
+              ZetaListItem(primaryText: 'List Item'),
+              ZetaListItem(primaryText: 'List Item'),
+              ZetaListItem(primaryText: 'List Item'),
+            ],
+            secondaryText: context.knobs.string(label: 'Secondary text', initialValue: 'Descriptor'),
+            leading: context.knobs.boolean(label: 'Show icon') ? const ZetaIcon(ZetaIcons.star) : null,
+            showDivider: context.knobs.boolean(label: 'Show divider'),
+          ),
         ],
-        secondaryText: context.knobs.string(label: 'Secondary text', initialValue: 'Descriptor'),
-        leading: context.knobs.boolean(label: 'Show icon') ? const ZetaIcon(ZetaIcons.star) : null,
-        showDivider: context.knobs.boolean(label: 'Show divider'),
       ),
     );
