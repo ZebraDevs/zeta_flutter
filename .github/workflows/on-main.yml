@@ -17,7 +17,7 @@ jobs:
           token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
 
   deploy-qa-demo:
-    name: Deploy preview version of the storybook on firebase
+    name: Deploy preview version of the widgetbook on firebase
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -30,8 +30,9 @@ jobs:
         run: flutter pub get
       - name: Build example app
         run: |
-          cd example
-          flutter build web -t widgetbook/main.dart -o ../build --no-tree-shake-icons
+          cd widgetbook
+          flutter pub get
+          flutter build web -o ../build --no-tree-shake-icons
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: "${{ secrets.GITHUB_TOKEN }}"

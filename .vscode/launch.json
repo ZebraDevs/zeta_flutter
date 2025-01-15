@@ -9,10 +9,9 @@
     },
     {
       "name": "Widgetbook",
-      "cwd": "example",
+      "cwd": "widgetbook",
       "request": "launch",
-      "type": "dart",
-      "program": "widgetbook/main.dart"
+      "type": "dart"
     },
     {
       "name": "zeta (profile mode)",
