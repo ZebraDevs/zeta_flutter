@@ -3,14 +3,14 @@ import 'package:widgetbook/widgetbook.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 class ZetaAddonData {
-  const ZetaAddonData(this.rounded, this.themeMode, this.contrast);
+  const ZetaAddonData({this.rounded = true, this.themeMode = ThemeMode.light, this.contrast = ZetaContrast.aa});
   final bool rounded;
   final ThemeMode themeMode;
   final ZetaContrast contrast;
 }
 
 class ZetaAddon extends WidgetbookAddon<ZetaAddonData> {
-  ZetaAddon({this.data = const ZetaAddonData(false, ThemeMode.system, ZetaContrast.aa)}) : super(name: 'Theme');
+  ZetaAddon(this.data) : super(name: 'Theme');
   final ZetaAddonData data;
 
   @override
@@ -106,13 +106,20 @@ class ZetaAddon extends WidgetbookAddon<ZetaAddonData> {
   @override
   ZetaAddonData valueFromQueryGroup(Map<String, String> group) {
     return ZetaAddonData(
-      group['Rounded'] == 'Rounded',
-      group['Theme Mode'] == 'Dark' ? ThemeMode.dark : ThemeMode.light,
-      group['Contrast'] == 'AA'
-          ? ZetaContrast.aa
-          : group['Contrast'] == 'AAA'
-              ? ZetaContrast.aaa
-              : data.contrast,
-    );
+        rounded: group['Rounded'] == 'Rounded'
+            ? true
+            : group['Rounded'] == 'Sharp'
+                ? false
+                : data.rounded,
+        themeMode: group['Theme Mode'] == 'Dark'
+            ? ThemeMode.dark
+            : group['Theme Mode'] == 'Light'
+                ? ThemeMode.light
+                : data.themeMode,
+        contrast: group['Contrast'] == 'AAA'
+            ? ZetaContrast.aaa
+            : group['Contrast'] == 'AA'
+                ? ZetaContrast.aa
+                : data.contrast);
   }
 }

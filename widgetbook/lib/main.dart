@@ -71,7 +71,7 @@ class WidgetbookApp extends StatelessWidget {
         InspectorAddon(),
         ZoomAddon(),
         TextScaleAddon(min: 1, max: 2.5, initialScale: 1),
-        ZetaAddon(),
+        ZetaAddon(ZetaAddonData()),
       ],
     );
   }
