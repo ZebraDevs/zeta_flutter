@@ -36,7 +36,6 @@ class ZetaThemeServiceData extends Equatable {
   List<Object?> get props => [themeId, themeMode, contrast, fontFamily];
 }
 
-// TODO(colors): Re-add custom font somewhere (not here)
 // TODO(colors): Add tests
 /// `ZetaThemeService` is an abstract class.
 /// It provides the structure for loading and saving themes in Zeta application.

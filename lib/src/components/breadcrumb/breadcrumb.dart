@@ -316,6 +316,12 @@ class _TruncatedItemState extends State<TruncatedItem> {
                     }
                     return colors.mainDefault;
                   }),
+                  iconColor: WidgetStateProperty.resolveWith((states) {
+                    if (states.contains(WidgetState.disabled)) {
+                      return colors.mainDisabled;
+                    }
+                    return colors.mainDefault;
+                  }),
                   shape: WidgetStatePropertyAll(
                     RoundedRectangleBorder(
                       borderRadius: (rounded ? Zeta.of(context).radius.minimal : Zeta.of(context).radius.none),
