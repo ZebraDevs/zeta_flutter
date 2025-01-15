@@ -5,6 +5,7 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import '../../../zeta_flutter.dart';
 
 /// Notification list items are used in notification lists.
+///
 /// {@category Components}
 ///
 /// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=25043-100110&node-type=canvas&m=dev
@@ -223,7 +224,12 @@ class ZetaNotificationListItem extends ZetaStatelessWidget {
                           ),
                         ].gap(Zeta.of(context).spacing.small),
                       ),
-                      if (action != null) Container(alignment: Alignment.bottomRight, child: action),
+                      if (action != null)
+                        Container(
+                          alignment: Alignment.bottomRight,
+                          margin: EdgeInsets.only(top: Zeta.of(context).spacing.small),
+                          child: action,
+                        ),
                     ],
                   ).paddingAll(Zeta.of(context).spacing.small),
                 ),

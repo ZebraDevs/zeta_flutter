@@ -5,6 +5,9 @@ import 'package:flutter/services.dart';
 import '../../../zeta_flutter.dart';
 import 'internal_text_input.dart';
 
+// TODO(UX-895): Text Input connected left
+// TODO(UX-1360): Text Input disabled bug
+
 /// Text inputs allow the user to enter text.
 ///
 /// To show error messages on the text input, use the [validator]. The string returned from this function will be displayed as the error message.

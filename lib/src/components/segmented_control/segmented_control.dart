@@ -224,26 +224,20 @@ class _SegmentState<T> extends State<_Segment<T>> with TickerProviderStateMixin<
           splashFactory: NoSplash.splashFactory,
           borderRadius: context.rounded ? Zeta.of(context).radius.minimal : Zeta.of(context).radius.none,
           onTap: widget.onTap,
-          child: IndexedStack(
-            alignment: Alignment.center,
-            children: [
-              widget.child,
-              IconTheme(
-                data: IconThemeData(size: Zeta.of(context).spacing.xl),
-                child: DefaultTextStyle(
-                  style: ZetaTextStyles.labelMedium.copyWith(
-                    color: colors.mainDefault,
-                  ),
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: Zeta.of(context).spacing.xl_4,
-                      vertical: Zeta.of(context).spacing.minimum,
-                    ),
-                    child: widget.child,
-                  ),
-                ),
+          child: IconTheme(
+            data: IconThemeData(size: Zeta.of(context).spacing.xl),
+            child: DefaultTextStyle(
+              style: ZetaTextStyles.labelMedium.copyWith(
+                color: colors.mainDefault,
               ),
-            ],
+              child: Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: Zeta.of(context).spacing.large,
+                  vertical: Zeta.of(context).spacing.minimum,
+                ),
+                child: Center(child: widget.child),
+              ),
+            ),
           ),
         ),
       ),

@@ -19,6 +19,9 @@ enum ZetaSystemBannerStatus {
 
 /// A banner displays an important, succinct message, and provides action for users to address.
 /// It draws the attention to the message by displaying it at the top in various colors.
+///
+/// To display on screen use `ScaffoldMessenger.of(context).showMaterialBanner(ZetaSystemBanner())`. This will display the banner at the top of the page, below the AppBar.
+///
 /// {@category Components}
 ///
 /// Figma: https://www.figma.com/file/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=22195-43965
