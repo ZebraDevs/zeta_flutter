@@ -22,6 +22,9 @@ jobs:
           channel: stable
           flutter-version: 3.27.x
       - run: dart run build_runner build --delete-conflicting-outputs
+      - run: |
+          cd widgetbook
+          flutter pub get
       - uses: ZebraDevs/flutter-code-quality@main
         with:
           token: ${{secrets.GITHUB_TOKEN}}
@@ -60,6 +63,7 @@ jobs:
       - name: Build example app
         run: |
           cd example
+          flutter pub get
           flutter build web -t widgetbook/main.dart -o ../build --no-tree-shake-icons
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
