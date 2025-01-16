@@ -96,6 +96,8 @@ Widget contextual(BuildContext context) => ZetaTopAppBar(
           : [],
     );
 
+final searchController = ZetaSearchController()..startSearch();
+
 @widgetbook.UseCase(
   name: 'Search',
   type: ZetaTopAppBar,
@@ -104,11 +106,8 @@ Widget contextual(BuildContext context) => ZetaTopAppBar(
       'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=24183-7226&t=QGJWipbvqxlvCtMR-4',
 )
 Widget search(BuildContext context) {
-  late final searchController = ZetaSearchController()..startSearch();
-
   return StatefulBuilder(
     builder: (context, setState) {
-      searchController.startSearch();
       return ZetaTopAppBar.search(
         leading: IconButton(
           onPressed: () {},

@@ -15,7 +15,7 @@ class TopAppBarExample extends StatefulWidget {
 }
 
 class _TopAppBarExampleState extends State<TopAppBarExample> {
-  final _searchController = ZetaSearchController();
+  final _searchController = ZetaSearchController()..startSearch();
 
   @override
   Widget build(BuildContext context) {
