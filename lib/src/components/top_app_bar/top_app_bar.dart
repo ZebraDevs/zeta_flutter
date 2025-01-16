@@ -198,7 +198,6 @@ class _ZetaTopAppBarState extends State<ZetaTopAppBar> {
         verticalDirection: oldRow.verticalDirection,
         children: oldRow.children.map(
           (item) {
-            // TODO(UX-1359): Fix support for avatar in title.
             if (item is ZetaAvatar) {
               item = item.copyWith(size: ZetaAvatarSize.xxxs);
             }
@@ -326,6 +325,7 @@ class _ZetaTopAppBarState extends State<ZetaTopAppBar> {
             iconTheme: IconThemeData(color: colors.mainDefault),
             leading: leading,
             toolbarHeight: spacing.xl_9,
+            titleSpacing: leading != null || widget.automaticallyImplyLeading ? 0 : spacing.large,
             automaticallyImplyLeading: widget.automaticallyImplyLeading,
             surfaceTintColor: Colors.transparent,
             centerTitle: widget.type == ZetaTopAppBarType.centered,
