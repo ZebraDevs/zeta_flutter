@@ -58,6 +58,7 @@ class ZetaTextInput extends ZetaTextFormField {
 
             return InternalTextInput(
               label: label,
+              disabled: disabled,
               rounded: rounded,
               hintText: hintText,
               placeholder: placeholder,
