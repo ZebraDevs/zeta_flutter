@@ -69,6 +69,11 @@ class _ZetaTopAppBarSearchFieldState extends State<ZetaTopAppBarSearchField> wit
     widget.searchController?.addListener(_onSearchControllerChanged);
     widget.searchController?.textEditingController ??= TextEditingController();
 
+    if (_isSearching) {
+      _animationController.value = 1.0;
+      _textFocusNode.requestFocus();
+    }
+
     super.initState();
   }
 
