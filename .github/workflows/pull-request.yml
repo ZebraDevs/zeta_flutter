@@ -62,7 +62,7 @@ jobs:
         run: flutter pub get
       - name: Build example app
         run: |
-          cd example
+          cd widgetbook
           flutter pub get
           flutter build web -o ../build --no-tree-shake-icons
       - uses: FirebaseExtended/action-hosting-deploy@v0
