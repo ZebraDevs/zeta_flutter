@@ -246,7 +246,7 @@ class ZetaNotificationListItem extends ZetaStatelessWidget {
 
     return BoxDecoration(
       color: notificationRead ? colors.surfaceDefault : colors.surfaceSelected,
-      borderRadius: Zeta.of(context).radius.rounded,
+      borderRadius: BorderRadius.all(Zeta.of(context).radius.rounded),
       boxShadow: (showDivider ?? false)
           ? [
               BoxShadow(
@@ -323,7 +323,7 @@ class ZetaNotificationBadge extends StatelessWidget {
                 color: iconColor,
               )
             : ClipRRect(
-                borderRadius: Zeta.of(context).radius.rounded,
+                borderRadius: BorderRadius.all(Zeta.of(context).radius.rounded),
                 child: SizedBox.fromSize(
                   size: Size.square(
                     Zeta.of(context).spacing.xl_8,

@@ -284,7 +284,7 @@ class StepDivider extends StatelessWidget {
         ZetaStepperType.vertical => spacing.xl_8,
       },
       decoration: BoxDecoration(
-        borderRadius: Zeta.of(context).radius.full,
+        borderRadius: BorderRadius.all(Zeta.of(context).radius.full),
         color: color,
       ),
     );
@@ -337,7 +337,7 @@ class HorizontalStep extends StatelessWidget {
       child: InkWell(
         onTap: onStepTapped,
         canRequestFocus: !step.disabled,
-        borderRadius: radius.minimal,
+        borderRadius: BorderRadius.all(radius.minimal),
         child: Padding(
           padding: EdgeInsets.only(left: spacing.small, right: spacing.small, bottom: spacing.small),
           child: Column(
@@ -418,7 +418,7 @@ class VerticalStep extends StatelessWidget {
       label: step.semanticLabel,
       excludeSemantics: step.semanticLabel != null,
       child: InkWell(
-        borderRadius: Zeta.of(context).radius.minimal,
+        borderRadius: BorderRadius.all(Zeta.of(context).radius.minimal),
         onTap: onStepTapped,
         canRequestFocus: !step.disabled,
         child: Container(

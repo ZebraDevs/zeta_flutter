@@ -67,7 +67,7 @@ class ZetaBottomSheet extends ZetaStatelessWidget {
                   height: 4,
                   decoration: BoxDecoration(
                     color: colors.surfaceDisabled,
-                    borderRadius: radius.full,
+                    borderRadius: BorderRadius.all(radius.full),
                   ),
                 ),
               ),

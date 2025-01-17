@@ -216,7 +216,7 @@ class _ZetaChipState extends State<ZetaChip> {
         return InkWell(
           statesController: !disabled ? _controller : null,
           mouseCursor: !disabled ? SystemMouseCursors.click : SystemMouseCursors.basic,
-          borderRadius: rounded ? Zeta.of(context).radius.full : Zeta.of(context).radius.none,
+          borderRadius: BorderRadius.all(rounded ? Zeta.of(context).radius.full : Zeta.of(context).radius.none),
           onTap: () {
             if (!disabled) {
               if (widget.selected != null) {
@@ -256,7 +256,7 @@ class _ZetaChipState extends State<ZetaChip> {
                   return colors.surfaceDefault;
                 }
               }(),
-              borderRadius: rounded ? Zeta.of(context).radius.full : Zeta.of(context).radius.none,
+              borderRadius: BorderRadius.all(rounded ? Zeta.of(context).radius.full : Zeta.of(context).radius.none),
               border: Border.fromBorderSide(
                 BorderSide(
                   color: _controller.value.contains(WidgetState.focused) ? colors.borderPrimary : colors.borderDefault,

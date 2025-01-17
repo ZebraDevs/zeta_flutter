@@ -59,7 +59,7 @@ class ZetaInPageBanner extends ZetaStatelessWidget {
         decoration: BoxDecoration(
           color: backgroundColor,
           border: Border.all(color: borderColor),
-          borderRadius: rounded ? Zeta.of(context).radius.minimal : Zeta.of(context).radius.none,
+          borderRadius: BorderRadius.all(rounded ? Zeta.of(context).radius.minimal : Zeta.of(context).radius.none),
         ),
         padding: EdgeInsetsDirectional.only(
           bottom: Zeta.of(context).spacing.medium,

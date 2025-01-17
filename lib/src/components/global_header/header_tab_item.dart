@@ -74,7 +74,7 @@ class _ZetaGlobalHeaderItemState extends State<ZetaGlobalHeaderItem> {
         color: Colors.transparent,
         child: InkWell(
           onTap: widget.onTap,
-          borderRadius: context.rounded ? radius.rounded : radius.none,
+          borderRadius: BorderRadius.all(context.rounded ? radius.rounded : radius.none),
           child: Row(
             children: [
               Text(widget.label, style: TextStyle(color: foregroundColor)),

@@ -38,7 +38,7 @@ class ZetaSearchBar extends ZetaTextFormField {
 
             final _ZetaSearchBarState state = field as _ZetaSearchBarState;
 
-            final BorderRadius borderRadius = switch (shape) {
+            final Radius borderRadius = switch (shape) {
               ZetaWidgetBorder.rounded => zeta.radius.minimal,
               ZetaWidgetBorder.full => zeta.radius.full,
               _ => zeta.radius.none,
@@ -66,7 +66,7 @@ class ZetaSearchBar extends ZetaTextFormField {
                   size: size,
                   disabled: disabled,
                   constrained: true,
-                  borderRadius: borderRadius,
+                  borderRadius: BorderRadius.all(borderRadius),
                   controller: state.effectiveController,
                   keyboardType: TextInputType.text,
                   textInputAction: textInputAction,

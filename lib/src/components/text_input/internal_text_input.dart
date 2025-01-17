@@ -280,7 +280,8 @@ class InternalTextInputState extends State<InternalTextInput> {
   }
 
   OutlineInputBorder _baseBorder(bool rounded) => OutlineInputBorder(
-        borderRadius: widget.borderRadius ?? (rounded ? Zeta.of(context).radius.minimal : Zeta.of(context).radius.none),
+        borderRadius: widget.borderRadius ??
+            BorderRadius.all(rounded ? Zeta.of(context).radius.minimal : Zeta.of(context).radius.none),
         borderSide: BorderSide(
           color: !widget.disabled ? (_hovered ? _colors.borderSelected : _colors.borderSubtle) : _colors.borderDefault,
         ),

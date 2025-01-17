@@ -104,7 +104,7 @@ ButtonStyle buttonStyle(
   return ButtonStyle(
     minimumSize: WidgetStateProperty.all(Size.square(Zeta.of(context).spacing.xl_4)),
     shape: WidgetStateProperty.all(
-      RoundedRectangleBorder(borderRadius: borderType.radius(context)),
+      RoundedRectangleBorder(borderRadius: BorderRadius.all(borderType.radius(context))),
     ),
     backgroundColor: WidgetStateProperty.resolveWith<Color?>(
       (states) {
