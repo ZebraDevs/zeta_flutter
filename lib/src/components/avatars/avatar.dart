@@ -534,7 +534,6 @@ class ZetaAvatarBadge extends StatelessWidget {
       margin: const EdgeInsets.all(0.01),
       decoration: BoxDecoration(
         color: backgroundColor,
-        shape: BoxShape.rectangle,
         borderRadius: BorderRadius.circular(badgeSize / 2),
       ),
       child: value != null
