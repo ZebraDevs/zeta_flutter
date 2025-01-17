@@ -38,7 +38,7 @@ void main() {
     final DecoratedBox box = tester.firstWidget(childFinder);
 
     expect(box.decoration.runtimeType, BoxDecoration);
-    expect((box.decoration as BoxDecoration).borderRadius, mockZeta.radius.full);
+    expect((box.decoration as BoxDecoration).borderRadius, BorderRadius.all(mockZeta.radius.full));
     expect(Zeta.of(key.currentContext!).rounded, true);
   });
 
@@ -62,7 +62,7 @@ void main() {
     final DecoratedBox box = tester.firstWidget(childFinder);
 
     expect(box.decoration.runtimeType, BoxDecoration);
-    expect((box.decoration as BoxDecoration).borderRadius, mockZeta.radius.none);
+    expect((box.decoration as BoxDecoration).borderRadius, BorderRadius.all(mockZeta.radius.none));
   });
 
   testWidgets('Global sharp, local round, not inherited', (WidgetTester tester) async {
@@ -88,7 +88,7 @@ void main() {
     final DecoratedBox box = tester.firstWidget(childFinder);
 
     expect(box.decoration.runtimeType, BoxDecoration);
-    expect((box.decoration as BoxDecoration).borderRadius, mockZeta.radius.full);
+    expect((box.decoration as BoxDecoration).borderRadius, BorderRadius.all(mockZeta.radius.full));
   });
 
   testWidgets('Global sharp, scoped round inherited', (WidgetTester tester) async {
@@ -129,10 +129,10 @@ void main() {
     final DecoratedBox roundBox = tester.firstWidget(roundChildFinder);
 
     expect(sharpBox.decoration.runtimeType, BoxDecoration);
-    expect((sharpBox.decoration as BoxDecoration).borderRadius, mockZeta.radius.none);
+    expect((sharpBox.decoration as BoxDecoration).borderRadius, BorderRadius.all(mockZeta.radius.none));
 
     expect(roundBox.decoration.runtimeType, BoxDecoration);
-    expect((roundBox.decoration as BoxDecoration).borderRadius, mockZeta.radius.full);
+    expect((roundBox.decoration as BoxDecoration).borderRadius, BorderRadius.all(mockZeta.radius.full));
   });
 
   testWidgets('Global sharp, scoped round, scoped sharp inherited', (WidgetTester tester) async {
@@ -173,10 +173,10 @@ void main() {
     final DecoratedBox roundBox = tester.firstWidget(roundChildFinder);
 
     expect(sharpBox.decoration.runtimeType, BoxDecoration);
-    expect((sharpBox.decoration as BoxDecoration).borderRadius, mockZeta.radius.none);
+    expect((sharpBox.decoration as BoxDecoration).borderRadius, BorderRadius.all(mockZeta.radius.none));
 
     expect(roundBox.decoration.runtimeType, BoxDecoration);
-    expect((roundBox.decoration as BoxDecoration).borderRadius, mockZeta.radius.none);
+    expect((roundBox.decoration as BoxDecoration).borderRadius, BorderRadius.all(mockZeta.radius.none));
   });
 
   testWidgets('ZetaRoundedScope debugFillProperties works correctly', (WidgetTester tester) async {
