@@ -21,7 +21,16 @@ Widget defaultTopAppBar(BuildContext context) => ZetaTopAppBar(
         icon: ZetaIcon(iconKnob(context, name: 'Leading Icon', initial: ZetaIcons.hamburger_menu)),
         onPressed: () {},
       ),
-      title: Text(context.knobs.string(label: 'Title', initialValue: 'Title')),
+      title: Row(
+        children: [
+          ZetaAvatar.initials(
+            initials: 'ZD',
+            size: ZetaAvatarSize.xxxs,
+          ),
+          SizedBox(width: Zeta.of(context).spacing.medium),
+          Text(context.knobs.string(label: 'Title', initialValue: 'Title')),
+        ],
+      ),
       actions: context.knobs.boolean(label: 'Enabled actions', initialValue: true)
           ? [
               IconButton(onPressed: () {}, icon: const ZetaIcon(Icons.language)),
