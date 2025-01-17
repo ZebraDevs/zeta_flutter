@@ -563,7 +563,6 @@ class ZetaAvatarBadge extends StatelessWidget {
               ? badgeSize * 1.8
               : paddedSize
           : paddedSize,
-      // width: paddedSize,
       height: paddedSize,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
