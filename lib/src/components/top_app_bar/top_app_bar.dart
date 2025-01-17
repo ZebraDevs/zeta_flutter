@@ -26,6 +26,7 @@ class ZetaTopAppBar extends ZetaStatefulWidget implements PreferredSizeWidget {
     this.title,
     this.titleTextStyle,
     this.type = ZetaTopAppBarType.defaultAppBar,
+    this.titleSpacing,
   })  : shrinks = false,
         onSearch = null,
         searchHintText = null,
@@ -45,6 +46,7 @@ class ZetaTopAppBar extends ZetaStatefulWidget implements PreferredSizeWidget {
     this.leading,
     this.title,
     this.titleTextStyle,
+    this.titleSpacing,
   })  : type = ZetaTopAppBarType.centered,
         onSearch = null,
         searchHintText = null,
@@ -78,6 +80,7 @@ class ZetaTopAppBar extends ZetaStatefulWidget implements PreferredSizeWidget {
     this.microphoneSemanticLabel,
     this.searchSemanticLabel,
     this.searchBackSemanticLabel,
+    this.titleSpacing,
   })  : shrinks = false,
         assert(type != ZetaTopAppBarType.extended, 'Search app bars cannot be extended');
 
@@ -93,6 +96,7 @@ class ZetaTopAppBar extends ZetaStatefulWidget implements PreferredSizeWidget {
     this.title,
     this.titleTextStyle,
     this.shrinks = true,
+    this.titleSpacing,
   })  : type = ZetaTopAppBarType.extended,
         onSearch = null,
         searchHintText = null,
@@ -148,6 +152,9 @@ class ZetaTopAppBar extends ZetaStatefulWidget implements PreferredSizeWidget {
   /// The semantic label for the back icon when search is open.
   final String? searchBackSemanticLabel;
 
+  /// The spacing around [title] content on the horizontal axis.
+  final double? titleSpacing;
+
   @override
   State<ZetaTopAppBar> createState() => _ZetaTopAppBarState();
 
@@ -168,7 +175,8 @@ class ZetaTopAppBar extends ZetaStatefulWidget implements PreferredSizeWidget {
       ..add(StringProperty('clearSemanticLabel', clearSemanticLabel))
       ..add(StringProperty('microphoneSemanticLabel', microphoneSemanticLabel))
       ..add(StringProperty('searchSemanticLabel', searchSemanticLabel))
-      ..add(StringProperty('searchBackSemanticLabel', searchBackSemanticLabel));
+      ..add(StringProperty('searchBackSemanticLabel', searchBackSemanticLabel))
+      ..add(DoubleProperty('titleSpacing', titleSpacing));
   }
 }
 
@@ -185,32 +193,9 @@ class _ZetaTopAppBarState extends State<ZetaTopAppBar> {
   }
 
   Widget _getTitle(ZetaColors colors) {
-    Widget? title = widget.title;
-    if (widget.title is Row) {
-      final oldRow = widget.title! as Row;
-      title = Row(
-        crossAxisAlignment: oldRow.crossAxisAlignment,
-        key: oldRow.key,
-        mainAxisAlignment: oldRow.mainAxisAlignment,
-        mainAxisSize: oldRow.mainAxisSize,
-        textBaseline: oldRow.textBaseline,
-        textDirection: oldRow.textDirection,
-        verticalDirection: oldRow.verticalDirection,
-        children: oldRow.children.map(
-          (item) {
-            // TODO(UX-1359): Fix support for avatar in title.
-            if (item is ZetaAvatar) {
-              item = item.copyWith(size: ZetaAvatarSize.xxxs);
-            }
-            return item;
-          },
-        ).toList(),
-      );
-    }
-
     return DefaultTextStyle(
       style: (widget.titleTextStyle ?? ZetaTextStyles.bodyLarge).copyWith(color: colors.mainDefault),
-      child: title ?? const Text(' '),
+      child: widget.title ?? const Text(' '),
     );
   }
 
@@ -326,6 +311,8 @@ class _ZetaTopAppBarState extends State<ZetaTopAppBar> {
             iconTheme: IconThemeData(color: colors.mainDefault),
             leading: leading,
             toolbarHeight: spacing.xl_9,
+            titleSpacing:
+                widget.titleSpacing ?? (leading != null || widget.automaticallyImplyLeading ? 0 : spacing.large),
             automaticallyImplyLeading: widget.automaticallyImplyLeading,
             surfaceTintColor: Colors.transparent,
             centerTitle: widget.type == ZetaTopAppBarType.centered,

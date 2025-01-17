@@ -287,6 +287,7 @@ class ZetaAvatar extends ZetaStatelessWidget {
         child: SelectionContainer.disabled(
           child: Column(
             mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Stack(
                 children: [
