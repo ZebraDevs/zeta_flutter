@@ -534,7 +534,8 @@ class ZetaAvatarBadge extends StatelessWidget {
       margin: const EdgeInsets.all(0.01),
       decoration: BoxDecoration(
         color: backgroundColor,
-        shape: BoxShape.circle,
+        shape: BoxShape.rectangle,
+        borderRadius: BorderRadius.circular(badgeSize / 2),
       ),
       child: value != null
           ? Center(
@@ -557,13 +558,16 @@ class ZetaAvatarBadge extends StatelessWidget {
     );
 
     return Container(
-      width: type == ZetaAvatarBadgeType.icon ? paddedSize : badgeSize,
-      height: type == ZetaAvatarBadgeType.icon ? paddedSize : badgeSize,
+      width: value != null
+          ? value! > 9
+              ? badgeSize * 1.8
+              : paddedSize
+          : paddedSize,
+      // width: paddedSize,
+      height: paddedSize,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
-        border: type != ZetaAvatarBadgeType.notification
-            ? Border.all(width: borderSize, color: Zeta.of(context).colors.surfaceDefault)
-            : null,
+        border: Border.all(width: borderSize, color: Zeta.of(context).colors.surfaceDefault),
       ),
       child: innerContent,
     );
