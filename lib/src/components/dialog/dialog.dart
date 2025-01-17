@@ -135,7 +135,7 @@ class ZetaDialog extends ZetaStatelessWidget {
           horizontal: Zeta.of(context).spacing.xl,
           vertical: Zeta.of(context).spacing.xl_2,
         ),
-        shape: RoundedRectangleBorder(borderRadius: Zeta.of(context).radius.large),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Zeta.of(context).radius.large)),
         title: icon != null || title != null
             ? Column(
                 mainAxisSize: MainAxisSize.min,

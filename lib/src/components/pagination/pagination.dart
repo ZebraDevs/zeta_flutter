@@ -220,7 +220,7 @@ class _ZetaPaginationState extends State<ZetaPagination> {
 
         decoration: BoxDecoration(
           border: Border.all(color: colors.borderSubtle),
-          borderRadius: rounded ? Zeta.of(context).radius.minimal : Zeta.of(context).radius.none,
+          borderRadius: BorderRadius.all(rounded ? Zeta.of(context).radius.minimal : Zeta.of(context).radius.none),
         ),
         // TODO(UX-1135): Replace with Zeta Dropdown
         child: DropdownButton<int>(
@@ -347,7 +347,7 @@ class _PaginationItem extends ZetaStatelessWidget {
           minWidth: itemWidth,
         ),
         child: Material(
-          borderRadius: rounded ? Zeta.of(context).radius.minimal : Zeta.of(context).radius.none,
+          borderRadius: BorderRadius.all(rounded ? Zeta.of(context).radius.minimal : Zeta.of(context).radius.none),
           color: disabled
               ? colors.stateDisabledDisabled
               : selected
@@ -355,14 +355,15 @@ class _PaginationItem extends ZetaStatelessWidget {
                   : colors.stateDefaultEnabled,
           child: InkWell(
             onTap: disabled ? null : onPressed,
-            borderRadius: rounded ? Zeta.of(context).radius.minimal : Zeta.of(context).radius.none,
+            borderRadius: BorderRadius.all(rounded ? Zeta.of(context).radius.minimal : Zeta.of(context).radius.none),
             hoverColor: selected ? colors.stateInverseHover : colors.stateDefaultHover,
             enableFeedback: false,
             child: Container(
               alignment: Alignment.center,
               padding: EdgeInsets.symmetric(horizontal: Zeta.of(context).spacing.minimum),
               decoration: BoxDecoration(
-                borderRadius: rounded ? Zeta.of(context).radius.minimal : Zeta.of(context).radius.none,
+                borderRadius:
+                    BorderRadius.all(rounded ? Zeta.of(context).radius.minimal : Zeta.of(context).radius.none),
               ),
               child: child,
             ),

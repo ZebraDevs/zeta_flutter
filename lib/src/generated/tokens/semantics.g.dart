@@ -2103,6 +2103,7 @@ class ZetaSemanticsAAA implements ZetaSemantics {
       : colors = ZetaColorsAAA(primitives: primitives),
         spacing = ZetaSpacingAAA(primitives: primitives),
         radius = ZetaRadiusAAA(primitives: primitives);
+
   @override
   final ZetaPrimitives primitives;
   @override

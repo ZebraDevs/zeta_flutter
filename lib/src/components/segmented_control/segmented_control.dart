@@ -145,7 +145,8 @@ class _ZetaSegmentedControlState<T> extends State<ZetaSegmentedControl<T>>
               padding: EdgeInsets.all(Zeta.of(context).spacing.minimum),
               decoration: BoxDecoration(
                 color: colors.surfaceDisabled,
-                borderRadius: rounded ? Zeta.of(context).radius.minimal : Zeta.of(context).radius.none,
+                borderRadius:
+                    BorderRadius.all(rounded ? Zeta.of(context).radius.minimal : Zeta.of(context).radius.none),
               ),
               child: AnimatedBuilder(
                 animation: _thumbScaleAnimation,
@@ -222,7 +223,8 @@ class _SegmentState<T> extends State<_Segment<T>> with TickerProviderStateMixin<
         color: Colors.transparent,
         child: InkWell(
           splashFactory: NoSplash.splashFactory,
-          borderRadius: context.rounded ? Zeta.of(context).radius.minimal : Zeta.of(context).radius.none,
+          borderRadius:
+              BorderRadius.all(context.rounded ? Zeta.of(context).radius.minimal : Zeta.of(context).radius.none),
           onTap: widget.onTap,
           child: IconTheme(
             data: IconThemeData(size: Zeta.of(context).spacing.xl),
@@ -632,7 +634,7 @@ class _RenderSegmentedControl<T> extends RenderBox
   void _paintThumb(PaintingContext paintingContext, Offset offset, Rect thumbRect) {
     final RRect thumbRRect = RRect.fromRectAndRadius(
       thumbRect.shift(offset),
-      rounded ? Zeta.of(context).radius.minimal.topLeft : Zeta.of(context).radius.none.topLeft,
+      rounded ? Zeta.of(context).radius.minimal : Zeta.of(context).radius.none,
     );
 
     paintingContext.canvas.drawRRect(

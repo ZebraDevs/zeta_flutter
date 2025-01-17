@@ -14,7 +14,7 @@ enum ZetaWidgetBorder {
   full;
 
   /// Returns the border radius for the given [ZetaWidgetBorder].
-  BorderRadius radius(BuildContext context) => switch (this) {
+  Radius radius(BuildContext context) => switch (this) {
         ZetaWidgetBorder.sharp => Zeta.of(context).radius.none,
         ZetaWidgetBorder.rounded => Zeta.of(context).radius.rounded,
         ZetaWidgetBorder.full => Zeta.of(context).radius.full,

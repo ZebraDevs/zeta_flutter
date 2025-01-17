@@ -97,7 +97,7 @@ class ZetaMenuItem extends ZetaStatelessWidget {
             return ConstrainedBox(
               constraints: BoxConstraints(minHeight: Zeta.of(context).spacing.xl_8),
               child: InkWell(
-                borderRadius: radius.rounded,
+                borderRadius: BorderRadius.all(radius.rounded),
                 onTap: _onTap,
                 child: Padding(
                   padding: EdgeInsets.symmetric(
@@ -135,7 +135,7 @@ class ZetaMenuItem extends ZetaStatelessWidget {
           case ZetaMenuItemType.vertical:
             return InkWell(
               onTap: _onTap,
-              borderRadius: radius.rounded,
+              borderRadius: BorderRadius.all(radius.rounded),
               child: Padding(
                 padding: EdgeInsets.symmetric(
                   horizontal: Zeta.of(context).spacing.large,

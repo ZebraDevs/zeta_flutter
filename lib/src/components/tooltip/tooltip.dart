@@ -124,7 +124,7 @@ class ZetaTooltip extends ZetaStatelessWidget {
                           child: DecoratedBox(
                             decoration: BoxDecoration(
                               color: color,
-                              borderRadius: context.rounded ? Zeta.of(context).radius.minimal : null,
+                              borderRadius: context.rounded ? BorderRadius.all(Zeta.of(context).radius.minimal) : null,
                             ),
                             child: Padding(
                               padding: padding ??

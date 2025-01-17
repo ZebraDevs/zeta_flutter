@@ -324,7 +324,8 @@ class _TruncatedItemState extends State<TruncatedItem> {
                   }),
                   shape: WidgetStatePropertyAll(
                     RoundedRectangleBorder(
-                      borderRadius: (rounded ? Zeta.of(context).radius.minimal : Zeta.of(context).radius.none),
+                      borderRadius:
+                          BorderRadius.all(rounded ? Zeta.of(context).radius.minimal : Zeta.of(context).radius.none),
                     ),
                   ),
                   side: WidgetStateProperty.resolveWith((states) {

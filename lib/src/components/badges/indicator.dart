@@ -126,7 +126,7 @@ class ZetaIndicator extends ZetaStatelessWidget {
                   color: zetaColors.mainInverse,
                 ),
                 color: (inverse ? foregroundColor : Colors.transparent),
-                borderRadius: Zeta.of(context).radius.full,
+                borderRadius: BorderRadius.all(Zeta.of(context).radius.full),
               )
             : null,
         child: Center(

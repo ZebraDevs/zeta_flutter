@@ -302,7 +302,7 @@ class _ValueField extends StatelessWidget {
       borderSide: BorderSide(
         color: !disabled ? _colors.borderDefault : _colors.borderDisabled,
       ),
-      borderRadius: rounded ? radius.minimal : radius.none,
+      borderRadius: BorderRadius.all(rounded ? radius.minimal : radius.none),
     );
   }
 
