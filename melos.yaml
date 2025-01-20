@@ -5,13 +5,15 @@ packages:
   - example/*
   - widgetbook/*
 
+command:
+  publish:
+    hooks:
+      pre: sh scripts/pre-publish.sh
+
 scripts:
   analyze:
     exec: dart analyze .
   fix:
     exec: dart fix --apply
-
-command:
-  publish:
-    hooks:
-      pre: echo 'hi'
+  cp-changelog:
+    exec: cp ../../CHANGELOG.md .
