@@ -1,14 +1,34 @@
 {
   "packages": {
+    "packages/zeta_flutter": {
+      "release-type": "dart",
+      "package-name": "zeta_flutter"
+    },
+    "packages/zeta_flutter_theme": {
+      "release-type": "dart",
+      "package-name": "zeta_flutter_theme"
+    },
+    "packages/zeta_flutter_utils": {
+      "release-type": "dart",
+      "package-name": "zeta_flutter_utils"
+    },
+    "packages/zeta_icons": {
+      "release-type": "dart",
+      "package-name": "zeta_icons"
+    },
     ".": {
-      "release-type": "dart"
+      "release-type": "dart",
+      "package-name": "workspace"
     }
   },
   "include-component-in-tag": false,
   "extra-files": [
     "example/lib/home.dart",
-    "example/widgetbook/pages/introduction.dart"
+    "widgetbook/lib/introduction.dart"
   ],
+  "prerelease-type": "alpha",
+  "separate-pull-requests": true,
+  "prerelease": true,
   "changelog-sections": [
     {
       "type": "feat",

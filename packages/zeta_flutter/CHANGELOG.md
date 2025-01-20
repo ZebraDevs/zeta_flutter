@@ -1,38 +1,5 @@
 # Changelog
 
-## [1.0.0-alpha](https://github.com/ZebraDevs/zeta_flutter/compare/v0.20.2...v1.0.0) (2025-01-09)
-
-### ⚠ BREAKING CHANGES
-
-- **UX-1144:** Integrate color tokens with Figma ([#227](https://github.com/ZebraDevs/zeta_flutter/issues/227))
-- Update to Flutter 3.27.0
-
-### ✨ New Features
-
-- **UX-1144:** Integrate color tokens with Figma ([#227](https://github.com/ZebraDevs/zeta_flutter/issues/227)) ([2f23529](https://github.com/ZebraDevs/zeta_flutter/commit/2f235292f860e58a0a62cfc18875b516d87f1e2e))
-
-### 🪲 Bug Fixes
-
-- Use new Color / opacity values ([3588c1c](https://github.com/ZebraDevs/zeta_flutter/commit/3588c1cafd781efd18df98253d9b2deb61ac0344))
-
-### ⛓️ Dependencies
-
-- Update intl and zds_analysis ([1bec853](https://github.com/ZebraDevs/zeta_flutter/commit/1bec8532834e6955b8507b6a38b92184b2f1016b))
-- Update to Flutter 3.27.0 ([3588c1c](https://github.com/ZebraDevs/zeta_flutter/commit/3588c1cafd781efd18df98253d9b2deb61ac0344))
-
-### 🧪 Tests
-
-- Update tests for color changes ([3588c1c](https://github.com/ZebraDevs/zeta_flutter/commit/3588c1cafd781efd18df98253d9b2deb61ac0344))
-
-### 🧹 Miscellaneous Chores
-
-- Remove deprecated fields ([1bec853](https://github.com/ZebraDevs/zeta_flutter/commit/1bec8532834e6955b8507b6a38b92184b2f1016b))
-- Update and implement new lint rules ([#233](https://github.com/ZebraDevs/zeta_flutter/issues/233)) ([1bec853](https://github.com/ZebraDevs/zeta_flutter/commit/1bec8532834e6955b8507b6a38b92184b2f1016b))
-- Update publignore to not ignore docs ([#230](https://github.com/ZebraDevs/zeta_flutter/issues/230)) ([3588c1c](https://github.com/ZebraDevs/zeta_flutter/commit/3588c1cafd781efd18df98253d9b2deb61ac0344))
-- Update publignore to not ignore docs ([#230](https://github.com/ZebraDevs/zeta_flutter/issues/230)) ([9c529fc](https://github.com/ZebraDevs/zeta_flutter/commit/9c529fc978b0654503335279948a982c7d505cbe))
-- **UX-1347:** Update to Flutter 3.27.x ([#232](https://github.com/ZebraDevs/zeta_flutter/issues/232)) ([3588c1c](https://github.com/ZebraDevs/zeta_flutter/commit/3588c1cafd781efd18df98253d9b2deb61ac0344))
-- **UX-1352:** Use dart enhanced enums ([#228](https://github.com/ZebraDevs/zeta_flutter/issues/228)) ([c965dd5](https://github.com/ZebraDevs/zeta_flutter/commit/c965dd5c6a7a3bb98599982f7bf0e12589743652))
-
 ## [0.20.2](https://github.com/ZebraDevs/zeta_flutter/compare/v0.20.1...v0.20.2) (2024-12-20)
 
 ### ⛓️ Dependencies
