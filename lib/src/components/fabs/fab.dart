@@ -270,6 +270,6 @@ class _ZetaFABState extends State<ZetaFAB> {
 
 extension on ZetaWidgetBorder {
   OutlinedBorder buttonShape({required bool isExpanded, required ZetaFabSize size, required BuildContext context}) {
-    return RoundedRectangleBorder(borderRadius: radius(context));
+    return RoundedRectangleBorder(borderRadius: BorderRadius.all(radius(context)));
   }
 }

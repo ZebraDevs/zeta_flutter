@@ -173,8 +173,9 @@ class _CodeWrapperWidget extends StatelessWidget {
                   vertical: Zeta.of(context).spacing.minimum,
                   horizontal: Zeta.of(context).spacing.medium,
                 ),
-                decoration:
-                    BoxDecoration(color: colors.primitives.cool.shade40, borderRadius: Zeta.of(context).radius.rounded),
+                decoration: BoxDecoration(
+                    color: colors.primitives.cool.shade40,
+                    borderRadius: BorderRadius.all(Zeta.of(context).radius.rounded)),
                 child: Text(language),
               ),
             ),

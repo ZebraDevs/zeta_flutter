@@ -274,7 +274,7 @@ class ZetaAvatar extends ZetaStatelessWidget {
             : null);
 
     final innerContent = ClipRRect(
-      borderRadius: Zeta.of(context).radius.full,
+      borderRadius: BorderRadius.all(Zeta.of(context).radius.full),
       child: innerChild,
     );
 

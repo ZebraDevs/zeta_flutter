@@ -111,7 +111,7 @@ class ZetaPriorityPill extends ZetaStatelessWidget {
       value: semanticLabel ?? label,
       child: DecoratedBox(
         decoration: BoxDecoration(
-          borderRadius: rounded ? Zeta.of(context).radius.full : Zeta.of(context).radius.none,
+          borderRadius: BorderRadius.all(rounded ? Zeta.of(context).radius.full : Zeta.of(context).radius.none),
           color: lozengeColor,
         ),
         child: Row(
