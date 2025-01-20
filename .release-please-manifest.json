@@ -3,5 +3,5 @@
   "packages/zeta_flutter_theme": "0.20.1",
   "packages/zeta_flutter_utils": "0.20.1",
   "packages/zeta_icons": "0.20.1",
-  ".": "0.20.1"
+  ".": "1.0.0"
 }
