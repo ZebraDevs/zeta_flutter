@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.14.1](https://github.com/ZebraDevs/zeta_flutter/compare/v1.0.0-alpha.1...v0.14.1) (2025-01-20)
+
+
+### 🧹 Miscellaneous Chores
+
+* Monorepo ([d68d0ee](https://github.com/ZebraDevs/zeta_flutter/commit/d68d0eee9d1b03729ad267701355e7073c3eaaa0))
+* release 0.14.1 ([1b06765](https://github.com/ZebraDevs/zeta_flutter/commit/1b06765a4621ad813aab3f7448b51b50d1582e3d))
+
 ## [1.0.0-alpha](https://github.com/ZebraDevs/zeta_flutter/compare/v0.20.2...v1.0.0) (2025-01-09)
 
 ### ⚠ BREAKING CHANGES
