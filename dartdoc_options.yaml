@@ -1,18 +1,21 @@
-dartdoc:
-  categories:
-    "Components":
-      markdown: doc/Components.md
-      name: Components
-    "Assets":
-      markdown: doc/Assets.md
-      name: Assets
-    "Theme":
-      markdown: doc/Theme.md
-      name: Theme
-    "Utils":
-      markdown: doc/Utils.md
-      name: Utils
-    "Interfaces":
-      name: Interfaces
-  categoryOrder: ["Components", "Assets", "Theme", "Utils", "Interfaces"]
-  showUndocumentedCategories: true
+# dartdoc:
+#   categories:
+#     "Components":
+#       markdown: doc/Components.md
+#       name: Components
+#     "Assets":
+#       markdown: doc/Assets.md
+#       name: Assets
+#     "Theme":
+#       markdown: doc/Theme.md
+#       name: Theme
+#     "Utils":
+#       markdown: doc/Utils.md
+#       name: Utils
+#     "Interfaces":
+#       name: Interfaces
+#   categoryOrder: ["Components", "Assets", "Theme", "Utils", "Interfaces"]
+#   showUndocumentedCategories: true
+
+#   includeExternal:
+#     ["packages/zeta_flutter", "packages/zeta_flutter_theme", "packages/zeta_flutter_utils", "packages/zeta_icons"]

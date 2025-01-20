@@ -10,3 +10,8 @@ scripts:
     exec: dart analyze .
   fix:
     exec: dart fix --apply
+
+command:
+  publish:
+    hooks:
+      pre: echo 'hi'

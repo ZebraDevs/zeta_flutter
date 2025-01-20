@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:zeta_flutter_theme/zeta_flutter_theme.dart';
-import 'package:zeta_flutter_utils/zeta_flutter_utils.dart';
 
 const _horizontalArrowSize = Size(4, 8);
 const _verticalArrowSize = Size(8, 4);
