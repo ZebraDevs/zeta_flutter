@@ -33,34 +33,40 @@ class _FakeZetaSemantics_1 extends _i1.SmartFake implements _i2.ZetaSemantics {
   _FakeZetaSemantics_1(Object parent, Invocation parentInvocation) : super(parent, parentInvocation);
 }
 
-class _FakeZetaColors_2 extends _i1.SmartFake implements _i2.ZetaColors {
-  _FakeZetaColors_2(Object parent, Invocation parentInvocation) : super(parent, parentInvocation);
-}
-
-class _FakeZetaRadius_3 extends _i1.SmartFake implements _i2.ZetaRadius {
-  _FakeZetaRadius_3(Object parent, Invocation parentInvocation) : super(parent, parentInvocation);
-}
-
-class _FakeZetaSpacing_4 extends _i1.SmartFake implements _i2.ZetaSpacing {
-  _FakeZetaSpacing_4(Object parent, Invocation parentInvocation) : super(parent, parentInvocation);
-}
-
-class _FakeWidget_5 extends _i1.SmartFake implements _i3.Widget {
-  _FakeWidget_5(Object parent, Invocation parentInvocation) : super(parent, parentInvocation);
+class _FakeWidget_2 extends _i1.SmartFake implements _i3.Widget {
+  _FakeWidget_2(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
 
   @override
   String toString({_i4.DiagnosticLevel? minLevel = _i4.DiagnosticLevel.info}) => super.toString();
 }
 
-class _FakeInheritedElement_6 extends _i1.SmartFake implements _i3.InheritedElement {
-  _FakeInheritedElement_6(Object parent, Invocation parentInvocation) : super(parent, parentInvocation);
+class _FakeInheritedElement_3 extends _i1.SmartFake implements _i3.InheritedElement {
+  _FakeInheritedElement_3(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
 
   @override
   String toString({_i4.DiagnosticLevel? minLevel = _i4.DiagnosticLevel.info}) => super.toString();
 }
 
-class _FakeDiagnosticsNode_7 extends _i1.SmartFake implements _i4.DiagnosticsNode {
-  _FakeDiagnosticsNode_7(Object parent, Invocation parentInvocation) : super(parent, parentInvocation);
+class _FakeDiagnosticsNode_4 extends _i1.SmartFake implements _i4.DiagnosticsNode {
+  _FakeDiagnosticsNode_4(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
 
   @override
   String toString({
@@ -139,30 +145,13 @@ class MockZeta extends _i1.Mock implements _i2.Zeta {
       ) as _i5.Brightness);
 
   @override
-  _i2.ZetaRadius get radius => (super.noSuchMethod(
-        Invocation.getter(#radius),
-        returnValue: _FakeZetaRadius_3(this, Invocation.getter(#radius)),
-        returnValueForMissingStub: _FakeZetaRadius_3(
-          this,
-          Invocation.getter(#radius),
-        ),
-      ) as _i2.ZetaRadius);
-
-  @override
-  _i2.ZetaSpacing get spacing => (super.noSuchMethod(
-        Invocation.getter(#spacing),
-        returnValue: _FakeZetaSpacing_4(this, Invocation.getter(#spacing)),
-        returnValueForMissingStub: _FakeZetaSpacing_4(
-          this,
-          Invocation.getter(#spacing),
-        ),
-      ) as _i2.ZetaSpacing);
-
-  @override
   _i3.Widget get child => (super.noSuchMethod(
         Invocation.getter(#child),
-        returnValue: _FakeWidget_5(this, Invocation.getter(#child)),
-        returnValueForMissingStub: _FakeWidget_5(
+        returnValue: _FakeWidget_2(
+          this,
+          Invocation.getter(#child),
+        ),
+        returnValueForMissingStub: _FakeWidget_2(
           this,
           Invocation.getter(#child),
         ),
@@ -183,12 +172,15 @@ class MockZeta extends _i1.Mock implements _i2.Zeta {
 
   @override
   _i3.InheritedElement createElement() => (super.noSuchMethod(
-        Invocation.method(#createElement, []),
-        returnValue: _FakeInheritedElement_6(
+        Invocation.method(
+          #createElement,
+          [],
+        ),
+        returnValue: _FakeInheritedElement_3(
           this,
           Invocation.method(#createElement, []),
         ),
-        returnValueForMissingStub: _FakeInheritedElement_6(
+        returnValueForMissingStub: _FakeInheritedElement_3(
           this,
           Invocation.method(#createElement, []),
         ),
@@ -284,12 +276,27 @@ class MockZeta extends _i1.Mock implements _i2.Zeta {
             #style: style,
           }),
         ),
-        returnValueForMissingStub: _FakeDiagnosticsNode_7(
+        returnValue: _FakeDiagnosticsNode_4(
           this,
-          Invocation.method(#toDiagnosticsNode, [], {
-            #name: name,
-            #style: style,
-          }),
+          Invocation.method(
+            #toDiagnosticsNode,
+            [],
+            {
+              #name: name,
+              #style: style,
+            },
+          ),
+        ),
+        returnValueForMissingStub: _FakeDiagnosticsNode_4(
+          this,
+          Invocation.method(
+            #toDiagnosticsNode,
+            [],
+            {
+              #name: name,
+              #style: style,
+            },
+          ),
         ),
       ) as _i4.DiagnosticsNode);
 
