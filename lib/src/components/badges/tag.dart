@@ -90,12 +90,12 @@ class ZetaTag extends ZetaStatelessWidget {
 
   BorderRadius? _getBorderRadius(BuildContext context) {
     if (!context.rounded) return null;
-    return Zeta.of(context).radius.minimal.copyWith(
-          topLeft: direction == ZetaTagDirection.right ? null : Radius.zero,
-          bottomLeft: direction == ZetaTagDirection.right ? null : Radius.zero,
-          topRight: direction == ZetaTagDirection.left ? null : Radius.zero,
-          bottomRight: direction == ZetaTagDirection.left ? null : Radius.zero,
-        );
+    return BorderRadius.all(Zeta.of(context).radius.minimal).copyWith(
+      topLeft: direction == ZetaTagDirection.right ? null : Radius.zero,
+      bottomLeft: direction == ZetaTagDirection.right ? null : Radius.zero,
+      topRight: direction == ZetaTagDirection.left ? null : Radius.zero,
+      bottomRight: direction == ZetaTagDirection.left ? null : Radius.zero,
+    );
   }
 
   Widget _buildCustomPaint(BuildContext context) {

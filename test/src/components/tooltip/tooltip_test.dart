@@ -170,7 +170,7 @@ void main() {
         ),
       );
 
-      expect((roundedTooltipBox.decoration as BoxDecoration).borderRadius, mockZeta.radius.minimal);
+      expect((roundedTooltipBox.decoration as BoxDecoration).borderRadius, BorderRadius.all(mockZeta.radius.minimal));
       expect((sharpTooltipBox.decoration as BoxDecoration).borderRadius, null);
     });
   });

@@ -198,7 +198,7 @@ class _ZetaNavigationRailItemContentState extends State<_ZetaNavigationRailItemC
                             ? zeta.colors.surfaceHover
                             : null,
                 border: _focused ? Border.all(color: zeta.colors.borderPrimary, width: 2) : null,
-                borderRadius: context.rounded ? Zeta.of(context).radius.rounded : null,
+                borderRadius: context.rounded ? BorderRadius.all(Zeta.of(context).radius.rounded) : null,
               ),
               child: ConstrainedBox(
                 constraints: BoxConstraints(

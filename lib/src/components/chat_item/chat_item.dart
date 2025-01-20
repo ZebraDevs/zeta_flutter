@@ -234,7 +234,8 @@ class ZetaChatItem extends ZetaStatelessWidget {
                                                                   ),
                                                                   decoration: BoxDecoration(
                                                                     color: colors.mainPrimary,
-                                                                    borderRadius: Zeta.of(context).radius.full,
+                                                                    borderRadius:
+                                                                        BorderRadius.all(Zeta.of(context).radius.full),
                                                                   ),
                                                                   child: Text(
                                                                     _count!,
@@ -529,7 +530,7 @@ class ZetaSlidableAction extends StatelessWidget {
               style: IconButton.styleFrom(
                 backgroundColor: backgroundColor,
                 foregroundColor: foregroundColor,
-                shape: RoundedRectangleBorder(borderRadius: Zeta.of(context).radius.minimal),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Zeta.of(context).radius.minimal)),
                 side: BorderSide.none,
               ),
               icon: ZetaIcon(icon, size: Zeta.of(context).spacing.xl_4),

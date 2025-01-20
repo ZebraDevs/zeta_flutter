@@ -79,11 +79,13 @@ class ZetaSnackBar extends SnackBar {
           padding: EdgeInsets.zero,
           backgroundColor: _getBackgroundColorForType(context, type),
           shape: RoundedRectangleBorder(
-            borderRadius: type != null
-                ? Zeta.of(context).radius.full
-                : rounded ?? context.rounded
-                    ? Zeta.of(context).radius.minimal
-                    : Zeta.of(context).radius.none,
+            borderRadius: BorderRadius.all(
+              type != null
+                  ? Zeta.of(context).radius.full
+                  : rounded ?? context.rounded
+                      ? Zeta.of(context).radius.minimal
+                      : Zeta.of(context).radius.none,
+            ),
           ),
           content: ZetaRoundedScope(
             rounded: rounded ?? context.rounded,
