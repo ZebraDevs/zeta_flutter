@@ -1,5 +1,17 @@
 {
   "packages": {
+    "packages/zeta_flutter": {
+      "release-type": "dart"
+    },
+    "packages/zeta_flutter_theme": {
+      "release-type": "dart"
+    },
+    "packages/zeta_flutter_utils": {
+      "release-type": "dart"
+    },
+    "packages/zeta_icons": {
+      "release-type": "dart"
+    },
     ".": {
       "release-type": "dart"
     }
@@ -7,8 +19,9 @@
   "include-component-in-tag": false,
   "extra-files": [
     "example/lib/home.dart",
-    "example/widgetbook/pages/introduction.dart"
+    "widgetbook/lib/introduction.dart"
   ],
+  "release-as": "1.0.0-alpha.2",
   "changelog-sections": [
     {
       "type": "feat",
