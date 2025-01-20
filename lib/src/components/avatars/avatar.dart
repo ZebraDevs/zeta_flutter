@@ -528,50 +528,61 @@ class ZetaAvatarBadge extends StatelessWidget {
         type == ZetaAvatarBadgeType.notification ? colors.surfaceNegative : (color ?? colors.mainPrimary);
     final badgeSize = _getContainerSize(context);
     final borderSize = _getBorderSize(context);
-    final paddedSize = badgeSize + Zeta.of(context).spacing.minimum;
 
-    final innerContent = Container(
-      margin: const EdgeInsets.all(0.01),
-      decoration: BoxDecoration(
-        color: backgroundColor,
-        shape: BoxShape.circle,
-      ),
-      child: value != null
-          ? Center(
-              child: Text(
-                value! > 99 ? '99+' : '$value',
-                style: TextStyle(
-                  color: backgroundColor.onColor,
-                  fontSize: ((10 / 12) * badgeSize) - 2,
-                  height: 1,
-                ),
+    return type == ZetaAvatarBadgeType.notification
+        ? Container(
+            height: badgeSize,
+            width: _getPillWidth(context),
+            decoration: BoxDecoration(
+              color: backgroundColor,
+              borderRadius: BorderRadius.circular(badgeSize),
+            ),
+            child: value != null
+                ? Center(
+                    child: Text(
+                      value! > 99 ? '99+' : '$value',
+                      style: TextStyle(
+                        color: backgroundColor.onColor,
+                        fontSize: ((10 / 12) * badgeSize) - 2,
+                        height: 1,
+                      ),
+                    ),
+                  )
+                : const Nothing(),
+          )
+        : Container(
+            width: badgeSize,
+            height: badgeSize,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              border: Border.all(
+                width: borderSize,
+                color: colors.surfaceDefault,
               ),
-            )
-          : icon != null
-              ? ZetaIcon(
-                  icon,
-                  size: badgeSize - borderSize,
-                  color: iconColor ?? backgroundColor.onColor,
-                )
-              : null,
-    );
-
-    return Container(
-      width: type == ZetaAvatarBadgeType.icon ? paddedSize : badgeSize * 1.8,
-      height: type == ZetaAvatarBadgeType.icon ? paddedSize : badgeSize,
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        border: type != ZetaAvatarBadgeType.notification
-            ? Border.all(width: borderSize, color: Zeta.of(context).colors.surfaceDefault)
-            : null,
-      ),
-      child: innerContent,
-    );
+            ),
+            child: DecoratedBox(
+              decoration: BoxDecoration(
+                color: backgroundColor,
+                borderRadius: BorderRadius.circular(badgeSize / 2),
+              ),
+              child: icon != null
+                  ? ZetaIcon(
+                      icon,
+                      size: _getIconSize(context),
+                      color: iconColor ?? backgroundColor.onColor,
+                    )
+                  : null,
+            ),
+          );
   }
 
   double _getContainerSize(BuildContext context) => size._pixelSize(context) / 3;
 
+  double _getIconSize(BuildContext context) => size._pixelSize(context) / 4;
+
   double _getBorderSize(BuildContext context) => size._pixelSize(context) / 48;
+
+  double _getPillWidth(BuildContext context) => size._pixelSize(context) * 0.55;
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
