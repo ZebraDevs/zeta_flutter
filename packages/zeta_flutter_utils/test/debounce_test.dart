@@ -7,7 +7,7 @@ class MockCallback extends Mock {
 }
 
 void main() {
-  group('ZetaDebounce', () {
+  group('Debounce', () {
     late MockCallback mockCallback;
 
     setUp(() {
@@ -16,7 +16,7 @@ void main() {
 
     test('debounce calls the callback after the specified duration', () async {
       const debounceDuration = Duration(milliseconds: 100);
-      ZetaDebounce(mockCallback.call, duration: debounceDuration);
+      Debounce(mockCallback.call, duration: debounceDuration);
 
       await Future<void>.delayed(debounceDuration + const Duration(milliseconds: 50));
 
@@ -25,7 +25,7 @@ void main() {
 
     test('debounce does not call the callback if cancelled', () async {
       const debounceDuration = Duration(milliseconds: 100);
-      ZetaDebounce(mockCallback.call, duration: debounceDuration).cancel();
+      Debounce(mockCallback.call, duration: debounceDuration).cancel();
 
       await Future<void>.delayed(debounceDuration + const Duration(milliseconds: 50));
 
@@ -34,7 +34,7 @@ void main() {
 
     test('debounce restarts the timer if called again before duration ends', () async {
       const debounceDuration = Duration(milliseconds: 100);
-      final debouncer = ZetaDebounce(mockCallback.call, duration: debounceDuration);
+      final debouncer = Debounce(mockCallback.call, duration: debounceDuration);
 
       await Future<void>.delayed(const Duration(milliseconds: 50));
       debouncer.debounce();
@@ -46,9 +46,9 @@ void main() {
       verify(mockCallback()).called(1);
     });
 
-    test('ZetaDebounce.stopped does not start the timer automatically', () async {
+    test('Debounce.stopped does not start the timer automatically', () async {
       const debounceDuration = Duration(milliseconds: 100);
-      ZetaDebounce.stopped(mockCallback.call, duration: debounceDuration);
+      Debounce.stopped(mockCallback.call, duration: debounceDuration);
 
       await Future<void>.delayed(debounceDuration + const Duration(milliseconds: 50));
 
@@ -57,7 +57,7 @@ void main() {
 
     test('debounce can be called with a new callback', () async {
       const debounceDuration = Duration(milliseconds: 100);
-      final debouncer = ZetaDebounce(mockCallback.call, duration: debounceDuration);
+      final debouncer = Debounce(mockCallback.call, duration: debounceDuration);
 
       final newCallback = MockCallback();
       debouncer.debounce(newCallback: newCallback.call);

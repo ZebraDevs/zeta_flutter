@@ -17,8 +17,6 @@ dependencies:
     sdk: flutter
 
 dev_dependencies:
-  flutter_test:
-    sdk: flutter
   zds_analysis: ^1.1.1
 
 flutter:

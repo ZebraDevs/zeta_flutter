@@ -81,14 +81,14 @@ class _ZetaDialPadState extends State<ZetaDialPad> {
   String? _lastTapped;
   int _tapCounter = 0;
 
-  ZetaDebounce? _debounce;
+  Debounce? _debounce;
 
   void onTap(String tapped) {
     widget.onNumber?.call(tapped);
 
     if (tapped != _lastTapped) {
       if (_lastTapped == null) {
-        _debounce = ZetaDebounce(() => _fireChar(tapped, _tapCounter));
+        _debounce = Debounce(() => _fireChar(tapped, _tapCounter));
       } else {
         _debounce?.debounce(newCallback: () => _fireChar(tapped, 1));
         _fireChar(_lastTapped!, _tapCounter);
