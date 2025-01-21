@@ -6,7 +6,6 @@ import '../buttons/input_icon_button.dart';
 import '../text_input/internal_text_input.dart';
 
 /// ZetaSearchBar provides input field for searching.
-/// {@category Components}
 ///
 /// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=875-17463&node-type=canvas&m=dev
 ///

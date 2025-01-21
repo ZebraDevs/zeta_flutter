@@ -12,7 +12,6 @@ enum ZetaMenuItemType {
 }
 
 /// Menu Item component, typically used as body of [ZetaBottomSheet].
-/// {@category Components}
 ///
 /// Figma: https://www.figma.com/file/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=21541-2225
 ///

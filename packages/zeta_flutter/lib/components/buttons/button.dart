@@ -6,7 +6,6 @@ import '../../zeta_flutter.dart';
 import 'button_style.dart';
 
 /// Zeta Button
-/// {@category Components}
 ///
 /// Figma: https://www.figma.com/file/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=23126-110945
 ///

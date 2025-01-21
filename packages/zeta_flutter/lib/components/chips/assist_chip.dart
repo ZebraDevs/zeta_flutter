@@ -5,7 +5,6 @@ import '../../zeta_flutter.dart';
 /// Leading widget should typically be an icon.
 ///
 /// These chips use [Draggable] and can be dragged around the screen and placed in new locations using [DragTarget].
-/// {@category Components}
 ///
 /// Figma: https://www.figma.com/file/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=21265-14215
 ///

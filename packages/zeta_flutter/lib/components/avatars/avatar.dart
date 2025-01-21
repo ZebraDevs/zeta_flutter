@@ -67,7 +67,6 @@ enum ZetaAvatarSize {
 ///
 /// It is recommended to use [ZetaAvatar] with [ZetaAvatarBadge] for status and notification badges, but any widget can be used.
 ///
-/// {@category Components}
 ///
 /// Figma: https://www.figma.com/file/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?type=design&node-id=20816-388
 ///
@@ -438,7 +437,6 @@ enum ZetaAvatarBadgeType {
 
 /// Badge component used with [ZetaAvatar] as either [ZetaAvatar.upperBadge] or [ZetaAvatar.lowerBadge].
 ///
-/// {@category Components}
 ///
 /// Sizes and styles are managed by the parent [ZetaAvatar].
 class ZetaAvatarBadge extends StatelessWidget {

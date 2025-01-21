@@ -28,7 +28,6 @@ enum ZetaCommsButtonType {
 ///
 /// `ZetaCommsButton.answer()`, `ZetaCommsButton.reject()`, `ZetaCommsButton.mute()`,
 /// `ZetaCommsButton.hold()`, `ZetaCommsButton.speaker()`, `ZetaCommsButton.record()`, etc.
-/// {@category Components}
 ///
 /// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=20816-7765&node-type=canvas&t=nc1YR061CeZRr6IJ-0
 ///

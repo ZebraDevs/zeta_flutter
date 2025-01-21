@@ -5,3 +5,4 @@ export 'package:zeta_icons/zeta_icons.dart';
 export 'components/components.dart';
 export 'enums.dart';
 export 'interfaces/interfaces.dart';
+export 'rounded.dart';

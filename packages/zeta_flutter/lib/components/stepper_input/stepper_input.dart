@@ -16,7 +16,6 @@ enum ZetaStepperInputSize {
 /// A stepper input, also called numeric stepper, is a common UI element that
 /// allows users to input a number or value simply by clicking the plus and
 /// minus buttons.
-/// {@category Components}
 ///
 /// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=229-47&node-type=canvas&m=dev
 ///

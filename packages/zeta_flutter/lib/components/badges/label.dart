@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import '../../zeta_flutter.dart';
 
 /// Text badges notify users of line items that need attention.
-/// {@category Components}
 ///
 /// Figma: https://www.figma.com/file/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?type=design&node-id=21926-2099
 ///

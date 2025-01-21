@@ -12,7 +12,6 @@ export 'status_chip.dart';
 ///
 /// If [selected] is not null, the chip will have the toggle behavior of [ZetaFilterChip].
 ///
-/// {@category Components}
 class ZetaChip extends ZetaStatefulWidget {
   /// Constructs a [ZetaChip].
   const ZetaChip({

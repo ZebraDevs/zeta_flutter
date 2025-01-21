@@ -42,7 +42,6 @@ enum ZetaPriorityPillSize {
 }
 
 /// This badge is used to indicate the order of importance.
-/// {@category Components}
 ///
 /// Figma: https://www.figma.com/file/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?type=design&node-id=22000-15955
 ///

@@ -12,7 +12,6 @@ import 'package:zeta_flutter_theme/zeta_flutter_theme.dart';
 
 /// The semantic tokens for colors
 ///
-/// {@category Interfaces}
 abstract interface class ZetaColors {
   /// Primitives used to construct semantic colors
   ZetaPrimitives get primitives;
@@ -1177,7 +1176,6 @@ abstract interface class ZetaColors {
 
 /// The semantic tokens for spacing
 ///
-/// {@category Interfaces}
 abstract interface class ZetaSpacing {
   /// Primitives used to construct semantic spacing
   ZetaPrimitives get primitives;
@@ -1265,7 +1263,6 @@ abstract interface class ZetaSpacing {
 
 /// The semantic tokens for radius
 ///
-/// {@category Interfaces}
 abstract interface class ZetaRadius {
   /// Primitives used to construct semantic radius
   ZetaPrimitives get primitives;
@@ -1315,7 +1312,6 @@ abstract interface class ZetaRadius {
 
 /// The semantic colors for AA
 ///
-/// {@category Theme}
 class ZetaColorsAA extends Equatable implements ZetaColors {
   /// Constructor for [ZetaColorsAA]
   const ZetaColorsAA({required this.primitives});
@@ -1595,7 +1591,6 @@ class ZetaColorsAA extends Equatable implements ZetaColors {
 
 /// The semantic colors for AAA
 ///
-/// {@category Theme}
 class ZetaColorsAAA extends Equatable implements ZetaColors {
   /// Constructor for [ZetaColorsAAA]
   const ZetaColorsAAA({required this.primitives});
@@ -1875,7 +1870,6 @@ class ZetaColorsAAA extends Equatable implements ZetaColors {
 
 /// The semantic spacing for AA
 ///
-/// {@category Theme}
 class ZetaSpacingAA extends Equatable implements ZetaSpacing {
   /// Constructor for [ZetaSpacingAA]
   const ZetaSpacingAA({required this.primitives});
@@ -1936,7 +1930,6 @@ class ZetaSpacingAA extends Equatable implements ZetaSpacing {
 
 /// The semantic spacing for AAA
 ///
-/// {@category Theme}
 class ZetaSpacingAAA extends Equatable implements ZetaSpacing {
   /// Constructor for [ZetaSpacingAAA]
   const ZetaSpacingAAA({required this.primitives});
@@ -1997,7 +1990,6 @@ class ZetaSpacingAAA extends Equatable implements ZetaSpacing {
 
 /// The semantic radius for AA
 ///
-/// {@category Theme}
 class ZetaRadiusAA extends Equatable implements ZetaRadius {
   /// Constructor for [ZetaRadiusAA]
   const ZetaRadiusAA({required this.primitives});
@@ -2028,7 +2020,6 @@ class ZetaRadiusAA extends Equatable implements ZetaRadius {
 
 /// The semantic radius for AAA
 ///
-/// {@category Theme}
 class ZetaRadiusAAA extends Equatable implements ZetaRadius {
   /// Constructor for [ZetaRadiusAAA]
   const ZetaRadiusAAA({required this.primitives});
@@ -2059,7 +2050,6 @@ class ZetaRadiusAAA extends Equatable implements ZetaRadius {
 
 /// The semantic tokens for Zeta
 ///
-/// {@category Interfaces}
 abstract interface class ZetaSemantics {
   /// Semantic colors
   ZetaColors get colors;
@@ -2076,7 +2066,6 @@ abstract interface class ZetaSemantics {
 
 /// The semantic tokens for AA
 ///
-/// {@category Theme}
 class ZetaSemanticsAA implements ZetaSemantics {
   /// Constructor for [ZetaSemanticsAA]
   ZetaSemanticsAA({required this.primitives})
@@ -2096,7 +2085,6 @@ class ZetaSemanticsAA implements ZetaSemantics {
 
 /// The semantic tokens for AAA
 ///
-/// {@category Theme}
 class ZetaSemanticsAAA implements ZetaSemantics {
   /// Constructor for [ZetaSemanticsAAA]
   ZetaSemanticsAAA({required this.primitives})

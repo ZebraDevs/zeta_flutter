@@ -40,7 +40,6 @@ import 'universal_platform_web.dart' if (dart.library.io) 'universal_platform_vm
 /// PlatformIs.fuchsia will be false. Future versions, when Fuchsia is released,
 /// may fix this.
 ///
-/// {@category Utils}
 class PlatformIs {
   PlatformIs._();
 

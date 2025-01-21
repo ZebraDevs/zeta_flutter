@@ -3,7 +3,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
-import '../../zeta_flutter/test/utils/test_app.dart';
 
 @GenerateNiceMocks([
   MockSpec<BuildContext>(),

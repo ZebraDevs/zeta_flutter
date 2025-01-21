@@ -9,7 +9,6 @@ import '../../zeta_flutter.dart';
 /// and maximum range. It provides a visual representation of the selected
 /// range and allows for precise adjustments through both dragging and direct input.
 ///
-/// {@category Components}
 class ZetaRangeSelector extends ZetaStatefulWidget {
   /// Creates a new [ZetaRangeSelector]
   ZetaRangeSelector({

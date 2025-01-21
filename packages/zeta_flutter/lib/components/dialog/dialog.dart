@@ -52,7 +52,6 @@ Future<bool?> showZetaDialog(
     );
 
 /// The Zeta Dialog component.
-/// {@category Components}
 ///
 /// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=23954-93337&node-type=frame&m=dev
 ///

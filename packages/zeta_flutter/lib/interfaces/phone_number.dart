@@ -1,6 +1,5 @@
 /// A phone number.
 ///
-/// {@category Interfaces}
 class PhoneNumber {
   /// Creates a new [PhoneNumber].
   const PhoneNumber({

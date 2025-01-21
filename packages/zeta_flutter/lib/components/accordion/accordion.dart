@@ -7,7 +7,6 @@ import '../../zeta_flutter.dart';
 /// such as labels or thumbnails. Each item can be "expanded" or "collapsed" to reveal
 /// the content associated with that item. There can be zero expanded items, exactly one,
 /// or more than one item expanded at a time, depending on the configuration.
-/// {@category Components}
 ///
 /// Figma: https://www.figma.com/file/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?type=design&node-id=3427-67874
 ///

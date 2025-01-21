@@ -42,7 +42,6 @@ import '../../zeta_flutter.dart';
 ///
 ///  * [StatelessWidget], which is the superclass of this widget.
 ///  * [ZetaAvatar], which is used within this rail to represent individual avatars.
-/// {@category Components}
 ///
 /// Figma: https://www.figma.com/file/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?type=design&node-id=20816-388
 ///

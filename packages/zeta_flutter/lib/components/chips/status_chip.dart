@@ -6,7 +6,6 @@ import '../../zeta_flutter.dart';
 /// The [ZetaStatusChip] is a chip that displays a status/label.
 /// It can be dragged around the screen and placed in new locations using [DragTarget].
 ///
-/// {@category Components}
 ///
 /// Figma: https://www.figma.com/file/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=21265-2159
 ///

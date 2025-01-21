@@ -8,7 +8,6 @@ import 'zeta_flutter_theme.dart';
 /// This new typeface is clean, distinctive and designed for digital world use cases.
 /// The typeface is free and available in multiple languages, making it ideal for localization.
 /// More info can be found at: www.ibm.com/plex
-/// {@category Theme}
 class ZetaTextStyles {
   /// Largest of the display styles.
   ///
@@ -161,7 +160,7 @@ class ZetaTextStyles {
   /// content body, like captions.
   /// {@endtemplate}
   ///
-  /// Used for text on `ZetaButton`. //TODO(thelukewalton): Check if this can be reverted to using [].
+  /// Used for text on `ZetaButton`.
   static const TextStyle labelLarge = TextStyle(
     fontSize: 16,
     fontWeight: FontWeight.w500,
@@ -232,7 +231,6 @@ class ZetaTextStyles {
 
 /// [ZetaTextStyles] combined into a [TextTheme].
 ///
-/// {@category Theme}
 const TextTheme zetaTextTheme = TextTheme(
   displayLarge: ZetaTextStyles.displayLarge,
   displayMedium: ZetaTextStyles.displayMedium,

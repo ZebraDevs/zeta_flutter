@@ -17,7 +17,6 @@ import 'zeta.dart';
 ///
 /// This function is used to build the app with the provided theming information.
 ///
-/// {@category Utils}
 typedef ZetaAppBuilder = Widget Function(
   BuildContext context,
   ThemeData light,
@@ -26,7 +25,6 @@ typedef ZetaAppBuilder = Widget Function(
 );
 
 /// A widget that provides Zeta theming and contrast data down the widget tree.
-/// {@category Utils}
 class ZetaProvider extends StatefulWidget with Diagnosticable {
   /// Constructs a [ZetaProvider] widget.
   ///
@@ -116,7 +114,6 @@ class ZetaProvider extends StatefulWidget with Diagnosticable {
 }
 
 /// The state associated with [ZetaProvider].
-/// {@category Utils}
 class ZetaProviderState extends State<ZetaProvider> with Diagnosticable, WidgetsBindingObserver {
   bool _gotTheme = false;
 

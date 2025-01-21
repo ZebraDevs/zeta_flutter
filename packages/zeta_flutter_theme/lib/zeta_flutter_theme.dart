@@ -6,7 +6,6 @@ export 'contrast.dart';
 export 'custom_theme.dart';
 export 'generated/tokens/primitives.g.dart';
 export 'generated/tokens/semantics.g.dart';
-export 'rounded.dart';
 export 'theme_service.dart';
 export 'tokens.dart';
 export 'typography.dart';

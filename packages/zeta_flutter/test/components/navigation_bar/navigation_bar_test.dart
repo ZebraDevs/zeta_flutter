@@ -4,10 +4,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:zeta_flutter/components/navigation%20bar/navigation_bar.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
-import '../../utils/test_app.dart';
-import '../../utils/tolerant_comparator.dart';
-import '../../utils/utils.dart';
-
 void main() {
   const String parentFolder = 'navigation_bar';
 

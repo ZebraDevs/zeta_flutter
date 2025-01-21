@@ -26,7 +26,6 @@ import '../../zeta_flutter.dart';
 ///   },
 /// )
 /// ```
-/// {@category Components}
 ///
 /// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=3420-67488&node-type=canvas&m=dev
 ///
@@ -491,7 +490,6 @@ class VerticalStep extends StatelessWidget {
 /// an icon within its circle, some content and a state that governs its
 /// styling.
 ///
-/// {@category Components}
 class ZetaStep {
   /// Creates a step for a [ZetaStepper].
   const ZetaStep({

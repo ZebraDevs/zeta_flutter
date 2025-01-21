@@ -26,9 +26,7 @@
     "example/lib/home.dart",
     "widgetbook/lib/introduction.dart"
   ],
-  "prerelease-type": "alpha",
   "separate-pull-requests": true,
-  "prerelease": true,
   "changelog-sections": [
     {
       "type": "feat",

@@ -6,7 +6,6 @@ import '../../zeta_flutter.dart';
 
 /// Notification list items are used in notification lists.
 ///
-/// {@category Components}
 ///
 /// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=25043-100110&node-type=canvas&m=dev
 ///
@@ -274,7 +273,6 @@ extension on Image {
 // TODO(UX-1138): Can this be refactored to use ZetaIndicator?
 /// Badge item for notification list items. Can be an avatar, icon or image
 ///
-/// {@category Components}
 class ZetaNotificationBadge extends StatelessWidget {
   /// Constructs a notification badge with an avatar.
   const ZetaNotificationBadge.avatar({

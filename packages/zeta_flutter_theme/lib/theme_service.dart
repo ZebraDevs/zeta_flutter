@@ -13,7 +13,6 @@ const String _kFontFamily = 'fontFamily';
 ///
 /// It contains the theme mode, contrast, and font family.
 ///
-/// {@category Theme}
 class ZetaThemeServiceData extends Equatable {
   /// Constructs a [ZetaThemeServiceData].
   ///
@@ -39,7 +38,6 @@ class ZetaThemeServiceData extends Equatable {
 // TODO(colors): Add tests
 /// `ZetaThemeService` is an abstract class.
 /// It provides the structure for loading and saving themes in Zeta application.
-/// {@category Theme}
 
 abstract class ZetaThemeService {
   /// Constructor for `ZetaThemeService`.
@@ -117,6 +115,8 @@ class ZetaDefaultThemeService extends ZetaThemeService {
     }
     if (themeData.themeId != null) {
       futures.add(preferences.setString(_kThemeId, themeData.themeId!));
+    } else {
+      futures.add(preferences.remove(_kThemeId));
     }
     await Future.wait(futures);
   }

@@ -3,7 +3,6 @@ import '../../zeta_flutter.dart';
 
 /// Defines how the bounds of the selected tab indicator are computed.
 /// Intended to be used with [ZetaTabBar].
-/// {@category Components}
 ///
 /// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=229-18&node-type=canvas&m=dev
 ///

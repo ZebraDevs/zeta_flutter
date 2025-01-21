@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import '../../zeta_flutter.dart';
 
 /// Delegate for creating an extended app bar, that grows and shrinks when scrolling.
-/// {@category Components}
 ///
 /// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=229-37&node-type=canvas&m=dev
 ///

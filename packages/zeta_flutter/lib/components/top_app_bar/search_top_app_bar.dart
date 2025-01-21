@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import '../../zeta_flutter.dart';
 
 /// Creates a search field used on a [ZetaTopAppBar].
-/// {@category Components}
 ///
 /// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=229-37&node-type=canvas&m=dev
 ///
@@ -189,7 +188,6 @@ class _ZetaTopAppBarSearchFieldState extends State<ZetaTopAppBarSearchField> wit
 
 /// A controller used to control the search field in the app bar.
 ///
-/// {@category Utils}
 class ZetaSearchController extends ChangeNotifier {
   bool _enabled = false;
 

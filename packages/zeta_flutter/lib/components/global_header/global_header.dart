@@ -35,7 +35,6 @@ import '../../zeta_flutter.dart';
 ///   ]),
 /// ),
 /// ```
-/// {@category Components}
 ///
 /// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=1120-26358&node-type=canvas&m=dev
 ///

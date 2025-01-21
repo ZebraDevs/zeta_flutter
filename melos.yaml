@@ -1,19 +1,16 @@
-name: zeta_flutter
+name: zeta_flutter_workspace
 
 packages:
   - packages/**
   - example/*
   - widgetbook/*
 
-command:
-  publish:
-    hooks:
-      pre: sh scripts/pre-publish.sh
-
 scripts:
   analyze:
     exec: dart analyze .
   fix:
     exec: dart fix --apply
+  build_runner:
+    exec: dart run build_runner build -d
   cp-changelog:
     exec: cp ../../CHANGELOG.md .

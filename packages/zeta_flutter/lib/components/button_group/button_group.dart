@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import '../../zeta_flutter.dart';
 
 /// Zeta Button Group
-/// {@category Components}
 ///
 /// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=229-45&node-type=canvas&m=dev
 ///
@@ -72,7 +71,6 @@ class ZetaButtonGroup extends ZetaStatelessWidget {
 
 /// Group Button item.
 ///
-/// {@category Components}
 class ZetaGroupButton extends ZetaStatefulWidget {
   /// Public Constructor for [ZetaGroupButton]
   const ZetaGroupButton({

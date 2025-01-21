@@ -14,7 +14,6 @@ const _max12HrValue = 12;
 /// A form field used to input time.
 ///
 /// Can be used and validated the same way as a [TextFormField].
-/// {@category Components}
 ///
 /// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=724-6821&node-type=canvas&m=dev
 ///

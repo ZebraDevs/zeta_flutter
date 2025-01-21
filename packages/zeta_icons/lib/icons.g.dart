@@ -10,7 +10,6 @@ const zetaIconsVersion = '0.9.4';
 // x-release-please-end
 
 /// Zeta Icons. Full list of icons can be found at [Zeta Icons](https://design.zebra.com/icons/).
-/// {@category Assets}
 abstract class ZetaIcons {
   /// Default icon font name
   static const String family = 'zeta-icons';

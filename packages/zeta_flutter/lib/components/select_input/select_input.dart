@@ -9,7 +9,6 @@ import '../dropdown/dropdown_controller.dart';
 import '../text_input/internal_text_input.dart';
 
 /// Class for [ZetaSelectInput].
-/// {@category Components}
 ///
 /// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=229-39&node-type=canvas&m=dev
 ///

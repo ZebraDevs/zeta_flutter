@@ -26,7 +26,6 @@ enum ZetaSwitchType {
 /// Switch can turn an option on or off.
 ///
 /// Switch has styles for Android, iOS and Web.
-/// {@category Components}
 ///
 /// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=229-41&node-type=canvas&m=dev
 ///

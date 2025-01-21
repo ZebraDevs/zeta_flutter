@@ -18,10 +18,11 @@ dependencies:
     sdk: flutter
   web: ^1.1.0
 
+  flutter_test: any
+  image: any
+  zeta_flutter: any
+  collection: any
+  path: any
 dev_dependencies:
-  flutter_test:
-    sdk: flutter
   mockito: ^5.4.5
-  zds_analysis: ^1.1.1
-  zeta_flutter:
-    path: ../zeta_flutter
+  zds_analysis: ^1.1.1  zeta_flutter_theme: any

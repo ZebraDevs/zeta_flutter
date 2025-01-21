@@ -8,7 +8,6 @@ import '../../zeta_flutter.dart';
 /// To display a [ZetaBottomSheet], use the [showZetaBottomSheet] function.
 ///
 /// Content should typically consist of a [List] of [ZetaMenuItem]s.
-/// {@category Components}
 ///
 /// Figma: https://www.figma.com/file/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=21541-2225
 ///
@@ -109,7 +108,6 @@ class ZetaBottomSheet extends ZetaStatelessWidget {
 ///
 /// Uses [showModalBottomSheet] for functionality, but with Zeta styling and simplified functionality.
 ///
-/// {@category Components}
 Future<T?> showZetaBottomSheet<T>({
   required BuildContext context,
   String? title,

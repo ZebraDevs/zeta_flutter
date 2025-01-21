@@ -7,7 +7,6 @@ const double _navigationItemBorderWidth = 1;
 
 /// An item to be used in a [ZetaNavigationBar].
 ///
-/// {@category Components}
 class ZetaNavigationBarItem {
   /// Creates a new [ZetaNavigationBarItem]
   const ZetaNavigationBarItem({
@@ -28,7 +27,6 @@ class ZetaNavigationBarItem {
 
 /// Navigation Bars (Bottom navigation) allow movement between primary destinations in an app.
 ///
-/// {@category Components}
 ///
 /// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=1052-24751&node-type=canvas&m=dev
 ///

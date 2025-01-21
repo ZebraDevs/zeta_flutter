@@ -7,7 +7,6 @@ import '../../zeta_flutter.dart';
 
 /// Slider component with customized styling.
 ///
-/// {@category Components}
 ///
 /// Figma: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/slider
 ///

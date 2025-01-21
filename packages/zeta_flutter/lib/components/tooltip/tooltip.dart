@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:zeta_flutter_theme/zeta_flutter_theme.dart';
+
+import '../../zeta_flutter.dart';
 
 const _horizontalArrowSize = Size(4, 8);
 const _verticalArrowSize = Size(8, 4);
@@ -21,7 +22,6 @@ enum ZetaTooltipArrowDirection {
 }
 
 /// Tooltips display informative text when users hover over, focus on, or tap an element.
-/// {@category Components}
 ///
 /// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=229-16&node-type=canvas&m=dev
 ///

@@ -7,9 +7,6 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
-import '../../utils/test_app.dart';
-import '../../utils/tolerant_comparator.dart';
-import '../../utils/utils.dart';
 import 'search_bar_test.mocks.dart';
 
 abstract class ISearchBarEvents {

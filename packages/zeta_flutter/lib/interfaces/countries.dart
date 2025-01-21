@@ -1,6 +1,5 @@
 /// Class definition for a country with its name, dial code, and ISO code.
 ///
-/// {@category Components}
 class Country {
   /// Constructor for [Country]
   const Country({
@@ -31,7 +30,6 @@ class Country {
 
 /// Class definition for a list of countries.
 ///
-/// {@category Interfaces}
 class Countries {
   /// List of [Country] for most countries around the world.
   static List<Country> get list => _countriesList;

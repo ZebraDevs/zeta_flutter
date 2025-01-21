@@ -11,7 +11,6 @@ export 'search_top_app_bar.dart' hide ZetaTopAppBarSearchField;
 /// Top app bars provide content and actions related to the current screen.
 ///
 /// To create Extended, Centered, or Search app bars, use the respective constructors.
-/// {@category Components}
 ///
 /// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=229-37&node-type=canvas&m=dev
 ///

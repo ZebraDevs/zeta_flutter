@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import '../../zeta_flutter.dart';
 
 /// Component [ZetaFilterSelection]
-/// {@category Components}
 ///
 /// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=24607-737&node-type=canvas&m=dev
 ///

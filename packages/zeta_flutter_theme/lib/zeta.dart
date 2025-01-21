@@ -10,7 +10,6 @@ import 'generated/tokens/semantics.g.dart';
 /// It holds information about the current contrast, theme mode, and theme data.
 /// The [colors] getter provides the correct color set based on the current theme mode.
 ///
-/// {@category Utils}
 class Zeta extends InheritedWidget {
   /// Constructs a [Zeta] widget.
   const Zeta({

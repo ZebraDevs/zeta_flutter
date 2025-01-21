@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:zeta_flutter_theme/zeta_flutter_theme.dart';
 
-import '../../zeta_flutter/test/utils/utils.dart';
+import 'package:zeta_flutter_utils/test_utils/test_utils.dart';
 
 void main() {
   group('Zeta InheritedWidget', () {

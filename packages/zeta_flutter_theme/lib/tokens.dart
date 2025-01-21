@@ -1,5 +1,4 @@
 /// Tokenised durations used for animations
-/// {@category Theme}
 class ZetaAnimationLength {
   /// 100ms
   static const veryFast = Duration(milliseconds: 100);
@@ -19,7 +18,6 @@ class ZetaAnimationLength {
 
 /// Temporary class to hold border values.
 ///
-/// {@category Theme}
 ///
 // TODO(Tokens): Remove this class and design / develop  Zeta.of(context).border instead.
 abstract final class ZetaBorders {

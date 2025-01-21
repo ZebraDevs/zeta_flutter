@@ -27,7 +27,6 @@ class _DropdownControllerImpl implements ZetaDropdownController {
 }
 
 /// An item used in a [ZetaDropdown] or a [ZetaSelectInput].
-/// {@category Components}
 ///
 /// Figma: https://www.figma.com/file/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=22391-10146
 ///
@@ -55,7 +54,6 @@ class ZetaDropdownItem<T> {
 }
 
 /// Class for [ZetaDropdown]
-/// {@category Components}
 ///
 /// Figma: https://www.figma.com/file/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=22391-10146
 ///
@@ -174,7 +172,6 @@ enum _MenuPosition {
 
 /// The state for a [ZetaDropdown].
 ///
-/// {@category Components}
 class ZetaDropDownState<T> extends State<ZetaDropdown<T>> {
   late final _DropdownControllerImpl _dropdownController;
   final OverlayPortalController _overlayPortalController = OverlayPortalController();

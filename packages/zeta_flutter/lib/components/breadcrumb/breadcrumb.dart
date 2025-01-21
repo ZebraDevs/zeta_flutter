@@ -6,7 +6,6 @@ import '../../zeta_flutter.dart';
 ///
 /// [children] should consist of [ZetaBreadcrumbItem]s.
 ///
-/// {@category Components}
 ///
 /// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=229-5&node-type=canvas&m=dev
 ///
@@ -139,7 +138,6 @@ class _ZetaBreadcrumbsState extends State<ZetaBreadcrumb> {
 ///
 /// Should be a child of [ZetaBreadcrumb].
 ///
-/// {@category Components}
 class ZetaBreadcrumbItem extends ZetaStatelessWidget {
   ///Constructor for [ZetaBreadcrumbItem]
   ZetaBreadcrumbItem({

@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import '../../zeta_flutter.dart';
 
 /// Radio buttons are used for mutually exclusive choices, not for multiple choices. Only one radio button can be selected at a time. When a user chooses a new item, the previous choice is automatically deselected.
-/// {@category Components}
 ///
 /// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=229-7&node-type=canvas&m=dev
 ///
