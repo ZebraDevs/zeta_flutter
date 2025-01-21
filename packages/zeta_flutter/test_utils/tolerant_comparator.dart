@@ -5,6 +5,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:image/image.dart' as img;
 import 'package:meta/meta.dart';
 
+import '../test/test_utils/test_utils.dart';
+
 /// A comparator that compares images with a tolerance.
 ///
 ///  Used with [goldenTest] to compare images with a tolerance.
