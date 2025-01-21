@@ -30,6 +30,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   image: ^4.5.2
+  meta: ^1.15.0
   mockito: ^5.4.5
   zds_analysis: ^1.1.1
 

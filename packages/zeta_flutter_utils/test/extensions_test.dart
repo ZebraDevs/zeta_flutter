@@ -3,7 +3,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
-
 @GenerateNiceMocks([
   MockSpec<BuildContext>(),
   MockSpec<ZetaColors>(),
@@ -21,10 +20,8 @@ void main() {
       final dividedWidgets = widgets.divide(const Divider()).toList();
 
       await tester.pumpWidget(
-        TestApp(
-          home: Column(
-            children: dividedWidgets,
-          ),
+        Column(
+          children: dividedWidgets,
         ),
       );
 
@@ -42,10 +39,8 @@ void main() {
       final gappedWidgets = widgets.gap(10);
 
       await tester.pumpWidget(
-        TestApp(
-          home: Column(
-            children: gappedWidgets,
-          ),
+        Column(
+          children: gappedWidgets,
         ),
       );
 
@@ -60,9 +55,7 @@ void main() {
       final widget = const Text('Test').paddingAll(10);
 
       await tester.pumpWidget(
-        TestApp(
-          home: widget,
-        ),
+        widget,
       );
 
       final padding = tester.widget<Padding>(find.byType(Padding)).padding as EdgeInsets;
@@ -73,11 +66,9 @@ void main() {
       final widget = const Text('Test').paddingStart(10);
 
       await tester.pumpWidget(
-        TestApp(
-          home: Directionality(
-            textDirection: TextDirection.ltr,
-            child: widget,
-          ),
+        Directionality(
+          textDirection: TextDirection.ltr,
+          child: widget,
         ),
       );
 
@@ -92,11 +83,9 @@ void main() {
       final widget = const Text('Test').paddingEnd(10);
 
       await tester.pumpWidget(
-        TestApp(
-          home: Directionality(
-            textDirection: TextDirection.ltr,
-            child: widget,
-          ),
+        Directionality(
+          textDirection: TextDirection.ltr,
+          child: widget,
         ),
       );
 
@@ -111,11 +100,9 @@ void main() {
       final widget = const Text('Test').paddingTop(10);
 
       await tester.pumpWidget(
-        TestApp(
-          home: Directionality(
-            textDirection: TextDirection.ltr,
-            child: widget,
-          ),
+        Directionality(
+          textDirection: TextDirection.ltr,
+          child: widget,
         ),
       );
 
@@ -130,11 +117,9 @@ void main() {
       final widget = const Text('Test').paddingBottom(10);
 
       await tester.pumpWidget(
-        TestApp(
-          home: Directionality(
-            textDirection: TextDirection.ltr,
-            child: widget,
-          ),
+        Directionality(
+          textDirection: TextDirection.ltr,
+          child: widget,
         ),
       );
 
@@ -149,11 +134,9 @@ void main() {
       final widget = const Text('Test').paddingVertical(10);
 
       await tester.pumpWidget(
-        TestApp(
-          home: Directionality(
-            textDirection: TextDirection.ltr,
-            child: widget,
-          ),
+        Directionality(
+          textDirection: TextDirection.ltr,
+          child: widget,
         ),
       );
 
@@ -168,11 +151,9 @@ void main() {
       final widget = const Text('Test').paddingHorizontal(10);
 
       await tester.pumpWidget(
-        TestApp(
-          home: Directionality(
-            textDirection: TextDirection.ltr,
-            child: widget,
-          ),
+        Directionality(
+          textDirection: TextDirection.ltr,
+          child: widget,
         ),
       );
 

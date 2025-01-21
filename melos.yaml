@@ -12,5 +12,3 @@ scripts:
     exec: dart fix --apply
   build_runner:
     exec: dart run build_runner build -d
-  cp-changelog:
-    exec: cp ../../CHANGELOG.md .

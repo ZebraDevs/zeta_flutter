@@ -4,6 +4,7 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
+import '../../test_utils/test_utils.dart';
 import 'tooltip_test.mocks.dart';
 
 @GenerateNiceMocks([

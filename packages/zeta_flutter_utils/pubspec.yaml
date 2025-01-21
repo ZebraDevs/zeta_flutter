@@ -14,15 +14,17 @@ resolution: workspace
 
 dependencies:
   analyzer: ^6.0.0
+  collection: any
   flutter:
     sdk: flutter
+  flutter_test:
+    sdk: flutter
+  image: any
+  meta: ^1.15.0
+  path: any
   web: ^1.1.0
 
-  flutter_test: any
-  image: any
-  zeta_flutter: any
-  collection: any
-  path: any
 dev_dependencies:
   mockito: ^5.4.5
-  zds_analysis: ^1.1.1  zeta_flutter_theme: any
+  zds_analysis: ^1.1.1
+  zeta_flutter: any

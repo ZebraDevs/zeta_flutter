@@ -4,6 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
+import '../test_utils/test_app.dart';
 import 'rounded_test.mocks.dart';
 
 @GenerateNiceMocks([
