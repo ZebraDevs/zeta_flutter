@@ -31,20 +31,3 @@ return ZetaProvider(
     },
 );
 ```
-
-### Colors
-
-This package contains the color resources used by Zeta. These files are automatically generated from our [Zeta Foundations Figma](https://www.figma.com/design/REjc5TauZb2EXYouaEKTYa/Zeta-Foundations), ensuring that the token names match with any designs that use Zeta.
-Custom colors can be passed into `ZetaProvider`. These must follow the same pattern as is defined in the interface for ZetaColors.
-
-### Contrast
-
-Apps using Zeta for theming can use either `ZetaContrast.AA` or `ZetaContrast.AAA`. AA is regular contrast and AAA is high contrast according to [WCAG Guidelines](https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html). This affects most colors in [ZetaColors] object.
-
-### Typography
-
-This package contains the typography styles from [Zeta Foundations Figma](https://www.figma.com/design/REjc5TauZb2EXYouaEKTYa/Zeta-Foundations), and this library provides access to [IBM Plex Sans](https://github.com/IBM/plex).
-
-### Rounded
-
-Zeta includes a rounded boolean that can be used to toggle the app between using round and sharp variants of components
