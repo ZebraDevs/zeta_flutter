@@ -14,8 +14,6 @@ class ZetaExample extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ZetaProvider(
-      // initialContrast: ZetaContrast.aa,
-      // initialThemeMode: ThemeMode.system,
       customThemes: [
         ZetaCustomTheme(
           id: 'teal',
