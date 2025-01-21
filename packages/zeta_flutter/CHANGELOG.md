@@ -1,5 +1,7 @@
 # Changelog
 
+## [1.0.0-alpha.1] - Initial alpha release
+
 ## [0.20.2](https://github.com/ZebraDevs/zeta_flutter/compare/v0.20.1...v0.20.2) (2024-12-20)
 
 ### ⛓️ Dependencies
