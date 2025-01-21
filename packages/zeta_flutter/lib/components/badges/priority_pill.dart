@@ -103,7 +103,7 @@ class ZetaPriorityPill extends ZetaStatelessWidget {
     final Color lozengeColor = customColor?.shade10 ?? type._lozengeColor(context);
 
     final size = this.size == ZetaPriorityPillSize.small ? Zeta.of(context).spacing.xl : Zeta.of(context).spacing.xl_3;
-    final label = this.label ?? type.name.capitalize();
+    final label = this.label ?? type.name.capitalize;
     final rounded = context.rounded;
 
     return Semantics(
@@ -127,9 +127,9 @@ class ZetaPriorityPill extends ZetaStatelessWidget {
               child: Text(
                 (index?.isEmpty ?? true)
                     ? (type == ZetaPriorityPillType.urgent
-                        ? type.name.substring(0, 1).capitalize()
+                        ? type.name.substring(0, 1).capitalize
                         : type.index.toString())
-                    : index!.substring(0, 1).capitalize(),
+                    : index!.substring(0, 1).capitalize,
                 style: this.size == ZetaPriorityPillSize.small
                     ? ZetaTextStyles.labelSmall.copyWith(
                         fontSize: 10,

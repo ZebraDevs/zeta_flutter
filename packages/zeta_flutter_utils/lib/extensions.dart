@@ -59,8 +59,13 @@ extension SpacingWidget on Widget {
 /// Extensions on [num].
 extension NumExtensions on num? {
   /// Returns input as a formatted string with a maximum amount of characters.
+  /// For example, when maxChars = 1, any number over 9 will return '9+'.
   ///
   /// [maxChars] defaults to one.
+  ///
+  ///
+  ///
+  /// Typically used for notifications.
   String formatMaxChars([int maxChars = 1]) {
     final strVal = this == null ? '' : this!.abs().toString();
     return strVal.length > maxChars ? '${'9' * maxChars}+' : strVal;
@@ -83,7 +88,7 @@ extension StringExtensions on String? {
   }
 
   /// Capitalizes first letter of string.
-  String capitalize() {
+  String get capitalize {
     if (this == null || this!.isEmpty) return '';
     if (this!.length == 1) return this!.toUpperCase();
     return '${this![0].toUpperCase()}${this!.substring(1).toLowerCase()}';

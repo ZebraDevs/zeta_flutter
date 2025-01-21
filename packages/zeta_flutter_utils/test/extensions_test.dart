@@ -185,11 +185,11 @@ void main() {
     });
 
     test('capitalize capitalizes first letter', () {
-      expect('hello'.capitalize(), 'Hello');
-      expect('HELLO'.capitalize(), 'Hello');
-      expect('a'.capitalize(), 'A');
-      expect(''.capitalize(), '');
-      expect(null.capitalize(), '');
+      expect('hello'.capitalize, 'Hello');
+      expect('HELLO'.capitalize, 'Hello');
+      expect('a'.capitalize, 'A');
+      expect(''.capitalize, '');
+      expect(null.capitalize, '');
     });
   });
 }

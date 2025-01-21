@@ -43,7 +43,7 @@ class RadiusExample extends StatelessWidget {
                           ),
                           padding: EdgeInsets.all(Zeta.of(context).spacing.large),
                           child: Text(
-                            rad.radiusString.split('.').last.capitalize(),
+                            rad.radiusString.split('.').last.capitalize,
                             style: ZetaTextStyles.titleMedium.apply(
                               color: Zeta.of(context).colors.mainDefault,
                               fontStyle: FontStyle.normal,

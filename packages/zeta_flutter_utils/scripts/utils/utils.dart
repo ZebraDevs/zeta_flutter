@@ -102,10 +102,10 @@ extension StringExtension on String {
   ///
   /// ```dart
   /// String text = "hello";
-  /// String capitalizedText = text.capitalize();
+  /// String capitalizedText = text.capitalize;
   /// print(capitalizedText); // Output: Hello
   /// ```
-  String capitalize() {
+  String get capitalize {
     if (isEmpty) return this;
     return this[0].toUpperCase() + substring(1);
   }
@@ -117,7 +117,7 @@ extension StringExtension on String {
   ///
   /// Returns a new string with each word capitalized.
   String capitalizeEachWord() {
-    return split(' ').map((word) => word.capitalize()).join(' ');
+    return split(' ').map((word) => word.capitalize).join(' ');
   }
 }
 
