@@ -43,7 +43,7 @@ Apps using Zeta for theming can use either `ZetaContrast.AA` or `ZetaContrast.AA
 
 ### Typography
 
-This package contains the typography styles from [Zeta Foundations Figma](https://www.figma.com/design/REjc5TauZb2EXYouaEKTYa/Zeta-Foundations), and this library provides access to [IBM Plex Sans](https://github.com/IBM/plex).
+This package contains the typography styles from [Zeta Foundations Figma](https://www.figma.com/design/REjc5TauZb2EXYouaEKTYa/Zeta-Foundations), and this library provides access to [IBM Plex Sans](https://github.com/IBM/plex), Copyright © 2017 IBM Corp, see [LICENSE-3RD-PARTY](https://github.com/ZebraDevs/zeta_flutter/tree/develop/packages/zeta_flutter_theme/LICENSE-3RD-PARTY)
 
 ### Rounded
 

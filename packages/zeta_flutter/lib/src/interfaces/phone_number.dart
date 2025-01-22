@@ -1,5 +1,4 @@
 /// A phone number.
-///
 class PhoneNumber {
   /// Creates a new [PhoneNumber].
   const PhoneNumber({

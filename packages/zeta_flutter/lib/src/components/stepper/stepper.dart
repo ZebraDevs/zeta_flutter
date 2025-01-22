@@ -489,7 +489,6 @@ class VerticalStep extends StatelessWidget {
 /// Zeta step used in [ZetaStepper]. The step can have a title and subtitle,
 /// an icon within its circle, some content and a state that governs its
 /// styling.
-///
 class ZetaStep {
   /// Creates a step for a [ZetaStepper].
   const ZetaStep({

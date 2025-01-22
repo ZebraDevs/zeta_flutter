@@ -1,5 +1,4 @@
 /// Class definition for a country with its name, dial code, and ISO code.
-///
 class Country {
   /// Constructor for [Country]
   const Country({

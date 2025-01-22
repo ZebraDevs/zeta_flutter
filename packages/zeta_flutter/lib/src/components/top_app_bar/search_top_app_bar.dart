@@ -187,7 +187,6 @@ class _ZetaTopAppBarSearchFieldState extends State<ZetaTopAppBarSearchField> wit
 }
 
 /// A controller used to control the search field in the app bar.
-///
 class ZetaSearchController extends ChangeNotifier {
   bool _enabled = false;
 

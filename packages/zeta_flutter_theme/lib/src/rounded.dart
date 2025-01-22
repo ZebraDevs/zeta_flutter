@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'zeta.dart';
 
 /// Sets a default rounded value for all of its Zeta children.
-///
 class ZetaRoundedScope extends InheritedWidget {
   /// Constructs a [ZetaRoundedScope].
   const ZetaRoundedScope({

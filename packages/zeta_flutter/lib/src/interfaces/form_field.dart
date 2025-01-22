@@ -42,7 +42,6 @@ abstract class ZetaFormField<T> extends FormField<T> {
 }
 
 /// A text form field used in Zeta
-///
 abstract class ZetaTextFormField extends ZetaFormField<String> {
   /// Creates a new [ZetaTextFormField]
   ZetaTextFormField({

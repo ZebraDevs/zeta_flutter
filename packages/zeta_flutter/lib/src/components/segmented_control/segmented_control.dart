@@ -169,7 +169,6 @@ class _ZetaSegmentedControlState<T> extends State<ZetaSegmentedControl<T>>
 }
 
 /// Data describing a segment of a [ZetaSegmentedControl].
-///
 class ZetaButtonSegment<T> {
   /// Construct a [ZetaButtonSegment].
   const ZetaButtonSegment({

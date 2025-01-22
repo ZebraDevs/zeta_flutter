@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'color_swatch.dart';
 
 /// A custom theme that can be used to define custom colors for the app.
-///
 class ZetaCustomTheme {
   /// Constructs a [ZetaCustomTheme].
   /// To define every shade of a color, provide a [ZetaColorSwatch] or a [MaterialColor].

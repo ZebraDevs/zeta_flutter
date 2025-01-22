@@ -10,7 +10,6 @@ import 'contrast.dart';
 /// See also:
 /// * [ColorSwatch].
 /// {@endtemplate}
-///
 @immutable
 class ZetaColorSwatch extends ColorSwatch<int> with EquatableMixin {
   /// Constructs a [ZetaColorSwatch].
@@ -177,7 +176,6 @@ class ZetaColorSwatch extends ColorSwatch<int> with EquatableMixin {
 }
 
 /// A swatch of colors with values 0 (light), 500 (medium) and 1000(dark).
-///
 class ZetaPureColorSwatch extends ColorSwatch<int> with EquatableMixin {
   /// Constructs a [ZetaPureColorSwatch].
   ///
