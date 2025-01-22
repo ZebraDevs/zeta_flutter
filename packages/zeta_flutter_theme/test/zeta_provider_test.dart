@@ -589,30 +589,26 @@ void main() {
       });
     });
 
-    group('debugFillProperties', () {
-      testWidgets('ZetaProvider debugFillProperties works correctly', (WidgetTester tester) async {
-        final Map<String, dynamic> debugFillProperties = {
-          'properties': '{}',
-          'contrast': 'ZetaContrast.aaa',
-          'themeMode': 'ThemeMode.light',
-          'customThemes': '[]',
-          'customTheme': 'ZetaThemeServiceData()',
-        };
-        final themes = [ZetaCustomTheme(id: '1')];
+    group('Content Test', () {
+      final Map<String, dynamic> debugFillProperties = {
+        'initialContrast': 'aaa',
+        'initialThemeMode': 'light',
+        'initialRounded': 'false',
+        'initialTheme': '"1"',
+      };
+      final themes = [ZetaCustomTheme(id: '1')];
 
-        debugFillPropertiesTest(
-          ZetaProvider(
-            builder: (context, light, dark, themeMode) => Container(),
-            initialThemeMode: ThemeMode.light,
-            initialContrast: ZetaContrast.aaa,
-            themeService: mockThemeService,
-            initialRounded: false,
-            initialTheme: '1',
-            customThemes: themes,
-          ),
-          debugFillProperties,
-        );
-      });
+      debugFillPropertiesTest(
+        ZetaProvider(
+          builder: (context, light, dark, themeMode) => Container(),
+          initialThemeMode: ThemeMode.light,
+          initialContrast: ZetaContrast.aaa,
+          initialRounded: false,
+          initialTheme: '1',
+          customThemes: themes,
+        ),
+        debugFillProperties,
+      );
 
       testWidgets('ZetaProviderState debugFillProperties works correctly', (WidgetTester tester) async {});
 

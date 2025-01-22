@@ -98,10 +98,11 @@ void debugFillPropertiesTest(Widget widget, Map<String, dynamic> properties) {
   testWidgets('debugFillProperties works correctly', (WidgetTester tester) async {
     final diagnostics = DiagnosticPropertiesBuilder();
     widget.debugFillProperties(diagnostics);
-
+    debugPrint(diagnostics.properties.toString());
     properties.forEach((key, value) {
       try {
-        expect(diagnostics.finder(key), value);
+        final found = diagnostics.finder(key);
+        expect(found, value);
       } catch (e) {
         debugPrint('Error on $key');
         rethrow;

@@ -20,8 +20,10 @@ void main() {
       final dividedWidgets = widgets.divide(const Divider()).toList();
 
       await tester.pumpWidget(
-        Column(
-          children: dividedWidgets,
+        MaterialApp(
+          home: Column(
+            children: dividedWidgets,
+          ),
         ),
       );
 
@@ -39,8 +41,10 @@ void main() {
       final gappedWidgets = widgets.gap(10);
 
       await tester.pumpWidget(
-        Column(
-          children: gappedWidgets,
+        MaterialApp(
+          home: Column(
+            children: gappedWidgets,
+          ),
         ),
       );
 
@@ -55,7 +59,7 @@ void main() {
       final widget = const Text('Test').paddingAll(10);
 
       await tester.pumpWidget(
-        widget,
+        MaterialApp(home: widget),
       );
 
       final padding = tester.widget<Padding>(find.byType(Padding)).padding as EdgeInsets;
