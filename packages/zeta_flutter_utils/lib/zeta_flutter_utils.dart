@@ -1,7 +1,7 @@
 /// Zeta Utils library.
 library;
 
-export 'debounce.dart';
-export 'extensions.dart';
-export 'nothing.dart';
-export 'platform/platform_is.dart' show PlatformIs;
+export 'src/platform/debounce.dart';
+export 'src/platform/extensions.dart';
+export 'src/platform/nothing.dart';
+export 'src/platform/platform_is.dart' show PlatformIs;

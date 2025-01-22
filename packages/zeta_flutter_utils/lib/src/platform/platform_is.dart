@@ -1,5 +1,7 @@
 // The content of this file is adapted from Mike Rydstrom:
 // https://gist.github.com/rydmike/1771fe24c050ebfe792fa309371154d8
+//
+// Copyright (c) 2021 Mike Rydstrom. See ./LICENSE_THIRD_PARTY for details.
 
 import 'universal_platform_web.dart' if (dart.library.io) 'universal_platform_vm.dart';
 
@@ -39,7 +41,6 @@ import 'universal_platform_web.dart' if (dart.library.io) 'universal_platform_vm
 /// supported. If running in a Web browser on Fuchsia, PlatformIs.web will be true, but
 /// PlatformIs.fuchsia will be false. Future versions, when Fuchsia is released,
 /// may fix this.
-///
 class PlatformIs {
   PlatformIs._();
 

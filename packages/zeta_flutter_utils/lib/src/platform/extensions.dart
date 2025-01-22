@@ -63,8 +63,6 @@ extension NumExtensions on num? {
   ///
   /// [maxChars] defaults to one.
   ///
-  ///
-  ///
   /// Typically used for notifications.
   String formatMaxChars([int maxChars = 1]) {
     final strVal = this == null ? '' : this!.abs().toString();

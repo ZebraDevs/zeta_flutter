@@ -47,4 +47,4 @@ Various extension methods are provided:
 
 ### Universal Platform Check
 
-A universal platform check that works on web too. Copyright (c) 2021 Mike Rydstrom; see [3rd party licenses.](./LICENSE-3RD-PARTY)
+A universal platform check that works on web too. Copyright (c) 2021 Mike Rydstrom; see [3rd party licenses.](https://github.com/ZebraDevs/zeta_flutter/tree/develop/packages/zeta_flutter_utils/LICENSE-3RD-PARTY)
