@@ -2,4 +2,4 @@
 library;
 
 /// All the icons
-export 'icons.g.dart';
+export 'src/icons.g.dart';
