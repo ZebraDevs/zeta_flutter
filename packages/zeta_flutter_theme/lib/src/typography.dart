@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'zeta_flutter_theme.dart';
+import '../zeta_flutter_theme.dart';
 
 /// Typography in Zeta style.
 ///

@@ -3,7 +3,7 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 
-import 'zeta_flutter_theme.dart';
+import '../zeta_flutter_theme.dart';
 
 /// Extensions on [Color] to brighten, lighten, darken and blend colors and
 /// can get a shade for gradients.
