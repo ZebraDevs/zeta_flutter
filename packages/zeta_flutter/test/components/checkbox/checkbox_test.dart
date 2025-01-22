@@ -2,7 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:zeta_flutter/components/checkbox/checkbox.dart';
+import 'package:zeta_flutter/src/components/checkbox/checkbox.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 import '../../test_utils/test_utils.dart';

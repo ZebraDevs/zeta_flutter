@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:zeta_flutter/components/stepper/stepper.dart';
+import 'package:zeta_flutter/src/components/stepper/stepper.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 import '../../test_utils/test_utils.dart';

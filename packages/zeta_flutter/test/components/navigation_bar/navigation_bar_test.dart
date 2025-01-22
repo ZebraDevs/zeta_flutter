@@ -1,7 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:zeta_flutter/components/navigation%20bar/navigation_bar.dart';
+import 'package:zeta_flutter/src/components/navigation%20bar/navigation_bar.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 import '../../test_utils/test_utils.dart';
