@@ -383,7 +383,6 @@ enum _ZetaSlidableActionType {
 }
 
 /// Slidable action widget for [ZetaChatItem].
-///
 class ZetaSlidableAction extends StatelessWidget {
   /// Constructs a [ZetaSlidableAction].
   const ZetaSlidableAction({

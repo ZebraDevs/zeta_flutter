@@ -28,7 +28,6 @@ class Country {
 }
 
 /// Class definition for a list of countries.
-///
 class Countries {
   /// List of [Country] for most countries around the world.
   static List<Country> get list => _countriesList;

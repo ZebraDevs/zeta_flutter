@@ -11,7 +11,7 @@ class ZetaRoundedScope extends InheritedWidget {
     super.key,
   }) : _rounded = rounded;
 
-  ///{@macro zeta-component-rounded }
+  /// {@macro zeta-component-rounded }
   final bool _rounded;
 
   /// Finds and returns closest instance of [ZetaRoundedScope].

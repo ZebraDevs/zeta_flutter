@@ -36,7 +36,6 @@ class ZetaThemeServiceData extends Equatable {
 
 /// `ZetaThemeService` is an abstract class.
 /// It provides the structure for loading and saving themes in Zeta application.
-
 abstract class ZetaThemeService {
   /// Constructor for `ZetaThemeService`.
   const ZetaThemeService();

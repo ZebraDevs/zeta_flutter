@@ -271,7 +271,6 @@ extension on Image {
 
 // TODO(UX-1138): Can this be refactored to use ZetaIndicator?
 /// Badge item for notification list items. Can be an avatar, icon or image
-///
 class ZetaNotificationBadge extends StatelessWidget {
   /// Constructs a notification badge with an avatar.
   const ZetaNotificationBadge.avatar({

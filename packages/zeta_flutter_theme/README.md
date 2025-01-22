@@ -1,6 +1,8 @@
-# zeta_flutter_theme
+# Zeta Flutter Theme
 
-Theme resources for zeta_flutter.
+Theme resources for zeta_flutter form Zebra Technologies.
+
+These resources are a part of the Zeta Design System, and can be used either on their own or with [Zeta Flutter](https://pub.dev/packages/zeta_flutter)
 
 ## Template
 

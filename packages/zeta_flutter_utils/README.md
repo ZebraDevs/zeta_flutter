@@ -1,6 +1,8 @@
-# zeta_flutter_utils
+# Zeta Utils
 
-Utility classes and functions used by zeta_flutter.
+Utility classes and functions used by zeta_flutter from Zebra Technologies.
+
+These utils are a part of the Zeta Design System, and can be used either on their own or with [Zeta Flutter](https://pub.dev/packages/zeta_flutter)
 
 ### Debounce
 

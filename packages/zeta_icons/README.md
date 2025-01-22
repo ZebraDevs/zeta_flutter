@@ -1,5 +1,11 @@
 # Zeta Icons
 
+Zeta Icons are a selection of icons from Zebra Technologies.
+
+These icons are a part of the Zeta Design System, and can be used either on their own or with [Zeta Flutter](https://pub.dev/packages/zeta_flutter)
+
+### Usage
+
 Zeta icons can be used in the same way as any other icon in Flutter:
 
 ```dart

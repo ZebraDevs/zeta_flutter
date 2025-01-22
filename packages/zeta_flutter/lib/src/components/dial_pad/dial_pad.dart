@@ -147,7 +147,6 @@ class _ZetaDialPadState extends State<ZetaDialPad> {
 }
 
 /// Individual button for [ZetaDialPad].
-///
 class ZetaDialPadButton extends StatelessWidget {
   /// Constructs a [ZetaDialPadButton]
   const ZetaDialPadButton({
