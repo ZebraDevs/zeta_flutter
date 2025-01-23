@@ -12,4 +12,4 @@ scripts:
   test: |
     rm -rf .coverage
     melos exec -- sh ../../scripts/cov_move.sh
-    sh scripts/lcov_combine.sh
+    bash scripts/lcov_combine.sh
