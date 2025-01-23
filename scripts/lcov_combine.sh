@@ -13,7 +13,7 @@ for dir in "${array[@]}"; do
     if [ -f ".coverage/$dir/lcov.info" ]; then
     echo Combining $dir
     cp ".coverage/$dir/lcov.info" ".coverage/$dir/lcov_combined.info"
-    sed -i '' "s|SF:|SF:packages/$dir/|" ".coverage/$dir/lcov_combined.info"
+    sed -i "s|SF:|SF:packages/$dir/|" ".coverage/$dir/lcov_combined.info"
     com="$com -a .coverage/$dir/lcov_combined.info"
     fi
 done
