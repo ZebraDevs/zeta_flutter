@@ -1,6 +1,11 @@
 #!/bin/bash
 
-array=($(find coverage -mindepth 1 -maxdepth 1 -type d -name 'z*' -print0 | xargs -0 -n1 basename))
+array=()
+while IFS= read -r -d '' dir; do
+    array+=("$(basename "$dir")")
+done < tmpfile
+
+find coverage -mindepth 1 -maxdepth 1 -type d -name 'z*' -print0 > tmpfile
 com="lcov" 
 
 for dir in "${array[@]}"; do
