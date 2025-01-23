@@ -16,4 +16,8 @@ for dir in "${array[@]}"; do
     fi
 done
 
+if [ "$(uname)" == "Linux" ]; then
+    exec sudo apt -y install lcov
+fi
+
 exec $com -o .coverage/lcov.info --ignore-errors empty
