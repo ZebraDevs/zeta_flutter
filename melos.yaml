@@ -6,14 +6,10 @@ packages:
   - widgetbook/*
 
 scripts:
-  analyze:
-    exec: dart analyze .
-  fix:
-    exec: dart fix --apply
+  doc: dart doc packages/zeta_flutter
   build_runner:
     exec: dart run build_runner build -d
-    # melos exec -- flutter test
   test: |
-    rm -rf coverage
+    rm -rf .coverage
     melos exec -- sh ../../scripts/cov_move.sh
     sh scripts/lcov_combine.sh

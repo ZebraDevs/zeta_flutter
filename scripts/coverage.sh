@@ -8,16 +8,16 @@ then
 fi
 
 # Run the tests with coverage
-flutter test --coverage
+flutter test --coverage --coverage-path .coverage/
 
 # Generate the LCOV report
-lcov --capture --directory coverage --output-file coverage/lcov.info
+lcov --capture --directory .coverage --output-file coverage/lcov.info
 
 # Remove unnecessary files from the report
-lcov --remove coverage/lcov.info 'lib/*/*.g.dart' 'lib/*/*.freezed.dart' -o coverage/lcov.info
+lcov --remove .coverage/lcov.info 'lib/*/*.g.dart' 'lib/*/*.freezed.dart' -o coverage/lcov.info
 
 # Generate the HTML report
-genhtml coverage/lcov.info --output-directory coverage/html
+genhtml .coverage/lcov.info --output-directory .coverage/html
 
 # Open the coverage report in the default browser
 if [ "$(uname)" == "Darwin" ]; then
