@@ -11,5 +11,5 @@ scripts:
     exec: dart run build_runner build -d
   test: |
     rm -rf .coverage
-    melos exec -- sh ../../scripts/cov_move.sh
+    melos exec -- bash ../../scripts/cov_move.sh
     bash scripts/lcov_combine.sh
