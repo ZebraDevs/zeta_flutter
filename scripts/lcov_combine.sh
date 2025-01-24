@@ -1,19 +1,13 @@
 #!/bin/bash
 
+echo 'Removing old coverage data'
 rm .coverage/lcov.info || true
-
 
 if ! command -v lcov &> /dev/null
 then
     echo "lcov could not be found, please install it first."
     exit
 fi
-
-
-# if [ "$(uname)" == "Linux" ]; then
-#     echo "Installing lcov"
-#     exec sudo apt -y install lcov
-# fi
  
 
 array=()

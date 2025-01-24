@@ -26,6 +26,8 @@ jobs:
       - run: |
           cd widgetbook
           flutter pub get
+      - name: Setup LCOV
+        uses: hrishikesh-kadam/setup-lcov@v1
       - run: dart pub global activate melos
       - uses: ZebraDevs/flutter-code-quality@change-test-command
         with:
