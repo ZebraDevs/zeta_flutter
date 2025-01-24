@@ -5,6 +5,13 @@ packages:
   - example/*
   - widgetbook/*
 
+command:
+  publish:
+    hooks:
+      pre: |
+        dart format packages --fix
+        dart fix --apply
+
 scripts:
   doc: dart doc packages/zeta_flutter
   build_runner:
@@ -13,3 +20,4 @@ scripts:
     rm -rf .coverage
     melos exec -- bash ../../scripts/cov_move.sh
     bash scripts/lcov_combine.sh
+  pana: melos exec -- bash ../../scripts/pana.sh

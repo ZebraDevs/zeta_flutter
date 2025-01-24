@@ -168,6 +168,6 @@ With these configurations, Zeta makes it easy to achieve consistent theming thro
 
 ## Licensing
 
-This software is licensed with the MIT license (see [LICENSE](./LICENSE) and [THIRD PARTY LICENSES](./LICENSE-3RD-PARTY)).
+This software is licensed with the MIT license (see [LICENSE](https://github.com/zebradevs/zeta_flutter/tree/main/LICENSE) and [THIRD PARTY LICENSES](https://github.com/zebradevs/zeta_flutter//tree/main/LICENSE-3RD-PARTY)).
 
 ---

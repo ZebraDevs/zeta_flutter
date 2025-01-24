@@ -21,12 +21,12 @@ jobs:
           flutter-version: 3.27.x
       - name: Install dependencies
         run: flutter pub get
-      - name: Format code
-        run: dart format --fix .
+      - name: Install melos
+        run: pub global activate melos
       - name: Check Publish Warnings
-        run: dart pub publish --dry-run
+        run: melos publish
       - name: Publish
-        run: dart pub publish --force
+        run: melos publish --no-dry-run
 
   deploy-website:
     runs-on: ubuntu-latest
