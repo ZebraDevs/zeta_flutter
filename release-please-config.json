@@ -15,10 +15,6 @@
     "packages/zeta_icons": {
       "release-type": "dart",
       "package-name": "zeta_icons"
-    },
-    ".": {
-      "release-type": "dart",
-      "package-name": "workspace"
     }
   },
   "include-component-in-tag": false,

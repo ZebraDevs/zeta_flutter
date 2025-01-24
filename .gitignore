@@ -23,7 +23,6 @@ build/
 **/.fvm/
 .gradle/
 local.properties
-*.log
 captures/
 .externalNativeBuild/
 .cxx/
@@ -149,3 +148,5 @@ package-lock.json
 /.coverage
 .fvm/
 pubspec_overrides.yaml
+/pana
+/doc/api
