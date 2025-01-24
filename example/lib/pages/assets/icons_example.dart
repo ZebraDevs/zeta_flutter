@@ -34,7 +34,7 @@ class _IconsExampleState extends State<IconsExample> {
                 runSpacing: Zeta.of(context).spacing.xl_4,
                 children: icons.entries.map(
                   (e) {
-                    final nameArr = (e.key.split('_')).join(' ').capitalize();
+                    final nameArr = (e.key.split('_')).join(' ').capitalize;
                     return Container(
                       width: 120,
                       height: 120,

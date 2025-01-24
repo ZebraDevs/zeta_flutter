@@ -10,8 +10,8 @@ example/widgetbook
 appium/
 test/
 build/
-coverage/
-coverage.sh
+.coverage/
+scripts/
 example/example.iml
 example/assets/
 example/lib/

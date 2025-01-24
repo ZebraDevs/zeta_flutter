@@ -1,11 +1,13 @@
 name: zeta_example
 description: Demonstrates how to use zeta
-version: 0.0.1
+version: 1.0.0-alpha
 publish_to: "none"
 
 environment:
-  sdk: ">=3.2.0 <4.0.0"
-  flutter: ">=3.16.0"
+  sdk: ^3.6.0
+  flutter: ^3.27.0
+
+resolution: workspace
 
 dependencies:
   cached_network_image: ^3.3.1
@@ -14,9 +16,7 @@ dependencies:
   go_router: ^14.1.2
   path_drawing: ^1.0.1
   zeta_flutter:
-    path: ../
+    path: ../packages/zeta_flutter
 
 flutter:
   uses-material-design: true
-  assets:
-    - assets/
