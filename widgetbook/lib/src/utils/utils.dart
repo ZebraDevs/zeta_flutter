@@ -10,7 +10,7 @@ List<IconData> iconOptions() => icons.values
     .map((e) => IconData(e.codePoint, fontFamily: ZetaIcons.family, fontPackage: ZetaIcons.package))
     .toList();
 
-String enumLabelBuilder(Enum? value) => value?.name.split('.').last.capitalize() ?? '';
+String enumLabelBuilder(Enum? value) => value?.name.split('.').last.capitalize ?? '';
 
 IconData? iconKnob(
   BuildContext context, {

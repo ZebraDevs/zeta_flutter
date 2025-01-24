@@ -1,66 +1,15 @@
-name: zeta_flutter
-version: 1.0.0-alpha
-description: Zeta is the new, formal, standardized Zebra Design System based off
-  the successes of ZDS (Zebra Design System). This package is in pre-release,
-  and so many aspects are incomplete.
-homepage: https://github.com/ZebraDevs/zeta_flutter
-repository: https://github.com/ZebraDevs/zeta_flutter
-issue_tracker: https://github.com/zebradevs/zeta_flutter/issues
-documentation: https://design.zebra.com/flutter/dartdoc/index.html
-
-platforms:
-  android:
-  ios:
-  macos:
-  web:
-  windows:
-  linux:
+name: zeta_flutter_workspace
 
 environment:
-  sdk: ">=3.2.0 <4.0.0"
-  flutter: ">=3.16.0"
-
-dependencies:
-  collection: ^1.18.0
-  equatable: ^2.0.5
-  flutter:
-    sdk: flutter
-  flutter_slidable: ^3.1.0
-  intl: ^0.20.1
-  mask_text_input_formatter: ^2.9.0
-  shared_preferences: ^2.3.2
-  web: ^1.0.0
+  sdk: ^3.6.0
 
 dev_dependencies:
-  analyzer: ^6.7.0
-  build_runner: ^2.4.10
-  flutter_test:
-    sdk: flutter
-  image: ^4.2.0
-  mockito: ^5.4.4
-  path: ^1.9.0
-  zds_analysis: ^1.1.1
+  melos: ^6.0.0
 
-flutter:
-  fonts:
-    - family: IBMPlexSans
-      fonts:
-        - asset: lib/assets/fonts/IBMPlexSans-Light.otf
-          weight: 300
-        - asset: lib/assets/fonts/IBMPlexSans-Regular.otf
-          weight: 400
-        - asset: lib/assets/fonts/IBMPlexSans-Medium.otf
-          weight: 500
-    - family: zeta-icons
-      fonts:
-        - asset: lib/src/generated/icons/zeta-icons-round.ttf
-    - family: zeta-icons-round
-      fonts:
-        - asset: lib/src/generated/icons/zeta-icons-round.ttf
-    - family: zeta-icons-sharp
-      fonts:
-        - asset: lib/src/generated/icons/zeta-icons-sharp.ttf
-  assets:
-    - lib/assets/flags/
-    - lib/assets/logos/
-  uses-material-design: true
+workspace:
+  - packages/zeta_flutter
+  - packages/zeta_flutter_theme
+  - packages/zeta_flutter_utils
+  - packages/zeta_icons
+  - example/
+  - widgetbook/

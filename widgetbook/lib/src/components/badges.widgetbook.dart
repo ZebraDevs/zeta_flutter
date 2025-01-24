@@ -66,18 +66,18 @@ Widget priorityPill(BuildContext context) {
     size: context.knobs.list<ZetaPriorityPillSize>(
       label: 'Size',
       options: ZetaPriorityPillSize.values,
-      labelBuilder: (value) => value.name.capitalize(),
+      labelBuilder: (value) => value.name.capitalize,
     ),
     type: context.knobs.list<ZetaPriorityPillType>(
       label: 'Priority',
       options: ZetaPriorityPillType.values,
-      labelBuilder: (value) => value.name.capitalize(),
+      labelBuilder: (value) => value.name.capitalize,
     ),
     isBadge: context.knobs.boolean(label: 'Badge'),
     customColor: context.knobs.listOrNull(
       label: 'Custom color',
       options: colors.rainbow,
-      labelBuilder: (value) => colors.rainbowMap.entries.firstWhere((v) => v.value == value).key.capitalize(),
+      labelBuilder: (value) => colors.rainbowMap.entries.firstWhere((v) => v.value == value).key.capitalize,
     ),
   );
 }
