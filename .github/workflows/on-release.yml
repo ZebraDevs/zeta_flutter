@@ -4,7 +4,7 @@ on:
 
   push:
     tags:
-      - "v[0-9]+.[0-9]+.[0-9]+*"
+      - "zeta_*v[0-9]+.[0-9]+.[0-9]+*"
 
 jobs:
   check-package:
@@ -26,12 +26,34 @@ jobs:
       - name: Install melos
         run: pub global activate melos
       - name: Check Publish Warnings
-        run: melos publish
-      - name: Publish
-        run: melos publish --no-dry-run
+        run: melos publish --dry-run
+      - name: Publish all
+        if: github.ref_name.contains('zeta_flutter') && !github.ref_name.contains('utils') && !github.ref_name.contains('theme') && !github.ref_name.contains('components')
+        run: melos publish # --no-dry-run TODO: Uncomment this line to publish
+      - name: Publish zeta_flutter (components)
+        if: github.ref_name.contains('zeta_flutter_components')
+        uses: ./.github/workflows/release-individual-package.yml
+        with:
+          package: zeta_flutter
+      - name: Publish zeta_flutter_theme
+        if: github.ref_name.contains('zeta_flutter_theme')
+        uses: ./.github/workflows/release-individual-package.yml
+        with:
+          package: zeta_flutter_theme
+      - name: Publish zeta_flutter_utils
+        if: github.ref_name.contains('zeta_flutter_utils')
+        uses: ./.github/workflows/release-individual-package.yml
+        with:
+          package: zeta_flutter_utils
+      - name: Publish zeta_icons
+        if: github.ref_name.contains('zeta_icons')
+        uses: ./.github/workflows/release-individual-package.yml
+        with:
+          package: zeta_icons
 
   deploy-website:
     runs-on: ubuntu-latest
+    needs: check-package
     steps:
       - uses: actions/github-script@v7
         with:

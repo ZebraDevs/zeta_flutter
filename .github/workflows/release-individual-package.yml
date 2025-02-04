@@ -1,0 +1,52 @@
+name: Release Individual Package
+
+on:
+  workflow_call:
+    inputs:
+      package:
+        description: "Package to release"
+        required: true
+        type: string
+  workflow_dispatch:
+    inputs:
+      package:
+        description: "Package to release"
+        type: choice
+        options:
+          - zeta_flutter
+          - zeta_flutter_theme
+          - zeta_flutter_utils
+          - zeta_icons
+
+jobs:
+  publish-zeta-icons:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+    environment: pub.dev
+    steps:
+      - name: Checkout branch
+        if: ${{github.event_name == 'workflow_dispatch'}}
+        uses: actions/checkout@v4
+      - name: Setup dart
+        if: ${{github.event_name == 'workflow_dispatch'}}
+        uses: dart-lang/setup-dart@v
+      - name: Install Flutter
+        if: ${{github.event_name == 'workflow_dispatch'}}
+        uses: subosito/flutter-action@v2
+        with:
+          cache: true
+          channel: stable
+          flutter-version: 3.27.x
+      - name: Install melos
+        if: ${{github.event_name == 'workflow_dispatch'}}
+        run: pub global activate melos
+      - name: Install dependencies
+        if: ${{github.event_name == 'workflow_dispatch'}}
+        run: flutter pub get
+      - name: navigate to package
+        run: cd packages/${{inputs.package}}
+      - name: Check Publish Warnings
+        run: flutter publish --dry-run
+      # - name: Publish
+      # run: flutter publish --no-dry-run
