@@ -6,28 +6,12 @@ This repo contains the source code for all Zeta Flutter packages.
 
 ## Packages
 
-<table>
-  <tr>
-    <th>Code</th>
-    <th>Link</th>
-  </tr>
-  <tr>
-    <td><a href='https://github.com/ZebraDevs/zeta_flutter/tree/develop/packages/zeta_flutter'>zeta_flutter (components)</a></td>
-    <td><a href='https://pub.dev/packages/zeta_flutter'>pub.dev</a></td>
-  </tr>
-  <tr>
-    <td><a href='https://github.com/ZebraDevs/zeta_flutter/tree/develop/packages/zeta_flutter_theme'>zeta_flutter_theme</a></td>
-    <td><a href='https://pub.dev/packages/zeta_flutter_theme'>pub.dev</a></td>
-  </tr>
-  <tr>
-    <td><a href='https://github.com/ZebraDevs/zeta_flutter/tree/develop/packages/zeta_flutter_utils'>zeta_flutter_theme</a></td>
-    <td><a href='https://pub.dev/packages/zeta_flutter_utils'>pub.dev</a></td>
-  </tr>
-  <tr>
-    <td><a href='https://github.com/ZebraDevs/zeta_flutter/tree/develop/packages/zeta_icons'>zeta_flutter_icons</a></td>
-    <td><a href='https://pub.dev/packages/zeta_icons'>pub.dev</a></td>
-  </tr>
-</table>
+| Code                                                                                                      | Link                                                   |
+| --------------------------------------------------------------------------------------------------------- | ------------------------------------------------------ |
+| [zeta_flutter (components)](https://github.com/ZebraDevs/zeta_flutter/tree/develop/packages/zeta_flutter) | [pub.dev](https://pub.dev/packages/zeta_flutter)       |
+| [zeta_flutter_theme](https://github.com/ZebraDevs/zeta_flutter/tree/develop/packages/zeta_flutter_theme)  | [pub.dev](https://pub.dev/packages/zeta_flutter_theme) |
+| [zeta_flutter_utils](https://github.com/ZebraDevs/zeta_flutter/tree/develop/packages/zeta_flutter_utils)  | [pub.dev](https://pub.dev/packages/zeta_flutter_utils) |
+| [zeta_flutter_icons](https://github.com/ZebraDevs/zeta_flutter/tree/develop/packages/zeta_icons)          | [pub.dev](https://pub.dev/packages/zeta_icons)         |
 
 ## Licensing
 

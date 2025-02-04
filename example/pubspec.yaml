@@ -1,6 +1,6 @@
 name: zeta_example
 description: Demonstrates how to use zeta
-version: 1.0.0-alpha
+version: 1.0.0
 publish_to: "none"
 
 environment:
