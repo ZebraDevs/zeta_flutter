@@ -2,7 +2,7 @@
   "packages": {
     "packages/zeta_flutter": {
       "release-type": "dart",
-      "package-name": "zeta_flutter_components"
+      "package-name": "zeta_flutter"
     },
     "packages/zeta_flutter_theme": {
       "release-type": "dart",
@@ -18,7 +18,7 @@
     },
     ".": {
       "release-type": "dart",
-      "package-name": "zeta_flutter"
+      "package-name": "all"
     }
   },
   "pull-request-title-pattern": "chore(${component}): release ${version}",

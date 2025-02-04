@@ -30,13 +30,13 @@ jobs:
       - name: Set package to publish (tag push)
         if: github.event_name == 'push'
         run: |
-          p=zeta_flutter
-          for package in zeta_flutter zeta_flutter_components zeta_flutter_theme zeta_flutter_utils zeta_icons; do
-          if [[ "${GITHUB_REF}" == *"${package}"* ]]; then
-            p=$package
+          echo "package=all" >> $GITHUB_ENV
+          for package in all zeta_flutter_theme zeta_flutter_utils zeta_icons zeta_flutter; do
+          if [[ "${{GITHUB_REF}}" == *"${package}"* ]]; then
+            echo Package is $package
+            echo "package=${package}" >> $GITHUB_ENV
             break
           fi
-          echo "package=${p}" >> $GITHUB_ENV
           done
       - uses: actions/checkout@v4
       - uses: dart-lang/setup-dart@v1
@@ -55,14 +55,14 @@ jobs:
 
       - name: Publish all
         if: ${{ env.package == 'all' }}
-        run: melos publish # --no-dry-run TODO: Uncomment this line to publish
+        run: melos publish --no-dry-run
 
       - name: Publish individual package
         if: ${{ env.package != 'all' }}
         run: |
           cd packages/${{ env.package }}
           flutter pub publish --dry-run
-          flutter pub publish # --no-dry-run TODO: Uncomment this line to publish
+          flutter pub publish --no-dry-run
 
   deploy-website:
     runs-on: ubuntu-latest
