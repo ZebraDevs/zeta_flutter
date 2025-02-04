@@ -5,6 +5,17 @@ on:
   push:
     tags:
       - "zeta_*v[0-9]+.[0-9]+.[0-9]+*"
+  workflow_dispatch:
+    inputs:
+      package:
+        description: "Package to release"
+        type: choice
+        options:
+          - all
+          - zeta_flutter
+          - zeta_flutter_theme
+          - zeta_flutter_utils
+          - zeta_icons
 
 jobs:
   check-package:
@@ -13,6 +24,20 @@ jobs:
       id-token: write
     environment: pub.dev
     steps:
+      - name: Set package to publish (workflow dispatch)
+        if: github.event_name == 'workflow_dispatch'
+        run: echo package=${{ github.event.inputs.package }} >> $GITHUB_ENV
+      - name: Set package to publish (tag push)
+        if: github.event_name == 'push'
+        run: |
+          p=zeta_flutter
+          for package in zeta_flutter zeta_flutter_components zeta_flutter_theme zeta_flutter_utils zeta_icons; do
+          if [[ "${GITHUB_REF}" == *"${package}"* ]]; then
+            p=$package
+            break
+          fi
+          echo "package=${p}" >> $GITHUB_ENV
+          done
       - uses: actions/checkout@v4
       - uses: dart-lang/setup-dart@v1
       - name: Install Flutter
@@ -24,32 +49,20 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
       - name: Install melos
-        run: pub global activate melos
+        run: dart pub global activate melos
       - name: Check Publish Warnings
         run: melos publish --dry-run
+
       - name: Publish all
-        if: github.ref_name.contains('zeta_flutter') && !github.ref_name.contains('utils') && !github.ref_name.contains('theme') && !github.ref_name.contains('components')
+        if: ${{ env.package == 'all' }}
         run: melos publish # --no-dry-run TODO: Uncomment this line to publish
-      - name: Publish zeta_flutter (components)
-        if: github.ref_name.contains('zeta_flutter_components')
-        uses: ./.github/workflows/release-individual-package.yml
-        with:
-          package: zeta_flutter
-      - name: Publish zeta_flutter_theme
-        if: github.ref_name.contains('zeta_flutter_theme')
-        uses: ./.github/workflows/release-individual-package.yml
-        with:
-          package: zeta_flutter_theme
-      - name: Publish zeta_flutter_utils
-        if: github.ref_name.contains('zeta_flutter_utils')
-        uses: ./.github/workflows/release-individual-package.yml
-        with:
-          package: zeta_flutter_utils
-      - name: Publish zeta_icons
-        if: github.ref_name.contains('zeta_icons')
-        uses: ./.github/workflows/release-individual-package.yml
-        with:
-          package: zeta_icons
+
+      - name: Publish individual package
+        if: ${{ env.package != 'all' }}
+        run: |
+          cd packages/${{ env.package }}
+          flutter pub publish --dry-run
+          flutter pub publish # --no-dry-run TODO: Uncomment this line to publish
 
   deploy-website:
     runs-on: ubuntu-latest
