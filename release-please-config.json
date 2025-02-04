@@ -15,6 +15,10 @@
     "packages/zeta_icons": {
       "release-type": "dart",
       "package-name": "zeta_icons"
+    },
+    ".": {
+      "release-type": "dart",
+      "package-name": "monorepo"
     }
   },
   "include-component-in-tag": false,
