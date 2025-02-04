@@ -8,7 +8,8 @@ then
     echo "lcov could not be found, please install it first."
     exit
 fi
- 
+
+touch tmpfile
 
 array=()
 while IFS= read -r -d '' dir; do
