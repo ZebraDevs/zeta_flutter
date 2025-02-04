@@ -1,7 +1,6 @@
 name: CI - Pull Request
 on:
-  pull_request:
-  # pull_request_target:
+  pull_request_target:
 
 # Pull Request Runs on the same branch will be cancelled
 concurrency:
@@ -22,13 +21,13 @@ jobs:
           cache: true
           channel: stable
           flutter-version: 3.27.x
+      - run: dart pub global activate melos
       - run: dart run build_runner build --delete-conflicting-outputs
       - run: |
           cd widgetbook
           flutter pub get
       - name: Setup LCOV
         uses: hrishikesh-kadam/setup-lcov@v1
-      - run: dart pub global activate melos
       - uses: ZebraDevs/flutter-code-quality@change-test-command
         with:
           token: ${{secrets.GITHUB_TOKEN}}
