@@ -144,9 +144,9 @@ class ZetaBottomSheet extends ZetaStatelessWidget {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty<String?>('title', title))
-      ..add(DiagnosticsProperty<bool>('centerTitle', centerTitle));
-    properties.add(DiagnosticsProperty<bool>('showCloseButton', showCloseButton));
-    properties.add(ObjectFlagProperty<VoidCallback>.has('onDismissed', onDismissed));
+      ..add(DiagnosticsProperty<bool>('centerTitle', centerTitle))
+      ..add(DiagnosticsProperty<bool>('showCloseButton', showCloseButton))
+      ..add(ObjectFlagProperty<VoidCallback>.has('onDismissed', onDismissed));
   }
 }
 

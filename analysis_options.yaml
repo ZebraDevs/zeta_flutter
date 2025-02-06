@@ -1,1 +1,8 @@
 include: package:zds_analysis/analysis_options_lib.yaml
+
+linter:
+  rules:
+    document_ignores: false
+    missing_code_block_language_in_doc_comment: false
+    unnecessary_library_name: false
+    unintended_html_in_doc_comment: false
