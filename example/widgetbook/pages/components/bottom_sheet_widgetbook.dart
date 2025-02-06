@@ -32,6 +32,8 @@ ZetaBottomSheet _bottomSheet(BuildContext context) {
   return ZetaBottomSheet(
     centerTitle: context.knobs.boolean(label: 'Center title', initialValue: true),
     title: context.knobs.string(label: 'Title', initialValue: 'Title'),
+    onDismissed: () => print('Dismissed'),
+    showCloseButton: context.knobs.boolean(label: 'Show close button', initialValue: true),
     body: Wrap(
       spacing: Zeta.of(context).spacing.medium,
       runSpacing: Zeta.of(context).spacing.medium,
