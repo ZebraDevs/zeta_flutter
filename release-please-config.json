@@ -18,11 +18,10 @@
     },
     ".": {
       "release-type": "dart",
-      "package-name": "monorepo"
+      "package-name": "all"
     }
   },
   "pull-request-title-pattern": "chore(${component}): release ${version}",
-  "include-component-in-tag": false,
   "extra-files": [
     "example/lib/home.dart",
     "widgetbook/lib/introduction.dart"
