@@ -1,0 +1,11 @@
+name: custom_lints
+description: "A package that contains custom lints for the Zebra Design System."
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
+version: 1.0.0+1
+environment:
+  sdk: ^3.6.1
+
+dependencies:
+  analyzer: ^7.1.0
+  analyzer_plugin: ^0.12.0
+  custom_lint_builder: ^0.7.1

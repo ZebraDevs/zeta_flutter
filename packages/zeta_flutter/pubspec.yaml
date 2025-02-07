@@ -25,12 +25,19 @@ dependencies:
   zeta_icons: ^0.20.2
 
 dev_dependencies:
+  custom_lints:
+    path: ../../custom_lints
+  custom_lint: ^0.7.2
   flutter_test:
     sdk: flutter
   image: ^4.5.2
   mockito: ^5.4.5
   path: ^1.9.0
   zds_analysis: ^1.1.1
+  # zds_analysis:
+  #   git:
+  #     url: https://github.com/zebradevs/zds_analysis.git
+  #     ref: enforce-testing-structure
 
 flutter:
   assets:
