@@ -20,7 +20,7 @@ jobs:
         with:
           cache: true
           channel: stable
-          flutter-version: 3.27.x
+          flutter-version: 3.29.x
       - run: dart pub global activate melos
       - run: dart run build_runner build --delete-conflicting-outputs
       - run: |
@@ -61,7 +61,7 @@ jobs:
         with:
           cache: true
           channel: stable
-          flutter-version: 3.27.x
+          flutter-version: 3.29.x
       - name: Setup flutter
         run: flutter pub get
       - name: Build example app

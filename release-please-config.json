@@ -15,10 +15,6 @@
     "packages/zeta_icons": {
       "release-type": "dart",
       "package-name": "zeta_icons"
-    },
-    ".": {
-      "release-type": "dart",
-      "package-name": "all"
     }
   },
   "pull-request-title-pattern": "chore(${component}): release ${version}",
