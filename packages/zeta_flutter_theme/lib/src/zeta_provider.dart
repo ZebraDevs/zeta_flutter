@@ -479,7 +479,6 @@ ThemeData generateZetaTheme({
       visualDensity: existingTheme.visualDensity,
       canvasColor: existingTheme.canvasColor,
       cardColor: existingTheme.cardColor,
-      dialogBackgroundColor: existingTheme.dialogBackgroundColor,
       disabledColor: existingTheme.disabledColor,
       dividerColor: existingTheme.dividerColor,
       focusColor: existingTheme.focusColor,
