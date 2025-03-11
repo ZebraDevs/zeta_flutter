@@ -23,7 +23,7 @@ abstract class ZetaIcons {
   static const String familySharp = 'zeta-icons-sharp';
 
   /// Package name for zeta flutter
-  static const String package = 'zeta_flutter';
+  static const String package = 'zeta_icons';
 
   // Icons
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/activity_round.png"></br>Activity icon </i>
