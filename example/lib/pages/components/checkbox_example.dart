@@ -13,43 +13,45 @@ class CheckBoxExample extends StatefulWidget {
 
 class _CheckBoxExampleState extends State<CheckBoxExample> {
   bool isChecked = true;
-  bool isEnabled = true;
   bool useIndeterminate = false;
 
   @override
   Widget build(BuildContext context) {
     return ExampleScaffold(
-      name: 'Checkbox',
-      child: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      name: CheckBoxExample.name,
+      children: [
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          key: Key('docs-checkbox'),
           children: [
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                ZetaCheckbox(
-                  value: isChecked,
-                  onChanged: isEnabled ? (value) => setState(() => isChecked = value) : null,
-                  useIndeterminate: useIndeterminate,
-                ),
-                ZetaButton(
-                  label: isEnabled ? 'Disable' : 'Enable',
-                  onPressed: () => setState(() => isEnabled = !isEnabled),
-                ),
-                ZetaButton(
-                  label: !useIndeterminate ? 'Use Indeterminate' : 'Don\'t use indeterminate',
-                  onPressed: () => setState(() => useIndeterminate = !useIndeterminate),
-                ),
-              ],
+            ZetaCheckbox(
+              value: isChecked,
+              onChanged: (value) {
+                setState(() {
+                  if (value && !useIndeterminate) {
+                    useIndeterminate = true;
+                    isChecked = true;
+                  } else if (!value && useIndeterminate) {
+                    useIndeterminate = false;
+                    isChecked = true;
+                  } else {
+                    isChecked = false;
+                  }
+                });
+              },
+              useIndeterminate: useIndeterminate,
+              label: 'Label',
             ),
-            Row(children: [Text('Checkbox Enabled')]),
-            getCheckBoxRow(isEnabled: true),
-            Row(children: [Text('Checkbox Disabled')]),
-            getCheckBoxRow(isEnabled: false),
+            ZetaCheckbox(
+              label: 'Disabled',
+            ),
           ],
         ),
-      ),
+        Row(children: [Text('Checkbox Enabled')]),
+        getCheckBoxRow(isEnabled: true),
+        Row(children: [Text('Checkbox Disabled')]),
+        getCheckBoxRow(isEnabled: false),
+      ],
     );
   }
 }

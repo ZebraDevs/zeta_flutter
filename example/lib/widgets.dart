@@ -35,51 +35,56 @@ class ExampleScaffold extends StatelessWidget {
         filteredChildren.add(children!.first);
       }
 
-      return Center(
-        child: Container(
-          height: 400,
-          child: Scaffold(
-            body: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Expanded(
-                  child: SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
+      return LayoutBuilder(builder: (context, constraints) {
+        return Center(
+          child: ConstrainedBox(
+            constraints: constraints,
+            // height: 400,
+            // width: constraints.maxWidth,
+            child: Scaffold(
+              body: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Expanded(
                     child: SingleChildScrollView(
-                      child: Column(
-                        spacing: 16,
-                        children: filteredChildren,
-                      ).paddingAll(16),
+                      scrollDirection: Axis.horizontal,
+                      child: SingleChildScrollView(
+                        child: Column(
+                          spacing: 16,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: filteredChildren,
+                        ).paddingAll(16),
+                      ),
                     ),
                   ),
-                ),
-                Container(
-                  color: ZetaPrimitivesLight().warm.shade100,
-                  padding: EdgeInsets.all(16),
-                  child: SizedBox(
-                    height: 40,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          // x-release-please-start-version
-                          'zeta_flutter v0.20.2',
-                          // x-release-please-end
-                          style: ZetaTextStyles.bodyMedium.copyWith(color: ZetaPrimitivesLight().warm.shade30),
-                        ),
-                        FlutterLogo(
-                            style: FlutterLogoStyle.horizontal,
-                            size: 120,
-                            textColor: ZetaPrimitivesLight().warm.shade30)
-                      ],
+                  Container(
+                    color: ZetaPrimitivesLight().warm.shade100,
+                    padding: EdgeInsets.all(16),
+                    child: SizedBox(
+                      height: 40,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            // x-release-please-start-version
+                            'zeta_flutter v0.20.2',
+                            // x-release-please-end
+                            style: ZetaTextStyles.bodyMedium.copyWith(color: ZetaPrimitivesLight().warm.shade30),
+                          ),
+                          FlutterLogo(
+                              style: FlutterLogoStyle.horizontal,
+                              size: 120,
+                              textColor: ZetaPrimitivesLight().warm.shade30)
+                        ],
+                      ),
                     ),
-                  ),
-                )
-              ],
+                  )
+                ],
+              ),
             ),
           ),
-        ),
-      );
+        );
+      });
     }
     return Scaffold(
       floatingActionButton: floatingActionButton,

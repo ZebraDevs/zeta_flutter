@@ -74,9 +74,15 @@ final List<Component> components = [
   Component(BottomSheetExample.name, (context) => const BottomSheetExample()),
   Component(BreadcrumbExample.name, (context) => const BreadcrumbExample()),
   Component(ButtonExample.name, (context) => const ButtonExample()),
+  Component(ButtonGroupExample.name, (context) => const ButtonGroupExample()),
+  Component(FabExample.name, (context) => const FabExample()),
+  Component(IconButtonExample.name, (context) => const IconButtonExample()),
   Component(ChatItemExample.name, (context) => const ChatItemExample()),
   Component(CheckBoxExample.name, (context) => const CheckBoxExample()),
-  Component(ChipExample.name, (context) => const ChipExample()),
+  Component(AssistChipExample.name, (context) => const AssistChipExample()),
+  Component(StatusChipExample.name, (context) => const StatusChipExample()),
+  Component(InputChipExample.name, (context) => const InputChipExample()),
+  Component(FilterChipExample.name, (context) => const FilterChipExample()),
   Component(CommsButtonExample.name, (context) => const CommsButtonExample()),
   Component(ContactItemExample.name, (context) => const ContactItemExample()),
   Component(ListExample.name, (context) => const ListExample()),
@@ -163,10 +169,6 @@ final routes = [
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
-    final String? extraString = GoRouterState.of(context).extra as String?;
-    if (extraString != null && extraString == 'docs') {
-      return Container(width: 100, height: 100, color: Colors.amber);
-    }
     final _components = components..sort((a, b) => a.name.compareTo(b.name));
     final _assets = assets..sort((a, b) => a.name.compareTo(b.name));
     final _theme = theme..sort((a, b) => a.name.compareTo(b.name));

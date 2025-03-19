@@ -15,7 +15,7 @@ void main() async {
       return ZetaExample(
         initialThemeMode: (data?.darkMode ?? false) ? ThemeMode.dark : ThemeMode.light,
         initialContrast: (data?.highContrast ?? false) ? ZetaContrast.aaa : ZetaContrast.aa,
-        initialRoute: data?.route ?? '/Avatar',
+        initialRoute: data?.route ?? '',
       );
     },
   ));
