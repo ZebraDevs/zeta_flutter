@@ -14,8 +14,9 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   var response = '';
   try {
-    response =
-        (await http.get(Uri.parse('https://raw.githubusercontent.com/ZebraDevs/zeta_flutter/main/README.md'))).body;
+    response = (await http.get(
+            Uri.parse('https://raw.githubusercontent.com/ZebraDevs/zeta_flutter/main/packages/zeta_flutter/README.md')))
+        .body;
   } catch (e) {
     debugPrint('Can not read readme');
   } finally {
@@ -23,7 +24,7 @@ Future<void> main() async {
   }
 }
 
-@widgetbook.App()
+@widgetbook.App(cloudAddonsConfigs: {})
 class WidgetbookApp extends StatelessWidget {
   const WidgetbookApp({super.key, required this.readme});
   final String readme;
