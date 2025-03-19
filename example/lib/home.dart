@@ -66,7 +66,11 @@ final List<Component> components = [
   Component(AvatarRailExample.name, (context) => const AvatarRailExample()),
   Component(AvatarExample.name, (context) => const AvatarExample()),
   Component(BannerExample.name, (context) => const BannerExample()),
-  Component(BadgesExample.name, (context) => const BadgesExample()),
+  Component(StatusLabel.name, (context) => const StatusLabel()),
+  Component(PriorityPill.name, (context) => const PriorityPill()),
+  Component(Label.name, (context) => const Label()),
+  Component(Indicators.name, (context) => const Indicators()),
+  Component(Tags.name, (context) => const Tags()),
   Component(BottomSheetExample.name, (context) => const BottomSheetExample()),
   Component(BreadcrumbExample.name, (context) => const BreadcrumbExample()),
   Component(ButtonExample.name, (context) => const ButtonExample()),
@@ -124,19 +128,21 @@ class Home extends StatefulWidget {
   State<Home> createState() => _HomeState();
 }
 
-final GoRouter router = GoRouter(
-  routes: [
-    GoRoute(
-      path: '/',
-      name: 'Home',
-      builder: (_, __) => const Home(),
-      routes: [
-        ...[
-          ...components,
-          ...assets,
-          ...theme,
-        ].map(
-          (e) => GoRoute(
+final GoRouter router = GoRouter(routes: routes);
+
+final routes = [
+  GoRoute(
+    path: '/',
+    name: 'Home',
+    builder: (_, __) => const Home(),
+    routes: [
+      ...[
+        ...components,
+        ...assets,
+        ...theme,
+      ].map(
+        (e) {
+          return GoRoute(
             path: e.name,
             name: e.name,
             builder: (_, __) => e.pageBuilder.call(_),
@@ -147,16 +153,20 @@ final GoRouter router = GoRouter(
                       builder: (_, __) => f.pageBuilder(_),
                     ))
                 .toList(),
-          ),
-        ),
-      ],
-    ),
-  ],
-);
+          );
+        },
+      ),
+    ],
+  )
+];
 
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
+    final String? extraString = GoRouterState.of(context).extra as String?;
+    if (extraString != null && extraString == 'docs') {
+      return Container(width: 100, height: 100, color: Colors.amber);
+    }
     final _components = components..sort((a, b) => a.name.compareTo(b.name));
     final _assets = assets..sort((a, b) => a.name.compareTo(b.name));
     final _theme = theme..sort((a, b) => a.name.compareTo(b.name));

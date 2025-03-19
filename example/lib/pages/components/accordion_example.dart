@@ -11,45 +11,48 @@ class AccordionExample extends StatelessWidget {
   Widget build(BuildContext context) {
     return ExampleScaffold(
       name: AccordionExample.name,
-      child: SingleChildScrollView(
-        padding: EdgeInsets.all(Zeta.of(context).spacing.medium),
-        child: Column(
-          children: [
-            Text('Divider'),
-            const SizedBox(height: 20),
-            ZetaAccordion(
-              title: 'title',
-              child: Column(
-                children: [
-                  ListTile(title: Text('List Item')),
-                  ListTile(title: Text('List Item')),
-                  ListTile(title: Text('List Item')),
-                ],
-              ),
-            ),
-            ZetaAccordion(title: 'title'),
-            const SizedBox(height: 40),
-            Text('Contained'),
-            const SizedBox(height: 20),
-            ZetaAccordion(
-              contained: true,
-              title: 'title',
-              child: Column(
-                children: [
-                  ListTile(title: Text('List Item')),
-                  ListTile(title: Text('List Item')),
-                  ListTile(title: Text('List Item')),
-                ],
-              ),
-            ),
-            ZetaAccordion(
-              contained: true,
-              title: 'title',
-            ),
-            const SizedBox(height: 40),
-          ].divide(const SizedBox.square(dimension: 10)).toList(),
+      children: [
+        Text('Divider'),
+        const SizedBox(height: 20),
+        ZetaAccordion(
+          title: 'title',
+          key: Key('docs'),
+          child: Column(
+            children: [
+              ListTile(title: Text('List Item')),
+              ListTile(title: Text('List Item')),
+              ListTile(title: Text('List Item')),
+            ],
+          ),
         ),
-      ),
+        ZetaAccordion(title: 'title'),
+        const SizedBox(height: 40),
+        Text('Contained'),
+        const SizedBox(height: 20),
+        ZetaAccordion(
+          contained: true,
+          key: Key('docs-2'),
+          title: 'title',
+          child: Column(
+            children: [
+              ListTile(title: Text('List Item')),
+              ListTile(title: Text('List Item')),
+              ListTile(title: Text('List Item')),
+            ],
+          ),
+        ),
+        ZetaAccordion(
+          contained: true,
+          title: 'title',
+        ),
+        const SizedBox(height: 40),
+      ],
+      // child: SingleChildScrollView(
+      //   padding: EdgeInsets.all(Zeta.of(context).spacing.medium),
+      //   child: Column(
+      //     children: [].divide(const SizedBox.square(dimension: 10)).toList(),
+      //   ),
+      // ),
     );
   }
 }

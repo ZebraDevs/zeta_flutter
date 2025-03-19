@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 import 'home.dart';
 
@@ -9,11 +10,17 @@ void main() async {
 }
 
 class ZetaExample extends StatelessWidget {
-  const ZetaExample({super.key});
+  final ZetaContrast? initialContrast;
+  final ThemeMode? initialThemeMode;
+  final String? initialRoute;
+
+  const ZetaExample({super.key, this.initialContrast, this.initialThemeMode, this.initialRoute});
 
   @override
   Widget build(BuildContext context) {
     return ZetaProvider(
+      initialContrast: initialContrast,
+      initialThemeMode: initialThemeMode,
       customThemes: [
         ZetaCustomTheme(
           id: 'teal',
@@ -51,10 +58,21 @@ class ZetaExample extends StatelessWidget {
           secondaryDark: ZetaPrimitivesDark().blue,
         ),
       ],
-      builder: (context, lightTheme, darkTheme, themeMode) {
+      builder: (context, lightTheme, darkTheme, _) {
+        if (initialRoute != null) {
+          return MaterialApp.router(
+            routerConfig: GoRouter(
+              routes: routes,
+              initialLocation: initialRoute ?? '/',
+              initialExtra: initialRoute != null ? 'docs' : null,
+            ),
+            themeMode: initialThemeMode,
+            theme: lightTheme,
+            darkTheme: darkTheme,
+          );
+        }
         return MaterialApp.router(
           routerConfig: router,
-          themeMode: themeMode,
           theme: lightTheme,
           darkTheme: darkTheme,
         );

@@ -60,37 +60,49 @@ class _AvatarRailExampleState extends State<AvatarRailExample> {
     ];
     return ExampleScaffold(
       name: AvatarRailExample.name,
-      child: SingleChildScrollView(
-        child: Column(
-          children: [
-            for (final size in ZetaAvatarSize.values)
-              Row(
-                children: [
-                  Text(size.toString()),
-                  SizedBox(
-                    width: 500,
-                    child: ZetaAvatarRail(
-                      gap: 10,
-                      size: size,
-                      labelMaxLines: 3,
-                      onTap: (key) => {
-                        setState(() {
-                          selected = int.parse(key.toString().replaceAll(RegExp(r'[^0-9]'), ''));
-                        })
-                      },
-                      avatars: avatarList,
-                    ),
-                  ),
-                  if (selected != null)
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: avatarList[selected!].copyWith(size: size),
-                    ),
-                ].gap(50),
-              )
-          ],
+      children: [
+        SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                for (final size in ZetaAvatarSize.values)
+                  Row(
+                    children: [
+                      Text(size.toString()),
+                      SizedBox(
+                        width: 500,
+                        child: ZetaAvatarRail(
+                          gap: 10,
+                          size: size,
+                          labelMaxLines: 3,
+                          onTap: (key) => {
+                            setState(() {
+                              selected = int.parse(key.toString().replaceAll(RegExp(r'[^0-9]'), ''));
+                            })
+                          },
+                          avatars: avatarList,
+                        ),
+                      ),
+                      if (selected != null)
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: avatarList[selected!].copyWith(size: size),
+                        ),
+                    ].gap(50),
+                  )
+              ],
+            ),
+          ),
         ),
-      ),
+        ZetaAvatarRail(
+          key: Key('docs-avatar-rail'),
+          gap: 10,
+          size: ZetaAvatarSize.m,
+          labelMaxLines: 3,
+          avatars: avatarList,
+        )
+      ],
     );
   }
 }

@@ -26,6 +26,14 @@
       "request": "launch",
       "type": "dart",
       "flutterMode": "release"
+    },
+    {
+      "name": "embedded",
+      "type": "dart",
+      "program": "example/lib/embedded.dart",
+      "suppressWebServerDeviceBrowserLaunch": true,
+
+      "request": "launch"
     }
   ]
 }

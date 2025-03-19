@@ -102,36 +102,41 @@ class _ButtonExampleState extends State<ButtonExample> {
         shape: theFab.shape,
         onPressed: theFab.onPressed,
       ),
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: SingleChildScrollView(
-          controller: _scrollController,
-          child: Row(
-            children: [
-              Expanded(
-                flex: 8,
-                child: Column(
-                  children: [
-                    Text('Regular Buttons', style: ZetaTextStyles.displayMedium),
-                    Column(children: buttons(null)),
-                    Text('Full Buttons', style: ZetaTextStyles.displayMedium),
-                    Column(children: buttons(ZetaWidgetBorder.full)),
-                    Text('Icon Buttons', style: ZetaTextStyles.displayLarge),
-                    Column(children: iconButtons(null)),
-                    Text('Full Icon Buttons', style: ZetaTextStyles.displayMedium),
-                    Column(children: iconButtons(ZetaWidgetBorder.full)),
-                    Text('Group Buttons', style: ZetaTextStyles.displayLarge),
-                    Column(children: groupButtons(null)),
-                    Text('Floating Action Buttons', style: ZetaTextStyles.displayMedium),
-                    Text('Tap buttons to change current FAB: ', style: ZetaTextStyles.bodyMedium),
-                    Wrap(children: fabs.divide(SizedBox.square(dimension: 10)).toList()),
-                  ].divide(SizedBox.square(dimension: Zeta.of(context).spacing.xl_2)).toList(),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
+      children: [
+        Text('Regular Buttons', style: ZetaTextStyles.displayMedium).paddingAll(8),
+        Column(children: buttons(null), key: Key('docs')),
+        Column(
+          children: [
+            Text('Full Buttons', style: ZetaTextStyles.displayMedium),
+            Column(children: buttons(ZetaWidgetBorder.full)),
+            Text('Icon Buttons', style: ZetaTextStyles.displayLarge),
+            Column(children: iconButtons(null)),
+            Text('Full Icon Buttons', style: ZetaTextStyles.displayMedium),
+            Column(children: iconButtons(ZetaWidgetBorder.full)),
+            Text('Group Buttons', style: ZetaTextStyles.displayLarge),
+            Column(children: groupButtons(null)),
+            Text('Floating Action Buttons', style: ZetaTextStyles.displayMedium),
+            Text('Tap buttons to change current FAB: ', style: ZetaTextStyles.bodyMedium),
+            Wrap(children: fabs.divide(SizedBox.square(dimension: 10)).toList()),
+          ],
+        ).paddingAll(8),
+        // Padding(
+        //   padding: const EdgeInsets.all(8.0),
+        //   child: SingleChildScrollView(
+        //     controller: _scrollController,
+        //     child: Row(
+        //       children: [
+        //         Expanded(
+        //           flex: 8,
+        //           child: Column(
+        //             children: [].divide(SizedBox.square(dimension: Zeta.of(context).spacing.xl_2)).toList(),
+        //           ),
+        //         ),
+        //       ],
+        //     ),
+        //   ),
+        // )
+      ],
     );
   }
 

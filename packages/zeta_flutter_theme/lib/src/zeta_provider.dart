@@ -184,10 +184,10 @@ class ZetaProviderState extends State<ZetaProvider> with Diagnosticable, Widgets
     final ZetaThemeServiceData themeServiceData = await widget.themeService.loadTheme();
 
     // Set the initial theme mode.
-    _themeMode = themeServiceData.themeMode ?? widget.initialThemeMode ?? ThemeMode.system;
+    _themeMode = widget.initialThemeMode ?? themeServiceData.themeMode ?? ThemeMode.system;
 
     // Set the initial contrast.
-    _contrast = themeServiceData.contrast ?? widget.initialContrast ?? ZetaContrast.aa;
+    _contrast = widget.initialContrast ?? themeServiceData.contrast ?? ZetaContrast.aa;
 
     final loadedTheme = _customThemes[themeServiceData.themeId ?? widget.initialTheme];
 

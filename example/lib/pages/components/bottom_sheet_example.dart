@@ -18,9 +18,9 @@ class _BottomSheetExampleState extends State<BottomSheetExample> {
   Widget build(BuildContext context) {
     return ExampleScaffold(
       name: BottomSheetExample.name,
-      child: SingleChildScrollView(
-        padding: EdgeInsets.all(Zeta.of(context).spacing.medium),
-        child: Column(
+      children: [
+        Column(
+          key: Key('docs-bottom-sheet'),
           children: [
             ZetaMenuItem.horizontal(
               label: Text('Grid'),
@@ -77,7 +77,22 @@ class _BottomSheetExampleState extends State<BottomSheetExample> {
             ),
           ],
         ),
-      ),
+        // ZetaBottomSheet(
+        //   key: Key('docs-bottom-sheet'),
+        //   title: 'Bottom Sheet',
+        //   centerTitle: centerTitle,
+        //   body: Wrap(
+        //     children: List.generate(
+        //       3,
+        //       (index) => ZetaMenuItem.horizontal(
+        //         label: Text('Menu Item'),
+        //         // icon: ZetaIcon(ZetaIcons.star),
+        //         onTap: () {},
+        //       ),
+        //     ),
+        //   ),
+        // )
+      ],
     );
   }
 }

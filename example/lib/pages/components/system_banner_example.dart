@@ -3,7 +3,7 @@ import 'package:zeta_example/widgets.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 class BannerExample extends StatelessWidget {
-  static const String name = 'Banner';
+  static const String name = 'System Banner';
 
   const BannerExample({Key? key}) : super(key: key);
 
