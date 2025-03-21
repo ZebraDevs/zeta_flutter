@@ -177,7 +177,7 @@ class _RadioPainter extends ToggleablePainter {
 
     // Background mask for focus
     final Paint paint = Paint()
-      ..color = colors.surfacePrimary
+      ..color = colors.surfaceDefault
       ..style = PaintingStyle.stroke
       ..strokeWidth = Zeta.of(context).spacing.small + ZetaBorders.medium;
     if (isFocused) canvas.drawCircle(center, _kInnerRadius, paint);

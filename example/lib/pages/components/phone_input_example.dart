@@ -16,64 +16,54 @@ class _PhoneInputExampleState extends State<PhoneInputExample> {
 
   @override
   Widget build(BuildContext context) {
-    return ExampleScaffold(
-      name: 'Phone Input',
-      child: SingleChildScrollView(
-        child: Form(
-          key: key,
-          child: Column(
-            children: [
-              ZetaButton(label: 'Reset', onPressed: () => key.currentState?.reset()),
-              Padding(
-                padding: const EdgeInsets.all(20),
-                child: ZetaPhoneInput(
-                  label: 'Phone number',
-                  hintText: 'Enter your phone number',
-                  initialValue: const PhoneNumber(dialCode: '+44', number: '1234567890'),
-                  onChange: (value) {
-                    print(value?.dialCode);
-                    print(value?.number);
-                  },
-                  countries: ['US', 'GB', 'DE', 'AT', 'FR', 'IT', 'BG'],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(20),
-                child: ZetaPhoneInput(
-                  label: 'Phone number',
-                  hintText: 'Enter your phone number',
-                  size: ZetaWidgetSize.large,
-                  errorText: 'Error',
-                  onChange: (value) {
-                    print(value);
-                  },
-                  countries: ['US', 'GB', 'DE', 'AT', 'FR', 'IT', 'BG'],
-                  selectCountrySemanticLabel: 'Choose country code',
-                ),
-              ),
-              Divider(color: Colors.grey[200]),
-              Padding(
-                padding: const EdgeInsets.only(top: 20),
-                child: Text('Disabled', style: ZetaTextStyles.titleMedium),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(20),
-                child: ZetaPhoneInput(
-                  label: 'Phone number',
-                  hintText: 'Enter your phone number',
-                  disabled: true,
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(20),
-                child: ZetaPhoneInput(
-                  label: 'Phone number',
-                  hintText: 'Enter your phone number',
-                ),
-              ),
-            ],
+    return Form(
+      key: key,
+      child: ExampleScaffold(
+        gap: 8,
+        name: PhoneInputExample.name,
+        children: [
+          ZetaButton(label: 'Reset', onPressed: () => key.currentState?.reset()),
+          ZetaPhoneInput(
+            label: 'Phone number',
+            hintText: 'Enter your phone number',
+            size: ZetaWidgetSize.small,
+            initialValue: const PhoneNumber(dialCode: '+44', number: '1234567890'),
+            onChange: (value) {},
+            countries: ['US', 'GB', 'DE', 'AT', 'FR', 'IT', 'BG'],
+            key: Key('docs-phone-input'),
           ),
-        ),
+          ZetaPhoneInput(
+            label: 'Phone number',
+            hintText: 'Enter your phone number',
+            size: ZetaWidgetSize.medium,
+            errorText: 'Error',
+            onChange: (value) {
+              print(value);
+            },
+            countries: ['US', 'GB', 'DE', 'AT', 'FR', 'IT', 'BG'],
+            selectCountrySemanticLabel: 'Choose country code',
+            key: Key('docs-phone-input-error'),
+          ),
+          Divider(color: Colors.grey[200]),
+          Padding(
+            padding: const EdgeInsets.only(top: 20),
+            child: Text('Disabled', style: ZetaTextStyles.titleMedium),
+          ),
+          ZetaPhoneInput(
+            label: 'Phone number',
+            size: ZetaWidgetSize.large,
+            hintText: 'Enter your phone number',
+            disabled: true,
+            key: Key('docs-phone-input-disabled'),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(20),
+            child: ZetaPhoneInput(
+              label: 'Phone number',
+              hintText: 'Enter your phone number',
+            ),
+          ),
+        ],
       ),
     );
   }

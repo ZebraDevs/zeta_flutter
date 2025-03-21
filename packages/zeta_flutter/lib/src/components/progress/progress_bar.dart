@@ -56,7 +56,7 @@ class ZetaProgressBar extends ZetaProgress {
   const ZetaProgressBar.indeterminate({
     super.key,
     super.rounded,
-    required super.progress,
+    super.progress,
     this.isThin = false,
     this.label,
   }) : type = ZetaProgressBarType.indeterminate;

@@ -17,40 +17,41 @@ class _PaginationExampleState extends State<PaginationExample> {
   @override
   Widget build(BuildContext context) {
     return ExampleScaffold(
+      gap: 80,
       name: PaginationExample.name,
-      child: Center(
-        child: Padding(
-          padding: EdgeInsets.all(Zeta.of(context).spacing.xl_9),
-          child: Column(
-            children: [
-              Expanded(
-                child: Center(
-                  child: Text(
-                    'Current Page: ${currentPage}',
-                    style: Theme.of(context).textTheme.bodyLarge,
-                  ),
-                ),
-              ),
-              ZetaPagination(
-                pages: 10,
-                currentPage: currentPage,
-                onChange: (val) => setState(() {
-                  currentPage = val;
-                }),
-              ),
-              const SizedBox(height: 8),
-              ZetaPagination(
-                pages: 10,
-                currentPage: currentPage,
-                onChange: (val) => setState(() {
-                  currentPage = val;
-                }),
-                type: ZetaPaginationType.dropdown,
-              ),
-            ],
+      children: [
+        Center(
+          child: Text(
+            'Current Page: ${currentPage}',
+            style: Theme.of(context).textTheme.bodyLarge,
           ),
         ),
-      ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          key: Key('docs-pagination'),
+          children: [
+            ZetaPagination(
+              pages: 10,
+              currentPage: currentPage,
+              onChange: (val) => setState(() => currentPage = val),
+              type: ZetaPaginationType.standard,
+            ),
+          ],
+        ),
+        const SizedBox(height: 8),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          key: Key('docs-pagination-dropdown'),
+          children: [
+            ZetaPagination(
+              pages: 10,
+              currentPage: currentPage,
+              onChange: (val) => setState(() => currentPage = val),
+              type: ZetaPaginationType.dropdown,
+            ),
+          ],
+        ),
+      ],
     );
   }
 }

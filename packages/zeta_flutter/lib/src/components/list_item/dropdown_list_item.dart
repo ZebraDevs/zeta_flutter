@@ -137,7 +137,6 @@ class _ZetaDropdownListItemState extends State<ZetaDropdownListItem> with Single
   Widget build(BuildContext context) {
     final divide = widget.showDivider ?? ListScope.of(context)?.showDivider ?? false;
     final colors = Zeta.of(context).colors;
-
     return ZetaRoundedScope(
       rounded: context.rounded,
       child: Semantics(

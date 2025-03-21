@@ -23,66 +23,55 @@ class _SegmentedControlExampleState extends State<SegmentedControlExample> {
   Widget build(BuildContext context) {
     return ExampleScaffold(
       name: SegmentedControlExample.name,
-      child: SingleChildScrollView(
-        child: Column(
+      children: [
+        Column(
+          spacing: 20,
           children: [
-            // Text
-            Padding(
-              padding: EdgeInsets.all(Zeta.of(context).spacing.xl_4),
-              child: ZetaSegmentedControl(
-                semanticLabel: 'Segmented Control',
-                segments: [
-                  for (final value in _textSegments)
-                    ZetaButtonSegment(
-                      value: value,
-                      child: Text(value),
-                    ),
-                ],
-                onChanged: (value) => setState(
-                  () => _selectedTextSegment = value,
-                ),
-                selected: _selectedTextSegment,
+            ZetaSegmentedControl(
+              semanticLabel: 'Segmented Control',
+              segments: [
+                for (final value in _textSegments)
+                  ZetaButtonSegment(
+                    value: value,
+                    child: Text(value),
+                  ),
+              ],
+              onChanged: (value) => setState(
+                () => _selectedTextSegment = value,
               ),
+              selected: _selectedTextSegment,
             ),
 
             // Numbers
-            Padding(
-              padding: EdgeInsets.all(Zeta.of(context).spacing.xl_4),
-              child: ZetaSegmentedControl(
-                segments: [
-                  for (final value in _numberSegments)
-                    ZetaButtonSegment(
-                      value: value,
-                      child: Text(value.toString()),
-                    ),
-                ],
-                onChanged: (value) => setState(
-                  () => _selectedNumberSegment = value,
-                ),
-                selected: _selectedNumberSegment,
+            ZetaSegmentedControl(
+              segments: [
+                for (final value in _numberSegments)
+                  ZetaButtonSegment(
+                    value: value,
+                    child: Text(value.toString()),
+                  ),
+              ],
+              onChanged: (value) => setState(
+                () => _selectedNumberSegment = value,
               ),
+              selected: _selectedNumberSegment,
             ),
-
-            // Icons
-            Padding(
-              padding: EdgeInsets.all(Zeta.of(context).spacing.xl_4),
-              child: ZetaSegmentedControl(
-                segments: [
-                  for (final value in _iconsSegments)
-                    ZetaButtonSegment(
-                      value: value,
-                      child: ZetaIcon(ZetaIcons.star),
-                    ),
-                ],
-                onChanged: (value) => setState(
-                  () => _selectedIconSegment = value,
-                ),
-                selected: _selectedIconSegment,
+            ZetaSegmentedControl(
+              segments: [
+                for (final value in _iconsSegments)
+                  ZetaButtonSegment(
+                    value: value,
+                    child: ZetaIcon(ZetaIcons.star),
+                  ),
+              ],
+              onChanged: (value) => setState(
+                () => _selectedIconSegment = value,
               ),
+              selected: _selectedIconSegment,
             ),
           ],
         ),
-      ),
+      ],
     );
   }
 }

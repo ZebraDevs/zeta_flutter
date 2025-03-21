@@ -15,6 +15,7 @@ class PasswordInputExample extends StatefulWidget {
 class _PasswordInputExampleState extends State<PasswordInputExample> {
   final _passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+  String? errorText = null;
 
   @override
   void dispose() {
@@ -24,53 +25,79 @@ class _PasswordInputExampleState extends State<PasswordInputExample> {
 
   @override
   Widget build(BuildContext context) {
-    return Form(
-        key: _formKey,
-        child: ExampleScaffold(
-          name: PasswordInputExample.name,
-          child: Padding(
-            padding: EdgeInsets.all(10),
-            child: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(padding: EdgeInsets.only(top: 20)),
-                  ZetaPasswordInput(
-                    size: ZetaWidgetSize.medium,
-                    hintText: 'Password',
-                    controller: _passwordController,
-                    validator: (value) {
-                      print('validating');
-                      if (value == null || value.isEmpty) {
-                        return 'Please enter a password';
-                      }
-                      return null;
-                    },
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      ZetaButton(
-                        label: 'Reset',
-                        onPressed: () => _formKey.currentState?.reset(),
-                      ),
-                      ZetaButton(
-                        label: 'Validate',
-                        onPressed: () => _formKey.currentState?.validate(),
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: Zeta.of(context).spacing.xl_6),
-                  ...passwordInputExampleRow(ZetaWidgetSize.large),
-                  Divider(height: Zeta.of(context).spacing.xl_10),
-                  ...passwordInputExampleRow(ZetaWidgetSize.medium),
-                  Divider(height: Zeta.of(context).spacing.xl_10),
-                  ...passwordInputExampleRow(ZetaWidgetSize.small),
-                ],
-              ),
+    return ExampleScaffold(
+      name: PasswordInputExample.name,
+      children: [
+        ZetaPasswordInput(
+          size: ZetaWidgetSize.small,
+          key: Key('docs-password-input-0'),
+          hintText: 'Small',
+          controller: _passwordController,
+          onSubmit: (val) {
+            (val?.length ?? 0) > 5 ? errorText = null : errorText = 'Password must be at least 6 characters';
+            setState(() {});
+          },
+          placeholder: 'Password',
+        ),
+        ZetaPasswordInput(
+          size: ZetaWidgetSize.medium,
+          hintText: 'Password (at least 6 characters)',
+          key: Key('docs-password-input-1'),
+          controller: _passwordController,
+          onSubmit: (val) {
+            (val?.length ?? 0) > 5 ? errorText = null : errorText = 'Password must be at least 6 characters';
+            setState(() {});
+          },
+          validator: (value) {
+            print('validating');
+            if (value == null || value.isEmpty) {
+              return 'Please enter a password';
+            }
+            return null;
+          },
+          placeholder: 'Password',
+          errorText: errorText,
+        ),
+        ZetaPasswordInput(
+          size: ZetaWidgetSize.large,
+          key: Key('docs-password-input-2'),
+          disabled: true,
+          hintText: 'Disabled',
+          controller: _passwordController,
+          onSubmit: (val) {
+            (val?.length ?? 0) > 5 ? errorText = null : errorText = 'Password must be at least 6 characters';
+            setState(() {});
+          },
+          validator: (value) {
+            print('validating');
+            if (value == null || value.isEmpty) {
+              return 'Please enter a password';
+            }
+            return null;
+          },
+          errorText: errorText,
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            ZetaButton(
+              label: 'Reset',
+              onPressed: () => _formKey.currentState?.reset(),
             ),
-          ),
-        ));
+            ZetaButton(
+              label: 'Validate',
+              onPressed: () => _formKey.currentState?.validate(),
+            ),
+          ],
+        ),
+        SizedBox(height: Zeta.of(context).spacing.xl_6),
+        ...passwordInputExampleRow(ZetaWidgetSize.large),
+        Divider(height: Zeta.of(context).spacing.xl_10),
+        ...passwordInputExampleRow(ZetaWidgetSize.medium),
+        Divider(height: Zeta.of(context).spacing.xl_10),
+        ...passwordInputExampleRow(ZetaWidgetSize.small),
+      ],
+    );
   }
 }
 

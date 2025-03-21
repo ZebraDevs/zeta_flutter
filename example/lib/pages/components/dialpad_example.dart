@@ -18,9 +18,8 @@ class _DialPadExampleState extends State<DialPadExample> {
 
   @override
   Widget build(BuildContext context) {
-    return ExampleScaffold(
-      name: DialPadExample.name,
-      child: LayoutBuilder(builder: (context, constraints) {
+    return ExampleScaffold(name: DialPadExample.name, children: [
+      LayoutBuilder(builder: (context, constraints) {
         return Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -91,6 +90,16 @@ class _DialPadExampleState extends State<DialPadExample> {
           ],
         );
       }),
-    );
+      Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        key: Key('docs-dialpad'),
+        children: [
+          ZetaDialPad(
+            onNumber: (value) => setState(() => number += value),
+            onText: (value) => setState(() => text += value),
+          ),
+        ],
+      ),
+    ]);
   }
 }

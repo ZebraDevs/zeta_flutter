@@ -14,15 +14,16 @@ class RadioButtonExample extends StatefulWidget {
 class _RadioButtonExampleState extends State<RadioButtonExample> {
   String option1 = 'Label 1';
   String option2 = 'Label 2';
+  String option3 = 'Disabled';
   String? groupValue;
   bool isEnabled = true;
 
   @override
   Widget build(BuildContext context) {
     return ExampleScaffold(
-      name: 'Radio Button',
-      child: Center(
-        child: Column(
+      name: RadioButtonExample.name,
+      children: [
+        Column(
           children: [
             ZetaRadio<String>(
               value: option1,
@@ -36,13 +37,19 @@ class _RadioButtonExampleState extends State<RadioButtonExample> {
               onChanged: isEnabled ? (value) => setState(() => groupValue = value) : null,
               label: Text(option2),
             ),
-            ZetaButton(
-              label: isEnabled ? 'Disable' : 'Enable',
-              onPressed: () => setState(() => isEnabled = !isEnabled),
+            ZetaRadio<String>(
+              value: option3,
+              groupValue: groupValue,
+              onChanged: !isEnabled ? (value) => setState(() => groupValue = value) : null,
+              label: Text(option3),
             ),
           ],
         ),
-      ),
+        ZetaButton(
+          label: isEnabled ? 'Disable' : 'Enable',
+          onPressed: () => setState(() => isEnabled = !isEnabled),
+        ),
+      ],
     );
   }
 }

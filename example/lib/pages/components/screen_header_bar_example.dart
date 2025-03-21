@@ -11,11 +11,14 @@ class ScreenHeaderBarExample extends StatelessWidget {
   Widget build(BuildContext context) {
     return ExampleScaffold(
       name: ScreenHeaderBarExample.name,
-      child: ZetaScreenHeaderBar(
-        title: Text("Add Subscribers"),
-        actionButtonLabel: 'Done',
-        onActionButtonPressed: () {},
-      ),
+      children: [
+        ZetaScreenHeaderBar(
+          title: Text("Add Subscribers"),
+          actionButtonLabel: 'Done',
+          onActionButtonPressed: () {},
+          onBackButtonPressed: () {},
+        )
+      ],
     );
   }
 }
