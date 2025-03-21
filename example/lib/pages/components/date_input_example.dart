@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:zeta_example/widgets.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
-//TODO(LUKE): Embedded example not working
 
 class DateInputExample extends StatefulWidget {
   static const String name = 'DateInput';
@@ -17,55 +16,30 @@ class _DateInputExampleState extends State<DateInputExample> {
   Widget build(BuildContext context) {
     return ExampleScaffold(
       name: 'Date Input',
+      gap: 7,
       children: [
-        Text('Large', style: ZetaTextStyles.titleMedium),
         ZetaDateInput(
-          label: 'Birthdate',
+          label: 'Label',
+          hintText: 'Default hint text',
+          errorText: 'Oops! Error hint text',
+          size: ZetaWidgetSize.small,
+          key: Key('docs-date-input-small'),
+        ),
+        ZetaDateInput(
+          size: ZetaWidgetSize.medium,
+          key: Key('docs-date-input-medium'),
+        ),
+        ZetaDateInput(
           onChange: (DateTime? _) {},
-          hintText: 'Enter birthdate',
           initialValue: DateTime.now(),
           size: ZetaWidgetSize.large,
           key: Key('docs-date-input-large'),
         ),
-        Divider(color: Colors.grey[200]),
-        Padding(
-          padding: const EdgeInsets.only(top: 20),
-          child: Text('Medium', style: ZetaTextStyles.titleMedium),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(20),
-          child: ZetaDateInput(
-            label: 'Label',
-            hintText: 'Default hint text',
-            size: ZetaWidgetSize.medium,
-          ),
-        ),
-        Divider(color: Colors.grey[200]),
-        Padding(
-          padding: const EdgeInsets.only(top: 20),
-          child: Text('Small', style: ZetaTextStyles.titleMedium),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(20),
-          child: ZetaDateInput(
-            label: 'Label',
-            hintText: 'Default hint text',
-            errorText: 'Oops! Error hint text',
-            size: ZetaWidgetSize.small,
-          ),
-        ),
-        Divider(color: Colors.grey[200]),
-        Padding(
-          padding: const EdgeInsets.only(top: 20),
-          child: Text('Disabled', style: ZetaTextStyles.titleMedium),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(20),
-          child: ZetaDateInput(
-            label: 'Label',
-            hintText: 'Default hint text',
-            disabled: true,
-          ),
+        ZetaDateInput(
+          label: 'Label',
+          key: Key('docs-date-input-disabled'),
+          hintText: 'Default hint text',
+          disabled: true,
         ),
       ],
     );

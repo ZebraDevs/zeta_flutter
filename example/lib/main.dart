@@ -6,7 +6,7 @@ import 'home.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  runApp(ZetaExample(initialRoute: '/Fab'));
+  runApp(ZetaExample(initialRoute: '/ContactListItem'));
 }
 
 class ZetaExample extends StatelessWidget {

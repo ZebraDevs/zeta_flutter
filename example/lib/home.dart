@@ -4,7 +4,7 @@ import 'package:zeta_example/pages/components/accordion_example.dart';
 import 'package:zeta_example/pages/components/avatar_rail_example.dart';
 import 'package:zeta_example/pages/components/avatar_example.dart';
 import 'package:zeta_example/pages/components/badges_example.dart';
-import 'package:zeta_example/pages/components/system_banner_example.dart';
+import 'package:zeta_example/pages/components/banner_example.dart';
 import 'package:zeta_example/pages/components/bottom_sheet_example.dart';
 import 'package:zeta_example/pages/components/breadcrumb_example.dart';
 import 'package:zeta_example/pages/components/button_example.dart';
@@ -64,8 +64,10 @@ final List<Component> components = [
   Component(AccordionExample.name, (context) => const AccordionExample()),
   Component(TopAppBarExample.name, (context) => const TopAppBarExample()),
   Component(AvatarRailExample.name, (context) => const AvatarRailExample()),
+  Component(AvatarBadgeExample.name, (context) => const AvatarBadgeExample()),
   Component(AvatarExample.name, (context) => const AvatarExample()),
-  Component(BannerExample.name, (context) => const BannerExample()),
+  Component(SystemBannerExample.name, (context) => const SystemBannerExample()),
+  Component(InPageBannerExample.name, (context) => const InPageBannerExample()),
   Component(StatusLabel.name, (context) => const StatusLabel()),
   Component(PriorityPill.name, (context) => const PriorityPill()),
   Component(Label.name, (context) => const Label()),
@@ -93,7 +95,8 @@ final List<Component> components = [
   Component(PasswordInputExample.name, (context) => const PasswordInputExample()),
   Component(GroupHeaderExample.name, (context) => const GroupHeaderExample()),
   Component(DropdownExample.name, (context) => const DropdownExample()),
-  Component(ProgressExample.name, (context) => const ProgressExample()),
+  Component(ProgressBarExample.name, (context) => const ProgressBarExample()),
+  Component(ProgressCircleExample.name, (context) => const ProgressCircleExample()),
   Component(SegmentedControlExample.name, (context) => const SegmentedControlExample()),
   Component(SnackBarExample.name, (context) => const SnackBarExample()),
   Component(StepperExample.name, (context) => const StepperExample()),
@@ -172,6 +175,10 @@ class _HomeState extends State<Home> {
     final _components = components..sort((a, b) => a.name.compareTo(b.name));
     final _assets = assets..sort((a, b) => a.name.compareTo(b.name));
     final _theme = theme..sort((a, b) => a.name.compareTo(b.name));
+    if (GoRouterState.of(context).extra == 'docs') {
+      return Nothing();
+    }
+
     return ExampleScaffold(
       // x-release-please-start-version
       name: 'zeta_flutter v0.20.2',

@@ -264,26 +264,82 @@ class _FabExampleState extends State<FabExample> {
         onPressed: theFab.onPressed,
       ),
       children: [
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: SingleChildScrollView(
-            controller: _scrollController,
-            child: Row(
+        Text('Floating Action Buttons', style: ZetaTextStyles.displayMedium),
+        Text('Tap buttons to change current FAB: ', style: ZetaTextStyles.bodyMedium),
+        Wrap(children: fabs.divide(SizedBox.square(dimension: 10)).toList()),
+        SizedBox(height: 200),
+        Column(
+          key: Key('docs-fab'),
+          spacing: 8,
+          children: [
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Expanded(
-                  flex: 8,
-                  child: Column(
-                    children: [
-                      Text('Floating Action Buttons', style: ZetaTextStyles.displayMedium),
-                      Text('Tap buttons to change current FAB: ', style: ZetaTextStyles.bodyMedium),
-                      Wrap(children: fabs.divide(SizedBox.square(dimension: 10)).toList()),
-                      SizedBox(height: 200),
-                    ].divide(SizedBox.square(dimension: Zeta.of(context).spacing.xl_2)).toList(),
+                  child: ZetaFAB(
+                    onPressed: () => {},
+                    expanded: false,
                   ),
+                ),
+                Expanded(
+                  child: ZetaFAB(
+                    onPressed: () => {},
+                    label: 'Add',
+                  ).paddingTop(2),
                 ),
               ],
             ),
-          ),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Expanded(
+                  child: ZetaFAB(
+                    onPressed: () => {},
+                    label: 'Edit',
+                    expanded: false,
+                    shape: ZetaWidgetBorder.rounded,
+                    type: ZetaFabType.secondary,
+                    icon: ZetaIcons.edit,
+                  ),
+                ),
+                Expanded(
+                  child: ZetaFAB(
+                    onPressed: () => {},
+                    shape: ZetaWidgetBorder.rounded,
+                    label: 'Edit',
+                    icon: ZetaIcons.edit,
+                    type: ZetaFabType.secondary,
+                  ).paddingTop(2),
+                ),
+              ],
+            ),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Expanded(
+                  child: ZetaFAB(
+                    onPressed: () => {},
+                    label: 'Share',
+                    icon: ZetaIcons.share,
+                    expanded: false,
+                    shape: ZetaWidgetBorder.sharp,
+                    type: ZetaFabType.inverse,
+                    size: ZetaFabSize.large,
+                  ),
+                ),
+                Expanded(
+                  child: ZetaFAB(
+                    onPressed: () => {},
+                    shape: ZetaWidgetBorder.sharp,
+                    label: 'Share',
+                    icon: ZetaIcons.share,
+                    type: ZetaFabType.inverse,
+                    size: ZetaFabSize.large,
+                  ).paddingTop(2),
+                ),
+              ],
+            ),
+          ],
         )
       ],
     );

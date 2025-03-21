@@ -24,25 +24,17 @@ class _NavigationBarExampleState extends State<NavigationBarExample> {
     ];
 
     return ExampleScaffold(
-      name: 'Navigation Bar',
-      child: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            ZetaNavigationBar.divided(items: items, dividerIndex: 3),
-            const SizedBox(height: 16),
-            ZetaNavigationBar.split(items: items),
-            const SizedBox(height: 16),
-            ZetaNavigationBar.action(
-              items: items,
-              action: ZetaButton.primary(
-                label: 'Button',
-                onPressed: () {},
-              ),
-            ),
-          ],
+      name: NavigationBarExample.name,
+      paddingAll: 0,
+      children: [
+        ZetaNavigationBar.divided(items: items, dividerIndex: 3, key: Key('docs-navigation-bar-divider')),
+        ZetaNavigationBar.split(items: items, key: Key('docs-navigation-bar-split')),
+        ZetaNavigationBar.action(
+          items: items,
+          action: ZetaButton.primary(label: 'Button', onPressed: () {}),
+          key: Key('docs-navigation-bar-action'),
         ),
-      ),
+      ],
       bottomNavigationBar: ZetaNavigationBar(
         items: items,
         currentIndex: selectedIndex,

@@ -6,6 +6,8 @@ import 'package:zeta_example/utils/theme_constrast_switch.dart';
 import 'package:zeta_example/utils/theme_mode_switch.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
+const double embeddedViewHeight = 360;
+
 class ExampleScaffold extends StatelessWidget {
   final String name;
   final List<Widget>? children;
@@ -13,6 +15,8 @@ class ExampleScaffold extends StatelessWidget {
   final Widget? floatingActionButton;
   final Widget? bottomNavigationBar;
   final Widget? child;
+  final double paddingAll;
+  final double gap;
 
   const ExampleScaffold({
     required this.name,
@@ -21,6 +25,8 @@ class ExampleScaffold extends StatelessWidget {
     this.actions = const [],
     this.floatingActionButton,
     this.bottomNavigationBar,
+    this.paddingAll = 16,
+    this.gap = 16,
     super.key,
   });
 
@@ -36,53 +42,61 @@ class ExampleScaffold extends StatelessWidget {
       }
 
       return LayoutBuilder(builder: (context, constraints) {
-        return Center(
-          child: ConstrainedBox(
-            constraints: constraints,
-            // height: 400,
-            // width: constraints.maxWidth,
-            child: Scaffold(
-              body: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Expanded(
-                    child: SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: SingleChildScrollView(
-                        child: Column(
-                          spacing: 16,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: filteredChildren,
-                        ).paddingAll(16),
-                      ),
-                    ),
-                  ),
-                  Container(
-                    color: ZetaPrimitivesLight().warm.shade100,
-                    padding: EdgeInsets.all(16),
-                    child: SizedBox(
-                      height: 40,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            // x-release-please-start-version
-                            'zeta_flutter v0.20.2',
-                            // x-release-please-end
-                            style: ZetaTextStyles.bodyMedium.copyWith(color: ZetaPrimitivesLight().warm.shade30),
+        return Column(
+          children: [
+            SizedBox(
+              height: embeddedViewHeight,
+              child: Scaffold(
+                body: ConstrainedBox(
+                  constraints: constraints.copyWith(maxHeight: 400, minHeight: 400),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Expanded(
+                        child: SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: ConstrainedBox(
+                            constraints: constraints,
+                            child: SingleChildScrollView(
+                              child: Column(
+                                spacing: gap,
+                                crossAxisAlignment: CrossAxisAlignment.stretch,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: filteredChildren,
+                              ).paddingAll(paddingAll),
+                            ),
                           ),
-                          FlutterLogo(
-                              style: FlutterLogoStyle.horizontal,
-                              size: 120,
-                              textColor: ZetaPrimitivesLight().warm.shade30)
-                        ],
+                        ),
                       ),
-                    ),
-                  )
-                ],
+                    ],
+                  ),
+                ),
               ),
             ),
-          ),
+            Container(
+              color: ZetaPrimitivesLight().warm.shade90,
+              padding: EdgeInsets.all(16),
+              child: SizedBox(
+                height: 36,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      // x-release-please-start-version
+                      'zeta_flutter v0.20.2',
+                      // x-release-please-end
+                      style: ZetaTextStyles.bodyMedium.copyWith(
+                        color: ZetaPrimitivesLight().warm.shade30,
+                        decoration: TextDecoration.none,
+                      ),
+                    ),
+                    FlutterLogo(
+                        style: FlutterLogoStyle.horizontal, size: 120, textColor: ZetaPrimitivesLight().warm.shade30)
+                  ],
+                ),
+              ),
+            )
+          ],
         );
       });
     }

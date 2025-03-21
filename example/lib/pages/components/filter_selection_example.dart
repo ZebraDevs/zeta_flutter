@@ -4,7 +4,7 @@ import 'package:zeta_flutter/zeta_flutter.dart';
 import '../../widgets.dart';
 
 class FilterSelectionExample extends StatefulWidget {
-  static const String name = 'FilterSelection';
+  static const String name = 'FilterSelectionBar';
 
   const FilterSelectionExample({super.key});
 
@@ -20,23 +20,20 @@ class _FilterSelectionExampleState extends State<FilterSelectionExample> {
   Widget build(BuildContext context) {
     return ExampleScaffold(
       name: FilterSelectionExample.name,
-      child: Column(
-        children: [
-          SizedBox(height: Zeta.of(context).spacing.large),
-          ZetaFilterSelection(
-            buttonSemanticLabel: 'Filter',
-            items: [
-              for (int i = 0; i < items.length; i++)
-                ZetaFilterChip(
-                  label: 'Label ${i + 1}',
-                  selected: items[i],
-                  onTap: (value) => setState(() => items[i] = value),
-                ),
-            ],
-            onPressed: () {},
-          ),
-        ],
-      ),
+      children: [
+        ZetaFilterSelection(
+          buttonSemanticLabel: 'Filter',
+          items: [
+            for (int i = 0; i < items.length; i++)
+              ZetaFilterChip(
+                label: 'Label ${i + 1}',
+                selected: items[i],
+                onTap: (value) => setState(() => items[i] = value),
+              ),
+          ],
+          onPressed: () {},
+        ),
+      ],
     );
   }
 }

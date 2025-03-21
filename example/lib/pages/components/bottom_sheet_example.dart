@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:zeta_example/widgets.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
-//TODO(LUKE): Embedded example not working
-
 class BottomSheetExample extends StatefulWidget {
   static const String name = 'BottomSheet';
 
@@ -20,9 +18,9 @@ class _BottomSheetExampleState extends State<BottomSheetExample> {
   Widget build(BuildContext context) {
     return ExampleScaffold(
       name: BottomSheetExample.name,
+      paddingAll: 0,
       children: [
         Column(
-          key: Key('docs-bottom-sheet'),
           children: [
             ZetaMenuItem.horizontal(
               label: Text('Grid'),
@@ -79,21 +77,41 @@ class _BottomSheetExampleState extends State<BottomSheetExample> {
             ),
           ],
         ),
-        // ZetaBottomSheet(
-        //   key: Key('docs-bottom-sheet'),
-        //   title: 'Bottom Sheet',
-        //   centerTitle: centerTitle,
-        //   body: Wrap(
-        //     children: List.generate(
-        //       3,
-        //       (index) => ZetaMenuItem.horizontal(
-        //         label: Text('Menu Item'),
-        //         // icon: ZetaIcon(ZetaIcons.star),
-        //         onTap: () {},
-        //       ),
-        //     ),
-        //   ),
-        // )
+        Container(
+          color: Zeta.of(context).colors.mainInverse,
+          padding: EdgeInsets.only(top: 16, left: 16, right: 16),
+          key: Key('docs-bottom-sheet'),
+          child: ZetaBottomSheet(
+            title: 'Bottom Sheet',
+            centerTitle: centerTitle,
+            body: Column(
+              children: [
+                Wrap(
+                  children: List.generate(
+                    3,
+                    (index) => ZetaMenuItem.horizontal(
+                      label: Text('Menu Item'),
+                      // icon: ZetaIcon(ZetaIcons.star),
+                      onTap: () {},
+                    ),
+                  ),
+                ),
+                Wrap(
+                  spacing: 12,
+                  runSpacing: 12,
+                  children: List.generate(
+                    6,
+                    (index) => ZetaMenuItem.vertical(
+                      label: Text('Menu Item'),
+                      icon: ZetaIcon(ZetaIcons.star),
+                      onTap: () {},
+                    ),
+                  ),
+                )
+              ],
+            ),
+          ),
+        )
       ],
     );
   }

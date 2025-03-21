@@ -27,50 +27,53 @@ class _NavigationRailExampleState extends State<NavigationRailExample> {
     return SafeArea(
       child: ExampleScaffold(
         name: 'Navigation Rail',
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            ZetaNavigationRail(
-              selectedIndex: _selectedIndex,
-              onSelect: (index) => setState(() => _selectedIndex = index),
-              wordWrap: false,
-              items: [
-                ZetaNavigationRailItem(
-                  label: 'Label',
-                  icon: ZetaIcon(ZetaIcons.star),
-                ),
-                ZetaNavigationRailItem(
-                  label: 'User\nPreferences',
-                  icon: ZetaIcon(ZetaIcons.star),
-                ),
-                ZetaNavigationRailItem(
-                  label: 'Account Settings',
-                  icon: ZetaIcon(ZetaIcons.star),
-                ),
-                ZetaNavigationRailItem(
-                  label: 'Label',
-                  icon: ZetaIcon(ZetaIcons.star),
-                  disabled: true,
-                ),
-              ],
-            ),
-            Expanded(
-              child: Padding(
-                padding: EdgeInsets.all(Zeta.of(context).spacing.xl),
-                child: _selectedIndex == null
-                    ? const Nothing()
-                    : Text(
-                        _titles[_selectedIndex!],
-                        textAlign: TextAlign.center,
-                        style: ZetaTextStyles.titleMedium.copyWith(
-                          color: zeta.colors.mainDefault,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
+        paddingAll: 0,
+        children: [
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              ZetaNavigationRail(
+                selectedIndex: _selectedIndex,
+                onSelect: (index) => setState(() => _selectedIndex = index),
+                wordWrap: false,
+                items: [
+                  ZetaNavigationRailItem(
+                    label: 'Label',
+                    icon: ZetaIcon(ZetaIcons.star),
+                  ),
+                  ZetaNavigationRailItem(
+                    label: 'User\nPreferences',
+                    icon: ZetaIcon(ZetaIcons.star),
+                  ),
+                  ZetaNavigationRailItem(
+                    label: 'Account Settings',
+                    icon: ZetaIcon(ZetaIcons.star),
+                  ),
+                  ZetaNavigationRailItem(
+                    label: 'Label',
+                    icon: ZetaIcon(ZetaIcons.star),
+                    disabled: true,
+                  ),
+                ],
               ),
-            ),
-          ],
-        ),
+              Expanded(
+                child: Padding(
+                  padding: EdgeInsets.all(Zeta.of(context).spacing.xl),
+                  child: _selectedIndex == null
+                      ? const Nothing()
+                      : Text(
+                          _titles[_selectedIndex!],
+                          textAlign: TextAlign.center,
+                          style: ZetaTextStyles.titleMedium.copyWith(
+                            color: zeta.colors.mainDefault,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                ),
+              ),
+            ],
+          )
+        ],
       ),
     );
   }

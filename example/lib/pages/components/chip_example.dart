@@ -9,15 +9,17 @@ class AssistChipExample extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ExampleScaffold(name: name, children: [
-      SizedBox(
-        height: 40,
-        child: ZetaAssistChip(
-          label: 'Label',
-          leading: ZetaIcon(ZetaIcons.star),
-          draggable: true,
-          data: 'Assist chip',
-          onTap: () {},
-        ),
+      Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          ZetaAssistChip(
+            label: 'Label',
+            leading: ZetaIcon(ZetaIcons.star),
+            draggable: true,
+            data: 'Assist chip',
+            onTap: () {},
+          ),
+        ],
       ),
     ]);
   }
@@ -36,12 +38,17 @@ class _FilterChipExampleState extends State<FilterChipExample> {
   @override
   Widget build(BuildContext context) {
     return ExampleScaffold(name: FilterChipExample.name, children: [
-      ZetaFilterChip(
-        label: 'Label',
-        selected: true,
-        data: 'Filter chip',
-        draggable: true,
-        onTap: (bool selected) => setState(() => this.selected = selected),
+      Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          ZetaFilterChip(
+            label: 'Label',
+            selected: true,
+            data: 'Filter chip',
+            draggable: true,
+            onTap: (bool selected) => setState(() => this.selected = selected),
+          ),
+        ],
       ),
     ]);
   }
@@ -56,11 +63,16 @@ class InputChipExample extends StatelessWidget {
     return ExampleScaffold(
       name: name,
       children: [
-        ZetaInputChip(
-          label: 'Label',
-          leading: ZetaIcon(ZetaIcons.user),
-          trailing: IconButton(icon: Icon(ZetaIcons.close), onPressed: () {}),
-          onTap: () {},
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ZetaInputChip(
+              label: 'Label',
+              leading: ZetaIcon(ZetaIcons.user),
+              trailing: IconButton(icon: Icon(ZetaIcons.close), onPressed: () {}),
+              onTap: () {},
+            ),
+          ],
         ),
       ],
     );
@@ -76,8 +88,11 @@ class StatusChipExample extends StatelessWidget {
     return ExampleScaffold(
       name: name,
       children: [
-        ZetaStatusChip(
-          label: 'Status Chip',
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ZetaStatusChip(label: 'Status Chip'),
+          ],
         ),
       ],
     );

@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:zeta_example/widgets.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
-class ProgressExample extends StatefulWidget {
-  static const String name = 'Progress';
+class ProgressBarExample extends StatefulWidget {
+  static const String name = 'ProgressIndicator/ProgressBar';
 
-  const ProgressExample({super.key});
+  const ProgressBarExample({super.key});
 
   @override
-  State<ProgressExample> createState() => ProgressExampleState();
+  State<ProgressBarExample> createState() => ProgressExampleState();
 }
 
-class ProgressExampleState extends State<ProgressExample> {
+class ProgressExampleState extends State<ProgressBarExample> {
   WidgetStatesController controller = WidgetStatesController();
 
   @override
@@ -28,129 +28,74 @@ class ProgressExampleState extends State<ProgressExample> {
   @override
   Widget build(BuildContext context) {
     return ExampleScaffold(
-      name: 'Progress',
-      child: Center(
-        child: SingleChildScrollView(
-          child: SizedBox(
-            width: double.infinity,
-            child: Column(children: [
-              Wrapper(
-                stepsCompleted: 10,
-                isThin: true,
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Wrapper(stepsCompleted: 0, type: ZetaProgressBarType.standard, isThin: false, stateChangeable: true),
-              SizedBox(
-                height: 20,
-              ),
-              Wrapper(
-                stepsCompleted: 0,
-                type: ZetaProgressBarType.indeterminate,
-                isThin: false,
-                label: "UPLOADING ...",
-              ),
-              SizedBox(
-                height: 40,
-              ),
-              Wrapper(
-                stepsCompleted: 0,
-                circleSize: ZetaCircleSizes.xl,
-                isCircle: true,
-              ),
-              SizedBox(
-                height: 40,
-              ),
-              Row(mainAxisAlignment: MainAxisAlignment.center, children: [])
-            ]),
-          ),
+      name: ProgressBarExample.name,
+      children: [
+        Column(
+          spacing: 16,
+          children: [
+            ZetaProgressBar(progress: 0.5),
+            ZetaProgressBar(progress: 1),
+            ZetaProgressBar.indeterminate(label: 'Uploading...'),
+            ZetaProgressBar.buffering(progress: 0.5, label: 'Loading...'),
+          ],
         ),
-      ),
+      ],
     );
   }
 }
 
-class Wrapper extends StatefulWidget {
-  const Wrapper({
-    super.key,
-    required this.stepsCompleted,
-    this.type = ZetaProgressBarType.standard,
-    this.isThin = false,
-    this.stateChangeable = false,
-    this.label,
-    this.isCircle = false,
-    this.circleSize,
-  });
-
-  final int stepsCompleted;
-  final ZetaProgressBarType? type;
-  final bool? isThin;
-  final String? label;
-  final bool? stateChangeable;
-  final bool isCircle;
-  final ZetaCircleSizes? circleSize;
+class ProgressCircleExample extends StatefulWidget {
+  static const String name = 'ProgressIndicator/ProgressCircle';
+  const ProgressCircleExample({super.key});
 
   @override
-  State<Wrapper> createState() => _WrapperState();
+  State<ProgressCircleExample> createState() => _ProgressCircleExampleState();
 }
 
-class _WrapperState extends State<Wrapper> {
-  late int stepsCompleted;
-  late double progress;
-  late ZetaProgressBarType type;
-
+class _ProgressCircleExampleState extends State<ProgressCircleExample> with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
   @override
   void initState() {
     super.initState();
-    type = widget.type!;
-    stepsCompleted = widget.stepsCompleted;
-    progress = stepsCompleted / 10;
+    _controller = AnimationController(
+      duration: const Duration(milliseconds: 10000),
+      vsync: this,
+    );
+
+    _controller.repeat();
   }
 
-  ///Function to increase percentage of progress.
-  void increasePercentage() {
-    setState(() {
-      stepsCompleted++;
-      progress = stepsCompleted / 10;
-    });
-  }
-
-  void setLoading() {
-    setState(() {
-      type = type == ZetaProgressBarType.buffering ? ZetaProgressBarType.standard : ZetaProgressBarType.buffering;
-    });
+  @override
+  dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      // Replace with a Column for vertical
+    return ExampleScaffold(
+      name: ProgressCircleExample.name,
       children: [
-        widget.isCircle
-            ? Center(
-                child: ZetaProgressCircle(
-                  progress: progress,
-                  size: widget.circleSize!,
-                ),
-              )
-            : SizedBox(
-                width: 400,
-                child: ZetaProgressBar(progress: progress, type: type, isThin: widget.isThin!, label: widget.label),
-              ),
-        const SizedBox(width: 40),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            widget.type != ZetaProgressBarType.indeterminate
-                ? FilledButton(onPressed: increasePercentage, child: Text("Increase"))
-                : Container(),
-            const SizedBox(width: 40),
-            widget.stateChangeable!
-                ? FilledButton(onPressed: setLoading, child: Text("Start Buffering"))
-                : const Nothing()
-          ],
-        )
+        AnimatedBuilder(
+            animation: _controller,
+            builder: (context, _) {
+              // print(_controller.value);
+              return Column(
+                spacing: 40,
+                children: [
+                  ZetaProgressCircle(size: ZetaCircleSizes.s, progress: 0.25, label: ''),
+                  ZetaProgressCircle(size: ZetaCircleSizes.m, progress: 0.5, label: ''),
+                  ZetaProgressCircle(
+                      size: ZetaCircleSizes.l,
+                      progress: _controller.isAnimating ? _controller.value : 0,
+                      onCancel: () async {
+                        _controller.reset();
+                        await Future.delayed(Duration(seconds: 5));
+                        _controller.repeat();
+                      }),
+                ],
+              );
+            }),
       ],
     );
   }

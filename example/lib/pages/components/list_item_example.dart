@@ -21,105 +21,154 @@ class _ListItemExampleState extends State<ListItemExample> {
 
   @override
   Widget build(BuildContext context) {
-    final zetaColors = Zeta.of(context).colors;
-
     return ExampleScaffold(
       name: ListItemExample.name,
-      child: Container(
-        color: zetaColors.surfaceWarm,
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(16),
-            child: Column(
-              children: [
-                _buildListItem(
-                    'No Icon',
-                    ZetaListItem(
-                      primaryText: 'List Item',
-                      secondaryText: 'Descriptor',
-                    )),
-                _buildListItem(
-                    'Custom Title',
-                    ZetaListItem(
-                      title: ZetaButton(
-                        label: 'Custom Title Button',
-                        onPressed: () {},
-                      ),
-                    )),
-                _buildListItem(
-                  'Icon Left',
-                  ZetaListItem(primaryText: 'List Item', leading: ZetaIcon(ZetaIcons.star)),
-                ),
-                _buildListItem(
-                    'Toggle Right',
-                    ZetaListItem.toggle(
-                      primaryText: 'List Item',
-                      value: _switchChecked,
-                      onChanged: (value) {
-                        setState(() {
-                          _switchChecked = value!;
-                        });
-                      },
-                    )),
-                _buildListItem(
-                    'Checkbox Right',
-                    ZetaListItem.checkbox(
-                      primaryText: 'List Item',
-                      value: _checkboxChecked,
-                      onChanged: (value) {
-                        print(value);
-                        setState(() {
-                          _checkboxChecked = value;
-                        });
-                      },
-                    )),
-                _buildListItem(
-                  'Radio Right',
-                  Column(
-                    children: [
-                      ZetaListItem.radio(
-                        primaryText: 'Radio option 1',
-                        value: radioOption1,
-                        groupValue: radioGroupValue,
-                        onChanged: (value) {
-                          setState(() {
-                            radioGroupValue = value;
-                          });
-                        },
-                      ),
-                      ZetaListItem.radio(
-                        primaryText: 'Radio option 2',
-                        value: radioOption2,
-                        groupValue: radioGroupValue,
-                        onChanged: (value) {
-                          setState(() {
-                            radioGroupValue = value;
-                          });
-                        },
-                      ),
-                    ],
-                  ),
-                ),
-                _buildListItem(
-                  'Dropdown list',
-                  ZetaDropdownListItem(
-                    items: [
-                      ZetaListItem(primaryText: 'List Item'),
-                      ZetaListItem(primaryText: 'List Item'),
-                      ZetaListItem(primaryText: 'List Item'),
-                    ],
-                    expanded: true,
-                    primaryText: 'List Item',
-                    leading: ZetaIcon(
-                      ZetaIcons.star,
-                    ),
-                  ),
-                ),
-              ].divide(const SizedBox(height: 16)).toList(),
+      paddingAll: 0,
+      gap: 0,
+      children: [
+        ZetaListItem(
+          primaryText: 'List Item',
+          secondaryText: 'Descriptor',
+          leading: ZetaIcon(ZetaIcons.star),
+          key: Key('docs-list-item-icon'),
+          showDivider: true,
+        ),
+        ZetaListItem(
+          primaryText: 'List Item',
+        ),
+        ZetaDropdownListItem(
+          items: [
+            ZetaListItem(primaryText: 'List Item'),
+            ZetaListItem(primaryText: 'List Item'),
+            ZetaListItem(primaryText: 'List Item'),
+          ],
+          key: Key('docs-list-item-dropdown'),
+          primaryText: 'List Item',
+          leading: ZetaIcon(ZetaIcons.server),
+          showDivider: true,
+        ),
+        ZetaListItem.checkbox(
+          primaryText: 'List Item',
+          value: _checkboxChecked,
+          key: Key('docs-list-item-checkbox'),
+          leading: ZetaAvatar.initials(
+            size: ZetaAvatarSize.s,
+            initials: 'AZ',
+            backgroundColor: Zeta.of(context).colors.primitives.purple.shade80,
+          ),
+          showDivider: true,
+          onChanged: (value) {
+            print(value);
+            setState(() {
+              _checkboxChecked = value;
+            });
+          },
+        ),
+        ZetaListItem.toggle(
+          primaryText: 'List Item',
+          key: Key('docs-list-item-toggle'),
+          value: _switchChecked,
+          onChanged: (value) {
+            setState(() {
+              _switchChecked = value!;
+            });
+          },
+        ),
+        ZetaListItem.radio(
+          primaryText: 'Radio option 1',
+          value: radioOption1,
+          groupValue: radioGroupValue,
+          key: Key('docs-list-item-radio'),
+          onChanged: (value) {
+            setState(() {
+              radioGroupValue = value;
+            });
+          },
+        ),
+        _buildListItem(
+            'No Icon',
+            ZetaListItem(
+              primaryText: 'List Item',
+              secondaryText: 'Descriptor',
+            )),
+        _buildListItem(
+            'Custom Title',
+            ZetaListItem(
+              title: ZetaButton(
+                label: 'Custom Title Button',
+                onPressed: () {},
+              ),
+            )),
+        _buildListItem(
+          'Icon Left',
+          ZetaListItem(primaryText: 'List Item', leading: ZetaIcon(ZetaIcons.star)),
+        ),
+        _buildListItem(
+            'Toggle Right',
+            ZetaListItem.toggle(
+              primaryText: 'List Item',
+              value: _switchChecked,
+              onChanged: (value) {
+                setState(() {
+                  _switchChecked = value!;
+                });
+              },
+            )),
+        _buildListItem(
+            'Checkbox Right',
+            ZetaListItem.checkbox(
+              primaryText: 'List Item',
+              value: _checkboxChecked,
+              onChanged: (value) {
+                print(value);
+                setState(() {
+                  _checkboxChecked = value;
+                });
+              },
+            )),
+        _buildListItem(
+          'Radio Right',
+          Column(
+            children: [
+              ZetaListItem.radio(
+                primaryText: 'Radio option 1',
+                value: radioOption1,
+                groupValue: radioGroupValue,
+                onChanged: (value) {
+                  setState(() {
+                    radioGroupValue = value;
+                  });
+                },
+              ),
+              ZetaListItem.radio(
+                primaryText: 'Radio option 2',
+                value: radioOption2,
+                groupValue: radioGroupValue,
+                onChanged: (value) {
+                  setState(() {
+                    radioGroupValue = value;
+                  });
+                },
+              ),
+            ],
+          ),
+        ),
+        _buildListItem(
+          'Dropdown list',
+          ZetaDropdownListItem(
+            items: [
+              ZetaListItem(primaryText: 'List Item'),
+              ZetaListItem(primaryText: 'List Item'),
+              ZetaListItem(primaryText: 'List Item'),
+            ],
+            expanded: true,
+            primaryText: 'List Item',
+            leading: ZetaIcon(
+              ZetaIcons.star,
             ),
           ),
         ),
-      ),
+      ].divide(const SizedBox(height: 16)).toList(),
     );
   }
 }

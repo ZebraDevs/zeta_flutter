@@ -4,7 +4,7 @@ import 'package:zeta_example/widgets.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 class AvatarExample extends StatelessWidget {
-  static const String name = 'Avatar';
+  static const String name = 'Avatar/Avatar';
 
   const AvatarExample({super.key});
 
@@ -623,5 +623,60 @@ extension on ZetaAvatarSize {
       case ZetaAvatarSize.xxxs:
         return Zeta.of(context).spacing.xl_2;
     }
+  }
+}
+
+class AvatarBadgeExample extends StatelessWidget {
+  static const String name = 'Avatar/StatusBadge';
+  const AvatarBadgeExample({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return ExampleScaffold(
+      name: name,
+      children: [
+        Column(
+          spacing: 16,
+          children: [
+            Wrap(spacing: 16, runSpacing: 16, children: [
+              ZetaAvatarBadge(value: 9),
+              ZetaAvatarBadge(value: 99),
+              ZetaAvatarBadge(value: 999),
+            ]),
+            Wrap(
+              spacing: 16,
+              runSpacing: 16,
+              children: [
+                ZetaAvatarBadge(
+                  icon: ZetaIcons.check_mark,
+                  type: ZetaAvatarBadgeType.icon,
+                  color: Zeta.of(context).colors.iconFlavorPositive,
+                ),
+                ZetaAvatarBadge(
+                  icon: ZetaIcons.star,
+                  type: ZetaAvatarBadgeType.icon,
+                  color: Zeta.of(context).colors.iconFlavorWarning,
+                ),
+                ZetaAvatarBadge(
+                  icon: ZetaIcons.chevron_left,
+                  type: ZetaAvatarBadgeType.icon,
+                  color: Zeta.of(context).colors.iconFlavorNegative,
+                ),
+                ZetaAvatarBadge(
+                  icon: ZetaIcons.last_page,
+                  type: ZetaAvatarBadgeType.icon,
+                  color: Zeta.of(context).colors.iconFlavorInfo,
+                ),
+                ZetaAvatarBadge(
+                  icon: ZetaIcons.barcode_bluetooth,
+                  type: ZetaAvatarBadgeType.icon,
+                  color: Zeta.of(context).colors.iconFlavorPrimary,
+                ),
+              ],
+            ),
+          ],
+        ),
+      ],
+    );
   }
 }

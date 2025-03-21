@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:zeta_example/widgets.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
-//TODO(LUKE): Embedded example not working
 
 class DropdownExample extends StatefulWidget {
-  static const String name = "Dropdown";
+  static const String name = "DropdownMenu";
   const DropdownExample({super.key});
 
   @override
@@ -38,6 +37,7 @@ class _DropdownExampleState extends State<DropdownExample> {
           value: selectedItem,
           type: ZetaDropdownMenuType.checkbox,
           key: Key('docs-dropdown'),
+          onChange: (_) {},
         ),
         ZetaDropdown(
           items: items,

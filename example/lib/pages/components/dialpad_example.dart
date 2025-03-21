@@ -90,10 +90,15 @@ class _DialPadExampleState extends State<DialPadExample> {
           ],
         );
       }),
-      ZetaDialPad(
+      Row(
+        mainAxisAlignment: MainAxisAlignment.center,
         key: Key('docs-dialpad'),
-        onNumber: (value) => setState(() => number += value),
-        onText: (value) => setState(() => text += value),
+        children: [
+          ZetaDialPad(
+            onNumber: (value) => setState(() => number += value),
+            onText: (value) => setState(() => text += value),
+          ),
+        ],
       ),
     ]);
   }

@@ -3,7 +3,7 @@ import 'package:zeta_example/widgets.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 class StatusLabel extends StatelessWidget {
-  static const String name = 'Badge/StatusLabel';
+  static const String name = 'Badges/StatusLabel';
 
   const StatusLabel();
 
@@ -36,7 +36,7 @@ class StatusLabel extends StatelessWidget {
 }
 
 class PriorityPill extends StatelessWidget {
-  static const String name = 'Badge/PriorityPill';
+  static const String name = 'Badges/PriorityPill';
 
   const PriorityPill();
 
@@ -61,7 +61,7 @@ class PriorityPill extends StatelessWidget {
 }
 
 class Label extends StatelessWidget {
-  static const String name = 'Badge/Label';
+  static const String name = 'Badges/Label';
 
   const Label();
 
@@ -95,7 +95,7 @@ class Label extends StatelessWidget {
 }
 
 class Indicators extends StatelessWidget {
-  static const String name = 'Badge/Indicator';
+  static const String name = 'Badges/Indicator';
 
   const Indicators();
 
@@ -173,7 +173,7 @@ class Indicators extends StatelessWidget {
 }
 
 class Tags extends StatelessWidget {
-  static const String name = 'Badge/Tag';
+  static const String name = 'Badges/Tag';
 
   const Tags();
 

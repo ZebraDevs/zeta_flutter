@@ -16,37 +16,30 @@ class _GroupHeaderExampleState extends State<GroupHeaderExample> {
 
   @override
   Widget build(BuildContext context) {
-    return ExampleScaffold(
-      name: "Global Header",
-      child: Center(
-        child: SingleChildScrollView(
-          child: Column(children: [
-            ZetaGlobalHeader(
-              title: "Title",
-              tabItems: childrenOne,
-              searchBar: ZetaSearchBar(shape: ZetaWidgetBorder.full, size: ZetaWidgetSize.large),
-              onAppsButton: () {},
-              actionButtons: [
-                IconButton(
-                  onPressed: () {},
-                  icon: const ZetaIcon(
-                    ZetaIcons.alert,
-                  ),
-                ),
-                IconButton(
-                  onPressed: () {},
-                  icon: const ZetaIcon(
-                    ZetaIcons.help,
-                  ),
-                ),
-              ],
-              avatar: const ZetaAvatar(initials: 'PS'),
+    return ExampleScaffold(name: "Global Header", children: [
+      ZetaGlobalHeader(
+        title: "Title",
+        tabItems: childrenOne,
+        searchBar: ZetaSearchBar(shape: ZetaWidgetBorder.full, size: ZetaWidgetSize.large),
+        onAppsButton: () {},
+        actionButtons: [
+          IconButton(
+            onPressed: () {},
+            icon: const ZetaIcon(
+              ZetaIcons.alert,
             ),
-            SizedBox(height: Zeta.of(context).spacing.xl),
-            ZetaGlobalHeader(title: "Title", tabItems: childrenTwo),
-          ]),
-        ),
+          ),
+          IconButton(
+            onPressed: () {},
+            icon: const ZetaIcon(
+              ZetaIcons.help,
+            ),
+          ),
+        ],
+        avatar: const ZetaAvatar(initials: 'PS'),
       ),
-    );
+      SizedBox(height: Zeta.of(context).spacing.xl),
+      ZetaGlobalHeader(title: "Title", tabItems: childrenTwo),
+    ]);
   }
 }

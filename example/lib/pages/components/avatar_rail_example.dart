@@ -4,7 +4,7 @@ import 'package:zeta_example/widgets.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 class AvatarRailExample extends StatefulWidget {
-  static const String name = 'AvatarRail';
+  static const String name = 'Avatar/AvatarRail';
 
   const AvatarRailExample({super.key});
 
