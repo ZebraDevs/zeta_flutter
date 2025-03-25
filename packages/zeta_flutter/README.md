@@ -21,7 +21,7 @@ An example app can be found in this repo under `/example`. This shows all compon
 
 ## Previewing the components
 
-To view examples of all the components in the library, you can pull this repo and run either the example app or widgetbook instance.
+To view examples of all the components in the library, you can pull this repo and run either the example app or widgetbook instance. To see a list of all components currently built or in progress, visit [design.zebra.com](https://design.zebra.com/docs/component-status).
 
 You can also view the latest release at [Zeta](https://design.zebra.com/flutter/widgetbook) or the latest commits to main [here](https://zeta-flutter-main.web.app/).
 
