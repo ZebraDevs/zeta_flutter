@@ -189,18 +189,17 @@ class ExampleListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ExpansionTile(
-      title: Text(name),
-      children: children
-          .map(
-            (item) => ListTile(
-              title: Text(item.name),
-              onTap: () => context.go('/${item.name}'),
-              hoverColor: Zeta.of(context).colors.surfaceHover,
-              tileColor: Zeta.of(context).colors.surfaceDefault,
-            ),
-          )
-          .toList(),
+    return ZetaAccordion(
+      title: name,
+      child: Column(
+          children: children
+              .map(
+                (item) => ZetaListItem(
+                  title: Text(item.name),
+                  onTap: () => context.go('/${item.name}'),
+                ),
+              )
+              .toList()),
     );
   }
 }
