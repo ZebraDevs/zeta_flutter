@@ -197,7 +197,6 @@ class ZetaBreadcrumbItem extends ZetaStatelessWidget {
                 if (icon != null)
                   Icon(
                     icon,
-                    // TODO(LUKE): Icon
                     color: getColor(value, colors),
                   ),
                 SizedBox(
