@@ -9,17 +9,43 @@ class ZetaAddonData {
   final ZetaContrast contrast;
 }
 
+enum BackgroundType {
+  standard,
+  introduction,
+  dialog;
+
+  Color color(BuildContext context) {
+    switch (this) {
+      case BackgroundType.standard:
+        return Zeta.of(context).colors.surfaceDefault;
+      case BackgroundType.introduction:
+        return Colors.black;
+      case BackgroundType.dialog:
+        return Zeta.of(context).colors.mainLight;
+    }
+  }
+}
+
 class ZetaAddon extends WidgetbookAddon<ZetaAddonData> {
   ZetaAddon(this.data) : super(name: 'Theme');
   final ZetaAddonData data;
 
   @override
   Widget buildUseCase(BuildContext context, Widget child, ZetaAddonData setting) {
-    bool isIntroduction = false;
+    late final BackgroundType backgroundType;
     try {
-      isIntroduction = (context.findAncestorStateOfType<State<Widgetbook>>() as dynamic).state.path == 'introduction';
+      final String path = ((context.findAncestorStateOfType<State<Widgetbook>>() as dynamic).state.path).toLowerCase();
+
+      if (path == 'introduction') {
+        backgroundType = BackgroundType.introduction;
+      } else if (path.contains('dialog') || path.contains('sheet')) {
+        backgroundType = BackgroundType.dialog;
+      } else {
+        backgroundType = BackgroundType.standard;
+      }
     } catch (e) {
       debugPrint(e.toString());
+      backgroundType = BackgroundType.standard;
     }
 
     return ZetaProvider(
@@ -33,22 +59,16 @@ class ZetaAddon extends WidgetbookAddon<ZetaAddonData> {
           body: Builder(
             builder: (c2) {
               return ColoredBox(
-                color: isIntroduction ? Colors.black : Zeta.of(c2).colors.surfaceDefault,
+                color: backgroundType.color(c2),
                 child: Padding(
                   padding: EdgeInsets.zero,
                   child: Row(
                     children: [
                       Expanded(
                         child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Expanded(
-                              child: Center(
-                                child: Padding(
-                                  padding: EdgeInsets.all(Zeta.of(c2).spacing.medium),
-                                  child: child,
-                                ),
-                              ),
-                            ),
+                            child,
                           ],
                         ),
                       ),

@@ -32,113 +32,117 @@ class _IntroductionWidgetbookState extends State<IntroductionWidgetbook> {
     return LayoutBuilder(
       builder: (context, constraints) {
         final largeScreen = constraints.maxWidth > 480;
-        return Scaffold(
-          backgroundColor: Colors.black,
-          body: SingleChildScrollView(
-            child: Padding(
-              padding: EdgeInsets.symmetric(
-                vertical: Zeta.of(context).spacing.xl_10,
-                horizontal: Zeta.of(context).spacing.medium,
-              ),
-              child: Column(
-                children: [
-                  DecoratedBox(
-                    decoration: BoxDecoration(
-                      color: colors.mainInverse,
-                      borderRadius: BorderRadius.only(topLeft: radius, topRight: radius),
-                    ),
-                    child: Padding(
-                      padding: EdgeInsets.fromLTRB(
-                        Zeta.of(context).spacing.xl_6,
-                        Zeta.of(context).spacing.xl_9,
-                        Zeta.of(context).spacing.xl_8,
-                        Zeta.of(context).spacing.xl_6,
+        return ConstrainedBox(
+          constraints: constraints.copyWith(
+              maxHeight: constraints.maxHeight.isInfinite ? MediaQuery.sizeOf(context).height : constraints.maxHeight),
+          child: Scaffold(
+            backgroundColor: Colors.black,
+            body: SingleChildScrollView(
+              child: Padding(
+                padding: EdgeInsets.symmetric(
+                  vertical: Zeta.of(context).spacing.xl_10,
+                  horizontal: Zeta.of(context).spacing.medium,
+                ),
+                child: Column(
+                  children: [
+                    DecoratedBox(
+                      decoration: BoxDecoration(
+                        color: colors.mainInverse,
+                        borderRadius: BorderRadius.only(topLeft: radius, topRight: radius),
                       ),
-                      child: Row(
+                      child: Padding(
+                        padding: EdgeInsets.fromLTRB(
+                          Zeta.of(context).spacing.xl_6,
+                          Zeta.of(context).spacing.xl_9,
+                          Zeta.of(context).spacing.xl_8,
+                          Zeta.of(context).spacing.xl_6,
+                        ),
+                        child: Row(
+                          children: [
+                            SvgPicture.asset(
+                              'packages/zeta_flutter/assets/logos/zebra-logo-head.svg',
+                              height: largeScreen ? 80 : 40,
+                              width: largeScreen ? 80 : 40,
+                              colorFilter: isDark
+                                  ? const ColorFilter.matrix([
+                                      -1.0, 0.0, 0.0, 0.0, 255.0, //
+                                      0.0, -1.0, 0.0, 0.0, 255.0, //
+                                      0.0, 0.0, -1.0, 0.0, 255.0, //
+                                      0.0, 0.0, 0.0, 1.0, 0.0, //
+                                    ])
+                                  : null,
+                            ),
+                            SizedBox(width: largeScreen ? Zeta.of(context).spacing.xl_6 : Zeta.of(context).spacing.xl),
+                            Expanded(
+                              child: Text(
+                                // x-release-please-start-version
+                                'zeta_flutter v0.20.2',
+                                // x-release-please-end
+                                style: ZetaTextStyles.displayLarge
+                                    .copyWith(fontSize: largeScreen ? null : 24, color: colors.mainDefault),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                        color: isDark ? colors.primitives.warm.shade10 : colors.surfaceDefault,
+                        borderRadius: BorderRadius.only(bottomLeft: radius, bottomRight: radius),
+                      ),
+                      width: double.infinity,
+                      padding: EdgeInsets.all(Zeta.of(context).spacing.xl_4),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
-                          SvgPicture.asset(
-                            'packages/zeta_flutter/lib/assets/logos/zebra-logo-head.svg',
-                            height: largeScreen ? 80 : 40,
-                            width: largeScreen ? 80 : 40,
-                            colorFilter: isDark
-                                ? const ColorFilter.matrix([
-                                    -1.0, 0.0, 0.0, 0.0, 255.0, //
-                                    0.0, -1.0, 0.0, 0.0, 255.0, //
-                                    0.0, 0.0, -1.0, 0.0, 255.0, //
-                                    0.0, 0.0, 0.0, 1.0, 0.0, //
-                                  ])
-                                : null,
-                          ),
-                          SizedBox(width: largeScreen ? Zeta.of(context).spacing.xl_6 : Zeta.of(context).spacing.xl),
-                          Expanded(
-                            child: Text(
-                              // x-release-please-start-version
-                              'zeta_flutter v0.20.2',
-                              // x-release-please-end
-                              style: ZetaTextStyles.displayLarge
-                                  .copyWith(fontSize: largeScreen ? null : 24, color: colors.mainDefault),
+                          MarkdownWidget(
+                            data: readme,
+                            shrinkWrap: true,
+                            config: config.copy(
+                              configs: [
+                                PConfig(
+                                  textStyle: ZetaTextStyles.bodyMedium.apply(
+                                    color: colors.mainDefault,
+                                  ),
+                                ),
+                                LinkConfig(
+                                  style: TextStyle(
+                                    color: colors.primitives.blue.shade50,
+                                    decoration: TextDecoration.underline,
+                                  ),
+                                  onTap: (url) {
+                                    final uri = Uri.tryParse(url);
+                                    if (uri != null && uri.isAbsolute) {
+                                      launchUrl(uri);
+                                    } else {
+                                      final uri2 =
+                                          Uri.tryParse('https://github.com/ZebraDevs/zeta_flutter/blob/main/$url');
+                                      if (uri2 != null && uri2.isAbsolute) {
+                                        launchUrl(uri2);
+                                      }
+                                    }
+                                  },
+                                ),
+                                CodeConfig(style: GoogleFonts.ibmPlexMono()),
+                                if (isDark)
+                                  PreConfig.darkConfig.copy(
+                                    textStyle: GoogleFonts.ibmPlexMono(),
+                                    wrapper: (child, _, language) => _CodeWrapperWidget(child, language),
+                                  )
+                                else
+                                  PreConfig(
+                                    textStyle: GoogleFonts.ibmPlexMono(),
+                                    wrapper: (child, _, language) => _CodeWrapperWidget(child, language),
+                                  ),
+                              ],
                             ),
                           ),
                         ],
                       ),
                     ),
-                  ),
-                  Container(
-                    decoration: BoxDecoration(
-                      color: isDark ? colors.primitives.warm.shade10 : colors.surfaceDefault,
-                      borderRadius: BorderRadius.only(bottomLeft: radius, bottomRight: radius),
-                    ),
-                    width: double.infinity,
-                    padding: EdgeInsets.all(Zeta.of(context).spacing.xl_4),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        MarkdownWidget(
-                          data: readme,
-                          shrinkWrap: true,
-                          config: config.copy(
-                            configs: [
-                              PConfig(
-                                textStyle: ZetaTextStyles.bodyMedium.apply(
-                                  color: colors.mainDefault,
-                                ),
-                              ),
-                              LinkConfig(
-                                style: TextStyle(
-                                  color: colors.primitives.blue.shade50,
-                                  decoration: TextDecoration.underline,
-                                ),
-                                onTap: (url) {
-                                  final uri = Uri.tryParse(url);
-                                  if (uri != null && uri.isAbsolute) {
-                                    launchUrl(uri);
-                                  } else {
-                                    final uri2 =
-                                        Uri.tryParse('https://github.com/ZebraDevs/zeta_flutter/blob/main/$url');
-                                    if (uri2 != null && uri2.isAbsolute) {
-                                      launchUrl(uri2);
-                                    }
-                                  }
-                                },
-                              ),
-                              CodeConfig(style: GoogleFonts.ibmPlexMono()),
-                              if (isDark)
-                                PreConfig.darkConfig.copy(
-                                  textStyle: GoogleFonts.ibmPlexMono(),
-                                  wrapper: (child, _, language) => _CodeWrapperWidget(child, language),
-                                )
-                              else
-                                PreConfig(
-                                  textStyle: GoogleFonts.ibmPlexMono(),
-                                  wrapper: (child, _, language) => _CodeWrapperWidget(child, language),
-                                ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),

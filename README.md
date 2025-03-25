@@ -13,6 +13,10 @@ This repo contains the source code for all Zeta Flutter packages.
 | [zeta_flutter_utils](https://github.com/ZebraDevs/zeta_flutter/tree/develop/packages/zeta_flutter_utils)  | [pub.dev](https://pub.dev/packages/zeta_flutter_utils) |
 | [zeta_flutter_icons](https://github.com/ZebraDevs/zeta_flutter/tree/develop/packages/zeta_icons)          | [pub.dev](https://pub.dev/packages/zeta_icons)         |
 
+## Contributing
+
+We welcome contributions in this repo; please see our contribution guidelines (see [CONTRIBUTING](./CONTRIBUTING.md) or [design.zebra.com](https://design.zebra.com/docs/Development/contributing))
+
 ## Licensing
 
 This software is licensed with the MIT license (see [LICENSE](./LICENSE) and [THIRD PARTY LICENSES](./LICENSE-3RD-PARTY)).

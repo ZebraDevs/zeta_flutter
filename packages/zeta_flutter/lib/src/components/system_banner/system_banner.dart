@@ -24,7 +24,7 @@ enum ZetaSystemBannerStatus {
 ///
 /// Figma: https://www.figma.com/file/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=22195-43965
 ///
-/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/banners
+/// Widgetbook: https://design.zebra.com/flutter/widgetbook/index.html#/?path=components/system-banner/zetasystembanner/system-banner
 class ZetaSystemBanner extends MaterialBanner {
   /// Constructor for [ZetaSystemBanner]. See [MaterialBanner] for more information.
   ZetaSystemBanner({

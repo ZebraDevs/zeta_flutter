@@ -11,9 +11,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import '../../../zeta_flutter.dart';
 
-/// Custom wrapper for [Icon] that applies the Zeta icon family.
+/// Custom wrapper for [Icon] that applies the Zeta icon family; automatically applying the correct font family based on the [rounded] property.
 ///
-/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=assets/icons
+/// This widget is not recommended for use, as it means that icons can not be tree shaken when building the app.
 class ZetaIcon extends ZetaStatelessWidget {
   /// Constructs a [ZetaIcon].
   const ZetaIcon(

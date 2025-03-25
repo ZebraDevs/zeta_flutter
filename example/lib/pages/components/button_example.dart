@@ -225,7 +225,7 @@ class _ButtonExampleState extends State<ButtonExample> {
             items: [
               ZetaDropdownItem(
                 value: 'Item 1',
-                icon: ZetaIcon(ZetaIcons.star_half),
+                icon: Icon(ZetaIcons.star_half),
               ),
               ZetaDropdownItem(value: 'Item 2'),
             ],

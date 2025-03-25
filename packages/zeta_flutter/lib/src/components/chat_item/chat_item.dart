@@ -8,7 +8,7 @@ import '../../../zeta_flutter.dart';
 ///
 /// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=24828-46282&node-type=canvas&m=dev
 ///
-/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/list-items/chat-list-item
+/// Widgetbook: https://design.zebra.com/flutter/widgetbook/index.html#/?path=components/chat-item/zetachatitem/chat-item
 class ZetaChatItem extends ZetaStatelessWidget {
   /// Creates a [ZetaChatItem]
   const ZetaChatItem({
@@ -208,8 +208,10 @@ class ZetaChatItem extends ZetaStatelessWidget {
                                                                   padding: EdgeInsets.only(
                                                                     left: Zeta.of(context).spacing.minimum,
                                                                   ),
-                                                                  child: ZetaIcon(
-                                                                    ZetaIcons.error,
+                                                                  child: Icon(
+                                                                    context.rounded
+                                                                        ? ZetaIcons.error_round
+                                                                        : ZetaIcons.error_sharp,
                                                                     color: colors.mainSubtle,
                                                                   ),
                                                                 ),
@@ -273,8 +275,14 @@ class ZetaChatItem extends ZetaStatelessWidget {
                                                   padding: EdgeInsets.only(
                                                     left: Zeta.of(context).spacing.minimum,
                                                   ),
-                                                  child: ZetaIcon(
-                                                    starred! ? ZetaIcons.star : ZetaIcons.star_outline,
+                                                  child: Icon(
+                                                    starred!
+                                                        ? (context.rounded
+                                                            ? ZetaIcons.star_round
+                                                            : ZetaIcons.star_sharp)
+                                                        : (context.rounded
+                                                            ? ZetaIcons.star_outline_round
+                                                            : ZetaIcons.star_outline_sharp),
                                                     color: starred! ? colors.mainSecondary : null,
                                                   ),
                                                 ),
@@ -530,7 +538,7 @@ class ZetaSlidableAction extends StatelessWidget {
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Zeta.of(context).radius.minimal)),
                 side: BorderSide.none,
               ),
-              icon: ZetaIcon(icon, size: Zeta.of(context).spacing.xl_4),
+              icon: Icon(icon, size: Zeta.of(context).spacing.xl_4),
             ),
           ),
         ),

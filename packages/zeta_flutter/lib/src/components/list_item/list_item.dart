@@ -12,7 +12,7 @@ import 'list_scope.dart';
 ///
 /// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=229-17&node-type=canvas&m=dev
 ///
-/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/list-items/list-item
+/// Widgetbook: https://design.zebra.com/flutter/widgetbook/index.html#/?path=components/list-item/zetalistitem/list-item
 class ZetaList extends ZetaStatelessWidget {
   /// Creates a new [ZetaList].
   const ZetaList({
@@ -56,7 +56,7 @@ class ZetaList extends ZetaStatelessWidget {
 ///
 /// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=229-17&node-type=canvas&m=dev
 ///
-/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/list-items/list-item
+/// Widgetbook: https://design.zebra.com/flutter/widgetbook/index.html#/?path=components/list-item/zetalistitem/list-item
 class ZetaListItem extends ZetaStatelessWidget {
   /// Creates a [ZetaListItem].
   const ZetaListItem({

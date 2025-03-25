@@ -18,7 +18,7 @@ enum ZetaPaginationType {
 ///
 /// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=229-24&node-type=canvas&m=dev
 ///
-/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/pagination
+/// Widgetbook: https://design.zebra.com/flutter/widgetbook/index.html#/?path=components/pagination/zetapagination/pagination
 class ZetaPagination extends ZetaStatefulWidget {
   /// Creates a new [ZetaPagination]
   const ZetaPagination({
@@ -226,7 +226,8 @@ class _ZetaPaginationState extends State<ZetaPagination> {
           items: items,
           onChanged: widget.onChange != null ? _onItemPressed : null,
           value: _currentPage,
-          icon: const ZetaIcon(ZetaIcons.expand_more).paddingStart(Zeta.of(context).spacing.small),
+          icon: Icon(context.rounded ? ZetaIcons.expand_more_round : ZetaIcons.expand_more_sharp)
+              .paddingStart(Zeta.of(context).spacing.small),
           underline: const Nothing(),
           style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                 color: colors.mainSubtle,
@@ -326,7 +327,7 @@ class _PaginationItem extends ZetaStatelessWidget {
             ),
       );
     } else if (icon != null) {
-      child = ZetaIcon(
+      child = Icon(
         icon,
         color: disabled ? colors.mainDisabled : colors.mainDefault,
         semanticLabel: semanticLabel,

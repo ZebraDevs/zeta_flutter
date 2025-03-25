@@ -36,8 +36,8 @@ Widget textInput(BuildContext context) {
       prefixText: prefixText != null && prefixIcon == null ? prefixText : null,
       suffixText: suffixText != null && suffixIcon == null ? suffixText : null,
       placeholder: context.knobs.stringOrNull(label: 'Placeholder', initialValue: 'Placeholder'),
-      prefix: prefixIcon != null ? ZetaIcon(prefixIcon) : null,
-      suffix: suffixIcon != null ? ZetaIcon(suffixIcon) : null,
+      prefix: prefixIcon != null ? Icon(prefixIcon) : null,
+      suffix: suffixIcon != null ? Icon(suffixIcon) : null,
     ),
   );
 }

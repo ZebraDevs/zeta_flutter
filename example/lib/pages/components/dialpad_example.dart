@@ -45,7 +45,7 @@ class _DialPadExampleState extends State<DialPadExample> {
                           ),
                         ),
                         IconButton(
-                          icon: ZetaIcon(Icons.backspace),
+                          icon: Icon(Icons.backspace),
                           onPressed: () => number.length == 0
                               ? null
                               : setState(
@@ -66,7 +66,7 @@ class _DialPadExampleState extends State<DialPadExample> {
                           textAlign: TextAlign.center,
                         ),
                         IconButton(
-                          icon: ZetaIcon(Icons.backspace),
+                          icon: Icon(Icons.backspace),
                           onPressed: () => text.length == 0
                               ? null
                               : setState(

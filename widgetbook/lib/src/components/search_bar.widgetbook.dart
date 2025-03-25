@@ -22,32 +22,36 @@ const List<String> _items = [
 )
 Widget searchBarUseCase(BuildContext context) {
   var items = List<String>.from(_items);
-  return StatefulBuilder(
-    builder: (context, setState) {
-      return Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          ZetaSearchBar(
-            size: context.knobs
-                .list<ZetaWidgetSize>(label: 'Size', options: ZetaWidgetSize.values, labelBuilder: (size) => size.name),
-            shape: context.knobs.list<ZetaWidgetBorder>(
-              label: 'Shape',
-              options: ZetaWidgetBorder.values,
-              labelBuilder: (shape) => shape.name,
+  return Padding(
+    padding: const EdgeInsets.all(16),
+    child: StatefulBuilder(
+      builder: (context, setState) {
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            ZetaSearchBar(
+              size: context.knobs.list<ZetaWidgetSize>(
+                  label: 'Size', options: ZetaWidgetSize.values, labelBuilder: (size) => size.name),
+              shape: context.knobs.list<ZetaWidgetBorder>(
+                label: 'Shape',
+                options: ZetaWidgetBorder.values,
+                labelBuilder: (shape) => shape.name,
+              ),
+              disabled: disabledKnob(context),
+              placeholder: context.knobs.string(label: 'Hint', initialValue: 'Search'),
+              showSpeechToText: context.knobs.boolean(label: 'Show Speech-To-Text button', initialValue: true),
+              onChange: (value) {
+                if (value == null) return;
+                setState(
+                    () => items = _items.where((item) => item.toLowerCase().contains(value.toLowerCase())).toList());
+              },
+              onSpeechToText: () async => 'I wanted to say...',
             ),
-            disabled: disabledKnob(context),
-            placeholder: context.knobs.string(label: 'Hint', initialValue: 'Search'),
-            showSpeechToText: context.knobs.boolean(label: 'Show Speech-To-Text button', initialValue: true),
-            onChange: (value) {
-              if (value == null) return;
-              setState(() => items = _items.where((item) => item.toLowerCase().contains(value.toLowerCase())).toList());
-            },
-            onSpeechToText: () async => 'I wanted to say...',
-          ),
-          SizedBox(height: Zeta.of(context).spacing.xl),
-          ...items.map(Text.new),
-        ],
-      );
-    },
+            SizedBox(height: Zeta.of(context).spacing.xl),
+            ...items.map(Text.new),
+          ],
+        );
+      },
+    ),
   );
 }

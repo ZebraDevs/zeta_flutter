@@ -22,7 +22,7 @@ Widget selectInputUseCase(BuildContext context) => SmallContentWrapper(
         ),
         items: List.generate(
           context.knobs.int.slider(label: 'Dropdown items', min: 1, max: 20, initialValue: 3),
-          (e) => ZetaDropdownItem(value: 'Item $e', icon: const ZetaIcon(ZetaIcons.star)),
+          (e) => ZetaDropdownItem(value: 'Item $e', icon: const Icon(ZetaIcons.star)),
         ),
         label: context.knobs.string(label: 'Label', initialValue: 'Label'),
         hintText: context.knobs.string(label: 'Hint', initialValue: 'Default hint text'),

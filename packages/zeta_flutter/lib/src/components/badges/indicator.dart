@@ -15,7 +15,7 @@ enum ZetaIndicatorType {
 ///
 /// Figma: https://www.figma.com/file/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?type=design&node-id=22000-10045&mode=design&t=6mhOcUUr3tgxxFdd-0
 ///
-/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/badge/indicators
+/// Widgetbook: https://design.zebra.com/flutter/widgetbook/index.html#/?path=components/badges/zetaindicator/notification-indicator
 class ZetaIndicator extends ZetaStatelessWidget {
   /// Constructor for [ZetaIndicator].
   const ZetaIndicator({
@@ -152,7 +152,7 @@ class ZetaIndicator extends ZetaStatelessWidget {
       case ZetaIndicatorType.icon:
         final iconSize = _getIconSize(size, context);
         return Center(
-          child: ZetaIcon(
+          child: Icon(
             icon ?? ZetaIcons.star,
             color: foregroundColor,
             size: iconSize,

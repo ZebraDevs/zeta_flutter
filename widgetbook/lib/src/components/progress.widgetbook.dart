@@ -19,7 +19,7 @@ Widget bar(BuildContext context) => ZetaProgressBar(
       type: context.knobs.list(label: 'Type', options: ZetaProgressBarType.values, labelBuilder: enumLabelBuilder),
       isThin: context.knobs.boolean(label: 'Thin'),
       label: context.knobs.stringOrNull(label: 'Label'),
-    );
+    ).paddingHorizontal(16);
 
 @widgetbook.UseCase(
   name: 'Progress Circle',

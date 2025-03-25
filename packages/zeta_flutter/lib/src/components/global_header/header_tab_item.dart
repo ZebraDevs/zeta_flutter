@@ -7,7 +7,7 @@ import '../../../zeta_flutter.dart';
 ///
 /// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=1120-26358&node-type=canvas&m=dev
 ///
-/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/global-header
+/// Widgetbook: https://design.zebra.com/flutter/widgetbook/index.html#/?path=components/global-header/zetaglobalheader/global-header
 class ZetaGlobalHeaderItem extends ZetaStatefulWidget {
   ///Constructor for tab item
   const ZetaGlobalHeaderItem({
@@ -78,7 +78,11 @@ class _ZetaGlobalHeaderItemState extends State<ZetaGlobalHeaderItem> {
             children: [
               Text(widget.label, style: TextStyle(color: foregroundColor)),
               SizedBox(width: Zeta.of(context).spacing.small),
-              if (widget.dropdown != null) ZetaIcon(ZetaIcons.expand_more, color: foregroundColor),
+              if (widget.dropdown != null)
+                Icon(
+                  context.rounded ? ZetaIcons.expand_more_round : ZetaIcons.expand_more_sharp,
+                  color: foregroundColor,
+                ),
             ],
           ).paddingHorizontal(Zeta.of(context).spacing.xl_2).paddingVertical(Zeta.of(context).spacing.medium),
         ),

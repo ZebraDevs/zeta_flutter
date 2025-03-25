@@ -29,7 +29,7 @@ import '../../../zeta_flutter.dart';
 ///
 /// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=3420-67488&node-type=canvas&m=dev
 ///
-/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/stepper
+/// Widgetbook: https://design.zebra.com/flutter/widgetbook/index.html#/?path=components/stepper/zetastepper/stepper-horizontal
 class ZetaStepper extends ZetaStatefulWidget {
   /// Creates a stepper from a list of steps.
   ///
@@ -204,8 +204,8 @@ class StepIcon extends StatelessWidget {
       ),
       child: Center(
         child: completed && !disabled
-            ? ZetaIcon(
-                ZetaIcons.check_mark,
+            ? Icon(
+                context.rounded ? ZetaIcons.check_mark_round : ZetaIcons.check_mark_sharp,
                 color: colors.mainInverse,
               )
             : Text(

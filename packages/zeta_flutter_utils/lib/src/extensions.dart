@@ -92,3 +92,9 @@ extension StringExtensions on String? {
     return '${this![0].toUpperCase()}${this!.substring(1).toLowerCase()}';
   }
 }
+
+/// Extensions on [Brightness].
+extension BrightnessExtension on Brightness {
+  /// Converts [Brightness] to [ThemeMode].
+  ThemeMode get themeMode => this == Brightness.light ? ThemeMode.light : ThemeMode.dark;
+}

@@ -21,9 +21,9 @@ An example app can be found in this repo under `/example`. This shows all compon
 
 ## Previewing the components
 
-To view examples of all the components in the library, you can pull this repo and run either the example app or widgetbook instance.
+To view examples of all the components in the library, you can pull this repo and run either the example app or widgetbook instance. To see a list of all components currently built or in progress, visit [design.zebra.com](https://design.zebra.com/docs/component-status).
 
-You can also view the latest release at [Zeta](https://zeta-ds.web.app/) or the latest commits to main [here](https://zeta-flutter-main.web.app/).
+You can also view the latest release at [Zeta](https://design.zebra.com/flutter/widgetbook) or the latest commits to main [here](https://zeta-flutter-main.web.app/).
 
 ## Template
 
@@ -31,7 +31,68 @@ If you are starting a new project using Zeta, we recommend starting with [Zeta F
 
 ## Usage
 
-Zeta offers flexibility in theming through its `ZetaProvider` widget. Here's a breakdown of its features:
+Zeta components can simply be dropped into any flutter application. For basic applications, no set up should be required.
+
+There are two options for setting the theme mode.
+
+## Basic Theme
+
+In the basic mode, a light or dark theme can be used in your application. By default, light mode will be set. To change to using dark mode, pass `Brightness` into your theme within `MaterialApp`:
+
+```dart
+
+/// Light mode
+return MaterialApp();
+
+/// Dark mode
+return MaterialApp(
+  theme: ThemeData.dark(
+    ...
+  ),
+  // OR
+  theme: ThemeData(
+    brightness: Brightness.dark,
+    ...
+    )
+)
+```
+
+## Complex theme
+
+Zeta offers flexibility in theming through its `ZetaProvider` widget. Zeta Provider takes in some initial theme values, and produces themes that are passed into your MaterialApp. This is a fully flesehd out example. See below for details on props.
+
+```dart
+return ZetaProvider(
+  customThemes: [
+    ZetaCustomTheme(
+      id: 'purple',
+      primary: ZetaPrimitivesLight().purple,
+      primaryDark: ZetaPrimitivesDark().purple,
+      secondary: ZetaPrimitivesLight().green,
+      secondaryDark: ZetaPrimitivesDark().green,
+    ),
+    ZetaCustomTheme(
+      id: 'green',
+      primary: ZetaPrimitivesLight().green,
+      primaryDark: ZetaPrimitivesDark().green,
+      secondary: ZetaPrimitivesLight().blue,
+      secondaryDark: ZetaPrimitivesDark().blue,
+    ),
+  ],
+  initialContrast: ZetaContrast.aaa,
+  customLoadingWidget: CircularProgressIndicator.adaptive(),
+  initialRounded: false,
+  initialTheme: 'purple',
+  initialThemeMode: ThemeMode.dark,
+  builder: (context, lightTheme, darkTheme, themeMode) {
+    return MaterialApp.router(
+      routerConfig: router,
+      themeMode: themeMode,
+      theme: lightTheme,
+    );
+  },
+);
+```
 
 ### Setting the Initial Theme Mode
 
@@ -63,16 +124,6 @@ Zeta also lets you define the initial contrast setting for your app. By default,
 initialContrast: ZetaContrast.aa
 ```
 
-### Building Your App with Zeta Theming
-
-The `builder` function is used to construct the widget tree with the provided theming information. This function is expected to receive a `BuildContext`, `ZetaThemeData`, and `ThemeMode` as arguments, and it should return a `Widget`.
-
-```dart
-builder: (context, themeData, themeMode) {
-  // Your app's widget tree here
-}
-```
-
 ### Constructing the ZetaProvider
 
 To tie everything together, use the `ZetaProvider` constructor. The `builder` argument is mandatory, while the others are optional but allow you to set initial values:
@@ -81,6 +132,7 @@ To tie everything together, use the `ZetaProvider` constructor. The `builder` ar
  @override
   Widget build(BuildContext context) {
     return ZetaProvider(
+
       builder: (context, themeData, themeMode) {
         final dark = themeData.colorsDark.toScheme();
         final light = themeData.colorsLight.toScheme();
@@ -150,7 +202,7 @@ You can also get and set the custom themes via the `ZetaProvider`:
 `ZetaProvider.of(context).customThemes`
 `ZetaProvider.of(context).setCustomThemes(newCustomThemes)`
 
-#### Changing the custom theme
+##### Changing the custom theme
 
 To change the custom theme, call the `updateCustomTheme` function on `ZetaProvider` with an id corresponding to a `ZetaCustomTheme` object:
 

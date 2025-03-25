@@ -7,9 +7,9 @@ import '../../../zeta_flutter.dart';
 
 /// Slider component with customized styling.
 ///
-/// Figma: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/slider
+/// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=875-11860&node-type=canvas&m=dev
 ///
-/// Widgetbook: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=875-11860&node-type=canvas&m=dev
+/// Widgetbook: https://design.zebra.com/flutter/widgetbook/index.html#/?path=components/slider/zetaslider/slider
 class ZetaSlider extends ZetaStatefulWidget {
   /// Default constructor for [ZetaSlider]
   const ZetaSlider({

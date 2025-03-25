@@ -18,7 +18,7 @@ const String appBarPath = '$componentsPath/Top App Bar';
 )
 Widget defaultTopAppBar(BuildContext context) => ZetaTopAppBar(
       leading: IconButton(
-        icon: ZetaIcon(iconKnob(context, name: 'Leading Icon', initial: ZetaIcons.hamburger_menu)),
+        icon: Icon(iconKnob(context, name: 'Leading Icon', initial: ZetaIcons.hamburger_menu)),
         onPressed: () {},
       ),
       title: Row(
@@ -33,9 +33,9 @@ Widget defaultTopAppBar(BuildContext context) => ZetaTopAppBar(
       ),
       actions: context.knobs.boolean(label: 'Enabled actions', initialValue: true)
           ? [
-              IconButton(onPressed: () {}, icon: const ZetaIcon(Icons.language)),
-              IconButton(onPressed: () {}, icon: const ZetaIcon(Icons.favorite)),
-              IconButton(onPressed: () {}, icon: const ZetaIcon(ZetaIcons.more_vertical)),
+              IconButton(onPressed: () {}, icon: const Icon(Icons.language)),
+              IconButton(onPressed: () {}, icon: const Icon(Icons.favorite)),
+              IconButton(onPressed: () {}, icon: const Icon(ZetaIcons.more_vertical)),
             ]
           : [],
     );
@@ -50,7 +50,7 @@ Widget defaultTopAppBar(BuildContext context) => ZetaTopAppBar(
 Widget centered(BuildContext context) => ZetaTopAppBar(
       leading: IconButton(
         onPressed: () {},
-        icon: ZetaIcon(iconKnob(context, name: 'Leading Icon', initial: ZetaIcons.hamburger_menu)),
+        icon: Icon(iconKnob(context, name: 'Leading Icon', initial: ZetaIcons.hamburger_menu)),
       ),
       type: ZetaTopAppBarType.centered,
       title: Text(context.knobs.string(label: 'Title', initialValue: 'Title')),
@@ -61,7 +61,7 @@ Widget centered(BuildContext context) => ZetaTopAppBar(
           ? [
               IconButton(
                 onPressed: () {},
-                icon: const ZetaIcon(Icons.account_circle),
+                icon: const Icon(Icons.account_circle),
               ),
             ]
           : [],
@@ -77,7 +77,7 @@ Widget centered(BuildContext context) => ZetaTopAppBar(
 Widget contextual(BuildContext context) => ZetaTopAppBar(
       leading: IconButton(
         onPressed: () {},
-        icon: ZetaIcon(iconKnob(context, name: 'Leading Icon', initial: ZetaIcons.close)),
+        icon: Icon(iconKnob(context, name: 'Leading Icon', initial: ZetaIcons.close)),
       ),
       title: Text(context.knobs.string(label: 'Title', initialValue: 'Title')),
       actions: context.knobs.boolean(
@@ -87,19 +87,19 @@ Widget contextual(BuildContext context) => ZetaTopAppBar(
           ? [
               IconButton(
                 onPressed: () {},
-                icon: const ZetaIcon(Icons.edit),
+                icon: const Icon(Icons.edit),
               ),
               IconButton(
                 onPressed: () {},
-                icon: const ZetaIcon(Icons.share),
+                icon: const Icon(Icons.share),
               ),
               IconButton(
                 onPressed: () {},
-                icon: const ZetaIcon(Icons.delete),
+                icon: const Icon(Icons.delete),
               ),
               IconButton(
                 onPressed: () {},
-                icon: const ZetaIcon(Icons.more_vert),
+                icon: const Icon(Icons.more_vert),
               ),
             ]
           : [],
@@ -121,7 +121,7 @@ Widget search(BuildContext context) {
       return ZetaTopAppBar.search(
         leading: IconButton(
           onPressed: () {},
-          icon: ZetaIcon(iconKnob(context, name: 'Leading Icon', initial: ZetaIcons.arrow_back)),
+          icon: Icon(iconKnob(context, name: 'Leading Icon', initial: ZetaIcons.arrow_back)),
         ),
         searchController: searchController,
         onSearchMicrophoneIconPressed: context.knobs.boolean(
@@ -149,51 +149,72 @@ Widget search(BuildContext context) {
       'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=24183-7227&t=QGJWipbvqxlvCtMR-4',
 )
 Widget extendedTopAppBarUseCase(BuildContext context) {
+  final scrollController = ScrollController();
+  final isExpanded = context.knobs.boolean(label: 'Expanded', initialValue: true);
+
   return StatefulBuilder(
     builder: (context, setState) {
       return LayoutBuilder(
-        builder: (context, constraints) => SafeArea(
-          child: SizedBox(
-            width: constraints.maxWidth,
-            height: constraints.maxHeight,
-            child: CustomScrollView(
-              slivers: [
-                ZetaTopAppBar.extended(
-                  leading: IconButton(
-                    icon: ZetaIcon(iconKnob(context, name: 'Leading Icon', initial: ZetaIcons.hamburger_menu)),
-                    onPressed: () {},
+        builder: (context, constraints) {
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            if (!isExpanded) {
+              scrollController.jumpTo(80);
+            } else {
+              scrollController.jumpTo(0);
+            }
+          });
+          return SafeArea(
+            child: SizedBox(
+              width: constraints.maxWidth,
+              height: constraints.maxHeight.isInfinite ? 800 : constraints.maxHeight,
+              child: CustomScrollView(
+                controller: scrollController,
+                slivers: [
+                  ZetaTopAppBar.extended(
+                    leading: IconButton(
+                      icon: Icon(iconKnob(context, name: 'Leading Icon', initial: ZetaIcons.hamburger_menu)),
+                      onPressed: () {},
+                    ),
+                    title: Text(context.knobs.string(label: 'Title', initialValue: 'Large Title')),
+                    actions: [
+                      IconButton(
+                        onPressed: () {},
+                        icon: const Icon(Icons.language),
+                      ),
+                      IconButton(
+                        onPressed: () {},
+                        icon: const Icon(Icons.favorite),
+                      ),
+                      IconButton(
+                        onPressed: () {},
+                        icon: const Icon(ZetaIcons.more_vertical),
+                      ),
+                    ],
                   ),
-                  title: Text(context.knobs.string(label: 'Title', initialValue: 'Large Title')),
-                  actions: [
-                    IconButton(
-                      onPressed: () {},
-                      icon: const ZetaIcon(Icons.language),
-                    ),
-                    IconButton(
-                      onPressed: () {},
-                      icon: const ZetaIcon(Icons.favorite),
-                    ),
-                    IconButton(
-                      onPressed: () {},
-                      icon: const ZetaIcon(ZetaIcons.more_vertical),
-                    ),
-                  ],
-                ),
-                SliverToBoxAdapter(
-                  child: Container(
-                    width: constraints.maxWidth,
-                    height: constraints.maxHeight * 4,
-                    color: Zeta.of(context).colors.surfaceSecondary,
-                    child: CustomPaint(
-                      painter: Painter(context: context, constraints: constraints),
-                      size: Size(constraints.maxWidth, constraints.maxHeight * 4),
+                  SliverToBoxAdapter(
+                    child: Container(
+                      width: constraints.maxWidth,
+                      height: (constraints.maxHeight.isInfinite ? 800 : constraints.maxHeight) * 4,
+                      color: Zeta.of(context).colors.surfaceSecondary,
+                      child: CustomPaint(
+                        painter: Painter(context: context, constraints: constraints),
+                        size: Size(
+                          constraints.maxWidth,
+                          (constraints.maxHeight.isInfinite ? 800 : constraints.maxHeight) * 4,
+                        ),
+                        child: Container(
+                          alignment: Alignment.topCenter,
+                          padding: EdgeInsets.only(top: 100),
+                          child: Text('Top App bar will shrink when scrolling'),
+                        ),
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-        ),
+          );
+        },
       );
     },
   );

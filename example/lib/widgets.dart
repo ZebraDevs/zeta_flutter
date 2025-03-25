@@ -3,6 +3,8 @@ import 'package:zeta_example/utils/rounded_switch.dart';
 import 'package:zeta_example/utils/theme_color_switch.dart';
 import 'package:zeta_example/utils/theme_constrast_switch.dart';
 import 'package:zeta_example/utils/theme_mode_switch.dart';
+import 'package:zeta_flutter/zeta_components.dart';
+import 'package:zeta_flutter/zeta_utils.dart';
 
 class ExampleScaffold extends StatelessWidget {
   final String name;
@@ -22,16 +24,12 @@ class ExampleScaffold extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final colors = theme.colorScheme;
+    final colors = Theme.of(context).colorScheme;
 
     return Scaffold(
       floatingActionButton: floatingActionButton,
-      appBar: AppBar(
-        centerTitle: false,
-        title: Text(name),
-        backgroundColor: colors.primary,
-        foregroundColor: colors.onPrimary,
+      appBar: ZetaTopAppBar(
+        title: Text(name).paddingStart(8),
         actions: [
           ...actions,
           ZetaRoundedSwitch(),
@@ -42,9 +40,7 @@ class ExampleScaffold extends StatelessWidget {
       ),
       backgroundColor: colors.surface,
       bottomNavigationBar: bottomNavigationBar,
-      body: SelectionArea(
-        child: child,
-      ),
+      body: SelectionArea(child: child),
     );
   }
 }

@@ -20,7 +20,7 @@ Widget listItem(BuildContext context) {
   return ZetaListItem(
     primaryText: context.knobs.string(label: 'Primary text', initialValue: 'Label'),
     secondaryText: context.knobs.stringOrNull(label: 'Secondary text', initialValue: 'Descriptor'),
-    leading: showIcon != null ? ZetaIcon(showIcon) : null,
+    leading: showIcon != null ? Icon(showIcon) : null,
     showDivider: context.knobs.boolean(label: 'Show divider'),
   );
 }
@@ -42,7 +42,7 @@ Widget checkbox(BuildContext context) {
       return ZetaListItem.checkbox(
         primaryText: context.knobs.string(label: 'Primary text', initialValue: 'Label'),
         secondaryText: context.knobs.stringOrNull(label: 'Secondary text', initialValue: 'Descriptor'),
-        leading: showIcon != null ? ZetaIcon(showIcon) : null,
+        leading: showIcon != null ? Icon(showIcon) : null,
         showDivider: context.knobs.boolean(label: 'Show divider'),
         onChanged: (bool? value) => setState(() => checkedValue = value!),
         value: checkedValue,
@@ -68,7 +68,7 @@ Widget toggle(BuildContext context) {
       return ZetaListItem.toggle(
         primaryText: context.knobs.string(label: 'Primary text', initialValue: 'Label'),
         secondaryText: context.knobs.stringOrNull(label: 'Secondary text', initialValue: 'Descriptor'),
-        leading: showIcon != null ? ZetaIcon(showIcon) : null,
+        leading: showIcon != null ? Icon(showIcon) : null,
         showDivider: context.knobs.boolean(label: 'Show divider'),
         onChanged: (bool? value) => setState(() => checkedValue = value!),
         value: checkedValue,
@@ -94,7 +94,7 @@ Widget radio(BuildContext context) {
       return ZetaListItem.radio(
         primaryText: context.knobs.string(label: 'Primary text', initialValue: 'Label'),
         secondaryText: context.knobs.stringOrNull(label: 'Secondary text', initialValue: 'Descriptor'),
-        leading: showIcon != null ? ZetaIcon(showIcon) : null,
+        leading: showIcon != null ? Icon(showIcon) : null,
         showDivider: context.knobs.boolean(label: 'Show divider'),
         groupValue: 'A',
         onChanged: (value) => setState(() => checkedValue = (value == 'A' ? 'B' : 'A')),
@@ -122,7 +122,7 @@ Widget dropdownListItem(BuildContext context) => SmallContentWrapper(
               ZetaListItem(primaryText: 'List Item'),
             ],
             secondaryText: context.knobs.string(label: 'Secondary text', initialValue: 'Descriptor'),
-            leading: context.knobs.boolean(label: 'Show icon') ? const ZetaIcon(ZetaIcons.star) : null,
+            leading: context.knobs.boolean(label: 'Show icon') ? const Icon(ZetaIcons.star) : null,
             showDivider: context.knobs.boolean(label: 'Show divider'),
           ),
           ZetaDropdownListItem(
@@ -133,7 +133,7 @@ Widget dropdownListItem(BuildContext context) => SmallContentWrapper(
               ZetaListItem(primaryText: 'List Item'),
             ],
             secondaryText: context.knobs.string(label: 'Secondary text', initialValue: 'Descriptor'),
-            leading: context.knobs.boolean(label: 'Show icon') ? const ZetaIcon(ZetaIcons.star) : null,
+            leading: context.knobs.boolean(label: 'Show icon') ? const Icon(ZetaIcons.star) : null,
             showDivider: context.knobs.boolean(label: 'Show divider'),
           ),
           ZetaDropdownListItem(
@@ -144,7 +144,7 @@ Widget dropdownListItem(BuildContext context) => SmallContentWrapper(
               ZetaListItem(primaryText: 'List Item'),
             ],
             secondaryText: context.knobs.string(label: 'Secondary text', initialValue: 'Descriptor'),
-            leading: context.knobs.boolean(label: 'Show icon') ? const ZetaIcon(ZetaIcons.star) : null,
+            leading: context.knobs.boolean(label: 'Show icon') ? const Icon(ZetaIcons.star) : null,
             showDivider: context.knobs.boolean(label: 'Show divider'),
           ),
         ],

@@ -9,7 +9,7 @@ import '../text_input/internal_text_input.dart';
 ///
 /// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=948-13002&node-type=canvas&m=dev
 ///
-/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/password-input
+/// Widgetbook: https://design.zebra.com/flutter/widgetbook/index.html#/?path=components/password-input/zetapasswordinput/password
 class ZetaPasswordInput extends ZetaTextFormField {
   ///Constructs [ZetaPasswordInput]
   ZetaPasswordInput({
@@ -55,9 +55,17 @@ class ZetaPasswordInput extends ZetaTextFormField {
               suffix: MergeSemantics(
                 child: Semantics(
                   label: state._obscureText ? showSemanticLabel : obscureSemanticLabel,
-                  child: IconButton(
-                    icon: ZetaIcon(state._obscureText ? ZetaIcons.visibility_off : ZetaIcons.visibility),
-                    onPressed: state.toggleVisibility,
+                  child: Builder(
+                    builder: (context) {
+                      return IconButton(
+                        icon: Icon(
+                          state._obscureText
+                              ? (context.rounded ? ZetaIcons.visibility_off_round : ZetaIcons.visibility_off_sharp)
+                              : (context.rounded ? ZetaIcons.visibility_round : ZetaIcons.visibility_sharp),
+                        ),
+                        onPressed: state.toggleVisibility,
+                      );
+                    },
                   ),
                 ),
               ),
