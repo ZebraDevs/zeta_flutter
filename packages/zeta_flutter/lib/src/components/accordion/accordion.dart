@@ -190,10 +190,7 @@ class _ZetaAccordionState extends State<ZetaAccordion> with TickerProviderStateM
                   ),
                   child: Theme(
                     data: Theme.of(context).copyWith(listTileTheme: ListTileThemeData(titleTextStyle: childTextStyle)),
-                    child: DefaultTextStyle(
-                      style: childTextStyle,
-                      child: widget.child ?? const Nothing(),
-                    ),
+                    child: widget.child ?? const Nothing(),
                   ),
                 ),
               ),

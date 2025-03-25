@@ -137,7 +137,9 @@ class Home extends StatefulWidget {
   State<Home> createState() => _HomeState();
 }
 
-final GoRouter router = GoRouter(routes: routes);
+final GoRouter router = GoRouter(
+  routes: routes,
+);
 
 final routes = [
   GoRoute(

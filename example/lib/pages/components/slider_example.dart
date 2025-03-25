@@ -3,7 +3,7 @@ import 'package:zeta_example/widgets.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 class SliderExample extends StatefulWidget {
-  static const String name = 'Slider/Slider';
+  static const String name = 'Slider';
 
   const SliderExample({super.key});
 

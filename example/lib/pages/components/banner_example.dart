@@ -140,7 +140,7 @@ class InPageBannerExample extends StatelessWidget {
           status: ZetaWidgetStatus.neutral,
           title: 'Banner Title',
         )
-      ],
+      ].gap(16),
     );
   }
 }

@@ -47,12 +47,6 @@ class AccordionExample extends StatelessWidget {
         ),
         const SizedBox(height: 40),
       ],
-      // child: SingleChildScrollView(
-      //   padding: EdgeInsets.all(Zeta.of(context).spacing.medium),
-      //   child: Column(
-      //     children: [].divide(const SizedBox.square(dimension: 10)).toList(),
-      //   ),
-      // ),
     );
   }
 }

@@ -2,8 +2,6 @@
 
 Zeta is the new, formal, standardized Zebra Design System based off the successes of ZDS (Zebra Design System).
 
-> 🚧 **Note**: This package is in pre-release, and so many aspects are incomplete.
-
 ### Prerequisites
 
 ```

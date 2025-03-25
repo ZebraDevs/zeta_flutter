@@ -6,12 +6,16 @@ import 'home.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  runApp(ZetaExample(initialRoute: '/ContactListItem'));
+  runApp(ZetaExample(
+    initialRoute: '/cat',
+  ));
 }
 
 class ZetaExample extends StatelessWidget {
   final ZetaContrast? initialContrast;
   final ThemeMode? initialThemeMode;
+
+  /// Only pass an initial route for Embedded mode.
   final String? initialRoute;
 
   const ZetaExample({super.key, this.initialContrast, this.initialThemeMode, this.initialRoute});
@@ -63,8 +67,26 @@ class ZetaExample extends StatelessWidget {
           return MaterialApp.router(
             routerConfig: GoRouter(
               routes: routes,
-              initialLocation: initialRoute ?? '/',
-              initialExtra: initialRoute != null ? 'docs' : null,
+              initialLocation: initialRoute,
+              initialExtra: 'docs',
+              errorBuilder: (context, state) => Scaffold(
+                body: Center(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    spacing: 16,
+                    children: [
+                      Text('Issue displaying demo content'),
+                      ZetaAccordion(
+                        title: 'See more',
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [Text('Error: ${state.error}'), Text('Path: ${state.uri}')],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
             ),
             themeMode: initialThemeMode,
             theme: lightTheme,
