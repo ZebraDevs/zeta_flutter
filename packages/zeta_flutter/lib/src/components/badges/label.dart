@@ -7,7 +7,7 @@ import '../../../zeta_flutter.dart';
 ///
 /// Figma: https://www.figma.com/file/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?type=design&node-id=21926-2099
 ///
-/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/badge/label
+/// Widgetbook: https://design.zebra.com/flutter/widgetbook/index.html#/?path=components/badges/zetalabel/label
 class ZetaLabel extends ZetaStatelessWidget {
   ///Constructs [ZetaLabel].
   const ZetaLabel({

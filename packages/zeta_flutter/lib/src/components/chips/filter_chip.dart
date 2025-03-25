@@ -10,7 +10,7 @@ import '../../../zeta_flutter.dart';
 ///
 /// Figma: https://www.figma.com/file/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=21265-14112
 ///
-/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/chips/filter-chip
+/// Widgetbook: https://design.zebra.com/flutter/widgetbook/index.html#/?path=components/chips/zetafilterchip/filter-chip
 class ZetaFilterChip extends ZetaChip {
   /// Creates a [ZetaFilterChip].
   const ZetaFilterChip({

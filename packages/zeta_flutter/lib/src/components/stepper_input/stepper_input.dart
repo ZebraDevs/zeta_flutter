@@ -19,7 +19,7 @@ enum ZetaStepperInputSize {
 ///
 /// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=229-47&node-type=canvas&m=dev
 ///
-/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/stepper-input
+/// Widgetbook: https://design.zebra.com/flutter/widgetbook/index.html#/?path=components/stepper-input/zetastepperinput/stepper-input
 class ZetaStepperInput extends ZetaStatefulWidget {
   /// Creates a new [ZetaStepperInput]
   const ZetaStepperInput({

@@ -14,7 +14,7 @@ export 'search_top_app_bar.dart' hide ZetaTopAppBarSearchField;
 ///
 /// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=229-37&node-type=canvas&m=dev
 ///
-/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/top-app-bar/default
+/// Widgetbook: https://design.zebra.com/flutter/widgetbook/index.html#/?path=components/top-app-bar/zetatopappbar/default
 class ZetaTopAppBar extends ZetaStatefulWidget implements PreferredSizeWidget {
   /// Creates a ZetaTopAppBar.
   const ZetaTopAppBar({
@@ -211,8 +211,8 @@ class _ZetaTopAppBarState extends State<ZetaTopAppBar> {
               child: IconButton(
                 color: colors.mainDefault,
                 onPressed: () => _searchController.clearText(),
-                icon: ZetaIcon(
-                  ZetaIcons.cancel,
+                icon: Icon(
+                  context.rounded ? ZetaIcons.cancel_round : ZetaIcons.cancel_sharp,
                   size: Zeta.of(context).spacing.xl,
                 ),
               ),
@@ -227,7 +227,7 @@ class _ZetaTopAppBarState extends State<ZetaTopAppBar> {
                 button: true,
                 child: IconButton(
                   onPressed: widget.onSearchMicrophoneIconPressed,
-                  icon: const ZetaIcon(ZetaIcons.microphone),
+                  icon: Icon(context.rounded ? ZetaIcons.microphone_round : ZetaIcons.microphone_sharp),
                 ),
               ),
             ],
@@ -246,7 +246,7 @@ class _ZetaTopAppBarState extends State<ZetaTopAppBar> {
             onPressed: () => setState(() {
               _searchController.startSearch();
             }),
-            icon: const ZetaIcon(ZetaIcons.search),
+            icon: Icon(context.rounded ? ZetaIcons.search_round : ZetaIcons.search_sharp),
           ),
         ),
       ];
@@ -293,7 +293,7 @@ class _ZetaTopAppBarState extends State<ZetaTopAppBar> {
         button: true,
         child: IconButton(
           onPressed: _searchController.closeSearch,
-          icon: const ZetaIcon(ZetaIcons.arrow_back),
+          icon: Icon(context.rounded ? ZetaIcons.arrow_back_round : ZetaIcons.arrow_back_sharp),
         ),
       );
     }

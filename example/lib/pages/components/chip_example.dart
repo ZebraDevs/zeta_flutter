@@ -23,7 +23,7 @@ class _ChipExampleState extends State<ChipExample> {
       const SizedBox(height: 10),
       ZetaInputChip(
         label: 'Label',
-        leading: ZetaIcon(ZetaIcons.user),
+        leading: Icon(ZetaIcons.user),
         trailing: IconButton(icon: Icon(ZetaIcons.close), onPressed: () {}),
         onTap: () {},
       ),
@@ -40,7 +40,7 @@ class _ChipExampleState extends State<ChipExample> {
         height: 40,
         child: ZetaAssistChip(
           label: 'Label',
-          leading: ZetaIcon(ZetaIcons.star),
+          leading: Icon(ZetaIcons.star),
           draggable: true,
           data: 'Assist chip',
           onTap: () {},

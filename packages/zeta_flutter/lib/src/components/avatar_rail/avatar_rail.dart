@@ -45,7 +45,7 @@ import '../../../zeta_flutter.dart';
 ///
 /// Figma: https://www.figma.com/file/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?type=design&node-id=20816-388
 ///
-/// Widgetbook: https://design.zebra.com/flutter/widgetbook/index.html#/?path=components/avatar/avatar-rail
+/// Widgetbook: https://design.zebra.com/flutter/widgetbook/index.html#/?path=components/avatar/zetaavatarrail/avatar-rail
 class ZetaAvatarRail extends StatelessWidget {
   ///
   const ZetaAvatarRail({

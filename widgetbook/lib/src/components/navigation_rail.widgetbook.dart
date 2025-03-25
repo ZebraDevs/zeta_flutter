@@ -29,7 +29,7 @@ Widget navigationRail(BuildContext context) {
             .map(
               (item) => ZetaNavigationRailItem(
                 label: item,
-                icon: ZetaIcon(iconKnob(context, initial: ZetaIcons.star)),
+                icon: Icon(iconKnob(context, initial: ZetaIcons.star)),
                 disabled: disabledKnob(context),
               ),
             )

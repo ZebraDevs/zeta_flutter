@@ -8,7 +8,7 @@ import '../../../zeta_flutter.dart';
 ///
 /// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=229-5&node-type=canvas&m=dev
 ///
-/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/breadcrumbs
+/// Widgetbook: https://design.zebra.com/flutter/widgetbook/index.html#/?path=components/breadcrumb/zetabreadcrumb/breadcrumb
 class ZetaBreadcrumb extends ZetaStatefulWidget {
   ///Constructor for [ZetaBreadcrumb]
   const ZetaBreadcrumb({
@@ -76,10 +76,9 @@ class _ZetaBreadcrumbsState extends State<ZetaBreadcrumb> {
                 Row(
                   children: [
                     SizedBox(width: Zeta.of(context).spacing.small),
-                    ZetaIcon(
-                      ZetaIcons.chevron_right,
+                    Icon(
+                      context.rounded ? ZetaIcons.chevron_right_round : ZetaIcons.chevron_right_sharp,
                       size: Zeta.of(context).spacing.xl,
-                      rounded: rounded,
                       color: Zeta.of(context).colors.mainSubtle,
                     ),
                     SizedBox(width: Zeta.of(context).spacing.small),
@@ -196,9 +195,9 @@ class ZetaBreadcrumbItem extends ZetaStatelessWidget {
             builder: (context, value, child) => Row(
               children: [
                 if (icon != null)
-                  ZetaIcon(
+                  Icon(
                     icon,
-                    rounded: rounded,
+                    // TODO(LUKE): Icon
                     color: getColor(value, colors),
                   ),
                 SizedBox(
@@ -357,7 +356,7 @@ class _TruncatedItemState extends State<TruncatedItem> {
             Row(
               children: [
                 SizedBox(width: Zeta.of(context).spacing.small),
-                ZetaIcon(
+                Icon(
                   ZetaIcons.chevron_right,
                   size: Zeta.of(context).spacing.xl,
                   color: Zeta.of(context).colors.mainSubtle,

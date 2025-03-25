@@ -11,7 +11,7 @@ import '../text_input/internal_text_input.dart';
 ///
 /// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=916-10934&node-type=canvas&m=dev
 ///
-/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/phone-input
+/// Widgetbook: https://design.zebra.com/flutter/widgetbook/index.html#/?path=components/phone-input/zetaphoneinput/phone-input
 class ZetaPhoneInput extends ZetaFormField<PhoneNumber> {
   /// Constructor for [ZetaPhoneInput].
   ZetaPhoneInput({
@@ -63,13 +63,13 @@ class ZetaPhoneInput extends ZetaFormField<PhoneNumber> {
                 value: state._selectedCountry.dialCode,
                 onDismissed: state.onDropdownDismissed,
                 items: state._dropdownItems,
-                builder: (context, selectedItem, dropdowncontroller) {
+                builder: (context, selectedItem, dropdownController) {
                   final borderSide = BorderSide(
                     color: disabled ? colors.borderDefault : colors.borderSubtle,
                   );
 
                   return GestureDetector(
-                    onTap: !disabled ? dropdowncontroller.toggle : null,
+                    onTap: !disabled ? dropdownController.toggle : null,
                     child: Container(
                       constraints: BoxConstraints(
                         maxHeight: size == ZetaWidgetSize.large
@@ -102,8 +102,10 @@ class ZetaPhoneInput extends ZetaFormField<PhoneNumber> {
                                   ),
                                   child: selectedItem?.icon,
                                 ),
-                                ZetaIcon(
-                                  !dropdowncontroller.isOpen ? ZetaIcons.expand_more : ZetaIcons.expand_less,
+                                Icon(
+                                  !dropdownController.isOpen
+                                      ? (context.rounded ? ZetaIcons.expand_more_round : ZetaIcons.expand_more_sharp)
+                                      : (context.rounded ? ZetaIcons.expand_less_round : ZetaIcons.expand_less_sharp),
                                   color: !disabled ? colors.mainDefault : colors.mainDisabled,
                                   size: Zeta.of(context).spacing.xl,
                                 ),

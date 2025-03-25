@@ -20,7 +20,7 @@ class DialogExample extends StatelessWidget {
                 context,
                 useRootNavigator: false,
                 title: 'Dialog Title',
-                icon: ZetaIcon(
+                icon: Icon(
                   ZetaIcons.warning,
                   color: zeta.colors.surfaceWarning,
                 ),
@@ -35,7 +35,7 @@ class DialogExample extends StatelessWidget {
                 context,
                 useRootNavigator: false,
                 title: 'Dialog Title',
-                icon: ZetaIcon(
+                icon: Icon(
                   ZetaIcons.warning,
                   color: zeta.colors.surfaceWarning,
                 ),
@@ -51,7 +51,7 @@ class DialogExample extends StatelessWidget {
                 context,
                 useRootNavigator: false,
                 title: 'Dialog Title',
-                icon: ZetaIcon(
+                icon: Icon(
                   ZetaIcons.warning,
                   color: zeta.colors.surfaceWarning,
                 ),
@@ -69,7 +69,7 @@ class DialogExample extends StatelessWidget {
                 context,
                 useRootNavigator: false,
                 title: 'Dialog Title',
-                icon: ZetaIcon(
+                icon: Icon(
                   ZetaIcons.warning,
                   color: zeta.colors.surfaceWarning,
                 ),

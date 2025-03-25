@@ -30,7 +30,7 @@ class _DropdownControllerImpl implements ZetaDropdownController {
 ///
 /// Figma: https://www.figma.com/file/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=22391-10146
 ///
-/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/dropdown
+/// Widgetbook: https://design.zebra.com/flutter/widgetbook/index.html#/?path=components/dropdown-menu/zetadropdown/dropdown-menu
 class ZetaDropdownItem<T> {
   /// Creates a new [ZetaDropdownItem]
   ZetaDropdownItem({
@@ -57,7 +57,7 @@ class ZetaDropdownItem<T> {
 ///
 /// Figma: https://www.figma.com/file/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=22391-10146
 ///
-/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/dropdown
+/// Widgetbook: https://design.zebra.com/flutter/widgetbook/index.html#/?path=components/dropdown-menu/zetadropdown/dropdown-menu
 class ZetaDropdown<T> extends ZetaStatefulWidget {
   /// Creates a new [ZetaDropdown].
   const ZetaDropdown({

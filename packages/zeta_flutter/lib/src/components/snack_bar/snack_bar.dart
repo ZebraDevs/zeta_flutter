@@ -36,7 +36,7 @@ enum ZetaSnackBarType {
 ///
 /// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=229-13&node-type=canvas&m=dev
 ///
-/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/snack-bar
+/// Widgetbook: https://design.zebra.com/flutter/widgetbook/index.html#/?path=components/snackbars/zetasnackbar/contextual-snackbar
 class ZetaSnackBar extends SnackBar {
   /// Sets basic styles for the [SnackBar].
   ZetaSnackBar({
@@ -58,7 +58,7 @@ class ZetaSnackBar extends SnackBar {
 
     /// Icon to display at the start of the content.
     ///
-    /// Should be of type [ZetaIcon] or [Icon].
+    /// Should be of type [Icon].
     Widget? leadingIcon,
 
     /// {@macro zeta-widget-rounded}
@@ -288,7 +288,11 @@ class _IconButton extends StatelessWidget {
           minimumSize: Size(Zeta.of(context).spacing.xl, Zeta.of(context).spacing.xl),
         ),
         onPressed: onPressed,
-        icon: ZetaIcon(ZetaIcons.close, color: color, size: Zeta.of(context).spacing.xl),
+        icon: Icon(
+          context.rounded ? ZetaIcons.close_round : ZetaIcons.close_sharp,
+          color: color,
+          size: Zeta.of(context).spacing.xl,
+        ),
       ),
     );
   }
@@ -364,14 +368,15 @@ class _LeadingIcon extends StatelessWidget {
     };
   }
 
-  Widget _getIcon(ZetaSnackBarType? type) {
+  Widget _getIcon(ZetaSnackBarType? type, BuildContext context) {
     return switch (type) {
-      ZetaSnackBarType.positive => const ZetaIcon(ZetaIcons.check_circle),
-      ZetaSnackBarType.info => const ZetaIcon(ZetaIcons.info),
-      ZetaSnackBarType.warning => const ZetaIcon(ZetaIcons.warning),
-      ZetaSnackBarType.error => const ZetaIcon(ZetaIcons.error),
-      ZetaSnackBarType.deletion => const ZetaIcon(ZetaIcons.delete),
-      ZetaSnackBarType.view => const ZetaIcon(ZetaIcons.open_in_new_window),
+      ZetaSnackBarType.positive => Icon(context.rounded ? ZetaIcons.check_circle_round : ZetaIcons.check_circle_sharp),
+      ZetaSnackBarType.info => Icon(context.rounded ? ZetaIcons.info_round : ZetaIcons.info_sharp),
+      ZetaSnackBarType.warning => Icon(context.rounded ? ZetaIcons.warning_round : ZetaIcons.warning_sharp),
+      ZetaSnackBarType.error => Icon(context.rounded ? ZetaIcons.error_round : ZetaIcons.error_sharp),
+      ZetaSnackBarType.deletion => Icon(context.rounded ? ZetaIcons.delete_round : ZetaIcons.delete_sharp),
+      ZetaSnackBarType.view =>
+        Icon(context.rounded ? ZetaIcons.open_in_new_window_round : ZetaIcons.open_in_new_window_sharp),
       _ => const Nothing(),
     };
   }
@@ -386,7 +391,7 @@ class _LeadingIcon extends StatelessWidget {
         data: IconThemeData(
           color: _getIconColor(colors, type),
         ),
-        child: icon ?? _getIcon(type),
+        child: icon ?? _getIcon(type, context),
       ),
     );
   }

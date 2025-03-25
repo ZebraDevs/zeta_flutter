@@ -18,7 +18,7 @@ const String appBarPath = '$componentsPath/Top App Bar';
 )
 Widget defaultTopAppBar(BuildContext context) => ZetaTopAppBar(
       leading: IconButton(
-        icon: ZetaIcon(iconKnob(context, name: 'Leading Icon', initial: ZetaIcons.hamburger_menu)),
+        icon: Icon(iconKnob(context, name: 'Leading Icon', initial: ZetaIcons.hamburger_menu)),
         onPressed: () {},
       ),
       title: Row(
@@ -33,9 +33,9 @@ Widget defaultTopAppBar(BuildContext context) => ZetaTopAppBar(
       ),
       actions: context.knobs.boolean(label: 'Enabled actions', initialValue: true)
           ? [
-              IconButton(onPressed: () {}, icon: const ZetaIcon(Icons.language)),
-              IconButton(onPressed: () {}, icon: const ZetaIcon(Icons.favorite)),
-              IconButton(onPressed: () {}, icon: const ZetaIcon(ZetaIcons.more_vertical)),
+              IconButton(onPressed: () {}, icon: const Icon(Icons.language)),
+              IconButton(onPressed: () {}, icon: const Icon(Icons.favorite)),
+              IconButton(onPressed: () {}, icon: const Icon(ZetaIcons.more_vertical)),
             ]
           : [],
     );
@@ -50,7 +50,7 @@ Widget defaultTopAppBar(BuildContext context) => ZetaTopAppBar(
 Widget centered(BuildContext context) => ZetaTopAppBar(
       leading: IconButton(
         onPressed: () {},
-        icon: ZetaIcon(iconKnob(context, name: 'Leading Icon', initial: ZetaIcons.hamburger_menu)),
+        icon: Icon(iconKnob(context, name: 'Leading Icon', initial: ZetaIcons.hamburger_menu)),
       ),
       type: ZetaTopAppBarType.centered,
       title: Text(context.knobs.string(label: 'Title', initialValue: 'Title')),
@@ -61,7 +61,7 @@ Widget centered(BuildContext context) => ZetaTopAppBar(
           ? [
               IconButton(
                 onPressed: () {},
-                icon: const ZetaIcon(Icons.account_circle),
+                icon: const Icon(Icons.account_circle),
               ),
             ]
           : [],
@@ -77,7 +77,7 @@ Widget centered(BuildContext context) => ZetaTopAppBar(
 Widget contextual(BuildContext context) => ZetaTopAppBar(
       leading: IconButton(
         onPressed: () {},
-        icon: ZetaIcon(iconKnob(context, name: 'Leading Icon', initial: ZetaIcons.close)),
+        icon: Icon(iconKnob(context, name: 'Leading Icon', initial: ZetaIcons.close)),
       ),
       title: Text(context.knobs.string(label: 'Title', initialValue: 'Title')),
       actions: context.knobs.boolean(
@@ -87,19 +87,19 @@ Widget contextual(BuildContext context) => ZetaTopAppBar(
           ? [
               IconButton(
                 onPressed: () {},
-                icon: const ZetaIcon(Icons.edit),
+                icon: const Icon(Icons.edit),
               ),
               IconButton(
                 onPressed: () {},
-                icon: const ZetaIcon(Icons.share),
+                icon: const Icon(Icons.share),
               ),
               IconButton(
                 onPressed: () {},
-                icon: const ZetaIcon(Icons.delete),
+                icon: const Icon(Icons.delete),
               ),
               IconButton(
                 onPressed: () {},
-                icon: const ZetaIcon(Icons.more_vert),
+                icon: const Icon(Icons.more_vert),
               ),
             ]
           : [],
@@ -121,7 +121,7 @@ Widget search(BuildContext context) {
       return ZetaTopAppBar.search(
         leading: IconButton(
           onPressed: () {},
-          icon: ZetaIcon(iconKnob(context, name: 'Leading Icon', initial: ZetaIcons.arrow_back)),
+          icon: Icon(iconKnob(context, name: 'Leading Icon', initial: ZetaIcons.arrow_back)),
         ),
         searchController: searchController,
         onSearchMicrophoneIconPressed: context.knobs.boolean(
@@ -160,22 +160,22 @@ Widget extendedTopAppBarUseCase(BuildContext context) {
               slivers: [
                 ZetaTopAppBar.extended(
                   leading: IconButton(
-                    icon: ZetaIcon(iconKnob(context, name: 'Leading Icon', initial: ZetaIcons.hamburger_menu)),
+                    icon: Icon(iconKnob(context, name: 'Leading Icon', initial: ZetaIcons.hamburger_menu)),
                     onPressed: () {},
                   ),
                   title: Text(context.knobs.string(label: 'Title', initialValue: 'Large Title')),
                   actions: [
                     IconButton(
                       onPressed: () {},
-                      icon: const ZetaIcon(Icons.language),
+                      icon: const Icon(Icons.language),
                     ),
                     IconButton(
                       onPressed: () {},
-                      icon: const ZetaIcon(Icons.favorite),
+                      icon: const Icon(Icons.favorite),
                     ),
                     IconButton(
                       onPressed: () {},
-                      icon: const ZetaIcon(ZetaIcons.more_vertical),
+                      icon: const Icon(ZetaIcons.more_vertical),
                     ),
                   ],
                 ),

@@ -12,8 +12,8 @@ class AvatarExample extends StatelessWidget {
   Widget build(BuildContext context) {
     final Widget image = CachedNetworkImage(
       imageUrl: "https://i.ytimg.com/vi/KItsWUzFUOs/maxresdefault.jpg",
-      placeholder: (context, url) => ZetaIcon(ZetaIcons.user),
-      errorWidget: (context, url, error) => ZetaIcon(ZetaIcons.error),
+      placeholder: (context, url) => Icon(ZetaIcons.user),
+      errorWidget: (context, url, error) => Icon(ZetaIcons.error),
       fit: BoxFit.cover,
     );
 

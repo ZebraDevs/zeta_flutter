@@ -12,7 +12,7 @@ import '../../../zeta_flutter.dart';
 ///
 /// Figma: https://www.figma.com/file/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=21510-54003
 ///
-/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/checkbox
+/// Widgetbook: https://design.zebra.com/flutter/widgetbook/index.html#/?path=components/checkbox/zetacheckbox/checkbox
 class ZetaCheckbox extends FormField<bool> {
   /// Constructs a [ZetaCheckbox].
   ZetaCheckbox({
@@ -221,8 +221,10 @@ class _CheckboxState extends State<ZetaInternalCheckbox> {
 
     final icon = !_checked
         ? const Nothing()
-        : ZetaIcon(
-            widget.useIndeterminate ? ZetaIcons.remove : ZetaIcons.check_mark,
+        : Icon(
+            widget.useIndeterminate
+                ? (context.rounded ? ZetaIcons.remove_round : ZetaIcons.remove_sharp)
+                : (context.rounded ? ZetaIcons.check_mark_round : ZetaIcons.check_mark_sharp),
             color: widget.disabled ? theme.colors.mainDisabled : theme.colors.mainInverse,
             size: 14, // TODO(UX-1202): ZetaSpacingBase
           );

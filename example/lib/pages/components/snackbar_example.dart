@@ -51,7 +51,7 @@ class SnackBarExample extends StatelessWidget {
                         ZetaSnackBar(
                           context: context,
                           type: ZetaSnackBarType.defaultType,
-                          leadingIcon: ZetaIcon(Icons.mood),
+                          leadingIcon: Icon(Icons.mood),
                           content: Text('Message with icon'),
                         ),
                       );

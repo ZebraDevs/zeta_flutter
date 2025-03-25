@@ -19,13 +19,13 @@ import '../../../zeta_flutter.dart';
 ///       actionButtons: [
 ///         IconButton(
 ///           onPressed: () {},
-///           icon: const ZetaIcon(
+///           icon: const Icon(
 ///             ZetaIcons.alert,
 ///           ),
 ///         ),
 ///         IconButton(
 ///           onPressed: () {},
-///           icon: const ZetaIcon(
+///           icon: const Icon(
 ///             ZetaIcons.help,
 ///           ),
 ///         ),
@@ -38,7 +38,7 @@ import '../../../zeta_flutter.dart';
 ///
 /// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=1120-26358&node-type=canvas&m=dev
 ///
-/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/global-header
+/// Widgetbook: https://design.zebra.com/flutter/widgetbook/index.html#/?path=components/global-header/zetaglobalheader/global-header
 class ZetaGlobalHeader extends ZetaStatefulWidget {
   /// Constructor for [ZetaGlobalHeader]
   const ZetaGlobalHeader({
@@ -139,7 +139,10 @@ class _GlobalHeaderState extends State<ZetaGlobalHeader> {
                               height: Zeta.of(context).spacing.xl_2,
                               margin: EdgeInsets.symmetric(horizontal: Zeta.of(context).spacing.minimum),
                             ),
-                            IconButton(icon: const ZetaIcon(ZetaIcons.apps), onPressed: widget.onAppsButton),
+                            IconButton(
+                              icon: Icon(context.rounded ? ZetaIcons.apps_round : ZetaIcons.apps_sharp),
+                              onPressed: widget.onAppsButton,
+                            ),
                           ],
                           SizedBox(width: Zeta.of(context).spacing.small),
                           if (widget.avatar != null) widget.avatar!.copyWith(size: ZetaAvatarSize.m),

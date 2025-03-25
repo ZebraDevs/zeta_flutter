@@ -31,7 +31,7 @@ enum ZetaCommsButtonType {
 ///
 /// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=20816-7765&node-type=canvas&t=nc1YR061CeZRr6IJ-0
 ///
-/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/comms-button
+/// Widgetbook: https://design.zebra.com/flutter/widgetbook/index.html#/?path=components/comms-button/zetacommsbutton/comms-buttons
 class ZetaCommsButton extends StatefulWidget {
   /// Constructs [ZetaCommsButton]
   const ZetaCommsButton({

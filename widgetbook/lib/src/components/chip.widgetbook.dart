@@ -16,7 +16,7 @@ const String chipsPath = '$componentsPath/Chips';
 )
 Widget assistChip(BuildContext context) => ZetaAssistChip(
       label: context.knobs.string(label: 'Label', initialValue: 'Label'),
-      leading: ZetaIcon(iconKnob(context)),
+      leading: Icon(iconKnob(context)),
       draggable: true,
       onTap: disabledKnob(context) ? null : () {},
     );
@@ -41,7 +41,7 @@ Widget inputChip(BuildContext context) {
                 context.knobs.boolean(label: 'Avatar Image') ? Image.asset('assets/Omer.jpg', fit: BoxFit.cover) : null,
           )
         : null,
-    trailing: trailing != null ? ZetaIcon(trailing) : null,
+    trailing: trailing != null ? Icon(trailing) : null,
   );
 }
 

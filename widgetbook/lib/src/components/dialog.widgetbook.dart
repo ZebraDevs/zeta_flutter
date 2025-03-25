@@ -26,7 +26,7 @@ Widget dialog(BuildContext context) {
             'Lorem ipsum dolor sit amet, conse ctetur adipiscing elit, sed do eiusm od tempor incididunt ut labore et do lore magna aliqua.',
       ),
       title: context.knobs.string(label: 'Dialog title', initialValue: 'Dialog Title'),
-      icon: ZetaIcon(
+      icon: Icon(
         iconKnob(context, initial: Icons.warning),
         color: context.knobs.color(
           label: 'Icon Color',

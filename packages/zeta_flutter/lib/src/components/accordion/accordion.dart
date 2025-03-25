@@ -10,7 +10,7 @@ import '../../../zeta_flutter.dart';
 ///
 /// Figma: https://www.figma.com/file/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?type=design&node-id=3427-67874
 ///
-/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/accordion
+/// Widgetbook: https://design.zebra.com/flutter/widgetbook/index.html#/?path=components/accordion/zetaaccordion/accordion
 class ZetaAccordion extends ZetaStatefulWidget {
   /// The constructor of the component [ZetaAccordion].
   const ZetaAccordion({
@@ -58,6 +58,10 @@ class _ZetaAccordionState extends State<ZetaAccordion> with TickerProviderStateM
   late bool _disabled;
   late final AnimationController _controller;
   late final Animation<double> _animation;
+
+  IconData get _icon => _isOpen
+      ? (context.rounded ? ZetaIcons.remove_round : ZetaIcons.remove_sharp)
+      : (context.rounded ? ZetaIcons.add_round : ZetaIcons.add_sharp);
 
   @override
   void initState() {
@@ -169,10 +173,7 @@ class _ZetaAccordionState extends State<ZetaAccordion> with TickerProviderStateM
                       ),
                       Padding(
                         padding: EdgeInsets.only(left: Zeta.of(context).spacing.large),
-                        child: ZetaIcon(
-                          _isOpen ? ZetaIcons.remove : ZetaIcons.add,
-                          color: color,
-                        ),
+                        child: Icon(_icon, color: color),
                       ),
                     ],
                   ),

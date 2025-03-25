@@ -9,7 +9,7 @@ import 'button_style.dart';
 ///
 /// Figma: https://www.figma.com/file/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=23126-110945
 ///
-/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/buttons/button
+/// Widgetbook: https://design.zebra.com/flutter/widgetbook/index.html#/?path=components/button/zetabutton/button
 class ZetaButton extends ZetaStatelessWidget {
   ///Constructs [ZetaButton]
   const ZetaButton({

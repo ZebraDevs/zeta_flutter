@@ -38,7 +38,7 @@ class _BottomSheetExampleState extends State<BottomSheetExample> {
                           6,
                           (index) => ZetaMenuItem.vertical(
                             label: Text('Menu Item'),
-                            icon: ZetaIcon(ZetaIcons.star),
+                            icon: Icon(ZetaIcons.star),
                             onTap: () {},
                           ),
                         ),
@@ -63,7 +63,7 @@ class _BottomSheetExampleState extends State<BottomSheetExample> {
                       (index) => ZetaMenuItem.horizontal(
                         label: Text('Menu Item'),
                         onTap: () {},
-                        leading: ZetaIcon(ZetaIcons.star),
+                        leading: Icon(ZetaIcons.star),
                       ),
                     ),
                   ),

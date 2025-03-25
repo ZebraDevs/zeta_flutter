@@ -25,7 +25,7 @@ class _ListExampleState extends State<ListExample> {
           ZetaListItem(primaryText: 'Item 2'),
           ZetaDropdownListItem(
             primaryText: 'Item 3',
-            leading: ZetaIcon(ZetaIcons.star),
+            leading: Icon(ZetaIcons.star),
             expanded: true,
             items: [
               ZetaListItem.checkbox(

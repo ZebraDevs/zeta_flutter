@@ -45,7 +45,7 @@ enum ZetaPriorityPillSize {
 ///
 /// Figma: https://www.figma.com/file/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?type=design&node-id=22000-15955
 ///
-/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/badge/priority-pill
+/// Widgetbook: https://design.zebra.com/flutter/widgetbook/index.html#/?path=components/badges/zetaprioritypill/priority-pill
 class ZetaPriorityPill extends ZetaStatelessWidget {
   ///Constructs [ZetaPriorityPill]
   const ZetaPriorityPill({

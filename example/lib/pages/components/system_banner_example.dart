@@ -36,7 +36,7 @@ class BannerExample extends StatelessWidget {
                 context: context,
                 title: 'Title left with arrow',
                 titleCenter: true,
-                trailing: ZetaIcon(ZetaIcons.chevron_right),
+                trailing: Icon(ZetaIcons.chevron_right),
               ),
               ZetaSystemBanner(
                 type: ZetaSystemBannerStatus.primary,
@@ -52,14 +52,14 @@ class BannerExample extends StatelessWidget {
                 titleCenter: true,
                 leadingIcon: ZetaIcons.info,
                 trailing: IconButton(
-                  icon: ZetaIcon(ZetaIcons.chevron_right),
+                  icon: Icon(ZetaIcons.chevron_right),
                   onPressed: () {
                     ScaffoldMessenger.of(context).showMaterialBanner(ZetaSystemBanner(
                       title: 'Title',
                       context: context,
                       type: ZetaSystemBannerStatus.primary,
                       trailing: IconButton(
-                        icon: ZetaIcon(ZetaIcons.close),
+                        icon: Icon(ZetaIcons.close),
                         onPressed: () => ScaffoldMessenger.of(context).clearMaterialBanners(),
                       ),
                     ));
@@ -74,14 +74,14 @@ class BannerExample extends StatelessWidget {
                 titleCenter: true,
                 leadingIcon: ZetaIcons.info,
                 trailing: IconButton(
-                  icon: ZetaIcon(ZetaIcons.chevron_right),
+                  icon: Icon(ZetaIcons.chevron_right),
                   onPressed: () {
                     ScaffoldMessenger.of(context).showMaterialBanner(ZetaSystemBanner(
                       title: 'Title',
                       context: context,
                       type: ZetaSystemBannerStatus.positive,
                       trailing: IconButton(
-                        icon: ZetaIcon(ZetaIcons.close),
+                        icon: Icon(ZetaIcons.close),
                         onPressed: () => ScaffoldMessenger.of(context).clearMaterialBanners(),
                       ),
                     ));
@@ -95,14 +95,14 @@ class BannerExample extends StatelessWidget {
                 titleCenter: true,
                 leadingIcon: ZetaIcons.info,
                 trailing: IconButton(
-                  icon: ZetaIcon(ZetaIcons.chevron_right),
+                  icon: Icon(ZetaIcons.chevron_right),
                   onPressed: () {
                     ScaffoldMessenger.of(context).showMaterialBanner(ZetaSystemBanner(
                       title: 'Title',
                       context: context,
                       type: ZetaSystemBannerStatus.warning,
                       trailing: IconButton(
-                        icon: ZetaIcon(ZetaIcons.close),
+                        icon: Icon(ZetaIcons.close),
                         onPressed: () => ScaffoldMessenger.of(context).clearMaterialBanners(),
                       ),
                     ));
@@ -116,14 +116,14 @@ class BannerExample extends StatelessWidget {
                 titleCenter: true,
                 leadingIcon: ZetaIcons.info,
                 trailing: IconButton(
-                  icon: ZetaIcon(ZetaIcons.chevron_right),
+                  icon: Icon(ZetaIcons.chevron_right),
                   onPressed: () {
                     ScaffoldMessenger.of(context).showMaterialBanner(ZetaSystemBanner(
                       title: 'Title',
                       context: context,
                       type: ZetaSystemBannerStatus.negative,
                       trailing: IconButton(
-                        icon: ZetaIcon(ZetaIcons.close),
+                        icon: Icon(ZetaIcons.close),
                         onPressed: () => ScaffoldMessenger.of(context).clearMaterialBanners(),
                       ),
                     ));

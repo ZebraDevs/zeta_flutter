@@ -48,7 +48,7 @@ Widget segmentedControlIconUseCase(BuildContext context) {
   return StatefulBuilder(
     builder: (context, setState) {
       return ZetaSegmentedControl(
-        segments: iconsSegments.map((value) => ZetaButtonSegment(value: value, child: ZetaIcon(icon))).toList(),
+        segments: iconsSegments.map((value) => ZetaButtonSegment(value: value, child: Icon(icon))).toList(),
         onChanged: (value) => setState(() => selectedIconSegment = value),
         selected: selectedIconSegment,
       );
