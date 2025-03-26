@@ -59,6 +59,7 @@ jobs:
       - name: Publish individual package
         if: ${{ env.package != 'all' }}
         run: |
+          bash scripts/update_individual.sh ${{ env.package }} 
           cd packages/${{ env.package }}
           dart format . --fix
           dart fix --apply
