@@ -15,7 +15,7 @@ dependencies:
   equatable: ^2.0.7
   flutter:
     sdk: flutter
-  shared_preferences: ^2.3.5
+  shared_preferences: ^2.5.2
 
 dev_dependencies:
   flutter_test:
