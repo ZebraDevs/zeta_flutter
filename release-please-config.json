@@ -23,6 +23,9 @@
     "widgetbook/lib/introduction.dart"
   ],
   "separate-pull-requests": true,
+  "include-component-in-tag": true,
+  "include-v-in-tag": true,
+  "tag-separator": "@",
   "changelog-sections": [
     {
       "type": "feat",
