@@ -20,7 +20,7 @@
   "pull-request-title-pattern": "chore(${component}): release ${version}",
   "include-component-in-tag": true,
   "include-v-in-tag": true,
-  "tag-separator": "@",
+  "tag-separator": "-",
   "extra-files": [
     "example/lib/home.dart",
     "widgetbook/lib/introduction.dart"
