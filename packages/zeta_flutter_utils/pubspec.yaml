@@ -24,5 +24,3 @@ dev_dependencies:
   zds_analysis: ^1.1.1
   zeta_flutter:
     path: ../zeta_flutter
-  zeta_flutter_theme:
-    path: ../zeta_flutter_theme
