@@ -46,6 +46,17 @@ jobs:
           token: ${{secrets.GITHUB_TOKEN}}
           coverage-pass-score: "80"
           test-command: melos test
+      - name: Release please help
+        if: startsWith(github.head_ref, 'release-please') && !endsWith(github.head_ref, 'zeta_flutter')
+        run: |
+          PACKAGE_NAME=$(echo ${{github.head_ref}} | awk -F '--' '{print $NF}')
+          sh scripts/update_individual.sh $PACKAGE_NAME
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+          git checkout -b ${{github.head_ref}}
+          git add .
+          git commit -m "deps: update dependencies in $PACKAGE_NAME"
+          git push origin ${{github.head_ref}}
 
   check-secret:
     runs-on: ubuntu-latest
