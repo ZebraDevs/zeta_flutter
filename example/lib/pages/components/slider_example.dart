@@ -18,16 +18,20 @@ class _SliderExampleState extends State<SliderExample> {
   Widget build(BuildContext context) {
     return ExampleScaffold(
       name: SliderExample.name,
-      child: Center(
-        child: ZetaSlider(
+      gap: 40,
+      children: [
+        ZetaSlider(
           value: value,
-          onChange: (newValue) {
-            setState(() {
-              value = newValue;
-            });
-          },
+          key: Key('docs-slider-continuous'),
+          onChange: (newValue) => setState(() => value = newValue),
         ),
-      ),
+        ZetaSlider(
+          value: value,
+          key: Key('docs-slider-step'),
+          divisions: 5,
+          onChange: (newValue) => setState(() => value = newValue),
+        ),
+      ],
     );
   }
 }

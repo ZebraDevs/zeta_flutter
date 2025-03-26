@@ -18,28 +18,59 @@ class _SwitchExampleState extends State<SwitchExample> {
   @override
   Widget build(BuildContext context) {
     return ExampleScaffold(
-      name: 'Switch',
-      child: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      name: SwitchExample.name,
+      children: [
+        Column(
+          spacing: 40,
           children: [
+            SizedBox(),
             Row(
               crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                ZetaSwitch(
-                  value: isOn,
-                  onChanged: isEnabled ? (value) => setState(() => isOn = value) : null,
+                Expanded(child: Text('Android')),
+                Expanded(
+                  child: ZetaSwitch(
+                    value: isOn,
+                    onChanged: isEnabled ? (value) => setState(() => isOn = value) : null,
+                    variant: ZetaSwitchType.android,
+                  ),
                 ),
-                ZetaButton(
-                  label: isEnabled ? 'Disable' : 'Enable',
-                  onPressed: () => setState(() => isEnabled = !isEnabled),
+                Expanded(child: ZetaSwitch(variant: ZetaSwitchType.android)),
+              ],
+            ),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Expanded(child: Text('iOS')),
+                Expanded(
+                  child: ZetaSwitch(
+                    value: isOn,
+                    onChanged: isEnabled ? (value) => setState(() => isOn = value) : null,
+                    variant: ZetaSwitchType.ios,
+                  ),
                 ),
+                Expanded(child: ZetaSwitch(variant: ZetaSwitchType.ios)),
+              ],
+            ),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Expanded(child: Text('Web')),
+                Expanded(
+                  child: ZetaSwitch(
+                    value: isOn,
+                    onChanged: isEnabled ? (value) => setState(() => isOn = value) : null,
+                    variant: ZetaSwitchType.web,
+                  ),
+                ),
+                Expanded(child: ZetaSwitch(variant: ZetaSwitchType.web)),
               ],
             ),
           ],
         ),
-      ),
+      ],
     );
   }
 }

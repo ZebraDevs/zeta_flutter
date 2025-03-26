@@ -35,6 +35,8 @@ class ZetaTabBar extends TabBar {
           unselectedLabelStyle: ZetaTextStyles.labelLarge.copyWith(
             color: onTap != null ? Zeta.of(context).colors.mainSubtle : Zeta.of(context).colors.mainDisabled,
           ),
+          overlayColor: onTap == null ? WidgetStateProperty.all(Colors.transparent) : null,
+          mouseCursor: onTap == null ? SystemMouseCursors.forbidden : SystemMouseCursors.click,
           dividerColor: Colors.transparent,
         );
 }

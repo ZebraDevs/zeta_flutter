@@ -17,7 +17,7 @@ class Country {
   final String isoCode;
 
   /// Country's flag URI
-  String get flagUri => 'lib/assets/flags/${isoCode.toLowerCase()}.png';
+  String get flagUri => 'packages/zeta_flutter/assets/flags/${isoCode.toLowerCase()}.png';
 
   @override
   String toString() => {

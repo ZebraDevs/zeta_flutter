@@ -25,24 +25,113 @@ class _TopAppBarExampleState extends State<TopAppBarExample> {
       errorWidget: (context, url, error) => Icon(ZetaIcons.error),
       fit: BoxFit.cover,
     );
-    final colors = Zeta.of(context).colors;
 
     return ExampleScaffold(
       name: TopAppBarExample.name,
-      child: ColoredBox(
-        color: colors.surfaceWarm,
-        child: SingleChildScrollView(
-          child: Column(
+      paddingAll: 0,
+      gap: 4,
+      children: [
+        Text('Default', style: ZetaTextStyles.titleLarge),
+        ZetaTopAppBar(
+          key: Key('docs-top-app-bar-default'),
+          leading: IconButton(onPressed: () {}, icon: Icon(Icons.menu)),
+          title: Row(
             children: [
-              Text('Default', style: ZetaTextStyles.titleLarge),
-              ZetaTopAppBar(
+              ZetaAvatar(size: ZetaAvatarSize.xs, image: image),
+              Padding(
+                padding: EdgeInsets.only(left: Zeta.of(context).spacing.medium),
+                child: Text("Title"),
+              ),
+            ],
+          ),
+          actions: [
+            IconButton(
+              onPressed: () {},
+              icon: Icon(Icons.language),
+            ),
+            IconButton(
+              onPressed: () {},
+              icon: Icon(Icons.favorite),
+            ),
+            IconButton(
+              onPressed: () {},
+              icon: Icon(ZetaIcons.more_vertical),
+            )
+          ],
+        ),
+        Text('Centered', style: ZetaTextStyles.titleLarge),
+        ZetaTopAppBar.centered(
+          leading: IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.menu),
+          ),
+          title: Text("Title"),
+          actions: [
+            IconButton(
+              onPressed: () {},
+              icon: Icon(Icons.account_circle),
+            ),
+          ],
+        ),
+        Text('Contextual', style: ZetaTextStyles.titleLarge),
+        ZetaTopAppBar(
+          key: Key('docs-top-app-bar-contextual'),
+          leading: IconButton(
+            onPressed: () {},
+            icon: Icon(ZetaIcons.close),
+          ),
+          title: Text("2 items"),
+          actions: [
+            IconButton(
+              onPressed: () {},
+              icon: Icon(ZetaIcons.edit),
+            ),
+            IconButton(
+              onPressed: () {},
+              icon: Icon(ZetaIcons.share),
+            ),
+            IconButton(
+              onPressed: () {},
+              icon: Icon(ZetaIcons.delete),
+            ),
+            IconButton(
+              onPressed: () {},
+              icon: Icon(ZetaIcons.more_vertical),
+            ),
+          ],
+        ),
+        Text('Search', style: ZetaTextStyles.titleLarge),
+        ZetaTopAppBar.search(
+          key: Key('docs-top-app-bar-search'),
+          leading: IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.menu),
+          ),
+          title: Text("Title"),
+          searchController: _searchController,
+          onSearch: (text) => debugPrint('search text: $text'),
+          onSearchMicrophoneIconPressed: () async {
+            var sampleTexts = ['This is a sample text', 'Another sample', 'Speech recognition text', 'Example'];
+
+            var generatedText = sampleTexts[Random().nextInt(sampleTexts.length)];
+
+            _searchController.text = generatedText;
+          },
+        ),
+        Text('Extended', style: ZetaTextStyles.titleLarge),
+        SizedBox(
+          key: Key('docs-top-app-bar-extended'),
+          height: 200,
+          child: CustomScrollView(
+            slivers: [
+              ZetaTopAppBar.extended(
                 leading: IconButton(
                   onPressed: () {},
                   icon: Icon(Icons.menu),
                 ),
                 title: Row(
                   children: [
-                    ZetaAvatar(size: ZetaAvatarSize.xs, image: image),
+                    ZetaAvatar(size: ZetaAvatarSize.xxxs, image: image),
                     Padding(
                       padding: EdgeInsets.only(left: Zeta.of(context).spacing.medium),
                       child: Text("Title"),
@@ -64,116 +153,21 @@ class _TopAppBarExampleState extends State<TopAppBarExample> {
                   )
                 ],
               ),
-              Text('Centered', style: ZetaTextStyles.titleLarge),
-              ZetaTopAppBar.centered(
-                leading: IconButton(
-                  onPressed: () {},
-                  icon: Icon(Icons.menu),
-                ),
-                title: Text("Title"),
-                actions: [
-                  IconButton(
-                    onPressed: () {},
-                    icon: Icon(Icons.account_circle),
+              SliverToBoxAdapter(
+                child: Container(
+                  width: 800,
+                  height: 800,
+                  color: Zeta.of(context).colors.surfaceSelectedHover,
+                  child: CustomPaint(
+                    painter: Painter(context: context),
+                    size: Size(800, 800),
                   ),
-                ],
-              ),
-              Text('Contextual', style: ZetaTextStyles.titleLarge),
-              ZetaTopAppBar(
-                leading: IconButton(
-                  onPressed: () {},
-                  icon: Icon(ZetaIcons.close),
-                ),
-                title: Text("2 items"),
-                actions: [
-                  IconButton(
-                    onPressed: () {},
-                    icon: Icon(ZetaIcons.edit),
-                  ),
-                  IconButton(
-                    onPressed: () {},
-                    icon: Icon(ZetaIcons.share),
-                  ),
-                  IconButton(
-                    onPressed: () {},
-                    icon: Icon(ZetaIcons.delete),
-                  ),
-                  IconButton(
-                    onPressed: () {},
-                    icon: Icon(ZetaIcons.more_vertical),
-                  ),
-                ],
-              ),
-              Text('Search', style: ZetaTextStyles.titleLarge),
-              ZetaTopAppBar.search(
-                leading: IconButton(
-                  onPressed: () {},
-                  icon: Icon(Icons.menu),
-                ),
-                title: Text("Title"),
-                searchController: _searchController,
-                onSearch: (text) => debugPrint('search text: $text'),
-                onSearchMicrophoneIconPressed: () async {
-                  var sampleTexts = ['This is a sample text', 'Another sample', 'Speech recognition text', 'Example'];
-
-                  var generatedText = sampleTexts[Random().nextInt(sampleTexts.length)];
-
-                  _searchController.text = generatedText;
-                },
-              ),
-              Text('Extended', style: ZetaTextStyles.titleLarge),
-              SizedBox(
-                width: 800,
-                height: 200,
-                child: CustomScrollView(
-                  slivers: [
-                    ZetaTopAppBar.extended(
-                      leading: IconButton(
-                        onPressed: () {},
-                        icon: Icon(Icons.menu),
-                      ),
-                      title: Row(
-                        children: [
-                          ZetaAvatar(size: ZetaAvatarSize.xs, image: image),
-                          Padding(
-                            padding: EdgeInsets.only(left: Zeta.of(context).spacing.medium),
-                            child: Text("Title"),
-                          ),
-                        ],
-                      ),
-                      actions: [
-                        IconButton(
-                          onPressed: () {},
-                          icon: Icon(Icons.language),
-                        ),
-                        IconButton(
-                          onPressed: () {},
-                          icon: Icon(Icons.favorite),
-                        ),
-                        IconButton(
-                          onPressed: () {},
-                          icon: Icon(ZetaIcons.more_vertical),
-                        )
-                      ],
-                    ),
-                    SliverToBoxAdapter(
-                      child: Container(
-                        width: 800,
-                        height: 800,
-                        color: Zeta.of(context).colors.surfaceSelectedHover,
-                        child: CustomPaint(
-                          painter: Painter(context: context),
-                          size: Size(800, 800),
-                        ),
-                      ),
-                    ),
-                  ],
                 ),
               ),
-            ].gap(20),
+            ],
           ),
         ),
-      ),
+      ].gap(20),
     );
   }
 }

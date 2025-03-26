@@ -74,6 +74,7 @@ class ZetaDropdown<T> extends ZetaStatefulWidget {
     this.onOpen,
     this.semanticDropdownLabel,
     this.disableButtonSemantics = false,
+    this.menuPosition,
   });
 
   /// {@template dropdown-items}
@@ -133,6 +134,11 @@ class ZetaDropdown<T> extends ZetaStatefulWidget {
     ZetaDropdownController controller,
   )? builder;
 
+  /// Override the direction the dropdown menu is rendered.
+  ///
+  /// Defaults to [ZetaDropdownMenuPosition.down] if there is space, otherwise renders above.
+  final ZetaDropdownMenuPosition? menuPosition;
+
   @override
   State<ZetaDropdown<T>> createState() => ZetaDropDownState<T>();
   @override
@@ -157,12 +163,13 @@ class ZetaDropdown<T> extends ZetaStatefulWidget {
       ..add(DiagnosticsProperty<Offset>('offset', offset))
       ..add(ObjectFlagProperty<VoidCallback?>.has('onOpen', onOpen))
       ..add(StringProperty('semanticDropdownLabel', semanticDropdownLabel))
-      ..add(DiagnosticsProperty<bool>('disableButtonSemantics', disableButtonSemantics));
+      ..add(DiagnosticsProperty<bool>('disableButtonSemantics', disableButtonSemantics))
+      ..add(EnumProperty<ZetaDropdownMenuPosition>('menuPosition', menuPosition));
   }
 }
 
 /// Enum possible menu positions
-enum _MenuPosition {
+enum ZetaDropdownMenuPosition {
   /// IF Menu is rendered above
   up,
 
@@ -178,7 +185,7 @@ class ZetaDropDownState<T> extends State<ZetaDropdown<T>> {
   final _link = LayerLink();
   final _menuKey = GlobalKey();
   final _childKey = GlobalKey();
-  _MenuPosition _menuPosition = _MenuPosition.down;
+  late ZetaDropdownMenuPosition _menuPosition = widget.menuPosition ?? ZetaDropdownMenuPosition.down;
 
   double? _menuSize;
 
@@ -234,16 +241,19 @@ class ZetaDropDownState<T> extends State<ZetaDropdown<T>> {
     /// Version 1 : Calculate if overflow happens based on using calculations from sizes.
     final height = MediaQuery.of(context).size.height;
     final headerRenderBox = _childKey.currentContext!.findRenderObject()! as RenderBox;
-    final dropdownItemHeight = headerRenderBox.size.height;
+    final headerHeight = headerRenderBox.size.height;
+    const dropdownButtonHeight = 40;
+    const dropdownPadding = 32;
 
     /// Calculate if overflow can happen
     final headerPosY = _headerPos.dy;
+    final totalDropdownHeight = (widget.items.length * dropdownButtonHeight) + dropdownPadding;
 
     setState(() {
-      if (headerPosY + (dropdownItemHeight * (widget.items.length + 1)) > height) {
-        _menuPosition = _MenuPosition.up;
+      if (headerPosY + headerHeight + totalDropdownHeight > height && headerPosY - totalDropdownHeight > 0) {
+        _menuPosition = ZetaDropdownMenuPosition.up;
       } else {
-        _menuPosition = _MenuPosition.down;
+        _menuPosition = ZetaDropdownMenuPosition.down;
       }
     });
 
@@ -322,13 +332,13 @@ class ZetaDropDownState<T> extends State<ZetaDropdown<T>> {
           overlayChildBuilder: (BuildContext context) {
             return CompositedTransformFollower(
               link: _link,
-              targetAnchor: _menuPosition == _MenuPosition.up
+              targetAnchor: _menuPosition == ZetaDropdownMenuPosition.up
                   ? Alignment.topLeft
                   : Alignment.bottomLeft, // Align overlay dropdown in its correct position
-              followerAnchor: _menuPosition == _MenuPosition.up ? Alignment.bottomLeft : Alignment.topLeft,
+              followerAnchor: _menuPosition == ZetaDropdownMenuPosition.up ? Alignment.bottomLeft : Alignment.topLeft,
               offset: widget.offset,
               child: Align(
-                alignment: _menuPosition == _MenuPosition.up
+                alignment: _menuPosition == ZetaDropdownMenuPosition.up
                     ? AlignmentDirectional.bottomStart
                     : AlignmentDirectional.topStart,
                 child: TapRegion(

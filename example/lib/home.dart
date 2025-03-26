@@ -4,7 +4,7 @@ import 'package:zeta_example/pages/components/accordion_example.dart';
 import 'package:zeta_example/pages/components/avatar_rail_example.dart';
 import 'package:zeta_example/pages/components/avatar_example.dart';
 import 'package:zeta_example/pages/components/badges_example.dart';
-import 'package:zeta_example/pages/components/system_banner_example.dart';
+import 'package:zeta_example/pages/components/banner_example.dart';
 import 'package:zeta_example/pages/components/bottom_sheet_example.dart';
 import 'package:zeta_example/pages/components/breadcrumb_example.dart';
 import 'package:zeta_example/pages/components/button_example.dart';
@@ -64,15 +64,27 @@ final List<Component> components = [
   Component(AccordionExample.name, (context) => const AccordionExample()),
   Component(TopAppBarExample.name, (context) => const TopAppBarExample()),
   Component(AvatarRailExample.name, (context) => const AvatarRailExample()),
+  Component(AvatarBadgeExample.name, (context) => const AvatarBadgeExample()),
   Component(AvatarExample.name, (context) => const AvatarExample()),
-  Component(BannerExample.name, (context) => const BannerExample()),
-  Component(BadgesExample.name, (context) => const BadgesExample()),
+  Component(SystemBannerExample.name, (context) => const SystemBannerExample()),
+  Component(InPageBannerExample.name, (context) => const InPageBannerExample()),
+  Component(StatusLabel.name, (context) => const StatusLabel()),
+  Component(PriorityPill.name, (context) => const PriorityPill()),
+  Component(Label.name, (context) => const Label()),
+  Component(Indicators.name, (context) => const Indicators()),
+  Component(Tags.name, (context) => const Tags()),
   Component(BottomSheetExample.name, (context) => const BottomSheetExample()),
   Component(BreadcrumbExample.name, (context) => const BreadcrumbExample()),
   Component(ButtonExample.name, (context) => const ButtonExample()),
+  Component(ButtonGroupExample.name, (context) => const ButtonGroupExample()),
+  Component(FabExample.name, (context) => const FabExample()),
+  Component(IconButtonExample.name, (context) => const IconButtonExample()),
   Component(ChatItemExample.name, (context) => const ChatItemExample()),
   Component(CheckBoxExample.name, (context) => const CheckBoxExample()),
-  Component(ChipExample.name, (context) => const ChipExample()),
+  Component(AssistChipExample.name, (context) => const AssistChipExample()),
+  Component(StatusChipExample.name, (context) => const StatusChipExample()),
+  Component(InputChipExample.name, (context) => const InputChipExample()),
+  Component(FilterChipExample.name, (context) => const FilterChipExample()),
   Component(CommsButtonExample.name, (context) => const CommsButtonExample()),
   Component(ContactItemExample.name, (context) => const ContactItemExample()),
   Component(ListExample.name, (context) => const ListExample()),
@@ -83,7 +95,8 @@ final List<Component> components = [
   Component(PasswordInputExample.name, (context) => const PasswordInputExample()),
   Component(GroupHeaderExample.name, (context) => const GroupHeaderExample()),
   Component(DropdownExample.name, (context) => const DropdownExample()),
-  Component(ProgressExample.name, (context) => const ProgressExample()),
+  Component(ProgressBarExample.name, (context) => const ProgressBarExample()),
+  Component(ProgressCircleExample.name, (context) => const ProgressCircleExample()),
   Component(SegmentedControlExample.name, (context) => const SegmentedControlExample()),
   Component(SnackBarExample.name, (context) => const SnackBarExample()),
   Component(StepperExample.name, (context) => const StepperExample()),
@@ -125,18 +138,22 @@ class Home extends StatefulWidget {
 }
 
 final GoRouter router = GoRouter(
-  routes: [
-    GoRoute(
-      path: '/',
-      name: 'Home',
-      builder: (_, __) => const Home(),
-      routes: [
-        ...[
-          ...components,
-          ...assets,
-          ...theme,
-        ].map(
-          (e) => GoRoute(
+  routes: routes,
+);
+
+final routes = [
+  GoRoute(
+    path: '/',
+    name: 'Home',
+    builder: (_, __) => const Home(),
+    routes: [
+      ...[
+        ...components,
+        ...assets,
+        ...theme,
+      ].map(
+        (e) {
+          return GoRoute(
             path: e.name,
             name: e.name,
             builder: (_, __) => e.pageBuilder.call(_),
@@ -147,12 +164,12 @@ final GoRouter router = GoRouter(
                       builder: (_, __) => f.pageBuilder(_),
                     ))
                 .toList(),
-          ),
-        ),
-      ],
-    ),
-  ],
-);
+          );
+        },
+      ),
+    ],
+  )
+];
 
 class _HomeState extends State<Home> {
   @override
@@ -160,6 +177,10 @@ class _HomeState extends State<Home> {
     final _components = components..sort((a, b) => a.name.compareTo(b.name));
     final _assets = assets..sort((a, b) => a.name.compareTo(b.name));
     final _theme = theme..sort((a, b) => a.name.compareTo(b.name));
+    if (GoRouterState.of(context).extra == 'docs') {
+      return Nothing();
+    }
+
     return ExampleScaffold(
       // x-release-please-start-version
       name: 'zeta_flutter v0.20.2',

@@ -3,15 +3,15 @@ import 'package:zeta_example/widgets.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 class ChatItemExample extends StatelessWidget {
-  static const String name = 'ChatItem';
+  static const String name = 'ChatListItem';
 
   const ChatItemExample({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return ExampleScaffold(
-      name: name,
-      child: SingleChildScrollView(
+    return ExampleScaffold(name: name, paddingAll: 0, children: [
+      ConstrainedBox(
+        constraints: BoxConstraints(maxWidth: 500),
         child: Column(
           children: [
             ZetaChatItem(
@@ -76,9 +76,9 @@ class ChatItemExample extends StatelessWidget {
                 "Dummy text to represent the first lines of most recent message",
               ),
             ),
-          ].gap(Zeta.of(context).spacing.large),
+          ],
         ),
       ),
-    );
+    ]);
   }
 }

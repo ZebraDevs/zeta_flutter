@@ -25,7 +25,7 @@ class ZetaPagination extends ZetaStatefulWidget {
     super.rounded,
     super.key,
     required this.pages,
-    this.type = ZetaPaginationType.standard,
+    this.type,
     this.onChange,
     this.currentPage = 1,
     this.semanticFirst,
@@ -59,7 +59,7 @@ class ZetaPagination extends ZetaStatefulWidget {
   /// A pagination dropdown will be enforced if there is not enough space for a standard dropdown.
   ///
   /// Default to [ZetaPaginationType.standard]
-  final ZetaPaginationType type;
+  final ZetaPaginationType? type;
 
   /// Semantic value passed to the first button.
   ///
@@ -246,8 +246,8 @@ class _ZetaPaginationState extends State<ZetaPagination> {
       rounded: context.rounded,
       child: LayoutBuilder(
         builder: (context, constraints) {
-          final showDropdown =
-              widget.type == ZetaPaginationType.dropdown || constraints.deviceType == DeviceType.mobilePortrait;
+          final showDropdown = widget.type == ZetaPaginationType.dropdown ||
+              (widget.type == null && constraints.deviceType == DeviceType.mobilePortrait);
 
           final List<Widget> buttons = [
             if (!showDropdown)

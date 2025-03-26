@@ -16,24 +16,45 @@ class _StepperInputExampleState extends State<StepperInputExample> {
   Widget build(BuildContext context) {
     return ExampleScaffold(
       name: StepperInputExample.name,
-      child: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
+      paddingAll: 40,
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            ZetaStepperInput(
-              min: 0,
-              max: 10,
-              value: 5,
-              onChange: (_) {},
+            Column(
+              spacing: 40,
+              children: [
+                ZetaStepperInput(
+                  min: 0,
+                  max: 10,
+                  value: 5,
+                  onChange: (_) {},
+                ),
+                ZetaStepperInput(
+                  min: 0,
+                  max: 10,
+                  value: 5,
+                  size: ZetaStepperInputSize.large,
+                  onChange: (_) {},
+                ),
+              ],
             ),
-            ZetaStepperInput(),
-            ZetaStepperInput(
-              size: ZetaStepperInputSize.large,
-              onChange: (_) {},
+            Column(
+              spacing: 40,
+              children: [
+                ZetaStepperInput(
+                  min: 0,
+                  max: 10,
+                  value: 5,
+                ),
+                ZetaStepperInput(
+                  size: ZetaStepperInputSize.large,
+                ),
+              ],
             ),
-          ].divide(const SizedBox(height: 16)).toList(),
-        ),
-      ),
+          ],
+        )
+      ].divide(const SizedBox(height: 16)).toList(),
     );
   }
 }

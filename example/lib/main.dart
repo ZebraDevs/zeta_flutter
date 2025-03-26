@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 import 'home.dart';
 
@@ -9,11 +10,19 @@ void main() async {
 }
 
 class ZetaExample extends StatelessWidget {
-  const ZetaExample({super.key});
+  final ZetaContrast? initialContrast;
+  final ThemeMode? initialThemeMode;
+
+  /// Only pass an initial route for Embedded mode.
+  final String? initialRoute;
+
+  const ZetaExample({super.key, this.initialContrast, this.initialThemeMode, this.initialRoute});
 
   @override
   Widget build(BuildContext context) {
     return ZetaProvider(
+      initialContrast: initialContrast,
+      initialThemeMode: initialThemeMode,
       customThemes: [
         ZetaCustomTheme(
           id: 'teal',
@@ -51,10 +60,39 @@ class ZetaExample extends StatelessWidget {
           secondaryDark: ZetaPrimitivesDark().blue,
         ),
       ],
-      builder: (context, lightTheme, darkTheme, themeMode) {
+      builder: (context, lightTheme, darkTheme, _) {
+        if (initialRoute != null) {
+          return MaterialApp.router(
+            routerConfig: GoRouter(
+              routes: routes,
+              initialLocation: initialRoute,
+              initialExtra: 'docs',
+              errorBuilder: (context, state) => Scaffold(
+                body: Center(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    spacing: 16,
+                    children: [
+                      Text('Issue displaying demo content'),
+                      ZetaAccordion(
+                        title: 'See more',
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [Text('Error: ${state.error}'), Text('Path: ${state.uri}')],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            themeMode: initialThemeMode,
+            theme: lightTheme,
+            darkTheme: darkTheme,
+          );
+        }
         return MaterialApp.router(
           routerConfig: router,
-          themeMode: themeMode,
           theme: lightTheme,
           darkTheme: darkTheme,
         );

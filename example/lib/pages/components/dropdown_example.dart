@@ -3,7 +3,7 @@ import 'package:zeta_example/widgets.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 class DropdownExample extends StatefulWidget {
-  static const String name = "Dropdown";
+  static const String name = "DropdownMenu";
   const DropdownExample({super.key});
 
   @override
@@ -30,52 +30,51 @@ class _DropdownExampleState extends State<DropdownExample> {
     ];
 
     return ExampleScaffold(
-      name: "Dropdown",
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          ZetaDropdown(
-            items: items,
-            value: selectedItem,
-            type: ZetaDropdownMenuType.checkbox,
+      name: DropdownExample.name,
+      children: [
+        ZetaDropdown(
+          items: items,
+          value: selectedItem,
+          type: ZetaDropdownMenuType.checkbox,
+          key: Key('docs-dropdown'),
+          onChange: (_) {},
+        ),
+        ZetaDropdown(
+          items: items,
+          value: selectedItem,
+          size: ZetaDropdownSize.mini,
+          key: Key('docs-dropdown-mini'),
+          onChange: (_) {},
+        ),
+        Center(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              ZetaDropdown(
+                type: ZetaDropdownMenuType.standard,
+                onChange: (_) {},
+                value: selectedItem,
+                items: items,
+              ),
+              Text('Selected item : ${selectedItem}')
+            ],
           ),
-          ZetaDropdown(
-            items: items,
-            value: selectedItem,
-            size: ZetaDropdownSize.mini,
-            onChange: (_) {},
-          ),
-          Center(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                ZetaDropdown(
-                  type: ZetaDropdownMenuType.standard,
-                  onChange: (_) {},
-                  value: selectedItem,
-                  items: items,
-                ),
-                Text('Selected item : ${selectedItem}')
-              ],
-            ),
-          ),
-          ZetaDropdown(
-            items: items,
-            value: selectedItem,
-            onChange: (_) {},
-            type: ZetaDropdownMenuType.checkbox,
-          ),
-          ZetaDropdown(
-            items: items,
-            value: selectedItem,
-            onChange: (_) {},
-            size: ZetaDropdownSize.mini,
-            type: ZetaDropdownMenuType.radio,
-          ),
-        ],
-      ),
+        ),
+        ZetaDropdown(
+          items: items,
+          value: selectedItem,
+          onChange: (_) {},
+          type: ZetaDropdownMenuType.checkbox,
+        ),
+        ZetaDropdown(
+          items: items,
+          value: selectedItem,
+          onChange: (_) {},
+          size: ZetaDropdownSize.mini,
+          type: ZetaDropdownMenuType.radio,
+        ),
+      ],
     );
   }
 }

@@ -64,33 +64,32 @@ class ZetaContactItem extends ZetaStatelessWidget {
                       left: Zeta.of(context).spacing.xl_2,
                     ),
                     child: Row(
+                      mainAxisSize: MainAxisSize.min,
                       children: [
                         leading,
-                        Flexible(
-                          child: Padding(
-                            padding: EdgeInsets.only(left: Zeta.of(context).spacing.medium),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                DefaultTextStyle(
-                                  style: ZetaTextStyles.bodyMedium.copyWith(
-                                    color: colors.mainDefault,
-                                  ),
-                                  maxLines: 1,
-                                  overflow: TextOverflow.ellipsis,
-                                  child: title,
+                        Padding(
+                          padding: EdgeInsets.only(left: Zeta.of(context).spacing.medium),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              DefaultTextStyle(
+                                style: ZetaTextStyles.bodyMedium.copyWith(
+                                  color: colors.mainDefault,
                                 ),
-                                DefaultTextStyle(
-                                  style: ZetaTextStyles.bodySmall.copyWith(
-                                    color: colors.mainSubtle,
-                                  ),
-                                  maxLines: 1,
-                                  overflow: TextOverflow.ellipsis,
-                                  child: subtitle,
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                child: title,
+                              ),
+                              DefaultTextStyle(
+                                style: ZetaTextStyles.bodySmall.copyWith(
+                                  color: colors.mainSubtle,
                                 ),
-                              ],
-                            ),
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                child: subtitle,
+                              ),
+                            ],
                           ),
                         ),
                       ],

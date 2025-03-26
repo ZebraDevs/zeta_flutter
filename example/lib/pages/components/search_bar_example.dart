@@ -16,68 +16,32 @@ class _SearchBarExampleState extends State<SearchBarExample> {
   Widget build(BuildContext context) {
     return ExampleScaffold(
       name: 'Search Bar',
-      child: SingleChildScrollView(
-        child: Column(
+      children: [
+        Column(
+          spacing: 20,
           children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 20),
-              child: Text('Rounded', style: ZetaTextStyles.titleMedium),
+            ZetaSearchBar(
+              shape: ZetaWidgetBorder.sharp,
+              size: ZetaWidgetSize.small,
+              placeholder: 'Small / Sharp',
             ),
-            Padding(
-              padding: const EdgeInsets.all(20),
-              child: ZetaSearchBar(
-                onChange: (value) {},
-                showSpeechToText: false,
-                textInputAction: TextInputAction.search,
-                onFieldSubmitted: (text) {
-                  print(text);
-                },
-              ),
+            ZetaSearchBar(
+              shape: ZetaWidgetBorder.rounded,
+              size: ZetaWidgetSize.medium,
+              placeholder: 'Medium / Rounded',
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 20),
-              child: Text('Full', style: ZetaTextStyles.titleMedium),
+            ZetaSearchBar(
+              shape: ZetaWidgetBorder.full,
+              size: ZetaWidgetSize.large,
+              placeholder: 'Large / Full',
             ),
-            Padding(
-              padding: const EdgeInsets.all(20),
-              child: ZetaSearchBar(
-                shape: ZetaWidgetBorder.full,
-                onSpeechToText: () async => 'I wanted to say...',
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 20),
-              child: Text('Disabled', style: ZetaTextStyles.titleMedium),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(20),
-              child: ZetaSearchBar(
-                disabled: true,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 20),
-              child: Text('Medium', style: ZetaTextStyles.titleMedium),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(20),
-              child: ZetaSearchBar(
-                size: ZetaWidgetSize.medium,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 20),
-              child: Text('Small', style: ZetaTextStyles.titleMedium),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(20),
-              child: ZetaSearchBar(
-                size: ZetaWidgetSize.small,
-              ),
+            ZetaSearchBar(
+              placeholder: 'Disabled',
+              disabled: true,
             ),
           ],
         ),
-      ),
+      ],
     );
   }
 }

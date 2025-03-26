@@ -29,80 +29,76 @@ class _SelectInputExampleState extends State<SelectInputExample> {
       ),
     ];
 
-    return ExampleScaffold(
-      name: 'Select Input',
-      child: Center(
-        child: SingleChildScrollView(
-          child: SizedBox(
-            width: 320,
-            child: Form(
-              key: formKey,
-              child: Column(
-                children: [
-                  ZetaSelectInput(
-                    label: 'Large',
-                    size: ZetaWidgetSize.large,
-                    hintText: 'Default hint text',
-                    placeholder: 'Placeholder',
-                    initialValue: "Item 1",
-                    items: items,
-                    validator: (value) {
-                      if (value == null) {
-                        return 'Please select an item';
-                      }
-                      return null;
-                    },
-                    dropdownSemantics: 'Open dropdown',
-                  ),
-                  ZetaSelectInput(
-                    label: 'Medium',
-                    hintText: 'Default hint text',
-                    placeholder: 'Placeholder',
-                    autovalidateMode: AutovalidateMode.onUserInteraction,
-                    validator: (value) {
-                      if (value != 'Item 2') {
-                        return 'Please select Item 2';
-                      }
-                      return null;
-                    },
-                    items: items,
-                  ),
-                  ZetaSelectInput(
-                    label: 'Small',
-                    size: ZetaWidgetSize.small,
-                    hintText: 'Default hint text',
-                    placeholder: 'Placeholder',
-                    items: items,
-                  ),
-                  ZetaSelectInput(
-                    label: 'Disabled',
-                    hintText: 'Default hint text',
-                    placeholder: 'Placeholder',
-                    disabled: true,
-                    items: items,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      ZetaButton(
-                        label: 'Validate',
-                        onPressed: () {
-                          formKey.currentState?.validate();
-                        },
-                      ),
-                      ZetaButton(
-                        label: 'Reset',
-                        onPressed: () {
-                          formKey.currentState?.reset();
-                        },
-                      ),
-                    ],
-                  )
-                ].divide(const SizedBox(height: 8)).toList(),
+    return Form(
+      key: formKey,
+      child: ExampleScaffold(
+        name: 'Select Input',
+        children: [
+          Column(
+            spacing: 8,
+            children: [
+              ZetaSelectInput(
+                label: 'Small',
+                size: ZetaWidgetSize.small,
+                hintText: 'Default hint text',
+                placeholder: 'Placeholder',
+                items: items,
               ),
-            ),
+              ZetaSelectInput(
+                label: 'Medium',
+                hintText: 'Default hint text',
+                placeholder: 'Placeholder',
+                autovalidateMode: AutovalidateMode.onUserInteraction,
+                validator: (value) {
+                  if (value != 'Item 2') {
+                    return 'Please select Item 2';
+                  }
+                  return null;
+                },
+                items: items,
+              ),
+              ZetaSelectInput(
+                label: 'Large',
+                size: ZetaWidgetSize.large,
+                hintText: 'Default hint text',
+                placeholder: 'Placeholder',
+                initialValue: "Item 1",
+                items: items,
+                validator: (value) {
+                  if (value == null) {
+                    return 'Please select an item';
+                  }
+                  return null;
+                },
+                dropdownSemantics: 'Open dropdown',
+              ),
+              ZetaSelectInput(
+                label: 'Disabled',
+                hintText: 'Default hint text',
+                placeholder: 'Placeholder',
+                disabled: true,
+                items: items,
+              ),
+            ],
           ),
-        ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              ZetaButton(
+                label: 'Validate',
+                onPressed: () {
+                  formKey.currentState?.validate();
+                },
+              ),
+              ZetaButton(
+                label: 'Reset',
+                onPressed: () {
+                  formKey.currentState?.reset();
+                },
+              ),
+            ],
+          )
+        ].divide(const SizedBox(height: 8)).toList(),
       ),
     );
   }

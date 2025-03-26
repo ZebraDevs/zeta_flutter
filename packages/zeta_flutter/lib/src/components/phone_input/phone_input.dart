@@ -255,7 +255,6 @@ class _ZetaPhoneInputState extends FormFieldState<PhoneNumber> {
             value: country.dialCode,
             icon: Image.asset(
               country.flagUri,
-              package: 'zeta_flutter',
               width: 26,
               height: 18,
               fit: BoxFit.fitHeight,

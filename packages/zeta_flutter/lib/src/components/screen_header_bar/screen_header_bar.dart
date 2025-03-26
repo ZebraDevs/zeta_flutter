@@ -16,6 +16,7 @@ class ZetaScreenHeaderBar extends ZetaStatelessWidget {
     this.actionButtonLabel,
     this.onActionButtonPressed,
     this.backSemanticLabel,
+    this.onBackButtonPressed,
   });
 
   /// The title of [ZetaScreenHeaderBar]. Normally a [Text] widget.
@@ -32,20 +33,29 @@ class ZetaScreenHeaderBar extends ZetaStatelessWidget {
   /// {@macro zeta-widget-semantic-label}
   final String? backSemanticLabel;
 
+  /// Called when the back button is pressed.
+  ///
+  /// If this is null, the back button will call [Navigator.maybePop].
+  final VoidCallback? onBackButtonPressed;
+
   @override
   Widget build(BuildContext context) {
+    final backButton = IconButton(
+      onPressed: onBackButtonPressed ?? () async => Navigator.maybePop(context),
+      icon: Icon(context.rounded ? ZetaIcons.chevron_left_round : ZetaIcons.chevron_left_sharp),
+    );
+
     return ZetaRoundedScope(
       rounded: context.rounded,
       child: ZetaTopAppBar(
-        leading: Semantics(
-          label: backSemanticLabel,
-          excludeSemantics: true,
-          button: true,
-          child: IconButton(
-            onPressed: () async => Navigator.maybePop(context),
-            icon: Icon(context.rounded ? ZetaIcons.chevron_left_round : ZetaIcons.chevron_left_sharp),
-          ),
-        ),
+        leading: backSemanticLabel != null
+            ? Semantics(
+                label: backSemanticLabel,
+                excludeSemantics: true,
+                button: true,
+                child: backButton,
+              )
+            : backButton,
         title: title,
         titleTextStyle: ZetaTextStyles.titleLarge,
         actions: actionButtonLabel == null
@@ -67,6 +77,7 @@ class ZetaScreenHeaderBar extends ZetaStatelessWidget {
       ..add(DiagnosticsProperty<bool>('rounded', rounded))
       ..add(StringProperty('actionButtonLabel', actionButtonLabel))
       ..add(ObjectFlagProperty<VoidCallback?>.has('onActionButtonPressed', onActionButtonPressed))
-      ..add(StringProperty('backSemanticLabel', backSemanticLabel));
+      ..add(StringProperty('backSemanticLabel', backSemanticLabel))
+      ..add(ObjectFlagProperty<VoidCallback?>.has('onBackButtonPressed', onBackButtonPressed));
   }
 }
