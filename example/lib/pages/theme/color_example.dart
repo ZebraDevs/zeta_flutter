@@ -163,7 +163,7 @@ class _ColorExampleState extends State<ColorExample> {
                 MyRow(children: info, title: 'State / info  Colors'),
                 MyRow(children: inverse, title: 'State / inverse  Colors'),
                 Row(children: [
-                  Text('Full color swatches', style: ZetaTextStyles.displayMedium),
+                  Text('Primitive colors', style: ZetaTextStyles.displayMedium),
                 ]).paddingVertical(Zeta.of(context).spacing.xl_4),
                 Row(
                   children: primitivesPure.entries
@@ -228,7 +228,11 @@ class SwatchBox extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Text('${name.toLowerCase().replaceAll(' ', '')}-$value'),
-                Text(color.toString().replaceAll('Color(0xff', '#').substring(0, 7)),
+                Text(
+                  ''
+                          '#' +
+                      color.hexCode.substring(2),
+                ),
               ],
             ),
           ),
@@ -275,7 +279,10 @@ class MyRow extends StatelessWidget {
                                   child: Column(
                                     children: [
                                       Text(e.key),
-                                      Text(e.value.toString().replaceAll('Color(0xff', '#').substring(0, 7)),
+                                      Text(
+                                        '#' + e.value.hexCode.substring(2),
+                                        maxLines: 10,
+                                      )
                                     ],
                                   ),
                                 ),
