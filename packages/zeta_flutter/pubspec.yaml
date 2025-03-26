@@ -20,7 +20,7 @@ dependencies:
   flutter_slidable: ^4.0.0
   intl: ^0.20.2
   mask_text_input_formatter: ^2.9.0
-  zeta_flutter_theme: ^0.20.2
+  zeta_flutter_theme: ^1.0.0
   zeta_flutter_utils: ^1.0.0
   zeta_icons: ^1.0.0
 
