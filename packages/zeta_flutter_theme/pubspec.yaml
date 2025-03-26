@@ -22,7 +22,8 @@ dev_dependencies:
     sdk: flutter
   mockito: ^5.4.5
   zds_analysis: ^1.1.1
-  zeta_flutter: ^0.20.2
+  zeta_flutter:
+    path: ../zeta_flutter
 
 flutter:
   fonts:

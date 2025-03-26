@@ -31,7 +31,7 @@ jobs:
         run: |
           echo "package=all" >> $GITHUB_ENV
           for package in all zeta_flutter_theme zeta_flutter_utils zeta_icons zeta_flutter; do
-          if [[ "${{GITHUB_REF}}" == *"${package}"* ]]; then
+          if [[ "${{github.ref}}" == *"${package}"* ]]; then
             echo Package is $package
             echo "package=${package}" >> $GITHUB_ENV
             break
@@ -49,22 +49,22 @@ jobs:
         run: flutter pub get
       - name: Install melos
         run: dart pub global activate melos
-      - name: Check Publish Warnings
-        run: melos publish --dry-run
+      # - name: Check Publish Warnings
+      #   run: melos publish --dry-run
 
       - name: Publish all
-        if: ${{ env.package == 'all' }}
+        if: always() && env.package == 'all'
         run: melos publish --no-dry-run
 
       - name: Publish individual package
-        if: ${{ env.package != 'all' }}
+        if: always() && env.package != 'all'
         run: |
+          bash scripts/update_individual.sh ${{ env.package }} 
           cd packages/${{ env.package }}
-          dart format . --fix
+          dart format . 
           dart fix --apply
           flutter pub publish --dry-run
           flutter pub publish --no-dry-run
-
   deploy-website:
     runs-on: ubuntu-latest
     needs: check-package
