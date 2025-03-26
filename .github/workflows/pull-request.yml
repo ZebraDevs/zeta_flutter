@@ -21,7 +21,20 @@ jobs:
           cache: true
           channel: stable
           flutter-version: 3.29.x
+
       - run: dart pub global activate melos
+
+      - name: Release please help
+        if: startsWith(github.head_ref, 'release-please') && !endsWith(github.head_ref, 'zeta_flutter')
+        run: |
+          PACKAGE_NAME=$(echo ${{github.head_ref}} | awk -F '--' '{print $NF}')
+          sh scripts/update_individual.sh $PACKAGE_NAME
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+          git add .
+          git commit -m "deps: update dependencies in $PACKAGE_NAME"
+          git push origin ${{github.head_ref}} -f
+
       - run: dart run build_runner build --delete-conflicting-outputs
       - run: |
           cd widgetbook
