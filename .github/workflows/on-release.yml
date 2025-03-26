@@ -59,7 +59,6 @@ jobs:
       - name: Publish individual package (dry-run)
         if: always() && env.package != 'all'
         run: |
-          bash scripts/update_individual.sh ${{ env.package }} 
           cd packages/${{ env.package }}
           dart format . 
           dart fix --apply
@@ -69,11 +68,10 @@ jobs:
       - name: Publish individual package
         if: always() && env.package != 'all'
         run: |
-          bash scripts/update_individual.sh ${{ env.package }} 
           cd packages/${{ env.package }}
           dart format . 
           dart fix --apply
-          flutter pub publish --no-dry-run
+          flutter pub publish -f
 
   deploy-website:
     runs-on: ubuntu-latest
