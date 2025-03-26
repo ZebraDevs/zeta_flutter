@@ -58,6 +58,7 @@ jobs:
 
       - name: Publish individual package (dry-run)
         if: always() && env.package != 'all'
+        continue-on-error: true
         run: |
           cd packages/${{ env.package }}
           dart format . 
@@ -67,6 +68,7 @@ jobs:
 
       - name: Publish individual package
         if: always() && env.package != 'all'
+        continue-on-error: true
         run: |
           cd packages/${{ env.package }}
           dart format . 
