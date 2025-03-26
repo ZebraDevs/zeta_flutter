@@ -176,8 +176,8 @@ void main() {
         ),
       );
 
-      final iconFinder = find.byElementType(ZetaIcon);
-      final icons = tester.widgetList(iconFinder).map((e) => e as ZetaIcon).toList();
+      final iconFinder = find.byElementType(Icon);
+      final icons = tester.widgetList(iconFinder).map((e) => e as Icon).toList();
       for (final icon in icons) {
         expect(icon.icon, ZetaIcons.star);
       }
@@ -339,8 +339,7 @@ void main() {
       final context = getBuildContext(tester, ZetaNavigationBar);
 
       final itemFinder = find.byType(NavigationItem);
-      final icon =
-          tester.widget<ZetaIcon>(find.descendant(of: itemFinder.first, matching: find.byType(ZetaIcon)).first);
+      final icon = tester.widget<Icon>(find.descendant(of: itemFinder.first, matching: find.byType(Icon)).first);
       final label = tester.widget<Text>(find.descendant(of: itemFinder.first, matching: find.text('Label0')));
 
       expect(icon.color, Zeta.of(context).colors.mainSubtle);
@@ -359,8 +358,7 @@ void main() {
       final context = getBuildContext(tester, ZetaNavigationBar);
 
       final itemFinder = find.byType(NavigationItem);
-      final icon =
-          tester.widget<ZetaIcon>(find.descendant(of: itemFinder.first, matching: find.byType(ZetaIcon)).first);
+      final icon = tester.widget<Icon>(find.descendant(of: itemFinder.first, matching: find.byType(Icon)).first);
       final label = tester.widget<Text>(find.descendant(of: itemFinder.first, matching: find.text('Label0')));
 
       expect(icon.color, Zeta.of(context).colors.mainPrimary);

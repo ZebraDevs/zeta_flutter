@@ -17,7 +17,7 @@ const _max12HrValue = 12;
 ///
 /// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=724-6821&node-type=canvas&m=dev
 ///
-/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/time-input
+/// Widgetbook: https://design.zebra.com/flutter/widgetbook/index.html#/?path=components/time-input/zetatimeinput/time-input
 class ZetaTimeInput extends ZetaFormField<TimeOfDay> {
   /// Creates a new [ZetaTimeInput]
   ZetaTimeInput({

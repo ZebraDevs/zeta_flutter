@@ -122,7 +122,7 @@ class _ZetaChipState extends State<ZetaChip> {
   }
 
   Widget _renderLeading(Color foregroundColor) {
-    if (widget.leading.runtimeType == ZetaIcon || widget.leading.runtimeType == Icon) {
+    if (widget.leading.runtimeType == Icon) {
       return IconTheme(
         data: IconThemeData(color: foregroundColor, size: Zeta.of(context).spacing.xl),
         child: widget.leading!,
@@ -274,8 +274,8 @@ class _ZetaChipState extends State<ZetaChip> {
                     duration: Durations.short1,
                     width: iconSize,
                     child: (selected
-                        ? ZetaIcon(
-                            ZetaIcons.check_mark,
+                        ? Icon(
+                            context.rounded ? ZetaIcons.check_mark : ZetaIcons.check_mark_sharp,
                             color: disabled ? colors.mainDisabled : colors.mainInverse,
                           )
                         : const Nothing()),

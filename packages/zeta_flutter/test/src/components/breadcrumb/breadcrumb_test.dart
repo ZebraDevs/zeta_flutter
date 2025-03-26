@@ -111,7 +111,7 @@ void main() {
       );
 
       final iconFinder = find.byWidgetPredicate((widget) {
-        if (widget is ZetaIcon) {
+        if (widget is Icon) {
           return widget.icon == ZetaIcons.star;
         }
         return false;
@@ -122,7 +122,7 @@ void main() {
       await tester.pumpAndSettle();
 
       final iconFinder1 = find.byWidgetPredicate((widget) {
-        if (widget is ZetaIcon) {
+        if (widget is Icon) {
           return widget.icon == ZetaIcons.star;
         }
         return false;
@@ -180,7 +180,7 @@ void main() {
       final colors = Zeta.of(context).colors;
 
       final labelFinder = find.byType(Text);
-      final iconFinder = find.byType(ZetaIcon);
+      final iconFinder = find.byType(Icon);
 
       for (int i = 0; i < children.length; i++) {
         if (i == children.length - 1) {
@@ -198,7 +198,7 @@ void main() {
 
       for (int i = 0; i < iconFinder.evaluate().length; i++) {
         expect(
-          (tester.firstWidget(iconFinder.at(i)) as ZetaIcon).color,
+          (tester.firstWidget(iconFinder.at(i)) as Icon).color,
           colors.mainSubtle,
         );
       }

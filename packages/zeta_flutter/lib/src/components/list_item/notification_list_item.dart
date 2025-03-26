@@ -8,7 +8,7 @@ import '../../../zeta_flutter.dart';
 ///
 /// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=25043-100110&node-type=canvas&m=dev
 ///
-/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/list-items/notification-list-item
+/// Widgetbook: https://design.zebra.com/flutter/widgetbook/index.html#/?path=components/notification-item/zetanotificationlistitem/notification-item
 class ZetaNotificationListItem extends ZetaStatelessWidget {
   /// Constructor for [ZetaNotificationListItem]
   const ZetaNotificationListItem({
@@ -187,8 +187,10 @@ class ZetaNotificationListItem extends ZetaStatelessWidget {
                                               color: colors.surfaceNegative,
                                               shape: BoxShape.circle,
                                             ),
-                                            child: ZetaIcon(
-                                              ZetaIcons.important_notification,
+                                            child: Icon(
+                                              context.rounded
+                                                  ? ZetaIcons.important_notification_round
+                                                  : ZetaIcons.important_notification_sharp,
                                               color: colors.mainInverse,
                                               size: Zeta.of(context).spacing.large,
                                             ),
@@ -205,8 +207,8 @@ class ZetaNotificationListItem extends ZetaStatelessWidget {
                                     ),
                                     child: Row(
                                       children: [
-                                        ZetaIcon(
-                                          ZetaIcons.attachment,
+                                        Icon(
+                                          context.rounded ? ZetaIcons.attachment_round : ZetaIcons.attachment_sharp,
                                           size: Zeta.of(context).spacing.medium,
                                           color: colors.mainPrimary,
                                         ),
@@ -313,7 +315,7 @@ class ZetaNotificationBadge extends StatelessWidget {
     return avatar != null
         ? avatar!.copyWith(size: ZetaAvatarSize.m)
         : icon != null
-            ? ZetaIcon(
+            ? Icon(
                 icon,
                 size: Zeta.of(context).spacing.xl_8,
                 color: iconColor,

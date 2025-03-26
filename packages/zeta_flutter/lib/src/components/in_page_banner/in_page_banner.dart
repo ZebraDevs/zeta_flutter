@@ -7,7 +7,7 @@ import '../../../zeta_flutter.dart';
 ///
 /// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=21156-20085&node-type=canvas&m=dev
 ///
-/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/in-page-banners
+/// Widgetbook: https://design.zebra.com/flutter/widgetbook/index.html#/?path=components/in-page-banner/zetainpagebanner/in-page-banner
 class ZetaInPageBanner extends ZetaStatelessWidget {
   /// Constructs [ZetaInPageBanner].
   const ZetaInPageBanner({
@@ -76,8 +76,8 @@ class ZetaInPageBanner extends ZetaStatelessWidget {
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    ZetaIcon(
-                      customIcon ?? status.icon,
+                    Icon(
+                      customIcon ?? status.icon(context),
                       size: Zeta.of(context).spacing.xl,
                       color: iconColor,
                     ),
@@ -115,8 +115,8 @@ class ZetaInPageBanner extends ZetaStatelessWidget {
             if (onClose != null)
               IconButton(
                 onPressed: onClose,
-                icon: ZetaIcon(
-                  ZetaIcons.close,
+                icon: Icon(
+                  context.rounded ? ZetaIcons.close_round : ZetaIcons.close_sharp,
                   size: Zeta.of(context).spacing.xl,
                 ),
               ),
@@ -139,17 +139,17 @@ class ZetaInPageBanner extends ZetaStatelessWidget {
 
 /// Extensions on [ZetaWidgetStatus].
 extension on ZetaWidgetStatus {
-  IconData get icon {
+  IconData icon(BuildContext context) {
     switch (this) {
       case ZetaWidgetStatus.positive:
-        return ZetaIcons.check_circle;
+        return context.rounded ? ZetaIcons.check_circle_round : ZetaIcons.check_circle_sharp;
       case ZetaWidgetStatus.warning:
-        return ZetaIcons.warning;
+        return context.rounded ? ZetaIcons.warning_round : ZetaIcons.warning_sharp;
       case ZetaWidgetStatus.negative:
-        return ZetaIcons.error;
+        return context.rounded ? ZetaIcons.error_round : ZetaIcons.error_sharp;
       case ZetaWidgetStatus.neutral:
       case ZetaWidgetStatus.info:
-        return ZetaIcons.info;
+        return context.rounded ? ZetaIcons.info_round : ZetaIcons.info_sharp;
     }
   }
 }

@@ -25,7 +25,7 @@ enum ZetaTooltipArrowDirection {
 ///
 /// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=229-16&node-type=canvas&m=dev
 ///
-/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/tooltip
+/// Widgetbook: https://design.zebra.com/flutter/widgetbook/index.html#/?path=components/tooltip/zetatooltip/tooltip
 class ZetaTooltip extends ZetaStatelessWidget {
   /// Constructor for [ZetaTooltip].
   const ZetaTooltip({

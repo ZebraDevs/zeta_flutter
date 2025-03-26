@@ -28,7 +28,7 @@ enum ZetaCircleSizes {
 ///
 /// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=229-22&node-type=canvas&m=dev
 ///
-/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/progress/circle
+/// Widgetbook: https://design.zebra.com/flutter/widgetbook/index.html#/?path=components/progress/zetaprogresscircle/progress-circle
 class ZetaProgressCircle extends ZetaProgress {
   /// Constructor for [ZetaProgressCircle]
   const ZetaProgressCircle({
@@ -136,8 +136,8 @@ class _ZetaProgressCircleState extends ZetaProgressState<ZetaProgressCircle> {
                                           borderRadius: BorderRadius.all(Zeta.of(context).radius.full),
                                         ),
                                         padding: EdgeInsets.all(Zeta.of(context).spacing.small),
-                                        child: ZetaIcon(
-                                          ZetaIcons.close,
+                                        child: Icon(
+                                          context.rounded ? ZetaIcons.close_round : ZetaIcons.close_sharp,
                                           size: widget.size == ZetaCircleSizes.s
                                               ? Zeta.of(context).spacing.medium
                                               : Zeta.of(context).spacing.large,

@@ -8,7 +8,7 @@ import '../../../zeta_flutter.dart';
 ///
 /// Figma: https://www.figma.com/file/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=21265-14215
 ///
-/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/chips/assist-chip
+/// Widgetbook: https://design.zebra.com/flutter/widgetbook/index.html#/?path=components/chips/zetaassistchip/assist-chip
 class ZetaAssistChip extends ZetaChip {
   /// Creates a [ZetaAssistChip].
   const ZetaAssistChip({

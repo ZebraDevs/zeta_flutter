@@ -55,7 +55,7 @@ Future<bool?> showZetaDialog(
 ///
 /// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=23954-93337&node-type=frame&m=dev
 ///
-/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/dialog
+/// Widgetbook: https://design.zebra.com/flutter/widgetbook/index.html#/?path=components/dialog/zetadialog/dialog
 class ZetaDialog extends ZetaStatelessWidget {
   /// Creates a Zeta Dialog.
   const ZetaDialog({

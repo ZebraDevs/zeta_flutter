@@ -6,7 +6,7 @@ import '../../../zeta_flutter.dart';
 ///
 /// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=24828-46282&node-type=canvas&m=dev
 ///
-/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/list-items/contact-item
+/// Widgetbook: https://design.zebra.com/flutter/widgetbook/index.html#/?path=components/chat-item/zetacontactitem/contact-item
 class ZetaContactItem extends ZetaStatelessWidget {
   /// Constructs [ZetaContactItem].
   const ZetaContactItem({

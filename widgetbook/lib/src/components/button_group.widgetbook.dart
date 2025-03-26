@@ -45,7 +45,7 @@ Widget groupButton(BuildContext context) {
 
   final dropdownItems = List.generate(
       context.knobs.intOrNull.slider(label: 'Dropdown items', min: 1, max: 10, initialValue: 3) ?? 0,
-      (index) => ZetaDropdownItem(value: 'Item $index', icon: const ZetaIcon(ZetaIcons.star)));
+      (index) => ZetaDropdownItem(value: 'Item $index', icon: const Icon(ZetaIcons.star)));
 
   return dropdownItems.isNotEmpty
       ? ZetaGroupButton.dropdown(

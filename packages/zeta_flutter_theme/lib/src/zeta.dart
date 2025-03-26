@@ -89,6 +89,25 @@ class Zeta extends InheritedWidget {
         oldWidget.customThemeId != customThemeId;
   }
 
+  /// Returns the default [Zeta] values; used if [Zeta] is not found in the widget tree.
+  // ignore: prefer_constructors_over_static_methods
+  static Zeta defaultZetaValues(BuildContext context) {
+    // Try to get the brightness from the closest MaterialApp theme
+    Brightness brightness;
+    try {
+      brightness = Theme.of(context).brightness;
+    } catch (_) {
+      // If we can't find a MaterialApp theme, use the platform brightness
+      brightness = MediaQuery.platformBrightnessOf(context);
+    }
+
+    // Create a default Zeta with the determined brightness
+    return Zeta(
+      themeMode: brightness == Brightness.dark ? ThemeMode.dark : ThemeMode.light,
+      child: const SizedBox(), // Empty widget as we're just creating defaults
+    );
+  }
+
   /// Fetches the [Zeta] instance from the provided [context].
   ///
   /// It ensures that the context has access to the [Zeta] theming information.
@@ -98,21 +117,7 @@ class Zeta extends InheritedWidget {
     if (defaults != null) {
       return defaults;
     } else {
-      throw FlutterError.fromParts(
-        [
-          ErrorDescription('Unable to find Zeta in the widget tree.'),
-          ErrorHint(
-            'Ensure that the context passed to Zeta.of() is a descendant of a ZetaProvider widget. This usually means that ZetaProviderState should be an ancestor of the widget which uses this context.',
-          ),
-          ErrorSpacer(),
-          ErrorDescription('The widget for the context used was:'),
-          DiagnosticsProperty<Widget>('widget', context.widget, showName: false),
-          ErrorSpacer(),
-          ErrorHint(
-            'If you recently changed the type of that widget, or the widget tree, ensure the ZetaProvider widget is still an ancestor.',
-          ),
-        ],
-      );
+      return defaultZetaValues(context);
     }
   }
 

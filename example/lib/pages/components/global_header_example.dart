@@ -25,13 +25,13 @@ class _GroupHeaderExampleState extends State<GroupHeaderExample> {
         actionButtons: [
           IconButton(
             onPressed: () {},
-            icon: const ZetaIcon(
+            icon: const Icon(
               ZetaIcons.alert,
             ),
           ),
           IconButton(
             onPressed: () {},
-            icon: const ZetaIcon(
+            icon: const Icon(
               ZetaIcons.help,
             ),
           ),

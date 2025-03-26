@@ -48,7 +48,7 @@ class _SnackBarExampleState extends State<SnackBarExample> {
                       ZetaSnackBar(
                         context: context,
                         type: ZetaSnackBarType.defaultType,
-                        leadingIcon: ZetaIcon(Icons.mood),
+                        leadingIcon: Icon(Icons.mood),
                         content: Text('Message with icon'),
                       ),
                     );
@@ -143,7 +143,7 @@ class _SnackBarExampleState extends State<SnackBarExample> {
                         context: context,
                         type: ZetaSnackBarType.view,
                         onPressed: () {},
-                        content: Text('Something neeeds your attention'),
+                        content: Text('Something needs your attention'),
                       ),
                     );
                   },

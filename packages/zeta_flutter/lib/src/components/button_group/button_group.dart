@@ -7,7 +7,7 @@ import '../../../zeta_flutter.dart';
 ///
 /// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=229-45&node-type=canvas&m=dev
 ///
-/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/buttons/group-button
+/// Widgetbook: https://design.zebra.com/flutter/widgetbook/index.html#/?path=components/button-group/zetabuttongroup/button-group
 class ZetaButtonGroup extends ZetaStatelessWidget {
   /// Constructs [ZetaButtonGroup] from a list of [ZetaGroupButton]s
   const ZetaButtonGroup({
@@ -71,6 +71,7 @@ class ZetaButtonGroup extends ZetaStatelessWidget {
 
 /// Group Button item.
 ///
+/// Widgetbook: https://design.zebra.com/flutter/widgetbook/index.html#/?path=components/button-group/zetagroupbutton/group-button
 class ZetaGroupButton extends ZetaStatefulWidget {
   /// Public Constructor for [ZetaGroupButton]
   const ZetaGroupButton({
@@ -298,7 +299,7 @@ class _ZetaGroupButtonState extends State<ZetaGroupButton> {
         child: selectedItem!.icon!,
       );
     } else if (selectedItem == null && widget.icon != null) {
-      leadingIcon = ZetaIcon(
+      leadingIcon = Icon(
         widget.icon,
         size: iconSize,
         color: widget.isInverse ? colors.mainInverse : colors.mainDefault,

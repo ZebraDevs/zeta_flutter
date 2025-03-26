@@ -22,7 +22,7 @@ class DialogExample extends StatelessWidget {
                 'Lorem ipsum dolor sit amet, conse ctetur adipiscing elit, sed do eiusm od tempor incididunt ut labore et do lore magna aliqua.',
             primaryButtonLabel: 'Confirm',
             title: 'Dialog Title',
-            icon: ZetaIcon(ZetaIcons.warning, color: zeta.colors.surfaceWarning),
+            icon: Icon(ZetaIcons.warning, color: zeta.colors.surfaceWarning),
             onPrimaryButtonPressed: () {},
             secondaryButtonLabel: 'Deny',
             onSecondaryButtonPressed: () {},
@@ -37,7 +37,7 @@ class DialogExample extends StatelessWidget {
                   context,
                   useRootNavigator: false,
                   title: 'Dialog Title',
-                  icon: ZetaIcon(
+                  icon: Icon(
                     ZetaIcons.warning,
                     color: zeta.colors.surfaceWarning,
                   ),
@@ -52,7 +52,7 @@ class DialogExample extends StatelessWidget {
                   context,
                   useRootNavigator: false,
                   title: 'Dialog Title',
-                  icon: ZetaIcon(
+                  icon: Icon(
                     ZetaIcons.warning,
                     color: zeta.colors.surfaceWarning,
                   ),
@@ -68,7 +68,7 @@ class DialogExample extends StatelessWidget {
                   context,
                   useRootNavigator: false,
                   title: 'Dialog Title',
-                  icon: ZetaIcon(
+                  icon: Icon(
                     ZetaIcons.warning,
                     color: zeta.colors.surfaceWarning,
                   ),
@@ -86,7 +86,7 @@ class DialogExample extends StatelessWidget {
                   context,
                   useRootNavigator: false,
                   title: 'Dialog Title',
-                  icon: ZetaIcon(
+                  icon: Icon(
                     ZetaIcons.warning,
                     color: zeta.colors.surfaceWarning,
                   ),

@@ -150,7 +150,7 @@ class ButtonGroupExample extends StatelessWidget {
                 onChange: (_) {},
                 label: "Label",
                 items: [
-                  ZetaDropdownItem(value: 'Item 1', icon: ZetaIcon(ZetaIcons.star_half)),
+                  ZetaDropdownItem(value: 'Item 1', icon: Icon(ZetaIcons.star_half)),
                   ZetaDropdownItem(value: 'Item 2'),
                 ],
               ),

@@ -31,7 +31,7 @@ class SystemBannerExample extends StatelessWidget {
           context: context,
           title: 'Title left with arrow',
           titleCenter: true,
-          trailing: ZetaIcon(ZetaIcons.chevron_right),
+          trailing: Icon(ZetaIcons.chevron_right),
         ),
         ZetaSystemBanner(
           type: ZetaSystemBannerStatus.primary,
@@ -46,7 +46,7 @@ class SystemBannerExample extends StatelessWidget {
           title: 'Title left + Icon with Arrow',
           titleCenter: true,
           leadingIcon: ZetaIcons.info,
-          trailing: ZetaIcon(ZetaIcons.close),
+          trailing: Icon(ZetaIcons.close),
         ),
         _getTitle('Color variants'),
         ZetaSystemBanner(
@@ -57,13 +57,13 @@ class SystemBannerExample extends StatelessWidget {
           titleCenter: true,
           leadingIcon: ZetaIcons.info,
           trailing: IconButton(
-            icon: ZetaIcon(ZetaIcons.chevron_right),
+            icon: Icon(ZetaIcons.chevron_right),
             onPressed: () {
               ScaffoldMessenger.of(context).showMaterialBanner(ZetaSystemBanner(
                 title: 'Title',
                 context: context,
                 type: ZetaSystemBannerStatus.positive,
-                trailing: ZetaIcon(ZetaIcons.close),
+                trailing: Icon(ZetaIcons.close),
               ));
             },
           ),
@@ -74,7 +74,7 @@ class SystemBannerExample extends StatelessWidget {
           title: 'Left Aligned',
           context: context,
           leadingIcon: ZetaIcons.info,
-          trailing: ZetaIcon(ZetaIcons.chevron_right),
+          trailing: Icon(ZetaIcons.chevron_right),
         ),
         ZetaSystemBanner(
           type: ZetaSystemBannerStatus.negative,
@@ -83,7 +83,7 @@ class SystemBannerExample extends StatelessWidget {
           context: context,
           titleCenter: true,
           leadingIcon: ZetaIcons.info,
-          trailing: ZetaIcon(ZetaIcons.chevron_right),
+          trailing: Icon(ZetaIcons.chevron_right),
         ),
       ].divide(const SizedBox(height: 10)).toList(),
     );

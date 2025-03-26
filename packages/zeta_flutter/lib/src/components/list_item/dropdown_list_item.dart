@@ -9,7 +9,7 @@ import 'list_scope.dart';
 ///
 /// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=229-17&node-type=canvas&m=dev
 ///
-/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/list-items/dropdown-list-item
+/// Widgetbook: https://design.zebra.com/flutter/widgetbook/index.html#/?path=components/list-item/zetadropdownlistitem/dropdown-list-item
 class ZetaDropdownListItem extends ZetaStatefulWidget {
   /// Creates a new [ZetaDropdownListItem]
   const ZetaDropdownListItem({
@@ -169,8 +169,8 @@ class _ZetaDropdownListItemState extends State<ZetaDropdownListItem> with Single
                     icon: AnimatedRotation(
                       turns: _expanded ? 0.5 : 0,
                       duration: ZetaAnimationLength.fast,
-                      child: ZetaIcon(
-                        ZetaIcons.expand_more,
+                      child: Icon(
+                        context.rounded ? ZetaIcons.expand_more_round : ZetaIcons.expand_more_sharp,
                         color: colors.mainSubtle,
                       ),
                     ),

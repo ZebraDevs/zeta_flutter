@@ -14,7 +14,7 @@ class AssistChipExample extends StatelessWidget {
         children: [
           ZetaAssistChip(
             label: 'Label',
-            leading: ZetaIcon(ZetaIcons.star),
+            leading: Icon(ZetaIcons.star),
             draggable: true,
             data: 'Assist chip',
             onTap: () {},
@@ -68,7 +68,7 @@ class InputChipExample extends StatelessWidget {
           children: [
             ZetaInputChip(
               label: 'Label',
-              leading: ZetaIcon(ZetaIcons.user),
+              leading: Icon(ZetaIcons.user),
               trailing: IconButton(icon: Icon(ZetaIcons.close), onPressed: () {}),
               onTap: () {},
             ),

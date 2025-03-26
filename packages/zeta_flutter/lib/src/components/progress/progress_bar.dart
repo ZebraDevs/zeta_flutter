@@ -22,7 +22,7 @@ enum ZetaProgressBarType {
 ///
 /// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=229-22&node-type=canvas&m=dev
 ///
-/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/progress/bar
+/// Widgetbook: https://design.zebra.com/flutter/widgetbook/index.html#/?path=components/progress/zetaprogressbar/progress-bar
 class ZetaProgressBar extends ZetaProgress {
   ///Constructor for [ZetaProgressBar].
   const ZetaProgressBar({

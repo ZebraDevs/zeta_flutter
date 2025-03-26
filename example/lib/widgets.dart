@@ -102,11 +102,8 @@ class ExampleScaffold extends StatelessWidget {
     }
     return Scaffold(
       floatingActionButton: floatingActionButton,
-      appBar: AppBar(
-        centerTitle: false,
-        title: Text(name),
-        backgroundColor: colors.primary,
-        foregroundColor: colors.onPrimary,
+      appBar: ZetaTopAppBar(
+        title: Text(name).paddingStart(8),
         actions: [
           ...actions,
           ZetaRoundedSwitch(),

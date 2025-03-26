@@ -26,7 +26,7 @@ Widget tabItemUseCase(BuildContext context) {
       tabs: [
         ZetaTab(
           text: context.knobs.string(label: 'Text', initialValue: 'Tab Item'),
-          icon: icon != null ? ZetaIcon(icon) : null,
+          icon: icon != null ? Icon(icon) : null,
         ),
         ZetaTab(text: ''),
       ],
@@ -53,7 +53,7 @@ Widget tabBarUseCase(BuildContext context) {
       isScrollable: true,
       tabs: List.generate(
         numItems,
-        (e) => ZetaTab(text: title, icon: icon != null ? ZetaIcon(icon) : null),
+        (e) => ZetaTab(text: title, icon: icon != null ? Icon(icon) : null),
       ),
     ),
   );

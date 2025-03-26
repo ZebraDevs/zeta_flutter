@@ -24,7 +24,7 @@ Widget rangeSelectorUseCase(BuildContext context) {
     initialValues: context.knobs.range(label: 'Initial Range', initialValue: RangeValues(20, 80)),
     min: context.knobs.int.input(label: 'Min', initialValue: 0).toDouble(),
     max: context.knobs.int.input(label: 'Max', initialValue: 100).toDouble(),
-  );
+  ).paddingHorizontal(16);
 }
 
 @widgetbook.UseCase(

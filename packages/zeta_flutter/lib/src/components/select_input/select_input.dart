@@ -12,7 +12,7 @@ import '../text_input/internal_text_input.dart';
 ///
 /// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=229-39&node-type=canvas&m=dev
 ///
-/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/select-input
+/// Widgetbook: https://design.zebra.com/flutter/widgetbook/index.html#/?path=components/select-input/zetaselectinput/select-input
 class ZetaSelectInput<T> extends ZetaFormField<T> {
   ///Constructor of [ZetaSelectInput]
   ZetaSelectInput({

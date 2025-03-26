@@ -29,7 +29,7 @@ class _ListItemExampleState extends State<ListItemExample> {
         ZetaListItem(
           primaryText: 'List Item',
           secondaryText: 'Descriptor',
-          leading: ZetaIcon(ZetaIcons.star),
+          leading: Icon(ZetaIcons.star),
           key: Key('docs-list-item-icon'),
           showDivider: true,
         ),
@@ -44,7 +44,7 @@ class _ListItemExampleState extends State<ListItemExample> {
           ],
           key: Key('docs-list-item-dropdown'),
           primaryText: 'List Item',
-          leading: ZetaIcon(ZetaIcons.server),
+          leading: Icon(ZetaIcons.server),
           showDivider: true,
         ),
         ZetaListItem.checkbox(
@@ -101,7 +101,7 @@ class _ListItemExampleState extends State<ListItemExample> {
             )),
         _buildListItem(
           'Icon Left',
-          ZetaListItem(primaryText: 'List Item', leading: ZetaIcon(ZetaIcons.star)),
+          ZetaListItem(primaryText: 'List Item', leading: Icon(ZetaIcons.star)),
         ),
         _buildListItem(
             'Toggle Right',
@@ -163,7 +163,7 @@ class _ListItemExampleState extends State<ListItemExample> {
             ],
             expanded: true,
             primaryText: 'List Item',
-            leading: ZetaIcon(
+            leading: Icon(
               ZetaIcons.star,
             ),
           ),

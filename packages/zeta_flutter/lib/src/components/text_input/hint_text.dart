@@ -44,8 +44,10 @@ class ZetaHintText extends ZetaStatelessWidget {
 
     return Row(
       children: [
-        ZetaIcon(
-          errorText != null ? ZetaIcons.error : ZetaIcons.info,
+        Icon(
+          errorText != null
+              ? (context.rounded ? ZetaIcons.error_round : ZetaIcons.error_sharp)
+              : (context.rounded ? ZetaIcons.info_round : ZetaIcons.info_sharp),
           size: Zeta.of(context).spacing.large,
           color: elementColor,
         ),

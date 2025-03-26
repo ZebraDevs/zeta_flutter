@@ -15,7 +15,7 @@ import '../text_input/internal_text_input.dart';
 ///
 /// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=229-36&node-type=canvas&m=dev
 ///
-/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/date-input
+/// Widgetbook: https://design.zebra.com/flutter/widgetbook/index.html#/?path=components/date-input/zetadateinput/date-input
 class ZetaDateInput extends ZetaFormField<DateTime> {
   /// Creates a new [ZetaDateInput]
   ZetaDateInput({

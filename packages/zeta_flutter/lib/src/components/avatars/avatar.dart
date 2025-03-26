@@ -69,7 +69,7 @@ enum ZetaAvatarSize {
 ///
 /// Figma: https://www.figma.com/file/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?type=design&node-id=20816-388
 ///
-/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/avatar/avatar
+/// Widgetbook: https://design.zebra.com/flutter/widgetbook/index.html#/?path=components/avatar/zetaavatar/avatar
 class ZetaAvatar extends ZetaStatelessWidget {
   /// Constructor for [ZetaAvatar]
   const ZetaAvatar({
@@ -562,7 +562,7 @@ class ZetaAvatarBadge extends StatelessWidget {
                 borderRadius: BorderRadius.circular(badgeSize / 2),
               ),
               child: icon != null
-                  ? ZetaIcon(
+                  ? Icon(
                       icon,
                       size: _getIconSize(context),
                       color: iconColor ?? backgroundColor.onColor,

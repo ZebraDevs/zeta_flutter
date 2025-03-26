@@ -24,11 +24,11 @@ Widget globalHeader(BuildContext context) => ZetaGlobalHeader(
           ? [
               IconButton(
                 onPressed: () {},
-                icon: const ZetaIcon(ZetaIcons.alert),
+                icon: const Icon(ZetaIcons.alert),
               ),
               IconButton(
                 onPressed: () {},
-                icon: const ZetaIcon(ZetaIcons.help),
+                icon: const Icon(ZetaIcons.help),
               ),
             ]
           : [],

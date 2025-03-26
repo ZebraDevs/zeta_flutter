@@ -95,7 +95,7 @@ enum ZetaFabSize {
 ///
 /// Figma: https://www.figma.com/file/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=21816-4283&m=dev
 ///
-/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/buttons/floating-action-button
+/// Widgetbook: https://design.zebra.com/flutter/widgetbook/index.html#/?path=components/fabs/zetafab/floating-action-button
 class ZetaFAB extends StatefulWidget {
   ///Constructs [ZetaFAB].
   const ZetaFAB({
@@ -229,7 +229,7 @@ class _ZetaFABState extends State<ZetaFAB> {
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  ZetaIcon(
+                  Icon(
                     widget.icon,
                     size: widget.size.iconSize(context),
                     color: widget.onPressed != null

@@ -24,7 +24,7 @@ Widget banner(BuildContext context) {
     ),
     leadingIcon: iconKnob(context, nullable: true),
     titleCenter: context.knobs.boolean(label: 'Center title'),
-    trailing: ZetaIcon(iconKnob(context, nullable: true, name: 'trailing', initial: ZetaIcons.chevron_right)),
+    trailing: Icon(iconKnob(context, nullable: true, name: 'trailing', initial: ZetaIcons.chevron_right)),
   );
 
   return Column(

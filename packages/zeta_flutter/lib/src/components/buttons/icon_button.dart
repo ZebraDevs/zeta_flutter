@@ -9,7 +9,7 @@ import 'button_style.dart';
 ///
 /// Figma: https://www.figma.com/file/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=23126-110314
 ///
-/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/buttons/icon-button
+/// Widgetbook: https://design.zebra.com/flutter/widgetbook/index.html#/?path=components/button/zetaiconbutton/icon-button
 class ZetaIconButton extends ZetaStatelessWidget {
   /// Constructor for [ZetaIconButton]
   const ZetaIconButton({
@@ -136,7 +136,7 @@ class ZetaIconButton extends ZetaStatelessWidget {
             type,
           ),
           child: SelectionContainer.disabled(
-            child: ZetaIcon(icon, size: _iconSize(context)).paddingAll(_iconPadding(context)),
+            child: Icon(icon, size: _iconSize(context)).paddingAll(_iconPadding(context)),
           ),
         ),
       ),

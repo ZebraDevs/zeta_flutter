@@ -29,7 +29,7 @@ class ZetaNavigationBarItem {
 ///
 /// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=1052-24751&node-type=canvas&m=dev
 ///
-/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/navigation-bar
+/// Widgetbook: https://design.zebra.com/flutter/widgetbook/index.html#/?path=components/navigation-bar/zetanavigationbar/navigation-bar
 class ZetaNavigationBar extends ZetaStatelessWidget {
   /// Creates a new [ZetaNavigationBar].
   const ZetaNavigationBar({
@@ -290,7 +290,7 @@ class NavigationItem extends ZetaStatelessWidget {
                   child: Stack(
                     children: [
                       Center(
-                        child: ZetaIcon(item.icon, color: elementColor, size: Zeta.of(context).spacing.xl_2),
+                        child: Icon(item.icon, color: elementColor, size: Zeta.of(context).spacing.xl_2),
                       ).paddingTop(Zeta.of(context).spacing.small),
                       if (item.badge != null) badge,
                     ],

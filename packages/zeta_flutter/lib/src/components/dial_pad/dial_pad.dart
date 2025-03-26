@@ -8,7 +8,7 @@ import '../../../zeta_flutter.dart';
 ///
 /// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=21156-16370&node-type=canvas&m=dev
 ///
-/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/dial-pad
+/// Widgetbook: https://design.zebra.com/flutter/widgetbook/index.html#/?path=components/dial-pad/zetadialpad/dial-pad
 class ZetaDialPad extends StatefulWidget {
   /// Constructs a [ZetaDialPad].
   const ZetaDialPad({

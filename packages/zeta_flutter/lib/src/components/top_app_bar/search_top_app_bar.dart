@@ -7,7 +7,7 @@ import '../../../zeta_flutter.dart';
 ///
 /// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=229-37&node-type=canvas&m=dev
 ///
-/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/top-app-bar/search
+/// Widgetbook: https://design.zebra.com/flutter/widgetbook/index.html#/?path=components/top-app-bar/zetatopappbar/search
 class ZetaTopAppBarSearchField extends ZetaStatefulWidget {
   /// Constructs a [ZetaTopAppBarSearchField].
   const ZetaTopAppBarSearchField({

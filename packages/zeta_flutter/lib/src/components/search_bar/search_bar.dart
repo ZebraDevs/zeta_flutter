@@ -9,7 +9,7 @@ import '../text_input/internal_text_input.dart';
 ///
 /// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=875-17463&node-type=canvas&m=dev
 ///
-/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/search-bar
+/// Widgetbook: https://design.zebra.com/flutter/widgetbook/index.html#/?path=components/search-bar/zetasearchbar/search-bar
 class ZetaSearchBar extends ZetaTextFormField {
   /// Constructor for [ZetaSearchBar].
   ZetaSearchBar({
@@ -61,58 +61,62 @@ class ZetaSearchBar extends ZetaTextFormField {
                 excludeSemantics: disabled,
                 label: disabled ? placeholder ?? 'Search' : null, // TODO(UX-1003): Localize
                 enabled: disabled ? false : null,
-                child: InternalTextInput(
-                  focusNode: focusNode,
-                  size: size,
-                  disabled: disabled,
-                  constrained: true,
-                  borderRadius: BorderRadius.all(borderRadius),
-                  controller: state.effectiveController,
-                  keyboardType: TextInputType.text,
-                  textInputAction: textInputAction,
-                  placeholder: placeholder ?? 'Search', // TODO(UX-1003): Localize
-                  onSubmit: onFieldSubmitted,
-                  onChange: state.onChange,
-                  prefix: ZetaIcon(
-                    ZetaIcons.search,
-                    color: !disabled ? zeta.colors.mainSubtle : zeta.colors.mainDisabled,
-                    size: iconSize,
-                  ),
-                  suffix: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      if (state.effectiveController.text.isNotEmpty && !disabled) ...[
-                        InputIconButton(
-                          icon: ZetaIcons.cancel,
-                          onTap: () => state.onChange(''),
-                          disabled: disabled,
-                          size: size,
-                          semanticLabel: clearSemanticLabel,
-                          color: zeta.colors.mainSubtle,
-                          key: const ValueKey('search-clear-btn'),
-                        ),
-                        if (showSpeechToText)
-                          SizedBox(
-                            height: iconSize,
-                            child: VerticalDivider(
+                child: Builder(
+                  builder: (context) {
+                    return InternalTextInput(
+                      focusNode: focusNode,
+                      size: size,
+                      disabled: disabled,
+                      constrained: true,
+                      borderRadius: BorderRadius.all(borderRadius),
+                      controller: state.effectiveController,
+                      keyboardType: TextInputType.text,
+                      textInputAction: textInputAction,
+                      placeholder: placeholder ?? 'Search', // TODO(UX-1003): Localize
+                      onSubmit: onFieldSubmitted,
+                      onChange: state.onChange,
+                      prefix: Icon(
+                        context.rounded ? ZetaIcons.search_round : ZetaIcons.search_sharp,
+                        color: !disabled ? zeta.colors.mainSubtle : zeta.colors.mainDisabled,
+                        size: iconSize,
+                      ),
+                      suffix: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          if (state.effectiveController.text.isNotEmpty && !disabled) ...[
+                            InputIconButton(
+                              icon: ZetaIcons.cancel,
+                              onTap: () => state.onChange(''),
+                              disabled: disabled,
+                              size: size,
+                              semanticLabel: clearSemanticLabel,
                               color: zeta.colors.mainSubtle,
-                              width: 5,
-                              thickness: 1,
+                              key: const ValueKey('search-clear-btn'),
                             ),
-                          ),
-                      ],
-                      if (showSpeechToText)
-                        InputIconButton(
-                          icon: ZetaIcons.microphone,
-                          onTap: state.onSpeechToText,
-                          key: const ValueKey('speech-to-text-btn'),
-                          disabled: disabled,
-                          semanticLabel: microphoneSemanticLabel,
-                          size: size,
-                          color: zeta.colors.mainDefault,
-                        ),
-                    ],
-                  ),
+                            if (showSpeechToText)
+                              SizedBox(
+                                height: iconSize,
+                                child: VerticalDivider(
+                                  color: zeta.colors.mainSubtle,
+                                  width: 5,
+                                  thickness: 1,
+                                ),
+                              ),
+                          ],
+                          if (showSpeechToText)
+                            InputIconButton(
+                              icon: ZetaIcons.microphone,
+                              onTap: state.onSpeechToText,
+                              key: const ValueKey('speech-to-text-btn'),
+                              disabled: disabled,
+                              semanticLabel: microphoneSemanticLabel,
+                              size: size,
+                              color: zeta.colors.mainDefault,
+                            ),
+                        ],
+                      ),
+                    );
+                  },
                 ),
               ),
             );

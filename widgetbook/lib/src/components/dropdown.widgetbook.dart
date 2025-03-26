@@ -23,7 +23,7 @@ Widget dropdown(BuildContext context) => SmallContentWrapper(
           context.knobs.int.slider(label: 'Items', min: 1, max: 10, initialValue: 3),
           (index) => ZetaDropdownItem(
             value: 'Item $index',
-            icon: index.isEven ? const ZetaIcon(ZetaIcons.star) : null,
+            icon: index.isEven ? const Icon(ZetaIcons.star) : null,
           ),
         ),
         size: context.knobs.list(label: 'Size', options: ZetaDropdownSize.values, labelBuilder: enumLabelBuilder),

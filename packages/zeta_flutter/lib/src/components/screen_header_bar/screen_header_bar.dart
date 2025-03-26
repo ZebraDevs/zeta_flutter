@@ -6,7 +6,7 @@ import '../../../zeta_flutter.dart';
 ///
 /// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=24601-6781&node-type=canvas&m=dev
 ///
-/// Widgetbook: https://zeta-ds.web.app/flutter/widgetbook/index.html#/?path=components/screen-header-bar
+/// Widgetbook: https://design.zebra.com/flutter/widgetbook/index.html#/?path=components/screen-header-bar/zetascreenheaderbar/screen-header
 class ZetaScreenHeaderBar extends ZetaStatelessWidget {
   /// Constructor for [ZetaScreenHeaderBar].
   const ZetaScreenHeaderBar({
@@ -42,7 +42,7 @@ class ZetaScreenHeaderBar extends ZetaStatelessWidget {
   Widget build(BuildContext context) {
     final backButton = IconButton(
       onPressed: onBackButtonPressed ?? () async => Navigator.maybePop(context),
-      icon: const ZetaIcon(ZetaIcons.chevron_left),
+      icon: Icon(context.rounded ? ZetaIcons.chevron_left_round : ZetaIcons.chevron_left_sharp),
     );
 
     return ZetaRoundedScope(

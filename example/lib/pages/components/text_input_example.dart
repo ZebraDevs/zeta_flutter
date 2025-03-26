@@ -46,7 +46,7 @@ class TextInputExample extends StatelessWidget {
             disabled: false,
             hintText: 'hint text',
             suffix: IconButton(
-              icon: ZetaIcon(ZetaIcons.add_alert),
+              icon: Icon(ZetaIcons.add_alert),
               onPressed: () {},
             ),
           ),
@@ -69,7 +69,7 @@ class TextInputExample extends StatelessWidget {
               child: IconButton(
                 iconSize: 12,
                 splashRadius: 1,
-                icon: ZetaIcon(
+                icon: Icon(
                   ZetaIcons.add_alert,
                 ),
                 onPressed: () {},
@@ -92,7 +92,7 @@ class TextInputExample extends StatelessWidget {
           const SizedBox(height: 8),
           ZetaTextInput(
             placeholder: 'Placeholder',
-            prefix: ZetaIcon(
+            prefix: Icon(
               ZetaIcons.star,
               size: 20,
             ),

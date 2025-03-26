@@ -15,7 +15,7 @@ class _ZetaThemeColorSwitchState extends State<ZetaThemeColorSwitch> {
     final zetaProvider = ZetaProvider.of(context);
 
     final Map<String?, Widget> items = {};
-    items.putIfAbsent(null, () => ZetaIcon(ZetaIcons.block));
+    items.putIfAbsent(null, () => Icon(ZetaIcons.block));
 
     zetaProvider.customThemes.forEach((e) {
       final color = e.primary;
@@ -25,7 +25,7 @@ class _ZetaThemeColorSwitchState extends State<ZetaThemeColorSwitch> {
         () => ZetaAvatar(
           size: ZetaAvatarSize.xxs,
           backgroundColor: zeta.colors.surfaceDefault,
-          image: ZetaIcon(
+          image: Icon(
             Icons.color_lens,
             color: color ??
                 (Zeta.of(context).brightness == Brightness.light
