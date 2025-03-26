@@ -31,7 +31,7 @@ jobs:
         run: |
           echo "package=all" >> $GITHUB_ENV
           for package in all zeta_flutter_theme zeta_flutter_utils zeta_icons zeta_flutter; do
-          if [[ "${{GITHUB_REF}}" == *"${package}"* ]]; then
+          if [[ "${{github.ref}}" == *"${package}"* ]]; then
             echo Package is $package
             echo "package=${package}" >> $GITHUB_ENV
             break
