@@ -3,11 +3,27 @@
 # save first input arg as package
 package=$1
 
-
 # check that package is not 'zeta_flutter'
 if [ "$package" = "zeta_flutter" ]; then
-    echo "Cannot update zeta_flutter package using this script"
-    exit 1
+    pubspec="packages/zeta_flutter/pubspec.yaml"
+    version=$(grep "^version:" "$pubspec" | sed 's/version: //' | tr -d '[:space:]')
+    filesToChange=($(jq -r '.["extra-files"][]' "./release-please-config.json"))
+    echo $filesToChange
+
+    for file in "${filesToChange[@]}"; do
+        echo "Updating version in $file"
+
+        if [[ "$OSTYPE" == "darwin"* ]]; then
+            # macOS uses BSD sed which requires a different syntax
+            sed -i '' -E "s/v[0-9.]+/v$version/g" $file
+        else
+            # Linux uses GNU sed
+            echo "Updated version to v$version in $file"
+
+        fi
+    done
+
+    exit 0
 fi
 
 # Get the version from packages/$package/pubspec.yaml
@@ -26,7 +42,6 @@ fi
 
 echo "Found version $version for package $package"
 
-
 # load packages/zeta_flutter/pubspec.yaml file
 file_path="packages/zeta_flutter/pubspec.yaml"
 
@@ -38,6 +53,5 @@ else
     # Linux uses GNU sed
     sed -i "s/\($package: \).*$/\1^$version/g" "$file_path"
 fi
-
 
 echo "Updated $package to version ^$version in pubspec.yaml"

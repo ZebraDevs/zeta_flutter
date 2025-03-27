@@ -83,7 +83,7 @@ class ExampleScaffold extends StatelessWidget {
                   children: [
                     Text(
                       // x-release-please-start-version
-                      'zeta_flutter v0.20.2',
+                      'zeta_flutter v1.0.0',
                       // x-release-please-end
                       style: ZetaTextStyles.bodyMedium.copyWith(
                         color: ZetaPrimitivesLight().warm.shade30,
