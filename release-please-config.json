@@ -22,8 +22,9 @@
   "include-v-in-tag": true,
   "tag-separator": "-",
   "extra-files": [
-    "example/lib/home.dart",
-    "widgetbook/lib/introduction.dart"
+    "example/lib/widgets.dart",
+    "widgetbook/lib/introduction.dart",
+    "example/lib/home.dart"
   ],
   "separate-pull-requests": true,
   "changelog-sections": [

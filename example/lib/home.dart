@@ -183,7 +183,7 @@ class _HomeState extends State<Home> {
 
     return ExampleScaffold(
       // x-release-please-start-version
-      name: 'zeta_flutter v0.20.2',
+      name: 'zeta_flutter v1.0.0',
       // x-release-please-end
       child: SingleChildScrollView(
         child: Column(
