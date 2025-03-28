@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/ZebraDevs/zeta_flutter/compare/zeta_flutter-v1.0.0...zeta_flutter-v1.0.1) (2025-03-28)
+
+
+### 📈 Documentation
+
+* Update changelog ([36657ab](https://github.com/ZebraDevs/zeta_flutter/commit/36657ab552736d58a8ddb8c39c1c2ea2261487f9))
+
 ## [1.0.0](https://github.com/ZebraDevs/zeta_flutter/compare/zeta_flutter-v0.20.2...zeta_flutter-v1.0.0) (2025-03-26)
 
 ### ✨ New Features
