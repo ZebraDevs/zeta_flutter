@@ -16,6 +16,7 @@ jobs:
           repository: ${{github.event.pull_request.head.repo.full_name}}
           ref: ${{ github.head_ref }}
           fetch-depth: 0
+
       - uses: subosito/flutter-action@v2
         with:
           cache: true
@@ -35,12 +36,14 @@ jobs:
           git commit -m "deps: update dependencies in $PACKAGE_NAME"
           git push origin ${{github.head_ref}} -f
 
-      - run: dart run build_runner build --delete-conflicting-outputs
+      - run: melos exec dart run build_runner build --delete-conflicting-outputs
       - run: |
           cd widgetbook
           flutter pub get
+
       - name: Setup LCOV
         uses: hrishikesh-kadam/setup-lcov@v1
+
       - uses: ZebraDevs/flutter-code-quality@change-test-command
         with:
           token: ${{secrets.GITHUB_TOKEN}}
