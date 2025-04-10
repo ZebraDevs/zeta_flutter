@@ -158,6 +158,76 @@ abstract interface class ZetaColors {
   /// * Dark Mode: #151519
   Color get mainInverse;
 
+  /// text/default
+  ///
+  /// Default value is `cool.shade90`
+  ///
+  /// * Light Mode: #1d1e23
+  /// * Dark Mode: #f3f6fa
+  ///
+  /// Default high contrast (AAA) value is `cool.shade100`
+  ///
+  /// * Light Mode: #0c0d0e
+  /// * Dark Mode: #f8fbff
+  @Deprecated('Use mainDefault instead.')
+  Color get textDefault;
+
+  /// icon/subtle
+  ///
+  /// Default value is `cool.shade70`
+  ///
+  /// * Light Mode: #545963
+  /// * Dark Mode: #bbc1cb
+  ///
+  /// Default high contrast (AAA) value is `cool.shade80`
+  ///
+  /// * Light Mode: #2c2f36
+  /// * Dark Mode: #e0e3e9
+  @Deprecated('Use mainSubtle instead.')
+  Color get iconSubtle;
+
+  /// icon/inverse
+  ///
+  /// Default value is `cool.shade20`
+  ///
+  /// * Light Mode: #f3f6fa
+  /// * Dark Mode: #1d1e23
+  ///
+  /// Default high contrast (AAA) value is `pure.shade0`
+  ///
+  /// * Light Mode: #ffffff
+  /// * Dark Mode: #151519
+  @Deprecated('Use mainInverse instead.')
+  Color get iconInverse;
+
+  /// icon/disabled
+  ///
+  /// Default value is `cool.shade50`
+  ///
+  /// * Light Mode: #8d95a3
+  /// * Dark Mode: #7a8190
+  ///
+  /// Default high contrast (AAA) value is `cool.shade60`
+  ///
+  /// * Light Mode: #7a8190
+  /// * Dark Mode: #8d95a3
+  @Deprecated('Use mainDisabled instead.')
+  Color get iconDisabled;
+
+  /// icon/flavor/primary
+  ///
+  /// Default value is `primary.shade60`
+  ///
+  /// * Light Mode: #0073e6
+  /// * Dark Mode: #599fe5
+  ///
+  /// Default high contrast (AAA) value is `primary.shade80`
+  ///
+  /// * Light Mode: #004d99
+  /// * Dark Mode: #b7dbff
+  @Deprecated('Use mainPrimary instead.')
+  Color get iconFlavorPrimary;
+
   /// icon/flavor/positive
   ///
   /// Default value is `green.shade60`
@@ -1271,6 +1341,16 @@ class ZetaColorsAA extends Equatable implements ZetaColors {
   @override
   Color get mainInverse => primitives.cool.shade20;
   @override
+  Color get textDefault => primitives.cool.shade90;
+  @override
+  Color get iconSubtle => primitives.cool.shade70;
+  @override
+  Color get iconInverse => primitives.cool.shade20;
+  @override
+  Color get iconDisabled => primitives.cool.shade50;
+  @override
+  Color get iconFlavorPrimary => primitives.primary.shade60;
+  @override
   Color get iconFlavorPositive => primitives.green.shade60;
   @override
   Color get iconFlavorWarning => primitives.orange.shade60;
@@ -1533,6 +1613,16 @@ class ZetaColorsAAA extends Equatable implements ZetaColors {
   Color get mainLight => primitives.pure.shade0;
   @override
   Color get mainInverse => primitives.pure.shade0;
+  @override
+  Color get textDefault => primitives.cool.shade100;
+  @override
+  Color get iconSubtle => primitives.cool.shade80;
+  @override
+  Color get iconInverse => primitives.pure.shade0;
+  @override
+  Color get iconDisabled => primitives.cool.shade60;
+  @override
+  Color get iconFlavorPrimary => primitives.primary.shade80;
   @override
   Color get iconFlavorPositive => primitives.green.shade80;
   @override
