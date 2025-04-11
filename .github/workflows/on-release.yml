@@ -88,4 +88,5 @@ jobs:
               repo: 'zeta',
               workflow_id: 'deploy.yml',
               ref: 'main',
+              package_to_update: 'zeta_flutter'
             })
