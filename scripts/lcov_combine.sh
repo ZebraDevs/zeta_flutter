@@ -13,13 +13,15 @@ touch tmpfile
 array=()
 while IFS= read -r -d '' dir; do
     array+=("$(basename "$dir")")
-done <tmpfile
+done < <(find .coverage -mindepth 1 -maxdepth 1 -type d -name 'z*' -print0)
 
 echo "Combining coverage data for the following packages: ${array[@]}"
+echo "Number of packages: ${#array[@]}"
 
 find .coverage -mindepth 1 -maxdepth 1 -type d -name 'z*' -print0 >tmpfile
 com="lcov"
 for dir in "${array[@]}"; do
+
     if [ -f ".coverage/$dir/lcov.info" ]; then
         echo "Fixing file  $dir"
         cp ".coverage/$dir/lcov.info" ".coverage/$dir/lcov_combined.info"
@@ -38,6 +40,7 @@ echo "Listing all files in .coverage directory:"
 find .coverage -type f
 
 echo 'Combining coverage data'
+echo $com -o .coverage/lcov.info --ignore-errors empty
 exec $com -o .coverage/lcov.info --ignore-errors empty || true
 
 echo "Combined coverage data is stored in .coverage/lcov.info"
