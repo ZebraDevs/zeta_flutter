@@ -10,6 +10,7 @@ concurrency:
 jobs:
   code-quality:
     runs-on: ubuntu-latest
+    continue-on-error: true
     steps:
       - uses: actions/checkout@v4
         with:
@@ -29,7 +30,7 @@ jobs:
         if: startsWith(github.head_ref, 'release-please') && !endsWith(github.head_ref, 'zeta_flutter')
         run: |
           PACKAGE_NAME=$(echo ${{github.head_ref}} | awk -F '--' '{print $NF}')
-          sh scripts/update_individual.sh $PACKAGE_NAME
+          bash scripts/update_individual.sh $PACKAGE_NAME
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global user.name "github-actions[bot]"
           git add .

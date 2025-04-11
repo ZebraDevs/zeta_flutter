@@ -8,8 +8,13 @@ if [ "$package" = "zeta_flutter" ]; then
     pubspec="packages/zeta_flutter/pubspec.yaml"
     version=$(grep "^version:" "$pubspec" | sed 's/version: //' | tr -d '[:space:]')
 
-    # filesToChange=($(jq -r '.["extra-files"][]' "./release-please-config.json"))
-    readarray -t filesToChange < <(jq -r '.["extra-files"][]' "./release-please-config.json")
+    filesToChange=()
+    temp_file=$(mktemp)
+    jq -r '.["extra-files"][]' "./release-please-config.json" >"$temp_file"
+    while IFS= read -r line; do
+        filesToChange+=("$line")
+    done <"$temp_file"
+    rm -f "$temp_file"
 
     for file in "${filesToChange[@]}"; do
         echo "Updating version in $file"
