@@ -10,11 +10,8 @@ import 'package:zeta_flutter_theme/zeta_flutter_theme.dart';
 
 /// Interface used for zeta color primitives
 abstract interface class ZetaPrimitives {
-  const ZetaPrimitives({
-    ZetaColorSwatch? primary,
-    ZetaColorSwatch? secondary,
-    required this.brightness,
-  })  : _primary = primary,
+  const ZetaPrimitives({ZetaColorSwatch? primary, ZetaColorSwatch? secondary, required this.brightness})
+      : _primary = primary,
         _secondary = secondary;
 
   final ZetaColorSwatch? _primary;
@@ -241,11 +238,7 @@ final class ZetaPrimitivesDark extends ZetaPrimitives {
       );
   @override
   ZetaPureColorSwatch get pure => const ZetaPureColorSwatch(
-        swatch: {
-          0: Color(0xFF151519),
-          500: Color(0xFF1d1e23),
-          1000: Color(0xFFffffff),
-        },
+        swatch: {0: Color(0xFF151519), 500: Color(0xFF1d1e23), 1000: Color(0xFFffffff)},
         primary: 0xFF1d1e23,
       );
   @override
@@ -462,11 +455,7 @@ final class ZetaPrimitivesLight extends ZetaPrimitives {
       );
   @override
   ZetaPureColorSwatch get pure => const ZetaPureColorSwatch(
-        swatch: {
-          0: Color(0xFFffffff),
-          500: Color(0xFF151519),
-          1000: Color(0xFF151519),
-        },
+        swatch: {0: Color(0xFFffffff), 500: Color(0xFF151519), 1000: Color(0xFF151519)},
         primary: 0xFF151519,
       );
   @override
@@ -598,7 +587,4 @@ final class ZetaPrimitivesLight extends ZetaPrimitives {
 }
 
 /// All primitives
-Map<String, Type> allPrimitives = {
-  'dark': ZetaPrimitivesDark,
-  'light': ZetaPrimitivesLight,
-};
+Map<String, Type> allPrimitives = {'dark': ZetaPrimitivesDark, 'light': ZetaPrimitivesLight};

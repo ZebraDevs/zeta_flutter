@@ -670,7 +670,7 @@ class AvatarBadgeExample extends StatelessWidget {
                 ZetaAvatarBadge(
                   icon: ZetaIcons.barcode_bluetooth,
                   type: ZetaAvatarBadgeType.icon,
-                  color: Zeta.of(context).colors.iconFlavorPrimary,
+                  color: Zeta.of(context).colors.mainPrimary,
                 ),
               ],
             ),

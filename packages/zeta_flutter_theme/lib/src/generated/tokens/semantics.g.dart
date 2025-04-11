@@ -169,6 +169,7 @@ abstract interface class ZetaColors {
   ///
   /// * Light Mode: #0c0d0e
   /// * Dark Mode: #f8fbff
+  @Deprecated('Use mainDefault instead.')
   Color get textDefault;
 
   /// icon/subtle
@@ -182,6 +183,7 @@ abstract interface class ZetaColors {
   ///
   /// * Light Mode: #2c2f36
   /// * Dark Mode: #e0e3e9
+  @Deprecated('Use mainSubtle instead.')
   Color get iconSubtle;
 
   /// icon/inverse
@@ -195,6 +197,7 @@ abstract interface class ZetaColors {
   ///
   /// * Light Mode: #ffffff
   /// * Dark Mode: #151519
+  @Deprecated('Use mainInverse instead.')
   Color get iconInverse;
 
   /// icon/disabled
@@ -208,6 +211,7 @@ abstract interface class ZetaColors {
   ///
   /// * Light Mode: #7a8190
   /// * Dark Mode: #8d95a3
+  @Deprecated('Use mainDisabled instead.')
   Color get iconDisabled;
 
   /// icon/flavor/primary
@@ -221,6 +225,7 @@ abstract interface class ZetaColors {
   ///
   /// * Light Mode: #004d99
   /// * Dark Mode: #b7dbff
+  @Deprecated('Use mainPrimary instead.')
   Color get iconFlavorPrimary;
 
   /// icon/flavor/positive
@@ -1504,11 +1509,6 @@ class ZetaColorsAA extends Equatable implements ZetaColors {
         mainDisabled,
         mainLight,
         mainInverse,
-        textDefault,
-        iconSubtle,
-        iconInverse,
-        iconDisabled,
-        iconFlavorPrimary,
         iconFlavorPositive,
         iconFlavorWarning,
         iconFlavorNegative,
@@ -1782,11 +1782,6 @@ class ZetaColorsAAA extends Equatable implements ZetaColors {
         mainDisabled,
         mainLight,
         mainInverse,
-        textDefault,
-        iconSubtle,
-        iconInverse,
-        iconDisabled,
-        iconFlavorPrimary,
         iconFlavorPositive,
         iconFlavorWarning,
         iconFlavorNegative,
@@ -2000,14 +1995,7 @@ class ZetaRadiusAA extends Equatable implements ZetaRadius {
   @override
   Radius get full => primitives.xl_4;
   @override
-  List<Object?> get props => [
-        none,
-        minimal,
-        rounded,
-        large,
-        xl,
-        full,
-      ];
+  List<Object?> get props => [none, minimal, rounded, large, xl, full];
 }
 
 /// The semantic radius for AAA
@@ -2029,14 +2017,7 @@ class ZetaRadiusAAA extends Equatable implements ZetaRadius {
   @override
   Radius get full => primitives.xl_4;
   @override
-  List<Object?> get props => [
-        none,
-        minimal,
-        rounded,
-        large,
-        xl,
-        full,
-      ];
+  List<Object?> get props => [none, minimal, rounded, large, xl, full];
 }
 
 /// The semantic tokens for Zeta
