@@ -158,58 +158,6 @@ abstract interface class ZetaColors {
   /// * Dark Mode: #151519
   Color get mainInverse;
 
-  /// icon/flavor/positive
-  ///
-  /// Default value is `green.shade60`
-  ///
-  /// * Light Mode: #00864f
-  /// * Dark Mode: #67b796
-  ///
-  /// Default high contrast (AAA) value is `green.shade80`
-  ///
-  /// * Light Mode: #005f38
-  /// * Dark Mode: #beefdb
-  Color get iconFlavorPositive;
-
-  /// icon/flavor/warning
-  ///
-  /// Default value is `orange.shade60`
-  ///
-  /// * Light Mode: #ae6500
-  /// * Dark Mode: #d78d26
-  ///
-  /// Default high contrast (AAA) value is `orange.shade80`
-  ///
-  /// * Light Mode: #764502
-  /// * Dark Mode: #ffd292
-  Color get iconFlavorWarning;
-
-  /// icon/flavor/negative
-  ///
-  /// Default value is `red.shade60`
-  ///
-  /// * Light Mode: #d70015
-  /// * Dark Mode: #f36170
-  ///
-  /// Default high contrast (AAA) value is `red.shade80`
-  ///
-  /// * Light Mode: #8f000e
-  /// * Dark Mode: #ffb3bb
-  Color get iconFlavorNegative;
-
-  /// icon/flavor/info
-  ///
-  /// Default value is `purple.shade60`
-  ///
-  /// * Light Mode: #7e0cff
-  /// * Dark Mode: #9b71df
-  ///
-  /// Default high contrast (AAA) value is `purple.shade80`
-  ///
-  /// * Light Mode: #43008f
-  /// * Dark Mode: #dcc1fb
-  Color get iconFlavorInfo;
-
   /// border/default
   ///
   /// Default value is `cool.shade40`
@@ -1201,9 +1149,9 @@ abstract interface class ZetaRadius {
 
   /// radius/none
   ///
-  /// Default value is `0`
+  /// Default value is [ZetaPrimitives.r_0] (0)
   ///
-  /// Default high contrast (AAA) value is `0`
+  /// Default high contrast (AAA) value is 0
   Radius get none;
 
   /// radius/minimal
@@ -1270,14 +1218,6 @@ class ZetaColorsAA extends Equatable implements ZetaColors {
   Color get mainLight => primitives.cool.shade30;
   @override
   Color get mainInverse => primitives.cool.shade20;
-  @override
-  Color get iconFlavorPositive => primitives.green.shade60;
-  @override
-  Color get iconFlavorWarning => primitives.orange.shade60;
-  @override
-  Color get iconFlavorNegative => primitives.red.shade60;
-  @override
-  Color get iconFlavorInfo => primitives.purple.shade60;
   @override
   Color get borderDefault => primitives.cool.shade40;
   @override
@@ -1418,91 +1358,87 @@ class ZetaColorsAA extends Equatable implements ZetaColors {
   Color get statePositiveFocus => primitives.green.shade60;
   @override
   List<Object?> get props => [
-        mainDefault,
-        mainSubtle,
-        mainPrimary,
-        mainSecondary,
-        mainPositive,
-        mainWarning,
-        mainNegative,
-        mainInfo,
-        mainDisabled,
-        mainLight,
-        mainInverse,
-        iconFlavorPositive,
-        iconFlavorWarning,
-        iconFlavorNegative,
-        iconFlavorInfo,
-        borderDefault,
-        borderSelected,
-        borderHover,
-        borderSubtle,
-        borderDisabled,
-        borderPure,
-        borderPrimaryMain,
-        borderPrimary,
-        borderSecondary,
-        borderPositive,
-        borderWarning,
-        borderNegative,
-        borderInfo,
-        surfaceDefault,
-        surfaceDefaultInverse,
-        surfaceHover,
-        surfaceSelected,
-        surfaceSelectedHover,
-        surfaceDisabled,
-        surfaceCool,
-        surfaceWarm,
-        surfacePrimary,
-        surfacePrimarySubtle,
-        surfaceSecondary,
-        surfaceAvatarBlue,
-        surfaceAvatarGreen,
-        surfaceAvatarOrange,
-        surfaceAvatarPink,
-        surfaceAvatarPurple,
-        surfaceAvatarTeal,
-        surfaceAvatarYellow,
-        surfaceSecondarySubtle,
-        surfacePositive,
-        surfacePositiveSubtle,
-        surfaceWarning,
-        surfaceWarningSubtle,
-        surfaceNegative,
-        surfaceNegativeSubtle,
-        surfaceInfo,
-        surfaceInfoSubtle,
-        stateDisabledDisabled,
-        stateDefaultEnabled,
-        stateDefaultHover,
-        stateDefaultSelected,
-        stateDefaultFocus,
-        statePrimaryEnabled,
-        statePrimaryHover,
-        statePrimarySelected,
-        statePrimaryFocus,
-        stateSecondaryEnabled,
-        stateSecondaryHover,
-        stateSecondarySelected,
-        stateSecondaryFocus,
-        stateNegativeEnabled,
-        stateNegativeHover,
-        stateNegativeSelected,
-        stateNegativeFocus,
-        stateInfoEnabled,
-        stateInfoHover,
-        stateInfoSelected,
-        stateInfoFocus,
-        stateInverseEnabled,
-        stateInverseHover,
-        stateInverseSelected,
-        stateInverseFocus,
-        statePositiveEnabled,
-        statePositiveHover,
-        statePositiveSelected,
-        statePositiveFocus,
-      ];
+    mainDefault,
+    mainSubtle,
+    mainPrimary,
+    mainSecondary,
+    mainPositive,
+    mainWarning,
+    mainNegative,
+    mainInfo,
+    mainDisabled,
+    mainLight,
+    mainInverse,
+    borderDefault,
+    borderSelected,
+    borderHover,
+    borderSubtle,
+    borderDisabled,
+    borderPure,
+    borderPrimaryMain,
+    borderPrimary,
+    borderSecondary,
+    borderPositive,
+    borderWarning,
+    borderNegative,
+    borderInfo,
+    surfaceDefault,
+    surfaceDefaultInverse,
+    surfaceHover,
+    surfaceSelected,
+    surfaceSelectedHover,
+    surfaceDisabled,
+    surfaceCool,
+    surfaceWarm,
+    surfacePrimary,
+    surfacePrimarySubtle,
+    surfaceSecondary,
+    surfaceAvatarBlue,
+    surfaceAvatarGreen,
+    surfaceAvatarOrange,
+    surfaceAvatarPink,
+    surfaceAvatarPurple,
+    surfaceAvatarTeal,
+    surfaceAvatarYellow,
+    surfaceSecondarySubtle,
+    surfacePositive,
+    surfacePositiveSubtle,
+    surfaceWarning,
+    surfaceWarningSubtle,
+    surfaceNegative,
+    surfaceNegativeSubtle,
+    surfaceInfo,
+    surfaceInfoSubtle,
+    stateDisabledDisabled,
+    stateDefaultEnabled,
+    stateDefaultHover,
+    stateDefaultSelected,
+    stateDefaultFocus,
+    statePrimaryEnabled,
+    statePrimaryHover,
+    statePrimarySelected,
+    statePrimaryFocus,
+    stateSecondaryEnabled,
+    stateSecondaryHover,
+    stateSecondarySelected,
+    stateSecondaryFocus,
+    stateNegativeEnabled,
+    stateNegativeHover,
+    stateNegativeSelected,
+    stateNegativeFocus,
+    stateInfoEnabled,
+    stateInfoHover,
+    stateInfoSelected,
+    stateInfoFocus,
+    stateInverseEnabled,
+    stateInverseHover,
+    stateInverseSelected,
+    stateInverseFocus,
+    statePositiveEnabled,
+    statePositiveHover,
+    statePositiveSelected,
+    statePositiveFocus,
+  ];
 }
 
 /// The semantic colors for AAA
@@ -1533,14 +1469,6 @@ class ZetaColorsAAA extends Equatable implements ZetaColors {
   Color get mainLight => primitives.pure.shade0;
   @override
   Color get mainInverse => primitives.pure.shade0;
-  @override
-  Color get iconFlavorPositive => primitives.green.shade80;
-  @override
-  Color get iconFlavorWarning => primitives.orange.shade80;
-  @override
-  Color get iconFlavorNegative => primitives.red.shade80;
-  @override
-  Color get iconFlavorInfo => primitives.purple.shade80;
   @override
   Color get borderDefault => primitives.cool.shade100;
   @override
@@ -1681,91 +1609,87 @@ class ZetaColorsAAA extends Equatable implements ZetaColors {
   Color get statePositiveFocus => primitives.green.shade80;
   @override
   List<Object?> get props => [
-        mainDefault,
-        mainSubtle,
-        mainPrimary,
-        mainSecondary,
-        mainPositive,
-        mainWarning,
-        mainNegative,
-        mainInfo,
-        mainDisabled,
-        mainLight,
-        mainInverse,
-        iconFlavorPositive,
-        iconFlavorWarning,
-        iconFlavorNegative,
-        iconFlavorInfo,
-        borderDefault,
-        borderSelected,
-        borderHover,
-        borderSubtle,
-        borderDisabled,
-        borderPure,
-        borderPrimaryMain,
-        borderPrimary,
-        borderSecondary,
-        borderPositive,
-        borderWarning,
-        borderNegative,
-        borderInfo,
-        surfaceDefault,
-        surfaceDefaultInverse,
-        surfaceHover,
-        surfaceSelected,
-        surfaceSelectedHover,
-        surfaceDisabled,
-        surfaceCool,
-        surfaceWarm,
-        surfacePrimary,
-        surfacePrimarySubtle,
-        surfaceSecondary,
-        surfaceAvatarBlue,
-        surfaceAvatarGreen,
-        surfaceAvatarOrange,
-        surfaceAvatarPink,
-        surfaceAvatarPurple,
-        surfaceAvatarTeal,
-        surfaceAvatarYellow,
-        surfaceSecondarySubtle,
-        surfacePositive,
-        surfacePositiveSubtle,
-        surfaceWarning,
-        surfaceWarningSubtle,
-        surfaceNegative,
-        surfaceNegativeSubtle,
-        surfaceInfo,
-        surfaceInfoSubtle,
-        stateDisabledDisabled,
-        stateDefaultEnabled,
-        stateDefaultHover,
-        stateDefaultSelected,
-        stateDefaultFocus,
-        statePrimaryEnabled,
-        statePrimaryHover,
-        statePrimarySelected,
-        statePrimaryFocus,
-        stateSecondaryEnabled,
-        stateSecondaryHover,
-        stateSecondarySelected,
-        stateSecondaryFocus,
-        stateNegativeEnabled,
-        stateNegativeHover,
-        stateNegativeSelected,
-        stateNegativeFocus,
-        stateInfoEnabled,
-        stateInfoHover,
-        stateInfoSelected,
-        stateInfoFocus,
-        stateInverseEnabled,
-        stateInverseHover,
-        stateInverseSelected,
-        stateInverseFocus,
-        statePositiveEnabled,
-        statePositiveHover,
-        statePositiveSelected,
-        statePositiveFocus,
-      ];
+    mainDefault,
+    mainSubtle,
+    mainPrimary,
+    mainSecondary,
+    mainPositive,
+    mainWarning,
+    mainNegative,
+    mainInfo,
+    mainDisabled,
+    mainLight,
+    mainInverse,
+    borderDefault,
+    borderSelected,
+    borderHover,
+    borderSubtle,
+    borderDisabled,
+    borderPure,
+    borderPrimaryMain,
+    borderPrimary,
+    borderSecondary,
+    borderPositive,
+    borderWarning,
+    borderNegative,
+    borderInfo,
+    surfaceDefault,
+    surfaceDefaultInverse,
+    surfaceHover,
+    surfaceSelected,
+    surfaceSelectedHover,
+    surfaceDisabled,
+    surfaceCool,
+    surfaceWarm,
+    surfacePrimary,
+    surfacePrimarySubtle,
+    surfaceSecondary,
+    surfaceAvatarBlue,
+    surfaceAvatarGreen,
+    surfaceAvatarOrange,
+    surfaceAvatarPink,
+    surfaceAvatarPurple,
+    surfaceAvatarTeal,
+    surfaceAvatarYellow,
+    surfaceSecondarySubtle,
+    surfacePositive,
+    surfacePositiveSubtle,
+    surfaceWarning,
+    surfaceWarningSubtle,
+    surfaceNegative,
+    surfaceNegativeSubtle,
+    surfaceInfo,
+    surfaceInfoSubtle,
+    stateDisabledDisabled,
+    stateDefaultEnabled,
+    stateDefaultHover,
+    stateDefaultSelected,
+    stateDefaultFocus,
+    statePrimaryEnabled,
+    statePrimaryHover,
+    statePrimarySelected,
+    statePrimaryFocus,
+    stateSecondaryEnabled,
+    stateSecondaryHover,
+    stateSecondarySelected,
+    stateSecondaryFocus,
+    stateNegativeEnabled,
+    stateNegativeHover,
+    stateNegativeSelected,
+    stateNegativeFocus,
+    stateInfoEnabled,
+    stateInfoHover,
+    stateInfoSelected,
+    stateInfoFocus,
+    stateInverseEnabled,
+    stateInverseHover,
+    stateInverseSelected,
+    stateInverseFocus,
+    statePositiveEnabled,
+    statePositiveHover,
+    statePositiveSelected,
+    statePositiveFocus,
+  ];
 }
 
 /// The semantic spacing for AA
@@ -1808,23 +1732,23 @@ class ZetaSpacingAA extends Equatable implements ZetaSpacing {
   double get xl_11 => primitives.x15;
   @override
   List<Object?> get props => [
-        none,
-        minimum,
-        small,
-        medium,
-        large,
-        xl,
-        xl_2,
-        xl_3,
-        xl_4,
-        xl_5,
-        xl_6,
-        xl_7,
-        xl_8,
-        xl_9,
-        xl_10,
-        xl_11,
-      ];
+    none,
+    minimum,
+    small,
+    medium,
+    large,
+    xl,
+    xl_2,
+    xl_3,
+    xl_4,
+    xl_5,
+    xl_6,
+    xl_7,
+    xl_8,
+    xl_9,
+    xl_10,
+    xl_11,
+  ];
 }
 
 /// The semantic spacing for AAA
@@ -1867,23 +1791,23 @@ class ZetaSpacingAAA extends Equatable implements ZetaSpacing {
   double get xl_11 => primitives.x15;
   @override
   List<Object?> get props => [
-        none,
-        minimum,
-        small,
-        medium,
-        large,
-        xl,
-        xl_2,
-        xl_3,
-        xl_4,
-        xl_5,
-        xl_6,
-        xl_7,
-        xl_8,
-        xl_9,
-        xl_10,
-        xl_11,
-      ];
+    none,
+    minimum,
+    small,
+    medium,
+    large,
+    xl,
+    xl_2,
+    xl_3,
+    xl_4,
+    xl_5,
+    xl_6,
+    xl_7,
+    xl_8,
+    xl_9,
+    xl_10,
+    xl_11,
+  ];
 }
 
 /// The semantic radius for AA
@@ -1893,7 +1817,7 @@ class ZetaRadiusAA extends Equatable implements ZetaRadius {
   @override
   final ZetaPrimitives primitives;
   @override
-  Radius get none => const Radius.circular(0);
+  Radius get none => primitives.r_0;
   @override
   Radius get minimal => primitives.s;
   @override
@@ -1915,7 +1839,7 @@ class ZetaRadiusAAA extends Equatable implements ZetaRadius {
   @override
   final ZetaPrimitives primitives;
   @override
-  Radius get none => const Radius.circular(0);
+  Radius get none => primitives.r_0;
   @override
   Radius get minimal => primitives.s;
   @override
@@ -1949,9 +1873,9 @@ abstract interface class ZetaSemantics {
 class ZetaSemanticsAA implements ZetaSemantics {
   /// Constructor for [ZetaSemanticsAA]
   ZetaSemanticsAA({required this.primitives})
-      : colors = ZetaColorsAA(primitives: primitives),
-        spacing = ZetaSpacingAA(primitives: primitives),
-        radius = ZetaRadiusAA(primitives: primitives);
+    : colors = ZetaColorsAA(primitives: primitives),
+      spacing = ZetaSpacingAA(primitives: primitives),
+      radius = ZetaRadiusAA(primitives: primitives);
 
   @override
   final ZetaPrimitives primitives;
@@ -1967,9 +1891,9 @@ class ZetaSemanticsAA implements ZetaSemantics {
 class ZetaSemanticsAAA implements ZetaSemantics {
   /// Constructor for [ZetaSemanticsAAA]
   ZetaSemanticsAAA({required this.primitives})
-      : colors = ZetaColorsAAA(primitives: primitives),
-        spacing = ZetaSpacingAAA(primitives: primitives),
-        radius = ZetaRadiusAAA(primitives: primitives);
+    : colors = ZetaColorsAAA(primitives: primitives),
+      spacing = ZetaSpacingAAA(primitives: primitives),
+      radius = ZetaRadiusAAA(primitives: primitives);
 
   @override
   final ZetaPrimitives primitives;
