@@ -12,23 +12,23 @@ class TypographyExample extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final typography = {
-      'Display Large': ZetaTextStyles.displayLarge,
-      'Display Medium': ZetaTextStyles.displayMedium,
-      'Display Small': ZetaTextStyles.displaySmall,
-      'Heading 1': ZetaTextStyles.heading1,
-      'Heading 2': ZetaTextStyles.heading2,
-      'Heading 3': ZetaTextStyles.heading3,
-      'Title Large': ZetaTextStyles.titleLarge,
-      'Title Medium': ZetaTextStyles.titleMedium,
-      'Title Small': ZetaTextStyles.titleSmall,
-      'Body Large': ZetaTextStyles.bodyLarge,
-      'Body Medium': ZetaTextStyles.bodyMedium,
-      'Body Small': ZetaTextStyles.bodySmall,
-      'Body X-Small': ZetaTextStyles.bodyXSmall,
-      'Label Large': ZetaTextStyles.labelLarge,
-      'Label Medium': ZetaTextStyles.labelMedium,
-      'Label Small': ZetaTextStyles.labelSmall,
-      'Label Indicator': ZetaTextStyles.labelIndicator,
+      'Display Large': Zeta.of(context).textStyles.displayLarge,
+      'Display Medium': Zeta.of(context).textStyles.displayMedium,
+      'Display Small': Zeta.of(context).textStyles.displaySmall,
+      'Heading 1': Zeta.of(context).textStyles.heading1,
+      'Heading 2': Zeta.of(context).textStyles.heading2,
+      'Heading 3': Zeta.of(context).textStyles.heading3,
+      'Title Large': Zeta.of(context).textStyles.titleLarge,
+      'Title Medium': Zeta.of(context).textStyles.titleMedium,
+      'Title Small': Zeta.of(context).textStyles.titleSmall,
+      'Body Large': Zeta.of(context).textStyles.bodyLarge,
+      'Body Medium': Zeta.of(context).textStyles.bodyMedium,
+      'Body Small': Zeta.of(context).textStyles.bodySmall,
+      'Body X-Small': Zeta.of(context).textStyles.bodyXSmall,
+      'Label Large': Zeta.of(context).textStyles.labelLarge,
+      'Label Medium': Zeta.of(context).textStyles.labelMedium,
+      'Label Small': Zeta.of(context).textStyles.labelSmall,
+      'Label Indicator': Zeta.of(context).textStyles.labelIndicator,
     };
 
     return ExampleScaffold(
@@ -51,7 +51,7 @@ class TypographyExample extends StatelessWidget {
                               (e.value.height! * e.value.fontSize!).toInt().toString() +
                               ', Weight: ' +
                               e.value.fontWeight!.value.toString(),
-                          style: ZetaTextStyles.bodyMedium,
+                          style: Zeta.of(context).textStyles.bodyMedium,
                         ),
                         SizedBox(height: Zeta.of(context).spacing.xl_9),
                       ],

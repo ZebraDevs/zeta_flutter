@@ -274,7 +274,7 @@ class ZetaListItem extends ZetaStatelessWidget {
                                     if (secondaryText != null && secondaryText!.isNotEmpty)
                                       Text(
                                         secondaryText!,
-                                        style: secondaryTextStyle ?? ZetaTextStyles.bodySmall,
+                                        style: secondaryTextStyle ?? Zeta.of(context).textStyles.bodySmall,
                                         maxLines: 1,
                                         overflow: TextOverflow.ellipsis,
                                       ),

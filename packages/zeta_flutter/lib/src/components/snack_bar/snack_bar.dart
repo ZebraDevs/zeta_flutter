@@ -170,9 +170,9 @@ class _Content extends StatelessWidget {
     final colors = Zeta.of(context).colors;
 
     return DefaultTextStyle(
-      style: ZetaTextStyles.bodyMedium.copyWith(
-        color: _getColorForType(colors, type),
-      ),
+      style: Zeta.of(context).textStyles.bodyMedium.copyWith(
+            color: _getColorForType(colors, type),
+          ),
       child: child,
     );
   }
@@ -324,7 +324,7 @@ class _ActionButton extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: Zeta.of(context).spacing.medium),
       child: TextButton(
         style: TextButton.styleFrom(
-          textStyle: ZetaTextStyles.labelLarge,
+          textStyle: Zeta.of(context).textStyles.labelLarge,
           padding: EdgeInsets.symmetric(
             horizontal: Zeta.of(context).spacing.medium,
             vertical: Zeta.of(context).spacing.minimum,
@@ -335,10 +335,10 @@ class _ActionButton extends StatelessWidget {
         onPressed: onPressed,
         child: Text(
           label ?? '',
-          style: ZetaTextStyles.labelLarge.copyWith(
-            color: color,
-            fontWeight: FontWeight.bold,
-          ),
+          style: Zeta.of(context).textStyles.labelLarge.copyWith(
+                color: color,
+                fontWeight: FontWeight.bold,
+              ),
         ),
       ),
     );

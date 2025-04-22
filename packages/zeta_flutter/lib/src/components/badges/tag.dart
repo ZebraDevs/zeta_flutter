@@ -74,7 +74,7 @@ class ZetaTag extends ZetaStatelessWidget {
                   padding: EdgeInsets.fromLTRB(Zeta.of(context).spacing.small, 1, Zeta.of(context).spacing.small, 1),
                   child: Text(
                     label,
-                    style: ZetaTextStyles.bodyMedium,
+                    style: Zeta.of(context).textStyles.bodyMedium,
                     overflow: TextOverflow.ellipsis,
                   ),
                 ),

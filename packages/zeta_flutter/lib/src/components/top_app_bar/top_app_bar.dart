@@ -194,7 +194,7 @@ class _ZetaTopAppBarState extends State<ZetaTopAppBar> {
 
   Widget _getTitle(ZetaColors colors) {
     return DefaultTextStyle(
-      style: (widget.titleTextStyle ?? ZetaTextStyles.bodyLarge).copyWith(color: colors.mainDefault),
+      style: (widget.titleTextStyle ?? Zeta.of(context).textStyles.bodyLarge).copyWith(color: colors.mainDefault),
       child: widget.title ?? const Text(' '),
     );
   }
@@ -317,7 +317,7 @@ class _ZetaTopAppBarState extends State<ZetaTopAppBar> {
             surfaceTintColor: Colors.transparent,
             centerTitle: widget.type == ZetaTopAppBarType.centered,
             titleTextStyle: widget.titleTextStyle == null
-                ? ZetaTextStyles.bodyLarge.copyWith(color: colors.mainDefault)
+                ? Zeta.of(context).textStyles.bodyLarge.copyWith(color: colors.mainDefault)
                 : widget.titleTextStyle!.copyWith(color: colors.mainDefault),
             title: title,
             actions: actions,

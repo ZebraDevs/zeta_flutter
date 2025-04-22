@@ -204,7 +204,7 @@ class ZetaBreadcrumbItem extends ZetaStatelessWidget {
                 ),
                 Text(
                   label,
-                  style: ZetaTextStyles.bodySmall.apply(color: getColor(controller.value, colors)),
+                  style: Zeta.of(context).textStyles.bodySmall.apply(color: getColor(controller.value, colors)),
                 ),
                 if (child != null) child,
               ],

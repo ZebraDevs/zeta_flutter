@@ -81,7 +81,7 @@ class ZetaBottomSheet extends ZetaStatelessWidget {
                   alignment: centerTitle ? Alignment.center : Alignment.centerLeft,
                   child: Text(
                     title!,
-                    style: ZetaTextStyles.titleMedium,
+                    style: Zeta.of(context).textStyles.titleMedium,
                   ),
                 ),
               ),

@@ -90,10 +90,10 @@ class ZetaInPageBanner extends ZetaStatelessWidget {
                           if (hasTitle)
                             Text(
                               title!,
-                              style: ZetaTextStyles.labelLarge.copyWith(height: 20 / 16),
+                              style: Zeta.of(context).textStyles.labelLarge.copyWith(height: 20 / 16),
                             ).paddingBottom(Zeta.of(context).spacing.minimum),
                           DefaultTextStyle(
-                            style: ZetaTextStyles.bodySmall.apply(color: theme.colors.mainDefault),
+                            style: Zeta.of(context).textStyles.bodySmall.apply(color: theme.colors.mainDefault),
                             child: content,
                           ),
                           if (actions.isNotEmpty)

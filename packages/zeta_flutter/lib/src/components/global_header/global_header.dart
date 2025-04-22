@@ -113,7 +113,7 @@ class _GlobalHeaderState extends State<ZetaGlobalHeader> {
                     children: [
                       Row(
                         children: [
-                          Text(widget.title, style: ZetaTextStyles.h4),
+                          Text(widget.title, style: Zeta.of(context).textStyles.h4),
                           SizedBox.square(dimension: Zeta.of(context).spacing.medium),
                           if (deviceType.isLarge)
                             // If using large screen, render some tabItems in to section

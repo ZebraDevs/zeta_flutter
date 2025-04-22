@@ -175,12 +175,12 @@ class _ZetaProgressCircleState extends ZetaProgressState<ZetaProgressCircle> {
     switch (widget.size) {
       case ZetaCircleSizes.xs:
       case ZetaCircleSizes.s:
-        return ZetaTextStyles.labelSmall;
+        return Zeta.of(context).textStyles.labelSmall;
       case ZetaCircleSizes.m:
-        return ZetaTextStyles.labelMedium;
+        return Zeta.of(context).textStyles.labelMedium;
       case ZetaCircleSizes.l:
       case ZetaCircleSizes.xl:
-        return ZetaTextStyles.labelLarge;
+        return Zeta.of(context).textStyles.labelLarge;
     }
   }
 

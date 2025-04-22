@@ -57,7 +57,7 @@ class ZetaScreenHeaderBar extends ZetaStatelessWidget {
               )
             : backButton,
         title: title,
-        titleTextStyle: ZetaTextStyles.titleLarge,
+        titleTextStyle: Zeta.of(context).textStyles.titleLarge,
         actions: actionButtonLabel == null
             ? []
             : [

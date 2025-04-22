@@ -136,7 +136,8 @@ void main() {
       );
     });
 
-    testWidgets('text style is ZetaTextStyles.bodyXSmall and text color is mainDefault', (WidgetTester tester) async {
+    testWidgets('text style is Zeta.of(context).textStyles.bodyXSmall and text color is mainDefault',
+        (WidgetTester tester) async {
       await tester.pumpWidget(
         const TestApp(
           home: ZetaStatusChip(
@@ -146,12 +147,13 @@ void main() {
       );
       final Finder finder = find.byType(Text);
       expect(finder, findsOneWidget);
-      final Text widget = tester.widget(finder);
+      final TextStyle? actualStyle = (tester.widget(finder) as Text).style;
+      final TextStyle expectedStyle = Zeta.of(tester.element(finder)).textStyles.bodyXSmall.copyWith(
+            color: const ZetaColorsAA(primitives: ZetaPrimitivesLight()).mainDefault,
+          );
       expect(
-        widget.style,
-        ZetaTextStyles.bodyXSmall.copyWith(
-          color: const ZetaColorsAA(primitives: ZetaPrimitivesLight()).mainDefault,
-        ),
+        actualStyle,
+        expectedStyle,
       );
     });
   });

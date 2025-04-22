@@ -68,7 +68,7 @@ class ZetaStatusLabel extends ZetaStatelessWidget {
               SizedBox(width: Zeta.of(context).spacing.small),
               Text(
                 label,
-                style: ZetaTextStyles.bodyMedium.apply(color: textColor),
+                style: Zeta.of(context).textStyles.bodyMedium.apply(color: textColor),
                 overflow: TextOverflow.ellipsis,
               ),
             ],

@@ -205,7 +205,9 @@ class ZetaButton extends ZetaStatelessWidget {
                   Flexible(
                     child: Text(
                       label,
-                      style: _textStyle,
+                      style: size == ZetaWidgetSize.small
+                          ? Zeta.of(context).textStyles.labelSmall
+                          : Zeta.of(context).textStyles.labelLarge,
                       textAlign: TextAlign.center,
                     ).paddingVertical(Zeta.of(context).spacing.minimum),
                   ),
@@ -227,8 +229,6 @@ class ZetaButton extends ZetaStatelessWidget {
       ),
     );
   }
-
-  TextStyle get _textStyle => size == ZetaWidgetSize.small ? ZetaTextStyles.labelSmall : ZetaTextStyles.labelLarge;
 
   double _minConstraints(BuildContext context) {
     switch (size) {

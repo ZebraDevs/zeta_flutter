@@ -256,7 +256,7 @@ class _CheckboxState extends State<ZetaInternalCheckbox> {
           Flexible(
             child: Padding(
               padding: EdgeInsets.only(left: Zeta.of(context).spacing.medium),
-              child: Text(widget.label!, style: ZetaTextStyles.bodyMedium),
+              child: Text(widget.label!, style: Zeta.of(context).textStyles.bodyMedium),
             ),
           ),
       ],

@@ -228,9 +228,9 @@ class _SegmentState<T> extends State<_Segment<T>> with TickerProviderStateMixin<
           child: IconTheme(
             data: IconThemeData(size: Zeta.of(context).spacing.xl),
             child: DefaultTextStyle(
-              style: ZetaTextStyles.labelMedium.copyWith(
-                color: colors.mainDefault,
-              ),
+              style: Zeta.of(context).textStyles.labelMedium.copyWith(
+                    color: colors.mainDefault,
+                  ),
               child: Padding(
                 padding: EdgeInsets.symmetric(
                   horizontal: Zeta.of(context).spacing.large,

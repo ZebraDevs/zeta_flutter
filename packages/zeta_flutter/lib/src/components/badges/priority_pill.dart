@@ -131,12 +131,12 @@ class ZetaPriorityPill extends ZetaStatelessWidget {
                         : type.index.toString())
                     : index!.substring(0, 1).capitalize,
                 style: this.size == ZetaPriorityPillSize.small
-                    ? ZetaTextStyles.labelSmall.copyWith(
-                        fontSize: 10,
-                        height: 13 / 10,
-                        color: Zeta.of(context).colors.mainInverse,
-                      )
-                    : ZetaTextStyles.labelMedium.apply(color: Zeta.of(context).colors.mainInverse),
+                    ? Zeta.of(context).textStyles.labelSmall.copyWith(
+                          fontSize: 10,
+                          height: 13 / 10,
+                          color: Zeta.of(context).colors.mainInverse,
+                        )
+                    : Zeta.of(context).textStyles.labelMedium.apply(color: Zeta.of(context).colors.mainInverse),
               ),
             ),
             if (!isBadge)
@@ -148,11 +148,11 @@ class ZetaPriorityPill extends ZetaStatelessWidget {
                 child: Text(
                   label,
                   style: this.size == ZetaPriorityPillSize.small
-                      ? ZetaTextStyles.bodyXSmall.copyWith(
-                          fontSize: 10,
-                          height: 13 / 10,
-                        )
-                      : ZetaTextStyles.bodySmall,
+                      ? Zeta.of(context).textStyles.bodyXSmall.copyWith(
+                            fontSize: 10,
+                            height: 13 / 10,
+                          )
+                      : Zeta.of(context).textStyles.bodySmall,
                   overflow: TextOverflow.ellipsis,
                 ),
               ),

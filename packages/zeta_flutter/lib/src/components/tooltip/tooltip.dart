@@ -59,7 +59,7 @@ class ZetaTooltip extends ZetaStatelessWidget {
   /// The text style of the tooltip.
   /// Default is:
   /// ```dart
-  /// ZetaTextStyles.bodyXSmall.copyWith(
+  /// Zeta.of(context).textStyles.bodyXSmall.copyWith(
   ///   color: zeta.colors.mainInverse,
   ///   fontWeight: FontWeight.w500,
   /// ),
@@ -133,10 +133,10 @@ class ZetaTooltip extends ZetaStatelessWidget {
                                   ),
                               child: DefaultTextStyle(
                                 style: textStyle ??
-                                    ZetaTextStyles.bodyXSmall.copyWith(
-                                      color: zeta.colors.mainInverse,
-                                      fontWeight: FontWeight.w500,
-                                    ),
+                                    Zeta.of(context).textStyles.bodyXSmall.copyWith(
+                                          color: zeta.colors.mainInverse,
+                                          fontWeight: FontWeight.w500,
+                                        ),
                                 child: child,
                               ),
                             ),

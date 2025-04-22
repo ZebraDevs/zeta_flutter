@@ -164,11 +164,11 @@ class ZetaIndicator extends ZetaStatelessWidget {
             excluding: semanticLabel != null,
             child: Text(
               value.formatMaxChars(),
-              style: ZetaTextStyles.labelIndicator.copyWith(
-                color: foregroundColor,
-                fontSize: size == ZetaWidgetSize.large ? 12 : 11,
-                height: size == ZetaWidgetSize.large ? 1 : (0.5 / 16),
-              ),
+              style: Zeta.of(context).textStyles.labelIndicator.copyWith(
+                    color: foregroundColor,
+                    fontSize: size == ZetaWidgetSize.large ? 12 : 11,
+                    height: size == ZetaWidgetSize.large ? 1 : (0.5 / 16),
+                  ),
             ),
           ),
         );

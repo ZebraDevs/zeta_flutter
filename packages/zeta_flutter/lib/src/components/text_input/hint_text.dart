@@ -57,7 +57,7 @@ class ZetaHintText extends ZetaStatelessWidget {
         Expanded(
           child: Text(
             text,
-            style: ZetaTextStyles.bodyXSmall.copyWith(color: elementColor),
+            style: Zeta.of(context).textStyles.bodyXSmall.copyWith(color: elementColor),
             overflow: TextOverflow.ellipsis,
           ),
         ),

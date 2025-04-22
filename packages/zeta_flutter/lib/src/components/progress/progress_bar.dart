@@ -107,7 +107,7 @@ class _ZetaProgressBarState extends ZetaProgressState<ZetaProgressBar> {
                 (widget.label == null && widget.type != ZetaProgressBarType.indeterminate
                     ? '${(animation.value * 100).toInt()}%'
                     : ''),
-            style: ZetaTextStyles.titleMedium,
+            style: Zeta.of(context).textStyles.titleMedium,
             textAlign: TextAlign.start,
           ).paddingBottom(Zeta.of(context).spacing.large),
           Row(

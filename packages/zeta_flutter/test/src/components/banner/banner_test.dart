@@ -277,9 +277,9 @@ void main() {
         expect(
           textWidget.style,
           equals(
-            ZetaTextStyles.labelLarge.copyWith(
-              color: Zeta.of(tester.element(textFinder)).colors.mainInverse,
-            ),
+            Zeta.of(tester.element(textFinder)).textStyles.labelLarge.copyWith(
+                  color: Zeta.of(tester.element(textFinder)).colors.mainInverse,
+                ),
           ),
         );
       });

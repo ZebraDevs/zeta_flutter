@@ -85,10 +85,10 @@ class ExampleScaffold extends StatelessWidget {
                       // x-release-please-start-version
                       'zeta_flutter v1.0.0',
                       // x-release-please-end
-                      style: ZetaTextStyles.bodyMedium.copyWith(
-                        color: ZetaPrimitivesLight().warm.shade30,
-                        decoration: TextDecoration.none,
-                      ),
+                      style: Zeta.of(context).textStyles.bodyMedium.copyWith(
+                            color: ZetaPrimitivesLight().warm.shade30,
+                            decoration: TextDecoration.none,
+                          ),
                     ),
                     FlutterLogo(
                         style: FlutterLogoStyle.horizontal, size: 120, textColor: ZetaPrimitivesLight().warm.shade30)

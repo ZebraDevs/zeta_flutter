@@ -31,7 +31,7 @@ class _TopAppBarExampleState extends State<TopAppBarExample> {
       paddingAll: 0,
       gap: 4,
       children: [
-        Text('Default', style: ZetaTextStyles.titleLarge),
+        Text('Default', style: Zeta.of(context).textStyles.titleLarge),
         ZetaTopAppBar(
           key: Key('docs-top-app-bar-default'),
           leading: IconButton(onPressed: () {}, icon: Icon(Icons.menu)),
@@ -59,7 +59,7 @@ class _TopAppBarExampleState extends State<TopAppBarExample> {
             )
           ],
         ),
-        Text('Centered', style: ZetaTextStyles.titleLarge),
+        Text('Centered', style: Zeta.of(context).textStyles.titleLarge),
         ZetaTopAppBar.centered(
           leading: IconButton(
             onPressed: () {},
@@ -73,7 +73,7 @@ class _TopAppBarExampleState extends State<TopAppBarExample> {
             ),
           ],
         ),
-        Text('Contextual', style: ZetaTextStyles.titleLarge),
+        Text('Contextual', style: Zeta.of(context).textStyles.titleLarge),
         ZetaTopAppBar(
           key: Key('docs-top-app-bar-contextual'),
           leading: IconButton(
@@ -100,7 +100,7 @@ class _TopAppBarExampleState extends State<TopAppBarExample> {
             ),
           ],
         ),
-        Text('Search', style: ZetaTextStyles.titleLarge),
+        Text('Search', style: Zeta.of(context).textStyles.titleLarge),
         ZetaTopAppBar.search(
           key: Key('docs-top-app-bar-search'),
           leading: IconButton(
@@ -118,7 +118,7 @@ class _TopAppBarExampleState extends State<TopAppBarExample> {
             _searchController.text = generatedText;
           },
         ),
-        Text('Extended', style: ZetaTextStyles.titleLarge),
+        Text('Extended', style: Zeta.of(context).textStyles.titleLarge),
         SizedBox(
           key: Key('docs-top-app-bar-extended'),
           height: 200,

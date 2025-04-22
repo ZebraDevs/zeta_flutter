@@ -25,9 +25,9 @@ class _IconsExampleState extends State<IconsExample> {
         child: Center(
           child: Column(
             children: [
-              Text('Zeta Icons v' + zetaIconsVersion, style: ZetaTextStyles.displayMedium)
+              Text('Zeta Icons v' + zetaIconsVersion, style: Zeta.of(context).textStyles.displayMedium)
                   .paddingAll(Zeta.of(context).spacing.xl_4),
-              Text('Tap icon to copy name to clipboard', style: ZetaTextStyles.titleMedium)
+              Text('Tap icon to copy name to clipboard', style: Zeta.of(context).textStyles.titleMedium)
                   .paddingAll(Zeta.of(context).spacing.xl_4),
               Wrap(
                 spacing: Zeta.of(context).spacing.xl_4,

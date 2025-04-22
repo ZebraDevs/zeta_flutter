@@ -74,17 +74,17 @@ class ZetaContactItem extends ZetaStatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               DefaultTextStyle(
-                                style: ZetaTextStyles.bodyMedium.copyWith(
-                                  color: colors.mainDefault,
-                                ),
+                                style: Zeta.of(context).textStyles.bodyMedium.copyWith(
+                                      color: colors.mainDefault,
+                                    ),
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,
                                 child: title,
                               ),
                               DefaultTextStyle(
-                                style: ZetaTextStyles.bodySmall.copyWith(
-                                  color: colors.mainSubtle,
-                                ),
+                                style: Zeta.of(context).textStyles.bodySmall.copyWith(
+                                      color: colors.mainSubtle,
+                                    ),
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,
                                 child: subtitle,

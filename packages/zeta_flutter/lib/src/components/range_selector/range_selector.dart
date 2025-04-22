@@ -180,9 +180,9 @@ class _ZetaRangeSelectorState extends State<ZetaRangeSelector> {
             if (widget.label != null)
               Text(
                 widget.label!,
-                style: ZetaTextStyles.bodySmall.copyWith(
-                  color: disabled ? colors.mainDisabled : colors.mainDefault,
-                ),
+                style: Zeta.of(context).textStyles.bodySmall.copyWith(
+                      color: disabled ? colors.mainDisabled : colors.mainDefault,
+                    ),
               ),
             Row(
               mainAxisSize: MainAxisSize.min,

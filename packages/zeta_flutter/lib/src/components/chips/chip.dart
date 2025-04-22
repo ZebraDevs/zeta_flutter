@@ -286,7 +286,7 @@ class _ZetaChipState extends State<ZetaChip> {
                   SizedBox.square(dimension: Zeta.of(context).spacing.small),
                 Text(
                   widget.label,
-                  style: ZetaTextStyles.bodySmall.apply(color: foregroundColor),
+                  style: Zeta.of(context).textStyles.bodySmall.apply(color: foregroundColor),
                 ),
                 if (widget.trailing != null) ...[
                   SizedBox.square(dimension: Zeta.of(context).spacing.small),

@@ -236,7 +236,7 @@ class _ZetaTimeInputState extends FormFieldState<TimeOfDay> {
         return Theme(
           data: Theme.of(context).copyWith(
             timePickerTheme: TimePickerThemeData(
-              dialTextStyle: ZetaTextStyles.bodySmall,
+              dialTextStyle: Zeta.of(context).textStyles.bodySmall,
               dialBackgroundColor: colors.surfacePrimarySubtle,
               dayPeriodColor: colors.mainPrimary,
               shape: RoundedRectangleBorder(

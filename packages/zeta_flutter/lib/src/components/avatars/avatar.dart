@@ -51,15 +51,15 @@ enum ZetaAvatarSize {
   double _fontSize(BuildContext context) => ZetaAvatar.fontSize(context, this);
 
   TextStyle _labelStyle(BuildContext context) => switch (this) {
-        ZetaAvatarSize.xxxl => ZetaTextStyles.displaySmall,
-        ZetaAvatarSize.xxl => ZetaTextStyles.bodyLarge,
-        ZetaAvatarSize.xl => ZetaTextStyles.bodyLarge,
-        ZetaAvatarSize.l => ZetaTextStyles.bodyMedium,
-        ZetaAvatarSize.m => ZetaTextStyles.bodySmall,
-        ZetaAvatarSize.s => ZetaTextStyles.bodyXSmall,
-        ZetaAvatarSize.xs => ZetaTextStyles.bodyXSmall,
-        ZetaAvatarSize.xxs => ZetaTextStyles.bodyXSmall,
-        ZetaAvatarSize.xxxs => ZetaTextStyles.bodyXSmall,
+        ZetaAvatarSize.xxxl => Zeta.of(context).textStyles.displaySmall,
+        ZetaAvatarSize.xxl => Zeta.of(context).textStyles.bodyLarge,
+        ZetaAvatarSize.xl => Zeta.of(context).textStyles.bodyLarge,
+        ZetaAvatarSize.l => Zeta.of(context).textStyles.bodyMedium,
+        ZetaAvatarSize.m => Zeta.of(context).textStyles.bodySmall,
+        ZetaAvatarSize.s => Zeta.of(context).textStyles.bodyXSmall,
+        ZetaAvatarSize.xs => Zeta.of(context).textStyles.bodyXSmall,
+        ZetaAvatarSize.xxs => Zeta.of(context).textStyles.bodyXSmall,
+        ZetaAvatarSize.xxxs => Zeta.of(context).textStyles.bodyXSmall,
       };
 }
 

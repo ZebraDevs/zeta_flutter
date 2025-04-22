@@ -47,7 +47,7 @@ class _PhoneInputExampleState extends State<PhoneInputExample> {
           Divider(color: Colors.grey[200]),
           Padding(
             padding: const EdgeInsets.only(top: 20),
-            child: Text('Disabled', style: ZetaTextStyles.titleMedium),
+            child: Text('Disabled', style: Zeta.of(context).textStyles.titleMedium),
           ),
           ZetaPhoneInput(
             label: 'Phone number',

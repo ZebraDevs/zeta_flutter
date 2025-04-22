@@ -242,7 +242,7 @@ class _ZetaFABState extends State<ZetaFAB> {
                       children: [
                         Text(
                           widget.label!,
-                          style: ZetaTextStyles.labelLarge.apply(color: foregroundColor),
+                          style: Zeta.of(context).textStyles.labelLarge.apply(color: foregroundColor),
                         ),
                       ],
                     ),
@@ -258,7 +258,7 @@ class _ZetaFABState extends State<ZetaFAB> {
             alignment: Alignment.center,
             child: Text(
               widget.label!,
-              style: ZetaTextStyles.bodyMedium,
+              style: Zeta.of(context).textStyles.bodyMedium,
               textAlign: TextAlign.center,
             ),
           ),

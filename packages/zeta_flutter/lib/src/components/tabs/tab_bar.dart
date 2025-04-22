@@ -29,12 +29,12 @@ class ZetaTabBar extends TabBar {
             borderRadius: BorderRadius.all(Zeta.of(context).radius.none),
           ),
           splashFactory: null,
-          labelStyle: ZetaTextStyles.labelLarge.copyWith(
-            color: onTap != null ? Zeta.of(context).colors.mainDefault : Zeta.of(context).colors.mainDisabled,
-          ),
-          unselectedLabelStyle: ZetaTextStyles.labelLarge.copyWith(
-            color: onTap != null ? Zeta.of(context).colors.mainSubtle : Zeta.of(context).colors.mainDisabled,
-          ),
+          labelStyle: Zeta.of(context).textStyles.labelLarge.copyWith(
+                color: onTap != null ? Zeta.of(context).colors.mainDefault : Zeta.of(context).colors.mainDisabled,
+              ),
+          unselectedLabelStyle: Zeta.of(context).textStyles.labelLarge.copyWith(
+                color: onTap != null ? Zeta.of(context).colors.mainSubtle : Zeta.of(context).colors.mainDisabled,
+              ),
           overlayColor: onTap == null ? WidgetStateProperty.all(Colors.transparent) : null,
           mouseCursor: onTap == null ? SystemMouseCursors.forbidden : SystemMouseCursors.click,
           dividerColor: Colors.transparent,
