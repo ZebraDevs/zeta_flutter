@@ -26,6 +26,7 @@ dev_dependencies:
     path: ../zeta_flutter
 
 flutter:
+  uses-material-design: true
   fonts:
     - family: IBMPlexSans
       fonts:

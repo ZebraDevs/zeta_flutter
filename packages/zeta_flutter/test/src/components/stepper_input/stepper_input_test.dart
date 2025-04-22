@@ -77,7 +77,7 @@ void main() {
 
       expect(value, 0);
 
-      await tester.tap(find.byIcon(ZetaIcons.add_round));
+      await tester.tap(find.byIcon(ZetaIcons.add));
       await tester.pump();
 
       expect(value, 1);

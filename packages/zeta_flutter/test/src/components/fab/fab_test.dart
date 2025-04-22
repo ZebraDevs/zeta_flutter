@@ -56,7 +56,7 @@ void main() {
           ),
         ),
       );
-      expect(find.byIcon(ZetaIcons.add_round), findsOneWidget);
+      expect(find.byIcon(ZetaIcons.add), findsOneWidget);
       final fabFinder = find.byType(ZetaFAB);
       final ZetaFAB fab = tester.firstWidget(fabFinder);
 
