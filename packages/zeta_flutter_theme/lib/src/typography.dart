@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../zeta_flutter_theme.dart';
 
+//TODO: Addd this back in with deprecation warnings.
 // /// Typography in Zeta style.
 // ///
 // /// We have decided to adopt IBM Plex Sans typeface for our digital solutions.
@@ -248,7 +249,7 @@ import '../zeta_flutter_theme.dart';
 //   labelSmall: Zeta.of(context).textStyles.labelSmall,
 // );
 
-/// Text styles?
+///TODO: What is the best name? Text styles?
 class ZetaText {
   /// Constructor for [ZetaText].
   const ZetaText({this.fontFamily = kZetaFontFamily});
@@ -345,6 +346,7 @@ class ZetaText {
         fontWeight: FontWeight.w500,
         height: 20 / 16,
         fontFamily: fontFamily,
+        //TODO: Add primitives to get colors here.
       );
 
   /// Smallest of the title styles.
