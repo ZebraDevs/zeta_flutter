@@ -183,8 +183,8 @@ class ZetaChatItem extends ZetaStatelessWidget {
                                                         maxLines: 1,
                                                         overflow: TextOverflow.ellipsis,
                                                         style: (highlighted
-                                                                ? ZetaTextStyles.labelLarge
-                                                                : ZetaTextStyles.bodyMedium)
+                                                                ? Zeta.of(context).textStyles.labelLarge
+                                                                : Zeta.of(context).textStyles.bodyMedium)
                                                             .copyWith(color: colors.mainDefault),
                                                         child: title,
                                                       ),
@@ -194,7 +194,7 @@ class ZetaChatItem extends ZetaStatelessWidget {
                                                         if (time != null)
                                                           Text(
                                                             _dateFormat.format(time!),
-                                                            style: ZetaTextStyles.bodyXSmall,
+                                                            style: Zeta.of(context).textStyles.bodyXSmall,
                                                           ),
                                                         IconTheme(
                                                           data: IconThemeData(
@@ -240,9 +240,10 @@ class ZetaChatItem extends ZetaStatelessWidget {
                                                                   ),
                                                                   child: Text(
                                                                     _count!,
-                                                                    style: ZetaTextStyles.labelSmall.copyWith(
-                                                                      color: colors.mainInverse,
-                                                                    ),
+                                                                    style:
+                                                                        Zeta.of(context).textStyles.labelSmall.copyWith(
+                                                                              color: colors.mainInverse,
+                                                                            ),
                                                                   ),
                                                                 ),
                                                             ],
@@ -264,9 +265,9 @@ class ZetaChatItem extends ZetaStatelessWidget {
                                                   child: DefaultTextStyle(
                                                     maxLines: 2,
                                                     overflow: TextOverflow.ellipsis,
-                                                    style: ZetaTextStyles.bodySmall.copyWith(
-                                                      color: colors.mainSubtle,
-                                                    ),
+                                                    style: Zeta.of(context).textStyles.bodySmall.copyWith(
+                                                          color: colors.mainSubtle,
+                                                        ),
                                                     child: subtitle!,
                                                   ),
                                                 ),

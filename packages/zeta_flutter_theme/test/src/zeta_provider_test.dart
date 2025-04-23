@@ -277,16 +277,19 @@ void main() {
 
     testWidgets('generateZetaTheme applies zeta values to existing theme', (WidgetTester tester) async {
       final ColorScheme colors = ColorScheme.fromSeed(seedColor: Colors.red);
+      const String fontFamily = 'Comic Sans';
+      const textStyles = ZetaTextStyle(fontFamily: fontFamily);
       final theme = generateZetaTheme(
         brightness: Brightness.light,
         colorScheme: const ZetaColorsAA(primitives: ZetaPrimitivesLight()).toColorScheme,
         existingTheme: ThemeData(
-          fontFamily: 'Comic Sans',
+          fontFamily: fontFamily,
           primaryColor: Colors.red,
           useMaterial3: false,
           scaffoldBackgroundColor: Colors.blue,
           colorScheme: colors,
         ),
+        textTheme: textStyles.textTheme,
       );
       expect(theme.useMaterial3, false);
       expect(theme.brightness, Brightness.light);
@@ -297,12 +300,13 @@ void main() {
         brightness: Brightness.light,
         colorScheme: colors,
         existingTheme: ThemeData(
-          fontFamily: 'Comic Sans',
+          fontFamily: fontFamily,
           primaryColor: Colors.red,
           useMaterial3: false,
           colorScheme: colors,
           scaffoldBackgroundColor: Colors.orange,
         ),
+        textTheme: textStyles.textTheme,
       );
       expect(theme2.useMaterial3, false);
       expect(theme2.brightness, Brightness.light);
@@ -313,10 +317,12 @@ void main() {
 
     testWidgets('generateZetaTheme generates a new theme', (WidgetTester tester) async {
       final colorScheme = const ZetaColorsAA(primitives: ZetaPrimitivesLight()).toColorScheme;
+      const textStyles = ZetaTextStyle();
 
       final theme = generateZetaTheme(
         brightness: Brightness.light,
         colorScheme: colorScheme,
+        textTheme: textStyles.textTheme,
       );
 
       expect(theme.useMaterial3, true);

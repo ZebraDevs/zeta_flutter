@@ -264,8 +264,8 @@ class _FabExampleState extends State<FabExample> {
         onPressed: theFab.onPressed,
       ),
       children: [
-        Text('Floating Action Buttons', style: ZetaTextStyles.displayMedium),
-        Text('Tap buttons to change current FAB: ', style: ZetaTextStyles.bodyMedium),
+        Text('Floating Action Buttons', style: Zeta.of(context).textStyles.displayMedium),
+        Text('Tap buttons to change current FAB: ', style: Zeta.of(context).textStyles.bodyMedium),
         Wrap(children: fabs.divide(SizedBox.square(dimension: 10)).toList()),
         SizedBox(height: 200),
         Column(

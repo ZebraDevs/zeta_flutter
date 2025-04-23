@@ -51,7 +51,7 @@ class ZetaLabel extends ZetaStatelessWidget {
         ),
         child: Text(
           label,
-          style: ZetaTextStyles.labelSmall.apply(color: foregroundColor),
+          style: Zeta.of(context).textStyles.labelSmall.apply(color: foregroundColor),
           overflow: TextOverflow.ellipsis,
         ),
       ),

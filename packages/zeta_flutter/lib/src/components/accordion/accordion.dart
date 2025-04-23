@@ -105,7 +105,7 @@ class _ZetaAccordionState extends State<ZetaAccordion> with TickerProviderStateM
   Widget build(BuildContext context) {
     final zetaColors = Zeta.of(context).colors;
     final borderColor = _disabled ? zetaColors.borderDisabled : zetaColors.borderSubtle;
-    final childTextStyle = ZetaTextStyles.h5.apply(color: zetaColors.mainDefault);
+    final childTextStyle = Zeta.of(context).textStyles.h5.apply(color: zetaColors.mainDefault);
     final rounded = context.rounded;
     final Color color = _disabled ? zetaColors.mainDisabled : zetaColors.mainDefault;
     return ZetaRoundedScope(
@@ -166,9 +166,9 @@ class _ZetaAccordionState extends State<ZetaAccordion> with TickerProviderStateM
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       DefaultTextStyle(
-                        style: ZetaTextStyles.titleMedium.apply(
-                          color: color,
-                        ),
+                        style: Zeta.of(context).textStyles.titleMedium.apply(
+                              color: color,
+                            ),
                         child: Flexible(child: Text(widget.title)),
                       ),
                       Padding(

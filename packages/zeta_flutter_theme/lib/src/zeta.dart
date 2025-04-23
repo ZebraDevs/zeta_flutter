@@ -1,9 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'color_extensions.dart';
-import 'contrast.dart';
-import 'generated/tokens/primitives.g.dart';
-import 'generated/tokens/semantics.g.dart';
+import '../zeta_flutter_theme.dart';
 
 /// An [InheritedWidget] that provides access to Zeta theme settings.
 ///
@@ -20,7 +17,7 @@ class Zeta extends InheritedWidget {
     this.customThemeId,
     ZetaPrimitives? customPrimitives,
     ZetaSemantics? customSemantics,
-    // String? fontFamily, TODO(tokens): Add support for custom fonts
+    this.textStyles = const ZetaTextStyle(),
   })  : _customPrimitives = customPrimitives,
         _customSemantics = customSemantics;
 
@@ -59,6 +56,9 @@ class Zeta extends InheritedWidget {
   /// The ID of the current custom theme.
   /// Set to null if no custom theme is being used.
   final String? customThemeId;
+
+  /// Font family.
+  final ZetaTextStyle textStyles;
 
   /// Provides the color set based on the current theme mode.
   ///
@@ -134,6 +134,7 @@ class Zeta extends InheritedWidget {
       ..add(DiagnosticsProperty<ZetaSemantics>('semantics', semantics))
       ..add(EnumProperty<ZetaContrast>('contrast', contrast))
       ..add(EnumProperty<ThemeMode>('themeMode', themeMode))
-      ..add(StringProperty('customThemeId', customThemeId));
+      ..add(StringProperty('customThemeId', customThemeId))
+      ..add(DiagnosticsProperty<ZetaTextStyle>('textStyles', textStyles));
   }
 }

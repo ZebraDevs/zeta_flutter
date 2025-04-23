@@ -76,10 +76,10 @@ class ZetaSystemBanner extends MaterialBanner {
                 child: Semantics(
                   label: semanticLabel ?? title,
                   child: DefaultTextStyle(
-                    style: ZetaTextStyles.labelLarge.copyWith(
-                      color: foregroundColor,
-                      overflow: TextOverflow.ellipsis,
-                    ),
+                    style: Zeta.of(context).textStyles.labelLarge.copyWith(
+                          color: foregroundColor,
+                          overflow: TextOverflow.ellipsis,
+                        ),
                     child: Stack(
                       alignment: titleCenter ? Alignment.center : Alignment.centerLeft,
                       children: [
@@ -100,9 +100,9 @@ class ZetaSystemBanner extends MaterialBanner {
                               !titleCenter && leadingIcon != null ? const EdgeInsets.only(left: 40) : EdgeInsets.zero,
                           child: Text(
                             title,
-                            style: ZetaTextStyles.labelLarge.copyWith(
-                              color: foregroundColor,
-                            ),
+                            style: Zeta.of(context).textStyles.labelLarge.copyWith(
+                                  color: foregroundColor,
+                                ),
                           ),
                         ),
                         if (trailing != null)

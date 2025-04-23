@@ -87,7 +87,8 @@ class ZetaMenuItem extends ZetaStatelessWidget {
         final radius = Zeta.of(context).radius;
 
         final Widget text = DefaultTextStyle(
-          style: ZetaTextStyles.labelLarge.apply(color: _enabled ? colors.mainDefault : colors.mainDisabled),
+          style:
+              Zeta.of(context).textStyles.labelLarge.apply(color: _enabled ? colors.mainDefault : colors.mainDisabled),
           child: label,
         );
 

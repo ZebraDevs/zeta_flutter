@@ -82,11 +82,13 @@ return ZetaProvider(
   initialRounded: false,
   initialTheme: 'purple',
   initialThemeMode: ThemeMode.dark,
+  font: GoogleFonts.roboto().fontFamily,
   builder: (context, lightTheme, darkTheme, themeMode) {
-    return MaterialApp.router(
-      routerConfig: router,
+    return MaterialApp(
       themeMode: themeMode,
       theme: lightTheme,
+      darkTheme: darkTheme,
+      ...
     );
   },
 );
@@ -122,40 +124,24 @@ Zeta also lets you define the initial contrast setting for your app. By default,
 initialContrast: ZetaContrast.aa
 ```
 
-### Constructing the ZetaProvider
+### Adding a custom font
 
-To tie everything together, use the `ZetaProvider` constructor. The `builder` argument is mandatory, while the others are optional but allow you to set initial values:
+By default, Zeta Flutter add IBM Plex Sans as the font for your app. This can be changed by providing a `fontFamily` to the ZetaProvider. This will override IBM Plex Sans in all cases. The following example uses the GoogleFonts package, but this is not required; follow [this guide](https://docs.flutter.dev/cookbook/design/fonts) for adding custom fonts.
 
 ```dart
- @override
-  Widget build(BuildContext context) {
-    return ZetaProvider(
-
-      builder: (context, themeData, themeMode) {
-        final dark = themeData.colorsDark.toScheme();
-        final light = themeData.colorsLight.toScheme();
-        return MaterialApp.router(
-          routerConfig: router,
-          themeMode: themeMode,
-          theme: ThemeData(
-            fontFamily: themeData.fontFamily,
-            scaffoldBackgroundColor: light.surfaceTertiary,
-            colorScheme: light,
-          ),
-          darkTheme: ThemeData(
-            fontFamily: themeData.fontFamily,
-            scaffoldBackgroundColor: dark.surfaceTertiary,
-            colorScheme: dark,
-          ),
-        );
-      },
-    );
-  }
+fontFamily: GoogleFonts.roboto().fontFamily
 ```
 
-### Customization
+If you only want to change the font of some text styles, you can use the `apply` function:
 
-#### Creating custom themes
+```dart
+Text(
+ 'Hi',
+ style: Zeta.of(context).textStyles.bodySmall.copyWith(fontFamily: GoogleFonts.kablammo().fontFamily),
+)
+```
+
+### Creating custom themes
 
 Custom themes can be made by creating `ZetaCustomTheme` objects. `ZetaCustomTheme` can be constructed by passing in a primary or secondary color and, optionally, their dark variants:
 
@@ -169,17 +155,17 @@ ZetaCustomTheme(
 )
 ```
 
-Color arguments can be of type `ZetaColorSwatch`, `MaterialColor`, or `Color`. If only a `Color` is provided, Zeta will generate a `ZetaColorSwatch`. <b>To have control over every shade of a given color, we reccomend providing either a `ZetaColorSwatch` or a `MaterialColor`.</b>
+Color arguments can be of type `ZetaColorSwatch`, `MaterialColor`, or `Color`. If only a `Color` is provided, Zeta will generate a `ZetaColorSwatch`. <b>To have control over every shade of a given color, we recommend providing either a `ZetaColorSwatch` or a `MaterialColor`.</b>
 
 If a dark variant of a color is not provided, Zeta generate one by inverting the corresponding color swatch.
 
 #### Adding custom themes
 
-Once you have defined the custom themes for your app, give them to the ZetaProvider by passing them through the construtor. You can also initialize the custom theme by setting the `initialTheme` argument to the id of the desired theme.
+Once you have defined the custom themes for your app, give them to the ZetaProvider by passing them through the constructor. You can also initialize the custom theme by setting the `initialTheme` argument to the id of the desired theme.
 
 ```dart
   ZetaProvider(
-    initialTheme: 'custom-theme-red'
+    initialTheme: 'custom-theme-red',
     customThemes: [
       ZetaCustomTheme(
         id: 'custom-theme-red',
@@ -191,7 +177,7 @@ Once you have defined the custom themes for your app, give them to the ZetaProvi
         primary: Colors.purple,
         secondary: Colors.green
       ),
-    ]
+    ],
   )
 ```
 
@@ -215,6 +201,44 @@ You can fetch the id of the currently applied custom theme via the `Zeta` object
 This will return null if no custom theme is in use.
 
 With these configurations, Zeta makes it easy to achieve consistent theming throughout your Flutter application.
+
+### Constructing the ZetaProvider
+
+To tie everything together, use the `ZetaProvider` constructor. The `builder` argument is mandatory, while the others are optional but allow you to set initial values:
+
+```dart
+ @override
+  Widget build(BuildContext context) {
+    return ZetaProvider(
+      initialContrast: ZetaContrast.aaa,
+      customLoadingWidget: CircularProgressIndicator.adaptive(),
+      initialRounded: false,
+      initialThemeMode: ThemeMode.dark,
+      font: GoogleFonts.roboto().fontFamily,
+      initialTheme: 'custom-theme-red',
+      customThemes: [
+        ZetaCustomTheme(
+          id: 'custom-theme-red',
+          primary: Colors.red,
+          secondary: Colors.purple
+        ),
+        ZetaCustomTheme(
+          id: 'custom-theme-purple',
+          primary: Colors.purple,
+          secondary: Colors.green
+        ),
+      ],
+      builder: (context, lightTheme, darkTheme, themeMode) {
+        return MaterialApp(
+          themeMode: themeMode,
+          theme: lightTheme,
+          darkTheme: darkTheme,
+          ...
+        );
+      },
+    );
+  }
+```
 
 ## Licensing
 

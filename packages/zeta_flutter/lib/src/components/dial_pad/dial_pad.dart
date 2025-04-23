@@ -220,8 +220,8 @@ class ZetaDialPadButton extends StatelessWidget {
             child: Column(
               children: [
                 SizedBox(height: topPadding),
-                Text(primary, style: ZetaTextStyles.heading1),
-                if (topPadding < 10) Text(secondary, style: ZetaTextStyles.labelIndicator),
+                Text(primary, style: Zeta.of(context).textStyles.heading1),
+                if (topPadding < 10) Text(secondary, style: Zeta.of(context).textStyles.labelIndicator),
               ],
             ),
           ),

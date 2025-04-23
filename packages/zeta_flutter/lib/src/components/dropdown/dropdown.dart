@@ -486,7 +486,7 @@ class _DropdownItemState<T> extends State<_DropdownItem<T>> {
     return ExcludeSemantics(
       excluding: !widget.explicitChildNodes,
       child: DefaultTextStyle(
-        style: ZetaTextStyles.bodyMedium,
+        style: Zeta.of(context).textStyles.bodyMedium,
         child: OutlinedButton(
           key: widget.itemKey,
           onPressed: widget.onPress,
@@ -504,7 +504,7 @@ class _DropdownItemState<T> extends State<_DropdownItem<T>> {
                 Expanded(
                   child: Text(
                     widget.value.label,
-                    style: ZetaTextStyles.bodyMedium.copyWith(color: colors.mainDefault, height: 1.5),
+                    style: Zeta.of(context).textStyles.bodyMedium.copyWith(color: colors.mainDefault, height: 1.5),
                   ),
                 ),
               ],

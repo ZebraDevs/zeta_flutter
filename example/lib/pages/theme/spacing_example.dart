@@ -90,11 +90,11 @@ class _SpacingDemo extends StatelessWidget {
             color: colors.surfaceDefault,
             child: Text(
               'Zeta.of(context).spacing.' + size.key,
-              style: ZetaTextStyles.titleMedium.apply(
-                color: Zeta.of(context).colors.mainDefault,
-                fontStyle: FontStyle.normal,
-                decoration: TextDecoration.none,
-              ),
+              style: Zeta.of(context).textStyles.titleMedium.apply(
+                    color: Zeta.of(context).colors.mainDefault,
+                    fontStyle: FontStyle.normal,
+                    decoration: TextDecoration.none,
+                  ),
             ),
           );
         }),

@@ -27,8 +27,10 @@ class ZetaInputLabel extends ZetaStatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colors = Zeta.of(context).colors;
-    const textStyle = ZetaTextStyles.bodyMedium;
+    final Zeta zeta = Zeta.of(context);
+    final colors = zeta.colors;
+    final textStyles = zeta.textStyles;
+    final textStyle = textStyles.bodyMedium;
 
     Widget? requirementWidget;
 
@@ -40,7 +42,7 @@ class ZetaInputLabel extends ZetaStatelessWidget {
     } else if (requirementLevel == ZetaFormFieldRequirement.mandatory) {
       requirementWidget = Text(
         '*',
-        style: ZetaTextStyles.labelIndicator.copyWith(
+        style: textStyles.labelIndicator.copyWith(
           color: disabled ? colors.mainDisabled : colors.mainNegative,
         ),
       );

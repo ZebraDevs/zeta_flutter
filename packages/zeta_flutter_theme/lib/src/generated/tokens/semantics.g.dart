@@ -239,6 +239,7 @@ abstract interface class ZetaColors {
   ///
   /// * Light Mode: #005f38
   /// * Dark Mode: #beefdb
+  @Deprecated('Use mainPositive instead.')
   Color get iconFlavorPositive;
 
   /// icon/flavor/warning
@@ -252,6 +253,7 @@ abstract interface class ZetaColors {
   ///
   /// * Light Mode: #764502
   /// * Dark Mode: #ffd292
+  @Deprecated('Use mainWarning instead.')
   Color get iconFlavorWarning;
 
   /// icon/flavor/negative
@@ -265,6 +267,7 @@ abstract interface class ZetaColors {
   ///
   /// * Light Mode: #8f000e
   /// * Dark Mode: #ffb3bb
+  @Deprecated('Use mainNegative instead.')
   Color get iconFlavorNegative;
 
   /// icon/flavor/info
@@ -278,6 +281,7 @@ abstract interface class ZetaColors {
   ///
   /// * Light Mode: #43008f
   /// * Dark Mode: #dcc1fb
+  @Deprecated('Use mainInfo instead.')
   Color get iconFlavorInfo;
 
   /// border/default

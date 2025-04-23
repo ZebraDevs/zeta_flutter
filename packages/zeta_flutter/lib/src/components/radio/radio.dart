@@ -110,11 +110,12 @@ class _ZetaRadioState<T> extends State<ZetaRadio<T>> with TickerProviderStateMix
                     if (widget.label != null &&
                         ((widget.label is Text && (widget.label! as Text).data != '') || (widget.label is! Text)))
                       DefaultTextStyle(
-                        style: ZetaTextStyles.bodyMedium.copyWith(
-                          color:
-                              states.contains(WidgetState.disabled) ? zetaColors.mainDisabled : zetaColors.mainDefault,
-                          height: 4 / 3,
-                        ),
+                        style: Zeta.of(context).textStyles.bodyMedium.copyWith(
+                              color: states.contains(WidgetState.disabled)
+                                  ? zetaColors.mainDisabled
+                                  : zetaColors.mainDefault,
+                              height: 4 / 3,
+                            ),
                         child: widget.label!,
                       ).paddingEnd(Zeta.of(context).spacing.minimum),
                   ],

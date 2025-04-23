@@ -125,6 +125,7 @@ class ZetaDialog extends ZetaStatelessWidget {
             label: tertiaryButtonLabel!,
           );
     final hasButton = primaryButton != null || secondaryButton != null || tertiaryButton != null;
+    final textStyles = zeta.textStyles;
 
     return ZetaRoundedScope(
       rounded: context.rounded,
@@ -166,7 +167,7 @@ class ZetaDialog extends ZetaStatelessWidget {
                 right: Zeta.of(context).spacing.xl_6,
                 top: Zeta.of(context).spacing.xl_2,
               ),
-        titleTextStyle: zetaTextTheme.headlineSmall?.copyWith(
+        titleTextStyle: textStyles.heading3.copyWith(
           color: zeta.colors.mainDefault,
         ),
         content: Text(message),
@@ -179,8 +180,8 @@ class ZetaDialog extends ZetaStatelessWidget {
                 bottom: Zeta.of(context).spacing.xl_2,
               ),
         contentTextStyle: context.deviceType == DeviceType.mobilePortrait
-            ? zetaTextTheme.bodySmall?.copyWith(color: zeta.colors.mainDefault)
-            : zetaTextTheme.bodyMedium?.copyWith(color: zeta.colors.mainDefault),
+            ? textStyles.bodySmall.copyWith(color: zeta.colors.mainDefault)
+            : textStyles.bodyMedium.copyWith(color: zeta.colors.mainDefault),
         actions: [
           if (context.deviceType == DeviceType.mobilePortrait)
             Column(

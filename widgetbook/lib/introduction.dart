@@ -78,7 +78,9 @@ class _IntroductionWidgetbookState extends State<IntroductionWidgetbook> {
                                 // x-release-please-start-version
                                 'zeta_flutter v1.0.0',
                                 // x-release-please-end
-                                style: ZetaTextStyles.displayLarge
+                                style: Zeta.of(context)
+                                    .textStyles
+                                    .displayLarge
                                     .copyWith(fontSize: largeScreen ? null : 24, color: colors.mainDefault),
                               ),
                             ),
@@ -102,9 +104,9 @@ class _IntroductionWidgetbookState extends State<IntroductionWidgetbook> {
                             config: config.copy(
                               configs: [
                                 PConfig(
-                                  textStyle: ZetaTextStyles.bodyMedium.apply(
-                                    color: colors.mainDefault,
-                                  ),
+                                  textStyle: Zeta.of(context).textStyles.bodyMedium.apply(
+                                        color: colors.mainDefault,
+                                      ),
                                 ),
                                 LinkConfig(
                                   style: TextStyle(

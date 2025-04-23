@@ -166,7 +166,7 @@ class ZetaNotificationListItem extends ZetaStatelessWidget {
                                           ),
                                           Text(
                                             title,
-                                            style: ZetaTextStyles.labelLarge,
+                                            style: Zeta.of(context).textStyles.labelLarge,
                                           ),
                                         ],
                                       ),
@@ -176,9 +176,9 @@ class ZetaNotificationListItem extends ZetaStatelessWidget {
                                         if (notificationTime != null)
                                           Text(
                                             notificationTime!,
-                                            style: ZetaTextStyles.bodySmall.apply(
-                                              color: colors.mainDisabled,
-                                            ),
+                                            style: Zeta.of(context).textStyles.bodySmall.apply(
+                                                  color: colors.mainDisabled,
+                                                ),
                                           ),
                                         if (showBellIcon ?? false)
                                           Container(
@@ -213,7 +213,8 @@ class ZetaNotificationListItem extends ZetaStatelessWidget {
                                           color: colors.mainPrimary,
                                         ),
                                         DefaultTextStyle(
-                                          style: ZetaTextStyles.bodyXSmall.apply(color: colors.mainPrimary),
+                                          style:
+                                              Zeta.of(context).textStyles.bodyXSmall.apply(color: colors.mainPrimary),
                                           child: attachment!,
                                         ),
                                       ],

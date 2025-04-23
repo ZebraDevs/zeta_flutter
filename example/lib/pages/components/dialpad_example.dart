@@ -28,7 +28,7 @@ class _DialPadExampleState extends State<DialPadExample> {
             SizedBox(
               child: Text(
                 number,
-                style: ZetaTextStyles.heading3,
+                style: Zeta.of(context).textStyles.heading3,
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
                 textAlign: TextAlign.center,
@@ -50,7 +50,7 @@ class _DialPadExampleState extends State<DialPadExample> {
             const Nothing(),
             Text(
               text,
-              style: ZetaTextStyles.heading3,
+              style: Zeta.of(context).textStyles.heading3,
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
               textAlign: TextAlign.center,

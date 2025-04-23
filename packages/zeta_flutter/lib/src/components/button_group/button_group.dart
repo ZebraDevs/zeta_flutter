@@ -360,7 +360,7 @@ class _ZetaGroupButtonState extends State<ZetaGroupButton> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 leadingIcon ?? const Nothing(),
-                Text(selectedItem?.label ?? widget.label ?? '', style: ZetaTextStyles.labelMedium),
+                Text(selectedItem?.label ?? widget.label ?? '', style: Zeta.of(context).textStyles.labelMedium),
                 if (widget.items != null)
                   Icon(
                     dropdownIcon,

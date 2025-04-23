@@ -106,9 +106,9 @@ class _Child extends StatelessWidget {
       ),
       child: Text(
         label,
-        style: ZetaTextStyles.bodyXSmall.copyWith(
-          color: Zeta.of(context).colors.mainDefault,
-        ),
+        style: Zeta.of(context).textStyles.bodyXSmall.copyWith(
+              color: Zeta.of(context).colors.mainDefault,
+            ),
       ),
     );
   }

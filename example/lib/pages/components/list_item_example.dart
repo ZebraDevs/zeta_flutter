@@ -21,6 +21,8 @@ class _ListItemExampleState extends State<ListItemExample> {
 
   @override
   Widget build(BuildContext context) {
+    final textStyle = Zeta.of(context).textStyles.bodyLarge;
+
     return ExampleScaffold(
       name: ListItemExample.name,
       paddingAll: 0,
@@ -86,46 +88,55 @@ class _ListItemExampleState extends State<ListItemExample> {
           },
         ),
         _buildListItem(
-            'No Icon',
-            ZetaListItem(
-              primaryText: 'List Item',
-              secondaryText: 'Descriptor',
-            )),
+          'No Icon',
+          ZetaListItem(
+            primaryText: 'List Item',
+            secondaryText: 'Descriptor',
+          ),
+          textStyle,
+        ),
         _buildListItem(
-            'Custom Title',
-            ZetaListItem(
-              title: ZetaButton(
-                label: 'Custom Title Button',
-                onPressed: () {},
-              ),
-            )),
+          'Custom Title',
+          ZetaListItem(
+            title: ZetaButton(
+              label: 'Custom Title Button',
+              onPressed: () {},
+            ),
+          ),
+          textStyle,
+        ),
         _buildListItem(
           'Icon Left',
           ZetaListItem(primaryText: 'List Item', leading: Icon(ZetaIcons.star)),
+          textStyle,
         ),
         _buildListItem(
-            'Toggle Right',
-            ZetaListItem.toggle(
-              primaryText: 'List Item',
-              value: _switchChecked,
-              onChanged: (value) {
-                setState(() {
-                  _switchChecked = value!;
-                });
-              },
-            )),
+          'Toggle Right',
+          ZetaListItem.toggle(
+            primaryText: 'List Item',
+            value: _switchChecked,
+            onChanged: (value) {
+              setState(() {
+                _switchChecked = value!;
+              });
+            },
+          ),
+          textStyle,
+        ),
         _buildListItem(
-            'Checkbox Right',
-            ZetaListItem.checkbox(
-              primaryText: 'List Item',
-              value: _checkboxChecked,
-              onChanged: (value) {
-                print(value);
-                setState(() {
-                  _checkboxChecked = value;
-                });
-              },
-            )),
+          'Checkbox Right',
+          ZetaListItem.checkbox(
+            primaryText: 'List Item',
+            value: _checkboxChecked,
+            onChanged: (value) {
+              print(value);
+              setState(() {
+                _checkboxChecked = value;
+              });
+            },
+          ),
+          textStyle,
+        ),
         _buildListItem(
           'Radio Right',
           Column(
@@ -152,6 +163,7 @@ class _ListItemExampleState extends State<ListItemExample> {
               ),
             ],
           ),
+          textStyle,
         ),
         _buildListItem(
           'Dropdown list',
@@ -163,23 +175,22 @@ class _ListItemExampleState extends State<ListItemExample> {
             ],
             expanded: true,
             primaryText: 'List Item',
-            leading: Icon(
-              ZetaIcons.star,
-            ),
+            leading: Icon(ZetaIcons.star),
           ),
+          textStyle,
         ),
       ].divide(const SizedBox(height: 16)).toList(),
     );
   }
 }
 
-Widget _buildListItem(String name, Widget listItem) {
+Widget _buildListItem(String name, Widget listItem, TextStyle textStyle) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
       Text(
         name,
-        style: ZetaTextStyles.bodyLarge,
+        style: textStyle,
       ),
       const SizedBox(height: 8),
       listItem,

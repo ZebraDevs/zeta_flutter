@@ -243,10 +243,10 @@ class _ZetaDateInputState extends FormFieldState<DateTime> {
                 borderRadius:
                     BorderRadius.all(rounded ? Zeta.of(context).radius.rounded : Zeta.of(context).radius.none),
               ),
-              headerHeadlineStyle: ZetaTextStyles.titleLarge,
-              headerHelpStyle: ZetaTextStyles.labelLarge,
+              headerHeadlineStyle: Zeta.of(context).textStyles.titleLarge,
+              headerHelpStyle: Zeta.of(context).textStyles.labelLarge,
               dividerColor: colors.borderSubtle,
-              dayStyle: ZetaTextStyles.bodyMedium,
+              dayStyle: Zeta.of(context).textStyles.bodyMedium,
             ),
           ),
           child: child!,

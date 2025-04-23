@@ -228,13 +228,13 @@ class _ZetaNavigationRailItemContentState extends State<_ZetaNavigationRailItemC
                         Text(
                           (widget.wordWrap ?? true) ? widget.label.replaceAll(' ', '\n') : widget.label,
                           textAlign: TextAlign.center,
-                          style: ZetaTextStyles.titleSmall.copyWith(
-                            color: widget.disabled
-                                ? zeta.colors.mainDisabled
-                                : widget.selected || _hovered
-                                    ? zeta.colors.mainDefault
-                                    : zeta.colors.mainSubtle,
-                          ),
+                          style: Zeta.of(context).textStyles.titleSmall.copyWith(
+                                color: widget.disabled
+                                    ? zeta.colors.mainDisabled
+                                    : widget.selected || _hovered
+                                        ? zeta.colors.mainDefault
+                                        : zeta.colors.mainSubtle,
+                              ),
                         ),
                       ],
                     ),

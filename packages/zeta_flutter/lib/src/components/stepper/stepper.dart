@@ -210,9 +210,9 @@ class StepIcon extends StatelessWidget {
               )
             : Text(
                 (index + 1).toString(),
-                style: ZetaTextStyles.labelLarge.copyWith(
-                  color: colors.mainInverse,
-                ),
+                style: Zeta.of(context).textStyles.labelLarge.copyWith(
+                      color: colors.mainInverse,
+                    ),
               ),
       ),
     );
@@ -356,9 +356,9 @@ class HorizontalStep extends StatelessWidget {
                 ),
               ),
               DefaultTextStyle(
-                style: ZetaTextStyles.bodySmall.copyWith(
-                  color: step.disabled ? colors.mainDisabled : colors.mainDefault,
-                ),
+                style: Zeta.of(context).textStyles.bodySmall.copyWith(
+                      color: step.disabled ? colors.mainDisabled : colors.mainDefault,
+                    ),
                 child: step.title,
               ),
             ],
@@ -450,18 +450,18 @@ class VerticalStep extends StatelessWidget {
                 children: [
                   if (step.subtitle != null)
                     AnimatedDefaultTextStyle(
-                      style: ZetaTextStyles.bodyMedium.copyWith(
-                        color: _getElementColor(context, step.disabled, completed),
-                      ),
+                      style: Zeta.of(context).textStyles.bodyMedium.copyWith(
+                            color: _getElementColor(context, step.disabled, completed),
+                          ),
                       maxLines: 1,
                       duration: kThemeAnimationDuration,
                       curve: Curves.fastOutSlowIn,
                       child: step.subtitle!,
                     ),
                   DefaultTextStyle(
-                    style: ZetaTextStyles.titleLarge.copyWith(
-                      color: step.disabled ? colors.mainDisabled : colors.mainDefault,
-                    ),
+                    style: Zeta.of(context).textStyles.titleLarge.copyWith(
+                          color: step.disabled ? colors.mainDisabled : colors.mainDefault,
+                        ),
                     maxLines: 1,
                     child: step.title,
                   ),

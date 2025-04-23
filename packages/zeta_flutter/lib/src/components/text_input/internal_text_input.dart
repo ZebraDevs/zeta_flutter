@@ -190,9 +190,9 @@ class InternalTextInputState extends State<InternalTextInput> {
   }
 
   TextStyle get _baseTextStyle {
-    TextStyle style = ZetaTextStyles.bodyMedium;
+    TextStyle style = Zeta.of(context).textStyles.bodyMedium;
     if (widget.size == ZetaWidgetSize.small) {
-      style = ZetaTextStyles.bodyXSmall;
+      style = Zeta.of(context).textStyles.bodyXSmall;
     }
     return style;
   }

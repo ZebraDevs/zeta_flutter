@@ -149,7 +149,7 @@ class _ColorExampleState extends State<ColorExample> {
             padding: EdgeInsets.all(Zeta.of(context).spacing.medium),
             child: Column(
               children: [
-                Text('Semantic colors', style: ZetaTextStyles.displaySmall),
+                Text('Semantic colors', style: Zeta.of(context).textStyles.displaySmall),
                 MyRow(children: mainColors, title: 'Main Colors'),
                 MyRow(children: borderColors, title: 'Main Colors'),
                 MyRow(children: surfaceColors, title: 'Surface Colors'),
@@ -163,7 +163,7 @@ class _ColorExampleState extends State<ColorExample> {
                 MyRow(children: info, title: 'State / info  Colors'),
                 MyRow(children: inverse, title: 'State / inverse  Colors'),
                 Row(children: [
-                  Text('Primitive colors', style: ZetaTextStyles.displayMedium),
+                  Text('Primitive colors', style: Zeta.of(context).textStyles.displayMedium),
                 ]).paddingVertical(Zeta.of(context).spacing.xl_4),
                 Row(
                   children: primitivesPure.entries
@@ -223,7 +223,7 @@ class SwatchBox extends StatelessWidget {
         fit: BoxFit.scaleDown,
         child: Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
           DefaultTextStyle(
-            style: ZetaTextStyles.bodyMedium.copyWith(color: calculateTextColor(color)),
+            style: Zeta.of(context).textStyles.bodyMedium.copyWith(color: calculateTextColor(color)),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -258,7 +258,7 @@ class MyRow extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(title, style: ZetaTextStyles.labelLarge),
+                Text(title, style: Zeta.of(context).textStyles.labelLarge),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,
@@ -275,7 +275,10 @@ class MyRow extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
                                 DefaultTextStyle(
-                                  style: ZetaTextStyles.bodyMedium.copyWith(color: calculateTextColor(e.value)),
+                                  style: Zeta.of(context)
+                                      .textStyles
+                                      .bodyMedium
+                                      .copyWith(color: calculateTextColor(e.value)),
                                   child: Column(
                                     children: [
                                       Text(e.key),
