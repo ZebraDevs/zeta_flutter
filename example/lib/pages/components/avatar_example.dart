@@ -650,22 +650,22 @@ class AvatarBadgeExample extends StatelessWidget {
                 ZetaAvatarBadge(
                   icon: ZetaIcons.check_mark,
                   type: ZetaAvatarBadgeType.icon,
-                  color: Zeta.of(context).colors.iconFlavorPositive,
+                  color: Zeta.of(context).colors.mainPositive,
                 ),
                 ZetaAvatarBadge(
                   icon: ZetaIcons.star,
                   type: ZetaAvatarBadgeType.icon,
-                  color: Zeta.of(context).colors.iconFlavorWarning,
+                  color: Zeta.of(context).colors.mainWarning,
                 ),
                 ZetaAvatarBadge(
                   icon: ZetaIcons.chevron_left,
                   type: ZetaAvatarBadgeType.icon,
-                  color: Zeta.of(context).colors.iconFlavorNegative,
+                  color: Zeta.of(context).colors.mainNegative,
                 ),
                 ZetaAvatarBadge(
                   icon: ZetaIcons.last_page,
                   type: ZetaAvatarBadgeType.icon,
-                  color: Zeta.of(context).colors.iconFlavorInfo,
+                  color: Zeta.of(context).colors.mainInfo,
                 ),
                 ZetaAvatarBadge(
                   icon: ZetaIcons.barcode_bluetooth,
