@@ -40,6 +40,7 @@ class ZetaProvider extends StatefulWidget with Diagnosticable {
     this.initialTheme,
     this.customLoadingWidget,
     this.fontFamily,
+    this.customTextColor,
   });
 
   /// Specifies the initial theme mode for the app.
@@ -78,6 +79,11 @@ class ZetaProvider extends StatefulWidget with Diagnosticable {
   /// The default font is IBM Plex Sans.
   final String? fontFamily;
 
+  /// A custom text color to be used in the app.
+  ///
+  /// Leave as null to use the default text color.
+  final Color? customTextColor;
+
   @override
   State<ZetaProvider> createState() => ZetaProviderState();
 
@@ -92,7 +98,8 @@ class ZetaProvider extends StatefulWidget with Diagnosticable {
       ..add(DiagnosticsProperty<bool?>('initialRounded', initialRounded))
       ..add(IterableProperty<ZetaCustomTheme>('customThemes', customThemes))
       ..add(StringProperty('initialTheme', initialTheme))
-      ..add(StringProperty('fontFamily', fontFamily));
+      ..add(StringProperty('fontFamily', fontFamily))
+      ..add(ColorProperty('customTextColor', customTextColor));
   }
 
   /// Retrieves the [ZetaProviderState] from the provided context.
@@ -283,6 +290,7 @@ class ZetaProviderState extends State<ZetaProvider> with Diagnosticable, Widgets
       customTheme: _customTheme,
       customThemes: customThemes,
       fontFamily: widget.fontFamily ?? kZetaFontFamily,
+      customTextColor: widget.customTextColor,
     );
   }
 
@@ -379,6 +387,7 @@ class InternalProvider extends StatefulWidget {
     required this.customTheme,
     required this.customThemes,
     required this.fontFamily,
+    this.customTextColor,
   });
 
   ///  Current custom theme.
@@ -402,6 +411,11 @@ class InternalProvider extends StatefulWidget {
   /// A font to be used in the app.
   final String fontFamily;
 
+  /// A custom text color to be used in the app.
+  ///
+  /// Leave as null to use the default text color.
+  final Color? customTextColor;
+
   @override
   State<InternalProvider> createState() => InternalProviderState();
 
@@ -415,7 +429,8 @@ class InternalProvider extends StatefulWidget {
       ..add(ObjectFlagProperty<ZetaAppBuilder>.has('widget', widget))
       ..add(DiagnosticsProperty<ZetaCustomTheme?>('customTheme', customTheme))
       ..add(IterableProperty<ZetaCustomTheme>('customThemes', customThemes))
-      ..add(StringProperty('fontFamily', fontFamily));
+      ..add(StringProperty('fontFamily', fontFamily))
+      ..add(ColorProperty('customTextColor', customTextColor));
   }
 }
 
@@ -426,7 +441,7 @@ class InternalProvider extends StatefulWidget {
 class InternalProviderState extends State<InternalProvider> {
   @override
   Widget build(BuildContext context) {
-    final textStyles = ZetaText(fontFamily: widget.fontFamily);
+    final textStyles = ZetaTextStyle(fontFamily: widget.fontFamily);
     return Zeta(
       themeMode: widget.themeMode,
       contrast: widget.contrast,

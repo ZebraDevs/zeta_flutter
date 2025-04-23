@@ -17,7 +17,7 @@ class Zeta extends InheritedWidget {
     this.customThemeId,
     ZetaPrimitives? customPrimitives,
     ZetaSemantics? customSemantics,
-    this.textStyles = const ZetaText(),
+    this.textStyles = const ZetaTextStyle(),
   })  : _customPrimitives = customPrimitives,
         _customSemantics = customSemantics;
 
@@ -58,7 +58,7 @@ class Zeta extends InheritedWidget {
   final String? customThemeId;
 
   /// Font family.
-  final ZetaText textStyles;
+  final ZetaTextStyle textStyles;
 
   /// Provides the color set based on the current theme mode.
   ///
@@ -135,6 +135,6 @@ class Zeta extends InheritedWidget {
       ..add(EnumProperty<ZetaContrast>('contrast', contrast))
       ..add(EnumProperty<ThemeMode>('themeMode', themeMode))
       ..add(StringProperty('customThemeId', customThemeId))
-      ..add(DiagnosticsProperty<ZetaText>('textStyles', textStyles));
+      ..add(DiagnosticsProperty<ZetaTextStyle>('textStyles', textStyles));
   }
 }

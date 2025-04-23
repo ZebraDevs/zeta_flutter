@@ -278,7 +278,7 @@ void main() {
     testWidgets('generateZetaTheme applies zeta values to existing theme', (WidgetTester tester) async {
       final ColorScheme colors = ColorScheme.fromSeed(seedColor: Colors.red);
       const String fontFamily = 'Comic Sans';
-      const textStyles = ZetaText(fontFamily: fontFamily);
+      const textStyles = ZetaTextStyle(fontFamily: fontFamily);
       final theme = generateZetaTheme(
         brightness: Brightness.light,
         colorScheme: const ZetaColorsAA(primitives: ZetaPrimitivesLight()).toColorScheme,
@@ -317,7 +317,7 @@ void main() {
 
     testWidgets('generateZetaTheme generates a new theme', (WidgetTester tester) async {
       final colorScheme = const ZetaColorsAA(primitives: ZetaPrimitivesLight()).toColorScheme;
-      const textStyles = ZetaText();
+      const textStyles = ZetaTextStyle();
 
       final theme = generateZetaTheme(
         brightness: Brightness.light,

@@ -157,17 +157,17 @@ class MockZeta extends _i1.Mock implements _i2.Zeta {
       ) as _i3.ThemeMode);
 
   @override
-  _i2.ZetaText get textStyles => (super.noSuchMethod(
+  _i2.ZetaTextStyle get textStyles => (super.noSuchMethod(
         Invocation.getter(#textStyles),
-        returnValue: _FakeZetaText_0(
+        returnValue: _FakeZetaTextStyle_0(
           this,
           Invocation.getter(#textStyles),
         ),
-        returnValueForMissingStub: _FakeZetaText_0(
+        returnValueForMissingStub: _FakeZetaTextStyle_0(
           this,
           Invocation.getter(#textStyles),
         ),
-      ) as _i2.ZetaText);
+      ) as _i2.ZetaTextStyle);
 
   @override
   _i2.ZetaPrimitives get primitives => (super.noSuchMethod(

@@ -89,8 +89,8 @@ class _FakeColor_4 extends _i1.SmartFake implements _i5.Color {
         );
 }
 
-class _FakeZetaText_5 extends _i1.SmartFake implements _i4.ZetaText {
-  _FakeZetaText_5(
+class _FakeZetaTextStyle_5 extends _i1.SmartFake implements _i4.ZetaTextStyle {
+  _FakeZetaTextStyle_5(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -1522,17 +1522,17 @@ class MockZeta extends _i1.Mock implements _i4.Zeta {
       ) as _i2.ThemeMode);
 
   @override
-  _i4.ZetaText get textStyles => (super.noSuchMethod(
+  _i4.ZetaTextStyle get textStyles => (super.noSuchMethod(
         Invocation.getter(#textStyles),
-        returnValue: _FakeZetaText_5(
+        returnValue: _FakeZetaTextStyle_5(
           this,
           Invocation.getter(#textStyles),
         ),
-        returnValueForMissingStub: _FakeZetaText_5(
+        returnValueForMissingStub: _FakeZetaTextStyle_5(
           this,
           Invocation.getter(#textStyles),
         ),
-      ) as _i4.ZetaText);
+      ) as _i4.ZetaTextStyle);
 
   @override
   _i4.ZetaPrimitives get primitives => (super.noSuchMethod(
