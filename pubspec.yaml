@@ -13,3 +13,6 @@ workspace:
   - packages/zeta_icons
   - example/
   - widgetbook/
+
+flutter:
+  uses-material-design: true

@@ -23,5 +23,6 @@ scripts:
     run: bash ../../scripts/cov_move.sh
     exec:
       failFast: true
+      concurrency: 1
 
   pana: melos exec -- bash ../../scripts/pana.sh
