@@ -10,10 +10,8 @@ import 'package:flutter/material.dart' as _i4;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:mockito/src/dummies.dart' as _i9;
 import 'package:zeta_flutter_theme/src/contrast.dart' as _i7;
-import 'package:zeta_flutter_theme/src/generated/tokens/primitives.g.dart'
-    as _i2;
-import 'package:zeta_flutter_theme/src/generated/tokens/semantics.g.dart'
-    as _i3;
+import 'package:zeta_flutter_theme/src/generated/tokens/primitives.g.dart' as _i2;
+import 'package:zeta_flutter_theme/src/generated/tokens/semantics.g.dart' as _i3;
 import 'package:zeta_flutter_theme/src/zeta.dart' as _i6;
 
 // ignore_for_file: type=lint
@@ -30,8 +28,7 @@ import 'package:zeta_flutter_theme/src/zeta.dart' as _i6;
 // ignore_for_file: camel_case_types
 // ignore_for_file: subtype_of_sealed_class
 
-class _FakeZetaPrimitives_0 extends _i1.SmartFake
-    implements _i2.ZetaPrimitives {
+class _FakeZetaPrimitives_0 extends _i1.SmartFake implements _i2.ZetaPrimitives {
   _FakeZetaPrimitives_0(
     Object parent,
     Invocation parentInvocation,
@@ -91,12 +88,10 @@ class _FakeWidget_5 extends _i1.SmartFake implements _i4.Widget {
         );
 
   @override
-  String toString({_i5.DiagnosticLevel? minLevel = _i5.DiagnosticLevel.info}) =>
-      super.toString();
+  String toString({_i5.DiagnosticLevel? minLevel = _i5.DiagnosticLevel.info}) => super.toString();
 }
 
-class _FakeInheritedElement_6 extends _i1.SmartFake
-    implements _i4.InheritedElement {
+class _FakeInheritedElement_6 extends _i1.SmartFake implements _i4.InheritedElement {
   _FakeInheritedElement_6(
     Object parent,
     Invocation parentInvocation,
@@ -106,12 +101,10 @@ class _FakeInheritedElement_6 extends _i1.SmartFake
         );
 
   @override
-  String toString({_i5.DiagnosticLevel? minLevel = _i5.DiagnosticLevel.info}) =>
-      super.toString();
+  String toString({_i5.DiagnosticLevel? minLevel = _i5.DiagnosticLevel.info}) => super.toString();
 }
 
-class _FakeDiagnosticsNode_7 extends _i1.SmartFake
-    implements _i5.DiagnosticsNode {
+class _FakeDiagnosticsNode_7 extends _i1.SmartFake implements _i5.DiagnosticsNode {
   _FakeDiagnosticsNode_7(
     Object parent,
     Invocation parentInvocation,
@@ -239,8 +232,7 @@ class MockZeta extends _i1.Mock implements _i6.Zeta {
       ) as _i4.Widget);
 
   @override
-  bool updateShouldNotify(_i4.InheritedWidget? oldWidget) =>
-      (super.noSuchMethod(
+  bool updateShouldNotify(_i4.InheritedWidget? oldWidget) => (super.noSuchMethod(
         Invocation.method(
           #updateShouldNotify,
           [oldWidget],
@@ -250,8 +242,7 @@ class MockZeta extends _i1.Mock implements _i6.Zeta {
       ) as bool);
 
   @override
-  void debugFillProperties(_i5.DiagnosticPropertiesBuilder? properties) =>
-      super.noSuchMethod(
+  void debugFillProperties(_i5.DiagnosticPropertiesBuilder? properties) => super.noSuchMethod(
         Invocation.method(
           #debugFillProperties,
           [properties],
@@ -436,6 +427,5 @@ class MockZeta extends _i1.Mock implements _i6.Zeta {
       ) as List<_i5.DiagnosticsNode>);
 
   @override
-  String toString({_i5.DiagnosticLevel? minLevel = _i5.DiagnosticLevel.info}) =>
-      super.toString();
+  String toString({_i5.DiagnosticLevel? minLevel = _i5.DiagnosticLevel.info}) => super.toString();
 }
