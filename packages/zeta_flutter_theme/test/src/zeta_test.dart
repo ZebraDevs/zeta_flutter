@@ -166,10 +166,18 @@ void main() {
       expect(zeta.radius, const ZetaRadiusAA(primitives: ZetaPrimitivesLight()));
     });
 
-    testWidgets('throws FlutterError if Zeta is not found in widget tree', (WidgetTester tester) async {
+    testWidgets('returns default Zeta object if Zeta is not found in widget tree', (WidgetTester tester) async {
       await tester.pumpWidget(Container());
       await tester.pumpAndSettle();
-      expect(() => Zeta.of(tester.element(find.byType(Container))), throwsA(isA<Error>()));
+      final zeta = Zeta.of(tester.element(find.byType(Container)));
+      expect(zeta, isA<Zeta>());
+      expect(zeta.colors, const ZetaColorsAA(primitives: ZetaPrimitivesLight()));
+      expect(zeta.spacing, const ZetaSpacingAA(primitives: ZetaPrimitivesLight()));
+      expect(zeta.radius, const ZetaRadiusAA(primitives: ZetaPrimitivesLight()));
+      expect(zeta.primitives, const ZetaPrimitivesLight());
+      expect(zeta.contrast, ZetaContrast.aa);
+      expect(zeta.customThemeId, null);
+      expect(zeta.rounded, true);
     });
   });
 

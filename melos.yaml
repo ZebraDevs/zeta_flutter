@@ -17,8 +17,12 @@ scripts:
   build_runner:
     exec: dart run build_runner build -d
   test:
-    steps:
-      - rm -rf .coverage
-      - melos exec -- bash ../../scripts/cov_move.sh
-      - bash scripts/lcov_combine.sh
+    run: rm -rf .coverage && melos test_individual && bash scripts/lcov_combine.sh
+
+  test_individual:
+    run: bash ../../scripts/cov_move.sh
+    exec:
+      failFast: true
+      concurrency: 1
+
   pana: melos exec -- bash ../../scripts/pana.sh

@@ -114,7 +114,7 @@ void main() {
         ),
       );
 
-      final Finder iconFinder = find.byIcon(ZetaIcons.check_mark_round);
+      final Finder iconFinder = find.byIcon(ZetaIcons.check_mark);
       expect(iconFinder, findsNothing);
 
       // Change isOpen property to true

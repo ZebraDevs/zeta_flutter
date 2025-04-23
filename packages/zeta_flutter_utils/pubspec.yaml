@@ -24,3 +24,6 @@ dev_dependencies:
   zds_analysis: ^1.1.1
   zeta_flutter:
     path: ../zeta_flutter
+
+flutter:
+  uses-material-design: true

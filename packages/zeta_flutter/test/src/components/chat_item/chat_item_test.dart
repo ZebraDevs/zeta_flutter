@@ -196,25 +196,25 @@ void main() {
       await tester.pumpAndSettle();
 
       // Verify that the slidable actions are displayed correctly
-      expect(find.byIcon(ZetaIcons.more_vertical_round), findsOneWidget);
-      expect(find.byIcon(ZetaIcons.phone_round), findsOneWidget);
-      expect(find.byIcon(ZetaIcons.ptt_round), findsOneWidget);
-      expect(find.byIcon(ZetaIcons.delete_round), findsOneWidget);
+      expect(find.byIcon(ZetaIcons.more_vertical), findsOneWidget);
+      expect(find.byIcon(ZetaIcons.phone), findsOneWidget);
+      expect(find.byIcon(ZetaIcons.ptt), findsOneWidget);
+      expect(find.byIcon(ZetaIcons.delete), findsOneWidget);
 
       // Verify that tapping on the slidable actions triggers the corresponding callbacks
-      await tester.tap(find.byIcon(ZetaIcons.more_vertical_round));
+      await tester.tap(find.byIcon(ZetaIcons.more_vertical));
       await tester.pumpAndSettle();
       expect(tester.takeException(), isNull);
 
-      await tester.tap(find.byIcon(ZetaIcons.phone_round));
+      await tester.tap(find.byIcon(ZetaIcons.phone));
       await tester.pumpAndSettle();
       expect(tester.takeException(), isNull);
 
-      await tester.tap(find.byIcon(ZetaIcons.ptt_round));
+      await tester.tap(find.byIcon(ZetaIcons.ptt));
       await tester.pumpAndSettle();
       expect(tester.takeException(), isNull);
 
-      await tester.tap(find.byIcon(ZetaIcons.delete_round));
+      await tester.tap(find.byIcon(ZetaIcons.delete));
       await tester.pumpAndSettle();
       expect(tester.takeException(), isNull);
     });
@@ -262,10 +262,10 @@ void main() {
       await tester.pumpAndSettle();
 
       // Verify that the slidable actions have pale button colors
-      expect(find.byIcon(ZetaIcons.more_vertical_round), findsOneWidget);
-      expect(find.byIcon(ZetaIcons.phone_round), findsOneWidget);
-      expect(find.byIcon(ZetaIcons.ptt_round), findsOneWidget);
-      expect(find.byIcon(ZetaIcons.delete_round), findsOneWidget);
+      expect(find.byIcon(ZetaIcons.more_vertical), findsOneWidget);
+      expect(find.byIcon(ZetaIcons.phone), findsOneWidget);
+      expect(find.byIcon(ZetaIcons.ptt), findsOneWidget);
+      expect(find.byIcon(ZetaIcons.delete), findsOneWidget);
     });
 
     testWidgets('ZetaChatItem with 2 pale buttons and 2 regular buttons', (WidgetTester tester) async {
@@ -485,25 +485,25 @@ void main() {
       await tester.pumpAndSettle();
 
       // Verify that the slidable actions are displayed correctly
-      expect(find.byIcon(ZetaIcons.more_vertical_round), findsOneWidget);
-      expect(find.byIcon(ZetaIcons.phone_round), findsOneWidget);
-      expect(find.byIcon(ZetaIcons.ptt_round), findsOneWidget);
-      expect(find.byIcon(ZetaIcons.delete_round), findsOneWidget);
+      expect(find.byIcon(ZetaIcons.more_vertical), findsOneWidget);
+      expect(find.byIcon(ZetaIcons.phone), findsOneWidget);
+      expect(find.byIcon(ZetaIcons.ptt), findsOneWidget);
+      expect(find.byIcon(ZetaIcons.delete), findsOneWidget);
 
       // Verify that tapping on the slidable actions triggers the corresponding callbacks
-      await tester.tap(find.byIcon(ZetaIcons.more_vertical_round));
+      await tester.tap(find.byIcon(ZetaIcons.more_vertical));
       await tester.pumpAndSettle();
       expect(tester.takeException(), isNull);
 
-      await tester.tap(find.byIcon(ZetaIcons.phone_round));
+      await tester.tap(find.byIcon(ZetaIcons.phone));
       await tester.pumpAndSettle();
       expect(tester.takeException(), isNull);
 
-      await tester.tap(find.byIcon(ZetaIcons.ptt_round));
+      await tester.tap(find.byIcon(ZetaIcons.ptt));
       await tester.pumpAndSettle();
       expect(tester.takeException(), isNull);
 
-      await tester.tap(find.byIcon(ZetaIcons.delete_round));
+      await tester.tap(find.byIcon(ZetaIcons.delete));
       await tester.pumpAndSettle();
       expect(tester.takeException(), isNull);
     });
