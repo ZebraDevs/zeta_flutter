@@ -36,12 +36,10 @@ class _FakeWidget_0 extends _i1.SmartFake implements _i2.Widget {
         );
 
   @override
-  String toString({_i3.DiagnosticLevel? minLevel = _i3.DiagnosticLevel.info}) =>
-      super.toString();
+  String toString({_i3.DiagnosticLevel? minLevel = _i3.DiagnosticLevel.info}) => super.toString();
 }
 
-class _FakeInheritedWidget_1 extends _i1.SmartFake
-    implements _i2.InheritedWidget {
+class _FakeInheritedWidget_1 extends _i1.SmartFake implements _i2.InheritedWidget {
   _FakeInheritedWidget_1(
     Object parent,
     Invocation parentInvocation,
@@ -51,12 +49,10 @@ class _FakeInheritedWidget_1 extends _i1.SmartFake
         );
 
   @override
-  String toString({_i3.DiagnosticLevel? minLevel = _i3.DiagnosticLevel.info}) =>
-      super.toString();
+  String toString({_i3.DiagnosticLevel? minLevel = _i3.DiagnosticLevel.info}) => super.toString();
 }
 
-class _FakeDiagnosticsNode_2 extends _i1.SmartFake
-    implements _i3.DiagnosticsNode {
+class _FakeDiagnosticsNode_2 extends _i1.SmartFake implements _i3.DiagnosticsNode {
   _FakeDiagnosticsNode_2(
     Object parent,
     Invocation parentInvocation,
@@ -73,8 +69,7 @@ class _FakeDiagnosticsNode_2 extends _i1.SmartFake
       super.toString();
 }
 
-class _FakeZetaPrimitives_3 extends _i1.SmartFake
-    implements _i4.ZetaPrimitives {
+class _FakeZetaPrimitives_3 extends _i1.SmartFake implements _i4.ZetaPrimitives {
   _FakeZetaPrimitives_3(
     Object parent,
     Invocation parentInvocation,
@@ -144,8 +139,7 @@ class _FakeZetaSpacing_9 extends _i1.SmartFake implements _i4.ZetaSpacing {
         );
 }
 
-class _FakeInheritedElement_10 extends _i1.SmartFake
-    implements _i2.InheritedElement {
+class _FakeInheritedElement_10 extends _i1.SmartFake implements _i2.InheritedElement {
   _FakeInheritedElement_10(
     Object parent,
     Invocation parentInvocation,
@@ -155,8 +149,7 @@ class _FakeInheritedElement_10 extends _i1.SmartFake
         );
 
   @override
-  String toString({_i3.DiagnosticLevel? minLevel = _i3.DiagnosticLevel.info}) =>
-      super.toString();
+  String toString({_i3.DiagnosticLevel? minLevel = _i3.DiagnosticLevel.info}) => super.toString();
 }
 
 /// A class which mocks [BuildContext].
@@ -220,8 +213,7 @@ class MockBuildContext extends _i1.Mock implements _i2.BuildContext {
       ) as _i2.InheritedWidget);
 
   @override
-  void visitAncestorElements(_i2.ConditionalElementVisitor? visitor) =>
-      super.noSuchMethod(
+  void visitAncestorElements(_i2.ConditionalElementVisitor? visitor) => super.noSuchMethod(
         Invocation.method(
           #visitAncestorElements,
           [visitor],
@@ -239,8 +231,7 @@ class MockBuildContext extends _i1.Mock implements _i2.BuildContext {
       );
 
   @override
-  void dispatchNotification(_i6.Notification? notification) =>
-      super.noSuchMethod(
+  void dispatchNotification(_i6.Notification? notification) => super.noSuchMethod(
         Invocation.method(
           #dispatchNotification,
           [notification],
@@ -307,9 +298,7 @@ class MockBuildContext extends _i1.Mock implements _i2.BuildContext {
       ) as _i3.DiagnosticsNode);
 
   @override
-  List<_i3.DiagnosticsNode> describeMissingAncestor(
-          {required Type? expectedAncestorType}) =>
-      (super.noSuchMethod(
+  List<_i3.DiagnosticsNode> describeMissingAncestor({required Type? expectedAncestorType}) => (super.noSuchMethod(
         Invocation.method(
           #describeMissingAncestor,
           [],
@@ -320,8 +309,7 @@ class MockBuildContext extends _i1.Mock implements _i2.BuildContext {
       ) as List<_i3.DiagnosticsNode>);
 
   @override
-  _i3.DiagnosticsNode describeOwnershipChain(String? name) =>
-      (super.noSuchMethod(
+  _i3.DiagnosticsNode describeOwnershipChain(String? name) => (super.noSuchMethod(
         Invocation.method(
           #describeOwnershipChain,
           [name],
@@ -1642,8 +1630,7 @@ class MockZeta extends _i1.Mock implements _i4.Zeta {
       ) as _i2.Widget);
 
   @override
-  bool updateShouldNotify(_i2.InheritedWidget? oldWidget) =>
-      (super.noSuchMethod(
+  bool updateShouldNotify(_i2.InheritedWidget? oldWidget) => (super.noSuchMethod(
         Invocation.method(
           #updateShouldNotify,
           [oldWidget],
@@ -1653,8 +1640,7 @@ class MockZeta extends _i1.Mock implements _i4.Zeta {
       ) as bool);
 
   @override
-  void debugFillProperties(_i3.DiagnosticPropertiesBuilder? properties) =>
-      super.noSuchMethod(
+  void debugFillProperties(_i3.DiagnosticPropertiesBuilder? properties) => super.noSuchMethod(
         Invocation.method(
           #debugFillProperties,
           [properties],
@@ -1839,6 +1825,5 @@ class MockZeta extends _i1.Mock implements _i4.Zeta {
       ) as List<_i3.DiagnosticsNode>);
 
   @override
-  String toString({_i3.DiagnosticLevel? minLevel = _i3.DiagnosticLevel.info}) =>
-      super.toString();
+  String toString({_i3.DiagnosticLevel? minLevel = _i3.DiagnosticLevel.info}) => super.toString();
 }
