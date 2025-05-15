@@ -130,6 +130,9 @@ abstract interface class ZetaPrimitives {
   /// 96dp space
   double get x15;
 
+  /// 0dp radius
+  Radius get r_0;
+
   /// 4dp radius
   Radius get s;
 
@@ -354,6 +357,8 @@ final class ZetaPrimitivesDark extends ZetaPrimitives {
   @override
   double get x15 => 96;
   @override
+  Radius get r_0 => Radius.zero;
+  @override
   Radius get s => const Radius.circular(4);
   @override
   Radius get m => const Radius.circular(8);
@@ -570,6 +575,8 @@ final class ZetaPrimitivesLight extends ZetaPrimitives {
   double get x14 => 80;
   @override
   double get x15 => 96;
+  @override
+  Radius get r_0 => Radius.zero;
   @override
   Radius get s => const Radius.circular(4);
   @override
