@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/ZebraDevs/zeta_flutter/compare/zeta_flutter_theme-v1.1.0...zeta_flutter_theme-v1.1.1) (2025-05-15)
+
+
+### ⛓️ Dependencies
+
+* **automated:** Update theme tokens ([#329](https://github.com/ZebraDevs/zeta_flutter/issues/329)) ([531766d](https://github.com/ZebraDevs/zeta_flutter/commit/531766dc33f8acb69a5b3388314efd219df60d48))
+
 ## [1.1.0](https://github.com/ZebraDevs/zeta_flutter/compare/zeta_flutter_theme-v1.0.1...zeta_flutter_theme-v1.1.0) (2025-04-23)
 
 
