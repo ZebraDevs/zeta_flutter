@@ -23,7 +23,7 @@ void main() {
   });
   group('Content Tests', () {
     final debugFillProperties = {
-      'icon': 'IconData(U+0E045)',
+      'icon': 'IconData(U+0E044)',
       'rounded': 'null',
       'size': '10.0',
       'fill': 'null',
@@ -36,12 +36,14 @@ void main() {
       'textDirection': 'null',
       'applyTextScaling': 'null',
     };
+    const icon = ZetaIcon(
+      ZetaIcons.cached_sharp,
+      size: 10,
+      semanticLabel: 'Cached',
+    );
+
     debugFillPropertiesTest(
-      const ZetaIcon(
-        ZetaIcons.cached_sharp,
-        size: 10,
-        semanticLabel: 'Cached',
-      ),
+      icon,
       debugFillProperties,
     );
 
