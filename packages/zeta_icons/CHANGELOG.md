@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.0.1](https://github.com/ZebraDevs/zeta_flutter/compare/zeta_icons-v1.0.0...zeta_icons-v1.0.1) (2025-05-15)
+
+
+### ⛓️ Dependencies
+
+* **automated:** Update icons ([#330](https://github.com/ZebraDevs/zeta_flutter/issues/330)) ([d24310f](https://github.com/ZebraDevs/zeta_flutter/commit/d24310fbc959f861e9067234e2b7e78a68cdbbd1))
+
+
+### 🧪 Tests
+
+* **UX-1428:** Update failing tests due to icon refactor ([#322](https://github.com/ZebraDevs/zeta_flutter/issues/322)) ([2cc3972](https://github.com/ZebraDevs/zeta_flutter/commit/2cc3972ca1c736140a48420557b01de7f944a206))
+
 ## [1.0.0](https://github.com/ZebraDevs/zeta_flutter/compare/zeta_icons@v0.20.2...zeta_icons@v1.0.0) (2025-03-26)
 
 
