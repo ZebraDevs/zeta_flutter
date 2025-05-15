@@ -357,7 +357,7 @@ final class ZetaPrimitivesDark extends ZetaPrimitives {
   @override
   double get x15 => 96;
   @override
-  Radius get r_0 => const Radius.circular(0);
+  Radius get r_0 => Radius.zero;
   @override
   Radius get s => const Radius.circular(4);
   @override
@@ -576,7 +576,7 @@ final class ZetaPrimitivesLight extends ZetaPrimitives {
   @override
   double get x15 => 96;
   @override
-  Radius get r_0 => const Radius.circular(0);
+  Radius get r_0 => Radius.zero;
   @override
   Radius get s => const Radius.circular(4);
   @override
