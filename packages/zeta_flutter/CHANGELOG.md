@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/ZebraDevs/zeta_flutter/compare/zeta_flutter-v1.1.0...zeta_flutter-v1.1.1) (2025-05-15)
+
+
+### ⛓️ Dependencies
+
+* **automated:** Update icons ([#330](https://github.com/ZebraDevs/zeta_flutter/issues/330)) ([d24310f](https://github.com/ZebraDevs/zeta_flutter/commit/d24310fbc959f861e9067234e2b7e78a68cdbbd1))
+
 ## [1.1.0](https://github.com/ZebraDevs/zeta_flutter/compare/zeta_flutter-v1.0.1...zeta_flutter-v1.1.0) (2025-04-23)
 
 
