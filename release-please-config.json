@@ -57,15 +57,15 @@
       "section": "🧹 Miscellaneous Chores"
     },
     {
-      "type": "iconadd",
+      "type": "iconadded",
       "section": "✅ Icons added"
     },
     {
-      "type": "iconremove",
+      "type": "iconremoved",
       "section": "✂️ Icons removed"
     },
     {
-      "type": "iconupdate",
+      "type": "iconupdated",
       "section": "🎨 Icons updated"
     },
     {
