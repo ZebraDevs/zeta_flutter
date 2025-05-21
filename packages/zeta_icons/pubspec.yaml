@@ -18,7 +18,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  zds_analysis: ^1.1.1
+  zds_analysis: ^1.2.0
 
 flutter:
   fonts:

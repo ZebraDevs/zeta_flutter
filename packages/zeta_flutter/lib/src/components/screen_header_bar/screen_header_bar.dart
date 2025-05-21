@@ -41,7 +41,7 @@ class ZetaScreenHeaderBar extends ZetaStatelessWidget {
   @override
   Widget build(BuildContext context) {
     final backButton = IconButton(
-      onPressed: onBackButtonPressed ?? () async => Navigator.maybePop(context),
+      onPressed: onBackButtonPressed ?? () => Navigator.maybePop(context),
       icon: Icon(context.rounded ? ZetaIcons.chevron_left_round : ZetaIcons.chevron_left_sharp),
     );
 

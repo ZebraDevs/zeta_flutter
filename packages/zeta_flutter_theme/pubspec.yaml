@@ -15,13 +15,13 @@ dependencies:
   equatable: ^2.0.7
   flutter:
     sdk: flutter
-  shared_preferences: ^2.5.2
+  shared_preferences: ^2.5.3
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  mockito: ^5.4.5
-  zds_analysis: ^1.1.1
+  mockito: ^5.4.6
+  zds_analysis: ^1.2.0
   zeta_flutter:
     path: ../zeta_flutter
 
