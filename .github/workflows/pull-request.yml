@@ -22,7 +22,7 @@ jobs:
         with:
           cache: true
           channel: stable
-          flutter-version: 3.29.x
+          flutter-version: 3.32.x
 
       - run: dart pub global activate melos
 
@@ -78,7 +78,7 @@ jobs:
         with:
           cache: true
           channel: stable
-          flutter-version: 3.29.x
+          flutter-version: 3.32.x
       - name: Setup flutter
         run: flutter pub get
       - name: Build example app
