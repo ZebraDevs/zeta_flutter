@@ -268,7 +268,6 @@ class ZetaProviderState extends State<ZetaProvider> with Diagnosticable, Widgets
     }
 
     return FutureBuilder<dynamic>(
-      // Ignored as the FutureBuilder is used to wait for the theme values to be loaded.
       future: getThemeValuesFromPreferences(),
       builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
