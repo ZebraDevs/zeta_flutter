@@ -269,7 +269,6 @@ class ZetaProviderState extends State<ZetaProvider> with Diagnosticable, Widgets
 
     return FutureBuilder<dynamic>(
       // Ignored as the FutureBuilder is used to wait for the theme values to be loaded.
-      // ignore: discarded_futures
       future: getThemeValuesFromPreferences(),
       builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
@@ -526,7 +525,6 @@ ThemeData generateZetaTheme({
       highlightColor: existingTheme.highlightColor,
       hintColor: existingTheme.hintColor,
       hoverColor: existingTheme.hoverColor,
-      indicatorColor: existingTheme.indicatorColor,
       primaryColor: existingTheme.primaryColor,
       primaryColorDark: existingTheme.primaryColorDark,
       primaryColorLight: existingTheme.primaryColorLight,

@@ -12,7 +12,7 @@ void main() {
   group('ZetaProvider', () {
     late MockZetaThemeService mockThemeService;
 
-    setUp(() async {
+    setUp(() {
       mockThemeService = MockZetaThemeService();
 
       when(mockThemeService.loadTheme()).thenAnswer(
@@ -407,7 +407,7 @@ void main() {
 
     group('theme service', () {
       group('load theme', () {
-        setUp(() async {
+        setUp(() {
           when(mockThemeService.loadTheme()).thenAnswer(
             (_) async => const ZetaThemeServiceData(
               contrast: ZetaContrast.aaa,

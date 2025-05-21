@@ -183,8 +183,8 @@ class ZetaDropDownState<T> extends State<ZetaDropdown<T>> {
   final OverlayPortalController _overlayPortalController = OverlayPortalController();
 
   final _link = LayerLink();
-  final _menuKey = GlobalKey();
-  final _childKey = GlobalKey();
+  final GlobalKey<State<StatefulWidget>> _menuKey = GlobalKey();
+  final GlobalKey<State<StatefulWidget>> _childKey = GlobalKey();
   late ZetaDropdownMenuPosition _menuPosition = widget.menuPosition ?? ZetaDropdownMenuPosition.down;
 
   double? _menuSize;

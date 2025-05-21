@@ -63,7 +63,7 @@ class _ZetaSegmentedControlState<T> extends State<ZetaSegmentedControl<T>>
     vsync: this,
   );
 
-  late final _thumbScaleAnimation = _thumbScaleController.drive(Tween<double>(begin: 1));
+  late final Animation<double> _thumbScaleAnimation = _thumbScaleController.drive(Tween<double>(begin: 1));
 
   late final _thumbScaleController = AnimationController(
     duration: kThemeAnimationDuration,

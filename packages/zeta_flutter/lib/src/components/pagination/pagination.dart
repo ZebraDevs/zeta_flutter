@@ -107,7 +107,7 @@ class ZetaPagination extends ZetaStatefulWidget {
 
 class _ZetaPaginationState extends State<ZetaPagination> {
   late int _currentPage;
-  final _paginationKey = GlobalKey();
+  final GlobalKey<State<StatefulWidget>> _paginationKey = GlobalKey();
 
   bool get _disabled => widget.onChange == null;
 
