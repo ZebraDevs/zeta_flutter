@@ -28,6 +28,7 @@ jobs:
 
       - name: Release please help
         if: startsWith(github.head_ref, 'release-please') && !endsWith(github.head_ref, 'zeta_flutter')
+        continue-on-error: true
         run: |
           PACKAGE_NAME=$(echo ${{github.head_ref}} | awk -F '--' '{print $NF}')
           bash scripts/update_individual.sh $PACKAGE_NAME
