@@ -132,7 +132,15 @@ class ZetaAddon extends WidgetbookAddon<ZetaAddonData> {
       ),
       ListField<String>(
         name: 'Font family',
-        values: [kZetaFontFamily, ...GoogleFonts.asMap().values.map((v) => v().fontFamily!).toSet()],
+        values: [
+          kZetaFontFamily,
+          GoogleFonts.comingSoon().fontFamily ?? '',
+          GoogleFonts.yrsa().fontFamily ?? '',
+          GoogleFonts.oxygen().fontFamily ?? '',
+          GoogleFonts.bebasNeue().fontFamily ?? '',
+          GoogleFonts.dancingScript().fontFamily ?? '',
+          GoogleFonts.flavors().fontFamily ?? '',
+        ],
         initialValue: kZetaFontFamily,
         labelBuilder: (value) {
           if (value == kZetaFontFamily) {
@@ -167,7 +175,12 @@ class ZetaAddon extends WidgetbookAddon<ZetaAddonData> {
         if (group['Font family'] == 'Default (IBM Plex Sans)') {
           return kZetaFontFamily;
         } else {
-          return group['Font family']!.split(' ').join('_');
+          try {
+            return group['Font family']!.split(' ').join('_');
+          } catch (e) {
+            debugPrint(e.toString());
+            return kZetaFontFamily;
+          }
         }
       }(),
     );
