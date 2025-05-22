@@ -1,5 +1,34 @@
 # Changelog
 
+## [1.1.0](https://github.com/ZebraDevs/zeta_flutter/compare/zeta_flutter_utils-v1.0.1...zeta_flutter_utils-v1.1.0) (2025-05-22)
+
+
+### ✨ New Features
+
+* **UX-1427:** Add custom fonts into ZetaProvider ([#323](https://github.com/ZebraDevs/zeta_flutter/issues/323)) ([715031b](https://github.com/ZebraDevs/zeta_flutter/commit/715031b0874c86ef35209d98916e71f0b49db51e))
+
+
+### 📈 Documentation
+
+* Update widgetbook with custom font addon ([715031b](https://github.com/ZebraDevs/zeta_flutter/commit/715031b0874c86ef35209d98916e71f0b49db51e))
+
+
+### ⛓️ Dependencies
+
+* **automated:** Update theme tokens ([#329](https://github.com/ZebraDevs/zeta_flutter/issues/329)) ([531766d](https://github.com/ZebraDevs/zeta_flutter/commit/531766dc33f8acb69a5b3388314efd219df60d48))
+* Bump to flutter 3.32.0 and other dependencies ([#334](https://github.com/ZebraDevs/zeta_flutter/issues/334)) ([d168d98](https://github.com/ZebraDevs/zeta_flutter/commit/d168d9821be4b8d450b35a898bf5d6ddb5361e29))
+
+
+### 🧪 Tests
+
+* **UX-1428:** Update failing tests due to icon refactor ([#322](https://github.com/ZebraDevs/zeta_flutter/issues/322)) ([2cc3972](https://github.com/ZebraDevs/zeta_flutter/commit/2cc3972ca1c736140a48420557b01de7f944a206))
+
+
+### 🧹 Miscellaneous Chores
+
+* update icons ([88a3371](https://github.com/ZebraDevs/zeta_flutter/commit/88a3371a9ac87b265821adb8bb62b1802139a25f))
+
+
 ## [1.0.1](https://github.com/ZebraDevs/zeta_flutter/compare/zeta_flutter_utils-v1.0.0...zeta_flutter_utils-v1.0.1) (2025-04-11)
 
 
