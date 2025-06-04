@@ -23,7 +23,7 @@ void main() {
   });
   group('Content Tests', () {
     final debugFillProperties = {
-      'icon': 'IconData(U+0E044)',
+      'icon': 'IconData(U+0${ZetaIcons.cached_sharp.codePoint.toRadixString(16).toUpperCase()})',
       'rounded': 'null',
       'size': '10.0',
       'fill': 'null',
@@ -41,7 +41,6 @@ void main() {
       size: 10,
       semanticLabel: 'Cached',
     );
-
     debugFillPropertiesTest(
       icon,
       debugFillProperties,

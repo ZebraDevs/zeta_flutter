@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import '../../../zeta_flutter.dart';
@@ -41,7 +43,7 @@ class ZetaScreenHeaderBar extends ZetaStatelessWidget {
   @override
   Widget build(BuildContext context) {
     final backButton = IconButton(
-      onPressed: onBackButtonPressed ?? () => Navigator.maybePop(context),
+      onPressed: onBackButtonPressed ?? () => unawaited(Navigator.maybePop(context)),
       icon: Icon(context.rounded ? ZetaIcons.chevron_left_round : ZetaIcons.chevron_left_sharp),
     );
 

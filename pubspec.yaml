@@ -1,10 +1,10 @@
 name: zeta_flutter_workspace
 
 environment:
-  sdk: ^3.6.0
+  sdk: ^3.8.0
 
 dev_dependencies:
-  melos: ^6.0.0
+  melos: ^6.3.3
 
 workspace:
   - packages/zeta_flutter
