@@ -23,7 +23,7 @@ void main() {
       'type': 'primary',
       'size': 'small',
       'shape': 'full',
-      'icon': 'IconData(U+0E009)',
+      'icon': 'IconData(U+0${ZetaIcons.add_round.codePoint.toRadixString(16).toUpperCase()})',
       'initiallyExpanded': 'false',
       'focusNode': 'null',
     };
