@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.1.2](https://github.com/ZebraDevs/zeta_flutter/compare/zeta_flutter-v1.1.1...zeta_flutter-v1.1.2) (2025-06-04)
+
+
+### ⛓️ Dependencies
+
+* **automated:** Update dependencies ([#336](https://github.com/ZebraDevs/zeta_flutter/issues/336)) ([7f841c1](https://github.com/ZebraDevs/zeta_flutter/commit/7f841c10d738a64f7a552e8d749c85a0875ba0c5))
+
+
+### 🧹 Miscellaneous Chores
+
+* ** zeta_flutter_theme:** release 1.1.2 ([#338](https://github.com/ZebraDevs/zeta_flutter/issues/338)) ([aa46575](https://github.com/ZebraDevs/zeta_flutter/commit/aa46575db9ed3eafe063705a0dee8c5c2e86e5e7))
+* ** zeta_flutter_utils:** release 1.1.1 ([#340](https://github.com/ZebraDevs/zeta_flutter/issues/340)) ([0431dea](https://github.com/ZebraDevs/zeta_flutter/commit/0431dea2436f4d4a9c007eebd387b731eab689e9))
+* ** zeta_icons:** release 1.0.2 ([#337](https://github.com/ZebraDevs/zeta_flutter/issues/337)) ([33e082c](https://github.com/ZebraDevs/zeta_flutter/commit/33e082c192eeb5c3b88d7cea702b93528de87dfc))
+
+
 ## [1.1.1](https://github.com/ZebraDevs/zeta_flutter/compare/zeta_flutter-v1.1.0...zeta_flutter-v1.1.1) (2025-05-22)
 
 
