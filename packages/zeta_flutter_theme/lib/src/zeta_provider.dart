@@ -269,7 +269,6 @@ class ZetaProviderState extends State<ZetaProvider> with Diagnosticable, Widgets
 
     return FutureBuilder<dynamic>(
       //  Ignore this lint as the async is performed in FutureBuilder
-      // ignore: discarded_futures
       future: getThemeValuesFromPreferences(),
       builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {

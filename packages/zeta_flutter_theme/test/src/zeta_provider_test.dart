@@ -1,5 +1,4 @@
 // Ignore this lint rule in test
-// ignore_for_file: discarded_futures
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';

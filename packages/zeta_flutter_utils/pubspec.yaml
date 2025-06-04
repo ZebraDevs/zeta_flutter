@@ -25,5 +25,6 @@ dev_dependencies:
   zeta_flutter:
     path: ../zeta_flutter
 
+  zeta_flutter_theme: any
 flutter:
   uses-material-design: true
