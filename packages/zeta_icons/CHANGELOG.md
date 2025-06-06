@@ -1,5 +1,38 @@
 # Changelog
 
+## [1.0.3](https://github.com/ZebraDevs/zeta_flutter/compare/zeta_icons-v1.0.2...zeta_icons-v1.0.3) (2025-06-06)
+
+
+### ⛓️ Dependencies
+
+* **automated:** Update icons ([#341](https://github.com/ZebraDevs/zeta_flutter/issues/341)) ([978df6d](https://github.com/ZebraDevs/zeta_flutter/commit/978df6d603db75111b13a573b3a9ce1fa4a30bfc))
+
+
+### ✅ Icons added
+
+* **Printer:** Calibrate Media ([4567d78]) ([978df6d](https://github.com/ZebraDevs/zeta_flutter/commit/978df6d603db75111b13a573b3a9ce1fa4a30bfc))
+* **Printer:** Delete Printer ([4567d78]) ([978df6d](https://github.com/ZebraDevs/zeta_flutter/commit/978df6d603db75111b13a573b3a9ce1fa4a30bfc))
+* **Printer:** Print Configuration Label ([4567d78]) ([978df6d](https://github.com/ZebraDevs/zeta_flutter/commit/978df6d603db75111b13a573b3a9ce1fa4a30bfc))
+* **Printer:** Print Directory List ([4567d78]) ([978df6d](https://github.com/ZebraDevs/zeta_flutter/commit/978df6d603db75111b13a573b3a9ce1fa4a30bfc))
+* **Printer:** Print Test Label ([4567d78]) ([978df6d](https://github.com/ZebraDevs/zeta_flutter/commit/978df6d603db75111b13a573b3a9ce1fa4a30bfc))
+* **Printer:** Restart Printer ([4567d78]) ([978df6d](https://github.com/ZebraDevs/zeta_flutter/commit/978df6d603db75111b13a573b3a9ce1fa4a30bfc))
+
+
+### 🎨 Icons updated
+
+* **Communication:** Incoming Video ([4567d78]) ([978df6d](https://github.com/ZebraDevs/zeta_flutter/commit/978df6d603db75111b13a573b3a9ce1fa4a30bfc))
+* **Communication:** Missed Call ([4567d78]) ([978df6d](https://github.com/ZebraDevs/zeta_flutter/commit/978df6d603db75111b13a573b3a9ce1fa4a30bfc))
+* **Communication:** Missed Video ([4567d78]) ([978df6d](https://github.com/ZebraDevs/zeta_flutter/commit/978df6d603db75111b13a573b3a9ce1fa4a30bfc))
+* **Communication:** Outgoing Video ([4567d78]) ([978df6d](https://github.com/ZebraDevs/zeta_flutter/commit/978df6d603db75111b13a573b3a9ce1fa4a30bfc))
+* **Communication:** To Do ([4567d78]) ([978df6d](https://github.com/ZebraDevs/zeta_flutter/commit/978df6d603db75111b13a573b3a9ce1fa4a30bfc))
+* **Enterprise:** Factory ([4567d78]) ([978df6d](https://github.com/ZebraDevs/zeta_flutter/commit/978df6d603db75111b13a573b3a9ce1fa4a30bfc))
+* **File:** Open New Off ([4567d78]) ([978df6d](https://github.com/ZebraDevs/zeta_flutter/commit/978df6d603db75111b13a573b3a9ce1fa4a30bfc))
+* **General:** List Form ([4567d78]) ([978df6d](https://github.com/ZebraDevs/zeta_flutter/commit/978df6d603db75111b13a573b3a9ce1fa4a30bfc))
+* **General:** Swap ([4567d78]) ([978df6d](https://github.com/ZebraDevs/zeta_flutter/commit/978df6d603db75111b13a573b3a9ce1fa4a30bfc))
+* **General:** To Do Outline ([4567d78]) ([978df6d](https://github.com/ZebraDevs/zeta_flutter/commit/978df6d603db75111b13a573b3a9ce1fa4a30bfc))
+* **Navigation:** Last Page ([4567d78]) ([978df6d](https://github.com/ZebraDevs/zeta_flutter/commit/978df6d603db75111b13a573b3a9ce1fa4a30bfc))
+* **Social:** Money Usd ([4567d78]) ([978df6d](https://github.com/ZebraDevs/zeta_flutter/commit/978df6d603db75111b13a573b3a9ce1fa4a30bfc))
+
 ## [1.0.2](https://github.com/ZebraDevs/zeta_flutter/compare/zeta_icons-v1.0.1...zeta_icons-v1.0.2) (2025-06-04)
 
 
