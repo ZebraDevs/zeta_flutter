@@ -37,10 +37,10 @@ extension ZetaColorExtensions on Color {
     if (amount <= 0) return this;
     if (amount > 100) return Colors.white;
     final Color color = Color.fromARGB(
-      alpha,
-      math.max(0, math.min(255, red - (255 * -(amount / 100)).round())),
-      math.max(0, math.min(255, green - (255 * -(amount / 100)).round())),
-      math.max(0, math.min(255, blue - (255 * -(amount / 100)).round())),
+      (a * 255).round(),
+      math.max(0, math.min(255, (r * 255).round() - (255 * -(amount / 100)).round())),
+      math.max(0, math.min(255, (g * 255).round() - (255 * -(amount / 100)).round())),
+      math.max(0, math.min(255, (b * 255).round() - (255 * -(amount / 100)).round())),
     );
     return color;
   }
@@ -169,7 +169,7 @@ extension ZetaColorExtensions on Color {
 
   /// Return uppercase Flutter style hex code string of the color.
   String get hexCode {
-    return value.toRadixString(16).toUpperCase().padLeft(8, '0');
+    return toARGB32().toRadixString(16).toUpperCase().padLeft(8, '0');
   }
 
   /// Applies lightness percentage to color.

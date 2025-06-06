@@ -43,7 +43,7 @@ class ZetaScreenHeaderBar extends ZetaStatelessWidget {
           excludeSemantics: true,
           button: true,
           child: IconButton(
-            onPressed: () async => Navigator.maybePop(context),
+            onPressed: ()  =>  Navigator.maybePop(context),
             icon: const ZetaIcon(ZetaIcons.chevron_left),
           ),
         ),
