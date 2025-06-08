@@ -20,7 +20,7 @@ jobs:
         with:
           cache: true
           channel: stable
-          flutter-version: 3.24.x # TODO UX-1347
+          flutter-version: 3.32.x # TODO UX-1347
       - run: dart run build_runner build --delete-conflicting-outputs
       - uses: ZebraDevs/flutter-code-quality@main
         with:
