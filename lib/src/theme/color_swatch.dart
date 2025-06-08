@@ -195,7 +195,7 @@ class ZetaColorSwatch extends ColorSwatch<int> with EquatableMixin {
 
   @override
   List<Object?> get props => [
-        super..toARGB32(),
+        super.toARGB32(),
         brightness,
         contrast,
         shade10,
