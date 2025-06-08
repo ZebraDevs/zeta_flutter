@@ -42,7 +42,7 @@ jobs:
 
   deploy-preview:
     name: Deploy preview version of the widgetbook on firebase
-    needs: [code-quality, check-secret]
+    needs: [ code-quality, check-secret ]
     if: needs.check-secret.outputs.secret-exists == 'true'
     runs-on: ubuntu-latest
     steps:
