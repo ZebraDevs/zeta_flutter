@@ -44,7 +44,7 @@ void main() {
         Colors.blue,
       );
 
-      expect(swatch.toARGB32, Colors.blue.toARGB32);
+      expect(swatch.toARGB32(), Colors.blue.toARGB32());
       expect(swatch.brightness, Brightness.light);
       expect(swatch.contrast, ZetaContrast.aa);
     });
@@ -124,14 +124,14 @@ void main() {
     });
 
     test('token getters works as expected', () {
-      expect(zetaColorSwatch.text.toARGB32, Colors.blue.toARGB32);
-      expect(zetaColorSwatch.icon.toARGB32, Colors.blue.toARGB32);
-      expect(zetaColorSwatch.hover.toARGB32, Colors.blue.shade700.toARGB32);
-      expect(zetaColorSwatch.selected.toARGB32, Colors.blue.shade800.toARGB32);
-      expect(zetaColorSwatch.focus.toARGB32, Colors.blue.shade800.toARGB32);
-      expect(zetaColorSwatch.border.toARGB32, Colors.blue.toARGB32);
-      expect(zetaColorSwatch.subtle.toARGB32, Colors.blue.shade400.toARGB32);
-      expect(zetaColorSwatch.surface.toARGB32, Colors.blue.shade100.toARGB32);
+      expect(zetaColorSwatch.text.toARGB32(), Colors.blue.toARGB32());
+      expect(zetaColorSwatch.icon.toARGB32(), Colors.blue.toARGB32());
+      expect(zetaColorSwatch.hover.toARGB32(), Colors.blue.shade700.toARGB32());
+      expect(zetaColorSwatch.selected.toARGB32(), Colors.blue.shade800.toARGB32());
+      expect(zetaColorSwatch.focus.toARGB32(), Colors.blue.shade800.toARGB32());
+      expect(zetaColorSwatch.border.toARGB32(), Colors.blue.toARGB32());
+      expect(zetaColorSwatch.subtle.toARGB32(), Colors.blue.shade400.toARGB32());
+      expect(zetaColorSwatch.surface.toARGB32(), Colors.blue.shade100.toARGB32());
 
       final aaaSwatch = ZetaColorSwatch(
         contrast: ZetaContrast.aaa,
@@ -150,14 +150,14 @@ void main() {
         },
       );
 
-      expect(aaaSwatch.text.toARGB32, Colors.blue.shade800.toARGB32);
-      expect(aaaSwatch.icon.toARGB32, Colors.blue.shade800.toARGB32);
-      expect(aaaSwatch.hover.toARGB32, Colors.blue.shade900.toARGB32);
-      expect(aaaSwatch.selected.toARGB32, Colors.blue.shade900.toARGB32);
-      expect(aaaSwatch.focus.toARGB32, Colors.blue.shade900.toARGB32);
-      expect(aaaSwatch.border.toARGB32, Colors.blue.shade800.toARGB32);
-      expect(aaaSwatch.subtle.toARGB32, Colors.blue.shade500.toARGB32);
-      expect(aaaSwatch.surface.toARGB32, Colors.blue.shade100.toARGB32);
+      expect(aaaSwatch.text.toARGB32(), Colors.blue.shade800.toARGB32());
+      expect(aaaSwatch.icon.toARGB32(), Colors.blue.shade800.toARGB32());
+      expect(aaaSwatch.hover.toARGB32(), Colors.blue.shade900.toARGB32());
+      expect(aaaSwatch.selected.toARGB32(), Colors.blue.shade900.toARGB32());
+      expect(aaaSwatch.focus.toARGB32(), Colors.blue.shade900.toARGB32());
+      expect(aaaSwatch.border.toARGB32(), Colors.blue.shade800.toARGB32());
+      expect(aaaSwatch.subtle.toARGB32(), Colors.blue.shade500.toARGB32());
+      expect(aaaSwatch.surface.toARGB32(), Colors.blue.shade100.toARGB32());
     });
   });
 
@@ -176,7 +176,7 @@ void main() {
     final ZetaColors aa = ZetaColors();
     final ZetaColors aaa = ZetaColors(brightness: Brightness.dark, contrast: ZetaContrast.aaa);
 
-    expect(aa.primary.toARGB32, aa.primary.shade60.toARGB32);
-    expect(aaa.primary.toARGB32, aaa.primary.shade80.toARGB32);
+    expect(aa.primary.toARGB32(), aa.primary.shade60.toARGB32());
+    expect(aaa.primary.toARGB32(), aaa.primary.shade80.toARGB32());
   });
 }

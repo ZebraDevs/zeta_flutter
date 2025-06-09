@@ -1,5 +1,3 @@
-// Ignored for testing purposes
-// ignore_for_file: avoid_dynamic_calls
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -31,7 +29,7 @@ void main() {
     final debugFillProperties = {
       'rounded': 'null',
       'padding': 'EdgeInsets.all(8.0)',
-      'color': 'MaterialColor(primary value: Color(0xffffc107))',
+      'color': Colors.amber.toString(),
       'textStyle': 'TextStyle(inherit: true, size: 9.0)',
       'arrowDirection': 'down',
       'maxWidth': '170.0',
@@ -59,7 +57,7 @@ void main() {
 
       expect(diagnostics.finder('rounded'), 'null');
       expect(diagnostics.finder('padding'), 'EdgeInsets.all(8.0)');
-      expect(diagnostics.finder('color').toLowerCase(), contains(Colors.amber.hexCode.toLowerCase()));
+      expect(diagnostics.finder('color'), Colors.amber.toString());
       expect(diagnostics.finder('textStyle'), contains('size: 9.0'));
       expect(diagnostics.finder('arrowDirection'), 'down');
       expect(diagnostics.finder('maxWidth'), '170.0');
