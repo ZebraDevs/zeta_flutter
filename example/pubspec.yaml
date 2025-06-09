@@ -8,23 +8,23 @@ environment:
   flutter: ">=3.16.0"
 
 dependencies:
-  cached_network_image: ^3.3.1
+  cached_network_image: ^3.4.1
   flutter:
     sdk: flutter
-  flutter_svg: ^2.0.10+1
+  flutter_svg: ^2.1.0
   go_router: ^14.1.2
   google_fonts: ^6.2.1
-  markdown_widget: ^2.3.2+6
+  markdown_widget: ^2.3.2+8
   path_drawing: ^1.0.1
-  shared_preferences: ^2.2.2
-  url_launcher: ^6.2.6
+  shared_preferences: ^2.5.3
+  url_launcher: ^6.3.1
   zeta_flutter:
     path: ../
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  widgetbook: ^3.10.0
+  widgetbook: ^3.14.2
 
   http: any
 flutter:
