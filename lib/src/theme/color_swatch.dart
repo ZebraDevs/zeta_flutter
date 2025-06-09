@@ -52,7 +52,7 @@ class ZetaColorSwatch extends ColorSwatch<int> with EquatableMixin {
     return ZetaColorSwatch(
       contrast: contrast,
       brightness: brightness,
-      primary: primary.value,
+      primary: primary.toARGB32(),
       swatch: primary.generateSwatch(background: background),
     ).apply(brightness: brightness);
   }
@@ -188,14 +188,14 @@ class ZetaColorSwatch extends ColorSwatch<int> with EquatableMixin {
     return ZetaColorSwatch(
       contrast: contrast,
       brightness: brightness,
-      primary: swatch[primaryIndex]!.value,
+      primary: swatch[primaryIndex]!.toARGB32(),
       swatch: swatch,
     );
   }
 
   @override
   List<Object?> get props => [
-        super.value,
+        super.toARGB32(),
         brightness,
         contrast,
         shade10,
@@ -256,7 +256,7 @@ class ZetaPureColorSwatch extends ColorSwatch<int> with EquatableMixin {
 
     return ZetaPureColorSwatch(
       brightness: brightness,
-      primary: this[500]!.value,
+      primary: this[500]!.toARGB32(),
       swatch: {
         0: this[0]!,
         500: this[500]!,
@@ -266,5 +266,5 @@ class ZetaPureColorSwatch extends ColorSwatch<int> with EquatableMixin {
   }
 
   @override
-  List<Object?> get props => [super.value, shade0, shade500, shade1000];
+  List<Object?> get props => [super.toARGB32(), shade0, shade500, shade1000];
 }

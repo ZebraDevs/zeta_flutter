@@ -20,7 +20,7 @@ jobs:
         with:
           cache: true
           channel: stable
-          flutter-version: 3.24.x # TODO UX-1347
+          flutter-version: 3.32.x # TODO UX-1347
       - run: dart run build_runner build --delete-conflicting-outputs
       - uses: ZebraDevs/flutter-code-quality@main
         with:
@@ -42,7 +42,7 @@ jobs:
 
   deploy-preview:
     name: Deploy preview version of the widgetbook on firebase
-    needs: [code-quality, check-secret]
+    needs: [ code-quality, check-secret ]
     if: needs.check-secret.outputs.secret-exists == 'true'
     runs-on: ubuntu-latest
     steps:
@@ -54,7 +54,7 @@ jobs:
         with:
           cache: true
           channel: stable
-          flutter-version: 3.24.x # TODO UX-1347
+          flutter-version: 3.32.x # TODO UX-1347
       - name: Setup flutter
         run: flutter pub get
       - name: Build example app

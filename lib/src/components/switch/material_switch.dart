@@ -81,6 +81,7 @@ class MaterialSwitch extends StatefulWidget {
   final FocusNode? focusNode;
   final ValueChanged<bool>? onFocusChange;
   final bool autofocus;
+
   // Zeta change: added optional parameters `showHover` and `thumbSize`.
   final bool showHover;
   final Size? thumbSize;
@@ -88,6 +89,7 @@ class MaterialSwitch extends StatefulWidget {
 
   @override
   State<StatefulWidget> createState() => _MaterialSwitchState();
+
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
@@ -125,6 +127,7 @@ class MaterialSwitch extends StatefulWidget {
 
 class _MaterialSwitchState extends State<MaterialSwitch> with TickerProviderStateMixin, ToggleableStateMixin {
   final _SwitchPainter _painter = _SwitchPainter();
+
   // Zeta change: added local `_size` and `_switchConfig`.
   late final Size _size;
   late final _SwitchConfig _switchConfig;
@@ -421,6 +424,7 @@ class _MaterialSwitchState extends State<MaterialSwitch> with TickerProviderStat
 class _SwitchPainter extends ToggleablePainter {
   AnimationController get positionController => _positionController!;
   AnimationController? _positionController;
+
   set positionController(AnimationController? value) {
     assert(value != null);
     if (value == _positionController) {
@@ -432,6 +436,7 @@ class _SwitchPainter extends ToggleablePainter {
 
   Icon? get activeIcon => _activeIcon;
   Icon? _activeIcon;
+
   set activeIcon(Icon? value) {
     if (value == _activeIcon) {
       return;
@@ -442,6 +447,7 @@ class _SwitchPainter extends ToggleablePainter {
 
   Icon? get inactiveIcon => _inactiveIcon;
   Icon? _inactiveIcon;
+
   set inactiveIcon(Icon? value) {
     if (value == _inactiveIcon) {
       return;
@@ -452,6 +458,7 @@ class _SwitchPainter extends ToggleablePainter {
 
   IconThemeData? get iconTheme => _iconTheme;
   IconThemeData? _iconTheme;
+
   set iconTheme(IconThemeData? value) {
     if (value == _iconTheme) {
       return;
@@ -462,6 +469,7 @@ class _SwitchPainter extends ToggleablePainter {
 
   Color get activeIconColor => _activeIconColor!;
   Color? _activeIconColor;
+
   set activeIconColor(Color value) {
     if (value == _activeIconColor) {
       return;
@@ -472,6 +480,7 @@ class _SwitchPainter extends ToggleablePainter {
 
   Color get inactiveIconColor => _inactiveIconColor!;
   Color? _inactiveIconColor;
+
   set inactiveIconColor(Color value) {
     if (value == _inactiveIconColor) {
       return;
@@ -482,6 +491,7 @@ class _SwitchPainter extends ToggleablePainter {
 
   Color get activePressedColor => _activePressedColor!;
   Color? _activePressedColor;
+
   set activePressedColor(Color? value) {
     assert(value != null);
     if (value == _activePressedColor) {
@@ -493,6 +503,7 @@ class _SwitchPainter extends ToggleablePainter {
 
   Color get inactivePressedColor => _inactivePressedColor!;
   Color? _inactivePressedColor;
+
   set inactivePressedColor(Color? value) {
     assert(value != null);
     if (value == _inactivePressedColor) {
@@ -504,6 +515,7 @@ class _SwitchPainter extends ToggleablePainter {
 
   double get activeThumbRadius => _activeThumbRadius!;
   double? _activeThumbRadius;
+
   set activeThumbRadius(double value) {
     if (value == _activeThumbRadius) {
       return;
@@ -514,6 +526,7 @@ class _SwitchPainter extends ToggleablePainter {
 
   double get inactiveThumbRadius => _inactiveThumbRadius!;
   double? _inactiveThumbRadius;
+
   set inactiveThumbRadius(double value) {
     if (value == _inactiveThumbRadius) {
       return;
@@ -524,6 +537,7 @@ class _SwitchPainter extends ToggleablePainter {
 
   double get pressedThumbRadius => _pressedThumbRadius!;
   double? _pressedThumbRadius;
+
   set pressedThumbRadius(double value) {
     if (value == _pressedThumbRadius) {
       return;
@@ -534,6 +548,7 @@ class _SwitchPainter extends ToggleablePainter {
 
   double? get thumbOffset => _thumbOffset;
   double? _thumbOffset;
+
   set thumbOffset(double? value) {
     if (value == _thumbOffset) {
       return;
@@ -544,6 +559,7 @@ class _SwitchPainter extends ToggleablePainter {
 
   double get trackHeight => _trackHeight!;
   double? _trackHeight;
+
   set trackHeight(double value) {
     if (value == _trackHeight) {
       return;
@@ -554,6 +570,7 @@ class _SwitchPainter extends ToggleablePainter {
 
   double get trackWidth => _trackWidth!;
   double? _trackWidth;
+
   set trackWidth(double value) {
     if (value == _trackWidth) {
       return;
@@ -564,6 +581,7 @@ class _SwitchPainter extends ToggleablePainter {
 
   ImageProvider? get activeThumbImage => _activeThumbImage;
   ImageProvider? _activeThumbImage;
+
   set activeThumbImage(ImageProvider? value) {
     if (value == _activeThumbImage) {
       return;
@@ -574,6 +592,7 @@ class _SwitchPainter extends ToggleablePainter {
 
   ImageErrorListener? get onActiveThumbImageError => _onActiveThumbImageError;
   ImageErrorListener? _onActiveThumbImageError;
+
   set onActiveThumbImageError(ImageErrorListener? value) {
     if (value == _onActiveThumbImageError) {
       return;
@@ -584,6 +603,7 @@ class _SwitchPainter extends ToggleablePainter {
 
   ImageProvider? get inactiveThumbImage => _inactiveThumbImage;
   ImageProvider? _inactiveThumbImage;
+
   set inactiveThumbImage(ImageProvider? value) {
     if (value == _inactiveThumbImage) {
       return;
@@ -594,6 +614,7 @@ class _SwitchPainter extends ToggleablePainter {
 
   ImageErrorListener? get onInactiveThumbImageError => _onInactiveThumbImageError;
   ImageErrorListener? _onInactiveThumbImageError;
+
   set onInactiveThumbImageError(ImageErrorListener? value) {
     if (value == _onInactiveThumbImageError) {
       return;
@@ -604,6 +625,7 @@ class _SwitchPainter extends ToggleablePainter {
 
   Color get activeTrackColor => _activeTrackColor!;
   Color? _activeTrackColor;
+
   set activeTrackColor(Color value) {
     if (value == _activeTrackColor) {
       return;
@@ -614,6 +636,7 @@ class _SwitchPainter extends ToggleablePainter {
 
   Color? get activeTrackOutlineColor => _activeTrackOutlineColor;
   Color? _activeTrackOutlineColor;
+
   set activeTrackOutlineColor(Color? value) {
     if (value == _activeTrackOutlineColor) {
       return;
@@ -624,6 +647,7 @@ class _SwitchPainter extends ToggleablePainter {
 
   Color? get inactiveTrackOutlineColor => _inactiveTrackOutlineColor;
   Color? _inactiveTrackOutlineColor;
+
   set inactiveTrackOutlineColor(Color? value) {
     if (value == _inactiveTrackOutlineColor) {
       return;
@@ -634,6 +658,7 @@ class _SwitchPainter extends ToggleablePainter {
 
   double? get activeTrackOutlineWidth => _activeTrackOutlineWidth;
   double? _activeTrackOutlineWidth;
+
   set activeTrackOutlineWidth(double? value) {
     if (value == _activeTrackOutlineWidth) {
       return;
@@ -644,6 +669,7 @@ class _SwitchPainter extends ToggleablePainter {
 
   double? get inactiveTrackOutlineWidth => _inactiveTrackOutlineWidth;
   double? _inactiveTrackOutlineWidth;
+
   set inactiveTrackOutlineWidth(double? value) {
     if (value == _inactiveTrackOutlineWidth) {
       return;
@@ -654,6 +680,7 @@ class _SwitchPainter extends ToggleablePainter {
 
   Color get inactiveTrackColor => _inactiveTrackColor!;
   Color? _inactiveTrackColor;
+
   set inactiveTrackColor(Color value) {
     if (value == _inactiveTrackColor) {
       return;
@@ -664,6 +691,7 @@ class _SwitchPainter extends ToggleablePainter {
 
   ImageConfiguration get configuration => _configuration!;
   ImageConfiguration? _configuration;
+
   set configuration(ImageConfiguration value) {
     if (value == _configuration) {
       return;
@@ -674,6 +702,7 @@ class _SwitchPainter extends ToggleablePainter {
 
   TextDirection get textDirection => _textDirection!;
   TextDirection? _textDirection;
+
   set textDirection(TextDirection value) {
     if (_textDirection == value) {
       return;
@@ -684,6 +713,7 @@ class _SwitchPainter extends ToggleablePainter {
 
   Color get surfaceColor => _surfaceColor!;
   Color? _surfaceColor;
+
   set surfaceColor(Color value) {
     if (value == _surfaceColor) {
       return;
@@ -694,6 +724,7 @@ class _SwitchPainter extends ToggleablePainter {
 
   bool get isInteractive => _isInteractive!;
   bool? _isInteractive;
+
   set isInteractive(bool value) {
     if (value == _isInteractive) {
       return;
@@ -704,6 +735,7 @@ class _SwitchPainter extends ToggleablePainter {
 
   double get trackInnerLength => _trackInnerLength!;
   double? _trackInnerLength;
+
   set trackInnerLength(double value) {
     if (value == _trackInnerLength) {
       return;
@@ -714,6 +746,7 @@ class _SwitchPainter extends ToggleablePainter {
 
   List<BoxShadow>? get thumbShadow => _thumbShadow;
   List<BoxShadow>? _thumbShadow;
+
   set thumbShadow(List<BoxShadow>? value) {
     if (value == _thumbShadow) {
       return;
@@ -727,6 +760,7 @@ class _SwitchPainter extends ToggleablePainter {
   ImageProvider? _cachedThumbImage;
   ImageErrorListener? _cachedThumbErrorListener;
   BoxPainter? _cachedThumbPainter;
+
   // Zeta change: add `_thumbSize`.
   Size? _thumbSize;
 
@@ -983,16 +1017,27 @@ class _SwitchPainter extends ToggleablePainter {
 
 mixin _SwitchConfig {
   double get trackHeight;
+
   double get trackWidth;
+
   double get switchWidth;
+
   double get switchHeight;
+
   double get switchHeightCollapsed;
+
   double get activeThumbRadius;
+
   double get inactiveThumbRadius;
+
   double get pressedThumbRadius;
+
   double get thumbRadiusWithIcon;
+
   List<BoxShadow>? get thumbShadow;
+
   double? get thumbOffset;
+
   int get toggleDuration;
 }
 
@@ -1002,6 +1047,7 @@ class _SwitchDefaultsM3 extends SwitchThemeData {
   _SwitchDefaultsM3(this.context, {required this.size});
 
   final BuildContext context;
+
   // Zeta change: Added parameter for the switch `size`.
   final Size size;
   late final ColorScheme _colors = Theme.of(context).colorScheme;
@@ -1011,9 +1057,9 @@ class _SwitchDefaultsM3 extends SwitchThemeData {
     return WidgetStateProperty.resolveWith((Set<WidgetState> states) {
       if (states.contains(WidgetState.disabled)) {
         if (states.contains(WidgetState.selected)) {
-          return _colors.surface.withOpacity(1);
+          return _colors.surface.withValues(alpha: 1);
         }
-        return _colors.onSurface.withOpacity(0.38);
+        return _colors.onSurface.withValues(alpha: 0.38);
       }
       if (states.contains(WidgetState.selected)) {
         if (states.contains(WidgetState.pressed)) {
@@ -1045,9 +1091,9 @@ class _SwitchDefaultsM3 extends SwitchThemeData {
     return WidgetStateProperty.resolveWith((Set<WidgetState> states) {
       if (states.contains(WidgetState.disabled)) {
         if (states.contains(WidgetState.selected)) {
-          return _colors.onSurface.withOpacity(0.12);
+          return _colors.onSurface.withValues(alpha: 0.12);
         }
-        return _colors.surfaceContainerHighest.withOpacity(0.12);
+        return _colors.surfaceContainerHighest.withValues(alpha: 0.12);
       }
       if (states.contains(WidgetState.selected)) {
         if (states.contains(WidgetState.pressed)) {
@@ -1081,7 +1127,7 @@ class _SwitchDefaultsM3 extends SwitchThemeData {
         return Colors.transparent;
       }
       if (states.contains(WidgetState.disabled)) {
-        return _colors.onSurface.withOpacity(0.12);
+        return _colors.onSurface.withValues(alpha: 0.12);
       }
       return _colors.outline;
     });
@@ -1092,24 +1138,24 @@ class _SwitchDefaultsM3 extends SwitchThemeData {
     return WidgetStateProperty.resolveWith((Set<WidgetState> states) {
       if (states.contains(WidgetState.selected)) {
         if (states.contains(WidgetState.pressed)) {
-          return _colors.primary.withOpacity(0.12);
+          return _colors.primary.withValues(alpha: 0.12);
         }
         if (states.contains(WidgetState.hovered)) {
-          return _colors.primary.withOpacity(0.08);
+          return _colors.primary.withValues(alpha: 0.08);
         }
         if (states.contains(WidgetState.focused)) {
-          return _colors.primary.withOpacity(0.12);
+          return _colors.primary.withValues(alpha: 0.12);
         }
         return null;
       }
       if (states.contains(WidgetState.pressed)) {
-        return _colors.onSurface.withOpacity(0.12);
+        return _colors.onSurface.withValues(alpha: 0.12);
       }
       if (states.contains(WidgetState.hovered)) {
-        return _colors.onSurface.withOpacity(0.08);
+        return _colors.onSurface.withValues(alpha: 0.08);
       }
       if (states.contains(WidgetState.focused)) {
-        return _colors.onSurface.withOpacity(0.12);
+        return _colors.onSurface.withValues(alpha: 0.12);
       }
       return null;
     });
@@ -1129,6 +1175,7 @@ class _SwitchDefaultsM3 extends SwitchThemeData {
   // but not we use `size.height` for this.
   @override
   double get splashRadius => size.height / 2 + 8;
+
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);

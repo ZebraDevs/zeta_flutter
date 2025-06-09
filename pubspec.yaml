@@ -1,5 +1,5 @@
 name: zeta_flutter
-version: 0.20.2
+version: 0.20.3
 description: Zeta is the new, formal, standardized Zebra Design System based off
   the successes of ZDS (Zebra Design System). This package is in pre-release,
   and so many aspects are incomplete.
@@ -18,20 +18,20 @@ platforms:
 
 environment:
   sdk: ">=3.2.0 <4.0.0"
-  flutter: ">=3.16.0"
+  flutter: ">=3.32.0"
 
 dependencies:
   collection: ^1.18.0
   equatable: ^2.0.5
   flutter:
     sdk: flutter
-  flutter_slidable: ^3.1.0
-  intl: ^0.19.0
+  flutter_slidable: ^4.0.0
+  intl: ^0.20.2
   mask_text_input_formatter: ^2.9.0
   web: ^1.0.0
 
 dev_dependencies:
-  analyzer: ^6.7.0
+  analyzer: ^7.4.5
   build_runner: ^2.4.10
   flutter_test:
     sdk: flutter
