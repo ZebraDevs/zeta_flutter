@@ -1,5 +1,24 @@
 # Changelog
 
+## [0.20.3](https://github.com/ZebraDevs/zeta_flutter/compare/v0.20.2...v0.20.3) (2025-06-09)
+
+
+### ⛓️ Dependencies
+
+* Flutter upgrade to 3.32.0 ([#344](https://github.com/ZebraDevs/zeta_flutter/issues/344)) ([ff329a2](https://github.com/ZebraDevs/zeta_flutter/commit/ff329a26f6001c0d108d99814322d61a72943e4b))
+* Update dependencies ([8d87dbf](https://github.com/ZebraDevs/zeta_flutter/commit/8d87dbf82a8c4c414495046db5dcb584af787464))
+
+
+### 🧪 Tests
+
+* Fix failing tests ([ee85fbb](https://github.com/ZebraDevs/zeta_flutter/commit/ee85fbbd1b88fe67a6fd9a70a117f1bbaff4133f))
+
+
+### 🧹 Miscellaneous Chores
+
+* Fix analyzer issues ([5c83123](https://github.com/ZebraDevs/zeta_flutter/commit/5c831236ac8e9e22d7dbf974e0c66e0ccd7bd329))
+
+
 ## [0.20.2](https://github.com/ZebraDevs/zeta_flutter/compare/v0.20.1...v0.20.2) (2024-12-20)
 
 
