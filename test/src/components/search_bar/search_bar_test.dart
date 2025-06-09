@@ -1,3 +1,6 @@
+// Ignored for testing purposes
+// ignore_for_file: unreachable_from_main
+
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
@@ -10,13 +13,10 @@ import '../../../test_utils/utils.dart';
 import 'search_bar_test.mocks.dart';
 
 abstract class ISearchBarEvents {
-  // ignore: unreachable_from_main
   void onChange(String? text);
 
-  // ignore: unreachable_from_main
   void onSubmit(String text);
 
-  // ignore: unreachable_from_main
   Future<String?> onSpeech();
 }
 

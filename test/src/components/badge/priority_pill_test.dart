@@ -1,4 +1,3 @@
-// ignore_for_file: avoid_dynamic_calls
 import 'package:flutter_test/flutter_test.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 

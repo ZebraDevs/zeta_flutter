@@ -1,3 +1,6 @@
+// Ignored for testing purposes
+// ignore_for_file: deprecated_member_use_from_same_package
+
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
@@ -74,7 +77,6 @@ void main() {
       );
       expect(find.byType(ZetaBreadcrumbItem), findsNWidgets(maxItemsShown));
 
-      // ignore: deprecated_member_use_from_same_package
       await tester.tap(find.byType(TruncatedItem));
       await tester.pumpAndSettle();
 
@@ -94,7 +96,6 @@ void main() {
       expect(find.text('Breadcrumb'), findsOneWidget);
       expect(find.text('Item ${children.length - 1}'), findsOneWidget);
 
-      // ignore: deprecated_member_use_from_same_package
       await tester.tap(find.byType(TruncatedItem));
       await tester.pumpAndSettle();
 
@@ -121,7 +122,6 @@ void main() {
       });
       expect(iconFinder, findsOneWidget);
 
-      // ignore: deprecated_member_use_from_same_package
       await tester.tap(find.byType(TruncatedItem));
       await tester.pumpAndSettle();
 

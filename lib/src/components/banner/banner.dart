@@ -71,6 +71,7 @@ class ZetaBanner extends MaterialBanner {
               final backgroundColor = _backgroundColorFromType(context, type);
               final foregroundColor = backgroundColor.onColor;
               if (!kIsWeb && PlatformIs.android && context.mounted) {
+                // Set the system UI overlay style to match the banner background color.
                 // ignore: invalid_use_of_visible_for_testing_member
                 final statusBarColor = SystemChrome.latestStyle?.statusBarColor;
                 if (statusBarColor != backgroundColor) {
@@ -83,8 +84,7 @@ class ZetaBanner extends MaterialBanner {
                 }
               }
 
-              // ignore: no_leading_underscores_for_local_identifiers
-              final _titleCenter = titleStart ?? titleCenter;
+              final isTitleCenter = titleStart ?? titleCenter;
               return ZetaRoundedScope(
                 rounded: rounded ?? context.rounded,
                 child: Semantics(
@@ -95,7 +95,7 @@ class ZetaBanner extends MaterialBanner {
                       overflow: TextOverflow.ellipsis,
                     ),
                     child: Stack(
-                      alignment: _titleCenter ? Alignment.center : Alignment.centerLeft,
+                      alignment: isTitleCenter ? Alignment.center : Alignment.centerLeft,
                       children: [
                         if (leadingIcon != null)
                           Positioned(
@@ -111,7 +111,7 @@ class ZetaBanner extends MaterialBanner {
                           ),
                         Padding(
                           padding:
-                              !_titleCenter && leadingIcon != null ? const EdgeInsets.only(left: 40) : EdgeInsets.zero,
+                              !isTitleCenter && leadingIcon != null ? const EdgeInsets.only(left: 40) : EdgeInsets.zero,
                           child: Text(
                             title,
                             style: ZetaTextStyles.labelLarge.copyWith(

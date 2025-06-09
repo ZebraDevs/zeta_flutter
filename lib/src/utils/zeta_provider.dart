@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_function_declarations_over_variables
-
 import 'dart:async';
 
 import 'package:flutter/foundation.dart';
@@ -20,8 +18,9 @@ typedef ZetaBaseAppBuilder = Widget Function(
   ThemeMode themeMode,
 );
 
-final _emptyBuilder = (_, __, ___) => const Nothing();
-final _emptyBase = (_, __, ___, ____) => const Nothing();
+Nothing _emptyBuilder(dynamic _, dynamic __, dynamic ___) => const Nothing();
+
+Nothing _emptyBase(dynamic _, dynamic __, dynamic ___, dynamic ____) => const Nothing();
 
 /// A widget that provides Zeta theming and contrast data down the widget tree.
 /// {@category Utils}

@@ -1,3 +1,4 @@
+// Ignored to allow deprecated member in this file
 // ignore_for_file: deprecated_member_use_from_same_package
 
 import 'package:flutter/foundation.dart';

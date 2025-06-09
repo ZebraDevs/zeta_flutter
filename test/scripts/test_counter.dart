@@ -1,3 +1,6 @@
+// Ignored for testing purposes
+// ignore_for_file: avoid_print
+
 import 'dart:io';
 
 import 'package:analyzer/dart/analysis/utilities.dart';
@@ -239,6 +242,5 @@ void main() async {
   // generate MD table
   await writeMDToFile('${outputDirectory.path}/test_table.md', generateMD(testCount));
 
-  // ignore: avoid_print
   print('Test table generated successfully!');
 }
