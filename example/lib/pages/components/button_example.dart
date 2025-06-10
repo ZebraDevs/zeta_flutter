@@ -193,6 +193,7 @@ class _FabExampleState extends State<FabExample> {
 
   @override
   Widget build(BuildContext context) {
+    print('Building FAB Example');
     if (fabs.isEmpty) {
       fabs = [
         ZetaFAB(
@@ -239,15 +240,15 @@ class _FabExampleState extends State<FabExample> {
           type: ZetaFabType.inverse,
           onPressed: () => setFab(4),
         ),
-        ZetaFAB(
-          scrollController: _scrollController,
-          label: 'Large Sharp Primary',
-          size: ZetaFabSize.large,
-          shape: ZetaWidgetBorder.sharp,
-          type: ZetaFabType.primary,
-          expanded: false,
-          onPressed: () => setFab(5),
-        ),
+        // ZetaFAB(
+        //   scrollController: _scrollController,
+        //   label: 'Large Sharp Primary',
+        //   size: ZetaFabSize.large,
+        //   shape: ZetaWidgetBorder.sharp,
+        //   type: ZetaFabType.primary,
+        //   expanded: false,
+        //   onPressed: () => setFab(5),
+        // ),
       ];
     }
     final ZetaFAB theFab = (fab as ZetaFAB?) ?? (fabs.first);
