@@ -111,6 +111,7 @@ class ButtonGroupExample extends StatelessWidget {
       Column(
         key: Key('docs-button-group'),
         children: [
+          Text('TESTING'),
           ZetaButtonGroup(isLarge: true, buttons: [
             ZetaGroupButton(
               onPressed: () {},
@@ -194,81 +195,81 @@ class _FabExampleState extends State<FabExample> {
   @override
   Widget build(BuildContext context) {
     print('Building FAB Example');
-    if (fabs.isEmpty) {
-      fabs = [
-        ZetaFAB(
-          scrollController: _scrollController,
-          label: 'Small Circle Disabled',
-          size: ZetaFabSize.small,
-          expanded: false,
-          shape: ZetaWidgetBorder.full,
-          type: ZetaFabType.primary,
-        ),
-        ZetaFAB(
-          scrollController: _scrollController,
-          expanded: false,
-          label: 'Small Rounded Secondary',
-          size: ZetaFabSize.small,
-          shape: ZetaWidgetBorder.rounded,
-          type: ZetaFabType.secondary,
-          onPressed: () => setFab(1),
-        ),
-        ZetaFAB(
-          scrollController: _scrollController,
-          label: 'Small Sharp Inverse',
-          size: ZetaFabSize.small,
-          shape: ZetaWidgetBorder.sharp,
-          expanded: false,
-          type: ZetaFabType.inverse,
-          onPressed: () => setFab(2),
-        ),
-        ZetaFAB(
-          scrollController: _scrollController,
-          label: 'Large Circle Secondary',
-          size: ZetaFabSize.large,
-          shape: ZetaWidgetBorder.full,
-          type: ZetaFabType.secondary,
-          expanded: false,
-          onPressed: () => setFab(3),
-        ),
-        ZetaFAB(
-          scrollController: _scrollController,
-          label: 'Large Rounded Inverse',
-          size: ZetaFabSize.large,
-          shape: ZetaWidgetBorder.rounded,
-          expanded: false,
-          type: ZetaFabType.inverse,
-          onPressed: () => setFab(4),
-        ),
-        // ZetaFAB(
-        //   scrollController: _scrollController,
-        //   label: 'Large Sharp Primary',
-        //   size: ZetaFabSize.large,
-        //   shape: ZetaWidgetBorder.sharp,
-        //   type: ZetaFabType.primary,
-        //   expanded: false,
-        //   onPressed: () => setFab(5),
-        // ),
-      ];
-    }
-    final ZetaFAB theFab = (fab as ZetaFAB?) ?? (fabs.first);
+    // if (fabs.isEmpty) {
+    //   fabs = [
+    //     ZetaFAB(
+    //       scrollController: _scrollController,
+    //       label: 'Small Circle Disabled',
+    //       size: ZetaFabSize.small,
+    //       expanded: false,
+    //       shape: ZetaWidgetBorder.full,
+    //       type: ZetaFabType.primary,
+    //     ),
+    //     ZetaFAB(
+    //       scrollController: _scrollController,
+    //       expanded: false,
+    //       label: 'Small Rounded Secondary',
+    //       size: ZetaFabSize.small,
+    //       shape: ZetaWidgetBorder.rounded,
+    //       type: ZetaFabType.secondary,
+    //       onPressed: () => setFab(1),
+    //     ),
+    //     ZetaFAB(
+    //       scrollController: _scrollController,
+    //       label: 'Small Sharp Inverse',
+    //       size: ZetaFabSize.small,
+    //       shape: ZetaWidgetBorder.sharp,
+    //       expanded: false,
+    //       type: ZetaFabType.inverse,
+    //       onPressed: () => setFab(2),
+    //     ),
+    //     ZetaFAB(
+    //       scrollController: _scrollController,
+    //       label: 'Large Circle Secondary',
+    //       size: ZetaFabSize.large,
+    //       shape: ZetaWidgetBorder.full,
+    //       type: ZetaFabType.secondary,
+    //       expanded: false,
+    //       onPressed: () => setFab(3),
+    //     ),
+    //     ZetaFAB(
+    //       scrollController: _scrollController,
+    //       label: 'Large Rounded Inverse',
+    //       size: ZetaFabSize.large,
+    //       shape: ZetaWidgetBorder.rounded,
+    //       expanded: false,
+    //       type: ZetaFabType.inverse,
+    //       onPressed: () => setFab(4),
+    //     ),
+    //     // ZetaFAB(
+    //     //   scrollController: _scrollController,
+    //     //   label: 'Large Sharp Primary',
+    //     //   size: ZetaFabSize.large,
+    //     //   shape: ZetaWidgetBorder.sharp,
+    //     //   type: ZetaFabType.primary,
+    //     //   expanded: false,
+    //     //   onPressed: () => setFab(5),
+    //     // ),
+    //   ];
+    // }
+    // final ZetaFAB theFab = (fab as ZetaFAB?) ?? (fabs.first);
     return ExampleScaffold(
       name: FabExample.name,
-      floatingActionButton: ZetaFAB(
-        expanded: true,
-        icon: theFab.icon,
-        label: theFab.label,
-        scrollController: _scrollController,
-        size: theFab.size,
-        type: theFab.type,
-        shape: theFab.shape,
-        onPressed: theFab.onPressed,
-      ),
+      // floatingActionButton: ZetaFAB(
+      //   expanded: true,
+      //   icon: theFab.icon,
+      //   label: theFab.label,
+      //   scrollController: _scrollController,
+      //   size: theFab.size,
+      //   type: theFab.type,
+      //   shape: theFab.shape,
+      //   onPressed: theFab.onPressed,
+      // ),
       children: [
-        Text('Floating Action Buttons', style: Zeta.of(context).textStyles.displayMedium),
-        Text('Tap buttons to change current FAB: ', style: Zeta.of(context).textStyles.bodyMedium),
-        Wrap(children: fabs.divide(SizedBox.square(dimension: 10)).toList()),
-        SizedBox(height: 200),
+        // Text('Floating Action Buttons', style: Zeta.of(context).textStyles.displayMedium),
+        // Text('Tap buttons to change current FAB: ', style: Zeta.of(context).textStyles.bodyMedium),
+        // Wrap(children: fabs.divide(SizedBox.square(dimension: 10)).toList()),
+        // SizedBox(height: 200),
         Column(
           key: Key('docs-fab'),
           spacing: 8,
