@@ -174,78 +174,9 @@ class FabExample extends StatelessWidget {
     return ExampleScaffold(
       name: FabExample.name,
       children: [
-        Column(
-          key: Key('docs-fab'),
-          spacing: 8,
-          children: [
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Expanded(
-                  child: ZetaFAB(
-                    onPressed: () => {},
-                    expanded: false,
-                  ),
-                ),
-                Expanded(
-                  child: ZetaFAB(
-                    onPressed: () => {},
-                    label: 'Add',
-                  ).paddingTop(2),
-                ),
-              ],
-            ),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Expanded(
-                  child: ZetaFAB(
-                    onPressed: () => {},
-                    label: 'Edit',
-                    expanded: false,
-                    shape: ZetaWidgetBorder.rounded,
-                    type: ZetaFabType.secondary,
-                    icon: ZetaIcons.edit,
-                  ),
-                ),
-                Expanded(
-                  child: ZetaFAB(
-                    onPressed: () => {},
-                    shape: ZetaWidgetBorder.rounded,
-                    label: 'Edit',
-                    icon: ZetaIcons.edit,
-                    type: ZetaFabType.secondary,
-                  ).paddingTop(2),
-                ),
-              ],
-            ),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Expanded(
-                  child: ZetaFAB(
-                    onPressed: () => {},
-                    label: 'Share',
-                    icon: ZetaIcons.share,
-                    expanded: false,
-                    shape: ZetaWidgetBorder.sharp,
-                    type: ZetaFabType.inverse,
-                    size: ZetaFabSize.large,
-                  ),
-                ),
-                Expanded(
-                  child: ZetaFAB(
-                    onPressed: () => {},
-                    shape: ZetaWidgetBorder.sharp,
-                    label: 'Share',
-                    icon: ZetaIcons.share,
-                    type: ZetaFabType.inverse,
-                    size: ZetaFabSize.large,
-                  ).paddingTop(2),
-                ),
-              ],
-            ),
-          ],
+        ZetaFAB(
+          onPressed: () => {},
+          expanded: false,
         )
       ],
     );
