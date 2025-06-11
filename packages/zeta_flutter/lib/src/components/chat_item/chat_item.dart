@@ -59,10 +59,10 @@ class ZetaChatItem extends ZetaStatelessWidget {
   /// Whether to show notification icon.
   final bool enabledNotificationIcon;
 
-  /// Optional icons to be displayed on the top right corder next to warning and notification icons.
+  /// Optional icons to be displayed on the top right corner next to warning and notification icons.
   final List<Widget> additionalIcons;
 
-  /// Count displayed on the top right corder.
+  /// Count displayed on the top right corner.
   final int? count;
 
   /// Callback to call when tap on the list tile.
