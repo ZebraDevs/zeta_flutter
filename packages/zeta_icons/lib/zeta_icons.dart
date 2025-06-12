@@ -7,3 +7,4 @@ library;
 
 /// All the icons
 export 'src/icons.g.dart';
+export 'src/illustrations.dart';

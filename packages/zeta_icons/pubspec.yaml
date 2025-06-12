@@ -14,6 +14,7 @@ resolution: workspace
 dependencies:
   flutter:
     sdk: flutter
+  flutter_svg: ^2.1.0
 
 dev_dependencies:
   flutter_test:
@@ -21,14 +22,18 @@ dev_dependencies:
   zds_analysis: ^1.2.0
 
 flutter:
+  assets:
+    - lib/assets/illustrations/zdna/
+    - lib/assets/illustrations/workcloud/
+
   fonts:
     - family: zeta-icons
       fonts:
-        - asset: lib/src/assets/zeta-icons-round.ttf
+        - asset: lib/assets/icons/zeta-icons-round.ttf
     - family: zeta-icons-round
       fonts:
-        - asset: lib/src/assets/zeta-icons-round.ttf
+        - asset: lib/assets/icons/zeta-icons-round.ttf
     - family: zeta-icons-sharp
       fonts:
-        - asset: lib/src/assets/zeta-icons-sharp.ttf
+        - asset: lib/assets/icons/zeta-icons-sharp.ttf
   uses-material-design: true
