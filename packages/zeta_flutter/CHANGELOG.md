@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.1.3](https://github.com/ZebraDevs/zeta_flutter/compare/zeta_flutter-v1.1.2...zeta_flutter-v1.1.3) (2025-06-13)
+
+
+### 📈 Documentation
+
+* Corder typo fixed ([7f69193](https://github.com/ZebraDevs/zeta_flutter/commit/7f69193b610619f1e62c5547c5408277ac42bebe))
+
+
+### 🧹 Miscellaneous Chores
+
+* ** zeta_icons:** release 1.0.3 ([#342](https://github.com/ZebraDevs/zeta_flutter/issues/342)) ([aa9a155](https://github.com/ZebraDevs/zeta_flutter/commit/aa9a15504824a796ff9733d1c3eefa11c1a08052))
+
 ## [1.1.2](https://github.com/ZebraDevs/zeta_flutter/compare/zeta_flutter-v1.1.1...zeta_flutter-v1.1.2) (2025-06-04)
 
 
