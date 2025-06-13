@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:zeta_example/pages/assets/illustrations_example.dart';
 import 'package:zeta_example/pages/components/accordion_example.dart';
 import 'package:zeta_example/pages/components/avatar_rail_example.dart';
 import 'package:zeta_example/pages/components/avatar_example.dart';
@@ -127,6 +128,7 @@ final List<Component> theme = [
   Component(SpacingExample.name, (context) => const SpacingExample()),
 ];
 final List<Component> assets = [
+  Component(IllustrationsExample.name, (context) => const IllustrationsExample()),
   Component(IconsExample.name, (context) => const IconsExample()),
 ];
 
