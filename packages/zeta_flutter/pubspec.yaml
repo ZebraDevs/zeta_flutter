@@ -20,7 +20,7 @@ dependencies:
   mask_text_input_formatter: ^2.9.0
   zeta_flutter_theme: ^1.1.2
   zeta_flutter_utils: ^1.1.1
-  zeta_icons: ^1.0.3
+  zeta_icons: ^1.1.0
 
 dev_dependencies:
   flutter_test:
