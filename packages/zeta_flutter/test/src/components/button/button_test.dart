@@ -58,27 +58,6 @@ void main() {
       expect(button.type, ZetaButtonType.primary);
     });
 
-    testWidgets('Initializes secondary with correct Label', (WidgetTester tester) async {
-      await tester.pumpWidget(
-        TestApp(
-          home: ZetaButton.secondary(
-            onPressed: () {},
-            label: 'Test Button',
-            leadingIcon: Icons.abc,
-            size: ZetaWidgetSize.small,
-          ),
-        ),
-      );
-
-      final buttonFinder = find.byType(ZetaButton);
-      final ZetaButton button = tester.firstWidget(buttonFinder);
-      expect(button.borderType, null);
-      expect(button.label, 'Test Button');
-      expect(button.leadingIcon, Icons.abc);
-      expect(button.trailingIcon, null);
-      expect(button.size, ZetaWidgetSize.small);
-      expect(button.type, ZetaButtonType.secondary);
-    });
     testWidgets('Initializes positive with correct Label', (WidgetTester tester) async {
       await tester.pumpWidget(
         TestApp(
@@ -267,11 +246,7 @@ void main() {
       ZetaButton.primary(onPressed: () {}, label: 'Test Button'),
       'button_primary',
     );
-    goldenTest(
-      goldenFile,
-      ZetaButton.secondary(onPressed: () {}, label: 'Test Button', leadingIcon: Icons.abc, size: ZetaWidgetSize.small),
-      'button_secondary',
-    );
+
     goldenTest(
       goldenFile,
       ZetaButton.positive(onPressed: () {}, label: 'Test Button', trailingIcon: Icons.abc),
