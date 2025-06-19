@@ -140,7 +140,7 @@ ButtonStyle buttonStyle(
           case ZetaButtonType.secondary:
           case ZetaButtonType.positive:
           case ZetaButtonType.negative:
-            return colors.mainInverse;
+            return colors.stateDefaultEnabled;
         }
       },
     ),
@@ -180,7 +180,7 @@ ButtonStyle buttonStyle(
           case ZetaButtonType.secondary:
           case ZetaButtonType.positive:
           case ZetaButtonType.negative:
-            return colors.mainInverse;
+            return colors.stateDefaultEnabled;
         }
       },
     ),

@@ -14,7 +14,23 @@ void main() {
     goldenFileComparator = TolerantComparator(goldenFile.uri);
   });
 
-  group('Accessibility Tests', () {});
+  group('Accessibility Tests', () {
+    // Ignoring the secondary button type as it is deprecated.
+    // ignore: deprecated_member_use_from_same_package
+    final buttonTypes = ZetaButtonType.values.where((type) => type != ZetaButtonType.secondary);
+    for (final buttonType in buttonTypes) {
+      for (final size in ZetaWidgetSize.values) {
+        meetsAccessabilityGuidelinesTest(
+          ZetaButton(
+            onPressed: () {},
+            label: '${buttonType.name} ${size.name}',
+            type: buttonType,
+            size: size,
+          ),
+        );
+      }
+    }
+  });
 
   group('Content Tests', () {
     final debugFillProperties = {
