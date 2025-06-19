@@ -13,6 +13,13 @@ enum ZetaWidgetBorder {
   /// Fully rounded border.
   full;
 
+  /// Returns the border radius for the given [ZetaWidgetBorder] used in [ZetaButton].
+  Radius buttonRadius(BuildContext context) => switch (this) {
+        ZetaWidgetBorder.sharp => Zeta.of(context).radius.none,
+        ZetaWidgetBorder.rounded => Zeta.of(context).radius.minimal,
+        ZetaWidgetBorder.full => Zeta.of(context).radius.full,
+      };
+
   /// Returns the border radius for the given [ZetaWidgetBorder].
   Radius radius(BuildContext context) => switch (this) {
         ZetaWidgetBorder.sharp => Zeta.of(context).radius.none,

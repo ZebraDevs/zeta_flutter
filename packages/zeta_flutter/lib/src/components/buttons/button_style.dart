@@ -1,3 +1,6 @@
+// Ignored whilst secondary is still in use
+// ignore_for_file: deprecated_member_use_from_same_package
+
 import 'package:flutter/material.dart';
 
 import '../../../zeta_flutter.dart';
@@ -10,6 +13,8 @@ enum ZetaButtonType {
 
   /// Background: Secondary color; defaults to yellow.
   /// Border: None.
+
+  @Deprecated('Secondary buttons are deprecated and will be removed in a future version.')
   secondary,
 
   /// Background: Positive color; defaults to green.
@@ -104,7 +109,7 @@ ButtonStyle buttonStyle(
   return ButtonStyle(
     minimumSize: WidgetStateProperty.all(Size.square(Zeta.of(context).spacing.xl_4)),
     shape: WidgetStateProperty.all(
-      RoundedRectangleBorder(borderRadius: BorderRadius.all(borderType.radius(context))),
+      RoundedRectangleBorder(borderRadius: BorderRadius.all(borderType.buttonRadius(context))),
     ),
     backgroundColor: WidgetStateProperty.resolveWith<Color?>(
       (states) {
@@ -135,7 +140,7 @@ ButtonStyle buttonStyle(
           case ZetaButtonType.secondary:
           case ZetaButtonType.positive:
           case ZetaButtonType.negative:
-            return colors.mainInverse;
+            return colors.stateDefaultEnabled;
         }
       },
     ),
@@ -175,7 +180,7 @@ ButtonStyle buttonStyle(
           case ZetaButtonType.secondary:
           case ZetaButtonType.positive:
           case ZetaButtonType.negative:
-            return colors.mainInverse;
+            return colors.stateDefaultEnabled;
         }
       },
     ),
