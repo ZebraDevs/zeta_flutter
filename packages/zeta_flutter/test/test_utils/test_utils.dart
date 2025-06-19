@@ -1,12 +1,13 @@
 import 'dart:io';
-
 import 'package:collection/collection.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:path/path.dart';
+import 'package:zeta_flutter/zeta_flutter.dart';
 
+import 'aaa_test_guideline.dart';
 import 'test_app.dart';
 
 export 'test_app.dart';
@@ -115,36 +116,43 @@ void debugFillPropertiesTest(Widget widget, Map<String, dynamic> properties) {
 @visibleForTesting
 void meetsAccessibilityGuidelinesTest(
   Widget widget, {
-  ThemeMode themeMode = ThemeMode.system,
   Size? screenSize,
   bool? rounded,
   Future<void> Function(WidgetTester)? setUp,
   Future<void> Function(WidgetTester)? beforeTest,
 }) {
-  testWidgets('meets accessibility requirements', (WidgetTester tester) async {
-    final SemanticsHandle handle = tester.ensureSemantics();
-    if (setUp != null) {
-      await setUp(tester);
+  for (final contrast in [ZetaContrast.aa, ZetaContrast.aaa]) {
+    for (final themeMode in [ThemeMode.light, ThemeMode.dark]) {
+      testWidgets('meets accessibility requirements ${themeMode.name} ${contrast.name}', (WidgetTester tester) async {
+        final SemanticsHandle handle = tester.ensureSemantics();
+        if (setUp != null) {
+          await setUp(tester);
+        }
+        await tester.pumpWidget(
+          TestApp(
+            screenSize: screenSize,
+            themeMode: themeMode,
+            rounded: rounded,
+            home: widget,
+            contrast: contrast,
+          ),
+        );
+
+        if (beforeTest != null) {
+          await beforeTest(tester);
+        }
+
+        await expectLater(tester, meetsGuideline(androidTapTargetGuideline));
+        await expectLater(tester, meetsGuideline(iOSTapTargetGuideline));
+        await expectLater(tester, meetsGuideline(labeledTapTargetGuideline));
+        if (contrast == ZetaContrast.aa) {
+          await expectLater(tester, meetsGuideline(textContrastGuideline));
+        } else {
+          await expectLater(tester, meetsGuideline(aaaGuideline));
+        }
+
+        handle.dispose();
+      });
     }
-
-    await tester.pumpWidget(
-      TestApp(
-        screenSize: screenSize,
-        themeMode: themeMode,
-        rounded: rounded,
-        home: widget,
-      ),
-    );
-
-    if (beforeTest != null) {
-      await beforeTest(tester);
-    }
-
-    await expectLater(tester, meetsGuideline(androidTapTargetGuideline));
-    await expectLater(tester, meetsGuideline(iOSTapTargetGuideline));
-    await expectLater(tester, meetsGuideline(labeledTapTargetGuideline));
-    await expectLater(tester, meetsGuideline(textContrastGuideline));
-
-    handle.dispose();
-  });
+  }
 }
