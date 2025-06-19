@@ -20,7 +20,7 @@ void main() {
     final buttonTypes = ZetaButtonType.values.where((type) => type != ZetaButtonType.secondary);
     for (final buttonType in buttonTypes) {
       for (final size in ZetaWidgetSize.values) {
-        meetsAccessabilityGuidelinesTest(
+        meetsAccessibilityGuidelinesTest(
           ZetaButton(
             onPressed: () {},
             label: '${buttonType.name} ${size.name}',

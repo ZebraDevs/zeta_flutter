@@ -113,7 +113,7 @@ void debugFillPropertiesTest(Widget widget, Map<String, dynamic> properties) {
 
 /// Accessibility test helper.
 @visibleForTesting
-void meetsAccessabilityGuidelinesTest(
+void meetsAccessibilityGuidelinesTest(
   Widget widget, {
   ThemeMode themeMode = ThemeMode.system,
   Size? screenSize,

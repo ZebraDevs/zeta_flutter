@@ -13,7 +13,7 @@ void main() {
   });
 
   group('Accessibility Tests', () {
-    meetsAccessabilityGuidelinesTest(
+    meetsAccessibilityGuidelinesTest(
       ZetaRangeSelector(
         onChange: (value) {},
         initialValues: const RangeValues(20, 80),
