@@ -1,5 +1,31 @@
 # Changelog
 
+## [1.1.3](https://github.com/ZebraDevs/zeta_flutter/compare/zeta_flutter-v1.1.2...zeta_flutter-v1.1.3) (2025-06-19)
+
+
+### 🪲 Bug Fixes
+
+* Update button colors and radius to match figma ([233fc9d](https://github.com/ZebraDevs/zeta_flutter/commit/233fc9de301e6d1d45e271ca3f31523e938ba240))
+
+
+### 📈 Documentation
+
+* Corder typo fixed ([7f69193](https://github.com/ZebraDevs/zeta_flutter/commit/7f69193b610619f1e62c5547c5408277ac42bebe))
+
+
+### 🧪 Tests
+
+* Add accessibility tests for button ([233fc9d](https://github.com/ZebraDevs/zeta_flutter/commit/233fc9de301e6d1d45e271ca3f31523e938ba240))
+
+
+### 🧹 Miscellaneous Chores
+
+* ** zeta_icons:** release 1.0.3 ([#342](https://github.com/ZebraDevs/zeta_flutter/issues/342)) ([aa9a155](https://github.com/ZebraDevs/zeta_flutter/commit/aa9a15504824a796ff9733d1c3eefa11c1a08052))
+* ** zeta_icons:** release 1.1.0 ([#346](https://github.com/ZebraDevs/zeta_flutter/issues/346)) ([b5afd0c](https://github.com/ZebraDevs/zeta_flutter/commit/b5afd0c8a9d152e155b75140552726f56758fe3b))
+* ** zeta_icons:** release 1.1.1 ([#349](https://github.com/ZebraDevs/zeta_flutter/issues/349)) ([0888024](https://github.com/ZebraDevs/zeta_flutter/commit/08880249201f118b168e1c12767abae2b7c220d1))
+* ** zeta_icons:** release 1.1.2 ([#351](https://github.com/ZebraDevs/zeta_flutter/issues/351)) ([7c3f86e](https://github.com/ZebraDevs/zeta_flutter/commit/7c3f86e5f95c0dde78881d7cf3cef8118f93f2bb))
+* **UX-1444:** Remove secondary button style ([#352](https://github.com/ZebraDevs/zeta_flutter/issues/352)) ([233fc9d](https://github.com/ZebraDevs/zeta_flutter/commit/233fc9de301e6d1d45e271ca3f31523e938ba240))
+
 ## [1.1.2](https://github.com/ZebraDevs/zeta_flutter/compare/zeta_flutter-v1.1.1...zeta_flutter-v1.1.2) (2025-06-04)
 
 
