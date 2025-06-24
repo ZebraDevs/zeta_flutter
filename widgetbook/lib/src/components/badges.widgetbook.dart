@@ -92,7 +92,7 @@ Widget priorityPill(BuildContext context) {
 Widget statusLabel(BuildContext context) => ZetaStatusLabel(
       label: context.knobs.string(label: 'Label', initialValue: 'Label'),
       status: context.knobs.list(label: 'Status', labelBuilder: enumLabelBuilder, options: ZetaWidgetStatus.values),
-      customIcon: iconKnob(context),
+      icon: iconKnob(context),
     );
 
 typedef Tag = ZetaTag;

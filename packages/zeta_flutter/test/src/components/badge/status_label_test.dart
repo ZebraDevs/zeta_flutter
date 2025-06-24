@@ -12,19 +12,25 @@ void main() {
     goldenFileComparator = TolerantComparator(goldenFile.uri);
   });
 
-  group('Accessibility Tests', () {});
+  group('Accessibility Tests', () {
+    for (final status in ZetaWidgetStatus.values) {
+      meetsAccessibilityGuidelinesTest(
+        ZetaStatusLabel(label: 'Label', status: status),
+      );
+    }
+  });
   group('Content Tests', () {
     final debugFillProperties = {
       'label': '"Test label"',
       'rounded': 'false',
-      'customIcon': 'IconData(U+F04B6)',
+      'icon': 'IconData(U+F04B6)',
       'status': 'info',
     };
     debugFillPropertiesTest(
       const ZetaStatusLabel(
         label: 'Test label',
         rounded: false,
-        customIcon: Icons.abc,
+        icon: Icons.abc,
       ),
       debugFillProperties,
     );
@@ -43,7 +49,7 @@ void main() {
         const TestApp(
           home: ZetaStatusLabel(
             label: 'Custom Icon',
-            customIcon: Icons.person,
+            icon: Icons.person,
           ),
         ),
       );
@@ -60,7 +66,7 @@ void main() {
       goldenFile,
       const ZetaStatusLabel(
         label: 'Custom Icon',
-        customIcon: Icons.person,
+        icon: Icons.person,
       ),
       'status_label_custom',
     );
