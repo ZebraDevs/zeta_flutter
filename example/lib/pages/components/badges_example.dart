@@ -14,7 +14,7 @@ class StatusLabel extends StatelessWidget {
       spacing: 16,
       children: [
         ZetaStatusLabel(label: 'Label', status: type),
-        ZetaStatusLabel(label: 'Label', status: type, customIcon: ZetaIcons.star),
+        ZetaStatusLabel(label: 'Label', status: type, icon: ZetaIcons.star),
       ],
     );
   }

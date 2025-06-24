@@ -1,3 +1,6 @@
+// Ignored whilst customIcon field is deprecated.
+// ignore_for_file: deprecated_member_use_from_same_package
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import '../../../zeta_flutter.dart';
@@ -15,7 +18,8 @@ class ZetaStatusLabel extends ZetaStatelessWidget {
     super.rounded,
     required this.label,
     this.status = ZetaWidgetStatus.info,
-    this.customIcon,
+    this.icon,
+    @Deprecated('Use icon instead of customIcon') this.customIcon,
     this.semanticLabel,
   });
 
@@ -26,6 +30,10 @@ class ZetaStatusLabel extends ZetaStatelessWidget {
   final String label;
 
   /// Optional custom icon. If null, default circle icon is used.
+  final IconData? icon;
+
+  /// Optional custom icon. If null, default circle icon is used.
+  @Deprecated('Use icon instead of customIcon')
   final IconData? customIcon;
 
   /// The value passed into wrapping [Semantics] widget.
@@ -61,8 +69,8 @@ class ZetaStatusLabel extends ZetaStatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               Icon(
-                customIcon ?? Icons.circle,
-                size: customIcon != null ? Zeta.of(context).spacing.xl : Zeta.of(context).spacing.small,
+                icon ?? Icons.circle,
+                size: icon != null ? Zeta.of(context).spacing.xl : Zeta.of(context).spacing.small,
                 color: iconColor,
               ),
               SizedBox(width: Zeta.of(context).spacing.small),
@@ -86,6 +94,7 @@ class ZetaStatusLabel extends ZetaStatelessWidget {
       ..add(DiagnosticsProperty<bool>('rounded', rounded))
       ..add(DiagnosticsProperty<IconData?>('customIcon', customIcon))
       ..add(EnumProperty<ZetaWidgetStatus>('status', status))
-      ..add(StringProperty('semanticLabel', semanticLabel));
+      ..add(StringProperty('semanticLabel', semanticLabel))
+      ..add(DiagnosticsProperty<IconData?>('icon', icon));
   }
 }
