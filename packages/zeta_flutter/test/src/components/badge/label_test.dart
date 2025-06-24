@@ -12,7 +12,13 @@ void main() {
     goldenFileComparator = TolerantComparator(goldenFile.uri);
   });
 
-  group('Accessibility Tests', () {});
+  group('Accessibility Tests', () {
+    for (final status in ZetaWidgetStatus.values) {
+      meetsAccessibilityGuidelinesTest(
+        ZetaLabel(label: 'Label', status: status),
+      );
+    }
+  });
   group('Content Tests', () {
     final debugFillProperties = {
       'label': '"Test label"',
