@@ -158,6 +158,58 @@ abstract interface class ZetaColors {
   /// * Dark Mode: #151519
   Color get mainInverse;
 
+  /// icon/flavor/positive
+  ///
+  /// Default value is `green.shade60`
+  ///
+  /// * Light Mode: #00864f
+  /// * Dark Mode: #67b796
+  ///
+  /// Default high contrast (AAA) value is `green.shade80`
+  ///
+  /// * Light Mode: #005f38
+  /// * Dark Mode: #beefdb
+  Color get iconFlavorPositive;
+
+  /// icon/flavor/warning
+  ///
+  /// Default value is `orange.shade60`
+  ///
+  /// * Light Mode: #ae6500
+  /// * Dark Mode: #d78d26
+  ///
+  /// Default high contrast (AAA) value is `orange.shade80`
+  ///
+  /// * Light Mode: #764502
+  /// * Dark Mode: #ffd292
+  Color get iconFlavorWarning;
+
+  /// icon/flavor/negative
+  ///
+  /// Default value is `red.shade60`
+  ///
+  /// * Light Mode: #d70015
+  /// * Dark Mode: #f36170
+  ///
+  /// Default high contrast (AAA) value is `red.shade80`
+  ///
+  /// * Light Mode: #8f000e
+  /// * Dark Mode: #ffb3bb
+  Color get iconFlavorNegative;
+
+  /// icon/flavor/info
+  ///
+  /// Default value is `purple.shade60`
+  ///
+  /// * Light Mode: #7e0cff
+  /// * Dark Mode: #9b71df
+  ///
+  /// Default high contrast (AAA) value is `purple.shade80`
+  ///
+  /// * Light Mode: #43008f
+  /// * Dark Mode: #dcc1fb
+  Color get iconFlavorInfo;
+
   /// border/default
   ///
   /// Default value is `cool.shade40`
@@ -292,7 +344,7 @@ abstract interface class ZetaColors {
   ///
   /// Default value is `orange.shade50`
   ///
-  /// * Light Mode: #f5a230
+  /// * Light Mode: #d78d26
   /// * Dark Mode: #ae6500
   ///
   /// Default high contrast (AAA) value is `orange.shade70`
@@ -469,97 +521,6 @@ abstract interface class ZetaColors {
   /// * Light Mode: #564908
   /// * Dark Mode: #f3d961
   Color get surfaceSecondary;
-
-  /// surface/avatar/blue
-  ///
-  /// Default value is `blue.shade80`
-  ///
-  /// * Light Mode: #004d99
-  /// * Dark Mode: #b7dbff
-  ///
-  /// Default high contrast (AAA) value is `blue.shade80`
-  ///
-  /// * Light Mode: #004d99
-  /// * Dark Mode: #b7dbff
-  Color get surfaceAvatarBlue;
-
-  /// surface/avatar/green
-  ///
-  /// Default value is `green.shade60`
-  ///
-  /// * Light Mode: #00864f
-  /// * Dark Mode: #67b796
-  ///
-  /// Default high contrast (AAA) value is `green.shade60`
-  ///
-  /// * Light Mode: #00864f
-  /// * Dark Mode: #67b796
-  Color get surfaceAvatarGreen;
-
-  /// surface/avatar/orange
-  ///
-  /// Default value is `orange.shade50`
-  ///
-  /// * Light Mode: #f5a230
-  /// * Dark Mode: #ae6500
-  ///
-  /// Default high contrast (AAA) value is `orange.shade50`
-  ///
-  /// * Light Mode: #f5a230
-  /// * Dark Mode: #ae6500
-  Color get surfaceAvatarOrange;
-
-  /// surface/avatar/pink
-  ///
-  /// Default value is `pink.shade80`
-  ///
-  /// * Light Mode: #840054
-  /// * Dark Mode: #ffbee7
-  ///
-  /// Default high contrast (AAA) value is `pink.shade80`
-  ///
-  /// * Light Mode: #840054
-  /// * Dark Mode: #ffbee7
-  Color get surfaceAvatarPink;
-
-  /// surface/avatar/purple
-  ///
-  /// Default value is `purple.shade80`
-  ///
-  /// * Light Mode: #43008f
-  /// * Dark Mode: #dcc1fb
-  ///
-  /// Default high contrast (AAA) value is `purple.shade80`
-  ///
-  /// * Light Mode: #43008f
-  /// * Dark Mode: #dcc1fb
-  Color get surfaceAvatarPurple;
-
-  /// surface/avatar/teal
-  ///
-  /// Default value is `teal.shade80`
-  ///
-  /// * Light Mode: #005b5b
-  /// * Dark Mode: #bcfbfb
-  ///
-  /// Default high contrast (AAA) value is `teal.shade80`
-  ///
-  /// * Light Mode: #005b5b
-  /// * Dark Mode: #bcfbfb
-  Color get surfaceAvatarTeal;
-
-  /// surface/avatar/yellow
-  ///
-  /// Default value is `yellow.shade50`
-  ///
-  /// * Light Mode: #c2a728
-  /// * Dark Mode: #8d7400
-  ///
-  /// Default high contrast (AAA) value is `yellow.shade50`
-  ///
-  /// * Light Mode: #c2a728
-  /// * Dark Mode: #8d7400
-  Color get surfaceAvatarYellow;
 
   /// surface/secondary-subtle
   ///
@@ -795,58 +756,6 @@ abstract interface class ZetaColors {
   /// * Dark Mode: #b7dbff
   Color get statePrimaryFocus;
 
-  /// state/secondary/enabled
-  ///
-  /// Default value is `secondary.shade40`
-  ///
-  /// * Light Mode: #dbb91c
-  /// * Dark Mode: #766200
-  ///
-  /// Default high contrast (AAA) value is `secondary.shade80`
-  ///
-  /// * Light Mode: #564908
-  /// * Dark Mode: #f3d961
-  Color get stateSecondaryEnabled;
-
-  /// state/secondary/hover
-  ///
-  /// Default value is `secondary.shade30`
-  ///
-  /// * Light Mode: #f3d961
-  /// * Dark Mode: #564908
-  ///
-  /// Default high contrast (AAA) value is `secondary.shade70`
-  ///
-  /// * Light Mode: #766200
-  /// * Dark Mode: #dbb91c
-  Color get stateSecondaryHover;
-
-  /// state/secondary/selected
-  ///
-  /// Default value is `secondary.shade50`
-  ///
-  /// * Light Mode: #c2a728
-  /// * Dark Mode: #8d7400
-  ///
-  /// Default high contrast (AAA) value is `secondary.shade90`
-  ///
-  /// * Light Mode: #352b00
-  /// * Dark Mode: #ffea89
-  Color get stateSecondarySelected;
-
-  /// state/secondary/focus
-  ///
-  /// Default value is `secondary.shade40`
-  ///
-  /// * Light Mode: #dbb91c
-  /// * Dark Mode: #766200
-  ///
-  /// Default high contrast (AAA) value is `secondary.shade80`
-  ///
-  /// * Light Mode: #564908
-  /// * Dark Mode: #f3d961
-  Color get stateSecondaryFocus;
-
   /// state/negative/enabled
   ///
   /// Default value is `red.shade60`
@@ -898,6 +807,58 @@ abstract interface class ZetaColors {
   /// * Light Mode: #8f000e
   /// * Dark Mode: #ffb3bb
   Color get stateNegativeFocus;
+
+  /// state/secondary/enabled
+  ///
+  /// Default value is `secondary.shade40`
+  ///
+  /// * Light Mode: #dbb91c
+  /// * Dark Mode: #766200
+  ///
+  /// Default high contrast (AAA) value is `secondary.shade80`
+  ///
+  /// * Light Mode: #564908
+  /// * Dark Mode: #f3d961
+  Color get stateSecondaryEnabled;
+
+  /// state/secondary/hover
+  ///
+  /// Default value is `secondary.shade30`
+  ///
+  /// * Light Mode: #f3d961
+  /// * Dark Mode: #564908
+  ///
+  /// Default high contrast (AAA) value is `secondary.shade70`
+  ///
+  /// * Light Mode: #766200
+  /// * Dark Mode: #dbb91c
+  Color get stateSecondaryHover;
+
+  /// state/secondary/selected
+  ///
+  /// Default value is `secondary.shade50`
+  ///
+  /// * Light Mode: #c2a728
+  /// * Dark Mode: #8d7400
+  ///
+  /// Default high contrast (AAA) value is `secondary.shade90`
+  ///
+  /// * Light Mode: #352b00
+  /// * Dark Mode: #ffea89
+  Color get stateSecondarySelected;
+
+  /// state/secondary/focus
+  ///
+  /// Default value is `secondary.shade40`
+  ///
+  /// * Light Mode: #dbb91c
+  /// * Dark Mode: #766200
+  ///
+  /// Default high contrast (AAA) value is `secondary.shade80`
+  ///
+  /// * Light Mode: #564908
+  /// * Dark Mode: #f3d961
+  Color get stateSecondaryFocus;
 
   /// state/info/enabled
   ///
@@ -1054,6 +1015,305 @@ abstract interface class ZetaColors {
   /// * Light Mode: #005f38
   /// * Dark Mode: #beefdb
   Color get statePositiveFocus;
+
+  /// chart/1/primary
+  ///
+  /// Default value is `primary.shade60`
+  ///
+  /// * Light Mode: #0073e6
+  /// * Dark Mode: #599fe5
+  ///
+  /// Default high contrast (AAA) value is `primary.shade90`
+  ///
+  /// * Light Mode: #002c58
+  /// * Dark Mode: #e2f1ff
+  Color get chart1Primary;
+
+  /// chart/1/secondary
+  ///
+  /// Default value is `blue.shade40`
+  ///
+  /// * Light Mode: #7ebeff
+  /// * Dark Mode: #0061c2
+  ///
+  /// Default high contrast (AAA) value is `blue.shade70`
+  ///
+  /// * Light Mode: #0061c2
+  /// * Dark Mode: #7ebeff
+  Color get chart1Secondary;
+
+  /// chart/2/primary
+  ///
+  /// Default value is `green.shade60`
+  ///
+  /// * Light Mode: #00864f
+  /// * Dark Mode: #67b796
+  ///
+  /// Default high contrast (AAA) value is `green.shade90`
+  ///
+  /// * Light Mode: #00331e
+  /// * Dark Mode: #d8ffef
+  Color get chart2Primary;
+
+  /// chart/2/secondary
+  ///
+  /// Default value is `green.shade40`
+  ///
+  /// * Light Mode: #84dab6
+  /// * Dark Mode: #006d3f
+  ///
+  /// Default high contrast (AAA) value is `green.shade70`
+  ///
+  /// * Light Mode: #006d3f
+  /// * Dark Mode: #84dab6
+  Color get chart2Secondary;
+
+  /// chart/3/primary
+  ///
+  /// Default value is `orange.shade50`
+  ///
+  /// * Light Mode: #d78d26
+  /// * Dark Mode: #ae6500
+  ///
+  /// Default high contrast (AAA) value is `orange.shade90`
+  ///
+  /// * Light Mode: #402600
+  /// * Dark Mode: #ffe7c6
+  Color get chart3Primary;
+
+  /// chart/3/secondary
+  ///
+  /// Default value is `orange.shade30`
+  ///
+  /// * Light Mode: #ffd292
+  /// * Dark Mode: #764502
+  ///
+  /// Default high contrast (AAA) value is `orange.shade70`
+  ///
+  /// * Light Mode: #965802
+  /// * Dark Mode: #ffb348
+  Color get chart3Secondary;
+
+  /// chart/4/primary
+  ///
+  /// Default value is `red.shade60`
+  ///
+  /// * Light Mode: #d70015
+  /// * Dark Mode: #f36170
+  ///
+  /// Default high contrast (AAA) value is `red.shade90`
+  ///
+  /// * Light Mode: #520008
+  /// * Dark Mode: #ffe1e4
+  Color get chart4Primary;
+
+  /// chart/4/secondary
+  ///
+  /// Default value is `red.shade40`
+  ///
+  /// * Light Mode: #f98c97
+  /// * Dark Mode: #b50012
+  ///
+  /// Default high contrast (AAA) value is `red.shade70`
+  ///
+  /// * Light Mode: #b50012
+  /// * Dark Mode: #f98c97
+  Color get chart4Secondary;
+
+  /// chart/5/primary
+  ///
+  /// Default value is `purple.shade60`
+  ///
+  /// * Light Mode: #7e0cff
+  /// * Dark Mode: #9b71df
+  ///
+  /// Default high contrast (AAA) value is `purple.shade90`
+  ///
+  /// * Light Mode: #260052
+  /// * Dark Mode: #efe1ff
+  Color get chart5Primary;
+
+  /// chart/5/secondary
+  ///
+  /// Default value is `purple.shade40`
+  ///
+  /// * Light Mode: #cea4ff
+  /// * Dark Mode: #6400d6
+  ///
+  /// Default high contrast (AAA) value is `purple.shade70`
+  ///
+  /// * Light Mode: #6400d6
+  /// * Dark Mode: #cea4ff
+  Color get chart5Secondary;
+
+  /// chart/6/primary
+  ///
+  /// Default value is `teal.shade60`
+  ///
+  /// * Light Mode: #1a8080
+  /// * Dark Mode: #65c4c4
+  ///
+  /// Default high contrast (AAA) value is `teal.shade90`
+  ///
+  /// * Light Mode: #003535
+  /// * Dark Mode: #d9ffff
+  Color get chart6Primary;
+
+  /// chart/6/secondary
+  ///
+  /// Default value is `teal.shade40`
+  ///
+  /// * Light Mode: #91e1e1
+  /// * Dark Mode: #017474
+  ///
+  /// Default high contrast (AAA) value is `teal.shade70`
+  ///
+  /// * Light Mode: #017474
+  /// * Dark Mode: #91e1e1
+  Color get chart6Secondary;
+
+  /// chart/7/primary
+  ///
+  /// Default value is `pink.shade60`
+  ///
+  /// * Light Mode: #d30589
+  /// * Dark Mode: #ee78c3
+  ///
+  /// Default high contrast (AAA) value is `pink.shade90`
+  ///
+  /// * Light Mode: #640040
+  /// * Dark Mode: #ffe3f5
+  Color get chart7Primary;
+
+  /// chart/7/secondary
+  ///
+  /// Default value is `pink.shade40`
+  ///
+  /// * Light Mode: #ff94d8
+  /// * Dark Mode: #ab006d
+  ///
+  /// Default high contrast (AAA) value is `pink.shade70`
+  ///
+  /// * Light Mode: #ab006d
+  /// * Dark Mode: #ff94d8
+  Color get chart7Secondary;
+
+  /// chart/8/primary
+  ///
+  /// Default value is `cool.shade90`
+  ///
+  /// * Light Mode: #1d1e23
+  /// * Dark Mode: #f3f6fa
+  ///
+  /// Default high contrast (AAA) value is `cool.shade90`
+  ///
+  /// * Light Mode: #1d1e23
+  /// * Dark Mode: #f3f6fa
+  Color get chart8Primary;
+
+  /// chart/8/secondary
+  ///
+  /// Default value is `cool.shade70`
+  ///
+  /// * Light Mode: #545963
+  /// * Dark Mode: #bbc1cb
+  ///
+  /// Default high contrast (AAA) value is `cool.shade70`
+  ///
+  /// * Light Mode: #545963
+  /// * Dark Mode: #bbc1cb
+  Color get chart8Secondary;
+
+  /// avatar/blue
+  ///
+  /// Default value is `blue.shade80`
+  ///
+  /// * Light Mode: #004d99
+  /// * Dark Mode: #b7dbff
+  ///
+  /// Default high contrast (AAA) value is `blue.shade80`
+  ///
+  /// * Light Mode: #004d99
+  /// * Dark Mode: #b7dbff
+  Color get avatarBlue;
+
+  /// avatar/green
+  ///
+  /// Default value is `green.shade60`
+  ///
+  /// * Light Mode: #00864f
+  /// * Dark Mode: #67b796
+  ///
+  /// Default high contrast (AAA) value is `green.shade60`
+  ///
+  /// * Light Mode: #00864f
+  /// * Dark Mode: #67b796
+  Color get avatarGreen;
+
+  /// avatar/orange
+  ///
+  /// Default value is `orange.shade50`
+  ///
+  /// * Light Mode: #d78d26
+  /// * Dark Mode: #ae6500
+  ///
+  /// Default high contrast (AAA) value is `orange.shade50`
+  ///
+  /// * Light Mode: #d78d26
+  /// * Dark Mode: #ae6500
+  Color get avatarOrange;
+
+  /// avatar/pink
+  ///
+  /// Default value is `pink.shade80`
+  ///
+  /// * Light Mode: #840054
+  /// * Dark Mode: #ffbee7
+  ///
+  /// Default high contrast (AAA) value is `pink.shade80`
+  ///
+  /// * Light Mode: #840054
+  /// * Dark Mode: #ffbee7
+  Color get avatarPink;
+
+  /// avatar/purple
+  ///
+  /// Default value is `purple.shade80`
+  ///
+  /// * Light Mode: #43008f
+  /// * Dark Mode: #dcc1fb
+  ///
+  /// Default high contrast (AAA) value is `purple.shade80`
+  ///
+  /// * Light Mode: #43008f
+  /// * Dark Mode: #dcc1fb
+  Color get avatarPurple;
+
+  /// avatar/teal
+  ///
+  /// Default value is `teal.shade80`
+  ///
+  /// * Light Mode: #005b5b
+  /// * Dark Mode: #bcfbfb
+  ///
+  /// Default high contrast (AAA) value is `teal.shade80`
+  ///
+  /// * Light Mode: #005b5b
+  /// * Dark Mode: #bcfbfb
+  Color get avatarTeal;
+
+  /// avatar/yellow
+  ///
+  /// Default value is `yellow.shade50`
+  ///
+  /// * Light Mode: #c2a728
+  /// * Dark Mode: #8d7400
+  ///
+  /// Default high contrast (AAA) value is `yellow.shade50`
+  ///
+  /// * Light Mode: #c2a728
+  /// * Dark Mode: #8d7400
+  Color get avatarYellow;
 }
 
 /// The semantic tokens for spacing
@@ -1219,6 +1479,14 @@ class ZetaColorsAA extends Equatable implements ZetaColors {
   @override
   Color get mainInverse => primitives.cool.shade20;
   @override
+  Color get iconFlavorPositive => primitives.green.shade60;
+  @override
+  Color get iconFlavorWarning => primitives.orange.shade60;
+  @override
+  Color get iconFlavorNegative => primitives.red.shade60;
+  @override
+  Color get iconFlavorInfo => primitives.purple.shade60;
+  @override
   Color get borderDefault => primitives.cool.shade40;
   @override
   Color get borderSelected => primitives.cool.shade90;
@@ -1267,20 +1535,6 @@ class ZetaColorsAA extends Equatable implements ZetaColors {
   @override
   Color get surfaceSecondary => primitives.secondary.shade60;
   @override
-  Color get surfaceAvatarBlue => primitives.blue.shade80;
-  @override
-  Color get surfaceAvatarGreen => primitives.green.shade60;
-  @override
-  Color get surfaceAvatarOrange => primitives.orange.shade50;
-  @override
-  Color get surfaceAvatarPink => primitives.pink.shade80;
-  @override
-  Color get surfaceAvatarPurple => primitives.purple.shade80;
-  @override
-  Color get surfaceAvatarTeal => primitives.teal.shade80;
-  @override
-  Color get surfaceAvatarYellow => primitives.yellow.shade50;
-  @override
   Color get surfaceSecondarySubtle => primitives.secondary.shade10;
   @override
   Color get surfacePositive => primitives.green.shade60;
@@ -1317,14 +1571,6 @@ class ZetaColorsAA extends Equatable implements ZetaColors {
   @override
   Color get statePrimaryFocus => primitives.primary.shade60;
   @override
-  Color get stateSecondaryEnabled => primitives.secondary.shade40;
-  @override
-  Color get stateSecondaryHover => primitives.secondary.shade30;
-  @override
-  Color get stateSecondarySelected => primitives.secondary.shade50;
-  @override
-  Color get stateSecondaryFocus => primitives.secondary.shade40;
-  @override
   Color get stateNegativeEnabled => primitives.red.shade60;
   @override
   Color get stateNegativeHover => primitives.red.shade50;
@@ -1332,6 +1578,14 @@ class ZetaColorsAA extends Equatable implements ZetaColors {
   Color get stateNegativeSelected => primitives.red.shade70;
   @override
   Color get stateNegativeFocus => primitives.red.shade60;
+  @override
+  Color get stateSecondaryEnabled => primitives.secondary.shade40;
+  @override
+  Color get stateSecondaryHover => primitives.secondary.shade30;
+  @override
+  Color get stateSecondarySelected => primitives.secondary.shade50;
+  @override
+  Color get stateSecondaryFocus => primitives.secondary.shade40;
   @override
   Color get stateInfoEnabled => primitives.purple.shade60;
   @override
@@ -1357,88 +1611,154 @@ class ZetaColorsAA extends Equatable implements ZetaColors {
   @override
   Color get statePositiveFocus => primitives.green.shade60;
   @override
+  Color get chart1Primary => primitives.primary.shade60;
+  @override
+  Color get chart1Secondary => primitives.blue.shade40;
+  @override
+  Color get chart2Primary => primitives.green.shade60;
+  @override
+  Color get chart2Secondary => primitives.green.shade40;
+  @override
+  Color get chart3Primary => primitives.orange.shade50;
+  @override
+  Color get chart3Secondary => primitives.orange.shade30;
+  @override
+  Color get chart4Primary => primitives.red.shade60;
+  @override
+  Color get chart4Secondary => primitives.red.shade40;
+  @override
+  Color get chart5Primary => primitives.purple.shade60;
+  @override
+  Color get chart5Secondary => primitives.purple.shade40;
+  @override
+  Color get chart6Primary => primitives.teal.shade60;
+  @override
+  Color get chart6Secondary => primitives.teal.shade40;
+  @override
+  Color get chart7Primary => primitives.pink.shade60;
+  @override
+  Color get chart7Secondary => primitives.pink.shade40;
+  @override
+  Color get chart8Primary => primitives.cool.shade90;
+  @override
+  Color get chart8Secondary => primitives.cool.shade70;
+  @override
+  Color get avatarBlue => primitives.blue.shade80;
+  @override
+  Color get avatarGreen => primitives.green.shade60;
+  @override
+  Color get avatarOrange => primitives.orange.shade50;
+  @override
+  Color get avatarPink => primitives.pink.shade80;
+  @override
+  Color get avatarPurple => primitives.purple.shade80;
+  @override
+  Color get avatarTeal => primitives.teal.shade80;
+  @override
+  Color get avatarYellow => primitives.yellow.shade50;
+  @override
   List<Object?> get props => [
-        mainDefault,
-        mainSubtle,
-        mainPrimary,
-        mainSecondary,
-        mainPositive,
-        mainWarning,
-        mainNegative,
-        mainInfo,
-        mainDisabled,
-        mainLight,
-        mainInverse,
-        borderDefault,
-        borderSelected,
-        borderHover,
-        borderSubtle,
-        borderDisabled,
-        borderPure,
-        borderPrimaryMain,
-        borderPrimary,
-        borderSecondary,
-        borderPositive,
-        borderWarning,
-        borderNegative,
-        borderInfo,
-        surfaceDefault,
-        surfaceDefaultInverse,
-        surfaceHover,
-        surfaceSelected,
-        surfaceSelectedHover,
-        surfaceDisabled,
-        surfaceCool,
-        surfaceWarm,
-        surfacePrimary,
-        surfacePrimarySubtle,
-        surfaceSecondary,
-        surfaceAvatarBlue,
-        surfaceAvatarGreen,
-        surfaceAvatarOrange,
-        surfaceAvatarPink,
-        surfaceAvatarPurple,
-        surfaceAvatarTeal,
-        surfaceAvatarYellow,
-        surfaceSecondarySubtle,
-        surfacePositive,
-        surfacePositiveSubtle,
-        surfaceWarning,
-        surfaceWarningSubtle,
-        surfaceNegative,
-        surfaceNegativeSubtle,
-        surfaceInfo,
-        surfaceInfoSubtle,
-        stateDisabledDisabled,
-        stateDefaultEnabled,
-        stateDefaultHover,
-        stateDefaultSelected,
-        stateDefaultFocus,
-        statePrimaryEnabled,
-        statePrimaryHover,
-        statePrimarySelected,
-        statePrimaryFocus,
-        stateSecondaryEnabled,
-        stateSecondaryHover,
-        stateSecondarySelected,
-        stateSecondaryFocus,
-        stateNegativeEnabled,
-        stateNegativeHover,
-        stateNegativeSelected,
-        stateNegativeFocus,
-        stateInfoEnabled,
-        stateInfoHover,
-        stateInfoSelected,
-        stateInfoFocus,
-        stateInverseEnabled,
-        stateInverseHover,
-        stateInverseSelected,
-        stateInverseFocus,
-        statePositiveEnabled,
-        statePositiveHover,
-        statePositiveSelected,
-        statePositiveFocus,
-      ];
+    mainDefault,
+    mainSubtle,
+    mainPrimary,
+    mainSecondary,
+    mainPositive,
+    mainWarning,
+    mainNegative,
+    mainInfo,
+    mainDisabled,
+    mainLight,
+    mainInverse,
+    iconFlavorPositive,
+    iconFlavorWarning,
+    iconFlavorNegative,
+    iconFlavorInfo,
+    borderDefault,
+    borderSelected,
+    borderHover,
+    borderSubtle,
+    borderDisabled,
+    borderPure,
+    borderPrimaryMain,
+    borderPrimary,
+    borderSecondary,
+    borderPositive,
+    borderWarning,
+    borderNegative,
+    borderInfo,
+    surfaceDefault,
+    surfaceDefaultInverse,
+    surfaceHover,
+    surfaceSelected,
+    surfaceSelectedHover,
+    surfaceDisabled,
+    surfaceCool,
+    surfaceWarm,
+    surfacePrimary,
+    surfacePrimarySubtle,
+    surfaceSecondary,
+    surfaceSecondarySubtle,
+    surfacePositive,
+    surfacePositiveSubtle,
+    surfaceWarning,
+    surfaceWarningSubtle,
+    surfaceNegative,
+    surfaceNegativeSubtle,
+    surfaceInfo,
+    surfaceInfoSubtle,
+    stateDisabledDisabled,
+    stateDefaultEnabled,
+    stateDefaultHover,
+    stateDefaultSelected,
+    stateDefaultFocus,
+    statePrimaryEnabled,
+    statePrimaryHover,
+    statePrimarySelected,
+    statePrimaryFocus,
+    stateNegativeEnabled,
+    stateNegativeHover,
+    stateNegativeSelected,
+    stateNegativeFocus,
+    stateSecondaryEnabled,
+    stateSecondaryHover,
+    stateSecondarySelected,
+    stateSecondaryFocus,
+    stateInfoEnabled,
+    stateInfoHover,
+    stateInfoSelected,
+    stateInfoFocus,
+    stateInverseEnabled,
+    stateInverseHover,
+    stateInverseSelected,
+    stateInverseFocus,
+    statePositiveEnabled,
+    statePositiveHover,
+    statePositiveSelected,
+    statePositiveFocus,
+    chart1Primary,
+    chart1Secondary,
+    chart2Primary,
+    chart2Secondary,
+    chart3Primary,
+    chart3Secondary,
+    chart4Primary,
+    chart4Secondary,
+    chart5Primary,
+    chart5Secondary,
+    chart6Primary,
+    chart6Secondary,
+    chart7Primary,
+    chart7Secondary,
+    chart8Primary,
+    chart8Secondary,
+    avatarBlue,
+    avatarGreen,
+    avatarOrange,
+    avatarPink,
+    avatarPurple,
+    avatarTeal,
+    avatarYellow,
+  ];
 }
 
 /// The semantic colors for AAA
@@ -1469,6 +1789,14 @@ class ZetaColorsAAA extends Equatable implements ZetaColors {
   Color get mainLight => primitives.pure.shade0;
   @override
   Color get mainInverse => primitives.pure.shade0;
+  @override
+  Color get iconFlavorPositive => primitives.green.shade80;
+  @override
+  Color get iconFlavorWarning => primitives.orange.shade80;
+  @override
+  Color get iconFlavorNegative => primitives.red.shade80;
+  @override
+  Color get iconFlavorInfo => primitives.purple.shade80;
   @override
   Color get borderDefault => primitives.cool.shade100;
   @override
@@ -1518,20 +1846,6 @@ class ZetaColorsAAA extends Equatable implements ZetaColors {
   @override
   Color get surfaceSecondary => primitives.secondary.shade80;
   @override
-  Color get surfaceAvatarBlue => primitives.blue.shade80;
-  @override
-  Color get surfaceAvatarGreen => primitives.green.shade60;
-  @override
-  Color get surfaceAvatarOrange => primitives.orange.shade50;
-  @override
-  Color get surfaceAvatarPink => primitives.pink.shade80;
-  @override
-  Color get surfaceAvatarPurple => primitives.purple.shade80;
-  @override
-  Color get surfaceAvatarTeal => primitives.teal.shade80;
-  @override
-  Color get surfaceAvatarYellow => primitives.yellow.shade50;
-  @override
   Color get surfaceSecondarySubtle => primitives.secondary.shade10;
   @override
   Color get surfacePositive => primitives.green.shade80;
@@ -1568,14 +1882,6 @@ class ZetaColorsAAA extends Equatable implements ZetaColors {
   @override
   Color get statePrimaryFocus => primitives.primary.shade80;
   @override
-  Color get stateSecondaryEnabled => primitives.secondary.shade80;
-  @override
-  Color get stateSecondaryHover => primitives.secondary.shade70;
-  @override
-  Color get stateSecondarySelected => primitives.secondary.shade90;
-  @override
-  Color get stateSecondaryFocus => primitives.secondary.shade80;
-  @override
   Color get stateNegativeEnabled => primitives.red.shade80;
   @override
   Color get stateNegativeHover => primitives.red.shade70;
@@ -1583,6 +1889,14 @@ class ZetaColorsAAA extends Equatable implements ZetaColors {
   Color get stateNegativeSelected => primitives.red.shade90;
   @override
   Color get stateNegativeFocus => primitives.red.shade80;
+  @override
+  Color get stateSecondaryEnabled => primitives.secondary.shade80;
+  @override
+  Color get stateSecondaryHover => primitives.secondary.shade70;
+  @override
+  Color get stateSecondarySelected => primitives.secondary.shade90;
+  @override
+  Color get stateSecondaryFocus => primitives.secondary.shade80;
   @override
   Color get stateInfoEnabled => primitives.purple.shade80;
   @override
@@ -1608,88 +1922,154 @@ class ZetaColorsAAA extends Equatable implements ZetaColors {
   @override
   Color get statePositiveFocus => primitives.green.shade80;
   @override
+  Color get chart1Primary => primitives.primary.shade90;
+  @override
+  Color get chart1Secondary => primitives.blue.shade70;
+  @override
+  Color get chart2Primary => primitives.green.shade90;
+  @override
+  Color get chart2Secondary => primitives.green.shade70;
+  @override
+  Color get chart3Primary => primitives.orange.shade90;
+  @override
+  Color get chart3Secondary => primitives.orange.shade70;
+  @override
+  Color get chart4Primary => primitives.red.shade90;
+  @override
+  Color get chart4Secondary => primitives.red.shade70;
+  @override
+  Color get chart5Primary => primitives.purple.shade90;
+  @override
+  Color get chart5Secondary => primitives.purple.shade70;
+  @override
+  Color get chart6Primary => primitives.teal.shade90;
+  @override
+  Color get chart6Secondary => primitives.teal.shade70;
+  @override
+  Color get chart7Primary => primitives.pink.shade90;
+  @override
+  Color get chart7Secondary => primitives.pink.shade70;
+  @override
+  Color get chart8Primary => primitives.cool.shade90;
+  @override
+  Color get chart8Secondary => primitives.cool.shade70;
+  @override
+  Color get avatarBlue => primitives.blue.shade80;
+  @override
+  Color get avatarGreen => primitives.green.shade60;
+  @override
+  Color get avatarOrange => primitives.orange.shade50;
+  @override
+  Color get avatarPink => primitives.pink.shade80;
+  @override
+  Color get avatarPurple => primitives.purple.shade80;
+  @override
+  Color get avatarTeal => primitives.teal.shade80;
+  @override
+  Color get avatarYellow => primitives.yellow.shade50;
+  @override
   List<Object?> get props => [
-        mainDefault,
-        mainSubtle,
-        mainPrimary,
-        mainSecondary,
-        mainPositive,
-        mainWarning,
-        mainNegative,
-        mainInfo,
-        mainDisabled,
-        mainLight,
-        mainInverse,
-        borderDefault,
-        borderSelected,
-        borderHover,
-        borderSubtle,
-        borderDisabled,
-        borderPure,
-        borderPrimaryMain,
-        borderPrimary,
-        borderSecondary,
-        borderPositive,
-        borderWarning,
-        borderNegative,
-        borderInfo,
-        surfaceDefault,
-        surfaceDefaultInverse,
-        surfaceHover,
-        surfaceSelected,
-        surfaceSelectedHover,
-        surfaceDisabled,
-        surfaceCool,
-        surfaceWarm,
-        surfacePrimary,
-        surfacePrimarySubtle,
-        surfaceSecondary,
-        surfaceAvatarBlue,
-        surfaceAvatarGreen,
-        surfaceAvatarOrange,
-        surfaceAvatarPink,
-        surfaceAvatarPurple,
-        surfaceAvatarTeal,
-        surfaceAvatarYellow,
-        surfaceSecondarySubtle,
-        surfacePositive,
-        surfacePositiveSubtle,
-        surfaceWarning,
-        surfaceWarningSubtle,
-        surfaceNegative,
-        surfaceNegativeSubtle,
-        surfaceInfo,
-        surfaceInfoSubtle,
-        stateDisabledDisabled,
-        stateDefaultEnabled,
-        stateDefaultHover,
-        stateDefaultSelected,
-        stateDefaultFocus,
-        statePrimaryEnabled,
-        statePrimaryHover,
-        statePrimarySelected,
-        statePrimaryFocus,
-        stateSecondaryEnabled,
-        stateSecondaryHover,
-        stateSecondarySelected,
-        stateSecondaryFocus,
-        stateNegativeEnabled,
-        stateNegativeHover,
-        stateNegativeSelected,
-        stateNegativeFocus,
-        stateInfoEnabled,
-        stateInfoHover,
-        stateInfoSelected,
-        stateInfoFocus,
-        stateInverseEnabled,
-        stateInverseHover,
-        stateInverseSelected,
-        stateInverseFocus,
-        statePositiveEnabled,
-        statePositiveHover,
-        statePositiveSelected,
-        statePositiveFocus,
-      ];
+    mainDefault,
+    mainSubtle,
+    mainPrimary,
+    mainSecondary,
+    mainPositive,
+    mainWarning,
+    mainNegative,
+    mainInfo,
+    mainDisabled,
+    mainLight,
+    mainInverse,
+    iconFlavorPositive,
+    iconFlavorWarning,
+    iconFlavorNegative,
+    iconFlavorInfo,
+    borderDefault,
+    borderSelected,
+    borderHover,
+    borderSubtle,
+    borderDisabled,
+    borderPure,
+    borderPrimaryMain,
+    borderPrimary,
+    borderSecondary,
+    borderPositive,
+    borderWarning,
+    borderNegative,
+    borderInfo,
+    surfaceDefault,
+    surfaceDefaultInverse,
+    surfaceHover,
+    surfaceSelected,
+    surfaceSelectedHover,
+    surfaceDisabled,
+    surfaceCool,
+    surfaceWarm,
+    surfacePrimary,
+    surfacePrimarySubtle,
+    surfaceSecondary,
+    surfaceSecondarySubtle,
+    surfacePositive,
+    surfacePositiveSubtle,
+    surfaceWarning,
+    surfaceWarningSubtle,
+    surfaceNegative,
+    surfaceNegativeSubtle,
+    surfaceInfo,
+    surfaceInfoSubtle,
+    stateDisabledDisabled,
+    stateDefaultEnabled,
+    stateDefaultHover,
+    stateDefaultSelected,
+    stateDefaultFocus,
+    statePrimaryEnabled,
+    statePrimaryHover,
+    statePrimarySelected,
+    statePrimaryFocus,
+    stateNegativeEnabled,
+    stateNegativeHover,
+    stateNegativeSelected,
+    stateNegativeFocus,
+    stateSecondaryEnabled,
+    stateSecondaryHover,
+    stateSecondarySelected,
+    stateSecondaryFocus,
+    stateInfoEnabled,
+    stateInfoHover,
+    stateInfoSelected,
+    stateInfoFocus,
+    stateInverseEnabled,
+    stateInverseHover,
+    stateInverseSelected,
+    stateInverseFocus,
+    statePositiveEnabled,
+    statePositiveHover,
+    statePositiveSelected,
+    statePositiveFocus,
+    chart1Primary,
+    chart1Secondary,
+    chart2Primary,
+    chart2Secondary,
+    chart3Primary,
+    chart3Secondary,
+    chart4Primary,
+    chart4Secondary,
+    chart5Primary,
+    chart5Secondary,
+    chart6Primary,
+    chart6Secondary,
+    chart7Primary,
+    chart7Secondary,
+    chart8Primary,
+    chart8Secondary,
+    avatarBlue,
+    avatarGreen,
+    avatarOrange,
+    avatarPink,
+    avatarPurple,
+    avatarTeal,
+    avatarYellow,
+  ];
 }
 
 /// The semantic spacing for AA
@@ -1732,23 +2112,23 @@ class ZetaSpacingAA extends Equatable implements ZetaSpacing {
   double get xl_11 => primitives.x15;
   @override
   List<Object?> get props => [
-        none,
-        minimum,
-        small,
-        medium,
-        large,
-        xl,
-        xl_2,
-        xl_3,
-        xl_4,
-        xl_5,
-        xl_6,
-        xl_7,
-        xl_8,
-        xl_9,
-        xl_10,
-        xl_11,
-      ];
+    none,
+    minimum,
+    small,
+    medium,
+    large,
+    xl,
+    xl_2,
+    xl_3,
+    xl_4,
+    xl_5,
+    xl_6,
+    xl_7,
+    xl_8,
+    xl_9,
+    xl_10,
+    xl_11,
+  ];
 }
 
 /// The semantic spacing for AAA
@@ -1791,23 +2171,23 @@ class ZetaSpacingAAA extends Equatable implements ZetaSpacing {
   double get xl_11 => primitives.x15;
   @override
   List<Object?> get props => [
-        none,
-        minimum,
-        small,
-        medium,
-        large,
-        xl,
-        xl_2,
-        xl_3,
-        xl_4,
-        xl_5,
-        xl_6,
-        xl_7,
-        xl_8,
-        xl_9,
-        xl_10,
-        xl_11,
-      ];
+    none,
+    minimum,
+    small,
+    medium,
+    large,
+    xl,
+    xl_2,
+    xl_3,
+    xl_4,
+    xl_5,
+    xl_6,
+    xl_7,
+    xl_8,
+    xl_9,
+    xl_10,
+    xl_11,
+  ];
 }
 
 /// The semantic radius for AA
@@ -1873,9 +2253,9 @@ abstract interface class ZetaSemantics {
 class ZetaSemanticsAA implements ZetaSemantics {
   /// Constructor for [ZetaSemanticsAA]
   ZetaSemanticsAA({required this.primitives})
-      : colors = ZetaColorsAA(primitives: primitives),
-        spacing = ZetaSpacingAA(primitives: primitives),
-        radius = ZetaRadiusAA(primitives: primitives);
+    : colors = ZetaColorsAA(primitives: primitives),
+      spacing = ZetaSpacingAA(primitives: primitives),
+      radius = ZetaRadiusAA(primitives: primitives);
 
   @override
   final ZetaPrimitives primitives;
@@ -1891,9 +2271,9 @@ class ZetaSemanticsAA implements ZetaSemantics {
 class ZetaSemanticsAAA implements ZetaSemantics {
   /// Constructor for [ZetaSemanticsAAA]
   ZetaSemanticsAAA({required this.primitives})
-      : colors = ZetaColorsAAA(primitives: primitives),
-        spacing = ZetaSpacingAAA(primitives: primitives),
-        radius = ZetaRadiusAAA(primitives: primitives);
+    : colors = ZetaColorsAAA(primitives: primitives),
+      spacing = ZetaSpacingAAA(primitives: primitives),
+      radius = ZetaRadiusAAA(primitives: primitives);
 
   @override
   final ZetaPrimitives primitives;
