@@ -68,9 +68,9 @@ Widget priorityPill(BuildContext context) {
       options: ZetaPriorityPillSize.values,
       labelBuilder: (value) => value.name.capitalize,
     ),
-    type: context.knobs.list<ZetaPriorityPillType>(
+    status: context.knobs.list<ZetaPriorityPillStatus>(
       label: 'Priority',
-      options: ZetaPriorityPillType.values,
+      options: ZetaPriorityPillStatus.values,
       labelBuilder: (value) => value.name.capitalize,
     ),
     isBadge: context.knobs.boolean(label: 'Badge'),

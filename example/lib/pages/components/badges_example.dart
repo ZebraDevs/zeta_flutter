@@ -45,15 +45,78 @@ class PriorityPill extends StatelessWidget {
     return ExampleScaffold(
       name: name,
       children: [
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.start,
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            ZetaPriorityPill(size: ZetaPriorityPillSize.large),
-            ZetaPriorityPill(size: ZetaPriorityPillSize.large, type: ZetaPriorityPillType.high),
-            ZetaPriorityPill(size: ZetaPriorityPillSize.large, type: ZetaPriorityPillType.medium),
-            ZetaPriorityPill(size: ZetaPriorityPillSize.large, type: ZetaPriorityPillType.low),
-          ].divide(SizedBox.square(dimension: Zeta.of(context).spacing.xl_2)).toList(),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Row(
+                  spacing: 16,
+                  children: [
+                    ZetaPriorityPill(
+                        size: ZetaPriorityPillSize.large, isBadge: true, status: ZetaPriorityPillStatus.urgent),
+                    SizedBox(
+                        width: 100,
+                        child: ZetaPriorityPill(
+                          size: ZetaPriorityPillSize.large,
+                          status: ZetaPriorityPillStatus.urgent,
+                          label: 'Label',
+                        )),
+                    SizedBox(
+                        width: 100,
+                        child: ZetaPriorityPill(
+                          size: ZetaPriorityPillSize.small,
+                          status: ZetaPriorityPillStatus.urgent,
+                          label: 'Label',
+                        )),
+                  ],
+                ),
+                Row(
+                  spacing: 16,
+                  children: [
+                    ZetaPriorityPill(
+                        size: ZetaPriorityPillSize.large, isBadge: true, status: ZetaPriorityPillStatus.high),
+                    SizedBox(
+                        width: 100,
+                        child: ZetaPriorityPill(size: ZetaPriorityPillSize.large, status: ZetaPriorityPillStatus.high)),
+                    SizedBox(
+                        width: 100,
+                        child: ZetaPriorityPill(size: ZetaPriorityPillSize.small, status: ZetaPriorityPillStatus.high)),
+                  ],
+                ),
+                Row(
+                  spacing: 16,
+                  children: [
+                    ZetaPriorityPill(
+                        size: ZetaPriorityPillSize.large, isBadge: true, status: ZetaPriorityPillStatus.medium),
+                    SizedBox(
+                        width: 100,
+                        child:
+                            ZetaPriorityPill(size: ZetaPriorityPillSize.large, status: ZetaPriorityPillStatus.medium)),
+                    SizedBox(
+                        width: 100,
+                        child:
+                            ZetaPriorityPill(size: ZetaPriorityPillSize.small, status: ZetaPriorityPillStatus.medium)),
+                  ],
+                ),
+                Row(
+                  spacing: 16,
+                  children: [
+                    ZetaPriorityPill(
+                        size: ZetaPriorityPillSize.large, isBadge: true, status: ZetaPriorityPillStatus.low),
+                    SizedBox(
+                        width: 100,
+                        child: ZetaPriorityPill(size: ZetaPriorityPillSize.large, status: ZetaPriorityPillStatus.low)),
+                    SizedBox(
+                        width: 100,
+                        child: ZetaPriorityPill(size: ZetaPriorityPillSize.small, status: ZetaPriorityPillStatus.low)),
+                  ],
+                ),
+              ].divide(SizedBox.square(dimension: Zeta.of(context).spacing.xl_2)).toList(),
+            ),
+          ],
         )
       ],
     );
@@ -183,7 +246,7 @@ class Tags extends StatelessWidget {
       name: name,
       children: [
         Row(
-          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ZetaTag.left(label: 'Left'),
             ZetaTag.right(label: 'Right'),

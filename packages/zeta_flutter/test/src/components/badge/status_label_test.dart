@@ -57,7 +57,36 @@ void main() {
       expect(find.byIcon(Icons.person), findsOneWidget);
     });
   });
-  group('Dimensions Tests', () {});
+  group('Dimensions Tests', () {
+    testWidgets('Has correct default dimensions', (WidgetTester tester) async {
+      await loadFonts();
+      await tester.pumpWidget(
+        const TestApp(
+          home: ZetaStatusLabel(label: 'Label'),
+        ),
+      );
+      final zetaStatusLabelFinder = find.byType(ZetaStatusLabel);
+      final statusLabel = tester.widget<ZetaStatusLabel>(find.byType(ZetaStatusLabel));
+      expect(statusLabel.icon, isNull);
+      final RenderBox box = tester.renderObject(zetaStatusLabelFinder);
+      expect(box.size.width.round(), inInclusiveRange(70, 72)); // Width may vary slightly based on font rendering
+      expect(box.size.height, 28);
+    });
+
+    testWidgets('Has correct dimensions with custom icon', (WidgetTester tester) async {
+      await loadFonts();
+      await tester.pumpWidget(
+        const TestApp(
+          home: ZetaStatusLabel(label: 'Label', icon: ZetaIcons.star),
+        ),
+      );
+      final statusLabel = tester.widget<ZetaStatusLabel>(find.byType(ZetaStatusLabel));
+      expect(statusLabel.icon, ZetaIcons.star);
+      final RenderBox box = tester.renderObject(find.byType(ZetaStatusLabel));
+      expect(box.size.width.round(), inInclusiveRange(81, 84)); // Width may vary slightly based on font rendering
+      expect(box.size.height, 28);
+    });
+  });
   group('Styling Tests', () {});
   group('Interaction Tests', () {});
   group('Golden Tests', () {

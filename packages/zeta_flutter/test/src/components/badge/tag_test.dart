@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
@@ -11,7 +12,13 @@ void main() {
     goldenFileComparator = TolerantComparator(goldenFile.uri);
   });
 
-  group('Accessibility Tests', () {});
+  group('Accessibility Tests', () {
+    for (final direction in ZetaTagDirection.values) {
+      meetsAccessibilityGuidelinesTest(
+        ZetaTag(direction: direction, label: 'Label'),
+      );
+    }
+  });
   group('Content Tests', () {
     final debugFillProperties = {
       'label': '"Test label"',
@@ -44,7 +51,41 @@ void main() {
       expect(find.byType(ZetaTag), findsOneWidget);
     });
   });
-  group('Dimensions Tests', () {});
+  group('Dimensions Tests', () {
+    testWidgets('Has correct dimensions', (WidgetTester tester) async {
+      await loadFonts();
+      const leftKey = Key('left');
+      const rightKey = Key('right');
+      await tester.pumpWidget(
+        const TestApp(
+          home: Column(
+            children: [
+              // Ignored for testing purposes.
+              // ignore: avoid_redundant_argument_values
+              ZetaTag(label: 'Tag', direction: ZetaTagDirection.left, key: leftKey),
+              ZetaTag(label: 'Tag', direction: ZetaTagDirection.right, key: rightKey),
+            ],
+          ),
+        ),
+      );
+      final Finder leftTag = find.byKey(leftKey);
+      final Finder rightTag = find.byKey(rightKey);
+
+      expect(leftTag, findsOneWidget);
+      expect(rightTag, findsOneWidget);
+
+      final RenderBox leftBox = tester.renderObject<RenderBox>(leftTag);
+      final RenderBox rightBox = tester.renderObject<RenderBox>(rightTag);
+
+      expect(leftBox.size.width.round(), inInclusiveRange(53, 55)); // Width may vary slightly based on font rendering
+      expect(leftBox.size.height, 32);
+      expect(rightBox.size.width.round(), inInclusiveRange(53, 55)); // Width may vary slightly based on font rendering
+      expect(rightBox.size.height, 32);
+
+      expect(leftBox.size.width, rightBox.size.width);
+      expect(leftBox.size.height, rightBox.size.height);
+    });
+  });
   group('Styling Tests', () {});
   group('Interaction Tests', () {});
   group('Golden Tests', () {
