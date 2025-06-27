@@ -68,10 +68,10 @@ enum ZetaWidgetStatus {
 
   /// Gets the label foreground color for [ZetaWidgetStatus].
   Color labelForegroundColor(BuildContext context) => switch (this) {
-        ZetaWidgetStatus.info => Zeta.of(context).colors.mainInverse,
-        ZetaWidgetStatus.positive => Zeta.of(context).colors.mainInverse,
-        ZetaWidgetStatus.warning => Zeta.of(context).colors.mainInverse,
-        ZetaWidgetStatus.negative => Zeta.of(context).colors.mainInverse,
+        ZetaWidgetStatus.info => Zeta.of(context).colors.stateDefaultEnabled,
+        ZetaWidgetStatus.positive => Zeta.of(context).colors.stateDefaultEnabled,
+        ZetaWidgetStatus.warning => Zeta.of(context).colors.stateDefaultEnabled,
+        ZetaWidgetStatus.negative => Zeta.of(context).colors.stateDefaultEnabled,
         ZetaWidgetStatus.neutral => Zeta.of(context).colors.mainDefault,
       };
 

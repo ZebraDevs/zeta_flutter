@@ -3,6 +3,7 @@ import 'package:collection/collection.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:path/path.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
@@ -120,10 +121,12 @@ void meetsAccessibilityGuidelinesTest(
   bool? rounded,
   Future<void> Function(WidgetTester)? setUp,
   Future<void> Function(WidgetTester)? beforeTest,
+  String? testName,
 }) {
   for (final contrast in [ZetaContrast.aa, ZetaContrast.aaa]) {
     for (final themeMode in [ThemeMode.light, ThemeMode.dark]) {
-      testWidgets('meets accessibility requirements ${themeMode.name} ${contrast.name}', (WidgetTester tester) async {
+      testWidgets('meets accessibility requirements $testName ${themeMode.name} ${contrast.name} ',
+          (WidgetTester tester) async {
         final SemanticsHandle handle = tester.ensureSemantics();
         if (setUp != null) {
           await setUp(tester);
@@ -155,4 +158,17 @@ void meetsAccessibilityGuidelinesTest(
       });
     }
   }
+}
+
+@visibleForTesting
+Future<void> loadFonts() async {
+  TestWidgetsFlutterBinding.ensureInitialized();
+  final ibmPlexSans = FontLoader('packages/zeta_flutter_theme/IBMPlexSans')
+    ..addFont(rootBundle.load('packages/zeta_flutter_theme/assets/fonts/IBMPlexSans-Light.otf'))
+    ..addFont(rootBundle.load('packages/zeta_flutter_theme/assets/fonts/IBMPlexSans-Regular.otf'))
+    ..addFont(rootBundle.load('packages/zeta_flutter_theme/assets/fonts/IBMPlexSans-Medium.otf'));
+  await ibmPlexSans.load();
+  final zetaIcons = FontLoader('packages/zeta_icons/zeta-icons')
+    ..addFont(rootBundle.load('packages/zeta_icons/lib/assets/icons/zeta-icons-round.ttf'));
+  await zetaIcons.load();
 }

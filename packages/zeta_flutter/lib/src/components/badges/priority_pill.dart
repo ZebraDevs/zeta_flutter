@@ -1,10 +1,17 @@
+// Ignored whilst type is deprecated
+// ignore_for_file: deprecated_member_use_from_same_package
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../../../zeta_flutter.dart';
 
 /// The type of [ZetaPriorityPill]; determines the default [ZetaPriorityPill.customColor], [ZetaPriorityPill.index] and [ZetaPriorityPill.label].
-enum ZetaPriorityPillType {
+@Deprecated('Use ZetaPriorityPillStatus instead. This will be removed in the next major version.')
+typedef ZetaPriorityPillType = ZetaPriorityPillStatus;
+
+/// The type of [ZetaPriorityPill]; determines the default [ZetaPriorityPill.customColor], [ZetaPriorityPill.index] and [ZetaPriorityPill.label].
+enum ZetaPriorityPillStatus {
   /// Sets the default color to `ZetaColors.red` and index to 'U'.
   urgent,
 
@@ -18,17 +25,17 @@ enum ZetaPriorityPillType {
   low;
 
   Color _badgeColor(BuildContext context) => switch (this) {
-        ZetaPriorityPillType.urgent => Zeta.of(context).colors.mainNegative,
-        ZetaPriorityPillType.high => Zeta.of(context).colors.mainWarning,
-        ZetaPriorityPillType.medium => Zeta.of(context).colors.mainPrimary,
-        ZetaPriorityPillType.low => Zeta.of(context).colors.mainPositive,
+        ZetaPriorityPillStatus.urgent => Zeta.of(context).colors.mainNegative,
+        ZetaPriorityPillStatus.high => Zeta.of(context).colors.mainWarning,
+        ZetaPriorityPillStatus.medium => Zeta.of(context).colors.mainPrimary,
+        ZetaPriorityPillStatus.low => Zeta.of(context).colors.mainPositive,
       };
 
   Color _lozengeColor(BuildContext context) => switch (this) {
-        ZetaPriorityPillType.urgent => Zeta.of(context).colors.surfaceNegativeSubtle,
-        ZetaPriorityPillType.high => Zeta.of(context).colors.surfaceWarningSubtle,
-        ZetaPriorityPillType.medium => Zeta.of(context).colors.surfacePrimarySubtle,
-        ZetaPriorityPillType.low => Zeta.of(context).colors.surfacePositiveSubtle,
+        ZetaPriorityPillStatus.urgent => Zeta.of(context).colors.surfaceNegativeSubtle,
+        ZetaPriorityPillStatus.high => Zeta.of(context).colors.surfaceWarningSubtle,
+        ZetaPriorityPillStatus.medium => Zeta.of(context).colors.surfacePrimarySubtle,
+        ZetaPriorityPillStatus.low => Zeta.of(context).colors.surfacePositiveSubtle,
       };
 }
 
@@ -54,7 +61,9 @@ class ZetaPriorityPill extends ZetaStatelessWidget {
     this.index,
     this.label,
     this.isBadge = false,
-    this.type = ZetaPriorityPillType.urgent,
+    this.status = ZetaPriorityPillStatus.urgent,
+    @Deprecated('Use Status instead. This will be removed in the next major version.')
+    this.type = ZetaPriorityPillStatus.urgent,
     this.size = ZetaPriorityPillSize.large,
     this.customColor,
     this.semanticLabel,
@@ -62,7 +71,7 @@ class ZetaPriorityPill extends ZetaStatelessWidget {
 
   /// Leading number / character in component. Will be truncated to single character.
   ///
-  /// Defaults to value based on [type].
+  /// Defaults to value based on [status].
   ///  * Urgent = U
   ///  * High = 1
   ///  * Medium = 2
@@ -79,8 +88,14 @@ class ZetaPriorityPill extends ZetaStatelessWidget {
 
   /// The type of [ZetaPriorityPill].
   ///
-  /// Default is [ZetaPriorityPillType.urgent]
+  /// Default is [ZetaPriorityPillStatus.urgent]
+  @Deprecated('Use Status instead. This will be removed in the next major version.')
   final ZetaPriorityPillType type;
+
+  /// The status of [ZetaPriorityPill].
+  ///
+  /// Default is [ZetaPriorityPillStatus.urgent]
+  final ZetaPriorityPillStatus status;
 
   /// The size of [ZetaPriorityPill].
   ///
@@ -99,66 +114,80 @@ class ZetaPriorityPill extends ZetaStatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Color badgeColor = customColor?.shade60 ?? type._badgeColor(context);
-    final Color lozengeColor = customColor?.shade10 ?? type._lozengeColor(context);
+    // This is only needed whilst `ZetaPriorityPillType` is deprecated.
+    final ZetaPriorityPillStatus statusType;
+    if (type != ZetaPriorityPillStatus.urgent) {
+      statusType = type;
+    } else {
+      statusType = status;
+    }
+
+    final Color badgeColor = customColor?.shade60 ?? statusType._badgeColor(context);
+    final Color lozengeColor = customColor?.shade10 ?? statusType._lozengeColor(context);
 
     final size = this.size == ZetaPriorityPillSize.small ? Zeta.of(context).spacing.xl : Zeta.of(context).spacing.xl_3;
     final label = this.label ?? type.name.capitalize;
     final rounded = context.rounded;
 
-    return Semantics(
-      value: semanticLabel ?? label,
-      child: DecoratedBox(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(rounded ? Zeta.of(context).radius.full : Zeta.of(context).radius.none),
-          color: lozengeColor,
-        ),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Container(
-              alignment: Alignment.center,
-              height: size,
-              width: size,
-              decoration: BoxDecoration(
-                shape: rounded ? BoxShape.circle : BoxShape.rectangle,
-                color: badgeColor,
-              ),
-              child: Text(
-                (index?.isEmpty ?? true)
-                    ? (type == ZetaPriorityPillType.urgent
-                        ? type.name.substring(0, 1).capitalize
-                        : type.index.toString())
-                    : index!.substring(0, 1).capitalize,
-                style: this.size == ZetaPriorityPillSize.small
-                    ? Zeta.of(context).textStyles.labelSmall.copyWith(
-                          fontSize: 10,
-                          height: 13 / 10,
-                          color: Zeta.of(context).colors.mainInverse,
-                        )
-                    : Zeta.of(context).textStyles.labelMedium.apply(color: Zeta.of(context).colors.mainInverse),
-              ),
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Semantics(
+          value: semanticLabel ?? label,
+          child: DecoratedBox(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.all(rounded ? Zeta.of(context).radius.full : Zeta.of(context).radius.none),
+              color: lozengeColor,
             ),
-            if (!isBadge)
-              Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: Zeta.of(context).spacing.small,
-                  vertical: Zeta.of(context).spacing.minimum,
+            child: Row(
+              children: [
+                Container(
+                  alignment: Alignment.center,
+                  height: size,
+                  width: size,
+                  decoration: BoxDecoration(
+                    shape: rounded ? BoxShape.circle : BoxShape.rectangle,
+                    color: badgeColor,
+                  ),
+                  child: Text(
+                    (index?.isEmpty ?? true)
+                        ? (type == ZetaPriorityPillStatus.urgent
+                            ? type.name.substring(0, 1).capitalize
+                            : type.index.toString())
+                        : index!.substring(0, 1).capitalize,
+                    style: this.size == ZetaPriorityPillSize.small
+                        ? Zeta.of(context).textStyles.labelSmall.copyWith(
+                              fontSize: 10,
+                              height: 13 / 10,
+                              color: Zeta.of(context).colors.stateDefaultEnabled,
+                            )
+                        : Zeta.of(context).textStyles.labelMedium.apply(
+                              color: Zeta.of(context).colors.stateDefaultEnabled,
+                            ),
+                  ),
                 ),
-                child: Text(
-                  label,
-                  style: this.size == ZetaPriorityPillSize.small
-                      ? Zeta.of(context).textStyles.bodyXSmall.copyWith(
-                            fontSize: 10,
-                            height: 13 / 10,
-                          )
-                      : Zeta.of(context).textStyles.bodySmall,
-                  overflow: TextOverflow.ellipsis,
-                ),
-              ),
-          ],
+                if (!isBadge)
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: Zeta.of(context).spacing.small,
+                      // vertical: Zeta.of(context).spacing.minimum,
+                    ),
+                    child: Text(
+                      label,
+                      style: this.size == ZetaPriorityPillSize.small
+                          ? Zeta.of(context).textStyles.bodyXSmall.copyWith(
+                                fontSize: 10,
+                                height: 13 / 10,
+                              )
+                          : Zeta.of(context).textStyles.bodySmall,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+              ],
+            ),
+          ),
         ),
-      ),
+      ],
     );
   }
 
@@ -169,10 +198,11 @@ class ZetaPriorityPill extends ZetaStatelessWidget {
       ..add(StringProperty('index', index))
       ..add(DiagnosticsProperty<bool>('rounded', rounded))
       ..add(DiagnosticsProperty<bool>('isBadge', isBadge))
-      ..add(EnumProperty<ZetaPriorityPillType?>('type', type))
+      ..add(EnumProperty<ZetaPriorityPillStatus?>('type', type))
       ..add(EnumProperty<ZetaPriorityPillSize>('size', size))
       ..add(StringProperty('label', label))
       ..add(ColorProperty('customColor', customColor))
-      ..add(StringProperty('semanticLabel', semanticLabel));
+      ..add(StringProperty('semanticLabel', semanticLabel))
+      ..add(EnumProperty<ZetaPriorityPillStatus>('status', status));
   }
 }
