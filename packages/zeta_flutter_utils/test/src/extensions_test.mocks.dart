@@ -492,58 +492,6 @@ class MockZetaColors extends _i1.Mock implements _i4.ZetaColors {
       ) as _i5.Color);
 
   @override
-  _i5.Color get iconFlavorPositive => (super.noSuchMethod(
-        Invocation.getter(#iconFlavorPositive),
-        returnValue: _FakeColor_4(
-          this,
-          Invocation.getter(#iconFlavorPositive),
-        ),
-        returnValueForMissingStub: _FakeColor_4(
-          this,
-          Invocation.getter(#iconFlavorPositive),
-        ),
-      ) as _i5.Color);
-
-  @override
-  _i5.Color get iconFlavorWarning => (super.noSuchMethod(
-        Invocation.getter(#iconFlavorWarning),
-        returnValue: _FakeColor_4(
-          this,
-          Invocation.getter(#iconFlavorWarning),
-        ),
-        returnValueForMissingStub: _FakeColor_4(
-          this,
-          Invocation.getter(#iconFlavorWarning),
-        ),
-      ) as _i5.Color);
-
-  @override
-  _i5.Color get iconFlavorNegative => (super.noSuchMethod(
-        Invocation.getter(#iconFlavorNegative),
-        returnValue: _FakeColor_4(
-          this,
-          Invocation.getter(#iconFlavorNegative),
-        ),
-        returnValueForMissingStub: _FakeColor_4(
-          this,
-          Invocation.getter(#iconFlavorNegative),
-        ),
-      ) as _i5.Color);
-
-  @override
-  _i5.Color get iconFlavorInfo => (super.noSuchMethod(
-        Invocation.getter(#iconFlavorInfo),
-        returnValue: _FakeColor_4(
-          this,
-          Invocation.getter(#iconFlavorInfo),
-        ),
-        returnValueForMissingStub: _FakeColor_4(
-          this,
-          Invocation.getter(#iconFlavorInfo),
-        ),
-      ) as _i5.Color);
-
-  @override
   _i5.Color get borderDefault => (super.noSuchMethod(
         Invocation.getter(#borderDefault),
         returnValue: _FakeColor_4(
