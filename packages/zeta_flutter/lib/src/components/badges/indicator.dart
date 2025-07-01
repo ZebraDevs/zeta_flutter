@@ -59,7 +59,12 @@ class ZetaIndicator extends ZetaStatelessWidget {
   /// Defaults to [ZetaIndicatorType.notification].
   final ZetaIndicatorType type;
 
-  /// The size of the [ZetaIndicator]. Default is [ZetaWidgetSize.large]
+  /// The size of the [ZetaIndicator]. Default is [ZetaWidgetSize.large].
+  ///
+  /// If a [value] is provided, the [size] will be adjusted accordingly:
+  /// - If the value is greater than 9, the size will be set to [ZetaWidgetSize.large].
+  /// - If the value is between 1 and 9, the size will be set to [ZetaWidgetSize.medium].
+  /// If no value is provided, the size will be as specified.
   final ZetaWidgetSize size;
 
   /// Inverse the border color.
@@ -74,6 +79,11 @@ class ZetaIndicator extends ZetaStatelessWidget {
   final IconData? icon;
 
   /// Value for the type `notification`.
+  ///
+  ///  If a value is provided, the size will be adjusted accordingly:
+  /// - If the value is greater than 9, the size will be set to [ZetaWidgetSize.large].
+  /// - If the value is between 1 and 9, the size will be set to [ZetaWidgetSize.medium].
+  /// If no value is provided, the size will be as specified.
   final int? value;
 
   /// Color for zeta indicator

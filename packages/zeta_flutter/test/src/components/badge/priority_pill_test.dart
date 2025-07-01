@@ -30,7 +30,7 @@ void main() {
         }
       }
     }
-    // TODO: Consider adding customColor tests. Currently these fail as there is not logic for accessibillty with custom colors.
+    // TODO(test): Consider adding customColor tests. Currently these fail as there is not logic for accessibillty with custom colors.
     // for (final isBadge in [true, false]) {
     //   for (final color in [
     //     const ZetaPrimitivesLight().blue,
