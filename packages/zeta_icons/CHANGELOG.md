@@ -1,5 +1,30 @@
 # Changelog
 
+## [1.1.3](https://github.com/ZebraDevs/zeta_flutter/compare/zeta_icons-v1.1.2...zeta_icons-v1.1.3) (2025-07-01)
+
+
+### ⛓️ Dependencies
+
+* **automated:** Update icons ([#356](https://github.com/ZebraDevs/zeta_flutter/issues/356)) ([a8bb0d6](https://github.com/ZebraDevs/zeta_flutter/commit/a8bb0d681905d333fd147e9367ef932444876d44))
+
+
+### ✅ Icons added
+
+* **Ai:** Ai Measure ([76dde19]) ([a8bb0d6](https://github.com/ZebraDevs/zeta_flutter/commit/a8bb0d681905d333fd147e9367ef932444876d44))
+* **Ai:** Ai Single Star ([76dde19]) ([a8bb0d6](https://github.com/ZebraDevs/zeta_flutter/commit/a8bb0d681905d333fd147e9367ef932444876d44))
+* **Ai:** Ai Stars ([76dde19]) ([a8bb0d6](https://github.com/ZebraDevs/zeta_flutter/commit/a8bb0d681905d333fd147e9367ef932444876d44))
+
+
+### 🎨 Icons updated
+
+* **Communication:** Chat Message Unread ([76dde19]) ([a8bb0d6](https://github.com/ZebraDevs/zeta_flutter/commit/a8bb0d681905d333fd147e9367ef932444876d44))
+* **Communication:** Comms Chat Unread ([76dde19]) ([a8bb0d6](https://github.com/ZebraDevs/zeta_flutter/commit/a8bb0d681905d333fd147e9367ef932444876d44))
+* **File:** Open New Off ([76dde19]) ([a8bb0d6](https://github.com/ZebraDevs/zeta_flutter/commit/a8bb0d681905d333fd147e9367ef932444876d44))
+* **General:** Swap ([76dde19]) ([a8bb0d6](https://github.com/ZebraDevs/zeta_flutter/commit/a8bb0d681905d333fd147e9367ef932444876d44))
+* **Navigation:** Double Arrow Left ([76dde19]) ([a8bb0d6](https://github.com/ZebraDevs/zeta_flutter/commit/a8bb0d681905d333fd147e9367ef932444876d44))
+* **Navigation:** Double Arrow Right ([76dde19]) ([a8bb0d6](https://github.com/ZebraDevs/zeta_flutter/commit/a8bb0d681905d333fd147e9367ef932444876d44))
+* **Social:** Google Drive ([76dde19]) ([a8bb0d6](https://github.com/ZebraDevs/zeta_flutter/commit/a8bb0d681905d333fd147e9367ef932444876d44))
+
 ## [1.1.2](https://github.com/ZebraDevs/zeta_flutter/compare/zeta_icons-v1.1.1...zeta_icons-v1.1.2) (2025-06-18)
 
 
