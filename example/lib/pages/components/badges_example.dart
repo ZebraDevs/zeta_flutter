@@ -167,68 +167,56 @@ class Indicators extends StatelessWidget {
     return ExampleScaffold(
       name: name,
       children: [
-        Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Column(
-              children: [
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          children: [
-                            ZetaIndicator.icon(),
-                            ZetaIndicator.icon(size: ZetaWidgetSize.medium),
-                            ZetaIndicator.icon(size: ZetaWidgetSize.small),
-                          ].divide(SizedBox.square(dimension: Zeta.of(context).spacing.xl_2)).toList(),
-                        ),
-                        Row(
-                          children: [
-                            ZetaIndicator.icon(inverse: true),
-                            ZetaIndicator.icon(size: ZetaWidgetSize.medium, inverse: true),
-                            ZetaIndicator.icon(size: ZetaWidgetSize.small, inverse: true),
-                          ].divide(SizedBox.square(dimension: Zeta.of(context).spacing.xl_2)).toList(),
-                        ),
-                      ].divide(SizedBox.square(dimension: Zeta.of(context).spacing.small)).toList(),
-                    ),
-                    const SizedBox(width: 50),
-                  ],
-                ),
-              ],
-            ),
-            SizedBox.square(dimension: Zeta.of(context).spacing.xl_9),
-            Column(
-              children: [
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          children: [
-                            ZetaIndicator.notification(value: 3),
-                            ZetaIndicator.notification(size: ZetaWidgetSize.medium, value: 3),
-                            ZetaIndicator.notification(size: ZetaWidgetSize.small),
-                          ].divide(SizedBox.square(dimension: Zeta.of(context).spacing.xl_2)).toList(),
-                        ),
-                        Row(
-                          children: [
-                            ZetaIndicator.notification(value: 3, inverse: true),
-                            ZetaIndicator.notification(size: ZetaWidgetSize.medium, value: 3, inverse: true),
-                            ZetaIndicator.notification(size: ZetaWidgetSize.small, inverse: true),
-                          ].divide(SizedBox.square(dimension: Zeta.of(context).spacing.xl_2)).toList(),
-                        ),
-                      ].divide(SizedBox.square(dimension: Zeta.of(context).spacing.medium)).toList(),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ],
+        Container(
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Column(
+                children: [
+                  Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            children: [
+                              ZetaIndicator.icon(),
+                              ZetaIndicator.icon(size: ZetaWidgetSize.medium),
+                              ZetaIndicator.icon(size: ZetaWidgetSize.small),
+                            ].divide(SizedBox.square(dimension: Zeta.of(context).spacing.xl_2)).toList(),
+                          ),
+                        ].divide(SizedBox.square(dimension: Zeta.of(context).spacing.small)).toList(),
+                      ),
+                      const SizedBox(width: 50),
+                    ],
+                  ),
+                ],
+              ),
+              SizedBox.square(dimension: Zeta.of(context).spacing.xl_9),
+              Column(
+                children: [
+                  Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            children: [
+                              ZetaIndicator.notification(value: 300),
+                              ZetaIndicator.notification(size: ZetaWidgetSize.medium, value: 2),
+                              ZetaIndicator.notification(size: ZetaWidgetSize.small),
+                            ].divide(SizedBox.square(dimension: Zeta.of(context).spacing.xl_2)).toList(),
+                          ),
+                        ].divide(SizedBox.square(dimension: Zeta.of(context).spacing.medium)).toList(),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ],
+          ),
         )
       ],
     );

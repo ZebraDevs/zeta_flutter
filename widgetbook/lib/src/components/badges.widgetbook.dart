@@ -17,7 +17,6 @@ const badgesPath = '$componentsPath/Badges';
 Widget iconIndicator(BuildContext context) {
   return ZetaIndicator.icon(
     icon: iconKnob(context),
-    inverse: context.knobs.boolean(label: 'Inverse Border'),
     size: context.knobs.list(label: 'Size', labelBuilder: enumLabelBuilder, options: ZetaWidgetSize.values),
     color: context.knobs.colorOrNull(label: 'Custom color'),
   );
@@ -32,7 +31,6 @@ Widget iconIndicator(BuildContext context) {
 )
 Widget notificationIndicator(BuildContext context) {
   return ZetaIndicator.notification(
-    inverse: context.knobs.boolean(label: 'Inverse Border'),
     size: context.knobs.list(label: 'Size', labelBuilder: enumLabelBuilder, options: ZetaWidgetSize.values),
     value: context.knobs.int.slider(label: 'Value'),
     color: context.knobs.colorOrNull(label: 'Custom color'),
