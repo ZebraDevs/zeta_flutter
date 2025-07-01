@@ -1262,6 +1262,34 @@ abstract interface class ZetaColors {
   /// * Light Mode: #c2a728
   /// * Dark Mode: #8d7400
   Color get avatarYellow;
+
+  /// See [avatarBlue]
+  @Deprecated('Use `avatarBlue` instead')
+  Color get surfaceAvatarBlue => avatarBlue;
+
+  /// See [avatarGreen]
+  @Deprecated('Use `avatarGreen` instead')
+  Color get surfaceAvatarGreen => avatarGreen;
+
+  /// See [avatarOrange]
+  @Deprecated('Use `avatarOrange` instead')
+  Color get surfaceAvatarOrange => avatarOrange;
+
+  /// See [avatarPink]
+  @Deprecated('Use `avatarPink` instead')
+  Color get surfaceAvatarPink => avatarPink;
+
+  /// See [avatarPurple]
+  @Deprecated('Use `avatarPurple` instead')
+  Color get surfaceAvatarPurple => avatarPurple;
+
+  /// See [avatarTeal]
+  @Deprecated('Use `avatarTeal` instead')
+  Color get surfaceAvatarTeal => avatarTeal;
+
+  /// See [avatarYellow]
+  @Deprecated('Use `avatarYellow` instead')
+  Color get surfaceAvatarYellow => avatarYellow;
 }
 
 /// The semantic tokens for spacing
@@ -1596,6 +1624,23 @@ class ZetaColorsAA extends Equatable implements ZetaColors {
   Color get avatarTeal => primitives.teal.shade80;
   @override
   Color get avatarYellow => primitives.yellow.shade50;
+
+// NOTE: The following getters are deprecated and will be removed in future versions.
+  @override
+  Color get surfaceAvatarBlue => avatarBlue;
+  @override
+  Color get surfaceAvatarGreen => avatarGreen;
+  @override
+  Color get surfaceAvatarOrange => avatarOrange;
+  @override
+  Color get surfaceAvatarPink => avatarPink;
+  @override
+  Color get surfaceAvatarPurple => avatarPurple;
+  @override
+  Color get surfaceAvatarTeal => avatarTeal;
+  @override
+  Color get surfaceAvatarYellow => avatarYellow;
+
   @override
   List<Object?> get props => [
         mainDefault,
@@ -1895,6 +1940,23 @@ class ZetaColorsAAA extends Equatable implements ZetaColors {
   Color get avatarTeal => primitives.teal.shade80;
   @override
   Color get avatarYellow => primitives.yellow.shade50;
+
+// NOTE: The following getters are deprecated and will be removed in future versions.
+  @override
+  Color get surfaceAvatarBlue => avatarBlue;
+  @override
+  Color get surfaceAvatarGreen => avatarGreen;
+  @override
+  Color get surfaceAvatarOrange => avatarOrange;
+  @override
+  Color get surfaceAvatarPink => avatarPink;
+  @override
+  Color get surfaceAvatarPurple => avatarPurple;
+  @override
+  Color get surfaceAvatarTeal => avatarTeal;
+  @override
+  Color get surfaceAvatarYellow => avatarYellow;
+
   @override
   List<Object?> get props => [
         mainDefault,
