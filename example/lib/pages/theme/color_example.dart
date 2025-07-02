@@ -89,13 +89,13 @@ class _ColorExampleState extends State<ColorExample> {
           'infoSubtle': colors.surfaceInfoSubtle,
         };
         final Map<String, Color> avatarColors = {
-          'blue': colors.surfaceAvatarBlue,
-          'green': colors.surfaceAvatarGreen,
-          'orange': colors.surfaceAvatarOrange,
-          'pink': colors.surfaceAvatarPink,
-          'purple': colors.surfaceAvatarPurple,
-          'teal': colors.surfaceAvatarTeal,
-          'yellow': colors.surfaceAvatarYellow,
+          'blue': colors.avatarBlue,
+          'green': colors.avatarGreen,
+          'orange': colors.avatarOrange,
+          'pink': colors.avatarPink,
+          'purple': colors.avatarPurple,
+          'teal': colors.avatarTeal,
+          'yellow': colors.avatarYellow,
         };
         final Map<String, Color> disabled = {
           'disabled': colors.stateDisabledDisabled,
@@ -142,6 +142,24 @@ class _ColorExampleState extends State<ColorExample> {
           'selected': colors.stateInverseSelected,
           'focus': colors.stateInverseFocus,
         };
+        final Map<String, Color> chart = {
+          'chart1Primary': colors.chart1Primary,
+          'chart1Secondary': colors.chart1Secondary,
+          'chart2Primary': colors.chart2Primary,
+          'chart2Secondary': colors.chart2Secondary,
+          'chart3Primary': colors.chart3Primary,
+          'chart3Secondary': colors.chart3Secondary,
+          'chart4Primary': colors.chart4Primary,
+          'chart4Secondary': colors.chart4Secondary,
+          'chart5Primary': colors.chart5Primary,
+          'chart5Secondary': colors.chart5Secondary,
+          'chart6Primary': colors.chart6Primary,
+          'chart6Secondary': colors.chart6Secondary,
+          'chart7Primary': colors.chart7Primary,
+          'chart7Secondary': colors.chart7Secondary,
+          'chart8Primary': colors.chart8Primary,
+          'chart8Secondary': colors.chart8Secondary,
+        };
 
         return ExampleScaffold(
           name: ColorExample.name,
@@ -153,7 +171,6 @@ class _ColorExampleState extends State<ColorExample> {
                 MyRow(children: mainColors, title: 'Main Colors'),
                 MyRow(children: borderColors, title: 'Main Colors'),
                 MyRow(children: surfaceColors, title: 'Surface Colors'),
-                MyRow(children: avatarColors, title: 'Surface / Avatar  Colors'),
                 MyRow(children: disabled, title: 'State / disabled  Colors'),
                 MyRow(children: defaultColors, title: 'State / default  Colors'),
                 MyRow(children: primary, title: 'State / primary  Colors'),
@@ -162,6 +179,8 @@ class _ColorExampleState extends State<ColorExample> {
                 MyRow(children: negative, title: 'State / negative  Colors'),
                 MyRow(children: info, title: 'State / info  Colors'),
                 MyRow(children: inverse, title: 'State / inverse  Colors'),
+                MyRow(children: avatarColors, title: 'Avatar Colors'),
+                MyRow(children: chart, title: 'Chart Colors'),
                 Row(children: [
                   Text('Primitive colors', style: Zeta.of(context).textStyles.displayMedium),
                 ]).paddingVertical(Zeta.of(context).spacing.xl_4),

@@ -34,7 +34,7 @@ class _ContactItemExampleState extends State<ContactItemExample> {
                 onTap: () {},
                 leading: ZetaAvatar(
                   size: ZetaAvatarSize.s,
-                  backgroundColor: Zeta.of(context).colors.surfaceAvatarBlue,
+                  backgroundColor: Zeta.of(context).colors.avatarBlue,
                   initials: 'AZ',
                 ),
                 title: Text("Contact / Group Name"),
