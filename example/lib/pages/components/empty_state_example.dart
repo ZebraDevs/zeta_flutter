@@ -20,7 +20,7 @@ class _EmptyStateExampleState extends State<EmptyStateExample> {
           constraints: const BoxConstraints(maxWidth: 375),
           child: ZetaEmptyState(
             title: 'Title',
-            subtitle: 'This is a placeholder description. It explains what this view is for and what to do next.',
+            description: 'This is a placeholder description. It explains what this view is for and what to do next.',
             illustration: ZetaIllustrations.serverDisconnect,
             primaryAction: ZetaButton(
               label: 'Button',

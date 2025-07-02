@@ -15,7 +15,7 @@ void main() {
     meetsAccessibilityGuidelinesTest(
       ZetaEmptyState(
         title: 'Title',
-        subtitle: 'This is a placeholder description. It explains what this view is for and what to do next.',
+        description: 'This is a placeholder description. It explains what this view is for and what to do next.',
         illustration: ZetaIllustrations.serverDisconnect,
         primaryAction: ZetaButton(
           label: 'Button',
@@ -32,12 +32,12 @@ void main() {
   group('Content Tests', () {
     final debugFillProperties = {
       'title': '"Title"',
-      'subtitle': '"This is a placeholder description. It explains what this view is for and what to do next."',
+      'description': '"This is a placeholder description. It explains what this view is for and what to do next."',
     };
     debugFillPropertiesTest(
       const ZetaEmptyState(
         title: 'Title',
-        subtitle: 'This is a placeholder description. It explains what this view is for and what to do next.',
+        description: 'This is a placeholder description. It explains what this view is for and what to do next.',
       ),
       debugFillProperties,
     );
@@ -49,7 +49,7 @@ void main() {
         const TestApp(
           home: ZetaEmptyState(
             title: 'Title',
-            subtitle: 'This is a placeholder description. It explains what this view is for and what to do next.',
+            description: 'This is a placeholder description. It explains what this view is for and what to do next.',
           ),
         ),
       );
@@ -67,7 +67,7 @@ void main() {
         TestApp(
           home: ZetaEmptyState(
             title: 'Title',
-            subtitle: 'This is a placeholder description. It explains what this view is for and what to do next.',
+            description: 'This is a placeholder description. It explains what this view is for and what to do next.',
             primaryAction: ZetaButton(
               label: 'Primary Button',
               onPressed: () {},
@@ -96,7 +96,7 @@ void main() {
       goldenFile,
       const ZetaEmptyState(
         title: 'Title',
-        subtitle: 'This is a placeholder description. It explains what this view is for and what to do next.',
+        description: 'This is a placeholder description. It explains what this view is for and what to do next.',
       ),
       'empty_text_only',
     );
@@ -104,7 +104,7 @@ void main() {
       goldenFile,
       ZetaEmptyState(
         title: 'Title',
-        subtitle: 'This is a placeholder description. It explains what this view is for and what to do next.',
+        description: 'This is a placeholder description. It explains what this view is for and what to do next.',
         illustration: ZetaIllustrations.serverDisconnect,
       ),
       'empty_illustration_only',
@@ -113,7 +113,7 @@ void main() {
       goldenFile,
       ZetaEmptyState(
         title: 'Title',
-        subtitle: 'This is a placeholder description. It explains what this view is for and what to do next.',
+        description: 'This is a placeholder description. It explains what this view is for and what to do next.',
         primaryAction: ZetaButton.outlineSubtle(
           label: 'Button',
           onPressed: () {},
@@ -125,7 +125,7 @@ void main() {
       goldenFile,
       ZetaEmptyState(
         title: 'Title',
-        subtitle: 'This is a placeholder description. It explains what this view is for and what to do next.',
+        description: 'This is a placeholder description. It explains what this view is for and what to do next.',
         primaryAction: ZetaButton.outlineSubtle(
           label: 'Button',
           onPressed: () {},
@@ -142,7 +142,7 @@ void main() {
       goldenFile,
       ZetaEmptyState(
         title: 'Title',
-        subtitle: 'This is a placeholder description. It explains what this view is for and what to do next.',
+        description: 'This is a placeholder description. It explains what this view is for and what to do next.',
         illustration: ZetaIllustrations.serverDisconnect,
         primaryAction: ZetaButton.outlineSubtle(
           label: 'Button',
@@ -166,7 +166,7 @@ void main() {
             constraints: const BoxConstraints(maxWidth: 375, maxHeight: 1000),
             child: ZetaEmptyState(
               title: 'Title',
-              subtitle: 'This is a placeholder description. It explains what this view is for and what to do next.',
+              description: 'This is a placeholder description. It explains what this view is for and what to do next.',
               illustration: ZetaIllustrations.serverDisconnect,
               primaryAction: ZetaButton(
                 label: 'Button',

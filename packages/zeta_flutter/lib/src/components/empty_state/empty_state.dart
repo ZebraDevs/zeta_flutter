@@ -11,7 +11,7 @@ class ZetaEmptyState extends StatelessWidget {
   const ZetaEmptyState({
     super.key,
     required this.title,
-    required this.subtitle,
+    required this.description,
     this.illustration,
     this.primaryAction,
     this.secondaryAction,
@@ -21,7 +21,7 @@ class ZetaEmptyState extends StatelessWidget {
   final String title;
 
   /// Subtitle of the empty state, providing additional context or instructions.
-  final String subtitle;
+  final String description;
 
   /// Illustration widget for the empty state, which can be a custom widget or an image.
   ///
@@ -59,7 +59,7 @@ class ZetaEmptyState extends StatelessWidget {
           ),
           SizedBox(height: zeta.spacing.small),
           Text(
-            subtitle,
+            description,
             style: zeta.textStyles.bodySmall.apply(color: zeta.colors.mainSubtle),
             textAlign: TextAlign.center,
           ),
@@ -83,6 +83,6 @@ class ZetaEmptyState extends StatelessWidget {
     super.debugFillProperties(properties);
     properties
       ..add(StringProperty('title', title))
-      ..add(StringProperty('subtitle', subtitle));
+      ..add(StringProperty('description', description));
   }
 }

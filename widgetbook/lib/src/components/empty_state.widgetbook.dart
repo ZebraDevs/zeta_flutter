@@ -25,7 +25,7 @@ Widget dropdown(BuildContext context) {
 
   return ZetaEmptyState(
     title: context.knobs.string(label: 'Title', initialValue: 'Title'),
-    subtitle: context.knobs.string(
+    description: context.knobs.string(
       label: 'Subtitle',
       initialValue: 'This is a placeholder description. It explains what this view is for and what to do next.',
     ),
