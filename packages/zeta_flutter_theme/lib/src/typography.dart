@@ -21,6 +21,7 @@ class ZetaTextStyles {
     fontWeight: FontWeight.w300,
     height: 60 / 52,
     fontFamily: kZetaFontFamily,
+    letterSpacing: 0,
   );
 
   /// Middle size of the display styles.
@@ -31,6 +32,7 @@ class ZetaTextStyles {
     fontWeight: FontWeight.w300,
     height: 52 / 44,
     fontFamily: kZetaFontFamily,
+    letterSpacing: 0,
   );
 
   /// Smallest of the display styles.
@@ -41,6 +43,7 @@ class ZetaTextStyles {
     fontWeight: FontWeight.w300,
     height: 40 / 36,
     fontFamily: kZetaFontFamily,
+    letterSpacing: 0,
   );
 
   /// Largest of the headline styles.
@@ -54,6 +57,7 @@ class ZetaTextStyles {
     fontWeight: FontWeight.w500,
     height: 36 / 32,
     fontFamily: kZetaFontFamily,
+    letterSpacing: 0,
   );
 
   /// Middle size of the headline styles.
@@ -64,6 +68,7 @@ class ZetaTextStyles {
     fontWeight: FontWeight.w500,
     height: 32 / 28,
     fontFamily: kZetaFontFamily,
+    letterSpacing: 0,
   );
 
   /// Smallest of the headline styles.
@@ -74,6 +79,7 @@ class ZetaTextStyles {
     fontWeight: FontWeight.w500,
     height: 28 / 24,
     fontFamily: kZetaFontFamily,
+    letterSpacing: 0,
   );
 
   /// Largest of the title styles.
@@ -87,6 +93,7 @@ class ZetaTextStyles {
     fontWeight: FontWeight.w500,
     height: 24 / 20,
     fontFamily: kZetaFontFamily,
+    letterSpacing: 0,
   );
 
   /// Middle size of the title styles.
@@ -97,6 +104,7 @@ class ZetaTextStyles {
     fontWeight: FontWeight.w500,
     height: 20 / 16,
     fontFamily: kZetaFontFamily,
+    letterSpacing: 0,
   );
 
   /// Smallest of the title styles.
@@ -107,6 +115,7 @@ class ZetaTextStyles {
     fontWeight: FontWeight.w500,
     height: 16 / 12,
     fontFamily: kZetaFontFamily,
+    letterSpacing: 0,
   );
 
   /// Largest of the body styles.
@@ -119,6 +128,7 @@ class ZetaTextStyles {
     fontWeight: FontWeight.w400,
     height: 24 / 20,
     fontFamily: kZetaFontFamily,
+    letterSpacing: 0,
   );
 
   /// Middle size of the body styles.
@@ -131,6 +141,7 @@ class ZetaTextStyles {
     fontWeight: FontWeight.w400,
     height: 24 / 16,
     fontFamily: kZetaFontFamily,
+    letterSpacing: 0,
   );
 
   /// Small size of the body styles.
@@ -141,6 +152,7 @@ class ZetaTextStyles {
     fontWeight: FontWeight.w400,
     height: 18 / 14,
     fontFamily: kZetaFontFamily,
+    letterSpacing: 0,
   );
 
   /// Smallest of the body styles.
@@ -151,6 +163,7 @@ class ZetaTextStyles {
     fontWeight: FontWeight.w400,
     height: 16 / 12,
     fontFamily: kZetaFontFamily,
+    letterSpacing: 0,
   );
 
   /// Largest of the label styles.
@@ -167,6 +180,7 @@ class ZetaTextStyles {
     fontWeight: FontWeight.w500,
     height: 24 / 16,
     fontFamily: kZetaFontFamily,
+    letterSpacing: 0,
   );
 
   /// Middle size of the label styles.
@@ -187,6 +201,7 @@ class ZetaTextStyles {
     fontWeight: FontWeight.w500,
     height: 16 / 12,
     fontFamily: kZetaFontFamily,
+    letterSpacing: 0,
   );
 
   /// Label text style used specifically for Indicator.
@@ -197,6 +212,7 @@ class ZetaTextStyles {
     fontWeight: FontWeight.w500,
     height: 14 / 12,
     fontFamily: kZetaFontFamily,
+    letterSpacing: 0,
   );
 
   /// Largest heading style.
@@ -413,6 +429,7 @@ class ZetaTextStyle {
         height: 18 / 14,
         fontFamily: fontFamily,
         color: textColor,
+        letterSpacing: 0,
       );
 
   /// Smallest of the body styles.

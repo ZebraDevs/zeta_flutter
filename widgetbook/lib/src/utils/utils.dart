@@ -12,6 +12,12 @@ List<IconData> iconOptions() => icons.values
 
 String enumLabelBuilder(Enum? value) => value?.name.split('.').last.capitalize ?? '';
 
+String sentencer(String? value) {
+  if (value == null || value.isEmpty) return '';
+  value = value.replaceAllMapped(RegExp(r'([A-Z])'), (match) => ' ${match.group(0)}');
+  return value[0].toUpperCase() + value.substring(1);
+}
+
 IconData? iconKnob(
   BuildContext context, {
   bool nullable = false,
