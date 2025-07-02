@@ -11,8 +11,6 @@ class EmptyStateExample extends StatefulWidget {
 }
 
 class _EmptyStateExampleState extends State<EmptyStateExample> {
-  String selectedItem = "Item 1";
-
   @override
   Widget build(BuildContext context) {
     return ExampleScaffold(

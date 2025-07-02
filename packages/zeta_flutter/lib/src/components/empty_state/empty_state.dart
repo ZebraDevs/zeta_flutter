@@ -25,7 +25,7 @@ class ZetaEmptyState extends StatelessWidget {
 
   /// Illustration widget for the empty state, which can be a custom widget or an image.
   ///
-  /// It is recommended to use on of the [ZetaIllustrations] widgets for consistency.
+  /// It is recommended to use one of the [ZetaIllustrations] widgets for consistency.
   final Widget? illustration;
 
   /// Primary action button for the empty state, typically used to guide the user to take an action.
@@ -65,15 +65,13 @@ class ZetaEmptyState extends StatelessWidget {
           ),
           SizedBox(height: zeta.spacing.large),
           if (primaryAction != null || secondaryAction != null)
-            IntrinsicHeight(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  if (secondaryAction != null) secondaryAction!,
-                  if (primaryAction != null && secondaryAction != null) SizedBox(width: zeta.spacing.medium, height: 0),
-                  if (primaryAction != null) primaryAction!,
-                ],
-              ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                if (secondaryAction != null) secondaryAction!,
+                if (primaryAction != null && secondaryAction != null) SizedBox(width: zeta.spacing.medium, height: 0),
+                if (primaryAction != null) primaryAction!,
+              ],
             ),
         ],
       ),

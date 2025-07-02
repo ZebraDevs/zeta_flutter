@@ -43,39 +43,8 @@ void main() {
     );
   });
 
-  group('Dimensions Tests', () {
-    testWidgets('ZetaEmptyState has expected dimensions', (WidgetTester tester) async {
-      await loadFonts();
-      await tester.pumpWidget(
-        TestApp(
-          home: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 375, maxHeight: 1000),
-            child: ZetaEmptyState(
-              title: 'Title',
-              subtitle: 'This is a placeholder description. It explains what this view is for and what to do next.',
-              illustration: ZetaIllustrations.serverDisconnect,
-              primaryAction: ZetaButton(
-                label: 'Button',
-                onPressed: () {},
-              ),
-              secondaryAction: ZetaButton.outlineSubtle(
-                label: 'Button',
-                onPressed: () {},
-              ),
-            ),
-          ),
-        ),
-      );
-      final size = tester.getSize(find.byType(ZetaEmptyState));
-
-      expect(size.width, 375);
-      expect(size.height, 292);
-    });
-  });
-
   group('Styling Tests', () {
     testWidgets('ZetaEmptyState has correct default styles', (WidgetTester tester) async {
-      await loadFonts();
       await tester.pumpWidget(
         const TestApp(
           home: ZetaEmptyState(
@@ -88,7 +57,7 @@ void main() {
       final textFinder = find.text('Title');
       expect(textFinder, findsOneWidget);
       final textWidget = tester.widget<Text>(textFinder);
-      expect(textWidget.style?.fontSize, 20.0); // Assuming h4 style is 20.0
+      expect(textWidget.style?.fontSize, 20.0);
     });
     testWidgets('Buttons are shown in the correct order', (WidgetTester tester) async {
       const Key primaryButtonKey = Key('primaryButton');
@@ -186,6 +155,36 @@ void main() {
       ),
       'empty_2_buttons_with_illustration',
     );
+  });
+
+  group('Dimensions Tests', () {
+    testWidgets('ZetaEmptyState has expected dimensions', (WidgetTester tester) async {
+      await loadFonts();
+      await tester.pumpWidget(
+        TestApp(
+          home: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 375, maxHeight: 1000),
+            child: ZetaEmptyState(
+              title: 'Title',
+              subtitle: 'This is a placeholder description. It explains what this view is for and what to do next.',
+              illustration: ZetaIllustrations.serverDisconnect,
+              primaryAction: ZetaButton(
+                label: 'Button',
+                onPressed: () {},
+              ),
+              secondaryAction: ZetaButton.outlineSubtle(
+                label: 'Button',
+                onPressed: () {},
+              ),
+            ),
+          ),
+        ),
+      );
+      final size = tester.getSize(find.byType(ZetaEmptyState));
+
+      expect(size.width, 375);
+      expect(size.height, 292);
+    });
   });
 
   group('Performance Tests', () {});
