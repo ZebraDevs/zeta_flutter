@@ -25,7 +25,7 @@ class ZetaIndicator extends ZetaStatelessWidget {
     this.size = ZetaWidgetSize.large,
     this.icon,
     this.value,
-    this.inverse = false,
+    @Deprecated('No longer in use. Will be removed in future versions.') this.inverse = false,
     this.color,
     this.semanticLabel,
   });
@@ -35,7 +35,7 @@ class ZetaIndicator extends ZetaStatelessWidget {
     super.key,
     super.rounded,
     this.size = ZetaWidgetSize.large,
-    this.inverse = false,
+    @Deprecated('No longer in use. Will be removed in future versions.') this.inverse = false,
     this.icon,
     this.color,
     this.semanticLabel,
@@ -47,7 +47,7 @@ class ZetaIndicator extends ZetaStatelessWidget {
     super.key,
     super.rounded,
     this.size = ZetaWidgetSize.large,
-    this.inverse = false,
+    @Deprecated('No longer in use. Will be removed in future versions.') this.inverse = false,
     this.value,
     this.color,
     this.semanticLabel,
@@ -59,18 +59,31 @@ class ZetaIndicator extends ZetaStatelessWidget {
   /// Defaults to [ZetaIndicatorType.notification].
   final ZetaIndicatorType type;
 
-  /// The size of the [ZetaIndicator]. Default is [ZetaWidgetSize.large]
+  /// The size of the [ZetaIndicator]. Default is [ZetaWidgetSize.large].
+  ///
+  /// If a [value] is provided, the [size] will be adjusted accordingly:
+  /// - If the value is greater than 9, the size will be set to [ZetaWidgetSize.large].
+  /// - If the value is between 1 and 9, the size will be set to [ZetaWidgetSize.medium].
+  /// If no value is provided, the size will be as specified.
   final ZetaWidgetSize size;
 
   /// Inverse the border color.
   ///
   /// Defaults to false.
+  @Deprecated('No longer in use. Will be removed in future versions.')
+  // Ignored due to deprecation, but kept for backward compatibility.
+  // ignore: diagnostic_describe_all_properties
   final bool inverse;
 
   /// Indicator icon, default: `ZetaIcons.star`.
   final IconData? icon;
 
   /// Value for the type `notification`.
+  ///
+  ///  If a value is provided, the size will be adjusted accordingly:
+  /// - If the value is greater than 9, the size will be set to [ZetaWidgetSize.large].
+  /// - If the value is between 1 and 9, the size will be set to [ZetaWidgetSize.medium].
+  /// If no value is provided, the size will be as specified.
   final int? value;
 
   /// Color for zeta indicator
@@ -89,7 +102,7 @@ class ZetaIndicator extends ZetaStatelessWidget {
     ZetaWidgetSize? size,
     IconData? icon,
     int? value,
-    bool? inverse,
+    @Deprecated('No longer in use. Will be removed in future versions.') bool? inverse,
     Key? key,
     String? semanticLabel,
   }) {
@@ -99,7 +112,6 @@ class ZetaIndicator extends ZetaStatelessWidget {
       size: size ?? this.size,
       icon: icon ?? this.icon,
       value: value ?? this.value,
-      inverse: inverse ?? this.inverse,
       semanticLabel: semanticLabel ?? this.semanticLabel,
     );
   }
@@ -107,47 +119,39 @@ class ZetaIndicator extends ZetaStatelessWidget {
   @override
   Widget build(BuildContext context) {
     final zetaColors = Zeta.of(context).colors;
-    final Color backgroundColor =
-        (type == ZetaIndicatorType.icon ? zetaColors.mainPrimary : zetaColors.surfaceNegative);
-    final Color foregroundColor = zetaColors.mainInverse;
-    final sizePixels = _getSizePixels(size, type, context);
-
+    final Color backgroundColor = (type == ZetaIndicatorType.icon ? zetaColors.mainPrimary : zetaColors.mainNegative);
+    final Color foregroundColor = zetaColors.stateDefaultEnabled;
+    final effectiveSize = value != null && value! > 9
+        ? ZetaWidgetSize.large
+        : value != null
+            ? ZetaWidgetSize.medium
+            : size;
+    final isPill = type == ZetaIndicatorType.notification && (effectiveSize == ZetaWidgetSize.large);
+    final sizePixels = _getSizePixels(effectiveSize, type, context);
+    final borderWidth = isPill ? ZetaBorders.small : ZetaBorders.medium;
+    final width = sizePixels.width + (2 * borderWidth);
+    final height = sizePixels.height + (2 * borderWidth);
+    final borderColor = type == ZetaIndicatorType.icon ? zetaColors.mainInverse : zetaColors.borderPure;
     return Semantics(
       label: semanticLabel,
       container: true,
       child: Container(
-        width: sizePixels + Zeta.of(context).spacing.minimum,
-        height: sizePixels + Zeta.of(context).spacing.minimum,
-        decoration: type == ZetaIndicatorType.icon
-            ? BoxDecoration(
-                border: Border.all(
-                  width: ZetaBorders.medium,
-                  color: zetaColors.mainInverse,
-                ),
-                color: (inverse ? foregroundColor : Colors.transparent),
-                borderRadius: BorderRadius.all(Zeta.of(context).radius.full),
-              )
-            : null,
-        child: Center(
-          child: Container(
-            width: sizePixels,
-            height: sizePixels,
-            decoration: BoxDecoration(
-              color: backgroundColor,
-              borderRadius: BorderRadius.circular(Zeta.of(context).spacing.large),
-            ),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(Zeta.of(context).spacing.large),
-              clipBehavior: Clip.hardEdge,
-              child: size == ZetaWidgetSize.small ? null : _buildContent(foregroundColor, context),
-            ),
+        width: width,
+        height: height,
+        decoration: BoxDecoration(
+          color: backgroundColor,
+          borderRadius: BorderRadius.all(isPill ? Zeta.of(context).radius.minimal : Zeta.of(context).radius.full),
+          border: Border.all(
+            width: borderWidth,
+            color: borderColor,
           ),
         ),
+        child: effectiveSize == ZetaWidgetSize.small ? null : _buildContent(foregroundColor, context, isPill),
       ),
     );
   }
 
-  Widget _buildContent(Color foregroundColor, BuildContext context) {
+  Widget _buildContent(Color foregroundColor, BuildContext context, bool isPill) {
     switch (type) {
       case ZetaIndicatorType.icon:
         final iconSize = _getIconSize(size, context);
@@ -163,11 +167,10 @@ class ZetaIndicator extends ZetaStatelessWidget {
           child: ExcludeSemantics(
             excluding: semanticLabel != null,
             child: Text(
-              value.formatMaxChars(),
+              value.formatMaxChars(2),
               style: Zeta.of(context).textStyles.labelIndicator.copyWith(
                     color: foregroundColor,
-                    fontSize: size == ZetaWidgetSize.large ? 12 : 11,
-                    height: size == ZetaWidgetSize.large ? 1 : (0.5 / 16),
+                    height: isPill ? null : 0.5,
                   ),
             ),
           ),
@@ -176,14 +179,18 @@ class ZetaIndicator extends ZetaStatelessWidget {
   }
 
   /// Returns the size of [ZetaWidgetSize] in pixels.
-  double _getSizePixels(ZetaWidgetSize size, ZetaIndicatorType type, BuildContext context) {
+  Size _getSizePixels(ZetaWidgetSize size, ZetaIndicatorType type, BuildContext context) {
+    final spacing = Zeta.of(context).spacing;
+    if (type == ZetaIndicatorType.notification && size == ZetaWidgetSize.large) {
+      return Size(spacing.xl_3 - (2 * ZetaBorders.small), spacing.large - (2 * ZetaBorders.small));
+    }
     switch (size) {
       case ZetaWidgetSize.large:
-        return Zeta.of(context).spacing.xl;
+        return Size.square(spacing.xl);
       case ZetaWidgetSize.medium:
-        return Zeta.of(context).spacing.medium;
+        return Size.square(spacing.medium);
       case ZetaWidgetSize.small:
-        return Zeta.of(context).spacing.small;
+        return Size.square(spacing.small);
     }
   }
 
@@ -200,7 +207,6 @@ class ZetaIndicator extends ZetaStatelessWidget {
       ..add(DiagnosticsProperty<ZetaWidgetSize>('size', size))
       ..add(DiagnosticsProperty<int?>('value', value))
       ..add(DiagnosticsProperty<IconData?>('icon', icon))
-      ..add(DiagnosticsProperty<bool>('inverse', inverse))
       ..add(ColorProperty('color', color))
       ..add(StringProperty('semanticLabel', semanticLabel));
   }

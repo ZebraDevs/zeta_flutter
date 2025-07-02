@@ -32,16 +32,16 @@ class ZetaTag extends ZetaStatelessWidget {
   const ZetaTag.left({super.key, super.rounded, required this.label, this.semanticLabel})
       : direction = ZetaTagDirection.left;
 
-  ///Constructs right facing [ZetaTag].
+  /// Constructs right facing [ZetaTag].
   const ZetaTag.right({super.key, super.rounded, required this.label, this.semanticLabel})
       : direction = ZetaTagDirection.right;
 
-  ///Determines the direction of the tag
+  /// Determines the direction of the tag
   ///
   /// Defaults to left
   final ZetaTagDirection direction;
 
-  ///tag label
+  /// Tag label
   final String label;
 
   /// The value passed into wrapping [Semantics] widget.
@@ -54,7 +54,7 @@ class ZetaTag extends ZetaStatelessWidget {
   @override
   Widget build(BuildContext context) {
     /// Fixed container size
-    final Size containerSize = Size(Zeta.of(context).spacing.xl_5, Zeta.of(context).spacing.xl_3);
+    final Size containerSize = Size(Zeta.of(context).spacing.xl_5, Zeta.of(context).spacing.xl_4);
     return Semantics(
       value: semanticLabel ?? label,
       child: Row(
@@ -99,7 +99,7 @@ class ZetaTag extends ZetaStatelessWidget {
 
   Widget _buildCustomPaint(BuildContext context) {
     return CustomPaint(
-      size: Size(Zeta.of(context).spacing.medium, Zeta.of(context).spacing.xl_3),
+      size: Size(Zeta.of(context).spacing.medium, Zeta.of(context).spacing.xl_4),
       painter: _TagPainter(
         color: Zeta.of(context).colors.mainLight,
         direction: direction,

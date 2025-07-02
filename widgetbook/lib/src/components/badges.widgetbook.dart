@@ -17,7 +17,6 @@ const badgesPath = '$componentsPath/Badges';
 Widget iconIndicator(BuildContext context) {
   return ZetaIndicator.icon(
     icon: iconKnob(context),
-    inverse: context.knobs.boolean(label: 'Inverse Border'),
     size: context.knobs.list(label: 'Size', labelBuilder: enumLabelBuilder, options: ZetaWidgetSize.values),
     color: context.knobs.colorOrNull(label: 'Custom color'),
   );
@@ -32,7 +31,6 @@ Widget iconIndicator(BuildContext context) {
 )
 Widget notificationIndicator(BuildContext context) {
   return ZetaIndicator.notification(
-    inverse: context.knobs.boolean(label: 'Inverse Border'),
     size: context.knobs.list(label: 'Size', labelBuilder: enumLabelBuilder, options: ZetaWidgetSize.values),
     value: context.knobs.int.slider(label: 'Value'),
     color: context.knobs.colorOrNull(label: 'Custom color'),
@@ -68,9 +66,9 @@ Widget priorityPill(BuildContext context) {
       options: ZetaPriorityPillSize.values,
       labelBuilder: (value) => value.name.capitalize,
     ),
-    type: context.knobs.list<ZetaPriorityPillType>(
+    status: context.knobs.list<ZetaPriorityPillStatus>(
       label: 'Priority',
-      options: ZetaPriorityPillType.values,
+      options: ZetaPriorityPillStatus.values,
       labelBuilder: (value) => value.name.capitalize,
     ),
     isBadge: context.knobs.boolean(label: 'Badge'),
@@ -92,7 +90,7 @@ Widget priorityPill(BuildContext context) {
 Widget statusLabel(BuildContext context) => ZetaStatusLabel(
       label: context.knobs.string(label: 'Label', initialValue: 'Label'),
       status: context.knobs.list(label: 'Status', labelBuilder: enumLabelBuilder, options: ZetaWidgetStatus.values),
-      customIcon: iconKnob(context),
+      icon: iconKnob(context),
     );
 
 typedef Tag = ZetaTag;

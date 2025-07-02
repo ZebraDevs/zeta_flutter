@@ -12,7 +12,13 @@ void main() {
     goldenFileComparator = TolerantComparator(goldenFile.uri);
   });
 
-  group('Accessibility Tests', () {});
+  group('Accessibility Tests', () {
+    for (final status in ZetaWidgetStatus.values) {
+      meetsAccessibilityGuidelinesTest(
+        ZetaLabel(label: 'Label', status: status),
+      );
+    }
+  });
   group('Content Tests', () {
     final debugFillProperties = {
       'label': '"Test label"',
@@ -98,7 +104,34 @@ void main() {
       expect(label.rounded, false);
     });
   });
-  group('Dimensions Tests', () {});
+  group('Dimensions Tests', () {
+    testWidgets('Label has expected width and height', (WidgetTester tester) async {
+      await loadFonts();
+
+      await tester.pumpWidget(
+        const TestApp(
+          home: Center(
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                ZetaLabel(
+                  label: 'Label',
+                  status: ZetaWidgetStatus.negative,
+                ),
+              ],
+            ),
+          ),
+        ),
+      );
+
+      final zetaLabelFinder = find.byType(ZetaLabel);
+
+      final RenderBox box = tester.renderObject(zetaLabelFinder);
+
+      expect(box.size.width.round(), inInclusiveRange(37, 39)); // Width may vary slightly based on font rendering
+      expect(box.size.height, 16);
+    });
+  });
   group('Styling Tests', () {});
   group('Interaction Tests', () {});
   group('Golden Tests', () {

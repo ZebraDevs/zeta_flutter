@@ -1,3 +1,6 @@
+// Ignored to test all values methodically
+// ignore_for_file: avoid_redundant_argument_values
+
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
@@ -13,50 +16,32 @@ void main() {
   });
 
   group('Accessibility Tests', () {
-    for (int i = 0; i < 10; i++) {
-      testWidgets('medium notification value $i meets accessibility standards', (tester) async {
-        final SemanticsHandle handle = tester.ensureSemantics();
-        await tester.pumpWidget(
-          TestApp(
-            home: ZetaIndicator(
-              size: ZetaWidgetSize.medium,
-              value: i,
+    for (final type in ZetaIndicatorType.values) {
+      for (final size in ZetaWidgetSize.values) {
+        for (final value in [1, 10, 100]) {
+          if (value != 1 && type == ZetaIndicatorType.icon) {
+            continue; // Skip icon type for values other than 1
+          }
+          meetsAccessibilityGuidelinesTest(
+            ZetaIndicator(
+              type: type,
+              size: size,
+              icon: type == ZetaIndicatorType.icon ? ZetaIcons.star : null,
+              value: type == ZetaIndicatorType.notification ? 1 : null,
             ),
-          ),
-        );
-
-        await expectLater(tester, meetsGuideline(androidTapTargetGuideline));
-        await expectLater(tester, meetsGuideline(iOSTapTargetGuideline));
-        await expectLater(tester, meetsGuideline(labeledTapTargetGuideline));
-        await expectLater(tester, meetsGuideline(textContrastGuideline));
-
-        handle.dispose();
-      });
-
-      testWidgets('default notification value $i meets accessibility standards', (tester) async {
-        final SemanticsHandle handle = tester.ensureSemantics();
-        await tester.pumpWidget(
-          TestApp(
-            home: ZetaIndicator(
-              value: i,
-            ),
-          ),
-        );
-
-        await expectLater(tester, meetsGuideline(androidTapTargetGuideline));
-        await expectLater(tester, meetsGuideline(iOSTapTargetGuideline));
-        await expectLater(tester, meetsGuideline(labeledTapTargetGuideline));
-        await expectLater(tester, meetsGuideline(textContrastGuideline));
-
-        handle.dispose();
-      });
+            testName: '${type.name}-${size.name}-$value',
+            beforeTest: (p0) async {
+              await loadFonts();
+            },
+          );
+        }
+      }
     }
   });
   group('Content Tests', () {
     final debugFillProperties = {
       'color': Colors.orange.toString(),
       'icon': 'IconData(U+F04B6)',
-      'inverse': 'true',
       'rounded': 'false',
       'size': 'ZetaWidgetSize.small',
       'type': 'ZetaIndicatorType.icon',
@@ -66,7 +51,6 @@ void main() {
       const ZetaIndicator(
         color: Colors.orange,
         icon: Icons.abc,
-        inverse: true,
         rounded: false,
         size: ZetaWidgetSize.small,
         type: ZetaIndicatorType.icon,
@@ -86,7 +70,6 @@ void main() {
       expect(indicator.size, ZetaWidgetSize.large);
       expect(indicator.icon, null);
       expect(indicator.value, null);
-      expect(indicator.inverse, false);
       expect(indicator.color, null);
     });
 
@@ -110,7 +93,6 @@ void main() {
       expect(indicator1.size, ZetaWidgetSize.large);
       expect(indicator1.icon, null);
       expect(indicator1.value, null);
-      expect(indicator1.inverse, false);
       expect(indicator1.color, null);
 
       expect(indicator2.rounded, null);
@@ -126,7 +108,6 @@ void main() {
       expect(indicator.size, ZetaWidgetSize.large);
       expect(indicator.icon, null);
       expect(indicator.value, null);
-      expect(indicator.inverse, false);
       expect(indicator.color, null);
     });
     testWidgets('Icon constructor with values', (WidgetTester tester) async {
@@ -135,7 +116,6 @@ void main() {
           home: ZetaIndicator.icon(
             color: Colors.purple,
             icon: Icons.abc,
-            inverse: true,
             size: ZetaWidgetSize.medium,
           ),
         ),
@@ -149,7 +129,6 @@ void main() {
       expect(indicator.size, ZetaWidgetSize.medium);
       expect(indicator.icon, Icons.abc);
       expect(indicator.value, null);
-      expect(indicator.inverse, true);
       expect(indicator.color, Colors.purple);
     });
     testWidgets('Notification constructor initializes with correct parameters', (WidgetTester tester) async {
@@ -163,7 +142,6 @@ void main() {
       expect(indicator.size, ZetaWidgetSize.large);
       expect(indicator.icon, null);
       expect(indicator.value, null);
-      expect(indicator.inverse, false);
       expect(indicator.color, null);
     });
     testWidgets('Notification constructor with values', (WidgetTester tester) async {
@@ -172,7 +150,6 @@ void main() {
           home: ZetaIndicator.notification(
             rounded: false,
             color: Colors.green,
-            inverse: true,
             size: ZetaWidgetSize.small,
             value: 1,
           ),
@@ -187,12 +164,171 @@ void main() {
       expect(indicator.size, ZetaWidgetSize.small);
       expect(indicator.icon, null);
       expect(indicator.value, 1);
-      expect(indicator.inverse, true);
       expect(indicator.color, Colors.green);
     });
   });
-  group('Dimensions Tests', () {});
-  group('Styling Tests', () {});
+  group('Dimensions Tests', () {
+    testWidgets('icon, sets the small dimensions correctly', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        const TestApp(
+          home: ZetaIndicator.icon(
+            size: ZetaWidgetSize.small,
+            icon: ZetaIcons.star,
+          ),
+        ),
+      );
+
+      final finder = find.byType(ZetaIndicator);
+      final size = tester.getSize(finder);
+
+      expect(size.width, 12);
+      expect(size.height, 12);
+    });
+
+    testWidgets('icon, sets the medium dimensions correctly', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        const TestApp(
+          home: ZetaIndicator.icon(
+            size: ZetaWidgetSize.medium,
+            icon: ZetaIcons.star,
+          ),
+        ),
+      );
+
+      final finder = find.byType(ZetaIndicator);
+      final size = tester.getSize(finder);
+
+      expect(size.width, 16);
+      expect(size.height, 16);
+    });
+
+    testWidgets('icon, sets the large dimensions correctly', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        const TestApp(
+          home: ZetaIndicator.icon(
+            size: ZetaWidgetSize.large,
+            icon: ZetaIcons.star,
+          ),
+        ),
+      );
+
+      final finder = find.byType(ZetaIndicator);
+      final size = tester.getSize(finder);
+
+      expect(size.width, 24);
+      expect(size.height, 24);
+    });
+
+    testWidgets('notification, sets the small dimensions correctly', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        const TestApp(
+          home: ZetaIndicator.notification(
+            size: ZetaWidgetSize.small,
+          ),
+        ),
+      );
+
+      final finder = find.byType(ZetaIndicator);
+      final size = tester.getSize(finder);
+
+      expect(size.width, 12);
+      expect(size.height, 12);
+    });
+
+    testWidgets('notification, sets the medium dimensions correctly', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        const TestApp(
+          home: ZetaIndicator.notification(
+            size: ZetaWidgetSize.medium,
+            value: 1,
+          ),
+        ),
+      );
+
+      final finder = find.byType(ZetaIndicator);
+      final size = tester.getSize(finder);
+
+      expect(size.width, 16);
+      expect(size.height, 16);
+    });
+
+    testWidgets('notification, sets the large dimensions correctly', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        const TestApp(
+          home: ZetaIndicator.notification(
+            size: ZetaWidgetSize.large,
+          ),
+        ),
+      );
+
+      final finder = find.byType(ZetaIndicator);
+      final size = tester.getSize(finder);
+
+      expect(size.width, 28);
+      expect(size.height, 16);
+    });
+  });
+  group('Styling Tests', () {
+    testWidgets('notification, applies the correct style based on 1 digit', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        const TestApp(
+          home: ZetaIndicator.notification(
+            size: ZetaWidgetSize.medium,
+            value: 5,
+          ),
+        ),
+      );
+
+      final finder = find.byType(ZetaIndicator);
+      final size = tester.getSize(finder);
+
+      expect(size.width, 16);
+      expect(size.height, 16);
+    });
+
+    testWidgets('notification, applies the correct style based on 2 digits', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        const TestApp(
+          home: ZetaIndicator.notification(
+            size: ZetaWidgetSize.medium,
+            value: 55,
+          ),
+        ),
+      );
+
+      final finder = find.byType(ZetaIndicator);
+      final size = tester.getSize(finder);
+
+      expect(size.width, 28);
+      expect(size.height, 16);
+    });
+
+    testWidgets('notification, applies the correct style based on 3 digits and caps at 99+',
+        (WidgetTester tester) async {
+      await tester.pumpWidget(
+        const TestApp(
+          home: ZetaIndicator.notification(
+            size: ZetaWidgetSize.medium,
+            value: 555,
+          ),
+        ),
+      );
+
+      final finder = find.byType(ZetaIndicator);
+      final size = tester.getSize(finder);
+
+      expect(size.width, 28);
+      expect(size.height, 16);
+
+      // Check that the displayed text is '99+'
+      final textFinder = find.descendant(
+        of: finder,
+        matching: find.byType(Text),
+      );
+      final Text textWidget = tester.widget(textFinder);
+      expect(textWidget.data, equals('99+'));
+    });
+  });
   group('Interaction Tests', () {});
   group('Golden Tests', () {
     goldenTest(goldenFile, const ZetaIndicator(), 'indicator_default');
@@ -202,7 +338,6 @@ void main() {
       const ZetaIndicator.icon(
         color: Colors.purple,
         icon: Icons.abc,
-        inverse: true,
         size: ZetaWidgetSize.medium,
       ),
       'indicator_icon_values',
@@ -218,7 +353,6 @@ void main() {
       const ZetaIndicator.notification(
         rounded: false,
         color: Colors.green,
-        inverse: true,
         size: ZetaWidgetSize.small,
         value: 1,
       ),

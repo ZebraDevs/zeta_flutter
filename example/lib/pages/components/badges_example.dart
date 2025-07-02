@@ -14,7 +14,7 @@ class StatusLabel extends StatelessWidget {
       spacing: 16,
       children: [
         ZetaStatusLabel(label: 'Label', status: type),
-        ZetaStatusLabel(label: 'Label', status: type, customIcon: ZetaIcons.star),
+        ZetaStatusLabel(label: 'Label', status: type, icon: ZetaIcons.star),
       ],
     );
   }
@@ -45,15 +45,78 @@ class PriorityPill extends StatelessWidget {
     return ExampleScaffold(
       name: name,
       children: [
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.start,
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            ZetaPriorityPill(size: ZetaPriorityPillSize.large),
-            ZetaPriorityPill(size: ZetaPriorityPillSize.large, type: ZetaPriorityPillType.high),
-            ZetaPriorityPill(size: ZetaPriorityPillSize.large, type: ZetaPriorityPillType.medium),
-            ZetaPriorityPill(size: ZetaPriorityPillSize.large, type: ZetaPriorityPillType.low),
-          ].divide(SizedBox.square(dimension: Zeta.of(context).spacing.xl_2)).toList(),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Row(
+                  spacing: 16,
+                  children: [
+                    ZetaPriorityPill(
+                        size: ZetaPriorityPillSize.large, isBadge: true, status: ZetaPriorityPillStatus.urgent),
+                    SizedBox(
+                        width: 100,
+                        child: ZetaPriorityPill(
+                          size: ZetaPriorityPillSize.large,
+                          status: ZetaPriorityPillStatus.urgent,
+                          label: 'Label',
+                        )),
+                    SizedBox(
+                        width: 100,
+                        child: ZetaPriorityPill(
+                          size: ZetaPriorityPillSize.small,
+                          status: ZetaPriorityPillStatus.urgent,
+                          label: 'Label',
+                        )),
+                  ],
+                ),
+                Row(
+                  spacing: 16,
+                  children: [
+                    ZetaPriorityPill(
+                        size: ZetaPriorityPillSize.large, isBadge: true, status: ZetaPriorityPillStatus.high),
+                    SizedBox(
+                        width: 100,
+                        child: ZetaPriorityPill(size: ZetaPriorityPillSize.large, status: ZetaPriorityPillStatus.high)),
+                    SizedBox(
+                        width: 100,
+                        child: ZetaPriorityPill(size: ZetaPriorityPillSize.small, status: ZetaPriorityPillStatus.high)),
+                  ],
+                ),
+                Row(
+                  spacing: 16,
+                  children: [
+                    ZetaPriorityPill(
+                        size: ZetaPriorityPillSize.large, isBadge: true, status: ZetaPriorityPillStatus.medium),
+                    SizedBox(
+                        width: 100,
+                        child:
+                            ZetaPriorityPill(size: ZetaPriorityPillSize.large, status: ZetaPriorityPillStatus.medium)),
+                    SizedBox(
+                        width: 100,
+                        child:
+                            ZetaPriorityPill(size: ZetaPriorityPillSize.small, status: ZetaPriorityPillStatus.medium)),
+                  ],
+                ),
+                Row(
+                  spacing: 16,
+                  children: [
+                    ZetaPriorityPill(
+                        size: ZetaPriorityPillSize.large, isBadge: true, status: ZetaPriorityPillStatus.low),
+                    SizedBox(
+                        width: 100,
+                        child: ZetaPriorityPill(size: ZetaPriorityPillSize.large, status: ZetaPriorityPillStatus.low)),
+                    SizedBox(
+                        width: 100,
+                        child: ZetaPriorityPill(size: ZetaPriorityPillSize.small, status: ZetaPriorityPillStatus.low)),
+                  ],
+                ),
+              ].divide(SizedBox.square(dimension: Zeta.of(context).spacing.xl_2)).toList(),
+            ),
+          ],
         )
       ],
     );
@@ -104,68 +167,56 @@ class Indicators extends StatelessWidget {
     return ExampleScaffold(
       name: name,
       children: [
-        Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Column(
-              children: [
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          children: [
-                            ZetaIndicator.icon(),
-                            ZetaIndicator.icon(size: ZetaWidgetSize.medium),
-                            ZetaIndicator.icon(size: ZetaWidgetSize.small),
-                          ].divide(SizedBox.square(dimension: Zeta.of(context).spacing.xl_2)).toList(),
-                        ),
-                        Row(
-                          children: [
-                            ZetaIndicator.icon(inverse: true),
-                            ZetaIndicator.icon(size: ZetaWidgetSize.medium, inverse: true),
-                            ZetaIndicator.icon(size: ZetaWidgetSize.small, inverse: true),
-                          ].divide(SizedBox.square(dimension: Zeta.of(context).spacing.xl_2)).toList(),
-                        ),
-                      ].divide(SizedBox.square(dimension: Zeta.of(context).spacing.small)).toList(),
-                    ),
-                    const SizedBox(width: 50),
-                  ],
-                ),
-              ],
-            ),
-            SizedBox.square(dimension: Zeta.of(context).spacing.xl_9),
-            Column(
-              children: [
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          children: [
-                            ZetaIndicator.notification(value: 3),
-                            ZetaIndicator.notification(size: ZetaWidgetSize.medium, value: 3),
-                            ZetaIndicator.notification(size: ZetaWidgetSize.small),
-                          ].divide(SizedBox.square(dimension: Zeta.of(context).spacing.xl_2)).toList(),
-                        ),
-                        Row(
-                          children: [
-                            ZetaIndicator.notification(value: 3, inverse: true),
-                            ZetaIndicator.notification(size: ZetaWidgetSize.medium, value: 3, inverse: true),
-                            ZetaIndicator.notification(size: ZetaWidgetSize.small, inverse: true),
-                          ].divide(SizedBox.square(dimension: Zeta.of(context).spacing.xl_2)).toList(),
-                        ),
-                      ].divide(SizedBox.square(dimension: Zeta.of(context).spacing.medium)).toList(),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ],
+        Container(
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Column(
+                children: [
+                  Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            children: [
+                              ZetaIndicator.icon(),
+                              ZetaIndicator.icon(size: ZetaWidgetSize.medium),
+                              ZetaIndicator.icon(size: ZetaWidgetSize.small),
+                            ].divide(SizedBox.square(dimension: Zeta.of(context).spacing.xl_2)).toList(),
+                          ),
+                        ].divide(SizedBox.square(dimension: Zeta.of(context).spacing.small)).toList(),
+                      ),
+                      const SizedBox(width: 50),
+                    ],
+                  ),
+                ],
+              ),
+              SizedBox.square(dimension: Zeta.of(context).spacing.xl_9),
+              Column(
+                children: [
+                  Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            children: [
+                              ZetaIndicator.notification(value: 300),
+                              ZetaIndicator.notification(size: ZetaWidgetSize.medium, value: 2),
+                              ZetaIndicator.notification(size: ZetaWidgetSize.small),
+                            ].divide(SizedBox.square(dimension: Zeta.of(context).spacing.xl_2)).toList(),
+                          ),
+                        ].divide(SizedBox.square(dimension: Zeta.of(context).spacing.medium)).toList(),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ],
+          ),
         )
       ],
     );
@@ -183,7 +234,7 @@ class Tags extends StatelessWidget {
       name: name,
       children: [
         Row(
-          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ZetaTag.left(label: 'Left'),
             ZetaTag.right(label: 'Right'),
