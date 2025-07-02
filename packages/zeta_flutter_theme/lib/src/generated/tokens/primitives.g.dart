@@ -10,8 +10,11 @@ import 'package:zeta_flutter_theme/zeta_flutter_theme.dart';
 
 /// Interface used for zeta color primitives
 abstract interface class ZetaPrimitives {
-  const ZetaPrimitives({ZetaColorSwatch? primary, ZetaColorSwatch? secondary, required this.brightness})
-      : _primary = primary,
+  const ZetaPrimitives({
+    ZetaColorSwatch? primary,
+    ZetaColorSwatch? secondary,
+    required this.brightness,
+  })  : _primary = primary,
         _secondary = secondary;
 
   final ZetaColorSwatch? _primary;
@@ -241,7 +244,11 @@ final class ZetaPrimitivesDark extends ZetaPrimitives {
       );
   @override
   ZetaPureColorSwatch get pure => const ZetaPureColorSwatch(
-        swatch: {0: Color(0xFF151519), 500: Color(0xFF1d1e23), 1000: Color(0xFFffffff)},
+        swatch: {
+          0: Color(0xFF151519),
+          500: Color(0xFF1d1e23),
+          1000: Color(0xFFffffff),
+        },
         primary: 0xFF1d1e23,
       );
   @override
@@ -433,7 +440,7 @@ final class ZetaPrimitivesLight extends ZetaPrimitives {
           20: Color(0xFFffe7c6),
           30: Color(0xFFffd292),
           40: Color(0xFFffb348),
-          50: Color(0xFFf5a230),
+          50: Color(0xFFd78d26),
           60: Color(0xFFae6500),
           70: Color(0xFF965802),
           80: Color(0xFF764502),
@@ -460,7 +467,11 @@ final class ZetaPrimitivesLight extends ZetaPrimitives {
       );
   @override
   ZetaPureColorSwatch get pure => const ZetaPureColorSwatch(
-        swatch: {0: Color(0xFFffffff), 500: Color(0xFF151519), 1000: Color(0xFF151519)},
+        swatch: {
+          0: Color(0xFFffffff),
+          500: Color(0xFF151519),
+          1000: Color(0xFF151519),
+        },
         primary: 0xFF151519,
       );
   @override
@@ -594,4 +605,7 @@ final class ZetaPrimitivesLight extends ZetaPrimitives {
 }
 
 /// All primitives
-Map<String, Type> allPrimitives = {'dark': ZetaPrimitivesDark, 'light': ZetaPrimitivesLight};
+Map<String, Type> allPrimitives = {
+  'dark': ZetaPrimitivesDark,
+  'light': ZetaPrimitivesLight,
+};
