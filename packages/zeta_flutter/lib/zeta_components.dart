@@ -27,6 +27,7 @@ export 'src/components/date_input/date_input.dart';
 export 'src/components/dial_pad/dial_pad.dart';
 export 'src/components/dialog/dialog.dart';
 export 'src/components/dropdown/dropdown.dart';
+export 'src/components/empty_state/empty_state.dart';
 export 'src/components/fabs/fab.dart';
 export 'src/components/filter_selection/filter_selection.dart';
 export 'src/components/global_header/global_header.dart';
