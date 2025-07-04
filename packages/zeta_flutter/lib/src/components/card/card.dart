@@ -13,6 +13,9 @@ abstract class _CardHeaderInterface {
 
   /// Whether the card is required, indicated by a red asterisk (*) in the header.
   bool get isRequired;
+
+  /// Maximum number of lines for the header text.
+  int get headerMaxLines;
 }
 
 abstract class _CardInterface {
@@ -69,42 +72,35 @@ class ZetaBaseCard extends ZetaStatelessWidget implements _CardInterface, _Colla
     const borderRadius = BorderRadius.all(Radius.circular(12)); // TODO: not a token
     const borderWidth = 2.0;
 
-    if (isAi) {
-      return DecoratedBox(
-        decoration: const BoxDecoration(
-          borderRadius: borderRadius,
-          gradient: LinearGradient(
-            colors: [Color(0xFFFF40FC), Color(0xFF1F6AFF)],
-            begin: Alignment.bottomRight,
-            end: Alignment.topLeft,
-            stops: [0.23, 1.0],
-          ),
-        ),
-        child: Container(
-          margin: const EdgeInsets.all(borderWidth),
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        DecoratedBox(
           decoration: BoxDecoration(
-            color: Zeta.of(context).colors.surfaceDefault,
-            borderRadius: const BorderRadius.all(Radius.circular(12 - borderWidth)),
+            borderRadius: borderRadius,
+            gradient: isAi
+                ? const LinearGradient(
+                    colors: [Color(0xFFFF40FC), Color(0xFF1F6AFF)],
+                    begin: Alignment.bottomRight,
+                    end: Alignment.topLeft,
+                    stops: [0.23, 1.0],
+                  )
+                : null,
           ),
-          child: Material(
-            color: Colors.transparent,
-            borderRadius: const BorderRadius.all(Radius.circular(12 - borderWidth)),
-            child: _buildCardContent(context),
+          child: Container(
+            margin: const EdgeInsets.all(borderWidth),
+            decoration: BoxDecoration(
+              color: Zeta.of(context).colors.surfaceDefault,
+              borderRadius: const BorderRadius.all(Radius.circular(12 - borderWidth)),
+            ),
+            child: Material(
+              color: Colors.transparent,
+              borderRadius: const BorderRadius.all(Radius.circular(12 - borderWidth)),
+              child: _buildCardContent(context),
+            ),
           ),
         ),
-      );
-    }
-
-    return DecoratedBox(
-      decoration: BoxDecoration(
-        color: Zeta.of(context).colors.surfaceDefault,
-        borderRadius: borderRadius,
-      ),
-      child: Material(
-        color: Colors.transparent,
-        borderRadius: borderRadius,
-        child: _buildCardContent(context),
-      ),
+      ],
     );
   }
 
@@ -116,9 +112,10 @@ class ZetaBaseCard extends ZetaStatelessWidget implements _CardInterface, _Colla
             isExpanded: isExpanded,
           )
         : Padding(
-            padding: EdgeInsets.all(Zeta.of(context).spacing.xl_2),
+            padding: EdgeInsets.all(Zeta.of(context).spacing.xl_2 - ZetaBorders.medium),
             child: Column(
               spacing: Zeta.of(context).spacing.large,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 header,
                 if (content != null) content!,
@@ -142,7 +139,7 @@ class ZetaBaseCard extends ZetaStatelessWidget implements _CardInterface, _Colla
 /// Header for the [ZetaCard] and [ZetaCollapsibleCard].
 class ZetaCardHeader extends ZetaStatelessWidget implements _CardHeaderInterface {
   /// Constructs a [ZetaCardHeader].
-  const ZetaCardHeader({super.key, this.title, this.description, required this.isRequired});
+  const ZetaCardHeader({super.key, this.title, this.description, required this.isRequired, this.headerMaxLines = 2});
 
   @override
   final String? title;
@@ -150,29 +147,47 @@ class ZetaCardHeader extends ZetaStatelessWidget implements _CardHeaderInterface
   final String? description;
   @override
   final bool isRequired;
+  @override
+  final int headerMaxLines;
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      spacing: 1, // TODO(tokens): not a token
+    return Row(
       children: [
-        if (title != null)
-          Row(
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            spacing: ZetaBorders.small,
             children: [
-              Text(
-                title!,
-                style: Zeta.of(context).textStyles.h4,
-              ),
-              if (isRequired)
-                Text(' *', style: Zeta.of(context).textStyles.h4.apply(color: Zeta.of(context).colors.mainNegative)),
+              if (title != null)
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Flexible(
+                      child: Text(
+                        title!,
+                        style: Zeta.of(context).textStyles.h4.apply(color: Zeta.of(context).colors.mainDefault),
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: headerMaxLines,
+                        softWrap: true,
+                      ),
+                    ),
+                    if (isRequired)
+                      Text(
+                        ' *',
+                        style: Zeta.of(context).textStyles.h4.apply(color: Zeta.of(context).colors.mainNegative),
+                      ),
+                  ],
+                ),
+              if (description != null)
+                Text(
+                  description!,
+                  style: Zeta.of(context).textStyles.h5.apply(color: Zeta.of(context).colors.mainSubtle),
+                ),
             ],
           ),
-        if (description != null)
-          Text(
-            description!,
-            style: Zeta.of(context).textStyles.h5.apply(color: Zeta.of(context).colors.mainSubtle),
-          ),
+        ),
       ],
     );
   }
@@ -188,10 +203,18 @@ class ZetaCardHeader extends ZetaStatelessWidget implements _CardHeaderInterface
 }
 
 /// A card component with a header and optional content.
-/// TODO(design): Better description of the component and its usage.
+// TODO(design): Better description of the component and its usage.
 class ZetaCard extends ZetaStatelessWidget implements _CardHeaderInterface, _CardInterface {
   /// Constructs a [ZetaCard].
-  const ZetaCard({this.content, this.isAi = false, this.title, this.description, this.isRequired = false, super.key});
+  const ZetaCard({
+    this.content,
+    this.isAi = false,
+    this.title,
+    this.description,
+    this.isRequired = false,
+    this.headerMaxLines = 2,
+    super.key,
+  });
 
   @override
   final String? title;
@@ -209,9 +232,17 @@ class ZetaCard extends ZetaStatelessWidget implements _CardHeaderInterface, _Car
   final bool isAi;
 
   @override
+  final int headerMaxLines;
+
+  @override
   Widget build(BuildContext context) {
     return ZetaBaseCard(
-      header: ZetaCardHeader(isRequired: isRequired, title: title, description: description),
+      header: ZetaCardHeader(
+        isRequired: isRequired,
+        title: title,
+        description: description,
+        headerMaxLines: headerMaxLines,
+      ),
       content: content,
       isAi: isAi,
       isCollapsible: false,
@@ -242,6 +273,7 @@ class ZetaCollapsibleCard extends ZetaStatelessWidget
     this.title,
     this.description,
     this.isRequired = false,
+    this.headerMaxLines = 2,
     super.key,
   });
 
@@ -259,11 +291,18 @@ class ZetaCollapsibleCard extends ZetaStatelessWidget
   final bool isExpanded;
   @override
   final VoidCallback? onToggle;
+  @override
+  final int headerMaxLines;
 
   @override
   Widget build(BuildContext context) {
     return ZetaBaseCard(
-      header: ZetaCardHeader(isRequired: isRequired, title: title, description: description),
+      header: ZetaCardHeader(
+        isRequired: isRequired,
+        title: title,
+        description: description,
+        headerMaxLines: headerMaxLines,
+      ),
       content: content,
       isAi: isAi,
       isCollapsible: true,
@@ -300,10 +339,10 @@ class __ZetaCollapsibleCardStatefulState extends State<_ZetaCollapsibleCardState
           onTap: () => setState(() => _isExpanded = !_isExpanded),
           child: Padding(
             padding: EdgeInsets.fromLTRB(
-              Zeta.of(context).spacing.xl_2,
-              Zeta.of(context).spacing.xl_2,
-              Zeta.of(context).spacing.xl_2,
-              _isExpanded ? Zeta.of(context).spacing.large : Zeta.of(context).spacing.xl_2,
+              Zeta.of(context).spacing.xl_2 - ZetaBorders.medium,
+              Zeta.of(context).spacing.xl_2 - ZetaBorders.medium,
+              Zeta.of(context).spacing.xl_2 - ZetaBorders.medium,
+              _isExpanded ? Zeta.of(context).spacing.large : Zeta.of(context).spacing.xl_2 - ZetaBorders.medium,
             ),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -313,7 +352,7 @@ class __ZetaCollapsibleCardStatefulState extends State<_ZetaCollapsibleCardState
                   duration: ZetaAnimationLength.fast,
                   child: Icon(ZetaIcons.expand_more, color: Zeta.of(context).colors.mainDefault),
                 ),
-                widget.header,
+                Expanded(child: widget.header),
               ],
             ),
           ),

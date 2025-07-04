@@ -9,14 +9,28 @@ class CardExample extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ExampleScaffold(name: name, children: [
-      ConstrainedBox(
-        constraints: const BoxConstraints(maxWidth: 400),
-        child: ZetaCard(
-          title: 'Title',
-          description: 'Description',
-          content: Placeholder(color: Zeta.of(context).colors.surfaceDisabled),
-          isRequired: true,
-        ),
+      Row(
+        mainAxisSize: MainAxisSize.min,
+        spacing: Zeta.of(context).spacing.xl,
+        children: [
+          Expanded(
+            child: ZetaCard(
+              title: 'Title Title Title Title Title Title Title Title Title Title Title',
+              description: 'Description',
+              isRequired: true,
+              isAi: true,
+            ),
+          ),
+          Expanded(
+            child: ZetaCard(
+              title: 'Title',
+              description: 'Description',
+              content: Placeholder(color: Zeta.of(context).colors.surfaceDisabled),
+              isAi: true,
+              isRequired: true,
+            ),
+          ),
+        ],
       )
     ]);
   }
