@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 
 import '../../../zeta_flutter.dart';
 
+const _kRadius = 12.0; // TODO: Not a token
+
 /// Interface for card header properties.
 abstract class _CardHeaderInterface {
   /// Title of the card, displayed in the header.
@@ -69,15 +71,12 @@ class ZetaBaseCard extends ZetaStatelessWidget implements _CardInterface, _Colla
 
   @override
   Widget build(BuildContext context) {
-    const borderRadius = BorderRadius.all(Radius.circular(12)); // TODO: not a token
-    const borderWidth = 2.0;
-
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
         DecoratedBox(
           decoration: BoxDecoration(
-            borderRadius: borderRadius,
+            borderRadius: BorderRadius.circular(_kRadius),
             gradient: isAi
                 ? const LinearGradient(
                     colors: [Color(0xFFFF40FC), Color(0xFF1F6AFF)],
@@ -88,14 +87,14 @@ class ZetaBaseCard extends ZetaStatelessWidget implements _CardInterface, _Colla
                 : null,
           ),
           child: Container(
-            margin: const EdgeInsets.all(borderWidth),
+            margin: EdgeInsets.all(ZetaBorders.medium),
             decoration: BoxDecoration(
               color: Zeta.of(context).colors.surfaceDefault,
-              borderRadius: const BorderRadius.all(Radius.circular(12 - borderWidth)),
+              borderRadius: BorderRadius.all(Radius.circular(_kRadius - ZetaBorders.medium)),
             ),
             child: Material(
               color: Colors.transparent,
-              borderRadius: const BorderRadius.all(Radius.circular(12 - borderWidth)),
+              borderRadius: BorderRadius.all(Radius.circular(_kRadius - ZetaBorders.medium)),
               child: _buildCardContent(context),
             ),
           ),
@@ -335,7 +334,7 @@ class __ZetaCollapsibleCardStatefulState extends State<_ZetaCollapsibleCardState
     return Column(
       children: [
         InkWell(
-          borderRadius: BorderRadius.circular(12), // TODO: not a token
+          borderRadius: BorderRadius.circular(_kRadius),
           onTap: () => setState(() => _isExpanded = !_isExpanded),
           child: Padding(
             padding: EdgeInsets.fromLTRB(
@@ -375,7 +374,7 @@ class __ZetaCollapsibleCardStatefulState extends State<_ZetaCollapsibleCardState
             ),
           ),
         ),
-        if (_isExpanded) SizedBox(height: Zeta.of(context).spacing.xl_2),
+        if (_isExpanded) SizedBox(height: Zeta.of(context).spacing.xl_2 - ZetaBorders.medium),
       ],
     );
   }

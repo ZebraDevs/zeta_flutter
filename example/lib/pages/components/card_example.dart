@@ -48,11 +48,15 @@ class CollapsibleCardExample extends StatelessWidget {
       children: [
         Center(
           child: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 400),
+            constraints: const BoxConstraints(maxWidth: 528),
             child: ZetaCollapsibleCard(
               title: 'Form Section Title',
               description: 'Description',
-              content: Placeholder(color: Zeta.of(context).colors.surfaceDisabled),
+              content: SizedBox(
+                width: 480,
+                height: 240,
+                child: Placeholder(),
+              ),
               isAi: true,
               isExpanded: false,
               isRequired: true,
