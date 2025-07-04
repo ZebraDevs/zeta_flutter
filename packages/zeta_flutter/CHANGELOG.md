@@ -1,5 +1,30 @@
 # Changelog
 
+## [1.2.0](https://github.com/ZebraDevs/zeta_flutter/compare/zeta_flutter-v1.1.3...zeta_flutter-v1.2.0) (2025-07-04)
+
+
+### ✨ New Features
+
+* **UX-1454:** Empty State Widget ([#361](https://github.com/ZebraDevs/zeta_flutter/issues/361)) ([b167ee6](https://github.com/ZebraDevs/zeta_flutter/commit/b167ee6f49106f75ddfb55facbc17ed752c0aa6f))
+
+
+### 🪲 Bug Fixes
+
+* Update text themes with line height 0 ([b167ee6](https://github.com/ZebraDevs/zeta_flutter/commit/b167ee6f49106f75ddfb55facbc17ed752c0aa6f))
+* **UX-1460:** Update badges to latest designs ([#355](https://github.com/ZebraDevs/zeta_flutter/issues/355)) ([c0c61fc](https://github.com/ZebraDevs/zeta_flutter/commit/c0c61fce2d10e1995eeffb9c713d2d6344176a91))
+
+
+### 🧪 Tests
+
+* Add more thorough accessibility and styling tests ([c0c61fc](https://github.com/ZebraDevs/zeta_flutter/commit/c0c61fce2d10e1995eeffb9c713d2d6344176a91))
+
+
+### 🧹 Miscellaneous Chores
+
+* ** zeta_flutter_theme:** release 1.2.0 ([#360](https://github.com/ZebraDevs/zeta_flutter/issues/360)) ([8cea819](https://github.com/ZebraDevs/zeta_flutter/commit/8cea8197390a03538b8e63fbec01e3381bc4e322))
+* ** zeta_flutter_utils:** release 1.1.2 ([#359](https://github.com/ZebraDevs/zeta_flutter/issues/359)) ([4cfd329](https://github.com/ZebraDevs/zeta_flutter/commit/4cfd3296bf802dce8d3949589fb005ed9bd83eb4))
+* ** zeta_icons:** release 1.1.3 ([#357](https://github.com/ZebraDevs/zeta_flutter/issues/357)) ([39aa872](https://github.com/ZebraDevs/zeta_flutter/commit/39aa87299e72925b67439784f0684f84ae28c4e7))
+
 ## [1.1.3](https://github.com/ZebraDevs/zeta_flutter/compare/zeta_flutter-v1.1.2...zeta_flutter-v1.1.3) (2025-06-19)
 
 
