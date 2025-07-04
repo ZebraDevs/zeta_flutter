@@ -260,7 +260,7 @@ class ZetaCard extends ZetaStatelessWidget implements _CardHeaderInterface, _Car
 }
 
 /// A collapsible card component with a header and optional content.
-/// TODO(design): Better description of the component and its usage.
+// TODO(design): Better description of the component and its usage.
 class ZetaCollapsibleCard extends ZetaStatelessWidget
     implements _CardHeaderInterface, _CardInterface, _CollapsibleCardInterface {
   /// Constructs a [ZetaCollapsibleCard].
