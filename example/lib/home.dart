@@ -9,6 +9,7 @@ import 'package:zeta_example/pages/components/banner_example.dart';
 import 'package:zeta_example/pages/components/bottom_sheet_example.dart';
 import 'package:zeta_example/pages/components/breadcrumb_example.dart';
 import 'package:zeta_example/pages/components/button_example.dart';
+import 'package:zeta_example/pages/components/card_example.dart';
 import 'package:zeta_example/pages/components/chat_item_example.dart';
 import 'package:zeta_example/pages/components/checkbox_example.dart';
 import 'package:zeta_example/pages/components/chip_example.dart';
@@ -72,8 +73,10 @@ final List<Component> components = [
   Component(BreadcrumbExample.name, (context) => const BreadcrumbExample()),
   Component(ButtonExample.name, (context) => const ButtonExample()),
   Component(ButtonGroupExample.name, (context) => const ButtonGroupExample()),
+  Component(CardExample.name, (context) => const CardExample()),
   Component(ChatItemExample.name, (context) => const ChatItemExample()),
   Component(CheckBoxExample.name, (context) => const CheckBoxExample()),
+  Component(CollapsibleCardExample.name, (context) => const CollapsibleCardExample()),
   Component(CommsButtonExample.name, (context) => const CommsButtonExample()),
   Component(ContactItemExample.name, (context) => const ContactItemExample()),
   Component(DateInputExample.name, (context) => const DateInputExample()),
