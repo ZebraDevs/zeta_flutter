@@ -15,22 +15,22 @@ void main() {
   group('Golden Tests', () {
     goldenTest(
       goldenFile,
-      const ZetaCollapsibleCard(title: 'Title', description: 'Description'),
+      const ZetaCollapsibleCardContainer(title: 'Title', description: 'Description'),
       'collapsible_card_closed',
     );
     goldenTest(
       goldenFile,
-      const ZetaCollapsibleCard(title: 'Title', description: 'Description', isRequired: true),
+      const ZetaCollapsibleCardContainer(title: 'Title', description: 'Description', isRequired: true),
       'collapsible_card_closed_required',
     );
     goldenTest(
       goldenFile,
-      const ZetaCollapsibleCard(title: 'Title', description: 'Description', isAi: true),
+      const ZetaCollapsibleCardContainer(title: 'Title', description: 'Description', isAi: true),
       'collapsible_card_closed_ai',
     );
     goldenTest(
       goldenFile,
-      const ZetaCollapsibleCard(
+      const ZetaCollapsibleCardContainer(
         title:
             'Title Title Title Title Title Title Title Title Title Title Title Title Title Title Title Title Title Title Title Title Title Title',
         description: 'Description',
@@ -41,7 +41,7 @@ void main() {
       goldenFile,
       ConstrainedBox(
         constraints: const BoxConstraints(maxWidth: 528),
-        child: const ZetaCollapsibleCard(
+        child: const ZetaCollapsibleCardContainer(
           title:
               'Title Title Title Title Title Title Title Title Title Title Title Title Title Title Title Title Title Title Title Title Title Title',
           description: 'Description',
@@ -49,23 +49,23 @@ void main() {
         ),
       ),
       'collapsible_card_long_title_1_line',
-      widgetType: ZetaCollapsibleCard,
+      widgetType: ZetaCollapsibleCardContainer,
     );
     goldenTest(
       goldenFile,
       ConstrainedBox(
         constraints: const BoxConstraints(maxWidth: 528),
-        child: const ZetaCollapsibleCard(
+        child: const ZetaCollapsibleCardContainer(
           title: 'Title',
           description: 'Description Description Description Description Description Description Description',
         ),
       ),
       'collapsible_card_long_description',
-      widgetType: ZetaCollapsibleCard,
+      widgetType: ZetaCollapsibleCardContainer,
     );
     goldenTest(
       goldenFile,
-      const ZetaCollapsibleCard(
+      const ZetaCollapsibleCardContainer(
         title: 'Title',
         description: 'Description',
         content: Placeholder(),
@@ -78,7 +78,7 @@ void main() {
   group('Accessibility Tests', () {
     for (final val in [true, false]) {
       meetsAccessibilityGuidelinesTest(
-        ZetaCollapsibleCard(
+        ZetaCollapsibleCardContainer(
           title: 'Title',
           description: 'Description',
           isRequired: true,
@@ -94,7 +94,7 @@ void main() {
     };
 
     debugFillPropertiesTest(
-      const ZetaCollapsibleCard(
+      const ZetaCollapsibleCardContainer(
         title: 'Title',
         description: 'Description',
       ),
@@ -105,7 +105,7 @@ void main() {
       await loadFonts();
       await tester.pumpWidget(
         const TestApp(
-          home: ZetaCollapsibleCard(
+          home: ZetaCollapsibleCardContainer(
             title: 'Title',
             description: 'Description',
           ),
@@ -119,7 +119,7 @@ void main() {
       await loadFonts();
       await tester.pumpWidget(
         const TestApp(
-          home: ZetaCollapsibleCard(
+          home: ZetaCollapsibleCardContainer(
             title: 'Title',
             description: 'Description',
             content: Placeholder(),
@@ -141,7 +141,7 @@ void main() {
       await loadFonts();
       await tester.pumpWidget(
         const TestApp(
-          home: ZetaCollapsibleCard(
+          home: ZetaCollapsibleCardContainer(
             title: 'Title',
             description: 'Description',
             content: Placeholder(),
@@ -167,7 +167,7 @@ void main() {
         TestApp(
           home: ConstrainedBox(
             constraints: const BoxConstraints(maxWidth: 528),
-            child: const ZetaCollapsibleCard(
+            child: const ZetaCollapsibleCardContainer(
               title: 'Title',
               description: 'Description',
               isAi: true,
@@ -181,7 +181,7 @@ void main() {
         ),
       );
 
-      final RenderBox renderBox = tester.renderObject(find.byType(ZetaCollapsibleCard));
+      final RenderBox renderBox = tester.renderObject(find.byType(ZetaCollapsibleCardContainer));
 
       expect(renderBox.size.width, equals(528));
       expect(renderBox.size.height, equals(93));
@@ -192,7 +192,7 @@ void main() {
         TestApp(
           home: ConstrainedBox(
             constraints: const BoxConstraints(maxWidth: 528),
-            child: const ZetaCollapsibleCard(
+            child: const ZetaCollapsibleCardContainer(
               title: 'Title',
               description: 'Description',
               isAi: true,
@@ -207,7 +207,7 @@ void main() {
         ),
       );
 
-      final RenderBox renderBox = tester.renderObject(find.byType(ZetaCollapsibleCard));
+      final RenderBox renderBox = tester.renderObject(find.byType(ZetaCollapsibleCardContainer));
 
       expect(renderBox.size.width, equals(528));
       expect(renderBox.size.height, equals(349));
@@ -218,7 +218,7 @@ void main() {
     testWidgets('isRequired adds a red asterisk', (tester) async {
       await tester.pumpWidget(
         const TestApp(
-          home: ZetaCard(
+          home: ZetaCardContainer(
             title: 'Title',
             description: 'Description',
             isRequired: true,
@@ -235,7 +235,7 @@ void main() {
     testWidgets('isAI adds AI border', (tester) async {
       await tester.pumpWidget(
         const TestApp(
-          home: ZetaCard(
+          home: ZetaCardContainer(
             title: 'Title',
             description: 'Description',
             isAi: true,
@@ -243,7 +243,7 @@ void main() {
         ),
       );
 
-      final Finder cardFinder = find.byType(ZetaCard);
+      final Finder cardFinder = find.byType(ZetaCardContainer);
 
       final decoratedBoxFinder = find.descendant(
         of: cardFinder,
@@ -270,7 +270,7 @@ void main() {
     testWidgets('when collapsed, the icon points right', (WidgetTester tester) async {
       await tester.pumpWidget(
         const TestApp(
-          home: ZetaCollapsibleCard(
+          home: ZetaCollapsibleCardContainer(
             title: 'Title',
             description: 'Description',
           ),
@@ -290,7 +290,7 @@ void main() {
     testWidgets('when expanded, the icon points down', (WidgetTester tester) async {
       await tester.pumpWidget(
         const TestApp(
-          home: ZetaCollapsibleCard(
+          home: ZetaCollapsibleCardContainer(
             title: 'Title',
             description: 'Description',
             isExpanded: true,
@@ -313,7 +313,7 @@ void main() {
     testWidgets('tapping the header toggles expansion', (WidgetTester tester) async {
       await tester.pumpWidget(
         const TestApp(
-          home: ZetaCollapsibleCard(
+          home: ZetaCollapsibleCardContainer(
             title: 'Title',
             description: 'Description',
             content: Placeholder(),

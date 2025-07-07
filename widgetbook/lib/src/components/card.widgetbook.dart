@@ -7,13 +7,13 @@ import 'package:zeta_widgetbook/src/utils/utils.dart';
 
 @widgetbook.UseCase(
   name: 'Card',
-  type: ZetaCard,
+  type: ZetaCardContainer,
   path: '$componentsPath/Card/Card',
   designLink: 'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=229-10&m=dev',
 )
 Widget card(BuildContext context) {
   return SmallContentWrapper(
-      child: ZetaCard(
+      child: ZetaCardContainer(
     title: context.knobs.string(label: 'Title', initialValue: 'Title'),
     description: context.knobs.string(label: 'Description', initialValue: 'Description'),
     isRequired: context.knobs.boolean(label: 'Is Required', initialValue: false),
@@ -26,13 +26,13 @@ Widget card(BuildContext context) {
 
 @widgetbook.UseCase(
   name: 'Collapsible Card',
-  type: ZetaCollapsibleCard,
+  type: ZetaCollapsibleCardContainer,
   path: '$componentsPath/Card/Collapsible',
   designLink: 'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=229-10&m=dev',
 )
 Widget collapsibleCard(BuildContext context) {
   return SmallContentWrapper(
-      child: ZetaCollapsibleCard(
+      child: ZetaCollapsibleCardContainer(
     title: context.knobs.string(label: 'Title', initialValue: 'Title'),
     description: context.knobs.string(label: 'Description', initialValue: 'Description'),
     isRequired: context.knobs.boolean(label: 'Is Required', initialValue: false),

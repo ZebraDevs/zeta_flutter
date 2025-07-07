@@ -15,32 +15,32 @@ void main() {
   group('Golden Tests', () {
     goldenTest(
       goldenFile,
-      const ZetaCard(title: 'Title', description: 'Description'),
+      const ZetaCardContainer(title: 'Title', description: 'Description'),
       'card',
     );
     goldenTest(
       goldenFile,
-      const ZetaCard(title: 'Title', description: 'Description', isRequired: true),
+      const ZetaCardContainer(title: 'Title', description: 'Description', isRequired: true),
       'card_required',
     );
     goldenTest(
       goldenFile,
-      const ZetaCard(title: 'Title', description: 'Description', isAi: true),
+      const ZetaCardContainer(title: 'Title', description: 'Description', isAi: true),
       'card_ai',
     );
     goldenTest(
       goldenFile,
-      const ZetaCard(title: 'Title', description: 'Description', content: Placeholder()),
+      const ZetaCardContainer(title: 'Title', description: 'Description', content: Placeholder()),
       'card_placeholder',
     );
     goldenTest(
       goldenFile,
-      const ZetaCard(title: 'Title', description: 'Description', content: Placeholder(), isAi: true),
+      const ZetaCardContainer(title: 'Title', description: 'Description', content: Placeholder(), isAi: true),
       'card_placeholder_ai',
     );
     goldenTest(
       goldenFile,
-      const ZetaCard(
+      const ZetaCardContainer(
         title:
             'Title Title Title Title Title Title Title Title Title Title Title Title Title Title Title Title Title Title Title Title Title Title',
         description: 'Description',
@@ -51,7 +51,7 @@ void main() {
       goldenFile,
       ConstrainedBox(
         constraints: const BoxConstraints(maxWidth: 528),
-        child: const ZetaCard(
+        child: const ZetaCardContainer(
           title:
               'Title Title Title Title Title Title Title Title Title Title Title Title Title Title Title Title Title Title Title Title Title Title',
           description: 'Description',
@@ -59,25 +59,25 @@ void main() {
         ),
       ),
       'card_long_title_1_line',
-      widgetType: ZetaCard,
+      widgetType: ZetaCardContainer,
     );
     goldenTest(
       goldenFile,
       ConstrainedBox(
         constraints: const BoxConstraints(maxWidth: 528),
-        child: const ZetaCard(
+        child: const ZetaCardContainer(
           title: 'Title',
           description: 'Description Description Description Description Description Description Description',
         ),
       ),
       'card_long_description',
-      widgetType: ZetaCard,
+      widgetType: ZetaCardContainer,
     );
   });
 
   group('Accessibility Tests', () {
     meetsAccessibilityGuidelinesTest(
-      const ZetaCard(
+      const ZetaCardContainer(
         title: 'Title',
         description: 'Description',
         isRequired: true,
@@ -96,7 +96,7 @@ void main() {
     };
 
     debugFillPropertiesTest(
-      const ZetaCard(
+      const ZetaCardContainer(
         title: 'Title',
         description: 'Description',
       ),
@@ -107,7 +107,7 @@ void main() {
       await loadFonts();
       await tester.pumpWidget(
         const TestApp(
-          home: ZetaCard(
+          home: ZetaCardContainer(
             title: 'Title',
             description: 'Description',
           ),
@@ -126,7 +126,7 @@ void main() {
         TestApp(
           home: ConstrainedBox(
             constraints: const BoxConstraints(maxWidth: 528),
-            child: const ZetaCard(
+            child: const ZetaCardContainer(
               title: 'Title',
               description: 'Description',
               isAi: true,
@@ -135,7 +135,7 @@ void main() {
         ),
       );
 
-      final RenderBox renderBox = tester.renderObject(find.byType(ZetaCard));
+      final RenderBox renderBox = tester.renderObject(find.byType(ZetaCardContainer));
 
       expect(renderBox.size.width, equals(528));
       expect(renderBox.size.height, equals(93));
@@ -146,7 +146,7 @@ void main() {
         TestApp(
           home: ConstrainedBox(
             constraints: const BoxConstraints(maxWidth: 528),
-            child: const ZetaCard(
+            child: const ZetaCardContainer(
               title: 'Title',
               description: 'Description',
               isAi: true,
@@ -160,7 +160,7 @@ void main() {
         ),
       );
 
-      final RenderBox renderBox = tester.renderObject(find.byType(ZetaCard));
+      final RenderBox renderBox = tester.renderObject(find.byType(ZetaCardContainer));
 
       expect(renderBox.size.width, equals(528));
       expect(renderBox.size.height, equals(349));
@@ -171,7 +171,7 @@ void main() {
     testWidgets('isRequired adds a red asterisk', (tester) async {
       await tester.pumpWidget(
         const TestApp(
-          home: ZetaCard(
+          home: ZetaCardContainer(
             title: 'Title',
             description: 'Description',
             isRequired: true,
@@ -188,7 +188,7 @@ void main() {
     testWidgets('isAI adds AI border', (tester) async {
       await tester.pumpWidget(
         const TestApp(
-          home: ZetaCard(
+          home: ZetaCardContainer(
             title: 'Title',
             description: 'Description',
             isAi: true,
@@ -196,7 +196,7 @@ void main() {
         ),
       );
 
-      final Finder cardFinder = find.byType(ZetaCard);
+      final Finder cardFinder = find.byType(ZetaCardContainer);
 
       final decoratedBoxFinder = find.descendant(
         of: cardFinder,

@@ -3,9 +3,8 @@ import 'package:flutter/material.dart';
 
 import '../../../zeta_flutter.dart';
 
-const _kRadius = 12.0; // TODO: Not a token
+const _kRadius = 12.0; // TODO(design): Not a token
 
-/// Interface for card header properties.
 abstract class _CardHeaderInterface {
   /// Title of the card, displayed in the header.
   String? get title;
@@ -37,7 +36,7 @@ abstract class _CollapsibleCardInterface {
   VoidCallback? get onToggle;
 }
 
-/// A card component.
+/// Base Card component, used to construct [ZetaCardContainer] and [ZetaCollapsibleCardContainer].
 ///
 // TODO(design): Better description of the component and its usage.
 class ZetaBaseCard extends ZetaStatelessWidget implements _CardInterface, _CollapsibleCardInterface {
@@ -105,7 +104,7 @@ class ZetaBaseCard extends ZetaStatelessWidget implements _CardInterface, _Colla
 
   Widget _buildCardContent(BuildContext context) {
     return isCollapsible
-        ? _ZetaCollapsibleCardStateful(
+        ? _ZetaCollapsibleCardContainerStateful(
             header: header,
             content: content,
             isExpanded: isExpanded,
@@ -135,7 +134,7 @@ class ZetaBaseCard extends ZetaStatelessWidget implements _CardInterface, _Colla
   }
 }
 
-/// Header for the [ZetaCard] and [ZetaCollapsibleCard].
+/// Card Header for the [ZetaCardContainer] and [ZetaCollapsibleCardContainer].
 class ZetaCardHeader extends ZetaStatelessWidget implements _CardHeaderInterface {
   /// Constructs a [ZetaCardHeader].
   const ZetaCardHeader({super.key, this.title, this.description, required this.isRequired, this.headerMaxLines = 2});
@@ -203,9 +202,9 @@ class ZetaCardHeader extends ZetaStatelessWidget implements _CardHeaderInterface
 
 /// A card component with a header and optional content.
 // TODO(design): Better description of the component and its usage.
-class ZetaCard extends ZetaStatelessWidget implements _CardHeaderInterface, _CardInterface {
-  /// Constructs a [ZetaCard].
-  const ZetaCard({
+class ZetaCardContainer extends ZetaStatelessWidget implements _CardHeaderInterface, _CardInterface {
+  /// Constructs a [ZetaCardContainer].
+  const ZetaCardContainer({
     this.content,
     this.isAi = false,
     this.title,
@@ -260,11 +259,11 @@ class ZetaCard extends ZetaStatelessWidget implements _CardHeaderInterface, _Car
 }
 
 /// A collapsible card component with a header and optional content.
-/// TODO(design): Better description of the component and its usage.
-class ZetaCollapsibleCard extends ZetaStatelessWidget
+// TODO(design): Better description of the component and its usage.
+class ZetaCollapsibleCardContainer extends ZetaStatelessWidget
     implements _CardHeaderInterface, _CardInterface, _CollapsibleCardInterface {
-  /// Constructs a [ZetaCollapsibleCard].
-  const ZetaCollapsibleCard({
+  /// Constructs a [ZetaCollapsibleCardContainer].
+  const ZetaCollapsibleCardContainer({
     this.isExpanded = false,
     this.onToggle,
     this.content,
@@ -311,14 +310,14 @@ class ZetaCollapsibleCard extends ZetaStatelessWidget
   }
 }
 
-class _ZetaCollapsibleCardStateful extends StatefulWidget {
-  const _ZetaCollapsibleCardStateful({required this.header, this.content, required this.isExpanded});
+class _ZetaCollapsibleCardContainerStateful extends StatefulWidget {
+  const _ZetaCollapsibleCardContainerStateful({required this.header, this.content, required this.isExpanded});
 
   final Widget header;
   final Widget? content;
   final bool isExpanded;
   @override
-  State<_ZetaCollapsibleCardStateful> createState() => __ZetaCollapsibleCardStatefulState();
+  State<_ZetaCollapsibleCardContainerStateful> createState() => __ZetaCollapsibleCardContainerStatefulState();
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
@@ -327,7 +326,7 @@ class _ZetaCollapsibleCardStateful extends StatefulWidget {
   }
 }
 
-class __ZetaCollapsibleCardStatefulState extends State<_ZetaCollapsibleCardStateful> {
+class __ZetaCollapsibleCardContainerStatefulState extends State<_ZetaCollapsibleCardContainerStateful> {
   late bool _isExpanded = widget.isExpanded;
   @override
   Widget build(BuildContext context) {

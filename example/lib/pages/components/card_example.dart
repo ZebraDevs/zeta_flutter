@@ -14,7 +14,7 @@ class CardExample extends StatelessWidget {
         spacing: Zeta.of(context).spacing.xl,
         children: [
           Expanded(
-            child: ZetaCard(
+            child: ZetaCardContainer(
               title: 'Title Title Title Title Title Title Title Title Title Title Title',
               description: 'Description',
               isRequired: true,
@@ -22,7 +22,7 @@ class CardExample extends StatelessWidget {
             ),
           ),
           Expanded(
-            child: ZetaCard(
+            child: ZetaCardContainer(
               title: 'Title',
               description: 'Description',
               content: Placeholder(color: Zeta.of(context).colors.surfaceDisabled),
@@ -49,7 +49,7 @@ class CollapsibleCardExample extends StatelessWidget {
         Center(
           child: ConstrainedBox(
             constraints: const BoxConstraints(maxWidth: 528),
-            child: ZetaCollapsibleCard(
+            child: ZetaCollapsibleCardContainer(
               title: 'Form Section Title',
               description: 'Description',
               content: SizedBox(
