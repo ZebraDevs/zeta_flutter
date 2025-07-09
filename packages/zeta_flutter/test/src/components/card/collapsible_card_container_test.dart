@@ -115,6 +115,7 @@ void main() {
       expect(find.text('Title'), findsOneWidget);
       expect(find.text('Description'), findsOneWidget);
     });
+
     testWidgets('defaults to collapsed, hides content', (WidgetTester tester) async {
       await loadFonts();
       await tester.pumpWidget(
@@ -131,7 +132,7 @@ void main() {
       expect(find.text('Description'), findsOneWidget);
 
       // The Placeholder widget exists in the widget tree but is not rendered (offstage) when collapsed.
-      final placeholderFinder = find.byType(Placeholder);
+      final placeholderFinder = find.byType(AnimatedAlign);
       expect(placeholderFinder, findsOneWidget);
       final RenderBox placeholderBox = tester.renderObject(placeholderFinder);
       expect(placeholderBox.size.height, equals(0));
@@ -326,7 +327,7 @@ void main() {
 
       // Initially, the card is collapsed, so the content is not visible.
       // The Placeholder widget exists in the widget tree but is not rendered (offstage) when collapsed.
-      final placeholderFinder = find.byType(Placeholder);
+      final placeholderFinder = find.byType(AnimatedAlign);
       expect(placeholderFinder, findsOneWidget);
       final RenderBox placeholderBox = tester.renderObject(placeholderFinder);
       expect(placeholderBox.size.height, equals(0));

@@ -335,7 +335,9 @@ class __ZetaCollapsibleCardContainerStatefulState extends State<_ZetaCollapsible
         InkWell(
           borderRadius: BorderRadius.circular(_kRadius),
           onTap: () => setState(() => _isExpanded = !_isExpanded),
-          child: Padding(
+          child: AnimatedPadding(
+            duration: ZetaAnimationLength.normal,
+            curve: Curves.easeInOut,
             padding: EdgeInsets.fromLTRB(
               Zeta.of(context).spacing.xl_2 - ZetaBorders.medium,
               Zeta.of(context).spacing.xl_2 - ZetaBorders.medium,
@@ -359,8 +361,11 @@ class __ZetaCollapsibleCardContainerStatefulState extends State<_ZetaCollapsible
           duration: ZetaAnimationLength.normal,
           curve: Curves.easeInOut,
           child: ClipRect(
-            child: ConstrainedBox(
-              constraints: _isExpanded ? const BoxConstraints() : const BoxConstraints(maxHeight: 0),
+            child: AnimatedAlign(
+              alignment: Alignment.topCenter,
+              heightFactor: _isExpanded ? 1.0 : 0.0,
+              duration: ZetaAnimationLength.normal,
+              curve: Curves.easeInOut,
               child: Padding(
                 padding: EdgeInsets.fromLTRB(
                   Zeta.of(context).spacing.xl_2,
@@ -373,7 +378,11 @@ class __ZetaCollapsibleCardContainerStatefulState extends State<_ZetaCollapsible
             ),
           ),
         ),
-        if (_isExpanded) SizedBox(height: Zeta.of(context).spacing.xl_2 - ZetaBorders.medium),
+        AnimatedContainer(
+          duration: ZetaAnimationLength.normal,
+          curve: Curves.easeInOut,
+          height: _isExpanded ? Zeta.of(context).spacing.xl_2 - ZetaBorders.medium : 0,
+        ),
       ],
     );
   }
