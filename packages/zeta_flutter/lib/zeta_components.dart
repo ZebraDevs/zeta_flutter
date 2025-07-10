@@ -18,6 +18,7 @@ export 'src/components/button_group/button_group.dart';
 export 'src/components/buttons/button.dart';
 export 'src/components/buttons/button_style.dart' show ZetaButtonType;
 export 'src/components/buttons/icon_button.dart';
+export 'src/components/card/card_container.dart';
 export 'src/components/chat_item/chat_item.dart';
 export 'src/components/chat_item/contact_item.dart';
 export 'src/components/checkbox/checkbox.dart' hide ZetaInternalCheckbox;

@@ -18,44 +18,45 @@ import 'package:zeta_widgetbook/src/components/bottom_sheet.widgetbook.dart' as 
 import 'package:zeta_widgetbook/src/components/breadcrumb_widgetbook.dart' as _i6;
 import 'package:zeta_widgetbook/src/components/button.widgetbook.dart' as _i7;
 import 'package:zeta_widgetbook/src/components/button_group.widgetbook.dart' as _i8;
-import 'package:zeta_widgetbook/src/components/chat_item.widgetbook.dart' as _i9;
-import 'package:zeta_widgetbook/src/components/checkbox.widgetbook.dart' as _i10;
-import 'package:zeta_widgetbook/src/components/chip.widgetbook.dart' as _i11;
-import 'package:zeta_widgetbook/src/components/comms_button.widgetbook.dart' as _i12;
-import 'package:zeta_widgetbook/src/components/date_input.widgetbook.dart' as _i13;
-import 'package:zeta_widgetbook/src/components/dial_pad.widgetbook.dart' as _i14;
-import 'package:zeta_widgetbook/src/components/dialog.widgetbook.dart' as _i15;
-import 'package:zeta_widgetbook/src/components/dropdown.widgetbook.dart' as _i16;
-import 'package:zeta_widgetbook/src/components/empty_state.widgetbook.dart' as _i17;
-import 'package:zeta_widgetbook/src/components/fabs.widgetbook.dart' as _i18;
-import 'package:zeta_widgetbook/src/components/filter_selection.widgetbook.dart' as _i19;
-import 'package:zeta_widgetbook/src/components/global_header.widgetbook.dart' as _i20;
-import 'package:zeta_widgetbook/src/components/in_page_banner.widgetbook.dart' as _i21;
-import 'package:zeta_widgetbook/src/components/list_item_widgetbook.dart' as _i22;
-import 'package:zeta_widgetbook/src/components/navigation_bar.widgetbook.dart' as _i23;
-import 'package:zeta_widgetbook/src/components/navigation_rail.widgetbook.dart' as _i24;
-import 'package:zeta_widgetbook/src/components/notification_list_item.widgetbook.dart' as _i25;
-import 'package:zeta_widgetbook/src/components/pagination.widgetbook.dart' as _i26;
-import 'package:zeta_widgetbook/src/components/password_input.widgetbook.dart' as _i27;
-import 'package:zeta_widgetbook/src/components/phone_input.widgetbook.dart' as _i28;
-import 'package:zeta_widgetbook/src/components/progress.widgetbook.dart' as _i29;
-import 'package:zeta_widgetbook/src/components/radio.widgetbook.dart' as _i30;
-import 'package:zeta_widgetbook/src/components/range_selector_widgetbook.dart' as _i31;
-import 'package:zeta_widgetbook/src/components/screen_header_bar.widgetbook.dart' as _i32;
-import 'package:zeta_widgetbook/src/components/search_bar.widgetbook.dart' as _i33;
-import 'package:zeta_widgetbook/src/components/segmented_control.widgetbook.dart' as _i34;
-import 'package:zeta_widgetbook/src/components/select_input.widgetbook.dart' as _i35;
-import 'package:zeta_widgetbook/src/components/slider.widgetbook.dart' as _i36;
-import 'package:zeta_widgetbook/src/components/snack_bar.widgetbook.dart' as _i37;
-import 'package:zeta_widgetbook/src/components/stepper.widgetbook.dart' as _i38;
-import 'package:zeta_widgetbook/src/components/stepper_input.widgetbook.dart' as _i39;
-import 'package:zeta_widgetbook/src/components/switch_widgetbook.dart' as _i40;
-import 'package:zeta_widgetbook/src/components/system_banner.widgetbook.dart' as _i41;
-import 'package:zeta_widgetbook/src/components/tabs.widgetbook.dart' as _i42;
-import 'package:zeta_widgetbook/src/components/text_input_widgetbook.dart' as _i43;
-import 'package:zeta_widgetbook/src/components/time_input.widgetbook.dart' as _i44;
-import 'package:zeta_widgetbook/src/components/tooltip.widgetbook.dart' as _i45;
-import 'package:zeta_widgetbook/src/components/top_app_bar.widgetbook.dart' as _i46;
+import 'package:zeta_widgetbook/src/components/card.widgetbook.dart' as _i9;
+import 'package:zeta_widgetbook/src/components/chat_item.widgetbook.dart' as _i10;
+import 'package:zeta_widgetbook/src/components/checkbox.widgetbook.dart' as _i11;
+import 'package:zeta_widgetbook/src/components/chip.widgetbook.dart' as _i12;
+import 'package:zeta_widgetbook/src/components/comms_button.widgetbook.dart' as _i13;
+import 'package:zeta_widgetbook/src/components/date_input.widgetbook.dart' as _i14;
+import 'package:zeta_widgetbook/src/components/dial_pad.widgetbook.dart' as _i15;
+import 'package:zeta_widgetbook/src/components/dialog.widgetbook.dart' as _i16;
+import 'package:zeta_widgetbook/src/components/dropdown.widgetbook.dart' as _i17;
+import 'package:zeta_widgetbook/src/components/empty_state.widgetbook.dart' as _i18;
+import 'package:zeta_widgetbook/src/components/fabs.widgetbook.dart' as _i19;
+import 'package:zeta_widgetbook/src/components/filter_selection.widgetbook.dart' as _i20;
+import 'package:zeta_widgetbook/src/components/global_header.widgetbook.dart' as _i21;
+import 'package:zeta_widgetbook/src/components/in_page_banner.widgetbook.dart' as _i22;
+import 'package:zeta_widgetbook/src/components/list_item_widgetbook.dart' as _i23;
+import 'package:zeta_widgetbook/src/components/navigation_bar.widgetbook.dart' as _i24;
+import 'package:zeta_widgetbook/src/components/navigation_rail.widgetbook.dart' as _i25;
+import 'package:zeta_widgetbook/src/components/notification_list_item.widgetbook.dart' as _i26;
+import 'package:zeta_widgetbook/src/components/pagination.widgetbook.dart' as _i27;
+import 'package:zeta_widgetbook/src/components/password_input.widgetbook.dart' as _i28;
+import 'package:zeta_widgetbook/src/components/phone_input.widgetbook.dart' as _i29;
+import 'package:zeta_widgetbook/src/components/progress.widgetbook.dart' as _i30;
+import 'package:zeta_widgetbook/src/components/radio.widgetbook.dart' as _i31;
+import 'package:zeta_widgetbook/src/components/range_selector_widgetbook.dart' as _i32;
+import 'package:zeta_widgetbook/src/components/screen_header_bar.widgetbook.dart' as _i33;
+import 'package:zeta_widgetbook/src/components/search_bar.widgetbook.dart' as _i34;
+import 'package:zeta_widgetbook/src/components/segmented_control.widgetbook.dart' as _i35;
+import 'package:zeta_widgetbook/src/components/select_input.widgetbook.dart' as _i36;
+import 'package:zeta_widgetbook/src/components/slider.widgetbook.dart' as _i37;
+import 'package:zeta_widgetbook/src/components/snack_bar.widgetbook.dart' as _i38;
+import 'package:zeta_widgetbook/src/components/stepper.widgetbook.dart' as _i39;
+import 'package:zeta_widgetbook/src/components/stepper_input.widgetbook.dart' as _i40;
+import 'package:zeta_widgetbook/src/components/switch_widgetbook.dart' as _i41;
+import 'package:zeta_widgetbook/src/components/system_banner.widgetbook.dart' as _i42;
+import 'package:zeta_widgetbook/src/components/tabs.widgetbook.dart' as _i43;
+import 'package:zeta_widgetbook/src/components/text_input_widgetbook.dart' as _i44;
+import 'package:zeta_widgetbook/src/components/time_input.widgetbook.dart' as _i45;
+import 'package:zeta_widgetbook/src/components/tooltip.widgetbook.dart' as _i46;
+import 'package:zeta_widgetbook/src/components/top_app_bar.widgetbook.dart' as _i47;
 
 final directories = <_i1.WidgetbookNode>[
   _i1.WidgetbookFolder(
@@ -231,13 +232,46 @@ final directories = <_i1.WidgetbookNode>[
         ],
       ),
       _i1.WidgetbookFolder(
+        name: 'Card',
+        children: [
+          _i1.WidgetbookFolder(
+            name: 'Card',
+            children: [
+              _i1.WidgetbookLeafComponent(
+                name: 'ZetaCard',
+                useCase: _i1.WidgetbookUseCase(
+                  name: 'Card',
+                  builder: _i9.card,
+                  designLink:
+                      'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=229-10&m=dev',
+                ),
+              )
+            ],
+          ),
+          _i1.WidgetbookFolder(
+            name: 'Collapsible',
+            children: [
+              _i1.WidgetbookLeafComponent(
+                name: 'ZetaCollapsibleCardContainer',
+                useCase: _i1.WidgetbookUseCase(
+                  name: 'Collapsible Card',
+                  builder: _i9.collapsibleCard,
+                  designLink:
+                      'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=229-10&m=dev',
+                ),
+              )
+            ],
+          ),
+        ],
+      ),
+      _i1.WidgetbookFolder(
         name: 'Chat Item',
         children: [
           _i1.WidgetbookLeafComponent(
             name: 'ZetaChatItem',
             useCase: _i1.WidgetbookUseCase(
               name: 'Chat Item',
-              builder: _i9.chatItem,
+              builder: _i10.chatItem,
               designLink:
                   'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=24820-42180&t=N8coJ9AFu6DS3mOF-4',
             ),
@@ -246,7 +280,7 @@ final directories = <_i1.WidgetbookNode>[
             name: 'ZetaContactItem',
             useCase: _i1.WidgetbookUseCase(
               name: 'Contact Item',
-              builder: _i9.contactItemUseCase,
+              builder: _i10.contactItemUseCase,
               designLink:
                   'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=24860-79147',
             ),
@@ -260,7 +294,7 @@ final directories = <_i1.WidgetbookNode>[
             name: 'ZetaCheckbox',
             useCase: _i1.WidgetbookUseCase(
               name: 'Checkbox',
-              builder: _i10.checkbox,
+              builder: _i11.checkbox,
               designLink:
                   'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=21510-54003&t=N8coJ9AFu6DS3mOF-4',
             ),
@@ -274,7 +308,7 @@ final directories = <_i1.WidgetbookNode>[
             name: 'ZetaAssistChip',
             useCase: _i1.WidgetbookUseCase(
               name: 'Assist Chip',
-              builder: _i11.assistChip,
+              builder: _i12.assistChip,
               designLink:
                   'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=21265-14215&t=6jmGZpLRLKTDIfJL-4',
             ),
@@ -283,7 +317,7 @@ final directories = <_i1.WidgetbookNode>[
             name: 'ZetaFilterChip',
             useCase: _i1.WidgetbookUseCase(
               name: 'Filter Chip',
-              builder: _i11.filterChip,
+              builder: _i12.filterChip,
               designLink:
                   'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=21265-14112&t=6jmGZpLRLKTDIfJL-4',
             ),
@@ -292,7 +326,7 @@ final directories = <_i1.WidgetbookNode>[
             name: 'ZetaInputChip',
             useCase: _i1.WidgetbookUseCase(
               name: 'Input Chip',
-              builder: _i11.inputChip,
+              builder: _i12.inputChip,
               designLink:
                   'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=21265-2159&t=6jmGZpLRLKTDIfJL-4',
             ),
@@ -306,7 +340,7 @@ final directories = <_i1.WidgetbookNode>[
             name: 'ZetaCommsButton',
             useCase: _i1.WidgetbookUseCase(
               name: 'Comms Buttons',
-              builder: _i12.commsButtonUseCase,
+              builder: _i13.commsButtonUseCase,
               designLink:
                   'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=20816-11402&t=6jmGZpLRLKTDIfJL-4',
             ),
@@ -320,7 +354,7 @@ final directories = <_i1.WidgetbookNode>[
             name: 'ZetaDateInput',
             useCase: _i1.WidgetbookUseCase(
               name: 'Date Input',
-              builder: _i13.dateInput,
+              builder: _i14.dateInput,
               designLink:
                   'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=22667-52911&t=N8coJ9AFu6DS3mOF-4',
             ),
@@ -334,7 +368,7 @@ final directories = <_i1.WidgetbookNode>[
             name: 'ZetaDialPad',
             useCase: _i1.WidgetbookUseCase(
               name: 'Dial Pad',
-              builder: _i14.dialPad,
+              builder: _i15.dialPad,
               designLink:
                   'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=21156-19735&t=N8coJ9AFu6DS3mOF-4',
             ),
@@ -348,7 +382,7 @@ final directories = <_i1.WidgetbookNode>[
             name: 'ZetaDialog',
             useCase: _i1.WidgetbookUseCase(
               name: 'Dialog',
-              builder: _i15.dialog,
+              builder: _i16.dialog,
               designLink:
                   'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=23954-93036&t=6jmGZpLRLKTDIfJL-4',
             ),
@@ -362,7 +396,7 @@ final directories = <_i1.WidgetbookNode>[
             name: 'ZetaDropdown',
             useCase: _i1.WidgetbookUseCase(
               name: 'Dropdown Menu',
-              builder: _i16.dropdown,
+              builder: _i17.dropdown,
               designLink:
                   'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=22664-33552',
             ),
@@ -376,7 +410,7 @@ final directories = <_i1.WidgetbookNode>[
             name: 'ZetaEmptyState',
             useCase: _i1.WidgetbookUseCase(
               name: 'Empty State',
-              builder: _i17.dropdown,
+              builder: _i18.dropdown,
               designLink:
                   'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=38470-1055&m=dev',
             ),
@@ -390,7 +424,7 @@ final directories = <_i1.WidgetbookNode>[
             name: 'ZetaFAB',
             useCase: _i1.WidgetbookUseCase(
               name: 'Floating Action Button',
-              builder: _i18.fab,
+              builder: _i19.fab,
               designLink:
                   'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=22163-76639',
             ),
@@ -404,7 +438,7 @@ final directories = <_i1.WidgetbookNode>[
             name: 'ZetaFilterSelection',
             useCase: _i1.WidgetbookUseCase(
               name: 'Filter Selection Bar',
-              builder: _i19.filterSelection,
+              builder: _i20.filterSelection,
               designLink:
                   'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=24607-736&t=N8coJ9AFu6DS3mOF-4',
             ),
@@ -418,7 +452,7 @@ final directories = <_i1.WidgetbookNode>[
             name: 'ZetaGlobalHeader',
             useCase: _i1.WidgetbookUseCase(
               name: 'Global Header',
-              builder: _i20.globalHeader,
+              builder: _i21.globalHeader,
               designLink:
                   'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=23144-118110&t=N8coJ9AFu6DS3mOF-4',
             ),
@@ -432,7 +466,7 @@ final directories = <_i1.WidgetbookNode>[
             name: 'ZetaInPageBanner',
             useCase: _i1.WidgetbookUseCase(
               name: 'In Page Banner',
-              builder: _i21.inPageBanner,
+              builder: _i22.inPageBanner,
               designLink:
                   'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=21156-27071&t=N8coJ9AFu6DS3mOF-4',
             ),
@@ -446,7 +480,7 @@ final directories = <_i1.WidgetbookNode>[
             name: 'ZetaDropdownListItem',
             useCase: _i1.WidgetbookUseCase(
               name: 'Dropdown List Item',
-              builder: _i22.dropdownListItem,
+              builder: _i23.dropdownListItem,
               designLink:
                   'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=26522-37745&t=N8coJ9AFu6DS3mOF-4',
             ),
@@ -456,25 +490,25 @@ final directories = <_i1.WidgetbookNode>[
             useCases: [
               _i1.WidgetbookUseCase(
                 name: 'Checkbox',
-                builder: _i22.checkbox,
+                builder: _i23.checkbox,
                 designLink:
                     'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=26325-6829&t=N8coJ9AFu6DS3mOF-4',
               ),
               _i1.WidgetbookUseCase(
                 name: 'List Item',
-                builder: _i22.listItem,
+                builder: _i23.listItem,
                 designLink:
                     'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=26325-6829&t=N8coJ9AFu6DS3mOF-4',
               ),
               _i1.WidgetbookUseCase(
                 name: 'Radio',
-                builder: _i22.radio,
+                builder: _i23.radio,
                 designLink:
                     'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=26325-6829&t=N8coJ9AFu6DS3mOF-4',
               ),
               _i1.WidgetbookUseCase(
                 name: 'Toggle',
-                builder: _i22.toggle,
+                builder: _i23.toggle,
                 designLink:
                     'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=26325-6829&t=N8coJ9AFu6DS3mOF-4',
               ),
@@ -489,7 +523,7 @@ final directories = <_i1.WidgetbookNode>[
             name: 'ZetaNavigationBar',
             useCase: _i1.WidgetbookUseCase(
               name: 'Navigation Bar',
-              builder: _i23.navigationBar,
+              builder: _i24.navigationBar,
               designLink:
                   'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=21186-40498&t=AZEbv7Mm0mjIx0Or-4',
             ),
@@ -503,7 +537,7 @@ final directories = <_i1.WidgetbookNode>[
             name: 'ZetaNavigationRail',
             useCase: _i1.WidgetbookUseCase(
               name: 'Navigation Rail',
-              builder: _i24.navigationRail,
+              builder: _i25.navigationRail,
               designLink:
                   'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=23753-18605&t=AZEbv7Mm0mjIx0Or-4',
             ),
@@ -517,7 +551,7 @@ final directories = <_i1.WidgetbookNode>[
             name: 'ZetaNotificationListItem',
             useCase: _i1.WidgetbookUseCase(
               name: 'Notification Item',
-              builder: _i25.notificationListItem,
+              builder: _i26.notificationListItem,
               designLink:
                   'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=26436-15209&t=AZEbv7Mm0mjIx0Or-4',
             ),
@@ -532,13 +566,13 @@ final directories = <_i1.WidgetbookNode>[
             useCases: [
               _i1.WidgetbookUseCase(
                 name: 'Pagination',
-                builder: _i26.paginationUseCase,
+                builder: _i27.paginationUseCase,
                 designLink:
                     'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=23954-98355&t=AZEbv7Mm0mjIx0Or-4',
               ),
               _i1.WidgetbookUseCase(
                 name: 'Pagination Drop down',
-                builder: _i26.paginationDropdownUseCase,
+                builder: _i27.paginationDropdownUseCase,
                 designLink:
                     'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=23971-98472&t=AZEbv7Mm0mjIx0Or-4',
               ),
@@ -553,7 +587,7 @@ final directories = <_i1.WidgetbookNode>[
             name: 'ZetaPasswordInput',
             useCase: _i1.WidgetbookUseCase(
               name: 'Password',
-              builder: _i27.passwordInputUseCase,
+              builder: _i28.passwordInputUseCase,
               designLink:
                   'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=948-13632&t=AZEbv7Mm0mjIx0Or-4',
             ),
@@ -567,7 +601,7 @@ final directories = <_i1.WidgetbookNode>[
             name: 'ZetaPhoneInput',
             useCase: _i1.WidgetbookUseCase(
               name: 'Phone Input',
-              builder: _i28.phoneInputUseCase,
+              builder: _i29.phoneInputUseCase,
               designLink:
                   'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=22731-90569&t=AZEbv7Mm0mjIx0Or-4',
             ),
@@ -581,7 +615,7 @@ final directories = <_i1.WidgetbookNode>[
             name: 'ZetaProgressBar',
             useCase: _i1.WidgetbookUseCase(
               name: 'Progress Bar',
-              builder: _i29.bar,
+              builder: _i30.bar,
               designLink:
                   'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=1358-31337&t=AZEbv7Mm0mjIx0Or-4',
             ),
@@ -591,13 +625,13 @@ final directories = <_i1.WidgetbookNode>[
             useCases: [
               _i1.WidgetbookUseCase(
                 name: 'Progress Circle',
-                builder: _i29.progressCircleUseCase,
+                builder: _i30.progressCircleUseCase,
                 designLink:
                     'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=900-10416&t=AZEbv7Mm0mjIx0Or-4',
               ),
               _i1.WidgetbookUseCase(
                 name: 'Upload Progress Circle',
-                builder: _i29.uploadProgressCircleUseCase,
+                builder: _i30.uploadProgressCircleUseCase,
                 designLink:
                     'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=1330-30588&t=AZEbv7Mm0mjIx0Or-4',
               ),
@@ -612,7 +646,7 @@ final directories = <_i1.WidgetbookNode>[
             name: 'ZetaRadio',
             useCase: _i1.WidgetbookUseCase(
               name: 'Radio',
-              builder: _i30.radioButtonUseCase,
+              builder: _i31.radioButtonUseCase,
               designLink:
                   'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=21510-54345&t=AZEbv7Mm0mjIx0Or-4',
             ),
@@ -627,13 +661,13 @@ final directories = <_i1.WidgetbookNode>[
             useCases: [
               _i1.WidgetbookUseCase(
                 name: 'Range Selector',
-                builder: _i31.rangeSelectorUseCase,
+                builder: _i32.rangeSelectorUseCase,
                 designLink:
                     'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=27560-8260&t=AZEbv7Mm0mjIx0Or-4',
               ),
               _i1.WidgetbookUseCase(
                 name: 'Selector',
-                builder: _i31.selectorUseCase,
+                builder: _i32.selectorUseCase,
                 designLink:
                     'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=1186-28564&t=AZEbv7Mm0mjIx0Or-4',
               ),
@@ -648,7 +682,7 @@ final directories = <_i1.WidgetbookNode>[
             name: 'ZetaScreenHeaderBar',
             useCase: _i1.WidgetbookUseCase(
               name: 'Screen Header',
-              builder: _i32.screenHeaderBarUseCase,
+              builder: _i33.screenHeaderBarUseCase,
               designLink:
                   'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=24601-9207&t=sHwT9f9HuPjkpi1x-4',
             ),
@@ -662,7 +696,7 @@ final directories = <_i1.WidgetbookNode>[
             name: 'ZetaSearchBar',
             useCase: _i1.WidgetbookUseCase(
               name: 'Search Bar',
-              builder: _i33.searchBarUseCase,
+              builder: _i34.searchBarUseCase,
               designLink:
                   'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=21286-35997&t=sHwT9f9HuPjkpi1x-4',
             ),
@@ -677,13 +711,13 @@ final directories = <_i1.WidgetbookNode>[
             useCases: [
               _i1.WidgetbookUseCase(
                 name: 'Icon',
-                builder: _i34.segmentedControlIconUseCase,
+                builder: _i35.segmentedControlIconUseCase,
                 designLink:
                     'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=22683-71169&t=sHwT9f9HuPjkpi1x-4',
               ),
               _i1.WidgetbookUseCase(
                 name: 'Text',
-                builder: _i34.segmentedControlTextUseCase,
+                builder: _i35.segmentedControlTextUseCase,
                 designLink:
                     'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=22683-71169&t=sHwT9f9HuPjkpi1x-4',
               ),
@@ -698,7 +732,7 @@ final directories = <_i1.WidgetbookNode>[
             name: 'ZetaSelectInput',
             useCase: _i1.WidgetbookUseCase(
               name: 'Select Input',
-              builder: _i35.selectInputUseCase,
+              builder: _i36.selectInputUseCase,
               designLink:
                   'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=23954-90316&t=sHwT9f9HuPjkpi1x-4',
             ),
@@ -712,7 +746,7 @@ final directories = <_i1.WidgetbookNode>[
             name: 'ZetaSlider',
             useCase: _i1.WidgetbookUseCase(
               name: 'Slider',
-              builder: _i36.sliderUseCase,
+              builder: _i37.sliderUseCase,
               designLink:
                   'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=875-15530&t=eEOivHU9uV4K8qJq-4',
             ),
@@ -727,13 +761,13 @@ final directories = <_i1.WidgetbookNode>[
             useCases: [
               _i1.WidgetbookUseCase(
                 name: 'Contextual Snackbar',
-                builder: _i37.contextualSnackbar,
+                builder: _i38.contextualSnackbar,
                 designLink:
                     'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=23105-92186&t=eEOivHU9uV4K8qJq-4',
               ),
               _i1.WidgetbookUseCase(
                 name: 'Snackbar',
-                builder: _i37.snackBar,
+                builder: _i38.snackBar,
                 designLink:
                     'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=21510-55806&t=eEOivHU9uV4K8qJq-4',
               ),
@@ -749,13 +783,13 @@ final directories = <_i1.WidgetbookNode>[
             useCases: [
               _i1.WidgetbookUseCase(
                 name: 'Stepper Horizontal',
-                builder: _i38.stepperHorizontalUseCase,
+                builder: _i39.stepperHorizontalUseCase,
                 designLink:
                     'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=23105-92242&t=eEOivHU9uV4K8qJq-4',
               ),
               _i1.WidgetbookUseCase(
                 name: 'Stepper Vertical',
-                builder: _i38.stepperVerticalUseCase,
+                builder: _i39.stepperVerticalUseCase,
                 designLink:
                     'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=23105-92242&t=eEOivHU9uV4K8qJq-4',
               ),
@@ -770,7 +804,7 @@ final directories = <_i1.WidgetbookNode>[
             name: 'ZetaStepperInput',
             useCase: _i1.WidgetbookUseCase(
               name: 'Stepper Input',
-              builder: _i39.stepperInputUseCase,
+              builder: _i40.stepperInputUseCase,
               designLink:
                   'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=21529-9963&t=eEOivHU9uV4K8qJq-4',
             ),
@@ -785,19 +819,19 @@ final directories = <_i1.WidgetbookNode>[
             useCases: [
               _i1.WidgetbookUseCase(
                 name: 'Android',
-                builder: _i40.androidSwitchUseCase,
+                builder: _i41.androidSwitchUseCase,
                 designLink:
                     'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=1722-63391&t=eEOivHU9uV4K8qJq-4',
               ),
               _i1.WidgetbookUseCase(
                 name: 'Web',
-                builder: _i40.switchUseCase,
+                builder: _i41.switchUseCase,
                 designLink:
                     'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=1153-26923&t=eEOivHU9uV4K8qJq-4',
               ),
               _i1.WidgetbookUseCase(
                 name: 'iOS',
-                builder: _i40.iOSswitchUseCase,
+                builder: _i41.iOSswitchUseCase,
                 designLink:
                     'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=1153-26526&t=eEOivHU9uV4K8qJq-4',
               ),
@@ -812,7 +846,7 @@ final directories = <_i1.WidgetbookNode>[
             name: 'ZetaSystemBanner',
             useCase: _i1.WidgetbookUseCase(
               name: 'System Banner',
-              builder: _i41.banner,
+              builder: _i42.banner,
               designLink:
                   'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=22195-43965&t=eEOivHU9uV4K8qJq-4',
             ),
@@ -826,7 +860,7 @@ final directories = <_i1.WidgetbookNode>[
             name: 'ZetaTab',
             useCase: _i1.WidgetbookUseCase(
               name: 'Tab Item',
-              builder: _i42.tabItemUseCase,
+              builder: _i43.tabItemUseCase,
               designLink:
                   'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=21265-28869&t=eEOivHU9uV4K8qJq-4',
             ),
@@ -835,7 +869,7 @@ final directories = <_i1.WidgetbookNode>[
             name: 'ZetaTabBar',
             useCase: _i1.WidgetbookUseCase(
               name: 'Tab Bar',
-              builder: _i42.tabBarUseCase,
+              builder: _i43.tabBarUseCase,
               designLink:
                   'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=21265-29001&t=eEOivHU9uV4K8qJq-4',
             ),
@@ -849,7 +883,7 @@ final directories = <_i1.WidgetbookNode>[
             name: 'ZetaTextInput',
             useCase: _i1.WidgetbookUseCase(
               name: 'Text Input',
-              builder: _i43.textInput,
+              builder: _i44.textInput,
               designLink:
                   'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=23132-170489&t=eEOivHU9uV4K8qJq-4',
             ),
@@ -863,7 +897,7 @@ final directories = <_i1.WidgetbookNode>[
             name: 'ZetaTimeInput',
             useCase: _i1.WidgetbookUseCase(
               name: 'Time Input',
-              builder: _i44.timeInput,
+              builder: _i45.timeInput,
               designLink:
                   'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=22751-9848&t=eEOivHU9uV4K8qJq-4',
             ),
@@ -877,7 +911,7 @@ final directories = <_i1.WidgetbookNode>[
             name: 'ZetaTooltip',
             useCase: _i1.WidgetbookUseCase(
               name: 'Tooltip',
-              builder: _i45.tooltip,
+              builder: _i46.tooltip,
               designLink:
                   'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=21816-222&t=eEOivHU9uV4K8qJq-4',
             ),
@@ -892,31 +926,31 @@ final directories = <_i1.WidgetbookNode>[
             useCases: [
               _i1.WidgetbookUseCase(
                 name: 'Centered',
-                builder: _i46.centered,
+                builder: _i47.centered,
                 designLink:
                     'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=24183-7224&t=QGJWipbvqxlvCtMR-4',
               ),
               _i1.WidgetbookUseCase(
                 name: 'Contextual',
-                builder: _i46.contextual,
+                builder: _i47.contextual,
                 designLink:
                     'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=24183-7224&t=QGJWipbvqxlvCtMR-4',
               ),
               _i1.WidgetbookUseCase(
                 name: 'Default',
-                builder: _i46.defaultTopAppBar,
+                builder: _i47.defaultTopAppBar,
                 designLink:
                     'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=24183-7212&t=eEOivHU9uV4K8qJq-4',
               ),
               _i1.WidgetbookUseCase(
                 name: 'Extended',
-                builder: _i46.extendedTopAppBarUseCase,
+                builder: _i47.extendedTopAppBarUseCase,
                 designLink:
                     'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=24183-7227&t=QGJWipbvqxlvCtMR-4',
               ),
               _i1.WidgetbookUseCase(
                 name: 'Search',
-                builder: _i46.search,
+                builder: _i47.search,
                 designLink:
                     'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=24183-7226&t=QGJWipbvqxlvCtMR-4',
               ),
