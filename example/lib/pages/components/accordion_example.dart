@@ -23,15 +23,6 @@ class AccordionExample extends StatelessWidget {
                 child: ZetaAccordion(
                   inCard: true,
                   children: [
-                    ZetaAccordionItem(title: 'Item 1', isOpen: false, child: SizedBox(width: 388, height: 354)),
-                  ],
-                ),
-              ),
-              SizedBox(
-                width: 328,
-                child: ZetaAccordion(
-                  inCard: true,
-                  children: [
                     ZetaAccordionItem(
                       onTap: () {},
                       child: Placeholder(),
@@ -57,7 +48,7 @@ class AccordionExample extends StatelessWidget {
                   children: [
                     ZetaAccordionItem(title: 'Title', onTap: () {}, child: Placeholder(), isSelectable: true),
                     ZetaAccordionItem(title: 'Title', onTap: () {}, child: Placeholder(), isSelectable: true),
-                    ZetaAccordionItem(title: 'Title', onTap: () {}, child: Placeholder(), isSelectable: true),
+                    ZetaAccordionItem(title: 'Title', onTap: () {}, child: Placeholder()),
                   ],
                 ),
               ),

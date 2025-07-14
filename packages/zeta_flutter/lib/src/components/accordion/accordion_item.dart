@@ -10,7 +10,7 @@ class ZetaAccordionItem extends ZetaStatefulWidget {
   const ZetaAccordionItem({
     required this.title,
     this.child,
-    this.isOpen = false,
+    this.isExpanded = false,
     this.isSelected = false,
     this.isSelectable = false,
     this.isNavigation = false,
@@ -30,7 +30,7 @@ class ZetaAccordionItem extends ZetaStatefulWidget {
   const ZetaAccordionItem.selectable({
     required this.title,
     this.child,
-    this.isOpen = false,
+    this.isExpanded = false,
     this.isSelected = false,
     this.onTap,
     this.header,
@@ -51,7 +51,7 @@ class ZetaAccordionItem extends ZetaStatefulWidget {
     super.rounded,
   })  : isNavigation = true,
         isSelected = false,
-        isOpen = false,
+        isExpanded = false,
         expandSemanticLabel = '',
         collapseSemanticLabel = '',
         isSelectable = false;
@@ -63,7 +63,7 @@ class ZetaAccordionItem extends ZetaStatefulWidget {
   final Widget? child;
 
   /// Whether the accordion item is initially open.
-  final bool isOpen;
+  final bool isExpanded;
 
   /// Callback triggered when the accordion item is tapped.
   final VoidCallback? onTap;
@@ -98,7 +98,7 @@ class ZetaAccordionItem extends ZetaStatefulWidget {
     super.debugFillProperties(properties);
     properties
       ..add(StringProperty('title', title))
-      ..add(DiagnosticsProperty<bool>('isOpen', isOpen))
+      ..add(DiagnosticsProperty<bool>('isOpen', isExpanded))
       ..add(ObjectFlagProperty<VoidCallback?>.has('onTap', onTap))
       ..add(DiagnosticsProperty<bool>('isSelected', isSelected))
       ..add(DiagnosticsProperty<bool>('isSelectable', isSelectable))
@@ -115,15 +115,15 @@ class _ZetaAccordionItemState extends State<ZetaAccordionItem> {
   @override
   void initState() {
     super.initState();
-    _isExpanded = widget.isOpen;
+    _isExpanded = widget.isExpanded;
     _isSelected = widget.isSelected;
   }
 
   @override
   void didUpdateWidget(ZetaAccordionItem oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (widget.isOpen != oldWidget.isOpen) {
-      _isExpanded = widget.isOpen;
+    if (widget.isExpanded != oldWidget.isExpanded) {
+      _isExpanded = widget.isExpanded;
     }
     if (widget.isSelected != oldWidget.isSelected) {
       _isSelected = widget.isSelected;

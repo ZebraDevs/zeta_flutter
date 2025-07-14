@@ -3,35 +3,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:zeta_flutter/src/components/accordion/accordion_item_ui.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 import '../../../test_utils/test_utils.dart';
 
-Widget accordionContentExample = Builder(
-  builder: (context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        const Text('Scan Mode'),
-        ZetaDropdown(
-          items: [
-            ZetaDropdownItem(label: 'Continuous', value: 'Continuous'),
-            ZetaDropdownItem(label: 'Continuous1', value: 'Continuous1'),
-            ZetaDropdownItem(label: 'Continuous2', value: 'Continuous2'),
-          ],
-          onChange: (_) {},
-        ),
-      ],
-    );
-  },
-);
-
-List<ZetaAccordionItem> otherItems = [
-  const ZetaAccordionItem(title: 'Connectivity & Network'),
-  const ZetaAccordionItem(title: 'Light & Sensor Calibration'),
-  const ZetaAccordionItem(title: 'Firmware & Updates'),
-];
 void main() {
   const String parentFolder = 'accordion';
 
@@ -43,16 +19,16 @@ void main() {
   group('Accessibility Tests', () {
     meetsAccessibilityGuidelinesTest(
       const ZetaAccordion(
-        openMultiple: true,
+        expandMultiple: true,
         children: [
           ZetaAccordionItem(
             title: 'Item 1',
-            isOpen: true,
+            isExpanded: true,
             child: Text('Content 1'),
           ),
           ZetaAccordionItem(
             title: 'Item 2',
-            isOpen: true,
+            isExpanded: true,
             isSelectable: true,
             isSelected: true,
             child: Text('Content 2'),
@@ -74,14 +50,14 @@ void main() {
             children: [
               ZetaAccordionItem(
                 title: 'Item 1',
-                isOpen: true,
+                isExpanded: true,
                 isSelectable: true,
                 key: firstItemKey,
                 child: Text('Content 1'),
               ),
               ZetaAccordionItem(
                 title: 'Item 2',
-                isOpen: false,
+                isExpanded: false,
                 isSelectable: true,
                 key: secondItemKey,
                 child: Text('Content 2'),
@@ -139,11 +115,11 @@ void main() {
       await tester.pumpWidget(
         const TestApp(
           home: ZetaAccordion(
-            openMultiple: true,
+            expandMultiple: true,
             children: [
-              ZetaAccordionItem(title: 'Item 1', isOpen: true, child: Text('Content 1')),
-              ZetaAccordionItem(title: 'Item 2', isOpen: true, child: Text('Content 2')),
-              ZetaAccordionItem(title: 'Item 3', isOpen: false, child: Text('Content 3')),
+              ZetaAccordionItem(title: 'Item 1', isExpanded: true, child: Text('Content 1')),
+              ZetaAccordionItem(title: 'Item 2', isExpanded: true, child: Text('Content 2')),
+              ZetaAccordionItem(title: 'Item 3', isExpanded: false, child: Text('Content 3')),
             ],
           ),
         ),
@@ -195,7 +171,7 @@ void main() {
             children: [
               ZetaAccordionItem(
                 title: 'Item 1',
-                isOpen: false,
+                isExpanded: false,
                 isSelectable: true,
                 isSelected: true,
                 key: selectedItemKey,
@@ -203,7 +179,7 @@ void main() {
               ),
               ZetaAccordionItem(
                 title: 'Item 2',
-                isOpen: false,
+                isExpanded: false,
                 isSelectable: true,
                 isSelected: false,
                 key: unselectedItemKey,
@@ -242,7 +218,7 @@ void main() {
             children: [
               ZetaAccordionItem(
                 title: 'Item 1',
-                isOpen: false,
+                isExpanded: false,
                 isNavigation: true,
                 key: navigationItemKey,
               ),
@@ -272,14 +248,14 @@ void main() {
                 width: 328,
                 child: ZetaAccordion(
                   children: [
-                    ZetaAccordionItem(title: 'Item 1', isOpen: false, child: Text('Content 1')),
-                    ZetaAccordionItem(title: 'Item 2', isOpen: false, child: Text('Content 2')),
-                    ZetaAccordionItem(title: 'Item 3', isOpen: false, child: Text('Content 3')),
-                    ZetaAccordionItem(title: 'Item 4', isOpen: false, child: Text('Content 4')),
-                    ZetaAccordionItem(title: 'Item 5', isOpen: false, child: Text('Content 5')),
-                    ZetaAccordionItem(title: 'Item 6', isOpen: false, child: Text('Content 6')),
-                    ZetaAccordionItem(title: 'Item 7', isOpen: false, child: Text('Content 7')),
-                    ZetaAccordionItem(title: 'Item 8', isOpen: false, child: Text('Content 8')),
+                    ZetaAccordionItem(title: 'Item 1', isExpanded: false, child: Text('Content 1')),
+                    ZetaAccordionItem(title: 'Item 2', isExpanded: false, child: Text('Content 2')),
+                    ZetaAccordionItem(title: 'Item 3', isExpanded: false, child: Text('Content 3')),
+                    ZetaAccordionItem(title: 'Item 4', isExpanded: false, child: Text('Content 4')),
+                    ZetaAccordionItem(title: 'Item 5', isExpanded: false, child: Text('Content 5')),
+                    ZetaAccordionItem(title: 'Item 6', isExpanded: false, child: Text('Content 6')),
+                    ZetaAccordionItem(title: 'Item 7', isExpanded: false, child: Text('Content 7')),
+                    ZetaAccordionItem(title: 'Item 8', isExpanded: false, child: Text('Content 8')),
                   ],
                 ),
               ),
@@ -305,14 +281,14 @@ void main() {
                 child: ZetaAccordion(
                   inCard: true,
                   children: [
-                    ZetaAccordionItem(title: 'Item 1', isOpen: false, child: Text('Content 1')),
-                    ZetaAccordionItem(title: 'Item 2', isOpen: false, child: Text('Content 2')),
-                    ZetaAccordionItem(title: 'Item 3', isOpen: false, child: Text('Content 3')),
-                    ZetaAccordionItem(title: 'Item 4', isOpen: false, child: Text('Content 4')),
-                    ZetaAccordionItem(title: 'Item 5', isOpen: false, child: Text('Content 5')),
-                    ZetaAccordionItem(title: 'Item 6', isOpen: false, child: Text('Content 6')),
-                    ZetaAccordionItem(title: 'Item 7', isOpen: false, child: Text('Content 7')),
-                    ZetaAccordionItem(title: 'Item 8', isOpen: false, child: Text('Content 8')),
+                    ZetaAccordionItem(title: 'Item 1', isExpanded: false, child: Text('Content 1')),
+                    ZetaAccordionItem(title: 'Item 2', isExpanded: false, child: Text('Content 2')),
+                    ZetaAccordionItem(title: 'Item 3', isExpanded: false, child: Text('Content 3')),
+                    ZetaAccordionItem(title: 'Item 4', isExpanded: false, child: Text('Content 4')),
+                    ZetaAccordionItem(title: 'Item 5', isExpanded: false, child: Text('Content 5')),
+                    ZetaAccordionItem(title: 'Item 6', isExpanded: false, child: Text('Content 6')),
+                    ZetaAccordionItem(title: 'Item 7', isExpanded: false, child: Text('Content 7')),
+                    ZetaAccordionItem(title: 'Item 8', isExpanded: false, child: Text('Content 8')),
                   ],
                 ),
               ),
@@ -356,7 +332,7 @@ void main() {
             children: [
               ZetaAccordion(
                 children: [
-                  ZetaAccordionItem(title: 'Item 1', isOpen: true, child: SizedBox(width: 388, height: 354)),
+                  ZetaAccordionItem(title: 'Item 1', isExpanded: true, child: SizedBox(width: 388, height: 354)),
                 ],
               ),
             ],
@@ -377,7 +353,7 @@ void main() {
           home: ZetaAccordion(
             inCard: true,
             children: [
-              ZetaAccordionItem(title: 'Item 1', isOpen: false, child: Text('Content 1')),
+              ZetaAccordionItem(title: 'Item 1', isExpanded: false, child: Text('Content 1')),
             ],
           ),
         ),
@@ -410,7 +386,7 @@ void main() {
           home: ZetaAccordion(
             inCard: false,
             children: [
-              ZetaAccordionItem(title: 'Item 1', isOpen: false, child: Text('Content 1')),
+              ZetaAccordionItem(title: 'Item 1', isExpanded: false, child: Text('Content 1')),
             ],
           ),
         ),
@@ -479,13 +455,14 @@ void main() {
       expect(accordionRect.height, 112);
     });
   });
+
   group('Interaction Tests', () {
     testWidgets('Accordion item expands and collapses on tap', (WidgetTester tester) async {
       await tester.pumpWidget(
         const TestApp(
           home: ZetaAccordion(
             children: [
-              ZetaAccordionItem(title: 'Item 1', isOpen: false, child: Text('Content 1')),
+              ZetaAccordionItem(title: 'Item 1', isExpanded: false, child: Text('Content 1')),
             ],
           ),
         ),
@@ -530,7 +507,7 @@ void main() {
             children: [
               ZetaAccordionItem(
                 title: 'Item 1',
-                isOpen: false,
+                isExpanded: false,
                 isSelectable: true,
                 isSelected: false,
                 child: Text('Content 1'),
@@ -568,7 +545,7 @@ void main() {
             children: [
               ZetaAccordionItem(
                 title: 'Item 1',
-                isOpen: false,
+                isExpanded: false,
                 isSelectable: true,
                 isSelected: false,
                 child: Text('Content 1'),
@@ -614,7 +591,7 @@ void main() {
                 children: [
                   ZetaAccordionItem(
                     title: 'Item 1',
-                    isOpen: false,
+                    isExpanded: false,
                     isNavigation: true,
                   ),
                 ],
@@ -639,6 +616,173 @@ void main() {
       final newSize = tester.getSize(itemFinder);
       expect(newSize, initialSize);
     });
+
+    testWidgets('Multiple items can be selected', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        const TestApp(
+          home: ZetaAccordion(
+            selectMultiple: true,
+            children: [
+              ZetaAccordionItem(title: 'Item 1', isSelectable: true, isSelected: false),
+              ZetaAccordionItem(title: 'Item 2', isSelectable: true, isSelected: false),
+            ],
+          ),
+        ),
+      );
+
+      final accordionFinder = find.byType(ZetaAccordion);
+      final item1Finder = find.descendant(of: accordionFinder, matching: find.text('Item 1'));
+      final item2Finder = find.descendant(of: accordionFinder, matching: find.text('Item 2'));
+
+      expect(item1Finder, findsOneWidget);
+      expect(item2Finder, findsOneWidget);
+
+      // Select first item
+      await tester.tap(item1Finder);
+      await tester.pumpAndSettle();
+
+      // // Select second item
+      await tester.tap(item2Finder);
+      await tester.pumpAndSettle();
+
+      final item1UIFinder = find.ancestor(of: item1Finder, matching: find.byType(AccordionItemUI));
+      final item2UIFinder = find.ancestor(of: item2Finder, matching: find.byType(AccordionItemUI));
+
+      final item1Widget = tester.widget<AccordionItemUI>(item1UIFinder);
+      final item2Widget = tester.widget<AccordionItemUI>(item2UIFinder);
+
+      expect(item2Widget.isSelected, isTrue);
+      expect(item1Widget.isSelected, isTrue);
+    });
+
+    testWidgets('Multiple items can be expanded', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        const TestApp(
+          home: ZetaAccordion(
+            expandMultiple: true,
+            children: [
+              ZetaAccordionItem(title: 'Item 1', child: Text('Content 1')),
+              ZetaAccordionItem(title: 'Item 2', child: Text('Content 2')),
+            ],
+          ),
+        ),
+      );
+
+      final accordionFinder = find.byType(ZetaAccordion);
+      final item1Finder = find.descendant(of: accordionFinder, matching: find.text('Item 1'));
+      final item2Finder = find.descendant(of: accordionFinder, matching: find.text('Item 2'));
+
+      expect(item1Finder, findsOneWidget);
+      expect(item2Finder, findsOneWidget);
+
+      // Select first item
+      await tester.tap(item1Finder);
+      await tester.pumpAndSettle();
+
+      // // Select second item
+      await tester.tap(item2Finder);
+      await tester.pumpAndSettle();
+
+      final item1UIFinder = find.ancestor(of: item1Finder, matching: find.byType(AccordionItemUI));
+      final item2UIFinder = find.ancestor(of: item2Finder, matching: find.byType(AccordionItemUI));
+
+      final item1Widget = tester.widget<AccordionItemUI>(item1UIFinder);
+      final item2Widget = tester.widget<AccordionItemUI>(item2UIFinder);
+
+      expect(item2Widget.isExpanded, isTrue);
+      expect(item1Widget.isExpanded, isTrue);
+    });
+
+    testWidgets('Only a single item can be selected', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        const TestApp(
+          home: ZetaAccordion(
+            selectMultiple: false,
+            children: [
+              ZetaAccordionItem(
+                title: 'Item 1',
+                isSelectable: true,
+                isSelected: false,
+              ),
+              ZetaAccordionItem(
+                title: 'Item 2',
+                isSelectable: true,
+                isSelected: false,
+              ),
+            ],
+          ),
+        ),
+      );
+
+      final accordionFinder = find.byType(ZetaAccordion);
+      final item1Finder = find.descendant(of: accordionFinder, matching: find.text('Item 1'));
+      final item2Finder = find.descendant(of: accordionFinder, matching: find.text('Item 2'));
+
+      expect(item1Finder, findsOneWidget);
+      expect(item2Finder, findsOneWidget);
+
+      // Select first item
+      await tester.tap(item1Finder);
+      await tester.pumpAndSettle();
+
+      // // Select second item
+      await tester.tap(item2Finder);
+      await tester.pumpAndSettle();
+
+      final item1UIFinder = find.ancestor(of: item1Finder, matching: find.byType(AccordionItemUI));
+      final item2UIFinder = find.ancestor(of: item2Finder, matching: find.byType(AccordionItemUI));
+
+      final item1Widget = tester.widget<AccordionItemUI>(item1UIFinder);
+      final item2Widget = tester.widget<AccordionItemUI>(item2UIFinder);
+
+      expect(item1Widget.isSelected, isFalse);
+      expect(item2Widget.isSelected, isTrue);
+    });
+    testWidgets('Only a single item can be expanded', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        const TestApp(
+          home: ZetaAccordion(
+            expandMultiple: false,
+            children: [
+              ZetaAccordionItem(
+                title: 'Item 1',
+                isSelectable: false,
+                child: Text('Content 1'),
+              ),
+              ZetaAccordionItem(
+                title: 'Item 2',
+                isSelectable: false,
+                child: Text('Content 2'),
+              ),
+            ],
+          ),
+        ),
+      );
+
+      final accordionFinder = find.byType(ZetaAccordion);
+      final item1Finder = find.descendant(of: accordionFinder, matching: find.text('Item 1'));
+      final item2Finder = find.descendant(of: accordionFinder, matching: find.text('Item 2'));
+
+      expect(item1Finder, findsOneWidget);
+      expect(item2Finder, findsOneWidget);
+
+      // Select first item
+      await tester.tap(item1Finder);
+      await tester.pumpAndSettle();
+
+      // // Select second item
+      await tester.tap(item2Finder);
+      await tester.pumpAndSettle();
+
+      final item1UIFinder = find.ancestor(of: item1Finder, matching: find.byType(AccordionItemUI));
+      final item2UIFinder = find.ancestor(of: item2Finder, matching: find.byType(AccordionItemUI));
+
+      final item1Widget = tester.widget<AccordionItemUI>(item1UIFinder);
+      final item2Widget = tester.widget<AccordionItemUI>(item2UIFinder);
+
+      expect(item1Widget.isExpanded, isFalse);
+      expect(item2Widget.isExpanded, isTrue);
+    });
   });
   group('Golden Tests', () {
     goldenTest(
@@ -662,7 +806,7 @@ void main() {
             children: [
               ZetaAccordionItem(
                 title: 'Scanner Configuration',
-                isOpen: true,
+                isExpanded: true,
                 child: accordionContentExample,
               ),
               ...otherItems,
@@ -683,7 +827,7 @@ void main() {
             children: [
               ZetaAccordionItem(
                 title: 'Scanner Configuration',
-                isOpen: true,
+                isExpanded: true,
                 child: accordionContentExample,
               ),
               ...otherItems,
@@ -704,7 +848,7 @@ void main() {
             children: [
               ZetaAccordionItem(
                 title: 'Scanner Configuration',
-                isOpen: false,
+                isExpanded: false,
                 header: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   spacing: 8,
@@ -733,7 +877,7 @@ void main() {
             children: [
               ZetaAccordionItem(
                 title: 'Scanner Configuration',
-                isOpen: true,
+                isExpanded: true,
                 header: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   spacing: 8,
@@ -762,7 +906,7 @@ void main() {
             children: [
               ZetaAccordionItem(
                 title: 'Scanner Configuration',
-                isOpen: false,
+                isExpanded: false,
                 header: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   spacing: 8,
@@ -792,7 +936,7 @@ void main() {
             children: [
               ZetaAccordionItem(
                 title: 'Scanner Configuration',
-                isOpen: true,
+                isExpanded: true,
                 header: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   spacing: 8,
@@ -822,7 +966,7 @@ void main() {
             children: [
               ZetaAccordionItem(
                 title: 'Scanner Configuration',
-                isOpen: false,
+                isExpanded: false,
                 isSelectable: true,
                 isSelected: true,
                 child: accordionContentExample,
@@ -845,7 +989,7 @@ void main() {
             children: [
               ZetaAccordionItem(
                 title: 'Scanner Configuration',
-                isOpen: true,
+                isExpanded: true,
                 isSelectable: true,
                 isSelected: true,
                 child: accordionContentExample,
@@ -862,3 +1006,29 @@ void main() {
   });
   group('Performance Tests', () {});
 }
+
+Widget accordionContentExample = Builder(
+  builder: (context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        const Text('Scan Mode'),
+        ZetaDropdown(
+          items: [
+            ZetaDropdownItem(label: 'Continuous', value: 'Continuous'),
+            ZetaDropdownItem(label: 'Continuous1', value: 'Continuous1'),
+            ZetaDropdownItem(label: 'Continuous2', value: 'Continuous2'),
+          ],
+          onChange: (_) {},
+        ),
+      ],
+    );
+  },
+);
+
+List<ZetaAccordionItem> otherItems = [
+  const ZetaAccordionItem(title: 'Connectivity & Network'),
+  const ZetaAccordionItem(title: 'Light & Sensor Calibration'),
+  const ZetaAccordionItem(title: 'Firmware & Updates'),
+];

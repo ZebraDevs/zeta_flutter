@@ -19,7 +19,7 @@ class ZetaAccordion extends ZetaStatefulWidget {
     super.rounded,
     required this.children,
     this.inCard = false,
-    this.openMultiple = false,
+    this.expandMultiple = false,
     this.selectMultiple = false,
   });
 
@@ -33,7 +33,7 @@ class ZetaAccordion extends ZetaStatefulWidget {
 
   /// Determines if multiple items can be open at the same time.
   /// When `false`, only one accordion item can be open at a time.
-  final bool openMultiple;
+  final bool expandMultiple;
 
   /// Determines if multiple accordion items can be selected.
   final bool selectMultiple;
@@ -46,7 +46,7 @@ class ZetaAccordion extends ZetaStatefulWidget {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty<bool>('inCard', inCard))
-      ..add(DiagnosticsProperty<bool>('openMultiple', openMultiple))
+      ..add(DiagnosticsProperty<bool>('openMultiple', expandMultiple))
       ..add(DiagnosticsProperty<bool>('selectMultiple', selectMultiple));
   }
 }
@@ -60,8 +60,8 @@ class _ZetaAccordionState extends State<ZetaAccordion> {
     super.initState();
     final children = widget.children;
     if (children != null) {
-      if (!widget.openMultiple) {
-        final index = children.indexWhere((item) => item.isOpen);
+      if (!widget.expandMultiple) {
+        final index = children.indexWhere((item) => item.isExpanded);
         _openIndex = index >= 0 ? index : null;
       }
       if (!widget.selectMultiple) {
@@ -72,7 +72,7 @@ class _ZetaAccordionState extends State<ZetaAccordion> {
   }
 
   void _handleItemExpansion(int index, bool isExpanded) {
-    if (!widget.openMultiple) {
+    if (!widget.expandMultiple) {
       setState(() => _openIndex = isExpanded ? index : null);
     }
   }
@@ -99,15 +99,30 @@ class _ZetaAccordionState extends State<ZetaAccordion> {
           .entries
           .map((entry) {
             final index = entry.key;
+            final item = entry.value;
 
-            return _ZetaAccordionItemWrapper(
-              key: entry.value.key ?? ValueKey(index),
-              item: entry.value,
-              isExpanded: widget.openMultiple ? null : (_openIndex == index),
-              isSelected: widget.selectMultiple ? null : (_selectedIndex == index),
-              onExpansionChanged: widget.openMultiple ? null : () => _handleItemExpansion(index, _openIndex != index),
+            // Determine if parent controls state or if item manages its own state
+            final parentControlsExpansion = !widget.expandMultiple;
+            final parentControlsSelection = !widget.selectMultiple;
+
+            final isExpanded = parentControlsExpansion ? (_openIndex == index) : null;
+            final isSelected = parentControlsSelection ? (_selectedIndex == index) : null;
+
+            // When both are self-managed, let the item handle its own state completely
+            if (!parentControlsExpansion && !parentControlsSelection) {
+              return item;
+            }
+
+            // Create a simplified wrapper for parent-controlled scenarios
+            return _AccordionItemController(
+              key: item.key ?? ValueKey(index),
+              item: item,
+              parentIsExpanded: isExpanded,
+              parentIsSelected: isSelected,
+              onExpansionChanged:
+                  parentControlsExpansion ? () => _handleItemExpansion(index, _openIndex != index) : null,
               onSelectionChanged:
-                  widget.selectMultiple ? null : () => _handleItemSelection(index, _selectedIndex != index),
+                  parentControlsSelection ? () => _handleItemSelection(index, _selectedIndex != index) : null,
             );
           })
           .divide(Divider(height: 0, color: widget.inCard ? zeta.colors.borderSubtle : Colors.transparent))
@@ -131,66 +146,118 @@ class _ZetaAccordionState extends State<ZetaAccordion> {
   }
 }
 
-/// Simple wrapper that controls accordion item state
-class _ZetaAccordionItemWrapper extends StatelessWidget {
-  const _ZetaAccordionItemWrapper({
+class _AccordionItemController extends StatefulWidget {
+  const _AccordionItemController({
     required this.item,
-    required this.isExpanded,
-    required this.isSelected,
+    required this.parentIsExpanded,
+    required this.parentIsSelected,
     required this.onExpansionChanged,
     required this.onSelectionChanged,
     super.key,
   });
 
   final ZetaAccordionItem item;
-  final bool? isExpanded;
-  final bool? isSelected;
+  final bool? parentIsExpanded;
+  final bool? parentIsSelected;
   final VoidCallback? onExpansionChanged;
   final VoidCallback? onSelectionChanged;
 
   @override
+  State<_AccordionItemController> createState() => _AccordionItemControllerState();
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty<bool?>('parentIsExpanded', parentIsExpanded))
+      ..add(DiagnosticsProperty<bool?>('parentIsSelected', parentIsSelected))
+      ..add(ObjectFlagProperty<VoidCallback?>.has('onExpansionChanged', onExpansionChanged))
+      ..add(ObjectFlagProperty<VoidCallback?>.has('onSelectionChanged', onSelectionChanged));
+  }
+}
+
+class _AccordionItemControllerState extends State<_AccordionItemController> {
+  late bool _selfManagedExpanded;
+  late bool _selfManagedSelected;
+
+  @override
+  void initState() {
+    super.initState();
+    _selfManagedExpanded = widget.item.isExpanded;
+    _selfManagedSelected = widget.item.isSelected;
+  }
+
+  @override
+  void didUpdateWidget(_AccordionItemController oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    // Update self-managed state if the item's initial state changes
+    if (widget.item.isExpanded != oldWidget.item.isExpanded) {
+      _selfManagedExpanded = widget.item.isExpanded;
+    }
+    if (widget.item.isSelected != oldWidget.item.isSelected) {
+      _selfManagedSelected = widget.item.isSelected;
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
-    // When both expansion and selection are self-managed, let the item handle its own state completely
-    if (this.isExpanded == null && this.isSelected == null) {
-      return item;
+    // Use parent state if controlled, otherwise use self-managed state
+    final isExpanded = widget.parentIsExpanded ?? _selfManagedExpanded;
+    final isSelected = widget.parentIsSelected ?? _selfManagedSelected;
+
+    void handleExpansion() {
+      if (widget.parentIsExpanded != null) {
+        // Parent controls expansion
+        widget.onExpansionChanged?.call();
+      } else {
+        // Self-managed expansion
+        setState(() => _selfManagedExpanded = !_selfManagedExpanded);
+      }
     }
 
-    // Use parent-controlled state if available, otherwise use item's initial state
-    final isExpanded = this.isExpanded ?? item.isOpen;
-    final isSelected = this.isSelected ?? item.isSelected;
+    void handleSelection() {
+      if (widget.parentIsSelected != null) {
+        // Parent controls selection
+        widget.onSelectionChanged?.call();
+      } else {
+        // Self-managed selection
+        setState(() => _selfManagedSelected = !_selfManagedSelected);
+      }
+    }
 
     void handleTap() {
-      item.onTap?.call();
-      if (item.isSelectable) {
-        onSelectionChanged?.call();
-      } else if (!item.isNavigation) {
-        onExpansionChanged?.call();
+      widget.item.onTap?.call();
+      if (widget.item.isSelectable) {
+        handleSelection();
+      } else if (!widget.item.isNavigation) {
+        handleExpansion();
       }
     }
 
     void handleLeftTap() {
-      item.onTap?.call();
-      onExpansionChanged?.call();
+      widget.item.onTap?.call();
+      handleExpansion();
     }
 
     void handleRightTap() {
-      item.onTap?.call();
-      onSelectionChanged?.call();
+      widget.item.onTap?.call();
+      handleSelection();
     }
 
-    final wholeTileTap = !item.isSelectable || (item.isSelectable && item.child == null) ? handleTap : null;
-    final leftTap = item.isSelectable && item.child != null ? handleLeftTap : null;
-    final rightTap = item.isSelectable && item.child != null ? handleRightTap : null;
+    final wholeTileTap =
+        !widget.item.isSelectable || (widget.item.isSelectable && widget.item.child == null) ? handleTap : null;
+    final leftTap = widget.item.isSelectable && widget.item.child != null ? handleLeftTap : null;
+    final rightTap = widget.item.isSelectable && widget.item.child != null ? handleRightTap : null;
 
     return AccordionItemUI(
-      item: item,
+      item: widget.item,
       isExpanded: isExpanded,
       isSelected: isSelected,
       wholeTileTap: wholeTileTap,
       leftTap: leftTap,
       rightTap: rightTap,
-      expandSemanticLabel: item.expandSemanticLabel,
-      collapseSemanticLabel: item.collapseSemanticLabel,
+      expandSemanticLabel: widget.item.expandSemanticLabel,
+      collapseSemanticLabel: widget.item.collapseSemanticLabel,
     );
   }
 
@@ -198,9 +265,9 @@ class _ZetaAccordionItemWrapper extends StatelessWidget {
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty<bool?>('isExpanded', isExpanded))
-      ..add(DiagnosticsProperty<bool?>('isSelected', isSelected))
-      ..add(ObjectFlagProperty<VoidCallback?>.has('onExpansionChanged', onExpansionChanged))
-      ..add(ObjectFlagProperty<VoidCallback?>.has('onSelectionChanged', onSelectionChanged));
+      ..add(DiagnosticsProperty<bool>('_selfManagedExpanded', _selfManagedExpanded))
+      ..add(DiagnosticsProperty<bool>('_selfManagedSelected', _selfManagedSelected))
+      ..add(DiagnosticsProperty<bool?>('parentIsExpanded', widget.parentIsExpanded))
+      ..add(DiagnosticsProperty<bool?>('parentIsSelected', widget.parentIsSelected));
   }
 }
