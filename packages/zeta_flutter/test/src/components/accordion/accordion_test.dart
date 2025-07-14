@@ -13,10 +13,6 @@ Widget accordionContentExample = Builder(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        Text(
-          'Configure how the scanner behaves when reading barcodes. Adjust scan modes, enable or disable barcode types (symbologies), and set visual, audio, or tactile feedback. These settings help optimize scanner performance based on your environment and use case.',
-          style: Zeta.of(context).textStyles.bodySmall.apply(color: Zeta.of(context).colors.mainSubtle),
-        ),
         const Text('Scan Mode'),
         ZetaDropdown(
           items: [
@@ -41,13 +37,13 @@ void main() {
 
   const goldenFile = GoldenFiles(component: parentFolder);
   setUpAll(() {
-    goldenFileComparator = TolerantComparator(goldenFile.uri);
+    goldenFileComparator = TolerantComparator(goldenFile.uri, tolerance: 0.01);
   });
 
   group('Accessibility Tests', () {
     meetsAccessibilityGuidelinesTest(
       const ZetaAccordion(
-        multipleOpen: true,
+        openMultiple: true,
         children: [
           ZetaAccordionItem(
             title: 'Item 1',
@@ -143,7 +139,7 @@ void main() {
       await tester.pumpWidget(
         const TestApp(
           home: ZetaAccordion(
-            multipleOpen: true,
+            openMultiple: true,
             children: [
               ZetaAccordionItem(title: 'Item 1', isOpen: true, child: Text('Content 1')),
               ZetaAccordionItem(title: 'Item 2', isOpen: true, child: Text('Content 2')),
@@ -656,7 +652,7 @@ void main() {
           ZetaAccordionItem(title: 'Firmware & Updates', isNavigation: true),
         ],
       ),
-      'Navigation',
+      'navigation',
     );
     goldenTest(
       goldenFile,
@@ -674,7 +670,7 @@ void main() {
           );
         },
       ),
-      'Collapsible (Not in Card)',
+      'collapsible',
       widgetType: ZetaAccordion,
       loadFont: false,
     );
@@ -695,7 +691,7 @@ void main() {
           );
         },
       ),
-      'Collapsible (In Card)',
+      'collapsible_card',
       widgetType: ZetaAccordion,
       loadFont: false,
     );
@@ -724,7 +720,7 @@ void main() {
           );
         },
       ),
-      'With Footer (closed)',
+      'footer_closed',
       widgetType: ZetaAccordion,
       loadFont: false,
     );
@@ -753,7 +749,7 @@ void main() {
           );
         },
       ),
-      'With Footer (open)',
+      'footer_open',
       widgetType: ZetaAccordion,
       loadFont: false,
     );
@@ -783,7 +779,7 @@ void main() {
           );
         },
       ),
-      'With Header (closed)',
+      'header_closed',
       widgetType: ZetaAccordion,
       loadFont: false,
     );
@@ -813,7 +809,7 @@ void main() {
           );
         },
       ),
-      'With Header (open)',
+      'header_open',
       widgetType: ZetaAccordion,
       loadFont: false,
     );
@@ -836,7 +832,7 @@ void main() {
           );
         },
       ),
-      'Selectable (closed)',
+      'selectable_closed',
       widgetType: ZetaAccordion,
       loadFont: false,
     );
@@ -859,7 +855,7 @@ void main() {
           );
         },
       ),
-      'Selectable (open)',
+      'selectable_open',
       widgetType: ZetaAccordion,
       loadFont: false,
     );

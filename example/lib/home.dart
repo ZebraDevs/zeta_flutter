@@ -220,7 +220,9 @@ class _HomeState extends State<Home> {
               ),
             ),
           ],
-        ).paddingAll(Zeta.of(context).spacing.medium,
+        ).paddingAll(
+          Zeta.of(context).spacing.medium,
+        ),
       ),
     );
   }

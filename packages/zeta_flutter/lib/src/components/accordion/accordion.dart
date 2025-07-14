@@ -19,21 +19,21 @@ class ZetaAccordion extends ZetaStatefulWidget {
     super.rounded,
     required this.children,
     this.inCard = false,
-    this.multipleOpen = false,
+    this.openMultiple = false,
     this.selectMultiple = false,
   });
 
   /// Items to be displayed in the accordion.
   final List<ZetaAccordionItem>? children;
 
-  /// Determines if the [ZetaAccordion]s should be in a card container.
+  /// Determines if the [ZetaAccordion] should be in a card container.
   ///
   /// Defaults to `false`.
   final bool inCard;
 
   /// Determines if multiple items can be open at the same time.
   /// When `false`, only one accordion item can be open at a time.
-  final bool multipleOpen;
+  final bool openMultiple;
 
   /// Determines if multiple accordion items can be selected.
   final bool selectMultiple;
@@ -46,7 +46,7 @@ class ZetaAccordion extends ZetaStatefulWidget {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty<bool>('inCard', inCard))
-      ..add(DiagnosticsProperty<bool>('multipleOpen', multipleOpen))
+      ..add(DiagnosticsProperty<bool>('openMultiple', openMultiple))
       ..add(DiagnosticsProperty<bool>('selectMultiple', selectMultiple));
   }
 }
@@ -60,7 +60,7 @@ class _ZetaAccordionState extends State<ZetaAccordion> {
     super.initState();
     final children = widget.children;
     if (children != null) {
-      if (!widget.multipleOpen) {
+      if (!widget.openMultiple) {
         final index = children.indexWhere((item) => item.isOpen);
         _openIndex = index >= 0 ? index : null;
       }
@@ -72,7 +72,7 @@ class _ZetaAccordionState extends State<ZetaAccordion> {
   }
 
   void _handleItemExpansion(int index, bool isExpanded) {
-    if (!widget.multipleOpen) {
+    if (!widget.openMultiple) {
       setState(() => _openIndex = isExpanded ? index : null);
     }
   }
@@ -103,9 +103,9 @@ class _ZetaAccordionState extends State<ZetaAccordion> {
             return _ZetaAccordionItemWrapper(
               key: entry.value.key ?? ValueKey(index),
               item: entry.value,
-              isExpanded: widget.multipleOpen ? null : (_openIndex == index),
+              isExpanded: widget.openMultiple ? null : (_openIndex == index),
               isSelected: widget.selectMultiple ? null : (_selectedIndex == index),
-              onExpansionChanged: widget.multipleOpen ? null : () => _handleItemExpansion(index, _openIndex != index),
+              onExpansionChanged: widget.openMultiple ? null : () => _handleItemExpansion(index, _openIndex != index),
               onSelectionChanged:
                   widget.selectMultiple ? null : () => _handleItemSelection(index, _selectedIndex != index),
             );

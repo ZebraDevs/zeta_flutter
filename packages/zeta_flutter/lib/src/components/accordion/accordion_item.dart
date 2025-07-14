@@ -59,7 +59,7 @@ class ZetaAccordionItem extends ZetaStatefulWidget {
   /// Title of the accordion item.
   final String title;
 
-  /// Child widget displayed when the accordion item is expanded.
+  /// Content displayed when the accordion item is expanded.
   final Widget? child;
 
   /// Whether the accordion item is initially open.
@@ -68,7 +68,7 @@ class ZetaAccordionItem extends ZetaStatefulWidget {
   /// Callback triggered when the accordion item is tapped.
   final VoidCallback? onTap;
 
-  /// Whether the accordion item is selected.
+  /// Whether the accordion item is initially selected.
   final bool isSelected;
 
   /// Whether the accordion item is selectable.

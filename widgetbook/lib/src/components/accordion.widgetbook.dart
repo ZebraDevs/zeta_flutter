@@ -30,7 +30,7 @@ Widget accordion(BuildContext context) {
             label: 'In Card',
             initialValue: false,
           ),
-          multipleOpen: context.knobs.boolean(
+          openMultiple: context.knobs.boolean(
             label: 'Multiple Open',
             initialValue: false,
           ),
