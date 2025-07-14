@@ -192,41 +192,36 @@ class _HomeState extends State<Home> {
       name: 'zeta_flutter v1.0.0',
       // x-release-please-end
       child: SingleChildScrollView(
-        child: Column(
+        child: ZetaAccordion(
+          inCard: true,
           children: [
-            ExampleListTile(name: 'Components', children: _components),
-            ExampleListTile(name: 'Theme', children: _theme),
-            ExampleListTile(name: 'Assets', children: _assets),
+            ZetaAccordionItem(
+              title: 'Components',
+              child: ZetaAccordion(
+                children: _components
+                    .map((e) => ZetaAccordionItem.navigation(title: e.name, onTap: () => context.go('/${e.name}')))
+                    .toList(),
+              ),
+            ),
+            ZetaAccordionItem(
+              title: 'Assets',
+              child: ZetaAccordion(
+                children: _assets
+                    .map((e) => ZetaAccordionItem.navigation(title: e.name, onTap: () => context.go('/${e.name}')))
+                    .toList(),
+              ),
+            ),
+            ZetaAccordionItem(
+              title: 'Theme',
+              child: ZetaAccordion(
+                children: _theme
+                    .map((e) => ZetaAccordionItem.navigation(title: e.name, onTap: () => context.go('/${e.name}')))
+                    .toList(),
+              ),
+            ),
           ],
-        ),
+        ).paddingAll(Zeta.of(context).spacing.medium,
       ),
-    );
-  }
-}
-
-class ExampleListTile extends StatelessWidget {
-  const ExampleListTile({
-    super.key,
-    required this.children,
-    required this.name,
-  });
-
-  final List<Component> children;
-  final String name;
-
-  @override
-  Widget build(BuildContext context) {
-    return ZetaAccordion(
-      title: name,
-      child: Column(
-          children: children
-              .map(
-                (item) => ZetaListItem(
-                  title: Text(item.name),
-                  onTap: () => context.go('/${item.name}'),
-                ),
-              )
-              .toList()),
     );
   }
 }

@@ -3,32 +3,66 @@ import 'package:widgetbook/widgetbook.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 import 'package:zeta_flutter/zeta_flutter.dart';
 import 'package:zeta_widgetbook/main.dart';
+import 'package:zeta_widgetbook/src/utils/utils.dart';
 
 @widgetbook.UseCase(
   name: 'Accordion',
   type: ZetaAccordion,
   path: '$componentsPath/Accordion',
   designLink:
-      'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=875-10318&t=N8coJ9AFu6DS3mOF-4',
+      'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=38101-167213&t=6Gzuj7ryUE4323bM-4',
 )
 Widget accordion(BuildContext context) {
-  return Column(
-    mainAxisSize: MainAxisSize.min,
-    children: [
-      ZetaAccordion(
-        title: context.knobs.string(label: 'Accordion Title', initialValue: 'Title'),
-        contained: context.knobs.boolean(label: 'Contained'),
-        child: context.knobs.boolean(label: 'Disabled')
-            ? null
-            : const Column(
-                children: [
-                  ListTile(title: Text('Item One')),
-                  ListTile(title: Text('Item  two')),
-                  ListTile(title: Text('Item three')),
-                  ListTile(title: Text('Item four')),
-                ],
-              ),
+  final bool selectable = context.knobs.boolean(
+    label: 'Selectable',
+    initialValue: true,
+  );
+  final bool navigation = context.knobs.boolean(
+    label: 'Navigation',
+    initialValue: false,
+  );
+  return SmallContentWrapper(
+    child: SizedBox(
+      height: MediaQuery.of(context).size.height * 0.9,
+      child: SingleChildScrollView(
+        child: ZetaAccordion(
+          inCard: context.knobs.boolean(
+            label: 'In Card',
+            initialValue: false,
+          ),
+          multipleOpen: context.knobs.boolean(
+            label: 'Multiple Open',
+            initialValue: false,
+          ),
+          selectMultiple: context.knobs.boolean(
+            label: 'Select Multiple',
+            initialValue: false,
+          ),
+          children: [
+            ZetaAccordionItem(
+              title: 'Accordion Item 1',
+              onTap: () => {},
+              isSelectable: selectable && !navigation,
+              isNavigation: navigation,
+              child: navigation ? null : Placeholder(),
+            ),
+            ZetaAccordionItem(
+              title: 'Accordion Item 1',
+              onTap: () => {},
+              isSelectable: selectable && !navigation,
+              isNavigation: navigation,
+              child: navigation ? null : Placeholder(),
+            ),
+            ZetaAccordionItem(
+              title: 'Accordion Item 1',
+              onTap: () => {},
+              isSelectable: selectable && !navigation,
+              isNavigation: navigation,
+              child: navigation ? null : Placeholder(),
+            ),
+          ],
+        ),
       ),
-    ],
+    ),
   );
 }

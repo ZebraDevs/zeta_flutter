@@ -21,10 +21,9 @@ void main() {
     await tester.pumpWidget(
       TestApp(
         rounded: true,
-        home: ZetaAccordion(
+        home: ZetaCardContainer(
           key: key,
-          title: 'Test Accordion',
-          child: const ZetaStatusLabel(label: 'Label'),
+          content: const ZetaStatusLabel(label: 'Label'),
         ),
       ),
     );
@@ -47,9 +46,8 @@ void main() {
     await tester.pumpWidget(
       const TestApp(
         rounded: false,
-        home: ZetaAccordion(
-          title: 'Test Accordion',
-          child: ZetaStatusLabel(label: 'Label'),
+        home: ZetaCardContainer(
+          content: ZetaStatusLabel(label: 'Label'),
         ),
       ),
     );
@@ -71,10 +69,9 @@ void main() {
     await tester.pumpWidget(
       TestApp(
         rounded: false,
-        home: ZetaAccordion(
+        home: ZetaCardContainer(
           key: key,
-          title: 'Test Accordion',
-          child: const ZetaStatusLabel(label: 'Label', rounded: true),
+          content: const ZetaStatusLabel(label: 'Label', rounded: true),
         ),
       ),
     );
@@ -104,9 +101,8 @@ void main() {
             ZetaStatusLabel(label: 'Label', key: sharpKey),
             ZetaRoundedScope(
               rounded: true,
-              child: ZetaAccordion(
-                title: 'Test Accordion',
-                child: ZetaStatusLabel(label: 'Label', key: roundKey),
+              child: ZetaCardContainer(
+                content: ZetaStatusLabel(label: 'Label', key: roundKey),
               ),
             ),
           ],
@@ -148,9 +144,8 @@ void main() {
             ZetaStatusLabel(label: 'Label', key: sharpKey),
             ZetaRoundedScope(
               rounded: true,
-              child: ZetaAccordion(
-                title: 'Test Accordion',
-                child: ZetaRoundedScope(rounded: false, child: ZetaStatusLabel(label: 'Label', key: sharpKey2)),
+              child: ZetaCardContainer(
+                content: ZetaRoundedScope(rounded: false, child: ZetaStatusLabel(label: 'Label', key: sharpKey2)),
               ),
             ),
           ],

@@ -2,13 +2,14 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../../../zeta_flutter.dart';
+import 'accordion_item_ui.dart';
 
 /// The accordion is a control element comprising a vertically stacked list of items,
 /// such as labels or thumbnails. Each item can be "expanded" or "collapsed" to reveal
 /// the content associated with that item. There can be zero expanded items, exactly one,
 /// or more than one item expanded at a time, depending on the configuration.
 ///
-/// Figma: https://www.figma.com/file/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?type=design&node-id=3427-67874
+/// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=38101-167213&t=t5Mv5RDsz4p7Jcta-4
 ///
 /// Widgetbook: https://design.zebra.com/flutter/widgetbook/index.html#/?path=components/accordion/zetaaccordion/accordion
 class ZetaAccordion extends ZetaStatefulWidget {
@@ -16,189 +17,190 @@ class ZetaAccordion extends ZetaStatefulWidget {
   const ZetaAccordion({
     super.key,
     super.rounded,
-    required this.title,
-    this.child,
-    this.contained = false,
-    this.isOpen = false,
+    required this.children,
+    this.inCard = false,
+    this.multipleOpen = false,
+    this.selectMultiple = false,
   });
 
-  /// Children displayed when component is opened.
-  ///
-  /// If null, component will render as disabled.
-  final Widget? child;
+  /// Items to be displayed in the accordion.
+  final List<ZetaAccordionItem>? children;
 
-  /// Determines if the [ZetaAccordion]s should be in a box.
+  /// Determines if the [ZetaAccordion]s should be in a card container.
   ///
   /// Defaults to `false`.
-  final bool contained;
+  final bool inCard;
 
-  /// Title of Accordion.
-  final String title;
+  /// Determines if multiple items can be open at the same time.
+  /// When `false`, only one accordion item can be open at a time.
+  final bool multipleOpen;
 
-  /// Whether the accordion is open or closed.
-  ///
-  /// Defaults to false(closed).
-  final bool isOpen;
+  /// Determines if multiple accordion items can be selected.
+  final bool selectMultiple;
 
   @override
   State<ZetaAccordion> createState() => _ZetaAccordionState();
+
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty<bool>('rounded', rounded))
-      ..add(DiagnosticsProperty<bool>('contained', contained))
-      ..add(StringProperty('title', title))
-      ..add(DiagnosticsProperty<bool>('isOpen', isOpen));
+      ..add(DiagnosticsProperty<bool>('inCard', inCard))
+      ..add(DiagnosticsProperty<bool>('multipleOpen', multipleOpen))
+      ..add(DiagnosticsProperty<bool>('selectMultiple', selectMultiple));
   }
 }
 
-class _ZetaAccordionState extends State<ZetaAccordion> with TickerProviderStateMixin {
-  late bool _isOpen;
-  late bool _disabled;
-  late final AnimationController _controller;
-  late final Animation<double> _animation;
-
-  IconData get _icon => _isOpen
-      ? (context.rounded ? ZetaIcons.remove_round : ZetaIcons.remove_sharp)
-      : (context.rounded ? ZetaIcons.add_round : ZetaIcons.add_sharp);
+class _ZetaAccordionState extends State<ZetaAccordion> {
+  int? _openIndex;
+  int? _selectedIndex;
 
   @override
   void initState() {
     super.initState();
-    _controller = AnimationController(
-      duration: ZetaAnimationLength.normal,
-      reverseDuration: ZetaAnimationLength.fast,
-      vsync: this,
-    );
-    _animation = CurvedAnimation(
-      parent: _controller,
-      curve: Curves.fastOutSlowIn,
-    );
-    setInitialOpen();
-    _disabled = widget.child == null;
-  }
-
-  @override
-  void didUpdateWidget(ZetaAccordion oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    if (oldWidget.isOpen != widget.isOpen) {
-      setInitialOpen();
-    }
-    if (oldWidget.child != widget.child) {
-      _disabled = widget.child == null;
+    final children = widget.children;
+    if (children != null) {
+      if (!widget.multipleOpen) {
+        final index = children.indexWhere((item) => item.isOpen);
+        _openIndex = index >= 0 ? index : null;
+      }
+      if (!widget.selectMultiple) {
+        final index = children.indexWhere((item) => item.isSelected);
+        _selectedIndex = index >= 0 ? index : null;
+      }
     }
   }
 
-  void setInitialOpen() {
-    _isOpen = widget.isOpen;
-    _controller.value = _isOpen ? 1 : 0;
+  void _handleItemExpansion(int index, bool isExpanded) {
+    if (!widget.multipleOpen) {
+      setState(() => _openIndex = isExpanded ? index : null);
+    }
   }
 
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
+  void _handleItemSelection(int index, bool isSelected) {
+    if (!widget.selectMultiple) {
+      setState(() => _selectedIndex = isSelected ? index : null);
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    final zetaColors = Zeta.of(context).colors;
-    final borderColor = _disabled ? zetaColors.borderDisabled : zetaColors.borderSubtle;
-    final childTextStyle = Zeta.of(context).textStyles.h5.apply(color: zetaColors.mainDefault);
-    final rounded = context.rounded;
-    final Color color = _disabled ? zetaColors.mainDisabled : zetaColors.mainDefault;
-    return ZetaRoundedScope(
-      rounded: rounded,
-      child: DecoratedBox(
-        decoration: BoxDecoration(
-          border: widget.contained ? Border.all(color: borderColor) : Border(top: BorderSide(color: borderColor)),
-          borderRadius: BorderRadius.all(rounded ? Zeta.of(context).radius.minimal : Zeta.of(context).radius.none),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(1),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              TextButton(
-                style: ButtonStyle(
-                  shape: WidgetStatePropertyAll(
-                    RoundedRectangleBorder(
-                      borderRadius:
-                          BorderRadius.all(rounded ? Zeta.of(context).radius.minimal : Zeta.of(context).radius.none),
-                    ),
-                  ),
-                  overlayColor: WidgetStateProperty.resolveWith((states) {
-                    if (states.contains(WidgetState.hovered)) {
-                      return zetaColors.surfaceHover;
-                    }
-                    if (states.contains(WidgetState.pressed)) {
-                      return zetaColors.surfaceSelectedHover;
-                    }
+    final children = widget.children;
+    if (children == null || children.isEmpty) {
+      return const Nothing();
+    }
 
-                    if (states.contains(WidgetState.focused)) {
-                      return Colors.transparent;
-                    }
+    final zeta = Zeta.of(context);
+    final rounded = widget.rounded ?? zeta.rounded;
 
-                    return null;
-                  }),
-                  side: WidgetStateProperty.resolveWith((states) {
-                    if (states.contains(WidgetState.focused)) {
-                      return BorderSide(color: zetaColors.borderPrimary, width: 2);
-                    }
-                    return null;
-                  }),
-                ),
-                onPressed: _disabled
-                    ? null
-                    : () => setState(() {
-                          if (_isOpen) {
-                            _controller.reverse();
-                            _isOpen = false;
-                          } else {
-                            _isOpen = true;
-                            _controller.forward();
-                          }
-                        }),
-                child: Padding(
-                  padding: EdgeInsets.all(Zeta.of(context).spacing.large),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      DefaultTextStyle(
-                        style: Zeta.of(context).textStyles.titleMedium.apply(
-                              color: color,
-                            ),
-                        child: Flexible(child: Text(widget.title)),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(left: Zeta.of(context).spacing.large),
-                        child: Icon(_icon, color: color),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              SizeTransition(
-                sizeFactor: _animation,
-                axisAlignment: -1,
-                child: Padding(
-                  padding: EdgeInsets.fromLTRB(
-                    Zeta.of(context).spacing.large,
-                    Zeta.of(context).spacing.none,
-                    Zeta.of(context).spacing.large,
-                    Zeta.of(context).spacing.large,
-                  ),
-                  child: Theme(
-                    data: Theme.of(context).copyWith(listTileTheme: ListTileThemeData(titleTextStyle: childTextStyle)),
-                    child: widget.child ?? const Nothing(),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
+    final columnWidget = Column(
+      children: children
+          .asMap()
+          .entries
+          .map((entry) {
+            final index = entry.key;
+
+            return _ZetaAccordionItemWrapper(
+              key: entry.value.key ?? ValueKey(index),
+              item: entry.value,
+              isExpanded: widget.multipleOpen ? null : (_openIndex == index),
+              isSelected: widget.selectMultiple ? null : (_selectedIndex == index),
+              onExpansionChanged: widget.multipleOpen ? null : () => _handleItemExpansion(index, _openIndex != index),
+              onSelectionChanged:
+                  widget.selectMultiple ? null : () => _handleItemSelection(index, _selectedIndex != index),
+            );
+          })
+          .divide(Divider(height: 0, color: widget.inCard ? zeta.colors.borderSubtle : Colors.transparent))
+          .toList(),
     );
+
+    if (widget.inCard) {
+      return DecoratedBox(
+        decoration: BoxDecoration(
+          color: zeta.colors.surfaceDefault,
+          borderRadius: BorderRadius.all(rounded ? zeta.radius.rounded : zeta.radius.none),
+          border: Border.all(color: zeta.colors.borderSubtle, width: ZetaBorders.small),
+        ),
+        child: ClipRRect(
+          borderRadius: BorderRadius.all(rounded ? zeta.radius.rounded : zeta.radius.none),
+          child: columnWidget,
+        ),
+      );
+    }
+    return columnWidget;
+  }
+}
+
+/// Simple wrapper that controls accordion item state
+class _ZetaAccordionItemWrapper extends StatelessWidget {
+  const _ZetaAccordionItemWrapper({
+    required this.item,
+    required this.isExpanded,
+    required this.isSelected,
+    required this.onExpansionChanged,
+    required this.onSelectionChanged,
+    super.key,
+  });
+
+  final ZetaAccordionItem item;
+  final bool? isExpanded;
+  final bool? isSelected;
+  final VoidCallback? onExpansionChanged;
+  final VoidCallback? onSelectionChanged;
+
+  @override
+  Widget build(BuildContext context) {
+    // When both expansion and selection are self-managed, let the item handle its own state completely
+    if (this.isExpanded == null && this.isSelected == null) {
+      return item;
+    }
+
+    // Use parent-controlled state if available, otherwise use item's initial state
+    final isExpanded = this.isExpanded ?? item.isOpen;
+    final isSelected = this.isSelected ?? item.isSelected;
+
+    void handleTap() {
+      item.onTap?.call();
+      if (item.isSelectable) {
+        onSelectionChanged?.call();
+      } else if (!item.isNavigation) {
+        onExpansionChanged?.call();
+      }
+    }
+
+    void handleLeftTap() {
+      item.onTap?.call();
+      onExpansionChanged?.call();
+    }
+
+    void handleRightTap() {
+      item.onTap?.call();
+      onSelectionChanged?.call();
+    }
+
+    final wholeTileTap = !item.isSelectable || (item.isSelectable && item.child == null) ? handleTap : null;
+    final leftTap = item.isSelectable && item.child != null ? handleLeftTap : null;
+    final rightTap = item.isSelectable && item.child != null ? handleRightTap : null;
+
+    return AccordionItemUI(
+      item: item,
+      isExpanded: isExpanded,
+      isSelected: isSelected,
+      wholeTileTap: wholeTileTap,
+      leftTap: leftTap,
+      rightTap: rightTap,
+      expandSemanticLabel: item.expandSemanticLabel,
+      collapseSemanticLabel: item.collapseSemanticLabel,
+    );
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty<bool?>('isExpanded', isExpanded))
+      ..add(DiagnosticsProperty<bool?>('isSelected', isSelected))
+      ..add(ObjectFlagProperty<VoidCallback?>.has('onExpansionChanged', onExpansionChanged))
+      ..add(ObjectFlagProperty<VoidCallback?>.has('onSelectionChanged', onSelectionChanged));
   }
 }
