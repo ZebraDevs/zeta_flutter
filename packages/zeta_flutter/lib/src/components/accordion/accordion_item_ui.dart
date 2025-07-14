@@ -38,43 +38,52 @@ class AccordionItemUI extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Semantics(
-            // onTapHint: isExpanded ? collapseSemanticLabel : expandSemanticLabel,
-            child: InkWell(
-              hoverColor: zeta.colors.surfaceHover,
-              onTap: wholeTileTap,
-              child: IconTheme(
-                data: IconThemeData(color: zeta.colors.mainDefault),
-                child: Row(
-                  children: [
-                    // Leading icon (expansion chevron for selectable items with child)
-                    if (item.isSelectable && item.child != null)
-                      Semantics(
-                        label: isExpanded ? collapseSemanticLabel : expandSemanticLabel,
-                        child: InkWell(
-                          onTap: leftTap,
-                          borderRadius: (item.rounded ?? zeta.rounded) ? BorderRadius.all(zeta.radius.rounded) : null,
+            child: Container(
+              margin: EdgeInsets.symmetric(horizontal: ZetaBorders.small),
+              child: InkWell(
+                hoverColor: zeta.colors.surfaceHover,
+                onTap: wholeTileTap ?? rightTap,
+                child: IconTheme(
+                  data: IconThemeData(color: zeta.colors.mainDefault),
+                  child: Row(
+                    children: [
+                      // Leading icon (expansion chevron for selectable items with child)
+                      if (item.isSelectable && item.child != null)
+                        Semantics(
+                          label: isExpanded ? collapseSemanticLabel : expandSemanticLabel,
                           child: Padding(
-                            padding: EdgeInsets.fromLTRB(
-                              zeta.spacing.large,
-                              zeta.spacing.medium,
-                              zeta.spacing.small,
-                              zeta.spacing.medium,
-                            ),
-                            child: AnimatedRotation(
-                              turns: isExpanded ? 0.25 : 0.0,
-                              duration: ZetaAnimationLength.normal,
-                              child: const Icon(ZetaIcons.chevron_right),
+                            padding: EdgeInsets.zero,
+                            // NOTE: The commented out padding should be used when the accessibility issue is resolved
+                            // padding: EdgeInsets.only(left: zeta.spacing.small),
+                            child: InkWell(
+                              onTap: leftTap,
+                              hoverColor: zeta.colors.surfaceSelectedHover,
+                              borderRadius:
+                                  (item.rounded ?? zeta.rounded) ? BorderRadius.all(zeta.radius.rounded) : null,
+                              child: Padding(
+                                // NOTE: The commented out padding should be used when the accessibility issue is resolved
+                                // padding: EdgeInsets.all(zeta.spacing.small),
+                                padding: EdgeInsets.fromLTRB(
+                                  zeta.spacing.large,
+                                  zeta.spacing.medium,
+                                  zeta.spacing.small,
+                                  zeta.spacing.medium,
+                                ),
+                                child: AnimatedRotation(
+                                  turns: isExpanded ? 0.25 : 0.0,
+                                  duration: ZetaAnimationLength.normal,
+                                  curve: Curves.easeInOut,
+                                  child: const Icon(ZetaIcons.chevron_right),
+                                ),
+                              ),
                             ),
                           ),
-                        ),
-                      )
-                    else
-                      SizedBox(width: zeta.spacing.large),
+                        )
+                      else
+                        SizedBox(width: zeta.spacing.large),
 
-                    // Title section
-                    Expanded(
-                      child: InkWell(
-                        onTap: rightTap,
+                      // // Title section
+                      Expanded(
                         child: Row(
                           children: [
                             Expanded(
@@ -101,8 +110,8 @@ class AccordionItemUI extends StatelessWidget {
                           ],
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),
