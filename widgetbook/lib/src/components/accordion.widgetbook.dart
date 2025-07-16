@@ -47,14 +47,14 @@ Widget accordion(BuildContext context) {
               child: navigation ? null : Placeholder(),
             ),
             ZetaAccordionItem(
-              title: 'Accordion Item 1',
+              title: 'Accordion Item 2',
               onTap: () => {},
               isSelectable: selectable && !navigation,
               isNavigation: navigation,
               child: navigation ? null : Placeholder(),
             ),
             ZetaAccordionItem(
-              title: 'Accordion Item 1',
+              title: 'Accordion Item 3',
               onTap: () => {},
               isSelectable: selectable && !navigation,
               isNavigation: navigation,

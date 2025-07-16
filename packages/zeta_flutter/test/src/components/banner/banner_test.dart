@@ -177,8 +177,6 @@ void main() {
       final ZetaIconButton button = tester.widget(iconButtonFinder);
       expect(button.icon, equals(ZetaIcons.close));
     });
-
-    testWidgets('debugFillProperties works correctly', (WidgetTester tester) async {});
   });
 
   group('Dimensions Tests', () {

@@ -17,7 +17,7 @@ class ZetaAccordion extends ZetaStatefulWidget {
   const ZetaAccordion({
     super.key,
     super.rounded,
-    required this.children,
+    this.children,
     this.inCard = false,
     this.expandMultiple = false,
     this.selectMultiple = false,

@@ -455,7 +455,6 @@ void main() {
       expect(accordionRect.height, 112);
     });
   });
-
   group('Interaction Tests', () {
     testWidgets('Accordion item expands and collapses on tap', (WidgetTester tester) async {
       await tester.pumpWidget(
@@ -616,7 +615,6 @@ void main() {
       final newSize = tester.getSize(itemFinder);
       expect(newSize, initialSize);
     });
-
     testWidgets('Multiple items can be selected', (WidgetTester tester) async {
       await tester.pumpWidget(
         const TestApp(
@@ -654,7 +652,6 @@ void main() {
       expect(item2Widget.isSelected, isTrue);
       expect(item1Widget.isSelected, isTrue);
     });
-
     testWidgets('Multiple items can be expanded', (WidgetTester tester) async {
       await tester.pumpWidget(
         const TestApp(
@@ -692,7 +689,6 @@ void main() {
       expect(item2Widget.isExpanded, isTrue);
       expect(item1Widget.isExpanded, isTrue);
     });
-
     testWidgets('Only a single item can be selected', (WidgetTester tester) async {
       await tester.pumpWidget(
         const TestApp(
