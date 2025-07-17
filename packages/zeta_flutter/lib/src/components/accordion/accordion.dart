@@ -46,7 +46,7 @@ class ZetaAccordion extends ZetaStatefulWidget {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty<bool>('inCard', inCard))
-      ..add(DiagnosticsProperty<bool>('openMultiple', expandMultiple))
+      ..add(DiagnosticsProperty<bool>('expandMultiple', expandMultiple))
       ..add(DiagnosticsProperty<bool>('selectMultiple', selectMultiple));
   }
 }
