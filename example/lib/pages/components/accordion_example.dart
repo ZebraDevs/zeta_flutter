@@ -12,40 +12,64 @@ class AccordionExample extends StatelessWidget {
     return ExampleScaffold(
       name: AccordionExample.name,
       children: [
-        Text('Divider'),
-        const SizedBox(height: 20),
-        ZetaAccordion(
-          title: 'title',
-          key: Key('docs'),
-          child: Column(
+        SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            spacing: Zeta.of(context).spacing.large,
             children: [
-              ListTile(title: Text('List Item')),
-              ListTile(title: Text('List Item')),
-              ListTile(title: Text('List Item')),
+              SizedBox(
+                width: 328,
+                child: ZetaAccordion(
+                  inCard: true,
+                  children: [
+                    ZetaAccordionItem(
+                      onTap: () {},
+                      child: Placeholder(),
+                      title: 'Scanner Configuration',
+                      header: Row(
+                        spacing: Zeta.of(context).spacing.small,
+                        children: [
+                          ZetaButton.outlineSubtle(label: 'Action 1', onPressed: () {}),
+                          ZetaButton.outlineSubtle(label: 'Action 2', onPressed: () {}),
+                          ZetaButton.outlineSubtle(label: 'Action 3', onPressed: () {}),
+                        ],
+                      ),
+                    ),
+                    ZetaAccordionItem(title: 'Title', onTap: () {}, child: Placeholder()),
+                    ZetaAccordionItem(title: 'Title', onTap: () {}, child: Placeholder()),
+                  ],
+                ),
+              ),
+              SizedBox(
+                width: 328,
+                child: ZetaAccordion(
+                  inCard: true,
+                  children: [
+                    ZetaAccordionItem(title: 'Title', onTap: () {}, child: Placeholder(), isSelectable: true),
+                    ZetaAccordionItem(title: 'Title', onTap: () {}, child: Placeholder(), isSelectable: true),
+                    ZetaAccordionItem(title: 'Title', onTap: () {}, child: Placeholder()),
+                  ],
+                ),
+              ),
+              SizedBox(
+                width: 328,
+                child: ZetaAccordion(
+                  inCard: true,
+                  children: [
+                    ZetaAccordionItem(
+                      title: 'Title',
+                      onTap: () {},
+                      isNavigation: true,
+                    ),
+                    ZetaAccordionItem(title: 'Title', onTap: () {}, isNavigation: true),
+                    ZetaAccordionItem(title: 'Title', onTap: () {}, isNavigation: true),
+                  ],
+                ),
+              ),
             ],
-          ),
-        ),
-        ZetaAccordion(title: 'title'),
-        const SizedBox(height: 40),
-        Text('Contained'),
-        const SizedBox(height: 20),
-        ZetaAccordion(
-          contained: true,
-          key: Key('docs-2'),
-          title: 'title',
-          child: Column(
-            children: [
-              ListTile(title: Text('List Item')),
-              ListTile(title: Text('List Item')),
-              ListTile(title: Text('List Item')),
-            ],
-          ),
-        ),
-        ZetaAccordion(
-          contained: true,
-          title: 'title',
-        ),
-        const SizedBox(height: 40),
+          ).paddingAll(Zeta.of(context).spacing.medium),
+        )
       ],
     );
   }

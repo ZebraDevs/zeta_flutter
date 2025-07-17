@@ -75,11 +75,14 @@ class ZetaExample extends StatelessWidget {
                     children: [
                       Text('Issue displaying demo content'),
                       ZetaAccordion(
-                        title: 'See more',
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [Text('Error: ${state.error}'), Text('Path: ${state.uri}')],
-                        ),
+                        children: [
+                          ZetaAccordionItem(
+                            title: 'Error Details',
+                            child: Column(
+                              children: [Text('Error: ${state.error}'), Text('Path: ${state.uri}')],
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),

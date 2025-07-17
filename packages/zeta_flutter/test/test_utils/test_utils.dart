@@ -60,6 +60,7 @@ void goldenTest(
   ThemeMode themeMode = ThemeMode.system,
   Size? screenSize,
   bool? rounded,
+  bool loadFont = false,
   Future<void> Function(WidgetTester)? setUp,
   Future<void> Function(WidgetTester)? beforeComparison,
 }) {
@@ -67,6 +68,9 @@ void goldenTest(
     final computedType = widgetType ?? widget.runtimeType;
     if (setUp != null) {
       await setUp(tester);
+    }
+    if (loadFont) {
+      await loadFonts();
     }
     await tester.pumpWidget(
       TestApp(

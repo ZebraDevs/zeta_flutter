@@ -4,6 +4,7 @@
 library;
 
 export 'src/components/accordion/accordion.dart';
+export 'src/components/accordion/accordion_item.dart';
 export 'src/components/avatar_rail/avatar_rail.dart';
 export 'src/components/avatars/avatar.dart';
 export 'src/components/badges/indicator.dart';

@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
@@ -177,18 +176,6 @@ void main() {
 
       final ZetaIconButton button = tester.widget(iconButtonFinder);
       expect(button.icon, equals(ZetaIcons.close));
-    });
-
-    testWidgets('debugFillProperties works correctly', (WidgetTester tester) async {
-      final diagnostics = DiagnosticPropertiesBuilder();
-      const ZetaAccordion(
-        title: 'Title',
-      ).debugFillProperties(diagnostics);
-
-      expect(diagnostics.finder('title'), '"Title"');
-      expect(diagnostics.finder('rounded'), 'null');
-      expect(diagnostics.finder('contained'), 'false');
-      expect(diagnostics.finder('isOpen'), 'false');
     });
   });
 
