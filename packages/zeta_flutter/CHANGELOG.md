@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.3.0](https://github.com/ZebraDevs/zeta_flutter/compare/zeta_flutter-v1.2.0...zeta_flutter-v1.3.0) (2025-07-18)
+
+### ✨ New Features
+
+* Update accordion to new design. (New API, breaking changes) ([#364](https://github.com/ZebraDevs/zeta_flutter/issues/364)) ([2de8d4a](https://github.com/ZebraDevs/zeta_flutter/commit/2de8d4a4387bfdb2e403673d5c6aacbe54b5a9d0))
+* **UX-840:** Card / Collapsible Card component ([#362](https://github.com/ZebraDevs/zeta_flutter/issues/362)) ([bb9c646](https://github.com/ZebraDevs/zeta_flutter/commit/bb9c646c96b2cfc416ef8bbd90d89bb7b0402477))
+
+
+### 🧪 Tests
+
+* Add tests for Card and collapsible card ([bb9c646](https://github.com/ZebraDevs/zeta_flutter/commit/bb9c646c96b2cfc416ef8bbd90d89bb7b0402477))
+* Update tests for new accordion component ([2de8d4a](https://github.com/ZebraDevs/zeta_flutter/commit/2de8d4a4387bfdb2e403673d5c6aacbe54b5a9d0))
+
+
 ## [1.2.0](https://github.com/ZebraDevs/zeta_flutter/compare/zeta_flutter-v1.1.3...zeta_flutter-v1.2.0) (2025-07-04)
 
 
