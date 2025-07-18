@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.2.1](https://github.com/ZebraDevs/zeta_flutter/compare/zeta_flutter_theme-v1.2.0...zeta_flutter_theme-v1.2.1) (2025-07-18)
+
+
+### 🧹 Miscellaneous Chores
+ * Update example app to use new accordion component
+
 ## [1.2.0](https://github.com/ZebraDevs/zeta_flutter/compare/zeta_flutter_theme-v1.1.2...zeta_flutter_theme-v1.2.0) (2025-07-03)
 
 
