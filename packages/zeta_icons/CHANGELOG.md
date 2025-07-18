@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.1](https://github.com/ZebraDevs/zeta_flutter/compare/zeta_icons-v1.1.3...zeta_icons-v1.2.1) (2025-07-18)
+
+
+### relase-as
+
+* **zeta_flutter_theme:** 1.2.1 ([416504f](https://github.com/ZebraDevs/zeta_flutter/commit/416504f82ca520910c1bd46df8f2f12d8a2861e2))
+
 ## [1.1.3](https://github.com/ZebraDevs/zeta_flutter/compare/zeta_icons-v1.1.2...zeta_icons-v1.1.3) (2025-07-01)
 
 
