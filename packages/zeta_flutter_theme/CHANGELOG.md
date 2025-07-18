@@ -1,5 +1,21 @@
 # Changelog
 
+## [2.0.0](https://github.com/ZebraDevs/zeta_flutter/compare/zeta_flutter_theme-v1.2.0...zeta_flutter_theme-v2.0.0) (2025-07-18)
+
+
+### ⚠ BREAKING CHANGES
+
+* Update accordion to new design. (New API, breaking changes) ([#364](https://github.com/ZebraDevs/zeta_flutter/issues/364))
+
+### ✨ New Features
+
+* Update accordion to new design. (New API, breaking changes) ([#364](https://github.com/ZebraDevs/zeta_flutter/issues/364)) ([2de8d4a](https://github.com/ZebraDevs/zeta_flutter/commit/2de8d4a4387bfdb2e403673d5c6aacbe54b5a9d0))
+
+
+### 🧪 Tests
+
+* Update tests for new accordion component ([2de8d4a](https://github.com/ZebraDevs/zeta_flutter/commit/2de8d4a4387bfdb2e403673d5c6aacbe54b5a9d0))
+
 ## [1.2.0](https://github.com/ZebraDevs/zeta_flutter/compare/zeta_flutter_theme-v1.1.2...zeta_flutter_theme-v1.2.0) (2025-07-03)
 
 
