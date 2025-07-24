@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math';
 
 import 'package:file/local.dart';
 import 'package:flutter/foundation.dart';
@@ -19,70 +20,51 @@ import 'package:flutter/foundation.dart';
 /// If the presented file is not a WAV file, it will return null.
 Future<List<double>?> extractWavAmplitudes(Uri fileUri, int linesNeeded) async {
   try {
-    final file = const LocalFileSystem().file(fileUri.toFilePath());
-    final bytes = await file.readAsBytes();
-
+    final bytes = await const LocalFileSystem().file(fileUri.toFilePath()).readAsBytes();
     return _parseWav(bytes, linesNeeded);
   } catch (e, stackTrace) {
-    debugPrint('Error extracting WAV amplitudes: $e');
-    debugPrint('Stack trace: $stackTrace');
+    debugPrint('Error extracting WAV amplitudes: $e\nStack trace: $stackTrace');
     return null;
   }
 }
 
 List<double> _decodePCM(List<int> audioBytes, int bitsPerSample, int numChannels) {
   final bytesPerSample = bitsPerSample ~/ 8;
-  final totalSamples = audioBytes.length ~/ (bytesPerSample * numChannels);
-  final samples = List<double>.filled(totalSamples, 0);
-
-  for (int i = 0; i < totalSamples; i++) {
+  return List.generate(audioBytes.length ~/ (bytesPerSample * numChannels), (i) {
     final sampleStart = i * bytesPerSample * numChannels;
-    double sampleValue = 0;
-
-    for (int channel = 0; channel < numChannels; channel++) {
-      final channelStart = sampleStart + channel * bytesPerSample;
-      int sample = 0;
-
-      for (int byteIndex = 0; byteIndex < bytesPerSample; byteIndex++) {
-        sample |= audioBytes[channelStart + byteIndex] << (byteIndex * 8);
-      }
-
-      sample = sample.toSigned(bitsPerSample);
-      sampleValue += sample.toDouble();
-    }
-
-    samples[i] = sampleValue / numChannels; // Average across channels
-  }
-
-  return samples;
+    return List.generate(numChannels, (channel) {
+          final channelStart = sampleStart + channel * bytesPerSample;
+          return List.generate(bytesPerSample, (byteIndex) => audioBytes[channelStart + byteIndex] << (byteIndex * 8))
+              .reduce((a, b) => a | b)
+              .toSigned(bitsPerSample)
+              .toDouble();
+        }).reduce((a, b) => a + b) /
+        numChannels;
+  });
 }
 
 Future<List<double>> _parseWav(Uint8List bytes, int linesNeeded) async {
-  // Get these values from the WAV header
   final audioFormat = bytes[20] | (bytes[21] << 8);
+  if (audioFormat != 1) throw UnsupportedError('Unsupported WAV format: Only PCM is supported');
+
   final numChannels = bytes[22] | (bytes[23] << 8);
   final bitsPerSample = bytes[34] | (bytes[35] << 8);
-
-  if (audioFormat != 1) {
-    throw UnsupportedError('Unsupported WAV format: Only PCM is supported');
-  }
-
   final dataOffset = _findDataChunkOffset(bytes);
   final audioBytes = bytes.sublist(dataOffset);
-  final bytesPerSample = bitsPerSample ~/ 8;
-  final totalSamples = audioBytes.length ~/ (bytesPerSample * numChannels);
 
-  if (linesNeeded <= 0 || linesNeeded > totalSamples) {
+  if (linesNeeded <= 0 || linesNeeded > audioBytes.length ~/ ((bitsPerSample ~/ 8) * numChannels)) {
     throw RangeError('Invalid linesNeeded value: $linesNeeded');
   }
 
-  final audioSamples = _decodePCM(audioBytes, bitsPerSample, numChannels);
-  return _groupAndNormalizeSamples(audioSamples, linesNeeded);
+  return _groupAndNormalizeSamples(
+    _decodePCM(audioBytes, bitsPerSample, numChannels),
+    linesNeeded,
+  );
 }
 
 int _findDataChunkOffset(Uint8List bytes) {
   for (int i = 36; i < bytes.length - 8; i += 2) {
-    if (bytes[i] == 0x64 && bytes[i + 1] == 0x61 && bytes[i + 2] == 0x74 && bytes[i + 3] == 0x61) {
+    if (bytes.sublist(i, i + 4).everyIndexed((index, value) => value == [0x64, 0x61, 0x74, 0x61][index])) {
       return i + 8;
     }
   }
@@ -91,26 +73,17 @@ int _findDataChunkOffset(Uint8List bytes) {
 
 List<double> _groupAndNormalizeSamples(List<double> samples, int groupsCount) {
   final groupSize = samples.length ~/ groupsCount;
-  final groups = List<double>.filled(groupsCount, 0);
+  final groups = List.generate(groupsCount, (i) => samples.skip(i * groupSize).take(groupSize).reduce(max));
+  final maxAmplitude = groups.reduce(max);
 
-  for (int i = 0; i < samples.length; i++) {
-    final groupIndex = i ~/ groupSize;
-    if (groupIndex < groupsCount) {
-      groups[groupIndex] += samples[i];
+  return maxAmplitude == 0 ? List.filled(groupsCount, 0) : groups.map((e) => e / maxAmplitude).toList();
+}
+
+extension<E> on List<E> {
+  bool everyIndexed(bool Function(int index, E value) test) {
+    for (int i = 0; i < length; i++) {
+      if (!test(i, this[i])) return false;
     }
+    return true;
   }
-
-  for (int i = 0; i < groupsCount; i++) {
-    groups[i] /= groupSize;
-  }
-
-  final minAmplitude = groups.reduce((a, b) => a < b ? a : b);
-  final maxAmplitude = groups.reduce((a, b) => a > b ? a : b);
-
-  if (maxAmplitude == minAmplitude) {
-    return List<double>.filled(groupsCount, 0.5);
-  }
-
-  final range = maxAmplitude - minAmplitude;
-  return groups.map((e) => (e - minAmplitude) / range).toList();
 }
