@@ -1,7 +1,7 @@
 import 'dart:async';
+import 'dart:io';
 import 'dart:math';
 
-import 'package:file/local.dart';
 import 'package:flutter/foundation.dart';
 
 /// Extracts WAV amplitudes from a file URI, normalizing them for visualization.
@@ -20,7 +20,7 @@ import 'package:flutter/foundation.dart';
 /// If the presented file is not a WAV file, it will return null.
 Future<List<double>?> extractWavAmplitudes(Uri fileUri, int linesNeeded) async {
   try {
-    final bytes = await const LocalFileSystem().file(fileUri.toFilePath()).readAsBytes();
+    final bytes = await File(fileUri.toFilePath()).readAsBytes();
     return _parseWav(bytes, linesNeeded);
   } catch (e, stackTrace) {
     debugPrint('Error extracting WAV amplitudes: $e\nStack trace: $stackTrace');
