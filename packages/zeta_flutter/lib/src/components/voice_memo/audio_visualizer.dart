@@ -54,25 +54,24 @@ class _ZetaAudioVisualizerState extends State<ZetaAudioVisualizer> {
   int? _linesNeeded;
   List<double> _amplitudes = [];
 
-  Future<void> getAmplitudes() async {
-    if (_localFile == null || _linesNeeded == null || _localFile!.path.isEmpty || _linesNeeded! <= 0) {
-      debugPrint('Local file or linesNeeded is null.');
-      return;
+  Future<void> _initializeAudioPlayer() async {
+    _audioPlayer ??= AudioPlayer();
+    _audioPlayer!.onPlayerComplete.listen((_) => resetPlayback());
+    _audioPlayer!.onPositionChanged.listen(_updatePlaybackLocation);
+  }
+
+  Future<void> _loadLocalFile() async {
+    if (widget.assetPath != null) {
+      _localFile = await fetchToMemory(widget.assetPath!);
+    } else if (widget.url != null) {
+      _localFile = await downloadAudioFileToLocal(widget.url!);
     }
-    final amplitudes = await extractWavAmplitudes(_localFile!, _linesNeeded!);
-    setState(() => _amplitudes = amplitudes ?? _generateDefaultAmplitudes(_linesNeeded!));
   }
 
   Future<void> resetPlayback() async {
     _playing = false;
-    _audioPlayer ??= AudioPlayer();
-    if (_localFile == null) {
-      if (widget.assetPath != null) {
-        _localFile = await fetchToMemory(widget.assetPath!);
-      } else if (widget.url != null) {
-        _localFile = await downloadAudioFileToLocal(widget.url!);
-      }
-    }
+    await _initializeAudioPlayer();
+    if (_localFile == null) await _loadLocalFile();
     if (_localFile != null) {
       await _audioPlayer!.setSourceUrl(_localFile!.toString());
       final duration = await _audioPlayer!.getDuration();
@@ -81,30 +80,29 @@ class _ZetaAudioVisualizerState extends State<ZetaAudioVisualizer> {
     }
   }
 
+  Future<void> getAmplitudes() async {
+    if (_localFile == null || _linesNeeded == null || _linesNeeded! <= 0) return;
+    final amplitudes = await extractWavAmplitudes(_localFile!, _linesNeeded!);
+    setState(() => _amplitudes = amplitudes ?? _generateDefaultAmplitudes(_linesNeeded!));
+  }
+
+  void _updatePlaybackLocation(Duration position) {
+    if (_duration == null || _linesNeeded == null) return;
+    setState(() {
+      final localPosition = position.inMilliseconds / _duration!.inMilliseconds;
+      _playbackLocation = (localPosition * _linesNeeded!).clamp(1, _linesNeeded! - 1).toInt();
+    });
+  }
+
   @override
   void initState() {
     super.initState();
-
     unawaited(resetPlayback());
-
-    _audioPlayer!.onPlayerComplete.listen((_) async {
-      await resetPlayback();
-    });
-
-    _audioPlayer!.onPositionChanged.listen((position) {
-      if (_duration == null) return;
-      setState(() {
-        final x = position.inMilliseconds / _duration!.inMilliseconds;
-        final y = (x * _linesNeeded!).clamp(1, _linesNeeded! - 1);
-        _playbackLocation = y.toInt();
-      });
-    });
   }
 
   @override
   void dispose() {
     unawaited(_audioPlayer?.dispose());
-
     super.dispose();
   }
 
@@ -115,9 +113,9 @@ class _ZetaAudioVisualizerState extends State<ZetaAudioVisualizer> {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.all(zeta.radius.rounded),
-        color: Zeta.of(context).colors.surfaceHover,
+        color: zeta.colors.surfaceHover,
       ),
-      padding: const EdgeInsets.all(4), // TODO(tokens): token
+      padding: const EdgeInsets.all(4),
       child: Row(
         children: [
           InkWell(
@@ -162,7 +160,8 @@ class _ZetaAudioVisualizerState extends State<ZetaAudioVisualizer> {
                   if (mounted) {
                     final lines = (constraints.maxWidth / 4).floor();
                     if (_linesNeeded != lines) {
-                      setState(() => _linesNeeded = lines);
+                      _linesNeeded = lines;
+                      _amplitudes = List.generate(lines, (index) => 0.0);
                       unawaited(getAmplitudes());
                     }
                   }
