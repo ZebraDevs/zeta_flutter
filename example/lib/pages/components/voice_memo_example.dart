@@ -20,11 +20,14 @@ class _VoiceMemoExampleState extends State<VoiceMemoExample> {
       gap: 4,
       children: [
         const ZetaAudioVisualizer(
-          url: 'https://freetestdata.com/wp-content/uploads/2021/09/Free_Test_Data_1MB_WAV.wav',
+          url: 'https://freetestdata.com/wp-content/uploads/2021/09/Free_Test_Data_10MB_WAV.wav',
         ),
-        const ZetaAudioVisualizer(
-          assetPath: 'assets/notification.wav',
-        ),
+        // const ZetaAudioVisualizer(
+        //   url: 'https://freetestdata.com/wp-content/uploads/2021/09/Free_Test_Data_1MB_WAV.wav',
+        // ),
+        // const ZetaAudioVisualizer(
+        //   assetPath: 'assets/notification.wav',
+        // ),
       ].gap(20),
     );
   }
