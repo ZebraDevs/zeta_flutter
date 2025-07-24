@@ -9,6 +9,12 @@ import '../../../zeta_flutter.dart';
 import 'audio_helpers.dart';
 import 'file_helpers.dart';
 
+// TODO: Make it draggable for seeking over the audio
+// TODO: Add a basic loading indicator
+// TODO: Add the recording functionality
+// TODO: should the number count down?
+
+// TODO: Animate the bars from left to right to make it look more natural
 List<double> _generateDefaultAmplitudes(int linesNeeded) {
   const baseAmplitudes = [0, 0, 0, 0, 0, 0.375, 0.5, 1, 0.625, 1, 0.75, 0.75, 1, 1, 0.75, 1, 0.375, 0, 0];
   return List<double>.generate(linesNeeded, (i) => baseAmplitudes[i % baseAmplitudes.length].toDouble());
@@ -62,9 +68,9 @@ class _ZetaAudioVisualizerState extends State<ZetaAudioVisualizer> {
 
   Future<void> _loadLocalFile() async {
     if (widget.assetPath != null) {
-      _localFile = await fetchToMemory(widget.assetPath!);
+      _localFile = await handleFile(widget.assetPath!, FileFetchMode.asset);
     } else if (widget.url != null) {
-      _localFile = await downloadAudioFileToLocal(widget.url!);
+      _localFile = await handleFile(widget.url!, FileFetchMode.url);
     }
   }
 
@@ -176,7 +182,8 @@ class _ZetaAudioVisualizerState extends State<ZetaAudioVisualizer> {
                         height: (amplitude * 32).clamp(2, 32),
                         margin: const EdgeInsets.symmetric(horizontal: 1),
                         decoration: BoxDecoration(
-                          color: (_playbackLocation ?? 0) > index ? zeta.colors.mainDefault : zeta.colors.mainLight,
+                          color:
+                              (_playbackLocation ?? 0) > (index - 1) ? zeta.colors.mainDefault : zeta.colors.mainLight,
                           borderRadius: BorderRadius.circular(2),
                         ),
                       );
