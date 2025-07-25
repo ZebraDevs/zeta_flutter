@@ -9,12 +9,12 @@ import '../../../zeta_flutter.dart';
 import 'audio_helpers.dart';
 import 'file_helpers.dart';
 
-// TODO: Make it draggable for seeking over the audio
-// TODO: Add a basic loading indicator
-// TODO: Add the recording functionality
-// TODO: should the number count down?
+// TODO(luke): Add the recording functionality
 
-// TODO: Animate the bars from left to right to make it look more natural
+// NOTE: The following TODOs are nice to haves but will not be implemented unless requested
+// TODO(design): Animate the bars from left to right to make it look more natural
+// TODO(design): Add a basic loading indicator
+
 List<double> _generateDefaultAmplitudes(int linesNeeded) {
   const baseAmplitudes = [0, 0, 0, 0, 0, 0.375, 0.5, 1, 0.625, 1, 0.75, 0.75, 1, 1, 0.75, 1, 0.375, 0, 0];
   return List<double>.generate(linesNeeded, (i) => baseAmplitudes[i % baseAmplitudes.length].toDouble());
@@ -52,13 +52,17 @@ class ZetaAudioVisualizer extends ZetaStatefulWidget {
 }
 
 class _ZetaAudioVisualizerState extends State<ZetaAudioVisualizer> {
-  int? _playbackLocation;
+  // Current location shown in the visualizer
+  int? _playbackLocationVis;
+  double _playbackLocation = 0;
   AudioPlayer? _audioPlayer;
   Uri? _localFile;
   Duration? _duration;
   bool _playing = false;
   int? _linesNeeded;
   List<double> _amplitudes = [];
+  final GlobalKey _rowKey = GlobalKey();
+  Duration _currentPosition = Duration.zero;
 
   Future<void> _initializeAudioPlayer() async {
     _audioPlayer ??= AudioPlayer();
@@ -96,7 +100,14 @@ class _ZetaAudioVisualizerState extends State<ZetaAudioVisualizer> {
     if (_duration == null || _linesNeeded == null) return;
     setState(() {
       final localPosition = position.inMilliseconds / _duration!.inMilliseconds;
-      _playbackLocation = (localPosition * _linesNeeded!).clamp(1, _linesNeeded! - 1).toInt();
+      _playbackLocationVis = (localPosition * _linesNeeded!).clamp(1, _linesNeeded! - 1).toInt();
+      _currentPosition = position;
+      if (_playbackLocationVis! >= _linesNeeded!) {
+        _playbackLocationVis = _linesNeeded! - 1;
+      }
+      if (_playbackLocationVis! < 0) {
+        _playbackLocationVis = 0;
+      }
     });
   }
 
@@ -110,6 +121,39 @@ class _ZetaAudioVisualizerState extends State<ZetaAudioVisualizer> {
   void dispose() {
     unawaited(_audioPlayer?.dispose());
     super.dispose();
+  }
+
+  @override
+  void didUpdateWidget(covariant ZetaAudioVisualizer oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (widget.assetPath != oldWidget.assetPath || widget.url != oldWidget.url) {
+      unawaited(resetPlayback());
+    }
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    unawaited(_initializeAudioPlayer());
+    if (_localFile == null) {
+      unawaited(_loadLocalFile());
+    }
+  }
+
+  @override
+  void reassemble() {
+    super.reassemble();
+    // Reset playback when the app is reassembled (hot reload)
+    unawaited(resetPlayback());
+  }
+
+  void onVisualizerInteraction(Offset position, BuildContext context) {
+    final box = _rowKey.currentContext?.findRenderObject() as RenderBox?;
+    if (_duration == null || _linesNeeded == null || box == null) {
+      return;
+    }
+    setState(() => _playbackLocation = position.dx / box.size.width);
+    unawaited(_audioPlayer?.seek(Duration(milliseconds: (_duration!.inMilliseconds * _playbackLocation).round())));
   }
 
   @override
@@ -160,58 +204,55 @@ class _ZetaAudioVisualizerState extends State<ZetaAudioVisualizer> {
             ),
           ),
           Expanded(
-            child: LayoutBuilder(
-              builder: (context, constraints) {
-                WidgetsBinding.instance.addPostFrameCallback((_) {
-                  if (mounted) {
-                    final lines = (constraints.maxWidth / 4).floor();
-                    if (_linesNeeded != lines) {
-                      _linesNeeded = lines;
-                      _amplitudes = List.generate(lines, (index) => 0.0);
-                      unawaited(getAmplitudes());
+            child: GestureDetector(
+              behavior: HitTestBehavior.translucent,
+              onHorizontalDragUpdate: (details) => onVisualizerInteraction(details.localPosition, context),
+              onTapDown: (details) => onVisualizerInteraction(details.localPosition, context),
+              child: LayoutBuilder(
+                builder: (context, constraints) {
+                  WidgetsBinding.instance.addPostFrameCallback((_) {
+                    if (mounted) {
+                      final lines = (constraints.maxWidth / 4).floor();
+                      if (_linesNeeded != lines) {
+                        _linesNeeded = lines;
+                        _amplitudes = List.generate(lines, (index) => 0.0);
+                        unawaited(getAmplitudes());
+                      }
                     }
-                  }
-                });
-                return Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: _amplitudes.mapIndexed<Widget>(
-                    (int index, double amplitude) {
-                      return AnimatedContainer(
-                        duration: const Duration(milliseconds: 100),
-                        width: 2,
-                        height: (amplitude * 32).clamp(2, 32),
-                        margin: const EdgeInsets.symmetric(horizontal: 1),
-                        decoration: BoxDecoration(
-                          color:
-                              (_playbackLocation ?? 0) > (index - 1) ? zeta.colors.mainDefault : zeta.colors.mainLight,
-                          borderRadius: BorderRadius.circular(2),
-                        ),
-                      );
-                    },
-                  ).toList(),
-                );
-              },
+                  });
+                  return Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.min,
+                    key: _rowKey,
+                    children: _amplitudes.mapIndexed<Widget>(
+                      (int index, double amplitude) {
+                        return AnimatedContainer(
+                          duration: const Duration(milliseconds: 100),
+                          width: 2,
+                          height: (amplitude * 32).clamp(2, 32),
+                          margin: const EdgeInsets.symmetric(horizontal: 1),
+                          decoration: BoxDecoration(
+                            color:
+                                (_playbackLocationVis ?? 0) > index ? zeta.colors.mainDefault : zeta.colors.mainLight,
+                            borderRadius: BorderRadius.circular(2),
+                          ),
+                        );
+                      },
+                    ).toList(),
+                  );
+                },
+              ),
             ),
           ),
           Padding(
             padding: EdgeInsets.only(left: zeta.spacing.small, right: zeta.spacing.medium),
             child: Text(
-              _duration != null
-                  ? '${_duration!.inMinutes}:${(_duration!.inSeconds % 60).toString().padLeft(2, '0')}'
-                  : '0:00',
+              '${_currentPosition.inMinutes}:${(_currentPosition.inSeconds % 60).toString().padLeft(2, '0')}',
               style: zeta.textStyles.labelMedium,
             ),
           ),
         ],
       ),
     );
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(IntProperty('playbackLocation', _playbackLocation))
-      ..add(DiagnosticsProperty<Uri?>('localFile', _localFile));
   }
 }
