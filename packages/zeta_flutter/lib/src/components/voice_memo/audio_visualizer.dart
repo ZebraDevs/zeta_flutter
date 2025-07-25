@@ -9,6 +9,8 @@ import '../../../zeta_flutter.dart';
 import 'audio_helpers.dart';
 import 'file_helpers.dart';
 
+// TODO(luke): Add device media
+// TODO(luke): Ensure this works on web?
 // TODO(luke): Add the recording functionality
 
 // NOTE: The following TODOs are nice to haves but will not be implemented unless requested
@@ -28,7 +30,10 @@ class ZetaAudioVisualizer extends ZetaStatefulWidget {
     super.rounded,
     this.assetPath,
     this.url,
-  });
+    this.backgroundColor,
+    this.foregroundColor,
+    this.tertiaryColor,
+  }) : assert(assetPath != null || url != null, 'Either assetPath or url must be provided.');
 
   /// The path of a local audio asset to visualize.
   final String? assetPath;
@@ -38,6 +43,15 @@ class ZetaAudioVisualizer extends ZetaStatefulWidget {
   /// This will download the audio file to a local cache and visualize it.
   /// The file will be cached and reused on subsequent calls.
   final String? url;
+
+  /// The background color of the component.
+  final Color? backgroundColor;
+
+  /// The foreground color of the component - used for the bars in the visualizer and the play button.
+  final Color? foregroundColor;
+
+  /// The color used for the audio visualizer bars before they have been played.
+  final Color? tertiaryColor;
 
   @override
   State<ZetaAudioVisualizer> createState() => _ZetaAudioVisualizerState();
@@ -160,10 +174,13 @@ class _ZetaAudioVisualizerState extends State<ZetaAudioVisualizer> {
   Widget build(BuildContext context) {
     final zeta = Zeta.of(context);
 
+    final fg = widget.foregroundColor ?? zeta.colors.mainPrimary;
+    final bg = widget.backgroundColor ?? zeta.colors.surfaceHover;
+
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.all(zeta.radius.rounded),
-        color: zeta.colors.surfaceHover,
+        color: bg,
       ),
       padding: const EdgeInsets.all(4),
       child: Row(
@@ -183,18 +200,18 @@ class _ZetaAudioVisualizerState extends State<ZetaAudioVisualizer> {
                 width: 32,
                 height: 32,
                 decoration: BoxDecoration(
-                  color: zeta.colors.mainPrimary,
+                  color: fg,
                   borderRadius: BorderRadius.all(zeta.radius.full),
                 ),
                 child: Center(
                   child: AnimatedCrossFade(
                     firstChild: Icon(
                       ZetaIcons.play,
-                      color: zeta.colors.mainInverse,
+                      color: bg,
                     ),
                     secondChild: Icon(
                       ZetaIcons.pause,
-                      color: zeta.colors.mainInverse,
+                      color: bg,
                     ),
                     duration: const Duration(milliseconds: 100),
                     crossFadeState: _playing ? CrossFadeState.showSecond : CrossFadeState.showFirst,
@@ -232,8 +249,9 @@ class _ZetaAudioVisualizerState extends State<ZetaAudioVisualizer> {
                           height: (amplitude * 32).clamp(2, 32),
                           margin: const EdgeInsets.symmetric(horizontal: 1),
                           decoration: BoxDecoration(
-                            color:
-                                (_playbackLocationVis ?? 0) > index ? zeta.colors.mainDefault : zeta.colors.mainLight,
+                            color: (_playbackLocationVis ?? 0) > index
+                                ? fg
+                                : widget.tertiaryColor ?? zeta.colors.mainLight,
                             borderRadius: BorderRadius.circular(2),
                           ),
                         );
@@ -248,7 +266,7 @@ class _ZetaAudioVisualizerState extends State<ZetaAudioVisualizer> {
             padding: EdgeInsets.only(left: zeta.spacing.small, right: zeta.spacing.medium),
             child: Text(
               '${_currentPosition.inMinutes}:${(_currentPosition.inSeconds % 60).toString().padLeft(2, '0')}',
-              style: zeta.textStyles.labelMedium,
+              style: zeta.textStyles.labelMedium.apply(color: fg),
             ),
           ),
         ],
