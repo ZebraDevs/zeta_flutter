@@ -42,6 +42,7 @@ class _VoiceMemoExampleState extends State<VoiceMemoExample> {
                 backgroundColor: Zeta.of(context).colors.mainPrimary,
                 foregroundColor: Zeta.of(context).colors.mainInverse,
                 tertiaryColor: Zeta.of(context).colors.mainDisabled,
+                playButtonColor: Zeta.of(context).colors.mainInverse,
               ),
               Padding(
                 padding: EdgeInsets.only(
@@ -58,7 +59,13 @@ class _VoiceMemoExampleState extends State<VoiceMemoExample> {
               ),
             ],
           ),
-        )
+        ),
+        Divider(),
+        SizedBox(
+          width: 375,
+          child: ZetaVoiceMemo(),
+        ),
+        Divider(),
       ].gap(20),
     );
   }
