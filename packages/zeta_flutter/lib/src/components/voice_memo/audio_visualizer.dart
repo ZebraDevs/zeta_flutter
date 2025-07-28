@@ -12,6 +12,7 @@ import 'file_helpers.dart';
 // TODO(luke): Add device media
 // TODO(luke): Ensure this works on web?
 // TODO(luke): Add the recording functionality
+// TODO(luke): Reduce how often re renders happen when the screen size is changing.
 
 // NOTE: The following TODOs are nice to haves but will not be implemented unless requested
 // TODO(design): Animate the bars from left to right to make it look more natural
@@ -33,7 +34,13 @@ class ZetaAudioVisualizer extends ZetaStatefulWidget {
     this.backgroundColor,
     this.foregroundColor,
     this.tertiaryColor,
-  }) : assert(assetPath != null || url != null, 'Either assetPath or url must be provided.');
+    this.playButtonColor,
+    this.deviceFilePath,
+    this.isRecording = false,
+  }) : assert(
+          assetPath != null || url != null || deviceFilePath != null || isRecording,
+          'Either assetPath, deviceFilePath, or url must be provided.',
+        );
 
   /// The path of a local audio asset to visualize.
   final String? assetPath;
@@ -44,14 +51,33 @@ class ZetaAudioVisualizer extends ZetaStatefulWidget {
   /// The file will be cached and reused on subsequent calls.
   final String? url;
 
+  /// The path to a local audio file on the device to visualize.
+  final String? deviceFilePath;
+
   /// The background color of the component.
+  ///
+  /// Defaults to [ZetaColors.surfaceHover] if not provided.
   final Color? backgroundColor;
 
-  /// The foreground color of the component - used for the bars in the visualizer and the play button.
+  /// The foreground color of the component - used for the bars in the visualizer.
+  ///
+  /// Defaults to [ZetaColors.mainDefault] if not provided.
   final Color? foregroundColor;
 
   /// The color used for the audio visualizer bars before they have been played.
+  ///
+  /// Defaults to [ZetaColors.mainLight] if not provided.
   final Color? tertiaryColor;
+
+  /// The color used for the play button in the visualizer.
+  ///
+  /// Defaults to [ZetaColors.mainPrimary] if not provided.
+  final Color? playButtonColor;
+
+  /// Whether the audio visualizer is currently recording.
+  ///
+  /// This is used within the [ZetaVoiceMemo] component.
+  final bool isRecording;
 
   @override
   State<ZetaAudioVisualizer> createState() => _ZetaAudioVisualizerState();
@@ -61,7 +87,13 @@ class ZetaAudioVisualizer extends ZetaStatefulWidget {
     super.debugFillProperties(properties);
     properties
       ..add(StringProperty('assetPath', assetPath))
-      ..add(StringProperty('url', url));
+      ..add(StringProperty('url', url))
+      ..add(ColorProperty('backgroundColor', backgroundColor))
+      ..add(ColorProperty('foregroundColor', foregroundColor))
+      ..add(ColorProperty('tertiaryColor', tertiaryColor))
+      ..add(StringProperty('deviceFilePath', deviceFilePath))
+      ..add(ColorProperty('playButtonColor', playButtonColor))
+      ..add(DiagnosticsProperty<bool>('isRecording', isRecording));
   }
 }
 
@@ -174,8 +206,10 @@ class _ZetaAudioVisualizerState extends State<ZetaAudioVisualizer> {
   Widget build(BuildContext context) {
     final zeta = Zeta.of(context);
 
-    final fg = widget.foregroundColor ?? zeta.colors.mainPrimary;
+    final fg = widget.foregroundColor ?? zeta.colors.mainDefault;
     final bg = widget.backgroundColor ?? zeta.colors.surfaceHover;
+    final playButtonColor = widget.playButtonColor ?? zeta.colors.mainPrimary;
+    final tertiaryColor = widget.tertiaryColor ?? zeta.colors.mainLight;
 
     return Container(
       decoration: BoxDecoration(
@@ -200,19 +234,13 @@ class _ZetaAudioVisualizerState extends State<ZetaAudioVisualizer> {
                 width: 32,
                 height: 32,
                 decoration: BoxDecoration(
-                  color: fg,
+                  color: playButtonColor,
                   borderRadius: BorderRadius.all(zeta.radius.full),
                 ),
                 child: Center(
                   child: AnimatedCrossFade(
-                    firstChild: Icon(
-                      ZetaIcons.play,
-                      color: bg,
-                    ),
-                    secondChild: Icon(
-                      ZetaIcons.pause,
-                      color: bg,
-                    ),
+                    firstChild: Icon(ZetaIcons.play, color: bg),
+                    secondChild: Icon(ZetaIcons.pause, color: bg),
                     duration: const Duration(milliseconds: 100),
                     crossFadeState: _playing ? CrossFadeState.showSecond : CrossFadeState.showFirst,
                   ),
@@ -249,9 +277,7 @@ class _ZetaAudioVisualizerState extends State<ZetaAudioVisualizer> {
                           height: (amplitude * 32).clamp(2, 32),
                           margin: const EdgeInsets.symmetric(horizontal: 1),
                           decoration: BoxDecoration(
-                            color: (_playbackLocationVis ?? 0) > index
-                                ? fg
-                                : widget.tertiaryColor ?? zeta.colors.mainLight,
+                            color: (_playbackLocationVis ?? 0) > index ? fg : tertiaryColor,
                             borderRadius: BorderRadius.circular(2),
                           ),
                         );
