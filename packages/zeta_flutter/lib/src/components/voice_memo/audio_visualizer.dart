@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:audioplayers/audioplayers.dart';
-import 'package:collection/collection.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -12,11 +11,6 @@ import 'file_helpers.dart';
 // TODO(luke): Add device media
 // TODO(luke): Ensure this works on web?
 // TODO(luke): Add the recording functionality
-// TODO(luke): Reduce how often re renders happen when the screen size is changing.
-
-// NOTE: The following TODOs are nice to haves but will not be implemented unless requested
-// TODO(design): Animate the bars from left to right to make it look more natural
-// TODO(design): Add a basic loading indicator
 
 List<double> _generateDefaultAmplitudes(int linesNeeded) {
   const baseAmplitudes = [0, 0, 0, 0, 0, 0.375, 0.5, 1, 0.625, 1, 0.75, 0.75, 1, 1, 0.75, 1, 0.375, 0, 0];
@@ -106,9 +100,11 @@ class _ZetaAudioVisualizerState extends State<ZetaAudioVisualizer> {
   Duration? _duration;
   bool _playing = false;
   int? _linesNeeded;
-  List<double> _amplitudes = [];
-  final GlobalKey _rowKey = GlobalKey();
+  final ValueNotifier<List<double>> _amplitudesNotifier = ValueNotifier<List<double>>([]);
+
   Duration _currentPosition = Duration.zero;
+
+  final GlobalKey _rowKey = GlobalKey(); // Define the missing _rowKey
 
   Future<void> _initializeAudioPlayer() async {
     _audioPlayer ??= AudioPlayer();
@@ -138,8 +134,12 @@ class _ZetaAudioVisualizerState extends State<ZetaAudioVisualizer> {
 
   Future<void> getAmplitudes() async {
     if (_localFile == null || _linesNeeded == null || _linesNeeded! <= 0) return;
-    final amplitudes = await extractWavAmplitudes(_localFile!, _linesNeeded!);
-    setState(() => _amplitudes = amplitudes ?? _generateDefaultAmplitudes(_linesNeeded!));
+    final List<double>? amplitudes = await extractWavAmplitudes(_localFile!, _linesNeeded!);
+    if (amplitudes != null) {
+      _amplitudesNotifier.value = amplitudes;
+    } else {
+      _amplitudesNotifier.value = _generateDefaultAmplitudes(_linesNeeded!);
+    }
   }
 
   void _updatePlaybackLocation(Duration position) {
@@ -157,6 +157,29 @@ class _ZetaAudioVisualizerState extends State<ZetaAudioVisualizer> {
     });
   }
 
+  Timer? _debouncer;
+
+  void otherCalculateWaveform(BoxConstraints constraints) {
+    final lines = (constraints.maxWidth / 4).floor();
+    if (_linesNeeded != lines) {
+      _linesNeeded = lines;
+      unawaited(getAmplitudes());
+    }
+  }
+
+  void calculateWaveform(BoxConstraints constraints) {
+    if (!mounted) return;
+
+    final lines = (constraints.maxWidth / 4).floor();
+    if (_linesNeeded == lines) return;
+
+    _linesNeeded = lines;
+    _amplitudesNotifier.value = List.generate(lines, (index) => 0.0);
+
+    _debouncer?.cancel();
+    _debouncer = Timer(const Duration(milliseconds: 500), () => unawaited(getAmplitudes()));
+  }
+
   @override
   void initState() {
     super.initState();
@@ -165,32 +188,9 @@ class _ZetaAudioVisualizerState extends State<ZetaAudioVisualizer> {
 
   @override
   void dispose() {
+    _amplitudesNotifier.dispose();
     unawaited(_audioPlayer?.dispose());
     super.dispose();
-  }
-
-  @override
-  void didUpdateWidget(covariant ZetaAudioVisualizer oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    if (widget.assetPath != oldWidget.assetPath || widget.url != oldWidget.url) {
-      unawaited(resetPlayback());
-    }
-  }
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    unawaited(_initializeAudioPlayer());
-    if (_localFile == null) {
-      unawaited(_loadLocalFile());
-    }
-  }
-
-  @override
-  void reassemble() {
-    super.reassemble();
-    // Reset playback when the app is reassembled (hot reload)
-    unawaited(resetPlayback());
   }
 
   void onVisualizerInteraction(Offset position, BuildContext context) {
@@ -212,10 +212,7 @@ class _ZetaAudioVisualizerState extends State<ZetaAudioVisualizer> {
     final tertiaryColor = widget.tertiaryColor ?? zeta.colors.mainLight;
 
     return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.all(zeta.radius.rounded),
-        color: bg,
-      ),
+      decoration: BoxDecoration(borderRadius: BorderRadius.all(zeta.radius.rounded), color: bg),
       padding: const EdgeInsets.all(4),
       child: Row(
         children: [
@@ -254,35 +251,39 @@ class _ZetaAudioVisualizerState extends State<ZetaAudioVisualizer> {
               onHorizontalDragUpdate: (details) => onVisualizerInteraction(details.localPosition, context),
               onTapDown: (details) => onVisualizerInteraction(details.localPosition, context),
               child: LayoutBuilder(
-                builder: (context, constraints) {
+                builder: (BuildContext context, BoxConstraints constraints) {
                   WidgetsBinding.instance.addPostFrameCallback((_) {
                     if (mounted) {
-                      final lines = (constraints.maxWidth / 4).floor();
-                      if (_linesNeeded != lines) {
-                        _linesNeeded = lines;
-                        _amplitudes = List.generate(lines, (index) => 0.0);
-                        unawaited(getAmplitudes());
-                      }
+                      calculateWaveform(constraints);
                     }
                   });
-                  return Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    mainAxisSize: MainAxisSize.min,
-                    key: _rowKey,
-                    children: _amplitudes.mapIndexed<Widget>(
-                      (int index, double amplitude) {
-                        return AnimatedContainer(
-                          duration: const Duration(milliseconds: 100),
-                          width: 2,
-                          height: (amplitude * 32).clamp(2, 32),
-                          margin: const EdgeInsets.symmetric(horizontal: 1),
-                          decoration: BoxDecoration(
-                            color: (_playbackLocationVis ?? 0) > index ? fg : tertiaryColor,
-                            borderRadius: BorderRadius.circular(2),
-                          ),
-                        );
-                      },
-                    ).toList(),
+
+                  return ValueListenableBuilder<List<double>>(
+                    valueListenable: _amplitudesNotifier,
+                    builder: (BuildContext context, List<double> amplitudes, Widget? child) {
+                      return SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          mainAxisSize: MainAxisSize.min,
+                          key: _rowKey,
+                          children: List.generate(amplitudes.length, (index) {
+                            final amplitude = amplitudes[index];
+                            return AnimatedContainer(
+                              key: ValueKey(index),
+                              duration: const Duration(milliseconds: 100),
+                              width: 2,
+                              height: (amplitude * 32).clamp(2, 32),
+                              margin: const EdgeInsets.symmetric(horizontal: 1),
+                              decoration: BoxDecoration(
+                                color: (_playbackLocationVis ?? 0) > index ? fg : tertiaryColor,
+                                borderRadius: BorderRadius.circular(2),
+                              ),
+                            );
+                          }),
+                        ),
+                      );
+                    },
                   );
                 },
               ),
