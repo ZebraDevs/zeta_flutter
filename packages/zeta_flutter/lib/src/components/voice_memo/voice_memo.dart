@@ -174,6 +174,8 @@ class _ZetaVoiceMemoState extends State<ZetaVoiceMemo> {
                 ],
               ),
               Material(
+                color: widget.canRecord ? null : zeta.colors.surfaceDisabled,
+                borderRadius: BorderRadius.all(zeta.radius.full),
                 child: InkWell(
                   borderRadius: BorderRadius.all(zeta.radius.full),
                   onTap: widget.canRecord
@@ -189,12 +191,15 @@ class _ZetaVoiceMemoState extends State<ZetaVoiceMemo> {
                       : null,
                   child: ZetaProgressCircle(
                     size: ZetaCircleSizes.l,
-                    progress: 0.5,
-                    child: AnimatedCrossFade(
-                      duration: const Duration(milliseconds: 150),
-                      firstChild: const Icon(ZetaIcons.pause),
-                      secondChild: const Icon(ZetaIcons.microphone),
-                      crossFadeState: _isRecording ? CrossFadeState.showSecond : CrossFadeState.showFirst,
+                    progress: widget.canRecord ? 0.5 : 0,
+                    child: IconTheme(
+                      data: IconThemeData(color: widget.canRecord ? zeta.colors.mainDefault : zeta.colors.mainDisabled),
+                      child: AnimatedCrossFade(
+                        duration: const Duration(milliseconds: 150),
+                        secondChild: const Icon(ZetaIcons.pause),
+                        firstChild: const Icon(ZetaIcons.microphone),
+                        crossFadeState: _isRecording ? CrossFadeState.showSecond : CrossFadeState.showFirst,
+                      ),
                     ),
                   ),
                 ),
@@ -214,6 +219,7 @@ class _ZetaVoiceMemoState extends State<ZetaVoiceMemo> {
               ),
             ],
           ).paddingHorizontal(zeta.spacing.large),
+          SizedBox(height: zeta.spacing.xl_2),
         ],
       ),
     );
