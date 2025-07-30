@@ -21,6 +21,9 @@
   <key>CFBundleVersion</key>
   <string>1.0</string>
   <key>MinimumOSVersion</key>
-  <string>12.0</string>
+  <strig>12.0</string>
+  <key>NSMicrophoneUsageDescription</key>
+  <string>Some message to describe why you need this permission</string>
+
 </dict>
 </plist>

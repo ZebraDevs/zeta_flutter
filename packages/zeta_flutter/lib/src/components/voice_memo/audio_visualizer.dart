@@ -13,7 +13,7 @@ import 'file_helpers.dart';
 // TODO(luke): Add the recording functionality
 
 List<double> _generateDefaultAmplitudes(int linesNeeded) {
-  const baseAmplitudes = [0, 0, 0, 0, 0, 0.375, 0.5, 1, 0.625, 1, 0.75, 0.75, 1, 1, 0.75, 1, 0.375, 0, 0];
+  const baseAmplitudes = [0, 0.375, 0.5, 1, 0.625, 1, 0.75, 0.75, 1, 1, 0.75, 1, 0.375, 0, 0, 0, 0, 0];
   return List<double>.generate(linesNeeded, (i) => baseAmplitudes[i % baseAmplitudes.length].toDouble());
 }
 
@@ -31,9 +31,17 @@ class ZetaAudioVisualizer extends ZetaStatefulWidget {
     this.playButtonColor,
     this.deviceFilePath,
     this.isRecording = false,
+    this.audioStream,
+    this.audioDuration,
+    this.maxRecordingDuration,
   }) : assert(
           assetPath != null || url != null || deviceFilePath != null || isRecording,
           'Either assetPath, deviceFilePath, or url must be provided.',
+          // ),
+          // assert(
+          //   (audioStream == null && audioDuration == null && maxRecordingDuration == null) ||
+          //       (audioStream != null && audioDuration != null && maxRecordingDuration != null),
+          //   'If audioStream is provided, audioDuration and maxRecordingDuration must also be provided.',
         );
 
   /// The path of a local audio asset to visualize.
@@ -73,6 +81,25 @@ class ZetaAudioVisualizer extends ZetaStatefulWidget {
   /// This is used within the [ZetaVoiceMemo] component.
   final bool isRecording;
 
+  /// A stream of audio data to visualize.
+  ///
+  /// Used in [ZetaVoiceMemo] when recording audio.
+  ///
+  /// This stream should emit integers representing audio samples.
+  /// If this is provided, the [audioDuration] should also be set to indicate the
+  /// maximum duration of the audio being visualized.
+  final Stream<Uint8List>? audioStream;
+
+  /// The duration of the audio stream being visualized.
+  ///
+  /// This must be provided when [audioStream] is provided.
+  final Duration? audioDuration;
+
+  /// The maximum duration of the audio stream being recorded.
+  ///
+  /// This must be provided when [audioStream] is provided.
+  final Duration? maxRecordingDuration;
+
   @override
   State<ZetaAudioVisualizer> createState() => _ZetaAudioVisualizerState();
 
@@ -87,7 +114,10 @@ class ZetaAudioVisualizer extends ZetaStatefulWidget {
       ..add(ColorProperty('tertiaryColor', tertiaryColor))
       ..add(StringProperty('deviceFilePath', deviceFilePath))
       ..add(ColorProperty('playButtonColor', playButtonColor))
-      ..add(DiagnosticsProperty<bool>('isRecording', isRecording));
+      ..add(DiagnosticsProperty<bool>('isRecording', isRecording))
+      ..add(DiagnosticsProperty<Stream<Uint8List>?>('audioStream', audioStream))
+      ..add(DiagnosticsProperty<Duration?>('audioDuration', audioDuration))
+      ..add(DiagnosticsProperty<Duration?>('maxRecordingDuration', maxRecordingDuration));
   }
 }
 
@@ -101,10 +131,8 @@ class _ZetaAudioVisualizerState extends State<ZetaAudioVisualizer> {
   bool _playing = false;
   int? _linesNeeded;
   final ValueNotifier<List<double>> _amplitudesNotifier = ValueNotifier<List<double>>([]);
-
   Duration _currentPosition = Duration.zero;
-
-  final GlobalKey _rowKey = GlobalKey(); // Define the missing _rowKey
+  final GlobalKey _rowKey = GlobalKey();
 
   Future<void> _initializeAudioPlayer() async {
     _audioPlayer ??= AudioPlayer();
@@ -170,6 +198,18 @@ class _ZetaAudioVisualizerState extends State<ZetaAudioVisualizer> {
   void calculateWaveform(BoxConstraints constraints) {
     if (!mounted) return;
 
+    if (widget.audioDuration != null && _linesNeeded != null) {
+      final duration = widget.audioDuration!;
+      final durationPercentage = duration.inMilliseconds / (widget.maxRecordingDuration?.inMilliseconds ?? 1);
+      final lines = (durationPercentage * _linesNeeded!).floor();
+      final filledLines = _generateDefaultAmplitudes(lines);
+      final unfilledLines = List<double>.filled(_linesNeeded! - lines, 0);
+      _amplitudesNotifier.value = List.from(filledLines)..addAll(unfilledLines);
+      _playbackLocationVis = (duration.inMilliseconds / widget.maxRecordingDuration!.inMilliseconds * _linesNeeded!)
+          .clamp(0, _linesNeeded! - 1)
+          .toInt();
+    }
+
     final lines = (constraints.maxWidth / 4).floor();
     if (_linesNeeded == lines) return;
 
@@ -210,41 +250,42 @@ class _ZetaAudioVisualizerState extends State<ZetaAudioVisualizer> {
     final bg = widget.backgroundColor ?? zeta.colors.surfaceHover;
     final playButtonColor = widget.playButtonColor ?? zeta.colors.mainPrimary;
     final tertiaryColor = widget.tertiaryColor ?? zeta.colors.mainLight;
-
+    final Duration dur = widget.isRecording && widget.audioDuration != null ? widget.audioDuration! : _currentPosition;
     return Container(
       decoration: BoxDecoration(borderRadius: BorderRadius.all(zeta.radius.rounded), color: bg),
       padding: const EdgeInsets.all(4),
       child: Row(
         children: [
-          InkWell(
-            onTap: () {
-              if (_playing) {
-                unawaited(_audioPlayer?.pause());
-              } else {
-                unawaited(_audioPlayer?.resume());
-              }
-              setState(() => _playing = !_playing);
-            },
-            child: Padding(
-              padding: EdgeInsets.all(zeta.spacing.small),
-              child: Container(
-                width: 32,
-                height: 32,
-                decoration: BoxDecoration(
-                  color: playButtonColor,
-                  borderRadius: BorderRadius.all(zeta.radius.full),
-                ),
-                child: Center(
-                  child: AnimatedCrossFade(
-                    firstChild: Icon(ZetaIcons.play, color: bg),
-                    secondChild: Icon(ZetaIcons.pause, color: bg),
-                    duration: const Duration(milliseconds: 100),
-                    crossFadeState: _playing ? CrossFadeState.showSecond : CrossFadeState.showFirst,
+          if (!widget.isRecording)
+            InkWell(
+              onTap: () {
+                if (_playing) {
+                  unawaited(_audioPlayer?.pause());
+                } else {
+                  unawaited(_audioPlayer?.resume());
+                }
+                setState(() => _playing = !_playing);
+              },
+              child: Padding(
+                padding: EdgeInsets.all(zeta.spacing.small),
+                child: Container(
+                  width: 32,
+                  height: 32,
+                  decoration: BoxDecoration(
+                    color: playButtonColor,
+                    borderRadius: BorderRadius.all(zeta.radius.full),
+                  ),
+                  child: Center(
+                    child: AnimatedCrossFade(
+                      firstChild: Icon(ZetaIcons.play, color: bg),
+                      secondChild: Icon(ZetaIcons.pause, color: bg),
+                      duration: const Duration(milliseconds: 100),
+                      crossFadeState: _playing ? CrossFadeState.showSecond : CrossFadeState.showFirst,
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
           Expanded(
             child: GestureDetector(
               behavior: HitTestBehavior.translucent,
@@ -290,9 +331,9 @@ class _ZetaAudioVisualizerState extends State<ZetaAudioVisualizer> {
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(left: zeta.spacing.small, right: zeta.spacing.medium),
+            padding: EdgeInsets.only(left: zeta.spacing.small, right: zeta.spacing.medium, top: 14, bottom: 14),
             child: Text(
-              '${_currentPosition.inMinutes}:${(_currentPosition.inSeconds % 60).toString().padLeft(2, '0')}',
+              '${dur.inMinutes}:${(dur.inSeconds % 60).toString().padLeft(2, '0')}',
               style: zeta.textStyles.labelMedium.apply(color: fg),
             ),
           ),
