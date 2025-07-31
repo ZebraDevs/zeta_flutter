@@ -3,6 +3,9 @@ import 'dart:io';
 import 'dart:math';
 
 import 'package:flutter/foundation.dart';
+import 'package:record/record.dart';
+
+import 'wav_header.dart';
 
 /// Extracts WAV amplitudes from a file URI, normalizing them for visualization.
 ///
@@ -21,7 +24,7 @@ import 'package:flutter/foundation.dart';
 Future<List<double>?> extractWavAmplitudes(Uri fileUri, int linesNeeded) async {
   try {
     final bytes = await File(fileUri.toFilePath()).readAsBytes();
-    return _parseWav(bytes, linesNeeded);
+    return parseWav(bytes, linesNeeded);
   } catch (e, stackTrace) {
     debugPrint('Error extracting WAV amplitudes: $e\nStack trace: $stackTrace');
     return null;
@@ -43,7 +46,7 @@ List<double> _decodePCM(List<int> audioBytes, int bitsPerSample, int numChannels
   });
 }
 
-Future<List<double>> _parseWav(Uint8List bytes, int linesNeeded) async {
+Future<List<double>> parseWav(Uint8List bytes, int linesNeeded) async {
   final audioFormat = bytes[20] | (bytes[21] << 8);
   if (audioFormat != 1) throw UnsupportedError('Unsupported WAV format: Only PCM is supported');
 
@@ -86,4 +89,14 @@ extension<E> on List<E> {
     }
     return true;
   }
+}
+
+Uint8List generateWePCMWavHeader(List<Uint8List> audioChunks, RecordConfig recordConfig) {
+  if (audioChunks.isNotEmpty) {
+    final totalAudioBytes = audioChunks.fold<int>(0, (sum, chunk) => sum + chunk.length);
+    final bytesPerSample = 2 * recordConfig.numChannels;
+    final samples = totalAudioBytes ~/ bytesPerSample;
+    return PcmWavHeader(samples, recordConfig.numChannels, sampleRate: recordConfig.sampleRate).header;
+  }
+  return Uint8List(0);
 }
