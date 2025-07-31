@@ -3,8 +3,10 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:record/record.dart';
+import 'package:wav/wav_file.dart';
 
 import '../../../zeta_flutter.dart';
+import 'wav_header.dart';
 
 export './audio_visualizer.dart';
 
@@ -67,7 +69,7 @@ class ZetaVoiceMemo extends ZetaStatefulWidget {
   final VoidCallback? onDiscard;
 
   /// Callback for when the send button is pressed.
-  final Function(Stream<Uint8List> audioStream)? onSend;
+  final void Function(Stream<Uint8List> audioStream)? onSend;
 
   /// Whether the user can record a voice memo.
   final bool canRecord;
@@ -100,7 +102,7 @@ class ZetaVoiceMemo extends ZetaStatefulWidget {
       ..add(DiagnosticsProperty<Duration>('maxRecordingDuration', maxRecordingDuration))
       ..add(DiagnosticsProperty<Duration>('warningDuration', warningDuration))
       ..add(StringProperty('recordingNotAllowedLabel', recordingNotAllowedLabel))
-      ..add(ObjectFlagProperty<Function(Stream<Uint8List> audioStream)?>.has('onSend', onSend));
+      ..add(ObjectFlagProperty<void Function(Stream<Uint8List> audioStream)?>.has('onSend', onSend));
   }
 }
 
@@ -111,6 +113,9 @@ class _ZetaVoiceMemoState extends State<ZetaVoiceMemo> {
   Stream<Uint8List>? _stream;
   bool _isRecording = false;
   bool _showWarning = false;
+
+  List<Uint8List> _audioChunks = [];
+  Uint8List? _audioData;
 
   @override
   void initState() {
@@ -133,7 +138,19 @@ class _ZetaVoiceMemoState extends State<ZetaVoiceMemo> {
 
   Future<void> startRecording() async {
     if (_canRecord) {
-      _stream = await _record.startStream(const RecordConfig(encoder: AudioEncoder.pcm16bits));
+      _stream = await _record.startStream(const RecordConfig(
+        encoder: AudioEncoder.pcm16bits,
+        sampleRate: 16000, // Good balance for voice - 2x phone quality
+        numChannels: 1, // Mono for voice is sufficient and halves file size
+        bitRate: 64000, // 64 kbps - adequate for voice, smaller files
+      ));
+      _stream!.listen((data) {
+        _audioChunks.add(data);
+      }, onDone: () {
+        // Handle stream completion if needed
+      }, onError: (error) {
+        // Handle stream error if needed
+      });
       _duration = Duration.zero;
       trackRecording();
     }
@@ -161,6 +178,18 @@ class _ZetaVoiceMemoState extends State<ZetaVoiceMemo> {
     if (_isRecording) {
       await _record.pause();
       setState(() => _isRecording = false);
+
+      // Calculate total audio bytes from all chunks
+      final totalAudioBytes = _audioChunks.fold<int>(0, (sum, chunk) => sum + chunk.length);
+
+      // Calculate samples (for 16-bit mono: total bytes / 2)
+      final samples = totalAudioBytes ~/ 2;
+
+      // Create header with correct sample count and sample rate
+      final header = PcmWavHeader(samples, 1, sampleRate: 16000).header;
+
+      final x = Uint8List.fromList([...header, ..._audioChunks.expand((x) => x)]);
+      _audioData = x;
     }
   }
 
@@ -175,6 +204,8 @@ class _ZetaVoiceMemoState extends State<ZetaVoiceMemo> {
     _stream = null;
     _duration = Duration.zero;
     _isRecording = false;
+    _audioChunks.clear();
+    _audioData = null;
     setState(() {});
   }
 
@@ -219,13 +250,24 @@ class _ZetaVoiceMemoState extends State<ZetaVoiceMemo> {
                 ],
               ),
               SizedBox(height: zeta.spacing.xl_2),
-              ZetaAudioVisualizer(
-                isRecording: true,
-                // key: _audioVisualizerKey,
-                audioDuration: _duration,
-                audioStream: _stream,
-                maxRecordingDuration: widget.maxRecordingDuration,
-              ).paddingHorizontal(zeta.spacing.xl_2),
+              if (_isRecording || _duration == null)
+                ZetaAudioVisualizer(
+                  isRecording: true,
+                  // key: _audioVisualizerKey,
+                  audioDuration: _duration,
+                  audioStream: _stream,
+                  maxRecordingDuration: widget.maxRecordingDuration,
+                ).paddingHorizontal(zeta.spacing.xl_2)
+              else
+                ZetaAudioVisualizer(
+                  key: ValueKey(_audioData),
+                  // isRecording: true,
+                  audioData: _audioData,
+                  // audioDuration: _duration,
+                  // audioStream: _stream,
+                  // maxRecordingDuration: widget.maxRecordingDuration,
+                  backgroundColor: zeta.colors.surfaceInfoSubtle,
+                ).paddingHorizontal(zeta.spacing.xl_2),
               const SizedBox(height: 17),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

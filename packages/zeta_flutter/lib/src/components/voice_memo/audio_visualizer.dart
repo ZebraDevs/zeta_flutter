@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/foundation.dart';
@@ -34,8 +35,9 @@ class ZetaAudioVisualizer extends ZetaStatefulWidget {
     this.audioStream,
     this.audioDuration,
     this.maxRecordingDuration,
+    this.audioData,
   }) : assert(
-          assetPath != null || url != null || deviceFilePath != null || isRecording,
+          assetPath != null || url != null || deviceFilePath != null || audioData != null || isRecording,
           'Either assetPath, deviceFilePath, or url must be provided.',
           // ),
           // assert(
@@ -100,6 +102,8 @@ class ZetaAudioVisualizer extends ZetaStatefulWidget {
   /// This must be provided when [audioStream] is provided.
   final Duration? maxRecordingDuration;
 
+  final Uint8List? audioData;
+
   @override
   State<ZetaAudioVisualizer> createState() => _ZetaAudioVisualizerState();
 
@@ -145,15 +149,25 @@ class _ZetaAudioVisualizerState extends State<ZetaAudioVisualizer> {
       _localFile = await handleFile(widget.assetPath!, FileFetchMode.asset);
     } else if (widget.url != null) {
       _localFile = await handleFile(widget.url!, FileFetchMode.url);
+    } else if (widget.audioData != null) {
+      // If audioData is provided, we create a temporary file to play it
+      final tempDir = Directory.systemTemp;
+      final tempFile = File('${tempDir.path}/temp_audio.wav');
+      print(tempFile.path);
+
+      await tempFile.writeAsBytes(widget.audioData!);
+      _localFile = tempFile.uri;
     }
   }
 
   Future<void> resetPlayback() async {
     _playing = false;
     await _initializeAudioPlayer();
+
     if (_localFile == null) await _loadLocalFile();
     if (_localFile != null) {
       await _audioPlayer!.setSourceUrl(_localFile!.toString());
+
       final duration = await _audioPlayer!.getDuration();
       setState(() => _duration = duration);
       unawaited(getAmplitudes());
