@@ -36,6 +36,8 @@ class ZetaAudioVisualizer extends ZetaStatefulWidget {
     this.audioDuration,
     this.maxRecordingDuration,
     this.audioData,
+    this.onPause,
+    this.onPlay,
   }) : assert(
           assetPath != null || url != null || deviceFilePath != null || audioData != null || isRecording,
           'Either assetPath, deviceFilePath, or url must be provided.',
@@ -104,6 +106,10 @@ class ZetaAudioVisualizer extends ZetaStatefulWidget {
 
   final Uint8List? audioData;
 
+  final VoidCallback? onPlay;
+
+  final VoidCallback? onPause;
+
   @override
   State<ZetaAudioVisualizer> createState() => _ZetaAudioVisualizerState();
 
@@ -153,7 +159,6 @@ class _ZetaAudioVisualizerState extends State<ZetaAudioVisualizer> {
       // If audioData is provided, we create a temporary file to play it
       final tempDir = Directory.systemTemp;
       final tempFile = File('${tempDir.path}/temp_audio.wav');
-      print(tempFile.path);
 
       await tempFile.writeAsBytes(widget.audioData!);
       _localFile = tempFile.uri;
@@ -244,6 +249,16 @@ class _ZetaAudioVisualizerState extends State<ZetaAudioVisualizer> {
   void dispose() {
     _amplitudesNotifier.dispose();
     unawaited(_audioPlayer?.dispose());
+    if (widget.audioData != null && _localFile != null) {
+      try {
+        final file = File.fromUri(_localFile!);
+        if (file.existsSync()) {
+          file.deleteSync();
+        }
+      } catch (_) {
+        // Ignore errors on cleanup
+      }
+    }
     super.dispose();
   }
 
@@ -274,8 +289,10 @@ class _ZetaAudioVisualizerState extends State<ZetaAudioVisualizer> {
             InkWell(
               onTap: () {
                 if (_playing) {
+                  widget.onPause?.call();
                   unawaited(_audioPlayer?.pause());
                 } else {
+                  widget.onPlay?.call();
                   unawaited(_audioPlayer?.resume());
                 }
                 setState(() => _playing = !_playing);
