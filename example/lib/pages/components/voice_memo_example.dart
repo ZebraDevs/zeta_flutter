@@ -77,7 +77,8 @@ class _VoiceMemoExampleState extends State<VoiceMemoExample> {
           ),
           width: 375,
           child: ZetaVoiceMemo(
-            maxRecordingDuration: Duration(seconds: 30),
+            maxRecordingDuration: Duration(seconds: 10),
+            warningDuration: Duration(seconds: 5),
           ),
         ),
       ].gap(20),
