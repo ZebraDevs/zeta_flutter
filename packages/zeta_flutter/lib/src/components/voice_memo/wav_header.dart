@@ -1,8 +1,11 @@
+// Internal type, used within [ZetaVoiceMemo].
 // ignore_for_file: public_member_api_docs
+
+// Solution adapted from Stack Overflow. Credit to 'Richard Heap': https://stackoverflow.com/a/76885616/10292120.
 
 import 'dart:typed_data';
 
-abstract class WavHeader {
+class WavHeader {
   WavHeader(
     this.tag,
     this.channels,
@@ -12,6 +15,21 @@ abstract class WavHeader {
     this.samples,
     this.length,
   );
+
+  // Constructor with PCM defaults
+  WavHeader.pcm(
+    int samples,
+    int channels, {
+    int sampleRate = 44100,
+  }) : this(
+          1, // PCM tag
+          channels,
+          sampleRate,
+          16, // 16 bits per sample
+          2 * channels, // block align
+          samples,
+          channels * samples * 2, // length
+        );
 
   int get overallLength =>
       headerTemplate.length - 8 + fmtTemplate.length + factTemplate.length + dataTemplate.length + length;
@@ -86,17 +104,4 @@ abstract class WavHeader {
     0x64, 0x61, 0x74, 0x61, //data
     0, 0, 0, 0,
   ];
-}
-
-class PcmWavHeader extends WavHeader {
-  PcmWavHeader(int samples, int channels, {int sampleRate = 44100})
-      : super(
-          1 /* PCM */,
-          channels,
-          sampleRate,
-          16,
-          2 * channels,
-          samples,
-          channels * samples * 2,
-        );
 }
