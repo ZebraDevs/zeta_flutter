@@ -98,3 +98,9 @@ extension BrightnessExtension on Brightness {
   /// Converts [Brightness] to [ThemeMode].
   ThemeMode get themeMode => this == Brightness.light ? ThemeMode.light : ThemeMode.dark;
 }
+
+/// [String] extension on [Duration].
+extension ToString on Duration {
+  /// Returns a duration in the format m:ss
+  String get minutesSeconds => '$inMinutes:${(inSeconds % 60).toString().padLeft(2, '0')}';
+}
