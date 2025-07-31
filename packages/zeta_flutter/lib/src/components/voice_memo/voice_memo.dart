@@ -3,10 +3,8 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:record/record.dart';
-import 'package:wav/wav_file.dart';
 
 import '../../../zeta_flutter.dart';
-import 'wav_header.dart';
 
 export './audio_visualizer.dart';
 
@@ -25,6 +23,12 @@ class ZetaVoiceMemo extends ZetaStatefulWidget {
     this.canRecord = true,
     this.maxRecordingDuration = const Duration(seconds: 120),
     this.warningDuration = const Duration(seconds: 15),
+    this.recordConfig = const RecordConfig(
+      encoder: AudioEncoder.pcm16bits,
+      sampleRate: 16000,
+      numChannels: 1,
+      bitRate: 64000,
+    ),
   }) : assert(warningDuration < maxRecordingDuration, 'maxRecordingDuration must be greater than warningDuration');
 
   /// The label shown when recording a voice memo.
@@ -86,6 +90,15 @@ class ZetaVoiceMemo extends ZetaStatefulWidget {
   /// This is used to show a warning to the user that the recording is about to end.
   final Duration warningDuration;
 
+  /// Configuration for audio recorder from [Record] package.
+  ///
+  /// For the package to work correctly, audio *must* be [AudioEncoder.pcm16bits].
+  /// This is a limitation of the package currently.
+  /// If you require a different format, please submit a PR!
+  ///
+  /// See [Record](https://pub.dev/packages/record).
+  final RecordConfig recordConfig;
+
   @override
   State<ZetaVoiceMemo> createState() => _ZetaVoiceMemoState();
 
@@ -102,7 +115,8 @@ class ZetaVoiceMemo extends ZetaStatefulWidget {
       ..add(DiagnosticsProperty<Duration>('maxRecordingDuration', maxRecordingDuration))
       ..add(DiagnosticsProperty<Duration>('warningDuration', warningDuration))
       ..add(StringProperty('recordingNotAllowedLabel', recordingNotAllowedLabel))
-      ..add(ObjectFlagProperty<void Function(Stream<Uint8List> audioStream)?>.has('onSend', onSend));
+      ..add(ObjectFlagProperty<void Function(Stream<Uint8List> audioStream)?>.has('onSend', onSend))
+      ..add(DiagnosticsProperty<RecordConfig>('recordConfig', recordConfig));
   }
 }
 
@@ -114,8 +128,8 @@ class _ZetaVoiceMemoState extends State<ZetaVoiceMemo> {
   bool _isRecording = false;
   bool _showWarning = false;
 
-  List<Uint8List> _audioChunks = [];
-  Uint8List? _audioData;
+  final List<Uint8List> _audioChunks = [];
+  // Uint8List? _audioData;
   bool _playing = false;
 
   @override
@@ -139,36 +153,33 @@ class _ZetaVoiceMemoState extends State<ZetaVoiceMemo> {
 
   Future<void> startRecording() async {
     if (_canRecord) {
-      _stream = await _record.startStream(const RecordConfig(
-        encoder: AudioEncoder.pcm16bits,
-        sampleRate: 16000, // Good balance for voice - 2x phone quality
-        numChannels: 1, // Mono for voice is sufficient and halves file size
-        bitRate: 64000, // 64 kbps - adequate for voice, smaller files
-      ));
-      _stream!.listen((data) {
-        _audioChunks.add(data);
-      }, onDone: () {
-        // Handle stream completion if needed
-      }, onError: (error) {
-        // Handle stream error if needed
-      });
+      _stream = await _record.startStream(
+        const RecordConfig(
+          encoder: AudioEncoder.pcm16bits,
+          sampleRate: 16000,
+          numChannels: 1,
+          bitRate: 64000,
+        ),
+      );
+      _stream!.listen(_audioChunks.add);
       _duration = Duration.zero;
       trackRecording();
     }
   }
 
   void trackRecording() {
-    setState(() {
-      _isRecording = true;
-    });
-    Timer.periodic(const Duration(seconds: 1), (timer) {
+    setState(() => _isRecording = true);
+    Timer.periodic(const Duration(milliseconds: 100), (timer) {
       if (!_isRecording) {
         timer.cancel();
         return;
       }
-      _duration = _duration! + const Duration(seconds: 1);
-      if (_duration! >= widget.maxRecordingDuration - widget.warningDuration) {
+      _duration = _duration! + const Duration(milliseconds: 100);
+      if (_duration! >= widget.maxRecordingDuration - widget.warningDuration && !_showWarning) {
         _showWarning = true;
+      }
+      if (_duration! >= widget.maxRecordingDuration) {
+        unawaited(pauseRecording());
       }
       setState(() {});
     });
@@ -179,16 +190,16 @@ class _ZetaVoiceMemoState extends State<ZetaVoiceMemo> {
       await _record.pause();
       setState(() => _isRecording = false);
 
-      // Calculate total audio bytes from all chunks
-      final totalAudioBytes = _audioChunks.fold<int>(0, (sum, chunk) => sum + chunk.length);
+      // // Calculate total audio bytes from all chunks
+      // final totalAudioBytes = _audioChunks.fold<int>(0, (sum, chunk) => sum + chunk.length);
 
-      // Calculate samples (for 16-bit mono: total bytes / 2)
-      final samples = totalAudioBytes ~/ 2;
+      // // Calculate samples (for 16-bit mono: total bytes / 2)
+      // final samples = totalAudioBytes ~/ 2;
 
-      // Create header with correct sample count and sample rate
-      final header = PcmWavHeader(samples, 1, sampleRate: 16000).header;
+      // // Create header with correct sample count and sample rate
+      // final header = PcmWavHeader(samples, 1, sampleRate: 16000).header;
 
-      _audioData = Uint8List.fromList([...header, ..._audioChunks.expand((x) => x)]);
+      // _audioData = Uint8List.fromList([...header, ..._audioChunks.expand((x) => x)]);
       _showWarning = false;
     }
   }
@@ -202,10 +213,10 @@ class _ZetaVoiceMemoState extends State<ZetaVoiceMemo> {
 
   void restartRecording() {
     _stream = null;
-    _duration = Duration.zero;
+    _duration = null;
     _isRecording = false;
     _audioChunks.clear();
-    _audioData = null;
+    // _audioData = null;
     setState(() {});
   }
 
@@ -250,22 +261,15 @@ class _ZetaVoiceMemoState extends State<ZetaVoiceMemo> {
                 ],
               ),
               SizedBox(height: zeta.spacing.xl_2),
-              if (_isRecording || _duration == null)
-                ZetaAudioVisualizer(
-                  isRecording: true,
-                  // key: _audioVisualizerKey,
-                  audioDuration: _duration,
-                  audioStream: _stream,
-                  maxRecordingDuration: widget.maxRecordingDuration,
-                ).paddingHorizontal(zeta.spacing.xl_2)
-              else
-                ZetaAudioVisualizer(
-                  key: ValueKey(_audioData),
-                  audioData: _audioData,
-                  backgroundColor: zeta.colors.surfaceInfoSubtle,
-                  onPlay: () => setState(() => _playing = true),
-                  onPause: () => setState(() => _playing = false),
-                ).paddingHorizontal(zeta.spacing.xl_2),
+              ZetaAudioVisualizer(
+                isRecording: _isRecording || _duration == null,
+                audioDuration: _duration,
+                audioStream: _stream,
+                maxRecordingDuration: widget.maxRecordingDuration,
+                onPlay: () => setState(() => _playing = true),
+                onPause: () => setState(() => _playing = false),
+                // audioData: _audioData,
+              ).paddingHorizontal(zeta.spacing.xl_2),
               const SizedBox(height: 17),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -298,11 +302,13 @@ class _ZetaVoiceMemoState extends State<ZetaVoiceMemo> {
                     ),
                   ),
                   Material(
-                    color: _canRecord ? null : zeta.colors.surfaceDisabled,
+                    color: _canRecord && (_duration == null || (_duration! < widget.maxRecordingDuration))
+                        ? null
+                        : zeta.colors.surfaceDisabled,
                     borderRadius: BorderRadius.all(zeta.radius.full),
                     child: InkWell(
                       borderRadius: BorderRadius.all(zeta.radius.full),
-                      onTap: _canRecord
+                      onTap: _canRecord && (_duration == null || (_duration! < widget.maxRecordingDuration))
                           ? () {
                               if (_isRecording) {
                                 unawaited(pauseRecording());
@@ -315,11 +321,17 @@ class _ZetaVoiceMemoState extends State<ZetaVoiceMemo> {
                           : null,
                       child: ZetaProgressCircle(
                         size: ZetaCircleSizes.l,
-                        progress: _canRecord && _duration != null
-                            ? _duration!.inMilliseconds / widget.maxRecordingDuration.inMilliseconds
+                        progress: _canRecord && (_duration == null || (_duration! < widget.maxRecordingDuration))
+                            ? (_duration != null
+                                ? _duration!.inMilliseconds / widget.maxRecordingDuration.inMilliseconds
+                                : 0)
                             : 0,
                         child: IconTheme(
-                          data: IconThemeData(color: _canRecord ? zeta.colors.mainDefault : zeta.colors.mainDisabled),
+                          data: IconThemeData(
+                            color: _canRecord && (_duration == null || (_duration! < widget.maxRecordingDuration))
+                                ? zeta.colors.mainDefault
+                                : zeta.colors.mainDisabled,
+                          ),
                           child: AnimatedCrossFade(
                             duration: const Duration(milliseconds: 150),
                             secondChild: const Icon(ZetaIcons.pause),
