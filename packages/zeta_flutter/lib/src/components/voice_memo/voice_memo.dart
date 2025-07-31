@@ -116,6 +116,7 @@ class _ZetaVoiceMemoState extends State<ZetaVoiceMemo> {
 
   List<Uint8List> _audioChunks = [];
   Uint8List? _audioData;
+  bool _playing = false;
 
   @override
   void initState() {
@@ -159,7 +160,6 @@ class _ZetaVoiceMemoState extends State<ZetaVoiceMemo> {
   void trackRecording() {
     setState(() {
       _isRecording = true;
-      _startedRecording = true;
     });
     Timer.periodic(const Duration(seconds: 1), (timer) {
       if (!_isRecording) {
@@ -188,8 +188,8 @@ class _ZetaVoiceMemoState extends State<ZetaVoiceMemo> {
       // Create header with correct sample count and sample rate
       final header = PcmWavHeader(samples, 1, sampleRate: 16000).header;
 
-      final x = Uint8List.fromList([...header, ..._audioChunks.expand((x) => x)]);
-      _audioData = x;
+      _audioData = Uint8List.fromList([...header, ..._audioChunks.expand((x) => x)]);
+      _showWarning = false;
     }
   }
 
@@ -208,8 +208,6 @@ class _ZetaVoiceMemoState extends State<ZetaVoiceMemo> {
     _audioData = null;
     setState(() {});
   }
-
-  bool _startedRecording = true;
 
   @override
   Widget build(BuildContext context) {
@@ -240,9 +238,11 @@ class _ZetaVoiceMemoState extends State<ZetaVoiceMemo> {
                             '{timer}',
                             (widget.maxRecordingDuration.inSeconds - _duration!.inSeconds).toString(),
                           )
-                        : _startedRecording
-                            ? widget.sendMessageLabel
-                            : widget.recordingLabel,
+                        : _playing
+                            ? widget.playingLabel
+                            : _duration != null && _duration!.inMilliseconds > 0
+                                ? widget.sendMessageLabel
+                                : widget.recordingLabel,
                     style: zeta.textStyles.labelSmall.copyWith(
                       color: _showWarning ? zeta.colors.mainNegative : zeta.colors.mainSubtle,
                     ),
@@ -261,12 +261,10 @@ class _ZetaVoiceMemoState extends State<ZetaVoiceMemo> {
               else
                 ZetaAudioVisualizer(
                   key: ValueKey(_audioData),
-                  // isRecording: true,
                   audioData: _audioData,
-                  // audioDuration: _duration,
-                  // audioStream: _stream,
-                  // maxRecordingDuration: widget.maxRecordingDuration,
                   backgroundColor: zeta.colors.surfaceInfoSubtle,
+                  onPlay: () => setState(() => _playing = true),
+                  onPause: () => setState(() => _playing = false),
                 ).paddingHorizontal(zeta.spacing.xl_2),
               const SizedBox(height: 17),
               Row(
