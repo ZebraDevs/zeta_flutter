@@ -4,10 +4,12 @@ import 'dart:io';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:record/record.dart';
 
 import '../../../zeta_flutter.dart';
 import 'audio_helpers.dart';
 import 'file_helpers.dart';
+import 'wav_header.dart';
 
 // TODO(luke): Add device media
 // TODO(luke): Ensure this works on web?
@@ -35,17 +37,18 @@ class ZetaAudioVisualizer extends ZetaStatefulWidget {
     this.audioStream,
     this.audioDuration,
     this.maxRecordingDuration,
-    this.audioData,
+    // this.audioData,
     this.onPause,
     this.onPlay,
+    this.recordConfig = const RecordConfig(
+      encoder: AudioEncoder.pcm16bits,
+      bitRate: 16000,
+      sampleRate: 16000,
+      numChannels: 1,
+    ),
   }) : assert(
-          assetPath != null || url != null || deviceFilePath != null || audioData != null || isRecording,
+          assetPath != null || url != null || deviceFilePath != null || audioStream != null || isRecording,
           'Either assetPath, deviceFilePath, or url must be provided.',
-          // ),
-          // assert(
-          //   (audioStream == null && audioDuration == null && maxRecordingDuration == null) ||
-          //       (audioStream != null && audioDuration != null && maxRecordingDuration != null),
-          //   'If audioStream is provided, audioDuration and maxRecordingDuration must also be provided.',
         );
 
   /// The path of a local audio asset to visualize.
@@ -104,11 +107,22 @@ class ZetaAudioVisualizer extends ZetaStatefulWidget {
   /// This must be provided when [audioStream] is provided.
   final Duration? maxRecordingDuration;
 
-  final Uint8List? audioData;
+  // final Uint8List? audioData;
 
+  /// Callback when the play button is pressed.
   final VoidCallback? onPlay;
 
+  /// Callback when the pause button is pressed.
   final VoidCallback? onPause;
+
+  /// Configuration for audio recorder from [Record] package.
+  ///
+  /// For the package to work correctly, audio *must* be [AudioEncoder.pcm16bits].
+  /// This is a limitation of the package currently.
+  /// If you require a different format, please submit a PR!
+  ///
+  /// See [Record](https://pub.dev/packages/record).
+  final RecordConfig recordConfig;
 
   @override
   State<ZetaAudioVisualizer> createState() => _ZetaAudioVisualizerState();
@@ -127,7 +141,9 @@ class ZetaAudioVisualizer extends ZetaStatefulWidget {
       ..add(DiagnosticsProperty<bool>('isRecording', isRecording))
       ..add(DiagnosticsProperty<Stream<Uint8List>?>('audioStream', audioStream))
       ..add(DiagnosticsProperty<Duration?>('audioDuration', audioDuration))
-      ..add(DiagnosticsProperty<Duration?>('maxRecordingDuration', maxRecordingDuration));
+      ..add(DiagnosticsProperty<Duration?>('maxRecordingDuration', maxRecordingDuration))
+      ..add(ObjectFlagProperty<VoidCallback?>.has('onPause', onPause))
+      ..add(ObjectFlagProperty<VoidCallback?>.has('onPlay', onPlay));
   }
 }
 
@@ -143,10 +159,14 @@ class _ZetaAudioVisualizerState extends State<ZetaAudioVisualizer> {
   final ValueNotifier<List<double>> _amplitudesNotifier = ValueNotifier<List<double>>([]);
   Duration _currentPosition = Duration.zero;
   final GlobalKey _rowKey = GlobalKey();
+  final List<Uint8List> _audioChunks = [];
 
   Future<void> _initializeAudioPlayer() async {
     _audioPlayer ??= AudioPlayer();
-    _audioPlayer!.onPlayerComplete.listen((_) => resetPlayback());
+    _audioPlayer!.onPlayerComplete.listen((_) {
+      widget.onPause?.call();
+      unawaited(resetPlayback());
+    });
     _audioPlayer!.onPositionChanged.listen(_updatePlaybackLocation);
   }
 
@@ -155,12 +175,12 @@ class _ZetaAudioVisualizerState extends State<ZetaAudioVisualizer> {
       _localFile = await handleFile(widget.assetPath!, FileFetchMode.asset);
     } else if (widget.url != null) {
       _localFile = await handleFile(widget.url!, FileFetchMode.url);
-    } else if (widget.audioData != null) {
-      // If audioData is provided, we create a temporary file to play it
+    } else if (_audioChunks.isNotEmpty) {
       final tempDir = Directory.systemTemp;
       final tempFile = File('${tempDir.path}/temp_audio.wav');
-
-      await tempFile.writeAsBytes(widget.audioData!);
+      await tempFile.writeAsBytes(
+        generateWePCMWavHeader(_audioChunks, widget.recordConfig) + _audioChunks.expand((x) => x).toList(),
+      );
       _localFile = tempFile.uri;
     }
   }
@@ -180,7 +200,7 @@ class _ZetaAudioVisualizerState extends State<ZetaAudioVisualizer> {
   }
 
   Future<void> getAmplitudes() async {
-    if (_localFile == null || _linesNeeded == null || _linesNeeded! <= 0) return;
+    if (_localFile == null || _linesNeeded == null || _linesNeeded! <= 0 || _audioChunks.isNotEmpty) return;
     final List<double>? amplitudes = await extractWavAmplitudes(_localFile!, _linesNeeded!);
     if (amplitudes != null) {
       _amplitudesNotifier.value = amplitudes;
@@ -214,21 +234,38 @@ class _ZetaAudioVisualizerState extends State<ZetaAudioVisualizer> {
     }
   }
 
-  void calculateWaveform(BoxConstraints constraints) {
+  Future<void> calculateWaveform(BoxConstraints constraints) async {
     if (!mounted) return;
 
-    if (widget.audioDuration != null && _linesNeeded != null) {
-      final duration = widget.audioDuration!;
-      final durationPercentage = duration.inMilliseconds / (widget.maxRecordingDuration?.inMilliseconds ?? 1);
-      final lines = (durationPercentage * _linesNeeded!).floor();
-      final filledLines = _generateDefaultAmplitudes(lines);
-      final unfilledLines = List<double>.filled(_linesNeeded! - lines, 0);
-      _amplitudesNotifier.value = List.from(filledLines)..addAll(unfilledLines);
-      _playbackLocationVis = (duration.inMilliseconds / widget.maxRecordingDuration!.inMilliseconds * _linesNeeded!)
-          .clamp(0, _linesNeeded! - 1)
-          .toInt();
-    }
+    if (widget.audioDuration != null && _audioChunks.isNotEmpty) {
+// Calculate amplitudes from audio chunks for recording visualization
+      final lines = (constraints.maxWidth / 4).floor();
+      if (_linesNeeded != lines) {
+        _linesNeeded = lines;
+      }
 
+      final chunkDurationMs = (widget.maxRecordingDuration!.inMilliseconds ~/ _linesNeeded!).clamp(100, 500);
+
+      final audioData = Uint8List.fromList([
+        ...generateWePCMWavHeader(_audioChunks, widget.recordConfig),
+        ..._audioChunks.expand((x) => x),
+      ]);
+
+      final linesNeededHere = widget.isRecording && widget.audioDuration != null
+          ? (widget.audioDuration!.inMilliseconds / chunkDurationMs).ceil()
+          : _linesNeeded!;
+
+      final waveforms = await parseWav(audioData, linesNeededHere);
+
+      if (widget.isRecording) {
+        _amplitudesNotifier.value = [...List<double>.filled(_linesNeeded! - waveforms.length, 0), ...waveforms];
+        _playbackLocationVis = _linesNeeded! - 1;
+      } else {
+        _amplitudesNotifier.value = waveforms;
+
+        _playbackLocationVis = 0;
+      }
+    }
     final lines = (constraints.maxWidth / 4).floor();
     if (_linesNeeded == lines) return;
 
@@ -249,15 +286,13 @@ class _ZetaAudioVisualizerState extends State<ZetaAudioVisualizer> {
   void dispose() {
     _amplitudesNotifier.dispose();
     unawaited(_audioPlayer?.dispose());
-    if (widget.audioData != null && _localFile != null) {
+    if (_audioChunks.isNotEmpty) {
       try {
         final file = File.fromUri(_localFile!);
         if (file.existsSync()) {
           file.deleteSync();
         }
-      } catch (_) {
-        // Ignore errors on cleanup
-      }
+      } catch (_) {}
     }
     super.dispose();
   }
@@ -269,6 +304,18 @@ class _ZetaAudioVisualizerState extends State<ZetaAudioVisualizer> {
     }
     setState(() => _playbackLocation = position.dx / box.size.width);
     unawaited(_audioPlayer?.seek(Duration(milliseconds: (_duration!.inMilliseconds * _playbackLocation).round())));
+  }
+
+  @override
+  void didUpdateWidget(covariant ZetaAudioVisualizer oldWidget) {
+    if (widget.audioStream != null && oldWidget.audioStream == null) {
+      widget.audioStream!.listen(_audioChunks.add);
+    }
+    if (!widget.isRecording && oldWidget.isRecording) {
+      _playbackLocationVis = 0;
+      unawaited(resetPlayback());
+    }
+    super.didUpdateWidget(oldWidget);
   }
 
   @override
@@ -326,7 +373,7 @@ class _ZetaAudioVisualizerState extends State<ZetaAudioVisualizer> {
                 builder: (BuildContext context, BoxConstraints constraints) {
                   WidgetsBinding.instance.addPostFrameCallback((_) {
                     if (mounted) {
-                      calculateWaveform(constraints);
+                      unawaited(calculateWaveform(constraints));
                     }
                   });
 
