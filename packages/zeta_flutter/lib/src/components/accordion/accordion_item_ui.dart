@@ -1,4 +1,4 @@
-// Documentation not needed for internal components
+// Documentation not required as this is an internal file.
 // ignore_for_file: public_member_api_docs
 
 import 'package:flutter/foundation.dart';
