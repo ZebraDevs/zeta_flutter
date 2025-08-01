@@ -11,6 +11,7 @@ abstract class ZetaProgress extends ZetaStatefulWidget {
     super.rounded,
     this.progress = 0,
     this.maxValue = 1,
+    this.animationDuration = ZetaAnimationLength.fast,
   });
 
   /// ZetaProgress value, decimal value ranging from 0.0 - 1.0, 0.5 = 50%
@@ -19,12 +20,16 @@ abstract class ZetaProgress extends ZetaStatefulWidget {
   /// Maximum value for progress, defaults to 1
   final double maxValue;
 
+  /// Duration for progress animation
+  final Duration animationDuration;
+
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
       ..add(DoubleProperty('progress', progress))
-      ..add(DoubleProperty('maxValue', maxValue));
+      ..add(DoubleProperty('maxValue', maxValue))
+      ..add(DiagnosticsProperty<Duration>('animationDuration', animationDuration));
   }
 }
 
@@ -41,13 +46,17 @@ abstract class ZetaProgressState<T extends ZetaProgress> extends State<T> with T
   ///Animation for [ZetaProgressState]
   late Animation<double> animation;
 
+  /// Duration for progress animation
+  /// Defaults to [ZetaAnimationLength.fast]
+  late final Duration animationDuration;
+
   @override
   void initState() {
     super.initState();
     progress = widget.progress;
     controller = AnimationController(
       vsync: this,
-      duration: ZetaAnimationLength.fast,
+      duration: widget.animationDuration,
     );
     animation = Tween<double>(
       begin: widget.progress, // Start value
@@ -55,7 +64,7 @@ abstract class ZetaProgressState<T extends ZetaProgress> extends State<T> with T
     ).animate(controller)
       ..addListener(() {
         setState(() {
-          progress = animation.value / widget.maxValue;
+          progress = animation.value;
         });
       });
   }
@@ -72,7 +81,7 @@ abstract class ZetaProgressState<T extends ZetaProgress> extends State<T> with T
 
     setState(() {
       animation = Tween<double>(
-        begin: progress * widget.maxValue,
+        begin: progress,
         end: newProgress,
       ).animate(controller);
       controller
@@ -95,6 +104,7 @@ abstract class ZetaProgressState<T extends ZetaProgress> extends State<T> with T
     properties
       ..add(DoubleProperty('progress', progress))
       ..add(DiagnosticsProperty<AnimationController>('controller', controller))
-      ..add(DiagnosticsProperty<Animation<double>>('animation', animation));
+      ..add(DiagnosticsProperty<Animation<double>>('animation', animation))
+      ..add(DiagnosticsProperty<Duration>('animationDuration', animationDuration));
   }
 }

@@ -7,15 +7,19 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:record/record.dart';
 
+import '../../../../zeta_flutter.dart';
 import 'file_helpers.dart';
 import 'wav_header.dart';
 
-/// Extracts WAV amplitudes from a file URI, normalizing them for visualization.
-///
-/// This function is very basic, and does not handle all WAV formats, only PCM.
-///
-/// The extracted amplitudes are normalized to a range of 0.0 to 1.0, where 0.5 represents the average amplitude.
-/// These values should not be considered accurate for audio playback, but rather for visual representation in a waveform.
+const int _defaultWavHeaderOffset = 44;
+const int _wavHeaderSearchStart = 36;
+const int _wavHeaderChunkSize = 8;
+const List<int> _wavDataChunkMarker = [0x64, 0x61, 0x74, 0x61]; // "data" in ASCII
+const int _minChunkDurationMs = 100;
+const int _maxChunkDurationMs = 500;
+const String _tempAudioFileName = 'temp_audio.wav';
+const List<double> _fallbackAmps = [0, 0.375, 0.5, 1, 0.625, 1, 0.75, 0.75, 1, 1, 0.75, 1, 0.375, 0, 0, 0, 0, 0];
+
 /// Extracts WAV amplitudes from a file URI, normalizing them for visualization.
 ///
 /// This function is very basic, and does not handle all WAV formats, only PCM.
@@ -69,12 +73,12 @@ Future<List<double>> _parseWav(Uint8List bytes, int linesNeeded) async {
 }
 
 int _findDataChunkOffset(Uint8List bytes) {
-  for (int i = 36; i < bytes.length - 8; i += 2) {
-    if (bytes.sublist(i, i + 4).everyIndexed((index, value) => value == [0x64, 0x61, 0x74, 0x61][index])) {
-      return i + 8;
+  for (int i = _wavHeaderSearchStart; i < bytes.length - _wavHeaderChunkSize; i += 2) {
+    if (bytes.sublist(i, i + 4).everyIndexed((index, value) => value == _wavDataChunkMarker[index])) {
+      return i + _wavHeaderChunkSize;
     }
   }
-  return 44; // Default offset for PCM WAV files
+  return _defaultWavHeaderOffset;
 }
 
 List<double> _groupAndNormalizeSamples(List<double> samples, int groupsCount) {
@@ -85,21 +89,16 @@ List<double> _groupAndNormalizeSamples(List<double> samples, int groupsCount) {
   return maxAmplitude == 0 ? List.filled(groupsCount, 0) : groups.map((e) => e / maxAmplitude).toList();
 }
 
-extension<E> on List<E> {
-  bool everyIndexed(bool Function(int index, E value) test) {
-    for (int i = 0; i < length; i++) {
-      if (!test(i, this[i])) return false;
-    }
-    return true;
-  }
-}
-
 Uint8List _generateWePCMWavHeader(List<Uint8List> audioChunks, RecordConfig recordConfig) {
   if (audioChunks.isNotEmpty) {
     final totalAudioBytes = audioChunks.fold<int>(0, (sum, chunk) => sum + chunk.length);
     final bytesPerSample = 2 * recordConfig.numChannels;
     final samples = totalAudioBytes ~/ bytesPerSample;
-    return WavHeader.pcm(samples, recordConfig.numChannels, sampleRate: recordConfig.sampleRate).header;
+    return PCMWavHeader(
+      channels: recordConfig.numChannels,
+      sampleRate: recordConfig.sampleRate,
+      samples: samples,
+    ).header;
   }
   return Uint8List(0);
 }
@@ -289,7 +288,7 @@ class AudioPlaybackManager {
       _localFile = Uri.file(deviceFilePath);
     } else if (audioChunks != null && audioChunks.isNotEmpty && recordConfig != null) {
       final tempDir = Directory.systemTemp;
-      final tempFile = File('${tempDir.path}/temp_audio.wav');
+      final tempFile = File('${tempDir.path}/$_tempAudioFileName');
       await tempFile.writeAsBytes(
         _generateWePCMWavHeader(audioChunks, recordConfig) + audioChunks.expand((x) => x).toList(),
       );
@@ -341,7 +340,7 @@ class AudioPlaybackManager {
     if (_localFile != null) {
       try {
         final file = File.fromUri(_localFile!);
-        if (file.existsSync() && file.path.contains('temp_audio.wav')) {
+        if (file.existsSync() && file.path.contains(_tempAudioFileName)) {
           file.deleteSync();
         }
       } catch (_) {}
@@ -364,7 +363,8 @@ class AudioWaveformCalculator {
       return List.filled(linesNeeded, 0);
     }
 
-    final chunkDurationMs = (maxRecordingDuration.inMilliseconds ~/ linesNeeded).clamp(100, 500);
+    final chunkDurationMs =
+        (maxRecordingDuration.inMilliseconds ~/ linesNeeded).clamp(_minChunkDurationMs, _maxChunkDurationMs);
 
     final audioData = Uint8List.fromList([
       ..._generateWePCMWavHeader(audioChunks, recordConfig),
@@ -384,8 +384,7 @@ class AudioWaveformCalculator {
 
   /// Generate default amplitudes for visualization
   static List<double> generateDefaultAmplitudes(int linesNeeded) {
-    const baseAmplitudes = [0, 0.375, 0.5, 1, 0.625, 1, 0.75, 0.75, 1, 1, 0.75, 1, 0.375, 0, 0, 0, 0, 0];
-    return List<double>.generate(linesNeeded, (i) => baseAmplitudes[i % baseAmplitudes.length].toDouble());
+    return List<double>.generate(linesNeeded, (i) => _fallbackAmps[i % _fallbackAmps.length]);
   }
 
   /// Calculate playback position for waveform visualization
