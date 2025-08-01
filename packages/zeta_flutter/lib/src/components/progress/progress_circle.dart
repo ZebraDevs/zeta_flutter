@@ -35,6 +35,7 @@ class ZetaProgressCircle extends ZetaProgress {
     super.key,
     super.progress = 0,
     super.maxValue = 1,
+    super.animationDuration,
     this.size = ZetaCircleSizes.xl,
     super.rounded,
     this.onCancel,
@@ -68,7 +69,8 @@ class ZetaProgressCircle extends ZetaProgress {
       ..add(DiagnosticsProperty<bool>('rounded', rounded))
       ..add(ObjectFlagProperty<VoidCallback?>.has('onCancel', onCancel))
       ..add(DoubleProperty('maxValue', maxValue))
-      ..add(StringProperty('label', label));
+      ..add(StringProperty('label', label))
+      ..add(DiagnosticsProperty<Duration?>('animationDuration', animationDuration));
   }
 }
 
