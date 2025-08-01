@@ -11,10 +11,7 @@ import 'recording_control.dart';
 
 export 'audio_visualizer.dart';
 
-// TODO(luke): tests
-// TODO(luke): when stopping recording, make the animation nicer on the amplitude bars
 // TODO(luke): test on Android and web
-// TODO(luke): ensure it falls back correctly when non- WAV/PCM files are provided
 
 /// A slide-up sheet that appears when recording a voice message in chat. It shows the recording time, waveform, and buttons to stop, send, or cancel the memo.
 class ZetaVoiceMemo extends ZetaStatefulWidget {
