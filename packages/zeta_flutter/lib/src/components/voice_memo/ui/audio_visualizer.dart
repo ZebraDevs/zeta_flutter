@@ -10,6 +10,8 @@ import '../state/audio_visualizer_helpers.dart';
 import 'play_button.dart';
 import 'waveform.dart';
 
+//TODO(bug): Audio can not be played on Web
+
 /// Audio Visualizer used within the [ZetaVoiceMemo] component.
 class ZetaAudioVisualizer extends ZetaStatefulWidget {
   /// Constructs a [ZetaAudioVisualizer].
@@ -26,6 +28,7 @@ class ZetaAudioVisualizer extends ZetaStatefulWidget {
     this.audioDuration,
     this.onPause,
     this.onPlay,
+    this.errorMessage = 'Audio cannot be played',
   })  : assert(
           assetPath != null || url != null || deviceFilePath != null,
           'Audio source required: provide assetPath, url, or deviceFilePath',
@@ -46,6 +49,7 @@ class ZetaAudioVisualizer extends ZetaStatefulWidget {
     super.rounded,
     this.audioStream,
     this.audioDuration,
+    this.errorMessage = 'Audio cannot be played',
   })  : assetPath = null,
         url = null,
         deviceFilePath = null,
@@ -123,6 +127,9 @@ class ZetaAudioVisualizer extends ZetaStatefulWidget {
   /// Callback when the pause button is pressed.
   final VoidCallback? onPause;
 
+  /// Error message to display when audio can not be played.
+  final String errorMessage;
+
   @override
   State<ZetaAudioVisualizer> createState() => _ZetaAudioVisualizerState();
 
@@ -143,7 +150,8 @@ class ZetaAudioVisualizer extends ZetaStatefulWidget {
       ..add(ColorProperty('tertiaryColor', tertiaryColor))
       ..add(ColorProperty('playButtonColor', playButtonColor))
       ..add(DiagnosticsProperty<Duration?>('maxRecordingDuration', maxRecordingDuration))
-      ..add(DiagnosticsProperty<RecordConfig>('recordConfig', recordConfig));
+      ..add(DiagnosticsProperty<RecordConfig>('recordConfig', recordConfig))
+      ..add(StringProperty('errorMessage', errorMessage));
   }
 }
 
@@ -224,11 +232,7 @@ class _ZetaAudioVisualizerState extends State<ZetaAudioVisualizer> {
     AudioVisualizerHelpers.updatePlaybackLocation(
       playbackManager: _playbackManager,
       linesNeeded: _linesNeeded,
-      setPlaybackLocation: (val) {
-        setState(() {
-          _playbackLocationVis = val;
-        });
-      },
+      setPlaybackLocation: (val) => setState(() => _playbackLocationVis = val),
       position: position,
     );
   }
@@ -280,50 +284,78 @@ class _ZetaAudioVisualizerState extends State<ZetaAudioVisualizer> {
     final bg = widget.backgroundColor ?? zeta.colors.surfaceHover;
     final playButtonColor = widget.playButtonColor ?? zeta.colors.mainPrimary;
     final tertiaryColor = widget.tertiaryColor ?? zeta.colors.mainLight;
-    final duration =
-        widget.isRecording && widget.audioDuration != null ? widget.audioDuration! : _playbackManager.currentPosition;
+    final duration = widget.isRecording && widget.audioDuration != null
+        ? widget.audioDuration!
+        : (_playbackManager.currentPosition == Duration.zero && (_playbackManager.loadedAudio)
+            ? _playbackManager.duration
+            : _playbackManager.currentPosition);
 
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.all(zeta.radius.rounded),
-        color: bg,
-      ),
-      padding: const EdgeInsets.all(4),
-      child: Row(
-        children: [
-          if (!widget.isRecording)
-            PlayButton(
-              isPlaying: _playing,
-              onTap: _togglePlayback,
-              playButtonColor: playButtonColor,
-              iconColor: bg,
-            ),
-          Expanded(
-            child: Waveform(
-              foregroundColor: fg,
-              tertiaryColor: tertiaryColor,
-              amplitudesNotifier: _amplitudesNotifier,
-              playbackLocationVis: _playbackLocationVis,
-              rowKey: _rowKey,
-              onInteraction: _onVisualizerInteraction,
-              onLayoutChange: (constraints) => unawaited(_calculateWaveform(constraints)),
-              mounted: mounted,
+    return Stack(
+      children: [
+        Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.all(zeta.radius.rounded),
+            color: bg,
+          ),
+          padding: const EdgeInsets.all(4),
+          child: Row(
+            children: [
+              AnimatedSize(
+                duration: ZetaAnimationLength.fast,
+                child: SizedBox(
+                  width: widget.isRecording ? 0 : null,
+                  child: PlayButton(
+                    key: const ValueKey('playButton'),
+                    isPlaying: _playing,
+                    onTap: _togglePlayback,
+                    playButtonColor: playButtonColor,
+                    iconColor: bg,
+                    disabled: !_playbackManager.loadedAudio,
+                  ),
+                ),
+              ),
+              Expanded(
+                child: Waveform(
+                  foregroundColor: fg,
+                  tertiaryColor: tertiaryColor,
+                  amplitudesNotifier: _amplitudesNotifier,
+                  playbackLocationVis: _playbackLocationVis,
+                  rowKey: _rowKey,
+                  onInteraction: _onVisualizerInteraction,
+                  onLayoutChange: (constraints) => unawaited(_calculateWaveform(constraints)),
+                  mounted: mounted,
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(
+                  left: zeta.spacing.small,
+                  right: zeta.spacing.medium,
+                  top: 14,
+                  bottom: 14,
+                ),
+                child: Text(
+                  duration?.minutesSeconds ?? '0:00',
+                  style: zeta.textStyles.labelMedium.apply(color: fg),
+                ),
+              ),
+            ],
+          ),
+        ),
+        if (!_playbackManager.loadedAudio)
+          Positioned(
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            child: DecoratedBox(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.all(zeta.radius.rounded),
+                color: Zeta.of(context).colors.surfaceDefault.withAlpha(200),
+              ),
+              child: Center(child: Text(widget.errorMessage)),
             ),
           ),
-          Padding(
-            padding: EdgeInsets.only(
-              left: zeta.spacing.small,
-              right: zeta.spacing.medium,
-              top: 14,
-              bottom: 14,
-            ),
-            child: Text(
-              duration.minutesSeconds,
-              style: zeta.textStyles.labelMedium.apply(color: fg),
-            ),
-          ),
-        ],
-      ),
+      ],
     );
   }
 }

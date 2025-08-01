@@ -28,13 +28,17 @@ const List<double> _fallbackAmps = [0, 0.375, 0.5, 1, 0.625, 1, 0.75, 0.75, 1, 1
 /// These values should not be considered accurate for audio playback, but rather for visual representation in a waveform.
 ///
 /// If the presented file is not a WAV file, it will return null.
-Future<List<double>?> extractWavAmplitudes(Uri fileUri, int linesNeeded) async {
+Future<List<double>?> extractWavAmplitudes(Uri fileUri, int linesNeeded, AudioPlaybackManager? manager) async {
   try {
     final bytes = await File(fileUri.toFilePath()).readAsBytes();
-    return _parseWav(bytes, linesNeeded);
-  } catch (e, stackTrace) {
-    debugPrint('Error extracting WAV amplitudes: $e\nStack trace: $stackTrace');
-    return null;
+    return await _parseWav(bytes, linesNeeded);
+  } catch (e, _) {
+    debugPrint('Error extracting WAV amplitudes: $e');
+    if (manager != null && !manager.loadedAudio) {
+      return List<double>.filled(linesNeeded, 0);
+    } else {
+      return List<double>.generate(linesNeeded, (i) => _fallbackAmps[i % _fallbackAmps.length]);
+    }
   }
 }
 
@@ -241,6 +245,10 @@ class AudioPlaybackManager {
   Duration _currentPosition = Duration.zero;
   StreamSubscription<Duration>? _positionSubscription;
 
+// TODO(bug): Find a better way to handle this - as it will always flash up as unable to play audio until this become true. Instead we should have a loading indicator.
+  /// Whether the audio have been loaded
+  bool loadedAudio = false;
+
   /// Whether audio is currently playing
   bool get isPlaying => _playing;
 
@@ -305,6 +313,8 @@ class AudioPlaybackManager {
       await _audioPlayer!.setSourceUrl(_localFile!.toString());
       final duration = await _audioPlayer!.getDuration();
       _duration = duration;
+
+      loadedAudio = true;
     }
   }
 

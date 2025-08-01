@@ -19,7 +19,7 @@ class AudioVisualizerHelpers {
     if (playbackManager.localFile == null || linesNeeded == null || linesNeeded <= 0 || audioChunks.isNotEmpty) {
       return;
     }
-    final amplitudes = await extractWavAmplitudes(playbackManager.localFile!, linesNeeded);
+    final amplitudes = await extractWavAmplitudes(playbackManager.localFile!, linesNeeded, playbackManager);
     amplitudesNotifier.value = amplitudes ?? AudioWaveformCalculator.generateDefaultAmplitudes(linesNeeded);
   }
 
