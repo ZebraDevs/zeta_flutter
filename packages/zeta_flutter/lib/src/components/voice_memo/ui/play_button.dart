@@ -13,24 +13,25 @@ class PlayButton extends StatelessWidget {
     required this.onTap,
     required this.playButtonColor,
     required this.iconColor,
+    required this.disabled,
   });
 
   final bool isPlaying;
   final VoidCallback onTap;
   final Color playButtonColor;
   final Color iconColor;
-
+  final bool disabled;
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: onTap,
+      onTap: disabled ? null : onTap,
       child: Padding(
         padding: EdgeInsets.all(Zeta.of(context).spacing.small),
         child: Container(
           width: 32,
           height: 32,
           decoration: BoxDecoration(
-            color: playButtonColor,
+            color: disabled ? Zeta.of(context).colors.mainDisabled : playButtonColor,
             borderRadius: BorderRadius.all(Zeta.of(context).radius.full),
           ),
           child: Center(
@@ -53,6 +54,7 @@ class PlayButton extends StatelessWidget {
       ..add(DiagnosticsProperty<bool>('isPlaying', isPlaying))
       ..add(ObjectFlagProperty<VoidCallback>.has('onTap', onTap))
       ..add(ColorProperty('playButtonColor', playButtonColor))
-      ..add(ColorProperty('iconColor', iconColor));
+      ..add(ColorProperty('iconColor', iconColor))
+      ..add(DiagnosticsProperty<bool>('disabled', disabled));
   }
 }
