@@ -16,7 +16,7 @@ Widget dropdown(BuildContext context) {
   final primaryAction = context.knobs.stringOrNull(label: 'Primary Action');
   final secondaryAction = context.knobs.stringOrNull(label: 'Secondary Action');
 
-  final illustration = context.knobs.listOrNull(
+  final illustration = context.knobs.objectOrNull.dropdown(
     label: 'Illustration',
     options: illustrations.keys.toList(),
     labelBuilder: sentencer,

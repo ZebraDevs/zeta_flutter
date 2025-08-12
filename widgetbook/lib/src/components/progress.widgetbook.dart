@@ -16,7 +16,8 @@ const String progressPath = '$componentsPath/Progress';
 )
 Widget bar(BuildContext context) => ZetaProgressBar(
       progress: context.knobs.double.slider(label: 'Progress', max: 1, initialValue: 0.5),
-      type: context.knobs.list(label: 'Type', options: ZetaProgressBarType.values, labelBuilder: enumLabelBuilder),
+      type: context.knobs.object
+          .dropdown(label: 'Type', options: ZetaProgressBarType.values, labelBuilder: enumLabelBuilder),
       isThin: context.knobs.boolean(label: 'Thin'),
       label: context.knobs.stringOrNull(label: 'Label'),
     ).paddingHorizontal(16);
@@ -30,7 +31,7 @@ Widget bar(BuildContext context) => ZetaProgressBar(
 )
 Widget progressCircleUseCase(BuildContext context) => ZetaProgressCircle(
       progress: context.knobs.double.slider(label: 'Progress', max: 1, initialValue: 0.5),
-      size: context.knobs.list(
+      size: context.knobs.object.dropdown(
         initialOption: ZetaCircleSizes.xl,
         label: 'Size',
         options: ZetaCircleSizes.values,
@@ -46,7 +47,7 @@ Widget progressCircleUseCase(BuildContext context) => ZetaProgressCircle(
 )
 Widget uploadProgressCircleUseCase(BuildContext context) => ZetaProgressCircle(
       progress: context.knobs.double.slider(label: 'Progress', max: 1, initialValue: 0.5),
-      size: context.knobs.list(
+      size: context.knobs.object.dropdown(
         initialOption: ZetaCircleSizes.xl,
         label: 'Size',
         options: ZetaCircleSizes.values,

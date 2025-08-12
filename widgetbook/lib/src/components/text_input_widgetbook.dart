@@ -23,7 +23,7 @@ Widget textInput(BuildContext context) {
 
   return SmallContentWrapper(
     child: ZetaTextInput(
-      size: context.knobs.list<ZetaWidgetSize>(
+      size: context.knobs.object.dropdown<ZetaWidgetSize>(
         label: 'Size',
         options: ZetaWidgetSize.values,
         labelBuilder: (size) => size.name,

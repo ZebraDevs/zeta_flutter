@@ -14,7 +14,7 @@ import 'package:zeta_widgetbook/src/utils/utils.dart';
       'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=23132-166632&t=N8coJ9AFu6DS3mOF-4',
 )
 Widget button(BuildContext context) {
-  final borderType = context.knobs.list(
+  final borderType = context.knobs.object.dropdown(
     label: 'Border type',
     labelBuilder: enumLabelBuilder,
     options: ZetaWidgetBorder.values,
@@ -23,12 +23,12 @@ Widget button(BuildContext context) {
     label: context.knobs.string(label: 'Text', initialValue: 'Button'),
     onPressed: context.knobs.boolean(label: 'Disabled') ? null : () {},
     borderType: borderType,
-    size: context.knobs.list(
+    size: context.knobs.object.dropdown(
       label: 'Size',
       options: ZetaWidgetSize.values,
       labelBuilder: enumLabelBuilder,
     ),
-    type: context.knobs.list(
+    type: context.knobs.object.dropdown(
       label: 'Type',
       options: ZetaButtonType.values,
       labelBuilder: enumLabelBuilder,
@@ -49,17 +49,17 @@ Widget iconButton(BuildContext context) {
   return ZetaIconButton(
     icon: iconKnob(context)!,
     onPressed: disabledKnob(context) ? null : () {},
-    borderType: context.knobs.list(
+    borderType: context.knobs.object.dropdown(
       label: 'Border type',
       options: ZetaWidgetBorder.values,
       labelBuilder: enumLabelBuilder,
     ),
-    size: context.knobs.list(
+    size: context.knobs.object.dropdown(
       label: 'Size',
       labelBuilder: enumLabelBuilder,
       options: ZetaWidgetSize.values,
     ),
-    type: context.knobs.list(
+    type: context.knobs.object.dropdown(
       label: 'Type',
       options: ZetaButtonType.values,
       labelBuilder: enumLabelBuilder,

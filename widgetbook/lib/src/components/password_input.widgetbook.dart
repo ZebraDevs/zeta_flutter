@@ -17,7 +17,8 @@ Widget passwordInputUseCase(BuildContext context) {
   return SmallContentWrapper(
     child: ZetaPasswordInput(
       disabled: disabledKnob(context),
-      size: context.knobs.list(label: 'Size', options: ZetaWidgetSize.values, labelBuilder: enumLabelBuilder),
+      size:
+          context.knobs.object.dropdown(label: 'Size', options: ZetaWidgetSize.values, labelBuilder: enumLabelBuilder),
       hintText: context.knobs.string(label: 'Hint Text'),
       placeholder: context.knobs.string(label: 'Placeholder'),
       label: context.knobs.string(label: 'Label'),

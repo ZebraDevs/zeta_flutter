@@ -30,9 +30,9 @@ Widget searchBarUseCase(BuildContext context) {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             ZetaSearchBar(
-              size: context.knobs.list<ZetaWidgetSize>(
+              size: context.knobs.object.dropdown<ZetaWidgetSize>(
                   label: 'Size', options: ZetaWidgetSize.values, labelBuilder: (size) => size.name),
-              shape: context.knobs.list<ZetaWidgetBorder>(
+              shape: context.knobs.object.dropdown<ZetaWidgetBorder>(
                 label: 'Shape',
                 options: ZetaWidgetBorder.values,
                 labelBuilder: (shape) => shape.name,

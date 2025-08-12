@@ -16,7 +16,8 @@ Widget fab(BuildContext context) => ZetaFAB(
       onPressed: context.knobs.boolean(label: 'Disabled') ? null : () {},
       expanded: context.knobs.boolean(label: 'Expanded'),
       icon: iconKnob(context, nullable: false)!,
-      shape: context.knobs.list(label: 'Shape', options: ZetaWidgetBorder.values, labelBuilder: enumLabelBuilder),
-      size: context.knobs.list(label: 'Size', options: ZetaFabSize.values, labelBuilder: enumLabelBuilder),
-      type: context.knobs.list(label: 'Type', options: ZetaFabType.values, labelBuilder: enumLabelBuilder),
+      shape: context.knobs.object
+          .dropdown(label: 'Shape', options: ZetaWidgetBorder.values, labelBuilder: enumLabelBuilder),
+      size: context.knobs.object.dropdown(label: 'Size', options: ZetaFabSize.values, labelBuilder: enumLabelBuilder),
+      type: context.knobs.object.dropdown(label: 'Type', options: ZetaFabType.values, labelBuilder: enumLabelBuilder),
     );

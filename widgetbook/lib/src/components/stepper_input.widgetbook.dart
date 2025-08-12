@@ -17,7 +17,8 @@ Widget stepperInputUseCase(BuildContext context) {
     value: context.knobs.int.input(label: 'Value'),
     min: context.knobs.int.input(label: 'Minimum value'),
     max: context.knobs.int.input(label: 'Maximum value', initialValue: 10),
-    size: context.knobs.list(label: 'Size', options: ZetaStepperInputSize.values, labelBuilder: enumLabelBuilder),
+    size: context.knobs.object
+        .dropdown(label: 'Size', options: ZetaStepperInputSize.values, labelBuilder: enumLabelBuilder),
     onChange: disabledKnob(context) ? null : (_) {},
   );
 }
