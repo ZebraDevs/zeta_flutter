@@ -29,7 +29,7 @@ Widget dialog(BuildContext context) {
         initialValue: Zeta.of(context).colors.mainWarning,
       ),
     ),
-    headerAlignment: context.knobs.list<ZetaDialogHeaderAlignment>(
+    headerAlignment: context.knobs.object.dropdown<ZetaDialogHeaderAlignment>(
       label: 'Header alignment',
       options: ZetaDialogHeaderAlignment.values,
       labelBuilder: (value) => value.name,

@@ -16,7 +16,7 @@ Widget banner(BuildContext context) {
   final banner = ZetaSystemBanner(
     context: context,
     title: context.knobs.string(label: 'Title', initialValue: 'Banner Title'),
-    type: context.knobs.list(
+    type: context.knobs.object.dropdown(
       label: 'Type',
       options: ZetaSystemBannerStatus.values,
       labelBuilder: enumLabelBuilder,

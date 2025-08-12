@@ -20,7 +20,7 @@ Widget inPageBanner(BuildContext context) => SmallContentWrapper(
             initialValue: 'Lorem ipsum dolor sit amet, conse ctetur  cididunt ut labore et do lore magna aliqua.',
           ),
         ),
-        status: context.knobs.list(
+        status: context.knobs.object.dropdown(
           label: 'Severity',
           options: ZetaWidgetStatus.values,
           labelBuilder: enumLabelBuilder,
@@ -28,7 +28,7 @@ Widget inPageBanner(BuildContext context) => SmallContentWrapper(
         onClose: context.knobs.boolean(label: 'Show Close icon') ? () {} : null,
         title: context.knobs.string(label: 'Title', initialValue: 'Title'),
         actions: () {
-          final buttons = context.knobs.list(label: 'Show Buttons', options: [0, 1, 2]);
+          final buttons = context.knobs.object.dropdown(label: 'Show Buttons', options: [0, 1, 2]);
           return [
             if (buttons > 0) ZetaButton(label: 'Button 1', onPressed: () {}),
             if (buttons > 1) ZetaButton(label: 'Button 2', onPressed: () {}),

@@ -13,7 +13,7 @@ import 'package:zeta_widgetbook/main.dart';
 )
 Widget tooltip(BuildContext context) {
   return ZetaTooltip(
-    arrowDirection: context.knobs.list<ZetaTooltipArrowDirection>(
+    arrowDirection: context.knobs.object.dropdown<ZetaTooltipArrowDirection>(
       label: 'Arrow direction',
       options: ZetaTooltipArrowDirection.values,
       labelBuilder: (direction) => direction.name,
