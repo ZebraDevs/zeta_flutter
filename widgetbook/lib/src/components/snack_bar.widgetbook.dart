@@ -42,7 +42,7 @@ Widget snackBar(BuildContext context) {
 )
 Widget contextualSnackbar(BuildContext context) {
   final leadingIcon = iconKnob(context, name: 'Leading Icon', nullable: true);
-  final type = context.knobs.list<ZetaSnackBarType>(
+  final type = context.knobs.object.dropdown<ZetaSnackBarType>(
     label: 'Type',
     options: ZetaSnackBarType.values,
     labelBuilder: enumLabelBuilder,

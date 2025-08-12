@@ -25,13 +25,13 @@ IconData? iconKnob(
   IconData? initial,
 }) {
   return nullable
-      ? context.knobs.listOrNull(
+      ? context.knobs.objectOrNull.dropdown(
           label: name,
           options: iconOptions(),
-          labelBuilder: (value) => iconLabelBuilder(value?.codePoint),
+          labelBuilder: (value) => iconLabelBuilder(value.codePoint),
           initialOption: initial,
         )
-      : context.knobs.list(
+      : context.knobs.object.dropdown(
           label: name,
           options: iconOptions(),
           labelBuilder: (value) => iconLabelBuilder(value?.codePoint),

@@ -13,7 +13,7 @@ import 'package:zeta_widgetbook/src/utils/utils.dart';
 )
 Widget dropdown(BuildContext context) => SmallContentWrapper(
       child: ZetaDropdown(
-        type: context.knobs.list(
+        type: context.knobs.object.dropdown(
           label: 'Dropdown type',
           options: ZetaDropdownMenuType.values,
           labelBuilder: enumLabelBuilder,
@@ -26,6 +26,7 @@ Widget dropdown(BuildContext context) => SmallContentWrapper(
             icon: index.isEven ? const Icon(ZetaIcons.star) : null,
           ),
         ),
-        size: context.knobs.list(label: 'Size', options: ZetaDropdownSize.values, labelBuilder: enumLabelBuilder),
+        size: context.knobs.object
+            .dropdown(label: 'Size', options: ZetaDropdownSize.values, labelBuilder: enumLabelBuilder),
       ),
     );

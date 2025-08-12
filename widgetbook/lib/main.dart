@@ -60,19 +60,21 @@ class WidgetbookApp extends StatelessWidget {
       initialRoute: '?path=introduction',
       appBuilder: (context, child) => child,
       addons: [
-        DeviceFrameAddon(
-          devices: [
-            Devices.windows.wideMonitor,
-            Devices.ios.iPad,
-            Devices.ios.iPhone13,
-            Zebra.ec30,
-            Zebra.ec50,
-          ],
-        ),
+        ViewportAddon([
+          Viewports.none,
+          WindowsViewports.desktop,
+          MacosViewports.macbookPro,
+          IosViewports.iPad,
+          IosViewports.iPhone13,
+          AndroidViewports.samsungGalaxyS20,
+          ZebraViewports.ec30,
+          ZebraViewports.ec50,
+        ]),
         InspectorAddon(),
         ZoomAddon(),
         TextScaleAddon(min: 1, max: 2.5, initialScale: 1),
         ZetaAddon(ZetaAddonData()),
+        SemanticsAddon(),
       ],
     );
   }

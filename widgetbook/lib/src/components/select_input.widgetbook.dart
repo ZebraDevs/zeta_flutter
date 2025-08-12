@@ -15,7 +15,7 @@ import 'package:zeta_widgetbook/src/utils/utils.dart';
 Widget selectInputUseCase(BuildContext context) => SmallContentWrapper(
       child: ZetaSelectInput(
         disabled: disabledKnob(context),
-        size: context.knobs.list<ZetaWidgetSize>(
+        size: context.knobs.object.dropdown<ZetaWidgetSize>(
           label: 'Size',
           options: ZetaWidgetSize.values,
           labelBuilder: enumLabelBuilder,
@@ -26,7 +26,7 @@ Widget selectInputUseCase(BuildContext context) => SmallContentWrapper(
         ),
         label: context.knobs.string(label: 'Label', initialValue: 'Label'),
         hintText: context.knobs.string(label: 'Hint', initialValue: 'Default hint text'),
-        requirementLevel: context.knobs.list<ZetaFormFieldRequirement>(
+        requirementLevel: context.knobs.object.dropdown<ZetaFormFieldRequirement>(
           label: 'Requirement Level',
           options: ZetaFormFieldRequirement.values,
           labelBuilder: enumLabelBuilder,

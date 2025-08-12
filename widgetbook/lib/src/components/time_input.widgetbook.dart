@@ -16,7 +16,7 @@ Widget timeInput(BuildContext context) {
   final disabled = disabledKnob(context);
   return SmallContentWrapper(
     child: ZetaTimeInput(
-      size: context.knobs.list<ZetaWidgetSize>(
+      size: context.knobs.object.dropdown<ZetaWidgetSize>(
         label: 'Size',
         options: ZetaWidgetSize.values,
         labelBuilder: (size) => size.name,

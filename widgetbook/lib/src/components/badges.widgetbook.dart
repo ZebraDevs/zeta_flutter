@@ -17,7 +17,7 @@ const badgesPath = '$componentsPath/Badges';
 Widget iconIndicator(BuildContext context) {
   return ZetaIndicator.icon(
     icon: iconKnob(context),
-    size: context.knobs.list(label: 'Size', labelBuilder: enumLabelBuilder, options: ZetaWidgetSize.values),
+    size: context.knobs.object.dropdown(label: 'Size', labelBuilder: enumLabelBuilder, options: ZetaWidgetSize.values),
     color: context.knobs.colorOrNull(label: 'Custom color'),
   );
 }
@@ -31,7 +31,7 @@ Widget iconIndicator(BuildContext context) {
 )
 Widget notificationIndicator(BuildContext context) {
   return ZetaIndicator.notification(
-    size: context.knobs.list(label: 'Size', labelBuilder: enumLabelBuilder, options: ZetaWidgetSize.values),
+    size: context.knobs.object.dropdown(label: 'Size', labelBuilder: enumLabelBuilder, options: ZetaWidgetSize.values),
     value: context.knobs.int.slider(label: 'Value'),
     color: context.knobs.colorOrNull(label: 'Custom color'),
   );
@@ -46,7 +46,8 @@ Widget notificationIndicator(BuildContext context) {
 )
 Widget label(BuildContext context) => ZetaLabel(
       label: context.knobs.string(label: 'Label', initialValue: 'Label'),
-      status: context.knobs.list(label: 'Status', options: ZetaWidgetStatus.values, labelBuilder: enumLabelBuilder),
+      status: context.knobs.object
+          .dropdown(label: 'Status', options: ZetaWidgetStatus.values, labelBuilder: enumLabelBuilder),
     );
 
 @widgetbook.UseCase(
@@ -61,18 +62,18 @@ Widget priorityPill(BuildContext context) {
   return ZetaPriorityPill(
     index: context.knobs.string(label: 'Index', initialValue: ''),
     label: context.knobs.string(label: 'Label', initialValue: 'Urgent'),
-    size: context.knobs.list<ZetaPriorityPillSize>(
+    size: context.knobs.object.dropdown<ZetaPriorityPillSize>(
       label: 'Size',
       options: ZetaPriorityPillSize.values,
       labelBuilder: (value) => value.name.capitalize,
     ),
-    status: context.knobs.list<ZetaPriorityPillStatus>(
+    status: context.knobs.object.dropdown<ZetaPriorityPillStatus>(
       label: 'Priority',
       options: ZetaPriorityPillStatus.values,
       labelBuilder: (value) => value.name.capitalize,
     ),
     isBadge: context.knobs.boolean(label: 'Badge'),
-    customColor: context.knobs.listOrNull(
+    customColor: context.knobs.objectOrNull.dropdown(
       label: 'Custom color',
       options: colors.rainbow,
       labelBuilder: (value) => colors.rainbowMap.entries.firstWhere((v) => v.value == value).key.capitalize,
@@ -89,7 +90,8 @@ Widget priorityPill(BuildContext context) {
 )
 Widget statusLabel(BuildContext context) => ZetaStatusLabel(
       label: context.knobs.string(label: 'Label', initialValue: 'Label'),
-      status: context.knobs.list(label: 'Status', labelBuilder: enumLabelBuilder, options: ZetaWidgetStatus.values),
+      status: context.knobs.object
+          .dropdown(label: 'Status', labelBuilder: enumLabelBuilder, options: ZetaWidgetStatus.values),
       icon: iconKnob(context),
     );
 
@@ -104,7 +106,7 @@ typedef Tag = ZetaTag;
 )
 Widget tags(BuildContext context) => ZetaTag(
       label: context.knobs.string(label: 'Label', initialValue: 'Tag'),
-      direction: context.knobs.list(
+      direction: context.knobs.object.dropdown(
         label: 'Direction',
         options: ZetaTagDirection.values,
         labelBuilder: enumLabelBuilder,
