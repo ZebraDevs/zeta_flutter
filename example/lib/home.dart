@@ -43,6 +43,7 @@ import 'package:zeta_example/pages/components/snackbar_example.dart';
 import 'package:zeta_example/pages/components/tabs_example.dart';
 import 'package:zeta_example/pages/components/pagination_example.dart';
 import 'package:zeta_example/pages/components/text_input_example.dart';
+import 'package:zeta_example/pages/components/tile_button_example.dart';
 import 'package:zeta_example/pages/components/time_input_example.dart';
 import 'package:zeta_example/pages/components/tooltip_example.dart';
 import 'package:zeta_example/pages/components/top_app_bar_example.dart';
@@ -88,6 +89,7 @@ final List<Component> components = [
   Component(FilterSelectionExample.name, (context) => const FilterSelectionExample()),
   Component(GroupHeaderExample.name, (context) => const GroupHeaderExample()),
   Component(IconButtonExample.name, (context) => const IconButtonExample()),
+  Component(TileButtonExample.name, (context) => const TileButtonExample()),
   Component(InPageBannerExample.name, (context) => const InPageBannerExample()),
   Component(Indicators.name, (context) => const Indicators()),
   Component(InputChipExample.name, (context) => const InputChipExample()),
