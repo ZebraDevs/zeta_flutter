@@ -5,6 +5,7 @@ import 'dart:math';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 import 'package:record/record.dart';
 
 import '../../../../zeta_flutter.dart';
@@ -30,11 +31,26 @@ const List<double> _fallbackAmps = [0, 0.375, 0.5, 1, 0.625, 1, 0.75, 0.75, 1, 1
 /// If the presented file is not a WAV file, it will return null.
 Future<List<double>?> extractWavAmplitudes(Uri fileUri, int linesNeeded, AudioPlaybackManager? manager) async {
   try {
-    final bytes = await File(fileUri.toFilePath()).readAsBytes();
+    Uint8List bytes;
+    if (kIsWeb) {
+      // TODO(lu)e): This does not work for http assets?
+      if (fileUri.isScheme('http') || fileUri.isScheme('https')) {
+        final response = await http.get(fileUri);
+        if (response.statusCode != 200) throw Exception('Failed to load WAV file from network');
+        bytes = response.bodyBytes;
+      } else if (fileUri.isScheme('asset') || fileUri.path.startsWith('assets/')) {
+        final response = await http.get(fileUri);
+        bytes = response.bodyBytes;
+      } else {
+        throw UnsupportedError('Unsupported URI scheme for web: ${fileUri.scheme}');
+      }
+    } else {
+      bytes = await File(fileUri.toFilePath()).readAsBytes();
+    }
     return await _parseWav(bytes, linesNeeded);
   } catch (e, _) {
     debugPrint('Error extracting WAV amplitudes: $e');
-    if (manager != null && !manager.loadedAudio) {
+    if (manager != null && manager.loadedAudio == false) {
       return List<double>.filled(linesNeeded, 0);
     } else {
       return List<double>.generate(linesNeeded, (i) => _fallbackAmps[i % _fallbackAmps.length]);
@@ -245,9 +261,8 @@ class AudioPlaybackManager {
   Duration _currentPosition = Duration.zero;
   StreamSubscription<Duration>? _positionSubscription;
 
-// TODO(bug): Find a better way to handle this - as it will always flash up as unable to play audio until this become true. Instead we should have a loading indicator.
-  /// Whether the audio have been loaded
-  bool loadedAudio = false;
+  /// Whether the audio has been loaded and is playable (null = unknown, true/false = known)
+  bool? loadedAudio;
 
   /// Whether audio is currently playing
   bool get isPlaying => _playing;
@@ -310,11 +325,16 @@ class AudioPlaybackManager {
     _currentPosition = Duration.zero;
 
     if (_localFile != null && _audioPlayer != null) {
-      await _audioPlayer!.setSourceUrl(_localFile!.toString());
-      final duration = await _audioPlayer!.getDuration();
-      _duration = duration;
-
-      loadedAudio = true;
+      try {
+        await _audioPlayer!.setSourceUrl(_localFile!.toString());
+        final duration = await _audioPlayer!.getDuration();
+        _duration = duration;
+        loadedAudio = true;
+      } catch (_) {
+        loadedAudio = false;
+      }
+    } else {
+      loadedAudio = false;
     }
   }
 
