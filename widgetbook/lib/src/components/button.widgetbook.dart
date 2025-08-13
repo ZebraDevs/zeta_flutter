@@ -79,7 +79,7 @@ Widget tileButton(BuildContext context) {
     label: context.knobs.string(label: 'Label', initialValue: 'Button'),
     icon: iconKnob(context) ?? Icons.star,
     onPressed: context.knobs.boolean(label: 'Disabled') ? null : () {},
-      borderType: context.knobs.object.dropdown(
+    borderType: context.knobs.object.dropdown(
       label: 'Border type',
       options: ZetaTileButtonBorderType.values,
       labelBuilder: enumLabelBuilder,
