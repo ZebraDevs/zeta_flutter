@@ -10,8 +10,6 @@ import '../state/audio_visualizer_helpers.dart';
 import 'play_button.dart';
 import 'waveform.dart';
 
-//TODO(bug): Audio can not be played on Web
-
 /// Audio Visualizer used within the [ZetaVoiceMemo] component.
 class ZetaAudioVisualizer extends ZetaStatefulWidget {
   /// Constructs a [ZetaAudioVisualizer].
@@ -297,7 +295,7 @@ class _ZetaAudioVisualizerState extends State<ZetaAudioVisualizer> {
             borderRadius: BorderRadius.all(zeta.radius.rounded),
             color: bg,
           ),
-          padding: const EdgeInsets.all(4),
+          padding: EdgeInsets.all(zeta.spacing.minimum),
           child: Row(
             children: [
               AnimatedSize(
@@ -330,8 +328,8 @@ class _ZetaAudioVisualizerState extends State<ZetaAudioVisualizer> {
                 padding: EdgeInsets.only(
                   left: zeta.spacing.small,
                   right: zeta.spacing.medium,
-                  top: 14,
-                  bottom: 14,
+                  top: zeta.spacing.large - ZetaBorders.medium,
+                  bottom: zeta.spacing.large - ZetaBorders.medium,
                 ),
                 child: Text(
                   duration?.minutesSeconds ?? '0:00',

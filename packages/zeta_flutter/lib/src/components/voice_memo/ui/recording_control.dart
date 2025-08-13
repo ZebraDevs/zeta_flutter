@@ -49,7 +49,6 @@ class RecordingControl extends StatelessWidget {
             : null,
         child: ZetaProgressCircle(
           size: ZetaCircleSizes.l,
-          animationDuration: const Duration(milliseconds: 150),
           progress: recordingManager.canRecord &&
                   (recordingManager.duration == null || (recordingManager.duration! < maxRecordingDuration))
               ? (recordingManager.duration != null
@@ -64,7 +63,7 @@ class RecordingControl extends StatelessWidget {
                   : zeta.colors.mainDisabled,
             ),
             child: AnimatedCrossFade(
-              duration: const Duration(milliseconds: 150),
+              duration: ZetaAnimationLength.fast,
               secondChild: const Icon(ZetaIcons.pause),
               firstChild: const Icon(ZetaIcons.microphone),
               crossFadeState: recordingManager.isRecording ? CrossFadeState.showSecond : CrossFadeState.showFirst,
