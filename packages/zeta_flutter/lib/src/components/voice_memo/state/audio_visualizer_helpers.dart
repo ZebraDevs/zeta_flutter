@@ -7,6 +7,7 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:record/record.dart';
 
+import '../../../../zeta_flutter.dart';
 import 'audio_helpers.dart';
 
 class AudioVisualizerHelpers {
@@ -75,7 +76,7 @@ class AudioVisualizerHelpers {
     setLinesNeeded(lines);
     amplitudesNotifier.value = List.generate(lines, (index) => 0.0);
     debouncer?.cancel();
-    setDebouncer(Timer(const Duration(milliseconds: 500), () => getAmplitudes()));
+    setDebouncer(Timer(ZetaAnimationLength.verySlow, () => getAmplitudes()));
   }
 
   static void onVisualizerInteraction({
