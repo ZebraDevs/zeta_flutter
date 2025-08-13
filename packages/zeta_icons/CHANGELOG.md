@@ -1,5 +1,26 @@
 # Changelog
 
+## [1.1.5](https://github.com/ZebraDevs/zeta_flutter/compare/zeta_icons-v1.1.4...zeta_icons-v1.1.5) (2025-08-13)
+
+
+### ⛓️ Dependencies
+
+* **automated:** Update icons ([#372](https://github.com/ZebraDevs/zeta_flutter/issues/372)) ([d9337ea](https://github.com/ZebraDevs/zeta_flutter/commit/d9337ea79e631851cc40667cd0ba8d70e1d3e589))
+
+
+### ✅ Icons added
+
+* **General:** Fire ([79ef0f9]) ([d9337ea](https://github.com/ZebraDevs/zeta_flutter/commit/d9337ea79e631851cc40667cd0ba8d70e1d3e589))
+
+
+### 🎨 Icons updated
+
+* **File:** Open New Off ([79ef0f9]) ([d9337ea](https://github.com/ZebraDevs/zeta_flutter/commit/d9337ea79e631851cc40667cd0ba8d70e1d3e589))
+* **General:** List Form ([79ef0f9]) ([d9337ea](https://github.com/ZebraDevs/zeta_flutter/commit/d9337ea79e631851cc40667cd0ba8d70e1d3e589))
+* **General:** Reorder ([79ef0f9]) ([d9337ea](https://github.com/ZebraDevs/zeta_flutter/commit/d9337ea79e631851cc40667cd0ba8d70e1d3e589))
+* **General:** Swap ([79ef0f9]) ([d9337ea](https://github.com/ZebraDevs/zeta_flutter/commit/d9337ea79e631851cc40667cd0ba8d70e1d3e589))
+* **General:** Video Off ([79ef0f9]) ([d9337ea](https://github.com/ZebraDevs/zeta_flutter/commit/d9337ea79e631851cc40667cd0ba8d70e1d3e589))
+
 ## [1.1.4](https://github.com/ZebraDevs/zeta_flutter/compare/zeta_icons-v1.1.3...zeta_icons-v1.1.4) (2025-08-12)
 
 
