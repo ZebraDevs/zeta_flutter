@@ -284,7 +284,7 @@ class _ZetaAudioVisualizerState extends State<ZetaAudioVisualizer> {
     final tertiaryColor = widget.tertiaryColor ?? zeta.colors.mainLight;
     final duration = widget.isRecording && widget.audioDuration != null
         ? widget.audioDuration!
-        : (_playbackManager.currentPosition == Duration.zero && (_playbackManager.loadedAudio)
+        : (_playbackManager.currentPosition == Duration.zero && (_playbackManager.loadedAudio ?? false)
             ? _playbackManager.duration
             : _playbackManager.currentPosition);
 
@@ -308,7 +308,7 @@ class _ZetaAudioVisualizerState extends State<ZetaAudioVisualizer> {
                     onTap: _togglePlayback,
                     playButtonColor: playButtonColor,
                     iconColor: bg,
-                    disabled: !_playbackManager.loadedAudio,
+                    disabled: _playbackManager.loadedAudio != true,
                   ),
                 ),
               ),
@@ -339,7 +339,7 @@ class _ZetaAudioVisualizerState extends State<ZetaAudioVisualizer> {
             ],
           ),
         ),
-        if (!_playbackManager.loadedAudio)
+        if (_playbackManager.loadedAudio == false)
           Positioned(
             top: 0,
             left: 0,

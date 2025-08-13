@@ -1095,6 +1095,16 @@ final directories = <_widgetbook.WidgetbookNode>[
         name: 'Voice Memo',
         children: [
           _widgetbook.WidgetbookLeafComponent(
+            name: 'ZetaAudioVisualizer',
+            useCase: _widgetbook.WidgetbookUseCase(
+              name: 'Audio Visualizer',
+              builder: _zeta_widgetbook_src_components_voice_memo_widgetbook
+                  .audioVisualizer,
+              designLink:
+                  'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=38832-2389&t=MGPsY57Ld4bcpPeQ-4',
+            ),
+          ),
+          _widgetbook.WidgetbookLeafComponent(
             name: 'ZetaVoiceMemo',
             useCase: _widgetbook.WidgetbookUseCase(
               name: 'Voice Memo',
@@ -1103,7 +1113,7 @@ final directories = <_widgetbook.WidgetbookNode>[
               designLink:
                   'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=38832-2389&t=MGPsY57Ld4bcpPeQ-4',
             ),
-          )
+          ),
         ],
       ),
     ],

@@ -10,7 +10,7 @@ Uri _sanitizeURLForWeb(String fileName) {
 
   // URL-encode for relative asset paths
   final encoded = Uri.decodeFull(fileName) != fileName ? fileName : Uri.encodeFull(fileName);
-  return Uri.parse('assets/assets/$encoded');
+  return Uri.parse('assets/$encoded');
 }
 
 /// Enum to specify how to fetch the file: from assets or from a URL.
