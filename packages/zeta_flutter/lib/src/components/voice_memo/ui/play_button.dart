@@ -23,22 +23,23 @@ class PlayButton extends StatelessWidget {
   final bool disabled;
   @override
   Widget build(BuildContext context) {
+    final zeta = Zeta.of(context);
     return InkWell(
       onTap: disabled ? null : onTap,
       child: Padding(
-        padding: EdgeInsets.all(Zeta.of(context).spacing.small),
+        padding: EdgeInsets.all(zeta.spacing.small),
         child: Container(
-          width: 32,
-          height: 32,
+          width: zeta.spacing.xl_4,
+          height: zeta.spacing.xl_4,
           decoration: BoxDecoration(
-            color: disabled ? Zeta.of(context).colors.mainDisabled : playButtonColor,
-            borderRadius: BorderRadius.all(Zeta.of(context).radius.full),
+            color: disabled ? zeta.colors.mainDisabled : playButtonColor,
+            borderRadius: BorderRadius.all(zeta.radius.full),
           ),
           child: Center(
             child: AnimatedCrossFade(
               firstChild: Icon(ZetaIcons.play, color: iconColor),
               secondChild: Icon(ZetaIcons.pause, color: iconColor),
-              duration: const Duration(milliseconds: 100),
+              duration: ZetaAnimationLength.veryFast,
               crossFadeState: isPlaying ? CrossFadeState.showSecond : CrossFadeState.showFirst,
             ),
           ),

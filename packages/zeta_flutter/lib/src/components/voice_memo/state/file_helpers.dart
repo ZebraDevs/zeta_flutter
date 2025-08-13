@@ -26,7 +26,6 @@ enum FileFetchMode {
 Future<Uri> handleFile(String fileNameOrUrl, FileFetchMode mode) async {
   if (kIsWeb && mode == FileFetchMode.asset) {
     final uri = _sanitizeURLForWeb(fileNameOrUrl);
-    // TODO(luke): does this actually work on web?
     // We rely on browser caching here. Once the browser downloads this file,
     // the native side implementation should be able to access it from cache.
     await http.get(uri);

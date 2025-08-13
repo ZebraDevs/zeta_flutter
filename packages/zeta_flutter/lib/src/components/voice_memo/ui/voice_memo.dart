@@ -11,8 +11,6 @@ import 'recording_control.dart';
 
 export 'audio_visualizer.dart';
 
-// TODO(luke): test on Android and web
-
 /// A slide-up sheet that appears when recording a voice message in chat. It shows the recording time, waveform, and buttons to stop, send, or cancel the memo.
 class ZetaVoiceMemo extends ZetaStatefulWidget {
   /// Constructs a [ZetaVoiceMemo].
@@ -38,7 +36,7 @@ class ZetaVoiceMemo extends ZetaStatefulWidget {
 
   /// The label shown when recording a voice memo.
   ///
-  /// Defaults to 'Recoding message...'.
+  /// Defaults to 'Recording message...'.
   ///
   /// {@template zeta-widget-translations}
   /// Zeta does not currently support translations, so this label should be passed in with the correct translation for the current locale.
@@ -214,7 +212,7 @@ class _ZetaVoiceMemoState extends State<ZetaVoiceMemo> {
                 recordConfig: widget.recordConfig,
                 rounded: widget.rounded,
               ).paddingHorizontal(zeta.spacing.xl_2),
-              const SizedBox(height: 17),
+              SizedBox(height: zeta.spacing.large + ZetaBorders.small),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -257,15 +255,10 @@ class _ZetaVoiceMemoState extends State<ZetaVoiceMemo> {
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         IconButton(
-                          icon: Icon(
-                            ZetaIcons.send,
-                            size: Zeta.of(context).spacing.xl_6,
-                          ),
+                          icon: Icon(ZetaIcons.send, size: Zeta.of(context).spacing.xl_6),
                           color: Zeta.of(context).colors.mainPrimary,
                           onPressed: (_recordingManager.canRecord && _recordingManager.duration != null)
-                              ? () {
-                                  widget.onSend?.call(_recordingManager.stream!);
-                                }
+                              ? () => widget.onSend?.call(_recordingManager.stream!)
                               : null,
                           disabledColor: Zeta.of(context).colors.mainDisabled,
                         ),

@@ -4,6 +4,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../zeta_flutter.dart';
+
 class Waveform extends StatelessWidget {
   const Waveform({
     super.key,
@@ -28,6 +30,7 @@ class Waveform extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final zeta = Zeta.of(context);
     return GestureDetector(
       behavior: HitTestBehavior.translucent,
       onHorizontalDragUpdate: (details) => onInteraction(details.localPosition),
@@ -51,13 +54,13 @@ class Waveform extends StatelessWidget {
                     final amplitude = amplitudes[index];
                     return AnimatedContainer(
                       key: ValueKey(index),
-                      duration: const Duration(milliseconds: 100),
-                      width: 2,
-                      height: (amplitude * 32).clamp(2, 32),
+                      duration: ZetaAnimationLength.veryFast,
+                      width: ZetaBorders.medium,
+                      height: (amplitude * zeta.spacing.xl_4).clamp(ZetaBorders.small, zeta.spacing.xl_4),
                       margin: const EdgeInsets.symmetric(horizontal: 1),
                       decoration: BoxDecoration(
                         color: (playbackLocationVis ?? 0) > index ? foregroundColor : tertiaryColor,
-                        borderRadius: BorderRadius.circular(2),
+                        borderRadius: BorderRadius.all(zeta.radius.full),
                       ),
                     );
                   }),
