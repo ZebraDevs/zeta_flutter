@@ -21,8 +21,7 @@ enum ZetaCommsButtonType {
   warning,
 }
 
-/// Comms button component.
-/// This component is used to display a button for communication action. Answer, reject, mute, hold, speaker, etc.
+/// Round buttons used for communication actions like call, video, mute, etc.
 ///
 /// Use the constructors to create preconfigured comms buttons.
 ///

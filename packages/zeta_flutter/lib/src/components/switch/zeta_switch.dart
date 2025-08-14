@@ -21,9 +21,7 @@ enum ZetaSwitchType {
   ios,
 }
 
-/// Zeta Switch.
-///
-/// Switch can turn an option on or off.
+/// Switches toggle the state of a single item ON or OFF.
 ///
 /// Switch has styles for Android, iOS and Web.
 ///

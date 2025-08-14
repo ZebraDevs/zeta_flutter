@@ -5,7 +5,7 @@ import '../../../zeta_flutter.dart';
 
 import 'button_style.dart';
 
-/// Component [ZetaIconButton]
+/// Icon buttons are used to trigger actions with an icon.
 ///
 /// Figma: https://www.figma.com/file/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=23126-110314
 ///

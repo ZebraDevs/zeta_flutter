@@ -7,7 +7,7 @@ import '../../../zeta_flutter.dart';
 
 import '../text_input/internal_text_input.dart';
 
-/// ZetaPhoneInput allows entering phone numbers.
+/// A text input field for entering phone numbers.
 ///
 /// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=916-10934&node-type=canvas&m=dev
 ///

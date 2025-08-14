@@ -14,7 +14,7 @@ enum ZetaPaginationType {
   dropdown,
 }
 
-/// Pagination is used to switch between pages.
+/// Buttons or a dropdown for navigating between pages.
 ///
 /// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=229-24&node-type=canvas&m=dev
 ///

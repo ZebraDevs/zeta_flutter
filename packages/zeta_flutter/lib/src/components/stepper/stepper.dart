@@ -2,8 +2,9 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import '../../../zeta_flutter.dart';
 
-/// Zeta stepper widget that displays progress through a sequence of
-/// steps. Steppers are particularly useful in the case of forms where one step
+/// Steppers convey progress through numbered steps.
+///
+/// Steppers are particularly useful in the case of forms where one step
 /// requires the completion of another one, or where multiple steps need to be
 /// completed in order to submit the whole form.
 ///

@@ -91,7 +91,7 @@ enum ZetaFabSize {
       }[this]!;
 }
 
-/// Zeta Floating Action Button Component.
+/// Floating Action Buttons are used to trigger the primary action on a screen. They are circular buttons that float above the content.
 ///
 /// Figma: https://www.figma.com/file/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=21816-4283&m=dev
 ///
