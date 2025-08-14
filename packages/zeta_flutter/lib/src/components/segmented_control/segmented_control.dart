@@ -5,9 +5,7 @@ import 'package:flutter/physics.dart';
 import 'package:flutter/rendering.dart';
 import '../../../zeta_flutter.dart';
 
-/// A segmented control is a linear set of two or more segments, each of which
-/// functions as a mutually exclusive button. Like buttons, segments can contain
-/// text or images. Segmented controls are often used to display different views.
+/// A segmented control is a linear set of two or more segments, each of which functions as a mutually exclusive button. Like buttons, segments can contain text or images. Segmented controls are often used to display different views.
 ///
 /// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=1046-20148&node-type=canvas&m=dev
 ///

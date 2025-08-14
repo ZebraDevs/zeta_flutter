@@ -5,7 +5,7 @@ import '../../../zeta_flutter.dart';
 
 import 'button_style.dart';
 
-/// Zeta Button
+/// Buttons are used to trigger actions.
 ///
 /// Figma: https://www.figma.com/file/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=23126-110945
 ///

@@ -17,8 +17,7 @@ enum ZetaSystemBannerStatus {
   negative,
 }
 
-/// A banner displays an important, succinct message, and provides action for users to address.
-/// It draws the attention to the message by displaying it at the top in various colors.
+/// A banner displays an important, succinct message, and provides action for users to address. It draws the attention to the message by displaying it at the top in various colors.
 ///
 /// To display on screen use `ScaffoldMessenger.of(context).showMaterialBanner(ZetaSystemBanner())`. This will display the banner at the top of the page, below the AppBar.
 ///

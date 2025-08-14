@@ -4,7 +4,7 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:intl/intl.dart';
 import '../../../zeta_flutter.dart';
 
-/// Chat item widget that can be dragged to reveal contextual actions.
+/// The chat list items and chat lists are used in communication feeds and contact lists.
 ///
 /// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=24828-46282&node-type=canvas&m=dev
 ///

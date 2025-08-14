@@ -5,7 +5,7 @@ import '../../../zeta_flutter.dart';
 
 // TODO(UX-1355): Create slider input field.
 
-/// Slider component with customized styling.
+/// Sliders allow users to make selections from a range of values.
 ///
 /// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=875-11860&node-type=canvas&m=dev
 ///

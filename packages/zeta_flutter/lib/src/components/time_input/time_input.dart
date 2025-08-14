@@ -11,7 +11,7 @@ import '../text_input/internal_text_input.dart';
 const _maxHrValue = 23;
 const _max12HrValue = 12;
 
-/// A form field used to input time.
+/// A text input field for entering times.
 ///
 /// Can be used and validated the same way as a [TextFormField].
 ///

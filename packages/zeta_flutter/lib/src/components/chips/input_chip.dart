@@ -1,6 +1,6 @@
 import '../../../zeta_flutter.dart';
 
-/// Zeta Input Chip typically is used to associate some content or action with a user.
+/// A chip used to show input data, typically used to associate some content or action with a user.
 ///
 /// Leading widget should typically be a [ZetaAvatar].
 ///

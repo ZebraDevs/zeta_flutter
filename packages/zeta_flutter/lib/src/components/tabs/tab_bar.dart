@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../zeta_flutter.dart';
 
-/// A Zeta Design primary tab bar.
+/// Tabs are used to show different views or sections of content within the same context.
 ///
 /// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=229-18&node-type=canvas&m=dev
 ///
