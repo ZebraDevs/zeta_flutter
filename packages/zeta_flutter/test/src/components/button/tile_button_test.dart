@@ -62,7 +62,7 @@ void main() {
       expect(find.byIcon(Icons.star), findsOneWidget);
     });
 
-    testWidgets('Creates elipsis when text is longer than width', (WidgetTester tester) async {
+    testWidgets('Creates ellipsis when text is longer than width', (WidgetTester tester) async {
       await tester.pumpWidget(
         const TestApp(home: ZetaTileButton(
             label: 'Button with a very long text',
@@ -153,7 +153,12 @@ void main() {
       );
 
       final ZetaTileButton tileButton = tester.widget(find.byType(ZetaTileButton));
-      expect(tileButton.borderType, ZetaTileButtonBorderType.rounded);
+      expect(tileButton.rounded, null);
+      final FilledButton filledButton = tester.widget(find.byType(FilledButton));
+      expect(
+        (filledButton.style?.shape?.resolve({}) as RoundedRectangleBorder?)?.borderRadius,
+        BorderRadius.circular(4),
+      );
     });
 
     testWidgets('Applies sharp border when specified', (WidgetTester tester) async {
@@ -161,13 +166,18 @@ void main() {
         const TestApp(home: ZetaTileButton(
             label: 'Button',
             icon: Icons.star,
-            borderType: ZetaTileButtonBorderType.sharp,
+            rounded: false,
           ),
         ),
       );
 
       final ZetaTileButton tileButton = tester.widget(find.byType(ZetaTileButton));
-      expect(tileButton.borderType, ZetaTileButtonBorderType.sharp);
+      expect(tileButton.rounded, false);
+      final FilledButton filledButton = tester.widget(find.byType(FilledButton));
+      expect(
+        (filledButton.style?.shape?.resolve({}) as RoundedRectangleBorder?)?.borderRadius,
+        BorderRadius.circular(0),
+      );
     });
 
     testWidgets('Has the correct background colour when disabled', (WidgetTester tester) async {
@@ -293,7 +303,6 @@ void main() {
         const TestApp(home: ZetaTileButton(
             label: 'Button',
             icon: Icons.star,
-            onPressed: null,
           ),
         ),
       );
@@ -304,7 +313,21 @@ void main() {
   });
 
   group('Golden Tests', () {
-    
+    goldenTest(
+      goldenFile,
+      ZetaTileButton(icon: Icons.star, onPressed: () {}, label: 'Test Button'),
+      'tile_button_default',
+    );
+    goldenTest(
+      goldenFile,
+      ZetaTileButton(icon: Icons.star, onPressed: () {}, label: 'Test Button', rounded: false),
+      'tile_button_sharp',
+    );
+    goldenTest(
+      goldenFile,
+      const ZetaTileButton(icon: Icons.star, label: 'Test Button'),
+      'tile_button_disabled',
+    );
   });
 
   group('Performance Tests', () {

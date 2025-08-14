@@ -72,17 +72,16 @@ Widget iconButton(BuildContext context) {
   type: ZetaTileButton,
   path: '$componentsPath/Button',
   designLink:
-      'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=23132-166001&t=N8coJ9AFu6DS3mOF-4',
+      'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS-Zeta---Components?node-id=36355-10869&t=ExJvUP7HY6Hm5JEQ-4',
 )
 Widget tileButton(BuildContext context) {
   return ZetaTileButton(
     label: context.knobs.string(label: 'Label', initialValue: 'Button'),
     icon: iconKnob(context) ?? Icons.star,
     onPressed: context.knobs.boolean(label: 'Disabled') ? null : () {},
-      borderType: context.knobs.object.dropdown(
-      label: 'Border type',
-      options: ZetaTileButtonBorderType.values,
-      labelBuilder: enumLabelBuilder,
+    rounded: context.knobs.boolean(
+      label: 'Rounded',
+      initialValue: true,
     ),
   );
 }

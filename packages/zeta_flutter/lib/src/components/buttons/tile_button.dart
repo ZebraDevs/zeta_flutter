@@ -3,15 +3,6 @@ import 'package:flutter/material.dart';
 import '../../../zeta_flutter.dart';
 import 'button_style.dart';
 
-/// Only sharp and rounded border types for ZetaTileButton
-enum ZetaTileButtonBorderType {
-  /// Sharp border
-  sharp,
-
-  /// Slightly rounded border.
-  rounded
-}
-
 /// Zeta Button
 ///
 /// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=37677-15824&t=BkdCAAhFjNXxpwfK-4
@@ -21,10 +12,10 @@ class ZetaTileButton extends ZetaStatelessWidget {
   ///Constructs [ZetaTileButton]
   const ZetaTileButton({
     super.key,
+    super.rounded,
     required this.icon,
     required this.label,
     this.onPressed,
-    this.borderType = ZetaTileButtonBorderType.rounded,
     this.focusNode,
     this.semanticLabel,
   });
@@ -36,10 +27,6 @@ class ZetaTileButton extends ZetaStatelessWidget {
   ///
   /// {@macro zeta-widget-change-disable}
   final VoidCallback? onPressed;
-
-  /// Whether or not the button is sharp or rounded
-  /// Only allows [ZetaTileButtonBorderType.sharp] or [ZetaTileButtonBorderType.rounded]
-  final ZetaTileButtonBorderType? borderType;
 
   /// Icon of button. Goes on top of button.
   final IconData icon;
@@ -59,25 +46,14 @@ class ZetaTileButton extends ZetaStatelessWidget {
     Key? key,
     String? label,
     VoidCallback? onPressed,
-    ZetaTileButtonBorderType? borderType,
     IconData? icon,
   }) {
     return ZetaTileButton(
       key: key ?? this.key,
       label: label ?? this.label,
       onPressed: onPressed ?? this.onPressed,
-      borderType: borderType ?? this.borderType,
       icon: icon ?? this.icon,
     );
-  }
-
-  ZetaWidgetBorder _mapBorderType(ZetaTileButtonBorderType type) {
-    switch (type) {
-      case ZetaTileButtonBorderType.sharp:
-        return ZetaWidgetBorder.sharp;
-      case ZetaTileButtonBorderType.rounded:
-        return ZetaWidgetBorder.rounded;
-    }
   }
 
   @override
@@ -99,7 +75,7 @@ class ZetaTileButton extends ZetaStatelessWidget {
           onPressed: onPressed,
           style: buttonStyle(
             context,
-            _mapBorderType(borderType ?? ZetaTileButtonBorderType.rounded),
+            context.rounded ? ZetaWidgetBorder.rounded : ZetaWidgetBorder.sharp,
             ZetaButtonType.outlineSubtle,
           ),
           child: SelectionContainer.disabled(
@@ -135,7 +111,6 @@ class ZetaTileButton extends ZetaStatelessWidget {
     properties
       ..add(StringProperty('label', label))
       ..add(ObjectFlagProperty<VoidCallback?>.has('onPressed', onPressed))
-      ..add(EnumProperty<ZetaTileButtonBorderType>('borderType', borderType))
       ..add(DiagnosticsProperty<IconData?>('icon', icon))
       ..add(DiagnosticsProperty<FocusNode?>('focusNode', focusNode))
       ..add(StringProperty('semanticLabel', semanticLabel));

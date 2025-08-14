@@ -2,16 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:zeta_example/widgets.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
-// ignore: deprecated_member_use
-final buttonTypes = ZetaButtonType.outlineSubtle;
-
 class TileButtonExample extends StatelessWidget {
   static const String name = 'Buttons/TileButton';
   const TileButtonExample({super.key});
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> buttons(ZetaTileButtonBorderType? borderType) {
+    List<Widget> buttons(bool rounded) {
       return [
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
@@ -22,14 +19,14 @@ class TileButtonExample extends StatelessWidget {
                 label: 'Button',
                 icon: Icons.star,
                 onPressed: null, // Disabled
-                borderType: borderType,
+                rounded: rounded,
               ),
               SizedBox.square(dimension: Zeta.of(context).spacing.xl_2),
               ZetaTileButton(
                 label: 'Button',
                 icon: Icons.star,
                 onPressed: () {}, // Enabled
-                borderType: borderType,
+                rounded: rounded,
               ),
             ].reversed.toList(),
           ).paddingHorizontal(Zeta.of(context).spacing.medium)
@@ -43,12 +40,12 @@ class TileButtonExample extends StatelessWidget {
       children: [
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: buttons(null),
+          children: buttons(false),
           key: Key('docs-button'),
         ),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: buttons(ZetaTileButtonBorderType.sharp),
+          children: buttons(true),
           key: Key('docs-button-full'),
         ),
       ],
