@@ -18,7 +18,7 @@ Widget notificationListItem(BuildContext context) => ZetaNotificationListItem(
       title: context.knobs.string(label: 'Title', initialValue: 'Urgent Notification'),
       notificationTime: context.knobs.stringOrNull(label: 'Notification Time', initialValue: 'Just Now'),
       notificationRead: context.knobs.boolean(label: 'Notification Read'),
-      leading: context.knobs.list(
+      leading: context.knobs.object.dropdown(
         label: 'Badge',
         options: [
           const ZetaNotificationBadge.avatar(avatar: ZetaAvatar.initials(initials: 'JS')),

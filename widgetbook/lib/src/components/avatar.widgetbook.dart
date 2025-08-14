@@ -20,7 +20,7 @@ Widget avatar(BuildContext context) {
 
   return ZetaAvatar(
     image: context.knobs.boolean(label: 'Image') ? image : null,
-    size: context.knobs.list(
+    size: context.knobs.object.dropdown(
       label: 'Size',
       options: ZetaAvatarSize.values,
       labelBuilder: (value) => value.name.split('.').last.toUpperCase(),
@@ -63,7 +63,7 @@ Widget avatarRailUseCase(BuildContext context) {
       (index) => ZetaAvatar(
         key: ValueKey(index),
         image: context.knobs.boolean(label: 'Image') ? image : null,
-        size: context.knobs.list(
+        size: context.knobs.object.dropdown(
           label: 'Size',
           options: ZetaAvatarSize.values,
           labelBuilder: (value) => value.name.split('.').last.toUpperCase(),

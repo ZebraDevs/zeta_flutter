@@ -1,21 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
+// TODO(UX-1485): Add more Zebra devices and get correct values
 
-/// Collection of Zebra devices.
-class Zebra {
-  /// Zebra EC50/EC55.
-  static final ec50 = DeviceInfo.genericPhone(
-    id: 'zebra-ec50',
-    name: 'Zebra EC50/EC55',
+/// A collection of predefined Zebra viewports.
+abstract class ZebraViewports {
+  /// Represents a viewport for the Zebra EC50 / EC55 device.
+  static const ec50 = ViewportData(
+    name: 'Zebra EC50 / EC55',
+    width: 480,
+    height: 854,
+    pixelRatio: 2,
     platform: TargetPlatform.android,
-    screenSize: const Size(480, 854),
   );
 
-  /// Zebra EC30.
-  static final ec30 = DeviceInfo.genericPhone(
-    id: 'zebra-ec30',
+  /// Represents a viewport for the Zebra EC30 device.
+  static const ec30 = ViewportData(
     name: 'Zebra EC30',
+    width: 720,
+    height: 1280,
+    pixelRatio: 2,
     platform: TargetPlatform.android,
-    screenSize: const Size(720, 1280),
   );
 }

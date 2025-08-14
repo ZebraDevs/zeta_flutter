@@ -21,7 +21,8 @@ Widget phoneInputUseCase(BuildContext context) {
       disabled: context.knobs.boolean(label: 'Disabled'),
       label: context.knobs.string(label: 'Label', initialValue: 'Phone Number'),
       hintText: context.knobs.string(label: 'Hint Text', initialValue: 'Enter phone number'),
-      size: context.knobs.list(label: 'Size', options: ZetaWidgetSize.values, labelBuilder: enumLabelBuilder),
+      size:
+          context.knobs.object.dropdown(label: 'Size', options: ZetaWidgetSize.values, labelBuilder: enumLabelBuilder),
       errorText: context.knobs.stringOrNull(label: 'Error Text'),
       countries: countries.isEmpty ? null : countries.toUpperCase().split(','),
     ),

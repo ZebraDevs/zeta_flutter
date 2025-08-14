@@ -96,13 +96,13 @@ class ZetaAddon extends WidgetbookAddon<ZetaAddonData> {
   @override
   List<Field> get fields {
     return [
-      ListField(
+      ObjectDropdownField(
         name: 'Rounded',
         values: [true, false],
         initialValue: true,
         labelBuilder: (value) => value ? 'Rounded' : 'Sharp',
       ),
-      ListField(
+      ObjectDropdownField(
         name: 'Theme Mode',
         values: [ThemeMode.light, ThemeMode.dark],
         initialValue: ThemeMode.light,
@@ -116,7 +116,7 @@ class ZetaAddon extends WidgetbookAddon<ZetaAddonData> {
           return 'ThemeMode';
         },
       ),
-      ListField(
+      ObjectDropdownField(
         name: 'Contrast',
         values: [ZetaContrast.aa, ZetaContrast.aaa],
         initialValue: ZetaContrast.aa,
@@ -130,7 +130,7 @@ class ZetaAddon extends WidgetbookAddon<ZetaAddonData> {
           return 'Contrast';
         },
       ),
-      ListField<String>(
+      ObjectDropdownField<String>(
         name: 'Font family',
         values: [
           kZetaFontFamily,

@@ -15,13 +15,13 @@ import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 Widget commsButtonUseCase(BuildContext context) {
   return ZetaCommsButton(
       label: context.knobs.string(label: 'Label', initialValue: 'Answer'),
-      size: context.knobs.list(
+      size: context.knobs.object.dropdown(
         label: 'Size',
         options: ZetaWidgetSize.values,
         labelBuilder: enumLabelBuilder,
         initialOption: ZetaWidgetSize.medium,
       ),
-      type: context.knobs.list(
+      type: context.knobs.object.dropdown(
         label: 'Type',
         options: ZetaCommsButtonType.values,
         labelBuilder: enumLabelBuilder,

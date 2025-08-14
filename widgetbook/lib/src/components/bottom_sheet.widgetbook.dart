@@ -16,7 +16,7 @@ Widget bottomSheet(BuildContext context) {
   return ZetaBottomSheet(
     title: context.knobs.string(label: 'Title', initialValue: 'Title'),
     centerTitle: context.knobs.boolean(label: 'Center Title'),
-    body: context.knobs.list(label: 'Body', options: ["Horizontal", "Vertical"]) == 'Vertical'
+    body: context.knobs.object.dropdown(label: 'Body', options: ["Horizontal", "Vertical"]) == 'Vertical'
         ? Wrap(
             spacing: 12,
             runSpacing: 12,

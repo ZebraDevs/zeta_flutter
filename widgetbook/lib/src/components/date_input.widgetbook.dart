@@ -15,7 +15,7 @@ import 'package:zeta_widgetbook/src/utils/utils.dart';
 Widget dateInput(BuildContext context) {
   return SmallContentWrapper(
     child: ZetaDateInput(
-      size: context.knobs.list<ZetaWidgetSize>(
+      size: context.knobs.object.dropdown<ZetaWidgetSize>(
         label: 'Size',
         options: ZetaWidgetSize.values,
         labelBuilder: enumLabelBuilder,
@@ -23,7 +23,7 @@ Widget dateInput(BuildContext context) {
       disabled: disabledKnob(context),
       label: context.knobs.stringOrNull(label: 'Label'),
       hintText: context.knobs.stringOrNull(label: 'Hint text'),
-      dateFormat: context.knobs.list<String>(
+      dateFormat: context.knobs.object.dropdown<String>(
         label: 'Date pattern',
         options: ['MM/dd/yyyy', 'dd/MM/yyyy', 'dd.MM.yyyy', 'yyyy-MM-dd'],
         labelBuilder: (pattern) => pattern,
