@@ -248,6 +248,15 @@ final directories = <_widgetbook.WidgetbookNode>[
                   'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=23132-166001&t=N8coJ9AFu6DS3mOF-4',
             ),
           ),
+          _widgetbook.WidgetbookLeafComponent(
+            name: 'ZetaTileButton',
+            useCase: _widgetbook.WidgetbookUseCase(
+              name: 'Tile Button',
+              builder: _zeta_widgetbook_src_components_button_widgetbook.tileButton,
+              designLink:
+                  'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS-Zeta---Components?node-id=36355-10869&t=ExJvUP7HY6Hm5JEQ-4',
+            ),
+          ),
         ],
       ),
       _widgetbook.WidgetbookFolder(
