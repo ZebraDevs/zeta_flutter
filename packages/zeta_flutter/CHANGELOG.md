@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.4.0](https://github.com/ZebraDevs/zeta_flutter/compare/zeta_flutter-v1.3.1...zeta_flutter-v1.4.0) (2025-08-14)
+
+
+### ✨ New Features
+
+* **UX-1491:** Created tile button and tests ([#376](https://github.com/ZebraDevs/zeta_flutter/issues/376)) ([5a9ea5b](https://github.com/ZebraDevs/zeta_flutter/commit/5a9ea5b6686ae3d59b5831baab1d119235fb4fb4))
+
+
+### 🧹 Miscellaneous Chores
+
+* ** zeta_icons:** release 1.1.5 ([#373](https://github.com/ZebraDevs/zeta_flutter/issues/373)) ([1767986](https://github.com/ZebraDevs/zeta_flutter/commit/1767986ae3679cfc1910246472b23ae5649d999b))
+
 ## [1.3.1](https://github.com/ZebraDevs/zeta_flutter/compare/zeta_flutter-v1.3.0...zeta_flutter-v1.3.1) (2025-08-12)
 
 
