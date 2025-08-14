@@ -97,8 +97,7 @@ class ZetaTileButton extends ZetaStatelessWidget {
                     ).paddingTop(Zeta.of(context).spacing.minimum),
                   ),
               ],
-            ).paddingHorizontal(Zeta.of(context).spacing.medium)
-            .paddingVertical(Zeta.of(context).spacing.large),
+            ).paddingHorizontal(Zeta.of(context).spacing.medium).paddingVertical(Zeta.of(context).spacing.large),
           ),
         ),
       ),

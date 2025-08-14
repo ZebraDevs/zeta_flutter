@@ -29,8 +29,7 @@ class TileButtonExample extends StatelessWidget {
                 rounded: rounded,
               ),
             ].reversed.toList(),
-          ).paddingHorizontal(Zeta.of(context).spacing.medium)
-           .paddingVertical(Zeta.of(context).spacing.large),
+          ).paddingHorizontal(Zeta.of(context).spacing.medium).paddingVertical(Zeta.of(context).spacing.large),
         ),
       ];
     }

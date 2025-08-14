@@ -24,7 +24,8 @@ void main() {
 
     testWidgets('Uses semantic label if provided', (WidgetTester tester) async {
       await tester.pumpWidget(
-        const TestApp(home: ZetaTileButton(
+        const TestApp(
+          home: ZetaTileButton(
             label: 'Button',
             icon: Icons.star,
             semanticLabel: 'Semantic Button',
@@ -40,7 +41,8 @@ void main() {
   group('Content Tests', () {
     testWidgets('Renders label correctly', (WidgetTester tester) async {
       await tester.pumpWidget(
-        const TestApp(home: ZetaTileButton(
+        const TestApp(
+          home: ZetaTileButton(
             label: 'Button',
             icon: Icons.star,
           ),
@@ -52,7 +54,8 @@ void main() {
 
     testWidgets('Renders icon correctly', (WidgetTester tester) async {
       await tester.pumpWidget(
-        const TestApp(home: ZetaTileButton(
+        const TestApp(
+          home: ZetaTileButton(
             label: 'Button',
             icon: Icons.star,
           ),
@@ -64,7 +67,8 @@ void main() {
 
     testWidgets('Creates ellipsis when text is longer than width', (WidgetTester tester) async {
       await tester.pumpWidget(
-        const TestApp(home: ZetaTileButton(
+        const TestApp(
+          home: ZetaTileButton(
             label: 'Button with a very long text',
             icon: Icons.star,
           ),
@@ -77,7 +81,8 @@ void main() {
 
     testWidgets('Renders another icon when one other than the default is selected', (WidgetTester tester) async {
       await tester.pumpWidget(
-        const TestApp(home: ZetaTileButton(
+        const TestApp(
+          home: ZetaTileButton(
             label: 'Button with a very long text',
             icon: Icons.block,
           ),
@@ -91,7 +96,8 @@ void main() {
   group('Dimensions Tests', () {
     testWidgets('Has correct height', (WidgetTester tester) async {
       await tester.pumpWidget(
-        const TestApp(home: ZetaTileButton(
+        const TestApp(
+          home: ZetaTileButton(
             label: 'Button',
             icon: Icons.star,
           ),
@@ -104,7 +110,8 @@ void main() {
 
     testWidgets('Has correct width', (WidgetTester tester) async {
       await tester.pumpWidget(
-        const TestApp(home: ZetaTileButton(
+        const TestApp(
+          home: ZetaTileButton(
             label: 'Button',
             icon: Icons.star,
           ),
@@ -117,7 +124,8 @@ void main() {
 
     testWidgets('Button stays the same width when text is very long', (WidgetTester tester) async {
       await tester.pumpWidget(
-        const TestApp(home: ZetaTileButton(
+        const TestApp(
+          home: ZetaTileButton(
             label: 'Button with a very long text',
             icon: Icons.star,
           ),
@@ -130,7 +138,8 @@ void main() {
 
     testWidgets('Button stays the same width when there is no text', (WidgetTester tester) async {
       await tester.pumpWidget(
-        const TestApp(home: ZetaTileButton(
+        const TestApp(
+          home: ZetaTileButton(
             label: '',
             icon: Icons.star,
           ),
@@ -145,7 +154,8 @@ void main() {
   group('Styling Tests', () {
     testWidgets('Applies rounded border by default', (WidgetTester tester) async {
       await tester.pumpWidget(
-        const TestApp(home: ZetaTileButton(
+        const TestApp(
+          home: ZetaTileButton(
             label: 'Button',
             icon: Icons.star,
           ),
@@ -163,7 +173,8 @@ void main() {
 
     testWidgets('Applies sharp border when specified', (WidgetTester tester) async {
       await tester.pumpWidget(
-        const TestApp(home: ZetaTileButton(
+        const TestApp(
+          home: ZetaTileButton(
             label: 'Button',
             icon: Icons.star,
             rounded: false,
@@ -182,7 +193,8 @@ void main() {
 
     testWidgets('Has the correct background colour when disabled', (WidgetTester tester) async {
       await tester.pumpWidget(
-        const TestApp(home: ZetaTileButton(
+        const TestApp(
+          home: ZetaTileButton(
             label: 'Button',
             icon: Icons.star,
           ),
@@ -195,25 +207,27 @@ void main() {
       expect(backgroundColor, const ZetaPrimitivesLight().cool.shade30);
     });
 
-  testWidgets('Has the correct background colour when enabled', (WidgetTester tester) async {
-    await tester.pumpWidget(
-      TestApp(home: ZetaTileButton(
-          label: 'Button',
-          icon: Icons.star,
-          onPressed: () {},
-        ),
-      ),
-    );
-
-    final FilledButton button = tester.widget(find.byType(FilledButton));
-    final ButtonStyle style = button.style!;
-    final Color? backgroundColor = style.backgroundColor?.resolve({});
-    expect(backgroundColor, const ZetaPrimitivesLight().pure.shade0);
-  });
-
-  testWidgets('Hover states are correct', (WidgetTester tester) async {
+    testWidgets('Has the correct background colour when enabled', (WidgetTester tester) async {
       await tester.pumpWidget(
-        TestApp(home: ZetaTileButton(
+        TestApp(
+          home: ZetaTileButton(
+            label: 'Button',
+            icon: Icons.star,
+            onPressed: () {},
+          ),
+        ),
+      );
+
+      final FilledButton button = tester.widget(find.byType(FilledButton));
+      final ButtonStyle style = button.style!;
+      final Color? backgroundColor = style.backgroundColor?.resolve({});
+      expect(backgroundColor, const ZetaPrimitivesLight().pure.shade0);
+    });
+
+    testWidgets('Hover states are correct', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        TestApp(
+          home: ZetaTileButton(
             label: 'Button',
             icon: Icons.star,
             onPressed: () {},
@@ -256,7 +270,8 @@ void main() {
     testWidgets('Focus state is correct', (WidgetTester tester) async {
       final FocusNode focusNode = FocusNode();
       await tester.pumpWidget(
-        TestApp(home: ZetaTileButton(
+        TestApp(
+          home: ZetaTileButton(
             label: 'Button',
             icon: Icons.star,
             onPressed: () {},
@@ -284,7 +299,8 @@ void main() {
       bool pressed = false;
 
       await tester.pumpWidget(
-        TestApp(home: ZetaTileButton(
+        TestApp(
+          home: ZetaTileButton(
             label: 'Button',
             icon: Icons.star,
             onPressed: () => pressed = true,
@@ -300,7 +316,8 @@ void main() {
       const bool pressed = false;
 
       await tester.pumpWidget(
-        const TestApp(home: ZetaTileButton(
+        const TestApp(
+          home: ZetaTileButton(
             label: 'Button',
             icon: Icons.star,
           ),
@@ -330,7 +347,5 @@ void main() {
     );
   });
 
-  group('Performance Tests', () {
-
-  });
+  group('Performance Tests', () {});
 }
