@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.1](https://github.com/ZebraDevs/zeta_flutter/compare/zeta_flutter-v1.4.0...zeta_flutter-v1.4.1) (2025-08-14)
+
+
+### 🧹 Miscellaneous Chores
+
+* Add Zebra logo ([#378](https://github.com/ZebraDevs/zeta_flutter/issues/378)) ([c7f7242](https://github.com/ZebraDevs/zeta_flutter/commit/c7f7242eedf3ed8fa48f38565063cca076118c4b))
+
 ## [1.4.0](https://github.com/ZebraDevs/zeta_flutter/compare/zeta_flutter-v1.3.1...zeta_flutter-v1.4.0) (2025-08-14)
 
 
