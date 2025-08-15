@@ -33,7 +33,7 @@ Future<List<double>?> extractWavAmplitudes(Uri fileUri, int linesNeeded, AudioPl
   try {
     Uint8List bytes;
     if (kIsWeb) {
-      // TODO(lu)e): This does not work for http assets?
+      // TODO(luke): This does not work for http assets?
       if (fileUri.isScheme('http') || fileUri.isScheme('https')) {
         final response = await http.get(fileUri);
         if (response.statusCode != 200) throw Exception('Failed to load WAV file from network');
@@ -139,7 +139,7 @@ class AudioRecordingManager {
   final RecordConfig recordConfig;
 
   final AudioRecorder _record = AudioRecorder();
-  final List<Uint8List> _audioChunks = [];
+  List<Uint8List>? _audioChunks;
 
   bool _canRecord = false;
   bool _isRecording = false;
@@ -160,7 +160,7 @@ class AudioRecordingManager {
   Stream<Uint8List>? get stream => _stream;
 
   /// List of audio chunks recorded so far
-  List<Uint8List> get audioChunks => List.unmodifiable(_audioChunks);
+  List<Uint8List>? get audioChunks => _audioChunks;
 
   /// Initialize the recording permissions
   Future<void> initialize() async {
@@ -171,9 +171,9 @@ class AudioRecordingManager {
   /// Start recording audio
   Future<void> startRecording() async {
     if (!_canRecord) return;
-
+    _audioChunks = <Uint8List>[];
     _stream = await _record.startStream(recordConfig);
-    _stream!.listen(_audioChunks.add);
+    _stream!.listen(_audioChunks?.add);
     _duration = Duration.zero;
   }
 
@@ -237,12 +237,17 @@ class AudioRecordingManager {
   }
 
   /// Reset recording state
-  void resetRecording() {
+  void resetRecording(AudioPlaybackManager playManager) {
+    unawaited(_stream?.drain());
     _stream = null;
+
     _duration = null;
     _isRecording = false;
     _recordingTimer?.cancel();
-    _audioChunks.clear();
+    playManager._localChunks = null;
+    _audioChunks = null;
+
+    unawaited(_record.cancel());
   }
 
   /// Dispose of resources
@@ -256,6 +261,7 @@ class AudioRecordingManager {
 class AudioPlaybackManager {
   AudioPlayer? _audioPlayer;
   Uri? _localFile;
+  Uint8List? _localChunks;
   Duration? _duration;
   bool _playing = false;
   Duration _currentPosition = Duration.zero;
@@ -310,12 +316,19 @@ class AudioPlaybackManager {
     } else if (deviceFilePath != null) {
       _localFile = Uri.file(deviceFilePath);
     } else if (audioChunks != null && audioChunks.isNotEmpty && recordConfig != null) {
-      final tempDir = Directory.systemTemp;
-      final tempFile = File('${tempDir.path}/$_tempAudioFileName');
-      await tempFile.writeAsBytes(
-        _generateWePCMWavHeader(audioChunks, recordConfig) + audioChunks.expand((x) => x).toList(),
-      );
-      _localFile = tempFile.uri;
+      if (kIsWeb) {
+        _localChunks = Uint8List.fromList([
+          ..._generateWePCMWavHeader(audioChunks, recordConfig),
+          ...audioChunks.expand((x) => x),
+        ]);
+      } else {
+        final tempDir = Directory.systemTemp;
+        final tempFile = File('${tempDir.path}/$_tempAudioFileName');
+        await tempFile.writeAsBytes(
+          _generateWePCMWavHeader(audioChunks, recordConfig) + audioChunks.expand((x) => x).toList(),
+        );
+        _localFile = tempFile.uri;
+      }
     }
   }
 
@@ -333,6 +346,10 @@ class AudioPlaybackManager {
       } catch (_) {
         loadedAudio = false;
       }
+    } else if (_localChunks != null && _audioPlayer != null) {
+      await _audioPlayer!.setSourceBytes(_localChunks!);
+      _duration = await _audioPlayer!.getDuration();
+      loadedAudio = true;
     } else {
       loadedAudio = false;
     }

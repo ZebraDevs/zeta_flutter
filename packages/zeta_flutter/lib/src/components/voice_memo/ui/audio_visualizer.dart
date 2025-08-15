@@ -34,7 +34,10 @@ class ZetaAudioVisualizer extends ZetaStatefulWidget {
         audioStream = null,
         isRecording = false,
         maxRecordingDuration = null,
-        recordConfig = null;
+        recordConfig = null
+  // ,
+  // playbackManager = null
+  ;
 
   /// Constructs a [ZetaAudioVisualizer] for [ZetaVoiceMemo].
   const ZetaAudioVisualizer.voiceMemo({
@@ -48,6 +51,7 @@ class ZetaAudioVisualizer extends ZetaStatefulWidget {
     this.audioStream,
     this.audioDuration,
     this.errorMessage = 'Audio cannot be played',
+    // this.playbackManager,
   })  : assetPath = null,
         url = null,
         deviceFilePath = null,
@@ -128,8 +132,10 @@ class ZetaAudioVisualizer extends ZetaStatefulWidget {
   /// Error message to display when audio can not be played.
   final String errorMessage;
 
+  // final AudioPlaybackManager? playbackManager;
+
   @override
-  State<ZetaAudioVisualizer> createState() => _ZetaAudioVisualizerState();
+  State<ZetaAudioVisualizer> createState() => ZetaAudioVisualizerState();
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
@@ -153,8 +159,12 @@ class ZetaAudioVisualizer extends ZetaStatefulWidget {
   }
 }
 
-class _ZetaAudioVisualizerState extends State<ZetaAudioVisualizer> {
+/// State for the audio visualizer component.
+///
+/// This should not be called directly, and is only public for state management reasons.
+class ZetaAudioVisualizerState extends State<ZetaAudioVisualizer> {
   late final AudioPlaybackManager _playbackManager = AudioPlaybackManager();
+  // late final AudioPlaybackManager _playbackManager = widget.playbackManager ?? AudioPlaybackManager();
   final ValueNotifier<List<double>> _amplitudesNotifier = ValueNotifier<List<double>>([]);
   final GlobalKey _rowKey = GlobalKey();
   final List<Uint8List> _audioChunks = [];
@@ -178,6 +188,13 @@ class _ZetaAudioVisualizerState extends State<ZetaAudioVisualizer> {
     super.dispose();
   }
 
+  /// Clears the recorded audio from the state.
+  void clearVisualizerAudio() {
+    _audioChunks.clear();
+    _amplitudesNotifier.value = [];
+    _playbackLocationVis = 0;
+  }
+
   @override
   void didUpdateWidget(covariant ZetaAudioVisualizer oldWidget) {
     super.didUpdateWidget(oldWidget);
@@ -186,7 +203,7 @@ class _ZetaAudioVisualizerState extends State<ZetaAudioVisualizer> {
     }
     if (!widget.isRecording && oldWidget.isRecording) {
       _playbackLocationVis = 0;
-      unawaited(resetPlayback());
+      unawaited(_resetPlayback());
     } else if (widget.isRecording && !oldWidget.isRecording) {
       unawaited(_playbackManager.pause());
     }
@@ -196,14 +213,14 @@ class _ZetaAudioVisualizerState extends State<ZetaAudioVisualizer> {
     await _playbackManager.initialize(
       onComplete: () {
         widget.onPause?.call();
-        unawaited(resetPlayback());
+        unawaited(_resetPlayback());
       },
       onPositionChanged: _updatePlaybackLocation,
     );
-    unawaited(resetPlayback());
+    unawaited(_resetPlayback());
   }
 
-  Future<void> resetPlayback() async {
+  Future<void> _resetPlayback() async {
     _playing = false;
     await _playbackManager.loadAudio(
       assetPath: widget.assetPath,
@@ -339,7 +356,9 @@ class _ZetaAudioVisualizerState extends State<ZetaAudioVisualizer> {
             ],
           ),
         ),
-        if (_playbackManager.loadedAudio == false)
+        if (_playbackManager.loadedAudio == false &&
+            !widget.isRecording &&
+            ([widget.assetPath, widget.url, widget.deviceFilePath].any((source) => source != null)))
           Positioned(
             top: 0,
             left: 0,
