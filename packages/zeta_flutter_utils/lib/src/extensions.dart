@@ -98,3 +98,20 @@ extension BrightnessExtension on Brightness {
   /// Converts [Brightness] to [ThemeMode].
   ThemeMode get themeMode => this == Brightness.light ? ThemeMode.light : ThemeMode.dark;
 }
+
+/// [String] extension on [Duration].
+extension ToString on Duration {
+  /// Returns a duration in the format m:ss
+  String get minutesSeconds => '$inMinutes:${(inSeconds % 60).toString().padLeft(2, '0')}';
+}
+
+/// Extension to add [everyIndexed] method to [List].
+extension EveryIndexed<E> on List<E> {
+  /// Returns true if every element in the list satisfies the [test] function.
+  bool everyIndexed(bool Function(int index, E value) test) {
+    for (int i = 0; i < length; i++) {
+      if (!test(i, this[i])) return false;
+    }
+    return true;
+  }
+}
