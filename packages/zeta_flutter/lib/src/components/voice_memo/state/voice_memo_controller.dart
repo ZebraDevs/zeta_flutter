@@ -42,8 +42,8 @@ class VoiceMemoController {
     );
   }
 
-  void restartRecording(VoidCallback setWarning) {
-    recordingManager.resetRecording();
+  void restartRecording(VoidCallback setWarning, AudioPlaybackManager playbackManager) {
+    recordingManager.resetRecording(playbackManager);
     setWarning();
   }
 }

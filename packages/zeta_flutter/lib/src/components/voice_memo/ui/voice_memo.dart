@@ -125,6 +125,7 @@ class ZetaVoiceMemo extends ZetaStatefulWidget {
 
 class _ZetaVoiceMemoState extends State<ZetaVoiceMemo> {
   late final AudioRecordingManager _recordingManager;
+  late final AudioPlaybackManager _playbackManager = AudioPlaybackManager();
   late final VoiceMemoController _controller;
   bool _showWarning = false;
   bool _playing = false;
@@ -159,7 +160,27 @@ class _ZetaVoiceMemoState extends State<ZetaVoiceMemo> {
 
   Future<void> resumeRecording() => _controller.resumeRecording(() => setState(() => _showWarning = true));
 
-  void restartRecording() => setState(() => _controller.restartRecording(() => _showWarning = false));
+  void reinitializeRecording() =>
+      setState(() => _controller.restartRecording(() => _showWarning = false, _playbackManager));
+
+  /// Key to access the ZetaAudioVisualizer state
+  final GlobalKey<ZetaAudioVisualizerState> _visualizerKey = GlobalKey<ZetaAudioVisualizerState>();
+
+  /// Completely clears all audio data and playback state (for delete button)
+  Future<void> clearAudio() async {
+    _recordingManager.resetRecording(_playbackManager);
+    // (No need to clear localChunks directly)
+    // Clear the visualizer's audio chunks
+    final visualizerState = _visualizerKey.currentState;
+    if (visualizerState != null) {
+      visualizerState.clearVisualizerAudio();
+    }
+    await _playbackManager.resetPlayback();
+    setState(() {
+      _showWarning = false;
+      _playing = false;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -203,6 +224,7 @@ class _ZetaVoiceMemoState extends State<ZetaVoiceMemo> {
               ),
               SizedBox(height: zeta.spacing.xl_2),
               ZetaAudioVisualizer.voiceMemo(
+                key: _visualizerKey,
                 isRecording: _recordingManager.isRecording || _recordingManager.duration == null,
                 audioDuration: _recordingManager.duration,
                 audioStream: _recordingManager.stream,
@@ -211,6 +233,7 @@ class _ZetaVoiceMemoState extends State<ZetaVoiceMemo> {
                 onPause: () => setState(() => _playing = false),
                 recordConfig: widget.recordConfig,
                 rounded: widget.rounded,
+                // playbackManager: _playbackManager,
               ).paddingHorizontal(zeta.spacing.xl_2),
               SizedBox(height: zeta.spacing.large + ZetaBorders.small),
               Row(
@@ -226,8 +249,8 @@ class _ZetaVoiceMemoState extends State<ZetaVoiceMemo> {
                             color: Zeta.of(context).colors.mainNegative,
                           ),
                           onPressed: _recordingManager.canRecord
-                              ? () {
-                                  restartRecording();
+                              ? () async {
+                                  await clearAudio();
                                   widget.onDiscard?.call();
                                 }
                               : null,
@@ -238,7 +261,12 @@ class _ZetaVoiceMemoState extends State<ZetaVoiceMemo> {
                             size: Zeta.of(context).spacing.xl_6,
                             color: Zeta.of(context).colors.mainDefault,
                           ),
-                          onPressed: _recordingManager.canRecord ? restartRecording : null,
+                          onPressed: _recordingManager.canRecord
+                              ? () async {
+                                  await clearAudio();
+                                  reinitializeRecording();
+                                }
+                              : null,
                         ),
                       ],
                     ),
