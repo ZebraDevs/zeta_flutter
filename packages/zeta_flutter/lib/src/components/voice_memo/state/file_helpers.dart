@@ -10,7 +10,7 @@ Uri _sanitizeURLForWeb(String fileName) {
 
   // URL-encode for relative asset paths
   final encoded = Uri.decodeFull(fileName) != fileName ? fileName : Uri.encodeFull(fileName);
-  return Uri.parse('assets/$encoded');
+  return Uri.parse(encoded);
 }
 
 /// Enum to specify how to fetch the file: from assets or from a URL.
@@ -31,7 +31,13 @@ Future<Uri> handleFile(String fileNameOrUrl, FileFetchMode mode) async {
     await http.get(uri);
     return uri;
   }
-
+  if (kIsWeb && mode == FileFetchMode.url) {
+    final uri = _sanitizeURLForWeb(fileNameOrUrl);
+    // We rely on browser caching here. Once the browser downloads this file,
+    // the native side implementation should be able to access it from cache.
+    await http.get(uri);
+    return uri;
+  }
   final tempDir = Directory.systemTemp.path;
   final fileName = mode == FileFetchMode.url
       ? Uri.decodeFull(fileNameOrUrl) != fileNameOrUrl
