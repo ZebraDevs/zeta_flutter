@@ -33,7 +33,6 @@ Future<List<double>?> extractWavAmplitudes(Uri fileUri, int linesNeeded, AudioPl
   try {
     Uint8List bytes;
     if (kIsWeb) {
-      // TODO(luke): This does not work for http assets?
       if (fileUri.isScheme('http') || fileUri.isScheme('https')) {
         final response = await http.get(fileUri);
         if (response.statusCode != 200) throw Exception('Failed to load WAV file from network');

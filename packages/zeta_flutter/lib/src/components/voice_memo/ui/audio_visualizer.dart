@@ -34,10 +34,7 @@ class ZetaAudioVisualizer extends ZetaStatefulWidget {
         audioStream = null,
         isRecording = false,
         maxRecordingDuration = null,
-        recordConfig = null
-  // ,
-  // playbackManager = null
-  ;
+        recordConfig = null;
 
   /// Constructs a [ZetaAudioVisualizer] for [ZetaVoiceMemo].
   const ZetaAudioVisualizer.voiceMemo({
@@ -51,7 +48,6 @@ class ZetaAudioVisualizer extends ZetaStatefulWidget {
     this.audioStream,
     this.audioDuration,
     this.errorMessage = 'Audio cannot be played',
-    // this.playbackManager,
   })  : assetPath = null,
         url = null,
         deviceFilePath = null,
@@ -132,8 +128,6 @@ class ZetaAudioVisualizer extends ZetaStatefulWidget {
   /// Error message to display when audio can not be played.
   final String errorMessage;
 
-  // final AudioPlaybackManager? playbackManager;
-
   @override
   State<ZetaAudioVisualizer> createState() => ZetaAudioVisualizerState();
 
@@ -164,7 +158,6 @@ class ZetaAudioVisualizer extends ZetaStatefulWidget {
 /// This should not be called directly, and is only public for state management reasons.
 class ZetaAudioVisualizerState extends State<ZetaAudioVisualizer> {
   late final AudioPlaybackManager _playbackManager = AudioPlaybackManager();
-  // late final AudioPlaybackManager _playbackManager = widget.playbackManager ?? AudioPlaybackManager();
   final ValueNotifier<List<double>> _amplitudesNotifier = ValueNotifier<List<double>>([]);
   final GlobalKey _rowKey = GlobalKey();
   final List<Uint8List> _audioChunks = [];

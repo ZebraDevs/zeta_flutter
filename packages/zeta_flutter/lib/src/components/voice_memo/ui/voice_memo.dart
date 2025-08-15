@@ -233,7 +233,6 @@ class _ZetaVoiceMemoState extends State<ZetaVoiceMemo> {
                 onPause: () => setState(() => _playing = false),
                 recordConfig: widget.recordConfig,
                 rounded: widget.rounded,
-                // playbackManager: _playbackManager,
               ).paddingHorizontal(zeta.spacing.xl_2),
               SizedBox(height: zeta.spacing.large + ZetaBorders.small),
               Row(
