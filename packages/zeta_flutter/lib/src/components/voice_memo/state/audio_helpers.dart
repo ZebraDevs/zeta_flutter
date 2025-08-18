@@ -29,7 +29,7 @@ const List<double> _fallbackAmps = [0, 0.375, 0.5, 1, 0.625, 1, 0.75, 0.75, 1, 1
 /// These values should not be considered accurate for audio playback, but rather for visual representation in a waveform.
 ///
 /// If the presented file is not a WAV file, it will return null.
-Future<List<double>?> extractWavAmplitudes(Uri fileUri, int linesNeeded, AudioPlaybackManager? manager) async {
+Future<List<double>?> extractWavAmplitudes(Uri fileUri, int linesNeeded) async {
   try {
     Uint8List bytes;
     if (kIsWeb) {
@@ -49,11 +49,11 @@ Future<List<double>?> extractWavAmplitudes(Uri fileUri, int linesNeeded, AudioPl
     return await _parseWav(bytes, linesNeeded);
   } catch (e, _) {
     debugPrint('Error extracting WAV amplitudes: $e');
-    if (manager != null && manager.loadedAudio == false) {
-      return List<double>.filled(linesNeeded, 0);
-    } else {
-      return List<double>.generate(linesNeeded, (i) => _fallbackAmps[i % _fallbackAmps.length]);
-    }
+    // if (manager != null && manager.loadedAudio == false) {
+    //   return List<double>.filled(linesNeeded, 0);
+    // } else {
+    return List<double>.generate(linesNeeded, (i) => _fallbackAmps[i % _fallbackAmps.length]);
+    // }
   }
 }
 
