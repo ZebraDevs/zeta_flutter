@@ -1,6 +1,3 @@
-// Documentation not required as this is an internal file.
-// ignore_for_file: public_member_api_docs
-
 import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +6,7 @@ import '../state/audio_helpers.dart';
 
 /// Recording control widget for [ZetaVoiceMemo].
 class RecordingControl extends StatelessWidget {
+  /// Construct a [RecordingControl].
   const RecordingControl({
     required this.recordingManager,
     required this.maxRecordingDuration,
@@ -18,11 +16,20 @@ class RecordingControl extends StatelessWidget {
     super.key,
   });
 
+  /// Manages the recording.
   final AudioRecordingManager recordingManager;
+
+  /// Max duration that can be recorded before cutting off.
   final Duration maxRecordingDuration;
-  final Future<void> Function() onStartRecording;
-  final Future<void> Function() onPauseRecording;
-  final Future<void> Function() onResumeRecording;
+
+  /// Callback when recording is started.
+  final AsyncCallback onStartRecording;
+
+  /// Callback when recording is paused.
+  final AsyncCallback onPauseRecording;
+
+  /// Callback when recording is resumed.
+  final AsyncCallback onResumeRecording;
 
   @override
   Widget build(BuildContext context) {

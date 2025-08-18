@@ -148,6 +148,28 @@ class _ZetaVoiceMemoState extends State<ZetaVoiceMemo> {
     });
   }
 
+  String getVoiceMemoLabel({
+    required bool showWarning,
+    required bool playing,
+    required Duration? duration,
+    required Duration maxRecordingDuration,
+    required String maxLimitLabel,
+    required String playingLabel,
+    required String sendMessageLabel,
+    required String recordingLabel,
+  }) {
+    if (showWarning) {
+      final secondsLeft = maxRecordingDuration.inSeconds - (duration?.inSeconds ?? 0);
+      return maxLimitLabel.replaceAll('{timer}', secondsLeft.toString());
+    } else if (playing) {
+      return playingLabel;
+    } else if (duration != null && duration.inMilliseconds > 0) {
+      return sendMessageLabel;
+    } else {
+      return recordingLabel;
+    }
+  }
+
   @override
   void dispose() {
     unawaited(_recordingManager.dispose());

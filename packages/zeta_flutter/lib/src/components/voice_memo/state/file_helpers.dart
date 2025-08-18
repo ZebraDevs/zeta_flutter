@@ -25,10 +25,18 @@ enum FileFetchMode {
 /// Handles file fetching for both assets and URLs to cache them locally.
 Future<Uri> handleFile(String fileNameOrUrl, FileFetchMode mode) async {
   if (kIsWeb && mode == FileFetchMode.asset) {
-    final uri = _sanitizeURLForWeb(fileNameOrUrl);
+    late final Uri uri;
+    if (!fileNameOrUrl.startsWith('/assets/')) {
+      // For web, we need to ensure the asset path is correct
+      uri = _sanitizeURLForWeb('/assets/$fileNameOrUrl');
+    } else {
+      uri = _sanitizeURLForWeb(fileNameOrUrl);
+    }
+
     // We rely on browser caching here. Once the browser downloads this file,
     // the native side implementation should be able to access it from cache.
     await http.get(uri);
+
     return uri;
   }
   if (kIsWeb && mode == FileFetchMode.url) {

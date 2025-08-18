@@ -1,38 +1,46 @@
-// Documentation not required as this is an internal file.
-// ignore_for_file: public_member_api_docs
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../zeta_flutter.dart';
 
+/// Play button for [ZetaAudioVisualizer] and [ZetaVoiceMemo].
 class PlayButton extends StatelessWidget {
+  /// Constructs a [PlayButton]
   const PlayButton({
     super.key,
     required this.isPlaying,
     required this.onTap,
     required this.playButtonColor,
     required this.iconColor,
-    required this.disabled,
+    // required this.disabled,
   });
 
+  /// If the content is currently playing.
   final bool isPlaying;
-  final VoidCallback onTap;
+
+  /// Called when the play button is tapped.
+  final VoidCallback? onTap;
+
+  /// Background color of the play button.
   final Color playButtonColor;
+
+  /// Color of the play button icon.
   final Color iconColor;
-  final bool disabled;
+
+  /// If the play button is disabled.
+  // final bool disabled;
   @override
   Widget build(BuildContext context) {
     final zeta = Zeta.of(context);
     return InkWell(
-      onTap: disabled ? null : onTap,
+      onTap: onTap,
       child: Padding(
         padding: EdgeInsets.all(zeta.spacing.small),
         child: Container(
           width: zeta.spacing.xl_4,
           height: zeta.spacing.xl_4,
           decoration: BoxDecoration(
-            color: disabled ? zeta.colors.mainDisabled : playButtonColor,
+            color: onTap == null ? zeta.colors.mainDisabled : playButtonColor,
             borderRadius: BorderRadius.all(zeta.radius.full),
           ),
           child: Center(
@@ -55,7 +63,6 @@ class PlayButton extends StatelessWidget {
       ..add(DiagnosticsProperty<bool>('isPlaying', isPlaying))
       ..add(ObjectFlagProperty<VoidCallback>.has('onTap', onTap))
       ..add(ColorProperty('playButtonColor', playButtonColor))
-      ..add(ColorProperty('iconColor', iconColor))
-      ..add(DiagnosticsProperty<bool>('disabled', disabled));
+      ..add(ColorProperty('iconColor', iconColor));
   }
 }
