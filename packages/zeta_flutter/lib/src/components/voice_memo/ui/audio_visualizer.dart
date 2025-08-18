@@ -6,7 +6,6 @@ import 'package:record/record.dart';
 
 import '../../../../zeta_flutter.dart';
 import '../state/audio_helpers.dart';
-import '../state/audio_visualizer_helpers.dart';
 import 'play_button.dart';
 import 'waveform.dart';
 
@@ -158,14 +157,11 @@ class ZetaAudioVisualizer extends ZetaStatefulWidget {
 /// This should not be called directly, and is only public for state management reasons.
 class ZetaAudioVisualizerState extends State<ZetaAudioVisualizer> {
   late final AudioPlaybackManager _playbackManager = AudioPlaybackManager();
-  final ValueNotifier<List<double>> _amplitudesNotifier = ValueNotifier<List<double>>([]);
   final GlobalKey _rowKey = GlobalKey();
   final List<Uint8List> _audioChunks = [];
-
   Timer? _debouncer;
-  int? _playbackLocationVis;
-  int? _linesNeeded;
   bool _playing = false;
+  final ValueNotifier<double> _playbackPercent = ValueNotifier<double>(0);
 
   @override
   void initState() {
@@ -175,7 +171,6 @@ class ZetaAudioVisualizerState extends State<ZetaAudioVisualizer> {
 
   @override
   void dispose() {
-    _amplitudesNotifier.dispose();
     unawaited(_playbackManager.dispose());
     _debouncer?.cancel();
     super.dispose();
@@ -184,8 +179,7 @@ class ZetaAudioVisualizerState extends State<ZetaAudioVisualizer> {
   /// Clears the recorded audio from the state.
   void clearVisualizerAudio() {
     _audioChunks.clear();
-    _amplitudesNotifier.value = [];
-    _playbackLocationVis = 0;
+    _playbackPercent.value = 0;
   }
 
   @override
@@ -195,7 +189,7 @@ class ZetaAudioVisualizerState extends State<ZetaAudioVisualizer> {
       widget.audioStream!.listen(_audioChunks.add);
     }
     if (!widget.isRecording && oldWidget.isRecording) {
-      _playbackLocationVis = 0;
+      _playbackPercent.value = 0;
       unawaited(_resetPlayback());
     } else if (widget.isRecording && !oldWidget.isRecording) {
       unawaited(_playbackManager.pause());
@@ -208,7 +202,8 @@ class ZetaAudioVisualizerState extends State<ZetaAudioVisualizer> {
         widget.onPause?.call();
         unawaited(_resetPlayback());
       },
-      onPositionChanged: _updatePlaybackLocation,
+      onPositionChanged: (Duration d) =>
+          _playbackPercent.value = d.inMilliseconds / _playbackManager.duration!.inMilliseconds,
     );
     unawaited(_resetPlayback());
   }
@@ -224,65 +219,17 @@ class ZetaAudioVisualizerState extends State<ZetaAudioVisualizer> {
     );
     await _playbackManager.resetPlayback();
     setState(() {});
-    unawaited(_getAmplitudes());
   }
 
-  Future<void> _getAmplitudes() async {
-    await AudioVisualizerHelpers.getAmplitudes(
-      playbackManager: _playbackManager,
-      linesNeeded: _linesNeeded,
-      audioChunks: _audioChunks,
-      amplitudesNotifier: _amplitudesNotifier,
-    );
-  }
-
-  void _updatePlaybackLocation(Duration position) {
-    AudioVisualizerHelpers.updatePlaybackLocation(
-      playbackManager: _playbackManager,
-      linesNeeded: _linesNeeded,
-      setPlaybackLocation: (val) => setState(() => _playbackLocationVis = val),
-      position: position,
-    );
-  }
-
-  Future<void> _calculateWaveform(BoxConstraints constraints) async {
-    await AudioVisualizerHelpers.calculateWaveform(
-      mounted: mounted,
-      constraints: constraints,
-      audioDuration: widget.audioDuration,
-      audioChunks: _audioChunks,
-      recordConfig: widget.recordConfig,
-      linesNeeded: _linesNeeded,
-      amplitudesNotifier: _amplitudesNotifier,
-      isRecording: widget.isRecording,
-      maxRecordingDuration: widget.maxRecordingDuration,
-      setLinesNeeded: (val) => setState(() => _linesNeeded = val),
-      setPlaybackLocation: (val) => setState(() => _playbackLocationVis = val),
-      debouncer: _debouncer,
-      setDebouncer: (val) => _debouncer = val,
-      getAmplitudes: _getAmplitudes,
-    );
-  }
-
-  void _onVisualizerInteraction(Offset position) {
-    AudioVisualizerHelpers.onVisualizerInteraction(
-      rowKey: _rowKey,
-      playbackManager: _playbackManager,
-      linesNeeded: _linesNeeded,
-      position: position,
-    );
-  }
-
-  void _togglePlayback() {
-    unawaited(
-      AudioVisualizerHelpers.togglePlayback(
-        playing: _playing,
-        onPlay: widget.onPlay,
-        onPause: widget.onPause,
-        playbackManager: _playbackManager,
-        setPlaying: ({required bool playing}) => setState(() => _playing = playing),
-      ),
-    );
+  Future<void> _togglePlayback() async {
+    if (_playing) {
+      widget.onPause?.call();
+      await _playbackManager.pause();
+    } else {
+      widget.onPlay?.call();
+      await _playbackManager.play();
+    }
+    setState(() => _playing = !_playing);
   }
 
   @override
@@ -308,10 +255,9 @@ class ZetaAudioVisualizerState extends State<ZetaAudioVisualizer> {
           padding: EdgeInsets.all(zeta.spacing.minimum),
           child: Row(
             children: [
-              AnimatedSize(
-                duration: ZetaAnimationLength.fast,
-                child: SizedBox(
-                  width: widget.isRecording ? 0 : null,
+              if (!widget.isRecording)
+                AnimatedSize(
+                  duration: ZetaAnimationLength.fast,
                   child: PlayButton(
                     key: const ValueKey('playButton'),
                     isPlaying: _playing,
@@ -320,17 +266,26 @@ class ZetaAudioVisualizerState extends State<ZetaAudioVisualizer> {
                     iconColor: bg,
                   ),
                 ),
-              ),
               Expanded(
-                child: Waveform(
-                  playedColor: fg,
-                  unplayedColor: tertiaryColor,
-                  amplitudesNotifier: _amplitudesNotifier,
-                  playbackLocationVis: _playbackLocationVis,
-                  onInteraction: _onVisualizerInteraction,
-                  onLayoutChange: _calculateWaveform,
-                  key: _rowKey,
-                ),
+                child: widget.audioStream != null
+                    ? const ColoredBox(color: Colors.green, child: Text('memo'))
+                    : Waveform(
+                        playedColor: fg,
+                        unplayedColor: tertiaryColor,
+                        audioFile: Uri.parse(widget.assetPath ?? widget.deviceFilePath ?? widget.url ?? ''),
+                        playbackPosition: _playbackPercent,
+                        onInteraction: (Offset offset) {
+                          final box = _rowKey.currentContext?.findRenderObject() as RenderBox?;
+                          if (_playbackManager.duration == null || box == null) return;
+                          final seekPosition = AudioWaveformCalculator.calculateSeekPosition(
+                            gesturePosition: offset,
+                            visualizerWidth: box.size.width,
+                            totalDuration: _playbackManager.duration,
+                          );
+                          unawaited(_playbackManager.seek(seekPosition));
+                        },
+                        key: _rowKey,
+                      ),
               ),
               Padding(
                 padding: EdgeInsets.only(
