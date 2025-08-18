@@ -18,7 +18,11 @@ const int _wavHeaderChunkSize = 8;
 const List<int> _wavDataChunkMarker = [0x64, 0x61, 0x74, 0x61]; // "data" in ASCII
 const int _minChunkDurationMs = 100;
 const int _maxChunkDurationMs = 500;
-const String _tempAudioFileName = 'temp_audio.wav';
+
+/// Temporary audio file name for recording
+// TODO(luke): do we even need a temp file? couldnt we just diretly play the bytes?
+
+const String tempAudioFileName = 'temp_audio.wav';
 const List<double> _fallbackAmps = [0, 0.375, 0.5, 1, 0.625, 1, 0.75, 0.75, 1, 1, 0.75, 1, 0.375, 0, 0, 0, 0, 0];
 
 /// Extracts WAV amplitudes from a file URI, normalizing them for visualization.
@@ -46,7 +50,7 @@ Future<List<double>?> extractWavAmplitudes(Uri fileUri, int linesNeeded) async {
     } else {
       bytes = await File(fileUri.toFilePath()).readAsBytes();
     }
-    return await _parseWav(bytes, linesNeeded);
+    return await parseWavToAmplitudes(bytes, linesNeeded);
   } catch (e, _) {
     debugPrint('Error extracting WAV amplitudes: $e');
     // if (manager != null && manager.loadedAudio == false) {
@@ -72,7 +76,8 @@ List<double> _decodePCM(List<int> audioBytes, int bitsPerSample, int numChannels
   });
 }
 
-Future<List<double>> _parseWav(Uint8List bytes, int linesNeeded) async {
+/// Returns amplitude values needed for [ZetaAudioVisualizer].
+Future<List<double>> parseWavToAmplitudes(Uint8List bytes, int linesNeeded) async {
   final audioFormat = bytes[20] | (bytes[21] << 8);
   if (audioFormat != 1) throw UnsupportedError('Unsupported WAV format: Only PCM is supported');
 
@@ -113,12 +118,14 @@ Uint8List _generateWePCMWavHeader(List<Uint8List> audioChunks, RecordConfig reco
     final totalAudioBytes = audioChunks.fold<int>(0, (sum, chunk) => sum + chunk.length);
     final bytesPerSample = 2 * recordConfig.numChannels;
     final samples = totalAudioBytes ~/ bytesPerSample;
+
     return PCMWavHeader(
       channels: recordConfig.numChannels,
       sampleRate: recordConfig.sampleRate,
       samples: samples,
     ).header;
   }
+
   return Uint8List(0);
 }
 
@@ -243,7 +250,7 @@ class AudioRecordingManager {
     _duration = null;
     _isRecording = false;
     _recordingTimer?.cancel();
-    playManager._localChunks = null;
+    playManager.localChunks = null;
     _audioChunks = null;
 
     unawaited(_record.cancel());
@@ -260,7 +267,10 @@ class AudioRecordingManager {
 class AudioPlaybackManager {
   AudioPlayer? _audioPlayer;
   Uri? _localFile;
-  Uint8List? _localChunks;
+
+  /// Local audio chunks for playback
+  // TODO(luke): Implement local audio chunk management so that we dont need to keep this public
+  Uint8List? localChunks;
   Duration? _duration;
   bool _playing = false;
   Duration _currentPosition = Duration.zero;
@@ -316,13 +326,12 @@ class AudioPlaybackManager {
       _localFile = Uri.file(deviceFilePath);
     } else if (audioChunks != null && audioChunks.isNotEmpty && recordConfig != null) {
       if (kIsWeb) {
-        _localChunks = Uint8List.fromList([
+        localChunks = Uint8List.fromList([
           ..._generateWePCMWavHeader(audioChunks, recordConfig),
           ...audioChunks.expand((x) => x),
         ]);
       } else {
-        final tempDir = Directory.systemTemp;
-        final tempFile = File('${tempDir.path}/$_tempAudioFileName');
+        final tempFile = File('${Directory.systemTemp.path}/$tempAudioFileName');
         await tempFile.writeAsBytes(
           _generateWePCMWavHeader(audioChunks, recordConfig) + audioChunks.expand((x) => x).toList(),
         );
@@ -345,8 +354,8 @@ class AudioPlaybackManager {
       } catch (_) {
         loadedAudio = false;
       }
-    } else if (_localChunks != null && _audioPlayer != null) {
-      await _audioPlayer!.setSourceBytes(_localChunks!);
+    } else if (localChunks != null && _audioPlayer != null) {
+      await _audioPlayer!.setSourceBytes(localChunks!);
       _duration = await _audioPlayer!.getDuration();
       loadedAudio = true;
     } else {
@@ -383,10 +392,10 @@ class AudioPlaybackManager {
     await _audioPlayer?.dispose();
 
     // Clean up temporary files
-    if (_localFile != null) {
+    if (_localFile != null && !kIsWeb) {
       try {
         final file = File.fromUri(_localFile!);
-        if (file.existsSync() && file.path.contains(_tempAudioFileName)) {
+        if (file.existsSync() && file.path.contains(tempAudioFileName)) {
           file.deleteSync();
         }
       } catch (_) {}
@@ -419,7 +428,7 @@ class AudioWaveformCalculator {
 
     final linesNeededHere = isRecording ? (audioDuration.inMilliseconds / chunkDurationMs).ceil() : linesNeeded;
 
-    final waveforms = await _parseWav(audioData, linesNeededHere);
+    final waveforms = await parseWavToAmplitudes(audioData, linesNeededHere);
 
     if (isRecording) {
       return [...List<double>.filled(linesNeeded - waveforms.length, 0), ...waveforms];

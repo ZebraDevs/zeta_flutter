@@ -46,6 +46,7 @@ Future<Uri> handleFile(String fileNameOrUrl, FileFetchMode mode) async {
     await http.get(uri);
     return uri;
   }
+
   final tempDir = Directory.systemTemp.path;
   final fileName = mode == FileFetchMode.url
       ? Uri.decodeFull(fileNameOrUrl) != fileNameOrUrl
