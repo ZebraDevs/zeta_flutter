@@ -1,6 +1,3 @@
-// Documentation not required as this is an internal file.
-// ignore_for_file: public_member_api_docs
-
 import 'dart:async';
 import 'dart:typed_data';
 
@@ -10,7 +7,9 @@ import 'package:record/record.dart';
 import '../../../../zeta_flutter.dart';
 import 'audio_helpers.dart';
 
+/// Functionality for audio visualizer helpers.
 class AudioVisualizerHelpers {
+  /// Gets the amplitudes for the audio visualizer
   static Future<void> getAmplitudes({
     required AudioPlaybackManager playbackManager,
     required int? linesNeeded,
@@ -24,6 +23,7 @@ class AudioVisualizerHelpers {
     amplitudesNotifier.value = amplitudes ?? AudioWaveformCalculator.generateDefaultAmplitudes(linesNeeded);
   }
 
+  /// Changes the playback location for the audio visualizer
   static void updatePlaybackLocation({
     required AudioPlaybackManager playbackManager,
     required int? linesNeeded,
@@ -40,6 +40,7 @@ class AudioVisualizerHelpers {
     );
   }
 
+  /// Calculates the waveform for the audio visualizer
   static Future<void> calculateWaveform({
     required bool mounted,
     required BoxConstraints constraints,
@@ -79,6 +80,7 @@ class AudioVisualizerHelpers {
     setDebouncer(Timer(ZetaAnimationLength.verySlow, () => getAmplitudes()));
   }
 
+  /// Handles touch interaction for seeking the audio.
   static void onVisualizerInteraction({
     required GlobalKey rowKey,
     required AudioPlaybackManager playbackManager,
@@ -95,6 +97,7 @@ class AudioVisualizerHelpers {
     unawaited(playbackManager.seek(seekPosition));
   }
 
+  /// Toggles playback for the audio visualizer between playing and paused.
   static Future<void> togglePlayback({
     required bool playing,
     required VoidCallback? onPlay,

@@ -315,23 +315,21 @@ class ZetaAudioVisualizerState extends State<ZetaAudioVisualizer> {
                   child: PlayButton(
                     key: const ValueKey('playButton'),
                     isPlaying: _playing,
-                    onTap: _togglePlayback,
+                    onTap: (_playbackManager.loadedAudio ?? false) ? _togglePlayback : null,
                     playButtonColor: playButtonColor,
                     iconColor: bg,
-                    disabled: _playbackManager.loadedAudio != true,
                   ),
                 ),
               ),
               Expanded(
                 child: Waveform(
-                  foregroundColor: fg,
-                  tertiaryColor: tertiaryColor,
+                  playedColor: fg,
+                  unplayedColor: tertiaryColor,
                   amplitudesNotifier: _amplitudesNotifier,
                   playbackLocationVis: _playbackLocationVis,
-                  rowKey: _rowKey,
                   onInteraction: _onVisualizerInteraction,
-                  onLayoutChange: (constraints) => unawaited(_calculateWaveform(constraints)),
-                  mounted: mounted,
+                  onLayoutChange: _calculateWaveform,
+                  key: _rowKey,
                 ),
               ),
               Padding(

@@ -1,32 +1,38 @@
-// Documentation not required as this is an internal file.
-// ignore_for_file: public_member_api_docs
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../zeta_flutter.dart';
 
+/// The visual waveform used in [ZetaAudioVisualizer] and [ZetaVoiceMemo.
 class Waveform extends StatelessWidget {
+  /// Constructs a [Waveform].
   const Waveform({
     super.key,
-    required this.foregroundColor,
-    required this.tertiaryColor,
+    required this.playedColor,
+    required this.unplayedColor,
     required this.amplitudesNotifier,
     required this.playbackLocationVis,
-    required this.rowKey,
     required this.onInteraction,
     required this.onLayoutChange,
-    required this.mounted,
   });
 
-  final Color foregroundColor;
-  final Color tertiaryColor;
+  /// The color of the waveform's bar elements after they have been played.
+  final Color playedColor;
+
+  /// The color of the waveform's bar elements before they have been played.
+  final Color unplayedColor;
+
+  /// The amplitudes of the waveform's bar elements.
   final ValueNotifier<List<double>> amplitudesNotifier;
+
+  /// The current playback location of the waveform.
   final int? playbackLocationVis;
-  final GlobalKey rowKey;
+
+  /// Callback for interaction events on the waveform.
   final void Function(Offset) onInteraction;
+
+  /// Callback for layout changes of the waveform.
   final void Function(BoxConstraints) onLayoutChange;
-  final bool mounted;
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +44,7 @@ class Waveform extends StatelessWidget {
       child: LayoutBuilder(
         builder: (context, constraints) {
           WidgetsBinding.instance.addPostFrameCallback((_) {
-            if (mounted) onLayoutChange(constraints);
+            if (context.mounted) onLayoutChange(constraints);
           });
 
           return ValueListenableBuilder<List<double>>(
@@ -49,7 +55,6 @@ class Waveform extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   mainAxisSize: MainAxisSize.min,
-                  key: rowKey,
                   children: List.generate(amplitudes.length, (index) {
                     final amplitude = amplitudes[index];
                     return AnimatedContainer(
@@ -59,7 +64,7 @@ class Waveform extends StatelessWidget {
                       height: (amplitude * zeta.spacing.xl_4).clamp(ZetaBorders.small, zeta.spacing.xl_4),
                       margin: const EdgeInsets.symmetric(horizontal: 1),
                       decoration: BoxDecoration(
-                        color: (playbackLocationVis ?? 0) > index ? foregroundColor : tertiaryColor,
+                        color: (playbackLocationVis ?? 0) > index ? playedColor : unplayedColor,
                         borderRadius: BorderRadius.all(zeta.radius.full),
                       ),
                     );
@@ -77,13 +82,11 @@ class Waveform extends StatelessWidget {
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(ColorProperty('foregroundColor', foregroundColor))
-      ..add(ColorProperty('tertiaryColor', tertiaryColor))
+      ..add(ColorProperty('foregroundColor', playedColor))
+      ..add(ColorProperty('tertiaryColor', unplayedColor))
       ..add(DiagnosticsProperty<ValueNotifier<List<double>>>('amplitudesNotifier', amplitudesNotifier))
       ..add(IntProperty('playbackLocationVis', playbackLocationVis))
-      ..add(DiagnosticsProperty<GlobalKey<State<StatefulWidget>>>('rowKey', rowKey))
       ..add(ObjectFlagProperty<void Function(Offset p1)>.has('onInteraction', onInteraction))
-      ..add(ObjectFlagProperty<void Function(BoxConstraints p1)>.has('onLayoutChange', onLayoutChange))
-      ..add(DiagnosticsProperty<bool>('mounted', mounted));
+      ..add(ObjectFlagProperty<void Function(BoxConstraints p1)>.has('onLayoutChange', onLayoutChange));
   }
 }
