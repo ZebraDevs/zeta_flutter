@@ -16,6 +16,7 @@ class ZetaVoiceMemo extends ZetaStatefulWidget {
   /// Constructs a [ZetaVoiceMemo].
   const ZetaVoiceMemo({
     super.key,
+    super.rounded,
     this.recordingLabel = 'Recording message...',
     this.maxLimitLabel = 'Recording message {timer} seconds left...',
     this.sendMessageLabel = 'Send message?',
@@ -32,6 +33,7 @@ class ZetaVoiceMemo extends ZetaStatefulWidget {
       numChannels: 1,
       bitRate: 64000,
     ),
+    this.loudnessMultiplier = 10,
   }) : assert(warningDuration < maxRecordingDuration, 'maxRecordingDuration must be greater than warningDuration');
 
   /// The label shown when recording a voice memo.
@@ -102,6 +104,11 @@ class ZetaVoiceMemo extends ZetaStatefulWidget {
   /// See [Record](https://pub.dev/packages/record).
   final RecordConfig recordConfig;
 
+  /// Multiplier for the loudness of the waveform visualization during recording.
+  ///
+  /// If the waveform visualization is too small, increasing this value can help amplify the sound.
+  final int loudnessMultiplier;
+
   @override
   State<ZetaVoiceMemo> createState() => _ZetaVoiceMemoState();
 
@@ -119,7 +126,8 @@ class ZetaVoiceMemo extends ZetaStatefulWidget {
       ..add(DiagnosticsProperty<Duration>('warningDuration', warningDuration))
       ..add(StringProperty('recordingNotAllowedLabel', recordingNotAllowedLabel))
       ..add(ObjectFlagProperty<void Function(Stream<Uint8List> audioStream)?>.has('onSend', onSend))
-      ..add(DiagnosticsProperty<RecordConfig>('recordConfig', recordConfig));
+      ..add(DiagnosticsProperty<RecordConfig>('recordConfig', recordConfig))
+      ..add(IntProperty('loudnessMultiplier', loudnessMultiplier));
   }
 }
 
@@ -186,7 +194,7 @@ class _ZetaVoiceMemoState extends State<ZetaVoiceMemo> {
       setState(() => _controller.restartRecording(() => _showWarning = false, _playbackManager));
 
   /// Key to access the ZetaAudioVisualizer state
-  final GlobalKey<ZetaAudioVisualizerState> _visualizerKey = GlobalKey<ZetaAudioVisualizerState>();
+  GlobalKey<ZetaAudioVisualizerState> _visualizerKey = GlobalKey<ZetaAudioVisualizerState>();
 
   /// Completely clears all audio data and playback state (for delete button)
   Future<void> clearAudio() async {
@@ -195,8 +203,9 @@ class _ZetaVoiceMemoState extends State<ZetaVoiceMemo> {
     // Clear the visualizer's audio chunks
     final visualizerState = _visualizerKey.currentState;
     if (visualizerState != null) {
-      visualizerState.clearVisualizerAudio();
+      await visualizerState.clearVisualizerAudio();
     }
+    _visualizerKey = GlobalKey();
     await _playbackManager.resetPlayback();
     setState(() {
       _showWarning = false;
@@ -255,6 +264,7 @@ class _ZetaVoiceMemoState extends State<ZetaVoiceMemo> {
                 onPause: () => setState(() => _playing = false),
                 recordConfig: widget.recordConfig,
                 rounded: widget.rounded,
+                loudnessMultiplier: widget.loudnessMultiplier,
               ).paddingHorizontal(zeta.spacing.xl_2),
               SizedBox(height: zeta.spacing.large + ZetaBorders.small),
               Row(

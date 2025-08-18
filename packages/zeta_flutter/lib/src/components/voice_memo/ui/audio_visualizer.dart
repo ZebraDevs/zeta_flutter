@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -33,7 +34,8 @@ class ZetaAudioVisualizer extends ZetaStatefulWidget {
         audioStream = null,
         isRecording = false,
         maxRecordingDuration = null,
-        recordConfig = null;
+        recordConfig = null,
+        loudnessMultiplier = null;
 
   /// Constructs a [ZetaAudioVisualizer] for [ZetaVoiceMemo].
   const ZetaAudioVisualizer.voiceMemo({
@@ -47,6 +49,7 @@ class ZetaAudioVisualizer extends ZetaStatefulWidget {
     this.audioStream,
     this.audioDuration,
     this.errorMessage = 'Audio cannot be played',
+    this.loudnessMultiplier,
   })  : assetPath = null,
         url = null,
         deviceFilePath = null,
@@ -127,6 +130,11 @@ class ZetaAudioVisualizer extends ZetaStatefulWidget {
   /// Error message to display when audio can not be played.
   final String errorMessage;
 
+  /// Multiplier for the loudness of the waveform visualization during recording.
+  ///
+  /// If the waveform visualization is too small, increasing this value can help.
+  final int? loudnessMultiplier;
+
   @override
   State<ZetaAudioVisualizer> createState() => ZetaAudioVisualizerState();
 
@@ -148,7 +156,8 @@ class ZetaAudioVisualizer extends ZetaStatefulWidget {
       ..add(ColorProperty('playButtonColor', playButtonColor))
       ..add(DiagnosticsProperty<Duration?>('maxRecordingDuration', maxRecordingDuration))
       ..add(DiagnosticsProperty<RecordConfig>('recordConfig', recordConfig))
-      ..add(StringProperty('errorMessage', errorMessage));
+      ..add(StringProperty('errorMessage', errorMessage))
+      ..add(IntProperty('loudnessMultiplier', loudnessMultiplier));
   }
 }
 
@@ -158,6 +167,7 @@ class ZetaAudioVisualizer extends ZetaStatefulWidget {
 class ZetaAudioVisualizerState extends State<ZetaAudioVisualizer> {
   late final AudioPlaybackManager _playbackManager = AudioPlaybackManager();
   final GlobalKey _rowKey = GlobalKey();
+  final GlobalKey _recKey = GlobalKey();
   final List<Uint8List> _audioChunks = [];
   Timer? _debouncer;
   bool _playing = false;
@@ -177,7 +187,7 @@ class ZetaAudioVisualizerState extends State<ZetaAudioVisualizer> {
   }
 
   /// Clears the recorded audio from the state.
-  void clearVisualizerAudio() {
+  Future<void> clearVisualizerAudio() async {
     _audioChunks.clear();
     _playbackPercent.value = 0;
   }
@@ -203,7 +213,7 @@ class ZetaAudioVisualizerState extends State<ZetaAudioVisualizer> {
         unawaited(_resetPlayback());
       },
       onPositionChanged: (Duration d) =>
-          _playbackPercent.value = d.inMilliseconds / _playbackManager.duration!.inMilliseconds,
+          _playbackPercent.value = d.inMilliseconds / (_playbackManager.duration?.inMilliseconds ?? 1),
     );
     unawaited(_resetPlayback());
   }
@@ -267,25 +277,47 @@ class ZetaAudioVisualizerState extends State<ZetaAudioVisualizer> {
                   ),
                 ),
               Expanded(
-                child: widget.audioStream != null
-                    ? const ColoredBox(color: Colors.green, child: Text('memo'))
-                    : Waveform(
+                child: Stack(
+                  children: [
+                    if (widget.assetPath == null && widget.deviceFilePath == null && widget.url == null)
+                      Waveform(
                         playedColor: fg,
-                        unplayedColor: tertiaryColor,
-                        audioFile: Uri.parse(widget.assetPath ?? widget.deviceFilePath ?? widget.url ?? ''),
-                        playbackPosition: _playbackPercent,
-                        onInteraction: (Offset offset) {
-                          final box = _rowKey.currentContext?.findRenderObject() as RenderBox?;
-                          if (_playbackManager.duration == null || box == null) return;
-                          final seekPosition = AudioWaveformCalculator.calculateSeekPosition(
-                            gesturePosition: offset,
-                            visualizerWidth: box.size.width,
-                            totalDuration: _playbackManager.duration,
-                          );
-                          unawaited(_playbackManager.seek(seekPosition));
-                        },
-                        key: _rowKey,
+                        recordingValues: widget.audioStream,
+                        key: _recKey,
+                        recordConfig: widget.recordConfig,
+                        loudnessMultiplier: widget.loudnessMultiplier,
                       ),
+                    if (!widget.isRecording)
+                      ColoredBox(
+                        color: bg,
+                        child: Waveform(
+                          playedColor: fg,
+                          unplayedColor: tertiaryColor,
+                          audioFile: widget.isRecording
+                              ? null
+                              : Uri.parse(
+                                  widget.assetPath ??
+                                      widget.deviceFilePath ??
+                                      widget.url ??
+                                      (kIsWeb ? '' : '${Directory.systemTemp.path}/$tempAudioFileName'),
+                                ),
+                          playbackPosition: _playbackPercent,
+                          audioChunks: _playbackManager.localChunks,
+                          onInteraction: (Offset offset) {
+                            final box = _rowKey.currentContext?.findRenderObject() as RenderBox?;
+                            if (_playbackManager.duration == null || box == null) return;
+                            final seekPosition = AudioWaveformCalculator.calculateSeekPosition(
+                              gesturePosition: offset,
+                              visualizerWidth: box.size.width,
+                              totalDuration: _playbackManager.duration,
+                            );
+                            unawaited(_playbackManager.seek(seekPosition));
+                          },
+                          key: _rowKey,
+                        ),
+                      ),
+                  ],
+                ),
               ),
               Padding(
                 padding: EdgeInsets.only(
