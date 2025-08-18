@@ -4,6 +4,8 @@ import 'package:flutter/services.dart';
 
 import '../../../zeta_flutter.dart';
 
+/// Used for selecting values in a numerical range.
+///
 /// The [ZetaRangeSelector] is a customizable range selector widget that
 /// allows users to select a range of values within a specified minimum
 /// and maximum range. It provides a visual representation of the selected

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../../../zeta_flutter.dart';
 
-/// A stateless widget that represents an avatar rail in the Zeta application.
+/// A rail containing 0 or more Avatars that can be scrolled horizontally.
 ///
 /// The `ZetaAvatarRail` widget is used to display a horizontal rail of avatars,
 /// typically used for navigation or selection purposes within the application.

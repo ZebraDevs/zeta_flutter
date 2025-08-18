@@ -9,7 +9,7 @@ import '../../../zeta_flutter.dart';
 import '../buttons/input_icon_button.dart';
 import '../text_input/internal_text_input.dart';
 
-/// A form field used to input dates.
+/// A text input field for entering dates.
 ///
 /// Can be used and validated the same way as a [TextFormField].
 ///

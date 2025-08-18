@@ -50,7 +50,7 @@ class ZetaList extends ZetaStatelessWidget {
   }
 }
 
-/// A single row that typically contains some text as well as a leading or trailing widgets.
+/// An item in a list comprised of a single row, typically containing some text as well as leading or trailing widgets.
 ///
 /// To create list items with a [ZetaSwitch], [ZetaCheckbox], or [ZetaRadio], use the [ZetaListItem.toggle], [ZetaListItem.checkbox] or the [ZetaListItem.radio] named constructors respectively.
 ///

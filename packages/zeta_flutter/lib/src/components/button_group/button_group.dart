@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../../../zeta_flutter.dart';
 
-/// Zeta Button Group
+/// Button groups are used to group related buttons together. They can be used to create a toolbar or a set of related actions.
 ///
 /// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=229-45&node-type=canvas&m=dev
 ///

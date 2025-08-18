@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../../../zeta_flutter.dart';
 
+/// Chips that are used to filter content, that are clickable, selectable and draggable. They have a default and active state.
+///
 /// Filter chips have 2 togglable states, representing selected and not selected.
 ///
 /// The chips are commonly used within a [ZetaFilterSelection].
