@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:record/record.dart';
 
 import '../../../../zeta_flutter.dart';
-import '../state/audio_helpers.dart';
-import '../state/voice_memo_controller.dart';
+import '../state/playback_manager.dart';
+import '../state/recording_manager.dart';
 import 'recording_control.dart';
 
 export 'audio_visualizer.dart';
@@ -134,7 +134,6 @@ class ZetaVoiceMemo extends ZetaStatefulWidget {
 class _ZetaVoiceMemoState extends State<ZetaVoiceMemo> {
   late final AudioRecordingManager _recordingManager;
   late final AudioPlaybackManager _playbackManager = AudioPlaybackManager();
-  late final VoiceMemoController _controller;
   bool _showWarning = false;
   bool _playing = false;
 
@@ -142,12 +141,6 @@ class _ZetaVoiceMemoState extends State<ZetaVoiceMemo> {
   void initState() {
     super.initState();
     _recordingManager = AudioRecordingManager(recordConfig: widget.recordConfig);
-    _controller = VoiceMemoController(
-      recordingManager: _recordingManager,
-      maxRecordingDuration: widget.maxRecordingDuration,
-      warningDuration: widget.warningDuration,
-      onWarningChanged: () => setState(() {}),
-    );
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       if (widget.canRecord) {
         await _recordingManager.initialize();
@@ -184,14 +177,36 @@ class _ZetaVoiceMemoState extends State<ZetaVoiceMemo> {
     super.dispose();
   }
 
-  Future<void> startRecording() => _controller.startRecording(() => setState(() => _showWarning = true));
+  Future<void> startRecording() async {
+    await _recordingManager.startRecording();
+    _recordingManager.startTrackingDuration(
+      onDurationUpdate: () => setState(() {}),
+      maxDuration: widget.maxRecordingDuration,
+      warningDuration: widget.warningDuration,
+      onWarning: () => setState(() => _showWarning = true),
+      onMaxDurationReached: () => setState(() => _showWarning = true),
+    );
+  }
 
-  Future<void> pauseRecording() => _controller.pauseRecording(() => setState(() => _showWarning = false));
+  Future<void> pauseRecording() async {
+    await _recordingManager.pauseRecording();
+    setState(() => _showWarning = false);
+  }
 
-  Future<void> resumeRecording() => _controller.resumeRecording(() => setState(() => _showWarning = true));
+  Future<void> resumeRecording() async {
+    await _recordingManager.resumeRecording(
+      onDurationUpdate: () => setState(() {}),
+      maxDuration: widget.maxRecordingDuration,
+      warningDuration: widget.warningDuration,
+      onWarning: () => setState(() => _showWarning = true),
+      onMaxDurationReached: () => setState(() => _showWarning = true),
+    );
+  }
 
-  void reinitializeRecording() =>
-      setState(() => _controller.restartRecording(() => _showWarning = false, _playbackManager));
+  void reinitializeRecording() {
+    _recordingManager.resetRecording(_playbackManager);
+    setState(() => _showWarning = false);
+  }
 
   /// Key to access the ZetaAudioVisualizer state
   GlobalKey<ZetaAudioVisualizerState> _visualizerKey = GlobalKey<ZetaAudioVisualizerState>();
@@ -199,8 +214,7 @@ class _ZetaVoiceMemoState extends State<ZetaVoiceMemo> {
   /// Completely clears all audio data and playback state (for delete button)
   Future<void> clearAudio() async {
     _recordingManager.resetRecording(_playbackManager);
-    // (No need to clear localChunks directly)
-    // Clear the visualizer's audio chunks
+
     final visualizerState = _visualizerKey.currentState;
     if (visualizerState != null) {
       await visualizerState.clearVisualizerAudio();

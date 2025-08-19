@@ -1,12 +1,10 @@
 import 'dart:async';
-import 'dart:io';
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:record/record.dart';
 
 import '../../../../zeta_flutter.dart';
-import '../state/audio_helpers.dart';
+import '../state/playback_manager.dart';
 import 'play_button.dart';
 import 'waveform.dart';
 
@@ -242,6 +240,13 @@ class ZetaAudioVisualizerState extends State<ZetaAudioVisualizer> {
     setState(() => _playing = !_playing);
   }
 
+  Duration _calculateSeekPosition(Offset gesturePosition, double visualizerWidth, Duration? totalDuration) {
+    if (totalDuration == null) return Duration.zero;
+
+    final playbackLocation = gesturePosition.dx / visualizerWidth;
+    return Duration(milliseconds: (totalDuration.inMilliseconds * playbackLocation).round());
+  }
+
   @override
   Widget build(BuildContext context) {
     final zeta = Zeta.of(context);
@@ -293,25 +298,18 @@ class ZetaAudioVisualizerState extends State<ZetaAudioVisualizer> {
                         child: Waveform(
                           playedColor: fg,
                           unplayedColor: tertiaryColor,
-                          audioFile: widget.isRecording
-                              ? null
-                              : Uri.parse(
-                                  widget.assetPath ??
-                                      widget.deviceFilePath ??
-                                      widget.url ??
-                                      (kIsWeb ? '' : '${Directory.systemTemp.path}/$tempAudioFileName'),
-                                ),
+                          audioFile: widget.isRecording ? null : _playbackManager.localFile,
                           playbackPosition: _playbackPercent,
                           audioChunks: _playbackManager.localChunks,
                           onInteraction: (Offset offset) {
                             final box = _rowKey.currentContext?.findRenderObject() as RenderBox?;
                             if (_playbackManager.duration == null || box == null) return;
-                            final seekPosition = AudioWaveformCalculator.calculateSeekPosition(
-                              gesturePosition: offset,
-                              visualizerWidth: box.size.width,
-                              totalDuration: _playbackManager.duration,
+
+                            unawaited(
+                              _playbackManager.seek(
+                                _calculateSeekPosition(offset, box.size.width, _playbackManager.duration),
+                              ),
                             );
-                            unawaited(_playbackManager.seek(seekPosition));
                           },
                           key: _rowKey,
                         ),
