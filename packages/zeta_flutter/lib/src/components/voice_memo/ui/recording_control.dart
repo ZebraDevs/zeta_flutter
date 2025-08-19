@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import '../../../../zeta_flutter.dart';
-import '../state/audio_helpers.dart';
+import '../state/recording_manager.dart';
 
 /// Recording control widget for [ZetaVoiceMemo].
 class RecordingControl extends StatelessWidget {

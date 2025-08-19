@@ -133,15 +133,14 @@ class _WaveformState extends State<Waveform> {
     }
   }
 
+  bool _alsoLoading = false;
+
   Future<void> getAmplitudes() async {
-    if (widget.audioFile != null && widget.audioFile!.path.isNotEmpty) {
-      _amplitudes = (await extractWavAmplitudes(widget.audioFile!, _amplitudes.length)) ??
-          AudioWaveformCalculator.generateDefaultAmplitudes(_amplitudes.length);
-      _isLoading = false;
+    if (widget.audioFile != null && widget.audioFile!.path.isNotEmpty && !_alsoLoading) {
+      _amplitudes = await extractAudioAmplitudes(widget.audioFile!, _amplitudes.length);
+      _isLoading = true;
+      _alsoLoading = false;
     } else if (widget.audioChunks != null) {
-      // TODO(luke): Remove duplicated code - make all audio in this widget bytes - do not pass in uri
-      // TODO(luke): Have 2 Waveform widgets (or maybe multiple constructors) as the stream and prerecorded waveforms are different
-      // TODO(luke): re work a provider for better state management.
       _amplitudes = await parseWavToAmplitudes(widget.audioChunks!, _amplitudes.length);
       _isLoading = false;
     }
@@ -163,7 +162,10 @@ class _WaveformState extends State<Waveform> {
           WidgetsBinding.instance.addPostFrameCallback((_) {
             final linesNeeded = constraints.maxWidth ~/ 4;
 
-            if (context.mounted && !_isLoading && (_amplitudes.length != linesNeeded) && widget.audioFile != null) {
+            if (context.mounted &&
+                !_isLoading &&
+                (_amplitudes.length != linesNeeded) &&
+                (widget.audioFile != null || widget.audioChunks != null)) {
               _isLoading = true;
               setState(() => _amplitudes = List.filled(linesNeeded, 0, growable: true));
               unawaited(getAmplitudes());
@@ -195,7 +197,7 @@ class _WaveformState extends State<Waveform> {
                       margin: const EdgeInsets.symmetric(horizontal: 1),
                       decoration: BoxDecoration(
                         color: ((widget.playbackPosition?.value ?? 0) > (index / _amplitudes.length)) ||
-                                widget.audioFile == null
+                                (widget.audioFile == null && widget.audioChunks == null)
                             ? widget.playedColor
                             : widget.unplayedColor,
                         borderRadius: BorderRadius.all(zeta.radius.full),
