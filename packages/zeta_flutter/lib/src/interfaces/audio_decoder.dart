@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter/services.dart' show rootBundle;
 import 'package:http/http.dart' as http;
 
 import '../../../../zeta_flutter.dart';
@@ -24,44 +24,32 @@ abstract class AudioAmplitudeDecoder {
 /// List of all audio amplitude decoders.
 ///
 /// If you create a new decoder, add it to this list.
-final List<AudioAmplitudeDecoder> allAudioAmplitudeDecoders = [
-  WavAmplitudeDecoder(),
-];
+final List<AudioAmplitudeDecoder> allAudioAmplitudeDecoders = [WavAmplitudeDecoder()];
 
 /// Factory method to extract amplitudes from file bytes
-Future<List<double>> extractAudioAmplitudesFromBytes(Uint8List bytes, int linesNeeded) async {
-  try {
-    final extractor = allAudioAmplitudeDecoders.firstWhere(
-      (e) => e.supports(bytes),
-      orElse: () => throw UnsupportedError('No amplitude extractor found for this file type.'),
-    );
-    return await extractor.extractAmplitudes(bytes, linesNeeded);
-  } catch (e, _) {
-    debugPrint('Error extracting audio amplitudes: $e');
-    return List<double>.generate(linesNeeded, (i) => fallback[i % fallback.length]);
-  }
+Future<List<double>> extractAudioAmplitudesFromBytes(Uint8List bytes, int linesNeeded) {
+  return _extractAmplitudes(bytes, linesNeeded);
 }
 
 /// Factory method to extract amplitudes from any supported audio file.
 Future<List<double>> extractAudioAmplitudesFromFile(Uri fileUri, int linesNeeded) async {
-  try {
-    Uint8List bytes;
-    if (kIsWeb) {
-      if (fileUri.isScheme('http') || fileUri.isScheme('https')) {
-        final response = await http.get(fileUri);
-        if (response.statusCode != 200) throw Exception('Failed to load audio file from network');
-        bytes = response.bodyBytes;
-      } else {
-        final response = await http.get(fileUri);
-        bytes = response.bodyBytes;
-      }
+  Uint8List bytes;
+  if (kIsWeb) {
+    final response = await http.get(fileUri);
+    if (response.statusCode != 200) throw Exception('Failed to load audio file from network');
+    bytes = response.bodyBytes;
+  } else {
+    if (fileUri.path.startsWith('assets') || fileUri.path.startsWith('/assets')) {
+      bytes = (await rootBundle.load(fileUri.path)).buffer.asUint8List();
     } else {
-      if (fileUri.path.startsWith('assets') || fileUri.path.startsWith('/assets')) {
-        bytes = (await rootBundle.load(fileUri.path)).buffer.asUint8List();
-      } else {
-        bytes = await File(fileUri.toFilePath()).readAsBytes();
-      }
+      bytes = await File(fileUri.toFilePath()).readAsBytes();
     }
+  }
+  return _extractAmplitudes(bytes, linesNeeded);
+}
+
+Future<List<double>> _extractAmplitudes(Uint8List bytes, int linesNeeded) async {
+  try {
     final extractor = allAudioAmplitudeDecoders.firstWhere(
       (e) => e.supports(bytes),
       orElse: () => throw UnsupportedError('No amplitude extractor found for this file type.'),

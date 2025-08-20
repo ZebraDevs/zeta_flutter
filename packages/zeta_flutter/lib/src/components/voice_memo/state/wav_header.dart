@@ -21,41 +21,33 @@ class PCMWavHeader {
   /// Total number of samples
   final int samples;
 
-  // PCM WAV format constants
   static const int _pcmFormat = 1;
   static const int _bitsPerSample = 16;
   static const int _bytesPerSample = 2;
 
-  /// The size of the audio data in bytes
-  int get dataSize => channels * samples * _bytesPerSample;
-
-  /// Block align (bytes per sample frame)
-  int get blockAlign => channels * _bytesPerSample;
-
-  /// Byte rate (bytes per second)
-  int get byteRate => sampleRate * blockAlign;
+  int get _dataSize => channels * samples * _bytesPerSample;
+  int get _blockAlign => channels * _bytesPerSample;
+  int get _byteRate => sampleRate * _blockAlign;
 
   /// Generates the complete WAV header as bytes
   Uint8List get header {
-    final header = Uint8List(44); // Standard PCM WAV header size
-    header.buffer.asByteData()
-      // RIFF header
+    final bytes = ByteData(44)
       ..setUint32(0, 0x46464952, Endian.little) // 'RIFF'
-      ..setUint32(4, 36 + dataSize, Endian.little) // File size - 8
+      ..setUint32(4, 36 + _dataSize, Endian.little) // File size - 8
       ..setUint32(8, 0x45564157, Endian.little) // 'WAVE'
       // fmt chunk
       ..setUint32(12, 0x20746d66, Endian.little) // 'fmt '
       ..setUint32(16, 16, Endian.little) // fmt chunk size
-      ..setUint16(20, _pcmFormat, Endian.little) // Audio format (PCM)
-      ..setUint16(22, channels, Endian.little) // Number of channels
-      ..setUint32(24, sampleRate, Endian.little) // Sample rate
-      ..setUint32(28, byteRate, Endian.little) // Byte rate
-      ..setUint16(32, blockAlign, Endian.little) // Block align
-      ..setUint16(34, _bitsPerSample, Endian.little) // Bits per sample
+      ..setUint16(20, _pcmFormat, Endian.little)
+      ..setUint16(22, channels, Endian.little)
+      ..setUint32(24, sampleRate, Endian.little)
+      ..setUint32(28, _byteRate, Endian.little)
+      ..setUint16(32, _blockAlign, Endian.little)
+      ..setUint16(34, _bitsPerSample, Endian.little)
       // data chunk
       ..setUint32(36, 0x61746164, Endian.little) // 'data'
-      ..setUint32(40, dataSize, Endian.little); // Data size
-
-    return header;
+      ..setUint32(40, _dataSize, Endian.little)
+      ..buffer.asUint8List();
+    return bytes.buffer.asUint8List();
   }
 }
