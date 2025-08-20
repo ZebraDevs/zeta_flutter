@@ -27,28 +27,31 @@ class PlayButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final zeta = Zeta.of(context);
-    return InkWell(
-      onTap: onTap,
-      child: Padding(
-        padding: EdgeInsets.all(zeta.spacing.small),
-        child: Container(
-          width: zeta.spacing.xl_4,
-          height: zeta.spacing.xl_4,
-          decoration: BoxDecoration(
-            color: onTap == null ? zeta.colors.mainDisabled : playButtonColor,
-            borderRadius: BorderRadius.all(zeta.radius.full),
-          ),
-          child: Center(
-            child: AnimatedCrossFade(
-              firstChild: Icon(ZetaIcons.play, color: iconColor),
-              secondChild: Icon(ZetaIcons.pause, color: iconColor),
-              duration: ZetaAnimationLength.veryFast,
-              crossFadeState:
-                  context.watch<PlaybackState>().playing ? CrossFadeState.showSecond : CrossFadeState.showFirst,
+    return Consumer<PlaybackState>(
+      builder: (context, state, _) {
+        return InkWell(
+          onTap: onTap,
+          child: Padding(
+            padding: EdgeInsets.all(zeta.spacing.small),
+            child: Container(
+              width: zeta.spacing.xl_4,
+              height: zeta.spacing.xl_4,
+              decoration: BoxDecoration(
+                color: onTap == null ? zeta.colors.mainDisabled : playButtonColor,
+                borderRadius: BorderRadius.all(zeta.radius.full),
+              ),
+              child: Center(
+                child: AnimatedCrossFade(
+                  firstChild: Icon(ZetaIcons.play, color: iconColor),
+                  secondChild: Icon(ZetaIcons.pause, color: iconColor),
+                  duration: ZetaAnimationLength.veryFast,
+                  crossFadeState: state.playing ? CrossFadeState.showSecond : CrossFadeState.showFirst,
+                ),
+              ),
             ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 

@@ -227,7 +227,7 @@ class ZetaAudioVisualizerState extends State<ZetaAudioVisualizer> {
                       child: PlayButton(
                         key: const ValueKey('playButton'),
                         onTap: () async {
-                          if (_state?.playing ?? false) {
+                          if (state.playing) {
                             widget.onPause?.call();
                             await _state?.pause();
                           } else {

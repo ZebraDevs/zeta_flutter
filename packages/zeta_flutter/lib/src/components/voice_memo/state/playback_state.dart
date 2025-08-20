@@ -14,27 +14,25 @@ class PlaybackState extends ChangeNotifier {
     String? assetPath,
     String? deviceFilePath,
     String? url,
-  }) : path = Uri(path: assetPath ?? deviceFilePath ?? url ?? '') {
+  }) {
     unawaited(
       loadAudio(
         assetPath: assetPath,
         deviceFilePath: deviceFilePath,
         url: url,
-      ).then((_) => unawaited(resetPlayback())),
+      ).then((_) => resetPlayback()),
     );
-
-    _audioPlayer.onPlayerComplete.listen((_) => unawaited(resetPlayback()));
+    _audioPlayer.onPlayerComplete.listen((_) => resetPlayback());
     _positionSubscription = _audioPlayer.onPositionChanged.listen((position) {
-      final newPlaybackPercent = _duration != null ? position.inMilliseconds / _duration!.inMilliseconds : 0.0;
-      if (newPlaybackPercent != _playbackPercent) {
-        _playbackPercent = newPlaybackPercent;
+      final newPercent = _duration != null && _duration!.inMilliseconds > 0
+          ? position.inMilliseconds / _duration!.inMilliseconds
+          : 0.0;
+      if (newPercent != _playbackPercent) {
+        _playbackPercent = newPercent;
         notifyListeners();
       }
     });
-    unawaited(resetPlayback());
   }
-
-  final Uri? path;
 
   final AudioPlayer _audioPlayer = AudioPlayer();
   Uri? _localFile;
@@ -43,7 +41,16 @@ class PlaybackState extends ChangeNotifier {
   StreamSubscription<Duration>? _positionSubscription;
   bool? _loadedAudio;
   double _playbackPercent = 0;
-  bool playing = false;
+  bool _playing = false;
+
+  bool get playing => _playing;
+
+  set playing(bool value) {
+    if (value != _playing) {
+      _playing = value;
+      notifyListeners();
+    }
+  }
 
   /// Whether the audio has been loaded and is playable (null = unknown, true/false = known)
   bool? get loadedAudio => _loadedAudio;
@@ -54,16 +61,12 @@ class PlaybackState extends ChangeNotifier {
   /// Total duration of the loaded audio
   Duration? get duration => _duration;
 
-  /// Current playback position
-  // Duration get currentPosition => _currentPosition;
-
   /// URI of the local audio file
   Uri? get localFile => _localFile;
 
   /// Playback progress as a percentage (0.0 to 1.0)
   double get playbackPercent => _playbackPercent;
 
-  /// Load audio from various sources
   Future<void> loadAudio({
     String? assetPath,
     String? url,
@@ -85,52 +88,57 @@ class PlaybackState extends ChangeNotifier {
     }
   }
 
-  /// Reset playback to beginning
   Future<void> resetPlayback() async {
     _playbackPercent = 0;
-    playing = false;
-    if (_localFile != null) {
-      try {
+    _playing = false;
+    notifyListeners();
+    try {
+      if (_localFile != null) {
         await _audioPlayer.setSourceUrl(_localFile!.toString());
-        final duration = await _audioPlayer.getDuration();
-        _duration = duration;
+        _duration = await _audioPlayer.getDuration();
         _loadedAudio = true;
-      } catch (_) {
+      } else if (_localChunks != null) {
+        await _audioPlayer.setSourceBytes(_localChunks!, mimeType: 'audio/wav');
+        _duration = await _audioPlayer.getDuration();
+        _loadedAudio = true;
+      } else {
         _loadedAudio = false;
       }
-    } else if (localChunks != null) {
-      await _audioPlayer.setSourceBytes(localChunks!, mimeType: 'audio/wav');
-      _duration = await _audioPlayer.getDuration();
-      _loadedAudio = true;
-    } else {
+    } catch (e) {
+      debugPrint('Error loading audio: $e');
       _loadedAudio = false;
     }
-
     notifyListeners();
   }
 
-  /// Play audio
   Future<void> play() async {
+    // If playback is at the end, reset before playing again
+    if (_playbackPercent >= 1.0 || _audioPlayer.state == PlayerState.completed) {
+      await resetPlayback();
+    }
     await _audioPlayer.resume();
-    playing = true;
-    notifyListeners();
+    if (!playing) {
+      playing = true;
+      notifyListeners();
+    }
   }
 
   /// Pause audio
   Future<void> pause() async {
     await _audioPlayer.pause();
-    playing = false;
-    notifyListeners();
+    if (playing) {
+      playing = false;
+      notifyListeners();
+    }
   }
 
   /// Seek to specific position
   Future<void> seek(Duration position) => _audioPlayer.seek(position);
 
   Future<void> seekFromPosition(Offset gesturePosition, double visualizerWidth, Duration? totalDuration) async {
-    if (totalDuration == null) return;
-
-    final playbackLocation = gesturePosition.dx / visualizerWidth;
-    await seek(Duration(milliseconds: (totalDuration.inMilliseconds * playbackLocation).round()));
+    if (totalDuration == null || visualizerWidth == 0) return;
+    final percent = (gesturePosition.dx / visualizerWidth).clamp(0.0, 1.0);
+    await seek(Duration(milliseconds: (totalDuration.inMilliseconds * percent).round()));
   }
 
   @override
