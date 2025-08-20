@@ -5,7 +5,11 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:http/http.dart' as http;
 
+import '../../zeta_components.dart' show ZetaAudioVisualizer, ZetaVoiceMemo;
+import '../../zeta_flutter.dart' show ZetaAudioVisualizer, ZetaVoiceMemo;
 import '../components/voice_memo/state/wav_amplitude_decoder.dart';
+import '../components/voice_memo/ui/voice_memo.dart' show ZetaAudioVisualizer, ZetaVoiceMemo;
+import '../components/voice_memo/voice_memo.dart' show ZetaAudioVisualizer, ZetaVoiceMemo;
 
 /// If the waveform can not be generated, fallback to a loop of this.
 const List<double> _fallback = [0, 0.375, 0.5, 1, 0.625, 1, 0.75, 0.75, 1, 1, 0.75, 1, 0.375, 0, 0, 0, 0, 0];
