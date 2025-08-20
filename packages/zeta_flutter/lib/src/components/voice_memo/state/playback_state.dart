@@ -43,7 +43,7 @@ class PlaybackState extends ChangeNotifier {
 
   final AudioPlayer _audioPlayer = AudioPlayer();
   Uri? _localFile;
-  Uint8List? _localChunks;
+  Uint8List? _audioChunks;
   Duration? _duration;
   StreamSubscription<Duration>? _positionSubscription;
   bool? _loadedAudio;
@@ -75,7 +75,7 @@ class PlaybackState extends ChangeNotifier {
   bool? get loadedAudio => _loadedAudio;
 
   /// Local audio chunks for playback
-  Uint8List? get localChunks => _localChunks;
+  Uint8List? get audioChunks => _audioChunks;
 
   /// Total duration of the loaded audio
   Duration? get duration => _duration;
@@ -101,7 +101,7 @@ class PlaybackState extends ChangeNotifier {
     } else if (deviceFilePath != null) {
       _localFile = Uri.file(deviceFilePath);
     } else if (audioChunks != null && audioChunks.isNotEmpty && recordConfig != null) {
-      _localChunks = Uint8List.fromList([
+      _audioChunks = Uint8List.fromList([
         ...generatePCMWavHeader(audioChunks, recordConfig),
         ...audioChunks.expand((x) => x),
       ]);
@@ -117,8 +117,8 @@ class PlaybackState extends ChangeNotifier {
       if (_localFile != null) {
         await _audioPlayer.setSourceUrl(_localFile!.toString());
         _loadedAudio = true;
-      } else if (_localChunks != null) {
-        await _audioPlayer.setSourceBytes(_localChunks!, mimeType: 'audio/wav');
+      } else if (_audioChunks != null) {
+        await _audioPlayer.setSourceBytes(_audioChunks!, mimeType: 'audio/wav');
         _loadedAudio = true;
       } else {
         _loadedAudio = false;

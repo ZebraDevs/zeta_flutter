@@ -18,7 +18,6 @@ class Waveform extends StatefulWidget {
     this.unplayedColor,
     this.onInteraction,
     this.audioFile,
-    this.recordingValues,
     this.audioChunks,
   });
 
@@ -34,9 +33,6 @@ class Waveform extends StatefulWidget {
   /// Link to the file for which the wave form is generated.
   final Uri? audioFile;
 
-  /// Stream of PCM bytes (Uint8List) representing the recording audio data.
-  final Stream<Uint8List>? recordingValues;
-
   /// PCM WAV audio chunks used for the waveform visualization.
   final Uint8List? audioChunks;
 
@@ -51,7 +47,6 @@ class Waveform extends StatefulWidget {
       ..add(ColorProperty('unplayedColor', unplayedColor))
       ..add(ObjectFlagProperty<void Function(Offset p1)>.has('onInteraction', onInteraction))
       ..add(DiagnosticsProperty<Uri>('audioFile', audioFile))
-      ..add(DiagnosticsProperty<Stream<Uint8List>?>('recordingValues', recordingValues))
       ..add(IterableProperty<Iterable<Uint8List?>>('audioChunks', audioChunks as Iterable<Iterable<Uint8List?>>?));
   }
 }
@@ -60,14 +55,47 @@ class _WaveformState extends State<Waveform> {
   List<double> _amplitudes = List.empty(growable: true);
   bool _isLoading = false;
   bool _isSeeking = false;
+  bool _isListening = false;
   final ScrollController _scrollController = ScrollController();
   RecordingState? _recordingState;
+  PlaybackState? _playbackState;
+  late VoidCallback _streamListener;
 
   @override
-  void didUpdateWidget(covariant Waveform oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    if (widget.recordingValues != null && oldWidget.recordingValues == null) {
-      widget.recordingValues!.listen((pcmBytes) {
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (_recordingState != null && !_isListening) {
+        _streamListener = () async {
+          if (_recordingState!.stream != null && !_isListening && context.mounted && mounted) {
+            await getAmplitudes();
+            setState(() => _isListening = true);
+          }
+        };
+        _recordingState!.addListener(_streamListener);
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _recordingState?.removeListener(_streamListener);
+    super.dispose();
+  }
+
+  bool _alsoLoading = false;
+
+  Future<void> getAmplitudes() async {
+    if (widget.audioFile != null && widget.audioFile!.path.isNotEmpty && !_alsoLoading) {
+      _amplitudes = await extractAudioAmplitudesFromFile(widget.audioFile!, _amplitudes.length);
+      _isLoading = true;
+      _alsoLoading = false;
+    } else if (widget.audioChunks != null) {
+      _amplitudes = await extractAudioAmplitudesFromBytes(widget.audioChunks!, _amplitudes.length);
+      _isLoading = false;
+    } else if (context.findAncestorWidgetOfExactType<Consumer2<RecordingState, PlaybackState>>() != null) {
+      _recordingState ??= context.watch<RecordingState>();
+      _recordingState?.stream?.listen((pcmBytes) {
         final config = _recordingState?.recordConfig;
         final numChannels = config?.numChannels ?? 1;
         const bitsPerSample = 16;
@@ -103,93 +131,89 @@ class _WaveformState extends State<Waveform> {
     }
   }
 
-  bool _alsoLoading = false;
+  Widget _makeBody(BuildContext context) {
+    final zeta = Zeta.of(context);
 
-  Future<void> getAmplitudes() async {
-    if (widget.audioFile != null && widget.audioFile!.path.isNotEmpty && !_alsoLoading) {
-      _amplitudes = await extractAudioAmplitudesFromFile(widget.audioFile!, _amplitudes.length);
-      _isLoading = true;
-      _alsoLoading = false;
-    } else if (widget.audioChunks != null) {
-      _amplitudes = await extractAudioAmplitudesFromBytes(widget.audioChunks!, _amplitudes.length);
-      _isLoading = false;
-    }
-    setState(() {});
+    return GestureDetector(
+      behavior: HitTestBehavior.translucent,
+      onHorizontalDragUpdate: (details) => widget.onInteraction?.call(details.localPosition),
+      onHorizontalDragEnd: (_) => setState(() => _isSeeking = false),
+      onHorizontalDragStart: (_) => setState(() => _isSeeking = true),
+      onTapDown: (details) => widget.onInteraction?.call(details.localPosition),
+      child: LayoutBuilder(
+        builder: (context, constraints) {
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            final linesNeeded = constraints.maxWidth ~/ 4;
+
+            if (context.mounted &&
+                !_isLoading &&
+                (_amplitudes.length != linesNeeded) &&
+                (widget.audioFile != null || widget.audioChunks != null)) {
+              _isLoading = true;
+              setState(() => _amplitudes = List.filled(linesNeeded, 0, growable: true));
+              unawaited(getAmplitudes());
+            }
+          });
+
+          return SingleChildScrollView(
+            controller: _scrollController,
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              mainAxisAlignment: widget.audioFile == null ? MainAxisAlignment.end : MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                if (constraints.maxWidth - (_amplitudes.length * 4) > 0)
+                  SizedBox(width: constraints.maxWidth - (_amplitudes.length * 4)),
+                ...List.generate(
+                  _amplitudes.length,
+                  (index) {
+                    final amplitude = _amplitudes[index];
+                    return AnimatedContainer(
+                      key: ValueKey(index),
+                      duration: _isSeeking
+                          ? Duration.zero
+                          : _playbackState!.playbackPercent == 0
+                              ? ZetaAnimationLength.verySlow
+                              : ZetaAnimationLength.veryFast,
+                      width: ZetaBorders.medium,
+                      height: (amplitude * zeta.spacing.xl_4).clamp(ZetaBorders.small, zeta.spacing.xl_4),
+                      margin: const EdgeInsets.symmetric(horizontal: 1),
+                      decoration: BoxDecoration(
+                        color: (_playbackState!.playbackPercent > (index / _amplitudes.length)) ||
+                                (widget.audioFile == null && widget.audioChunks == null)
+                            ? widget.playedColor
+                            : widget.unplayedColor,
+                        borderRadius: BorderRadius.all(zeta.radius.full),
+                      ),
+                    );
+                  },
+                ),
+              ],
+            ),
+          );
+        },
+      ),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-    final zeta = Zeta.of(context);
+    final isInRecordingProvider =
+        context.findAncestorWidgetOfExactType<Consumer2<RecordingState, PlaybackState>>() != null;
 
-    if (_recordingState == null) {
-      final isInRecordingProvider =
-          context.findAncestorWidgetOfExactType<Consumer2<RecordingState, PlaybackState>>() != null;
-      if (isInRecordingProvider) {
-        _recordingState ??= context.watch<RecordingState>();
-      }
-    }
     return Consumer<PlaybackState>(
       builder: (context, state, _) {
-        return GestureDetector(
-          behavior: HitTestBehavior.translucent,
-          onHorizontalDragUpdate: (details) => widget.onInteraction?.call(details.localPosition),
-          onHorizontalDragEnd: (_) => setState(() => _isSeeking = false),
-          onHorizontalDragStart: (_) => setState(() => _isSeeking = true),
-          onTapDown: (details) => widget.onInteraction?.call(details.localPosition),
-          child: LayoutBuilder(
-            builder: (context, constraints) {
-              WidgetsBinding.instance.addPostFrameCallback((_) {
-                final linesNeeded = constraints.maxWidth ~/ 4;
-
-                if (context.mounted &&
-                    !_isLoading &&
-                    (_amplitudes.length != linesNeeded) &&
-                    (widget.audioFile != null || widget.audioChunks != null)) {
-                  _isLoading = true;
-                  setState(() => _amplitudes = List.filled(linesNeeded, 0, growable: true));
-                  unawaited(getAmplitudes());
-                }
-              });
-
-              return SingleChildScrollView(
-                controller: _scrollController,
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  mainAxisAlignment: widget.audioFile == null ? MainAxisAlignment.end : MainAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    if (constraints.maxWidth - (_amplitudes.length * 4) > 0)
-                      SizedBox(width: constraints.maxWidth - (_amplitudes.length * 4)),
-                    ...List.generate(
-                      _amplitudes.length,
-                      (index) {
-                        final amplitude = _amplitudes[index];
-                        return AnimatedContainer(
-                          key: ValueKey(index),
-                          duration: _isSeeking
-                              ? Duration.zero
-                              : state.playbackPercent == 0
-                                  ? ZetaAnimationLength.verySlow
-                                  : ZetaAnimationLength.veryFast,
-                          width: ZetaBorders.medium,
-                          height: (amplitude * zeta.spacing.xl_4).clamp(ZetaBorders.small, zeta.spacing.xl_4),
-                          margin: const EdgeInsets.symmetric(horizontal: 1),
-                          decoration: BoxDecoration(
-                            color: (state.playbackPercent > (index / _amplitudes.length)) ||
-                                    (widget.audioFile == null && widget.audioChunks == null)
-                                ? widget.playedColor
-                                : widget.unplayedColor,
-                            borderRadius: BorderRadius.all(zeta.radius.full),
-                          ),
-                        );
-                      },
-                    ),
-                  ],
-                ),
-              );
+        _playbackState ??= state;
+        if (isInRecordingProvider) {
+          return Consumer<RecordingState>(
+            builder: (context, recordingState, _) {
+              _recordingState ??= recordingState;
+              return _makeBody(context);
             },
-          ),
-        );
+          );
+        } else {
+          return _makeBody(context);
+        }
       },
     );
   }
