@@ -4,11 +4,18 @@ import 'dart:typed_data';
 import 'package:flutter/widgets.dart';
 import 'package:record/record.dart';
 import '../voice_memo.dart';
+import 'playback_state.dart';
 
 /// State class for managing audio recording in the [ZetaVoiceMemo].
 class RecordingState extends ChangeNotifier {
   /// Constructs a [RecordingState].
-  RecordingState({required this.recordConfig, required this.maxRecordingDuration, required this.warningDuration}) {
+  RecordingState({
+    required this.recordConfig,
+    required this.maxRecordingDuration,
+    required this.warningDuration,
+    required this.loudnessMultiplier,
+    required this.playbackState,
+  }) {
     unawaited(
       _record.hasPermission().then((b) {
         _canRecord = b;
@@ -27,6 +34,12 @@ class RecordingState extends ChangeNotifier {
 
   /// Duration for which a warning is shown before reaching the maximum recording duration.
   final Duration warningDuration;
+
+  /// Multiplier for loudness visualization.
+  final double loudnessMultiplier;
+
+  /// State of the audio playback
+  final PlaybackState playbackState;
 
   Uint8List? _rawAudioChunks;
   Timer? _recordingTimer;
@@ -141,6 +154,11 @@ class RecordingState extends ChangeNotifier {
       await _record.pause();
       isRecording = false;
       _recordingTimer?.cancel();
+      await playbackState.loadAudio(
+        audioChunks: [_rawAudioChunks!],
+        recordConfig: recordConfig,
+      );
+      await playbackState.resetPlayback();
     }
     showWarning = false;
   }

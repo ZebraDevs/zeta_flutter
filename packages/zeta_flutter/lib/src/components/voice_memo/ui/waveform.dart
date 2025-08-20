@@ -4,10 +4,10 @@ import 'dart:math';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:record/record.dart';
 
 import '../../../../zeta_flutter.dart';
 import '../state/playback_state.dart';
+import '../state/recording_state.dart';
 
 /// The visual waveform used in [ZetaAudioVisualizer] and [ZetaVoiceMemo.
 class Waveform extends StatefulWidget {
@@ -19,8 +19,6 @@ class Waveform extends StatefulWidget {
     this.onInteraction,
     this.audioFile,
     this.recordingValues,
-    this.recordConfig,
-    this.loudnessMultiplier,
     this.audioChunks,
   });
 
@@ -39,12 +37,6 @@ class Waveform extends StatefulWidget {
   /// Stream of PCM bytes (Uint8List) representing the recording audio data.
   final Stream<Uint8List>? recordingValues;
 
-  /// Config used to record the voice memo.
-  final RecordConfig? recordConfig;
-
-  /// Multiplier for the loudness of the waveform visualization during recording.
-  final int? loudnessMultiplier;
-
   /// PCM WAV audio chunks used for the waveform visualization.
   final Uint8List? audioChunks;
 
@@ -60,8 +52,6 @@ class Waveform extends StatefulWidget {
       ..add(ObjectFlagProperty<void Function(Offset p1)>.has('onInteraction', onInteraction))
       ..add(DiagnosticsProperty<Uri>('audioFile', audioFile))
       ..add(DiagnosticsProperty<Stream<Uint8List>?>('recordingValues', recordingValues))
-      ..add(DiagnosticsProperty<RecordConfig?>('recordConfig', recordConfig))
-      ..add(IntProperty('loudnessMultiplier', loudnessMultiplier))
       ..add(IterableProperty<Iterable<Uint8List?>>('audioChunks', audioChunks as Iterable<Iterable<Uint8List?>>?));
   }
 }
@@ -71,13 +61,14 @@ class _WaveformState extends State<Waveform> {
   bool _isLoading = false;
   bool _isSeeking = false;
   final ScrollController _scrollController = ScrollController();
+  RecordingState? _recordingState;
 
   @override
   void didUpdateWidget(covariant Waveform oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (widget.recordingValues != null && oldWidget.recordingValues == null) {
       widget.recordingValues!.listen((pcmBytes) {
-        final config = widget.recordConfig;
+        final config = _recordingState?.recordConfig;
         final numChannels = config?.numChannels ?? 1;
         const bitsPerSample = 16;
         const bytesPerSample = bitsPerSample ~/ 8;
@@ -96,7 +87,7 @@ class _WaveformState extends State<Waveform> {
           final sumSquares = samples.fold<double>(0, (a, b) => a + b * b);
           var rms = sqrt(sumSquares / samples.length) / 32768.0;
           // Boost the loudness for better visualization
-          rms *= widget.loudnessMultiplier ?? 1;
+          rms *= _recordingState?.loudnessMultiplier ?? 1;
           _amplitudes.add(rms.clamp(0.0, 1.0));
         } else {
           _amplitudes.add(0);
@@ -130,6 +121,13 @@ class _WaveformState extends State<Waveform> {
   Widget build(BuildContext context) {
     final zeta = Zeta.of(context);
 
+    if (_recordingState == null) {
+      final isInRecordingProvider =
+          context.findAncestorWidgetOfExactType<Consumer2<RecordingState, PlaybackState>>() != null;
+      if (isInRecordingProvider) {
+        _recordingState ??= context.watch<RecordingState>();
+      }
+    }
     return Consumer<PlaybackState>(
       builder: (context, state, _) {
         return GestureDetector(
