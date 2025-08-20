@@ -102,7 +102,12 @@ extension BrightnessExtension on Brightness {
 /// [String] extension on [Duration].
 extension ToString on Duration {
   /// Returns a duration in the format m:ss
-  String get minutesSeconds => '$inMinutes:${(inSeconds % 60).toString().padLeft(2, '0')}';
+  String get minutesSeconds {
+    final totalSeconds = inSeconds + (inMilliseconds % 1000 > 0 ? 1 : 0);
+    final minutes = totalSeconds ~/ 60;
+    final seconds = totalSeconds % 60;
+    return '$minutes:${seconds.toString().padLeft(2, '0')}';
+  }
 }
 
 /// Extension to add [everyIndexed] method to [List].
