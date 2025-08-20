@@ -1,13 +1,23 @@
 // ignore_for_file: public_member_api_docs
 import 'dart:async';
-import 'dart:ui';
+import 'dart:io';
 
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/services.dart';
+import 'package:http/http.dart' as http;
 import 'package:record/record.dart';
 
-import 'audio_helpers.dart';
-import 'file_helpers.dart';
+import 'wav_header.dart';
+
+/// Enum to specify how to fetch the file: from assets or from a URL.
+enum FileFetchMode {
+  /// File saved as local asset in app.
+  asset,
+
+  /// File fetched from a URL.
+  url
+}
 
 class PlaybackState extends ChangeNotifier {
   PlaybackState({
@@ -146,5 +156,89 @@ class PlaybackState extends ChangeNotifier {
     unawaited(_positionSubscription?.cancel());
     unawaited(_audioPlayer.dispose());
     super.dispose();
+  }
+
+  /// Creates a header for given PCM WAV audio data
+  Uint8List generatePCMWavHeader(List<Uint8List> audioChunks, RecordConfig recordConfig) {
+    if (audioChunks.isNotEmpty) {
+      final totalAudioBytes = audioChunks.fold<int>(0, (sum, chunk) => sum + chunk.length);
+      final bytesPerSample = 2 * recordConfig.numChannels;
+      final samples = totalAudioBytes ~/ bytesPerSample;
+
+      return PCMWavHeader(
+        channels: recordConfig.numChannels,
+        sampleRate: recordConfig.sampleRate,
+        samples: samples,
+      ).header;
+    }
+
+    return Uint8List(0);
+  }
+
+  Uri _sanitizeURLForWeb(String fileName) {
+    final uri = Uri.tryParse(fileName);
+    if (uri?.isAbsolute ?? false) return uri!;
+
+    // URL-encode for relative asset paths
+    final encoded = Uri.decodeFull(fileName) != fileName ? fileName : Uri.encodeFull(fileName);
+    return Uri.parse(encoded);
+  }
+
+  /// Handles file fetching for both assets and URLs to cache them locally.
+  Future<Uri> handleFile(String fileNameOrUrl, FileFetchMode mode) async {
+    if (kIsWeb && mode == FileFetchMode.asset) {
+      late final Uri uri;
+      if (!fileNameOrUrl.startsWith('/assets/')) {
+        // For web, we need to ensure the asset path is correct
+        uri = _sanitizeURLForWeb('/assets/$fileNameOrUrl');
+      } else {
+        uri = _sanitizeURLForWeb(fileNameOrUrl);
+      }
+
+      // We rely on browser caching here. Once the browser downloads this file,
+      // the native side implementation should be able to access it from cache.
+      await http.get(uri);
+
+      return uri;
+    }
+    if (kIsWeb && mode == FileFetchMode.url) {
+      final uri = _sanitizeURLForWeb(fileNameOrUrl);
+      // We rely on browser caching here. Once the browser downloads this file,
+      // the native side implementation should be able to access it from cache.
+      await http.get(uri);
+      return uri;
+    }
+
+    final tempDir = Directory.systemTemp.path;
+    final fileName = mode == FileFetchMode.url
+        ? Uri.decodeFull(fileNameOrUrl) != fileNameOrUrl
+            ? fileNameOrUrl
+            : Uri.encodeFull(fileNameOrUrl)
+        : fileNameOrUrl;
+    final filePath = mode == FileFetchMode.asset ? '$tempDir$fileNameOrUrl' : '$tempDir/$fileName';
+    final file = File(filePath);
+
+    // Check if the file already exists
+    if (file.existsSync()) {
+      return file.uri;
+    }
+
+    if (mode == FileFetchMode.asset) {
+      // Read local asset from rootBundle and store it
+      final byteData = await rootBundle.load(fileNameOrUrl);
+      await file.create(recursive: true);
+      await file.writeAsBytes(byteData.buffer.asUint8List());
+    } else {
+      // Download the file if it doesn't exist
+      final response = await http.get(Uri.parse(fileNameOrUrl));
+      if (response.statusCode != 200) {
+        throw Exception('Failed to download audio file');
+      }
+
+      await file.create(recursive: true);
+      await file.writeAsBytes(response.bodyBytes);
+    }
+
+    return file.uri;
   }
 }
