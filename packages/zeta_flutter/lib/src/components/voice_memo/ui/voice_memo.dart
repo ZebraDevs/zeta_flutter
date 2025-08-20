@@ -35,7 +35,7 @@ class ZetaVoiceMemo extends ZetaStatefulWidget {
       bitRate: 64000,
     ),
     this.loudnessMultiplier = 10,
-  }) : assert(warningDuration < maxRecordingDuration, 'maxRecordingDuration must be greater than warningDuration');
+  });
 
   /// The label shown when recording a voice memo.
   ///
@@ -135,6 +135,7 @@ class ZetaVoiceMemo extends ZetaStatefulWidget {
 class _ZetaVoiceMemoState extends State<ZetaVoiceMemo> {
   RecordingState? _state;
   PlaybackState? _playbackState;
+  GlobalKey _visualizerKey = GlobalKey();
 
   String get _voiceMemoLabel {
     if (_state == null) {
@@ -152,15 +153,8 @@ class _ZetaVoiceMemoState extends State<ZetaVoiceMemo> {
     }
   }
 
-  GlobalKey<ZetaAudioVisualizerState> _visualizerKey = GlobalKey<ZetaAudioVisualizerState>();
-
   Future<void> _clearAudio({bool discard = false}) async {
     _state?.resetRecording();
-
-    // final visualizerState = _visualizerKey.currentState;
-    // if (visualizerState != null) {
-    //   await visualizerState.clearVisualizerAudio();
-    // }
     _visualizerKey = GlobalKey();
     if (discard) widget.onDiscard?.call();
     setState(() {});
@@ -215,7 +209,7 @@ class _ZetaVoiceMemoState extends State<ZetaVoiceMemo> {
                       ],
                     ),
                     SizedBox(height: zeta.spacing.xl_2),
-                    ZetaAudioVisualizer.voiceMemo(
+                    ZetaAudioVisualizer(
                       key: _visualizerKey,
                       isRecording: state.isRecording || state.duration == null,
                       audioDuration: state.duration,

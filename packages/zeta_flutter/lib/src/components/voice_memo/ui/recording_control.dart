@@ -1,8 +1,6 @@
-import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../../zeta_flutter.dart';
-import '../state/playback_state.dart';
 import '../state/recording_state.dart';
 
 /// Recording control widget for [ZetaVoiceMemo].
@@ -22,24 +20,17 @@ class RecordingControl extends StatelessWidget {
           borderRadius: BorderRadius.all(zeta.radius.full),
           child: InkWell(
             borderRadius: BorderRadius.all(zeta.radius.full),
-            onTap: state.canRecord && (state.duration == null || (state.duration! < state.maxRecordingDuration))
-                ? () {
+            onTap: (!state.canRecord || (state.duration != null && state.duration! >= state.maxRecordingDuration))
+                ? null
+                : () async {
                     if (state.isRecording) {
-                      unawaited(state.pauseRecording());
-                      final pState = context.read<PlaybackState>();
-                      unawaited(
-                        pState.loadAudio(
-                          audioChunks: [state.rawAudioChunks!],
-                          recordConfig: state.recordConfig,
-                        ),
-                      );
+                      await state.pauseRecording();
                     } else if (state.duration != null) {
-                      unawaited(state.resumeRecording());
+                      await state.resumeRecording();
                     } else {
-                      unawaited(state.startRecording());
+                      await state.startRecording();
                     }
-                  }
-                : null,
+                  },
             child: ZetaProgressCircle(
               size: ZetaCircleSizes.l,
               progress: state.canRecord && (state.duration == null || (state.duration! < state.maxRecordingDuration))
