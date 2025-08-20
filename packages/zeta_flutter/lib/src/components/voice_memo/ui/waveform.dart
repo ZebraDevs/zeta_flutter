@@ -3,10 +3,12 @@ import 'dart:math';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:record/record.dart';
 
 import '../../../../zeta_flutter.dart';
 import '../state/audio_helpers.dart';
+import '../state/playback_state.dart';
 
 /// The visual waveform used in [ZetaAudioVisualizer] and [ZetaVoiceMemo.
 class Waveform extends StatefulWidget {
@@ -15,7 +17,7 @@ class Waveform extends StatefulWidget {
     super.key,
     this.playedColor,
     this.unplayedColor,
-    this.playbackPosition,
+    // this.playbackPosition,
     this.onInteraction,
     this.audioFile,
     this.recordingValues,
@@ -31,7 +33,7 @@ class Waveform extends StatefulWidget {
   final Color? unplayedColor;
 
   /// The current playback location of the waveform.
-  final ValueNotifier<double>? playbackPosition;
+  // final ValueNotifier<double>? playbackPosition;
 
   /// Callback for interaction events on the waveform.
   final void Function(Offset)? onInteraction;
@@ -62,7 +64,6 @@ class Waveform extends StatefulWidget {
       ..add(ColorProperty('unplayedColor', unplayedColor))
       ..add(ObjectFlagProperty<void Function(Offset p1)>.has('onInteraction', onInteraction))
       ..add(DiagnosticsProperty<Uri>('audioFile', audioFile))
-      ..add(DiagnosticsProperty<ValueNotifier<double>>('playbackPosition', playbackPosition))
       ..add(DiagnosticsProperty<Stream<Uint8List>?>('recordingValues', recordingValues))
       ..add(DiagnosticsProperty<RecordConfig?>('recordConfig', recordConfig))
       ..add(IntProperty('loudnessMultiplier', loudnessMultiplier))
@@ -74,24 +75,7 @@ class _WaveformState extends State<Waveform> {
   List<double> _amplitudes = List.empty(growable: true);
   bool _isLoading = false;
   bool _isSeeking = false;
-  late final VoidCallback _playbackListener;
   final ScrollController _scrollController = ScrollController();
-
-  @override
-  void initState() {
-    super.initState();
-    _playbackListener = () {
-      if (mounted) setState(() {});
-    };
-    widget.playbackPosition?.addListener(_playbackListener);
-  }
-
-  @override
-  void dispose() {
-    widget.playbackPosition?.removeListener(_playbackListener);
-    _scrollController.dispose();
-    super.dispose();
-  }
 
   @override
   void didUpdateWidget(covariant Waveform oldWidget) {
@@ -189,14 +173,14 @@ class _WaveformState extends State<Waveform> {
                       key: ValueKey(index),
                       duration: _isSeeking
                           ? Duration.zero
-                          : widget.playbackPosition?.value == 0
+                          : context.watch<PlaybackState>().playbackPercent == 0
                               ? ZetaAnimationLength.verySlow
                               : ZetaAnimationLength.veryFast,
                       width: ZetaBorders.medium,
                       height: (amplitude * zeta.spacing.xl_4).clamp(ZetaBorders.small, zeta.spacing.xl_4),
                       margin: const EdgeInsets.symmetric(horizontal: 1),
                       decoration: BoxDecoration(
-                        color: ((widget.playbackPosition?.value ?? 0) > (index / _amplitudes.length)) ||
+                        color: ((context.watch<PlaybackState>().playbackPercent) > (index / _amplitudes.length)) ||
                                 (widget.audioFile == null && widget.audioChunks == null)
                             ? widget.playedColor
                             : widget.unplayedColor,
