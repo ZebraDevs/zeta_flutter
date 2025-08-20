@@ -27,7 +27,6 @@ class RecordingState extends ChangeNotifier {
 
   Uint8List? rawAudioChunks;
   Timer? _recordingTimer;
-
   bool? _canRecord;
 
   /// Whether recording is allowed (based on permissions)
@@ -61,40 +60,44 @@ class RecordingState extends ChangeNotifier {
   }
 
   Stream<Uint8List>? _stream;
-
   Stream<Uint8List>? get stream => _stream;
-
   set stream(Stream<Uint8List>? value) {
     _stream = value;
+    rawAudioChunks = Uint8List(0);
     _stream?.listen((onData) {
-      rawAudioChunks ??= Uint8List(0);
-      rawAudioChunks = Uint8List.fromList([...rawAudioChunks!, ...onData]);
+      final prev = rawAudioChunks ?? Uint8List(0);
+      final combined = Uint8List(prev.length + onData.length)
+        ..setAll(0, prev)
+        ..setAll(prev.length, onData);
+      rawAudioChunks = combined;
     });
   }
 
   /// Dispose of resources
   @override
   void dispose() {
-    _recordingTimer?.cancel();
+    resetRecording();
     unawaited(_record.dispose());
     super.dispose();
   }
 
   /// Reset recording state
   void resetRecording() {
-    unawaited(_stream?.drain());
+    unawaited(_stream?.drain<void>());
     _stream = null;
     _showWarning = false;
     _duration = null;
     _recordingTimer?.cancel();
     _isRecording = false;
+    _recordingTimer = null;
+    rawAudioChunks = null;
     unawaited(_record.cancel());
     notifyListeners();
   }
 
   /// Start recording audio
   Future<void> startRecording() async {
-    if (!(_canRecord ?? false)) return;
+    if (!canRecord) return;
     stream = await _record.startStream(recordConfig);
     duration = Duration.zero;
     startTrackingDuration();
@@ -103,18 +106,16 @@ class RecordingState extends ChangeNotifier {
   /// Start tracking recording duration
   void startTrackingDuration() {
     isRecording = true;
+    _recordingTimer?.cancel();
     _recordingTimer = Timer.periodic(const Duration(milliseconds: 100), (timer) {
-      if (!_isRecording) {
+      if (!_isRecording || _duration == null) {
         timer.cancel();
         return;
       }
-
       duration = _duration! + const Duration(milliseconds: 100);
-
       if (_duration! >= maxRecordingDuration - warningDuration) {
         showWarning = true;
       }
-
       if (_duration! >= maxRecordingDuration) {
         unawaited(pauseRecording());
         showWarning = false;
@@ -134,7 +135,7 @@ class RecordingState extends ChangeNotifier {
 
   /// Resume recording
   Future<void> resumeRecording() async {
-    if (!_isRecording && (_canRecord ?? false)) {
+    if (!_isRecording && canRecord) {
       await _record.resume();
       startTrackingDuration();
     }

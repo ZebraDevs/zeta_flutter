@@ -7,7 +7,6 @@ import 'package:provider/provider.dart';
 import 'package:record/record.dart';
 
 import '../../../../zeta_flutter.dart';
-import '../state/audio_helpers.dart';
 import '../state/playback_state.dart';
 
 /// The visual waveform used in [ZetaAudioVisualizer] and [ZetaVoiceMemo.
@@ -121,11 +120,11 @@ class _WaveformState extends State<Waveform> {
 
   Future<void> getAmplitudes() async {
     if (widget.audioFile != null && widget.audioFile!.path.isNotEmpty && !_alsoLoading) {
-      _amplitudes = await extractAudioAmplitudes(widget.audioFile!, _amplitudes.length);
+      _amplitudes = await extractAudioAmplitudesFromFile(widget.audioFile!, _amplitudes.length);
       _isLoading = true;
       _alsoLoading = false;
     } else if (widget.audioChunks != null) {
-      _amplitudes = await parseWavToAmplitudes(widget.audioChunks!, _amplitudes.length);
+      _amplitudes = await extractAudioAmplitudesFromBytes(widget.audioChunks!, _amplitudes.length);
       _isLoading = false;
     }
     setState(() {});
