@@ -2,7 +2,6 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:record/record.dart';
 
 import '../../../../zeta_flutter.dart';
 import '../state/playback_state.dart';
@@ -19,19 +18,14 @@ class ZetaAudioVisualizer extends ZetaStatefulWidget {
     this.assetPath,
     this.url,
     this.deviceFilePath,
-    this.audioStream,
     this.isRecording = false,
-    this.maxRecordingDuration,
-    this.recordConfig,
     this.backgroundColor,
     this.foregroundColor,
     this.tertiaryColor,
     this.playButtonColor,
-    this.audioDuration,
     this.onPause,
     this.onPlay,
     this.errorMessage = 'Audio cannot be played',
-    this.loudnessMultiplier,
   });
 
   /// The path of a local audio asset to visualize.
@@ -45,13 +39,6 @@ class ZetaAudioVisualizer extends ZetaStatefulWidget {
 
   /// The path to a local audio file on the device to visualize.
   final String? deviceFilePath;
-
-  /// A stream of audio data to visualize.
-  ///
-  /// Used in [ZetaVoiceMemo] when recording audio. This stream should emit
-  /// integers representing audio samples. If this is provided, the [audioDuration]
-  /// should also be set to indicate the maximum duration of the audio being visualized.
-  final Stream<Uint8List>? audioStream;
 
   /// The background color of the component.
   ///
@@ -78,25 +65,6 @@ class ZetaAudioVisualizer extends ZetaStatefulWidget {
   /// This is used within the [ZetaVoiceMemo] component.
   final bool isRecording;
 
-  /// The duration of the audio stream being visualized.
-  ///
-  /// This must be provided when [audioStream] is provided.
-  final Duration? audioDuration;
-
-  /// The maximum duration of the audio stream being recorded.
-  ///
-  /// This must be provided when [audioStream] is provided.
-  final Duration? maxRecordingDuration;
-
-  /// Configuration for audio recorder from [Record] package.
-  ///
-  /// For the package to work correctly, audio *must* be [AudioEncoder.pcm16bits].
-  /// This is a limitation of the package currently.
-  /// If you require a different format, please submit a PR!
-  ///
-  /// See [Record](https://pub.dev/packages/record).
-  final RecordConfig? recordConfig;
-
   /// Callback when the play button is pressed.
   final VoidCallback? onPlay;
 
@@ -105,11 +73,6 @@ class ZetaAudioVisualizer extends ZetaStatefulWidget {
 
   /// Error message to display when audio can not be played.
   final String errorMessage;
-
-  /// Multiplier for the loudness of the waveform visualization during recording.
-  ///
-  /// If the waveform visualization is too small, increasing this value can help.
-  final int? loudnessMultiplier;
 
   @override
   State<ZetaAudioVisualizer> createState() => _ZetaAudioVisualizerState();
@@ -122,51 +85,23 @@ class ZetaAudioVisualizer extends ZetaStatefulWidget {
       ..add(StringProperty('url', url))
       ..add(StringProperty('deviceFilePath', deviceFilePath))
       ..add(DiagnosticsProperty<bool>('isRecording', isRecording))
-      ..add(DiagnosticsProperty<Stream<Uint8List>?>('audioStream', audioStream))
-      ..add(DiagnosticsProperty<Duration?>('audioDuration', audioDuration))
       ..add(ObjectFlagProperty<VoidCallback?>.has('onPlay', onPlay))
       ..add(ObjectFlagProperty<VoidCallback?>.has('onPause', onPause))
       ..add(ColorProperty('backgroundColor', backgroundColor))
       ..add(ColorProperty('foregroundColor', foregroundColor))
       ..add(ColorProperty('tertiaryColor', tertiaryColor))
       ..add(ColorProperty('playButtonColor', playButtonColor))
-      ..add(DiagnosticsProperty<Duration?>('maxRecordingDuration', maxRecordingDuration))
-      ..add(DiagnosticsProperty<RecordConfig>('recordConfig', recordConfig))
-      ..add(StringProperty('errorMessage', errorMessage))
-      ..add(IntProperty('loudnessMultiplier', loudnessMultiplier));
+      ..add(StringProperty('errorMessage', errorMessage));
   }
 }
 
 class _ZetaAudioVisualizerState extends State<ZetaAudioVisualizer> {
   PlaybackState? _state;
+  RecordingState? _recordingState;
   final GlobalKey _rowKey = GlobalKey();
   final GlobalKey _recKey = GlobalKey();
-  final List<Uint8List> _audioChunks = [];
 
-  @override
-  void didUpdateWidget(covariant ZetaAudioVisualizer oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    if (widget.audioStream != null && oldWidget.audioStream == null) {
-      widget.audioStream!.listen(_audioChunks.add);
-    }
-    if (!widget.isRecording && oldWidget.isRecording) {
-      unawaited(
-        _state
-            ?.loadAudio(
-              assetPath: widget.assetPath,
-              url: widget.url,
-              deviceFilePath: widget.deviceFilePath,
-              audioChunks: _audioChunks.isNotEmpty ? _audioChunks : null,
-              recordConfig: _audioChunks.isNotEmpty ? widget.recordConfig : null,
-            )
-            .then((_) => _state?.resetPlayback()),
-      );
-    } else if (widget.isRecording && !oldWidget.isRecording) {
-      unawaited(_state?.pause());
-    }
-  }
-
-  Widget _makeBody(BuildContext context) {
+  Widget _makeBody(BuildContext context, {bool isRecording = false}) {
     return Consumer<PlaybackState>(
       builder: (context, state, _) {
         _state ??= state;
@@ -175,8 +110,8 @@ class _ZetaAudioVisualizerState extends State<ZetaAudioVisualizer> {
         final bg = widget.backgroundColor ?? zeta.colors.surfaceHover;
         final playButtonColor = widget.playButtonColor ?? zeta.colors.mainPrimary;
         final tertiaryColor = widget.tertiaryColor ?? zeta.colors.mainLight;
-        final duration = widget.isRecording && widget.audioDuration != null
-            ? widget.audioDuration!
+        final duration = isRecording
+            ? (context.watch<RecordingState>().duration ?? Duration.zero)
             : (state.playbackPercent == 0 && (state.loadedAudio ?? false)
                 ? state.duration
                 : Duration(milliseconds: state.playbackPercent * (state.duration?.inMilliseconds ?? 1) ~/ 1));
@@ -191,7 +126,7 @@ class _ZetaAudioVisualizerState extends State<ZetaAudioVisualizer> {
               padding: EdgeInsets.all(zeta.spacing.minimum),
               child: Row(
                 children: [
-                  if (!widget.isRecording)
+                  if (!isRecording)
                     AnimatedSize(
                       duration: ZetaAnimationLength.fast,
                       child: PlayButton(
@@ -215,18 +150,16 @@ class _ZetaAudioVisualizerState extends State<ZetaAudioVisualizer> {
                         if (widget.assetPath == null && widget.deviceFilePath == null && widget.url == null)
                           Waveform(
                             playedColor: fg,
-                            recordingValues: widget.audioStream,
+                            recordingValues: _recordingState?.stream,
                             key: _recKey,
-                            recordConfig: widget.recordConfig,
-                            loudnessMultiplier: widget.loudnessMultiplier,
                           ),
-                        if (!widget.isRecording)
+                        if (!isRecording)
                           ColoredBox(
                             color: bg,
                             child: Waveform(
                               playedColor: fg,
                               unplayedColor: tertiaryColor,
-                              audioFile: widget.isRecording ? null : state.localFile,
+                              audioFile: isRecording ? null : state.localFile,
                               audioChunks: state.localChunks,
                               onInteraction: (Offset offset) {
                                 final box = _rowKey.currentContext?.findRenderObject() as RenderBox?;
@@ -263,7 +196,7 @@ class _ZetaAudioVisualizerState extends State<ZetaAudioVisualizer> {
             ),
             if (state.error ||
                 (state.loadedAudio == false &&
-                    !widget.isRecording &&
+                    !isRecording &&
                     ([widget.assetPath, widget.url, widget.deviceFilePath].any((source) => source != null))))
               Positioned(
                 top: 0,
@@ -286,11 +219,21 @@ class _ZetaAudioVisualizerState extends State<ZetaAudioVisualizer> {
 
   @override
   Widget build(BuildContext context) {
-    // Check if this widget is within a RecordingProvider by using context
-    final isInRecordingProvider =
-        context.findAncestorWidgetOfExactType<ChangeNotifierProvider<RecordingState>>() != null;
+    final bool isInRecordingProvider;
+    if (_recordingState == null) {
+      isInRecordingProvider = context.findAncestorWidgetOfExactType<Consumer2<RecordingState, PlaybackState>>() != null;
+    } else {
+      isInRecordingProvider = !(_recordingState == null);
+    }
+
     if (isInRecordingProvider) {
-      return _makeBody(context);
+      return Consumer<RecordingState>(
+        builder: (context, recordingState, _) {
+          _recordingState ??= recordingState;
+
+          return _makeBody(context, isRecording: recordingState.isRecording || recordingState.duration == null);
+        },
+      );
     } else {
       return ChangeNotifierProvider<PlaybackState>(
         create: (context) => PlaybackState(

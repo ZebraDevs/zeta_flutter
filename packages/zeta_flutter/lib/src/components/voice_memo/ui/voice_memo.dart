@@ -108,7 +108,7 @@ class ZetaVoiceMemo extends ZetaStatefulWidget {
   /// Multiplier for the loudness of the waveform visualization during recording.
   ///
   /// If the waveform visualization is too small, increasing this value can help amplify the sound.
-  final int loudnessMultiplier;
+  final double loudnessMultiplier;
 
   @override
   State<ZetaVoiceMemo> createState() => _ZetaVoiceMemoState();
@@ -128,7 +128,7 @@ class ZetaVoiceMemo extends ZetaStatefulWidget {
       ..add(StringProperty('recordingNotAllowedLabel', recordingNotAllowedLabel))
       ..add(ObjectFlagProperty<void Function(Uint8List audioStream)?>.has('onSend', onSend))
       ..add(DiagnosticsProperty<RecordConfig>('recordConfig', recordConfig))
-      ..add(IntProperty('loudnessMultiplier', loudnessMultiplier));
+      ..add(DoubleProperty('loudnessMultiplier', loudnessMultiplier));
   }
 }
 
@@ -162,130 +162,129 @@ class _ZetaVoiceMemoState extends State<ZetaVoiceMemo> {
 
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        ChangeNotifierProvider<RecordingState>(
-          create: (_) => RecordingState(
+    return ChangeNotifierProvider<PlaybackState>(
+      create: (_) => PlaybackState(),
+      builder: (context, _) {
+        return ChangeNotifierProvider<RecordingState>(
+          create: (context) => RecordingState(
             recordConfig: widget.recordConfig,
             maxRecordingDuration: widget.maxRecordingDuration,
             warningDuration: widget.warningDuration,
+            loudnessMultiplier: widget.loudnessMultiplier,
+            playbackState: context.read<PlaybackState>(),
           ),
-        ),
-        ChangeNotifierProvider<PlaybackState>(
-          create: (_) => PlaybackState(),
-        ),
-      ],
-      child: Consumer2<RecordingState, PlaybackState>(
-        builder: (context, state, playbackState, _) {
-          final zeta = Zeta.of(context);
-          _state ??= state;
-          _playbackState ??= playbackState;
-          return DecoratedBox(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(zeta.radius.rounded),
-              color: zeta.colors.surfaceDefault,
-            ),
-            child: Stack(
-              children: [
-                Column(
-                  children: [
-                    SizedBox(height: zeta.spacing.xl_2),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      spacing: zeta.spacing.small,
-                      children: [
-                        if (state.showWarning)
-                          Icon(
-                            ZetaIcons.error_outline,
-                            size: zeta.spacing.large,
-                            color: zeta.colors.mainNegative,
-                          ),
-                        Text(
-                          _voiceMemoLabel,
-                          style: zeta.textStyles.labelSmall.copyWith(
-                            color: state.showWarning ? zeta.colors.mainNegative : zeta.colors.mainSubtle,
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: zeta.spacing.xl_2),
-                    ZetaAudioVisualizer(
-                      key: _visualizerKey,
-                      isRecording: state.isRecording || state.duration == null,
-                      audioDuration: state.duration,
-                      audioStream: state.stream,
-                      maxRecordingDuration: widget.maxRecordingDuration,
-                      recordConfig: widget.recordConfig,
-                      rounded: widget.rounded,
-                      loudnessMultiplier: widget.loudnessMultiplier,
-                    ).paddingHorizontal(zeta.spacing.xl_2),
-                    SizedBox(height: zeta.spacing.large + ZetaBorders.small),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Expanded(
-                          child: Row(
+          builder: (context, _) {
+            return Consumer2<RecordingState, PlaybackState>(
+              builder: (context, state, playbackState, _) {
+                final zeta = Zeta.of(context);
+                _state ??= state;
+                _playbackState ??= playbackState;
+                return DecoratedBox(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.all(zeta.radius.rounded),
+                    color: zeta.colors.surfaceDefault,
+                  ),
+                  child: Stack(
+                    children: [
+                      Column(
+                        children: [
+                          SizedBox(height: zeta.spacing.xl_2),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            spacing: zeta.spacing.small,
                             children: [
-                              IconButton(
-                                icon: Icon(
-                                  ZetaIcons.delete,
-                                  size: zeta.spacing.xl_6,
+                              if (state.showWarning)
+                                Icon(
+                                  ZetaIcons.error_outline,
+                                  size: zeta.spacing.large,
                                   color: zeta.colors.mainNegative,
                                 ),
-                                onPressed: (state.canRecord) ? () => _clearAudio(discard: true) : null,
-                              ),
-                              IconButton(
-                                icon: Icon(
-                                  ZetaIcons.refresh,
-                                  size: zeta.spacing.xl_6,
-                                  color: zeta.colors.mainDefault,
+                              Text(
+                                _voiceMemoLabel,
+                                style: zeta.textStyles.labelSmall.copyWith(
+                                  color: state.showWarning ? zeta.colors.mainNegative : zeta.colors.mainSubtle,
                                 ),
-                                onPressed: (state.canRecord) ? _clearAudio : null,
                               ),
                             ],
                           ),
-                        ),
-                        const RecordingControl(),
-                        Expanded(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
+                          SizedBox(height: zeta.spacing.xl_2),
+                          ZetaAudioVisualizer(
+                            key: _visualizerKey,
+                            isRecording: state.isRecording || state.duration == null,
+                            rounded: widget.rounded,
+                          ).paddingHorizontal(zeta.spacing.xl_2),
+                          SizedBox(height: zeta.spacing.large + ZetaBorders.small),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              IconButton(
-                                icon: Icon(ZetaIcons.send, size: zeta.spacing.xl_6),
-                                color: zeta.colors.mainPrimary,
-                                onPressed:
-                                    ((state.canRecord) && state.duration != null && playbackState.localChunks != null)
-                                        ? () => widget.onSend?.call(playbackState.localChunks!)
-                                        : null,
-                                disabledColor: zeta.colors.mainDisabled,
+                              Expanded(
+                                child: Row(
+                                  children: [
+                                    IconButton(
+                                      icon: Icon(
+                                        ZetaIcons.delete,
+                                        size: zeta.spacing.xl_6,
+                                        color: zeta.colors.mainNegative,
+                                      ),
+                                      onPressed: (state.canRecord) ? () => _clearAudio(discard: true) : null,
+                                    ),
+                                    IconButton(
+                                      icon: Icon(
+                                        ZetaIcons.refresh,
+                                        size: zeta.spacing.xl_6,
+                                        color: zeta.colors.mainDefault,
+                                      ),
+                                      onPressed: (state.canRecord) ? _clearAudio : null,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              const RecordingControl(),
+                              Expanded(
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    IconButton(
+                                      icon: Icon(ZetaIcons.send, size: zeta.spacing.xl_6),
+                                      color: zeta.colors.mainPrimary,
+                                      onPressed: ((state.canRecord) &&
+                                              state.duration != null &&
+                                              playbackState.localChunks != null)
+                                          ? () => widget.onSend?.call(playbackState.localChunks!)
+                                          : null,
+                                      disabledColor: zeta.colors.mainDisabled,
+                                    ),
+                                  ],
+                                ),
                               ),
                             ],
+                          ).paddingHorizontal(zeta.spacing.large),
+                          SizedBox(height: zeta.spacing.xl_2),
+                        ],
+                      ),
+                      if (!state.canRecord)
+                        Positioned(
+                          top: 0,
+                          left: 0,
+                          right: 0,
+                          bottom: 0,
+                          child: DecoratedBox(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.all(zeta.radius.rounded),
+                              color: zeta.colors.surfaceDefault.withAlpha(200),
+                            ),
+                            child: Center(child: Text(widget.recordingNotAllowedLabel)),
                           ),
                         ),
-                      ],
-                    ).paddingHorizontal(zeta.spacing.large),
-                    SizedBox(height: zeta.spacing.xl_2),
-                  ],
-                ),
-                if (!state.canRecord)
-                  Positioned(
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    bottom: 0,
-                    child: DecoratedBox(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.all(zeta.radius.rounded),
-                        color: zeta.colors.surfaceDefault.withAlpha(200),
-                      ),
-                      child: Center(child: Text(widget.recordingNotAllowedLabel)),
-                    ),
+                    ],
                   ),
-              ],
-            ),
-          );
-        },
-      ),
+                );
+              },
+            );
+          },
+        );
+      },
     );
+    // );
   }
 }

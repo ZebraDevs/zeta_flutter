@@ -35,13 +35,8 @@ class PlaybackState extends ChangeNotifier {
           : 0.0;
 
       if (newPercent != _playbackPercent) {
-        print('Setting new percent');
         _playbackPercent = newPercent;
         notifyListeners();
-      } else {
-        // print('Percent unchanged: $_playbackPercent');
-        // print('Duration : ${_duration}');
-        // print('Position: $position');
       }
     });
   }
