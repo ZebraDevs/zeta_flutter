@@ -1,10 +1,12 @@
 import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:record/record.dart';
 
 import '../../../../zeta_flutter.dart';
-import '../state/playback_manager.dart';
+import '../state/playback_state.dart';
+import '../state/recording_state.dart';
 import 'play_button.dart';
 import 'waveform.dart';
 
@@ -163,32 +165,13 @@ class ZetaAudioVisualizer extends ZetaStatefulWidget {
 ///
 /// This should not be called directly, and is only public for state management reasons.
 class ZetaAudioVisualizerState extends State<ZetaAudioVisualizer> {
-  late final AudioPlaybackManager _playbackManager = AudioPlaybackManager();
+  PlaybackState? _state;
   final GlobalKey _rowKey = GlobalKey();
   final GlobalKey _recKey = GlobalKey();
   final List<Uint8List> _audioChunks = [];
-  Timer? _debouncer;
-  bool _playing = false;
-  final ValueNotifier<double> _playbackPercent = ValueNotifier<double>(0);
-
-  @override
-  void initState() {
-    super.initState();
-    unawaited(_initializePlayer());
-  }
-
-  @override
-  void dispose() {
-    unawaited(_playbackManager.dispose());
-    _debouncer?.cancel();
-    super.dispose();
-  }
 
   /// Clears the recorded audio from the state.
-  Future<void> clearVisualizerAudio() async {
-    _audioChunks.clear();
-    _playbackPercent.value = 0;
-  }
+  Future<void> clearVisualizerAudio() async => _audioChunks.clear();
 
   @override
   void didUpdateWidget(covariant ZetaAudioVisualizer oldWidget) {
@@ -197,158 +180,155 @@ class ZetaAudioVisualizerState extends State<ZetaAudioVisualizer> {
       widget.audioStream!.listen(_audioChunks.add);
     }
     if (!widget.isRecording && oldWidget.isRecording) {
-      _playbackPercent.value = 0;
-      unawaited(_resetPlayback());
+      unawaited(
+        _state
+            ?.loadAudio(
+              assetPath: widget.assetPath,
+              url: widget.url,
+              deviceFilePath: widget.deviceFilePath,
+              audioChunks: _audioChunks.isNotEmpty ? _audioChunks : null,
+              recordConfig: _audioChunks.isNotEmpty ? widget.recordConfig : null,
+            )
+            .then((_) => _state?.resetPlayback()),
+      );
     } else if (widget.isRecording && !oldWidget.isRecording) {
-      unawaited(_playbackManager.pause());
+      unawaited(_state?.pause());
     }
   }
 
-  Future<void> _initializePlayer() async {
-    await _playbackManager.initialize(
-      onComplete: () {
-        widget.onPause?.call();
-        unawaited(_resetPlayback());
+  Widget _makeBody(BuildContext context) {
+    return Consumer<PlaybackState>(
+      builder: (context, state, _) {
+        _state ??= state;
+        final zeta = Zeta.of(context);
+        final fg = widget.foregroundColor ?? zeta.colors.mainDefault;
+        final bg = widget.backgroundColor ?? zeta.colors.surfaceHover;
+        final playButtonColor = widget.playButtonColor ?? zeta.colors.mainPrimary;
+        final tertiaryColor = widget.tertiaryColor ?? zeta.colors.mainLight;
+        final duration = widget.isRecording && widget.audioDuration != null
+            ? widget.audioDuration!
+            : (state.playbackPercent == 0 && (state.loadedAudio ?? false)
+                ? state.duration
+                : Duration(milliseconds: state.playbackPercent * (state.duration?.inMilliseconds ?? 1) ~/ 1));
+
+        return Stack(
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.all(zeta.radius.rounded),
+                color: bg,
+              ),
+              padding: EdgeInsets.all(zeta.spacing.minimum),
+              child: Row(
+                children: [
+                  if (!widget.isRecording)
+                    AnimatedSize(
+                      duration: ZetaAnimationLength.fast,
+                      child: PlayButton(
+                        key: const ValueKey('playButton'),
+                        onTap: () async {
+                          if (_state?.playing ?? false) {
+                            widget.onPause?.call();
+                            await _state?.pause();
+                          } else {
+                            widget.onPlay?.call();
+                            await _state?.play();
+                          }
+                        },
+                        playButtonColor: playButtonColor,
+                        iconColor: bg,
+                      ),
+                    ),
+                  Expanded(
+                    child: Stack(
+                      children: [
+                        if (widget.assetPath == null && widget.deviceFilePath == null && widget.url == null)
+                          Waveform(
+                            playedColor: fg,
+                            recordingValues: widget.audioStream,
+                            key: _recKey,
+                            recordConfig: widget.recordConfig,
+                            loudnessMultiplier: widget.loudnessMultiplier,
+                          ),
+                        if (!widget.isRecording)
+                          ColoredBox(
+                            color: bg,
+                            child: Waveform(
+                              playedColor: fg,
+                              unplayedColor: tertiaryColor,
+                              audioFile: widget.isRecording ? null : state.localFile,
+                              audioChunks: state.localChunks,
+                              onInteraction: (Offset offset) {
+                                final box = _rowKey.currentContext?.findRenderObject() as RenderBox?;
+                                if (state.duration == null || box == null) return;
+
+                                unawaited(
+                                  state.seekFromPosition(
+                                    offset,
+                                    box.size.width,
+                                    state.duration,
+                                  ),
+                                );
+                              },
+                              key: _rowKey,
+                            ),
+                          ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(
+                      left: zeta.spacing.small,
+                      right: zeta.spacing.medium,
+                      top: zeta.spacing.large - ZetaBorders.medium,
+                      bottom: zeta.spacing.large - ZetaBorders.medium,
+                    ),
+                    child: Text(
+                      duration?.minutesSeconds ?? '0:00',
+                      style: zeta.textStyles.labelMedium.apply(color: fg),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            if (state.loadedAudio == false &&
+                !widget.isRecording &&
+                ([widget.assetPath, widget.url, widget.deviceFilePath].any((source) => source != null)))
+              Positioned(
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                child: DecoratedBox(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.all(zeta.radius.rounded),
+                    color: Zeta.of(context).colors.surfaceDefault.withAlpha(200),
+                  ),
+                  child: Center(child: Text(widget.errorMessage)),
+                ),
+              ),
+          ],
+        );
       },
-      onPositionChanged: (Duration d) =>
-          _playbackPercent.value = d.inMilliseconds / (_playbackManager.duration?.inMilliseconds ?? 1),
     );
-    unawaited(_resetPlayback());
-  }
-
-  Future<void> _resetPlayback() async {
-    _playing = false;
-    await _playbackManager.loadAudio(
-      assetPath: widget.assetPath,
-      url: widget.url,
-      deviceFilePath: widget.deviceFilePath,
-      audioChunks: _audioChunks.isNotEmpty ? _audioChunks : null,
-      recordConfig: _audioChunks.isNotEmpty ? widget.recordConfig : null,
-    );
-    await _playbackManager.resetPlayback();
-    setState(() {});
-  }
-
-  Future<void> _togglePlayback() async {
-    if (_playing) {
-      widget.onPause?.call();
-      await _playbackManager.pause();
-    } else {
-      widget.onPlay?.call();
-      await _playbackManager.play();
-    }
-    setState(() => _playing = !_playing);
-  }
-
-  Duration _calculateSeekPosition(Offset gesturePosition, double visualizerWidth, Duration? totalDuration) {
-    if (totalDuration == null) return Duration.zero;
-
-    final playbackLocation = gesturePosition.dx / visualizerWidth;
-    return Duration(milliseconds: (totalDuration.inMilliseconds * playbackLocation).round());
   }
 
   @override
   Widget build(BuildContext context) {
-    final zeta = Zeta.of(context);
-    final fg = widget.foregroundColor ?? zeta.colors.mainDefault;
-    final bg = widget.backgroundColor ?? zeta.colors.surfaceHover;
-    final playButtonColor = widget.playButtonColor ?? zeta.colors.mainPrimary;
-    final tertiaryColor = widget.tertiaryColor ?? zeta.colors.mainLight;
-    final duration = widget.isRecording && widget.audioDuration != null
-        ? widget.audioDuration!
-        : (_playbackManager.currentPosition == Duration.zero && (_playbackManager.loadedAudio ?? false)
-            ? _playbackManager.duration
-            : _playbackManager.currentPosition);
-
-    return Stack(
-      children: [
-        Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.all(zeta.radius.rounded),
-            color: bg,
-          ),
-          padding: EdgeInsets.all(zeta.spacing.minimum),
-          child: Row(
-            children: [
-              if (!widget.isRecording)
-                AnimatedSize(
-                  duration: ZetaAnimationLength.fast,
-                  child: PlayButton(
-                    key: const ValueKey('playButton'),
-                    isPlaying: _playing,
-                    onTap: (_playbackManager.loadedAudio ?? false) ? _togglePlayback : null,
-                    playButtonColor: playButtonColor,
-                    iconColor: bg,
-                  ),
-                ),
-              Expanded(
-                child: Stack(
-                  children: [
-                    if (widget.assetPath == null && widget.deviceFilePath == null && widget.url == null)
-                      Waveform(
-                        playedColor: fg,
-                        recordingValues: widget.audioStream,
-                        key: _recKey,
-                        recordConfig: widget.recordConfig,
-                        loudnessMultiplier: widget.loudnessMultiplier,
-                      ),
-                    if (!widget.isRecording)
-                      ColoredBox(
-                        color: bg,
-                        child: Waveform(
-                          playedColor: fg,
-                          unplayedColor: tertiaryColor,
-                          audioFile: widget.isRecording ? null : _playbackManager.localFile,
-                          playbackPosition: _playbackPercent,
-                          audioChunks: _playbackManager.localChunks,
-                          onInteraction: (Offset offset) {
-                            final box = _rowKey.currentContext?.findRenderObject() as RenderBox?;
-                            if (_playbackManager.duration == null || box == null) return;
-
-                            unawaited(
-                              _playbackManager.seek(
-                                _calculateSeekPosition(offset, box.size.width, _playbackManager.duration),
-                              ),
-                            );
-                          },
-                          key: _rowKey,
-                        ),
-                      ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(
-                  left: zeta.spacing.small,
-                  right: zeta.spacing.medium,
-                  top: zeta.spacing.large - ZetaBorders.medium,
-                  bottom: zeta.spacing.large - ZetaBorders.medium,
-                ),
-                child: Text(
-                  duration?.minutesSeconds ?? '0:00',
-                  style: zeta.textStyles.labelMedium.apply(color: fg),
-                ),
-              ),
-            ],
-          ),
+    // Check if this widget is within a RecordingProvider by using context
+    final isInRecordingProvider =
+        context.findAncestorWidgetOfExactType<ChangeNotifierProvider<RecordingState>>() != null;
+    if (isInRecordingProvider) {
+      return _makeBody(context);
+    } else {
+      return ChangeNotifierProvider<PlaybackState>(
+        create: (context) => PlaybackState(
+          assetPath: widget.assetPath,
+          deviceFilePath: widget.deviceFilePath,
+          url: widget.url,
         ),
-        if (_playbackManager.loadedAudio == false &&
-            !widget.isRecording &&
-            ([widget.assetPath, widget.url, widget.deviceFilePath].any((source) => source != null)))
-          Positioned(
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            child: DecoratedBox(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.all(zeta.radius.rounded),
-                color: Zeta.of(context).colors.surfaceDefault.withAlpha(200),
-              ),
-              child: Center(child: Text(widget.errorMessage)),
-            ),
-          ),
-      ],
-    );
+        child: _makeBody(context),
+      );
+    }
   }
 }
