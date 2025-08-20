@@ -249,8 +249,8 @@ class _ZetaVoiceMemoState extends State<ZetaVoiceMemo> {
                                       color: zeta.colors.mainPrimary,
                                       onPressed: ((state.canRecord) &&
                                               state.duration != null &&
-                                              playbackState.localChunks != null)
-                                          ? () => widget.onSend?.call(playbackState.localChunks!)
+                                              playbackState.audioChunks != null)
+                                          ? () => widget.onSend?.call(playbackState.audioChunks!)
                                           : null,
                                       disabledColor: zeta.colors.mainDisabled,
                                     ),

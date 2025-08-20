@@ -150,7 +150,6 @@ class _ZetaAudioVisualizerState extends State<ZetaAudioVisualizer> {
                         if (widget.assetPath == null && widget.deviceFilePath == null && widget.url == null)
                           Waveform(
                             playedColor: fg,
-                            recordingValues: _recordingState?.stream,
                             key: _recKey,
                           ),
                         if (!isRecording)
@@ -160,7 +159,7 @@ class _ZetaAudioVisualizerState extends State<ZetaAudioVisualizer> {
                               playedColor: fg,
                               unplayedColor: tertiaryColor,
                               audioFile: isRecording ? null : state.localFile,
-                              audioChunks: state.localChunks,
+                              audioChunks: state.audioChunks,
                               onInteraction: (Offset offset) {
                                 final box = _rowKey.currentContext?.findRenderObject() as RenderBox?;
                                 if (state.duration == null || box == null) return;
