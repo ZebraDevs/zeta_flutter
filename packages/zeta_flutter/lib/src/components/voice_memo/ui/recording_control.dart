@@ -13,14 +13,17 @@ class RecordingControl extends StatelessWidget {
     final Zeta zeta = Zeta.of(context);
     return Consumer<RecordingState>(
       builder: (context, state, child) {
+        final bool canRecordNow =
+            state.canRecord && (state.duration == null || (state.duration! < state.maxRecordingDuration));
+        final double progress =
+            canRecordNow ? (state.duration?.inMilliseconds ?? 0) / state.maxRecordingDuration.inMilliseconds : 0;
+
         return Material(
-          color: (state.canRecord) && (state.duration == null || (state.duration! < state.maxRecordingDuration))
-              ? null
-              : zeta.colors.surfaceDisabled,
+          color: canRecordNow ? null : zeta.colors.surfaceDisabled,
           borderRadius: BorderRadius.all(zeta.radius.full),
           child: InkWell(
             borderRadius: BorderRadius.all(zeta.radius.full),
-            onTap: (!state.canRecord || (state.duration != null && state.duration! >= state.maxRecordingDuration))
+            onTap: (!state.canRecord || state.duration != null && state.duration! >= state.maxRecordingDuration)
                 ? null
                 : () async {
                     if (state.isRecording) {
@@ -33,17 +36,9 @@ class RecordingControl extends StatelessWidget {
                   },
             child: ZetaProgressCircle(
               size: ZetaCircleSizes.l,
-              progress: state.canRecord && (state.duration == null || (state.duration! < state.maxRecordingDuration))
-                  ? (state.duration != null
-                      ? state.duration!.inMilliseconds / state.maxRecordingDuration.inMilliseconds
-                      : 0)
-                  : 0,
+              progress: progress,
               child: IconTheme(
-                data: IconThemeData(
-                  color: state.canRecord && (state.duration == null || (state.duration! < state.maxRecordingDuration))
-                      ? zeta.colors.mainDefault
-                      : zeta.colors.mainDisabled,
-                ),
+                data: IconThemeData(color: canRecordNow ? zeta.colors.mainDefault : zeta.colors.mainDisabled),
                 child: AnimatedCrossFade(
                   duration: ZetaAnimationLength.fast,
                   secondChild: const Icon(ZetaIcons.pause),

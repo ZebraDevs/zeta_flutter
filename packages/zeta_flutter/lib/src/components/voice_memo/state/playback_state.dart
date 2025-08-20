@@ -22,23 +22,24 @@ enum FileFetchMode {
 /// State class for managing audio playback in the [ZetaVoiceMemo] and [ZetaAudioVisualizer].
 class PlaybackState extends ChangeNotifier {
   /// Constructs a [PlaybackState].
-  PlaybackState({
-    String? assetPath,
-    String? deviceFilePath,
-    String? url,
-  }) {
-    unawaited(loadAudio(assetPath: assetPath, deviceFilePath: deviceFilePath, url: url).then((_) => resetPlayback()));
+  PlaybackState({String? assetPath, String? deviceFilePath, String? url}) {
+    unawaited(_init(assetPath, deviceFilePath, url));
     _audioPlayer.onPlayerComplete.listen((_) => resetPlayback());
-    _positionSubscription = _audioPlayer.onPositionChanged.listen((position) {
-      final newPercent = _duration != null && _duration!.inMilliseconds > 0
-          ? position.inMilliseconds / _duration!.inMilliseconds
-          : 0.0;
+    _positionSubscription = _audioPlayer.onPositionChanged.listen(_onPositionChanged);
+  }
 
-      if (newPercent != _playbackPercent) {
-        _playbackPercent = newPercent;
-        notifyListeners();
-      }
-    });
+  Future<void> _init(String? assetPath, String? deviceFilePath, String? url) async {
+    await loadAudio(assetPath: assetPath, deviceFilePath: deviceFilePath, url: url);
+    await resetPlayback();
+  }
+
+  void _onPositionChanged(Duration position) {
+    final totalMs = _duration?.inMilliseconds ?? 0;
+    final newPercent = totalMs > 0 ? position.inMilliseconds / totalMs : 0.0;
+    if (newPercent != _playbackPercent) {
+      _playbackPercent = newPercent;
+      notifyListeners();
+    }
   }
 
   final AudioPlayer _audioPlayer = AudioPlayer();
@@ -48,7 +49,6 @@ class PlaybackState extends ChangeNotifier {
   StreamSubscription<Duration>? _positionSubscription;
   bool? _loadedAudio;
   double _playbackPercent = 0;
-
   bool _error = false;
 
   /// Whether there is an error fetching the audio.
@@ -139,19 +139,13 @@ class PlaybackState extends ChangeNotifier {
       await resetPlayback();
     }
     await _audioPlayer.resume();
-    if (!playing) {
-      playing = true;
-      notifyListeners();
-    }
+    if (!playing) playing = true;
   }
 
   /// Pause audio
   Future<void> pause() async {
     await _audioPlayer.pause();
-    if (playing) {
-      playing = false;
-      notifyListeners();
-    }
+    if (playing) playing = false;
   }
 
   /// Seek to specific position
@@ -173,41 +167,32 @@ class PlaybackState extends ChangeNotifier {
 
   /// Creates a header for given PCM WAV audio data
   Uint8List generatePCMWavHeader(List<Uint8List> audioChunks, RecordConfig recordConfig) {
-    if (audioChunks.isNotEmpty) {
-      final totalAudioBytes = audioChunks.fold<int>(0, (sum, chunk) => sum + chunk.length);
-      final bytesPerSample = 2 * recordConfig.numChannels;
-      final samples = totalAudioBytes ~/ bytesPerSample;
-
-      return PCMWavHeader(
-        channels: recordConfig.numChannels,
-        sampleRate: recordConfig.sampleRate,
-        samples: samples,
-      ).header;
-    }
-
-    return Uint8List(0);
+    if (audioChunks.isEmpty) return Uint8List(0);
+    final totalAudioBytes = audioChunks.fold<int>(0, (sum, chunk) => sum + chunk.length);
+    final bytesPerSample = 2 * recordConfig.numChannels;
+    final samples = totalAudioBytes ~/ bytesPerSample;
+    return PCMWavHeader(
+      channels: recordConfig.numChannels,
+      sampleRate: recordConfig.sampleRate,
+      samples: samples,
+    ).header;
   }
 
   Uri _sanitizeURLForWeb(String fileName) {
     final uri = Uri.tryParse(fileName);
     if (uri?.isAbsolute ?? false) return uri!;
-
     // URL-encode for relative asset paths
-    final encoded = Uri.decodeFull(fileName) != fileName ? fileName : Uri.encodeFull(fileName);
-    return Uri.parse(encoded);
+    return Uri.parse(Uri.decodeFull(fileName) != fileName ? fileName : Uri.encodeFull(fileName));
   }
 
   /// Handles file fetching for both assets and URLs to cache them locally.
   Future<Uri> handleFile(String fileNameOrUrl, FileFetchMode mode) async {
-    if (kIsWeb && mode == FileFetchMode.asset) {
-      late final Uri uri;
-      if (!fileNameOrUrl.startsWith('/assets/')) {
-        // For web, we need to ensure the asset path is correct
-        uri = _sanitizeURLForWeb('/assets/$fileNameOrUrl');
-      } else {
-        uri = _sanitizeURLForWeb(fileNameOrUrl);
-      }
-
+    if (kIsWeb) {
+      final uri = mode == FileFetchMode.asset
+          ? (!fileNameOrUrl.startsWith('/assets/')
+              ? _sanitizeURLForWeb('/assets/$fileNameOrUrl')
+              : _sanitizeURLForWeb(fileNameOrUrl))
+          : _sanitizeURLForWeb(fileNameOrUrl);
       try {
         await http.get(uri);
         return uri;
@@ -215,46 +200,23 @@ class PlaybackState extends ChangeNotifier {
         error = true;
       }
     }
-    if (kIsWeb && mode == FileFetchMode.url) {
-      final uri = _sanitizeURLForWeb(fileNameOrUrl);
-      try {
-        await http.get(uri);
-        return uri;
-      } catch (e) {
-        error = true;
-      }
-    }
-
     final tempDir = Directory.systemTemp.path;
     final fileName = mode == FileFetchMode.url
-        ? Uri.decodeFull(fileNameOrUrl) != fileNameOrUrl
-            ? fileNameOrUrl
-            : Uri.encodeFull(fileNameOrUrl)
+        ? (Uri.decodeFull(fileNameOrUrl) != fileNameOrUrl ? fileNameOrUrl : Uri.encodeFull(fileNameOrUrl))
         : fileNameOrUrl;
     final filePath = mode == FileFetchMode.asset ? '$tempDir$fileNameOrUrl' : '$tempDir/$fileName';
     final file = File(filePath);
-
-    // Check if the file already exists
-    if (file.existsSync()) {
-      return file.uri;
-    }
-
+    if (file.existsSync()) return file.uri;
     if (mode == FileFetchMode.asset) {
-      // Read local asset from rootBundle and store it
       final byteData = await rootBundle.load(fileNameOrUrl);
       await file.create(recursive: true);
       await file.writeAsBytes(byteData.buffer.asUint8List());
     } else {
-      // Download the file if it doesn't exist
       final response = await http.get(Uri.parse(fileNameOrUrl));
-      if (response.statusCode != 200) {
-        throw Exception('Failed to download audio file');
-      }
-
+      if (response.statusCode != 200) throw Exception('Failed to download audio file');
       await file.create(recursive: true);
       await file.writeAsBytes(response.bodyBytes);
     }
-
     return file.uri;
   }
 }

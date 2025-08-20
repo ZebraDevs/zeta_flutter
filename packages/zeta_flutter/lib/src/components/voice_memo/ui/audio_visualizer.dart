@@ -96,141 +96,124 @@ class ZetaAudioVisualizer extends ZetaStatefulWidget {
 }
 
 class _ZetaAudioVisualizerState extends State<ZetaAudioVisualizer> {
-  PlaybackState? _state;
-  RecordingState? _recordingState;
   final GlobalKey _rowKey = GlobalKey();
-  final GlobalKey _recKey = GlobalKey();
 
-  Widget _makeBody(BuildContext context, {bool isRecording = false}) {
-    return Consumer<PlaybackState>(
-      builder: (context, state, _) {
-        _state ??= state;
-        final zeta = Zeta.of(context);
-        final fg = widget.foregroundColor ?? zeta.colors.mainDefault;
-        final bg = widget.backgroundColor ?? zeta.colors.surfaceHover;
-        final playButtonColor = widget.playButtonColor ?? zeta.colors.mainPrimary;
-        final tertiaryColor = widget.tertiaryColor ?? zeta.colors.mainLight;
-        final duration = isRecording
-            ? (context.watch<RecordingState>().duration ?? Duration.zero)
-            : (state.playbackPercent == 0 && (state.loadedAudio ?? false)
-                ? state.duration
-                : Duration(milliseconds: state.playbackPercent * (state.duration?.inMilliseconds ?? 1) ~/ 1));
+  Widget _buildVisualizer(
+    BuildContext context,
+    PlaybackState state, {
+    bool isRecording = false,
+    Duration? recDuration,
+  }) {
+    final zeta = Zeta.of(context);
+    final fg = widget.foregroundColor ?? zeta.colors.mainDefault;
+    final bg = widget.backgroundColor ?? zeta.colors.surfaceHover;
+    final playButtonColor = widget.playButtonColor ?? zeta.colors.mainPrimary;
+    final tertiaryColor = widget.tertiaryColor ?? zeta.colors.mainLight;
+    final duration = isRecording
+        ? (recDuration ?? Duration.zero)
+        : (state.playbackPercent == 0 && (state.loadedAudio ?? false)
+            ? state.duration
+            : Duration(milliseconds: state.playbackPercent * (state.duration?.inMilliseconds ?? 1) ~/ 1));
 
-        return Stack(
-          children: [
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.all(zeta.radius.rounded),
-                color: bg,
-              ),
-              padding: EdgeInsets.all(zeta.spacing.minimum),
-              child: Row(
-                children: [
-                  if (!isRecording)
-                    AnimatedSize(
-                      duration: ZetaAnimationLength.fast,
-                      child: PlayButton(
-                        key: const ValueKey('playButton'),
-                        onTap: () async {
-                          if (state.playing) {
-                            widget.onPause?.call();
-                            await _state?.pause();
-                          } else {
-                            widget.onPlay?.call();
-                            await _state?.play();
-                          }
-                        },
-                        playButtonColor: playButtonColor,
-                        iconColor: bg,
+    return Stack(
+      children: [
+        Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.all(zeta.radius.rounded),
+            color: bg,
+          ),
+          padding: EdgeInsets.all(zeta.spacing.minimum),
+          child: Row(
+            children: [
+              if (!isRecording)
+                AnimatedSize(
+                  duration: ZetaAnimationLength.fast,
+                  child: PlayButton(
+                    key: const ValueKey('playButton'),
+                    onTap: () async {
+                      if (state.playing) {
+                        widget.onPause?.call();
+                        await state.pause();
+                      } else {
+                        widget.onPlay?.call();
+                        await state.play();
+                      }
+                    },
+                    playButtonColor: playButtonColor,
+                    iconColor: bg,
+                  ),
+                ),
+              Expanded(
+                child: Stack(
+                  children: [
+                    if (widget.assetPath == null && widget.deviceFilePath == null && widget.url == null)
+                      Waveform(playedColor: fg),
+                    if (!isRecording)
+                      ColoredBox(
+                        color: bg,
+                        child: Waveform(
+                          playedColor: fg,
+                          unplayedColor: tertiaryColor,
+                          audioFile: state.localFile,
+                          audioChunks: state.audioChunks,
+                          onInteraction: (offset) {
+                            final box = _rowKey.currentContext?.findRenderObject() as RenderBox?;
+                            if (state.duration == null || box == null) return;
+                            unawaited(state.seekFromPosition(offset, box.size.width, state.duration));
+                          },
+                          key: _rowKey,
+                        ),
                       ),
-                    ),
-                  Expanded(
-                    child: Stack(
-                      children: [
-                        if (widget.assetPath == null && widget.deviceFilePath == null && widget.url == null)
-                          Waveform(
-                            playedColor: fg,
-                            key: _recKey,
-                          ),
-                        if (!isRecording)
-                          ColoredBox(
-                            color: bg,
-                            child: Waveform(
-                              playedColor: fg,
-                              unplayedColor: tertiaryColor,
-                              audioFile: isRecording ? null : state.localFile,
-                              audioChunks: state.audioChunks,
-                              onInteraction: (Offset offset) {
-                                final box = _rowKey.currentContext?.findRenderObject() as RenderBox?;
-                                if (state.duration == null || box == null) return;
-
-                                unawaited(
-                                  state.seekFromPosition(
-                                    offset,
-                                    box.size.width,
-                                    state.duration,
-                                  ),
-                                );
-                              },
-                              key: _rowKey,
-                            ),
-                          ),
-                      ],
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(
-                      left: zeta.spacing.small,
-                      right: zeta.spacing.medium,
-                      top: zeta.spacing.large - ZetaBorders.medium,
-                      bottom: zeta.spacing.large - ZetaBorders.medium,
-                    ),
-                    child: Text(
-                      duration?.minutesSeconds ?? '0:00',
-                      style: zeta.textStyles.labelMedium.apply(color: fg),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            if (state.error ||
-                (state.loadedAudio == false &&
-                    !isRecording &&
-                    ([widget.assetPath, widget.url, widget.deviceFilePath].any((source) => source != null))))
-              Positioned(
-                top: 0,
-                left: 0,
-                right: 0,
-                bottom: 0,
-                child: DecoratedBox(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(zeta.radius.rounded),
-                    color: Zeta.of(context).colors.surfaceDefault.withAlpha(200),
-                  ),
-                  child: Center(child: Text(widget.errorMessage)),
+                  ],
                 ),
               ),
-          ],
-        );
-      },
+              Padding(
+                padding: EdgeInsets.only(
+                  left: zeta.spacing.small,
+                  right: zeta.spacing.medium,
+                  top: zeta.spacing.large - ZetaBorders.medium,
+                  bottom: zeta.spacing.large - ZetaBorders.medium,
+                ),
+                child: Text(
+                  duration?.minutesSeconds ?? '0:00',
+                  style: zeta.textStyles.labelMedium.apply(color: fg),
+                ),
+              ),
+            ],
+          ),
+        ),
+        if (state.error ||
+            (state.loadedAudio == false &&
+                !isRecording &&
+                ([widget.assetPath, widget.url, widget.deviceFilePath].any((source) => source != null))))
+          Positioned.fill(
+            child: DecoratedBox(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.all(zeta.radius.rounded),
+                color: Zeta.of(context).colors.surfaceDefault.withAlpha(200),
+              ),
+              child: Center(child: Text(widget.errorMessage)),
+            ),
+          ),
+      ],
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    final bool isInRecordingProvider;
-    if (_recordingState == null) {
-      isInRecordingProvider = context.findAncestorWidgetOfExactType<Consumer2<RecordingState, PlaybackState>>() != null;
-    } else {
-      isInRecordingProvider = !(_recordingState == null);
-    }
-
+    final isInRecordingProvider =
+        context.findAncestorWidgetOfExactType<Consumer2<RecordingState, PlaybackState>>() != null;
     if (isInRecordingProvider) {
       return Consumer<RecordingState>(
         builder: (context, recordingState, _) {
-          _recordingState ??= recordingState;
-
-          return _makeBody(context, isRecording: recordingState.isRecording || recordingState.duration == null);
+          return Consumer<PlaybackState>(
+            builder: (context, playbackState, __) => _buildVisualizer(
+              context,
+              playbackState,
+              isRecording: recordingState.isRecording || recordingState.duration == null,
+              recDuration: recordingState.duration,
+            ),
+          );
         },
       );
     } else {
@@ -240,7 +223,9 @@ class _ZetaAudioVisualizerState extends State<ZetaAudioVisualizer> {
           deviceFilePath: widget.deviceFilePath,
           url: widget.url,
         ),
-        child: _makeBody(context),
+        child: Consumer<PlaybackState>(
+          builder: (context, state, _) => _buildVisualizer(context, state),
+        ),
       );
     }
   }
