@@ -52,7 +52,7 @@ class Waveform extends StatefulWidget {
 }
 
 class _WaveformState extends State<Waveform> {
-  List<double> _amplitudes = List.empty(growable: true);
+  final List<double> _amplitudes = [];
   bool _isLoading = false;
   bool _isSeeking = false;
   bool _isListening = false;
@@ -87,11 +87,17 @@ class _WaveformState extends State<Waveform> {
 
   Future<void> getAmplitudes() async {
     if (widget.audioFile != null && widget.audioFile!.path.isNotEmpty && !_alsoLoading) {
-      _amplitudes = await extractAudioAmplitudesFromFile(widget.audioFile!, _amplitudes.length);
+      final amps = await extractAudioAmplitudesFromFile(widget.audioFile!, _amplitudes.length);
+      _amplitudes
+        ..clear()
+        ..addAll(amps);
       _isLoading = true;
       _alsoLoading = false;
     } else if (widget.audioChunks != null) {
-      _amplitudes = await extractAudioAmplitudesFromBytes(widget.audioChunks!, _amplitudes.length);
+      final amps = await extractAudioAmplitudesFromBytes(widget.audioChunks!, _amplitudes.length);
+      _amplitudes
+        ..clear()
+        ..addAll(amps);
       _isLoading = false;
     } else if (context.findAncestorWidgetOfExactType<Consumer2<RecordingState, PlaybackState>>() != null) {
       _recordingState ??= context.watch<RecordingState>();
@@ -111,17 +117,12 @@ class _WaveformState extends State<Waveform> {
           }
           samples.add(sum / numChannels);
         }
-        if (samples.isNotEmpty) {
-          final sumSquares = samples.fold<double>(0, (a, b) => a + b * b);
-          var rms = sqrt(sumSquares / samples.length) / 32768.0;
-          // Boost the loudness for better visualization
-          rms *= _recordingState?.loudnessMultiplier ?? 1;
-          _amplitudes.add(rms.clamp(0.0, 1.0));
-        } else {
-          _amplitudes.add(0);
-        }
+        final double amplitude = samples.isNotEmpty
+            ? (sqrt(samples.fold<double>(0, (a, b) => a + b * b) / samples.length) / 32768.0) *
+                (_recordingState?.loudnessMultiplier ?? 1)
+            : 0;
+        _amplitudes.add(amplitude.clamp(0.0, 1.0));
         setState(() {});
-        // Scroll to end after new amplitude is added
         WidgetsBinding.instance.addPostFrameCallback((_) {
           if (_scrollController.hasClients) {
             _scrollController.jumpTo(_scrollController.position.maxScrollExtent);
@@ -133,7 +134,6 @@ class _WaveformState extends State<Waveform> {
 
   Widget _makeBody(BuildContext context) {
     final zeta = Zeta.of(context);
-
     return GestureDetector(
       behavior: HitTestBehavior.translucent,
       onHorizontalDragUpdate: (details) => widget.onInteraction?.call(details.localPosition),
@@ -144,17 +144,18 @@ class _WaveformState extends State<Waveform> {
         builder: (context, constraints) {
           WidgetsBinding.instance.addPostFrameCallback((_) {
             final linesNeeded = constraints.maxWidth ~/ 4;
-
             if (context.mounted &&
                 !_isLoading &&
                 (_amplitudes.length != linesNeeded) &&
                 (widget.audioFile != null || widget.audioChunks != null)) {
               _isLoading = true;
-              setState(() => _amplitudes = List.filled(linesNeeded, 0, growable: true));
+              _amplitudes
+                ..clear()
+                ..addAll(List.filled(linesNeeded, 0, growable: true));
+              setState(() {});
               unawaited(getAmplitudes());
             }
           });
-
           return SingleChildScrollView(
             controller: _scrollController,
             scrollDirection: Axis.horizontal,
@@ -164,30 +165,26 @@ class _WaveformState extends State<Waveform> {
               children: [
                 if (constraints.maxWidth - (_amplitudes.length * 4) > 0)
                   SizedBox(width: constraints.maxWidth - (_amplitudes.length * 4)),
-                ...List.generate(
-                  _amplitudes.length,
-                  (index) {
-                    final amplitude = _amplitudes[index];
-                    return AnimatedContainer(
-                      key: ValueKey(index),
-                      duration: _isSeeking
-                          ? Duration.zero
-                          : _playbackState!.playbackPercent == 0
-                              ? ZetaAnimationLength.verySlow
-                              : ZetaAnimationLength.veryFast,
-                      width: ZetaBorders.medium,
-                      height: (amplitude * zeta.spacing.xl_4).clamp(ZetaBorders.small, zeta.spacing.xl_4),
-                      margin: const EdgeInsets.symmetric(horizontal: 1),
-                      decoration: BoxDecoration(
-                        color: (_playbackState!.playbackPercent > (index / _amplitudes.length)) ||
-                                (widget.audioFile == null && widget.audioChunks == null)
-                            ? widget.playedColor
-                            : widget.unplayedColor,
-                        borderRadius: BorderRadius.all(zeta.radius.full),
-                      ),
-                    );
-                  },
-                ),
+                for (int index = 0; index < _amplitudes.length; index++)
+                  AnimatedContainer(
+                    key: ValueKey(index),
+                    duration: _isSeeking
+                        ? Duration.zero
+                        : _playbackState?.playbackPercent == 0
+                            ? ZetaAnimationLength.verySlow
+                            : ZetaAnimationLength.veryFast,
+                    width: ZetaBorders.medium,
+                    height: (_amplitudes[index] * zeta.spacing.xl_4).clamp(ZetaBorders.small, zeta.spacing.xl_4),
+                    margin: const EdgeInsets.symmetric(horizontal: 1),
+                    decoration: BoxDecoration(
+                      color: (_playbackState?.playbackPercent ?? 0) >
+                                  (index / (_amplitudes.isEmpty ? 1 : _amplitudes.length)) ||
+                              (widget.audioFile == null && widget.audioChunks == null)
+                          ? widget.playedColor
+                          : widget.unplayedColor,
+                      borderRadius: BorderRadius.all(zeta.radius.full),
+                    ),
+                  ),
               ],
             ),
           );
@@ -200,7 +197,6 @@ class _WaveformState extends State<Waveform> {
   Widget build(BuildContext context) {
     final isInRecordingProvider =
         context.findAncestorWidgetOfExactType<Consumer2<RecordingState, PlaybackState>>() != null;
-
     return Consumer<PlaybackState>(
       builder: (context, state, _) {
         _playbackState ??= state;
@@ -211,9 +207,8 @@ class _WaveformState extends State<Waveform> {
               return _makeBody(context);
             },
           );
-        } else {
-          return _makeBody(context);
         }
+        return _makeBody(context);
       },
     );
   }

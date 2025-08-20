@@ -65,7 +65,7 @@ class RecordingState extends ChangeNotifier {
   /// The current duration of the recording.
   Duration? get duration => _duration;
   set duration(Duration? value) {
-    if (value != _duration && value?.inMilliseconds != _duration?.inMilliseconds) {
+    if (value?.inMilliseconds != _duration?.inMilliseconds) {
       _duration = value;
       notifyListeners();
     }
@@ -90,11 +90,15 @@ class RecordingState extends ChangeNotifier {
     _stream = value;
     _rawAudioChunks = Uint8List(0);
     _stream?.listen((onData) {
-      final prev = _rawAudioChunks ?? Uint8List(0);
-      final combined = Uint8List(prev.length + onData.length)
-        ..setAll(0, prev)
-        ..setAll(prev.length, onData);
-      _rawAudioChunks = combined;
+      if (_rawAudioChunks == null || _rawAudioChunks!.isEmpty) {
+        _rawAudioChunks = onData;
+      } else {
+        final prev = _rawAudioChunks!;
+        final combined = Uint8List(prev.length + onData.length)
+          ..setAll(0, prev)
+          ..setAll(prev.length, onData);
+        _rawAudioChunks = combined;
+      }
     });
   }
 
@@ -154,11 +158,13 @@ class RecordingState extends ChangeNotifier {
       await _record.pause();
       isRecording = false;
       _recordingTimer?.cancel();
-      await playbackState.loadAudio(
-        audioChunks: [_rawAudioChunks!],
-        recordConfig: recordConfig,
-      );
-      await playbackState.resetPlayback();
+      if (_rawAudioChunks != null) {
+        await playbackState.loadAudio(
+          audioChunks: [_rawAudioChunks!],
+          recordConfig: recordConfig,
+        );
+        await playbackState.resetPlayback();
+      }
     }
     showWarning = false;
   }
