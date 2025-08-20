@@ -19,6 +19,10 @@ class ZetaAudioVisualizer extends ZetaStatefulWidget {
     this.assetPath,
     this.url,
     this.deviceFilePath,
+    this.audioStream,
+    this.isRecording = false,
+    this.maxRecordingDuration,
+    this.recordConfig,
     this.backgroundColor,
     this.foregroundColor,
     this.tertiaryColor,
@@ -27,36 +31,8 @@ class ZetaAudioVisualizer extends ZetaStatefulWidget {
     this.onPause,
     this.onPlay,
     this.errorMessage = 'Audio cannot be played',
-  })  : assert(
-          assetPath != null || url != null || deviceFilePath != null,
-          'Audio source required: provide assetPath, url, or deviceFilePath',
-        ),
-        audioStream = null,
-        isRecording = false,
-        maxRecordingDuration = null,
-        recordConfig = null,
-        loudnessMultiplier = null;
-
-  /// Constructs a [ZetaAudioVisualizer] for [ZetaVoiceMemo].
-  const ZetaAudioVisualizer.voiceMemo({
-    required this.isRecording,
-    this.maxRecordingDuration,
-    this.recordConfig,
-    this.onPlay,
-    this.onPause,
-    super.key,
-    super.rounded,
-    this.audioStream,
-    this.audioDuration,
-    this.errorMessage = 'Audio cannot be played',
     this.loudnessMultiplier,
-  })  : assetPath = null,
-        url = null,
-        deviceFilePath = null,
-        backgroundColor = null,
-        foregroundColor = null,
-        tertiaryColor = null,
-        playButtonColor = null;
+  });
 
   /// The path of a local audio asset to visualize.
   final String? assetPath;
@@ -136,7 +112,7 @@ class ZetaAudioVisualizer extends ZetaStatefulWidget {
   final int? loudnessMultiplier;
 
   @override
-  State<ZetaAudioVisualizer> createState() => ZetaAudioVisualizerState();
+  State<ZetaAudioVisualizer> createState() => _ZetaAudioVisualizerState();
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
@@ -161,17 +137,11 @@ class ZetaAudioVisualizer extends ZetaStatefulWidget {
   }
 }
 
-/// State for the audio visualizer component.
-///
-/// This should not be called directly, and is only public for state management reasons.
-class ZetaAudioVisualizerState extends State<ZetaAudioVisualizer> {
+class _ZetaAudioVisualizerState extends State<ZetaAudioVisualizer> {
   PlaybackState? _state;
   final GlobalKey _rowKey = GlobalKey();
   final GlobalKey _recKey = GlobalKey();
   final List<Uint8List> _audioChunks = [];
-
-  /// Clears the recorded audio from the state.
-  Future<void> clearVisualizerAudio() async => _audioChunks.clear();
 
   @override
   void didUpdateWidget(covariant ZetaAudioVisualizer oldWidget) {
@@ -291,9 +261,10 @@ class ZetaAudioVisualizerState extends State<ZetaAudioVisualizer> {
                 ],
               ),
             ),
-            if (state.loadedAudio == false &&
-                !widget.isRecording &&
-                ([widget.assetPath, widget.url, widget.deviceFilePath].any((source) => source != null)))
+            if (state.error ||
+                (state.loadedAudio == false &&
+                    !widget.isRecording &&
+                    ([widget.assetPath, widget.url, widget.deviceFilePath].any((source) => source != null))))
               Positioned(
                 top: 0,
                 left: 0,

@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs
 import 'dart:async';
 import 'dart:io';
 
@@ -8,6 +7,7 @@ import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 import 'package:record/record.dart';
 
+import '../voice_memo.dart';
 import 'wav_header.dart';
 
 /// Enum to specify how to fetch the file: from assets or from a URL.
@@ -19,27 +19,29 @@ enum FileFetchMode {
   url
 }
 
+/// State class for managing audio playback in the [ZetaVoiceMemo] and [ZetaAudioVisualizer].
 class PlaybackState extends ChangeNotifier {
+  /// Constructs a [PlaybackState].
   PlaybackState({
     String? assetPath,
     String? deviceFilePath,
     String? url,
   }) {
-    unawaited(
-      loadAudio(
-        assetPath: assetPath,
-        deviceFilePath: deviceFilePath,
-        url: url,
-      ).then((_) => resetPlayback()),
-    );
+    unawaited(loadAudio(assetPath: assetPath, deviceFilePath: deviceFilePath, url: url).then((_) => resetPlayback()));
     _audioPlayer.onPlayerComplete.listen((_) => resetPlayback());
     _positionSubscription = _audioPlayer.onPositionChanged.listen((position) {
       final newPercent = _duration != null && _duration!.inMilliseconds > 0
           ? position.inMilliseconds / _duration!.inMilliseconds
           : 0.0;
+
       if (newPercent != _playbackPercent) {
+        print('Setting new percent');
         _playbackPercent = newPercent;
         notifyListeners();
+      } else {
+        // print('Percent unchanged: $_playbackPercent');
+        // print('Duration : ${_duration}');
+        // print('Position: $position');
       }
     });
   }
@@ -51,10 +53,22 @@ class PlaybackState extends ChangeNotifier {
   StreamSubscription<Duration>? _positionSubscription;
   bool? _loadedAudio;
   double _playbackPercent = 0;
+
+  bool _error = false;
+
+  /// Whether there is an error fetching the audio.
+  bool get error => _error;
+  set error(bool value) {
+    if (value != _error) {
+      _error = value;
+      notifyListeners();
+    }
+  }
+
   bool _playing = false;
 
+  /// Whether the audio is currently playing.
   bool get playing => _playing;
-
   set playing(bool value) {
     if (value != _playing) {
       _playing = value;
@@ -77,6 +91,7 @@ class PlaybackState extends ChangeNotifier {
   /// Playback progress as a percentage (0.0 to 1.0)
   double get playbackPercent => _playbackPercent;
 
+  /// Loads audio from various sources to be played back
   Future<void> loadAudio({
     String? assetPath,
     String? url,
@@ -98,6 +113,7 @@ class PlaybackState extends ChangeNotifier {
     }
   }
 
+  /// Resets the playback state, clearing the current audio and resetting playback progress.
   Future<void> resetPlayback() async {
     _playbackPercent = 0;
     _playing = false;
@@ -105,11 +121,9 @@ class PlaybackState extends ChangeNotifier {
     try {
       if (_localFile != null) {
         await _audioPlayer.setSourceUrl(_localFile!.toString());
-        _duration = await _audioPlayer.getDuration();
         _loadedAudio = true;
       } else if (_localChunks != null) {
         await _audioPlayer.setSourceBytes(_localChunks!, mimeType: 'audio/wav');
-        _duration = await _audioPlayer.getDuration();
         _loadedAudio = true;
       } else {
         _loadedAudio = false;
@@ -118,12 +132,15 @@ class PlaybackState extends ChangeNotifier {
       debugPrint('Error loading audio: $e');
       _loadedAudio = false;
     }
+    if (_loadedAudio ?? false) {
+      _duration = await _audioPlayer.getDuration();
+    }
     notifyListeners();
   }
 
+  /// Play audio from the current position
   Future<void> play() async {
-    // If playback is at the end, reset before playing again
-    if (_playbackPercent >= 1.0 || _audioPlayer.state == PlayerState.completed) {
+    if (_playbackPercent >= 1.0) {
       await resetPlayback();
     }
     await _audioPlayer.resume();
@@ -145,6 +162,7 @@ class PlaybackState extends ChangeNotifier {
   /// Seek to specific position
   Future<void> seek(Duration position) => _audioPlayer.seek(position);
 
+  /// Seeks to a position based on a gesture in the visualizer
   Future<void> seekFromPosition(Offset gesturePosition, double visualizerWidth, Duration? totalDuration) async {
     if (totalDuration == null || visualizerWidth == 0) return;
     final percent = (gesturePosition.dx / visualizerWidth).clamp(0.0, 1.0);
@@ -195,18 +213,21 @@ class PlaybackState extends ChangeNotifier {
         uri = _sanitizeURLForWeb(fileNameOrUrl);
       }
 
-      // We rely on browser caching here. Once the browser downloads this file,
-      // the native side implementation should be able to access it from cache.
-      await http.get(uri);
-
-      return uri;
+      try {
+        await http.get(uri);
+        return uri;
+      } catch (e) {
+        error = true;
+      }
     }
     if (kIsWeb && mode == FileFetchMode.url) {
       final uri = _sanitizeURLForWeb(fileNameOrUrl);
-      // We rely on browser caching here. Once the browser downloads this file,
-      // the native side implementation should be able to access it from cache.
-      await http.get(uri);
-      return uri;
+      try {
+        await http.get(uri);
+        return uri;
+      } catch (e) {
+        error = true;
+      }
     }
 
     final tempDir = Directory.systemTemp.path;

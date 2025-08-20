@@ -16,7 +16,6 @@ class Waveform extends StatefulWidget {
     super.key,
     this.playedColor,
     this.unplayedColor,
-    // this.playbackPosition,
     this.onInteraction,
     this.audioFile,
     this.recordingValues,
@@ -30,9 +29,6 @@ class Waveform extends StatefulWidget {
 
   /// The color of the waveform's bar elements before they have been played.
   final Color? unplayedColor;
-
-  /// The current playback location of the waveform.
-  // final ValueNotifier<double>? playbackPosition;
 
   /// Callback for interaction events on the waveform.
   final void Function(Offset)? onInteraction;
@@ -134,65 +130,69 @@ class _WaveformState extends State<Waveform> {
   Widget build(BuildContext context) {
     final zeta = Zeta.of(context);
 
-    return GestureDetector(
-      behavior: HitTestBehavior.translucent,
-      onHorizontalDragUpdate: (details) => widget.onInteraction?.call(details.localPosition),
-      onHorizontalDragEnd: (_) => setState(() => _isSeeking = false),
-      onHorizontalDragStart: (_) => setState(() => _isSeeking = true),
-      onTapDown: (details) => widget.onInteraction?.call(details.localPosition),
-      child: LayoutBuilder(
-        builder: (context, constraints) {
-          WidgetsBinding.instance.addPostFrameCallback((_) {
-            final linesNeeded = constraints.maxWidth ~/ 4;
+    return Consumer<PlaybackState>(
+      builder: (context, state, _) {
+        return GestureDetector(
+          behavior: HitTestBehavior.translucent,
+          onHorizontalDragUpdate: (details) => widget.onInteraction?.call(details.localPosition),
+          onHorizontalDragEnd: (_) => setState(() => _isSeeking = false),
+          onHorizontalDragStart: (_) => setState(() => _isSeeking = true),
+          onTapDown: (details) => widget.onInteraction?.call(details.localPosition),
+          child: LayoutBuilder(
+            builder: (context, constraints) {
+              WidgetsBinding.instance.addPostFrameCallback((_) {
+                final linesNeeded = constraints.maxWidth ~/ 4;
 
-            if (context.mounted &&
-                !_isLoading &&
-                (_amplitudes.length != linesNeeded) &&
-                (widget.audioFile != null || widget.audioChunks != null)) {
-              _isLoading = true;
-              setState(() => _amplitudes = List.filled(linesNeeded, 0, growable: true));
-              unawaited(getAmplitudes());
-            }
-          });
+                if (context.mounted &&
+                    !_isLoading &&
+                    (_amplitudes.length != linesNeeded) &&
+                    (widget.audioFile != null || widget.audioChunks != null)) {
+                  _isLoading = true;
+                  setState(() => _amplitudes = List.filled(linesNeeded, 0, growable: true));
+                  unawaited(getAmplitudes());
+                }
+              });
 
-          return SingleChildScrollView(
-            controller: _scrollController,
-            scrollDirection: Axis.horizontal,
-            child: Row(
-              mainAxisAlignment: widget.audioFile == null ? MainAxisAlignment.end : MainAxisAlignment.center,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                if (constraints.maxWidth - (_amplitudes.length * 4) > 0)
-                  SizedBox(width: constraints.maxWidth - (_amplitudes.length * 4)),
-                ...List.generate(
-                  _amplitudes.length,
-                  (index) {
-                    final amplitude = _amplitudes[index];
-                    return AnimatedContainer(
-                      key: ValueKey(index),
-                      duration: _isSeeking
-                          ? Duration.zero
-                          : context.watch<PlaybackState>().playbackPercent == 0
-                              ? ZetaAnimationLength.verySlow
-                              : ZetaAnimationLength.veryFast,
-                      width: ZetaBorders.medium,
-                      height: (amplitude * zeta.spacing.xl_4).clamp(ZetaBorders.small, zeta.spacing.xl_4),
-                      margin: const EdgeInsets.symmetric(horizontal: 1),
-                      decoration: BoxDecoration(
-                        color: ((context.watch<PlaybackState>().playbackPercent) > (index / _amplitudes.length)) ||
-                                (widget.audioFile == null && widget.audioChunks == null)
-                            ? widget.playedColor
-                            : widget.unplayedColor,
-                        borderRadius: BorderRadius.all(zeta.radius.full),
-                      ),
-                    );
-                  },
+              return SingleChildScrollView(
+                controller: _scrollController,
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  mainAxisAlignment: widget.audioFile == null ? MainAxisAlignment.end : MainAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    if (constraints.maxWidth - (_amplitudes.length * 4) > 0)
+                      SizedBox(width: constraints.maxWidth - (_amplitudes.length * 4)),
+                    ...List.generate(
+                      _amplitudes.length,
+                      (index) {
+                        final amplitude = _amplitudes[index];
+                        return AnimatedContainer(
+                          key: ValueKey(index),
+                          duration: _isSeeking
+                              ? Duration.zero
+                              : state.playbackPercent == 0
+                                  ? ZetaAnimationLength.verySlow
+                                  : ZetaAnimationLength.veryFast,
+                          width: ZetaBorders.medium,
+                          height: (amplitude * zeta.spacing.xl_4).clamp(ZetaBorders.small, zeta.spacing.xl_4),
+                          margin: const EdgeInsets.symmetric(horizontal: 1),
+                          decoration: BoxDecoration(
+                            color: (state.playbackPercent > (index / _amplitudes.length)) ||
+                                    (widget.audioFile == null && widget.audioChunks == null)
+                                ? widget.playedColor
+                                : widget.unplayedColor,
+                            borderRadius: BorderRadius.all(zeta.radius.full),
+                          ),
+                        );
+                      },
+                    ),
+                  ],
                 ),
-              ],
-            ),
-          );
-        },
-      ),
+              );
+            },
+          ),
+        );
+      },
     );
   }
 

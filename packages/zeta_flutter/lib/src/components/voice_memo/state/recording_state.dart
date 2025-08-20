@@ -1,17 +1,14 @@
-// ignore_for_file: public_member_api_docs
-
 import 'dart:async';
 import 'dart:typed_data';
 
 import 'package:flutter/widgets.dart';
 import 'package:record/record.dart';
+import '../voice_memo.dart';
 
+/// State class for managing audio recording in the [ZetaVoiceMemo].
 class RecordingState extends ChangeNotifier {
-  RecordingState({
-    required this.recordConfig,
-    required this.maxRecordingDuration,
-    required this.warningDuration,
-  }) {
+  /// Constructs a [RecordingState].
+  RecordingState({required this.recordConfig, required this.maxRecordingDuration, required this.warningDuration}) {
     unawaited(
       _record.hasPermission().then((b) {
         _canRecord = b;
@@ -20,19 +17,28 @@ class RecordingState extends ChangeNotifier {
     );
   }
 
+  /// Configuration for the audio recording
+  ///
+  /// See Record package for more information.
   final RecordConfig recordConfig;
-  final AudioRecorder _record = AudioRecorder();
+
+  /// Maximum duration for recording.
   final Duration maxRecordingDuration;
+
+  /// Duration for which a warning is shown before reaching the maximum recording duration.
   final Duration warningDuration;
 
-  Uint8List? rawAudioChunks;
+  Uint8List? _rawAudioChunks;
   Timer? _recordingTimer;
   bool? _canRecord;
+  final AudioRecorder _record = AudioRecorder();
 
   /// Whether recording is allowed (based on permissions)
   bool get canRecord => _canRecord ?? false;
 
   bool _isRecording = false;
+
+  /// Whether the audio is currently being recorded.
   bool get isRecording => _isRecording;
   set isRecording(bool value) {
     if (value != _isRecording) {
@@ -42,6 +48,8 @@ class RecordingState extends ChangeNotifier {
   }
 
   Duration? _duration;
+
+  /// The current duration of the recording.
   Duration? get duration => _duration;
   set duration(Duration? value) {
     if (value != _duration && value?.inMilliseconds != _duration?.inMilliseconds) {
@@ -51,6 +59,8 @@ class RecordingState extends ChangeNotifier {
   }
 
   bool _showWarning = false;
+
+  /// Whether the UI should show the warning about reaching the maximum recording duration.
   bool get showWarning => _showWarning;
   set showWarning(bool value) {
     if (value != _showWarning) {
@@ -60,16 +70,18 @@ class RecordingState extends ChangeNotifier {
   }
 
   Stream<Uint8List>? _stream;
+
+  /// The stream of audio.
   Stream<Uint8List>? get stream => _stream;
   set stream(Stream<Uint8List>? value) {
     _stream = value;
-    rawAudioChunks = Uint8List(0);
+    _rawAudioChunks = Uint8List(0);
     _stream?.listen((onData) {
-      final prev = rawAudioChunks ?? Uint8List(0);
+      final prev = _rawAudioChunks ?? Uint8List(0);
       final combined = Uint8List(prev.length + onData.length)
         ..setAll(0, prev)
         ..setAll(prev.length, onData);
-      rawAudioChunks = combined;
+      _rawAudioChunks = combined;
     });
   }
 
@@ -90,7 +102,7 @@ class RecordingState extends ChangeNotifier {
     _recordingTimer?.cancel();
     _isRecording = false;
     _recordingTimer = null;
-    rawAudioChunks = null;
+    _rawAudioChunks = null;
     unawaited(_record.cancel());
     notifyListeners();
   }
