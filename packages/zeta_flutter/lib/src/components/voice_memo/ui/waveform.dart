@@ -9,7 +9,7 @@ import '../../../../zeta_flutter.dart';
 import '../state/playback_state.dart';
 import '../state/recording_state.dart';
 
-/// The visual waveform used in [ZetaAudioVisualizer] and [ZetaVoiceMemo.
+/// The visual waveform used in [ZetaAudioVisualizer] and [ZetaVoiceMemo].
 class Waveform extends StatefulWidget {
   /// Constructs a [Waveform].
   const Waveform({
