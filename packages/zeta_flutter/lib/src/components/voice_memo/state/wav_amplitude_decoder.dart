@@ -73,7 +73,17 @@ class WavAmplitudeDecoder implements AudioAmplitudeDecoder {
 
   List<double> _groupAndNormalizeSamples(List<double> samples, int groupsCount) {
     final groupSize = samples.length ~/ groupsCount;
-    final groups = List.generate(groupsCount, (i) => samples.skip(i * groupSize).take(groupSize).reduce(max));
+    final groups = List<double>.generate(groupsCount, (i) {
+      final int start = i * groupSize;
+      final int end = (i == groupsCount - 1) ? samples.length : start + groupSize;
+      double maxValue = samples[start];
+      for (int j = start + 1; j < end; j++) {
+        if (samples[j] > maxValue) {
+          maxValue = samples[j];
+        }
+      }
+      return maxValue;
+    });
     final maxAmplitude = groups.reduce(max);
 
     return maxAmplitude == 0 ? List.filled(groupsCount, 0) : groups.map((e) => e / maxAmplitude).toList();
