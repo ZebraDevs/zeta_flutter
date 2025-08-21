@@ -128,7 +128,7 @@ class PlaybackState extends ChangeNotifier {
       _loadedAudio = false;
     }
     if (_loadedAudio ?? false) {
-      _duration = await _audioPlayer.getDuration();
+      _duration ??= await _audioPlayer.getDuration();
     }
     notifyListeners();
   }
@@ -186,7 +186,7 @@ class PlaybackState extends ChangeNotifier {
   }
 
   /// Handles file fetching for both assets and URLs to cache them locally.
-  Future<Uri> handleFile(String fileNameOrUrl, FileFetchMode mode) async {
+  Future<Uri?> handleFile(String fileNameOrUrl, FileFetchMode mode) async {
     if (kIsWeb) {
       final uri = mode == FileFetchMode.asset
           ? (!fileNameOrUrl.startsWith('/assets/')
@@ -198,6 +198,7 @@ class PlaybackState extends ChangeNotifier {
         return uri;
       } catch (e) {
         error = true;
+        return null;
       }
     }
     final tempDir = Directory.systemTemp.path;

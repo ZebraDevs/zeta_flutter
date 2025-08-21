@@ -147,21 +147,23 @@ class _ZetaAudioVisualizerState extends State<ZetaAudioVisualizer> {
                 child: Stack(
                   children: [
                     if (widget.assetPath == null && widget.deviceFilePath == null && widget.url == null)
-                      Waveform(playedColor: fg),
+                      Positioned(child: Waveform(playedColor: fg)),
                     if (!isRecording)
-                      ColoredBox(
-                        color: bg,
-                        child: Waveform(
-                          playedColor: fg,
-                          unplayedColor: tertiaryColor,
-                          audioFile: state.localFile,
-                          audioChunks: state.audioChunks,
-                          onInteraction: (offset) {
-                            final box = _rowKey.currentContext?.findRenderObject() as RenderBox?;
-                            if (state.duration == null || box == null) return;
-                            unawaited(state.seekFromPosition(offset, box.size.width, state.duration));
-                          },
-                          key: _rowKey,
+                      Positioned(
+                        child: ColoredBox(
+                          color: bg,
+                          child: Waveform(
+                            playedColor: fg,
+                            unplayedColor: tertiaryColor,
+                            audioFile: state.localFile,
+                            audioChunks: state.audioChunks,
+                            onInteraction: (offset) {
+                              final box = _rowKey.currentContext?.findRenderObject() as RenderBox?;
+                              if (state.duration == null || box == null) return;
+                              unawaited(state.seekFromPosition(offset, box.size.width, state.duration));
+                            },
+                            key: _rowKey,
+                          ),
                         ),
                       ),
                   ],
