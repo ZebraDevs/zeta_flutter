@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.6](https://github.com/ZebraDevs/zeta_flutter/compare/zeta_icons-v1.1.5...zeta_icons-v1.1.6) (2025-08-21)
+
+
+### 🧹 Miscellaneous Chores
+
+* release zeta_icons v0.0.1 ([01c141f](https://github.com/ZebraDevs/zeta_flutter/commit/01c141f10abf91efe5aad4c6b94c787b73fd1723))
+
 ## [1.1.5](https://github.com/ZebraDevs/zeta_flutter/compare/zeta_icons-v1.1.4...zeta_icons-v1.1.5) (2025-08-13)
 
 
