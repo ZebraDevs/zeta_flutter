@@ -1,0 +1,62 @@
+name: Fetch Icons
+
+on:
+  workflow_dispatch:
+    inputs:
+      changelog:
+        description: "Changelog for the icons update"
+        required: true
+        type: string
+      version:
+        description: "Version number for the icons update"
+        required: true
+        type: string
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  fetch-icons:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout zeta_flutter
+        uses: actions/checkout@v4
+        with:
+          path: flutter
+          ref: main
+          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+
+      - name: Checkout zeta-icons
+        uses: actions/checkout@v4
+        with:
+          path: icons
+          ref: main
+          repository: ZebraDevs/zeta-icons
+
+      - name: Copy updated icons
+        run: |
+          cp -r icons/outputs/flutter/. flutter/packages/zeta_icons/lib/src
+
+      - name: Push changes
+        run: |
+          cd flutter
+          git config --global user.name "zeta-icons-bot"
+          git config --global user.email "zeta-icons-bot@github.com"
+          git add packages/zeta_icons/
+          git commit -m "chore: release zeta_icons v${{ github.event.inputs.version }}" -m "${{ github.event.inputs.changelog }}"
+          git tag -f zeta_icons-v${{ github.event.inputs.version }} -m "${{ github.event.inputs.changelog }}"
+          git push origin main --force-with-lease
+          git push --tags
+
+      - uses: actions/github-script@v7
+        if: steps.check-icons.outputs.icons_changed == 'true'
+        name: Create release
+        with:
+          script: |
+            github.rest.repos.createRelease({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              tag_name: `zeta_icons-v${{ github.event.inputs.version }}`,
+              body: `${{ github.event.inputs.changelog }}`
+            })
