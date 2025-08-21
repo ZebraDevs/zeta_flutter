@@ -114,7 +114,14 @@ class ExampleScaffold extends StatelessWidget {
       ),
       backgroundColor: colors.surface,
       bottomNavigationBar: bottomNavigationBar,
-      body: SelectionArea(child: child ?? SingleChildScrollView(child: Column(children: children ?? []))),
+      body: SelectionArea(
+        child: child ??
+            SingleChildScrollView(
+              child: Column(
+                children: children?.map((child) => child.paddingAll(8)).toList() ?? [],
+              ),
+            ),
+      ),
     );
   }
 }

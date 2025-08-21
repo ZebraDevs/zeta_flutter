@@ -35,10 +35,12 @@ class ZetaProgressCircle extends ZetaProgress {
     super.key,
     super.progress = 0,
     super.maxValue = 1,
+    super.animationDuration,
     this.size = ZetaCircleSizes.xl,
     super.rounded,
     this.onCancel,
     this.label,
+    this.child,
   });
 
   ///Size of [ZetaProgressCircle]
@@ -49,6 +51,11 @@ class ZetaProgressCircle extends ZetaProgress {
 
   /// Label for [ZetaProgressCircle], override default percentage label.
   final String? label;
+
+  /// Child widget shown in the center of the circle.
+  ///
+  /// If provided, it will replace the label text.
+  final Widget? child;
 
   @override
   State<ZetaProgressCircle> createState() => _ZetaProgressCircleState();
@@ -62,7 +69,8 @@ class ZetaProgressCircle extends ZetaProgress {
       ..add(DiagnosticsProperty<bool>('rounded', rounded))
       ..add(ObjectFlagProperty<VoidCallback?>.has('onCancel', onCancel))
       ..add(DoubleProperty('maxValue', maxValue))
-      ..add(StringProperty('label', label));
+      ..add(StringProperty('label', label))
+      ..add(DiagnosticsProperty<Duration?>('animationDuration', animationDuration));
   }
 }
 
@@ -90,10 +98,7 @@ class _ZetaProgressCircleState extends ZetaProgressState<ZetaProgressCircle> {
   Widget build(BuildContext context) {
     final textVal = widget.label ?? '${(widget.progress * 100).round()}%';
     final colors = Zeta.of(context).colors;
-    final textWidget = Text(
-      textVal,
-      style: _getTextSize(),
-    );
+    final centerWidget = widget.child ?? Text(textVal, style: _getTextSize());
     final size = _getSize(context);
 
     return ConstrainedBox(
@@ -144,11 +149,11 @@ class _ZetaProgressCircleState extends ZetaProgressState<ZetaProgressCircle> {
                                         ),
                                       ),
                                     )
-                                  : textWidget,
+                                  : centerWidget,
                             );
                           },
                         )
-                      : textWidget,
+                      : centerWidget,
             ),
           );
         },
@@ -227,8 +232,16 @@ class _CirclePainter extends CustomPainter {
 
     const double fullCircle = 2 * math.pi;
 
+    final double strokeWidth = _paint.strokeWidth;
+    final Rect adjustedRect = Rect.fromLTRB(
+      strokeWidth / 2,
+      strokeWidth / 2,
+      size.width - strokeWidth / 2,
+      size.height - strokeWidth / 2,
+    );
+
     canvas.drawArc(
-      Rect.fromLTRB(0, 0, size.width, size.height),
+      adjustedRect,
       3 * math.pi / 2,
       progress / maxValue * fullCircle,
       false,

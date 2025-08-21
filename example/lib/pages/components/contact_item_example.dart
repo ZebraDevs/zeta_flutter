@@ -25,7 +25,7 @@ class _ContactItemExampleState extends State<ContactItemExample> {
                 onTap: () {},
                 leading: ZetaAvatar(
                   size: ZetaAvatarSize.s,
-                  image: Image.asset('packages/zeta_widgetbook/assets/omer.jpg', fit: BoxFit.cover),
+                  image: Image.asset('assets/omer.jpg', fit: BoxFit.cover),
                 ),
                 title: Text("Contact / Group Name"),
                 subtitle: Text("Store Associate - Bakery Dept."),
