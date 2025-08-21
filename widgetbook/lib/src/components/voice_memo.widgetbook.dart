@@ -38,6 +38,14 @@ Widget voiceMemo(BuildContext context) => ZetaVoiceMemo(
         label: "Recording not allowed label",
         initialValue: "Recording not allowed.",
       ),
+      loudnessMultiplier: context.knobs.int
+          .slider(
+            label: "Loudness multiplier",
+            initialValue: 500,
+            min: 1,
+            max: 1000,
+          )
+          .toDouble(),
     );
 
 @widgetbook.UseCase(

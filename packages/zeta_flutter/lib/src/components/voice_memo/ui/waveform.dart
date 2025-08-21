@@ -47,7 +47,7 @@ class Waveform extends StatefulWidget {
       ..add(ColorProperty('unplayedColor', unplayedColor))
       ..add(ObjectFlagProperty<void Function(Offset p1)>.has('onInteraction', onInteraction))
       ..add(DiagnosticsProperty<Uri>('audioFile', audioFile))
-      ..add(IterableProperty<Iterable<Uint8List?>>('audioChunks', audioChunks as Iterable<Iterable<Uint8List?>>?));
+      ..add(IterableProperty('audioChunks', audioChunks));
   }
 }
 
