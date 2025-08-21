@@ -73,7 +73,7 @@ jobs:
           cd packages/${{ env.package }}
           dart format . 
           dart fix --apply
-          flutter pub publish -f
+          flutter pub publish -f --dry-run
 
   deploy-website:
     runs-on: ubuntu-latest
