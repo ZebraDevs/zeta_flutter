@@ -43,6 +43,8 @@ jobs:
         run: |
           cd flutter/packages/zeta_icons/
           sed -i 's/^version: .*/version: ${{ github.event.inputs.version }}/' pubspec.yaml
+          cd ../zeta_flutter
+          sed -i 's/^  zeta_icons: .*/  zeta_icons: ${{ github.event.inputs.version }}/' pubspec.yaml
 
       - name: Push changes
         run: |
