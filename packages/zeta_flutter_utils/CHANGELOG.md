@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.2.0](https://github.com/ZebraDevs/zeta_flutter/compare/zeta_flutter_utils-v1.1.2...zeta_flutter_utils-v1.2.0) (2025-08-26)
+
+
+### ✨ New Features
+
+* **UX-1461:** Voice Memo component ([#377](https://github.com/ZebraDevs/zeta_flutter/issues/377)) ([69770e1](https://github.com/ZebraDevs/zeta_flutter/commit/69770e12f89ec3ee21c7ddebfc210a2398636669))
+
+
+### 🧹 Miscellaneous Chores
+
+* Add animation duration to ZetaProgressIndicator / Circle and added center component to ZetaProgressCircle ([69770e1](https://github.com/ZebraDevs/zeta_flutter/commit/69770e12f89ec3ee21c7ddebfc210a2398636669))
+
 ## [1.1.2](https://github.com/ZebraDevs/zeta_flutter/compare/zeta_flutter_utils-v1.1.1...zeta_flutter_utils-v1.1.2) (2025-07-03)
 
 
