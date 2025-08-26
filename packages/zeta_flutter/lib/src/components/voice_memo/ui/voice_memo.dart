@@ -201,55 +201,64 @@ class _ZetaVoiceMemoState extends State<ZetaVoiceMemo> {
                         isRecording: state.isRecording || state.duration == null,
                         rounded: widget.rounded,
                       ).paddingHorizontal(zeta.spacing.xl_2),
-                      SizedBox(height: zeta.spacing.large + ZetaBorders.small),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Expanded(
-                            child: Row(
-                              children: [
-                                IconButton(
-                                  icon: Icon(
-                                    ZetaIcons.delete,
-                                    size: zeta.spacing.xl_6,
-                                    color: zeta.colors.mainNegative,
+                      SizedBox(height: zeta.spacing.xl),
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: ZetaBorders.medium),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Expanded(
+                              child: Row(
+                                spacing: zeta.spacing.small,
+                                children: [
+                                  IconButton(
+                                    icon: Icon(
+                                      ZetaIcons.delete,
+                                      size: zeta.spacing.xl_6,
+                                      color: zeta.colors.mainNegative,
+                                    ),
+                                    padding: EdgeInsets.all(zeta.spacing.minimum),
+                                    onPressed: state.canRecord ? () => _clearAudio(context, discard: true) : null,
                                   ),
-                                  onPressed: state.canRecord ? () => _clearAudio(context, discard: true) : null,
-                                ),
-                                IconButton(
-                                  icon: Icon(
-                                    ZetaIcons.refresh,
-                                    size: zeta.spacing.xl_6,
-                                    color: zeta.colors.mainDefault,
+                                  IconButton(
+                                    icon: Icon(
+                                      ZetaIcons.refresh,
+                                      size: zeta.spacing.xl_6,
+                                      color: zeta.colors.mainDefault,
+                                    ),
+                                    padding: EdgeInsets.all(zeta.spacing.minimum),
+                                    onPressed: state.canRecord ? () => _clearAudio(context) : null,
                                   ),
-                                  onPressed: state.canRecord ? () => _clearAudio(context) : null,
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
-                          ),
-                          const RecordingControl(),
-                          Expanded(
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                IconButton(
-                                  icon: Icon(ZetaIcons.send, size: zeta.spacing.xl_6),
-                                  color: zeta.colors.mainPrimary,
-                                  onPressed:
-                                      (state.canRecord && state.duration != null && playbackState.audioChunks != null)
-                                          ? () => widget.onSend?.call(playbackState.audioChunks!)
-                                          : null,
-                                  disabledColor: zeta.colors.mainDisabled,
-                                ),
-                              ],
+                            const RecordingControl(),
+                            Expanded(
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  IconButton(
+                                    icon: Icon(ZetaIcons.send, size: zeta.spacing.xl_6),
+                                    padding: EdgeInsets.all(zeta.spacing.minimum),
+                                    color: zeta.colors.mainPrimary,
+                                    onPressed: (state.canRecord &&
+                                            state.duration != null &&
+                                            playbackState.audioChunks != null &&
+                                            !state.isRecording)
+                                        ? () => widget.onSend?.call(playbackState.audioChunks!)
+                                        : null,
+                                    disabledColor: zeta.colors.mainDisabled,
+                                  ),
+                                ],
+                              ),
                             ),
-                          ),
-                        ],
-                      ).paddingHorizontal(zeta.spacing.large),
+                          ],
+                        ).paddingHorizontal(zeta.spacing.large),
+                      ),
                       SizedBox(height: zeta.spacing.xl_2),
                     ],
                   ),
-                  if (!state.canRecord)
+                  if (!state.canRecord || !widget.canRecord)
                     Positioned.fill(
                       child: DecoratedBox(
                         decoration: BoxDecoration(

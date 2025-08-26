@@ -37,13 +37,31 @@ class RecordingControl extends StatelessWidget {
             child: ZetaProgressCircle(
               size: ZetaCircleSizes.l,
               progress: progress,
-              child: IconTheme(
-                data: IconThemeData(color: canRecordNow ? zeta.colors.mainDefault : zeta.colors.mainDisabled),
-                child: AnimatedCrossFade(
-                  duration: ZetaAnimationLength.fast,
-                  secondChild: const Icon(ZetaIcons.pause),
-                  firstChild: const Icon(ZetaIcons.microphone),
-                  crossFadeState: state.isRecording ? CrossFadeState.showSecond : CrossFadeState.showFirst,
+              showTrack: true,
+              child: Center(
+                child: IconTheme(
+                  data: IconThemeData(color: canRecordNow ? zeta.colors.mainDefault : zeta.colors.mainDisabled),
+                  child: AnimatedCrossFade(
+                    duration: ZetaAnimationLength.fast,
+                    secondChild: Container(
+                      width: zeta.spacing.xl_4,
+                      height: zeta.spacing.xl_4,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.all(Zeta.of(context).radius.full),
+                      ),
+                      child: const Icon(ZetaIcons.pause),
+                    ),
+                    firstChild: Container(
+                      width: zeta.spacing.xl_4,
+                      height: zeta.spacing.xl_4,
+                      decoration: BoxDecoration(
+                        color: zeta.colors.surfaceHover,
+                        borderRadius: BorderRadius.all(Zeta.of(context).radius.full),
+                      ),
+                      child: const Icon(ZetaIcons.microphone),
+                    ),
+                    crossFadeState: state.isRecording ? CrossFadeState.showSecond : CrossFadeState.showFirst,
+                  ),
                 ),
               ),
             ),

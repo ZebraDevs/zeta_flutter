@@ -97,6 +97,7 @@ class ZetaAudioVisualizer extends ZetaStatefulWidget {
 
 class _ZetaAudioVisualizerState extends State<ZetaAudioVisualizer> {
   final GlobalKey _rowKey = GlobalKey();
+  final GlobalKey _recordKey = GlobalKey();
 
   Widget _buildVisualizer(
     BuildContext context,
@@ -115,89 +116,94 @@ class _ZetaAudioVisualizerState extends State<ZetaAudioVisualizer> {
             ? state.duration
             : Duration(milliseconds: state.playbackPercent * (state.duration?.inMilliseconds ?? 1) ~/ 1));
 
-    return Stack(
-      children: [
-        Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.all(zeta.radius.rounded),
-            color: bg,
-          ),
-          padding: EdgeInsets.all(zeta.spacing.minimum),
-          child: Row(
-            children: [
-              if (!isRecording)
-                AnimatedSize(
-                  duration: ZetaAnimationLength.fast,
-                  child: PlayButton(
-                    key: const ValueKey('playButton'),
-                    onTap: () async {
-                      if (state.playing) {
-                        widget.onPause?.call();
-                        await state.pause();
-                      } else {
-                        widget.onPlay?.call();
-                        await state.play();
-                      }
-                    },
-                    playButtonColor: playButtonColor,
-                    iconColor: bg,
+    return SizedBox(
+      height: 56,
+      child: Stack(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.all(zeta.radius.rounded),
+              color: bg,
+            ),
+            padding: EdgeInsets.all(zeta.spacing.minimum),
+            child: Row(
+              children: [
+                if (!isRecording)
+                  AnimatedSize(
+                    duration: ZetaAnimationLength.fast,
+                    child: PlayButton(
+                      key: const ValueKey('playButton'),
+                      onTap: () async {
+                        if (state.playing) {
+                          widget.onPause?.call();
+                          await state.pause();
+                        } else {
+                          widget.onPlay?.call();
+                          await state.play();
+                        }
+                      },
+                      playButtonColor: playButtonColor,
+                      iconColor: bg,
+                    ),
                   ),
-                ),
-              Expanded(
-                child: Stack(
-                  children: [
-                    if (widget.assetPath == null && widget.deviceFilePath == null && widget.url == null)
-                      Positioned(child: Waveform(playedColor: fg)),
-                    if (!isRecording)
-                      Positioned(
-                        child: ColoredBox(
-                          color: bg,
-                          child: Waveform(
-                            playedColor: fg,
-                            unplayedColor: tertiaryColor,
-                            audioFile: state.localFile,
-                            audioChunks: state.audioChunks,
-                            onInteraction: (offset) {
-                              final box = _rowKey.currentContext?.findRenderObject() as RenderBox?;
-                              if (state.duration == null || box == null) return;
-                              unawaited(state.seekFromPosition(offset, box.size.width, state.duration));
-                            },
-                            key: _rowKey,
+                Expanded(
+                  child: Stack(
+                    children: [
+                      if (widget.assetPath == null && widget.deviceFilePath == null && widget.url == null)
+                        Positioned.fill(
+                          child: Waveform(playedColor: fg, key: _recordKey),
+                        ),
+                      if (!isRecording)
+                        Positioned.fill(
+                          child: ColoredBox(
+                            color: bg,
+                            child: Waveform(
+                              playedColor: fg,
+                              unplayedColor: tertiaryColor,
+                              audioFile: state.localFile,
+                              audioChunks: state.audioChunks,
+                              onInteraction: (offset) {
+                                final box = _rowKey.currentContext?.findRenderObject() as RenderBox?;
+                                if (state.duration == null || box == null) return;
+                                unawaited(state.seekFromPosition(offset, box.size.width, state.duration));
+                              },
+                              key: _rowKey,
+                            ),
                           ),
                         ),
-                      ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(
-                  left: zeta.spacing.small,
-                  right: zeta.spacing.medium,
-                  top: zeta.spacing.large - ZetaBorders.medium,
-                  bottom: zeta.spacing.large - ZetaBorders.medium,
+                Padding(
+                  padding: EdgeInsets.only(
+                    left: zeta.spacing.small,
+                    right: zeta.spacing.medium,
+                    top: zeta.spacing.large - ZetaBorders.medium,
+                    bottom: zeta.spacing.large - ZetaBorders.medium,
+                  ),
+                  child: Text(
+                    duration?.minutesSeconds ?? '0:00',
+                    style: zeta.textStyles.labelMedium.apply(color: fg),
+                  ),
                 ),
-                child: Text(
-                  duration?.minutesSeconds ?? '0:00',
-                  style: zeta.textStyles.labelMedium.apply(color: fg),
-                ),
-              ),
-            ],
-          ),
-        ),
-        if (state.error ||
-            (state.loadedAudio == false &&
-                !isRecording &&
-                ([widget.assetPath, widget.url, widget.deviceFilePath].any((source) => source != null))))
-          Positioned.fill(
-            child: DecoratedBox(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.all(zeta.radius.rounded),
-                color: Zeta.of(context).colors.surfaceDefault.withAlpha(200),
-              ),
-              child: Center(child: Text(widget.errorMessage)),
+              ],
             ),
           ),
-      ],
+          if (state.error ||
+              (state.loadedAudio == false &&
+                  !isRecording &&
+                  ([widget.assetPath, widget.url, widget.deviceFilePath].any((source) => source != null))))
+            Positioned.fill(
+              child: DecoratedBox(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(zeta.radius.rounded),
+                  color: Zeta.of(context).colors.surfaceDefault.withAlpha(200),
+                ),
+                child: Center(child: Text(widget.errorMessage)),
+              ),
+            ),
+        ],
+      ),
     );
   }
 

@@ -41,7 +41,7 @@ Widget voiceMemo(BuildContext context) => ZetaVoiceMemo(
       loudnessMultiplier: context.knobs.int
           .slider(
             label: "Loudness multiplier",
-            initialValue: 500,
+            initialValue: 20,
             min: 1,
             max: 1000,
           )
