@@ -36,7 +36,8 @@ jobs:
 
       - name: Copy updated icons
         run: |
-          cp -r icons/outputs/flutter/. flutter/packages/zeta_icons/lib/src
+          cp -r icons/outputs/flutter/assets/. flutter/packages/zeta_icons/lib/assets/icons
+          cp icons/outputs/flutter/icons.g.dart flutter/packages/zeta_icons/lib/src/
 
       - name: Set pubspec version
         run: |
