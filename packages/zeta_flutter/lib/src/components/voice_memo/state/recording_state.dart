@@ -173,6 +173,7 @@ class RecordingState extends ChangeNotifier {
   Future<void> resumeRecording() async {
     if (!_isRecording && canRecord) {
       await _record.resume();
+      playbackState.duration = null;
       startTrackingDuration();
     }
   }

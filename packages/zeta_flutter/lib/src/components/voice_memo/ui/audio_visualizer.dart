@@ -110,12 +110,11 @@ class _ZetaAudioVisualizerState extends State<ZetaAudioVisualizer> {
     final bg = widget.backgroundColor ?? zeta.colors.surfaceHover;
     final playButtonColor = widget.playButtonColor ?? zeta.colors.mainPrimary;
     final tertiaryColor = widget.tertiaryColor ?? zeta.colors.mainLight;
-    final duration = isRecording
+    final duration = isRecording || (recDuration != null && state.duration == null)
         ? (recDuration ?? Duration.zero)
         : (state.playbackPercent == 0 && (state.loadedAudio ?? false)
             ? state.duration
             : Duration(milliseconds: state.playbackPercent * (state.duration?.inMilliseconds ?? 1) ~/ 1));
-
     return SizedBox(
       height: 56,
       child: Stack(

@@ -34,7 +34,7 @@ class PlaybackState extends ChangeNotifier {
   }
 
   void _onPositionChanged(Duration position) {
-    final totalMs = _duration?.inMilliseconds ?? 0;
+    final totalMs = duration?.inMilliseconds ?? 0;
     final newPercent = totalMs > 0 ? position.inMilliseconds / totalMs : 0.0;
     if (newPercent != _playbackPercent) {
       _playbackPercent = newPercent;
@@ -46,6 +46,16 @@ class PlaybackState extends ChangeNotifier {
   Uri? _localFile;
   Uint8List? _audioChunks;
   Duration? _duration;
+
+  /// Duration of currently playing content.
+  Duration? get duration => _duration;
+  set duration(Duration? value) {
+    if (value != _duration) {
+      _duration = value;
+      notifyListeners();
+    }
+  }
+
   StreamSubscription<Duration>? _positionSubscription;
   bool? _loadedAudio;
   double _playbackPercent = 0;
@@ -76,9 +86,6 @@ class PlaybackState extends ChangeNotifier {
 
   /// Local audio chunks for playback
   Uint8List? get audioChunks => _audioChunks;
-
-  /// Total duration of the loaded audio
-  Duration? get duration => _duration;
 
   /// URI of the local audio file
   Uri? get localFile => _localFile;
