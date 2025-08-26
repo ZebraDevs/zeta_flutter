@@ -120,6 +120,7 @@ class PlaybackState extends ChangeNotifier {
       } else if (_audioChunks != null) {
         await _audioPlayer.setSourceBytes(_audioChunks!, mimeType: 'audio/wav');
         _loadedAudio = true;
+        _duration = null;
       } else {
         _loadedAudio = false;
       }
@@ -156,6 +157,19 @@ class PlaybackState extends ChangeNotifier {
     if (totalDuration == null || visualizerWidth == 0) return;
     final percent = (gesturePosition.dx / visualizerWidth).clamp(0.0, 1.0);
     await seek(Duration(milliseconds: (totalDuration.inMilliseconds * percent).round()));
+  }
+
+  /// Resets state values.
+  ///
+  /// Currently only used when resetting a recorded voice memo.
+  void reset() {
+    _playbackPercent = 0;
+    _playing = false;
+    _audioChunks = null;
+    _duration = null;
+    unawaited(_audioPlayer.setSource(UrlSource('')));
+
+    notifyListeners();
   }
 
   @override

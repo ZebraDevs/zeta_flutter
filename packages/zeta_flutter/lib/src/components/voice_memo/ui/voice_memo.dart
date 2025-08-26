@@ -149,6 +149,7 @@ class _ZetaVoiceMemoState extends State<ZetaVoiceMemo> {
 
   Future<void> _clearAudio(BuildContext context, {bool discard = false}) async {
     context.read<RecordingState>().resetRecording();
+    context.read<PlaybackState>().reset();
     setState(() => _visualizerKey = UniqueKey());
     if (discard) widget.onDiscard?.call();
   }
