@@ -39,6 +39,8 @@ class InternalTextInput extends ZetaStatefulWidget {
     this.borderRadius,
     this.textInputAction,
     this.constrained = false,
+    this.minLines,
+    this.maxLines,
   })  : requirementLevel = requirementLevel ?? ZetaFormFieldRequirement.none,
         assert(prefix == null || prefixText == null, 'Only one of prefix or prefixText can be accepted.'),
         assert(suffix == null || suffixText == null, 'Only one of suffix or suffixText can be accepted.');
@@ -139,6 +141,14 @@ class InternalTextInput extends ZetaStatefulWidget {
   /// Determines if the prefix and suffix should be constrained.
   final bool constrained;
 
+  /// The minimum number of lines the input can display.
+  /// Defaults to 1.
+  final int? minLines;
+
+  /// The maximum number of lines the input can display.
+  /// Defaults to 1.
+  final int? maxLines;
+
   @override
   State<InternalTextInput> createState() => InternalTextInputState();
   @override
@@ -167,7 +177,9 @@ class InternalTextInput extends ZetaStatefulWidget {
       ..add(DiagnosticsProperty<BorderRadius?>('borderRadius', borderRadius))
       ..add(StringProperty('semanticLabel', semanticLabel))
       ..add(EnumProperty<TextInputAction?>('textInputAction', textInputAction))
-      ..add(DiagnosticsProperty<bool>('constrained', constrained));
+      ..add(DiagnosticsProperty<bool>('constrained', constrained))
+      ..add(IntProperty('minLines', minLines))
+      ..add(IntProperty('maxLines', maxLines));
   }
 }
 
@@ -353,6 +365,8 @@ class InternalTextInputState extends State<InternalTextInput> {
                       cursorErrorColor: _colors.mainNegative,
                       obscureText: widget.obscureText,
                       focusNode: widget.focusNode,
+                      maxLines: widget.maxLines ?? 1,
+                      minLines: widget.minLines,
                       decoration: InputDecoration(
                         isDense: true,
                         contentPadding: _contentPadding,

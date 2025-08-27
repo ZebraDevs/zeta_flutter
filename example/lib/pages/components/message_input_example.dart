@@ -1,0 +1,65 @@
+import 'package:flutter/material.dart';
+import 'package:zeta_example/widgets.dart';
+import 'package:zeta_flutter/zeta_flutter.dart';
+
+class MessageInputExample extends StatefulWidget {
+  static const String name = 'MessageInput';
+
+  const MessageInputExample({super.key});
+
+  @override
+  State<MessageInputExample> createState() => _MessageInputExampleState();
+}
+
+class _MessageInputExampleState extends State<MessageInputExample> {
+  late TextEditingController controller;
+  List<String> messages = [];
+
+  @override
+  void initState() {
+    super.initState();
+    controller = TextEditingController();
+    messages = [for (var i = 0; i < 3; i++) 'Message $i'];
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return ExampleScaffold(
+      name: MessageInputExample.name,
+      child: Column(
+        children: [
+          Expanded(
+            child: ListView.builder(
+              itemCount: messages.length,
+              itemBuilder: (context, index) {
+                return ListTile(
+                  title: Text(messages[index]),
+                );
+              },
+            ),
+          ),
+          MessageInput.actionsAndCamera(
+            controller: controller,
+            allowsVoiceInput: true,
+            onSend: () {
+              final message = controller.text;
+              if (message.isNotEmpty) {
+                setState(() {
+                  messages.add(message);
+                });
+                print('Message sent: $message');
+                controller.clear();
+              }
+            },
+          ),
+        ],
+      ),
+    );
+  }
+}
