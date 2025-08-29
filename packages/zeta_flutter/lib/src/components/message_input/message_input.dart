@@ -2,6 +2,15 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../../../zeta_flutter.dart';
+import 'message_input_action_menu.dart';
+import 'voice_input.dart';
+
+/// TODO
+/// - Implement voice input functionality
+/// - Add support for image and video attachments
+/// - Add support for gif and sticker input
+/// - Add support for voice memo input
+/// - Add support for location sharing
 
 final List<IconButton> presetActions = [
   IconButton(
@@ -30,15 +39,19 @@ final List<IconButton> presetActions = [
     },
   ),
   IconButton(
-    icon: const Icon(ZetaIcons.priority_important),
+    icon: const Icon(ZetaIcons.pin),
     onPressed: () {
-      // Handle priority input action
+      // Handle location input action
     },
   ),
 ];
 
-final IconButton cameraAction = IconButton(onPressed: () {}, icon: const Icon(ZetaIcons.camera));
-
+final IconButton cameraAction = IconButton(
+  onPressed: () {
+    // Handle camera input action
+  },
+  icon: const Icon(ZetaIcons.camera),
+);
 
 /// A customizable message input widget for user text entry and sending actions.
 ///
@@ -87,7 +100,7 @@ class MessageInput extends ZetaStatefulWidget {
     this.trailingButton,
   }) : actions = presetActions;
 
-  /// Message input with predefined actions
+  /// Message input with predefined actions and camera button
   MessageInput.actionsAndCamera({
     super.key,
     this.controller,
@@ -138,12 +151,14 @@ class MessageInput extends ZetaStatefulWidget {
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty<TextEditingController?>('controller', controller))
+      ..add(
+          DiagnosticsProperty<TextEditingController?>('controller', controller))
       ..add(ObjectFlagProperty<VoidCallback?>.has('onSend', onSend))
       ..add(StringProperty('placeholder', placeholder))
       ..add(IntProperty('minLines', minLines))
       ..add(IntProperty('maxLines', maxLines))
-      ..add(ObjectFlagProperty<VoidCallback?>.has('onLongPressSend', onLongPressSend))
+      ..add(ObjectFlagProperty<VoidCallback?>.has(
+          'onLongPressSend', onLongPressSend))
       ..add(DiagnosticsProperty<bool?>('voice', allowsVoiceInput));
   }
 }
@@ -152,6 +167,7 @@ class _MessageInputState extends State<MessageInput> {
   late TextEditingController _controller;
   bool _isTextEmpty = true;
   bool _isActionMenuOpen = false;
+  final FocusNode _focusNode = FocusNode();
 
   @override
   void initState() {
@@ -198,86 +214,70 @@ class _MessageInputState extends State<MessageInput> {
     final hasActions = widget.actions != null && widget.actions!.isNotEmpty;
     final showTrailingButton = _isTextEmpty && widget.trailingButton != null;
 
-    return Column(
-      children: [
-        if (_isActionMenuOpen && hasActions)
-          ColoredBox(
-            color: colors.surfaceDefault,
-            child: SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: widget.actions!
-                    .map(
-                      (action) => Padding(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: spacing.small,
-                        ),
-                        child: action,
-                      ),
-                    )
-                    .toList(),
+    return GestureDetector(
+      behavior: HitTestBehavior.translucent,
+      onTap: () {
+        /* This keeps the keyboard open when using the message input */
+      },
+      child: Column(
+        children: [
+          Container(
+            padding: EdgeInsets.symmetric(
+              vertical: verticalPadding,
+              horizontal: horizontalPadding,
+            ),
+            decoration: BoxDecoration(
+              color: colors.surfaceDefault,
+              border: Border(
+                top: BorderSide(color: colors.borderDefault),
               ),
             ),
-          ),
-        Container(
-          padding: EdgeInsets.symmetric(
-            vertical: verticalPadding,
-            horizontal: horizontalPadding,
-          ),
-          decoration: BoxDecoration(
-            color: colors.surfaceDefault,
-            border: Border(
-              top: BorderSide(color: colors.borderDefault),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              textBaseline: TextBaseline.ideographic,
+              children: [
+                if (hasActions)
+                  IconButton(
+                    onPressed: _openActionsMenu,
+                    icon: const Icon(ZetaIcons.add),
+                    iconSize: spacing.xl_3,
+                  )
+                else
+                  const Nothing(),
+                Expanded(
+                  child: ZetaTextInput(
+                    focusNode: _focusNode,
+                    minLines: widget.minLines,
+                    maxLines: widget.maxLines,
+                    controller: _controller,
+                    rounded: context.rounded,
+                    placeholder: widget.placeholder,
+                    suffix: widget.allowsVoiceInput ?? false
+                        ? VoiceInput(controller: _controller)
+                        : const Nothing(),
+                  ),
+                ),
+                if (showTrailingButton)
+                  IconButton(
+                    icon: widget.trailingButton!.icon,
+                    onPressed: widget.trailingButton!.onPressed,
+                    iconSize: spacing.xl_3,
+                  )
+                else
+                  IconButton(
+                    icon: const Icon(ZetaIcons.send),
+                    iconSize: spacing.xl_3,
+                    color: _isTextEmpty ? disabledColor : null,
+                    onPressed: widget.onSend,
+                    onLongPress: widget.onLongPressSend,
+                  ),
+              ].gap(spacing.small),
             ),
           ),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            textBaseline: TextBaseline.ideographic,
-            children: [
-              if (hasActions)
-                IconButton(
-                  onPressed: _openActionsMenu,
-                  icon: Icon(ZetaIcons.add, size: spacing.xl_3),
-                )
-              else
-                const Nothing(),
-              Expanded(
-                child: ZetaTextInput(
-                  minLines: widget.minLines,
-                  maxLines: widget.maxLines,
-                  controller: _controller,
-                  rounded: context.rounded,
-                  placeholder: widget.placeholder,
-                  suffix: (widget.allowsVoiceInput ?? false) && _isTextEmpty
-                      ? IconButton(
-                          icon: Icon(
-                            ZetaIcons.microphone,
-                            color: disabledColor,
-                            size: 26,
-                          ),
-                          onPressed: () {
-                            // Handle voice input action
-                          },
-                        )
-                      : null,
-                ),
-              ),
-              if (showTrailingButton)
-                IconButton(
-                  icon: widget.trailingButton!.icon,
-                  onPressed: widget.trailingButton!.onPressed,
-                )
-              else
-                IconButton(
-                  icon: const Icon(ZetaIcons.send),
-                  color: _isTextEmpty ? disabledColor : null,
-                  onPressed: widget.onSend,
-                  onLongPress: widget.onLongPressSend,
-                ),
-            ].gap(spacing.small),
-          ),
-        ),
-      ],
+          if (_isActionMenuOpen && hasActions)
+            MessageInputActionMenu(actions: widget.actions!),
+        ],
+      ),
     );
   }
 }
