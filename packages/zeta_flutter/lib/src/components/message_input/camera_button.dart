@@ -19,8 +19,7 @@ class CameraButton extends StatelessWidget {
 
   Future<void> _pickImage(BuildContext context) async {
     final ImagePicker picker = ImagePicker();
-    final XFile? image =
-        await picker.pickImage(source: ImageSource.camera, imageQuality: 80);
+    final XFile? image = await picker.pickImage(source: ImageSource.camera, imageQuality: 80);
     if (image != null) {
       onCapture(File(image.path));
     }

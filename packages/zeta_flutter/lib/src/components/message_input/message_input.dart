@@ -192,8 +192,7 @@ class _MessageInputState extends State<MessageInput> {
     final disabledColor = colors.mainDisabled;
     final verticalPadding = spacing.medium;
     final horizontalPadding = spacing.large;
-    final hasActions = (widget.usePresetActions ?? false) ||
-        (widget.actions != null && widget.actions!.isNotEmpty);
+    final hasActions = (widget.usePresetActions ?? false) || (widget.actions != null && widget.actions!.isNotEmpty);
     final showTrailingButton = _isTextEmpty && (widget.allowsCameraInput ?? false);
 
     return GestureDetector(
@@ -247,9 +246,7 @@ class _MessageInputState extends State<MessageInput> {
                     controller: _controller,
                     rounded: context.rounded,
                     placeholder: widget.placeholder,
-                    suffix: widget.allowsVoiceInput ?? false
-                        ? VoiceButton(controller: _controller)
-                        : const Nothing(),
+                    suffix: widget.allowsVoiceInput ?? false ? VoiceButton(controller: _controller) : const Nothing(),
                   ),
                 ),
                 if (showTrailingButton && _controller.text.isEmpty && _attachments.isEmpty)

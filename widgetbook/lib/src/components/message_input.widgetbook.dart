@@ -3,15 +3,13 @@ import 'package:widgetbook/widgetbook.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 import 'package:zeta_flutter/zeta_flutter.dart';
 import 'package:zeta_widgetbook/main.dart';
-import 'package:flutter/widgets.dart';
 import 'package:zeta_widgetbook/src/utils/utils.dart';
 
 @widgetbook.UseCase(
   name: 'Message Input',
   type: MessageInput,
   path: '$componentsPath/MessageInput',
-  designLink:
-      'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=18271-19682',
+  designLink: 'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=18271-19682',
 )
 Widget defaultMessageInput(BuildContext context) {
   final controller = TextEditingController();
@@ -25,31 +23,30 @@ Widget defaultMessageInput(BuildContext context) {
   var messages = [];
 
   return StatefulBuilder(
-    builder: (context, setState) => Column(
-      children: [
-        ...List.generate(
-          messages.length,
-          (index) => ListTile(title: Text(messages[index])),
-        ),
-        MessageInput.actionMenu(
-          controller: controller,
-          placeholder: placeholder,
-          allowsVoiceInput: allowsVoiceInput,
-          minLines: minLines,
-          maxLines: maxLines,
-          onSend: () {
-            final message = controller.text;
-            if (message.isNotEmpty) {
-              setState(() {
-                messages.add(message);
-              });
-              controller.clear();
-            }
-          },
-        ),
-      ],
-    )
-  );
+      builder: (context, setState) => Column(
+            children: [
+              ...List.generate(
+                messages.length,
+                (index) => ListTile(title: Text(messages[index])),
+              ),
+              MessageInput.actionMenu(
+                controller: controller,
+                placeholder: placeholder,
+                allowsVoiceInput: allowsVoiceInput,
+                minLines: minLines,
+                maxLines: maxLines,
+                onSend: () {
+                  final message = controller.text;
+                  if (message.isNotEmpty) {
+                    setState(() {
+                      messages.add(message);
+                    });
+                    controller.clear();
+                  }
+                },
+              ),
+            ],
+          ));
 
   // return Scaffold(
   //   body: Column(

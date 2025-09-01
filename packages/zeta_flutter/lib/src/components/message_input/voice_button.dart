@@ -67,8 +67,7 @@ class VoiceButtonState extends State<VoiceButton> {
           {
             setState(() => _isListening = false),
           },
-        if (status == stt.SpeechToText.doneStatus)
-          {onSpeechResult(_recognizedText)},
+        if (status == stt.SpeechToText.doneStatus) {onSpeechResult(_recognizedText)},
       },
       onError: (error) => {
         setState(() => _isListening = false),

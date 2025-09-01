@@ -19,8 +19,7 @@ class VideoButton extends StatelessWidget {
 
   Future<void> _pickVideo(BuildContext context) async {
     final ImagePicker picker = ImagePicker();
-    final XFile? video =
-        await picker.pickVideo(source: ImageSource.camera, maxDuration: const Duration(minutes: 5));
+    final XFile? video = await picker.pickVideo(source: ImageSource.camera, maxDuration: const Duration(minutes: 5));
     if (video != null) {
       onCapture(File(video.path));
     }
