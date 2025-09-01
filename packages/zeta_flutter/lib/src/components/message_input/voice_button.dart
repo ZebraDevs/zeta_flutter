@@ -5,24 +5,27 @@ import 'package:speech_to_text/speech_to_text.dart' as stt;
 import '../../../zeta_flutter.dart';
 
 /// A widget that provides voice input functionality.
-class VoiceInput extends StatefulWidget {
-  const VoiceInput({super.key, required this.controller});
+class VoiceButton extends StatefulWidget {
+  /// Creates a [VoiceButton].
+  const VoiceButton({super.key, required this.controller});
 
   /// The text input editing controller for the voice input.
   final TextEditingController controller;
 
   @override
-  _VoiceInputState createState() => _VoiceInputState();
+  VoiceButtonState createState() => VoiceButtonState();
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties.add(
-        DiagnosticsProperty<TextEditingController>('controller', controller));
+      DiagnosticsProperty<TextEditingController>('controller', controller),
+    );
   }
 }
 
-class _VoiceInputState extends State<VoiceInput> {
+/// The state for the [VoiceButton].
+class VoiceButtonState extends State<VoiceButton> {
   late stt.SpeechToText _speech;
   bool _isListening = false;
   String _recognizedText = '';
@@ -34,6 +37,7 @@ class _VoiceInputState extends State<VoiceInput> {
     _speech = stt.SpeechToText();
   }
 
+  /// Handles the speech recognition result.
   void onSpeechResult(String text) {
     if (text.isEmpty) return;
     final beforeText = widget.controller.text.substring(0, _cursorPos);
@@ -57,7 +61,7 @@ class _VoiceInputState extends State<VoiceInput> {
   Future<void> _startListening() async {
     setState(() => _cursorPos = widget.controller.selection.baseOffset);
 
-    bool available = await _speech.initialize(
+    final bool available = await _speech.initialize(
       onStatus: (status) => {
         if (status == stt.SpeechToText.notListeningStatus)
           {
@@ -66,8 +70,9 @@ class _VoiceInputState extends State<VoiceInput> {
         if (status == stt.SpeechToText.doneStatus)
           {onSpeechResult(_recognizedText)},
       },
-      onError: (error) =>
-          {setState(() => _isListening = false), print('Speech error: $error')},
+      onError: (error) => {
+        setState(() => _isListening = false),
+      },
     );
 
     if (available) {

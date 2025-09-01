@@ -1,57 +1,23 @@
+import 'dart:io';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import '../../../zeta_flutter.dart';
-import 'message_input_action_menu.dart';
-import 'voice_input.dart';
+import 'action_menu.dart';
+import 'attachment_bar.dart';
+import 'camera_button.dart';
+import 'video_button.dart';
+import 'voice_button.dart';
 
 /// TODO
-/// - Implement voice input functionality
-/// - Add support for image and video attachments
+/// - Implement voice input functionality ✅
+/// - Add support for image and video attachments ✅
+/// - Add support for file attachments
 /// - Add support for gif and sticker input
 /// - Add support for voice memo input
 /// - Add support for location sharing
-
-final List<IconButton> presetActions = [
-  IconButton(
-    icon: const Icon(ZetaIcons.attachment),
-    onPressed: () {
-      // Handle attachment action
-    },
-  ),
-  cameraAction,
-  IconButton(
-    icon: const Icon(ZetaIcons.sticker),
-    onPressed: () {
-      // Handle sticky note input action
-    },
-  ),
-  IconButton(
-    icon: const Icon(ZetaIcons.gif),
-    onPressed: () {
-      // Handle GIF input action
-    },
-  ),
-  IconButton(
-    icon: const Icon(ZetaIcons.audio),
-    onPressed: () {
-      // Handle audio input action
-    },
-  ),
-  IconButton(
-    icon: const Icon(ZetaIcons.pin),
-    onPressed: () {
-      // Handle location input action
-    },
-  ),
-];
-
-final IconButton cameraAction = IconButton(
-  onPressed: () {
-    // Handle camera input action
-  },
-  icon: const Icon(ZetaIcons.camera),
-);
 
 /// A customizable message input widget for user text entry and sending actions.
 ///
@@ -65,12 +31,15 @@ class MessageInput extends ZetaStatefulWidget {
     this.controller,
     this.onSend,
     this.onLongPressSend,
+    this.onSendAttachment,
     this.placeholder,
     this.allowsVoiceInput,
+    this.allowsCameraInput,
     this.minLines,
     this.maxLines,
-    this.trailingButton,
+    this.usePresetActions = false,
     this.actions,
+    this.attachments,
   });
 
   /// Comment input
@@ -79,55 +48,55 @@ class MessageInput extends ZetaStatefulWidget {
     this.controller,
     this.onSend,
     this.onLongPressSend,
+    this.onSendAttachment,
     this.placeholder = 'Add a comment',
     this.allowsVoiceInput,
+    this.allowsCameraInput,
     this.minLines = 1,
     this.maxLines = 1,
-    this.trailingButton,
+    this.usePresetActions = false,
     this.actions,
+    this.attachments,
   });
 
   /// Message input with predefined actions
-  MessageInput.actionMenu({
+  const MessageInput.actionMenu({
     super.key,
     this.controller,
     this.onSend,
     this.onLongPressSend,
+    this.onSendAttachment,
     this.placeholder,
     this.allowsVoiceInput,
+    this.allowsCameraInput,
     this.minLines = 1,
     this.maxLines = 5,
-    this.trailingButton,
-  }) : actions = presetActions;
-
-  /// Message input with predefined actions and camera button
-  MessageInput.actionsAndCamera({
-    super.key,
-    this.controller,
-    this.onSend,
-    this.onLongPressSend,
-    this.placeholder,
-    this.allowsVoiceInput,
-    this.minLines = 1,
-    this.maxLines = 5,
-  })  : trailingButton = cameraAction,
-        actions = presetActions;
+    this.usePresetActions = true,
+    this.actions,
+    this.attachments,
+  });
 
   /// The text editing controller for the message input.
   final TextEditingController? controller;
 
   /// When there is no text in the input the send button will be greyed out.
   /// However, the onSend and onLongPressSend callbacks will still be triggered.
-  final VoidCallback? onSend;
+  final ValueChanged<String>? onSend;
 
   /// Callback for long press on the send button.
-  final VoidCallback? onLongPressSend;
+  final ValueChanged<String>? onLongPressSend;
+
+  /// Callback for sending attachments (images, videos, files, etc.).
+  final ValueChanged<List<File>>? onSendAttachment;
 
   /// Placeholder text for the message input.
   final String? placeholder;
 
   /// Whether the message input should support voice input.
   final bool? allowsVoiceInput;
+
+  /// Whether the camera button shows when text field is empty
+  final bool? allowsCameraInput;
 
   /// {@macro flutter.widgets.editableText.minLines}
   /// Minimum number of lines for the text input.
@@ -137,12 +106,14 @@ class MessageInput extends ZetaStatefulWidget {
   /// Maximum number of lines for the text input.
   final int? maxLines;
 
-  /// If [trailingButton] is provided, it will be displayed while there is no text in the input.
-  /// If there is text in the input, the send button will be displayed.
-  final IconButton? trailingButton;
+  /// Wether to use the preset actions
+  final bool? usePresetActions;
 
   /// The list of actions to display in the message input.
-  final List<IconButton>? actions;
+  final List<Widget>? actions;
+
+  /// The list of file attachments.
+  final List<File>? attachments;
 
   @override
   State<MessageInput> createState() => _MessageInputState();
@@ -151,15 +122,17 @@ class MessageInput extends ZetaStatefulWidget {
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(
-          DiagnosticsProperty<TextEditingController?>('controller', controller))
-      ..add(ObjectFlagProperty<VoidCallback?>.has('onSend', onSend))
+      ..add(DiagnosticsProperty<TextEditingController?>('controller', controller))
+      ..add(ObjectFlagProperty<ValueChanged<String>?>.has('onSend', onSend))
+      ..add(ObjectFlagProperty<ValueChanged<String>?>.has('onLongPressSend', onLongPressSend))
+      ..add(ObjectFlagProperty<ValueChanged<List<File>>?>.has('onSendAttachment', onSendAttachment))
       ..add(StringProperty('placeholder', placeholder))
       ..add(IntProperty('minLines', minLines))
       ..add(IntProperty('maxLines', maxLines))
-      ..add(ObjectFlagProperty<VoidCallback?>.has(
-          'onLongPressSend', onLongPressSend))
-      ..add(DiagnosticsProperty<bool?>('voice', allowsVoiceInput));
+      ..add(DiagnosticsProperty<bool?>('voice', allowsVoiceInput))
+      ..add(DiagnosticsProperty<bool?>('allowsCameraInput', allowsCameraInput))
+      ..add(DiagnosticsProperty<bool?>('usePresetActions', usePresetActions))
+      ..add(IterableProperty<File>('attachments', attachments));
   }
 }
 
@@ -168,6 +141,7 @@ class _MessageInputState extends State<MessageInput> {
   bool _isTextEmpty = true;
   bool _isActionMenuOpen = false;
   final FocusNode _focusNode = FocusNode();
+  List<File> _attachments = [];
 
   @override
   void initState() {
@@ -175,7 +149,7 @@ class _MessageInputState extends State<MessageInput> {
     _controller = widget.controller ?? TextEditingController();
     _isTextEmpty = _controller.text.isEmpty;
     _controller.addListener(_handleTextChange);
-
+    _attachments = widget.attachments ?? [];
     _isActionMenuOpen = false;
   }
 
@@ -185,6 +159,8 @@ class _MessageInputState extends State<MessageInput> {
       _controller.dispose();
     }
     _controller.removeListener(_handleTextChange);
+    _attachments.clear();
+    _focusNode.dispose();
     super.dispose();
   }
 
@@ -204,6 +180,11 @@ class _MessageInputState extends State<MessageInput> {
     });
   }
 
+  void _handleSend(String text, List<File> attachments) {
+    widget.onSend!(text);
+    widget.onSendAttachment!(attachments);
+  }
+
   @override
   Widget build(BuildContext context) {
     final ZetaColors colors = Zeta.of(context).colors;
@@ -211,16 +192,30 @@ class _MessageInputState extends State<MessageInput> {
     final disabledColor = colors.mainDisabled;
     final verticalPadding = spacing.medium;
     final horizontalPadding = spacing.large;
-    final hasActions = widget.actions != null && widget.actions!.isNotEmpty;
-    final showTrailingButton = _isTextEmpty && widget.trailingButton != null;
+    final hasActions = (widget.usePresetActions ?? false) ||
+        (widget.actions != null && widget.actions!.isNotEmpty);
+    final showTrailingButton = _isTextEmpty && (widget.allowsCameraInput ?? false);
 
     return GestureDetector(
-      behavior: HitTestBehavior.translucent,
-      onTap: () {
+      behavior: HitTestBehavior.opaque,
+      onTap: () async {
         /* This keeps the keyboard open when using the message input */
+        /* TODO: glitch where if the user taps the ZetaTextInput border it closes the keyboard */
+        await SystemChannels.textInput.invokeMethod('TextInput.show');
       },
       child: Column(
         children: [
+          if (_attachments.isNotEmpty)
+            AttachmentsBar(
+              attachments: _attachments,
+              onCloseAttachment: (index) {
+                setState(() {
+                  _attachments.removeAt(index);
+                });
+              },
+            )
+          else
+            const Nothing(),
           Container(
             padding: EdgeInsets.symmetric(
               vertical: verticalPadding,
@@ -253,29 +248,108 @@ class _MessageInputState extends State<MessageInput> {
                     rounded: context.rounded,
                     placeholder: widget.placeholder,
                     suffix: widget.allowsVoiceInput ?? false
-                        ? VoiceInput(controller: _controller)
+                        ? VoiceButton(controller: _controller)
                         : const Nothing(),
                   ),
                 ),
-                if (showTrailingButton)
-                  IconButton(
-                    icon: widget.trailingButton!.icon,
-                    onPressed: widget.trailingButton!.onPressed,
-                    iconSize: spacing.xl_3,
+                if (showTrailingButton && _controller.text.isEmpty && _attachments.isEmpty)
+                  CameraButton(
+                    onCapture: (file) async {
+                      await SystemChannels.textInput.invokeMethod('TextInput.show');
+                      setState(() {
+                        _attachments.add(file);
+                      });
+                    },
                   )
                 else
-                  IconButton(
-                    icon: const Icon(ZetaIcons.send),
-                    iconSize: spacing.xl_3,
-                    color: _isTextEmpty ? disabledColor : null,
-                    onPressed: widget.onSend,
-                    onLongPress: widget.onLongPressSend,
+                  Stack(
+                    children: [
+                      IconButton(
+                        icon: const Icon(ZetaIcons.send),
+                        iconSize: spacing.xl_3,
+                        color: _isTextEmpty && _attachments.isEmpty ? disabledColor : null,
+                        onPressed: () => _handleSend(_controller.text, _attachments),
+                        onLongPress: () => widget.onLongPressSend!(_controller.text),
+                      ),
+                      if (_attachments.isNotEmpty)
+                        Positioned(
+                          right: 4,
+                          top: 4,
+                          child: Container(
+                            width: spacing.large,
+                            height: spacing.large,
+                            decoration: BoxDecoration(
+                              color: colors.surfacePrimarySubtle,
+                              shape: BoxShape.circle,
+                            ),
+                            child: Center(
+                              child: Text(
+                                _attachments.length.toString(),
+                                style: TextStyle(
+                                  color: colors.mainDefault,
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                          ),
+                        ),
+                    ],
                   ),
               ].gap(spacing.small),
             ),
           ),
           if (_isActionMenuOpen && hasActions)
-            MessageInputActionMenu(actions: widget.actions!),
+            ActionMenu(
+              actions: widget.actions ??
+                  [
+                    IconButton(
+                      icon: const Icon(ZetaIcons.attachment),
+                      onPressed: () {
+                        // Handle attachment action
+                      },
+                    ),
+                    CameraButton(
+                      onCapture: (file) {
+                        setState(() {
+                          _attachments.add(file);
+                        });
+                      },
+                    ),
+                    VideoButton(
+                      onCapture: (file) {
+                        setState(() {
+                          _attachments.add(file);
+                        });
+                      },
+                    ),
+                    // IconButton(
+                    //   icon: const Icon(ZetaIcons.sticker),
+                    //   onPressed: () {
+                    //     // Handle sticky note input action
+                    //   },
+                    // ),
+                    // IconButton(
+                    //   icon: const Icon(ZetaIcons.gif),
+                    //   onPressed: () {
+                    //     // Handle GIF input action
+                    //   },
+                    // ),
+                    IconButton(
+                      icon: const Icon(ZetaIcons.audio),
+                      onPressed: () {
+                        // Handle audio input action
+                      },
+                    ),
+                    IconButton(
+                      icon: const Icon(ZetaIcons.pin),
+                      onPressed: () {
+                        // Handle location input action
+                      },
+                    ),
+                  ],
+            ),
         ],
       ),
     );

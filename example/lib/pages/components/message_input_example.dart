@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:zeta_example/widgets.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
@@ -14,6 +16,7 @@ class MessageInputExample extends StatefulWidget {
 class _MessageInputExampleState extends State<MessageInputExample> {
   late TextEditingController controller;
   List<String> messages = [];
+  List<File> attachments = [];
 
   @override
   void initState() {
@@ -44,11 +47,20 @@ class _MessageInputExampleState extends State<MessageInputExample> {
               },
             ),
           ),
-          MessageInput.actionsAndCamera(
+          MessageInput.actionMenu(
             controller: controller,
             allowsVoiceInput: true,
-            onSend: () {
-              final message = controller.text;
+            allowsCameraInput: true,
+            attachments: attachments,
+            onSendAttachment: (fileList) {
+              fileList.forEach((file) {
+                setState(() {
+                  messages.add('File attachment: ${file.path}');
+                });
+              });
+              attachments.clear();
+            },
+            onSend: (message) {
               if (message.isNotEmpty) {
                 setState(() {
                   messages.add(message);

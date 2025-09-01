@@ -16,9 +16,11 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_slidable: ^4.0.0
+  image_picker: ^1.2.0
   intl: ^0.20.2
   mask_text_input_formatter: ^2.9.0
   speech_to_text: ^7.3.0
+  video_thumbnail: ^0.5.3
   zeta_flutter_theme: ^1.2.1
   zeta_flutter_utils: ^1.1.2
   zeta_icons: ^1.1.5
