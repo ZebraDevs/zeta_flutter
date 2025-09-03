@@ -66,3 +66,4 @@ export 'src/components/text_input/text_input.dart';
 export 'src/components/time_input/time_input.dart';
 export 'src/components/tooltip/tooltip.dart';
 export 'src/components/top_app_bar/top_app_bar.dart';
+export 'src/components/voice_memo/voice_memo.dart';

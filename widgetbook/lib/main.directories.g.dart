@@ -101,6 +101,8 @@ import 'package:zeta_widgetbook/src/components/tooltip.widgetbook.dart'
     as _zeta_widgetbook_src_components_tooltip_widgetbook;
 import 'package:zeta_widgetbook/src/components/top_app_bar.widgetbook.dart'
     as _zeta_widgetbook_src_components_top_app_bar_widgetbook;
+import 'package:zeta_widgetbook/src/components/voice_memo.widgetbook.dart'
+    as _zeta_widgetbook_src_components_voice_memo_widgetbook;
 
 final directories = <_widgetbook.WidgetbookNode>[
   _widgetbook.WidgetbookFolder(
@@ -1023,6 +1025,29 @@ final directories = <_widgetbook.WidgetbookNode>[
               ),
             ],
           )
+        ],
+      ),
+      _widgetbook.WidgetbookFolder(
+        name: 'Voice Memo',
+        children: [
+          _widgetbook.WidgetbookLeafComponent(
+            name: 'ZetaAudioVisualizer',
+            useCase: _widgetbook.WidgetbookUseCase(
+              name: 'Audio Visualizer',
+              builder: _zeta_widgetbook_src_components_voice_memo_widgetbook.audioVisualizer,
+              designLink:
+                  'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=38832-2389&t=MGPsY57Ld4bcpPeQ-4',
+            ),
+          ),
+          _widgetbook.WidgetbookLeafComponent(
+            name: 'ZetaVoiceMemo',
+            useCase: _widgetbook.WidgetbookUseCase(
+              name: 'Voice Memo',
+              builder: _zeta_widgetbook_src_components_voice_memo_widgetbook.voiceMemo,
+              designLink:
+                  'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=38832-2389&t=MGPsY57Ld4bcpPeQ-4',
+            ),
+          ),
         ],
       ),
     ],

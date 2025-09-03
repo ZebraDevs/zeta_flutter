@@ -47,6 +47,7 @@ import 'package:zeta_example/pages/components/tile_button_example.dart';
 import 'package:zeta_example/pages/components/time_input_example.dart';
 import 'package:zeta_example/pages/components/tooltip_example.dart';
 import 'package:zeta_example/pages/components/top_app_bar_example.dart';
+import 'package:zeta_example/pages/components/voice_memo_example.dart';
 import 'package:zeta_example/pages/theme/color_example.dart';
 import 'package:zeta_example/pages/components/password_input_example.dart';
 import 'package:zeta_example/pages/components/progress_example.dart';
@@ -126,6 +127,7 @@ final List<Component> components = [
   Component(TimeInputExample.name, (context) => const TimeInputExample()),
   Component(TooltipExample.name, (context) => const TooltipExample()),
   Component(TopAppBarExample.name, (context) => const TopAppBarExample()),
+  Component(VoiceMemoExample.name, (context) => const VoiceMemoExample()),
 ];
 
 final List<Component> theme = [
