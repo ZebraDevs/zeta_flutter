@@ -1,11 +1,24 @@
+// Print allowed as this is a
+// ignore_for_file: avoid_print
+
 import 'dart:io';
 
 import 'package:analyzer/dart/analysis/utilities.dart';
 import 'package:analyzer/dart/ast/ast.dart';
 import 'package:analyzer/dart/ast/visitor.dart';
-import 'package:flutter/material.dart';
 
-import 'utils/utils.dart';
+import 'utils.dart';
+
+const testCategories = [
+  'Accessibility',
+  'Content',
+  'Dimensions',
+  'Styling',
+  'Interaction',
+  'Golden',
+  'Performance',
+  'Unorganised',
+];
 
 /// A visitor that recursively visits AST nodes to identify and process test groups.
 ///
@@ -54,25 +67,18 @@ class TestGroupVisitor extends RecursiveAstVisitor<void> {
           }
         }
 
-        groups.add({
-          'group': groupName,
-          'tests': tests,
-        });
+        groups.add({'group': groupName, 'tests': tests});
       } else if (node.methodIsOneOf(['testWidgets', 'test', 'goldenTest', 'debugFillPropertiesTest'])) {
         final testName = node.getTestName();
 
         if (groups.any((el) => el['group'] == 'unorganised')) {
           final unorganisedGroup = groups.firstWhere((el) => el['group'] == 'unorganised');
-          (unorganisedGroup['tests'] as List).add({
-            'name': testName,
-          });
+          (unorganisedGroup['tests'] as List).add({'name': testName});
         } else {
           groups.add({
             'group': 'unorganised',
             'tests': [
-              {
-                'name': testName,
-              },
+              {'name': testName},
             ],
           });
         }
@@ -111,17 +117,11 @@ class TestVisitor extends RecursiveAstVisitor<void> {
   void visitMethodInvocation(MethodInvocation node) {
     if (node.methodIsOneOf(['testWidgets', 'test'])) {
       final testName = node.getTestName();
-      tests.add({
-        'name': testName,
-      });
+      tests.add({'name': testName});
     } else if (node.methodIsOneOf(['debugFillPropertiesTest'])) {
-      tests.add({
-        'name': node.getMethodName(),
-      });
+      tests.add({'name': node.getMethodName()});
     } else if (node.methodIsOneOf(['goldenTest'])) {
-      tests.add({
-        'name': node.toString(),
-      });
+      tests.add({'name': node.toString()});
     }
 
     super.visitMethodInvocation(node);
@@ -156,7 +156,11 @@ class TestVisitor extends RecursiveAstVisitor<void> {
 ///
 /// Returns:
 /// - A string in MD format representing the test counts in a table with totals.
-String generateMD(Map<String, Map<String, int>> testCount) {
+/// Generates an MD (Markdown) table representation of the test counts, including components with no tests.
+///
+/// [testCount] is a map of test file paths to group counts.
+/// [allComponentNames] is a set of all component names (from lib/src/components).
+String generateMD(Map<String, Map<String, int>> testCount, Set<String> allComponentNames, String date, String version) {
   final Map<String, int> groupTotals = {
     'Accessibility': 0,
     'Content': 0,
@@ -168,12 +172,69 @@ String generateMD(Map<String, Map<String, int>> testCount) {
     'unorganised': 0,
   };
 
+  String formatComponentName(String filePath) {
+    final match = RegExp(r'([^/\\]+)_test\\.dart').firstMatch(filePath);
+
+    return match != null
+        ? match.group(1)!
+        : filePath
+              .split(RegExp(r'[\\/]'))
+              .last
+              .replaceAll('_test.dart', '')
+              .replaceAllMapped(RegExp('(_|^)([a-zA-Z])'), (m) => ' ${m[2]!.toUpperCase()}')
+              .trim();
+  }
+
+  List<String> addComponentRows(
+    Map<String, Map<String, int>> testCount,
+    Map<String, int> groupTotals,
+    Set<String> allComponentNames,
+  ) {
+    final Map<String, List<String>> componentRows = {};
+    final Set<String> testedComponents = {};
+    for (final entry in testCount.entries) {
+      final componentName = formatComponentName(entry.key);
+      testedComponents.add(componentName);
+      final groupCounts = entry.value;
+      // Update groupTotals for each group
+      for (final group in testCategories) {
+        final count = groupCounts[group] ?? 0;
+        groupTotals[group] = (groupTotals[group] ?? 0) + count;
+      }
+      final cells = [
+        componentName,
+        ...[for (final group in testCategories) (groupCounts[group] ?? 0).toString()],
+        groupCounts.values.fold(0, (a, b) => a + b).toString(),
+      ];
+      componentRows[componentName] = cells;
+    }
+    for (final componentName in allComponentNames.difference(testedComponents)) {
+      componentRows[componentName] = [componentName, ...List.filled(8, '0'), '0'];
+    }
+    final sortedNames = componentRows.keys.toList()..sort((a, b) => a.toLowerCase().compareTo(b.toLowerCase()));
+    return [for (final name in sortedNames) '| ${componentRows[name]!.join(' | ')} |'];
+  }
+
+  String addCategoryTotalRow(Map<String, Map<String, int>> testCount, Map<String, int> groupTotals) {
+    int total = 0;
+    final List<String> cells = ['Total Tests'];
+    for (final group in testCategories) {
+      final count = groupTotals[group] ?? 0;
+      cells.add(count.toString());
+      total += count;
+    }
+    cells.add(total.toString());
+    return '| ${cells.join(' | ')} |';
+  }
+
   final List<String> data = [
-    '| Component | Accessibility | Content | Dimensions | Styling | Interaction | Golden | Performance | Unorganised | Total Tests |',
+    '**Last updated:** $date | **Zeta Flutter version:** $version',
+    '',
+    '| Component | ${testCategories.join(' | ')} | Total Tests |',
     '| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |',
-  ]
-    ..addComponentRows(testCount, groupTotals)
-    ..addCategoryTotalRow(testCount, groupTotals);
+    ...addComponentRows(testCount, groupTotals, allComponentNames),
+    addCategoryTotalRow(testCount, groupTotals),
+  ];
 
   return data.join('\n');
 }
@@ -210,38 +271,49 @@ Future<TestGroups> parseTestFiles(Iterable<FileSystemEntity> testFiles) async {
 Map<String, Map<String, int>> countTests(TestGroups testGroups) {
   final TestCount testCount = {};
   testGroups.forEach((filePath, groups) {
-    final Map<String, int> groupCounts = {};
-    for (final group in groups) {
-      final groupName = group['group'] as String;
-      final tests = group['tests'] as List;
-      groupCounts[groupName] = tests.length;
-    }
-    testCount[filePath] = groupCounts;
+    testCount[filePath] = {for (final group in groups) group['group'] as String: (group['tests'] as List).length};
   });
   return testCount;
 }
 
 void main() async {
   // check for output directory and create if it doesn't exist
-  final Directory outputDirectory = await outputPath('test/scripts/output');
+  final Directory outputDirectory = await outputPath('scripts/test-counter/output');
 
   // get all test files
-  final Iterable<FileSystemEntity> testFiles = getTestFiles('test/src/components');
+  final Iterable<FileSystemEntity> testFiles = getTestFiles('packages/zeta_flutter/test/src/components');
 
   // parse each test file and extract test groups
   final TestGroups testGroups = await parseTestFiles(testFiles);
 
-  // write test groups to file
-  // await writeJSONToFile('${outputDirectory.path}/test_groups.json', testGroups);
-
   // count the number of tests in each group
   final TestCount testCount = countTests(testGroups);
 
-  // write test counts to file
-  // await writeJSONToFile('${outputDirectory.path}/test_counts.json', testCount);
+  // Get all directory names directly under lib/src/components and format them
+  final allComponentNames = {
+    for (final dir in Directory('packages/zeta_flutter/lib/src/components').listSync().whereType<Directory>())
+      dir.path
+          .split(RegExp(r'[\\/]'))
+          .last
+          .replaceAllMapped(RegExp('(_|^)([a-zA-Z])'), (m) => ' ${m[2]!.toUpperCase()}')
+          .trim(),
+  };
+
+  // get version from pubspec.yaml
+  final pubspec = await File('packages/zeta_flutter/pubspec.yaml').readAsString();
+  final versionMatch = RegExp(r'version:\s*([\d\.]+)').firstMatch(pubspec);
+  final version = versionMatch != null ? versionMatch.group(1) ?? 'unknown' : 'unknown';
+
+  // get current date
+  final now = DateTime.now();
+  final date =
+      '${now.year.toString().padLeft(4, '0')}-${now.month.toString().padLeft(2, '0')}-${now.day.toString().padLeft(2, '0')}';
 
   // generate MD table
-  await writeMDToFile('${outputDirectory.path}/test_table.md', generateMD(testCount));
+  await writeMDToFile(
+    '${outputDirectory.path}/test_counts.md',
+    generateMD(testCount, allComponentNames, date, version),
+  );
 
-  debugPrint('Test table generated successfully!');
+  print('Test table generated successfully!');
 }
