@@ -2,7 +2,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:speech_to_text/speech_to_text.dart' as stt;
 
-import '../../../zeta_flutter.dart';
+import '../../../../zeta_flutter.dart';
+import 'action_button.dart';
 
 /// A widget that provides voice input functionality.
 class VoiceButton extends StatefulWidget {
@@ -86,7 +87,7 @@ class VoiceButtonState extends State<VoiceButton> {
         },
       );
     } else {
-      _displayPermsErrorToast();
+      _displayErrorToast();
     }
   }
 
@@ -95,7 +96,7 @@ class VoiceButtonState extends State<VoiceButton> {
     await _speech.stop();
   }
 
-  void _displayPermsErrorToast() {
+  void _displayErrorToast() {
     ScaffoldMessenger.of(context).showSnackBar(
       ZetaSnackBar(
         type: ZetaSnackBarType.error,
@@ -110,15 +111,11 @@ class VoiceButtonState extends State<VoiceButton> {
   @override
   Widget build(BuildContext context) {
     final ZetaColors colors = Zeta.of(context).colors;
-    final ZetaSpacing spacing = Zeta.of(context).spacing;
 
-    return IconButton(
-      icon: Icon(
-        ZetaIcons.microphone,
-        color: _isListening ? colors.mainPrimary : colors.mainDisabled,
-        size: spacing.xl_3,
-      ),
+    return ActionButton(
+      icon: ZetaIcons.microphone,
       onPressed: _isListening ? _stopListening : _startListening,
+      color: _isListening ? colors.mainPrimary : colors.mainDefault,
     );
   }
 }

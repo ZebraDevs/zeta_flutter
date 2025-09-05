@@ -4,39 +4,33 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
-import '../../../zeta_flutter.dart';
+import '../../../../zeta_flutter.dart';
+import 'action_button.dart';
 
 /// Camera button for capturing images
-class CameraButton extends StatelessWidget {
-  /// Creates a [CameraButton].
-  const CameraButton({
+class ImageButton extends StatelessWidget {
+  /// Creates a [ImageButton].
+  const ImageButton({
     super.key,
-    required this.onCapture,
+    this.onCapture,
   });
 
   /// Callback for when an image is captured.
-  final ValueChanged<File> onCapture;
+  final ValueChanged<File>? onCapture;
 
   Future<void> _pickImage(BuildContext context) async {
     final ImagePicker picker = ImagePicker();
     final XFile? image = await picker.pickImage(source: ImageSource.camera, imageQuality: 80);
-    if (image != null) {
-      onCapture(File(image.path));
+    if (image != null && onCapture != null) {
+      onCapture!(File(image.path));
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    final ZetaColors colors = Zeta.of(context).colors;
-    final ZetaSpacing spacing = Zeta.of(context).spacing;
-
-    return IconButton(
-      icon: Icon(
-        ZetaIcons.camera,
-        color: colors.mainDefault,
-        size: spacing.xl_3,
-      ),
-      onPressed: () => _pickImage(context),
+    return ActionButton(
+      icon: ZetaIcons.camera,
+      onPressed: onCapture != null ? () => _pickImage(context) : null,
     );
   }
 

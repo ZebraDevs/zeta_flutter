@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-import '../../../zeta_flutter.dart';
+import '../../../../zeta_flutter.dart';
 
 /// A widget that displays a horizontal action menu with given action buttons.
-class ActionMenu extends StatelessWidget {
-  /// Creates an [ActionMenu] with the given [actions].
-  const ActionMenu({
+class ActionsPanel extends StatelessWidget {
+  /// Creates an [ActionsPanel] with the given [actions].
+  const ActionsPanel({
     super.key,
     required this.actions,
   });
@@ -29,13 +29,7 @@ class ActionMenu extends StatelessWidget {
                 padding: EdgeInsets.symmetric(
                   horizontal: spacing.small,
                 ),
-                child: action is IconButton
-                    ? IconButton(
-                        icon: action.icon,
-                        onPressed: action.onPressed,
-                        iconSize: spacing.xl_3,
-                      )
-                    : action,
+                child: action,
               );
             },
           ).toList(),

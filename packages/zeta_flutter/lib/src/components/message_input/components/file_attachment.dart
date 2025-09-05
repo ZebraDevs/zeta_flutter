@@ -4,8 +4,11 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../../../zeta_flutter.dart';
-import '../../utils/file_type_checker.dart';
+import '../../../../zeta_flutter.dart';
+import '../utils/file_type_checker.dart';
+import 'document_attachment.dart';
+import 'image_attachment.dart';
+import 'video_attachment.dart';
 
 /// A widget that displays a file attachment in the Attachments Bar
 class FileAttachment extends StatelessWidget {
@@ -31,33 +34,57 @@ class FileAttachment extends StatelessWidget {
     final ZetaColors colors = Zeta.of(context).colors;
     final ZetaSpacing spacing = Zeta.of(context).spacing;
 
+    final size = spacing.xl_8 + spacing.medium;
+
     final isImage = FileTypeChecker.isImage(file);
     final isVideo = FileTypeChecker.isVideo(file);
-    final isDocument = FileTypeChecker.isDocument(file);
-    final isAudio = FileTypeChecker.isAudio(file);
 
     Widget dialogImage = const SizedBox();
     if (isImage) dialogImage = Image.file(file);
     if (isVideo) {
-      dialogImage = FutureBuilder<ImageProvider>(
+      dialogImage = FutureBuilder<ImageProvider?>(
         future: FileTypeChecker.getVideoThumbnail(file),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done && snapshot.hasData) {
-            return Image(
-              image: snapshot.data!,
+            return Stack(
+              children: [
+                Image(
+                  image: snapshot.data!,
+                ),
+                Positioned.fill(
+                  child: Center(
+                    child: Container(
+                      decoration: const BoxDecoration(
+                        color: Color.fromARGB(128, 0, 0, 0),
+                        shape: BoxShape.circle,
+                      ),
+                      padding: EdgeInsets.all(spacing.medium),
+                      child: Icon(
+                        ZetaIcons.video,
+                        size: spacing.xl_11,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            );
+          } else if (snapshot.connectionState == ConnectionState.done && !snapshot.hasData) {
+            return SizedBox(
+              width: size,
+              height: size,
+              child: const Center(child: Icon(ZetaIcons.video)),
             );
           } else {
-            return const SizedBox(
-              width: 200,
-              height: 200,
-              child: Center(child: CircularProgressIndicator()),
+            return SizedBox(
+              width: size,
+              height: size,
+              child: const Center(child: CircularProgressIndicator()),
             );
           }
         },
       );
     }
-
-    // TODO: implement document and audio attachments
 
     return InkWell(
       onTap: () async {
@@ -71,47 +98,17 @@ class FileAttachment extends StatelessWidget {
         }
       },
       child: Container(
-        width: 56,
-        height: 56,
+        width: !isVideo && !isImage ? size * 3 : size,
+        height: size,
         decoration: BoxDecoration(
           color: colors.mainLight,
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(spacing.medium),
         ),
         child: Stack(
           children: [
-            if (isVideo)
-              FutureBuilder<ImageProvider<Object>>(
-                future: FileTypeChecker.getVideoThumbnail(file),
-                builder: (context, snapshot) {
-                  if (snapshot.connectionState == ConnectionState.done && snapshot.hasData) {
-                    return ClipRRect(
-                      borderRadius: BorderRadius.circular(12),
-                      child: Image(
-                        image: snapshot.data!,
-                        width: 56,
-                        height: 56,
-                        fit: BoxFit.cover,
-                      ),
-                    );
-                  } else {
-                    return const SizedBox(
-                      width: 56,
-                      height: 56,
-                      child: Center(child: CircularProgressIndicator(strokeWidth: 2)),
-                    );
-                  }
-                },
-              )
-            else if (isImage)
-              ClipRRect(
-                borderRadius: BorderRadius.circular(12),
-                child: Image(
-                  image: FileImage(file),
-                  width: 56,
-                  height: 56,
-                  fit: BoxFit.cover,
-                ),
-              ),
+            if (isVideo) VideoAttachment(file: file),
+            if (isImage) ImageAttachment(file: file),
+            if (!isVideo && !isImage) DocumentAttachment(file: file),
             Positioned(
               top: 1,
               right: 1,
@@ -128,7 +125,7 @@ class FileAttachment extends StatelessWidget {
                   padding: EdgeInsets.all(spacing.minimum),
                   child: Icon(
                     Icons.close,
-                    size: 16,
+                    size: spacing.large,
                     color: colors.mainDefault,
                   ),
                 ),

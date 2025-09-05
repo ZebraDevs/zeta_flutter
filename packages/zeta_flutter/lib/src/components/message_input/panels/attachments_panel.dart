@@ -3,13 +3,13 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import '../../../zeta_flutter.dart';
-import 'file_attachment.dart';
+import '../../../../zeta_flutter.dart';
+import '../components/file_attachment.dart';
 
 /// A bar that displays the list of attachments above the message input field.
-class AttachmentsBar extends StatefulWidget {
-  /// Creates an [AttachmentsBar] widget.
-  const AttachmentsBar({
+class AttachmentsPanel extends StatefulWidget {
+  /// Creates an [AttachmentsPanel] widget.
+  const AttachmentsPanel({
     super.key,
     required this.attachments,
     required this.onCloseAttachment,
@@ -22,7 +22,7 @@ class AttachmentsBar extends StatefulWidget {
   final ValueChanged<int> onCloseAttachment;
 
   @override
-  State<AttachmentsBar> createState() => _AttachmentsBarState();
+  State<AttachmentsPanel> createState() => _AttachmentsPanelState();
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
@@ -33,7 +33,7 @@ class AttachmentsBar extends StatefulWidget {
   }
 }
 
-class _AttachmentsBarState extends State<AttachmentsBar> {
+class _AttachmentsPanelState extends State<AttachmentsPanel> {
   @override
   Widget build(BuildContext context) {
     final ZetaSpacing spacing = Zeta.of(context).spacing;
@@ -48,6 +48,7 @@ class _AttachmentsBarState extends State<AttachmentsBar> {
         ),
         scrollDirection: Axis.horizontal,
         child: Row(
+          textDirection: TextDirection.rtl,
           children: List.generate(
             widget.attachments.length,
             (int i) => FileAttachment(

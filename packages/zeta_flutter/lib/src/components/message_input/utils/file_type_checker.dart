@@ -1,11 +1,17 @@
+
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:video_thumbnail/video_thumbnail.dart';
+import 'package:get_thumbnail_video/index.dart';
+import 'package:get_thumbnail_video/video_thumbnail.dart';
+
+import '../../../../zeta_flutter.dart';
+import '../../../utils/file_attachment_icons.dart';
 // import 'package:mime/mime.dart';
 
 /// File type enumeration
 enum FileType {
+  // 
   image,
   video,
   document,
@@ -61,7 +67,17 @@ class FileTypeChecker {
     'csv',
   ];
 
-  static const List<String> _audioExtensions = ['mp3', 'wav', 'flac', 'aac', 'ogg', 'wma', 'm4a', 'aiff', 'au'];
+  static const List<String> _audioExtensions = [
+    'mp3',
+    'wav',
+    'flac',
+    'aac',
+    'ogg',
+    'wma',
+    'm4a',
+    'aiff',
+    'au',
+  ];
 
   /// Check file type using extension
   static FileType getFileTypeByExtension(File file) {
@@ -105,7 +121,7 @@ class FileTypeChecker {
   static bool isAudio(File file) => getFileTypeByExtension(file) == FileType.audio;
 
   /// Generate a thumbnail from a video file
-  static Future<ImageProvider> getVideoThumbnail(File videoFile) async {
+  static Future<ImageProvider?> getVideoThumbnail(File videoFile) async {
     try {
       final uint8list = await VideoThumbnail.thumbnailData(
         video: videoFile.path,
@@ -114,15 +130,27 @@ class FileTypeChecker {
         quality: 75,
       );
 
-      if (uint8list != null) {
-        return MemoryImage(uint8list);
-      } else {
-        // Return a default video icon if thumbnail generation fails
-        throw Exception('Failed to generate thumbnail');
-      }
+      return MemoryImage(uint8list);
     } catch (e) {
       // Return a default video icon if thumbnail generation fails
-      throw Exception('Failed to generate thumbnail: $e');
+      // throw Exception('Failed to generate thumbnail: $e');
+      return null;
     }
+  }
+
+  /// Get the appropriate icon for a file based on its extension
+  static Widget getFileIcon(BuildContext context, File file) {
+    final spacing = Zeta.of(context).spacing;
+    
+    final extension = file.path.split('.').last.toLowerCase();
+
+    final icon = getFileExtensionIcon(extension);
+
+    if (icon != null) {
+      return icon.padding(EdgeInsets.only(left: spacing.small));
+    }
+
+    // Default file icon
+    return const ZetaIcon(ZetaIcons.attachment);
   }
 }

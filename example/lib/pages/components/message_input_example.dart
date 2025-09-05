@@ -47,12 +47,16 @@ class _MessageInputExampleState extends State<MessageInputExample> {
               },
             ),
           ),
-          MessageInput.actionMenu(
+          ZetaMessageInput(
             controller: controller,
             allowsVoiceInput: true,
-            allowsCameraInput: true,
+            cameraTrailingButton: false,
+            onSendLocation: (location) => setState(() => messages.add('Location: $location')),
+            onSendVoiceMemo: (file, bytes) => setState(() {
+              messages.add('Voice memo: ${file.path}');
+            }),
             attachments: attachments,
-            onSendAttachment: (fileList) {
+            onSendAttachments: (fileList) {
               fileList.forEach((file) {
                 setState(() {
                   messages.add('File attachment: ${file.path}');
