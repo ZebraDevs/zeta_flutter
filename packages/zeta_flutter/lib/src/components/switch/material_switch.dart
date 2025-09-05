@@ -9,6 +9,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE-3RD-PARTY file.
 
+import 'dart:async';
 import 'dart:ui';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
@@ -205,7 +206,7 @@ class _MaterialSwitchState extends State<MaterialSwitch> with TickerProviderStat
 
   void _handleDragStart(DragStartDetails details) {
     if (isInteractive) {
-      reactionController.forward();
+      unawaited(reactionController.forward());
     }
   }
 
@@ -237,7 +238,7 @@ class _MaterialSwitchState extends State<MaterialSwitch> with TickerProviderStat
     } else {
       animateToValue();
     }
-    reactionController.reverse();
+    unawaited(reactionController.reverse());
   }
 
   void _handleChanged(bool? value) {

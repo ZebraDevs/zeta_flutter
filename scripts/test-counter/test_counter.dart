@@ -1,4 +1,4 @@
-// Print allowed as this is a
+// Print allowed in this script
 // ignore_for_file: avoid_print
 
 import 'dart:io';

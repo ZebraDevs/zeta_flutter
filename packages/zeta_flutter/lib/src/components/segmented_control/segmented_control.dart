@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:math' as math;
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -81,12 +82,14 @@ class _ZetaSegmentedControlState<T> extends State<ZetaSegmentedControl<T>>
     super.didUpdateWidget(oldWidget);
 
     if (_highlighted != widget.selected) {
-      _thumbController.animateWith(
-        SpringSimulation(
-          const SpringDescription(mass: 1, stiffness: 500, damping: 44),
-          0,
-          1,
-          0, // Every time a new spring animation starts the previous animation stops.
+      unawaited(
+        _thumbController.animateWith(
+          SpringSimulation(
+            const SpringDescription(mass: 1, stiffness: 500, damping: 44),
+            0,
+            1,
+            0, // Every time a new spring animation starts the previous animation stops.
+          ),
         ),
       );
       _thumbAnimatable = null;

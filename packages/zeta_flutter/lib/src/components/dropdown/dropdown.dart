@@ -38,7 +38,7 @@ class ZetaDropdownItem<T> {
     required this.value,
     this.icon,
   }) {
-    this.label = label ?? this.value.toString();
+    this.label = label ?? value.toString();
   }
 
   /// The label for the item.
