@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import '../../../zeta_flutter.dart';
@@ -79,15 +81,9 @@ abstract class ZetaProgressState<T extends ZetaProgress> extends State<T> with T
   void updateProgress(double newProgress) {
     // Update the Tween with new start and end value
 
-    setState(() {
-      animation = Tween<double>(
-        begin: progress,
-        end: newProgress,
-      ).animate(controller);
-      controller
-        ..reset()
-        ..forward(from: 0);
-    });
+    setState(() => animation = Tween<double>(begin: progress, end: newProgress).animate(controller));
+    controller.reset();
+    unawaited(controller.forward(from: 0));
   }
 
   @override

@@ -20,7 +20,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  mockito: ^5.4.6
+  mockito: ^5.5.1
   zds_analysis: ^1.2.0
   zeta_flutter:
     path: ../zeta_flutter

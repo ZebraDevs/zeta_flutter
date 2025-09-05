@@ -25,7 +25,7 @@ jobs:
         with:
           cache: true
           channel: stable
-          flutter-version: 3.32.x
+          flutter-version: 3.35.x
       - name: Setup flutter
         run: flutter pub get
       - name: Build example app

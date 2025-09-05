@@ -17,10 +17,10 @@ dependencies:
   web: ^1.1.1
 
 dev_dependencies:
-  analyzer: ^7.4.5
+  analyzer: ^8.1.1
   flutter_test:
     sdk: flutter
-  mockito: ^5.4.6
+  mockito: ^5.5.1
   zds_analysis: ^1.2.0
   zeta_flutter:
     path: ../zeta_flutter

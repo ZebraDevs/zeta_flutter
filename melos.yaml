@@ -26,3 +26,4 @@ scripts:
       concurrency: 1
 
   pana: melos exec -- bash ../../scripts/pana.sh
+  test_counter: dart run scripts/test-counter/test_counter.dart
