@@ -13,7 +13,7 @@ import '../../../test_utils/test_utils.dart';
 
 void main() {
   group('Accessibility Tests', () {
-    testWidgets('Input has correct semantics/aria-label', (WidgetTester tester) async {
+    testWidgets('Input has correct semantics', (WidgetTester tester) async {
       await tester.pumpWidget(
         MaterialApp(
           home: Scaffold(body: ZetaMessageInput(placeholder: 'Type a message', onSend: (_) {})),
@@ -71,7 +71,7 @@ void main() {
   group('Content Tests', () {
     testWidgets('Attachments bar opens when attachments are added', (WidgetTester tester) async {
       final controller = TextEditingController();
-      final attachments = <File>[File('test1.png')];
+      final attachments = <File>[File('./assets/zebra.png')];
       await tester.pumpWidget(
         MaterialApp(
           home: Scaffold(
@@ -89,30 +89,34 @@ void main() {
 
     testWidgets('Attachments bar closes when all attachments are removed', (WidgetTester tester) async {
       final controller = TextEditingController();
-      final attachments = <File>[File('test1.png')];
+      final attachments = <File>[File('./assets/zebra.png')];
       await tester.pumpWidget(
-        MaterialApp(
-          home: Scaffold(
-            body: StatefulBuilder(
-              builder: (context, setState) {
-                return ZetaMessageInput(
-                  controller: controller,
-                  attachments: attachments,
-                  onSend: (_) {},
-                  onSendAttachments: (files) {
-                    setState(attachments.clear);
-                  },
-                );
-              },
-            ),
-          ),
+      MaterialApp(
+        home: Scaffold(
+        body: StatefulBuilder(
+          builder: (context, setState) {
+          return ZetaMessageInput(
+            controller: controller,
+            attachments: attachments,
+            onSend: (_) {},
+            onSendAttachments: (files) {
+            setState(attachments.clear);
+            },
+          );
+          },
         ),
+        ),
+      ),
       );
       // Initially, AttachmentsPanel should be present
       expect(find.byType(AttachmentsPanel), findsOneWidget);
-      // Remove attachments
-      attachments.clear();
+
+      // Click send button
+      final sendButton = find.byType(SendButton);
+      expect(sendButton, findsOneWidget);
+      tester.widget<SendButton>(sendButton).onPressed?.call('', []);
       await tester.pump();
+
       // AttachmentsPanel should not be present
       expect(find.byType(AttachmentsPanel), findsNothing);
     });
@@ -234,7 +238,7 @@ void main() {
           home: TestApp(
             home: ZetaMessageInput(
               controller: controller,
-              attachments: const [],
+              attachments: [],
             ),
           ),
         ),

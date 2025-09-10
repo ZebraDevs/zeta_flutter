@@ -49,7 +49,7 @@ class _MessageInputExampleState extends State<MessageInputExample> {
           ),
           ZetaMessageInput(
             controller: controller,
-            disabled: true,
+            disabled: false,
             allowsVoiceInput: true,
             cameraTrailingButton: true,
             hasActionMenu: true,
