@@ -14,9 +14,11 @@ import '../../../test_utils/test_utils.dart';
 void main() {
   group('Accessibility Tests', () {
     testWidgets('Input has correct semantics/aria-label', (WidgetTester tester) async {
-      await tester.pumpWidget(MaterialApp(
-        home: Scaffold(body: ZetaMessageInput(placeholder: 'Type a message', onSend: (_) {})),
-      ));
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Scaffold(body: ZetaMessageInput(placeholder: 'Type a message', onSend: (_) {})),
+        ),
+      );
       final textField = find.byType(TextField);
       expect(textField, findsOneWidget);
       final semantics = tester.getSemantics(textField);
@@ -48,10 +50,15 @@ void main() {
       expect(semantics.label, contains('open action menu'));
     });
 
-     testWidgets('voice button has correct semantics', (WidgetTester tester) async {
+    testWidgets('voice button has correct semantics', (WidgetTester tester) async {
       await tester.pumpWidget(
         MaterialApp(
-          home: Scaffold(body: ZetaMessageInput(onSend: (_) {}, allowsVoiceInput: true,)),
+          home: Scaffold(
+            body: ZetaMessageInput(
+              onSend: (_) {},
+              allowsVoiceInput: true,
+            ),
+          ),
         ),
       );
       final voiceButton = find.byType(VoiceButton);
@@ -62,18 +69,20 @@ void main() {
   });
 
   group('Content Tests', () {
-     testWidgets('Attachments bar opens when attachments are added', (WidgetTester tester) async {
+    testWidgets('Attachments bar opens when attachments are added', (WidgetTester tester) async {
       final controller = TextEditingController();
       final attachments = <File>[File('test1.png')];
-      await tester.pumpWidget(MaterialApp(
-        home: Scaffold(
-          body: ZetaMessageInput(
-            controller: controller,
-            attachments: attachments,
-            onSend: (_) {},
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Scaffold(
+            body: ZetaMessageInput(
+              controller: controller,
+              attachments: attachments,
+              onSend: (_) {},
+            ),
           ),
         ),
-      ));
+      );
       // AttachmentsPanel should be present
       expect(find.byType(AttachmentsPanel), findsOneWidget);
     });
@@ -81,22 +90,24 @@ void main() {
     testWidgets('Attachments bar closes when all attachments are removed', (WidgetTester tester) async {
       final controller = TextEditingController();
       final attachments = <File>[File('test1.png')];
-      await tester.pumpWidget(MaterialApp(
-        home: Scaffold(
-          body: StatefulBuilder(
-            builder: (context, setState) {
-              return ZetaMessageInput(
-                controller: controller,
-                attachments: attachments,
-                onSend: (_) {},
-                onSendAttachments: (files) {
-                  setState(attachments.clear);
-                },
-              );
-            },
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Scaffold(
+            body: StatefulBuilder(
+              builder: (context, setState) {
+                return ZetaMessageInput(
+                  controller: controller,
+                  attachments: attachments,
+                  onSend: (_) {},
+                  onSendAttachments: (files) {
+                    setState(attachments.clear);
+                  },
+                );
+              },
+            ),
           ),
         ),
-      ));
+      );
       // Initially, AttachmentsPanel should be present
       expect(find.byType(AttachmentsPanel), findsOneWidget);
       // Remove attachments
@@ -223,7 +234,7 @@ void main() {
           home: TestApp(
             home: ZetaMessageInput(
               controller: controller,
-              attachments: [],
+              attachments: const [],
             ),
           ),
         ),
@@ -239,7 +250,7 @@ void main() {
       expect(tester.widget<TextField>(textField).controller?.text ?? '', '');
     });
 
-    // TODO: Implement maxLength for message input
+    /* TODO: Implement maxLength for message input */
     // testWidgets('input accepts up to maxLength characters', (WidgetTester tester) async {
     //   final controller = TextEditingController();
     //   await tester.pumpWidget(MaterialApp(

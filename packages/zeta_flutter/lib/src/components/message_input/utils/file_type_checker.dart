@@ -1,3 +1,5 @@
+// not needed internal file
+// ignore_for_file: public_member_api_docs
 
 import 'dart:io';
 
@@ -11,7 +13,6 @@ import '../../../utils/file_attachment_icons.dart';
 
 /// File type enumeration
 enum FileType {
-  // 
   image,
   video,
   document,
