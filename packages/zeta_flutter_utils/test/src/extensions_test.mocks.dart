@@ -25,6 +25,7 @@ import 'package:zeta_flutter_theme/zeta_flutter_theme.dart' as _i4;
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: camel_case_types
 // ignore_for_file: subtype_of_sealed_class
+// ignore_for_file: invalid_use_of_internal_member
 
 class _FakeWidget_0 extends _i1.SmartFake implements _i2.Widget {
   _FakeWidget_0(
@@ -89,8 +90,8 @@ class _FakeColor_4 extends _i1.SmartFake implements _i5.Color {
         );
 }
 
-class _FakeZetaTextStyle_5 extends _i1.SmartFake implements _i4.ZetaTextStyle {
-  _FakeZetaTextStyle_5(
+class _FakeZetaSemantics_5 extends _i1.SmartFake implements _i4.ZetaSemantics {
+  _FakeZetaSemantics_5(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -99,8 +100,8 @@ class _FakeZetaTextStyle_5 extends _i1.SmartFake implements _i4.ZetaTextStyle {
         );
 }
 
-class _FakeZetaSemantics_6 extends _i1.SmartFake implements _i4.ZetaSemantics {
-  _FakeZetaSemantics_6(
+class _FakeZetaTextStyle_6 extends _i1.SmartFake implements _i4.ZetaTextStyle {
+  _FakeZetaTextStyle_6(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -1602,6 +1603,32 @@ class MockZetaColors extends _i1.Mock implements _i4.ZetaColors {
 /// See the documentation for Mockito's code generation for more information.
 class MockZeta extends _i1.Mock implements _i4.Zeta {
   @override
+  _i4.ZetaPrimitives get primitives => (super.noSuchMethod(
+        Invocation.getter(#primitives),
+        returnValue: _FakeZetaPrimitives_3(
+          this,
+          Invocation.getter(#primitives),
+        ),
+        returnValueForMissingStub: _FakeZetaPrimitives_3(
+          this,
+          Invocation.getter(#primitives),
+        ),
+      ) as _i4.ZetaPrimitives);
+
+  @override
+  _i4.ZetaSemantics get semantics => (super.noSuchMethod(
+        Invocation.getter(#semantics),
+        returnValue: _FakeZetaSemantics_5(
+          this,
+          Invocation.getter(#semantics),
+        ),
+        returnValueForMissingStub: _FakeZetaSemantics_5(
+          this,
+          Invocation.getter(#semantics),
+        ),
+      ) as _i4.ZetaSemantics);
+
+  @override
   bool get rounded => (super.noSuchMethod(
         Invocation.getter(#rounded),
         returnValue: false,
@@ -1625,41 +1652,15 @@ class MockZeta extends _i1.Mock implements _i4.Zeta {
   @override
   _i4.ZetaTextStyle get textStyles => (super.noSuchMethod(
         Invocation.getter(#textStyles),
-        returnValue: _FakeZetaTextStyle_5(
+        returnValue: _FakeZetaTextStyle_6(
           this,
           Invocation.getter(#textStyles),
         ),
-        returnValueForMissingStub: _FakeZetaTextStyle_5(
+        returnValueForMissingStub: _FakeZetaTextStyle_6(
           this,
           Invocation.getter(#textStyles),
         ),
       ) as _i4.ZetaTextStyle);
-
-  @override
-  _i4.ZetaPrimitives get primitives => (super.noSuchMethod(
-        Invocation.getter(#primitives),
-        returnValue: _FakeZetaPrimitives_3(
-          this,
-          Invocation.getter(#primitives),
-        ),
-        returnValueForMissingStub: _FakeZetaPrimitives_3(
-          this,
-          Invocation.getter(#primitives),
-        ),
-      ) as _i4.ZetaPrimitives);
-
-  @override
-  _i4.ZetaSemantics get semantics => (super.noSuchMethod(
-        Invocation.getter(#semantics),
-        returnValue: _FakeZetaSemantics_6(
-          this,
-          Invocation.getter(#semantics),
-        ),
-        returnValueForMissingStub: _FakeZetaSemantics_6(
-          this,
-          Invocation.getter(#semantics),
-        ),
-      ) as _i4.ZetaSemantics);
 
   @override
   _i4.ZetaColors get colors => (super.noSuchMethod(
