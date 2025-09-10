@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -125,9 +127,9 @@ class _ZetaDropdownListItemState extends State<ZetaDropdownListItem> with Single
       _expanded = value;
     });
     if (_expanded) {
-      _expandController.forward();
+      unawaited(_expandController.forward());
     } else {
-      _expandController.reverse();
+      unawaited(_expandController.reverse());
     }
   }
 

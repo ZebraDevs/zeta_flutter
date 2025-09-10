@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -93,14 +95,14 @@ class _ZetaTopAppBarSearchFieldState extends State<ZetaTopAppBarSearchField> wit
     widget.searchController?.startSearch();
     setState(() => _isSearching = true);
 
-    _animationController.forward();
+    unawaited(_animationController.forward());
     FocusScope.of(context).requestFocus(_textFocusNode);
   }
 
   void _closeSearch() {
     widget.searchController?.closeSearch();
     setState(() => _isSearching = false);
-    _animationController.reverse();
+    unawaited(_animationController.reverse());
     _removeFocus(context);
   }
 
