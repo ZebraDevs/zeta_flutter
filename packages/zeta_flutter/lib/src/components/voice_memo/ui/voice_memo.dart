@@ -63,7 +63,7 @@ class ZetaVoiceMemo extends ZetaStatefulWidget {
   final String sendMessageLabel;
 
   /// The icon to show on the trailing action
-  /// 
+  ///
   /// {@macro zeta-widget-translations}
   final IconData sendActionIcon;
 

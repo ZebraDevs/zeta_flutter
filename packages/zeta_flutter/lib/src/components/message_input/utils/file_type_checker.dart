@@ -142,7 +142,7 @@ class FileTypeChecker {
   /// Get the appropriate icon for a file based on its extension
   static Widget getFileIcon(BuildContext context, File file) {
     final spacing = Zeta.of(context).spacing;
-    
+
     final extension = file.path.split('.').last.toLowerCase();
 
     final icon = getFileExtensionIcon(extension);

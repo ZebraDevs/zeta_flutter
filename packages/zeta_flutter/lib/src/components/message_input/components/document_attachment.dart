@@ -41,7 +41,8 @@ class DocumentAttachment extends ZetaStatelessWidget {
             children: [
               FileTypeChecker.getFileIcon(context, file),
               SizedBox(width: spacing.minimum),
-              Flexible(child: Text(file.path.split('.').last.toUpperCase(), maxLines: 1, overflow: TextOverflow.ellipsis)),
+              Flexible(
+                  child: Text(file.path.split('.').last.toUpperCase(), maxLines: 1, overflow: TextOverflow.ellipsis),),
             ],
           ),
         ],

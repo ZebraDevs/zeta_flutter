@@ -91,22 +91,22 @@ void main() {
       final controller = TextEditingController();
       final attachments = <File>[File('./assets/zebra.png')];
       await tester.pumpWidget(
-      MaterialApp(
-        home: Scaffold(
-        body: StatefulBuilder(
-          builder: (context, setState) {
-          return ZetaMessageInput(
-            controller: controller,
-            attachments: attachments,
-            onSend: (_) {},
-            onSendAttachments: (files) {
-            setState(attachments.clear);
-            },
-          );
-          },
+        MaterialApp(
+          home: Scaffold(
+            body: StatefulBuilder(
+              builder: (context, setState) {
+                return ZetaMessageInput(
+                  controller: controller,
+                  attachments: attachments,
+                  onSend: (_) {},
+                  onSendAttachments: (files) {
+                    setState(attachments.clear);
+                  },
+                );
+              },
+            ),
+          ),
         ),
-        ),
-      ),
       );
       // Initially, AttachmentsPanel should be present
       expect(find.byType(AttachmentsPanel), findsOneWidget);
@@ -238,7 +238,7 @@ void main() {
           home: TestApp(
             home: ZetaMessageInput(
               controller: controller,
-              attachments: [],
+              attachments: const [],
             ),
           ),
         ),
