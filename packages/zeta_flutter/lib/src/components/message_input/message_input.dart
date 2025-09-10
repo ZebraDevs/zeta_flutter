@@ -255,7 +255,6 @@ class _MessageInputState extends State<ZetaMessageInput> {
     if (widget.controller == null) {
       _controller.dispose();
     }
-    _attachments.clear();
     _focusNode.dispose();
     super.dispose();
   }
