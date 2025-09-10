@@ -8,7 +8,7 @@ import '../../../../zeta_flutter.dart';
 import 'action_button.dart';
 
 /// Video button for capturing videos
-class VideoButton extends StatelessWidget {
+class VideoButton extends ZetaStatelessWidget {
   /// Creates a [VideoButton].
   const VideoButton({
     super.key,
@@ -32,6 +32,7 @@ class VideoButton extends StatelessWidget {
     return ActionButton(
       icon: ZetaIcons.video,
       onPressed: onCapture != null ? () => _pickVideo(context) : null,
+      semanticLabel: 'capture a video',
     );
   }
 

@@ -21,6 +21,7 @@ class ZetaVoiceMemo extends ZetaStatefulWidget {
     this.recordingLabel = 'Recording message...',
     this.maxLimitLabel = 'Recording message {timer} seconds left...',
     this.sendMessageLabel = 'Send message?',
+    this.sendActionIcon = ZetaIcons.send,
     this.playingLabel = 'Playing...',
     this.recordingNotAllowedLabel = 'Recording not allowed.',
     this.onDiscard,
@@ -60,6 +61,11 @@ class ZetaVoiceMemo extends ZetaStatefulWidget {
   ///
   /// {@macro zeta-widget-translations}
   final String sendMessageLabel;
+
+  /// The icon to show on the trailing action
+  /// 
+  /// {@macro zeta-widget-translations}
+  final IconData sendActionIcon;
 
   /// The label shown when the voice memo is playing.
   ///
@@ -128,7 +134,8 @@ class ZetaVoiceMemo extends ZetaStatefulWidget {
       ..add(StringProperty('recordingNotAllowedLabel', recordingNotAllowedLabel))
       ..add(ObjectFlagProperty<void Function(Uint8List audioStream)?>.has('onSend', onSend))
       ..add(DiagnosticsProperty<RecordConfig>('recordConfig', recordConfig))
-      ..add(DoubleProperty('loudnessMultiplier', loudnessMultiplier));
+      ..add(DoubleProperty('loudnessMultiplier', loudnessMultiplier))
+      ..add(DiagnosticsProperty<IconData>('sendActionIcon', sendActionIcon));
   }
 }
 
@@ -239,7 +246,7 @@ class _ZetaVoiceMemoState extends State<ZetaVoiceMemo> {
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
                                   IconButton(
-                                    icon: Icon(ZetaIcons.send, size: zeta.spacing.xl_6),
+                                    icon: Icon(widget.sendActionIcon, size: zeta.spacing.xl_6),
                                     padding: EdgeInsets.all(zeta.spacing.minimum),
                                     color: zeta.colors.mainPrimary,
                                     onPressed: (state.canRecord &&

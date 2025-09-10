@@ -11,7 +11,7 @@ import 'image_attachment.dart';
 import 'video_attachment.dart';
 
 /// A widget that displays a file attachment in the Attachments Bar
-class FileAttachment extends StatelessWidget {
+class FileAttachment extends ZetaStatelessWidget {
   /// Creates a [FileAttachment] widget.
   const FileAttachment({
     super.key,

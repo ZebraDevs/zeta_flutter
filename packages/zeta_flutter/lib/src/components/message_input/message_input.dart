@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:location/location.dart';
 
 import '../../../zeta_flutter.dart';
+import 'actions/action_button.dart';
 import 'actions/attachment_button.dart';
 import 'actions/image_button.dart';
 import 'actions/location_button.dart';
@@ -47,6 +48,7 @@ class ZetaMessageInput extends ZetaStatefulWidget {
     this.attachments,
     this.allowedExtensions,
     this.multiAttach = true,
+    this.disabled,
     // this.maxAttachmentSize = 250000,
     // this.maxVoiceMemoDuration = const Duration(minutes: 1),
   });
@@ -76,6 +78,7 @@ class ZetaMessageInput extends ZetaStatefulWidget {
     this.attachments,
     this.allowedExtensions,
     this.multiAttach = false,
+    this.disabled,
     // this.maxAttachmentSize = 250000,
     // this.maxVoiceMemoDuration = const Duration(minutes: 1),
   });
@@ -105,6 +108,7 @@ class ZetaMessageInput extends ZetaStatefulWidget {
     this.attachments,
     this.allowedExtensions,
     this.multiAttach = true,
+    this.disabled,
     // this.maxAttachmentSize = 250000,
     // this.maxVoiceMemoDuration = const Duration(minutes: 1),
   });
@@ -187,6 +191,10 @@ class ZetaMessageInput extends ZetaStatefulWidget {
   /// Whether or not the attachment button should let the user attach multiple files at once.
   final bool? multiAttach;
 
+  /// Whether the entire message input is disabled.
+  /// Defaults to false.
+  final bool? disabled;
+
   // /// The maximum size of attachments in bytes.
   // final int? maxAttachmentSize;
 
@@ -219,8 +227,8 @@ class ZetaMessageInput extends ZetaStatefulWidget {
       ..add(IterableProperty<String>('allowedExtensions', allowedExtensions))
       ..add(DiagnosticsProperty<bool?>('multiAttach', multiAttach))
       ..add(ObjectFlagProperty<void Function(File file, Uint8List bytes)?>.has('onSendVoiceMemo', onSendVoiceMemo))
-      ..add(ObjectFlagProperty<ValueChanged<LocationData>?>.has('onSendLocation', onSendLocation));
-    // ..add(IntProperty('messageCharacterLimit', messageCharacterLimit))
+      ..add(ObjectFlagProperty<ValueChanged<LocationData>?>.has('onSendLocation', onSendLocation))
+      ..add(DiagnosticsProperty<bool?>('disabled', disabled));
     // ..add(IntProperty('maxAttachmentSize', maxAttachmentSize))
     // ..add(DiagnosticsProperty<Duration?>('maxVoiceMemoDuration', maxVoiceMemoDuration));
   }
@@ -228,17 +236,16 @@ class ZetaMessageInput extends ZetaStatefulWidget {
 
 class _MessageInputState extends State<ZetaMessageInput> {
   late TextEditingController _controller;
-  bool _isMessageContentEmpty = true;
-  bool _isActionMenuOpen = false;
+  late bool _isMessageContentEmpty;
+  late bool _isActionMenuOpen;
   final FocusNode _focusNode = FocusNode();
-  List<File> _attachments = [];
+  late List<File> _attachments;
 
   @override
   void initState() {
     super.initState();
     _controller = widget.controller ?? TextEditingController();
     _isMessageContentEmpty = _controller.text.isEmpty;
-    _controller.addListener(_handleTextChange);
     _attachments = widget.attachments ?? [];
     _isActionMenuOpen = false;
   }
@@ -248,26 +255,16 @@ class _MessageInputState extends State<ZetaMessageInput> {
     if (widget.controller == null) {
       _controller.dispose();
     }
-    _controller.removeListener(_handleTextChange);
     _attachments.clear();
     _focusNode.dispose();
     super.dispose();
   }
 
-  void _handleTextChange() {
-    final isTextEmpty = _controller.text.isEmpty && _attachments.isEmpty;
-    if (_isMessageContentEmpty != isTextEmpty) {
-      setState(() {
-        _isMessageContentEmpty = isTextEmpty;
-      });
-    }
-  }
+  void _handleTextChange(String? text) {
+    if (text == null) return;
 
-  void _openActionsMenu() {
-    // Open the actions menu
-    setState(() {
-      _isActionMenuOpen = !_isActionMenuOpen;
-    });
+    final isTextEmpty = text.trim().isEmpty && _attachments.isEmpty;
+    if (_isMessageContentEmpty != isTextEmpty) setState(() => _isMessageContentEmpty = isTextEmpty);
   }
 
   void _handleSend(String text, List<File> attachments) {
@@ -280,6 +277,7 @@ class _MessageInputState extends State<ZetaMessageInput> {
     widget.onSendAttachments?.call(attachments);
   }
 
+  void _openActionsMenu() => setState(() => _isActionMenuOpen = !_isActionMenuOpen);
   void _onCloseAttachment(int index) => setState(() => _attachments.removeAt(index));
   void _onCapture(File file) => setState(() => _attachments.add(file));
   void _onAttach(List<File> files) => setState(() => _attachments.addAll(files));
@@ -328,28 +326,37 @@ class _MessageInputState extends State<ZetaMessageInput> {
                 textBaseline: TextBaseline.ideographic,
                 children: [
                   if (widget.hasActionMenu ?? false)
-                    IconButton(
+                    ActionButton(
                       onPressed: _openActionsMenu,
-                      icon: const Icon(ZetaIcons.add),
-                      iconSize: spacing.xl_3,
+                      icon: ZetaIcons.add,
+                      disabled: widget.disabled,
+                      semanticLabel: 'open action menu',
                     )
                   else
                     const Nothing(),
                   Expanded(
                     child: ZetaTextInput(
+                      disabled: widget.disabled ?? false,
+                      onChange: _handleTextChange,
                       focusNode: _focusNode,
                       minLines: widget.minLines,
                       maxLines: widget.maxLines,
-                      
                       controller: _controller,
                       rounded: context.rounded,
                       placeholder: widget.placeholder,
-                      suffix: widget.allowsVoiceInput ?? false ? VoiceButton(controller: _controller) : const Nothing(),
+                      semanticLabel: widget.placeholder,
+                      suffix: widget.allowsVoiceInput ?? false
+                          ? VoiceButton(
+                              controller: _controller,
+                              disabled: widget.disabled,
+                            )
+                          : null,
                     ),
                   ),
                   if (showCameraButton)
                     ImageButton(
                       onCapture: _onCapture,
+                      disabled: widget.disabled,
                     ),
                   if (showTrailingButton) widget.trailingButton!,
                   if (showSendButton)
@@ -358,6 +365,7 @@ class _MessageInputState extends State<ZetaMessageInput> {
                       attachments: _attachments,
                       onPressed: widget.onSend != null ? _handleSend : null,
                       onLongPress: widget.onLongPressSend != null ? _handleLongPressSend : null,
+                      disabled: (_isMessageContentEmpty || widget.onSend == null) || (widget.disabled ?? false),
                     ),
                 ].gap(spacing.small),
               ),

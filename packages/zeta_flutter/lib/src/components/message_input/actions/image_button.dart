@@ -8,15 +8,19 @@ import '../../../../zeta_flutter.dart';
 import 'action_button.dart';
 
 /// Camera button for capturing images
-class ImageButton extends StatelessWidget {
+class ImageButton extends ZetaStatelessWidget {
   /// Creates a [ImageButton].
   const ImageButton({
     super.key,
     this.onCapture,
+    this.disabled,
   });
 
   /// Callback for when an image is captured.
   final ValueChanged<File>? onCapture;
+
+  /// Wether or not the button is disabled.
+  final bool? disabled;
 
   Future<void> _pickImage(BuildContext context) async {
     final ImagePicker picker = ImagePicker();
@@ -30,13 +34,17 @@ class ImageButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ActionButton(
       icon: ZetaIcons.camera,
-      onPressed: onCapture != null ? () => _pickImage(context) : null,
+      onPressed: () => _pickImage(context),
+      disabled: disabled,
+      semanticLabel: 'capture an image',
     );
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(ObjectFlagProperty<ValueChanged<File>>.has('onCapture', onCapture));
+    properties
+      ..add(ObjectFlagProperty<ValueChanged<File>>.has('onCapture', onCapture))
+      ..add(DiagnosticsProperty<bool?>('disabled', disabled));
   }
 }

@@ -8,7 +8,7 @@ import '../../../../zeta_flutter.dart';
 import 'action_button.dart';
 
 /// Voice memo button for recording voice notes
-class VoiceMemoButton extends StatelessWidget {
+class VoiceMemoButton extends ZetaStatelessWidget {
   /// Creates a [VoiceMemoButton].
   const VoiceMemoButton({
     super.key,
@@ -72,6 +72,7 @@ class VoiceMemoButton extends StatelessWidget {
     return ActionButton(
       icon: ZetaIcons.audio,
       onPressed: onSend != null ? () => _onClick(context) : null,
+      semanticLabel: 'record a voice memo',
     );
   }
 

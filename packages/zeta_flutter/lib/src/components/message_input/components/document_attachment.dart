@@ -7,7 +7,7 @@ import '../../../../zeta_flutter.dart';
 import '../utils/file_type_checker.dart';
 
 /// Attachment item for displaying document files.
-class DocumentAttachment extends StatelessWidget {
+class DocumentAttachment extends ZetaStatelessWidget {
   /// Creates a [DocumentAttachment] widget.
   const DocumentAttachment({
     super.key,
@@ -41,7 +41,7 @@ class DocumentAttachment extends StatelessWidget {
             children: [
               FileTypeChecker.getFileIcon(context, file),
               SizedBox(width: spacing.minimum),
-              Text(file.path.split('.').last.toUpperCase()),
+              Flexible(child: Text(file.path.split('.').last.toUpperCase(), maxLines: 1, overflow: TextOverflow.ellipsis)),
             ],
           ),
         ],

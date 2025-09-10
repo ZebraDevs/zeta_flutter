@@ -7,7 +7,7 @@ import '../../../../zeta_flutter.dart';
 import '../components/file_attachment.dart';
 
 /// A bar that displays the list of attachments above the message input field.
-class AttachmentsPanel extends StatefulWidget {
+class AttachmentsPanel extends ZetaStatefulWidget {
   /// Creates an [AttachmentsPanel] widget.
   const AttachmentsPanel({
     super.key,

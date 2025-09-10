@@ -8,7 +8,7 @@ import '../../../../zeta_flutter.dart';
 import 'action_button.dart';
 
 /// Attachment button for picking any type of file
-class AttachmentButton extends StatelessWidget {
+class AttachmentButton extends ZetaStatelessWidget {
   /// Creates an [AttachmentButton].
   const AttachmentButton({
     super.key,
@@ -66,6 +66,7 @@ class AttachmentButton extends StatelessWidget {
     return ActionButton(
       icon: ZetaIcons.attachment,
       onPressed: onAttach != null ? () => _pickFiles(context) : null,
+      semanticLabel: 'add an attachment',
     );
   }
 

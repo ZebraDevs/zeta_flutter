@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../zeta_flutter.dart';
 
 /// A widget that displays a horizontal action menu with given action buttons.
-class ActionsPanel extends StatelessWidget {
+class ActionsPanel extends ZetaStatelessWidget {
   /// Creates an [ActionsPanel] with the given [actions].
   const ActionsPanel({
     super.key,

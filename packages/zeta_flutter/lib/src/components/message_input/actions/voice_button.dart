@@ -6,12 +6,19 @@ import '../../../../zeta_flutter.dart';
 import 'action_button.dart';
 
 /// A widget that provides voice input functionality.
-class VoiceButton extends StatefulWidget {
+class VoiceButton extends ZetaStatefulWidget {
   /// Creates a [VoiceButton].
-  const VoiceButton({super.key, required this.controller});
+  const VoiceButton({
+    super.key,
+    required this.controller,
+    this.disabled,
+  });
 
   /// The text input editing controller for the voice input.
   final TextEditingController controller;
+
+  /// Whether or not the button is disabled.
+  final bool? disabled;
 
   @override
   VoiceButtonState createState() => VoiceButtonState();
@@ -19,9 +26,9 @@ class VoiceButton extends StatefulWidget {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(
-      DiagnosticsProperty<TextEditingController>('controller', controller),
-    );
+    properties
+      ..add(DiagnosticsProperty<TextEditingController>('controller', controller))
+      ..add(DiagnosticsProperty<bool?>('disabled', disabled));
   }
 }
 
@@ -111,11 +118,15 @@ class VoiceButtonState extends State<VoiceButton> {
   @override
   Widget build(BuildContext context) {
     final ZetaColors colors = Zeta.of(context).colors;
+    final ZetaSpacing spacing = Zeta.of(context).spacing;
 
     return ActionButton(
       icon: ZetaIcons.microphone,
       onPressed: _isListening ? _stopListening : _startListening,
-      color: _isListening ? colors.mainPrimary : colors.mainDefault,
+      color: _isListening ? colors.mainPrimary : null,
+      disabled: widget.disabled,
+      semanticLabel: 'voice input',
+      size: spacing.xl_2,
     );
   }
 }

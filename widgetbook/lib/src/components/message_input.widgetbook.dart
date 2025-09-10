@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
@@ -7,8 +9,8 @@ import 'package:zeta_widgetbook/src/utils/utils.dart';
 
 @widgetbook.UseCase(
   name: 'Message Input',
-  type: MessageInput,
-  path: '$componentsPath/MessageInput',
+  type: ZetaMessageInput,
+  path: '$componentsPath/ZetaMessageInput',
   designLink: 'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=18271-19682',
 )
 Widget defaultMessageInput(BuildContext context) {
@@ -16,148 +18,27 @@ Widget defaultMessageInput(BuildContext context) {
 
   final String? placeholder = context.knobs.stringOrNull(label: 'Placeholder');
   final bool allowsVoiceInput = context.knobs.boolean(label: 'Allows Voice Input', initialValue: true);
-  final range = context.knobs.range(label: 'Range of lines', initialValue: const RangeValues(1, 100));
+  final range = context.knobs.range(label: 'Range of lines', initialValue: const RangeValues(1, 10));
   final minLines = range.start.round();
   final maxLines = range.end.round();
+  final bool disabled = context.knobs.boolean(label: 'Disabled', initialValue: false);
+  final bool hasActionMenu = context.knobs.boolean(label: 'Has Action Menu', initialValue: true);
+  final bool cameraTrailingButton = context.knobs.boolean(label: 'Camera Trailing Button', initialValue: false);
 
-  var messages = [];
 
   return StatefulBuilder(
-      builder: (context, setState) => Column(
-            children: [
-              ...List.generate(
-                messages.length,
-                (index) => ListTile(title: Text(messages[index])),
-              ),
-              MessageInput.actionMenu(
-                controller: controller,
-                placeholder: placeholder,
-                allowsVoiceInput: allowsVoiceInput,
-                minLines: minLines,
-                maxLines: maxLines,
-                onSend: () {
-                  final message = controller.text;
-                  if (message.isNotEmpty) {
-                    setState(() {
-                      messages.add(message);
-                    });
-                    controller.clear();
-                  }
-                },
-              ),
-            ],
-          ));
-
-  // return Scaffold(
-  //   body: Column(
-  //     children: [
-  //       Expanded(
-  //         child: ListView.builder(
-  //           itemCount: 10,
-  //           itemBuilder: (context, index) {
-  //             return ListTile(
-  //               title: Text('Message $index'),
-  //             );
-  //           },
-  //         ),
-  //       ),
-  //       MessageInput(
-  //         controller: controller,
-  //         placeholder: context.knobs.string(
-  //           label: 'Placeholder',
-  //           initialValue: 'Type your message here...',
-  //         ),
-  //         onSend: () {
-  //           final message = controller.text;
-  //           if (message.isNotEmpty) {
-  //             print('Message sent: $message');
-  //             controller.clear();
-  //           }
-  //         },
-  //       ),
-  //     ],
-  //   ),
-  // );
+    builder: (context, setState) => ZetaMessageInput.actionMenu(
+      controller: controller,
+      placeholder: placeholder,
+      allowsVoiceInput: allowsVoiceInput,
+      minLines: minLines,
+      maxLines: maxLines,
+      disabled: disabled,
+      hasActionMenu: hasActionMenu,
+      cameraTrailingButton: cameraTrailingButton,
+      attachments: [],
+      onSend: (message) { },
+      onSendAttachments: (value) { },
+    )
+  );
 }
-
-// @widgetbook.UseCase(
-//   name: 'With Action Menu',
-//   type: MessageInput,
-//   path: '$componentsPath/MessageInput',
-//   designLink:
-//       'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=18271-19682',
-// )
-// Widget actionMenuMessageInput(BuildContext context) {
-//   final controller = TextEditingController();
-//   return Scaffold(
-//     body: Column(
-//       children: [
-//         Expanded(
-//           child: ListView.builder(
-//             itemCount: 10,
-//             itemBuilder: (context, index) {
-//               return ListTile(
-//                 title: Text('Message $index'),
-//               );
-//             },
-//           ),
-//         ),
-//         MessageInput.actionMenu(
-//           controller: controller,
-//           placeholder: context.knobs.string(
-//             label: 'Placeholder',
-//             initialValue: 'Type your message here...',
-//           ),
-//           onSend: () {
-//             final message = controller.text;
-//             if (message.isNotEmpty) {
-//               print('Message sent: $message');
-//               controller.clear();
-//             }
-//           },
-//         ),
-//       ],
-//     ),
-//   );
-// }
-
-// @widgetbook.UseCase(
-//   name: 'Comment',
-//   type: MessageInput,
-//   path: '$componentsPath/MessageInput',
-//   designLink:
-//       'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=18271-19682',
-// )
-// Widget commentMessageInput(BuildContext context) {
-//   final controller = TextEditingController();
-//   return Scaffold(
-//     body: Column(
-//       children: [
-//         Expanded(
-//           child: ListView.builder(
-//             itemCount: 10,
-//             itemBuilder: (context, index) {
-//               return ListTile(
-//                 title: Text('Message $index'),
-//               );
-//             },
-//           ),
-//         ),
-//         MessageInput.comment(
-//           controller: controller,
-//           placeholder: context.knobs.string(
-//             label: 'Placeholder',
-//             initialValue: 'Type your message here...',
-//           ),
-//           onSend: () {
-//             final message = controller.text;
-//             if (message.isNotEmpty) {
-//               print('Message sent: $message');
-//               controller.clear();
-//             }
-//           },
-//         ),
-//       ],
-//     ),
-//   );
-// }

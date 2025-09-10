@@ -7,7 +7,7 @@ import '../../../../zeta_flutter.dart';
 import '../utils/file_type_checker.dart';
 
 /// Attachment item for displaying video files.
-class VideoAttachment extends StatelessWidget {
+class VideoAttachment extends ZetaStatelessWidget {
   /// Creates a [VideoAttachment] widget.
   const VideoAttachment({
     super.key,

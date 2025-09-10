@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import '../../../../zeta_flutter.dart';
 
 /// Action button for the action menu in the message input
-class ActionButton extends StatelessWidget {
+class ActionButton extends ZetaStatelessWidget {
   /// Creates an [ActionButton].
   const ActionButton({
     super.key,
@@ -12,6 +12,9 @@ class ActionButton extends StatelessWidget {
     this.onPressed,
     this.onLongPress,
     this.color,
+    this.disabled,
+    this.size,
+    this.semanticLabel,
   });
 
   /// The icon to display.
@@ -26,18 +29,30 @@ class ActionButton extends StatelessWidget {
   /// The color of the icon. Defaults to mainDefault.
   final Color? color;
 
+  /// Whether or not the button is disabled.
+  final bool? disabled;
+
+  /// A size override.
+  final double? size;
+
+  /// The semantic label on the icon button (used for screen readers).
+  final String? semanticLabel;
+
   @override
   Widget build(BuildContext context) {
     final ZetaColors colors = Zeta.of(context).colors;
     final ZetaSpacing spacing = Zeta.of(context).spacing;
 
-    return IconButton(
-      icon: ZetaIcon(
-        icon,
-        color: color ?? (onPressed != null ? colors.mainDefault : colors.mainDisabled),
-        size: spacing.xl_3,
+    return Semantics(
+      label: semanticLabel,
+      child: IconButton(
+        icon: Icon(
+          icon,
+          color: color ?? (onPressed == null || (disabled ?? false) ? colors.mainDisabled : colors.mainDefault),
+          size: size ?? spacing.xl_3,
+        ),
+        onPressed: (disabled ?? false) ? null : onPressed,
       ),
-      onPressed: onPressed,
     );
   }
 
@@ -48,6 +63,9 @@ class ActionButton extends StatelessWidget {
       ..add(DiagnosticsProperty<IconData>('icon', icon))
       ..add(ObjectFlagProperty<VoidCallback>.has('callback', onPressed))
       ..add(ColorProperty('color', color))
-      ..add(ObjectFlagProperty<VoidCallback?>.has('onLongPressed', onLongPress));
+      ..add(ObjectFlagProperty<VoidCallback?>.has('onLongPressed', onLongPress))
+      ..add(DiagnosticsProperty<bool?>('disabled', disabled))
+      ..add(StringProperty('semanticLabel', semanticLabel))
+      ..add(DoubleProperty('size', size));
   }
 }

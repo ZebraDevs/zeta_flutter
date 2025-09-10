@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import '../../../../zeta_flutter.dart';
 
 /// Attachment item for displaying image files.
-class ImageAttachment extends StatelessWidget {
+class ImageAttachment extends ZetaStatelessWidget {
   /// Creates an [ImageAttachment] widget.
   const ImageAttachment({super.key, required this.file});
 

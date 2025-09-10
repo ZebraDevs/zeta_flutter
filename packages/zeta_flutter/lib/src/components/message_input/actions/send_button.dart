@@ -7,7 +7,7 @@ import '../../../../zeta_flutter.dart';
 import 'action_button.dart';
 
 /// The send button used in the message input
-class SendButton extends StatelessWidget {
+class SendButton extends ZetaStatelessWidget {
   /// Creates a [SendButton].
   const SendButton({
     super.key,
@@ -15,6 +15,7 @@ class SendButton extends StatelessWidget {
     this.attachments,
     this.onPressed,
     this.onLongPress,
+    this.disabled,
   });
 
   /// The text editing controller of the connected text input.
@@ -29,22 +30,22 @@ class SendButton extends StatelessWidget {
   /// The callback invoked on long press of the send button.
   final void Function(String text, List<File> attachments)? onLongPress;
 
+  /// Wether or not the button is disabled.
+  final bool? disabled;
+
   @override
   Widget build(BuildContext context) {
     final ZetaColors colors = Zeta.of(context).colors;
     final ZetaSpacing spacing = Zeta.of(context).spacing;
 
-    final isTextEmpty = controller.text.isEmpty;
-    // is disabeld if the text box is empty and there are no attachments or if the onPressed callback is null;
-    final isDisabled = isTextEmpty && (attachments == null || attachments!.isEmpty) || onPressed == null;
-
     return Stack(
       children: [
         ActionButton(
           icon: ZetaIcons.send,
-          color: isDisabled ? colors.mainDisabled : null,
           onPressed: onPressed != null ? () => onPressed!(controller.text, attachments ?? []) : null,
           onLongPress: onLongPress != null ? () => onLongPress!(controller.text, attachments ?? []) : null,
+          disabled: disabled,
+          semanticLabel: 'send the message',
         ),
         if (attachments != null && attachments!.isNotEmpty)
           Positioned(
@@ -81,6 +82,7 @@ class SendButton extends StatelessWidget {
       ..add(DiagnosticsProperty<TextEditingController>('controller', controller))
       ..add(IterableProperty<File>('attachments', attachments))
       ..add(ObjectFlagProperty<void Function(String text, List<File> attachments)?>.has('onPressed', onPressed))
-      ..add(ObjectFlagProperty<void Function(String text, List<File> attachments)?>.has('onLongPress', onLongPress));
+      ..add(ObjectFlagProperty<void Function(String text, List<File> attachments)?>.has('onLongPress', onLongPress))
+      ..add(DiagnosticsProperty<bool?>('isDisabled', disabled));
   }
 }

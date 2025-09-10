@@ -6,7 +6,7 @@ import '../../../../zeta_flutter.dart';
 import 'action_button.dart';
 
 /// Location button for sending precise or approximate location
-class LocationButton extends StatelessWidget {
+class LocationButton extends ZetaStatelessWidget {
   /// Creates a [LocationButton].
   const LocationButton({
     super.key,
@@ -30,6 +30,7 @@ class LocationButton extends StatelessWidget {
     return ActionButton(
       icon: ZetaIcons.pin,
       onPressed: onLocationCapture != null ? () => _getLocation(context) : null,
+      semanticLabel: 'send your location',
     );
   }
 
