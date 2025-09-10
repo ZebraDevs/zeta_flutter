@@ -12,20 +12,21 @@ environment:
 resolution: workspace
 
 dependencies:
-  audioplayers: ^6.5.0
+  audioplayers: ^6.5.1
   collection: ^1.19.1
   file_picker: ^8.1.4
   flutter:
     sdk: flutter
-  flutter_slidable: ^4.0.0
   get_thumbnail_video: ^0.7.2
   image_picker: ^1.2.0
+  flutter_slidable: ^4.0.1
+  http: ^1.5.0
   intl: ^0.20.2
   location: ^8.0.1
   mask_text_input_formatter: ^2.9.0
   provider: ^6.1.5+1
-  record: ^6.0.0
   speech_to_text: ^7.3.0
+  record: ^6.1.1
   zeta_flutter_theme: ^1.2.1
   zeta_flutter_utils: ^1.1.2
   zeta_icons: ^1.1.5
@@ -34,7 +35,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   image: ^4.5.4
-  mockito: ^5.4.6
+  mockito: ^5.5.1
   path: ^1.9.1
   zds_analysis: ^1.2.0
 
