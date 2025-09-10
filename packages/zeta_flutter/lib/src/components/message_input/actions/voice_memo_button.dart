@@ -23,8 +23,7 @@ class VoiceMemoButton extends ZetaStatelessWidget {
     Future<void> handleVoiceMemo(Uint8List audioData) async {
       // Create a temporary file from the audio data
       final directory = Directory.systemTemp;
-      final tempFile =
-          File('${directory.path}/voice_memo_${DateTime.now().millisecondsSinceEpoch}.wav');
+      final tempFile = File('${directory.path}/voice_memo_${DateTime.now().millisecondsSinceEpoch}.wav');
       await tempFile.writeAsBytes(audioData);
       onSend!(tempFile, audioData);
     }
@@ -79,7 +78,6 @@ class VoiceMemoButton extends ZetaStatelessWidget {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties
-        .add(ObjectFlagProperty<void Function(File file, Uint8List bytes)>.has('onSend', onSend));
+    properties.add(ObjectFlagProperty<void Function(File file, Uint8List bytes)>.has('onSend', onSend));
   }
 }

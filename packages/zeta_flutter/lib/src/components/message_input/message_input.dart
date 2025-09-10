@@ -289,7 +289,8 @@ class _MessageInputState extends State<ZetaMessageInput> {
     final horizontalPadding = spacing.large;
 
     final showCameraButton = _isMessageContentEmpty && (widget.cameraTrailingButton ?? false);
-    final showTrailingButton = _isMessageContentEmpty && widget.trailingButton != null && !(widget.cameraTrailingButton ?? false);
+    final showTrailingButton =
+        _isMessageContentEmpty && widget.trailingButton != null && !(widget.cameraTrailingButton ?? false);
     final showSendButton = !_isMessageContentEmpty || (!showCameraButton && !showTrailingButton);
 
     return SafeArea(

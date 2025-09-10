@@ -28,8 +28,8 @@ class PlaybackState extends ChangeNotifier {
     _positionSubscription = _audioPlayer.onPositionChanged.listen(_onPositionChanged);
   }
 
-  Future<void> _init(String? assetPath, String? deviceFilePath, String? url, Uint8List?  bytes) async {
-    await loadAudio(assetPath: assetPath, deviceFilePath: deviceFilePath, url: url,bytes: bytes);
+  Future<void> _init(String? assetPath, String? deviceFilePath, String? url, Uint8List? bytes) async {
+    await loadAudio(assetPath: assetPath, deviceFilePath: deviceFilePath, url: url, bytes: bytes);
     await resetPlayback();
   }
 
@@ -108,9 +108,8 @@ class PlaybackState extends ChangeNotifier {
       _localFile = await handleFile(url, FileFetchMode.url);
     } else if (deviceFilePath != null) {
       _localFile = Uri.file(deviceFilePath);
-    } else if (bytes != null){
+    } else if (bytes != null) {
       _audioChunks = bytes;
-    
     } else if (audioChunks != null && audioChunks.isNotEmpty && recordConfig != null) {
       _audioChunks = Uint8List.fromList([
         ...generatePCMWavHeader(audioChunks, recordConfig),

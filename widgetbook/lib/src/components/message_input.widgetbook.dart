@@ -23,20 +23,18 @@ Widget defaultMessageInput(BuildContext context) {
   final bool hasActionMenu = context.knobs.boolean(label: 'Has Action Menu', initialValue: true);
   final bool cameraTrailingButton = context.knobs.boolean(label: 'Camera Trailing Button', initialValue: false);
 
-
   return StatefulBuilder(
-    builder: (context, setState) => ZetaMessageInput.actionMenu(
-      controller: controller,
-      placeholder: placeholder,
-      allowsVoiceInput: allowsVoiceInput,
-      minLines: minLines,
-      maxLines: maxLines,
-      disabled: disabled,
-      hasActionMenu: hasActionMenu,
-      cameraTrailingButton: cameraTrailingButton,
-      attachments: [],
-      onSend: (message) { },
-      onSendAttachments: (value) { },
-    )
-  );
+      builder: (context, setState) => ZetaMessageInput.actionMenu(
+            controller: controller,
+            placeholder: placeholder,
+            allowsVoiceInput: allowsVoiceInput,
+            minLines: minLines,
+            maxLines: maxLines,
+            disabled: disabled,
+            hasActionMenu: hasActionMenu,
+            cameraTrailingButton: cameraTrailingButton,
+            attachments: [],
+            onSend: (message) {},
+            onSendAttachments: (value) {},
+          ));
 }

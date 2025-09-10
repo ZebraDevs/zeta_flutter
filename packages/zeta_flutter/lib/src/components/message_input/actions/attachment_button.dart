@@ -37,10 +37,7 @@ class AttachmentButton extends ZetaStatelessWidget {
       );
 
       if (result != null) {
-        final files = result.paths
-            .where((String? path) => path != null)
-            .map((String? path) => File(path!))
-            .toList();
+        final files = result.paths.where((String? path) => path != null).map((String? path) => File(path!)).toList();
 
         if (files.isNotEmpty && onAttach != null) {
           onAttach!(files);
