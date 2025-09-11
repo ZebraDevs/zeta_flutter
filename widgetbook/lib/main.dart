@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:http/http.dart' as http;
 import 'package:widgetbook/widgetbook.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
@@ -34,13 +35,7 @@ class WidgetbookApp extends StatelessWidget {
     const semanticsLight = ZetaColorsAA(primitives: ZetaPrimitivesLight());
     const semanticsDark = ZetaColorsAA(primitives: ZetaPrimitivesDark());
     return Widgetbook(
-      directories: [
-        WidgetbookUseCase(
-          name: 'Introduction',
-          builder: (BuildContext context) => IntroductionWidgetbook(readme: readme),
-        ),
-        ...directories,
-      ],
+      directories: directories,
       lightTheme: ThemeData(
         fontFamily: kZetaFontFamily,
         colorScheme: ColorScheme.fromSeed(
@@ -56,8 +51,17 @@ class WidgetbookApp extends StatelessWidget {
           primary: semanticsDark.mainPrimary,
         ),
       ),
-      themeMode: ThemeMode.dark,
-      initialRoute: '?path=introduction',
+      home: IntroductionWidgetbook(readme: readme),
+      header: Builder(
+        builder: (context) {
+          return SvgPicture.asset(
+            Theme.of(context).brightness == Brightness.dark ? 'assets/logo-dark.svg' : 'assets/logo-light.svg',
+            semanticsLabel: 'Zeta Logo',
+            width: 150,
+            alignment: Alignment.centerLeft,
+          );
+        },
+      ),
       appBuilder: (context, child) => child,
       addons: [
         ViewportAddon([
