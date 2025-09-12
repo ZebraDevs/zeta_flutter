@@ -390,10 +390,7 @@ class _MessageInputState extends State<ZetaMessageInput> {
                       onCapture: widget.onSendAttachments != null ? _onCapture : null,
                     ),
                   if (widget.voiceMemoAction ?? false)
-                    VoiceMemoButton(
-                      onSend: widget.onSendVoiceMemo,
-                      maxDuration: widget.maxVoiceMemoDuration
-                    ),
+                    VoiceMemoButton(onSend: widget.onSendVoiceMemo, maxDuration: widget.maxVoiceMemoDuration),
                   if (widget.locationAction ?? false)
                     LocationButton(
                       onLocationCapture: widget.onSendLocation,

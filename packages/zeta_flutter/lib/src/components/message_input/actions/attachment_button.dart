@@ -55,7 +55,9 @@ class AttachmentButton extends ZetaStatelessWidget {
         if (files.isNotEmpty && onAttach != null) {
           onAttach!(files);
         } else if (result.paths.isNotEmpty && files.isEmpty) {
-          if (context.mounted) _displayError(context, 'Selected file(s) exceed maximum size of ${maxSize! / 1000000}MB');
+          if (context.mounted) {
+            _displayError(context, 'Selected file(s) exceed maximum size of ${maxSize! / 1000000}MB');
+          }
         }
       }
     } catch (e) {
