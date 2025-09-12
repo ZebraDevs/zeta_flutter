@@ -148,7 +148,7 @@ class FileTypeChecker {
     final icon = getFileExtensionIcon(extension);
 
     if (icon != null) {
-      return icon.padding(EdgeInsets.only(left: spacing.small));
+      return icon.paddingStart(spacing.small);
     }
 
     // Default file icon

@@ -15,6 +15,7 @@ class AttachmentButton extends ZetaStatelessWidget {
     this.onAttach,
     this.allowedExtensions,
     this.allowMultiple = false,
+    this.maxSize,
   });
 
   /// Callback for when files are selected.
@@ -27,6 +28,9 @@ class AttachmentButton extends ZetaStatelessWidget {
   /// Whether to allow selecting multiple files at once.
   final bool allowMultiple;
 
+  /// The maximum size of attachments in bytes.
+  final int? maxSize;
+
   Future<void> _pickFiles(BuildContext context) async {
     // final scaffoldMessenger = ScaffoldMessenger.of(context);
     try {
@@ -37,10 +41,21 @@ class AttachmentButton extends ZetaStatelessWidget {
       );
 
       if (result != null) {
-        final files = result.paths.where((String? path) => path != null).map((String? path) => File(path!)).toList();
-
+        var files = result.paths.where((String? path) => path != null).map((String? path) => File(path!)).toList();
+        // Filter by maxSize if specified
+        if (maxSize != null) {
+          files = files.where((file) {
+            try {
+              return file.lengthSync() <= maxSize!;
+            } catch (_) {
+              return false;
+            }
+          }).toList();
+        }
         if (files.isNotEmpty && onAttach != null) {
           onAttach!(files);
+        } else if (result.paths.isNotEmpty && files.isEmpty) {
+          if (context.mounted) _displayError(context, 'Selected file(s) exceed maximum size of ${maxSize! / 1000000}MB');
         }
       }
     } catch (e) {
@@ -74,5 +89,6 @@ class AttachmentButton extends ZetaStatelessWidget {
       ..add(ObjectFlagProperty<ValueChanged<List<File>>>.has('onAttach', onAttach))
       ..add(IterableProperty<String>('allowedExtensions', allowedExtensions))
       ..add(FlagProperty('allowMultiple', value: allowMultiple, ifTrue: 'multiple files allowed'));
+    properties.add(IntProperty('maxSize', maxSize));
   }
 }

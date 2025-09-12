@@ -13,10 +13,14 @@ class VoiceMemoButton extends ZetaStatelessWidget {
   const VoiceMemoButton({
     super.key,
     this.onSend,
+    this.maxDuration,
   });
 
   /// Callback for when a voice note is recorded.
   final void Function(File file, Uint8List bytes)? onSend;
+
+  /// The maximum duration of voice memos.
+  final Duration? maxDuration;
 
   Future<void> _onClick(BuildContext context) async {
     // Convert Uint8List to File for the callback
@@ -45,7 +49,7 @@ class VoiceMemoButton extends ZetaStatelessWidget {
                 children: [
                   Expanded(
                     child: ZetaVoiceMemo(
-                      // sendActionIcon: ZetaIcons.add,
+                      maxRecordingDuration: maxDuration != null ? maxDuration! : const Duration(seconds: 120),
                       onSend: onSend != null
                           ? (audioData) {
                               unawaited(handleVoiceMemo(audioData));
@@ -79,5 +83,6 @@ class VoiceMemoButton extends ZetaStatelessWidget {
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties.add(ObjectFlagProperty<void Function(File file, Uint8List bytes)>.has('onSend', onSend));
+    properties.add(DiagnosticsProperty<Duration?>('maxDuration', maxDuration));
   }
 }

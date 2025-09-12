@@ -247,14 +247,3 @@ extension IconExtensions on IconData {
     return this;
   }
 }
-
-/// Extension to add padding to ZetaIcon
-extension ZetaIconExtension on ZetaIcon {
-  /// Adds padding around the icon.
-  Widget padding(EdgeInsets padding) {
-    return Padding(
-      padding: padding,
-      child: this,
-    );
-  }
-}

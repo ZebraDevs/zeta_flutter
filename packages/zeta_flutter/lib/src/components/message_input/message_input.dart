@@ -49,8 +49,8 @@ class ZetaMessageInput extends ZetaStatefulWidget {
     this.allowedExtensions,
     this.multiAttach = true,
     this.disabled,
-    // this.maxAttachmentSize = 250000,
-    // this.maxVoiceMemoDuration = const Duration(minutes: 1),
+    this.maxAttachmentSize = 1000000,
+    this.maxVoiceMemoDuration = const Duration(minutes: 1),
   });
 
   /// Comment input
@@ -79,8 +79,8 @@ class ZetaMessageInput extends ZetaStatefulWidget {
     this.allowedExtensions,
     this.multiAttach = false,
     this.disabled,
-    // this.maxAttachmentSize = 250000,
-    // this.maxVoiceMemoDuration = const Duration(minutes: 1),
+    this.maxAttachmentSize = 1000000,
+    this.maxVoiceMemoDuration = const Duration(minutes: 1),
   });
 
   /// Message input with predefined actions
@@ -109,8 +109,8 @@ class ZetaMessageInput extends ZetaStatefulWidget {
     this.allowedExtensions,
     this.multiAttach = true,
     this.disabled,
-    // this.maxAttachmentSize = 250000,
-    // this.maxVoiceMemoDuration = const Duration(minutes: 1),
+    this.maxAttachmentSize = 1000000,
+    this.maxVoiceMemoDuration = const Duration(minutes: 1),
   });
 
   /// The text editing controller for the message input.
@@ -195,11 +195,12 @@ class ZetaMessageInput extends ZetaStatefulWidget {
   /// Defaults to false.
   final bool? disabled;
 
-  // /// The maximum size of attachments in bytes.
-  // final int? maxAttachmentSize;
+  /// The maximum size of attachments in bytes.
+  /// Defaults to 1,000,000 bytes || 1MB
+  final int? maxAttachmentSize;
 
-  // /// The maximum duration of voice memos.
-  // final Duration? maxVoiceMemoDuration;
+  /// The maximum duration of voice memos.
+  final Duration? maxVoiceMemoDuration;
 
   @override
   State<ZetaMessageInput> createState() => _MessageInputState();
@@ -228,9 +229,9 @@ class ZetaMessageInput extends ZetaStatefulWidget {
       ..add(DiagnosticsProperty<bool?>('multiAttach', multiAttach))
       ..add(ObjectFlagProperty<void Function(File file, Uint8List bytes)?>.has('onSendVoiceMemo', onSendVoiceMemo))
       ..add(ObjectFlagProperty<ValueChanged<LocationData>?>.has('onSendLocation', onSendLocation))
-      ..add(DiagnosticsProperty<bool?>('disabled', disabled));
-    // ..add(IntProperty('maxAttachmentSize', maxAttachmentSize))
-    // ..add(DiagnosticsProperty<Duration?>('maxVoiceMemoDuration', maxVoiceMemoDuration));
+      ..add(DiagnosticsProperty<bool?>('disabled', disabled))
+      ..add(IntProperty('maxAttachmentSize', maxAttachmentSize))
+      ..add(DiagnosticsProperty<Duration?>('maxVoiceMemoDuration', maxVoiceMemoDuration));
   }
 }
 
@@ -377,6 +378,7 @@ class _MessageInputState extends State<ZetaMessageInput> {
                     AttachmentButton(
                       allowMultiple: widget.multiAttach ?? false,
                       allowedExtensions: widget.allowedExtensions,
+                      maxSize: widget.maxAttachmentSize,
                       onAttach: widget.onSendAttachments != null ? _onAttach : null,
                     ),
                   if (widget.pictureAction ?? false)
@@ -390,6 +392,7 @@ class _MessageInputState extends State<ZetaMessageInput> {
                   if (widget.voiceMemoAction ?? false)
                     VoiceMemoButton(
                       onSend: widget.onSendVoiceMemo,
+                      maxDuration: widget.maxVoiceMemoDuration
                     ),
                   if (widget.locationAction ?? false)
                     LocationButton(

@@ -6,7 +6,6 @@ environment:
 dev_dependencies:
   melos: ^6.3.3
 
-  analyzer: any
 workspace:
   - packages/zeta_flutter
   - packages/zeta_flutter_theme
