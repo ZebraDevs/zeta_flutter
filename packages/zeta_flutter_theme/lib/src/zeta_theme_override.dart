@@ -51,3 +51,29 @@ class ZetaThemeOverride extends StatelessWidget {
       ..add(EnumProperty<ZetaContrast?>('contrast', contrast));
   }
 }
+
+/// Dark theme example from SYNC
+// import 'package:comms/app/app.dart';
+// import 'package:comms/widgets/styles.dart';
+// import 'package:flutter/material.dart';
+// import 'package:zds_flutter/zds_flutter.dart';
+
+// class ZetaDarkTheme extends StatelessWidget {
+//   const ZetaDarkTheme({super.key, required this.child});
+
+//   final Widget child;
+
+//   @override
+//   Widget build(BuildContext context) {
+//     final zeta = context.zeta;
+//     // final themeData = zeta.themeData;
+//     return ZetaProvider(
+//       // initialThemeData: themeData,
+//       initialThemeMode: ThemeMode.dark,
+//       initialContrast: zeta.contrast,
+//       builder: (BuildContext context, ThemeData light, ThemeData dark, ThemeMode themeMode) {
+//         return Theme(data: buildSyncTheme(light, dark, isDark: true), child: child);
+//       },
+//     );
+//   }
+// }
