@@ -48,6 +48,8 @@ class ZetaTextInput extends ZetaTextFormField {
     this.keyboardType,
     this.focusNode,
     this.semanticLabel,
+    this.minLines,
+    this.maxLines,
   })  : assert(initialValue == null || controller == null, 'Only one of initial value and controller can be accepted.'),
         assert(prefix == null || prefixText == null, 'Only one of prefix or prefixText can be accepted.'),
         assert(suffix == null || suffixText == null, 'Only one of suffix or suffixText can be accepted.'),
@@ -77,6 +79,8 @@ class ZetaTextInput extends ZetaTextFormField {
               keyboardType: keyboardType,
               focusNode: focusNode,
               semanticLabel: semanticLabel,
+              minLines: minLines,
+              maxLines: maxLines,
             );
           },
         );
@@ -150,6 +154,14 @@ class ZetaTextInput extends ZetaTextFormField {
   /// {@macro zeta-widget-semantic-label}
   final String? semanticLabel;
 
+  /// The minimum number of lines the input can display.
+  /// Defaults to 1.
+  final int? minLines;
+
+  /// The maximum number of lines the input can display.
+  /// Defaults to 1.
+  final int? maxLines;
+
   @override
   FormFieldState<String> createState() => ZetaTextFormFieldState();
 
@@ -176,6 +188,8 @@ class ZetaTextInput extends ZetaTextFormField {
       ..add(DiagnosticsProperty<bool>('obscureText', obscureText))
       ..add(DiagnosticsProperty<TextInputType?>('keyboardType', keyboardType))
       ..add(DiagnosticsProperty<FocusNode?>('focusNode', focusNode))
-      ..add(StringProperty('semanticLabel', semanticLabel));
+      ..add(StringProperty('semanticLabel', semanticLabel))
+      ..add(IntProperty('minLines', minLines))
+      ..add(IntProperty('maxLines', maxLines));
   }
 }

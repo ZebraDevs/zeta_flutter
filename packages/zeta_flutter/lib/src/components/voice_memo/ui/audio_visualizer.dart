@@ -26,6 +26,7 @@ class ZetaAudioVisualizer extends ZetaStatefulWidget {
     this.onPause,
     this.onPlay,
     this.errorMessage = 'Audio cannot be played',
+    this.bytes,
   });
 
   /// The path of a local audio asset to visualize.
@@ -74,6 +75,9 @@ class ZetaAudioVisualizer extends ZetaStatefulWidget {
   /// Error message to display when audio can not be played.
   final String errorMessage;
 
+  /// A stream of audio bytes to visualize.
+  final Uint8List? bytes;
+
   @override
   State<ZetaAudioVisualizer> createState() => _ZetaAudioVisualizerState();
 
@@ -91,7 +95,8 @@ class ZetaAudioVisualizer extends ZetaStatefulWidget {
       ..add(ColorProperty('foregroundColor', foregroundColor))
       ..add(ColorProperty('tertiaryColor', tertiaryColor))
       ..add(ColorProperty('playButtonColor', playButtonColor))
-      ..add(StringProperty('errorMessage', errorMessage));
+      ..add(StringProperty('errorMessage', errorMessage))
+      ..add(ObjectFlagProperty<Uint8List?>('bytes', bytes));
   }
 }
 
@@ -229,6 +234,7 @@ class _ZetaAudioVisualizerState extends State<ZetaAudioVisualizer> {
           assetPath: widget.assetPath,
           deviceFilePath: widget.deviceFilePath,
           url: widget.url,
+          bytes: widget.bytes,
         ),
         child: Consumer<PlaybackState>(
           builder: (context, state, _) => _buildVisualizer(context, state),
