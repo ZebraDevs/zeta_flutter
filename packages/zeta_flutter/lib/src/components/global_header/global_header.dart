@@ -17,6 +17,9 @@ class ZetaGlobalHeader extends ZetaStatelessWidget {
     this.name = 'Name',
     this.initials = 'RK',
     this.appSwitcher = false,
+    this.onHamburgerMenuPressed,
+    this.onAvatarButtonPressed,
+    this.onAppsButtonPressed,
   });
 
   /// Header platformName in top left of header
@@ -43,6 +46,18 @@ class ZetaGlobalHeader extends ZetaStatelessWidget {
   ///Set to false by default. Set to true to show app switcher button.
   final bool appSwitcher;
 
+  /// Callback when hamburger menu is pressed.
+  /// Set to null by default, which disables the button.
+  final VoidCallback? onHamburgerMenuPressed;
+
+  /// Callback when avatar button is pressed.
+  /// Set to null by default, which disables the button.
+  final VoidCallback? onAvatarButtonPressed;
+
+  /// Callback when apps button is pressed.
+  /// Set to null by default, which disables the button.
+  final VoidCallback? onAppsButtonPressed;
+
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
@@ -51,129 +66,109 @@ class ZetaGlobalHeader extends ZetaStatelessWidget {
       ..add(ObjectFlagProperty<bool?>('searchBar', searchBar))
       ..add(ObjectFlagProperty<bool?>.has('appSwitcher', appSwitcher))
       ..add(StringProperty('name', name))
-      ..add(StringProperty('initials', initials));
+      ..add(StringProperty('initials', initials))
+      ..add(ObjectFlagProperty<VoidCallback?>.has('onHamburgerMenuPressed', onHamburgerMenuPressed))
+      ..add(ObjectFlagProperty<VoidCallback?>.has('onAvatarButtonPressed', onAvatarButtonPressed))
+      ..add(ObjectFlagProperty<VoidCallback?>.has('onAppsButtonPressed', onAppsButtonPressed));
   }
 
   @override
   Widget build(BuildContext context) {
+    final colors = Zeta.of(context).colors;
     return ZetaRoundedScope(
       rounded: context.rounded,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          //Left side of header
-          Row(
-            children: [
-              ZetaIconButton(
-                icon: ZetaIcons.hamburger_menu,
-                size: ZetaWidgetSize.small,
-                onPressed: () {}, //Create callback
-                type: ZetaButtonType.text,
-              ),
-              SvgPicture.asset(
-                'packages/zeta_flutter/assets/logos/zebra-logo.svg',
-                height: Zeta.of(context).spacing.xl_4,
-              ),
-              Text(
-                platformName,
-                style: Zeta.of(context).textStyles.titleMedium,
-              ),
-              //Generate nav items
-              ...navItems.take(6),
-            ],
-          ),
-          //Right side of header
-          Row(
-            children: [
-              if(searchBar)
-                SizedBox(
-                  width: 240,
-                  child: ZetaSearchBar(size: ZetaWidgetSize.small, showSpeechToText: false),
+      child: LayoutBuilder(
+        builder: (context, constraints) {
+          final deviceType = constraints.deviceType;
+
+          return Container(
+            padding: EdgeInsets.symmetric(
+              vertical: Zeta.of(context).spacing.large,
+              horizontal: Zeta.of(context).spacing.small,
+            ),
+            decoration: BoxDecoration(color: colors.surfaceDefault),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                //Left side of header
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    ZetaIconButton(
+                      icon: ZetaIcons.hamburger_menu,
+                      size: ZetaWidgetSize.small,
+                      onPressed: onHamburgerMenuPressed,
+                      type: ZetaButtonType.text,
+                    ),
+                    SizedBox(width: Zeta.of(context).spacing.large),
+                    SvgPicture.asset(
+                      'packages/zeta_flutter/assets/logos/zebra-logo.svg',
+                      height: Zeta.of(context).spacing.xl_4,
+                    ),
+                    SizedBox(width: Zeta.of(context).spacing.large),
+                    Text(
+                      platformName,
+                      style: Zeta.of(context).textStyles.titleMedium,
+                    ),
+                    SizedBox(width: Zeta.of(context).spacing.large),
+                    //Generate nav items
+                    if(navItems.isNotEmpty)
+                      Container(
+                        padding: EdgeInsets.only(left: Zeta.of(context).spacing.large),
+                        decoration: BoxDecoration(
+                          border: Border(
+                            left: BorderSide(
+                              color: colors.borderDefault,
+                            ),
+                          ),
+                        ),
+                        child: Row(
+                          children: [
+                            ...navItems.take(6),
+                          ],
+                        ),
+                      ),
+                  ],
                 ),
-              //Action Items
-              ...actionItems.take(6),
-              ZetaButton(
-                label: name,
-                type: ZetaButtonType.text,
-                size: ZetaWidgetSize.small,
-                onPressed: () {}, //Create callback
-                trailingIcon: ZetaIcons.expand_more,
-                child: ZetaAvatar(
-                  initials: initials,
-                  size: ZetaAvatarSize.xxxs,
+                //Right side of header
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    if(searchBar)
+                      SizedBox(
+                        width: 240,
+                        child: ZetaSearchBar(size: ZetaWidgetSize.small, showSpeechToText: false),
+                      ),
+                    //Action Items
+                    ...actionItems.take(6),
+                    ZetaButton(
+                      label: name,
+                      type: ZetaButtonType.text,
+                      size: ZetaWidgetSize.small,
+                      onPressed: onAvatarButtonPressed,
+                      trailingIcon: ZetaIcons.expand_more,
+                      child: ZetaAvatar(
+                        initials: initials,
+                        size: ZetaAvatarSize.xxxs,
+                      ),
+                    ),
+                    if (appSwitcher)
+                      ZetaIconButton(
+                        icon: ZetaIcons.apps,
+                        size: ZetaWidgetSize.small,
+                        onPressed: onAppsButtonPressed,
+                        type: ZetaButtonType.text,
+                      ),
+                  ],
                 ),
-              ),
-              if (appSwitcher)
-                ZetaIconButton(
-                  icon: ZetaIcons.apps,
-                  size: ZetaWidgetSize.small,
-                  onPressed: () {}, //Create callback
-                  type: ZetaButtonType.text,
-                ),
-            ],
-          ),
-        ],
-      ),
+              ],
+            ),
+          );
+        }, 
+      ), 
     );
   }
 }
-
-
-  //      child: Container(
-      //   padding: EdgeInsets.symmetric(
-      //     vertical: Zeta.of(context).spacing.small,
-      //     horizontal: Zeta.of(context).spacing.large,
-      //   ),
-      //   decoration: BoxDecoration(
-      //     color: const ZetaPrimitivesLight().cool.shade100,
-      //   ),
-      //   child: Row(
-      //     children: [
-      //       Row(
-      //         children: [
-      //           ZetaIconButton(
-      //             icon: ZetaIcons.hamburger_menu,
-      //             onPressed: () {
-      //               // Handle menu button press
-      //             },
-      //           ),
-      //           SvgPicture.asset(
-      //             'logos/zebra-logo.svg',
-      //             height: Zeta.of(context).spacing.xl_4,
-      //             colorFilter: const ColorFilter.mode(
-      //               Colors.black,
-      //               BlendMode.srcIn,
-      //             ),
-      //           ),
-      //           Text(widget.platformName, style: Zeta.of(context).textStyles.titleMedium),
-      //           Row(
-      //             children:
-      //               widget.navItems.isNotEmpty
-      //                 ? widget.navItems.take(6).toList()
-      //                 : [const SizedBox(width: 1, height: 1)],
-      //           ),
-      //         ],
-      //       ),
-      //       Row(
-      //       children: [
-      //         if(widget.searchBar != null)
-      //           ZetaSearchBar(),
-      //         if (widget.onAppsButton != null)
-      //           ZetaIconButton(
-      //             icon: ZetaIcons.star,
-      //             onPressed: widget.onAppsButton,
-      //           ),
-      //         if (widget.avatar != null) widget.avatar!,
-      //         if (widget.onAppsButton != null)
-      //           ZetaIconButton(
-      //             icon: ZetaIcons.apps,
-      //             onPressed: widget.onAppsButton,
-      //           ),
-      //       ],
-      //     ),
-      //     ],
-      //   ),
-      // ),
 
   // Widget _buildTitle() {
   //   return Text(
