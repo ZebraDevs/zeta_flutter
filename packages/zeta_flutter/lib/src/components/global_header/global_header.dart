@@ -1,209 +1,214 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter_svg/svg.dart';
 
 import '../../../zeta_flutter.dart';
 
-/// Global header component
-/// This component should not be used as an appbar in a scaffold.
-/// It can be used in custom scroll views and columns.
-///
-/// ```dart
-/// SingleChildScrollView(
-///   child: Column(children: [
-///     ZetaGlobalHeader(
-///       title: "Title",
-///       tabItems: childrenOne,
-///       searchBar: ZetaSearchBar(shape: ZetaWidgetBorder.full, size: ZetaWidgetSize.large),
-///       onAppsButton: () {},
-///       actionButtons: [
-///         IconButton(
-///           onPressed: () {},
-///           icon: const Icon(
-///             ZetaIcons.alert,
-///           ),
-///         ),
-///         IconButton(
-///           onPressed: () {},
-///           icon: const Icon(
-///             ZetaIcons.help,
-///           ),
-///         ),
-///       ],
-///       avatar: const ZetaAvatar(initials: 'PS'),
-///     ),
-///   ]),
-/// ),
-/// ```
-///
-/// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=1120-26358&node-type=canvas&m=dev
-///
-/// Widgetbook: https://design.zebra.com/flutter/widgetbook/index.html#/?path=components/global-header/zetaglobalheader/global-header
-class ZetaGlobalHeader extends ZetaStatefulWidget {
+class ZetaGlobalHeader extends ZetaStatelessWidget {
   /// Constructor for [ZetaGlobalHeader]
   const ZetaGlobalHeader({
     super.key,
     super.rounded,
-    required this.title,
-    this.tabItems = const [],
-    this.actionButtons = const [],
-    this.avatar,
-    this.searchBar,
-    this.onAppsButton,
+    required this.platformName,
+    this.navItems = const [],
+    this.searchBar = false,
+    this.actionItems = const [],
+    this.name = 'Name',
+    this.initials = 'RK',
+    this.appSwitcher = false,
   });
 
-  /// Header title in top left of header
-  final String title;
+  /// Header platformName in top left of header
+  final String platformName;
 
-  /// Tab item buttons
-  final List<ZetaGlobalHeaderItem> tabItems;
+  /// Menu items to display in the header.
+  /// If more than 6 items are provided, only the first 6 will be displayed.
+  /// Expects ZetaButton or ZetaDropDown widgets.
+  final List<Widget> navItems;
 
-  /// Action buttons.
-  final List<IconButton> actionButtons;
+  /// Search bar widget
+  final bool searchBar;
 
-  /// Avatar component.
-  final ZetaAvatar? avatar;
+  /// Action buttons to display in the header
+  final List<Widget> actionItems;
 
-  /// Search bar component.
-  final ZetaSearchBar? searchBar;
+  /// Set the name of the user
+  final String name;
 
-  /// Call back for apps icon button shown before avatar on bar.
-  ///
-  /// If null, apps button and preceding divider are not rendered.
-  final VoidCallback? onAppsButton;
+  /// Set the initials of the user
+  final String initials;
 
-  @override
-  State<ZetaGlobalHeader> createState() => _GlobalHeaderState();
+  ///Boolean to show app switcher button or not.
+  ///Set to false by default. Set to true to show app switcher button.
+  final bool appSwitcher;
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(StringProperty('title', title))
-      ..add(ObjectFlagProperty<VoidCallback?>.has('onAppsButton', onAppsButton));
+      ..add(StringProperty('platformName', platformName))
+      ..add(ObjectFlagProperty<bool?>('searchBar', searchBar))
+      ..add(ObjectFlagProperty<bool?>.has('appSwitcher', appSwitcher))
+      ..add(StringProperty('name', name))
+      ..add(StringProperty('initials', initials));
   }
-}
-
-class _GlobalHeaderState extends State<ZetaGlobalHeader> {
-  int _selectedIndex = -1;
 
   @override
   Widget build(BuildContext context) {
-    final colors = Zeta.of(context).colors;
     return ZetaRoundedScope(
       rounded: context.rounded,
-      child: LayoutBuilder(
-        builder: (context, constraints) {
-          final deviceType = constraints.deviceType;
-
-          return Container(
-            padding: EdgeInsets.symmetric(
-              vertical: Zeta.of(context).spacing.medium,
-              horizontal: Zeta.of(context).spacing.large,
-            ),
-            decoration: BoxDecoration(color: colors.surfaceDefault),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          //Left side of header
+          Row(
+            children: [
+              ZetaIconButton(
+                icon: ZetaIcons.hamburger_menu,
+                size: ZetaWidgetSize.small,
+                onPressed: () {}, //Create callback
+                type: ZetaButtonType.text,
+              ),
+              SvgPicture.asset(
+                'packages/zeta_flutter/assets/logos/zebra-logo.svg',
+                height: Zeta.of(context).spacing.xl_4,
+              ),
+              Text(
+                platformName,
+                style: Zeta.of(context).textStyles.titleMedium,
+              ),
+              //Generate nav items
+              ...navItems.take(6),
+            ],
+          ),
+          //Right side of header
+          Row(
+            children: [
+              if(searchBar)
                 SizedBox(
-                  height: Zeta.of(context).spacing.xl_8,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    // Top Section
-                    children: [
-                      Row(
-                        children: [
-                          Text(widget.title, style: Zeta.of(context).textStyles.h4),
-                          SizedBox.square(dimension: Zeta.of(context).spacing.medium),
-                          if (deviceType.isLarge)
-                            // If using large screen, render some tabItems in to section
-                            ...renderedChildren(widget.tabItems)
-                                .sublist(0, widget.tabItems.length > 4 ? 4 : widget.tabItems.length),
-                        ],
-                      ),
-                      // If screen is not small, render search bar on the top
-                      if (!deviceType.isSmall && widget.searchBar != null) Expanded(child: widget.searchBar!),
-                      Row(
-                        children: [
-                          ...widget.actionButtons.map(
-                            (e) => IconButton(
-                              onPressed: e.onPressed,
-                              icon: e.icon,
-                              iconSize: Zeta.of(context).spacing.xl_2,
-                            ),
-                          ),
-                          if (widget.onAppsButton != null) ...[
-                            Container(
-                              color: colors.borderDefault,
-                              width: 1,
-                              height: Zeta.of(context).spacing.xl_2,
-                              margin: EdgeInsets.symmetric(horizontal: Zeta.of(context).spacing.minimum),
-                            ),
-                            IconButton(
-                              icon: Icon(context.rounded ? ZetaIcons.apps_round : ZetaIcons.apps_sharp),
-                              onPressed: widget.onAppsButton,
-                            ),
-                          ],
-                          SizedBox(width: Zeta.of(context).spacing.small),
-                          if (widget.avatar != null) widget.avatar!.copyWith(size: ZetaAvatarSize.m),
-                        ],
-                      ),
-                    ].gap(Zeta.of(context).spacing.medium),
-                  ),
+                  width: 240,
+                  child: ZetaSearchBar(size: ZetaWidgetSize.small, showSpeechToText: false),
                 ),
-                SizedBox(height: Zeta.of(context).spacing.small),
-                Row(
-                  children: [
-                    if (deviceType.isSmall && widget.searchBar != null) Expanded(child: widget.searchBar!),
-                    if (widget.tabItems.isNotEmpty && !deviceType.isSmall)
-                      Expanded(
-                        child: SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
-                          child: Row(
-                            /// Large screen filters some tab items to render on top
-                            children: deviceType.isLarge && widget.tabItems.length >= 5
-                                ? renderedChildren(widget.tabItems).sublist(5, widget.tabItems.length)
-                                : renderedChildren(widget.tabItems),
-                          ),
-                        ),
-                      ),
-                  ].gap(Zeta.of(context).spacing.medium),
+              //Action Items
+              ...actionItems.take(6),
+              ZetaButton(
+                label: name,
+                type: ZetaButtonType.text,
+                size: ZetaWidgetSize.small,
+                onPressed: () {}, //Create callback
+                trailingIcon: ZetaIcons.expand_more,
+                child: ZetaAvatar(
+                  initials: initials,
+                  size: ZetaAvatarSize.xxxs,
                 ),
-                if (widget.tabItems.isNotEmpty && deviceType.isSmall)
-                  SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      // Large screen filters some tab items to render on top
-                      children: deviceType.isLarge && widget.tabItems.length > 5
-                          ? renderedChildren(widget.tabItems).sublist(5, widget.tabItems.length - 1)
-                          : renderedChildren(widget.tabItems),
-                    ),
-                  ),
-              ],
-            ),
-          );
-        },
+              ),
+              if (appSwitcher)
+                ZetaIconButton(
+                  icon: ZetaIcons.apps,
+                  size: ZetaWidgetSize.small,
+                  onPressed: () {}, //Create callback
+                  type: ZetaButtonType.text,
+                ),
+            ],
+          ),
+        ],
       ),
     );
   }
-
-  /// Extend tab items to register their active states
-  List<ZetaGlobalHeaderItem> renderedChildren(List<ZetaGlobalHeaderItem> children) {
-    final List<ZetaGlobalHeaderItem> modifiedChildren = [];
-    for (final (index, child) in children.indexed) {
-      modifiedChildren.add(
-        child.copyWith(
-          active: _selectedIndex == index,
-          dropdown: child.dropdown,
-          onTap: () {
-            setState(() {
-              _selectedIndex = index;
-            });
-            child.onTap?.call();
-          },
-        ),
-      );
-    }
-    return modifiedChildren;
-  }
 }
+
+
+  //      child: Container(
+      //   padding: EdgeInsets.symmetric(
+      //     vertical: Zeta.of(context).spacing.small,
+      //     horizontal: Zeta.of(context).spacing.large,
+      //   ),
+      //   decoration: BoxDecoration(
+      //     color: const ZetaPrimitivesLight().cool.shade100,
+      //   ),
+      //   child: Row(
+      //     children: [
+      //       Row(
+      //         children: [
+      //           ZetaIconButton(
+      //             icon: ZetaIcons.hamburger_menu,
+      //             onPressed: () {
+      //               // Handle menu button press
+      //             },
+      //           ),
+      //           SvgPicture.asset(
+      //             'logos/zebra-logo.svg',
+      //             height: Zeta.of(context).spacing.xl_4,
+      //             colorFilter: const ColorFilter.mode(
+      //               Colors.black,
+      //               BlendMode.srcIn,
+      //             ),
+      //           ),
+      //           Text(widget.platformName, style: Zeta.of(context).textStyles.titleMedium),
+      //           Row(
+      //             children:
+      //               widget.navItems.isNotEmpty
+      //                 ? widget.navItems.take(6).toList()
+      //                 : [const SizedBox(width: 1, height: 1)],
+      //           ),
+      //         ],
+      //       ),
+      //       Row(
+      //       children: [
+      //         if(widget.searchBar != null)
+      //           ZetaSearchBar(),
+      //         if (widget.onAppsButton != null)
+      //           ZetaIconButton(
+      //             icon: ZetaIcons.star,
+      //             onPressed: widget.onAppsButton,
+      //           ),
+      //         if (widget.avatar != null) widget.avatar!,
+      //         if (widget.onAppsButton != null)
+      //           ZetaIconButton(
+      //             icon: ZetaIcons.apps,
+      //             onPressed: widget.onAppsButton,
+      //           ),
+      //       ],
+      //     ),
+      //     ],
+      //   ),
+      // ),
+
+  // Widget _buildTitle() {
+  //   return Text(
+  //     widget.platformName,
+  //     style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+  //   );
+  // }
+
+  // Widget _buildTabs() {
+  //   return Row(
+  //     children: widget.navItems.map((item) {
+  //       return GestureDetector(
+  //         onTap: () {
+  //           setState(() {
+  //             _selectedIndex = widget.navItems.indexOf(item);
+  //           });
+  //         },
+  //         child: Container(
+  //           padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+  //           decoration: BoxDecoration(
+  //             color: _selectedIndex == widget.navItems.indexOf(item)
+  //                 ? Zeta.of(context).colors.primary
+  //                 : Colors.transparent,
+  //             borderRadius: BorderRadius.circular(8),
+  //           ),
+  //           child: item,
+  //         ),
+  //       );
+  //     }).toList(),
+  //   );
+  // }
+
+  // Widget _buildAppsButton() {
+  //   return IconButton(
+  //     icon: const Icon(ZetaIcons.apps),
+  //     onPressed: widget.onAppsButton,
+  //   );
+  // }

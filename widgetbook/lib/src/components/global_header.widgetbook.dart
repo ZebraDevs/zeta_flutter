@@ -12,28 +12,17 @@ import 'package:zeta_widgetbook/main.dart';
       'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=23144-118110&t=N8coJ9AFu6DS3mOF-4',
 )
 Widget globalHeader(BuildContext context) => ZetaGlobalHeader(
-      title: context.knobs.string(label: 'Title', initialValue: 'Title'),
-      tabItems: List.generate(
-        context.knobs.int.slider(label: 'Tabs'),
-        (index) => ZetaGlobalHeaderItem(label: 'Button ${index + 1}'),
+      platformName: context.knobs.string(label: 'Platform Name', initialValue: 'Platform Name'),
+      name: context.knobs.string(label: 'Name', initialValue: 'Name'),
+      initials: context.knobs.string(label: 'Initials', initialValue: 'RK'),
+      navItems: List.generate(
+        context.knobs.int.slider(label: 'Nav Items', min: 0, max: 6, initialValue: 2),
+        (index) => ZetaButton(label: 'Nav Item', type: ZetaButtonType.text, size: ZetaWidgetSize.small, onPressed: () {},),
       ),
-      searchBar: context.knobs.boolean(label: 'Search bar', initialValue: true)
-          ? ZetaSearchBar(shape: ZetaWidgetBorder.full, size: ZetaWidgetSize.large)
-          : null,
-      actionButtons: context.knobs.boolean(label: 'Menu buttons', initialValue: true)
-          ? [
-              IconButton(
-                onPressed: () {},
-                icon: const Icon(ZetaIcons.alert),
-              ),
-              IconButton(
-                onPressed: () {},
-                icon: const Icon(ZetaIcons.help),
-              ),
-            ]
-          : [],
-      avatar: context.knobs.boolean(label: 'Show Avatar', initialValue: true)
-          ? const ZetaAvatar(initials: 'PS', size: ZetaAvatarSize.s)
-          : null,
-      onAppsButton: context.knobs.boolean(label: 'Apps menu', initialValue: true) ? () => {} : null,
+      searchBar: context.knobs.boolean(label: 'Search bar', initialValue: true),
+      actionItems: List.generate(
+        context.knobs.int.slider(label: 'Action Items', min: 0, max: 6, initialValue: 2),
+        (index) => ZetaIconButton(icon: ZetaIcons.star, type: ZetaButtonType.text, size: ZetaWidgetSize.small, onPressed: () {},),
+      ),
+      appSwitcher: context.knobs.boolean(label: 'App Switcher', initialValue: true),
     );
