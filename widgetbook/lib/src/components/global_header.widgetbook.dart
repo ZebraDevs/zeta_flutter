@@ -15,9 +15,13 @@ Widget globalHeader(BuildContext context) => ZetaGlobalHeader(
       platformName: context.knobs.string(label: 'Platform Name', initialValue: 'Platform Name'),
       name: context.knobs.string(label: 'Name', initialValue: 'Name'),
       initials: context.knobs.string(label: 'Initials', initialValue: 'RK'),
+      // navItems: List.generate(
+      //   context.knobs.int.slider(label: 'Nav Items', min: 0, max: 6, initialValue: 2),
+      //   (index) => ZetaButton(label: 'Nav Item', type: ZetaButtonType.text, size: ZetaWidgetSize.small, onPressed: () {},),
+      // ),
       navItems: List.generate(
         context.knobs.int.slider(label: 'Nav Items', min: 0, max: 6, initialValue: 2),
-        (index) => ZetaButton(label: 'Nav Item', type: ZetaButtonType.text, size: ZetaWidgetSize.small, onPressed: () {},),
+        (index) => ZetaDropdown(onChange: (value) {}, value: "Nav item", items: [ZetaDropdownItem(value: "Nav item", label: "Nav item"), ZetaDropdownItem(value: "Nav item", label: "Nav item")],),
       ),
       searchBar: context.knobs.boolean(label: 'Search bar', initialValue: true),
       actionItems: List.generate(
