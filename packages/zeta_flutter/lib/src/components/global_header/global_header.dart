@@ -96,7 +96,6 @@ class ZetaGlobalHeader extends ZetaStatelessWidget {
               children: [
                 //Left side of header
                 Row(
-                  mainAxisSize: MainAxisSize.min,
                   children: [
                     ZetaIconButton(
                       icon: ZetaIcons.hamburger_menu,
@@ -117,13 +116,23 @@ class ZetaGlobalHeader extends ZetaStatelessWidget {
                     SizedBox(width: Zeta.of(context).spacing.large),
                     //Generate nav items
                     if(navItems.isNotEmpty)
-                        Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: navItems.take(6).map((item) => SizedBox(
-                            width: 100,
-                            child: item,
+                        Container(
+                          padding: EdgeInsets.only(left: Zeta.of(context).spacing.large),
+                          decoration: BoxDecoration(
+                            border: Border(
+                              left: BorderSide(
+                                color: colors.borderDefault,
+                              ),
+                            ),
                           ),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: navItems.take(6).map((item) => SizedBox(
+                              width: 90,
+                              child: item,
+                            ),
                           ).toList(),
+                          ),
                         ),
                       // Container(
                       //   padding: EdgeInsets.only(left: Zeta.of(context).spacing.large),
@@ -151,18 +160,17 @@ class ZetaGlobalHeader extends ZetaStatelessWidget {
                 ),
                 //Right side of header
                 Row(
-                  mainAxisSize: MainAxisSize.min,
                   children: [
                     if(searchBar)
                       Container(
                         width: 240,
-                        padding: EdgeInsets.only(right: Zeta.of(context).spacing.large),
+                        padding: EdgeInsets.only(left: Zeta.of(context).spacing.small),
                         child: ZetaSearchBar(size: ZetaWidgetSize.small, showSpeechToText: false),
                       ),
                     //Action Items
                     if(actionItems.isNotEmpty)
                       Container(
-                        padding: EdgeInsets.only(right: Zeta.of(context).spacing.small),
+                        padding: EdgeInsets.only(left: Zeta.of(context).spacing.small, right: Zeta.of(context).spacing.small),
                         decoration: BoxDecoration(
                           border: Border(
                             right: BorderSide(
