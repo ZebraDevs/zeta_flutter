@@ -14,19 +14,40 @@ import 'package:zeta_widgetbook/main.dart';
 Widget globalHeader(BuildContext context) => ZetaGlobalHeader(
       platformName: context.knobs.string(label: 'Platform Name', initialValue: 'Platform Name'),
       name: context.knobs.string(label: 'Name', initialValue: 'Name'),
-      initials: context.knobs.string(label: 'Initials', initialValue: 'RK'),
-      // navItems: List.generate(
-      //   context.knobs.int.slider(label: 'Nav Items', min: 0, max: 6, initialValue: 2),
-      //   (index) => ZetaButton(label: 'Nav Item', type: ZetaButtonType.text, size: ZetaWidgetSize.small, onPressed: () {},),
-      // ),
       navItems: List.generate(
         context.knobs.int.slider(label: 'Nav Items', min: 0, max: 6, initialValue: 2),
-        (index) => ZetaDropdown(onChange: (value) {}, value: "Nav item", items: [ZetaDropdownItem(value: "Nav item", label: "Nav item"), ZetaDropdownItem(value: "Nav item", label: "Nav item")],),
+        (index) => index == 0
+            ? ZetaDropdown(
+                onChange: (value) {},
+                value: "Nav item",
+                items: [
+                  ZetaDropdownItem(value: "Nav item", label: "Nav item"),
+                  ZetaDropdownItem(value: "Nav item", label: "Nav item")
+                ],
+              )
+            : ZetaButton(
+                label: 'Nav item',
+                type: ZetaButtonType.text,
+                onPressed: () {},
+              ),
       ),
       searchBar: context.knobs.boolean(label: 'Search bar', initialValue: true),
       actionItems: List.generate(
         context.knobs.int.slider(label: 'Action Items', min: 0, max: 6, initialValue: 2),
-        (index) => ZetaIconButton(icon: ZetaIcons.star, type: ZetaButtonType.text, size: ZetaWidgetSize.small, onPressed: () {},),
+        (index) => index == 0
+            // Keep logic to replace with action dropper later
+            ? ZetaIconButton(
+                icon: ZetaIcons.star,
+                type: ZetaButtonType.text,
+                size: ZetaWidgetSize.small,
+                onPressed: () {},
+              )
+            : ZetaIconButton(
+                icon: ZetaIcons.star,
+                type: ZetaButtonType.text,
+                size: ZetaWidgetSize.small,
+                onPressed: () {},
+              ),
       ),
       appSwitcher: context.knobs.boolean(label: 'App Switcher', initialValue: true),
     );

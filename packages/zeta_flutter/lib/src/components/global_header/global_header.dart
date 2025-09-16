@@ -1,15 +1,24 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../zeta_flutter.dart';
 
-// TODO(aygurs): Add responsiveness based on device type
-// TODO(aygurs): Add subtle style to buttons
-
+/// Zeta Global Header:
+///
+/// Can have a maximum of 6 nav items and 6 action items.
+///
+/// Search bar will be hidden when there are 6 nav and action items, on a screen size of 1440px or less.
+///
+/// * Users can input their own avatar widget, otherwise it will default to a [ZetaAvatar] with the provided name.
+/// * Users can input their own leading widget, otherwise it will default to a hamburger menu button.
+/// * Users can input their own nav items and action items, otherwise they will be empty.
+///
+/// It is recommended to use [ZetaButton] or [ZetaDropdown] widgets for nav items, and [ZetaIconButton] for action items.
+///
+/// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS-Zeta---Components?node-id=1120-26358&p=f&m=dev
 class ZetaGlobalHeader extends ZetaStatelessWidget {
-  /// Constructor for [ZetaGlobalHeader]
+  /// Constructs [ZetaGlobalHeader]
   const ZetaGlobalHeader({
     super.key,
     super.rounded,
@@ -17,13 +26,22 @@ class ZetaGlobalHeader extends ZetaStatelessWidget {
     this.navItems = const [],
     this.searchBar = false,
     this.actionItems = const [],
-    this.name = 'Name',
-    this.initials = 'RK',
+    this.name,
     this.appSwitcher = false,
     this.onHamburgerMenuPressed,
     this.onAvatarButtonPressed,
     this.onAppsButtonPressed,
+    this.avatar,
+    this.leading,
   });
+
+  /// Avatar widget. Recommended to use [ZetaAvatar] widget.
+  final Widget? avatar;
+
+  /// Leftmost widget. Recommended to use [ZetaIconButton] widget.
+  ///
+  /// If not provided, defaults to a hamburger menu button.
+  final Widget? leading;
 
   /// Header platformName in top left of header
   final String platformName;
@@ -40,10 +58,7 @@ class ZetaGlobalHeader extends ZetaStatelessWidget {
   final List<Widget> actionItems;
 
   /// Set the name of the user
-  final String name;
-
-  /// Set the initials of the user
-  final String initials;
+  final String? name;
 
   ///Boolean to show app switcher button or not.
   ///Set to false by default. Set to true to show app switcher button.
@@ -69,7 +84,6 @@ class ZetaGlobalHeader extends ZetaStatelessWidget {
       ..add(ObjectFlagProperty<bool?>('searchBar', searchBar))
       ..add(ObjectFlagProperty<bool?>.has('appSwitcher', appSwitcher))
       ..add(StringProperty('name', name))
-      ..add(StringProperty('initials', initials))
       ..add(ObjectFlagProperty<VoidCallback?>.has('onHamburgerMenuPressed', onHamburgerMenuPressed))
       ..add(ObjectFlagProperty<VoidCallback?>.has('onAvatarButtonPressed', onAvatarButtonPressed))
       ..add(ObjectFlagProperty<VoidCallback?>.has('onAppsButtonPressed', onAppsButtonPressed));
@@ -79,174 +93,121 @@ class ZetaGlobalHeader extends ZetaStatelessWidget {
   Widget build(BuildContext context) {
     final colors = Zeta.of(context).colors;
 
-    return ZetaRoundedScope(
-      rounded: context.rounded,
-      child: Container(
-          padding: EdgeInsets.symmetric(
-            vertical: Zeta.of(context).spacing.large,
-            horizontal: Zeta.of(context).spacing.small,
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        return ZetaRoundedScope(
+          rounded: context.rounded,
+          child: Container(
+            padding: EdgeInsets.symmetric(
+              vertical: Zeta.of(context).spacing.large,
+              horizontal: Zeta.of(context).spacing.small,
+            ),
+            decoration: BoxDecoration(color: colors.surfaceDefault),
+            child: Row(
+              spacing: Zeta.of(context).spacing.large,
+              children: [
+                // Leading icon widget
+                leading ??
+                    ZetaIconButton(
+                      icon: ZetaIcons.hamburger_menu,
+                      size: ZetaWidgetSize.small,
+                      onPressed: onHamburgerMenuPressed,
+                      type: ZetaButtonType.subtle,
+                    ),
+                // Logo
+                SvgPicture.asset(
+                  'packages/zeta_flutter/assets/logos/zebra-logo.svg',
+                  height: Zeta.of(context).spacing.xl_4,
+                ),
+                // Platform name
+                Text(platformName, style: Zeta.of(context).textStyles.titleMedium),
+
+                // Divider
+                if (navItems.isNotEmpty)
+                  Container(
+                    width: 1,
+                    height: Zeta.of(context).spacing.xl_5,
+                    color: colors.borderDefault,
+                  ),
+                // Nav items
+                // TODO(UX-1520): Remove IntrinsicWidth and replace with better solution
+                for (final item in navItems.take(6))
+                  IntrinsicWidth(
+                    child: _renderNavItems(item),
+                  ),
+
+                // Spacer dividing left and right side of header
+                const Expanded(child: Nothing()),
+
+                // Search bar
+                if (searchBar)
+                  if ((navItems.length == 6 && actionItems.length == 6) && constraints.maxWidth <= 1440)
+                    const Nothing()
+                  else
+                    Container(
+                      width: 240,
+                      padding: EdgeInsets.only(left: Zeta.of(context).spacing.small),
+                      child: ZetaSearchBar(size: ZetaWidgetSize.small, showSpeechToText: false),
+                    ),
+
+                // Divider
+                if (actionItems.isNotEmpty)
+                  Container(
+                    width: 1,
+                    height: Zeta.of(context).spacing.xl_5,
+                    color: colors.borderDefault,
+                  ),
+                // Action items
+                // TODO(UX-1520): Remove IntrinsicWidth and replace with better solution
+                for (final item in actionItems.take(6)) IntrinsicWidth(child: _renderActionItems(item)),
+
+                // Avatar button
+                ZetaButton(
+                  label: name ?? '',
+                  type: ZetaButtonType.subtle,
+                  size: ZetaWidgetSize.small,
+                  onPressed: onAvatarButtonPressed,
+                  trailingIcon: ZetaIcons.expand_more,
+                  child: avatar is ZetaAvatar
+                      ? (avatar! as ZetaAvatar).copyWith(size: ZetaAvatarSize.xxxs)
+                      : ZetaAvatar.fromName(name: name ?? '', size: ZetaAvatarSize.xxxs),
+                ),
+
+                // App switcher button
+                if (appSwitcher)
+                  ZetaIconButton(
+                    icon: ZetaIcons.apps,
+                    size: ZetaWidgetSize.small,
+                    onPressed: onAppsButtonPressed,
+                    type: ZetaButtonType.subtle,
+                  ),
+              ],
+            ),
           ),
-          decoration: BoxDecoration(color: colors.surfaceDefault),
-          child: Icon(Icons.ac_unit)
-          // child:
-          // Row(
-          //   children: [
-          //     ZetaIconButton(
-          //       icon: ZetaIcons.hamburger_menu,
-          //       size: ZetaWidgetSize.small,
-          //       onPressed: onHamburgerMenuPressed,
-          //       type: ZetaButtonType.text,
-          //     ),
-          //     SizedBox(width: Zeta.of(context).spacing.large),
-          //     SvgPicture.asset(
-          //       'packages/zeta_flutter/assets/logos/zebra-logo.svg',
-          //       height: Zeta.of(context).spacing.xl_4,
-          //     ),
-          //     SizedBox(width: Zeta.of(context).spacing.large),
-          //     Text(
-          //       platformName,
-          //       style: Zeta.of(context).textStyles.titleMedium,
-          //     ),
-          //     SizedBox(width: Zeta.of(context).spacing.large),
-          //     //Generate nav items
-          //     if (navItems.isNotEmpty) Divider(thickness: 10, color: Colors.red),
-          //     // Container(
-          //     //   padding: EdgeInsets.only(left: Zeta.of(context).spacing.large),
-          //     //   decoration: BoxDecoration(
-          //     //     border: Border(
-          //     //       left: BorderSide(
-          //     //         color: colors.borderDefault,
-          //     //       ),
-          //     //     ),
-          //     //   ),
-          //     // ),
-          //     ...[
-          //       for (final item in navItems.take(6)) IntrinsicWidth(child: item),
-          //     ],
-          //     const Expanded(child: Nothing()),
-          //     // Container(
-          //     //   padding: EdgeInsets.only(left: Zeta.of(context).spacing.large),
-          //     //   decoration: BoxDecoration(
-          //     //     border: Border(
-          //     //       left: BorderSide(
-          //     //         color: colors.borderDefault,
-          //     //       ),
-          //     //     ),
-          //     //   ),
-          //     //   child: Row(
-          //     //     children: List.generate(
-          //     //       navItems.take(6).length,
-          //     //       (index) => Row(
-          //     //         children: [
-          //     //           navItems[index],
-          //     //           if (index != navItems.take(6).length - 1)
-          //     //             SizedBox(width: Zeta.of(context).spacing.small),
-          //     //         ],
-          //     //       ),
-          //     //     ),
-          //     //   ),
-          //     // ),
-          //     //const Expanded(child: Nothing()),
-          //     //Right side of header
-          //     Row(
-          //       children: [
-          //         if (searchBar)
-          //           Container(
-          //             width: 240,
-          //             padding: EdgeInsets.only(left: Zeta.of(context).spacing.small),
-          //             child: ZetaSearchBar(size: ZetaWidgetSize.small, showSpeechToText: false),
-          //           ),
-          //         //Action Items
-          //         if (actionItems.isNotEmpty)
-          //           Container(
-          //             padding: EdgeInsets.only(
-          //                 left: Zeta.of(context).spacing.small, right: Zeta.of(context).spacing.small),
-          //             decoration: BoxDecoration(
-          //               border: Border(
-          //                 right: BorderSide(
-          //                   color: colors.borderDefault,
-          //                 ),
-          //               ),
-          //             ),
-          //             child: Row(
-          //               children: List.generate(
-          //                 actionItems.take(6).length,
-          //                 (index) => Row(
-          //                   children: [
-          //                     actionItems[index],
-          //                     if (index != actionItems.take(6).length - 1)
-          //                       SizedBox(width: Zeta.of(context).spacing.small),
-          //                   ],
-          //                 ),
-          //               ),
-          //             ),
-          //           ),
-          //   Container(
-          // padding: EdgeInsets.symmetric(horizontal: Zeta.of(context).spacing.large),
-          // child: ZetaButton(
-          //   label: name,
-          //   type: ZetaButtonType.text,
-          //   size: ZetaWidgetSize.small,
-          //   onPressed: onAvatarButtonPressed,
-          //   trailingIcon: ZetaIcons.expand_more,
-          //   child: ZetaAvatar(
-          //     initials: initials,
-          //     size: ZetaAvatarSize.xxxs,
-          //   ),
-          // ),
-          // ),
-          //         if (appSwitcher)
-          //           ZetaIconButton(
-          //             icon: ZetaIcons.apps,
-          //             size: ZetaWidgetSize.small,
-          //             onPressed: onAppsButtonPressed,
-          //             type: ZetaButtonType.text,
-          //           ),
-          //       ],
-          //     ),
-          // ],
-          // ),
-          // );
-          // },
-          ),
+        );
+      },
     );
   }
+
+  /// Renders nav items, ensuring they are of the correct type and style.
+  Widget _renderNavItems(Widget item) {
+    if (item is ZetaButton) {
+      return item.copyWith(type: ZetaButtonType.subtle);
+    } else if (item is ZetaIconButton) {
+      return item.copyWith(type: ZetaButtonType.subtle);
+    } else {
+      return item;
+    }
+  }
+
+  /// Renders action items, ensuring they are of the correct type and style.
+  Widget _renderActionItems(Widget item) {
+    if (item is ZetaButton) {
+      return item.copyWith(type: ZetaButtonType.subtle);
+    } else if (item is ZetaIconButton) {
+      return item.copyWith(type: ZetaButtonType.subtle);
+    } else {
+      return item;
+    }
+  }
 }
-
-  // Widget _buildTitle() {
-  //   return Text(
-  //     widget.platformName,
-  //     style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-  //   );
-  // }
-
-  // Widget _buildTabs() {
-  //   return Row(
-  //     children: widget.navItems.map((item) {
-  //       return GestureDetector(
-  //         onTap: () {
-  //           setState(() {
-  //             _selectedIndex = widget.navItems.indexOf(item);
-  //           });
-  //         },
-  //         child: Container(
-  //           padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-  //           decoration: BoxDecoration(
-  //             color: _selectedIndex == widget.navItems.indexOf(item)
-  //                 ? Zeta.of(context).colors.primary
-  //                 : Colors.transparent,
-  //             borderRadius: BorderRadius.circular(8),
-  //           ),
-  //           child: item,
-  //         ),
-  //       );
-  //     }).toList(),
-  //   );
-  // }
-
-  // Widget _buildAppsButton() {
-  //   return IconButton(
-  //     icon: const Icon(ZetaIcons.apps),
-  //     onPressed: widget.onAppsButton,
-  //   );
-// }

@@ -9,13 +9,8 @@ class GlobalHeaderExample extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ExampleScaffold(name: "Global Header", children: [
-      ZetaGlobalHeader2(
-        platformName: 'Tim',
-        // )
-
-        // ZetaGlobalHeader(platformName: 'platformName'),
-        // ZetaGlobalHeader(
-        //   platformName: "Platform Name",
+      ZetaGlobalHeader(
+        platformName: 'Platform Name',
         navItems: [
           ZetaDropdown(
             onChange: (value) {},
@@ -25,13 +20,10 @@ class GlobalHeaderExample extends StatelessWidget {
               ZetaDropdownItem(value: "item2", label: "Menu 2"),
             ],
           ),
-          ZetaDropdown(
-            onChange: (value) {},
-            value: "Menu 2",
-            items: [
-              ZetaDropdownItem(value: "item1", label: "Menu 1"),
-              ZetaDropdownItem(value: "item2", label: "Menu 2"),
-            ],
+          ZetaButton(
+            label: 'Nav item',
+            type: ZetaButtonType.text,
+            onPressed: () {},
           ),
         ],
         searchBar: true,
@@ -49,7 +41,7 @@ class GlobalHeaderExample extends StatelessWidget {
             onPressed: () {},
           ),
         ],
-        name: 'Aydin Gursoy',
+        name: 'Name',
         appSwitcher: true,
         onHamburgerMenuPressed: () {},
         onAppsButtonPressed: () {},
