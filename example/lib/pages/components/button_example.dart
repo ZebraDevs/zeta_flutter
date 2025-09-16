@@ -16,18 +16,21 @@ class ButtonExample extends StatelessWidget {
         ZetaWidgetSize.values.length + 1,
         (index) => SingleChildScrollView(
           scrollDirection: Axis.horizontal,
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: List.generate(
-              buttonTypes.length,
-              (index2) => ZetaButton(
-                label: 'Button',
-                onPressed: index == 0 ? null : () {},
-                type: buttonTypes[index2],
-                size: ZetaWidgetSize.values[index == 0 ? 0 : index - 1],
-                borderType: borderType,
-              ),
-            ).divide(SizedBox.square(dimension: Zeta.of(context).spacing.xl_2)).toList(),
+          child: ZetaThemeOverride(
+            themeMode: ThemeMode.dark,
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: List.generate(
+                buttonTypes.length,
+                (index2) => ZetaButton(
+                  label: 'Button',
+                  onPressed: index == 0 ? null : () {},
+                  type: buttonTypes[index2],
+                  size: ZetaWidgetSize.values[index == 0 ? 0 : index - 1],
+                  borderType: borderType,
+                ),
+              ).divide(SizedBox.square(dimension: Zeta.of(context).spacing.xl_2)).toList(),
+            ),
           ),
         ),
       ).reversed.divide(SizedBox.square(dimension: Zeta.of(context).spacing.xl_2)).toList();

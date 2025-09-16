@@ -11,6 +11,7 @@ class ZetaThemeOverride extends StatelessWidget {
     required this.child,
     this.themeMode,
     this.contrast,
+    this.rounded,
   });
 
   /// The child widget subtree to apply the override to.
@@ -22,24 +23,30 @@ class ZetaThemeOverride extends StatelessWidget {
   /// The contrast to override. If null, inherits from ancestor Zeta.
   final ZetaContrast? contrast;
 
+  /// If it is rounded.
+  final bool? rounded;
+
   @override
   Widget build(BuildContext context) {
     final parentZeta = Zeta.of(context);
-    return Zeta(
-      rounded: parentZeta.rounded,
-      contrast: contrast ?? parentZeta.contrast,
-      themeMode: themeMode ?? parentZeta.themeMode,
-      customThemeId: parentZeta.customThemeId,
-      // customPrimitives: parentZeta.primitives,
-      // customSemantics: parentZeta.semantics, TODO(thelukewalton): Fix this to allow overrides of customPrimitives and customSemantics
-      textStyles: parentZeta.textStyles,
-      child: Builder(
-        builder: (context) {
-          print(
-              'ZetaThemeOverride build with themeMode: ${Zeta.of(context).themeMode}, contrast: ${Zeta.of(context).contrast}');
-          return child;
-        },
-      ),
+    return ZetaProvider(
+      initialContrast: contrast ?? parentZeta.contrast,
+      initialRounded: rounded ?? parentZeta.rounded,
+      initialTheme: parentZeta.customThemeId,
+      initialThemeMode: themeMode ?? parentZeta.themeMode,
+      customThemes: parentZeta.customThemes,
+      // rounded: parentZeta.rounded,
+      // contrast: contrast ?? parentZeta.contrast,
+      // themeMode: themeMode ?? parentZeta.themeMode,
+      // customThemeId: parentZeta.customThemeId,
+      // // customPrimitives: parentZeta.primitives,
+      // // customSemantics: parentZeta.semantics, TODO(thelukewalton): Fix this to allow overrides of customPrimitives and customSemantics
+      // textStyles: parentZeta.textStyles,
+      // child: Builder(
+      builder: (context, light, dark, themeMode) {
+        return Theme(data: themeMode.isDark ? dark : light, child: child);
+      },
+      // ),
     );
   }
 
@@ -48,7 +55,8 @@ class ZetaThemeOverride extends StatelessWidget {
     super.debugFillProperties(properties);
     properties
       ..add(EnumProperty<ThemeMode?>('themeMode', themeMode))
-      ..add(EnumProperty<ZetaContrast?>('contrast', contrast));
+      ..add(EnumProperty<ZetaContrast?>('contrast', contrast))
+      ..add(DiagnosticsProperty<bool?>('rounded', rounded));
   }
 }
 
