@@ -50,4 +50,5 @@ Widget globalHeader(BuildContext context) => ZetaGlobalHeader(
               ),
       ),
       appSwitcher: context.knobs.boolean(label: 'App Switcher', initialValue: true),
+      rounded: context.knobs.boolean(label: 'Rounded', initialValue: false),
     );

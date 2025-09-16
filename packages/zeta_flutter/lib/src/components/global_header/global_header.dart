@@ -21,7 +21,7 @@ class ZetaGlobalHeader extends ZetaStatelessWidget {
   /// Constructs [ZetaGlobalHeader]
   const ZetaGlobalHeader({
     super.key,
-    super.rounded,
+    super.rounded = false,
     required this.platformName,
     this.navItems = const [],
     this.searchBar = false,
@@ -96,7 +96,7 @@ class ZetaGlobalHeader extends ZetaStatelessWidget {
     return LayoutBuilder(
       builder: (context, constraints) {
         return ZetaRoundedScope(
-          rounded: context.rounded,
+          rounded: rounded ?? false,
           child: Container(
             padding: EdgeInsets.symmetric(
               vertical: Zeta.of(context).spacing.large,
@@ -113,6 +113,7 @@ class ZetaGlobalHeader extends ZetaStatelessWidget {
                       size: ZetaWidgetSize.small,
                       onPressed: onHamburgerMenuPressed,
                       type: ZetaButtonType.subtle,
+                      semanticLabel: 'Hamburger Menu Button',
                     ),
                 // Logo
                 SvgPicture.asset(
@@ -168,6 +169,7 @@ class ZetaGlobalHeader extends ZetaStatelessWidget {
                   size: ZetaWidgetSize.small,
                   onPressed: onAvatarButtonPressed,
                   trailingIcon: ZetaIcons.expand_more,
+                  semanticLabel: 'User Avatar Button',
                   child: avatar is ZetaAvatar
                       ? (avatar! as ZetaAvatar).copyWith(size: ZetaAvatarSize.xxxs)
                       : ZetaAvatar.fromName(name: name ?? '', size: ZetaAvatarSize.xxxs),
@@ -180,6 +182,7 @@ class ZetaGlobalHeader extends ZetaStatelessWidget {
                     size: ZetaWidgetSize.small,
                     onPressed: onAppsButtonPressed,
                     type: ZetaButtonType.subtle,
+                    semanticLabel: 'App Switcher Button',
                   ),
               ],
             ),
