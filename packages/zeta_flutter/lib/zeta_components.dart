@@ -34,6 +34,7 @@ export 'src/components/empty_state/empty_state.dart';
 export 'src/components/fabs/fab.dart';
 export 'src/components/filter_selection/filter_selection.dart';
 export 'src/components/global_header/global_header.dart';
+export 'src/components/global_header/global_header_new.dart';
 export 'src/components/global_header/header_tab_item.dart';
 export 'src/components/icon/icon.dart';
 export 'src/components/in_page_banner/in_page_banner.dart';

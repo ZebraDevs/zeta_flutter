@@ -166,6 +166,19 @@ class ZetaIconButton extends ZetaStatelessWidget {
     }
   }
 
+  ZetaIconButton copyWith({ZetaButtonType? type}) {
+    return ZetaIconButton(
+      key: key,
+      rounded: rounded,
+      onPressed: onPressed,
+      borderType: borderType,
+      type: type ?? this.type,
+      size: size,
+      icon: icon,
+      semanticLabel: semanticLabel,
+    );
+  }
+
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);

@@ -36,7 +36,12 @@ enum ZetaButtonType {
   /// Background: None.
   /// Border: None.
   /// Foreground color: Primary; defaults to blue.
-  text;
+  text,
+
+  /// Background: None.
+  /// Border: None.
+  /// Foreground color: Subtle; defaults to cool grey.
+  subtle;
 
   Color _backgroundColor(ZetaColors colors) {
     switch (this) {
@@ -52,6 +57,8 @@ enum ZetaButtonType {
       case ZetaButtonType.outlineSubtle:
       case ZetaButtonType.text:
         return colors.stateDefaultEnabled;
+      case ZetaButtonType.subtle:
+        return colors.surfaceDefault;
     }
   }
 
@@ -69,6 +76,7 @@ enum ZetaButtonType {
       case ZetaButtonType.outline:
       case ZetaButtonType.outlineSubtle:
       case ZetaButtonType.text:
+      case ZetaButtonType.subtle:
         return colors.stateDefaultHover;
     }
   }
@@ -87,6 +95,7 @@ enum ZetaButtonType {
       case ZetaButtonType.outline:
       case ZetaButtonType.outlineSubtle:
       case ZetaButtonType.text:
+      case ZetaButtonType.subtle:
         return colors.stateDefaultSelected;
     }
   }
@@ -141,6 +150,8 @@ ButtonStyle buttonStyle(
           case ZetaButtonType.positive:
           case ZetaButtonType.negative:
             return colors.stateDefaultEnabled;
+          case ZetaButtonType.subtle:
+            return colors.mainSubtle;
         }
       },
     ),
@@ -181,6 +192,8 @@ ButtonStyle buttonStyle(
           case ZetaButtonType.positive:
           case ZetaButtonType.negative:
             return colors.stateDefaultEnabled;
+          case ZetaButtonType.subtle:
+            return colors.mainSubtle;
         }
       },
     ),
