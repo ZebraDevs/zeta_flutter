@@ -92,72 +92,64 @@ class ZetaGlobalHeader extends ZetaStatelessWidget {
             ),
             decoration: BoxDecoration(color: colors.surfaceDefault),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                //Left side of header
-                Row(
-                  children: [
-                    ZetaIconButton(
-                      icon: ZetaIcons.hamburger_menu,
-                      size: ZetaWidgetSize.small,
-                      onPressed: onHamburgerMenuPressed,
-                      type: ZetaButtonType.text,
-                    ),
-                    SizedBox(width: Zeta.of(context).spacing.large),
-                    SvgPicture.asset(
-                      'packages/zeta_flutter/assets/logos/zebra-logo.svg',
-                      height: Zeta.of(context).spacing.xl_4,
-                    ),
-                    SizedBox(width: Zeta.of(context).spacing.large),
-                    Text(
-                      platformName,
-                      style: Zeta.of(context).textStyles.titleMedium,
-                    ),
-                    SizedBox(width: Zeta.of(context).spacing.large),
-                    //Generate nav items
-                    if(navItems.isNotEmpty)
-                        Container(
-                          padding: EdgeInsets.only(left: Zeta.of(context).spacing.large),
-                          decoration: BoxDecoration(
-                            border: Border(
-                              left: BorderSide(
-                                color: colors.borderDefault,
-                              ),
-                            ),
-                          ),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: navItems.take(6).map((item) => SizedBox(
-                              width: 90,
-                              child: item,
-                            ),
-                          ).toList(),
-                          ),
-                        ),
-                      // Container(
-                      //   padding: EdgeInsets.only(left: Zeta.of(context).spacing.large),
-                      //   decoration: BoxDecoration(
-                      //     border: Border(
-                      //       left: BorderSide(
-                      //         color: colors.borderDefault,
-                      //       ),
-                      //     ),
-                      //   ),
-                      //   child: Row(
-                      //     children: List.generate(
-                      //       navItems.take(6).length,
-                      //       (index) => Row(
-                      //         children: [
-                      //           navItems[index],
-                      //           if (index != navItems.take(6).length - 1)
-                      //             SizedBox(width: Zeta.of(context).spacing.small),
-                      //         ],
-                      //       ),
-                      //     ),
-                      //   ),
-                      // ),
-                  ],
+                ZetaIconButton(
+                  icon: ZetaIcons.hamburger_menu,
+                  size: ZetaWidgetSize.small,
+                  onPressed: onHamburgerMenuPressed,
+                  type: ZetaButtonType.text,
                 ),
+                SizedBox(width: Zeta.of(context).spacing.large),
+                SvgPicture.asset(
+                  'packages/zeta_flutter/assets/logos/zebra-logo.svg',
+                  height: Zeta.of(context).spacing.xl_4,
+                ),
+                SizedBox(width: Zeta.of(context).spacing.large),
+                Text(
+                  platformName,
+                  style: Zeta.of(context).textStyles.titleMedium,
+                ),
+                SizedBox(width: Zeta.of(context).spacing.large),
+                //Generate nav items
+                if(navItems.isNotEmpty)
+                  Container(
+                    padding: EdgeInsets.only(left: Zeta.of(context).spacing.large),
+                    decoration: BoxDecoration(
+                      border: Border(
+                        left: BorderSide(
+                          color: colors.borderDefault,
+                        ),
+                      ),
+                    ),
+                  ),
+                  ...[
+                    for (final item in navItems.take(6))
+                      IntrinsicWidth(child: item),
+                  ],
+                  const Expanded(child: Nothing()),
+                  // Container(
+                  //   padding: EdgeInsets.only(left: Zeta.of(context).spacing.large),
+                  //   decoration: BoxDecoration(
+                  //     border: Border(
+                  //       left: BorderSide(
+                  //         color: colors.borderDefault,
+                  //       ),
+                  //     ),
+                  //   ),
+                  //   child: Row(
+                  //     children: List.generate(
+                  //       navItems.take(6).length,
+                  //       (index) => Row(
+                  //         children: [
+                  //           navItems[index],
+                  //           if (index != navItems.take(6).length - 1)
+                  //             SizedBox(width: Zeta.of(context).spacing.small),
+                  //         ],
+                  //       ),
+                  //     ),
+                  //   ),
+                  // ),
+                  //const Expanded(child: Nothing()),
                 //Right side of header
                 Row(
                   children: [
