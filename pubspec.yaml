@@ -4,7 +4,7 @@ environment:
   sdk: ^3.8.0
 
 dev_dependencies:
-  melos: ^7.1.1
+  melos: ^6.3.3
 
 workspace:
   - packages/zeta_flutter
