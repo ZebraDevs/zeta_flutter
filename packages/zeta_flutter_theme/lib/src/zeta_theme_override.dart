@@ -31,7 +31,7 @@ class ZetaThemeOverride extends StatelessWidget {
     final parentZeta = Zeta.of(context);
 
     return ZetaProvider(
-      key: ValueKey('$themeMode-$contrast-$rounded-${parentZeta.customThemeId}'),
+      key: ValueKey((themeMode, contrast, rounded, parentZeta.customThemeId)),
       initialContrast: contrast ?? parentZeta.contrast,
       initialRounded: rounded ?? parentZeta.rounded,
       initialTheme: parentZeta.customThemeId,
