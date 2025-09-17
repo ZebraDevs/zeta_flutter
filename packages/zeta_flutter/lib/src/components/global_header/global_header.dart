@@ -21,7 +21,7 @@ class ZetaGlobalHeader extends ZetaStatelessWidget {
   /// Constructs [ZetaGlobalHeader]
   const ZetaGlobalHeader({
     super.key,
-    super.rounded = false,
+    super.rounded,
     required this.platformName,
     this.navItems = const [],
     this.searchBar = false,
@@ -76,18 +76,18 @@ class ZetaGlobalHeader extends ZetaStatelessWidget {
   /// Set to null by default, which disables the button.
   final VoidCallback? onAppsButtonPressed;
 
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(StringProperty('platformName', platformName))
-      ..add(ObjectFlagProperty<bool?>('searchBar', searchBar))
-      ..add(ObjectFlagProperty<bool?>.has('appSwitcher', appSwitcher))
-      ..add(StringProperty('name', name))
-      ..add(ObjectFlagProperty<VoidCallback?>.has('onHamburgerMenuPressed', onHamburgerMenuPressed))
-      ..add(ObjectFlagProperty<VoidCallback?>.has('onAvatarButtonPressed', onAvatarButtonPressed))
-      ..add(ObjectFlagProperty<VoidCallback?>.has('onAppsButtonPressed', onAppsButtonPressed));
-  }
+  // @override
+  // void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  //   super.debugFillProperties(properties);
+  //   properties
+  //     ..add(StringProperty('platformName', platformName))
+  //     ..add(ObjectFlagProperty<bool?>('searchBar', searchBar))
+  //     ..add(ObjectFlagProperty<bool?>.has('appSwitcher', appSwitcher))
+  //     ..add(StringProperty('name', name))
+  //     ..add(ObjectFlagProperty<VoidCallback?>.has('onHamburgerMenuPressed', onHamburgerMenuPressed))
+  //     ..add(ObjectFlagProperty<VoidCallback?>.has('onAvatarButtonPressed', onAvatarButtonPressed))
+  //     ..add(ObjectFlagProperty<VoidCallback?>.has('onAppsButtonPressed', onAppsButtonPressed));
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -98,9 +98,10 @@ class ZetaGlobalHeader extends ZetaStatelessWidget {
         return ZetaRoundedScope(
           rounded: rounded ?? false,
           child: Container(
+            height: 52,
             padding: EdgeInsets.symmetric(
-              vertical: Zeta.of(context).spacing.large,
-              horizontal: Zeta.of(context).spacing.small,
+              vertical: Zeta.of(context).spacing.small,
+              horizontal: Zeta.of(context).spacing.large,
             ),
             decoration: BoxDecoration(color: colors.surfaceDefault),
             child: Row(
@@ -119,12 +120,13 @@ class ZetaGlobalHeader extends ZetaStatelessWidget {
                 SvgPicture.asset(
                   'packages/zeta_flutter/assets/logos/zebra-logo.svg',
                   height: Zeta.of(context).spacing.xl_4,
+                  semanticsLabel: 'Zebra Logo',
                 ),
                 // Platform name
                 Text(platformName, style: Zeta.of(context).textStyles.titleMedium),
 
-                // Divider
                 if (navItems.isNotEmpty)
+                  // Divider
                   Container(
                     width: 1,
                     height: Zeta.of(context).spacing.xl_5,
@@ -147,7 +149,7 @@ class ZetaGlobalHeader extends ZetaStatelessWidget {
                   else
                     Container(
                       width: 240,
-                      padding: EdgeInsets.only(left: Zeta.of(context).spacing.small),
+                      margin: EdgeInsets.only(left: Zeta.of(context).spacing.small),
                       child: ZetaSearchBar(size: ZetaWidgetSize.small, showSpeechToText: false),
                     ),
 
