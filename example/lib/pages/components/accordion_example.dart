@@ -20,45 +20,25 @@ class AccordionExample extends StatelessWidget {
             children: [
               SizedBox(
                 width: 328,
-                child: ZetaThemeOverride(
-                  contrast: ZetaContrast.aaa,
-                  themeMode: ThemeMode.dark,
-                  child: Column(
-                    children: [
-                      Builder(
-                        builder: (context) {
-                          final zeta = Zeta.of(context);
-                          return Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(
-                              'Override: themeMode=${zeta.themeMode}, contrast=${zeta.contrast}',
-                              style: TextStyle(fontSize: 12, color: Colors.red),
-                            ),
-                          );
-                        },
-                      ),
-                      ZetaAccordion(
-                        inCard: true,
+                child: ZetaAccordion(
+                  inCard: true,
+                  children: [
+                    ZetaAccordionItem(
+                      onTap: () {},
+                      child: Placeholder(),
+                      title: 'Scanner Configuration',
+                      header: Row(
+                        spacing: Zeta.of(context).spacing.small,
                         children: [
-                          ZetaAccordionItem(
-                            onTap: () {},
-                            child: Placeholder(),
-                            title: 'Scanner Configuration',
-                            header: Row(
-                              spacing: Zeta.of(context).spacing.small,
-                              children: [
-                                ZetaButton.outlineSubtle(label: 'Action 1', onPressed: () {}),
-                                ZetaButton.outlineSubtle(label: 'Action 2', onPressed: () {}),
-                                ZetaButton.outlineSubtle(label: 'Action 3', onPressed: () {}),
-                              ],
-                            ),
-                          ),
-                          ZetaAccordionItem(title: 'Title', onTap: () {}, child: Placeholder()),
-                          ZetaAccordionItem(title: 'Title', onTap: () {}, child: Placeholder()),
+                          ZetaButton.outlineSubtle(label: 'Action 1', onPressed: () {}),
+                          ZetaButton.outlineSubtle(label: 'Action 2', onPressed: () {}),
+                          ZetaButton.outlineSubtle(label: 'Action 3', onPressed: () {}),
                         ],
                       ),
-                    ],
-                  ),
+                    ),
+                    ZetaAccordionItem(title: 'Title', onTap: () {}, child: Placeholder()),
+                    ZetaAccordionItem(title: 'Title', onTap: () {}, child: Placeholder()),
+                  ],
                 ),
               ),
               SizedBox(
