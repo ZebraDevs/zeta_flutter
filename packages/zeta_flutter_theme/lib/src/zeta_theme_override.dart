@@ -23,30 +23,21 @@ class ZetaThemeOverride extends StatelessWidget {
   /// The contrast to override. If null, inherits from ancestor Zeta.
   final ZetaContrast? contrast;
 
-  /// If it is rounded.
+  /// {@macro zeta-component-rounded}
   final bool? rounded;
 
   @override
   Widget build(BuildContext context) {
     final parentZeta = Zeta.of(context);
+
     return ZetaProvider(
+      key: ValueKey('$themeMode-$contrast-$rounded-${parentZeta.customThemeId}'),
       initialContrast: contrast ?? parentZeta.contrast,
       initialRounded: rounded ?? parentZeta.rounded,
       initialTheme: parentZeta.customThemeId,
       initialThemeMode: themeMode ?? parentZeta.themeMode,
-      customThemes: parentZeta.customThemes,
-      // rounded: parentZeta.rounded,
-      // contrast: contrast ?? parentZeta.contrast,
-      // themeMode: themeMode ?? parentZeta.themeMode,
-      // customThemeId: parentZeta.customThemeId,
-      // // customPrimitives: parentZeta.primitives,
-      // // customSemantics: parentZeta.semantics, TODO(thelukewalton): Fix this to allow overrides of customPrimitives and customSemantics
-      // textStyles: parentZeta.textStyles,
-      // child: Builder(
-      builder: (context, light, dark, themeMode) {
-        return Theme(data: themeMode.isDark ? dark : light, child: child);
-      },
-      // ),
+      customThemes: ZetaProvider.of(context).customThemes,
+      builder: (context, light, dark, themeMode) => child,
     );
   }
 
@@ -59,29 +50,3 @@ class ZetaThemeOverride extends StatelessWidget {
       ..add(DiagnosticsProperty<bool?>('rounded', rounded));
   }
 }
-
-/// Dark theme example from SYNC
-// import 'package:comms/app/app.dart';
-// import 'package:comms/widgets/styles.dart';
-// import 'package:flutter/material.dart';
-// import 'package:zds_flutter/zds_flutter.dart';
-
-// class ZetaDarkTheme extends StatelessWidget {
-//   const ZetaDarkTheme({super.key, required this.child});
-
-//   final Widget child;
-
-//   @override
-//   Widget build(BuildContext context) {
-//     final zeta = context.zeta;
-//     // final themeData = zeta.themeData;
-//     return ZetaProvider(
-//       // initialThemeData: themeData,
-//       initialThemeMode: ThemeMode.dark,
-//       initialContrast: zeta.contrast,
-//       builder: (BuildContext context, ThemeData light, ThemeData dark, ThemeMode themeMode) {
-//         return Theme(data: buildSyncTheme(light, dark, isDark: true), child: child);
-//       },
-//     );
-//   }
-// }
