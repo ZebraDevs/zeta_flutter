@@ -173,6 +173,7 @@ Future<void> loadFonts() async {
     ..addFont(rootBundle.load('packages/zeta_flutter_theme/assets/fonts/IBMPlexSans-Medium.otf'));
   await ibmPlexSans.load();
   final zetaIcons = FontLoader('packages/zeta_icons/zeta-icons')
-    ..addFont(rootBundle.load('packages/zeta_icons/lib/assets/icons/zeta-icons-round.ttf'));
+    ..addFont(rootBundle.load('packages/zeta_icons/lib/assets/icons/zeta-icons-round.ttf'))
+    ..addFont(rootBundle.load('packages/zeta_icons/lib/assets/icons/zeta-icons-sharp.ttf'));
   await zetaIcons.load();
 }

@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -100,7 +99,6 @@ class ZetaGlobalHeader extends ZetaStatelessWidget {
           child: Container(
             height: 52,
             padding: EdgeInsets.symmetric(
-              vertical: Zeta.of(context).spacing.small,
               horizontal: Zeta.of(context).spacing.large,
             ),
             decoration: BoxDecoration(color: colors.surfaceDefault),
@@ -108,14 +106,16 @@ class ZetaGlobalHeader extends ZetaStatelessWidget {
               spacing: Zeta.of(context).spacing.large,
               children: [
                 // Leading icon widget
-                leading ??
-                    ZetaIconButton(
-                      icon: ZetaIcons.hamburger_menu,
-                      size: ZetaWidgetSize.small,
-                      onPressed: onHamburgerMenuPressed,
-                      type: ZetaButtonType.subtle,
-                      semanticLabel: 'Hamburger Menu Button',
-                    ),
+                ConstrainedBox(
+                  constraints: const BoxConstraints(maxWidth: 40, maxHeight: 40),
+                  child: leading ??
+                      ZetaIconButton(
+                        icon: ZetaIcons.hamburger_menu,
+                        onPressed: onHamburgerMenuPressed,
+                        type: ZetaButtonType.subtle,
+                        semanticLabel: 'Hamburger Menu Button',
+                      ),
+                ),
                 // Logo
                 SvgPicture.asset(
                   'packages/zeta_flutter/assets/logos/zebra-logo.svg',
@@ -148,7 +148,7 @@ class ZetaGlobalHeader extends ZetaStatelessWidget {
                     const Nothing()
                   else
                     Container(
-                      width: 240,
+                      constraints: const BoxConstraints(maxWidth: 240, minWidth: 100),
                       margin: EdgeInsets.only(left: Zeta.of(context).spacing.small),
                       child: ZetaSearchBar(size: ZetaWidgetSize.small, showSpeechToText: false),
                     ),

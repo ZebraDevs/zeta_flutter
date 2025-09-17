@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
@@ -149,10 +147,24 @@ void main() {
           ),
         ),
       );
+
       final leadingFinder = find.bySemanticsLabel('Hamburger Menu Button');
+
+      final iconFinder = find.descendant(
+        of: leadingFinder,
+        matching: find.byType(Icon),
+      );
+
+      expect(leadingFinder, findsOneWidget);
+
+      final iconSize = tester.getSize(iconFinder);
       final leadingSize = tester.getSize(leadingFinder);
-      expect(leadingSize.width, 28); //getting 48
-      expect(leadingSize.height, 28); //getting 36
+
+      expect(leadingSize.width, 40);
+      expect(leadingSize.height, 40);
+
+      expect(iconSize.width, 24);
+      expect(iconSize.height, 24);
     });
     //Global header has a height of 52px
     testWidgets('Global header has a height of 52px', (WidgetTester tester) async {
