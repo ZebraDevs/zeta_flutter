@@ -12,3 +12,4 @@ export 'src/tokens.dart';
 export 'src/typography.dart';
 export 'src/zeta.dart';
 export 'src/zeta_provider.dart';
+export 'src/zeta_theme_override.dart';
