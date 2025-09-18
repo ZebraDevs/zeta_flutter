@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.2.2](https://github.com/ZebraDevs/zeta_flutter/compare/zeta_flutter_theme-v1.2.1...zeta_flutter_theme-v1.2.2) (2025-09-17)
+
+
+### ⛓️ Dependencies
+
+* Update Flutter to 3.35.3 and packages ([#385](https://github.com/ZebraDevs/zeta_flutter/issues/385)) ([bf1c24b](https://github.com/ZebraDevs/zeta_flutter/commit/bf1c24b11692df2142caa00f1a73baa4cde20b2c))
+
+
+### 🧹 Miscellaneous Chores
+
+* ** zeta_flutter_theme:** release zeta_flutter_theme 1.2.2 ([7ed7a9a](https://github.com/ZebraDevs/zeta_flutter/commit/7ed7a9a679f0a69cbd15ed573433fdb943cad2ab))
+* add logo and change config of introduction page on widgetbook ([#390](https://github.com/ZebraDevs/zeta_flutter/issues/390)) ([7d8d993](https://github.com/ZebraDevs/zeta_flutter/commit/7d8d993986978e0baaa6a69273a4f7baa225b6f1))
+* update test_counter script ([bf1c24b](https://github.com/ZebraDevs/zeta_flutter/commit/bf1c24b11692df2142caa00f1a73baa4cde20b2c))
+* **zeta_flutter:** release zeta_flutter 1.4.1 ([3d4c338](https://github.com/ZebraDevs/zeta_flutter/commit/3d4c338a02c5aabef4e13925dd8bc26aaa2d1322))
+
 ## [1.2.1](https://github.com/ZebraDevs/zeta_flutter/compare/zeta_flutter_theme-v1.2.0...zeta_flutter_theme-v1.2.1) (2025-07-18)
 
 
