@@ -443,11 +443,8 @@ class InternalProviderState extends State<InternalProvider> {
             secondary: widget.customTheme?.secondary,
           );
 
-    final semantics = widget.contrast == ZetaContrast.aa
-        ? ZetaSemanticsAA(primitives: primitives)
-        : ZetaSemanticsAAA(primitives: primitives);
+    final textStyles = ZetaTextStyle(fontFamily: widget.fontFamily, textColor: widget.customTextColor);
 
-    final textStyles = ZetaTextStyle(fontFamily: widget.fontFamily, textColor: semantics.colors.mainDefault);
     return Zeta(
       themeMode: widget.themeMode,
       contrast: widget.contrast,
