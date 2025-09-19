@@ -40,6 +40,7 @@ export 'src/components/in_page_banner/in_page_banner.dart';
 export 'src/components/list_item/dropdown_list_item.dart';
 export 'src/components/list_item/list_item.dart';
 export 'src/components/list_item/notification_list_item.dart';
+export 'src/components/message_input/message_input.dart';
 export 'src/components/navigation bar/navigation_bar.dart' hide NavigationItem;
 export 'src/components/navigation_rail/navigation_rail.dart';
 export 'src/components/pagination/pagination.dart';

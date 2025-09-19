@@ -52,6 +52,8 @@ import 'package:zeta_widgetbook/src/components/in_page_banner.widgetbook.dart'
     as _zeta_widgetbook_src_components_in_page_banner_widgetbook;
 import 'package:zeta_widgetbook/src/components/list_item_widgetbook.dart'
     as _zeta_widgetbook_src_components_list_item_widgetbook;
+import 'package:zeta_widgetbook/src/components/message_input.widgetbook.dart'
+    as _zeta_widgetbook_src_components_message_input_widgetbook;
 import 'package:zeta_widgetbook/src/components/navigation_bar.widgetbook.dart'
     as _zeta_widgetbook_src_components_navigation_bar_widgetbook;
 import 'package:zeta_widgetbook/src/components/navigation_rail.widgetbook.dart'
@@ -633,6 +635,20 @@ final directories = <_widgetbook.WidgetbookNode>[
               ),
             ],
           ),
+        ],
+      ),
+      _widgetbook.WidgetbookFolder(
+        name: 'MessageInput',
+        children: [
+          _widgetbook.WidgetbookLeafComponent(
+            name: 'MessageInput',
+            useCase: _widgetbook.WidgetbookUseCase(
+              name: 'Message Input',
+              builder: _zeta_widgetbook_src_components_message_input_widgetbook.defaultMessageInput,
+              designLink:
+                  'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=18271-19682',
+            ),
+          )
         ],
       ),
       _widgetbook.WidgetbookFolder(

@@ -22,14 +22,14 @@ enum FileFetchMode {
 /// State class for managing audio playback in the [ZetaVoiceMemo] and [ZetaAudioVisualizer].
 class PlaybackState extends ChangeNotifier {
   /// Constructs a [PlaybackState].
-  PlaybackState({String? assetPath, String? deviceFilePath, String? url}) {
-    unawaited(_init(assetPath, deviceFilePath, url));
+  PlaybackState({String? assetPath, String? deviceFilePath, String? url, Uint8List? bytes}) {
+    unawaited(_init(assetPath, deviceFilePath, url, bytes));
     _audioPlayer.onPlayerComplete.listen((_) => resetPlayback());
     _positionSubscription = _audioPlayer.onPositionChanged.listen(_onPositionChanged);
   }
 
-  Future<void> _init(String? assetPath, String? deviceFilePath, String? url) async {
-    await loadAudio(assetPath: assetPath, deviceFilePath: deviceFilePath, url: url);
+  Future<void> _init(String? assetPath, String? deviceFilePath, String? url, Uint8List? bytes) async {
+    await loadAudio(assetPath: assetPath, deviceFilePath: deviceFilePath, url: url, bytes: bytes);
     await resetPlayback();
   }
 
@@ -98,6 +98,7 @@ class PlaybackState extends ChangeNotifier {
     String? assetPath,
     String? url,
     String? deviceFilePath,
+    Uint8List? bytes,
     List<Uint8List>? audioChunks,
     RecordConfig? recordConfig,
   }) async {
@@ -107,6 +108,8 @@ class PlaybackState extends ChangeNotifier {
       _localFile = await handleFile(url, FileFetchMode.url);
     } else if (deviceFilePath != null) {
       _localFile = Uri.file(deviceFilePath);
+    } else if (bytes != null) {
+      _audioChunks = bytes;
     } else if (audioChunks != null && audioChunks.isNotEmpty && recordConfig != null) {
       _audioChunks = Uint8List.fromList([
         ...generatePCMWavHeader(audioChunks, recordConfig),

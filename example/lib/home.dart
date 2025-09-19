@@ -24,6 +24,7 @@ import 'package:zeta_example/pages/components/global_header_example.dart';
 import 'package:zeta_example/pages/components/filter_selection_example.dart';
 import 'package:zeta_example/pages/components/list_example.dart';
 import 'package:zeta_example/pages/components/list_item_example.dart';
+import 'package:zeta_example/pages/components/message_input_example.dart';
 import 'package:zeta_example/pages/components/navigation_bar_example.dart';
 import 'package:zeta_example/pages/components/navigation_rail_example.dart';
 import 'package:zeta_example/pages/components/notification_list_example.dart';
@@ -32,7 +33,6 @@ import 'package:zeta_example/pages/components/radio_example.dart';
 import 'package:zeta_example/pages/components/range_selector_example.dart';
 import 'package:zeta_example/pages/components/screen_header_bar_example.dart';
 import 'package:zeta_example/pages/components/select_input_example.dart';
-
 import 'package:zeta_example/pages/components/search_bar_example.dart';
 import 'package:zeta_example/pages/components/segmented_control_example.dart';
 import 'package:zeta_example/pages/components/slider_example.dart';
@@ -97,6 +97,7 @@ final List<Component> components = [
   Component(Label.name, (context) => const Label()),
   Component(ListExample.name, (context) => const ListExample()),
   Component(ListItemExample.name, (context) => const ListItemExample()),
+  Component(MessageInputExample.name, (context) => const MessageInputExample()),
   Component(NavigationBarExample.name, (context) => const NavigationBarExample()),
   Component(NavigationRailExample.name, (context) => const NavigationRailExample()),
   Component(NotificationListItemExample.name, (context) => const NotificationListItemExample()),
