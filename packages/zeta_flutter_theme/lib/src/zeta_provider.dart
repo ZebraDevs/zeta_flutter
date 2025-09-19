@@ -7,6 +7,7 @@ import 'color_extensions.dart';
 import 'constants.dart';
 import 'contrast.dart';
 import 'custom_theme.dart';
+import 'generated/generated.dart';
 import 'generated/tokens/primitives.g.dart';
 import 'theme_service.dart';
 import 'typography.dart';
@@ -440,7 +441,33 @@ class InternalProvider extends StatefulWidget {
 class InternalProviderState extends State<InternalProvider> {
   @override
   Widget build(BuildContext context) {
-    final textStyles = ZetaTextStyle(fontFamily: widget.fontFamily);
+    final textStyles = ZetaTextStyle(
+      fontFamily: widget.fontFamily,
+      textColor: widget.contrast == ZetaContrast.aaa
+          ? ZetaSemanticsAAA(
+              primitives: widget.themeMode.isDark
+                  ? ZetaPrimitivesDark(
+                      primary: widget.customTheme?.primaryDark,
+                      secondary: widget.customTheme?.secondaryDark,
+                    )
+                  : ZetaPrimitivesLight(
+                      primary: widget.customTheme?.primary,
+                      secondary: widget.customTheme?.secondary,
+                    ),
+            ).colors.mainDefault
+          : ZetaSemanticsAA(
+              primitives: widget.themeMode.isDark
+                  ? ZetaPrimitivesDark(
+                      primary: widget.customTheme?.primaryDark,
+                      secondary: widget.customTheme?.secondaryDark,
+                    )
+                  : ZetaPrimitivesLight(
+                      primary: widget.customTheme?.primary,
+                      secondary: widget.customTheme?.secondary,
+                    ),
+            ).colors.mainDefault,
+    );
+
     return Zeta(
       themeMode: widget.themeMode,
       contrast: widget.contrast,

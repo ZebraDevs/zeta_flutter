@@ -13,9 +13,14 @@ void main() {
   });
 
   group('Accessibility Tests', () {
-    // meetsAccessibilityGuidelinesTest(
-    //
-    // );
+    meetsAccessibilityGuidelinesTest(
+      screenSize: const Size(1920, 1080),
+      const TestApp(
+        home: ZetaGlobalHeader(
+          platformName: 'Platform Name',
+        ),
+      ),
+    );
   });
 
   group('Content Tests', () {
@@ -49,38 +54,41 @@ void main() {
       );
       expect(find.text('Platform Name'), findsOneWidget);
     });
-    //Renders nav items correctly
-    //Overflow issue
-    // testWidgets('Renders nav items correctly', (WidgetTester tester) async {
-    //   await tester.pumpWidget(
-    //     TestApp(
-    //       home: ZetaGlobalHeader(
-    //         platformName: 'Platform Name',
-    //         navItems: [
-    //           ZetaDropdown(
-    //             onChange: (value) {},
-    //             value: 'Nav item',
-    //             items: [
-    //               ZetaDropdownItem(value: 'Nav item', label: 'Nav item'),
-    //               ZetaDropdownItem(value: 'Nav item', label: 'Nav item'),
-    //             ],
-    //           ),
-    //           const ZetaButton(
-    //             label: 'Nav item',
-    //             type: ZetaButtonType.subtle,
-    //             semanticLabel: 'Nav Item Button',
-    //           ),
-    //         ],
-    //       ),
-    //     ),
-    //   );
-    //   expect(find.bySemanticsLabel('Nav Item Button'), findsNWidgets(2));
-    // });
-    //TODO(thelukewalton): Fix overflow issue 4px on the bottom
+    testWidgets('Renders nav items correctly', (WidgetTester tester) async {
+      tester.binding.window.physicalSizeTestValue = const Size(1920, 1080);
+      tester.view.devicePixelRatio = 1.0;
+      await tester.pumpWidget(
+        TestApp(
+          home: ZetaGlobalHeader(
+            platformName: 'Platform Name',
+            navItems: [
+              ZetaDropdown(
+                onChange: (value) {},
+                value: 'Nav item',
+                semanticDropdownLabel: 'Nav Item Button',
+                items: [
+                  ZetaDropdownItem(value: 'Nav item', label: 'Nav item'),
+                  ZetaDropdownItem(value: 'Nav item', label: 'Nav item'),
+                ],
+              ),
+              ZetaDropdown(
+                onChange: (value) {},
+                value: 'Nav item',
+                semanticDropdownLabel: 'Nav Item Button',
+                items: [
+                  ZetaDropdownItem(value: 'Nav item', label: 'Nav item'),
+                  ZetaDropdownItem(value: 'Nav item', label: 'Nav item'),
+                ],
+              ),
+            ],
+          ),
+        ),
+      );
+      expect(find.bySemanticsLabel('Nav Item Button'), findsNWidgets(2));
+    });
     testWidgets('Renders search bar correctly', (WidgetTester tester) async {
       await tester.pumpWidget(
         const TestApp(
-          screenSize: Size(1920, 1020),
           home: ZetaGlobalHeader(
             platformName: 'Platform Name',
             searchBar: true,
@@ -138,8 +146,7 @@ void main() {
   });
 
   group('Dimensions Tests', () {
-    //TODO(thelukewalton): Fix wrong width and height in tester
-    testWidgets('Leading icon button is 28x28px', (WidgetTester tester) async {
+    testWidgets('Leading icon button is 40x40px and icon is 24x24px', (WidgetTester tester) async {
       await tester.pumpWidget(
         const TestApp(
           home: ZetaGlobalHeader(
@@ -166,7 +173,6 @@ void main() {
       expect(iconSize.width, 24);
       expect(iconSize.height, 24);
     });
-    //Global header has a height of 52px
     testWidgets('Global header has a height of 52px', (WidgetTester tester) async {
       await tester.pumpWidget(
         const TestApp(
@@ -179,8 +185,6 @@ void main() {
       final headerSize = tester.getSize(headerFinder);
       expect(headerSize.height, 52);
     });
-    //Search bar has width of 240px and height of 32px
-    //TODO(thelukewalton): Fix overflow issue 4px on the bottom
     testWidgets('Search bar has width of 240px and height of 32px', (WidgetTester tester) async {
       await tester.pumpWidget(
         const TestApp(
@@ -197,7 +201,6 @@ void main() {
       expect(searchBarSize.width, 240);
       expect(searchBarSize.height, 32);
     });
-    //Logo has width of 80px and height of 32px
     testWidgets('Logo has width of 80px and height of 32px', (WidgetTester tester) async {
       await tester.pumpWidget(
         const TestApp(
@@ -211,8 +214,7 @@ void main() {
       expect(logoSize.width, 80);
       expect(logoSize.height, 32);
     });
-    //App switcher button is 28x28px
-    testWidgets('App switcher button is 28x28px', (WidgetTester tester) async {
+    testWidgets('App switcher button is 40x40px and icon is 24x24px', (WidgetTester tester) async {
       await tester.pumpWidget(
         const TestApp(
           home: ZetaGlobalHeader(
@@ -221,10 +223,23 @@ void main() {
           ),
         ),
       );
-      final appSwitcherFinder = find.bySemanticsLabel('App Switcher Button');
-      final appSwitcherSize = tester.getSize(appSwitcherFinder);
-      expect(appSwitcherSize.width, 28);
-      expect(appSwitcherSize.height, 28);
+      final leadingFinder = find.bySemanticsLabel('App Switcher Button');
+
+      final iconFinder = find.descendant(
+        of: leadingFinder,
+        matching: find.byType(Icon),
+      );
+
+      expect(leadingFinder, findsOneWidget);
+
+      final iconSize = tester.getSize(iconFinder);
+      final leadingSize = tester.getSize(leadingFinder);
+
+      expect(leadingSize.width, 40);
+      expect(leadingSize.height, 40);
+
+      expect(iconSize.width, 24);
+      expect(iconSize.height, 24);
     });
   });
 
@@ -255,8 +270,8 @@ void main() {
           ),
         ),
       );
-      final leadingFinder = find.bySemanticsLabel('Hamburger Menu Button');
-      final leading = tester.widget<ZetaIconButton>(leadingFinder);
+      final leadingFinder = find.byType(ZetaIconButton);
+      final leading = tester.widget<ZetaIconButton>(leadingFinder.first);
       expect(leading.type, ZetaButtonType.subtle);
     });
     //Platform name colour is main default
@@ -270,7 +285,10 @@ void main() {
       );
       final platformNameFinder = find.text('Platform Name');
       final platformName = tester.widget<Text>(platformNameFinder);
-      expect(platformName.style?.color, Zeta.of(tester.element(find.byType(ZetaGlobalHeader))).colors.mainDefault);
+      expect(
+        platformName.style?.color,
+        const ZetaPrimitivesLight().cool.shade100,
+      );
     });
     //App switcher button has subtle style
     testWidgets('App switcher button has subtle style', (WidgetTester tester) async {
@@ -282,8 +300,8 @@ void main() {
           ),
         ),
       );
-      final appSwitcherFinder = find.bySemanticsLabel('App Switcher Button');
-      final appSwitcher = tester.widget<ZetaIconButton>(appSwitcherFinder);
+      final appSwitcherFinder = find.byType(ZetaIconButton);
+      final appSwitcher = tester.widget<ZetaIconButton>(appSwitcherFinder.last);
       expect(appSwitcher.type, ZetaButtonType.subtle);
     });
     //Avatar button has subtle style
@@ -296,8 +314,8 @@ void main() {
           ),
         ),
       );
-      final avatarFinder = find.bySemanticsLabel('User Avatar Button');
-      final avatar = tester.widget<ZetaButton>(avatarFinder);
+      final avatarButtonFinder = find.byType(ZetaButton);
+      final avatar = tester.widget<ZetaButton>(avatarButtonFinder.last);
       expect(avatar.type, ZetaButtonType.subtle);
     });
   });
@@ -329,6 +347,7 @@ void main() {
             platformName: 'Platform Name',
             navItems: [
               ZetaButton(
+                key: const Key('nav-item-button'),
                 label: 'Nav item',
                 type: ZetaButtonType.subtle,
                 onPressed: () {
@@ -340,7 +359,7 @@ void main() {
           ),
         ),
       );
-      final navItemFinder = find.bySemanticsLabel('Nav Item Button');
+      final navItemFinder = find.byKey(const Key('nav-item-button'));
       await tester.tap(navItemFinder);
       expect(wasPressed, isTrue);
     });
@@ -353,6 +372,7 @@ void main() {
             platformName: 'Platform Name',
             actionItems: [
               ZetaIconButton(
+                key: const Key('action-item-button'),
                 icon: ZetaIcons.add,
                 onPressed: () {
                   wasPressed = true;
@@ -363,7 +383,7 @@ void main() {
           ),
         ),
       );
-      final actionItemFinder = find.bySemanticsLabel('Action Item Button');
+      final actionItemFinder = find.byKey(const Key('action-item-button'));
       await tester.tap(actionItemFinder);
       expect(wasPressed, isTrue);
     });
@@ -374,7 +394,7 @@ void main() {
         TestApp(
           home: ZetaGlobalHeader(
             platformName: 'Platform Name',
-            avatar: ZetaAvatar(),
+            avatar: const ZetaAvatar(),
             onAvatarButtonPressed: () {
               wasPressed = true;
             },
@@ -419,7 +439,7 @@ void main() {
           ),
         ),
       );
-      expect(find.byType(Divider), findsOneWidget);
+      expect(find.byKey(const Key('divider-action-items')), findsOneWidget);
     });
     //Divider appears only if nav items are present
     testWidgets('Divider appears only if nav items are present', (WidgetTester tester) async {
@@ -438,7 +458,7 @@ void main() {
           ),
         ),
       );
-      expect(find.byType(Divider), findsOneWidget);
+      expect(find.byKey(const Key('divider-menu-items')), findsOneWidget);
     });
     //Check divider does not appear when no action or nav items
     testWidgets('Divider does not appear when no action or nav items', (WidgetTester tester) async {
@@ -456,12 +476,14 @@ void main() {
   group('Golden Tests', () {
     //Default
     goldenTest(
+      screenSize: const Size(1920, 1080),
       goldenFile,
       const ZetaGlobalHeader(platformName: 'Platform Name'),
       'global_header_default',
     );
     //Rounded
     goldenTest(
+      screenSize: const Size(1920, 1080),
       goldenFile,
       const ZetaGlobalHeader(platformName: 'Platform Name', rounded: true),
       'global_header_rounded',

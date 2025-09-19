@@ -91,7 +91,6 @@ class ZetaGlobalHeader extends ZetaStatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = Zeta.of(context).colors;
-
     return LayoutBuilder(
       builder: (context, constraints) {
         return ZetaRoundedScope(
@@ -121,6 +120,9 @@ class ZetaGlobalHeader extends ZetaStatelessWidget {
                   'packages/zeta_flutter/assets/logos/zebra-logo.svg',
                   height: Zeta.of(context).spacing.xl_4,
                   semanticsLabel: 'Zebra Logo',
+                  colorFilter: Theme.of(context).brightness == Brightness.dark
+                      ? const ColorFilter.mode(Colors.white, BlendMode.srcIn)
+                      : null,
                 ),
                 // Platform name
                 Text(platformName, style: Zeta.of(context).textStyles.titleMedium),
@@ -128,6 +130,7 @@ class ZetaGlobalHeader extends ZetaStatelessWidget {
                 if (navItems.isNotEmpty)
                   // Divider
                   Container(
+                    key: const Key('divider-menu-items'),
                     width: 1,
                     height: Zeta.of(context).spacing.xl_5,
                     color: colors.borderDefault,
@@ -156,6 +159,7 @@ class ZetaGlobalHeader extends ZetaStatelessWidget {
                 // Divider
                 if (actionItems.isNotEmpty)
                   Container(
+                    key: const Key('divider-action-items'),
                     width: 1,
                     height: Zeta.of(context).spacing.xl_5,
                     color: colors.borderDefault,
@@ -168,23 +172,28 @@ class ZetaGlobalHeader extends ZetaStatelessWidget {
                 ZetaButton(
                   label: name ?? '',
                   type: ZetaButtonType.subtle,
-                  size: ZetaWidgetSize.small,
                   onPressed: onAvatarButtonPressed,
                   trailingIcon: ZetaIcons.expand_more,
                   semanticLabel: 'User Avatar Button',
                   child: avatar is ZetaAvatar
-                      ? (avatar! as ZetaAvatar).copyWith(size: ZetaAvatarSize.xxxs)
-                      : ZetaAvatar.fromName(name: name ?? '', size: ZetaAvatarSize.xxxs),
+                      ? (avatar! as ZetaAvatar)
+                          .copyWith(size: ZetaAvatarSize.xxxs, backgroundColor: Zeta.of(context).colors.avatarPurple)
+                      : ZetaAvatar.fromName(
+                          name: name ?? '',
+                          size: ZetaAvatarSize.xxxs,
+                          backgroundColor: Zeta.of(context).colors.avatarPurple),
                 ),
 
                 // App switcher button
                 if (appSwitcher)
-                  ZetaIconButton(
-                    icon: ZetaIcons.apps,
-                    size: ZetaWidgetSize.small,
-                    onPressed: onAppsButtonPressed,
-                    type: ZetaButtonType.subtle,
-                    semanticLabel: 'App Switcher Button',
+                  ConstrainedBox(
+                    constraints: const BoxConstraints(maxWidth: 40, maxHeight: 40),
+                    child: ZetaIconButton(
+                      icon: ZetaIcons.apps,
+                      onPressed: onAppsButtonPressed,
+                      type: ZetaButtonType.subtle,
+                      semanticLabel: 'App Switcher Button',
+                    ),
                   ),
               ],
             ),

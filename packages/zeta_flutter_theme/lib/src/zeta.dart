@@ -8,7 +8,7 @@ import '../zeta_flutter_theme.dart';
 /// The [colors] getter provides the correct color set based on the current theme mode.
 class Zeta extends InheritedWidget {
   /// Constructs a [Zeta] widget.
-  const Zeta({
+  Zeta({
     super.key,
     required super.child,
     this.rounded = true,
@@ -17,8 +17,27 @@ class Zeta extends InheritedWidget {
     this.customThemeId,
     ZetaPrimitives? customPrimitives,
     ZetaSemantics? customSemantics,
-    this.textStyles = const ZetaTextStyle(),
-  })  : _customPrimitives = customPrimitives,
+    ZetaTextStyle? textStyles,
+  })  : _textStyles = textStyles ??
+            ZetaTextStyle(
+              textColor: (customSemantics ??
+                      (contrast == ZetaContrast.aa
+                          ? ZetaSemanticsAA(
+                              primitives: customPrimitives ??
+                                  (themeMode.brightness == Brightness.light
+                                      ? const ZetaPrimitivesLight()
+                                      : const ZetaPrimitivesDark()),
+                            )
+                          : ZetaSemanticsAAA(
+                              primitives: customPrimitives ??
+                                  (themeMode.brightness == Brightness.light
+                                      ? const ZetaPrimitivesLight()
+                                      : const ZetaPrimitivesDark()),
+                            )))
+                  .colors
+                  .mainDefault,
+            ),
+        _customPrimitives = customPrimitives,
         _customSemantics = customSemantics;
 
   final ZetaPrimitives? _customPrimitives;
@@ -58,7 +77,7 @@ class Zeta extends InheritedWidget {
   final String? customThemeId;
 
   /// Font family.
-  final ZetaTextStyle textStyles;
+  final ZetaTextStyle _textStyles;
 
   /// Provides the color set based on the current theme mode.
   ///
@@ -78,6 +97,8 @@ class Zeta extends InheritedWidget {
 
   /// Gets the spacing values based on the tokens.
   ZetaSpacing get spacing => semantics.spacing;
+
+  ZetaTextStyle get textStyles => _textStyles;
 
   @override
   bool updateShouldNotify(covariant Zeta oldWidget) {
@@ -134,7 +155,6 @@ class Zeta extends InheritedWidget {
       ..add(DiagnosticsProperty<ZetaSemantics>('semantics', semantics))
       ..add(EnumProperty<ZetaContrast>('contrast', contrast))
       ..add(EnumProperty<ThemeMode>('themeMode', themeMode))
-      ..add(StringProperty('customThemeId', customThemeId))
-      ..add(DiagnosticsProperty<ZetaTextStyle>('textStyles', textStyles));
+      ..add(StringProperty('customThemeId', customThemeId));
   }
 }

@@ -39,16 +39,19 @@ Widget globalHeader(BuildContext context) => ZetaGlobalHeader(
             ? ZetaIconButton(
                 icon: ZetaIcons.star,
                 type: ZetaButtonType.text,
-                size: ZetaWidgetSize.small,
+                size: ZetaWidgetSize.medium,
                 onPressed: () {},
               )
             : ZetaIconButton(
                 icon: ZetaIcons.star,
                 type: ZetaButtonType.text,
-                size: ZetaWidgetSize.small,
+                size: ZetaWidgetSize.medium,
                 onPressed: () {},
               ),
       ),
       appSwitcher: context.knobs.boolean(label: 'App Switcher', initialValue: true),
       rounded: context.knobs.boolean(label: 'Rounded', initialValue: false),
+      onAppsButtonPressed: () {},
+      onHamburgerMenuPressed: () {},
+      onAvatarButtonPressed: () {},
     );

@@ -31,13 +31,13 @@ class GlobalHeaderExample extends StatelessWidget {
           ZetaIconButton(
             icon: ZetaIcons.star,
             type: ZetaButtonType.text,
-            size: ZetaWidgetSize.small,
+            size: ZetaWidgetSize.medium,
             onPressed: () {},
           ),
           ZetaIconButton(
             icon: ZetaIcons.star,
             type: ZetaButtonType.text,
-            size: ZetaWidgetSize.small,
+            size: ZetaWidgetSize.medium,
             onPressed: () {},
           ),
         ],
