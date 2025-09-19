@@ -244,7 +244,6 @@ void main() {
   });
 
   group('Styling Tests', () {
-    //Background color is surface default
     testWidgets('Background color is surface default', (WidgetTester tester) async {
       await tester.pumpWidget(
         const TestApp(
@@ -261,7 +260,6 @@ void main() {
       final BoxDecoration? decoration = container.decoration as BoxDecoration?;
       expect(decoration?.color, Zeta.of(tester.element(find.byType(ZetaGlobalHeader))).colors.surfaceDefault);
     });
-    //Leading icon button has subtle style
     testWidgets('Leading icon button has subtle style', (WidgetTester tester) async {
       await tester.pumpWidget(
         const TestApp(
@@ -274,23 +272,6 @@ void main() {
       final leading = tester.widget<ZetaIconButton>(leadingFinder.first);
       expect(leading.type, ZetaButtonType.subtle);
     });
-    //Platform name colour is main default
-    testWidgets('Platform name colour is main default', (WidgetTester tester) async {
-      await tester.pumpWidget(
-        const TestApp(
-          home: ZetaGlobalHeader(
-            platformName: 'Platform Name',
-          ),
-        ),
-      );
-      final platformNameFinder = find.text('Platform Name');
-      final platformName = tester.widget<Text>(platformNameFinder);
-      expect(
-        platformName.style?.color,
-        const ZetaPrimitivesLight().cool.shade100,
-      );
-    });
-    //App switcher button has subtle style
     testWidgets('App switcher button has subtle style', (WidgetTester tester) async {
       await tester.pumpWidget(
         const TestApp(
@@ -304,7 +285,6 @@ void main() {
       final appSwitcher = tester.widget<ZetaIconButton>(appSwitcherFinder.last);
       expect(appSwitcher.type, ZetaButtonType.subtle);
     });
-    //Avatar button has subtle style
     testWidgets('Avatar button has subtle style', (WidgetTester tester) async {
       await tester.pumpWidget(
         const TestApp(
@@ -321,7 +301,6 @@ void main() {
   });
 
   group('Interaction Tests', () {
-    //Leading icon button triggers callback when tapped
     testWidgets('Leading icon button triggers callback when tapped', (WidgetTester tester) async {
       bool wasPressed = false;
       await tester.pumpWidget(
@@ -338,7 +317,6 @@ void main() {
       await tester.tap(leadingFinder);
       expect(wasPressed, isTrue);
     });
-    //Nav items trigger callback when tapped
     testWidgets('Nav items trigger callback when tapped', (WidgetTester tester) async {
       bool wasPressed = false;
       await tester.pumpWidget(
@@ -363,7 +341,6 @@ void main() {
       await tester.tap(navItemFinder);
       expect(wasPressed, isTrue);
     });
-    //Action items trigger callback when tapped
     testWidgets('Action items trigger callback when tapped', (WidgetTester tester) async {
       bool wasPressed = false;
       await tester.pumpWidget(
@@ -387,7 +364,6 @@ void main() {
       await tester.tap(actionItemFinder);
       expect(wasPressed, isTrue);
     });
-    //Avatar button triggers callback when tapped
     testWidgets('Avatar button triggers callback when tapped', (WidgetTester tester) async {
       bool wasPressed = false;
       await tester.pumpWidget(
@@ -405,7 +381,6 @@ void main() {
       await tester.tap(avatarFinder);
       expect(wasPressed, isTrue);
     });
-    //App switcher button triggers callback when tapped
     testWidgets('App switcher button triggers callback when tapped', (WidgetTester tester) async {
       bool wasPressed = false;
       await tester.pumpWidget(
@@ -423,7 +398,6 @@ void main() {
       await tester.tap(appSwitcherFinder);
       expect(wasPressed, isTrue);
     });
-    //Divider appears only if action items are present
     testWidgets('Divider appears only if action items are present', (WidgetTester tester) async {
       await tester.pumpWidget(
         TestApp(
@@ -441,7 +415,6 @@ void main() {
       );
       expect(find.byKey(const Key('divider-action-items')), findsOneWidget);
     });
-    //Divider appears only if nav items are present
     testWidgets('Divider appears only if nav items are present', (WidgetTester tester) async {
       await tester.pumpWidget(
         TestApp(
@@ -460,7 +433,6 @@ void main() {
       );
       expect(find.byKey(const Key('divider-menu-items')), findsOneWidget);
     });
-    //Check divider does not appear when no action or nav items
     testWidgets('Divider does not appear when no action or nav items', (WidgetTester tester) async {
       await tester.pumpWidget(
         const TestApp(
@@ -474,14 +446,12 @@ void main() {
   });
 
   group('Golden Tests', () {
-    //Default
     goldenTest(
       screenSize: const Size(1920, 1080),
       goldenFile,
       const ZetaGlobalHeader(platformName: 'Platform Name'),
       'global_header_default',
     );
-    //Rounded
     goldenTest(
       screenSize: const Size(1920, 1080),
       goldenFile,

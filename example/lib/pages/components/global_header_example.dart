@@ -43,6 +43,7 @@ class GlobalHeaderExample extends StatelessWidget {
         ],
         name: 'Name',
         appSwitcher: true,
+        rounded: context.rounded,
         onHamburgerMenuPressed: () {},
         onAppsButtonPressed: () {},
         onAvatarButtonPressed: () {},
