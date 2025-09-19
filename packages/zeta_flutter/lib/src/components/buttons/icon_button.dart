@@ -166,16 +166,26 @@ class ZetaIconButton extends ZetaStatelessWidget {
     }
   }
 
-  ZetaIconButton copyWith({ZetaButtonType? type}) {
+  /// Creates a copy of this button but with the given fields replaced by the new values.
+  ZetaIconButton copyWith({
+    ZetaButtonType? type,
+    ZetaWidgetBorder? borderType,
+    ZetaWidgetSize? size,
+    IconData? icon,
+    String? semanticLabel,
+    VoidCallback? onPressed,
+    Key? key,
+    bool? rounded,
+  }) {
     return ZetaIconButton(
-      key: key,
-      rounded: rounded,
-      onPressed: onPressed,
-      borderType: borderType,
+      key: key ?? this.key,
+      rounded: rounded ?? this.rounded,
+      onPressed: onPressed ?? this.onPressed,
+      borderType: borderType ?? this.borderType,
       type: type ?? this.type,
-      size: size,
-      icon: icon,
-      semanticLabel: semanticLabel,
+      size: size ?? this.size,
+      icon: icon ?? this.icon,
+      semanticLabel: semanticLabel ?? this.semanticLabel,
     );
   }
 
