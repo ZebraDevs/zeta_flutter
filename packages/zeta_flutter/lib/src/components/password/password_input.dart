@@ -5,7 +5,7 @@ import '../../../zeta_flutter.dart';
 
 import '../text_input/internal_text_input.dart';
 
-/// Zeta Password Input
+/// A text input field for entering passwords.
 ///
 /// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=948-13002&node-type=canvas&m=dev
 ///

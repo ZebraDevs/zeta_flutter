@@ -44,7 +44,8 @@ jobs:
         with:
           cache: true
           channel: stable
-          flutter-version: 3.32.x
+          flutter-version: 3.35.x
+
       - name: Install dependencies
         run: flutter pub get
       - name: Install melos
@@ -85,7 +86,7 @@ jobs:
           script: |
             await github.rest.actions.createWorkflowDispatch({
               owner: 'zebratechnologies',
-              repo: 'zeta',
+              repo: 'design.zebra.com',
               workflow_id: 'deploy.yml',
               ref: 'main',
               inputs:{

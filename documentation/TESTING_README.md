@@ -8,29 +8,29 @@ For example, if your component is located at `lib/src/components/buttons/button.
 Each test file should follow a consistent pattern, organizing tests into groups for Accessibility, Content, Dimensions, Styling, Interaction, Golden, and Performance.
 While not every group needs to be populated for each component, they should be included as necessary to thoroughly validate the component's behavior and quality.
 
-- **Accessibility Tests**  
+- **Accessibility**  
   Semantic labels, touch areas, contrast ratios, etc.
 
-- **Content Tests**  
+- **Content**  
   Finds the widget, parameter statuses, etc.  
   Checking for the value of props and attributes of the widget. Checking for the presence of widgets.
 
-- **Dimensions Tests**  
+- **Dimensions**  
   Size, padding, margin, alignment, etc.  
   getSize().
 
-- **Styling Tests**  
+- **Styling**  
   Rendered colors, fonts, borders, radii etc.
   Checking the style of widgets and child widgets.
 
-- **Interaction Tests**  
+- **Interaction**  
   Gesture recognizers, taps, drags, etc.
   For example, using a boolean to check if the widgets interaction function runs.
 
-- **Golden Tests**  
+- **Golden**  
   Compares the rendered widget with the golden file. Use the `goldenTest()` function from test_utils/utils.dart.
 
-- **Performance Tests**  
+- **Performance**  
   Animation performance, rendering performance, data manipulation performance, etc.
 
 ## Testing file template {#testing-file-template-flutter}

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../zeta_flutter.dart';
 import 'button_style.dart';
 
-/// Zeta Button
+/// A large, tappable button with an icon stacked above a label. Ideal for grid layouts, dashboards, or mobile interfaces where quick, visually distinct actions are needed.
 ///
 /// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=37677-15824&t=BkdCAAhFjNXxpwfK-4
 ///

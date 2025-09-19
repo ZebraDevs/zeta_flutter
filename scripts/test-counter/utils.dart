@@ -201,10 +201,7 @@ extension ListExtension on List<String> {
   ///
   /// This function iterates over the test count and group totals
   /// to add the component rows to the target.
-  void addComponentRows(
-    Map<String, Map<String, int>> testCount,
-    Map<String, int> groupTotals,
-  ) {
+  void addComponentRows(Map<String, Map<String, int>> testCount, Map<String, int> groupTotals) {
     testCount.forEach((filePath, groups) {
       final componentName = getComponentNameFromTestPath(filePath);
 
@@ -228,10 +225,7 @@ extension ListExtension on List<String> {
   ///
   /// This method calculates the total for a specific category and appends
   /// a row to the data table displaying the totals.
-  void addCategoryTotalRow(
-    Map<String, Map<String, int>> testCount,
-    Map<String, int> groupTotals,
-  ) {
+  void addCategoryTotalRow(Map<String, Map<String, int>> testCount, Map<String, int> groupTotals) {
     testCount.forEach((filePath, groups) {
       groups.forEach((key, value) {
         if (!groupTotals.keys.contains(key)) {

@@ -3,15 +3,7 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import 'color_extensions.dart';
-import 'constants.dart';
-import 'contrast.dart';
-import 'custom_theme.dart';
-import 'generated/generated.dart';
-import 'generated/tokens/primitives.g.dart';
-import 'theme_service.dart';
-import 'typography.dart';
-import 'zeta.dart';
+import '../zeta_flutter_theme.dart';
 
 /// A typedef for the ZetaAppBuilder function which passes [BuildContext], light [ThemeData],
 /// dark [ThemeData] and [ThemeMode] and returns a [Widget].
@@ -440,33 +432,18 @@ class InternalProvider extends StatefulWidget {
 @visibleForTesting
 class InternalProviderState extends State<InternalProvider> {
   @override
-  Widget build(BuildContext context) {
-    final textStyles = ZetaTextStyle(
-      fontFamily: widget.fontFamily,
-      textColor: widget.contrast == ZetaContrast.aaa
-          ? ZetaSemanticsAAA(
-              primitives: widget.themeMode.isDark
-                  ? ZetaPrimitivesDark(
-                      primary: widget.customTheme?.primaryDark,
-                      secondary: widget.customTheme?.secondaryDark,
-                    )
-                  : ZetaPrimitivesLight(
-                      primary: widget.customTheme?.primary,
-                      secondary: widget.customTheme?.secondary,
-                    ),
-            ).colors.mainDefault
-          : ZetaSemanticsAA(
-              primitives: widget.themeMode.isDark
-                  ? ZetaPrimitivesDark(
-                      primary: widget.customTheme?.primaryDark,
-                      secondary: widget.customTheme?.secondaryDark,
-                    )
-                  : ZetaPrimitivesLight(
-                      primary: widget.customTheme?.primary,
-                      secondary: widget.customTheme?.secondary,
-                    ),
-            ).colors.mainDefault,
-    );
+  Widget build(BuildContext _) {
+    final primitives = widget.themeMode.isDark
+        ? ZetaPrimitivesDark(
+            primary: widget.customTheme?.primaryDark,
+            secondary: widget.customTheme?.secondaryDark,
+          )
+        : ZetaPrimitivesLight(
+            primary: widget.customTheme?.primary,
+            secondary: widget.customTheme?.secondary,
+          );
+
+    final textStyles = ZetaTextStyle(fontFamily: widget.fontFamily, textColor: widget.customTextColor);
 
     return Zeta(
       themeMode: widget.themeMode,
@@ -474,15 +451,7 @@ class InternalProviderState extends State<InternalProvider> {
       customThemeId: widget.customTheme?.id,
       rounded: widget.rounded,
       textStyles: textStyles,
-      customPrimitives: widget.themeMode.isDark
-          ? ZetaPrimitivesDark(
-              primary: widget.customTheme?.primaryDark,
-              secondary: widget.customTheme?.secondaryDark,
-            )
-          : ZetaPrimitivesLight(
-              primary: widget.customTheme?.primary,
-              secondary: widget.customTheme?.secondary,
-            ),
+      customPrimitives: primitives,
       child: Builder(
         builder: (context) {
           return widget.widget(

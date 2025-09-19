@@ -4,7 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import '../../../zeta_flutter.dart';
 
-/// A screen header bar that contains a back button, title and an optional action button.
+/// A header bar for screens, typically containing the title and actions.
 ///
 /// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=24601-6781&node-type=canvas&m=dev
 ///

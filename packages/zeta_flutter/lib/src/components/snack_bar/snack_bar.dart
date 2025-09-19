@@ -29,8 +29,9 @@ enum ZetaSnackBarType {
   view,
 }
 
-/// A lightweight message with an optional action which briefly displays at the
-/// bottom of the screen.
+/// Snackbars provide brief messages about app processes at the bottom of the screen.
+///
+/// Contextual snackbars provide brief messages in relation to an action that has been taken by the user.
 ///
 /// Different styles can be applied to [ZetaSnackBar] with [ZetaSnackBarType].
 ///

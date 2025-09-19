@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import '../../../zeta_flutter.dart';
 
+/// Tabs are used to show different views or sections of content within the same context.
+///
 /// Defines how the bounds of the selected tab indicator are computed.
 /// Intended to be used with [ZetaTabBar].
 ///

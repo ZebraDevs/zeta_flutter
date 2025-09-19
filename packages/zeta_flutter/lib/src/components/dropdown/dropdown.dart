@@ -38,7 +38,7 @@ class ZetaDropdownItem<T> {
     required this.value,
     this.icon,
   }) {
-    this.label = label ?? this.value.toString();
+    this.label = label ?? value.toString();
   }
 
   /// The label for the item.
@@ -53,7 +53,7 @@ class ZetaDropdownItem<T> {
   final Widget? icon;
 }
 
-/// Class for [ZetaDropdown]
+/// Dropdown menus allow users to select an option from a list that appears when the menu is clicked or tapped.
 ///
 /// Figma: https://www.figma.com/file/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=22391-10146
 ///

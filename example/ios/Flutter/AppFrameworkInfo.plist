@@ -22,5 +22,8 @@
   <string>1.0</string>
   <key>MinimumOSVersion</key>
   <string>12.0</string>
+  <key>NSMicrophoneUsageDescription</key>
+  <string>Used for VoiceMemo</string>
+
 </dict>
 </plist>

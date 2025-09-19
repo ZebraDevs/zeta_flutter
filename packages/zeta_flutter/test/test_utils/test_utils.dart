@@ -8,7 +8,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:path/path.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
-import 'aaa_test_guideline.dart';
 import 'test_app.dart';
 
 export 'test_app.dart';
@@ -155,7 +154,7 @@ void meetsAccessibilityGuidelinesTest(
         if (contrast == ZetaContrast.aa) {
           await expectLater(tester, meetsGuideline(textContrastGuideline));
         } else {
-          await expectLater(tester, meetsGuideline(aaaGuideline));
+          await expectLater(tester, meetsGuideline(const MinimumTextContrastGuidelineAAA()));
         }
 
         handle.dispose();
