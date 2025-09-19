@@ -100,8 +100,8 @@ class _FakeZetaSemantics_5 extends _i1.SmartFake implements _i4.ZetaSemantics {
         );
 }
 
-class _FakeZetaTextStyle_6 extends _i1.SmartFake implements _i4.ZetaTextStyle {
-  _FakeZetaTextStyle_6(
+class _FakeZetaColors_6 extends _i1.SmartFake implements _i4.ZetaColors {
+  _FakeZetaColors_6(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -110,8 +110,8 @@ class _FakeZetaTextStyle_6 extends _i1.SmartFake implements _i4.ZetaTextStyle {
         );
 }
 
-class _FakeZetaColors_7 extends _i1.SmartFake implements _i4.ZetaColors {
-  _FakeZetaColors_7(
+class _FakeZetaRadius_7 extends _i1.SmartFake implements _i4.ZetaRadius {
+  _FakeZetaRadius_7(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -120,8 +120,8 @@ class _FakeZetaColors_7 extends _i1.SmartFake implements _i4.ZetaColors {
         );
 }
 
-class _FakeZetaRadius_8 extends _i1.SmartFake implements _i4.ZetaRadius {
-  _FakeZetaRadius_8(
+class _FakeZetaSpacing_8 extends _i1.SmartFake implements _i4.ZetaSpacing {
+  _FakeZetaSpacing_8(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -130,8 +130,8 @@ class _FakeZetaRadius_8 extends _i1.SmartFake implements _i4.ZetaRadius {
         );
 }
 
-class _FakeZetaSpacing_9 extends _i1.SmartFake implements _i4.ZetaSpacing {
-  _FakeZetaSpacing_9(
+class _FakeZetaTextStyle_9 extends _i1.SmartFake implements _i4.ZetaTextStyle {
+  _FakeZetaTextStyle_9(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -1650,26 +1650,13 @@ class MockZeta extends _i1.Mock implements _i4.Zeta {
       ) as _i2.ThemeMode);
 
   @override
-  _i4.ZetaTextStyle get textStyles => (super.noSuchMethod(
-        Invocation.getter(#textStyles),
-        returnValue: _FakeZetaTextStyle_6(
-          this,
-          Invocation.getter(#textStyles),
-        ),
-        returnValueForMissingStub: _FakeZetaTextStyle_6(
-          this,
-          Invocation.getter(#textStyles),
-        ),
-      ) as _i4.ZetaTextStyle);
-
-  @override
   _i4.ZetaColors get colors => (super.noSuchMethod(
         Invocation.getter(#colors),
-        returnValue: _FakeZetaColors_7(
+        returnValue: _FakeZetaColors_6(
           this,
           Invocation.getter(#colors),
         ),
-        returnValueForMissingStub: _FakeZetaColors_7(
+        returnValueForMissingStub: _FakeZetaColors_6(
           this,
           Invocation.getter(#colors),
         ),
@@ -1685,11 +1672,11 @@ class MockZeta extends _i1.Mock implements _i4.Zeta {
   @override
   _i4.ZetaRadius get radius => (super.noSuchMethod(
         Invocation.getter(#radius),
-        returnValue: _FakeZetaRadius_8(
+        returnValue: _FakeZetaRadius_7(
           this,
           Invocation.getter(#radius),
         ),
-        returnValueForMissingStub: _FakeZetaRadius_8(
+        returnValueForMissingStub: _FakeZetaRadius_7(
           this,
           Invocation.getter(#radius),
         ),
@@ -1698,15 +1685,28 @@ class MockZeta extends _i1.Mock implements _i4.Zeta {
   @override
   _i4.ZetaSpacing get spacing => (super.noSuchMethod(
         Invocation.getter(#spacing),
-        returnValue: _FakeZetaSpacing_9(
+        returnValue: _FakeZetaSpacing_8(
           this,
           Invocation.getter(#spacing),
         ),
-        returnValueForMissingStub: _FakeZetaSpacing_9(
+        returnValueForMissingStub: _FakeZetaSpacing_8(
           this,
           Invocation.getter(#spacing),
         ),
       ) as _i4.ZetaSpacing);
+
+  @override
+  _i4.ZetaTextStyle get textStyles => (super.noSuchMethod(
+        Invocation.getter(#textStyles),
+        returnValue: _FakeZetaTextStyle_9(
+          this,
+          Invocation.getter(#textStyles),
+        ),
+        returnValueForMissingStub: _FakeZetaTextStyle_9(
+          this,
+          Invocation.getter(#textStyles),
+        ),
+      ) as _i4.ZetaTextStyle);
 
   @override
   _i2.Widget get child => (super.noSuchMethod(
