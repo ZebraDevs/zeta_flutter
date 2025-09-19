@@ -302,103 +302,106 @@ class _MessageInputState extends State<ZetaMessageInput> {
           /* TODO: glitch where if the user taps the ZetaTextInput border it closes the keyboard */
           await SystemChannels.textInput.invokeMethod('TextInput.show');
         },
-        child: Column(
-          children: [
-            if (_attachments.isNotEmpty)
-              AttachmentsPanel(
-                attachments: _attachments,
-                onCloseAttachment: _onCloseAttachment,
-              )
-            else
-              const Nothing(),
-            Container(
-              padding: EdgeInsets.symmetric(
-                vertical: verticalPadding,
-                horizontal: horizontalPadding,
-              ),
-              decoration: BoxDecoration(
-                color: colors.surfaceDefault,
-                border: Border(
-                  top: BorderSide(color: colors.borderDefault),
+        child: AnimatedSize(
+          duration: const Duration(milliseconds: 200),
+          child: Column(
+            children: [
+              if (_attachments.isNotEmpty)
+                AttachmentsPanel(
+                  attachments: _attachments,
+                  onCloseAttachment: _onCloseAttachment,
+                ),
+              Container(
+                padding: EdgeInsets.symmetric(
+                  vertical: verticalPadding,
+                  horizontal: horizontalPadding,
+                ),
+                decoration: BoxDecoration(
+                  color: colors.surfaceDefault,
+                  border: Border(
+                    top: BorderSide(color: colors.borderDefault),
+                  ),
+                ),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  textBaseline: TextBaseline.ideographic,
+                  children: [
+                    if (widget.hasActionMenu ?? false)
+                      ActionButton(
+                        onPressed: _openActionsMenu,
+                        icon: ZetaIcons.add,
+                        disabled: widget.disabled,
+                        semanticLabel: 'open action menu',
+                      )
+                    else
+                      const Nothing(),
+                    Expanded(
+                      child: ZetaTextInput(
+                        disabled: widget.disabled ?? false,
+                        onChange: _handleTextChange,
+                        focusNode: _focusNode,
+                        minLines: widget.minLines,
+                        maxLines: widget.maxLines,
+                        controller: _controller,
+                        rounded: context.rounded,
+                        placeholder: widget.placeholder,
+                        semanticLabel: widget.placeholder,
+                        suffix: widget.allowsVoiceInput ?? false
+                            ? VoiceButton(
+                                controller: _controller,
+                                disabled: widget.disabled,
+                              )
+                            : null,
+                      ),
+                    ),
+                    if (showCameraButton)
+                      ImageButton(
+                        onCapture: _onCapture,
+                        disabled: widget.disabled,
+                      ),
+                    if (showTrailingButton) widget.trailingButton!,
+                    if (showSendButton)
+                      SendButton(
+                        controller: _controller,
+                        attachments: _attachments,
+                        onPressed: widget.onSend != null ? _handleSend : null,
+                        onLongPress: widget.onLongPressSend != null ? _handleLongPressSend : null,
+                        disabled: (_isMessageContentEmpty || widget.onSend == null) || (widget.disabled ?? false),
+                      ),
+                  ].gap(spacing.small),
                 ),
               ),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                textBaseline: TextBaseline.ideographic,
-                children: [
-                  if (widget.hasActionMenu ?? false)
-                    ActionButton(
-                      onPressed: _openActionsMenu,
-                      icon: ZetaIcons.add,
-                      disabled: widget.disabled,
-                      semanticLabel: 'open action menu',
-                    )
-                  else
-                    const Nothing(),
-                  Expanded(
-                    child: ZetaTextInput(
-                      disabled: widget.disabled ?? false,
-                      onChange: _handleTextChange,
-                      focusNode: _focusNode,
-                      minLines: widget.minLines,
-                      maxLines: widget.maxLines,
-                      controller: _controller,
-                      rounded: context.rounded,
-                      placeholder: widget.placeholder,
-                      semanticLabel: widget.placeholder,
-                      suffix: widget.allowsVoiceInput ?? false
-                          ? VoiceButton(
-                              controller: _controller,
-                              disabled: widget.disabled,
-                            )
-                          : null,
-                    ),
-                  ),
-                  if (showCameraButton)
-                    ImageButton(
-                      onCapture: _onCapture,
-                      disabled: widget.disabled,
-                    ),
-                  if (showTrailingButton) widget.trailingButton!,
-                  if (showSendButton)
-                    SendButton(
-                      controller: _controller,
-                      attachments: _attachments,
-                      onPressed: widget.onSend != null ? _handleSend : null,
-                      onLongPress: widget.onLongPressSend != null ? _handleLongPressSend : null,
-                      disabled: (_isMessageContentEmpty || widget.onSend == null) || (widget.disabled ?? false),
-                    ),
-                ].gap(spacing.small),
+              SizedBox(
+                height: (_isActionMenuOpen && (widget.hasActionMenu ?? false)) ? null : 0,
+                child: ActionsPanel(
+                  actions: [
+                    if (widget.attachmentAction ?? false)
+                      AttachmentButton(
+                        allowMultiple: widget.multiAttach ?? false,
+                        allowedExtensions: widget.allowedExtensions,
+                        maxSize: widget.maxAttachmentSize,
+                        onAttach: widget.onSendAttachments != null ? _onAttach : null,
+                      ),
+                    if (widget.pictureAction ?? false)
+                      ImageButton(
+                        onCapture: widget.onSendAttachments != null ? _onCapture : null,
+                      ),
+                    if (widget.videoAction ?? false)
+                      VideoButton(
+                        onCapture: widget.onSendAttachments != null ? _onCapture : null,
+                      ),
+                    if (widget.voiceMemoAction ?? false)
+                      VoiceMemoButton(onSend: widget.onSendVoiceMemo, maxDuration: widget.maxVoiceMemoDuration),
+                    if (widget.locationAction ?? false)
+                      LocationButton(
+                        onLocationCapture: widget.onSendLocation,
+                      ),
+                    if (widget.actions != null) ...widget.actions!,
+                  ],
+                ),
               ),
-            ),
-            if (_isActionMenuOpen && (widget.hasActionMenu ?? false))
-              ActionsPanel(
-                actions: [
-                  if (widget.attachmentAction ?? false)
-                    AttachmentButton(
-                      allowMultiple: widget.multiAttach ?? false,
-                      allowedExtensions: widget.allowedExtensions,
-                      maxSize: widget.maxAttachmentSize,
-                      onAttach: widget.onSendAttachments != null ? _onAttach : null,
-                    ),
-                  if (widget.pictureAction ?? false)
-                    ImageButton(
-                      onCapture: widget.onSendAttachments != null ? _onCapture : null,
-                    ),
-                  if (widget.videoAction ?? false)
-                    VideoButton(
-                      onCapture: widget.onSendAttachments != null ? _onCapture : null,
-                    ),
-                  if (widget.voiceMemoAction ?? false)
-                    VoiceMemoButton(onSend: widget.onSendVoiceMemo, maxDuration: widget.maxVoiceMemoDuration),
-                  if (widget.locationAction ?? false)
-                    LocationButton(
-                      onLocationCapture: widget.onSendLocation,
-                    ),
-                  if (widget.actions != null) ...widget.actions!,
-                ],
-              ),
-          ],
+            ],
+          ),
         ),
       ),
     );

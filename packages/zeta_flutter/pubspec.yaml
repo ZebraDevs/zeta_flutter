@@ -14,7 +14,7 @@ resolution: workspace
 dependencies:
   audioplayers: ^6.5.1
   collection: ^1.19.1
-  file_picker: ^8.1.4
+  file_picker: ^10.3.3
   flutter:
     sdk: flutter
   flutter_slidable: ^4.0.1
