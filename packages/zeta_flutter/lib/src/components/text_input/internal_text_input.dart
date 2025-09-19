@@ -325,63 +325,70 @@ class InternalTextInputState extends State<InternalTextInput> {
               ),
               SizedBox(height: Zeta.of(context).spacing.minimum),
             ],
-            Row(
-              children: [
-                if (widget.externalPrefix != null) widget.externalPrefix!,
-                Expanded(
-                  child: MouseRegion(
-                    onEnter: !widget.disabled
-                        ? (_) => setState(() {
-                              _hovered = true;
-                            })
-                        : null,
-                    onExit: !widget.disabled
-                        ? (_) => setState(() {
-                              _hovered = false;
-                            })
-                        : null,
-                    child: TextField(
-                      enabled: !widget.disabled,
-                      controller: _controller,
-                      keyboardType: widget.keyboardType,
-                      inputFormatters: widget.inputFormatters,
-                      textAlignVertical: TextAlignVertical.center,
-                      onChanged: widget.onChange,
-                      onSubmitted: widget.onSubmit,
-                      style: _baseTextStyle,
-                      textInputAction: widget.textInputAction,
-                      cursorErrorColor: _colors.mainNegative,
-                      obscureText: widget.obscureText,
-                      focusNode: widget.focusNode,
-                      decoration: InputDecoration(
-                        isDense: true,
-                        contentPadding: _contentPadding,
-                        filled: true,
-                        prefixIcon: _prefix,
-                        prefixIconConstraints:
-                            widget.prefixText != null || widget.constrained ? _affixConstraints : null,
-                        suffixIcon: _suffix,
-                        suffixIconConstraints:
-                            widget.suffixText != null || widget.constrained ? _affixConstraints : null,
-                        focusColor: _backgroundColor,
-                        hoverColor: _backgroundColor,
-                        fillColor: _backgroundColor,
-                        enabledBorder: _baseBorder(rounded),
-                        disabledBorder: _baseBorder(rounded),
-                        focusedBorder: _focusedBorder(rounded),
-                        focusedErrorBorder: _errorBorder(rounded),
-                        errorBorder: widget.disabled ? _baseBorder(rounded) : _errorBorder(rounded),
-                        hintText: widget.placeholder,
-                        errorText: widget.errorText,
-                        hintStyle: _baseTextStyle.copyWith(
-                          color: widget.disabled ? _colors.mainDisabled : _colors.mainSubtle,
+            SizedBox(
+              height: widget.size == ZetaWidgetSize.small
+                  ? Zeta.of(context).spacing.xl_4
+                  : widget.size == ZetaWidgetSize.medium
+                      ? Zeta.of(context).spacing.xl_6
+                      : Zeta.of(context).spacing.xl_8,
+              child: Row(
+                children: [
+                  if (widget.externalPrefix != null) widget.externalPrefix!,
+                  Expanded(
+                    child: MouseRegion(
+                      onEnter: !widget.disabled
+                          ? (_) => setState(() {
+                                _hovered = true;
+                              })
+                          : null,
+                      onExit: !widget.disabled
+                          ? (_) => setState(() {
+                                _hovered = false;
+                              })
+                          : null,
+                      child: TextField(
+                        enabled: !widget.disabled,
+                        controller: _controller,
+                        keyboardType: widget.keyboardType,
+                        inputFormatters: widget.inputFormatters,
+                        textAlignVertical: TextAlignVertical.center,
+                        onChanged: widget.onChange,
+                        onSubmitted: widget.onSubmit,
+                        style: _baseTextStyle,
+                        textInputAction: widget.textInputAction,
+                        cursorErrorColor: _colors.mainNegative,
+                        obscureText: widget.obscureText,
+                        focusNode: widget.focusNode,
+                        decoration: InputDecoration(
+                          isDense: true,
+                          contentPadding: _contentPadding,
+                          filled: true,
+                          prefixIcon: _prefix,
+                          prefixIconConstraints:
+                              widget.prefixText != null || widget.constrained ? _affixConstraints : null,
+                          suffixIcon: _suffix,
+                          suffixIconConstraints:
+                              widget.suffixText != null || widget.constrained ? _affixConstraints : null,
+                          focusColor: _backgroundColor,
+                          hoverColor: _backgroundColor,
+                          fillColor: _backgroundColor,
+                          enabledBorder: _baseBorder(rounded),
+                          disabledBorder: _baseBorder(rounded),
+                          focusedBorder: _focusedBorder(rounded),
+                          focusedErrorBorder: _errorBorder(rounded),
+                          errorBorder: widget.disabled ? _baseBorder(rounded) : _errorBorder(rounded),
+                          hintText: widget.placeholder,
+                          errorText: widget.errorText,
+                          hintStyle: _baseTextStyle.copyWith(
+                            color: widget.disabled ? _colors.mainDisabled : _colors.mainSubtle,
+                          ),
+                          errorStyle: const TextStyle(height: 0.001, color: Colors.transparent),
                         ),
-                        errorStyle: const TextStyle(height: 0.001, color: Colors.transparent),
                       ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
             ZetaHintText(
               disabled: widget.disabled,

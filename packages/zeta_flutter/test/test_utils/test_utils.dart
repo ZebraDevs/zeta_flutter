@@ -64,6 +64,12 @@ void goldenTest(
   Future<void> Function(WidgetTester)? beforeComparison,
 }) {
   testWidgets('$fileName golden', (WidgetTester tester) async {
+    if (screenSize != null) {
+      tester.view.devicePixelRatio = 1.0;
+      tester.view.physicalSize = screenSize;
+      addTearDown(tester.view.resetPhysicalSize);
+    }
+
     final computedType = widgetType ?? widget.runtimeType;
     if (setUp != null) {
       await setUp(tester);
@@ -130,6 +136,11 @@ void meetsAccessibilityGuidelinesTest(
     for (final themeMode in [ThemeMode.light, ThemeMode.dark]) {
       testWidgets('meets accessibility requirements $testName ${themeMode.name} ${contrast.name} ',
           (WidgetTester tester) async {
+        if (screenSize != null) {
+          tester.view.devicePixelRatio = 1.0;
+          tester.view.physicalSize = screenSize;
+          addTearDown(tester.view.resetPhysicalSize);
+        }
         final SemanticsHandle handle = tester.ensureSemantics();
         if (setUp != null) {
           await setUp(tester);
@@ -172,6 +183,7 @@ Future<void> loadFonts() async {
     ..addFont(rootBundle.load('packages/zeta_flutter_theme/assets/fonts/IBMPlexSans-Medium.otf'));
   await ibmPlexSans.load();
   final zetaIcons = FontLoader('packages/zeta_icons/zeta-icons')
-    ..addFont(rootBundle.load('packages/zeta_icons/lib/assets/icons/zeta-icons-round.ttf'));
+    ..addFont(rootBundle.load('packages/zeta_icons/lib/assets/icons/zeta-icons-round.ttf'))
+    ..addFont(rootBundle.load('packages/zeta_icons/lib/assets/icons/zeta-icons-sharp.ttf'));
   await zetaIcons.load();
 }

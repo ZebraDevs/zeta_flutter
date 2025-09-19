@@ -286,6 +286,14 @@ class ZetaTextStyle {
   /// Defaults to the current theme color.
   final Color? textColor;
 
+  /// Applies the given [color] to the text styles.
+  ZetaTextStyle applyColor(Color color) {
+    return ZetaTextStyle(
+      fontFamily: fontFamily,
+      textColor: color,
+    );
+  }
+
   /// Largest of the display styles.
   ///
   /// {@template zeta-text-display}

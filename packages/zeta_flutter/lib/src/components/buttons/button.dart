@@ -23,6 +23,7 @@ class ZetaButton extends ZetaStatelessWidget {
     this.trailingIcon,
     this.focusNode,
     this.semanticLabel,
+    this.child,
   });
 
   /// Constructs [ZetaButton] with Primary theme.
@@ -36,6 +37,7 @@ class ZetaButton extends ZetaStatelessWidget {
     this.trailingIcon,
     this.focusNode,
     this.semanticLabel,
+    this.child,
   }) : type = ZetaButtonType.primary;
 
   /// Constructs [ZetaButton] with Secondary theme.
@@ -50,6 +52,7 @@ class ZetaButton extends ZetaStatelessWidget {
     this.trailingIcon,
     this.focusNode,
     this.semanticLabel,
+    this.child,
   }) : type = ZetaButtonType.secondary;
 
   /// Constructs [ZetaButton] with Positive theme.
@@ -63,6 +66,7 @@ class ZetaButton extends ZetaStatelessWidget {
     this.trailingIcon,
     this.focusNode,
     this.semanticLabel,
+    this.child,
   }) : type = ZetaButtonType.positive;
 
   /// Constructs [ZetaButton] with Negative theme.
@@ -76,6 +80,7 @@ class ZetaButton extends ZetaStatelessWidget {
     this.trailingIcon,
     this.focusNode,
     this.semanticLabel,
+    this.child,
   }) : type = ZetaButtonType.negative;
 
   /// Constructs [ZetaButton] with Outline theme.
@@ -89,6 +94,7 @@ class ZetaButton extends ZetaStatelessWidget {
     this.trailingIcon,
     this.focusNode,
     this.semanticLabel,
+    this.child,
   }) : type = ZetaButtonType.outline;
 
   /// Constructs [ZetaButton] with Outline Subtle  theme.
@@ -102,6 +108,7 @@ class ZetaButton extends ZetaStatelessWidget {
     this.trailingIcon,
     this.focusNode,
     this.semanticLabel,
+    this.child,
   }) : type = ZetaButtonType.outlineSubtle;
 
   /// Constructs [ZetaButton] with text theme.
@@ -115,6 +122,7 @@ class ZetaButton extends ZetaStatelessWidget {
     this.trailingIcon,
     this.focusNode,
     this.semanticLabel,
+    this.child,
   }) : type = ZetaButtonType.text;
 
   /// Button label
@@ -150,6 +158,11 @@ class ZetaButton extends ZetaStatelessWidget {
   ///
   /// If this property is null, [label] will be used instead.
   final String? semanticLabel;
+
+  /// Child widget to display inside the button, if any.
+  /// Will be placed after the leading icon and label, but before the trailing icon.
+  /// This can be used to add custom widgets within the button.
+  final Widget? child;
 
   /// Creates a clone.
   ZetaButton copyWith({
@@ -212,6 +225,7 @@ class ZetaButton extends ZetaStatelessWidget {
                       textAlign: TextAlign.center,
                     ).paddingVertical(Zeta.of(context).spacing.minimum),
                   ),
+                if (child != null) child!,
                 if (trailingIcon != null)
                   Icon(
                     trailingIcon,

@@ -504,7 +504,7 @@ class _DropdownItemState<T> extends State<_DropdownItem<T>> {
                 Expanded(
                   child: Text(
                     widget.value.label,
-                    style: Zeta.of(context).textStyles.bodyMedium.copyWith(color: colors.mainDefault, height: 1.5),
+                    style: Zeta.of(context).textStyles.labelLarge.copyWith(color: colors.mainDefault, height: 1.5),
                   ),
                 ),
               ],
