@@ -98,6 +98,7 @@ class Zeta extends InheritedWidget {
   /// Gets the spacing values based on the tokens.
   ZetaSpacing get spacing => semantics.spacing;
 
+  /// Gets the text styles based on the tokens.
   ZetaTextStyle get textStyles => _textStyles;
 
   @override
@@ -155,6 +156,7 @@ class Zeta extends InheritedWidget {
       ..add(DiagnosticsProperty<ZetaSemantics>('semantics', semantics))
       ..add(EnumProperty<ZetaContrast>('contrast', contrast))
       ..add(EnumProperty<ThemeMode>('themeMode', themeMode))
-      ..add(StringProperty('customThemeId', customThemeId));
+      ..add(StringProperty('customThemeId', customThemeId))
+      ..add(DiagnosticsProperty<ZetaTextStyle>('textStyles', textStyles));
   }
 }

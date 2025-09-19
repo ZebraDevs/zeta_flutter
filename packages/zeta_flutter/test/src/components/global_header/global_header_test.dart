@@ -15,11 +15,7 @@ void main() {
   group('Accessibility Tests', () {
     meetsAccessibilityGuidelinesTest(
       screenSize: const Size(1920, 1080),
-      const TestApp(
-        home: ZetaGlobalHeader(
-          platformName: 'Platform Name',
-        ),
-      ),
+      const ZetaGlobalHeader(platformName: 'Platform Name'),
     );
   });
 
@@ -55,8 +51,11 @@ void main() {
       expect(find.text('Platform Name'), findsOneWidget);
     });
     testWidgets('Renders nav items correctly', (WidgetTester tester) async {
-      tester.binding.window.physicalSizeTestValue = const Size(1920, 1080);
+      tester.view.physicalSize = const Size(1920, 1080);
       tester.view.devicePixelRatio = 1.0;
+
+      addTearDown(tester.view.resetPhysicalSize);
+
       await tester.pumpWidget(
         TestApp(
           home: ZetaGlobalHeader(
@@ -86,6 +85,7 @@ void main() {
       );
       expect(find.bySemanticsLabel('Nav Item Button'), findsNWidgets(2));
     });
+
     testWidgets('Renders search bar correctly', (WidgetTester tester) async {
       await tester.pumpWidget(
         const TestApp(
@@ -97,6 +97,7 @@ void main() {
       );
       expect(find.byType(ZetaSearchBar), findsOneWidget);
     });
+
     testWidgets('Renders action items correctly', (WidgetTester tester) async {
       await tester.pumpWidget(
         const TestApp(
@@ -257,8 +258,8 @@ void main() {
         matching: find.byType(Container),
       );
       final container = tester.widget<Container>(containerFinder.first);
-      final BoxDecoration? decoration = container.decoration as BoxDecoration?;
-      expect(decoration?.color, Zeta.of(tester.element(find.byType(ZetaGlobalHeader))).colors.surfaceDefault);
+
+      expect(container.color, Zeta.of(tester.element(find.byType(ZetaIconButton))).colors.surfaceDefault);
     });
     testWidgets('Leading icon button has subtle style', (WidgetTester tester) async {
       await tester.pumpWidget(

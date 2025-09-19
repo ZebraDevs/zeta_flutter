@@ -54,7 +54,7 @@ class ZetaGlobalHeader extends ZetaStatelessWidget {
   /// Menu items to display in the header.
   ///
   /// If more than 6 items are provided, only the first 6 will be displayed.
-  /// Expects [ZetaButton] or [ZetaDropDown] widgets.
+  /// Expects [ZetaButton] or [ZetaDropdown] widgets.
   final List<Widget> navItems;
 
   /// Search bar widget.
@@ -108,118 +108,124 @@ class ZetaGlobalHeader extends ZetaStatelessWidget {
   }
 
   @override
-  Widget build(BuildContext context) {
-    final colors = Zeta.of(context).colors;
+  Widget build(BuildContext _) {
     return LayoutBuilder(
-      builder: (context, constraints) {
+      builder: (_, constraints) {
         return ZetaThemeOverride(
           themeMode: ThemeMode.dark,
-          child: ZetaRoundedScope(
-            rounded: rounded ?? false,
-            // Main container (for padding and background color)
-            child: Container(
-              height: 52,
-              padding: EdgeInsets.symmetric(
-                horizontal: Zeta.of(context).spacing.large,
-              ),
-              decoration: BoxDecoration(color: colors.surfaceDefault),
-              // Main row (for all header content)
-              child: Row(
-                spacing: Zeta.of(context).spacing.large,
-                children: [
-                  // Leading icon widget
-                  ConstrainedBox(
-                    constraints: const BoxConstraints(maxWidth: 40, maxHeight: 40),
-                    child: leading ??
-                        ZetaIconButton(
-                          icon: ZetaIcons.hamburger_menu,
-                          onPressed: onHamburgerMenuPressed,
-                          type: ZetaButtonType.subtle,
-                          semanticLabel: 'Hamburger Menu Button',
-                        ),
-                  ),
-                  // Logo
-                  SvgPicture.asset(
-                    'packages/zeta_flutter/assets/logos/zebra-logo.svg',
-                    height: Zeta.of(context).spacing.xl_4,
-                    semanticsLabel: 'Zebra Logo',
-                    colorFilter: const ColorFilter.mode(Colors.white, BlendMode.srcIn),
-                  ),
-                  // Platform name
-                  Text(platformName, style: Zeta.of(context).textStyles.titleMedium),
+          builder: (context) {
+            final colors = Zeta.of(context).colors;
+            return ZetaRoundedScope(
+              rounded: rounded ?? false,
+              // Main container (for padding and background color)
+              child: Container(
+                height: 52,
+                padding: EdgeInsets.symmetric(
+                  horizontal: Zeta.of(context).spacing.large,
+                ),
+                color: colors.surfaceDefault,
 
-                  if (navItems.isNotEmpty)
-                    // Divider
-                    Container(
-                      key: const Key('divider-menu-items'),
-                      width: 1,
-                      height: Zeta.of(context).spacing.xl_5,
-                      color: colors.borderDefault,
-                    ),
-                  // Nav items
-                  // TODO(UX-1520): Remove IntrinsicWidth and replace with better solution
-                  for (final item in navItems.take(6))
-                    IntrinsicWidth(
-                      child: _renderNavItems(item),
-                    ),
-
-                  // Spacer dividing left and right side of header
-                  const Expanded(child: Nothing()),
-
-                  // Search bar
-                  if (searchBar)
-                    if ((navItems.length == 6 && actionItems.length == 6) && constraints.maxWidth <= 1440)
-                      const Nothing()
-                    else
-                      Container(
-                        constraints: const BoxConstraints(maxWidth: 240, minWidth: 100),
-                        margin: EdgeInsets.only(left: Zeta.of(context).spacing.small),
-                        child: ZetaSearchBar(size: ZetaWidgetSize.small, showSpeechToText: false),
-                      ),
-
-                  // Divider
-                  if (actionItems.isNotEmpty)
-                    Container(
-                      key: const Key('divider-action-items'),
-                      width: 1,
-                      height: Zeta.of(context).spacing.xl_5,
-                      color: colors.borderDefault,
-                    ),
-                  // Action items
-                  // TODO(UX-1520): Remove IntrinsicWidth and replace with better solution
-                  for (final item in actionItems.take(6)) IntrinsicWidth(child: _renderActionItems(item)),
-
-                  // Avatar button
-                  ZetaButton(
-                    label: name ?? '',
-                    type: ZetaButtonType.subtle,
-                    onPressed: onAvatarButtonPressed,
-                    trailingIcon: ZetaIcons.expand_more,
-                    semanticLabel: 'User Avatar Button',
-                    child: avatar is ZetaAvatar
-                        ? (avatar! as ZetaAvatar)
-                            .copyWith(size: ZetaAvatarSize.xxxs, backgroundColor: Zeta.of(context).colors.avatarPurple)
-                        : ZetaAvatar.fromName(
-                            name: name ?? '',
-                            size: ZetaAvatarSize.xxxs,
-                            backgroundColor: Zeta.of(context).colors.avatarPurple),
-                  ),
-
-                  // App switcher button
-                  if (appSwitcher)
+                // Main row (for all header content)
+                child: Row(
+                  spacing: Zeta.of(context).spacing.large,
+                  children: [
+                    // Leading icon widget
                     ConstrainedBox(
                       constraints: const BoxConstraints(maxWidth: 40, maxHeight: 40),
-                      child: ZetaIconButton(
-                        icon: ZetaIcons.apps,
-                        onPressed: onAppsButtonPressed,
-                        type: ZetaButtonType.subtle,
-                        semanticLabel: 'App Switcher Button',
-                      ),
+                      child: leading ??
+                          ZetaIconButton(
+                            icon: ZetaIcons.hamburger_menu,
+                            onPressed: onHamburgerMenuPressed,
+                            type: ZetaButtonType.subtle,
+                            semanticLabel: 'Hamburger Menu Button',
+                          ),
                     ),
-                ],
+                    // Logo
+                    SvgPicture.asset(
+                      'packages/zeta_flutter/assets/logos/zebra-logo.svg',
+                      height: Zeta.of(context).spacing.xl_4,
+                      semanticsLabel: 'Zebra Logo',
+                      colorFilter: const ColorFilter.mode(Colors.white, BlendMode.srcIn),
+                    ),
+                    // Platform name
+                    Text(platformName, style: Zeta.of(context).textStyles.titleMedium.apply(color: colors.mainDefault)),
+
+                    if (navItems.isNotEmpty)
+                      // Divider
+                      Container(
+                        key: const Key('divider-menu-items'),
+                        width: 1,
+                        height: Zeta.of(context).spacing.xl_5,
+                        color: colors.borderDefault,
+                      ),
+                    // Nav items
+                    // TODO(UX-1520): Remove IntrinsicWidth and replace with better solution
+                    for (final item in navItems.take(6))
+                      IntrinsicWidth(
+                        child: _renderNavItems(item),
+                      ),
+
+                    // Spacer dividing left and right side of header
+                    const Expanded(child: Nothing()),
+
+                    // Search bar
+                    if (searchBar)
+                      if ((navItems.length == 6 && actionItems.length == 6) && constraints.maxWidth <= 1440)
+                        const Nothing()
+                      else
+                        Container(
+                          constraints: const BoxConstraints(maxWidth: 240, minWidth: 100),
+                          margin: EdgeInsets.only(left: Zeta.of(context).spacing.small),
+                          child: ZetaSearchBar(size: ZetaWidgetSize.small, showSpeechToText: false),
+                        ),
+
+                    // Divider
+                    if (actionItems.isNotEmpty)
+                      Container(
+                        key: const Key('divider-action-items'),
+                        width: 1,
+                        height: Zeta.of(context).spacing.xl_5,
+                        color: colors.borderDefault,
+                      ),
+                    // Action items
+                    // TODO(UX-1520): Remove IntrinsicWidth and replace with better solution
+                    for (final item in actionItems.take(6)) IntrinsicWidth(child: _renderActionItems(item)),
+
+                    // Avatar button
+                    ZetaButton(
+                      label: name ?? '',
+                      type: ZetaButtonType.subtle,
+                      onPressed: onAvatarButtonPressed,
+                      trailingIcon: ZetaIcons.expand_more,
+                      semanticLabel: 'User Avatar Button',
+                      child: avatar is ZetaAvatar
+                          ? (avatar! as ZetaAvatar).copyWith(
+                              size: ZetaAvatarSize.xxxs,
+                              backgroundColor: Zeta.of(context).colors.avatarPurple,
+                            )
+                          : ZetaAvatar.fromName(
+                              name: name ?? '',
+                              size: ZetaAvatarSize.xxxs,
+                              backgroundColor: Zeta.of(context).colors.avatarPurple,
+                            ),
+                    ),
+
+                    // App switcher button
+                    if (appSwitcher)
+                      ConstrainedBox(
+                        constraints: const BoxConstraints(maxWidth: 40, maxHeight: 40),
+                        child: ZetaIconButton(
+                          icon: ZetaIcons.apps,
+                          onPressed: onAppsButtonPressed,
+                          type: ZetaButtonType.subtle,
+                          semanticLabel: 'App Switcher Button',
+                        ),
+                      ),
+                  ],
+                ),
               ),
-            ),
-          ),
+            );
+          },
         );
       },
     );

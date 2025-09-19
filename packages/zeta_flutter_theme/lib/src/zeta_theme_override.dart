@@ -8,14 +8,14 @@ class ZetaThemeOverride extends StatelessWidget {
   /// Constructs a [ZetaThemeOverride].
   const ZetaThemeOverride({
     super.key,
-    required this.child,
+    required this.builder,
     this.themeMode,
     this.contrast,
     this.rounded,
   });
 
   /// The child widget subtree to apply the override to.
-  final Widget child;
+  final WidgetBuilder builder;
 
   /// The theme mode to override. If null, inherits from ancestor Zeta.
   final ThemeMode? themeMode;
@@ -37,7 +37,10 @@ class ZetaThemeOverride extends StatelessWidget {
       initialTheme: parentZeta.customThemeId,
       initialThemeMode: themeMode ?? parentZeta.themeMode,
       customThemes: ZetaProvider.of(context).customThemes,
-      builder: (context, light, dark, themeMode) => child,
+      builder: (newContext, light, dark, themeMode) => Theme(
+        data: themeMode == ThemeMode.dark ? dark : light,
+        child: builder(newContext),
+      ),
     );
   }
 
@@ -47,6 +50,7 @@ class ZetaThemeOverride extends StatelessWidget {
     properties
       ..add(EnumProperty<ThemeMode?>('themeMode', themeMode))
       ..add(EnumProperty<ZetaContrast?>('contrast', contrast))
-      ..add(DiagnosticsProperty<bool?>('rounded', rounded));
+      ..add(DiagnosticsProperty<bool?>('rounded', rounded))
+      ..add(ObjectFlagProperty<WidgetBuilder>.has('builder', builder));
   }
 }

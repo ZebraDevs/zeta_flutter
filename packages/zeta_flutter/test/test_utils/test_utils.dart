@@ -64,6 +64,12 @@ void goldenTest(
   Future<void> Function(WidgetTester)? beforeComparison,
 }) {
   testWidgets('$fileName golden', (WidgetTester tester) async {
+    if (screenSize != null) {
+      tester.view.devicePixelRatio = 1.0;
+      tester.view.physicalSize = screenSize;
+      addTearDown(tester.view.resetPhysicalSize);
+    }
+
     final computedType = widgetType ?? widget.runtimeType;
     if (setUp != null) {
       await setUp(tester);
@@ -130,6 +136,11 @@ void meetsAccessibilityGuidelinesTest(
     for (final themeMode in [ThemeMode.light, ThemeMode.dark]) {
       testWidgets('meets accessibility requirements $testName ${themeMode.name} ${contrast.name} ',
           (WidgetTester tester) async {
+        if (screenSize != null) {
+          tester.view.devicePixelRatio = 1.0;
+          tester.view.physicalSize = screenSize;
+          addTearDown(tester.view.resetPhysicalSize);
+        }
         final SemanticsHandle handle = tester.ensureSemantics();
         if (setUp != null) {
           await setUp(tester);
