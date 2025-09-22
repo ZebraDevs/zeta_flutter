@@ -4,7 +4,7 @@ import 'package:flutter_svg/svg.dart';
 
 import '../../../zeta_flutter.dart';
 
-/// Zeta Global Header:
+/// The Header is the topmost, persistent navigation bar across the application. It contains global actions and utilities such as the product logo, primary navigation, search, and user profile access. It anchors the user in the application and remains consistent across all views.
 ///
 /// Can have a **maximum** of 6 nav items and 6 action items.
 ///
@@ -18,6 +18,13 @@ import '../../../zeta_flutter.dart';
 ///
 /// It is recommended to use [ZetaButton] or [ZetaDropdown] widgets for **nav items**, and [ZetaIconButton] for **action items**.
 ///
+/// Due to the lack of concrete designs for responsiveness, the current implementation has multiple known issues:
+///  * On most screen sizes, something will overflow.
+///  * The search bar will disappear when there are 6 nav and action items, on a screen size of 1440px or less.
+///  * Many screen sizes will face issues trying to display up to 6 nav and action items.
+///
+/// These issues will be addressed in future iterations of this component - we welcome feedback and contributions!
+///
 /// Figma: https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS-Zeta---Components?node-id=1120-26358&p=f&m=dev
 class ZetaGlobalHeader extends ZetaStatelessWidget {
   /// Constructs [ZetaGlobalHeader]
@@ -25,16 +32,21 @@ class ZetaGlobalHeader extends ZetaStatelessWidget {
     super.key,
     super.rounded,
     required this.platformName,
+    this.logo,
     this.navItems = const [],
-    this.searchBar = false,
+    this.searchBar,
     this.actionItems = const [],
-    this.name,
-    this.appSwitcher = false,
+    this.userName,
     this.onHamburgerMenuPressed,
     this.onAvatarButtonPressed,
     this.onAppsButtonPressed,
     this.avatar,
     this.leading,
+    this.trailing,
+    this.trailingSemanticLabel = 'App switcher button',
+    this.leadingSemanticLabel = 'Hamburger menu button',
+    this.logoSemanticLabel = 'Zebra logo',
+    this.avatarSemanticLabel = 'User avatar button',
   });
 
   /// Avatar widget. Recommended to use [ZetaAvatar] widget.
@@ -46,7 +58,21 @@ class ZetaGlobalHeader extends ZetaStatelessWidget {
   /// Leftmost widget. Recommended to use [ZetaIconButton] widget.
   ///
   /// If not provided, defaults to a [ZetaIconButton] with a hamburger menu icon.
+  ///
+  /// If provided, the [leadingSemanticLabel] will not be used, but should be provided by this widget.
+  ///
+  /// If you do not want a leading widget, set this to [Nothing].
   final Widget? leading;
+
+  /// (Optional) Logo widget. If null, Zebra logo will be used.
+  ///
+  /// If provided, it is recommended to use an SVG Picture widget and should be rendered at a height of 32px, in a light color.
+  ///
+  /// If provided, the [logoSemanticLabel] will not be used, but should be provided by this widget.
+  final Widget? logo;
+
+  /// (Optional) Search bar widget. If null, a default [ZetaSearchBar] will be displayed.
+  final Widget? searchBar;
 
   /// Header platformName in top left of header.
   final String platformName;
@@ -54,13 +80,9 @@ class ZetaGlobalHeader extends ZetaStatelessWidget {
   /// Menu items to display in the header.
   ///
   /// If more than 6 items are provided, only the first 6 will be displayed.
+  ///
   /// Expects [ZetaButton] or [ZetaDropdown] widgets.
   final List<Widget> navItems;
-
-  /// Search bar widget.
-  ///
-  /// Set to false by default. Set to true to show search bar.
-  final bool searchBar;
 
   /// Action buttons to display in the header.
   ///
@@ -72,12 +94,12 @@ class ZetaGlobalHeader extends ZetaStatelessWidget {
   ///
   /// If not set, defaults to an empty string.
   /// This name will be used to generate initials in the avatar.
-  final String? name;
+  final String? userName;
 
-  /// Boolean to show app switcher button or not.
+  /// Trailing widget. If not provided, the app switcher button will be displayed.
   ///
-  ///Set to false by default. Set to true to show app switcher button.
-  final bool appSwitcher;
+  /// If provided, it will replace the app switcher button.
+  final Widget? trailing;
 
   /// Callback when hamburger menu is pressed.
   ///
@@ -94,17 +116,55 @@ class ZetaGlobalHeader extends ZetaStatelessWidget {
   /// Set to null by default, which disables the button.
   final VoidCallback? onAppsButtonPressed;
 
+  /// Semantic label for the hamburger menu button.
+  ///
+  /// Defaults to 'Hamburger Menu Button'.
+  ///
+  /// {@macro zeta-widget-semantic-label}
+  ///
+  /// {@macro zeta-widget-translations}
+  final String? leadingSemanticLabel;
+
+  /// Semantic label for the Zebra logo.
+  ///
+  /// Defaults to 'Zebra Logo'.
+  ///
+  /// {@macro zeta-widget-semantic-label}
+  ///
+  /// {@macro zeta-widget-translations}
+  final String? logoSemanticLabel;
+
+  /// Semantic label for the trailing app switcher button.
+  ///
+  /// Defaults to 'App Switcher Button'.
+  ///
+  /// {@macro zeta-widget-semantic-label}
+  ///
+  /// {@macro zeta-widget-translations}
+  final String? trailingSemanticLabel;
+
+  /// Semantic label for the avatar button.
+  ///
+  /// Defaults to 'User avatar button'
+  ///
+  /// {@macro zeta-widget-semantic-label}
+  ///
+  /// {@macro zeta-widget-translations}
+  final String? avatarSemanticLabel;
+
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
       ..add(StringProperty('platformName', platformName))
-      ..add(ObjectFlagProperty<bool?>.has('searchBar', searchBar))
-      ..add(ObjectFlagProperty<bool?>.has('appSwitcher', appSwitcher))
-      ..add(StringProperty('name', name))
+      ..add(StringProperty('name', userName))
       ..add(ObjectFlagProperty<VoidCallback?>.has('onHamburgerMenuPressed', onHamburgerMenuPressed))
       ..add(ObjectFlagProperty<VoidCallback?>.has('onAvatarButtonPressed', onAvatarButtonPressed))
-      ..add(ObjectFlagProperty<VoidCallback?>.has('onAppsButtonPressed', onAppsButtonPressed));
+      ..add(ObjectFlagProperty<VoidCallback?>.has('onAppsButtonPressed', onAppsButtonPressed))
+      ..add(StringProperty('hamburgerMenuSemanticLabel', leadingSemanticLabel))
+      ..add(StringProperty('logoSemanticLabel', logoSemanticLabel))
+      ..add(StringProperty('trailingSemanticLabel', trailingSemanticLabel))
+      ..add(StringProperty('avatarSemanticLabel', avatarSemanticLabel));
   }
 
   @override
@@ -114,113 +174,139 @@ class ZetaGlobalHeader extends ZetaStatelessWidget {
         return ZetaThemeOverride(
           themeMode: ThemeMode.dark,
           builder: (context) {
-            final colors = Zeta.of(context).colors;
+            final zeta = Zeta.of(context);
+            final colors = zeta.colors;
+
             return ZetaRoundedScope(
-              rounded: rounded ?? false,
+              rounded: rounded ?? zeta.rounded,
+
               // Main container (for padding and background color)
               child: Container(
-                height: 52,
-                padding: EdgeInsets.symmetric(
-                  horizontal: Zeta.of(context).spacing.large,
-                ),
+                height: zeta.spacing.small + zeta.spacing.xl_5 + zeta.spacing.small,
+                padding: EdgeInsets.symmetric(horizontal: zeta.spacing.large),
                 color: colors.surfaceDefault,
 
                 // Main row (for all header content)
                 child: Row(
-                  spacing: Zeta.of(context).spacing.large,
+                  spacing: zeta.spacing.large,
                   children: [
                     // Leading icon widget
                     ConstrainedBox(
-                      constraints: const BoxConstraints(maxWidth: 40, maxHeight: 40),
+                      constraints: BoxConstraints(maxWidth: zeta.spacing.xl_6, maxHeight: zeta.spacing.xl_6),
                       child: leading ??
                           ZetaIconButton(
                             icon: ZetaIcons.hamburger_menu,
                             onPressed: onHamburgerMenuPressed,
                             type: ZetaButtonType.subtle,
-                            semanticLabel: 'Hamburger Menu Button',
+                            semanticLabel: leadingSemanticLabel,
                           ),
                     ),
+
                     // Logo
-                    SvgPicture.asset(
-                      'packages/zeta_flutter/assets/logos/zebra-logo.svg',
-                      height: Zeta.of(context).spacing.xl_4,
-                      semanticsLabel: 'Zebra Logo',
-                      colorFilter: const ColorFilter.mode(Colors.white, BlendMode.srcIn),
-                    ),
+                    if (logo != null)
+                      logo!
+                    else
+                      SvgPicture.asset(
+                        'packages/zeta_flutter/assets/logos/zebra-logo.svg',
+                        height: zeta.spacing.xl_4,
+                        semanticsLabel: 'Zebra Logo',
+                        colorFilter: ColorFilter.mode(const ZetaPrimitivesLight().pure.shade0, BlendMode.srcIn),
+                      ),
+
                     // Platform name
-                    Text(platformName, style: Zeta.of(context).textStyles.titleMedium.apply(color: colors.mainDefault)),
+                    Text(platformName, style: zeta.textStyles.titleMedium.apply(color: colors.mainDefault)),
 
-                    if (navItems.isNotEmpty)
-                      // Divider
-                      Container(
-                        key: const Key('divider-menu-items'),
-                        width: 1,
-                        height: Zeta.of(context).spacing.xl_5,
-                        color: colors.borderDefault,
-                      ),
-                    // Nav items
-                    // TODO(UX-1520): Remove IntrinsicWidth and replace with better solution
-                    for (final item in navItems.take(6))
-                      IntrinsicWidth(
-                        child: _renderNavItems(item),
-                      ),
-
-                    // Spacer dividing left and right side of header
-                    const Expanded(child: Nothing()),
-
-                    // Search bar
-                    if (searchBar)
-                      if ((navItems.length == 6 && actionItems.length == 6) && constraints.maxWidth <= 1440)
-                        const Nothing()
-                      else
-                        Container(
-                          constraints: const BoxConstraints(maxWidth: 240, minWidth: 100),
-                          margin: EdgeInsets.only(left: Zeta.of(context).spacing.small),
-                          child: ZetaSearchBar(size: ZetaWidgetSize.small, showSpeechToText: false),
-                        ),
-
-                    // Divider
-                    if (actionItems.isNotEmpty)
-                      Container(
-                        key: const Key('divider-action-items'),
-                        width: 1,
-                        height: Zeta.of(context).spacing.xl_5,
-                        color: colors.borderDefault,
-                      ),
-                    // Action items
-                    // TODO(UX-1520): Remove IntrinsicWidth and replace with better solution
-                    for (final item in actionItems.take(6)) IntrinsicWidth(child: _renderActionItems(item)),
-
-                    // Avatar button
-                    ZetaButton(
-                      label: name ?? '',
-                      type: ZetaButtonType.subtle,
-                      onPressed: onAvatarButtonPressed,
-                      trailingIcon: ZetaIcons.expand_more,
-                      semanticLabel: 'User Avatar Button',
-                      child: avatar is ZetaAvatar
-                          ? (avatar! as ZetaAvatar).copyWith(
-                              size: ZetaAvatarSize.xxxs,
-                              backgroundColor: Zeta.of(context).colors.avatarPurple,
-                            )
-                          : ZetaAvatar.fromName(
-                              name: name ?? '',
-                              size: ZetaAvatarSize.xxxs,
-                              backgroundColor: Zeta.of(context).colors.avatarPurple,
+                    Expanded(
+                      child: Row(
+                        children: [
+                          if (navItems.isNotEmpty)
+                            // Divider
+                            Container(
+                              key: const Key('divider-menu-items'),
+                              width: ZetaBorders.small,
+                              height: zeta.spacing.xl_5,
+                              color: colors.borderDefault,
                             ),
+
+                          // Nav items
+                          // TODO(UX-1520): Remove IntrinsicWidth and replace with better solution
+                          Row(
+                            children: [
+                              for (final item in navItems.take(6)) IntrinsicWidth(child: item.renderSubtle),
+                            ],
+                          ),
+
+                          // Spacer dividing left and right side of header
+                          const Expanded(child: Nothing()),
+
+                          // Search bar
+                          if (searchBar != null &&
+                              !((navItems.length == 6 && actionItems.length == 6) && constraints.maxWidth <= 1440))
+                            Container(
+                              constraints:
+                                  BoxConstraints(maxWidth: zeta.spacing.xl_8 * 5, minWidth: zeta.spacing.xl_11),
+                              margin: EdgeInsets.only(left: zeta.spacing.small),
+                              child: (searchBar! is ZetaSearchBar &&
+                                      (searchBar! as ZetaSearchBar).size != ZetaWidgetSize.small
+                                  ? (searchBar! as ZetaSearchBar).copyWith(
+                                      size: ZetaWidgetSize.small,
+                                      shape:
+                                          rounded ?? zeta.rounded ? ZetaWidgetBorder.rounded : ZetaWidgetBorder.sharp,
+                                    )
+                                  : searchBar),
+                            ),
+
+                          // Action items
+                          // TODO(UX-1520): Remove IntrinsicWidth and replace with better solution
+                          Row(
+                            children: [
+                              for (final item in actionItems.take(6)) IntrinsicWidth(child: item.renderSubtle),
+                            ],
+                          ),
+                          // Divider
+                          if (actionItems.isNotEmpty)
+                            Container(
+                              key: const Key('divider-action-items'),
+                              width: ZetaBorders.small,
+                              height: zeta.spacing.xl_5,
+                              color: colors.borderDefault,
+                            ),
+                        ],
+                      ),
                     ),
 
-                    // App switcher button
-                    if (appSwitcher)
-                      ConstrainedBox(
-                        constraints: const BoxConstraints(maxWidth: 40, maxHeight: 40),
-                        child: ZetaIconButton(
-                          icon: ZetaIcons.apps,
-                          onPressed: onAppsButtonPressed,
-                          type: ZetaButtonType.subtle,
-                          semanticLabel: 'App Switcher Button',
-                        ),
+                    ColoredBox(
+                      color: zeta.colors.surfaceDefault,
+                      child: Row(
+                        children: [
+                          // Avatar button
+                          ZetaButton(
+                            label: userName ?? '',
+                            type: ZetaButtonType.subtle,
+                            onPressed: onAvatarButtonPressed,
+                            trailingIcon: ZetaIcons.expand_more,
+                            semanticLabel: avatarSemanticLabel,
+                            child: avatar is ZetaAvatar
+                                ? (avatar! as ZetaAvatar).copyWith(size: ZetaAvatarSize.xxxs)
+                                : ZetaAvatar.fromName(
+                                    name: userName ?? '',
+                                    size: ZetaAvatarSize.xxxs,
+                                    backgroundColor: colors.avatarPurple,
+                                  ),
+                          ),
+                          ConstrainedBox(
+                            constraints: BoxConstraints(maxWidth: zeta.spacing.xl_6, maxHeight: zeta.spacing.xl_6),
+                            child: trailing ??
+                                ZetaIconButton(
+                                  icon: ZetaIcons.apps,
+                                  onPressed: onAppsButtonPressed,
+                                  type: ZetaButtonType.subtle,
+                                  semanticLabel: trailingSemanticLabel,
+                                ),
+                          ),
+                        ],
                       ),
+                    ),
                   ],
                 ),
               ),
@@ -230,26 +316,16 @@ class ZetaGlobalHeader extends ZetaStatelessWidget {
       },
     );
   }
+}
 
-  /// Renders nav items, ensuring they are of the correct type and style.
-  Widget _renderNavItems(Widget item) {
-    if (item is ZetaButton) {
-      return item.copyWith(type: ZetaButtonType.subtle);
-    } else if (item is ZetaIconButton) {
-      return item.copyWith(type: ZetaButtonType.subtle);
+extension on Widget {
+  Widget get renderSubtle {
+    if (this is ZetaButton && (this as ZetaButton).type != ZetaButtonType.subtle) {
+      return (this as ZetaButton).copyWith(type: ZetaButtonType.subtle);
+    } else if (this is ZetaIconButton && (this as ZetaIconButton).type != ZetaButtonType.subtle) {
+      return (this as ZetaIconButton).copyWith(type: ZetaButtonType.subtle);
     } else {
-      return item;
-    }
-  }
-
-  /// Renders action items, ensuring they are of the correct type and style.
-  Widget _renderActionItems(Widget item) {
-    if (item is ZetaButton) {
-      return item.copyWith(type: ZetaButtonType.subtle);
-    } else if (item is ZetaIconButton) {
-      return item.copyWith(type: ZetaButtonType.subtle);
-    } else {
-      return item;
+      return this;
     }
   }
 }

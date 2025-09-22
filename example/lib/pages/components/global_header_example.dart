@@ -11,6 +11,15 @@ class GlobalHeaderExample extends StatelessWidget {
     return ExampleScaffold(name: "Global Header", children: [
       ZetaGlobalHeader(
         platformName: 'Platform Name',
+        userName: 'Name',
+        rounded: context.rounded,
+        onHamburgerMenuPressed: () {},
+        onAppsButtonPressed: () {},
+        onAvatarButtonPressed: () {},
+      ),
+      ZetaGlobalHeader(
+        platformName: 'Platform Name',
+        userName: 'Name',
         navItems: [
           ZetaDropdown(
             onChange: (value) {},
@@ -26,7 +35,7 @@ class GlobalHeaderExample extends StatelessWidget {
             onPressed: () {},
           ),
         ],
-        searchBar: true,
+        searchBar: ZetaSearchBar(),
         actionItems: [
           ZetaIconButton(
             icon: ZetaIcons.star,
@@ -41,8 +50,6 @@ class GlobalHeaderExample extends StatelessWidget {
             onPressed: () {},
           ),
         ],
-        name: 'Name',
-        appSwitcher: true,
         rounded: context.rounded,
         onHamburgerMenuPressed: () {},
         onAppsButtonPressed: () {},

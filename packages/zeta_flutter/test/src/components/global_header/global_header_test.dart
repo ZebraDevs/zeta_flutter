@@ -28,7 +28,7 @@ void main() {
           ),
         ),
       );
-      expect(find.bySemanticsLabel('Hamburger Menu Button'), findsOneWidget);
+      expect(find.bySemanticsLabel('Hamburger menu button'), findsOneWidget);
     });
     testWidgets('Renders Zebra Logo correctly', (WidgetTester tester) async {
       await tester.pumpWidget(
@@ -88,10 +88,10 @@ void main() {
 
     testWidgets('Renders search bar correctly', (WidgetTester tester) async {
       await tester.pumpWidget(
-        const TestApp(
+        TestApp(
           home: ZetaGlobalHeader(
             platformName: 'Platform Name',
-            searchBar: true,
+            searchBar: ZetaSearchBar(),
           ),
         ),
       );
@@ -127,22 +127,21 @@ void main() {
         const TestApp(
           home: ZetaGlobalHeader(
             platformName: 'Platform Name',
-            name: 'Name',
+            userName: 'Name',
           ),
         ),
       );
-      expect(find.bySemanticsLabel('User Avatar Button'), findsOneWidget);
+      expect(find.bySemanticsLabel('User avatar button'), findsOneWidget);
     });
     testWidgets('Renders app switcher button correctly', (WidgetTester tester) async {
       await tester.pumpWidget(
         const TestApp(
           home: ZetaGlobalHeader(
             platformName: 'Platform Name',
-            appSwitcher: true,
           ),
         ),
       );
-      expect(find.bySemanticsLabel('App Switcher Button'), findsOneWidget);
+      expect(find.bySemanticsLabel('App switcher button'), findsOneWidget);
     });
   });
 
@@ -156,7 +155,7 @@ void main() {
         ),
       );
 
-      final leadingFinder = find.bySemanticsLabel('Hamburger Menu Button');
+      final leadingFinder = find.bySemanticsLabel('Hamburger menu button');
 
       final iconFinder = find.descendant(
         of: leadingFinder,
@@ -188,11 +187,11 @@ void main() {
     });
     testWidgets('Search bar has width of 240px and height of 32px', (WidgetTester tester) async {
       await tester.pumpWidget(
-        const TestApp(
+        TestApp(
           home: SingleChildScrollView(
             child: ZetaGlobalHeader(
-              platformName: 'Platform Name',
-              searchBar: true,
+              platformName: '',
+              searchBar: ZetaSearchBar(),
             ),
           ),
         ),
@@ -220,11 +219,10 @@ void main() {
         const TestApp(
           home: ZetaGlobalHeader(
             platformName: 'Platform Name',
-            appSwitcher: true,
           ),
         ),
       );
-      final leadingFinder = find.bySemanticsLabel('App Switcher Button');
+      final leadingFinder = find.bySemanticsLabel('App switcher button');
 
       final iconFinder = find.descendant(
         of: leadingFinder,
@@ -259,7 +257,7 @@ void main() {
       );
       final container = tester.widget<Container>(containerFinder.first);
 
-      expect(container.color, Zeta.of(tester.element(find.byType(ZetaIconButton))).colors.surfaceDefault);
+      expect(container.color, Zeta.of(tester.element(find.byType(ZetaAvatar))).colors.surfaceDefault);
     });
     testWidgets('Leading icon button has subtle style', (WidgetTester tester) async {
       await tester.pumpWidget(
@@ -278,7 +276,6 @@ void main() {
         const TestApp(
           home: ZetaGlobalHeader(
             platformName: 'Platform Name',
-            appSwitcher: true,
           ),
         ),
       );
@@ -314,7 +311,7 @@ void main() {
           ),
         ),
       );
-      final leadingFinder = find.bySemanticsLabel('Hamburger Menu Button');
+      final leadingFinder = find.bySemanticsLabel('Hamburger menu button');
       await tester.tap(leadingFinder);
       expect(wasPressed, isTrue);
     });
@@ -378,7 +375,7 @@ void main() {
           ),
         ),
       );
-      final avatarFinder = find.bySemanticsLabel('User Avatar Button');
+      final avatarFinder = find.bySemanticsLabel('User avatar button');
       await tester.tap(avatarFinder);
       expect(wasPressed, isTrue);
     });
@@ -388,14 +385,13 @@ void main() {
         TestApp(
           home: ZetaGlobalHeader(
             platformName: 'Platform Name',
-            appSwitcher: true,
             onAppsButtonPressed: () {
               wasPressed = true;
             },
           ),
         ),
       );
-      final appSwitcherFinder = find.bySemanticsLabel('App Switcher Button');
+      final appSwitcherFinder = find.bySemanticsLabel('App switcher button');
       await tester.tap(appSwitcherFinder);
       expect(wasPressed, isTrue);
     });

@@ -13,7 +13,7 @@ import 'package:zeta_widgetbook/main.dart';
 )
 Widget globalHeader(BuildContext context) => ZetaGlobalHeader(
       platformName: context.knobs.string(label: 'Platform Name', initialValue: 'Platform Name'),
-      name: context.knobs.string(label: 'Name', initialValue: 'Name'),
+      userName: context.knobs.string(label: 'Name', initialValue: 'Name'),
       navItems: List.generate(
         context.knobs.int.slider(label: 'Nav Items', min: 0, max: 6, initialValue: 2),
         (index) => index == 0
@@ -31,7 +31,7 @@ Widget globalHeader(BuildContext context) => ZetaGlobalHeader(
                 onPressed: () {},
               ),
       ),
-      searchBar: context.knobs.boolean(label: 'Search bar', initialValue: true),
+      searchBar: context.knobs.boolean(label: 'Search bar', initialValue: true) ? ZetaSearchBar() : null,
       actionItems: List.generate(
         context.knobs.int.slider(label: 'Action Items', min: 0, max: 6, initialValue: 2),
         (index) => index == 0
@@ -49,9 +49,9 @@ Widget globalHeader(BuildContext context) => ZetaGlobalHeader(
                 onPressed: () {},
               ),
       ),
-      appSwitcher: context.knobs.boolean(label: 'App Switcher', initialValue: true),
-      rounded: context.knobs.boolean(label: 'Rounded', initialValue: false),
       onAppsButtonPressed: () {},
       onHamburgerMenuPressed: () {},
       onAvatarButtonPressed: () {},
+      leading: context.knobs.boolean(label: 'Leading', initialValue: true) ? null : Nothing(),
+      trailing: context.knobs.boolean(label: 'Trailing', initialValue: true) ? null : Nothing(),
     );
