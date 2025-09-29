@@ -73,22 +73,22 @@ class _ZetaSliderState extends State<ZetaSlider> {
         label: widget.semanticLabel,
         child: SliderTheme(
           data: SliderThemeData(
-            // TODO(UX-1136): Match with new colors
-
             /// Active Track
             activeTrackColor: _activeColor,
-            disabledActiveTrackColor: colors.surfaceDisabled,
+            disabledActiveTrackColor: colors.mainDisabled,
 
             /// Inactive Track
-            inactiveTrackColor: colors.surfaceInfoSubtle,
+            inactiveTrackColor: colors.mainLight,
 
             /// Ticks
-            activeTickMarkColor: colors.surfaceDefault,
-            inactiveTickMarkColor: colors.surfaceDefault,
+            activeTickMarkColor: colors.mainInverse,
+            inactiveTickMarkColor: colors.mainInverse,
+            disabledActiveTickMarkColor: colors.mainInverse,
+            disabledInactiveTickMarkColor: colors.mainInverse,
 
             /// Thumb
-            thumbColor: colors.surfaceDefaultInverse,
-            disabledThumbColor: colors.surfaceDisabled,
+            thumbColor: colors.mainDefault,
+            disabledThumbColor: colors.mainDisabled,
             overlayShape: _SliderThumb(
               size: Zeta.of(context).spacing.xl / 2,
               rounded: context.rounded,
@@ -125,9 +125,9 @@ class _ZetaSliderState extends State<ZetaSlider> {
   Color get _activeColor {
     final colors = Zeta.of(context).colors;
     if (widget.onChange == null) {
-      return colors.surfaceDisabled;
+      return colors.mainDisabled;
     }
-    return _selected ? colors.mainPrimary : colors.surfaceDefaultInverse;
+    return _selected ? colors.mainPrimary : colors.mainDefault;
   }
 }
 
@@ -175,6 +175,6 @@ class _SliderThumb extends SliderComponentShape {
     // draw icon with text painter
     rounded
         ? canvas.drawCircle(center, size, paint)
-        : canvas.drawRect(Rect.fromCenter(center: center, width: size, height: size), paint);
+        : canvas.drawRect(Rect.fromCenter(center: center, width: size * 2, height: size * 2), paint);
   }
 }
