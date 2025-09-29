@@ -2,44 +2,59 @@ import 'package:flutter/material.dart';
 import 'package:zeta_example/widgets.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
-class GroupHeaderExample extends StatefulWidget {
+class GlobalHeaderExample extends StatelessWidget {
   static final name = "GlobalHeader";
-  const GroupHeaderExample({super.key});
-
-  @override
-  State<GroupHeaderExample> createState() => _GroupHeaderExampleState();
-}
-
-class _GroupHeaderExampleState extends State<GroupHeaderExample> {
-  final childrenOne = List.filled(5, ZetaGlobalHeaderItem(label: 'Button'));
-  final childrenTwo = List.filled(10, ZetaGlobalHeaderItem(label: 'Button'));
+  const GlobalHeaderExample({super.key});
 
   @override
   Widget build(BuildContext context) {
     return ExampleScaffold(name: "Global Header", children: [
       ZetaGlobalHeader(
-        title: "Title",
-        tabItems: childrenOne,
-        searchBar: ZetaSearchBar(shape: ZetaWidgetBorder.full, size: ZetaWidgetSize.large),
-        onAppsButton: () {},
-        actionButtons: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              ZetaIcons.alert,
-            ),
+        platformName: 'Platform Name',
+        userName: 'Name',
+        rounded: context.rounded,
+        onHamburgerMenuPressed: () {},
+        onAppsButtonPressed: () {},
+        onAvatarButtonPressed: () {},
+      ),
+      ZetaGlobalHeader(
+        platformName: 'Platform Name',
+        userName: 'Name',
+        navItems: [
+          ZetaDropdown(
+            onChange: (value) {},
+            value: "Menu 1",
+            items: [
+              ZetaDropdownItem(value: "item1", label: "Menu 1"),
+              ZetaDropdownItem(value: "item2", label: "Menu 2"),
+            ],
           ),
-          IconButton(
+          ZetaButton(
+            label: 'Nav item',
+            type: ZetaButtonType.text,
             onPressed: () {},
-            icon: const Icon(
-              ZetaIcons.help,
-            ),
           ),
         ],
-        avatar: const ZetaAvatar(initials: 'PS'),
+        searchBar: ZetaSearchBar(),
+        actionItems: [
+          ZetaIconButton(
+            icon: ZetaIcons.star,
+            type: ZetaButtonType.text,
+            size: ZetaWidgetSize.medium,
+            onPressed: () {},
+          ),
+          ZetaIconButton(
+            icon: ZetaIcons.star,
+            type: ZetaButtonType.text,
+            size: ZetaWidgetSize.medium,
+            onPressed: () {},
+          ),
+        ],
+        rounded: context.rounded,
+        onHamburgerMenuPressed: () {},
+        onAppsButtonPressed: () {},
+        onAvatarButtonPressed: () {},
       ),
-      SizedBox(height: Zeta.of(context).spacing.xl),
-      ZetaGlobalHeader(title: "Title", tabItems: childrenTwo),
     ]);
   }
 }

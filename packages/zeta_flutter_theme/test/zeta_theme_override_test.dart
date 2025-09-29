@@ -32,17 +32,15 @@ void main() {
                     child: ZetaThemeOverride(
                       themeMode: ThemeMode.dark,
                       contrast: ZetaContrast.aaa,
-                      child: Builder(
-                        builder: (context) {
-                          return Column(
-                            key: const Key('inside-override'),
-                            children: [
-                              Text('ThemeMode: ${Zeta.of(context).themeMode}'),
-                              Text('Contrast: ${Zeta.of(context).contrast}'),
-                            ],
-                          );
-                        },
-                      ),
+                      builder: (context) {
+                        return Column(
+                          key: const Key('inside-override'),
+                          children: [
+                            Text('ThemeMode: ${Zeta.of(context).themeMode}'),
+                            Text('Contrast: ${Zeta.of(context).contrast}'),
+                          ],
+                        );
+                      },
                     ),
                   ),
                 ],

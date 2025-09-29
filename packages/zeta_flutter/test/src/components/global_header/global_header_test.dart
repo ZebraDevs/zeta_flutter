@@ -1,0 +1,461 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:zeta_flutter/zeta_flutter.dart';
+
+import '../../../test_utils/test_utils.dart';
+
+void main() {
+  const String parentFolder = 'global_header';
+
+  const goldenFile = GoldenFiles(component: parentFolder);
+  setUpAll(() {
+    goldenFileComparator = TolerantComparator(goldenFile.uri);
+  });
+
+  group('Accessibility Tests', () {
+    meetsAccessibilityGuidelinesTest(
+      screenSize: const Size(1920, 1080),
+      const ZetaGlobalHeader(platformName: 'Platform Name'),
+    );
+  });
+
+  group('Content Tests', () {
+    testWidgets('Renders leading icon button correctly', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        const TestApp(
+          home: ZetaGlobalHeader(
+            platformName: 'Platform Name',
+          ),
+        ),
+      );
+      expect(find.bySemanticsLabel('Hamburger menu button'), findsOneWidget);
+    });
+    testWidgets('Renders Zebra Logo correctly', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        const TestApp(
+          home: ZetaGlobalHeader(
+            platformName: 'Platform Name',
+          ),
+        ),
+      );
+      expect(find.bySemanticsLabel('Zebra Logo'), findsOneWidget);
+    });
+    testWidgets('Renders platform name correctly', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        const TestApp(
+          home: ZetaGlobalHeader(
+            platformName: 'Platform Name',
+          ),
+        ),
+      );
+      expect(find.text('Platform Name'), findsOneWidget);
+    });
+    testWidgets('Renders nav items correctly', (WidgetTester tester) async {
+      tester.view.physicalSize = const Size(1920, 1080);
+      tester.view.devicePixelRatio = 1.0;
+
+      addTearDown(tester.view.resetPhysicalSize);
+
+      await tester.pumpWidget(
+        TestApp(
+          home: ZetaGlobalHeader(
+            platformName: 'Platform Name',
+            navItems: [
+              ZetaDropdown(
+                onChange: (value) {},
+                value: 'Nav item',
+                semanticDropdownLabel: 'Nav Item Button',
+                items: [
+                  ZetaDropdownItem(value: 'Nav item', label: 'Nav item'),
+                  ZetaDropdownItem(value: 'Nav item', label: 'Nav item'),
+                ],
+              ),
+              ZetaDropdown(
+                onChange: (value) {},
+                value: 'Nav item',
+                semanticDropdownLabel: 'Nav Item Button',
+                items: [
+                  ZetaDropdownItem(value: 'Nav item', label: 'Nav item'),
+                  ZetaDropdownItem(value: 'Nav item', label: 'Nav item'),
+                ],
+              ),
+            ],
+          ),
+        ),
+      );
+      expect(find.bySemanticsLabel('Nav Item Button'), findsNWidgets(2));
+    });
+
+    testWidgets('Renders search bar correctly', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        TestApp(
+          home: ZetaGlobalHeader(
+            platformName: 'Platform Name',
+            searchBar: ZetaSearchBar(),
+          ),
+        ),
+      );
+      expect(find.byType(ZetaSearchBar), findsOneWidget);
+    });
+
+    testWidgets('Renders action items correctly', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        const TestApp(
+          home: ZetaGlobalHeader(
+            platformName: 'Platform Name',
+            actionItems: [
+              ZetaIconButton(
+                icon: ZetaIcons.star,
+                type: ZetaButtonType.subtle,
+                size: ZetaWidgetSize.small,
+                semanticLabel: 'Action Item Button',
+              ),
+              ZetaIconButton(
+                icon: ZetaIcons.star,
+                type: ZetaButtonType.subtle,
+                size: ZetaWidgetSize.small,
+                semanticLabel: 'Action Item Button',
+              ),
+            ],
+          ),
+        ),
+      );
+      expect(find.bySemanticsLabel('Action Item Button'), findsNWidgets(2));
+    });
+    testWidgets('Renders avatar button correctly', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        const TestApp(
+          home: ZetaGlobalHeader(
+            platformName: 'Platform Name',
+            userName: 'Name',
+          ),
+        ),
+      );
+      expect(find.bySemanticsLabel('User avatar button'), findsOneWidget);
+    });
+    testWidgets('Renders app switcher button correctly', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        const TestApp(
+          home: ZetaGlobalHeader(
+            platformName: 'Platform Name',
+          ),
+        ),
+      );
+      expect(find.bySemanticsLabel('App switcher button'), findsOneWidget);
+    });
+  });
+
+  group('Dimensions Tests', () {
+    testWidgets('Leading icon button is 40x40px and icon is 24x24px', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        const TestApp(
+          home: ZetaGlobalHeader(
+            platformName: 'Platform Name',
+          ),
+        ),
+      );
+
+      final leadingFinder = find.bySemanticsLabel('Hamburger menu button');
+
+      final iconFinder = find.descendant(
+        of: leadingFinder,
+        matching: find.byType(Icon),
+      );
+
+      expect(leadingFinder, findsOneWidget);
+
+      final iconSize = tester.getSize(iconFinder);
+      final leadingSize = tester.getSize(leadingFinder);
+
+      expect(leadingSize.width, 40);
+      expect(leadingSize.height, 40);
+
+      expect(iconSize.width, 24);
+      expect(iconSize.height, 24);
+    });
+    testWidgets('Global header has a height of 52px', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        const TestApp(
+          home: ZetaGlobalHeader(
+            platformName: 'Platform Name',
+          ),
+        ),
+      );
+      final headerFinder = find.byType(ZetaGlobalHeader);
+      final headerSize = tester.getSize(headerFinder);
+      expect(headerSize.height, 52);
+    });
+    testWidgets('Search bar has width of 240px and height of 32px', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        TestApp(
+          home: SingleChildScrollView(
+            child: ZetaGlobalHeader(
+              platformName: '',
+              searchBar: ZetaSearchBar(),
+            ),
+          ),
+        ),
+      );
+      final searchBarFinder = find.byType(ZetaSearchBar);
+      final searchBarSize = tester.getSize(searchBarFinder);
+      expect(searchBarSize.width, 240);
+      expect(searchBarSize.height, 32);
+    });
+    testWidgets('Logo has width of 80px and height of 32px', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        const TestApp(
+          home: ZetaGlobalHeader(
+            platformName: 'Platform Name',
+          ),
+        ),
+      );
+      final logoFinder = find.bySemanticsLabel('Zebra Logo');
+      final logoSize = tester.getSize(logoFinder);
+      expect(logoSize.width, 80);
+      expect(logoSize.height, 32);
+    });
+    testWidgets('App switcher button is 40x40px and icon is 24x24px', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        const TestApp(
+          home: ZetaGlobalHeader(
+            platformName: 'Platform Name',
+          ),
+        ),
+      );
+      final leadingFinder = find.bySemanticsLabel('App switcher button');
+
+      final iconFinder = find.descendant(
+        of: leadingFinder,
+        matching: find.byType(Icon),
+      );
+
+      expect(leadingFinder, findsOneWidget);
+
+      final iconSize = tester.getSize(iconFinder);
+      final leadingSize = tester.getSize(leadingFinder);
+
+      expect(leadingSize.width, 40);
+      expect(leadingSize.height, 40);
+
+      expect(iconSize.width, 24);
+      expect(iconSize.height, 24);
+    });
+  });
+
+  group('Styling Tests', () {
+    testWidgets('Background color is surface default', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        const TestApp(
+          home: ZetaGlobalHeader(
+            platformName: 'Platform Name',
+          ),
+        ),
+      );
+      final containerFinder = find.descendant(
+        of: find.byType(ZetaGlobalHeader),
+        matching: find.byType(Container),
+      );
+      final container = tester.widget<Container>(containerFinder.first);
+
+      expect(container.color, Zeta.of(tester.element(find.byType(ZetaAvatar))).colors.surfaceDefault);
+    });
+    testWidgets('Leading icon button has subtle style', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        const TestApp(
+          home: ZetaGlobalHeader(
+            platformName: 'Platform Name',
+          ),
+        ),
+      );
+      final leadingFinder = find.byType(ZetaIconButton);
+      final leading = tester.widget<ZetaIconButton>(leadingFinder.first);
+      expect(leading.type, ZetaButtonType.subtle);
+    });
+    testWidgets('App switcher button has subtle style', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        const TestApp(
+          home: ZetaGlobalHeader(
+            platformName: 'Platform Name',
+          ),
+        ),
+      );
+      final appSwitcherFinder = find.byType(ZetaIconButton);
+      final appSwitcher = tester.widget<ZetaIconButton>(appSwitcherFinder.last);
+      expect(appSwitcher.type, ZetaButtonType.subtle);
+    });
+    testWidgets('Avatar button has subtle style', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        const TestApp(
+          home: ZetaGlobalHeader(
+            platformName: 'Platform Name',
+            avatar: ZetaAvatar(),
+          ),
+        ),
+      );
+      final avatarButtonFinder = find.byType(ZetaButton);
+      final avatar = tester.widget<ZetaButton>(avatarButtonFinder.last);
+      expect(avatar.type, ZetaButtonType.subtle);
+    });
+  });
+
+  group('Interaction Tests', () {
+    testWidgets('Leading icon button triggers callback when tapped', (WidgetTester tester) async {
+      bool wasPressed = false;
+      await tester.pumpWidget(
+        TestApp(
+          home: ZetaGlobalHeader(
+            platformName: 'Platform Name',
+            onHamburgerMenuPressed: () {
+              wasPressed = true;
+            },
+          ),
+        ),
+      );
+      final leadingFinder = find.bySemanticsLabel('Hamburger menu button');
+      await tester.tap(leadingFinder);
+      expect(wasPressed, isTrue);
+    });
+    testWidgets('Nav items trigger callback when tapped', (WidgetTester tester) async {
+      bool wasPressed = false;
+      await tester.pumpWidget(
+        TestApp(
+          home: ZetaGlobalHeader(
+            platformName: 'Platform Name',
+            navItems: [
+              ZetaButton(
+                key: const Key('nav-item-button'),
+                label: 'Nav item',
+                type: ZetaButtonType.subtle,
+                onPressed: () {
+                  wasPressed = true;
+                },
+                semanticLabel: 'Nav Item Button',
+              ),
+            ],
+          ),
+        ),
+      );
+      final navItemFinder = find.byKey(const Key('nav-item-button'));
+      await tester.tap(navItemFinder);
+      expect(wasPressed, isTrue);
+    });
+    testWidgets('Action items trigger callback when tapped', (WidgetTester tester) async {
+      bool wasPressed = false;
+      await tester.pumpWidget(
+        TestApp(
+          home: ZetaGlobalHeader(
+            platformName: 'Platform Name',
+            actionItems: [
+              ZetaIconButton(
+                key: const Key('action-item-button'),
+                icon: ZetaIcons.add,
+                onPressed: () {
+                  wasPressed = true;
+                },
+                semanticLabel: 'Action Item Button',
+              ),
+            ],
+          ),
+        ),
+      );
+      final actionItemFinder = find.byKey(const Key('action-item-button'));
+      await tester.tap(actionItemFinder);
+      expect(wasPressed, isTrue);
+    });
+    testWidgets('Avatar button triggers callback when tapped', (WidgetTester tester) async {
+      bool wasPressed = false;
+      await tester.pumpWidget(
+        TestApp(
+          home: ZetaGlobalHeader(
+            platformName: 'Platform Name',
+            avatar: const ZetaAvatar(),
+            onAvatarButtonPressed: () {
+              wasPressed = true;
+            },
+          ),
+        ),
+      );
+      final avatarFinder = find.bySemanticsLabel('User avatar button');
+      await tester.tap(avatarFinder);
+      expect(wasPressed, isTrue);
+    });
+    testWidgets('App switcher button triggers callback when tapped', (WidgetTester tester) async {
+      bool wasPressed = false;
+      await tester.pumpWidget(
+        TestApp(
+          home: ZetaGlobalHeader(
+            platformName: 'Platform Name',
+            onAppsButtonPressed: () {
+              wasPressed = true;
+            },
+          ),
+        ),
+      );
+      final appSwitcherFinder = find.bySemanticsLabel('App switcher button');
+      await tester.tap(appSwitcherFinder);
+      expect(wasPressed, isTrue);
+    });
+    testWidgets('Divider appears only if action items are present', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        TestApp(
+          home: ZetaGlobalHeader(
+            platformName: 'Platform Name',
+            actionItems: [
+              ZetaIconButton(
+                icon: ZetaIcons.add,
+                onPressed: () {},
+                semanticLabel: 'Action Item Button',
+              ),
+            ],
+          ),
+        ),
+      );
+      expect(find.byKey(const Key('divider-action-items')), findsOneWidget);
+    });
+    testWidgets('Divider appears only if nav items are present', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        TestApp(
+          home: ZetaGlobalHeader(
+            platformName: 'Platform Name',
+            navItems: [
+              ZetaButton(
+                label: 'Nav item',
+                type: ZetaButtonType.subtle,
+                onPressed: () {},
+                semanticLabel: 'Nav Item Button',
+              ),
+            ],
+          ),
+        ),
+      );
+      expect(find.byKey(const Key('divider-menu-items')), findsOneWidget);
+    });
+    testWidgets('Divider does not appear when no action or nav items', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        const TestApp(
+          home: ZetaGlobalHeader(
+            platformName: 'Platform Name',
+          ),
+        ),
+      );
+      expect(find.byType(Divider), findsNothing);
+    });
+  });
+
+  group('Golden Tests', () {
+    goldenTest(
+      screenSize: const Size(1920, 1080),
+      goldenFile,
+      const ZetaGlobalHeader(platformName: 'Platform Name'),
+      'global_header_default',
+    );
+    goldenTest(
+      screenSize: const Size(1920, 1080),
+      goldenFile,
+      const ZetaGlobalHeader(platformName: 'Platform Name', rounded: true),
+      'global_header_rounded',
+    );
+  });
+
+  group('Performance Tests', () {});
+}

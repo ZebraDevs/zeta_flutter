@@ -160,6 +160,45 @@ class ZetaSearchBar extends ZetaTextFormField {
   @override
   FormFieldState<String> createState() => _ZetaSearchBarState();
 
+  /// Creates a copy of the [ZetaSearchBar] with the passed properties.
+  ZetaSearchBar copyWith({
+    ZetaWidgetSize? size,
+    String? placeholder,
+    ZetaWidgetBorder? shape,
+    TextInputAction? textInputAction,
+    Future<String?> Function()? onSpeechToText,
+    bool? showSpeechToText,
+    FocusNode? focusNode,
+    String? microphoneSemanticLabel,
+    String? clearSemanticLabel,
+    String? initialValue,
+    TextEditingController? controller,
+    AutovalidateMode? autovalidateMode,
+    String? Function(String?)? validator,
+    void Function(String?)? onSaved,
+    ZetaFormFieldRequirement? requirementLevel,
+    Key? key,
+  }) {
+    return ZetaSearchBar(
+      size: size ?? this.size,
+      placeholder: placeholder ?? this.placeholder,
+      shape: shape ?? this.shape,
+      textInputAction: textInputAction ?? this.textInputAction,
+      onSpeechToText: onSpeechToText ?? this.onSpeechToText,
+      showSpeechToText: showSpeechToText ?? this.showSpeechToText,
+      focusNode: focusNode ?? this.focusNode,
+      microphoneSemanticLabel: microphoneSemanticLabel ?? this.microphoneSemanticLabel,
+      clearSemanticLabel: clearSemanticLabel ?? this.clearSemanticLabel,
+      initialValue: initialValue ?? this.initialValue,
+      controller: controller ?? this.controller,
+      autovalidateMode: autovalidateMode ?? this.autovalidateMode,
+      validator: validator ?? this.validator,
+      onSaved: onSaved ?? this.onSaved,
+      requirementLevel: requirementLevel ?? this.requirementLevel,
+      key: key ?? this.key,
+    );
+  }
+
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);

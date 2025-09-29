@@ -12,28 +12,46 @@ import 'package:zeta_widgetbook/main.dart';
       'https://www.figma.com/design/JesXQFLaPJLc1BdBM4sisI/%F0%9F%A6%93-ZDS---Components?node-id=23144-118110&t=N8coJ9AFu6DS3mOF-4',
 )
 Widget globalHeader(BuildContext context) => ZetaGlobalHeader(
-      title: context.knobs.string(label: 'Title', initialValue: 'Title'),
-      tabItems: List.generate(
-        context.knobs.int.slider(label: 'Tabs'),
-        (index) => ZetaGlobalHeaderItem(label: 'Button ${index + 1}'),
+      platformName: context.knobs.string(label: 'Platform Name', initialValue: 'Platform Name'),
+      userName: context.knobs.string(label: 'Name', initialValue: 'Name'),
+      navItems: List.generate(
+        context.knobs.int.slider(label: 'Nav Items', min: 0, max: 6, initialValue: 2),
+        (index) => index == 0
+            ? ZetaDropdown(
+                onChange: (value) {},
+                value: "Nav item",
+                items: [
+                  ZetaDropdownItem(value: "Nav item", label: "Nav item"),
+                  ZetaDropdownItem(value: "Nav item", label: "Nav item")
+                ],
+              )
+            : ZetaButton(
+                label: 'Nav item',
+                type: ZetaButtonType.text,
+                onPressed: () {},
+              ),
       ),
-      searchBar: context.knobs.boolean(label: 'Search bar', initialValue: true)
-          ? ZetaSearchBar(shape: ZetaWidgetBorder.full, size: ZetaWidgetSize.large)
-          : null,
-      actionButtons: context.knobs.boolean(label: 'Menu buttons', initialValue: true)
-          ? [
-              IconButton(
+      searchBar: context.knobs.boolean(label: 'Search bar', initialValue: true) ? ZetaSearchBar() : null,
+      actionItems: List.generate(
+        context.knobs.int.slider(label: 'Action Items', min: 0, max: 6, initialValue: 2),
+        (index) => index == 0
+            // Keep logic to replace with action dropper later
+            ? ZetaIconButton(
+                icon: ZetaIcons.star,
+                type: ZetaButtonType.text,
+                size: ZetaWidgetSize.medium,
                 onPressed: () {},
-                icon: const Icon(ZetaIcons.alert),
-              ),
-              IconButton(
+              )
+            : ZetaIconButton(
+                icon: ZetaIcons.star,
+                type: ZetaButtonType.text,
+                size: ZetaWidgetSize.medium,
                 onPressed: () {},
-                icon: const Icon(ZetaIcons.help),
               ),
-            ]
-          : [],
-      avatar: context.knobs.boolean(label: 'Show Avatar', initialValue: true)
-          ? const ZetaAvatar(initials: 'PS', size: ZetaAvatarSize.s)
-          : null,
-      onAppsButton: context.knobs.boolean(label: 'Apps menu', initialValue: true) ? () => {} : null,
+      ),
+      onAppsButtonPressed: () {},
+      onHamburgerMenuPressed: () {},
+      onAvatarButtonPressed: () {},
+      leading: context.knobs.boolean(label: 'Leading', initialValue: true) ? null : Nothing(),
+      trailing: context.knobs.boolean(label: 'Trailing', initialValue: true) ? null : Nothing(),
     );
