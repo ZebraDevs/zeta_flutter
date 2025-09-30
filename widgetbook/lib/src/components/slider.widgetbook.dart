@@ -20,6 +20,7 @@ Widget sliderUseCase(BuildContext context) {
         value: value,
         divisions: context.knobs.intOrNull.slider(label: 'Divisions', min: 1, initialValue: 10),
         onChange: context.knobs.boolean(label: 'Disabled') ? null : (newValue) => setState(() => value = newValue),
+        rounded: context.knobs.boolean(label: 'Rounded'),
       );
     },
   );
