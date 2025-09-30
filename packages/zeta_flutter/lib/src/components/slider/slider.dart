@@ -99,6 +99,7 @@ class _ZetaSliderState extends State<ZetaSlider> {
               rounded: context.rounded,
               color: _activeColor,
             ),
+            trackShape: context.rounded ? _RoundedRectangleTrackShape() : const RectangularSliderTrackShape(),
           ),
           child: Slider(
             value: widget.value,
@@ -176,5 +177,36 @@ class _SliderThumb extends SliderComponentShape {
     rounded
         ? canvas.drawCircle(center, size, paint)
         : canvas.drawRect(Rect.fromCenter(center: center, width: size * 2, height: size * 2), paint);
+  }
+}
+
+class _RoundedRectangleTrackShape extends RoundedRectSliderTrackShape {
+  @override
+  void paint(
+    PaintingContext context,
+    Offset offset, {
+    required RenderBox parentBox,
+    Offset? secondaryOffset,
+    required SliderThemeData sliderTheme,
+    required Animation<double> enableAnimation,
+    required TextDirection textDirection,
+    required Offset thumbCenter,
+    bool isDiscrete = false,
+    bool isEnabled = false,
+    double additionalActiveTrackHeight = 0,
+  }) {
+    super.paint(
+      context,
+      offset,
+      parentBox: parentBox,
+      secondaryOffset: secondaryOffset,
+      sliderTheme: sliderTheme,
+      enableAnimation: enableAnimation,
+      textDirection: textDirection,
+      thumbCenter: thumbCenter,
+      isDiscrete: isDiscrete,
+      isEnabled: isEnabled,
+      additionalActiveTrackHeight: additionalActiveTrackHeight,
+    );
   }
 }
