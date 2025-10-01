@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:zeta_example/widgets.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
-class StatusLabel extends StatelessWidget {
+class StatusLabelExample extends StatelessWidget {
   static const String name = 'Badges/StatusLabel';
 
-  const StatusLabel();
+  const StatusLabelExample();
 
   Widget statusLabelExampleRow(ZetaWidgetStatus type) {
     return Row(
@@ -35,10 +35,10 @@ class StatusLabel extends StatelessWidget {
   }
 }
 
-class PriorityPill extends StatelessWidget {
+class PriorityPillExample extends StatelessWidget {
   static const String name = 'Badges/PriorityPill';
 
-  const PriorityPill();
+  const PriorityPillExample();
 
   @override
   Widget build(BuildContext context) {
@@ -123,10 +123,10 @@ class PriorityPill extends StatelessWidget {
   }
 }
 
-class Label extends StatelessWidget {
+class LabelExample extends StatelessWidget {
   static const String name = 'Badges/Label';
 
-  const Label();
+  const LabelExample();
 
   Widget badgeExampleRow(ZetaWidgetStatus type) {
     return Row(
@@ -157,10 +157,10 @@ class Label extends StatelessWidget {
   }
 }
 
-class Indicators extends StatelessWidget {
+class IndicatorExample extends StatelessWidget {
   static const String name = 'Badges/Indicator';
 
-  const Indicators();
+  const IndicatorExample();
 
   @override
   Widget build(BuildContext context) {
@@ -223,10 +223,10 @@ class Indicators extends StatelessWidget {
   }
 }
 
-class Tags extends StatelessWidget {
+class TagExample extends StatelessWidget {
   static const String name = 'Badges/Tag';
 
-  const Tags();
+  const TagExample();
 
   @override
   Widget build(BuildContext context) {
