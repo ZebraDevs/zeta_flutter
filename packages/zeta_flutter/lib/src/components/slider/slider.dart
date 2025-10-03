@@ -1,9 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import '../../../zeta_flutter.dart';
-
-// TODO(UX-1355): Create slider input field.
 
 /// Sliders allow users to make selections from a range of values.
 ///
@@ -21,6 +20,7 @@ class ZetaSlider extends ZetaStatefulWidget {
     this.semanticLabel,
     this.min = 0.0,
     this.max = 1.0,
+    this.inputField = false,
   });
 
   /// Double value to represent slider percentage.
@@ -45,6 +45,11 @@ class ZetaSlider extends ZetaStatefulWidget {
   /// Maximum value of the slider.
   final double max;
 
+  /// Whether to show an input field to the right of the slider.
+  ///
+  /// This also adds numbers to the beginning and end of the slider track.
+  final bool inputField;
+
   @override
   State<ZetaSlider> createState() => _ZetaSliderState();
   @override
@@ -57,12 +62,57 @@ class ZetaSlider extends ZetaStatefulWidget {
       ..add(IntProperty('divisions', divisions))
       ..add(StringProperty('semanticLabel', semanticLabel))
       ..add(DoubleProperty('max', max))
-      ..add(DoubleProperty('min', min));
+      ..add(DoubleProperty('min', min))
+      ..add(DiagnosticsProperty<bool>('inputField', inputField));
   }
 }
 
 class _ZetaSliderState extends State<ZetaSlider> {
   bool _selected = false;
+  final _inputController = TextEditingController();
+  String _inputValue = '';
+
+  @override
+  void initState() {
+    super.initState();
+    //Checks when text field is updated
+    _inputController.text = (widget.value * 100).round().toString();
+    _inputController.addListener(_updateTextField);
+  }
+
+  //Called when text field is updated
+  void _updateTextField() {
+    setState(() {
+      //Updates value only if it has changed
+      _inputValue = _inputController.text;
+
+      if (_inputValue.isNotEmpty) {
+        //Convert to integer
+        final inputNumber = int.tryParse(_inputValue);
+        if (inputNumber != null) {
+          int cleanedValue;
+
+          //Clamp value between 0 and 100
+          if (inputNumber > 100) {
+            cleanedValue = 100;
+          } else {
+            cleanedValue = inputNumber;
+          }
+
+          //Convert to valid slider value
+          final sliderValue = cleanedValue / 100;
+          //Update slider value
+          widget.onChange?.call(sliderValue);
+        }
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _inputController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -100,23 +150,7 @@ class _ZetaSliderState extends State<ZetaSlider> {
               color: _activeColor,
             ),
           ),
-          child: Slider(
-            value: widget.value,
-            onChanged: widget.onChange,
-            divisions: widget.divisions,
-            onChangeStart: (_) {
-              setState(() {
-                _selected = true;
-              });
-            },
-            onChangeEnd: (_) {
-              setState(() {
-                _selected = false;
-              });
-            },
-            min: widget.min,
-            max: widget.max,
-          ),
+          child: _generateSlider(),
         ),
       ),
     );
@@ -128,6 +162,111 @@ class _ZetaSliderState extends State<ZetaSlider> {
       return colors.mainDisabled;
     }
     return _selected ? colors.mainPrimary : colors.mainDefault;
+  }
+
+  //private function to generate slider depending on input field boolean
+  Widget _generateSlider() {
+    final colors = Zeta.of(context).colors;
+
+    //If input field is true, return slider with input field
+    if (widget.inputField) {
+      return Row(
+        children: [
+          Expanded(
+            child: Column(
+              children: [
+                Slider(
+                  value: widget.value,
+                  onChanged: widget.onChange,
+                  divisions: widget.divisions,
+                  onChangeStart: (_) {
+                    setState(() {
+                      _selected = true;
+                    });
+                  },
+                  onChangeEnd: (_) {
+                    setState(() {
+                      _selected = false;
+                    });
+                  },
+                  min: widget.min,
+                  max: widget.max,
+                ),
+                //Numbers
+                const SizedBox(
+                  height: 14,
+                ),
+                Row(
+                  children: [
+                    const SizedBox(width: 8),
+                    Text(
+                      '0',
+                      style: widget.onChange == null
+                          ? Zeta.of(context).textStyles.bodyMedium.copyWith(color: colors.mainDisabled)
+                          : Zeta.of(context).textStyles.bodyMedium.copyWith(color: colors.mainDefault),
+                    ),
+                    const Spacer(),
+                    Text(
+                      '100',
+                      style: widget.onChange == null
+                          ? Zeta.of(context).textStyles.bodyMedium.copyWith(color: colors.mainDisabled)
+                          : Zeta.of(context).textStyles.bodyMedium.copyWith(color: colors.mainDefault),
+                    ),
+                    const SizedBox(width: 8),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          //Text Input
+          Container(
+            width: 56,
+            height: 48,
+            margin: const EdgeInsets.only(left: 8, right: 8),
+            padding: const EdgeInsets.all(12),
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: colors.borderDefault,
+              ),
+              color: widget.onChange == null ? colors.surfaceDisabled : null,
+              borderRadius: BorderRadius.circular(4),
+            ),
+            child: Center(
+              child: TextField(
+                controller: _inputController,
+                textAlign: TextAlign.center,
+                keyboardType: TextInputType.number,
+                decoration: null,
+                inputFormatters: <TextInputFormatter>[FilteringTextInputFormatter.digitsOnly],
+                style: widget.onChange == null
+                    ? Zeta.of(context).textStyles.bodyMedium.copyWith(color: colors.mainDisabled)
+                    : Zeta.of(context).textStyles.bodyMedium.copyWith(color: colors.mainSubtle),
+                readOnly: widget.onChange == null,
+              ),
+            ),
+          ),
+        ],
+      );
+    }
+
+    //If input field is false, return just the slider
+    return Slider(
+      value: widget.value,
+      onChanged: widget.onChange,
+      divisions: widget.divisions,
+      onChangeStart: (_) {
+        setState(() {
+          _selected = true;
+        });
+      },
+      onChangeEnd: (_) {
+        setState(() {
+          _selected = false;
+        });
+      },
+      min: widget.min,
+      max: widget.max,
+    );
   }
 }
 

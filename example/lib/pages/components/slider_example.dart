@@ -31,6 +31,13 @@ class _SliderExampleState extends State<SliderExample> {
           divisions: 5,
           onChange: (newValue) => setState(() => value = newValue),
         ),
+        ZetaSlider(
+          value: value,
+          key: Key('docs-slider-step'),
+          divisions: 5,
+          onChange: (newValue) => setState(() => value = newValue),
+          inputField: true,
+        ),
       ],
     );
   }
