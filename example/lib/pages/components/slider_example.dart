@@ -31,9 +31,30 @@ class _SliderExampleState extends State<SliderExample> {
           divisions: 5,
           onChange: (newValue) => setState(() => value = newValue),
         ),
+      ],
+    );
+  }
+}
+
+class SliderInputField extends StatefulWidget {
+  static const String name = 'Slider/SliderInputField';
+
+  const SliderInputField({super.key});
+
+  @override
+  State<SliderInputField> createState() => _SliderInputFieldState();
+}
+
+class _SliderInputFieldState extends State<SliderInputField> {
+  double value = 0.5;
+
+  @override
+  Widget build(BuildContext context) {
+    return ExampleScaffold(
+      name: SliderInputField.name,
+      children: [
         ZetaSlider(
           value: value,
-          key: Key('docs-slider-step'),
           divisions: 5,
           onChange: (newValue) => setState(() => value = newValue),
           inputField: true,
