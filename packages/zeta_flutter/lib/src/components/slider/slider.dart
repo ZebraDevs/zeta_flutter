@@ -196,7 +196,7 @@ class _ZetaSliderState extends State<ZetaSlider> {
     final zeta = Zeta.of(context);
     final colors = zeta.colors;
 
-    //If input field is true, return slider with input field
+    // If input field is true, return slider with input field.
     if (widget.inputField) {
       return Row(
         spacing: zeta.spacing.large,
