@@ -35,23 +35,23 @@ class _SliderExampleState extends State<SliderExample> {
   }
 }
 
-class SliderInputField extends StatefulWidget {
+class SliderInputFieldExample extends StatefulWidget {
   static const String name = 'Slider/SliderInputField';
 
-  const SliderInputField({super.key});
+  const SliderInputFieldExample({super.key});
 
   @override
-  State<SliderInputField> createState() => _SliderInputFieldState();
+  State<SliderInputFieldExample> createState() => _SliderInputFieldExampleState();
 }
 
-class _SliderInputFieldState extends State<SliderInputField> {
+class _SliderInputFieldExampleState extends State<SliderInputFieldExample> {
   double value1 = 50;
   double value2 = 50;
 
   @override
   Widget build(BuildContext context) {
     return ExampleScaffold(
-      name: SliderInputField.name,
+      name: SliderInputFieldExample.name,
       children: [
         ZetaSlider(
           value: value1,

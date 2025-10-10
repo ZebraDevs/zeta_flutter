@@ -98,6 +98,7 @@ const String searchBarRoute = 'SearchBar';
 const String segmentedControlRoute = 'SegmentedControl';
 const String selectInputRoute = 'SelectInput';
 const String sliderRoute = 'Slider/Slider';
+const String sliderInputFieldRoute = 'Slider/SliderInputField';
 const String snackbarRoute = 'SnackBar';
 const String stepperRoute = 'Stepper';
 const String stepperInputRoute = 'StepperInput';
@@ -316,6 +317,10 @@ final Map<String, ExampleWrap> componentExampleNames = {
   ),
   sliderRoute: ExampleWrap(
     pageBuilder: (context) => slider_example.SliderExample(),
+    loader: slider_example.loadLibrary,
+  ),
+  sliderInputFieldRoute: ExampleWrap(
+    pageBuilder: (context) => slider_example.SliderInputFieldExample(),
     loader: slider_example.loadLibrary,
   ),
   snackbarRoute: ExampleWrap(

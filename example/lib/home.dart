@@ -40,42 +40,7 @@ class _HomeState extends State<Home> {
                       }).toList(),
                     ),
                   );
-                }).toList()
-                // ZetaAccordionItem(
-                //   title: 'Components',
-                //   child: ZetaAccordion(
-                //     children: componentExampleNames.entries.map((e) {
-                //       return ZetaAccordionItem.navigation(
-                //         title: e.value.name,
-                //         onTap: () => context.go('/${e.key.name}'),
-                //       );
-                //     }).toList(),
-                //   ),
-                // ),
-                // ZetaAccordionItem(
-                //   title: 'Assets',
-                //   child: ZetaAccordion(
-                //     children: assetExampleNames.entries.map((e) {
-                //       return ZetaAccordionItem.navigation(
-                //         title: e.value.name,
-                //         onTap: () => context.go('/${e.key.name}'),
-                //       );
-                //     }).toList(),
-                //   ),
-                // ),
-                // ZetaAccordionItem(
-                //   title: 'Theme',
-                //   child: ZetaAccordion(
-                //     children: themeExampleNames.entries.map((e) {
-                //       return ZetaAccordionItem.navigation(
-                //         title: e.value.name,
-                //         onTap: () => context.go('/${e.key.name}'),
-                //       );
-                //     }).toList(),
-                //   ),
-                // ),
-
-                )
+                }).toList())
             .paddingAll(Zeta.of(context).spacing.medium),
       ),
     );
