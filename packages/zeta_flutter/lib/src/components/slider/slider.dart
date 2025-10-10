@@ -244,7 +244,7 @@ class _ZetaSliderState extends State<ZetaSlider> {
       );
     }
 
-    //If input field is false, return just the slider
+    // If input field is false, return just the slider.
     return _generateCoreSlider();
   }
 }
