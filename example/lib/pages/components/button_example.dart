@@ -347,7 +347,6 @@ class _FabExampleState extends State<FabExample> {
 }
 
 class TileButtonExample extends StatelessWidget {
-  static const String name = 'Buttons/TileButton';
   const TileButtonExample({super.key});
 
   @override
@@ -379,7 +378,7 @@ class TileButtonExample extends StatelessWidget {
     }
 
     return ExampleScaffold(
-      name: TileButtonExample.name,
+      name: tileButtonRoute,
       children: [
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
