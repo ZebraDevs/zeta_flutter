@@ -104,7 +104,7 @@ class _ZetaSliderState extends State<ZetaSlider> {
           } else {
             newValue = number.clamp(widget.min, widget.max).toInt();
             if (number != newValue) {
-              _inputController.text = newValue.toInt().toString();
+              _inputController.text = newValue.toString();
             }
           }
           widget.onChange?.call(newValue.toDouble());
