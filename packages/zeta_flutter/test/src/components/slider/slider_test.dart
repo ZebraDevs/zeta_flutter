@@ -30,7 +30,7 @@ void main() {
 
   group('Interaction Tests', () {
     testWidgets('ZetaSlider min/max values', (WidgetTester tester) async {
-      const double sliderValue = 0.5;
+      const double sliderValue = 50;
       double? changedValue;
 
       await tester.pumpWidget(
@@ -46,7 +46,7 @@ void main() {
 
       final slider = tester.widget<Slider>(find.byType(Slider));
       expect(slider.min, 0.0);
-      expect(slider.max, 1.0);
+      expect(slider.max, 100.0);
 
       // Drag the slider to the minimum value
       await tester.drag(find.byType(Slider), const Offset(-400, 0));
@@ -54,7 +54,7 @@ void main() {
 
       // Drag the slider to the maximum value
       await tester.drag(find.byType(Slider), const Offset(400, 0));
-      expect(changedValue, 1.0);
+      expect(changedValue, 100.0);
     });
   });
 
