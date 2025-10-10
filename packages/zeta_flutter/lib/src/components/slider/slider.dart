@@ -191,7 +191,7 @@ class _ZetaSliderState extends State<ZetaSlider> {
     );
   }
 
-  //private function to generate slider depending on input field boolean
+  // Private function to generate slider depending on input field boolean.
   Widget _generateSlider() {
     final zeta = Zeta.of(context);
     final colors = zeta.colors;
