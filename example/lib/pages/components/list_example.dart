@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:zeta_example/config/components_config.dart';
 import 'package:zeta_example/widgets.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 class ListExample extends StatefulWidget {
-  static const name = 'List';
-
   const ListExample({super.key});
 
   @override
@@ -17,7 +16,7 @@ class _ListExampleState extends State<ListExample> {
   @override
   Widget build(BuildContext context) {
     return ExampleScaffold(
-      name: 'List',
+      name: listRoute,
       child: ZetaList(
         showDivider: true,
         items: [

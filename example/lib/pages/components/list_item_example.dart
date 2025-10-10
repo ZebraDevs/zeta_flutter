@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:zeta_example/config/components_config.dart';
 import 'package:zeta_example/widgets.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 class ListItemExample extends StatefulWidget {
-  static const String name = 'ListItem';
-
   const ListItemExample({super.key});
 
   @override
@@ -24,7 +23,7 @@ class _ListItemExampleState extends State<ListItemExample> {
     final textStyle = Zeta.of(context).textStyles.bodyLarge;
 
     return ExampleScaffold(
-      name: ListItemExample.name,
+      name: listItemRoute,
       paddingAll: 0,
       gap: 0,
       children: [

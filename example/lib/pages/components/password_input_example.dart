@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:zeta_example/config/components_config.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 import '../../widgets.dart';
 
 class PasswordInputExample extends StatefulWidget {
-  static const String name = 'PasswordInput';
-
   const PasswordInputExample({Key? key}) : super(key: key);
 
   @override
@@ -26,7 +25,7 @@ class _PasswordInputExampleState extends State<PasswordInputExample> {
   @override
   Widget build(BuildContext context) {
     return ExampleScaffold(
-      name: PasswordInputExample.name,
+      name: passwordInputRoute,
       children: [
         ZetaPasswordInput(
           size: ZetaWidgetSize.small,

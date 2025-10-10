@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:zeta_example/config/components_config.dart';
 import 'package:zeta_example/widgets.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 class RadioButtonExample extends StatefulWidget {
-  static const String name = 'RadioButton';
-
   const RadioButtonExample({Key? key}) : super(key: key);
 
   @override
@@ -21,7 +20,7 @@ class _RadioButtonExampleState extends State<RadioButtonExample> {
   @override
   Widget build(BuildContext context) {
     return ExampleScaffold(
-      name: RadioButtonExample.name,
+      name: radioButtonRoute,
       children: [
         Column(
           children: [

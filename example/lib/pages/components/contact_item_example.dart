@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:zeta_example/config/components_config.dart';
 import 'package:zeta_example/widgets.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 class ContactItemExample extends StatefulWidget {
-  static const String name = 'ContactListItem';
-
   const ContactItemExample({super.key});
 
   @override
@@ -15,7 +14,7 @@ class _ContactItemExampleState extends State<ContactItemExample> {
   @override
   Widget build(BuildContext context) {
     return ExampleScaffold(
-      name: ContactItemExample.name,
+      name: contactListItemRoute,
       children: [
         ConstrainedBox(
           constraints: BoxConstraints(maxWidth: 500),

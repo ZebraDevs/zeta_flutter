@@ -2,13 +2,12 @@ import 'dart:math';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:zeta_example/config/components_config.dart';
 import 'package:zeta_example/widgets.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 class TopAppBarExample extends StatefulWidget {
   const TopAppBarExample({super.key});
-
-  static const String name = 'TopAppBar';
 
   @override
   State<TopAppBarExample> createState() => _TopAppBarExampleState();
@@ -27,7 +26,7 @@ class _TopAppBarExampleState extends State<TopAppBarExample> {
     );
 
     return ExampleScaffold(
-      name: TopAppBarExample.name,
+      name: topAppBarRoute,
       paddingAll: 0,
       gap: 4,
       children: [

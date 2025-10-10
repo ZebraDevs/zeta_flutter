@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:zeta_example/config/components_config.dart';
 import 'package:zeta_example/widgets.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 class CheckBoxExample extends StatefulWidget {
-  static const String name = 'Checkbox';
-
   const CheckBoxExample({Key? key}) : super(key: key);
 
   @override
@@ -18,7 +17,7 @@ class _CheckBoxExampleState extends State<CheckBoxExample> {
   @override
   Widget build(BuildContext context) {
     return ExampleScaffold(
-      name: CheckBoxExample.name,
+      name: checkboxRoute,
       children: [
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,

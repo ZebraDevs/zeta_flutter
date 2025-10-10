@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:zeta_example/config/components_config.dart';
 import 'package:zeta_example/widgets.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 const double _paddingSize = 40;
 
 class DialPadExample extends StatefulWidget {
-  static const String name = 'DialPad';
-
   const DialPadExample({super.key});
 
   @override
@@ -19,7 +18,7 @@ class _DialPadExampleState extends State<DialPadExample> {
   @override
   Widget build(BuildContext context) {
     return ExampleScaffold(
-      name: DialPadExample.name,
+      name: dialPadRoute,
       children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:zeta_example/config/components_config.dart';
 import 'package:zeta_example/widgets.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 class DateInputExample extends StatefulWidget {
-  static const String name = 'DateInput';
-
   const DateInputExample({Key? key}) : super(key: key);
 
   @override
@@ -15,7 +14,7 @@ class _DateInputExampleState extends State<DateInputExample> {
   @override
   Widget build(BuildContext context) {
     return ExampleScaffold(
-      name: 'Date Input',
+      name: dateInputRoute,
       gap: 7,
       children: [
         ZetaDateInput(

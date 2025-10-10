@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:zeta_example/config/components_config.dart';
 import 'package:zeta_example/widgets.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 class NotificationListItemExample extends StatelessWidget {
   const NotificationListItemExample({Key? key}) : super(key: key);
-  static const String name = 'NotificationListItem';
 
   @override
   Widget build(BuildContext context) {
     final Image image = Image.network("https://i.ytimg.com/vi/KItsWUzFUOs/maxresdefault.jpg");
 
     return ExampleScaffold(
-      name: name,
+      name: notificationListItemRoute,
       paddingAll: 0,
       gap: 0,
       children: [
