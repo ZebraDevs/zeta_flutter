@@ -48,6 +48,7 @@ class ZetaTextInput extends ZetaTextFormField {
     this.keyboardType,
     this.focusNode,
     this.semanticLabel,
+    TextAlign textAlign = TextAlign.start,
   })  : assert(initialValue == null || controller == null, 'Only one of initial value and controller can be accepted.'),
         assert(prefix == null || prefixText == null, 'Only one of prefix or prefixText can be accepted.'),
         assert(suffix == null || suffixText == null, 'Only one of suffix or suffixText can be accepted.'),
@@ -77,6 +78,7 @@ class ZetaTextInput extends ZetaTextFormField {
               keyboardType: keyboardType,
               focusNode: focusNode,
               semanticLabel: semanticLabel,
+              textAlign: textAlign,
             );
           },
         );

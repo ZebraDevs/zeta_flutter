@@ -46,7 +46,8 @@ class SliderInputField extends StatefulWidget {
 }
 
 class _SliderInputFieldState extends State<SliderInputField> {
-  double value = 0.5;
+  double value1 = 50;
+  double value2 = 50;
 
   @override
   Widget build(BuildContext context) {
@@ -54,9 +55,19 @@ class _SliderInputFieldState extends State<SliderInputField> {
       name: SliderInputField.name,
       children: [
         ZetaSlider(
-          value: value,
+          value: value1,
           divisions: 5,
-          onChange: (newValue) => setState(() => value = newValue),
+          inputField: true,
+        ),
+        ZetaSlider(
+          value: value1,
+          onChange: (newValue) => setState(() => value1 = newValue),
+          inputField: true,
+        ),
+        ZetaSlider(
+          value: value2,
+          divisions: 5,
+          onChange: (newValue) => setState(() => value2 = newValue),
           inputField: true,
         ),
       ],

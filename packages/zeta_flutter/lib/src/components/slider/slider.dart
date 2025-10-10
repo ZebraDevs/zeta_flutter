@@ -19,13 +19,13 @@ class ZetaSlider extends ZetaStatefulWidget {
     this.divisions,
     this.semanticLabel,
     this.min = 0.0,
-    this.max = 1.0,
+    this.max = 100.0,
     this.inputField = false,
   });
 
   /// Double value to represent slider percentage.
   ///
-  /// Default [min] / [max] are 0.0 and 1.0 respectively; this value should be between [min] and [max].
+  /// Default [min] / [max] are 0.0 and 100.0 respectively; this value should be between [min] and [max].
   final double value;
 
   /// Callback to handle changing of slider
@@ -72,50 +72,65 @@ class ZetaSlider extends ZetaStatefulWidget {
 class _ZetaSliderState extends State<ZetaSlider> {
   bool _selected = false;
   final _inputController = TextEditingController();
-  bool _isUpdatingFromSlider = false;
+  Debounce? _debounce;
 
   @override
   void initState() {
     super.initState();
-    //Checks when text field is updated
-    _inputController.text = ((widget.value - widget.min) / (widget.max - widget.min) * 100).round().toString();
+    _inputController.text = widget.value.toString();
     _inputController.addListener(_updateTextField);
   }
 
   //Called when slider is updated, changes text field value
   void _updateTextFieldFromSlider(double sliderValue) {
-    _isUpdatingFromSlider = true;
-    _inputController.text = ((sliderValue - widget.min) / (widget.max - widget.min) * 100).round().toString();
-    _isUpdatingFromSlider = false;
+    _inputController.text = sliderValue.toInt().toString();
   }
 
-  //Called when text field is updated
+  // Called when text field is updated, changes slider value
   void _updateTextField() {
-    if (_isUpdatingFromSlider) return;
-
-    setState(() {
-      if (_inputController.text.isNotEmpty) {
-        //Convert to integer
-        final inputNumber = int.tryParse(_inputController.text);
-        if (inputNumber != null) {
-          final clamped = inputNumber.clamp(0, 100);
-          final normalized = clamped / 100.0;
-          final cleanedValue = widget.min + normalized * (widget.max - widget.min);
-          widget.onChange?.call(cleanedValue);
+    _debounce?.cancel();
+    _debounce = Debounce(
+      () {
+        final number = int.tryParse(_inputController.text);
+        if (number != null) {
+          final num newValue;
+          if (widget.divisions != null) {
+            final divisionSize = (widget.max - widget.min) / widget.divisions!;
+            final snappedValue = ((number - widget.min) / divisionSize).round() * divisionSize + widget.min;
+            newValue = snappedValue.toInt().clamp(widget.min, widget.max).toInt();
+            if (number != newValue) {
+              _inputController.text = newValue.toString();
+            }
+          } else {
+            newValue = number.clamp(widget.min, widget.max).toInt();
+            if (number != newValue) {
+              _inputController.text = newValue.toInt().toString();
+            }
+          }
+          widget.onChange?.call(newValue.toDouble());
         }
-      }
-    });
+      },
+      duration: const Duration(milliseconds: 200),
+    );
   }
 
   @override
   void dispose() {
+    _debounce?.cancel();
     _inputController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    final colors = Zeta.of(context).colors;
+    final zeta = Zeta.of(context);
+    final colors = zeta.colors;
+
+    final activeColor = widget.onChange == null
+        ? colors.mainDisabled
+        : _selected
+            ? colors.mainPrimary
+            : colors.mainDefault;
 
     return MergeSemantics(
       child: Semantics(
@@ -123,7 +138,7 @@ class _ZetaSliderState extends State<ZetaSlider> {
         child: SliderTheme(
           data: SliderThemeData(
             /// Active Track
-            activeTrackColor: _activeColor,
+            activeTrackColor: activeColor,
             disabledActiveTrackColor: colors.mainDisabled,
 
             /// Inactive Track
@@ -139,14 +154,14 @@ class _ZetaSliderState extends State<ZetaSlider> {
             thumbColor: colors.mainDefault,
             disabledThumbColor: colors.mainDisabled,
             overlayShape: _SliderThumb(
-              size: Zeta.of(context).spacing.xl / 2,
+              size: zeta.spacing.xl / 2,
               rounded: context.rounded,
-              color: _activeColor,
+              color: activeColor,
             ),
             thumbShape: _SliderThumb(
-              size: Zeta.of(context).spacing.large / 2,
+              size: zeta.spacing.large / 2,
               rounded: context.rounded,
-              color: _activeColor,
+              color: activeColor,
             ),
             trackShape: context.rounded ? _RoundedRectangleTrackShape() : const RectangularSliderTrackShape(),
           ),
@@ -154,14 +169,6 @@ class _ZetaSliderState extends State<ZetaSlider> {
         ),
       ),
     );
-  }
-
-  Color get _activeColor {
-    final colors = Zeta.of(context).colors;
-    if (widget.onChange == null) {
-      return colors.mainDisabled;
-    }
-    return _selected ? colors.mainPrimary : colors.mainDefault;
   }
 
   Widget _generateCoreSlider() {
@@ -177,16 +184,8 @@ class _ZetaSliderState extends State<ZetaSlider> {
               : null
           : widget.onChange,
       divisions: widget.divisions,
-      onChangeStart: (_) {
-        setState(() {
-          _selected = true;
-        });
-      },
-      onChangeEnd: (_) {
-        setState(() {
-          _selected = false;
-        });
-      },
+      onChangeStart: (_) => setState(() => _selected = true),
+      onChangeEnd: (_) => setState(() => _selected = false),
       min: widget.min,
       max: widget.max,
     );
@@ -194,68 +193,51 @@ class _ZetaSliderState extends State<ZetaSlider> {
 
   //private function to generate slider depending on input field boolean
   Widget _generateSlider() {
-    final colors = Zeta.of(context).colors;
+    final zeta = Zeta.of(context);
+    final colors = zeta.colors;
 
     //If input field is true, return slider with input field
     if (widget.inputField) {
       return Row(
+        spacing: zeta.spacing.large,
         children: [
           Expanded(
             child: Column(
+              spacing: zeta.spacing.small,
               children: [
                 //Slider
                 _generateCoreSlider(),
                 //Numbers
-                const SizedBox(
-                  height: 14,
-                ),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const SizedBox(width: 8),
                     Text(
-                      widget.min != 0.0 ? (widget.min * 100).round().toString() : '0',
-                      style: widget.onChange == null
-                          ? Zeta.of(context).textStyles.bodyMedium.copyWith(color: colors.mainDisabled)
-                          : Zeta.of(context).textStyles.bodyMedium.copyWith(color: colors.mainDefault),
+                      widget.min.toInt().toString(),
+                      style: zeta.textStyles.bodyMedium.apply(
+                        color: widget.onChange == null ? colors.mainDisabled : colors.mainDefault,
+                      ),
                     ),
-                    const Spacer(),
                     Text(
-                      widget.max != 100.0 ? (widget.max * 100).round().toString() : '100',
-                      style: widget.onChange == null
-                          ? Zeta.of(context).textStyles.bodyMedium.copyWith(color: colors.mainDisabled)
-                          : Zeta.of(context).textStyles.bodyMedium.copyWith(color: colors.mainDefault),
+                      widget.max.toInt().toString(),
+                      style: zeta.textStyles.bodyMedium.apply(
+                        color: widget.onChange == null ? colors.mainDisabled : colors.mainDefault,
+                      ),
                     ),
-                    const SizedBox(width: 8),
                   ],
-                ),
+                ).paddingHorizontal(zeta.spacing.minimum),
               ],
             ),
           ),
           //Text Input
-          Container(
-            width: 56,
-            height: 48,
-            margin: const EdgeInsets.only(left: 8, right: 8),
-            padding: const EdgeInsets.all(12),
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: colors.borderDefault,
-              ),
-              color: widget.onChange == null ? colors.surfaceDisabled : null,
-              borderRadius: BorderRadius.circular(4),
-            ),
-            child: Center(
-              child: TextField(
-                controller: _inputController,
-                textAlign: TextAlign.center,
-                keyboardType: TextInputType.number,
-                decoration: null,
-                inputFormatters: <TextInputFormatter>[FilteringTextInputFormatter.digitsOnly],
-                style: widget.onChange == null
-                    ? Zeta.of(context).textStyles.bodyMedium.copyWith(color: colors.mainDisabled)
-                    : Zeta.of(context).textStyles.bodyMedium.copyWith(color: colors.mainSubtle),
-                readOnly: widget.onChange == null,
-              ),
+          SizedBox(
+            width: zeta.spacing.xl_8 + zeta.spacing.small,
+            child: ZetaTextInput(
+              keyboardType: TextInputType.number,
+              disabled: widget.onChange == null,
+              size: ZetaWidgetSize.large,
+              textAlign: TextAlign.center,
+              inputFormatters: <TextInputFormatter>[FilteringTextInputFormatter.digitsOnly],
+              controller: _inputController,
             ),
           ),
         ],
