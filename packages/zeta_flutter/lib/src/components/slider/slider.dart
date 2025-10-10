@@ -97,7 +97,7 @@ class _ZetaSliderState extends State<ZetaSlider> {
           if (widget.divisions != null) {
             final divisionSize = (widget.max - widget.min) / widget.divisions!;
             final snappedValue = ((number - widget.min) / divisionSize).round() * divisionSize + widget.min;
-            newValue = snappedValue.toInt().clamp(widget.min, widget.max).toInt();
+            newValue = snappedValue.round().clamp(widget.min, widget.max);
             if (number != newValue) {
               _inputController.text = newValue.toString();
             }
