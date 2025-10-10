@@ -39,6 +39,7 @@ class InternalTextInput extends ZetaStatefulWidget {
     this.borderRadius,
     this.textInputAction,
     this.constrained = false,
+    this.textAlign = TextAlign.start,
   })  : requirementLevel = requirementLevel ?? ZetaFormFieldRequirement.none,
         assert(prefix == null || prefixText == null, 'Only one of prefix or prefixText can be accepted.'),
         assert(suffix == null || suffixText == null, 'Only one of suffix or suffixText can be accepted.');
@@ -139,6 +140,10 @@ class InternalTextInput extends ZetaStatefulWidget {
   /// Determines if the prefix and suffix should be constrained.
   final bool constrained;
 
+  /// The text alignment within the input.
+  /// {@macro flutter.widgets.editableText.textAlign}
+  final TextAlign textAlign;
+
   @override
   State<InternalTextInput> createState() => InternalTextInputState();
   @override
@@ -167,7 +172,8 @@ class InternalTextInput extends ZetaStatefulWidget {
       ..add(DiagnosticsProperty<BorderRadius?>('borderRadius', borderRadius))
       ..add(StringProperty('semanticLabel', semanticLabel))
       ..add(EnumProperty<TextInputAction?>('textInputAction', textInputAction))
-      ..add(DiagnosticsProperty<bool>('constrained', constrained));
+      ..add(DiagnosticsProperty<bool>('constrained', constrained))
+      ..add(EnumProperty<TextAlign>('textAlign', textAlign));
   }
 }
 
@@ -352,6 +358,7 @@ class InternalTextInputState extends State<InternalTextInput> {
                         keyboardType: widget.keyboardType,
                         inputFormatters: widget.inputFormatters,
                         textAlignVertical: TextAlignVertical.center,
+                        textAlign: widget.textAlign,
                         onChanged: widget.onChange,
                         onSubmitted: widget.onSubmit,
                         style: _baseTextStyle,

@@ -113,6 +113,7 @@ final List<Component> components = [
   Component(SegmentedControlExample.name, (context) => const SegmentedControlExample()),
   Component(SelectInputExample.name, (context) => const SelectInputExample()),
   Component(SliderExample.name, (context) => const SliderExample()),
+  Component(SliderInputField.name, (context) => const SliderInputField()),
   Component(SnackBarExample.name, (context) => const SnackBarExample()),
   Component(StatusChipExample.name, (context) => const StatusChipExample()),
   Component(StatusLabel.name, (context) => const StatusLabel()),
