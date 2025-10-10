@@ -68,7 +68,7 @@ const String fabRoute = 'FAB';
 const String cardContainerRoute = 'Cards/CardContainer';
 const String chatListItemRoute = 'ChatListItem';
 const String checkboxRoute = 'Checkbox';
-const String chipAssistRoute = 'ChipsAssistChip';
+const String chipAssistRoute = 'Chips/AssistChip';
 const String chipFilterRoute = 'Chips/FilterChip';
 const String chipInputRoute = 'Chips/InputChip';
 const String chipStatusRoute = 'Chips/StatusChip';
@@ -130,6 +130,10 @@ final Map<String, ExampleWrap> componentExampleNames = {
     pageBuilder: (context) => avatar_example.AvatarRailExample(),
     loader: avatar_example.loadLibrary,
   ),
+  statusBadgeRoute: ExampleWrap(
+    pageBuilder: (context) => avatar_example.AvatarBadgeExample(),
+    loader: avatar_example.loadLibrary,
+  ),
   badgesStatusLabelRoute: ExampleWrap(
     pageBuilder: (context) => badges_example.StatusLabelExample(),
     loader: badges_example.loadLibrary,
@@ -144,6 +148,10 @@ final Map<String, ExampleWrap> componentExampleNames = {
   ),
   badgesIndicatorRoute: ExampleWrap(
     pageBuilder: (context) => badges_example.IndicatorExample(),
+    loader: badges_example.loadLibrary,
+  ),
+  badgesTagRoute: ExampleWrap(
+    pageBuilder: (context) => badges_example.TagExample(),
     loader: badges_example.loadLibrary,
   ),
   bannerSystemRoute: ExampleWrap(
