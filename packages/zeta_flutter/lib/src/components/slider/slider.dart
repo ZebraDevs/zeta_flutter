@@ -86,7 +86,7 @@ class _ZetaSliderState extends State<ZetaSlider> {
     _inputController.text = sliderValue.toInt().toString();
   }
 
-  // Called when text field is updated, changes slider value
+  // Called when text field is updated, changes slider value.
   void _updateTextField() {
     _debounce?.cancel();
     _debounce = Debounce(
