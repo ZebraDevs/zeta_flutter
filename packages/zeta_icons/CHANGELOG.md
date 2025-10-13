@@ -1,5 +1,29 @@
 # Changelog
 
+## [1.3.0](https://github.com/ZebraDevs/zeta_flutter/compare/icons-v1.1.7...icons-v1.3.0) (2025-10-13)
+
+### ✅ Icons added
+
+* **Action:** Search Checkmark ([9e8396c](https://github.com/ZebraDevs/zeta-icons/commit/9e8396c30b0f297694de1f606b97753450ed906b))
+* **Action:** Search Data ([9e8396c](https://github.com/ZebraDevs/zeta-icons/commit/9e8396c30b0f297694de1f606b97753450ed906b))
+* **Action:** Search Document ([9e8396c](https://github.com/ZebraDevs/zeta-icons/commit/9e8396c30b0f297694de1f606b97753450ed906b))
+* **Action:** Search File ([9e8396c](https://github.com/ZebraDevs/zeta-icons/commit/9e8396c30b0f297694de1f606b97753450ed906b))
+* **Action:** Search Image ([9e8396c](https://github.com/ZebraDevs/zeta-icons/commit/9e8396c30b0f297694de1f606b97753450ed906b))
+* **Action:** Search Refresh ([9e8396c](https://github.com/ZebraDevs/zeta-icons/commit/9e8396c30b0f297694de1f606b97753450ed906b))
+* **Action:** Search Settings ([9e8396c](https://github.com/ZebraDevs/zeta-icons/commit/9e8396c30b0f297694de1f606b97753450ed906b))
+* **Action:** Search Star ([9e8396c](https://github.com/ZebraDevs/zeta-icons/commit/9e8396c30b0f297694de1f606b97753450ed906b))
+* **Action:** Search Tab ([9e8396c](https://github.com/ZebraDevs/zeta-icons/commit/9e8396c30b0f297694de1f606b97753450ed906b))
+* **Content:** Push Pin Outline ([e6bc898](https://github.com/ZebraDevs/zeta-icons/commit/e6bc8983ee97bd2a5c07ad2c9960a3252f70bfee))
+* **File:** Shared Folder Filled ([0cb9944](https://github.com/ZebraDevs/zeta-icons/commit/0cb994498da9ddb54b12ba85c6977ceb982730ff))
+* **Social:** Neutral ([e6bc898](https://github.com/ZebraDevs/zeta-icons/commit/e6bc8983ee97bd2a5c07ad2c9960a3252f70bfee))
+
+
+### 🎨 Icons updated
+
+* **Content:** Push Pin ([0cb9944](https://github.com/ZebraDevs/zeta-icons/commit/0cb994498da9ddb54b12ba85c6977ceb982730ff))
+* **General:** To Do Outline ([9e8396c](https://github.com/ZebraDevs/zeta-icons/commit/9e8396c30b0f297694de1f606b97753450ed906b))
+
+ 
 ## [1.1.5](https://github.com/ZebraDevs/zeta_flutter/compare/zeta_icons-v1.1.4...zeta_icons-v1.1.5) (2025-08-13)
 
 
