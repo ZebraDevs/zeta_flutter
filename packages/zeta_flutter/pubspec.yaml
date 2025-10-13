@@ -23,7 +23,7 @@ dependencies:
   mask_text_input_formatter: ^2.9.0
   provider: ^6.1.5+1
   record: ^6.1.1
-  zeta_flutter_theme: ^1.2.2
+  zeta_flutter_theme: ^1.2.3
   zeta_flutter_utils: ^1.1.3
   zeta_icons: ^1.1.5
 
