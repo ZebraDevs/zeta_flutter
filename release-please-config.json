@@ -2,15 +2,23 @@
   "packages": {
     "packages/zeta_flutter": {
       "release-type": "dart",
-      "package-name": "zeta_flutter"
+      "package-name": "zeta_flutter",
+      "component": "components"
     },
     "packages/zeta_flutter_theme": {
       "release-type": "dart",
-      "package-name": "zeta_flutter_theme"
+      "package-name": "zeta_flutter_theme",
+      "component": "theme"
     },
     "packages/zeta_flutter_utils": {
       "release-type": "dart",
-      "package-name": "zeta_flutter_utils"
+      "package-name": "zeta_flutter_utils",
+      "component": "utils"
+    },
+    "packages/zeta_icons": {
+      "release-type": "dart",
+      "package-name": "zeta_icons",
+      "component": "icons"
     }
   },
   "pull-request-title-pattern": "chore(${component}): release ${version}",
