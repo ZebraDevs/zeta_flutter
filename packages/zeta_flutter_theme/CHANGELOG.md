@@ -1,5 +1,26 @@
 # Changelog
 
+## [1.1.3](https://github.com/ZebraDevs/zeta_flutter/compare/zeta_flutter_theme-v1.2.2...zeta_flutter_theme-v1.1.3) (2025-10-13)
+
+
+### ✨ New Features
+
+* Add new button flavor: Subtle ([d84e09b](https://github.com/ZebraDevs/zeta_flutter/commit/d84e09b630e17122ada7a08bfd61c5b025e01ce5))
+* **UX-1453:** Added function call backs to built in buttons ([d84e09b](https://github.com/ZebraDevs/zeta_flutter/commit/d84e09b630e17122ada7a08bfd61c5b025e01ce5))
+* **UX-1453:** Allow rounded prop to be altered in Widgetbook ([d84e09b](https://github.com/ZebraDevs/zeta_flutter/commit/d84e09b630e17122ada7a08bfd61c5b025e01ce5))
+* **UX-1453:** Match Global Header component to new Figma designs ([d84e09b](https://github.com/ZebraDevs/zeta_flutter/commit/d84e09b630e17122ada7a08bfd61c5b025e01ce5))
+
+
+### 🪲 Bug Fixes
+
+* **UX-1453:** Complete tests, fix debug tests ([d84e09b](https://github.com/ZebraDevs/zeta_flutter/commit/d84e09b630e17122ada7a08bfd61c5b025e01ce5))
+* **UX-1519:** Add ability to override theme modes ([#396](https://github.com/ZebraDevs/zeta_flutter/issues/396)) ([8e695b9](https://github.com/ZebraDevs/zeta_flutter/commit/8e695b936c5aec11152f0c382958c5bb854602b4))
+
+
+### 🧹 Miscellaneous Chores
+
+* ** zeta_flutter_utils:** release zeta_flutter_utils 1.1.3 ([f22e0e6](https://github.com/ZebraDevs/zeta_flutter/commit/f22e0e6cb0dbd42f6a02efe64a33a8435d7d0192))
+
 ## [1.2.2](https://github.com/ZebraDevs/zeta_flutter/compare/zeta_flutter_theme-v1.2.1...zeta_flutter_theme-v1.2.2) (2025-09-17)
 
 
