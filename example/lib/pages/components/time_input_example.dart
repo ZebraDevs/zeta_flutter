@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:zeta_example/config/components_config.dart';
 import 'package:zeta_example/widgets.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 class TimeInputExample extends StatelessWidget {
-  static const name = 'TimeInput';
-
   const TimeInputExample({super.key});
 
   @override
@@ -13,7 +12,7 @@ class TimeInputExample extends StatelessWidget {
     return Form(
       key: formKey,
       child: ExampleScaffold(
-        name: name,
+        name: timeInputRoute,
         gap: 7,
         children: [
           Row(

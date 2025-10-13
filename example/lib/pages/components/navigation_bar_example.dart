@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:zeta_example/config/components_config.dart';
 import 'package:zeta_example/widgets.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 class NavigationBarExample extends StatefulWidget {
-  static const String name = 'NavigationBar';
-
   const NavigationBarExample({super.key});
 
   @override
@@ -24,7 +23,7 @@ class _NavigationBarExampleState extends State<NavigationBarExample> {
     ];
 
     return ExampleScaffold(
-      name: NavigationBarExample.name,
+      name: navigationBarRoute,
       paddingAll: 0,
       children: [
         ZetaNavigationBar.divided(items: items, dividerIndex: 3, key: Key('docs-navigation-bar-divider')),

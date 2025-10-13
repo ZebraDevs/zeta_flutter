@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:zeta_example/config/components_config.dart';
 import 'package:zeta_example/widgets.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 class SystemBannerExample extends StatelessWidget {
-  static const String name = 'SystemBanner';
-
   const SystemBannerExample({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ExampleScaffold(
-      name: SystemBannerExample.name,
+      name: bannerSystemRoute,
       paddingAll: 0,
       children: [
         ZetaSystemBanner(
@@ -96,13 +95,12 @@ class InPageBannerExample extends StatelessWidget {
   final _content = 'Lorem ipsum dolor sit amet, conse ctetur  cididunt ut'
       'labore et do lore magna aliqua.';
 
-  static const String name = 'InPageBanner';
   const InPageBannerExample({super.key});
 
   @override
   Widget build(BuildContext context) {
     return ExampleScaffold(
-      name: name,
+      name: bannerInPageRoute,
       children: [
         ZetaInPageBanner(
           key: Key('docs-in-page-banner'),

@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:zeta_example/config/components_config.dart';
 import 'package:zeta_example/widgets.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 class TextInputExample extends StatelessWidget {
-  static const name = 'TextInput';
-
   const TextInputExample({super.key});
 
   @override
@@ -14,7 +13,7 @@ class TextInputExample extends StatelessWidget {
     return Form(
       key: key,
       child: ExampleScaffold(
-        name: name,
+        name: textInputRoute,
         children: [
           ZetaTextInput(
             key: Key('docs-text-input-small'),

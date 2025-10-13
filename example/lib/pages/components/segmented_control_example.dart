@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:zeta_example/config/components_config.dart';
 import 'package:zeta_example/widgets.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 class SegmentedControlExample extends StatefulWidget {
   const SegmentedControlExample({super.key});
-
-  static const String name = 'SegmentedControl';
 
   @override
   State<SegmentedControlExample> createState() => _SegmentedControlExampleState();
@@ -22,7 +21,7 @@ class _SegmentedControlExampleState extends State<SegmentedControlExample> {
   @override
   Widget build(BuildContext context) {
     return ExampleScaffold(
-      name: SegmentedControlExample.name,
+      name: segmentedControlRoute,
       children: [
         Column(
           spacing: 20,

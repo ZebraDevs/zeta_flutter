@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:zeta_example/config/components_config.dart';
 import 'package:zeta_example/widgets.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 class PhoneInputExample extends StatefulWidget {
-  static const String name = 'PhoneInput';
-
   const PhoneInputExample({Key? key}) : super(key: key);
 
   @override
@@ -20,7 +19,7 @@ class _PhoneInputExampleState extends State<PhoneInputExample> {
       key: key,
       child: ExampleScaffold(
         gap: 8,
-        name: PhoneInputExample.name,
+        name: phoneInputRoute,
         children: [
           ZetaButton(label: 'Reset', onPressed: () => key.currentState?.reset()),
           ZetaPhoneInput(

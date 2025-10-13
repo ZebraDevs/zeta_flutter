@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:zeta_example/config/components_config.dart';
 import 'package:zeta_example/widgets.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 class CardContainerExample extends StatelessWidget {
-  static const String name = 'Cards/CardContainer';
   const CardContainerExample({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return ExampleScaffold(name: name, children: [
+    return ExampleScaffold(name: cardContainerRoute, children: [
       Row(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,

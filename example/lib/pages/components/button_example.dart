@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:zeta_example/config/components_config.dart';
 import 'package:zeta_example/widgets.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
@@ -6,7 +7,6 @@ import 'package:zeta_flutter/zeta_flutter.dart';
 final buttonTypes = ZetaButtonType.values.where((e) => e != ZetaButtonType.secondary).toList();
 
 class ButtonExample extends StatelessWidget {
-  static const String name = 'Buttons/Button';
   const ButtonExample({super.key});
 
   @override
@@ -34,7 +34,7 @@ class ButtonExample extends StatelessWidget {
     }
 
     return ExampleScaffold(
-      name: ButtonExample.name,
+      name: buttonRoute,
       children: [
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -52,7 +52,6 @@ class ButtonExample extends StatelessWidget {
 }
 
 class IconButtonExample extends StatelessWidget {
-  static const String name = 'Buttons/IconButton';
   const IconButtonExample({super.key});
 
   @override
@@ -89,7 +88,7 @@ class IconButtonExample extends StatelessWidget {
       ).reversed.divide(SizedBox.square(dimension: Zeta.of(context).spacing.xl_2)).toList();
     }
 
-    return ExampleScaffold(name: name, children: [
+    return ExampleScaffold(name: iconButtonRoute, children: [
       Column(
         children: iconButtons(null),
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -106,11 +105,10 @@ class IconButtonExample extends StatelessWidget {
 
 class ButtonGroupExample extends StatelessWidget {
   const ButtonGroupExample({super.key});
-  static const String name = 'ButtonGroup';
 
   @override
   Widget build(BuildContext context) {
-    return ExampleScaffold(name: name, children: [
+    return ExampleScaffold(name: buttonGroupRoute, children: [
       Column(
         key: Key('docs-button-group'),
         children: [
@@ -167,7 +165,6 @@ class ButtonGroupExample extends StatelessWidget {
 }
 
 class FabExample extends StatefulWidget {
-  static const String name = 'FAB';
   const FabExample({super.key});
 
   @override
@@ -255,7 +252,7 @@ class _FabExampleState extends State<FabExample> {
     }
     final ZetaFAB theFab = (fab as ZetaFAB?) ?? (fabs.first);
     return ExampleScaffold(
-      name: FabExample.name,
+      name: fabRoute,
       floatingActionButton: ZetaFAB(
         expanded: true,
         icon: theFab.icon,
@@ -344,6 +341,55 @@ class _FabExampleState extends State<FabExample> {
             ),
           ],
         )
+      ],
+    );
+  }
+}
+
+class TileButtonExample extends StatelessWidget {
+  const TileButtonExample({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    List<Widget> buttons(bool rounded) {
+      return [
+        SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              ZetaTileButton(
+                label: 'Button',
+                icon: Icons.star,
+                onPressed: null, // Disabled
+                rounded: rounded,
+              ),
+              SizedBox.square(dimension: Zeta.of(context).spacing.xl_2),
+              ZetaTileButton(
+                label: 'Button',
+                icon: Icons.star,
+                onPressed: () {}, // Enabled
+                rounded: rounded,
+              ),
+            ].reversed.toList(),
+          ).paddingHorizontal(Zeta.of(context).spacing.medium).paddingVertical(Zeta.of(context).spacing.large),
+        ),
+      ];
+    }
+
+    return ExampleScaffold(
+      name: tileButtonRoute,
+      children: [
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: buttons(false),
+          key: Key('docs-button'),
+        ),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: buttons(true),
+          key: Key('docs-button-full'),
+        ),
       ],
     );
   }

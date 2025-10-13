@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:zeta_example/config/components_config.dart';
 import 'package:zeta_example/widgets.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 class SearchBarExample extends StatefulWidget {
-  static const String name = 'SearchBar';
-
   const SearchBarExample({Key? key}) : super(key: key);
 
   @override
@@ -15,7 +14,7 @@ class _SearchBarExampleState extends State<SearchBarExample> {
   @override
   Widget build(BuildContext context) {
     return ExampleScaffold(
-      name: 'Search Bar',
+      name: searchBarRoute,
       children: [
         Column(
           spacing: 20,

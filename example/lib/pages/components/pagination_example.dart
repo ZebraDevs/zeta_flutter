@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:zeta_example/config/components_config.dart';
 import 'package:zeta_example/widgets.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 class PaginationExample extends StatefulWidget {
-  static const name = 'Pagination';
-
   const PaginationExample({super.key});
 
   @override
@@ -18,7 +17,7 @@ class _PaginationExampleState extends State<PaginationExample> {
   Widget build(BuildContext context) {
     return ExampleScaffold(
       gap: 80,
-      name: PaginationExample.name,
+      name: paginationRoute,
       children: [
         Center(
           child: Text(

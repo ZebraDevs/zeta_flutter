@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:zeta_example/config/components_config.dart';
 import 'package:zeta_example/widgets.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 class ChatItemExample extends StatelessWidget {
-  static const String name = 'ChatListItem';
-
   const ChatItemExample({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return ExampleScaffold(name: name, paddingAll: 0, children: [
+    return ExampleScaffold(name: chatListItemRoute, paddingAll: 0, children: [
       ConstrainedBox(
         constraints: BoxConstraints(maxWidth: 500),
         child: Column(

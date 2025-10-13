@@ -32,6 +32,8 @@
       "type": "dart",
       "cwd": "example",
       "request": "launch",
+      "program": "lib/embedded.dart",
+      "deviceId": "chrome",
       "toolArgs": ["--dart-define=EMBEDDED=true"]
     }
   ]

@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:zeta_example/config/components_config.dart';
 import 'package:zeta_example/widgets.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 class DialogExample extends StatelessWidget {
-  static const String name = 'Dialog';
-
   const DialogExample({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final zeta = Zeta.of(context);
     return ExampleScaffold(
-      name: 'Dialog',
+      name: dialogRoute,
       paddingAll: 0,
       children: [
         Container(

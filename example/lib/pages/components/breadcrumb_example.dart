@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:zeta_example/config/components_config.dart';
 import 'package:zeta_example/widgets.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 class BreadcrumbExample extends StatefulWidget {
-  static const String name = 'Breadcrumb';
-
   const BreadcrumbExample({super.key});
 
   @override
@@ -32,7 +31,7 @@ class _BreadcrumbExampleState extends State<BreadcrumbExample> {
   @override
   Widget build(BuildContext context) {
     return ExampleScaffold(
-      name: 'Breadcrumb',
+      name: breadcrumbRoute,
       children: [
         ZetaBreadcrumb(children: _children.sublist(0, 1), key: Key('docs-breadcrumb-1')),
         ZetaBreadcrumb(children: _children.sublist(0, 2), key: Key('docs-breadcrumb-2')),

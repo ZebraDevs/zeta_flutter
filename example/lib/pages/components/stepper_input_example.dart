@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:zeta_example/config/components_config.dart';
 import 'package:zeta_example/widgets.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 class StepperInputExample extends StatefulWidget {
-  static const name = 'StepperInput';
-
   const StepperInputExample({super.key});
 
   @override
@@ -15,7 +14,7 @@ class _StepperInputExampleState extends State<StepperInputExample> {
   @override
   Widget build(BuildContext context) {
     return ExampleScaffold(
-      name: StepperInputExample.name,
+      name: stepperInputRoute,
       paddingAll: 40,
       children: [
         Row(
