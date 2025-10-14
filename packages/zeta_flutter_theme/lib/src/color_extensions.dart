@@ -359,6 +359,14 @@ extension ZetaSemanticColorExtension on ZetaColors {
         surface: surfaceDefault,
         onSurface: mainDefault,
       );
+
+  /// border/primary-main
+  @Deprecated('Use borderPrimary instead')
+  Color get borderPrimaryMain => primitives.primary.shade80;
+
+  /// surface/default-inverse
+  @Deprecated('Use surfaceInversePure instead.')
+  Color get surfaceDefaultInverse => primitives.pure.shade1000;
 }
 
 /// Extensions on [ThemeMode] to provide additional functionality.
