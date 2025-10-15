@@ -30,10 +30,25 @@ abstract interface class ZetaPrimitives {
   /// The brightness of the primitives
   final Brightness brightness;
 
+  /// BlackBrand
+  ///
+  /// {@macro zeta-color-swatch}
+  ZetaColorSwatch get blackBrand;
+
   /// Blue
   ///
   /// {@macro zeta-color-swatch}
   ZetaColorSwatch get blue;
+
+  /// BlueBrand
+  ///
+  /// {@macro zeta-color-swatch}
+  ZetaColorSwatch get blueBrand;
+
+  /// BrownBrand
+  ///
+  /// {@macro zeta-color-swatch}
+  ZetaColorSwatch get brownBrand;
 
   /// Cool
   ///
@@ -45,10 +60,25 @@ abstract interface class ZetaPrimitives {
   /// {@macro zeta-color-swatch}
   ZetaColorSwatch get green;
 
+  /// GreenBrand
+  ///
+  /// {@macro zeta-color-swatch}
+  ZetaColorSwatch get greenBrand;
+
+  /// MagentaBrand
+  ///
+  /// {@macro zeta-color-swatch}
+  ZetaColorSwatch get magentaBrand;
+
   /// Orange
   ///
   /// {@macro zeta-color-swatch}
   ZetaColorSwatch get orange;
+
+  /// OrangeBrand
+  ///
+  /// {@macro zeta-color-swatch}
+  ZetaColorSwatch get orangeBrand;
 
   /// Pink
   ///
@@ -163,6 +193,22 @@ final class ZetaPrimitivesDark extends ZetaPrimitives {
   /// Constructs a new ZetaPrimitivesDark instance with the (optional) primary and secondary colors.
   const ZetaPrimitivesDark({super.primary, super.secondary}) : super(brightness: Brightness.dark);
   @override
+  ZetaColorSwatch get blackBrand => const ZetaColorSwatch(
+        swatch: {
+          10: Color(0xFF141414),
+          20: Color(0xFF1f1f1f),
+          30: Color(0xFF303030),
+          40: Color(0xFF3d3d3d),
+          50: Color(0xFF565656),
+          60: Color(0xFF757575),
+          70: Color(0xFF9e9e9e),
+          80: Color(0xFFbdbdbd),
+          90: Color(0xFFe6e6e6),
+          100: Color(0xFFf2f2f2),
+        },
+        primary: 0xFF757575,
+      );
+  @override
   ZetaColorSwatch get blue => const ZetaColorSwatch(
         swatch: {
           10: Color(0xFF101b25),
@@ -177,6 +223,38 @@ final class ZetaPrimitivesDark extends ZetaPrimitives {
           100: Color(0xFFf1f8ff),
         },
         primary: 0xFF599fe5,
+      );
+  @override
+  ZetaColorSwatch get blueBrand => const ZetaColorSwatch(
+        swatch: {
+          10: Color(0xFF050a18),
+          20: Color(0xFF0a142a),
+          30: Color(0xFF10224d),
+          40: Color(0xFF0e336f),
+          50: Color(0xFF002775),
+          60: Color(0xFF003fbd),
+          70: Color(0xFF1f69ff),
+          80: Color(0xFF5ea2ff),
+          90: Color(0xFF8dc0ff),
+          100: Color(0xFFe0f0ff),
+        },
+        primary: 0xFF003fbd,
+      );
+  @override
+  ZetaColorSwatch get brownBrand => const ZetaColorSwatch(
+        swatch: {
+          10: Color(0xFF1a0e06),
+          20: Color(0xFF2b1a0c),
+          30: Color(0xFF3b2109),
+          40: Color(0xFF553015),
+          50: Color(0xFF714113),
+          60: Color(0xFF874d17),
+          70: Color(0xFFb87438),
+          80: Color(0xFFe8af79),
+          90: Color(0xFFf6e5d3),
+          100: Color(0xFFfdf7f0),
+        },
+        primary: 0xFF874d17,
       );
   @override
   ZetaColorSwatch get cool => const ZetaColorSwatch(
@@ -211,6 +289,38 @@ final class ZetaPrimitivesDark extends ZetaPrimitives {
         primary: 0xFF67b796,
       );
   @override
+  ZetaColorSwatch get greenBrand => const ZetaColorSwatch(
+        swatch: {
+          10: Color(0xFF0c1405),
+          20: Color(0xFF192b03),
+          30: Color(0xFF254107),
+          40: Color(0xFF335106),
+          50: Color(0xFF528406),
+          60: Color(0xFF6faf13),
+          70: Color(0xFF8fd820),
+          80: Color(0xFFa8f931),
+          90: Color(0xFFc4ff6b),
+          100: Color(0xFFe2ffb6),
+        },
+        primary: 0xFF6faf13,
+      );
+  @override
+  ZetaColorSwatch get magentaBrand => const ZetaColorSwatch(
+        swatch: {
+          10: Color(0xFF140014),
+          20: Color(0xFF250025),
+          30: Color(0xFF390039),
+          40: Color(0xFF4b0049),
+          50: Color(0xFF8a0087),
+          60: Color(0xFFc200bf),
+          70: Color(0xFFff40fc),
+          80: Color(0xFFff73fc),
+          90: Color(0xFFff9ffd),
+          100: Color(0xFFffdefe),
+        },
+        primary: 0xFFc200bf,
+      );
+  @override
   ZetaColorSwatch get orange => const ZetaColorSwatch(
         swatch: {
           10: Color(0xFF1e1100),
@@ -225,6 +335,22 @@ final class ZetaPrimitivesDark extends ZetaPrimitives {
           100: Color(0xFFfef2e2),
         },
         primary: 0xFFd78d26,
+      );
+  @override
+  ZetaColorSwatch get orangeBrand => const ZetaColorSwatch(
+        swatch: {
+          10: Color(0xFF1a0b05),
+          20: Color(0xFF2d1207),
+          30: Color(0xFF471b0b),
+          40: Color(0xFF66220d),
+          50: Color(0xFF8a2900),
+          60: Color(0xFFd13f00),
+          70: Color(0xFFff4d00),
+          80: Color(0xFFff7a40),
+          90: Color(0xFFffbfa6),
+          100: Color(0xFFffece5),
+        },
+        primary: 0xFFd13f00,
       );
   @override
   ZetaColorSwatch get pink => const ZetaColorSwatch(
@@ -245,7 +371,7 @@ final class ZetaPrimitivesDark extends ZetaPrimitives {
   @override
   ZetaPureColorSwatch get pure => const ZetaPureColorSwatch(
         swatch: {
-          0: Color(0xFF151519),
+          0: Color(0xFF000000),
           500: Color(0xFF1d1e23),
           1000: Color(0xFFffffff),
         },
@@ -386,6 +512,22 @@ final class ZetaPrimitivesLight extends ZetaPrimitives {
   /// Constructs a new ZetaPrimitivesLight instance with the (optional) primary and secondary colors.
   const ZetaPrimitivesLight({super.primary, super.secondary}) : super(brightness: Brightness.light);
   @override
+  ZetaColorSwatch get blackBrand => const ZetaColorSwatch(
+        swatch: {
+          10: Color(0xFFf2f2f2),
+          20: Color(0xFFe6e6e6),
+          30: Color(0xFFbdbdbd),
+          40: Color(0xFF9e9e9e),
+          50: Color(0xFF878787),
+          60: Color(0xFF757575),
+          70: Color(0xFF666666),
+          80: Color(0xFF565656),
+          90: Color(0xFF303030),
+          100: Color(0xFF141414),
+        },
+        primary: 0xFF757575,
+      );
+  @override
   ZetaColorSwatch get blue => const ZetaColorSwatch(
         swatch: {
           10: Color(0xFFf1f8ff),
@@ -400,6 +542,38 @@ final class ZetaPrimitivesLight extends ZetaPrimitives {
           100: Color(0xFF101b25),
         },
         primary: 0xFF0073e6,
+      );
+  @override
+  ZetaColorSwatch get blueBrand => const ZetaColorSwatch(
+        swatch: {
+          10: Color(0xFFe0f0ff),
+          20: Color(0xFFb9daff),
+          30: Color(0xFF8dc0ff),
+          40: Color(0xFF5ea2ff),
+          50: Color(0xFF3886ff),
+          60: Color(0xFF1f69ff),
+          70: Color(0xFF0e53e5),
+          80: Color(0xFF003fbd),
+          90: Color(0xFF002775),
+          100: Color(0xFF00143a),
+        },
+        primary: 0xFF1f69ff,
+      );
+  @override
+  ZetaColorSwatch get brownBrand => const ZetaColorSwatch(
+        swatch: {
+          10: Color(0xFFfdf7f0),
+          20: Color(0xFFf6e5d3),
+          30: Color(0xFFe5a66a),
+          40: Color(0xFFe8b985),
+          50: Color(0xFFe8af79),
+          60: Color(0xFFd7965a),
+          70: Color(0xFFb87438),
+          80: Color(0xFF874d17),
+          90: Color(0xFF714113),
+          100: Color(0xFF3b2109),
+        },
+        primary: 0xFFd7965a,
       );
   @override
   ZetaColorSwatch get cool => const ZetaColorSwatch(
@@ -434,6 +608,38 @@ final class ZetaPrimitivesLight extends ZetaPrimitives {
         primary: 0xFF00864f,
       );
   @override
+  ZetaColorSwatch get greenBrand => const ZetaColorSwatch(
+        swatch: {
+          10: Color(0xFFe2ffb6),
+          20: Color(0xFFd1ff91),
+          30: Color(0xFFc4ff6b),
+          40: Color(0xFFb6ff4a),
+          50: Color(0xFFa8f931),
+          60: Color(0xFF8fd820),
+          70: Color(0xFF6faf13),
+          80: Color(0xFF528406),
+          90: Color(0xFF335106),
+          100: Color(0xFF192b03),
+        },
+        primary: 0xFF8fd820,
+      );
+  @override
+  ZetaColorSwatch get magentaBrand => const ZetaColorSwatch(
+        swatch: {
+          10: Color(0xFFffdefe),
+          20: Color(0xFFffc6fd),
+          30: Color(0xFFff9ffd),
+          40: Color(0xFFff73fc),
+          50: Color(0xFFff55fc),
+          60: Color(0xFFff40fc),
+          70: Color(0xFFe600e0),
+          80: Color(0xFFc200bf),
+          90: Color(0xFF8a0087),
+          100: Color(0xFF4b0049),
+        },
+        primary: 0xFFff40fc,
+      );
+  @override
   ZetaColorSwatch get orange => const ZetaColorSwatch(
         swatch: {
           10: Color(0xFFfef2e2),
@@ -448,6 +654,22 @@ final class ZetaPrimitivesLight extends ZetaPrimitives {
           100: Color(0xFF1e1100),
         },
         primary: 0xFFae6500,
+      );
+  @override
+  ZetaColorSwatch get orangeBrand => const ZetaColorSwatch(
+        swatch: {
+          10: Color(0xFFffece5),
+          20: Color(0xFFffd9cc),
+          30: Color(0xFFffbfa6),
+          40: Color(0xFFff9f75),
+          50: Color(0xFFff7a40),
+          60: Color(0xFFff4d00),
+          70: Color(0xFFf34300),
+          80: Color(0xFFd13f00),
+          90: Color(0xFF8a2900),
+          100: Color(0xFF4a1600),
+        },
+        primary: 0xFFff4d00,
       );
   @override
   ZetaColorSwatch get pink => const ZetaColorSwatch(
@@ -469,10 +691,10 @@ final class ZetaPrimitivesLight extends ZetaPrimitives {
   ZetaPureColorSwatch get pure => const ZetaPureColorSwatch(
         swatch: {
           0: Color(0xFFffffff),
-          500: Color(0xFF151519),
-          1000: Color(0xFF151519),
+          500: Color(0xFF1d1e23),
+          1000: Color(0xFF000000),
         },
-        primary: 0xFF151519,
+        primary: 0xFF1d1e23,
       );
   @override
   ZetaColorSwatch get purple => const ZetaColorSwatch(
