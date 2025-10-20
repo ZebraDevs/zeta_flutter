@@ -131,7 +131,7 @@ class ZetaSnackBar extends SnackBar {
       ZetaSnackBarType.warning => colors.surfaceWarningSubtle,
       ZetaSnackBarType.deletion || ZetaSnackBarType.error => colors.surfaceNegativeSubtle,
       ZetaSnackBarType.view => colors.surfacePrimarySubtle,
-      _ => colors.surfaceDefaultInverse,
+      _ => colors.surfaceInversePure,
     };
   }
 }
@@ -225,12 +225,12 @@ class _Action extends StatelessWidget {
         return switch (type) {
           ZetaSnackBarType.defaultType => _IconButton(
               onPressed: () => ScaffoldMessenger.of(context).removeCurrentSnackBar(),
-              color: colors.surfaceDefaultInverse,
+              color: colors.iconInverse,
             ),
           ZetaSnackBarType.action => _ActionButton(
               onPressed: onPressed,
               label: label,
-              color: colors.borderPrimaryMain,
+              color: colors.mainLight,
             ),
           ZetaSnackBarType.positive ||
           ZetaSnackBarType.info ||
@@ -253,7 +253,7 @@ class _Action extends StatelessWidget {
           _ => _ActionButton(
               onPressed: onPressed,
               label: label,
-              color: colors.borderPrimaryMain,
+              color: colors.mainDefault,
             ),
         };
       }(),
