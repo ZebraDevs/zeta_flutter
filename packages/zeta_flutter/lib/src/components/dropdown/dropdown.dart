@@ -324,7 +324,7 @@ class ZetaDropDownState<T> extends State<ZetaDropdown<T>> {
     return CompositedTransformTarget(
       link: _link,
       child: Semantics(
-        button: !widget.disableButtonSemantics && true,
+        button: !widget.disableButtonSemantics,
         selected: isOpen,
         label: widget.semanticDropdownLabel ?? _selectedItem?.label,
         child: OverlayPortal(
