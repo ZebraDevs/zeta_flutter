@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.4.3](https://github.com/ZebraDevs/zeta_flutter/compare/zeta_flutter-v1.4.2...zeta_flutter-v1.4.3) (2026-01-21)
+
+
+### 📈 Documentation
+
+* Add image to docs ([24eaaaf](https://github.com/ZebraDevs/zeta_flutter/commit/24eaaaf705c371b1f355dcd3739da96ebb39fbd1))
+
+
+### 🧹 Miscellaneous Chores
+
+* Remove icons from release please ([24eaaaf](https://github.com/ZebraDevs/zeta_flutter/commit/24eaaaf705c371b1f355dcd3739da96ebb39fbd1))
+
 ## [1.4.2](https://github.com/ZebraDevs/zeta_flutter/compare/zeta_flutter-v1.4.1...zeta_flutter-v1.4.2) (2025-11-17)
 
 
