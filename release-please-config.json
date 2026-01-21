@@ -11,11 +11,6 @@
     "packages/zeta_flutter_utils": {
       "release-type": "dart",
       "package-name": "zeta_flutter_utils"
-    },
-    "packages/zeta_icons": {
-      "release-type": "dart",
-      "package-name": "zeta_icons",
-      "component": "icons"
     }
   },
   "pull-request-title-pattern": "chore(${component}): release ${version}",
