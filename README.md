@@ -1,8 +1,14 @@
 # Zeta Flutter monorepo
 
-Zeta is the new, formal, standardized Zebra Design System based off the successes of ZDS (Zebra Design System).
+<picture style="max-width: 400px">
+  <source media="(prefers-color-scheme: dark)" srcset="./packages/zeta_flutter/example/dark-wide.svg">
+  <source media="(prefers-color-scheme: light)" srcset="./packages/zeta_flutter/example/light-wide.svg">
+  <img alt="Fallback image description" src="./packages/zeta_flutter/example/light-wide.svg">
+</picture>
 
-This repo contains the source code for all Zeta Flutter packages.
+Zeta is the new, formal, standardized Zebra Design System based off the successes of ZDS (Zebra Design System). This monorepo contains the source code for all Zeta Flutter packages.
+
+> 🚧 Looking for the Zeta Flutter components? [Click here!](https://github.com/ZebraDevs/zeta_flutter/tree/develop/packages/zeta_flutter)
 
 ## Packages
 
