@@ -6,6 +6,12 @@ import 'package:markdown_widget/widget/all.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
+final _pictureRegex = RegExp(
+  r'<picture[^>]*>(.*?)</picture>',
+  dotAll: true,
+  caseSensitive: false,
+);
+
 class IntroductionWidgetbook extends StatefulWidget {
   const IntroductionWidgetbook({super.key, required this.readme});
   final String readme;
@@ -16,10 +22,11 @@ class IntroductionWidgetbook extends StatefulWidget {
 
 class _IntroductionWidgetbookState extends State<IntroductionWidgetbook> {
   late String readme;
+
   @override
   void initState() {
     super.initState();
-    readme = widget.readme.replaceAll('# Zeta Flutter', '').trim();
+    readme = widget.readme.replaceAll('# Zeta Flutter', '').replaceAll(_pictureRegex, '').trim();
   }
 
   @override
