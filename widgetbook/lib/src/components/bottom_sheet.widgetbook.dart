@@ -40,5 +40,7 @@ Widget bottomSheet(BuildContext context) {
               ),
             ),
           ),
+    showCloseButton: context.knobs.boolean(label: 'Show close button', initialValue: true),
+    onDismissed: () {},
   ).paddingHorizontal(16);
 }

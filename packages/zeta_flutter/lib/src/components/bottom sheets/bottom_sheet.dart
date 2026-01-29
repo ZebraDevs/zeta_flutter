@@ -20,6 +20,8 @@ class ZetaBottomSheet extends ZetaStatelessWidget {
     this.title,
     this.body,
     this.centerTitle = true,
+    this.showCloseButton = false,
+    this.onDismissed,
   });
 
   /// The title of [ZetaBottomSheet].
@@ -33,11 +35,29 @@ class ZetaBottomSheet extends ZetaStatelessWidget {
   /// The content of [ZetaBottomSheet].
   final Widget? body;
 
+  /// Whether to show close icon button or not.
+  final bool showCloseButton;
+
+  /// Callback when the bottom sheet is dismissed.
+  ///
+  /// This is _only_ called when the user closes the sheet by tapping the close button.
+  ///
+  /// Defaults to
+  /// ```dart
+  /// Navigator.of(context).pop();
+  /// ```
+  final VoidCallback? onDismissed;
+
   @override
   Widget build(BuildContext context) {
     final colors = Zeta.of(context).colors;
     final spacing = Zeta.of(context).spacing;
-    final radius = Zeta.of(context).radius;
+
+    final text = Text(
+      title ?? '',
+      style: Zeta.of(context).textStyles.titleMedium,
+      textAlign: centerTitle ? TextAlign.center : TextAlign.start,
+    );
 
     return ZetaRoundedScope(
       rounded: context.rounded,
@@ -55,39 +75,64 @@ class ZetaBottomSheet extends ZetaStatelessWidget {
             topRight: Radius.circular(spacing.xl_2),
           ),
         ),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
+        child: Stack(
           children: [
-            Align(
-              child: Padding(
-                padding: EdgeInsets.only(top: spacing.small),
-                child: Container(
-                  width: 40,
-                  height: 4,
-                  decoration: BoxDecoration(
-                    color: colors.surfaceDisabled,
-                    borderRadius: BorderRadius.all(radius.full),
-                  ),
+            if (showCloseButton)
+              Positioned(
+                right: Zeta.of(context).spacing.medium,
+                top: Zeta.of(context).spacing.small,
+                child: IconButton(
+                  icon: const ZetaIcon(ZetaIcons.close),
+                  color: colors.mainSubtle,
+                  onPressed: () {
+                    if (onDismissed != null) {
+                      onDismissed?.call();
+                    } else {
+                      Navigator.of(context).pop();
+                    }
+                  },
                 ),
               ),
-            ),
-            if (title != null)
-              Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: spacing.medium,
-                  vertical: spacing.xl_2,
-                ),
-                child: Align(
-                  alignment: centerTitle ? Alignment.center : Alignment.centerLeft,
-                  child: Text(
-                    title!,
-                    style: Zeta.of(context).textStyles.titleMedium,
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Align(
+                  child: SizedBox(
+                    height: spacing.xl,
+                    child: Center(
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: colors.surfaceDisabled,
+                          borderRadius: BorderRadius.circular(
+                            100, // NOTE: This radius is hardcoded in Figma, doesn't change when token values change.
+                          ),
+                        ),
+                        height: spacing.minimum,
+                        width: spacing.xl_6,
+                      ),
+                    ),
                   ),
                 ),
-              ),
-            Material(
-              color: colors.surfaceDefault,
-              child: body ?? const Nothing(),
+                if (title != null)
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: spacing.medium,
+                      vertical: spacing.xl_2,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: centerTitle ? MainAxisAlignment.center : MainAxisAlignment.spaceBetween,
+                      children: [
+                        Expanded(
+                          child: centerTitle ? Center(child: text) : text,
+                        ),
+                      ],
+                    ),
+                  ),
+                Material(
+                  color: colors.surfaceDefault,
+                  child: body ?? const Nothing(),
+                ),
+              ],
             ),
           ],
         ),
@@ -100,7 +145,9 @@ class ZetaBottomSheet extends ZetaStatelessWidget {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty<String?>('title', title))
-      ..add(DiagnosticsProperty<bool>('centerTitle', centerTitle));
+      ..add(DiagnosticsProperty<bool>('centerTitle', centerTitle))
+      ..add(ObjectFlagProperty<VoidCallback?>.has('onDismissed', onDismissed))
+      ..add(DiagnosticsProperty<bool>('showCloseButton', showCloseButton));
   }
 }
 
