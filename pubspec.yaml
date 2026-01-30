@@ -23,7 +23,11 @@ melos:
           dart fix --apply
 
   scripts:
-    doc: dart doc packages/zeta_flutter
+    doc:
+      run: dart doc packages/zeta_flutter
+      packageFilters:
+        noPrivate: true
+
     build_runner:
       exec: dart run build_runner build -d
     test:
@@ -34,6 +38,12 @@ melos:
       exec:
         failFast: true
         concurrency: 1
+      packageFilters:
+        noPrivate: true
 
-    pana: melos exec -- bash ../../scripts/pana.sh
+    pana:
+      run: melos exec -- bash ../../scripts/pana.sh
+      packageFilters:
+        noPrivate: true
+
     test_counter: dart run scripts/test-counter/test_counter.dart
