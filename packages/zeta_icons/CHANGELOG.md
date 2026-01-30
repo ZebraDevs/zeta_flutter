@@ -1,5 +1,53 @@
 # Changelog
 
+## [1.7.0](https://github.com/ZebraDevs/zeta_flutter/compare/icons-v1.7.0...icons-v1.9.0) (2025-11-17)
+
+### ✅ Icons added
+* **Action:** Side Bar Toggle
+* **General:** Currency Pound
+* **General:** Local Mall
+* **General:** Savings
+
+
+## [1.7.0](https://github.com/ZebraDevs/zeta_flutter/compare/icons-v1.6.0...icons-v1.7.0) (2025-11-10)
+
+### ✅ Icons added
+* **Action:** Shopping Basket 
+* **Audio_Video:** Flash Auto
+* **Audio_Video:** Flash Off
+* **Audio_Video:** Flash On
+* **Audio_Video:** No Flash
+* **General:** Award Star
+* **General:** Credit Card
+* **General:** Currency North America
+* **General:** Payment Card
+* **General:** Search Check 2
+* **General:** Siren Check
+* **General:** Target
+* **General:** Universal Currency Alt
+
+
+## [1.6.0](https://github.com/ZebraDevs/zeta_flutter/compare/icons-v1.4.0...icons-v1.6.0) (2025-10-27)
+
+### ✅ Icons added
+* **Action:** Category
+* **Action:** Filter Off
+* **Action:** Filter Outline
+* **Action:** Frame Inspect
+* **Action:** Page Detail
+* **Action:** Point Scan
+* **Action:** Quote
+* **Action:** Scan Document
+* **Action:** Tune
+
+
+
+## [1.4.0](https://github.com/ZebraDevs/zeta_flutter/compare/icons-v1.3.0...icons-v1.4.0) (2025-10-15)
+
+### ✅ Icons added
+* **Navigation:** Locations
+
+
 ## [1.3.0](https://github.com/ZebraDevs/zeta_flutter/compare/icons-v1.1.7...icons-v1.3.0) (2025-10-13)
 
 ### ✅ Icons added
