@@ -12,12 +12,12 @@ resolution: workspace
 dependencies:
   flutter:
     sdk: flutter
-  flutter_svg: ^2.2.2
-  google_fonts: ^6.3.2
+  flutter_svg: ^2.2.3
+  google_fonts: ^8.0.0
   http: ^1.6.0
   markdown_widget: ^2.3.2+8
   url_launcher: ^6.3.2
-  widgetbook: ^3.20.0
+  widgetbook: ^3.20.2
   widgetbook_annotation: ^3.9.0
   zeta_flutter:
     path: ../
@@ -26,8 +26,8 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^6.0.0
-  widgetbook_generator: ^3.20.0
-  build_runner: ^2.10.3
+  widgetbook_generator: ^3.20.1
+  build_runner: ^2.10.5
 
 flutter:
   uses-material-design: true

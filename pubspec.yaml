@@ -4,7 +4,7 @@ environment:
   sdk: ^3.8.0
 
 dev_dependencies:
-  melos: ^6.3.3
+  melos: ^7.4.0
 
 workspace:
   - packages/zeta_flutter
@@ -14,5 +14,36 @@ workspace:
   - example/
   - widgetbook/
 
-flutter:
-  uses-material-design: true
+melos:
+  command:
+    publish:
+      hooks:
+        pre: |
+          dart format packages --fix
+          dart fix --apply
+
+  scripts:
+    doc:
+      run: dart doc packages/zeta_flutter
+      packageFilters:
+        noPrivate: true
+
+    build_runner:
+      exec: dart run build_runner build -d
+    test:
+      run: rm -rf .coverage && melos test_individual && bash scripts/lcov_combine.sh
+
+    test_individual:
+      run: bash ../../scripts/cov_move.sh
+      exec:
+        failFast: true
+        concurrency: 1
+      packageFilters:
+        noPrivate: true
+
+    pana:
+      run: melos exec -- bash ../../scripts/pana.sh
+      packageFilters:
+        noPrivate: true
+
+    test_counter: dart run scripts/test-counter/test_counter.dart
