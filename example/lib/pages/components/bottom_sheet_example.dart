@@ -83,6 +83,7 @@ class _BottomSheetExampleState extends State<BottomSheetExample> {
           child: ZetaBottomSheet(
             title: 'Bottom Sheet',
             showCloseButton: true,
+            onDismissed: () {},
             centerTitle: centerTitle,
             body: Column(
               children: [
