@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:zeta_example/config/components_config.dart';
 import 'package:zeta_example/widgets.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 class CommsButtonExample extends StatelessWidget {
-  static const String name = 'CommsButtons';
-
   const CommsButtonExample({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return ExampleScaffold(name: name, children: [
+    return ExampleScaffold(name: commsButtonRoute, children: [
       Wrap(
         runSpacing: Zeta.of(context).spacing.xl_3,
         alignment: WrapAlignment.start,

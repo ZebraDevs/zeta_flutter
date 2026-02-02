@@ -40,5 +40,16 @@ Widget bottomSheet(BuildContext context) {
               ),
             ),
           ),
+    showCloseButton: context.knobs.boolean(label: 'Show close button', initialValue: true),
+    onDismissed: () {
+      ScaffoldMessenger.of(context).showSnackBar(
+        ZetaSnackBar(
+          context: context,
+          type: ZetaSnackBarType.defaultType,
+          leadingIcon: Icon(Icons.mood),
+          content: Text('Close icon pressed'),
+        ),
+      );
+    },
   ).paddingHorizontal(16);
 }

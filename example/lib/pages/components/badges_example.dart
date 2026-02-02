@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:zeta_example/config/components_config.dart';
 import 'package:zeta_example/widgets.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
-class StatusLabel extends StatelessWidget {
-  static const String name = 'Badges/StatusLabel';
-
-  const StatusLabel();
+class StatusLabelExample extends StatelessWidget {
+  const StatusLabelExample();
 
   Widget statusLabelExampleRow(ZetaWidgetStatus type) {
     return Row(
@@ -21,7 +20,7 @@ class StatusLabel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ExampleScaffold(key: Key('docs-status-label'), name: name, children: [
+    return ExampleScaffold(key: Key('docs-status-label'), name: badgesStatusLabelRoute, children: [
       Column(
         children: [
           statusLabelExampleRow(ZetaWidgetStatus.neutral),
@@ -35,15 +34,13 @@ class StatusLabel extends StatelessWidget {
   }
 }
 
-class PriorityPill extends StatelessWidget {
-  static const String name = 'Badges/PriorityPill';
-
-  const PriorityPill();
+class PriorityPillExample extends StatelessWidget {
+  const PriorityPillExample();
 
   @override
   Widget build(BuildContext context) {
     return ExampleScaffold(
-      name: name,
+      name: badgesPriorityPillRoute,
       children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -123,10 +120,8 @@ class PriorityPill extends StatelessWidget {
   }
 }
 
-class Label extends StatelessWidget {
-  static const String name = 'Badges/Label';
-
-  const Label();
+class LabelExample extends StatelessWidget {
+  const LabelExample();
 
   Widget badgeExampleRow(ZetaWidgetStatus type) {
     return Row(
@@ -141,7 +136,7 @@ class Label extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ExampleScaffold(
-      name: name,
+      name: badgesLabelRoute,
       children: [
         Column(
           children: [
@@ -157,15 +152,13 @@ class Label extends StatelessWidget {
   }
 }
 
-class Indicators extends StatelessWidget {
-  static const String name = 'Badges/Indicator';
-
-  const Indicators();
+class IndicatorExample extends StatelessWidget {
+  const IndicatorExample();
 
   @override
   Widget build(BuildContext context) {
     return ExampleScaffold(
-      name: name,
+      name: badgesIndicatorRoute,
       children: [
         Container(
           child: Row(
@@ -223,15 +216,13 @@ class Indicators extends StatelessWidget {
   }
 }
 
-class Tags extends StatelessWidget {
-  static const String name = 'Badges/Tag';
-
-  const Tags();
+class TagExample extends StatelessWidget {
+  const TagExample();
 
   @override
   Widget build(BuildContext context) {
     return ExampleScaffold(
-      name: name,
+      name: badgesTagRoute,
       children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.center,

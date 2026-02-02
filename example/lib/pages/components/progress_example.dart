@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:zeta_example/config/components_config.dart';
 import 'package:zeta_example/widgets.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 class ProgressBarExample extends StatefulWidget {
-  static const String name = 'ProgressIndicator/ProgressBar';
-
   const ProgressBarExample({super.key});
 
   @override
@@ -28,7 +27,7 @@ class ProgressExampleState extends State<ProgressBarExample> {
   @override
   Widget build(BuildContext context) {
     return ExampleScaffold(
-      name: ProgressBarExample.name,
+      name: progressBarRoute,
       children: [
         Column(
           spacing: 16,
@@ -45,7 +44,6 @@ class ProgressExampleState extends State<ProgressBarExample> {
 }
 
 class ProgressCircleExample extends StatefulWidget {
-  static const String name = 'ProgressIndicator/ProgressCircle';
   const ProgressCircleExample({super.key});
 
   @override
@@ -74,7 +72,7 @@ class _ProgressCircleExampleState extends State<ProgressCircleExample> with Sing
   @override
   Widget build(BuildContext context) {
     return ExampleScaffold(
-      name: ProgressCircleExample.name,
+      name: progressCircleRoute,
       children: [
         AnimatedBuilder(
             animation: _controller,

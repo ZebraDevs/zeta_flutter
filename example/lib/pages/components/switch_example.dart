@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:zeta_example/config/components_config.dart';
 import 'package:zeta_example/widgets.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 class SwitchExample extends StatefulWidget {
-  static const String name = 'Switch';
-
   const SwitchExample({Key? key}) : super(key: key);
 
   @override
@@ -18,7 +17,7 @@ class _SwitchExampleState extends State<SwitchExample> {
   @override
   Widget build(BuildContext context) {
     return ExampleScaffold(
-      name: SwitchExample.name,
+      name: switchRoute,
       children: [
         Column(
           spacing: 40,

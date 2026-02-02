@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:zeta_example/config/components_config.dart';
 import 'package:zeta_example/widgets.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 class NavigationRailExample extends StatefulWidget {
-  static const String name = 'NavigationRail';
-
   const NavigationRailExample({Key? key}) : super(key: key);
 
   @override
@@ -26,7 +25,7 @@ class _NavigationRailExampleState extends State<NavigationRailExample> {
 
     return SafeArea(
       child: ExampleScaffold(
-        name: 'Navigation Rail',
+        name: navigationRailRoute,
         paddingAll: 0,
         children: [
           Row(

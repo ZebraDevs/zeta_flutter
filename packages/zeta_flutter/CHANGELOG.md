@@ -1,5 +1,34 @@
 # Changelog
 
+## [1.4.2](https://github.com/ZebraDevs/zeta_flutter/compare/zeta_flutter-v1.4.1...zeta_flutter-v1.4.2) (2025-11-17)
+
+
+### ✨ New Features
+
+* Add new button flavor: Subtle ([d84e09b](https://github.com/ZebraDevs/zeta_flutter/commit/d84e09b630e17122ada7a08bfd61c5b025e01ce5))
+* **UX-1355:** Make input field on slider component ([#403](https://github.com/ZebraDevs/zeta_flutter/issues/403)) ([575e59c](https://github.com/ZebraDevs/zeta_flutter/commit/575e59c6649446040f288ddb5c70dda7445f3f9e))
+* **UX-1453:** Added function call backs to built in buttons ([d84e09b](https://github.com/ZebraDevs/zeta_flutter/commit/d84e09b630e17122ada7a08bfd61c5b025e01ce5))
+* **UX-1453:** Allow rounded prop to be altered in Widgetbook ([d84e09b](https://github.com/ZebraDevs/zeta_flutter/commit/d84e09b630e17122ada7a08bfd61c5b025e01ce5))
+* **UX-1453:** Match Global Header component to new Figma designs ([d84e09b](https://github.com/ZebraDevs/zeta_flutter/commit/d84e09b630e17122ada7a08bfd61c5b025e01ce5))
+
+
+### 🪲 Bug Fixes
+
+* Slider - Make rounded boolean toggle on Widgetbook ([531c3f5](https://github.com/ZebraDevs/zeta_flutter/commit/531c3f5797fb8fae7911d7b898c1c392e280c7df))
+* **UX-1136:** Update slider colours to match Figma designs ([#402](https://github.com/ZebraDevs/zeta_flutter/issues/402)) ([531c3f5](https://github.com/ZebraDevs/zeta_flutter/commit/531c3f5797fb8fae7911d7b898c1c392e280c7df))
+* **UX-1453:** Complete tests, fix debug tests ([d84e09b](https://github.com/ZebraDevs/zeta_flutter/commit/d84e09b630e17122ada7a08bfd61c5b025e01ce5))
+
+
+### 🧹 Miscellaneous Chores
+
+* ** icons:** release 1.3.0 ([#407](https://github.com/ZebraDevs/zeta_flutter/issues/407)) ([0adc243](https://github.com/ZebraDevs/zeta_flutter/commit/0adc2431770d5018176adb041a0698f6f6e808c9))
+* ** zeta_flutter_theme:** release 1.2.2 ([#386](https://github.com/ZebraDevs/zeta_flutter/issues/386)) ([7e92e45](https://github.com/ZebraDevs/zeta_flutter/commit/7e92e45d9250ced52daae128e1e6575107c27a87))
+* ** zeta_flutter_theme:** release 1.2.3 ([#398](https://github.com/ZebraDevs/zeta_flutter/issues/398)) ([7ae3443](https://github.com/ZebraDevs/zeta_flutter/commit/7ae34434d6f506406b15d7b081caf5c630a88d98))
+* ** zeta_flutter_theme:** release zeta_flutter_theme 1.2.2 ([7ed7a9a](https://github.com/ZebraDevs/zeta_flutter/commit/7ed7a9a679f0a69cbd15ed573433fdb943cad2ab))
+* ** zeta_flutter_utils:** release 1.1.3 ([#383](https://github.com/ZebraDevs/zeta_flutter/issues/383)) ([3330e87](https://github.com/ZebraDevs/zeta_flutter/commit/3330e87a2f3d955b21822a69dbc2a0eb3fb56f03))
+* ** zeta_flutter_utils:** release 1.1.4 ([#399](https://github.com/ZebraDevs/zeta_flutter/issues/399)) ([53a3d21](https://github.com/ZebraDevs/zeta_flutter/commit/53a3d2129b355eb9ce45988ba5c8589c5a2bcd90))
+* ** zeta_flutter_utils:** release zeta_flutter_utils 1.1.3 ([f22e0e6](https://github.com/ZebraDevs/zeta_flutter/commit/f22e0e6cb0dbd42f6a02efe64a33a8435d7d0192))
+
 ## [1.4.1](https://github.com/ZebraDevs/zeta_flutter/compare/zeta_flutter-v1.4.0...zeta_flutter-v1.4.1) (2025-09-16)
 
 

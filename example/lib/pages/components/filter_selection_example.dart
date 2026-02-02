@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:zeta_example/config/components_config.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 import '../../widgets.dart';
 
 class FilterSelectionExample extends StatefulWidget {
-  static const String name = 'FilterSelectionBar';
-
   const FilterSelectionExample({super.key});
 
   @override
@@ -19,7 +18,7 @@ class _FilterSelectionExampleState extends State<FilterSelectionExample> {
   @override
   Widget build(BuildContext context) {
     return ExampleScaffold(
-      name: FilterSelectionExample.name,
+      name: filterSelectionBarRoute,
       children: [
         ZetaFilterSelection(
           buttonSemanticLabel: 'Filter',

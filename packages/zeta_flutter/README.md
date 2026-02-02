@@ -1,5 +1,11 @@
 # Zeta Flutter
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./example/dark-wide.svg">
+  <source media="(prefers-color-scheme: light)" srcset="./example/light-wide.svg">
+  <img alt="Fallback image description" src="./example/light-wide.svg">
+</picture>
+
 Zeta is the new, formal, standardized Zebra Design System based off the successes of ZDS (Zebra Design System).
 
 ### Prerequisites

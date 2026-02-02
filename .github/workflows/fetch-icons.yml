@@ -46,6 +46,12 @@ jobs:
           cd ../zeta_flutter
           sed -i 's/^  zeta_icons: .*/  zeta_icons: ${{ github.event.inputs.version }}/' pubspec.yaml
 
+      - name: Update Changelog File
+        run: |
+          cd flutter/packages/zeta_icons/
+          sed -i "2a\\${{ github.event.inputs.changelog }}" CHANGELOG.md
+          sed -i "3a\\" CHANGELOG.md
+
       - name: Push changes
         run: |
           cd flutter

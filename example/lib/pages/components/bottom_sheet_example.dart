@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:zeta_example/config/components_config.dart';
 import 'package:zeta_example/widgets.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 class BottomSheetExample extends StatefulWidget {
-  static const String name = 'BottomSheet';
-
   const BottomSheetExample({super.key});
 
   @override
@@ -17,7 +16,7 @@ class _BottomSheetExampleState extends State<BottomSheetExample> {
   @override
   Widget build(BuildContext context) {
     return ExampleScaffold(
-      name: BottomSheetExample.name,
+      name: bottomSheetRoute,
       paddingAll: 0,
       children: [
         Column(
@@ -83,6 +82,8 @@ class _BottomSheetExampleState extends State<BottomSheetExample> {
           key: Key('docs-bottom-sheet'),
           child: ZetaBottomSheet(
             title: 'Bottom Sheet',
+            showCloseButton: true,
+            onDismissed: () {},
             centerTitle: centerTitle,
             body: Column(
               children: [

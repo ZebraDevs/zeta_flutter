@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:zeta_example/config/components_config.dart';
 import 'package:zeta_example/widgets.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 class StepperExample extends StatefulWidget {
   const StepperExample({super.key});
-
-  static const String name = 'Stepper';
 
   @override
   State<StepperExample> createState() => _StepperExampleState();
@@ -17,7 +16,7 @@ class _StepperExampleState extends State<StepperExample> {
   @override
   Widget build(BuildContext context) {
     return ExampleScaffold(
-      name: StepperExample.name,
+      name: stepperRoute,
       children: [
         ZetaStepper(
           currentStep: _step,

@@ -1,5 +1,77 @@
 # Changelog
 
+## [1.7.0](https://github.com/ZebraDevs/zeta_flutter/compare/icons-v1.7.0...icons-v1.9.0) (2025-11-17)
+
+### ✅ Icons added
+* **Action:** Side Bar Toggle
+* **General:** Currency Pound
+* **General:** Local Mall
+* **General:** Savings
+
+
+## [1.7.0](https://github.com/ZebraDevs/zeta_flutter/compare/icons-v1.6.0...icons-v1.7.0) (2025-11-10)
+
+### ✅ Icons added
+* **Action:** Shopping Basket 
+* **Audio_Video:** Flash Auto
+* **Audio_Video:** Flash Off
+* **Audio_Video:** Flash On
+* **Audio_Video:** No Flash
+* **General:** Award Star
+* **General:** Credit Card
+* **General:** Currency North America
+* **General:** Payment Card
+* **General:** Search Check 2
+* **General:** Siren Check
+* **General:** Target
+* **General:** Universal Currency Alt
+
+
+## [1.6.0](https://github.com/ZebraDevs/zeta_flutter/compare/icons-v1.4.0...icons-v1.6.0) (2025-10-27)
+
+### ✅ Icons added
+* **Action:** Category
+* **Action:** Filter Off
+* **Action:** Filter Outline
+* **Action:** Frame Inspect
+* **Action:** Page Detail
+* **Action:** Point Scan
+* **Action:** Quote
+* **Action:** Scan Document
+* **Action:** Tune
+
+
+
+## [1.4.0](https://github.com/ZebraDevs/zeta_flutter/compare/icons-v1.3.0...icons-v1.4.0) (2025-10-15)
+
+### ✅ Icons added
+* **Navigation:** Locations
+
+
+## [1.3.0](https://github.com/ZebraDevs/zeta_flutter/compare/icons-v1.1.7...icons-v1.3.0) (2025-10-13)
+
+### ✅ Icons added
+
+* **Action:** Search Checkmark ([9e8396c](https://github.com/ZebraDevs/zeta-icons/commit/9e8396c30b0f297694de1f606b97753450ed906b))
+* **Action:** Search Data ([9e8396c](https://github.com/ZebraDevs/zeta-icons/commit/9e8396c30b0f297694de1f606b97753450ed906b))
+* **Action:** Search Document ([9e8396c](https://github.com/ZebraDevs/zeta-icons/commit/9e8396c30b0f297694de1f606b97753450ed906b))
+* **Action:** Search File ([9e8396c](https://github.com/ZebraDevs/zeta-icons/commit/9e8396c30b0f297694de1f606b97753450ed906b))
+* **Action:** Search Image ([9e8396c](https://github.com/ZebraDevs/zeta-icons/commit/9e8396c30b0f297694de1f606b97753450ed906b))
+* **Action:** Search Refresh ([9e8396c](https://github.com/ZebraDevs/zeta-icons/commit/9e8396c30b0f297694de1f606b97753450ed906b))
+* **Action:** Search Settings ([9e8396c](https://github.com/ZebraDevs/zeta-icons/commit/9e8396c30b0f297694de1f606b97753450ed906b))
+* **Action:** Search Star ([9e8396c](https://github.com/ZebraDevs/zeta-icons/commit/9e8396c30b0f297694de1f606b97753450ed906b))
+* **Action:** Search Tab ([9e8396c](https://github.com/ZebraDevs/zeta-icons/commit/9e8396c30b0f297694de1f606b97753450ed906b))
+* **Content:** Push Pin Outline ([e6bc898](https://github.com/ZebraDevs/zeta-icons/commit/e6bc8983ee97bd2a5c07ad2c9960a3252f70bfee))
+* **File:** Shared Folder Filled ([0cb9944](https://github.com/ZebraDevs/zeta-icons/commit/0cb994498da9ddb54b12ba85c6977ceb982730ff))
+* **Social:** Neutral ([e6bc898](https://github.com/ZebraDevs/zeta-icons/commit/e6bc8983ee97bd2a5c07ad2c9960a3252f70bfee))
+
+
+### 🎨 Icons updated
+
+* **Content:** Push Pin ([0cb9944](https://github.com/ZebraDevs/zeta-icons/commit/0cb994498da9ddb54b12ba85c6977ceb982730ff))
+* **General:** To Do Outline ([9e8396c](https://github.com/ZebraDevs/zeta-icons/commit/9e8396c30b0f297694de1f606b97753450ed906b))
+
+ 
 ## [1.1.5](https://github.com/ZebraDevs/zeta_flutter/compare/zeta_icons-v1.1.4...zeta_icons-v1.1.5) (2025-08-13)
 
 

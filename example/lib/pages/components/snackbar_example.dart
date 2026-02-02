@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:zeta_example/config/components_config.dart';
 import 'package:zeta_example/widgets.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
 class SnackBarExample extends StatefulWidget {
-  static const String name = 'SnackBar';
-
   const SnackBarExample({super.key});
 
   @override
@@ -15,7 +14,7 @@ class _SnackBarExampleState extends State<SnackBarExample> {
   @override
   Widget build(BuildContext context) {
     return ExampleScaffold(
-      name: SnackBarExample.name,
+      name: snackbarRoute,
       children: [
         Column(
           spacing: 40,

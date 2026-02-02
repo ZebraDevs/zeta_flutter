@@ -59,6 +59,7 @@ class _IconsExampleState extends State<IconsExample> {
                                 fontPackage: ZetaIcons.package,
                               ),
                               size: Zeta.of(context).spacing.xl_6,
+                              color: Zeta.of(context).colors.mainDefault,
                             ),
                             Text(
                               nameArr,

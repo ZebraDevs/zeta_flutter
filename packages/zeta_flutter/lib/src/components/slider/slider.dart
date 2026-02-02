@@ -1,9 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import '../../../zeta_flutter.dart';
-
-// TODO(UX-1355): Create slider input field.
 
 /// Sliders allow users to make selections from a range of values.
 ///
@@ -20,12 +19,13 @@ class ZetaSlider extends ZetaStatefulWidget {
     this.divisions,
     this.semanticLabel,
     this.min = 0.0,
-    this.max = 1.0,
+    this.max = 100.0,
+    this.inputField = false,
   });
 
   /// Double value to represent slider percentage.
   ///
-  /// Default [min] / [max] are 0.0 and 1.0 respectively; this value should be between [min] and [max].
+  /// Default [min] / [max] are 0.0 and 100.0 respectively; this value should be between [min] and [max].
   final double value;
 
   /// Callback to handle changing of slider
@@ -45,6 +45,13 @@ class ZetaSlider extends ZetaStatefulWidget {
   /// Maximum value of the slider.
   final double max;
 
+  /// Whether to show an input field to the right of the slider.
+  /// The input field will change the slider value when updated.
+  ///
+  /// This also adds the min and max values below the slider.
+  /// This will default to 0 - 100 if min and max are not changed.
+  final bool inputField;
+
   @override
   State<ZetaSlider> createState() => _ZetaSliderState();
   @override
@@ -57,16 +64,73 @@ class ZetaSlider extends ZetaStatefulWidget {
       ..add(IntProperty('divisions', divisions))
       ..add(StringProperty('semanticLabel', semanticLabel))
       ..add(DoubleProperty('max', max))
-      ..add(DoubleProperty('min', min));
+      ..add(DoubleProperty('min', min))
+      ..add(DiagnosticsProperty<bool>('inputField', inputField));
   }
 }
 
 class _ZetaSliderState extends State<ZetaSlider> {
   bool _selected = false;
+  final _inputController = TextEditingController();
+  Debounce? _debounce;
+
+  @override
+  void initState() {
+    super.initState();
+    _inputController.text = widget.value.toString();
+    _inputController.addListener(_updateTextField);
+  }
+
+  // Called when slider is updated, changes text field value.
+  void _updateTextFieldFromSlider(double sliderValue) {
+    _inputController.text = sliderValue.toInt().toString();
+  }
+
+  // Called when text field is updated, changes slider value.
+  void _updateTextField() {
+    _debounce?.cancel();
+    _debounce = Debounce(
+      () {
+        final number = int.tryParse(_inputController.text);
+        if (number != null) {
+          final num newValue;
+          if (widget.divisions != null) {
+            final divisionSize = (widget.max - widget.min) / widget.divisions!;
+            final snappedValue = ((number - widget.min) / divisionSize).round() * divisionSize + widget.min;
+            newValue = snappedValue.round().clamp(widget.min, widget.max);
+            if (number != newValue) {
+              _inputController.text = newValue.toString();
+            }
+          } else {
+            newValue = number.clamp(widget.min, widget.max).toInt();
+            if (number != newValue) {
+              _inputController.text = newValue.toString();
+            }
+          }
+          widget.onChange?.call(newValue.toDouble());
+        }
+      },
+      duration: const Duration(milliseconds: 200),
+    );
+  }
+
+  @override
+  void dispose() {
+    _debounce?.cancel();
+    _inputController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    final colors = Zeta.of(context).colors;
+    final zeta = Zeta.of(context);
+    final colors = zeta.colors;
+
+    final activeColor = widget.onChange == null
+        ? colors.mainDisabled
+        : _selected
+            ? colors.mainPrimary
+            : colors.mainDefault;
 
     return MergeSemantics(
       child: Semantics(
@@ -74,7 +138,7 @@ class _ZetaSliderState extends State<ZetaSlider> {
         child: SliderTheme(
           data: SliderThemeData(
             /// Active Track
-            activeTrackColor: _activeColor,
+            activeTrackColor: activeColor,
             disabledActiveTrackColor: colors.mainDisabled,
 
             /// Inactive Track
@@ -90,45 +154,98 @@ class _ZetaSliderState extends State<ZetaSlider> {
             thumbColor: colors.mainDefault,
             disabledThumbColor: colors.mainDisabled,
             overlayShape: _SliderThumb(
-              size: Zeta.of(context).spacing.xl / 2,
+              size: zeta.spacing.xl / 2,
               rounded: context.rounded,
-              color: _activeColor,
+              color: activeColor,
             ),
             thumbShape: _SliderThumb(
-              size: Zeta.of(context).spacing.large / 2,
+              size: zeta.spacing.large / 2,
               rounded: context.rounded,
-              color: _activeColor,
+              color: activeColor,
             ),
             trackShape: context.rounded ? _RoundedRectangleTrackShape() : const RectangularSliderTrackShape(),
           ),
-          child: Slider(
-            value: widget.value,
-            onChanged: widget.onChange,
-            divisions: widget.divisions,
-            onChangeStart: (_) {
-              setState(() {
-                _selected = true;
-              });
-            },
-            onChangeEnd: (_) {
-              setState(() {
-                _selected = false;
-              });
-            },
-            min: widget.min,
-            max: widget.max,
-          ),
+          child: _generateSlider(),
         ),
       ),
     );
   }
 
-  Color get _activeColor {
-    final colors = Zeta.of(context).colors;
-    if (widget.onChange == null) {
-      return colors.mainDisabled;
+  Widget _generateCoreSlider() {
+    return Slider(
+      value: widget.value,
+      onChanged: widget.inputField
+          ? widget.onChange != null
+              ? (value) {
+                  // Update text field when slider changes
+                  _updateTextFieldFromSlider(value);
+                  widget.onChange?.call(value);
+                }
+              : null
+          : widget.onChange,
+      divisions: widget.divisions,
+      onChangeStart: (_) => setState(() => _selected = true),
+      onChangeEnd: (_) => setState(() => _selected = false),
+      min: widget.min,
+      max: widget.max,
+    );
+  }
+
+  // Private function to generate slider depending on input field boolean.
+  Widget _generateSlider() {
+    final zeta = Zeta.of(context);
+    final colors = zeta.colors;
+
+    // If input field is true, return slider with input field.
+    if (widget.inputField) {
+      return Row(
+        spacing: zeta.spacing.large,
+        children: [
+          Expanded(
+            child: Column(
+              spacing: zeta.spacing.small,
+              children: [
+                //Slider
+                _generateCoreSlider(),
+                //Numbers
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      widget.min.toInt().toString(),
+                      style: zeta.textStyles.bodyMedium.apply(
+                        color: widget.onChange == null ? colors.mainDisabled : colors.mainDefault,
+                      ),
+                    ),
+                    Text(
+                      widget.max.toInt().toString(),
+                      style: zeta.textStyles.bodyMedium.apply(
+                        color: widget.onChange == null ? colors.mainDisabled : colors.mainDefault,
+                      ),
+                    ),
+                  ],
+                ).paddingHorizontal(zeta.spacing.minimum),
+              ],
+            ),
+          ),
+          //Text Input
+          SizedBox(
+            width: zeta.spacing.xl_8 + zeta.spacing.small,
+            child: ZetaTextInput(
+              keyboardType: TextInputType.number,
+              disabled: widget.onChange == null,
+              size: ZetaWidgetSize.large,
+              textAlign: TextAlign.center,
+              inputFormatters: <TextInputFormatter>[FilteringTextInputFormatter.digitsOnly],
+              controller: _inputController,
+            ),
+          ),
+        ],
+      );
     }
-    return _selected ? colors.mainPrimary : colors.mainDefault;
+
+    // If input field is false, return just the slider.
+    return _generateCoreSlider();
   }
 }
 
