@@ -191,6 +191,13 @@ class ZetaButton extends ZetaStatelessWidget {
   Widget build(BuildContext context) {
     final minConstraints = _minConstraints(context);
     final iconSize = _iconSize(context);
+    final zeta = Zeta.of(context);
+
+    // Override to sharp if in AAA contrast mode
+    final contrastBorderType = zeta.contrast == ZetaContrast.aaa
+        ? ZetaWidgetBorder.sharp
+        : borderType ?? (context.rounded ? ZetaWidgetBorder.rounded : ZetaWidgetBorder.sharp);
+
     return Semantics(
       button: true,
       enabled: onPressed != null,
@@ -203,7 +210,7 @@ class ZetaButton extends ZetaStatelessWidget {
           onPressed: onPressed,
           style: buttonStyle(
             context,
-            borderType ?? (context.rounded ? ZetaWidgetBorder.rounded : ZetaWidgetBorder.sharp),
+            contrastBorderType,
             type,
           ),
           child: SelectionContainer.disabled(
