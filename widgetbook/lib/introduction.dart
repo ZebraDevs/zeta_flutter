@@ -83,7 +83,7 @@ class _IntroductionWidgetbookState extends State<IntroductionWidgetbook> {
                             Expanded(
                               child: Text(
                                 // x-release-please-start-version
-                                'zeta_flutter v1.0.0',
+                                'zeta_flutter v1.4.3', // TODO: This has broken since becoming a monorepo
                                 // x-release-please-end
                                 style: Zeta.of(context)
                                     .textStyles
