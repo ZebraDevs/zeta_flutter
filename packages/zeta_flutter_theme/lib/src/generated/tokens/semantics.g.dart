@@ -2152,15 +2152,15 @@ class ZetaRadiusAAA extends Equatable implements ZetaRadius {
   @override
   Radius get none => primitives.r_0;
   @override
-  Radius get minimal => primitives.s;
+  Radius get minimal => primitives.r_0;
   @override
-  Radius get rounded => primitives.m;
+  Radius get rounded => primitives.r_0;
   @override
-  Radius get large => primitives.l;
+  Radius get large => primitives.r_0;
   @override
-  Radius get xl => primitives.xl;
+  Radius get xl => primitives.r_0;
   @override
-  Radius get full => primitives.xl_4;
+  Radius get full => primitives.r_0;
   @override
   List<Object?> get props => [
         none,
