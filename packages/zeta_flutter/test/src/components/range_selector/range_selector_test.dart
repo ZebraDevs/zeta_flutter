@@ -272,7 +272,7 @@ void main() {
       final sliderTheme = find.byType(SliderTheme);
       final sliderThemeWidget = tester.widget<SliderTheme>(sliderTheme);
 
-      expect(sliderThemeWidget.data.activeTrackColor, colors.surfaceDefaultInverse);
+      expect(sliderThemeWidget.data.activeTrackColor, colors.mainDefault);
     });
   });
 
