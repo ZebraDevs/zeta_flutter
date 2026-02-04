@@ -1,5 +1,29 @@
 # Changelog
 
+## [1.4.3](https://github.com/ZebraDevs/zeta_flutter/compare/zeta_flutter-v1.4.2...zeta_flutter-v1.4.3) (2026-02-04)
+
+
+### 🪲 Bug Fixes
+
+* Add Close icon to bottom sheet ([#282](https://github.com/ZebraDevs/zeta_flutter/issues/282)) ([d3a194d](https://github.com/ZebraDevs/zeta_flutter/commit/d3a194d0adff27407ac0a031c5ba2c089b7981a4))
+
+
+### 📈 Documentation
+
+* Add image to docs ([24eaaaf](https://github.com/ZebraDevs/zeta_flutter/commit/24eaaaf705c371b1f355dcd3739da96ebb39fbd1))
+
+
+### ⛓️ Dependencies
+
+* Update deps ([#421](https://github.com/ZebraDevs/zeta_flutter/issues/421)) ([f0f5c5b](https://github.com/ZebraDevs/zeta_flutter/commit/f0f5c5b04a5df2a9824c6b0b369ea96933fe3a4f))
+
+
+### 🧹 Miscellaneous Chores
+
+* ** zeta_flutter_theme:** release 1.3.0 ([#422](https://github.com/ZebraDevs/zeta_flutter/issues/422)) ([4abe04e](https://github.com/ZebraDevs/zeta_flutter/commit/4abe04e4a34ce62e89be31ed2e25eaa62bb2fe53))
+* ** zeta_flutter_utils:** release 1.1.5 ([#415](https://github.com/ZebraDevs/zeta_flutter/issues/415)) ([3df2083](https://github.com/ZebraDevs/zeta_flutter/commit/3df208313453ccdbb632e59a9c5024d6ddc1534a))
+* Remove icons from release please ([24eaaaf](https://github.com/ZebraDevs/zeta_flutter/commit/24eaaaf705c371b1f355dcd3739da96ebb39fbd1))
+
 ## [1.4.2](https://github.com/ZebraDevs/zeta_flutter/compare/zeta_flutter-v1.4.1...zeta_flutter-v1.4.2) (2025-11-17)
 
 
