@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.3.0](https://github.com/ZebraDevs/zeta_flutter/compare/zeta_flutter_theme-v1.2.3...zeta_flutter_theme-v1.3.0) (2026-02-03)
+
+
+### ✨ New Features
+
+* **Tokens:** Fix AAA radius values ([#425](https://github.com/ZebraDevs/zeta_flutter/issues/425)) ([d1dd6d2](https://github.com/ZebraDevs/zeta_flutter/commit/d1dd6d2e0e45bab4971d9b3dfc221495bc22c727))
+
+
+### ⛓️ Dependencies
+
+* Update deps ([#421](https://github.com/ZebraDevs/zeta_flutter/issues/421)) ([f0f5c5b](https://github.com/ZebraDevs/zeta_flutter/commit/f0f5c5b04a5df2a9824c6b0b369ea96933fe3a4f))
+
 ## [1.2.3](https://github.com/ZebraDevs/zeta_flutter/compare/zeta_flutter_theme-v1.2.2...zeta_flutter_theme-v1.2.3) (2025-10-13)
 
 
