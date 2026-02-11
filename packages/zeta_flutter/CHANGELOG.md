@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.4](https://github.com/ZebraDevs/zeta_flutter/compare/zeta_flutter-v1.4.3...zeta_flutter-v1.4.4) (2026-02-11)
+
+
+### ⛓️ Dependencies
+
+* update deps ([eff0196](https://github.com/ZebraDevs/zeta_flutter/commit/eff0196e9efdfd1fe4e488351a51a305abb15384))
+
 ## [1.4.3](https://github.com/ZebraDevs/zeta_flutter/compare/zeta_flutter-v1.4.2...zeta_flutter-v1.4.3) (2026-02-04)
 
 
