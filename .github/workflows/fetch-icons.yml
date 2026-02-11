@@ -49,8 +49,10 @@ jobs:
       - name: Update Changelog File
         run: |
           cd flutter/packages/zeta_icons/
-          sed -i "2a\\${{ github.event.inputs.changelog }}" CHANGELOG.md
-          sed -i "3a\\" CHANGELOG.md
+          echo "${{ github.event.inputs.changelog }}" > /tmp/changelog_entry.txt
+          echo "" >> /tmp/changelog_entry.txt
+          cat CHANGELOG.md >> /tmp/changelog_entry.txt
+          mv /tmp/changelog_entry.txt CHANGELOG.md
 
       - name: Push changes
         run: |
