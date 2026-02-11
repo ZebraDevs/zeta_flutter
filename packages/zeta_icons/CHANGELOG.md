@@ -1,5 +1,21 @@
 # Changelog
 
+
+## [1.9.1](https://github.com/ZebraDevs/zeta-icons/compare/zeta-icons-1.9.0...zeta-icons-1.9.1) (2026-02-11)
+
+### ✅ Icons Added
+
+* **General:** Achievement Sync Outline <img src='https://raw.githubusercontent.com/ZebraDevs/zeta-icons/refs/heads/main/outputs/png/achievement_sync_outline_round.png' alt='Achievement Sync Outline'  width='24px' height='24px'/>
+
+
+## [1.9.0](https://github.com/ZebraDevs/zeta-icons/compare/zeta-icons-1.8.0...zeta-icons-1.9.0) (2025-11-17)
+
+### ✅ Icons Added
+
+* **Action:** Side Bar Toggle <img src='https://raw.githubusercontent.com/ZebraDevs/zeta-icons/refs/heads/main/outputs/png/side_bar_toggle_round.png' alt='Side Bar Toggle'  width='24px' height='24px'/>* **General:** Currency Pound <img src='https://raw.githubusercontent.com/ZebraDevs/zeta-icons/refs/heads/main/outputs/png/currency_pound_round.png' alt='Currency Pound'  width='24px' height='24px'/>* **General:** Local Mall <img src='https://raw.githubusercontent.com/ZebraDevs/zeta-icons/refs/heads/main/outputs/png/local_mall_round.png' alt='Local Mall'  width='24px' height='24px'/>* **General:** Savings <img src='https://raw.githubusercontent.com/ZebraDevs/zeta-icons/refs/heads/main/outputs/png/savings_round.png' alt='Savings'  width='24px' height='24px'/>
+
+## [1.8.0](https://github.com/ZebraDevs/zeta-icons/compare/zeta-icons-1.7.0...zeta-icons-1.8.0) (2025-11-13)
+
 ## [1.7.0](https://github.com/ZebraDevs/zeta_flutter/compare/icons-v1.7.0...icons-v1.9.0) (2025-11-17)
 
 ### ✅ Icons added
