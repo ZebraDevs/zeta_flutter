@@ -112,7 +112,7 @@ class _ZetaRangeSelectorState extends State<ZetaRangeSelector> {
     if (widget.onChange == null) {
       return colors.mainDisabled;
     }
-    return _selected ? colors.mainPrimary : colors.surfaceDefaultInverse;
+    return _selected ? colors.mainPrimary : colors.mainDefault;
   }
 
   void _onSubmit(TextEditingController controller, {bool lower = true}) {

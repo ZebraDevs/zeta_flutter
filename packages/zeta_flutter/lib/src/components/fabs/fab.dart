@@ -211,7 +211,7 @@ class _ZetaFABState extends State<ZetaFAB> {
               (Set<WidgetState> states) {
                 if (states.contains(WidgetState.focused)) {
                   // TODO(UX-1134): This removes a defualt border when focused, rather than adding a second border when focused.
-                  return BorderSide(color: Zeta.of(context).colors.borderPrimary, width: ZetaBorders.medium);
+                  return BorderSide(color: Zeta.of(context).colors.borderPrimaryLegacy, width: ZetaBorders.medium);
                 }
                 return null;
               },

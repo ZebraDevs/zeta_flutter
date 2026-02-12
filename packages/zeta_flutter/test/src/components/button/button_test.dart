@@ -15,18 +15,16 @@ void main() {
   });
 
   group('Accessibility Tests', () {
-    // Ignoring the secondary button type as it is deprecated.
-    // ignore: deprecated_member_use_from_same_package
-    final buttonTypes = ZetaButtonType.values.where((type) => type != ZetaButtonType.secondary);
-    for (final buttonType in buttonTypes) {
+    for (final buttonType in ZetaButtonType.values) {
       for (final size in ZetaWidgetSize.values) {
         meetsAccessibilityGuidelinesTest(
           ZetaButton(
             onPressed: () {},
-            label: '${buttonType.name} ${size.name}',
+            label: '$buttonType ${size.name}',
             type: buttonType,
             size: size,
           ),
+          testName: '$buttonType ${size.name}',
         );
       }
     }
