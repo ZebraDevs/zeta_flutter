@@ -1,3 +1,15 @@
+
+
+## [1.9.2](https://github.com/ZebraDevs/zeta-icons/compare/zeta-icons-1.9.1...zeta-icons-1.9.2) (2026-03-02)
+
+### ✅ Icons Added
+
+* **Printer:** Reset Network <img src='https://raw.githubusercontent.com/ZebraDevs/zeta-icons/refs/heads/main/outputs/png/reset_network_round.png' alt='Reset Network'  width='24px' height='24px'/>* **Printer:** Restore Network Defaults <img src='https://raw.githubusercontent.com/ZebraDevs/zeta-icons/refs/heads/main/outputs/png/restore_network_defaults_round.png' alt='Restore Network Defaults'  width='24px' height='24px'/>* **Printer:** Restore Printer Defaults <img src='https://raw.githubusercontent.com/ZebraDevs/zeta-icons/refs/heads/main/outputs/png/restore_printer_defaults_round.png' alt='Restore Printer Defaults'  width='24px' height='24px'/>* **Scanner:** Delete Scanner <img src='https://raw.githubusercontent.com/ZebraDevs/zeta-icons/refs/heads/main/outputs/png/delete_scanner_round.png' alt='Delete Scanner'  width='24px' height='24px'/>* **Scanner:** Locate Scanner <img src='https://raw.githubusercontent.com/ZebraDevs/zeta-icons/refs/heads/main/outputs/png/locate_scanner_round.png' alt='Locate Scanner'  width='24px' height='24px'/>* **Scanner:** Reboot Scanner <img src='https://raw.githubusercontent.com/ZebraDevs/zeta-icons/refs/heads/main/outputs/png/reboot_scanner_round.png' alt='Reboot Scanner'  width='24px' height='24px'/>* **Scanner:** Retrieve Scanner Settings <img src='https://raw.githubusercontent.com/ZebraDevs/zeta-icons/refs/heads/main/outputs/png/retrieve_scanner_settings_round.png' alt='Retrieve Scanner Settings'  width='24px' height='24px'/>
+
+### 🎨 Icons Updated
+
+* **Printer:** Delete Printer <img src='https://raw.githubusercontent.com/ZebraDevs/zeta-icons/refs/heads/main/outputs/png/delete_printer_round.png' alt='Delete Printer' width='24px' height='24px'/>* **Printer:** Restart Printer <img src='https://raw.githubusercontent.com/ZebraDevs/zeta-icons/refs/heads/main/outputs/png/restart_printer_round.png' alt='Restart Printer' width='24px' height='24px'/>
+
 # Changelog
 
 
