@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.5](https://github.com/ZebraDevs/zeta_flutter/compare/zeta_flutter-v1.4.4...zeta_flutter-v1.4.5) (2026-04-07)
+
+
+### 🪲 Bug Fixes
+
+* resolve non-constant IconData preventing icon font tree-shaking ([#427](https://github.com/ZebraDevs/zeta_flutter/issues/427)) ([3ecabf1](https://github.com/ZebraDevs/zeta_flutter/commit/3ecabf18b8e16d4cd5971b6eeb8c8bfe4a302d79))
+
 ## [1.4.4](https://github.com/ZebraDevs/zeta_flutter/compare/zeta_flutter-v1.4.3...zeta_flutter-v1.4.4) (2026-02-11)
 
 
