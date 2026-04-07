@@ -13,7 +13,8 @@ import '../../../zeta_flutter.dart';
 
 /// Custom wrapper for [Icon] that applies the Zeta icon family; automatically applying the correct font family based on the [rounded] property.
 ///
-/// This widget is not recommended for use, as it means that icons can not be tree shaken when building the app.
+/// Icon fonts are correctly tree-shaken because [IconExtensions.apply] looks up pre-existing
+/// const [IconData] values from [iconsRound] / [iconsSharp] maps.
 class ZetaIcon extends ZetaStatelessWidget {
   /// Constructs a [ZetaIcon].
   const ZetaIcon(
@@ -228,21 +229,17 @@ class ZetaIcon extends ZetaStatelessWidget {
 
 /// Custom extension for [IconData] that applies the Zeta icon family.
 extension IconExtensions on IconData {
-  IconData _copyWith(String fontFamily) {
-    return IconData(
-      codePoint,
-      fontFamily: fontFamily,
-      fontFamilyFallback: fontFamilyFallback,
-      fontPackage: fontPackage,
-      matchTextDirection: matchTextDirection,
-    );
-  }
-
-  /// Returns a copy of the icon with the correct font family.
+  /// Returns the const round or sharp variant of this icon based on [rounded]
+  /// (or the ambient [BuildContext]'s rounded value).
+  ///
+  /// Uses [iconsRound] / [iconsSharp] lookup maps so that only pre-existing
+  /// const [IconData] values are returned — no non-constant [IconData] is ever
+  /// created, which allows Flutter to tree-shake unused icon fonts.
   @visibleForTesting
   IconData apply(BuildContext context, {bool? rounded}) {
     if (fontFamily == ZetaIcons.family) {
-      return _copyWith((rounded ?? context.rounded) ? ZetaIcons.familyRound : ZetaIcons.familySharp);
+      final map = (rounded ?? context.rounded) ? iconsRound : iconsSharp;
+      return map[codePoint] ?? this;
     }
     return this;
   }
