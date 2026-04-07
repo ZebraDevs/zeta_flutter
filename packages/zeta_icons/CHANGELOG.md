@@ -1,5 +1,9 @@
 
 
+## [1.9.3](https://github.com/ZebraDevs/zeta-icons/compare/zeta-icons-1.9.2...zeta-icons-1.9.3) (2026-04-07)
+
+
+
 ## [1.9.2](https://github.com/ZebraDevs/zeta-icons/compare/zeta-icons-1.9.1...zeta-icons-1.9.2) (2026-03-02)
 
 ### ✅ Icons Added
