@@ -52,12 +52,8 @@ class _IconsExampleState extends State<IconsExample> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Icon(
-                              IconData(
-                                e.value.codePoint,
-                                fontFamily: context.rounded ? ZetaIcons.familyRound : ZetaIcons.familySharp,
-                                fontPackage: ZetaIcons.package,
-                              ),
+                            ZetaIcon(
+                              e.value,
                               size: Zeta.of(context).spacing.xl_6,
                               color: Zeta.of(context).colors.mainDefault,
                             ),
