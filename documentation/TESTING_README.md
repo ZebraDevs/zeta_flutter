@@ -1,9 +1,9 @@
-## Directory structure {#directory-structure-flutter}
+## Directory structure {/* #directory-structure-flutter */}
 
 Test files are stored in the top-level `tests` folder. Each test file should replicate the directory structure of the corresponding component in the `lib` directory to ensure consistency and easy navigation.
 For example, if your component is located at `lib/src/components/buttons/button.dart`, the test should be placed at `test/src/components/buttons/button_test.dart`.
 
-## Test groups {#test-groups-flutter}
+## Test groups {/* #test-groups-flutter */}
 
 Each test file should follow a consistent pattern, organizing tests into groups for Accessibility, Content, Dimensions, Styling, Interaction, Golden, and Performance.
 While not every group needs to be populated for each component, they should be included as necessary to thoroughly validate the component's behavior and quality.
@@ -33,7 +33,7 @@ While not every group needs to be populated for each component, they should be i
 - **Performance**  
   Animation performance, rendering performance, data manipulation performance, etc.
 
-## Testing file template {#testing-file-template-flutter}
+## Testing file template {/* #testing-file-template-flutter */}
 
 ```dart title="Groups should exist for Accessibility, Content, Dimensions, Styling, Interaction, Golden, and Performance."
 import 'dart:ui';
@@ -81,7 +81,7 @@ void main() {
 }
 ```
 
-## Golden testing {#golden-testing-flutter}
+## Golden testing {/* #golden-testing-flutter */}
 
 Golden testing is a technique in software development that verifies the visual appearance of UI components by capturing a “golden” image of the component in its ideal state. This image serves as a reference for future tests, allowing any visual changes or regressions to be easily identified.
 
@@ -127,7 +127,7 @@ void main(){
 }
 ```
 
-## Helper functions {#helper-functions-flutter}
+## Helper functions {/* #helper-functions-flutter */}
 
 As you are writing tests think about helper function you could write and add them to the `test_utils/utils.dart` file. This will help you and others write tests faster and more consistently.
 
@@ -136,7 +136,7 @@ As you are writing tests think about helper function you could write and add the
 - For debugFillProperties tests
   `debugFillPropertiesTest(Widget widget, Map<String, dynamic> debugFillProperties)`
 
-## Guidelines {#guidelines-flutter}
+## Guidelines {/* #guidelines-flutter */}
 
 - Use descriptive test names.
 - Test one thing per test.
