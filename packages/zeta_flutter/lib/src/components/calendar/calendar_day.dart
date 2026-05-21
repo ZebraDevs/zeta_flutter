@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 import '../../../zeta_flutter.dart';
 
@@ -30,6 +31,7 @@ class ZetaCalendarDay extends StatelessWidget {
   const ZetaCalendarDay({
     required this.day,
     required this.state,
+    this.date,
     this.onTap,
     super.key,
   });
@@ -39,6 +41,9 @@ class ZetaCalendarDay extends StatelessWidget {
 
   /// The visual state of this day cell.
   final ZetaCalendarDayState state;
+
+  /// The full date this cell represents, used for accessibility labels.
+  final DateTime? date;
 
   /// Called when this day is tapped.
   final VoidCallback? onTap;
@@ -137,13 +142,34 @@ class ZetaCalendarDay extends StatelessWidget {
       );
     }
 
-    return GestureDetector(
-      onTap: isDisabled ? null : onTap,
-      behavior: HitTestBehavior.opaque,
-      child: SizedBox(
-        width: 40,
-        height: 40,
-        child: dayWidget,
+    String? semanticLabel;
+    if (date != null) {
+      final formattedDate = DateFormat.yMMMMd().format(date!);
+      final stateDesc = switch (state) {
+        ZetaCalendarDayState.startRange => ', start of range',
+        ZetaCalendarDayState.endRange => ', end of range',
+        ZetaCalendarDayState.inRange => ', in range',
+        ZetaCalendarDayState.today => ', today',
+        ZetaCalendarDayState.disabled => ', disabled',
+        ZetaCalendarDayState.enabled => '',
+      };
+      semanticLabel = '$formattedDate$stateDesc';
+    }
+
+    return Semantics(
+      button: !isDisabled,
+      enabled: !isDisabled,
+      selected: isSelected,
+      label: semanticLabel,
+      excludeSemantics: true,
+      child: GestureDetector(
+        onTap: isDisabled ? null : onTap,
+        behavior: HitTestBehavior.opaque,
+        child: SizedBox(
+          width: 40,
+          height: 40,
+          child: dayWidget,
+        ),
       ),
     );
   }
@@ -154,6 +180,7 @@ class ZetaCalendarDay extends StatelessWidget {
     properties
       ..add(IntProperty('day', day))
       ..add(EnumProperty<ZetaCalendarDayState>('state', state))
+      ..add(DiagnosticsProperty<DateTime?>('date', date))
       ..add(ObjectFlagProperty<VoidCallback?>.has('onTap', onTap));
   }
 }

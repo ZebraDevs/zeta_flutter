@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 import '../../../zeta_flutter.dart';
 
@@ -12,14 +13,17 @@ enum _PickerMode { year, month }
 /// shows the 12 months to pick from.
 class ZetaCalendarYearPicker extends StatefulWidget {
   /// Creates a [ZetaCalendarYearPicker].
-  const ZetaCalendarYearPicker({
+  ZetaCalendarYearPicker({
     required this.currentYear,
     required this.currentMonth,
     required this.onMonthYearSelected,
     this.minDate,
     this.maxDate,
     super.key,
-  });
+  }) : assert(
+          minDate == null || maxDate == null || !minDate.isAfter(maxDate),
+          'minDate must not be after maxDate',
+        );
 
   /// The currently displayed year.
   final int currentYear;
@@ -54,30 +58,20 @@ class ZetaCalendarYearPicker extends StatefulWidget {
 class _ZetaCalendarYearPickerState extends State<ZetaCalendarYearPicker> {
   late _PickerMode _mode;
   late int _selectedYear;
-  late ScrollController _scrollController;
+  final GlobalKey _selectedYearKey = GlobalKey();
 
   @override
   void initState() {
     super.initState();
     _mode = _PickerMode.year;
     _selectedYear = widget.currentYear;
-    _scrollController = ScrollController();
     WidgetsBinding.instance.addPostFrameCallback((_) => _scrollToCurrentYear());
   }
 
-  @override
-  void dispose() {
-    _scrollController.dispose();
-    super.dispose();
-  }
-
-  void _scrollToCurrentYear() {
-    final minYear = widget.minDate?.year ?? (DateTime.now().year - 50);
-    final yearIndex = _selectedYear - minYear;
-    final rowIndex = yearIndex ~/ 4;
-    final offset = rowIndex * 56.0;
-    if (_scrollController.hasClients) {
-      _scrollController.jumpTo(offset.clamp(0, _scrollController.position.maxScrollExtent));
+  Future<void> _scrollToCurrentYear() async {
+    final ctx = _selectedYearKey.currentContext;
+    if (ctx != null) {
+      await Scrollable.ensureVisible(ctx, alignment: 0.4);
     }
   }
 
@@ -100,8 +94,6 @@ class _ZetaCalendarYearPickerState extends State<ZetaCalendarYearPicker> {
     return Padding(
       padding: EdgeInsets.all(spacing.small),
       child: GridView.builder(
-        controller: _scrollController,
-        shrinkWrap: true,
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 4,
           childAspectRatio: 2,
@@ -115,6 +107,7 @@ class _ZetaCalendarYearPickerState extends State<ZetaCalendarYearPicker> {
           final isCurrent = year == now.year;
 
           return GestureDetector(
+            key: isSelected ? _selectedYearKey : null,
             onTap: () {
               setState(() {
                 _selectedYear = year;
@@ -148,21 +141,7 @@ class _ZetaCalendarYearPickerState extends State<ZetaCalendarYearPicker> {
     final textStyles = zeta.textStyles;
     final spacing = zeta.spacing;
 
-    const monthNames = [
-      'Jan',
-      'Feb',
-      'Mar',
-      'Apr',
-      'May',
-      'Jun',
-      'Jul',
-      'Aug',
-      'Sep',
-      'Oct',
-      'Nov',
-      'Dec',
-    ];
-
+    final monthFormat = DateFormat.MMM();
     final now = DateTime.now();
 
     return Padding(
@@ -194,7 +173,6 @@ class _ZetaCalendarYearPickerState extends State<ZetaCalendarYearPicker> {
           ),
           Expanded(
             child: GridView.builder(
-              shrinkWrap: true,
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 4,
                 childAspectRatio: 1.8,
@@ -227,7 +205,7 @@ class _ZetaCalendarYearPickerState extends State<ZetaCalendarYearPicker> {
                     ),
                     child: Center(
                       child: Text(
-                        monthNames[index],
+                        monthFormat.format(DateTime(0, monthIndex)),
                         style: textStyles.bodyMedium.copyWith(
                           color: isDisabled
                               ? colors.mainDisabled

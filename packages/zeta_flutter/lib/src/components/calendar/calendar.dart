@@ -14,7 +14,7 @@ import 'calendar_year_picker.dart';
 /// The footer provides Reset, Cancel, and Apply actions.
 class ZetaCalendar extends ZetaStatefulWidget {
   /// Creates a [ZetaCalendar].
-  const ZetaCalendar({
+  ZetaCalendar({
     super.key,
     super.rounded,
     this.initialStartDate,
@@ -25,7 +25,22 @@ class ZetaCalendar extends ZetaStatefulWidget {
     this.onApply,
     this.onCancel,
     this.onReset,
-  });
+  })  : assert(
+          minDate == null || maxDate == null || !minDate.isAfter(maxDate),
+          'minDate must not be after maxDate',
+        ),
+        assert(
+          initialStartDate == null || initialEndDate == null || !initialStartDate.isAfter(initialEndDate),
+          'initialStartDate must not be after initialEndDate',
+        ),
+        assert(
+          initialStartDate == null || minDate == null || !initialStartDate.isBefore(minDate),
+          'initialStartDate must not be before minDate',
+        ),
+        assert(
+          initialEndDate == null || maxDate == null || !initialEndDate.isAfter(maxDate),
+          'initialEndDate must not be after maxDate',
+        );
 
   /// The initial start date of the selected range.
   final DateTime? initialStartDate;
@@ -40,6 +55,11 @@ class ZetaCalendar extends ZetaStatefulWidget {
   final DateTime? maxDate;
 
   /// Called whenever the selected range changes.
+  ///
+  /// Receives a [DateTimeRange] when both start and end dates are selected,
+  /// or `null` when the selection is incomplete (only a start date picked)
+  /// or cleared (via reset). Use [onReset] to distinguish a deliberate clear
+  /// from an in-progress selection.
   final ValueChanged<DateTimeRange?>? onRangeChanged;
 
   /// Called when the Apply button is pressed with the current range.
@@ -85,6 +105,22 @@ class _ZetaCalendarState extends State<ZetaCalendar> {
     final referenceDate = _startDate ?? DateTime.now();
     _leftMonth = referenceDate.month;
     _leftYear = referenceDate.year;
+  }
+
+  @override
+  void didUpdateWidget(covariant ZetaCalendar oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.initialStartDate != widget.initialStartDate) {
+      _startDate = widget.initialStartDate;
+    }
+    if (oldWidget.initialEndDate != widget.initialEndDate) {
+      _endDate = widget.initialEndDate;
+    }
+    if (oldWidget.initialStartDate != widget.initialStartDate || oldWidget.initialEndDate != widget.initialEndDate) {
+      final referenceDate = _startDate ?? DateTime.now();
+      _leftMonth = referenceDate.month;
+      _leftYear = referenceDate.year;
+    }
   }
 
   int get _rightMonth => _leftMonth == 12 ? 1 : _leftMonth + 1;
@@ -165,9 +201,8 @@ class _ZetaCalendarState extends State<ZetaCalendar> {
   Widget build(BuildContext context) {
     final zeta = Zeta.of(context);
     final colors = zeta.colors;
-    final textStyles = zeta.textStyles;
     final spacing = zeta.spacing;
-    final rounded = widget.rounded ?? zeta.rounded;
+    final rounded = context.rounded;
 
     if (_showYearPicker) {
       return DecoratedBox(
@@ -203,63 +238,49 @@ class _ZetaCalendarState extends State<ZetaCalendar> {
             // Dual month view — horizontally scrollable for narrow screens
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
-              child: IntrinsicHeight(
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(
-                      width: 280,
-                      child: ZetaCalendarMonth(
-                        month: _leftMonth,
-                        year: _leftYear,
-                        startDate: _startDate,
-                        endDate: _endDate,
-                        minDate: widget.minDate,
-                        maxDate: widget.maxDate,
-                        onDayTap: _onDayTap,
-                        onHeaderTap: _onHeaderTap,
-                        leadingIcon: GestureDetector(
-                          onTap: _goToPreviousMonth,
-                          behavior: HitTestBehavior.opaque,
-                          child: Padding(
-                            padding: EdgeInsets.all(spacing.small),
-                            child: Icon(
-                              ZetaIcons.chevron_left,
-                              size: 20,
-                              color: colors.mainDefault,
-                            ),
-                          ),
-                        ),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    width: 280,
+                    child: ZetaCalendarMonth(
+                      month: _leftMonth,
+                      year: _leftYear,
+                      startDate: _startDate,
+                      endDate: _endDate,
+                      minDate: widget.minDate,
+                      maxDate: widget.maxDate,
+                      onDayTap: _onDayTap,
+                      onHeaderTap: _onHeaderTap,
+                      leadingIcon: ZetaIconButton.text(
+                        icon: ZetaIcons.chevron_left,
+                        size: ZetaWidgetSize.small,
+                        onPressed: _goToPreviousMonth,
+                        semanticLabel: 'Previous month',
                       ),
                     ),
-                    SizedBox(width: spacing.large),
-                    SizedBox(
-                      width: 280,
-                      child: ZetaCalendarMonth(
-                        month: _rightMonth,
-                        year: _rightYear,
-                        startDate: _startDate,
-                        endDate: _endDate,
-                        minDate: widget.minDate,
-                        maxDate: widget.maxDate,
-                        onDayTap: _onDayTap,
-                        onHeaderTap: _onHeaderTap,
-                        trailingIcon: GestureDetector(
-                          onTap: _goToNextMonth,
-                          behavior: HitTestBehavior.opaque,
-                          child: Padding(
-                            padding: EdgeInsets.all(spacing.small),
-                            child: Icon(
-                              ZetaIcons.chevron_right,
-                              size: 20,
-                              color: colors.mainDefault,
-                            ),
-                          ),
-                        ),
+                  ),
+                  SizedBox(width: spacing.large),
+                  SizedBox(
+                    width: 280,
+                    child: ZetaCalendarMonth(
+                      month: _rightMonth,
+                      year: _rightYear,
+                      startDate: _startDate,
+                      endDate: _endDate,
+                      minDate: widget.minDate,
+                      maxDate: widget.maxDate,
+                      onDayTap: _onDayTap,
+                      onHeaderTap: _onHeaderTap,
+                      trailingIcon: ZetaIconButton.text(
+                        icon: ZetaIcons.chevron_right,
+                        size: ZetaWidgetSize.small,
+                        onPressed: _goToNextMonth,
+                        semanticLabel: 'Next month',
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
             SizedBox(height: spacing.large),
@@ -268,51 +289,22 @@ class _ZetaCalendarState extends State<ZetaCalendar> {
             SizedBox(height: spacing.medium),
             Row(
               children: [
-                GestureDetector(
-                  onTap: _onReset,
-                  behavior: HitTestBehavior.opaque,
-                  child: Text(
-                    'Reset',
-                    style: textStyles.labelLarge.copyWith(color: colors.mainPrimary),
-                  ),
+                ZetaButton.text(
+                  label: 'Reset',
+                  size: ZetaWidgetSize.small,
+                  onPressed: _onReset,
                 ),
                 const Spacer(),
-                GestureDetector(
-                  onTap: widget.onCancel,
-                  behavior: HitTestBehavior.opaque,
-                  child: Container(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: spacing.large,
-                      vertical: spacing.small,
-                    ),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(rounded ? zeta.radius.rounded : zeta.radius.none),
-                      border: Border.all(color: colors.borderDefault),
-                    ),
-                    child: Text(
-                      'Cancel',
-                      style: textStyles.labelLarge.copyWith(color: colors.mainDefault),
-                    ),
-                  ),
+                ZetaButton.outline(
+                  label: 'Cancel',
+                  size: ZetaWidgetSize.small,
+                  onPressed: widget.onCancel,
                 ),
                 SizedBox(width: spacing.small),
-                GestureDetector(
-                  onTap: _onApply,
-                  behavior: HitTestBehavior.opaque,
-                  child: Container(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: spacing.large,
-                      vertical: spacing.small,
-                    ),
-                    decoration: BoxDecoration(
-                      color: colors.mainPrimary,
-                      borderRadius: BorderRadius.all(rounded ? zeta.radius.rounded : zeta.radius.none),
-                    ),
-                    child: Text(
-                      'Apply',
-                      style: textStyles.labelLarge.copyWith(color: colors.surfaceDefault),
-                    ),
-                  ),
+                ZetaButton.primary(
+                  label: 'Apply',
+                  size: ZetaWidgetSize.small,
+                  onPressed: _onApply,
                 ),
               ],
             ),

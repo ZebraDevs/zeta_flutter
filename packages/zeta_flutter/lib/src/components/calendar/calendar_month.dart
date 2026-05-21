@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 import '../../../zeta_flutter.dart';
 import 'calendar_day.dart';
@@ -64,55 +65,37 @@ class ZetaCalendarMonth extends StatelessWidget {
   }
 
   ZetaCalendarDayState _stateForDay(DateTime date) {
-    if (minDate != null && date.isBefore(minDate!)) {
+    final d = DateUtils.dateOnly(date);
+    final min = minDate != null ? DateUtils.dateOnly(minDate!) : null;
+    final max = maxDate != null ? DateUtils.dateOnly(maxDate!) : null;
+    final start = startDate != null ? DateUtils.dateOnly(startDate!) : null;
+    final end = endDate != null ? DateUtils.dateOnly(endDate!) : null;
+
+    if (min != null && d.isBefore(min)) {
       return ZetaCalendarDayState.disabled;
     }
-    if (maxDate != null && date.isAfter(maxDate!)) {
+    if (max != null && d.isAfter(max)) {
       return ZetaCalendarDayState.disabled;
     }
 
-    final start = startDate;
-    final end = endDate;
-
-    if (start != null && _isSameDay(date, start)) {
+    if (start != null && d == start) {
       return ZetaCalendarDayState.startRange;
     }
-    if (end != null && _isSameDay(date, end)) {
+    if (end != null && d == end) {
       return ZetaCalendarDayState.endRange;
     }
-    if (start != null && end != null && date.isAfter(start) && date.isBefore(end)) {
+    if (start != null && end != null && d.isAfter(start) && d.isBefore(end)) {
       return ZetaCalendarDayState.inRange;
     }
 
-    final now = DateTime.now();
-    if (_isSameDay(date, now)) {
+    if (d == DateUtils.dateOnly(DateTime.now())) {
       return ZetaCalendarDayState.today;
     }
 
     return ZetaCalendarDayState.enabled;
   }
 
-  bool _isSameDay(DateTime a, DateTime b) {
-    return a.year == b.year && a.month == b.month && a.day == b.day;
-  }
-
-  String _monthName(int month) {
-    const months = [
-      'Jan',
-      'Feb',
-      'Mar',
-      'Apr',
-      'May',
-      'Jun',
-      'Jul',
-      'Aug',
-      'Sep',
-      'Oct',
-      'Nov',
-      'Dec',
-    ];
-    return months[month - 1];
-  }
+  String _monthName(int month) => DateFormat.MMM().format(DateTime(0, month));
 
   @override
   Widget build(BuildContext context) {
@@ -185,8 +168,6 @@ class ZetaCalendarMonth extends StatelessWidget {
     );
 
     for (var week = 0; week < 6; week++) {
-      if (dayCounter > daysInMonth && week > 0) break;
-
       final days = <Widget>[];
       for (var weekday = 0; weekday < 7; weekday++) {
         final cellIndex = week * 7 + weekday;
@@ -217,6 +198,7 @@ class ZetaCalendarMonth extends StatelessWidget {
             ZetaCalendarDay(
               day: currentDay,
               state: state,
+              date: date,
               onTap: state != ZetaCalendarDayState.disabled ? () => onDayTap?.call(date) : null,
             ),
           );
