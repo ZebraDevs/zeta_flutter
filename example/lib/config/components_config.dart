@@ -8,6 +8,7 @@ import 'package:zeta_example/pages/components/banner_example.dart' deferred as b
 import 'package:zeta_example/pages/components/bottom_sheet_example.dart' deferred as bottom_sheet_example;
 import 'package:zeta_example/pages/components/breadcrumb_example.dart' deferred as breadcrumb_example;
 import 'package:zeta_example/pages/components/button_example.dart' deferred as button_example;
+import 'package:zeta_example/pages/components/calendar_example.dart' deferred as calendar_example;
 import 'package:zeta_example/pages/components/card_example.dart' deferred as card_example;
 import 'package:zeta_example/pages/components/chat_item_example.dart' deferred as chat_item_example;
 import 'package:zeta_example/pages/components/checkbox_example.dart' deferred as checkbox_example;
@@ -61,6 +62,7 @@ const String bannerSystemRoute = 'SystemBanner';
 const String bannerInPageRoute = 'InPageBanner';
 const String bottomSheetRoute = 'BottomSheet';
 const String breadcrumbRoute = 'Breadcrumb';
+const String calendarRoute = 'Calendar';
 const String buttonRoute = 'Buttons/Button';
 const String iconButtonRoute = 'Buttons/IconButton';
 const String buttonGroupRoute = 'ButtonGroup';
@@ -170,6 +172,10 @@ final Map<String, ExampleWrap> componentExampleNames = {
   breadcrumbRoute: ExampleWrap(
     pageBuilder: (context) => breadcrumb_example.BreadcrumbExample(),
     loader: breadcrumb_example.loadLibrary,
+  ),
+  calendarRoute: ExampleWrap(
+    pageBuilder: (context) => calendar_example.CalendarExample(),
+    loader: calendar_example.loadLibrary,
   ),
   buttonRoute: ExampleWrap(
     pageBuilder: (context) => button_example.ButtonExample(),
