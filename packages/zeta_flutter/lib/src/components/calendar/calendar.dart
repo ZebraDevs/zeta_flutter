@@ -8,7 +8,7 @@ import 'calendar_year_picker.dart';
 /// An inline calendar widget with date range selection.
 ///
 /// Displays consecutive months side by side. The number of visible months is
-/// controlled by [numberOfMonths] (1–3, defaults to 2). Users can select a
+/// controlled by [visibleMonthCount] (1–3, defaults to 2). Users can select a
 /// date range by tapping a start date and an end date. Navigation arrows on
 /// the first and last months allow scrolling, and tapping the month/year
 /// header opens a year/month picker.
@@ -19,7 +19,7 @@ class ZetaCalendar extends ZetaStatefulWidget {
   ZetaCalendar({
     super.key,
     super.rounded,
-    int visibleMonthCount = 2,
+    this.visibleMonthCount = 2,
     this.initialStartDate,
     this.initialEndDate,
     this.minDate,
@@ -28,8 +28,7 @@ class ZetaCalendar extends ZetaStatefulWidget {
     this.onApply,
     this.onCancel,
     this.onReset,
-  })  : numberOfMonths = visibleMonthCount.clamp(1, 3),
-        assert(
+  })  : assert(
           minDate == null || maxDate == null || !minDate.isAfter(maxDate),
           'minDate must not be after maxDate',
         ),
@@ -55,7 +54,7 @@ class ZetaCalendar extends ZetaStatefulWidget {
   ///
   /// If a value outside the 1–3 range is provided, it is automatically
   /// clamped to the nearest bound (e.g. `0` becomes `1`, `5` becomes `3`).
-  final int numberOfMonths;
+  final int visibleMonthCount;
 
   /// The initial start date of the selected range.
   final DateTime? initialStartDate;
@@ -93,7 +92,7 @@ class ZetaCalendar extends ZetaStatefulWidget {
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(IntProperty('numberOfMonths', numberOfMonths))
+      ..add(IntProperty('visibleMonthCount', visibleMonthCount))
       ..add(DiagnosticsProperty<DateTime?>('initialStartDate', initialStartDate))
       ..add(DiagnosticsProperty<DateTime?>('initialEndDate', initialEndDate))
       ..add(DiagnosticsProperty<DateTime?>('minDate', minDate))
@@ -111,6 +110,8 @@ class _ZetaCalendarState extends State<ZetaCalendar> {
   DateTime? _startDate;
   DateTime? _endDate;
   bool _showYearPicker = false;
+
+  int get _monthCount => widget.visibleMonthCount.clamp(1, 3);
 
   @override
   void initState() {
@@ -259,14 +260,14 @@ class _ZetaCalendarState extends State<ZetaCalendar> {
         child: SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: SizedBox(
-            width: 280.0 * widget.numberOfMonths + spacing.large * (widget.numberOfMonths - 1),
+            width: 280.0 * _monthCount + spacing.large * (_monthCount - 1),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    for (var i = 0; i < widget.numberOfMonths; i++) ...[
+                    for (var i = 0; i < _monthCount; i++) ...[
                       if (i > 0) SizedBox(width: spacing.large),
                       SizedBox(
                         width: 280,
@@ -287,7 +288,7 @@ class _ZetaCalendarState extends State<ZetaCalendar> {
                                   semanticLabel: 'Previous month',
                                 )
                               : null,
-                          trailingIcon: i == widget.numberOfMonths - 1
+                          trailingIcon: i == _monthCount - 1
                               ? ZetaIconButton.text(
                                   icon: ZetaIcons.chevron_right,
                                   size: ZetaWidgetSize.small,
