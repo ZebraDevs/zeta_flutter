@@ -11,13 +11,17 @@ import 'package:zeta_widgetbook/main.dart';
 )
 Widget calendar(BuildContext context) {
   final now = DateTime.now();
+  final preSelect = context.knobs.boolean(label: 'Pre-select range', initialValue: true);
 
   return ZetaCalendar(
-    initialStartDate:
-        context.knobs.boolean(label: 'Pre-select range', initialValue: true) ? DateTime(now.year, now.month, 10) : null,
-    initialEndDate: context.knobs.boolean(label: 'Pre-select range', initialValue: true)
-        ? DateTime(now.year, now.month + 1, 15)
-        : null,
+    numberOfMonths: context.knobs.object.dropdown(
+      label: 'Number of months',
+      options: [1, 2, 3],
+      labelBuilder: (value) => '$value',
+      initialOption: 2,
+    ),
+    initialStartDate: preSelect ? DateTime(now.year, now.month, 10) : null,
+    initialEndDate: preSelect ? DateTime(now.year, now.month + 1, 15) : null,
     minDate: DateTime(now.year - 5),
     maxDate: DateTime(now.year + 5),
     onRangeChanged: (range) {},

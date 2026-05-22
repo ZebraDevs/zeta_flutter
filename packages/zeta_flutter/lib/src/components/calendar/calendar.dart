@@ -5,11 +5,13 @@ import '../../../zeta_flutter.dart';
 import 'calendar_month.dart';
 import 'calendar_year_picker.dart';
 
-/// A dual-month inline calendar widget with date range selection.
+/// An inline calendar widget with date range selection.
 ///
-/// Displays two consecutive months side by side. Users can select a date range
-/// by tapping a start date and an end date. Navigation arrows allow scrolling
-/// through months, and tapping the month/year header opens a year/month picker.
+/// Displays consecutive months side by side. The number of visible months is
+/// controlled by [numberOfMonths] (1–3, defaults to 2). Users can select a
+/// date range by tapping a start date and an end date. Navigation arrows on
+/// the first and last months allow scrolling, and tapping the month/year
+/// header opens a year/month picker.
 ///
 /// The footer provides Reset, Cancel, and Apply actions.
 class ZetaCalendar extends ZetaStatefulWidget {
@@ -17,6 +19,7 @@ class ZetaCalendar extends ZetaStatefulWidget {
   ZetaCalendar({
     super.key,
     super.rounded,
+    this.numberOfMonths = 2,
     this.initialStartDate,
     this.initialEndDate,
     this.minDate,
@@ -26,6 +29,10 @@ class ZetaCalendar extends ZetaStatefulWidget {
     this.onCancel,
     this.onReset,
   })  : assert(
+          numberOfMonths >= 1 && numberOfMonths <= 3,
+          'numberOfMonths must be between 1 and 3',
+        ),
+        assert(
           minDate == null || maxDate == null || !minDate.isAfter(maxDate),
           'minDate must not be after maxDate',
         ),
@@ -41,6 +48,11 @@ class ZetaCalendar extends ZetaStatefulWidget {
           initialEndDate == null || maxDate == null || !initialEndDate.isAfter(maxDate),
           'initialEndDate must not be after maxDate',
         );
+
+  /// The number of consecutive months to display (1–3).
+  ///
+  /// Defaults to 2.
+  final int numberOfMonths;
 
   /// The initial start date of the selected range.
   final DateTime? initialStartDate;
@@ -78,6 +90,7 @@ class ZetaCalendar extends ZetaStatefulWidget {
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
+      ..add(IntProperty('numberOfMonths', numberOfMonths))
       ..add(DiagnosticsProperty<DateTime?>('initialStartDate', initialStartDate))
       ..add(DiagnosticsProperty<DateTime?>('initialEndDate', initialEndDate))
       ..add(DiagnosticsProperty<DateTime?>('minDate', minDate))
@@ -123,8 +136,16 @@ class _ZetaCalendarState extends State<ZetaCalendar> {
     }
   }
 
-  int get _rightMonth => _leftMonth == 12 ? 1 : _leftMonth + 1;
-  int get _rightYear => _leftMonth == 12 ? _leftYear + 1 : _leftYear;
+  /// Returns the (year, month) for the month at [offset] positions after the leftmost month.
+  ({int year, int month}) _monthAt(int offset) {
+    var m = _leftMonth + offset;
+    var y = _leftYear;
+    while (m > 12) {
+      m -= 12;
+      y++;
+    }
+    return (year: y, month: m);
+  }
 
   void _goToPreviousMonth() {
     setState(() {
@@ -232,83 +253,77 @@ class _ZetaCalendarState extends State<ZetaCalendar> {
       ),
       child: Padding(
         padding: EdgeInsets.all(spacing.large),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            // Dual month view — horizontally scrollable for narrow screens
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(
-                    width: 280,
-                    child: ZetaCalendarMonth(
-                      month: _leftMonth,
-                      year: _leftYear,
-                      startDate: _startDate,
-                      endDate: _endDate,
-                      minDate: widget.minDate,
-                      maxDate: widget.maxDate,
-                      onDayTap: _onDayTap,
-                      onHeaderTap: _onHeaderTap,
-                      leadingIcon: ZetaIconButton.text(
-                        icon: ZetaIcons.chevron_left,
-                        size: ZetaWidgetSize.small,
-                        onPressed: _goToPreviousMonth,
-                        semanticLabel: 'Previous month',
-                      ),
-                    ),
-                  ),
-                  SizedBox(width: spacing.large),
-                  SizedBox(
-                    width: 280,
-                    child: ZetaCalendarMonth(
-                      month: _rightMonth,
-                      year: _rightYear,
-                      startDate: _startDate,
-                      endDate: _endDate,
-                      minDate: widget.minDate,
-                      maxDate: widget.maxDate,
-                      onDayTap: _onDayTap,
-                      onHeaderTap: _onHeaderTap,
-                      trailingIcon: ZetaIconButton.text(
-                        icon: ZetaIcons.chevron_right,
-                        size: ZetaWidgetSize.small,
-                        onPressed: _goToNextMonth,
-                        semanticLabel: 'Next month',
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(height: spacing.large),
-            // Footer
-            Divider(height: 1, color: colors.borderSubtle),
-            SizedBox(height: spacing.medium),
-            Row(
+        child: SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: SizedBox(
+            width: 280.0 * widget.numberOfMonths + spacing.large * (widget.numberOfMonths - 1),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
               children: [
-                ZetaButton.text(
-                  label: 'Reset',
-                  size: ZetaWidgetSize.small,
-                  onPressed: _onReset,
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    for (var i = 0; i < widget.numberOfMonths; i++) ...[
+                      if (i > 0) SizedBox(width: spacing.large),
+                      SizedBox(
+                        width: 280,
+                        child: ZetaCalendarMonth(
+                          month: _monthAt(i).month,
+                          year: _monthAt(i).year,
+                          startDate: _startDate,
+                          endDate: _endDate,
+                          minDate: widget.minDate,
+                          maxDate: widget.maxDate,
+                          onDayTap: _onDayTap,
+                          onHeaderTap: _onHeaderTap,
+                          leadingIcon: i == 0
+                              ? ZetaIconButton.text(
+                                  icon: ZetaIcons.chevron_left,
+                                  size: ZetaWidgetSize.small,
+                                  onPressed: _goToPreviousMonth,
+                                  semanticLabel: 'Previous month',
+                                )
+                              : null,
+                          trailingIcon: i == widget.numberOfMonths - 1
+                              ? ZetaIconButton.text(
+                                  icon: ZetaIcons.chevron_right,
+                                  size: ZetaWidgetSize.small,
+                                  onPressed: _goToNextMonth,
+                                  semanticLabel: 'Next month',
+                                )
+                              : null,
+                        ),
+                      ),
+                    ],
+                  ],
                 ),
-                const Spacer(),
-                ZetaButton.outline(
-                  label: 'Cancel',
-                  size: ZetaWidgetSize.small,
-                  onPressed: widget.onCancel,
-                ),
-                SizedBox(width: spacing.small),
-                ZetaButton.primary(
-                  label: 'Apply',
-                  size: ZetaWidgetSize.small,
-                  onPressed: _onApply,
+                SizedBox(height: spacing.large),
+                Divider(height: 1, color: colors.borderSubtle),
+                SizedBox(height: spacing.medium),
+                Row(
+                  children: [
+                    ZetaButton.text(
+                      label: 'Reset',
+                      size: ZetaWidgetSize.small,
+                      onPressed: _onReset,
+                    ),
+                    const Spacer(),
+                    ZetaButton.outline(
+                      label: 'Cancel',
+                      size: ZetaWidgetSize.small,
+                      onPressed: widget.onCancel,
+                    ),
+                    SizedBox(width: spacing.small),
+                    ZetaButton.primary(
+                      label: 'Apply',
+                      size: ZetaWidgetSize.small,
+                      onPressed: _onApply,
+                    ),
+                  ],
                 ),
               ],
             ),
-          ],
+          ),
         ),
       ),
     );

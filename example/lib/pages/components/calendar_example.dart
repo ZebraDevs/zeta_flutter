@@ -37,6 +37,7 @@ class _CalendarExampleState extends State<CalendarExample> {
               initialEndDate: DateTime(2028, 8, 18),
               minDate: DateTime(2020),
               maxDate: DateTime(2035),
+              numberOfMonths: 1,
               onRangeChanged: (range) {
                 setState(() => _selectedRange = range);
               },
