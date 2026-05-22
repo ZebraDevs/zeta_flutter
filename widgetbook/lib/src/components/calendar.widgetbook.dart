@@ -14,7 +14,7 @@ Widget calendar(BuildContext context) {
   final preSelect = context.knobs.boolean(label: 'Pre-select range', initialValue: true);
 
   return ZetaCalendar(
-    numberOfMonths: context.knobs.object.dropdown(
+    visibleMonthCount: context.knobs.object.dropdown(
       label: 'Number of months',
       options: [1, 2, 3],
       labelBuilder: (value) => '$value',

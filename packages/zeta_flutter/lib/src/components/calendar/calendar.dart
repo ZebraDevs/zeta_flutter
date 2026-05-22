@@ -19,7 +19,7 @@ class ZetaCalendar extends ZetaStatefulWidget {
   ZetaCalendar({
     super.key,
     super.rounded,
-    this.numberOfMonths = 2,
+    int visibleMonthCount = 2,
     this.initialStartDate,
     this.initialEndDate,
     this.minDate,
@@ -28,10 +28,7 @@ class ZetaCalendar extends ZetaStatefulWidget {
     this.onApply,
     this.onCancel,
     this.onReset,
-  })  : assert(
-          numberOfMonths >= 1 && numberOfMonths <= 3,
-          'numberOfMonths must be between 1 and 3',
-        ),
+  })  : numberOfMonths = visibleMonthCount.clamp(1, 3),
         assert(
           minDate == null || maxDate == null || !minDate.isAfter(maxDate),
           'minDate must not be after maxDate',
@@ -49,9 +46,15 @@ class ZetaCalendar extends ZetaStatefulWidget {
           'initialEndDate must not be after maxDate',
         );
 
-  /// The number of consecutive months to display (1–3).
+  /// The number of consecutive months to display side by side.
   ///
-  /// Defaults to 2.
+  /// Accepted values are **1**, **2**, or **3**:
+  /// - `1` — shows a single month.
+  /// - `2` — shows two consecutive months (default).
+  /// - `3` — shows three consecutive months.
+  ///
+  /// If a value outside the 1–3 range is provided, it is automatically
+  /// clamped to the nearest bound (e.g. `0` becomes `1`, `5` becomes `3`).
   final int numberOfMonths;
 
   /// The initial start date of the selected range.
