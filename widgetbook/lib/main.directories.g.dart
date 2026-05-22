@@ -23,6 +23,8 @@ import 'package:zeta_widgetbook/src/components/breadcrumb_widgetbook.dart'
     as _zeta_widgetbook_src_components_breadcrumb_widgetbook;
 import 'package:zeta_widgetbook/src/components/button.widgetbook.dart'
     as _zeta_widgetbook_src_components_button_widgetbook;
+import 'package:zeta_widgetbook/src/components/calendar.widgetbook.dart'
+    as _zeta_widgetbook_src_components_calendar_widgetbook;
 import 'package:zeta_widgetbook/src/components/button_group.widgetbook.dart'
     as _zeta_widgetbook_src_components_button_group_widgetbook;
 import 'package:zeta_widgetbook/src/components/card.widgetbook.dart' as _zeta_widgetbook_src_components_card_widgetbook;
@@ -310,6 +312,20 @@ final directories = <_widgetbook.WidgetbookNode>[
               )
             ],
           ),
+        ],
+      ),
+      _widgetbook.WidgetbookFolder(
+        name: 'Calendar',
+        children: [
+          _widgetbook.WidgetbookComponent(
+            name: 'ZetaCalendar',
+            useCases: [
+              _widgetbook.WidgetbookUseCase(
+                name: 'Calendar',
+                builder: _zeta_widgetbook_src_components_calendar_widgetbook.calendar,
+              )
+            ],
+          )
         ],
       ),
       _widgetbook.WidgetbookFolder(
