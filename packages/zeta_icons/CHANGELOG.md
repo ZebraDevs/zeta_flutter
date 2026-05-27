@@ -1,5 +1,13 @@
 
 
+## [1.9.4](https://github.com/ZebraDevs/zeta-icons/compare/zeta-icons-1.9.3...zeta-icons-1.9.4) (2026-05-27)
+
+### ✅ Icons Added
+
+* **General:** Read <img src='https://raw.githubusercontent.com/ZebraDevs/zeta-icons/refs/heads/main/outputs/png/read_round.png' alt='Read'  width='24px' height='24px'/>
+
+
+
 ## [1.9.3](https://github.com/ZebraDevs/zeta-icons/compare/zeta-icons-1.9.2...zeta-icons-1.9.3) (2026-04-07)
 
 
