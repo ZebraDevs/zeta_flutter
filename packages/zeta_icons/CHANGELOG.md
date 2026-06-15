@@ -1,5 +1,13 @@
 
 
+## [1.9.6](https://github.com/ZebraDevs/zeta-icons/compare/zeta-icons-1.9.5...zeta-icons-1.9.6) (2026-06-15)
+
+### ✅ Icons Added
+
+* **General:** Setting Tool <img src='https://raw.githubusercontent.com/ZebraDevs/zeta-icons/refs/heads/main/outputs/png/setting_tool_round.png' alt='Setting Tool'  width='24px' height='24px'/>
+
+
+
 ## [1.9.5](https://github.com/ZebraDevs/zeta-icons/compare/zeta-icons-1.9.4...zeta-icons-1.9.5) (2026-06-03)
 
 ### ✅ Icons Added
