@@ -1,5 +1,29 @@
 
 
+## [1.9.6](https://github.com/ZebraDevs/zeta-icons/compare/zeta-icons-1.9.5...zeta-icons-1.9.6) (2026-06-15)
+
+### ✅ Icons Added
+
+* **General:** Setting Tool <img src='https://raw.githubusercontent.com/ZebraDevs/zeta-icons/refs/heads/main/outputs/png/setting_tool_round.png' alt='Setting Tool'  width='24px' height='24px'/>
+
+
+
+## [1.9.5](https://github.com/ZebraDevs/zeta-icons/compare/zeta-icons-1.9.4...zeta-icons-1.9.5) (2026-06-03)
+
+### ✅ Icons Added
+
+* **File:** Export <img src='https://raw.githubusercontent.com/ZebraDevs/zeta-icons/refs/heads/main/outputs/png/export_round.png' alt='Export'  width='24px' height='24px'/>* **File:** Import <img src='https://raw.githubusercontent.com/ZebraDevs/zeta-icons/refs/heads/main/outputs/png/import_round.png' alt='Import'  width='24px' height='24px'/>* **Technology:** Api Collection <img src='https://raw.githubusercontent.com/ZebraDevs/zeta-icons/refs/heads/main/outputs/png/api_collection_round.png' alt='Api Collection'  width='24px' height='24px'/>* **Technology:** Api <img src='https://raw.githubusercontent.com/ZebraDevs/zeta-icons/refs/heads/main/outputs/png/api_round.png' alt='Api'  width='24px' height='24px'/>
+
+
+
+## [1.9.4](https://github.com/ZebraDevs/zeta-icons/compare/zeta-icons-1.9.3...zeta-icons-1.9.4) (2026-05-27)
+
+### ✅ Icons Added
+
+* **General:** Read <img src='https://raw.githubusercontent.com/ZebraDevs/zeta-icons/refs/heads/main/outputs/png/read_round.png' alt='Read'  width='24px' height='24px'/>
+
+
+
 ## [1.9.3](https://github.com/ZebraDevs/zeta-icons/compare/zeta-icons-1.9.2...zeta-icons-1.9.3) (2026-04-07)
 
 
