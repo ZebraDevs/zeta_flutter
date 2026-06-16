@@ -40,21 +40,6 @@ class ZetaButton extends ZetaStatelessWidget {
     this.child,
   }) : type = ZetaButtonType.primary;
 
-  /// Constructs [ZetaButton] with Secondary theme.
-  @Deprecated('Secondary buttons are deprecated and will be removed in a future version.')
-  const ZetaButton.secondary({
-    super.key,
-    required this.label,
-    this.onPressed,
-    this.size = ZetaWidgetSize.medium,
-    this.borderType,
-    this.leadingIcon,
-    this.trailingIcon,
-    this.focusNode,
-    this.semanticLabel,
-    this.child,
-  }) : type = ZetaButtonType.secondary;
-
   /// Constructs [ZetaButton] with Positive theme.
   const ZetaButton.positive({
     super.key,

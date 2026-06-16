@@ -3,9 +3,6 @@ import 'package:zeta_example/config/components_config.dart';
 import 'package:zeta_example/widgets.dart';
 import 'package:zeta_flutter/zeta_flutter.dart';
 
-// ignore: deprecated_member_use
-final buttonTypes = ZetaButtonType.values.where((e) => e != ZetaButtonType.secondary).toList();
-
 class ButtonExample extends StatelessWidget {
   const ButtonExample({super.key});
 
@@ -19,11 +16,11 @@ class ButtonExample extends StatelessWidget {
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: List.generate(
-              buttonTypes.length,
+              ZetaButtonType.values.length,
               (index2) => ZetaButton(
                 label: 'Button',
                 onPressed: index == 0 ? null : () {},
-                type: buttonTypes[index2],
+                type: ZetaButtonType.values[index2],
                 size: ZetaWidgetSize.values[index == 0 ? 0 : index - 1],
                 borderType: borderType,
               ),
@@ -74,10 +71,10 @@ class IconButtonExample extends StatelessWidget {
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: List.generate(
-              buttonTypes.length,
+              ZetaButtonType.values.length,
               (index2) => ZetaIconButton(
                 onPressed: index == 0 ? null : () {},
-                type: buttonTypes[index2],
+                type: ZetaButtonType.values[index2],
                 size: ZetaWidgetSize.values[index == 0 ? 0 : index - 1],
                 borderType: borderType,
                 icon: icons[index2],

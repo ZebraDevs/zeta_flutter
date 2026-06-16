@@ -1,6 +1,3 @@
-// Ignored whilst secondary is still in use
-// ignore_for_file: deprecated_member_use_from_same_package
-
 import 'package:flutter/material.dart';
 
 import '../../../zeta_flutter.dart';
@@ -10,12 +7,6 @@ enum ZetaButtonType {
   /// Background: Primary color; defaults to blue.
   /// Border: None.
   primary,
-
-  /// Background: Secondary color; defaults to yellow.
-  /// Border: None.
-
-  @Deprecated('Secondary buttons are deprecated and will be removed in a future version.')
-  secondary,
 
   /// Background: Positive color; defaults to green.
   /// Border: None.
@@ -46,9 +37,7 @@ enum ZetaButtonType {
   Color _backgroundColor(ZetaColors colors) {
     switch (this) {
       case ZetaButtonType.primary:
-        return colors.statePrimaryEnabled;
-      case ZetaButtonType.secondary:
-        return colors.stateSecondaryEnabled;
+        return colors.statePrimaryLegacyEnabled;
       case ZetaButtonType.positive:
         return colors.statePositiveEnabled;
       case ZetaButtonType.negative:
@@ -66,9 +55,7 @@ enum ZetaButtonType {
   Color _hoverColor(ZetaColors colors) {
     switch (this) {
       case ZetaButtonType.primary:
-        return colors.statePrimaryHover;
-      case ZetaButtonType.secondary:
-        return colors.stateSecondaryHover;
+        return colors.statePrimaryLegacyHover;
       case ZetaButtonType.positive:
         return colors.statePositiveHover;
       case ZetaButtonType.negative:
@@ -85,9 +72,7 @@ enum ZetaButtonType {
   Color _pressedColor(ZetaColors colors) {
     switch (this) {
       case ZetaButtonType.primary:
-        return colors.statePrimarySelected;
-      case ZetaButtonType.secondary:
-        return colors.stateSecondarySelected;
+        return colors.statePrimaryLegacySelected;
       case ZetaButtonType.positive:
         return colors.statePositiveSelected;
       case ZetaButtonType.negative:
@@ -142,11 +127,10 @@ ButtonStyle buttonStyle(
         switch (type) {
           case ZetaButtonType.outline:
           case ZetaButtonType.text:
-            return colors.mainPrimary;
+            return colors.mainPrimaryLegacy;
           case ZetaButtonType.outlineSubtle:
             return colors.mainDefault;
           case ZetaButtonType.primary:
-          case ZetaButtonType.secondary:
           case ZetaButtonType.positive:
           case ZetaButtonType.negative:
             return colors.stateDefaultEnabled;
@@ -164,11 +148,11 @@ ButtonStyle buttonStyle(
       }
       // TODO(UX-1134): This removes a defualt border when focused, rather than adding a second border when focused.
       if (states.contains(WidgetState.focused)) {
-        return BorderSide(color: colors.borderPrimary, width: ZetaBorders.medium);
+        return BorderSide(color: colors.borderPrimaryLegacy, width: ZetaBorders.medium);
       }
       if (type._border) {
         return BorderSide(
-          color: type == ZetaButtonType.outline ? colors.borderPrimaryMain : colors.borderSubtle,
+          color: type == ZetaButtonType.outline ? colors.borderPrimaryLegacy : colors.borderSubtle,
         );
       }
 
@@ -184,11 +168,10 @@ ButtonStyle buttonStyle(
         switch (type) {
           case ZetaButtonType.outline:
           case ZetaButtonType.text:
-            return colors.mainPrimary;
+            return colors.mainPrimaryLegacy;
           case ZetaButtonType.outlineSubtle:
             return colors.mainDefault;
           case ZetaButtonType.primary:
-          case ZetaButtonType.secondary:
           case ZetaButtonType.positive:
           case ZetaButtonType.negative:
             return colors.stateDefaultEnabled;

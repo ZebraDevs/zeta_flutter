@@ -243,7 +243,7 @@ class _ZetaChipState extends State<ZetaChip> {
                     if (states.contains(WidgetState.hovered)) {
                       return colors.borderHover;
                     }
-                    return colors.surfaceDefaultInverse;
+                    return colors.stateInverseEnabled;
                   }
                   if (states.contains(WidgetState.pressed) || isDragging) {
                     return colors.surfaceSelected;

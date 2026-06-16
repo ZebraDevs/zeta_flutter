@@ -241,7 +241,7 @@ class _CheckboxState extends State<ZetaInternalCheckbox> {
                 BoxShadow(
                   spreadRadius: 2,
                   blurStyle: BlurStyle.solid,
-                  color: theme.colors.borderPrimary,
+                  color: theme.colors.borderPrimaryLegacy,
                 ),
             ],
             color: _getBackground(theme),
