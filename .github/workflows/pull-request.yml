@@ -2,6 +2,13 @@ name: CI - Pull Request
 on:
   pull_request_target:
 
+# Restrict default GITHUB_TOKEN permissions — jobs must declare what they need explicitly.
+# This limits blast radius if the fork-review environment gate is misconfigured.
+# IMPORTANT: The fork-review GitHub environment MUST have required reviewers configured
+# in repo settings to prevent untrusted fork code from running with write access.
+permissions:
+  contents: read
+
 # Pull Request Runs on the same branch will be cancelled
 concurrency:
   group: ${{ github.head_ref }}
@@ -11,16 +18,20 @@ jobs:
   code-quality:
     runs-on: ubuntu-latest
     continue-on-error: true
+    permissions:
+      contents: write      # Required for automated lint commits and Release please push
+      pull-requests: write # Required for flutter-code-quality to post PR comments
+      checks: write        # Required for flutter-code-quality check run reporting
     environment: ${{ github.event.pull_request.head.repo.fork == true && 'fork-review' || '' }}
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
         with:
           repository: ${{github.event.pull_request.head.repo.full_name}}
           ref: ${{ github.head_ref }}
           fetch-depth: 0
 
-      - uses: subosito/flutter-action@v2
+      - uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2 # v2
         with:
           cache: true
           channel: stable
@@ -48,9 +59,9 @@ jobs:
           flutter pub get
 
       - name: Setup LCOV
-        uses: hrishikesh-kadam/setup-lcov@v1
+        uses: hrishikesh-kadam/setup-lcov@6c1aa0cc9e1c02f9f58f01ac599f1064ccc83470 # v1
 
-      - uses: ZebraDevs/flutter-code-quality@main
+      - uses: ZebraDevs/flutter-code-quality@28fab01e538d85d43f1d07885d97d6e67009deaa # v1.0.11
         with:
           token: ${{secrets.GITHUB_TOKEN}}
           coverage-pass-score: "80"
@@ -58,6 +69,8 @@ jobs:
 
   check-secret:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     environment: ${{ github.event.pull_request.head.repo.fork == true && 'fork-review' || '' }}
     outputs:
       secret-exists: ${{ steps.check.outputs.defined }}
@@ -74,16 +87,20 @@ jobs:
 
   deploy-preview:
     name: Deploy preview version of the widgetbook on firebase
+    permissions:
+      contents: read
+      pull-requests: write # Required for Firebase hosting action to comment on PRs
+      checks: write        # Required for Firebase hosting action to create check runs
     environment: ${{ github.event.pull_request.head.repo.fork == true && 'fork-review' || '' }}
     needs: [code-quality, check-secret]
     if: needs.check-secret.outputs.secret-exists == 'true'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
         with:
           repository: ${{github.event.pull_request.head.repo.full_name}}
           ref: ${{ github.head_ref }}
-      - uses: subosito/flutter-action@v2
+      - uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2 # v2
         with:
           cache: true
           channel: stable
@@ -95,7 +112,7 @@ jobs:
           cd widgetbook
           flutter pub get
           flutter build web -o ../build --no-tree-shake-icons
-      - uses: FirebaseExtended/action-hosting-deploy@v0
+      - uses: FirebaseExtended/action-hosting-deploy@500ac625ca2dd40cbd15f7659af953801858032a # v0
         with:
           repoToken: "${{ secrets.GITHUB_TOKEN }}"
           firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_ZETA_DS }}"
