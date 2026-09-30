@@ -30,6 +30,11 @@ jobs:
           repository: ${{github.event.pull_request.head.repo.full_name}}
           ref: ${{ github.head_ref }}
           fetch-depth: 0
+          # flutter-code-quality pushes lint fixes with plain `git push`, which uses these
+          # persisted credentials rather than the `token:` input passed to the action below.
+          # Repo default GITHUB_TOKEN permission is read-only, so non-fork PRs need the PAT
+          # persisted here for that push to work. Fork PRs never get the PAT.
+          token: ${{ github.event.pull_request.head.repo.fork == true && secrets.GITHUB_TOKEN || secrets.PERSONAL_ACCESS_TOKEN }}
 
       - uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2 # v2
         with:
@@ -99,10 +104,12 @@ jobs:
       checks: write        # Required for Firebase hosting action to create check runs
     environment: ${{ github.event.pull_request.head.repo.fork == true && 'fork-review' || '' }}
     needs: [code-quality, check-secret]
-    # Disabled for forks for now: creating the deploy check-run needs checks:write, which
-    # the repo's read-only default GITHUB_TOKEN can't grant. Re-enable once a scoped
-    # GitHub App token replaces PERSONAL_ACCESS_TOKEN for fork-triggered runs.
-    if: needs.check-secret.outputs.secret-exists == 'true' && github.event.pull_request.head.repo.fork == false
+    # Disabled entirely for now: the Firebase action needs a token with checks:write to
+    # create its deploy check-run, and PERSONAL_ACCESS_TOKEN doesn't carry that scope
+    # (confirmed via "Resource not accessible by integration" even for non-fork PRs).
+    # Re-enable once PERSONAL_ACCESS_TOKEN is regenerated with checks:write, or replaced
+    # with a scoped GitHub App token — at which point also drop the fork == false guard.
+    if: false
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
