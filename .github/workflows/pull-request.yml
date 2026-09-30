@@ -40,10 +40,13 @@ jobs:
       - run: dart pub global activate melos
 
       - name: Release please help
-        if: startsWith(github.head_ref, 'release-please') && !endsWith(github.head_ref, 'zeta_flutter')
+        # Never runs for forks: needs a write-capable token, and the repo's default
+        # GITHUB_TOKEN permission is read-only, so this uses PERSONAL_ACCESS_TOKEN instead.
+        if: startsWith(github.head_ref, 'release-please') && !endsWith(github.head_ref, 'zeta_flutter') && github.event.pull_request.head.repo.fork == false
         continue-on-error: true
         env:
           HEAD_REF: ${{ github.head_ref }}
+          PAT: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
         run: |
           PACKAGE_NAME=$(echo "$HEAD_REF" | awk -F '--' '{print $NF}')
           bash scripts/update_individual.sh "$PACKAGE_NAME"
@@ -51,7 +54,7 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git add .
           git commit -m "deps: update dependencies in $PACKAGE_NAME"
-          git push origin "$HEAD_REF" -f
+          git push "https://x-access-token:${PAT}@github.com/${{ github.repository }}.git" "HEAD:${HEAD_REF}" -f
 
       - run: melos exec dart run build_runner build --delete-conflicting-outputs
       - run: |
@@ -63,7 +66,10 @@ jobs:
 
       - uses: ZebraDevs/flutter-code-quality@28fab01e538d85d43f1d07885d97d6e67009deaa # v1.0.11
         with:
-          token: ${{secrets.GITHUB_TOKEN}}
+          # Repo default GITHUB_TOKEN permission is read-only, so PR comments/check-run
+          # reporting only work with a PAT. Never give the PAT to fork PRs — they fall
+          # back to GITHUB_TOKEN, which means analysis still runs but reporting is skipped.
+          token: ${{ github.event.pull_request.head.repo.fork == true && secrets.GITHUB_TOKEN || secrets.PERSONAL_ACCESS_TOKEN }}
           coverage-pass-score: "80"
           test-command: melos test
 
@@ -93,7 +99,10 @@ jobs:
       checks: write        # Required for Firebase hosting action to create check runs
     environment: ${{ github.event.pull_request.head.repo.fork == true && 'fork-review' || '' }}
     needs: [code-quality, check-secret]
-    if: needs.check-secret.outputs.secret-exists == 'true'
+    # Disabled for forks for now: creating the deploy check-run needs checks:write, which
+    # the repo's read-only default GITHUB_TOKEN can't grant. Re-enable once a scoped
+    # GitHub App token replaces PERSONAL_ACCESS_TOKEN for fork-triggered runs.
+    if: needs.check-secret.outputs.secret-exists == 'true' && github.event.pull_request.head.repo.fork == false
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
@@ -114,6 +123,7 @@ jobs:
           flutter build web -o ../build --no-tree-shake-icons
       - uses: FirebaseExtended/action-hosting-deploy@500ac625ca2dd40cbd15f7659af953801858032a # v0
         with:
-          repoToken: "${{ secrets.GITHUB_TOKEN }}"
+          # Job only runs for non-fork PRs (see `if:` above), so PAT exposure is safe here.
+          repoToken: "${{ secrets.PERSONAL_ACCESS_TOKEN }}"
           firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_ZETA_DS }}"
           channelId: "pr-${{ github.event.number }}-${{ github.event.pull_request.head.ref }}"
