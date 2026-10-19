@@ -237,11 +237,11 @@ class ZetaTokens {
   /// `control` size tokens.
   ZetaControlTokens get control => ZetaControlTokens._(_size);
 
-  /// `radius` size tokens.
-  ZetaRadiusTokens get radius => ZetaRadiusTokens._(_size);
-
   /// `container` size tokens.
   ZetaContainerTokens get container => ZetaContainerTokens._(_size);
+
+  /// `radius` size tokens.
+  ZetaRadiusTokens get radius => ZetaRadiusTokens._(_size);
 
   /// `stroke` size tokens.
   ZetaStrokeTokens get stroke => ZetaStrokeTokens._(_size);

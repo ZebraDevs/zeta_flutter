@@ -52,6 +52,9 @@ class ZetaSurfaceTokens {
   /// `semantics.surface.info`: Background for containers communicating neutral information
   Color get info => _palette.statusInfoFaint;
 
+  /// `semantics.surface.track`: Background for containers communicating neutral information
+  Color get track => _palette.fillSunken;
+
   /// `semantics.surface.gradient.start`: Starting color stop for surfaces using a gradient fill
   Color get gradientStart => _palette.gradientDefaultStart;
 
@@ -97,6 +100,12 @@ class ZetaForegroundTokens {
 
   /// `semantics.foreground.info`: Text/icon color that communicates neutral information
   Color get info => _palette.statusInfoDefault;
+
+  /// `semantics.foreground.on-strong`: Text/icon color on strong, saturated fills (feedback background/strong, selected controls). White in every mode.
+  Color get onStrong => _palette.inkAlwaysWhite;
+
+  /// `semantics.foreground.on-light`: Text/icon color on fills that stay light in every mode. Near-black in every mode.
+  Color get onLight => _palette.inkAlwaysBlank;
 
   /// `semantics.foreground.gradient.start`: Starting color stop for text/icons using a gradient treatment
   Color get gradientStart => _palette.gradientDefaultStart;
@@ -446,7 +455,7 @@ class ZetaInteractiveTokens {
   Color get subtleForegroundDisabled => _palette.inkDisabled;
 
   /// `semantics.interactive.selection.background.default`: Default state for a neutral, general-purpose interactive element with no semantic meaning.
-  Color get selectionBackgroundDefault => _palette.fillDefault;
+  Color get selectionBackgroundDefault => _palette.inkLow;
 
   /// `semantics.interactive.selection.background.hover`: Hover state for a neutral interactive element.
   Color get selectionBackgroundHover => _palette.fillHover;
@@ -536,6 +545,15 @@ class ZetaFeedbackTokens {
 
   /// `semantics.feedback.info.foreground`: Icon/text color used inside informational alerts and messages
   Color get infoForeground => _palette.statusInfoDefault;
+
+  /// `semantics.feedback.neutral.background.subtle`: Background fill for neutral (no-status) badges, labels and inline messages
+  Color get neutralBackgroundSubtle => _palette.statusNeutralFaint;
+
+  /// `semantics.feedback.neutral.background.strong`: Solid fill for high-emphasis neutral badges and labels
+  Color get neutralBackgroundStrong => _palette.statusNeutralDefault;
+
+  /// `semantics.feedback.neutral.foreground`: Icon/text color used inside neutral badges, labels and messages
+  Color get neutralForeground => _palette.inkMedium;
 }
 
 /// Semantic `focus` tokens.

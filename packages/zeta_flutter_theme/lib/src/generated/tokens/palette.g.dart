@@ -126,6 +126,12 @@ abstract interface class ZetaPaletteTokens {
   /// `palette.ink.selection`: Text color within a selection (theme.color.selection.text)
   Color get inkSelection;
 
+  /// `palette.ink.always-white`: White that does not change with mode. Source for foreground/on-strong.
+  Color get inkAlwaysWhite;
+
+  /// `palette.ink.always-blank`: Near-black that does not change with mode. Source for foreground/on-light.
+  Color get inkAlwaysBlank;
+
   /// `palette.status.success.default`: Success color (theme.color.success.default)
   Color get statusSuccessDefault;
 
@@ -200,6 +206,21 @@ abstract interface class ZetaPaletteTokens {
 
   /// `palette.status.ghost.strong`
   Color get statusGhostStrong;
+
+  /// `palette.status.neutral.default`: Neutral color (theme.color.neutral.default)
+  Color get statusNeutralDefault;
+
+  /// `palette.status.neutral.faint`: Neutral background tint (theme.color.neutral.subtle)
+  Color get statusNeutralFaint;
+
+  /// `palette.status.neutral.deep`: Neutral solid/strong emphasis (theme.color.neutral.strong)
+  Color get statusNeutralDeep;
+
+  /// `palette.status.neutral.subtle`
+  Color get statusNeutralSubtle;
+
+  /// `palette.status.neutral.strong`
+  Color get statusNeutralStrong;
 
   /// `palette.line.selection`: Selected item border/outline (theme.color.selection.border)
   Color get lineSelection;
@@ -406,6 +427,12 @@ final class _ZetaPaletteZetaLight implements ZetaPaletteTokens {
   Color get inkSelection => _p.colorNeutralCool100;
 
   @override
+  Color get inkAlwaysWhite => _p.colorPureWhite;
+
+  @override
+  Color get inkAlwaysBlank => _p.colorNeutralCool100;
+
+  @override
   Color get statusSuccessDefault => _p.colorSystemPositive60;
 
   @override
@@ -479,6 +506,21 @@ final class _ZetaPaletteZetaLight implements ZetaPaletteTokens {
 
   @override
   Color get statusGhostStrong => _p.colorAlphaDark20;
+
+  @override
+  Color get statusNeutralDefault => _p.colorNeutralCool60;
+
+  @override
+  Color get statusNeutralFaint => _p.colorNeutralCool10;
+
+  @override
+  Color get statusNeutralDeep => _p.colorNeutralCool80;
+
+  @override
+  Color get statusNeutralSubtle => _p.colorNeutralCool50;
+
+  @override
+  Color get statusNeutralStrong => _p.colorNeutralCool70;
 
   @override
   Color get lineSelection => _p.colorBrandMain60;
@@ -685,6 +727,12 @@ final class _ZetaPaletteZetaDark implements ZetaPaletteTokens {
   Color get inkSelection => _p.colorNeutralCool10;
 
   @override
+  Color get inkAlwaysWhite => _p.colorPureWhite;
+
+  @override
+  Color get inkAlwaysBlank => _p.colorNeutralCool100;
+
+  @override
   Color get statusSuccessDefault => _p.colorSystemPositive60;
 
   @override
@@ -758,6 +806,21 @@ final class _ZetaPaletteZetaDark implements ZetaPaletteTokens {
 
   @override
   Color get statusGhostStrong => _p.colorAlphaLight20;
+
+  @override
+  Color get statusNeutralDefault => _p.colorNeutralWarm60;
+
+  @override
+  Color get statusNeutralFaint => _p.colorNeutralWarm100;
+
+  @override
+  Color get statusNeutralDeep => _p.colorNeutralWarm30;
+
+  @override
+  Color get statusNeutralSubtle => _p.colorNeutralWarm60;
+
+  @override
+  Color get statusNeutralStrong => _p.colorNeutralWarm40;
 
   @override
   Color get lineSelection => _p.colorBrandMain50;
@@ -964,6 +1027,12 @@ final class _ZetaPaletteCompanionLight implements ZetaPaletteTokens {
   Color get inkSelection => _p.colorNeutralCool100;
 
   @override
+  Color get inkAlwaysWhite => _p.colorPureWhite;
+
+  @override
+  Color get inkAlwaysBlank => _p.colorNeutralCool100;
+
+  @override
   Color get statusSuccessDefault => _p.colorSystemPositive60;
 
   @override
@@ -1037,6 +1106,21 @@ final class _ZetaPaletteCompanionLight implements ZetaPaletteTokens {
 
   @override
   Color get statusGhostStrong => _p.colorAlphaDark20;
+
+  @override
+  Color get statusNeutralDefault => _p.colorNeutralCool60;
+
+  @override
+  Color get statusNeutralFaint => _p.colorNeutralCool10;
+
+  @override
+  Color get statusNeutralDeep => _p.colorNeutralCool80;
+
+  @override
+  Color get statusNeutralSubtle => _p.colorNeutralCool50;
+
+  @override
+  Color get statusNeutralStrong => _p.colorNeutralCool70;
 
   @override
   Color get lineSelection => _p.colorBrandMain60;
@@ -1243,6 +1327,12 @@ final class _ZetaPaletteCompanionDark implements ZetaPaletteTokens {
   Color get inkSelection => _p.colorNeutralCool10;
 
   @override
+  Color get inkAlwaysWhite => _p.colorPureWhite;
+
+  @override
+  Color get inkAlwaysBlank => _p.colorNeutralCool100;
+
+  @override
   Color get statusSuccessDefault => _p.colorSystemPositive60;
 
   @override
@@ -1316,6 +1406,21 @@ final class _ZetaPaletteCompanionDark implements ZetaPaletteTokens {
 
   @override
   Color get statusGhostStrong => _p.colorAlphaLight20;
+
+  @override
+  Color get statusNeutralDefault => _p.colorNeutralWarm60;
+
+  @override
+  Color get statusNeutralFaint => _p.colorNeutralWarm100;
+
+  @override
+  Color get statusNeutralDeep => _p.colorNeutralWarm30;
+
+  @override
+  Color get statusNeutralSubtle => _p.colorNeutralWarm60;
+
+  @override
+  Color get statusNeutralStrong => _p.colorNeutralWarm40;
 
   @override
   Color get lineSelection => _p.colorBrandMain50;
@@ -1522,6 +1627,12 @@ final class _ZetaPaletteTargetLight implements ZetaPaletteTokens {
   Color get inkSelection => _p.colorNeutralCool100;
 
   @override
+  Color get inkAlwaysWhite => _p.colorPureWhite;
+
+  @override
+  Color get inkAlwaysBlank => _p.colorNeutralCool100;
+
+  @override
   Color get statusSuccessDefault => _p.colorSystemPositive60;
 
   @override
@@ -1595,6 +1706,21 @@ final class _ZetaPaletteTargetLight implements ZetaPaletteTokens {
 
   @override
   Color get statusGhostStrong => _p.colorAlphaDark20;
+
+  @override
+  Color get statusNeutralDefault => _p.colorNeutralCool60;
+
+  @override
+  Color get statusNeutralFaint => _p.colorNeutralCool10;
+
+  @override
+  Color get statusNeutralDeep => _p.colorNeutralCool80;
+
+  @override
+  Color get statusNeutralSubtle => _p.colorNeutralCool50;
+
+  @override
+  Color get statusNeutralStrong => _p.colorNeutralCool70;
 
   @override
   Color get lineSelection => _p.colorExtend4_60;
@@ -1801,6 +1927,12 @@ final class _ZetaPaletteTargetDark implements ZetaPaletteTokens {
   Color get inkSelection => _p.colorNeutralCool10;
 
   @override
+  Color get inkAlwaysWhite => _p.colorPureWhite;
+
+  @override
+  Color get inkAlwaysBlank => _p.colorNeutralCool100;
+
+  @override
   Color get statusSuccessDefault => _p.colorSystemPositive60;
 
   @override
@@ -1874,6 +2006,21 @@ final class _ZetaPaletteTargetDark implements ZetaPaletteTokens {
 
   @override
   Color get statusGhostStrong => _p.colorAlphaLight20;
+
+  @override
+  Color get statusNeutralDefault => _p.colorNeutralWarm60;
+
+  @override
+  Color get statusNeutralFaint => _p.colorNeutralWarm100;
+
+  @override
+  Color get statusNeutralDeep => _p.colorNeutralWarm30;
+
+  @override
+  Color get statusNeutralSubtle => _p.colorNeutralWarm60;
+
+  @override
+  Color get statusNeutralStrong => _p.colorNeutralWarm40;
 
   @override
   Color get lineSelection => _p.colorExtend4_50;

@@ -41,6 +41,8 @@ void main() {
       final tokens = ZetaTokens.resolve();
       expect(tokens.radius.mdAll, BorderRadius.circular(tokens.radius.md));
       expect(tokens.text.bodyMedium.fontFamily, kZetaFontFamily);
+      // Zebra Sans can't be distributed, so its token falls back to the bundled IBM Plex Sans.
+      expect(tokens.primitives.textFontFamilyZebraSans, kZetaFontFamily);
       expect(tokens.text.bodyMedium.height! * tokens.text.bodyMedium.fontSize!, closeTo(24, 0.001));
       expect(tokens.shadow.smallSoft.single.color, tokens.shadow.soft);
     });

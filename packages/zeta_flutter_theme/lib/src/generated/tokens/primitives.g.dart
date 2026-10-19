@@ -93,6 +93,15 @@ abstract interface class ZetaPrimitiveTokens {
   /// `primitives.scale.neg-3`
   double get scaleNeg3;
 
+  /// `primitives.scale.neg-4`
+  double get scaleNeg4;
+
+  /// `primitives.scale.neg-5`
+  double get scaleNeg5;
+
+  /// `primitives.scale.neg-6`
+  double get scaleNeg6;
+
   /// `primitives.color.neutral.cool.10`
   Color get colorNeutralCool10;
 
@@ -878,6 +887,15 @@ final class _ZetaPrimitivesZeta implements ZetaPrimitiveTokens {
   double get scaleNeg3 => -4;
 
   @override
+  double get scaleNeg4 => -6;
+
+  @override
+  double get scaleNeg5 => -8;
+
+  @override
+  double get scaleNeg6 => -12;
+
+  @override
   Color get colorNeutralCool10 => const Color(0xFFF8FBFF);
 
   @override
@@ -1460,7 +1478,7 @@ final class _ZetaPrimitivesZeta implements ZetaPrimitiveTokens {
   Color get colorAlphaLight90 => const Color(0xE5D4DDE6);
 
   @override
-  String get textFontFamilyZebraSans => 'packages/zeta_flutter_theme/ZebraSans';
+  String get textFontFamilyZebraSans => 'packages/zeta_flutter_theme/IBMPlexSans';
 
   @override
   String get textFontFamilyIBMPlexSans => 'packages/zeta_flutter_theme/IBMPlexSans';
@@ -1660,6 +1678,15 @@ final class _ZetaPrimitivesTarget implements ZetaPrimitiveTokens {
 
   @override
   double get scaleNeg3 => -4;
+
+  @override
+  double get scaleNeg4 => -6;
+
+  @override
+  double get scaleNeg5 => -8;
+
+  @override
+  double get scaleNeg6 => -12;
 
   @override
   Color get colorNeutralCool10 => const Color(0xFFF8FBFF);
@@ -2244,7 +2271,7 @@ final class _ZetaPrimitivesTarget implements ZetaPrimitiveTokens {
   Color get colorAlphaLight90 => const Color(0xE5D4DDE6);
 
   @override
-  String get textFontFamilyZebraSans => 'packages/zeta_flutter_theme/ZebraSans';
+  String get textFontFamilyZebraSans => 'packages/zeta_flutter_theme/IBMPlexSans';
 
   @override
   String get textFontFamilyIBMPlexSans => 'packages/zeta_flutter_theme/IBMPlexSans';

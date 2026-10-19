@@ -70,7 +70,7 @@ Apps using Zeta for theming can use either `ZetaContrast.AA` or `ZetaContrast.AA
 
 ### Typography
 
-Typography tokens are available as `tokens.text`. This library bundles Zebra Sans (family `kZetaFontFamilyZebraSans`, plus `kZetaFontFamilyZebraSansCondensed`) and [IBM Plex Sans](https://github.com/IBM/plex), Copyright © 2017 IBM Corp, see [LICENSE-3RD-PARTY](https://github.com/ZebraDevs/zeta_flutter/tree/develop/packages/zeta_flutter_theme/LICENSE-3RD-PARTY)
+Typography tokens are available as `tokens.text`. This library bundles [IBM Plex Sans](https://github.com/IBM/plex), Copyright © 2017 IBM Corp, see [LICENSE-3RD-PARTY](https://github.com/ZebraDevs/zeta_flutter/tree/develop/packages/zeta_flutter_theme/LICENSE-3RD-PARTY)
 
 ### Rounded
 

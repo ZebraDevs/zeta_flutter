@@ -42,14 +42,20 @@ abstract interface class _ZetaSizeLayer {
   /// `size.space.none`: = 32px, source: scale/10
   double get spaceNone;
 
-  /// `size.space.neg-xs`: = 32px, source: scale/10
+  /// `size.space.neg.xs`: = -1px, source: scale/-1
   double get spaceNegXs;
 
-  /// `size.space.neg-sm`: = 32px, source: scale/10
+  /// `size.space.neg.sm`: = -2px, source: scale/-2
   double get spaceNegSm;
 
-  /// `size.space.neg-md`: = 32px, source: scale/10
+  /// `size.space.neg.md`: = -4px, source: scale/-3
   double get spaceNegMd;
+
+  /// `size.space.neg.lg`: = -8px, source: scale/-5
+  double get spaceNegLg;
+
+  /// `size.space.neg.xl`: = -12px, source: scale/-6
+  double get spaceNegXl;
 
   /// `size.control.target-min`: = 44px, source: scale/13
   double get controlTargetMin;
@@ -77,6 +83,9 @@ abstract interface class _ZetaSizeLayer {
 
   /// `size.control.icon-lg`: = 32px, source: scale/10
   double get controlIconLg;
+
+  /// `size.container.default`: = 600px, source: scale/22
+  double get containerDefault;
 
   /// `size.radius.none`: = 2px, source: scale/1
   double get radiusNone;
@@ -107,9 +116,6 @@ abstract interface class _ZetaSizeLayer {
 
   /// `size.radius.pill`: Literal value, not a scale reference (fully rounded)
   double get radiusPill;
-
-  /// `size.container.default`: = 600px, source: scale/22
-  double get containerDefault;
 
   /// `size.stroke.base`: = 1px, source: scale/0
   double get strokeBase;
@@ -214,6 +220,12 @@ final class _ZetaSizeZetaMobile implements _ZetaSizeLayer {
   double get spaceNegMd => _p.scaleNeg3;
 
   @override
+  double get spaceNegLg => _p.scaleNeg5;
+
+  @override
+  double get spaceNegXl => _p.scaleNeg6;
+
+  @override
   double get controlTargetMin => _p.scale13;
 
   @override
@@ -239,6 +251,9 @@ final class _ZetaSizeZetaMobile implements _ZetaSizeLayer {
 
   @override
   double get controlIconLg => _p.scale10;
+
+  @override
+  double get containerDefault => _p.scaleContainer0;
 
   @override
   double get radiusNone => _p.scale0;
@@ -269,9 +284,6 @@ final class _ZetaSizeZetaMobile implements _ZetaSizeLayer {
 
   @override
   double get radiusPill => 9999;
-
-  @override
-  double get containerDefault => _p.scaleContainer0;
 
   @override
   double get strokeBase => _p.scale0;
@@ -376,6 +388,12 @@ final class _ZetaSizeZetaTablet implements _ZetaSizeLayer {
   double get spaceNegMd => _p.scaleNeg3;
 
   @override
+  double get spaceNegLg => _p.scaleNeg5;
+
+  @override
+  double get spaceNegXl => _p.scaleNeg6;
+
+  @override
   double get controlTargetMin => _p.scale13;
 
   @override
@@ -401,6 +419,9 @@ final class _ZetaSizeZetaTablet implements _ZetaSizeLayer {
 
   @override
   double get controlIconLg => _p.scale10;
+
+  @override
+  double get containerDefault => _p.scaleContainer1;
 
   @override
   double get radiusNone => _p.scale0;
@@ -431,9 +452,6 @@ final class _ZetaSizeZetaTablet implements _ZetaSizeLayer {
 
   @override
   double get radiusPill => 9999;
-
-  @override
-  double get containerDefault => _p.scaleContainer1;
 
   @override
   double get strokeBase => _p.scale0;
@@ -538,6 +556,12 @@ final class _ZetaSizeZetaDesktop implements _ZetaSizeLayer {
   double get spaceNegMd => _p.scaleNeg3;
 
   @override
+  double get spaceNegLg => _p.scaleNeg5;
+
+  @override
+  double get spaceNegXl => _p.scaleNeg6;
+
+  @override
   double get controlTargetMin => _p.scale13;
 
   @override
@@ -563,6 +587,9 @@ final class _ZetaSizeZetaDesktop implements _ZetaSizeLayer {
 
   @override
   double get controlIconLg => _p.scale10;
+
+  @override
+  double get containerDefault => _p.scaleContainer3;
 
   @override
   double get radiusNone => _p.scale0;
@@ -593,9 +620,6 @@ final class _ZetaSizeZetaDesktop implements _ZetaSizeLayer {
 
   @override
   double get radiusPill => 9999;
-
-  @override
-  double get containerDefault => _p.scaleContainer3;
 
   @override
   double get strokeBase => _p.scale0;
@@ -700,6 +724,12 @@ final class _ZetaSizeZetaDesktopCompact implements _ZetaSizeLayer {
   double get spaceNegMd => _p.scaleNeg3;
 
   @override
+  double get spaceNegLg => _p.scaleNeg5;
+
+  @override
+  double get spaceNegXl => _p.scaleNeg6;
+
+  @override
   double get controlTargetMin => _p.scale13;
 
   @override
@@ -725,6 +755,9 @@ final class _ZetaSizeZetaDesktopCompact implements _ZetaSizeLayer {
 
   @override
   double get controlIconLg => _p.scale10;
+
+  @override
+  double get containerDefault => _p.scaleContainer2;
 
   @override
   double get radiusNone => _p.scale0;
@@ -755,9 +788,6 @@ final class _ZetaSizeZetaDesktopCompact implements _ZetaSizeLayer {
 
   @override
   double get radiusPill => 9999;
-
-  @override
-  double get containerDefault => _p.scaleContainer2;
 
   @override
   double get strokeBase => _p.scale0;
@@ -862,6 +892,12 @@ final class _ZetaSizeCondensedMobile implements _ZetaSizeLayer {
   double get spaceNegMd => _p.scaleNeg3;
 
   @override
+  double get spaceNegLg => _p.scaleNeg5;
+
+  @override
+  double get spaceNegXl => _p.scaleNeg6;
+
+  @override
   double get controlTargetMin => _p.scale13;
 
   @override
@@ -887,6 +923,9 @@ final class _ZetaSizeCondensedMobile implements _ZetaSizeLayer {
 
   @override
   double get controlIconLg => _p.scale10;
+
+  @override
+  double get containerDefault => _p.scaleContainer0;
 
   @override
   double get radiusNone => _p.scale0;
@@ -917,9 +956,6 @@ final class _ZetaSizeCondensedMobile implements _ZetaSizeLayer {
 
   @override
   double get radiusPill => 9999;
-
-  @override
-  double get containerDefault => _p.scaleContainer0;
 
   @override
   double get strokeBase => _p.scale0;
@@ -1024,6 +1060,12 @@ final class _ZetaSizeCondensedTablet implements _ZetaSizeLayer {
   double get spaceNegMd => _p.scaleNeg3;
 
   @override
+  double get spaceNegLg => _p.scaleNeg5;
+
+  @override
+  double get spaceNegXl => _p.scaleNeg6;
+
+  @override
   double get controlTargetMin => _p.scale13;
 
   @override
@@ -1049,6 +1091,9 @@ final class _ZetaSizeCondensedTablet implements _ZetaSizeLayer {
 
   @override
   double get controlIconLg => _p.scale10;
+
+  @override
+  double get containerDefault => _p.scaleContainer1;
 
   @override
   double get radiusNone => _p.scale0;
@@ -1079,9 +1124,6 @@ final class _ZetaSizeCondensedTablet implements _ZetaSizeLayer {
 
   @override
   double get radiusPill => 9999;
-
-  @override
-  double get containerDefault => _p.scaleContainer1;
 
   @override
   double get strokeBase => _p.scale0;
@@ -1186,6 +1228,12 @@ final class _ZetaSizeCondensedDesktop implements _ZetaSizeLayer {
   double get spaceNegMd => _p.scaleNeg3;
 
   @override
+  double get spaceNegLg => _p.scaleNeg5;
+
+  @override
+  double get spaceNegXl => _p.scaleNeg6;
+
+  @override
   double get controlTargetMin => _p.scale11;
 
   @override
@@ -1211,6 +1259,9 @@ final class _ZetaSizeCondensedDesktop implements _ZetaSizeLayer {
 
   @override
   double get controlIconLg => _p.scale7;
+
+  @override
+  double get containerDefault => _p.scaleContainer3;
 
   @override
   double get radiusNone => _p.scale0;
@@ -1241,9 +1292,6 @@ final class _ZetaSizeCondensedDesktop implements _ZetaSizeLayer {
 
   @override
   double get radiusPill => 9999;
-
-  @override
-  double get containerDefault => _p.scaleContainer3;
 
   @override
   double get strokeBase => _p.scale0;
@@ -1348,6 +1396,12 @@ final class _ZetaSizeCondensedDesktopCompact implements _ZetaSizeLayer {
   double get spaceNegMd => _p.scaleNeg3;
 
   @override
+  double get spaceNegLg => _p.scaleNeg5;
+
+  @override
+  double get spaceNegXl => _p.scaleNeg6;
+
+  @override
   double get controlTargetMin => _p.scale13;
 
   @override
@@ -1373,6 +1427,9 @@ final class _ZetaSizeCondensedDesktopCompact implements _ZetaSizeLayer {
 
   @override
   double get controlIconLg => _p.scale10;
+
+  @override
+  double get containerDefault => _p.scaleContainer2;
 
   @override
   double get radiusNone => _p.scale0;
@@ -1403,9 +1460,6 @@ final class _ZetaSizeCondensedDesktopCompact implements _ZetaSizeLayer {
 
   @override
   double get radiusPill => 9999;
-
-  @override
-  double get containerDefault => _p.scaleContainer2;
 
   @override
   double get strokeBase => _p.scale0;
@@ -1501,14 +1555,20 @@ class ZetaSpaceTokens {
   /// `size.space.none`: = 32px, source: scale/10
   double get none => _size.spaceNone;
 
-  /// `size.space.neg-xs`: = 32px, source: scale/10
+  /// `size.space.neg.xs`: = -1px, source: scale/-1
   double get negXs => _size.spaceNegXs;
 
-  /// `size.space.neg-sm`: = 32px, source: scale/10
+  /// `size.space.neg.sm`: = -2px, source: scale/-2
   double get negSm => _size.spaceNegSm;
 
-  /// `size.space.neg-md`: = 32px, source: scale/10
+  /// `size.space.neg.md`: = -4px, source: scale/-3
   double get negMd => _size.spaceNegMd;
+
+  /// `size.space.neg.lg`: = -8px, source: scale/-5
+  double get negLg => _size.spaceNegLg;
+
+  /// `size.space.neg.xl`: = -12px, source: scale/-6
+  double get negXl => _size.spaceNegXl;
 }
 
 /// `control` size tokens.
@@ -1543,6 +1603,16 @@ class ZetaControlTokens {
 
   /// `size.control.icon-lg`: = 32px, source: scale/10
   double get iconLg => _size.controlIconLg;
+}
+
+/// `container` size tokens.
+class ZetaContainerTokens {
+  const ZetaContainerTokens._(this._size);
+
+  final _ZetaSizeLayer _size;
+
+  /// `size.container.default`: = 600px, source: scale/22
+  double get default_ => _size.containerDefault;
 }
 
 /// `radius` size tokens.
@@ -1610,16 +1680,6 @@ class ZetaRadiusTokens {
 
   /// [pill] as a circular [BorderRadius].
   BorderRadius get pillAll => BorderRadius.circular(_size.radiusPill);
-}
-
-/// `container` size tokens.
-class ZetaContainerTokens {
-  const ZetaContainerTokens._(this._size);
-
-  final _ZetaSizeLayer _size;
-
-  /// `size.container.default`: = 600px, source: scale/22
-  double get default_ => _size.containerDefault;
 }
 
 /// `stroke` size tokens.
