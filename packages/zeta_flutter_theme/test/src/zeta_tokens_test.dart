@@ -68,10 +68,11 @@ void main() {
   });
 
   group('Zeta.tokens', () {
-    Zeta zeta(
-            {ZetaContrast contrast = ZetaContrast.aa,
-            ThemeMode themeMode = ThemeMode.light,
-            ZetaColorMode? colorMode,}) =>
+    Zeta zeta({
+      ZetaContrast contrast = ZetaContrast.aa,
+      ThemeMode themeMode = ThemeMode.light,
+      ZetaColorMode? colorMode,
+    }) =>
         Zeta(contrast: contrast, themeMode: themeMode, colorMode: colorMode, child: const SizedBox());
 
     test('follow the theme mode unless a color mode is set', () {
