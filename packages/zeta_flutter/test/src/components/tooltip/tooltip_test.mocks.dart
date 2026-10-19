@@ -46,8 +46,8 @@ class _FakeZetaSemantics_1 extends _i1.SmartFake implements _i2.ZetaSemantics {
         );
 }
 
-class _FakeZetaColors_2 extends _i1.SmartFake implements _i2.ZetaColors {
-  _FakeZetaColors_2(
+class _FakeZetaTokens_2 extends _i1.SmartFake implements _i2.ZetaTokens {
+  _FakeZetaTokens_2(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -56,8 +56,8 @@ class _FakeZetaColors_2 extends _i1.SmartFake implements _i2.ZetaColors {
         );
 }
 
-class _FakeZetaRadius_3 extends _i1.SmartFake implements _i2.ZetaRadius {
-  _FakeZetaRadius_3(
+class _FakeZetaColors_3 extends _i1.SmartFake implements _i2.ZetaColors {
+  _FakeZetaColors_3(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -66,8 +66,8 @@ class _FakeZetaRadius_3 extends _i1.SmartFake implements _i2.ZetaRadius {
         );
 }
 
-class _FakeZetaSpacing_4 extends _i1.SmartFake implements _i2.ZetaSpacing {
-  _FakeZetaSpacing_4(
+class _FakeZetaRadius_4 extends _i1.SmartFake implements _i2.ZetaRadius {
+  _FakeZetaRadius_4(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -76,8 +76,8 @@ class _FakeZetaSpacing_4 extends _i1.SmartFake implements _i2.ZetaSpacing {
         );
 }
 
-class _FakeZetaTextStyle_5 extends _i1.SmartFake implements _i2.ZetaTextStyle {
-  _FakeZetaTextStyle_5(
+class _FakeZetaSpacing_5 extends _i1.SmartFake implements _i2.ZetaSpacing {
+  _FakeZetaSpacing_5(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -86,8 +86,18 @@ class _FakeZetaTextStyle_5 extends _i1.SmartFake implements _i2.ZetaTextStyle {
         );
 }
 
-class _FakeWidget_6 extends _i1.SmartFake implements _i3.Widget {
-  _FakeWidget_6(
+class _FakeZetaTextStyle_6 extends _i1.SmartFake implements _i2.ZetaTextStyle {
+  _FakeZetaTextStyle_6(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
+class _FakeWidget_7 extends _i1.SmartFake implements _i3.Widget {
+  _FakeWidget_7(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -99,8 +109,8 @@ class _FakeWidget_6 extends _i1.SmartFake implements _i3.Widget {
   String toString({_i4.DiagnosticLevel? minLevel = _i4.DiagnosticLevel.info}) => super.toString();
 }
 
-class _FakeInheritedElement_7 extends _i1.SmartFake implements _i3.InheritedElement {
-  _FakeInheritedElement_7(
+class _FakeInheritedElement_8 extends _i1.SmartFake implements _i3.InheritedElement {
+  _FakeInheritedElement_8(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -112,8 +122,8 @@ class _FakeInheritedElement_7 extends _i1.SmartFake implements _i3.InheritedElem
   String toString({_i4.DiagnosticLevel? minLevel = _i4.DiagnosticLevel.info}) => super.toString();
 }
 
-class _FakeDiagnosticsNode_8 extends _i1.SmartFake implements _i4.DiagnosticsNode {
-  _FakeDiagnosticsNode_8(
+class _FakeDiagnosticsNode_9 extends _i1.SmartFake implements _i4.DiagnosticsNode {
+  _FakeDiagnosticsNode_9(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -160,11 +170,59 @@ class MockZeta extends _i1.Mock implements _i2.Zeta {
       ) as _i2.ZetaSemantics);
 
   @override
+  _i2.ZetaTokens get tokens => (super.noSuchMethod(
+        Invocation.getter(#tokens),
+        returnValue: _FakeZetaTokens_2(
+          this,
+          Invocation.getter(#tokens),
+        ),
+        returnValueForMissingStub: _FakeZetaTokens_2(
+          this,
+          Invocation.getter(#tokens),
+        ),
+      ) as _i2.ZetaTokens);
+
+  @override
   bool get rounded => (super.noSuchMethod(
         Invocation.getter(#rounded),
         returnValue: false,
         returnValueForMissingStub: false,
       ) as bool);
+
+  @override
+  _i2.ZetaPrimitivesTheme get primitivesTheme => (super.noSuchMethod(
+        Invocation.getter(#primitivesTheme),
+        returnValue: _i2.ZetaPrimitivesTheme.zeta,
+        returnValueForMissingStub: _i2.ZetaPrimitivesTheme.zeta,
+      ) as _i2.ZetaPrimitivesTheme);
+
+  @override
+  _i2.ZetaPaletteTheme get paletteTheme => (super.noSuchMethod(
+        Invocation.getter(#paletteTheme),
+        returnValue: _i2.ZetaPaletteTheme.zeta,
+        returnValueForMissingStub: _i2.ZetaPaletteTheme.zeta,
+      ) as _i2.ZetaPaletteTheme);
+
+  @override
+  _i2.ZetaSizeTheme get sizeTheme => (super.noSuchMethod(
+        Invocation.getter(#sizeTheme),
+        returnValue: _i2.ZetaSizeTheme.zeta,
+        returnValueForMissingStub: _i2.ZetaSizeTheme.zeta,
+      ) as _i2.ZetaSizeTheme);
+
+  @override
+  _i2.ZetaTypographyTheme get typographyTheme => (super.noSuchMethod(
+        Invocation.getter(#typographyTheme),
+        returnValue: _i2.ZetaTypographyTheme.zeta,
+        returnValueForMissingStub: _i2.ZetaTypographyTheme.zeta,
+      ) as _i2.ZetaTypographyTheme);
+
+  @override
+  _i2.ZetaBreakpoint get breakpoint => (super.noSuchMethod(
+        Invocation.getter(#breakpoint),
+        returnValue: _i2.ZetaBreakpoint.mobile,
+        returnValueForMissingStub: _i2.ZetaBreakpoint.mobile,
+      ) as _i2.ZetaBreakpoint);
 
   @override
   _i2.ZetaContrast get contrast => (super.noSuchMethod(
@@ -183,11 +241,11 @@ class MockZeta extends _i1.Mock implements _i2.Zeta {
   @override
   _i2.ZetaColors get colors => (super.noSuchMethod(
         Invocation.getter(#colors),
-        returnValue: _FakeZetaColors_2(
+        returnValue: _FakeZetaColors_3(
           this,
           Invocation.getter(#colors),
         ),
-        returnValueForMissingStub: _FakeZetaColors_2(
+        returnValueForMissingStub: _FakeZetaColors_3(
           this,
           Invocation.getter(#colors),
         ),
@@ -203,11 +261,11 @@ class MockZeta extends _i1.Mock implements _i2.Zeta {
   @override
   _i2.ZetaRadius get radius => (super.noSuchMethod(
         Invocation.getter(#radius),
-        returnValue: _FakeZetaRadius_3(
+        returnValue: _FakeZetaRadius_4(
           this,
           Invocation.getter(#radius),
         ),
-        returnValueForMissingStub: _FakeZetaRadius_3(
+        returnValueForMissingStub: _FakeZetaRadius_4(
           this,
           Invocation.getter(#radius),
         ),
@@ -216,11 +274,11 @@ class MockZeta extends _i1.Mock implements _i2.Zeta {
   @override
   _i2.ZetaSpacing get spacing => (super.noSuchMethod(
         Invocation.getter(#spacing),
-        returnValue: _FakeZetaSpacing_4(
+        returnValue: _FakeZetaSpacing_5(
           this,
           Invocation.getter(#spacing),
         ),
-        returnValueForMissingStub: _FakeZetaSpacing_4(
+        returnValueForMissingStub: _FakeZetaSpacing_5(
           this,
           Invocation.getter(#spacing),
         ),
@@ -229,11 +287,11 @@ class MockZeta extends _i1.Mock implements _i2.Zeta {
   @override
   _i2.ZetaTextStyle get textStyles => (super.noSuchMethod(
         Invocation.getter(#textStyles),
-        returnValue: _FakeZetaTextStyle_5(
+        returnValue: _FakeZetaTextStyle_6(
           this,
           Invocation.getter(#textStyles),
         ),
-        returnValueForMissingStub: _FakeZetaTextStyle_5(
+        returnValueForMissingStub: _FakeZetaTextStyle_6(
           this,
           Invocation.getter(#textStyles),
         ),
@@ -242,11 +300,11 @@ class MockZeta extends _i1.Mock implements _i2.Zeta {
   @override
   _i3.Widget get child => (super.noSuchMethod(
         Invocation.getter(#child),
-        returnValue: _FakeWidget_6(
+        returnValue: _FakeWidget_7(
           this,
           Invocation.getter(#child),
         ),
-        returnValueForMissingStub: _FakeWidget_6(
+        returnValueForMissingStub: _FakeWidget_7(
           this,
           Invocation.getter(#child),
         ),
@@ -277,14 +335,14 @@ class MockZeta extends _i1.Mock implements _i2.Zeta {
           #createElement,
           [],
         ),
-        returnValue: _FakeInheritedElement_7(
+        returnValue: _FakeInheritedElement_8(
           this,
           Invocation.method(
             #createElement,
             [],
           ),
         ),
-        returnValueForMissingStub: _FakeInheritedElement_7(
+        returnValueForMissingStub: _FakeInheritedElement_8(
           this,
           Invocation.method(
             #createElement,
@@ -413,7 +471,7 @@ class MockZeta extends _i1.Mock implements _i2.Zeta {
             #style: style,
           },
         ),
-        returnValue: _FakeDiagnosticsNode_8(
+        returnValue: _FakeDiagnosticsNode_9(
           this,
           Invocation.method(
             #toDiagnosticsNode,
@@ -424,7 +482,7 @@ class MockZeta extends _i1.Mock implements _i2.Zeta {
             },
           ),
         ),
-        returnValueForMissingStub: _FakeDiagnosticsNode_8(
+        returnValueForMissingStub: _FakeDiagnosticsNode_9(
           this,
           Invocation.method(
             #toDiagnosticsNode,

@@ -361,6 +361,30 @@ extension ZetaSemanticColorExtension on ZetaColors {
       );
 }
 
+/// Maps [ZetaTokens] onto a Material [ColorScheme], so stock Material widgets match the Zeta tokens.
+///
+/// Not yet used by [ZetaProvider], which still builds its [ThemeData] from the legacy [ZetaColors].
+extension ZetaTokensColorScheme on ZetaTokens {
+  /// Creates a [ColorScheme] for the current color mode.
+  ColorScheme get toColorScheme => ColorScheme(
+        brightness: brightness,
+        primary: interactive.primaryBackgroundDefault,
+        onPrimary: interactive.primaryForegroundDefault,
+        secondary: interactive.secondaryBackgroundDefault,
+        onSecondary: interactive.secondaryForegroundDefault,
+        error: interactive.destructiveBackgroundDefault,
+        onError: interactive.destructiveForegroundDefault,
+        surface: surface.page,
+        onSurface: foreground.primary,
+        onSurfaceVariant: foreground.secondary,
+        outline: border.default_,
+        outlineVariant: border.subtle,
+        inverseSurface: surface.inverse,
+        onInverseSurface: foreground.inverse,
+        scrim: overlay.scrim,
+      );
+}
+
 /// Extensions on [ThemeMode] to provide additional functionality.
 extension ZetaThemeModeExtension on ThemeMode {
   /// Returns true if the theme mode is dark.
