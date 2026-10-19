@@ -13,7 +13,8 @@ import 'package:zeta_flutter_theme/zeta_flutter_theme.dart';
 // It is frozen: it is no longer updated and will be deleted with the legacy API in the next major release.
 
 /// The semantic tokens for colors
-@Deprecated('Use the color categories on Zeta.of(context).tokens (surface, foreground, border, interactive, ...) instead. This will be removed in the next major release.')
+@Deprecated(
+    'Use the color categories on Zeta.of(context).tokens (surface, foreground, border, interactive, ...) instead. This will be removed in the next major release.')
 abstract interface class ZetaColors {
   /// Primitives used to construct semantic colors
   ZetaPrimitives get primitives;
@@ -1404,7 +1405,8 @@ abstract interface class ZetaRadius {
 }
 
 /// The semantic colors for AA
-@Deprecated('Use the color categories on Zeta.of(context).tokens (surface, foreground, border, interactive, ...) instead. This will be removed in the next major release.')
+@Deprecated(
+    'Use the color categories on Zeta.of(context).tokens (surface, foreground, border, interactive, ...) instead. This will be removed in the next major release.')
 class ZetaColorsAA extends Equatable implements ZetaColors {
   /// Constructor for [ZetaColorsAA]
   const ZetaColorsAA({required this.primitives});
@@ -1704,7 +1706,8 @@ class ZetaColorsAA extends Equatable implements ZetaColors {
 }
 
 /// The semantic colors for AAA
-@Deprecated('Use the color categories on Zeta.of(context).tokens (surface, foreground, border, interactive, ...) instead. This will be removed in the next major release.')
+@Deprecated(
+    'Use the color categories on Zeta.of(context).tokens (surface, foreground, border, interactive, ...) instead. This will be removed in the next major release.')
 class ZetaColorsAAA extends Equatable implements ZetaColors {
   /// Constructor for [ZetaColorsAAA]
   const ZetaColorsAAA({required this.primitives});

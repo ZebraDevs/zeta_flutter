@@ -100,8 +100,8 @@ class _FakeZetaSemantics_5 extends _i1.SmartFake implements _i4.ZetaSemantics {
         );
 }
 
-class _FakeZetaColors_6 extends _i1.SmartFake implements _i4.ZetaColors {
-  _FakeZetaColors_6(
+class _FakeZetaTokens_6 extends _i1.SmartFake implements _i4.ZetaTokens {
+  _FakeZetaTokens_6(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -110,8 +110,8 @@ class _FakeZetaColors_6 extends _i1.SmartFake implements _i4.ZetaColors {
         );
 }
 
-class _FakeZetaRadius_7 extends _i1.SmartFake implements _i4.ZetaRadius {
-  _FakeZetaRadius_7(
+class _FakeZetaColors_7 extends _i1.SmartFake implements _i4.ZetaColors {
+  _FakeZetaColors_7(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -120,8 +120,8 @@ class _FakeZetaRadius_7 extends _i1.SmartFake implements _i4.ZetaRadius {
         );
 }
 
-class _FakeZetaSpacing_8 extends _i1.SmartFake implements _i4.ZetaSpacing {
-  _FakeZetaSpacing_8(
+class _FakeZetaRadius_8 extends _i1.SmartFake implements _i4.ZetaRadius {
+  _FakeZetaRadius_8(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -130,8 +130,8 @@ class _FakeZetaSpacing_8 extends _i1.SmartFake implements _i4.ZetaSpacing {
         );
 }
 
-class _FakeZetaTextStyle_9 extends _i1.SmartFake implements _i4.ZetaTextStyle {
-  _FakeZetaTextStyle_9(
+class _FakeZetaSpacing_9 extends _i1.SmartFake implements _i4.ZetaSpacing {
+  _FakeZetaSpacing_9(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -140,8 +140,18 @@ class _FakeZetaTextStyle_9 extends _i1.SmartFake implements _i4.ZetaTextStyle {
         );
 }
 
-class _FakeInheritedElement_10 extends _i1.SmartFake implements _i2.InheritedElement {
-  _FakeInheritedElement_10(
+class _FakeZetaTextStyle_10 extends _i1.SmartFake implements _i4.ZetaTextStyle {
+  _FakeZetaTextStyle_10(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
+class _FakeInheritedElement_11 extends _i1.SmartFake implements _i2.InheritedElement {
+  _FakeInheritedElement_11(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -1629,11 +1639,59 @@ class MockZeta extends _i1.Mock implements _i4.Zeta {
       ) as _i4.ZetaSemantics);
 
   @override
+  _i4.ZetaTokens get tokens => (super.noSuchMethod(
+        Invocation.getter(#tokens),
+        returnValue: _FakeZetaTokens_6(
+          this,
+          Invocation.getter(#tokens),
+        ),
+        returnValueForMissingStub: _FakeZetaTokens_6(
+          this,
+          Invocation.getter(#tokens),
+        ),
+      ) as _i4.ZetaTokens);
+
+  @override
   bool get rounded => (super.noSuchMethod(
         Invocation.getter(#rounded),
         returnValue: false,
         returnValueForMissingStub: false,
       ) as bool);
+
+  @override
+  _i4.ZetaPrimitivesTheme get primitivesTheme => (super.noSuchMethod(
+        Invocation.getter(#primitivesTheme),
+        returnValue: _i4.ZetaPrimitivesTheme.zeta,
+        returnValueForMissingStub: _i4.ZetaPrimitivesTheme.zeta,
+      ) as _i4.ZetaPrimitivesTheme);
+
+  @override
+  _i4.ZetaPaletteTheme get paletteTheme => (super.noSuchMethod(
+        Invocation.getter(#paletteTheme),
+        returnValue: _i4.ZetaPaletteTheme.zeta,
+        returnValueForMissingStub: _i4.ZetaPaletteTheme.zeta,
+      ) as _i4.ZetaPaletteTheme);
+
+  @override
+  _i4.ZetaSizeTheme get sizeTheme => (super.noSuchMethod(
+        Invocation.getter(#sizeTheme),
+        returnValue: _i4.ZetaSizeTheme.zeta,
+        returnValueForMissingStub: _i4.ZetaSizeTheme.zeta,
+      ) as _i4.ZetaSizeTheme);
+
+  @override
+  _i4.ZetaTypographyTheme get typographyTheme => (super.noSuchMethod(
+        Invocation.getter(#typographyTheme),
+        returnValue: _i4.ZetaTypographyTheme.zeta,
+        returnValueForMissingStub: _i4.ZetaTypographyTheme.zeta,
+      ) as _i4.ZetaTypographyTheme);
+
+  @override
+  _i4.ZetaBreakpoint get breakpoint => (super.noSuchMethod(
+        Invocation.getter(#breakpoint),
+        returnValue: _i4.ZetaBreakpoint.mobile,
+        returnValueForMissingStub: _i4.ZetaBreakpoint.mobile,
+      ) as _i4.ZetaBreakpoint);
 
   @override
   _i4.ZetaContrast get contrast => (super.noSuchMethod(
@@ -1652,11 +1710,11 @@ class MockZeta extends _i1.Mock implements _i4.Zeta {
   @override
   _i4.ZetaColors get colors => (super.noSuchMethod(
         Invocation.getter(#colors),
-        returnValue: _FakeZetaColors_6(
+        returnValue: _FakeZetaColors_7(
           this,
           Invocation.getter(#colors),
         ),
-        returnValueForMissingStub: _FakeZetaColors_6(
+        returnValueForMissingStub: _FakeZetaColors_7(
           this,
           Invocation.getter(#colors),
         ),
@@ -1672,11 +1730,11 @@ class MockZeta extends _i1.Mock implements _i4.Zeta {
   @override
   _i4.ZetaRadius get radius => (super.noSuchMethod(
         Invocation.getter(#radius),
-        returnValue: _FakeZetaRadius_7(
+        returnValue: _FakeZetaRadius_8(
           this,
           Invocation.getter(#radius),
         ),
-        returnValueForMissingStub: _FakeZetaRadius_7(
+        returnValueForMissingStub: _FakeZetaRadius_8(
           this,
           Invocation.getter(#radius),
         ),
@@ -1685,11 +1743,11 @@ class MockZeta extends _i1.Mock implements _i4.Zeta {
   @override
   _i4.ZetaSpacing get spacing => (super.noSuchMethod(
         Invocation.getter(#spacing),
-        returnValue: _FakeZetaSpacing_8(
+        returnValue: _FakeZetaSpacing_9(
           this,
           Invocation.getter(#spacing),
         ),
-        returnValueForMissingStub: _FakeZetaSpacing_8(
+        returnValueForMissingStub: _FakeZetaSpacing_9(
           this,
           Invocation.getter(#spacing),
         ),
@@ -1698,11 +1756,11 @@ class MockZeta extends _i1.Mock implements _i4.Zeta {
   @override
   _i4.ZetaTextStyle get textStyles => (super.noSuchMethod(
         Invocation.getter(#textStyles),
-        returnValue: _FakeZetaTextStyle_9(
+        returnValue: _FakeZetaTextStyle_10(
           this,
           Invocation.getter(#textStyles),
         ),
-        returnValueForMissingStub: _FakeZetaTextStyle_9(
+        returnValueForMissingStub: _FakeZetaTextStyle_10(
           this,
           Invocation.getter(#textStyles),
         ),
@@ -1746,14 +1804,14 @@ class MockZeta extends _i1.Mock implements _i4.Zeta {
           #createElement,
           [],
         ),
-        returnValue: _FakeInheritedElement_10(
+        returnValue: _FakeInheritedElement_11(
           this,
           Invocation.method(
             #createElement,
             [],
           ),
         ),
-        returnValueForMissingStub: _FakeInheritedElement_10(
+        returnValueForMissingStub: _FakeInheritedElement_11(
           this,
           Invocation.method(
             #createElement,

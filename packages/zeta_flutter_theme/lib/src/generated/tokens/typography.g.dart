@@ -2493,163 +2493,163 @@ class ZetaTextTokens {
 
   /// `typography.display.large`
   TextStyle get displayLarge => TextStyle(
-    fontFamily: _typography.displayLargeFontFamily,
-    fontSize: _typography.displayLargeFontSize,
-    fontWeight: _typography.displayLargeFontWeight,
-    height: _typography.displayLargeLineHeight / _typography.displayLargeFontSize,
-    letterSpacing: _typography.displayLargeLetterSpacing,
-  );
+        fontFamily: _typography.displayLargeFontFamily,
+        fontSize: _typography.displayLargeFontSize,
+        fontWeight: _typography.displayLargeFontWeight,
+        height: _typography.displayLargeLineHeight / _typography.displayLargeFontSize,
+        letterSpacing: _typography.displayLargeLetterSpacing,
+      );
 
   /// `typography.display.medium`
   TextStyle get displayMedium => TextStyle(
-    fontFamily: _typography.displayMediumFontFamily,
-    fontSize: _typography.displayMediumFontSize,
-    fontWeight: _typography.displayMediumFontWeight,
-    height: _typography.displayMediumLineHeight / _typography.displayMediumFontSize,
-    letterSpacing: _typography.displayMediumLetterSpacing,
-  );
+        fontFamily: _typography.displayMediumFontFamily,
+        fontSize: _typography.displayMediumFontSize,
+        fontWeight: _typography.displayMediumFontWeight,
+        height: _typography.displayMediumLineHeight / _typography.displayMediumFontSize,
+        letterSpacing: _typography.displayMediumLetterSpacing,
+      );
 
   /// `typography.display.small`
   TextStyle get displaySmall => TextStyle(
-    fontFamily: _typography.displaySmallFontFamily,
-    fontSize: _typography.displaySmallFontSize,
-    fontWeight: _typography.displaySmallFontWeight,
-    height: _typography.displaySmallLineHeight / _typography.displaySmallFontSize,
-    letterSpacing: _typography.displaySmallLetterSpacing,
-  );
+        fontFamily: _typography.displaySmallFontFamily,
+        fontSize: _typography.displaySmallFontSize,
+        fontWeight: _typography.displaySmallFontWeight,
+        height: _typography.displaySmallLineHeight / _typography.displaySmallFontSize,
+        letterSpacing: _typography.displaySmallLetterSpacing,
+      );
 
   /// `typography.heading.large`
   TextStyle get headingLarge => TextStyle(
-    fontFamily: _typography.headingLargeFontFamily,
-    fontSize: _typography.headingLargeFontSize,
-    fontWeight: _typography.headingLargeFontWeight,
-    height: _typography.headingLargeLineHeight / _typography.headingLargeFontSize,
-    letterSpacing: _typography.headingLargeLetterSpacing,
-  );
+        fontFamily: _typography.headingLargeFontFamily,
+        fontSize: _typography.headingLargeFontSize,
+        fontWeight: _typography.headingLargeFontWeight,
+        height: _typography.headingLargeLineHeight / _typography.headingLargeFontSize,
+        letterSpacing: _typography.headingLargeLetterSpacing,
+      );
 
   /// `typography.heading.medium`
   TextStyle get headingMedium => TextStyle(
-    fontFamily: _typography.headingMediumFontFamily,
-    fontSize: _typography.headingMediumFontSize,
-    fontWeight: _typography.headingMediumFontWeight,
-    height: _typography.headingMediumLineHeight / _typography.headingMediumFontSize,
-    letterSpacing: _typography.headingMediumLetterSpacing,
-  );
+        fontFamily: _typography.headingMediumFontFamily,
+        fontSize: _typography.headingMediumFontSize,
+        fontWeight: _typography.headingMediumFontWeight,
+        height: _typography.headingMediumLineHeight / _typography.headingMediumFontSize,
+        letterSpacing: _typography.headingMediumLetterSpacing,
+      );
 
   /// `typography.heading.small`
   TextStyle get headingSmall => TextStyle(
-    fontFamily: _typography.headingSmallFontFamily,
-    fontSize: _typography.headingSmallFontSize,
-    fontWeight: _typography.headingSmallFontWeight,
-    height: _typography.headingSmallLineHeight / _typography.headingSmallFontSize,
-    letterSpacing: _typography.headingSmallLetterSpacing,
-  );
+        fontFamily: _typography.headingSmallFontFamily,
+        fontSize: _typography.headingSmallFontSize,
+        fontWeight: _typography.headingSmallFontWeight,
+        height: _typography.headingSmallLineHeight / _typography.headingSmallFontSize,
+        letterSpacing: _typography.headingSmallLetterSpacing,
+      );
 
   /// `typography.title.large`
   TextStyle get titleLarge => TextStyle(
-    fontFamily: _typography.titleLargeFontFamily,
-    fontSize: _typography.titleLargeFontSize,
-    fontWeight: _typography.titleLargeFontWeight,
-    height: _typography.titleLargeLineHeight / _typography.titleLargeFontSize,
-    letterSpacing: _typography.titleLargeLetterSpacing,
-  );
+        fontFamily: _typography.titleLargeFontFamily,
+        fontSize: _typography.titleLargeFontSize,
+        fontWeight: _typography.titleLargeFontWeight,
+        height: _typography.titleLargeLineHeight / _typography.titleLargeFontSize,
+        letterSpacing: _typography.titleLargeLetterSpacing,
+      );
 
   /// `typography.title.medium`
   TextStyle get titleMedium => TextStyle(
-    fontFamily: _typography.titleMediumFontFamily,
-    fontSize: _typography.titleMediumFontSize,
-    fontWeight: _typography.titleMediumFontWeight,
-    height: _typography.titleMediumLineHeight / _typography.titleMediumFontSize,
-    letterSpacing: _typography.titleMediumLetterSpacing,
-  );
+        fontFamily: _typography.titleMediumFontFamily,
+        fontSize: _typography.titleMediumFontSize,
+        fontWeight: _typography.titleMediumFontWeight,
+        height: _typography.titleMediumLineHeight / _typography.titleMediumFontSize,
+        letterSpacing: _typography.titleMediumLetterSpacing,
+      );
 
   /// `typography.title.small`
   TextStyle get titleSmall => TextStyle(
-    fontFamily: _typography.titleSmallFontFamily,
-    fontSize: _typography.titleSmallFontSize,
-    fontWeight: _typography.titleSmallFontWeight,
-    height: _typography.titleSmallLineHeight / _typography.titleSmallFontSize,
-    letterSpacing: _typography.titleSmallLetterSpacing,
-  );
+        fontFamily: _typography.titleSmallFontFamily,
+        fontSize: _typography.titleSmallFontSize,
+        fontWeight: _typography.titleSmallFontWeight,
+        height: _typography.titleSmallLineHeight / _typography.titleSmallFontSize,
+        letterSpacing: _typography.titleSmallLetterSpacing,
+      );
 
   /// `typography.body.large`
   TextStyle get bodyLarge => TextStyle(
-    fontFamily: _typography.bodyLargeFontFamily,
-    fontSize: _typography.bodyLargeFontSize,
-    fontWeight: _typography.bodyLargeFontWeight,
-    height: _typography.bodyLargeLineHeight / _typography.bodyLargeFontSize,
-    letterSpacing: _typography.bodyLargeLetterSpacing,
-  );
+        fontFamily: _typography.bodyLargeFontFamily,
+        fontSize: _typography.bodyLargeFontSize,
+        fontWeight: _typography.bodyLargeFontWeight,
+        height: _typography.bodyLargeLineHeight / _typography.bodyLargeFontSize,
+        letterSpacing: _typography.bodyLargeLetterSpacing,
+      );
 
   /// `typography.body.medium`
   TextStyle get bodyMedium => TextStyle(
-    fontFamily: _typography.bodyMediumFontFamily,
-    fontSize: _typography.bodyMediumFontSize,
-    fontWeight: _typography.bodyMediumFontWeight,
-    height: _typography.bodyMediumLineHeight / _typography.bodyMediumFontSize,
-    letterSpacing: _typography.bodyMediumLetterSpacing,
-  );
+        fontFamily: _typography.bodyMediumFontFamily,
+        fontSize: _typography.bodyMediumFontSize,
+        fontWeight: _typography.bodyMediumFontWeight,
+        height: _typography.bodyMediumLineHeight / _typography.bodyMediumFontSize,
+        letterSpacing: _typography.bodyMediumLetterSpacing,
+      );
 
   /// `typography.body.small`
   TextStyle get bodySmall => TextStyle(
-    fontFamily: _typography.bodySmallFontFamily,
-    fontSize: _typography.bodySmallFontSize,
-    fontWeight: _typography.bodySmallFontWeight,
-    height: _typography.bodySmallLineHeight / _typography.bodySmallFontSize,
-    letterSpacing: _typography.bodySmallLetterSpacing,
-  );
+        fontFamily: _typography.bodySmallFontFamily,
+        fontSize: _typography.bodySmallFontSize,
+        fontWeight: _typography.bodySmallFontWeight,
+        height: _typography.bodySmallLineHeight / _typography.bodySmallFontSize,
+        letterSpacing: _typography.bodySmallLetterSpacing,
+      );
 
   /// `typography.body.xsmall`
   TextStyle get bodyXsmall => TextStyle(
-    fontFamily: _typography.bodyXsmallFontFamily,
-    fontSize: _typography.bodyXsmallFontSize,
-    fontWeight: _typography.bodyXsmallFontWeight,
-    height: _typography.bodyXsmallLineHeight / _typography.bodyXsmallFontSize,
-    letterSpacing: _typography.bodyXsmallLetterSpacing,
-  );
+        fontFamily: _typography.bodyXsmallFontFamily,
+        fontSize: _typography.bodyXsmallFontSize,
+        fontWeight: _typography.bodyXsmallFontWeight,
+        height: _typography.bodyXsmallLineHeight / _typography.bodyXsmallFontSize,
+        letterSpacing: _typography.bodyXsmallLetterSpacing,
+      );
 
   /// `typography.indicator.medium`
   TextStyle get indicatorMedium => TextStyle(
-    fontFamily: _typography.indicatorMediumFontFamily,
-    fontSize: _typography.indicatorMediumFontSize,
-    fontWeight: _typography.indicatorMediumFontWeight,
-    height: _typography.indicatorMediumLineHeight / _typography.indicatorMediumFontSize,
-    letterSpacing: _typography.indicatorMediumLetterSpacing,
-  );
+        fontFamily: _typography.indicatorMediumFontFamily,
+        fontSize: _typography.indicatorMediumFontSize,
+        fontWeight: _typography.indicatorMediumFontWeight,
+        height: _typography.indicatorMediumLineHeight / _typography.indicatorMediumFontSize,
+        letterSpacing: _typography.indicatorMediumLetterSpacing,
+      );
 
   /// `typography.indicator.small`
   TextStyle get indicatorSmall => TextStyle(
-    fontFamily: _typography.indicatorSmallFontFamily,
-    fontSize: _typography.indicatorSmallFontSize,
-    fontWeight: _typography.indicatorSmallFontWeight,
-    height: _typography.indicatorSmallLineHeight / _typography.indicatorSmallFontSize,
-    letterSpacing: _typography.indicatorSmallLetterSpacing,
-  );
+        fontFamily: _typography.indicatorSmallFontFamily,
+        fontSize: _typography.indicatorSmallFontSize,
+        fontWeight: _typography.indicatorSmallFontWeight,
+        height: _typography.indicatorSmallLineHeight / _typography.indicatorSmallFontSize,
+        letterSpacing: _typography.indicatorSmallLetterSpacing,
+      );
 
   /// `typography.label.large`
   TextStyle get labelLarge => TextStyle(
-    fontFamily: _typography.labelLargeFontFamily,
-    fontSize: _typography.labelLargeFontSize,
-    fontWeight: _typography.labelLargeFontWeight,
-    height: _typography.labelLargeLineHeight / _typography.labelLargeFontSize,
-    letterSpacing: _typography.labelLargeLetterSpacing,
-  );
+        fontFamily: _typography.labelLargeFontFamily,
+        fontSize: _typography.labelLargeFontSize,
+        fontWeight: _typography.labelLargeFontWeight,
+        height: _typography.labelLargeLineHeight / _typography.labelLargeFontSize,
+        letterSpacing: _typography.labelLargeLetterSpacing,
+      );
 
   /// `typography.label.medium`
   TextStyle get labelMedium => TextStyle(
-    fontFamily: _typography.labelMediumFontFamily,
-    fontSize: _typography.labelMediumFontSize,
-    fontWeight: _typography.labelMediumFontWeight,
-    height: _typography.labelMediumLineHeight / _typography.labelMediumFontSize,
-    letterSpacing: _typography.labelMediumLetterSpacing,
-  );
+        fontFamily: _typography.labelMediumFontFamily,
+        fontSize: _typography.labelMediumFontSize,
+        fontWeight: _typography.labelMediumFontWeight,
+        height: _typography.labelMediumLineHeight / _typography.labelMediumFontSize,
+        letterSpacing: _typography.labelMediumLetterSpacing,
+      );
 
   /// `typography.label.small`
   TextStyle get labelSmall => TextStyle(
-    fontFamily: _typography.labelSmallFontFamily,
-    fontSize: _typography.labelSmallFontSize,
-    fontWeight: _typography.labelSmallFontWeight,
-    height: _typography.labelSmallLineHeight / _typography.labelSmallFontSize,
-    letterSpacing: _typography.labelSmallLetterSpacing,
-  );
+        fontFamily: _typography.labelSmallFontFamily,
+        fontSize: _typography.labelSmallFontSize,
+        fontWeight: _typography.labelSmallFontWeight,
+        height: _typography.labelSmallLineHeight / _typography.labelSmallFontSize,
+        letterSpacing: _typography.labelSmallLetterSpacing,
+      );
 }

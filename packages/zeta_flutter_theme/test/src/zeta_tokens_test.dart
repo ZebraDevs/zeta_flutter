@@ -68,7 +68,10 @@ void main() {
   });
 
   group('Zeta.tokens', () {
-    Zeta zeta({ZetaContrast contrast = ZetaContrast.aa, ThemeMode themeMode = ThemeMode.light, ZetaColorMode? colorMode}) =>
+    Zeta zeta(
+            {ZetaContrast contrast = ZetaContrast.aa,
+            ThemeMode themeMode = ThemeMode.light,
+            ZetaColorMode? colorMode,}) =>
         Zeta(contrast: contrast, themeMode: themeMode, colorMode: colorMode, child: const SizedBox());
 
     test('follow the theme mode unless a color mode is set', () {
@@ -117,8 +120,8 @@ void main() {
       ZetaProvider.of(ctx).updateSizeTheme(ZetaSizeTheme.condensed);
       await tester.pump();
       expect(ctx.zetaTokens.sizeTheme, ZetaSizeTheme.condensed);
-      final saved = verify(themeService.saveTheme(themeData: captureAnyNamed('themeData'))).captured.last
-          as ZetaThemeServiceData;
+      final saved =
+          verify(themeService.saveTheme(themeData: captureAnyNamed('themeData'))).captured.last as ZetaThemeServiceData;
       expect(saved.sizeTheme, ZetaSizeTheme.condensed);
       expect(saved.paletteTheme, ZetaPaletteTheme.target);
     });

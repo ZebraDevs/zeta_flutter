@@ -1656,73 +1656,73 @@ class ZetaShadowTokens {
 
   /// `size.shadow.xsmall` with `semantics.shadow.soft`.
   List<BoxShadow> get xsmallSoft => [
-    BoxShadow(
-      offset: Offset(_size.shadowXsmallX, _size.shadowXsmallY),
-      blurRadius: _size.shadowXsmallBlur,
-      color: _palette.fillTransparentEmphasis,
-    ),
-  ];
+        BoxShadow(
+          offset: Offset(_size.shadowXsmallX, _size.shadowXsmallY),
+          blurRadius: _size.shadowXsmallBlur,
+          color: _palette.fillTransparentEmphasis,
+        ),
+      ];
 
   /// `size.shadow.xsmall` with `semantics.shadow.hard`.
   List<BoxShadow> get xsmallHard => [
-    BoxShadow(
-      offset: Offset(_size.shadowXsmallX, _size.shadowXsmallY),
-      blurRadius: _size.shadowXsmallBlur,
-      color: _palette.fillTransparentElevate,
-    ),
-  ];
+        BoxShadow(
+          offset: Offset(_size.shadowXsmallX, _size.shadowXsmallY),
+          blurRadius: _size.shadowXsmallBlur,
+          color: _palette.fillTransparentElevate,
+        ),
+      ];
 
   /// `size.shadow.small` with `semantics.shadow.soft`.
   List<BoxShadow> get smallSoft => [
-    BoxShadow(
-      offset: Offset(_size.shadowSmallX, _size.shadowSmallY),
-      blurRadius: _size.shadowSmallBlur,
-      color: _palette.fillTransparentEmphasis,
-    ),
-  ];
+        BoxShadow(
+          offset: Offset(_size.shadowSmallX, _size.shadowSmallY),
+          blurRadius: _size.shadowSmallBlur,
+          color: _palette.fillTransparentEmphasis,
+        ),
+      ];
 
   /// `size.shadow.small` with `semantics.shadow.hard`.
   List<BoxShadow> get smallHard => [
-    BoxShadow(
-      offset: Offset(_size.shadowSmallX, _size.shadowSmallY),
-      blurRadius: _size.shadowSmallBlur,
-      color: _palette.fillTransparentElevate,
-    ),
-  ];
+        BoxShadow(
+          offset: Offset(_size.shadowSmallX, _size.shadowSmallY),
+          blurRadius: _size.shadowSmallBlur,
+          color: _palette.fillTransparentElevate,
+        ),
+      ];
 
   /// `size.shadow.medium` with `semantics.shadow.soft`.
   List<BoxShadow> get mediumSoft => [
-    BoxShadow(
-      offset: Offset(_size.shadowMediumX, _size.shadowMediumY),
-      blurRadius: _size.shadowMediumBlur,
-      color: _palette.fillTransparentEmphasis,
-    ),
-  ];
+        BoxShadow(
+          offset: Offset(_size.shadowMediumX, _size.shadowMediumY),
+          blurRadius: _size.shadowMediumBlur,
+          color: _palette.fillTransparentEmphasis,
+        ),
+      ];
 
   /// `size.shadow.medium` with `semantics.shadow.hard`.
   List<BoxShadow> get mediumHard => [
-    BoxShadow(
-      offset: Offset(_size.shadowMediumX, _size.shadowMediumY),
-      blurRadius: _size.shadowMediumBlur,
-      color: _palette.fillTransparentElevate,
-    ),
-  ];
+        BoxShadow(
+          offset: Offset(_size.shadowMediumX, _size.shadowMediumY),
+          blurRadius: _size.shadowMediumBlur,
+          color: _palette.fillTransparentElevate,
+        ),
+      ];
 
   /// `size.shadow.large` with `semantics.shadow.soft`.
   List<BoxShadow> get largeSoft => [
-    BoxShadow(
-      offset: Offset(_size.shadowLargeX, _size.shadowLargeY),
-      blurRadius: _size.shadowLargeBlur,
-      color: _palette.fillTransparentEmphasis,
-    ),
-  ];
+        BoxShadow(
+          offset: Offset(_size.shadowLargeX, _size.shadowLargeY),
+          blurRadius: _size.shadowLargeBlur,
+          color: _palette.fillTransparentEmphasis,
+        ),
+      ];
 
   /// `size.shadow.large` with `semantics.shadow.hard`.
   List<BoxShadow> get largeHard => [
-    BoxShadow(
-      offset: Offset(_size.shadowLargeX, _size.shadowLargeY),
-      blurRadius: _size.shadowLargeBlur,
-      color: _palette.fillTransparentElevate,
-    ),
-  ];
+        BoxShadow(
+          offset: Offset(_size.shadowLargeX, _size.shadowLargeY),
+          blurRadius: _size.shadowLargeBlur,
+          color: _palette.fillTransparentElevate,
+        ),
+      ];
 }

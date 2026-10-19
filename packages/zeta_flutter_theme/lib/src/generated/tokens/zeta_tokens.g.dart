@@ -105,9 +105,9 @@ class ZetaTokens {
     required _ZetaSizeLayer size,
     required _ZetaTypographyLayer typography,
     required bool? rounded,
-  }) : _size = size,
-       _typography = typography,
-       _rounded = rounded;
+  })  : _size = size,
+        _typography = typography,
+        _rounded = rounded;
 
   /// Resolves the tokens for the given layer themes, [colorMode] and [breakpoint].
   ///
@@ -163,8 +163,8 @@ class ZetaTokens {
         (ZetaTypographyTheme.condensed, ZetaBreakpoint.tablet) => _ZetaTypographyCondensedTablet(primitives),
         (ZetaTypographyTheme.condensed, ZetaBreakpoint.desktop) => _ZetaTypographyCondensedDesktop(primitives),
         (ZetaTypographyTheme.condensed, ZetaBreakpoint.desktopCompact) => _ZetaTypographyCondensedDesktopCompact(
-          primitives,
-        ),
+            primitives,
+          ),
       },
       rounded: rounded,
     );
