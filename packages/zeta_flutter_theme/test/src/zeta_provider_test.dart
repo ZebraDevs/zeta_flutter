@@ -35,8 +35,12 @@ void main() {
         expect(providerState.widget.initialThemeMode, null);
         expect(providerState.widget.initialContrast, null);
         expect(providerState.widget.customThemes, <String>[]);
-        expect(providerState.widget.initialRounded, true);
+        // null: tokens follow the size.shape token; the legacy Zeta.rounded still defaults to true.
+        expect(providerState.widget.initialRounded, null);
         expect(providerState.widget.initialTheme, null);
+        expect(providerState.widget.initialColorMode, null);
+        expect(providerState.widget.initialPaletteTheme, null);
+        expect(providerState.widget.breakpoint, null);
 
         expect(providerState.widget.themeService.runtimeType, ZetaDefaultThemeService);
       });

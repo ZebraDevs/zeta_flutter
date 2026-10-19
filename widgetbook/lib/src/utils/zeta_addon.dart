@@ -9,12 +9,39 @@ class ZetaAddonData {
     this.themeMode = ThemeMode.light,
     this.contrast = ZetaContrast.aa,
     this.fontFamily = kZetaFontFamily,
+    this.colorMode,
+    this.primitivesTheme = ZetaPrimitivesTheme.zeta,
+    this.paletteTheme = ZetaPaletteTheme.zeta,
+    this.sizeTheme = ZetaSizeTheme.zeta,
+    this.typographyTheme = ZetaTypographyTheme.zeta,
+    this.breakpoint,
   });
   final bool rounded;
   final ThemeMode themeMode;
   final ZetaContrast contrast;
   final String fontFamily;
+
+  /// null follows [themeMode].
+  final ZetaColorMode? colorMode;
+  final ZetaPrimitivesTheme primitivesTheme;
+  final ZetaPaletteTheme paletteTheme;
+  final ZetaSizeTheme sizeTheme;
+  final ZetaTypographyTheme typographyTheme;
+
+  /// null follows the window width.
+  final ZetaBreakpoint? breakpoint;
 }
+
+const _auto = 'Auto';
+
+/// Dropdown over an enum's values, labelled by name; [nullable] adds an 'Auto' (null) option.
+ObjectDropdownField<T?> _enumField<T extends Enum>(String name, List<T> values, {bool nullable = false}) =>
+    ObjectDropdownField<T?>(
+      name: name,
+      values: [if (nullable) null, ...values],
+      initialValue: nullable ? null : values.first,
+      labelBuilder: (value) => value?.name ?? _auto,
+    );
 
 enum BackgroundType {
   standard,
@@ -60,6 +87,12 @@ class ZetaAddon extends WidgetbookAddon<ZetaAddonData> {
       initialThemeMode: setting.themeMode,
       initialContrast: setting.contrast,
       fontFamily: setting.fontFamily,
+      initialColorMode: setting.colorMode,
+      initialPrimitivesTheme: setting.primitivesTheme,
+      initialPaletteTheme: setting.paletteTheme,
+      initialSizeTheme: setting.sizeTheme,
+      initialTypographyTheme: setting.typographyTheme,
+      breakpoint: setting.breakpoint,
       builder: (_, light, dark, themeMode) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
@@ -149,7 +182,13 @@ class ZetaAddon extends WidgetbookAddon<ZetaAddonData> {
             return value.split('_').join(' ');
           }
         },
-      )
+      ),
+      _enumField('Color mode', ZetaColorMode.values, nullable: true),
+      _enumField('Primitives theme', ZetaPrimitivesTheme.values),
+      _enumField('Palette theme', ZetaPaletteTheme.values),
+      _enumField('Size theme', ZetaSizeTheme.values),
+      _enumField('Typography theme', ZetaTypographyTheme.values),
+      _enumField('Breakpoint', ZetaBreakpoint.values, nullable: true),
     ];
   }
 
@@ -183,6 +222,12 @@ class ZetaAddon extends WidgetbookAddon<ZetaAddonData> {
           }
         }
       }(),
+      colorMode: ZetaColorMode.values.asNameMap()[group['Color mode']],
+      primitivesTheme: ZetaPrimitivesTheme.values.asNameMap()[group['Primitives theme']] ?? data.primitivesTheme,
+      paletteTheme: ZetaPaletteTheme.values.asNameMap()[group['Palette theme']] ?? data.paletteTheme,
+      sizeTheme: ZetaSizeTheme.values.asNameMap()[group['Size theme']] ?? data.sizeTheme,
+      typographyTheme: ZetaTypographyTheme.values.asNameMap()[group['Typography theme']] ?? data.typographyTheme,
+      breakpoint: ZetaBreakpoint.values.asNameMap()[group['Breakpoint']],
     );
   }
 }

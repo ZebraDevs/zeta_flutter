@@ -36,3 +36,19 @@ flutter:
           weight: 400
         - asset: assets/fonts/IBMPlexSans-Medium.otf
           weight: 500
+    - family: ZebraSans
+      fonts:
+        - asset: assets/fonts/ZebraSans-Regular.otf
+          weight: 400
+        - asset: assets/fonts/ZebraSans-Italic.otf
+          weight: 400
+          style: italic
+        - asset: assets/fonts/ZebraSans-Bold.otf
+          weight: 700
+        - asset: assets/fonts/ZebraSans-BoldIt.otf
+          weight: 700
+          style: italic
+    - family: ZebraSansCondensed
+      fonts:
+        - asset: assets/fonts/ZebraSans-CndExtraBold.otf
+          weight: 800

@@ -28,12 +28,18 @@ class ZetaProvider extends StatefulWidget with Diagnosticable {
     this.initialThemeMode,
     this.initialContrast,
     this.themeService = const ZetaDefaultThemeService(),
-    this.initialRounded = true,
+    this.initialRounded,
     this.customThemes = const [],
     this.initialTheme,
     this.customLoadingWidget,
     this.fontFamily,
     this.customTextColor,
+    this.initialColorMode,
+    this.initialPrimitivesTheme,
+    this.initialPaletteTheme,
+    this.initialSizeTheme,
+    this.initialTypographyTheme,
+    this.breakpoint,
   });
 
   /// Specifies the initial theme mode for the app.
@@ -56,7 +62,31 @@ class ZetaProvider extends StatefulWidget with Diagnosticable {
   final ZetaThemeService themeService;
 
   /// Sets whether app should start with components in their rounded or sharp variants.
-  final bool initialRounded;
+  ///
+  /// When null, [Zeta.tokens] follow the `size.shape` token and the legacy API is rounded.
+  final bool? initialRounded;
+
+  /// Specifies the initial color mode of [Zeta.tokens].
+  ///
+  /// When null, the tokens follow the theme mode (light or dark).
+  final ZetaColorMode? initialColorMode;
+
+  /// Specifies the initial theme of the `primitives` token layer. Defaults to [ZetaPrimitivesTheme.zeta].
+  final ZetaPrimitivesTheme? initialPrimitivesTheme;
+
+  /// Specifies the initial theme of the `palette` token layer. Defaults to [ZetaPaletteTheme.zeta].
+  final ZetaPaletteTheme? initialPaletteTheme;
+
+  /// Specifies the initial theme of the `size` token layer. Defaults to [ZetaSizeTheme.zeta].
+  final ZetaSizeTheme? initialSizeTheme;
+
+  /// Specifies the initial theme of the `typography` token layer. Defaults to [ZetaTypographyTheme.zeta].
+  final ZetaTypographyTheme? initialTypographyTheme;
+
+  /// Forces the breakpoint of the `size` and `typography` token layers.
+  ///
+  /// When null, the breakpoint follows the window width.
+  final ZetaBreakpoint? breakpoint;
 
   /// A list of custom themes to be used in the app.
   final List<ZetaCustomTheme> customThemes;
@@ -92,7 +122,13 @@ class ZetaProvider extends StatefulWidget with Diagnosticable {
       ..add(IterableProperty<ZetaCustomTheme>('customThemes', customThemes))
       ..add(StringProperty('initialTheme', initialTheme))
       ..add(StringProperty('fontFamily', fontFamily))
-      ..add(ColorProperty('customTextColor', customTextColor));
+      ..add(ColorProperty('customTextColor', customTextColor))
+      ..add(EnumProperty<ZetaColorMode>('initialColorMode', initialColorMode))
+      ..add(EnumProperty<ZetaPrimitivesTheme>('initialPrimitivesTheme', initialPrimitivesTheme))
+      ..add(EnumProperty<ZetaPaletteTheme>('initialPaletteTheme', initialPaletteTheme))
+      ..add(EnumProperty<ZetaSizeTheme>('initialSizeTheme', initialSizeTheme))
+      ..add(EnumProperty<ZetaTypographyTheme>('initialTypographyTheme', initialTypographyTheme))
+      ..add(EnumProperty<ZetaBreakpoint>('breakpoint', breakpoint));
   }
 
   /// Retrieves the [ZetaProviderState] from the provided context.
@@ -141,7 +177,16 @@ class ZetaProviderState extends State<ZetaProvider> with Diagnosticable, Widgets
   late Brightness _platformBrightness;
 
   /// {@macro zeta-component-rounded}
-  late bool _rounded;
+  bool? _rounded;
+
+  ZetaColorMode? _colorMode;
+  late ZetaPrimitivesTheme _primitivesTheme;
+  late ZetaPaletteTheme _paletteTheme;
+  late ZetaSizeTheme _sizeTheme;
+  late ZetaTypographyTheme _typographyTheme;
+
+  /// The breakpoint for the current window width.
+  late ZetaBreakpoint _windowBreakpoint;
 
   /// Represents a nullable brightness value to be used for brightness change debouncing.
   Brightness? _debounceBrightness;
@@ -166,6 +211,13 @@ class ZetaProviderState extends State<ZetaProvider> with Diagnosticable, Widgets
 
     // Sets the initial rounded.
     _rounded = widget.initialRounded;
+
+    _colorMode = widget.initialColorMode;
+    _primitivesTheme = widget.initialPrimitivesTheme ?? ZetaPrimitivesTheme.zeta;
+    _paletteTheme = widget.initialPaletteTheme ?? ZetaPaletteTheme.zeta;
+    _sizeTheme = widget.initialSizeTheme ?? ZetaSizeTheme.zeta;
+    _typographyTheme = widget.initialTypographyTheme ?? ZetaTypographyTheme.zeta;
+    _windowBreakpoint = _breakpointForWindow();
 
     setCustomThemes(widget.customThemes);
 
@@ -195,6 +247,12 @@ class ZetaProviderState extends State<ZetaProvider> with Diagnosticable, Widgets
 
     // Set the initial contrast.
     _contrast = widget.initialContrast ?? themeServiceData.contrast ?? ZetaContrast.aa;
+
+    _colorMode = widget.initialColorMode ?? themeServiceData.colorMode;
+    _primitivesTheme = widget.initialPrimitivesTheme ?? themeServiceData.primitivesTheme ?? _primitivesTheme;
+    _paletteTheme = widget.initialPaletteTheme ?? themeServiceData.paletteTheme ?? _paletteTheme;
+    _sizeTheme = widget.initialSizeTheme ?? themeServiceData.sizeTheme ?? _sizeTheme;
+    _typographyTheme = widget.initialTypographyTheme ?? themeServiceData.typographyTheme ?? _typographyTheme;
 
     final loadedTheme = _customThemes[themeServiceData.themeId ?? widget.initialTheme];
 
@@ -251,6 +309,19 @@ class ZetaProviderState extends State<ZetaProvider> with Diagnosticable, Widgets
     }
   }
 
+  // ponytail: uses the first view's width, like the platform brightness above; per-view breakpoints if multi-window matters.
+  ZetaBreakpoint _breakpointForWindow() => ZetaBreakpoint.fromWidth(
+        MediaQueryData.fromView(WidgetsBinding.instance.platformDispatcher.views.first).size.width,
+      );
+
+  /// Rebuilds when a window resize crosses a breakpoint.
+  @override
+  void didChangeMetrics() {
+    super.didChangeMetrics();
+    final breakpoint = _breakpointForWindow();
+    if (breakpoint != _windowBreakpoint) setState(() => _windowBreakpoint = breakpoint);
+  }
+
   @override
   Widget build(BuildContext context) {
     if ((widget.initialContrast != null &&
@@ -283,6 +354,12 @@ class ZetaProviderState extends State<ZetaProvider> with Diagnosticable, Widgets
       customThemes: customThemes,
       fontFamily: widget.fontFamily ?? kZetaFontFamily,
       customTextColor: widget.customTextColor,
+      colorMode: _colorMode,
+      primitivesTheme: _primitivesTheme,
+      paletteTheme: _paletteTheme,
+      sizeTheme: _sizeTheme,
+      typographyTheme: _typographyTheme,
+      breakpoint: widget.breakpoint ?? _windowBreakpoint,
     );
   }
 
@@ -291,11 +368,21 @@ class ZetaProviderState extends State<ZetaProvider> with Diagnosticable, Widgets
     super.didUpdateWidget(oldWidget);
     if (oldWidget.initialContrast != widget.initialContrast ||
         oldWidget.initialThemeMode != widget.initialThemeMode ||
-        oldWidget.initialRounded != widget.initialRounded) {
+        oldWidget.initialRounded != widget.initialRounded ||
+        oldWidget.initialColorMode != widget.initialColorMode ||
+        oldWidget.initialPrimitivesTheme != widget.initialPrimitivesTheme ||
+        oldWidget.initialPaletteTheme != widget.initialPaletteTheme ||
+        oldWidget.initialSizeTheme != widget.initialSizeTheme ||
+        oldWidget.initialTypographyTheme != widget.initialTypographyTheme) {
       setState(() {
         _themeMode = widget.initialThemeMode ?? _themeMode;
         _contrast = widget.initialContrast ?? _contrast;
         _rounded = widget.initialRounded;
+        _colorMode = widget.initialColorMode;
+        _primitivesTheme = widget.initialPrimitivesTheme ?? _primitivesTheme;
+        _paletteTheme = widget.initialPaletteTheme ?? _paletteTheme;
+        _sizeTheme = widget.initialSizeTheme ?? _sizeTheme;
+        _typographyTheme = widget.initialTypographyTheme ?? _typographyTheme;
       });
     }
   }
@@ -337,6 +424,46 @@ class ZetaProviderState extends State<ZetaProvider> with Diagnosticable, Widgets
     });
   }
 
+  /// Updates the color mode of [Zeta.tokens]; null follows the theme mode.
+  void updateColorMode(ZetaColorMode? colorMode) {
+    setState(() {
+      _colorMode = colorMode;
+      _saveThemeChange();
+    });
+  }
+
+  /// Updates the theme of the `primitives` token layer.
+  void updatePrimitivesTheme(ZetaPrimitivesTheme theme) {
+    setState(() {
+      _primitivesTheme = theme;
+      _saveThemeChange();
+    });
+  }
+
+  /// Updates the theme of the `palette` token layer.
+  void updatePaletteTheme(ZetaPaletteTheme theme) {
+    setState(() {
+      _paletteTheme = theme;
+      _saveThemeChange();
+    });
+  }
+
+  /// Updates the theme of the `size` token layer.
+  void updateSizeTheme(ZetaSizeTheme theme) {
+    setState(() {
+      _sizeTheme = theme;
+      _saveThemeChange();
+    });
+  }
+
+  /// Updates the theme of the `typography` token layer.
+  void updateTypographyTheme(ZetaTypographyTheme theme) {
+    setState(() {
+      _typographyTheme = theme;
+      _saveThemeChange();
+    });
+  }
+
   void _saveThemeChange() {
     unawaited(
       widget.themeService.saveTheme(
@@ -344,6 +471,11 @@ class ZetaProviderState extends State<ZetaProvider> with Diagnosticable, Widgets
           themeMode: _themeMode,
           contrast: _contrast,
           themeId: _customTheme?.id,
+          colorMode: _colorMode,
+          primitivesTheme: _primitivesTheme,
+          paletteTheme: _paletteTheme,
+          sizeTheme: _sizeTheme,
+          typographyTheme: _typographyTheme,
         ),
       ),
     );
@@ -356,7 +488,12 @@ class ZetaProviderState extends State<ZetaProvider> with Diagnosticable, Widgets
       ..add(EnumProperty<ZetaContrast>('contrast', _contrast))
       ..add(EnumProperty<ThemeMode>('themeMode', _themeMode))
       ..add(IterableProperty<ZetaCustomTheme>('customThemes', customThemes))
-      ..add(DiagnosticsProperty<ZetaCustomTheme?>('customTheme', _customTheme));
+      ..add(DiagnosticsProperty<ZetaCustomTheme?>('customTheme', _customTheme))
+      ..add(EnumProperty<ZetaColorMode>('colorMode', _colorMode))
+      ..add(EnumProperty<ZetaPrimitivesTheme>('primitivesTheme', _primitivesTheme))
+      ..add(EnumProperty<ZetaPaletteTheme>('paletteTheme', _paletteTheme))
+      ..add(EnumProperty<ZetaSizeTheme>('sizeTheme', _sizeTheme))
+      ..add(EnumProperty<ZetaTypographyTheme>('typographyTheme', _typographyTheme));
   }
 }
 
@@ -380,6 +517,12 @@ class InternalProvider extends StatefulWidget {
     required this.customThemes,
     required this.fontFamily,
     this.customTextColor,
+    this.colorMode,
+    this.primitivesTheme = ZetaPrimitivesTheme.zeta,
+    this.paletteTheme = ZetaPaletteTheme.zeta,
+    this.sizeTheme = ZetaSizeTheme.zeta,
+    this.typographyTheme = ZetaTypographyTheme.zeta,
+    this.breakpoint = ZetaBreakpoint.mobile,
   });
 
   ///  Current custom theme.
@@ -394,8 +537,26 @@ class InternalProvider extends StatefulWidget {
   /// Current theme mode.
   final ThemeMode themeMode;
 
-  /// Current rounded value.
-  final bool rounded;
+  /// Current rounded value; null follows the `size.shape` token.
+  final bool? rounded;
+
+  /// Current color mode of the tokens; null follows [themeMode].
+  final ZetaColorMode? colorMode;
+
+  /// Current theme of the `primitives` token layer.
+  final ZetaPrimitivesTheme primitivesTheme;
+
+  /// Current theme of the `palette` token layer.
+  final ZetaPaletteTheme paletteTheme;
+
+  /// Current theme of the `size` token layer.
+  final ZetaSizeTheme sizeTheme;
+
+  /// Current theme of the `typography` token layer.
+  final ZetaTypographyTheme typographyTheme;
+
+  /// Current breakpoint of the `size` and `typography` token layers.
+  final ZetaBreakpoint breakpoint;
 
   /// Builder
   final ZetaAppBuilder widget;
@@ -417,7 +578,13 @@ class InternalProvider extends StatefulWidget {
     properties
       ..add(EnumProperty<ThemeMode>('themeMode', themeMode))
       ..add(EnumProperty<ZetaContrast>('contrast', contrast))
-      ..add(DiagnosticsProperty<bool>('rounded', rounded))
+      ..add(DiagnosticsProperty<bool?>('rounded', rounded))
+      ..add(EnumProperty<ZetaColorMode>('colorMode', colorMode))
+      ..add(EnumProperty<ZetaPrimitivesTheme>('primitivesTheme', primitivesTheme))
+      ..add(EnumProperty<ZetaPaletteTheme>('paletteTheme', paletteTheme))
+      ..add(EnumProperty<ZetaSizeTheme>('sizeTheme', sizeTheme))
+      ..add(EnumProperty<ZetaTypographyTheme>('typographyTheme', typographyTheme))
+      ..add(EnumProperty<ZetaBreakpoint>('breakpoint', breakpoint))
       ..add(ObjectFlagProperty<ZetaAppBuilder>.has('widget', widget))
       ..add(DiagnosticsProperty<ZetaCustomTheme?>('customTheme', customTheme))
       ..add(IterableProperty<ZetaCustomTheme>('customThemes', customThemes))
@@ -450,6 +617,12 @@ class InternalProviderState extends State<InternalProvider> {
       contrast: widget.contrast,
       customThemeId: widget.customTheme?.id,
       rounded: widget.rounded,
+      colorMode: widget.colorMode,
+      primitivesTheme: widget.primitivesTheme,
+      paletteTheme: widget.paletteTheme,
+      sizeTheme: widget.sizeTheme,
+      typographyTheme: widget.typographyTheme,
+      breakpoint: widget.breakpoint,
       textStyles: textStyles,
       customPrimitives: primitives,
       child: Builder(

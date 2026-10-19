@@ -3,6 +3,12 @@ import 'color_swatch.dart';
 /// Default font family for Zeta System.
 const kZetaFontFamily = 'packages/zeta_flutter_theme/IBMPlexSans';
 
+/// Zebra Sans font family, used by the `Zebra Sans` font-family token.
+const kZetaFontFamilyZebraSans = 'packages/zeta_flutter_theme/ZebraSans';
+
+/// Zebra Sans Condensed font family (Condensed Extra Bold).
+const kZetaFontFamilyZebraSansCondensed = 'packages/zeta_flutter_theme/ZebraSansCondensed';
+
 /// Primary color shade index for [ZetaColorSwatch].
 const kZetaSwatchPrimaryIndex = 60;
 
