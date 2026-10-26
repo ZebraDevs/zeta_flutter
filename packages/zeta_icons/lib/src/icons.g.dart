@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 // DO NOT MODIFY
 
 /// Current version of Zeta Icons
-const zetaIconsVersion = '1.9.6';
+const zetaIconsVersion = '1.9.7';
 
 /// Zeta Icons. Full list of icons can be found at [Zeta Icons](https://design.zebra.com/icons/).
 /// {@category Assets}
@@ -1036,8 +1036,8 @@ abstract class ZetaIcons {
   static const IconData qr_code = IconData(0xe1f9, fontFamily: family, fontPackage: package);
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/queue_round.png"></br>Queue icon </i>
   static const IconData queue = IconData(0xe1fa, fontFamily: family, fontPackage: package);
-  /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/quote__round.png"></br>Quote  icon </i>
-  static const IconData quote_ = IconData(0xe1fb, fontFamily: family, fontPackage: package);
+  /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/quote_round.png"></br>Quote icon </i>
+  static const IconData quote = IconData(0xe1fb, fontFamily: family, fontPackage: package);
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/radio_button_checked_round.png"></br>Radio Button Checked icon </i>
   static const IconData radio_button_checked = IconData(0xe1fc, fontFamily: family, fontPackage: package);
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/radio_button_unchecked_round.png"></br>Radio Button Unchecked icon </i>
@@ -2468,8 +2468,8 @@ abstract class ZetaIcons {
   static const IconData qr_code_round = IconData(0xe1f9, fontFamily: familyRound, fontPackage: package);
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/queue_round.png"></br>Queue icon (round)</i>
   static const IconData queue_round = IconData(0xe1fa, fontFamily: familyRound, fontPackage: package);
-  /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/quote__round.png"></br>Quote  icon (round)</i>
-  static const IconData quote__round = IconData(0xe1fb, fontFamily: familyRound, fontPackage: package);
+  /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/quote_round.png"></br>Quote icon (round)</i>
+  static const IconData quote_round = IconData(0xe1fb, fontFamily: familyRound, fontPackage: package);
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/radio_button_checked_round.png"></br>Radio Button Checked icon (round)</i>
   static const IconData radio_button_checked_round = IconData(0xe1fc, fontFamily: familyRound, fontPackage: package);
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/radio_button_unchecked_round.png"></br>Radio Button Unchecked icon (round)</i>
@@ -3900,8 +3900,8 @@ abstract class ZetaIcons {
   static const IconData qr_code_sharp = IconData(0xe1f9, fontFamily: familySharp, fontPackage: package);
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/queue_sharp.png"></br>Queue icon (sharp)</i>
   static const IconData queue_sharp = IconData(0xe1fa, fontFamily: familySharp, fontPackage: package);
-  /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/quote__sharp.png"></br>Quote  icon (sharp)</i>
-  static const IconData quote__sharp = IconData(0xe1fb, fontFamily: familySharp, fontPackage: package);
+  /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/quote_sharp.png"></br>Quote icon (sharp)</i>
+  static const IconData quote_sharp = IconData(0xe1fb, fontFamily: familySharp, fontPackage: package);
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/radio_button_checked_sharp.png"></br>Radio Button Checked icon (sharp)</i>
   static const IconData radio_button_checked_sharp = IconData(0xe1fc, fontFamily: familySharp, fontPackage: package);
   /// <i> <img width='48' src="https://raw.githubusercontent.com/ZebraDevs/zeta-icons/main/outputs/png/radio_button_unchecked_sharp.png"></br>Radio Button Unchecked icon (sharp)</i>
@@ -4828,7 +4828,7 @@ const Map<String, IconData> icons = {
   'push_pin': ZetaIcons.push_pin,
   'qr_code': ZetaIcons.qr_code,
   'queue': ZetaIcons.queue,
-  'quote_': ZetaIcons.quote_,
+  'quote': ZetaIcons.quote,
   'radio_button_checked': ZetaIcons.radio_button_checked,
   'radio_button_unchecked': ZetaIcons.radio_button_unchecked,
   'rar_attach': ZetaIcons.rar_attach,
@@ -5549,7 +5549,7 @@ const Map<int, IconData> iconsRound = {
   0xe1f8: ZetaIcons.push_pin_round,
   0xe1f9: ZetaIcons.qr_code_round,
   0xe1fa: ZetaIcons.queue_round,
-  0xe1fb: ZetaIcons.quote__round,
+  0xe1fb: ZetaIcons.quote_round,
   0xe1fc: ZetaIcons.radio_button_checked_round,
   0xe1fd: ZetaIcons.radio_button_unchecked_round,
   0xe1fe: ZetaIcons.rar_attach_round,
@@ -6270,7 +6270,7 @@ const Map<int, IconData> iconsSharp = {
   0xe1f8: ZetaIcons.push_pin_sharp,
   0xe1f9: ZetaIcons.qr_code_sharp,
   0xe1fa: ZetaIcons.queue_sharp,
-  0xe1fb: ZetaIcons.quote__sharp,
+  0xe1fb: ZetaIcons.quote_sharp,
   0xe1fc: ZetaIcons.radio_button_checked_sharp,
   0xe1fd: ZetaIcons.radio_button_unchecked_sharp,
   0xe1fe: ZetaIcons.rar_attach_sharp,
