@@ -6,56 +6,44 @@ part of 'zeta_tokens.g.dart';
 
 /// Breakpoint aware size tokens (`size` collection).
 abstract interface class _ZetaSizeLayer {
-  /// `size.space.page`: = 16px, source: scale/6
-  double get spacePage;
+  /// `size.animations.smooth`: Smooth motion for opening and closing: ease-in-out over 250ms. Used by every element in Navigation Rail (collapse/expand, sub menu open/close). Duration and curve in one value; use directly in a CSS transition.
+  Duration get animationsSmoothDuration;
 
-  /// `size.space.section`: = 24px, source: scale/8
-  double get spaceSection;
+  /// `size.animations.smooth`: Smooth motion for opening and closing: ease-in-out over 250ms. Used by every element in Navigation Rail (collapse/expand, sub menu open/close). Duration and curve in one value; use directly in a CSS transition.
+  Curve get animationsSmoothCurve;
 
-  /// `size.space.card`: = 16px, source: scale/6
-  double get spaceCard;
+  /// `size.animations.spring`: Spring motion shared by Switch and Segmented Control: 250ms on cubic-bezier(0.34, 1.36, 0.64, 1), a slight overshoot that settles. Duration and easing together, for transition timing: transition: transform var(--animations-spring). Turn it off under prefers-reduced-motion.
+  Duration get animationsSpringDuration;
 
-  /// `size.space.gutter`: = 16px, source: scale/6
-  double get spaceGutter;
+  /// `size.animations.spring`: Spring motion shared by Switch and Segmented Control: 250ms on cubic-bezier(0.34, 1.36, 0.64, 1), a slight overshoot that settles. Duration and easing together, for transition timing: transition: transform var(--animations-spring). Turn it off under prefers-reduced-motion.
+  Curve get animationsSpringCurve;
 
-  /// `size.space.2xs`: = 2px, source: scale/1
-  double get space2xs;
+  /// `size.container.default`: = 600px, source: scale/22
+  double get containerDefault;
 
-  /// `size.space.xs`: = 4px, source: scale/2
-  double get spaceXs;
+  /// `size.control.icon-lg`: = 32px, source: scale/10
+  double get controlIconLg;
 
-  /// `size.space.sm`: = 8px, source: scale/4
-  double get spaceSm;
+  /// `size.control.icon-md`: = 24px, source: scale/8
+  double get controlIconMd;
 
-  /// `size.space.md`: = 12px, source: scale/5
-  double get spaceMd;
+  /// `size.control.icon-sm`: = 20px, source: scale/7
+  double get controlIconSm;
 
-  /// `size.space.lg`: = 16px, source: scale/6
-  double get spaceLg;
+  /// `size.control.icon-xs`: = 20px, source: scale/7
+  double get controlIconXs;
 
-  /// `size.space.xl`: = 24px, source: scale/8
-  double get spaceXl;
+  /// `size.control.icon-xxs`: = 20px, source: scale/7
+  double get controlIconXxs;
 
-  /// `size.space.2xl`: = 32px, source: scale/10
-  double get space2xl;
+  /// `size.control.lg`: = 56px, source: scale/15
+  double get controlLg;
 
-  /// `size.space.none`: = 32px, source: scale/10
-  double get spaceNone;
+  /// `size.control.md`: = 48px, source: scale/14
+  double get controlMd;
 
-  /// `size.space.neg.xs`: = -1px, source: scale/-1
-  double get spaceNegXs;
-
-  /// `size.space.neg.sm`: = -2px, source: scale/-2
-  double get spaceNegSm;
-
-  /// `size.space.neg.md`: = -4px, source: scale/-3
-  double get spaceNegMd;
-
-  /// `size.space.neg.lg`: = -8px, source: scale/-5
-  double get spaceNegLg;
-
-  /// `size.space.neg.xl`: = -12px, source: scale/-6
-  double get spaceNegXl;
+  /// `size.control.sm`: = 40px, source: scale/12
+  double get controlSm;
 
   /// `size.control.target-min`: = 44px, source: scale/13
   double get controlTargetMin;
@@ -63,98 +51,38 @@ abstract interface class _ZetaSizeLayer {
   /// `size.control.xs`: = 40px, source: scale/12
   double get controlXs;
 
-  /// `size.control.sm`: = 40px, source: scale/12
-  double get controlSm;
-
-  /// `size.control.md`: = 48px, source: scale/14
-  double get controlMd;
-
-  /// `size.control.lg`: = 56px, source: scale/15
-  double get controlLg;
-
-  /// `size.control.icon-xs`: = 20px, source: scale/7
-  double get controlIconXs;
-
-  /// `size.control.icon-sm`: = 20px, source: scale/7
-  double get controlIconSm;
-
-  /// `size.control.icon-md`: = 24px, source: scale/8
-  double get controlIconMd;
-
-  /// `size.control.icon-lg`: = 32px, source: scale/10
-  double get controlIconLg;
-
-  /// `size.container.default`: = 600px, source: scale/22
-  double get containerDefault;
-
-  /// `size.radius.none`: = 2px, source: scale/1
-  double get radiusNone;
-
-  /// `size.radius.xs`: = 2px, source: scale/1
-  double get radiusXs;
-
-  /// `size.radius.sm`: = 4px, source: scale/2
-  double get radiusSm;
-
-  /// `size.radius.md`: = 8px, source: scale/4
-  double get radiusMd;
-
-  /// `size.radius.lg`: = 12px, source: scale/5
-  double get radiusLg;
-
-  /// `size.radius.xl`: = 16px, source: scale/6
-  double get radiusXl;
-
-  /// `size.radius.element-sm`: = 16px, source: scale/6
-  double get radiusElementSm;
+  /// `size.radius.container`: = 16px, source: scale/6
+  double get radiusContainer;
 
   /// `size.radius.element-md`: = 16px, source: scale/6
   double get radiusElementMd;
 
-  /// `size.radius.container`: = 16px, source: scale/6
-  double get radiusContainer;
+  /// `size.radius.element-sm`: = 16px, source: scale/6
+  double get radiusElementSm;
+
+  /// `size.radius.lg`: = 12px, source: scale/5
+  double get radiusLg;
+
+  /// `size.radius.md`: = 8px, source: scale/4
+  double get radiusMd;
+
+  /// `size.radius.none`: = 2px, source: scale/1
+  double get radiusNone;
 
   /// `size.radius.pill`: Literal value, not a scale reference (fully rounded)
   double get radiusPill;
 
-  /// `size.stroke.base`: = 1px, source: scale/0
-  double get strokeBase;
+  /// `size.radius.sm`: = 4px, source: scale/2
+  double get radiusSm;
 
-  /// `size.stroke.thin`: = 1px, source: scale/0
-  double get strokeThin;
+  /// `size.radius.xl`: = 16px, source: scale/6
+  double get radiusXl;
 
-  /// `size.stroke.thick`: = 2px, source: scale/1
-  double get strokeThick;
+  /// `size.radius.xs`: = 2px, source: scale/1
+  double get radiusXs;
 
-  /// `size.stroke.heavy`: = 4px, source: scale/2
-  double get strokeHeavy;
-
-  /// `size.shadow.xsmall.x`: = 1px, source: scale/0
-  double get shadowXsmallX;
-
-  /// `size.shadow.xsmall.y`: = 1px, source: scale/0
-  double get shadowXsmallY;
-
-  /// `size.shadow.xsmall.blur`: = 2px, source: scale/1
-  double get shadowXsmallBlur;
-
-  /// `size.shadow.small.x`: = 1px, source: scale/0
-  double get shadowSmallX;
-
-  /// `size.shadow.small.y`: = 1px, source: scale/0
-  double get shadowSmallY;
-
-  /// `size.shadow.small.blur`: = 2px, source: scale/1
-  double get shadowSmallBlur;
-
-  /// `size.shadow.medium.x`: = 1px, source: scale/0
-  double get shadowMediumX;
-
-  /// `size.shadow.medium.y`: = 1px, source: scale/0
-  double get shadowMediumY;
-
-  /// `size.shadow.medium.blur`: = 2px, source: scale/1
-  double get shadowMediumBlur;
+  /// `size.shadow.large.blur`: = 2px, source: scale/1
+  double get shadowLargeBlur;
 
   /// `size.shadow.large.x`: = 1px, source: scale/0
   double get shadowLargeX;
@@ -162,11 +90,101 @@ abstract interface class _ZetaSizeLayer {
   /// `size.shadow.large.y`: = 1px, source: scale/0
   double get shadowLargeY;
 
-  /// `size.shadow.large.blur`: = 2px, source: scale/1
-  double get shadowLargeBlur;
+  /// `size.shadow.medium.blur`: = 2px, source: scale/1
+  double get shadowMediumBlur;
+
+  /// `size.shadow.medium.x`: = 1px, source: scale/0
+  double get shadowMediumX;
+
+  /// `size.shadow.medium.y`: = 1px, source: scale/0
+  double get shadowMediumY;
+
+  /// `size.shadow.small.blur`: = 2px, source: scale/1
+  double get shadowSmallBlur;
+
+  /// `size.shadow.small.x`: = 1px, source: scale/0
+  double get shadowSmallX;
+
+  /// `size.shadow.small.y`: = 1px, source: scale/0
+  double get shadowSmallY;
+
+  /// `size.shadow.xsmall.blur`: = 2px, source: scale/1
+  double get shadowXsmallBlur;
+
+  /// `size.shadow.xsmall.x`: = 1px, source: scale/0
+  double get shadowXsmallX;
+
+  /// `size.shadow.xsmall.y`: = 1px, source: scale/0
+  double get shadowXsmallY;
 
   /// `size.shape`
   bool get shape;
+
+  /// `size.space.2xl`: = 32px, source: scale/10
+  double get space2xl;
+
+  /// `size.space.2xs`: = 2px, source: scale/1
+  double get space2xs;
+
+  /// `size.space.card`: = 16px, source: scale/6
+  double get spaceCard;
+
+  /// `size.space.gutter`: = 16px, source: scale/6
+  double get spaceGutter;
+
+  /// `size.space.lg`: = 16px, source: scale/6
+  double get spaceLg;
+
+  /// `size.space.md`: = 12px, source: scale/5
+  double get spaceMd;
+
+  /// `size.space.neg.lg`: = -8px, source: scale/-5
+  double get spaceNegLg;
+
+  /// `size.space.neg.md`: = -4px, source: scale/-3
+  double get spaceNegMd;
+
+  /// `size.space.neg.sm`: = -2px, source: scale/-2
+  double get spaceNegSm;
+
+  /// `size.space.neg.xl`: = -12px, source: scale/-6
+  double get spaceNegXl;
+
+  /// `size.space.neg.xs`: = -1px, source: scale/-1
+  double get spaceNegXs;
+
+  /// `size.space.none`: = 32px, source: scale/10
+  double get spaceNone;
+
+  /// `size.space.page`: = 16px, source: scale/6
+  double get spacePage;
+
+  /// `size.space.section`: = 24px, source: scale/8
+  double get spaceSection;
+
+  /// `size.space.sm`: = 8px, source: scale/4
+  double get spaceSm;
+
+  /// `size.space.xl`: = 24px, source: scale/8
+  double get spaceXl;
+
+  /// `size.space.xs`: = 4px, source: scale/2
+  double get spaceXs;
+
+  /// `size.space.xxs`: = 4px, source: scale/2
+  double get spaceXxs;
+
+  /// `size.stroke.base`: = 1px, source: scale/0
+  double get strokeBase;
+
+  /// `size.stroke.heavy`: = 4px, source: scale/2
+  double get strokeHeavy;
+
+  /// `size.stroke.thick`: = 2px, source: scale/1
+  double get strokeThick;
+
+  /// `size.stroke.thin`: = 1px, source: scale/0
+  double get strokeThin;
 }
 
 final class _ZetaSizeZetaMobile implements _ZetaSizeLayer {
@@ -175,55 +193,43 @@ final class _ZetaSizeZetaMobile implements _ZetaSizeLayer {
   final ZetaPrimitiveTokens _p;
 
   @override
-  double get spacePage => _p.scale7;
+  Duration get animationsSmoothDuration => const Duration(milliseconds: 250);
 
   @override
-  double get spaceSection => _p.scale9;
+  Curve get animationsSmoothCurve => Curves.easeInOut;
 
   @override
-  double get spaceCard => _p.scale6;
+  Duration get animationsSpringDuration => const Duration(milliseconds: 250);
 
   @override
-  double get spaceGutter => _p.scale7;
+  Curve get animationsSpringCurve => const Cubic(0.34, 1.36, 0.64, 1);
 
   @override
-  double get space2xs => _p.scale2;
+  double get containerDefault => _p.scaleContainer0;
 
   @override
-  double get spaceXs => _p.scale3;
+  double get controlIconLg => _p.scale10;
 
   @override
-  double get spaceSm => _p.scale5;
+  double get controlIconMd => _p.scale8;
 
   @override
-  double get spaceMd => _p.scale6;
+  double get controlIconSm => _p.scale7;
 
   @override
-  double get spaceLg => _p.scale7;
+  double get controlIconXs => _p.scale6;
 
   @override
-  double get spaceXl => _p.scale9;
+  double get controlIconXxs => _p.scale5;
 
   @override
-  double get space2xl => _p.scale11;
+  double get controlLg => _p.scale15;
 
   @override
-  double get spaceNone => _p.scale0;
+  double get controlMd => _p.scale13;
 
   @override
-  double get spaceNegXs => _p.scaleNeg1;
-
-  @override
-  double get spaceNegSm => _p.scaleNeg2;
-
-  @override
-  double get spaceNegMd => _p.scaleNeg3;
-
-  @override
-  double get spaceNegLg => _p.scaleNeg5;
-
-  @override
-  double get spaceNegXl => _p.scaleNeg6;
+  double get controlSm => _p.scale12;
 
   @override
   double get controlTargetMin => _p.scale13;
@@ -232,97 +238,37 @@ final class _ZetaSizeZetaMobile implements _ZetaSizeLayer {
   double get controlXs => _p.scale9;
 
   @override
-  double get controlSm => _p.scale12;
-
-  @override
-  double get controlMd => _p.scale13;
-
-  @override
-  double get controlLg => _p.scale15;
-
-  @override
-  double get controlIconXs => _p.scale5;
-
-  @override
-  double get controlIconSm => _p.scale7;
-
-  @override
-  double get controlIconMd => _p.scale8;
-
-  @override
-  double get controlIconLg => _p.scale10;
-
-  @override
-  double get containerDefault => _p.scaleContainer0;
-
-  @override
-  double get radiusNone => _p.scale0;
-
-  @override
-  double get radiusXs => _p.scale2;
-
-  @override
-  double get radiusSm => _p.scale3;
-
-  @override
-  double get radiusMd => _p.scale5;
-
-  @override
-  double get radiusLg => _p.scale6;
-
-  @override
-  double get radiusXl => _p.scale7;
-
-  @override
-  double get radiusElementSm => _p.scale3;
+  double get radiusContainer => _p.scale6;
 
   @override
   double get radiusElementMd => _p.scale4;
 
   @override
-  double get radiusContainer => _p.scale6;
+  double get radiusElementSm => _p.scale3;
+
+  @override
+  double get radiusLg => _p.scale6;
+
+  @override
+  double get radiusMd => _p.scale5;
+
+  @override
+  double get radiusNone => _p.scale0;
 
   @override
   double get radiusPill => 9999;
 
   @override
-  double get strokeBase => _p.scale0;
+  double get radiusSm => _p.scale3;
 
   @override
-  double get strokeThin => _p.scale1;
+  double get radiusXl => _p.scale7;
 
   @override
-  double get strokeThick => _p.scale2;
+  double get radiusXs => _p.scale2;
 
   @override
-  double get strokeHeavy => _p.scale3;
-
-  @override
-  double get shadowXsmallX => _p.scale0;
-
-  @override
-  double get shadowXsmallY => _p.scale1;
-
-  @override
-  double get shadowXsmallBlur => _p.scale1;
-
-  @override
-  double get shadowSmallX => _p.scale0;
-
-  @override
-  double get shadowSmallY => _p.scale2;
-
-  @override
-  double get shadowSmallBlur => _p.scale4;
-
-  @override
-  double get shadowMediumX => _p.scale0;
-
-  @override
-  double get shadowMediumY => _p.scale5;
-
-  @override
-  double get shadowMediumBlur => _p.scale7;
+  double get shadowLargeBlur => _p.scale11;
 
   @override
   double get shadowLargeX => _p.scale0;
@@ -331,10 +277,100 @@ final class _ZetaSizeZetaMobile implements _ZetaSizeLayer {
   double get shadowLargeY => _p.scale8;
 
   @override
-  double get shadowLargeBlur => _p.scale11;
+  double get shadowMediumBlur => _p.scale7;
+
+  @override
+  double get shadowMediumX => _p.scale0;
+
+  @override
+  double get shadowMediumY => _p.scale5;
+
+  @override
+  double get shadowSmallBlur => _p.scale4;
+
+  @override
+  double get shadowSmallX => _p.scale0;
+
+  @override
+  double get shadowSmallY => _p.scale2;
+
+  @override
+  double get shadowXsmallBlur => _p.scale1;
+
+  @override
+  double get shadowXsmallX => _p.scale0;
+
+  @override
+  double get shadowXsmallY => _p.scale1;
 
   @override
   bool get shape => false;
+
+  @override
+  double get space2xl => _p.scale11;
+
+  @override
+  double get space2xs => _p.scale2;
+
+  @override
+  double get spaceCard => _p.scale6;
+
+  @override
+  double get spaceGutter => _p.scale7;
+
+  @override
+  double get spaceLg => _p.scale7;
+
+  @override
+  double get spaceMd => _p.scale6;
+
+  @override
+  double get spaceNegLg => _p.scaleNeg5;
+
+  @override
+  double get spaceNegMd => _p.scaleNeg3;
+
+  @override
+  double get spaceNegSm => _p.scaleNeg2;
+
+  @override
+  double get spaceNegXl => _p.scaleNeg6;
+
+  @override
+  double get spaceNegXs => _p.scaleNeg1;
+
+  @override
+  double get spaceNone => _p.scale0;
+
+  @override
+  double get spacePage => _p.scale7;
+
+  @override
+  double get spaceSection => _p.scale9;
+
+  @override
+  double get spaceSm => _p.scale5;
+
+  @override
+  double get spaceXl => _p.scale9;
+
+  @override
+  double get spaceXs => _p.scale4;
+
+  @override
+  double get spaceXxs => _p.scale3;
+
+  @override
+  double get strokeBase => _p.scale0;
+
+  @override
+  double get strokeHeavy => _p.scale3;
+
+  @override
+  double get strokeThick => _p.scale2;
+
+  @override
+  double get strokeThin => _p.scale1;
 }
 
 final class _ZetaSizeZetaTablet implements _ZetaSizeLayer {
@@ -343,55 +379,43 @@ final class _ZetaSizeZetaTablet implements _ZetaSizeLayer {
   final ZetaPrimitiveTokens _p;
 
   @override
-  double get spacePage => _p.scale7;
+  Duration get animationsSmoothDuration => const Duration(milliseconds: 250);
 
   @override
-  double get spaceSection => _p.scale9;
+  Curve get animationsSmoothCurve => Curves.easeInOut;
 
   @override
-  double get spaceCard => _p.scale6;
+  Duration get animationsSpringDuration => const Duration(milliseconds: 250);
 
   @override
-  double get spaceGutter => _p.scale7;
+  Curve get animationsSpringCurve => const Cubic(0.34, 1.36, 0.64, 1);
 
   @override
-  double get space2xs => _p.scale2;
+  double get containerDefault => _p.scaleContainer1;
 
   @override
-  double get spaceXs => _p.scale3;
+  double get controlIconLg => _p.scale10;
 
   @override
-  double get spaceSm => _p.scale5;
+  double get controlIconMd => _p.scale8;
 
   @override
-  double get spaceMd => _p.scale6;
+  double get controlIconSm => _p.scale7;
 
   @override
-  double get spaceLg => _p.scale7;
+  double get controlIconXs => _p.scale6;
 
   @override
-  double get spaceXl => _p.scale9;
+  double get controlIconXxs => _p.scale5;
 
   @override
-  double get space2xl => _p.scale11;
+  double get controlLg => _p.scale15;
 
   @override
-  double get spaceNone => _p.scale0;
+  double get controlMd => _p.scale13;
 
   @override
-  double get spaceNegXs => _p.scaleNeg1;
-
-  @override
-  double get spaceNegSm => _p.scaleNeg2;
-
-  @override
-  double get spaceNegMd => _p.scaleNeg3;
-
-  @override
-  double get spaceNegLg => _p.scaleNeg5;
-
-  @override
-  double get spaceNegXl => _p.scaleNeg6;
+  double get controlSm => _p.scale12;
 
   @override
   double get controlTargetMin => _p.scale13;
@@ -400,97 +424,37 @@ final class _ZetaSizeZetaTablet implements _ZetaSizeLayer {
   double get controlXs => _p.scale9;
 
   @override
-  double get controlSm => _p.scale12;
-
-  @override
-  double get controlMd => _p.scale13;
-
-  @override
-  double get controlLg => _p.scale15;
-
-  @override
-  double get controlIconXs => _p.scale5;
-
-  @override
-  double get controlIconSm => _p.scale7;
-
-  @override
-  double get controlIconMd => _p.scale8;
-
-  @override
-  double get controlIconLg => _p.scale10;
-
-  @override
-  double get containerDefault => _p.scaleContainer1;
-
-  @override
-  double get radiusNone => _p.scale0;
-
-  @override
-  double get radiusXs => _p.scale2;
-
-  @override
-  double get radiusSm => _p.scale3;
-
-  @override
-  double get radiusMd => _p.scale5;
-
-  @override
-  double get radiusLg => _p.scale6;
-
-  @override
-  double get radiusXl => _p.scale7;
-
-  @override
-  double get radiusElementSm => _p.scale3;
+  double get radiusContainer => _p.scale6;
 
   @override
   double get radiusElementMd => _p.scale4;
 
   @override
-  double get radiusContainer => _p.scale6;
+  double get radiusElementSm => _p.scale3;
+
+  @override
+  double get radiusLg => _p.scale6;
+
+  @override
+  double get radiusMd => _p.scale5;
+
+  @override
+  double get radiusNone => _p.scale0;
 
   @override
   double get radiusPill => 9999;
 
   @override
-  double get strokeBase => _p.scale0;
+  double get radiusSm => _p.scale3;
 
   @override
-  double get strokeThin => _p.scale1;
+  double get radiusXl => _p.scale7;
 
   @override
-  double get strokeThick => _p.scale2;
+  double get radiusXs => _p.scale2;
 
   @override
-  double get strokeHeavy => _p.scale3;
-
-  @override
-  double get shadowXsmallX => _p.scale0;
-
-  @override
-  double get shadowXsmallY => _p.scale1;
-
-  @override
-  double get shadowXsmallBlur => _p.scale1;
-
-  @override
-  double get shadowSmallX => _p.scale0;
-
-  @override
-  double get shadowSmallY => _p.scale2;
-
-  @override
-  double get shadowSmallBlur => _p.scale4;
-
-  @override
-  double get shadowMediumX => _p.scale0;
-
-  @override
-  double get shadowMediumY => _p.scale5;
-
-  @override
-  double get shadowMediumBlur => _p.scale7;
+  double get shadowLargeBlur => _p.scale11;
 
   @override
   double get shadowLargeX => _p.scale0;
@@ -499,10 +463,100 @@ final class _ZetaSizeZetaTablet implements _ZetaSizeLayer {
   double get shadowLargeY => _p.scale8;
 
   @override
-  double get shadowLargeBlur => _p.scale11;
+  double get shadowMediumBlur => _p.scale7;
+
+  @override
+  double get shadowMediumX => _p.scale0;
+
+  @override
+  double get shadowMediumY => _p.scale5;
+
+  @override
+  double get shadowSmallBlur => _p.scale4;
+
+  @override
+  double get shadowSmallX => _p.scale0;
+
+  @override
+  double get shadowSmallY => _p.scale2;
+
+  @override
+  double get shadowXsmallBlur => _p.scale1;
+
+  @override
+  double get shadowXsmallX => _p.scale0;
+
+  @override
+  double get shadowXsmallY => _p.scale1;
 
   @override
   bool get shape => true;
+
+  @override
+  double get space2xl => _p.scale11;
+
+  @override
+  double get space2xs => _p.scale2;
+
+  @override
+  double get spaceCard => _p.scale6;
+
+  @override
+  double get spaceGutter => _p.scale7;
+
+  @override
+  double get spaceLg => _p.scale7;
+
+  @override
+  double get spaceMd => _p.scale6;
+
+  @override
+  double get spaceNegLg => _p.scaleNeg5;
+
+  @override
+  double get spaceNegMd => _p.scaleNeg3;
+
+  @override
+  double get spaceNegSm => _p.scaleNeg2;
+
+  @override
+  double get spaceNegXl => _p.scaleNeg6;
+
+  @override
+  double get spaceNegXs => _p.scaleNeg1;
+
+  @override
+  double get spaceNone => _p.scale0;
+
+  @override
+  double get spacePage => _p.scale7;
+
+  @override
+  double get spaceSection => _p.scale9;
+
+  @override
+  double get spaceSm => _p.scale5;
+
+  @override
+  double get spaceXl => _p.scale9;
+
+  @override
+  double get spaceXs => _p.scale4;
+
+  @override
+  double get spaceXxs => _p.scale3;
+
+  @override
+  double get strokeBase => _p.scale0;
+
+  @override
+  double get strokeHeavy => _p.scale3;
+
+  @override
+  double get strokeThick => _p.scale2;
+
+  @override
+  double get strokeThin => _p.scale1;
 }
 
 final class _ZetaSizeZetaDesktop implements _ZetaSizeLayer {
@@ -511,55 +565,43 @@ final class _ZetaSizeZetaDesktop implements _ZetaSizeLayer {
   final ZetaPrimitiveTokens _p;
 
   @override
-  double get spacePage => _p.scale7;
+  Duration get animationsSmoothDuration => const Duration(milliseconds: 250);
 
   @override
-  double get spaceSection => _p.scale9;
+  Curve get animationsSmoothCurve => Curves.easeInOut;
 
   @override
-  double get spaceCard => _p.scale6;
+  Duration get animationsSpringDuration => const Duration(milliseconds: 250);
 
   @override
-  double get spaceGutter => _p.scale7;
+  Curve get animationsSpringCurve => const Cubic(0.34, 1.36, 0.64, 1);
 
   @override
-  double get space2xs => _p.scale2;
+  double get containerDefault => _p.scaleContainer3;
 
   @override
-  double get spaceXs => _p.scale3;
+  double get controlIconLg => _p.scale10;
 
   @override
-  double get spaceSm => _p.scale5;
+  double get controlIconMd => _p.scale8;
 
   @override
-  double get spaceMd => _p.scale6;
+  double get controlIconSm => _p.scale7;
 
   @override
-  double get spaceLg => _p.scale7;
+  double get controlIconXs => _p.scale6;
 
   @override
-  double get spaceXl => _p.scale9;
+  double get controlIconXxs => _p.scale5;
 
   @override
-  double get space2xl => _p.scale11;
+  double get controlLg => _p.scale15;
 
   @override
-  double get spaceNone => _p.scale0;
+  double get controlMd => _p.scale13;
 
   @override
-  double get spaceNegXs => _p.scaleNeg1;
-
-  @override
-  double get spaceNegSm => _p.scaleNeg2;
-
-  @override
-  double get spaceNegMd => _p.scaleNeg3;
-
-  @override
-  double get spaceNegLg => _p.scaleNeg5;
-
-  @override
-  double get spaceNegXl => _p.scaleNeg6;
+  double get controlSm => _p.scale12;
 
   @override
   double get controlTargetMin => _p.scale13;
@@ -568,97 +610,37 @@ final class _ZetaSizeZetaDesktop implements _ZetaSizeLayer {
   double get controlXs => _p.scale9;
 
   @override
-  double get controlSm => _p.scale12;
-
-  @override
-  double get controlMd => _p.scale13;
-
-  @override
-  double get controlLg => _p.scale15;
-
-  @override
-  double get controlIconXs => _p.scale5;
-
-  @override
-  double get controlIconSm => _p.scale7;
-
-  @override
-  double get controlIconMd => _p.scale8;
-
-  @override
-  double get controlIconLg => _p.scale10;
-
-  @override
-  double get containerDefault => _p.scaleContainer3;
-
-  @override
-  double get radiusNone => _p.scale0;
-
-  @override
-  double get radiusXs => _p.scale2;
-
-  @override
-  double get radiusSm => _p.scale3;
-
-  @override
-  double get radiusMd => _p.scale5;
-
-  @override
-  double get radiusLg => _p.scale6;
-
-  @override
-  double get radiusXl => _p.scale7;
-
-  @override
-  double get radiusElementSm => _p.scale3;
+  double get radiusContainer => _p.scale6;
 
   @override
   double get radiusElementMd => _p.scale4;
 
   @override
-  double get radiusContainer => _p.scale6;
+  double get radiusElementSm => _p.scale3;
+
+  @override
+  double get radiusLg => _p.scale6;
+
+  @override
+  double get radiusMd => _p.scale5;
+
+  @override
+  double get radiusNone => _p.scale0;
 
   @override
   double get radiusPill => 9999;
 
   @override
-  double get strokeBase => _p.scale0;
+  double get radiusSm => _p.scale3;
 
   @override
-  double get strokeThin => _p.scale1;
+  double get radiusXl => _p.scale7;
 
   @override
-  double get strokeThick => _p.scale2;
+  double get radiusXs => _p.scale2;
 
   @override
-  double get strokeHeavy => _p.scale3;
-
-  @override
-  double get shadowXsmallX => _p.scale0;
-
-  @override
-  double get shadowXsmallY => _p.scale1;
-
-  @override
-  double get shadowXsmallBlur => _p.scale1;
-
-  @override
-  double get shadowSmallX => _p.scale0;
-
-  @override
-  double get shadowSmallY => _p.scale2;
-
-  @override
-  double get shadowSmallBlur => _p.scale4;
-
-  @override
-  double get shadowMediumX => _p.scale0;
-
-  @override
-  double get shadowMediumY => _p.scale5;
-
-  @override
-  double get shadowMediumBlur => _p.scale7;
+  double get shadowLargeBlur => _p.scale11;
 
   @override
   double get shadowLargeX => _p.scale0;
@@ -667,10 +649,100 @@ final class _ZetaSizeZetaDesktop implements _ZetaSizeLayer {
   double get shadowLargeY => _p.scale8;
 
   @override
-  double get shadowLargeBlur => _p.scale11;
+  double get shadowMediumBlur => _p.scale7;
+
+  @override
+  double get shadowMediumX => _p.scale0;
+
+  @override
+  double get shadowMediumY => _p.scale5;
+
+  @override
+  double get shadowSmallBlur => _p.scale4;
+
+  @override
+  double get shadowSmallX => _p.scale0;
+
+  @override
+  double get shadowSmallY => _p.scale2;
+
+  @override
+  double get shadowXsmallBlur => _p.scale1;
+
+  @override
+  double get shadowXsmallX => _p.scale0;
+
+  @override
+  double get shadowXsmallY => _p.scale1;
 
   @override
   bool get shape => true;
+
+  @override
+  double get space2xl => _p.scale11;
+
+  @override
+  double get space2xs => _p.scale2;
+
+  @override
+  double get spaceCard => _p.scale6;
+
+  @override
+  double get spaceGutter => _p.scale7;
+
+  @override
+  double get spaceLg => _p.scale7;
+
+  @override
+  double get spaceMd => _p.scale6;
+
+  @override
+  double get spaceNegLg => _p.scaleNeg5;
+
+  @override
+  double get spaceNegMd => _p.scaleNeg3;
+
+  @override
+  double get spaceNegSm => _p.scaleNeg2;
+
+  @override
+  double get spaceNegXl => _p.scaleNeg6;
+
+  @override
+  double get spaceNegXs => _p.scaleNeg1;
+
+  @override
+  double get spaceNone => _p.scale0;
+
+  @override
+  double get spacePage => _p.scale7;
+
+  @override
+  double get spaceSection => _p.scale9;
+
+  @override
+  double get spaceSm => _p.scale5;
+
+  @override
+  double get spaceXl => _p.scale9;
+
+  @override
+  double get spaceXs => _p.scale4;
+
+  @override
+  double get spaceXxs => _p.scale3;
+
+  @override
+  double get strokeBase => _p.scale0;
+
+  @override
+  double get strokeHeavy => _p.scale3;
+
+  @override
+  double get strokeThick => _p.scale2;
+
+  @override
+  double get strokeThin => _p.scale1;
 }
 
 final class _ZetaSizeZetaDesktopCompact implements _ZetaSizeLayer {
@@ -679,55 +751,43 @@ final class _ZetaSizeZetaDesktopCompact implements _ZetaSizeLayer {
   final ZetaPrimitiveTokens _p;
 
   @override
-  double get spacePage => _p.scale7;
+  Duration get animationsSmoothDuration => const Duration(milliseconds: 250);
 
   @override
-  double get spaceSection => _p.scale9;
+  Curve get animationsSmoothCurve => Curves.easeInOut;
 
   @override
-  double get spaceCard => _p.scale6;
+  Duration get animationsSpringDuration => const Duration(milliseconds: 250);
 
   @override
-  double get spaceGutter => _p.scale7;
+  Curve get animationsSpringCurve => const Cubic(0.34, 1.36, 0.64, 1);
 
   @override
-  double get space2xs => _p.scale2;
+  double get containerDefault => _p.scaleContainer2;
 
   @override
-  double get spaceXs => _p.scale3;
+  double get controlIconLg => _p.scale10;
 
   @override
-  double get spaceSm => _p.scale5;
+  double get controlIconMd => _p.scale8;
 
   @override
-  double get spaceMd => _p.scale6;
+  double get controlIconSm => _p.scale7;
 
   @override
-  double get spaceLg => _p.scale7;
+  double get controlIconXs => _p.scale6;
 
   @override
-  double get spaceXl => _p.scale9;
+  double get controlIconXxs => _p.scale5;
 
   @override
-  double get space2xl => _p.scale11;
+  double get controlLg => _p.scale15;
 
   @override
-  double get spaceNone => _p.scale0;
+  double get controlMd => _p.scale13;
 
   @override
-  double get spaceNegXs => _p.scaleNeg1;
-
-  @override
-  double get spaceNegSm => _p.scaleNeg2;
-
-  @override
-  double get spaceNegMd => _p.scaleNeg3;
-
-  @override
-  double get spaceNegLg => _p.scaleNeg5;
-
-  @override
-  double get spaceNegXl => _p.scaleNeg6;
+  double get controlSm => _p.scale12;
 
   @override
   double get controlTargetMin => _p.scale13;
@@ -736,97 +796,37 @@ final class _ZetaSizeZetaDesktopCompact implements _ZetaSizeLayer {
   double get controlXs => _p.scale9;
 
   @override
-  double get controlSm => _p.scale12;
-
-  @override
-  double get controlMd => _p.scale13;
-
-  @override
-  double get controlLg => _p.scale15;
-
-  @override
-  double get controlIconXs => _p.scale5;
-
-  @override
-  double get controlIconSm => _p.scale7;
-
-  @override
-  double get controlIconMd => _p.scale8;
-
-  @override
-  double get controlIconLg => _p.scale10;
-
-  @override
-  double get containerDefault => _p.scaleContainer2;
-
-  @override
-  double get radiusNone => _p.scale0;
-
-  @override
-  double get radiusXs => _p.scale2;
-
-  @override
-  double get radiusSm => _p.scale3;
-
-  @override
-  double get radiusMd => _p.scale5;
-
-  @override
-  double get radiusLg => _p.scale6;
-
-  @override
-  double get radiusXl => _p.scale7;
-
-  @override
-  double get radiusElementSm => _p.scale3;
+  double get radiusContainer => _p.scale6;
 
   @override
   double get radiusElementMd => _p.scale4;
 
   @override
-  double get radiusContainer => _p.scale6;
+  double get radiusElementSm => _p.scale3;
+
+  @override
+  double get radiusLg => _p.scale6;
+
+  @override
+  double get radiusMd => _p.scale5;
+
+  @override
+  double get radiusNone => _p.scale0;
 
   @override
   double get radiusPill => 9999;
 
   @override
-  double get strokeBase => _p.scale0;
+  double get radiusSm => _p.scale3;
 
   @override
-  double get strokeThin => _p.scale1;
+  double get radiusXl => _p.scale7;
 
   @override
-  double get strokeThick => _p.scale2;
+  double get radiusXs => _p.scale2;
 
   @override
-  double get strokeHeavy => _p.scale3;
-
-  @override
-  double get shadowXsmallX => _p.scale0;
-
-  @override
-  double get shadowXsmallY => _p.scale1;
-
-  @override
-  double get shadowXsmallBlur => _p.scale1;
-
-  @override
-  double get shadowSmallX => _p.scale0;
-
-  @override
-  double get shadowSmallY => _p.scale2;
-
-  @override
-  double get shadowSmallBlur => _p.scale4;
-
-  @override
-  double get shadowMediumX => _p.scale0;
-
-  @override
-  double get shadowMediumY => _p.scale5;
-
-  @override
-  double get shadowMediumBlur => _p.scale7;
+  double get shadowLargeBlur => _p.scale11;
 
   @override
   double get shadowLargeX => _p.scale0;
@@ -835,10 +835,100 @@ final class _ZetaSizeZetaDesktopCompact implements _ZetaSizeLayer {
   double get shadowLargeY => _p.scale8;
 
   @override
-  double get shadowLargeBlur => _p.scale11;
+  double get shadowMediumBlur => _p.scale7;
+
+  @override
+  double get shadowMediumX => _p.scale0;
+
+  @override
+  double get shadowMediumY => _p.scale5;
+
+  @override
+  double get shadowSmallBlur => _p.scale4;
+
+  @override
+  double get shadowSmallX => _p.scale0;
+
+  @override
+  double get shadowSmallY => _p.scale2;
+
+  @override
+  double get shadowXsmallBlur => _p.scale1;
+
+  @override
+  double get shadowXsmallX => _p.scale0;
+
+  @override
+  double get shadowXsmallY => _p.scale1;
 
   @override
   bool get shape => true;
+
+  @override
+  double get space2xl => _p.scale11;
+
+  @override
+  double get space2xs => _p.scale2;
+
+  @override
+  double get spaceCard => _p.scale6;
+
+  @override
+  double get spaceGutter => _p.scale7;
+
+  @override
+  double get spaceLg => _p.scale7;
+
+  @override
+  double get spaceMd => _p.scale6;
+
+  @override
+  double get spaceNegLg => _p.scaleNeg5;
+
+  @override
+  double get spaceNegMd => _p.scaleNeg3;
+
+  @override
+  double get spaceNegSm => _p.scaleNeg2;
+
+  @override
+  double get spaceNegXl => _p.scaleNeg6;
+
+  @override
+  double get spaceNegXs => _p.scaleNeg1;
+
+  @override
+  double get spaceNone => _p.scale0;
+
+  @override
+  double get spacePage => _p.scale7;
+
+  @override
+  double get spaceSection => _p.scale9;
+
+  @override
+  double get spaceSm => _p.scale5;
+
+  @override
+  double get spaceXl => _p.scale9;
+
+  @override
+  double get spaceXs => _p.scale4;
+
+  @override
+  double get spaceXxs => _p.scale3;
+
+  @override
+  double get strokeBase => _p.scale0;
+
+  @override
+  double get strokeHeavy => _p.scale3;
+
+  @override
+  double get strokeThick => _p.scale2;
+
+  @override
+  double get strokeThin => _p.scale1;
 }
 
 final class _ZetaSizeCondensedMobile implements _ZetaSizeLayer {
@@ -847,55 +937,43 @@ final class _ZetaSizeCondensedMobile implements _ZetaSizeLayer {
   final ZetaPrimitiveTokens _p;
 
   @override
-  double get spacePage => _p.scale7;
+  Duration get animationsSmoothDuration => const Duration(milliseconds: 250);
 
   @override
-  double get spaceSection => _p.scale9;
+  Curve get animationsSmoothCurve => Curves.easeInOut;
 
   @override
-  double get spaceCard => _p.scale6;
+  Duration get animationsSpringDuration => const Duration(milliseconds: 250);
 
   @override
-  double get spaceGutter => _p.scale7;
+  Curve get animationsSpringCurve => const Cubic(0.34, 1.36, 0.64, 1);
 
   @override
-  double get space2xs => _p.scale2;
+  double get containerDefault => _p.scaleContainer0;
 
   @override
-  double get spaceXs => _p.scale3;
+  double get controlIconLg => _p.scale10;
 
   @override
-  double get spaceSm => _p.scale5;
+  double get controlIconMd => _p.scale8;
 
   @override
-  double get spaceMd => _p.scale6;
+  double get controlIconSm => _p.scale7;
 
   @override
-  double get spaceLg => _p.scale7;
+  double get controlIconXs => _p.scale6;
 
   @override
-  double get spaceXl => _p.scale9;
+  double get controlIconXxs => _p.scale5;
 
   @override
-  double get space2xl => _p.scale11;
+  double get controlLg => _p.scale15;
 
   @override
-  double get spaceNone => _p.scale0;
+  double get controlMd => _p.scale13;
 
   @override
-  double get spaceNegXs => _p.scaleNeg1;
-
-  @override
-  double get spaceNegSm => _p.scaleNeg2;
-
-  @override
-  double get spaceNegMd => _p.scaleNeg3;
-
-  @override
-  double get spaceNegLg => _p.scaleNeg5;
-
-  @override
-  double get spaceNegXl => _p.scaleNeg6;
+  double get controlSm => _p.scale12;
 
   @override
   double get controlTargetMin => _p.scale13;
@@ -904,97 +982,37 @@ final class _ZetaSizeCondensedMobile implements _ZetaSizeLayer {
   double get controlXs => _p.scale9;
 
   @override
-  double get controlSm => _p.scale12;
-
-  @override
-  double get controlMd => _p.scale13;
-
-  @override
-  double get controlLg => _p.scale15;
-
-  @override
-  double get controlIconXs => _p.scale5;
-
-  @override
-  double get controlIconSm => _p.scale7;
-
-  @override
-  double get controlIconMd => _p.scale8;
-
-  @override
-  double get controlIconLg => _p.scale10;
-
-  @override
-  double get containerDefault => _p.scaleContainer0;
-
-  @override
-  double get radiusNone => _p.scale0;
-
-  @override
-  double get radiusXs => _p.scale2;
-
-  @override
-  double get radiusSm => _p.scale3;
-
-  @override
-  double get radiusMd => _p.scale5;
-
-  @override
-  double get radiusLg => _p.scale6;
-
-  @override
-  double get radiusXl => _p.scale7;
-
-  @override
-  double get radiusElementSm => _p.scale3;
+  double get radiusContainer => _p.scale6;
 
   @override
   double get radiusElementMd => _p.scale4;
 
   @override
-  double get radiusContainer => _p.scale6;
+  double get radiusElementSm => _p.scale3;
+
+  @override
+  double get radiusLg => _p.scale6;
+
+  @override
+  double get radiusMd => _p.scale5;
+
+  @override
+  double get radiusNone => _p.scale0;
 
   @override
   double get radiusPill => 9999;
 
   @override
-  double get strokeBase => _p.scale0;
+  double get radiusSm => _p.scale3;
 
   @override
-  double get strokeThin => _p.scale1;
+  double get radiusXl => _p.scale7;
 
   @override
-  double get strokeThick => _p.scale2;
+  double get radiusXs => _p.scale2;
 
   @override
-  double get strokeHeavy => _p.scale3;
-
-  @override
-  double get shadowXsmallX => _p.scale0;
-
-  @override
-  double get shadowXsmallY => _p.scale1;
-
-  @override
-  double get shadowXsmallBlur => _p.scale1;
-
-  @override
-  double get shadowSmallX => _p.scale0;
-
-  @override
-  double get shadowSmallY => _p.scale2;
-
-  @override
-  double get shadowSmallBlur => _p.scale4;
-
-  @override
-  double get shadowMediumX => _p.scale0;
-
-  @override
-  double get shadowMediumY => _p.scale5;
-
-  @override
-  double get shadowMediumBlur => _p.scale7;
+  double get shadowLargeBlur => _p.scale11;
 
   @override
   double get shadowLargeX => _p.scale0;
@@ -1003,10 +1021,100 @@ final class _ZetaSizeCondensedMobile implements _ZetaSizeLayer {
   double get shadowLargeY => _p.scale8;
 
   @override
-  double get shadowLargeBlur => _p.scale11;
+  double get shadowMediumBlur => _p.scale7;
+
+  @override
+  double get shadowMediumX => _p.scale0;
+
+  @override
+  double get shadowMediumY => _p.scale5;
+
+  @override
+  double get shadowSmallBlur => _p.scale4;
+
+  @override
+  double get shadowSmallX => _p.scale0;
+
+  @override
+  double get shadowSmallY => _p.scale2;
+
+  @override
+  double get shadowXsmallBlur => _p.scale1;
+
+  @override
+  double get shadowXsmallX => _p.scale0;
+
+  @override
+  double get shadowXsmallY => _p.scale1;
 
   @override
   bool get shape => false;
+
+  @override
+  double get space2xl => _p.scale11;
+
+  @override
+  double get space2xs => _p.scale2;
+
+  @override
+  double get spaceCard => _p.scale6;
+
+  @override
+  double get spaceGutter => _p.scale7;
+
+  @override
+  double get spaceLg => _p.scale7;
+
+  @override
+  double get spaceMd => _p.scale6;
+
+  @override
+  double get spaceNegLg => _p.scaleNeg5;
+
+  @override
+  double get spaceNegMd => _p.scaleNeg3;
+
+  @override
+  double get spaceNegSm => _p.scaleNeg2;
+
+  @override
+  double get spaceNegXl => _p.scaleNeg6;
+
+  @override
+  double get spaceNegXs => _p.scaleNeg1;
+
+  @override
+  double get spaceNone => _p.scale0;
+
+  @override
+  double get spacePage => _p.scale7;
+
+  @override
+  double get spaceSection => _p.scale9;
+
+  @override
+  double get spaceSm => _p.scale5;
+
+  @override
+  double get spaceXl => _p.scale9;
+
+  @override
+  double get spaceXs => _p.scale4;
+
+  @override
+  double get spaceXxs => _p.scale3;
+
+  @override
+  double get strokeBase => _p.scale0;
+
+  @override
+  double get strokeHeavy => _p.scale3;
+
+  @override
+  double get strokeThick => _p.scale2;
+
+  @override
+  double get strokeThin => _p.scale1;
 }
 
 final class _ZetaSizeCondensedTablet implements _ZetaSizeLayer {
@@ -1015,55 +1123,43 @@ final class _ZetaSizeCondensedTablet implements _ZetaSizeLayer {
   final ZetaPrimitiveTokens _p;
 
   @override
-  double get spacePage => _p.scale7;
+  Duration get animationsSmoothDuration => const Duration(milliseconds: 250);
 
   @override
-  double get spaceSection => _p.scale9;
+  Curve get animationsSmoothCurve => Curves.easeInOut;
 
   @override
-  double get spaceCard => _p.scale6;
+  Duration get animationsSpringDuration => const Duration(milliseconds: 250);
 
   @override
-  double get spaceGutter => _p.scale7;
+  Curve get animationsSpringCurve => const Cubic(0.34, 1.36, 0.64, 1);
 
   @override
-  double get space2xs => _p.scale2;
+  double get containerDefault => _p.scaleContainer1;
 
   @override
-  double get spaceXs => _p.scale3;
+  double get controlIconLg => _p.scale10;
 
   @override
-  double get spaceSm => _p.scale5;
+  double get controlIconMd => _p.scale8;
 
   @override
-  double get spaceMd => _p.scale6;
+  double get controlIconSm => _p.scale7;
 
   @override
-  double get spaceLg => _p.scale7;
+  double get controlIconXs => _p.scale6;
 
   @override
-  double get spaceXl => _p.scale9;
+  double get controlIconXxs => _p.scale5;
 
   @override
-  double get space2xl => _p.scale11;
+  double get controlLg => _p.scale15;
 
   @override
-  double get spaceNone => _p.scale0;
+  double get controlMd => _p.scale13;
 
   @override
-  double get spaceNegXs => _p.scaleNeg1;
-
-  @override
-  double get spaceNegSm => _p.scaleNeg2;
-
-  @override
-  double get spaceNegMd => _p.scaleNeg3;
-
-  @override
-  double get spaceNegLg => _p.scaleNeg5;
-
-  @override
-  double get spaceNegXl => _p.scaleNeg6;
+  double get controlSm => _p.scale12;
 
   @override
   double get controlTargetMin => _p.scale13;
@@ -1072,97 +1168,37 @@ final class _ZetaSizeCondensedTablet implements _ZetaSizeLayer {
   double get controlXs => _p.scale9;
 
   @override
-  double get controlSm => _p.scale12;
-
-  @override
-  double get controlMd => _p.scale13;
-
-  @override
-  double get controlLg => _p.scale15;
-
-  @override
-  double get controlIconXs => _p.scale5;
-
-  @override
-  double get controlIconSm => _p.scale7;
-
-  @override
-  double get controlIconMd => _p.scale8;
-
-  @override
-  double get controlIconLg => _p.scale10;
-
-  @override
-  double get containerDefault => _p.scaleContainer1;
-
-  @override
-  double get radiusNone => _p.scale0;
-
-  @override
-  double get radiusXs => _p.scale2;
-
-  @override
-  double get radiusSm => _p.scale3;
-
-  @override
-  double get radiusMd => _p.scale5;
-
-  @override
-  double get radiusLg => _p.scale6;
-
-  @override
-  double get radiusXl => _p.scale7;
-
-  @override
-  double get radiusElementSm => _p.scale3;
+  double get radiusContainer => _p.scale6;
 
   @override
   double get radiusElementMd => _p.scale4;
 
   @override
-  double get radiusContainer => _p.scale6;
+  double get radiusElementSm => _p.scale3;
+
+  @override
+  double get radiusLg => _p.scale6;
+
+  @override
+  double get radiusMd => _p.scale5;
+
+  @override
+  double get radiusNone => _p.scale0;
 
   @override
   double get radiusPill => 9999;
 
   @override
-  double get strokeBase => _p.scale0;
+  double get radiusSm => _p.scale3;
 
   @override
-  double get strokeThin => _p.scale1;
+  double get radiusXl => _p.scale7;
 
   @override
-  double get strokeThick => _p.scale2;
+  double get radiusXs => _p.scale2;
 
   @override
-  double get strokeHeavy => _p.scale3;
-
-  @override
-  double get shadowXsmallX => _p.scale0;
-
-  @override
-  double get shadowXsmallY => _p.scale1;
-
-  @override
-  double get shadowXsmallBlur => _p.scale1;
-
-  @override
-  double get shadowSmallX => _p.scale0;
-
-  @override
-  double get shadowSmallY => _p.scale2;
-
-  @override
-  double get shadowSmallBlur => _p.scale4;
-
-  @override
-  double get shadowMediumX => _p.scale0;
-
-  @override
-  double get shadowMediumY => _p.scale5;
-
-  @override
-  double get shadowMediumBlur => _p.scale7;
+  double get shadowLargeBlur => _p.scale11;
 
   @override
   double get shadowLargeX => _p.scale0;
@@ -1171,10 +1207,100 @@ final class _ZetaSizeCondensedTablet implements _ZetaSizeLayer {
   double get shadowLargeY => _p.scale8;
 
   @override
-  double get shadowLargeBlur => _p.scale11;
+  double get shadowMediumBlur => _p.scale7;
+
+  @override
+  double get shadowMediumX => _p.scale0;
+
+  @override
+  double get shadowMediumY => _p.scale5;
+
+  @override
+  double get shadowSmallBlur => _p.scale4;
+
+  @override
+  double get shadowSmallX => _p.scale0;
+
+  @override
+  double get shadowSmallY => _p.scale2;
+
+  @override
+  double get shadowXsmallBlur => _p.scale1;
+
+  @override
+  double get shadowXsmallX => _p.scale0;
+
+  @override
+  double get shadowXsmallY => _p.scale1;
 
   @override
   bool get shape => true;
+
+  @override
+  double get space2xl => _p.scale11;
+
+  @override
+  double get space2xs => _p.scale2;
+
+  @override
+  double get spaceCard => _p.scale6;
+
+  @override
+  double get spaceGutter => _p.scale7;
+
+  @override
+  double get spaceLg => _p.scale7;
+
+  @override
+  double get spaceMd => _p.scale6;
+
+  @override
+  double get spaceNegLg => _p.scaleNeg5;
+
+  @override
+  double get spaceNegMd => _p.scaleNeg3;
+
+  @override
+  double get spaceNegSm => _p.scaleNeg2;
+
+  @override
+  double get spaceNegXl => _p.scaleNeg6;
+
+  @override
+  double get spaceNegXs => _p.scaleNeg1;
+
+  @override
+  double get spaceNone => _p.scale0;
+
+  @override
+  double get spacePage => _p.scale7;
+
+  @override
+  double get spaceSection => _p.scale9;
+
+  @override
+  double get spaceSm => _p.scale5;
+
+  @override
+  double get spaceXl => _p.scale9;
+
+  @override
+  double get spaceXs => _p.scale4;
+
+  @override
+  double get spaceXxs => _p.scale3;
+
+  @override
+  double get strokeBase => _p.scale0;
+
+  @override
+  double get strokeHeavy => _p.scale3;
+
+  @override
+  double get strokeThick => _p.scale2;
+
+  @override
+  double get strokeThin => _p.scale1;
 }
 
 final class _ZetaSizeCondensedDesktop implements _ZetaSizeLayer {
@@ -1183,55 +1309,43 @@ final class _ZetaSizeCondensedDesktop implements _ZetaSizeLayer {
   final ZetaPrimitiveTokens _p;
 
   @override
-  double get spacePage => _p.scale5;
+  Duration get animationsSmoothDuration => const Duration(milliseconds: 250);
 
   @override
-  double get spaceSection => _p.scale7;
+  Curve get animationsSmoothCurve => Curves.easeInOut;
 
   @override
-  double get spaceCard => _p.scale5;
+  Duration get animationsSpringDuration => const Duration(milliseconds: 250);
 
   @override
-  double get spaceGutter => _p.scale5;
+  Curve get animationsSpringCurve => const Cubic(0.34, 1.36, 0.64, 1);
 
   @override
-  double get space2xs => _p.scale1;
+  double get containerDefault => _p.scaleContainer3;
 
   @override
-  double get spaceXs => _p.scale2;
+  double get controlIconLg => _p.scale7;
 
   @override
-  double get spaceSm => _p.scale4;
+  double get controlIconMd => _p.scale6;
 
   @override
-  double get spaceMd => _p.scale5;
+  double get controlIconSm => _p.scale5;
 
   @override
-  double get spaceLg => _p.scale6;
+  double get controlIconXs => _p.scale6;
 
   @override
-  double get spaceXl => _p.scale7;
+  double get controlIconXxs => _p.scale4;
 
   @override
-  double get space2xl => _p.scale9;
+  double get controlLg => _p.scale13;
 
   @override
-  double get spaceNone => _p.scale0;
+  double get controlMd => _p.scale11;
 
   @override
-  double get spaceNegXs => _p.scaleNeg1;
-
-  @override
-  double get spaceNegSm => _p.scaleNeg2;
-
-  @override
-  double get spaceNegMd => _p.scaleNeg3;
-
-  @override
-  double get spaceNegLg => _p.scaleNeg5;
-
-  @override
-  double get spaceNegXl => _p.scaleNeg6;
+  double get controlSm => _p.scale10;
 
   @override
   double get controlTargetMin => _p.scale11;
@@ -1240,97 +1354,37 @@ final class _ZetaSizeCondensedDesktop implements _ZetaSizeLayer {
   double get controlXs => _p.scale8;
 
   @override
-  double get controlSm => _p.scale10;
-
-  @override
-  double get controlMd => _p.scale11;
-
-  @override
-  double get controlLg => _p.scale13;
-
-  @override
-  double get controlIconXs => _p.scale4;
-
-  @override
-  double get controlIconSm => _p.scale5;
-
-  @override
-  double get controlIconMd => _p.scale6;
-
-  @override
-  double get controlIconLg => _p.scale7;
-
-  @override
-  double get containerDefault => _p.scaleContainer3;
-
-  @override
-  double get radiusNone => _p.scale0;
-
-  @override
-  double get radiusXs => _p.scale1;
-
-  @override
-  double get radiusSm => _p.scale2;
-
-  @override
-  double get radiusMd => _p.scale3;
-
-  @override
-  double get radiusLg => _p.scale4;
-
-  @override
-  double get radiusXl => _p.scale5;
-
-  @override
-  double get radiusElementSm => _p.scale2;
+  double get radiusContainer => _p.scale5;
 
   @override
   double get radiusElementMd => _p.scale3;
 
   @override
-  double get radiusContainer => _p.scale5;
+  double get radiusElementSm => _p.scale2;
+
+  @override
+  double get radiusLg => _p.scale4;
+
+  @override
+  double get radiusMd => _p.scale3;
+
+  @override
+  double get radiusNone => _p.scale0;
 
   @override
   double get radiusPill => 9999;
 
   @override
-  double get strokeBase => _p.scale0;
+  double get radiusSm => _p.scale2;
 
   @override
-  double get strokeThin => _p.scale1;
+  double get radiusXl => _p.scale5;
 
   @override
-  double get strokeThick => _p.scale2;
+  double get radiusXs => _p.scale1;
 
   @override
-  double get strokeHeavy => _p.scale3;
-
-  @override
-  double get shadowXsmallX => _p.scale0;
-
-  @override
-  double get shadowXsmallY => _p.scale1;
-
-  @override
-  double get shadowXsmallBlur => _p.scale1;
-
-  @override
-  double get shadowSmallX => _p.scale0;
-
-  @override
-  double get shadowSmallY => _p.scale2;
-
-  @override
-  double get shadowSmallBlur => _p.scale4;
-
-  @override
-  double get shadowMediumX => _p.scale0;
-
-  @override
-  double get shadowMediumY => _p.scale5;
-
-  @override
-  double get shadowMediumBlur => _p.scale7;
+  double get shadowLargeBlur => _p.scale11;
 
   @override
   double get shadowLargeX => _p.scale0;
@@ -1339,10 +1393,100 @@ final class _ZetaSizeCondensedDesktop implements _ZetaSizeLayer {
   double get shadowLargeY => _p.scale8;
 
   @override
-  double get shadowLargeBlur => _p.scale11;
+  double get shadowMediumBlur => _p.scale7;
+
+  @override
+  double get shadowMediumX => _p.scale0;
+
+  @override
+  double get shadowMediumY => _p.scale5;
+
+  @override
+  double get shadowSmallBlur => _p.scale4;
+
+  @override
+  double get shadowSmallX => _p.scale0;
+
+  @override
+  double get shadowSmallY => _p.scale2;
+
+  @override
+  double get shadowXsmallBlur => _p.scale1;
+
+  @override
+  double get shadowXsmallX => _p.scale0;
+
+  @override
+  double get shadowXsmallY => _p.scale1;
 
   @override
   bool get shape => true;
+
+  @override
+  double get space2xl => _p.scale9;
+
+  @override
+  double get space2xs => _p.scale1;
+
+  @override
+  double get spaceCard => _p.scale5;
+
+  @override
+  double get spaceGutter => _p.scale5;
+
+  @override
+  double get spaceLg => _p.scale6;
+
+  @override
+  double get spaceMd => _p.scale5;
+
+  @override
+  double get spaceNegLg => _p.scaleNeg5;
+
+  @override
+  double get spaceNegMd => _p.scaleNeg3;
+
+  @override
+  double get spaceNegSm => _p.scaleNeg2;
+
+  @override
+  double get spaceNegXl => _p.scaleNeg6;
+
+  @override
+  double get spaceNegXs => _p.scaleNeg1;
+
+  @override
+  double get spaceNone => _p.scale0;
+
+  @override
+  double get spacePage => _p.scale5;
+
+  @override
+  double get spaceSection => _p.scale7;
+
+  @override
+  double get spaceSm => _p.scale4;
+
+  @override
+  double get spaceXl => _p.scale7;
+
+  @override
+  double get spaceXs => _p.scale4;
+
+  @override
+  double get spaceXxs => _p.scale2;
+
+  @override
+  double get strokeBase => _p.scale0;
+
+  @override
+  double get strokeHeavy => _p.scale3;
+
+  @override
+  double get strokeThick => _p.scale2;
+
+  @override
+  double get strokeThin => _p.scale1;
 }
 
 final class _ZetaSizeCondensedDesktopCompact implements _ZetaSizeLayer {
@@ -1351,55 +1495,43 @@ final class _ZetaSizeCondensedDesktopCompact implements _ZetaSizeLayer {
   final ZetaPrimitiveTokens _p;
 
   @override
-  double get spacePage => _p.scale7;
+  Duration get animationsSmoothDuration => const Duration(milliseconds: 250);
 
   @override
-  double get spaceSection => _p.scale9;
+  Curve get animationsSmoothCurve => Curves.easeInOut;
 
   @override
-  double get spaceCard => _p.scale6;
+  Duration get animationsSpringDuration => const Duration(milliseconds: 250);
 
   @override
-  double get spaceGutter => _p.scale7;
+  Curve get animationsSpringCurve => const Cubic(0.34, 1.36, 0.64, 1);
 
   @override
-  double get space2xs => _p.scale2;
+  double get containerDefault => _p.scaleContainer2;
 
   @override
-  double get spaceXs => _p.scale3;
+  double get controlIconLg => _p.scale10;
 
   @override
-  double get spaceSm => _p.scale5;
+  double get controlIconMd => _p.scale8;
 
   @override
-  double get spaceMd => _p.scale6;
+  double get controlIconSm => _p.scale7;
 
   @override
-  double get spaceLg => _p.scale7;
+  double get controlIconXs => _p.scale6;
 
   @override
-  double get spaceXl => _p.scale9;
+  double get controlIconXxs => _p.scale5;
 
   @override
-  double get space2xl => _p.scale11;
+  double get controlLg => _p.scale15;
 
   @override
-  double get spaceNone => _p.scale0;
+  double get controlMd => _p.scale13;
 
   @override
-  double get spaceNegXs => _p.scaleNeg1;
-
-  @override
-  double get spaceNegSm => _p.scaleNeg2;
-
-  @override
-  double get spaceNegMd => _p.scaleNeg3;
-
-  @override
-  double get spaceNegLg => _p.scaleNeg5;
-
-  @override
-  double get spaceNegXl => _p.scaleNeg6;
+  double get controlSm => _p.scale12;
 
   @override
   double get controlTargetMin => _p.scale13;
@@ -1408,97 +1540,37 @@ final class _ZetaSizeCondensedDesktopCompact implements _ZetaSizeLayer {
   double get controlXs => _p.scale9;
 
   @override
-  double get controlSm => _p.scale12;
-
-  @override
-  double get controlMd => _p.scale13;
-
-  @override
-  double get controlLg => _p.scale15;
-
-  @override
-  double get controlIconXs => _p.scale5;
-
-  @override
-  double get controlIconSm => _p.scale7;
-
-  @override
-  double get controlIconMd => _p.scale8;
-
-  @override
-  double get controlIconLg => _p.scale10;
-
-  @override
-  double get containerDefault => _p.scaleContainer2;
-
-  @override
-  double get radiusNone => _p.scale0;
-
-  @override
-  double get radiusXs => _p.scale2;
-
-  @override
-  double get radiusSm => _p.scale3;
-
-  @override
-  double get radiusMd => _p.scale5;
-
-  @override
-  double get radiusLg => _p.scale6;
-
-  @override
-  double get radiusXl => _p.scale7;
-
-  @override
-  double get radiusElementSm => _p.scale3;
+  double get radiusContainer => _p.scale6;
 
   @override
   double get radiusElementMd => _p.scale4;
 
   @override
-  double get radiusContainer => _p.scale6;
+  double get radiusElementSm => _p.scale3;
+
+  @override
+  double get radiusLg => _p.scale6;
+
+  @override
+  double get radiusMd => _p.scale5;
+
+  @override
+  double get radiusNone => _p.scale0;
 
   @override
   double get radiusPill => 9999;
 
   @override
-  double get strokeBase => _p.scale0;
+  double get radiusSm => _p.scale3;
 
   @override
-  double get strokeThin => _p.scale1;
+  double get radiusXl => _p.scale7;
 
   @override
-  double get strokeThick => _p.scale2;
+  double get radiusXs => _p.scale2;
 
   @override
-  double get strokeHeavy => _p.scale3;
-
-  @override
-  double get shadowXsmallX => _p.scale0;
-
-  @override
-  double get shadowXsmallY => _p.scale1;
-
-  @override
-  double get shadowXsmallBlur => _p.scale1;
-
-  @override
-  double get shadowSmallX => _p.scale0;
-
-  @override
-  double get shadowSmallY => _p.scale2;
-
-  @override
-  double get shadowSmallBlur => _p.scale4;
-
-  @override
-  double get shadowMediumX => _p.scale0;
-
-  @override
-  double get shadowMediumY => _p.scale5;
-
-  @override
-  double get shadowMediumBlur => _p.scale7;
+  double get shadowLargeBlur => _p.scale11;
 
   @override
   double get shadowLargeX => _p.scale0;
@@ -1507,102 +1579,119 @@ final class _ZetaSizeCondensedDesktopCompact implements _ZetaSizeLayer {
   double get shadowLargeY => _p.scale8;
 
   @override
-  double get shadowLargeBlur => _p.scale11;
+  double get shadowMediumBlur => _p.scale7;
+
+  @override
+  double get shadowMediumX => _p.scale0;
+
+  @override
+  double get shadowMediumY => _p.scale5;
+
+  @override
+  double get shadowSmallBlur => _p.scale4;
+
+  @override
+  double get shadowSmallX => _p.scale0;
+
+  @override
+  double get shadowSmallY => _p.scale2;
+
+  @override
+  double get shadowXsmallBlur => _p.scale1;
+
+  @override
+  double get shadowXsmallX => _p.scale0;
+
+  @override
+  double get shadowXsmallY => _p.scale1;
 
   @override
   bool get shape => true;
+
+  @override
+  double get space2xl => _p.scale11;
+
+  @override
+  double get space2xs => _p.scale2;
+
+  @override
+  double get spaceCard => _p.scale6;
+
+  @override
+  double get spaceGutter => _p.scale7;
+
+  @override
+  double get spaceLg => _p.scale7;
+
+  @override
+  double get spaceMd => _p.scale6;
+
+  @override
+  double get spaceNegLg => _p.scaleNeg5;
+
+  @override
+  double get spaceNegMd => _p.scaleNeg3;
+
+  @override
+  double get spaceNegSm => _p.scaleNeg2;
+
+  @override
+  double get spaceNegXl => _p.scaleNeg6;
+
+  @override
+  double get spaceNegXs => _p.scaleNeg1;
+
+  @override
+  double get spaceNone => _p.scale0;
+
+  @override
+  double get spacePage => _p.scale7;
+
+  @override
+  double get spaceSection => _p.scale9;
+
+  @override
+  double get spaceSm => _p.scale5;
+
+  @override
+  double get spaceXl => _p.scale9;
+
+  @override
+  double get spaceXs => _p.scale4;
+
+  @override
+  double get spaceXxs => _p.scale3;
+
+  @override
+  double get strokeBase => _p.scale0;
+
+  @override
+  double get strokeHeavy => _p.scale3;
+
+  @override
+  double get strokeThick => _p.scale2;
+
+  @override
+  double get strokeThin => _p.scale1;
 }
 
-/// `space` size tokens.
-class ZetaSpaceTokens {
-  const ZetaSpaceTokens._(this._size);
+/// `animations` size tokens.
+class ZetaAnimationsTokens {
+  const ZetaAnimationsTokens._(this._size);
 
   final _ZetaSizeLayer _size;
 
-  /// `size.space.page`: = 16px, source: scale/6
-  double get page => _size.spacePage;
+  /// `size.animations.smooth`: Smooth motion for opening and closing: ease-in-out over 250ms. Used by every element in Navigation Rail (collapse/expand, sub menu open/close). Duration and curve in one value; use directly in a CSS transition.
+  Duration get smoothDuration => _size.animationsSmoothDuration;
 
-  /// `size.space.section`: = 24px, source: scale/8
-  double get section => _size.spaceSection;
+  /// `size.animations.smooth`: Smooth motion for opening and closing: ease-in-out over 250ms. Used by every element in Navigation Rail (collapse/expand, sub menu open/close). Duration and curve in one value; use directly in a CSS transition.
+  Curve get smoothCurve => _size.animationsSmoothCurve;
 
-  /// `size.space.card`: = 16px, source: scale/6
-  double get card => _size.spaceCard;
+  /// `size.animations.spring`: Spring motion shared by Switch and Segmented Control: 250ms on cubic-bezier(0.34, 1.36, 0.64, 1), a slight overshoot that settles. Duration and easing together, for transition timing: transition: transform var(--animations-spring). Turn it off under prefers-reduced-motion.
+  Duration get springDuration => _size.animationsSpringDuration;
 
-  /// `size.space.gutter`: = 16px, source: scale/6
-  double get gutter => _size.spaceGutter;
-
-  /// `size.space.2xs`: = 2px, source: scale/1
-  double get xs_2 => _size.space2xs;
-
-  /// `size.space.xs`: = 4px, source: scale/2
-  double get xs => _size.spaceXs;
-
-  /// `size.space.sm`: = 8px, source: scale/4
-  double get sm => _size.spaceSm;
-
-  /// `size.space.md`: = 12px, source: scale/5
-  double get md => _size.spaceMd;
-
-  /// `size.space.lg`: = 16px, source: scale/6
-  double get lg => _size.spaceLg;
-
-  /// `size.space.xl`: = 24px, source: scale/8
-  double get xl => _size.spaceXl;
-
-  /// `size.space.2xl`: = 32px, source: scale/10
-  double get xl_2 => _size.space2xl;
-
-  /// `size.space.none`: = 32px, source: scale/10
-  double get none => _size.spaceNone;
-
-  /// `size.space.neg.xs`: = -1px, source: scale/-1
-  double get negXs => _size.spaceNegXs;
-
-  /// `size.space.neg.sm`: = -2px, source: scale/-2
-  double get negSm => _size.spaceNegSm;
-
-  /// `size.space.neg.md`: = -4px, source: scale/-3
-  double get negMd => _size.spaceNegMd;
-
-  /// `size.space.neg.lg`: = -8px, source: scale/-5
-  double get negLg => _size.spaceNegLg;
-
-  /// `size.space.neg.xl`: = -12px, source: scale/-6
-  double get negXl => _size.spaceNegXl;
-}
-
-/// `control` size tokens.
-class ZetaControlTokens {
-  const ZetaControlTokens._(this._size);
-
-  final _ZetaSizeLayer _size;
-
-  /// `size.control.target-min`: = 44px, source: scale/13
-  double get targetMin => _size.controlTargetMin;
-
-  /// `size.control.xs`: = 40px, source: scale/12
-  double get xs => _size.controlXs;
-
-  /// `size.control.sm`: = 40px, source: scale/12
-  double get sm => _size.controlSm;
-
-  /// `size.control.md`: = 48px, source: scale/14
-  double get md => _size.controlMd;
-
-  /// `size.control.lg`: = 56px, source: scale/15
-  double get lg => _size.controlLg;
-
-  /// `size.control.icon-xs`: = 20px, source: scale/7
-  double get iconXs => _size.controlIconXs;
-
-  /// `size.control.icon-sm`: = 20px, source: scale/7
-  double get iconSm => _size.controlIconSm;
-
-  /// `size.control.icon-md`: = 24px, source: scale/8
-  double get iconMd => _size.controlIconMd;
-
-  /// `size.control.icon-lg`: = 32px, source: scale/10
-  double get iconLg => _size.controlIconLg;
+  /// `size.animations.spring`: Spring motion shared by Switch and Segmented Control: 250ms on cubic-bezier(0.34, 1.36, 0.64, 1), a slight overshoot that settles. Duration and easing together, for transition timing: transition: transform var(--animations-spring). Turn it off under prefers-reduced-motion.
+  Curve get springCurve => _size.animationsSpringCurve;
 }
 
 /// `container` size tokens.
@@ -1615,59 +1704,48 @@ class ZetaContainerTokens {
   double get default_ => _size.containerDefault;
 }
 
+/// `control` size tokens.
+class ZetaControlTokens {
+  const ZetaControlTokens._(this._size);
+
+  final _ZetaSizeLayer _size;
+
+  /// `size.control.icon-lg`: = 32px, source: scale/10
+  double get iconLg => _size.controlIconLg;
+
+  /// `size.control.icon-md`: = 24px, source: scale/8
+  double get iconMd => _size.controlIconMd;
+
+  /// `size.control.icon-sm`: = 20px, source: scale/7
+  double get iconSm => _size.controlIconSm;
+
+  /// `size.control.icon-xs`: = 20px, source: scale/7
+  double get iconXs => _size.controlIconXs;
+
+  /// `size.control.icon-xxs`: = 20px, source: scale/7
+  double get iconXxs => _size.controlIconXxs;
+
+  /// `size.control.lg`: = 56px, source: scale/15
+  double get lg => _size.controlLg;
+
+  /// `size.control.md`: = 48px, source: scale/14
+  double get md => _size.controlMd;
+
+  /// `size.control.sm`: = 40px, source: scale/12
+  double get sm => _size.controlSm;
+
+  /// `size.control.target-min`: = 44px, source: scale/13
+  double get targetMin => _size.controlTargetMin;
+
+  /// `size.control.xs`: = 40px, source: scale/12
+  double get xs => _size.controlXs;
+}
+
 /// `radius` size tokens.
 class ZetaRadiusTokens {
   const ZetaRadiusTokens._(this._size);
 
   final _ZetaSizeLayer _size;
-
-  /// `size.radius.none`: = 2px, source: scale/1
-  double get none => _size.radiusNone;
-
-  /// [none] as a circular [BorderRadius].
-  BorderRadius get noneAll => BorderRadius.circular(_size.radiusNone);
-
-  /// `size.radius.xs`: = 2px, source: scale/1
-  double get xs => _size.radiusXs;
-
-  /// [xs] as a circular [BorderRadius].
-  BorderRadius get xsAll => BorderRadius.circular(_size.radiusXs);
-
-  /// `size.radius.sm`: = 4px, source: scale/2
-  double get sm => _size.radiusSm;
-
-  /// [sm] as a circular [BorderRadius].
-  BorderRadius get smAll => BorderRadius.circular(_size.radiusSm);
-
-  /// `size.radius.md`: = 8px, source: scale/4
-  double get md => _size.radiusMd;
-
-  /// [md] as a circular [BorderRadius].
-  BorderRadius get mdAll => BorderRadius.circular(_size.radiusMd);
-
-  /// `size.radius.lg`: = 12px, source: scale/5
-  double get lg => _size.radiusLg;
-
-  /// [lg] as a circular [BorderRadius].
-  BorderRadius get lgAll => BorderRadius.circular(_size.radiusLg);
-
-  /// `size.radius.xl`: = 16px, source: scale/6
-  double get xl => _size.radiusXl;
-
-  /// [xl] as a circular [BorderRadius].
-  BorderRadius get xlAll => BorderRadius.circular(_size.radiusXl);
-
-  /// `size.radius.element-sm`: = 16px, source: scale/6
-  double get elementSm => _size.radiusElementSm;
-
-  /// [elementSm] as a circular [BorderRadius].
-  BorderRadius get elementSmAll => BorderRadius.circular(_size.radiusElementSm);
-
-  /// `size.radius.element-md`: = 16px, source: scale/6
-  double get elementMd => _size.radiusElementMd;
-
-  /// [elementMd] as a circular [BorderRadius].
-  BorderRadius get elementMdAll => BorderRadius.circular(_size.radiusElementMd);
 
   /// `size.radius.container`: = 16px, source: scale/6
   double get container => _size.radiusContainer;
@@ -1675,11 +1753,120 @@ class ZetaRadiusTokens {
   /// [container] as a circular [BorderRadius].
   BorderRadius get containerAll => BorderRadius.circular(_size.radiusContainer);
 
+  /// `size.radius.element-md`: = 16px, source: scale/6
+  double get elementMd => _size.radiusElementMd;
+
+  /// [elementMd] as a circular [BorderRadius].
+  BorderRadius get elementMdAll => BorderRadius.circular(_size.radiusElementMd);
+
+  /// `size.radius.element-sm`: = 16px, source: scale/6
+  double get elementSm => _size.radiusElementSm;
+
+  /// [elementSm] as a circular [BorderRadius].
+  BorderRadius get elementSmAll => BorderRadius.circular(_size.radiusElementSm);
+
+  /// `size.radius.lg`: = 12px, source: scale/5
+  double get lg => _size.radiusLg;
+
+  /// [lg] as a circular [BorderRadius].
+  BorderRadius get lgAll => BorderRadius.circular(_size.radiusLg);
+
+  /// `size.radius.md`: = 8px, source: scale/4
+  double get md => _size.radiusMd;
+
+  /// [md] as a circular [BorderRadius].
+  BorderRadius get mdAll => BorderRadius.circular(_size.radiusMd);
+
+  /// `size.radius.none`: = 2px, source: scale/1
+  double get none => _size.radiusNone;
+
+  /// [none] as a circular [BorderRadius].
+  BorderRadius get noneAll => BorderRadius.circular(_size.radiusNone);
+
   /// `size.radius.pill`: Literal value, not a scale reference (fully rounded)
   double get pill => _size.radiusPill;
 
   /// [pill] as a circular [BorderRadius].
   BorderRadius get pillAll => BorderRadius.circular(_size.radiusPill);
+
+  /// `size.radius.sm`: = 4px, source: scale/2
+  double get sm => _size.radiusSm;
+
+  /// [sm] as a circular [BorderRadius].
+  BorderRadius get smAll => BorderRadius.circular(_size.radiusSm);
+
+  /// `size.radius.xl`: = 16px, source: scale/6
+  double get xl => _size.radiusXl;
+
+  /// [xl] as a circular [BorderRadius].
+  BorderRadius get xlAll => BorderRadius.circular(_size.radiusXl);
+
+  /// `size.radius.xs`: = 2px, source: scale/1
+  double get xs => _size.radiusXs;
+
+  /// [xs] as a circular [BorderRadius].
+  BorderRadius get xsAll => BorderRadius.circular(_size.radiusXs);
+}
+
+/// `space` size tokens.
+class ZetaSpaceTokens {
+  const ZetaSpaceTokens._(this._size);
+
+  final _ZetaSizeLayer _size;
+
+  /// `size.space.2xl`: = 32px, source: scale/10
+  double get xl_2 => _size.space2xl;
+
+  /// `size.space.2xs`: = 2px, source: scale/1
+  double get xs_2 => _size.space2xs;
+
+  /// `size.space.card`: = 16px, source: scale/6
+  double get card => _size.spaceCard;
+
+  /// `size.space.gutter`: = 16px, source: scale/6
+  double get gutter => _size.spaceGutter;
+
+  /// `size.space.lg`: = 16px, source: scale/6
+  double get lg => _size.spaceLg;
+
+  /// `size.space.md`: = 12px, source: scale/5
+  double get md => _size.spaceMd;
+
+  /// `size.space.neg.lg`: = -8px, source: scale/-5
+  double get negLg => _size.spaceNegLg;
+
+  /// `size.space.neg.md`: = -4px, source: scale/-3
+  double get negMd => _size.spaceNegMd;
+
+  /// `size.space.neg.sm`: = -2px, source: scale/-2
+  double get negSm => _size.spaceNegSm;
+
+  /// `size.space.neg.xl`: = -12px, source: scale/-6
+  double get negXl => _size.spaceNegXl;
+
+  /// `size.space.neg.xs`: = -1px, source: scale/-1
+  double get negXs => _size.spaceNegXs;
+
+  /// `size.space.none`: = 32px, source: scale/10
+  double get none => _size.spaceNone;
+
+  /// `size.space.page`: = 16px, source: scale/6
+  double get page => _size.spacePage;
+
+  /// `size.space.section`: = 24px, source: scale/8
+  double get section => _size.spaceSection;
+
+  /// `size.space.sm`: = 8px, source: scale/4
+  double get sm => _size.spaceSm;
+
+  /// `size.space.xl`: = 24px, source: scale/8
+  double get xl => _size.spaceXl;
+
+  /// `size.space.xs`: = 4px, source: scale/2
+  double get xs => _size.spaceXs;
+
+  /// `size.space.xxs`: = 4px, source: scale/2
+  double get xxs => _size.spaceXxs;
 }
 
 /// `stroke` size tokens.
@@ -1691,14 +1878,14 @@ class ZetaStrokeTokens {
   /// `size.stroke.base`: = 1px, source: scale/0
   double get base => _size.strokeBase;
 
-  /// `size.stroke.thin`: = 1px, source: scale/0
-  double get thin => _size.strokeThin;
+  /// `size.stroke.heavy`: = 4px, source: scale/2
+  double get heavy => _size.strokeHeavy;
 
   /// `size.stroke.thick`: = 2px, source: scale/1
   double get thick => _size.strokeThick;
 
-  /// `size.stroke.heavy`: = 4px, source: scale/2
-  double get heavy => _size.strokeHeavy;
+  /// `size.stroke.thin`: = 1px, source: scale/0
+  double get thin => _size.strokeThin;
 }
 
 /// Composite shadows (`size.shadow` geometry × `semantics.shadow` colors).
@@ -1708,57 +1895,17 @@ class ZetaShadowTokens {
   final _ZetaSizeLayer _size;
   final ZetaPaletteTokens _palette;
 
-  /// `semantics.shadow.soft`: Soft, diffuse drop shadow for subtle elevation, e.g. cards
-  Color get soft => _palette.fillTransparentEmphasis;
-
   /// `semantics.shadow.hard`: Crisp, high-contrast drop shadow for elements needing strong separation, e.g. dropdowns
   Color get hard => _palette.fillTransparentElevate;
 
-  /// `size.shadow.xsmall` with `semantics.shadow.soft`.
-  List<BoxShadow> get xsmallSoft => [
-        BoxShadow(
-            offset: Offset(_size.shadowXsmallX, _size.shadowXsmallY),
-            blurRadius: _size.shadowXsmallBlur,
-            color: _palette.fillTransparentEmphasis)
-      ];
+  /// `semantics.shadow.soft`: Soft, diffuse drop shadow for subtle elevation, e.g. cards
+  Color get soft => _palette.fillTransparentEmphasis;
 
-  /// `size.shadow.xsmall` with `semantics.shadow.hard`.
-  List<BoxShadow> get xsmallHard => [
+  /// `size.shadow.large` with `semantics.shadow.hard`.
+  List<BoxShadow> get largeHard => [
         BoxShadow(
-            offset: Offset(_size.shadowXsmallX, _size.shadowXsmallY),
-            blurRadius: _size.shadowXsmallBlur,
-            color: _palette.fillTransparentElevate)
-      ];
-
-  /// `size.shadow.small` with `semantics.shadow.soft`.
-  List<BoxShadow> get smallSoft => [
-        BoxShadow(
-            offset: Offset(_size.shadowSmallX, _size.shadowSmallY),
-            blurRadius: _size.shadowSmallBlur,
-            color: _palette.fillTransparentEmphasis)
-      ];
-
-  /// `size.shadow.small` with `semantics.shadow.hard`.
-  List<BoxShadow> get smallHard => [
-        BoxShadow(
-            offset: Offset(_size.shadowSmallX, _size.shadowSmallY),
-            blurRadius: _size.shadowSmallBlur,
-            color: _palette.fillTransparentElevate)
-      ];
-
-  /// `size.shadow.medium` with `semantics.shadow.soft`.
-  List<BoxShadow> get mediumSoft => [
-        BoxShadow(
-            offset: Offset(_size.shadowMediumX, _size.shadowMediumY),
-            blurRadius: _size.shadowMediumBlur,
-            color: _palette.fillTransparentEmphasis)
-      ];
-
-  /// `size.shadow.medium` with `semantics.shadow.hard`.
-  List<BoxShadow> get mediumHard => [
-        BoxShadow(
-            offset: Offset(_size.shadowMediumX, _size.shadowMediumY),
-            blurRadius: _size.shadowMediumBlur,
+            offset: Offset(_size.shadowLargeX, _size.shadowLargeY),
+            blurRadius: _size.shadowLargeBlur,
             color: _palette.fillTransparentElevate)
       ];
 
@@ -1770,11 +1917,51 @@ class ZetaShadowTokens {
             color: _palette.fillTransparentEmphasis)
       ];
 
-  /// `size.shadow.large` with `semantics.shadow.hard`.
-  List<BoxShadow> get largeHard => [
+  /// `size.shadow.medium` with `semantics.shadow.hard`.
+  List<BoxShadow> get mediumHard => [
         BoxShadow(
-            offset: Offset(_size.shadowLargeX, _size.shadowLargeY),
-            blurRadius: _size.shadowLargeBlur,
+            offset: Offset(_size.shadowMediumX, _size.shadowMediumY),
+            blurRadius: _size.shadowMediumBlur,
             color: _palette.fillTransparentElevate)
+      ];
+
+  /// `size.shadow.medium` with `semantics.shadow.soft`.
+  List<BoxShadow> get mediumSoft => [
+        BoxShadow(
+            offset: Offset(_size.shadowMediumX, _size.shadowMediumY),
+            blurRadius: _size.shadowMediumBlur,
+            color: _palette.fillTransparentEmphasis)
+      ];
+
+  /// `size.shadow.small` with `semantics.shadow.hard`.
+  List<BoxShadow> get smallHard => [
+        BoxShadow(
+            offset: Offset(_size.shadowSmallX, _size.shadowSmallY),
+            blurRadius: _size.shadowSmallBlur,
+            color: _palette.fillTransparentElevate)
+      ];
+
+  /// `size.shadow.small` with `semantics.shadow.soft`.
+  List<BoxShadow> get smallSoft => [
+        BoxShadow(
+            offset: Offset(_size.shadowSmallX, _size.shadowSmallY),
+            blurRadius: _size.shadowSmallBlur,
+            color: _palette.fillTransparentEmphasis)
+      ];
+
+  /// `size.shadow.xsmall` with `semantics.shadow.hard`.
+  List<BoxShadow> get xsmallHard => [
+        BoxShadow(
+            offset: Offset(_size.shadowXsmallX, _size.shadowXsmallY),
+            blurRadius: _size.shadowXsmallBlur,
+            color: _palette.fillTransparentElevate)
+      ];
+
+  /// `size.shadow.xsmall` with `semantics.shadow.soft`.
+  List<BoxShadow> get xsmallSoft => [
+        BoxShadow(
+            offset: Offset(_size.shadowXsmallX, _size.shadowXsmallY),
+            blurRadius: _size.shadowXsmallBlur,
+            color: _palette.fillTransparentEmphasis)
       ];
 }

@@ -6,17 +6,14 @@ part of 'zeta_tokens.g.dart';
 
 /// Color-mode aware palette tokens (`palette` collection).
 abstract interface class ZetaPaletteTokens {
+  /// `palette.brand.primary.deep`
+  Color get brandPrimaryDeep;
+
   /// `palette.brand.primary.default`: Primary brand color (theme.color.brand.primary)
   Color get brandPrimaryDefault;
 
   /// `palette.brand.primary.faint`: Light brand tint for backgrounds (theme.color.brand.subtle)
   Color get brandPrimaryFaint;
-
-  /// `palette.brand.primary.subtle`
-  Color get brandPrimarySubtle;
-
-  /// `palette.brand.primary.deep`
-  Color get brandPrimaryDeep;
 
   /// `palette.brand.primary.muted`: Muted/softened brand tone (theme.color.brand.muted)
   Color get brandPrimaryMuted;
@@ -24,20 +21,32 @@ abstract interface class ZetaPaletteTokens {
   /// `palette.brand.primary.on`: Foreground on top of Brand/Primary (theme.color.brand.onPrimary)
   Color get brandPrimaryOn;
 
+  /// `palette.brand.primary.strong`
+  Color get brandPrimaryStrong;
+
+  /// `palette.brand.primary.subtle`
+  Color get brandPrimarySubtle;
+
+  /// `palette.brand.secondary.deep`
+  Color get brandSecondaryDeep;
+
   /// `palette.brand.secondary.default`: Secondary brand color (theme.color.brand.secondary)
   Color get brandSecondaryDefault;
 
   /// `palette.brand.secondary.faint`
   Color get brandSecondaryFaint;
 
+  /// `palette.brand.secondary.on`: Foreground on top of Brand/Secondary (theme.color.brand.onSecondary)
+  Color get brandSecondaryOn;
+
+  /// `palette.brand.secondary.strong`
+  Color get brandSecondaryStrong;
+
   /// `palette.brand.secondary.subtle`
   Color get brandSecondarySubtle;
 
-  /// `palette.brand.secondary.deep`
-  Color get brandSecondaryDeep;
-
-  /// `palette.brand.secondary.on`: Foreground on top of Brand/Secondary (theme.color.brand.onSecondary)
-  Color get brandSecondaryOn;
+  /// `palette.brand.tertiary.deep`: Tertiary brand color (theme.color.brand.tertiary)
+  Color get brandTertiaryDeep;
 
   /// `palette.brand.tertiary.default`: Tertiary brand color (theme.color.brand.tertiary)
   Color get brandTertiaryDefault;
@@ -45,203 +54,14 @@ abstract interface class ZetaPaletteTokens {
   /// `palette.brand.tertiary.faint`: Tertiary brand color (theme.color.brand.tertiary)
   Color get brandTertiaryFaint;
 
-  /// `palette.brand.tertiary.subtle`: Tertiary brand color (theme.color.brand.tertiary)
-  Color get brandTertiarySubtle;
-
-  /// `palette.brand.tertiary.deep`: Tertiary brand color (theme.color.brand.tertiary)
-  Color get brandTertiaryDeep;
-
   /// `palette.brand.tertiary.on`: Foreground on top of Brand/Primary (theme.color.brand.onPrimary)
   Color get brandTertiaryOn;
 
-  /// `palette.fill.canvas`: App/page base background (theme.color.surface.canvas)
-  Color get fillCanvas;
+  /// `palette.brand.tertiary.strong`: Tertiary brand color (theme.color.brand.tertiary)
+  Color get brandTertiaryStrong;
 
-  /// `palette.fill.default`: Standard component/card background (theme.color.surface.default)
-  Color get fillDefault;
-
-  /// `palette.fill.elevated`: Raised surface background, pair with elevation shadow (theme.color.surface.elevated)
-  Color get fillElevated;
-
-  /// `palette.fill.overlay`: Modal/popover panel background (theme.color.surface.overlay)
-  Color get fillOverlay;
-
-  /// `palette.fill.inverse`: Inverted (dark) surface, e.g. tooltips (theme.color.surface.inverse)
-  Color get fillInverse;
-
-  /// `palette.fill.sunken`: Recessed background, e.g. inputs/wells (theme.color.surface.sunken)
-  Color get fillSunken;
-
-  /// `palette.fill.scrim`: Backdrop behind modals; apply opacity at usage since this alias is fully opaque (theme.color.surface.scrim)
-  Color get fillScrim;
-
-  /// `palette.fill.selection`: Selected item/text background (theme.color.selection.background)
-  Color get fillSelection;
-
-  /// `palette.fill.hover`
-  Color get fillHover;
-
-  /// `palette.fill.inverse-sunken`
-  Color get fillInverseSunken;
-
-  /// `palette.fill.inverse-elevated`
-  Color get fillInverseElevated;
-
-  /// `palette.fill.disabled`
-  Color get fillDisabled;
-
-  /// `palette.fill.transparent.selfvalue`
-  Color get fillTransparent;
-
-  /// `palette.fill.transparent.emphasis`
-  Color get fillTransparentEmphasis;
-
-  /// `palette.fill.transparent.elevate`
-  Color get fillTransparentElevate;
-
-  /// `palette.fill.transparent.obsure`
-  Color get fillTransparentObsure;
-
-  /// `palette.ink.high`: High-emphasis text/icon color (theme.color.content.high)
-  Color get inkHigh;
-
-  /// `palette.ink.medium`: Medium-emphasis text/icon color (theme.color.content.medium)
-  Color get inkMedium;
-
-  /// `palette.ink.low`: Low-emphasis text/icon color (theme.color.content.low)
-  Color get inkLow;
-
-  /// `palette.ink.disabled`: Disabled-state text/icon color (theme.color.content.disabled)
-  Color get inkDisabled;
-
-  /// `palette.ink.inverse`: Text/icon color on inverse/dark surfaces (theme.color.content.inverse)
-  Color get inkInverse;
-
-  /// `palette.ink.link`: Hyperlink text color (theme.color.content.link)
-  Color get inkLink;
-
-  /// `palette.ink.brand`: Hyperlink text color (theme.color.content.link)
-  Color get inkBrand;
-
-  /// `palette.ink.selection`: Text color within a selection (theme.color.selection.text)
-  Color get inkSelection;
-
-  /// `palette.ink.always-white`: White that does not change with mode. Source for foreground/on-strong.
-  Color get inkAlwaysWhite;
-
-  /// `palette.ink.always-blank`: Near-black that does not change with mode. Source for foreground/on-light.
-  Color get inkAlwaysBlank;
-
-  /// `palette.status.success.default`: Success color (theme.color.success.default)
-  Color get statusSuccessDefault;
-
-  /// `palette.status.success.faint`: Success background tint (theme.color.success.subtle)
-  Color get statusSuccessFaint;
-
-  /// `palette.status.success.deep`: Success solid/strong emphasis (theme.color.success.strong)
-  Color get statusSuccessDeep;
-
-  /// `palette.status.success.strong`
-  Color get statusSuccessStrong;
-
-  /// `palette.status.success.subtle`
-  Color get statusSuccessSubtle;
-
-  /// `palette.status.warning.default`: Warning color (theme.color.warning.default)
-  Color get statusWarningDefault;
-
-  /// `palette.status.warning.faint`: Warning background tint (theme.color.warning.subtle)
-  Color get statusWarningFaint;
-
-  /// `palette.status.warning.deep`: Warning color (theme.color.warning.default)
-  Color get statusWarningDeep;
-
-  /// `palette.status.warning.strong`: Warning background tint (theme.color.warning.subtle)
-  Color get statusWarningStrong;
-
-  /// `palette.status.warning.subtle`: Warning background tint (theme.color.warning.subtle)
-  Color get statusWarningSubtle;
-
-  /// `palette.status.error.default`: Error color (theme.color.error.default)
-  Color get statusErrorDefault;
-
-  /// `palette.status.error.faint`: Error background tint (theme.color.error.subtle)
-  Color get statusErrorFaint;
-
-  /// `palette.status.error.deep`: Error solid/strong emphasis (theme.color.error.strong)
-  Color get statusErrorDeep;
-
-  /// `palette.status.error.subtle`
-  Color get statusErrorSubtle;
-
-  /// `palette.status.error.strong`
-  Color get statusErrorStrong;
-
-  /// `palette.status.info.default`: Info color (theme.color.info.default)
-  Color get statusInfoDefault;
-
-  /// `palette.status.info.faint`: Info background tint (theme.color.info.subtle)
-  Color get statusInfoFaint;
-
-  /// `palette.status.info.deep`: Info solid/strong emphasis (theme.color.info.strong)
-  Color get statusInfoDeep;
-
-  /// `palette.status.info.subtle`
-  Color get statusInfoSubtle;
-
-  /// `palette.status.info.strong`
-  Color get statusInfoStrong;
-
-  /// `palette.status.ghost.default`: Info color (theme.color.info.default)
-  Color get statusGhostDefault;
-
-  /// `palette.status.ghost.faint`: Info background tint (theme.color.info.subtle)
-  Color get statusGhostFaint;
-
-  /// `palette.status.ghost.deep`: Info solid/strong emphasis (theme.color.info.strong)
-  Color get statusGhostDeep;
-
-  /// `palette.status.ghost.subtle`
-  Color get statusGhostSubtle;
-
-  /// `palette.status.ghost.strong`
-  Color get statusGhostStrong;
-
-  /// `palette.status.neutral.default`: Neutral color (theme.color.neutral.default)
-  Color get statusNeutralDefault;
-
-  /// `palette.status.neutral.faint`: Neutral background tint (theme.color.neutral.subtle)
-  Color get statusNeutralFaint;
-
-  /// `palette.status.neutral.deep`: Neutral solid/strong emphasis (theme.color.neutral.strong)
-  Color get statusNeutralDeep;
-
-  /// `palette.status.neutral.subtle`
-  Color get statusNeutralSubtle;
-
-  /// `palette.status.neutral.strong`
-  Color get statusNeutralStrong;
-
-  /// `palette.line.selection`: Selected item border/outline (theme.color.selection.border)
-  Color get lineSelection;
-
-  /// `palette.line.focus`: Selected item border/outline (theme.color.selection.border)
-  Color get lineFocus;
-
-  /// `palette.line.default`
-  Color get lineDefault;
-
-  /// `palette.line.subtle`
-  Color get lineSubtle;
-
-  /// `palette.line.inverse`
-  Color get lineInverse;
-
-  /// `palette.line.strong`
-  Color get lineStrong;
-
-  /// `palette.line.stronger`
-  Color get lineStronger;
+  /// `palette.brand.tertiary.subtle`: Tertiary brand color (theme.color.brand.tertiary)
+  Color get brandTertiarySubtle;
 
   /// `palette.data.1`
   Color get data1;
@@ -282,23 +102,212 @@ abstract interface class ZetaPaletteTokens {
   /// `palette.data.neutral`
   Color get dataNeutral;
 
-  /// `palette.gradient.default.start`
-  Color get gradientDefaultStart;
+  /// `palette.fill.canvas`: App/page base background (theme.color.surface.canvas)
+  Color get fillCanvas;
+
+  /// `palette.fill.default`: Standard component/card background (theme.color.surface.default)
+  Color get fillDefault;
+
+  /// `palette.fill.disabled`
+  Color get fillDisabled;
+
+  /// `palette.fill.elevated`: Raised surface background, pair with elevation shadow (theme.color.surface.elevated)
+  Color get fillElevated;
+
+  /// `palette.fill.hover`
+  Color get fillHover;
+
+  /// `palette.fill.inverse`: Inverted (dark) surface, e.g. tooltips (theme.color.surface.inverse)
+  Color get fillInverse;
+
+  /// `palette.fill.inverse-elevated`
+  Color get fillInverseElevated;
+
+  /// `palette.fill.inverse-sunken`
+  Color get fillInverseSunken;
+
+  /// `palette.fill.overlay`: Modal/popover panel background (theme.color.surface.overlay)
+  Color get fillOverlay;
+
+  /// `palette.fill.scrim`: Backdrop behind modals; apply opacity at usage since this alias is fully opaque (theme.color.surface.scrim)
+  Color get fillScrim;
+
+  /// `palette.fill.selection`: Selected item/text background (theme.color.selection.background)
+  Color get fillSelection;
+
+  /// `palette.fill.sunken`: Recessed background, e.g. inputs/wells (theme.color.surface.sunken)
+  Color get fillSunken;
+
+  /// `palette.fill.transparent.selfvalue`
+  Color get fillTransparent;
+
+  /// `palette.fill.transparent.elevate`
+  Color get fillTransparentElevate;
+
+  /// `palette.fill.transparent.emphasis`
+  Color get fillTransparentEmphasis;
+
+  /// `palette.fill.transparent.obsure`
+  Color get fillTransparentObsure;
 
   /// `palette.gradient.default.end`
   Color get gradientDefaultEnd;
 
-  /// `palette.gradient.strong.start`
-  Color get gradientStrongStart;
+  /// `palette.gradient.default.start`
+  Color get gradientDefaultStart;
 
   /// `palette.gradient.strong.end`
   Color get gradientStrongEnd;
 
-  /// `palette.gradient.subtle.start`
-  Color get gradientSubtleStart;
+  /// `palette.gradient.strong.start`
+  Color get gradientStrongStart;
 
   /// `palette.gradient.subtle.end`
   Color get gradientSubtleEnd;
+
+  /// `palette.gradient.subtle.start`
+  Color get gradientSubtleStart;
+
+  /// `palette.ink.always-blank`: Near-black that does not change with mode. Source for foreground/on-light.
+  Color get inkAlwaysBlank;
+
+  /// `palette.ink.always-white`: White that does not change with mode. Source for foreground/on-strong.
+  Color get inkAlwaysWhite;
+
+  /// `palette.ink.brand`: Hyperlink text color (theme.color.content.link)
+  Color get inkBrand;
+
+  /// `palette.ink.disabled`: Disabled-state text/icon color (theme.color.content.disabled)
+  Color get inkDisabled;
+
+  /// `palette.ink.high`: High-emphasis text/icon color (theme.color.content.high)
+  Color get inkHigh;
+
+  /// `palette.ink.inverse`: Text/icon color on inverse/dark surfaces (theme.color.content.inverse)
+  Color get inkInverse;
+
+  /// `palette.ink.link`: Hyperlink text color (theme.color.content.link)
+  Color get inkLink;
+
+  /// `palette.ink.low`: Low-emphasis text/icon color (theme.color.content.low)
+  Color get inkLow;
+
+  /// `palette.ink.medium`: Medium-emphasis text/icon color (theme.color.content.medium)
+  Color get inkMedium;
+
+  /// `palette.ink.selection`: Text color within a selection (theme.color.selection.text)
+  Color get inkSelection;
+
+  /// `palette.line.default`
+  Color get lineDefault;
+
+  /// `palette.line.focus`: Selected item border/outline (theme.color.selection.border)
+  Color get lineFocus;
+
+  /// `palette.line.inverse`
+  Color get lineInverse;
+
+  /// `palette.line.selection`: Selected item border/outline (theme.color.selection.border)
+  Color get lineSelection;
+
+  /// `palette.line.strong`
+  Color get lineStrong;
+
+  /// `palette.line.stronger`
+  Color get lineStronger;
+
+  /// `palette.line.subtle`
+  Color get lineSubtle;
+
+  /// `palette.status.error.deep`: Error solid/strong emphasis (theme.color.error.strong)
+  Color get statusErrorDeep;
+
+  /// `palette.status.error.default`: Error color (theme.color.error.default)
+  Color get statusErrorDefault;
+
+  /// `palette.status.error.faint`: Error background tint (theme.color.error.subtle)
+  Color get statusErrorFaint;
+
+  /// `palette.status.error.strong`
+  Color get statusErrorStrong;
+
+  /// `palette.status.error.subtle`
+  Color get statusErrorSubtle;
+
+  /// `palette.status.ghost.deep`: Info solid/strong emphasis (theme.color.info.strong)
+  Color get statusGhostDeep;
+
+  /// `palette.status.ghost.default`: Info color (theme.color.info.default)
+  Color get statusGhostDefault;
+
+  /// `palette.status.ghost.faint`: Info background tint (theme.color.info.subtle)
+  Color get statusGhostFaint;
+
+  /// `palette.status.ghost.strong`
+  Color get statusGhostStrong;
+
+  /// `palette.status.ghost.subtle`
+  Color get statusGhostSubtle;
+
+  /// `palette.status.info.deep`: Info solid/strong emphasis (theme.color.info.strong)
+  Color get statusInfoDeep;
+
+  /// `palette.status.info.default`: Info color (theme.color.info.default)
+  Color get statusInfoDefault;
+
+  /// `palette.status.info.faint`: Info background tint (theme.color.info.subtle)
+  Color get statusInfoFaint;
+
+  /// `palette.status.info.strong`
+  Color get statusInfoStrong;
+
+  /// `palette.status.info.subtle`
+  Color get statusInfoSubtle;
+
+  /// `palette.status.neutral.deep`: Neutral solid/strong emphasis (theme.color.neutral.strong)
+  Color get statusNeutralDeep;
+
+  /// `palette.status.neutral.default`: Neutral color (theme.color.neutral.default)
+  Color get statusNeutralDefault;
+
+  /// `palette.status.neutral.faint`: Neutral background tint (theme.color.neutral.subtle)
+  Color get statusNeutralFaint;
+
+  /// `palette.status.neutral.strong`
+  Color get statusNeutralStrong;
+
+  /// `palette.status.neutral.subtle`
+  Color get statusNeutralSubtle;
+
+  /// `palette.status.success.deep`: Success solid/strong emphasis (theme.color.success.strong)
+  Color get statusSuccessDeep;
+
+  /// `palette.status.success.default`: Success color (theme.color.success.default)
+  Color get statusSuccessDefault;
+
+  /// `palette.status.success.faint`: Success background tint (theme.color.success.subtle)
+  Color get statusSuccessFaint;
+
+  /// `palette.status.success.strong`
+  Color get statusSuccessStrong;
+
+  /// `palette.status.success.subtle`
+  Color get statusSuccessSubtle;
+
+  /// `palette.status.warning.deep`: Warning color (theme.color.warning.default)
+  Color get statusWarningDeep;
+
+  /// `palette.status.warning.default`: Warning color (theme.color.warning.default)
+  Color get statusWarningDefault;
+
+  /// `palette.status.warning.faint`: Warning background tint (theme.color.warning.subtle)
+  Color get statusWarningFaint;
+
+  /// `palette.status.warning.strong`: Warning background tint (theme.color.warning.subtle)
+  Color get statusWarningStrong;
+
+  /// `palette.status.warning.subtle`: Warning background tint (theme.color.warning.subtle)
+  Color get statusWarningSubtle;
 }
 
 final class _ZetaPaletteZetaLight implements ZetaPaletteTokens {
@@ -307,22 +316,28 @@ final class _ZetaPaletteZetaLight implements ZetaPaletteTokens {
   final ZetaPrimitiveTokens _p;
 
   @override
+  Color get brandPrimaryDeep => _p.colorBrandMain80;
+
+  @override
   Color get brandPrimaryDefault => _p.colorBrandMain60;
 
   @override
   Color get brandPrimaryFaint => _p.colorBrandMain10;
 
   @override
-  Color get brandPrimarySubtle => _p.colorBrandMain50;
-
-  @override
-  Color get brandPrimaryDeep => _p.colorBrandMain70;
-
-  @override
   Color get brandPrimaryMuted => _p.colorBrandMain20;
 
   @override
-  Color get brandPrimaryOn => _p.colorNeutralCool10;
+  Color get brandPrimaryOn => _p.colorPureWhite;
+
+  @override
+  Color get brandPrimaryStrong => _p.colorBrandMain70;
+
+  @override
+  Color get brandPrimarySubtle => _p.colorBrandMain50;
+
+  @override
+  Color get brandSecondaryDeep => _p.colorBrandAlternative80;
 
   @override
   Color get brandSecondaryDefault => _p.colorBrandAlternative60;
@@ -331,13 +346,16 @@ final class _ZetaPaletteZetaLight implements ZetaPaletteTokens {
   Color get brandSecondaryFaint => _p.colorBrandAlternative10;
 
   @override
+  Color get brandSecondaryOn => _p.colorPureWhite;
+
+  @override
+  Color get brandSecondaryStrong => _p.colorBrandAlternative70;
+
+  @override
   Color get brandSecondarySubtle => _p.colorBrandAlternative50;
 
   @override
-  Color get brandSecondaryDeep => _p.colorBrandAlternative70;
-
-  @override
-  Color get brandSecondaryOn => _p.colorNeutralWarm10;
+  Color get brandTertiaryDeep => _p.colorAccent5_80;
 
   @override
   Color get brandTertiaryDefault => _p.colorAccent5_60;
@@ -346,202 +364,13 @@ final class _ZetaPaletteZetaLight implements ZetaPaletteTokens {
   Color get brandTertiaryFaint => _p.colorAccent5_10;
 
   @override
+  Color get brandTertiaryOn => _p.colorPureWhite;
+
+  @override
+  Color get brandTertiaryStrong => _p.colorAccent5_70;
+
+  @override
   Color get brandTertiarySubtle => _p.colorAccent5_50;
-
-  @override
-  Color get brandTertiaryDeep => _p.colorAccent5_70;
-
-  @override
-  Color get brandTertiaryOn => _p.colorNeutralCool10;
-
-  @override
-  Color get fillCanvas => _p.colorNeutralCool20;
-
-  @override
-  Color get fillDefault => _p.colorPureWhite;
-
-  @override
-  Color get fillElevated => _p.colorNeutralCool10;
-
-  @override
-  Color get fillOverlay => _p.colorPureWhite;
-
-  @override
-  Color get fillInverse => _p.colorNeutralCool90;
-
-  @override
-  Color get fillSunken => _p.colorNeutralCool30;
-
-  @override
-  Color get fillScrim => _p.colorAlphaDark60;
-
-  @override
-  Color get fillSelection => _p.colorBrandMain20;
-
-  @override
-  Color get fillHover => _p.colorNeutralCool70;
-
-  @override
-  Color get fillInverseSunken => _p.colorNeutralCool80;
-
-  @override
-  Color get fillInverseElevated => _p.colorNeutralCool100;
-
-  @override
-  Color get fillDisabled => _p.colorNeutralCool30;
-
-  @override
-  Color get fillTransparent => const Color(0x00F3F6FA);
-
-  @override
-  Color get fillTransparentEmphasis => _p.colorAlphaDark5;
-
-  @override
-  Color get fillTransparentElevate => _p.colorAlphaDark10;
-
-  @override
-  Color get fillTransparentObsure => _p.colorAlphaDark30;
-
-  @override
-  Color get inkHigh => _p.colorNeutralCool100;
-
-  @override
-  Color get inkMedium => _p.colorNeutralCool70;
-
-  @override
-  Color get inkLow => _p.colorNeutralCool60;
-
-  @override
-  Color get inkDisabled => _p.colorNeutralCool50;
-
-  @override
-  Color get inkInverse => _p.colorNeutralCool10;
-
-  @override
-  Color get inkLink => _p.colorBrandMain60;
-
-  @override
-  Color get inkBrand => _p.colorBrandMain70;
-
-  @override
-  Color get inkSelection => _p.colorNeutralCool100;
-
-  @override
-  Color get inkAlwaysWhite => _p.colorPureWhite;
-
-  @override
-  Color get inkAlwaysBlank => _p.colorNeutralCool100;
-
-  @override
-  Color get statusSuccessDefault => _p.colorSystemPositive60;
-
-  @override
-  Color get statusSuccessFaint => _p.colorSystemPositive10;
-
-  @override
-  Color get statusSuccessDeep => _p.colorSystemPositive80;
-
-  @override
-  Color get statusSuccessStrong => _p.colorSystemPositive70;
-
-  @override
-  Color get statusSuccessSubtle => _p.colorSystemPositive50;
-
-  @override
-  Color get statusWarningDefault => _p.colorSystemWarning60;
-
-  @override
-  Color get statusWarningFaint => _p.colorSystemWarning10;
-
-  @override
-  Color get statusWarningDeep => _p.colorSystemWarning80;
-
-  @override
-  Color get statusWarningStrong => _p.colorSystemWarning70;
-
-  @override
-  Color get statusWarningSubtle => _p.colorSystemWarning50;
-
-  @override
-  Color get statusErrorDefault => _p.colorSystemNegative60;
-
-  @override
-  Color get statusErrorFaint => _p.colorSystemNegative10;
-
-  @override
-  Color get statusErrorDeep => _p.colorSystemNegative80;
-
-  @override
-  Color get statusErrorSubtle => _p.colorSystemNegative50;
-
-  @override
-  Color get statusErrorStrong => _p.colorSystemNegative70;
-
-  @override
-  Color get statusInfoDefault => _p.colorSystemInfo60;
-
-  @override
-  Color get statusInfoFaint => _p.colorSystemInfo10;
-
-  @override
-  Color get statusInfoDeep => _p.colorSystemInfo80;
-
-  @override
-  Color get statusInfoSubtle => _p.colorSystemInfo50;
-
-  @override
-  Color get statusInfoStrong => _p.colorSystemInfo70;
-
-  @override
-  Color get statusGhostDefault => _p.colorAlphaDark0;
-
-  @override
-  Color get statusGhostFaint => _p.colorAlphaDark5;
-
-  @override
-  Color get statusGhostDeep => _p.colorAlphaDark10;
-
-  @override
-  Color get statusGhostSubtle => _p.colorAlphaDark0;
-
-  @override
-  Color get statusGhostStrong => _p.colorAlphaDark20;
-
-  @override
-  Color get statusNeutralDefault => _p.colorNeutralCool60;
-
-  @override
-  Color get statusNeutralFaint => _p.colorNeutralCool10;
-
-  @override
-  Color get statusNeutralDeep => _p.colorNeutralCool80;
-
-  @override
-  Color get statusNeutralSubtle => _p.colorNeutralCool50;
-
-  @override
-  Color get statusNeutralStrong => _p.colorNeutralCool70;
-
-  @override
-  Color get lineSelection => _p.colorBrandMain60;
-
-  @override
-  Color get lineFocus => _p.colorBrandMain50;
-
-  @override
-  Color get lineDefault => _p.colorNeutralCool40;
-
-  @override
-  Color get lineSubtle => _p.colorNeutralCool30;
-
-  @override
-  Color get lineInverse => _p.colorPureWhite;
-
-  @override
-  Color get lineStrong => _p.colorNeutralCool60;
-
-  @override
-  Color get lineStronger => _p.colorNeutralCool70;
 
   @override
   Color get data1 => _p.colorBrandMain60;
@@ -583,22 +412,211 @@ final class _ZetaPaletteZetaLight implements ZetaPaletteTokens {
   Color get dataNeutral => _p.colorNeutralCool50;
 
   @override
-  Color get gradientDefaultStart => _p.colorAccent1_60;
+  Color get fillCanvas => _p.colorNeutralCool20;
+
+  @override
+  Color get fillDefault => _p.colorPureWhite;
+
+  @override
+  Color get fillDisabled => _p.colorNeutralCool30;
+
+  @override
+  Color get fillElevated => _p.colorNeutralCool10;
+
+  @override
+  Color get fillHover => _p.colorNeutralCool70;
+
+  @override
+  Color get fillInverse => _p.colorNeutralCool90;
+
+  @override
+  Color get fillInverseElevated => _p.colorNeutralCool100;
+
+  @override
+  Color get fillInverseSunken => _p.colorNeutralCool80;
+
+  @override
+  Color get fillOverlay => _p.colorPureWhite;
+
+  @override
+  Color get fillScrim => _p.colorAlphaDark60;
+
+  @override
+  Color get fillSelection => _p.colorBrandMain20;
+
+  @override
+  Color get fillSunken => _p.colorNeutralCool30;
+
+  @override
+  Color get fillTransparent => const Color(0x00F3F6FA);
+
+  @override
+  Color get fillTransparentElevate => _p.colorAlphaDark10;
+
+  @override
+  Color get fillTransparentEmphasis => _p.colorAlphaDark5;
+
+  @override
+  Color get fillTransparentObsure => _p.colorAlphaDark30;
 
   @override
   Color get gradientDefaultEnd => _p.colorExtend4_60;
 
   @override
-  Color get gradientStrongStart => _p.colorAccent1_80;
+  Color get gradientDefaultStart => _p.colorAccent1_60;
 
   @override
   Color get gradientStrongEnd => _p.colorExtend4_80;
 
   @override
-  Color get gradientSubtleStart => _p.colorAccent1_50;
+  Color get gradientStrongStart => _p.colorAccent1_80;
 
   @override
   Color get gradientSubtleEnd => _p.colorExtend4_40;
+
+  @override
+  Color get gradientSubtleStart => _p.colorAccent1_50;
+
+  @override
+  Color get inkAlwaysBlank => _p.colorNeutralCool100;
+
+  @override
+  Color get inkAlwaysWhite => _p.colorPureWhite;
+
+  @override
+  Color get inkBrand => _p.colorBrandMain70;
+
+  @override
+  Color get inkDisabled => _p.colorNeutralCool50;
+
+  @override
+  Color get inkHigh => _p.colorNeutralCool100;
+
+  @override
+  Color get inkInverse => _p.colorPureWhite;
+
+  @override
+  Color get inkLink => _p.colorBrandMain60;
+
+  @override
+  Color get inkLow => _p.colorNeutralCool60;
+
+  @override
+  Color get inkMedium => _p.colorNeutralCool70;
+
+  @override
+  Color get inkSelection => _p.colorNeutralCool100;
+
+  @override
+  Color get lineDefault => _p.colorNeutralCool40;
+
+  @override
+  Color get lineFocus => _p.colorBrandMain50;
+
+  @override
+  Color get lineInverse => _p.colorPureWhite;
+
+  @override
+  Color get lineSelection => _p.colorBrandMain60;
+
+  @override
+  Color get lineStrong => _p.colorNeutralCool60;
+
+  @override
+  Color get lineStronger => _p.colorNeutralCool70;
+
+  @override
+  Color get lineSubtle => _p.colorNeutralCool30;
+
+  @override
+  Color get statusErrorDeep => _p.colorSystemNegative80;
+
+  @override
+  Color get statusErrorDefault => _p.colorSystemNegative60;
+
+  @override
+  Color get statusErrorFaint => _p.colorSystemNegative10;
+
+  @override
+  Color get statusErrorStrong => _p.colorSystemNegative70;
+
+  @override
+  Color get statusErrorSubtle => _p.colorSystemNegative50;
+
+  @override
+  Color get statusGhostDeep => _p.colorAlphaDark10;
+
+  @override
+  Color get statusGhostDefault => _p.colorAlphaDark0;
+
+  @override
+  Color get statusGhostFaint => _p.colorAlphaDark5;
+
+  @override
+  Color get statusGhostStrong => _p.colorAlphaDark20;
+
+  @override
+  Color get statusGhostSubtle => _p.colorAlphaDark0;
+
+  @override
+  Color get statusInfoDeep => _p.colorSystemInfo80;
+
+  @override
+  Color get statusInfoDefault => _p.colorSystemInfo60;
+
+  @override
+  Color get statusInfoFaint => _p.colorSystemInfo10;
+
+  @override
+  Color get statusInfoStrong => _p.colorSystemInfo70;
+
+  @override
+  Color get statusInfoSubtle => _p.colorSystemInfo50;
+
+  @override
+  Color get statusNeutralDeep => _p.colorNeutralCool80;
+
+  @override
+  Color get statusNeutralDefault => _p.colorNeutralCool60;
+
+  @override
+  Color get statusNeutralFaint => _p.colorNeutralCool10;
+
+  @override
+  Color get statusNeutralStrong => _p.colorNeutralCool70;
+
+  @override
+  Color get statusNeutralSubtle => _p.colorNeutralCool50;
+
+  @override
+  Color get statusSuccessDeep => _p.colorSystemPositive80;
+
+  @override
+  Color get statusSuccessDefault => _p.colorSystemPositive60;
+
+  @override
+  Color get statusSuccessFaint => _p.colorSystemPositive10;
+
+  @override
+  Color get statusSuccessStrong => _p.colorSystemPositive70;
+
+  @override
+  Color get statusSuccessSubtle => _p.colorSystemPositive50;
+
+  @override
+  Color get statusWarningDeep => _p.colorSystemWarning80;
+
+  @override
+  Color get statusWarningDefault => _p.colorSystemWarning60;
+
+  @override
+  Color get statusWarningFaint => _p.colorSystemWarning10;
+
+  @override
+  Color get statusWarningStrong => _p.colorSystemWarning70;
+
+  @override
+  Color get statusWarningSubtle => _p.colorSystemWarning50;
 }
 
 final class _ZetaPaletteZetaDark implements ZetaPaletteTokens {
@@ -607,22 +625,28 @@ final class _ZetaPaletteZetaDark implements ZetaPaletteTokens {
   final ZetaPrimitiveTokens _p;
 
   @override
+  Color get brandPrimaryDeep => _p.colorBrandMain80;
+
+  @override
   Color get brandPrimaryDefault => _p.colorBrandMain60;
 
   @override
   Color get brandPrimaryFaint => _p.colorBrandMain100;
 
   @override
-  Color get brandPrimarySubtle => _p.colorBrandMain50;
-
-  @override
-  Color get brandPrimaryDeep => _p.colorBrandMain40;
-
-  @override
   Color get brandPrimaryMuted => _p.colorBrandMain90;
 
   @override
-  Color get brandPrimaryOn => _p.colorNeutralCool10;
+  Color get brandPrimaryOn => _p.colorPureWhite;
+
+  @override
+  Color get brandPrimaryStrong => _p.colorBrandMain70;
+
+  @override
+  Color get brandPrimarySubtle => _p.colorBrandMain50;
+
+  @override
+  Color get brandSecondaryDeep => _p.colorBrandAlternative80;
 
   @override
   Color get brandSecondaryDefault => _p.colorBrandAlternative50;
@@ -631,13 +655,16 @@ final class _ZetaPaletteZetaDark implements ZetaPaletteTokens {
   Color get brandSecondaryFaint => _p.colorBrandAlternative100;
 
   @override
+  Color get brandSecondaryOn => _p.colorPureWhite;
+
+  @override
+  Color get brandSecondaryStrong => _p.colorBrandAlternative70;
+
+  @override
   Color get brandSecondarySubtle => _p.colorBrandAlternative60;
 
   @override
-  Color get brandSecondaryDeep => _p.colorBrandAlternative40;
-
-  @override
-  Color get brandSecondaryOn => _p.colorNeutralWarm10;
+  Color get brandTertiaryDeep => _p.colorAccent5_80;
 
   @override
   Color get brandTertiaryDefault => _p.colorAccent5_50;
@@ -646,202 +673,13 @@ final class _ZetaPaletteZetaDark implements ZetaPaletteTokens {
   Color get brandTertiaryFaint => _p.colorAccent5_100;
 
   @override
+  Color get brandTertiaryOn => _p.colorPureWhite;
+
+  @override
+  Color get brandTertiaryStrong => _p.colorAccent5_70;
+
+  @override
   Color get brandTertiarySubtle => _p.colorAccent5_50;
-
-  @override
-  Color get brandTertiaryDeep => _p.colorAccent5_40;
-
-  @override
-  Color get brandTertiaryOn => _p.colorNeutralCool10;
-
-  @override
-  Color get fillCanvas => _p.colorNeutralCool90;
-
-  @override
-  Color get fillDefault => _p.colorNeutralCool100;
-
-  @override
-  Color get fillElevated => _p.colorNeutralCool100;
-
-  @override
-  Color get fillOverlay => _p.colorNeutralCool80;
-
-  @override
-  Color get fillInverse => _p.colorNeutralCool20;
-
-  @override
-  Color get fillSunken => _p.colorNeutralCool80;
-
-  @override
-  Color get fillScrim => _p.colorAlphaDark60;
-
-  @override
-  Color get fillSelection => _p.colorBrandMain90;
-
-  @override
-  Color get fillHover => _p.colorNeutralCool40;
-
-  @override
-  Color get fillInverseSunken => _p.colorNeutralCool30;
-
-  @override
-  Color get fillInverseElevated => _p.colorNeutralCool10;
-
-  @override
-  Color get fillDisabled => _p.colorNeutralCool80;
-
-  @override
-  Color get fillTransparent => const Color(0x00F3F6FA);
-
-  @override
-  Color get fillTransparentEmphasis => const Color(0x0D000000);
-
-  @override
-  Color get fillTransparentElevate => const Color(0x26000000);
-
-  @override
-  Color get fillTransparentObsure => const Color(0x73000000);
-
-  @override
-  Color get inkHigh => _p.colorNeutralCool10;
-
-  @override
-  Color get inkMedium => _p.colorNeutralCool40;
-
-  @override
-  Color get inkLow => _p.colorNeutralCool50;
-
-  @override
-  Color get inkDisabled => _p.colorNeutralCool60;
-
-  @override
-  Color get inkInverse => _p.colorNeutralCool100;
-
-  @override
-  Color get inkLink => _p.colorBrandMain50;
-
-  @override
-  Color get inkBrand => _p.colorBrandMain40;
-
-  @override
-  Color get inkSelection => _p.colorNeutralCool10;
-
-  @override
-  Color get inkAlwaysWhite => _p.colorPureWhite;
-
-  @override
-  Color get inkAlwaysBlank => _p.colorNeutralCool100;
-
-  @override
-  Color get statusSuccessDefault => _p.colorSystemPositive60;
-
-  @override
-  Color get statusSuccessFaint => _p.colorSystemPositive100;
-
-  @override
-  Color get statusSuccessDeep => _p.colorSystemPositive40;
-
-  @override
-  Color get statusSuccessStrong => _p.colorSystemPositive40;
-
-  @override
-  Color get statusSuccessSubtle => _p.colorSystemPositive70;
-
-  @override
-  Color get statusWarningDefault => _p.colorSystemWarning50;
-
-  @override
-  Color get statusWarningFaint => _p.colorSystemWarning100;
-
-  @override
-  Color get statusWarningDeep => _p.colorSystemWarning40;
-
-  @override
-  Color get statusWarningStrong => _p.colorSystemWarning40;
-
-  @override
-  Color get statusWarningSubtle => _p.colorSystemWarning70;
-
-  @override
-  Color get statusErrorDefault => _p.colorSystemNegative60;
-
-  @override
-  Color get statusErrorFaint => _p.colorSystemNegative100;
-
-  @override
-  Color get statusErrorDeep => _p.colorSystemNegative30;
-
-  @override
-  Color get statusErrorSubtle => _p.colorSystemNegative70;
-
-  @override
-  Color get statusErrorStrong => _p.colorSystemNegative40;
-
-  @override
-  Color get statusInfoDefault => _p.colorSystemInfo60;
-
-  @override
-  Color get statusInfoFaint => _p.colorSystemInfo100;
-
-  @override
-  Color get statusInfoDeep => _p.colorSystemInfo30;
-
-  @override
-  Color get statusInfoSubtle => _p.colorSystemInfo60;
-
-  @override
-  Color get statusInfoStrong => _p.colorSystemInfo40;
-
-  @override
-  Color get statusGhostDefault => _p.colorAlphaLight0;
-
-  @override
-  Color get statusGhostFaint => _p.colorAlphaLight5;
-
-  @override
-  Color get statusGhostDeep => _p.colorAlphaLight10;
-
-  @override
-  Color get statusGhostSubtle => _p.colorAlphaLight0;
-
-  @override
-  Color get statusGhostStrong => _p.colorAlphaLight20;
-
-  @override
-  Color get statusNeutralDefault => _p.colorNeutralWarm60;
-
-  @override
-  Color get statusNeutralFaint => _p.colorNeutralWarm100;
-
-  @override
-  Color get statusNeutralDeep => _p.colorNeutralWarm30;
-
-  @override
-  Color get statusNeutralSubtle => _p.colorNeutralWarm60;
-
-  @override
-  Color get statusNeutralStrong => _p.colorNeutralWarm40;
-
-  @override
-  Color get lineSelection => _p.colorBrandMain50;
-
-  @override
-  Color get lineFocus => _p.colorBrandMain60;
-
-  @override
-  Color get lineDefault => _p.colorNeutralCool70;
-
-  @override
-  Color get lineSubtle => _p.colorNeutralCool80;
-
-  @override
-  Color get lineInverse => _p.colorPureBlack;
-
-  @override
-  Color get lineStrong => _p.colorNeutralCool50;
-
-  @override
-  Color get lineStronger => _p.colorNeutralCool30;
 
   @override
   Color get data1 => _p.colorBrandMain50;
@@ -883,22 +721,211 @@ final class _ZetaPaletteZetaDark implements ZetaPaletteTokens {
   Color get dataNeutral => _p.colorNeutralCool60;
 
   @override
+  Color get fillCanvas => _p.colorNeutralCool90;
+
+  @override
+  Color get fillDefault => _p.colorNeutralCool100;
+
+  @override
+  Color get fillDisabled => _p.colorNeutralCool80;
+
+  @override
+  Color get fillElevated => _p.colorNeutralCool100;
+
+  @override
+  Color get fillHover => _p.colorNeutralCool40;
+
+  @override
+  Color get fillInverse => _p.colorNeutralCool20;
+
+  @override
+  Color get fillInverseElevated => _p.colorNeutralCool10;
+
+  @override
+  Color get fillInverseSunken => _p.colorNeutralCool30;
+
+  @override
+  Color get fillOverlay => _p.colorNeutralCool80;
+
+  @override
+  Color get fillScrim => _p.colorAlphaDark60;
+
+  @override
+  Color get fillSelection => _p.colorBrandMain90;
+
+  @override
+  Color get fillSunken => _p.colorNeutralCool80;
+
+  @override
+  Color get fillTransparent => const Color(0x00F3F6FA);
+
+  @override
+  Color get fillTransparentElevate => _p.colorAlphaLight10;
+
+  @override
+  Color get fillTransparentEmphasis => _p.colorAlphaLight5;
+
+  @override
+  Color get fillTransparentObsure => _p.colorAlphaLight30;
+
+  @override
+  Color get gradientDefaultEnd => _p.colorExtend4_60;
+
+  @override
   Color get gradientDefaultStart => _p.colorAccent1_60;
-
-  @override
-  Color get gradientDefaultEnd => _p.colorExtend4_50;
-
-  @override
-  Color get gradientStrongStart => _p.colorAccent1_40;
 
   @override
   Color get gradientStrongEnd => _p.colorExtend4_40;
 
   @override
-  Color get gradientSubtleStart => _p.colorAccent1_70;
+  Color get gradientStrongStart => _p.colorAccent1_40;
 
   @override
   Color get gradientSubtleEnd => _p.colorExtend4_80;
+
+  @override
+  Color get gradientSubtleStart => _p.colorAccent1_70;
+
+  @override
+  Color get inkAlwaysBlank => _p.colorNeutralCool100;
+
+  @override
+  Color get inkAlwaysWhite => _p.colorPureWhite;
+
+  @override
+  Color get inkBrand => _p.colorBrandMain40;
+
+  @override
+  Color get inkDisabled => _p.colorNeutralCool60;
+
+  @override
+  Color get inkHigh => _p.colorPureWhite;
+
+  @override
+  Color get inkInverse => _p.colorNeutralCool100;
+
+  @override
+  Color get inkLink => _p.colorBrandMain50;
+
+  @override
+  Color get inkLow => _p.colorNeutralCool50;
+
+  @override
+  Color get inkMedium => _p.colorNeutralCool40;
+
+  @override
+  Color get inkSelection => _p.colorNeutralCool10;
+
+  @override
+  Color get lineDefault => _p.colorNeutralCool70;
+
+  @override
+  Color get lineFocus => _p.colorBrandMain60;
+
+  @override
+  Color get lineInverse => _p.colorPureBlack;
+
+  @override
+  Color get lineSelection => _p.colorBrandMain50;
+
+  @override
+  Color get lineStrong => _p.colorNeutralCool50;
+
+  @override
+  Color get lineStronger => _p.colorNeutralCool30;
+
+  @override
+  Color get lineSubtle => _p.colorNeutralCool80;
+
+  @override
+  Color get statusErrorDeep => _p.colorSystemNegative80;
+
+  @override
+  Color get statusErrorDefault => _p.colorSystemNegative60;
+
+  @override
+  Color get statusErrorFaint => _p.colorSystemNegative100;
+
+  @override
+  Color get statusErrorStrong => _p.colorSystemNegative70;
+
+  @override
+  Color get statusErrorSubtle => _p.colorSystemNegative50;
+
+  @override
+  Color get statusGhostDeep => _p.colorAlphaLight10;
+
+  @override
+  Color get statusGhostDefault => _p.colorAlphaLight0;
+
+  @override
+  Color get statusGhostFaint => _p.colorAlphaLight5;
+
+  @override
+  Color get statusGhostStrong => _p.colorAlphaLight20;
+
+  @override
+  Color get statusGhostSubtle => _p.colorAlphaLight0;
+
+  @override
+  Color get statusInfoDeep => _p.colorSystemInfo80;
+
+  @override
+  Color get statusInfoDefault => _p.colorSystemInfo60;
+
+  @override
+  Color get statusInfoFaint => _p.colorSystemInfo100;
+
+  @override
+  Color get statusInfoStrong => _p.colorSystemInfo70;
+
+  @override
+  Color get statusInfoSubtle => _p.colorSystemInfo60;
+
+  @override
+  Color get statusNeutralDeep => _p.colorNeutralWarm30;
+
+  @override
+  Color get statusNeutralDefault => _p.colorNeutralWarm60;
+
+  @override
+  Color get statusNeutralFaint => _p.colorNeutralWarm100;
+
+  @override
+  Color get statusNeutralStrong => _p.colorNeutralWarm40;
+
+  @override
+  Color get statusNeutralSubtle => _p.colorNeutralWarm60;
+
+  @override
+  Color get statusSuccessDeep => _p.colorSystemPositive80;
+
+  @override
+  Color get statusSuccessDefault => _p.colorSystemPositive60;
+
+  @override
+  Color get statusSuccessFaint => _p.colorSystemPositive100;
+
+  @override
+  Color get statusSuccessStrong => _p.colorSystemPositive70;
+
+  @override
+  Color get statusSuccessSubtle => _p.colorSystemPositive70;
+
+  @override
+  Color get statusWarningDeep => _p.colorSystemWarning40;
+
+  @override
+  Color get statusWarningDefault => _p.colorSystemWarning50;
+
+  @override
+  Color get statusWarningFaint => _p.colorSystemWarning100;
+
+  @override
+  Color get statusWarningStrong => _p.colorSystemWarning40;
+
+  @override
+  Color get statusWarningSubtle => _p.colorSystemWarning70;
 }
 
 final class _ZetaPaletteCompanionLight implements ZetaPaletteTokens {
@@ -907,22 +934,28 @@ final class _ZetaPaletteCompanionLight implements ZetaPaletteTokens {
   final ZetaPrimitiveTokens _p;
 
   @override
+  Color get brandPrimaryDeep => _p.colorAccent1_80;
+
+  @override
   Color get brandPrimaryDefault => _p.colorAccent1_60;
 
   @override
   Color get brandPrimaryFaint => _p.colorAccent1_10;
 
   @override
-  Color get brandPrimarySubtle => _p.colorAccent1_50;
-
-  @override
-  Color get brandPrimaryDeep => _p.colorAccent1_70;
-
-  @override
   Color get brandPrimaryMuted => _p.colorAccent1_20;
 
   @override
-  Color get brandPrimaryOn => _p.colorNeutralCool10;
+  Color get brandPrimaryOn => _p.colorPureWhite;
+
+  @override
+  Color get brandPrimaryStrong => _p.colorAccent1_70;
+
+  @override
+  Color get brandPrimarySubtle => _p.colorAccent1_50;
+
+  @override
+  Color get brandSecondaryDeep => _p.colorBrandAlternative80;
 
   @override
   Color get brandSecondaryDefault => _p.colorBrandAlternative60;
@@ -931,13 +964,16 @@ final class _ZetaPaletteCompanionLight implements ZetaPaletteTokens {
   Color get brandSecondaryFaint => _p.colorBrandAlternative10;
 
   @override
+  Color get brandSecondaryOn => _p.colorPureWhite;
+
+  @override
+  Color get brandSecondaryStrong => _p.colorBrandAlternative70;
+
+  @override
   Color get brandSecondarySubtle => _p.colorBrandAlternative50;
 
   @override
-  Color get brandSecondaryDeep => _p.colorBrandAlternative70;
-
-  @override
-  Color get brandSecondaryOn => _p.colorNeutralWarm10;
+  Color get brandTertiaryDeep => _p.colorAccent5_80;
 
   @override
   Color get brandTertiaryDefault => _p.colorAccent5_60;
@@ -946,202 +982,13 @@ final class _ZetaPaletteCompanionLight implements ZetaPaletteTokens {
   Color get brandTertiaryFaint => _p.colorAccent5_10;
 
   @override
+  Color get brandTertiaryOn => _p.colorPureWhite;
+
+  @override
+  Color get brandTertiaryStrong => _p.colorAccent5_70;
+
+  @override
   Color get brandTertiarySubtle => _p.colorAccent5_50;
-
-  @override
-  Color get brandTertiaryDeep => _p.colorAccent5_70;
-
-  @override
-  Color get brandTertiaryOn => _p.colorNeutralCool10;
-
-  @override
-  Color get fillCanvas => _p.colorNeutralCool20;
-
-  @override
-  Color get fillDefault => _p.colorPureWhite;
-
-  @override
-  Color get fillElevated => _p.colorNeutralCool10;
-
-  @override
-  Color get fillOverlay => _p.colorPureWhite;
-
-  @override
-  Color get fillInverse => _p.colorNeutralCool90;
-
-  @override
-  Color get fillSunken => _p.colorNeutralCool30;
-
-  @override
-  Color get fillScrim => _p.colorAlphaDark60;
-
-  @override
-  Color get fillSelection => _p.colorBrandMain20;
-
-  @override
-  Color get fillHover => _p.colorNeutralCool70;
-
-  @override
-  Color get fillInverseSunken => _p.colorNeutralCool80;
-
-  @override
-  Color get fillInverseElevated => _p.colorNeutralCool100;
-
-  @override
-  Color get fillDisabled => _p.colorNeutralCool30;
-
-  @override
-  Color get fillTransparent => const Color(0x00F3F6FA);
-
-  @override
-  Color get fillTransparentEmphasis => _p.colorAlphaDark5;
-
-  @override
-  Color get fillTransparentElevate => _p.colorAlphaDark10;
-
-  @override
-  Color get fillTransparentObsure => _p.colorAlphaDark30;
-
-  @override
-  Color get inkHigh => _p.colorNeutralCool100;
-
-  @override
-  Color get inkMedium => _p.colorNeutralCool70;
-
-  @override
-  Color get inkLow => _p.colorNeutralCool60;
-
-  @override
-  Color get inkDisabled => _p.colorNeutralCool50;
-
-  @override
-  Color get inkInverse => _p.colorNeutralCool10;
-
-  @override
-  Color get inkLink => _p.colorBrandMain60;
-
-  @override
-  Color get inkBrand => _p.colorBrandMain70;
-
-  @override
-  Color get inkSelection => _p.colorNeutralCool100;
-
-  @override
-  Color get inkAlwaysWhite => _p.colorPureWhite;
-
-  @override
-  Color get inkAlwaysBlank => _p.colorNeutralCool100;
-
-  @override
-  Color get statusSuccessDefault => _p.colorSystemPositive60;
-
-  @override
-  Color get statusSuccessFaint => _p.colorSystemPositive10;
-
-  @override
-  Color get statusSuccessDeep => _p.colorSystemPositive80;
-
-  @override
-  Color get statusSuccessStrong => _p.colorSystemPositive70;
-
-  @override
-  Color get statusSuccessSubtle => _p.colorSystemPositive50;
-
-  @override
-  Color get statusWarningDefault => _p.colorSystemWarning60;
-
-  @override
-  Color get statusWarningFaint => _p.colorSystemWarning10;
-
-  @override
-  Color get statusWarningDeep => _p.colorSystemWarning80;
-
-  @override
-  Color get statusWarningStrong => _p.colorSystemWarning70;
-
-  @override
-  Color get statusWarningSubtle => _p.colorSystemWarning50;
-
-  @override
-  Color get statusErrorDefault => _p.colorSystemNegative60;
-
-  @override
-  Color get statusErrorFaint => _p.colorSystemNegative10;
-
-  @override
-  Color get statusErrorDeep => _p.colorSystemNegative80;
-
-  @override
-  Color get statusErrorSubtle => _p.colorSystemNegative50;
-
-  @override
-  Color get statusErrorStrong => _p.colorSystemNegative70;
-
-  @override
-  Color get statusInfoDefault => _p.colorSystemInfo60;
-
-  @override
-  Color get statusInfoFaint => _p.colorSystemInfo10;
-
-  @override
-  Color get statusInfoDeep => _p.colorSystemInfo80;
-
-  @override
-  Color get statusInfoSubtle => _p.colorSystemInfo50;
-
-  @override
-  Color get statusInfoStrong => _p.colorSystemInfo70;
-
-  @override
-  Color get statusGhostDefault => _p.colorAlphaDark0;
-
-  @override
-  Color get statusGhostFaint => _p.colorAlphaDark5;
-
-  @override
-  Color get statusGhostDeep => _p.colorAlphaDark10;
-
-  @override
-  Color get statusGhostSubtle => _p.colorAlphaDark0;
-
-  @override
-  Color get statusGhostStrong => _p.colorAlphaDark20;
-
-  @override
-  Color get statusNeutralDefault => _p.colorNeutralCool60;
-
-  @override
-  Color get statusNeutralFaint => _p.colorNeutralCool10;
-
-  @override
-  Color get statusNeutralDeep => _p.colorNeutralCool80;
-
-  @override
-  Color get statusNeutralSubtle => _p.colorNeutralCool50;
-
-  @override
-  Color get statusNeutralStrong => _p.colorNeutralCool70;
-
-  @override
-  Color get lineSelection => _p.colorBrandMain60;
-
-  @override
-  Color get lineFocus => _p.colorBrandMain50;
-
-  @override
-  Color get lineDefault => _p.colorNeutralCool40;
-
-  @override
-  Color get lineSubtle => _p.colorNeutralCool30;
-
-  @override
-  Color get lineInverse => _p.colorPureWhite;
-
-  @override
-  Color get lineStrong => _p.colorNeutralCool60;
-
-  @override
-  Color get lineStronger => _p.colorNeutralCool70;
 
   @override
   Color get data1 => _p.colorBrandMain60;
@@ -1183,22 +1030,211 @@ final class _ZetaPaletteCompanionLight implements ZetaPaletteTokens {
   Color get dataNeutral => _p.colorNeutralCool50;
 
   @override
-  Color get gradientDefaultStart => _p.colorAccent1_60;
+  Color get fillCanvas => _p.colorNeutralCool20;
+
+  @override
+  Color get fillDefault => _p.colorPureWhite;
+
+  @override
+  Color get fillDisabled => _p.colorNeutralCool30;
+
+  @override
+  Color get fillElevated => _p.colorNeutralCool10;
+
+  @override
+  Color get fillHover => _p.colorNeutralCool70;
+
+  @override
+  Color get fillInverse => _p.colorNeutralCool90;
+
+  @override
+  Color get fillInverseElevated => _p.colorNeutralCool100;
+
+  @override
+  Color get fillInverseSunken => _p.colorNeutralCool80;
+
+  @override
+  Color get fillOverlay => _p.colorPureWhite;
+
+  @override
+  Color get fillScrim => _p.colorAlphaDark60;
+
+  @override
+  Color get fillSelection => _p.colorAccent1_20;
+
+  @override
+  Color get fillSunken => _p.colorNeutralCool30;
+
+  @override
+  Color get fillTransparent => const Color(0x00F3F6FA);
+
+  @override
+  Color get fillTransparentElevate => _p.colorAlphaDark10;
+
+  @override
+  Color get fillTransparentEmphasis => _p.colorAlphaDark5;
+
+  @override
+  Color get fillTransparentObsure => _p.colorAlphaDark30;
 
   @override
   Color get gradientDefaultEnd => _p.colorExtend4_60;
 
   @override
-  Color get gradientStrongStart => _p.colorAccent1_80;
+  Color get gradientDefaultStart => _p.colorAccent1_60;
 
   @override
   Color get gradientStrongEnd => _p.colorExtend4_80;
 
   @override
-  Color get gradientSubtleStart => _p.colorAccent1_50;
+  Color get gradientStrongStart => _p.colorAccent1_80;
 
   @override
   Color get gradientSubtleEnd => _p.colorExtend4_40;
+
+  @override
+  Color get gradientSubtleStart => _p.colorAccent1_50;
+
+  @override
+  Color get inkAlwaysBlank => _p.colorNeutralCool100;
+
+  @override
+  Color get inkAlwaysWhite => _p.colorPureWhite;
+
+  @override
+  Color get inkBrand => _p.colorAccent1_70;
+
+  @override
+  Color get inkDisabled => _p.colorNeutralCool50;
+
+  @override
+  Color get inkHigh => _p.colorNeutralCool100;
+
+  @override
+  Color get inkInverse => _p.colorPureWhite;
+
+  @override
+  Color get inkLink => _p.colorAccent1_60;
+
+  @override
+  Color get inkLow => _p.colorNeutralCool60;
+
+  @override
+  Color get inkMedium => _p.colorNeutralCool70;
+
+  @override
+  Color get inkSelection => _p.colorNeutralCool100;
+
+  @override
+  Color get lineDefault => _p.colorNeutralCool40;
+
+  @override
+  Color get lineFocus => _p.colorAccent1_50;
+
+  @override
+  Color get lineInverse => _p.colorPureWhite;
+
+  @override
+  Color get lineSelection => _p.colorAccent1_60;
+
+  @override
+  Color get lineStrong => _p.colorNeutralCool60;
+
+  @override
+  Color get lineStronger => _p.colorNeutralCool70;
+
+  @override
+  Color get lineSubtle => _p.colorNeutralCool30;
+
+  @override
+  Color get statusErrorDeep => _p.colorSystemNegative80;
+
+  @override
+  Color get statusErrorDefault => _p.colorSystemNegative60;
+
+  @override
+  Color get statusErrorFaint => _p.colorSystemNegative10;
+
+  @override
+  Color get statusErrorStrong => _p.colorSystemNegative70;
+
+  @override
+  Color get statusErrorSubtle => _p.colorSystemNegative50;
+
+  @override
+  Color get statusGhostDeep => _p.colorAlphaDark10;
+
+  @override
+  Color get statusGhostDefault => _p.colorAlphaDark0;
+
+  @override
+  Color get statusGhostFaint => _p.colorAlphaDark5;
+
+  @override
+  Color get statusGhostStrong => _p.colorAlphaDark20;
+
+  @override
+  Color get statusGhostSubtle => _p.colorAlphaDark0;
+
+  @override
+  Color get statusInfoDeep => _p.colorSystemInfo80;
+
+  @override
+  Color get statusInfoDefault => _p.colorSystemInfo60;
+
+  @override
+  Color get statusInfoFaint => _p.colorSystemInfo10;
+
+  @override
+  Color get statusInfoStrong => _p.colorSystemInfo70;
+
+  @override
+  Color get statusInfoSubtle => _p.colorSystemInfo50;
+
+  @override
+  Color get statusNeutralDeep => _p.colorNeutralCool80;
+
+  @override
+  Color get statusNeutralDefault => _p.colorNeutralCool60;
+
+  @override
+  Color get statusNeutralFaint => _p.colorNeutralCool10;
+
+  @override
+  Color get statusNeutralStrong => _p.colorNeutralCool70;
+
+  @override
+  Color get statusNeutralSubtle => _p.colorNeutralCool50;
+
+  @override
+  Color get statusSuccessDeep => _p.colorSystemPositive80;
+
+  @override
+  Color get statusSuccessDefault => _p.colorSystemPositive60;
+
+  @override
+  Color get statusSuccessFaint => _p.colorSystemPositive10;
+
+  @override
+  Color get statusSuccessStrong => _p.colorSystemPositive70;
+
+  @override
+  Color get statusSuccessSubtle => _p.colorSystemPositive50;
+
+  @override
+  Color get statusWarningDeep => _p.colorSystemWarning80;
+
+  @override
+  Color get statusWarningDefault => _p.colorSystemWarning60;
+
+  @override
+  Color get statusWarningFaint => _p.colorSystemWarning10;
+
+  @override
+  Color get statusWarningStrong => _p.colorSystemWarning70;
+
+  @override
+  Color get statusWarningSubtle => _p.colorSystemWarning50;
 }
 
 final class _ZetaPaletteCompanionDark implements ZetaPaletteTokens {
@@ -1207,22 +1243,28 @@ final class _ZetaPaletteCompanionDark implements ZetaPaletteTokens {
   final ZetaPrimitiveTokens _p;
 
   @override
+  Color get brandPrimaryDeep => _p.colorAccent1_80;
+
+  @override
   Color get brandPrimaryDefault => _p.colorAccent1_60;
 
   @override
   Color get brandPrimaryFaint => _p.colorAccent1_100;
 
   @override
-  Color get brandPrimarySubtle => _p.colorAccent1_50;
-
-  @override
-  Color get brandPrimaryDeep => _p.colorAccent1_40;
-
-  @override
   Color get brandPrimaryMuted => _p.colorAccent1_90;
 
   @override
-  Color get brandPrimaryOn => _p.colorNeutralCool10;
+  Color get brandPrimaryOn => _p.colorPureWhite;
+
+  @override
+  Color get brandPrimaryStrong => _p.colorAccent1_70;
+
+  @override
+  Color get brandPrimarySubtle => _p.colorAccent1_50;
+
+  @override
+  Color get brandSecondaryDeep => _p.colorBrandAlternative80;
 
   @override
   Color get brandSecondaryDefault => _p.colorBrandAlternative50;
@@ -1231,13 +1273,16 @@ final class _ZetaPaletteCompanionDark implements ZetaPaletteTokens {
   Color get brandSecondaryFaint => _p.colorBrandAlternative100;
 
   @override
+  Color get brandSecondaryOn => _p.colorPureWhite;
+
+  @override
+  Color get brandSecondaryStrong => _p.colorBrandAlternative70;
+
+  @override
   Color get brandSecondarySubtle => _p.colorBrandAlternative60;
 
   @override
-  Color get brandSecondaryDeep => _p.colorBrandAlternative40;
-
-  @override
-  Color get brandSecondaryOn => _p.colorNeutralWarm10;
+  Color get brandTertiaryDeep => _p.colorAccent5_80;
 
   @override
   Color get brandTertiaryDefault => _p.colorAccent5_50;
@@ -1246,202 +1291,13 @@ final class _ZetaPaletteCompanionDark implements ZetaPaletteTokens {
   Color get brandTertiaryFaint => _p.colorAccent5_100;
 
   @override
+  Color get brandTertiaryOn => _p.colorPureWhite;
+
+  @override
+  Color get brandTertiaryStrong => _p.colorAccent5_70;
+
+  @override
   Color get brandTertiarySubtle => _p.colorAccent5_50;
-
-  @override
-  Color get brandTertiaryDeep => _p.colorAccent5_40;
-
-  @override
-  Color get brandTertiaryOn => _p.colorNeutralCool10;
-
-  @override
-  Color get fillCanvas => _p.colorNeutralCool90;
-
-  @override
-  Color get fillDefault => _p.colorNeutralCool100;
-
-  @override
-  Color get fillElevated => _p.colorNeutralCool100;
-
-  @override
-  Color get fillOverlay => _p.colorNeutralCool80;
-
-  @override
-  Color get fillInverse => _p.colorNeutralCool20;
-
-  @override
-  Color get fillSunken => _p.colorNeutralCool80;
-
-  @override
-  Color get fillScrim => _p.colorAlphaDark60;
-
-  @override
-  Color get fillSelection => _p.colorBrandMain90;
-
-  @override
-  Color get fillHover => _p.colorNeutralCool40;
-
-  @override
-  Color get fillInverseSunken => _p.colorNeutralCool30;
-
-  @override
-  Color get fillInverseElevated => _p.colorNeutralCool10;
-
-  @override
-  Color get fillDisabled => _p.colorNeutralCool80;
-
-  @override
-  Color get fillTransparent => const Color(0x00F3F6FA);
-
-  @override
-  Color get fillTransparentEmphasis => const Color(0x0D000000);
-
-  @override
-  Color get fillTransparentElevate => const Color(0x26000000);
-
-  @override
-  Color get fillTransparentObsure => const Color(0x73000000);
-
-  @override
-  Color get inkHigh => _p.colorNeutralCool10;
-
-  @override
-  Color get inkMedium => _p.colorNeutralCool40;
-
-  @override
-  Color get inkLow => _p.colorNeutralCool50;
-
-  @override
-  Color get inkDisabled => _p.colorNeutralCool60;
-
-  @override
-  Color get inkInverse => _p.colorNeutralCool100;
-
-  @override
-  Color get inkLink => _p.colorBrandMain50;
-
-  @override
-  Color get inkBrand => _p.colorBrandMain40;
-
-  @override
-  Color get inkSelection => _p.colorNeutralCool10;
-
-  @override
-  Color get inkAlwaysWhite => _p.colorPureWhite;
-
-  @override
-  Color get inkAlwaysBlank => _p.colorNeutralCool100;
-
-  @override
-  Color get statusSuccessDefault => _p.colorSystemPositive60;
-
-  @override
-  Color get statusSuccessFaint => _p.colorSystemPositive100;
-
-  @override
-  Color get statusSuccessDeep => _p.colorSystemPositive40;
-
-  @override
-  Color get statusSuccessStrong => _p.colorSystemPositive40;
-
-  @override
-  Color get statusSuccessSubtle => _p.colorSystemPositive70;
-
-  @override
-  Color get statusWarningDefault => _p.colorSystemWarning50;
-
-  @override
-  Color get statusWarningFaint => _p.colorSystemWarning100;
-
-  @override
-  Color get statusWarningDeep => _p.colorSystemWarning40;
-
-  @override
-  Color get statusWarningStrong => _p.colorSystemWarning40;
-
-  @override
-  Color get statusWarningSubtle => _p.colorSystemWarning70;
-
-  @override
-  Color get statusErrorDefault => _p.colorSystemNegative60;
-
-  @override
-  Color get statusErrorFaint => _p.colorSystemNegative100;
-
-  @override
-  Color get statusErrorDeep => _p.colorSystemNegative30;
-
-  @override
-  Color get statusErrorSubtle => _p.colorSystemNegative70;
-
-  @override
-  Color get statusErrorStrong => _p.colorSystemNegative40;
-
-  @override
-  Color get statusInfoDefault => _p.colorSystemInfo60;
-
-  @override
-  Color get statusInfoFaint => _p.colorSystemInfo100;
-
-  @override
-  Color get statusInfoDeep => _p.colorSystemInfo30;
-
-  @override
-  Color get statusInfoSubtle => _p.colorSystemInfo60;
-
-  @override
-  Color get statusInfoStrong => _p.colorSystemInfo40;
-
-  @override
-  Color get statusGhostDefault => _p.colorAlphaLight0;
-
-  @override
-  Color get statusGhostFaint => _p.colorAlphaLight5;
-
-  @override
-  Color get statusGhostDeep => _p.colorAlphaLight10;
-
-  @override
-  Color get statusGhostSubtle => _p.colorAlphaLight0;
-
-  @override
-  Color get statusGhostStrong => _p.colorAlphaLight20;
-
-  @override
-  Color get statusNeutralDefault => _p.colorNeutralWarm60;
-
-  @override
-  Color get statusNeutralFaint => _p.colorNeutralWarm100;
-
-  @override
-  Color get statusNeutralDeep => _p.colorNeutralWarm30;
-
-  @override
-  Color get statusNeutralSubtle => _p.colorNeutralWarm60;
-
-  @override
-  Color get statusNeutralStrong => _p.colorNeutralWarm40;
-
-  @override
-  Color get lineSelection => _p.colorBrandMain50;
-
-  @override
-  Color get lineFocus => _p.colorBrandMain60;
-
-  @override
-  Color get lineDefault => _p.colorNeutralCool70;
-
-  @override
-  Color get lineSubtle => _p.colorNeutralCool80;
-
-  @override
-  Color get lineInverse => _p.colorPureBlack;
-
-  @override
-  Color get lineStrong => _p.colorNeutralCool50;
-
-  @override
-  Color get lineStronger => _p.colorNeutralCool30;
 
   @override
   Color get data1 => _p.colorBrandMain50;
@@ -1483,22 +1339,211 @@ final class _ZetaPaletteCompanionDark implements ZetaPaletteTokens {
   Color get dataNeutral => _p.colorNeutralCool60;
 
   @override
+  Color get fillCanvas => _p.colorNeutralCool90;
+
+  @override
+  Color get fillDefault => _p.colorNeutralCool100;
+
+  @override
+  Color get fillDisabled => _p.colorNeutralCool80;
+
+  @override
+  Color get fillElevated => _p.colorNeutralCool100;
+
+  @override
+  Color get fillHover => _p.colorNeutralCool40;
+
+  @override
+  Color get fillInverse => _p.colorNeutralCool20;
+
+  @override
+  Color get fillInverseElevated => _p.colorNeutralCool10;
+
+  @override
+  Color get fillInverseSunken => _p.colorNeutralCool30;
+
+  @override
+  Color get fillOverlay => _p.colorNeutralCool80;
+
+  @override
+  Color get fillScrim => _p.colorAlphaDark60;
+
+  @override
+  Color get fillSelection => _p.colorAccent1_90;
+
+  @override
+  Color get fillSunken => _p.colorNeutralCool80;
+
+  @override
+  Color get fillTransparent => const Color(0x00F3F6FA);
+
+  @override
+  Color get fillTransparentElevate => _p.colorAlphaLight10;
+
+  @override
+  Color get fillTransparentEmphasis => _p.colorAlphaLight5;
+
+  @override
+  Color get fillTransparentObsure => _p.colorAlphaLight30;
+
+  @override
+  Color get gradientDefaultEnd => _p.colorExtend4_60;
+
+  @override
   Color get gradientDefaultStart => _p.colorAccent1_60;
-
-  @override
-  Color get gradientDefaultEnd => _p.colorExtend4_50;
-
-  @override
-  Color get gradientStrongStart => _p.colorAccent1_40;
 
   @override
   Color get gradientStrongEnd => _p.colorExtend4_40;
 
   @override
-  Color get gradientSubtleStart => _p.colorAccent1_70;
+  Color get gradientStrongStart => _p.colorAccent1_40;
 
   @override
   Color get gradientSubtleEnd => _p.colorExtend4_80;
+
+  @override
+  Color get gradientSubtleStart => _p.colorAccent1_70;
+
+  @override
+  Color get inkAlwaysBlank => _p.colorNeutralCool100;
+
+  @override
+  Color get inkAlwaysWhite => _p.colorPureWhite;
+
+  @override
+  Color get inkBrand => _p.colorAccent1_40;
+
+  @override
+  Color get inkDisabled => _p.colorNeutralCool60;
+
+  @override
+  Color get inkHigh => _p.colorPureWhite;
+
+  @override
+  Color get inkInverse => _p.colorNeutralCool100;
+
+  @override
+  Color get inkLink => _p.colorAccent1_50;
+
+  @override
+  Color get inkLow => _p.colorNeutralCool50;
+
+  @override
+  Color get inkMedium => _p.colorNeutralCool40;
+
+  @override
+  Color get inkSelection => _p.colorNeutralCool10;
+
+  @override
+  Color get lineDefault => _p.colorNeutralCool70;
+
+  @override
+  Color get lineFocus => _p.colorAccent1_60;
+
+  @override
+  Color get lineInverse => _p.colorPureBlack;
+
+  @override
+  Color get lineSelection => _p.colorAccent1_50;
+
+  @override
+  Color get lineStrong => _p.colorNeutralCool50;
+
+  @override
+  Color get lineStronger => _p.colorNeutralCool30;
+
+  @override
+  Color get lineSubtle => _p.colorNeutralCool80;
+
+  @override
+  Color get statusErrorDeep => _p.colorSystemNegative80;
+
+  @override
+  Color get statusErrorDefault => _p.colorSystemNegative60;
+
+  @override
+  Color get statusErrorFaint => _p.colorSystemNegative100;
+
+  @override
+  Color get statusErrorStrong => _p.colorSystemNegative70;
+
+  @override
+  Color get statusErrorSubtle => _p.colorSystemNegative50;
+
+  @override
+  Color get statusGhostDeep => _p.colorAlphaLight10;
+
+  @override
+  Color get statusGhostDefault => _p.colorAlphaLight0;
+
+  @override
+  Color get statusGhostFaint => _p.colorAlphaLight5;
+
+  @override
+  Color get statusGhostStrong => _p.colorAlphaLight20;
+
+  @override
+  Color get statusGhostSubtle => _p.colorAlphaLight0;
+
+  @override
+  Color get statusInfoDeep => _p.colorSystemInfo80;
+
+  @override
+  Color get statusInfoDefault => _p.colorSystemInfo60;
+
+  @override
+  Color get statusInfoFaint => _p.colorSystemInfo100;
+
+  @override
+  Color get statusInfoStrong => _p.colorSystemInfo70;
+
+  @override
+  Color get statusInfoSubtle => _p.colorSystemInfo60;
+
+  @override
+  Color get statusNeutralDeep => _p.colorNeutralWarm30;
+
+  @override
+  Color get statusNeutralDefault => _p.colorNeutralWarm60;
+
+  @override
+  Color get statusNeutralFaint => _p.colorNeutralWarm100;
+
+  @override
+  Color get statusNeutralStrong => _p.colorNeutralWarm40;
+
+  @override
+  Color get statusNeutralSubtle => _p.colorNeutralWarm60;
+
+  @override
+  Color get statusSuccessDeep => _p.colorSystemPositive80;
+
+  @override
+  Color get statusSuccessDefault => _p.colorSystemPositive60;
+
+  @override
+  Color get statusSuccessFaint => _p.colorSystemPositive100;
+
+  @override
+  Color get statusSuccessStrong => _p.colorSystemPositive70;
+
+  @override
+  Color get statusSuccessSubtle => _p.colorSystemPositive70;
+
+  @override
+  Color get statusWarningDeep => _p.colorSystemWarning40;
+
+  @override
+  Color get statusWarningDefault => _p.colorSystemWarning50;
+
+  @override
+  Color get statusWarningFaint => _p.colorSystemWarning100;
+
+  @override
+  Color get statusWarningStrong => _p.colorSystemWarning40;
+
+  @override
+  Color get statusWarningSubtle => _p.colorSystemWarning70;
 }
 
 final class _ZetaPaletteTargetLight implements ZetaPaletteTokens {
@@ -1507,22 +1552,28 @@ final class _ZetaPaletteTargetLight implements ZetaPaletteTokens {
   final ZetaPrimitiveTokens _p;
 
   @override
+  Color get brandPrimaryDeep => _p.colorExtend4_80;
+
+  @override
   Color get brandPrimaryDefault => _p.colorExtend4_60;
 
   @override
   Color get brandPrimaryFaint => _p.colorExtend4_10;
 
   @override
-  Color get brandPrimarySubtle => _p.colorExtend4_50;
-
-  @override
-  Color get brandPrimaryDeep => _p.colorExtend4_70;
-
-  @override
   Color get brandPrimaryMuted => _p.colorExtend4_20;
 
   @override
-  Color get brandPrimaryOn => _p.colorNeutralWarm10;
+  Color get brandPrimaryOn => _p.colorPureWhite;
+
+  @override
+  Color get brandPrimaryStrong => _p.colorExtend4_70;
+
+  @override
+  Color get brandPrimarySubtle => _p.colorExtend4_50;
+
+  @override
+  Color get brandSecondaryDeep => _p.colorBrandAlternative80;
 
   @override
   Color get brandSecondaryDefault => _p.colorExtend3_60;
@@ -1531,13 +1582,16 @@ final class _ZetaPaletteTargetLight implements ZetaPaletteTokens {
   Color get brandSecondaryFaint => _p.colorExtend3_10;
 
   @override
+  Color get brandSecondaryOn => _p.colorPureWhite;
+
+  @override
+  Color get brandSecondaryStrong => _p.colorExtend3_70;
+
+  @override
   Color get brandSecondarySubtle => _p.colorExtend3_50;
 
   @override
-  Color get brandSecondaryDeep => _p.colorExtend3_70;
-
-  @override
-  Color get brandSecondaryOn => _p.colorNeutralWarm10;
+  Color get brandTertiaryDeep => _p.colorAccent5_80;
 
   @override
   Color get brandTertiaryDefault => _p.colorAccent5_60;
@@ -1546,202 +1600,13 @@ final class _ZetaPaletteTargetLight implements ZetaPaletteTokens {
   Color get brandTertiaryFaint => _p.colorAccent5_10;
 
   @override
+  Color get brandTertiaryOn => _p.colorPureWhite;
+
+  @override
+  Color get brandTertiaryStrong => _p.colorAccent5_70;
+
+  @override
   Color get brandTertiarySubtle => _p.colorAccent5_50;
-
-  @override
-  Color get brandTertiaryDeep => _p.colorAccent5_70;
-
-  @override
-  Color get brandTertiaryOn => _p.colorNeutralCool10;
-
-  @override
-  Color get fillCanvas => _p.colorNeutralCool20;
-
-  @override
-  Color get fillDefault => _p.colorPureWhite;
-
-  @override
-  Color get fillElevated => _p.colorNeutralCool10;
-
-  @override
-  Color get fillOverlay => _p.colorPureWhite;
-
-  @override
-  Color get fillInverse => _p.colorNeutralCool90;
-
-  @override
-  Color get fillSunken => _p.colorNeutralCool30;
-
-  @override
-  Color get fillScrim => _p.colorAlphaDark60;
-
-  @override
-  Color get fillSelection => _p.colorBrandMain20;
-
-  @override
-  Color get fillHover => _p.colorNeutralCool70;
-
-  @override
-  Color get fillInverseSunken => _p.colorNeutralCool80;
-
-  @override
-  Color get fillInverseElevated => _p.colorNeutralCool100;
-
-  @override
-  Color get fillDisabled => _p.colorNeutralCool30;
-
-  @override
-  Color get fillTransparent => const Color(0x00F3F6FA);
-
-  @override
-  Color get fillTransparentEmphasis => _p.colorAlphaDark5;
-
-  @override
-  Color get fillTransparentElevate => _p.colorAlphaDark10;
-
-  @override
-  Color get fillTransparentObsure => _p.colorAlphaDark30;
-
-  @override
-  Color get inkHigh => _p.colorNeutralCool100;
-
-  @override
-  Color get inkMedium => _p.colorNeutralCool70;
-
-  @override
-  Color get inkLow => _p.colorNeutralCool60;
-
-  @override
-  Color get inkDisabled => _p.colorNeutralCool50;
-
-  @override
-  Color get inkInverse => _p.colorNeutralCool10;
-
-  @override
-  Color get inkLink => _p.colorExtend4_60;
-
-  @override
-  Color get inkBrand => _p.colorExtend4_70;
-
-  @override
-  Color get inkSelection => _p.colorNeutralCool100;
-
-  @override
-  Color get inkAlwaysWhite => _p.colorPureWhite;
-
-  @override
-  Color get inkAlwaysBlank => _p.colorNeutralCool100;
-
-  @override
-  Color get statusSuccessDefault => _p.colorSystemPositive60;
-
-  @override
-  Color get statusSuccessFaint => _p.colorSystemPositive10;
-
-  @override
-  Color get statusSuccessDeep => _p.colorSystemPositive80;
-
-  @override
-  Color get statusSuccessStrong => _p.colorSystemPositive70;
-
-  @override
-  Color get statusSuccessSubtle => _p.colorSystemPositive50;
-
-  @override
-  Color get statusWarningDefault => _p.colorSystemWarning60;
-
-  @override
-  Color get statusWarningFaint => _p.colorSystemWarning10;
-
-  @override
-  Color get statusWarningDeep => _p.colorSystemWarning80;
-
-  @override
-  Color get statusWarningStrong => _p.colorSystemWarning70;
-
-  @override
-  Color get statusWarningSubtle => _p.colorSystemWarning50;
-
-  @override
-  Color get statusErrorDefault => _p.colorSystemNegative60;
-
-  @override
-  Color get statusErrorFaint => _p.colorSystemNegative10;
-
-  @override
-  Color get statusErrorDeep => _p.colorSystemNegative80;
-
-  @override
-  Color get statusErrorSubtle => _p.colorSystemNegative50;
-
-  @override
-  Color get statusErrorStrong => _p.colorSystemNegative70;
-
-  @override
-  Color get statusInfoDefault => _p.colorSystemInfo60;
-
-  @override
-  Color get statusInfoFaint => _p.colorSystemInfo10;
-
-  @override
-  Color get statusInfoDeep => _p.colorSystemInfo80;
-
-  @override
-  Color get statusInfoSubtle => _p.colorSystemInfo50;
-
-  @override
-  Color get statusInfoStrong => _p.colorSystemInfo70;
-
-  @override
-  Color get statusGhostDefault => _p.colorAlphaDark0;
-
-  @override
-  Color get statusGhostFaint => _p.colorAlphaDark5;
-
-  @override
-  Color get statusGhostDeep => _p.colorAlphaDark10;
-
-  @override
-  Color get statusGhostSubtle => _p.colorAlphaDark0;
-
-  @override
-  Color get statusGhostStrong => _p.colorAlphaDark20;
-
-  @override
-  Color get statusNeutralDefault => _p.colorNeutralCool60;
-
-  @override
-  Color get statusNeutralFaint => _p.colorNeutralCool10;
-
-  @override
-  Color get statusNeutralDeep => _p.colorNeutralCool80;
-
-  @override
-  Color get statusNeutralSubtle => _p.colorNeutralCool50;
-
-  @override
-  Color get statusNeutralStrong => _p.colorNeutralCool70;
-
-  @override
-  Color get lineSelection => _p.colorExtend4_60;
-
-  @override
-  Color get lineFocus => _p.colorAccent1_60;
-
-  @override
-  Color get lineDefault => _p.colorNeutralCool40;
-
-  @override
-  Color get lineSubtle => _p.colorNeutralCool30;
-
-  @override
-  Color get lineInverse => _p.colorPureWhite;
-
-  @override
-  Color get lineStrong => _p.colorNeutralCool60;
-
-  @override
-  Color get lineStronger => _p.colorNeutralCool70;
 
   @override
   Color get data1 => _p.colorBrandMain60;
@@ -1783,22 +1648,211 @@ final class _ZetaPaletteTargetLight implements ZetaPaletteTokens {
   Color get dataNeutral => _p.colorNeutralCool50;
 
   @override
-  Color get gradientDefaultStart => _p.colorExtend3_80;
+  Color get fillCanvas => _p.colorNeutralCool20;
+
+  @override
+  Color get fillDefault => _p.colorPureWhite;
+
+  @override
+  Color get fillDisabled => _p.colorNeutralCool30;
+
+  @override
+  Color get fillElevated => _p.colorNeutralCool10;
+
+  @override
+  Color get fillHover => _p.colorNeutralCool70;
+
+  @override
+  Color get fillInverse => _p.colorNeutralCool90;
+
+  @override
+  Color get fillInverseElevated => _p.colorNeutralCool100;
+
+  @override
+  Color get fillInverseSunken => _p.colorNeutralCool80;
+
+  @override
+  Color get fillOverlay => _p.colorPureWhite;
+
+  @override
+  Color get fillScrim => _p.colorAlphaDark60;
+
+  @override
+  Color get fillSelection => _p.colorBrandMain20;
+
+  @override
+  Color get fillSunken => _p.colorNeutralCool30;
+
+  @override
+  Color get fillTransparent => const Color(0x00F3F6FA);
+
+  @override
+  Color get fillTransparentElevate => _p.colorAlphaDark10;
+
+  @override
+  Color get fillTransparentEmphasis => _p.colorAlphaDark5;
+
+  @override
+  Color get fillTransparentObsure => _p.colorAlphaDark30;
 
   @override
   Color get gradientDefaultEnd => _p.colorExtend4_60;
 
   @override
-  Color get gradientStrongStart => _p.colorExtend3_90;
+  Color get gradientDefaultStart => _p.colorExtend3_80;
 
   @override
   Color get gradientStrongEnd => _p.colorExtend4_80;
 
   @override
-  Color get gradientSubtleStart => _p.colorExtend3_70;
+  Color get gradientStrongStart => _p.colorExtend3_90;
 
   @override
   Color get gradientSubtleEnd => _p.colorExtend4_40;
+
+  @override
+  Color get gradientSubtleStart => _p.colorExtend3_70;
+
+  @override
+  Color get inkAlwaysBlank => _p.colorNeutralCool100;
+
+  @override
+  Color get inkAlwaysWhite => _p.colorPureWhite;
+
+  @override
+  Color get inkBrand => _p.colorExtend4_70;
+
+  @override
+  Color get inkDisabled => _p.colorNeutralCool50;
+
+  @override
+  Color get inkHigh => _p.colorNeutralCool100;
+
+  @override
+  Color get inkInverse => _p.colorPureWhite;
+
+  @override
+  Color get inkLink => _p.colorExtend4_60;
+
+  @override
+  Color get inkLow => _p.colorNeutralCool60;
+
+  @override
+  Color get inkMedium => _p.colorNeutralCool70;
+
+  @override
+  Color get inkSelection => _p.colorNeutralCool100;
+
+  @override
+  Color get lineDefault => _p.colorNeutralCool40;
+
+  @override
+  Color get lineFocus => _p.colorAccent1_60;
+
+  @override
+  Color get lineInverse => _p.colorPureWhite;
+
+  @override
+  Color get lineSelection => _p.colorExtend4_60;
+
+  @override
+  Color get lineStrong => _p.colorNeutralCool60;
+
+  @override
+  Color get lineStronger => _p.colorNeutralCool70;
+
+  @override
+  Color get lineSubtle => _p.colorNeutralCool30;
+
+  @override
+  Color get statusErrorDeep => _p.colorSystemNegative80;
+
+  @override
+  Color get statusErrorDefault => _p.colorSystemNegative60;
+
+  @override
+  Color get statusErrorFaint => _p.colorSystemNegative10;
+
+  @override
+  Color get statusErrorStrong => _p.colorSystemNegative70;
+
+  @override
+  Color get statusErrorSubtle => _p.colorSystemNegative50;
+
+  @override
+  Color get statusGhostDeep => _p.colorAlphaDark10;
+
+  @override
+  Color get statusGhostDefault => _p.colorAlphaDark0;
+
+  @override
+  Color get statusGhostFaint => _p.colorAlphaDark5;
+
+  @override
+  Color get statusGhostStrong => _p.colorAlphaDark20;
+
+  @override
+  Color get statusGhostSubtle => _p.colorAlphaDark0;
+
+  @override
+  Color get statusInfoDeep => _p.colorSystemInfo80;
+
+  @override
+  Color get statusInfoDefault => _p.colorSystemInfo60;
+
+  @override
+  Color get statusInfoFaint => _p.colorSystemInfo10;
+
+  @override
+  Color get statusInfoStrong => _p.colorSystemInfo70;
+
+  @override
+  Color get statusInfoSubtle => _p.colorSystemInfo50;
+
+  @override
+  Color get statusNeutralDeep => _p.colorNeutralCool80;
+
+  @override
+  Color get statusNeutralDefault => _p.colorNeutralCool60;
+
+  @override
+  Color get statusNeutralFaint => _p.colorNeutralCool10;
+
+  @override
+  Color get statusNeutralStrong => _p.colorNeutralCool70;
+
+  @override
+  Color get statusNeutralSubtle => _p.colorNeutralCool50;
+
+  @override
+  Color get statusSuccessDeep => _p.colorSystemPositive80;
+
+  @override
+  Color get statusSuccessDefault => _p.colorSystemPositive60;
+
+  @override
+  Color get statusSuccessFaint => _p.colorSystemPositive10;
+
+  @override
+  Color get statusSuccessStrong => _p.colorSystemPositive70;
+
+  @override
+  Color get statusSuccessSubtle => _p.colorSystemPositive50;
+
+  @override
+  Color get statusWarningDeep => _p.colorSystemWarning80;
+
+  @override
+  Color get statusWarningDefault => _p.colorSystemWarning60;
+
+  @override
+  Color get statusWarningFaint => _p.colorSystemWarning10;
+
+  @override
+  Color get statusWarningStrong => _p.colorSystemWarning70;
+
+  @override
+  Color get statusWarningSubtle => _p.colorSystemWarning50;
 }
 
 final class _ZetaPaletteTargetDark implements ZetaPaletteTokens {
@@ -1807,22 +1861,28 @@ final class _ZetaPaletteTargetDark implements ZetaPaletteTokens {
   final ZetaPrimitiveTokens _p;
 
   @override
+  Color get brandPrimaryDeep => _p.colorExtend4_80;
+
+  @override
   Color get brandPrimaryDefault => _p.colorExtend4_60;
 
   @override
   Color get brandPrimaryFaint => _p.colorExtend4_100;
 
   @override
-  Color get brandPrimarySubtle => _p.colorExtend4_70;
-
-  @override
-  Color get brandPrimaryDeep => _p.colorExtend4_40;
-
-  @override
   Color get brandPrimaryMuted => _p.colorExtend4_90;
 
   @override
-  Color get brandPrimaryOn => _p.colorNeutralWarm10;
+  Color get brandPrimaryOn => _p.colorPureWhite;
+
+  @override
+  Color get brandPrimaryStrong => _p.colorExtend4_70;
+
+  @override
+  Color get brandPrimarySubtle => _p.colorExtend4_70;
+
+  @override
+  Color get brandSecondaryDeep => _p.colorBrandAlternative80;
 
   @override
   Color get brandSecondaryDefault => _p.colorExtend3_50;
@@ -1831,13 +1891,16 @@ final class _ZetaPaletteTargetDark implements ZetaPaletteTokens {
   Color get brandSecondaryFaint => _p.colorExtend3_100;
 
   @override
+  Color get brandSecondaryOn => _p.colorPureWhite;
+
+  @override
+  Color get brandSecondaryStrong => _p.colorExtend3_40;
+
+  @override
   Color get brandSecondarySubtle => _p.colorExtend3_60;
 
   @override
-  Color get brandSecondaryDeep => _p.colorExtend3_40;
-
-  @override
-  Color get brandSecondaryOn => _p.colorNeutralWarm10;
+  Color get brandTertiaryDeep => _p.colorAccent5_80;
 
   @override
   Color get brandTertiaryDefault => _p.colorAccent5_50;
@@ -1846,202 +1909,13 @@ final class _ZetaPaletteTargetDark implements ZetaPaletteTokens {
   Color get brandTertiaryFaint => _p.colorAccent5_100;
 
   @override
+  Color get brandTertiaryOn => _p.colorPureWhite;
+
+  @override
+  Color get brandTertiaryStrong => _p.colorAccent5_70;
+
+  @override
   Color get brandTertiarySubtle => _p.colorAccent5_50;
-
-  @override
-  Color get brandTertiaryDeep => _p.colorAccent5_40;
-
-  @override
-  Color get brandTertiaryOn => _p.colorNeutralCool10;
-
-  @override
-  Color get fillCanvas => _p.colorNeutralCool90;
-
-  @override
-  Color get fillDefault => _p.colorNeutralCool100;
-
-  @override
-  Color get fillElevated => _p.colorNeutralCool100;
-
-  @override
-  Color get fillOverlay => _p.colorNeutralCool80;
-
-  @override
-  Color get fillInverse => _p.colorNeutralCool20;
-
-  @override
-  Color get fillSunken => _p.colorNeutralCool80;
-
-  @override
-  Color get fillScrim => _p.colorAlphaDark60;
-
-  @override
-  Color get fillSelection => _p.colorBrandMain90;
-
-  @override
-  Color get fillHover => _p.colorNeutralCool40;
-
-  @override
-  Color get fillInverseSunken => _p.colorNeutralCool30;
-
-  @override
-  Color get fillInverseElevated => _p.colorNeutralCool10;
-
-  @override
-  Color get fillDisabled => _p.colorNeutralCool80;
-
-  @override
-  Color get fillTransparent => const Color(0x00F3F6FA);
-
-  @override
-  Color get fillTransparentEmphasis => const Color(0x0D000000);
-
-  @override
-  Color get fillTransparentElevate => const Color(0x26000000);
-
-  @override
-  Color get fillTransparentObsure => const Color(0x73000000);
-
-  @override
-  Color get inkHigh => _p.colorNeutralCool10;
-
-  @override
-  Color get inkMedium => _p.colorNeutralCool40;
-
-  @override
-  Color get inkLow => _p.colorNeutralCool50;
-
-  @override
-  Color get inkDisabled => _p.colorNeutralCool60;
-
-  @override
-  Color get inkInverse => _p.colorNeutralCool100;
-
-  @override
-  Color get inkLink => _p.colorExtend4_50;
-
-  @override
-  Color get inkBrand => _p.colorExtend4_40;
-
-  @override
-  Color get inkSelection => _p.colorNeutralCool10;
-
-  @override
-  Color get inkAlwaysWhite => _p.colorPureWhite;
-
-  @override
-  Color get inkAlwaysBlank => _p.colorNeutralCool100;
-
-  @override
-  Color get statusSuccessDefault => _p.colorSystemPositive60;
-
-  @override
-  Color get statusSuccessFaint => _p.colorSystemPositive100;
-
-  @override
-  Color get statusSuccessDeep => _p.colorSystemPositive40;
-
-  @override
-  Color get statusSuccessStrong => _p.colorSystemPositive40;
-
-  @override
-  Color get statusSuccessSubtle => _p.colorSystemPositive70;
-
-  @override
-  Color get statusWarningDefault => _p.colorSystemWarning50;
-
-  @override
-  Color get statusWarningFaint => _p.colorSystemWarning100;
-
-  @override
-  Color get statusWarningDeep => _p.colorSystemWarning40;
-
-  @override
-  Color get statusWarningStrong => _p.colorSystemWarning40;
-
-  @override
-  Color get statusWarningSubtle => _p.colorSystemWarning70;
-
-  @override
-  Color get statusErrorDefault => _p.colorSystemNegative60;
-
-  @override
-  Color get statusErrorFaint => _p.colorSystemNegative100;
-
-  @override
-  Color get statusErrorDeep => _p.colorSystemNegative30;
-
-  @override
-  Color get statusErrorSubtle => _p.colorSystemNegative70;
-
-  @override
-  Color get statusErrorStrong => _p.colorSystemNegative40;
-
-  @override
-  Color get statusInfoDefault => _p.colorSystemInfo60;
-
-  @override
-  Color get statusInfoFaint => _p.colorSystemInfo100;
-
-  @override
-  Color get statusInfoDeep => _p.colorSystemInfo30;
-
-  @override
-  Color get statusInfoSubtle => _p.colorSystemInfo60;
-
-  @override
-  Color get statusInfoStrong => _p.colorSystemInfo40;
-
-  @override
-  Color get statusGhostDefault => _p.colorAlphaLight0;
-
-  @override
-  Color get statusGhostFaint => _p.colorAlphaLight5;
-
-  @override
-  Color get statusGhostDeep => _p.colorAlphaLight10;
-
-  @override
-  Color get statusGhostSubtle => _p.colorAlphaLight0;
-
-  @override
-  Color get statusGhostStrong => _p.colorAlphaLight20;
-
-  @override
-  Color get statusNeutralDefault => _p.colorNeutralWarm60;
-
-  @override
-  Color get statusNeutralFaint => _p.colorNeutralWarm100;
-
-  @override
-  Color get statusNeutralDeep => _p.colorNeutralWarm30;
-
-  @override
-  Color get statusNeutralSubtle => _p.colorNeutralWarm60;
-
-  @override
-  Color get statusNeutralStrong => _p.colorNeutralWarm40;
-
-  @override
-  Color get lineSelection => _p.colorExtend4_50;
-
-  @override
-  Color get lineFocus => _p.colorAccent1_60;
-
-  @override
-  Color get lineDefault => _p.colorNeutralCool70;
-
-  @override
-  Color get lineSubtle => _p.colorNeutralCool80;
-
-  @override
-  Color get lineInverse => _p.colorPureBlack;
-
-  @override
-  Color get lineStrong => _p.colorNeutralCool50;
-
-  @override
-  Color get lineStronger => _p.colorNeutralCool30;
 
   @override
   Color get data1 => _p.colorBrandMain50;
@@ -2083,20 +1957,209 @@ final class _ZetaPaletteTargetDark implements ZetaPaletteTokens {
   Color get dataNeutral => _p.colorNeutralCool60;
 
   @override
-  Color get gradientDefaultStart => _p.colorExtend3_70;
+  Color get fillCanvas => _p.colorNeutralCool90;
 
   @override
-  Color get gradientDefaultEnd => _p.colorExtend4_50;
+  Color get fillDefault => _p.colorNeutralCool100;
+
+  @override
+  Color get fillDisabled => _p.colorNeutralCool80;
+
+  @override
+  Color get fillElevated => _p.colorNeutralCool100;
+
+  @override
+  Color get fillHover => _p.colorNeutralCool40;
+
+  @override
+  Color get fillInverse => _p.colorNeutralCool20;
+
+  @override
+  Color get fillInverseElevated => _p.colorNeutralCool10;
+
+  @override
+  Color get fillInverseSunken => _p.colorNeutralCool30;
+
+  @override
+  Color get fillOverlay => _p.colorNeutralCool80;
+
+  @override
+  Color get fillScrim => _p.colorAlphaDark60;
+
+  @override
+  Color get fillSelection => _p.colorBrandMain90;
+
+  @override
+  Color get fillSunken => _p.colorNeutralCool80;
+
+  @override
+  Color get fillTransparent => const Color(0x00F3F6FA);
+
+  @override
+  Color get fillTransparentElevate => _p.colorAlphaLight10;
+
+  @override
+  Color get fillTransparentEmphasis => _p.colorAlphaLight5;
+
+  @override
+  Color get fillTransparentObsure => _p.colorAlphaLight30;
+
+  @override
+  Color get gradientDefaultEnd => _p.colorExtend4_60;
+
+  @override
+  Color get gradientDefaultStart => _p.colorExtend3_80;
+
+  @override
+  Color get gradientStrongEnd => _p.colorExtend4_30;
 
   @override
   Color get gradientStrongStart => _p.colorExtend3_50;
 
   @override
-  Color get gradientStrongEnd => _p.colorExtend4_40;
+  Color get gradientSubtleEnd => _p.colorExtend4_80;
 
   @override
   Color get gradientSubtleStart => _p.colorExtend3_80;
 
   @override
-  Color get gradientSubtleEnd => _p.colorExtend4_80;
+  Color get inkAlwaysBlank => _p.colorNeutralCool100;
+
+  @override
+  Color get inkAlwaysWhite => _p.colorPureWhite;
+
+  @override
+  Color get inkBrand => _p.colorExtend4_30;
+
+  @override
+  Color get inkDisabled => _p.colorNeutralCool60;
+
+  @override
+  Color get inkHigh => _p.colorPureWhite;
+
+  @override
+  Color get inkInverse => _p.colorNeutralCool100;
+
+  @override
+  Color get inkLink => _p.colorExtend4_50;
+
+  @override
+  Color get inkLow => _p.colorNeutralCool50;
+
+  @override
+  Color get inkMedium => _p.colorNeutralCool40;
+
+  @override
+  Color get inkSelection => _p.colorNeutralCool10;
+
+  @override
+  Color get lineDefault => _p.colorNeutralCool70;
+
+  @override
+  Color get lineFocus => _p.colorAccent1_60;
+
+  @override
+  Color get lineInverse => _p.colorPureBlack;
+
+  @override
+  Color get lineSelection => _p.colorExtend4_50;
+
+  @override
+  Color get lineStrong => _p.colorNeutralCool50;
+
+  @override
+  Color get lineStronger => _p.colorNeutralCool30;
+
+  @override
+  Color get lineSubtle => _p.colorNeutralCool80;
+
+  @override
+  Color get statusErrorDeep => _p.colorSystemNegative80;
+
+  @override
+  Color get statusErrorDefault => _p.colorSystemNegative60;
+
+  @override
+  Color get statusErrorFaint => _p.colorSystemNegative100;
+
+  @override
+  Color get statusErrorStrong => _p.colorSystemNegative70;
+
+  @override
+  Color get statusErrorSubtle => _p.colorSystemNegative50;
+
+  @override
+  Color get statusGhostDeep => _p.colorAlphaLight10;
+
+  @override
+  Color get statusGhostDefault => _p.colorAlphaLight0;
+
+  @override
+  Color get statusGhostFaint => _p.colorAlphaLight5;
+
+  @override
+  Color get statusGhostStrong => _p.colorAlphaLight20;
+
+  @override
+  Color get statusGhostSubtle => _p.colorAlphaLight0;
+
+  @override
+  Color get statusInfoDeep => _p.colorSystemInfo80;
+
+  @override
+  Color get statusInfoDefault => _p.colorSystemInfo60;
+
+  @override
+  Color get statusInfoFaint => _p.colorSystemInfo100;
+
+  @override
+  Color get statusInfoStrong => _p.colorSystemInfo70;
+
+  @override
+  Color get statusInfoSubtle => _p.colorSystemInfo60;
+
+  @override
+  Color get statusNeutralDeep => _p.colorNeutralWarm30;
+
+  @override
+  Color get statusNeutralDefault => _p.colorNeutralWarm60;
+
+  @override
+  Color get statusNeutralFaint => _p.colorNeutralWarm100;
+
+  @override
+  Color get statusNeutralStrong => _p.colorNeutralWarm40;
+
+  @override
+  Color get statusNeutralSubtle => _p.colorNeutralWarm60;
+
+  @override
+  Color get statusSuccessDeep => _p.colorSystemPositive80;
+
+  @override
+  Color get statusSuccessDefault => _p.colorSystemPositive60;
+
+  @override
+  Color get statusSuccessFaint => _p.colorSystemPositive100;
+
+  @override
+  Color get statusSuccessStrong => _p.colorSystemPositive70;
+
+  @override
+  Color get statusSuccessSubtle => _p.colorSystemPositive70;
+
+  @override
+  Color get statusWarningDeep => _p.colorSystemWarning40;
+
+  @override
+  Color get statusWarningDefault => _p.colorSystemWarning50;
+
+  @override
+  Color get statusWarningFaint => _p.colorSystemWarning100;
+
+  @override
+  Color get statusWarningStrong => _p.colorSystemWarning40;
+
+  @override
+  Color get statusWarningSubtle => _p.colorSystemWarning70;
 }

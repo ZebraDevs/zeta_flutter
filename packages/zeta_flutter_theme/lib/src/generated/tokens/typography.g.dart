@@ -6,141 +6,6 @@ part of 'zeta_tokens.g.dart';
 
 /// Breakpoint aware typography tokens (`typography` collection).
 abstract interface class _ZetaTypographyLayer {
-  /// `typography.display.large.font-family`
-  String get displayLargeFontFamily;
-
-  /// `typography.display.large.font-size`
-  double get displayLargeFontSize;
-
-  /// `typography.display.large.font-weight`
-  FontWeight get displayLargeFontWeight;
-
-  /// `typography.display.large.line-height`
-  double get displayLargeLineHeight;
-
-  /// `typography.display.large.letter-spacing`
-  double get displayLargeLetterSpacing;
-
-  /// `typography.display.medium.font-family`
-  String get displayMediumFontFamily;
-
-  /// `typography.display.medium.font-size`
-  double get displayMediumFontSize;
-
-  /// `typography.display.medium.font-weight`
-  FontWeight get displayMediumFontWeight;
-
-  /// `typography.display.medium.line-height`
-  double get displayMediumLineHeight;
-
-  /// `typography.display.medium.letter-spacing`
-  double get displayMediumLetterSpacing;
-
-  /// `typography.display.small.font-family`
-  String get displaySmallFontFamily;
-
-  /// `typography.display.small.font-size`
-  double get displaySmallFontSize;
-
-  /// `typography.display.small.font-weight`
-  FontWeight get displaySmallFontWeight;
-
-  /// `typography.display.small.line-height`
-  double get displaySmallLineHeight;
-
-  /// `typography.display.small.letter-spacing`
-  double get displaySmallLetterSpacing;
-
-  /// `typography.heading.large.font-family`
-  String get headingLargeFontFamily;
-
-  /// `typography.heading.large.font-size`
-  double get headingLargeFontSize;
-
-  /// `typography.heading.large.font-weight`
-  FontWeight get headingLargeFontWeight;
-
-  /// `typography.heading.large.line-height`
-  double get headingLargeLineHeight;
-
-  /// `typography.heading.large.letter-spacing`
-  double get headingLargeLetterSpacing;
-
-  /// `typography.heading.medium.font-family`
-  String get headingMediumFontFamily;
-
-  /// `typography.heading.medium.font-size`
-  double get headingMediumFontSize;
-
-  /// `typography.heading.medium.font-weight`
-  FontWeight get headingMediumFontWeight;
-
-  /// `typography.heading.medium.line-height`
-  double get headingMediumLineHeight;
-
-  /// `typography.heading.medium.letter-spacing`
-  double get headingMediumLetterSpacing;
-
-  /// `typography.heading.small.font-family`
-  String get headingSmallFontFamily;
-
-  /// `typography.heading.small.font-size`
-  double get headingSmallFontSize;
-
-  /// `typography.heading.small.font-weight`
-  FontWeight get headingSmallFontWeight;
-
-  /// `typography.heading.small.line-height`
-  double get headingSmallLineHeight;
-
-  /// `typography.heading.small.letter-spacing`
-  double get headingSmallLetterSpacing;
-
-  /// `typography.title.large.font-family`
-  String get titleLargeFontFamily;
-
-  /// `typography.title.large.font-size`
-  double get titleLargeFontSize;
-
-  /// `typography.title.large.font-weight`
-  FontWeight get titleLargeFontWeight;
-
-  /// `typography.title.large.line-height`
-  double get titleLargeLineHeight;
-
-  /// `typography.title.large.letter-spacing`
-  double get titleLargeLetterSpacing;
-
-  /// `typography.title.medium.font-family`
-  String get titleMediumFontFamily;
-
-  /// `typography.title.medium.font-size`
-  double get titleMediumFontSize;
-
-  /// `typography.title.medium.font-weight`
-  FontWeight get titleMediumFontWeight;
-
-  /// `typography.title.medium.line-height`
-  double get titleMediumLineHeight;
-
-  /// `typography.title.medium.letter-spacing`
-  double get titleMediumLetterSpacing;
-
-  /// `typography.title.small.font-family`
-  String get titleSmallFontFamily;
-
-  /// `typography.title.small.font-size`
-  double get titleSmallFontSize;
-
-  /// `typography.title.small.font-weight`
-  FontWeight get titleSmallFontWeight;
-
-  /// `typography.title.small.line-height`
-  double get titleSmallLineHeight;
-
-  /// `typography.title.small.letter-spacing`
-  double get titleSmallLetterSpacing;
-
   /// `typography.body.large.font-family`
   String get bodyLargeFontFamily;
 
@@ -150,11 +15,11 @@ abstract interface class _ZetaTypographyLayer {
   /// `typography.body.large.font-weight`
   FontWeight get bodyLargeFontWeight;
 
-  /// `typography.body.large.line-height`
-  double get bodyLargeLineHeight;
-
   /// `typography.body.large.letter-spacing`
   double get bodyLargeLetterSpacing;
+
+  /// `typography.body.large.line-height`
+  double get bodyLargeLineHeight;
 
   /// `typography.body.medium.font-family`
   String get bodyMediumFontFamily;
@@ -165,11 +30,11 @@ abstract interface class _ZetaTypographyLayer {
   /// `typography.body.medium.font-weight`
   FontWeight get bodyMediumFontWeight;
 
-  /// `typography.body.medium.line-height`
-  double get bodyMediumLineHeight;
-
   /// `typography.body.medium.letter-spacing`
   double get bodyMediumLetterSpacing;
+
+  /// `typography.body.medium.line-height`
+  double get bodyMediumLineHeight;
 
   /// `typography.body.small.font-family`
   String get bodySmallFontFamily;
@@ -180,11 +45,11 @@ abstract interface class _ZetaTypographyLayer {
   /// `typography.body.small.font-weight`
   FontWeight get bodySmallFontWeight;
 
-  /// `typography.body.small.line-height`
-  double get bodySmallLineHeight;
-
   /// `typography.body.small.letter-spacing`
   double get bodySmallLetterSpacing;
+
+  /// `typography.body.small.line-height`
+  double get bodySmallLineHeight;
 
   /// `typography.body.xsmall.font-family`
   String get bodyXsmallFontFamily;
@@ -195,11 +60,101 @@ abstract interface class _ZetaTypographyLayer {
   /// `typography.body.xsmall.font-weight`
   FontWeight get bodyXsmallFontWeight;
 
+  /// `typography.body.xsmall.letter-spacing`
+  double get bodyXsmallLetterSpacing;
+
   /// `typography.body.xsmall.line-height`
   double get bodyXsmallLineHeight;
 
-  /// `typography.body.xsmall.letter-spacing`
-  double get bodyXsmallLetterSpacing;
+  /// `typography.display.large.font-family`
+  String get displayLargeFontFamily;
+
+  /// `typography.display.large.font-size`
+  double get displayLargeFontSize;
+
+  /// `typography.display.large.font-weight`
+  FontWeight get displayLargeFontWeight;
+
+  /// `typography.display.large.letter-spacing`
+  double get displayLargeLetterSpacing;
+
+  /// `typography.display.large.line-height`
+  double get displayLargeLineHeight;
+
+  /// `typography.display.medium.font-family`
+  String get displayMediumFontFamily;
+
+  /// `typography.display.medium.font-size`
+  double get displayMediumFontSize;
+
+  /// `typography.display.medium.font-weight`
+  FontWeight get displayMediumFontWeight;
+
+  /// `typography.display.medium.letter-spacing`
+  double get displayMediumLetterSpacing;
+
+  /// `typography.display.medium.line-height`
+  double get displayMediumLineHeight;
+
+  /// `typography.display.small.font-family`
+  String get displaySmallFontFamily;
+
+  /// `typography.display.small.font-size`
+  double get displaySmallFontSize;
+
+  /// `typography.display.small.font-weight`
+  FontWeight get displaySmallFontWeight;
+
+  /// `typography.display.small.letter-spacing`
+  double get displaySmallLetterSpacing;
+
+  /// `typography.display.small.line-height`
+  double get displaySmallLineHeight;
+
+  /// `typography.heading.large.font-family`
+  String get headingLargeFontFamily;
+
+  /// `typography.heading.large.font-size`
+  double get headingLargeFontSize;
+
+  /// `typography.heading.large.font-weight`
+  FontWeight get headingLargeFontWeight;
+
+  /// `typography.heading.large.letter-spacing`
+  double get headingLargeLetterSpacing;
+
+  /// `typography.heading.large.line-height`
+  double get headingLargeLineHeight;
+
+  /// `typography.heading.medium.font-family`
+  String get headingMediumFontFamily;
+
+  /// `typography.heading.medium.font-size`
+  double get headingMediumFontSize;
+
+  /// `typography.heading.medium.font-weight`
+  FontWeight get headingMediumFontWeight;
+
+  /// `typography.heading.medium.letter-spacing`
+  double get headingMediumLetterSpacing;
+
+  /// `typography.heading.medium.line-height`
+  double get headingMediumLineHeight;
+
+  /// `typography.heading.small.font-family`
+  String get headingSmallFontFamily;
+
+  /// `typography.heading.small.font-size`
+  double get headingSmallFontSize;
+
+  /// `typography.heading.small.font-weight`
+  FontWeight get headingSmallFontWeight;
+
+  /// `typography.heading.small.letter-spacing`
+  double get headingSmallLetterSpacing;
+
+  /// `typography.heading.small.line-height`
+  double get headingSmallLineHeight;
 
   /// `typography.indicator.medium.font-family`
   String get indicatorMediumFontFamily;
@@ -210,11 +165,11 @@ abstract interface class _ZetaTypographyLayer {
   /// `typography.indicator.medium.font-weight`
   FontWeight get indicatorMediumFontWeight;
 
-  /// `typography.indicator.medium.line-height`
-  double get indicatorMediumLineHeight;
-
   /// `typography.indicator.medium.letter-spacing`
   double get indicatorMediumLetterSpacing;
+
+  /// `typography.indicator.medium.line-height`
+  double get indicatorMediumLineHeight;
 
   /// `typography.indicator.small.font-family`
   String get indicatorSmallFontFamily;
@@ -225,11 +180,11 @@ abstract interface class _ZetaTypographyLayer {
   /// `typography.indicator.small.font-weight`
   FontWeight get indicatorSmallFontWeight;
 
-  /// `typography.indicator.small.line-height`
-  double get indicatorSmallLineHeight;
-
   /// `typography.indicator.small.letter-spacing`
   double get indicatorSmallLetterSpacing;
+
+  /// `typography.indicator.small.line-height`
+  double get indicatorSmallLineHeight;
 
   /// `typography.label.large.font-family`
   String get labelLargeFontFamily;
@@ -240,11 +195,11 @@ abstract interface class _ZetaTypographyLayer {
   /// `typography.label.large.font-weight`
   FontWeight get labelLargeFontWeight;
 
-  /// `typography.label.large.line-height`
-  double get labelLargeLineHeight;
-
   /// `typography.label.large.letter-spacing`
   double get labelLargeLetterSpacing;
+
+  /// `typography.label.large.line-height`
+  double get labelLargeLineHeight;
 
   /// `typography.label.medium.font-family`
   String get labelMediumFontFamily;
@@ -255,11 +210,11 @@ abstract interface class _ZetaTypographyLayer {
   /// `typography.label.medium.font-weight`
   FontWeight get labelMediumFontWeight;
 
-  /// `typography.label.medium.line-height`
-  double get labelMediumLineHeight;
-
   /// `typography.label.medium.letter-spacing`
   double get labelMediumLetterSpacing;
+
+  /// `typography.label.medium.line-height`
+  double get labelMediumLineHeight;
 
   /// `typography.label.small.font-family`
   String get labelSmallFontFamily;
@@ -270,11 +225,56 @@ abstract interface class _ZetaTypographyLayer {
   /// `typography.label.small.font-weight`
   FontWeight get labelSmallFontWeight;
 
+  /// `typography.label.small.letter-spacing`
+  double get labelSmallLetterSpacing;
+
   /// `typography.label.small.line-height`
   double get labelSmallLineHeight;
 
-  /// `typography.label.small.letter-spacing`
-  double get labelSmallLetterSpacing;
+  /// `typography.title.large.font-family`
+  String get titleLargeFontFamily;
+
+  /// `typography.title.large.font-size`
+  double get titleLargeFontSize;
+
+  /// `typography.title.large.font-weight`
+  FontWeight get titleLargeFontWeight;
+
+  /// `typography.title.large.letter-spacing`
+  double get titleLargeLetterSpacing;
+
+  /// `typography.title.large.line-height`
+  double get titleLargeLineHeight;
+
+  /// `typography.title.medium.font-family`
+  String get titleMediumFontFamily;
+
+  /// `typography.title.medium.font-size`
+  double get titleMediumFontSize;
+
+  /// `typography.title.medium.font-weight`
+  FontWeight get titleMediumFontWeight;
+
+  /// `typography.title.medium.letter-spacing`
+  double get titleMediumLetterSpacing;
+
+  /// `typography.title.medium.line-height`
+  double get titleMediumLineHeight;
+
+  /// `typography.title.small.font-family`
+  String get titleSmallFontFamily;
+
+  /// `typography.title.small.font-size`
+  double get titleSmallFontSize;
+
+  /// `typography.title.small.font-weight`
+  FontWeight get titleSmallFontWeight;
+
+  /// `typography.title.small.letter-spacing`
+  double get titleSmallLetterSpacing;
+
+  /// `typography.title.small.line-height`
+  double get titleSmallLineHeight;
 }
 
 final class _ZetaTypographyZetaMobile implements _ZetaTypographyLayer {
@@ -283,141 +283,6 @@ final class _ZetaTypographyZetaMobile implements _ZetaTypographyLayer {
   final ZetaPrimitiveTokens _p;
 
   @override
-  String get displayLargeFontFamily => _p.textFontFamilyIBMPlexSans;
-
-  @override
-  double get displayLargeFontSize => _p.textFontSize52;
-
-  @override
-  FontWeight get displayLargeFontWeight => _p.textFontWeightLight;
-
-  @override
-  double get displayLargeLineHeight => _p.textLineHeight60;
-
-  @override
-  double get displayLargeLetterSpacing => _p.textLetterSpacingNone;
-
-  @override
-  String get displayMediumFontFamily => _p.textFontFamilyIBMPlexSans;
-
-  @override
-  double get displayMediumFontSize => _p.textFontSize44;
-
-  @override
-  FontWeight get displayMediumFontWeight => _p.textFontWeightLight;
-
-  @override
-  double get displayMediumLineHeight => _p.textLineHeight52;
-
-  @override
-  double get displayMediumLetterSpacing => _p.textLetterSpacingNone;
-
-  @override
-  String get displaySmallFontFamily => _p.textFontFamilyIBMPlexSans;
-
-  @override
-  double get displaySmallFontSize => _p.textFontSize36;
-
-  @override
-  FontWeight get displaySmallFontWeight => _p.textFontWeightLight;
-
-  @override
-  double get displaySmallLineHeight => _p.textLineHeight40;
-
-  @override
-  double get displaySmallLetterSpacing => _p.textLetterSpacingNone;
-
-  @override
-  String get headingLargeFontFamily => _p.textFontFamilyIBMPlexSans;
-
-  @override
-  double get headingLargeFontSize => _p.textFontSize32;
-
-  @override
-  FontWeight get headingLargeFontWeight => _p.textFontWeightRegular;
-
-  @override
-  double get headingLargeLineHeight => _p.textLineHeight36;
-
-  @override
-  double get headingLargeLetterSpacing => _p.textLetterSpacingNone;
-
-  @override
-  String get headingMediumFontFamily => _p.textFontFamilyIBMPlexSans;
-
-  @override
-  double get headingMediumFontSize => _p.textFontSize28;
-
-  @override
-  FontWeight get headingMediumFontWeight => _p.textFontWeightRegular;
-
-  @override
-  double get headingMediumLineHeight => _p.textLineHeight32;
-
-  @override
-  double get headingMediumLetterSpacing => _p.textLetterSpacingNone;
-
-  @override
-  String get headingSmallFontFamily => _p.textFontFamilyIBMPlexSans;
-
-  @override
-  double get headingSmallFontSize => _p.textFontSize24;
-
-  @override
-  FontWeight get headingSmallFontWeight => _p.textFontWeightRegular;
-
-  @override
-  double get headingSmallLineHeight => _p.textLineHeight28;
-
-  @override
-  double get headingSmallLetterSpacing => _p.textLetterSpacingNone;
-
-  @override
-  String get titleLargeFontFamily => _p.textFontFamilyIBMPlexSans;
-
-  @override
-  double get titleLargeFontSize => _p.textFontSize20;
-
-  @override
-  FontWeight get titleLargeFontWeight => _p.textFontWeightMedium;
-
-  @override
-  double get titleLargeLineHeight => _p.textLineHeight24;
-
-  @override
-  double get titleLargeLetterSpacing => _p.textLetterSpacingNone;
-
-  @override
-  String get titleMediumFontFamily => _p.textFontFamilyIBMPlexSans;
-
-  @override
-  double get titleMediumFontSize => _p.textFontSize16;
-
-  @override
-  FontWeight get titleMediumFontWeight => _p.textFontWeightMedium;
-
-  @override
-  double get titleMediumLineHeight => _p.textLineHeight20;
-
-  @override
-  double get titleMediumLetterSpacing => _p.textLetterSpacingNone;
-
-  @override
-  String get titleSmallFontFamily => _p.textFontFamilyIBMPlexSans;
-
-  @override
-  double get titleSmallFontSize => _p.textFontSize12;
-
-  @override
-  FontWeight get titleSmallFontWeight => _p.textFontWeightMedium;
-
-  @override
-  double get titleSmallLineHeight => _p.textLineHeight16;
-
-  @override
-  double get titleSmallLetterSpacing => _p.textLetterSpacingNone;
-
-  @override
   String get bodyLargeFontFamily => _p.textFontFamilyIBMPlexSans;
 
   @override
@@ -427,10 +292,10 @@ final class _ZetaTypographyZetaMobile implements _ZetaTypographyLayer {
   FontWeight get bodyLargeFontWeight => _p.textFontWeightRegular;
 
   @override
-  double get bodyLargeLineHeight => _p.textLineHeight24;
+  double get bodyLargeLetterSpacing => _p.textLetterSpacingNone;
 
   @override
-  double get bodyLargeLetterSpacing => _p.textLetterSpacingNone;
+  double get bodyLargeLineHeight => _p.textLineHeight24;
 
   @override
   String get bodyMediumFontFamily => _p.textFontFamilyIBMPlexSans;
@@ -442,10 +307,10 @@ final class _ZetaTypographyZetaMobile implements _ZetaTypographyLayer {
   FontWeight get bodyMediumFontWeight => _p.textFontWeightRegular;
 
   @override
-  double get bodyMediumLineHeight => _p.textLineHeight24;
+  double get bodyMediumLetterSpacing => _p.textLetterSpacingNone;
 
   @override
-  double get bodyMediumLetterSpacing => _p.textLetterSpacingNone;
+  double get bodyMediumLineHeight => _p.textLineHeight24;
 
   @override
   String get bodySmallFontFamily => _p.textFontFamilyIBMPlexSans;
@@ -457,10 +322,10 @@ final class _ZetaTypographyZetaMobile implements _ZetaTypographyLayer {
   FontWeight get bodySmallFontWeight => _p.textFontWeightRegular;
 
   @override
-  double get bodySmallLineHeight => _p.textLineHeight18;
+  double get bodySmallLetterSpacing => _p.textLetterSpacingNone;
 
   @override
-  double get bodySmallLetterSpacing => _p.textLetterSpacingNone;
+  double get bodySmallLineHeight => _p.textLineHeight18;
 
   @override
   String get bodyXsmallFontFamily => _p.textFontFamilyIBMPlexSans;
@@ -472,10 +337,100 @@ final class _ZetaTypographyZetaMobile implements _ZetaTypographyLayer {
   FontWeight get bodyXsmallFontWeight => _p.textFontWeightRegular;
 
   @override
+  double get bodyXsmallLetterSpacing => _p.textLetterSpacingNone;
+
+  @override
   double get bodyXsmallLineHeight => _p.textLineHeight16;
 
   @override
-  double get bodyXsmallLetterSpacing => _p.textLetterSpacingNone;
+  String get displayLargeFontFamily => _p.textFontFamilyIBMPlexSans;
+
+  @override
+  double get displayLargeFontSize => _p.textFontSize52;
+
+  @override
+  FontWeight get displayLargeFontWeight => _p.textFontWeightLight;
+
+  @override
+  double get displayLargeLetterSpacing => _p.textLetterSpacingNone;
+
+  @override
+  double get displayLargeLineHeight => _p.textLineHeight60;
+
+  @override
+  String get displayMediumFontFamily => _p.textFontFamilyIBMPlexSans;
+
+  @override
+  double get displayMediumFontSize => _p.textFontSize44;
+
+  @override
+  FontWeight get displayMediumFontWeight => _p.textFontWeightLight;
+
+  @override
+  double get displayMediumLetterSpacing => _p.textLetterSpacingNone;
+
+  @override
+  double get displayMediumLineHeight => _p.textLineHeight52;
+
+  @override
+  String get displaySmallFontFamily => _p.textFontFamilyIBMPlexSans;
+
+  @override
+  double get displaySmallFontSize => _p.textFontSize36;
+
+  @override
+  FontWeight get displaySmallFontWeight => _p.textFontWeightLight;
+
+  @override
+  double get displaySmallLetterSpacing => _p.textLetterSpacingNone;
+
+  @override
+  double get displaySmallLineHeight => _p.textLineHeight40;
+
+  @override
+  String get headingLargeFontFamily => _p.textFontFamilyIBMPlexSans;
+
+  @override
+  double get headingLargeFontSize => _p.textFontSize32;
+
+  @override
+  FontWeight get headingLargeFontWeight => _p.textFontWeightRegular;
+
+  @override
+  double get headingLargeLetterSpacing => _p.textLetterSpacingNone;
+
+  @override
+  double get headingLargeLineHeight => _p.textLineHeight36;
+
+  @override
+  String get headingMediumFontFamily => _p.textFontFamilyIBMPlexSans;
+
+  @override
+  double get headingMediumFontSize => _p.textFontSize28;
+
+  @override
+  FontWeight get headingMediumFontWeight => _p.textFontWeightRegular;
+
+  @override
+  double get headingMediumLetterSpacing => _p.textLetterSpacingNone;
+
+  @override
+  double get headingMediumLineHeight => _p.textLineHeight32;
+
+  @override
+  String get headingSmallFontFamily => _p.textFontFamilyIBMPlexSans;
+
+  @override
+  double get headingSmallFontSize => _p.textFontSize24;
+
+  @override
+  FontWeight get headingSmallFontWeight => _p.textFontWeightRegular;
+
+  @override
+  double get headingSmallLetterSpacing => _p.textLetterSpacingNone;
+
+  @override
+  double get headingSmallLineHeight => _p.textLineHeight28;
 
   @override
   String get indicatorMediumFontFamily => _p.textFontFamilyIBMPlexSans;
@@ -487,10 +442,10 @@ final class _ZetaTypographyZetaMobile implements _ZetaTypographyLayer {
   FontWeight get indicatorMediumFontWeight => _p.textFontWeightMedium;
 
   @override
-  double get indicatorMediumLineHeight => _p.textLineHeight14;
+  double get indicatorMediumLetterSpacing => _p.textLetterSpacingNone;
 
   @override
-  double get indicatorMediumLetterSpacing => _p.textLetterSpacingNone;
+  double get indicatorMediumLineHeight => _p.textLineHeight14;
 
   @override
   String get indicatorSmallFontFamily => _p.textFontFamilyIBMPlexSans;
@@ -502,10 +457,10 @@ final class _ZetaTypographyZetaMobile implements _ZetaTypographyLayer {
   FontWeight get indicatorSmallFontWeight => _p.textFontWeightRegular;
 
   @override
-  double get indicatorSmallLineHeight => _p.textLineHeight12;
+  double get indicatorSmallLetterSpacing => _p.textLetterSpacingNone;
 
   @override
-  double get indicatorSmallLetterSpacing => _p.textLetterSpacingNone;
+  double get indicatorSmallLineHeight => _p.textLineHeight12;
 
   @override
   String get labelLargeFontFamily => _p.textFontFamilyIBMPlexSans;
@@ -517,10 +472,10 @@ final class _ZetaTypographyZetaMobile implements _ZetaTypographyLayer {
   FontWeight get labelLargeFontWeight => _p.textFontWeightMedium;
 
   @override
-  double get labelLargeLineHeight => _p.textLineHeight24;
+  double get labelLargeLetterSpacing => _p.textLetterSpacingNone;
 
   @override
-  double get labelLargeLetterSpacing => _p.textLetterSpacingNone;
+  double get labelLargeLineHeight => _p.textLineHeight24;
 
   @override
   String get labelMediumFontFamily => _p.textFontFamilyIBMPlexSans;
@@ -532,10 +487,10 @@ final class _ZetaTypographyZetaMobile implements _ZetaTypographyLayer {
   FontWeight get labelMediumFontWeight => _p.textFontWeightMedium;
 
   @override
-  double get labelMediumLineHeight => _p.textLineHeight20;
+  double get labelMediumLetterSpacing => _p.textLetterSpacingNone;
 
   @override
-  double get labelMediumLetterSpacing => _p.textLetterSpacingNone;
+  double get labelMediumLineHeight => _p.textLineHeight20;
 
   @override
   String get labelSmallFontFamily => _p.textFontFamilyIBMPlexSans;
@@ -547,10 +502,55 @@ final class _ZetaTypographyZetaMobile implements _ZetaTypographyLayer {
   FontWeight get labelSmallFontWeight => _p.textFontWeightMedium;
 
   @override
+  double get labelSmallLetterSpacing => _p.textLetterSpacingNone;
+
+  @override
   double get labelSmallLineHeight => _p.textLineHeight16;
 
   @override
-  double get labelSmallLetterSpacing => _p.textLetterSpacingNone;
+  String get titleLargeFontFamily => _p.textFontFamilyIBMPlexSans;
+
+  @override
+  double get titleLargeFontSize => _p.textFontSize20;
+
+  @override
+  FontWeight get titleLargeFontWeight => _p.textFontWeightMedium;
+
+  @override
+  double get titleLargeLetterSpacing => _p.textLetterSpacingNone;
+
+  @override
+  double get titleLargeLineHeight => _p.textLineHeight24;
+
+  @override
+  String get titleMediumFontFamily => _p.textFontFamilyIBMPlexSans;
+
+  @override
+  double get titleMediumFontSize => _p.textFontSize16;
+
+  @override
+  FontWeight get titleMediumFontWeight => _p.textFontWeightMedium;
+
+  @override
+  double get titleMediumLetterSpacing => _p.textLetterSpacingNone;
+
+  @override
+  double get titleMediumLineHeight => _p.textLineHeight20;
+
+  @override
+  String get titleSmallFontFamily => _p.textFontFamilyIBMPlexSans;
+
+  @override
+  double get titleSmallFontSize => _p.textFontSize12;
+
+  @override
+  FontWeight get titleSmallFontWeight => _p.textFontWeightMedium;
+
+  @override
+  double get titleSmallLetterSpacing => _p.textLetterSpacingNone;
+
+  @override
+  double get titleSmallLineHeight => _p.textLineHeight16;
 }
 
 final class _ZetaTypographyZetaTablet implements _ZetaTypographyLayer {
@@ -559,141 +559,6 @@ final class _ZetaTypographyZetaTablet implements _ZetaTypographyLayer {
   final ZetaPrimitiveTokens _p;
 
   @override
-  String get displayLargeFontFamily => _p.textFontFamilyIBMPlexSans;
-
-  @override
-  double get displayLargeFontSize => _p.textFontSize52;
-
-  @override
-  FontWeight get displayLargeFontWeight => _p.textFontWeightLight;
-
-  @override
-  double get displayLargeLineHeight => _p.textLineHeight60;
-
-  @override
-  double get displayLargeLetterSpacing => _p.textLetterSpacingNone;
-
-  @override
-  String get displayMediumFontFamily => _p.textFontFamilyIBMPlexSans;
-
-  @override
-  double get displayMediumFontSize => _p.textFontSize44;
-
-  @override
-  FontWeight get displayMediumFontWeight => _p.textFontWeightLight;
-
-  @override
-  double get displayMediumLineHeight => _p.textLineHeight52;
-
-  @override
-  double get displayMediumLetterSpacing => _p.textLetterSpacingNone;
-
-  @override
-  String get displaySmallFontFamily => _p.textFontFamilyIBMPlexSans;
-
-  @override
-  double get displaySmallFontSize => _p.textFontSize36;
-
-  @override
-  FontWeight get displaySmallFontWeight => _p.textFontWeightLight;
-
-  @override
-  double get displaySmallLineHeight => _p.textLineHeight40;
-
-  @override
-  double get displaySmallLetterSpacing => _p.textLetterSpacingNone;
-
-  @override
-  String get headingLargeFontFamily => _p.textFontFamilyIBMPlexSans;
-
-  @override
-  double get headingLargeFontSize => _p.textFontSize32;
-
-  @override
-  FontWeight get headingLargeFontWeight => _p.textFontWeightRegular;
-
-  @override
-  double get headingLargeLineHeight => _p.textLineHeight36;
-
-  @override
-  double get headingLargeLetterSpacing => _p.textLetterSpacingNone;
-
-  @override
-  String get headingMediumFontFamily => _p.textFontFamilyIBMPlexSans;
-
-  @override
-  double get headingMediumFontSize => _p.textFontSize28;
-
-  @override
-  FontWeight get headingMediumFontWeight => _p.textFontWeightRegular;
-
-  @override
-  double get headingMediumLineHeight => _p.textLineHeight32;
-
-  @override
-  double get headingMediumLetterSpacing => _p.textLetterSpacingNone;
-
-  @override
-  String get headingSmallFontFamily => _p.textFontFamilyIBMPlexSans;
-
-  @override
-  double get headingSmallFontSize => _p.textFontSize24;
-
-  @override
-  FontWeight get headingSmallFontWeight => _p.textFontWeightRegular;
-
-  @override
-  double get headingSmallLineHeight => _p.textLineHeight28;
-
-  @override
-  double get headingSmallLetterSpacing => _p.textLetterSpacingNone;
-
-  @override
-  String get titleLargeFontFamily => _p.textFontFamilyIBMPlexSans;
-
-  @override
-  double get titleLargeFontSize => _p.textFontSize20;
-
-  @override
-  FontWeight get titleLargeFontWeight => _p.textFontWeightMedium;
-
-  @override
-  double get titleLargeLineHeight => _p.textLineHeight24;
-
-  @override
-  double get titleLargeLetterSpacing => _p.textLetterSpacingNone;
-
-  @override
-  String get titleMediumFontFamily => _p.textFontFamilyIBMPlexSans;
-
-  @override
-  double get titleMediumFontSize => _p.textFontSize16;
-
-  @override
-  FontWeight get titleMediumFontWeight => _p.textFontWeightMedium;
-
-  @override
-  double get titleMediumLineHeight => _p.textLineHeight20;
-
-  @override
-  double get titleMediumLetterSpacing => _p.textLetterSpacingNone;
-
-  @override
-  String get titleSmallFontFamily => _p.textFontFamilyIBMPlexSans;
-
-  @override
-  double get titleSmallFontSize => _p.textFontSize12;
-
-  @override
-  FontWeight get titleSmallFontWeight => _p.textFontWeightMedium;
-
-  @override
-  double get titleSmallLineHeight => _p.textLineHeight16;
-
-  @override
-  double get titleSmallLetterSpacing => _p.textLetterSpacingNone;
-
-  @override
   String get bodyLargeFontFamily => _p.textFontFamilyIBMPlexSans;
 
   @override
@@ -703,10 +568,10 @@ final class _ZetaTypographyZetaTablet implements _ZetaTypographyLayer {
   FontWeight get bodyLargeFontWeight => _p.textFontWeightRegular;
 
   @override
-  double get bodyLargeLineHeight => _p.textLineHeight24;
+  double get bodyLargeLetterSpacing => _p.textLetterSpacingNone;
 
   @override
-  double get bodyLargeLetterSpacing => _p.textLetterSpacingNone;
+  double get bodyLargeLineHeight => _p.textLineHeight24;
 
   @override
   String get bodyMediumFontFamily => _p.textFontFamilyIBMPlexSans;
@@ -718,10 +583,10 @@ final class _ZetaTypographyZetaTablet implements _ZetaTypographyLayer {
   FontWeight get bodyMediumFontWeight => _p.textFontWeightRegular;
 
   @override
-  double get bodyMediumLineHeight => _p.textLineHeight24;
+  double get bodyMediumLetterSpacing => _p.textLetterSpacingNone;
 
   @override
-  double get bodyMediumLetterSpacing => _p.textLetterSpacingNone;
+  double get bodyMediumLineHeight => _p.textLineHeight24;
 
   @override
   String get bodySmallFontFamily => _p.textFontFamilyIBMPlexSans;
@@ -733,10 +598,10 @@ final class _ZetaTypographyZetaTablet implements _ZetaTypographyLayer {
   FontWeight get bodySmallFontWeight => _p.textFontWeightRegular;
 
   @override
-  double get bodySmallLineHeight => _p.textLineHeight18;
+  double get bodySmallLetterSpacing => _p.textLetterSpacingNone;
 
   @override
-  double get bodySmallLetterSpacing => _p.textLetterSpacingNone;
+  double get bodySmallLineHeight => _p.textLineHeight18;
 
   @override
   String get bodyXsmallFontFamily => _p.textFontFamilyIBMPlexSans;
@@ -748,10 +613,100 @@ final class _ZetaTypographyZetaTablet implements _ZetaTypographyLayer {
   FontWeight get bodyXsmallFontWeight => _p.textFontWeightRegular;
 
   @override
+  double get bodyXsmallLetterSpacing => _p.textLetterSpacingNone;
+
+  @override
   double get bodyXsmallLineHeight => _p.textLineHeight16;
 
   @override
-  double get bodyXsmallLetterSpacing => _p.textLetterSpacingNone;
+  String get displayLargeFontFamily => _p.textFontFamilyIBMPlexSans;
+
+  @override
+  double get displayLargeFontSize => _p.textFontSize52;
+
+  @override
+  FontWeight get displayLargeFontWeight => _p.textFontWeightLight;
+
+  @override
+  double get displayLargeLetterSpacing => _p.textLetterSpacingNone;
+
+  @override
+  double get displayLargeLineHeight => _p.textLineHeight60;
+
+  @override
+  String get displayMediumFontFamily => _p.textFontFamilyIBMPlexSans;
+
+  @override
+  double get displayMediumFontSize => _p.textFontSize44;
+
+  @override
+  FontWeight get displayMediumFontWeight => _p.textFontWeightLight;
+
+  @override
+  double get displayMediumLetterSpacing => _p.textLetterSpacingNone;
+
+  @override
+  double get displayMediumLineHeight => _p.textLineHeight52;
+
+  @override
+  String get displaySmallFontFamily => _p.textFontFamilyIBMPlexSans;
+
+  @override
+  double get displaySmallFontSize => _p.textFontSize36;
+
+  @override
+  FontWeight get displaySmallFontWeight => _p.textFontWeightLight;
+
+  @override
+  double get displaySmallLetterSpacing => _p.textLetterSpacingNone;
+
+  @override
+  double get displaySmallLineHeight => _p.textLineHeight40;
+
+  @override
+  String get headingLargeFontFamily => _p.textFontFamilyIBMPlexSans;
+
+  @override
+  double get headingLargeFontSize => _p.textFontSize32;
+
+  @override
+  FontWeight get headingLargeFontWeight => _p.textFontWeightRegular;
+
+  @override
+  double get headingLargeLetterSpacing => _p.textLetterSpacingNone;
+
+  @override
+  double get headingLargeLineHeight => _p.textLineHeight36;
+
+  @override
+  String get headingMediumFontFamily => _p.textFontFamilyIBMPlexSans;
+
+  @override
+  double get headingMediumFontSize => _p.textFontSize28;
+
+  @override
+  FontWeight get headingMediumFontWeight => _p.textFontWeightRegular;
+
+  @override
+  double get headingMediumLetterSpacing => _p.textLetterSpacingNone;
+
+  @override
+  double get headingMediumLineHeight => _p.textLineHeight32;
+
+  @override
+  String get headingSmallFontFamily => _p.textFontFamilyIBMPlexSans;
+
+  @override
+  double get headingSmallFontSize => _p.textFontSize24;
+
+  @override
+  FontWeight get headingSmallFontWeight => _p.textFontWeightRegular;
+
+  @override
+  double get headingSmallLetterSpacing => _p.textLetterSpacingNone;
+
+  @override
+  double get headingSmallLineHeight => _p.textLineHeight28;
 
   @override
   String get indicatorMediumFontFamily => _p.textFontFamilyIBMPlexSans;
@@ -763,10 +718,10 @@ final class _ZetaTypographyZetaTablet implements _ZetaTypographyLayer {
   FontWeight get indicatorMediumFontWeight => _p.textFontWeightMedium;
 
   @override
-  double get indicatorMediumLineHeight => _p.textLineHeight14;
+  double get indicatorMediumLetterSpacing => _p.textLetterSpacingNone;
 
   @override
-  double get indicatorMediumLetterSpacing => _p.textLetterSpacingNone;
+  double get indicatorMediumLineHeight => _p.textLineHeight14;
 
   @override
   String get indicatorSmallFontFamily => _p.textFontFamilyIBMPlexSans;
@@ -778,10 +733,10 @@ final class _ZetaTypographyZetaTablet implements _ZetaTypographyLayer {
   FontWeight get indicatorSmallFontWeight => _p.textFontWeightRegular;
 
   @override
-  double get indicatorSmallLineHeight => _p.textLineHeight12;
+  double get indicatorSmallLetterSpacing => _p.textLetterSpacingNone;
 
   @override
-  double get indicatorSmallLetterSpacing => _p.textLetterSpacingNone;
+  double get indicatorSmallLineHeight => _p.textLineHeight12;
 
   @override
   String get labelLargeFontFamily => _p.textFontFamilyIBMPlexSans;
@@ -793,10 +748,10 @@ final class _ZetaTypographyZetaTablet implements _ZetaTypographyLayer {
   FontWeight get labelLargeFontWeight => _p.textFontWeightMedium;
 
   @override
-  double get labelLargeLineHeight => _p.textLineHeight24;
+  double get labelLargeLetterSpacing => _p.textLetterSpacingNone;
 
   @override
-  double get labelLargeLetterSpacing => _p.textLetterSpacingNone;
+  double get labelLargeLineHeight => _p.textLineHeight24;
 
   @override
   String get labelMediumFontFamily => _p.textFontFamilyIBMPlexSans;
@@ -808,10 +763,10 @@ final class _ZetaTypographyZetaTablet implements _ZetaTypographyLayer {
   FontWeight get labelMediumFontWeight => _p.textFontWeightMedium;
 
   @override
-  double get labelMediumLineHeight => _p.textLineHeight20;
+  double get labelMediumLetterSpacing => _p.textLetterSpacingNone;
 
   @override
-  double get labelMediumLetterSpacing => _p.textLetterSpacingNone;
+  double get labelMediumLineHeight => _p.textLineHeight20;
 
   @override
   String get labelSmallFontFamily => _p.textFontFamilyIBMPlexSans;
@@ -823,10 +778,55 @@ final class _ZetaTypographyZetaTablet implements _ZetaTypographyLayer {
   FontWeight get labelSmallFontWeight => _p.textFontWeightMedium;
 
   @override
+  double get labelSmallLetterSpacing => _p.textLetterSpacingNone;
+
+  @override
   double get labelSmallLineHeight => _p.textLineHeight16;
 
   @override
-  double get labelSmallLetterSpacing => _p.textLetterSpacingNone;
+  String get titleLargeFontFamily => _p.textFontFamilyIBMPlexSans;
+
+  @override
+  double get titleLargeFontSize => _p.textFontSize20;
+
+  @override
+  FontWeight get titleLargeFontWeight => _p.textFontWeightMedium;
+
+  @override
+  double get titleLargeLetterSpacing => _p.textLetterSpacingNone;
+
+  @override
+  double get titleLargeLineHeight => _p.textLineHeight24;
+
+  @override
+  String get titleMediumFontFamily => _p.textFontFamilyIBMPlexSans;
+
+  @override
+  double get titleMediumFontSize => _p.textFontSize16;
+
+  @override
+  FontWeight get titleMediumFontWeight => _p.textFontWeightMedium;
+
+  @override
+  double get titleMediumLetterSpacing => _p.textLetterSpacingNone;
+
+  @override
+  double get titleMediumLineHeight => _p.textLineHeight20;
+
+  @override
+  String get titleSmallFontFamily => _p.textFontFamilyIBMPlexSans;
+
+  @override
+  double get titleSmallFontSize => _p.textFontSize12;
+
+  @override
+  FontWeight get titleSmallFontWeight => _p.textFontWeightMedium;
+
+  @override
+  double get titleSmallLetterSpacing => _p.textLetterSpacingNone;
+
+  @override
+  double get titleSmallLineHeight => _p.textLineHeight16;
 }
 
 final class _ZetaTypographyZetaDesktop implements _ZetaTypographyLayer {
@@ -835,141 +835,6 @@ final class _ZetaTypographyZetaDesktop implements _ZetaTypographyLayer {
   final ZetaPrimitiveTokens _p;
 
   @override
-  String get displayLargeFontFamily => _p.textFontFamilyIBMPlexSans;
-
-  @override
-  double get displayLargeFontSize => _p.textFontSize52;
-
-  @override
-  FontWeight get displayLargeFontWeight => _p.textFontWeightLight;
-
-  @override
-  double get displayLargeLineHeight => _p.textLineHeight60;
-
-  @override
-  double get displayLargeLetterSpacing => _p.textLetterSpacingNone;
-
-  @override
-  String get displayMediumFontFamily => _p.textFontFamilyIBMPlexSans;
-
-  @override
-  double get displayMediumFontSize => _p.textFontSize44;
-
-  @override
-  FontWeight get displayMediumFontWeight => _p.textFontWeightLight;
-
-  @override
-  double get displayMediumLineHeight => _p.textLineHeight52;
-
-  @override
-  double get displayMediumLetterSpacing => _p.textLetterSpacingNone;
-
-  @override
-  String get displaySmallFontFamily => _p.textFontFamilyIBMPlexSans;
-
-  @override
-  double get displaySmallFontSize => _p.textFontSize36;
-
-  @override
-  FontWeight get displaySmallFontWeight => _p.textFontWeightLight;
-
-  @override
-  double get displaySmallLineHeight => _p.textLineHeight40;
-
-  @override
-  double get displaySmallLetterSpacing => _p.textLetterSpacingNone;
-
-  @override
-  String get headingLargeFontFamily => _p.textFontFamilyIBMPlexSans;
-
-  @override
-  double get headingLargeFontSize => _p.textFontSize32;
-
-  @override
-  FontWeight get headingLargeFontWeight => _p.textFontWeightRegular;
-
-  @override
-  double get headingLargeLineHeight => _p.textLineHeight36;
-
-  @override
-  double get headingLargeLetterSpacing => _p.textLetterSpacingNone;
-
-  @override
-  String get headingMediumFontFamily => _p.textFontFamilyIBMPlexSans;
-
-  @override
-  double get headingMediumFontSize => _p.textFontSize28;
-
-  @override
-  FontWeight get headingMediumFontWeight => _p.textFontWeightRegular;
-
-  @override
-  double get headingMediumLineHeight => _p.textLineHeight32;
-
-  @override
-  double get headingMediumLetterSpacing => _p.textLetterSpacingNone;
-
-  @override
-  String get headingSmallFontFamily => _p.textFontFamilyIBMPlexSans;
-
-  @override
-  double get headingSmallFontSize => _p.textFontSize24;
-
-  @override
-  FontWeight get headingSmallFontWeight => _p.textFontWeightRegular;
-
-  @override
-  double get headingSmallLineHeight => _p.textLineHeight28;
-
-  @override
-  double get headingSmallLetterSpacing => _p.textLetterSpacingNone;
-
-  @override
-  String get titleLargeFontFamily => _p.textFontFamilyIBMPlexSans;
-
-  @override
-  double get titleLargeFontSize => _p.textFontSize20;
-
-  @override
-  FontWeight get titleLargeFontWeight => _p.textFontWeightMedium;
-
-  @override
-  double get titleLargeLineHeight => _p.textLineHeight24;
-
-  @override
-  double get titleLargeLetterSpacing => _p.textLetterSpacingNone;
-
-  @override
-  String get titleMediumFontFamily => _p.textFontFamilyIBMPlexSans;
-
-  @override
-  double get titleMediumFontSize => _p.textFontSize16;
-
-  @override
-  FontWeight get titleMediumFontWeight => _p.textFontWeightMedium;
-
-  @override
-  double get titleMediumLineHeight => _p.textLineHeight20;
-
-  @override
-  double get titleMediumLetterSpacing => _p.textLetterSpacingNone;
-
-  @override
-  String get titleSmallFontFamily => _p.textFontFamilyIBMPlexSans;
-
-  @override
-  double get titleSmallFontSize => _p.textFontSize12;
-
-  @override
-  FontWeight get titleSmallFontWeight => _p.textFontWeightMedium;
-
-  @override
-  double get titleSmallLineHeight => _p.textLineHeight16;
-
-  @override
-  double get titleSmallLetterSpacing => _p.textLetterSpacingNone;
-
-  @override
   String get bodyLargeFontFamily => _p.textFontFamilyIBMPlexSans;
 
   @override
@@ -979,10 +844,10 @@ final class _ZetaTypographyZetaDesktop implements _ZetaTypographyLayer {
   FontWeight get bodyLargeFontWeight => _p.textFontWeightRegular;
 
   @override
-  double get bodyLargeLineHeight => _p.textLineHeight24;
+  double get bodyLargeLetterSpacing => _p.textLetterSpacingNone;
 
   @override
-  double get bodyLargeLetterSpacing => _p.textLetterSpacingNone;
+  double get bodyLargeLineHeight => _p.textLineHeight24;
 
   @override
   String get bodyMediumFontFamily => _p.textFontFamilyIBMPlexSans;
@@ -994,10 +859,10 @@ final class _ZetaTypographyZetaDesktop implements _ZetaTypographyLayer {
   FontWeight get bodyMediumFontWeight => _p.textFontWeightRegular;
 
   @override
-  double get bodyMediumLineHeight => _p.textLineHeight24;
+  double get bodyMediumLetterSpacing => _p.textLetterSpacingNone;
 
   @override
-  double get bodyMediumLetterSpacing => _p.textLetterSpacingNone;
+  double get bodyMediumLineHeight => _p.textLineHeight24;
 
   @override
   String get bodySmallFontFamily => _p.textFontFamilyIBMPlexSans;
@@ -1009,10 +874,10 @@ final class _ZetaTypographyZetaDesktop implements _ZetaTypographyLayer {
   FontWeight get bodySmallFontWeight => _p.textFontWeightRegular;
 
   @override
-  double get bodySmallLineHeight => _p.textLineHeight18;
+  double get bodySmallLetterSpacing => _p.textLetterSpacingNone;
 
   @override
-  double get bodySmallLetterSpacing => _p.textLetterSpacingNone;
+  double get bodySmallLineHeight => _p.textLineHeight18;
 
   @override
   String get bodyXsmallFontFamily => _p.textFontFamilyIBMPlexSans;
@@ -1024,10 +889,100 @@ final class _ZetaTypographyZetaDesktop implements _ZetaTypographyLayer {
   FontWeight get bodyXsmallFontWeight => _p.textFontWeightRegular;
 
   @override
+  double get bodyXsmallLetterSpacing => _p.textLetterSpacingNone;
+
+  @override
   double get bodyXsmallLineHeight => _p.textLineHeight16;
 
   @override
-  double get bodyXsmallLetterSpacing => _p.textLetterSpacingNone;
+  String get displayLargeFontFamily => _p.textFontFamilyIBMPlexSans;
+
+  @override
+  double get displayLargeFontSize => _p.textFontSize52;
+
+  @override
+  FontWeight get displayLargeFontWeight => _p.textFontWeightLight;
+
+  @override
+  double get displayLargeLetterSpacing => _p.textLetterSpacingNone;
+
+  @override
+  double get displayLargeLineHeight => _p.textLineHeight60;
+
+  @override
+  String get displayMediumFontFamily => _p.textFontFamilyIBMPlexSans;
+
+  @override
+  double get displayMediumFontSize => _p.textFontSize44;
+
+  @override
+  FontWeight get displayMediumFontWeight => _p.textFontWeightLight;
+
+  @override
+  double get displayMediumLetterSpacing => _p.textLetterSpacingNone;
+
+  @override
+  double get displayMediumLineHeight => _p.textLineHeight52;
+
+  @override
+  String get displaySmallFontFamily => _p.textFontFamilyIBMPlexSans;
+
+  @override
+  double get displaySmallFontSize => _p.textFontSize36;
+
+  @override
+  FontWeight get displaySmallFontWeight => _p.textFontWeightLight;
+
+  @override
+  double get displaySmallLetterSpacing => _p.textLetterSpacingNone;
+
+  @override
+  double get displaySmallLineHeight => _p.textLineHeight40;
+
+  @override
+  String get headingLargeFontFamily => _p.textFontFamilyIBMPlexSans;
+
+  @override
+  double get headingLargeFontSize => _p.textFontSize32;
+
+  @override
+  FontWeight get headingLargeFontWeight => _p.textFontWeightRegular;
+
+  @override
+  double get headingLargeLetterSpacing => _p.textLetterSpacingNone;
+
+  @override
+  double get headingLargeLineHeight => _p.textLineHeight36;
+
+  @override
+  String get headingMediumFontFamily => _p.textFontFamilyIBMPlexSans;
+
+  @override
+  double get headingMediumFontSize => _p.textFontSize28;
+
+  @override
+  FontWeight get headingMediumFontWeight => _p.textFontWeightRegular;
+
+  @override
+  double get headingMediumLetterSpacing => _p.textLetterSpacingNone;
+
+  @override
+  double get headingMediumLineHeight => _p.textLineHeight32;
+
+  @override
+  String get headingSmallFontFamily => _p.textFontFamilyIBMPlexSans;
+
+  @override
+  double get headingSmallFontSize => _p.textFontSize24;
+
+  @override
+  FontWeight get headingSmallFontWeight => _p.textFontWeightRegular;
+
+  @override
+  double get headingSmallLetterSpacing => _p.textLetterSpacingNone;
+
+  @override
+  double get headingSmallLineHeight => _p.textLineHeight28;
 
   @override
   String get indicatorMediumFontFamily => _p.textFontFamilyIBMPlexSans;
@@ -1039,10 +994,10 @@ final class _ZetaTypographyZetaDesktop implements _ZetaTypographyLayer {
   FontWeight get indicatorMediumFontWeight => _p.textFontWeightMedium;
 
   @override
-  double get indicatorMediumLineHeight => _p.textLineHeight14;
+  double get indicatorMediumLetterSpacing => _p.textLetterSpacingNone;
 
   @override
-  double get indicatorMediumLetterSpacing => _p.textLetterSpacingNone;
+  double get indicatorMediumLineHeight => _p.textLineHeight14;
 
   @override
   String get indicatorSmallFontFamily => _p.textFontFamilyIBMPlexSans;
@@ -1054,10 +1009,10 @@ final class _ZetaTypographyZetaDesktop implements _ZetaTypographyLayer {
   FontWeight get indicatorSmallFontWeight => _p.textFontWeightRegular;
 
   @override
-  double get indicatorSmallLineHeight => _p.textLineHeight12;
+  double get indicatorSmallLetterSpacing => _p.textLetterSpacingNone;
 
   @override
-  double get indicatorSmallLetterSpacing => _p.textLetterSpacingNone;
+  double get indicatorSmallLineHeight => _p.textLineHeight12;
 
   @override
   String get labelLargeFontFamily => _p.textFontFamilyIBMPlexSans;
@@ -1069,10 +1024,10 @@ final class _ZetaTypographyZetaDesktop implements _ZetaTypographyLayer {
   FontWeight get labelLargeFontWeight => _p.textFontWeightMedium;
 
   @override
-  double get labelLargeLineHeight => _p.textLineHeight24;
+  double get labelLargeLetterSpacing => _p.textLetterSpacingNone;
 
   @override
-  double get labelLargeLetterSpacing => _p.textLetterSpacingNone;
+  double get labelLargeLineHeight => _p.textLineHeight24;
 
   @override
   String get labelMediumFontFamily => _p.textFontFamilyIBMPlexSans;
@@ -1084,10 +1039,10 @@ final class _ZetaTypographyZetaDesktop implements _ZetaTypographyLayer {
   FontWeight get labelMediumFontWeight => _p.textFontWeightMedium;
 
   @override
-  double get labelMediumLineHeight => _p.textLineHeight20;
+  double get labelMediumLetterSpacing => _p.textLetterSpacingNone;
 
   @override
-  double get labelMediumLetterSpacing => _p.textLetterSpacingNone;
+  double get labelMediumLineHeight => _p.textLineHeight20;
 
   @override
   String get labelSmallFontFamily => _p.textFontFamilyIBMPlexSans;
@@ -1099,10 +1054,55 @@ final class _ZetaTypographyZetaDesktop implements _ZetaTypographyLayer {
   FontWeight get labelSmallFontWeight => _p.textFontWeightMedium;
 
   @override
+  double get labelSmallLetterSpacing => _p.textLetterSpacingNone;
+
+  @override
   double get labelSmallLineHeight => _p.textLineHeight16;
 
   @override
-  double get labelSmallLetterSpacing => _p.textLetterSpacingNone;
+  String get titleLargeFontFamily => _p.textFontFamilyIBMPlexSans;
+
+  @override
+  double get titleLargeFontSize => _p.textFontSize20;
+
+  @override
+  FontWeight get titleLargeFontWeight => _p.textFontWeightMedium;
+
+  @override
+  double get titleLargeLetterSpacing => _p.textLetterSpacingNone;
+
+  @override
+  double get titleLargeLineHeight => _p.textLineHeight24;
+
+  @override
+  String get titleMediumFontFamily => _p.textFontFamilyIBMPlexSans;
+
+  @override
+  double get titleMediumFontSize => _p.textFontSize16;
+
+  @override
+  FontWeight get titleMediumFontWeight => _p.textFontWeightMedium;
+
+  @override
+  double get titleMediumLetterSpacing => _p.textLetterSpacingNone;
+
+  @override
+  double get titleMediumLineHeight => _p.textLineHeight20;
+
+  @override
+  String get titleSmallFontFamily => _p.textFontFamilyIBMPlexSans;
+
+  @override
+  double get titleSmallFontSize => _p.textFontSize12;
+
+  @override
+  FontWeight get titleSmallFontWeight => _p.textFontWeightMedium;
+
+  @override
+  double get titleSmallLetterSpacing => _p.textLetterSpacingNone;
+
+  @override
+  double get titleSmallLineHeight => _p.textLineHeight16;
 }
 
 final class _ZetaTypographyZetaDesktopCompact implements _ZetaTypographyLayer {
@@ -1111,141 +1111,6 @@ final class _ZetaTypographyZetaDesktopCompact implements _ZetaTypographyLayer {
   final ZetaPrimitiveTokens _p;
 
   @override
-  String get displayLargeFontFamily => _p.textFontFamilyIBMPlexSans;
-
-  @override
-  double get displayLargeFontSize => _p.textFontSize52;
-
-  @override
-  FontWeight get displayLargeFontWeight => _p.textFontWeightLight;
-
-  @override
-  double get displayLargeLineHeight => _p.textLineHeight60;
-
-  @override
-  double get displayLargeLetterSpacing => _p.textLetterSpacingNone;
-
-  @override
-  String get displayMediumFontFamily => _p.textFontFamilyIBMPlexSans;
-
-  @override
-  double get displayMediumFontSize => _p.textFontSize44;
-
-  @override
-  FontWeight get displayMediumFontWeight => _p.textFontWeightLight;
-
-  @override
-  double get displayMediumLineHeight => _p.textLineHeight52;
-
-  @override
-  double get displayMediumLetterSpacing => _p.textLetterSpacingNone;
-
-  @override
-  String get displaySmallFontFamily => _p.textFontFamilyIBMPlexSans;
-
-  @override
-  double get displaySmallFontSize => _p.textFontSize36;
-
-  @override
-  FontWeight get displaySmallFontWeight => _p.textFontWeightLight;
-
-  @override
-  double get displaySmallLineHeight => _p.textLineHeight40;
-
-  @override
-  double get displaySmallLetterSpacing => _p.textLetterSpacingNone;
-
-  @override
-  String get headingLargeFontFamily => _p.textFontFamilyIBMPlexSans;
-
-  @override
-  double get headingLargeFontSize => _p.textFontSize32;
-
-  @override
-  FontWeight get headingLargeFontWeight => _p.textFontWeightRegular;
-
-  @override
-  double get headingLargeLineHeight => _p.textLineHeight36;
-
-  @override
-  double get headingLargeLetterSpacing => _p.textLetterSpacingNone;
-
-  @override
-  String get headingMediumFontFamily => _p.textFontFamilyIBMPlexSans;
-
-  @override
-  double get headingMediumFontSize => _p.textFontSize28;
-
-  @override
-  FontWeight get headingMediumFontWeight => _p.textFontWeightRegular;
-
-  @override
-  double get headingMediumLineHeight => _p.textLineHeight32;
-
-  @override
-  double get headingMediumLetterSpacing => _p.textLetterSpacingNone;
-
-  @override
-  String get headingSmallFontFamily => _p.textFontFamilyIBMPlexSans;
-
-  @override
-  double get headingSmallFontSize => _p.textFontSize24;
-
-  @override
-  FontWeight get headingSmallFontWeight => _p.textFontWeightRegular;
-
-  @override
-  double get headingSmallLineHeight => _p.textLineHeight28;
-
-  @override
-  double get headingSmallLetterSpacing => _p.textLetterSpacingNone;
-
-  @override
-  String get titleLargeFontFamily => _p.textFontFamilyIBMPlexSans;
-
-  @override
-  double get titleLargeFontSize => _p.textFontSize20;
-
-  @override
-  FontWeight get titleLargeFontWeight => _p.textFontWeightMedium;
-
-  @override
-  double get titleLargeLineHeight => _p.textLineHeight24;
-
-  @override
-  double get titleLargeLetterSpacing => _p.textLetterSpacingNone;
-
-  @override
-  String get titleMediumFontFamily => _p.textFontFamilyIBMPlexSans;
-
-  @override
-  double get titleMediumFontSize => _p.textFontSize16;
-
-  @override
-  FontWeight get titleMediumFontWeight => _p.textFontWeightMedium;
-
-  @override
-  double get titleMediumLineHeight => _p.textLineHeight20;
-
-  @override
-  double get titleMediumLetterSpacing => _p.textLetterSpacingNone;
-
-  @override
-  String get titleSmallFontFamily => _p.textFontFamilyIBMPlexSans;
-
-  @override
-  double get titleSmallFontSize => _p.textFontSize12;
-
-  @override
-  FontWeight get titleSmallFontWeight => _p.textFontWeightMedium;
-
-  @override
-  double get titleSmallLineHeight => _p.textLineHeight16;
-
-  @override
-  double get titleSmallLetterSpacing => _p.textLetterSpacingNone;
-
-  @override
   String get bodyLargeFontFamily => _p.textFontFamilyIBMPlexSans;
 
   @override
@@ -1255,10 +1120,10 @@ final class _ZetaTypographyZetaDesktopCompact implements _ZetaTypographyLayer {
   FontWeight get bodyLargeFontWeight => _p.textFontWeightRegular;
 
   @override
-  double get bodyLargeLineHeight => _p.textLineHeight24;
+  double get bodyLargeLetterSpacing => _p.textLetterSpacingNone;
 
   @override
-  double get bodyLargeLetterSpacing => _p.textLetterSpacingNone;
+  double get bodyLargeLineHeight => _p.textLineHeight24;
 
   @override
   String get bodyMediumFontFamily => _p.textFontFamilyIBMPlexSans;
@@ -1270,10 +1135,10 @@ final class _ZetaTypographyZetaDesktopCompact implements _ZetaTypographyLayer {
   FontWeight get bodyMediumFontWeight => _p.textFontWeightRegular;
 
   @override
-  double get bodyMediumLineHeight => _p.textLineHeight24;
+  double get bodyMediumLetterSpacing => _p.textLetterSpacingNone;
 
   @override
-  double get bodyMediumLetterSpacing => _p.textLetterSpacingNone;
+  double get bodyMediumLineHeight => _p.textLineHeight24;
 
   @override
   String get bodySmallFontFamily => _p.textFontFamilyIBMPlexSans;
@@ -1285,10 +1150,10 @@ final class _ZetaTypographyZetaDesktopCompact implements _ZetaTypographyLayer {
   FontWeight get bodySmallFontWeight => _p.textFontWeightRegular;
 
   @override
-  double get bodySmallLineHeight => _p.textLineHeight18;
+  double get bodySmallLetterSpacing => _p.textLetterSpacingNone;
 
   @override
-  double get bodySmallLetterSpacing => _p.textLetterSpacingNone;
+  double get bodySmallLineHeight => _p.textLineHeight18;
 
   @override
   String get bodyXsmallFontFamily => _p.textFontFamilyIBMPlexSans;
@@ -1300,10 +1165,100 @@ final class _ZetaTypographyZetaDesktopCompact implements _ZetaTypographyLayer {
   FontWeight get bodyXsmallFontWeight => _p.textFontWeightRegular;
 
   @override
+  double get bodyXsmallLetterSpacing => _p.textLetterSpacingNone;
+
+  @override
   double get bodyXsmallLineHeight => _p.textLineHeight16;
 
   @override
-  double get bodyXsmallLetterSpacing => _p.textLetterSpacingNone;
+  String get displayLargeFontFamily => _p.textFontFamilyIBMPlexSans;
+
+  @override
+  double get displayLargeFontSize => _p.textFontSize52;
+
+  @override
+  FontWeight get displayLargeFontWeight => _p.textFontWeightLight;
+
+  @override
+  double get displayLargeLetterSpacing => _p.textLetterSpacingNone;
+
+  @override
+  double get displayLargeLineHeight => _p.textLineHeight60;
+
+  @override
+  String get displayMediumFontFamily => _p.textFontFamilyIBMPlexSans;
+
+  @override
+  double get displayMediumFontSize => _p.textFontSize44;
+
+  @override
+  FontWeight get displayMediumFontWeight => _p.textFontWeightLight;
+
+  @override
+  double get displayMediumLetterSpacing => _p.textLetterSpacingNone;
+
+  @override
+  double get displayMediumLineHeight => _p.textLineHeight52;
+
+  @override
+  String get displaySmallFontFamily => _p.textFontFamilyIBMPlexSans;
+
+  @override
+  double get displaySmallFontSize => _p.textFontSize36;
+
+  @override
+  FontWeight get displaySmallFontWeight => _p.textFontWeightLight;
+
+  @override
+  double get displaySmallLetterSpacing => _p.textLetterSpacingNone;
+
+  @override
+  double get displaySmallLineHeight => _p.textLineHeight40;
+
+  @override
+  String get headingLargeFontFamily => _p.textFontFamilyIBMPlexSans;
+
+  @override
+  double get headingLargeFontSize => _p.textFontSize32;
+
+  @override
+  FontWeight get headingLargeFontWeight => _p.textFontWeightRegular;
+
+  @override
+  double get headingLargeLetterSpacing => _p.textLetterSpacingNone;
+
+  @override
+  double get headingLargeLineHeight => _p.textLineHeight36;
+
+  @override
+  String get headingMediumFontFamily => _p.textFontFamilyIBMPlexSans;
+
+  @override
+  double get headingMediumFontSize => _p.textFontSize28;
+
+  @override
+  FontWeight get headingMediumFontWeight => _p.textFontWeightRegular;
+
+  @override
+  double get headingMediumLetterSpacing => _p.textLetterSpacingNone;
+
+  @override
+  double get headingMediumLineHeight => _p.textLineHeight32;
+
+  @override
+  String get headingSmallFontFamily => _p.textFontFamilyIBMPlexSans;
+
+  @override
+  double get headingSmallFontSize => _p.textFontSize24;
+
+  @override
+  FontWeight get headingSmallFontWeight => _p.textFontWeightRegular;
+
+  @override
+  double get headingSmallLetterSpacing => _p.textLetterSpacingNone;
+
+  @override
+  double get headingSmallLineHeight => _p.textLineHeight28;
 
   @override
   String get indicatorMediumFontFamily => _p.textFontFamilyIBMPlexSans;
@@ -1315,10 +1270,10 @@ final class _ZetaTypographyZetaDesktopCompact implements _ZetaTypographyLayer {
   FontWeight get indicatorMediumFontWeight => _p.textFontWeightMedium;
 
   @override
-  double get indicatorMediumLineHeight => _p.textLineHeight14;
+  double get indicatorMediumLetterSpacing => _p.textLetterSpacingNone;
 
   @override
-  double get indicatorMediumLetterSpacing => _p.textLetterSpacingNone;
+  double get indicatorMediumLineHeight => _p.textLineHeight14;
 
   @override
   String get indicatorSmallFontFamily => _p.textFontFamilyIBMPlexSans;
@@ -1330,10 +1285,10 @@ final class _ZetaTypographyZetaDesktopCompact implements _ZetaTypographyLayer {
   FontWeight get indicatorSmallFontWeight => _p.textFontWeightRegular;
 
   @override
-  double get indicatorSmallLineHeight => _p.textLineHeight12;
+  double get indicatorSmallLetterSpacing => _p.textLetterSpacingNone;
 
   @override
-  double get indicatorSmallLetterSpacing => _p.textLetterSpacingNone;
+  double get indicatorSmallLineHeight => _p.textLineHeight12;
 
   @override
   String get labelLargeFontFamily => _p.textFontFamilyIBMPlexSans;
@@ -1345,10 +1300,10 @@ final class _ZetaTypographyZetaDesktopCompact implements _ZetaTypographyLayer {
   FontWeight get labelLargeFontWeight => _p.textFontWeightMedium;
 
   @override
-  double get labelLargeLineHeight => _p.textLineHeight24;
+  double get labelLargeLetterSpacing => _p.textLetterSpacingNone;
 
   @override
-  double get labelLargeLetterSpacing => _p.textLetterSpacingNone;
+  double get labelLargeLineHeight => _p.textLineHeight24;
 
   @override
   String get labelMediumFontFamily => _p.textFontFamilyIBMPlexSans;
@@ -1360,10 +1315,10 @@ final class _ZetaTypographyZetaDesktopCompact implements _ZetaTypographyLayer {
   FontWeight get labelMediumFontWeight => _p.textFontWeightMedium;
 
   @override
-  double get labelMediumLineHeight => _p.textLineHeight20;
+  double get labelMediumLetterSpacing => _p.textLetterSpacingNone;
 
   @override
-  double get labelMediumLetterSpacing => _p.textLetterSpacingNone;
+  double get labelMediumLineHeight => _p.textLineHeight20;
 
   @override
   String get labelSmallFontFamily => _p.textFontFamilyIBMPlexSans;
@@ -1375,10 +1330,55 @@ final class _ZetaTypographyZetaDesktopCompact implements _ZetaTypographyLayer {
   FontWeight get labelSmallFontWeight => _p.textFontWeightMedium;
 
   @override
+  double get labelSmallLetterSpacing => _p.textLetterSpacingNone;
+
+  @override
   double get labelSmallLineHeight => _p.textLineHeight16;
 
   @override
-  double get labelSmallLetterSpacing => _p.textLetterSpacingNone;
+  String get titleLargeFontFamily => _p.textFontFamilyIBMPlexSans;
+
+  @override
+  double get titleLargeFontSize => _p.textFontSize20;
+
+  @override
+  FontWeight get titleLargeFontWeight => _p.textFontWeightMedium;
+
+  @override
+  double get titleLargeLetterSpacing => _p.textLetterSpacingNone;
+
+  @override
+  double get titleLargeLineHeight => _p.textLineHeight24;
+
+  @override
+  String get titleMediumFontFamily => _p.textFontFamilyIBMPlexSans;
+
+  @override
+  double get titleMediumFontSize => _p.textFontSize16;
+
+  @override
+  FontWeight get titleMediumFontWeight => _p.textFontWeightMedium;
+
+  @override
+  double get titleMediumLetterSpacing => _p.textLetterSpacingNone;
+
+  @override
+  double get titleMediumLineHeight => _p.textLineHeight20;
+
+  @override
+  String get titleSmallFontFamily => _p.textFontFamilyIBMPlexSans;
+
+  @override
+  double get titleSmallFontSize => _p.textFontSize12;
+
+  @override
+  FontWeight get titleSmallFontWeight => _p.textFontWeightMedium;
+
+  @override
+  double get titleSmallLetterSpacing => _p.textLetterSpacingNone;
+
+  @override
+  double get titleSmallLineHeight => _p.textLineHeight16;
 }
 
 final class _ZetaTypographyCondensedMobile implements _ZetaTypographyLayer {
@@ -1387,141 +1387,6 @@ final class _ZetaTypographyCondensedMobile implements _ZetaTypographyLayer {
   final ZetaPrimitiveTokens _p;
 
   @override
-  String get displayLargeFontFamily => _p.textFontFamilyIBMPlexSans;
-
-  @override
-  double get displayLargeFontSize => _p.textFontSize52;
-
-  @override
-  FontWeight get displayLargeFontWeight => _p.textFontWeightLight;
-
-  @override
-  double get displayLargeLineHeight => _p.textLineHeight60;
-
-  @override
-  double get displayLargeLetterSpacing => _p.textLetterSpacingNone;
-
-  @override
-  String get displayMediumFontFamily => _p.textFontFamilyIBMPlexSans;
-
-  @override
-  double get displayMediumFontSize => _p.textFontSize44;
-
-  @override
-  FontWeight get displayMediumFontWeight => _p.textFontWeightLight;
-
-  @override
-  double get displayMediumLineHeight => _p.textLineHeight52;
-
-  @override
-  double get displayMediumLetterSpacing => _p.textLetterSpacingNone;
-
-  @override
-  String get displaySmallFontFamily => _p.textFontFamilyIBMPlexSans;
-
-  @override
-  double get displaySmallFontSize => _p.textFontSize36;
-
-  @override
-  FontWeight get displaySmallFontWeight => _p.textFontWeightLight;
-
-  @override
-  double get displaySmallLineHeight => _p.textLineHeight40;
-
-  @override
-  double get displaySmallLetterSpacing => _p.textLetterSpacingNone;
-
-  @override
-  String get headingLargeFontFamily => _p.textFontFamilyIBMPlexSans;
-
-  @override
-  double get headingLargeFontSize => _p.textFontSize32;
-
-  @override
-  FontWeight get headingLargeFontWeight => _p.textFontWeightRegular;
-
-  @override
-  double get headingLargeLineHeight => _p.textLineHeight36;
-
-  @override
-  double get headingLargeLetterSpacing => _p.textLetterSpacingNone;
-
-  @override
-  String get headingMediumFontFamily => _p.textFontFamilyIBMPlexSans;
-
-  @override
-  double get headingMediumFontSize => _p.textFontSize28;
-
-  @override
-  FontWeight get headingMediumFontWeight => _p.textFontWeightRegular;
-
-  @override
-  double get headingMediumLineHeight => _p.textLineHeight32;
-
-  @override
-  double get headingMediumLetterSpacing => _p.textLetterSpacingNone;
-
-  @override
-  String get headingSmallFontFamily => _p.textFontFamilyIBMPlexSans;
-
-  @override
-  double get headingSmallFontSize => _p.textFontSize24;
-
-  @override
-  FontWeight get headingSmallFontWeight => _p.textFontWeightRegular;
-
-  @override
-  double get headingSmallLineHeight => _p.textLineHeight28;
-
-  @override
-  double get headingSmallLetterSpacing => _p.textLetterSpacingNone;
-
-  @override
-  String get titleLargeFontFamily => _p.textFontFamilyIBMPlexSans;
-
-  @override
-  double get titleLargeFontSize => _p.textFontSize20;
-
-  @override
-  FontWeight get titleLargeFontWeight => _p.textFontWeightMedium;
-
-  @override
-  double get titleLargeLineHeight => _p.textLineHeight24;
-
-  @override
-  double get titleLargeLetterSpacing => _p.textLetterSpacingNone;
-
-  @override
-  String get titleMediumFontFamily => _p.textFontFamilyIBMPlexSans;
-
-  @override
-  double get titleMediumFontSize => _p.textFontSize16;
-
-  @override
-  FontWeight get titleMediumFontWeight => _p.textFontWeightMedium;
-
-  @override
-  double get titleMediumLineHeight => _p.textLineHeight20;
-
-  @override
-  double get titleMediumLetterSpacing => _p.textLetterSpacingNone;
-
-  @override
-  String get titleSmallFontFamily => _p.textFontFamilyIBMPlexSans;
-
-  @override
-  double get titleSmallFontSize => _p.textFontSize12;
-
-  @override
-  FontWeight get titleSmallFontWeight => _p.textFontWeightMedium;
-
-  @override
-  double get titleSmallLineHeight => _p.textLineHeight16;
-
-  @override
-  double get titleSmallLetterSpacing => _p.textLetterSpacingNone;
-
-  @override
   String get bodyLargeFontFamily => _p.textFontFamilyIBMPlexSans;
 
   @override
@@ -1531,10 +1396,10 @@ final class _ZetaTypographyCondensedMobile implements _ZetaTypographyLayer {
   FontWeight get bodyLargeFontWeight => _p.textFontWeightRegular;
 
   @override
-  double get bodyLargeLineHeight => _p.textLineHeight24;
+  double get bodyLargeLetterSpacing => _p.textLetterSpacingNone;
 
   @override
-  double get bodyLargeLetterSpacing => _p.textLetterSpacingNone;
+  double get bodyLargeLineHeight => _p.textLineHeight24;
 
   @override
   String get bodyMediumFontFamily => _p.textFontFamilyIBMPlexSans;
@@ -1546,10 +1411,10 @@ final class _ZetaTypographyCondensedMobile implements _ZetaTypographyLayer {
   FontWeight get bodyMediumFontWeight => _p.textFontWeightRegular;
 
   @override
-  double get bodyMediumLineHeight => _p.textLineHeight24;
+  double get bodyMediumLetterSpacing => _p.textLetterSpacingNone;
 
   @override
-  double get bodyMediumLetterSpacing => _p.textLetterSpacingNone;
+  double get bodyMediumLineHeight => _p.textLineHeight24;
 
   @override
   String get bodySmallFontFamily => _p.textFontFamilyIBMPlexSans;
@@ -1561,10 +1426,10 @@ final class _ZetaTypographyCondensedMobile implements _ZetaTypographyLayer {
   FontWeight get bodySmallFontWeight => _p.textFontWeightRegular;
 
   @override
-  double get bodySmallLineHeight => _p.textLineHeight18;
+  double get bodySmallLetterSpacing => _p.textLetterSpacingNone;
 
   @override
-  double get bodySmallLetterSpacing => _p.textLetterSpacingNone;
+  double get bodySmallLineHeight => _p.textLineHeight18;
 
   @override
   String get bodyXsmallFontFamily => _p.textFontFamilyIBMPlexSans;
@@ -1576,10 +1441,100 @@ final class _ZetaTypographyCondensedMobile implements _ZetaTypographyLayer {
   FontWeight get bodyXsmallFontWeight => _p.textFontWeightRegular;
 
   @override
+  double get bodyXsmallLetterSpacing => _p.textLetterSpacingNone;
+
+  @override
   double get bodyXsmallLineHeight => _p.textLineHeight16;
 
   @override
-  double get bodyXsmallLetterSpacing => _p.textLetterSpacingNone;
+  String get displayLargeFontFamily => _p.textFontFamilyIBMPlexSans;
+
+  @override
+  double get displayLargeFontSize => _p.textFontSize52;
+
+  @override
+  FontWeight get displayLargeFontWeight => _p.textFontWeightLight;
+
+  @override
+  double get displayLargeLetterSpacing => _p.textLetterSpacingNone;
+
+  @override
+  double get displayLargeLineHeight => _p.textLineHeight60;
+
+  @override
+  String get displayMediumFontFamily => _p.textFontFamilyIBMPlexSans;
+
+  @override
+  double get displayMediumFontSize => _p.textFontSize44;
+
+  @override
+  FontWeight get displayMediumFontWeight => _p.textFontWeightLight;
+
+  @override
+  double get displayMediumLetterSpacing => _p.textLetterSpacingNone;
+
+  @override
+  double get displayMediumLineHeight => _p.textLineHeight52;
+
+  @override
+  String get displaySmallFontFamily => _p.textFontFamilyIBMPlexSans;
+
+  @override
+  double get displaySmallFontSize => _p.textFontSize36;
+
+  @override
+  FontWeight get displaySmallFontWeight => _p.textFontWeightLight;
+
+  @override
+  double get displaySmallLetterSpacing => _p.textLetterSpacingNone;
+
+  @override
+  double get displaySmallLineHeight => _p.textLineHeight40;
+
+  @override
+  String get headingLargeFontFamily => _p.textFontFamilyIBMPlexSans;
+
+  @override
+  double get headingLargeFontSize => _p.textFontSize32;
+
+  @override
+  FontWeight get headingLargeFontWeight => _p.textFontWeightRegular;
+
+  @override
+  double get headingLargeLetterSpacing => _p.textLetterSpacingNone;
+
+  @override
+  double get headingLargeLineHeight => _p.textLineHeight36;
+
+  @override
+  String get headingMediumFontFamily => _p.textFontFamilyIBMPlexSans;
+
+  @override
+  double get headingMediumFontSize => _p.textFontSize28;
+
+  @override
+  FontWeight get headingMediumFontWeight => _p.textFontWeightRegular;
+
+  @override
+  double get headingMediumLetterSpacing => _p.textLetterSpacingNone;
+
+  @override
+  double get headingMediumLineHeight => _p.textLineHeight32;
+
+  @override
+  String get headingSmallFontFamily => _p.textFontFamilyIBMPlexSans;
+
+  @override
+  double get headingSmallFontSize => _p.textFontSize24;
+
+  @override
+  FontWeight get headingSmallFontWeight => _p.textFontWeightRegular;
+
+  @override
+  double get headingSmallLetterSpacing => _p.textLetterSpacingNone;
+
+  @override
+  double get headingSmallLineHeight => _p.textLineHeight28;
 
   @override
   String get indicatorMediumFontFamily => _p.textFontFamilyIBMPlexSans;
@@ -1591,10 +1546,10 @@ final class _ZetaTypographyCondensedMobile implements _ZetaTypographyLayer {
   FontWeight get indicatorMediumFontWeight => _p.textFontWeightMedium;
 
   @override
-  double get indicatorMediumLineHeight => _p.textLineHeight14;
+  double get indicatorMediumLetterSpacing => _p.textLetterSpacingNone;
 
   @override
-  double get indicatorMediumLetterSpacing => _p.textLetterSpacingNone;
+  double get indicatorMediumLineHeight => _p.textLineHeight14;
 
   @override
   String get indicatorSmallFontFamily => _p.textFontFamilyIBMPlexSans;
@@ -1606,10 +1561,10 @@ final class _ZetaTypographyCondensedMobile implements _ZetaTypographyLayer {
   FontWeight get indicatorSmallFontWeight => _p.textFontWeightRegular;
 
   @override
-  double get indicatorSmallLineHeight => _p.textLineHeight12;
+  double get indicatorSmallLetterSpacing => _p.textLetterSpacingNone;
 
   @override
-  double get indicatorSmallLetterSpacing => _p.textLetterSpacingNone;
+  double get indicatorSmallLineHeight => _p.textLineHeight12;
 
   @override
   String get labelLargeFontFamily => _p.textFontFamilyIBMPlexSans;
@@ -1621,10 +1576,10 @@ final class _ZetaTypographyCondensedMobile implements _ZetaTypographyLayer {
   FontWeight get labelLargeFontWeight => _p.textFontWeightMedium;
 
   @override
-  double get labelLargeLineHeight => _p.textLineHeight18;
+  double get labelLargeLetterSpacing => _p.textLetterSpacingNone;
 
   @override
-  double get labelLargeLetterSpacing => _p.textLetterSpacingNone;
+  double get labelLargeLineHeight => _p.textLineHeight18;
 
   @override
   String get labelMediumFontFamily => _p.textFontFamilyIBMPlexSans;
@@ -1636,10 +1591,10 @@ final class _ZetaTypographyCondensedMobile implements _ZetaTypographyLayer {
   FontWeight get labelMediumFontWeight => _p.textFontWeightMedium;
 
   @override
-  double get labelMediumLineHeight => _p.textLineHeight16;
+  double get labelMediumLetterSpacing => _p.textLetterSpacingNone;
 
   @override
-  double get labelMediumLetterSpacing => _p.textLetterSpacingNone;
+  double get labelMediumLineHeight => _p.textLineHeight16;
 
   @override
   String get labelSmallFontFamily => _p.textFontFamilyIBMPlexSans;
@@ -1651,10 +1606,55 @@ final class _ZetaTypographyCondensedMobile implements _ZetaTypographyLayer {
   FontWeight get labelSmallFontWeight => _p.textFontWeightMedium;
 
   @override
+  double get labelSmallLetterSpacing => _p.textLetterSpacingNone;
+
+  @override
   double get labelSmallLineHeight => _p.textLineHeight14;
 
   @override
-  double get labelSmallLetterSpacing => _p.textLetterSpacingNone;
+  String get titleLargeFontFamily => _p.textFontFamilyIBMPlexSans;
+
+  @override
+  double get titleLargeFontSize => _p.textFontSize20;
+
+  @override
+  FontWeight get titleLargeFontWeight => _p.textFontWeightMedium;
+
+  @override
+  double get titleLargeLetterSpacing => _p.textLetterSpacingNone;
+
+  @override
+  double get titleLargeLineHeight => _p.textLineHeight24;
+
+  @override
+  String get titleMediumFontFamily => _p.textFontFamilyIBMPlexSans;
+
+  @override
+  double get titleMediumFontSize => _p.textFontSize16;
+
+  @override
+  FontWeight get titleMediumFontWeight => _p.textFontWeightMedium;
+
+  @override
+  double get titleMediumLetterSpacing => _p.textLetterSpacingNone;
+
+  @override
+  double get titleMediumLineHeight => _p.textLineHeight20;
+
+  @override
+  String get titleSmallFontFamily => _p.textFontFamilyIBMPlexSans;
+
+  @override
+  double get titleSmallFontSize => _p.textFontSize12;
+
+  @override
+  FontWeight get titleSmallFontWeight => _p.textFontWeightMedium;
+
+  @override
+  double get titleSmallLetterSpacing => _p.textLetterSpacingNone;
+
+  @override
+  double get titleSmallLineHeight => _p.textLineHeight16;
 }
 
 final class _ZetaTypographyCondensedTablet implements _ZetaTypographyLayer {
@@ -1663,141 +1663,6 @@ final class _ZetaTypographyCondensedTablet implements _ZetaTypographyLayer {
   final ZetaPrimitiveTokens _p;
 
   @override
-  String get displayLargeFontFamily => _p.textFontFamilyIBMPlexSans;
-
-  @override
-  double get displayLargeFontSize => _p.textFontSize52;
-
-  @override
-  FontWeight get displayLargeFontWeight => _p.textFontWeightLight;
-
-  @override
-  double get displayLargeLineHeight => _p.textLineHeight60;
-
-  @override
-  double get displayLargeLetterSpacing => _p.textLetterSpacingNone;
-
-  @override
-  String get displayMediumFontFamily => _p.textFontFamilyIBMPlexSans;
-
-  @override
-  double get displayMediumFontSize => _p.textFontSize44;
-
-  @override
-  FontWeight get displayMediumFontWeight => _p.textFontWeightLight;
-
-  @override
-  double get displayMediumLineHeight => _p.textLineHeight52;
-
-  @override
-  double get displayMediumLetterSpacing => _p.textLetterSpacingNone;
-
-  @override
-  String get displaySmallFontFamily => _p.textFontFamilyIBMPlexSans;
-
-  @override
-  double get displaySmallFontSize => _p.textFontSize36;
-
-  @override
-  FontWeight get displaySmallFontWeight => _p.textFontWeightLight;
-
-  @override
-  double get displaySmallLineHeight => _p.textLineHeight40;
-
-  @override
-  double get displaySmallLetterSpacing => _p.textLetterSpacingNone;
-
-  @override
-  String get headingLargeFontFamily => _p.textFontFamilyIBMPlexSans;
-
-  @override
-  double get headingLargeFontSize => _p.textFontSize32;
-
-  @override
-  FontWeight get headingLargeFontWeight => _p.textFontWeightRegular;
-
-  @override
-  double get headingLargeLineHeight => _p.textLineHeight36;
-
-  @override
-  double get headingLargeLetterSpacing => _p.textLetterSpacingNone;
-
-  @override
-  String get headingMediumFontFamily => _p.textFontFamilyIBMPlexSans;
-
-  @override
-  double get headingMediumFontSize => _p.textFontSize28;
-
-  @override
-  FontWeight get headingMediumFontWeight => _p.textFontWeightRegular;
-
-  @override
-  double get headingMediumLineHeight => _p.textLineHeight32;
-
-  @override
-  double get headingMediumLetterSpacing => _p.textLetterSpacingNone;
-
-  @override
-  String get headingSmallFontFamily => _p.textFontFamilyIBMPlexSans;
-
-  @override
-  double get headingSmallFontSize => _p.textFontSize24;
-
-  @override
-  FontWeight get headingSmallFontWeight => _p.textFontWeightRegular;
-
-  @override
-  double get headingSmallLineHeight => _p.textLineHeight28;
-
-  @override
-  double get headingSmallLetterSpacing => _p.textLetterSpacingNone;
-
-  @override
-  String get titleLargeFontFamily => _p.textFontFamilyIBMPlexSans;
-
-  @override
-  double get titleLargeFontSize => _p.textFontSize20;
-
-  @override
-  FontWeight get titleLargeFontWeight => _p.textFontWeightMedium;
-
-  @override
-  double get titleLargeLineHeight => _p.textLineHeight24;
-
-  @override
-  double get titleLargeLetterSpacing => _p.textLetterSpacingNone;
-
-  @override
-  String get titleMediumFontFamily => _p.textFontFamilyIBMPlexSans;
-
-  @override
-  double get titleMediumFontSize => _p.textFontSize16;
-
-  @override
-  FontWeight get titleMediumFontWeight => _p.textFontWeightMedium;
-
-  @override
-  double get titleMediumLineHeight => _p.textLineHeight20;
-
-  @override
-  double get titleMediumLetterSpacing => _p.textLetterSpacingNone;
-
-  @override
-  String get titleSmallFontFamily => _p.textFontFamilyIBMPlexSans;
-
-  @override
-  double get titleSmallFontSize => _p.textFontSize12;
-
-  @override
-  FontWeight get titleSmallFontWeight => _p.textFontWeightMedium;
-
-  @override
-  double get titleSmallLineHeight => _p.textLineHeight16;
-
-  @override
-  double get titleSmallLetterSpacing => _p.textLetterSpacingNone;
-
-  @override
   String get bodyLargeFontFamily => _p.textFontFamilyIBMPlexSans;
 
   @override
@@ -1807,10 +1672,10 @@ final class _ZetaTypographyCondensedTablet implements _ZetaTypographyLayer {
   FontWeight get bodyLargeFontWeight => _p.textFontWeightRegular;
 
   @override
-  double get bodyLargeLineHeight => _p.textLineHeight24;
+  double get bodyLargeLetterSpacing => _p.textLetterSpacingNone;
 
   @override
-  double get bodyLargeLetterSpacing => _p.textLetterSpacingNone;
+  double get bodyLargeLineHeight => _p.textLineHeight24;
 
   @override
   String get bodyMediumFontFamily => _p.textFontFamilyIBMPlexSans;
@@ -1822,10 +1687,10 @@ final class _ZetaTypographyCondensedTablet implements _ZetaTypographyLayer {
   FontWeight get bodyMediumFontWeight => _p.textFontWeightRegular;
 
   @override
-  double get bodyMediumLineHeight => _p.textLineHeight24;
+  double get bodyMediumLetterSpacing => _p.textLetterSpacingNone;
 
   @override
-  double get bodyMediumLetterSpacing => _p.textLetterSpacingNone;
+  double get bodyMediumLineHeight => _p.textLineHeight24;
 
   @override
   String get bodySmallFontFamily => _p.textFontFamilyIBMPlexSans;
@@ -1837,10 +1702,10 @@ final class _ZetaTypographyCondensedTablet implements _ZetaTypographyLayer {
   FontWeight get bodySmallFontWeight => _p.textFontWeightRegular;
 
   @override
-  double get bodySmallLineHeight => _p.textLineHeight18;
+  double get bodySmallLetterSpacing => _p.textLetterSpacingNone;
 
   @override
-  double get bodySmallLetterSpacing => _p.textLetterSpacingNone;
+  double get bodySmallLineHeight => _p.textLineHeight18;
 
   @override
   String get bodyXsmallFontFamily => _p.textFontFamilyIBMPlexSans;
@@ -1852,10 +1717,100 @@ final class _ZetaTypographyCondensedTablet implements _ZetaTypographyLayer {
   FontWeight get bodyXsmallFontWeight => _p.textFontWeightRegular;
 
   @override
+  double get bodyXsmallLetterSpacing => _p.textLetterSpacingNone;
+
+  @override
   double get bodyXsmallLineHeight => _p.textLineHeight16;
 
   @override
-  double get bodyXsmallLetterSpacing => _p.textLetterSpacingNone;
+  String get displayLargeFontFamily => _p.textFontFamilyIBMPlexSans;
+
+  @override
+  double get displayLargeFontSize => _p.textFontSize52;
+
+  @override
+  FontWeight get displayLargeFontWeight => _p.textFontWeightLight;
+
+  @override
+  double get displayLargeLetterSpacing => _p.textLetterSpacingNone;
+
+  @override
+  double get displayLargeLineHeight => _p.textLineHeight60;
+
+  @override
+  String get displayMediumFontFamily => _p.textFontFamilyIBMPlexSans;
+
+  @override
+  double get displayMediumFontSize => _p.textFontSize44;
+
+  @override
+  FontWeight get displayMediumFontWeight => _p.textFontWeightLight;
+
+  @override
+  double get displayMediumLetterSpacing => _p.textLetterSpacingNone;
+
+  @override
+  double get displayMediumLineHeight => _p.textLineHeight52;
+
+  @override
+  String get displaySmallFontFamily => _p.textFontFamilyIBMPlexSans;
+
+  @override
+  double get displaySmallFontSize => _p.textFontSize36;
+
+  @override
+  FontWeight get displaySmallFontWeight => _p.textFontWeightLight;
+
+  @override
+  double get displaySmallLetterSpacing => _p.textLetterSpacingNone;
+
+  @override
+  double get displaySmallLineHeight => _p.textLineHeight40;
+
+  @override
+  String get headingLargeFontFamily => _p.textFontFamilyIBMPlexSans;
+
+  @override
+  double get headingLargeFontSize => _p.textFontSize32;
+
+  @override
+  FontWeight get headingLargeFontWeight => _p.textFontWeightRegular;
+
+  @override
+  double get headingLargeLetterSpacing => _p.textLetterSpacingNone;
+
+  @override
+  double get headingLargeLineHeight => _p.textLineHeight36;
+
+  @override
+  String get headingMediumFontFamily => _p.textFontFamilyIBMPlexSans;
+
+  @override
+  double get headingMediumFontSize => _p.textFontSize28;
+
+  @override
+  FontWeight get headingMediumFontWeight => _p.textFontWeightRegular;
+
+  @override
+  double get headingMediumLetterSpacing => _p.textLetterSpacingNone;
+
+  @override
+  double get headingMediumLineHeight => _p.textLineHeight32;
+
+  @override
+  String get headingSmallFontFamily => _p.textFontFamilyIBMPlexSans;
+
+  @override
+  double get headingSmallFontSize => _p.textFontSize24;
+
+  @override
+  FontWeight get headingSmallFontWeight => _p.textFontWeightRegular;
+
+  @override
+  double get headingSmallLetterSpacing => _p.textLetterSpacingNone;
+
+  @override
+  double get headingSmallLineHeight => _p.textLineHeight28;
 
   @override
   String get indicatorMediumFontFamily => _p.textFontFamilyIBMPlexSans;
@@ -1867,10 +1822,10 @@ final class _ZetaTypographyCondensedTablet implements _ZetaTypographyLayer {
   FontWeight get indicatorMediumFontWeight => _p.textFontWeightMedium;
 
   @override
-  double get indicatorMediumLineHeight => _p.textLineHeight14;
+  double get indicatorMediumLetterSpacing => _p.textLetterSpacingNone;
 
   @override
-  double get indicatorMediumLetterSpacing => _p.textLetterSpacingNone;
+  double get indicatorMediumLineHeight => _p.textLineHeight14;
 
   @override
   String get indicatorSmallFontFamily => _p.textFontFamilyIBMPlexSans;
@@ -1882,10 +1837,10 @@ final class _ZetaTypographyCondensedTablet implements _ZetaTypographyLayer {
   FontWeight get indicatorSmallFontWeight => _p.textFontWeightRegular;
 
   @override
-  double get indicatorSmallLineHeight => _p.textLineHeight12;
+  double get indicatorSmallLetterSpacing => _p.textLetterSpacingNone;
 
   @override
-  double get indicatorSmallLetterSpacing => _p.textLetterSpacingNone;
+  double get indicatorSmallLineHeight => _p.textLineHeight12;
 
   @override
   String get labelLargeFontFamily => _p.textFontFamilyIBMPlexSans;
@@ -1897,10 +1852,10 @@ final class _ZetaTypographyCondensedTablet implements _ZetaTypographyLayer {
   FontWeight get labelLargeFontWeight => _p.textFontWeightMedium;
 
   @override
-  double get labelLargeLineHeight => _p.textLineHeight18;
+  double get labelLargeLetterSpacing => _p.textLetterSpacingNone;
 
   @override
-  double get labelLargeLetterSpacing => _p.textLetterSpacingNone;
+  double get labelLargeLineHeight => _p.textLineHeight18;
 
   @override
   String get labelMediumFontFamily => _p.textFontFamilyIBMPlexSans;
@@ -1912,10 +1867,10 @@ final class _ZetaTypographyCondensedTablet implements _ZetaTypographyLayer {
   FontWeight get labelMediumFontWeight => _p.textFontWeightMedium;
 
   @override
-  double get labelMediumLineHeight => _p.textLineHeight16;
+  double get labelMediumLetterSpacing => _p.textLetterSpacingNone;
 
   @override
-  double get labelMediumLetterSpacing => _p.textLetterSpacingNone;
+  double get labelMediumLineHeight => _p.textLineHeight16;
 
   @override
   String get labelSmallFontFamily => _p.textFontFamilyIBMPlexSans;
@@ -1927,151 +1882,61 @@ final class _ZetaTypographyCondensedTablet implements _ZetaTypographyLayer {
   FontWeight get labelSmallFontWeight => _p.textFontWeightMedium;
 
   @override
+  double get labelSmallLetterSpacing => _p.textLetterSpacingNone;
+
+  @override
   double get labelSmallLineHeight => _p.textLineHeight14;
 
   @override
-  double get labelSmallLetterSpacing => _p.textLetterSpacingNone;
+  String get titleLargeFontFamily => _p.textFontFamilyIBMPlexSans;
+
+  @override
+  double get titleLargeFontSize => _p.textFontSize20;
+
+  @override
+  FontWeight get titleLargeFontWeight => _p.textFontWeightMedium;
+
+  @override
+  double get titleLargeLetterSpacing => _p.textLetterSpacingNone;
+
+  @override
+  double get titleLargeLineHeight => _p.textLineHeight24;
+
+  @override
+  String get titleMediumFontFamily => _p.textFontFamilyIBMPlexSans;
+
+  @override
+  double get titleMediumFontSize => _p.textFontSize16;
+
+  @override
+  FontWeight get titleMediumFontWeight => _p.textFontWeightMedium;
+
+  @override
+  double get titleMediumLetterSpacing => _p.textLetterSpacingNone;
+
+  @override
+  double get titleMediumLineHeight => _p.textLineHeight20;
+
+  @override
+  String get titleSmallFontFamily => _p.textFontFamilyIBMPlexSans;
+
+  @override
+  double get titleSmallFontSize => _p.textFontSize12;
+
+  @override
+  FontWeight get titleSmallFontWeight => _p.textFontWeightMedium;
+
+  @override
+  double get titleSmallLetterSpacing => _p.textLetterSpacingNone;
+
+  @override
+  double get titleSmallLineHeight => _p.textLineHeight16;
 }
 
 final class _ZetaTypographyCondensedDesktop implements _ZetaTypographyLayer {
   const _ZetaTypographyCondensedDesktop(this._p);
 
   final ZetaPrimitiveTokens _p;
-
-  @override
-  String get displayLargeFontFamily => _p.textFontFamilyIBMPlexSans;
-
-  @override
-  double get displayLargeFontSize => _p.textFontSize48;
-
-  @override
-  FontWeight get displayLargeFontWeight => _p.textFontWeightLight;
-
-  @override
-  double get displayLargeLineHeight => _p.textLineHeight52;
-
-  @override
-  double get displayLargeLetterSpacing => _p.textLetterSpacingNone;
-
-  @override
-  String get displayMediumFontFamily => _p.textFontFamilyIBMPlexSans;
-
-  @override
-  double get displayMediumFontSize => _p.textFontSize40;
-
-  @override
-  FontWeight get displayMediumFontWeight => _p.textFontWeightLight;
-
-  @override
-  double get displayMediumLineHeight => _p.textLineHeight48;
-
-  @override
-  double get displayMediumLetterSpacing => _p.textLetterSpacingNone;
-
-  @override
-  String get displaySmallFontFamily => _p.textFontFamilyIBMPlexSans;
-
-  @override
-  double get displaySmallFontSize => _p.textFontSize32;
-
-  @override
-  FontWeight get displaySmallFontWeight => _p.textFontWeightLight;
-
-  @override
-  double get displaySmallLineHeight => _p.textLineHeight36;
-
-  @override
-  double get displaySmallLetterSpacing => _p.textLetterSpacingNone;
-
-  @override
-  String get headingLargeFontFamily => _p.textFontFamilyIBMPlexSans;
-
-  @override
-  double get headingLargeFontSize => _p.textFontSize28;
-
-  @override
-  FontWeight get headingLargeFontWeight => _p.textFontWeightRegular;
-
-  @override
-  double get headingLargeLineHeight => _p.textLineHeight32;
-
-  @override
-  double get headingLargeLetterSpacing => _p.textLetterSpacingNone;
-
-  @override
-  String get headingMediumFontFamily => _p.textFontFamilyIBMPlexSans;
-
-  @override
-  double get headingMediumFontSize => _p.textFontSize24;
-
-  @override
-  FontWeight get headingMediumFontWeight => _p.textFontWeightRegular;
-
-  @override
-  double get headingMediumLineHeight => _p.textLineHeight28;
-
-  @override
-  double get headingMediumLetterSpacing => _p.textLetterSpacingNone;
-
-  @override
-  String get headingSmallFontFamily => _p.textFontFamilyIBMPlexSans;
-
-  @override
-  double get headingSmallFontSize => _p.textFontSize20;
-
-  @override
-  FontWeight get headingSmallFontWeight => _p.textFontWeightRegular;
-
-  @override
-  double get headingSmallLineHeight => _p.textLineHeight24;
-
-  @override
-  double get headingSmallLetterSpacing => _p.textLetterSpacingNone;
-
-  @override
-  String get titleLargeFontFamily => _p.textFontFamilyIBMPlexSans;
-
-  @override
-  double get titleLargeFontSize => _p.textFontSize18;
-
-  @override
-  FontWeight get titleLargeFontWeight => _p.textFontWeightMedium;
-
-  @override
-  double get titleLargeLineHeight => _p.textLineHeight24;
-
-  @override
-  double get titleLargeLetterSpacing => _p.textLetterSpacingNone;
-
-  @override
-  String get titleMediumFontFamily => _p.textFontFamilyIBMPlexSans;
-
-  @override
-  double get titleMediumFontSize => _p.textFontSize14;
-
-  @override
-  FontWeight get titleMediumFontWeight => _p.textFontWeightMedium;
-
-  @override
-  double get titleMediumLineHeight => _p.textLineHeight16;
-
-  @override
-  double get titleMediumLetterSpacing => _p.textLetterSpacingNone;
-
-  @override
-  String get titleSmallFontFamily => _p.textFontFamilyIBMPlexSans;
-
-  @override
-  double get titleSmallFontSize => _p.textFontSize10;
-
-  @override
-  FontWeight get titleSmallFontWeight => _p.textFontWeightMedium;
-
-  @override
-  double get titleSmallLineHeight => _p.textLineHeight12;
-
-  @override
-  double get titleSmallLetterSpacing => _p.textLetterSpacingNone;
 
   @override
   String get bodyLargeFontFamily => _p.textFontFamilyIBMPlexSans;
@@ -2083,10 +1948,10 @@ final class _ZetaTypographyCondensedDesktop implements _ZetaTypographyLayer {
   FontWeight get bodyLargeFontWeight => _p.textFontWeightRegular;
 
   @override
-  double get bodyLargeLineHeight => _p.textLineHeight20;
+  double get bodyLargeLetterSpacing => _p.textLetterSpacingNone;
 
   @override
-  double get bodyLargeLetterSpacing => _p.textLetterSpacingNone;
+  double get bodyLargeLineHeight => _p.textLineHeight20;
 
   @override
   String get bodyMediumFontFamily => _p.textFontFamilyIBMPlexSans;
@@ -2098,10 +1963,10 @@ final class _ZetaTypographyCondensedDesktop implements _ZetaTypographyLayer {
   FontWeight get bodyMediumFontWeight => _p.textFontWeightRegular;
 
   @override
-  double get bodyMediumLineHeight => _p.textLineHeight16;
+  double get bodyMediumLetterSpacing => _p.textLetterSpacingNone;
 
   @override
-  double get bodyMediumLetterSpacing => _p.textLetterSpacingNone;
+  double get bodyMediumLineHeight => _p.textLineHeight16;
 
   @override
   String get bodySmallFontFamily => _p.textFontFamilyIBMPlexSans;
@@ -2113,10 +1978,10 @@ final class _ZetaTypographyCondensedDesktop implements _ZetaTypographyLayer {
   FontWeight get bodySmallFontWeight => _p.textFontWeightRegular;
 
   @override
-  double get bodySmallLineHeight => _p.textLineHeight14;
+  double get bodySmallLetterSpacing => _p.textLetterSpacingNone;
 
   @override
-  double get bodySmallLetterSpacing => _p.textLetterSpacingNone;
+  double get bodySmallLineHeight => _p.textLineHeight14;
 
   @override
   String get bodyXsmallFontFamily => _p.textFontFamilyIBMPlexSans;
@@ -2128,10 +1993,100 @@ final class _ZetaTypographyCondensedDesktop implements _ZetaTypographyLayer {
   FontWeight get bodyXsmallFontWeight => _p.textFontWeightRegular;
 
   @override
+  double get bodyXsmallLetterSpacing => _p.textLetterSpacingNone;
+
+  @override
   double get bodyXsmallLineHeight => _p.textLineHeight12;
 
   @override
-  double get bodyXsmallLetterSpacing => _p.textLetterSpacingNone;
+  String get displayLargeFontFamily => _p.textFontFamilyIBMPlexSans;
+
+  @override
+  double get displayLargeFontSize => _p.textFontSize48;
+
+  @override
+  FontWeight get displayLargeFontWeight => _p.textFontWeightLight;
+
+  @override
+  double get displayLargeLetterSpacing => _p.textLetterSpacingNone;
+
+  @override
+  double get displayLargeLineHeight => _p.textLineHeight52;
+
+  @override
+  String get displayMediumFontFamily => _p.textFontFamilyIBMPlexSans;
+
+  @override
+  double get displayMediumFontSize => _p.textFontSize40;
+
+  @override
+  FontWeight get displayMediumFontWeight => _p.textFontWeightLight;
+
+  @override
+  double get displayMediumLetterSpacing => _p.textLetterSpacingNone;
+
+  @override
+  double get displayMediumLineHeight => _p.textLineHeight48;
+
+  @override
+  String get displaySmallFontFamily => _p.textFontFamilyIBMPlexSans;
+
+  @override
+  double get displaySmallFontSize => _p.textFontSize32;
+
+  @override
+  FontWeight get displaySmallFontWeight => _p.textFontWeightLight;
+
+  @override
+  double get displaySmallLetterSpacing => _p.textLetterSpacingNone;
+
+  @override
+  double get displaySmallLineHeight => _p.textLineHeight36;
+
+  @override
+  String get headingLargeFontFamily => _p.textFontFamilyIBMPlexSans;
+
+  @override
+  double get headingLargeFontSize => _p.textFontSize28;
+
+  @override
+  FontWeight get headingLargeFontWeight => _p.textFontWeightRegular;
+
+  @override
+  double get headingLargeLetterSpacing => _p.textLetterSpacingNone;
+
+  @override
+  double get headingLargeLineHeight => _p.textLineHeight32;
+
+  @override
+  String get headingMediumFontFamily => _p.textFontFamilyIBMPlexSans;
+
+  @override
+  double get headingMediumFontSize => _p.textFontSize24;
+
+  @override
+  FontWeight get headingMediumFontWeight => _p.textFontWeightRegular;
+
+  @override
+  double get headingMediumLetterSpacing => _p.textLetterSpacingNone;
+
+  @override
+  double get headingMediumLineHeight => _p.textLineHeight28;
+
+  @override
+  String get headingSmallFontFamily => _p.textFontFamilyIBMPlexSans;
+
+  @override
+  double get headingSmallFontSize => _p.textFontSize20;
+
+  @override
+  FontWeight get headingSmallFontWeight => _p.textFontWeightRegular;
+
+  @override
+  double get headingSmallLetterSpacing => _p.textLetterSpacingNone;
+
+  @override
+  double get headingSmallLineHeight => _p.textLineHeight24;
 
   @override
   String get indicatorMediumFontFamily => _p.textFontFamilyIBMPlexSans;
@@ -2143,10 +2098,10 @@ final class _ZetaTypographyCondensedDesktop implements _ZetaTypographyLayer {
   FontWeight get indicatorMediumFontWeight => _p.textFontWeightMedium;
 
   @override
-  double get indicatorMediumLineHeight => _p.textLineHeight12;
+  double get indicatorMediumLetterSpacing => _p.textLetterSpacingNone;
 
   @override
-  double get indicatorMediumLetterSpacing => _p.textLetterSpacingNone;
+  double get indicatorMediumLineHeight => _p.textLineHeight12;
 
   @override
   String get indicatorSmallFontFamily => _p.textFontFamilyIBMPlexSans;
@@ -2158,10 +2113,10 @@ final class _ZetaTypographyCondensedDesktop implements _ZetaTypographyLayer {
   FontWeight get indicatorSmallFontWeight => _p.textFontWeightRegular;
 
   @override
-  double get indicatorSmallLineHeight => _p.textLineHeight12;
+  double get indicatorSmallLetterSpacing => _p.textLetterSpacingNone;
 
   @override
-  double get indicatorSmallLetterSpacing => _p.textLetterSpacingNone;
+  double get indicatorSmallLineHeight => _p.textLineHeight12;
 
   @override
   String get labelLargeFontFamily => _p.textFontFamilyIBMPlexSans;
@@ -2173,10 +2128,10 @@ final class _ZetaTypographyCondensedDesktop implements _ZetaTypographyLayer {
   FontWeight get labelLargeFontWeight => _p.textFontWeightMedium;
 
   @override
-  double get labelLargeLineHeight => _p.textLineHeight16;
+  double get labelLargeLetterSpacing => _p.textLetterSpacingNone;
 
   @override
-  double get labelLargeLetterSpacing => _p.textLetterSpacingNone;
+  double get labelLargeLineHeight => _p.textLineHeight16;
 
   @override
   String get labelMediumFontFamily => _p.textFontFamilyIBMPlexSans;
@@ -2188,10 +2143,10 @@ final class _ZetaTypographyCondensedDesktop implements _ZetaTypographyLayer {
   FontWeight get labelMediumFontWeight => _p.textFontWeightMedium;
 
   @override
-  double get labelMediumLineHeight => _p.textLineHeight14;
+  double get labelMediumLetterSpacing => _p.textLetterSpacingNone;
 
   @override
-  double get labelMediumLetterSpacing => _p.textLetterSpacingNone;
+  double get labelMediumLineHeight => _p.textLineHeight14;
 
   @override
   String get labelSmallFontFamily => _p.textFontFamilyIBMPlexSans;
@@ -2203,151 +2158,61 @@ final class _ZetaTypographyCondensedDesktop implements _ZetaTypographyLayer {
   FontWeight get labelSmallFontWeight => _p.textFontWeightMedium;
 
   @override
+  double get labelSmallLetterSpacing => _p.textLetterSpacingNone;
+
+  @override
   double get labelSmallLineHeight => _p.textLineHeight12;
 
   @override
-  double get labelSmallLetterSpacing => _p.textLetterSpacingNone;
+  String get titleLargeFontFamily => _p.textFontFamilyIBMPlexSans;
+
+  @override
+  double get titleLargeFontSize => _p.textFontSize18;
+
+  @override
+  FontWeight get titleLargeFontWeight => _p.textFontWeightMedium;
+
+  @override
+  double get titleLargeLetterSpacing => _p.textLetterSpacingNone;
+
+  @override
+  double get titleLargeLineHeight => _p.textLineHeight24;
+
+  @override
+  String get titleMediumFontFamily => _p.textFontFamilyIBMPlexSans;
+
+  @override
+  double get titleMediumFontSize => _p.textFontSize14;
+
+  @override
+  FontWeight get titleMediumFontWeight => _p.textFontWeightMedium;
+
+  @override
+  double get titleMediumLetterSpacing => _p.textLetterSpacingNone;
+
+  @override
+  double get titleMediumLineHeight => _p.textLineHeight16;
+
+  @override
+  String get titleSmallFontFamily => _p.textFontFamilyIBMPlexSans;
+
+  @override
+  double get titleSmallFontSize => _p.textFontSize10;
+
+  @override
+  FontWeight get titleSmallFontWeight => _p.textFontWeightMedium;
+
+  @override
+  double get titleSmallLetterSpacing => _p.textLetterSpacingNone;
+
+  @override
+  double get titleSmallLineHeight => _p.textLineHeight12;
 }
 
 final class _ZetaTypographyCondensedDesktopCompact implements _ZetaTypographyLayer {
   const _ZetaTypographyCondensedDesktopCompact(this._p);
 
   final ZetaPrimitiveTokens _p;
-
-  @override
-  String get displayLargeFontFamily => _p.textFontFamilyIBMPlexSans;
-
-  @override
-  double get displayLargeFontSize => _p.textFontSize52;
-
-  @override
-  FontWeight get displayLargeFontWeight => _p.textFontWeightLight;
-
-  @override
-  double get displayLargeLineHeight => _p.textLineHeight60;
-
-  @override
-  double get displayLargeLetterSpacing => _p.textLetterSpacingNone;
-
-  @override
-  String get displayMediumFontFamily => _p.textFontFamilyIBMPlexSans;
-
-  @override
-  double get displayMediumFontSize => _p.textFontSize44;
-
-  @override
-  FontWeight get displayMediumFontWeight => _p.textFontWeightLight;
-
-  @override
-  double get displayMediumLineHeight => _p.textLineHeight52;
-
-  @override
-  double get displayMediumLetterSpacing => _p.textLetterSpacingNone;
-
-  @override
-  String get displaySmallFontFamily => _p.textFontFamilyIBMPlexSans;
-
-  @override
-  double get displaySmallFontSize => _p.textFontSize36;
-
-  @override
-  FontWeight get displaySmallFontWeight => _p.textFontWeightLight;
-
-  @override
-  double get displaySmallLineHeight => _p.textLineHeight40;
-
-  @override
-  double get displaySmallLetterSpacing => _p.textLetterSpacingNone;
-
-  @override
-  String get headingLargeFontFamily => _p.textFontFamilyIBMPlexSans;
-
-  @override
-  double get headingLargeFontSize => _p.textFontSize32;
-
-  @override
-  FontWeight get headingLargeFontWeight => _p.textFontWeightRegular;
-
-  @override
-  double get headingLargeLineHeight => _p.textLineHeight36;
-
-  @override
-  double get headingLargeLetterSpacing => _p.textLetterSpacingNone;
-
-  @override
-  String get headingMediumFontFamily => _p.textFontFamilyIBMPlexSans;
-
-  @override
-  double get headingMediumFontSize => _p.textFontSize28;
-
-  @override
-  FontWeight get headingMediumFontWeight => _p.textFontWeightRegular;
-
-  @override
-  double get headingMediumLineHeight => _p.textLineHeight32;
-
-  @override
-  double get headingMediumLetterSpacing => _p.textLetterSpacingNone;
-
-  @override
-  String get headingSmallFontFamily => _p.textFontFamilyIBMPlexSans;
-
-  @override
-  double get headingSmallFontSize => _p.textFontSize24;
-
-  @override
-  FontWeight get headingSmallFontWeight => _p.textFontWeightRegular;
-
-  @override
-  double get headingSmallLineHeight => _p.textLineHeight28;
-
-  @override
-  double get headingSmallLetterSpacing => _p.textLetterSpacingNone;
-
-  @override
-  String get titleLargeFontFamily => _p.textFontFamilyIBMPlexSans;
-
-  @override
-  double get titleLargeFontSize => _p.textFontSize20;
-
-  @override
-  FontWeight get titleLargeFontWeight => _p.textFontWeightMedium;
-
-  @override
-  double get titleLargeLineHeight => _p.textLineHeight24;
-
-  @override
-  double get titleLargeLetterSpacing => _p.textLetterSpacingNone;
-
-  @override
-  String get titleMediumFontFamily => _p.textFontFamilyIBMPlexSans;
-
-  @override
-  double get titleMediumFontSize => _p.textFontSize16;
-
-  @override
-  FontWeight get titleMediumFontWeight => _p.textFontWeightMedium;
-
-  @override
-  double get titleMediumLineHeight => _p.textLineHeight20;
-
-  @override
-  double get titleMediumLetterSpacing => _p.textLetterSpacingNone;
-
-  @override
-  String get titleSmallFontFamily => _p.textFontFamilyIBMPlexSans;
-
-  @override
-  double get titleSmallFontSize => _p.textFontSize12;
-
-  @override
-  FontWeight get titleSmallFontWeight => _p.textFontWeightMedium;
-
-  @override
-  double get titleSmallLineHeight => _p.textLineHeight16;
-
-  @override
-  double get titleSmallLetterSpacing => _p.textLetterSpacingNone;
 
   @override
   String get bodyLargeFontFamily => _p.textFontFamilyIBMPlexSans;
@@ -2359,10 +2224,10 @@ final class _ZetaTypographyCondensedDesktopCompact implements _ZetaTypographyLay
   FontWeight get bodyLargeFontWeight => _p.textFontWeightRegular;
 
   @override
-  double get bodyLargeLineHeight => _p.textLineHeight24;
+  double get bodyLargeLetterSpacing => _p.textLetterSpacingNone;
 
   @override
-  double get bodyLargeLetterSpacing => _p.textLetterSpacingNone;
+  double get bodyLargeLineHeight => _p.textLineHeight24;
 
   @override
   String get bodyMediumFontFamily => _p.textFontFamilyIBMPlexSans;
@@ -2374,10 +2239,10 @@ final class _ZetaTypographyCondensedDesktopCompact implements _ZetaTypographyLay
   FontWeight get bodyMediumFontWeight => _p.textFontWeightRegular;
 
   @override
-  double get bodyMediumLineHeight => _p.textLineHeight24;
+  double get bodyMediumLetterSpacing => _p.textLetterSpacingNone;
 
   @override
-  double get bodyMediumLetterSpacing => _p.textLetterSpacingNone;
+  double get bodyMediumLineHeight => _p.textLineHeight24;
 
   @override
   String get bodySmallFontFamily => _p.textFontFamilyIBMPlexSans;
@@ -2389,10 +2254,10 @@ final class _ZetaTypographyCondensedDesktopCompact implements _ZetaTypographyLay
   FontWeight get bodySmallFontWeight => _p.textFontWeightRegular;
 
   @override
-  double get bodySmallLineHeight => _p.textLineHeight18;
+  double get bodySmallLetterSpacing => _p.textLetterSpacingNone;
 
   @override
-  double get bodySmallLetterSpacing => _p.textLetterSpacingNone;
+  double get bodySmallLineHeight => _p.textLineHeight18;
 
   @override
   String get bodyXsmallFontFamily => _p.textFontFamilyIBMPlexSans;
@@ -2404,10 +2269,100 @@ final class _ZetaTypographyCondensedDesktopCompact implements _ZetaTypographyLay
   FontWeight get bodyXsmallFontWeight => _p.textFontWeightRegular;
 
   @override
+  double get bodyXsmallLetterSpacing => _p.textLetterSpacingNone;
+
+  @override
   double get bodyXsmallLineHeight => _p.textLineHeight16;
 
   @override
-  double get bodyXsmallLetterSpacing => _p.textLetterSpacingNone;
+  String get displayLargeFontFamily => _p.textFontFamilyIBMPlexSans;
+
+  @override
+  double get displayLargeFontSize => _p.textFontSize52;
+
+  @override
+  FontWeight get displayLargeFontWeight => _p.textFontWeightLight;
+
+  @override
+  double get displayLargeLetterSpacing => _p.textLetterSpacingNone;
+
+  @override
+  double get displayLargeLineHeight => _p.textLineHeight60;
+
+  @override
+  String get displayMediumFontFamily => _p.textFontFamilyIBMPlexSans;
+
+  @override
+  double get displayMediumFontSize => _p.textFontSize44;
+
+  @override
+  FontWeight get displayMediumFontWeight => _p.textFontWeightLight;
+
+  @override
+  double get displayMediumLetterSpacing => _p.textLetterSpacingNone;
+
+  @override
+  double get displayMediumLineHeight => _p.textLineHeight52;
+
+  @override
+  String get displaySmallFontFamily => _p.textFontFamilyIBMPlexSans;
+
+  @override
+  double get displaySmallFontSize => _p.textFontSize36;
+
+  @override
+  FontWeight get displaySmallFontWeight => _p.textFontWeightLight;
+
+  @override
+  double get displaySmallLetterSpacing => _p.textLetterSpacingNone;
+
+  @override
+  double get displaySmallLineHeight => _p.textLineHeight40;
+
+  @override
+  String get headingLargeFontFamily => _p.textFontFamilyIBMPlexSans;
+
+  @override
+  double get headingLargeFontSize => _p.textFontSize32;
+
+  @override
+  FontWeight get headingLargeFontWeight => _p.textFontWeightRegular;
+
+  @override
+  double get headingLargeLetterSpacing => _p.textLetterSpacingNone;
+
+  @override
+  double get headingLargeLineHeight => _p.textLineHeight36;
+
+  @override
+  String get headingMediumFontFamily => _p.textFontFamilyIBMPlexSans;
+
+  @override
+  double get headingMediumFontSize => _p.textFontSize28;
+
+  @override
+  FontWeight get headingMediumFontWeight => _p.textFontWeightRegular;
+
+  @override
+  double get headingMediumLetterSpacing => _p.textLetterSpacingNone;
+
+  @override
+  double get headingMediumLineHeight => _p.textLineHeight32;
+
+  @override
+  String get headingSmallFontFamily => _p.textFontFamilyIBMPlexSans;
+
+  @override
+  double get headingSmallFontSize => _p.textFontSize24;
+
+  @override
+  FontWeight get headingSmallFontWeight => _p.textFontWeightRegular;
+
+  @override
+  double get headingSmallLetterSpacing => _p.textLetterSpacingNone;
+
+  @override
+  double get headingSmallLineHeight => _p.textLineHeight28;
 
   @override
   String get indicatorMediumFontFamily => _p.textFontFamilyIBMPlexSans;
@@ -2419,10 +2374,10 @@ final class _ZetaTypographyCondensedDesktopCompact implements _ZetaTypographyLay
   FontWeight get indicatorMediumFontWeight => _p.textFontWeightMedium;
 
   @override
-  double get indicatorMediumLineHeight => _p.textLineHeight14;
+  double get indicatorMediumLetterSpacing => _p.textLetterSpacingNone;
 
   @override
-  double get indicatorMediumLetterSpacing => _p.textLetterSpacingNone;
+  double get indicatorMediumLineHeight => _p.textLineHeight14;
 
   @override
   String get indicatorSmallFontFamily => _p.textFontFamilyIBMPlexSans;
@@ -2434,10 +2389,10 @@ final class _ZetaTypographyCondensedDesktopCompact implements _ZetaTypographyLay
   FontWeight get indicatorSmallFontWeight => _p.textFontWeightRegular;
 
   @override
-  double get indicatorSmallLineHeight => _p.textLineHeight12;
+  double get indicatorSmallLetterSpacing => _p.textLetterSpacingNone;
 
   @override
-  double get indicatorSmallLetterSpacing => _p.textLetterSpacingNone;
+  double get indicatorSmallLineHeight => _p.textLineHeight12;
 
   @override
   String get labelLargeFontFamily => _p.textFontFamilyIBMPlexSans;
@@ -2449,10 +2404,10 @@ final class _ZetaTypographyCondensedDesktopCompact implements _ZetaTypographyLay
   FontWeight get labelLargeFontWeight => _p.textFontWeightMedium;
 
   @override
-  double get labelLargeLineHeight => _p.textLineHeight18;
+  double get labelLargeLetterSpacing => _p.textLetterSpacingNone;
 
   @override
-  double get labelLargeLetterSpacing => _p.textLetterSpacingNone;
+  double get labelLargeLineHeight => _p.textLineHeight18;
 
   @override
   String get labelMediumFontFamily => _p.textFontFamilyIBMPlexSans;
@@ -2464,10 +2419,10 @@ final class _ZetaTypographyCondensedDesktopCompact implements _ZetaTypographyLay
   FontWeight get labelMediumFontWeight => _p.textFontWeightMedium;
 
   @override
-  double get labelMediumLineHeight => _p.textLineHeight16;
+  double get labelMediumLetterSpacing => _p.textLetterSpacingNone;
 
   @override
-  double get labelMediumLetterSpacing => _p.textLetterSpacingNone;
+  double get labelMediumLineHeight => _p.textLineHeight16;
 
   @override
   String get labelSmallFontFamily => _p.textFontFamilyIBMPlexSans;
@@ -2479,10 +2434,55 @@ final class _ZetaTypographyCondensedDesktopCompact implements _ZetaTypographyLay
   FontWeight get labelSmallFontWeight => _p.textFontWeightMedium;
 
   @override
+  double get labelSmallLetterSpacing => _p.textLetterSpacingNone;
+
+  @override
   double get labelSmallLineHeight => _p.textLineHeight14;
 
   @override
-  double get labelSmallLetterSpacing => _p.textLetterSpacingNone;
+  String get titleLargeFontFamily => _p.textFontFamilyIBMPlexSans;
+
+  @override
+  double get titleLargeFontSize => _p.textFontSize20;
+
+  @override
+  FontWeight get titleLargeFontWeight => _p.textFontWeightMedium;
+
+  @override
+  double get titleLargeLetterSpacing => _p.textLetterSpacingNone;
+
+  @override
+  double get titleLargeLineHeight => _p.textLineHeight24;
+
+  @override
+  String get titleMediumFontFamily => _p.textFontFamilyIBMPlexSans;
+
+  @override
+  double get titleMediumFontSize => _p.textFontSize16;
+
+  @override
+  FontWeight get titleMediumFontWeight => _p.textFontWeightMedium;
+
+  @override
+  double get titleMediumLetterSpacing => _p.textLetterSpacingNone;
+
+  @override
+  double get titleMediumLineHeight => _p.textLineHeight20;
+
+  @override
+  String get titleSmallFontFamily => _p.textFontFamilyIBMPlexSans;
+
+  @override
+  double get titleSmallFontSize => _p.textFontSize12;
+
+  @override
+  FontWeight get titleSmallFontWeight => _p.textFontWeightMedium;
+
+  @override
+  double get titleSmallLetterSpacing => _p.textLetterSpacingNone;
+
+  @override
+  double get titleSmallLineHeight => _p.textLineHeight16;
 }
 
 /// Text styles built from the `typography` tokens.
@@ -2490,6 +2490,38 @@ class ZetaTextTokens {
   const ZetaTextTokens._(this._typography);
 
   final _ZetaTypographyLayer _typography;
+
+  /// `typography.body.large`
+  TextStyle get bodyLarge => TextStyle(
+      fontFamily: _typography.bodyLargeFontFamily,
+      fontSize: _typography.bodyLargeFontSize,
+      fontWeight: _typography.bodyLargeFontWeight,
+      height: _typography.bodyLargeLineHeight / _typography.bodyLargeFontSize,
+      letterSpacing: _typography.bodyLargeLetterSpacing);
+
+  /// `typography.body.medium`
+  TextStyle get bodyMedium => TextStyle(
+      fontFamily: _typography.bodyMediumFontFamily,
+      fontSize: _typography.bodyMediumFontSize,
+      fontWeight: _typography.bodyMediumFontWeight,
+      height: _typography.bodyMediumLineHeight / _typography.bodyMediumFontSize,
+      letterSpacing: _typography.bodyMediumLetterSpacing);
+
+  /// `typography.body.small`
+  TextStyle get bodySmall => TextStyle(
+      fontFamily: _typography.bodySmallFontFamily,
+      fontSize: _typography.bodySmallFontSize,
+      fontWeight: _typography.bodySmallFontWeight,
+      height: _typography.bodySmallLineHeight / _typography.bodySmallFontSize,
+      letterSpacing: _typography.bodySmallLetterSpacing);
+
+  /// `typography.body.xsmall`
+  TextStyle get bodyXsmall => TextStyle(
+      fontFamily: _typography.bodyXsmallFontFamily,
+      fontSize: _typography.bodyXsmallFontSize,
+      fontWeight: _typography.bodyXsmallFontWeight,
+      height: _typography.bodyXsmallLineHeight / _typography.bodyXsmallFontSize,
+      letterSpacing: _typography.bodyXsmallLetterSpacing);
 
   /// `typography.display.large`
   TextStyle get displayLarge => TextStyle(
@@ -2539,62 +2571,6 @@ class ZetaTextTokens {
       height: _typography.headingSmallLineHeight / _typography.headingSmallFontSize,
       letterSpacing: _typography.headingSmallLetterSpacing);
 
-  /// `typography.title.large`
-  TextStyle get titleLarge => TextStyle(
-      fontFamily: _typography.titleLargeFontFamily,
-      fontSize: _typography.titleLargeFontSize,
-      fontWeight: _typography.titleLargeFontWeight,
-      height: _typography.titleLargeLineHeight / _typography.titleLargeFontSize,
-      letterSpacing: _typography.titleLargeLetterSpacing);
-
-  /// `typography.title.medium`
-  TextStyle get titleMedium => TextStyle(
-      fontFamily: _typography.titleMediumFontFamily,
-      fontSize: _typography.titleMediumFontSize,
-      fontWeight: _typography.titleMediumFontWeight,
-      height: _typography.titleMediumLineHeight / _typography.titleMediumFontSize,
-      letterSpacing: _typography.titleMediumLetterSpacing);
-
-  /// `typography.title.small`
-  TextStyle get titleSmall => TextStyle(
-      fontFamily: _typography.titleSmallFontFamily,
-      fontSize: _typography.titleSmallFontSize,
-      fontWeight: _typography.titleSmallFontWeight,
-      height: _typography.titleSmallLineHeight / _typography.titleSmallFontSize,
-      letterSpacing: _typography.titleSmallLetterSpacing);
-
-  /// `typography.body.large`
-  TextStyle get bodyLarge => TextStyle(
-      fontFamily: _typography.bodyLargeFontFamily,
-      fontSize: _typography.bodyLargeFontSize,
-      fontWeight: _typography.bodyLargeFontWeight,
-      height: _typography.bodyLargeLineHeight / _typography.bodyLargeFontSize,
-      letterSpacing: _typography.bodyLargeLetterSpacing);
-
-  /// `typography.body.medium`
-  TextStyle get bodyMedium => TextStyle(
-      fontFamily: _typography.bodyMediumFontFamily,
-      fontSize: _typography.bodyMediumFontSize,
-      fontWeight: _typography.bodyMediumFontWeight,
-      height: _typography.bodyMediumLineHeight / _typography.bodyMediumFontSize,
-      letterSpacing: _typography.bodyMediumLetterSpacing);
-
-  /// `typography.body.small`
-  TextStyle get bodySmall => TextStyle(
-      fontFamily: _typography.bodySmallFontFamily,
-      fontSize: _typography.bodySmallFontSize,
-      fontWeight: _typography.bodySmallFontWeight,
-      height: _typography.bodySmallLineHeight / _typography.bodySmallFontSize,
-      letterSpacing: _typography.bodySmallLetterSpacing);
-
-  /// `typography.body.xsmall`
-  TextStyle get bodyXsmall => TextStyle(
-      fontFamily: _typography.bodyXsmallFontFamily,
-      fontSize: _typography.bodyXsmallFontSize,
-      fontWeight: _typography.bodyXsmallFontWeight,
-      height: _typography.bodyXsmallLineHeight / _typography.bodyXsmallFontSize,
-      letterSpacing: _typography.bodyXsmallLetterSpacing);
-
   /// `typography.indicator.medium`
   TextStyle get indicatorMedium => TextStyle(
       fontFamily: _typography.indicatorMediumFontFamily,
@@ -2634,4 +2610,28 @@ class ZetaTextTokens {
       fontWeight: _typography.labelSmallFontWeight,
       height: _typography.labelSmallLineHeight / _typography.labelSmallFontSize,
       letterSpacing: _typography.labelSmallLetterSpacing);
+
+  /// `typography.title.large`
+  TextStyle get titleLarge => TextStyle(
+      fontFamily: _typography.titleLargeFontFamily,
+      fontSize: _typography.titleLargeFontSize,
+      fontWeight: _typography.titleLargeFontWeight,
+      height: _typography.titleLargeLineHeight / _typography.titleLargeFontSize,
+      letterSpacing: _typography.titleLargeLetterSpacing);
+
+  /// `typography.title.medium`
+  TextStyle get titleMedium => TextStyle(
+      fontFamily: _typography.titleMediumFontFamily,
+      fontSize: _typography.titleMediumFontSize,
+      fontWeight: _typography.titleMediumFontWeight,
+      height: _typography.titleMediumLineHeight / _typography.titleMediumFontSize,
+      letterSpacing: _typography.titleMediumLetterSpacing);
+
+  /// `typography.title.small`
+  TextStyle get titleSmall => TextStyle(
+      fontFamily: _typography.titleSmallFontFamily,
+      fontSize: _typography.titleSmallFontSize,
+      fontWeight: _typography.titleSmallFontWeight,
+      height: _typography.titleSmallLineHeight / _typography.titleSmallFontSize,
+      letterSpacing: _typography.titleSmallLetterSpacing);
 }

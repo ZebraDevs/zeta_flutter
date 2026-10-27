@@ -203,20 +203,11 @@ class ZetaTokens {
   /// Whether components should be rounded: the explicit override, otherwise the `size.shape` token.
   bool get rounded => _rounded ?? _size.shape;
 
-  /// Semantic `surface` color tokens.
-  ZetaSurfaceTokens get surface => ZetaSurfaceTokens._(palette);
-
-  /// Semantic `foreground` color tokens.
-  ZetaForegroundTokens get foreground => ZetaForegroundTokens._(palette);
-
   /// Semantic `border` color tokens.
   ZetaBorderTokens get border => ZetaBorderTokens._(palette);
 
-  /// Semantic `interactive` color tokens.
-  ZetaInteractiveTokens get interactive => ZetaInteractiveTokens._(palette);
-
-  /// Semantic `overlay` color tokens.
-  ZetaOverlayTokens get overlay => ZetaOverlayTokens._(palette);
+  /// Semantic `chart` color tokens.
+  ZetaChartTokens get chart => ZetaChartTokens._(palette);
 
   /// Semantic `feedback` color tokens.
   ZetaFeedbackTokens get feedback => ZetaFeedbackTokens._(palette);
@@ -224,23 +215,35 @@ class ZetaTokens {
   /// Semantic `focus` color tokens.
   ZetaFocusTokens get focus => ZetaFocusTokens._(palette);
 
-  /// Semantic `chart` color tokens.
-  ZetaChartTokens get chart => ZetaChartTokens._(palette);
+  /// Semantic `foreground` color tokens.
+  ZetaForegroundTokens get foreground => ZetaForegroundTokens._(palette);
+
+  /// Semantic `interactive` color tokens.
+  ZetaInteractiveTokens get interactive => ZetaInteractiveTokens._(palette);
+
+  /// Semantic `overlay` color tokens.
+  ZetaOverlayTokens get overlay => ZetaOverlayTokens._(palette);
 
   /// Semantic `selection` color tokens.
   ZetaSelectionTokens get selection => ZetaSelectionTokens._(palette);
 
-  /// `space` size tokens.
-  ZetaSpaceTokens get space => ZetaSpaceTokens._(_size);
+  /// Semantic `surface` color tokens.
+  ZetaSurfaceTokens get surface => ZetaSurfaceTokens._(palette);
 
-  /// `control` size tokens.
-  ZetaControlTokens get control => ZetaControlTokens._(_size);
+  /// `animations` size tokens.
+  ZetaAnimationsTokens get animations => ZetaAnimationsTokens._(_size);
 
   /// `container` size tokens.
   ZetaContainerTokens get container => ZetaContainerTokens._(_size);
 
+  /// `control` size tokens.
+  ZetaControlTokens get control => ZetaControlTokens._(_size);
+
   /// `radius` size tokens.
   ZetaRadiusTokens get radius => ZetaRadiusTokens._(_size);
+
+  /// `space` size tokens.
+  ZetaSpaceTokens get space => ZetaSpaceTokens._(_size);
 
   /// `stroke` size tokens.
   ZetaStrokeTokens get stroke => ZetaStrokeTokens._(_size);
