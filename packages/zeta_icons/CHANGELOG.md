@@ -1,5 +1,13 @@
 
 
+## [1.9.9](https://github.com/ZebraDevs/zeta-icons/compare/zeta-icons-1.9.8...zeta-icons-1.9.9) (2026-10-29)
+
+### ✅ Icons Added
+
+* **Enterprise:** Rules Label <img src='https://raw.githubusercontent.com/ZebraDevs/zeta-icons/refs/heads/main/outputs/png/rules_label_round.png' alt='Rules Label'  width='24px' height='24px'/>
+
+
+
 ## [1.9.8](https://github.com/ZebraDevs/zeta-icons/compare/zeta-icons-1.9.7...zeta-icons-1.9.8) (2026-10-26)
 
 
