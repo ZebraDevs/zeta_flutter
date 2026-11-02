@@ -110,6 +110,8 @@ The full select assembly: a label above, a Select Field in the middle and a hint
 | Show Label | false | - | Drops the label from the stack. Only safe where something else nearby already names the field, and the name must still reach assistive technology through another means. |
 | Show Hint | true | true | Keeps the supporting line below the field. Leaving it on reserves the space before validation is needed and prevents layout shift when an error message appears. |
 | Show Hint | false | - | Drops the hint and shortens the stack. A select that can fail validation then has nowhere to put the reason, and turning the line back on later moves everything below it. |
+| Compact | false | true | The default menu inset. Use it unless the list has to fit a cramped spot. |
+| Compact | true | - | Opens the list on the compact Dropdown Menu: a tighter inset and no gap between rows. Set on the nested Dropdown Menu. Use it where room is short, such as a table footer. |
 | Label / Type | default | true | The plain name with nothing after it. |
 | Label / Type | optional | - | Appends (optional) after the name. Use when most other selects in the form are required, so the exception is what is marked. |
 | Label / Type | required | - | Adds an asterisk after the name. Use only where submission genuinely fails without a chosen value. |

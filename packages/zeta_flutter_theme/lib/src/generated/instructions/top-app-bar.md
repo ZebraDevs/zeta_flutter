@@ -6,6 +6,98 @@ Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-Sys
 
 Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-System?node-id=3116-1217&m=dev
 
+### Overview
+
+The header at the top of a mobile screen, carrying the screen’s name between a leading control and whatever actions the screen needs. Type switches it between six arrangements: a standard title row, a centred title, two selection toolbars, a full width search field, and a taller layout that drops the title onto its own line. Each arrangement brings its own leading control and its own content, so changing Type replaces what the bar holds rather than rearranging it.
+
+### Property Breakdown
+
+| Property | Type | Default | Description |
+| --- | --- | --- | --- |
+| Type | default | true | Use for an ordinary screen that needs a title and a few actions. It is the only arrangement that carries an avatar beside the title. |
+| Type | centered | — | Use where the title should read as the screen’s name rather than a label beside controls. It allows one trailing control, so a screen needing several will not fit. |
+| Type | contextual | — | Use while items are selected and the bar becomes a toolbar for them. Its count is fixed content, so it does not report the real selection. |
+| Type | contextual alt | — | Use for the same selection toolbar where the count needs to be settable. The count sits inside a button, so it reads as something to press. |
+| Type | search | — | Use when search takes over the whole bar. It drops the title and every action but the back control, so nothing else is reachable while searching. |
+| Type | extended | — | Use where the title needs a line of its own below the controls. It is taller than the other five, so a layout assuming one bar height will shift. |
+| Shape | sharp | true | Use where the bar meets the screen edges and reads as part of the chrome. |
+| Shape | rounded | — | Use where the bar sits inside a padded surface. It rounds the bar’s own corner only, and the controls inside keep the shape they already have. |
+| Page Title | text | Title | Names the screen. It is read by default, centered and extended only, so setting it on the other three changes nothing. |
+| Contextual Control Slot | slot | — | Takes the actions offered while items are selected. It exists on contextual and contextual alt, and nowhere else. |
+| Trailing Slot | slot | — | Takes the trailing actions on an ordinary screen. It exists on default and extended, and nowhere else. |
+
+### States & Triggers
+
+| State | Trigger | Duration | What changes |
+| --- | --- | --- | --- |
+| Static | — | — | The bar has no interaction states. Hover, focus and press belong to the controls placed inside it. |
+| Type | The Type value | — | Each value replaces the bar’s contents rather than repositioning them. The leading control, the title treatment and which slot exists all change together. |
+| Shape | The Shape value | — | The bar’s own corner, and nothing else. The controls inside hold the shape they were given either way. |
+| Leading control | The Type value | — | A hamburger on default, centered and extended. A close on contextual and contextual alt. A back arrow on search. |
+| Title treatment | The Type value | — | default and extended set the title a step larger than centered. contextual shows a fixed count in its place, and contextual alt shows that count inside a button. |
+
+### Behavior & Motion Intent
+
+| Type | Description |
+| --- | --- |
+| Motion | No transition is defined. Changing Type replaces the bar’s contents outright, and nothing animates between one arrangement and the next. |
+| Type is a content switch | Type does not rearrange one set of parts. Each value brings its own leading control, its own middle content and its own slot, so moving between values is a replacement rather than a reflow. |
+| Shape does not carry | Shape sets the bar’s corner on its own. The nested controls are rounded in both values, so a sharp bar still contains rounded controls. |
+| Height | Five arrangements stand at one height. extended is taller because it puts the title on a second row beneath the controls. |
+| Slot availability | The two slots are never both present. Each Type offers at most one of them, and centered and search offer neither. |
+
+### Content & Slot
+
+| Property | Type | Description |
+| --- | --- | --- |
+| Screen title | Page Title, text | Consumer owned on default, centered and extended. The other three arrangements draw no title, so the property has nowhere to land. |
+| Trailing actions | Trailing Slot, consumer owned | Present on default and extended. The content in it by default is three icon buttons set to small and subtle. |
+| Contextual actions | Contextual Control Slot, consumer owned | Present on contextual and contextual alt. The content in it by default is four icon buttons set to small and subtle. |
+| Centered trailing | Parent owned | centered holds a single icon button rather than a slot, so its trailing action is fixed rather than passed in. |
+| Leading control | Icon Button, parent owned | Set to small and subtle on every arrangement. Its glyph is decided by Type and is not exposed as an input. |
+| Avatar | Parent owned | default carries a small photo avatar beside the title. It is not exposed as an input, and no other arrangement has one. |
+| Selection count | Parent owned | contextual draws a fixed count as plain text. contextual alt puts the same count inside a button, where it is that button’s own label. |
+| Search field | Search, parent owned | Set to small and ghost, and carried already in its typing state with text and a cursor in place. |
+
+### Anatomy
+
+1. **Bar** — The surface itself, holding one content row padded on every side. extended adds a second row beneath it.
+2. **Leading control** — An icon button at the start of the bar. Which glyph it carries is decided by Type, not passed in.
+3. **Title** — The screen’s name. It is present on default, centered and extended, and centered sets it a step smaller than the other two.
+4. **Trailing region** — Either a slot, a single fixed control, or nothing at all, depending on Type.
+5. **Second row** — extended only. The title moves off the control row onto a line of its own, which is what makes that arrangement taller.
+
+### How to use
+
+**Do:**
+- Pick Type for what the screen is doing. Each value is a different arrangement with its own content, not a styling choice applied to one layout.
+- Keep Page Title to the screen's name. It is the bar's only text input, and it reads as the screen's identity rather than as a label.
+
+**Don't:**
+- Don't set Page Title on contextual, contextual alt or search. Those arrangements draw no title, so the text has nowhere to appear.
+- Don't expect Shape to reshape the controls. It sets the bar's own corner, and the icon buttons inside stay rounded either way.
+
+### Accessibility & Content Guidelines
+
+- The bar is a landmark rather than a control, so it takes its role and its name from the screen around it. Every control in it carries a glyph and no visible label, so the leading control and each trailing action need an accessible name supplied where they are placed, and that name has to follow Type, since the same leading position is a menu, a dismiss and a back control depending on the arrangement. The title is the screen’s name and should match whatever the screen is announced as, so a person arriving by screen reader hears the same thing a sighted person reads. On the selection arrangements the count is the only report of how many items are held, so it needs to be announced when it changes rather than only drawn.
+
+### Layout & Theming Intents
+
+| Property | Type | Description |
+| --- | --- | --- |
+| Size | Fixed width, hug height | 390 wide on every variant. 60 tall on five arrangements and 100 on extended, which carries a second row. |
+| Direction | Column | A content row, with extended adding a title row beneath it. space/sm between rows, and space/lg on extended. |
+| Padding | Tokenised | space/md above and below, space/sm on both sides. |
+| Content row | Fill | Spreads its leading group and its trailing region to opposite ends. search instead lays its two parts out from the start, space/md apart. |
+| Leading group | Fill | space/md between the leading control and whatever follows it. |
+| Leading control | Set to small | An icon button set to small and subtle on every arrangement. |
+| Trailing region | Hug | Hugs its content on default, extended, contextual and contextual alt. centered instead holds one control that fills the row height. |
+| Search field | Set to small | Fills the width left beside the back control, set to small and ghost. |
+| Surface | Tokenised | surface/section across every arrangement. |
+| Radius | Per Shape | radius/element-sm on rounded. sharp carries a plain zero corner with no token bound to it. |
+| Title | Per Type | label/large on default and extended, label/medium on centered. The title colour is set directly rather than bound to a token. |
+| Selection count | Per Type | label/medium on contextual, also set directly rather than bound. On contextual alt it comes from the button and takes interactive/neutral/foreground/default. |
+
 ### Layer structure
 
 - Top App Bar (COMPONENT)
@@ -26,6 +118,11 @@ Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-Sys
           - Top App Bar/Main/Frame 3/Contextual Details/Count/2 Items (TEXT)
       - Top App Bar/Main/Frame 3/Button (INSTANCE)
     - Top App Bar/Main/Contextual Control Slot (SLOT)
+    - Top App Bar/Main/Frame 4 (FRAME)
+      - Top App Bar/Main/Frame 4/Icon Button (INSTANCE)
+      - Top App Bar/Main/Frame 4/Contextual Details (FRAME)
+        - Top App Bar/Main/Frame 4/Contextual Details/Count (FRAME)
+          - Top App Bar/Main/Frame 4/Contextual Details/Count/2 Items (TEXT)
     - Top App Bar/Main/Icon Button (INSTANCE)
     - Top App Bar/Main/Search (INSTANCE)
   - Top App Bar/Page Title (FRAME)
@@ -92,7 +189,6 @@ Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-Sys
 | Type | contextual | Top App Bar/Main/Frame 2/Page Header/Page Title/Title | fontSize | — |
 | Type | contextual | Top App Bar/Main/Frame 2/Page Header/Page Title/Title | lineHeight | — |
 | Type | contextual | Top App Bar/Main/Frame 2/Page Header/Page Title/Title | letterSpacing | — |
-| Type | contextual | Top App Bar/Main/Frame 3 | itemSpacing | space.md |
 | Type | contextual | Top App Bar/Main/Frame 3/Icon Button | width | control.sm |
 | Type | contextual | Top App Bar/Main/Frame 3/Icon Button | height | control.sm |
 | Type | contextual | Top App Bar/Main/Frame 3/Icon Button | fill[0] | interactive.ghost.background.default |

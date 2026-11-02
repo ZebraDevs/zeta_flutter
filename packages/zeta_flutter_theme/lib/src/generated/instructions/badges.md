@@ -14,8 +14,8 @@ Marks that something is waiting on whatever it is pinned to, optionally with a c
 
 | Property | Type | Default | Description |
 | --- | --- | --- | --- |
-| Value | text | 2 | The count shown inside the indicator. Carried at large and medium, and dropped entirely at small. |
-| Size | large | true | The widest form, for a count that may run to more than one digit. |
+| Value | text | 2 | The count shown inside the indicator. Carried at large and medium, and dropped entirely at small. It holds 3 characters at most, and anything above 99 reads 99+. |
+| Size | large | true | The widest form, for a count of up to 3 characters. |
 | Size | medium | - | A fixed square holding a single digit. Use it where space is tight but the number still matters. |
 | Size | small | - | A plain dot with no count. It says something is new without saying how much, so using it where the number matters loses the number silently. |
 
@@ -37,7 +37,7 @@ Marks that something is waiting on whatever it is pinned to, optionally with a c
 
 | Property | Type | Description |
 | --- | --- | --- |
-| Value | text property | Consumer owned, set through Value and shown at large and medium. Keep it short, because only large grows with its text. |
+| Value | text property | Consumer owned, set through Value and shown at large and medium. large grows to 3 characters at most, and anything above 99 reads 99+. |
 
 ### Anatomy
 
@@ -49,7 +49,7 @@ Marks that something is waiting on whatever it is pinned to, optionally with a c
 
 **Do:**
 - Use small where the fact that something is new is the whole message. It is the only form that makes no claim about quantity.
-- Keep the count short. Only large grows with its text, so a long number is clipped at the other two sizes rather than accommodated.
+- Keep the count short. large stops at 3 characters and shows 99+ above 99, and medium holds a single digit.
 
 **Don't:**
 - Don't use it to mean anything other than items waiting. It has one fixed colour, so it cannot carry a second meaning alongside the first.
@@ -67,11 +67,11 @@ Marks that something is waiting on whatever it is pinned to, optionally with a c
 | Property | Type | Description |
 | --- | --- | --- |
 | Size | Fixed per Size | 28 by 20 at large, a 16 square at medium and an 8 dot at small. |
-| Padding | Per Size | space/xs left and right at large with 3 above and below. medium and small carry none, because their content is centred inside a fixed square. |
+| Padding | Per Size | space/xxs left and right at large. medium and small carry none, because their content is centred inside a fixed square. |
 | Radius | Fixed | radius/pill at all three sizes, so every form is fully round whether or not it holds a number. |
 | Fill | Fixed | interactive/destructive/background/default at every size. One colour throughout, which does not vary with the count. |
 | Border | Theming | A stroke bound to border/inverse sits on all three sizes at zero weight. The weight is a theming hook rather than an omission, so a high contrast set can give the indicator a hard outline where it overlaps whatever it is pinned to. |
-| Value | Theming | indicator/medium at 12px in interactive/destructive/foreground/default. Present at large and medium, absent at small. |
+| Value | Theming | indicator/medium at 12px in foreground/on-strong. Present at large and medium, absent at small. |
 
 ### Layer structure
 

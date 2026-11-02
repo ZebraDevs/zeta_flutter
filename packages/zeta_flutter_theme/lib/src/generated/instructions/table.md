@@ -8,7 +8,7 @@ Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-Sys
 
 ### Overview
 
-A data table with rows of content arranged in columns, framed by an optional controls bar above and a pagination footer below. Reading top to bottom it is the controls bar, the table content, and the footer, each of the two outer bars removable on its own without affecting the other. This instance always lays out its columns in the plain left-to-right arrangement, not the frozen or horizontally scrolling arrangement Table Content also offers.
+A data table with rows of content in columns, framed by an optional controls bar above and a footer below. It can select and count rows, sort, search, filter and page them, resize, show, hide and freeze columns, and open a compact actions menu per row. The controls bar, content and footer are exposed, so their own properties are set from Table.
 
 ### Property Breakdown
 
@@ -20,20 +20,49 @@ A data table with rows of content arranged in columns, framed by an optional con
 | hasFooter | false | - | Removes the footer entirely, the content ends at the bottom of the table. |
 | Shape | rounded | true | Every component inside the table takes its rounded option: search, buttons, checkboxes, status labels and pagination, including the table's own corners. |
 | Shape | sharp | - | Every component inside the table takes its sharp option. |
+| Selectable | true | true | Adds the selection column: select-all in the header and a checkbox per row. |
+| Selectable | false | - | No selection column. |
+| Row Actions | true | true | Adds a trailing more button per row that opens a compact menu of the row's actions. |
+| Row Actions | false | - | No actions column. |
+| Vertical Scroll | false | true | The content grows with its rows. |
+| Vertical Scroll | true | - | Caps the content height so rows scroll under a sticky header. |
+| Selected Count | true | true | An info Label at the start of the controls bar counts the selected rows. It shows only while rows are selected. |
+| Selected Count | false | - | No count. |
+| Column Settings | true | true | A settings button at the end of the controls bar opens the column panel to show, hide and freeze columns. |
+| Column Settings | false | - | No column panel. |
+| Rows Per Page | true | true | A small compact Select after the page summary sets how many rows each page shows. |
+| Rows Per Page | false | - | No page size choice. |
 
 ### Behavior & Motion Intent
 
 | Type | Description |
 | --- | --- |
 | Motion | No transition is defined for the controls bar or the footer appearing and disappearing. |
+| Selection | A checkbox per row and select-all in the header. Select-all covers the enabled rows shown and is indeterminate while only some are selected. Selected rows take the selected fill across every column. |
+| Selected count | While rows are selected, an info Label at the start of the controls bar counts them. Screen readers hear the count change. |
+| Sorting | A sortable header cycles none, ascending and descending. Client-side, the table reorders the rows itself; otherwise the consumer does. |
+| Search and filter | Search matches every cell's text. A filterable header opens a compact checkbox menu of the column's values, and a filtered column keeps its glyph in foreground/cursor. |
+| Paging | Rows per page sets the page size. Client-side, the summary and page count are worked out, and sorting, searching or filtering returns to page 1. |
+| Column resizing | Hovering a header's trailing edge shows the neutral hover border at full cell height. Dragging trades width with the next resizable columns, so the table width never changes. Arrow keys step it and a double-click resets it. |
+| Column settings | The settings panel shows or hides columns and freezes up to a chosen column. The last column showing can't be hidden. |
+| Row actions | The more button opens a compact menu of the row's actions. Escape closes it and returns focus to the button. |
+| Sticky header | With Vertical Scroll, rows scroll under a header that sticks to the top. Frozen columns stay frozen both ways. |
+| Truncation | Text cut off in a narrow column shows in full in a Tooltip after a short hover. |
+| Disabled rows | A disabled row keeps the plain fill and dims everything in it. It can't be selected, clicked or opened for actions unless the table allows disabled selection. |
+| Empty | With nothing to show, one row spanning every column reads the empty label. |
 
 ### Content & Slot
 
 | Property | Type | Description |
 | --- | --- | --- |
-| Controls bar | Table Controls instance | Holds a search field (instance of the search component) fixed to its own Shape, Size and Flavour, and an open Controls Slot for whatever actions a consumer adds. Whether each shows on its own is not reachable from Table, only hasControl toggles them together. |
-| Content | Table Content instance | Always the plain left-to-right column layout. Table Content also offers a frozen-column and a horizontally scrolling arrangement, neither used by this instance and neither exposed as a property of Table. |
-| Footer | Table Footer instance | Holds a locked summary text and a Pagination instance set to Outline. Whether each shows on its own is not reachable from Table, only hasFooter toggles them together. |
+| Controls bar | Table Controls instance | Holds the selected count, a search field, the Controls Slot and the column settings button. Each is a property of the exposed instance. |
+| Content | Table Content instance | Holds the selection column, the data columns and the actions column. Column Position, Horizontal Scroll, Vertical Scroll, Selectable and Row Actions are exposed. |
+| Footer | Table Footer instance | Holds the page summary, rows per page and Pagination. Each is a property of the exposed instance. |
+| Selection column | Table Column/Select | _Select Cell rows: select-all, checked, selected and disabled. |
+| Actions column | Table Column/Actions | _Actions Cell rows: the more button, open, selected and disabled. |
+| Menus | _Table Menu | Compact row actions, filter and column settings menus. |
+| Empty row | _Empty Row | Spans every column when nothing matches. |
+| Tooltip | Tooltip instance | Shows cut-off text in full. Hidden from assistive technology. |
 
 ### Anatomy
 
@@ -44,14 +73,15 @@ A data table with rows of content arranged in columns, framed by an optional con
 **Do:**
 - Turn hasControl off when the table doesn't need its own search or extra actions above it.
 - Turn hasFooter off for a table short enough that pagination has nothing to do.
+- Turn Selectable on only when selected rows feed an action, such as a bulk delete.
 
 **Don't:**
-- Don't expect Table's own properties to hide just the search field or just the pagination summary on their own, hasControl and hasFooter each toggle their whole section together.
-- Don't expect a frozen or horizontally scrolling column arrangement from this instance, it always uses the plain left-to-right layout no matter what fills the columns.
+- Don't try to hide the last column in the settings panel. The table keeps one showing.
+- Don't rely on slotted controls in a disabled row. They ignore the pointer unless disabled selection is allowed.
 
 ### Accessibility & Content Guidelines
 
-- Nothing in this file marks keyboard navigation between cells, rows or the controls above and below them. Whether this table participates in a grid-style keyboard pattern needs confirming outside Figma.
+- A captioned table with column headers and aria-sort on sortable columns. Checkboxes are named, such as Select all rows and Select row: Name. Resize grips are focusable separators with a name and a value. Menus are named, move with the arrow keys and close on Escape, returning focus to their trigger. The selected count is a live region. Tooltips repeat visible text and are hidden from assistive technology.
 
 ### Layout & Theming Intents
 
@@ -62,7 +92,8 @@ A data table with rows of content arranged in columns, framed by an optional con
 | Padding | Fixed | 0 on every side of the table itself, each section carries its own padding instead. |
 | Controls bar | Fixed height, fixed padding | Fixed at 60px tall, 16px padding on the left and right, 12px on top and bottom. Its search field and controls slot align to the right-hand side, leaving the left side open. |
 | Footer | Fixed height, fixed padding | Fixed at 60px tall, the same 16px and 12px padding as the controls bar. The summary text and the pagination control push to opposite ends rather than sitting a fixed distance apart. |
-| Content | Fill | Takes whatever height is left between the controls bar and the footer, 351px with both shown. |
+| Content | Fill | Takes the height left between the controls bar and the footer, 351px with both shown. With Vertical Scroll it caps its height and scrolls. |
+| Columns | Resizable | Resizing trades width between columns, so the table width holds. |
 
 ### Layer structure
 
@@ -102,7 +133,11 @@ Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-Sys
 ### Layer structure
 
 - Table Footer (COMPONENT)
-  - Table Footer/Page Details (TEXT)
+  - Table Footer/Footer Start (FRAME)
+    - Table Footer/Footer Start/Page Details (TEXT)
+    - Table Footer/Footer Start/Rows Per Page (FRAME)
+      - Table Footer/Footer Start/Rows Per Page/Rows Per Page Label (TEXT)
+      - Table Footer/Footer Start/Rows Per Page/Page Size (INSTANCE)
   - Table Footer/Pagination (INSTANCE)
 
 ### Resolved tokens (default variant: Table Footer)
@@ -115,10 +150,26 @@ Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-Sys
 | Table Footer | padding.right | 16 | space.lg |
 | Table Footer | padding.top | 12 | space.md |
 | Table Footer | padding.bottom | 12 | space.md |
-| Table Footer/Page Details | fill[0] | #545963 | foreground.secondary |
-| Table Footer/Page Details | fontSize | 14 | body.small.font size |
-| Table Footer/Page Details | lineHeight | 18 | body.small.line height |
-| Table Footer/Page Details | letterSpacing | 0 | body.small.letter spacing |
+| Table Footer/Footer Start | itemSpacing | 24 | space.xl |
+| Table Footer/Footer Start/Page Details | fill[0] | #545963 | foreground.secondary |
+| Table Footer/Footer Start/Page Details | fontSize | 14 | body.small.font size |
+| Table Footer/Footer Start/Page Details | lineHeight | 18 | body.small.line height |
+| Table Footer/Footer Start/Page Details | letterSpacing | 0 | body.small.letter spacing |
+| Table Footer/Footer Start/Rows Per Page | itemSpacing | 8 | space.sm |
+| Table Footer/Footer Start/Rows Per Page/Rows Per Page Label | fill[0] | #545963 | foreground.secondary |
+| Table Footer/Footer Start/Rows Per Page/Rows Per Page Label | fontSize | 12 | — |
+| Table Footer/Footer Start/Rows Per Page/Rows Per Page Label | lineHeight | 14.522727012634277 | — |
+| Table Footer/Footer Start/Rows Per Page/Rows Per Page Label | letterSpacing | 0 | — |
+| Table Footer/Footer Start/Rows Per Page/Page Size | height | 36 | control.sm |
+| Table Footer/Footer Start/Rows Per Page/Page Size | fill[0] | #ffffff | interactive.neutral.background.default |
+| Table Footer/Footer Start/Rows Per Page/Page Size | stroke[0] | #ced2db | interactive.neutral.border.default |
+| Table Footer/Footer Start/Rows Per Page/Page Size | cornerRadius | 0 | radius.none |
+| Table Footer/Footer Start/Rows Per Page/Page Size | strokeWeight | 1 | stroke.thin |
+| Table Footer/Footer Start/Rows Per Page/Page Size | itemSpacing | 4 | space.xxs |
+| Table Footer/Footer Start/Rows Per Page/Page Size | padding.left | 12 | space.md |
+| Table Footer/Footer Start/Rows Per Page/Page Size | padding.right | 12 | space.md |
+| Table Footer/Footer Start/Rows Per Page/Page Size | padding.top | 8 | space.sm |
+| Table Footer/Footer Start/Rows Per Page/Page Size | padding.bottom | 8 | space.sm |
 | Table Footer/Pagination | itemSpacing | 8 | space.sm |
 
 ## Table Controls
@@ -128,8 +179,11 @@ Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-Sys
 ### Layer structure
 
 - Table Controls (COMPONENT)
+  - Table Controls/Selected Count (FRAME)
+    - Table Controls/Selected Count/Count Label (INSTANCE)
   - Table Controls/Search (INSTANCE)
   - Table Controls/Controls Slot (SLOT)
+  - Table Controls/Column Settings (INSTANCE)
 
 ### Resolved tokens (default variant: Table Controls)
 
@@ -141,6 +195,15 @@ Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-Sys
 | Table Controls | padding.right | 16 | space.lg |
 | Table Controls | padding.top | 12 | space.md |
 | Table Controls | padding.bottom | 12 | space.md |
+| Table Controls/Selected Count/Count Label | fill[0] | #0073e6 | feedback.info.background.strong |
+| Table Controls/Selected Count/Count Label | stroke[0] | #0073e6 | feedback.info.background.strong |
+| Table Controls/Selected Count/Count Label | cornerRadius | 0 | radius.none |
+| Table Controls/Selected Count/Count Label | strokeWeight | 1 | stroke.thin |
+| Table Controls/Selected Count/Count Label | itemSpacing | 2 | space.2xs |
+| Table Controls/Selected Count/Count Label | padding.left | 4 | space.xxs |
+| Table Controls/Selected Count/Count Label | padding.right | 4 | space.xxs |
+| Table Controls/Selected Count/Count Label | padding.top | 4 | space.xxs |
+| Table Controls/Selected Count/Count Label | padding.bottom | 4 | space.xxs |
 | Table Controls/Search | height | 36 | control.sm |
 | Table Controls/Search | fill[0] | #ffffff | interactive.neutral.background.default |
 | Table Controls/Search | stroke[0] | #ced2db | interactive.neutral.border.default |
@@ -152,6 +215,16 @@ Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-Sys
 | Table Controls/Search | padding.top | 8 | space.sm |
 | Table Controls/Search | padding.bottom | 8 | space.sm |
 | Table Controls/Controls Slot | itemSpacing | 8 | space.sm |
+| Table Controls/Column Settings | width | 36 | control.sm |
+| Table Controls/Column Settings | height | 36 | control.sm |
+| Table Controls/Column Settings | fill[0] | #0c0d0e00 | interactive.ghost.background.default |
+| Table Controls/Column Settings | stroke[0] | #ced2db | interactive.neutral.border.default |
+| Table Controls/Column Settings | cornerRadius | 0 | radius.none |
+| Table Controls/Column Settings | strokeWeight | 1 | stroke.thin |
+| Table Controls/Column Settings | padding.left | 4 | space.xxs |
+| Table Controls/Column Settings | padding.right | 4 | space.xxs |
+| Table Controls/Column Settings | padding.top | 4 | space.xxs |
+| Table Controls/Column Settings | padding.bottom | 4 | space.xxs |
 
 ## _Avatar and text
 
@@ -198,7 +271,7 @@ Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-Sys
     - _Label/Label/_Sort (INSTANCE)
   - _Label/Trailing Icon (INSTANCE, icon: filter)
 
-### Resolved tokens (default variant: State=enabled)
+### Resolved tokens (default variant: State=enabled, Filtered=false)
 
 | Layer | Field | Raw | Token |
 | --- | --- | --- | --- |
@@ -245,7 +318,6 @@ Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-Sys
 
 | Property | Value | Layer | Field | Token |
 | --- | --- | --- | --- | --- |
-| State | disabled | _Data Cell/Cell | fill[0] | — |
 | State | hover | _Data Cell/Cell | fill[0] | interactive.neutral.background.hover |
 | State | selected | _Data Cell/Cell | fill[0] | interactive.neutral.background.selected |
 
@@ -259,8 +331,9 @@ Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-Sys
   - _Header Cell/Cell (FRAME)
     - _Header Cell/Cell/Content (FRAME)
       - _Header Cell/Cell/Content/_Label (INSTANCE)
+  - _Header Cell/Resize Grip (RECTANGLE)
 
-### Resolved tokens (default variant: State=enabled, Sorted=true)
+### Resolved tokens (default variant: State=enabled, Sorted=true, Resize=none)
 
 | Layer | Field | Raw | Token |
 | --- | --- | --- | --- |
@@ -284,6 +357,10 @@ Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-Sys
 | State | focus | _Header Cell/Cell | fill[0] | interactive.neutral.background.focused |
 | State | focus | _Header Cell/Cell | stroke[0] | border.focus |
 | State | focus | _Header Cell/Cell | strokeWeight | stroke.thick |
+| Resize | hover | _Header Cell/Resize Grip | width | stroke.thick |
+| Resize | hover | _Header Cell/Resize Grip | fill[0] | interactive.neutral.border.hover |
+| Resize | focus | _Header Cell/Resize Grip | width | stroke.thick |
+| Resize | focus | _Header Cell/Resize Grip | fill[0] | border.focus |
 
 ## Slot
 
@@ -356,16 +433,19 @@ Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-Sys
 ### Layer structure
 
 - Table Content (COMPONENT)
-  - Table Content/Table Column/Default[1] (INSTANCE)
-  - Table Content/Table Column/Default[2] (INSTANCE)
+  - Table Content/Table Column/Select (INSTANCE)
+  - Table Content/Table Column/Default (INSTANCE)
   - Table Content/Slot Container (SLOT)
+  - Table Content/Table Column/Actions (INSTANCE)
   - Table Content/Frozen Slot Container (SLOT)
   - Table Content/Scrollable Columns (FRAME)
     - Table Content/Scrollable Columns/Columns (FRAME)
       - Table Content/Scrollable Columns/Columns/Slot Container (SLOT)
+      - Table Content/Scrollable Columns/Columns/Table Column/Actions (INSTANCE)
     - Table Content/Scrollable Columns/Scrollbar (INSTANCE)
+  - Table Content/Scrollbar (INSTANCE)
 
-### Resolved tokens (default variant: Column Position=default, Horizontal Scroll=false)
+### Resolved tokens (default variant: Column Position=default, Horizontal Scroll=false, Vertical Scroll=false)
 
 | Layer | Field | Raw | Token |
 | --- | --- | --- | --- |
@@ -375,3 +455,178 @@ Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-Sys
 | Property | Value | Layer | Field | Token |
 | --- | --- | --- | --- | --- |
 | Column Position | frozen | Table Content/Frozen Slot Container | stroke[0] | border.default |
+| Vertical Scroll | true | Table Content/Scrollbar | padding.left | space.xxs |
+| Vertical Scroll | true | Table Content/Scrollbar | padding.right | space.xxs |
+| Vertical Scroll | true | Table Content/Scrollbar | padding.top | space.xxs |
+| Vertical Scroll | true | Table Content/Scrollbar | padding.bottom | space.xxs |
+
+## _Select Cell
+
+Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-System?node-id=7605-2680&m=dev
+
+### Layer structure
+
+- _Select Cell (COMPONENT)
+  - _Select Cell/Cell (FRAME)
+    - _Select Cell/Cell/Checkbox (INSTANCE)
+
+### Resolved tokens (default variant: Type=header, Checked=false, Disabled=false)
+
+| Layer | Field | Raw | Token |
+| --- | --- | --- | --- |
+| _Select Cell | stroke[0] | #ced2db | border.default |
+| _Select Cell | strokeWeight | 0 | stroke.thin |
+| _Select Cell/Cell | fill[0] | #ffffff | interactive.neutral.background.default |
+| _Select Cell/Cell | padding.left | 12 | space.md |
+| _Select Cell/Cell | padding.right | 12 | space.md |
+
+### Token changes by property
+
+| Property | Value | Layer | Field | Token |
+| --- | --- | --- | --- | --- |
+| Type | data | _Select Cell | stroke[0] | border.subtle |
+| Type | data | _Select Cell | strokeWeight | — |
+
+## _Actions Cell
+
+Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-System?node-id=7605-2707&m=dev
+
+### Layer structure
+
+- _Actions Cell (COMPONENT)
+  - _Actions Cell/Cell (FRAME)
+    - _Actions Cell/Cell/More (INSTANCE)
+
+### Resolved tokens (default variant: Type=header, State=enabled)
+
+| Layer | Field | Raw | Token |
+| --- | --- | --- | --- |
+| _Actions Cell | stroke[0] | #ced2db | border.default |
+| _Actions Cell | strokeWeight | 0 | stroke.thin |
+| _Actions Cell/Cell | fill[0] | #ffffff | interactive.neutral.background.default |
+| _Actions Cell/Cell | padding.left | 12 | space.md |
+| _Actions Cell/Cell | padding.right | 12 | space.md |
+
+### Token changes by property
+
+| Property | Value | Layer | Field | Token |
+| --- | --- | --- | --- | --- |
+| Type | data | _Actions Cell | stroke[0] | border.subtle |
+| Type | data | _Actions Cell | strokeWeight | — |
+| Type | data | _Actions Cell/Cell/More | width | control.sm |
+| Type | data | _Actions Cell/Cell/More | height | control.sm |
+| Type | data | _Actions Cell/Cell/More | fill[0] | interactive.ghost.background.default |
+| Type | data | _Actions Cell/Cell/More | stroke[0] | interactive.neutral.border.default |
+| Type | data | _Actions Cell/Cell/More | cornerRadius | radius.none |
+| Type | data | _Actions Cell/Cell/More | strokeWeight | stroke.base |
+| Type | data | _Actions Cell/Cell/More | padding.left | space.xxs |
+| Type | data | _Actions Cell/Cell/More | padding.right | space.xxs |
+| Type | data | _Actions Cell/Cell/More | padding.top | space.xxs |
+| Type | data | _Actions Cell/Cell/More | padding.bottom | space.xxs |
+
+## _Empty Row
+
+Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-System?node-id=7605-2708&m=dev
+
+### Layer structure
+
+- _Empty Row (COMPONENT)
+  - _Empty Row/Empty Label (TEXT)
+
+### Resolved tokens (default variant: _Empty Row)
+
+| Layer | Field | Raw | Token |
+| --- | --- | --- | --- |
+| _Empty Row | fill[0] | #ffffff | interactive.neutral.background.default |
+| _Empty Row | stroke[0] | #e0e3e9 | border.subtle |
+| _Empty Row | strokeWeight | 0 | — |
+| _Empty Row | padding.left | 16 | space.lg |
+| _Empty Row | padding.right | 16 | space.lg |
+| _Empty Row | padding.top | 12 | space.md |
+| _Empty Row | padding.bottom | 12 | space.md |
+| _Empty Row/Empty Label | fill[0] | #545963 | foreground.secondary |
+| _Empty Row/Empty Label | fontSize | 12 | — |
+| _Empty Row/Empty Label | lineHeight | 14.522727012634277 | — |
+| _Empty Row/Empty Label | letterSpacing | 0 | — |
+
+## Table Column/Select
+
+Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-System?node-id=7607-3061&m=dev
+
+### Layer structure
+
+- Table Column/Select (COMPONENT)
+  - Table Column/Select/_Select Cell[1] (INSTANCE)
+  - Table Column/Select/_Select Cell[2] (INSTANCE)
+  - Table Column/Select/_Select Cell[3] (INSTANCE)
+  - Table Column/Select/_Select Cell[4] (INSTANCE)
+  - Table Column/Select/_Select Cell[5] (INSTANCE)
+  - Table Column/Select/_Select Cell[6] (INSTANCE)
+
+### Resolved tokens (default variant: Table Column/Select)
+
+| Layer | Field | Raw | Token |
+| --- | --- | --- | --- |
+| Table Column/Select/_Select Cell[1] | stroke[0] | #ced2db | border.default |
+| Table Column/Select/_Select Cell[1] | strokeWeight | 0 | stroke.thin |
+| Table Column/Select/_Select Cell[2] | stroke[0] | #e0e3e9 | border.subtle |
+| Table Column/Select/_Select Cell[2] | strokeWeight | 0 | — |
+| Table Column/Select/_Select Cell[3] | stroke[0] | #e0e3e9 | border.subtle |
+| Table Column/Select/_Select Cell[3] | strokeWeight | 0 | — |
+| Table Column/Select/_Select Cell[4] | stroke[0] | #e0e3e9 | border.subtle |
+| Table Column/Select/_Select Cell[4] | strokeWeight | 0 | — |
+| Table Column/Select/_Select Cell[5] | stroke[0] | #e0e3e9 | border.subtle |
+| Table Column/Select/_Select Cell[5] | strokeWeight | 0 | — |
+| Table Column/Select/_Select Cell[6] | stroke[0] | #e0e3e9 | border.subtle |
+| Table Column/Select/_Select Cell[6] | strokeWeight | 0 | — |
+
+## Table Column/Actions
+
+Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-System?node-id=7607-3104&m=dev
+
+### Layer structure
+
+- Table Column/Actions (COMPONENT)
+  - Table Column/Actions/_Actions Cell[1] (INSTANCE)
+  - Table Column/Actions/_Actions Cell[2] (INSTANCE)
+  - Table Column/Actions/_Actions Cell[3] (INSTANCE)
+  - Table Column/Actions/_Actions Cell[4] (INSTANCE)
+  - Table Column/Actions/_Actions Cell[5] (INSTANCE)
+  - Table Column/Actions/_Actions Cell[6] (INSTANCE)
+
+### Resolved tokens (default variant: Table Column/Actions)
+
+| Layer | Field | Raw | Token |
+| --- | --- | --- | --- |
+| Table Column/Actions/_Actions Cell[1] | stroke[0] | #ced2db | border.default |
+| Table Column/Actions/_Actions Cell[1] | strokeWeight | 0 | stroke.thin |
+| Table Column/Actions/_Actions Cell[2] | stroke[0] | #e0e3e9 | border.subtle |
+| Table Column/Actions/_Actions Cell[2] | strokeWeight | 0 | — |
+| Table Column/Actions/_Actions Cell[3] | stroke[0] | #e0e3e9 | border.subtle |
+| Table Column/Actions/_Actions Cell[3] | strokeWeight | 0 | — |
+| Table Column/Actions/_Actions Cell[4] | stroke[0] | #e0e3e9 | border.subtle |
+| Table Column/Actions/_Actions Cell[4] | strokeWeight | 0 | — |
+| Table Column/Actions/_Actions Cell[5] | stroke[0] | #e0e3e9 | border.subtle |
+| Table Column/Actions/_Actions Cell[5] | strokeWeight | 0 | — |
+| Table Column/Actions/_Actions Cell[6] | stroke[0] | #e0e3e9 | border.subtle |
+| Table Column/Actions/_Actions Cell[6] | strokeWeight | 0 | — |
+
+## _Table Menu
+
+Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-System?node-id=7607-3440&m=dev
+
+### Layer structure
+
+- _Table Menu (COMPONENT)
+  - _Table Menu/Dropdown Menu (INSTANCE)
+
+### Resolved tokens (default variant: Type=row actions)
+
+| Layer | Field | Raw | Token |
+| --- | --- | --- | --- |
+| _Table Menu/Dropdown Menu | fill[0] | #ffffff | surface.menu |
+| _Table Menu/Dropdown Menu | cornerRadius | 6 | radius.element-md |
+| _Table Menu/Dropdown Menu | padding.left | 6 | space.xs |
+| _Table Menu/Dropdown Menu | padding.right | 6 | space.xs |
+| _Table Menu/Dropdown Menu | padding.top | 6 | space.xs |
+| _Table Menu/Dropdown Menu | padding.bottom | 6 | space.xs |

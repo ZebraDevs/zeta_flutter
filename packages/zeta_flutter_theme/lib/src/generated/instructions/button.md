@@ -8,7 +8,7 @@ Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-Sys
 
 ### Overview
 
-Triggers an action from a text label, with optional icons on either side. Eleven flavours set how much weight the action carries (contrast and outline-contrast are experimental), three sizes and three shapes fit it to the surface it sits on. The label is the only content a consumer writes, everything else is a variant choice. When an action has no text label, use Icon Button rather than hiding this one's label.
+Triggers an action from a text label, with optional icons on either side. Eleven flavours set how much weight the action carries, three sizes and three shapes fit it to the surface it sits on. The label is the only content a consumer writes, everything else is a variant choice. When an action has no text label, use Icon Button rather than hiding this one's label.
 
 ### Property Breakdown
 
@@ -61,7 +61,7 @@ Triggers an action from a text label, with optional icons on either side. Eleven
 | Gradient transition | gradient and text-gradient keep their gradient through every state and move it rather than replace it. On hover the gradient slides until its end colour covers 100% of the fill (the label's own text on text-gradient); on press it slides the other way until its start colour covers 100%. Leaving or releasing slides it back to the resting two-stop gradient. It must never jump from the gradient to a flat colour: a browser cannot interpolate between a gradient and a solid fill, so that swap shows as a flicker. The hover and pressed variants show where each slide ends, not a separate flat fill. |
 | Focus ring | The only change that alters the control's outer footprint, because the ring is drawn outside the bounds. Leave room around a button in a tight row so the ring is not clipped. |
 | Resize | The control re-hugs its label whenever the text changes, so a label swapped at runtime shifts the position of everything beside it in a row. |
-| Outline contrast | Experimental. outline-contrast takes its border from interactive/inverse/border/* and its label from foreground/primary, so it follows the mode. Its states sit on interactive/ghost/background/*. |
+| Outline contrast | outline-contrast takes its border from interactive/inverse/border/* and its label from foreground/primary, so it follows the mode. Its states sit on interactive/ghost/background/*. |
 
 ### Content & Slot
 
@@ -203,7 +203,7 @@ Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-Sys
 
 ### Overview
 
-Triggers an action from a single glyph, with no text label. Square at every size, and it carries the same eleven flavours (contrast and outline-contrast are experimental), three shapes and four states as Button so the two sit together consistently. Nothing on it is readable, so every instance needs an accessible name in code. When the action can carry a word, use Button instead.
+Triggers an action from a single glyph, with no text label. Square at every size, and it carries the same eleven flavours, three shapes and four states as Button so the two sit together consistently. Nothing on it is readable, so every instance needs an accessible name in code. When the action can carry a word, use Button instead.
 
 ### Property Breakdown
 
@@ -249,7 +249,7 @@ Triggers an action from a single glyph, with no text label. Square at every size
 | --- | --- |
 | Motion | Figma stores no timing. Every state change is colour-only, with no scale, shadow or elevation shift on any flavour, so a transition should read as a tint change rather than movement. The gradient flavours are the one exception to a plain tint: their gradient moves (see Gradient transition). |
 | Gradient transition | gradient and text-gradient keep their gradient through every state and move it rather than replace it. On hover the gradient slides until its end colour covers 100% of the fill (the glyph on text-gradient); on press it slides the other way until its start colour covers 100%. Leaving or releasing slides it back to the resting two-stop gradient. It must never jump from the gradient to a flat colour: a browser cannot interpolate between a gradient and a solid fill, so that swap shows as a flicker. The hover and pressed variants show where each slide ends, not a separate flat fill. |
-| Outline contrast | Experimental. outline-contrast takes its border from interactive/inverse/border/* and its glyph from foreground/primary, so it follows the mode. Its states sit on interactive/ghost/background/*. |
+| Outline contrast | outline-contrast takes its border from interactive/inverse/border/* and its glyph from foreground/primary, so it follows the mode. Its states sit on interactive/ghost/background/*. |
 | Focus ring | The only change that alters the control's outer footprint, because the ring is drawn outside the bounds. Leave room around a button in a tight toolbar so the ring is not clipped. |
 | Resize | The control never resizes with its content. Both axes are fixed per Size, so swapping the glyph changes nothing about the footprint. |
 

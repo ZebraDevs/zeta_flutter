@@ -42,7 +42,7 @@ Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-Sys
 
 ### Overview
 
-A single row inside a Dropdown Menu, with a leading element, a label and an optional trailing icon. Six states cover resting, hover, selection, focus and disabled, and Type chooses what sits in the leading position. The row fills the width of the menu that holds it, so its own width is never set directly. Selection is carried by a faint tint alone, which is the thing to check when a menu sits on a busy surface.
+A single row inside a Dropdown Menu, with a leading element, a label and an optional trailing icon. Six states cover resting, hover, selection, focus and disabled, and Type chooses what sits in the leading position. The row fills the width of the menu that holds it, so its own width is never set directly. Selection is a light brand tint behind the row.
 
 ### Property Breakdown
 
@@ -50,18 +50,18 @@ A single row inside a Dropdown Menu, with a leading element, a label and an opti
 | --- | --- | --- | --- |
 | State | Default | true | The resting row. |
 | State | hover | - | Documents the pointer-over treatment. The implementation drives this, so choosing it in a layout freezes the row in a state it should not be in. |
-| State | selected | - | The row's option is currently chosen. It is carried by a faint background tint with the label and leading element unchanged, so it reads only as strongly as that tint does on the surface behind it. |
+| State | selected | - | The row's option is currently chosen. It shows a light brand tint behind the row, with the label and leading element unchanged. |
 | State | focus | - | Keyboard focus, drawn as a ring on all four edges with the background left alone. It is the only state that adds a border, which is what keeps it tellable apart from selected. |
 | State | selected focus | - | Both at once, for a keyboard user moving across an already-chosen option. Without it the two would be indistinguishable, which is the reason it exists. |
 | State | disabled | - | The option is unavailable. Only the label changes, so the difference between available and unavailable rests on contrast alone. |
 | Type | Icon | true | A leading Icon instance you set yourself. The glyph is exposed, so the row is configured from the menu without detaching. |
-| Type | radio | - | Names the row as a single-choice option. It is built from the same exposed Icon as the Icon type, so the radio mark has to come from the glyph you pick rather than from the variant. |
-| Type | checkbox | - | Names the row as a multi-choice option. Also built from the same exposed Icon, so the tick has to come from the glyph you pick. |
+| Type | radio | - | Names the row as a single-choice option. The leading element is a real Radio Button at Size=medium with no label, which shows the row's choice. |
+| Type | checkbox | - | Names the row as a multi-choice option. The leading element is a real Checkbox at Size=medium with no label, which shows the row's choice. |
 | Type | custom | - | Replaces the leading Icon with an empty slot, for a leading element the icon library cannot supply such as an avatar or a colour swatch. Nothing is provided by default, so the slot stays blank until filled. |
 | Rounded | false | true | Square corners, for a row inside a square menu panel. Match the panel rather than choosing per row. |
 | Rounded | true | - | Softened corners, for a rounded panel. Mixing the two inside one menu makes the rows look misaligned against the panel. |
 | Label | text | Menu Item | The option's name. The row fills the menu's width and the text neither wraps nor truncates, so a long label widens the entire menu. |
-| Leading Element | true | true | Shows the leading Icon. |
+| Leading Element | true | true | Shows the leading element: the Icon, the Checkbox or Radio Button, or the slot. |
 | Leading Element | false | - | Hides it and the label shifts to the leading edge. A menu mixing rows with and without it loses the alignment that makes a list scannable. |
 | Trailing Icon | false | true | No trailing icon. |
 | Trailing Icon | true | - | Adds an icon at the trailing edge, for a submenu arrow or an external-link mark. The label already reserves room on that side, so it takes space from the text. |
@@ -72,7 +72,7 @@ A single row inside a Dropdown Menu, with a leading element, a label and an opti
 | --- | --- | --- | --- |
 | Default | Resting | — | A fully transparent ghost background with the label on interactive/neutral/foreground/default. |
 | hover | Pointer over the row | — | The ghost background rises to 5 percent opacity. The label and the leading element do not change. |
-| selected | The option is chosen | — | A background on interactive/ghost/background/selected at 5 percent. Nothing else changes, so selected and hover sit at the same visual weight. |
+| selected | The option is chosen | — | A background on interactive/ghost/background/selected, which is brand primary at 10 percent. The label moves to foreground/primary, which looks the same as the resting label. Selected now reads stronger than hover. |
 | focus | Keyboard focus | — | A 1px ring on border/focus is drawn on all four edges, inside the row's own bounds. The background stays fully transparent. |
 | selected focus | Focus on a chosen option | — | The selected tint and the focus ring together. It is the only state carrying both. |
 | disabled | State set to disabled | — | The background stays transparent and the label moves to interactive/neutral/foreground/disabled. |
@@ -82,6 +82,7 @@ A single row inside a Dropdown Menu, with a leading element, a label and an opti
 | Type | Description |
 | --- | --- |
 | Motion | No transition is defined. Every state change is colour or opacity only, with no movement, scale or elevation. |
+| Click target | The whole row is the click target. Clicking anywhere on a checkbox row toggles it, and on a radio row selects it and clears the other radio rows. |
 | Focus ring | Drawn inside the row's own bounds rather than outside, so it never overlaps the neighbouring row or the panel's padding. |
 | Reflow | The row fills the width of the menu that holds it and its height is fixed, so a longer label reflows the menu rather than the row. |
 
@@ -90,32 +91,33 @@ A single row inside a Dropdown Menu, with a leading element, a label and an opti
 | Property | Type | Description |
 | --- | --- | --- |
 | Label | text property | The option's name. No truncation and no wrapping, the menu widens instead. |
-| Leading Icon | exposed nested Icon, Types Icon, radio and checkbox | Pinned to Size=small with Framed off and left exposed, so the glyph is set per instance from the menu. See the Icon Metadata frame. It arrives holding Verified, which suits almost no real option. |
+| Leading Icon | exposed nested Icon, Type Icon | Pinned to Size=small with Framed off and left exposed, so the glyph is set per instance from the menu. See the Icon Metadata frame. It arrives holding Verified, which suits almost no real option. |
+| Leading control | nested Checkbox or Radio Button, Types checkbox and radio | Size=medium with no label, 40px including its touch target. Checked should follow the row's selection, and disabled should follow the row. |
 | Leading Slot | slot, Type custom only | Replaces the leading Icon when Type is custom. It carries no suggested components and is empty by default, so it stays blank until something is placed in it. |
 | Trailing Icon | exposed nested Icon | Hidden until Trailing Icon is turned on, then a 16px glyph at the trailing edge. Also pinned to Size=small with Framed off and left exposed. |
 
 ### Anatomy
 
 1. **Row** — The outer horizontal frame. Fills the width of the menu that holds it and keeps a fixed height, so rows line up whatever they contain.
-2. **Leading element** — An exposed Icon for the Icon, radio and checkbox types, and an empty slot for custom.
+2. **Leading element** — An exposed Icon for the Icon type, a real Checkbox or Radio Button for those types, and an empty slot for custom.
 3. **Label** — A wrapper frame holding the text. Its own padding sets the text away from the leading element and reserves room on the trailing side.
 4. **Trailing Icon** — An exposed Icon at the trailing edge, hidden until its toggle is turned on.
 
 ### How to use
 
 **Do:**
-- Set the leading glyph on every row. It holds Verified by default, which says nothing about the option the row represents.
+- Set the leading glyph on every Icon row. It holds Verified by default, which says nothing about the option the row represents.
 - Match Rounded to the menu panel that holds the row, rather than choosing it row by row.
 
 **Don't:**
-- Don't expect radio or checkbox to draw a control. All three of those types are built from the same exposed Icon, so the mark comes from the glyph you pick.
-- Don't rely on selection alone being obvious. Selected is a 5 percent tint with no change to the label, which is a small difference on a light panel.
+- Don't use the Icon type for a choice. Use checkbox or radio, which draw the real control.
+- Don't rely on selection alone being obvious. Selected is a 10 percent brand tint, which can fade on a busy or tinted surface.
 
 ### Accessibility & Content Guidelines
 
-- Selection is carried by a faint background tint alone, with no change to the label or the leading element. It needs to be conveyed in code as well.
+- Selection is carried by a light brand tint, with no visible change to the label or the leading element. It needs to be conveyed in code as well.
 - Focus is drawn as a ring inside the row's bounds and is the only state adding a border, which is what keeps it distinguishable from selection.
-- Radio and checkbox are named roles rather than built controls. Whatever role the row plays has to be set in code, the variant name does not carry it.
+- Radio and checkbox rows draw the real control. The row's role still has to be set in code.
 - Disabled changes the label colour only, so the difference between an available and an unavailable option is contrast alone.
 - The leading icon decorates or repeats the label rather than replacing it, so the label has to stand on its own.
 
@@ -125,14 +127,14 @@ A single row inside a Dropdown Menu, with a leading element, a label and an opti
 | --- | --- | --- |
 | Width | Fill | Fills the menu that holds it, drawn at 221px. The row never hugs its label, so the menu's width sets it. |
 | Height | Fixed | 40px on control/md at every variant. |
-| Padding | Fixed | 4px (space/xs) top and bottom, 12px (space/md) left and right. |
-| Gap | Fixed | 8px (space/sm) between the leading element, the label and the trailing icon. |
+| Padding | Fixed per Type | 4px (space/xxs) top and bottom, 12px (space/md) left and right. Checkbox and radio rows use none (space/none) on the leading side, so the 40px control starts at the edge and its box lines up with an Icon row's glyph. |
+| Gap | Fixed | 8px (space/sm) between the leading element, the label and the trailing icon. Checkbox and radio rows use none (space/none), because the control's 40px target already spaces the label. |
 | Label inset | Fixed | The label wrapper adds 4px (space/xs) on its leading edge and reserves 24px (space/xl) on its trailing edge, which keeps labels clear of a trailing icon even when one is not shown. |
 | Radius | Fixed per Rounded | radius/none when false, radius/sm when true. |
-| Leading and trailing icons | Fixed | Both 16px Icon instances at Size=small with Framed off. |
+| Leading and trailing icons | Fixed | Both 16px Icon instances at Size=small with Framed off. Checkbox and radio rows lead with a 40px control instead. |
 | Border | Fixed per State | None at rest. Focus and selected focus add a 1px ring on border/focus, drawn on all four edges inside the row. |
 | Label type | Fixed | label/medium (14/20), IBM Plex Sans Medium. |
-| Colour | Theming | Backgrounds come from the interactive/ghost family, transparent at rest, 5 percent on hover and on selected, transparent again on focus and disabled. The label is interactive/neutral/foreground/default, dropping to interactive/neutral/foreground/disabled when disabled. |
+| Colour | Theming | Backgrounds come from the interactive/ghost family: transparent at rest, 5 percent on hover, a 10 percent brand tint on selected, and transparent again on focus and disabled. The label is interactive/neutral/foreground/default, foreground/primary when selected (the same colour), and interactive/neutral/foreground/disabled when disabled. |
 
 ### Layer structure
 
@@ -168,6 +170,7 @@ A single row inside a Dropdown Menu, with a leading element, a label and an opti
 | --- | --- | --- | --- | --- |
 | State | hover | Menu Item | fill[0] | interactive.ghost.background.hover |
 | State | selected | Menu Item | fill[0] | interactive.ghost.background.selected |
+| State | selected | Menu Item/Label/Label | fill[0] | foreground.primary |
 | State | focus | Menu Item | fill[0] | interactive.ghost.background.focused |
 | State | focus | Menu Item | stroke[0] | border.focus |
 | State | focus | Menu Item | strokeWeight | stroke.thin |
@@ -176,6 +179,11 @@ A single row inside a Dropdown Menu, with a leading element, a label and an opti
 | State | selected focus | Menu Item | strokeWeight | stroke.thin |
 | State | disabled | Menu Item | fill[0] | interactive.ghost.background.disabled |
 | State | disabled | Menu Item/Label/Label | fill[0] | interactive.neutral.foreground.disabled |
+| Type | checkbox | Menu Item | itemSpacing | — |
+| Type | checkbox | Menu Item | padding.left | — |
+| Type | radio | Menu Item | itemSpacing | — |
+| Type | radio | Menu Item | padding.left | — |
+| Type | radio | Menu Item/Leading Icon | cornerRadius | radius.none |
 | Rounded | true | Menu Item | cornerRadius | radius.sm |
 
 ## Dropdown Menu
