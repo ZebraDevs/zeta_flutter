@@ -31,7 +31,13 @@ class Zeta extends InheritedWidget {
           paletteTheme: paletteTheme,
           sizeTheme: sizeTheme,
           typographyTheme: typographyTheme,
-          colorMode: colorMode ?? (themeMode.brightness == Brightness.dark ? ZetaColorMode.dark : ZetaColorMode.light),
+          colorMode: colorMode ??
+              switch ((contrast, themeMode.brightness)) {
+                (ZetaContrast.aaa, Brightness.dark) => ZetaColorMode.aaaDark,
+                (ZetaContrast.aaa, Brightness.light) => ZetaColorMode.aaaLight,
+                (ZetaContrast.aa, Brightness.dark) => ZetaColorMode.dark,
+                (ZetaContrast.aa, Brightness.light) => ZetaColorMode.light,
+              },
           breakpoint: breakpoint,
           rounded: rounded,
         ),

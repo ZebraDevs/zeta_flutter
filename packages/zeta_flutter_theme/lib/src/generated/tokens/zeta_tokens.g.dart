@@ -16,7 +16,7 @@ enum ZetaPrimitivesTheme {
   zeta,
 
   /// The `target` primitives theme.
-  target,
+  target;
 }
 
 /// Themes that override the `palette` layer.
@@ -28,7 +28,7 @@ enum ZetaPaletteTheme {
   companion,
 
   /// The `target` palette theme.
-  target,
+  target;
 }
 
 /// Themes that override the `size` layer.
@@ -37,7 +37,7 @@ enum ZetaSizeTheme {
   zeta,
 
   /// The `condensed` size theme.
-  condensed,
+  condensed;
 }
 
 /// Themes that override the `typography` layer.
@@ -46,7 +46,7 @@ enum ZetaTypographyTheme {
   zeta,
 
   /// The `condensed` typography theme.
-  condensed,
+  condensed;
 }
 
 /// Color modes of the `palette` layer.
@@ -57,8 +57,11 @@ enum ZetaColorMode {
   /// The `dark` color mode.
   dark(Brightness.dark),
 
-  /// The `aaa` color mode (falls back to `light` until it exists in Figma).
-  aaa(Brightness.light);
+  /// The `aaa light` color mode.
+  aaaLight(Brightness.light),
+
+  /// The `aaa dark` color mode.
+  aaaDark(Brightness.dark);
 
   const ZetaColorMode(this.brightness);
 
@@ -140,9 +143,12 @@ class ZetaTokens {
         (ZetaPaletteTheme.zeta, ZetaColorMode.dark) => _ZetaPaletteZetaDark(primitives),
         (ZetaPaletteTheme.companion, ZetaColorMode.dark) => _ZetaPaletteCompanionDark(primitives),
         (ZetaPaletteTheme.target, ZetaColorMode.dark) => _ZetaPaletteTargetDark(primitives),
-        (ZetaPaletteTheme.zeta, ZetaColorMode.aaa) => _ZetaPaletteZetaLight(primitives),
-        (ZetaPaletteTheme.companion, ZetaColorMode.aaa) => _ZetaPaletteCompanionLight(primitives),
-        (ZetaPaletteTheme.target, ZetaColorMode.aaa) => _ZetaPaletteTargetLight(primitives),
+        (ZetaPaletteTheme.zeta, ZetaColorMode.aaaLight) => _ZetaPaletteZetaAaaLight(primitives),
+        (ZetaPaletteTheme.companion, ZetaColorMode.aaaLight) => _ZetaPaletteCompanionAaaLight(primitives),
+        (ZetaPaletteTheme.target, ZetaColorMode.aaaLight) => _ZetaPaletteTargetAaaLight(primitives),
+        (ZetaPaletteTheme.zeta, ZetaColorMode.aaaDark) => _ZetaPaletteZetaAaaDark(primitives),
+        (ZetaPaletteTheme.companion, ZetaColorMode.aaaDark) => _ZetaPaletteCompanionAaaDark(primitives),
+        (ZetaPaletteTheme.target, ZetaColorMode.aaaDark) => _ZetaPaletteTargetAaaDark(primitives),
       },
       size: switch ((sizeTheme, breakpoint)) {
         (ZetaSizeTheme.zeta, ZetaBreakpoint.mobile) => _ZetaSizeZetaMobile(primitives),
@@ -162,9 +168,8 @@ class ZetaTokens {
         (ZetaTypographyTheme.condensed, ZetaBreakpoint.mobile) => _ZetaTypographyCondensedMobile(primitives),
         (ZetaTypographyTheme.condensed, ZetaBreakpoint.tablet) => _ZetaTypographyCondensedTablet(primitives),
         (ZetaTypographyTheme.condensed, ZetaBreakpoint.desktop) => _ZetaTypographyCondensedDesktop(primitives),
-        (ZetaTypographyTheme.condensed, ZetaBreakpoint.desktopCompact) => _ZetaTypographyCondensedDesktopCompact(
-            primitives,
-          ),
+        (ZetaTypographyTheme.condensed, ZetaBreakpoint.desktopCompact) =>
+          _ZetaTypographyCondensedDesktopCompact(primitives),
       },
       rounded: rounded,
     );
@@ -204,20 +209,11 @@ class ZetaTokens {
   /// Whether components should be rounded: the explicit override, otherwise the `size.shape` token.
   bool get rounded => _rounded ?? _size.shape;
 
-  /// Semantic `surface` color tokens.
-  ZetaSurfaceTokens get surface => ZetaSurfaceTokens._(palette);
-
-  /// Semantic `foreground` color tokens.
-  ZetaForegroundTokens get foreground => ZetaForegroundTokens._(palette);
-
   /// Semantic `border` color tokens.
   ZetaBorderTokens get border => ZetaBorderTokens._(palette);
 
-  /// Semantic `interactive` color tokens.
-  ZetaInteractiveTokens get interactive => ZetaInteractiveTokens._(palette);
-
-  /// Semantic `overlay` color tokens.
-  ZetaOverlayTokens get overlay => ZetaOverlayTokens._(palette);
+  /// Semantic `chart` color tokens.
+  ZetaChartTokens get chart => ZetaChartTokens._(palette);
 
   /// Semantic `feedback` color tokens.
   ZetaFeedbackTokens get feedback => ZetaFeedbackTokens._(palette);
@@ -225,23 +221,35 @@ class ZetaTokens {
   /// Semantic `focus` color tokens.
   ZetaFocusTokens get focus => ZetaFocusTokens._(palette);
 
-  /// Semantic `chart` color tokens.
-  ZetaChartTokens get chart => ZetaChartTokens._(palette);
+  /// Semantic `foreground` color tokens.
+  ZetaForegroundTokens get foreground => ZetaForegroundTokens._(palette);
+
+  /// Semantic `interactive` color tokens.
+  ZetaInteractiveTokens get interactive => ZetaInteractiveTokens._(palette);
+
+  /// Semantic `overlay` color tokens.
+  ZetaOverlayTokens get overlay => ZetaOverlayTokens._(palette);
 
   /// Semantic `selection` color tokens.
   ZetaSelectionTokens get selection => ZetaSelectionTokens._(palette);
 
-  /// `space` size tokens.
-  ZetaSpaceTokens get space => ZetaSpaceTokens._(_size);
+  /// Semantic `surface` color tokens.
+  ZetaSurfaceTokens get surface => ZetaSurfaceTokens._(palette);
 
-  /// `control` size tokens.
-  ZetaControlTokens get control => ZetaControlTokens._(_size);
+  /// `animations` size tokens.
+  ZetaAnimationsTokens get animations => ZetaAnimationsTokens._(_size);
 
   /// `container` size tokens.
   ZetaContainerTokens get container => ZetaContainerTokens._(_size);
 
+  /// `control` size tokens.
+  ZetaControlTokens get control => ZetaControlTokens._(_size);
+
   /// `radius` size tokens.
   ZetaRadiusTokens get radius => ZetaRadiusTokens._(_size);
+
+  /// `space` size tokens.
+  ZetaSpaceTokens get space => ZetaSpaceTokens._(_size);
 
   /// `stroke` size tokens.
   ZetaStrokeTokens get stroke => ZetaStrokeTokens._(_size);

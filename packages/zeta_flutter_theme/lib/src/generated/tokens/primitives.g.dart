@@ -6,342 +6,6 @@ part of 'zeta_tokens.g.dart';
 
 /// Raw primitive tokens (`primitives` collection).
 abstract interface class ZetaPrimitiveTokens {
-  /// `primitives.scale.0`
-  double get scale0;
-
-  /// `primitives.scale.1`
-  double get scale1;
-
-  /// `primitives.scale.2`
-  double get scale2;
-
-  /// `primitives.scale.3`
-  double get scale3;
-
-  /// `primitives.scale.4`
-  double get scale4;
-
-  /// `primitives.scale.5`
-  double get scale5;
-
-  /// `primitives.scale.6`
-  double get scale6;
-
-  /// `primitives.scale.7`
-  double get scale7;
-
-  /// `primitives.scale.8`
-  double get scale8;
-
-  /// `primitives.scale.9`
-  double get scale9;
-
-  /// `primitives.scale.10`
-  double get scale10;
-
-  /// `primitives.scale.11`
-  double get scale11;
-
-  /// `primitives.scale.12`
-  double get scale12;
-
-  /// `primitives.scale.13`
-  double get scale13;
-
-  /// `primitives.scale.14`
-  double get scale14;
-
-  /// `primitives.scale.15`
-  double get scale15;
-
-  /// `primitives.scale.16`
-  double get scale16;
-
-  /// `primitives.scale.17`
-  double get scale17;
-
-  /// `primitives.scale.18`
-  double get scale18;
-
-  /// `primitives.scale.19`
-  double get scale19;
-
-  /// `primitives.scale.20`
-  double get scale20;
-
-  /// `primitives.scale.21`
-  double get scale21;
-
-  /// `primitives.scale.container.0`
-  double get scaleContainer0;
-
-  /// `primitives.scale.container.1`
-  double get scaleContainer1;
-
-  /// `primitives.scale.container.2`
-  double get scaleContainer2;
-
-  /// `primitives.scale.container.3`
-  double get scaleContainer3;
-
-  /// `primitives.scale.neg-1`
-  double get scaleNeg1;
-
-  /// `primitives.scale.neg-2`
-  double get scaleNeg2;
-
-  /// `primitives.scale.neg-3`
-  double get scaleNeg3;
-
-  /// `primitives.scale.neg-4`
-  double get scaleNeg4;
-
-  /// `primitives.scale.neg-5`
-  double get scaleNeg5;
-
-  /// `primitives.scale.neg-6`
-  double get scaleNeg6;
-
-  /// `primitives.color.neutral.cool.10`
-  Color get colorNeutralCool10;
-
-  /// `primitives.color.neutral.cool.20`
-  Color get colorNeutralCool20;
-
-  /// `primitives.color.neutral.cool.30`
-  Color get colorNeutralCool30;
-
-  /// `primitives.color.neutral.cool.40`
-  Color get colorNeutralCool40;
-
-  /// `primitives.color.neutral.cool.50`
-  Color get colorNeutralCool50;
-
-  /// `primitives.color.neutral.cool.60`
-  Color get colorNeutralCool60;
-
-  /// `primitives.color.neutral.cool.70`
-  Color get colorNeutralCool70;
-
-  /// `primitives.color.neutral.cool.80`
-  Color get colorNeutralCool80;
-
-  /// `primitives.color.neutral.cool.90`
-  Color get colorNeutralCool90;
-
-  /// `primitives.color.neutral.cool.100`
-  Color get colorNeutralCool100;
-
-  /// `primitives.color.neutral.warm.10`
-  Color get colorNeutralWarm10;
-
-  /// `primitives.color.neutral.warm.20`
-  Color get colorNeutralWarm20;
-
-  /// `primitives.color.neutral.warm.30`
-  Color get colorNeutralWarm30;
-
-  /// `primitives.color.neutral.warm.40`
-  Color get colorNeutralWarm40;
-
-  /// `primitives.color.neutral.warm.50`
-  Color get colorNeutralWarm50;
-
-  /// `primitives.color.neutral.warm.60`
-  Color get colorNeutralWarm60;
-
-  /// `primitives.color.neutral.warm.70`
-  Color get colorNeutralWarm70;
-
-  /// `primitives.color.neutral.warm.80`
-  Color get colorNeutralWarm80;
-
-  /// `primitives.color.neutral.warm.90`
-  Color get colorNeutralWarm90;
-
-  /// `primitives.color.neutral.warm.100`
-  Color get colorNeutralWarm100;
-
-  /// `primitives.color.brand.main.10`
-  Color get colorBrandMain10;
-
-  /// `primitives.color.brand.main.20`
-  Color get colorBrandMain20;
-
-  /// `primitives.color.brand.main.30`
-  Color get colorBrandMain30;
-
-  /// `primitives.color.brand.main.40`
-  Color get colorBrandMain40;
-
-  /// `primitives.color.brand.main.50`
-  Color get colorBrandMain50;
-
-  /// `primitives.color.brand.main.60`
-  Color get colorBrandMain60;
-
-  /// `primitives.color.brand.main.70`
-  Color get colorBrandMain70;
-
-  /// `primitives.color.brand.main.80`
-  Color get colorBrandMain80;
-
-  /// `primitives.color.brand.main.90`
-  Color get colorBrandMain90;
-
-  /// `primitives.color.brand.main.100`
-  Color get colorBrandMain100;
-
-  /// `primitives.color.brand.alternative.10`
-  Color get colorBrandAlternative10;
-
-  /// `primitives.color.brand.alternative.20`
-  Color get colorBrandAlternative20;
-
-  /// `primitives.color.brand.alternative.30`
-  Color get colorBrandAlternative30;
-
-  /// `primitives.color.brand.alternative.40`
-  Color get colorBrandAlternative40;
-
-  /// `primitives.color.brand.alternative.50`
-  Color get colorBrandAlternative50;
-
-  /// `primitives.color.brand.alternative.60`
-  Color get colorBrandAlternative60;
-
-  /// `primitives.color.brand.alternative.70`
-  Color get colorBrandAlternative70;
-
-  /// `primitives.color.brand.alternative.80`
-  Color get colorBrandAlternative80;
-
-  /// `primitives.color.brand.alternative.90`
-  Color get colorBrandAlternative90;
-
-  /// `primitives.color.brand.alternative.100`
-  Color get colorBrandAlternative100;
-
-  /// `primitives.color.system.positive.10`
-  Color get colorSystemPositive10;
-
-  /// `primitives.color.system.positive.20`
-  Color get colorSystemPositive20;
-
-  /// `primitives.color.system.positive.30`
-  Color get colorSystemPositive30;
-
-  /// `primitives.color.system.positive.40`
-  Color get colorSystemPositive40;
-
-  /// `primitives.color.system.positive.50`
-  Color get colorSystemPositive50;
-
-  /// `primitives.color.system.positive.60`
-  Color get colorSystemPositive60;
-
-  /// `primitives.color.system.positive.70`
-  Color get colorSystemPositive70;
-
-  /// `primitives.color.system.positive.80`
-  Color get colorSystemPositive80;
-
-  /// `primitives.color.system.positive.90`
-  Color get colorSystemPositive90;
-
-  /// `primitives.color.system.positive.100`
-  Color get colorSystemPositive100;
-
-  /// `primitives.color.system.negative.10`
-  Color get colorSystemNegative10;
-
-  /// `primitives.color.system.negative.20`
-  Color get colorSystemNegative20;
-
-  /// `primitives.color.system.negative.30`
-  Color get colorSystemNegative30;
-
-  /// `primitives.color.system.negative.40`
-  Color get colorSystemNegative40;
-
-  /// `primitives.color.system.negative.50`
-  Color get colorSystemNegative50;
-
-  /// `primitives.color.system.negative.60`
-  Color get colorSystemNegative60;
-
-  /// `primitives.color.system.negative.70`
-  Color get colorSystemNegative70;
-
-  /// `primitives.color.system.negative.80`
-  Color get colorSystemNegative80;
-
-  /// `primitives.color.system.negative.90`
-  Color get colorSystemNegative90;
-
-  /// `primitives.color.system.negative.100`
-  Color get colorSystemNegative100;
-
-  /// `primitives.color.system.warning.10`
-  Color get colorSystemWarning10;
-
-  /// `primitives.color.system.warning.20`
-  Color get colorSystemWarning20;
-
-  /// `primitives.color.system.warning.30`
-  Color get colorSystemWarning30;
-
-  /// `primitives.color.system.warning.40`
-  Color get colorSystemWarning40;
-
-  /// `primitives.color.system.warning.50`
-  Color get colorSystemWarning50;
-
-  /// `primitives.color.system.warning.60`
-  Color get colorSystemWarning60;
-
-  /// `primitives.color.system.warning.70`
-  Color get colorSystemWarning70;
-
-  /// `primitives.color.system.warning.80`
-  Color get colorSystemWarning80;
-
-  /// `primitives.color.system.warning.90`
-  Color get colorSystemWarning90;
-
-  /// `primitives.color.system.warning.100`
-  Color get colorSystemWarning100;
-
-  /// `primitives.color.system.info.10`
-  Color get colorSystemInfo10;
-
-  /// `primitives.color.system.info.20`
-  Color get colorSystemInfo20;
-
-  /// `primitives.color.system.info.30`
-  Color get colorSystemInfo30;
-
-  /// `primitives.color.system.info.40`
-  Color get colorSystemInfo40;
-
-  /// `primitives.color.system.info.50`
-  Color get colorSystemInfo50;
-
-  /// `primitives.color.system.info.60`
-  Color get colorSystemInfo60;
-
-  /// `primitives.color.system.info.70`
-  Color get colorSystemInfo70;
-
-  /// `primitives.color.system.info.80`
-  Color get colorSystemInfo80;
-
-  /// `primitives.color.system.info.90`
-  Color get colorSystemInfo90;
-
-  /// `primitives.color.system.info.100`
-  Color get colorSystemInfo100;
-
   /// `primitives.color.accent.1.10`
   Color get colorAccent1_10;
 
@@ -492,6 +156,132 @@ abstract interface class ZetaPrimitiveTokens {
   /// `primitives.color.accent.5.100`
   Color get colorAccent5_100;
 
+  /// `primitives.color.alpha.dark.0`
+  Color get colorAlphaDark0;
+
+  /// `primitives.color.alpha.dark.5`
+  Color get colorAlphaDark5;
+
+  /// `primitives.color.alpha.dark.10`
+  Color get colorAlphaDark10;
+
+  /// `primitives.color.alpha.dark.20`
+  Color get colorAlphaDark20;
+
+  /// `primitives.color.alpha.dark.30`
+  Color get colorAlphaDark30;
+
+  /// `primitives.color.alpha.dark.40`
+  Color get colorAlphaDark40;
+
+  /// `primitives.color.alpha.dark.50`
+  Color get colorAlphaDark50;
+
+  /// `primitives.color.alpha.dark.60`
+  Color get colorAlphaDark60;
+
+  /// `primitives.color.alpha.dark.70`
+  Color get colorAlphaDark70;
+
+  /// `primitives.color.alpha.dark.80`
+  Color get colorAlphaDark80;
+
+  /// `primitives.color.alpha.dark.90`
+  Color get colorAlphaDark90;
+
+  /// `primitives.color.alpha.light.0`
+  Color get colorAlphaLight0;
+
+  /// `primitives.color.alpha.light.5`
+  Color get colorAlphaLight5;
+
+  /// `primitives.color.alpha.light.10`
+  Color get colorAlphaLight10;
+
+  /// `primitives.color.alpha.light.20`
+  Color get colorAlphaLight20;
+
+  /// `primitives.color.alpha.light.30`
+  Color get colorAlphaLight30;
+
+  /// `primitives.color.alpha.light.40`
+  Color get colorAlphaLight40;
+
+  /// `primitives.color.alpha.light.50`
+  Color get colorAlphaLight50;
+
+  /// `primitives.color.alpha.light.60`
+  Color get colorAlphaLight60;
+
+  /// `primitives.color.alpha.light.70`
+  Color get colorAlphaLight70;
+
+  /// `primitives.color.alpha.light.80`
+  Color get colorAlphaLight80;
+
+  /// `primitives.color.alpha.light.90`
+  Color get colorAlphaLight90;
+
+  /// `primitives.color.brand.alternative.10`
+  Color get colorBrandAlternative10;
+
+  /// `primitives.color.brand.alternative.20`
+  Color get colorBrandAlternative20;
+
+  /// `primitives.color.brand.alternative.30`
+  Color get colorBrandAlternative30;
+
+  /// `primitives.color.brand.alternative.40`
+  Color get colorBrandAlternative40;
+
+  /// `primitives.color.brand.alternative.50`
+  Color get colorBrandAlternative50;
+
+  /// `primitives.color.brand.alternative.60`
+  Color get colorBrandAlternative60;
+
+  /// `primitives.color.brand.alternative.70`
+  Color get colorBrandAlternative70;
+
+  /// `primitives.color.brand.alternative.80`
+  Color get colorBrandAlternative80;
+
+  /// `primitives.color.brand.alternative.90`
+  Color get colorBrandAlternative90;
+
+  /// `primitives.color.brand.alternative.100`
+  Color get colorBrandAlternative100;
+
+  /// `primitives.color.brand.main.10`
+  Color get colorBrandMain10;
+
+  /// `primitives.color.brand.main.20`
+  Color get colorBrandMain20;
+
+  /// `primitives.color.brand.main.30`
+  Color get colorBrandMain30;
+
+  /// `primitives.color.brand.main.40`
+  Color get colorBrandMain40;
+
+  /// `primitives.color.brand.main.50`
+  Color get colorBrandMain50;
+
+  /// `primitives.color.brand.main.60`
+  Color get colorBrandMain60;
+
+  /// `primitives.color.brand.main.70`
+  Color get colorBrandMain70;
+
+  /// `primitives.color.brand.main.80`
+  Color get colorBrandMain80;
+
+  /// `primitives.color.brand.main.90`
+  Color get colorBrandMain90;
+
+  /// `primitives.color.brand.main.100`
+  Color get colorBrandMain100;
+
   /// `primitives.color.extend.1.10`
   Color get colorExtend1_10;
 
@@ -612,95 +402,293 @@ abstract interface class ZetaPrimitiveTokens {
   /// `primitives.color.extend.4.100`
   Color get colorExtend4_100;
 
-  /// `primitives.color.pure.white`
-  Color get colorPureWhite;
+  /// `primitives.color.neutral.cool.10`
+  Color get colorNeutralCool10;
+
+  /// `primitives.color.neutral.cool.20`
+  Color get colorNeutralCool20;
+
+  /// `primitives.color.neutral.cool.30`
+  Color get colorNeutralCool30;
+
+  /// `primitives.color.neutral.cool.40`
+  Color get colorNeutralCool40;
+
+  /// `primitives.color.neutral.cool.50`
+  Color get colorNeutralCool50;
+
+  /// `primitives.color.neutral.cool.60`
+  Color get colorNeutralCool60;
+
+  /// `primitives.color.neutral.cool.70`
+  Color get colorNeutralCool70;
+
+  /// `primitives.color.neutral.cool.80`
+  Color get colorNeutralCool80;
+
+  /// `primitives.color.neutral.cool.90`
+  Color get colorNeutralCool90;
+
+  /// `primitives.color.neutral.cool.100`
+  Color get colorNeutralCool100;
+
+  /// `primitives.color.neutral.warm.10`
+  Color get colorNeutralWarm10;
+
+  /// `primitives.color.neutral.warm.20`
+  Color get colorNeutralWarm20;
+
+  /// `primitives.color.neutral.warm.30`
+  Color get colorNeutralWarm30;
+
+  /// `primitives.color.neutral.warm.40`
+  Color get colorNeutralWarm40;
+
+  /// `primitives.color.neutral.warm.50`
+  Color get colorNeutralWarm50;
+
+  /// `primitives.color.neutral.warm.60`
+  Color get colorNeutralWarm60;
+
+  /// `primitives.color.neutral.warm.70`
+  Color get colorNeutralWarm70;
+
+  /// `primitives.color.neutral.warm.80`
+  Color get colorNeutralWarm80;
+
+  /// `primitives.color.neutral.warm.90`
+  Color get colorNeutralWarm90;
+
+  /// `primitives.color.neutral.warm.100`
+  Color get colorNeutralWarm100;
 
   /// `primitives.color.pure.black`
   Color get colorPureBlack;
 
-  /// `primitives.color.alpha.dark.0`
-  Color get colorAlphaDark0;
+  /// `primitives.color.pure.white`
+  Color get colorPureWhite;
 
-  /// `primitives.color.alpha.dark.5`
-  Color get colorAlphaDark5;
+  /// `primitives.color.system.info.10`
+  Color get colorSystemInfo10;
 
-  /// `primitives.color.alpha.dark.10`
-  Color get colorAlphaDark10;
+  /// `primitives.color.system.info.20`
+  Color get colorSystemInfo20;
 
-  /// `primitives.color.alpha.dark.20`
-  Color get colorAlphaDark20;
+  /// `primitives.color.system.info.30`
+  Color get colorSystemInfo30;
 
-  /// `primitives.color.alpha.dark.30`
-  Color get colorAlphaDark30;
+  /// `primitives.color.system.info.40`
+  Color get colorSystemInfo40;
 
-  /// `primitives.color.alpha.dark.40`
-  Color get colorAlphaDark40;
+  /// `primitives.color.system.info.50`
+  Color get colorSystemInfo50;
 
-  /// `primitives.color.alpha.dark.50`
-  Color get colorAlphaDark50;
+  /// `primitives.color.system.info.60`
+  Color get colorSystemInfo60;
 
-  /// `primitives.color.alpha.dark.60`
-  Color get colorAlphaDark60;
+  /// `primitives.color.system.info.70`
+  Color get colorSystemInfo70;
 
-  /// `primitives.color.alpha.dark.70`
-  Color get colorAlphaDark70;
+  /// `primitives.color.system.info.80`
+  Color get colorSystemInfo80;
 
-  /// `primitives.color.alpha.dark.80`
-  Color get colorAlphaDark80;
+  /// `primitives.color.system.info.90`
+  Color get colorSystemInfo90;
 
-  /// `primitives.color.alpha.dark.90`
-  Color get colorAlphaDark90;
+  /// `primitives.color.system.info.100`
+  Color get colorSystemInfo100;
 
-  /// `primitives.color.alpha.light.0`
-  Color get colorAlphaLight0;
+  /// `primitives.color.system.negative.10`
+  Color get colorSystemNegative10;
 
-  /// `primitives.color.alpha.light.5`
-  Color get colorAlphaLight5;
+  /// `primitives.color.system.negative.20`
+  Color get colorSystemNegative20;
 
-  /// `primitives.color.alpha.light.10`
-  Color get colorAlphaLight10;
+  /// `primitives.color.system.negative.30`
+  Color get colorSystemNegative30;
 
-  /// `primitives.color.alpha.light.20`
-  Color get colorAlphaLight20;
+  /// `primitives.color.system.negative.40`
+  Color get colorSystemNegative40;
 
-  /// `primitives.color.alpha.light.30`
-  Color get colorAlphaLight30;
+  /// `primitives.color.system.negative.50`
+  Color get colorSystemNegative50;
 
-  /// `primitives.color.alpha.light.40`
-  Color get colorAlphaLight40;
+  /// `primitives.color.system.negative.60`
+  Color get colorSystemNegative60;
 
-  /// `primitives.color.alpha.light.50`
-  Color get colorAlphaLight50;
+  /// `primitives.color.system.negative.70`
+  Color get colorSystemNegative70;
 
-  /// `primitives.color.alpha.light.60`
-  Color get colorAlphaLight60;
+  /// `primitives.color.system.negative.80`
+  Color get colorSystemNegative80;
 
-  /// `primitives.color.alpha.light.70`
-  Color get colorAlphaLight70;
+  /// `primitives.color.system.negative.90`
+  Color get colorSystemNegative90;
 
-  /// `primitives.color.alpha.light.80`
-  Color get colorAlphaLight80;
+  /// `primitives.color.system.negative.100`
+  Color get colorSystemNegative100;
 
-  /// `primitives.color.alpha.light.90`
-  Color get colorAlphaLight90;
+  /// `primitives.color.system.positive.10`
+  Color get colorSystemPositive10;
 
-  /// `primitives.text.font-family.Zebra-Sans`
-  String get textFontFamilyZebraSans;
+  /// `primitives.color.system.positive.20`
+  Color get colorSystemPositive20;
+
+  /// `primitives.color.system.positive.30`
+  Color get colorSystemPositive30;
+
+  /// `primitives.color.system.positive.40`
+  Color get colorSystemPositive40;
+
+  /// `primitives.color.system.positive.50`
+  Color get colorSystemPositive50;
+
+  /// `primitives.color.system.positive.60`
+  Color get colorSystemPositive60;
+
+  /// `primitives.color.system.positive.70`
+  Color get colorSystemPositive70;
+
+  /// `primitives.color.system.positive.80`
+  Color get colorSystemPositive80;
+
+  /// `primitives.color.system.positive.90`
+  Color get colorSystemPositive90;
+
+  /// `primitives.color.system.positive.100`
+  Color get colorSystemPositive100;
+
+  /// `primitives.color.system.warning.10`
+  Color get colorSystemWarning10;
+
+  /// `primitives.color.system.warning.20`
+  Color get colorSystemWarning20;
+
+  /// `primitives.color.system.warning.30`
+  Color get colorSystemWarning30;
+
+  /// `primitives.color.system.warning.40`
+  Color get colorSystemWarning40;
+
+  /// `primitives.color.system.warning.50`
+  Color get colorSystemWarning50;
+
+  /// `primitives.color.system.warning.60`
+  Color get colorSystemWarning60;
+
+  /// `primitives.color.system.warning.70`
+  Color get colorSystemWarning70;
+
+  /// `primitives.color.system.warning.80`
+  Color get colorSystemWarning80;
+
+  /// `primitives.color.system.warning.90`
+  Color get colorSystemWarning90;
+
+  /// `primitives.color.system.warning.100`
+  Color get colorSystemWarning100;
+
+  /// `primitives.scale.0`
+  double get scale0;
+
+  /// `primitives.scale.1`
+  double get scale1;
+
+  /// `primitives.scale.2`
+  double get scale2;
+
+  /// `primitives.scale.3`
+  double get scale3;
+
+  /// `primitives.scale.4`
+  double get scale4;
+
+  /// `primitives.scale.5`
+  double get scale5;
+
+  /// `primitives.scale.6`
+  double get scale6;
+
+  /// `primitives.scale.7`
+  double get scale7;
+
+  /// `primitives.scale.8`
+  double get scale8;
+
+  /// `primitives.scale.9`
+  double get scale9;
+
+  /// `primitives.scale.10`
+  double get scale10;
+
+  /// `primitives.scale.11`
+  double get scale11;
+
+  /// `primitives.scale.12`
+  double get scale12;
+
+  /// `primitives.scale.13`
+  double get scale13;
+
+  /// `primitives.scale.14`
+  double get scale14;
+
+  /// `primitives.scale.15`
+  double get scale15;
+
+  /// `primitives.scale.16`
+  double get scale16;
+
+  /// `primitives.scale.17`
+  double get scale17;
+
+  /// `primitives.scale.18`
+  double get scale18;
+
+  /// `primitives.scale.19`
+  double get scale19;
+
+  /// `primitives.scale.20`
+  double get scale20;
+
+  /// `primitives.scale.21`
+  double get scale21;
+
+  /// `primitives.scale.neg-1`
+  double get scaleNeg1;
+
+  /// `primitives.scale.neg-2`
+  double get scaleNeg2;
+
+  /// `primitives.scale.neg-3`
+  double get scaleNeg3;
+
+  /// `primitives.scale.neg-4`
+  double get scaleNeg4;
+
+  /// `primitives.scale.neg-5`
+  double get scaleNeg5;
+
+  /// `primitives.scale.neg-6`
+  double get scaleNeg6;
+
+  /// `primitives.scale.container.0`
+  double get scaleContainer0;
+
+  /// `primitives.scale.container.1`
+  double get scaleContainer1;
+
+  /// `primitives.scale.container.2`
+  double get scaleContainer2;
+
+  /// `primitives.scale.container.3`
+  double get scaleContainer3;
 
   /// `primitives.text.font-family.IBM-Plex-Sans`
   String get textFontFamilyIBMPlexSans;
 
-  /// `primitives.text.font-weight.light`
-  FontWeight get textFontWeightLight;
-
-  /// `primitives.text.font-weight.regular`
-  FontWeight get textFontWeightRegular;
-
-  /// `primitives.text.font-weight.medium`
-  FontWeight get textFontWeightMedium;
-
-  /// `primitives.text.font-weight.bold`
-  FontWeight get textFontWeightBold;
+  /// `primitives.text.font-family.Zebra-Sans`
+  String get textFontFamilyZebraSans;
 
   /// `primitives.text.font-size.10`
   double get textFontSize10;
@@ -744,6 +732,30 @@ abstract interface class ZetaPrimitiveTokens {
   /// `primitives.text.font-size.52`
   double get textFontSize52;
 
+  /// `primitives.text.font-weight.bold`
+  FontWeight get textFontWeightBold;
+
+  /// `primitives.text.font-weight.light`
+  FontWeight get textFontWeightLight;
+
+  /// `primitives.text.font-weight.medium`
+  FontWeight get textFontWeightMedium;
+
+  /// `primitives.text.font-weight.regular`
+  FontWeight get textFontWeightRegular;
+
+  /// `primitives.text.letter-spacing.body`
+  double get textLetterSpacingBody;
+
+  /// `primitives.text.letter-spacing.heading`
+  double get textLetterSpacingHeading;
+
+  /// `primitives.text.letter-spacing.none`
+  double get textLetterSpacingNone;
+
+  /// `primitives.text.letter-spacing.title`
+  double get textLetterSpacingTitle;
+
   /// `primitives.text.line-height.12`
   double get textLineHeight12;
 
@@ -782,358 +794,10 @@ abstract interface class ZetaPrimitiveTokens {
 
   /// `primitives.text.line-height.60`
   double get textLineHeight60;
-
-  /// `primitives.text.letter-spacing.none`
-  double get textLetterSpacingNone;
-
-  /// `primitives.text.letter-spacing.body`
-  double get textLetterSpacingBody;
-
-  /// `primitives.text.letter-spacing.heading`
-  double get textLetterSpacingHeading;
-
-  /// `primitives.text.letter-spacing.title`
-  double get textLetterSpacingTitle;
 }
 
 final class _ZetaPrimitivesZeta implements ZetaPrimitiveTokens {
   const _ZetaPrimitivesZeta();
-
-  @override
-  double get scale0 => 0;
-
-  @override
-  double get scale1 => 1;
-
-  @override
-  double get scale2 => 2;
-
-  @override
-  double get scale3 => 4;
-
-  @override
-  double get scale4 => 6;
-
-  @override
-  double get scale5 => 8;
-
-  @override
-  double get scale6 => 12;
-
-  @override
-  double get scale7 => 16;
-
-  @override
-  double get scale8 => 20;
-
-  @override
-  double get scale9 => 24;
-
-  @override
-  double get scale10 => 28;
-
-  @override
-  double get scale11 => 32;
-
-  @override
-  double get scale12 => 36;
-
-  @override
-  double get scale13 => 40;
-
-  @override
-  double get scale14 => 44;
-
-  @override
-  double get scale15 => 48;
-
-  @override
-  double get scale16 => 56;
-
-  @override
-  double get scale17 => 64;
-
-  @override
-  double get scale18 => 80;
-
-  @override
-  double get scale19 => 96;
-
-  @override
-  double get scale20 => 128;
-
-  @override
-  double get scale21 => 160;
-
-  @override
-  double get scaleContainer0 => 240;
-
-  @override
-  double get scaleContainer1 => 600;
-
-  @override
-  double get scaleContainer2 => 840;
-
-  @override
-  double get scaleContainer3 => 1200;
-
-  @override
-  double get scaleNeg1 => -1;
-
-  @override
-  double get scaleNeg2 => -2;
-
-  @override
-  double get scaleNeg3 => -4;
-
-  @override
-  double get scaleNeg4 => -6;
-
-  @override
-  double get scaleNeg5 => -8;
-
-  @override
-  double get scaleNeg6 => -12;
-
-  @override
-  Color get colorNeutralCool10 => const Color(0xFFF8FBFF);
-
-  @override
-  Color get colorNeutralCool20 => const Color(0xFFF3F6FA);
-
-  @override
-  Color get colorNeutralCool30 => const Color(0xFFE0E3E9);
-
-  @override
-  Color get colorNeutralCool40 => const Color(0xFFCED2DB);
-
-  @override
-  Color get colorNeutralCool50 => const Color(0xFF8D95A3);
-
-  @override
-  Color get colorNeutralCool60 => const Color(0xFF7A8190);
-
-  @override
-  Color get colorNeutralCool70 => const Color(0xFF545963);
-
-  @override
-  Color get colorNeutralCool80 => const Color(0xFF2C2F36);
-
-  @override
-  Color get colorNeutralCool90 => const Color(0xFF1D1E23);
-
-  @override
-  Color get colorNeutralCool100 => const Color(0xFF0C0D0E);
-
-  @override
-  Color get colorNeutralWarm10 => const Color(0xFFFAFAFA);
-
-  @override
-  Color get colorNeutralWarm20 => const Color(0xFFF7F7F7);
-
-  @override
-  Color get colorNeutralWarm30 => const Color(0xFFEDEDED);
-
-  @override
-  Color get colorNeutralWarm40 => const Color(0xFFDEDEDE);
-
-  @override
-  Color get colorNeutralWarm50 => const Color(0xFFB9B9B9);
-
-  @override
-  Color get colorNeutralWarm60 => const Color(0xFF858585);
-
-  @override
-  Color get colorNeutralWarm70 => const Color(0xFF585858);
-
-  @override
-  Color get colorNeutralWarm80 => const Color(0xFF313131);
-
-  @override
-  Color get colorNeutralWarm90 => const Color(0xFF202020);
-
-  @override
-  Color get colorNeutralWarm100 => const Color(0xFF151519);
-
-  @override
-  Color get colorBrandMain10 => const Color(0xFFE0F0FF);
-
-  @override
-  Color get colorBrandMain20 => const Color(0xFFB9DAFF);
-
-  @override
-  Color get colorBrandMain30 => const Color(0xFF8DC0FF);
-
-  @override
-  Color get colorBrandMain40 => const Color(0xFF5EA2FF);
-
-  @override
-  Color get colorBrandMain50 => const Color(0xFF3886FF);
-
-  @override
-  Color get colorBrandMain60 => const Color(0xFF1F69FF);
-
-  @override
-  Color get colorBrandMain70 => const Color(0xFF0E53E5);
-
-  @override
-  Color get colorBrandMain80 => const Color(0xFF003FBD);
-
-  @override
-  Color get colorBrandMain90 => const Color(0xFF002775);
-
-  @override
-  Color get colorBrandMain100 => const Color(0xFF00143A);
-
-  @override
-  Color get colorBrandAlternative10 => const Color(0xFFFFECE5);
-
-  @override
-  Color get colorBrandAlternative20 => const Color(0xFFFFD9CC);
-
-  @override
-  Color get colorBrandAlternative30 => const Color(0xFFFFBFA6);
-
-  @override
-  Color get colorBrandAlternative40 => const Color(0xFFFF9F75);
-
-  @override
-  Color get colorBrandAlternative50 => const Color(0xFFFF7A40);
-
-  @override
-  Color get colorBrandAlternative60 => const Color(0xFFFF4D00);
-
-  @override
-  Color get colorBrandAlternative70 => const Color(0xFFF34300);
-
-  @override
-  Color get colorBrandAlternative80 => const Color(0xFFD13F00);
-
-  @override
-  Color get colorBrandAlternative90 => const Color(0xFF8A2900);
-
-  @override
-  Color get colorBrandAlternative100 => const Color(0xFF4A1600);
-
-  @override
-  Color get colorSystemPositive10 => const Color(0xFFECFFF7);
-
-  @override
-  Color get colorSystemPositive20 => const Color(0xFFD8FFEF);
-
-  @override
-  Color get colorSystemPositive30 => const Color(0xFFBEEFDB);
-
-  @override
-  Color get colorSystemPositive40 => const Color(0xFF84DAB6);
-
-  @override
-  Color get colorSystemPositive50 => const Color(0xFF67B796);
-
-  @override
-  Color get colorSystemPositive60 => const Color(0xFF00864F);
-
-  @override
-  Color get colorSystemPositive70 => const Color(0xFF006D3F);
-
-  @override
-  Color get colorSystemPositive80 => const Color(0xFF005F38);
-
-  @override
-  Color get colorSystemPositive90 => const Color(0xFF00331E);
-
-  @override
-  Color get colorSystemPositive100 => const Color(0xFF081711);
-
-  @override
-  Color get colorSystemNegative10 => const Color(0xFFFFF0F1);
-
-  @override
-  Color get colorSystemNegative20 => const Color(0xFFFFE1E4);
-
-  @override
-  Color get colorSystemNegative30 => const Color(0xFFFFB3BB);
-
-  @override
-  Color get colorSystemNegative40 => const Color(0xFFF98C97);
-
-  @override
-  Color get colorSystemNegative50 => const Color(0xFFF36170);
-
-  @override
-  Color get colorSystemNegative60 => const Color(0xFFD70015);
-
-  @override
-  Color get colorSystemNegative70 => const Color(0xFFB50012);
-
-  @override
-  Color get colorSystemNegative80 => const Color(0xFF8F000E);
-
-  @override
-  Color get colorSystemNegative90 => const Color(0xFF520008);
-
-  @override
-  Color get colorSystemNegative100 => const Color(0xFF220F11);
-
-  @override
-  Color get colorSystemWarning10 => const Color(0xFFFEF2E2);
-
-  @override
-  Color get colorSystemWarning20 => const Color(0xFFFFE7C6);
-
-  @override
-  Color get colorSystemWarning30 => const Color(0xFFFFD292);
-
-  @override
-  Color get colorSystemWarning40 => const Color(0xFFFFB348);
-
-  @override
-  Color get colorSystemWarning50 => const Color(0xFFD78D26);
-
-  @override
-  Color get colorSystemWarning60 => const Color(0xFFAE6500);
-
-  @override
-  Color get colorSystemWarning70 => const Color(0xFF965802);
-
-  @override
-  Color get colorSystemWarning80 => const Color(0xFF764502);
-
-  @override
-  Color get colorSystemWarning90 => const Color(0xFF402600);
-
-  @override
-  Color get colorSystemWarning100 => const Color(0xFF1E1100);
-
-  @override
-  Color get colorSystemInfo10 => const Color(0xFFF1F8FF);
-
-  @override
-  Color get colorSystemInfo20 => const Color(0xFFE2F1FF);
-
-  @override
-  Color get colorSystemInfo30 => const Color(0xFFB7DBFF);
-
-  @override
-  Color get colorSystemInfo40 => const Color(0xFF7EBEFF);
-
-  @override
-  Color get colorSystemInfo50 => const Color(0xFF599FE5);
-
-  @override
-  Color get colorSystemInfo60 => const Color(0xFF0073E6);
-
-  @override
-  Color get colorSystemInfo70 => const Color(0xFF0061C2);
-
-  @override
-  Color get colorSystemInfo80 => const Color(0xFF004D99);
-
-  @override
-  Color get colorSystemInfo90 => const Color(0xFF002C58);
-
-  @override
-  Color get colorSystemInfo100 => const Color(0xFF101B25);
 
   @override
   Color get colorAccent1_10 => const Color(0xFFF7F0FF);
@@ -1284,6 +948,132 @@ final class _ZetaPrimitivesZeta implements ZetaPrimitiveTokens {
 
   @override
   Color get colorAccent5_100 => const Color(0xFF192B03);
+
+  @override
+  Color get colorAlphaDark0 => const Color(0x000C0D0E);
+
+  @override
+  Color get colorAlphaDark5 => const Color(0x0D0C0D0E);
+
+  @override
+  Color get colorAlphaDark10 => const Color(0x1A0C0D0E);
+
+  @override
+  Color get colorAlphaDark20 => const Color(0x330C0D0E);
+
+  @override
+  Color get colorAlphaDark30 => const Color(0x4D0C0D0E);
+
+  @override
+  Color get colorAlphaDark40 => const Color(0x660C0D0E);
+
+  @override
+  Color get colorAlphaDark50 => const Color(0x800C0D0E);
+
+  @override
+  Color get colorAlphaDark60 => const Color(0x990C0D0E);
+
+  @override
+  Color get colorAlphaDark70 => const Color(0xB20C0D0E);
+
+  @override
+  Color get colorAlphaDark80 => const Color(0xCC0C0D0E);
+
+  @override
+  Color get colorAlphaDark90 => const Color(0xE50C0D0E);
+
+  @override
+  Color get colorAlphaLight0 => const Color(0x00D6DCE2);
+
+  @override
+  Color get colorAlphaLight5 => const Color(0x0DD4DDE6);
+
+  @override
+  Color get colorAlphaLight10 => const Color(0x1AD4DDE6);
+
+  @override
+  Color get colorAlphaLight20 => const Color(0x33D4DDE6);
+
+  @override
+  Color get colorAlphaLight30 => const Color(0x4DD4DDE6);
+
+  @override
+  Color get colorAlphaLight40 => const Color(0x66D4DDE6);
+
+  @override
+  Color get colorAlphaLight50 => const Color(0x80D4DDE6);
+
+  @override
+  Color get colorAlphaLight60 => const Color(0x99D4DDE6);
+
+  @override
+  Color get colorAlphaLight70 => const Color(0xB2D4DDE6);
+
+  @override
+  Color get colorAlphaLight80 => const Color(0xCCD4DDE6);
+
+  @override
+  Color get colorAlphaLight90 => const Color(0xE5D4DDE6);
+
+  @override
+  Color get colorBrandAlternative10 => const Color(0xFFFFECE5);
+
+  @override
+  Color get colorBrandAlternative20 => const Color(0xFFFFD9CC);
+
+  @override
+  Color get colorBrandAlternative30 => const Color(0xFFFFBFA6);
+
+  @override
+  Color get colorBrandAlternative40 => const Color(0xFFFF9F75);
+
+  @override
+  Color get colorBrandAlternative50 => const Color(0xFFFF7A40);
+
+  @override
+  Color get colorBrandAlternative60 => const Color(0xFFFF4D00);
+
+  @override
+  Color get colorBrandAlternative70 => const Color(0xFFF34300);
+
+  @override
+  Color get colorBrandAlternative80 => const Color(0xFFD13F00);
+
+  @override
+  Color get colorBrandAlternative90 => const Color(0xFF8A2900);
+
+  @override
+  Color get colorBrandAlternative100 => const Color(0xFF4A1600);
+
+  @override
+  Color get colorBrandMain10 => const Color(0xFFE0F0FF);
+
+  @override
+  Color get colorBrandMain20 => const Color(0xFFB9DAFF);
+
+  @override
+  Color get colorBrandMain30 => const Color(0xFF8DC0FF);
+
+  @override
+  Color get colorBrandMain40 => const Color(0xFF5EA2FF);
+
+  @override
+  Color get colorBrandMain50 => const Color(0xFF3886FF);
+
+  @override
+  Color get colorBrandMain60 => const Color(0xFF1F69FF);
+
+  @override
+  Color get colorBrandMain70 => const Color(0xFF0E53E5);
+
+  @override
+  Color get colorBrandMain80 => const Color(0xFF003FBD);
+
+  @override
+  Color get colorBrandMain90 => const Color(0xFF002775);
+
+  @override
+  Color get colorBrandMain100 => const Color(0xFF00143A);
 
   @override
   Color get colorExtend1_10 => const Color(0xFFF2F2F2);
@@ -1406,191 +1196,190 @@ final class _ZetaPrimitivesZeta implements ZetaPrimitiveTokens {
   Color get colorExtend4_100 => const Color(0xFF080A1A);
 
   @override
-  Color get colorPureWhite => const Color(0xFFFFFFFF);
+  Color get colorNeutralCool10 => const Color(0xFFF8FBFF);
+
+  @override
+  Color get colorNeutralCool20 => const Color(0xFFF3F6FA);
+
+  @override
+  Color get colorNeutralCool30 => const Color(0xFFE0E3E9);
+
+  @override
+  Color get colorNeutralCool40 => const Color(0xFFCED2DB);
+
+  @override
+  Color get colorNeutralCool50 => const Color(0xFF8D95A3);
+
+  @override
+  Color get colorNeutralCool60 => const Color(0xFF7A8190);
+
+  @override
+  Color get colorNeutralCool70 => const Color(0xFF545963);
+
+  @override
+  Color get colorNeutralCool80 => const Color(0xFF2C2F36);
+
+  @override
+  Color get colorNeutralCool90 => const Color(0xFF1D1E23);
+
+  @override
+  Color get colorNeutralCool100 => const Color(0xFF0C0D0E);
+
+  @override
+  Color get colorNeutralWarm10 => const Color(0xFFFAFAFA);
+
+  @override
+  Color get colorNeutralWarm20 => const Color(0xFFF7F7F7);
+
+  @override
+  Color get colorNeutralWarm30 => const Color(0xFFEDEDED);
+
+  @override
+  Color get colorNeutralWarm40 => const Color(0xFFDEDEDE);
+
+  @override
+  Color get colorNeutralWarm50 => const Color(0xFFB9B9B9);
+
+  @override
+  Color get colorNeutralWarm60 => const Color(0xFF858585);
+
+  @override
+  Color get colorNeutralWarm70 => const Color(0xFF585858);
+
+  @override
+  Color get colorNeutralWarm80 => const Color(0xFF313131);
+
+  @override
+  Color get colorNeutralWarm90 => const Color(0xFF202020);
+
+  @override
+  Color get colorNeutralWarm100 => const Color(0xFF151519);
 
   @override
   Color get colorPureBlack => const Color(0xFF000000);
 
   @override
-  Color get colorAlphaDark0 => const Color(0x000C0D0E);
+  Color get colorPureWhite => const Color(0xFFFFFFFF);
 
   @override
-  Color get colorAlphaDark5 => const Color(0x0D0C0D0E);
+  Color get colorSystemInfo10 => const Color(0xFFF1F8FF);
 
   @override
-  Color get colorAlphaDark10 => const Color(0x1A0C0D0E);
+  Color get colorSystemInfo20 => const Color(0xFFE2F1FF);
 
   @override
-  Color get colorAlphaDark20 => const Color(0x330C0D0E);
+  Color get colorSystemInfo30 => const Color(0xFFB7DBFF);
 
   @override
-  Color get colorAlphaDark30 => const Color(0x4D0C0D0E);
+  Color get colorSystemInfo40 => const Color(0xFF7EBEFF);
 
   @override
-  Color get colorAlphaDark40 => const Color(0x660C0D0E);
+  Color get colorSystemInfo50 => const Color(0xFF599FE5);
 
   @override
-  Color get colorAlphaDark50 => const Color(0x800C0D0E);
+  Color get colorSystemInfo60 => const Color(0xFF0073E6);
 
   @override
-  Color get colorAlphaDark60 => const Color(0x990C0D0E);
+  Color get colorSystemInfo70 => const Color(0xFF0061C2);
 
   @override
-  Color get colorAlphaDark70 => const Color(0xB20C0D0E);
+  Color get colorSystemInfo80 => const Color(0xFF004D99);
 
   @override
-  Color get colorAlphaDark80 => const Color(0xCC0C0D0E);
+  Color get colorSystemInfo90 => const Color(0xFF002C58);
 
   @override
-  Color get colorAlphaDark90 => const Color(0xE50C0D0E);
+  Color get colorSystemInfo100 => const Color(0xFF101B25);
 
   @override
-  Color get colorAlphaLight0 => const Color(0x00D6DCE2);
+  Color get colorSystemNegative10 => const Color(0xFFFFF0F1);
 
   @override
-  Color get colorAlphaLight5 => const Color(0x0DD4DDE6);
+  Color get colorSystemNegative20 => const Color(0xFFFFE1E4);
 
   @override
-  Color get colorAlphaLight10 => const Color(0x1AD4DDE6);
+  Color get colorSystemNegative30 => const Color(0xFFFFB3BB);
 
   @override
-  Color get colorAlphaLight20 => const Color(0x33D4DDE6);
+  Color get colorSystemNegative40 => const Color(0xFFF98C97);
 
   @override
-  Color get colorAlphaLight30 => const Color(0x4DD4DDE6);
+  Color get colorSystemNegative50 => const Color(0xFFF36170);
 
   @override
-  Color get colorAlphaLight40 => const Color(0x66D4DDE6);
+  Color get colorSystemNegative60 => const Color(0xFFD70015);
 
   @override
-  Color get colorAlphaLight50 => const Color(0x80D4DDE6);
+  Color get colorSystemNegative70 => const Color(0xFFB50012);
 
   @override
-  Color get colorAlphaLight60 => const Color(0x99D4DDE6);
+  Color get colorSystemNegative80 => const Color(0xFF8F000E);
 
   @override
-  Color get colorAlphaLight70 => const Color(0xB2D4DDE6);
+  Color get colorSystemNegative90 => const Color(0xFF520008);
 
   @override
-  Color get colorAlphaLight80 => const Color(0xCCD4DDE6);
+  Color get colorSystemNegative100 => const Color(0xFF220F11);
 
   @override
-  Color get colorAlphaLight90 => const Color(0xE5D4DDE6);
+  Color get colorSystemPositive10 => const Color(0xFFECFFF7);
 
   @override
-  String get textFontFamilyZebraSans => 'packages/zeta_flutter_theme/IBMPlexSans';
+  Color get colorSystemPositive20 => const Color(0xFFD8FFEF);
 
   @override
-  String get textFontFamilyIBMPlexSans => 'packages/zeta_flutter_theme/IBMPlexSans';
+  Color get colorSystemPositive30 => const Color(0xFFBEEFDB);
 
   @override
-  FontWeight get textFontWeightLight => FontWeight.w300;
+  Color get colorSystemPositive40 => const Color(0xFF84DAB6);
 
   @override
-  FontWeight get textFontWeightRegular => FontWeight.w400;
+  Color get colorSystemPositive50 => const Color(0xFF67B796);
 
   @override
-  FontWeight get textFontWeightMedium => FontWeight.w500;
+  Color get colorSystemPositive60 => const Color(0xFF00864F);
 
   @override
-  FontWeight get textFontWeightBold => FontWeight.w700;
+  Color get colorSystemPositive70 => const Color(0xFF006D3F);
 
   @override
-  double get textFontSize10 => 10;
+  Color get colorSystemPositive80 => const Color(0xFF005F38);
 
   @override
-  double get textFontSize12 => 12;
+  Color get colorSystemPositive90 => const Color(0xFF00331E);
 
   @override
-  double get textFontSize14 => 14;
+  Color get colorSystemPositive100 => const Color(0xFF081711);
 
   @override
-  double get textFontSize16 => 16;
+  Color get colorSystemWarning10 => const Color(0xFFFEF2E2);
 
   @override
-  double get textFontSize18 => 18;
+  Color get colorSystemWarning20 => const Color(0xFFFFE7C6);
 
   @override
-  double get textFontSize20 => 20;
+  Color get colorSystemWarning30 => const Color(0xFFFFD292);
 
   @override
-  double get textFontSize24 => 24;
+  Color get colorSystemWarning40 => const Color(0xFFFFB348);
 
   @override
-  double get textFontSize28 => 28;
+  Color get colorSystemWarning50 => const Color(0xFFD78D26);
 
   @override
-  double get textFontSize32 => 32;
+  Color get colorSystemWarning60 => const Color(0xFFAE6500);
 
   @override
-  double get textFontSize36 => 36;
+  Color get colorSystemWarning70 => const Color(0xFF965802);
 
   @override
-  double get textFontSize40 => 40;
+  Color get colorSystemWarning80 => const Color(0xFF764502);
 
   @override
-  double get textFontSize44 => 44;
+  Color get colorSystemWarning90 => const Color(0xFF402600);
 
   @override
-  double get textFontSize48 => 48;
-
-  @override
-  double get textFontSize52 => 52;
-
-  @override
-  double get textLineHeight12 => 12;
-
-  @override
-  double get textLineHeight14 => 14;
-
-  @override
-  double get textLineHeight16 => 16;
-
-  @override
-  double get textLineHeight18 => 18;
-
-  @override
-  double get textLineHeight20 => 20;
-
-  @override
-  double get textLineHeight24 => 24;
-
-  @override
-  double get textLineHeight28 => 28;
-
-  @override
-  double get textLineHeight32 => 32;
-
-  @override
-  double get textLineHeight36 => 36;
-
-  @override
-  double get textLineHeight40 => 40;
-
-  @override
-  double get textLineHeight48 => 48;
-
-  @override
-  double get textLineHeight52 => 52;
-
-  @override
-  double get textLineHeight60 => 60;
-
-  @override
-  double get textLetterSpacingNone => 0;
-
-  @override
-  double get textLetterSpacingBody => -0.43;
-
-  @override
-  double get textLetterSpacingHeading => 0.4;
-
-  @override
-  double get textLetterSpacingTitle => 0;
-}
-
-final class _ZetaPrimitivesTarget implements ZetaPrimitiveTokens {
-  const _ZetaPrimitivesTarget();
+  Color get colorSystemWarning100 => const Color(0xFF1E1100);
 
   @override
   double get scale0 => 0;
@@ -1659,18 +1448,6 @@ final class _ZetaPrimitivesTarget implements ZetaPrimitiveTokens {
   double get scale21 => 160;
 
   @override
-  double get scaleContainer0 => 240;
-
-  @override
-  double get scaleContainer1 => 600;
-
-  @override
-  double get scaleContainer2 => 840;
-
-  @override
-  double get scaleContainer3 => 1200;
-
-  @override
   double get scaleNeg1 => -1;
 
   @override
@@ -1689,244 +1466,131 @@ final class _ZetaPrimitivesTarget implements ZetaPrimitiveTokens {
   double get scaleNeg6 => -12;
 
   @override
-  Color get colorNeutralCool10 => const Color(0xFFF8FBFF);
+  double get scaleContainer0 => 240;
 
   @override
-  Color get colorNeutralCool20 => const Color(0xFFF3F6FA);
+  double get scaleContainer1 => 600;
 
   @override
-  Color get colorNeutralCool30 => const Color(0xFFE0E3E9);
+  double get scaleContainer2 => 840;
 
   @override
-  Color get colorNeutralCool40 => const Color(0xFFCED2DB);
+  double get scaleContainer3 => 1200;
 
   @override
-  Color get colorNeutralCool50 => const Color(0xFF8D95A3);
+  String get textFontFamilyIBMPlexSans => 'packages/zeta_flutter_theme/IBMPlexSans';
 
   @override
-  Color get colorNeutralCool60 => const Color(0xFF7A8190);
+  String get textFontFamilyZebraSans => 'packages/zeta_flutter_theme/IBMPlexSans';
 
   @override
-  Color get colorNeutralCool70 => const Color(0xFF545963);
+  double get textFontSize10 => 10;
 
   @override
-  Color get colorNeutralCool80 => const Color(0xFF2C2F36);
+  double get textFontSize12 => 12;
 
   @override
-  Color get colorNeutralCool90 => const Color(0xFF1D1E23);
+  double get textFontSize14 => 14;
 
   @override
-  Color get colorNeutralCool100 => const Color(0xFF0C0D0E);
+  double get textFontSize16 => 16;
 
   @override
-  Color get colorNeutralWarm10 => const Color(0xFFFAFAFA);
+  double get textFontSize18 => 18;
 
   @override
-  Color get colorNeutralWarm20 => const Color(0xFFF7F7F7);
+  double get textFontSize20 => 20;
 
   @override
-  Color get colorNeutralWarm30 => const Color(0xFFEDEDED);
+  double get textFontSize24 => 24;
 
   @override
-  Color get colorNeutralWarm40 => const Color(0xFFDEDEDE);
+  double get textFontSize28 => 28;
 
   @override
-  Color get colorNeutralWarm50 => const Color(0xFFB9B9B9);
+  double get textFontSize32 => 32;
 
   @override
-  Color get colorNeutralWarm60 => const Color(0xFF858585);
+  double get textFontSize36 => 36;
 
   @override
-  Color get colorNeutralWarm70 => const Color(0xFF585858);
+  double get textFontSize40 => 40;
 
   @override
-  Color get colorNeutralWarm80 => const Color(0xFF313131);
+  double get textFontSize44 => 44;
 
   @override
-  Color get colorNeutralWarm90 => const Color(0xFF202020);
+  double get textFontSize48 => 48;
 
   @override
-  Color get colorNeutralWarm100 => const Color(0xFF151519);
+  double get textFontSize52 => 52;
 
   @override
-  Color get colorBrandMain10 => const Color(0xFFE0F0FF);
+  FontWeight get textFontWeightBold => FontWeight.w700;
 
   @override
-  Color get colorBrandMain20 => const Color(0xFFB9DAFF);
+  FontWeight get textFontWeightLight => FontWeight.w300;
 
   @override
-  Color get colorBrandMain30 => const Color(0xFF8DC0FF);
+  FontWeight get textFontWeightMedium => FontWeight.w500;
 
   @override
-  Color get colorBrandMain40 => const Color(0xFF5EA2FF);
+  FontWeight get textFontWeightRegular => FontWeight.w400;
 
   @override
-  Color get colorBrandMain50 => const Color(0xFF3886FF);
+  double get textLetterSpacingBody => -0.43;
 
   @override
-  Color get colorBrandMain60 => const Color(0xFF1F69FF);
+  double get textLetterSpacingHeading => 0.4;
 
   @override
-  Color get colorBrandMain70 => const Color(0xFF0E53E5);
+  double get textLetterSpacingNone => 0;
 
   @override
-  Color get colorBrandMain80 => const Color(0xFF003FBD);
+  double get textLetterSpacingTitle => 0;
 
   @override
-  Color get colorBrandMain90 => const Color(0xFF002775);
+  double get textLineHeight12 => 12;
 
   @override
-  Color get colorBrandMain100 => const Color(0xFF00143A);
+  double get textLineHeight14 => 14;
 
   @override
-  Color get colorBrandAlternative10 => const Color(0xFFFFECE5);
+  double get textLineHeight16 => 16;
 
   @override
-  Color get colorBrandAlternative20 => const Color(0xFFFFD9CC);
+  double get textLineHeight18 => 18;
 
   @override
-  Color get colorBrandAlternative30 => const Color(0xFFFFBFA6);
+  double get textLineHeight20 => 20;
 
   @override
-  Color get colorBrandAlternative40 => const Color(0xFFFF9F75);
+  double get textLineHeight24 => 24;
 
   @override
-  Color get colorBrandAlternative50 => const Color(0xFFFF7A40);
+  double get textLineHeight28 => 28;
 
   @override
-  Color get colorBrandAlternative60 => const Color(0xFFFF4D00);
+  double get textLineHeight32 => 32;
 
   @override
-  Color get colorBrandAlternative70 => const Color(0xFFF34300);
+  double get textLineHeight36 => 36;
 
   @override
-  Color get colorBrandAlternative80 => const Color(0xFFD13F00);
+  double get textLineHeight40 => 40;
 
   @override
-  Color get colorBrandAlternative90 => const Color(0xFF8A2900);
+  double get textLineHeight48 => 48;
 
   @override
-  Color get colorBrandAlternative100 => const Color(0xFF4A1600);
+  double get textLineHeight52 => 52;
 
   @override
-  Color get colorSystemPositive10 => const Color(0xFFECFFF7);
+  double get textLineHeight60 => 60;
+}
 
-  @override
-  Color get colorSystemPositive20 => const Color(0xFFD8FFEF);
-
-  @override
-  Color get colorSystemPositive30 => const Color(0xFFBEEFDB);
-
-  @override
-  Color get colorSystemPositive40 => const Color(0xFF84DAB6);
-
-  @override
-  Color get colorSystemPositive50 => const Color(0xFF67B796);
-
-  @override
-  Color get colorSystemPositive60 => const Color(0xFF00864F);
-
-  @override
-  Color get colorSystemPositive70 => const Color(0xFF006D3F);
-
-  @override
-  Color get colorSystemPositive80 => const Color(0xFF005F38);
-
-  @override
-  Color get colorSystemPositive90 => const Color(0xFF00331E);
-
-  @override
-  Color get colorSystemPositive100 => const Color(0xFF081711);
-
-  @override
-  Color get colorSystemNegative10 => const Color(0xFFFFF0F1);
-
-  @override
-  Color get colorSystemNegative20 => const Color(0xFFFFE1E4);
-
-  @override
-  Color get colorSystemNegative30 => const Color(0xFFFFB3BB);
-
-  @override
-  Color get colorSystemNegative40 => const Color(0xFFF98C97);
-
-  @override
-  Color get colorSystemNegative50 => const Color(0xFFF36170);
-
-  @override
-  Color get colorSystemNegative60 => const Color(0xFFD70015);
-
-  @override
-  Color get colorSystemNegative70 => const Color(0xFFB50012);
-
-  @override
-  Color get colorSystemNegative80 => const Color(0xFF8F000E);
-
-  @override
-  Color get colorSystemNegative90 => const Color(0xFF520008);
-
-  @override
-  Color get colorSystemNegative100 => const Color(0xFF220F11);
-
-  @override
-  Color get colorSystemWarning10 => const Color(0xFFFEF2E2);
-
-  @override
-  Color get colorSystemWarning20 => const Color(0xFFFFE7C6);
-
-  @override
-  Color get colorSystemWarning30 => const Color(0xFFFFD292);
-
-  @override
-  Color get colorSystemWarning40 => const Color(0xFFFFB348);
-
-  @override
-  Color get colorSystemWarning50 => const Color(0xFFD78D26);
-
-  @override
-  Color get colorSystemWarning60 => const Color(0xFFAE6500);
-
-  @override
-  Color get colorSystemWarning70 => const Color(0xFF965802);
-
-  @override
-  Color get colorSystemWarning80 => const Color(0xFF764502);
-
-  @override
-  Color get colorSystemWarning90 => const Color(0xFF402600);
-
-  @override
-  Color get colorSystemWarning100 => const Color(0xFF1E1100);
-
-  @override
-  Color get colorSystemInfo10 => const Color(0xFFF1F8FF);
-
-  @override
-  Color get colorSystemInfo20 => const Color(0xFFE2F1FF);
-
-  @override
-  Color get colorSystemInfo30 => const Color(0xFFB7DBFF);
-
-  @override
-  Color get colorSystemInfo40 => const Color(0xFF7EBEFF);
-
-  @override
-  Color get colorSystemInfo50 => const Color(0xFF599FE5);
-
-  @override
-  Color get colorSystemInfo60 => const Color(0xFF0073E6);
-
-  @override
-  Color get colorSystemInfo70 => const Color(0xFF0061C2);
-
-  @override
-  Color get colorSystemInfo80 => const Color(0xFF004D99);
-
-  @override
-  Color get colorSystemInfo90 => const Color(0xFF002C58);
-
-  @override
-  Color get colorSystemInfo100 => const Color(0xFF101B25);
+final class _ZetaPrimitivesTarget implements ZetaPrimitiveTokens {
+  const _ZetaPrimitivesTarget();
 
   @override
   Color get colorAccent1_10 => const Color(0xFFF7F0FF);
@@ -2079,6 +1743,132 @@ final class _ZetaPrimitivesTarget implements ZetaPrimitiveTokens {
   Color get colorAccent5_100 => const Color(0xFF192B03);
 
   @override
+  Color get colorAlphaDark0 => const Color(0x000C0D0E);
+
+  @override
+  Color get colorAlphaDark5 => const Color(0x0D0C0D0E);
+
+  @override
+  Color get colorAlphaDark10 => const Color(0x1A0C0D0E);
+
+  @override
+  Color get colorAlphaDark20 => const Color(0x330C0D0E);
+
+  @override
+  Color get colorAlphaDark30 => const Color(0x4D0C0D0E);
+
+  @override
+  Color get colorAlphaDark40 => const Color(0x660C0D0E);
+
+  @override
+  Color get colorAlphaDark50 => const Color(0x800C0D0E);
+
+  @override
+  Color get colorAlphaDark60 => const Color(0x990C0D0E);
+
+  @override
+  Color get colorAlphaDark70 => const Color(0xB20C0D0E);
+
+  @override
+  Color get colorAlphaDark80 => const Color(0xCC0C0D0E);
+
+  @override
+  Color get colorAlphaDark90 => const Color(0xE50C0D0E);
+
+  @override
+  Color get colorAlphaLight0 => const Color(0x00D6DCE2);
+
+  @override
+  Color get colorAlphaLight5 => const Color(0x0DD4DDE6);
+
+  @override
+  Color get colorAlphaLight10 => const Color(0x1AD4DDE6);
+
+  @override
+  Color get colorAlphaLight20 => const Color(0x33D4DDE6);
+
+  @override
+  Color get colorAlphaLight30 => const Color(0x4DD4DDE6);
+
+  @override
+  Color get colorAlphaLight40 => const Color(0x66D4DDE6);
+
+  @override
+  Color get colorAlphaLight50 => const Color(0x80D4DDE6);
+
+  @override
+  Color get colorAlphaLight60 => const Color(0x99D4DDE6);
+
+  @override
+  Color get colorAlphaLight70 => const Color(0xB2D4DDE6);
+
+  @override
+  Color get colorAlphaLight80 => const Color(0xCCD4DDE6);
+
+  @override
+  Color get colorAlphaLight90 => const Color(0xE5D4DDE6);
+
+  @override
+  Color get colorBrandAlternative10 => const Color(0xFFFFECE5);
+
+  @override
+  Color get colorBrandAlternative20 => const Color(0xFFFFD9CC);
+
+  @override
+  Color get colorBrandAlternative30 => const Color(0xFFFFBFA6);
+
+  @override
+  Color get colorBrandAlternative40 => const Color(0xFFFF9F75);
+
+  @override
+  Color get colorBrandAlternative50 => const Color(0xFFFF7A40);
+
+  @override
+  Color get colorBrandAlternative60 => const Color(0xFFFF4D00);
+
+  @override
+  Color get colorBrandAlternative70 => const Color(0xFFF34300);
+
+  @override
+  Color get colorBrandAlternative80 => const Color(0xFFD13F00);
+
+  @override
+  Color get colorBrandAlternative90 => const Color(0xFF8A2900);
+
+  @override
+  Color get colorBrandAlternative100 => const Color(0xFF4A1600);
+
+  @override
+  Color get colorBrandMain10 => const Color(0xFFE0F0FF);
+
+  @override
+  Color get colorBrandMain20 => const Color(0xFFB9DAFF);
+
+  @override
+  Color get colorBrandMain30 => const Color(0xFF8DC0FF);
+
+  @override
+  Color get colorBrandMain40 => const Color(0xFF5EA2FF);
+
+  @override
+  Color get colorBrandMain50 => const Color(0xFF3886FF);
+
+  @override
+  Color get colorBrandMain60 => const Color(0xFF1F69FF);
+
+  @override
+  Color get colorBrandMain70 => const Color(0xFF0E53E5);
+
+  @override
+  Color get colorBrandMain80 => const Color(0xFF003FBD);
+
+  @override
+  Color get colorBrandMain90 => const Color(0xFF002775);
+
+  @override
+  Color get colorBrandMain100 => const Color(0xFF00143A);
+
+  @override
   Color get colorExtend1_10 => const Color(0xFFF2F2F2);
 
   @override
@@ -2199,94 +1989,292 @@ final class _ZetaPrimitivesTarget implements ZetaPrimitiveTokens {
   Color get colorExtend4_100 => const Color(0xFF140000);
 
   @override
-  Color get colorPureWhite => const Color(0xFFFFFFFF);
+  Color get colorNeutralCool10 => const Color(0xFFF8FBFF);
+
+  @override
+  Color get colorNeutralCool20 => const Color(0xFFF3F6FA);
+
+  @override
+  Color get colorNeutralCool30 => const Color(0xFFE0E3E9);
+
+  @override
+  Color get colorNeutralCool40 => const Color(0xFFCED2DB);
+
+  @override
+  Color get colorNeutralCool50 => const Color(0xFF8D95A3);
+
+  @override
+  Color get colorNeutralCool60 => const Color(0xFF7A8190);
+
+  @override
+  Color get colorNeutralCool70 => const Color(0xFF545963);
+
+  @override
+  Color get colorNeutralCool80 => const Color(0xFF2C2F36);
+
+  @override
+  Color get colorNeutralCool90 => const Color(0xFF1D1E23);
+
+  @override
+  Color get colorNeutralCool100 => const Color(0xFF0C0D0E);
+
+  @override
+  Color get colorNeutralWarm10 => const Color(0xFFFAFAFA);
+
+  @override
+  Color get colorNeutralWarm20 => const Color(0xFFF7F7F7);
+
+  @override
+  Color get colorNeutralWarm30 => const Color(0xFFEDEDED);
+
+  @override
+  Color get colorNeutralWarm40 => const Color(0xFFDEDEDE);
+
+  @override
+  Color get colorNeutralWarm50 => const Color(0xFFB9B9B9);
+
+  @override
+  Color get colorNeutralWarm60 => const Color(0xFF858585);
+
+  @override
+  Color get colorNeutralWarm70 => const Color(0xFF585858);
+
+  @override
+  Color get colorNeutralWarm80 => const Color(0xFF313131);
+
+  @override
+  Color get colorNeutralWarm90 => const Color(0xFF202020);
+
+  @override
+  Color get colorNeutralWarm100 => const Color(0xFF151519);
 
   @override
   Color get colorPureBlack => const Color(0xFF000000);
 
   @override
-  Color get colorAlphaDark0 => const Color(0x000C0D0E);
+  Color get colorPureWhite => const Color(0xFFFFFFFF);
 
   @override
-  Color get colorAlphaDark5 => const Color(0x0D0C0D0E);
+  Color get colorSystemInfo10 => const Color(0xFFF1F8FF);
 
   @override
-  Color get colorAlphaDark10 => const Color(0x1A0C0D0E);
+  Color get colorSystemInfo20 => const Color(0xFFE2F1FF);
 
   @override
-  Color get colorAlphaDark20 => const Color(0x330C0D0E);
+  Color get colorSystemInfo30 => const Color(0xFFB7DBFF);
 
   @override
-  Color get colorAlphaDark30 => const Color(0x4D0C0D0E);
+  Color get colorSystemInfo40 => const Color(0xFF7EBEFF);
 
   @override
-  Color get colorAlphaDark40 => const Color(0x660C0D0E);
+  Color get colorSystemInfo50 => const Color(0xFF599FE5);
 
   @override
-  Color get colorAlphaDark50 => const Color(0x800C0D0E);
+  Color get colorSystemInfo60 => const Color(0xFF0073E6);
 
   @override
-  Color get colorAlphaDark60 => const Color(0x990C0D0E);
+  Color get colorSystemInfo70 => const Color(0xFF0061C2);
 
   @override
-  Color get colorAlphaDark70 => const Color(0xB20C0D0E);
+  Color get colorSystemInfo80 => const Color(0xFF004D99);
 
   @override
-  Color get colorAlphaDark80 => const Color(0xCC0C0D0E);
+  Color get colorSystemInfo90 => const Color(0xFF002C58);
 
   @override
-  Color get colorAlphaDark90 => const Color(0xE50C0D0E);
+  Color get colorSystemInfo100 => const Color(0xFF101B25);
 
   @override
-  Color get colorAlphaLight0 => const Color(0x00D6DCE2);
+  Color get colorSystemNegative10 => const Color(0xFFFFF0F1);
 
   @override
-  Color get colorAlphaLight5 => const Color(0x0DD4DDE6);
+  Color get colorSystemNegative20 => const Color(0xFFFFE1E4);
 
   @override
-  Color get colorAlphaLight10 => const Color(0x1AD4DDE6);
+  Color get colorSystemNegative30 => const Color(0xFFFFB3BB);
 
   @override
-  Color get colorAlphaLight20 => const Color(0x33D4DDE6);
+  Color get colorSystemNegative40 => const Color(0xFFF98C97);
 
   @override
-  Color get colorAlphaLight30 => const Color(0x4DD4DDE6);
+  Color get colorSystemNegative50 => const Color(0xFFF36170);
 
   @override
-  Color get colorAlphaLight40 => const Color(0x66D4DDE6);
+  Color get colorSystemNegative60 => const Color(0xFFD70015);
 
   @override
-  Color get colorAlphaLight50 => const Color(0x80D4DDE6);
+  Color get colorSystemNegative70 => const Color(0xFFB50012);
 
   @override
-  Color get colorAlphaLight60 => const Color(0x99D4DDE6);
+  Color get colorSystemNegative80 => const Color(0xFF8F000E);
 
   @override
-  Color get colorAlphaLight70 => const Color(0xB2D4DDE6);
+  Color get colorSystemNegative90 => const Color(0xFF520008);
 
   @override
-  Color get colorAlphaLight80 => const Color(0xCCD4DDE6);
+  Color get colorSystemNegative100 => const Color(0xFF220F11);
 
   @override
-  Color get colorAlphaLight90 => const Color(0xE5D4DDE6);
+  Color get colorSystemPositive10 => const Color(0xFFECFFF7);
 
   @override
-  String get textFontFamilyZebraSans => 'packages/zeta_flutter_theme/IBMPlexSans';
+  Color get colorSystemPositive20 => const Color(0xFFD8FFEF);
+
+  @override
+  Color get colorSystemPositive30 => const Color(0xFFBEEFDB);
+
+  @override
+  Color get colorSystemPositive40 => const Color(0xFF84DAB6);
+
+  @override
+  Color get colorSystemPositive50 => const Color(0xFF67B796);
+
+  @override
+  Color get colorSystemPositive60 => const Color(0xFF00864F);
+
+  @override
+  Color get colorSystemPositive70 => const Color(0xFF006D3F);
+
+  @override
+  Color get colorSystemPositive80 => const Color(0xFF005F38);
+
+  @override
+  Color get colorSystemPositive90 => const Color(0xFF00331E);
+
+  @override
+  Color get colorSystemPositive100 => const Color(0xFF081711);
+
+  @override
+  Color get colorSystemWarning10 => const Color(0xFFFEF2E2);
+
+  @override
+  Color get colorSystemWarning20 => const Color(0xFFFFE7C6);
+
+  @override
+  Color get colorSystemWarning30 => const Color(0xFFFFD292);
+
+  @override
+  Color get colorSystemWarning40 => const Color(0xFFFFB348);
+
+  @override
+  Color get colorSystemWarning50 => const Color(0xFFD78D26);
+
+  @override
+  Color get colorSystemWarning60 => const Color(0xFFAE6500);
+
+  @override
+  Color get colorSystemWarning70 => const Color(0xFF965802);
+
+  @override
+  Color get colorSystemWarning80 => const Color(0xFF764502);
+
+  @override
+  Color get colorSystemWarning90 => const Color(0xFF402600);
+
+  @override
+  Color get colorSystemWarning100 => const Color(0xFF1E1100);
+
+  @override
+  double get scale0 => 0;
+
+  @override
+  double get scale1 => 1;
+
+  @override
+  double get scale2 => 2;
+
+  @override
+  double get scale3 => 4;
+
+  @override
+  double get scale4 => 6;
+
+  @override
+  double get scale5 => 8;
+
+  @override
+  double get scale6 => 12;
+
+  @override
+  double get scale7 => 16;
+
+  @override
+  double get scale8 => 20;
+
+  @override
+  double get scale9 => 24;
+
+  @override
+  double get scale10 => 28;
+
+  @override
+  double get scale11 => 32;
+
+  @override
+  double get scale12 => 36;
+
+  @override
+  double get scale13 => 40;
+
+  @override
+  double get scale14 => 44;
+
+  @override
+  double get scale15 => 48;
+
+  @override
+  double get scale16 => 56;
+
+  @override
+  double get scale17 => 64;
+
+  @override
+  double get scale18 => 80;
+
+  @override
+  double get scale19 => 96;
+
+  @override
+  double get scale20 => 128;
+
+  @override
+  double get scale21 => 160;
+
+  @override
+  double get scaleNeg1 => -1;
+
+  @override
+  double get scaleNeg2 => -2;
+
+  @override
+  double get scaleNeg3 => -4;
+
+  @override
+  double get scaleNeg4 => -6;
+
+  @override
+  double get scaleNeg5 => -8;
+
+  @override
+  double get scaleNeg6 => -12;
+
+  @override
+  double get scaleContainer0 => 240;
+
+  @override
+  double get scaleContainer1 => 600;
+
+  @override
+  double get scaleContainer2 => 840;
+
+  @override
+  double get scaleContainer3 => 1200;
 
   @override
   String get textFontFamilyIBMPlexSans => 'packages/zeta_flutter_theme/IBMPlexSans';
 
   @override
-  FontWeight get textFontWeightLight => FontWeight.w300;
-
-  @override
-  FontWeight get textFontWeightRegular => FontWeight.w400;
-
-  @override
-  FontWeight get textFontWeightMedium => FontWeight.w500;
-
-  @override
-  FontWeight get textFontWeightBold => FontWeight.w700;
+  String get textFontFamilyZebraSans => 'packages/zeta_flutter_theme/IBMPlexSans';
 
   @override
   double get textFontSize10 => 10;
@@ -2331,6 +2319,30 @@ final class _ZetaPrimitivesTarget implements ZetaPrimitiveTokens {
   double get textFontSize52 => 52;
 
   @override
+  FontWeight get textFontWeightBold => FontWeight.w700;
+
+  @override
+  FontWeight get textFontWeightLight => FontWeight.w300;
+
+  @override
+  FontWeight get textFontWeightMedium => FontWeight.w500;
+
+  @override
+  FontWeight get textFontWeightRegular => FontWeight.w400;
+
+  @override
+  double get textLetterSpacingBody => -0.43;
+
+  @override
+  double get textLetterSpacingHeading => 0.4;
+
+  @override
+  double get textLetterSpacingNone => 0;
+
+  @override
+  double get textLetterSpacingTitle => 0;
+
+  @override
   double get textLineHeight12 => 12;
 
   @override
@@ -2368,16 +2380,4 @@ final class _ZetaPrimitivesTarget implements ZetaPrimitiveTokens {
 
   @override
   double get textLineHeight60 => 60;
-
-  @override
-  double get textLetterSpacingNone => 0;
-
-  @override
-  double get textLetterSpacingBody => -0.43;
-
-  @override
-  double get textLetterSpacingHeading => 0.4;
-
-  @override
-  double get textLetterSpacingTitle => 0;
 }

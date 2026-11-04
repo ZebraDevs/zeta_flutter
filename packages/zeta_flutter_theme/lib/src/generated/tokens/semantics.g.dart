@@ -4,116 +4,6 @@
 
 part of 'zeta_tokens.g.dart';
 
-/// Semantic `surface` tokens.
-class ZetaSurfaceTokens {
-  const ZetaSurfaceTokens._(this._palette);
-
-  final ZetaPaletteTokens _palette;
-
-  /// `semantics.surface.page`: Default background color of the page or app canvas
-  Color get page => _palette.fillCanvas;
-
-  /// `semantics.surface.section`: Background for a section or panel that groups related content
-  Color get section => _palette.fillDefault;
-
-  /// `semantics.surface.card`: Background of card components
-  Color get card => _palette.fillElevated;
-
-  /// `semantics.surface.dialog`: Background of dialog/modal windows
-  Color get dialog => _palette.fillOverlay;
-
-  /// `semantics.surface.sheet`: Background of bottom sheets and side drawers
-  Color get sheet => _palette.fillOverlay;
-
-  /// `semantics.surface.popover`: Background of popovers and other floating panels
-  Color get popover => _palette.fillOverlay;
-
-  /// `semantics.surface.menu`: Background of dropdown and context menus
-  Color get menu => _palette.fillOverlay;
-
-  /// `semantics.surface.tooltip`: Background of tooltips
-  Color get tooltip => _palette.fillInverse;
-
-  /// `semantics.surface.brand`: Brand-colored background, e.g. hero sections or marketing highlights
-  Color get brand => _palette.brandPrimaryFaint;
-
-  /// `semantics.surface.inverse`: Dark/inverse background for high-contrast sections
-  Color get inverse => _palette.fillInverse;
-
-  /// `semantics.surface.success`: Background for containers communicating a success state
-  Color get success => _palette.statusSuccessFaint;
-
-  /// `semantics.surface.warning`: Background for containers communicating a warning state
-  Color get warning => _palette.statusWarningFaint;
-
-  /// `semantics.surface.error`: Background for containers communicating an error state
-  Color get error => _palette.statusErrorFaint;
-
-  /// `semantics.surface.info`: Background for containers communicating neutral information
-  Color get info => _palette.statusInfoFaint;
-
-  /// `semantics.surface.track`: Background for containers communicating neutral information
-  Color get track => _palette.fillSunken;
-
-  /// `semantics.surface.gradient.start`: Starting color stop for surfaces using a gradient fill
-  Color get gradientStart => _palette.gradientDefaultStart;
-
-  /// `semantics.surface.gradient.end`: Ending color stop for surfaces using a gradient fill
-  Color get gradientEnd => _palette.gradientDefaultEnd;
-}
-
-/// Semantic `foreground` tokens.
-class ZetaForegroundTokens {
-  const ZetaForegroundTokens._(this._palette);
-
-  final ZetaPaletteTokens _palette;
-
-  /// `semantics.foreground.primary`: The default color for body text and primary icons, used as the highest-emphasis content color.
-  Color get primary => _palette.inkHigh;
-
-  /// `semantics.foreground.secondary`: Lower-emphasis text/icon color, e.g. captions or supporting copy
-  Color get secondary => _palette.inkMedium;
-
-  /// `semantics.foreground.tertiary`: Lowest-emphasis text/icon color, e.g. placeholders or metadata
-  Color get tertiary => _palette.inkLow;
-
-  /// `semantics.foreground.disabled`: Text/icon color for disabled, non-interactive elements
-  Color get disabled => _palette.inkDisabled;
-
-  /// `semantics.foreground.inverse`: Text/icon color for use on dark or inverse-colored surfaces
-  Color get inverse => _palette.inkInverse;
-
-  /// `semantics.foreground.link`: Color for hyperlinks and other clickable inline text
-  Color get link => _palette.inkLink;
-
-  /// `semantics.foreground.cursor`: Color of the blinking caret inside text inputs
-  Color get cursor => _palette.inkBrand;
-
-  /// `semantics.foreground.success`: Text/icon color that communicates success
-  Color get success => _palette.statusSuccessDefault;
-
-  /// `semantics.foreground.warning`: Text/icon color that communicates a warning
-  Color get warning => _palette.statusWarningDefault;
-
-  /// `semantics.foreground.error`: Text/icon color that communicates an error, paired with feedback/error tokens
-  Color get error => _palette.statusErrorDefault;
-
-  /// `semantics.foreground.info`: Text/icon color that communicates neutral information
-  Color get info => _palette.statusInfoDefault;
-
-  /// `semantics.foreground.on-strong`: Text/icon color on strong, saturated fills (feedback background/strong, selected controls). White in every mode.
-  Color get onStrong => _palette.inkAlwaysWhite;
-
-  /// `semantics.foreground.on-light`: Text/icon color on fills that stay light in every mode. Near-black in every mode.
-  Color get onLight => _palette.inkAlwaysBlank;
-
-  /// `semantics.foreground.gradient.start`: Starting color stop for text/icons using a gradient treatment
-  Color get gradientStart => _palette.gradientDefaultStart;
-
-  /// `semantics.foreground.gradient.end`: Ending color stop for text/icons using a gradient treatment
-  Color get gradientEnd => _palette.gradientDefaultEnd;
-}
-
 /// Semantic `border` tokens.
 class ZetaBorderTokens {
   const ZetaBorderTokens._(this._palette);
@@ -123,8 +13,23 @@ class ZetaBorderTokens {
   /// `semantics.border.default`: Default border color for inputs, cards, and dividers at rest
   Color get default_ => _palette.lineDefault;
 
-  /// `semantics.border.subtle`: Faint border for low-emphasis separation, e.g. nested cards
-  Color get subtle => _palette.lineSubtle;
+  /// `semantics.border.disabled`
+  Color get disabled => _palette.lineStrong;
+
+  /// `semantics.border.error`: Border color for inputs/fields in an invalid or error state
+  Color get error => _palette.statusErrorDefault;
+
+  /// `semantics.border.focus`: Border applied when an element receives keyboard focus, for accessibility
+  Color get focus => _palette.lineFocus;
+
+  /// `semantics.border.gradient.end`: Ending color stop for borders using a gradient treatment
+  Color get gradientEnd => _palette.gradientDefaultEnd;
+
+  /// `semantics.border.gradient.start`: Starting color stop for borders using a gradient treatment
+  Color get gradientStart => _palette.gradientDefaultStart;
+
+  /// `semantics.border.info`: Border color for elements conveying neutral, informational context
+  Color get info => _palette.statusInfoDefault;
 
   /// `semantics.border.inverse`: Low-emphasis border, e.g. subtle dividers.
   Color get inverse => _palette.lineInverse;
@@ -132,441 +37,17 @@ class ZetaBorderTokens {
   /// `semantics.border.strong`: Higher-contrast border for emphasis, e.g. active outlines or key dividers
   Color get strong => _palette.lineStronger;
 
-  /// `semantics.border.focus`: Border applied when an element receives keyboard focus, for accessibility
-  Color get focus => _palette.lineFocus;
+  /// `semantics.border.subtle`: Faint border for low-emphasis separation, e.g. nested cards
+  Color get subtle => _palette.lineSubtle;
 
   /// `semantics.border.success`: Border color for inputs/fields confirmed valid or successful
   Color get success => _palette.statusSuccessDefault;
 
-  /// `semantics.border.warning`: Border color for elements flagged with a warning
-  Color get warning => _palette.statusWarningDefault;
-
-  /// `semantics.border.error`: Border color for inputs/fields in an invalid or error state
-  Color get error => _palette.statusErrorDefault;
-
-  /// `semantics.border.info`: Border color for elements conveying neutral, informational context
-  Color get info => _palette.statusInfoDefault;
-
   /// `semantics.border.transparent`: Border color for elements conveying neutral, informational context
   Color get transparent => _palette.statusGhostDefault;
 
-  /// `semantics.border.disabled`
-  Color get disabled => _palette.lineStrong;
-
-  /// `semantics.border.gradient.start`: Starting color stop for borders using a gradient treatment
-  Color get gradientStart => _palette.gradientDefaultStart;
-
-  /// `semantics.border.gradient.end`: Ending color stop for borders using a gradient treatment
-  Color get gradientEnd => _palette.gradientDefaultEnd;
-}
-
-/// Semantic `interactive` tokens.
-class ZetaInteractiveTokens {
-  const ZetaInteractiveTokens._(this._palette);
-
-  final ZetaPaletteTokens _palette;
-
-  /// `semantics.interactive.primary.background.default`: Default state for the primary interactive element, the main and highest-emphasis action or control on a screen.
-  Color get primaryBackgroundDefault => _palette.brandPrimaryDefault;
-
-  /// `semantics.interactive.primary.background.focused`: Focused state for the primary interactive element.
-  Color get primaryBackgroundFocused => _palette.brandPrimaryDefault;
-
-  /// `semantics.interactive.primary.background.disabled`: Disabled state for the primary interactive element.
-  Color get primaryBackgroundDisabled => _palette.fillDisabled;
-
-  /// `semantics.interactive.primary.background.hover`: Hover state for the primary interactive element.
-  Color get primaryBackgroundHover => _palette.brandPrimarySubtle;
-
-  /// `semantics.interactive.primary.background.pressed`: Pressed state for the primary interactive element.
-  Color get primaryBackgroundPressed => _palette.brandPrimaryDeep;
-
-  /// `semantics.interactive.primary.background.selected`: Selected state for the primary interactive element.
-  Color get primaryBackgroundSelected => _palette.brandPrimaryDeep;
-
-  /// `semantics.interactive.primary.foreground.default`: Default-state text/icon color on the primary interactive element&#39;s background.
-  Color get primaryForegroundDefault => _palette.brandPrimaryOn;
-
-  /// `semantics.interactive.primary.foreground.disabled`: Disabled-state text/icon color on the primary interactive element&#39;s background.
-  Color get primaryForegroundDisabled => _palette.inkDisabled;
-
-  /// `semantics.interactive.primary.border.default`: Default-state border for the primary interactive element.
-  Color get primaryBorderDefault => _palette.brandPrimaryDefault;
-
-  /// `semantics.interactive.primary.border.disabled`: Disabled-state border for the primary interactive element.
-  Color get primaryBorderDisabled => _palette.lineSubtle;
-
-  /// `semantics.interactive.primary.border.hover`: Hover-state border for the primary interactive element.
-  Color get primaryBorderHover => _palette.brandPrimarySubtle;
-
-  /// `semantics.interactive.primary.border.pressed`: Pressed-state border for the primary interactive element.
-  Color get primaryBorderPressed => _palette.brandPrimaryDeep;
-
-  /// `semantics.interactive.secondary.background.default`: Default state for a secondary interactive element, an alternative and less prominent action alongside primary.
-  Color get secondaryBackgroundDefault => _palette.brandSecondaryDefault;
-
-  /// `semantics.interactive.secondary.background.hover`: Hover state for a secondary interactive element.
-  Color get secondaryBackgroundHover => _palette.brandSecondarySubtle;
-
-  /// `semantics.interactive.secondary.background.pressed`: Pressed state for a secondary interactive element.
-  Color get secondaryBackgroundPressed => _palette.brandSecondaryDeep;
-
-  /// `semantics.interactive.secondary.background.focused`: Focused state for a secondary interactive element.
-  Color get secondaryBackgroundFocused => _palette.brandSecondaryDefault;
-
-  /// `semantics.interactive.secondary.background.selected`: Selected state for a secondary interactive element.
-  Color get secondaryBackgroundSelected => _palette.brandSecondaryDeep;
-
-  /// `semantics.interactive.secondary.background.disabled`: Disabled state for a secondary interactive element.
-  Color get secondaryBackgroundDisabled => _palette.fillDisabled;
-
-  /// `semantics.interactive.secondary.foreground.default`: Default-state text/icon color on a secondary interactive element&#39;s background.
-  Color get secondaryForegroundDefault => _palette.brandSecondaryOn;
-
-  /// `semantics.interactive.secondary.foreground.disabled`: Disabled-state text/icon color on a secondary interactive element&#39;s background.
-  Color get secondaryForegroundDisabled => _palette.inkDisabled;
-
-  /// `semantics.interactive.secondary.border.default`: Default-state border for a secondary interactive element.
-  Color get secondaryBorderDefault => _palette.brandSecondaryDefault;
-
-  /// `semantics.interactive.secondary.border.hover`: Hover-state border for a secondary interactive element.
-  Color get secondaryBorderHover => _palette.brandSecondarySubtle;
-
-  /// `semantics.interactive.secondary.border.pressed`: Pressed-state border for a secondary interactive element.
-  Color get secondaryBorderPressed => _palette.brandSecondaryDeep;
-
-  /// `semantics.interactive.secondary.border.disabled`: Disabled-state border for a secondary interactive element.
-  Color get secondaryBorderDisabled => _palette.lineSubtle;
-
-  /// `semantics.interactive.ghost.background.default`: Default state for a ghost interactive element, minimal in styling with no fill, for low-emphasis actions.
-  Color get ghostBackgroundDefault => _palette.statusGhostDefault;
-
-  /// `semantics.interactive.ghost.background.hover`: Hover state for a ghost interactive element.
-  Color get ghostBackgroundHover => _palette.statusGhostFaint;
-
-  /// `semantics.interactive.ghost.background.pressed`: Pressed state for a ghost interactive element.
-  Color get ghostBackgroundPressed => _palette.statusGhostDeep;
-
-  /// `semantics.interactive.ghost.background.focused`: Focused state for a ghost interactive element.
-  Color get ghostBackgroundFocused => _palette.statusGhostDefault;
-
-  /// `semantics.interactive.ghost.background.selected`: Selected state for a ghost interactive element.
-  Color get ghostBackgroundSelected => _palette.statusGhostFaint;
-
-  /// `semantics.interactive.ghost.background.disabled`: Disabled state for a ghost interactive element.
-  Color get ghostBackgroundDisabled => _palette.statusGhostDefault;
-
-  /// `semantics.interactive.ghost.foreground.default`: Default-state text/icon color on a ghost interactive element&#39;s background.
-  Color get ghostForegroundDefault => _palette.inkBrand;
-
-  /// `semantics.interactive.ghost.foreground.disabled`: Disabled-state text/icon color on a ghost interactive element&#39;s background.
-  Color get ghostForegroundDisabled => _palette.inkDisabled;
-
-  /// `semantics.interactive.ghost.border.default`: Default-state border for a ghost interactive element.
-  Color get ghostBorderDefault => _palette.brandPrimaryDefault;
-
-  /// `semantics.interactive.ghost.border.hover`: Hover-state border for a ghost interactive element.
-  Color get ghostBorderHover => _palette.brandPrimarySubtle;
-
-  /// `semantics.interactive.ghost.border.pressed`: Pressed-state border for a ghost interactive element.
-  Color get ghostBorderPressed => _palette.brandPrimaryDeep;
-
-  /// `semantics.interactive.ghost.border.disabled`: Disabled-state border for a ghost interactive element.
-  Color get ghostBorderDisabled => _palette.lineSubtle;
-
-  /// `semantics.interactive.destructive.background.default`: Default state for a destructive interactive element, signaling a harmful or irreversible action such as Delete.
-  Color get destructiveBackgroundDefault => _palette.statusErrorDefault;
-
-  /// `semantics.interactive.destructive.background.hover`: Hover state for a destructive interactive element.
-  Color get destructiveBackgroundHover => _palette.statusErrorSubtle;
-
-  /// `semantics.interactive.destructive.background.pressed`: Pressed state for a destructive interactive element.
-  Color get destructiveBackgroundPressed => _palette.statusErrorDeep;
-
-  /// `semantics.interactive.destructive.background.focused`: Focused state for a destructive interactive element.
-  Color get destructiveBackgroundFocused => _palette.statusErrorDefault;
-
-  /// `semantics.interactive.destructive.background.selected`: Selected state for a destructive interactive element.
-  Color get destructiveBackgroundSelected => _palette.statusErrorDeep;
-
-  /// `semantics.interactive.destructive.background.disabled`: Disabled state for a destructive interactive element.
-  Color get destructiveBackgroundDisabled => _palette.fillDisabled;
-
-  /// `semantics.interactive.destructive.foreground.default`: Default-state text/icon color on a destructive interactive element&#39;s background.
-  Color get destructiveForegroundDefault => _palette.brandPrimaryOn;
-
-  /// `semantics.interactive.destructive.foreground.disabled`: Disabled-state text/icon color on a destructive interactive element&#39;s background.
-  Color get destructiveForegroundDisabled => _palette.inkDisabled;
-
-  /// `semantics.interactive.destructive.border.default`: Default-state border for a destructive interactive element.
-  Color get destructiveBorderDefault => _palette.statusErrorDefault;
-
-  /// `semantics.interactive.destructive.border.hover`: Hover-state border for a destructive interactive element.
-  Color get destructiveBorderHover => _palette.statusErrorSubtle;
-
-  /// `semantics.interactive.destructive.border.pressed`: Pressed-state border for a destructive interactive element.
-  Color get destructiveBorderPressed => _palette.statusErrorStrong;
-
-  /// `semantics.interactive.destructive.border.disabled`: Disabled-state border for a destructive interactive element.
-  Color get destructiveBorderDisabled => _palette.lineSubtle;
-
-  /// `semantics.interactive.inverse.background.default`: Default state for an interactive element placed on a dark or inverse-colored surface.
-  Color get inverseBackgroundDefault => _palette.fillInverse;
-
-  /// `semantics.interactive.inverse.background.hover`: Hover state for an inverse-surface interactive element.
-  Color get inverseBackgroundHover => _palette.fillInverseSunken;
-
-  /// `semantics.interactive.inverse.background.pressed`: Pressed state for an inverse-surface interactive element.
-  Color get inverseBackgroundPressed => _palette.fillInverseElevated;
-
-  /// `semantics.interactive.inverse.background.focused`: Focused state for an inverse-surface interactive element.
-  Color get inverseBackgroundFocused => _palette.fillInverse;
-
-  /// `semantics.interactive.inverse.background.selected`: Selected state for an inverse-surface interactive element.
-  Color get inverseBackgroundSelected => _palette.fillInverseElevated;
-
-  /// `semantics.interactive.inverse.background.disabled`: Disabled state for an inverse-surface interactive element.
-  Color get inverseBackgroundDisabled => _palette.fillDisabled;
-
-  /// `semantics.interactive.inverse.foreground.default`: Default-state text/icon color on an inverse-surface interactive element&#39;s background.
-  Color get inverseForegroundDefault => _palette.inkInverse;
-
-  /// `semantics.interactive.inverse.foreground.disabled`: Disabled-state text/icon color on an inverse-surface interactive element&#39;s background.
-  Color get inverseForegroundDisabled => _palette.inkDisabled;
-
-  /// `semantics.interactive.inverse.border.default`: Default-state border for an inverse-surface interactive element.
-  Color get inverseBorderDefault => _palette.fillInverse;
-
-  /// `semantics.interactive.inverse.border.hover`: Hover-state border for an inverse-surface interactive element.
-  Color get inverseBorderHover => _palette.fillInverseSunken;
-
-  /// `semantics.interactive.inverse.border.pressed`: Pressed-state border for an inverse-surface interactive element.
-  Color get inverseBorderPressed => _palette.fillInverseElevated;
-
-  /// `semantics.interactive.inverse.border.disabled`: Disabled-state border for an inverse-surface interactive element.
-  Color get inverseBorderDisabled => _palette.lineSubtle;
-
-  /// `semantics.interactive.neutral.background.default`: Default state for a neutral, general-purpose interactive element with no semantic meaning.
-  Color get neutralBackgroundDefault => _palette.fillDefault;
-
-  /// `semantics.interactive.neutral.background.hover`: Hover state for a neutral interactive element.
-  Color get neutralBackgroundHover => _palette.fillCanvas;
-
-  /// `semantics.interactive.neutral.background.pressed`: Pressed state for a neutral interactive element.
-  Color get neutralBackgroundPressed => _palette.fillSunken;
-
-  /// `semantics.interactive.neutral.background.focused`: Focused state for a neutral interactive element.
-  Color get neutralBackgroundFocused => _palette.fillDefault;
-
-  /// `semantics.interactive.neutral.background.selected`: Selected state for a neutral interactive element.
-  Color get neutralBackgroundSelected => _palette.fillSunken;
-
-  /// `semantics.interactive.neutral.background.disabled`: Disabled state for a neutral interactive element.
-  Color get neutralBackgroundDisabled => _palette.fillDisabled;
-
-  /// `semantics.interactive.neutral.border.default`: Default-state border for a neutral interactive element.
-  Color get neutralBorderDefault => _palette.lineDefault;
-
-  /// `semantics.interactive.neutral.border.hover`: Hover-state border for a neutral interactive element.
-  Color get neutralBorderHover => _palette.lineStrong;
-
-  /// `semantics.interactive.neutral.border.pressed`: Pressed-state border for a neutral interactive element.
-  Color get neutralBorderPressed => _palette.lineStrong;
-
-  /// `semantics.interactive.neutral.border.disabled`: Disabled-state border for a neutral interactive element.
-  Color get neutralBorderDisabled => _palette.lineSubtle;
-
-  /// `semantics.interactive.neutral.foreground.default`: Default-state text/icon color on a neutral interactive element&#39;s background.
-  Color get neutralForegroundDefault => _palette.inkHigh;
-
-  /// `semantics.interactive.neutral.foreground.disabled`: Disabled-state text/icon color on a neutral interactive element&#39;s background.
-  Color get neutralForegroundDisabled => _palette.inkDisabled;
-
-  /// `semantics.interactive.positive.border.default`: Default-state border for a high-emphasis positive-confirmation interactive element.
-  Color get positiveBorderDefault => _palette.statusSuccessDefault;
-
-  /// `semantics.interactive.positive.border.hover`: Hover-state border for a high-emphasis positive-confirmation interactive element.
-  Color get positiveBorderHover => _palette.statusSuccessDefault;
-
-  /// `semantics.interactive.positive.border.pressed`: Pressed-state border for a high-emphasis positive-confirmation interactive element.
-  Color get positiveBorderPressed => _palette.statusSuccessDeep;
-
-  /// `semantics.interactive.positive.border.disabled`: Disabled-state border for a high-emphasis positive-confirmation interactive element.
-  Color get positiveBorderDisabled => _palette.lineSubtle;
-
-  /// `semantics.interactive.positive.background.default`: Default state for a high-emphasis interactive element used for a positive confirmation action, such as Approve, Confirm, or Complete.
-  Color get positiveBackgroundDefault => _palette.statusSuccessDefault;
-
-  /// `semantics.interactive.positive.background.hover`: Hover state for a high-emphasis positive-confirmation interactive element.
-  Color get positiveBackgroundHover => _palette.statusSuccessSubtle;
-
-  /// `semantics.interactive.positive.background.pressed`: Pressed state for a high-emphasis positive-confirmation interactive element.
-  Color get positiveBackgroundPressed => _palette.statusSuccessDeep;
-
-  /// `semantics.interactive.positive.background.focused`: Focused state for a high-emphasis positive-confirmation interactive element.
-  Color get positiveBackgroundFocused => _palette.statusSuccessDefault;
-
-  /// `semantics.interactive.positive.background.selected`: Selected state for a high-emphasis positive-confirmation interactive element.
-  Color get positiveBackgroundSelected => _palette.statusSuccessDeep;
-
-  /// `semantics.interactive.positive.background.disabled`: Disabled state for a high-emphasis positive-confirmation interactive element.
-  Color get positiveBackgroundDisabled => _palette.fillDisabled;
-
-  /// `semantics.interactive.positive.foreground.default`: Default-state text/icon color on a high-emphasis positive-confirmation interactive element&#39;s background.
-  Color get positiveForegroundDefault => _palette.brandPrimaryOn;
-
-  /// `semantics.interactive.positive.foreground.disabled`: Disabled-state text/icon color on a high-emphasis positive-confirmation interactive element&#39;s background.
-  Color get positiveForegroundDisabled => _palette.inkDisabled;
-
-  /// `semantics.interactive.subtle.border.default`: Default-state border for a subtle interactive element.
-  Color get subtleBorderDefault => _palette.brandPrimaryDefault;
-
-  /// `semantics.interactive.subtle.border.hover`: Hover-state border for a subtle interactive element.
-  Color get subtleBorderHover => _palette.brandPrimarySubtle;
-
-  /// `semantics.interactive.subtle.border.pressed`: Pressed-state border for a subtle interactive element.
-  Color get subtleBorderPressed => _palette.brandPrimaryDeep;
-
-  /// `semantics.interactive.subtle.border.disabled`: Disabled-state border for a subtle interactive element.
-  Color get subtleBorderDisabled => _palette.lineSubtle;
-
-  /// `semantics.interactive.subtle.background.default`: Default state for a subtle interactive element, quieter in emphasis than secondary.
-  Color get subtleBackgroundDefault => _palette.brandPrimaryFaint;
-
-  /// `semantics.interactive.subtle.background.hover`: Hover state for a subtle interactive element.
-  Color get subtleBackgroundHover => _palette.brandPrimaryMuted;
-
-  /// `semantics.interactive.subtle.background.pressed`: Pressed state for a subtle interactive element.
-  Color get subtleBackgroundPressed => _palette.brandPrimarySubtle;
-
-  /// `semantics.interactive.subtle.background.focused`: Focused state for a subtle interactive element.
-  Color get subtleBackgroundFocused => _palette.brandPrimaryFaint;
-
-  /// `semantics.interactive.subtle.background.selected`: Selected state for a subtle interactive element.
-  Color get subtleBackgroundSelected => _palette.brandPrimarySubtle;
-
-  /// `semantics.interactive.subtle.background.disabled`: Disabled state for a subtle interactive element.
-  Color get subtleBackgroundDisabled => _palette.fillDisabled;
-
-  /// `semantics.interactive.subtle.foreground.default`: Default-state text/icon color on a subtle interactive element&#39;s background.
-  Color get subtleForegroundDefault => _palette.inkLink;
-
-  /// `semantics.interactive.subtle.foreground.disabled`: Disabled-state text/icon color on a subtle interactive element&#39;s background.
-  Color get subtleForegroundDisabled => _palette.inkDisabled;
-
-  /// `semantics.interactive.selection.background.default`: Default state for a neutral, general-purpose interactive element with no semantic meaning.
-  Color get selectionBackgroundDefault => _palette.inkLow;
-
-  /// `semantics.interactive.selection.background.hover`: Hover state for a neutral interactive element.
-  Color get selectionBackgroundHover => _palette.fillHover;
-
-  /// `semantics.interactive.selection.background.pressed`: Pressed state for a neutral interactive element.
-  Color get selectionBackgroundPressed => _palette.brandPrimaryDefault;
-
-  /// `semantics.interactive.selection.background.focused`: Focused state for a neutral interactive element.
-  Color get selectionBackgroundFocused => _palette.fillDefault;
-
-  /// `semantics.interactive.selection.background.selected`: Selected state for a neutral interactive element.
-  Color get selectionBackgroundSelected => _palette.fillSunken;
-
-  /// `semantics.interactive.selection.background.disabled`: Disabled state for a neutral interactive element.
-  Color get selectionBackgroundDisabled => _palette.fillDisabled;
-
-  /// `semantics.interactive.selection.border.default`: Default-state border for a neutral interactive element.
-  Color get selectionBorderDefault => _palette.lineStrong;
-
-  /// `semantics.interactive.selection.border.hover`: Hover-state border for a neutral interactive element.
-  Color get selectionBorderHover => _palette.lineStronger;
-
-  /// `semantics.interactive.selection.border.pressed`: Pressed-state border for a neutral interactive element.
-  Color get selectionBorderPressed => _palette.lineSelection;
-
-  /// `semantics.interactive.selection.border.disabled`: Disabled-state border for a neutral interactive element.
-  Color get selectionBorderDisabled => _palette.lineSubtle;
-
-  /// `semantics.interactive.selection.foreground.default`: Default-state text/icon color on a neutral interactive element&#39;s background.
-  Color get selectionForegroundDefault => _palette.inkHigh;
-
-  /// `semantics.interactive.selection.foreground.disabled`: Disabled-state text/icon color on a neutral interactive element&#39;s background.
-  Color get selectionForegroundDisabled => _palette.inkDisabled;
-}
-
-/// Semantic `overlay` tokens.
-class ZetaOverlayTokens {
-  const ZetaOverlayTokens._(this._palette);
-
-  final ZetaPaletteTokens _palette;
-
-  /// `semantics.overlay.scrim`: Semi-transparent dimming layer behind a drawer, sheet, or side panel
-  Color get scrim => _palette.fillScrim;
-
-  /// `semantics.overlay.modal`: Semi-transparent dimming layer behind a modal dialog, to focus attention on it
-  Color get modal => _palette.fillOverlay;
-}
-
-/// Semantic `feedback` tokens.
-class ZetaFeedbackTokens {
-  const ZetaFeedbackTokens._(this._palette);
-
-  final ZetaPaletteTokens _palette;
-
-  /// `semantics.feedback.success.background.subtle`: Background fill for success alerts, banners, and inline messages
-  Color get successBackgroundSubtle => _palette.statusSuccessFaint;
-
-  /// `semantics.feedback.success.background.strong`: Background fill for success alerts, banners, and inline messages
-  Color get successBackgroundStrong => _palette.statusSuccessDefault;
-
-  /// `semantics.feedback.success.foreground`: Icon/text color used inside success alerts and messages
-  Color get successForeground => _palette.statusSuccessDefault;
-
-  /// `semantics.feedback.warning.background.subtle`: Background fill for warning alerts, banners, and inline messages
-  Color get warningBackgroundSubtle => _palette.statusWarningFaint;
-
-  /// `semantics.feedback.warning.background.strong`: Background fill for warning alerts, banners, and inline messages
-  Color get warningBackgroundStrong => _palette.statusWarningDefault;
-
-  /// `semantics.feedback.warning.foreground`: Icon/text color used inside warning alerts and messages
-  Color get warningForeground => _palette.statusWarningDefault;
-
-  /// `semantics.feedback.error.background.subtle`: Background fill for error alerts, banners, and inline messages
-  Color get errorBackgroundSubtle => _palette.statusErrorFaint;
-
-  /// `semantics.feedback.error.background.strong`: Background fill for error alerts, banners, and inline messages
-  Color get errorBackgroundStrong => _palette.statusErrorDefault;
-
-  /// `semantics.feedback.error.foreground`: Icon/text color used inside error alerts and messages
-  Color get errorForeground => _palette.statusErrorDefault;
-
-  /// `semantics.feedback.info.background.subtle`: Background fill for informational alerts, banners, and inline messages
-  Color get infoBackgroundSubtle => _palette.statusInfoFaint;
-
-  /// `semantics.feedback.info.background.strong`: Background fill for informational alerts, banners, and inline messages
-  Color get infoBackgroundStrong => _palette.statusInfoDefault;
-
-  /// `semantics.feedback.info.foreground`: Icon/text color used inside informational alerts and messages
-  Color get infoForeground => _palette.statusInfoDefault;
-
-  /// `semantics.feedback.neutral.background.subtle`: Background fill for neutral (no-status) badges, labels and inline messages
-  Color get neutralBackgroundSubtle => _palette.statusNeutralFaint;
-
-  /// `semantics.feedback.neutral.background.strong`: Solid fill for high-emphasis neutral badges and labels
-  Color get neutralBackgroundStrong => _palette.statusNeutralDefault;
-
-  /// `semantics.feedback.neutral.foreground`: Icon/text color used inside neutral badges, labels and messages
-  Color get neutralForeground => _palette.inkMedium;
-}
-
-/// Semantic `focus` tokens.
-class ZetaFocusTokens {
-  const ZetaFocusTokens._(this._palette);
-
-  final ZetaPaletteTokens _palette;
-
-  /// `semantics.focus.ring`: Soft glow/ring drawn just outside the focus outline, reinforcing keyboard focus
-  Color get ring => _palette.lineFocus;
-
-  /// `semantics.focus.outline`: Solid outline drawn directly around an element on keyboard focus, for accessibility
-  Color get outline => _palette.lineFocus;
+  /// `semantics.border.warning`: Border color for elements flagged with a warning
+  Color get warning => _palette.statusWarningDefault;
 }
 
 /// Semantic `chart` tokens.
@@ -574,6 +55,24 @@ class ZetaChartTokens {
   const ZetaChartTokens._(this._palette);
 
   final ZetaPaletteTokens _palette;
+
+  /// `semantics.chart.axis`: Color for chart axis lines and axis tick labels
+  Color get axis => _palette.lineStrong;
+
+  /// `semantics.chart.grid`: Color for background gridlines that help read values across a chart
+  Color get grid => _palette.lineSubtle;
+
+  /// `semantics.chart.negative`: Color for data points/values trending down or declining
+  Color get negative => _palette.statusErrorDefault;
+
+  /// `semantics.chart.neutral`: Color for data points/values that are flat or unchanged
+  Color get neutral => _palette.dataNeutral;
+
+  /// `semantics.chart.positive`: Color for data points/values trending up or improving
+  Color get positive => _palette.statusSuccessDefault;
+
+  /// `semantics.chart.reference`: Color for a reference or target line overlaid on a chart, e.g. a goal or average
+  Color get reference => _palette.lineStronger;
 
   /// `semantics.chart.series.1`: 1st color in the categorical data-series palette, assigned in order across multiple series.
   Color get series1 => _palette.data1;
@@ -610,24 +109,467 @@ class ZetaChartTokens {
 
   /// `semantics.chart.series.12`: 12th data series color
   Color get series12 => _palette.data12;
+}
 
-  /// `semantics.chart.grid`: Color for background gridlines that help read values across a chart
-  Color get grid => _palette.lineSubtle;
+/// Semantic `feedback` tokens.
+class ZetaFeedbackTokens {
+  const ZetaFeedbackTokens._(this._palette);
 
-  /// `semantics.chart.axis`: Color for chart axis lines and axis tick labels
-  Color get axis => _palette.lineStrong;
+  final ZetaPaletteTokens _palette;
 
-  /// `semantics.chart.reference`: Color for a reference or target line overlaid on a chart, e.g. a goal or average
-  Color get reference => _palette.lineStronger;
+  /// `semantics.feedback.error.background.strong`: Background fill for error alerts, banners, and inline messages
+  Color get errorBackgroundStrong => _palette.statusErrorDefault;
 
-  /// `semantics.chart.positive`: Color for data points/values trending up or improving
-  Color get positive => _palette.statusSuccessDefault;
+  /// `semantics.feedback.error.background.subtle`: Background fill for error alerts, banners, and inline messages
+  Color get errorBackgroundSubtle => _palette.statusErrorFaint;
 
-  /// `semantics.chart.negative`: Color for data points/values trending down or declining
-  Color get negative => _palette.statusErrorDefault;
+  /// `semantics.feedback.error.foreground`: Icon/text color used inside error alerts and messages
+  Color get errorForeground => _palette.statusErrorDefault;
 
-  /// `semantics.chart.neutral`: Color for data points/values that are flat or unchanged
-  Color get neutral => _palette.dataNeutral;
+  /// `semantics.feedback.info.background.strong`: Background fill for informational alerts, banners, and inline messages
+  Color get infoBackgroundStrong => _palette.statusInfoDefault;
+
+  /// `semantics.feedback.info.background.subtle`: Background fill for informational alerts, banners, and inline messages
+  Color get infoBackgroundSubtle => _palette.statusInfoFaint;
+
+  /// `semantics.feedback.info.foreground`: Icon/text color used inside informational alerts and messages
+  Color get infoForeground => _palette.statusInfoDefault;
+
+  /// `semantics.feedback.neutral.background.strong`: Solid fill for high-emphasis neutral badges and labels
+  Color get neutralBackgroundStrong => _palette.statusNeutralDefault;
+
+  /// `semantics.feedback.neutral.background.subtle`: Background fill for neutral (no-status) badges, labels and inline messages
+  Color get neutralBackgroundSubtle => _palette.statusNeutralFaint;
+
+  /// `semantics.feedback.neutral.foreground`: Icon/text color used inside neutral badges, labels and messages
+  Color get neutralForeground => _palette.inkMedium;
+
+  /// `semantics.feedback.success.background.strong`: Background fill for success alerts, banners, and inline messages
+  Color get successBackgroundStrong => _palette.statusSuccessDefault;
+
+  /// `semantics.feedback.success.background.subtle`: Background fill for success alerts, banners, and inline messages
+  Color get successBackgroundSubtle => _palette.statusSuccessFaint;
+
+  /// `semantics.feedback.success.foreground`: Icon/text color used inside success alerts and messages
+  Color get successForeground => _palette.statusSuccessDefault;
+
+  /// `semantics.feedback.warning.background.strong`: Background fill for warning alerts, banners, and inline messages
+  Color get warningBackgroundStrong => _palette.statusWarningDefault;
+
+  /// `semantics.feedback.warning.background.subtle`: Background fill for warning alerts, banners, and inline messages
+  Color get warningBackgroundSubtle => _palette.statusWarningFaint;
+
+  /// `semantics.feedback.warning.foreground`: Icon/text color used inside warning alerts and messages
+  Color get warningForeground => _palette.statusWarningDefault;
+}
+
+/// Semantic `focus` tokens.
+class ZetaFocusTokens {
+  const ZetaFocusTokens._(this._palette);
+
+  final ZetaPaletteTokens _palette;
+
+  /// `semantics.focus.outline`: Solid outline drawn directly around an element on keyboard focus, for accessibility
+  Color get outline => _palette.lineFocus;
+
+  /// `semantics.focus.ring`: Soft glow/ring drawn just outside the focus outline, reinforcing keyboard focus
+  Color get ring => _palette.lineFocus;
+}
+
+/// Semantic `foreground` tokens.
+class ZetaForegroundTokens {
+  const ZetaForegroundTokens._(this._palette);
+
+  final ZetaPaletteTokens _palette;
+
+  /// `semantics.foreground.cursor`: Color of the blinking caret inside text inputs
+  Color get cursor => _palette.inkBrand;
+
+  /// `semantics.foreground.disabled`: Text/icon color for disabled, non-interactive elements
+  Color get disabled => _palette.inkDisabled;
+
+  /// `semantics.foreground.error`: Text/icon color that communicates an error, paired with feedback/error tokens
+  Color get error => _palette.statusErrorDefault;
+
+  /// `semantics.foreground.gradient.end`: Ending color stop for text/icons using a gradient treatment
+  Color get gradientEnd => _palette.gradientStrongEnd;
+
+  /// `semantics.foreground.gradient.start`: Starting color stop for text/icons using a gradient treatment
+  Color get gradientStart => _palette.gradientStrongStart;
+
+  /// `semantics.foreground.info`: Text/icon color that communicates neutral information
+  Color get info => _palette.statusInfoDefault;
+
+  /// `semantics.foreground.inverse`: Text/icon color for use on dark or inverse-colored surfaces
+  Color get inverse => _palette.inkInverse;
+
+  /// `semantics.foreground.link`: Color for hyperlinks and other clickable inline text
+  Color get link => _palette.inkLink;
+
+  /// `semantics.foreground.on-light`: Text/icon color on fills that stay light in every mode. Near-black in every mode.
+  Color get onLight => _palette.inkAlwaysBlank;
+
+  /// `semantics.foreground.on-strong`: Text/icon color on strong, saturated fills (feedback background/strong, selected controls). White in every mode.
+  Color get onStrong => _palette.inkAlwaysWhite;
+
+  /// `semantics.foreground.primary`: The default color for body text and primary icons, used as the highest-emphasis content color.
+  Color get primary => _palette.inkHigh;
+
+  /// `semantics.foreground.secondary`: Lower-emphasis text/icon color, e.g. captions or supporting copy
+  Color get secondary => _palette.inkMedium;
+
+  /// `semantics.foreground.success`: Text/icon color that communicates success
+  Color get success => _palette.statusSuccessDefault;
+
+  /// `semantics.foreground.tertiary`: Lowest-emphasis text/icon color, e.g. placeholders or metadata
+  Color get tertiary => _palette.inkLow;
+
+  /// `semantics.foreground.warning`: Text/icon color that communicates a warning
+  Color get warning => _palette.statusWarningDefault;
+}
+
+/// Semantic `interactive` tokens.
+class ZetaInteractiveTokens {
+  const ZetaInteractiveTokens._(this._palette);
+
+  final ZetaPaletteTokens _palette;
+
+  /// `semantics.interactive.destructive.background.default`: Default state for a destructive interactive element, signaling a harmful or irreversible action such as Delete.
+  Color get destructiveBackgroundDefault => _palette.statusErrorDefault;
+
+  /// `semantics.interactive.destructive.background.disabled`: Disabled state for a destructive interactive element.
+  Color get destructiveBackgroundDisabled => _palette.fillDisabled;
+
+  /// `semantics.interactive.destructive.background.focused`: Focused state for a destructive interactive element.
+  Color get destructiveBackgroundFocused => _palette.statusErrorDefault;
+
+  /// `semantics.interactive.destructive.background.hover`: Hover state for a destructive interactive element.
+  Color get destructiveBackgroundHover => _palette.statusErrorStrong;
+
+  /// `semantics.interactive.destructive.background.pressed`: Pressed state for a destructive interactive element.
+  Color get destructiveBackgroundPressed => _palette.statusErrorDeep;
+
+  /// `semantics.interactive.destructive.background.selected`: Selected state for a destructive interactive element.
+  Color get destructiveBackgroundSelected => _palette.statusErrorDeep;
+
+  /// `semantics.interactive.destructive.border.default`: Default-state border for a destructive interactive element.
+  Color get destructiveBorderDefault => _palette.statusErrorDefault;
+
+  /// `semantics.interactive.destructive.border.disabled`: Disabled-state border for a destructive interactive element.
+  Color get destructiveBorderDisabled => _palette.lineSubtle;
+
+  /// `semantics.interactive.destructive.border.hover`: Hover-state border for a destructive interactive element.
+  Color get destructiveBorderHover => _palette.statusErrorStrong;
+
+  /// `semantics.interactive.destructive.border.pressed`: Pressed-state border for a destructive interactive element.
+  Color get destructiveBorderPressed => _palette.statusErrorDeep;
+
+  /// `semantics.interactive.destructive.foreground.default`: Default-state text/icon color on a destructive interactive element&#39;s background.
+  Color get destructiveForegroundDefault => _palette.brandPrimaryOn;
+
+  /// `semantics.interactive.destructive.foreground.disabled`: Disabled-state text/icon color on a destructive interactive element&#39;s background.
+  Color get destructiveForegroundDisabled => _palette.inkDisabled;
+
+  /// `semantics.interactive.ghost.background.default`: Default state for a ghost interactive element, minimal in styling with no fill, for low-emphasis actions.
+  Color get ghostBackgroundDefault => _palette.statusGhostDefault;
+
+  /// `semantics.interactive.ghost.background.disabled`: Disabled state for a ghost interactive element.
+  Color get ghostBackgroundDisabled => _palette.statusGhostDefault;
+
+  /// `semantics.interactive.ghost.background.focused`: Focused state for a ghost interactive element.
+  Color get ghostBackgroundFocused => _palette.statusGhostDefault;
+
+  /// `semantics.interactive.ghost.background.hover`: Hover state for a ghost interactive element.
+  Color get ghostBackgroundHover => _palette.statusGhostFaint;
+
+  /// `semantics.interactive.ghost.background.pressed`: Pressed state for a ghost interactive element.
+  Color get ghostBackgroundPressed => _palette.statusGhostDeep;
+
+  /// `semantics.interactive.ghost.background.selected`: Selected state for a ghost interactive element.
+  Color get ghostBackgroundSelected => _palette.statusGhostTint;
+
+  /// `semantics.interactive.ghost.border.default`: Default-state border for a ghost interactive element.
+  Color get ghostBorderDefault => _palette.brandPrimaryDefault;
+
+  /// `semantics.interactive.ghost.border.disabled`: Disabled-state border for a ghost interactive element.
+  Color get ghostBorderDisabled => _palette.lineSubtle;
+
+  /// `semantics.interactive.ghost.border.hover`: Hover-state border for a ghost interactive element.
+  Color get ghostBorderHover => _palette.brandPrimarySubtle;
+
+  /// `semantics.interactive.ghost.border.pressed`: Pressed-state border for a ghost interactive element.
+  Color get ghostBorderPressed => _palette.brandPrimaryStrong;
+
+  /// `semantics.interactive.ghost.foreground.default`: Default-state text/icon color on a ghost interactive element&#39;s background.
+  Color get ghostForegroundDefault => _palette.inkBrand;
+
+  /// `semantics.interactive.ghost.foreground.disabled`: Disabled-state text/icon color on a ghost interactive element&#39;s background.
+  Color get ghostForegroundDisabled => _palette.inkDisabled;
+
+  /// `semantics.interactive.inverse.background.default`: Default state for an interactive element placed on a dark or inverse-colored surface.
+  Color get inverseBackgroundDefault => _palette.fillInverse;
+
+  /// `semantics.interactive.inverse.background.disabled`: Disabled state for an inverse-surface interactive element.
+  Color get inverseBackgroundDisabled => _palette.fillDisabled;
+
+  /// `semantics.interactive.inverse.background.focused`: Focused state for an inverse-surface interactive element.
+  Color get inverseBackgroundFocused => _palette.fillInverse;
+
+  /// `semantics.interactive.inverse.background.hover`: Hover state for an inverse-surface interactive element.
+  Color get inverseBackgroundHover => _palette.fillInverseSunken;
+
+  /// `semantics.interactive.inverse.background.pressed`: Pressed state for an inverse-surface interactive element.
+  Color get inverseBackgroundPressed => _palette.fillInverseElevated;
+
+  /// `semantics.interactive.inverse.background.selected`: Selected state for an inverse-surface interactive element.
+  Color get inverseBackgroundSelected => _palette.fillInverseElevated;
+
+  /// `semantics.interactive.inverse.border.default`: Default-state border for an inverse-surface interactive element.
+  Color get inverseBorderDefault => _palette.fillInverse;
+
+  /// `semantics.interactive.inverse.border.disabled`: Disabled-state border for an inverse-surface interactive element.
+  Color get inverseBorderDisabled => _palette.lineSubtle;
+
+  /// `semantics.interactive.inverse.border.hover`: Hover-state border for an inverse-surface interactive element.
+  Color get inverseBorderHover => _palette.fillInverseSunken;
+
+  /// `semantics.interactive.inverse.border.pressed`: Pressed-state border for an inverse-surface interactive element.
+  Color get inverseBorderPressed => _palette.fillInverseElevated;
+
+  /// `semantics.interactive.inverse.foreground.default`: Default-state text/icon color on an inverse-surface interactive element&#39;s background.
+  Color get inverseForegroundDefault => _palette.inkInverse;
+
+  /// `semantics.interactive.inverse.foreground.disabled`: Disabled-state text/icon color on an inverse-surface interactive element&#39;s background.
+  Color get inverseForegroundDisabled => _palette.inkDisabled;
+
+  /// `semantics.interactive.neutral.background.default`: Default state for a neutral, general-purpose interactive element with no semantic meaning.
+  Color get neutralBackgroundDefault => _palette.fillDefault;
+
+  /// `semantics.interactive.neutral.background.disabled`: Disabled state for a neutral interactive element.
+  Color get neutralBackgroundDisabled => _palette.fillDisabled;
+
+  /// `semantics.interactive.neutral.background.focused`: Focused state for a neutral interactive element.
+  Color get neutralBackgroundFocused => _palette.fillDefault;
+
+  /// `semantics.interactive.neutral.background.hover`: Hover state for a neutral interactive element.
+  Color get neutralBackgroundHover => _palette.fillCanvas;
+
+  /// `semantics.interactive.neutral.background.pressed`: Pressed state for a neutral interactive element.
+  Color get neutralBackgroundPressed => _palette.fillSunken;
+
+  /// `semantics.interactive.neutral.background.selected`: Selected state for a neutral interactive element.
+  Color get neutralBackgroundSelected => _palette.fillSunken;
+
+  /// `semantics.interactive.neutral.border.default`: Default-state border for a neutral interactive element.
+  Color get neutralBorderDefault => _palette.lineDefault;
+
+  /// `semantics.interactive.neutral.border.disabled`: Disabled-state border for a neutral interactive element.
+  Color get neutralBorderDisabled => _palette.lineSubtle;
+
+  /// `semantics.interactive.neutral.border.hover`: Hover-state border for a neutral interactive element.
+  Color get neutralBorderHover => _palette.lineStrong;
+
+  /// `semantics.interactive.neutral.border.pressed`: Pressed-state border for a neutral interactive element.
+  Color get neutralBorderPressed => _palette.lineStrong;
+
+  /// `semantics.interactive.neutral.foreground.default`: Default-state text/icon color on a neutral interactive element&#39;s background.
+  Color get neutralForegroundDefault => _palette.inkHigh;
+
+  /// `semantics.interactive.neutral.foreground.disabled`: Disabled-state text/icon color on a neutral interactive element&#39;s background.
+  Color get neutralForegroundDisabled => _palette.inkDisabled;
+
+  /// `semantics.interactive.positive.background.default`: Default state for a high-emphasis interactive element used for a positive confirmation action, such as Approve, Confirm, or Complete.
+  Color get positiveBackgroundDefault => _palette.statusSuccessDefault;
+
+  /// `semantics.interactive.positive.background.disabled`: Disabled state for a high-emphasis positive-confirmation interactive element.
+  Color get positiveBackgroundDisabled => _palette.fillDisabled;
+
+  /// `semantics.interactive.positive.background.focused`: Focused state for a high-emphasis positive-confirmation interactive element.
+  Color get positiveBackgroundFocused => _palette.statusSuccessDefault;
+
+  /// `semantics.interactive.positive.background.hover`: Hover state for a high-emphasis positive-confirmation interactive element.
+  Color get positiveBackgroundHover => _palette.statusSuccessStrong;
+
+  /// `semantics.interactive.positive.background.pressed`: Pressed state for a high-emphasis positive-confirmation interactive element.
+  Color get positiveBackgroundPressed => _palette.statusSuccessDeep;
+
+  /// `semantics.interactive.positive.background.selected`: Selected state for a high-emphasis positive-confirmation interactive element.
+  Color get positiveBackgroundSelected => _palette.statusSuccessDeep;
+
+  /// `semantics.interactive.positive.border.default`: Default-state border for a high-emphasis positive-confirmation interactive element.
+  Color get positiveBorderDefault => _palette.statusSuccessDefault;
+
+  /// `semantics.interactive.positive.border.disabled`: Disabled-state border for a high-emphasis positive-confirmation interactive element.
+  Color get positiveBorderDisabled => _palette.lineSubtle;
+
+  /// `semantics.interactive.positive.border.hover`: Hover-state border for a high-emphasis positive-confirmation interactive element.
+  Color get positiveBorderHover => _palette.statusSuccessStrong;
+
+  /// `semantics.interactive.positive.border.pressed`: Pressed-state border for a high-emphasis positive-confirmation interactive element.
+  Color get positiveBorderPressed => _palette.statusSuccessDeep;
+
+  /// `semantics.interactive.positive.foreground.default`: Default-state text/icon color on a high-emphasis positive-confirmation interactive element&#39;s background.
+  Color get positiveForegroundDefault => _palette.brandPrimaryOn;
+
+  /// `semantics.interactive.positive.foreground.disabled`: Disabled-state text/icon color on a high-emphasis positive-confirmation interactive element&#39;s background.
+  Color get positiveForegroundDisabled => _palette.inkDisabled;
+
+  /// `semantics.interactive.primary.background.default`: Default state for the primary interactive element, the main and highest-emphasis action or control on a screen.
+  Color get primaryBackgroundDefault => _palette.brandPrimaryDefault;
+
+  /// `semantics.interactive.primary.background.disabled`: Disabled state for the primary interactive element.
+  Color get primaryBackgroundDisabled => _palette.fillDisabled;
+
+  /// `semantics.interactive.primary.background.focused`: Focused state for the primary interactive element.
+  Color get primaryBackgroundFocused => _palette.brandPrimaryDefault;
+
+  /// `semantics.interactive.primary.background.hover`: Hover state for the primary interactive element.
+  Color get primaryBackgroundHover => _palette.brandPrimaryStrong;
+
+  /// `semantics.interactive.primary.background.pressed`: Pressed state for the primary interactive element.
+  Color get primaryBackgroundPressed => _palette.brandPrimaryDeep;
+
+  /// `semantics.interactive.primary.background.selected`: Selected state for the primary interactive element.
+  Color get primaryBackgroundSelected => _palette.brandPrimaryDeep;
+
+  /// `semantics.interactive.primary.border.default`: Default-state border for the primary interactive element.
+  Color get primaryBorderDefault => _palette.brandPrimaryDefault;
+
+  /// `semantics.interactive.primary.border.disabled`: Disabled-state border for the primary interactive element.
+  Color get primaryBorderDisabled => _palette.lineSubtle;
+
+  /// `semantics.interactive.primary.border.hover`: Hover-state border for the primary interactive element.
+  Color get primaryBorderHover => _palette.brandPrimaryStrong;
+
+  /// `semantics.interactive.primary.border.pressed`: Pressed-state border for the primary interactive element.
+  Color get primaryBorderPressed => _palette.brandPrimaryDeep;
+
+  /// `semantics.interactive.primary.foreground.default`: Default-state text/icon color on the primary interactive element&#39;s background.
+  Color get primaryForegroundDefault => _palette.brandPrimaryOn;
+
+  /// `semantics.interactive.primary.foreground.disabled`: Disabled-state text/icon color on the primary interactive element&#39;s background.
+  Color get primaryForegroundDisabled => _palette.inkDisabled;
+
+  /// `semantics.interactive.secondary.background.default`: Default state for a secondary interactive element, an alternative and less prominent action alongside primary.
+  Color get secondaryBackgroundDefault => _palette.brandSecondaryDefault;
+
+  /// `semantics.interactive.secondary.background.disabled`: Disabled state for a secondary interactive element.
+  Color get secondaryBackgroundDisabled => _palette.fillDisabled;
+
+  /// `semantics.interactive.secondary.background.focused`: Focused state for a secondary interactive element.
+  Color get secondaryBackgroundFocused => _palette.brandSecondaryDefault;
+
+  /// `semantics.interactive.secondary.background.hover`: Hover state for a secondary interactive element.
+  Color get secondaryBackgroundHover => _palette.brandSecondaryStrong;
+
+  /// `semantics.interactive.secondary.background.pressed`: Pressed state for a secondary interactive element.
+  Color get secondaryBackgroundPressed => _palette.brandSecondaryDeep;
+
+  /// `semantics.interactive.secondary.background.selected`: Selected state for a secondary interactive element.
+  Color get secondaryBackgroundSelected => _palette.brandSecondaryDeep;
+
+  /// `semantics.interactive.secondary.border.default`: Default-state border for a secondary interactive element.
+  Color get secondaryBorderDefault => _palette.brandSecondaryDefault;
+
+  /// `semantics.interactive.secondary.border.disabled`: Disabled-state border for a secondary interactive element.
+  Color get secondaryBorderDisabled => _palette.lineSubtle;
+
+  /// `semantics.interactive.secondary.border.hover`: Hover-state border for a secondary interactive element.
+  Color get secondaryBorderHover => _palette.brandSecondaryStrong;
+
+  /// `semantics.interactive.secondary.border.pressed`: Pressed-state border for a secondary interactive element.
+  Color get secondaryBorderPressed => _palette.brandSecondaryDeep;
+
+  /// `semantics.interactive.secondary.foreground.default`: Default-state text/icon color on a secondary interactive element&#39;s background.
+  Color get secondaryForegroundDefault => _palette.brandSecondaryOn;
+
+  /// `semantics.interactive.secondary.foreground.disabled`: Disabled-state text/icon color on a secondary interactive element&#39;s background.
+  Color get secondaryForegroundDisabled => _palette.inkDisabled;
+
+  /// `semantics.interactive.selection.background.default`: Default state for a neutral, general-purpose interactive element with no semantic meaning.
+  Color get selectionBackgroundDefault => _palette.inkLow;
+
+  /// `semantics.interactive.selection.background.disabled`: Disabled state for a neutral interactive element.
+  Color get selectionBackgroundDisabled => _palette.fillDisabled;
+
+  /// `semantics.interactive.selection.background.focused`: Focused state for a neutral interactive element.
+  Color get selectionBackgroundFocused => _palette.fillDefault;
+
+  /// `semantics.interactive.selection.background.hover`: Hover state for a neutral interactive element.
+  Color get selectionBackgroundHover => _palette.fillHover;
+
+  /// `semantics.interactive.selection.background.pressed`: Pressed state for a neutral interactive element.
+  Color get selectionBackgroundPressed => _palette.brandPrimaryDefault;
+
+  /// `semantics.interactive.selection.background.selected`: Selected state for a neutral interactive element.
+  Color get selectionBackgroundSelected => _palette.fillSunken;
+
+  /// `semantics.interactive.selection.border.default`: Default-state border for a neutral interactive element.
+  Color get selectionBorderDefault => _palette.lineStrong;
+
+  /// `semantics.interactive.selection.border.disabled`: Disabled-state border for a neutral interactive element.
+  Color get selectionBorderDisabled => _palette.lineSubtle;
+
+  /// `semantics.interactive.selection.border.hover`: Hover-state border for a neutral interactive element.
+  Color get selectionBorderHover => _palette.lineStronger;
+
+  /// `semantics.interactive.selection.border.pressed`: Pressed-state border for a neutral interactive element.
+  Color get selectionBorderPressed => _palette.lineSelection;
+
+  /// `semantics.interactive.selection.foreground.default`: Default-state text/icon color on a neutral interactive element&#39;s background.
+  Color get selectionForegroundDefault => _palette.inkHigh;
+
+  /// `semantics.interactive.selection.foreground.disabled`: Disabled-state text/icon color on a neutral interactive element&#39;s background.
+  Color get selectionForegroundDisabled => _palette.inkDisabled;
+
+  /// `semantics.interactive.subtle.background.default`: Default state for a subtle interactive element, quieter in emphasis than secondary.
+  Color get subtleBackgroundDefault => _palette.brandPrimaryFaint;
+
+  /// `semantics.interactive.subtle.background.disabled`: Disabled state for a subtle interactive element.
+  Color get subtleBackgroundDisabled => _palette.fillDisabled;
+
+  /// `semantics.interactive.subtle.background.focused`: Focused state for a subtle interactive element.
+  Color get subtleBackgroundFocused => _palette.brandPrimaryFaint;
+
+  /// `semantics.interactive.subtle.background.hover`: Hover state for a subtle interactive element.
+  Color get subtleBackgroundHover => _palette.brandPrimaryMuted;
+
+  /// `semantics.interactive.subtle.background.pressed`: Pressed state for a subtle interactive element.
+  Color get subtleBackgroundPressed => _palette.brandPrimarySubtle;
+
+  /// `semantics.interactive.subtle.background.selected`: Selected state for a subtle interactive element.
+  Color get subtleBackgroundSelected => _palette.brandPrimarySubtle;
+
+  /// `semantics.interactive.subtle.border.default`: Default-state border for a subtle interactive element.
+  Color get subtleBorderDefault => _palette.brandPrimaryDefault;
+
+  /// `semantics.interactive.subtle.border.disabled`: Disabled-state border for a subtle interactive element.
+  Color get subtleBorderDisabled => _palette.lineSubtle;
+
+  /// `semantics.interactive.subtle.border.hover`: Hover-state border for a subtle interactive element.
+  Color get subtleBorderHover => _palette.brandPrimarySubtle;
+
+  /// `semantics.interactive.subtle.border.pressed`: Pressed-state border for a subtle interactive element.
+  Color get subtleBorderPressed => _palette.brandPrimaryStrong;
+
+  /// `semantics.interactive.subtle.foreground.default`: Default-state text/icon color on a subtle interactive element&#39;s background.
+  Color get subtleForegroundDefault => _palette.inkLink;
+
+  /// `semantics.interactive.subtle.foreground.disabled`: Disabled-state text/icon color on a subtle interactive element&#39;s background.
+  Color get subtleForegroundDisabled => _palette.inkDisabled;
+}
+
+/// Semantic `overlay` tokens.
+class ZetaOverlayTokens {
+  const ZetaOverlayTokens._(this._palette);
+
+  final ZetaPaletteTokens _palette;
+
+  /// `semantics.overlay.modal`: Semi-transparent dimming layer behind a modal dialog, to focus attention on it
+  Color get modal => _palette.fillOverlay;
+
+  /// `semantics.overlay.scrim`: Semi-transparent dimming layer behind a drawer, sheet, or side panel
+  Color get scrim => _palette.fillScrim;
 }
 
 /// Semantic `selection` tokens.
@@ -644,4 +586,65 @@ class ZetaSelectionTokens {
 
   /// `semantics.selection.text`: Text color applied to selected or highlighted text
   Color get text => _palette.inkSelection;
+}
+
+/// Semantic `surface` tokens.
+class ZetaSurfaceTokens {
+  const ZetaSurfaceTokens._(this._palette);
+
+  final ZetaPaletteTokens _palette;
+
+  /// `semantics.surface.brand`: Brand-colored background, e.g. hero sections or marketing highlights
+  Color get brand => _palette.brandPrimaryFaint;
+
+  /// `semantics.surface.card`: Background of card components
+  Color get card => _palette.fillElevated;
+
+  /// `semantics.surface.dialog`: Background of dialog/modal windows
+  Color get dialog => _palette.fillOverlay;
+
+  /// `semantics.surface.error`: Background for containers communicating an error state
+  Color get error => _palette.statusErrorFaint;
+
+  /// `semantics.surface.gradient.end`: Ending color stop for surfaces using a gradient fill
+  Color get gradientEnd => _palette.gradientDefaultEnd;
+
+  /// `semantics.surface.gradient.start`: Starting color stop for surfaces using a gradient fill
+  Color get gradientStart => _palette.gradientDefaultStart;
+
+  /// `semantics.surface.info`: Background for containers communicating neutral information
+  Color get info => _palette.statusInfoFaint;
+
+  /// `semantics.surface.inverse`: Dark/inverse background for high-contrast sections
+  Color get inverse => _palette.fillInverse;
+
+  /// `semantics.surface.menu`: Background of dropdown and context menus
+  Color get menu => _palette.fillOverlay;
+
+  /// `semantics.surface.page`: Default background color of the page or app canvas
+  Color get page => _palette.fillCanvas;
+
+  /// `semantics.surface.popover`: Background of popovers and other floating panels
+  Color get popover => _palette.fillOverlay;
+
+  /// `semantics.surface.section`: Background for a section or panel that groups related content
+  Color get section => _palette.fillDefault;
+
+  /// `semantics.surface.sheet`: Background of bottom sheets and side drawers
+  Color get sheet => _palette.fillOverlay;
+
+  /// `semantics.surface.subtle`: Background for containers communicating neutral information
+  Color get subtle => _palette.fillSunken;
+
+  /// `semantics.surface.success`: Background for containers communicating a success state
+  Color get success => _palette.statusSuccessFaint;
+
+  /// `semantics.surface.tooltip`: Background of tooltips
+  Color get tooltip => _palette.fillInverse;
+
+  /// `semantics.surface.track`: Background for containers communicating neutral information
+  Color get track => _palette.fillSunken;
+
+  /// `semantics.surface.warning`: Background for containers communicating a warning state
+  Color get warning => _palette.statusWarningFaint;
 }

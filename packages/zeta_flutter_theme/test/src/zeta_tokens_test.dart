@@ -7,13 +7,17 @@ import 'zeta_provider_test.mocks.dart';
 
 void main() {
   group('ZetaTokens.resolve', () {
-    test('aaa uses the light palette until Figma has the mode, and reports light brightness', () {
+    test('aaa modes have their own palettes and report the right brightness', () {
       final light = ZetaTokens.resolve();
-      final aaa = ZetaTokens.resolve(colorMode: ZetaColorMode.aaa);
-      expect(aaa.surface.page, light.surface.page);
-      expect(aaa.interactive.primaryBackgroundDefault, light.interactive.primaryBackgroundDefault);
-      expect(aaa.brightness, Brightness.light);
-      expect(ZetaTokens.resolve(colorMode: ZetaColorMode.dark).brightness, Brightness.dark);
+      final dark = ZetaTokens.resolve(colorMode: ZetaColorMode.dark);
+      final aaaLight = ZetaTokens.resolve(colorMode: ZetaColorMode.aaaLight);
+      final aaaDark = ZetaTokens.resolve(colorMode: ZetaColorMode.aaaDark);
+      expect(aaaLight.interactive.primaryBackgroundDefault, isNot(light.interactive.primaryBackgroundDefault));
+      expect(aaaDark.interactive.primaryBackgroundDefault, isNot(dark.interactive.primaryBackgroundDefault));
+      expect(light.brightness, Brightness.light);
+      expect(dark.brightness, Brightness.dark);
+      expect(aaaLight.brightness, Brightness.light);
+      expect(aaaDark.brightness, Brightness.dark);
     });
 
     test('dark mode changes palette-backed semantics', () {
@@ -79,11 +83,15 @@ void main() {
 
     test('follow the theme mode unless a color mode is set', () {
       expect(zeta(themeMode: ThemeMode.dark).tokens.colorMode, ZetaColorMode.dark);
-      expect(zeta(themeMode: ThemeMode.dark, colorMode: ZetaColorMode.aaa).tokens.colorMode, ZetaColorMode.aaa);
+      final aaa = zeta(themeMode: ThemeMode.dark, colorMode: ZetaColorMode.aaaLight);
+      expect(aaa.tokens.colorMode, ZetaColorMode.aaaLight);
     });
 
-    test('are not affected by the legacy contrast', () {
-      expect(zeta(contrast: ZetaContrast.aaa).tokens, zeta().tokens);
+    test('legacy contrast aaa selects the aaa color modes', () {
+      expect(zeta(contrast: ZetaContrast.aaa).tokens.colorMode, ZetaColorMode.aaaLight);
+      expect(zeta(contrast: ZetaContrast.aaa, themeMode: ThemeMode.dark).tokens.colorMode, ZetaColorMode.aaaDark);
+      // An explicit color mode still wins.
+      expect(zeta(contrast: ZetaContrast.aaa, colorMode: ZetaColorMode.light).tokens.colorMode, ZetaColorMode.light);
     });
 
     test('legacy rounded stays true when the tokens follow size.shape', () {
