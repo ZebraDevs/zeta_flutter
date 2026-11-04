@@ -98,11 +98,11 @@ The bar across the top of an application, carrying the product’s identity at t
 | Direction | Row | Leading group, middle band and account group on one line, space/gutter apart, with space/sm padding on every side of the bar. |
 | Leading group | Hug | space/gutter between the menu button, the brand mark and the product name. |
 | Middle band | Fill | Takes the width the two end groups leave, spaces its children space/sm apart, and packs them to its trailing edge. |
-| Navigation region | Fill | Takes the width spare inside the middle band, with space/2xs between its controls. |
-| Action region | Hug | Hugs its controls with space/2xs between them, which is why it never takes width from search. |
+| Navigation region | Fill | Takes the width spare inside the middle band, with space/3xs between its controls. |
+| Action region | Hug | Hugs its controls with space/3xs between them, which is why it never takes width from search. |
 | Search | Set to medium | Its shape follows Rounded and its size is held at medium. The header gives it a maximum 280 in the middle band, so it does not stretch with the bar. |
 | Account group | Hug | space/gutter between the account control and the app switcher. |
-| Controls | Set per variant | The icon buttons are set to medium and subtle. The account control is control/md tall and hugs its width, padded space/xxs and space/sm with space/xxs between its parts. |
+| Controls | Set per variant | The icon buttons are set to medium and subtle. The account control is control/md tall and hugs its width, padded space/2xs and space/sm with space/2xs between its parts. |
 | Radius | Per Rounded | radius/none throughout when false. When true the bar takes radius/element-sm and every nested control is set to its rounded shape, while the account control takes radius/sm. |
 | Surface | Tokenised | surface/section on the bar. The icon buttons are set to the subtle flavour, and the account control carries the neutral interactive backgrounds. |
 | Text | Tokenised | The product name is title/medium in foreground/primary. The username is label/small, dropping to interactive/ghost/foreground/disabled when the account control is disabled. |
@@ -146,10 +146,10 @@ The bar across the top of an application, carrying the product’s identity at t
 | Global Header/Header-Left/Icon Button | stroke[0] | #545963 | interactive.neutral.border.default |
 | Global Header/Header-Left/Icon Button | cornerRadius | 0 | radius.none |
 | Global Header/Header-Left/Icon Button | strokeWeight | 0 | stroke.base |
-| Global Header/Header-Left/Icon Button | padding.left | 4 | space.xxs |
-| Global Header/Header-Left/Icon Button | padding.right | 4 | space.xxs |
-| Global Header/Header-Left/Icon Button | padding.top | 4 | space.xxs |
-| Global Header/Header-Left/Icon Button | padding.bottom | 4 | space.xxs |
+| Global Header/Header-Left/Icon Button | padding.left | 4 | space.2xs |
+| Global Header/Header-Left/Icon Button | padding.right | 4 | space.2xs |
+| Global Header/Header-Left/Icon Button | padding.top | 4 | space.2xs |
+| Global Header/Header-Left/Icon Button | padding.bottom | 4 | space.2xs |
 | Global Header/Header-Left/Platform Name | fill[0] | #ffffff | foreground.primary |
 | Global Header/Header-Left/Platform Name | fontSize | 16 | title.medium.font size |
 | Global Header/Header-Left/Platform Name | lineHeight | 20 | title.medium.line height |
@@ -157,10 +157,10 @@ The bar across the top of an application, carrying the product’s identity at t
 | Global Header/Divider[1] | width | 1 | stroke.thin |
 | Global Header/Divider[1] | cornerRadius | 0 | radius.none |
 | Global Header/Header-Middle | itemSpacing | 8 | space.sm |
-| Global Header/Header-Middle/Slot-Menu-Items | itemSpacing | 2 | space.2xs |
+| Global Header/Header-Middle/Slot-Menu-Items | itemSpacing | 2 | space.3xs |
 | Global Header/Header-Middle/Search | height | 40 | — |
-| Global Header/Header-Middle/Search | fill[0] | #ffffff | — |
-| Global Header/Header-Middle/Search | stroke[0] | #ced2db | — |
+| Global Header/Header-Middle/Search | fill[0] | #0c0d0e | — |
+| Global Header/Header-Middle/Search | stroke[0] | #545963 | — |
 | Global Header/Header-Middle/Search | cornerRadius | 0 | — |
 | Global Header/Header-Middle/Search | strokeWeight | 1 | — |
 | Global Header/Header-Middle/Search | itemSpacing | 4 | — |
@@ -168,7 +168,7 @@ The bar across the top of an application, carrying the product’s identity at t
 | Global Header/Header-Middle/Search | padding.right | 12 | — |
 | Global Header/Header-Middle/Search | padding.top | 8 | — |
 | Global Header/Header-Middle/Search | padding.bottom | 8 | — |
-| Global Header/Header-Middle/Slot-Menu-Actions | itemSpacing | 2 | space.2xs |
+| Global Header/Header-Middle/Slot-Menu-Actions | itemSpacing | 2 | space.3xs |
 | Global Header/Divider[2] | width | 1 | stroke.thin |
 | Global Header/Divider[2] | cornerRadius | 0 | radius.none |
 | Global Header/Header-Right | itemSpacing | 16 | space.gutter |
@@ -178,10 +178,10 @@ The bar across the top of an application, carrying the product’s identity at t
 | Global Header/Header-Right/Icon Button | stroke[0] | #545963 | interactive.neutral.border.default |
 | Global Header/Header-Right/Icon Button | cornerRadius | 0 | radius.none |
 | Global Header/Header-Right/Icon Button | strokeWeight | 0 | stroke.base |
-| Global Header/Header-Right/Icon Button | padding.left | 4 | space.xxs |
-| Global Header/Header-Right/Icon Button | padding.right | 4 | space.xxs |
-| Global Header/Header-Right/Icon Button | padding.top | 4 | space.xxs |
-| Global Header/Header-Right/Icon Button | padding.bottom | 4 | space.xxs |
+| Global Header/Header-Right/Icon Button | padding.left | 4 | space.2xs |
+| Global Header/Header-Right/Icon Button | padding.right | 4 | space.2xs |
+| Global Header/Header-Right/Icon Button | padding.top | 4 | space.2xs |
+| Global Header/Header-Right/Icon Button | padding.bottom | 4 | space.2xs |
 
 ### Token changes by property
 
@@ -212,11 +212,11 @@ Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-Sys
 | _User Profile | stroke[0] | #ced2db | interactive.neutral.border.default |
 | _User Profile | cornerRadius | 0 | radius.none |
 | _User Profile | strokeWeight | 0 | stroke.base |
-| _User Profile | itemSpacing | 4 | space.xxs |
+| _User Profile | itemSpacing | 4 | space.2xs |
 | _User Profile | padding.left | 8 | space.sm |
 | _User Profile | padding.right | 8 | space.sm |
-| _User Profile | padding.top | 4 | space.xxs |
-| _User Profile | padding.bottom | 4 | space.xxs |
+| _User Profile | padding.top | 4 | space.2xs |
+| _User Profile | padding.bottom | 4 | space.2xs |
 | _User Profile/Username | fill[0] | #0c0d0e | foreground.primary |
 | _User Profile/Username | fontSize | 12 | label.small.font size |
 | _User Profile/Username | lineHeight | 16 | label.small.line height |

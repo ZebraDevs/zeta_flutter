@@ -127,7 +127,7 @@ A single entry in a notification list, carrying who or what it came from, a titl
 | Notification Item/Leading Visual | height | 36 | control.sm |
 | Notification Item/Leading Visual | cornerRadius | 9999 | radius.pill |
 | Notification Item/Content | itemSpacing | 8 | space.sm |
-| Notification Item/Content/Message | itemSpacing | 4 | space.xxs |
+| Notification Item/Content/Message | itemSpacing | 4 | space.2xs |
 | Notification Item/Content/Message/Header | itemSpacing | 8 | space.sm |
 | Notification Item/Content/Message/Header/Frame 1 | itemSpacing | 10 | — |
 | Notification Item/Content/Message/Header/Frame 1 | padding.top | 8 | space.sm |
@@ -136,14 +136,14 @@ A single entry in a notification list, carrying who or what it came from, a titl
 | Notification Item/Content/Message/Header/Frame 1/Notification Indicator | stroke[0] | #ffffff | border.inverse |
 | Notification Item/Content/Message/Header/Frame 1/Notification Indicator | cornerRadius | 9999 | radius.pill |
 | Notification Item/Content/Message/Header/Frame 1/Notification Indicator | strokeWeight | 0 | stroke.base |
-| Notification Item/Content/Message/Header/Frame 1/Notification Indicator | itemSpacing | 4 | space.xxs |
+| Notification Item/Content/Message/Header/Frame 1/Notification Indicator | itemSpacing | 4 | space.2xs |
 | Notification Item/Content/Message/Header/Title | fill[0] | #0c0d0e | foreground.primary |
 | Notification Item/Content/Message/Header/Title | fontSize | 16 | label.large.font size |
 | Notification Item/Content/Message/Header/Title | lineHeight | 24 | label.large.line height |
 | Notification Item/Content/Message/Header/Title | letterSpacing | 0 | label.large.letter spacing |
-| Notification Item/Content/Message/Header/Metadata | itemSpacing | 4 | space.xxs |
-| Notification Item/Content/Message/Header/Metadata | padding.top | 2 | space.2xs |
-| Notification Item/Content/Message/Header/Metadata | padding.bottom | 2 | space.2xs |
+| Notification Item/Content/Message/Header/Metadata | itemSpacing | 4 | space.2xs |
+| Notification Item/Content/Message/Header/Metadata | padding.top | 2 | space.3xs |
+| Notification Item/Content/Message/Header/Metadata | padding.bottom | 2 | space.3xs |
 | Notification Item/Content/Message/Header/Metadata/Timestamp | fill[0] | #7a8190 | foreground.tertiary |
 | Notification Item/Content/Message/Header/Metadata/Timestamp | fontSize | 12 | label.small.font size |
 | Notification Item/Content/Message/Header/Metadata/Timestamp | lineHeight | 16 | label.small.line height |
@@ -156,13 +156,13 @@ A single entry in a notification list, carrying who or what it came from, a titl
 | Notification Item/Content/Message/Body | fontSize | 14 | body.small.font size |
 | Notification Item/Content/Message/Body | lineHeight | 18 | body.small.line height |
 | Notification Item/Content/Message/Body | letterSpacing | 0 | body.small.letter spacing |
-| Notification Item/Content/Attachment | itemSpacing | 4 | space.xxs |
-| Notification Item/Content/Attachment/Attachment Icon | itemSpacing | 4 | space.xxs |
+| Notification Item/Content/Attachment | itemSpacing | 4 | space.2xs |
+| Notification Item/Content/Attachment/Attachment Icon | itemSpacing | 4 | space.2xs |
 | Notification Item/Content/Attachment/Attachment Filename | fill[0] | #1f69ff | foreground.link |
 | Notification Item/Content/Attachment/Attachment Filename | fontSize | 12 | label.small.font size |
 | Notification Item/Content/Attachment/Attachment Filename | lineHeight | 16 | label.small.line height |
 | Notification Item/Content/Attachment/Attachment Filename | letterSpacing | 0 | label.small.letter spacing |
-| Notification Item/Content/Action Slots | itemSpacing | 4 | space.xxs |
+| Notification Item/Content/Action Slots | itemSpacing | 4 | space.2xs |
 | Notification Item/Group Indicator | fill[0] | #3886ff | border.focus |
 
 ### Token changes by property

@@ -28,10 +28,10 @@ Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-Sys
 | Filter Selection/Filter Button | stroke[0] | #ced2db | interactive.neutral.border.default |
 | Filter Selection/Filter Button | cornerRadius | 4 | radius.element-sm |
 | Filter Selection/Filter Button | strokeWeight | 0 | stroke.base |
-| Filter Selection/Filter Button | padding.left | 4 | space.xxs |
-| Filter Selection/Filter Button | padding.right | 4 | space.xxs |
-| Filter Selection/Filter Button | padding.top | 4 | space.xxs |
-| Filter Selection/Filter Button | padding.bottom | 4 | space.xxs |
+| Filter Selection/Filter Button | padding.left | 4 | space.2xs |
+| Filter Selection/Filter Button | padding.right | 4 | space.2xs |
+| Filter Selection/Filter Button | padding.top | 4 | space.2xs |
+| Filter Selection/Filter Button | padding.bottom | 4 | space.2xs |
 | Filter Selection/Chip Row | itemSpacing | 8 | space.sm |
 | Filter Selection/Chip Row/Filter Chip[1] | fill[0] | #0c0d0e | interactive.inverse.background.selected |
 | Filter Selection/Chip Row/Filter Chip[1] | stroke[0] | #0c0d0e | interactive.inverse.border.pressed |
@@ -40,13 +40,13 @@ Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-Sys
 | Filter Selection/Chip Row/Filter Chip[1] | itemSpacing | 8 | space.sm |
 | Filter Selection/Chip Row/Filter Chip[1] | padding.left | 12 | space.md |
 | Filter Selection/Chip Row/Filter Chip[1] | padding.right | 12 | space.md |
-| Filter Selection/Chip Row/Filter Chip[1] | padding.top | 4 | space.xxs |
-| Filter Selection/Chip Row/Filter Chip[1] | padding.bottom | 4 | space.xxs |
+| Filter Selection/Chip Row/Filter Chip[1] | padding.top | 4 | space.2xs |
+| Filter Selection/Chip Row/Filter Chip[1] | padding.bottom | 4 | space.2xs |
 | Filter Selection/Chip Row/Filter Chip[2] | fill[0] | #ffffff | interactive.neutral.background.default |
 | Filter Selection/Chip Row/Filter Chip[2] | stroke[0] | #ced2db | interactive.neutral.border.default |
 | Filter Selection/Chip Row/Filter Chip[2] | cornerRadius | 9999 | radius.pill |
 | Filter Selection/Chip Row/Filter Chip[2] | strokeWeight | 1 | stroke.thin |
-| Filter Selection/Chip Row/Filter Chip[2] | itemSpacing | 4 | space.xxs |
+| Filter Selection/Chip Row/Filter Chip[2] | itemSpacing | 4 | space.2xs |
 | Filter Selection/Chip Row/Filter Chip[2] | padding.left | 12 | space.md |
 | Filter Selection/Chip Row/Filter Chip[2] | padding.right | 12 | space.md |
 | Filter Selection/Chip Row/Filter Chip[2] | padding.top | 8 | space.sm |
@@ -55,7 +55,7 @@ Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-Sys
 | Filter Selection/Chip Row/Filter Chip[3] | stroke[0] | #ced2db | interactive.neutral.border.default |
 | Filter Selection/Chip Row/Filter Chip[3] | cornerRadius | 9999 | radius.pill |
 | Filter Selection/Chip Row/Filter Chip[3] | strokeWeight | 1 | stroke.thin |
-| Filter Selection/Chip Row/Filter Chip[3] | itemSpacing | 4 | space.xxs |
+| Filter Selection/Chip Row/Filter Chip[3] | itemSpacing | 4 | space.2xs |
 | Filter Selection/Chip Row/Filter Chip[3] | padding.left | 12 | space.md |
 | Filter Selection/Chip Row/Filter Chip[3] | padding.right | 12 | space.md |
 | Filter Selection/Chip Row/Filter Chip[3] | padding.top | 8 | space.sm |
@@ -64,7 +64,7 @@ Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-Sys
 | Filter Selection/Chip Row/Filter Chip[4] | stroke[0] | #ced2db | interactive.neutral.border.default |
 | Filter Selection/Chip Row/Filter Chip[4] | cornerRadius | 9999 | radius.pill |
 | Filter Selection/Chip Row/Filter Chip[4] | strokeWeight | 1 | stroke.thin |
-| Filter Selection/Chip Row/Filter Chip[4] | itemSpacing | 4 | space.xxs |
+| Filter Selection/Chip Row/Filter Chip[4] | itemSpacing | 4 | space.2xs |
 | Filter Selection/Chip Row/Filter Chip[4] | padding.left | 12 | space.md |
 | Filter Selection/Chip Row/Filter Chip[4] | padding.right | 12 | space.md |
 | Filter Selection/Chip Row/Filter Chip[4] | padding.top | 8 | space.sm |
@@ -73,7 +73,7 @@ Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-Sys
 | Filter Selection/Chip Row/Filter Chip[5] | stroke[0] | #ced2db | interactive.neutral.border.default |
 | Filter Selection/Chip Row/Filter Chip[5] | cornerRadius | 9999 | radius.pill |
 | Filter Selection/Chip Row/Filter Chip[5] | strokeWeight | 1 | stroke.thin |
-| Filter Selection/Chip Row/Filter Chip[5] | itemSpacing | 4 | space.xxs |
+| Filter Selection/Chip Row/Filter Chip[5] | itemSpacing | 4 | space.2xs |
 | Filter Selection/Chip Row/Filter Chip[5] | padding.left | 12 | space.md |
 | Filter Selection/Chip Row/Filter Chip[5] | padding.right | 12 | space.md |
 | Filter Selection/Chip Row/Filter Chip[5] | padding.top | 8 | space.sm |

@@ -142,44 +142,44 @@ A vertical navigation column for the edge of a desktop view, made of a narrow ic
 | Navigation Rail/Main Rail/Icon Button | stroke[0] | #1f69ff | interactive.primary.border.default |
 | Navigation Rail/Main Rail/Icon Button | cornerRadius | 4 | radius.element-sm |
 | Navigation Rail/Main Rail/Icon Button | strokeWeight | 0 | stroke.base |
-| Navigation Rail/Main Rail/Icon Button | padding.left | 4 | space.xxs |
-| Navigation Rail/Main Rail/Icon Button | padding.right | 4 | space.xxs |
-| Navigation Rail/Main Rail/Icon Button | padding.top | 4 | space.xxs |
-| Navigation Rail/Main Rail/Icon Button | padding.bottom | 4 | space.xxs |
-| Navigation Rail/Main Rail/Menu List | itemSpacing | 4 | space.xxs |
+| Navigation Rail/Main Rail/Icon Button | padding.left | 4 | space.2xs |
+| Navigation Rail/Main Rail/Icon Button | padding.right | 4 | space.2xs |
+| Navigation Rail/Main Rail/Icon Button | padding.top | 4 | space.2xs |
+| Navigation Rail/Main Rail/Icon Button | padding.bottom | 4 | space.2xs |
+| Navigation Rail/Main Rail/Menu List | itemSpacing | 4 | space.2xs |
 | Navigation Rail/Main Rail/Menu List/Rail Item 1 | fill[0] | #d6dce200 | interactive.ghost.background.default |
 | Navigation Rail/Main Rail/Menu List/Rail Item 1 | cornerRadius | 4 | radius.element-sm |
-| Navigation Rail/Main Rail/Menu List/Rail Item 1 | padding.left | 4 | space.xxs |
-| Navigation Rail/Main Rail/Menu List/Rail Item 1 | padding.right | 4 | space.xxs |
+| Navigation Rail/Main Rail/Menu List/Rail Item 1 | padding.left | 4 | space.2xs |
+| Navigation Rail/Main Rail/Menu List/Rail Item 1 | padding.right | 4 | space.2xs |
 | Navigation Rail/Main Rail/Menu List/Rail Item 1 | padding.top | 8 | space.sm |
 | Navigation Rail/Main Rail/Menu List/Rail Item 1 | padding.bottom | 8 | space.sm |
 | Navigation Rail/Main Rail/Menu List/Rail Item 2 | fill[0] | #d6dce200 | interactive.ghost.background.default |
 | Navigation Rail/Main Rail/Menu List/Rail Item 2 | cornerRadius | 4 | radius.element-sm |
-| Navigation Rail/Main Rail/Menu List/Rail Item 2 | padding.left | 4 | space.xxs |
-| Navigation Rail/Main Rail/Menu List/Rail Item 2 | padding.right | 4 | space.xxs |
+| Navigation Rail/Main Rail/Menu List/Rail Item 2 | padding.left | 4 | space.2xs |
+| Navigation Rail/Main Rail/Menu List/Rail Item 2 | padding.right | 4 | space.2xs |
 | Navigation Rail/Main Rail/Menu List/Rail Item 2 | padding.top | 8 | space.sm |
 | Navigation Rail/Main Rail/Menu List/Rail Item 2 | padding.bottom | 8 | space.sm |
 | Navigation Rail/Main Rail/Menu List/Rail Item 3 | fill[0] | #d6dce200 | interactive.ghost.background.default |
 | Navigation Rail/Main Rail/Menu List/Rail Item 3 | cornerRadius | 4 | radius.element-sm |
-| Navigation Rail/Main Rail/Menu List/Rail Item 3 | padding.left | 4 | space.xxs |
-| Navigation Rail/Main Rail/Menu List/Rail Item 3 | padding.right | 4 | space.xxs |
+| Navigation Rail/Main Rail/Menu List/Rail Item 3 | padding.left | 4 | space.2xs |
+| Navigation Rail/Main Rail/Menu List/Rail Item 3 | padding.right | 4 | space.2xs |
 | Navigation Rail/Main Rail/Menu List/Rail Item 3 | padding.top | 8 | space.sm |
 | Navigation Rail/Main Rail/Menu List/Rail Item 3 | padding.bottom | 8 | space.sm |
-| Navigation Rail/Main Rail/Menu List/Menu Slot | itemSpacing | 4 | space.xxs |
-| Navigation Rail/Main Rail/Menu List/Menu Slot | padding.left | 4 | space.xxs |
-| Navigation Rail/Main Rail/Menu List/Menu Slot | padding.right | 4 | space.xxs |
-| Navigation Rail/Main Rail/Footer | itemSpacing | 4 | space.xxs |
-| Navigation Rail/Main Rail/Footer/Footer Slot | itemSpacing | 4 | space.xxs |
+| Navigation Rail/Main Rail/Menu List/Menu Slot | itemSpacing | 4 | space.2xs |
+| Navigation Rail/Main Rail/Menu List/Menu Slot | padding.left | 4 | space.2xs |
+| Navigation Rail/Main Rail/Menu List/Menu Slot | padding.right | 4 | space.2xs |
+| Navigation Rail/Main Rail/Footer | itemSpacing | 4 | space.2xs |
+| Navigation Rail/Main Rail/Footer/Footer Slot | itemSpacing | 4 | space.2xs |
 | Navigation Rail/Main Rail/Footer/Footer Rail Item | fill[0] | #d6dce200 | interactive.ghost.background.default |
 | Navigation Rail/Main Rail/Footer/Footer Rail Item | cornerRadius | 4 | radius.element-sm |
-| Navigation Rail/Main Rail/Footer/Footer Rail Item | padding.left | 4 | space.xxs |
-| Navigation Rail/Main Rail/Footer/Footer Rail Item | padding.right | 4 | space.xxs |
+| Navigation Rail/Main Rail/Footer/Footer Rail Item | padding.left | 4 | space.2xs |
+| Navigation Rail/Main Rail/Footer/Footer Rail Item | padding.right | 4 | space.2xs |
 | Navigation Rail/Main Rail/Footer/Footer Rail Item | padding.top | 8 | space.sm |
 | Navigation Rail/Main Rail/Footer/Footer Rail Item | padding.bottom | 8 | space.sm |
 | Navigation Rail/Main Rail/Footer/Navigation Rail Item | fill[0] | #d6dce200 | interactive.ghost.background.default |
 | Navigation Rail/Main Rail/Footer/Navigation Rail Item | cornerRadius | 4 | radius.element-sm |
-| Navigation Rail/Main Rail/Footer/Navigation Rail Item | padding.left | 4 | space.xxs |
-| Navigation Rail/Main Rail/Footer/Navigation Rail Item | padding.right | 4 | space.xxs |
+| Navigation Rail/Main Rail/Footer/Navigation Rail Item | padding.left | 4 | space.2xs |
+| Navigation Rail/Main Rail/Footer/Navigation Rail Item | padding.right | 4 | space.2xs |
 | Navigation Rail/Main Rail/Footer/Navigation Rail Item | padding.top | 8 | space.sm |
 | Navigation Rail/Main Rail/Footer/Navigation Rail Item | padding.bottom | 8 | space.sm |
 | Navigation Rail/Sub menu | stroke[0] | #545963 | border.default |
@@ -189,7 +189,7 @@ A vertical navigation column for the edge of a desktop view, made of a narrow ic
 | Navigation Rail/Sub menu/Sub Menu Header | itemSpacing | 10 | — |
 | Navigation Rail/Sub menu/Sub Menu Header | padding.left | 16 | space.lg |
 | Navigation Rail/Sub menu/Sub Menu Header | padding.right | 16 | space.lg |
-| Navigation Rail/Sub menu/Sub Menu Slot | itemSpacing | 4 | space.xxs |
+| Navigation Rail/Sub menu/Sub Menu Slot | itemSpacing | 4 | space.2xs |
 | Navigation Rail/Sub menu/Sub Menu Slot | padding.left | 8 | space.sm |
 | Navigation Rail/Sub menu/Sub Menu Slot | padding.right | 8 | space.sm |
 | Navigation Rail/Sub menu/Sub Menu Slot | padding.top | 8 | space.sm |
@@ -218,8 +218,6 @@ A vertical navigation column for the edge of a desktop view, made of a narrow ic
 | Expanded | true | Navigation Rail/Main Rail/Menu List/Rail Item 3 | padding.left | space.lg |
 | Expanded | true | Navigation Rail/Main Rail/Menu List/Rail Item 3 | padding.right | space.lg |
 | Expanded | true | Navigation Rail/Main Rail/Menu List/Rail Item 3 | itemSpacing | space.lg |
-| Expanded | true | Navigation Rail/Main Rail/Menu List/Menu Slot | padding.left | — |
-| Expanded | true | Navigation Rail/Main Rail/Menu List/Menu Slot | padding.right | — |
 | Expanded | true | Navigation Rail/Main Rail/Footer/Footer Rail Item | padding.left | space.lg |
 | Expanded | true | Navigation Rail/Main Rail/Footer/Footer Rail Item | padding.right | space.lg |
 | Expanded | true | Navigation Rail/Main Rail/Footer/Footer Rail Item | itemSpacing | space.lg |
@@ -233,8 +231,8 @@ A vertical navigation column for the edge of a desktop view, made of a narrow ic
 | Expanded | true | Navigation Rail/Main Rail/Button | strokeWeight | stroke.base |
 | Expanded | true | Navigation Rail/Main Rail/Button | padding.left | space.lg |
 | Expanded | true | Navigation Rail/Main Rail/Button | padding.right | space.lg |
-| Expanded | true | Navigation Rail/Main Rail/Button | padding.top | space.xxs |
-| Expanded | true | Navigation Rail/Main Rail/Button | padding.bottom | space.xxs |
+| Expanded | true | Navigation Rail/Main Rail/Button | padding.top | space.2xs |
+| Expanded | true | Navigation Rail/Main Rail/Button | padding.bottom | space.2xs |
 
 ## Navigation Rail Item
 
@@ -344,8 +342,8 @@ A single destination in a Navigation Rail, shown as a glyph in a square target o
 | --- | --- | --- | --- |
 | Navigation Rail Item | fill[0] | #0c0d0e00 | interactive.ghost.background.default |
 | Navigation Rail Item | cornerRadius | 4 | radius.sm |
-| Navigation Rail Item | padding.left | 4 | space.xxs |
-| Navigation Rail Item | padding.right | 4 | space.xxs |
+| Navigation Rail Item | padding.left | 4 | space.2xs |
+| Navigation Rail Item | padding.right | 4 | space.2xs |
 | Navigation Rail Item | padding.top | 8 | space.sm |
 | Navigation Rail Item | padding.bottom | 8 | space.sm |
 | Navigation Rail Item/Indicator | itemSpacing | 10 | — |
@@ -495,8 +493,8 @@ A row in the Navigation Rail's sub menu panel, with a leading glyph, a label, an
 | Sub Menu Item | itemSpacing | 8 | space.sm |
 | Sub Menu Item | padding.left | 12 | space.md |
 | Sub Menu Item | padding.right | 12 | space.md |
-| Sub Menu Item | padding.top | 4 | space.xxs |
-| Sub Menu Item | padding.bottom | 4 | space.xxs |
+| Sub Menu Item | padding.top | 4 | space.2xs |
+| Sub Menu Item | padding.bottom | 4 | space.2xs |
 | Sub Menu Item/Icon and Title | itemSpacing | 12 | space.md |
 | Sub Menu Item/Icon and Title/Page Title | itemSpacing | 8 | space.sm |
 | Sub Menu Item/Icon and Title/Page Title/Title | fill[0] | #0c0d0e | foreground.primary |
@@ -552,8 +550,8 @@ Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-Sys
 | --- | --- | --- | --- |
 | Navigation Header | itemSpacing | 10 | — |
 | Navigation Header/Avatar with Title | itemSpacing | 8 | space.sm |
-| Navigation Header/Avatar with Title | padding.left | 4 | space.xxs |
-| Navigation Header/Avatar with Title | padding.right | 4 | space.xxs |
+| Navigation Header/Avatar with Title | padding.left | 4 | space.2xs |
+| Navigation Header/Avatar with Title | padding.right | 4 | space.2xs |
 | Navigation Header/Avatar with Title/Page Title | itemSpacing | 8 | space.sm |
 | Navigation Header/Avatar with Title/Page Title/Title | fill[0] | #0c0d0e | foreground.primary |
 | Navigation Header/Avatar with Title/Page Title/Title | fontSize | 14 | label.medium.font size |
@@ -565,10 +563,10 @@ Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-Sys
 | Navigation Header/Icon Button | stroke[0] | #ced2db | interactive.neutral.border.default |
 | Navigation Header/Icon Button | cornerRadius | 0 | radius.none |
 | Navigation Header/Icon Button | strokeWeight | 0 | stroke.base |
-| Navigation Header/Icon Button | padding.left | 4 | space.xxs |
-| Navigation Header/Icon Button | padding.right | 4 | space.xxs |
-| Navigation Header/Icon Button | padding.top | 4 | space.xxs |
-| Navigation Header/Icon Button | padding.bottom | 4 | space.xxs |
+| Navigation Header/Icon Button | padding.left | 4 | space.2xs |
+| Navigation Header/Icon Button | padding.right | 4 | space.2xs |
+| Navigation Header/Icon Button | padding.top | 4 | space.2xs |
+| Navigation Header/Icon Button | padding.bottom | 4 | space.2xs |
 
 ### Token changes by property
 
@@ -583,8 +581,8 @@ Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-Sys
 | Type | logo | Navigation Header/Avatar with Title/Page Title/Title | lineHeight | — |
 | Type | logo | Navigation Header/Avatar with Title/Page Title/Title | letterSpacing | — |
 | Type | logo | Navigation Header/Logo with Title | itemSpacing | space.sm |
-| Type | logo | Navigation Header/Logo with Title | padding.left | space.xxs |
-| Type | logo | Navigation Header/Logo with Title | padding.right | space.xxs |
+| Type | logo | Navigation Header/Logo with Title | padding.left | space.2xs |
+| Type | logo | Navigation Header/Logo with Title | padding.right | space.2xs |
 | Type | logo | Navigation Header/Logo with Title/Icon | height | control.target-min |
 | Type | logo | Navigation Header/Logo with Title/Page Title | itemSpacing | space.sm |
 | Type | logo | Navigation Header/Logo with Title/Page Title/Title | fill[0] | foreground.primary |
@@ -610,8 +608,8 @@ Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-Sys
 | Expanded | false | Navigation Header/Icon Button | padding.top | — |
 | Expanded | false | Navigation Header/Icon Button | padding.bottom | — |
 | Expanded | false | Navigation Header/Avatar | itemSpacing | space.xl |
-| Expanded | false | Navigation Header/Avatar | padding.left | space.xxs |
-| Expanded | false | Navigation Header/Avatar | padding.right | space.xxs |
+| Expanded | false | Navigation Header/Avatar | padding.left | space.2xs |
+| Expanded | false | Navigation Header/Avatar | padding.right | space.2xs |
 
 ## Sub Menu Header
 
@@ -642,7 +640,7 @@ Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-Sys
 | Sub Menu Header/Icon and Title/Page Title/Title | fontSize | 14 | label.medium.font size |
 | Sub Menu Header/Icon and Title/Page Title/Title | lineHeight | 20 | label.medium.line height |
 | Sub Menu Header/Icon and Title/Page Title/Title | letterSpacing | 0 | label.medium.letter spacing |
-| Sub Menu Header/Trailing Actions Slot | itemSpacing | 4 | space.xxs |
+| Sub Menu Header/Trailing Actions Slot | itemSpacing | 4 | space.2xs |
 
 ### Token changes by property
 
@@ -655,10 +653,10 @@ Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-Sys
 | Type | sub page | Sub Menu Header/Icon and Title/Icon Button | stroke[0] | interactive.neutral.border.default |
 | Type | sub page | Sub Menu Header/Icon and Title/Icon Button | cornerRadius | radius.none |
 | Type | sub page | Sub Menu Header/Icon and Title/Icon Button | strokeWeight | stroke.base |
-| Type | sub page | Sub Menu Header/Icon and Title/Icon Button | padding.left | space.xxs |
-| Type | sub page | Sub Menu Header/Icon and Title/Icon Button | padding.right | space.xxs |
-| Type | sub page | Sub Menu Header/Icon and Title/Icon Button | padding.top | space.xxs |
-| Type | sub page | Sub Menu Header/Icon and Title/Icon Button | padding.bottom | space.xxs |
+| Type | sub page | Sub Menu Header/Icon and Title/Icon Button | padding.left | space.2xs |
+| Type | sub page | Sub Menu Header/Icon and Title/Icon Button | padding.right | space.2xs |
+| Type | sub page | Sub Menu Header/Icon and Title/Icon Button | padding.top | space.2xs |
+| Type | sub page | Sub Menu Header/Icon and Title/Icon Button | padding.bottom | space.2xs |
 
 ## Caret Indicator
 
@@ -693,8 +691,8 @@ Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-Sys
 | Collapsible Menu Item/Sub Menu Item | itemSpacing | 8 | space.sm |
 | Collapsible Menu Item/Sub Menu Item | padding.left | 12 | space.md |
 | Collapsible Menu Item/Sub Menu Item | padding.right | 12 | space.md |
-| Collapsible Menu Item/Sub Menu Item | padding.top | 4 | space.xxs |
-| Collapsible Menu Item/Sub Menu Item | padding.bottom | 4 | space.xxs |
+| Collapsible Menu Item/Sub Menu Item | padding.top | 4 | space.2xs |
+| Collapsible Menu Item/Sub Menu Item | padding.bottom | 4 | space.2xs |
 
 ### Token changes by property
 
@@ -703,7 +701,7 @@ Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-Sys
 | Open | true | Collapsible Menu Item | cornerRadius | radius.sm |
 | Open | true | Collapsible Menu Item/Sub Menu Item | fill[0] | interactive.ghost.background.pressed |
 | Open | true | Collapsible Menu Item/Sub Menu Slot | fill[0] | surface.menu |
-| Open | true | Collapsible Menu Item/Sub Menu Slot | itemSpacing | space.xxs |
+| Open | true | Collapsible Menu Item/Sub Menu Slot | itemSpacing | space.2xs |
 | Open | true | Collapsible Menu Item/Sub Menu Slot | padding.left | space.sm |
 | Open | true | Collapsible Menu Item/Sub Menu Slot | padding.right | space.sm |
 | Open | true | Collapsible Menu Item/Sub Menu Slot | padding.top | space.sm |

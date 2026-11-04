@@ -145,10 +145,10 @@ The header at the top of a mobile screen, carrying the screen’s name between a
 | Top App Bar/Main/Frame 2/Icon Button | stroke[0] | #ced2db | interactive.neutral.border.default |
 | Top App Bar/Main/Frame 2/Icon Button | cornerRadius | 4 | radius.element-sm |
 | Top App Bar/Main/Frame 2/Icon Button | strokeWeight | 0 | stroke.base |
-| Top App Bar/Main/Frame 2/Icon Button | padding.left | 4 | space.xxs |
-| Top App Bar/Main/Frame 2/Icon Button | padding.right | 4 | space.xxs |
-| Top App Bar/Main/Frame 2/Icon Button | padding.top | 4 | space.xxs |
-| Top App Bar/Main/Frame 2/Icon Button | padding.bottom | 4 | space.xxs |
+| Top App Bar/Main/Frame 2/Icon Button | padding.left | 4 | space.2xs |
+| Top App Bar/Main/Frame 2/Icon Button | padding.right | 4 | space.2xs |
+| Top App Bar/Main/Frame 2/Icon Button | padding.top | 4 | space.2xs |
+| Top App Bar/Main/Frame 2/Icon Button | padding.bottom | 4 | space.2xs |
 | Top App Bar/Main/Frame 2/Page Header | itemSpacing | 8 | space.sm |
 | Top App Bar/Main/Frame 2/Page Header/Page Title | itemSpacing | 8 | space.sm |
 | Top App Bar/Main/Frame 2/Page Header/Page Title/Title | fill[0] | #000000 | — |
@@ -169,10 +169,10 @@ The header at the top of a mobile screen, carrying the screen’s name between a
 | Type | centered | Top App Bar/Main/Trailing/Icon Button | stroke[0] | interactive.neutral.border.default |
 | Type | centered | Top App Bar/Main/Trailing/Icon Button | cornerRadius | radius.element-sm |
 | Type | centered | Top App Bar/Main/Trailing/Icon Button | strokeWeight | stroke.base |
-| Type | centered | Top App Bar/Main/Trailing/Icon Button | padding.left | space.xxs |
-| Type | centered | Top App Bar/Main/Trailing/Icon Button | padding.right | space.xxs |
-| Type | centered | Top App Bar/Main/Trailing/Icon Button | padding.top | space.xxs |
-| Type | centered | Top App Bar/Main/Trailing/Icon Button | padding.bottom | space.xxs |
+| Type | centered | Top App Bar/Main/Trailing/Icon Button | padding.left | space.2xs |
+| Type | centered | Top App Bar/Main/Trailing/Icon Button | padding.right | space.2xs |
+| Type | centered | Top App Bar/Main/Trailing/Icon Button | padding.top | space.2xs |
+| Type | centered | Top App Bar/Main/Trailing/Icon Button | padding.bottom | space.2xs |
 | Type | contextual | Top App Bar/Main/Frame 2 | itemSpacing | — |
 | Type | contextual | Top App Bar/Main/Frame 2/Icon Button | width | — |
 | Type | contextual | Top App Bar/Main/Frame 2/Icon Button | height | — |
@@ -195,10 +195,10 @@ The header at the top of a mobile screen, carrying the screen’s name between a
 | Type | contextual | Top App Bar/Main/Frame 3/Icon Button | stroke[0] | interactive.neutral.border.default |
 | Type | contextual | Top App Bar/Main/Frame 3/Icon Button | cornerRadius | radius.element-sm |
 | Type | contextual | Top App Bar/Main/Frame 3/Icon Button | strokeWeight | stroke.base |
-| Type | contextual | Top App Bar/Main/Frame 3/Icon Button | padding.left | space.xxs |
-| Type | contextual | Top App Bar/Main/Frame 3/Icon Button | padding.right | space.xxs |
-| Type | contextual | Top App Bar/Main/Frame 3/Icon Button | padding.top | space.xxs |
-| Type | contextual | Top App Bar/Main/Frame 3/Icon Button | padding.bottom | space.xxs |
+| Type | contextual | Top App Bar/Main/Frame 3/Icon Button | padding.left | space.2xs |
+| Type | contextual | Top App Bar/Main/Frame 3/Icon Button | padding.right | space.2xs |
+| Type | contextual | Top App Bar/Main/Frame 3/Icon Button | padding.top | space.2xs |
+| Type | contextual | Top App Bar/Main/Frame 3/Icon Button | padding.bottom | space.2xs |
 | Type | contextual | Top App Bar/Main/Frame 3/Contextual Details | itemSpacing | space.sm |
 | Type | contextual | Top App Bar/Main/Frame 3/Contextual Details/Count | itemSpacing | space.sm |
 | Type | contextual | Top App Bar/Main/Frame 3/Contextual Details/Count/2 Items | fontSize | label.medium.font size |
@@ -228,8 +228,8 @@ The header at the top of a mobile screen, carrying the screen’s name between a
 | Type | contextual alt | Top App Bar/Main/Frame 3/Button | strokeWeight | stroke.base |
 | Type | contextual alt | Top App Bar/Main/Frame 3/Button | padding.left | space.md |
 | Type | contextual alt | Top App Bar/Main/Frame 3/Button | padding.right | space.md |
-| Type | contextual alt | Top App Bar/Main/Frame 3/Button | padding.top | space.xxs |
-| Type | contextual alt | Top App Bar/Main/Frame 3/Button | padding.bottom | space.xxs |
+| Type | contextual alt | Top App Bar/Main/Frame 3/Button | padding.top | space.2xs |
+| Type | contextual alt | Top App Bar/Main/Frame 3/Button | padding.bottom | space.2xs |
 | Type | search | Top App Bar/Main | itemSpacing | space.md |
 | Type | search | Top App Bar/Main/Frame 2 | itemSpacing | — |
 | Type | search | Top App Bar/Main/Frame 2/Icon Button | width | — |
@@ -253,16 +253,16 @@ The header at the top of a mobile screen, carrying the screen’s name between a
 | Type | search | Top App Bar/Main/Icon Button | stroke[0] | interactive.neutral.border.default |
 | Type | search | Top App Bar/Main/Icon Button | cornerRadius | radius.element-sm |
 | Type | search | Top App Bar/Main/Icon Button | strokeWeight | stroke.base |
-| Type | search | Top App Bar/Main/Icon Button | padding.left | space.xxs |
-| Type | search | Top App Bar/Main/Icon Button | padding.right | space.xxs |
-| Type | search | Top App Bar/Main/Icon Button | padding.top | space.xxs |
-| Type | search | Top App Bar/Main/Icon Button | padding.bottom | space.xxs |
+| Type | search | Top App Bar/Main/Icon Button | padding.left | space.2xs |
+| Type | search | Top App Bar/Main/Icon Button | padding.right | space.2xs |
+| Type | search | Top App Bar/Main/Icon Button | padding.top | space.2xs |
+| Type | search | Top App Bar/Main/Icon Button | padding.bottom | space.2xs |
 | Type | search | Top App Bar/Main/Search | height | control.sm |
 | Type | search | Top App Bar/Main/Search | fill[0] | interactive.ghost.background.default |
 | Type | search | Top App Bar/Main/Search | stroke[0] | border.focus |
 | Type | search | Top App Bar/Main/Search | cornerRadius | radius.element-sm |
 | Type | search | Top App Bar/Main/Search | strokeWeight | stroke.base |
-| Type | search | Top App Bar/Main/Search | itemSpacing | space.xxs |
+| Type | search | Top App Bar/Main/Search | itemSpacing | space.2xs |
 | Type | search | Top App Bar/Main/Search | padding.left | space.md |
 | Type | search | Top App Bar/Main/Search | padding.right | space.md |
 | Type | search | Top App Bar/Main/Search | padding.top | space.sm |

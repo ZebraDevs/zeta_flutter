@@ -67,7 +67,7 @@ Marks that something is waiting on whatever it is pinned to, optionally with a c
 | Property | Type | Description |
 | --- | --- | --- |
 | Size | Fixed per Size | 28 by 20 at large, a 16 square at medium and an 8 dot at small. |
-| Padding | Per Size | space/xxs left and right at large. medium and small carry none, because their content is centred inside a fixed square. |
+| Padding | Per Size | space/2xs left and right at large. medium and small carry none, because their content is centred inside a fixed square. |
 | Radius | Fixed | radius/pill at all three sizes, so every form is fully round whether or not it holds a number. |
 | Fill | Fixed | interactive/destructive/background/default at every size. One colour throughout, which does not vary with the count. |
 | Border | Theming | A stroke bound to border/inverse sits on all three sizes at zero weight. The weight is a theming hook rather than an omission, so a high contrast set can give the indicator a hard outline where it overlaps whatever it is pinned to. |
@@ -99,8 +99,8 @@ Marks that something is waiting on whatever it is pinned to, optionally with a c
 | Size | small | Notification Indicator/2 | fontSize | — |
 | Size | small | Notification Indicator/2 | lineHeight | — |
 | Size | small | Notification Indicator/2 | letterSpacing | — |
-| Size | large | Notification Indicator | padding.left | space.xxs |
-| Size | large | Notification Indicator | padding.right | space.xxs |
+| Size | large | Notification Indicator | padding.left | space.2xs |
+| Size | large | Notification Indicator | padding.right | space.2xs |
 
 ## Status Label
 
@@ -204,17 +204,17 @@ Reports a read-only state on an item, such as Active or Overdue. Status sets the
 | Status Label | stroke[0] | #ced2db | border.default |
 | Status Label | cornerRadius | 9999 | radius.pill |
 | Status Label | strokeWeight | 1 | stroke.thin |
-| Status Label | padding.left | 4 | space.xxs |
-| Status Label | padding.right | 4 | space.xxs |
-| Status Label | padding.top | 2 | space.2xs |
-| Status Label | padding.bottom | 2 | space.2xs |
+| Status Label | padding.left | 4 | space.2xs |
+| Status Label | padding.right | 4 | space.2xs |
+| Status Label | padding.top | 2 | space.3xs |
+| Status Label | padding.bottom | 2 | space.3xs |
 | Status Label/Leading | width | 16 | control.icon-sm |
 | Status Label/Leading | height | 16 | control.icon-sm |
 | Status Label/Leading/Status indicator | width | 8 | control.icon-xxs |
 | Status Label/Leading/Status indicator | height | 8 | control.icon-xxs |
 | Status Label/Leading/Status indicator | fill[0] | #0c0d0e | foreground.primary |
-| Status Label/Label container | padding.left | 4 | space.xxs |
-| Status Label/Label container | padding.right | 4 | space.xxs |
+| Status Label/Label container | padding.left | 4 | space.2xs |
+| Status Label/Label container | padding.right | 4 | space.2xs |
 | Status Label/Label container/Label | fill[0] | #0c0d0e | foreground.primary |
 | Status Label/Label container/Label | fontSize | 14 | body.small.font size |
 | Status Label/Label container/Label | lineHeight | 18 | body.small.line height |
@@ -323,7 +323,7 @@ Names a category on an item in a word or two. Variant carries the standing of th
 | Property | Type | Description |
 | --- | --- | --- |
 | Size | Hug width, fixed height | 24 tall on the outlined and plain forms and 26 on bold, the difference being a 1px stroke drawn inside the box rather than centred on its edge. The width hugs the text in every form. |
-| Padding and gap | Fixed | space/xs on all four sides, with a space/2xs gap held for anything placed beside the text. |
+| Padding and gap | Fixed | space/xs on all four sides, with a space/3xs gap held for anything placed beside the text. |
 | Radius | Per Shape | radius/element-sm when rounded and radius/none when sharp. Softer than a pill, so it reads as a block of text rather than as a token. |
 | Fill | Per Variant and emphasis | bold takes feedback/info, success, warning or error at background/strong, with neutral on foreground/secondary. The other two forms take the matching background/subtle, with neutral on surface/subtle. |
 | Border | Per emphasis | outlined draws a 1px stroke centred on the edge, border/strong for neutral and the matching border token otherwise. The plain form carries that same bound stroke at zero weight, which is a theming hook rather than an absent border, so a high contrast set can give every label an edge. bold's stroke matches its own fill. |
@@ -342,11 +342,11 @@ Names a category on an item in a word or two. Variant carries the standing of th
 | Label | stroke[0] | #545963 | foreground.secondary |
 | Label | cornerRadius | 4 | radius.element-sm |
 | Label | strokeWeight | 1 | stroke.thin |
-| Label | itemSpacing | 2 | space.2xs |
-| Label | padding.left | 4 | space.xxs |
-| Label | padding.right | 4 | space.xxs |
-| Label | padding.top | 4 | space.xxs |
-| Label | padding.bottom | 4 | space.xxs |
+| Label | itemSpacing | 2 | space.3xs |
+| Label | padding.left | 4 | space.2xs |
+| Label | padding.right | 4 | space.2xs |
+| Label | padding.top | 4 | space.2xs |
+| Label | padding.bottom | 4 | space.2xs |
 | Label/Label | fill[0] | #ffffff | foreground.inverse |
 | Label/Label | fontSize | 12 | body.xsmall.font size |
 | Label/Label | lineHeight | 16 | body.xsmall.line height |
@@ -450,7 +450,7 @@ Shows where an item sits on a four step scale, from low to urgent. Level sets th
 | Property | Type | Description |
 | --- | --- | --- |
 | Size | Hug on lozenge, fixed on badge | Lozenge is 28 tall at large and 20 at small, hugging its label. Badge is a fixed square at the same two heights, 28 and 20, because it carries no label to hug. |
-| Padding and gap | Fixed | space/xs around the lozenge at large and space/2xs at small, with a wider trailing edge at both so the label clears the end of the pill. The circle and the label are separated by space/xs at both sizes. |
+| Padding and gap | Fixed | space/xs around the lozenge at large and space/3xs at small, with a wider trailing edge at both so the label clears the end of the pill. The circle and the label are separated by space/xs at both sizes. |
 | Radius | Fixed | radius/pill on every level, variant and size. There is no square cornered form. |
 | Fill | Per Level | low draws foreground/secondary. medium, high and urgent draw feedback/info, warning and error at background/strong. low is the only level not taking a feedback colour, which is what keeps it reading as ordinary rather than good. |
 | Circle | Knockout | 20 at large and 16 at small, filled with the same token as the label. Whatever sits inside it, glyph or number, is drawn in the pill's own background colour, so the circle reads as a hole punched through the pill. |
@@ -471,16 +471,16 @@ Shows where an item sits on a four step scale, from low to urgent. Level sets th
 | --- | --- | --- | --- |
 | Priority Pill | fill[0] | #545963 | foreground.secondary |
 | Priority Pill | cornerRadius | 9999 | radius.pill |
-| Priority Pill | itemSpacing | 4 | space.xxs |
-| Priority Pill | padding.left | 4 | space.xxs |
+| Priority Pill | itemSpacing | 4 | space.2xs |
+| Priority Pill | padding.left | 4 | space.2xs |
 | Priority Pill | padding.right | 8 | space.sm |
-| Priority Pill | padding.top | 4 | space.xxs |
-| Priority Pill | padding.bottom | 4 | space.xxs |
+| Priority Pill | padding.top | 4 | space.2xs |
+| Priority Pill | padding.bottom | 4 | space.2xs |
 | Priority Pill/Circle | width | 20 | control.icon-md |
 | Priority Pill/Circle | height | 20 | control.icon-md |
 | Priority Pill/Circle | fill[0] | #ffffff | foreground.inverse |
 | Priority Pill/Circle | cornerRadius | 9999 | radius.pill |
-| Priority Pill/Label container | padding.right | 4 | space.xxs |
+| Priority Pill/Label container | padding.right | 4 | space.2xs |
 | Priority Pill/Label container/Label | fill[0] | #ffffff | foreground.inverse |
 | Priority Pill/Label container/Label | fontSize | 14 | body.small.font size |
 | Priority Pill/Label container/Label | lineHeight | 18 | body.small.line height |
@@ -498,18 +498,18 @@ Shows where an item sits on a four step scale, from low to urgent. Level sets th
 | Level | urgent | Priority Pill/Circle | fill[0] | interactive.destructive.foreground.default |
 | Level | urgent | Priority Pill/Label container/Label | fill[0] | interactive.destructive.foreground.default |
 | Variant | badge | Priority Pill | itemSpacing | — |
-| Variant | badge | Priority Pill | padding.right | space.xxs |
+| Variant | badge | Priority Pill | padding.right | space.2xs |
 | Variant | badge | Priority Pill/Label container | padding.right | — |
 | Variant | badge | Priority Pill/Label container/Label | fill[0] | — |
 | Variant | badge | Priority Pill/Label container/Label | fontSize | — |
 | Variant | badge | Priority Pill/Label container/Label | lineHeight | — |
 | Variant | badge | Priority Pill/Label container/Label | letterSpacing | — |
-| Size | small | Priority Pill | padding.left | space.2xs |
-| Size | small | Priority Pill | padding.top | space.2xs |
-| Size | small | Priority Pill | padding.bottom | space.2xs |
+| Size | small | Priority Pill | padding.left | space.3xs |
+| Size | small | Priority Pill | padding.top | space.3xs |
+| Size | small | Priority Pill | padding.bottom | space.3xs |
 | Size | small | Priority Pill/Circle | width | control.icon-sm |
 | Size | small | Priority Pill/Circle | height | control.icon-sm |
-| Size | small | Priority Pill/Label container | padding.right | space.2xs |
+| Size | small | Priority Pill/Label container | padding.right | space.3xs |
 | Size | small | Priority Pill/Label container/Label | fontSize | indicator.small.font size |
 | Size | small | Priority Pill/Label container/Label | lineHeight | indicator.small.line height |
 | Size | small | Priority Pill/Label container/Label | letterSpacing | indicator.small.letter spacing |

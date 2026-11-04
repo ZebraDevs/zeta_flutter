@@ -119,14 +119,14 @@ A single-line input for typing a query, with a magnifier leading it and a traili
 | Search | stroke[0] | #ced2db | interactive.neutral.border.default |
 | Search | cornerRadius | 0 | radius.none |
 | Search | strokeWeight | 1 | stroke.thin |
-| Search | itemSpacing | 4 | space.xxs |
+| Search | itemSpacing | 4 | space.2xs |
 | Search | padding.left | 12 | space.md |
 | Search | padding.right | 12 | space.md |
 | Search | padding.top | 8 | space.sm |
 | Search | padding.bottom | 8 | space.sm |
-| Search/Input Text | itemSpacing | 2 | space.2xs |
-| Search/Input Text | padding.left | 4 | space.xxs |
-| Search/Input Text | padding.right | 4 | space.xxs |
+| Search/Input Text | itemSpacing | 2 | space.3xs |
+| Search/Input Text | padding.left | 4 | space.2xs |
+| Search/Input Text | padding.right | 4 | space.2xs |
 | Search/Input Text/Text | fill[0] | #8d95a3 | foreground.disabled |
 | Search/Input Text/Text | fontSize | 16 | body.medium.font size |
 | Search/Input Text/Text | lineHeight | 24 | body.medium.line height |

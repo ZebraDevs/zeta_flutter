@@ -122,9 +122,9 @@ A brief message about something the app just did, carrying at most one action. V
 | Snackbar | cornerRadius | 9999 | radius.pill |
 | Snackbar | itemSpacing | 16 | space.lg |
 | Snackbar | padding.left | 16 | space.lg |
-| Snackbar | padding.right | 4 | space.xxs |
-| Snackbar | padding.top | 4 | space.xxs |
-| Snackbar | padding.bottom | 4 | space.xxs |
+| Snackbar | padding.right | 4 | space.2xs |
+| Snackbar | padding.top | 4 | space.2xs |
+| Snackbar | padding.bottom | 4 | space.2xs |
 | Snackbar/Content | itemSpacing | 12 | space.md |
 | Snackbar/Content | padding.top | 8 | space.sm |
 | Snackbar/Content | padding.bottom | 8 | space.sm |
@@ -132,17 +132,17 @@ A brief message about something the app just did, carrying at most one action. V
 | Snackbar/Content/Message | fontSize | 16 | body.medium.font size |
 | Snackbar/Content/Message | lineHeight | 24 | body.medium.line height |
 | Snackbar/Content/Message | letterSpacing | 0 | body.medium.letter spacing |
-| Snackbar/Controls | itemSpacing | 4 | space.xxs |
+| Snackbar/Controls | itemSpacing | 4 | space.2xs |
 | Snackbar/Controls/Close | width | 40 | control.md |
 | Snackbar/Controls/Close | height | 40 | control.md |
 | Snackbar/Controls/Close | fill[0] | #0c0d0e00 | interactive.ghost.background.default |
 | Snackbar/Controls/Close | stroke[0] | #ced2db | interactive.neutral.border.default |
 | Snackbar/Controls/Close | cornerRadius | 9999 | radius.pill |
 | Snackbar/Controls/Close | strokeWeight | 0 | stroke.base |
-| Snackbar/Controls/Close | padding.left | 4 | space.xxs |
-| Snackbar/Controls/Close | padding.right | 4 | space.xxs |
-| Snackbar/Controls/Close | padding.top | 4 | space.xxs |
-| Snackbar/Controls/Close | padding.bottom | 4 | space.xxs |
+| Snackbar/Controls/Close | padding.left | 4 | space.2xs |
+| Snackbar/Controls/Close | padding.right | 4 | space.2xs |
+| Snackbar/Controls/Close | padding.top | 4 | space.2xs |
+| Snackbar/Controls/Close | padding.bottom | 4 | space.2xs |
 
 ### Token changes by property
 
@@ -159,8 +159,8 @@ A brief message about something the app just did, carrying at most one action. V
 | Flavour | deletion | Snackbar/Controls/Action | strokeWeight | stroke.base |
 | Flavour | deletion | Snackbar/Controls/Action | padding.left | space.md |
 | Flavour | deletion | Snackbar/Controls/Action | padding.right | space.md |
-| Flavour | deletion | Snackbar/Controls/Action | padding.top | space.xxs |
-| Flavour | deletion | Snackbar/Controls/Action | padding.bottom | space.xxs |
+| Flavour | deletion | Snackbar/Controls/Action | padding.top | space.2xs |
+| Flavour | deletion | Snackbar/Controls/Action | padding.bottom | space.2xs |
 | Flavour | view | Snackbar | fill[0] | feedback.neutral.background.subtle |
 | Flavour | view | Snackbar/Controls/Close | width | — |
 | Flavour | view | Snackbar/Controls/Close | height | — |
@@ -179,8 +179,8 @@ A brief message about something the app just did, carrying at most one action. V
 | Flavour | view | Snackbar/Controls/Action | strokeWeight | stroke.base |
 | Flavour | view | Snackbar/Controls/Action | padding.left | space.md |
 | Flavour | view | Snackbar/Controls/Action | padding.right | space.md |
-| Flavour | view | Snackbar/Controls/Action | padding.top | space.xxs |
-| Flavour | view | Snackbar/Controls/Action | padding.bottom | space.xxs |
+| Flavour | view | Snackbar/Controls/Action | padding.top | space.2xs |
+| Flavour | view | Snackbar/Controls/Action | padding.bottom | space.2xs |
 | Flavour | action | Snackbar | fill[0] | surface.popover |
 | Flavour | action | Snackbar/Controls | itemSpacing | — |
 | Flavour | action | Snackbar/Controls/Close | width | — |
@@ -200,8 +200,8 @@ A brief message about something the app just did, carrying at most one action. V
 | Flavour | action | Snackbar/Action | strokeWeight | stroke.thin |
 | Flavour | action | Snackbar/Action | padding.left | space.md |
 | Flavour | action | Snackbar/Action | padding.right | space.md |
-| Flavour | action | Snackbar/Action | padding.top | space.xxs |
-| Flavour | action | Snackbar/Action | padding.bottom | space.xxs |
+| Flavour | action | Snackbar/Action | padding.top | space.2xs |
+| Flavour | action | Snackbar/Action | padding.bottom | space.2xs |
 | Flavour | default | Snackbar | fill[0] | surface.popover |
 | Shape | sharp | Snackbar | cornerRadius | radius.none |
 | Shape | sharp | Snackbar/Controls/Close | cornerRadius | radius.none |

@@ -102,9 +102,9 @@ Takes a phone number, with a country picker joined to its start. The picker sets
 | --- | --- | --- |
 | Size | Start width, hug height | Starts 280 wide and narrows to fit its container, and block fills it. Height follows size through control/sm, control/md and control/lg. |
 | Join | No gap | The country control and number sit edge to edge. The control has no end border, and only the outer corners take the radius. |
-| Country control | Hug | space/sm at the sides, with space/xxs between flag and chevron. interactive/neutral backgrounds, as the number. |
+| Country control | Hug | space/sm at the sides, with space/2xs between flag and chevron. interactive/neutral backgrounds, as the number. |
 | Flag | Set to medium | control/icon-md wide, emoji or artwork. Artwork keeps its own ratio. |
-| Number | Fill | space/sm at the start, with space/xxs between the dial code and the digits. |
+| Number | Fill | space/sm at the start, with space/2xs between the dial code and the digits. |
 | Gradient | Theming | The control's border is foreground/gradient/start, so it runs into the number's. It goes neutral when invalid. |
 | Ghost | Theming | No surface, and a stroke/base border. Hover, pressed and open use interactive/ghost backgrounds. |
 
@@ -122,14 +122,14 @@ Takes a phone number, with a country picker joined to its start. The picker sets
 
 | Layer | Field | Raw | Token |
 | --- | --- | --- | --- |
-| Phone Input | itemSpacing | 4 | space.xxs |
-| Phone Input/Label | itemSpacing | 4 | space.xxs |
+| Phone Input | itemSpacing | 4 | space.2xs |
+| Phone Input/Label | itemSpacing | 4 | space.2xs |
 | Phone Input/Control/_Phone Country | height | 40 | control.md |
 | Phone Input/Control/_Phone Country | fill[0] | #ffffff | interactive.neutral.background.default |
 | Phone Input/Control/_Phone Country | stroke[0] | #ced2db | interactive.neutral.border.default |
 | Phone Input/Control/_Phone Country | cornerRadius | 0 | radius.sm |
 | Phone Input/Control/_Phone Country | strokeWeight | 1 | stroke.thin |
-| Phone Input/Control/_Phone Country | itemSpacing | 4 | space.xxs |
+| Phone Input/Control/_Phone Country | itemSpacing | 4 | space.2xs |
 | Phone Input/Control/_Phone Country | padding.left | 8 | space.sm |
 | Phone Input/Control/_Phone Country | padding.right | 8 | space.sm |
 | Phone Input/Control/Input / Phone | height | 40 | control.md |
@@ -137,12 +137,12 @@ Takes a phone number, with a country picker joined to its start. The picker sets
 | Phone Input/Control/Input / Phone | stroke[0] | #ced2db | interactive.neutral.border.default |
 | Phone Input/Control/Input / Phone | cornerRadius | 0 | radius.none |
 | Phone Input/Control/Input / Phone | strokeWeight | 1 | stroke.thin |
-| Phone Input/Control/Input / Phone | itemSpacing | 4 | space.xxs |
+| Phone Input/Control/Input / Phone | itemSpacing | 4 | space.2xs |
 | Phone Input/Control/Input / Phone | padding.left | 8 | space.sm |
 | Phone Input/Control/Input / Phone | padding.right | 12 | space.md |
 | Phone Input/Control/Input / Phone | padding.top | 8 | space.sm |
 | Phone Input/Control/Input / Phone | padding.bottom | 8 | space.sm |
-| Phone Input/Hint | itemSpacing | 4 | space.xxs |
+| Phone Input/Hint | itemSpacing | 4 | space.2xs |
 
 ### Token changes by property
 
@@ -164,7 +164,7 @@ Takes a phone number, with a country picker joined to its start. The picker sets
 | Open | true | Phone Input/Control/_Phone Country | fill[0] | interactive.neutral.background.selected |
 | Open | true | Phone Input/Dropdown Menu | fill[0] | surface.menu |
 | Open | true | Phone Input/Dropdown Menu | cornerRadius | radius.element-md |
-| Open | true | Phone Input/Dropdown Menu | itemSpacing | space.2xs |
+| Open | true | Phone Input/Dropdown Menu | itemSpacing | space.3xs |
 | Open | true | Phone Input/Dropdown Menu | padding.left | space.card |
 | Open | true | Phone Input/Dropdown Menu | padding.right | space.card |
 | Open | true | Phone Input/Dropdown Menu | padding.top | space.card |
@@ -203,14 +203,14 @@ Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-Sys
 | Input / Phone | stroke[0] | #ced2db | interactive.neutral.border.default |
 | Input / Phone | cornerRadius | 0 | radius.none |
 | Input / Phone | strokeWeight | 1 | stroke.thin |
-| Input / Phone | itemSpacing | 4 | space.xxs |
+| Input / Phone | itemSpacing | 4 | space.2xs |
 | Input / Phone | padding.left | 8 | space.sm |
 | Input / Phone | padding.right | 12 | space.md |
 | Input / Phone | padding.top | 8 | space.sm |
 | Input / Phone | padding.bottom | 8 | space.sm |
-| Input / Phone/Input Text | itemSpacing | 4 | space.xxs |
-| Input / Phone/Input Text | padding.left | 4 | space.xxs |
-| Input / Phone/Input Text | padding.right | 4 | space.xxs |
+| Input / Phone/Input Text | itemSpacing | 4 | space.2xs |
+| Input / Phone/Input Text | padding.left | 4 | space.2xs |
+| Input / Phone/Input Text | padding.right | 4 | space.2xs |
 | Input / Phone/Input Text/Dial Code | fill[0] | #0c0d0e | foreground.primary |
 | Input / Phone/Input Text/Dial Code | fontSize | 16 | body.medium.font size |
 | Input / Phone/Input Text/Dial Code | lineHeight | 24 | body.medium.line height |
@@ -308,7 +308,7 @@ Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-Sys
 | _Phone Country | stroke[0] | #ced2db | interactive.neutral.border.default |
 | _Phone Country | cornerRadius | 0 | radius.none |
 | _Phone Country | strokeWeight | 1 | stroke.thin |
-| _Phone Country | itemSpacing | 4 | space.xxs |
+| _Phone Country | itemSpacing | 4 | space.2xs |
 | _Phone Country | padding.left | 8 | space.sm |
 | _Phone Country | padding.right | 8 | space.sm |
 

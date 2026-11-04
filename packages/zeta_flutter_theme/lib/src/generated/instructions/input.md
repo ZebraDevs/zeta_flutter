@@ -26,13 +26,13 @@ Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-Sys
 | Input / Text | stroke[0] | #ced2db | interactive.neutral.border.default |
 | Input / Text | cornerRadius | 4 | radius.sm |
 | Input / Text | strokeWeight | 1 | stroke.thin |
-| Input / Text | itemSpacing | 4 | space.xxs |
+| Input / Text | itemSpacing | 4 | space.2xs |
 | Input / Text | padding.left | 12 | space.md |
 | Input / Text | padding.right | 12 | space.md |
 | Input / Text | padding.top | 8 | space.sm |
 | Input / Text | padding.bottom | 8 | space.sm |
-| Input / Text/Input Text | padding.left | 4 | space.xxs |
-| Input / Text/Input Text | padding.right | 4 | space.xxs |
+| Input / Text/Input Text | padding.left | 4 | space.2xs |
+| Input / Text/Input Text | padding.right | 4 | space.2xs |
 | Input / Text/Input Text/Placeholder | fill[0] | #8d95a3 | foreground.disabled |
 | Input / Text/Input Text/Placeholder | fontSize | 16 | body.medium.font size |
 | Input / Text/Input Text/Placeholder | lineHeight | 24 | body.medium.line height |
@@ -139,13 +139,13 @@ Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-Sys
 | Input / Number | stroke[0] | #ced2db | interactive.neutral.border.default |
 | Input / Number | cornerRadius | 4 | radius.sm |
 | Input / Number | strokeWeight | 1 | stroke.thin |
-| Input / Number | itemSpacing | 4 | space.xxs |
+| Input / Number | itemSpacing | 4 | space.2xs |
 | Input / Number | padding.left | 12 | space.md |
 | Input / Number | padding.right | 12 | space.md |
 | Input / Number | padding.top | 8 | space.sm |
 | Input / Number | padding.bottom | 8 | space.sm |
-| Input / Number/Input Text | padding.left | 4 | space.xxs |
-| Input / Number/Input Text | padding.right | 4 | space.xxs |
+| Input / Number/Input Text | padding.left | 4 | space.2xs |
+| Input / Number/Input Text | padding.right | 4 | space.2xs |
 | Input / Number/Input Text/0 | fill[0] | #8d95a3 | foreground.disabled |
 | Input / Number/Input Text/0 | fontSize | 16 | body.medium.font size |
 | Input / Number/Input Text/0 | lineHeight | 24 | body.medium.line height |
@@ -255,13 +255,13 @@ Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-Sys
 | Input / Password | stroke[0] | #ced2db | interactive.neutral.border.default |
 | Input / Password | cornerRadius | 4 | radius.sm |
 | Input / Password | strokeWeight | 1 | stroke.thin |
-| Input / Password | itemSpacing | 4 | space.xxs |
+| Input / Password | itemSpacing | 4 | space.2xs |
 | Input / Password | padding.left | 12 | space.md |
 | Input / Password | padding.right | 12 | space.md |
 | Input / Password | padding.top | 8 | space.sm |
 | Input / Password | padding.bottom | 8 | space.sm |
-| Input / Password/Input Text | padding.left | 4 | space.xxs |
-| Input / Password/Input Text | padding.right | 4 | space.xxs |
+| Input / Password/Input Text | padding.left | 4 | space.2xs |
+| Input / Password/Input Text | padding.right | 4 | space.2xs |
 | Input / Password/Input Text/Password | fill[0] | #8d95a3 | foreground.disabled |
 | Input / Password/Input Text/Password | fontSize | 16 | body.medium.font size |
 | Input / Password/Input Text/Password | lineHeight | 24 | body.medium.line height |
@@ -374,13 +374,13 @@ Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-Sys
 | Input / Date | stroke[0] | #ced2db | interactive.neutral.border.default |
 | Input / Date | cornerRadius | 4 | radius.sm |
 | Input / Date | strokeWeight | 1 | stroke.thin |
-| Input / Date | itemSpacing | 4 | space.xxs |
+| Input / Date | itemSpacing | 4 | space.2xs |
 | Input / Date | padding.left | 12 | space.md |
 | Input / Date | padding.right | 12 | space.md |
 | Input / Date | padding.top | 8 | space.sm |
 | Input / Date | padding.bottom | 8 | space.sm |
-| Input / Date/Input Text | padding.left | 4 | space.xxs |
-| Input / Date/Input Text | padding.right | 4 | space.xxs |
+| Input / Date/Input Text | padding.left | 4 | space.2xs |
+| Input / Date/Input Text | padding.right | 4 | space.2xs |
 | Input / Date/Input Text/mm/dd/yyyy | fill[0] | #8d95a3 | foreground.disabled |
 | Input / Date/Input Text/mm/dd/yyyy | fontSize | 16 | body.medium.font size |
 | Input / Date/Input Text/mm/dd/yyyy | lineHeight | 24 | body.medium.line height |
@@ -493,13 +493,13 @@ Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-Sys
 | Input / Time | stroke[0] | #ced2db | interactive.neutral.border.default |
 | Input / Time | cornerRadius | 4 | radius.sm |
 | Input / Time | strokeWeight | 1 | stroke.thin |
-| Input / Time | itemSpacing | 4 | space.xxs |
+| Input / Time | itemSpacing | 4 | space.2xs |
 | Input / Time | padding.left | 12 | space.md |
 | Input / Time | padding.right | 12 | space.md |
 | Input / Time | padding.top | 8 | space.sm |
 | Input / Time | padding.bottom | 8 | space.sm |
-| Input / Time/Input Text | padding.left | 4 | space.xxs |
-| Input / Time/Input Text | padding.right | 4 | space.xxs |
+| Input / Time/Input Text | padding.left | 4 | space.2xs |
+| Input / Time/Input Text | padding.right | 4 | space.2xs |
 | Input / Time/Input Text/--:-- -- | fill[0] | #8d95a3 | foreground.disabled |
 | Input / Time/Input Text/--:-- -- | fontSize | 16 | body.medium.font size |
 | Input / Time/Input Text/--:-- -- | lineHeight | 24 | body.medium.line height |
@@ -689,19 +689,19 @@ The full field assembly, a label above, the field itself and a hint below, stack
 
 | Layer | Field | Raw | Token |
 | --- | --- | --- | --- |
-| Input | itemSpacing | 4 | space.xxs |
-| Input/Label | itemSpacing | 4 | space.xxs |
+| Input | itemSpacing | 4 | space.2xs |
+| Input/Label | itemSpacing | 4 | space.2xs |
 | Input/Input / Text | height | 40 | control.md |
 | Input/Input / Text | fill[0] | #ffffff | interactive.neutral.background.default |
 | Input/Input / Text | stroke[0] | #ced2db | interactive.neutral.border.default |
 | Input/Input / Text | cornerRadius | 4 | radius.sm |
 | Input/Input / Text | strokeWeight | 1 | stroke.thin |
-| Input/Input / Text | itemSpacing | 4 | space.xxs |
+| Input/Input / Text | itemSpacing | 4 | space.2xs |
 | Input/Input / Text | padding.left | 12 | space.md |
 | Input/Input / Text | padding.right | 12 | space.md |
 | Input/Input / Text | padding.top | 8 | space.sm |
 | Input/Input / Text | padding.bottom | 8 | space.sm |
-| Input/Hint | itemSpacing | 4 | space.xxs |
+| Input/Hint | itemSpacing | 4 | space.2xs |
 
 ## Input Label
 
@@ -719,7 +719,7 @@ Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-Sys
 
 | Layer | Field | Raw | Token |
 | --- | --- | --- | --- |
-| Input Label | itemSpacing | 4 | space.xxs |
+| Input Label | itemSpacing | 4 | space.2xs |
 | Input Label/Field name | fill[0] | #0c0d0e | foreground.primary |
 | Input Label/Field name | fontSize | 14 | label.medium.font size |
 | Input Label/Field name | lineHeight | 20 | label.medium.line height |
@@ -753,7 +753,7 @@ Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-Sys
 
 | Layer | Field | Raw | Token |
 | --- | --- | --- | --- |
-| Input Hint | itemSpacing | 4 | space.xxs |
+| Input Hint | itemSpacing | 4 | space.2xs |
 | Input Hint/Default hint message | fill[0] | #545963 | foreground.secondary |
 | Input Hint/Default hint message | fontSize | 12 | body.xsmall.font size |
 | Input Hint/Default hint message | lineHeight | 16 | body.xsmall.line height |

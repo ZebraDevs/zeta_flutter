@@ -24,13 +24,13 @@ Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-Sys
 | Input / Select | stroke[0] | #ced2db | interactive.neutral.border.default |
 | Input / Select | cornerRadius | 4 | radius.sm |
 | Input / Select | strokeWeight | 1 | stroke.thin |
-| Input / Select | itemSpacing | 4 | space.xxs |
+| Input / Select | itemSpacing | 4 | space.2xs |
 | Input / Select | padding.left | 12 | space.md |
 | Input / Select | padding.right | 12 | space.md |
 | Input / Select | padding.top | 8 | space.sm |
 | Input / Select | padding.bottom | 8 | space.sm |
-| Input / Select/Input Text | padding.left | 4 | space.xxs |
-| Input / Select/Input Text | padding.right | 4 | space.xxs |
+| Input / Select/Input Text | padding.left | 4 | space.2xs |
+| Input / Select/Input Text | padding.right | 4 | space.2xs |
 | Input / Select/Input Text/Placeholder | fill[0] | #8d95a3 | foreground.disabled |
 | Input / Select/Input Text/Placeholder | fontSize | 16 | body.medium.font size |
 | Input / Select/Input Text/Placeholder | lineHeight | 24 | body.medium.line height |
@@ -211,22 +211,22 @@ The full select assembly: a label above, a Select Field in the middle and a hint
 
 | Layer | Field | Raw | Token |
 | --- | --- | --- | --- |
-| Select | itemSpacing | 4 | space.xxs |
-| Select/Label | itemSpacing | 4 | space.xxs |
+| Select | itemSpacing | 4 | space.2xs |
+| Select/Label | itemSpacing | 4 | space.2xs |
 | Select/Field | height | 40 | control.md |
 | Select/Field | fill[0] | #ffffff | interactive.neutral.background.default |
 | Select/Field | stroke[0] | #ced2db | interactive.neutral.border.default |
 | Select/Field | cornerRadius | 4 | radius.sm |
 | Select/Field | strokeWeight | 1 | stroke.thin |
-| Select/Field | itemSpacing | 4 | space.xxs |
+| Select/Field | itemSpacing | 4 | space.2xs |
 | Select/Field | padding.left | 12 | space.md |
 | Select/Field | padding.right | 12 | space.md |
 | Select/Field | padding.top | 8 | space.sm |
 | Select/Field | padding.bottom | 8 | space.sm |
-| Select/Hint | itemSpacing | 4 | space.xxs |
+| Select/Hint | itemSpacing | 4 | space.2xs |
 | Select/Dropdown Menu | fill[0] | #ffffff | surface.menu |
 | Select/Dropdown Menu | cornerRadius | 6 | radius.element-md |
-| Select/Dropdown Menu | itemSpacing | 2 | space.2xs |
+| Select/Dropdown Menu | itemSpacing | 2 | space.3xs |
 | Select/Dropdown Menu | padding.left | 12 | space.card |
 | Select/Dropdown Menu | padding.right | 12 | space.card |
 | Select/Dropdown Menu | padding.top | 12 | space.card |

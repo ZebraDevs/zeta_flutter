@@ -165,7 +165,7 @@ Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-Sys
 | Table Footer/Footer Start/Rows Per Page/Page Size | stroke[0] | #ced2db | interactive.neutral.border.default |
 | Table Footer/Footer Start/Rows Per Page/Page Size | cornerRadius | 0 | radius.none |
 | Table Footer/Footer Start/Rows Per Page/Page Size | strokeWeight | 1 | stroke.thin |
-| Table Footer/Footer Start/Rows Per Page/Page Size | itemSpacing | 4 | space.xxs |
+| Table Footer/Footer Start/Rows Per Page/Page Size | itemSpacing | 4 | space.2xs |
 | Table Footer/Footer Start/Rows Per Page/Page Size | padding.left | 12 | space.md |
 | Table Footer/Footer Start/Rows Per Page/Page Size | padding.right | 12 | space.md |
 | Table Footer/Footer Start/Rows Per Page/Page Size | padding.top | 8 | space.sm |
@@ -199,17 +199,17 @@ Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-Sys
 | Table Controls/Selected Count/Count Label | stroke[0] | #0073e6 | feedback.info.background.strong |
 | Table Controls/Selected Count/Count Label | cornerRadius | 0 | radius.none |
 | Table Controls/Selected Count/Count Label | strokeWeight | 1 | stroke.thin |
-| Table Controls/Selected Count/Count Label | itemSpacing | 2 | space.2xs |
-| Table Controls/Selected Count/Count Label | padding.left | 4 | space.xxs |
-| Table Controls/Selected Count/Count Label | padding.right | 4 | space.xxs |
-| Table Controls/Selected Count/Count Label | padding.top | 4 | space.xxs |
-| Table Controls/Selected Count/Count Label | padding.bottom | 4 | space.xxs |
+| Table Controls/Selected Count/Count Label | itemSpacing | 2 | space.3xs |
+| Table Controls/Selected Count/Count Label | padding.left | 4 | space.2xs |
+| Table Controls/Selected Count/Count Label | padding.right | 4 | space.2xs |
+| Table Controls/Selected Count/Count Label | padding.top | 4 | space.2xs |
+| Table Controls/Selected Count/Count Label | padding.bottom | 4 | space.2xs |
 | Table Controls/Search | height | 36 | control.sm |
 | Table Controls/Search | fill[0] | #ffffff | interactive.neutral.background.default |
 | Table Controls/Search | stroke[0] | #ced2db | interactive.neutral.border.default |
 | Table Controls/Search | cornerRadius | 0 | radius.none |
 | Table Controls/Search | strokeWeight | 1 | stroke.thin |
-| Table Controls/Search | itemSpacing | 4 | space.xxs |
+| Table Controls/Search | itemSpacing | 4 | space.2xs |
 | Table Controls/Search | padding.left | 12 | space.md |
 | Table Controls/Search | padding.right | 12 | space.md |
 | Table Controls/Search | padding.top | 8 | space.sm |
@@ -221,10 +221,10 @@ Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-Sys
 | Table Controls/Column Settings | stroke[0] | #ced2db | interactive.neutral.border.default |
 | Table Controls/Column Settings | cornerRadius | 0 | radius.none |
 | Table Controls/Column Settings | strokeWeight | 1 | stroke.thin |
-| Table Controls/Column Settings | padding.left | 4 | space.xxs |
-| Table Controls/Column Settings | padding.right | 4 | space.xxs |
-| Table Controls/Column Settings | padding.top | 4 | space.xxs |
-| Table Controls/Column Settings | padding.bottom | 4 | space.xxs |
+| Table Controls/Column Settings | padding.left | 4 | space.2xs |
+| Table Controls/Column Settings | padding.right | 4 | space.2xs |
+| Table Controls/Column Settings | padding.top | 4 | space.2xs |
+| Table Controls/Column Settings | padding.bottom | 4 | space.2xs |
 
 ## _Avatar and text
 
@@ -276,7 +276,7 @@ Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-Sys
 | Layer | Field | Raw | Token |
 | --- | --- | --- | --- |
 | _Label | itemSpacing | 17 | — |
-| _Label/Label | itemSpacing | 4 | space.xxs |
+| _Label/Label | itemSpacing | 4 | space.2xs |
 | _Label/Label/Label | fill[0] | #0c0d0e | foreground.primary |
 | _Label/Label/Label | fontSize | 14 | label.medium.font size |
 | _Label/Label/Label | lineHeight | 20 | label.medium.line height |
@@ -455,10 +455,10 @@ Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-Sys
 | Property | Value | Layer | Field | Token |
 | --- | --- | --- | --- | --- |
 | Column Position | frozen | Table Content/Frozen Slot Container | stroke[0] | border.default |
-| Vertical Scroll | true | Table Content/Scrollbar | padding.left | space.xxs |
-| Vertical Scroll | true | Table Content/Scrollbar | padding.right | space.xxs |
-| Vertical Scroll | true | Table Content/Scrollbar | padding.top | space.xxs |
-| Vertical Scroll | true | Table Content/Scrollbar | padding.bottom | space.xxs |
+| Vertical Scroll | true | Table Content/Scrollbar | padding.left | space.2xs |
+| Vertical Scroll | true | Table Content/Scrollbar | padding.right | space.2xs |
+| Vertical Scroll | true | Table Content/Scrollbar | padding.top | space.2xs |
+| Vertical Scroll | true | Table Content/Scrollbar | padding.bottom | space.2xs |
 
 ## _Select Cell
 
@@ -519,10 +519,10 @@ Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-Sys
 | Type | data | _Actions Cell/Cell/More | stroke[0] | interactive.neutral.border.default |
 | Type | data | _Actions Cell/Cell/More | cornerRadius | radius.none |
 | Type | data | _Actions Cell/Cell/More | strokeWeight | stroke.base |
-| Type | data | _Actions Cell/Cell/More | padding.left | space.xxs |
-| Type | data | _Actions Cell/Cell/More | padding.right | space.xxs |
-| Type | data | _Actions Cell/Cell/More | padding.top | space.xxs |
-| Type | data | _Actions Cell/Cell/More | padding.bottom | space.xxs |
+| Type | data | _Actions Cell/Cell/More | padding.left | space.2xs |
+| Type | data | _Actions Cell/Cell/More | padding.right | space.2xs |
+| Type | data | _Actions Cell/Cell/More | padding.top | space.2xs |
+| Type | data | _Actions Cell/Cell/More | padding.bottom | space.2xs |
 
 ## _Empty Row
 

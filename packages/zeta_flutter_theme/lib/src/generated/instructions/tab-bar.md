@@ -34,8 +34,8 @@ Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-Sys
 | Tab Item/Notification Indicator | stroke[0] | #ffffff | border.inverse |
 | Tab Item/Notification Indicator | cornerRadius | 9999 | radius.pill |
 | Tab Item/Notification Indicator | strokeWeight | 0 | stroke.base |
-| Tab Item/Notification Indicator | padding.left | 4 | space.xxs |
-| Tab Item/Notification Indicator | padding.right | 4 | space.xxs |
+| Tab Item/Notification Indicator | padding.left | 4 | space.2xs |
+| Tab Item/Notification Indicator | padding.right | 4 | space.2xs |
 
 ### Token changes by property
 

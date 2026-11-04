@@ -2,23 +2,6 @@
 
 Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-System?node-id=2835-796&m=dev
 
-## Spacer
-
-Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-System?node-id=2920-5097&m=dev
-
-### Layer structure
-
-- Spacer (COMPONENT)
-  - Spacer/Divider (INSTANCE)
-
-### Resolved tokens (default variant: Spacer)
-
-| Layer | Field | Raw | Token |
-| --- | --- | --- | --- |
-| Spacer | itemSpacing | 10 | — |
-| Spacer/Divider | width | 1 | stroke.thin |
-| Spacer/Divider | cornerRadius | 0 | radius.none |
-
 ## Navigation Bar
 
 Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-System?node-id=3077-8391&m=dev
@@ -264,16 +247,16 @@ Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-Sys
 
 | Property | Value | Layer | Field | Token |
 | --- | --- | --- | --- | --- |
-| Size | small | Notification Indicator | padding.left | space.xxs |
-| Size | small | Notification Indicator | padding.right | space.xxs |
-| Size | small | Notification Indicator | padding.top | space.xxs |
-| Size | small | Notification Indicator | padding.bottom | space.xxs |
+| Size | small | Notification Indicator | padding.left | space.2xs |
+| Size | small | Notification Indicator | padding.right | space.2xs |
+| Size | small | Notification Indicator | padding.top | space.2xs |
+| Size | small | Notification Indicator | padding.bottom | space.2xs |
 | Size | small | Notification Indicator/2 | fill[0] | — |
 | Size | small | Notification Indicator/2 | fontSize | — |
 | Size | small | Notification Indicator/2 | lineHeight | — |
 | Size | small | Notification Indicator/2 | letterSpacing | — |
 | Size | large | Notification Indicator | cornerRadius | radius.element-sm |
-| Size | large | Notification Indicator | padding.left | space.xxs |
-| Size | large | Notification Indicator | padding.right | space.xxs |
-| Size | large | Notification Indicator | padding.top | space.xxs |
-| Size | large | Notification Indicator | padding.bottom | space.xxs |
+| Size | large | Notification Indicator | padding.left | space.2xs |
+| Size | large | Notification Indicator | padding.right | space.2xs |
+| Size | large | Notification Indicator | padding.top | space.2xs |
+| Size | large | Notification Indicator | padding.bottom | space.2xs |

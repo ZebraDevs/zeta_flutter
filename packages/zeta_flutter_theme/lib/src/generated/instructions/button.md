@@ -131,8 +131,8 @@ Triggers an action from a text label, with optional icons on either side. Eleven
 | Button | strokeWeight | 0 | stroke.base |
 | Button | padding.left | 12 | space.md |
 | Button | padding.right | 12 | space.md |
-| Button | padding.top | 4 | space.xxs |
-| Button | padding.bottom | 4 | space.xxs |
+| Button | padding.top | 4 | space.2xs |
+| Button | padding.bottom | 4 | space.2xs |
 | Button/Label | padding.left | 8 | space.sm |
 | Button/Label | padding.right | 8 | space.sm |
 | Button/Label/Label | fill[0] | #ffffff | interactive.primary.foreground.default |
@@ -148,8 +148,8 @@ Triggers an action from a text label, with optional icons on either side. Eleven
 | Size | large | Button | padding.left | space.lg |
 | Size | large | Button | padding.right | space.lg |
 | Size | small | Button | height | control.sm |
-| Size | small | Button/Label | padding.left | space.xxs |
-| Size | small | Button/Label | padding.right | space.xxs |
+| Size | small | Button/Label | padding.left | space.2xs |
+| Size | small | Button/Label | padding.right | space.2xs |
 | Size | small | Button/Label/Label | fontSize | label.medium.font size |
 | Size | small | Button/Label/Label | lineHeight | label.medium.line height |
 | Size | small | Button/Label/Label | letterSpacing | label.medium.letter spacing |
@@ -310,10 +310,10 @@ Triggers an action from a single glyph, with no text label. Square at every size
 | Icon Button | stroke[0] | #1f69ff | interactive.primary.border.default |
 | Icon Button | cornerRadius | 4 | radius.element-sm |
 | Icon Button | strokeWeight | 0 | stroke.base |
-| Icon Button | padding.left | 4 | space.xxs |
-| Icon Button | padding.right | 4 | space.xxs |
-| Icon Button | padding.top | 4 | space.xxs |
-| Icon Button | padding.bottom | 4 | space.xxs |
+| Icon Button | padding.left | 4 | space.2xs |
+| Icon Button | padding.right | 4 | space.2xs |
+| Icon Button | padding.top | 4 | space.2xs |
+| Icon Button | padding.bottom | 4 | space.2xs |
 
 ### Token changes by property
 

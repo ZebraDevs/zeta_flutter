@@ -22,20 +22,20 @@ Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-Sys
 | Status Label | stroke[0] | #ced2db | border.default |
 | Status Label | cornerRadius | 0 | radius.none |
 | Status Label | strokeWeight | 1 | stroke.thin |
-| Status Label | padding.left | 4 | space.xxs |
-| Status Label | padding.right | 4 | space.xxs |
-| Status Label | padding.top | 4 | space.xxs |
-| Status Label | padding.bottom | 4 | space.xxs |
+| Status Label | padding.left | 4 | space.2xs |
+| Status Label | padding.right | 4 | space.2xs |
+| Status Label | padding.top | 4 | space.2xs |
+| Status Label | padding.bottom | 4 | space.2xs |
 | Status Label/Leading icon | width | 16 | control.icon-sm |
 | Status Label/Leading icon | height | 16 | control.icon-sm |
-| Status Label/Leading icon | padding.left | 4 | space.xxs |
-| Status Label/Leading icon | padding.right | 4 | space.xxs |
-| Status Label/Leading icon | padding.top | 4 | space.xxs |
-| Status Label/Leading icon | padding.bottom | 4 | space.xxs |
+| Status Label/Leading icon | padding.left | 4 | space.2xs |
+| Status Label/Leading icon | padding.right | 4 | space.2xs |
+| Status Label/Leading icon | padding.top | 4 | space.2xs |
+| Status Label/Leading icon | padding.bottom | 4 | space.2xs |
 | Status Label/Leading icon/Status indicator | height | 8 | control.icon-xxs |
 | Status Label/Leading icon/Status indicator | fill[0] | #0c0d0e | foreground.primary |
-| Status Label/Label container | padding.left | 4 | space.xxs |
-| Status Label/Label container | padding.right | 4 | space.xxs |
+| Status Label/Label container | padding.left | 4 | space.2xs |
+| Status Label/Label container | padding.right | 4 | space.2xs |
 | Status Label/Label container/Label | fill[0] | #0c0d0e | foreground.primary |
 | Status Label/Label container/Label | fontSize | 14 | body.small.font size |
 | Status Label/Label container/Label | lineHeight | 18 | body.small.line height |

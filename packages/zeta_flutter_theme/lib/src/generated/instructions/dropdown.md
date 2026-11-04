@@ -26,11 +26,11 @@ Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-Sys
 | Template/Dropdown/Trigger Component/Button | strokeWeight | 0 | stroke.base |
 | Template/Dropdown/Trigger Component/Button | padding.left | 12 | space.md |
 | Template/Dropdown/Trigger Component/Button | padding.right | 12 | space.md |
-| Template/Dropdown/Trigger Component/Button | padding.top | 4 | space.xxs |
-| Template/Dropdown/Trigger Component/Button | padding.bottom | 4 | space.xxs |
+| Template/Dropdown/Trigger Component/Button | padding.top | 4 | space.2xs |
+| Template/Dropdown/Trigger Component/Button | padding.bottom | 4 | space.2xs |
 | Template/Dropdown/Dropdown Menu | fill[0] | #ffffff | surface.menu |
 | Template/Dropdown/Dropdown Menu | cornerRadius | 6 | radius.element-md |
-| Template/Dropdown/Dropdown Menu | itemSpacing | 2 | space.2xs |
+| Template/Dropdown/Dropdown Menu | itemSpacing | 2 | space.3xs |
 | Template/Dropdown/Dropdown Menu | padding.left | 12 | space.card |
 | Template/Dropdown/Dropdown Menu | padding.right | 12 | space.card |
 | Template/Dropdown/Dropdown Menu | padding.top | 12 | space.card |
@@ -127,7 +127,7 @@ A single row inside a Dropdown Menu, with a leading element, a label and an opti
 | --- | --- | --- |
 | Width | Fill | Fills the menu that holds it, drawn at 221px. The row never hugs its label, so the menu's width sets it. |
 | Height | Fixed | 40px on control/md at every variant. |
-| Padding | Fixed per Type | 4px (space/xxs) top and bottom, 12px (space/md) left and right. Checkbox and radio rows use none (space/none) on the leading side, so the 40px control starts at the edge and its box lines up with an Icon row's glyph. |
+| Padding | Fixed per Type | 4px (space/2xs) top and bottom, 12px (space/md) left and right. Checkbox and radio rows use none (space/none) on the leading side, so the 40px control starts at the edge and its box lines up with an Icon row's glyph. |
 | Gap | Fixed | 8px (space/sm) between the leading element, the label and the trailing icon. Checkbox and radio rows use none (space/none), because the control's 40px target already spaces the label. |
 | Label inset | Fixed | The label wrapper adds 4px (space/xs) on its leading edge and reserves 24px (space/xl) on its trailing edge, which keeps labels clear of a trailing icon even when one is not shown. |
 | Radius | Fixed per Rounded | radius/none when false, radius/sm when true. |
@@ -155,9 +155,9 @@ A single row inside a Dropdown Menu, with a leading element, a label and an opti
 | Menu Item | itemSpacing | 8 | space.sm |
 | Menu Item | padding.left | 12 | space.md |
 | Menu Item | padding.right | 12 | space.md |
-| Menu Item | padding.top | 4 | space.xxs |
-| Menu Item | padding.bottom | 4 | space.xxs |
-| Menu Item/Label | padding.left | 4 | space.xxs |
+| Menu Item | padding.top | 4 | space.2xs |
+| Menu Item | padding.bottom | 4 | space.2xs |
+| Menu Item/Label | padding.left | 4 | space.2xs |
 | Menu Item/Label | padding.right | 24 | space.xl |
 | Menu Item/Label/Label | fill[0] | #0c0d0e | interactive.neutral.foreground.default |
 | Menu Item/Label/Label | fontSize | 14 | label.medium.font size |
@@ -257,7 +257,7 @@ The surface a dropdown opens onto, a floating panel holding a list of Menu Item 
 | --- | --- | --- |
 | Size | Hug on both axes | 213×196px at the default density and 201×184px when Compact is true, growing with whatever is placed inside. There is no fixed width, so the longest row sets the panel width. |
 | Padding | Fixed | 12px (space/card) on all four sides, dropping to 6px (space/xs) when Compact is true. |
-| Gap | Fixed | 4px (space/xxs) between rows, both in the built-in stack and inside the slot. The panel's own item spacing is 2px (space/2xs), or none when Compact is true, but it holds a single content frame so that spacing never shows. |
+| Gap | Fixed | 4px (space/2xs) between rows, both in the built-in stack and inside the slot. The panel's own item spacing is 2px (space/3xs), or none when Compact is true, but it holds a single content frame so that spacing never shows. |
 | Radius | Fixed per Rounded | radius/none when Rounded is false, radius/element-md when true. The rows inside take radius/none and radius/sm respectively, a lighter step than the panel itself. |
 | Elevation | Fixed | The Shadow/medium effect style, two stacked drop shadows. Applied to the panel only and unchanged by any property. |
 | Colour | Theming | The panel is surface/menu and binds nothing else. Every other colour in the menu comes from the rows. |
@@ -276,29 +276,29 @@ The surface a dropdown opens onto, a floating panel holding a list of Menu Item 
 | --- | --- | --- | --- |
 | Dropdown Menu | fill[0] | #ffffff | surface.menu |
 | Dropdown Menu | cornerRadius | 0 | radius.none |
-| Dropdown Menu | itemSpacing | 2 | space.2xs |
+| Dropdown Menu | itemSpacing | 2 | space.3xs |
 | Dropdown Menu | padding.left | 12 | space.card |
 | Dropdown Menu | padding.right | 12 | space.card |
 | Dropdown Menu | padding.top | 12 | space.card |
 | Dropdown Menu | padding.bottom | 12 | space.card |
-| Dropdown Menu/Content | itemSpacing | 4 | space.xxs |
+| Dropdown Menu/Content | itemSpacing | 4 | space.2xs |
 | Dropdown Menu/Content/Menu Item[1] | height | 40 | control.md |
 | Dropdown Menu/Content/Menu Item[1] | fill[0] | #0c0d0e00 | interactive.ghost.background.default |
 | Dropdown Menu/Content/Menu Item[1] | cornerRadius | 0 | radius.none |
 | Dropdown Menu/Content/Menu Item[1] | itemSpacing | 8 | space.sm |
 | Dropdown Menu/Content/Menu Item[1] | padding.left | 12 | space.md |
 | Dropdown Menu/Content/Menu Item[1] | padding.right | 12 | space.md |
-| Dropdown Menu/Content/Menu Item[1] | padding.top | 4 | space.xxs |
-| Dropdown Menu/Content/Menu Item[1] | padding.bottom | 4 | space.xxs |
+| Dropdown Menu/Content/Menu Item[1] | padding.top | 4 | space.2xs |
+| Dropdown Menu/Content/Menu Item[1] | padding.bottom | 4 | space.2xs |
 | Dropdown Menu/Content/Menu Item[2] | height | 40 | control.md |
 | Dropdown Menu/Content/Menu Item[2] | fill[0] | #0c0d0e00 | interactive.ghost.background.default |
 | Dropdown Menu/Content/Menu Item[2] | cornerRadius | 0 | radius.none |
 | Dropdown Menu/Content/Menu Item[2] | itemSpacing | 8 | space.sm |
 | Dropdown Menu/Content/Menu Item[2] | padding.left | 12 | space.md |
 | Dropdown Menu/Content/Menu Item[2] | padding.right | 12 | space.md |
-| Dropdown Menu/Content/Menu Item[2] | padding.top | 4 | space.xxs |
-| Dropdown Menu/Content/Menu Item[2] | padding.bottom | 4 | space.xxs |
-| Dropdown Menu/Content/Slot Container | itemSpacing | 4 | space.xxs |
+| Dropdown Menu/Content/Menu Item[2] | padding.top | 4 | space.2xs |
+| Dropdown Menu/Content/Menu Item[2] | padding.bottom | 4 | space.2xs |
+| Dropdown Menu/Content/Slot Container | itemSpacing | 4 | space.2xs |
 
 ### Token changes by property
 

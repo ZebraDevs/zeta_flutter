@@ -83,7 +83,7 @@ A surface anchored to the bottom edge of the screen, holding supplementary conte
 | Padding | Tokenised | space/card below the footer on all three arrangements. |
 | Handle | Fill width | Padded space/lg above and below and space/section at the sides. The bar itself is control/target-min wide at radius/pill, drawn in border/default. |
 | Header | Fixed width | Padded space/gutter above and below and space/section at the sides, with space/sm between the icon and the title. The title is title/medium in foreground/primary. |
-| Content region | Fill | Padded space/md above and below, with space/lg at the sides on list and space/gutter on grid and generic. Items sit space/xxs apart on list, and space/md apart on grid and generic. |
+| Content region | Fill | Padded space/md above and below, with space/lg at the sides on list and space/gutter on grid and generic. Items sit space/2xs apart on list, and space/md apart on grid and generic. |
 | Grid rows | Fill | Three tiles to a row, space/md apart, each taking an equal share of the row width. |
 | Footer | Set to two actions | Its two buttons each fill an equal share of the row. The padding and spacing around them belong to _Card Footer. |
 | Elevation | None defined | No shadow and no scrim sit on the sheet. |
@@ -122,12 +122,12 @@ A surface anchored to the bottom edge of the screen, holding supplementary conte
 | Bottom Sheet/Sheet Handle | padding.right | 24 | space.section |
 | Bottom Sheet/Sheet Handle | padding.top | 16 | space.lg |
 | Bottom Sheet/Sheet Handle | padding.bottom | 16 | space.lg |
-| Bottom Sheet/_Sheet Header | itemSpacing | 4 | space.xxs |
+| Bottom Sheet/_Sheet Header | itemSpacing | 4 | space.2xs |
 | Bottom Sheet/_Sheet Header | padding.left | 16 | space.lg |
 | Bottom Sheet/_Sheet Header | padding.right | 16 | space.lg |
 | Bottom Sheet/_Sheet Header | padding.top | 8 | space.sm |
 | Bottom Sheet/_Sheet Header | padding.bottom | 8 | space.sm |
-| Bottom Sheet/Menu List | itemSpacing | 4 | space.xxs |
+| Bottom Sheet/Menu List | itemSpacing | 4 | space.2xs |
 | Bottom Sheet/Menu List | padding.left | 16 | space.lg |
 | Bottom Sheet/Menu List | padding.right | 16 | space.lg |
 | Bottom Sheet/Menu List | padding.top | 12 | space.md |
@@ -138,48 +138,48 @@ A surface anchored to the bottom edge of the screen, holding supplementary conte
 | Bottom Sheet/Menu List/Menu Item[1] | itemSpacing | 8 | space.sm |
 | Bottom Sheet/Menu List/Menu Item[1] | padding.left | 12 | space.md |
 | Bottom Sheet/Menu List/Menu Item[1] | padding.right | 12 | space.md |
-| Bottom Sheet/Menu List/Menu Item[1] | padding.top | 4 | space.xxs |
-| Bottom Sheet/Menu List/Menu Item[1] | padding.bottom | 4 | space.xxs |
+| Bottom Sheet/Menu List/Menu Item[1] | padding.top | 4 | space.2xs |
+| Bottom Sheet/Menu List/Menu Item[1] | padding.bottom | 4 | space.2xs |
 | Bottom Sheet/Menu List/Menu Item[2] | height | 40 | control.md |
 | Bottom Sheet/Menu List/Menu Item[2] | fill[0] | #0c0d0e00 | interactive.ghost.background.default |
 | Bottom Sheet/Menu List/Menu Item[2] | cornerRadius | 0 | radius.none |
 | Bottom Sheet/Menu List/Menu Item[2] | itemSpacing | 8 | space.sm |
 | Bottom Sheet/Menu List/Menu Item[2] | padding.left | 12 | space.md |
 | Bottom Sheet/Menu List/Menu Item[2] | padding.right | 12 | space.md |
-| Bottom Sheet/Menu List/Menu Item[2] | padding.top | 4 | space.xxs |
-| Bottom Sheet/Menu List/Menu Item[2] | padding.bottom | 4 | space.xxs |
+| Bottom Sheet/Menu List/Menu Item[2] | padding.top | 4 | space.2xs |
+| Bottom Sheet/Menu List/Menu Item[2] | padding.bottom | 4 | space.2xs |
 | Bottom Sheet/Menu List/Menu Item[3] | height | 40 | control.md |
 | Bottom Sheet/Menu List/Menu Item[3] | fill[0] | #0c0d0e00 | interactive.ghost.background.default |
 | Bottom Sheet/Menu List/Menu Item[3] | cornerRadius | 0 | radius.none |
 | Bottom Sheet/Menu List/Menu Item[3] | itemSpacing | 8 | space.sm |
 | Bottom Sheet/Menu List/Menu Item[3] | padding.left | 12 | space.md |
 | Bottom Sheet/Menu List/Menu Item[3] | padding.right | 12 | space.md |
-| Bottom Sheet/Menu List/Menu Item[3] | padding.top | 4 | space.xxs |
-| Bottom Sheet/Menu List/Menu Item[3] | padding.bottom | 4 | space.xxs |
+| Bottom Sheet/Menu List/Menu Item[3] | padding.top | 4 | space.2xs |
+| Bottom Sheet/Menu List/Menu Item[3] | padding.bottom | 4 | space.2xs |
 | Bottom Sheet/Menu List/Menu Item[4] | height | 40 | control.md |
 | Bottom Sheet/Menu List/Menu Item[4] | fill[0] | #0c0d0e00 | interactive.ghost.background.default |
 | Bottom Sheet/Menu List/Menu Item[4] | cornerRadius | 0 | radius.none |
 | Bottom Sheet/Menu List/Menu Item[4] | itemSpacing | 8 | space.sm |
 | Bottom Sheet/Menu List/Menu Item[4] | padding.left | 12 | space.md |
 | Bottom Sheet/Menu List/Menu Item[4] | padding.right | 12 | space.md |
-| Bottom Sheet/Menu List/Menu Item[4] | padding.top | 4 | space.xxs |
-| Bottom Sheet/Menu List/Menu Item[4] | padding.bottom | 4 | space.xxs |
+| Bottom Sheet/Menu List/Menu Item[4] | padding.top | 4 | space.2xs |
+| Bottom Sheet/Menu List/Menu Item[4] | padding.bottom | 4 | space.2xs |
 | Bottom Sheet/Menu List/Menu Item[5] | height | 40 | control.md |
 | Bottom Sheet/Menu List/Menu Item[5] | fill[0] | #0c0d0e00 | interactive.ghost.background.default |
 | Bottom Sheet/Menu List/Menu Item[5] | cornerRadius | 0 | radius.none |
 | Bottom Sheet/Menu List/Menu Item[5] | itemSpacing | 8 | space.sm |
 | Bottom Sheet/Menu List/Menu Item[5] | padding.left | 12 | space.md |
 | Bottom Sheet/Menu List/Menu Item[5] | padding.right | 12 | space.md |
-| Bottom Sheet/Menu List/Menu Item[5] | padding.top | 4 | space.xxs |
-| Bottom Sheet/Menu List/Menu Item[5] | padding.bottom | 4 | space.xxs |
+| Bottom Sheet/Menu List/Menu Item[5] | padding.top | 4 | space.2xs |
+| Bottom Sheet/Menu List/Menu Item[5] | padding.bottom | 4 | space.2xs |
 | Bottom Sheet/Menu List/Menu Item[6] | height | 40 | control.md |
 | Bottom Sheet/Menu List/Menu Item[6] | fill[0] | #0c0d0e00 | interactive.ghost.background.default |
 | Bottom Sheet/Menu List/Menu Item[6] | cornerRadius | 0 | radius.none |
 | Bottom Sheet/Menu List/Menu Item[6] | itemSpacing | 8 | space.sm |
 | Bottom Sheet/Menu List/Menu Item[6] | padding.left | 12 | space.md |
 | Bottom Sheet/Menu List/Menu Item[6] | padding.right | 12 | space.md |
-| Bottom Sheet/Menu List/Menu Item[6] | padding.top | 4 | space.xxs |
-| Bottom Sheet/Menu List/Menu Item[6] | padding.bottom | 4 | space.xxs |
+| Bottom Sheet/Menu List/Menu Item[6] | padding.top | 4 | space.2xs |
+| Bottom Sheet/Menu List/Menu Item[6] | padding.bottom | 4 | space.2xs |
 | Bottom Sheet/_Card Footer | itemSpacing | 8 | space.sm |
 | Bottom Sheet/_Card Footer | padding.left | 16 | space.lg |
 | Bottom Sheet/_Card Footer | padding.right | 16 | space.lg |
@@ -358,7 +358,7 @@ Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-Sys
 
 | Layer | Field | Raw | Token |
 | --- | --- | --- | --- |
-| _Sheet Header | itemSpacing | 4 | space.xxs |
+| _Sheet Header | itemSpacing | 4 | space.2xs |
 | _Sheet Header | padding.left | 16 | space.lg |
 | _Sheet Header | padding.right | 16 | space.lg |
 | _Sheet Header | padding.top | 8 | space.sm |
@@ -369,10 +369,10 @@ Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-Sys
 | _Sheet Header/Icon Button | stroke[0] | #ced2db | interactive.neutral.border.default |
 | _Sheet Header/Icon Button | cornerRadius | 4 | radius.element-sm |
 | _Sheet Header/Icon Button | strokeWeight | 0 | stroke.base |
-| _Sheet Header/Icon Button | padding.left | 4 | space.xxs |
-| _Sheet Header/Icon Button | padding.right | 4 | space.xxs |
-| _Sheet Header/Icon Button | padding.top | 4 | space.xxs |
-| _Sheet Header/Icon Button | padding.bottom | 4 | space.xxs |
+| _Sheet Header/Icon Button | padding.left | 4 | space.2xs |
+| _Sheet Header/Icon Button | padding.right | 4 | space.2xs |
+| _Sheet Header/Icon Button | padding.top | 4 | space.2xs |
+| _Sheet Header/Icon Button | padding.bottom | 4 | space.2xs |
 | _Sheet Header/Sheet Title | fill[0] | #0c0d0e | foreground.primary |
 | _Sheet Header/Sheet Title | fontSize | 16 | title.medium.font size |
 | _Sheet Header/Sheet Title | lineHeight | 20 | title.medium.line height |

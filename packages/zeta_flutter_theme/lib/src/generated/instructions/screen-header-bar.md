@@ -93,7 +93,7 @@ The bar at the top of a screen, carrying a back affordance, the screen's title a
 | Layer | Field | Raw | Token |
 | --- | --- | --- | --- |
 | Screen Header Bar | fill[0] | #0c0d0e00 | interactive.ghost.background.default |
-| Screen Header Bar | itemSpacing | 4 | space.xxs |
+| Screen Header Bar | itemSpacing | 4 | space.2xs |
 | Screen Header Bar | padding.left | 8 | space.sm |
 | Screen Header Bar | padding.right | 12 | space.md |
 | Screen Header Bar | padding.top | 12 | space.md |
@@ -102,16 +102,24 @@ The bar at the top of a screen, carrying a back affordance, the screen's title a
 | Screen Header Bar/Leading Icon | height | 40 | control.md |
 | Screen Header Bar/Leading Icon | fill[0] | #0c0d0e00 | interactive.ghost.background.default |
 | Screen Header Bar/Leading Icon | stroke[0] | #ced2db | interactive.neutral.border.default |
-| Screen Header Bar/Leading Icon | cornerRadius | 0 | radius.none |
+| Screen Header Bar/Leading Icon | cornerRadius | 4 | radius.element-sm |
 | Screen Header Bar/Leading Icon | strokeWeight | 0 | stroke.base |
-| Screen Header Bar/Leading Icon | padding.left | 4 | space.xxs |
-| Screen Header Bar/Leading Icon | padding.right | 4 | space.xxs |
-| Screen Header Bar/Leading Icon | padding.top | 4 | space.xxs |
-| Screen Header Bar/Leading Icon | padding.bottom | 4 | space.xxs |
+| Screen Header Bar/Leading Icon | padding.left | 4 | space.2xs |
+| Screen Header Bar/Leading Icon | padding.right | 4 | space.2xs |
+| Screen Header Bar/Leading Icon | padding.top | 4 | space.2xs |
+| Screen Header Bar/Leading Icon | padding.bottom | 4 | space.2xs |
 | Screen Header Bar/Heading Content | itemSpacing | 2 | space.2xs |
+| Screen Header Bar/Heading Content | padding.left | 16 | space.gutter |
+| Screen Header Bar/Heading Content | padding.right | 16 | space.gutter |
 | Screen Header Bar/Heading Content/Title | itemSpacing | 4 | space.xs |
 | Screen Header Bar/Heading Content/Title/Add Subscribers | fill[0] | #0c0d0e | foreground.primary |
 | Screen Header Bar/Heading Content/Title/Add Subscribers | fontSize | 20 | — |
 | Screen Header Bar/Heading Content/Title/Add Subscribers | lineHeight | 24 | — |
 | Screen Header Bar/Heading Content/Title/Add Subscribers | letterSpacing | 0 | — |
-| Screen Header Bar/Action Slot | itemSpacing | 4 | space.xxs |
+| Screen Header Bar/Action Slot | itemSpacing | 4 | space.2xs |
+
+### Token changes by property
+
+| Property | Value | Layer | Field | Token |
+| --- | --- | --- | --- | --- |
+| Rounded | false | Screen Header Bar/Leading Icon | cornerRadius | radius.none |

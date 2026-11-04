@@ -93,8 +93,8 @@ A short floating message that names what an adjacent control does. Point decides
 | Tooltip | cornerRadius | 4 | radius.sm |
 | Tooltip | padding.left | 8 | space.sm |
 | Tooltip | padding.right | 8 | space.sm |
-| Tooltip | padding.top | 4 | space.xxs |
-| Tooltip | padding.bottom | 4 | space.xxs |
+| Tooltip | padding.top | 4 | space.2xs |
+| Tooltip | padding.bottom | 4 | space.2xs |
 | Tooltip/Label | fill[0] | #ffffff | foreground.inverse |
 | Tooltip/Label | fontSize | 12 | label.small.font size |
 | Tooltip/Label | lineHeight | 16 | label.small.line height |

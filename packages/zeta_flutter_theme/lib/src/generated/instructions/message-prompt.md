@@ -178,37 +178,37 @@ The composer for a message prompt. One State property moves it between typing, d
 | Message Input | padding.bottom | 12 | space.md |
 | Message Input/Text | padding.left | 12 | space.md |
 | Message Input/Text | padding.right | 12 | space.md |
-| Message Input/Text | padding.top | 4 | space.xxs |
-| Message Input/Text | padding.bottom | 4 | space.xxs |
+| Message Input/Text | padding.top | 4 | space.2xs |
+| Message Input/Text | padding.bottom | 4 | space.2xs |
 | Message Input/Text/Value | fill[0] | #8d95a3 | foreground.disabled |
 | Message Input/Text/Value | fontSize | 16 | body.medium.font size |
 | Message Input/Text/Value | lineHeight | 24 | body.medium.line height |
 | Message Input/Text/Value | letterSpacing | 0 | body.medium.letter spacing |
 | Message Input/Toolbar | itemSpacing | 8 | — |
-| Message Input/Toolbar/Tools | itemSpacing | 4 | space.xxs |
-| Message Input/Toolbar/Tools/Attachment | itemSpacing | 4 | space.xxs |
-| Message Input/Toolbar/Tools/More Tools Slot | itemSpacing | 4 | space.xxs |
-| Message Input/Toolbar/Actions | itemSpacing | 4 | space.xxs |
+| Message Input/Toolbar/Tools | itemSpacing | 4 | space.2xs |
+| Message Input/Toolbar/Tools/Attachment | itemSpacing | 4 | space.2xs |
+| Message Input/Toolbar/Tools/More Tools Slot | itemSpacing | 4 | space.2xs |
+| Message Input/Toolbar/Actions | itemSpacing | 4 | space.2xs |
 | Message Input/Toolbar/Actions/Dictate | width | 36 | control.sm |
 | Message Input/Toolbar/Actions/Dictate | height | 36 | control.sm |
 | Message Input/Toolbar/Actions/Dictate | fill[0] | #0c0d0e00 | interactive.ghost.background.default |
 | Message Input/Toolbar/Actions/Dictate | stroke[0] | #ced2db | interactive.neutral.border.default |
 | Message Input/Toolbar/Actions/Dictate | cornerRadius | 9999 | radius.pill |
 | Message Input/Toolbar/Actions/Dictate | strokeWeight | 0 | stroke.base |
-| Message Input/Toolbar/Actions/Dictate | padding.left | 4 | space.xxs |
-| Message Input/Toolbar/Actions/Dictate | padding.right | 4 | space.xxs |
-| Message Input/Toolbar/Actions/Dictate | padding.top | 4 | space.xxs |
-| Message Input/Toolbar/Actions/Dictate | padding.bottom | 4 | space.xxs |
+| Message Input/Toolbar/Actions/Dictate | padding.left | 4 | space.2xs |
+| Message Input/Toolbar/Actions/Dictate | padding.right | 4 | space.2xs |
+| Message Input/Toolbar/Actions/Dictate | padding.top | 4 | space.2xs |
+| Message Input/Toolbar/Actions/Dictate | padding.bottom | 4 | space.2xs |
 | Message Input/Toolbar/Actions/Send | width | 36 | control.sm |
 | Message Input/Toolbar/Actions/Send | height | 36 | control.sm |
 | Message Input/Toolbar/Actions/Send | fill[0] | #e0e3e9 | interactive.primary.background.disabled |
 | Message Input/Toolbar/Actions/Send | stroke[0] | #e0e3e9 | interactive.primary.border.disabled |
 | Message Input/Toolbar/Actions/Send | cornerRadius | 9999 | radius.pill |
 | Message Input/Toolbar/Actions/Send | strokeWeight | 0 | stroke.base |
-| Message Input/Toolbar/Actions/Send | padding.left | 4 | space.xxs |
-| Message Input/Toolbar/Actions/Send | padding.right | 4 | space.xxs |
-| Message Input/Toolbar/Actions/Send | padding.top | 4 | space.xxs |
-| Message Input/Toolbar/Actions/Send | padding.bottom | 4 | space.xxs |
+| Message Input/Toolbar/Actions/Send | padding.left | 4 | space.2xs |
+| Message Input/Toolbar/Actions/Send | padding.right | 4 | space.2xs |
+| Message Input/Toolbar/Actions/Send | padding.top | 4 | space.2xs |
+| Message Input/Toolbar/Actions/Send | padding.bottom | 4 | space.2xs |
 
 ### Token changes by property
 
@@ -217,11 +217,11 @@ The composer for a message prompt. One State property moves it between typing, d
 | State | filled | Message Input/Text/Value | fill[0] | foreground.primary |
 | State | filled | Message Input/Toolbar/Actions/Send | fill[0] | interactive.primary.background.default |
 | State | filled | Message Input/Toolbar/Actions/Send | stroke[0] | interactive.primary.border.default |
-| State | filled | Message Input/Attachment File Slot | itemSpacing | space.xxs |
+| State | filled | Message Input/Attachment File Slot | itemSpacing | space.2xs |
 | State | attachment-open | Message Input/Toolbar/Tools/More Tools Slot | itemSpacing | — |
 | State | attachment-open | Message Input/Toolbar/Actions/Send | fill[0] | interactive.primary.background.default |
 | State | attachment-open | Message Input/Toolbar/Actions/Send | stroke[0] | interactive.primary.border.default |
-| State | attachment-open | Message Input/Attachment File Slot | itemSpacing | space.xxs |
+| State | attachment-open | Message Input/Attachment File Slot | itemSpacing | space.2xs |
 | State | listening | Message Input/Text | padding.left | — |
 | State | listening | Message Input/Text | padding.right | — |
 | State | listening | Message Input/Text | padding.top | — |
@@ -246,11 +246,11 @@ The composer for a message prompt. One State property moves it between typing, d
 | State | listening | Message Input/Voice/Voice Bar | cornerRadius | radius.element-md |
 | State | listening | Message Input/Voice/Voice Bar | itemSpacing | space.sm |
 | State | listening | Message Input/Voice/Voice Bar | padding.left | space.md |
-| State | listening | Message Input/Voice/Voice Bar | padding.right | space.xxs |
-| State | listening | Message Input/Voice/Voice Bar | padding.top | space.xxs |
-| State | listening | Message Input/Voice/Voice Bar | padding.bottom | space.xxs |
+| State | listening | Message Input/Voice/Voice Bar | padding.right | space.2xs |
+| State | listening | Message Input/Voice/Voice Bar | padding.top | space.2xs |
+| State | listening | Message Input/Voice/Voice Bar | padding.bottom | space.2xs |
 | State | listening | Message Input/Voice/Voice Bar/Waveform | height | control.icon-md |
-| State | listening | Message Input/Voice/Voice Bar/Waveform | itemSpacing | space.2xs |
+| State | listening | Message Input/Voice/Voice Bar/Waveform | itemSpacing | space.3xs |
 | State | listening | Message Input/Voice/Voice Bar/Waveform/Level[1] | width | stroke.thick |
 | State | listening | Message Input/Voice/Voice Bar/Waveform/Level[1] | fill[0] | foreground.primary |
 | State | listening | Message Input/Voice/Voice Bar/Waveform/Level[1] | cornerRadius | radius.pill |
@@ -292,10 +292,10 @@ The composer for a message prompt. One State property moves it between typing, d
 | State | listening | Message Input/Voice/Voice Bar/Cancel dictation | stroke[0] | interactive.neutral.border.default |
 | State | listening | Message Input/Voice/Voice Bar/Cancel dictation | cornerRadius | radius.pill |
 | State | listening | Message Input/Voice/Voice Bar/Cancel dictation | strokeWeight | stroke.base |
-| State | listening | Message Input/Voice/Voice Bar/Cancel dictation | padding.left | space.xxs |
-| State | listening | Message Input/Voice/Voice Bar/Cancel dictation | padding.right | space.xxs |
-| State | listening | Message Input/Voice/Voice Bar/Cancel dictation | padding.top | space.xxs |
-| State | listening | Message Input/Voice/Voice Bar/Cancel dictation | padding.bottom | space.xxs |
+| State | listening | Message Input/Voice/Voice Bar/Cancel dictation | padding.left | space.2xs |
+| State | listening | Message Input/Voice/Voice Bar/Cancel dictation | padding.right | space.2xs |
+| State | listening | Message Input/Voice/Voice Bar/Cancel dictation | padding.top | space.2xs |
+| State | listening | Message Input/Voice/Voice Bar/Cancel dictation | padding.bottom | space.2xs |
 | State | listening | Message Input/Voice/Hint | fill[0] | foreground.secondary |
 | State | listening | Message Input/Voice/Hint | fontSize | body.xsmall.font size |
 | State | listening | Message Input/Voice/Hint | lineHeight | body.xsmall.line height |
@@ -306,10 +306,10 @@ The composer for a message prompt. One State property moves it between typing, d
 | State | listening | Message Input/Toolbar/Actions/Stop | stroke[0] | interactive.primary.border.default |
 | State | listening | Message Input/Toolbar/Actions/Stop | cornerRadius | radius.pill |
 | State | listening | Message Input/Toolbar/Actions/Stop | strokeWeight | stroke.base |
-| State | listening | Message Input/Toolbar/Actions/Stop | padding.left | space.xxs |
-| State | listening | Message Input/Toolbar/Actions/Stop | padding.right | space.xxs |
-| State | listening | Message Input/Toolbar/Actions/Stop | padding.top | space.xxs |
-| State | listening | Message Input/Toolbar/Actions/Stop | padding.bottom | space.xxs |
+| State | listening | Message Input/Toolbar/Actions/Stop | padding.left | space.2xs |
+| State | listening | Message Input/Toolbar/Actions/Stop | padding.right | space.2xs |
+| State | listening | Message Input/Toolbar/Actions/Stop | padding.top | space.2xs |
+| State | listening | Message Input/Toolbar/Actions/Stop | padding.bottom | space.2xs |
 | State | transcribing | Message Input/Text | padding.left | — |
 | State | transcribing | Message Input/Text | padding.right | — |
 | State | transcribing | Message Input/Text | padding.top | — |
@@ -325,9 +325,9 @@ The composer for a message prompt. One State property moves it between typing, d
 | State | transcribing | Message Input/Voice/Voice Bar | cornerRadius | radius.element-md |
 | State | transcribing | Message Input/Voice/Voice Bar | itemSpacing | space.sm |
 | State | transcribing | Message Input/Voice/Voice Bar | padding.left | space.md |
-| State | transcribing | Message Input/Voice/Voice Bar | padding.right | space.xxs |
-| State | transcribing | Message Input/Voice/Voice Bar | padding.top | space.xxs |
-| State | transcribing | Message Input/Voice/Voice Bar | padding.bottom | space.xxs |
+| State | transcribing | Message Input/Voice/Voice Bar | padding.right | space.2xs |
+| State | transcribing | Message Input/Voice/Voice Bar | padding.top | space.2xs |
+| State | transcribing | Message Input/Voice/Voice Bar | padding.bottom | space.2xs |
 | State | transcribing | Message Input/Voice/Voice Bar/Label | fill[0] | foreground.primary |
 | State | transcribing | Message Input/Voice/Voice Bar/Label | fontSize | body.medium.font size |
 | State | transcribing | Message Input/Voice/Voice Bar/Label | lineHeight | body.medium.line height |
@@ -338,10 +338,10 @@ The composer for a message prompt. One State property moves it between typing, d
 | State | transcribing | Message Input/Voice/Voice Bar/Cancel transcription | stroke[0] | interactive.neutral.border.default |
 | State | transcribing | Message Input/Voice/Voice Bar/Cancel transcription | cornerRadius | radius.pill |
 | State | transcribing | Message Input/Voice/Voice Bar/Cancel transcription | strokeWeight | stroke.base |
-| State | transcribing | Message Input/Voice/Voice Bar/Cancel transcription | padding.left | space.xxs |
-| State | transcribing | Message Input/Voice/Voice Bar/Cancel transcription | padding.right | space.xxs |
-| State | transcribing | Message Input/Voice/Voice Bar/Cancel transcription | padding.top | space.xxs |
-| State | transcribing | Message Input/Voice/Voice Bar/Cancel transcription | padding.bottom | space.xxs |
+| State | transcribing | Message Input/Voice/Voice Bar/Cancel transcription | padding.left | space.2xs |
+| State | transcribing | Message Input/Voice/Voice Bar/Cancel transcription | padding.right | space.2xs |
+| State | transcribing | Message Input/Voice/Voice Bar/Cancel transcription | padding.top | space.2xs |
+| State | transcribing | Message Input/Voice/Voice Bar/Cancel transcription | padding.bottom | space.2xs |
 | State | transcribing | Message Input/Voice/Hint | fill[0] | foreground.secondary |
 | State | transcribing | Message Input/Voice/Hint | fontSize | body.xsmall.font size |
 | State | transcribing | Message Input/Voice/Hint | lineHeight | body.xsmall.line height |
@@ -349,12 +349,12 @@ The composer for a message prompt. One State property moves it between typing, d
 | State | dictated | Message Input/Text/Value | fill[0] | foreground.primary |
 | State | dictated | Message Input/Toolbar/Actions/Send | fill[0] | interactive.primary.background.default |
 | State | dictated | Message Input/Toolbar/Actions/Send | stroke[0] | interactive.primary.border.default |
-| State | dictated | Message Input/Attachment Slot | itemSpacing | space.xxs |
+| State | dictated | Message Input/Attachment Slot | itemSpacing | space.2xs |
 | State | dictated | Message Input/Attachment Slot/Assist Chip | fill[0] | interactive.neutral.background.default |
 | State | dictated | Message Input/Attachment Slot/Assist Chip | stroke[0] | border.info |
 | State | dictated | Message Input/Attachment Slot/Assist Chip | cornerRadius | radius.pill |
 | State | dictated | Message Input/Attachment Slot/Assist Chip | strokeWeight | stroke.thin |
-| State | dictated | Message Input/Attachment Slot/Assist Chip | itemSpacing | space.2xs |
+| State | dictated | Message Input/Attachment Slot/Assist Chip | itemSpacing | space.3xs |
 | State | dictated | Message Input/Attachment Slot/Assist Chip | padding.left | space.sm |
 | State | dictated | Message Input/Attachment Slot/Assist Chip | padding.right | space.sm |
 | State | dictated | Message Input/Attachment Slot/Assist Chip | padding.top | space.xs |
@@ -382,14 +382,14 @@ The composer for a message prompt. One State property moves it between typing, d
 | State | recording | Message Input/Voice/Voice Bar | cornerRadius | radius.element-md |
 | State | recording | Message Input/Voice/Voice Bar | itemSpacing | space.sm |
 | State | recording | Message Input/Voice/Voice Bar | padding.left | space.md |
-| State | recording | Message Input/Voice/Voice Bar | padding.right | space.xxs |
-| State | recording | Message Input/Voice/Voice Bar | padding.top | space.xxs |
-| State | recording | Message Input/Voice/Voice Bar | padding.bottom | space.xxs |
+| State | recording | Message Input/Voice/Voice Bar | padding.right | space.2xs |
+| State | recording | Message Input/Voice/Voice Bar | padding.top | space.2xs |
+| State | recording | Message Input/Voice/Voice Bar | padding.bottom | space.2xs |
 | State | recording | Message Input/Voice/Voice Bar/Recording Dot | width | space.sm |
 | State | recording | Message Input/Voice/Voice Bar/Recording Dot | height | space.sm |
 | State | recording | Message Input/Voice/Voice Bar/Recording Dot | fill[0] | foreground.error |
 | State | recording | Message Input/Voice/Voice Bar/Waveform | height | control.icon-md |
-| State | recording | Message Input/Voice/Voice Bar/Waveform | itemSpacing | space.2xs |
+| State | recording | Message Input/Voice/Voice Bar/Waveform | itemSpacing | space.3xs |
 | State | recording | Message Input/Voice/Voice Bar/Waveform/Level[1] | width | stroke.thick |
 | State | recording | Message Input/Voice/Voice Bar/Waveform/Level[1] | fill[0] | foreground.primary |
 | State | recording | Message Input/Voice/Voice Bar/Waveform/Level[1] | cornerRadius | radius.pill |
@@ -431,10 +431,10 @@ The composer for a message prompt. One State property moves it between typing, d
 | State | recording | Message Input/Voice/Voice Bar/Discard recording | stroke[0] | interactive.neutral.border.default |
 | State | recording | Message Input/Voice/Voice Bar/Discard recording | cornerRadius | radius.pill |
 | State | recording | Message Input/Voice/Voice Bar/Discard recording | strokeWeight | stroke.base |
-| State | recording | Message Input/Voice/Voice Bar/Discard recording | padding.left | space.xxs |
-| State | recording | Message Input/Voice/Voice Bar/Discard recording | padding.right | space.xxs |
-| State | recording | Message Input/Voice/Voice Bar/Discard recording | padding.top | space.xxs |
-| State | recording | Message Input/Voice/Voice Bar/Discard recording | padding.bottom | space.xxs |
+| State | recording | Message Input/Voice/Voice Bar/Discard recording | padding.left | space.2xs |
+| State | recording | Message Input/Voice/Voice Bar/Discard recording | padding.right | space.2xs |
+| State | recording | Message Input/Voice/Voice Bar/Discard recording | padding.top | space.2xs |
+| State | recording | Message Input/Voice/Voice Bar/Discard recording | padding.bottom | space.2xs |
 | State | recording | Message Input/Voice/Hint | fill[0] | foreground.secondary |
 | State | recording | Message Input/Voice/Hint | fontSize | body.xsmall.font size |
 | State | recording | Message Input/Voice/Hint | lineHeight | body.xsmall.line height |
@@ -445,10 +445,10 @@ The composer for a message prompt. One State property moves it between typing, d
 | State | recording | Message Input/Toolbar/Actions/Stop | stroke[0] | interactive.primary.border.default |
 | State | recording | Message Input/Toolbar/Actions/Stop | cornerRadius | radius.pill |
 | State | recording | Message Input/Toolbar/Actions/Stop | strokeWeight | stroke.base |
-| State | recording | Message Input/Toolbar/Actions/Stop | padding.left | space.xxs |
-| State | recording | Message Input/Toolbar/Actions/Stop | padding.right | space.xxs |
-| State | recording | Message Input/Toolbar/Actions/Stop | padding.top | space.xxs |
-| State | recording | Message Input/Toolbar/Actions/Stop | padding.bottom | space.xxs |
+| State | recording | Message Input/Toolbar/Actions/Stop | padding.left | space.2xs |
+| State | recording | Message Input/Toolbar/Actions/Stop | padding.right | space.2xs |
+| State | recording | Message Input/Toolbar/Actions/Stop | padding.top | space.2xs |
+| State | recording | Message Input/Toolbar/Actions/Stop | padding.bottom | space.2xs |
 | State | playback | Message Input/Text | padding.left | — |
 | State | playback | Message Input/Text | padding.right | — |
 | State | playback | Message Input/Text | padding.top | — |
@@ -473,22 +473,22 @@ The composer for a message prompt. One State property moves it between typing, d
 | State | playback | Message Input/Voice/Voice Bar | fill[0] | surface.track |
 | State | playback | Message Input/Voice/Voice Bar | cornerRadius | radius.element-md |
 | State | playback | Message Input/Voice/Voice Bar | itemSpacing | space.sm |
-| State | playback | Message Input/Voice/Voice Bar | padding.left | space.xxs |
-| State | playback | Message Input/Voice/Voice Bar | padding.right | space.xxs |
-| State | playback | Message Input/Voice/Voice Bar | padding.top | space.xxs |
-| State | playback | Message Input/Voice/Voice Bar | padding.bottom | space.xxs |
+| State | playback | Message Input/Voice/Voice Bar | padding.left | space.2xs |
+| State | playback | Message Input/Voice/Voice Bar | padding.right | space.2xs |
+| State | playback | Message Input/Voice/Voice Bar | padding.top | space.2xs |
+| State | playback | Message Input/Voice/Voice Bar | padding.bottom | space.2xs |
 | State | playback | Message Input/Voice/Voice Bar/Play | width | control.sm |
 | State | playback | Message Input/Voice/Voice Bar/Play | height | control.sm |
 | State | playback | Message Input/Voice/Voice Bar/Play | fill[0] | interactive.primary.background.default |
 | State | playback | Message Input/Voice/Voice Bar/Play | stroke[0] | interactive.primary.border.default |
 | State | playback | Message Input/Voice/Voice Bar/Play | cornerRadius | radius.pill |
 | State | playback | Message Input/Voice/Voice Bar/Play | strokeWeight | stroke.base |
-| State | playback | Message Input/Voice/Voice Bar/Play | padding.left | space.xxs |
-| State | playback | Message Input/Voice/Voice Bar/Play | padding.right | space.xxs |
-| State | playback | Message Input/Voice/Voice Bar/Play | padding.top | space.xxs |
-| State | playback | Message Input/Voice/Voice Bar/Play | padding.bottom | space.xxs |
+| State | playback | Message Input/Voice/Voice Bar/Play | padding.left | space.2xs |
+| State | playback | Message Input/Voice/Voice Bar/Play | padding.right | space.2xs |
+| State | playback | Message Input/Voice/Voice Bar/Play | padding.top | space.2xs |
+| State | playback | Message Input/Voice/Voice Bar/Play | padding.bottom | space.2xs |
 | State | playback | Message Input/Voice/Voice Bar/Waveform | height | control.icon-md |
-| State | playback | Message Input/Voice/Voice Bar/Waveform | itemSpacing | space.2xs |
+| State | playback | Message Input/Voice/Voice Bar/Waveform | itemSpacing | space.3xs |
 | State | playback | Message Input/Voice/Voice Bar/Waveform/Level[1] | width | stroke.thick |
 | State | playback | Message Input/Voice/Voice Bar/Waveform/Level[1] | fill[0] | foreground.primary |
 | State | playback | Message Input/Voice/Voice Bar/Waveform/Level[1] | cornerRadius | radius.pill |
@@ -571,20 +571,20 @@ The composer for a message prompt. One State property moves it between typing, d
 | State | playback | Message Input/Voice/Voice Bar/Record again | stroke[0] | interactive.neutral.border.default |
 | State | playback | Message Input/Voice/Voice Bar/Record again | cornerRadius | radius.pill |
 | State | playback | Message Input/Voice/Voice Bar/Record again | strokeWeight | stroke.base |
-| State | playback | Message Input/Voice/Voice Bar/Record again | padding.left | space.xxs |
-| State | playback | Message Input/Voice/Voice Bar/Record again | padding.right | space.xxs |
-| State | playback | Message Input/Voice/Voice Bar/Record again | padding.top | space.xxs |
-| State | playback | Message Input/Voice/Voice Bar/Record again | padding.bottom | space.xxs |
+| State | playback | Message Input/Voice/Voice Bar/Record again | padding.left | space.2xs |
+| State | playback | Message Input/Voice/Voice Bar/Record again | padding.right | space.2xs |
+| State | playback | Message Input/Voice/Voice Bar/Record again | padding.top | space.2xs |
+| State | playback | Message Input/Voice/Voice Bar/Record again | padding.bottom | space.2xs |
 | State | playback | Message Input/Voice/Voice Bar/Delete voice message | width | control.sm |
 | State | playback | Message Input/Voice/Voice Bar/Delete voice message | height | control.sm |
 | State | playback | Message Input/Voice/Voice Bar/Delete voice message | fill[0] | interactive.ghost.background.default |
 | State | playback | Message Input/Voice/Voice Bar/Delete voice message | stroke[0] | interactive.neutral.border.default |
 | State | playback | Message Input/Voice/Voice Bar/Delete voice message | cornerRadius | radius.pill |
 | State | playback | Message Input/Voice/Voice Bar/Delete voice message | strokeWeight | stroke.base |
-| State | playback | Message Input/Voice/Voice Bar/Delete voice message | padding.left | space.xxs |
-| State | playback | Message Input/Voice/Voice Bar/Delete voice message | padding.right | space.xxs |
-| State | playback | Message Input/Voice/Voice Bar/Delete voice message | padding.top | space.xxs |
-| State | playback | Message Input/Voice/Voice Bar/Delete voice message | padding.bottom | space.xxs |
+| State | playback | Message Input/Voice/Voice Bar/Delete voice message | padding.left | space.2xs |
+| State | playback | Message Input/Voice/Voice Bar/Delete voice message | padding.right | space.2xs |
+| State | playback | Message Input/Voice/Voice Bar/Delete voice message | padding.top | space.2xs |
+| State | playback | Message Input/Voice/Voice Bar/Delete voice message | padding.bottom | space.2xs |
 | State | playback | Message Input/Voice/Hint | fill[0] | foreground.secondary |
 | State | playback | Message Input/Voice/Hint | fontSize | body.xsmall.font size |
 | State | playback | Message Input/Voice/Hint | lineHeight | body.xsmall.line height |
@@ -623,7 +623,7 @@ The composer for a message prompt. One State property moves it between typing, d
 | State | speaking | Message Input/Toolbar/Actions/Send | padding.bottom | — |
 | State | speaking | Message Input/Speaking | itemSpacing | space.md |
 | State | speaking | Message Input/Speaking | padding.top | space.md |
-| State | speaking | Message Input/Speaking | padding.bottom | space.xxs |
+| State | speaking | Message Input/Speaking | padding.bottom | space.2xs |
 | State | speaking | Message Input/Speaking/Orb/Ring 1 | stroke[0] | linear-gradient(90deg, surface.gradient.start 0%, surface.gradient.end 100%) |
 | State | speaking | Message Input/Speaking/Orb/Ring 2 | stroke[0] | linear-gradient(90deg, surface.gradient.start 0%, surface.gradient.end 100%) |
 | State | speaking | Message Input/Speaking/Orb/Ring 3 | stroke[0] | linear-gradient(90deg, surface.gradient.start 0%, surface.gradient.end 100%) |
@@ -638,10 +638,10 @@ The composer for a message prompt. One State property moves it between typing, d
 | State | speaking | Message Input/Speaking/Stop speaking | height | control.sm |
 | State | speaking | Message Input/Speaking/Stop speaking | fill[0] | surface.track |
 | State | speaking | Message Input/Speaking/Stop speaking | cornerRadius | radius.pill |
-| State | speaking | Message Input/Speaking/Stop speaking | padding.left | space.xxs |
-| State | speaking | Message Input/Speaking/Stop speaking | padding.right | space.xxs |
-| State | speaking | Message Input/Speaking/Stop speaking | padding.top | space.xxs |
-| State | speaking | Message Input/Speaking/Stop speaking | padding.bottom | space.xxs |
+| State | speaking | Message Input/Speaking/Stop speaking | padding.left | space.2xs |
+| State | speaking | Message Input/Speaking/Stop speaking | padding.right | space.2xs |
+| State | speaking | Message Input/Speaking/Stop speaking | padding.top | space.2xs |
+| State | speaking | Message Input/Speaking/Stop speaking | padding.bottom | space.2xs |
 | State | disabled | Message Input | fill[0] | interactive.neutral.background.disabled |
 | State | disabled | Message Input | stroke[0] | border.disabled |
 | State | disabled | Message Input/Toolbar/Actions/Dictate | fill[0] | interactive.ghost.background.disabled |
@@ -726,20 +726,20 @@ The attachment control in Message Input's toolbar. Closed it is a single add but
 
 | Layer | Field | Raw | Token |
 | --- | --- | --- | --- |
-| Attachment | itemSpacing | 4 | space.xxs |
+| Attachment | itemSpacing | 4 | space.2xs |
 | Attachment/Icon Button | height | 36 | control.sm |
 | Attachment/Icon Button | fill[0] | #0c0d0e00 | interactive.ghost.background.default |
 | Attachment/Icon Button | stroke[0] | #ced2db | interactive.neutral.border.default |
 | Attachment/Icon Button | cornerRadius | 9999 | radius.pill |
 | Attachment/Icon Button | strokeWeight | 0 | stroke.base |
-| Attachment/Icon Button | padding.left | 4 | space.xxs |
-| Attachment/Icon Button | padding.right | 4 | space.xxs |
-| Attachment/Icon Button | padding.top | 4 | space.xxs |
-| Attachment/Icon Button | padding.bottom | 4 | space.xxs |
+| Attachment/Icon Button | padding.left | 4 | space.2xs |
+| Attachment/Icon Button | padding.right | 4 | space.2xs |
+| Attachment/Icon Button | padding.top | 4 | space.2xs |
+| Attachment/Icon Button | padding.bottom | 4 | space.2xs |
 
 ### Token changes by property
 
 | Property | Value | Layer | Field | Token |
 | --- | --- | --- | --- | --- |
 | Open | true | Attachment/Icon Button | fill[0] | interactive.ghost.background.pressed |
-| Open | true | Attachment/Attachment Control Slot | itemSpacing | space.xxs |
+| Open | true | Attachment/Attachment Control Slot | itemSpacing | space.2xs |

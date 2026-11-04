@@ -20,7 +20,7 @@ A horizontal track that fills to show how far an ongoing process has got. Progre
 | Shape | rounded | true | Softened ends on both the track and the fill, matching the system's rounded controls. |
 | Shape | sharp | - | Square ends, for a bar sitting flush against square surfaces. Beside rounded controls the two treatments read as different components. |
 | Size | small | true | The everyday bar, thin enough to sit under a label without dominating it. |
-| Size | medium | - | A heavier bar for when progress is the main thing on the surface rather than a detail beside other content. |
+| Size | large | - | A heavier bar for when progress is the main thing on the surface rather than a detail beside other content. |
 | Show Label | true | true | Shows the text row above the bar. The wording is fixed by the Progress value rather than set as a property, so it changes when the value does. |
 | Show Label | false | - | Hides the row, leaving the bar alone. Only do this where nearby copy already names the task, because a bar on its own reports a proportion and not a subject. |
 | Show Track | true | true | Shows the unfilled remainder behind the indicator, which is what makes the proportion readable. |
@@ -81,9 +81,9 @@ A horizontal track that fills to show how far an ongoing process has got. Progre
 | Property | Type | Description |
 | --- | --- | --- |
 | Width | Fixed | 408px as drawn. The bar does not hug its content, so whoever places it decides the width. |
-| Height | Hug per Size | 44px at small and 52px at medium with the label shown. The difference is the indicator group, which is 8px at small and 16px at medium. |
+| Height | Hug per Size | 44px at small and 52px at large with the label shown. The difference is the indicator group, which is 8px at small and 16px at large. |
 | Gap | Fixed | 16px (space/lg) between the label row and the indicator group. The label row's own internal gap is a raw 10px rather than a token. |
-| Radius | Fixed per Shape and Size | The track and indicator take radius/sm at small and radius/md at medium while Shape is rounded, and radius/none while it is sharp. The radius scales with thickness so the ends stay fully round. |
+| Radius | Fixed per Shape and Size | The track and indicator take radius/sm at small and radius/md at large while Shape is rounded, and radius/none while it is sharp. The radius scales with thickness so the ends stay fully round. |
 | Indicator width | Fixed per Progress | The indicator's width is the value expressed as a share of the 408px track. Figma samples it at 0, 204 and 408px because a variant cannot carry a number, and both Indeterminate and Buffering draw a fixed 143px segment instead. |
 | Buffered band | Fixed | Buffering adds a 306px band on surface/subtle at 10 percent opacity, between the indicator and the end of the track. |
 | Label type | Fixed | label/medium (14/20), IBM Plex Sans Medium. |
@@ -111,7 +111,7 @@ A horizontal track that fills to show how far an ongoing process has got. Progre
 | Progress Bar/Details/Label | fontSize | 14 | label.medium.font size |
 | Progress Bar/Details/Label | lineHeight | 20 | label.medium.line height |
 | Progress Bar/Details/Label | letterSpacing | 0 | label.medium.letter spacing |
-| Progress Bar/Details/Right Slot | itemSpacing | 4 | space.xxs |
+| Progress Bar/Details/Right Slot | itemSpacing | 4 | space.2xs |
 | Progress Bar/Indicator Group | cornerRadius | 4 | radius.sm |
 | Progress Bar/Indicator Group | padding.right | 408 | — |
 | Progress Bar/Indicator Group/Indicator | fill[0] | #1f69ff | foreground.link |
@@ -129,9 +129,9 @@ A horizontal track that fills to show how far an ongoing process has got. Progre
 | Progress | Buffering | Progress Bar/Indicator Group/Rail | cornerRadius | radius.sm |
 | Shape | sharp | Progress Bar/Indicator Group/Indicator | cornerRadius | radius.none |
 | Shape | sharp | Progress Bar/Indicator Group/Track | cornerRadius | radius.none |
-| Size | medium | Progress Bar/Indicator Group | cornerRadius | radius.none |
-| Size | medium | Progress Bar/Indicator Group/Indicator | cornerRadius | radius.md |
-| Size | medium | Progress Bar/Indicator Group/Track | cornerRadius | radius.md |
+| Size | large | Progress Bar/Indicator Group | cornerRadius | radius.none |
+| Size | large | Progress Bar/Indicator Group/Indicator | cornerRadius | radius.md |
+| Size | large | Progress Bar/Indicator Group/Track | cornerRadius | radius.md |
 
 ## Progress Circle
 
@@ -253,10 +253,10 @@ Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-Sys
 | _Upload/Icon Button | stroke[0] | #ced2db | interactive.neutral.border.default |
 | _Upload/Icon Button | cornerRadius | 9999 | radius.pill |
 | _Upload/Icon Button | strokeWeight | 0 | stroke.base |
-| _Upload/Icon Button | padding.left | 4 | space.xxs |
-| _Upload/Icon Button | padding.right | 4 | space.xxs |
-| _Upload/Icon Button | padding.top | 4 | space.xxs |
-| _Upload/Icon Button | padding.bottom | 4 | space.xxs |
+| _Upload/Icon Button | padding.left | 4 | space.2xs |
+| _Upload/Icon Button | padding.right | 4 | space.2xs |
+| _Upload/Icon Button | padding.top | 4 | space.2xs |
+| _Upload/Icon Button | padding.bottom | 4 | space.2xs |
 | _Upload/75% | fill[0] | #000000 | — |
 | _Upload/75% | fontSize | 12 | indicator.medium.font size |
 | _Upload/75% | lineHeight | 14 | indicator.medium.line height |

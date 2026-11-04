@@ -76,9 +76,7 @@ A modal message that interrupts the current task until the user responds or dism
 
 - Dialog (COMPONENT)
   - Dialog/_Dialog Header (INSTANCE)
-  - Dialog/Dialog Body (FRAME)
-    - Dialog/Dialog Body/Content (FRAME)
-      - Dialog/Dialog Body/Content/Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore. (TEXT)
+  - Dialog/Dialog Body (SLOT)
   - Dialog/_Dialog Footer (INSTANCE)
 
 ### Resolved tokens (default variant: Flavour=default, Shape=round)
@@ -105,10 +103,6 @@ A modal message that interrupts the current task until the user responds or dism
 | Dialog/Dialog Body | padding.right | 12 | space.md |
 | Dialog/Dialog Body | padding.top | 12 | space.md |
 | Dialog/Dialog Body | padding.bottom | 24 | space.section |
-| Dialog/Dialog Body/Content/Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore. | fill[0] | #0c0d0e | foreground.primary |
-| Dialog/Dialog Body/Content/Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore. | fontSize | 16 | body.medium.font size |
-| Dialog/Dialog Body/Content/Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore. | lineHeight | 24 | body.medium.line height |
-| Dialog/Dialog Body/Content/Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore. | letterSpacing | 0 | body.medium.letter spacing |
 | Dialog/_Dialog Footer | itemSpacing | 159 | — |
 | Dialog/_Dialog Footer | padding.left | 12 | space.md |
 | Dialog/_Dialog Footer | padding.right | 12 | space.md |
@@ -182,8 +176,8 @@ Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-Sys
 | _Dialog Footer/Tertiary | strokeWeight | 0 | stroke.base |
 | _Dialog Footer/Tertiary | padding.left | 12 | space.md |
 | _Dialog Footer/Tertiary | padding.right | 12 | space.md |
-| _Dialog Footer/Tertiary | padding.top | 4 | space.xxs |
-| _Dialog Footer/Tertiary | padding.bottom | 4 | space.xxs |
+| _Dialog Footer/Tertiary | padding.top | 4 | space.2xs |
+| _Dialog Footer/Tertiary | padding.bottom | 4 | space.2xs |
 | _Dialog Footer/Right Button Group | itemSpacing | 8 | space.sm |
 | _Dialog Footer/Right Button Group/Secondary | height | 40 | control.md |
 | _Dialog Footer/Right Button Group/Secondary | fill[0] | #0c0d0e00 | interactive.ghost.background.default |
@@ -192,8 +186,8 @@ Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-Sys
 | _Dialog Footer/Right Button Group/Secondary | strokeWeight | 1 | stroke.thin |
 | _Dialog Footer/Right Button Group/Secondary | padding.left | 12 | space.md |
 | _Dialog Footer/Right Button Group/Secondary | padding.right | 12 | space.md |
-| _Dialog Footer/Right Button Group/Secondary | padding.top | 4 | space.xxs |
-| _Dialog Footer/Right Button Group/Secondary | padding.bottom | 4 | space.xxs |
+| _Dialog Footer/Right Button Group/Secondary | padding.top | 4 | space.2xs |
+| _Dialog Footer/Right Button Group/Secondary | padding.bottom | 4 | space.2xs |
 | _Dialog Footer/Right Button Group/Primary | height | 40 | control.md |
 | _Dialog Footer/Right Button Group/Primary | fill[0] | #1f69ff | interactive.primary.background.default |
 | _Dialog Footer/Right Button Group/Primary | stroke[0] | #1f69ff | interactive.primary.border.default |
@@ -201,8 +195,8 @@ Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-Sys
 | _Dialog Footer/Right Button Group/Primary | strokeWeight | 0 | stroke.base |
 | _Dialog Footer/Right Button Group/Primary | padding.left | 12 | space.md |
 | _Dialog Footer/Right Button Group/Primary | padding.right | 12 | space.md |
-| _Dialog Footer/Right Button Group/Primary | padding.top | 4 | space.xxs |
-| _Dialog Footer/Right Button Group/Primary | padding.bottom | 4 | space.xxs |
+| _Dialog Footer/Right Button Group/Primary | padding.top | 4 | space.2xs |
+| _Dialog Footer/Right Button Group/Primary | padding.bottom | 4 | space.2xs |
 
 ### Token changes by property
 
@@ -245,8 +239,8 @@ Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-Sys
 | Actions | 2 | _Dialog Footer/Secondary | strokeWeight | stroke.thin |
 | Actions | 2 | _Dialog Footer/Secondary | padding.left | space.md |
 | Actions | 2 | _Dialog Footer/Secondary | padding.right | space.md |
-| Actions | 2 | _Dialog Footer/Secondary | padding.top | space.xxs |
-| Actions | 2 | _Dialog Footer/Secondary | padding.bottom | space.xxs |
+| Actions | 2 | _Dialog Footer/Secondary | padding.top | space.2xs |
+| Actions | 2 | _Dialog Footer/Secondary | padding.bottom | space.2xs |
 | Actions | 2 | _Dialog Footer/Primary | height | control.md |
 | Actions | 2 | _Dialog Footer/Primary | fill[0] | interactive.primary.background.default |
 | Actions | 2 | _Dialog Footer/Primary | stroke[0] | interactive.primary.border.default |
@@ -254,8 +248,8 @@ Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-Sys
 | Actions | 2 | _Dialog Footer/Primary | strokeWeight | stroke.base |
 | Actions | 2 | _Dialog Footer/Primary | padding.left | space.md |
 | Actions | 2 | _Dialog Footer/Primary | padding.right | space.md |
-| Actions | 2 | _Dialog Footer/Primary | padding.top | space.xxs |
-| Actions | 2 | _Dialog Footer/Primary | padding.bottom | space.xxs |
+| Actions | 2 | _Dialog Footer/Primary | padding.top | space.2xs |
+| Actions | 2 | _Dialog Footer/Primary | padding.bottom | space.2xs |
 | Actions | 1 | _Dialog Footer | itemSpacing | space.sm |
 | Actions | 1 | _Dialog Footer | cornerRadius | radius.none |
 | Actions | 1 | _Dialog Footer/Tertiary | height | — |
@@ -293,8 +287,8 @@ Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-Sys
 | Actions | 1 | _Dialog Footer/Primary | strokeWeight | stroke.base |
 | Actions | 1 | _Dialog Footer/Primary | padding.left | space.md |
 | Actions | 1 | _Dialog Footer/Primary | padding.right | space.md |
-| Actions | 1 | _Dialog Footer/Primary | padding.top | space.xxs |
-| Actions | 1 | _Dialog Footer/Primary | padding.bottom | space.xxs |
+| Actions | 1 | _Dialog Footer/Primary | padding.top | space.2xs |
+| Actions | 1 | _Dialog Footer/Primary | padding.bottom | space.2xs |
 | Actions | custom | _Dialog Footer | cornerRadius | radius.none |
 | Actions | custom | _Dialog Footer/Tertiary | height | — |
 | Actions | custom | _Dialog Footer/Tertiary | fill[0] | — |

@@ -98,10 +98,10 @@ A circular control for choosing exactly one option from a set, with an optional 
 | Radio Button/Radio Button/Radio Button | stroke[0] | #7a8190 | interactive.selection.border.default |
 | Radio Button/Radio Button/Radio Button | cornerRadius | 9999 | radius.pill |
 | Radio Button/Radio Button/Radio Button | strokeWeight | 2 | stroke.thick |
-| Radio Button/Radio Button/Radio Button | padding.left | 4 | space.xxs |
-| Radio Button/Radio Button/Radio Button | padding.right | 4 | space.xxs |
-| Radio Button/Radio Button/Radio Button | padding.top | 4 | space.xxs |
-| Radio Button/Radio Button/Radio Button | padding.bottom | 4 | space.xxs |
+| Radio Button/Radio Button/Radio Button | padding.left | 4 | space.2xs |
+| Radio Button/Radio Button/Radio Button | padding.right | 4 | space.2xs |
+| Radio Button/Radio Button/Radio Button | padding.top | 4 | space.2xs |
+| Radio Button/Radio Button/Radio Button | padding.bottom | 4 | space.2xs |
 | Radio Button/Radio Button/Radio Button/Check | fill[0] | #7a8190 | foreground.tertiary |
 | Radio Button/Label | fill[0] | #0c0d0e | foreground.primary |
 | Radio Button/Label | fontSize | 14 | label.medium.font size |
@@ -133,13 +133,13 @@ A circular control for choosing exactly one option from a set, with an optional 
 | State | focus | Radio Button/Radio Button/Focus/Radio Button | stroke[0] | interactive.selection.border.default |
 | State | focus | Radio Button/Radio Button/Focus/Radio Button | cornerRadius | radius.pill |
 | State | focus | Radio Button/Radio Button/Focus/Radio Button | strokeWeight | stroke.thick |
-| State | focus | Radio Button/Radio Button/Focus/Radio Button | padding.left | space.xxs |
-| State | focus | Radio Button/Radio Button/Focus/Radio Button | padding.right | space.xxs |
-| State | focus | Radio Button/Radio Button/Focus/Radio Button | padding.top | space.xxs |
-| State | focus | Radio Button/Radio Button/Focus/Radio Button | padding.bottom | space.xxs |
+| State | focus | Radio Button/Radio Button/Focus/Radio Button | padding.left | space.2xs |
+| State | focus | Radio Button/Radio Button/Focus/Radio Button | padding.right | space.2xs |
+| State | focus | Radio Button/Radio Button/Focus/Radio Button | padding.top | space.2xs |
+| State | focus | Radio Button/Radio Button/Focus/Radio Button | padding.bottom | space.2xs |
 | State | focus | Radio Button/Radio Button/Focus/Radio Button/Check | fill[0] | foreground.tertiary |
-| Size | medium | Radio Button/Radio Button/Radio Button | padding.left | space.2xs |
-| Size | medium | Radio Button/Radio Button/Radio Button | padding.right | space.2xs |
-| Size | medium | Radio Button/Radio Button/Radio Button | padding.top | space.2xs |
-| Size | medium | Radio Button/Radio Button/Radio Button | padding.bottom | space.2xs |
+| Size | medium | Radio Button/Radio Button/Radio Button | padding.left | space.3xs |
+| Size | medium | Radio Button/Radio Button/Radio Button | padding.right | space.3xs |
+| Size | medium | Radio Button/Radio Button/Radio Button | padding.top | space.3xs |
+| Size | medium | Radio Button/Radio Button/Radio Button | padding.bottom | space.3xs |
 | Size | medium | Radio Button/Radio Button/Radio Button | height | control.icon-sm |

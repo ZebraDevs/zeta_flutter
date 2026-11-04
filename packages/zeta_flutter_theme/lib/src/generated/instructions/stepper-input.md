@@ -91,16 +91,16 @@ A numeric value with a button on either side to decrease or increase it. The val
 | Stepper Input/Stepper Input Container/Icon Button[1] | stroke[0] | #ced2db | interactive.neutral.border.default |
 | Stepper Input/Stepper Input Container/Icon Button[1] | cornerRadius | 0 | radius.none |
 | Stepper Input/Stepper Input Container/Icon Button[1] | strokeWeight | 1 | stroke.thin |
-| Stepper Input/Stepper Input Container/Icon Button[1] | padding.left | 4 | space.xxs |
-| Stepper Input/Stepper Input Container/Icon Button[1] | padding.right | 4 | space.xxs |
-| Stepper Input/Stepper Input Container/Icon Button[1] | padding.top | 4 | space.xxs |
-| Stepper Input/Stepper Input Container/Icon Button[1] | padding.bottom | 4 | space.xxs |
+| Stepper Input/Stepper Input Container/Icon Button[1] | padding.left | 4 | space.2xs |
+| Stepper Input/Stepper Input Container/Icon Button[1] | padding.right | 4 | space.2xs |
+| Stepper Input/Stepper Input Container/Icon Button[1] | padding.top | 4 | space.2xs |
+| Stepper Input/Stepper Input Container/Icon Button[1] | padding.bottom | 4 | space.2xs |
 | Stepper Input/Stepper Input Container/Input / Text | height | 40 | control.md |
 | Stepper Input/Stepper Input Container/Input / Text | fill[0] | #ffffff | interactive.neutral.background.default |
 | Stepper Input/Stepper Input Container/Input / Text | stroke[0] | #ced2db | interactive.neutral.border.default |
 | Stepper Input/Stepper Input Container/Input / Text | cornerRadius | 0 | radius.none |
 | Stepper Input/Stepper Input Container/Input / Text | strokeWeight | 1 | stroke.thin |
-| Stepper Input/Stepper Input Container/Input / Text | itemSpacing | 4 | space.xxs |
+| Stepper Input/Stepper Input Container/Input / Text | itemSpacing | 4 | space.2xs |
 | Stepper Input/Stepper Input Container/Input / Text | padding.left | 12 | space.md |
 | Stepper Input/Stepper Input Container/Input / Text | padding.right | 12 | space.md |
 | Stepper Input/Stepper Input Container/Input / Text | padding.top | 8 | space.sm |
@@ -111,11 +111,11 @@ A numeric value with a button on either side to decrease or increase it. The val
 | Stepper Input/Stepper Input Container/Icon Button[2] | stroke[0] | #ced2db | interactive.neutral.border.default |
 | Stepper Input/Stepper Input Container/Icon Button[2] | cornerRadius | 0 | radius.none |
 | Stepper Input/Stepper Input Container/Icon Button[2] | strokeWeight | 1 | stroke.thin |
-| Stepper Input/Stepper Input Container/Icon Button[2] | padding.left | 4 | space.xxs |
-| Stepper Input/Stepper Input Container/Icon Button[2] | padding.right | 4 | space.xxs |
-| Stepper Input/Stepper Input Container/Icon Button[2] | padding.top | 4 | space.xxs |
-| Stepper Input/Stepper Input Container/Icon Button[2] | padding.bottom | 4 | space.xxs |
-| Stepper Input/_Hint text | itemSpacing | 4 | space.xxs |
+| Stepper Input/Stepper Input Container/Icon Button[2] | padding.left | 4 | space.2xs |
+| Stepper Input/Stepper Input Container/Icon Button[2] | padding.right | 4 | space.2xs |
+| Stepper Input/Stepper Input Container/Icon Button[2] | padding.top | 4 | space.2xs |
+| Stepper Input/Stepper Input Container/Icon Button[2] | padding.bottom | 4 | space.2xs |
+| Stepper Input/_Hint text | itemSpacing | 4 | space.2xs |
 
 ### Token changes by property
 
@@ -154,7 +154,7 @@ Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-Sys
 
 | Layer | Field | Raw | Token |
 | --- | --- | --- | --- |
-| _Hint text | itemSpacing | 4 | space.xxs |
+| _Hint text | itemSpacing | 4 | space.2xs |
 | _Hint text/Hint text | fill[0] | #545963 | foreground.secondary |
 | _Hint text/Hint text | fontSize | 12 | body.xsmall.font size |
 | _Hint text/Hint text | lineHeight | 16 | body.xsmall.line height |

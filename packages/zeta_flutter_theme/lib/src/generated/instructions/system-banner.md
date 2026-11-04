@@ -82,7 +82,7 @@ A full-width message pinned to the top of a mobile screen, carrying a status col
 | --- | --- | --- |
 | Size | Fixed width, hug height | 412px wide, with the height following the content. The banner spans the screen rather than sitting inside a column. |
 | Padding | Fixed | 8px (space/sm) on all four sides of the message row, with a further 8px (space/sm) above and below the text column. |
-| Gap | Fixed | 4px (space/xxs) between the glyph, the text column and the dismiss control. 8px (space/sm) between the text block and the action row. |
+| Gap | Fixed | 4px (space/2xs) between the glyph, the text column and the dismiss control. 8px (space/sm) between the text block and the action row. |
 | Radius | None | Square on every corner. The banner meets both screen edges, so a radius would leave a gap at the sides. |
 | Colour | Theming | The background is feedback/<status>/background/strong, one token per Status. Default resolves to the success token rather than a neutral one. Every variant is locked to the Dark palette mode, whatever mode its container uses. |
 | Typography | Fixed | Title is label/large, description is body/small and the action label is label/medium. Title and description sit on foreground/on-strong; the action label takes the outline-contrast Button's foreground/primary. The Dark lock keeps that label white beside them. |
@@ -113,7 +113,7 @@ A full-width message pinned to the top of a mobile screen, carrying a status col
 | System Banner (Mobile)/Status Bar | padding.right | 16 | space.lg |
 | System Banner (Mobile)/Status Bar | padding.top | 16 | space.gutter |
 | System Banner (Mobile)/Status Bar | padding.bottom | 16 | space.gutter |
-| System Banner (Mobile)/Container | itemSpacing | 4 | space.xxs |
+| System Banner (Mobile)/Container | itemSpacing | 4 | space.2xs |
 | System Banner (Mobile)/Container | padding.left | 8 | space.sm |
 | System Banner (Mobile)/Container | padding.right | 8 | space.sm |
 | System Banner (Mobile)/Container | padding.top | 8 | space.sm |
@@ -134,18 +134,18 @@ A full-width message pinned to the top of a mobile screen, carrying a status col
 | System Banner (Mobile)/Container/Content/Text/Description Container/Description | lineHeight | 18 | body.small.line height |
 | System Banner (Mobile)/Container/Content/Text/Description Container/Description | letterSpacing | 0 | body.small.letter spacing |
 | System Banner (Mobile)/Container/Content/Action Slot | itemSpacing | 8 | space.sm |
-| System Banner (Mobile)/Container/Content/Action Slot | padding.top | 4 | space.xxs |
-| System Banner (Mobile)/Container/Content/Action Slot | padding.bottom | 4 | space.xxs |
+| System Banner (Mobile)/Container/Content/Action Slot | padding.top | 4 | space.2xs |
+| System Banner (Mobile)/Container/Content/Action Slot | padding.bottom | 4 | space.2xs |
 | System Banner (Mobile)/Container/Dismiss | width | 40 | control.md |
 | System Banner (Mobile)/Container/Dismiss | height | 40 | control.md |
 | System Banner (Mobile)/Container/Dismiss | fill[0] | #d6dce200 | interactive.ghost.background.default |
 | System Banner (Mobile)/Container/Dismiss | stroke[0] | #545963 | interactive.neutral.border.default |
 | System Banner (Mobile)/Container/Dismiss | cornerRadius | 4 | radius.element-sm |
 | System Banner (Mobile)/Container/Dismiss | strokeWeight | 0 | stroke.base |
-| System Banner (Mobile)/Container/Dismiss | padding.left | 4 | space.xxs |
-| System Banner (Mobile)/Container/Dismiss | padding.right | 4 | space.xxs |
-| System Banner (Mobile)/Container/Dismiss | padding.top | 4 | space.xxs |
-| System Banner (Mobile)/Container/Dismiss | padding.bottom | 4 | space.xxs |
+| System Banner (Mobile)/Container/Dismiss | padding.left | 4 | space.2xs |
+| System Banner (Mobile)/Container/Dismiss | padding.right | 4 | space.2xs |
+| System Banner (Mobile)/Container/Dismiss | padding.top | 4 | space.2xs |
+| System Banner (Mobile)/Container/Dismiss | padding.bottom | 4 | space.2xs |
 
 ### Token changes by property
 
@@ -245,13 +245,13 @@ A full-width message pinned to the top of a desktop view, carrying a status colo
 | Property | Type | Description |
 | --- | --- | --- |
 | Size | Fixed width, hug height | 983px wide. 68px tall on single line and 142px on multiline, with the height following the description. |
-| Padding | Fixed | 16px on all four sides of the message row, with a further 4px (space/xxs) above and below the text on multiline. |
+| Padding | Fixed | 16px on all four sides of the message row, with a further 4px (space/2xs) above and below the text on multiline. |
 | Gap | Fixed | 8px between the glyph, the content and the dismiss control. 16px (space/lg) inside the content between the text and the action row. |
 | Radius | None | Square on every corner. The banner spans the full width of the view, so a radius would leave a gap at the sides. |
 | Colour | Theming | The background is feedback/<status>/background/strong, one token per Status. Default resolves to the success token rather than a neutral one. Every variant is locked to the Dark palette mode, whatever mode its container uses. |
 | Typography | Fixed | Title is label/medium, description is body/small and the action label is label/medium. Title and description sit on foreground/on-strong; the action label takes the outline-contrast Button's foreground/primary. The Dark lock keeps that label white beside them. |
 | Status glyph | Fixed | A medium unframed Icon inside a 36×36px container, held to the top of the message row. |
-| Dismiss control | Fixed | A 36×36px Icon Button with 4px (space/xxs) around a 20px glyph, at the trailing edge of the row. |
+| Dismiss control | Fixed | A 36×36px Icon Button with 4px (space/2xs) around a 20px glyph, at the trailing edge of the row. |
 
 ### Layer structure
 
@@ -295,10 +295,10 @@ A full-width message pinned to the top of a desktop view, carrying a status colo
 | System Banner (Desktop)/Container/Dismiss | stroke[0] | #545963 | interactive.neutral.border.default |
 | System Banner (Desktop)/Container/Dismiss | cornerRadius | 4 | radius.element-sm |
 | System Banner (Desktop)/Container/Dismiss | strokeWeight | 0 | stroke.base |
-| System Banner (Desktop)/Container/Dismiss | padding.left | 4 | space.xxs |
-| System Banner (Desktop)/Container/Dismiss | padding.right | 4 | space.xxs |
-| System Banner (Desktop)/Container/Dismiss | padding.top | 4 | space.xxs |
-| System Banner (Desktop)/Container/Dismiss | padding.bottom | 4 | space.xxs |
+| System Banner (Desktop)/Container/Dismiss | padding.left | 4 | space.2xs |
+| System Banner (Desktop)/Container/Dismiss | padding.right | 4 | space.2xs |
+| System Banner (Desktop)/Container/Dismiss | padding.top | 4 | space.2xs |
+| System Banner (Desktop)/Container/Dismiss | padding.bottom | 4 | space.2xs |
 
 ### Token changes by property
 
@@ -318,11 +318,11 @@ A full-width message pinned to the top of a desktop view, carrying a status colo
 | Status | warning | System Banner (Desktop) | fill[0] | feedback.warning.background.strong |
 | Status | warning | System Banner (Desktop) | itemSpacing | space.sm |
 | Status | Info | System Banner (Desktop) | fill[0] | feedback.info.background.strong |
-| Content Type | multiline | System Banner (Desktop)/Container/Content | padding.top | space.xxs |
-| Content Type | multiline | System Banner (Desktop)/Container/Content | padding.bottom | space.xxs |
-| Content Type | multiline | System Banner (Desktop)/Container/Content/Text | itemSpacing | space.xxs |
-| Content Type | multiline | System Banner (Desktop)/Container/Content/Text | padding.top | space.xxs |
-| Content Type | multiline | System Banner (Desktop)/Container/Content/Text | padding.bottom | space.xxs |
+| Content Type | multiline | System Banner (Desktop)/Container/Content | padding.top | space.2xs |
+| Content Type | multiline | System Banner (Desktop)/Container/Content | padding.bottom | space.2xs |
+| Content Type | multiline | System Banner (Desktop)/Container/Content/Text | itemSpacing | space.2xs |
+| Content Type | multiline | System Banner (Desktop)/Container/Content/Text | padding.top | space.2xs |
+| Content Type | multiline | System Banner (Desktop)/Container/Content/Text | padding.bottom | space.2xs |
 | Content Type | multiline | System Banner (Desktop)/Container/Content/Text/Description | fill[0] | foreground.primary |
 | Content Type | multiline | System Banner (Desktop)/Container/Content/Text/Description | fontSize | body.small.font size |
 | Content Type | multiline | System Banner (Desktop)/Container/Content/Text/Description | lineHeight | body.small.line height |

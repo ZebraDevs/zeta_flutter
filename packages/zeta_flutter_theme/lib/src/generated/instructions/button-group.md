@@ -130,8 +130,8 @@ Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-Sys
 | _Group Button Small/Button | strokeWeight | 0 | stroke.base |
 | _Group Button Small/Button | padding.left | 12 | space.md |
 | _Group Button Small/Button | padding.right | 12 | space.md |
-| _Group Button Small/Button | padding.top | 4 | space.xxs |
-| _Group Button Small/Button | padding.bottom | 4 | space.xxs |
+| _Group Button Small/Button | padding.top | 4 | space.2xs |
+| _Group Button Small/Button | padding.bottom | 4 | space.2xs |
 | _Group Button Small/Divider | width | 1 | stroke.thin |
 | _Group Button Small/Divider | cornerRadius | 0 | radius.none |
 
@@ -163,8 +163,8 @@ Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-Sys
 | _Group Button Medium/Button | strokeWeight | 0 | stroke.base |
 | _Group Button Medium/Button | padding.left | 12 | space.md |
 | _Group Button Medium/Button | padding.right | 12 | space.md |
-| _Group Button Medium/Button | padding.top | 4 | space.xxs |
-| _Group Button Medium/Button | padding.bottom | 4 | space.xxs |
+| _Group Button Medium/Button | padding.top | 4 | space.2xs |
+| _Group Button Medium/Button | padding.bottom | 4 | space.2xs |
 | _Group Button Medium/Divider | width | 1 | stroke.thin |
 | _Group Button Medium/Divider | cornerRadius | 0 | radius.none |
 
@@ -196,8 +196,8 @@ Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-Sys
 | _Group Button Large/Button | strokeWeight | 0 | stroke.base |
 | _Group Button Large/Button | padding.left | 16 | space.lg |
 | _Group Button Large/Button | padding.right | 16 | space.lg |
-| _Group Button Large/Button | padding.top | 4 | space.xxs |
-| _Group Button Large/Button | padding.bottom | 4 | space.xxs |
+| _Group Button Large/Button | padding.top | 4 | space.2xs |
+| _Group Button Large/Button | padding.bottom | 4 | space.2xs |
 | _Group Button Large/Divider | width | 1 | stroke.thin |
 | _Group Button Large/Divider | cornerRadius | 0 | radius.none |
 

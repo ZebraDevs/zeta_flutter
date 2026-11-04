@@ -126,8 +126,8 @@ Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-Sys
 | _Accordion Header | padding.right | 16 | space.lg |
 | _Accordion Header | padding.top | 16 | space.lg |
 | _Accordion Header | padding.bottom | 16 | space.lg |
-| _Accordion Header/Heading Content | itemSpacing | 2 | space.2xs |
-| _Accordion Header/Heading Content/Title | itemSpacing | 4 | space.xxs |
+| _Accordion Header/Heading Content | itemSpacing | 2 | space.3xs |
+| _Accordion Header/Heading Content/Title | itemSpacing | 4 | space.2xs |
 | _Accordion Header/Heading Content/Title/Heading | fill[0] | #0c0d0e | foreground.primary |
 | _Accordion Header/Heading Content/Title/Heading | fontSize | 16 | title.medium.font size |
 | _Accordion Header/Heading Content/Title/Heading | lineHeight | 20 | title.medium.line height |
@@ -158,7 +158,7 @@ Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-Sys
 | Layer | Field | Raw | Token |
 | --- | --- | --- | --- |
 | _Accordion Header Selectable | fill[0] | #0c0d0e00 | interactive.ghost.background.default |
-| _Accordion Header Selectable | itemSpacing | 4 | space.xxs |
+| _Accordion Header Selectable | itemSpacing | 4 | space.2xs |
 | _Accordion Header Selectable | padding.left | 8 | space.sm |
 | _Accordion Header Selectable | padding.right | 8 | space.sm |
 | _Accordion Header Selectable | padding.top | 8 | space.sm |
@@ -169,12 +169,12 @@ Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-Sys
 | _Accordion Header Selectable/Icon Button | stroke[0] | #ced2db | interactive.neutral.border.default |
 | _Accordion Header Selectable/Icon Button | cornerRadius | 0 | radius.none |
 | _Accordion Header Selectable/Icon Button | strokeWeight | 0 | stroke.base |
-| _Accordion Header Selectable/Icon Button | padding.left | 4 | space.xxs |
-| _Accordion Header Selectable/Icon Button | padding.right | 4 | space.xxs |
-| _Accordion Header Selectable/Icon Button | padding.top | 4 | space.xxs |
-| _Accordion Header Selectable/Icon Button | padding.bottom | 4 | space.xxs |
-| _Accordion Header Selectable/Heading Content | itemSpacing | 2 | space.2xs |
-| _Accordion Header Selectable/Heading Content/Title | itemSpacing | 4 | space.xxs |
+| _Accordion Header Selectable/Icon Button | padding.left | 4 | space.2xs |
+| _Accordion Header Selectable/Icon Button | padding.right | 4 | space.2xs |
+| _Accordion Header Selectable/Icon Button | padding.top | 4 | space.2xs |
+| _Accordion Header Selectable/Icon Button | padding.bottom | 4 | space.2xs |
+| _Accordion Header Selectable/Heading Content | itemSpacing | 2 | space.3xs |
+| _Accordion Header Selectable/Heading Content/Title | itemSpacing | 4 | space.2xs |
 | _Accordion Header Selectable/Heading Content/Title/Heading | fill[0] | #0c0d0e | foreground.primary |
 | _Accordion Header Selectable/Heading Content/Title/Heading | fontSize | 16 | title.medium.font size |
 | _Accordion Header Selectable/Heading Content/Title/Heading | lineHeight | 20 | title.medium.line height |
@@ -324,7 +324,7 @@ Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-Sys
 | Layer | Field | Raw | Token |
 | --- | --- | --- | --- |
 | _Accordion Item Selectable/_Accordion Header Selectable | fill[0] | #0c0d0e00 | interactive.ghost.background.default |
-| _Accordion Item Selectable/_Accordion Header Selectable | itemSpacing | 4 | space.xxs |
+| _Accordion Item Selectable/_Accordion Header Selectable | itemSpacing | 4 | space.2xs |
 | _Accordion Item Selectable/_Accordion Header Selectable | padding.left | 8 | space.sm |
 | _Accordion Item Selectable/_Accordion Header Selectable | padding.right | 8 | space.sm |
 | _Accordion Item Selectable/_Accordion Header Selectable | padding.top | 8 | space.sm |

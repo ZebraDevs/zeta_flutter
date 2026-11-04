@@ -88,25 +88,25 @@ A row of mutually exclusive options sharing one track, where exactly one is acti
 | --- | --- | --- | --- |
 | Segmented Control | fill[0] | #e0e3e9 | interactive.neutral.background.pressed |
 | Segmented Control | cornerRadius | 4 | radius.sm |
-| Segmented Control | itemSpacing | 4 | space.xxs |
-| Segmented Control | padding.left | 4 | space.xxs |
-| Segmented Control | padding.right | 4 | space.xxs |
-| Segmented Control | padding.top | 4 | space.xxs |
-| Segmented Control | padding.bottom | 4 | space.xxs |
+| Segmented Control | itemSpacing | 4 | space.2xs |
+| Segmented Control | padding.left | 4 | space.2xs |
+| Segmented Control | padding.right | 4 | space.2xs |
+| Segmented Control | padding.top | 4 | space.2xs |
+| Segmented Control | padding.bottom | 4 | space.2xs |
 | Segmented Control/_Segmented item[1] | fill[0] | #ffffff | interactive.neutral.background.focused |
 | Segmented Control/_Segmented item[1] | cornerRadius | 4 | radius.sm |
-| Segmented Control/_Segmented item[1] | itemSpacing | 4 | space.xxs |
+| Segmented Control/_Segmented item[1] | itemSpacing | 4 | space.2xs |
 | Segmented Control/_Segmented item[1] | padding.left | 12 | space.md |
 | Segmented Control/_Segmented item[1] | padding.right | 16 | space.lg |
-| Segmented Control/_Segmented item[1] | padding.top | 4 | space.xxs |
-| Segmented Control/_Segmented item[1] | padding.bottom | 4 | space.xxs |
+| Segmented Control/_Segmented item[1] | padding.top | 4 | space.2xs |
+| Segmented Control/_Segmented item[1] | padding.bottom | 4 | space.2xs |
 | Segmented Control/_Segmented item[2] | cornerRadius | 4 | radius.sm |
-| Segmented Control/_Segmented item[2] | itemSpacing | 4 | space.xxs |
+| Segmented Control/_Segmented item[2] | itemSpacing | 4 | space.2xs |
 | Segmented Control/_Segmented item[2] | padding.left | 12 | space.md |
 | Segmented Control/_Segmented item[2] | padding.right | 16 | space.lg |
-| Segmented Control/_Segmented item[2] | padding.top | 4 | space.xxs |
-| Segmented Control/_Segmented item[2] | padding.bottom | 4 | space.xxs |
-| Segmented Control/More items Slot | itemSpacing | 4 | space.xxs |
+| Segmented Control/_Segmented item[2] | padding.top | 4 | space.2xs |
+| Segmented Control/_Segmented item[2] | padding.bottom | 4 | space.2xs |
+| Segmented Control/More items Slot | itemSpacing | 4 | space.2xs |
 
 ### Token changes by property
 
@@ -208,11 +208,11 @@ One option inside a Segmented Control, carrying a label, an icon, or both. It is
 | Layer | Field | Raw | Token |
 | --- | --- | --- | --- |
 | _Segmented item | cornerRadius | 4 | radius.sm |
-| _Segmented item | itemSpacing | 4 | space.xxs |
+| _Segmented item | itemSpacing | 4 | space.2xs |
 | _Segmented item | padding.left | 12 | space.md |
 | _Segmented item | padding.right | 16 | space.lg |
-| _Segmented item | padding.top | 4 | space.xxs |
-| _Segmented item | padding.bottom | 4 | space.xxs |
+| _Segmented item | padding.top | 4 | space.2xs |
+| _Segmented item | padding.bottom | 4 | space.2xs |
 | _Segmented item/Item | fill[0] | #545963 | foreground.secondary |
 | _Segmented item/Item | fontSize | 14 | label.medium.font size |
 | _Segmented item/Item | lineHeight | 20 | label.medium.line height |

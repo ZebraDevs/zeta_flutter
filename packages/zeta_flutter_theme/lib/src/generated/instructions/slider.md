@@ -17,8 +17,8 @@ Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-Sys
 | --- | --- | --- | --- |
 | Step Indicators | itemSpacing | 10 | — |
 | Step Indicators/Dot Slots | itemSpacing | 10 | — |
-| Step Indicators/Dot Slots | padding.left | 2 | space.2xs |
-| Step Indicators/Dot Slots | padding.right | 2 | space.2xs |
+| Step Indicators/Dot Slots | padding.left | 2 | space.3xs |
+| Step Indicators/Dot Slots | padding.right | 2 | space.3xs |
 
 ## _Dot Indicator
 
@@ -118,7 +118,7 @@ A control for choosing a value along a range by dragging a thumb. State, Stepped
 | Radius | Per Shape | radius/xs on the base track when rounded and radius/none when sharp. The thumb takes radius/pill when rounded and square corners when sharp. The active fill is square-ended on both variants, so on a rounded slider its end meets the rounded base. |
 | Track | Theming | The base is surface/track across the full width. The active fill is interactive/neutral/foreground/default, moving to interactive/ghost/foreground/default when selected and interactive/neutral/foreground/disabled when disabled. |
 | Thumb | Per State | 16 square at rest. 20 only for the thumb under the pointer or being dragged, in any state. Centred on the track in every case. |
-| Step indicators | Fixed | Dots of 2 by 2 in foreground/inverse, spaced evenly across the full track width with space/2xs held at each end. |
+| Step indicators | Fixed | Dots of 2 by 2 in foreground/inverse, spaced evenly across the full track width with space/3xs held at each end. |
 | Stacking | Fixed | Base track, active fill, step indicators, thumb, from back to front. The dots sit above both track layers and below the thumb. |
 | Second thumb | Per Range | Matches the first thumb in colour and shape, and sits at the start of the active fill. It takes the larger size only when it is the one under the pointer. |
 

@@ -180,7 +180,7 @@ A card whose body opens and closes behind a header that is always visible. The h
 | Height | Hug | 78px collapsed and 257px expanded at the default flavour. Gradient adds 4px to both, 82px and 261px, because its outline is drawn on the frame itself. |
 | Header padding | Fixed | 16px (space/lg) top and bottom, 24px (space/xl) left and right, with 8px (space/sm) between the leading icon and the heading block. |
 | Body padding | Fixed per State | None while collapsed, since the slot is hidden. Expanded it insets 24px (space/xl) left, right and bottom, with nothing on top so the body sits tight under the header. |
-| Heading spacing | Fixed | 2px (space/2xs) between the title and the description, and 4px (space/xs) inside the title row. |
+| Heading spacing | Fixed | 2px (space/3xs) between the title and the description, and 4px (space/xs) inside the title row. |
 | Radius | Fixed per Shape | radius/none when sharp, radius/sm when rounded. The card clips to it. |
 | Outline | Fixed per Flavor | None at the default flavour. Gradient draws a 2px (stroke/thick) linear gradient from foreground/gradient/start to foreground/gradient/end around all four edges. |
 | Fill | Theming | surface/card on the card. The header sits on a fully transparent interactive/ghost/background/default, so the card surface shows through it. |
@@ -215,6 +215,9 @@ A card whose body opens and closes behind a header that is always visible. The h
 | State | expanded | Collapsible Card/Body | padding.bottom | space.lg |
 | Flavor | gradient | Collapsible Card | stroke[0] | linear-gradient(129deg, foreground.gradient.start 0%, foreground.gradient.end 100%) |
 | Flavor | gradient | Collapsible Card | strokeWeight | stroke.thick |
+| Flavor | gradient | Collapsible Card/Body | padding.left | space.lg |
+| Flavor | gradient | Collapsible Card/Body | padding.right | space.lg |
+| Flavor | gradient | Collapsible Card/Body | padding.bottom | space.lg |
 | Shape | rounded | Collapsible Card | cornerRadius | radius.sm |
 
 ## _Container header
@@ -242,8 +245,8 @@ Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-Sys
 | _Container header | padding.top | 16 | space.lg |
 | _Container header | padding.bottom | 16 | space.lg |
 | _Container header/Caret Indicator | itemSpacing | 10 | — |
-| _Container header/Heading Content | itemSpacing | 2 | space.2xs |
-| _Container header/Heading Content/Title | itemSpacing | 4 | space.xxs |
+| _Container header/Heading Content | itemSpacing | 2 | space.3xs |
+| _Container header/Heading Content/Title | itemSpacing | 4 | space.2xs |
 | _Container header/Heading Content/Title/Heading | fill[0] | #0c0d0e | foreground.primary |
 | _Container header/Heading Content/Title/Heading | fontSize | 20 | title.large.font size |
 | _Container header/Heading Content/Title/Heading | lineHeight | 24 | title.large.line height |
@@ -360,8 +363,8 @@ Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-Sys
 | _Card Footer/Button | strokeWeight | 0 | stroke.base |
 | _Card Footer/Button | padding.left | 12 | space.md |
 | _Card Footer/Button | padding.right | 12 | space.md |
-| _Card Footer/Button | padding.top | 4 | space.xxs |
-| _Card Footer/Button | padding.bottom | 4 | space.xxs |
+| _Card Footer/Button | padding.top | 4 | space.2xs |
+| _Card Footer/Button | padding.bottom | 4 | space.2xs |
 
 ### Token changes by property
 
@@ -384,8 +387,8 @@ Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-Sys
 | Actions | 2 | _Card Footer/Button[1] | strokeWeight | stroke.thin |
 | Actions | 2 | _Card Footer/Button[1] | padding.left | space.md |
 | Actions | 2 | _Card Footer/Button[1] | padding.right | space.md |
-| Actions | 2 | _Card Footer/Button[1] | padding.top | space.xxs |
-| Actions | 2 | _Card Footer/Button[1] | padding.bottom | space.xxs |
+| Actions | 2 | _Card Footer/Button[1] | padding.top | space.2xs |
+| Actions | 2 | _Card Footer/Button[1] | padding.bottom | space.2xs |
 | Actions | 2 | _Card Footer/Button[2] | height | control.sm |
 | Actions | 2 | _Card Footer/Button[2] | fill[0] | interactive.primary.background.default |
 | Actions | 2 | _Card Footer/Button[2] | stroke[0] | interactive.primary.border.default |
@@ -393,8 +396,8 @@ Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-Sys
 | Actions | 2 | _Card Footer/Button[2] | strokeWeight | stroke.base |
 | Actions | 2 | _Card Footer/Button[2] | padding.left | space.md |
 | Actions | 2 | _Card Footer/Button[2] | padding.right | space.md |
-| Actions | 2 | _Card Footer/Button[2] | padding.top | space.xxs |
-| Actions | 2 | _Card Footer/Button[2] | padding.bottom | space.xxs |
+| Actions | 2 | _Card Footer/Button[2] | padding.top | space.2xs |
+| Actions | 2 | _Card Footer/Button[2] | padding.bottom | space.2xs |
 | Actions | custom | _Card Footer | itemSpacing | space.sm |
 | Actions | custom | _Card Footer/Button | height | — |
 | Actions | custom | _Card Footer/Button | fill[0] | — |
