@@ -64,6 +64,9 @@ jobs:
           cd packages/${{ env.package }}
           dart format . 
           dart fix --apply
+          if [ "${{ env.package }}" = "zeta_flutter" ]; then
+            dart run tool/generate_widget_manifest.dart
+          fi
           flutter pub publish --dry-run
           cd ../..
 
@@ -74,6 +77,9 @@ jobs:
           cd packages/${{ env.package }}
           dart format . 
           dart fix --apply
+          if [ "${{ env.package }}" = "zeta_flutter" ]; then
+            dart run tool/generate_widget_manifest.dart
+          fi
           flutter pub publish -f
 
   deploy-website:

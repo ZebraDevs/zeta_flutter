@@ -21,6 +21,7 @@ melos:
         pre: |
           dart format packages --fix
           dart fix --apply
+          dart run --directory=packages/zeta_flutter tool/generate_widget_manifest.dart
 
   scripts:
     doc:
@@ -47,3 +48,4 @@ melos:
         noPrivate: true
 
     test_counter: dart run scripts/test-counter/test_counter.dart
+    widget_manifest: dart run --directory=packages/zeta_flutter tool/generate_widget_manifest.dart

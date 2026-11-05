@@ -15,6 +15,14 @@ dart sdk: ">=3.2.0 <4.0.0"
 flutter: ">=3.16.0"
 ```
 
+## API manifest
+
+`widget-manifest.json` is the machine-readable list of public widgets, constructor parameters, slots, and design tokens. It is not stored in git. The release workflow generates it before `flutter pub publish`, and the published package includes it. To create a local copy:
+
+```sh
+dart run tool/generate_widget_manifest.dart
+```
+
 ## Installation
 
 To install `zeta_flutter`, follow the instructions [here](https://pub.dev/packages/zeta_flutter/install).
