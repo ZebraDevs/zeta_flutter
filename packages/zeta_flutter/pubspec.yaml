@@ -28,6 +28,7 @@ dependencies:
   zeta_icons: ^1.9.2
 
 dev_dependencies:
+  analyzer: ^9.0.0
   flutter_test:
     sdk: flutter
   image: ^4.7.2

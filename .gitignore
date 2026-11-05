@@ -28,6 +28,7 @@ captures/
 .cxx/
 *.apk
 output.json
+packages/zeta_flutter/widget-manifest.json
 misc.xml
 deploymentTargetDropDown.xml
 render.experimental.xml
