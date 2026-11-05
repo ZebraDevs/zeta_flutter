@@ -8,8 +8,7 @@ import '../tool/widget_manifest.dart';
 void main() {
   test('widget manifest lists the public API and tokens', () {
     final packageRoot = findZetaFlutterPackage(Directory.current);
-    final manifest =
-        jsonDecode(generateWidgetManifest(packageRoot)) as Map<String, dynamic>;
+    final manifest = jsonDecode(generateWidgetManifest(packageRoot)) as Map<String, dynamic>;
 
     expect(manifest['schemaVersion'], 1);
     expect(manifest['name'], 'zeta_flutter');
@@ -25,9 +24,7 @@ void main() {
     expect(tokens['access'], 'Zeta.of(context).tokens');
     final properties = tokens['properties'] as List<dynamic>;
     expect(
-      properties
-          .whereType<Map<String, dynamic>>()
-          .map((property) => property['name']),
+      properties.whereType<Map<String, dynamic>>().map((property) => property['name']),
       containsAll(<String>['surface', 'space', 'radius', 'text']),
     );
   });

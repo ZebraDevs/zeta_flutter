@@ -54,8 +54,7 @@ bool _isZetaFlutterPackage(Directory dir) {
   final marker = File(p.join(dir.path, 'lib', 'zeta_components.dart'));
   if (!pubspec.existsSync() || !marker.existsSync()) return false;
   final text = pubspec.readAsStringSync();
-  return text.startsWith('name: zeta_flutter\n') ||
-      text.startsWith('name: zeta_flutter\r\n');
+  return text.startsWith('name: zeta_flutter\n') || text.startsWith('name: zeta_flutter\r\n');
 }
 
 /// JSON manifest of the public widget API and the tokens v2 groups.
@@ -142,8 +141,7 @@ Map<String, _Library> _parseTree(Directory root) {
       path: entity.path,
       featureSet: FeatureSet.latestLanguageVersion(),
     );
-    libraries[p.normalize(entity.path)] =
-        _Library(p.normalize(entity.path), parsed.content, parsed.unit);
+    libraries[p.normalize(entity.path)] = _Library(p.normalize(entity.path), parsed.content, parsed.unit);
   }
   return libraries;
 }
@@ -170,8 +168,7 @@ List<_ApiEntry> _entriesIn(_Library library) {
           description: _summary(declaration, library.source),
           figma: _figma(declaration, library.source),
           deprecated: _deprecated(declaration, library.source),
-          typeParameters:
-              _typeParameters(declaration.typeParameters, library.source),
+          typeParameters: _typeParameters(declaration.typeParameters, library.source),
         ),
       );
     } else if (declaration is ExtensionDeclaration) {
@@ -185,26 +182,18 @@ List<_ApiEntry> _entriesIn(_Library library) {
           file: library.relativeFile,
           description: _summary(declaration, library.source),
           deprecated: _deprecated(declaration, library.source),
-          typeParameters:
-              _typeParameters(declaration.typeParameters, library.source),
-          onType: onClause == null
-              ? null
-              : _sliceNode(library.source, onClause.extendedType),
+          typeParameters: _typeParameters(declaration.typeParameters, library.source),
+          onType: onClause == null ? null : _sliceNode(library.source, onClause.extendedType),
           members: [
             for (final member in declaration.members)
-              if (member is MethodDeclaration &&
-                  !member.name.lexeme.startsWith('_'))
+              if (member is MethodDeclaration && !member.name.lexeme.startsWith('_'))
                 {
                   'name': member.name.lexeme,
-                  if (member.returnType != null)
-                    'type': _sliceNode(library.source, member.returnType!),
+                  if (member.returnType != null) 'type': _sliceNode(library.source, member.returnType!),
                   if (member.isGetter) 'getter': true,
                   if (member.isSetter) 'setter': true,
-                  if (_summary(member, library.source) case final description?)
-                    'description': description,
-                  if (_deprecated(member, library.source)
-                      case final deprecated?)
-                    'deprecated': deprecated,
+                  if (_summary(member, library.source) case final description?) 'description': description,
+                  if (_deprecated(member, library.source) case final deprecated?) 'deprecated': deprecated,
                   if (member.parameters != null)
                     'parameters': _parameters(
                       member.parameters,
@@ -248,15 +237,12 @@ _ApiEntry _classEntry(_Library library, ClassDeclaration declaration) {
   for (final member in declaration.members) {
     if (member is FieldDeclaration && !member.isStatic) {
       final type = member.fields.type;
-      final typeName =
-          type == null ? 'dynamic' : _sliceNode(library.source, type);
+      final typeName = type == null ? 'dynamic' : _sliceNode(library.source, type);
       for (final variable in member.fields.variables) {
         final fieldName = variable.name.lexeme;
         if (fieldName.startsWith('_')) continue;
-        final documented =
-            variable.documentationComment == null ? member : variable;
-        fields[fieldName] =
-            _Field(typeName, _summary(documented, library.source));
+        final documented = variable.documentationComment == null ? member : variable;
+        fields[fieldName] = _Field(typeName, _summary(documented, library.source));
       }
     } else if (member is ConstructorDeclaration) {
       final constructorName = member.name?.lexeme;
@@ -293,10 +279,8 @@ _ApiEntry _enumEntry(_Library library, EnumDeclaration declaration) {
       for (final constant in declaration.constants)
         {
           'name': constant.name.lexeme,
-          if (_summary(constant, library.source) case final description?)
-            'description': description,
-          if (_deprecated(constant, library.source) case final deprecated?)
-            'deprecated': deprecated,
+          if (_summary(constant, library.source) case final description?) 'description': description,
+          if (_deprecated(constant, library.source) case final deprecated?) 'deprecated': deprecated,
         },
     ],
   );
@@ -310,9 +294,7 @@ _ApiEntry _functionEntry(_Library library, FunctionDeclaration declaration) {
     file: library.relativeFile,
     description: _summary(declaration, library.source),
     deprecated: _deprecated(declaration, library.source),
-    signature: declaration.returnType == null
-        ? null
-        : _sliceNode(library.source, declaration.returnType!),
+    signature: declaration.returnType == null ? null : _sliceNode(library.source, declaration.returnType!),
     parameters: _parameters(
       expression.parameters,
       library.source,
@@ -364,8 +346,7 @@ List<String> _exportedNames(
         names.add(name);
       }
     }
-    for (final directive
-        in library.unit.directives.whereType<ExportDirective>()) {
+    for (final directive in library.unit.directives.whereType<ExportDirective>()) {
       final uri = directive.uri.stringValue;
       if (uri == null) {
         throw StateError('Unresolvable export in $normalized');
@@ -382,9 +363,7 @@ List<String> _exportedNames(
       final visible = child.toSet();
       for (final combinator in directive.combinators) {
         if (combinator is ShowCombinator) {
-          final shown = combinator.shownNames
-              .map((identifier) => identifier.name)
-              .toSet();
+          final shown = combinator.shownNames.map((identifier) => identifier.name).toSet();
           visible.retainAll(shown);
         } else if (combinator is HideCombinator) {
           visible.removeAll(
@@ -458,20 +437,15 @@ String _parameterType(
   if (parameter is SimpleFormalParameter && parameter.type != null) {
     return _sliceNode(source, parameter.type!);
   }
-  if (parameter is FieldFormalParameter &&
-      parameter.type != null &&
-      parameter.parameters == null) {
+  if (parameter is FieldFormalParameter && parameter.type != null && parameter.parameters == null) {
     return _sliceNode(source, parameter.type!);
   }
-  if (parameter is SuperFormalParameter &&
-      parameter.type != null &&
-      parameter.parameters == null) {
+  if (parameter is SuperFormalParameter && parameter.type != null && parameter.parameters == null) {
     return _sliceNode(source, parameter.type!);
   }
   final name = parameter.name?.lexeme;
   if (name == null) return 'dynamic';
-  return _fieldType(owner, name, entries) ??
-      (name == 'key' ? 'Key?' : 'dynamic');
+  return _fieldType(owner, name, entries) ?? (name == 'key' ? 'Key?' : 'dynamic');
 }
 
 String? _fieldType(
@@ -516,10 +490,8 @@ Map<String, Object?> _tokens(Directory tokensDir) {
       path: entity.path,
       featureSet: FeatureSet.latestLanguageVersion(),
     );
-    for (final declaration
-        in parsed.unit.declarations.whereType<ClassDeclaration>()) {
-      classes[declaration.name.lexeme] =
-          _TokenClass(declaration, parsed.content);
+    for (final declaration in parsed.unit.declarations.whereType<ClassDeclaration>()) {
+      classes[declaration.name.lexeme] = _TokenClass(declaration, parsed.content);
     }
   }
   final zeta = classes['ZetaTokens'];
@@ -531,13 +503,9 @@ Map<String, Object?> _tokens(Directory tokensDir) {
   for (final member in zeta.members) {
     if (member.name.startsWith('_')) continue;
     final typeName = member.type.replaceAll(_whitespace, '');
-    final bare = typeName.endsWith('?')
-        ? typeName.substring(0, typeName.length - 1)
-        : typeName;
+    final bare = typeName.endsWith('?') ? typeName.substring(0, typeName.length - 1) : typeName;
     final nested = classes[bare];
-    final expandMembers = nested != null &&
-        bare != 'ZetaPrimitiveTokens' &&
-        bare != 'ZetaPaletteTokens';
+    final expandMembers = nested != null && bare != 'ZetaPrimitiveTokens' && bare != 'ZetaPaletteTokens';
     properties.add({
       'name': member.name,
       'type': member.type,
@@ -640,11 +608,9 @@ String? _deprecated(AnnotatedNode node, String source) {
   return null;
 }
 
-String _sliceNode(String source, AstNode node) =>
-    _slice(source, node.offset, node.end);
+String _sliceNode(String source, AstNode node) => _slice(source, node.offset, node.end);
 
-String _slice(String source, int start, int end) =>
-    source.substring(start, end).trim();
+String _slice(String source, int start, int end) => source.substring(start, end).trim();
 
 class _Library {
   _Library(this.path, this.source, this.unit);
@@ -707,8 +673,7 @@ class _ApiEntry {
     final constructorJson = source == null
         ? const <Map<String, Object?>>[]
         : [
-            for (final constructor in constructors)
-              _constructorJson(constructor, entries),
+            for (final constructor in constructors) _constructorJson(constructor, entries),
           ];
     final slots = <String>[];
     for (final constructor in constructorJson) {
@@ -752,10 +717,8 @@ class _ApiEntry {
       'name': fullName,
       if (constructor.constKeyword != null) 'const': true,
       if (constructor.factoryKeyword != null) 'factory': true,
-      if (_deprecated(constructor, source!) case final deprecated?)
-        'deprecated': deprecated,
-      if (_summary(constructor, source!) case final description?)
-        'description': description,
+      if (_deprecated(constructor, source!) case final deprecated?) 'deprecated': deprecated,
+      if (_summary(constructor, source!) case final description?) 'description': description,
       'parameters': _parameters(constructor.parameters, source!, this, entries),
     };
   }
@@ -770,8 +733,7 @@ class _TokenMember {
 }
 
 class _TokenClass {
-  _TokenClass(ClassDeclaration declaration, String source)
-      : members = _members(declaration, source);
+  _TokenClass(ClassDeclaration declaration, String source) : members = _members(declaration, source);
 
   final List<_TokenMember> members;
 
@@ -781,24 +743,16 @@ class _TokenClass {
   ) {
     final members = <_TokenMember>[];
     for (final member in declaration.members) {
-      if (member is MethodDeclaration &&
-          member.isGetter &&
-          !member.isStatic &&
-          !member.isOperator) {
-        final type = member.returnType == null
-            ? 'dynamic'
-            : _sliceNode(source, member.returnType!);
+      if (member is MethodDeclaration && member.isGetter && !member.isStatic && !member.isOperator) {
+        final type = member.returnType == null ? 'dynamic' : _sliceNode(source, member.returnType!);
         members.add(
           _TokenMember(member.name.lexeme, type, _summary(member, source)),
         );
       } else if (member is FieldDeclaration && !member.isStatic) {
-        final type = member.fields.type == null
-            ? 'dynamic'
-            : _sliceNode(source, member.fields.type!);
+        final type = member.fields.type == null ? 'dynamic' : _sliceNode(source, member.fields.type!);
         for (final variable in member.fields.variables) {
           if (variable.name.lexeme.startsWith('_')) continue;
-          final documented =
-              variable.documentationComment == null ? member : variable;
+          final documented = variable.documentationComment == null ? member : variable;
           members.add(
             _TokenMember(
               variable.name.lexeme,
