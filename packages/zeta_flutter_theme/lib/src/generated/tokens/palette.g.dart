@@ -114,6 +114,9 @@ abstract interface class ZetaPaletteTokens {
   /// `palette.fill.elevated`: Raised surface background, pair with elevation shadow (theme.color.surface.elevated)
   Color get fillElevated;
 
+  /// `palette.fill.faint`: Recessed background, e.g. inputs/wells (theme.color.surface.sunken)
+  Color get fillFaint;
+
   /// `palette.fill.hover`
   Color get fillHover;
 
@@ -427,6 +430,9 @@ final class _ZetaPaletteZetaLight implements ZetaPaletteTokens {
   Color get fillElevated => _p.colorPureWhite;
 
   @override
+  Color get fillFaint => _p.colorNeutralCool20;
+
+  @override
   Color get fillHover => _p.colorNeutralCool70;
 
   @override
@@ -451,7 +457,7 @@ final class _ZetaPaletteZetaLight implements ZetaPaletteTokens {
   Color get fillSunken => _p.colorNeutralCool30;
 
   @override
-  Color get fillTransparent => const Color(0x00F3F6FA);
+  Color get fillTransparent => _p.colorAlphaLight0;
 
   @override
   Color get fillTransparentElevate => _p.colorAlphaDark10;
@@ -739,6 +745,9 @@ final class _ZetaPaletteZetaDark implements ZetaPaletteTokens {
   Color get fillElevated => _p.colorNeutralCool100;
 
   @override
+  Color get fillFaint => _p.colorNeutralCool90;
+
+  @override
   Color get fillHover => _p.colorNeutralCool40;
 
   @override
@@ -763,7 +772,7 @@ final class _ZetaPaletteZetaDark implements ZetaPaletteTokens {
   Color get fillSunken => _p.colorNeutralCool80;
 
   @override
-  Color get fillTransparent => const Color(0x00F3F6FA);
+  Color get fillTransparent => _p.colorAlphaLight0;
 
   @override
   Color get fillTransparentElevate => _p.colorAlphaLight10;
@@ -1051,6 +1060,9 @@ final class _ZetaPaletteZetaAaaLight implements ZetaPaletteTokens {
   Color get fillElevated => _p.colorPureWhite;
 
   @override
+  Color get fillFaint => _p.colorNeutralCool20;
+
+  @override
   Color get fillHover => _p.colorNeutralCool70;
 
   @override
@@ -1075,7 +1087,7 @@ final class _ZetaPaletteZetaAaaLight implements ZetaPaletteTokens {
   Color get fillSunken => _p.colorNeutralCool20;
 
   @override
-  Color get fillTransparent => const Color(0x00F3F6FA);
+  Color get fillTransparent => _p.colorAlphaLight0;
 
   @override
   Color get fillTransparentElevate => _p.colorAlphaDark10;
@@ -1363,6 +1375,9 @@ final class _ZetaPaletteZetaAaaDark implements ZetaPaletteTokens {
   Color get fillElevated => _p.colorNeutralCool100;
 
   @override
+  Color get fillFaint => _p.colorNeutralCool90;
+
+  @override
   Color get fillHover => _p.colorNeutralCool40;
 
   @override
@@ -1387,7 +1402,7 @@ final class _ZetaPaletteZetaAaaDark implements ZetaPaletteTokens {
   Color get fillSunken => _p.colorNeutralCool90;
 
   @override
-  Color get fillTransparent => const Color(0x00F3F6FA);
+  Color get fillTransparent => _p.colorAlphaLight0;
 
   @override
   Color get fillTransparentElevate => _p.colorAlphaLight10;
@@ -1675,6 +1690,9 @@ final class _ZetaPaletteCompanionLight implements ZetaPaletteTokens {
   Color get fillElevated => _p.colorPureWhite;
 
   @override
+  Color get fillFaint => _p.colorNeutralCool20;
+
+  @override
   Color get fillHover => _p.colorNeutralCool70;
 
   @override
@@ -1699,7 +1717,7 @@ final class _ZetaPaletteCompanionLight implements ZetaPaletteTokens {
   Color get fillSunken => _p.colorNeutralCool30;
 
   @override
-  Color get fillTransparent => const Color(0x00F3F6FA);
+  Color get fillTransparent => _p.colorAlphaLight0;
 
   @override
   Color get fillTransparentElevate => _p.colorAlphaDark10;
@@ -1987,6 +2005,9 @@ final class _ZetaPaletteCompanionDark implements ZetaPaletteTokens {
   Color get fillElevated => _p.colorNeutralCool100;
 
   @override
+  Color get fillFaint => _p.colorNeutralCool90;
+
+  @override
   Color get fillHover => _p.colorNeutralCool40;
 
   @override
@@ -2011,7 +2032,7 @@ final class _ZetaPaletteCompanionDark implements ZetaPaletteTokens {
   Color get fillSunken => _p.colorNeutralCool80;
 
   @override
-  Color get fillTransparent => const Color(0x00F3F6FA);
+  Color get fillTransparent => _p.colorAlphaLight0;
 
   @override
   Color get fillTransparentElevate => _p.colorAlphaLight10;
@@ -2299,6 +2320,9 @@ final class _ZetaPaletteCompanionAaaLight implements ZetaPaletteTokens {
   Color get fillElevated => _p.colorPureWhite;
 
   @override
+  Color get fillFaint => _p.colorNeutralCool20;
+
+  @override
   Color get fillHover => _p.colorNeutralCool70;
 
   @override
@@ -2323,7 +2347,7 @@ final class _ZetaPaletteCompanionAaaLight implements ZetaPaletteTokens {
   Color get fillSunken => _p.colorNeutralCool20;
 
   @override
-  Color get fillTransparent => const Color(0x00F3F6FA);
+  Color get fillTransparent => _p.colorAlphaLight0;
 
   @override
   Color get fillTransparentElevate => _p.colorAlphaDark10;
@@ -2611,6 +2635,9 @@ final class _ZetaPaletteCompanionAaaDark implements ZetaPaletteTokens {
   Color get fillElevated => _p.colorNeutralCool100;
 
   @override
+  Color get fillFaint => _p.colorNeutralCool90;
+
+  @override
   Color get fillHover => _p.colorNeutralCool40;
 
   @override
@@ -2635,7 +2662,7 @@ final class _ZetaPaletteCompanionAaaDark implements ZetaPaletteTokens {
   Color get fillSunken => _p.colorNeutralCool90;
 
   @override
-  Color get fillTransparent => const Color(0x00F3F6FA);
+  Color get fillTransparent => _p.colorAlphaLight0;
 
   @override
   Color get fillTransparentElevate => _p.colorAlphaLight10;
@@ -2923,6 +2950,9 @@ final class _ZetaPaletteTargetLight implements ZetaPaletteTokens {
   Color get fillElevated => _p.colorPureWhite;
 
   @override
+  Color get fillFaint => _p.colorNeutralCool20;
+
+  @override
   Color get fillHover => _p.colorNeutralCool70;
 
   @override
@@ -2947,7 +2977,7 @@ final class _ZetaPaletteTargetLight implements ZetaPaletteTokens {
   Color get fillSunken => _p.colorNeutralCool30;
 
   @override
-  Color get fillTransparent => const Color(0x00F3F6FA);
+  Color get fillTransparent => _p.colorAlphaLight0;
 
   @override
   Color get fillTransparentElevate => _p.colorAlphaDark10;
@@ -3235,6 +3265,9 @@ final class _ZetaPaletteTargetDark implements ZetaPaletteTokens {
   Color get fillElevated => _p.colorNeutralCool100;
 
   @override
+  Color get fillFaint => _p.colorNeutralCool90;
+
+  @override
   Color get fillHover => _p.colorNeutralCool40;
 
   @override
@@ -3259,7 +3292,7 @@ final class _ZetaPaletteTargetDark implements ZetaPaletteTokens {
   Color get fillSunken => _p.colorNeutralCool80;
 
   @override
-  Color get fillTransparent => const Color(0x00F3F6FA);
+  Color get fillTransparent => _p.colorAlphaLight0;
 
   @override
   Color get fillTransparentElevate => _p.colorAlphaLight10;
@@ -3547,6 +3580,9 @@ final class _ZetaPaletteTargetAaaLight implements ZetaPaletteTokens {
   Color get fillElevated => _p.colorPureWhite;
 
   @override
+  Color get fillFaint => _p.colorNeutralCool20;
+
+  @override
   Color get fillHover => _p.colorNeutralCool70;
 
   @override
@@ -3571,7 +3607,7 @@ final class _ZetaPaletteTargetAaaLight implements ZetaPaletteTokens {
   Color get fillSunken => _p.colorNeutralCool20;
 
   @override
-  Color get fillTransparent => const Color(0x00F3F6FA);
+  Color get fillTransparent => _p.colorAlphaLight0;
 
   @override
   Color get fillTransparentElevate => _p.colorAlphaDark10;
@@ -3859,6 +3895,9 @@ final class _ZetaPaletteTargetAaaDark implements ZetaPaletteTokens {
   Color get fillElevated => _p.colorNeutralCool100;
 
   @override
+  Color get fillFaint => _p.colorNeutralCool90;
+
+  @override
   Color get fillHover => _p.colorNeutralCool40;
 
   @override
@@ -3883,7 +3922,7 @@ final class _ZetaPaletteTargetAaaDark implements ZetaPaletteTokens {
   Color get fillSunken => _p.colorNeutralCool90;
 
   @override
-  Color get fillTransparent => const Color(0x00F3F6FA);
+  Color get fillTransparent => _p.colorAlphaLight0;
 
   @override
   Color get fillTransparentElevate => _p.colorAlphaLight10;

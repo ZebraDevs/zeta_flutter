@@ -600,9 +600,6 @@ class ZetaSurfaceTokens {
   /// `semantics.surface.card`: Background of card components
   Color get card => _palette.fillElevated;
 
-  /// `semantics.surface.dialog`: Background of dialog/modal windows
-  Color get dialog => _palette.fillOverlay;
-
   /// `semantics.surface.error`: Background for containers communicating an error state
   Color get error => _palette.statusErrorFaint;
 
@@ -618,23 +615,20 @@ class ZetaSurfaceTokens {
   /// `semantics.surface.inverse`: Dark/inverse background for high-contrast sections
   Color get inverse => _palette.fillInverse;
 
-  /// `semantics.surface.menu`: Background of dropdown and context menus
-  Color get menu => _palette.fillOverlay;
+  /// `semantics.surface.overlay`: Background of dialog/modal windows
+  Color get overlay => _palette.fillOverlay;
 
   /// `semantics.surface.page`: Default background color of the page or app canvas
   Color get page => _palette.fillCanvas;
 
-  /// `semantics.surface.popover`: Background of popovers and other floating panels
-  Color get popover => _palette.fillOverlay;
-
   /// `semantics.surface.section`: Background for a section or panel that groups related content
   Color get section => _palette.fillDefault;
 
-  /// `semantics.surface.sheet`: Background of bottom sheets and side drawers
-  Color get sheet => _palette.fillOverlay;
+  /// `semantics.surface.shade`: Shade helps add a slightly darker tint to a surface. Useful for demarcating a secondary section of a surface.
+  Color get shade => _palette.fillTransparentElevate;
 
-  /// `semantics.surface.subtle`: Quiet containers, such as chat bubbles and neutral badges.
-  Color get subtle => _palette.fillSunken;
+  /// `semantics.surface.subtle`: Quiet containers, where the background is only decorative and can ignored.
+  Color get subtle => _palette.fillFaint;
 
   /// `semantics.surface.success`: Background for containers communicating a success state
   Color get success => _palette.statusSuccessFaint;
