@@ -65,7 +65,7 @@ The bar across the top of an application, carrying the product’s identity at t
 | Search | Search, parent owned | Held at medium with its shape following Rounded. It comes from a separate library rather than this file, so it has no frame here. |
 | App switcher | Icon Button, parent owned | An Apps glyph on a subtle medium Icon Button. The glyph is fixed, so this is a product switcher rather than a general purpose action. |
 | Menu button | Icon Button, parent owned | A Hamburger glyph at the leading edge. It carries no visibility toggle, so it is always present. |
-| Account control | _User Profile, parent owned | A username, an avatar and a chevron, wired as the trigger of Template/Dropdown. Neither the username nor the avatar is exposed as an input. |
+| Account control | _User Profile, parent owned | A username, an avatar and a chevron, wired as the trigger of Template/Dropdown. The username is an input, and the avatar takes any property of its main component, Avatar, at size xxsmall. |
 | Dividers | Divider, parent owned | Two vertical hairlines shown together by one toggle. They stretch to the height of the content row. |
 
 ### Anatomy
@@ -124,7 +124,7 @@ The bar across the top of an application, carrying the product’s identity at t
     - Global Header/Header-Middle/Slot-Menu-Actions (SLOT)
   - Global Header/Divider[2] (INSTANCE)
   - Global Header/Header-Right (FRAME)
-    - Global Header/Header-Right/Template/Dropdown (INSTANCE)
+    - Global Header/Header-Right/User Profile (INSTANCE)
     - Global Header/Header-Right/Icon Button (INSTANCE)
 
 ### Resolved tokens (default variant: Rounded=false)

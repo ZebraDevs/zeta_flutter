@@ -608,7 +608,7 @@ The full field assembly, a label above, the field itself and a hint below, stack
 | Label / Type | required | - | Adds an asterisk after the name. Use it only where submission genuinely fails without a value. |
 | Label / Disabled | false | true | The name at full strength. |
 | Label / Disabled | true | - | Dims the name to sit with a disabled field. It does not disable anything, so it has to be set alongside the field's own State rather than instead of it. |
-| Label / Show Information | false | true | No information icon, which is what an Input arrives with. |
+| Label / Show Information | false | true | — |
 | Label / Show Information | true | - | Adds an information icon after the name, for an explanation the label itself has no room for. |
 | Hint / Type | default | true | The resting supporting line, for guidance about what to enter. |
 | Hint / Type | error | - | The validation message that says what went wrong. The field's border carries the signal and this carries the reason, so neither works alone. |
@@ -671,10 +671,10 @@ The full field assembly, a label above, the field itself and a hint below, stack
 
 | Property | Type | Description |
 | --- | --- | --- |
-| Size | Fixed width, hug height | 280 wide, with the height hugging whatever is turned on. At the default that is a 20 label, a 40 field and a 16 hint, coming to 84. |
-| Gap | Fixed | space/xs between all three parts. That is the same 4 the field uses internally between its icons and its text, so the stack and its contents share one rhythm. |
-| Label | Hug | 20 tall and hugging its text, with a space/xs gap between the name, any marker and the information icon. |
-| Hint | Hug | 16 tall, body/xsmall at 12px, with a space/xs gap after a 16 square icon. Smaller than the field's own text, which keeps the value the loudest thing in the stack. |
+| Size | Fixed width, hug height | 280 wide, with the height hugging whatever is turned on. At the default that is a 20 label, a 40 field and a 16 hint, coming to 88 with its two space/xs gaps. |
+| Gap | Fixed | space/xs (6) between all three parts. That is one step wider than the space/2xs (4) the field uses between its icons and its text. |
+| Label | Hug | 20 tall and hugging its text, with a space/2xs gap between the name, any marker and the information icon. A sub label, when shown, sits space/xs below; turn it on with the nested Label's Show Sub Label. |
+| Hint | Hug | 16 tall, body/xsmall, with a space/2xs gap after a 16 square icon. Smaller than the field's own text, which keeps the value the loudest thing in the stack. |
 | Field | Fill | The field fills the width of the stack while the label and the hint hug their own content, so only the field tracks the container. |
 | Colour | Theming | Each part draws its own tokens. The label runs foreground/primary and drops to foreground/disabled, the required marker holds foreground/error either way, and the hint text moves between foreground/secondary, foreground/error and foreground/disabled. |
 
@@ -689,8 +689,8 @@ The full field assembly, a label above, the field itself and a hint below, stack
 
 | Layer | Field | Raw | Token |
 | --- | --- | --- | --- |
-| Input | itemSpacing | 4 | space.2xs |
-| Input/Label | itemSpacing | 4 | space.2xs |
+| Input | itemSpacing | 6 | space.xs |
+| Input/Label | itemSpacing | 6 | space.xs |
 | Input/Input / Text | height | 40 | control.md |
 | Input/Input / Text | fill[0] | #ffffff | interactive.neutral.background.default |
 | Input/Input / Text | stroke[0] | #ced2db | interactive.neutral.border.default |
@@ -710,34 +710,38 @@ Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-Sys
 ### Layer structure
 
 - Input Label (COMPONENT)
-  - Input Label/Field name (TEXT)
-  - Input Label/Icon (INSTANCE, icon: info)
-  - Input Label/* (TEXT)
-  - Input Label/(optional) (TEXT)
+  - Input Label/Label Row (FRAME)
+    - Input Label/Label Row/Field name (TEXT)
+    - Input Label/Label Row/Icon (INSTANCE, icon: info)
+    - Input Label/Label Row/* (TEXT)
+    - Input Label/Label Row/(optional) (TEXT)
+  - Input Label/Sub Label (FRAME)
+    - Input Label/Sub Label/Description (TEXT)
 
 ### Resolved tokens (default variant: Type=default, Disabled=false)
 
 | Layer | Field | Raw | Token |
 | --- | --- | --- | --- |
-| Input Label | itemSpacing | 4 | space.2xs |
-| Input Label/Field name | fill[0] | #0c0d0e | foreground.primary |
-| Input Label/Field name | fontSize | 14 | label.medium.font size |
-| Input Label/Field name | lineHeight | 20 | label.medium.line height |
-| Input Label/Field name | letterSpacing | 0 | label.medium.letter spacing |
+| Input Label | itemSpacing | 6 | space.xs |
+| Input Label/Label Row | itemSpacing | 4 | space.2xs |
+| Input Label/Label Row/Field name | fill[0] | #0c0d0e | foreground.primary |
+| Input Label/Label Row/Field name | fontSize | 14 | label.medium.font size |
+| Input Label/Label Row/Field name | lineHeight | 20 | label.medium.line height |
+| Input Label/Label Row/Field name | letterSpacing | 0 | label.medium.letter spacing |
 
 ### Token changes by property
 
 | Property | Value | Layer | Field | Token |
 | --- | --- | --- | --- | --- |
-| Type | required | Input Label/* | fill[0] | foreground.error |
-| Type | required | Input Label/* | fontSize | label.medium.font size |
-| Type | required | Input Label/* | lineHeight | label.medium.line height |
-| Type | required | Input Label/* | letterSpacing | label.medium.letter spacing |
-| Type | optional | Input Label/(optional) | fill[0] | foreground.secondary |
-| Type | optional | Input Label/(optional) | fontSize | body.small.font size |
-| Type | optional | Input Label/(optional) | lineHeight | body.small.line height |
-| Type | optional | Input Label/(optional) | letterSpacing | body.small.letter spacing |
-| Disabled | true | Input Label/Field name | fill[0] | foreground.disabled |
+| Type | required | Input Label/Label Row/* | fill[0] | foreground.error |
+| Type | required | Input Label/Label Row/* | fontSize | label.medium.font size |
+| Type | required | Input Label/Label Row/* | lineHeight | label.medium.line height |
+| Type | required | Input Label/Label Row/* | letterSpacing | label.medium.letter spacing |
+| Type | optional | Input Label/Label Row/(optional) | fill[0] | foreground.secondary |
+| Type | optional | Input Label/Label Row/(optional) | fontSize | body.small.font size |
+| Type | optional | Input Label/Label Row/(optional) | lineHeight | body.small.line height |
+| Type | optional | Input Label/Label Row/(optional) | letterSpacing | body.small.letter spacing |
+| Disabled | true | Input Label/Label Row/Field name | fill[0] | foreground.disabled |
 
 ## Input Hint
 
@@ -867,9 +871,9 @@ The text entry control on its own, without a label or hint around it. One model 
 | Property | Type | Description |
 | --- | --- | --- |
 | Size | Fixed | 280 wide and fixed, so the container sets the width rather than the content. Height is bound per size, control/lg at large for 48, control/md at medium for 40 and control/sm at small for 36. |
-| Padding and gap | Fixed | space/sm top and bottom, space/md left and right, with a space/xs gap between the leading icon, the text and the trailing control. Padding holds across all three sizes, so height alone carries the density. |
+| Padding and gap | Fixed | space/sm top and bottom, space/md left and right, with a space/2xs gap between the leading icon, the text and the trailing control. Padding holds across all three sizes, so height alone carries the density. |
 | Radius | Per Shape | radius/none when sharp, radius/sm when rounded and radius/pill when full. The four corners are bound individually rather than as a single value. |
 | Surface | Per Flavour | interactive/neutral/background/default on default and gradient, moving to interactive/neutral/background/disabled when disabled. Ghost carries no surface of its own, so whatever sits behind it shows through. |
 | Border | Per Flavour | Default draws at 1px and rises to 2px on focus. Gradient keeps those weights and draws its border from the gradient tokens: a foreground/gradient/start to foreground/gradient/end gradient at rest and when filled, border/gradient/end on hover and border/gradient/start when selected or typing. Focus, invalid, read-only and disabled use the same tokens as default. Ghost holds a bound border at zero weight, which is a theming hook rather than an absent border, so a high contrast variable set can give it a hard outline. |
-| Text | Theming | body/medium at 16px for large and medium, body/small at 14px for small. The colour changes with state, which States and Triggers sets out. |
+| Text | Theming | body/medium for large and medium, body/small for small. The colour changes with state, which States and Triggers sets out. |
 | Icons and controls | Fixed | Every icon is Size=medium at 20 square at large and medium, and Size=small at 16 square at small, and the inner text frame fills whatever width they leave. At large one icon costs 24 including its gap, taking the text from 254 to 230, and two take it to 206. Every icon and control, leading, trailing, the type control and clear, draws foreground/primary like the value, and foreground/disabled when the field is disabled. |

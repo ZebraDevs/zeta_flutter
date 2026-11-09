@@ -76,7 +76,7 @@ The bar at the top of a screen, carrying a back affordance, the screen's title a
 | Alignment | Fixed | Horizontal auto-layout, items centred on the cross axis and packed from the start. The heading fills, which pushes the slot hard right. |
 | Radius | None | Zero on both variants with no token bound. The Rounded axis does not touch it. |
 | Fill | Theming | interactive/ghost/background/default, an interactive token on a static container. No border and no shadow. |
-| Title | Theming | title/large, IBM Plex Sans Medium 20 over a 24px line, in foreground/primary. This style resolves to a remote library rather than a local one. |
+| Title | Theming | title/large, in foreground/primary. This style resolves to a remote library rather than a local one. |
 | Leading icon | Fixed | Icon at Size=medium, 20 square. Hiding it returns 28px to the heading, the icon plus one gap. |
 
 ### Layer structure

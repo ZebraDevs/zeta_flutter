@@ -115,7 +115,7 @@ The full select assembly: a label above, a Select Field in the middle and a hint
 | Label / Type | default | true | The plain name with nothing after it. |
 | Label / Type | optional | - | Appends (optional) after the name. Use when most other selects in the form are required, so the exception is what is marked. |
 | Label / Type | required | - | Adds an asterisk after the name. Use only where submission genuinely fails without a chosen value. |
-| Label / Show Information | false | true | No information icon, which is the default state for Select. |
+| Label / Show Information | false | true | — |
 | Label / Show Information | true | - | Adds an information icon after the label name, for context the label itself has no room for. The icon requires a label and target in the implementation. |
 | Hint / Type | default | true | The resting supporting line, for guidance about what to choose. |
 | Hint / Type | error | - | The validation message that says what went wrong. The Select Field border carries the signal via State=invalid; this carries the reason. Neither works alone. |
@@ -141,7 +141,7 @@ The full select assembly: a label above, a Select Field in the middle and a hint
 | Type | Description |
 | --- | --- |
 | Motion | No transition is defined on the assembly. Each nested part swaps its own tokens on state change. There are no authored prototype interactions. |
-| Composition | Three parts stacked vertically with 4px gap, height hugging all visible parts. Turning off the label or the hint removes its height and the stack shortens. Whatever sits below moves up. |
+| Composition | Three parts stacked vertically with a space/xs gap, height hugging all visible parts. Turning off the label or the hint removes its height and the stack shortens. Whatever sits below moves up. |
 | Dropdown overlap | When Open=true the dropdown menu is absolutely positioned 4px below the field's bottom edge, inheriting the select width and clips content. The assembly height does not increase; the menu is overlaid and does not determine assembly height. Implementations must reserve z-order and spacing so the open menu does not obscure adjacent content. |
 | Dropdown width | The dropdown menu has a flexible width, matching the assembly. |
 | State coordination | These ae the assembly-level state that cascades to nested parts. Invalid, disabled and read-only. |
@@ -167,12 +167,12 @@ The full select assembly: a label above, a Select Field in the middle and a hint
 ### How to use
 
 **Do:**
-- Field name * Select an option Choose the most relevant option Keep Show Label on. The placeholder disappears as soon as a value is selected, leaving nothing to name the field. Always pair Show Hint=true on fields that can be validated so space is reserved before a message is needed.
-- Field name Option A Please select a valid option Set the nested field to State=invalid and the hint to Type=error together. The field border carries the visual signal; the hint carries the reason. Either alone is an incomplete message.
+- Field name * Description Select an option Choose the most relevant option Keep Show Label on. The placeholder disappears as soon as a value is selected, leaving nothing to name the field. Always pair Show Hint=true on fields that can be validated so space is reserved before a message is needed.
+- Field name Description Option A Please select a valid option Set the nested field to State=invalid and the hint to Type=error together. The field border carries the visual signal; the hint carries the reason. Either alone is an incomplete message.
 
 **Don't:**
 - Select an option Don't remove the label from a visible select. There is no built-in name for the field once the placeholder is gone, and assistive technology has nothing to announce.
-- Field name Value Don't leave the label at full strength while the field is disabled. Set Label Disabled=true and Hint Type=disabled together. There is no automatic coordination — mismatched states create contrast inconsistencies.
+- Field name Description Value Don't leave the label at full strength while the field is disabled. Set Label Disabled=true and Hint Type=disabled together. There is no automatic coordination — mismatched states create contrast inconsistencies.
 
 ### Accessibility & Content Guidelines
 
@@ -191,11 +191,11 @@ The full select assembly: a label above, a Select Field in the middle and a hint
 
 | Property | Type | Description |
 | --- | --- | --- |
-| Assembly size | Fill width × hug height | Assembly height is derived from the nested input/field Size variant plus visible label and hint content, plus the 4px gaps between them. The field fills the assembly width; the label and hint hug their content. The total stack height is relational and depends on which parts are visible. |
-| Gap | space/xs = 4 | 4px between all three parts. The same gap the field uses internally between its icons and its text, so the stack and its content share one rhythm. |
-| Label | Hug width and height | Hugs its text. A space/xs gap between name, any marker and the information icon. |
+| Assembly size | Fill width × hug height | Assembly height is derived from the nested input/field Size variant plus visible label and hint content, plus the space/xs gaps between them. The field fills the assembly width; the label and hint hug their content. The total stack height is relational and depends on which parts are visible. |
+| Gap | space/xs = 6 | 6 between all three parts. That is one step wider than the space/2xs (4) the field uses between its icons and its text. |
+| Label | Hug width and height | Hugs its text. A space/2xs gap between name, any marker and the information icon. A sub label, when shown, sits space/xs below; turn it on with the nested Label's Show Sub Label. |
 | Field | Fill width | Fills the assembly width. Height is determined by its Size property. Label and hint hug their content; only the field tracks the container width. |
-| Hint | Hug width and height | Hugs its content. 4px gap between optional icon and message text. Smaller than the field text so the selected value is the loudest element in the stack. |
+| Hint | Hug width and height | Hugs its content. A space/2xs gap between optional icon and message text. Smaller than the field text so the selected value is the loudest element in the stack. |
 | Dropdown Menu | Overlaid / out of normal flow | The dropdown is absolutely positioned and overlaid. Its top edge is 4px below the field's bottom edge. It does not affect assembly height; the assembly height remains determined by the visible label, field, hint, and gaps. Height is determined by the number of visible menu items. |
 | Colour | Semantic tokens | Label uses foregroundPrimary, drops to foregroundDisabled when Disabled=true. Field border uses interactiveNeutralBorderDefault at rest, interactiveNeutralBorderHover on hover, borderFocus on focus/open, borderError on invalid, and interactiveNeutralBorderDisabled on disabled. Placeholder text uses foregroundDisabled; selected value uses foregroundPrimary. The dropdown menu surface uses surfaceMenu with a medium shadow. |
 
@@ -211,8 +211,8 @@ The full select assembly: a label above, a Select Field in the middle and a hint
 
 | Layer | Field | Raw | Token |
 | --- | --- | --- | --- |
-| Select | itemSpacing | 4 | space.2xs |
-| Select/Label | itemSpacing | 4 | space.2xs |
+| Select | itemSpacing | 6 | space.xs |
+| Select/Label | itemSpacing | 6 | space.xs |
 | Select/Field | height | 40 | control.md |
 | Select/Field | fill[0] | #ffffff | interactive.neutral.background.default |
 | Select/Field | stroke[0] | #ced2db | interactive.neutral.border.default |
@@ -230,7 +230,7 @@ The full select assembly: a label above, a Select Field in the middle and a hint
 | Property | Value | Layer | Field | Token |
 | --- | --- | --- | --- | --- |
 | Open | true | Select/Field | stroke[0] | border.focus |
-| Open | true | Select/Dropdown Menu | fill[0] | surface.menu |
+| Open | true | Select/Dropdown Menu | fill[0] | surface.overlay |
 | Open | true | Select/Dropdown Menu | cornerRadius | radius.element-md |
 | Open | true | Select/Dropdown Menu | itemSpacing | space.3xs |
 | Open | true | Select/Dropdown Menu | padding.left | space.card |
@@ -329,9 +329,9 @@ The select control on its own, without a label or hint around it. One model cove
 | Property | Type | Description |
 | --- | --- | --- |
 | Size | Fixed | 280 wide and fixed, so the container sets the width rather than the content. Height is bound per size, control/lg at large for 48, control/md at medium for 40 and control/sm at small for 36. |
-| Padding and gap | Fixed | space/sm top and bottom, space/md left and right, with a space/xs gap between the leading icon, the text and the trailing control. Padding holds across all three sizes, so height alone carries the density. |
+| Padding and gap | Fixed | space/sm top and bottom, space/md left and right, with a space/2xs gap between the leading icon, the text and the trailing control. Padding holds across all three sizes, so height alone carries the density. |
 | Radius | Per Shape | radius/none when sharp, radius/sm when rounded and radius/pill when full. The four corners are bound individually rather than as a single value. |
 | Surface | Per Flavour | interactive/neutral/background/default on default and gradient, moving to interactive/neutral/background/disabled when disabled. Ghost carries no surface of its own, so whatever sits behind it shows through. |
 | Border | Per Flavour | Default draws at 1px and rises to 2px on focus. Gradient keeps those weights and draws its border from the gradient tokens: a foreground/gradient/start to foreground/gradient/end gradient at rest and when filled, border/gradient/end on hover and border/gradient/start when selected or typing. Focus, invalid, read-only and disabled use the same tokens as default. Ghost holds a bound border at zero weight, which is a theming hook rather than an absent border, so a high contrast variable set can give it a hard outline. |
-| Text | Theming | body/medium at 16px for large and medium, body/small at 14px for small. The colour changes with state, which States and Triggers sets out. |
+| Text | Theming | body/medium for large and medium, body/small for small. The colour changes with state, which States and Triggers sets out. |
 | Icons and controls | Fixed | Every icon is Size=medium at 20 square at large and medium, and Size=small at 16 square at small, and the inner text frame fills whatever width they leave. At large one icon costs 24 including its gap, taking the text from 254 to 230, and two take it to 206. Every icon and control, leading, trailing, the type control and clear, draws foreground/primary like the value, and foreground/disabled when the field is disabled. |

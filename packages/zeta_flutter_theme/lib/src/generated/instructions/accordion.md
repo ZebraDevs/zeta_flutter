@@ -272,7 +272,7 @@ One row of an Accordion, holding a title, a disclosure control, and the content 
 | Padding | Per Selectable | space/lg on all four sides of the header without Selectable, and space/sm with it, because the leading control is taller than the title. |
 | Gap | Per Selectable | space/sm between the title and the caret without Selectable, space/xs between the control, the title and the mark with it. |
 | Background | Theming | interactive/ghost/background/default at rest and interactive/ghost/background/hover on hover. No border and no corner radius. |
-| Title | Theming | title/large, IBM Plex Sans Medium 20 over a 24px line, in foreground/primary. |
+| Title | Theming | title/large, in foreground/primary. |
 | Caret | Fixed | Caret Indicator at Size=medium, 20 square, trailing the title when Selectable is off. |
 | Leading control | Fixed | Icon Button at Size=medium, 40 square, Flavour=subtle, leading the title when Selectable is on. |
 | Selection mark | Fixed | A framed Icon at 40 square on the trailing edge, present only while Selected is true. |

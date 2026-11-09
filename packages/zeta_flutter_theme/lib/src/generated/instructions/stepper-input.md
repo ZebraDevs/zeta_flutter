@@ -20,7 +20,7 @@ A numeric value with a button on either side to decrease or increase it. The val
 | Rounded | true | - | Rounded corners on the two step buttons only, the value between them stays square either way. |
 | Disabled | false | true | The control accepts input, and shows the hint text when Hint is on. |
 | Disabled | true | - | The two step buttons switch to a primary fill, and the hint text is removed entirely rather than hidden. Turning Hint on has no effect while Disabled is on. |
-| Hint | false | true | No hint text below the control. |
+| Hint | false | true | — |
 | Hint | true | - | Adds a line of hint text below the control. Only ever shows the hint message, never the error one this part also offers, and has no effect while Disabled is on. |
 
 ### Behavior & Motion Intent

@@ -33,7 +33,7 @@ Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-Sys
 
 | Property | Value | Layer | Field | Token |
 | --- | --- | --- | --- | --- |
-| Open | true | Template/Dropdown/Dropdown Menu | fill[0] | surface.menu |
+| Open | true | Template/Dropdown/Dropdown Menu | fill[0] | surface.overlay |
 | Open | true | Template/Dropdown/Dropdown Menu | cornerRadius | radius.element-md |
 | Open | true | Template/Dropdown/Dropdown Menu | itemSpacing | space.3xs |
 | Open | true | Template/Dropdown/Dropdown Menu | padding.left | space.card |
@@ -68,7 +68,7 @@ A single row inside a Dropdown Menu, with a leading element, a label and an opti
 | Label | text | Menu Item | The option's name. The row fills the menu's width and the text neither wraps nor truncates, so a long label widens the entire menu. |
 | Leading Element | true | true | Shows the leading element: the Icon, the Checkbox or Radio Button, or the slot. |
 | Leading Element | false | - | Hides it and the label shifts to the leading edge. A menu mixing rows with and without it loses the alignment that makes a list scannable. |
-| Trailing Icon | false | true | No trailing icon. |
+| Trailing Icon | false | true | — |
 | Trailing Icon | true | - | Adds an icon at the trailing edge, for a submenu arrow or an external-link mark. The label already reserves room on that side, so it takes space from the text. |
 
 ### States & Triggers
@@ -131,14 +131,14 @@ A single row inside a Dropdown Menu, with a leading element, a label and an opti
 | Property | Type | Description |
 | --- | --- | --- |
 | Width | Fill | Fills the menu that holds it, drawn at 221px. The row never hugs its label, so the menu's width sets it. |
-| Height | Fixed | 40px on control/md at every variant. |
-| Padding | Fixed per Type | 4px (space/2xs) top and bottom, 12px (space/md) left and right. Checkbox and radio rows use none (space/none) on the leading side, so the 40px control starts at the edge and its box lines up with an Icon row's glyph. |
-| Gap | Fixed | 8px (space/sm) between the leading element, the label and the trailing icon. Checkbox and radio rows use none (space/none), because the control's 40px target already spaces the label. |
-| Label inset | Fixed | The label wrapper adds 4px (space/xs) on its leading edge and reserves 24px (space/xl) on its trailing edge, which keeps labels clear of a trailing icon even when one is not shown. |
+| Height | Fixed | control/md at every variant. |
+| Padding | Fixed per Type | space/2xs top and bottom, space/md left and right. Checkbox and radio rows use space/none on the leading side, so the 40px control starts at the edge and its box lines up with an Icon row's glyph. |
+| Gap | Fixed | space/sm between the leading element, the label and the trailing icon. Checkbox and radio rows use space/none, because the control's 40px target already spaces the label. |
+| Label inset | Fixed | The label wrapper adds space/xs on its leading edge and reserves space/xl on its trailing edge, which keeps labels clear of a trailing icon even when one is not shown. |
 | Radius | Fixed per Rounded | radius/none when false, radius/sm when true. |
 | Leading and trailing icons | Fixed | Both 16px Icon instances at Size=small with Framed off. Checkbox and radio rows lead with a 40px control instead. |
 | Border | Fixed per State | None at rest. Focus and selected focus add a 1px ring on border/focus, drawn on all four edges inside the row. |
-| Label type | Fixed | label/medium (14/20), IBM Plex Sans Medium. |
+| Label type | Fixed | label/medium. |
 | Colour | Theming | Backgrounds come from the interactive/ghost family: transparent at rest, 5 percent on hover, a 10 percent brand tint on selected, and transparent again on focus and disabled. The label is interactive/neutral/foreground/default, foreground/primary when selected (the same colour), and interactive/neutral/foreground/disabled when disabled. |
 
 ### Layer structure
@@ -261,8 +261,8 @@ The surface a dropdown opens onto, a floating panel holding a list of Menu Item 
 | Property | Type | Description |
 | --- | --- | --- |
 | Size | Hug on both axes | 213×196px at the default density and 201×184px when Compact is true, growing with whatever is placed inside. There is no fixed width, so the longest row sets the panel width. |
-| Padding | Fixed | 12px (space/card) on all four sides, dropping to 6px (space/xs) when Compact is true. |
-| Gap | Fixed | 4px (space/2xs) between rows, both in the built-in stack and inside the slot. The panel's own item spacing is 2px (space/3xs), or none when Compact is true, but it holds a single content frame so that spacing never shows. |
+| Padding | Fixed | space/card on all four sides, dropping to space/xs when Compact is true. |
+| Gap | Fixed | space/2xs between rows, both in the built-in stack and inside the slot. The panel's own item spacing is space/3xs, or none when Compact is true, but it holds a single content frame so that spacing never shows. |
 | Radius | Fixed per Rounded | radius/none when Rounded is false, radius/element-md when true. The rows inside take radius/none and radius/sm respectively, a lighter step than the panel itself. |
 | Elevation | Fixed | The Shadow/medium effect style, two stacked drop shadows. Applied to the panel only and unchanged by any property. |
 | Colour | Theming | The panel is surface/menu and binds nothing else. Every other colour in the menu comes from the rows. |
@@ -279,7 +279,7 @@ The surface a dropdown opens onto, a floating panel holding a list of Menu Item 
 
 | Layer | Field | Raw | Token |
 | --- | --- | --- | --- |
-| Dropdown Menu | fill[0] | #ffffff | surface.menu |
+| Dropdown Menu | fill[0] | #ffffff | surface.overlay |
 | Dropdown Menu | cornerRadius | 0 | radius.none |
 | Dropdown Menu | itemSpacing | 2 | space.3xs |
 | Dropdown Menu | padding.left | 12 | space.card |

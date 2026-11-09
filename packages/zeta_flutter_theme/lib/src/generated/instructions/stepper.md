@@ -708,7 +708,7 @@ One step of the cards arrangement: a bordered surface carrying a numbered indica
 
 | Type | Description |
 | --- | --- |
-| No connector | Cards carry no line between them. Order is conveyed by the numbers in the indicators and by the stacking itself, which is why the arrangement is built for a vertical column. |
+| — | Cards carry no line between them. Order is conveyed by the numbers in the indicators and by the stacking itself, which is why the arrangement is built for a vertical column. |
 
 ### Content & Slot
 
@@ -748,7 +748,7 @@ One step of the cards arrangement: a bordered surface carrying a numbered indica
 | Padding | Tokenised | space/sm above and below, space/md on both sides. |
 | Subtitle | Fill | Text should fill the width of it’s container. |
 | Indicator | Fixed | 28px aspect ratio. A control/icon-lg square at radius/pill, carrying a stroke/thick inside border. |
-| Radius | Per set | radius/sm or 4px on Step Card/Round and radius/none on Step Card/Sharp. Nothing else differs between the two. |
+| Radius | Per set | radius/sm on Step Card/Round and radius/none on Step Card/Sharp. Nothing else differs between the two. |
 | Border | stroke/thin, per Status | border/default on default and partial, border/success on complete, interactive/primary/border/default on active, border/error on error, border/subtle on disabled. |
 | Surface | Per Status | surface/card on default, partial, error and disabled, feedback/success/background/subtle on complete, surface/brand on active. |
 | Label colour | Per Status | foreground/tertiary on default, complete and partial, foreground/primary on active, foreground/error on error, foreground/disabled on disabled. |

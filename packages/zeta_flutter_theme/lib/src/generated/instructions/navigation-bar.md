@@ -20,7 +20,7 @@ A horizontal bar of top-level destinations, pinned to one edge of a view. It is 
 | Spacer | true | - | Splits the items into two groups pushed to opposite ends and adds a second slot on the right. Use it to separate primary destinations from account or utility entries. Available only while Shrink Items is true. |
 | Show Divider | false | true | No rule between the two groups. The gap alone carries the separation, which is enough on a plain surface. |
 | Show Divider | true | - | Draws a vertical rule between the two groups. Available only when Spacer is true, because without a split there is nothing to divide. |
-| Show Action Slot | false | true | No action alongside the destinations. |
+| Show Action Slot | false | true | — |
 | Show Action Slot | true | - | Reveals a slot at the end of the bar for a call to action that is not a destination. Placing an action among the items instead makes it read as another place to go. |
 
 ### States & Triggers
@@ -78,8 +78,8 @@ A horizontal bar of top-level destinations, pinned to one edge of a view. It is 
 | Padding | None | Zero on all four sides. Every inset comes from the items themselves. |
 | Gap | None | Item spacing is zero. Separation comes from each item's own padding and from the alignment mode, never from a gap on the bar. |
 | Arrangement | Fixed per variant | Shrink Items=true lets each slot hug its content and spaces the groups apart. Shrink Items=false makes the slot fill the width and distribute its items evenly inside it. |
-| Divider | Fixed | A vertical Divider inside a Divider Section, inset 8px (space/sm) top and bottom, 1px wide on stroke/thin. Present only while Show Divider is true. |
-| Action Slot inset | Fixed | 16px (space/lg) of padding on its leading edge and an 8px gap, so the action separates from the last destination. |
+| Divider | Fixed | A vertical Divider inside a Divider Section, inset space/sm top and bottom, 1px wide on stroke/thin. Present only while Show Divider is true. |
+| Action Slot inset | Fixed | space/lg of padding on its leading edge and an 8px gap, so the action separates from the last destination. |
 | Border | Fixed | A 1px top border on border/default, drawn outside the bounds. No other edge is drawn, and there is no fill and no shadow. |
 | Colour | Theming | The bar binds only its border, to border/default. Everything else visible in it is coloured by the items, or by the surface showing through. |
 
@@ -118,7 +118,7 @@ A single destination inside a Navigation Bar, shown as an icon above a label wit
 | Disabled | false | true | The destination can be selected. |
 | Disabled | true | - | The destination is unavailable. Nothing on the item explains why, so if the reason matters it has to come from the surrounding context. Offered on inactive items. |
 | Label | text | Label | The destination's name, and the only text on the item. One or two words, because the item hugs its label and a long one makes that destination wider than the rest of the row. |
-| Show Badge | false | true | No badge on the icon. |
+| Show Badge | false | true | — |
 | Show Badge | true | - | Reveals a Notification Indicator over the icon's top-right corner, signalling that something is waiting. It sits outside the layout, so turning it on never changes the item's size or shifts its neighbours. |
 
 ### States & Triggers
@@ -175,13 +175,13 @@ A single destination inside a Navigation Bar, shown as an icon above a label wit
 
 | Property | Type | Description |
 | --- | --- | --- |
-| Width | Hug | Hugs the label, so an item is as wide as its text plus 16px (space/lg) of padding each side. Items in a row are not equal width unless their labels are. |
+| Width | Hug | Hugs the label, so an item is as wide as its text plus space/lg of padding each side. Items in a row are not equal width unless their labels are. |
 | Height | Fixed | 72px at every variant. This is what sets the Navigation Bar's height, because the bar hugs its content. |
-| Padding | Fixed | 8px (space/sm) top and bottom, 16px (space/lg) left and right. |
-| Gap | Fixed | 8px (space/sm) between the icon box and the label. |
+| Padding | Fixed | space/sm top and bottom, space/lg left and right. |
+| Gap | Fixed | space/sm between the icon box and the label. |
 | Icon | Fixed | A 20px Icon at Size=medium with Framed off, sitting in a 20px box that does not clip its content. |
 | Badge | Absolute | An 8px Notification Indicator at Size=small, placed at 16,-4 against the 20px icon box so it overhangs the top-right corner. It is outside the layout flow. |
-| Label type | Fixed | Body/body small (14/20), IBM Plex Sans Regular. |
+| Label type | Fixed | Body/body small. |
 | Colour | Theming | foreground/primary at rest, interactive/subtle/foreground/default when Active, interactive/subtle/foreground/disabled when Disabled. Icon and label take the same token in every state, and the item has no fill of its own. |
 
 ### Layer structure

@@ -32,7 +32,10 @@ A vertical navigation column for the edge of a desktop view, made of a narrow ic
 | Shape | sharp | - | Square corners (radius/none) on everything inside the rail. |
 | Inverse | false | true | Code only. The rail always shows in dark mode, whatever the page's mode. Everything inside it follows the rail, and brand extensions still apply. |
 | Inverse | true | - | Shows the rail in light mode instead, still regardless of the page's mode. |
-| Rail Max Width | none | true | Code only. The wide rail is 200px. |
+| Rail Width | 200px | true | Code only. The wide rail's width; Figma's 200px is the default. |
+| Rail Width | length | - | The project sets the wide rail's width. |
+| Rail Width | fill | - | The wide rail takes the width of its container. |
+| Rail Max Width | none | true | Code only. No cap; the wide rail follows Rail Width. |
 | Rail Max Width | length | - | Caps the wide rail's width. Labels that no longer fit end in an ellipsis. The narrow rail is not affected. |
 | Sub Menu Max Width | none | true | Code only. The sub menu sizes to its content, never narrower than 240px. |
 | Sub Menu Max Width | length | - | Caps the sub menu's width. Rows that no longer fit end in an ellipsis. A cap below 240px also lowers the 240px minimum. |
@@ -65,7 +68,7 @@ A vertical navigation column for the edge of a desktop view, made of a narrow ic
 | Footer Slot | slot, holds Navigation Rail Item | Destinations pinned to the bottom, above the two fixed footer items. It ships holding a Divider and three items, and the same content is shared by every variant. |
 | Sub Menu Slot | slot, holds Sub Menu Item and Collapsible Menu Item | The second-level list inside the panel. It ships holding one Collapsible Menu Item and four Sub Menu Items, and its content is shared by every variant. See the Sub Menu Item Metadata frame. |
 | Sub Menu Header | exposed nested instance | The panel's title bar, carrying a back affordance, an editable title and a trailing slot of its own holding a Button. The rail leaves the instance exposed, so all of that is reachable without detaching. The shape of all sub elements are inherited from the main rail component. |
-| Header and header action | fixed nested instances | The header is a Navigation Header showing an avatar. The action below it is an Icon Button in the narrow rail and a Button in the wide one. Neither is a slot, so changing them means overriding the nested instance. |
+| Header and header action | fixed nested instances | The header is a Navigation Header showing an avatar. The action below it is an Icon Button in the narrow rail and a Button in the wide one. Neither is a slot, so changing them means overriding the nested instance. The header's Icon Button shows Settings by default; its icon and action can be set to whatever is needed. |
 
 ### Anatomy
 
@@ -96,11 +99,11 @@ A vertical navigation column for the edge of a desktop view, made of a narrow ic
 
 | Property | Type | Description |
 | --- | --- | --- |
-| Width | Hug | The narrow rail is 72px and the wide rail 200px; Rail Max Width can cap the wide rail. The sub menu sizes to its content: as wide as its widest top-level row or its header, never narrower than 240px, and all rows share that width. A Collapsible Menu Item never makes it wider. Sub Menu Max Width can cap it. Figma draws the sub menu at a fixed 240px; build it to size to its content. |
+| Width | Hug | The narrow rail is 72px. The wide rail is 200px by default; Rail Width sets it or fills the container, and Rail Max Width can cap it. The sub menu sizes to its content: as wide as its widest top-level row or its header, never narrower than 240px, and all rows share that width. A Collapsible Menu Item never makes it wider. Sub Menu Max Width can cap it. Figma draws the sub menu at a fixed 240px; build it to size to its content. |
 | Height | Fill | Fills its parent, drawn at 991px. The icon rail and the panel both fill it, and the menu list absorbs the space left between the header block and the footer. |
 | Rail padding | Fixed | 12px on all four sides of the icon rail, space/md left and right and space/card top and bottom, with a 12px (space/md) gap between the header, the action, the menu list and the footer. |
-| Item spacing | Fixed | 4px (space/xs) between items in both the menu list and the footer. The Menu Slot adds 4px (space/xs) of horizontal padding of its own. |
-| Panel padding | Fixed | The Sub Menu Slot insets its rows by 8px (space/sm) on all four sides, with a 4px (space/xs) gap between them. |
+| Item spacing | Fixed | space/xs between items in both the menu list and the footer. The Menu Slot adds space/xs of horizontal padding of its own. |
+| Panel padding | Fixed | The Sub Menu Slot insets its rows by space/sm on all four sides, with a space/xs gap between them. |
 | Border | Fixed | A single 1px border on border/default down the leading edge of the sub menu panel, plus a 1px bottom border on the same token under the Sub Menu Header. Nothing else in the component is stroked. |
 | Fill | Theming | The rail always shows in dark mode, whatever the page's mode; Inverse shows it in light mode. It sits on surface/section, and neither the icon rail nor the panel paints a fill of its own. |
 | Colour | Theming | The rail binds only its surface and its two borders. Every other colour comes from the items in the slots. |
@@ -259,7 +262,7 @@ A single destination in a Navigation Rail, shown as a glyph in a square target o
 | Show Label | true | - | Adds the caption under the glyph in the narrow form. It has no effect in the wide form, where the label shows regardless. |
 | Show Icon | true | true | Shows the glyph. |
 | Show Icon | false | - | Hides it. In the narrow form with Show Label off this leaves an empty target with nothing to read, so only turn it off in the wide form. |
-| Show Badge | false | true | No badge on the glyph. |
+| Show Badge | false | true | — |
 | Show Badge | true | - | Reveals a notification dot over the glyph's top-right corner. It sits outside the layout, so turning it on never changes the item's size or shifts its neighbours. |
 
 ### States & Triggers
@@ -320,8 +323,8 @@ A single destination in a Navigation Rail, shown as a glyph in a square target o
 | --- | --- | --- |
 | Width | Hug in the narrow form, fixed in the wide one | 48px collapsed, growing only if a caption is wider. 176px expanded, fixed regardless of label length. |
 | Height | Hug with a floor | 48px in both forms, held up by a control/lg minimum on both axes so the target never drops below it. |
-| Padding | Fixed per form | 8px (space/sm) top and bottom in both. 4px (space/xs) left and right collapsed, 16px (space/lg) expanded. |
-| Gap | Fixed per form | None collapsed, where the caption sits directly under the glyph. 16px (space/lg) expanded, between glyph and label. |
+| Padding | Fixed per form | space/sm top and bottom in both. space/xs left and right collapsed, space/lg expanded. |
+| Gap | Fixed per form | None collapsed, where the caption sits directly under the glyph. space/lg expanded, between glyph and label. |
 | Radius | Fixed | radius/sm on every variant. |
 | Icon | Fixed | A 16px Icon at Size=small with Framed off, in a 16px box that does not clip its content. |
 | Badge | Absolute | An 8px Notification Indicator at Size=small, placed at 12,-4 against the 16px glyph box so it overhangs the top-right corner, outside the layout flow. |
@@ -388,7 +391,7 @@ A row in the Navigation Rail's sub menu panel, with a leading glyph, a label, an
 | Show Leading Icon | false | - | Hides it. The label shifts to the leading edge, so a list mixing rows with and without icons loses its alignment. |
 | Sub Menu | true | true | Shows the caret at the trailing edge, marking the row as one that opens a further level. |
 | Sub Menu | false | - | Hides the caret, for a row that navigates straight to its destination. Leaving it on for a row that opens nothing promises a level that is not there. |
-| Show Badge | false | true | No badge on the row. |
+| Show Badge | false | true | — |
 | Show Badge | true | - | Reveals a notification indicator between the label and the trailing caret. Unlike the rail item's badge this one sits in the layout, so it takes space from the label. |
 
 ### States & Triggers
@@ -451,8 +454,8 @@ A row in the Navigation Rail's sub menu panel, with a leading glyph, a label, an
 | --- | --- | --- |
 | Width | Fill | Fills the slot it sits in, drawn at 184px. It does not hug its label, so rows in a list are all the same width. |
 | Height | Hug with a floor | 48px, held up by a control/lg minimum so the target never drops below it. |
-| Padding | Fixed per Nested | 4px (space/xs) top and bottom throughout. 12px (space/md) left and right unnested, with the left edge stepping to 24px when nested. |
-| Gap | Fixed | 8px (space/sm) between the icon, the label, the badge and the caret. |
+| Padding | Fixed per Nested | space/xs top and bottom throughout. space/md left and right unnested, with the left edge stepping to 24px when nested. |
+| Gap | Fixed | space/sm between the icon, the label, the badge and the caret. |
 | Radius | Fixed | radius/sm on every variant. |
 | Icon and caret | Fixed | Both 16px, the icon an Icon at Size=small and the caret a Caret Indicator in its horizontal direction. |
 | Badge | In flow | A 16px Notification Indicator at Size=medium, sitting between the label and the caret rather than overhanging the row. |
@@ -686,7 +689,7 @@ Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-Sys
 | --- | --- | --- | --- | --- |
 | Open | true | Collapsible Menu Item | cornerRadius | radius.sm |
 | Open | true | Collapsible Menu Item/Sub Menu Item | fill[0] | interactive.ghost.background.pressed |
-| Open | true | Collapsible Menu Item/Sub Menu Slot | fill[0] | surface.menu |
+| Open | true | Collapsible Menu Item/Sub Menu Slot | fill[0] | surface.subtle |
 | Open | true | Collapsible Menu Item/Sub Menu Slot | itemSpacing | space.2xs |
 | Open | true | Collapsible Menu Item/Sub Menu Slot | padding.left | space.sm |
 | Open | true | Collapsible Menu Item/Sub Menu Slot | padding.right | space.sm |

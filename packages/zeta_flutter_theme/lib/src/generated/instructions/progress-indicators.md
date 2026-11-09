@@ -25,7 +25,7 @@ A horizontal track that fills to show how far an ongoing process has got. Progre
 | Show Label | false | - | Hides the row, leaving the bar alone. Only do this where nearby copy already names the task, because a bar on its own reports a proportion and not a subject. |
 | Show Track | true | true | Shows the unfilled remainder behind the indicator, which is what makes the proportion readable. |
 | Show Track | false | - | Hides it, leaving only the filled portion. The bar then shows a length with nothing to measure it against. |
-| Show More Details | false | true | No trailing content in the label row. |
+| Show More Details | false | true | — |
 | Show More Details | true | - | Reveals a slot at the trailing end of the label row for supporting detail. It shares the row with the label, so a long label and a filled slot will compete for the same space. |
 
 ### States & Triggers
@@ -74,7 +74,7 @@ A horizontal track that fills to show how far an ongoing process has got. Progre
 - The label wording is fixed per Progress value and the shipped strings read as placeholders. Replace them with copy that names the actual task.
 - Turning Show Track off removes the reference the fill is measured against, which makes the proportion much harder to judge.
 - Indeterminate and Buffering convey that work continues through movement. Someone who cannot perceive the animation gets no signal from them, so pair either with text.
-- The fill and the track are separated by colour alone. Check foreground/link against border/subtle on the surface you place the bar on.
+- The fill and the track are separated by colour alone. Check foreground/link against surface/track on the surface you place the bar on.
 
 ### Layout & Theming Intents
 
@@ -82,12 +82,12 @@ A horizontal track that fills to show how far an ongoing process has got. Progre
 | --- | --- | --- |
 | Width | Fixed | 408px as drawn. The bar does not hug its content, so whoever places it decides the width. |
 | Height | Hug per Size | 44px at small and 52px at large with the label shown. The difference is the indicator group, which is 8px at small and 16px at large. |
-| Gap | Fixed | 16px (space/lg) between the label row and the indicator group. The label row's own internal gap is a raw 10px rather than a token. |
+| Gap | Fixed | space/lg between the label row and the indicator group. The label row's own internal gap is a raw 10px rather than a token. |
 | Radius | Fixed per Shape and Size | The track and indicator take radius/sm at small and radius/md at large while Shape is rounded, and radius/none while it is sharp. The radius scales with thickness so the ends stay fully round. |
 | Indicator width | Fixed per Progress | The indicator's width is the value expressed as a share of the 408px track. Figma samples it at 0, 204 and 408px because a variant cannot carry a number, and both Indeterminate and Buffering draw a fixed 143px segment instead. |
-| Buffered band | Fixed | Buffering adds a 306px band on surface/subtle at 10 percent opacity, between the indicator and the end of the track. |
-| Label type | Fixed | label/medium (14/20), IBM Plex Sans Medium. |
-| Colour | Theming | The indicator is foreground/link, the track border/subtle and the label foreground/secondary. The buffered band is the only element relying on an opacity rather than a token value alone. |
+| Buffered band | Fixed | Buffering adds a 306px band on surface/shade from the start of the track to the buffered point. |
+| Label type | Fixed | label/medium. |
+| Colour | Theming | The indicator is foreground/link, the track surface/track, the band surface/shade and the label foreground/secondary. |
 
 ### Layer structure
 
@@ -124,7 +124,7 @@ A horizontal track that fills to show how far an ongoing process has got. Progre
 | --- | --- | --- | --- | --- |
 | Progress | 100% | Progress Bar/Indicator Group | cornerRadius | — |
 | Progress | Buffering | Progress Bar/Indicator Group | cornerRadius | — |
-| Progress | Buffering | Progress Bar/Indicator Group/Rail | fill[0] | surface.subtle |
+| Progress | Buffering | Progress Bar/Indicator Group/Rail | fill[0] | surface.shade |
 | Progress | Buffering | Progress Bar/Indicator Group/Rail | cornerRadius | radius.sm |
 | Shape | sharp | Progress Bar/Indicator Group/Indicator | cornerRadius | radius.none |
 | Shape | sharp | Progress Bar/Indicator Group/Track | cornerRadius | radius.none |
@@ -208,7 +208,7 @@ A ring that reports an ongoing process where a bar will not fit, beside an icon 
 | Property | Type | Description |
 | --- | --- | --- |
 | Size | Fixed square per Size | 24, 36, 40, 48 and 64px across the five steps. Always square, and never hugging its content. |
-| Stroke weight | Fixed | 4px (stroke/heavy) at every size. It does not scale, so the ring is roughly a sixth of the diameter at xxsmall and a sixteenth at large. |
+| Stroke weight | Fixed | stroke/heavy at every size. It does not scale, so the ring is roughly a sixth of the diameter at xxsmall and a sixteenth at large. |
 | Arc | Fixed | The track covers the full circle. The arc begins at twelve o'clock and runs about three quarters of the way round, identically in all ten variants. |
 | Line cap | Fixed per Rounded | The arc's ends are round when Rounded is true and square when it is false. The track's ends are always square, though a full circle hides them. |
 | Upload control | Fixed | 36px regardless of the ring's size, centred, and present only at small, medium and large. |

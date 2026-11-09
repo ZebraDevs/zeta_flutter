@@ -194,7 +194,7 @@ One option inside a Segmented Control, carrying a label, an icon, or both. It is
 | Gap | Per Flavour | space/xs on the default flavour. Text only and icon only declare space/sm, which separates nothing because each has a single child. |
 | Radius | Per Rounded | radius/sm when true and radius/none when false. |
 | Fill | Per State | Only active carries one, interactive/neutral/background/focused. default and hover have no fill at all. |
-| Label | Theming | label/medium, IBM Plex Sans Medium 14 over a 20px line. foreground/secondary at default, foreground/primary on both hover and active. |
+| Label | Theming | label/medium. foreground/secondary at default, foreground/primary on both hover and active. |
 | Icon | Fixed | Icon at Size=small, 16 square, swapped to Star in every variant that shows one. |
 
 ### Layer structure

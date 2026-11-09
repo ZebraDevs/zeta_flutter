@@ -35,12 +35,12 @@ Triggers an action from a text label, with optional icons on either side. Eleven
 | State | hover | - | Documents the pointer-over treatment. The implementation drives this, so choosing it in a layout freezes the button in a state it should not be in. |
 | State | pressed | - | Documents the pointer-down treatment, with the same caveat as hover. |
 | State | focus | - | Documents the keyboard focus treatment. The one state whose treatment is identical on every flavour. |
-| Disabled | false | true | The control accepts input. |
+| Disabled | false | true | — |
 | Disabled | true | - | The action is unavailable. Say why somewhere nearby, because a disabled control with no explanation is indistinguishable from a broken one. |
 | Label | text | Button | The action the user is about to perform, written as a verb. The button hugs whatever it is given, so a long label widens the control and can break a toolbar row. |
-| Leading Icon | false | true | No icon before the label. |
+| Leading Icon | false | true | — |
 | Leading Icon | true | - | Adds an icon before the label to reinforce the action at a glance. Choose the glyph deliberately, the slot arrives holding a default that suits almost nothing. |
-| Trailing Icon | false | true | No icon after the label. |
+| Trailing Icon | false | true | — |
 | Trailing Icon | true | - | Turning both icons on at small leaves very little room for the label itself. Use a trailing icon for directional or disclosure actions. |
 
 ### States & Triggers
@@ -102,14 +102,14 @@ Triggers an action from a text label, with optional icons on either side. Eleven
 | Property | Type | Description |
 | --- | --- | --- |
 | Width | Hug | Always hugs the label and any visible icons, never fixed. Small grows by 16px for each icon shown, medium and large by 20px. |
-| Height | Fixed per Size | 36px at small (control/sm), 40px at medium (control/md), 48px at large (control/lg). Not resizable independently of Size. |
-| Horizontal padding | Fixed per Size | 12px (space/md) at small and medium, 16px (space/lg) at large. |
-| Vertical padding | Fixed | 4px (space/xs) at every size. The fixed height does the real work. |
-| Gap | None on the row | Item spacing is space/none. The visible separation between an icon and the label comes from the Label wrapper's own horizontal padding, 4px (space/xs) at small and 8px (space/sm) at medium and large. |
-| Radius | Fixed per Shape | 0 (radius/none) for sharp, 4px (radius/element-sm) for rounded, 9999 (radius/pill) for full. All three are token-bound, so match the container rather than overriding on the instance. |
+| Height | Fixed per Size | control/sm at small, control/md at medium, control/lg at large. Not resizable independently of Size. |
+| Horizontal padding | Fixed per Size | space/md at small and medium, space/lg at large. |
+| Vertical padding | Fixed | space/xs at every size. The fixed height does the real work. |
+| Gap | None on the row | Item spacing is space/none. The visible separation between an icon and the label comes from the Label wrapper's own horizontal padding, space/xs at small and space/sm at medium and large. |
+| Radius | Fixed per Shape | radius/none for sharp, radius/element-sm for rounded, radius/pill for full. All three are token-bound, so match the container rather than overriding on the instance. |
 | Border | Fixed per Flavour | 1px drawn inside on outline, outline-subtle and outline-contrast, none on the other eight at rest. Focus replaces it with a 2px ring drawn outside the bounds. |
 | Icon size | Fixed per Size | 16px at small, 20px at medium and large. Large reuses Icon's medium step, so Icon's own large (28px) never appears inside a Button. |
-| Label type | Fixed per Size | label/medium (14/20) at small, label/large (16/24) at medium and large, IBM Plex Sans Medium. |
+| Label type | Fixed per Size | label/medium at small, label/large at medium and large. |
 | Colour | Theming | Every fill, border and label colour is bound to an interactive/* token for the flavour. Gradient draws from surface/gradient/*, text-gradient from foreground/gradient/*, contrast from interactive/inverse/*, outline-contrast from interactive/inverse/border/* and foreground/primary, and focus from border/focus. No variant hardcodes a colour. |
 
 ### Layer structure
@@ -230,7 +230,7 @@ Triggers an action from a single glyph, with no text label. Square at every size
 | State | hover | - | Documents the pointer-over treatment. The implementation drives this, so choosing it in a layout freezes the button in a state it should not be in. |
 | State | pressed | - | Documents the pointer-down treatment, with the same caveat as hover. |
 | State | focus | - | Documents the keyboard focus treatment. The one state whose treatment is identical on every flavour. |
-| Disabled | false | true | The control accepts input. |
+| Disabled | false | true | — |
 | Disabled | true | - | The action is unavailable. With no label there is nothing on the control to explain why, so put the reason in a tooltip or adjacent text. |
 
 ### States & Triggers
@@ -288,8 +288,8 @@ Triggers an action from a single glyph, with no text label. Square at every size
 | Property | Type | Description |
 | --- | --- | --- |
 | Size | Fixed square per Size | 36×36 at small (control/sm), 40×40 at medium (control/md), 48×48 at large (control/lg). Both axes bind to the same token, so it is always square and never hugs its content. |
-| Padding | Fixed | 4px (space/xs) on all four sides at every size. |
-| Radius | Fixed per Shape | 0 (radius/none) for sharp, 4px (radius/element-sm) for rounded, 9999 (radius/pill) for full, which gives a circle. All three are token-bound, so match the container rather than overriding on the instance. |
+| Padding | Fixed | space/xs on all four sides at every size. |
+| Radius | Fixed per Shape | radius/none for sharp, radius/element-sm for rounded, radius/pill for full, which gives a circle. All three are token-bound, so match the container rather than overriding on the instance. |
 | Border | Fixed per Flavour | 1px drawn inside on outline, outline-subtle and outline-contrast, none on the other eight at rest. Focus replaces it with a 2px ring drawn outside the bounds. |
 | Glyph size | Fixed per Size | 16px at small, 20px at medium and large. Large reuses Icon's medium step, so the glyph does not grow between medium and large even though the button does. |
 | Touch target | Fixed per Size | Small is 36px, under the 40px control/target-min the system defines. Medium meets it exactly and large exceeds it. |

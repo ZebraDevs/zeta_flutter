@@ -47,7 +47,7 @@ Represents a person, entity or value someone has entered or picked, such as a re
 | Property | Type | Description |
 | --- | --- | --- |
 | Label | text property | Plain text set per instance, defaulting to Label. The only text the chip takes. |
-| Avatar | nested instance, toggled by Show Avatar | An Avatar at Size=xxxsmall with its own Status, Ring and Close all switched off, so only the face or initials shows. Its visibility is the one child property the chip surfaces. |
+| Avatar | nested instance, toggled by Show Avatar | An Avatar at Size=xxxsmall with its own Status, Ring and Close all switched off, so only the face or initials shows. Its visibility is the one child property the chip surfaces. Its swatch colour stays changeable on every chip, by token name or colour value. |
 | Remove control | fixed nested Icon | An Icon at Size=small swapped to Close. There is no property to hide it, so every input chip shows a remove affordance whether or not the value can be removed. |
 
 ### Anatomy
@@ -83,7 +83,7 @@ Represents a person, entity or value someone has entered or picked, such as a re
 | Radius | Per Rounded | radius/pill when true and radius/none when false, bound on all four corners. |
 | Fill | Theming | interactive/ghost/background at default, hover and focused. disabled uses interactive/neutral/background/disabled. |
 | Border | Per state | 1px inside interactive/neutral/border/default at rest and on hover. Focus replaces it with 2px focus/outline drawn outside. Disabled carries no border. |
-| Label | Theming | label/medium, IBM Plex Sans Medium 14 over a 20px line, in interactive/neutral/foreground/default and dropping to the disabled token. |
+| Label | Theming | label/medium, in interactive/neutral/foreground/default and dropping to the disabled token. |
 | Child sizes | Fixed | Avatar 24 square, remove icon 16 square. |
 
 ### Layer structure
@@ -212,7 +212,7 @@ Lets someone narrow a set of content by switching criteria on and off, such as c
 | Radius | Per Rounded | radius/pill when true and radius/none when false. |
 | Fill | Per state | interactive/neutral/background at default, hover, focused, selected and disabled, with pressed reused for dragged. active=true overrides all of it with interactive/inverse/background/selected. |
 | Border | Per state | 1px inside interactive/neutral/border/default at rest. Focus swaps to 2px focus/outline drawn outside. active=true uses interactive/inverse/border/pressed. Disabled carries none. |
-| Label | Theming | indicator/medium, IBM Plex Sans Medium 12 over a 14px line, in interactive/neutral/foreground/default, dropping to the disabled token and flipping to interactive/inverse/foreground/default when active. |
+| Label | Theming | indicator/medium, in interactive/neutral/foreground/default, dropping to the disabled token and flipping to interactive/inverse/foreground/default when active. |
 
 ### Layer structure
 
@@ -358,7 +358,7 @@ Offers a contextual action, or stands for an item someone can discard, such as a
 | Radius | Per Rounded | radius/pill when true and radius/none when false. |
 | Fill | Per state | interactive/neutral/background at default, hover, focused, selected and disabled, with pressed reused for dragged. |
 | Border | Per state | 1px inside at rest, interactive/neutral/border/default on neutral and border/success, warning, info or error per Color. Focus swaps to 2px focus/outline drawn outside. Disabled carries none. |
-| Label | Theming | indicator/medium, IBM Plex Sans Medium 12 over a 14px line. interactive/neutral/foreground/default on neutral, feedback/success, warning, info or error foreground per Color, and the disabled token when disabled. |
+| Label | Theming | indicator/medium. interactive/neutral/foreground/default on neutral, feedback/success, warning, info or error foreground per Color, and the disabled token when disabled. |
 | Leading icon | Fixed | Icon at Size=small, 16 square. |
 | Colour overrides | Per Color, or per instance in code | Color sets the border and the label. In code, foreground, background and border each accept a colour token on top, so one kind of item can hold one colour across a view. |
 

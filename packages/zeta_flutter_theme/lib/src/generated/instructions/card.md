@@ -76,7 +76,7 @@ The empty card shell, three stacked slots inside a bordered surface. It decides 
 | Height | Hug | Grows with the slots. With all three shown and empty it stands at 214px. |
 | Padding and gap | None | Zero on the shell and zero between the slots. Every inset comes from the parts placed inside, which is why an empty card reads as three touching bands. |
 | Radius | Fixed per Shape | radius/none when sharp, radius/sm when rounded. The shell clips to this radius, so inner content follows the curve. |
-| Border | Fixed | 1px (stroke/thin) on border/default, on all four edges, at both Shape values. |
+| Border | Fixed | stroke/thin on border/default, on all four edges, at both Shape values. |
 | Fill | Theming | surface/card on the shell and on each of the three slots, so a slot left empty still reads as card surface rather than a hole. |
 | Elevation | None | No shadow at either Shape. The card sits flat and is separated from the page by its border alone. |
 
@@ -178,11 +178,11 @@ A card whose body opens and closes behind a header that is always visible. The h
 | --- | --- | --- |
 | Width | Fixed | 385px at every variant. The card does not hug horizontally. |
 | Height | Hug | 78px collapsed and 257px expanded at the default flavour. Gradient adds 4px to both, 82px and 261px, because its outline is drawn on the frame itself. |
-| Header padding | Fixed | 16px (space/lg) top and bottom, 24px (space/xl) left and right, with 8px (space/sm) between the leading icon and the heading block. |
-| Body padding | Fixed per State | None while collapsed, since the slot is hidden. Expanded it insets 24px (space/xl) left, right and bottom, with nothing on top so the body sits tight under the header. |
-| Heading spacing | Fixed | 2px (space/3xs) between the title and the description, and 4px (space/xs) inside the title row. |
+| Header padding | Fixed | space/lg top and bottom, space/xl left and right, with space/sm between the leading icon and the heading block. |
+| Body padding | Fixed per State | None while collapsed, since the slot is hidden. Expanded it insets space/xl left, right and bottom, with nothing on top so the body sits tight under the header. |
+| Heading spacing | Fixed | space/3xs between the title and the description, and space/xs inside the title row. |
 | Radius | Fixed per Shape | radius/none when sharp, radius/sm when rounded. The card clips to it. |
-| Outline | Fixed per Flavor | None at the default flavour. Gradient draws a 2px (stroke/thick) linear gradient from foreground/gradient/start to foreground/gradient/end around all four edges. |
+| Outline | Fixed per Flavor | None at the default flavour. Gradient draws a stroke/thick linear gradient from foreground/gradient/start to foreground/gradient/end around all four edges. |
 | Fill | Theming | surface/card on the card. The header sits on a fully transparent interactive/ghost/background/default, so the card surface shows through it. |
 | Leading icon | Fixed | A 28px Icon at Size=large with Framed off. |
 | Description type | Theming | The header's description sits on foreground/secondary. |

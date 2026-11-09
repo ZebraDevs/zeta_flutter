@@ -123,7 +123,7 @@ Takes a phone number, with a country picker joined to its start. The picker sets
 | Layer | Field | Raw | Token |
 | --- | --- | --- | --- |
 | Phone Input | itemSpacing | 4 | space.2xs |
-| Phone Input/Label | itemSpacing | 4 | space.2xs |
+| Phone Input/Label | itemSpacing | 6 | space.xs |
 | Phone Input/Control/_Phone Country | height | 40 | control.md |
 | Phone Input/Control/_Phone Country | fill[0] | #ffffff | interactive.neutral.background.default |
 | Phone Input/Control/_Phone Country | stroke[0] | #ced2db | interactive.neutral.border.default |
@@ -162,7 +162,7 @@ Takes a phone number, with a country picker joined to its start. The picker sets
 | Shape | sharp | Phone Input/Control/_Phone Country | cornerRadius | radius.none |
 | Shape | full | Phone Input/Control/_Phone Country | cornerRadius | radius.pill |
 | Open | true | Phone Input/Control/_Phone Country | fill[0] | interactive.neutral.background.selected |
-| Open | true | Phone Input/Dropdown Menu | fill[0] | surface.menu |
+| Open | true | Phone Input/Dropdown Menu | fill[0] | surface.overlay |
 | Open | true | Phone Input/Dropdown Menu | cornerRadius | radius.element-md |
 | Open | true | Phone Input/Dropdown Menu | itemSpacing | space.3xs |
 | Open | true | Phone Input/Dropdown Menu | padding.left | space.card |

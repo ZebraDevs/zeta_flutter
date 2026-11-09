@@ -115,7 +115,7 @@ A row of tabs for switching between views at the same level. Flavour decides whe
 | Tab slot | Per Flavour | Tabs fill the row at full width, 177 each with four. At condensed they hug, 118 each. |
 | Tab item | Fixed | 48 tall, space/md top and bottom, space/gutter each side, space/sm between icon and label. |
 | Selection underline | Theming | A 2px bottom border on every tab, border/transparent until selected and interactive/primary/border/default after. The space is always held, so selecting shifts nothing. |
-| Tab label | Theming | label/medium at 14px. foreground/secondary at rest, interactive/neutral/foreground/default selected, and the disabled token when off. |
+| Tab label | Theming | label/medium. foreground/secondary at rest, interactive/neutral/foreground/default selected, and the disabled token when off. |
 
 ### Layer structure
 

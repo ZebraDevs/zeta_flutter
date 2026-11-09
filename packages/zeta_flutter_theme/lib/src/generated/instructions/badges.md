@@ -71,7 +71,7 @@ Marks that something is waiting on whatever it is pinned to, optionally with a c
 | Radius | Fixed | radius/pill at all three sizes, so every form is fully round whether or not it holds a number. |
 | Fill | Fixed | interactive/destructive/background/default at every size. One colour throughout, which does not vary with the count. |
 | Border | Theming | A stroke bound to border/inverse sits on all three sizes at zero weight. The weight is a theming hook rather than an omission, so a high contrast set can give the indicator a hard outline where it overlaps whatever it is pinned to. |
-| Value | Theming | indicator/medium at 12px in foreground/on-strong. Present at large and medium, absent at small. |
+| Value | Theming | indicator/medium in foreground/on-strong. Present at large and medium, absent at small. |
 
 ### Layer structure
 
@@ -185,7 +185,7 @@ Reports a read-only state on an item, such as Active or Overdue. Status sets the
 | Radius | Per Shape | radius/pill when rounded and radius/none when sharp. Nothing else moves between the two. |
 | Fill | Per Status | neutral draws interactive/neutral/background/default. The other four draw feedback/info, success, warning and error at background/subtle, so all four sit at one tint strength rather than escalating with severity. |
 | Border | Per Status | A 1px stroke tracking the fill, border/default for neutral and border/info, success, warning or error for the rest. It is what keeps four subtle tints apart from each other at a glance. |
-| Label | Theming | body/small at 14px, held at foreground/primary for every status. Only the fill, the border and the leading element move. |
+| Label | Theming | body/small, held at foreground/primary for every status. Only the fill, the border and the leading element move. |
 | Discard control | Fixed | A 16 square after the label when Discardable is on, adding 16 to the width. It takes no gap of its own, because the component runs at space/none and the padding does the separating. |
 
 ### Layer structure
@@ -327,7 +327,7 @@ Names a category on an item in a word or two. Variant carries the standing of th
 | Radius | Per Shape | radius/element-sm when rounded and radius/none when sharp. Softer than a pill, so it reads as a block of text rather than as a token. |
 | Fill | Per Variant and emphasis | bold takes feedback/info, success, warning or error at background/strong, with neutral on foreground/secondary. The other two forms take the matching background/subtle, with neutral on surface/subtle. |
 | Border | Per emphasis | outlined draws a 1px stroke centred on the edge, border/strong for neutral and the matching border token otherwise. The plain form carries that same bound stroke at zero weight, which is a theming hook rather than an absent border, so a high contrast set can give every label an edge. bold's stroke matches its own fill. |
-| Label | Theming | body/xsmall at 12px in every form. bold knocks the text out of its fill, foreground/inverse on neutral and the matching foreground token elsewhere, while the other two hold foreground/primary. |
+| Label | Theming | body/xsmall in every form. bold knocks the text out of its fill, foreground/inverse on neutral and the matching foreground token elsewhere, while the other two hold foreground/primary. |
 
 ### Layer structure
 
@@ -454,7 +454,7 @@ Shows where an item sits on a four step scale, from low to urgent. Level sets th
 | Radius | Fixed | radius/pill on every level, variant and size. There is no square cornered form. |
 | Fill | Per Level | low draws foreground/secondary. medium, high and urgent draw feedback/info, warning and error at background/strong. low is the only level not taking a feedback colour, which is what keeps it reading as ordinary rather than good. |
 | Circle | Knockout | 20 at large and 16 at small, filled with the same token as the label. Whatever sits inside it, glyph or number, is drawn in the pill's own background colour, so the circle reads as a hole punched through the pill. |
-| Label | Theming | body/small at 14px on large and indicator/small at 10px on small. The colour pairs with the level, foreground/inverse on low and high and the matching foreground token on medium and urgent. |
+| Label | Theming | body/small on large and indicator/small on small. The colour pairs with the level, foreground/inverse on low and high and the matching foreground token on medium and urgent. |
 
 ### Layer structure
 

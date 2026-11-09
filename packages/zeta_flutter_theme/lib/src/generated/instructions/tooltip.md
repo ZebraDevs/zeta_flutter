@@ -76,7 +76,7 @@ A short floating message that names what an adjacent control does. Point decides
 | Radius | Per Shape | radius/sm on rounded and radius/none on sharp, bound on all four corners. Both are tokens, so the value follows the theme and only the choice between them is made per instance. |
 | Pointer | Fixed, absolute | Absolutely positioned, centred on its edge and drawn outside the bubble, which is why the component does not clip its contents. 8 by 4 on top and bottom, 4 by 8 on left and right. The rounded tips measure 3.586 on the pointing axis rather than 4, because the curve stops short of the point the sharp triangle reaches. |
 | Fill | Theming | surface/inverse on the bubble and on the pointer, so the two read as one shape. The label is foreground/inverse. |
-| Type | Theming | label/small, which is IBM Plex Sans Medium at 12 over a 16px line. Bound to the label/small typography variables as well as the text style, so it follows the responsive modes. |
+| Type | Theming | label/small. Bound to the label/small typography variables as well as the text style, so it follows the responsive modes. |
 | Elevation | Fixed | Shadow/medium on every variant, a two-layer drop shadow whose colour, blur and offsets are all bound to tokens. |
 
 ### Layer structure

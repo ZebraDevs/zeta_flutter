@@ -115,7 +115,7 @@ A surface anchored to the bottom edge of the screen, holding supplementary conte
 
 | Layer | Field | Raw | Token |
 | --- | --- | --- | --- |
-| Bottom Sheet | fill[0] | #ffffff | surface.sheet |
+| Bottom Sheet | fill[0] | #ffffff | surface.overlay |
 | Bottom Sheet | cornerRadius | 0 | radius.container |
 | Bottom Sheet | padding.bottom | 12 | space.card |
 | Bottom Sheet/Sheet Handle | padding.left | 24 | space.section |

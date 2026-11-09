@@ -83,7 +83,7 @@ A modal message that interrupts the current task until the user responds or dism
 
 | Layer | Field | Raw | Token |
 | --- | --- | --- | --- |
-| Dialog | fill[0] | #ffffff | surface.dialog |
+| Dialog | fill[0] | #ffffff | surface.overlay |
 | Dialog | stroke[0] | #ced2db | border.default |
 | Dialog | cornerRadius | 6 | radius.element-md |
 | Dialog | strokeWeight | 1 | stroke.thin |

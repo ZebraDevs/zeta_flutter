@@ -21,17 +21,17 @@ A data table with rows of content in columns, framed by an optional controls bar
 | Shape | rounded | true | Every component inside the table takes its rounded option: search, buttons, checkboxes, status labels and pagination, including the table's own corners. |
 | Shape | sharp | - | Every component inside the table takes its sharp option. |
 | Selectable | true | true | Adds the selection column: select-all in the header and a checkbox per row. |
-| Selectable | false | - | No selection column. |
+| Selectable | false | - | — |
 | Row Actions | true | true | Adds a trailing more button per row that opens a compact menu of the row's actions. |
-| Row Actions | false | - | No actions column. |
+| Row Actions | false | - | — |
 | Vertical Scroll | false | true | The content grows with its rows. |
 | Vertical Scroll | true | - | Caps the content height so rows scroll under a sticky header. |
 | Selected Count | true | true | An info Label at the start of the controls bar counts the selected rows. It shows only while rows are selected. |
-| Selected Count | false | - | No count. |
+| Selected Count | false | - | — |
 | Column Settings | true | true | A settings button at the end of the controls bar opens the column panel to show, hide and freeze columns. |
-| Column Settings | false | - | No column panel. |
+| Column Settings | false | - | — |
 | Rows Per Page | true | true | A small compact Select after the page summary sets how many rows each page shows. |
-| Rows Per Page | false | - | No page size choice. |
+| Rows Per Page | false | - | — |
 
 ### Behavior & Motion Intent
 
@@ -590,7 +590,7 @@ Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-Sys
 
 | Layer | Field | Raw | Token |
 | --- | --- | --- | --- |
-| _Table Menu/Dropdown Menu | fill[0] | #ffffff | surface.menu |
+| _Table Menu/Dropdown Menu | fill[0] | #ffffff | surface.overlay |
 | _Table Menu/Dropdown Menu | cornerRadius | 6 | radius.element-md |
 | _Table Menu/Dropdown Menu | padding.left | 6 | space.xs |
 | _Table Menu/Dropdown Menu | padding.right | 6 | space.xs |

@@ -242,7 +242,7 @@ The composer for a message prompt. One State property moves it between typing, d
 | State | listening | Message Input/Toolbar/Actions/Dictate | padding.top | — |
 | State | listening | Message Input/Toolbar/Actions/Dictate | padding.bottom | — |
 | State | listening | Message Input/Voice | itemSpacing | space.sm |
-| State | listening | Message Input/Voice/Voice Bar | fill[0] | surface.track |
+| State | listening | Message Input/Voice/Voice Bar | fill[0] | surface.subtle |
 | State | listening | Message Input/Voice/Voice Bar | cornerRadius | radius.element-md |
 | State | listening | Message Input/Voice/Voice Bar | itemSpacing | space.sm |
 | State | listening | Message Input/Voice/Voice Bar | padding.left | space.md |
@@ -321,7 +321,7 @@ The composer for a message prompt. One State property moves it between typing, d
 | State | transcribing | Message Input/Toolbar/Actions/Dictate | fill[0] | interactive.ghost.background.disabled |
 | State | transcribing | Message Input/Toolbar/Actions/Dictate | stroke[0] | interactive.ghost.border.disabled |
 | State | transcribing | Message Input/Voice | itemSpacing | space.sm |
-| State | transcribing | Message Input/Voice/Voice Bar | fill[0] | surface.track |
+| State | transcribing | Message Input/Voice/Voice Bar | fill[0] | surface.subtle |
 | State | transcribing | Message Input/Voice/Voice Bar | cornerRadius | radius.element-md |
 | State | transcribing | Message Input/Voice/Voice Bar | itemSpacing | space.sm |
 | State | transcribing | Message Input/Voice/Voice Bar | padding.left | space.md |
@@ -378,7 +378,7 @@ The composer for a message prompt. One State property moves it between typing, d
 | State | recording | Message Input/Toolbar/Actions/Dictate | padding.top | — |
 | State | recording | Message Input/Toolbar/Actions/Dictate | padding.bottom | — |
 | State | recording | Message Input/Voice | itemSpacing | space.sm |
-| State | recording | Message Input/Voice/Voice Bar | fill[0] | surface.track |
+| State | recording | Message Input/Voice/Voice Bar | fill[0] | surface.subtle |
 | State | recording | Message Input/Voice/Voice Bar | cornerRadius | radius.element-md |
 | State | recording | Message Input/Voice/Voice Bar | itemSpacing | space.sm |
 | State | recording | Message Input/Voice/Voice Bar | padding.left | space.md |
@@ -470,7 +470,7 @@ The composer for a message prompt. One State property moves it between typing, d
 | State | playback | Message Input/Toolbar/Actions/Send | fill[0] | interactive.primary.background.default |
 | State | playback | Message Input/Toolbar/Actions/Send | stroke[0] | interactive.primary.border.default |
 | State | playback | Message Input/Voice | itemSpacing | space.sm |
-| State | playback | Message Input/Voice/Voice Bar | fill[0] | surface.track |
+| State | playback | Message Input/Voice/Voice Bar | fill[0] | surface.subtle |
 | State | playback | Message Input/Voice/Voice Bar | cornerRadius | radius.element-md |
 | State | playback | Message Input/Voice/Voice Bar | itemSpacing | space.sm |
 | State | playback | Message Input/Voice/Voice Bar | padding.left | space.2xs |

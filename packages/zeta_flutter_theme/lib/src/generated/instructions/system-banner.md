@@ -81,8 +81,8 @@ A full-width message pinned to the top of a mobile screen, carrying a status col
 | Property | Type | Description |
 | --- | --- | --- |
 | Size | Fixed width, hug height | 412px wide, with the height following the content. The banner spans the screen rather than sitting inside a column. |
-| Padding | Fixed | 8px (space/sm) on all four sides of the message row, with a further 8px (space/sm) above and below the text column. |
-| Gap | Fixed | 4px (space/2xs) between the glyph, the text column and the dismiss control. 8px (space/sm) between the text block and the action row. |
+| Padding | Fixed | space/sm on all four sides of the message row, with a further space/sm above and below the text column. |
+| Gap | Fixed | space/2xs between the glyph, the text column and the dismiss control. space/sm between the text block and the action row. |
 | Radius | None | Square on every corner. The banner meets both screen edges, so a radius would leave a gap at the sides. |
 | Colour | Theming | The background is feedback/<status>/background/strong, one token per Status. Default resolves to the success token rather than a neutral one. Every variant is locked to the Dark palette mode, whatever mode its container uses. |
 | Typography | Fixed | Title is label/large, description is body/small and the action label is label/medium. Title and description sit on foreground/on-strong; the action label takes the outline-contrast Button's foreground/primary. The Dark lock keeps that label white beside them. |
@@ -245,13 +245,13 @@ A full-width message pinned to the top of a desktop view, carrying a status colo
 | Property | Type | Description |
 | --- | --- | --- |
 | Size | Fixed width, hug height | 983px wide. 68px tall on single line and 142px on multiline, with the height following the description. |
-| Padding | Fixed | 16px on all four sides of the message row, with a further 4px (space/2xs) above and below the text on multiline. |
-| Gap | Fixed | 8px between the glyph, the content and the dismiss control. 16px (space/lg) inside the content between the text and the action row. |
+| Padding | Fixed | 16px on all four sides of the message row, with a further space/2xs above and below the text on multiline. |
+| Gap | Fixed | 8px between the glyph, the content and the dismiss control. space/lg inside the content between the text and the action row. |
 | Radius | None | Square on every corner. The banner spans the full width of the view, so a radius would leave a gap at the sides. |
 | Colour | Theming | The background is feedback/<status>/background/strong, one token per Status. Default resolves to the success token rather than a neutral one. Every variant is locked to the Dark palette mode, whatever mode its container uses. |
 | Typography | Fixed | Title is label/medium, description is body/small and the action label is label/medium. Title and description sit on foreground/on-strong; the action label takes the outline-contrast Button's foreground/primary. The Dark lock keeps that label white beside them. |
 | Status glyph | Fixed | A medium unframed Icon inside a 36×36px container, held to the top of the message row. |
-| Dismiss control | Fixed | A 36×36px Icon Button with 4px (space/2xs) around a 20px glyph, at the trailing edge of the row. |
+| Dismiss control | Fixed | A 36×36px Icon Button with space/2xs around a 20px glyph, at the trailing edge of the row. |
 
 ### Layer structure
 
