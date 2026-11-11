@@ -1,4 +1,4 @@
-# inline Banner
+# Inline Banner
 
 Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-System?node-id=8051-4995&m=dev
 

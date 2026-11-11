@@ -144,7 +144,7 @@ A control for choosing a value along a range by dragging a thumb. State, Stepped
 
 ## Slider Input Field
 
-Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-System?node-id=6154-5813&m=dev
+Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-System?node-id=6154-5709&m=dev
 
 ### Layer structure
 
@@ -159,7 +159,7 @@ Source: https://www.figma.com/design/hvRmnZZOZrmTW0wf8hbrt5/The-Zebra-Design-Sys
     - Slider Input Field/Frame 1/Input Container (FRAME)
       - Slider Input Field/Frame 1/Input Container/50 (TEXT)
 
-### Resolved tokens (default variant: Property 1=Default)
+### Resolved tokens (default variant: Slider Input Field)
 
 | Layer | Field | Raw | Token |
 | --- | --- | --- | --- |
